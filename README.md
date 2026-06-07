@@ -40,3 +40,4 @@ A mobile-first Web3 platform for prediction markets. Users bet YES/NO on real-wo
 ## Key Docs
 - [CLAUDE.md](./CLAUDE.md) — full project brief, principles, scope
 - [research/research.md](./research/research.md) — competitor analysis and open questions
+- [research/aarrr.md](./research/aarrr.md) — AARRR framework: acquisition, activation, retention, revenue, referral
