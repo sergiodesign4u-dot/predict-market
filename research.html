@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Prediction Market Platform</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ───────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(14,14,14,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 24px;
+    height: 48px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: color .15s, background .15s;
+  }
+  nav a:hover { color: var(--text); background: var(--surface); }
+  nav .sep { color: var(--border); font-size: 16px; user-select: none; }
+
+  /* ── LAYOUT ─────────────────────────────────────────── */
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 80px 24px 120px;
+  }
+
+  section {
+    padding-top: var(--gap);
+    margin-top: var(--gap);
+    border-top: 1px solid var(--border);
+  }
+  section:first-child { border-top: none; }
+
+  /* ── TYPOGRAPHY ─────────────────────────────────────── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    margin-top: 32px;
+  }
+  h3:first-child { margin-top: 0; }
+
+  p {
+    color: #aaa;
+    margin-bottom: 12px;
+    max-width: 680px;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  .lead {
+    font-size: 16px;
+    color: #bbb;
+    max-width: 640px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero { padding-top: 0; border-top: none; }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid rgba(200,255,0,.2);
+  }
+  .tag.grey {
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    border-color: var(--border);
+  }
+
+  .conclusion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .conclusion-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 16px;
+  }
+  .conclusion-card .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .conclusion-card p {
+    font-size: 13px;
+    color: #bbb;
+    margin: 0;
+    max-width: none;
+  }
+
+  /* ── TABLES ─────────────────────────────────────────── */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    background: var(--surface);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #c8c8c8;
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,.015); }
+
+  td.label {
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  td.primary { color: var(--accent); font-weight: 600; }
+  td.mono { font-family: var(--mono); font-size: 12px; }
+  td.muted { color: var(--muted); }
+
+  /* score cells */
+  .score-5 { color: var(--green); font-weight: 700; }
+  .score-4 { color: #a8e89c; font-weight: 600; }
+  .score-3 { color: #c8c8c8; }
+  .score-2 { color: #e89c9c; }
+  .score-1 { color: var(--red); }
+  .score-bold { font-size: 15px; }
+
+  /* ── CARDS GRID ─────────────────────────────────────── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px;
+  }
+
+  .card-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .card p {
+    font-size: 13px;
+    color: #999;
+    margin: 0;
+    max-width: none;
+  }
+
+  .card.bad { border-color: rgba(255,95,95,.25); }
+  .card.bad .card-num { color: var(--red); }
+  .card.bad h4 { color: #ff9f9f; }
+
+  .card.good { border-color: rgba(95,219,143,.2); }
+
+  /* ── FUNNEL ─────────────────────────────────────────── */
+  .funnel {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 20px;
+    max-width: 640px;
+  }
+
+  .funnel-step {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    position: relative;
+  }
+
+  .funnel-step-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .funnel-step-desc {
+    font-size: 13px;
+    color: #aaa;
+  }
+
+  .funnel-step-metric {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    text-align: right;
+  }
+  .funnel-step-metric .val {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .funnel-arrow {
+    text-align: center;
+    color: var(--border);
+    font-size: 16px;
+    line-height: 1;
+    padding: 2px 0;
+  }
+
+  /* ── PATTERNS ───────────────────────────────────────── */
+  .pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .pattern-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px;
+  }
+  .pattern-card.chosen {
+    border-color: var(--accent);
+    background: rgba(200,255,0,.04);
+  }
+  .pattern-card.no {
+    border-color: rgba(255,95,95,.2);
+    opacity: .7;
+  }
+  .pattern-card .badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  .pattern-card.chosen .badge { background: var(--accent); color: #000; }
+  .pattern-card.no .badge { background: rgba(255,95,95,.15); color: var(--red); }
+  .pattern-card .badge.cond { background: rgba(95,168,255,.12); color: var(--blue); }
+
+  .pattern-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .pattern-card p { font-size: 12px; color: #888; margin: 4px 0 0; max-width: none; }
+
+  /* ── HYPOTHESES ─────────────────────────────────────── */
+  .hypothesis {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px 24px;
+    margin-top: 12px;
+  }
+
+  .hypothesis-id {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+
+  .hypothesis-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .hyp-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 8px 14px;
+    margin-bottom: 4px;
+  }
+  .hyp-key {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding-top: 1px;
+  }
+  .if-key { color: var(--blue); }
+  .then-key { color: var(--green); }
+  .because-key { color: #c8a0ff; }
+  .hyp-val { font-size: 13px; color: #bbb; }
+  .hyp-source { font-size: 11px; color: var(--muted); margin-top: 10px; }
+
+  /* ── SEGMENTS ───────────────────────────────────────── */
+  .segment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .segment {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px;
+  }
+  .segment.primary-seg {
+    border-color: var(--accent);
+    background: rgba(200,255,0,.04);
+  }
+
+  .segment-priority {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 8px;
+  }
+  .segment.primary-seg .segment-priority { color: var(--accent); }
+  .segment-priority.sec { color: var(--blue); }
+  .segment-priority.later { color: var(--muted); }
+
+  .segment h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .segment .age { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .segment p { font-size: 13px; color: #999; margin: 0; max-width: none; }
+
+  /* ── SCREENS GALLERY ────────────────────────────────── */
+  .screen-group {
+    margin-top: 32px;
+  }
+
+  .screen-group-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .screens {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .screen-item {
+    flex-shrink: 0;
+    width: 160px;
+  }
+
+  .screen-item img {
+    width: 160px;
+    height: 280px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    display: block;
+    transition: transform .2s, border-color .2s;
+  }
+  .screen-item img:hover {
+    transform: scale(1.02);
+    border-color: #444;
+  }
+
+  .screen-item figcaption {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 7px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* ── GAPS TABLE ─────────────────────────────────────── */
+  .gap-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .gap-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    color: #bbb;
+  }
+  .gap-item .source { font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+  /* ── OPEN QUESTIONS ─────────────────────────────────── */
+  .questions {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .question {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #bbb;
+    display: flex;
+    gap: 10px;
+  }
+  .question .qnum {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+
+  /* ── MISC ───────────────────────────────────────────── */
+  .divider { height: 1px; background: var(--border); margin: 28px 0; }
+
+  .inline-note {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: -4px;
+    margin-bottom: 12px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  .pill-yes { background: rgba(95,219,143,.12); color: var(--green); }
+  .pill-no { background: rgba(255,95,95,.12); color: var(--red); }
+  .pill-q { background: rgba(255,255,255,.06); color: var(--muted); }
+
+  .aida-flow {
+    display: flex;
+    gap: 0;
+    margin-top: 8px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .aida-step {
+    flex: 1;
+    padding: 10px 12px;
+    border-right: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .aida-step:last-child { border-right: none; }
+  .aida-step .aida-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .aida-step p { font-size: 12px; color: #999; margin: 0; max-width: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#intro">Вступ</a>
+  <span class="sep">·</span>
+  <a href="#product">Product Model</a>
+  <span class="sep">·</span>
+  <a href="#aarrr">AARRR</a>
+  <span class="sep">·</span>
+  <a href="#competitors">Конкуренти</a>
+  <span class="sep">·</span>
+  <a href="#benchmark">Benchmark</a>
+  <span class="sep">·</span>
+  <a href="#patterns">Патерни</a>
+  <span class="sep">·</span>
+  <a href="#conclusions">Висновки</a>
+</nav>
+
+<main>
+
+  <!-- ── HERO / INTRO ───────────────────────────────────── -->
+  <section class="hero" id="intro">
+    <div class="hero-meta">
+      <span class="tag">Research</span>
+      <span class="tag grey">Prediction Market Platform</span>
+      <span class="tag grey">MVP · 2026</span>
+    </div>
+    <h1>Master Research</h1>
+    <p class="lead">Синтез усіх фаз ресерчу — product model, AARRR, конкурентний аналіз, trust benchmark і UX патерни. Джерело істини перед wireframes.</p>
+
+    <h3>Ключові висновки</h3>
+    <div class="conclusion-grid">
+      <div class="conclusion-card">
+        <div class="num">01</div>
+        <p><strong>News Junkie</strong> — primary сегмент. Найбільший, fiat on-ramp знімає Web3-бар'єр, прямий JTBD J2.</p>
+      </div>
+      <div class="conclusion-card">
+        <div class="num">02</div>
+        <p>Жоден конкурент не пояснює <strong>"чому ця ціна"</strong> — це наш диференціатор і основа Story-driven UX.</p>
+      </div>
+      <div class="conclusion-card">
+        <div class="num">03</div>
+        <p><strong>Activation — найбільший ризик.</strong> Fiat first + guided first bet — пріоритет MVP.</p>
+      </div>
+      <div class="conclusion-card">
+        <div class="num">04</div>
+        <p>Регуляторні бейджі (FSCS/SIPC) нам недоступні — замінюємо <strong>on-chain прозорістю.</strong></p>
+      </div>
+      <div class="conclusion-card">
+        <div class="num">05</div>
+        <p>CLOB vs AMM для MVP — відкрите питання. AMM реалістичніший для старту з нуля. <span class="pill pill-q">[?]</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRODUCT MODEL ──────────────────────────────────── -->
+  <section id="product">
+    <div class="section-label">Product Model</div>
+    <h2>Що будуємо і для кого</h2>
+    <p>Prediction market платформа. YES/NO ставки на реальні події. Стейблкоїни (USDC/USDT). Мобайл-фьорст. Ціль — найзрозуміліша платформа для тих хто не в крипто.</p>
+
+    <h3>Objectives</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Ціль</th><th>Метрика</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="label mono">O1</td><td>Довірена платформа для PM за межами США</td><td class="muted">MAU, NPS, retention 30d</td></tr>
+          <tr><td class="label mono">O2</td><td>Web3-беттінг для юзерів без крипто-досвіду</td><td class="muted">% без гаманця → перша ставка</td></tr>
+          <tr><td class="label mono">O3</td><td>Залучена спільнота навколо подій</td><td class="muted">DAU/MAU ratio, shares/user</td></tr>
+          <tr><td class="label mono">O4</td><td>Стабільний trading volume</td><td class="muted">Monthly volume, revenue/user</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Аудиторія — 3 сегменти</h3>
+    <div class="segment-grid">
+      <div class="segment primary-seg">
+        <div class="segment-priority">★ Primary</div>
+        <h4>News Junkie</h4>
+        <div class="age">25–40</div>
+        <p>Активно слідкує за новинами. Має думку про все. Не обов'язково в крипто. Хоче "поставити гроші" на свою думку просто і без складності.</p>
+      </div>
+      <div class="segment">
+        <div class="segment-priority sec">Secondary</div>
+        <h4>Crypto Native</h4>
+        <div class="age">22–35</div>
+        <p>Вже в Web3. MetaMask є. Знає DeFi. Хоче монетизувати крипто-знання і знайти більше ринків ніж є у Polymarket.</p>
+      </div>
+      <div class="segment">
+        <div class="segment-priority later">Later — post-MVP</div>
+        <h4>Crossover Bettor</h4>
+        <div class="age">28–42</div>
+        <p>Вже ставить на спорт. Шукає більш інтелектуальні ринки де важить аналіз, а не тільки везіння.</p>
+      </div>
+    </div>
+
+    <h3>AIDA → Action по сегментах</h3>
+    <p class="inline-note">Для primary сегменту (News Junkie):</p>
+    <div class="aida-flow">
+      <div class="aida-step">
+        <div class="aida-label">Attention</div>
+        <p>SEO, новинні агрегатори, Twitter.<br>"Ринок каже 34% — а ти що думаєш?"</p>
+      </div>
+      <div class="aida-step">
+        <div class="aida-label">Interest</div>
+        <p>Живі події, контекст, пояснення як працюють одс прямо в продукті.</p>
+      </div>
+      <div class="aida-step">
+        <div class="aida-label">Desire</div>
+        <p>Подія яку вже обговорює + "поставити $10 зараз — 2 хвилини".</p>
+      </div>
+      <div class="aida-step">
+        <div class="aida-label">Action</div>
+        <p>Google/Email → fiat card on-ramp → guided first bet.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>AIDA ↔ AARRR</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>AIDA</th><th>AARRR</th><th>Продуктовий фокус</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="label">Attention</td><td>Acquisition</td><td class="muted">SEO, Twitter, медіа</td></tr>
+          <tr><td class="label">Interest</td><td>Acquisition → Activation</td><td class="muted">Онбординг, перший ринок</td></tr>
+          <tr><td class="label">Desire</td><td>Activation</td><td class="muted">Guided first bet, fiat on-ramp</td></tr>
+          <tr><td class="label">Actions</td><td>Activation → Retention → Referral</td><td class="muted">Перша ставка, нотифікації, share card</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── AARRR ──────────────────────────────────────────── -->
+  <section id="aarrr">
+    <div class="section-label">AARRR Model</div>
+    <h2>Воронка зростання</h2>
+    <p>Гіпотетичний аналіз на старті продукту. Цілі потребують валідації після запуску MVP.</p>
+
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-step-label">Acquisition</div>
+        <div class="funnel-step-desc">SEO через події · Twitter/X · крипто-медіа · word-of-mouth</div>
+        <div class="funnel-step-metric"><span class="val">—</span>реєстрацій/тиждень</div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+      <div class="funnel-step">
+        <div class="funnel-step-label">Activation</div>
+        <div class="funnel-step-desc">Fiat on-ramp → guided first bet → <strong>aha moment: ставка жива</strong></div>
+        <div class="funnel-step-metric"><span class="val">&gt;40%</span>першої ставки в 24 год</div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+      <div class="funnel-step">
+        <div class="funnel-step-label">Retention</div>
+        <div class="funnel-step-desc">Нотифікації рух одс · нові події у категорії · resolution результат</div>
+        <div class="funnel-step-metric"><span class="val">&gt;30%</span>активних на день 7</div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+      <div class="funnel-step">
+        <div class="funnel-step-label">Revenue</div>
+        <div class="funnel-step-desc">~2% fee з виграшу (не з входу). "Платиш тільки коли заробив."</div>
+        <div class="funnel-step-metric"><span class="val">~2%</span>fee on win</div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+      <div class="funnel-step">
+        <div class="funnel-step-label">Referral</div>
+        <div class="funnel-step-desc">Share card після resolution · referral бонус · public profile</div>
+        <div class="funnel-step-metric"><span class="val">&gt;20%</span>нових через шеринг</div>
+      </div>
+    </div>
+
+    <h3>Продуктові рішення по етапах</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Етап</th><th>Рішення MVP</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="label">Acquisition</td><td>Кожен ринок = SEO-сторінка з og:image динамічними одс</td></tr>
+          <tr><td class="label">Activation</td><td>Fiat on-ramp на першому екрані після реєстрації + прогрес-бар guided bet</td></tr>
+          <tr><td class="label">Retention</td><td>Розумні нотифікації (рух ціни + дедлайн) + персональна стрічка по категоріях</td></tr>
+          <tr><td class="label">Revenue</td><td>"Платформа заробить $0.40 якщо ти виграєш" — явно до підтвердження</td></tr>
+          <tr><td class="label">Referral</td><td>Share card після кожного resolution (авто-генерація)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Retention: три рівні повернення</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Етап</th><th>Коли</th><th>Що відбувається</th><th>Нотифікація</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="label">Гарячий</td><td class="muted">День 1–3</td><td>Стежить за рухом одс</td><td class="muted">"YES виріс з 45% до 61%"</td></tr>
+          <tr><td class="label">Теплий</td><td class="muted">День 4–14</td><td>Нова подія в улюбленій категорії</td><td class="muted">"Новий ринок: Will Zelensky meet Trump?"</td></tr>
+          <tr><td class="label">Холодний</td><td class="muted">День 15+</td><td>Leaderboard, resolution</td><td class="muted">"Твоя позиція вирішилась. Ти виграв $47"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── COMPETITORS ─────────────────────────────────────── -->
+  <section id="competitors">
+    <div class="section-label">Конкуренти</div>
+    <h2>Порівняльний аналіз</h2>
+
+    <h3>Матриця по осях</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Вісь</th>
+            <th>Polymarket</th>
+            <th>Kalshi</th>
+            <th>Manifold</th>
+            <th>Futuur</th>
+            <th>Metaculus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">Аудиторія</td>
+            <td>Крипто-нейтіви, DeFi, глобально (не США)</td>
+            <td>США, TradFi, mainstream</td>
+            <td>Глобально, всі</td>
+            <td>Глобально, крипто + fiat hybrid</td>
+            <td>Аналітики, policy-спільнота</td>
+          </tr>
+          <tr>
+            <td class="label">Основа</td>
+            <td>CLOB на Polygon, pUSD (USDC)</td>
+            <td>CFTC-регульована біржа, USD фіат</td>
+            <td>Play money (Mana Ṁ), user-created</td>
+            <td>Крипто + fiat hybrid</td>
+            <td>Без грошей — forecasting + репутація</td>
+          </tr>
+          <tr>
+            <td class="label">Ключові механізми</td>
+            <td>Conditional Token Framework, order book matching</td>
+            <td>Order book, ціна в центах, regulated settlement</td>
+            <td>AMM, AI-generated context, community resolution</td>
+            <td>Probability bars per outcome, Yes/No per option</td>
+            <td>Aggregated forecast, calibration scoring</td>
+          </tr>
+          <tr>
+            <td class="label">Довіра</td>
+            <td>On-chain прозорість, UMA resolution, $7.5B+ volume</td>
+            <td>CFTC-регуляція — найвища в жанрі</td>
+            <td>Нульовий ризик грошей</td>
+            <td>Малий трек-рекорд <span class="pill pill-q">[?]</span></td>
+            <td>Академічна точність ~4% відхилення</td>
+          </tr>
+          <tr>
+            <td class="label">Монетизація</td>
+            <td>~2% fee з виграшів + maker/taker rebates</td>
+            <td>Exchange fees (maker/taker)</td>
+            <td>Prize pool USDC, без fees на Mana</td>
+            <td>Комісія <span class="pill pill-q">[?]</span></td>
+            <td>Гранти, інституційні партнерства</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="two-col" style="margin-top:32px">
+      <div>
+        <h3>3 Спільні патерни</h3>
+        <div class="card-grid" style="grid-template-columns:1fr">
+          <div class="card">
+            <div class="card-num">PATTERN 01</div>
+            <h4>Горизонтальна категорійна навігація + bottom tab bar</h4>
+            <p>Де-факто стандарт жанру. Polymarket (4 таби), Kalshi (4 таби), Futuur (3 таби). Відсутність = непізнавана платформа.</p>
+          </div>
+          <div class="card">
+            <div class="card-num">PATTERN 02</div>
+            <h4>% ймовірності — головне число</h4>
+            <p>На кожній картці і детальному екрані стоїть вище за назву події. Це "ціна" ринку і "стан гри" водночас.</p>
+          </div>
+          <div class="card">
+            <div class="card-num">PATTERN 03</div>
+            <h4>Графік зміни ймовірності в часі</h4>
+            <p>Від лінійного (Manifold) до свічкового (Kalshi). Динаміка = залученість — повертаються дивитись на позицію.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>3 Ключові відмінності</h3>
+        <div class="card-grid" style="grid-template-columns:1fr">
+          <div class="card">
+            <div class="card-num">DIFF 01</div>
+            <h4>CLOB vs AMM vs Community</h4>
+            <p>Polymarket+Kalshi → order book. Manifold → AMM. Metaculus → агрегат прогнозів. CLOB дає чесніші ціни, але вимагає ліквідності.</p>
+          </div>
+          <div class="card">
+            <div class="card-num">DIFF 02</div>
+            <h4>Реальні гроші vs Play money vs Crypto</h4>
+            <p>Кожен підхід бере різну аудиторію. Hybrid (Futuur) — теоретично найширший, але незрозуміло як реалізовано.</p>
+          </div>
+          <div class="card">
+            <div class="card-num">DIFF 03</div>
+            <h4>Хто створює ринки</h4>
+            <p>Polymarket/Kalshi: команда (curated). Manifold: будь-який юзер (scale але і сміття). Для MVP — platform-created.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Що відсутнє у всіх конкурентів — наш gap</h3>
+    <div class="gap-list">
+      <div class="gap-item">
+        <span>Ніхто не пояснює "чому ця ціна" — що рухає одс, яка логіка</span>
+        <span class="source">research.md</span>
+      </div>
+      <div class="gap-item">
+        <span>Слабкий onboarding — немає guided first bet, без пояснення механіки inline</span>
+        <span class="source">research.md</span>
+      </div>
+      <div class="gap-item">
+        <span>Ринки ізольовані від новинного контексту — питання без бекграунду</span>
+        <span class="source">research.md</span>
+      </div>
+      <div class="gap-item">
+        <span>Trust signals заховані — resolution rules, dispute process важко знайти</span>
+        <span class="source">research.md</span>
+      </div>
+      <div class="gap-item">
+        <span>Signup Polymarket: 8+ wallet іконок = когнітивна каша для новачка</span>
+        <span class="source">polymarket-signup-mobile.png</span>
+      </div>
+    </div>
+
+    <h3>Скріни конкурентів</h3>
+
+    <div class="screen-group">
+      <div class="screen-group-label">Polymarket</div>
+      <div class="screens">
+        <figure class="screen-item">
+          <img src="research/screens/polymarket-home-mobile.png" alt="Polymarket Home">
+          <figcaption>Home feed</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/polymarket-home-scroll-mobile.png" alt="Polymarket Scroll">
+          <figcaption>Home scroll</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/polymarket-event-mobile.png" alt="Polymarket Event">
+          <figcaption>Event card</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/polymarket-event-detail-mobile.png" alt="Polymarket Detail">
+          <figcaption>Event detail</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/polymarket-event-bet-mobile.png" alt="Polymarket Bet">
+          <figcaption>Bet interface</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/polymarket-signup-mobile.png" alt="Polymarket Signup">
+          <figcaption>Signup — 8+ wallet options</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="screen-group">
+      <div class="screen-group-label">Kalshi</div>
+      <div class="screens">
+        <figure class="screen-item">
+          <img src="research/screens/kalshi-home-mobile.png" alt="Kalshi Home">
+          <figcaption>Home + auto-modal</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/kalshi-home-browse-mobile.png" alt="Kalshi Browse">
+          <figcaption>Home browse</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/kalshi-market-detail-mobile.png" alt="Kalshi Market">
+          <figcaption>Market detail — candlestick</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="screen-group">
+      <div class="screen-group-label">Manifold · Futuur · Metaculus</div>
+      <div class="screens">
+        <figure class="screen-item">
+          <img src="research/screens/manifold-home-mobile.png" alt="Manifold Home">
+          <figcaption>Manifold home</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/manifold-market-detail-mobile.png" alt="Manifold Detail">
+          <figcaption>Manifold detail</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/futuur-home-mobile.png" alt="Futuur Home">
+          <figcaption>Futuur home</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/futuur-market-detail-mobile.png" alt="Futuur Detail">
+          <figcaption>Futuur detail</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/futuur-market-bet-mobile.png" alt="Futuur Bet">
+          <figcaption>Futuur bet interface</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/metaculus-home-mobile.png" alt="Metaculus Home">
+          <figcaption>Metaculus home</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/metaculus-question-detail-mobile.png" alt="Metaculus Detail">
+          <figcaption>Metaculus question</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BENCHMARK ──────────────────────────────────────── -->
+  <section id="benchmark">
+    <div class="section-label">Benchmark</div>
+    <h2>Trust &amp; First-Time Credibility</h2>
+    <p>Trust — #1 цінність аудиторії (20–40, реальні гроші). Саме тут конкуренти найслабші (Polymarket: 19/40). Звідси ростуть рішення для wireframes.</p>
+
+    <h3>Оцінка (1–5) · 8 критеріїв × 5 продуктів</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Критерій</th>
+            <th>Revolut</th>
+            <th>Coinbase</th>
+            <th>Robinhood</th>
+            <th>Kalshi</th>
+            <th>Polymarket</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">C1 Регуляторна прозорість</td>
+            <td class="score-5">5</td><td class="score-5">5</td><td class="score-4">4</td><td class="score-5">5</td><td class="score-2">2</td>
+          </tr>
+          <tr>
+            <td class="label">C2 Захист коштів</td>
+            <td class="score-5">5</td><td class="score-5">5</td><td class="score-4">4</td><td class="score-4">4</td><td class="score-1">1</td>
+          </tr>
+          <tr>
+            <td class="label">C3 Прозорість комісій до дії</td>
+            <td class="score-4">4</td><td class="score-3">3</td><td class="score-5">5</td><td class="score-3">3</td><td class="score-2">2</td>
+          </tr>
+          <tr>
+            <td class="label">C4 Соціальний доказ</td>
+            <td class="score-5">5</td><td class="score-5">5</td><td class="score-4">4</td><td class="score-3">3</td><td class="score-4">4</td>
+          </tr>
+          <tr>
+            <td class="label">C5 Ясність першого враження</td>
+            <td class="score-4">4</td><td class="score-4">4</td><td class="score-5">5</td><td class="score-4">4</td><td class="score-3">3</td>
+          </tr>
+          <tr>
+            <td class="label">C6 Тертя онбордингу</td>
+            <td class="score-3">3</td><td class="score-3">3</td><td class="score-3">3</td><td class="score-2">2</td><td class="score-2">2</td>
+          </tr>
+          <tr>
+            <td class="label">C7 Комунікація ризиків</td>
+            <td class="score-3">3</td><td class="score-4">4</td><td class="score-3">3</td><td class="score-4">4</td><td class="score-3">3</td>
+          </tr>
+          <tr>
+            <td class="label">C8 Ясність resolution / правил</td>
+            <td class="score-3">3</td><td class="score-4">4</td><td class="score-3">3</td><td class="score-3">3</td><td class="score-2">2</td>
+          </tr>
+          <tr>
+            <td class="label">Сума</td>
+            <td class="score-4 score-bold">32</td>
+            <td class="score-5 score-bold">33</td>
+            <td class="score-4 score-bold">31</td>
+            <td class="score-3 score-bold">28</td>
+            <td class="score-1 score-bold">19</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Топ-3 механізми для MVP</h3>
+    <div class="card-grid">
+      <div class="card good">
+        <div class="card-num">← Coinbase C2: 5/5</div>
+        <h4>Конкретна обіцянка захисту коштів</h4>
+        <p>"Ваші USDC зберігаються 1:1. Ми ніколи не позичаємо їх без вашого дозволу." На екрані першого депозиту і в How it works. Закриває головний страх до того як юзер його озвучить.</p>
+      </div>
+      <div class="card good">
+        <div class="card-num">← Revolut C4: 5/5</div>
+        <h4>Соціальний доказ як блок на головній</h4>
+        <p>"$X торгів · N юзерів · Рейтинг Y" — компактний блок після hero, до списку ринків. "Якщо стільки людей довіряють — можна спробувати."</p>
+      </div>
+      <div class="card good">
+        <div class="card-num">← Robinhood C3: 5/5</div>
+        <h4>Fee transparency у момент дії</h4>
+        <p>"Платформа заробить $0.40 якщо ти виграєш" — на confirmation screen перед відправкою. Прихована комісія = перша причина відтоку.</p>
+      </div>
+    </div>
+
+    <h3>1 Механізм який НЕ спрацює</h3>
+    <div class="card-grid">
+      <div class="card bad" style="grid-column: 1/-1">
+        <div class="card-num">❌ Не використовувати</div>
+        <h4>Регуляторні бейджі FSCS / SIPC / FDIC / CFTC</h4>
+        <p>Revolut, Robinhood, Kalshi мають офіційні щити регуляторів. Ми — ні, і не будемо (це юридичні зобов'язання, не декор). Схожі елементи без реальної підкладки знищать довіру у момент перевірки. FTX будував "банківський вигляд" — результат відомий.</p>
+        <p style="margin-top:8px"><strong>Альтернатива:</strong> on-chain прозорість — "Всі розрахунки на блокчейні. Ти можеш перевірити кожну транзакцію."</p>
+      </div>
+    </div>
+
+    <h3>Скріни — Trust signals</h3>
+    <div class="screens" style="margin-top:16px">
+      <figure class="screen-item">
+        <img src="research/screens/coinbase-trust-signals-mobile.png" alt="Coinbase Trust">
+        <figcaption>Coinbase — 1:1 asset promise</figcaption>
+      </figure>
+      <figure class="screen-item">
+        <img src="research/screens/coinbase-trust-bottom-mobile.png" alt="Coinbase Trust Bottom">
+        <figcaption>Coinbase — trust bottom</figcaption>
+      </figure>
+      <figure class="screen-item">
+        <img src="research/screens/revolut-trust-mobile.png" alt="Revolut Trust">
+        <figcaption>Revolut — 75M users + Trustpilot + 5 awards</figcaption>
+      </figure>
+      <figure class="screen-item">
+        <img src="research/screens/revolut-home-mobile.png" alt="Revolut Home">
+        <figcaption>Revolut home</figcaption>
+      </figure>
+      <figure class="screen-item">
+        <img src="research/screens/robinhood-trust-mobile.png" alt="Robinhood Trust">
+        <figcaption>Robinhood — SIPC + commission-free</figcaption>
+      </figure>
+      <figure class="screen-item">
+        <img src="research/screens/robinhood-home-mobile.png" alt="Robinhood Home">
+        <figcaption>Robinhood home</figcaption>
+      </figure>
+      <figure class="screen-item">
+        <img src="research/screens/coinbase-home-mobile.png" alt="Coinbase Home">
+        <figcaption>Coinbase home</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ── PATTERNS ────────────────────────────────────────── -->
+  <section id="patterns">
+    <div class="section-label">UX Патерни</div>
+    <h2>Архітектура взаємодії</h2>
+    <p>Ключовий поведінковий патерн аудиторії — <strong>Event-triggered arrival</strong>: юзер приходить коли щось відбувається. Від того як зустрічаємо його "з новини" залежить activation і перша ставка.</p>
+
+    <h3>5 Принципово різних патернів</h3>
+    <div class="pattern-grid">
+      <div class="pattern-card chosen">
+        <div class="badge">✓ Обрано для MVP</div>
+        <h4>Story-driven Discovery</h4>
+        <p>Подія = narrative unit: контекст + чому важливо зараз + що каже ринок + умови resolution → CTA ставки.</p>
+        <p style="margin-top:8px">Де: ніде в PM повністю. Частково — Metaculus (опис питань), The Athletic (спорт + контекст).</p>
+      </div>
+      <div class="pattern-card">
+        <div class="badge cond">При умові X</div>
+        <h4>Event Feed</h4>
+        <p>Алгоритмічний фід карток. Юзер скролить, зупиняється на тому що чіпляє.</p>
+        <p style="margin-top:8px">Де: Polymarket, Kalshi, Twitter, TikTok. Ламається при &lt;20 ринків і для нових юзерів.</p>
+      </div>
+      <div class="pattern-card">
+        <div class="badge cond" style="background:rgba(255,200,80,.1);color:#ffc850">Retention-фаза</div>
+        <h4>Portfolio / Position-first</h4>
+        <p>Перший екран — активні позиції, P&L, дедлайни. Нові ринки в окремому розділі.</p>
+        <p style="margin-top:8px">Де: Robinhood, Binance. Empty state для нових = демотивація.</p>
+      </div>
+      <div class="pattern-card">
+        <div class="badge cond" style="background:rgba(255,200,80,.1);color:#ffc850">Онбординг</div>
+        <h4>Guided Challenge</h4>
+        <p>"Ставка дня" — один вибір, дві кнопки, геймлуп. Мінімум когнітивного навантаження.</p>
+        <p style="margin-top:8px">Де: Duolingo, HQ Trivia. Набридає після 5–7 сесій.</p>
+      </div>
+      <div class="pattern-card no">
+        <div class="badge">✗ Не підходить</div>
+        <h4>Market Board</h4>
+        <p>Таблиця всіх ринків: ціна, обсяг, 24h зміна. Фільтри — основна навігація.</p>
+        <p style="margin-top:8px">Де: Kalshi advanced, Bloomberg, Binance. Новачки йдуть. Вбиває емоційний зв'язок з подією.</p>
+      </div>
+    </div>
+
+    <h3>Чому Story-driven — 3 причини</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-num">ПРИЧИНА 01 — JTBD J2</div>
+        <h4>Прямий збіг з JTBD J2</h4>
+        <p>"Слідкувати за подіями з реальною ставкою" — це про контекст, не про числа. Юзер приходить через новину і хоче зрозуміти що відбувається. Story-driven дає цей контекст у продукті.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">ПРИЧИНА 02 — GAP КОНКУРЕНТІВ</div>
+        <h4>Закриває головний gap ринку</h4>
+        <p>Жоден конкурент не пояснює чому ціна така і що вплине на outcome. Ринки — ізольовані питання без контексту. Це наш диференціатор.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">ПРИЧИНА 03 — TRUST</div>
+        <h4>Будує довіру без регуляторних бейджів</h4>
+        <p>Чіткий опис події + умови resolution + джерело = платформа знає про що говорить. Довіра через прозорість контенту — наша альтернатива FSCS/SIPC.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:20px"><strong>Умова X для Event Feed:</strong> &gt;30 активних ринків і юзер вже зробив першу ставку. Story-driven для першого контакту → Feed для повернення.</p>
+  </section>
+
+  <!-- ── CONCLUSIONS ─────────────────────────────────────── -->
+  <section id="conclusions">
+    <div class="section-label">Висновки</div>
+    <h2>Gaps і Гіпотези</h2>
+
+    <h3>Gaps — підтверджені дослідженням</h3>
+    <div class="gap-list">
+      <div class="gap-item"><span>Жоден PM не вирішив onboarding без Web3-гаманця</span><span class="source">competitive-analysis.md · Q1</span></div>
+      <div class="gap-item"><span>Ніхто не пояснює "чому ця ціна" — немає контексту всередині ринку</span><span class="source">research.md · What's missing</span></div>
+      <div class="gap-item"><span>Ринки ізольовані від новинного контексту</span><span class="source">research.md · What's missing</span></div>
+      <div class="gap-item"><span>Polymarket trust score 19/40 — найнижчий серед усіх</span><span class="source">benchmark-trust.md</span></div>
+      <div class="gap-item"><span>Signup Polymarket: 8+ wallet іконок = когнітивна каша</span><span class="source">polymarket-signup-mobile.png</span></div>
+      <div class="gap-item"><span>CLOB вимагає ліквідності з першого дня — проблема "курки і яйця"</span><span class="source">competitive-analysis.md · Q2</span></div>
+      <div class="gap-item"><span>Resolution trust без регуляції і великого трек-рекорду — невирішена задача</span><span class="source">competitive-analysis.md · Q3</span></div>
+    </div>
+
+    <h3>Гіпотези — if / then / because</h3>
+
+    <div class="hypothesis">
+      <div class="hypothesis-id">H1 · Activation</div>
+      <div class="hypothesis-title">Fiat on-ramp підвищить activation</div>
+      <div class="hyp-row">
+        <span class="hyp-key if-key">Якщо</span>
+        <span class="hyp-val">дати можливість поповнити карткою без Web3-гаманця з першого екрану після реєстрації</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key then-key">То</span>
+        <span class="hyp-val">% юзерів що зробили першу ставку у 24 год перевищить 40%</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key because-key">Бо</span>
+        <span class="hyp-val">головний бар'єр для News Junkie — необхідність мати MetaMask і USDC до першої ставки. Polymarket вирішує це через MoonPay/Transak, але не виділяє як UX-пріоритет.</span>
+      </div>
+      <div class="hyp-source">Джерела: aarrr.md · Activation "Fiat first" · competitive-analysis.md Q1</div>
+    </div>
+
+    <div class="hypothesis">
+      <div class="hypothesis-id">H2 · Activation</div>
+      <div class="hypothesis-title">Story-driven UX підвищить конверсію нових юзерів у першу ставку</div>
+      <div class="hyp-row">
+        <span class="hyp-key if-key">Якщо</span>
+        <span class="hyp-val">кожна подія матиме narrative unit: контекст + що каже ринок + умови resolution</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key then-key">То</span>
+        <span class="hyp-val">конверсія першого візиту у ставку буде вища ніж у Polymarket / Kalshi</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key because-key">Бо</span>
+        <span class="hyp-val">жоден конкурент не дає контекст всередині продукту — News Junkie приходить "з новини" і не розуміє ізольовані питання без бекграунду.</span>
+      </div>
+      <div class="hyp-source">Джерела: research.md "No narrative around events" · ux-patterns.md Story-driven · competitive-analysis.md</div>
+    </div>
+
+    <div class="hypothesis">
+      <div class="hypothesis-id">H3 · Revenue</div>
+      <div class="hypothesis-title">Fee з виграшу (не з входу) знижує ранній відтік</div>
+      <div class="hyp-row">
+        <span class="hyp-key if-key">Якщо</span>
+        <span class="hyp-val">комісія береться при виграші (~2%) а не при вході</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key then-key">То</span>
+        <span class="hyp-val">ранній відтік після першої ставки буде нижчим</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key because-key">Бо</span>
+        <span class="hyp-val">"заплатив і програв" — найболючіший сценарій. "Платиш тільки коли заробив" — психологічно м'якший. Варіант B.</span>
+      </div>
+      <div class="hyp-source">Джерела: aarrr.md · Revenue "Варіант B" · Polymarket fee model</div>
+    </div>
+
+    <div class="hypothesis">
+      <div class="hypothesis-id">H4 · Trust</div>
+      <div class="hypothesis-title">Конкретна обіцянка захисту коштів підвищить завершення депозиту</div>
+      <div class="hyp-row">
+        <span class="hyp-key if-key">Якщо</span>
+        <span class="hyp-val">на екрані першого депозиту показати: "Ваші USDC зберігаються 1:1. Ми ніколи не позичаємо їх без вашого дозволу"</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key then-key">То</span>
+        <span class="hyp-val">% завершення депозиту зросте</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key because-key">Бо</span>
+        <span class="hyp-val">головний страх нового юзера fintech — "що буде з моїми грошима". Coinbase вирішує точно так само і має C2: 5/5.</span>
+      </div>
+      <div class="hyp-source">Джерела: benchmark-trust.md · Coinbase · screens/coinbase-trust-signals-mobile.png</div>
+    </div>
+
+    <div class="hypothesis">
+      <div class="hypothesis-id">H5 · Referral</div>
+      <div class="hypothesis-title">Share card після resolution дасть &gt;20% органічного трафіку</div>
+      <div class="hyp-row">
+        <span class="hyp-key if-key">Якщо</span>
+        <span class="hyp-val">після кожного resolution автоматично генерується share card з результатом</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key then-key">То</span>
+        <span class="hyp-val">&gt;20% нових юзерів прийдуть через шеринг</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key because-key">Бо</span>
+        <span class="hyp-val">"Я ж казав що так буде" — сильний соціальний інстинкт. Виграш хочеться показати. Robinhood і Spotify Wrapped підтвердили цей патерн.</span>
+      </div>
+      <div class="hyp-source">Джерела: aarrr.md · Referral "Шеринг виграшу" · ux-patterns.md Social sharing</div>
+    </div>
+
+    <div class="hypothesis">
+      <div class="hypothesis-id">H6 · Trust</div>
+      <div class="hypothesis-title">Прозорість комісії до підтвердження знизить претензії і відтік</div>
+      <div class="hyp-row">
+        <span class="hyp-key if-key">Якщо</span>
+        <span class="hyp-val">перед кожним підтвердженням ставки показати точну суму комісії</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key then-key">То</span>
+        <span class="hyp-val">кількість скарг і refund-запитів буде нижчою, NPS вищим</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key because-key">Бо</span>
+        <span class="hyp-val">прихована комісія — перша причина негативних відгуків у fintech. Robinhood зробив "Commission-Free" своїм головним повідомленням і отримав C3: 5/5.</span>
+      </div>
+      <div class="hyp-source">Джерела: benchmark-trust.md · Robinhood · aarrr.md Revenue</div>
+    </div>
+
+    <h3>Відкриті питання — перед wireframes</h3>
+    <div class="questions">
+      <div class="question"><span class="qnum">Q1</span><span>CLOB vs AMM для MVP? Вплив на механіку ціноутворення і UX ставки.</span></div>
+      <div class="question"><span class="qnum">Q2</span><span>Fiat on-ramp провайдер? MoonPay vs Transak vs Stripe Crypto.</span></div>
+      <div class="question"><span class="qnum">Q3</span><span>KYC поріг? При якій сумі вмикається верифікація — вплив на тертя activation.</span></div>
+      <div class="question"><span class="qnum">Q4</span><span>Мінімальна ставка? Психологічний бар'єр vs UX ($1? $5? без ліміту?)</span></div>
+      <div class="question"><span class="qnum">Q5</span><span>Resolution без регуляції — чи достатньо мультисиг команди на старті?</span></div>
+      <div class="question"><span class="qnum">Q6</span><span>Demo bet підвищує або знижує конверсію у реальну ставку?</span></div>
+      <div class="question"><span class="qnum">Q7</span><span>Futuur crypto+fiat hybrid — як точно влаштований? Референс для нашої моделі.</span></div>
+    </div>
+
+  </section>
+
+</main>
+
+</body>
+</html>
