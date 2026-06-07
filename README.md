@@ -39,9 +39,10 @@ A mobile-first Web3 platform for prediction markets. Users bet YES/NO on real-wo
 
 ## Key Docs
 - [CLAUDE.md](./CLAUDE.md) — full project brief, principles, scope
-- [research/research.md](./research/research.md) — competitor analysis and open questions
+- [research/master-research.md](./research/master-research.md) — **Master synthesis**: all research phases in one document
+- [research/product-model.md](./research/product-model.md) — Product model: objectives, audience segments, AIDA
 - [research/aarrr.md](./research/aarrr.md) — AARRR framework: acquisition, activation, retention, revenue, referral
 - [research/competitive-analysis.md](./research/competitive-analysis.md) — Full competitor comparison: table, patterns, differences, open questions
 - [research/benchmark-trust.md](./research/benchmark-trust.md) — Trust benchmark: 5 products × 8 criteria, top mechanisms for MVP
 - [research/ux-patterns.md](./research/ux-patterns.md) — UX patterns: 5 approaches, behavioral analysis, pattern selection for MVP
-- [research/product-model.md](./research/product-model.md) — Product model: objectives, audience segments, AIDA
+- [research/research.md](./research/research.md) — Competitor groups, screens index, key findings
