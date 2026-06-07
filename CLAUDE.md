@@ -4,6 +4,22 @@
 A mobile-first prediction market platform where users bet YES/NO on real-world events.
 Users stake crypto on whether an event will happen or not, and earn/lose based on the outcome.
 
+## JTBD — Jobs To Be Done
+
+**Primary:**
+> "Коли я слідкую за подіями, які мені важливі — я хочу мати реальну ставку в грі, щоб це було не просто новини, а моя особиста участь з реальним результатом"
+
+**Secondary:**
+> "І якщо я краще розумію ситуацію ніж інші — я хочу щоб це конвертувалось у гроші, просто і без складності трейдингу"
+
+**Наслідки для продукту:**
+- Перша сторінка — живі події зараз, не "зареєструйся"
+- Онбординг: подія → механіка → ставка (не навпаки)
+- Retention: нотифікації про події, не про поповнення
+- Профіль: трек-рекорд передбачень як репутація
+
+---
+
 ## Core Differentiator
 **Clarity and accessibility for new users.** Competitors (Polymarket, Kalshi, Manifold) can feel opaque to newcomers. This platform prioritizes transparency — users always understand what they're doing, why, and what happens next.
 

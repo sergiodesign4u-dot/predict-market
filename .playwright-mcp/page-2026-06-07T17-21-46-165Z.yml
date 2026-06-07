@@ -1,0 +1,1741 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - link "Skip to main content" [ref=e5] [cursor=pointer]:
+        - /url: "#__pm_main"
+      - navigation "Main" [ref=e6]:
+        - generic [ref=e7]:
+          - link "Polymarket Logo" [ref=e9] [cursor=pointer]:
+            - /url: /
+            - img "Polymarket" [ref=e10]
+          - button "Sign Up" [ref=e17] [cursor=pointer]:
+            - generic [ref=e18]: Sign Up
+        - generic [ref=e21]:
+          - link "Trending" [ref=e22] [cursor=pointer]:
+            - /url: /
+            - img [ref=e23]
+            - generic [ref=e26]: Trending
+          - link "Breaking" [ref=e27] [cursor=pointer]:
+            - /url: /breaking
+          - link "New" [ref=e28] [cursor=pointer]:
+            - /url: /new
+          - link "Politics" [ref=e29] [cursor=pointer]:
+            - /url: /politics
+            - generic [ref=e30]: Politics
+          - link "Sports" [ref=e31] [cursor=pointer]:
+            - /url: /sports/live
+            - generic [ref=e32]: Sports
+          - link "Crypto" [ref=e33] [cursor=pointer]:
+            - /url: /crypto
+            - generic [ref=e34]: Crypto
+          - link "Esports" [ref=e35] [cursor=pointer]:
+            - /url: /esports
+            - generic [ref=e36]: Esports
+          - link "Iran" [ref=e37] [cursor=pointer]:
+            - /url: /iran
+            - generic [ref=e38]: Iran
+          - link "Finance" [ref=e39] [cursor=pointer]:
+            - /url: /finance
+            - generic [ref=e40]: Finance
+          - link "Geopolitics" [ref=e41] [cursor=pointer]:
+            - /url: /geopolitics
+            - generic [ref=e42]: Geopolitics
+          - link "Tech" [ref=e43] [cursor=pointer]:
+            - /url: /tech
+            - generic [ref=e44]: Tech
+          - link "Culture" [ref=e45] [cursor=pointer]:
+            - /url: /pop-culture
+            - generic [ref=e46]: Culture
+          - link "Economy" [ref=e47] [cursor=pointer]:
+            - /url: /economy
+            - generic [ref=e48]: Economy
+          - link "Weather" [ref=e49] [cursor=pointer]:
+            - /url: /weather
+            - generic [ref=e50]: Weather
+          - link "Mentions" [ref=e51] [cursor=pointer]:
+            - /url: /mentions
+            - generic [ref=e52]: Mentions
+          - link "Elections" [ref=e53] [cursor=pointer]:
+            - /url: /elections
+            - generic [ref=e54]: Elections
+      - generic [ref=e55]:
+        - main [ref=e58]:
+          - generic [ref=e59]:
+            - heading "Polymarket | The World's Largest Prediction Market™" [level=1] [ref=e60]
+            - generic [ref=e62]:
+              - generic [ref=e63]:
+                - generic [ref=e64]:
+                  - generic [ref=e67]:
+                    - textbox "Search" [ref=e68]
+                    - generic:
+                      - img
+                  - generic [ref=e69]:
+                    - button "Toggle filters" [ref=e70] [cursor=pointer]:
+                      - img "sliders" [ref=e72]
+                    - button "Toggle watchlist" [ref=e76] [cursor=pointer]
+                - navigation "Market tabs" [ref=e82]:
+                  - button "All" [ref=e83] [cursor=pointer]:
+                    - generic [ref=e84]: All
+                  - button "Trump" [ref=e85] [cursor=pointer]:
+                    - generic [ref=e86]: Trump
+                  - button "Iran" [ref=e87] [cursor=pointer]:
+                    - generic [ref=e88]: Iran
+                  - button "Peru Election" [ref=e89] [cursor=pointer]:
+                    - generic [ref=e90]: Peru Election
+                  - button "2026 NBA Playoffs" [ref=e91] [cursor=pointer]:
+                    - generic [ref=e92]: 2026 NBA Playoffs
+                  - button "SpaceX" [ref=e93] [cursor=pointer]:
+                    - generic [ref=e94]: SpaceX
+                  - button "Anthropic IPO" [ref=e95] [cursor=pointer]:
+                    - generic [ref=e96]: Anthropic IPO
+                  - button "June 9 Primaries" [ref=e97] [cursor=pointer]:
+                    - generic [ref=e98]: June 9 Primaries
+                  - button "Colombia Election" [ref=e99] [cursor=pointer]:
+                    - generic [ref=e100]: Colombia Election
+                  - button "LA Mayor" [ref=e101] [cursor=pointer]:
+                    - generic [ref=e102]: LA Mayor
+                  - button "California Governor" [ref=e103] [cursor=pointer]:
+                    - generic [ref=e104]: California Governor
+                  - button "Italian Mayoral" [ref=e105] [cursor=pointer]:
+                    - generic [ref=e106]: Italian Mayoral
+                  - button "Lebanon" [ref=e107] [cursor=pointer]:
+                    - generic [ref=e108]: Lebanon
+                  - button "FIFA World Cup" [ref=e109] [cursor=pointer]:
+                    - generic [ref=e110]: FIFA World Cup
+                  - button "Cuba" [ref=e111] [cursor=pointer]:
+                    - generic [ref=e112]: Cuba
+                  - button "Privates" [ref=e113] [cursor=pointer]:
+                    - generic [ref=e114]: Privates
+                  - button "2026 NHL Playoffs" [ref=e115] [cursor=pointer]:
+                    - generic [ref=e116]: 2026 NHL Playoffs
+                  - button "Strait of Hormuz" [ref=e117] [cursor=pointer]:
+                    - generic [ref=e118]: Strait of Hormuz
+                  - button "OpenAI IPO" [ref=e119] [cursor=pointer]:
+                    - generic [ref=e120]: OpenAI IPO
+                  - button "Hantavirus" [ref=e121] [cursor=pointer]:
+                    - generic [ref=e122]: Hantavirus
+                  - button "Turkey" [ref=e123] [cursor=pointer]:
+                    - generic [ref=e124]: Turkey
+                  - button "IPOs" [ref=e125] [cursor=pointer]:
+                    - generic [ref=e126]: IPOs
+                  - button "GTA VI" [ref=e127] [cursor=pointer]:
+                    - generic [ref=e128]: GTA VI
+                  - button "Daily Temperature" [ref=e129] [cursor=pointer]:
+                    - generic [ref=e130]: Daily Temperature
+                  - button "Tweet Markets" [ref=e131] [cursor=pointer]:
+                    - generic [ref=e132]: Tweet Markets
+                  - button "Oil" [ref=e133] [cursor=pointer]:
+                    - generic [ref=e134]: Oil
+                  - button "Earnings" [ref=e135] [cursor=pointer]:
+                    - generic [ref=e136]: Earnings
+                  - button "Starmer" [ref=e137] [cursor=pointer]:
+                    - generic [ref=e138]: Starmer
+                  - button "Fed" [ref=e139] [cursor=pointer]:
+                    - generic [ref=e140]: Fed
+                  - button "Global Elections" [ref=e141] [cursor=pointer]:
+                    - generic [ref=e142]: Global Elections
+                  - button "Midterms" [ref=e143] [cursor=pointer]:
+                    - generic [ref=e144]: Midterms
+                  - button "AI" [ref=e145] [cursor=pointer]:
+                    - generic [ref=e146]: AI
+                  - button "Ukraine" [ref=e147] [cursor=pointer]:
+                    - generic [ref=e148]: Ukraine
+                  - button "Movies" [ref=e149] [cursor=pointer]:
+                    - generic [ref=e150]: Movies
+                  - button "Parlays" [ref=e151] [cursor=pointer]:
+                    - generic [ref=e152]: Parlays
+                  - button "Crypto Prices" [ref=e153] [cursor=pointer]:
+                    - generic [ref=e154]: Crypto Prices
+                  - button "Commodities" [ref=e155] [cursor=pointer]:
+                    - generic [ref=e156]: Commodities
+              - generic [ref=e158]:
+                - generic [ref=e159]:
+                  - generic [ref=e162]:
+                    - generic [ref=e163]:
+                      - img "US x Iran permanent peace deal by...? card icon" [ref=e165]
+                      - link "US x Iran permanent peace deal by...?" [ref=e168] [cursor=pointer]:
+                        - /url: /event/us-x-iran-permanent-peace-deal-by
+                        - heading "US x Iran permanent peace deal by...?" [level=3] [ref=e170]
+                    - generic [ref=e171]:
+                      - generic [ref=e173]:
+                        - generic [ref=e175]:
+                          - link "December 31" [ref=e178] [cursor=pointer]:
+                            - /url: /event/us-x-iran-permanent-peace-deal-by/us-x-iran-permanent-peace-deal-by-december-31-2026-961-587-341-574-555-817
+                            - paragraph [ref=e179]: December 31
+                          - generic [ref=e181]:
+                            - paragraph [ref=e182]: 68%
+                            - link "Yes 68%" [ref=e183] [cursor=pointer]:
+                              - /url: /event/us-x-iran-permanent-peace-deal-by?marketSlug=us-x-iran-permanent-peace-deal-by-december-31-2026-961-587-341-574-555-817&outcomeIndex=0
+                              - generic [ref=e184]: "Yes"
+                              - generic [ref=e185]: 68%
+                            - link "No 32%" [ref=e186] [cursor=pointer]:
+                              - /url: /event/us-x-iran-permanent-peace-deal-by?marketSlug=us-x-iran-permanent-peace-deal-by-december-31-2026-961-587-341-574-555-817&outcomeIndex=1
+                              - generic [ref=e187]: "No"
+                              - generic [ref=e188]: 32%
+                        - generic [ref=e190]:
+                          - link "October 31" [ref=e193] [cursor=pointer]:
+                            - /url: /event/us-x-iran-permanent-peace-deal-by/us-x-iran-permanent-peace-deal-by-october-31-2026
+                            - paragraph [ref=e194]: October 31
+                          - generic [ref=e196]:
+                            - paragraph [ref=e197]: 56%
+                            - link "Yes 56%" [ref=e198] [cursor=pointer]:
+                              - /url: /event/us-x-iran-permanent-peace-deal-by?marketSlug=us-x-iran-permanent-peace-deal-by-october-31-2026&outcomeIndex=0
+                              - generic [ref=e199]: "Yes"
+                              - generic [ref=e200]: 56%
+                            - link "No 44%" [ref=e201] [cursor=pointer]:
+                              - /url: /event/us-x-iran-permanent-peace-deal-by?marketSlug=us-x-iran-permanent-peace-deal-by-october-31-2026&outcomeIndex=1
+                              - generic [ref=e202]: "No"
+                              - generic [ref=e203]: 44%
+                      - generic [ref=e205]:
+                        - paragraph [ref=e207]:
+                          - generic [ref=e208]: $264M
+                          - text: Vol.
+                        - generic [ref=e210]:
+                          - button "Rewards" [ref=e211] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e212] [cursor=pointer]
+                  - generic [ref=e216]:
+                    - generic [ref=e217]:
+                      - img "BTC Up or Down 5m card icon" [ref=e219]
+                      - generic [ref=e220]:
+                        - link "BTC Up or Down 5m" [ref=e222] [cursor=pointer]:
+                          - /url: /event/btc-updown-5m-1780852800
+                          - heading "BTC Up or Down 5m" [level=3] [ref=e224]
+                        - generic [ref=e227]:
+                          - img [ref=e229]
+                          - generic [ref=e232]:
+                            - paragraph [ref=e233]: 51%
+                            - paragraph [ref=e234]: Up
+                    - generic [ref=e235]:
+                      - generic [ref=e236]:
+                        - link "Up" [ref=e237] [cursor=pointer]:
+                          - /url: /event/btc-updown-5m-1780852800?outcomeIndex=0
+                          - paragraph [ref=e238]: Up
+                        - link "Down" [ref=e239] [cursor=pointer]:
+                          - /url: /event/btc-updown-5m-1780852800?outcomeIndex=1
+                          - paragraph [ref=e240]: Down
+                      - generic [ref=e242]:
+                        - generic [ref=e243]:
+                          - paragraph [ref=e248]: Live
+                          - generic [ref=e249]: ·
+                          - link "Bitcoin" [ref=e250] [cursor=pointer]:
+                            - /url: /crypto/bitcoin
+                        - generic [ref=e252]:
+                          - button "Rewards" [ref=e253] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e254] [cursor=pointer]
+                  - link "World Cup" [ref=e257] [cursor=pointer]:
+                    - /url: /sports/world-cup/map
+                    - generic [ref=e258]:
+                      - generic [ref=e261]:
+                        - generic [ref=e263]: 16%
+                        - generic [ref=e265]: 1%
+                        - generic [ref=e267]: 16%
+                        - generic [ref=e269]: 1%
+                        - generic [ref=e271]: 11%
+                        - generic [ref=e273]: 1%
+                        - generic [ref=e275]: 10%
+                        - generic [ref=e277]: 1%
+                        - generic [ref=e279]: 9%
+                        - generic [ref=e281]: 1%
+                        - generic [ref=e283]: 8%
+                        - generic [ref=e285]: 1%
+                        - generic [ref=e287]: 6%
+                        - generic [ref=e289]: 1%
+                        - generic [ref=e291]: 4%
+                        - generic [ref=e293]: 2%
+                        - generic [ref=e295]: 3%
+                        - generic [ref=e297]: 2%
+                        - generic [ref=e299]: 2%
+                        - generic [ref=e301]: 2%
+                      - paragraph [ref=e303]:
+                        - text: World Cup
+                        - text: Odds & Predictions
+                  - generic [ref=e306]:
+                    - generic [ref=e307]:
+                      - img "World Cup Winner card icon" [ref=e309]
+                      - link "World Cup Winner" [ref=e312] [cursor=pointer]:
+                        - /url: /event/world-cup-winner
+                        - heading "World Cup Winner" [level=3] [ref=e314]
+                    - generic [ref=e315]:
+                      - generic [ref=e317]:
+                        - generic [ref=e319]:
+                          - link "Spain" [ref=e322] [cursor=pointer]:
+                            - /url: /event/world-cup-winner/will-spain-win-the-2026-fifa-world-cup-963
+                            - paragraph [ref=e323]: Spain
+                          - generic [ref=e325]:
+                            - paragraph [ref=e326]: 16%
+                            - link "Yes 16%" [ref=e327] [cursor=pointer]:
+                              - /url: /event/world-cup-winner?marketSlug=will-spain-win-the-2026-fifa-world-cup-963&outcomeIndex=0
+                              - generic [ref=e328]: "Yes"
+                              - generic [ref=e329]: 16%
+                            - link "No 84%" [ref=e330] [cursor=pointer]:
+                              - /url: /event/world-cup-winner?marketSlug=will-spain-win-the-2026-fifa-world-cup-963&outcomeIndex=1
+                              - generic [ref=e331]: "No"
+                              - generic [ref=e332]: 84%
+                        - generic [ref=e334]:
+                          - link "France" [ref=e337] [cursor=pointer]:
+                            - /url: /event/world-cup-winner/will-france-win-the-2026-fifa-world-cup-924
+                            - paragraph [ref=e338]: France
+                          - generic [ref=e340]:
+                            - paragraph [ref=e341]: 16%
+                            - link "Yes 16%" [ref=e342] [cursor=pointer]:
+                              - /url: /event/world-cup-winner?marketSlug=will-france-win-the-2026-fifa-world-cup-924&outcomeIndex=0
+                              - generic [ref=e343]: "Yes"
+                              - generic [ref=e344]: 16%
+                            - link "No 84%" [ref=e345] [cursor=pointer]:
+                              - /url: /event/world-cup-winner?marketSlug=will-france-win-the-2026-fifa-world-cup-924&outcomeIndex=1
+                              - generic [ref=e346]: "No"
+                              - generic [ref=e347]: 84%
+                      - generic [ref=e349]:
+                        - paragraph [ref=e351]:
+                          - generic [ref=e352]: $2B
+                          - text: Vol.
+                        - generic [ref=e354]:
+                          - button "Earn 3.25% holding rewards" [ref=e355] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e356] [cursor=pointer]
+                  - generic [ref=e360]:
+                    - link "1 6 4 7 0 F. Cobolli 23% 6 4 6 6 1 A. Zverev 78%" [ref=e361] [cursor=pointer]:
+                      - /url: /event/atp-cobolli-zverev-2026-06-07
+                      - generic [ref=e362]:
+                        - generic [ref=e363]:
+                          - generic [ref=e365]:
+                            - generic [ref=e366]: "1"
+                            - generic [ref=e367]: "6"
+                            - generic [ref=e368]: "4"
+                            - generic [ref=e369]: "7"
+                            - generic [ref=e370]: "0"
+                          - paragraph [ref=e372]: F. Cobolli
+                        - paragraph [ref=e373]: 23%
+                      - generic [ref=e374]:
+                        - generic [ref=e375]:
+                          - generic [ref=e377]:
+                            - generic [ref=e378]: "6"
+                            - generic [ref=e379]: "4"
+                            - generic [ref=e380]: "6"
+                            - generic [ref=e381]: "6"
+                            - generic [ref=e382]: "1"
+                          - paragraph [ref=e384]: A. Zverev
+                        - paragraph [ref=e385]: 78%
+                    - generic [ref=e386]:
+                      - generic [ref=e387]:
+                        - link "F. Cobolli" [ref=e388] [cursor=pointer]:
+                          - /url: /event/atp-cobolli-zverev-2026-06-07?outcomeIndex=0
+                          - paragraph [ref=e390]: F. Cobolli
+                        - link "A. Zverev" [ref=e392] [cursor=pointer]:
+                          - /url: /event/atp-cobolli-zverev-2026-06-07?outcomeIndex=1
+                          - paragraph [ref=e394]: A. Zverev
+                      - generic [ref=e397]:
+                        - generic [ref=e398]:
+                          - generic [ref=e399]:
+                            - paragraph [ref=e403]: S5
+                            - paragraph [ref=e404]:
+                              - generic [ref=e405]: $16M
+                              - text: Vol.
+                          - generic [ref=e406]: ·
+                          - link "ATP" [ref=e407] [cursor=pointer]:
+                            - /url: /sports/atp/games
+                        - generic [ref=e409]:
+                          - button "Rewards" [ref=e410] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e411] [cursor=pointer]
+                  - generic [ref=e415]:
+                    - link "2 Team Yandex 93% 0 LGD Gaming 8%" [ref=e416] [cursor=pointer]:
+                      - /url: /event/dota2-ty-lgd-2026-06-07
+                      - generic [ref=e417]:
+                        - generic [ref=e418]:
+                          - generic [ref=e420]: "2"
+                          - paragraph [ref=e422]: Team Yandex
+                        - paragraph [ref=e423]: 93%
+                      - generic [ref=e424]:
+                        - generic [ref=e425]:
+                          - generic [ref=e427]: "0"
+                          - paragraph [ref=e429]: LGD Gaming
+                        - paragraph [ref=e430]: 8%
+                    - generic [ref=e431]:
+                      - generic [ref=e432]:
+                        - link "Team Yandex" [ref=e433] [cursor=pointer]:
+                          - /url: /event/dota2-ty-lgd-2026-06-07?outcomeIndex=0
+                          - paragraph [ref=e435]: Team Yandex
+                        - link "LGD Gaming" [ref=e437] [cursor=pointer]:
+                          - /url: /event/dota2-ty-lgd-2026-06-07?outcomeIndex=1
+                          - paragraph [ref=e439]: LGD Gaming
+                      - generic [ref=e442]:
+                        - generic [ref=e443]:
+                          - generic [ref=e444]:
+                            - paragraph [ref=e448]: Game 3
+                            - paragraph [ref=e449]:
+                              - generic [ref=e450]: $3M
+                              - text: Vol.
+                          - generic [ref=e451]: ·
+                          - link "Dota 2" [ref=e452] [cursor=pointer]:
+                            - /url: /esports/dota-2/games
+                        - generic [ref=e454]:
+                          - button "Rewards" [ref=e455] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e456] [cursor=pointer]
+                  - generic [ref=e460]:
+                    - link "1 G2 Esports 72% 1 Karmine Corp 28%" [ref=e461] [cursor=pointer]:
+                      - /url: /event/lol-g2-kc-2026-06-07
+                      - generic [ref=e462]:
+                        - generic [ref=e463]:
+                          - generic [ref=e465]: "1"
+                          - paragraph [ref=e467]: G2 Esports
+                        - paragraph [ref=e468]: 72%
+                      - generic [ref=e469]:
+                        - generic [ref=e470]:
+                          - generic [ref=e472]: "1"
+                          - paragraph [ref=e474]: Karmine Corp
+                        - paragraph [ref=e475]: 28%
+                    - generic [ref=e476]:
+                      - generic [ref=e477]:
+                        - link "G2 Esports" [ref=e478] [cursor=pointer]:
+                          - /url: /event/lol-g2-kc-2026-06-07?outcomeIndex=0
+                          - paragraph [ref=e480]: G2 Esports
+                        - link "Karmine" [ref=e482] [cursor=pointer]:
+                          - /url: /event/lol-g2-kc-2026-06-07?outcomeIndex=1
+                          - paragraph [ref=e484]: Karmine
+                      - generic [ref=e487]:
+                        - generic [ref=e488]:
+                          - generic [ref=e489]:
+                            - paragraph [ref=e493]: Game 3
+                            - paragraph [ref=e494]:
+                              - generic [ref=e495]: $2M
+                              - text: Vol.
+                          - generic [ref=e496]: ·
+                          - link "LoL" [ref=e497] [cursor=pointer]:
+                            - /url: /esports/league-of-legends/games
+                        - generic [ref=e499]:
+                          - button "Rewards" [ref=e500] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e501] [cursor=pointer]
+                  - generic [ref=e505]:
+                    - link "1 B8 62% 1 GamerLegion 39%" [ref=e506] [cursor=pointer]:
+                      - /url: /event/cs2-b8-gl1-2026-06-07
+                      - generic [ref=e507]:
+                        - generic [ref=e508]:
+                          - generic [ref=e510]: "1"
+                          - paragraph [ref=e512]: B8
+                        - paragraph [ref=e513]: 62%
+                      - generic [ref=e514]:
+                        - generic [ref=e515]:
+                          - generic [ref=e517]: "1"
+                          - paragraph [ref=e519]: GamerLegion
+                        - paragraph [ref=e520]: 39%
+                    - generic [ref=e521]:
+                      - generic [ref=e522]:
+                        - link "B8" [ref=e523] [cursor=pointer]:
+                          - /url: /event/cs2-b8-gl1-2026-06-07?outcomeIndex=0
+                          - paragraph [ref=e525]: B8
+                        - link "GamerLegion" [ref=e527] [cursor=pointer]:
+                          - /url: /event/cs2-b8-gl1-2026-06-07?outcomeIndex=1
+                          - paragraph [ref=e529]: GamerLegion
+                      - generic [ref=e532]:
+                        - generic [ref=e533]:
+                          - generic [ref=e534]:
+                            - paragraph [ref=e538]: Game 3
+                            - paragraph [ref=e539]:
+                              - generic [ref=e540]: $1M
+                              - text: Vol.
+                          - generic [ref=e541]: ·
+                          - link "CS2" [ref=e542] [cursor=pointer]:
+                            - /url: /esports/cs2/games
+                        - generic [ref=e544]:
+                          - button "Rewards" [ref=e545] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e546] [cursor=pointer]
+                  - generic [ref=e550]:
+                    - link "0 Spirit 91% 0 9z 10%" [ref=e551] [cursor=pointer]:
+                      - /url: /event/cs2-ts7-9z-2026-06-07
+                      - generic [ref=e552]:
+                        - generic [ref=e553]:
+                          - generic [ref=e555]: "0"
+                          - paragraph [ref=e557]: Spirit
+                        - paragraph [ref=e558]: 91%
+                      - generic [ref=e559]:
+                        - generic [ref=e560]:
+                          - generic [ref=e562]: "0"
+                          - paragraph [ref=e564]: 9z
+                        - paragraph [ref=e565]: 10%
+                    - generic [ref=e566]:
+                      - generic [ref=e567]:
+                        - link "Spirit" [ref=e568] [cursor=pointer]:
+                          - /url: /event/cs2-ts7-9z-2026-06-07?outcomeIndex=0
+                          - paragraph [ref=e570]: Spirit
+                        - link "9z" [ref=e572] [cursor=pointer]:
+                          - /url: /event/cs2-ts7-9z-2026-06-07?outcomeIndex=1
+                          - paragraph [ref=e574]: 9z
+                      - generic [ref=e577]:
+                        - generic [ref=e578]:
+                          - generic [ref=e579]:
+                            - paragraph [ref=e583]: Game 1
+                            - paragraph [ref=e584]:
+                              - generic [ref=e585]: $696K
+                              - text: Vol.
+                          - generic [ref=e586]: ·
+                          - link "CS2" [ref=e587] [cursor=pointer]:
+                            - /url: /esports/cs2/games
+                        - generic [ref=e589]:
+                          - button "Rewards" [ref=e590] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e591] [cursor=pointer]
+                  - generic [ref=e595]:
+                    - link "0 Leviatán Esports 33% 1 Global Esports 68%" [ref=e596] [cursor=pointer]:
+                      - /url: /event/val-lev1-ge1-2026-06-07
+                      - generic [ref=e597]:
+                        - generic [ref=e598]:
+                          - generic [ref=e600]: "0"
+                          - paragraph [ref=e602]: Leviatán Esports
+                        - paragraph [ref=e603]: 33%
+                      - generic [ref=e604]:
+                        - generic [ref=e605]:
+                          - generic [ref=e607]: "1"
+                          - paragraph [ref=e609]: Global Esports
+                        - paragraph [ref=e610]: 68%
+                    - generic [ref=e611]:
+                      - generic [ref=e612]:
+                        - link "Leviatán" [ref=e613] [cursor=pointer]:
+                          - /url: /event/val-lev1-ge1-2026-06-07?outcomeIndex=0
+                          - paragraph [ref=e615]: Leviatán
+                        - link "Global" [ref=e617] [cursor=pointer]:
+                          - /url: /event/val-lev1-ge1-2026-06-07?outcomeIndex=1
+                          - paragraph [ref=e619]: Global
+                      - generic [ref=e622]:
+                        - generic [ref=e623]:
+                          - generic [ref=e624]:
+                            - paragraph [ref=e628]: Game 2
+                            - paragraph [ref=e629]:
+                              - generic [ref=e630]: $332K
+                              - text: Vol.
+                          - generic [ref=e631]: ·
+                          - link "Valorant" [ref=e632] [cursor=pointer]:
+                            - /url: /esports/valorant/games
+                        - generic [ref=e634]:
+                          - button "Rewards" [ref=e635] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e636] [cursor=pointer]
+                  - generic [ref=e640]:
+                    - generic [ref=e641]:
+                      - img "2026 Men's French Open Winner card icon" [ref=e643]
+                      - link "2026 Men's French Open Winner" [ref=e646] [cursor=pointer]:
+                        - /url: /event/2026-mens-french-open-winner
+                        - heading "2026 Men's French Open Winner" [level=3] [ref=e648]
+                    - generic [ref=e649]:
+                      - generic [ref=e651]:
+                        - generic [ref=e653]:
+                          - link "Alexander Zverev" [ref=e656] [cursor=pointer]:
+                            - /url: /event/2026-mens-french-open-winner/will-alexander-zverev-win-the-2026-mens-french-open
+                            - paragraph [ref=e657]: Alexander Zverev
+                          - generic [ref=e659]:
+                            - paragraph [ref=e660]: 78%
+                            - link "Yes 78%" [ref=e661] [cursor=pointer]:
+                              - /url: /event/2026-mens-french-open-winner?marketSlug=will-alexander-zverev-win-the-2026-mens-french-open&outcomeIndex=0
+                              - generic [ref=e662]: "Yes"
+                              - generic [ref=e663]: 78%
+                            - link "No 22%" [ref=e664] [cursor=pointer]:
+                              - /url: /event/2026-mens-french-open-winner?marketSlug=will-alexander-zverev-win-the-2026-mens-french-open&outcomeIndex=1
+                              - generic [ref=e665]: "No"
+                              - generic [ref=e666]: 22%
+                        - generic [ref=e668]:
+                          - link "Flavio Cobolli" [ref=e671] [cursor=pointer]:
+                            - /url: /event/2026-mens-french-open-winner/will-flavio-cobolli-win-the-2026-mens-french-open
+                            - paragraph [ref=e672]: Flavio Cobolli
+                          - generic [ref=e674]:
+                            - paragraph [ref=e675]: 23%
+                            - link "Yes 23%" [ref=e676] [cursor=pointer]:
+                              - /url: /event/2026-mens-french-open-winner?marketSlug=will-flavio-cobolli-win-the-2026-mens-french-open&outcomeIndex=0
+                              - generic [ref=e677]: "Yes"
+                              - generic [ref=e678]: 23%
+                            - link "No 77%" [ref=e679] [cursor=pointer]:
+                              - /url: /event/2026-mens-french-open-winner?marketSlug=will-flavio-cobolli-win-the-2026-mens-french-open&outcomeIndex=1
+                              - generic [ref=e680]: "No"
+                              - generic [ref=e681]: 77%
+                      - generic [ref=e683]:
+                        - paragraph [ref=e685]:
+                          - generic [ref=e686]: $42M
+                          - text: Vol.
+                        - button "Add to favorites" [ref=e689] [cursor=pointer]
+                  - generic [ref=e693]:
+                    - generic [ref=e694]:
+                      - img "2026 NBA Champion card icon" [ref=e696]
+                      - link "2026 NBA Champion" [ref=e699] [cursor=pointer]:
+                        - /url: /event/2026-nba-champion
+                        - heading "2026 NBA Champion" [level=3] [ref=e701]
+                    - generic [ref=e702]:
+                      - generic [ref=e704]:
+                        - generic [ref=e706]:
+                          - link "New York Knicks" [ref=e709] [cursor=pointer]:
+                            - /url: /event/2026-nba-champion/will-the-new-york-knicks-win-the-2026-nba-finals
+                            - paragraph [ref=e710]: New York Knicks
+                          - generic [ref=e712]:
+                            - paragraph [ref=e713]: 78%
+                            - link "Yes 78%" [ref=e714] [cursor=pointer]:
+                              - /url: /event/2026-nba-champion?marketSlug=will-the-new-york-knicks-win-the-2026-nba-finals&outcomeIndex=0
+                              - generic [ref=e715]: "Yes"
+                              - generic [ref=e716]: 78%
+                            - link "No 22%" [ref=e717] [cursor=pointer]:
+                              - /url: /event/2026-nba-champion?marketSlug=will-the-new-york-knicks-win-the-2026-nba-finals&outcomeIndex=1
+                              - generic [ref=e718]: "No"
+                              - generic [ref=e719]: 22%
+                        - generic [ref=e721]:
+                          - link "San Antonio Spurs" [ref=e724] [cursor=pointer]:
+                            - /url: /event/2026-nba-champion/will-the-san-antonio-spurs-win-the-2026-nba-finals
+                            - paragraph [ref=e725]: San Antonio Spurs
+                          - generic [ref=e727]:
+                            - paragraph [ref=e728]: 22%
+                            - link "Yes 22%" [ref=e729] [cursor=pointer]:
+                              - /url: /event/2026-nba-champion?marketSlug=will-the-san-antonio-spurs-win-the-2026-nba-finals&outcomeIndex=0
+                              - generic [ref=e730]: "Yes"
+                              - generic [ref=e731]: 22%
+                            - link "No 78%" [ref=e732] [cursor=pointer]:
+                              - /url: /event/2026-nba-champion?marketSlug=will-the-san-antonio-spurs-win-the-2026-nba-finals&outcomeIndex=1
+                              - generic [ref=e733]: "No"
+                              - generic [ref=e734]: 78%
+                      - generic [ref=e736]:
+                        - paragraph [ref=e738]:
+                          - generic [ref=e739]: $415M
+                          - text: Vol.
+                        - generic [ref=e741]:
+                          - button "Rewards" [ref=e742] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e743] [cursor=pointer]
+                  - generic [ref=e747]:
+                    - generic [ref=e748]:
+                      - img "Peru Presidential Election Winner card icon" [ref=e750]
+                      - link "Peru Presidential Election Winner" [ref=e753] [cursor=pointer]:
+                        - /url: /event/peru-presidential-election-winner
+                        - heading "Peru Presidential Election Winner" [level=3] [ref=e755]
+                    - generic [ref=e756]:
+                      - generic [ref=e758]:
+                        - generic [ref=e760]:
+                          - link "Keiko Fujimori" [ref=e763] [cursor=pointer]:
+                            - /url: /event/peru-presidential-election-winner/will-keiko-fujimori-win-the-2026-peruvian-presidential-election
+                            - paragraph [ref=e764]: Keiko Fujimori
+                          - generic [ref=e766]:
+                            - paragraph [ref=e767]: 69%
+                            - link "Yes 69%" [ref=e768] [cursor=pointer]:
+                              - /url: /event/peru-presidential-election-winner?marketSlug=will-keiko-fujimori-win-the-2026-peruvian-presidential-election&outcomeIndex=0
+                              - generic [ref=e769]: "Yes"
+                              - generic [ref=e770]: 69%
+                            - link "No 31%" [ref=e771] [cursor=pointer]:
+                              - /url: /event/peru-presidential-election-winner?marketSlug=will-keiko-fujimori-win-the-2026-peruvian-presidential-election&outcomeIndex=1
+                              - generic [ref=e772]: "No"
+                              - generic [ref=e773]: 31%
+                        - generic [ref=e775]:
+                          - link "Roberto Sánchez Palomino" [ref=e778] [cursor=pointer]:
+                            - /url: /event/peru-presidential-election-winner/will-roberto-snchez-palomino-win-the-2026-peruvian-presidential-election
+                            - paragraph [ref=e779]: Roberto Sánchez Palomino
+                          - generic [ref=e781]:
+                            - paragraph [ref=e782]: 31%
+                            - link "Yes 31%" [ref=e783] [cursor=pointer]:
+                              - /url: /event/peru-presidential-election-winner?marketSlug=will-roberto-snchez-palomino-win-the-2026-peruvian-presidential-election&outcomeIndex=0
+                              - generic [ref=e784]: "Yes"
+                              - generic [ref=e785]: 31%
+                            - link "No 69%" [ref=e786] [cursor=pointer]:
+                              - /url: /event/peru-presidential-election-winner?marketSlug=will-roberto-snchez-palomino-win-the-2026-peruvian-presidential-election&outcomeIndex=1
+                              - generic [ref=e787]: "No"
+                              - generic [ref=e788]: 69%
+                      - generic [ref=e790]:
+                        - paragraph [ref=e792]:
+                          - generic [ref=e793]: $68M
+                          - text: Vol.
+                        - generic [ref=e795]:
+                          - button "Rewards" [ref=e796] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e797] [cursor=pointer]
+                  - generic [ref=e801]:
+                    - generic [ref=e802]:
+                      - img "Fed rate hike in 2026? card icon" [ref=e804]
+                      - generic [ref=e805]:
+                        - link "Fed rate hike in 2026?" [ref=e807] [cursor=pointer]:
+                          - /url: /event/fed-rate-hike-in-2026
+                          - heading "Fed rate hike in 2026?" [level=3] [ref=e809]
+                        - generic [ref=e812]:
+                          - img [ref=e814]
+                          - generic [ref=e817]:
+                            - paragraph [ref=e818]: 49%
+                            - paragraph [ref=e819]: chance
+                    - generic [ref=e820]:
+                      - generic [ref=e821]:
+                        - link "Yes" [ref=e822] [cursor=pointer]:
+                          - /url: /event/fed-rate-hike-in-2026?outcomeIndex=0
+                          - paragraph [ref=e823]: "Yes"
+                        - link "No" [ref=e824] [cursor=pointer]:
+                          - /url: /event/fed-rate-hike-in-2026?outcomeIndex=1
+                          - paragraph [ref=e825]: "No"
+                      - generic [ref=e827]:
+                        - generic [ref=e828]:
+                          - paragraph [ref=e829]:
+                            - generic [ref=e830]: $1M
+                            - text: Vol.
+                          - img [ref=e832]
+                        - generic [ref=e838]:
+                          - button "Rewards" [ref=e839] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e840] [cursor=pointer]
+                  - generic [ref=e844]:
+                    - generic [ref=e845]:
+                      - img "SpaceX IPO closing market cap above ___ ? card icon" [ref=e847]
+                      - link "SpaceX IPO closing market cap above ___ ?" [ref=e850] [cursor=pointer]:
+                        - /url: /event/spacex-ipo-closing-market-cap-above
+                        - heading "SpaceX IPO closing market cap above ___ ?" [level=3] [ref=e852]
+                    - generic [ref=e853]:
+                      - generic [ref=e855]:
+                        - generic [ref=e857]:
+                          - link ">$1T" [ref=e860] [cursor=pointer]:
+                            - /url: /event/spacex-ipo-closing-market-cap-above/spacex-ipo-closing-market-cap-above-1t-274-469
+                            - paragraph [ref=e861]: ">$1T"
+                          - generic [ref=e863]:
+                            - paragraph [ref=e864]: 99%
+                            - link "Yes 99%" [ref=e865] [cursor=pointer]:
+                              - /url: /event/spacex-ipo-closing-market-cap-above?marketSlug=spacex-ipo-closing-market-cap-above-1t-274-469&outcomeIndex=0
+                              - generic [ref=e866]: "Yes"
+                              - generic [ref=e867]: 99%
+                            - link "No 1%" [ref=e868] [cursor=pointer]:
+                              - /url: /event/spacex-ipo-closing-market-cap-above?marketSlug=spacex-ipo-closing-market-cap-above-1t-274-469&outcomeIndex=1
+                              - generic [ref=e869]: "No"
+                              - generic [ref=e870]: 1%
+                        - generic [ref=e872]:
+                          - link ">$1.2T" [ref=e875] [cursor=pointer]:
+                            - /url: /event/spacex-ipo-closing-market-cap-above/spacex-ipo-closing-market-cap-above-1pt2t-797-138
+                            - paragraph [ref=e876]: ">$1.2T"
+                          - generic [ref=e878]:
+                            - paragraph [ref=e879]: 98%
+                            - link "Yes 98%" [ref=e880] [cursor=pointer]:
+                              - /url: /event/spacex-ipo-closing-market-cap-above?marketSlug=spacex-ipo-closing-market-cap-above-1pt2t-797-138&outcomeIndex=0
+                              - generic [ref=e881]: "Yes"
+                              - generic [ref=e882]: 98%
+                            - link "No 2%" [ref=e883] [cursor=pointer]:
+                              - /url: /event/spacex-ipo-closing-market-cap-above?marketSlug=spacex-ipo-closing-market-cap-above-1pt2t-797-138&outcomeIndex=1
+                              - generic [ref=e884]: "No"
+                              - generic [ref=e885]: 2%
+                      - generic [ref=e887]:
+                        - paragraph [ref=e889]:
+                          - generic [ref=e890]: $7M
+                          - text: Vol.
+                        - generic [ref=e892]:
+                          - button "Rewards" [ref=e893] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e894] [cursor=pointer]
+                  - generic [ref=e898]:
+                    - generic [ref=e899]:
+                      - img "California Governor Election Winner card icon" [ref=e901]
+                      - link "California Governor Election Winner" [ref=e904] [cursor=pointer]:
+                        - /url: /event/california-governor-election-2026
+                        - heading "California Governor Election Winner" [level=3] [ref=e906]
+                    - generic [ref=e907]:
+                      - generic [ref=e909]:
+                        - generic [ref=e911]:
+                          - link "Xavier Becerra" [ref=e914] [cursor=pointer]:
+                            - /url: /event/california-governor-election-2026/will-xavier-becerra-win-the-california-governor-election-in-2026
+                            - paragraph [ref=e915]: Xavier Becerra
+                          - generic [ref=e917]:
+                            - paragraph [ref=e918]: 84%
+                            - link "Yes 84%" [ref=e919] [cursor=pointer]:
+                              - /url: /event/california-governor-election-2026?marketSlug=will-xavier-becerra-win-the-california-governor-election-in-2026&outcomeIndex=0
+                              - generic [ref=e920]: "Yes"
+                              - generic [ref=e921]: 84%
+                            - link "No 16%" [ref=e922] [cursor=pointer]:
+                              - /url: /event/california-governor-election-2026?marketSlug=will-xavier-becerra-win-the-california-governor-election-in-2026&outcomeIndex=1
+                              - generic [ref=e923]: "No"
+                              - generic [ref=e924]: 16%
+                        - generic [ref=e926]:
+                          - link "Steve Hilton" [ref=e929] [cursor=pointer]:
+                            - /url: /event/california-governor-election-2026/will-steve-hilton-win-the-california-governor-election-in-2026
+                            - paragraph [ref=e930]: Steve Hilton
+                          - generic [ref=e932]:
+                            - paragraph [ref=e933]: 10%
+                            - link "Yes 10%" [ref=e934] [cursor=pointer]:
+                              - /url: /event/california-governor-election-2026?marketSlug=will-steve-hilton-win-the-california-governor-election-in-2026&outcomeIndex=0
+                              - generic [ref=e935]: "Yes"
+                              - generic [ref=e936]: 10%
+                            - link "No 90%" [ref=e937] [cursor=pointer]:
+                              - /url: /event/california-governor-election-2026?marketSlug=will-steve-hilton-win-the-california-governor-election-in-2026&outcomeIndex=1
+                              - generic [ref=e938]: "No"
+                              - generic [ref=e939]: 90%
+                      - generic [ref=e941]:
+                        - paragraph [ref=e943]:
+                          - generic [ref=e944]: $35M
+                          - text: Vol.
+                        - generic [ref=e946]:
+                          - button "Rewards" [ref=e947] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e948] [cursor=pointer]
+                  - generic [ref=e952]:
+                    - generic [ref=e953]:
+                      - 'img "Worst Cup: Fakers FC vs. Infamous FC card icon" [ref=e955]'
+                      - generic [ref=e956]:
+                        - 'link "Worst Cup: Fakers FC vs. Infamous FC" [ref=e958] [cursor=pointer]':
+                          - /url: /event/worst-cup-fakers-fc-vspt-infamous-fc-20260603233701031
+                          - 'heading "Worst Cup: Fakers FC vs. Infamous FC" [level=3] [ref=e960]'
+                        - generic [ref=e963]:
+                          - img [ref=e965]
+                          - generic [ref=e968]:
+                            - paragraph [ref=e969]: 51%
+                            - paragraph [ref=e970]: Fakers
+                    - generic [ref=e971]:
+                      - generic [ref=e972]:
+                        - link "Fakers" [ref=e973] [cursor=pointer]:
+                          - /url: /event/worst-cup-fakers-fc-vspt-infamous-fc-20260603233701031?outcomeIndex=0
+                          - paragraph [ref=e974]: Fakers
+                        - link "Infamous" [ref=e975] [cursor=pointer]:
+                          - /url: /event/worst-cup-fakers-fc-vspt-infamous-fc-20260603233701031?outcomeIndex=1
+                          - paragraph [ref=e976]: Infamous
+                      - generic [ref=e978]:
+                        - paragraph [ref=e980]:
+                          - generic [ref=e981]: $64K
+                          - text: Vol.
+                        - generic [ref=e983]:
+                          - button "Rewards" [ref=e984] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e985] [cursor=pointer]
+                  - generic [ref=e989]:
+                    - generic [ref=e990]:
+                      - img "Los Angeles Mayoral Election card icon" [ref=e992]
+                      - link "Los Angeles Mayoral Election" [ref=e995] [cursor=pointer]:
+                        - /url: /event/los-angeles-mayoral-election-117
+                        - heading "Los Angeles Mayoral Election" [level=3] [ref=e997]
+                    - generic [ref=e998]:
+                      - generic [ref=e1000]:
+                        - generic [ref=e1002]:
+                          - link "Karen Bass" [ref=e1005] [cursor=pointer]:
+                            - /url: /event/los-angeles-mayoral-election-117/will-karen-bass-win-the-2026-los-angeles-mayoral-election
+                            - paragraph [ref=e1006]: Karen Bass
+                          - generic [ref=e1008]:
+                            - paragraph [ref=e1009]: 60%
+                            - link "Yes 60%" [ref=e1010] [cursor=pointer]:
+                              - /url: /event/los-angeles-mayoral-election-117?marketSlug=will-karen-bass-win-the-2026-los-angeles-mayoral-election&outcomeIndex=0
+                              - generic [ref=e1011]: "Yes"
+                              - generic [ref=e1012]: 60%
+                            - link "No 40%" [ref=e1013] [cursor=pointer]:
+                              - /url: /event/los-angeles-mayoral-election-117?marketSlug=will-karen-bass-win-the-2026-los-angeles-mayoral-election&outcomeIndex=1
+                              - generic [ref=e1014]: "No"
+                              - generic [ref=e1015]: 40%
+                        - generic [ref=e1017]:
+                          - link "Nithya Raman" [ref=e1020] [cursor=pointer]:
+                            - /url: /event/los-angeles-mayoral-election-117/will-nithya-raman-win-the-2026-los-angeles-mayoral-election-876
+                            - paragraph [ref=e1021]: Nithya Raman
+                          - generic [ref=e1023]:
+                            - paragraph [ref=e1024]: 41%
+                            - link "Yes 41%" [ref=e1025] [cursor=pointer]:
+                              - /url: /event/los-angeles-mayoral-election-117?marketSlug=will-nithya-raman-win-the-2026-los-angeles-mayoral-election-876&outcomeIndex=0
+                              - generic [ref=e1026]: "Yes"
+                              - generic [ref=e1027]: 41%
+                            - link "No 59%" [ref=e1028] [cursor=pointer]:
+                              - /url: /event/los-angeles-mayoral-election-117?marketSlug=will-nithya-raman-win-the-2026-los-angeles-mayoral-election-876&outcomeIndex=1
+                              - generic [ref=e1029]: "No"
+                              - generic [ref=e1030]: 59%
+                      - generic [ref=e1032]:
+                        - paragraph [ref=e1034]:
+                          - generic [ref=e1035]: $9M
+                          - text: Vol.
+                        - generic [ref=e1037]:
+                          - button "Rewards" [ref=e1038] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1039] [cursor=pointer]
+                  - generic [ref=e1043]:
+                    - generic [ref=e1044]:
+                      - img "Strait of Hormuz traffic returns to normal by end of June? card icon" [ref=e1046]
+                      - generic [ref=e1047]:
+                        - link "Strait of Hormuz traffic returns to normal by end of June?" [ref=e1049] [cursor=pointer]:
+                          - /url: /event/strait-of-hormuz-traffic-returns-to-normal-by-end-of-june
+                          - heading "Strait of Hormuz traffic returns to normal by end of June?" [level=3] [ref=e1051]
+                        - generic [ref=e1054]:
+                          - img [ref=e1056]
+                          - generic [ref=e1059]:
+                            - paragraph [ref=e1060]: 13%
+                            - paragraph [ref=e1061]: chance
+                    - generic [ref=e1062]:
+                      - generic [ref=e1063]:
+                        - link "Yes" [ref=e1064] [cursor=pointer]:
+                          - /url: /event/strait-of-hormuz-traffic-returns-to-normal-by-end-of-june?outcomeIndex=0
+                          - paragraph [ref=e1065]: "Yes"
+                        - link "No" [ref=e1066] [cursor=pointer]:
+                          - /url: /event/strait-of-hormuz-traffic-returns-to-normal-by-end-of-june?outcomeIndex=1
+                          - paragraph [ref=e1067]: "No"
+                      - generic [ref=e1069]:
+                        - generic [ref=e1070]:
+                          - paragraph [ref=e1071]:
+                            - generic [ref=e1072]: $14M
+                            - text: Vol.
+                          - img [ref=e1074]
+                        - generic [ref=e1080]:
+                          - button "Rewards" [ref=e1081] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1082] [cursor=pointer]
+                  - generic [ref=e1086]:
+                    - generic [ref=e1087]:
+                      - img "US announces new Iran agreement/ceasefire extension by...? card icon" [ref=e1089]
+                      - link "US announces new Iran agreement/ceasefire extension by...?" [ref=e1092] [cursor=pointer]:
+                        - /url: /event/us-announces-new-iran-agreementceasefire-extension-by
+                        - heading "US announces new Iran agreement/ceasefire extension by...?" [level=3] [ref=e1094]
+                    - generic [ref=e1095]:
+                      - generic [ref=e1097]:
+                        - generic [ref=e1099]:
+                          - link "July 31" [ref=e1102] [cursor=pointer]:
+                            - /url: /event/us-announces-new-iran-agreementceasefire-extension-by/us-announces-new-iran-agreementceasefire-extension-by-july-31
+                            - paragraph [ref=e1103]: July 31
+                          - generic [ref=e1105]:
+                            - paragraph [ref=e1106]: 60%
+                            - link "Yes 60%" [ref=e1107] [cursor=pointer]:
+                              - /url: /event/us-announces-new-iran-agreementceasefire-extension-by?marketSlug=us-announces-new-iran-agreementceasefire-extension-by-july-31&outcomeIndex=0
+                              - generic [ref=e1108]: "Yes"
+                              - generic [ref=e1109]: 60%
+                            - link "No 40%" [ref=e1110] [cursor=pointer]:
+                              - /url: /event/us-announces-new-iran-agreementceasefire-extension-by?marketSlug=us-announces-new-iran-agreementceasefire-extension-by-july-31&outcomeIndex=1
+                              - generic [ref=e1111]: "No"
+                              - generic [ref=e1112]: 40%
+                        - generic [ref=e1114]:
+                          - link "June 30" [ref=e1117] [cursor=pointer]:
+                            - /url: /event/us-announces-new-iran-agreementceasefire-extension-by/us-announces-new-iran-agreementceasefire-extension-by-june-30-848-925-757-129-337
+                            - paragraph [ref=e1118]: June 30
+                          - generic [ref=e1120]:
+                            - paragraph [ref=e1121]: 35%
+                            - link "Yes 35%" [ref=e1122] [cursor=pointer]:
+                              - /url: /event/us-announces-new-iran-agreementceasefire-extension-by?marketSlug=us-announces-new-iran-agreementceasefire-extension-by-june-30-848-925-757-129-337&outcomeIndex=0
+                              - generic [ref=e1123]: "Yes"
+                              - generic [ref=e1124]: 35%
+                            - link "No 65%" [ref=e1125] [cursor=pointer]:
+                              - /url: /event/us-announces-new-iran-agreementceasefire-extension-by?marketSlug=us-announces-new-iran-agreementceasefire-extension-by-june-30-848-925-757-129-337&outcomeIndex=1
+                              - generic [ref=e1126]: "No"
+                              - generic [ref=e1127]: 65%
+                      - generic [ref=e1129]:
+                        - paragraph [ref=e1131]:
+                          - generic [ref=e1132]: $27M
+                          - text: Vol.
+                        - generic [ref=e1134]:
+                          - button "Rewards" [ref=e1135] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1136] [cursor=pointer]
+                  - generic [ref=e1140]:
+                    - generic [ref=e1141]:
+                      - img "Claude Mythos released by…? card icon" [ref=e1143]
+                      - link "Claude Mythos released by…?" [ref=e1146] [cursor=pointer]:
+                        - /url: /event/claude-mythos-released-by
+                        - heading "Claude Mythos released by…?" [level=3] [ref=e1148]
+                    - generic [ref=e1149]:
+                      - generic [ref=e1151]:
+                        - generic [ref=e1153]:
+                          - link "July 31" [ref=e1156] [cursor=pointer]:
+                            - /url: /event/claude-mythos-released-by/will-a-claude-mythos-model-be-released-by-july-31-2026
+                            - paragraph [ref=e1157]: July 31
+                          - generic [ref=e1159]:
+                            - paragraph [ref=e1160]: 87%
+                            - link "Yes 87%" [ref=e1161] [cursor=pointer]:
+                              - /url: /event/claude-mythos-released-by?marketSlug=will-a-claude-mythos-model-be-released-by-july-31-2026&outcomeIndex=0
+                              - generic [ref=e1162]: "Yes"
+                              - generic [ref=e1163]: 87%
+                            - link "No 13%" [ref=e1164] [cursor=pointer]:
+                              - /url: /event/claude-mythos-released-by?marketSlug=will-a-claude-mythos-model-be-released-by-july-31-2026&outcomeIndex=1
+                              - generic [ref=e1165]: "No"
+                              - generic [ref=e1166]: 13%
+                        - generic [ref=e1168]:
+                          - link "June 30" [ref=e1171] [cursor=pointer]:
+                            - /url: /event/claude-mythos-released-by/will-a-claude-mythos-model-be-released-by-june-30-2026-684-583
+                            - paragraph [ref=e1172]: June 30
+                          - generic [ref=e1174]:
+                            - paragraph [ref=e1175]: 70%
+                            - link "Yes 70%" [ref=e1176] [cursor=pointer]:
+                              - /url: /event/claude-mythos-released-by?marketSlug=will-a-claude-mythos-model-be-released-by-june-30-2026-684-583&outcomeIndex=0
+                              - generic [ref=e1177]: "Yes"
+                              - generic [ref=e1178]: 70%
+                            - link "No 30%" [ref=e1179] [cursor=pointer]:
+                              - /url: /event/claude-mythos-released-by?marketSlug=will-a-claude-mythos-model-be-released-by-june-30-2026-684-583&outcomeIndex=1
+                              - generic [ref=e1180]: "No"
+                              - generic [ref=e1181]: 30%
+                      - generic [ref=e1183]:
+                        - paragraph [ref=e1185]:
+                          - generic [ref=e1186]: $944K
+                          - text: Vol.
+                        - generic [ref=e1188]:
+                          - button "Rewards" [ref=e1189] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1190] [cursor=pointer]
+                  - generic [ref=e1194]:
+                    - generic [ref=e1195]:
+                      - img "Will the US confirm that aliens exist by...? card icon" [ref=e1197]
+                      - link "Will the US confirm that aliens exist by...?" [ref=e1200] [cursor=pointer]:
+                        - /url: /event/will-the-us-confirm-that-aliens-exist-before-2027
+                        - heading "Will the US confirm that aliens exist by...?" [level=3] [ref=e1202]
+                    - generic [ref=e1203]:
+                      - generic [ref=e1205]:
+                        - generic [ref=e1207]:
+                          - link "December 31" [ref=e1210] [cursor=pointer]:
+                            - /url: /event/will-the-us-confirm-that-aliens-exist-before-2027/will-the-us-confirm-that-aliens-exist-before-2027-789-924-249
+                            - paragraph [ref=e1211]: December 31
+                          - generic [ref=e1213]:
+                            - paragraph [ref=e1214]: 14%
+                            - link "Yes 14%" [ref=e1215] [cursor=pointer]:
+                              - /url: /event/will-the-us-confirm-that-aliens-exist-before-2027?marketSlug=will-the-us-confirm-that-aliens-exist-before-2027-789-924-249&outcomeIndex=0
+                              - generic [ref=e1216]: "Yes"
+                              - generic [ref=e1217]: 14%
+                            - link "No 86%" [ref=e1218] [cursor=pointer]:
+                              - /url: /event/will-the-us-confirm-that-aliens-exist-before-2027?marketSlug=will-the-us-confirm-that-aliens-exist-before-2027-789-924-249&outcomeIndex=1
+                              - generic [ref=e1219]: "No"
+                              - generic [ref=e1220]: 86%
+                        - generic [ref=e1222]:
+                          - link "September 30" [ref=e1225] [cursor=pointer]:
+                            - /url: /event/will-the-us-confirm-that-aliens-exist-before-2027/will-the-us-confirm-that-aliens-exist-by-september-30-396
+                            - paragraph [ref=e1226]: September 30
+                          - generic [ref=e1228]:
+                            - paragraph [ref=e1229]: 7%
+                            - link "Yes 7%" [ref=e1230] [cursor=pointer]:
+                              - /url: /event/will-the-us-confirm-that-aliens-exist-before-2027?marketSlug=will-the-us-confirm-that-aliens-exist-by-september-30-396&outcomeIndex=0
+                              - generic [ref=e1231]: "Yes"
+                              - generic [ref=e1232]: 7%
+                            - link "No 93%" [ref=e1233] [cursor=pointer]:
+                              - /url: /event/will-the-us-confirm-that-aliens-exist-before-2027?marketSlug=will-the-us-confirm-that-aliens-exist-by-september-30-396&outcomeIndex=1
+                              - generic [ref=e1234]: "No"
+                              - generic [ref=e1235]: 93%
+                      - generic [ref=e1237]:
+                        - paragraph [ref=e1239]:
+                          - generic [ref=e1240]: $50M
+                          - text: Vol.
+                        - generic [ref=e1242]:
+                          - button "Rewards" [ref=e1243] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1244] [cursor=pointer]
+                  - generic [ref=e1248]:
+                    - generic [ref=e1249]:
+                      - img "Iran agrees to surrender enriched uranium stockpile by...? card icon" [ref=e1251]
+                      - link "Iran agrees to surrender enriched uranium stockpile by...?" [ref=e1254] [cursor=pointer]:
+                        - /url: /event/iran-agrees-to-surrender-enriched-uranium-stockpile-by
+                        - heading "Iran agrees to surrender enriched uranium stockpile by...?" [level=3] [ref=e1256]
+                    - generic [ref=e1257]:
+                      - generic [ref=e1259]:
+                        - generic [ref=e1261]:
+                          - link "December 31" [ref=e1264] [cursor=pointer]:
+                            - /url: /event/iran-agrees-to-surrender-enriched-uranium-stockpile-by/iran-agrees-to-surrender-enriched-uranium-stockpile-by-december-31-2026
+                            - paragraph [ref=e1265]: December 31
+                          - generic [ref=e1267]:
+                            - paragraph [ref=e1268]: 36%
+                            - link "Yes 36%" [ref=e1269] [cursor=pointer]:
+                              - /url: /event/iran-agrees-to-surrender-enriched-uranium-stockpile-by?marketSlug=iran-agrees-to-surrender-enriched-uranium-stockpile-by-december-31-2026&outcomeIndex=0
+                              - generic [ref=e1270]: "Yes"
+                              - generic [ref=e1271]: 36%
+                            - link "No 64%" [ref=e1272] [cursor=pointer]:
+                              - /url: /event/iran-agrees-to-surrender-enriched-uranium-stockpile-by?marketSlug=iran-agrees-to-surrender-enriched-uranium-stockpile-by-december-31-2026&outcomeIndex=1
+                              - generic [ref=e1273]: "No"
+                              - generic [ref=e1274]: 64%
+                        - generic [ref=e1276]:
+                          - link "July 31" [ref=e1279] [cursor=pointer]:
+                            - /url: /event/iran-agrees-to-surrender-enriched-uranium-stockpile-by/iran-agrees-to-surrender-enriched-uranium-stockpile-by-july-31-2026
+                            - paragraph [ref=e1280]: July 31
+                          - generic [ref=e1282]:
+                            - paragraph [ref=e1283]: 21%
+                            - link "Yes 21%" [ref=e1284] [cursor=pointer]:
+                              - /url: /event/iran-agrees-to-surrender-enriched-uranium-stockpile-by?marketSlug=iran-agrees-to-surrender-enriched-uranium-stockpile-by-july-31-2026&outcomeIndex=0
+                              - generic [ref=e1285]: "Yes"
+                              - generic [ref=e1286]: 21%
+                            - link "No 79%" [ref=e1287] [cursor=pointer]:
+                              - /url: /event/iran-agrees-to-surrender-enriched-uranium-stockpile-by?marketSlug=iran-agrees-to-surrender-enriched-uranium-stockpile-by-july-31-2026&outcomeIndex=1
+                              - generic [ref=e1288]: "No"
+                              - generic [ref=e1289]: 79%
+                      - generic [ref=e1291]:
+                        - paragraph [ref=e1293]:
+                          - generic [ref=e1294]: $14M
+                          - text: Vol.
+                        - generic [ref=e1296]:
+                          - button "Rewards" [ref=e1297] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1298] [cursor=pointer]
+                  - generic [ref=e1302]:
+                    - generic [ref=e1303]:
+                      - img "Will Anthropic’s valuation hit __ by December 31? card icon" [ref=e1305]
+                      - link "Will Anthropic’s valuation hit __ by December 31?" [ref=e1308] [cursor=pointer]:
+                        - /url: /event/will-anthropics-valuation-hit-by-december-31
+                        - heading "Will Anthropic’s valuation hit __ by December 31?" [level=3] [ref=e1310]
+                    - generic [ref=e1311]:
+                      - generic [ref=e1313]:
+                        - generic [ref=e1315]:
+                          - link "↑$1.1T" [ref=e1318] [cursor=pointer]:
+                            - /url: /event/will-anthropics-valuation-hit-by-december-31/will-anthropics-valuation-hit-high-1pt1t-by-december-31-646
+                            - paragraph [ref=e1319]: ↑$1.1T
+                          - generic [ref=e1321]:
+                            - paragraph [ref=e1322]: 94%
+                            - link "Yes 94%" [ref=e1323] [cursor=pointer]:
+                              - /url: /event/will-anthropics-valuation-hit-by-december-31?marketSlug=will-anthropics-valuation-hit-high-1pt1t-by-december-31-646&outcomeIndex=0
+                              - generic [ref=e1324]: "Yes"
+                              - generic [ref=e1325]: 94%
+                            - link "No 6%" [ref=e1326] [cursor=pointer]:
+                              - /url: /event/will-anthropics-valuation-hit-by-december-31?marketSlug=will-anthropics-valuation-hit-high-1pt1t-by-december-31-646&outcomeIndex=1
+                              - generic [ref=e1327]: "No"
+                              - generic [ref=e1328]: 6%
+                        - generic [ref=e1330]:
+                          - link "↑$1.25T" [ref=e1333] [cursor=pointer]:
+                            - /url: /event/will-anthropics-valuation-hit-by-december-31/will-anthropics-valuation-hit-high-1pt25t-by-december-31-429
+                            - paragraph [ref=e1334]: ↑$1.25T
+                          - generic [ref=e1336]:
+                            - paragraph [ref=e1337]: 88%
+                            - link "Yes 88%" [ref=e1338] [cursor=pointer]:
+                              - /url: /event/will-anthropics-valuation-hit-by-december-31?marketSlug=will-anthropics-valuation-hit-high-1pt25t-by-december-31-429&outcomeIndex=0
+                              - generic [ref=e1339]: "Yes"
+                              - generic [ref=e1340]: 88%
+                            - link "No 12%" [ref=e1341] [cursor=pointer]:
+                              - /url: /event/will-anthropics-valuation-hit-by-december-31?marketSlug=will-anthropics-valuation-hit-high-1pt25t-by-december-31-429&outcomeIndex=1
+                              - generic [ref=e1342]: "No"
+                              - generic [ref=e1343]: 12%
+                      - generic [ref=e1345]:
+                        - generic [ref=e1346]:
+                          - paragraph [ref=e1347]:
+                            - generic [ref=e1348]: $1M
+                            - text: Vol.
+                          - img [ref=e1350]
+                        - generic [ref=e1356]:
+                          - button "Rewards" [ref=e1357] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1358] [cursor=pointer]
+                  - generic [ref=e1362]:
+                    - generic [ref=e1363]:
+                      - img "OpenAI IPO by...? card icon" [ref=e1365]
+                      - link "OpenAI IPO by...?" [ref=e1368] [cursor=pointer]:
+                        - /url: /event/openai-ipo-by
+                        - heading "OpenAI IPO by...?" [level=3] [ref=e1370]
+                    - generic [ref=e1371]:
+                      - generic [ref=e1373]:
+                        - generic [ref=e1375]:
+                          - link "December 31, 2026" [ref=e1378] [cursor=pointer]:
+                            - /url: /event/openai-ipo-by/will-openai-ipo-by-december-31-2026
+                            - paragraph [ref=e1379]: December 31, 2026
+                          - generic [ref=e1381]:
+                            - paragraph [ref=e1382]: 70%
+                            - link "Yes 70%" [ref=e1383] [cursor=pointer]:
+                              - /url: /event/openai-ipo-by?marketSlug=will-openai-ipo-by-december-31-2026&outcomeIndex=0
+                              - generic [ref=e1384]: "Yes"
+                              - generic [ref=e1385]: 70%
+                            - link "No 30%" [ref=e1386] [cursor=pointer]:
+                              - /url: /event/openai-ipo-by?marketSlug=will-openai-ipo-by-december-31-2026&outcomeIndex=1
+                              - generic [ref=e1387]: "No"
+                              - generic [ref=e1388]: 30%
+                        - generic [ref=e1390]:
+                          - link "September 30, 2026" [ref=e1393] [cursor=pointer]:
+                            - /url: /event/openai-ipo-by/will-openai-ipo-by-september-30-2026
+                            - paragraph [ref=e1394]: September 30, 2026
+                          - generic [ref=e1396]:
+                            - paragraph [ref=e1397]: 37%
+                            - link "Yes 37%" [ref=e1398] [cursor=pointer]:
+                              - /url: /event/openai-ipo-by?marketSlug=will-openai-ipo-by-september-30-2026&outcomeIndex=0
+                              - generic [ref=e1399]: "Yes"
+                              - generic [ref=e1400]: 37%
+                            - link "No 63%" [ref=e1401] [cursor=pointer]:
+                              - /url: /event/openai-ipo-by?marketSlug=will-openai-ipo-by-september-30-2026&outcomeIndex=1
+                              - generic [ref=e1402]: "No"
+                              - generic [ref=e1403]: 63%
+                      - generic [ref=e1405]:
+                        - paragraph [ref=e1407]:
+                          - generic [ref=e1408]: $2M
+                          - text: Vol.
+                        - generic [ref=e1410]:
+                          - button "Rewards" [ref=e1411] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1412] [cursor=pointer]
+                  - generic [ref=e1416]:
+                    - generic [ref=e1417]:
+                      - img "US x Iran diplomatic meeting by...? card icon" [ref=e1419]
+                      - link "US x Iran diplomatic meeting by...?" [ref=e1422] [cursor=pointer]:
+                        - /url: /event/us-x-iran-diplomatic-meeting-by-329
+                        - heading "US x Iran diplomatic meeting by...?" [level=3] [ref=e1424]
+                    - generic [ref=e1425]:
+                      - generic [ref=e1427]:
+                        - generic [ref=e1429]:
+                          - link "July 31" [ref=e1432] [cursor=pointer]:
+                            - /url: /event/us-x-iran-diplomatic-meeting-by-329/us-x-iran-diplomatic-meeting-by-july-31-2026-436
+                            - paragraph [ref=e1433]: July 31
+                          - generic [ref=e1435]:
+                            - paragraph [ref=e1436]: 48%
+                            - link "Yes 48%" [ref=e1437] [cursor=pointer]:
+                              - /url: /event/us-x-iran-diplomatic-meeting-by-329?marketSlug=us-x-iran-diplomatic-meeting-by-july-31-2026-436&outcomeIndex=0
+                              - generic [ref=e1438]: "Yes"
+                              - generic [ref=e1439]: 48%
+                            - link "No 52%" [ref=e1440] [cursor=pointer]:
+                              - /url: /event/us-x-iran-diplomatic-meeting-by-329?marketSlug=us-x-iran-diplomatic-meeting-by-july-31-2026-436&outcomeIndex=1
+                              - generic [ref=e1441]: "No"
+                              - generic [ref=e1442]: 52%
+                        - generic [ref=e1444]:
+                          - link "June 30" [ref=e1447] [cursor=pointer]:
+                            - /url: /event/us-x-iran-diplomatic-meeting-by-329/us-x-iran-diplomatic-meeting-by-june-30-2026-983-259-948
+                            - paragraph [ref=e1448]: June 30
+                          - generic [ref=e1450]:
+                            - paragraph [ref=e1451]: 32%
+                            - link "Yes 32%" [ref=e1452] [cursor=pointer]:
+                              - /url: /event/us-x-iran-diplomatic-meeting-by-329?marketSlug=us-x-iran-diplomatic-meeting-by-june-30-2026-983-259-948&outcomeIndex=0
+                              - generic [ref=e1453]: "Yes"
+                              - generic [ref=e1454]: 32%
+                            - link "No 68%" [ref=e1455] [cursor=pointer]:
+                              - /url: /event/us-x-iran-diplomatic-meeting-by-329?marketSlug=us-x-iran-diplomatic-meeting-by-june-30-2026-983-259-948&outcomeIndex=1
+                              - generic [ref=e1456]: "No"
+                              - generic [ref=e1457]: 68%
+                      - generic [ref=e1459]:
+                        - generic [ref=e1460]:
+                          - paragraph [ref=e1461]:
+                            - generic [ref=e1462]: $44M
+                            - text: Vol.
+                          - img [ref=e1464]
+                        - generic [ref=e1470]:
+                          - button "Rewards" [ref=e1471] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1472] [cursor=pointer]
+                  - generic [ref=e1476]:
+                    - generic [ref=e1477]:
+                      - img "Which party will win the House in 2026? card icon" [ref=e1479]
+                      - link "Which party will win the House in 2026?" [ref=e1482] [cursor=pointer]:
+                        - /url: /event/which-party-will-win-the-house-in-2026
+                        - heading "Which party will win the House in 2026?" [level=3] [ref=e1484]
+                    - generic [ref=e1485]:
+                      - generic [ref=e1487]:
+                        - generic [ref=e1489]:
+                          - link "Democratic Party" [ref=e1492] [cursor=pointer]:
+                            - /url: /event/which-party-will-win-the-house-in-2026/will-the-democratic-party-control-the-house-after-the-2026-midterm-elections
+                            - paragraph [ref=e1493]: Democratic Party
+                          - generic [ref=e1495]:
+                            - paragraph [ref=e1496]: 82%
+                            - link "Yes 82%" [ref=e1497] [cursor=pointer]:
+                              - /url: /event/which-party-will-win-the-house-in-2026?marketSlug=will-the-democratic-party-control-the-house-after-the-2026-midterm-elections&outcomeIndex=0
+                              - generic [ref=e1498]: "Yes"
+                              - generic [ref=e1499]: 82%
+                            - link "No 18%" [ref=e1500] [cursor=pointer]:
+                              - /url: /event/which-party-will-win-the-house-in-2026?marketSlug=will-the-democratic-party-control-the-house-after-the-2026-midterm-elections&outcomeIndex=1
+                              - generic [ref=e1501]: "No"
+                              - generic [ref=e1502]: 18%
+                        - generic [ref=e1504]:
+                          - link "Republican Party" [ref=e1507] [cursor=pointer]:
+                            - /url: /event/which-party-will-win-the-house-in-2026/will-the-republican-party-control-the-house-after-the-2026-midterm-elections
+                            - paragraph [ref=e1508]: Republican Party
+                          - generic [ref=e1510]:
+                            - paragraph [ref=e1511]: 20%
+                            - link "Yes 20%" [ref=e1512] [cursor=pointer]:
+                              - /url: /event/which-party-will-win-the-house-in-2026?marketSlug=will-the-republican-party-control-the-house-after-the-2026-midterm-elections&outcomeIndex=0
+                              - generic [ref=e1513]: "Yes"
+                              - generic [ref=e1514]: 20%
+                            - link "No 80%" [ref=e1515] [cursor=pointer]:
+                              - /url: /event/which-party-will-win-the-house-in-2026?marketSlug=will-the-republican-party-control-the-house-after-the-2026-midterm-elections&outcomeIndex=1
+                              - generic [ref=e1516]: "No"
+                              - generic [ref=e1517]: 80%
+                      - generic [ref=e1519]:
+                        - generic [ref=e1520]:
+                          - paragraph [ref=e1521]:
+                            - generic [ref=e1522]: $7M
+                            - text: Vol.
+                          - img [ref=e1524]
+                        - generic [ref=e1530]:
+                          - button "Earn 3.25% holding rewards" [ref=e1531] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1532] [cursor=pointer]
+                  - generic [ref=e1536]:
+                    - generic [ref=e1537]:
+                      - img "Colombia Presidential Election card icon" [ref=e1539]
+                      - link "Colombia Presidential Election" [ref=e1542] [cursor=pointer]:
+                        - /url: /event/colombia-presidential-election
+                        - heading "Colombia Presidential Election" [level=3] [ref=e1544]
+                    - generic [ref=e1545]:
+                      - generic [ref=e1547]:
+                        - generic [ref=e1549]:
+                          - link "Abelardo de la Espriella" [ref=e1552] [cursor=pointer]:
+                            - /url: /event/colombia-presidential-election/will-abelardo-de-la-espriella-win-the-2026-colombian-presidential-election
+                            - paragraph [ref=e1553]: Abelardo de la Espriella
+                          - generic [ref=e1555]:
+                            - paragraph [ref=e1556]: 84%
+                            - link "Yes 84%" [ref=e1557] [cursor=pointer]:
+                              - /url: /event/colombia-presidential-election?marketSlug=will-abelardo-de-la-espriella-win-the-2026-colombian-presidential-election&outcomeIndex=0
+                              - generic [ref=e1558]: "Yes"
+                              - generic [ref=e1559]: 84%
+                            - link "No 16%" [ref=e1560] [cursor=pointer]:
+                              - /url: /event/colombia-presidential-election?marketSlug=will-abelardo-de-la-espriella-win-the-2026-colombian-presidential-election&outcomeIndex=1
+                              - generic [ref=e1561]: "No"
+                              - generic [ref=e1562]: 16%
+                        - generic [ref=e1564]:
+                          - link "Iván Cepeda Castro" [ref=e1567] [cursor=pointer]:
+                            - /url: /event/colombia-presidential-election/will-ivan-cepeda-castro-win-the-2026-colombian-presidential-election
+                            - paragraph [ref=e1568]: Iván Cepeda Castro
+                          - generic [ref=e1570]:
+                            - paragraph [ref=e1571]: 17%
+                            - link "Yes 17%" [ref=e1572] [cursor=pointer]:
+                              - /url: /event/colombia-presidential-election?marketSlug=will-ivan-cepeda-castro-win-the-2026-colombian-presidential-election&outcomeIndex=0
+                              - generic [ref=e1573]: "Yes"
+                              - generic [ref=e1574]: 17%
+                            - link "No 83%" [ref=e1575] [cursor=pointer]:
+                              - /url: /event/colombia-presidential-election?marketSlug=will-ivan-cepeda-castro-win-the-2026-colombian-presidential-election&outcomeIndex=1
+                              - generic [ref=e1576]: "No"
+                              - generic [ref=e1577]: 83%
+                      - generic [ref=e1579]:
+                        - paragraph [ref=e1581]:
+                          - generic [ref=e1582]: $36M
+                          - text: Vol.
+                        - generic [ref=e1584]:
+                          - button "Rewards" [ref=e1585] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1586] [cursor=pointer]
+                  - generic [ref=e1590]:
+                    - link "Spurs 46% Knicks 55%" [ref=e1591] [cursor=pointer]:
+                      - /url: /event/nba-sas-nyk-2026-06-08
+                      - generic [ref=e1592]:
+                        - paragraph [ref=e1595]: Spurs
+                        - paragraph [ref=e1596]: 46%
+                      - generic [ref=e1597]:
+                        - paragraph [ref=e1600]: Knicks
+                        - paragraph [ref=e1601]: 55%
+                    - generic [ref=e1602]:
+                      - generic [ref=e1603]:
+                        - link "Spurs" [ref=e1604] [cursor=pointer]:
+                          - /url: /event/nba-sas-nyk-2026-06-08?outcomeIndex=0
+                          - paragraph [ref=e1606]: Spurs
+                        - link "Knicks" [ref=e1608] [cursor=pointer]:
+                          - /url: /event/nba-sas-nyk-2026-06-08?outcomeIndex=1
+                          - paragraph [ref=e1610]: Knicks
+                      - generic [ref=e1613]:
+                        - generic [ref=e1614]:
+                          - paragraph [ref=e1615]:
+                            - generic [ref=e1616]: $6M
+                            - text: Vol.
+                          - generic [ref=e1617]: ·
+                          - link "NBA" [ref=e1618] [cursor=pointer]:
+                            - /url: /sports/nba/games/week/3
+                          - generic [ref=e1619]: ·
+                          - text: Jun 09, 3:30 AM
+                        - generic [ref=e1621]:
+                          - button "Rewards" [ref=e1622] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1623] [cursor=pointer]
+                  - generic [ref=e1627]:
+                    - generic [ref=e1628]:
+                      - img "Fed Decision in June? card icon" [ref=e1630]
+                      - link "Fed Decision in June?" [ref=e1633] [cursor=pointer]:
+                        - /url: /event/fed-decision-in-june-825
+                        - heading "Fed Decision in June?" [level=3] [ref=e1635]
+                    - generic [ref=e1636]:
+                      - generic [ref=e1638]:
+                        - generic [ref=e1640]:
+                          - link "No change" [ref=e1643] [cursor=pointer]:
+                            - /url: /event/fed-decision-in-june-825/will-there-be-no-change-in-fed-interest-rates-after-the-june-2026-meeting
+                            - paragraph [ref=e1644]: No change
+                          - generic [ref=e1646]:
+                            - paragraph [ref=e1647]: 99%
+                            - link "Yes 99%" [ref=e1648] [cursor=pointer]:
+                              - /url: /event/fed-decision-in-june-825?marketSlug=will-there-be-no-change-in-fed-interest-rates-after-the-june-2026-meeting&outcomeIndex=0
+                              - generic [ref=e1649]: "Yes"
+                              - generic [ref=e1650]: 99%
+                            - link "No 1%" [ref=e1651] [cursor=pointer]:
+                              - /url: /event/fed-decision-in-june-825?marketSlug=will-there-be-no-change-in-fed-interest-rates-after-the-june-2026-meeting&outcomeIndex=1
+                              - generic [ref=e1652]: "No"
+                              - generic [ref=e1653]: 1%
+                        - generic [ref=e1655]:
+                          - link "25 bps decrease" [ref=e1658] [cursor=pointer]:
+                            - /url: /event/fed-decision-in-june-825/will-the-fed-decrease-interest-rates-by-25-bps-after-the-june-2026-meeting
+                            - paragraph [ref=e1659]: 25 bps decrease
+                          - generic [ref=e1661]:
+                            - paragraph [ref=e1662]: 1%
+                            - link "Yes 1%" [ref=e1663] [cursor=pointer]:
+                              - /url: /event/fed-decision-in-june-825?marketSlug=will-the-fed-decrease-interest-rates-by-25-bps-after-the-june-2026-meeting&outcomeIndex=0
+                              - generic [ref=e1664]: "Yes"
+                              - generic [ref=e1665]: 1%
+                            - link "No 99%" [ref=e1666] [cursor=pointer]:
+                              - /url: /event/fed-decision-in-june-825?marketSlug=will-the-fed-decrease-interest-rates-by-25-bps-after-the-june-2026-meeting&outcomeIndex=1
+                              - generic [ref=e1667]: "No"
+                              - generic [ref=e1668]: 99%
+                      - generic [ref=e1670]:
+                        - generic [ref=e1671]:
+                          - paragraph [ref=e1672]:
+                            - generic [ref=e1673]: $69M
+                            - text: Vol.
+                          - img [ref=e1675]
+                        - button "Add to favorites" [ref=e1682] [cursor=pointer]
+                  - generic [ref=e1686]:
+                    - generic [ref=e1687]:
+                      - img "Israel announces Lebanon ceasefire extension by...? card icon" [ref=e1689]
+                      - generic [ref=e1690]:
+                        - link "Israel announces Lebanon ceasefire extension by June 7?" [ref=e1692] [cursor=pointer]:
+                          - /url: /event/israel-announces-lebanon-ceasefire-extension-by
+                          - heading "Israel announces Lebanon ceasefire extension by June 7?" [level=3] [ref=e1694]
+                        - generic [ref=e1697]:
+                          - img [ref=e1699]
+                          - generic [ref=e1702]:
+                            - paragraph [ref=e1703]: 100%
+                            - paragraph [ref=e1704]: chance
+                    - generic [ref=e1705]:
+                      - generic [ref=e1706]:
+                        - link "Yes" [ref=e1707] [cursor=pointer]:
+                          - /url: /event/israel-announces-lebanon-ceasefire-extension-by?outcomeIndex=0
+                          - paragraph [ref=e1708]: "Yes"
+                        - link "No" [ref=e1709] [cursor=pointer]:
+                          - /url: /event/israel-announces-lebanon-ceasefire-extension-by?outcomeIndex=1
+                          - paragraph [ref=e1710]: "No"
+                      - generic [ref=e1712]:
+                        - paragraph [ref=e1714]:
+                          - generic [ref=e1715]: $12M
+                          - text: Vol.
+                        - button "Add to favorites" [ref=e1718] [cursor=pointer]
+                  - generic [ref=e1722]:
+                    - link "Top Esports 1% Team WE 100%" [ref=e1723] [cursor=pointer]:
+                      - /url: /event/lol-tes-we-2026-06-07
+                      - generic [ref=e1724]:
+                        - paragraph [ref=e1727]: Top Esports
+                        - paragraph [ref=e1728]: 1%
+                      - generic [ref=e1729]:
+                        - paragraph [ref=e1732]: Team WE
+                        - paragraph [ref=e1733]: 100%
+                    - generic [ref=e1734]:
+                      - generic [ref=e1735]:
+                        - link "Top Esports" [ref=e1736] [cursor=pointer]:
+                          - /url: /event/lol-tes-we-2026-06-07?outcomeIndex=0
+                          - paragraph [ref=e1738]: Top Esports
+                        - link "Team WE" [ref=e1740] [cursor=pointer]:
+                          - /url: /event/lol-tes-we-2026-06-07?outcomeIndex=1
+                          - paragraph [ref=e1742]: Team WE
+                      - generic [ref=e1745]:
+                        - generic [ref=e1746]:
+                          - paragraph [ref=e1747]:
+                            - generic [ref=e1748]: $3M
+                            - text: Vol.
+                          - generic [ref=e1749]: ·
+                          - link "LoL" [ref=e1750] [cursor=pointer]:
+                            - /url: /esports/league-of-legends/games
+                          - generic [ref=e1751]: ·
+                          - text: 12:00 PM
+                        - button "Add to favorites" [ref=e1754] [cursor=pointer]
+                  - generic [ref=e1758]:
+                    - generic [ref=e1759]:
+                      - img "Bitcoin above ___ on June 7? card icon" [ref=e1761]
+                      - link "Bitcoin above ___ on June 7?" [ref=e1764] [cursor=pointer]:
+                        - /url: /event/bitcoin-above-on-june-7-2026
+                        - heading "Bitcoin above ___ on June 7?" [level=3] [ref=e1766]
+                    - generic [ref=e1767]:
+                      - generic [ref=e1769]:
+                        - generic [ref=e1771]:
+                          - link "56,000" [ref=e1774] [cursor=pointer]:
+                            - /url: /event/bitcoin-above-on-june-7-2026/bitcoin-above-56k-on-june-7-2026
+                            - paragraph [ref=e1775]: 56,000
+                          - generic [ref=e1777]:
+                            - paragraph [ref=e1778]: 100%
+                            - link "Yes 100%" [ref=e1779] [cursor=pointer]:
+                              - /url: /event/bitcoin-above-on-june-7-2026?marketSlug=bitcoin-above-56k-on-june-7-2026&outcomeIndex=0
+                              - generic [ref=e1780]: "Yes"
+                              - generic [ref=e1781]: 100%
+                            - link "No <1%" [ref=e1782] [cursor=pointer]:
+                              - /url: /event/bitcoin-above-on-june-7-2026?marketSlug=bitcoin-above-56k-on-june-7-2026&outcomeIndex=1
+                              - generic [ref=e1783]: "No"
+                              - generic [ref=e1784]: <1%
+                        - generic [ref=e1786]:
+                          - link "58,000" [ref=e1789] [cursor=pointer]:
+                            - /url: /event/bitcoin-above-on-june-7-2026/bitcoin-above-58k-on-june-7-2026-356-993
+                            - paragraph [ref=e1790]: 58,000
+                          - generic [ref=e1792]:
+                            - paragraph [ref=e1793]: 100%
+                            - link "Yes 100%" [ref=e1794] [cursor=pointer]:
+                              - /url: /event/bitcoin-above-on-june-7-2026?marketSlug=bitcoin-above-58k-on-june-7-2026-356-993&outcomeIndex=0
+                              - generic [ref=e1795]: "Yes"
+                              - generic [ref=e1796]: 100%
+                            - link "No <1%" [ref=e1797] [cursor=pointer]:
+                              - /url: /event/bitcoin-above-on-june-7-2026?marketSlug=bitcoin-above-58k-on-june-7-2026-356-993&outcomeIndex=1
+                              - generic [ref=e1798]: "No"
+                              - generic [ref=e1799]: <1%
+                      - generic [ref=e1801]:
+                        - generic [ref=e1802]:
+                          - paragraph [ref=e1803]:
+                            - generic [ref=e1804]: $3M
+                            - text: Vol.
+                          - generic [ref=e1805]: ·
+                          - link "Bitcoin" [ref=e1806] [cursor=pointer]:
+                            - /url: /crypto/bitcoin
+                          - img [ref=e1808]
+                        - button "Add to favorites" [ref=e1815] [cursor=pointer]
+                  - generic [ref=e1819]:
+                    - link "FlyQuest 0% paiN 100%" [ref=e1820] [cursor=pointer]:
+                      - /url: /event/cs2-fly-pain-2026-06-07
+                      - generic [ref=e1821]:
+                        - paragraph [ref=e1824]: FlyQuest
+                        - paragraph [ref=e1825]: 0%
+                      - generic [ref=e1826]:
+                        - paragraph [ref=e1829]: paiN
+                        - paragraph [ref=e1830]: 100%
+                    - generic [ref=e1831]:
+                      - generic [ref=e1832]:
+                        - link "FlyQuest" [ref=e1833] [cursor=pointer]:
+                          - /url: /event/cs2-fly-pain-2026-06-07?outcomeIndex=0
+                          - paragraph [ref=e1835]: FlyQuest
+                        - link "paiN" [ref=e1837] [cursor=pointer]:
+                          - /url: /event/cs2-fly-pain-2026-06-07?outcomeIndex=1
+                          - paragraph [ref=e1839]: paiN
+                      - generic [ref=e1842]:
+                        - generic [ref=e1843]:
+                          - paragraph [ref=e1844]:
+                            - generic [ref=e1845]: $2M
+                            - text: Vol.
+                          - generic [ref=e1846]: ·
+                          - link "CS2" [ref=e1847] [cursor=pointer]:
+                            - /url: /esports/cs2/games
+                          - generic [ref=e1848]: ·
+                          - text: 5:45 PM
+                        - button "Add to favorites" [ref=e1851] [cursor=pointer]
+                  - generic [ref=e1855]:
+                    - generic [ref=e1856]:
+                      - img "Democratic Presidential Nominee 2028 card icon" [ref=e1858]
+                      - link "Democratic Presidential Nominee 2028" [ref=e1861] [cursor=pointer]:
+                        - /url: /event/democratic-presidential-nominee-2028
+                        - heading "Democratic Presidential Nominee 2028" [level=3] [ref=e1863]
+                    - generic [ref=e1864]:
+                      - generic [ref=e1866]:
+                        - generic [ref=e1868]:
+                          - link "Gavin Newsom" [ref=e1871] [cursor=pointer]:
+                            - /url: /event/democratic-presidential-nominee-2028/will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568
+                            - paragraph [ref=e1872]: Gavin Newsom
+                          - generic [ref=e1874]:
+                            - paragraph [ref=e1875]: 25%
+                            - link "Yes 25%" [ref=e1876] [cursor=pointer]:
+                              - /url: /event/democratic-presidential-nominee-2028?marketSlug=will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568&outcomeIndex=0
+                              - generic [ref=e1877]: "Yes"
+                              - generic [ref=e1878]: 25%
+                            - link "No 75%" [ref=e1879] [cursor=pointer]:
+                              - /url: /event/democratic-presidential-nominee-2028?marketSlug=will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568&outcomeIndex=1
+                              - generic [ref=e1880]: "No"
+                              - generic [ref=e1881]: 75%
+                        - generic [ref=e1883]:
+                          - link "Alexandria Ocasio-Cortez" [ref=e1886] [cursor=pointer]:
+                            - /url: /event/democratic-presidential-nominee-2028/will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653
+                            - paragraph [ref=e1887]: Alexandria Ocasio-Cortez
+                          - generic [ref=e1889]:
+                            - paragraph [ref=e1890]: 9%
+                            - link "Yes 9%" [ref=e1891] [cursor=pointer]:
+                              - /url: /event/democratic-presidential-nominee-2028?marketSlug=will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653&outcomeIndex=0
+                              - generic [ref=e1892]: "Yes"
+                              - generic [ref=e1893]: 9%
+                            - link "No 91%" [ref=e1894] [cursor=pointer]:
+                              - /url: /event/democratic-presidential-nominee-2028?marketSlug=will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653&outcomeIndex=1
+                              - generic [ref=e1895]: "No"
+                              - generic [ref=e1896]: 91%
+                      - generic [ref=e1898]:
+                        - paragraph [ref=e1900]:
+                          - generic [ref=e1901]: $1B
+                          - text: Vol.
+                        - generic [ref=e1903]:
+                          - button "Earn 3.25% holding rewards" [ref=e1904] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1905] [cursor=pointer]
+                  - generic [ref=e1909]:
+                    - generic [ref=e1910]:
+                      - 'img "Elon Musk # tweets June 2 - June 9, 2026? card icon" [ref=e1912]'
+                      - 'link "Elon Musk # tweets June 2 - June 9, 2026?" [ref=e1915] [cursor=pointer]':
+                        - /url: /event/elon-musk-of-tweets-june-2-june-9
+                        - 'heading "Elon Musk # tweets June 2 - June 9, 2026?" [level=3] [ref=e1917]'
+                    - generic [ref=e1918]:
+                      - generic [ref=e1920]:
+                        - generic [ref=e1922]:
+                          - link "220-239" [ref=e1925] [cursor=pointer]:
+                            - /url: /event/elon-musk-of-tweets-june-2-june-9/elon-musk-of-tweets-june-2-june-9-220-239
+                            - paragraph [ref=e1926]: 220-239
+                          - generic [ref=e1928]:
+                            - paragraph [ref=e1929]: 40%
+                            - link "Yes 40%" [ref=e1930] [cursor=pointer]:
+                              - /url: /event/elon-musk-of-tweets-june-2-june-9?marketSlug=elon-musk-of-tweets-june-2-june-9-220-239&outcomeIndex=0
+                              - generic [ref=e1931]: "Yes"
+                              - generic [ref=e1932]: 40%
+                            - link "No 60%" [ref=e1933] [cursor=pointer]:
+                              - /url: /event/elon-musk-of-tweets-june-2-june-9?marketSlug=elon-musk-of-tweets-june-2-june-9-220-239&outcomeIndex=1
+                              - generic [ref=e1934]: "No"
+                              - generic [ref=e1935]: 60%
+                        - generic [ref=e1937]:
+                          - link "200-219" [ref=e1940] [cursor=pointer]:
+                            - /url: /event/elon-musk-of-tweets-june-2-june-9/elon-musk-of-tweets-june-2-june-9-200-219
+                            - paragraph [ref=e1941]: 200-219
+                          - generic [ref=e1943]:
+                            - paragraph [ref=e1944]: 36%
+                            - link "Yes 36%" [ref=e1945] [cursor=pointer]:
+                              - /url: /event/elon-musk-of-tweets-june-2-june-9?marketSlug=elon-musk-of-tweets-june-2-june-9-200-219&outcomeIndex=0
+                              - generic [ref=e1946]: "Yes"
+                              - generic [ref=e1947]: 36%
+                            - link "No 64%" [ref=e1948] [cursor=pointer]:
+                              - /url: /event/elon-musk-of-tweets-june-2-june-9?marketSlug=elon-musk-of-tweets-june-2-june-9-200-219&outcomeIndex=1
+                              - generic [ref=e1949]: "No"
+                              - generic [ref=e1950]: 64%
+                      - generic [ref=e1952]:
+                        - generic [ref=e1953]:
+                          - paragraph [ref=e1954]:
+                            - generic [ref=e1955]: $4M
+                            - text: Vol.
+                          - img [ref=e1957]
+                        - generic [ref=e1963]:
+                          - button "Rewards" [ref=e1964] [cursor=pointer]:
+                            - img
+                          - button "Add to favorites" [ref=e1965] [cursor=pointer]
+                - button "Show more markets" [ref=e1968] [cursor=pointer]
+        - contentinfo [ref=e1970]:
+          - generic [ref=e1972]:
+            - generic [ref=e1973]:
+              - link "Polymarket" [ref=e1974] [cursor=pointer]:
+                - /url: /
+                - img "Polymarket" [ref=e1975]
+              - paragraph [ref=e1976]: The World's Largest Prediction Market™
+            - generic [ref=e1977]:
+              - generic [ref=e1978]:
+                - heading "Markets by category and topics" [level=3] [ref=e1979]
+                - generic [ref=e1980]:
+                  - link "Privates Predictions & odds" [ref=e1981] [cursor=pointer]:
+                    - /url: /predictions/privates
+                    - text: Privates
+                    - generic [ref=e1982]: Predictions & odds
+                  - link "2026 NHL Playoffs Predictions & odds" [ref=e1983] [cursor=pointer]:
+                    - /url: /predictions/2026-nhl-playoffs
+                    - text: 2026 NHL Playoffs
+                    - generic [ref=e1984]: Predictions & odds
+                  - link "Strait of Hormuz Predictions & odds" [ref=e1985] [cursor=pointer]:
+                    - /url: /predictions/strait-of-hormuz
+                    - text: Strait of Hormuz
+                    - generic [ref=e1986]: Predictions & odds
+                  - link "OpenAI IPO Predictions & odds" [ref=e1987] [cursor=pointer]:
+                    - /url: /predictions/openai-ipo
+                    - text: OpenAI IPO
+                    - generic [ref=e1988]: Predictions & odds
+                  - link "Hantavirus Predictions & odds" [ref=e1989] [cursor=pointer]:
+                    - /url: /predictions/hantavirus
+                    - text: Hantavirus
+                    - generic [ref=e1990]: Predictions & odds
+                  - link "Turkey Predictions & odds" [ref=e1991] [cursor=pointer]:
+                    - /url: /predictions/turkey
+                    - text: Turkey
+                    - generic [ref=e1992]: Predictions & odds
+                  - link "IPOs Predictions & odds" [ref=e1993] [cursor=pointer]:
+                    - /url: /predictions/ipos
+                    - text: IPOs
+                    - generic [ref=e1994]: Predictions & odds
+                  - link "GTA VI Predictions & odds" [ref=e1995] [cursor=pointer]:
+                    - /url: /predictions/gta-vi
+                    - text: GTA VI
+                    - generic [ref=e1996]: Predictions & odds
+                  - link "Daily Temperature Predictions & odds" [ref=e1997] [cursor=pointer]:
+                    - /url: /predictions/daily-temperature
+                    - text: Daily Temperature
+                    - generic [ref=e1998]: Predictions & odds
+                  - link "Tweet Markets Predictions & odds" [ref=e1999] [cursor=pointer]:
+                    - /url: /predictions/tweets-markets
+                    - text: Tweet Markets
+                    - generic [ref=e2000]: Predictions & odds
+                  - link "Oil Predictions & odds" [ref=e2001] [cursor=pointer]:
+                    - /url: /predictions/oil
+                    - text: Oil
+                    - generic [ref=e2002]: Predictions & odds
+                  - link "Earnings Predictions & odds" [ref=e2003] [cursor=pointer]:
+                    - /url: /predictions/earnings
+                    - text: Earnings
+                    - generic [ref=e2004]: Predictions & odds
+                  - link "Starmer Predictions & odds" [ref=e2005] [cursor=pointer]:
+                    - /url: /predictions/starmer
+                    - text: Starmer
+                    - generic [ref=e2006]: Predictions & odds
+                  - link "Fed Predictions & odds" [ref=e2007] [cursor=pointer]:
+                    - /url: /predictions/fed
+                    - text: Fed
+                    - generic [ref=e2008]: Predictions & odds
+                  - button "View more" [ref=e2009] [cursor=pointer]:
+                    - generic [ref=e2010]: View more
+                    - img [ref=e2011]
+              - generic [ref=e2013]:
+                - heading "Support & Social" [level=3] [ref=e2014]
+                - generic [ref=e2015]:
+                  - link "Learn" [ref=e2016] [cursor=pointer]:
+                    - /url: https://docs.polymarket.com/concepts
+                  - link "𝕏 (Twitter)" [ref=e2017] [cursor=pointer]:
+                    - /url: https://x.com/Polymarket
+                  - link "Instagram" [ref=e2018] [cursor=pointer]:
+                    - /url: https://www.instagram.com/polymarket
+                  - link "Discord" [ref=e2019] [cursor=pointer]:
+                    - /url: https://discord.gg/Polymarket
+                  - link "TikTok" [ref=e2020] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@polymarket
+                  - link "News" [ref=e2021] [cursor=pointer]:
+                    - /url: https://news.polymarket.com
+                  - link "Contact us" [ref=e2022] [cursor=pointer]:
+                    - /url: mailto:hello@polymarket.com
+                  - link "Help Center" [ref=e2023] [cursor=pointer]:
+                    - /url: https://help.polymarket.com
+                  - link "Status" [ref=e2024] [cursor=pointer]:
+                    - /url: https://status.polymarket.com
+              - generic [ref=e2025]:
+                - heading "Polymarket" [level=3] [ref=e2026]
+                - generic [ref=e2027]:
+                  - link "Rewards" [ref=e2028] [cursor=pointer]:
+                    - /url: /rewards
+                  - link "APIs" [ref=e2029] [cursor=pointer]:
+                    - /url: https://docs.polymarket.com/api-reference
+                  - link "Leaderboard" [ref=e2030] [cursor=pointer]:
+                    - /url: /leaderboard
+                  - link "Accuracy" [ref=e2031] [cursor=pointer]:
+                    - /url: /accuracy
+                  - link "Brand" [ref=e2032] [cursor=pointer]:
+                    - /url: /brand
+                  - link "Activity" [ref=e2033] [cursor=pointer]:
+                    - /url: /activity
+                  - link "Careers" [ref=e2034] [cursor=pointer]:
+                    - /url: https://careers.polymarket.com
+                  - link "Press" [ref=e2035] [cursor=pointer]:
+                    - /url: mailto:press@polymarket.com
+            - generic [ref=e2036]:
+              - generic [ref=e2037]:
+                - generic [ref=e2038]:
+                  - link "Email" [ref=e2039] [cursor=pointer]:
+                    - /url: mailto:hello@polymarket.com
+                    - img [ref=e2040]
+                  - link "X (Twitter)" [ref=e2044] [cursor=pointer]:
+                    - /url: https://x.com/Polymarket
+                    - img [ref=e2045]
+                  - link "Instagram" [ref=e2047] [cursor=pointer]:
+                    - /url: https://www.instagram.com/polymarket
+                    - img [ref=e2048]
+                  - link "Discord" [ref=e2053] [cursor=pointer]:
+                    - /url: https://discord.gg/Polymarket
+                    - img [ref=e2054]
+                  - link "TikTok" [ref=e2056] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@polymarket
+                    - img [ref=e2057]
+                - generic [ref=e2059]:
+                  - generic [ref=e2060]: Adventure One QSS Inc. © 2026
+                  - generic [ref=e2061]: ·
+                  - link "Privacy" [ref=e2062] [cursor=pointer]:
+                    - /url: /privacy
+                  - generic [ref=e2063]: ·
+                  - link "Terms of Use" [ref=e2064] [cursor=pointer]:
+                    - /url: https://polymarket.com/tos
+                  - generic [ref=e2065]: ·
+                  - link "Market Integrity" [ref=e2066] [cursor=pointer]:
+                    - /url: https://integrity.polymarket.com/
+                  - generic [ref=e2067]: ·
+                  - link "Help Center" [ref=e2068] [cursor=pointer]:
+                    - /url: https://help.polymarket.com
+                  - generic [ref=e2069]: ·
+                  - link "Docs" [ref=e2070] [cursor=pointer]:
+                    - /url: https://docs.polymarket.com
+                - button "English" [ref=e2071] [cursor=pointer]:
+                  - img [ref=e2072]
+                  - generic [ref=e2075]: English
+                  - img [ref=e2076]
+              - paragraph [ref=e2078]:
+                - text: Polymarket operates globally through separate legal entities.
+                - link "Polymarket US" [ref=e2079] [cursor=pointer]:
+                  - /url: https://polymarket.us/
+                - text: is operated by QCX LLC d/b/a Polymarket US, a CFTC-regulated Designated Contract Market. This international platform is not regulated by the CFTC and operates independently. Trading involves substantial risk of loss. See our
+                - link "Terms of Service" [ref=e2080] [cursor=pointer]:
+                  - /url: https://polymarket.com/tos
+                - text: "&"
+                - link "Privacy Policy" [ref=e2081] [cursor=pointer]:
+                  - /url: https://polymarket.com/privacy
+                - text: .
+    - navigation "Primary navigation" [ref=e2083]:
+      - generic [ref=e2085]:
+        - link "Home" [ref=e2087] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e2088]:
+            - img [ref=e2089]
+            - paragraph [ref=e2091]: Home
+        - button "Search" [ref=e2093]:
+          - img [ref=e2094]
+          - paragraph [ref=e2097]: Search
+        - link "Breaking" [ref=e2099] [cursor=pointer]:
+          - /url: /breaking
+          - generic [ref=e2100]:
+            - img [ref=e2101]
+            - paragraph [ref=e2104]: Breaking
+        - button "More menu" [ref=e2106]:
+          - img [ref=e2107]
+          - paragraph [ref=e2108]: More
+    - region "Notifications (F8)":
+      - list
+  - alert [ref=e2109]

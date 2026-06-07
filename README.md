@@ -28,7 +28,7 @@ A mobile-first Web3 platform for prediction markets. Users bet YES/NO on real-wo
 | Phase | Status |
 |---|---|
 | Brief | ✅ Done |
-| Research | 🔄 In progress |
+| Research | ✅ Done (competitive analysis, screens captured) |
 | Wireframes | ⬜ Not started |
 | Concept | ⬜ Not started |
 | Design system | ⬜ Not started |

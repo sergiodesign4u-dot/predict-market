@@ -1,0 +1,894 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - link "Skip to main content" [ref=e5] [cursor=pointer]:
+        - /url: "#__pm_main"
+      - navigation "Main" [ref=e6]:
+        - generic [ref=e7]:
+          - link "Polymarket Logo" [ref=e9] [cursor=pointer]:
+            - /url: /
+            - img "Polymarket" [ref=e10]
+          - button "Sign Up" [ref=e17] [cursor=pointer]:
+            - generic [ref=e18]: Sign Up
+        - generic [ref=e21]:
+          - link "Trending" [ref=e22] [cursor=pointer]:
+            - /url: /
+            - img [ref=e23]
+            - generic [ref=e26]: Trending
+          - link "Breaking" [ref=e27] [cursor=pointer]:
+            - /url: /breaking
+          - link "New" [ref=e28] [cursor=pointer]:
+            - /url: /new
+          - link "Politics" [ref=e29] [cursor=pointer]:
+            - /url: /politics
+            - generic [ref=e30]: Politics
+          - link "Sports" [ref=e31] [cursor=pointer]:
+            - /url: /sports/live
+            - generic [ref=e32]: Sports
+          - link "Crypto" [ref=e33] [cursor=pointer]:
+            - /url: /crypto
+            - generic [ref=e34]: Crypto
+          - link "Esports" [ref=e35] [cursor=pointer]:
+            - /url: /esports
+            - generic [ref=e36]: Esports
+          - link "Iran" [ref=e37] [cursor=pointer]:
+            - /url: /iran
+            - generic [ref=e38]: Iran
+          - link "Finance" [ref=e39] [cursor=pointer]:
+            - /url: /finance
+            - generic [ref=e40]: Finance
+          - link "Geopolitics" [ref=e41] [cursor=pointer]:
+            - /url: /geopolitics
+            - generic [ref=e42]: Geopolitics
+          - link "Tech" [ref=e43] [cursor=pointer]:
+            - /url: /tech
+            - generic [ref=e44]: Tech
+          - link "Culture" [ref=e45] [cursor=pointer]:
+            - /url: /pop-culture
+            - generic [ref=e46]: Culture
+          - link "Economy" [ref=e47] [cursor=pointer]:
+            - /url: /economy
+            - generic [ref=e48]: Economy
+          - link "Weather" [ref=e49] [cursor=pointer]:
+            - /url: /weather
+            - generic [ref=e50]: Weather
+          - link "Mentions" [ref=e51] [cursor=pointer]:
+            - /url: /mentions
+            - generic [ref=e52]: Mentions
+          - link "Elections" [ref=e53] [cursor=pointer]:
+            - /url: /elections
+            - generic [ref=e54]: Elections
+      - generic [ref=e55]:
+        - main [ref=e58]:
+          - generic [ref=e62]:
+            - generic [ref=e66]:
+              - generic [ref=e67]:
+                - 'img "icon for Balance of Power: 2026 Midterms" [ref=e72]'
+                - generic [ref=e74]:
+                  - generic [ref=e76]:
+                    - link "Politics" [ref=e77] [cursor=pointer]:
+                      - /url: /politics
+                    - generic [ref=e78]: ·
+                    - link "US Election" [ref=e79] [cursor=pointer]:
+                      - /url: /predictions/us-presidential-election
+                  - 'heading "Balance of Power: 2026 Midterms" [level=1] [ref=e80]'
+              - generic [ref=e82]:
+                - button [ref=e83] [cursor=pointer]:
+                  - img
+                - button "Add to favorites" [ref=e84]
+            - generic [ref=e88]:
+              - generic [ref=e90]:
+                - generic [ref=e92]:
+                  - generic [ref=e95]:
+                    - paragraph [ref=e98]:
+                      - text: Democrats Sweep
+                      - generic [ref=e99]: 45%
+                    - paragraph [ref=e102]:
+                      - text: R Senate, D House
+                      - generic [ref=e103]: 37%
+                    - paragraph [ref=e106]:
+                      - text: Republicans Sweep
+                      - generic [ref=e107]: 18%
+                    - paragraph [ref=e110]:
+                      - text: D Senate, R House
+                      - generic [ref=e111]: 1.8%
+                  - img "Polymarket" [ref=e113]
+                - img [ref=e118]:
+                  - generic [ref=e119]:
+                    - generic [ref=e120]:
+                      - generic [ref=e123]:
+                        - img [ref=e125]:
+                          - generic [ref=e126]: Aug
+                        - img [ref=e128]:
+                          - generic [ref=e129]: Jun
+                      - generic [ref=e132]:
+                        - img [ref=e134]:
+                          - generic [ref=e135]: 0%
+                        - img [ref=e137]:
+                          - generic [ref=e138]: 15%
+                        - img [ref=e140]:
+                          - generic [ref=e141]: 30%
+                        - img [ref=e143]:
+                          - generic [ref=e144]: 45%
+                        - img [ref=e146]:
+                          - generic [ref=e147]: 60%
+                    - button [ref=e162] [cursor=pointer]:
+                      - img [ref=e163]
+                - generic [ref=e168]:
+                  - generic [ref=e171]:
+                    - button [ref=e172]:
+                      - img [ref=e173]
+                    - paragraph [ref=e178]: $7,570,979 Vol.
+                  - tablist "Select chart window" [ref=e183]:
+                    - tab "1H" [ref=e184] [cursor=pointer]
+                    - tab "1D" [ref=e185] [cursor=pointer]
+                    - tab "1W" [ref=e186] [cursor=pointer]
+                    - tab "1M" [ref=e187] [cursor=pointer]
+                    - tab "Max" [selected] [ref=e188] [cursor=pointer]
+                  - button [ref=e190] [cursor=pointer]:
+                    - img [ref=e191]
+              - generic [ref=e194]:
+                - generic [ref=e198]:
+                  - generic [ref=e199]:
+                    - paragraph [ref=e201]: Democrats Sweep
+                    - generic [ref=e203]: $1,950,935 Vol.
+                  - paragraph [ref=e206]: 45%
+                - generic [ref=e207]:
+                  - button "Buy Yes 45¢" [ref=e208] [cursor=pointer]
+                  - button "Buy No 56¢" [ref=e209] [cursor=pointer]
+              - generic [ref=e210]:
+                - generic [ref=e214]:
+                  - generic [ref=e215]:
+                    - paragraph [ref=e217]: D Senate, R House
+                    - generic [ref=e219]: $1,117,388 Vol.
+                  - paragraph [ref=e222]: 2%
+                - generic [ref=e223]:
+                  - button "Buy Yes 1.9¢" [ref=e224] [cursor=pointer]
+                  - button "Buy No 98.2¢" [ref=e225] [cursor=pointer]
+              - generic [ref=e226]:
+                - generic [ref=e230]:
+                  - generic [ref=e231]:
+                    - paragraph [ref=e233]: R Senate, D House
+                    - generic [ref=e235]: $1,479,817 Vol.
+                  - paragraph [ref=e238]: 37%
+                - generic [ref=e239]:
+                  - button "Buy Yes 37¢" [ref=e240] [cursor=pointer]
+                  - button "Buy No 64¢" [ref=e241] [cursor=pointer]
+              - generic [ref=e242]:
+                - generic [ref=e246]:
+                  - generic [ref=e247]:
+                    - paragraph [ref=e249]: Republicans Sweep
+                    - generic [ref=e251]: $1,502,167 Vol.
+                  - paragraph [ref=e254]: 18%
+                - generic [ref=e255]:
+                  - button "Buy Yes 18¢" [ref=e256] [cursor=pointer]
+                  - button "Buy No 83¢" [ref=e257] [cursor=pointer]
+              - generic [ref=e258]:
+                - generic [ref=e262]:
+                  - generic [ref=e263]:
+                    - paragraph [ref=e265]: Other
+                    - generic [ref=e267]: $1,520,673 Vol.
+                  - paragraph [ref=e270]: 1%
+                - generic [ref=e271]:
+                  - button "Buy Yes 0.9¢" [ref=e272] [cursor=pointer]
+                  - button "Buy No 99.2¢" [ref=e273] [cursor=pointer]
+            - generic [ref=e275]:
+              - generic [ref=e276]: This market will resolve according to the result of the 2026 United States midterm elections. A party will be considered to have 'control' of the House of Representatives, if they win a majority of voting seats. A party will be considered to have 'control' of the Senate if they have more than half of the voting Senate members, or half of the voting Senate members and the Vice President. A candidate's party is determined by their ballot-listed or otherwise identifiable affiliation with that party at the time the 2026 United States midterm elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican Parties will be considered a member of one of these parties based on the party that they most recently expressed their intent to caucus with at the time the 2026 United States midterm elections are conclusively called by this market's resolution sources. If control of the House is ambiguous given the above rules, this market will resolve according to the party affiliation of the first Speaker of the US House who is selected following the 2026 United States midterm elections. If control of the Senate is ambiguous given the above rules, this market will resolve according to the party affiliation of the first Majority Leader of the US Senate who is selected following the 2026 United States midterm elections. The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources have conclusively called winners of the House and Senate in the 2026 United States midterm elections. If all three sources do not achieve consensus in calling the relevant races for this market, it will resolve based on the official certification.
+              - generic [ref=e277]: Early generic ballot polling showing a Democratic advantage of four to six points has positioned a full Democratic takeover of Congress as the leading trader consensus at 44.5 percent. Republicans’ narrow Senate map, with 23 of their seats up for election amid a 53-47 majority, sustains the 36.5 percent probability of retaining the upper chamber while losing the House. Both parties defend slim majorities ahead of the November 2026 contests, and historical midterm patterns favoring the opposition party keep the top scenarios closely bunched. Ongoing redistricting litigation in several states, upcoming primaries, and any shifts in presidential approval ratings could alter the balance before Election Day.
+              - tablist "Market information" [ref=e278]:
+                - generic [ref=e281]:
+                  - heading "Rules" [level=2] [ref=e282]:
+                    - button "Rules" [ref=e283] [cursor=pointer]
+                  - heading "Market Context" [level=2] [ref=e284]:
+                    - button "Market Context" [ref=e285] [cursor=pointer]
+              - tabpanel "Rules" [ref=e287]:
+                - generic [ref=e290] [cursor=pointer]:
+                  - generic [ref=e291]:
+                    - text: This market will resolve according to the result of the 2026 United States midterm elections.
+                    - text: A party will be considered to have 'control' of the House of Representatives, if they win a majority of voting seats.
+                    - text: A party will be considered to have 'control' of the Senate if they have more than half of the voting Senate members, or half of the voting Senate members and the Vice President.
+                    - text: A candidate's party is determined by their ballot-listed or otherwise identifiable affiliation with that party at the time the 2026 United States midterm elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican Parties will be considered a member of one of these parties based on the party that they most recently expressed their intent to caucus with at the time the 2026 United States midterm elections are conclusively called by this market's resolution sources.
+                    - text: If control of the House is ambiguous given the above rules, this market will resolve according to the party affiliation of the first Speaker of the US House who is selected following the 2026 United States midterm elections.
+                    - text: If control of the Senate is ambiguous given the above rules, this market will resolve according to the party affiliation of the first Majority Leader of the US Senate who is selected following the 2026 United States midterm elections.
+                    - text: The resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources have conclusively called winners of the House and Senate in the 2026 United States midterm elections. If all three sources do not achieve consensus in calling the relevant races for this market, it will resolve based on the official certification.
+                    - generic [ref=e293]:
+                      - generic [ref=e294]:
+                        - generic [ref=e295]:
+                          - img [ref=e296]
+                          - generic [ref=e301]: Volume
+                        - generic: $7,570,979
+                      - generic [ref=e302]:
+                        - generic [ref=e303]:
+                          - img [ref=e304]
+                          - generic [ref=e306]: End Date
+                        - generic: Nov 3, 2026
+                      - generic [ref=e307]:
+                        - generic [ref=e308]:
+                          - img [ref=e309]
+                          - generic [ref=e311]: Market Opened
+                        - generic: Jul 11, 2025, 5:04 PM ET
+                    - generic [ref=e314]:
+                      - generic [ref=e315]:
+                        - img [ref=e317]
+                        - generic:
+                          - paragraph: Resolver
+                          - link "0x2F5e3684c...":
+                            - /url: https://polygonscan.com/address/0x2F5e3684cb1F318ec51b00Edba38d79Ac2c0aA9d
+                      - generic [ref=e322]:
+                        - img [ref=e323]
+                        - paragraph [ref=e325]: We anticipate rolling out a new rewards and oracle-resolution system later this year that will generate returns on your positions, at which point there will be a simple 1-click migration.
+                  - generic [ref=e326]:
+                    - text: This market will resolve according to the result of the 2026 United States midterm elections. A party will be considered to have 'control' of the House of Representatives, if they win a majority of voting seats....
+                    - button "Show more" [ref=e327]
+            - generic [ref=e330]:
+              - heading "Related" [level=3] [ref=e331]
+              - generic [ref=e335]:
+                - button "All" [ref=e336] [cursor=pointer]
+                - button "Elections" [ref=e337] [cursor=pointer]
+                - button "Politics" [ref=e338] [cursor=pointer]
+                - button "US Election" [ref=e339] [cursor=pointer]
+                - button "Midterms" [ref=e340] [cursor=pointer]
+                - button "Trump" [ref=e341] [cursor=pointer]
+              - generic [ref=e342]:
+                - link "icon for Republicans win Trifecta with Senate Supermajority in midterms? Republicans win Trifecta with Senate Supermajority in midterms? 5%" [ref=e343] [cursor=pointer]:
+                  - /url: /event/republican-trifecta-with-supermajority-in-the-senate
+                  - generic [ref=e344]:
+                    - img "icon for Republicans win Trifecta with Senate Supermajority in midterms?" [ref=e347]
+                    - paragraph [ref=e349]: Republicans win Trifecta with Senate Supermajority in midterms?
+                    - generic [ref=e352]: 5%
+                - link "icon for Will the Republican Party hold 47 or fewer Senate seats after the 2026 midterm elections? Will the Republican Party hold 47 or fewer Senate seats after the 2026 midterm elections? 26%" [ref=e353] [cursor=pointer]:
+                  - /url: /event/republican-senate-seats-after-the-2026-midterm-elections-927
+                  - generic [ref=e354]:
+                    - img "icon for Will the Republican Party hold 47 or fewer Senate seats after the 2026 midterm elections?" [ref=e357]
+                    - paragraph [ref=e359]: Will the Republican Party hold 47 or fewer Senate seats after the 2026 midterm elections?
+                    - generic [ref=e362]: 26%
+                - link "icon for Will Democratic Senate incumbents win all their nominating elections in the 2026 cycle? Will Democratic Senate incumbents win all their nominating elections in the 2026 cycle? 72%" [ref=e363] [cursor=pointer]:
+                  - /url: /event/how-many-democratic-senate-incumbents-will-not-win-their-primary
+                  - generic [ref=e364]:
+                    - img "icon for Will Democratic Senate incumbents win all their nominating elections in the 2026 cycle?" [ref=e367]
+                    - paragraph [ref=e369]: Will Democratic Senate incumbents win all their nominating elections in the 2026 cycle?
+                    - generic [ref=e372]: 72%
+            - generic [ref=e375]:
+              - heading "Comments" [level=2] [ref=e376]:
+                - button "Comments" [ref=e377] [cursor=pointer]
+              - heading "Top Holders" [level=2] [ref=e378]:
+                - button "Top Holders" [ref=e379] [cursor=pointer]
+              - heading "Positions" [level=2] [ref=e380]:
+                - button "Positions" [ref=e381] [cursor=pointer]
+              - heading "Activity" [level=2] [ref=e382]:
+                - button "Activity" [ref=e383] [cursor=pointer]
+            - generic [ref=e387]:
+              - generic [ref=e388]:
+                - generic [ref=e391]:
+                  - textbox "Add a comment..." [ref=e392]
+                  - generic [ref=e393]:
+                    - button [ref=e394] [cursor=pointer]:
+                      - img [ref=e395]
+                    - button "Post" [disabled]
+                - generic [ref=e402]:
+                  - img [ref=e403]
+                  - paragraph [ref=e405]: Beware of external links.
+                - generic [ref=e407]:
+                  - button "sort-comments-by" [ref=e408] [cursor=pointer]:
+                    - generic [ref=e409]: Newest
+                    - img [ref=e410]
+                  - generic [ref=e412] [cursor=pointer]:
+                    - checkbox "Holders" [ref=e413]
+                    - paragraph [ref=e414]: Holders
+                - generic [ref=e415]:
+                  - article [ref=e416]:
+                    - generic [ref=e417]:
+                      - link "0x6478F21BE127Eb89dCd3370016a46eD9C3E36B2a-1779131432697" [ref=e418] [cursor=pointer]:
+                        - /url: /profile/0x6478f21be127eb89dcd3370016a46ed9c3e36b2a
+                        - generic "0x6478F21BE127Eb89dCd3370016a46eD9C3E36B2a-1779131432697" [ref=e419]:
+                          - img "0x6478F21BE127Eb89dCd3370016a46eD9C3E36B2a-1779131432697" [ref=e421]
+                      - generic [ref=e422]:
+                        - generic [ref=e423]:
+                          - generic [ref=e424]:
+                            - link "Portly-Spud-Ladl..." [ref=e426] [cursor=pointer]:
+                              - /url: /profile/0x6478f21be127eb89dcd3370016a46ed9c3e36b2a
+                            - time [ref=e427]: 3h ago
+                          - button [ref=e429] [cursor=pointer]:
+                            - img [ref=e430]
+                        - generic [ref=e436]: Metazen Pulse on X showing results across multiple strategies feels more informative than only highlighting the best trades.
+                        - button "0" [ref=e438] [cursor=pointer]:
+                          - img
+                          - generic [ref=e439]: "0"
+                  - article [ref=e440]:
+                    - generic [ref=e441]:
+                      - link "SendMeADollar" [ref=e442] [cursor=pointer]:
+                        - /url: /profile/0xcab1d3ac24e0e95de126287b8dd6e59fc2a9c691
+                        - generic "SendMeADollar" [ref=e443]:
+                          - img "SendMeADollar" [ref=e445]
+                      - generic [ref=e446]:
+                        - generic [ref=e447]:
+                          - generic [ref=e448]:
+                            - link "SendMeADollar" [ref=e450] [cursor=pointer]:
+                              - /url: /profile/0xcab1d3ac24e0e95de126287b8dd6e59fc2a9c691
+                            - time [ref=e451]: 3d ago
+                          - button [ref=e453] [cursor=pointer]:
+                            - img [ref=e454]
+                        - generic [ref=e460]: Yeah...
+                        - button "0" [ref=e462] [cursor=pointer]:
+                          - img
+                          - generic [ref=e463]: "0"
+                  - article [ref=e464]:
+                    - generic [ref=e465]:
+                      - link [ref=e466] [cursor=pointer]:
+                        - /url: /profile/0x166dcba9c87b698ba831e3c1fdeeed9991ffe24b
+                        - generic "JustTheFacts" [ref=e467]
+                      - generic [ref=e469]:
+                        - generic [ref=e470]:
+                          - generic [ref=e471]:
+                            - link "JustTheFacts" [ref=e473] [cursor=pointer]:
+                              - /url: /profile/0x166dcba9c87b698ba831e3c1fdeeed9991ffe24b
+                            - time [ref=e474]: 4d ago
+                          - button [ref=e476] [cursor=pointer]:
+                            - img [ref=e477]
+                        - generic [ref=e483]: Why would Dem sweep drop when they are winning Ohio by 8 pts?
+                        - button "0" [ref=e485] [cursor=pointer]:
+                          - img
+                          - generic [ref=e486]: "0"
+                        - button "2 Replies" [ref=e487] [cursor=pointer]:
+                          - text: 2 Replies
+                          - img
+                        - article [ref=e488]:
+                          - generic [ref=e489]:
+                            - link [ref=e490] [cursor=pointer]:
+                              - /url: /profile/0x6d044cd186b8a014f3d7da1420ab1033fcbe0e1b
+                              - generic "ItsRigg3d" [ref=e491]
+                            - generic [ref=e493]:
+                              - generic [ref=e494]:
+                                - generic [ref=e495]:
+                                  - link "ItsRigg3d" [ref=e497] [cursor=pointer]:
+                                    - /url: /profile/0x6d044cd186b8a014f3d7da1420ab1033fcbe0e1b
+                                  - time [ref=e498]: 2d ago
+                                - button [ref=e500] [cursor=pointer]:
+                                  - img [ref=e501]
+                              - generic [ref=e506]:
+                                - link "@JustTheFacts" [ref=e507] [cursor=pointer]:
+                                  - /url: /profile/0x166dcba9c87b698ba831e3c1fdeeed9991ffe24b
+                                - generic [ref=e508]: Because they're not, you're watching partisan polls
+                              - button "0" [ref=e510] [cursor=pointer]:
+                                - img
+                                - generic [ref=e511]: "0"
+                        - article [ref=e512]:
+                          - generic [ref=e513]:
+                            - link [ref=e514] [cursor=pointer]:
+                              - /url: /profile/0x166dcba9c87b698ba831e3c1fdeeed9991ffe24b
+                              - generic "JustTheFacts" [ref=e515]
+                            - generic [ref=e517]:
+                              - generic [ref=e518]:
+                                - generic [ref=e519]:
+                                  - link "JustTheFacts" [ref=e521] [cursor=pointer]:
+                                    - /url: /profile/0x166dcba9c87b698ba831e3c1fdeeed9991ffe24b
+                                  - time [ref=e522]: 2d ago
+                                - button [ref=e524] [cursor=pointer]:
+                                  - img [ref=e525]
+                              - generic [ref=e530]:
+                                - link "@ItsRigg3d" [ref=e531] [cursor=pointer]:
+                                  - /url: /profile/0x6d044cd186b8a014f3d7da1420ab1033fcbe0e1b
+                                - generic [ref=e532]: But Fabrizio is accurate lol
+                              - button "0" [ref=e534] [cursor=pointer]:
+                                - img
+                                - generic [ref=e535]: "0"
+                  - article [ref=e536]:
+                    - generic [ref=e537]:
+                      - link [ref=e538] [cursor=pointer]:
+                        - /url: /profile/0xe32d4da0d8fff443d6b5f5b4dadfc466a10f2cf6
+                        - generic "SuchtMann69" [ref=e539]
+                      - generic [ref=e541]:
+                        - generic [ref=e542]:
+                          - generic [ref=e543]:
+                            - link "SuchtMann69" [ref=e545] [cursor=pointer]:
+                              - /url: /profile/0xe32d4da0d8fff443d6b5f5b4dadfc466a10f2cf6
+                            - time [ref=e546]: 6d ago
+                          - button [ref=e548] [cursor=pointer]:
+                            - img [ref=e549]
+                        - generic [ref=e555]: Okok
+                        - button "0" [ref=e557] [cursor=pointer]:
+                          - img
+                          - generic [ref=e558]: "0"
+                  - article [ref=e559]:
+                    - generic [ref=e560]:
+                      - link [ref=e561] [cursor=pointer]:
+                        - /url: /profile/0x942b4579263c8629ede662ae05c90f7cdfd5e25e
+                        - generic "djl605" [ref=e562]
+                      - generic [ref=e564]:
+                        - generic [ref=e565]:
+                          - generic [ref=e566]:
+                            - generic [ref=e567]:
+                              - link "djl605" [ref=e568] [cursor=pointer]:
+                                - /url: /profile/0x942b4579263c8629ede662ae05c90f7cdfd5e25e
+                              - button "sort-markets-by" [disabled]:
+                                - paragraph: 4.0K R Senate, D House
+                            - time [ref=e569]: 7d ago
+                          - button [ref=e571] [cursor=pointer]:
+                            - img [ref=e572]
+                        - generic [ref=e578]: Why is the market end date November 3? Isn't it entirely possible the result won't be fully determined by midnight?
+                        - button "0" [ref=e580] [cursor=pointer]:
+                          - img
+                          - generic [ref=e581]: "0"
+                        - button "1 Replies" [ref=e582] [cursor=pointer]:
+                          - text: 1 Replies
+                          - img
+                        - article [ref=e583]:
+                          - generic [ref=e584]:
+                            - link [ref=e585] [cursor=pointer]:
+                              - /url: /profile/0xe0f1e7751df4035f78a5eb2f4296c98b4d5bc4bd
+                              - generic "CompulsiveGambler" [ref=e586]
+                            - generic [ref=e588]:
+                              - generic [ref=e589]:
+                                - generic [ref=e590]:
+                                  - generic [ref=e591]:
+                                    - link "CompulsiveGamble..." [ref=e592] [cursor=pointer]:
+                                      - /url: /profile/0xe0f1e7751df4035f78a5eb2f4296c98b4d5bc4bd
+                                    - button "sort-markets-by" [disabled]:
+                                      - paragraph: 3.8K Republicans Sweep
+                                  - time: 6d ago
+                                - button [ref=e594] [cursor=pointer]:
+                                  - img [ref=e595]
+                              - generic [ref=e600]:
+                                - link "@djl605" [ref=e601] [cursor=pointer]:
+                                  - /url: /profile/0x942b4579263c8629ede662ae05c90f7cdfd5e25e
+                                - generic [ref=e602]: End dates are fake numbers only used for search indexing, rules dropdown is what counts
+                              - button "1" [ref=e604] [cursor=pointer]:
+                                - img
+                                - generic [ref=e605]: "1"
+                  - article [ref=e606]:
+                    - generic [ref=e607]:
+                      - link [ref=e608] [cursor=pointer]:
+                        - /url: /profile/0x742a7d74c3d79fd0b2579f3f3a364e7990593f35
+                        - generic "0x742a7d74C3d79fd0B2579f3F3A364E7990593F35-1778463914717" [ref=e609]
+                      - generic [ref=e611]:
+                        - generic [ref=e612]:
+                          - generic [ref=e613]:
+                            - generic [ref=e614]:
+                              - link "Waterlogged-Mitt..." [ref=e615] [cursor=pointer]:
+                                - /url: /profile/0x742a7d74c3d79fd0b2579f3f3a364e7990593f35
+                              - button "sort-markets-by" [disabled]:
+                                - paragraph: 10 Republicans Sweep
+                            - time: 7d ago
+                          - button [ref=e617] [cursor=pointer]:
+                            - img [ref=e618]
+                        - generic [ref=e623]:
+                          - generic [ref=e624]: Republicans will control the senat seat because of voter id.. democrate have no id which mean the republican voter can go to democrate area to vote republican. Democrate cant go to Republicans seat because the voter id.. democrate was build on house of card. It will collapse
+                          - button "Read more" [ref=e626] [cursor=pointer]
+                        - button "0" [ref=e628] [cursor=pointer]:
+                          - img
+                          - generic [ref=e629]: "0"
+                        - button "3 Replies" [ref=e630] [cursor=pointer]:
+                          - text: 3 Replies
+                          - img
+                  - article [ref=e631]:
+                    - generic [ref=e632]:
+                      - link [ref=e633] [cursor=pointer]:
+                        - /url: /profile/0xb542ec25efc42066c5e9d072657ff6a5e16722fb
+                        - generic "CKAB" [ref=e634]
+                      - generic [ref=e636]:
+                        - generic [ref=e637]:
+                          - generic [ref=e638]:
+                            - link "CKAB" [ref=e640] [cursor=pointer]:
+                              - /url: /profile/0xb542ec25efc42066c5e9d072657ff6a5e16722fb
+                            - time [ref=e641]: 11d ago
+                          - button [ref=e643] [cursor=pointer]:
+                            - img [ref=e644]
+                        - generic [ref=e649]:
+                          - generic [ref=e650]: "New - Senate poll - Texas 🔵 Talarico 45% 🔴 Paxton 38% PPP #B (🔵) - LV - 5/26 MAGA is donezo and Trump is historically unpopular. Dems flip both houses and Trump becomes lame duck president. It's over."
+                          - button "Read more" [ref=e652] [cursor=pointer]
+                        - button "2" [ref=e654] [cursor=pointer]:
+                          - img
+                          - generic [ref=e655]: "2"
+                        - button "1 Replies" [ref=e656] [cursor=pointer]:
+                          - text: 1 Replies
+                          - img
+                        - article [ref=e657]:
+                          - generic [ref=e658]:
+                            - link [ref=e659] [cursor=pointer]:
+                              - /url: /profile/0x87884af641ae4ffac780fbc40bc298ccbde00e05
+                              - generic "arvinlleva94" [ref=e660]
+                            - generic [ref=e662]:
+                              - generic [ref=e663]:
+                                - generic [ref=e664]:
+                                  - generic [ref=e665]:
+                                    - link "arvinlleva94" [ref=e666] [cursor=pointer]:
+                                      - /url: /profile/0x87884af641ae4ffac780fbc40bc298ccbde00e05
+                                    - button "sort-markets-by" [ref=e667] [cursor=pointer]:
+                                      - paragraph [ref=e668]: 27.9K Republicans Sweep
+                                      - img
+                                  - time: 11d ago
+                                - button [ref=e670] [cursor=pointer]:
+                                  - img [ref=e671]
+                              - generic [ref=e676]:
+                                - link "@CKAB" [ref=e677] [cursor=pointer]:
+                                  - /url: /profile/0xb542ec25efc42066c5e9d072657ff6a5e16722fb
+                                - generic [ref=e678]: bet MONEY!!!!! come on man...
+                              - button "0" [ref=e680] [cursor=pointer]:
+                                - img
+                                - generic [ref=e681]: "0"
+                  - article [ref=e682]:
+                    - generic [ref=e683]:
+                      - link [ref=e684] [cursor=pointer]:
+                        - /url: /profile/0x25f4733499f12ec69c964a6364feed82294525bd
+                        - generic "ctyfuyfuawaewqwtry" [ref=e685]
+                      - generic [ref=e687]:
+                        - generic [ref=e688]:
+                          - generic [ref=e689]:
+                            - generic [ref=e690]:
+                              - link "ctyfuyfuawaewqwt..." [ref=e691] [cursor=pointer]:
+                                - /url: /profile/0x25f4733499f12ec69c964a6364feed82294525bd
+                              - button "sort-markets-by" [disabled]:
+                                - paragraph: 15 D Senate, R House
+                            - time: 12d ago
+                          - button [ref=e693] [cursor=pointer]:
+                            - img [ref=e694]
+                        - generic [ref=e700]: Thượng viện D, Hạ viện R
+                        - button "0" [ref=e702] [cursor=pointer]:
+                          - img
+                          - generic [ref=e703]: "0"
+                  - article [ref=e704]:
+                    - generic [ref=e705]:
+                      - link [ref=e706] [cursor=pointer]:
+                        - /url: /profile/0x2aa31ded1958d4f7f07c7b618b799287f1c20063
+                        - generic "0x2aA31dEd1958D4f7f07c7b618B799287F1c20063-1770822785169" [ref=e707]
+                      - generic [ref=e709]:
+                        - generic [ref=e710]:
+                          - generic [ref=e711]:
+                            - link "Deficient-Key" [ref=e713] [cursor=pointer]:
+                              - /url: /profile/0x2aa31ded1958d4f7f07c7b618b799287f1c20063
+                            - time [ref=e714]: 12d ago
+                          - button [ref=e716] [cursor=pointer]:
+                            - img [ref=e717]
+                        - generic [ref=e723]: jlj
+                        - button "0" [ref=e725] [cursor=pointer]:
+                          - img
+                          - generic [ref=e726]: "0"
+                  - article [ref=e727]:
+                    - generic [ref=e728]:
+                      - link [ref=e729] [cursor=pointer]:
+                        - /url: /profile/0x019471384e276fc89da5d0982bbf303624425965
+                        - generic "Yordanianatorist" [ref=e730]
+                      - generic [ref=e732]:
+                        - generic [ref=e733]:
+                          - generic [ref=e734]:
+                            - generic [ref=e735]:
+                              - link "Yordanianatorist" [ref=e736] [cursor=pointer]:
+                                - /url: /profile/0x019471384e276fc89da5d0982bbf303624425965
+                              - button "sort-markets-by" [disabled]:
+                                - paragraph: 53 Republicans Sweep
+                            - time: 13d ago
+                          - button [ref=e738] [cursor=pointer]:
+                            - img [ref=e739]
+                        - generic [ref=e745]: how one can think it will be anything but a GOP sweep.... surprises me. Is polymarket full of democrats?
+                        - button "3" [ref=e747] [cursor=pointer]:
+                          - img
+                          - generic [ref=e748]: "3"
+                        - button "3 Replies" [ref=e749] [cursor=pointer]:
+                          - text: 3 Replies
+                          - img
+                - button "Show more comments" [ref=e751] [cursor=pointer]
+              - generic [ref=e752]:
+                - heading "Frequently Asked Questions" [level=2] [ref=e753]
+                - generic [ref=e754]:
+                  - generic [ref=e755]:
+                    - 'heading "What is the \"Balance of Power: 2026 Midterms\" prediction market?" [level=3] [ref=e756]':
+                      - 'button "What is the \"Balance of Power: 2026 Midterms\" prediction market?" [ref=e757] [cursor=pointer]':
+                        - text: "What is the \"Balance of Power: 2026 Midterms\" prediction market?"
+                        - img [ref=e758]
+                    - 'region "What is the \"Balance of Power: 2026 Midterms\" prediction market?"':
+                      - generic [ref=e760]: "\"Balance of Power: 2026 Midterms\" is a prediction market on Polymarket with 5 possible outcomes where traders buy and sell shares based on what they believe will happen. The current leading outcome is \"Democrats Sweep\" at 45%, followed by \"R Senate, D House\" at 37%. Prices reflect real-time crowd-sourced probabilities. For example, a share priced at 45¢ implies that the market collectively assigns a 45% chance to that outcome. These odds shift continuously as traders react to new developments and information. Shares in the correct outcome are redeemable for $1 each upon market resolution."
+                  - generic [ref=e761]:
+                    - 'heading "How much trading activity has \"Balance of Power: 2026 Midterms\" generated on Polymarket?" [level=3] [ref=e762]':
+                      - 'button "How much trading activity has \"Balance of Power: 2026 Midterms\" generated on Polymarket?" [ref=e763] [cursor=pointer]':
+                        - text: "How much trading activity has \"Balance of Power: 2026 Midterms\" generated on Polymarket?"
+                        - img [ref=e764]
+                    - 'region "How much trading activity has \"Balance of Power: 2026 Midterms\" generated on Polymarket?"':
+                      - generic [ref=e766]: "As of today, \"Balance of Power: 2026 Midterms\" has generated $7.6 million in total trading volume since the market launched on Jul 12, 2025. This level of trading activity reflects strong engagement from the Polymarket community and helps ensure that the current odds are informed by a deep pool of market participants. You can track live price movements and trade on any outcome directly on this page."
+                  - generic [ref=e767]:
+                    - 'heading "How do I trade on \"Balance of Power: 2026 Midterms\"?" [level=3] [ref=e768]':
+                      - 'button "How do I trade on \"Balance of Power: 2026 Midterms\"?" [ref=e769] [cursor=pointer]':
+                        - text: "How do I trade on \"Balance of Power: 2026 Midterms\"?"
+                        - img [ref=e770]
+                    - 'region "How do I trade on \"Balance of Power: 2026 Midterms\"?"':
+                      - generic [ref=e772]: "To trade on \"Balance of Power: 2026 Midterms,\" browse the 5 available outcomes listed on this page. Each outcome displays a current price representing the market's implied probability. To take a position, select the outcome you believe is most likely, choose \"Yes\" to trade in favor of it or \"No\" to trade against it, enter your amount, and click \"Trade.\" If your chosen outcome is correct when the market resolves, your \"Yes\" shares pay out $1 each. If it's incorrect, they pay out $0. You can also sell your shares at any time before resolution if you want to lock in a profit or cut a loss."
+                  - generic [ref=e773]:
+                    - 'heading "What are the current odds for \"Balance of Power: 2026 Midterms\"?" [level=3] [ref=e774]':
+                      - 'button "What are the current odds for \"Balance of Power: 2026 Midterms\"?" [ref=e775] [cursor=pointer]':
+                        - text: "What are the current odds for \"Balance of Power: 2026 Midterms\"?"
+                        - img [ref=e776]
+                    - 'region "What are the current odds for \"Balance of Power: 2026 Midterms\"?"':
+                      - generic [ref=e778]: "The current frontrunner for \"Balance of Power: 2026 Midterms\" is \"Democrats Sweep\" at 45%, meaning the market assigns a 45% chance to that outcome. The next closest outcome is \"R Senate, D House\" at 37%. These odds update in real-time as traders buy and sell shares, so they reflect the latest collective view of what's most likely to happen. Check back frequently or bookmark this page to follow how the odds shift as new information emerges."
+                  - generic [ref=e779]:
+                    - 'heading "How will \"Balance of Power: 2026 Midterms\" be resolved?" [level=3] [ref=e780]':
+                      - 'button "How will \"Balance of Power: 2026 Midterms\" be resolved?" [ref=e781] [cursor=pointer]':
+                        - text: "How will \"Balance of Power: 2026 Midterms\" be resolved?"
+                        - img [ref=e782]
+                    - 'region "How will \"Balance of Power: 2026 Midterms\" be resolved?"':
+                      - generic [ref=e784]: "The resolution rules for \"Balance of Power: 2026 Midterms\" define exactly what needs to happen for each outcome to be declared a winner — including the official data sources used to determine the result. You can review the complete resolution criteria in the \"Rules\" section on this page above the comments. We recommend reading the rules carefully before trading, as they specify the precise conditions, edge cases, and sources that govern how this market is settled."
+                - button "View more" [ref=e785] [cursor=pointer]:
+                  - generic [ref=e786]: View more
+                  - img [ref=e787]
+        - contentinfo [ref=e790]:
+          - generic [ref=e792]:
+            - generic [ref=e793]:
+              - link "Polymarket" [ref=e794] [cursor=pointer]:
+                - /url: /
+                - img "Polymarket" [ref=e795]
+              - paragraph [ref=e796]: The World's Largest Prediction Market™
+            - generic [ref=e797]:
+              - generic [ref=e799]:
+                - heading "Related topics" [level=3] [ref=e800]
+                - generic [ref=e801]:
+                  - link "Primaries Predictions & odds" [ref=e802] [cursor=pointer]:
+                    - /url: /predictions/primaries
+                    - text: Primaries
+                    - generic [ref=e803]: Predictions & odds
+                  - link "President Predictions & odds" [ref=e804] [cursor=pointer]:
+                    - /url: /predictions/president
+                    - text: President
+                    - generic [ref=e805]: Predictions & odds
+                  - link "Brazil Predictions & odds" [ref=e806] [cursor=pointer]:
+                    - /url: /predictions/brazil
+                    - text: Brazil
+                    - generic [ref=e807]: Predictions & odds
+                  - link "Vance Predictions & odds" [ref=e808] [cursor=pointer]:
+                    - /url: /predictions/vance
+                    - text: Vance
+                    - generic [ref=e809]: Predictions & odds
+                  - link "Greenland Predictions & odds" [ref=e810] [cursor=pointer]:
+                    - /url: /predictions/greenland
+                    - text: Greenland
+                    - generic [ref=e811]: Predictions & odds
+                  - link "Midterms Predictions & odds" [ref=e812] [cursor=pointer]:
+                    - /url: /predictions/midterms
+                    - text: Midterms
+                    - generic [ref=e813]: Predictions & odds
+                  - link "Denmark Predictions & odds" [ref=e814] [cursor=pointer]:
+                    - /url: /predictions/denmark
+                    - text: Denmark
+                    - generic [ref=e815]: Predictions & odds
+                  - link "Istanbul Predictions & odds" [ref=e816] [cursor=pointer]:
+                    - /url: /predictions/istanbul
+                    - text: Istanbul
+                    - generic [ref=e817]: Predictions & odds
+                  - link "Hungary Predictions & odds" [ref=e818] [cursor=pointer]:
+                    - /url: /predictions/hungary
+                    - text: Hungary
+                    - generic [ref=e819]: Predictions & odds
+                  - link "Referendums Predictions & odds" [ref=e820] [cursor=pointer]:
+                    - /url: /predictions/referendums
+                    - text: Referendums
+                    - generic [ref=e821]: Predictions & odds
+                  - generic [ref=e822]:
+                    - generic [ref=e824]:
+                      - link [ref=e825] [cursor=pointer]:
+                        - /url: /predictions/referenda
+                        - text: Referenda
+                        - generic [ref=e826]: Predictions & odds
+                      - link [ref=e827] [cursor=pointer]:
+                        - /url: /predictions/thailand-cambodia
+                        - text: Thailand-Cambodia
+                        - generic [ref=e828]: Predictions & odds
+                      - link [ref=e829] [cursor=pointer]:
+                        - /url: /predictions/germany
+                        - text: Germany
+                        - generic [ref=e830]: Predictions & odds
+                      - link [ref=e831] [cursor=pointer]:
+                        - /url: /predictions/nominate
+                        - text: Nominate
+                        - generic [ref=e832]: Predictions & odds
+                      - link [ref=e833] [cursor=pointer]:
+                        - /url: /predictions/margin
+                        - text: Margin
+                        - generic [ref=e834]: Predictions & odds
+                      - link [ref=e835] [cursor=pointer]:
+                        - /url: /predictions/primary
+                        - text: Primary
+                        - generic [ref=e836]: Predictions & odds
+                      - link [ref=e837] [cursor=pointer]:
+                        - /url: /predictions/maine
+                        - text: Maine
+                        - generic [ref=e838]: Predictions & odds
+                      - link [ref=e839] [cursor=pointer]:
+                        - /url: /predictions/nevada
+                        - text: Nevada
+                        - generic [ref=e840]: Predictions & odds
+                      - link [ref=e841] [cursor=pointer]:
+                        - /url: /predictions/bolivia
+                        - text: Bolivia
+                        - generic [ref=e842]: Predictions & odds
+                      - link [ref=e843] [cursor=pointer]:
+                        - /url: /predictions/gerrymander
+                        - text: Gerrymander
+                        - generic [ref=e844]: Predictions & odds
+                    - button "View more" [ref=e845] [cursor=pointer]:
+                      - generic [ref=e846]: View more
+                      - img [ref=e847]
+              - generic [ref=e850]:
+                - heading "Popular Elections markets" [level=3] [ref=e851]
+                - generic [ref=e852]:
+                  - link "Democratic Presidential Nominee 2028" [ref=e853] [cursor=pointer]:
+                    - /url: /event/democratic-presidential-nominee-2028
+                  - link "Presidential Election Winner 2028" [ref=e854] [cursor=pointer]:
+                    - /url: /event/presidential-election-winner-2028
+                  - link "Republican Presidential Nominee 2028" [ref=e855] [cursor=pointer]:
+                    - /url: /event/republican-presidential-nominee-2028
+                  - link "Los Angeles Mayoral Election" [ref=e856] [cursor=pointer]:
+                    - /url: /event/los-angeles-mayoral-election-117
+                  - 'link "LA Mayoral Election: Who will advance to the 2nd round?" [ref=e857] [cursor=pointer]':
+                    - /url: /event/la-mayoral-election-who-will-advance-to-the-2nd-round
+                  - link "California Governor Election Winner" [ref=e858] [cursor=pointer]:
+                    - /url: /event/california-governor-election-2026
+                  - 'link "LA Mayoral Election: First Round Second Place?" [ref=e859] [cursor=pointer]':
+                    - /url: /event/la-mayoral-election-first-round-second-place
+                  - 'link "LA Mayoral Election: First Round Winner?" [ref=e860] [cursor=pointer]':
+                    - /url: /event/la-mayoral-election-first-round-winner
+                  - 'link "LA Mayoral Election: 1st Round Margin of Victory?" [ref=e861] [cursor=pointer]':
+                    - /url: /event/la-mayoral-election-1st-round-margin-of-victory
+                  - link "Which party wins 2028 US Presidential Election?" [ref=e862] [cursor=pointer]:
+                    - /url: /event/which-party-wins-2028-us-presidential-election
+                  - generic [ref=e863]:
+                    - generic [ref=e865]:
+                      - link [ref=e866] [cursor=pointer]:
+                        - /url: /event/which-party-will-win-the-senate-in-2026
+                        - text: Which party will win the Senate in 2026?
+                      - link [ref=e867] [cursor=pointer]:
+                        - /url: /event/maine-democratic-senate-primary-winner
+                        - text: Maine Democratic Senate Primary Winner
+                      - link [ref=e868] [cursor=pointer]:
+                        - /url: /event/michigan-democratic-senate-primary-winner
+                        - text: Michigan Democratic Senate Primary Winner
+                      - link [ref=e869] [cursor=pointer]:
+                        - /url: /event/republican-senate-seats-after-the-2026-midterm-elections-927
+                        - text: Republican Senate seats after the 2026 midterm elections?
+                      - link [ref=e870] [cursor=pointer]:
+                        - /url: /event/texas-senate-election-winner
+                        - text: Texas Senate Election Winner
+                      - link [ref=e871] [cursor=pointer]:
+                        - /url: /event/which-party-will-win-the-house-in-2026
+                        - text: Which party will win the House in 2026?
+                      - link [ref=e872] [cursor=pointer]:
+                        - /url: /event/democratic-vp-nominee-2028
+                        - text: Democratic VP Nominee 2028
+                      - link [ref=e873] [cursor=pointer]:
+                        - /url: /event/maine-senate-election-winner
+                        - text: Maine Senate Election Winner
+                      - link [ref=e874] [cursor=pointer]:
+                        - /url: /event/south-carolina-republican-senate-primary-winner
+                        - text: South Carolina Republican Senate Primary Winner
+                      - link [ref=e875] [cursor=pointer]:
+                        - /url: /event/alaska-governor-election-winner
+                        - text: Alaska Governor Election Winner
+                    - button "View more" [ref=e876] [cursor=pointer]:
+                      - generic [ref=e877]: View more
+                      - img [ref=e878]
+              - generic [ref=e881]:
+                - heading "New Elections markets" [level=3] [ref=e882]
+                - generic [ref=e883]:
+                  - 'link "California Governor Primary Election: San Diego County Winner" [ref=e884] [cursor=pointer]':
+                    - /url: /event/california-governor-primary-election-san-diego-county-winner
+                  - 'link "California Governor Primary Election: Santa Clara County Winner" [ref=e885] [cursor=pointer]':
+                    - /url: /event/california-governor-primary-election-santa-clara-county-winner-733
+                  - 'link "California Governor Primary Election: Orange County Winner" [ref=e886] [cursor=pointer]':
+                    - /url: /event/california-governor-primary-election-orange-county-winner
+                  - 'link "California Governor Primary Election: Los Angeles County Winner" [ref=e887] [cursor=pointer]':
+                    - /url: /event/california-governor-primary-election-los-angeles-county-winner
+                  - link "OK-04 Democratic Primary Winner" [ref=e888] [cursor=pointer]:
+                    - /url: /event/ok-04-democratic-primary-winner
+                  - link "Texas Senate Republican Primary Runoff Margin of Victory (Larger Brackets)" [ref=e889] [cursor=pointer]:
+                    - /url: /event/texas-senate-republican-primary-runoff-margin-of-victory-larger-brackets
+                  - 'link "LA Mayoral Election: Who will advance to the 2nd round?" [ref=e890] [cursor=pointer]':
+                    - /url: /event/la-mayoral-election-who-will-advance-to-the-2nd-round
+                  - 'link "LA Mayoral Election: 1st Round Margin of Victory?" [ref=e891] [cursor=pointer]':
+                    - /url: /event/la-mayoral-election-1st-round-margin-of-victory
+                  - link "First round outright winner in the LA Mayoral Election?" [ref=e892] [cursor=pointer]:
+                    - /url: /event/first-round-outright-winner-in-the-la-mayoral-election
+                  - link "California Lieutenant Governor Election Winner" [ref=e893] [cursor=pointer]:
+                    - /url: /event/california-lieutenant-governor-election-winner
+                  - generic [ref=e894]:
+                    - generic [ref=e896]:
+                      - link [ref=e897] [cursor=pointer]:
+                        - /url: /event/ga-01-democratic-primary-winner
+                        - text: GA-01 Democratic Primary Winner
+                      - link [ref=e898] [cursor=pointer]:
+                        - /url: /event/california-lieutenant-governor-primary-winner
+                        - text: Who will advance from the California Lieutenant Governor primary?
+                      - link [ref=e899] [cursor=pointer]:
+                        - /url: /event/la-mayoral-election-first-round-second-place
+                        - text: "LA Mayoral Election: First Round Second Place?"
+                      - link [ref=e900] [cursor=pointer]:
+                        - /url: /event/la-mayoral-election-first-round-winner
+                        - text: "LA Mayoral Election: First Round Winner?"
+                      - link [ref=e901] [cursor=pointer]:
+                        - /url: /event/mi-07-democratic-primary-winner
+                        - text: MI-07 Democratic Primary Winner
+                      - link [ref=e902] [cursor=pointer]:
+                        - /url: /event/ca-14-special-election-winner
+                        - text: CA-14 Special Election Winner?
+                      - link [ref=e903] [cursor=pointer]:
+                        - /url: /event/democratic-vp-nominee-2028
+                        - text: Democratic VP Nominee 2028
+                      - link [ref=e904] [cursor=pointer]:
+                        - /url: /event/republican-vp-nominee-2028
+                        - text: Republican VP Nominee 2028
+                      - link [ref=e905] [cursor=pointer]:
+                        - /url: /event/tennessee-democratic-senate-primary-winner
+                        - text: Tennessee Democratic Senate Primary Winner
+                      - link [ref=e906] [cursor=pointer]:
+                        - /url: /event/al-01-republican-primary-winner
+                        - text: AL-01 Republican Primary Winner
+                    - button "View more" [ref=e907] [cursor=pointer]:
+                      - generic [ref=e908]: View more
+                      - img [ref=e909]
+            - generic [ref=e911]:
+              - generic [ref=e912]:
+                - generic [ref=e913]:
+                  - link "Email" [ref=e914] [cursor=pointer]:
+                    - /url: mailto:hello@polymarket.com
+                    - img [ref=e915]
+                  - link "X (Twitter)" [ref=e919] [cursor=pointer]:
+                    - /url: https://x.com/Polymarket
+                    - img [ref=e920]
+                  - link "Instagram" [ref=e922] [cursor=pointer]:
+                    - /url: https://www.instagram.com/polymarket
+                    - img [ref=e923]
+                  - link "Discord" [ref=e928] [cursor=pointer]:
+                    - /url: https://discord.gg/Polymarket
+                    - img [ref=e929]
+                  - link "TikTok" [ref=e931] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@polymarket
+                    - img [ref=e932]
+                - generic [ref=e934]:
+                  - generic [ref=e935]: Adventure One QSS Inc. © 2026
+                  - generic [ref=e936]: ·
+                  - link "Privacy" [ref=e937] [cursor=pointer]:
+                    - /url: /privacy
+                  - generic [ref=e938]: ·
+                  - link "Terms of Use" [ref=e939] [cursor=pointer]:
+                    - /url: https://polymarket.com/tos
+                  - generic [ref=e940]: ·
+                  - link "Market Integrity" [ref=e941] [cursor=pointer]:
+                    - /url: https://integrity.polymarket.com/
+                  - generic [ref=e942]: ·
+                  - link "Help Center" [ref=e943] [cursor=pointer]:
+                    - /url: https://help.polymarket.com
+                  - generic [ref=e944]: ·
+                  - link "Docs" [ref=e945] [cursor=pointer]:
+                    - /url: https://docs.polymarket.com
+                - button "English" [ref=e946] [cursor=pointer]:
+                  - img [ref=e947]
+                  - generic [ref=e950]: English
+                  - img [ref=e951]
+              - paragraph [ref=e953]:
+                - text: Polymarket operates globally through separate legal entities.
+                - link "Polymarket US" [ref=e954] [cursor=pointer]:
+                  - /url: https://polymarket.us/
+                - text: is operated by QCX LLC d/b/a Polymarket US, a CFTC-regulated Designated Contract Market. This international platform is not regulated by the CFTC and operates independently. Trading involves substantial risk of loss. See our
+                - link "Terms of Service" [ref=e955] [cursor=pointer]:
+                  - /url: https://polymarket.com/tos
+                - text: "&"
+                - link "Privacy Policy" [ref=e956] [cursor=pointer]:
+                  - /url: https://polymarket.com/privacy
+                - text: .
+    - navigation "Primary navigation" [ref=e958]:
+      - generic [ref=e960]:
+        - link "Home" [ref=e962] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e963]:
+            - img [ref=e964]
+            - paragraph [ref=e966]: Home
+        - button "Search" [ref=e968]:
+          - img [ref=e969]
+          - paragraph [ref=e972]: Search
+        - link "Breaking" [ref=e974] [cursor=pointer]:
+          - /url: /breaking
+          - generic [ref=e975]:
+            - img [ref=e976]
+            - paragraph [ref=e979]: Breaking
+        - button "More menu" [ref=e981]:
+          - img [ref=e982]
+          - paragraph [ref=e983]: More
+    - region "Notifications (F8)":
+      - list
+  - alert [ref=e984]
+  - generic [ref=e985]: 60%
