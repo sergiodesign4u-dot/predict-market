@@ -1,72 +1,72 @@
 # Master Research — Prediction Market Platform
 
-> Синтез всіх фаз ресерчу. Джерело істини перед wireframes.
-> Джерела: [product-model.md](./product-model.md) · [aarrr.md](./aarrr.md) · [competitive-analysis.md](./competitive-analysis.md) · [benchmark-trust.md](./benchmark-trust.md) · [ux-patterns.md](./ux-patterns.md) · [research.md](./research.md) · [CLAUDE.md](../CLAUDE.md) · screens у `screens/`
+> Synthesis of all research phases. Source of truth before wireframes.
+> Sources: [product-model.md](./product-model.md) · [aarrr.md](./aarrr.md) · [competitive-analysis.md](./competitive-analysis.md) · [benchmark-trust.md](./benchmark-trust.md) · [ux-patterns.md](./ux-patterns.md) · [research.md](./research.md) · [CLAUDE.md](../CLAUDE.md) · screens in `screens/`
 
 ---
 
-## 1. Вступ
+## 1. Introduction
 
-### Для чого ресерч
+### Purpose of the Research
 
-Продукт — prediction market платформа (YES/NO ставки на реальні події, крипто-колатерал). Цільова аудиторія: 20–40, мобайл-фьорст, довіра — #1 цінність. MVP scope: мобільний веб, 10–20 кураторних ринків, fiat on-ramp.
+The product is a prediction market platform (YES/NO bets on real-world events, crypto collateral). Target audience: 20–40, mobile-first, trust is the #1 value. MVP scope: mobile web, 10–20 curated markets, fiat on-ramp.
 
-Мета ресерчу: зрозуміти ЩО і ДЛЯ КОГО будуємо, які рішення вже існують і де є gap, що перенести в MVP з best-in-class продуктів і яку UX-архітектуру обрати.
+Research goal: understand WHAT and FOR WHOM we're building, what solutions already exist and where the gap is, what to carry into MVP from best-in-class products, and which UX architecture to choose.
 
-### Що вирішуємо
+### What We're Solving
 
-**Проблема:** жоден існуючий prediction market не вирішив onboarding для "звичайного" юзера без Web3-гаманця. Polymarket — CLOB на Polygon, вхід через MetaMask або 8+ wallet-іконок. Kalshi — USD фіат, але US-only. Інші або play money, або нішеві.
+**Problem:** no existing prediction market has solved onboarding for the "ordinary" user without a Web3 wallet. Polymarket — CLOB on Polygon, entry via MetaMask or 8+ wallet icons. Kalshi — USD fiat, but US-only. Others are either play money or niche.
 
-**Наша відповідь:** стати найзрозумілішою prediction market для News Junkie (25–40, слідкує за новинами, не обов'язково в крипто). Диференціатор — story-driven UX, fiat on-ramp без Web3-бар'єру і довіра через прозорість а не регуляторні бейджі.
+**Our answer:** become the most understandable prediction market for the News Junkie (25–40, follows the news, not necessarily into crypto). Differentiator — story-driven UX, fiat on-ramp without a Web3 barrier, and trust through transparency rather than regulatory badges.
 
-### Як вирішуємо
+### How We're Solving It
 
-- JTBD J2 primary: "engaged spectator with skin in the game" — слідкувати за подіями з реальною ставкою
-- UX-архітектура: Story-driven Discovery — подія = narrative unit (контекст + механіка + ставка)
-- Trust-стратегія: конкретна обіцянка захисту коштів + on-chain прозорість (замість FSCS/SIPC які неможливі)
-- Revenue: ~2% fee з виграшів (не з входу) — психологічно м'якший варіант
+- JTBD J2 primary: "engaged spectator with skin in the game" — follow events with a real stake
+- UX architecture: Story-driven Discovery — event = narrative unit (context + mechanics + bet)
+- Trust strategy: concrete promise of funds protection + on-chain transparency (instead of FSCS/SIPC, which are unavailable)
+- Revenue: ~2% fee on winnings (not on entry) — psychologically softer
 
-### Що вирішили (ключові висновки)
+### What We Decided (Key Conclusions)
 
-1. News Junkie — primary сегмент. Найбільший, fiat on-ramp знімає бар'єр, прямо в JTBD J2.
-2. Жоден конкурент не пояснює "чому ціна така" — це наш диференціатор і причина Story-driven.
-3. Activation — найбільший ризик. Fiat first + guided first bet — пріоритет MVP.
-4. Регуляторні бейджі (FSCS/SIPC) нам недоступні — замінюємо on-chain прозорістю.
-5. CLOB vs AMM — відкрите питання для MVP. Для старту з нуля AMM реалістичніший (немає проблеми ліквідності), але CLOB дає чесніші ціни. [?]
+1. News Junkie — primary segment. Largest audience, fiat on-ramp removes the barrier, directly aligned with JTBD J2.
+2. No competitor explains "why is the price this?" — this is our differentiator and the reason for Story-driven.
+3. Activation — the biggest risk. Fiat first + guided first bet — MVP priority.
+4. Regulatory badges (FSCS/SIPC) are unavailable to us — replaced with on-chain transparency.
+5. CLOB vs AMM — open question for MVP. For a cold start AMM is more realistic (no liquidity problem), but CLOB gives fairer prices. [?]
 
 ---
 
 ## 2. Product Model
 
-*Джерело: [product-model.md](./product-model.md)*
+*Source: [product-model.md](./product-model.md)*
 
 ### Objectives
 
-| # | Ціль | Метрика |
+| # | Goal | Metric |
 |---|---|---|
-| O1 | Довірена платформа для PM за межами США | MAU, NPS, retention 30d |
-| O2 | Web3-беттінг для юзерів без крипто-досвіду | % юзерів без попереднього гаманця що дійшли до першої ставки |
-| O3 | Залучена спільнота навколо подій | DAU/MAU ratio, shares/user |
-| O4 | Стабільний trading volume | Monthly trading volume, revenue per user |
+| O1 | Trusted platform for PM outside the US | MAU, NPS, retention 30d |
+| O2 | Web3 betting for users without crypto experience | % of users without a prior wallet who completed their first bet |
+| O3 | Engaged community around events | DAU/MAU ratio, shares/user |
+| O4 | Stable trading volume | Monthly trading volume, revenue per user |
 
 ---
 
-### Аудиторія — 3 сегменти
+### Audience — 3 Segments
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        НАША АУДИТОРІЯ                          │
+│                        OUR AUDIENCE                             │
 ├──────────────────┬──────────────────┬───────────────────────────┤
 │   Crypto Native  │  News Junkie ★   │   Crossover Bettor        │
 │     22–35        │     25–40        │        28–42              │
 ├──────────────────┼──────────────────┼───────────────────────────┤
-│ Вже в Web3.      │ Слідкує за       │ Ставить на спорт.         │
-│ MetaMask є.      │ новинами. Крипто │ Шукає більш               │
-│ Знає DeFi.       │ не обов'язково.  │ інтелектуальні ринки.     │
+│ Already in Web3. │ Follows the      │ Bets on sports.           │
+│ Has MetaMask.    │ news. Crypto not │ Looking for more          │
+│ Knows DeFi.      │ required.        │ intellectual markets.     │
 ├──────────────────┼──────────────────┼───────────────────────────┤
-│ Монетизувати     │ Довести що       │ Нова арена де важить      │
-│ крипто-знання    │ правий на        │ аналіз, не везіння        │
-│                  │ поточних подіях  │                           │
+│ Monetize         │ Prove they're    │ New arena where           │
+│ crypto knowledge │ right on current │ analysis matters,         │
+│                  │ events           │ not luck                  │
 ├──────────────────┼──────────────────┼───────────────────────────┤
 │ 🥈 Secondary     │ 🥇 PRIMARY       │ 🥉 Later (post-MVP)       │
 └──────────────────┴──────────────────┴───────────────────────────┘
@@ -74,7 +74,7 @@
 
 ---
 
-### AIDA по сегментах
+### AIDA by Segment
 
 ```
 ATTENTION  →  INTEREST  →  DESIRE  →  ACTION
@@ -82,358 +82,358 @@ ATTENTION  →  INTEREST  →  DESIRE  →  ACTION
 
 | | Crypto Native | News Junkie ★ | Crossover Bettor |
 |---|---|---|---|
-| **Attention** | Twitter/X, крипто-медіа | SEO, новинні агрегатори | Беттінг-спільноти, реферали |
-| **Message** | "Ринок каже 34% — а ти що думаєш?" | "Хто переможе? Ринок знає — і ти можеш заробити" | "Більше ринків, більше скілу" |
-| **Interest** | Обсяги, ліквідність, графік | Живі події, контекст, як працюють одс | Різноманітність ринків, чіткі правила |
-| **Desire** | Великий volume + вигідний курс YES/NO | Подія яку вже обговорює + "2 хвилини" | Порівняння з букмекерськими одс |
-| **Action** | Підключити гаманець → USDC → bet | Google/Email → fiat card → bet | Google/Email → fiat card → bet |
+| **Attention** | Twitter/X, crypto media | SEO, news aggregators | Betting communities, referrals |
+| **Message** | "The market says 34% — what do you think?" | "Who will win? The market knows — and you can earn" | "More markets, more skill" |
+| **Interest** | Volume, liquidity, chart | Live events, context, how odds work | Variety of markets, clear rules |
+| **Desire** | High volume + favorable YES/NO rate | An event they're already discussing + "2 minutes" | Comparison with bookmaker odds |
+| **Action** | Connect wallet → USDC → bet | Google/Email → fiat card → bet | Google/Email → fiat card → bet |
 
 ---
 
-### Зв'язок AIDA ↔ AARRR
+### AIDA ↔ AARRR Connection
 
-| AIDA | AARRR | Продуктовий фокус |
+| AIDA | AARRR | Product Focus |
 |---|---|---|
-| Attention | Acquisition | SEO, Twitter, медіа |
-| Interest | Acquisition → Activation | Онбординг, перший ринок |
+| Attention | Acquisition | SEO, Twitter, media |
+| Interest | Acquisition → Activation | Onboarding, first market |
 | Desire | Activation | Guided first bet, fiat on-ramp |
-| Actions | Activation → Retention → Referral | Перша ставка, нотифікації, share card |
+| Actions | Activation → Retention → Referral | First bet, notifications, share card |
 
 ---
 
 ## 3. AARRR Model
 
-*Джерело: [aarrr.md](./aarrr.md)*
+*Source: [aarrr.md](./aarrr.md)*
 
-### Воронка
+### Funnel
 
 ```
-ACQUISITION ──────────────────────────────────────── нові реєстрації/тиждень
+ACQUISITION ──────────────────────────────────────── new registrations/week
      │
-     ↓  [ ризик: дропаут на реєстрації ]
+     ↓  [ risk: dropout at registration ]
      │
-ACTIVATION ───────────────────────── ціль: >40% першої ставки у перші 24 год
+ACTIVATION ───────────────────────── goal: >40% first bet within first 24 hrs
      │
-     │  ШЛЯХ ДО AHA MOMENT:
-     │  Зайшов → Зареєструвався → Верифікував email
-     │  → Fiat on-ramp → Знайшов ринок
-     │  → Зрозумів механіку → Поставив ★ AHA
+     │  PATH TO AHA MOMENT:
+     │  Arrived → Registered → Verified email
+     │  → Fiat on-ramp → Found a market
+     │  → Understood the mechanics → Placed bet ★ AHA
      │
-     ↓  [ ризик: програш першої ставки → не повертається ]
+     ↓  [ risk: losing first bet → doesn't return ]
      │
-RETENTION ──────────── день 7: >30% активних │ день 30: >15% активних
+RETENTION ──────────── day 7: >30% active │ day 30: >15% active
      │
-     │  Три рівні повернення:
-     │  Гарячий (1-3 дні): рух одс → нотифікація
-     │  Теплий (4-14 дні): нова подія у категорії
-     │  Холодний (15+ дні): resolution + виграш
-     │
-     ↓
-REVENUE ─────────────────────────────────── ~2% fee з виграшів (варіант B)
-     │
-     │  Чому з виграшу, не з входу:
-     │  Вхід: поставив $100 → у грі $98 → біль одразу
-     │  Вихід: виграв $150 → отримав $147 → платиш коли заробив ✓
+     │  Three levels of return:
+     │  Hot (1-3 days): odds movement → notification
+     │  Warm (4-14 days): new event in category
+     │  Cold (15+ days): resolution + win
      │
      ↓
-REFERRAL ────────────────────── ціль: >20% нових юзерів через шеринг
+REVENUE ─────────────────────────────────── ~2% fee on winnings (option B)
+     │
+     │  Why on winnings, not on entry:
+     │  Entry: bet $100 → in play $98 → pain immediately
+     │  Exit: won $150 → received $147 → pay when you earned ✓
+     │
+     ↓
+REFERRAL ────────────────────── goal: >20% new users via sharing
           │
-          Share card    Referral бонус    Public profile
-          (Robinhood)   ($5 обом)         (Metaculus-стиль)
+          Share card    Referral bonus    Public profile
+          (Robinhood)   ($5 for both)     (Metaculus-style)
 ```
 
 ---
 
-### Зведена таблиця метрик
+### Summary Metrics Table
 
-| Етап | Ключова метрика | Ціль |
+| Stage | Key Metric | Goal |
 |---|---|---|
-| Acquisition | Нові реєстрації / тиждень | — [?] |
-| Activation | % першої ставки у перші 24 год | >40% |
-| Retention D7 | % активних на 7-й день | >30% |
-| Retention D30 | % активних на 30-й день | >15% |
-| Revenue | Trading volume / місяць | — [?] |
-| Referral | % нових юзерів через шеринг | >20% |
+| Acquisition | New registrations / week | — [?] |
+| Activation | % first bet within 24 hrs | >40% |
+| Retention D7 | % active on day 7 | >30% |
+| Retention D30 | % active on day 30 | >15% |
+| Revenue | Trading volume / month | — [?] |
+| Referral | % new users via sharing | >20% |
 
-*Цілі — гіпотези, потребують валідації після запуску MVP. [aarrr.md](./aarrr.md)*
+*Goals are hypotheses, require validation after MVP launch. [aarrr.md](./aarrr.md)*
 
 ---
 
-### Продуктові рішення по етапах
+### Product Decisions by Stage
 
-| Етап | Рішення для MVP |
+| Stage | MVP Decision |
 |---|---|
-| Acquisition | Кожен ринок = SEO-сторінка з og:image динамічним одс |
-| Activation | Fiat on-ramp на першому екрані після реєстрації + guided first bet з прогрес-баром |
-| Retention | Розумні нотифікації (рух ціни + дедлайн) + персональна стрічка по категоріях |
-| Revenue | Комісія явно до підтвердження: "Платформа заробить $0.40 якщо ти виграєш" |
-| Referral | Share card після кожного resolution (авто-генерація) |
+| Acquisition | Every market = SEO page with dynamic og:image odds |
+| Activation | Fiat on-ramp on the first screen after registration + guided first bet with progress bar |
+| Retention | Smart notifications (price movement + deadline) + personal feed by category |
+| Revenue | Commission explicitly shown before confirmation: "The platform earns $0.40 if you win" |
+| Referral | Share card after every resolution (auto-generated) |
 
 ---
 
-## 4. Конкуренти
+## 4. Competitors
 
-*Джерела: [competitive-analysis.md](./competitive-analysis.md) · [research.md](./research.md) · screens у `screens/`*
+*Sources: [competitive-analysis.md](./competitive-analysis.md) · [research.md](./research.md) · screens in `screens/`*
 
-### Матриця по осях
+### Matrix by Axis
 
-| Вісь | Polymarket | Kalshi | Manifold | Futuur | Metaculus |
+| Axis | Polymarket | Kalshi | Manifold | Futuur | Metaculus |
 |---|---|---|---|---|---|
-| **Аудиторія** | Крипто-нейтіви, DeFi, глобально (не США) | США, TradFi, mainstream | Глобально, без бар'єру | Глобально, крипто + fiat hybrid | Аналітики, policy-спільнота |
-| **Основа продукту** | CLOB на Polygon, pUSD (USDC) | CFTC-регульована біржа, USD фіат | Play money (Mana Ṁ), user-created markets | Крипто + fiat hybrid | Без грошей — forecasting + репутація |
-| **Ключові механізми** | Conditional Token Framework, order book matching | Order book, ціна в центах (82¢/19¢), regulated settlement | AMM, AI-generated context, community resolution | Probability bars per outcome | Aggregated forecast, calibration scoring |
-| **Довіра** | On-chain прозорість, UMA resolution, $7.5B+ volume | CFTC-регуляція — найвища в жанрі | Нульовий ризик грошей = нульова тривога | Менш відомий, малий трек-рекорд | Академічна точність ~4% відхилення |
-| **Монетизація** | ~2% fee з виграшів + maker/taker rebates | Exchange fees (maker/taker) | Prize pool USDC, без fees на Mana | Комісія з ставок (% не публічний) [?] | Гранти, інституційні партнерства |
+| **Audience** | Crypto natives, DeFi, global (not US) | US, TradFi, mainstream | Global, no barrier | Global, crypto + fiat hybrid | Analysts, policy community |
+| **Product foundation** | CLOB on Polygon, pUSD (USDC) | CFTC-regulated exchange, USD fiat | Play money (Mana Ṁ), user-created markets | Crypto + fiat hybrid | No money — forecasting + reputation |
+| **Key mechanics** | Conditional Token Framework, order book matching | Order book, price in cents (82¢/19¢), regulated settlement | AMM, AI-generated context, community resolution | Probability bars per outcome | Aggregated forecast, calibration scoring |
+| **Trust** | On-chain transparency, UMA resolution, $7.5B+ volume | CFTC regulation — highest in the genre | Zero money risk = zero anxiety | Less known, small track record | Academic accuracy ~4% deviation |
+| **Monetization** | ~2% fee on winnings + maker/taker rebates | Exchange fees (maker/taker) | Prize pool USDC, no fees on Mana | Commission on bets (% not public) [?] | Grants, institutional partnerships |
 
-*Скріни: [polymarket-home-mobile.png](./screens/polymarket-home-mobile.png) · [kalshi-home-mobile.png](./screens/kalshi-home-mobile.png) · [manifold-home-mobile.png](./screens/manifold-home-mobile.png) · [futuur-home-mobile.png](./screens/futuur-home-mobile.png) · [metaculus-home-mobile.png](./screens/metaculus-home-mobile.png)*
-
----
-
-### 3 Спільні патерни (є у всіх)
-
-**1. Горизонтальна категорійна навігація + bottom tab bar**
-Polymarket (4 таби), Kalshi (4 таби), Manifold (5 табів), Futuur (3 таби) — всі використовують цей паттерн. Де-факто стандарт жанру. Відсутність = непізнавана платформа.
-*Джерело: [research.md — Navigation patterns](./research.md)*
-
-**2. Відсоток ймовірності як головне число**
-На кожній картці і детальному екрані — % стоїть над усім: назвою події, обсягом, часом. Це "ціна" ринку і "стан гри" водночас.
-*Скріни: [polymarket-event-detail-mobile.png](./screens/polymarket-event-detail-mobile.png) · [kalshi-market-detail-mobile.png](./screens/kalshi-market-detail-mobile.png)*
-
-**3. Графік зміни ймовірності в часі**
-Від лінійного (Manifold) до свічкового (Kalshi). Динаміка = залученість — люди повертаються дивитись чи їхня позиція "в плюсі".
-*Скріни: [kalshi-market-detail-mobile.png](./screens/kalshi-market-detail-mobile.png) · [manifold-market-detail-mobile.png](./screens/manifold-market-detail-mobile.png)*
+*Screenshots: [polymarket-home-mobile.png](./screens/polymarket-home-mobile.png) · [kalshi-home-mobile.png](./screens/kalshi-home-mobile.png) · [manifold-home-mobile.png](./screens/manifold-home-mobile.png) · [futuur-home-mobile.png](./screens/futuur-home-mobile.png) · [metaculus-home-mobile.png](./screens/metaculus-home-mobile.png)*
 
 ---
 
-### 3 Ключові відмінності
+### 3 Common Patterns (present in all)
 
-**1. Механіка ціноутворення: CLOB vs AMM vs Community**
-- Polymarket + Kalshi → order book (CLOB): ціна з зустрічних ордерів — "чесна" але вимагає ліквідності
-- Manifold → AMM: ринок завжди є, але курс може бути гіршим
-- Metaculus → агрегат прогнозів без торгівлі
-→ Для MVP з нуля: AMM реалістичніший (немає проблеми "курки і яйця"). CLOB на масштабі. [?]
+**1. Horizontal category navigation + bottom tab bar**
+Polymarket (4 tabs), Kalshi (4 tabs), Manifold (5 tabs), Futuur (3 tabs) — all use this pattern. De-facto genre standard. Its absence = unrecognizable platform.
+*Source: [research.md — Navigation patterns](./research.md)*
 
-**2. Реальні гроші vs Play money vs Crypto**
-- Kalshi: USD фіат, CFTC — найвища довіра, але US-only
-- Polymarket: USDC на Polygon — глобальний, але Web3-бар'єр
-- Manifold: play money — нульовий бар'єр, нульова ставка
-→ Hybrid (Futuur): теоретично найширший охват, але незрозуміло як реалізовано [?]
+**2. Probability percentage as the main number**
+On every card and detail screen — % sits above everything: the event name, volume, time. It's the market "price" and "game state" simultaneously.
+*Screenshots: [polymarket-event-detail-mobile.png](./screens/polymarket-event-detail-mobile.png) · [kalshi-market-detail-mobile.png](./screens/kalshi-market-detail-mobile.png)*
 
-**3. Хто створює ринки**
-- Polymarket, Kalshi: команда — контроль якості, менше ринків
-- Manifold: будь-який юзер — тисячі ринків, якість різна
-→ Для MVP: platform-created = curated і trustworthy. Масштаб — після.
+**3. Probability-over-time chart**
+From line chart (Manifold) to candlestick (Kalshi). Movement = engagement — people come back to see if their position is "in the green."
+*Screenshots: [kalshi-market-detail-mobile.png](./screens/kalshi-market-detail-mobile.png) · [manifold-market-detail-mobile.png](./screens/manifold-market-detail-mobile.png)*
 
 ---
 
-### Що відсутнє у всіх конкурентів (наш gap)
+### 3 Key Differences
 
-| Gap | Хто страждає найбільше |
+**1. Pricing mechanics: CLOB vs AMM vs Community**
+- Polymarket + Kalshi → order book (CLOB): price from matching orders — "fair" but requires liquidity
+- Manifold → AMM: market always exists, but the rate may be worse
+- Metaculus → aggregate of forecasts, no trading
+→ For MVP from scratch: AMM is more realistic (no "chicken-and-egg" problem). CLOB at scale. [?]
+
+**2. Real money vs Play money vs Crypto**
+- Kalshi: USD fiat, CFTC — highest trust, but US-only
+- Polymarket: USDC on Polygon — global, but with a Web3 barrier
+- Manifold: play money — zero barrier, zero stakes
+→ Hybrid (Futuur): theoretically the widest reach, but how it's implemented is unclear [?]
+
+**3. Who creates markets**
+- Polymarket, Kalshi: team — quality control, fewer markets
+- Manifold: any user — thousands of markets, varying quality
+→ For MVP: platform-created = curated and trustworthy. Scale comes later.
+
+---
+
+### What's Missing Across All Competitors (our gap)
+
+| Gap | Who suffers most |
 |---|---|
-| Немає "чому ця ціна?" — ніхто не пояснює що рухає одс | News Junkie, новий юзер |
-| Слабкий onboarding — немає guided first bet | Всі нові юзери |
-| Ринки ізольовані від новинного контексту | News Junkie |
-| Trust signals заховані — resolution rules важко знайти | Новий юзер |
-| Поганий P&L display — незрозуміло потенційний виграш | Всі |
+| No "why this price?" — no one explains what drives odds | News Junkie, new user |
+| Weak onboarding — no guided first bet | All new users |
+| Markets are isolated from news context | News Junkie |
+| Trust signals are buried — resolution rules are hard to find | New user |
+| Poor P&L display — potential winnings are unclear | All |
 
-*Джерело: [research.md — What's missing](./research.md)*
+*Source: [research.md — What's missing](./research.md)*
 
 ---
 
 ## 5. Benchmark: Trust & First-Time Credibility
 
-*Джерело: [benchmark-trust.md](./benchmark-trust.md) · скріни: coinbase-trust.png · revolut-trust.png · robinhood-trust.png*
+*Source: [benchmark-trust.md](./benchmark-trust.md) · screenshots: coinbase-trust.png · revolut-trust.png · robinhood-trust.png*
 
-### Чому Trust як вимір
+### Why Trust as a Dimension
 
-Trust — #1 цінність аудиторії (20–40, реальні гроші, fintech). Саме тут конкуренти найслабші (Polymarket: 19/40). Саме звідси ростуть рішення для wireframes. *[CLAUDE.md]*
+Trust is the #1 value for the audience (20–40, real money, fintech). This is exactly where competitors are weakest (Polymarket: 19/40). This is exactly where decisions for wireframes come from. *[CLAUDE.md]*
 
-### Оцінка (1–5, 8 критеріїв × 5 продуктів)
+### Scores (1–5, 8 criteria × 5 products)
 
-| Критерій | Revolut | Coinbase | Robinhood | Kalshi | Polymarket |
+| Criterion | Revolut | Coinbase | Robinhood | Kalshi | Polymarket |
 |---|:---:|:---:|:---:|:---:|:---:|
-| C1 Регуляторна прозорість | 5 | 5 | 4 | 5 | 2 |
-| C2 Захист коштів | 5 | 5 | 4 | 4 | 1 |
-| C3 Прозорість комісій до дії | 4 | 3 | **5** | 3 | 2 |
-| C4 Соціальний доказ | **5** | **5** | 4 | 3 | 4 |
-| C5 Ясність першого враження | 4 | 4 | **5** | 4 | 3 |
-| C6 Тертя онбордингу | 3 | 3 | 3 | 2 | 2 |
-| C7 Комунікація ризиків | 3 | 4 | 3 | 4 | 3 |
-| C8 Ясність resolution / правил | 3 | 4 | 3 | 3 | 2 |
-| **СУМА** | **32** | **33** | **31** | **28** | **19** |
+| C1 Regulatory transparency | 5 | 5 | 4 | 5 | 2 |
+| C2 Funds protection | 5 | 5 | 4 | 4 | 1 |
+| C3 Fee transparency before action | 4 | 3 | **5** | 3 | 2 |
+| C4 Social proof | **5** | **5** | 4 | 3 | 4 |
+| C5 Clarity of first impression | 4 | 4 | **5** | 4 | 3 |
+| C6 Onboarding friction | 3 | 3 | 3 | 2 | 2 |
+| C7 Risk communication | 3 | 4 | 3 | 4 | 3 |
+| C8 Resolution / rules clarity | 3 | 4 | 3 | 3 | 2 |
+| **TOTAL** | **32** | **33** | **31** | **28** | **19** |
 
-*Kalshi слабка по C6 (тертя онбордингу) — авто-модал при вході агресивний. Polymarket слабка по C2 (захист коштів) — жодного пояснення де і як зберігаються USDC.*
-*Скріни: [screens/coinbase-trust-signals.png](./screens/coinbase-trust-signals.png) · [screens/revolut-trust.png](./screens/revolut-trust.png)*
-
----
-
-### Топ-3 механізми для MVP
-
-**1. Конкретна обіцянка захисту коштів (від Coinbase, C2: 5/5)**
-> "Ваші USDC зберігаються 1:1. Ми ніколи не позичаємо їх без вашого дозволу."
-
-Де використати: екран першого депозиту + "How it works". Не юридичний текст — одне просте речення.
-Чому працює: закриває головний страх нового юзера до того як він його озвучив.
-*Скріни: [screens/coinbase-trust-signals.png](./screens/coinbase-trust-signals.png)*
-
-**2. Соціальний доказ як блок на головній (від Revolut, C4: 5/5)**
-> "$X торгів · N юзерів · Рейтинг Y"
-
-Де використати: головна, після hero, до списку ринків. Компактний блок.
-Чому працює: "якщо стільки людей довіряють — можна спробувати" — знижує тривогу новачка.
-*Скріни: [screens/revolut-trust.png](./screens/revolut-trust.png) — 75M+ customers, Trustpilot 4.7, 5 нагород в одному блоці*
-
-**3. Fee transparency у момент дії (від Robinhood, C3: 5/5)**
-> "Платформа заробить $0.40 якщо ти виграєш"
-
-Де використати: confirmation screen перед відправкою ставки.
-Чому працює: прихована комісія — перша причина відтоку. Прозорість у момент найбільшої тривоги = довіра.
-*Скріни: [screens/robinhood-trust.png](./screens/robinhood-trust.png)*
+*Kalshi is weak on C6 (onboarding friction) — auto-modal on entry is aggressive. Polymarket is weak on C2 (funds protection) — no explanation of where and how USDC is stored.*
+*Screenshots: [screens/coinbase-trust-signals.png](./screens/coinbase-trust-signals.png) · [screens/revolut-trust.png](./screens/revolut-trust.png)*
 
 ---
 
-### 1 механізм який НЕ спрацює
+### Top 3 Mechanisms for MVP
 
-**Регуляторні бейджі FSCS / SIPC / FDIC / CFTC**
+**1. Concrete promise of funds protection (from Coinbase, C2: 5/5)**
+> "Your USDC is held 1:1. We never lend it without your permission."
 
-Revolut (FSCS), Robinhood (SIPC/FINRA), Kalshi (CFTC) — у всіх є офіційні щити регулятора на головній.
-Ми не є банком або брокером — ці бейджі недоступні без реальної ліцензії.
-Якщо показати схожі елементи без підкладки — знищить довіру у момент перевірки. FTX будував "банківський вигляд" без банківських гарантій — результат відомий.
+Where to use: first deposit screen + "How it works." Not legal text — one simple sentence.
+Why it works: closes the new user's primary fear before they even voice it.
+*Screenshots: [screens/coinbase-trust-signals.png](./screens/coinbase-trust-signals.png)*
 
-**Альтернатива:** on-chain прозорість: "Всі розрахунки на блокчейні. Ти можеш перевірити кожну транзакцію." Це чесний еквівалент для crypto-native платформи.
+**2. Social proof as a block on the homepage (from Revolut, C4: 5/5)**
+> "$X traded · N users · Rating Y"
+
+Where to use: homepage, after hero, before market list. Compact block.
+Why it works: "if so many people trust it — it must be worth trying" — reduces newcomer anxiety.
+*Screenshots: [screens/revolut-trust.png](./screens/revolut-trust.png) — 75M+ customers, Trustpilot 4.7, 5 awards in one block*
+
+**3. Fee transparency at the moment of action (from Robinhood, C3: 5/5)**
+> "The platform earns $0.40 if you win"
+
+Where to use: confirmation screen before submitting the bet.
+Why it works: hidden fees are the #1 cause of churn. Transparency at the moment of highest anxiety = trust.
+*Screenshots: [screens/robinhood-trust.png](./screens/robinhood-trust.png)*
+
+---
+
+### 1 Mechanism That Will NOT Work
+
+**Regulatory badges FSCS / SIPC / FDIC / CFTC**
+
+Revolut (FSCS), Robinhood (SIPC/FINRA), Kalshi (CFTC) — all have official regulator shields on their homepage.
+We are not a bank or broker — these badges are unavailable without a real license.
+Displaying similar elements without the backing will destroy trust the moment it's checked. FTX built a "banking look" without banking guarantees — the outcome is well known.
+
+**Alternative:** on-chain transparency: "All settlements are on the blockchain. You can verify every transaction." This is the honest equivalent for a crypto-native platform.
 *[benchmark-trust.md]*
 
 ---
 
-## 6. UX Патерни
+## 6. UX Patterns
 
-*Джерело: [ux-patterns.md](./ux-patterns.md)*
+*Source: [ux-patterns.md](./ux-patterns.md)*
 
-### Поведінкові патерни аудиторії
+### Audience Behavioral Patterns
 
-| Патерн | Опис | Ключовий для нас |
+| Pattern | Description | Key for us |
 |---|---|---|
-| **Event-triggered arrival** | Юзер приходить коли щось відбувається — вибори, крипто-рух, скандал | ★ КЛЮЧОВИЙ |
-| Knowledge validation | Юзер вже має думку і йде перевірити чи ринок погоджується | News Junkie + Crypto Native |
-| Position monitoring | Повертається дивитись чи ціна рухається в його бік | Після першої ставки |
-| Value hunting | Шукає де ринок "помиляється" | Crypto Native, Crossover |
-| Social sharing | Хоче показати прогноз/виграш — підтвердження правоти | Всі, особливо News Junkie |
+| **Event-triggered arrival** | User arrives when something happens — elections, a crypto move, a scandal | ★ KEY |
+| Knowledge validation | User already has an opinion and comes to check whether the market agrees | News Junkie + Crypto Native |
+| Position monitoring | Comes back to see if the price is moving their way | After the first bet |
+| Value hunting | Looking for where the market is "wrong" | Crypto Native, Crossover |
+| Social sharing | Wants to show their prediction/win — confirmation of being right | All, especially News Junkie |
 
-**Event-triggered arrival — ключовий для всіх сегментів.** Точка входу. Від того як зустрічаємо юзера "з новини" залежить activation і перша ставка.
+**Event-triggered arrival — key for all segments.** Entry point. How we greet the user "from the news" determines activation and the first bet.
 
 ---
 
-### 5 Принципово різних UX-патернів
+### 5 Fundamentally Different UX Patterns
 
-| # | Патерн | Як працює | Коли підходить | Коли ламається |
+| # | Pattern | How it works | When it fits | When it breaks |
 |---|---|---|---|---|
-| 1 | **Event Feed** | Алгоритмічний/хронологічний фід карток. Юзер скролить. | Мобайл, > 20 ринків, повторна сесія | < 20 ринків = порожньо. Новий юзер не розуміє сортування |
-| 2 | **Market Board** | Таблиця всіх ринків: ціна, обсяг, 24h зміна. Фільтри — основна навігація | Досвідчені юзери, J3-сегмент | Новачки йдуть. Вбиває емоційний зв'язок з подією |
-| 3 | **Story-driven Discovery** | Подія = narrative unit: контекст + чому важливо + що каже ринок + CTA | News Junkie, перший контакт | Довший шлях до дії. Вимагає редакції або AI |
-| 4 | **Portfolio-first** | Перший екран — активні позиції, P&L, дедлайни | Retention-фаза, досвідчений юзер | Empty state для нових = демотивація |
-| 5 | **Guided Challenge** | "Ставка дня" — один вибір, дві кнопки, геймлуп | Онбординг, зниження когнітивного навантаження | Набридає після 5–7 сесій. Обмежує досвідченого |
+| 1 | **Event Feed** | Algorithmic/chronological card feed. User scrolls. | Mobile, > 20 markets, repeat session | < 20 markets = looks empty. New user doesn't understand sorting |
+| 2 | **Market Board** | Table of all markets: price, volume, 24h change. Filters are the primary navigation | Experienced users, J3 segment | Newcomers leave. Kills emotional connection to the event |
+| 3 | **Story-driven Discovery** | Event = narrative unit: context + why it matters + what market says + CTA | News Junkie, first contact | Longer path to action. Requires editorial or AI |
+| 4 | **Portfolio-first** | First screen — active positions, P&L, deadlines | Retention phase, experienced user | Empty state for new users = demotivation |
+| 5 | **Guided Challenge** | "Bet of the day" — one choice, two buttons, game loop | Onboarding, reducing cognitive load | Gets annoying after 5–7 sessions. Limits experienced users |
 
 ---
 
-### Обраний патерн: Story-driven Discovery
+### Chosen Pattern: Story-driven Discovery
 
-**✅ Найкраще лягає — 3 причини:**
+**✅ Best fit — 3 reasons:**
 
-**Причина 1 — прямий збіг з J2 JTBD.**
-"Слідкувати за подіями з реальною ставкою" — це про контекст, не про числа. Story-driven дає цей контекст у продукті. *[CLAUDE.md: JTBD J2 primary]*
+**Reason 1 — Direct alignment with J2 JTBD.**
+"Following events with real skin in the game" — this is about context, not numbers. Story-driven delivers that context inside the product. *[CLAUDE.md: JTBD J2 primary]*
 
-**Причина 2 — закриває головний gap конкурентів.**
-Жоден конкурент не пояснює чому ціна така і що вплине на outcome. Ринки — ізольовані питання без контексту. Це наш диференціатор. *[research.md: What's missing — "No clear why this number?"]*
+**Reason 2 — Closes the main gap of competitors.**
+No competitor explains why the price is what it is and what will affect the outcome. Markets are isolated questions without context. This is our differentiator. *[research.md: What's missing — "No clear why this number?"]*
 
-**Причина 3 — будує довіру без регуляторних бейджів.**
-Чіткий опис події + умови resolution + джерело = платформа знає про що говорить. Довіра через прозорість контенту — наша альтернатива FSCS/SIPC. *[benchmark-trust.md: 1 механізм що не спрацює]*
-
----
-
-### При умові X: Event Feed
-
-**Умова X:** > 30 активних ринків + юзер вже зробив першу ставку.
-Event Feed — ідеальний retention-патерн для повторних сесій.
-**Рішення:** Story-driven для першого контакту і онбордингу → Feed для повернення.
+**Reason 3 — Builds trust without regulatory badges.**
+A clear event description + resolution conditions + source = the platform knows what it's talking about. Trust through content transparency — our alternative to FSCS/SIPC. *[benchmark-trust.md: 1 mechanism that won't work]*
 
 ---
 
-### ❌ Не підходить: Market Board
+### Under Condition X: Event Feed
 
-Аудиторія 20–40, trust-first, J2-first (engaged spectator). Market Board вимагає фінансової грамотності якої у News Junkie немає. Таблиця з ціною в центах — мова трейдера, не глядача. Зробить нас ще одним Polymarket тоді як наш диференціатор — бути зрозумілішими.
+**Condition X:** > 30 active markets + user has already made their first bet.
+Event Feed is the ideal retention pattern for repeat sessions.
+**Decision:** Story-driven for first contact and onboarding → Feed for return visits.
+
+---
+
+### ❌ Not a Fit: Market Board
+
+Audience 20–40, trust-first, J2-first (engaged spectator). Market Board requires financial literacy that the News Junkie doesn't have. A table with prices in cents is the language of a trader, not a spectator. It would make us just another Polymarket, whereas our differentiator is being more understandable.
 *[CLAUDE.md: Design Principles — "clarity over completeness"]*
 
 ---
 
-## 7. Висновки: Gaps і Гіпотези
+## 7. Conclusions: Gaps and Hypotheses
 
 ### Identified Gaps
 
-| Gap | Де підтверджено |
+| Gap | Where confirmed |
 |---|---|
-| Жоден PM не вирішив onboarding без Web3-гаманця | [competitive-analysis.md: відкрите питання 1] |
-| Ніхто не пояснює "чому ця ціна" | [research.md: What's missing] |
-| Ринки ізольовані від новинного контексту | [research.md: What's missing] |
-| Polymarket trust score — 19/40 (найнижчий) | [benchmark-trust.md: оцінка] |
-| Signup Polymarket: 8+ wallet іконок = когнітивна каша | [screens/polymarket-signup-mobile.png] |
-| CLOB vs AMM для MVP: CLOB вимагає ліквідності з 1 дня | [competitive-analysis.md: відкрите питання 2] |
-| Resolution trust без регуляції і трек-рекорду | [competitive-analysis.md: відкрите питання 3] |
+| No PM has solved onboarding without a Web3 wallet | [competitive-analysis.md: open question 1] |
+| No one explains "why this price" | [research.md: What's missing] |
+| Markets are isolated from news context | [research.md: What's missing] |
+| Polymarket trust score — 19/40 (lowest) | [benchmark-trust.md: scores] |
+| Polymarket signup: 8+ wallet icons = cognitive overload | [screens/polymarket-signup-mobile.png] |
+| CLOB vs AMM for MVP: CLOB requires liquidity from day 1 | [competitive-analysis.md: open question 2] |
+| Resolution trust without regulation and track record | [competitive-analysis.md: open question 3] |
 
 ---
 
-### Гіпотези у форматі: якщо / то / бо
+### Hypotheses in Format: if / then / because
 
-**H1 — Fiat on-ramp підвищить activation**
-_Якщо_ ми дамо можливість поповнити карткою без Web3-гаманця з першого екрану після реєстрації,
-_то_ % юзерів що зробили першу ставку у 24 год перевищить 40%,
-_бо_ головний бар'єр для News Junkie — необхідність мати MetaMask і USDC до першої ставки. Polymarket вирішує це через MoonPay/Transak [?], але це не виділено як UX-пріоритет.
-*Дані: [aarrr.md: Activation — "Fiat first"] · [competitive-analysis.md: відкрите питання 1]*
+**H1 — Fiat on-ramp will increase activation**
+_If_ we provide the ability to deposit by card without a Web3 wallet from the first screen after registration,
+_then_ the % of users who placed their first bet within 24 hrs will exceed 40%,
+_because_ the main barrier for the News Junkie is needing MetaMask and USDC before the first bet. Polymarket solves this through MoonPay/Transak [?], but it's not highlighted as a UX priority.
+*Data: [aarrr.md: Activation — "Fiat first"] · [competitive-analysis.md: open question 1]*
 
-**H2 — Story-driven UX підвищить конверсію нових юзерів у першу ставку**
-_Якщо_ кожна подія матиме narrative unit (контекст + що каже ринок + умови resolution),
-_то_ конверсія першого візиту у ставку буде вища ніж у Polymarket / Kalshi,
-_бо_ жоден конкурент не дає контекст всередині продукту — News Junkie приходить "з новини" і не розуміє ізольовані питання без бекграунду.
-*Дані: [research.md: What's missing — "No narrative around events"] · [ux-patterns.md: Story-driven Discovery — Причина 2]*
+**H2 — Story-driven UX will increase conversion of new users to first bet**
+_If_ every event has a narrative unit (context + what the market says + resolution conditions),
+_then_ conversion from first visit to bet will be higher than Polymarket / Kalshi,
+_because_ no competitor provides context inside the product — the News Junkie arrives "from the news" and doesn't understand isolated questions without background.
+*Data: [research.md: What's missing — "No narrative around events"] · [ux-patterns.md: Story-driven Discovery — Reason 2]*
 
-**H3 — Fee з виграшу (не з входу) знижує відтік**
-_Якщо_ комісія береться при виграші (~2%) а не при вході,
-_то_ ранній відтік після першої ставки буде нижчим,
-_бо_ "заплатив і програв" — найболючіший сценарій. "Платиш тільки коли заробив" — психологічно м'якший.
-*Дані: [aarrr.md: Revenue — "Варіант B"] · логіка підтверджена Polymarket моделлю (source: docs.polymarket.com [?])*
+**H3 — Fee on winnings (not on entry) reduces churn**
+_If_ the fee is charged on winnings (~2%) and not on entry,
+_then_ early churn after the first bet will be lower,
+_because_ "paid and lost" is the most painful scenario. "Only pay when you earn" is psychologically softer.
+*Data: [aarrr.md: Revenue — "Option B"] · logic confirmed by Polymarket's model (source: docs.polymarket.com [?])*
 
-**H4 — Конкретна обіцянка захисту коштів підвищить довіру**
-_Якщо_ на екрані першого депозиту показати: "Ваші USDC зберігаються 1:1. Ми ніколи не позичаємо їх без вашого дозволу",
-_то_ % завершення депозиту зросте,
-_бо_ головний страх нового юзера fintech — "що буде з моїми грошима". Coinbase вирішує точно так само і має C2: 5/5 у нашому benchmark.
-*Дані: [benchmark-trust.md: Топ-3 механізми — Coinbase] · [screens/coinbase-trust-signals.png]*
+**H4 — Concrete promise of funds protection will increase trust**
+_If_ the first deposit screen shows: "Your USDC is held 1:1. We never lend it without your permission",
+_then_ deposit completion rate will increase,
+_because_ the new fintech user's primary fear is "what happens to my money." Coinbase solves it exactly the same way and has C2: 5/5 in our benchmark.
+*Data: [benchmark-trust.md: Top 3 mechanisms — Coinbase] · [screens/coinbase-trust-signals.png]*
 
-**H5 — Share card після resolution дасть >20% органічного трафіку**
-_Якщо_ після кожного resolution автоматично генерується share card з результатом,
-_то_ >20% нових юзерів прийдуть через шеринг,
-_бо_ "Я ж казав що так буде" — сильний соціальний інстинкт. Виграш хочеться показати. Robinhood і Spotify Wrapped підтвердили цей патерн в інших вертикалях.
-*Дані: [aarrr.md: Referral — "Шеринг виграшу"] · [ux-patterns.md: Social sharing]*
+**H5 — Share card after resolution will drive >20% organic traffic**
+_If_ after every resolution a share card with the result is automatically generated,
+_then_ >20% of new users will come via sharing,
+_because_ "I told you so" is a powerful social instinct. A win makes people want to show it off. Robinhood and Spotify Wrapped confirmed this pattern in other verticals.
+*Data: [aarrr.md: Referral — "Win sharing"] · [ux-patterns.md: Social sharing]*
 
-**H6 — Прозорість комісії до підтвердження знизить претензії**
-_Якщо_ перед кожним підтвердженням ставки показати точну суму комісії ("Платформа заробить $0.40 якщо виграєш"),
-_то_ кількість скарг і refund-запитів буде нижчою,
-_бо_ прихована комісія — перша причина відтоку і негативних відгуків у fintech. Robinhood зробив "Commission-Free" своїм головним повідомленням і отримав найвищий C3 (5/5) у benchmark.
-*Дані: [benchmark-trust.md: Топ-3 механізми — Robinhood] · [aarrr.md: Revenue — прозорість]*
+**H6 — Fee transparency before confirmation will reduce complaints**
+_If_ the exact fee amount is shown before every bet confirmation ("The platform earns $0.40 if you win"),
+_then_ the number of complaints and refund requests will be lower,
+_because_ hidden fees are the #1 cause of churn and negative reviews in fintech. Robinhood made "Commission-Free" their main message and got the highest C3 (5/5) in the benchmark.
+*Data: [benchmark-trust.md: Top 3 mechanisms — Robinhood] · [aarrr.md: Revenue — transparency]*
 
 ---
 
-### Відкриті питання (перед wireframes)
+### Open Questions (before wireframes)
 
-| # | Питання | Чому важливо |
+| # | Question | Why it matters |
 |---|---|---|
-| Q1 | CLOB vs AMM для MVP? | Вплив на механіку ціноутворення і UX ставки | [?] |
-| Q2 | Fiat on-ramp провайдер? MoonPay vs Transak vs Stripe | Впливає на onboarding UX і комісію | [?] |
-| Q3 | KYC поріг? При якій сумі вмикається верифікація | Тертя активації | [?] |
-| Q4 | Мінімальна ставка? | Психологічний бар'єр vs UX | [?] |
-| Q5 | Resolution без регуляції — чи достатньо мультисиг команди на старті? | Основна trust-проблема | [?] |
-| Q6 | Чи demo bet підвищує або знижує конверсію у реальну ставку? | Activation рішення | [?] |
-| Q7 | Futuur: як точно влаштований crypto+fiat hybrid? | Референс для нашої моделі | [?] |
+| Q1 | CLOB vs AMM for MVP? | Affects pricing mechanics and bet UX | [?] |
+| Q2 | Fiat on-ramp provider? MoonPay vs Transak vs Stripe | Affects onboarding UX and commission | [?] |
+| Q3 | KYC threshold? At what deposit amount does verification trigger | Activation friction | [?] |
+| Q4 | Minimum bet? | Psychological barrier vs UX | [?] |
+| Q5 | Resolution without regulation — is team multisig enough at launch? | Core trust problem | [?] |
+| Q6 | Does a demo bet increase or decrease conversion to a real bet? | Activation decision | [?] |
+| Q7 | Futuur: how exactly is the crypto+fiat hybrid structured? | Reference for our model | [?] |
 
 ---
 
-*Зібрано: [product-model.md](./product-model.md) · [aarrr.md](./aarrr.md) · [competitive-analysis.md](./competitive-analysis.md) · [benchmark-trust.md](./benchmark-trust.md) · [ux-patterns.md](./ux-patterns.md) · [research.md](./research.md)*
-*Скріни: `research/screens/` (21 файл)*
+*Compiled from: [product-model.md](./product-model.md) · [aarrr.md](./aarrr.md) · [competitive-analysis.md](./competitive-analysis.md) · [benchmark-trust.md](./benchmark-trust.md) · [ux-patterns.md](./ux-patterns.md) · [research.md](./research.md)*
+*Screenshots: `research/screens/` (21 files)*

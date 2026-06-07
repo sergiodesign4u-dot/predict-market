@@ -1,90 +1,90 @@
 # Benchmark: Trust & First-Time Credibility
 
-**Чому цей вимір?**
-Trust — #1 цінність нашої аудиторії (20–40). Це fintech з реальними грошима: без довіри продукту немає. Саме тут конкуренти найслабші, і саме звідси ростуть рішення для wireframes.
+**Why this dimension?**
+Trust is the #1 value for our audience (20–40). This is fintech with real money: without trust, there's no product. This is exactly where competitors are weakest, and exactly where decisions for wireframes grow from.
 
 ---
 
-## Критерії оцінки (шкала 1–5)
+## Evaluation Criteria (scale 1–5)
 
-| # | Критерій | Що вимірює |
+| # | Criterion | What it measures |
 |---|---|---|
-| **C1** | Регуляторна прозорість | Чи одразу видно правовий статус платформи — ліцензія, юрисдикція, хто регулює |
-| **C2** | Захист коштів | Чи пояснено як і де зберігаються гроші юзера, що з ними не зроблять без дозволу |
-| **C3** | Прозорість комісій до дії | Чи видно скільки коштуватиме дія ДО того як юзер підтвердив |
-| **C4** | Соціальний доказ | Кількість юзерів, обсяги, нагороди, медіа — і як їх подано |
-| **C5** | Ясність першого враження | Чи зрозуміло з першого екрану хто це, для кого і навіщо |
-| **C6** | Тертя онбордингу | Скільки кроків до першої цінності (чим менше — тим вище) |
-| **C7** | Комунікація ризиків | Чи чесно і зрозуміло пояснено що може піти не так |
-| **C8** | Ясність resolution / правил | Чи зрозуміло як вирішуються суперечки і що відбувається при виграші/програші |
+| **C1** | Regulatory transparency | Whether the platform's legal status is immediately visible — license, jurisdiction, who regulates |
+| **C2** | Funds protection | Whether it's explained how and where the user's money is stored, and what won't be done with it without permission |
+| **C3** | Fee transparency before action | Whether the cost of an action is visible BEFORE the user confirms |
+| **C4** | Social proof | Number of users, volumes, awards, media — and how they're presented |
+| **C5** | Clarity of first impression | Whether it's clear from the first screen who this is, for whom, and why |
+| **C6** | Onboarding friction | Number of steps to first value (the fewer, the higher the score) |
+| **C7** | Risk communication | Whether what can go wrong is explained honestly and clearly |
+| **C8** | Resolution / rules clarity | Whether it's clear how disputes are resolved and what happens on a win/loss |
 
 ---
 
-## Продукти для оцінки
+## Products for Evaluation
 
-| Продукт | Категорія | Чому обрано |
+| Product | Category | Why chosen |
 |---|---|---|
-| **Revolut** | Fintech / neo-bank | Еталон trust-дизайну в мобільному фінтек — 75M+ users, регуляція в 30+ країнах |
-| **Coinbase** | Crypto exchange | Найбільша публічна крипто-компанія — еталон довіри у Web3 |
-| **Robinhood** | Investing app | "Commission-free" — еталон fee transparency і першого враження |
-| **Kalshi** | Regulated PM | Єдиний regulated prediction market — найкраща довіра в жанрі |
-| **Polymarket** | Crypto PM | Наш головний конкурент — для контрасту |
+| **Revolut** | Fintech / neo-bank | The benchmark for trust design in mobile fintech — 75M+ users, regulated in 30+ countries |
+| **Coinbase** | Crypto exchange | The largest public crypto company — the benchmark for trust in Web3 |
+| **Robinhood** | Investing app | "Commission-free" — the benchmark for fee transparency and first impression |
+| **Kalshi** | Regulated PM | The only regulated prediction market — best trust in the genre |
+| **Polymarket** | Crypto PM | Our main competitor — for contrast |
 
 ---
 
-## Оцінка (1–5)
+## Scores (1–5)
 
-| Критерій | Revolut | Coinbase | Robinhood | Kalshi | Polymarket |
+| Criterion | Revolut | Coinbase | Robinhood | Kalshi | Polymarket |
 |---|:---:|:---:|:---:|:---:|:---:|
-| C1 Регуляторна прозорість | **5** | **5** | 4 | **5** | 2 |
-| C2 Захист коштів | **5** | **5** | 4 | 4 | 1 |
-| C3 Прозорість комісій | 4 | 3 | **5** | 3 | 2 |
-| C4 Соціальний доказ | **5** | **5** | 4 | 3 | 4 |
-| C5 Ясність першого враження | 4 | 4 | **5** | 4 | 3 |
-| C6 Тертя онбордингу | 3 | 3 | 3 | 2 | 2 |
-| C7 Комунікація ризиків | 3 | 4 | 3 | 4 | 3 |
-| C8 Ясність resolution | 3 | 4 | 3 | 3 | 2 |
-| **Сума** | **32** | **33** | **31** | **28** | **19** |
+| C1 Regulatory transparency | **5** | **5** | 4 | **5** | 2 |
+| C2 Funds protection | **5** | **5** | 4 | 4 | 1 |
+| C3 Fee transparency | 4 | 3 | **5** | 3 | 2 |
+| C4 Social proof | **5** | **5** | 4 | 3 | 4 |
+| C5 Clarity of first impression | 4 | 4 | **5** | 4 | 3 |
+| C6 Onboarding friction | 3 | 3 | 3 | 2 | 2 |
+| C7 Risk communication | 3 | 4 | 3 | 4 | 3 |
+| C8 Resolution clarity | 3 | 4 | 3 | 3 | 2 |
+| **Total** | **32** | **33** | **31** | **28** | **19** |
 
 ---
 
-## Ключові спостереження по продуктах
+## Key Observations by Product
 
-**Revolut:** Еталон соціального доказу — "75+ million customers" + Trustpilot 4.7 + 5 нагород в одному блоці. FSCS PROTECTED badge прямо поверх продуктового скріну. Довіра через масштаб і регуляцію.
+**Revolut:** The benchmark for social proof — "75+ million customers" + Trustpilot 4.7 + 5 awards in a single block. FSCS PROTECTED badge right over the product screenshot. Trust through scale and regulation.
 
-**Coinbase:** Єдина крипто-платформа з публічною звітністю. "1:1 asset holdings — we never lend your assets without permission" — конкретна обіцянка. Bug Bounty program як сигнал інженерної зрілості.
+**Coinbase:** The only crypto platform with public reporting. "1:1 asset holdings — we never lend your assets without permission" — a concrete promise. Bug Bounty program as a signal of engineering maturity.
 
-**Robinhood:** "Commission-Free" — головний trust-сигнал прямо в заголовку. Перша думка юзера ("вони заробляють на мені?") закривається одразу. SIPC, FINRA, CFTC — регуляторні бейджі в підвалі, але вони є.
+**Robinhood:** "Commission-Free" — the primary trust signal right in the headline. The user's first concern ("are they making money off me?") is addressed immediately. SIPC, FINRA, CFTC — regulatory badges in the footer, but they're there.
 
-**Kalshi:** Автоматичний signup-модал одразу при вході — агресивно, але чисто: Google / Apple / Email, 3 опції. "CFTC-regulated" — найсильніший trust-сигнал у prediction markets. Мінус: US-only обмеження ламає досвід міжнародних юзерів.
+**Kalshi:** Automatic signup modal on entry — aggressive, but clean: Google / Apple / Email, 3 options. "CFTC-regulated" — the strongest trust signal in prediction markets. Downside: US-only restriction breaks the experience for international users.
 
-**Polymarket:** 8 іконок гаманців і соціалок на signup = когнітивна каша. Жодного пояснення як захищені кошти. "Not regulated by CFTC" видно у Privacy Policy, але не на головній. Довіра тримається лише на $7.5B обсязі — і це слабкий foundation.
-
----
-
-## Топ-3 механізми перенести в наш MVP
-
-### 1. Конкретна обіцянка захисту коштів (Coinbase)
-**Механізм:** "Ваші USDC зберігаються 1:1. Ми ніколи не позичаємо їх без вашого дозволу."
-**Де використати:** Екран першого депозиту і розділ "How it works". Не юридичний текст — одне просте речення.
-**Чому працює:** Закриває головний страх нового юзера до того як він його озвучить.
-
-### 2. Соціальний доказ як блок на головній (Revolut)
-**Механізм:** Число юзерів + обсяг + рейтинг/нагорода — в одному компактному блоці нижче hero-секції.
-**Де використати:** Головна сторінка (після hero, до списку ринків). Формат: "$X торгів · N юзерів · Рейтинг Y".
-**Чому працює:** Соціальний доказ знижує тривогу новачка — "якщо стільки людей довіряють, то можна".
-
-### 3. Fee transparency в момент дії (Robinhood)
-**Механізм:** До підтвердження ставки показати точну суму комісії. "Платформа заробить $0.40 якщо ти виграєш."
-**Де використати:** Confirmation screen перед відправкою ставки.
-**Чому працює:** Прозорість у момент найбільшої тривоги = довіра. Приховані комісії — перша причина відтоку.
+**Polymarket:** 8 wallet and social icons on signup = cognitive overload. Zero explanation of how funds are protected. "Not regulated by CFTC" is visible in the Privacy Policy, but not on the homepage. Trust rests entirely on $7.5B in volume — and that's a weak foundation.
 
 ---
 
-## 1 механізм, який НЕ спрацює — і чому
+## Top 3 Mechanisms to Carry Into Our MVP
 
-### Регуляторні бейджі типу FSCS / SIPC / FDIC (Revolut, Robinhood)
-**Механізм:** Офіційні щити регулятора прямо на головній або на екрані депозиту.
-**Чому не спрацює для нас:** Ми не є і не будемо банком або брокером у класичному розумінні. Ці бейджі — не декор, це юридичні зобов'язання. Якщо ми покажемо схожі елементи без реальної підкладки — це не тільки не підвищить довіру, а знищить її у моменту коли юзер спробує перевірити. FTX саме так і побудував "банківський вигляд" без банківських гарантій.
+### 1. Concrete promise of funds protection (Coinbase)
+**Mechanism:** "Your USDC is held 1:1. We never lend it without your permission."
+**Where to use:** First deposit screen and the "How it works" section. Not legal text — one simple sentence.
+**Why it works:** Closes the new user's primary fear before they even voice it.
 
-**Альтернатива:** Замість регуляторних бейджів — on-chain прозорість: "Всі розрахунки на блокчейні. Ти можеш перевірити кожну транзакцію." Це чесний еквівалент для crypto-native платформи.
+### 2. Social proof as a block on the homepage (Revolut)
+**Mechanism:** Number of users + volume + rating/award — in one compact block below the hero section.
+**Where to use:** Homepage (after the hero, before the market list). Format: "$X traded · N users · Rating Y".
+**Why it works:** Social proof reduces the newcomer's anxiety — "if so many people trust it, it must be okay."
+
+### 3. Fee transparency at the moment of action (Robinhood)
+**Mechanism:** Show the exact commission amount before confirming the bet. "The platform earns $0.40 if you win."
+**Where to use:** Confirmation screen before submitting the bet.
+**Why it works:** Transparency at the moment of highest anxiety = trust. Hidden fees are the #1 cause of churn.
+
+---
+
+## 1 Mechanism That Will NOT Work — and Why
+
+### Regulatory badges like FSCS / SIPC / FDIC (Revolut, Robinhood)
+**Mechanism:** Official regulator shields directly on the homepage or deposit screen.
+**Why it won't work for us:** We are not and will not be a bank or broker in the classical sense. These badges are not decorations — they are legal obligations. If we display similar elements without the real backing, it won't just fail to build trust — it will destroy it the moment a user tries to verify. FTX built a "banking look" without banking guarantees, and the result is well known.
+
+**Alternative:** Instead of regulatory badges — on-chain transparency: "All settlements are on the blockchain. You can verify every transaction." This is the honest equivalent for a crypto-native platform.

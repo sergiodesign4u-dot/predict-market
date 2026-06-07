@@ -1,82 +1,82 @@
 # UX Patterns Analysis
 
-## Поведінкові патерни аудиторії
+## Audience Behavioral Patterns
 
-| Патерн | Опис | Сегмент |
+| Pattern | Description | Segment |
 |---|---|---|
-| **Event-triggered arrival** | Юзер приходить коли щось відбувається — вибори, крипто-рух, скандал. Новини — тригер. | News Junkie, всі |
-| **Knowledge validation** | Юзер вже має думку — і йде перевірити чи ринок погоджується з ним | News Junkie, Crypto Native |
-| **Position monitoring** | Юзер вже поставив — і повертається дивитись чи ціна рухається в його бік | Всі після першої ставки |
-| **Value hunting** | Юзер шукає де ринок "помиляється" — знаходить недооцінений outcome і входить | Crypto Native, Crossover |
-| **Social sharing** | Юзер хоче показати свій прогноз/виграш — ділиться як підтвердженням своєї правоти | Всі, особливо News Junkie |
+| **Event-triggered arrival** | User arrives when something happens — elections, a crypto move, a scandal. News is the trigger. | News Junkie, all |
+| **Knowledge validation** | User already has an opinion — and comes to check whether the market agrees with them | News Junkie, Crypto Native |
+| **Position monitoring** | User has already bet — and comes back to watch whether the price is moving their way | All after the first bet |
+| **Value hunting** | User looks for where the market is "wrong" — finds an undervalued outcome and enters | Crypto Native, Crossover |
+| **Social sharing** | User wants to show their prediction/win — shares it as confirmation of being right | All, especially News Junkie |
 
-**Ключовий патерн: Event-triggered arrival** — точка входу для всіх сегментів. Від того як ми зустрічаємо юзера "з новини" залежить активація, перша ставка і повернення.
+**Key pattern: Event-triggered arrival** — the entry point for all segments. How we greet a user "from the news" determines activation, the first bet, and return visits.
 
 ---
 
-## 5 принципово різних UX-патернів
+## 5 Fundamentally Different UX Patterns
 
 ### 1. Event Feed (Reactive Scroll)
-**Як працює:** Алгоритмічний або хронологічний фід карток-подій. Юзер скролить, зупиняється на тому що чіпляє, діє прямо з картки.
-**Де застосовується:** Polymarket, Kalshi, Twitter, TikTok
-**Коли підходить:** Мобільний контекст, велика кількість різнорідних подій, юзер хоче переглядати а не шукати конкретне
-**Коли ламається:** Без кураторства — шум. Нові юзери не розуміють принцип сортування. При < 20 активних ринків виглядає порожньо і мертво.
+**How it works:** Algorithmic or chronological feed of event cards. The user scrolls, stops on something that hooks them, acts directly from the card.
+**Where it's used:** Polymarket, Kalshi, Twitter, TikTok
+**When it fits:** Mobile context, large number of varied events, user wants to browse rather than search for something specific
+**When it breaks:** Without curation — noise. New users don't understand the sorting logic. With fewer than 20 active markets it looks empty and dead.
 
 ---
 
 ### 2. Market Board (Trading Grid)
-**Як працює:** Таблиця або сітка всіх ринків з числами — ціна, обсяг, зміна за 24h. Фільтри і сортування — основна навігація.
-**Де застосовується:** Kalshi (advanced), Polymarket (desktop), Bloomberg, Binance
-**Коли підходить:** Досвідчені юзери з фінансовою грамотністю, J3-сегмент (value hunting)
-**Коли ламається:** Новачки бачать таблицю цифр і йдуть. Вбиває емоційний зв'язок з подією. Протилежне J2.
+**How it works:** Table or grid of all markets with numbers — price, volume, 24h change. Filters and sorting are the primary navigation.
+**Where it's used:** Kalshi (advanced), Polymarket (desktop), Bloomberg, Binance
+**When it fits:** Experienced users with financial literacy, J3 segment (value hunting)
+**When it breaks:** Newcomers see a table of numbers and leave. Kills the emotional connection to the event. The opposite of J2.
 
 ---
 
 ### 3. Story-driven Discovery
-**Як працює:** Кожна подія — narrative unit: контекст + чому важливо зараз + що каже ринок + умови resolution → CTA ставки. Подія = стаття + ринок.
-**Де застосовується:** Ніде в prediction markets повністю. Частково — Metaculus (опис питань), The Athletic (спорт + контекст)
-**Коли підходить:** News Junkie сегмент, перший контакт нового юзера, коли важливо дати контекст до ставки
-**Коли ламається:** Більше місця і часу до дії. Складно масштабувати без редакції або AI. Повторний юзер хоче одразу до ставки.
+**How it works:** Every event is a narrative unit: context + why it matters now + what the market says + resolution conditions → CTA to bet. Event = article + market.
+**Where it's used:** Nowhere in prediction markets fully. Partially — Metaculus (question descriptions), The Athletic (sports + context)
+**When it fits:** News Junkie segment, first contact with a new user, when context before betting is important
+**When it breaks:** More space and time before action. Hard to scale without an editorial team or AI. Returning users want to go straight to betting.
 
 ---
 
 ### 4. Portfolio / Position-first
-**Як працює:** Перший екран — активні позиції, P&L, дедлайни. Нові ринки — в окремому розділі.
-**Де застосовується:** Robinhood, Binance, trading apps для досвідчених
-**Коли підходить:** Retention-фаза, юзер вже має ставки і повертається їх моніторити
-**Коли ламається:** Empty state для нових юзерів = демотивація. Не вирішує acquisition і activation.
+**How it works:** First screen — active positions, P&L, deadlines. New markets — in a separate section.
+**Where it's used:** Robinhood, Binance, trading apps for experienced users
+**When it fits:** Retention phase, user already has bets and comes back to monitor them
+**When it breaks:** Empty state for new users = demotivation. Does not solve acquisition and activation.
 
 ---
 
 ### 5. Guided Challenge (Game Loop)
-**Як працює:** "Ставка дня" або featured market — мінімум вибору, одна пропозиція, дві кнопки. Після дії — результат і наступний виклик.
-**Де застосовується:** Duolingo, HQ Trivia, DraftKings Pick'em, Wordle
-**Коли підходить:** Онбординг, зниження когнітивного навантаження, casual-сегмент
-**Коли ламається:** Обмежує досвідченого юзера. Не масштабується — стає набридливим після 5–7 сесій.
+**How it works:** "Bet of the day" or featured market — minimal choice, one offer, two buttons. After action — result and next challenge.
+**Where it's used:** Duolingo, HQ Trivia, DraftKings Pick'em, Wordle
+**When it fits:** Onboarding, reducing cognitive load, casual segment
+**When it breaks:** Limits the experienced user. Doesn't scale — becomes annoying after 5–7 sessions.
 
 ---
 
-## Вибір для нашого контексту
+## Choice for Our Context
 
-### ✅ Найкраще лягає: Патерн 3 — Story-driven Discovery
+### ✅ Best fit: Pattern 3 — Story-driven Discovery
 
-**Причина 1 — прямий збіг з J2 JTBD.**
-"Слідкувати за подіями з реальною ставкою" — це про контекст, не про числа. Юзер приходить через новину і хоче зрозуміти що відбувається. Story-driven дає цей контекст у продукті.
+**Reason 1 — Direct alignment with J2 JTBD.**
+"Following events with real skin in the game" — this is about context, not numbers. The user arrives via a news story and wants to understand what's happening. Story-driven delivers that context inside the product.
 
-**Причина 2 — закриває головний gap конкурентів.**
-Жоден конкурент не пояснює чому ціна така і що вплине на outcome. Ринки — ізольовані питання без контексту. Це наш диференціатор.
+**Reason 2 — Closes the main gap of competitors.**
+No competitor explains why the price is what it is and what will affect the outcome. Markets are isolated questions without context. This is our differentiator.
 
-**Причина 3 — будує довіру без регуляторних бейджів.**
-Чіткий опис події + умови resolution + джерело = платформа знає про що говорить. Довіра через прозорість контенту — наша альтернатива FSCS/SIPC.
-
----
-
-### 🔀 При умові X: Патерн 1 — Event Feed
-**Умова X:** > 30 активних ринків і юзер вже зробив першу ставку (зрозумів механіку).
-Event Feed — ідеальний retention-патерн для повторних сесій.
-**Рішення:** Story-driven для першого контакту і онбордингу → Feed для повернення.
+**Reason 3 — Builds trust without regulatory badges.**
+A clear event description + resolution conditions + source = the platform knows what it's talking about. Trust through content transparency — our alternative to FSCS/SIPC.
 
 ---
 
-### ❌ Не підходить: Патерн 2 — Market Board (Trading Grid)
-CLAUDE.md: аудиторія 20–40, довіра, clarity для нових юзерів, J2-first (engaged spectator). Market Board вимагає фінансової грамотності якої у News Junkie немає. Таблиця з ціною в центах — мова трейдера, не глядача. Зробить нас ще одним Polymarket, тоді як наш диференціатор — бути зрозумілішими.
+### 🔀 Under condition X: Pattern 1 — Event Feed
+**Condition X:** > 30 active markets and the user has already made their first bet (understood the mechanics).
+Event Feed is the ideal retention pattern for repeat sessions.
+**Decision:** Story-driven for first contact and onboarding → Feed for return visits.
+
+---
+
+### ❌ Not a fit: Pattern 2 — Market Board (Trading Grid)
+CLAUDE.md: audience 20–40, trust-first, clarity for new users, J2-first (engaged spectator). Market Board requires financial literacy that the News Junkie doesn't have. A table with prices in cents is the language of a trader, not a spectator. It would make us just another Polymarket, whereas our differentiator is being more understandable.

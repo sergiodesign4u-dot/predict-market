@@ -5,7 +5,7 @@
 ### Group 1 — Hard (same product, same audience, same market)
 | # | Name | Type | Why here | What to study |
 |---|---|---|---|---|
-| 1 | **Polymarket** | Crypto PM, global, USDC/Polygon | Largest crypto prediction market, closest competitor | UX ставки, онбординг, навігація |
+| 1 | **Polymarket** | Crypto PM, global, USDC/Polygon | Largest crypto prediction market, closest competitor | Bet UX, onboarding, navigation |
 | 2 | **Futuur** | Crypto + fiat, global | Hybrid model, global scope, similar to our concept | Fiat on-ramp, multi-outcome UI, probability bars |
 | 3 | **Azuro** | Decentralized protocol, Web3 | Fully Web3, no central operator | Market architecture, liquidity UX |
 | 4 | **Zeitgeist** | Polkadot-based PM | Active Web3 PM, new market mechanics | Resolution UI, complex market display |

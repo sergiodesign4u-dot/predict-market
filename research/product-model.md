@@ -1,17 +1,17 @@
 # Product Model
 
-> Альтернативне джерело істини. Описує ЩО і ДЛЯ КОГО будуємо, як привертаємо увагу і які дії очікуємо.
+> Alternative source of truth. Describes WHAT we're building and FOR WHOM, how we attract attention and what actions we expect.
 
 ---
 
 ## Objectives
 
-| # | Ціль | Як вимірюємо |
+| # | Goal | How we measure |
 |---|---|---|
-| 1 | Стати довіреною платформою для prediction markets за межами США | MAU, NPS, retention 30d |
-| 2 | Зробити Web3-беттінг доступним для людей без крипто-досвіду | % юзерів без попереднього гаманця що дійшли до першої ставки |
-| 3 | Побудувати залучену спільноту навколо подій | DAU/MAU ratio, shares per user |
-| 4 | Генерувати стабільний trading volume | Monthly trading volume, revenue per user |
+| 1 | Become the trusted platform for prediction markets outside the US | MAU, NPS, retention 30d |
+| 2 | Make Web3 betting accessible for people without crypto experience | % of users without a prior wallet who completed their first bet |
+| 3 | Build an engaged community around events | DAU/MAU ratio, shares per user |
+| 4 | Generate stable trading volume | Monthly trading volume, revenue per user |
 
 ---
 
@@ -21,87 +21,87 @@
 
 | | |
 |---|---|
-| **Вік** | 22–35 |
-| **Профіль** | Вже в Web3. Має MetaMask або інший гаманець. Розуміє DeFi, stablecoins, AMM. Слідкує за крипто-новинами. |
-| **Мотивація** | Заробити на знанні ринку. Диверсифікувати активність за межі трейдингу. |
-| **Болі** | Polymarket вже знає, але хоче більше ринків. Або не довіряє централізованим платформам. |
-| **JTBD** | Використати крипто-знання щоб заробити на передбаченнях |
+| **Age** | 22–35 |
+| **Profile** | Already in Web3. Has MetaMask or another wallet. Understands DeFi, stablecoins, AMM. Follows crypto news. |
+| **Motivation** | Earn from market knowledge. Diversify activity beyond trading. |
+| **Pain points** | Already knows Polymarket but wants more markets. Or doesn't trust centralized platforms. |
+| **JTBD** | Use crypto knowledge to earn from predictions |
 
 ### Segment 2 — News & Events Junkie
 
 | | |
 |---|---|
-| **Вік** | 25–40 |
-| **Профіль** | Активно слідкує за новинами: політика, геополітика, tech. Має думку про все. Не обов'язково в крипто. |
-| **Мотивація** | Довести що він правий. Заробити на своїй поінформованості. |
-| **Болі** | Ніде "поставити гроші" на свою думку просто і легально. Крипто-гаманець — бар'єр. |
-| **JTBD** | Монетизувати знання про поточні події без складності трейдингу |
+| **Age** | 25–40 |
+| **Profile** | Actively follows the news: politics, geopolitics, tech. Has an opinion on everything. Not necessarily into crypto. |
+| **Motivation** | Prove they're right. Earn from their knowledge. |
+| **Pain points** | Nowhere to "put money" on their opinion simply and legally. A crypto wallet is a barrier. |
+| **JTBD** | Monetize knowledge of current events without the complexity of trading |
 
 ### Segment 3 — Crossover Bettor
 
 | | |
 |---|---|
-| **Вік** | 28–42 |
-| **Профіль** | Вже ставить на спорт (Bet365, 1xBet). Шукає більш інтелектуальні ринки. Розуміє механіку ставок. |
-| **Мотивація** | Більш різноманітні ринки. Відчуття що це скіл, а не просто удача. |
-| **Болі** | Спортбеттінг набрид або заблокований. Хоче ставити на "серйозні" події. |
-| **JTBD** | Знайти нову арену для беттінгу де важить аналіз, а не просто везіння |
+| **Age** | 28–42 |
+| **Profile** | Already bets on sports (Bet365, 1xBet). Looking for more intellectual markets. Understands betting mechanics. |
+| **Motivation** | More diverse markets. The feeling that it's skill, not just luck. |
+| **Pain points** | Sports betting got boring or is blocked. Wants to bet on "serious" events. |
+| **JTBD** | Find a new betting arena where analysis matters, not just luck |
 
 ---
 
-## AIDA по сегментах
+## AIDA by Segment
 
-### Attention — Як привертаємо увагу
+### Attention — How we attract attention
 
-| Segment | Канал | Повідомлення |
+| Segment | Channel | Message |
 |---|---|---|
-| Crypto Native | Twitter/X, крипто-медіа, Discord | *"Ринок каже 34% — а ти що думаєш? Постав на свою думку."* |
-| News Junkie | SEO, Twitter, новинні агрегатори | *"Хто переможе на виборах? Ринок вже знає — і ти можеш заробити якщо правий."* |
-| Crossover Bettor | SEO, беттінг-спільноти, реферали | *"Беттінг на реальні події — не тільки спорт. Більше ринків, більше скілу."* |
+| Crypto Native | Twitter/X, crypto media, Discord | *"The market says 34% — what do you think? Put your money where your mouth is."* |
+| News Junkie | SEO, Twitter, news aggregators | *"Who will win the election? The market already knows — and you can earn if you're right."* |
+| Crossover Bettor | SEO, betting communities, referrals | *"Betting on real events — not just sports. More markets, more skill."* |
 
-### Interest — Що утримує увагу і веде далі
+### Interest — What holds attention and drives action
 
-| Segment | Що їх чіпляє | Ключовий елемент |
+| Segment | What hooks them | Key element |
 |---|---|---|
-| Crypto Native | Обсяги торгів, ліквідність, механіка AMM | Технічні деталі ринку, графік руху ціни |
-| News Junkie | Живі події, актуальні питання, пояснення механіки | Контекст події + прозоре пояснення як працюють одс |
-| Crossover Bettor | Різноманітність ринків, чіткі правила, зрозумілі виплати | Список ринків по категоріях, візуальні відсотки |
+| Crypto Native | Trading volume, liquidity, AMM mechanics | Technical market details, price movement chart |
+| News Junkie | Live events, current questions, explanation of mechanics | Event context + transparent explanation of how odds work |
+| Crossover Bettor | Variety of markets, clear rules, understandable payouts | Market list by category, visual percentages |
 
-### Desire — Що формує бажання зареєструватись і поставити
+### Desire — What creates the desire to register and bet
 
-| Segment | Тригер | Механіка |
+| Segment | Trigger | Mechanic |
 |---|---|---|
-| Crypto Native | Великий обсяг + вигідний курс YES/NO | Показати volume і unbalanced market як можливість |
-| News Junkie | Подія яку він вже обговорює + простий онбординг | *"Поставити $10 зараз — займе 2 хвилини"* |
-| Crossover Bettor | Порівняння з коефіцієнтами у букмекерів + більша прозорість | Показати що наші одс чесніші бо формуються ринком |
+| Crypto Native | High volume + favorable YES/NO price | Show volume and unbalanced market as an opportunity |
+| News Junkie | An event they're already discussing + simple onboarding | *"Place a $10 bet right now — takes 2 minutes"* |
+| Crossover Bettor | Comparison with bookmaker odds + greater transparency | Show that our odds are fairer because they're market-driven |
 
-### Actions — Конкретні дії які хочемо отримати
+### Actions — Specific actions we want to generate
 
-| Дія | Segment 1 | Segment 2 | Segment 3 |
+| Action | Segment 1 | Segment 2 | Segment 3 |
 |---|---|---|---|
-| **Перший візит** | Зайти з Twitter/X | Зайти з Google | Зайти з реферала |
-| **Реєстрація** | Підключити гаманець | Google / Email | Google / Email |
-| **Активація** | Поповнити USDC і поставити | Поповнити карткою і поставити | Поповнити карткою і поставити |
-| **Retention** | Слідкувати за ціною, відкрити новий ринок | Поставити на наступну подію | Переглянути leaderboard |
-| **Referral** | Поділитись ринком у крипто-чаті | Поділитись думкою у Twitter | Покликати друга-бетора |
+| **First visit** | Come in from Twitter/X | Come in from Google | Come in from referral |
+| **Registration** | Connect wallet | Google / Email | Google / Email |
+| **Activation** | Deposit USDC and bet | Deposit by card and bet | Deposit by card and bet |
+| **Retention** | Track price, open a new market | Bet on the next event | Browse the leaderboard |
+| **Referral** | Share a market in a crypto chat | Share opinion on Twitter | Invite a friend who bets |
 
 ---
 
-## Пріоритет сегментів для MVP
+## Segment Priority for MVP
 
-| Пріоритет | Segment | Чому |
+| Priority | Segment | Why |
 |---|---|---|
-| 🥇 Primary | News Junkie | Найбільший потенційний ринок. Fiat on-ramp знімає бар'єр. Прямо в нашому JTBD J2. |
-| 🥈 Secondary | Crypto Native | Швидший до активації (вже є гаманець). Менший за розміром але якісніший трафік. |
-| 🥉 Later | Crossover Bettor | Потребує більше ринків і репутації. Краще підключити після MVP. |
+| 🥇 Primary | News Junkie | Largest potential market. Fiat on-ramp removes the barrier. Directly aligned with JTBD J2. |
+| 🥈 Secondary | Crypto Native | Faster to activate (already has a wallet). Smaller audience but higher quality traffic. |
+| 🥉 Later | Crossover Bettor | Needs more markets and reputation. Better to onboard after MVP. |
 
 ---
 
-## Зв'язок з AARRR
+## Connection to AARRR
 
-| AIDA | AARRR | Фокус |
+| AIDA | AARRR | Focus |
 |---|---|---|
-| Attention | Acquisition | SEO, Twitter, медіа |
-| Interest | Acquisition → Activation | Онбординг, перший ринок |
+| Attention | Acquisition | SEO, Twitter, media |
+| Interest | Acquisition → Activation | Onboarding, first market |
 | Desire | Activation | Guided first bet, fiat on-ramp |
-| Actions | Activation → Retention → Referral | Перша ставка, нотифікації, share card |
+| Actions | Activation → Retention → Referral | First bet, notifications, share card |

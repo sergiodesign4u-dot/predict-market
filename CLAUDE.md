@@ -7,16 +7,16 @@ Users stake crypto on whether an event will happen or not, and earn/lose based o
 ## JTBD — Jobs To Be Done
 
 **Primary:**
-> "Коли я слідкую за подіями, які мені важливі — я хочу мати реальну ставку в грі, щоб це було не просто новини, а моя особиста участь з реальним результатом"
+> "When I follow events that matter to me — I want to have real skin in the game, so it's not just news, but my personal stake with a real outcome"
 
 **Secondary:**
-> "І якщо я краще розумію ситуацію ніж інші — я хочу щоб це конвертувалось у гроші, просто і без складності трейдингу"
+> "And if I understand the situation better than others — I want that to convert into money, simply and without the complexity of trading"
 
-**Наслідки для продукту:**
-- Перша сторінка — живі події зараз, не "зареєструйся"
-- Онбординг: подія → механіка → ставка (не навпаки)
-- Retention: нотифікації про події, не про поповнення
-- Профіль: трек-рекорд передбачень як репутація
+**Product implications:**
+- First page — live events happening now, not "sign up"
+- Onboarding: event → mechanics → bet (not the other way around)
+- Retention: notifications about events, not about topping up balance
+- Profile: prediction track record as reputation
 
 ---
 

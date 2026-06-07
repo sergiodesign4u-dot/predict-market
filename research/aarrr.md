@@ -1,166 +1,166 @@
 # AARRR Analysis — Prediction Market Platform
 
-> Гіпотетичний аналіз на старті продукту. Метрики та підходи потребують валідації після запуску MVP.
+> Hypothetical analysis at the start of the product. Metrics and approaches require validation after MVP launch.
 
 ---
 
 ## Acquisition
-*Як люди дізнаються про платформу і приходять вперше*
+*How people discover the platform and arrive for the first time*
 
-**Канали:**
-- **SEO через події** — кожен ринок = окрема сторінка. "Who will win US elections 2026", "Will Bitcoin hit 100k" — готові landing pages з органічним трафіком
-- **Twitter/X** — prediction markets живуть у цій спільноті. Основний канал для крипто-аудиторії
-- **Крипто-медіа** — CoinDesk, Decrypt, The Block пишуть про великі ринки
-- **Word-of-mouth** — виграші і публічні прогнози розповсюджуються органічно
+**Channels:**
+- **SEO via events** — each market = a separate page. "Who will win US elections 2026", "Will Bitcoin hit 100k" — ready landing pages with organic traffic
+- **Twitter/X** — prediction markets live in this community. Primary channel for the crypto audience
+- **Crypto media** — CoinDesk, Decrypt, The Block cover major markets
+- **Word-of-mouth** — wins and public predictions spread organically
 
-**Що невідомо:**
-- Який канал дасть найдешевший CAC
-- Чи можемо конкурувати по SEO з Polymarket одразу
+**Unknowns:**
+- Which channel will deliver the lowest CAC
+- Whether we can compete with Polymarket on SEO from day one
 
-**Метрика:** `нові зареєстровані користувачі / тиждень`
+**Metric:** `new registered users / week`
 
-**Продуктові рішення:**
-- Кожен ринок — окрема SEO-сторінка з мета-тегами і og:image з поточними одс
-- Шеринг ринку одним кліком прямо з картки
+**Product decisions:**
+- Each market is a standalone SEO page with meta tags and og:image showing live odds
+- One-click market sharing directly from the card
 
 ---
 
 ## Activation
-*Коли юзер вперше відчуває цінність — "aha moment"*
+*When the user first feels value — the "aha moment"*
 
-**Aha moment:** юзер поставив першу ставку і бачить що його позиція живе — ціна рухається в реальному часі.
+**Aha moment:** the user placed their first bet and sees their position is live — price moving in real time.
 
-**Шлях до першої ставки:**
+**Path to first bet:**
 ```
-Зайшов → Зареєструвався → Верифікував email
-→ Підключив гаманець / поповнив → Знайшов ринок
-→ Зрозумів механіку → Поставив ставку ← aha moment
+Arrived → Registered → Verified email
+→ Connected wallet / deposited → Found a market
+→ Understood the mechanics → Placed a bet ← aha moment
 ```
-Кожен крок — відсів. Конкуренти ламаються саме тут.
+Every step = drop-off. Competitors fail exactly here.
 
-**Гіпотези:**
-- **Fiat first** — поповнення карткою одразу, без Web3-гаманця при першій ставці
-- **Guided first bet** — онбординг-флоу: трендовий ринок → пояснення одс → "поставити $5?"
-- **Demo bet** — ставка без грошей для розуміння механіки, потім конверсія в реальну
+**Hypotheses:**
+- **Fiat first** — card top-up immediately, no Web3 wallet required for the first bet
+- **Guided first bet** — onboarding flow: trending market → odds explanation → "bet $5?"
+- **Demo bet** — stake without money to understand mechanics, then convert to a real bet
 
-**Що невідомо:**
-- Який % юзерів дропається на етапі поповнення
-- Чи demo bet підвищує або знижує конверсію у реальну ставку
+**Unknowns:**
+- What % of users drop off at the deposit step
+- Whether a demo bet increases or decreases conversion to a real bet
 
-**Метрика:** `% юзерів які зробили першу ставку протягом 24 годин після реєстрації`
+**Metric:** `% of users who placed their first bet within 24 hours of registration`
 
-**Продуктові рішення:**
-- Онбординг-флоу з прогрес-баром
-- Інлайн-пояснення механіки прямо в картці ринку
-- Fiat on-ramp на першому екрані після реєстрації
+**Product decisions:**
+- Onboarding flow with progress bar
+- Inline mechanics explanation directly in the market card
+- Fiat on-ramp on the first screen after registration
 
 ---
 
 ## Retention
-*Чому юзер повертається завтра, через тиждень, через місяць*
+*Why the user comes back tomorrow, next week, next month*
 
-**Природний гак:** відкрита позиція — юзер не може забути про платформу поки подія не вирішилась. Але між ставкою і результатом — провал залученості.
+**Built-in hook:** an open position — the user can't forget about the platform until the event resolves. But between the bet and the result there's an engagement gap.
 
-**Три рівні retention:**
+**Three retention levels:**
 
-| Етап | Коли | Що відбувається | Нотифікація |
+| Stage | When | What happens | Notification |
 |---|---|---|---|
-| Гарячий | День 1–3 | Юзер стежить за рухом одс | *"Ціна YES виросла з 45% до 61%"* |
-| Теплий | День 4–14 | Нова подія в улюбленій категорії | *"Новий ринок: Will Zelensky meet Trump?"* |
-| Холодний | День 15+ | Leaderboard, streak, resolution | *"Твоя позиція вирішилась. Ти виграв $47"* |
+| Hot | Day 1–3 | Watching odds movement | *"YES price moved from 45% to 61%"* |
+| Warm | Day 4–14 | New event in a favorite category | *"New market: Will Zelensky meet Trump?"* |
+| Cold | Day 15+ | Leaderboard, streak, resolution | *"Your position resolved. You won $47"* |
 
-**Retention-ризик:** якщо юзер програв першу ставку — велика ймовірність що не повернеться. Тому перший ринок під час онбордингу має мати **найближчий дедлайн** (не "до кінця року", а "до кінця тижня").
+**Retention risk:** if the user lost their first bet — high chance they won't return. That's why the first market during onboarding should have the **nearest deadline** (not "end of year", but "end of this week").
 
-**Що невідомо:**
-- Оптимальна частота нотифікацій (забагато = unsubscribe)
-- Чи програш повертає юзера чи відлякує
+**Unknowns:**
+- Optimal notification frequency (too many = unsubscribe)
+- Whether a loss brings the user back or drives them away
 
-**Метрика:** `% юзерів активних на 7-й день` і `% активних на 30-й день`
+**Metrics:** `% of users active on day 7` and `% active on day 30`
 
-**Продуктові рішення:**
-- Розумні нотифікації прив'язані до руху ціни і наближення дедлайну
-- Персональна стрічка на основі категорій де юзер вже ставив
-- Leaderboard з weekly reset
+**Product decisions:**
+- Smart notifications tied to price movement and approaching deadlines
+- Personalized feed based on categories where the user has already bet
+- Leaderboard with weekly reset
 
 ---
 
 ## Revenue
-*Як платформа заробляє*
+*How the platform earns*
 
-**Основна модель — Trading fee при виграші (2%):**
+**Primary model — Trading fee on win (2%):**
 
-| Варіант | Коли береться | Психологія |
+| Option | When taken | Psychology |
 |---|---|---|
-| A: з ставки (вхід) | Поставив $100 → у грі $98 | Болить одразу |
-| **B: з виграшу (вихід)** | Виграв $150 → отримуєш $147 | **Платиш тільки коли заробив** |
+| A: on entry | Bet $100 → $98 in play | Hurts immediately |
+| **B: on win (exit)** | Won $150 → receive $147 | **Pay only when you earned** |
 
-Рекомендація: Варіант B — менше болю, більше лояльності.
+Recommendation: Option B — less pain, more loyalty.
 
-**Додаткові джерела:**
+**Additional sources:**
 
-| Джерело | Коли | % | Прозорість |
+| Source | When | % | Transparency |
 |---|---|---|---|
-| Trading fee | При виграші | ~2% | Показуємо явно до підтвердження |
-| On-ramp | При поповненні | affiliate від провайдера | Не наша комісія |
+| Trading fee | On win | ~2% | Shown explicitly before confirmation |
+| On-ramp | On deposit | affiliate from provider | Not our commission |
 
-**Що невідомо:**
-- Який % дає прийнятний LTV при нашому CAC
-- При якому обсязі торгів платформа стає прибутковою
+**Unknowns:**
+- What % delivers acceptable LTV at our CAC
+- At what trading volume does the platform become profitable
 
-**Метрика:** `revenue per active user / місяць` і `total trading volume`
+**Metrics:** `revenue per active user / month` and `total trading volume`
 
-**Продуктове рішення:** показувати комісію явно і чесно до підтвердження ставки. *"Платформа заробить $0.40 якщо ти виграєш"* — прозорість як конкурентна перевага.
+**Product decision:** show the fee explicitly and honestly before bet confirmation. *"Platform earns $0.40 if you win"* — transparency as a competitive advantage.
 
 ---
 
 ## Referral
-*Як юзери приводять інших юзерів*
+*How users bring other users*
 
-**Вбудований реферальний механізм:** люди природно хочуть ділитися прогнозами. *"Я ж казав що так буде"* — соціальний інстинкт.
+**Built-in referral mechanic:** people naturally want to share predictions. *"I told you so"* — a social instinct.
 
-**Три типи органічного шерингу:**
+**Three types of organic sharing:**
 
-| Тип | Повідомлення | Коли |
+| Type | Message | When |
 |---|---|---|
-| Шеринг позиції | *"Я поставив $50 на YES. Ринок каже 34%, я вважаю що всі помиляються"* | До результату |
-| Шеринг виграшу | *"Виграв $340 на виборах у Франції. Передбачив 3 тижні тому"* | Після результату |
-| Шеринг ринку | *"Хто що думає? Ось ринок де можна поставити гроші"* | Будь-коли |
+| Position share | *"I bet $50 on YES. Market says 34%, I think everyone is wrong"* | Before resolution |
+| Win share | *"Won $340 on the French election. Called it 3 weeks ago"* | After resolution |
+| Market share | *"What does everyone think? Here's a market where you can put money on it"* | Anytime |
 
-**Механіки:**
+**Mechanics:**
 
-| Механіка | Як працює | Референс |
+| Mechanic | How it works | Reference |
 |---|---|---|
-| Share card | Красива картка з позицією для Twitter/Telegram | Robinhood, Spotify Wrapped |
-| Referral бонус | Приведи друга → обидва отримують $5 на перший бет | Fintech стандарт |
-| Public profile | Трек-рекорд передбачень відкритий → юзер будує репутацію | Metaculus, Manifold |
-| Embed ринку | Будь-який ринок можна вставити на сайт або статтю | Polymarket (частково) |
+| Share card | Beautiful card with position for Twitter/Telegram | Robinhood, Spotify Wrapped |
+| Referral bonus | Bring a friend → both get $5 on first bet | Fintech standard |
+| Public profile | Prediction track record is open → user builds reputation | Metaculus, Manifold |
+| Market embed | Any market can be embedded on a site or article | Polymarket (partially) |
 
-**Що невідомо:**
-- Який канал шерингу дасть найбільшу конверсію у реєстрацію
-- Чи referral бонус виправдовує CAC
+**Unknowns:**
+- Which sharing channel will drive the highest conversion to registration
+- Whether a referral bonus justifies CAC
 
-**Метрика:** `% нових юзерів що прийшли через шеринг` і `viral coefficient (k-factor)`
+**Metrics:** `% of new users who came via sharing` and `viral coefficient (k-factor)`
 
-**Продуктове рішення:** після кожного resolution — автоматично генерувати share card з результатом. Юзер виграв → хоче похвалитися → безкоштовний трафік.
+**Product decision:** after every resolution — automatically generate a share card with the result. User wins → wants to brag → free traffic.
 
 ---
 
-## Зведена таблиця метрик
+## Summary Metrics
 
-| Етап | Ключова метрика | Ціль (гіпотеза) |
+| Stage | Key metric | Target (hypothesis) |
 |---|---|---|
-| Acquisition | Нові реєстрації / тиждень | — |
-| Activation | % першої ставки в перші 24 год | >40% |
-| Retention | % активних на 7-й день | >30% |
-| Retention | % активних на 30-й день | >15% |
-| Revenue | Trading volume / місяць | — |
-| Referral | % юзерів через шеринг | >20% |
+| Acquisition | New registrations / week | — |
+| Activation | % first bet within 24h | >40% |
+| Retention | % active on day 7 | >30% |
+| Retention | % active on day 30 | >15% |
+| Revenue | Trading volume / month | — |
+| Referral | % users via sharing | >20% |
 
 ---
 
-## Ключові продуктові висновки
+## Key Product Takeaways
 
-1. **Activation — найбільший ризик.** Довгий шлях до першої ставки = основний відсів. Fiat first + guided onboarding — пріоритет MVP
-2. **Retention вбудований у механіку,** але треба підтримати нотифікаціями і правильним вибором першого ринку
-3. **Revenue прозорий** — показуємо комісію явно, це довіра а не слабкість
-4. **Referral органічний** — share card після виграшу це must-have, не nice-to-have
+1. **Activation is the biggest risk.** The long path to the first bet = primary drop-off. Fiat first + guided onboarding — MVP priority
+2. **Retention is built into the mechanics,** but needs support via notifications and the right choice of first market
+3. **Revenue is transparent** — showing the fee explicitly is trust, not weakness
+4. **Referral is organic** — share card after a win is a must-have, not a nice-to-have
