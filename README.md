@@ -43,4 +43,5 @@ A mobile-first Web3 platform for prediction markets. Users bet YES/NO on real-wo
 - [research/aarrr.md](./research/aarrr.md) — AARRR framework: acquisition, activation, retention, revenue, referral
 - [research/competitive-analysis.md](./research/competitive-analysis.md) — Full competitor comparison: table, patterns, differences, open questions
 - [research/benchmark-trust.md](./research/benchmark-trust.md) — Trust benchmark: 5 products × 8 criteria, top mechanisms for MVP
+- [research/ux-patterns.md](./research/ux-patterns.md) — UX patterns: 5 approaches, behavioral analysis, pattern selection for MVP
 - [research/product-model.md](./research/product-model.md) — Product model: objectives, audience segments, AIDA
