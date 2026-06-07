@@ -91,7 +91,7 @@
 ### What's missing across all competitors
 
 1. **No clear "why this number?" explanation** — odds show % or ¢ but never explain WHY that's the market price or what drives changes
-2. **Weak onboarding for new users** — no guided first bet, no explanation of AMM mechanics inline
+2. **Weak onboarding for new users** — no guided first bet, no explanation of CLOB/AMM mechanics inline
 3. **No narrative around events** — markets exist as isolated questions, not connected to news context
 4. **Trust signals are buried** — resolution rules, dispute processes exist but are hard to find
 5. **Portfolio clarity is poor** — understanding your P&L, position, and potential payout is complex
@@ -103,7 +103,7 @@
 Based on JTBD (J2 primary: engaged spectator with skin in the game):
 
 1. **Events as stories, not just questions** — each market connected to live news context
-2. **Transparent mechanics inline** — explain why odds move, what AMM means, right on the market page
+2. **Transparent mechanics inline** — explain why odds move, how CLOB pricing works, right on the market page
 3. **Guided first experience** — walk new user through first bet with real money context
 4. **Cleaner signup than Polymarket** — 3 options max (Google, Apple, Wallet). Separate social from Web3 onboarding
 5. **Clearer payout display** — show "if YES wins, you get $X" not just abstract ¢ prices
