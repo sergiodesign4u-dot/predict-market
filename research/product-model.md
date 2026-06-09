@@ -60,7 +60,7 @@
 | **Pain points** | Sports betting got boring or is blocked. Wants to bet on "serious" events. |
 | **JTBD** | Find a new betting arena where analysis matters, not just luck |
 
-**v_refresh note:** CHANGED priority upward. Sports revenue data (Kalshi 89% from sports, Polymarket sports > 60% open interest by October 2025) confirms this user converts at higher volume. If we add sports markets in MVP, this segment becomes secondary rather than post-MVP. Source: [Kalshi revenue breakdown](https://finance.yahoo.com/news/kalshi-fee-revenue-2025-263-145801350.html)
+**v_refresh note:** CONFIRMED as post-MVP. Sports revenue data (Kalshi 89% from sports) confirms this segment drives high volume - but adding sports markets is a product scope decision that exceeds MVP. Decision: sports = post-MVP. Crossover Bettor remains post-MVP. Will revisit after MVP launch with real retention data. Source: [Kalshi revenue breakdown](https://finance.yahoo.com/news/kalshi-fee-revenue-2025-263-145801350.html)
 
 ---
 
@@ -110,7 +110,7 @@
 |---|---|---|---|
 | Primary | News Junkie | Largest potential market. Fiat on-ramp removes the barrier. Directly aligned with JTBD J2. | CONFIRMED |
 | Secondary | Crypto Native | Faster to activate (already has a wallet). Smaller audience but higher quality traffic. | CONFIRMED |
-| Secondary (elevated) | Crossover Bettor | Sports revenue data suggests this segment drives volume earlier than expected. Consider adding one sports category at MVP. | CHANGED from "Later / post-MVP" |
+| Post-MVP | Crossover Bettor | Sports markets = post-MVP decision. Kalshi data confirms this segment drives volume, but scope exceeds MVP. Revisit after launch with real retention data. | CONFIRMED post-MVP |
 
 ---
 

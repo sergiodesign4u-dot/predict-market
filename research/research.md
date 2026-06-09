@@ -1,6 +1,8 @@
 # Competitive Research
 
-## Competitor Groups
+> Note: Competitor groupings in this file are the original v1 draft. The authoritative, updated three-group structure (HARD / SOFT / ASPIRATIONAL) with full analysis and screens is in [competitive-analysis.md](./competitive-analysis.md) (v_refresh June 2026). The raw findings below (navigation patterns, signup flows, market card patterns) remain valid.
+
+## Competitor Groups (v1 - superseded by competitive-analysis.md)
 
 ### Group 1 — Hard (same product, same audience, same market)
 | # | Name | Type | Why here | What to study |
@@ -8,26 +10,26 @@
 | 1 | **Polymarket** | Crypto PM, global, USDC/Polygon | Largest crypto prediction market, closest competitor | Bet UX, onboarding, navigation |
 | 2 | **Futuur** | Crypto + fiat, global | Hybrid model, global scope, similar to our concept | Fiat on-ramp, multi-outcome UI, probability bars |
 | 3 | **Azuro** | Decentralized protocol, Web3 | Fully Web3, no central operator | Market architecture, liquidity UX |
-| 4 | **Zeitgeist** | Polkadot-based PM | Active Web3 PM, new market mechanics | Resolution UI, complex market display |
-| 5 | **Hedgehog** | Newer crypto PM | Cleaner design, similar positioning | New user onboarding into Web3 PM |
+| ~~4~~ | ~~Zeitgeist~~ | ~~Polkadot-based PM~~ | Low activity, low relevance | Removed |
+| ~~5~~ | ~~Hedgehog~~ | ~~Newer crypto PM~~ | Closed 2024, irrelevant | Removed |
 
 ### Group 2 — Soft (different product, same JTBD)
 | # | Name | Type | Why here | What to study |
 |---|---|---|---|---|
-| 1 | **Bet365 / 1xBet** | Traditional sports betting | Mass market betting, same impulse | Odds explanation, live mode, engagement |
-| 2 | **Betfair Exchange** | P2P betting exchange | Similar peer mechanics to AMM | How they show liquidity and opposing bets |
-| 3 | **dYdX / Hyperliquid** | Crypto derivatives | Same audience, same motive (predict & earn) | Trust UI, wallet UX, risk explanation |
-| 4 | **DraftKings** | Fantasy sports + betting | Legal betting with big UX budget | Leaderboard, retention, gamification |
-| 5 | **Metaculus** | Forecasting community (no money) | Same psychology without stakes | Non-monetary motivation: reputation, accuracy |
+| 1 | **Bet365** | Traditional sports betting | Mass market betting, same JTBD | Odds explanation, live mode, trust signals, brand |
+| 2 | **Betfair Predicts** | P2P exchange + prediction market wrapper (beta Apr 2026) | Converging on our format | Yes/No UI on exchange liquidity |
+| 3 | **eToro** | Social copy trading | Same "follow smart money" JTBD | CopyTrader, social proof, trust |
+| ~~4~~ | ~~dYdX / Hyperliquid~~ | ~~Crypto derivatives~~ | Different JTBD (leverage trading, not events) | Removed |
+| 5 | **DraftKings DFS** | Daily fantasy sports | Skill-based real-money, same engagement loop | Onboarding, retention |
 
 ### Group 3 — Aspirational (international benchmarks)
 | # | Name | Type | Why here | What to study |
 |---|---|---|---|---|
-| 1 | **Kalshi** | CFTC-regulated, fiat, US | Gold standard for trust and compliance | Trust signals, regulated disclaimers, clean signup |
-| 2 | **Manifold Markets** | Play money, user-created | Best UX for market creation and social layer | User-created events, discussion layer |
-| 3 | **PredictIt** | Regulated, political markets | Long-standing, verified resolution mechanics | Resolution transparency, rule clarity |
-| 4 | **Good Judgment Open** | Professional forecasting | Best-in-class event formulation | How to write clear, unambiguous resolution criteria |
-| 5 | **Robinhood** | Fintech / investing | Best "democratized finance" onboarding | New user clarity, risk explanation, first experience |
+| 1 | **Revolut** | Mobile fintech, 50M+ users | Best trust UX in mobile fintech | Trust signals, funds protection copy, onboarding |
+| 2 | **Coinbase** | Crypto exchange, Nasdaq listed | Best crypto onboarding for mainstream | "1:1 assets" promise, educational layer |
+| 3 | **Robinhood** | Investing app, $100B valuation | Best "democratized finance" onboarding | 4-screen "swipeys," fee transparency, first experience |
+| ~~4~~ | ~~PredictIt~~ | ~~Regulated political markets~~ | US-only, shut down 2023 | Removed |
+| ~~5~~ | ~~Good Judgment Open~~ | ~~Professional forecasting~~ | No product UX to study | Removed |
 
 ---
 

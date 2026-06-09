@@ -10,8 +10,8 @@
 
 Three things changed meaningfully since the original research:
 
-**1. Sports markets are dominant in the category - earlier than expected.**
-Kalshi earned $263.5M in fee revenue in 2025, with 89% from sports. Polymarket shifted to sports > 60% of open interest by October 2025. DraftKings Predictions launched December 2025 (CFTC-regulated, 38 US states), also sports-adjacent. Our events-first thesis is still correct for the News Junkie segment, but volume data suggests sports categories are needed for financial viability earlier than the original post-MVP plan assumed. Action: reconsider adding one sports category at MVP launch.
+**1. Sports markets are dominant in the category - decision: post-MVP.**
+Kalshi earned $263.5M in fee revenue in 2025, with 89% from sports. Polymarket shifted to sports > 60% of open interest by October 2025. Sports drives volume - but adding sports markets exceeds MVP scope. Decision: events-first MVP (politics, crypto, culture, general), sports added post-MVP. This means accepting a lower initial volume ceiling in exchange for product clarity and reduced complexity at launch.
 
 **2. The competitor landscape now has three tiers - not one.**
 Prior analysis treated all competitors as one pool. New structure: HARD (Polymarket, Kalshi, Futuur, DraftKings Predictions, Azuro), SOFT (Bet365, Betfair Predicts, eToro, Manifold, DraftKings DFS), ASPIRATIONAL (Revolut, Coinbase, Robinhood, Cash App, Duolingo). Betfair launched a prediction market beta in April 2026, signaling incumbent betting exchanges are converging on our format. Manifold returned to play-money-only in March 2025 - community mechanics without real stakes do not retain users.
@@ -49,8 +49,8 @@ Research goal: understand WHAT and FOR WHOM we're building, what solutions alrea
 3. Activation - the biggest risk. CONFIRMED. Fiat first + 4-screen Robinhood-style onboarding (not demo bet) - MVP priority.
 4. Regulatory badges (FSCS/SIPC) unavailable to us. CONFIRMED. Replaced with on-chain transparency.
 5. CLOB vs AMM - still open [?]. Azuro's decentralized AMM model documented; for cold start AMM avoids liquidity problem.
-6. NEW: Sports markets needed for volume. Kalshi/Polymarket data shows sports drives 60-89% of revenue. Decide whether to include sports at MVP.
-7. NEW: Fee model unresolved. Industry moved to fee-per-trade. "Fee on win" may underperform vs fee-per-contract.
+6. NEW: Sports markets = post-MVP. Data confirms volume potential (Kalshi 89% sports), but scope exceeds MVP. Events-first launch, sports added after.
+7. NEW: Fee model unresolved. Industry moved to fee-per-trade. "Fee on win" may underperform vs fee-per-contract. Decide before building fee logic.
 
 ---
 
@@ -259,65 +259,61 @@ Polymarket + Kalshi = order book (CLOB). Azuro = decentralized AMM. Bet365 = hou
 
 ## 5. Benchmark: Trust & First-Time Credibility
 
-*Source: [benchmark-trust.md](./benchmark-trust.md) · screenshots: coinbase-trust.png · revolut-trust.png · robinhood-trust.png*
+*Source: [benchmark-trust.md](./benchmark-trust.md) · screenshots in `screens/`*
+*v_refresh: Products changed from (Revolut/Coinbase/Robinhood/Kalshi/Polymarket) to (Polymarket/Kalshi/Futuur/Bet365/Revolut). New set is specific to our market: top 3 HARD competitors + 1 SOFT + 1 ASPIRATIONAL.*
 
 ### Why Trust as a Dimension
 
-Trust is the #1 value for the audience (20–40, real money, fintech). This is exactly where competitors are weakest (Polymarket: 19/40). This is exactly where decisions for wireframes come from. *[CLAUDE.md]*
+Trust is the #1 value for the audience (20-40, real money, fintech). This is exactly where direct competitors are weakest. This is where decisions for wireframes grow from.
 
-### Scores (1–5, 8 criteria × 5 products)
+### Scores (1-5, 8 criteria x 5 products) - v_refresh
 
-| Criterion | Revolut | Coinbase | Robinhood | Kalshi | Polymarket |
+| Criterion | Polymarket | Kalshi | Futuur | Bet365 | Revolut |
 |---|:---:|:---:|:---:|:---:|:---:|
-| C1 Regulatory transparency | 5 | 5 | 4 | 5 | 2 |
-| C2 Funds protection | 5 | 5 | 4 | 4 | 1 |
-| C3 Fee transparency before action | 4 | 3 | **5** | 3 | 2 |
-| C4 Social proof | **5** | **5** | 4 | 3 | 4 |
-| C5 Clarity of first impression | 4 | 4 | **5** | 4 | 3 |
-| C6 Onboarding friction | 3 | 3 | 3 | 2 | 2 |
-| C7 Risk communication | 3 | 4 | 3 | 4 | 3 |
-| C8 Resolution / rules clarity | 3 | 4 | 3 | 3 | 2 |
-| **TOTAL** | **32** | **33** | **31** | **28** | **19** |
+| C1 Regulatory transparency | 2 | **5** | 1 | **5** | **5** |
+| C2 Funds protection | 1 | 4 | 1 | 4 | **5** |
+| C3 Fee transparency before action | 2 | 3 | 2 | 3 | 4 |
+| C4 Social proof | 4 | 3 | 2 | **5** | **5** |
+| C5 Clarity of first impression | 3 | 4 | 3 | **5** | 4 |
+| C6 Onboarding friction | 2 | 2 | 2 | 3 | 3 |
+| C7 Risk communication | 3 | 4 | 1 | 4 | 3 |
+| C8 Resolution clarity | 2 | 3 | 2 | 4 | 3 |
+| **TOTAL** | **19** | **28** | **14** | **33** | **32** |
 
-*Kalshi is weak on C6 (onboarding friction) — auto-modal on entry is aggressive. Polymarket is weak on C2 (funds protection) — no explanation of where and how USDC is stored.*
-*Screenshots: [screens/coinbase-trust-signals.png](./screens/coinbase-trust-signals.png) · [screens/revolut-trust.png](./screens/revolut-trust.png)*
+**Key insight:** Futuur (our closest structural analog - global, crypto+fiat, no US regulation) scores 14/40 - worse than Polymarket. Our market has a trust floor of 14-19/40. The Crossover Bettor's reference (Bet365) scores 33/40. That is a gap of 14-19 points we need to close through design decisions, not licensing.
+
+*Screenshots: [polymarket-home-mobile.png](./screens/polymarket-home-mobile.png) - [kalshi-home-mobile.png](./screens/kalshi-home-mobile.png) - [futuur-home-mobile.png](./screens/futuur-home-mobile.png) - [bet365-home-mobile.png](./screens/bet365-home-mobile.png) - [revolut-trust-mobile.png](./screens/revolut-trust-mobile.png)*
 
 ---
 
-### Top 3 Mechanisms for MVP
+### Top 3 Mechanisms for MVP - v_refresh
 
-**1. Concrete promise of funds protection (from Coinbase, C2: 5/5)**
+**1. Immediate product clarity at first impression (Bet365, C5: 5/5)**
+> Show a live market with context on the homepage. No signup required to see it. Event + probability + brief context + YES/NO. The user should understand the product in 3 seconds.
+
+Why it works: the first trust failure is cognitive anxiety ("what even is this?"). Bet365 eliminates it instantly. We must do the same for prediction markets.
+
+**2. Concrete promise of funds protection (Revolut, C2: 5/5)**
 > "Your USDC is held 1:1. We never lend it without your permission."
 
-Where to use: first deposit screen + "How it works." Not legal text — one simple sentence.
-Why it works: closes the new user's primary fear before they even voice it.
-*Screenshots: [screens/coinbase-trust-signals.png](./screens/coinbase-trust-signals.png)*
+Where: first deposit screen + "How it works." One sentence, not legal text.
+Why it works: Futuur scores 1/5 on this criterion while being our closest structural analog. The gap is completely open. This is the new user's primary fear - close it proactively.
 
-**2. Social proof as a block on the homepage (from Revolut, C4: 5/5)**
-> "$X traded · N users · Rating Y"
+**3. Resolved markets as social proof (Bet365 + Polymarket, C4)**
+> "N markets resolved correctly - since [date] - all on-chain verifiable."
 
-Where to use: homepage, after hero, before market list. Compact block.
-Why it works: "if so many people trust it — it must be worth trying" — reduces newcomer anxiety.
-*Screenshots: [screens/revolut-trust.png](./screens/revolut-trust.png) — 75M+ customers, Trustpilot 4.7, 5 awards in one block*
-
-**3. Fee transparency at the moment of action (from Robinhood, C3: 5/5)**
-> "The platform earns $0.40 if you win"
-
-Where to use: confirmation screen before submitting the bet.
-Why it works: hidden fees are the #1 cause of churn. Transparency at the moment of highest anxiety = trust.
-*Screenshots: [screens/robinhood-trust.png](./screens/robinhood-trust.png)*
+Our equivalent of "80M users" or "$9B+ traded." At launch we have zero of either. Resolved market count is a signal we can build from day one and display honestly.
+Why it works: users need evidence the platform has delivered on its core promise. Resolved markets prove it.
 
 ---
 
 ### 1 Mechanism That Will NOT Work
 
-**Regulatory badges FSCS / SIPC / FDIC / CFTC**
+**Regulatory badges (FSCS/SIPC/FDIC/CFTC) or simulating Bet365's brand authority.**
 
-Revolut (FSCS), Robinhood (SIPC/FINRA), Kalshi (CFTC) — all have official regulator shields on their homepage.
-We are not a bank or broker — these badges are unavailable without a real license.
-Displaying similar elements without the backing will destroy trust the moment it's checked. FTX built a "banking look" without banking guarantees — the outcome is well known.
+These badges require real licenses we do not hold. Bet365 scores 33/40 through 20 years + 30 licenses - that track record is not copyable at launch.
 
-**Alternative:** on-chain transparency: "All settlements are on the blockchain. You can verify every transaction." This is the honest equivalent for a crypto-native platform.
+**Alternative:** on-chain transparency + non-bank disclosure: "All settlements are on the blockchain. Any user can verify every resolved market." This is the honest equivalent.
 *[benchmark-trust.md]*
 
 ---
@@ -449,7 +445,7 @@ _because_ hidden fees are the #1 cause of churn and negative reviews in fintech.
 | Q5 | Resolution without regulation - is team multisig enough at launch? | Core trust problem | Unchanged [?] |
 | Q6 | Does a demo bet increase or decrease conversion? | Activation decision | UPDATED: Manifold sunsetting sweepcash March 2025 suggests play-money does not convert. Lean toward skipping demo bet. |
 | Q7 | Futuur: how exactly is crypto+fiat hybrid structured? | Reference for our model | Unchanged [? still not fully public] |
-| Q8 | NEW: Should we add sports markets at MVP? | Sports = 89% of Kalshi revenue, 60%+ of Polymarket open interest. Without sports, volume floor may be too low for sustainability. | NEW OPEN QUESTION |
+| ~~Q8~~ | ~~Sports markets at MVP?~~ | DECIDED: post-MVP. Sports exceeds MVP scope. Events-first launch, sports added after. | CLOSED |
 | Q9 | NEW: Fee on win vs fee per trade? | Industry moved to fee-per-trade (Polymarket March 2026, DraftKings Dec 2025). Fee on win is psychologically softer but earns less per trade. | NEW OPEN QUESTION |
 
 ---

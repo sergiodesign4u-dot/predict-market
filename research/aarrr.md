@@ -17,9 +17,9 @@
 - **Word-of-mouth** - wins and public predictions spread organically
 
 **v_refresh - what changed:**
-- **NEW channel: sports news and sports media.** Kalshi ($263.5M in 2025, 89% sports) and Polymarket (sports > 60% open interest by October 2025) both show sports-adjacent SEO and media driving more volume than politics/crypto. If we add a sports category, sports news keywords become a real SEO vector. Source: [Kalshi 2025 revenue](https://finance.yahoo.com/news/kalshi-fee-revenue-2025-263-145801350.html)
-- **DraftKings Predictions (launched Dec 2025) validated mainstream brand-to-prediction-market funnel.** They converted existing DFS users. Referral from sports betting communities is a real channel if we position against bookmaker opacity. Source: [DraftKings Predictions launch](https://www.gamblinginsider.com/news/159764/draftkings-combos-fee-structure-predictions-platform)
-- **CONFIRMED: SEO per market page remains primary.** No change to mechanics.
+- **CONFIRMED: SEO per market page remains primary.** Each market = standalone SEO page with live og:image. No change to mechanics.
+- **DraftKings Predictions (launched Dec 2025) validated mainstream brand-to-prediction-market funnel.** They converted existing DFS users via brand trust. Referral from sports betting communities is a real channel if we position against bookmaker opacity. Source: [DraftKings Predictions launch](https://www.gamblinginsider.com/news/159764/draftkings-combos-fee-structure-predictions-platform)
+- **Sports markets = post-MVP.** Kalshi data (89% of revenue from sports) confirms sports drives volume, but adding sports markets is out of MVP scope. Sports SEO channel is a real opportunity - but for v2, not MVP. Decision made. Source: [Kalshi 2025 revenue](https://finance.yahoo.com/news/kalshi-fee-revenue-2025-263-145801350.html)
 
 **Unknowns:**
 - Which channel will deliver the lowest CAC [?]
@@ -31,7 +31,7 @@
 **Product decisions:**
 - Each market is a standalone SEO page with meta tags and og:image showing live odds
 - One-click market sharing directly from the card
-- **NEW: add sports category landing pages to SEO architecture even if sports is not in MVP v1**
+- Sports category landing pages: plan as post-MVP SEO expansion, not MVP scope
 
 ---
 
@@ -91,7 +91,7 @@ Every step = drop-off. Competitors fail exactly here.
 
 **v_refresh - what changed:**
 - **CONFIRMED: position monitoring is the core built-in retention hook.** Every HARD competitor (Polymarket, Kalshi, Futuur) shows a probability-over-time chart specifically because it pulls users back. Source: [competitive-analysis.md - 3 common patterns]
-- **NEW INSIGHT: sports markets have naturally higher daily retention cadence.** Sports events resolve daily or weekly, not monthly. Kalshi's sports dominance (89% of revenue) is partly explained by this: sports creates daily return triggers. If we add sports, retention mechanics become easier to trigger. Source: [Kalshi revenue breakdown](https://finance.yahoo.com/news/kalshi-fee-revenue-2025-263-145801350.html)
+- **POST-MVP NOTE: sports markets have naturally higher daily retention cadence.** Sports events resolve daily or weekly, not monthly. Kalshi's sports dominance (89% of revenue) is partly explained by this. Sports = post-MVP but noting this as a retention argument for the post-MVP roadmap. Source: [Kalshi revenue breakdown](https://finance.yahoo.com/news/kalshi-fee-revenue-2025-263-145801350.html)
 - **NEW: Duolingo's streak + loss-aversion model is the aspirational retention benchmark.** Daily streak = reason to return even without an open position. Loss-aversion framing ("your streak is at risk") is more powerful than reward framing. Consider a prediction streak (consecutive correct predictions) as a retention mechanic.
 - **UNCHANGED: first-bet loss is the biggest churn risk.** No competitor has solved the "I lost my first bet, why return?" moment. This is our differentiation opportunity - design the post-resolution loss screen explicitly.
 
@@ -204,7 +204,7 @@ Recommendation: Option B - less pain, more loyalty.
 ## Key Product Takeaways
 
 1. **Activation is the biggest risk.** The long path to the first bet = primary drop-off. Fiat first + 4-screen Robinhood-style onboarding - MVP priority. Demo bet is likely counterproductive (Manifold evidence).
-2. **Sports markets may be necessary sooner than planned.** Kalshi and Polymarket data both show sports driving retention and volume. Consider one sports category at MVP rather than post-MVP.
+2. **Sports = post-MVP. Decided.** Kalshi data (89% revenue from sports) confirms sports drives volume. But adding sports markets exceeds MVP scope for a solo team (API integrations, real-time data, different resolution mechanics). Launch events-first, add sports after proven retention data.
 3. **Fee on trade vs fee on win is an unresolved decision.** Industry moved toward fee-per-trade. Fee on win is softer psychologically but earns less per active user. Decide before building fee logic.
 4. **Post-resolution experience is undesigned in every competitor.** Loss screen + win share card are our differentiation moments. Design these before the bet flow.
 5. **Referral = public track record.** eToro proved this. Users with visible prediction histories bring other users. Build public profiles from day one, not as a later feature.
