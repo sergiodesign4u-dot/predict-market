@@ -3,8 +3,16 @@
 A mobile-first Web3 platform for prediction markets. Users bet YES/NO on real-world events using stablecoins (USDC/USDT). Outcomes resolve against reality.
 
 **Core bet:** better clarity and onboarding than existing competitors (Polymarket, Kalshi).
-**Audience:** 20–40, trust-driven.
-**Platform:** Mobile-first web → responsive desktop.
+**Audience:** 20-40, trust-driven.
+**Platform:** Mobile-first web, then responsive desktop.
+
+---
+
+## Live Research Summary
+
+**[View research.html live](https://sergiodesign4u-dot.github.io/predict-market/research.html)**
+
+Single-page summary of all research phases. Open the link above in any browser - no local server needed.
 
 ---
 
