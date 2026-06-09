@@ -620,31 +620,49 @@
       <span class="tag">Research</span>
       <span class="tag grey">Prediction Market Platform</span>
       <span class="tag grey">MVP · 2026</span>
+      <span class="tag" style="background:rgba(95,168,255,.1);color:#5fa8ff;border-color:rgba(95,168,255,.25)">v_refresh · June 2026</span>
     </div>
     <h1>Master Research</h1>
     <p class="lead">Synthesis of all research phases — product model, AARRR, competitive analysis, trust benchmark, and UX patterns. Source of truth before wireframes.</p>
+
+    <div style="background:rgba(95,168,255,.06);border:1px solid rgba(95,168,255,.2);border-radius:8px;padding:16px 20px;margin-bottom:32px">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5fa8ff;margin-bottom:10px">v_refresh — 3 things changed</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:13px;color:#bbb"><strong style="color:#e8e8e8">1. Sports markets dominate revenue.</strong> Kalshi earned $263.5M in fee revenue in 2025 — 89% from sports. Polymarket shifted to sports &gt;60% of open interest by Oct 2025. Our events-first thesis is still correct, but sports is needed for volume earlier than planned.</div>
+        <div style="font-size:13px;color:#bbb"><strong style="color:#e8e8e8">2. Competitor landscape restructured.</strong> Three groups: HARD (Polymarket, Kalshi, Futuur, DraftKings Predictions, Azuro), SOFT (Bet365, Betfair Predicts, eToro, Manifold, DraftKings DFS), ASPIRATIONAL (Revolut, Coinbase, Robinhood, Cash App, Duolingo). Betfair Predicts launched beta April 2026. Manifold returned to play-money-only March 2025.</div>
+        <div style="font-size:13px;color:#bbb"><strong style="color:#e8e8e8">3. Fee model is an open decision.</strong> Industry moved to fee-per-trade. Polymarket switched to taker fees by category March 2026 and crossed $1M/day revenue. "Fee on win" may underperform — must decide before building fee logic.</div>
+      </div>
+    </div>
 
     <h3>Key Conclusions</h3>
     <div class="conclusion-grid">
       <div class="conclusion-card">
         <div class="num">01</div>
-        <p><strong>News Junkie</strong> is the primary segment. Largest audience, fiat on-ramp removes the Web3 barrier, directly aligned with JTBD J2.</p>
+        <p><strong>News Junkie</strong> is the primary segment. Largest audience, fiat on-ramp removes the Web3 barrier, directly aligned with JTBD J2. <em style="color:#666">Confirmed.</em></p>
       </div>
       <div class="conclusion-card">
         <div class="num">02</div>
-        <p>No competitor explains <strong>"why is the price this?"</strong> — this is our differentiator and the foundation of Story-driven UX.</p>
+        <p>No competitor explains <strong>"why is the price this?"</strong> — our differentiator and foundation of Story-driven UX. <em style="color:#666">Confirmed.</em></p>
       </div>
       <div class="conclusion-card">
         <div class="num">03</div>
-        <p><strong>Activation is the biggest risk.</strong> Fiat first + guided first bet — MVP priority.</p>
+        <p><strong>Activation is the biggest risk.</strong> Fiat first + 4-screen Robinhood-style onboarding. Skip demo bet (Manifold evidence). <em style="color:#666">Updated.</em></p>
       </div>
       <div class="conclusion-card">
         <div class="num">04</div>
-        <p>Regulatory badges (FSCS/SIPC) are unavailable to us — replaced with <strong>on-chain transparency.</strong></p>
+        <p>Regulatory badges (FSCS/SIPC) unavailable to us — replaced with <strong>on-chain transparency.</strong> <em style="color:#666">Confirmed.</em></p>
       </div>
       <div class="conclusion-card">
         <div class="num">05</div>
-        <p>CLOB vs AMM for MVP — open question. AMM is more realistic for a cold start. <span class="pill pill-q">[?]</span></p>
+        <p>CLOB vs AMM for MVP — open question. Azuro vAMM documented as decentralized path. <span class="pill pill-q">[?]</span></p>
+      </div>
+      <div class="conclusion-card" style="border-color:rgba(95,168,255,.3)">
+        <div class="num" style="color:#5fa8ff">06 NEW</div>
+        <p><strong>Sports markets needed sooner.</strong> Kalshi 89% sports, Polymarket 60%+. Consider one sports category at MVP for volume floor. <span class="pill pill-q">[?]</span></p>
+      </div>
+      <div class="conclusion-card" style="border-color:rgba(95,168,255,.3)">
+        <div class="num" style="color:#5fa8ff">07 NEW</div>
+        <p><strong>Fee model unresolved.</strong> Industry moved to fee-per-trade. "Fee on win" is softer but earns less. Decide before building fee logic. <span class="pill pill-q">[?]</span></p>
       </div>
     </div>
   </section>
@@ -685,10 +703,10 @@
         <p>Already in Web3. Has MetaMask. Knows DeFi. Wants to monetize crypto knowledge and find more markets than Polymarket offers.</p>
       </div>
       <div class="segment">
-        <div class="segment-priority later">Later — post-MVP</div>
+        <div class="segment-priority sec">Secondary (elevated)</div>
         <h4>Crossover Bettor</h4>
         <div class="age">28–42</div>
-        <p>Already bets on sports. Looking for more intellectual markets where analysis matters, not just luck.</p>
+        <p>Already bets on sports. Looking for more intellectual markets where analysis matters. <strong style="color:#5fa8ff">Elevated from post-MVP</strong> — sports revenue data (Kalshi 89% from sports) suggests this segment drives volume earlier than expected.</p>
       </div>
     </div>
 
@@ -758,8 +776,8 @@
       <div class="funnel-arrow">↓</div>
       <div class="funnel-step">
         <div class="funnel-step-label">Revenue</div>
-        <div class="funnel-step-desc">~2% fee on win (not on entry). "Pay only when you earned."</div>
-        <div class="funnel-step-metric"><span class="val">~2%</span>fee on win</div>
+        <div class="funnel-step-desc">Fee model TBD: fee on win vs fee per trade. Industry moved to fee-per-trade (Polymarket March 2026). "Pay only when you earned" is softer but earns less. <span class="pill pill-q">[?]</span></div>
+        <div class="funnel-step-metric"><span class="val">TBD</span>fee model</div>
       </div>
       <div class="funnel-arrow">↓</div>
       <div class="funnel-step">
@@ -777,10 +795,10 @@
         </thead>
         <tbody>
           <tr><td class="label">Acquisition</td><td>Every market = SEO page with dynamic og:image showing live odds</td></tr>
-          <tr><td class="label">Activation</td><td>Fiat on-ramp on first screen after registration + guided first bet with progress bar</td></tr>
-          <tr><td class="label">Retention</td><td>Smart notifications (price movement + deadline) + personal feed by category</td></tr>
-          <tr><td class="label">Revenue</td><td>"Platform earns $0.40 if you win" — shown explicitly before confirmation</td></tr>
-          <tr><td class="label">Referral</td><td>Share card after every resolution (auto-generated)</td></tr>
+          <tr><td class="label">Activation</td><td>Fiat on-ramp on first screen + 4-screen Robinhood "swipeys" onboarding. Skip demo bet (Manifold evidence). Minimum stake $1–5 real money.</td></tr>
+          <tr><td class="label">Retention</td><td>Smart notifications (price movement + deadline) + personal feed by category + <strong>post-resolution loss screen</strong> ("here's what happened, here's a similar market") + prediction streak mechanic</td></tr>
+          <tr><td class="label">Revenue</td><td>Fee shown explicitly before confirmation. Model TBD: fee on win vs fee per trade. <span class="pill pill-q">[?]</span></td></tr>
+          <tr><td class="label">Referral</td><td>Share card after every resolution (auto-generated) + <strong>public prediction track record from day one</strong> (eToro CopyTrader model)</td></tr>
         </tbody>
       </table>
     </div>
@@ -803,9 +821,40 @@
   <!-- ── COMPETITORS ─────────────────────────────────────── -->
   <section id="competitors">
     <div class="section-label">Competitors</div>
-    <h2>Comparative analysis</h2>
+    <h2>Comparative analysis <span style="font-size:12px;font-weight:400;color:#5fa8ff;margin-left:8px">v_refresh · 3 groups</span></h2>
 
-    <h3>Matrix by axis</h3>
+    <h3>Three competitor groups</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:16px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:10px">HARD — Same product</div>
+        <div style="font-size:13px;color:#bbb;line-height:1.7">Same product type (prediction markets), same audience, direct competitors.<br><br>
+        <strong style="color:#e8e8e8">Polymarket</strong> — crypto CLOB, global, largest volume ($9B+ 2024)<br>
+        <strong style="color:#e8e8e8">Kalshi</strong> — CFTC, US fiat, $263.5M fee revenue 2025<br>
+        <strong style="color:#e8e8e8">Futuur</strong> — crypto+fiat hybrid, global<br>
+        <strong style="color:#e8e8e8">DraftKings Predictions</strong> — launched Dec 2025, CFTC, 38 US states<br>
+        <strong style="color:#e8e8e8">Azuro Protocol</strong> — decentralized AMM, sports-focused</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffc850;margin-bottom:10px">SOFT — Same JTBD</div>
+        <div style="font-size:13px;color:#bbb;line-height:1.7">Different product but same JTBD: "skin in the game on events I follow."<br><br>
+        <strong style="color:#e8e8e8">Bet365</strong> — sports betting, 80M+ users, same JTBD for sports events<br>
+        <strong style="color:#e8e8e8">Betfair Predicts</strong> — exchange testing prediction market UI wrapper (beta Apr 2026)<br>
+        <strong style="color:#e8e8e8">eToro</strong> — social copy trading, 35M+ users, IPO May 2025<br>
+        <strong style="color:#e8e8e8">Manifold</strong> — play-money only (returned March 2025)<br>
+        <strong style="color:#e8e8e8">DraftKings DFS</strong> — daily fantasy, skill-based, 9M+ active users</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:10px">ASPIRATIONAL — Best-in-class</div>
+        <div style="font-size:13px;color:#bbb;line-height:1.7">Best-in-class mobile UX, onboarding, trust in fintech/crypto.<br><br>
+        <strong style="color:#e8e8e8">Revolut</strong> — 50M+ users, trust signals, 10-min onboarding<br>
+        <strong style="color:#e8e8e8">Coinbase</strong> — best crypto onboarding for mainstream, Nasdaq listed<br>
+        <strong style="color:#e8e8e8">Robinhood</strong> — "commission-free," 4-screen onboarding, $100B valuation<br>
+        <strong style="color:#e8e8e8">Cash App</strong> — crypto in 3 taps, simplest money UX<br>
+        <strong style="color:#e8e8e8">Duolingo</strong> — best engagement loop: streaks, loss-aversion, habits</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px">Matrix by axis — 5 most relevant (v_refresh)</h3>
     <div class="table-wrap">
       <table>
         <thead>
@@ -813,51 +862,51 @@
             <th>Axis</th>
             <th>Polymarket</th>
             <th>Kalshi</th>
-            <th>Manifold</th>
             <th>Futuur</th>
-            <th>Metaculus</th>
+            <th>DraftKings Pred.</th>
+            <th>Bet365</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="label">Audience</td>
             <td>Crypto natives, DeFi, global (no US)</td>
-            <td>US, TradFi, mainstream</td>
-            <td>Global, everyone</td>
+            <td>US-first, TradFi, sports bettors converting</td>
             <td>Global, crypto + fiat hybrid</td>
-            <td>Analysts, policy community</td>
+            <td>US (38 states), mainstream sports fans</td>
+            <td>Global, 80M+ registered, fiat only</td>
           </tr>
           <tr>
             <td class="label">Foundation</td>
-            <td>CLOB on Polygon, pUSD (USDC)</td>
-            <td>CFTC-regulated exchange, USD fiat</td>
-            <td>Play money (Mana Ṁ), user-created</td>
-            <td>Crypto + fiat hybrid</td>
-            <td>No money — forecasting + reputation</td>
+            <td>CLOB on Polygon, USDC, embedded wallets (2025)</td>
+            <td>CFTC-regulated exchange, USD fiat, ACH/card</td>
+            <td>Crypto + fiat hybrid, multi-currency</td>
+            <td>CFTC event contracts, launched Dec 2025</td>
+            <td>Classic bookmaker, decimal/fractional odds</td>
           </tr>
           <tr>
             <td class="label">Key mechanisms</td>
-            <td>Conditional Token Framework, order book matching</td>
-            <td>Order book, price in cents, regulated settlement</td>
-            <td>AMM, AI-generated context, community resolution</td>
-            <td>Probability bars per outcome, Yes/No per option</td>
-            <td>Aggregated forecast, calibration scoring</td>
+            <td>Taker fee 0.75–7% by category, maker rebate 20–25%, geopolitics free</td>
+            <td>Order book, variable fee by probability, $263.5M fee revenue 2025</td>
+            <td>Probability bars per outcome, Yes/No per option <span class="pill pill-q">[? fee %]</span></td>
+            <td>$0.01/contract fee, combos (parlays) added May 2026</td>
+            <td>Fixed house odds, cash-out, live streaming</td>
           </tr>
           <tr>
             <td class="label">Trust</td>
-            <td>On-chain transparency, UMA resolution, $7.5B+ volume</td>
-            <td>CFTC regulation — highest in the space</td>
-            <td>Zero real-money risk</td>
-            <td>Small track record <span class="pill pill-q">[?]</span></td>
-            <td>Academic accuracy ~4% deviation</td>
+            <td>On-chain + UMA resolution, $9B+ 2024 volume, weak on fund protection copy</td>
+            <td>CFTC = highest institutional trust, US banking partners</td>
+            <td>No regulatory badge, small track record <span class="pill pill-q">[?]</span></td>
+            <td>DraftKings brand + CFTC, new = limited history</td>
+            <td>20+ year brand, 30+ licenses, responsible gambling visible</td>
           </tr>
           <tr>
             <td class="label">Monetization</td>
-            <td>~2% fee on win + maker/taker rebates</td>
-            <td>Exchange fees (maker/taker)</td>
-            <td>Prize pool USDC, no fees on Mana</td>
-            <td>Commission on bets <span class="pill pill-q">[?]</span></td>
-            <td>Grants, institutional partnerships</td>
+            <td>Taker fees by category, $1M+/day revenue Apr 2026</td>
+            <td>Exchange fees, $1.5B annualized revenue 2026</td>
+            <td>Commission on bets <span class="pill pill-q">[? %]</span></td>
+            <td>$0.01 per contract each side + exchange fee</td>
+            <td>House margin ~4–7% baked into odds</td>
           </tr>
         </tbody>
       </table>
@@ -870,17 +919,17 @@
           <div class="card">
             <div class="card-num">PATTERN 01</div>
             <h4>Horizontal category nav + bottom tab bar</h4>
-            <p>De-facto standard of the space. Polymarket (4 tabs), Kalshi (4 tabs), Futuur (3 tabs). Absence makes the platform unrecognizable.</p>
+            <p>De-facto standard across HARD and SOFT groups. Polymarket (4 tabs), Kalshi (4 tabs), Bet365, DraftKings — all use this. Absence = unrecognizable platform.</p>
           </div>
           <div class="card">
             <div class="card-num">PATTERN 02</div>
-            <h4>Probability % as the main number</h4>
-            <p>On every card and detail screen it sits above the event name, volume, time. It is the market's "price" and "game state" at once.</p>
+            <h4>Probability % (or equivalent odds) as the main number</h4>
+            <p>On every card and detail screen. Even Bet365 makes live odds the dominant card element. It is the market's "price" and "game state" at once.</p>
           </div>
           <div class="card">
             <div class="card-num">PATTERN 03</div>
             <h4>Probability chart over time</h4>
-            <p>From a simple line (Manifold) to candlestick (Kalshi). Dynamics = engagement — users return to check if their position is "in the green".</p>
+            <p>From a simple line (Manifold) to candlestick (Kalshi). DraftKings Predictions added charting for the same reason. Movement = engagement.</p>
           </div>
         </div>
       </div>
@@ -889,18 +938,18 @@
         <div class="card-grid" style="grid-template-columns:1fr">
           <div class="card">
             <div class="card-num">DIFF 01</div>
-            <h4>CLOB vs AMM vs Community</h4>
-            <p>Polymarket + Kalshi → order book. Manifold → AMM. Metaculus → aggregated forecasts. CLOB gives fairer prices but requires liquidity.</p>
+            <h4>Regulation defines the product</h4>
+            <p>Kalshi = CFTC + US fiat + $1.5B annualized 2026. Polymarket = global + crypto (USDC). DraftKings = CFTC + 38 states. For a global non-US product, Polymarket and Futuur are the structural analogs.</p>
           </div>
           <div class="card">
             <div class="card-num">DIFF 02</div>
-            <h4>Real money vs Play money vs Crypto</h4>
-            <p>Each approach captures a different audience. Hybrid (Futuur) — theoretically the widest reach, but unclear how it's implemented.</p>
+            <h4>Sports vs events: sector is bifurcating</h4>
+            <p>Kalshi 89% of revenue from sports. Polymarket sports &gt;60% open interest Oct 2025. Our events-first thesis targets the underserved direction — at lower volume in the near term.</p>
           </div>
           <div class="card">
             <div class="card-num">DIFF 03</div>
-            <h4>Who creates markets</h4>
-            <p>Polymarket/Kalshi: the team (curated). Manifold: anyone (scale but noise). For MVP — platform-created = curated and trustworthy.</p>
+            <h4>CLOB vs AMM vs fixed odds</h4>
+            <p>Polymarket + Kalshi = order book (CLOB). Azuro = decentralized AMM. Bet365 = house-set fixed odds. For cold start, CLOB has the liquidity chicken-and-egg problem. <span class="pill pill-q">[?]</span></p>
           </div>
         </div>
       </div>
@@ -909,20 +958,24 @@
     <h3>What's missing across all competitors — our gap</h3>
     <div class="gap-list">
       <div class="gap-item">
-        <span>No one explains "why is the price this?" — what drives the odds, what's the logic</span>
-        <span class="source">research.md</span>
+        <span>No one explains "why is the price this?" — zero in-product context for odds</span>
+        <span class="source">competitive-analysis.md</span>
       </div>
       <div class="gap-item">
-        <span>Weak onboarding — no guided first bet, no inline mechanics explanation</span>
-        <span class="source">research.md</span>
+        <span>Onboarding assumes prior knowledge — no guided first bet, no inline mechanics explanation</span>
+        <span class="source">competitive-analysis.md</span>
       </div>
       <div class="gap-item">
         <span>Markets are isolated from news context — questions without background</span>
-        <span class="source">research.md</span>
+        <span class="source">competitive-analysis.md</span>
       </div>
       <div class="gap-item">
-        <span>Trust signals are buried — resolution rules and dispute process are hard to find</span>
-        <span class="source">research.md</span>
+        <span>Funds protection unexplained — Polymarket trust 19/40, no "where is my USDC?"</span>
+        <span class="source">benchmark-trust.md</span>
+      </div>
+      <div class="gap-item">
+        <span>Post-resolution experience is undesigned — especially for losses. No competitor shows "here's what happened, here's your next move" after a losing bet.</span>
+        <span class="source">competitive-analysis.md · v_refresh NEW</span>
       </div>
       <div class="gap-item">
         <span>Polymarket signup: 8+ wallet icons = cognitive overload for newcomers</span>
@@ -985,7 +1038,7 @@
       <div class="screens">
         <figure class="screen-item">
           <img src="research/screens/manifold-home-mobile.png" alt="Manifold Home">
-          <figcaption>Manifold home</figcaption>
+          <figcaption>Manifold home (play-money only from Mar 2025)</figcaption>
         </figure>
         <figure class="screen-item">
           <img src="research/screens/manifold-market-detail-mobile.png" alt="Manifold Detail">
@@ -1010,6 +1063,38 @@
         <figure class="screen-item">
           <img src="research/screens/metaculus-question-detail-mobile.png" alt="Metaculus Detail">
           <figcaption>Metaculus question</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="screen-group">
+      <div class="screen-group-label">NEW — DraftKings Predictions · Azuro (HARD group)</div>
+      <div class="screens">
+        <figure class="screen-item">
+          <img src="research/screens/draftkings-predictions-home-mobile.png" alt="DraftKings Predictions">
+          <figcaption>DraftKings Predictions — launched Dec 2025</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/azuro-home-mobile.png" alt="Azuro">
+          <figcaption>Azuro — decentralized prediction market protocol</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="screen-group">
+      <div class="screen-group-label">NEW — Bet365 · eToro · Betfair Predicts (SOFT group)</div>
+      <div class="screens">
+        <figure class="screen-item">
+          <img src="research/screens/bet365-home-mobile.png" alt="Bet365">
+          <figcaption>Bet365 — sports betting, 80M+ users, same JTBD</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/etoro-home-mobile.png" alt="eToro">
+          <figcaption>eToro — social copy trading, 35M+ users, IPO May 2025</figcaption>
+        </figure>
+        <figure class="screen-item">
+          <img src="research/screens/betfair-predicts-home-mobile.png" alt="Betfair Predicts">
+          <figcaption>Betfair Predicts — exchange testing Yes/No wrapper (beta Apr 2026)</figcaption>
         </figure>
       </div>
     </div>
@@ -1329,15 +1414,35 @@
       <div class="hyp-source">Sources: benchmark-trust.md · Robinhood · aarrr.md Revenue</div>
     </div>
 
+    <div class="hypothesis" style="border-color:rgba(95,168,255,.3)">
+      <div class="hypothesis-id" style="color:#5fa8ff">H7 · Retention — NEW from v_refresh</div>
+      <div class="hypothesis-title">A designed post-resolution loss screen reduces churn after the first losing bet</div>
+      <div class="hyp-row">
+        <span class="hyp-key if-key">If</span>
+        <span class="hyp-val">after a losing bet the user sees: "here's what happened, here's why the market moved, here's a similar market open right now"</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key then-key">Then</span>
+        <span class="hyp-val">day-7 retention after a first-bet loss will be meaningfully higher than competitors</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key because-key">Because</span>
+        <span class="hyp-val">no competitor designs the post-resolution loss moment. The first-bet loss is the single biggest churn driver in prediction markets. Context + a clear next action transforms a dead-end into a re-engagement loop.</span>
+      </div>
+      <div class="hyp-source">Sources: aarrr.md · Retention "first-bet loss" · competitive-analysis.md gap table · v_refresh NEW</div>
+    </div>
+
     <h3>Open questions — before wireframes</h3>
     <div class="questions">
-      <div class="question"><span class="qnum">Q1</span><span>CLOB vs AMM for MVP? Impact on pricing mechanics and bet UX.</span></div>
+      <div class="question"><span class="qnum">Q1</span><span>CLOB vs AMM for MVP? Impact on pricing mechanics and bet UX. Azuro vAMM documented as decentralized path.</span></div>
       <div class="question"><span class="qnum">Q2</span><span>Fiat on-ramp provider? MoonPay vs Transak vs Stripe Crypto.</span></div>
       <div class="question"><span class="qnum">Q3</span><span>KYC threshold? At what deposit amount does verification kick in — impacts activation friction.</span></div>
-      <div class="question"><span class="qnum">Q4</span><span>Minimum bet size? Psychological barrier vs UX ($1? $5? no limit?)</span></div>
+      <div class="question"><span class="qnum">Q4</span><span>Minimum bet size? Lean toward $1–5 real money. Demo bet likely counterproductive (Manifold evidence).</span></div>
       <div class="question"><span class="qnum">Q5</span><span>Resolution without regulation — is team multisig enough at launch?</span></div>
-      <div class="question"><span class="qnum">Q6</span><span>Does a demo bet increase or decrease conversion to a real bet?</span></div>
-      <div class="question"><span class="qnum">Q7</span><span>Futuur crypto+fiat hybrid — how exactly does it work? Reference for our model.</span></div>
+      <div class="question"><span class="qnum">Q6</span><span>Demo bet? Manifold sunsetting sweepcash March 2025 suggests play-money does not convert. Lean toward skipping.</span></div>
+      <div class="question"><span class="qnum">Q7</span><span>Futuur crypto+fiat hybrid — how exactly does it work? Still unclear.</span></div>
+      <div class="question" style="border-color:rgba(95,168,255,.3)"><span class="qnum" style="color:#5fa8ff">Q8 NEW</span><span>Should we add sports markets at MVP? Kalshi 89% of revenue from sports. Without sports, volume floor may be too low for sustainability.</span></div>
+      <div class="question" style="border-color:rgba(95,168,255,.3)"><span class="qnum" style="color:#5fa8ff">Q9 NEW</span><span>Fee on win vs fee per trade? Industry moved to fee-per-trade (Polymarket March 2026, DraftKings Dec 2025). Fee on win is softer but earns less. Decide before building fee logic.</span></div>
     </div>
 
   </section>
