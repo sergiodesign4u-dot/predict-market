@@ -1,7 +1,7 @@
 # AARRR Analysis - Prediction Market Platform
 
 > v_refresh - June 2026
-> Changelog: Each stage updated with evidence from the refreshed competitor analysis. Sources cited for all changed hypotheses. Prior version decisions preserved inline. Targets remain hypotheses unless marked with a source.
+> Changelog (Step 3 update, June 12, 2026): Folded in fresh competitor data (June 2026) and strategy.md insights (Riskiest Assumption, EU MiCA, tiered fee model, AI agents signal). ONE primary metric and ONE MVP decision per stage clarified. Prior version decisions preserved inline. Targets remain hypotheses unless marked with a source.
 
 > Base version: Hypothetical analysis at the start of the product. Metrics and approaches require validation after MVP launch.
 
@@ -19,19 +19,18 @@
 **v_refresh - what changed:**
 - **CONFIRMED: SEO per market page remains primary.** Each market = standalone SEO page with live og:image. No change to mechanics.
 - **DraftKings Predictions (launched Dec 2025) validated mainstream brand-to-prediction-market funnel.** They converted existing DFS users via brand trust. Referral from sports betting communities is a real channel if we position against bookmaker opacity. Source: [DraftKings Predictions launch](https://www.gamblinginsider.com/news/159764/draftkings-combos-fee-structure-predictions-platform)
-- **Sports markets = post-MVP.** Kalshi data (89% of revenue from sports) confirms sports drives volume, but adding sports markets is out of MVP scope. Sports SEO channel is a real opportunity - but for v2, not MVP. Decision made. Source: [Kalshi 2025 revenue](https://finance.yahoo.com/news/kalshi-fee-revenue-2025-263-145801350.html)
+- **Sports markets = post-MVP.** Kalshi data (90% of May 2026 volume from sports) confirms sports drives volume, but adding sports markets is out of MVP scope. Decision made. Source: [Kalshi volume CNBC 2026](https://www.cnbc.com/2026/05/kalshi-polymarket-volume-comparison.html)
+- **EU MiCA enforcement (July 2026) is now a geo acquisition constraint.** If we operate under a Curacao-style license, we face blocks in FR, DE, NL, PL, BE. Acquisition via SEO must account for which countries traffic can actually convert. Target: Latin America, Southeast Asia, Eastern Europe (outside EU), Middle East. Source: [competitive-analysis.md - Q3 EU MiCA]
+- **Industry grew 200x: ~4,000 active users (2024) to 800,000+ unique wallets/month (early 2026).** But 30%+ of trading volume is from AI agents. Human audience is smaller than headline wallet numbers suggest. Our SEO should target human News Junkies, not algorithmic traders. Source: [CoinDesk industry report 2026]
 
 **Unknowns:**
 - Which channel will deliver the lowest CAC [?]
 - Whether we can compete with Polymarket on SEO from day one [?]
-- What portion of our SEO traffic should target sports keywords vs events keywords [?]
+- Which geo regions are actually accessible post-MiCA with our expected license structure [?]
 
-**Metric:** `new registered users / week`
+**Metric (ONE):** `new registered users / week`
 
-**Product decisions:**
-- Each market is a standalone SEO page with meta tags and og:image showing live odds
-- One-click market sharing directly from the card
-- Sports category landing pages: plan as post-MVP SEO expansion, not MVP scope
+**MVP Decision (ONE):** Each market is a standalone SEO page with meta tags and og:image showing live odds. One-click sharing from the market card.
 
 ---
 
@@ -56,21 +55,18 @@ Every step = drop-off. Competitors fail exactly here.
 **v_refresh - what changed:**
 - **CONFIRMED: fiat-first is the right call.** Polymarket's embedded wallets (2025) reduced crypto friction but still rely on MoonPay/Transak handoff. Kalshi's fiat onboarding is acknowledged as "easier for beginners" vs Polymarket. No competitor has built a fully owned fiat-to-first-bet experience. This gap remains. Source: [Kalshi vs Polymarket 2026](https://judgemarket.com/blog/polymarket-vs-kalshi)
 - **UPDATED: Robinhood's "swipeys" onboarding model is the right mental framework.** Before building any screen, write 4 screens that explain value to a new user. If you can't convince on 4 screens, the product isn't ready. This is our activation design constraint. Source: [Robinhood product strategy](https://aakashgupta.medium.com/how-robinhood-hit-100b-inside-product-strategy-that-actually-works-79c5bd0c1603)
-- **UPDATED: DraftKings Predictions chose a $0.01/contract flat fee.** Simpler than Polymarket's dynamic fee. May be easier to explain to new users. Consider whether our 2% fee model needs a simpler framing at the moment of activation. Source: [DraftKings Predictions fees](https://www.gamblinginsider.com/news/159764/draftkings-combos-fee-structure-predictions-platform)
-- **UNCHANGED: demo bet hypothesis is still unvalidated [?].** Manifold's play-money-to-real-money conversion attempt failed (sunset March 2025). This suggests play-money as an activation step may not convert. Lean toward real-money first bet with a small minimum stake instead.
+- **CONFIRMED: no demo bet.** Manifold sunsetting sweepcash (March 2025) confirmed play-money does not convert. Go straight to real-money first bet with minimum stake of $1-5.
+- **NEW: Riskiest Assumption context.** Activation is where the Riskiest Assumption is tested (see strategy.md). H1 (fiat on-ramp increases activation) tests the friction side. But the deeper risk is whether News Junkies are willing to put real money on outcomes at all - not just technically able to. If first-bet completion rate from cold News Junkie traffic is below 10%, the motivation gap exists and UX improvements alone cannot fix it.
+- **NEW: Fee model for activation moment.** Tiered taker fees (Option A: 0% for some categories) may be better for activation than fee-on-win (Option B: 2% on winning payout). A "free first market" hook (like Polymarket's 0% geopolitics) reduces the psychological cost of the first bet. Consider for MVP design.
 
 **Unknowns:**
 - What % of users drop off at the deposit step [?]
-- Whether a demo bet increases or decreases conversion to a real bet [?] - Manifold data suggests it does not help
 - Optimal minimum first bet amount - psychological anchor vs barrier [?]
+- Whether free category (0% fee) as first bet increases activation vs converting to a second paid bet [?]
 
-**Metric:** `% of users who placed their first bet within 24 hours of registration`
+**Metric (ONE):** `% of users who placed their first bet within 24 hours of registration`
 
-**Product decisions:**
-- Onboarding flow with progress bar (4 screens max, Robinhood "swipeys" model)
-- Inline mechanics explanation directly in the market card
-- Fiat on-ramp on the first screen after registration
-- **NEW: skip demo bet - go straight to real-money first bet with minimum stake of $1-5**
+**MVP Decision (ONE):** Fiat on-ramp on the first screen after registration. Skip demo bet - go straight to real-money first bet with minimum stake of $1-5. 4-screen Robinhood "swipeys" onboarding.
 
 ---
 
@@ -100,14 +96,13 @@ Every step = drop-off. Competitors fail exactly here.
 - Whether a loss brings the user back or drives them away [?]
 - Whether a streak mechanic works in a market where you can only bet occasionally [?]
 
-**Metrics:** `% of users active on day 7` and `% active on day 30`
+**Metric (ONE, primary):** `% of users active on day 7`
 
-**Product decisions:**
-- Smart notifications tied to price movement and approaching deadlines
-- Personalized feed based on categories where the user has already bet
-- Leaderboard with weekly reset
-- **NEW: explicit post-resolution screen for losses - "Here's what happened, here's a similar market to consider"**
-- **NEW: prediction streak mechanic - track consecutive markets where user beat the initial odds**
+Secondary tracked: `% active on day 30`
+
+**MVP Decision (ONE):** Smart notifications tied to price movement and approaching deadlines. Explicit post-resolution screen for losses: "Here's what happened, here's a similar market to consider."
+
+Supporting mechanics (several allowed): personalized feed by category bet, leaderboard with weekly reset, prediction streak mechanic (consecutive correct predictions).
 
 ---
 
@@ -136,14 +131,18 @@ Recommendation: Option B - less pain, more loyalty.
 - **UPDATED: consider a tiered model.** Free geopolitics markets (Polymarket model) as a hook, fees on higher-volume categories (sports, crypto). Gives us a "free entry" marketing message while monetizing high-frequency users. Source: [Polymarket fee structure by category](https://docs.polymarket.com/trading/fees)
 - **NEW: maker rebates as a liquidity mechanic.** Polymarket gives makers 20-25% of collected fees as daily USDC rebates. This creates a self-funding liquidity pool. Relevant for our cold-start liquidity problem. Consider from MVP launch.
 
+**v_refresh additional - June 12, 2026:**
+- **Industry standard is now tiered taker fees (Option A), not fee on win (Option B).** Polymarket Fee V2 (March 30, 2026): 0% geopolitics to 1.80% crypto at 50/50 midpoint. Kalshi: 0.07 x p x (1-p), max ~1.75% at 50c. DraftKings: $0.01 flat per contract. Option B (fee on win) is a deliberate user-first choice that sacrifices revenue per trade for retention. Tradeoff must be explicitly decided.
+- **Tiered approach unlocks "free entry" message.** 0% fee on one category = first bet has no cost. Powerful for News Junkie activation. Requires enough volume in other categories to generate revenue. Source: [Polymarket Fee V2 docs](https://docs.polymarket.com/trading/fees)
+
 **Unknowns:**
 - What % delivers acceptable LTV at our CAC [?]
 - At what trading volume does the platform become profitable [?]
-- Fee on win vs fee on trade: which creates less churn at our scale [?]
+- Fee on win vs tiered fee per trade: which creates less churn at our user volume level [?]
 
-**Metrics:** `revenue per active user / month` and `total trading volume`
+**Metric (ONE):** `revenue per active user / month`
 
-**Product decision:** show the fee explicitly and honestly before bet confirmation. "Platform earns $0.40 if you win" - transparency as a competitive advantage. Consider free markets in one category (geopolitics or politics) as an entry hook.
+**MVP Decision (ONE):** Show the fee explicitly and honestly before bet confirmation. Fee model TBD (fee on win vs tiered per trade) - must decide before building fee logic. One free-entry category (politics or geopolitics) as activation hook.
 
 ---
 
@@ -180,31 +179,31 @@ Recommendation: Option B - less pain, more loyalty.
 - Whether a referral bonus justifies CAC [?]
 - Whether a public prediction track record increases or decreases referral (some users prefer privacy) [?]
 
-**Metrics:** `% of new users who came via sharing` and `viral coefficient (k-factor)`
+**Metric (ONE):** `% of new users who came via sharing`
 
-**Product decision:** after every resolution - automatically generate a share card with the result. Win > wants to brag > free traffic. Add public profile with accuracy track record from day one - this is our eToro-style referral loop.
+**MVP Decision (ONE):** Auto-generate a share card after every resolution. Public prediction track record from day one (eToro CopyTrader model - user accuracy history drives referrals).
 
 ---
 
-## Summary Metrics
+## Summary Metrics (ONE primary per stage)
 
-| Stage | Key metric | Target (hypothesis) | v_refresh status |
+| Stage | Primary metric | Target (hypothesis) | v_refresh status |
 |---|---|---|---|
-| Acquisition | New registrations / week | - | Unchanged [?] |
-| Activation | % first bet within 24h | >40% | Unchanged hypothesis |
+| Acquisition | New registrations / week | - [?] | Unchanged - geo-restricted by EU MiCA from July 2026 |
+| Activation | % first bet within 24h | >40% | Hypothesis. **Riskiest Assumption test: if below 10% from News Junkie cold traffic, motivation gap exists.** |
 | Retention | % active on day 7 | >30% | Unchanged hypothesis |
-| Retention | % active on day 30 | >15% | Unchanged hypothesis |
-| Revenue | Trading volume / month | - | Unchanged [?] |
-| Referral | % users via sharing | >20% | Unchanged hypothesis |
+| Revenue | Revenue per active user / month | - [?] | Fee model TBD - decide before build |
+| Referral | % new users via sharing | >20% | Unchanged hypothesis |
 
-*All targets are hypotheses, require validation after MVP launch.*
+*Secondary metrics tracked but not optimized for: Acquisition: CAC by channel; Activation: % complete deposit; Retention: % active on day 30 target >15%; Revenue: total trading volume. All primary targets are hypotheses, require validation after MVP launch.*
 
 ---
 
 ## Key Product Takeaways
 
-1. **Activation is the biggest risk.** The long path to the first bet = primary drop-off. Fiat first + 4-screen Robinhood-style onboarding - MVP priority. Demo bet is likely counterproductive (Manifold evidence).
-2. **Sports = post-MVP. Decided.** Kalshi data (89% revenue from sports) confirms sports drives volume. But adding sports markets exceeds MVP scope for a solo team (API integrations, real-time data, different resolution mechanics). Launch events-first, add sports after proven retention data.
-3. **Fee on trade vs fee on win is an unresolved decision.** Industry moved toward fee-per-trade. Fee on win is softer psychologically but earns less per active user. Decide before building fee logic.
+1. **Activation is the biggest risk - and the Riskiest Assumption test.** Fiat first + 4-screen onboarding is the friction solution. But the deeper question is whether News Junkies will pay real money to bet - friction removal is necessary but may not be sufficient. Monitor cold-traffic first-bet rate as the primary Riskiest Assumption signal. Below 10% = motivation problem, not just friction.
+2. **Sports = post-MVP. Decided. 3-month checkpoint.** Kalshi 90% of May 2026 volume from sports. Decision stands for MVP. But post-launch, add sports as a explicit 3-month checkpoint: if events-first retention validates the model, sports adds volume. If not, sports may need to come earlier.
+3. **Fee model unresolved but industry direction is clear: tiered per-trade.** Option A (tiered taker fees, 0% in one category) is the 2026 standard. Option B (fee on win) is softer for users but earns less. Consider Option B for MVP + free category, then migrate to Option A with tiered pricing once volume justifies the explanation. Decide before building fee logic.
 4. **Post-resolution experience is undesigned in every competitor.** Loss screen + win share card are our differentiation moments. Design these before the bet flow.
-5. **Referral = public track record.** eToro proved this. Users with visible prediction histories bring other users. Build public profiles from day one, not as a later feature.
+5. **Referral = public track record.** eToro proved this. Build public profiles from day one.
+6. **EU MiCA from July 2026 restricts European markets.** Acquisition SEO must target accessible geos: Latin America, Southeast Asia, non-EU Eastern Europe, Middle East. Adjust market selection and copy accordingly.
