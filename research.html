@@ -599,7 +599,9 @@
 <nav>
   <a href="#intro">Introduction</a>
   <span class="sep">·</span>
-  <a href="#product">Product Model</a>
+  <a href="#lean-ux-canvas">Lean UX Canvas</a>
+  <span class="sep">·</span>
+  <a href="#strategy">Strategy</a>
   <span class="sep">·</span>
   <a href="#aarrr">AARRR</a>
   <span class="sep">·</span>
@@ -623,14 +625,16 @@
       <span class="tag" style="background:rgba(95,168,255,.1);color:#5fa8ff;border-color:rgba(95,168,255,.25)">v_refresh · June 2026</span>
     </div>
     <h1>Master Research</h1>
-    <p class="lead">Synthesis of all research phases — product model, AARRR, competitive analysis, trust benchmark, and UX patterns. Source of truth before wireframes.</p>
+    <p class="lead">Synthesis of all research phases — strategy, AARRR, competitive analysis, trust benchmark, and UX patterns. Source of truth before wireframes.</p>
 
     <div style="background:rgba(95,168,255,.06);border:1px solid rgba(95,168,255,.2);border-radius:8px;padding:16px 20px;margin-bottom:32px">
-      <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5fa8ff;margin-bottom:10px">v_refresh — 3 things changed</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5fa8ff;margin-bottom:10px">v_refresh — 5 things changed (updated June 12, 2026)</div>
       <div style="display:flex;flex-direction:column;gap:8px">
-        <div style="font-size:13px;color:#bbb"><strong style="color:#e8e8e8">1. Sports markets dominate revenue.</strong> Kalshi earned $263.5M in fee revenue in 2025 — 89% from sports. Polymarket shifted to sports &gt;60% of open interest by Oct 2025. Our events-first thesis is still correct, but sports is needed for volume earlier than planned.</div>
-        <div style="font-size:13px;color:#bbb"><strong style="color:#e8e8e8">2. Competitor landscape restructured.</strong> Three groups: HARD (Polymarket, Kalshi, Futuur, DraftKings Predictions, Azuro), SOFT (Bet365, Betfair Predicts, eToro, Manifold, DraftKings DFS), ASPIRATIONAL (Revolut, Coinbase, Robinhood, Cash App, Duolingo). Betfair Predicts launched beta April 2026. Manifold returned to play-money-only March 2025.</div>
-        <div style="font-size:13px;color:#bbb"><strong style="color:#e8e8e8">3. Fee model is an open decision.</strong> Industry moved to fee-per-trade. Polymarket switched to taker fees by category March 2026 and crossed $1M/day revenue. "Fee on win" may underperform — must decide before building fee logic.</div>
+        <div style="font-size:13px;color:#bbb"><strong style="color:#e8e8e8">1. Sports dominance accelerated.</strong> Kalshi is now the volume leader at $17.9B/month (May 2026, 90% sports) with a $22B valuation (Series F, May 2026). Polymarket is declining. Sports = post-MVP stands with a 3-month checkpoint.</div>
+        <div style="font-size:13px;color:#bbb"><strong style="color:#e8e8e8">2. New competitor: Hyperliquid HIP-4.</strong> Zero-fee on-chain prediction markets launched May 2, 2026. Replaces Azuro in HARD group. US market now has 13 regulated platforms — our global non-US positioning is even more defensible.</div>
+        <div style="font-size:13px;color:#bbb"><strong style="color:#e8e8e8">3. Product Model retired, replaced with Strategy.</strong> AIDA is retired. New structure: Objectives, Segments, Business Model, Riskiest Assumption. The Riskiest Assumption: "News Junkies will bet once the fiat barrier is removed — barrier is friction, not motivation."</div>
+        <div style="font-size:13px;color:#bbb"><strong style="color:#e8e8e8">4. Fee model: industry standard now tiered taker fees.</strong> Polymarket Fee V2 (0% geopolitics to 1.80% crypto at 50/50). Consider free-entry category as activation hook. Option B (fee on win) remains our MVP hypothesis for user trust.</div>
+        <div style="font-size:13px;color:#bbb"><strong style="color:#e8e8e8">5. EU MiCA enforcement active July 2026.</strong> Curacao-licensed platforms blocked in FR, DE, NL, PL, BE. Accessible market: Latin America, Southeast Asia, non-EU Eastern Europe, Middle East.</div>
       </div>
     </div>
 
@@ -662,14 +666,76 @@
       </div>
       <div class="conclusion-card" style="border-color:rgba(95,168,255,.3)">
         <div class="num" style="color:#5fa8ff">07 NEW</div>
-        <p><strong>Fee model unresolved.</strong> Industry moved to fee-per-trade. "Fee on win" is softer but earns less. Decide before building fee logic. <span class="pill pill-q">[?]</span></p>
+        <p><strong>Fee model unresolved.</strong> 2026 standard: tiered taker fees (0% in free category). "Fee on win" is softer but earns less. Decide before building fee logic. <span class="pill pill-q">[?]</span></p>
+      </div>
+      <div class="conclusion-card" style="border-color:rgba(255,95,95,.3)">
+        <div class="num" style="color:var(--red)">08 RISKIEST</div>
+        <p><strong>Riskiest Assumption:</strong> the barrier for News Junkies is friction, not motivation. If false, no UX fix works. First-bet completion rate from cold traffic is the test.</p>
+      </div>
+      <div class="conclusion-card" style="border-color:rgba(95,168,255,.3)">
+        <div class="num" style="color:#5fa8ff">09 NEW</div>
+        <p><strong>EU MiCA active July 2026.</strong> Curacao license = blocked in FR, DE, NL, PL, BE. Accessible: LatAm, SEA, non-EU Eastern Europe, Middle East. <span class="pill pill-q">[?]</span></p>
       </div>
     </div>
   </section>
 
-  <!-- ── PRODUCT MODEL ──────────────────────────────────── -->
-  <section id="product">
-    <div class="section-label">Product Model</div>
+  <!-- ── LEAN UX CANVAS ───────────────────────────────────────── -->
+  <section id="lean-ux-canvas">
+    <div class="section-label">Lean UX Canvas v2</div>
+    <h2>Executive Summary</h2>
+    <p style="margin-bottom:4px">Single visual summary of the product strategy. Overlaps with Section 7 Conclusions by design: glance vs detail. Framework by Jeff Gothelf, Lean UX Canvas v2.</p>
+    <p style="font-size:12px;color:#666;margin-bottom:24px">Populated from strategy.md, aarrr.md, competitive-analysis.md, master-research.md.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+
+      <!-- Row 1 -->
+      <div style="background:var(--surface);padding:16px 18px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5fa8ff;margin-bottom:8px">1. Business Problem</div>
+        <p style="font-size:12px;color:#bbb;margin:0;max-width:none">No prediction market has solved onboarding for non-crypto users outside the US. Polymarket is global but crypto-first (trust 19/40). Kalshi has trust but is US-only. Futuur is hybrid but untrustworthy (14/40). The gap: a clarity-first, fiat-accessible prediction market for News Junkies globally.</p>
+      </div>
+
+      <div style="background:var(--surface);padding:16px 18px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5fa8ff;margin-bottom:8px">2. Business Outcomes</div>
+        <p style="font-size:12px;color:#bbb;margin:0;max-width:none"><strong style="color:#e8e8e8">O1:</strong> Trusted PM platform outside US. NPS &gt;40, D30 retention &gt;15%.<br><strong style="color:#e8e8e8">O2:</strong> First-bet activation without crypto wallet. &gt;40% within 24hrs.<br><strong style="color:#e8e8e8">O3:</strong> Engaged user base. DAU/MAU &gt;0.25.<br><strong style="color:#e8e8e8">O4:</strong> Sustainable trading volume. Revenue/user [?].</p>
+      </div>
+
+      <div style="background:var(--surface);padding:16px 18px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5fa8ff;margin-bottom:8px">3. Users</div>
+        <p style="font-size:12px;color:#bbb;margin:0;max-width:none"><strong style="color:#c8ff00">&#9733; News Junkie</strong> (25-40) - follows events, not into crypto, wants to monetize opinions. Primary.<br><strong style="color:#5fa8ff">Crypto Native</strong> (22-35) - already in Web3, wants more markets. Secondary.<br><strong style="color:#666">Crossover Bettor</strong> (28-42) - sports bettor, more intellectual markets. Post-MVP.</p>
+      </div>
+
+      <div style="background:var(--surface);padding:16px 18px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5fa8ff;margin-bottom:8px">4. User Outcomes &amp; Benefits</div>
+        <p style="font-size:12px;color:#bbb;margin:0;max-width:none"><em style="color:#888">"When I follow events that matter to me - I want real skin in the game, so it's not just news, but my personal stake with a real outcome."</em><br><br><em style="color:#888">"If I understand the situation better - I want that to convert into money, simply."</em></p>
+      </div>
+
+      <!-- Row 2 -->
+      <div style="background:var(--surface);padding:16px 18px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5fa8ff;margin-bottom:8px">5. Solutions (MVP)</div>
+        <p style="font-size:12px;color:#bbb;margin:0;max-width:none">Story-driven event cards (context + odds + YES/NO). Fiat on-ramp via card. 4-screen onboarding. Binary + multi-outcome markets. Smart notifications. Post-resolution loss screen + win share card. Public prediction track record.</p>
+      </div>
+
+      <div style="background:var(--surface);padding:16px 18px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5fa8ff;margin-bottom:8px">6. Hypotheses</div>
+        <p style="font-size:12px;color:#bbb;margin:0;max-width:none"><strong style="color:#e8e8e8">H1:</strong> Fiat on-ramp &rarr; &gt;40% first bet in 24hrs<br><strong style="color:#e8e8e8">H2:</strong> Story-driven UX &rarr; higher conversion than Polymarket<br><strong style="color:#e8e8e8">H4:</strong> "USDC held 1:1" &rarr; higher deposit completion<br><strong style="color:#e8e8e8">H5:</strong> Share card &rarr; &gt;20% organic traffic<br><strong style="color:#e8e8e8">H7:</strong> Post-loss screen &rarr; higher D7 retention</p>
+      </div>
+
+      <div style="background:rgba(255,95,95,.06);border-left:2px solid var(--red);padding:16px 18px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:8px">7. Riskiest Assumption</div>
+        <p style="font-size:12px;color:#e8c0c0;margin:0;max-width:none">News Junkies will deposit real money and bet once the fiat barrier is removed. <strong style="color:#ff9f9f">The barrier is FRICTION, not MOTIVATION.</strong><br><br>If false: no UX improvement fixes it. The whole product fails.</p>
+      </div>
+
+      <div style="background:rgba(200,255,0,.04);border-left:2px solid var(--accent);padding:16px 18px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">8. Smallest Test</div>
+        <p style="font-size:12px;color:#bbb;margin:0;max-width:none">Drive 500-1000 News Junkie users (from SEO on a specific event) to a landing page with the bet flow. Measure first-bet completion rate.<br><br><strong style="color:#c8ff00">Signal:</strong> &gt;20% = friction problem, fixable. &lt;10% = motivation gap, rethink the product.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── STRATEGY ───────────────────────────────────────────── -->
+  <section id="strategy">
+    <div class="section-label">Strategy</div>
     <h2>What we build and for whom</h2>
     <p>Prediction market platform. YES/NO bets on real-world events. Stablecoins (USDC/USDT). Mobile-first. Goal — the most understandable platform for those who aren't in crypto.</p>
 
@@ -710,42 +776,38 @@
       </div>
     </div>
 
-    <h3>AIDA → Action by segment</h3>
-    <p class="inline-note">Primary segment (News Junkie):</p>
-    <div class="aida-flow">
-      <div class="aida-step">
-        <div class="aida-label">Attention</div>
-        <p>SEO, news aggregators, Twitter.<br>"The market says 34% — what do you think?"</p>
-      </div>
-      <div class="aida-step">
-        <div class="aida-label">Interest</div>
-        <p>Live events, context, how odds work — explained directly in the product.</p>
-      </div>
-      <div class="aida-step">
-        <div class="aida-label">Desire</div>
-        <p>An event they're already discussing + "bet $10 right now — 2 minutes".</p>
-      </div>
-      <div class="aida-step">
-        <div class="aida-label">Action</div>
-        <p>Google/Email → fiat card on-ramp → guided first bet.</p>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <h3>AIDA ↔ AARRR Mapping</h3>
+    <h3>Business Model</h3>
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th>AIDA</th><th>AARRR</th><th>Product Focus</th></tr>
+          <tr><th>Aspect</th><th>Detail</th></tr>
         </thead>
         <tbody>
-          <tr><td class="label">Attention</td><td>Acquisition</td><td class="muted">SEO, Twitter, media</td></tr>
-          <tr><td class="label">Interest</td><td>Acquisition → Activation</td><td class="muted">Onboarding, first market</td></tr>
-          <tr><td class="label">Desire</td><td>Activation</td><td class="muted">Guided first bet, fiat on-ramp</td></tr>
-          <tr><td class="label">Actions</td><td>Activation → Retention → Referral</td><td class="muted">First bet, notifications, share card</td></tr>
+          <tr><td class="label">Value exchange</td><td>Users bring capital and knowledge. Platform provides event markets and resolution mechanism. Platform earns from volume, not house edge.</td></tr>
+          <tr><td class="label">Fee model (TBD)</td><td><strong>Option A (industry standard 2026):</strong> tiered taker fee per trade — 0% on one free category (geopolitics/politics), up to ~1.8% on crypto at 50/50 midpoint. Polymarket, Kalshi, DraftKings all use this.<br><br><strong>Option B (our MVP hypothesis):</strong> fee on win (~2% on winning payout). "Pay only when you earned" — softer for new users. No direct competitor uses this in 2026.<br><br><em style="color:#666">Decision required before building fee logic.</em></td></tr>
+          <tr><td class="label">Free-entry hook</td><td>One category at 0% fee (politics or geopolitics) as an activation lever. Lowers the psychological cost of the first bet. Polymarket uses this for geopolitics markets.</td></tr>
+          <tr><td class="label">Pricing hypothesis</td><td>~2% fee on win (Option B for MVP). Validated at scale: migrate toward tiered Option A.</td></tr>
+          <tr><td class="label">No subscription, no tiers at MVP</td><td>Fee applies only to resolved bets or active trades. No account tiers at launch.</td></tr>
         </tbody>
       </table>
+    </div>
+
+    <h3>Riskiest Assumption</h3>
+    <div style="background:rgba(255,95,95,.06);border:1px solid rgba(255,95,95,.25);border-radius:var(--r);padding:20px 24px">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:10px">The single assumption everything depends on</div>
+      <div style="font-size:16px;font-weight:600;color:#ff9f9f;margin-bottom:14px;line-height:1.4">News Junkies will deposit real money and bet once the fiat barrier is removed. The barrier is <strong style="color:#ff5f5f">FRICTION</strong>, not <strong style="color:#ff5f5f">MOTIVATION</strong>.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div style="background:rgba(255,95,95,.08);border-radius:6px;padding:12px 14px">
+          <div style="font-size:10px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">If true</div>
+          <p style="font-size:12px;color:#e8c0c0;margin:0;max-width:none">Fiat on-ramp + story-driven UX unlocks the News Junkie. Activation exceeds 20% from cold traffic. The product works.</p>
+        </div>
+        <div style="background:rgba(255,95,95,.08);border-radius:6px;padding:12px 14px">
+          <div style="font-size:10px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">If false</div>
+          <p style="font-size:12px;color:#e8c0c0;margin:0;max-width:none">No UX improvement works. News Junkies are content being "armchair experts" - they don't want real financial skin in the game. The whole product fails.</p>
+        </div>
+      </div>
+      <div style="font-size:12px;color:#bbb"><strong style="color:#e8e8e8">Test signal:</strong> First-bet completion rate from cold News Junkie traffic (SEO via a specific real event). Target &gt;20% = friction problem, fixable. Below 10% = motivation gap, rethink.</div>
+      <div style="margin-top:10px;font-size:11px;color:#666">Note: H1 (fiat on-ramp increases activation) tests the friction side. The Riskiest Assumption tests the motivation side. Both must be true. Source: strategy.md</div>
     </div>
   </section>
 
@@ -828,11 +890,11 @@
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px">
         <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:10px">HARD — Same product</div>
         <div style="font-size:13px;color:#bbb;line-height:1.7">Same product type (prediction markets), same audience, direct competitors.<br><br>
-        <strong style="color:#e8e8e8">Polymarket</strong> — crypto CLOB, global, largest volume ($9B+ 2024)<br>
-        <strong style="color:#e8e8e8">Kalshi</strong> — CFTC, US fiat, $263.5M fee revenue 2025<br>
-        <strong style="color:#e8e8e8">Futuur</strong> — crypto+fiat hybrid, global<br>
-        <strong style="color:#e8e8e8">DraftKings Predictions</strong> — launched Dec 2025, CFTC, 38 US states<br>
-        <strong style="color:#e8e8e8">Azuro Protocol</strong> — decentralized AMM, sports-focused</div>
+        <strong style="color:#e8e8e8">Polymarket</strong> — CLOB, global + US (relaunched Dec 2025), $9B valuation (ICE). Declining: $7.1B May 2026<br>
+        <strong style="color:#e8e8e8">Kalshi</strong> — CFTC, volume leader $17.9B/month, $22B valuation (May 2026)<br>
+        <strong style="color:#e8e8e8">Futuur</strong> — crypto+fiat hybrid, global, closest analog, stagnant<br>
+        <strong style="color:#e8e8e8">DraftKings Predictions</strong> — CFTC, 38 US states, $1.3B annualized (May 2026)<br>
+        <strong style="color:#e8e8e8">Hyperliquid HIP-4</strong> — zero-fee on-chain binary markets, launched May 2026</div>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px">
         <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffc850;margin-bottom:10px">SOFT — Same JTBD</div>
@@ -870,8 +932,8 @@
         <tbody>
           <tr>
             <td class="label">Audience</td>
-            <td>Crypto natives, DeFi, global (no US)</td>
-            <td>US-first, TradFi, sports bettors converting</td>
+            <td>Crypto natives, DeFi, global + US (relaunched Dec 2025). Volume declining May 2026.</td>
+            <td>US-first, volume leader ($17.9B/month May 2026). 90% sports. $22B valuation.</td>
             <td>Global, crypto + fiat hybrid</td>
             <td>US (38 states), mainstream sports fans</td>
             <td>Global, 80M+ registered, fiat only</td>
@@ -938,13 +1000,13 @@
         <div class="card-grid" style="grid-template-columns:1fr">
           <div class="card">
             <div class="card-num">DIFF 01</div>
-            <h4>Regulation defines the product</h4>
-            <p>Kalshi = CFTC + US fiat + $1.5B annualized 2026. Polymarket = global + crypto (USDC). DraftKings = CFTC + 38 states. For a global non-US product, Polymarket and Futuur are the structural analogs.</p>
+            <h4>US market saturated — global non-US is our lane</h4>
+            <p>13 federally regulated US platforms as of June 2026. Polymarket even relaunched in the US (Dec 2025 with CFTC license). For a new entrant without US regulation, the global non-US market is the only viable lane — and Futuur (our closest analog) shows 14/40 trust. Our positioning is confirmed.</p>
           </div>
           <div class="card">
             <div class="card-num">DIFF 02</div>
-            <h4>Sports vs events: sector is bifurcating</h4>
-            <p>Kalshi 89% of revenue from sports. Polymarket sports &gt;60% open interest Oct 2025. Our events-first thesis targets the underserved direction — at lower volume in the near term.</p>
+            <h4>Sports vs events: bifurcation accelerating</h4>
+            <p>Kalshi 90% of May 2026 volume from sports ($17.9B). Polymarket declining. Sports = post-MVP with 3-month checkpoint after launch. Events-first window is real but narrowing — World Cup 2026 is a $5-10B catalyst in sports.</p>
           </div>
           <div class="card">
             <div class="card-num">DIFF 03</div>
@@ -1339,8 +1401,8 @@
 
     <h3>Hypotheses — if / then / because</h3>
 
-    <div class="hypothesis">
-      <div class="hypothesis-id">H1 · Activation</div>
+    <div class="hypothesis" style="border-color:rgba(255,95,95,.3)">
+      <div class="hypothesis-id" style="color:var(--red)">H1 · Activation — RISKIEST ASSUMPTION PROXY</div>
       <div class="hypothesis-title">Fiat on-ramp will increase activation</div>
       <div class="hyp-row">
         <span class="hyp-key if-key">If</span>
@@ -1354,7 +1416,8 @@
         <span class="hyp-key because-key">Because</span>
         <span class="hyp-val">the main barrier for News Junkie is needing MetaMask and USDC before the first bet. Polymarket addresses this via MoonPay/Transak but doesn't treat it as a UX priority.</span>
       </div>
-      <div class="hyp-source">Sources: aarrr.md · Activation "Fiat first" · competitive-analysis.md Q1</div>
+      <div class="hyp-source">Sources: aarrr.md · Activation "Fiat first" · competitive-analysis.md Q1 · strategy.md Riskiest Assumption</div>
+      <div style="margin-top:10px;padding:10px 12px;background:rgba(255,95,95,.06);border-radius:6px;font-size:12px;color:#e8c0c0"><strong style="color:#ff9f9f">Riskiest Assumption link:</strong> H1 tests friction. The Riskiest Assumption tests motivation. If first-bet completion from cold News Junkie traffic is &lt;10%, the barrier is motivation — H1 cannot fix it.</div>
     </div>
 
     <div class="hypothesis">
@@ -1475,7 +1538,9 @@
       <div class="question"><span class="qnum">Q6</span><span>Demo bet? Manifold sunsetting sweepcash March 2025 suggests play-money does not convert. Lean toward skipping.</span></div>
       <div class="question"><span class="qnum">Q7</span><span>Futuur crypto+fiat hybrid — how exactly does it work? Still unclear.</span></div>
       <div class="question" style="border-color:rgba(95,219,143,.3);background:rgba(95,219,143,.04)"><span class="qnum" style="color:#5fdb8f">Q8 DECIDED</span><span><strong>Sports = post-MVP.</strong> Kalshi 89% revenue from sports confirms volume potential. Decision: launch events-first (politics, crypto, culture, general), add sports after proven retention. Sports adds complexity (API integrations, real-time data, different resolution mechanics) that exceeds MVP scope for a solo team.</span></div>
-      <div class="question" style="border-color:rgba(95,168,255,.3)"><span class="qnum" style="color:#5fa8ff">Q9 NEW</span><span>Fee on win vs fee per trade? Industry moved to fee-per-trade (Polymarket March 2026, DraftKings Dec 2025). Fee on win is softer but earns less. Decide before building fee logic.</span></div>
+      <div class="question" style="border-color:rgba(95,168,255,.3)"><span class="qnum" style="color:#5fa8ff">Q9</span><span>Fee on win vs tiered per trade? 2026 standard: tiered taker fees (0% in free category, up to 1.8% crypto). Consider Option B + free category at MVP, then Option A at scale. Decide before building fee logic.</span></div>
+      <div class="question" style="border-color:rgba(95,168,255,.3)"><span class="qnum" style="color:#5fa8ff">Q10 NEW</span><span>Which jurisdictions are accessible? EU MiCA enforcement July 2026 blocks FR, DE, NL, PL, BE for Curacao-licensed platforms. Define accessible markets explicitly before acquisition and market selection. Accessible: LatAm, SEA, non-EU Eastern Europe, Middle East.</span></div>
+      <div class="question" style="border-color:rgba(95,168,255,.3)"><span class="qnum" style="color:#5fa8ff">Q11 NEW</span><span>Insider trading governance without CFTC tools? Kalshi launched 150+ investigations in Q1 2026 and employer-disclosure for high-risk markets. Polymarket faced CFTC complaint June 2026. On-chain settlement verifies outcomes but not market integrity. What is our equivalent?</span></div>
     </div>
 
   </section>

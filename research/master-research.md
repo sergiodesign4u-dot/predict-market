@@ -1,23 +1,29 @@
 # Master Research - Prediction Market Platform
 
 > Synthesis of all research phases. Source of truth before wireframes.
-> v_refresh - June 2026. All three core documents refreshed with new competitor data.
-> Sources: [product-model.md](./product-model.md) - [aarrr.md](./aarrr.md) - [competitive-analysis.md](./competitive-analysis.md) - [benchmark-trust.md](./benchmark-trust.md) - [ux-patterns.md](./ux-patterns.md) - [research.md](./research.md) - [CLAUDE.md](../CLAUDE.md) - screens in `screens/`
+> v_refresh - June 2026. Updated June 12, 2026 with: (1) fresh competitor data - Hyperliquid HIP-4, Polymarket declining, Kalshi volume leader $22B valuation, EU MiCA enforcement; (2) Product Model migrated to Strategy (AIDA retired, Business Model + Riskiest Assumption added); (3) AARRR one-metric-per-stage clarified.
+> Sources: [strategy.md](./strategy.md) - [product-model.md](./product-model.md) (preserved for history) - [aarrr.md](./aarrr.md) - [competitive-analysis.md](./competitive-analysis.md) - [benchmark-trust.md](./benchmark-trust.md) - [ux-patterns.md](./ux-patterns.md) - [research.md](./research.md) - [CLAUDE.md](../CLAUDE.md) - screens in `screens/`
 
 ---
 
 ## v_refresh Summary (June 2026)
 
-Three things changed meaningfully since the original research:
+Five things changed meaningfully since the original research:
 
-**1. Sports markets are dominant in the category - decision: post-MVP.**
-Kalshi earned $263.5M in fee revenue in 2025, with 89% from sports. Polymarket shifted to sports > 60% of open interest by October 2025. Sports drives volume - but adding sports markets exceeds MVP scope. Decision: events-first MVP (politics, crypto, culture, general), sports added post-MVP. This means accepting a lower initial volume ceiling in exchange for product clarity and reduced complexity at launch.
+**1. Sports markets are dominant and the gap is widening - decision: post-MVP with 3-month checkpoint.**
+Kalshi earned $263.5M in fee revenue in 2025 (89% sports), then grew to $17.9B monthly volume in May 2026 (90% sports). Polymarket is now declining in volume. Sports is the dominant category by a growing margin. Decision: events-first MVP with a 3-month checkpoint after launch - if core mechanics are validated, sports enters as month-4 priority.
 
-**2. The competitor landscape now has three tiers - not one.**
-Prior analysis treated all competitors as one pool. New structure: HARD (Polymarket, Kalshi, Futuur, DraftKings Predictions, Azuro), SOFT (Bet365, Betfair Predicts, eToro, Manifold, DraftKings DFS), ASPIRATIONAL (Revolut, Coinbase, Robinhood, Cash App, Duolingo). Betfair launched a prediction market beta in April 2026, signaling incumbent betting exchanges are converging on our format. Manifold returned to play-money-only in March 2025 - community mechanics without real stakes do not retain users.
+**2. The competitor landscape now has three tiers - and a new HARD entrant.**
+Prior analysis treated all competitors as one pool. New structure: HARD (Polymarket, Kalshi, Futuur, DraftKings Predictions, Hyperliquid HIP-4), SOFT (Bet365, Betfair Predicts, eToro, Manifold, DraftKings DFS), ASPIRATIONAL (Revolut, Coinbase, Robinhood, Cash App, Duolingo). Hyperliquid HIP-4 launched May 2, 2026 with zero-fee on-chain prediction markets - the most structurally similar to our Web3 vision. Betfair Predicts beta April 2026.
 
-**3. Fee model is an open decision - industry moved to fee-per-trade.**
-Our original model (2% fee on winnings) is psychologically softer but earns less per trade. Polymarket shifted to taker fees by category (0.75-7% at 50/50) in March 2026, crossing $1M/day in fee revenue two days later. DraftKings uses $0.01 per contract flat fee. The "fee on win" approach may underperform. This must be decided before building fee logic.
+**3. Product Model retired - Strategy is the new structure.**
+AIDA is retired. The new strategy.md holds: Objectives, Audience Segments, Business Model (fee options, pricing hypothesis), Riskiest Assumption. The Riskiest Assumption is new: "News Junkies will deposit real money and bet once the fiat barrier is removed" - and specifically that the barrier was friction, not motivation.
+
+**4. Fee model is an open decision - industry moved to tiered taker fees per trade.**
+2026 standard: Polymarket (0% geopolitics to 1.80% crypto), Kalshi (0.07xpx(1-p)), DraftKings ($0.01 flat). "Fee on win" (our original model) is softer but earns less. Consider free-entry category (0% fee) as activation hook. Decide before building fee logic.
+
+**5. EU MiCA enforcement is active July 2026.**
+Curacao-licensed platforms face geo-blocks in FR, DE, NL, PL, BE starting July 2026. Our accessible global market shrinks to: Latin America, Southeast Asia, Middle East, non-EU Eastern Europe. Acquisition, market selection, and fiat on-ramp must account for this.
 
 ---
 
@@ -48,15 +54,17 @@ Research goal: understand WHAT and FOR WHOM we're building, what solutions alrea
 2. No competitor explains "why is the price this?" - CONFIRMED as our differentiator and the reason for Story-driven UX.
 3. Activation - the biggest risk. CONFIRMED. Fiat first + 4-screen Robinhood-style onboarding (not demo bet) - MVP priority.
 4. Regulatory badges (FSCS/SIPC) unavailable to us. CONFIRMED. Replaced with on-chain transparency.
-5. CLOB vs AMM - still open [?]. Azuro's decentralized AMM model documented; for cold start AMM avoids liquidity problem.
-6. NEW: Sports markets = post-MVP. Data confirms volume potential (Kalshi 89% sports), but scope exceeds MVP. Events-first launch, sports added after.
-7. NEW: Fee model unresolved. Industry moved to fee-per-trade. "Fee on win" may underperform vs fee-per-contract. Decide before building fee logic.
+5. CLOB vs AMM - still open [?]. Hyperliquid HIP-4 (zero-fee on-chain) added as a new reference model. AMM remains best for cold-start liquidity.
+6. Sports markets = post-MVP. CONFIRMED with 3-month checkpoint added. Kalshi 90% sports in May 2026. Events-first launch, sports as month-4 decision post-launch data.
+7. Fee model unresolved. Industry moved to tiered taker fees. "Fee on win" may underperform vs fee-per-contract. Decide before building fee logic.
+8. NEW: Riskiest Assumption identified. "News Junkies will deposit real money and bet once the fiat barrier is removed." If false (barrier is motivation, not friction), no UX fix works. First-bet completion rate from cold traffic is the test signal.
+9. NEW: EU MiCA enforcement active July 2026. Curacao-licensed platforms blocked in FR, DE, NL, PL, BE. Accessible markets: Latin America, Southeast Asia, non-EU Eastern Europe, Middle East.
 
 ---
 
-## 2. Product Model
+## 2. Strategy
 
-*Source: [product-model.md](./product-model.md)*
+*Source: [strategy.md](./strategy.md) - Prior file [product-model.md](./product-model.md) preserved for history*
 
 ### Objectives
 
@@ -92,30 +100,27 @@ Research goal: understand WHAT and FOR WHOM we're building, what solutions alrea
 
 ---
 
-### AIDA by Segment
+### Business Model Summary
 
-```
-ATTENTION  →  INTEREST  →  DESIRE  →  ACTION
-```
+- **Primary fee:** trading fee per resolved bet (Option B: ~2% on win) or per trade (Option A: tiered taker fee 0%-1.8% by category). Decision required before build.
+- **Industry direction 2026:** tiered taker fees per trade (Polymarket, Kalshi, DraftKings). Free entry in one category (geopolitics/politics) is an activation lever.
+- **No subscription, no account tiers at MVP.** Maker rebates (20-25% of collected fees) to incentivize liquidity - consider from launch.
+- **Value exchange:** users bring capital and knowledge. Platform earns from volume, not house edge.
+- **Free-entry hook hypothesis:** 0% fee on one category to lower the first-bet psychological cost.
 
-| | Crypto Native | News Junkie ★ | Crossover Bettor |
-|---|---|---|---|
-| **Attention** | Twitter/X, crypto media | SEO, news aggregators | Betting communities, referrals |
-| **Message** | "The market says 34% — what do you think?" | "Who will win? The market knows — and you can earn" | "More markets, more skill" |
-| **Interest** | Volume, liquidity, chart | Live events, context, how odds work | Variety of markets, clear rules |
-| **Desire** | High volume + favorable YES/NO rate | An event they're already discussing + "2 minutes" | Comparison with bookmaker odds |
-| **Action** | Connect wallet → USDC → bet | Google/Email → fiat card → bet | Google/Email → fiat card → bet |
+*Full detail: [strategy.md - Business Model](./strategy.md)*
 
 ---
 
-### AIDA ↔ AARRR Connection
+### Riskiest Assumption
 
-| AIDA | AARRR | Product Focus |
-|---|---|---|
-| Attention | Acquisition | SEO, Twitter, media |
-| Interest | Acquisition → Activation | Onboarding, first market |
-| Desire | Activation | Guided first bet, fiat on-ramp |
-| Actions | Activation → Retention → Referral | First bet, notifications, share card |
+> News Junkies will deposit real money and bet once the fiat barrier (no crypto wallet required) is removed. The assumption is that the barrier is FRICTION, not MOTIVATION.
+
+- If false: no UX improvement works. Motivation gap is not fixable with onboarding.
+- Test signal: first-bet completion rate from cold News Junkie traffic. Below 10% = motivation problem.
+- H1 (fiat on-ramp increases activation) tests friction. The Riskiest Assumption tests motivation. Both must be true.
+
+*Full detail: [strategy.md - Riskiest Assumption](./strategy.md)*
 
 ---
 
@@ -196,8 +201,8 @@ REFERRAL ────────────────────── goal
 
 ### Competitor Groups
 
-**HARD** (same product, same audience): Polymarket, Kalshi, Futuur, DraftKings Predictions (launched Dec 2025), Azuro Protocol
-**SOFT** (same JTBD, different product): Bet365, Betfair Predicts (beta April 2026), eToro, Manifold, DraftKings DFS
+**HARD** (same product, same audience): Polymarket (declining, US relaunch, ICE $9B), Kalshi (volume leader $17.9B/month, $22B valuation), Futuur (stagnant, closest analog), DraftKings Predictions ($1.3B annualized), Hyperliquid HIP-4 (zero-fee, May 2026)
+**SOFT** (same JTBD, different product): Bet365, Betfair Predicts (beta April 2026, UK), eToro (IPO May 2025), Manifold (play-money only), DraftKings DFS
 **ASPIRATIONAL** (best-in-class UX benchmarks): Revolut, Coinbase, Robinhood, Cash App, Duolingo
 
 *Full tables with rationale: [competitive-analysis.md](./competitive-analysis.md)*
@@ -396,11 +401,14 @@ Audience 20–40, trust-first, J2-first (engaged spectator). Market Board requir
 
 ### Hypotheses in Format: if / then / because
 
-**H1 — Fiat on-ramp will increase activation**
+> Note on Riskiest Assumption: H1 is the closest proxy for the Riskiest Assumption but tests the friction side. The Riskiest Assumption tests the motivation side - whether News Junkies will bet at all, not just whether they can bet without a crypto wallet. Both must be true. H1 is the MOST TESTABLE hypothesis and the FIRST to validate. See [strategy.md - Riskiest Assumption](./strategy.md).
+
+**H1 — Fiat on-ramp will increase activation** ← CLOSEST TO RISKIEST ASSUMPTION
 _If_ we provide the ability to deposit by card without a Web3 wallet from the first screen after registration,
 _then_ the % of users who placed their first bet within 24 hrs will exceed 40%,
 _because_ the main barrier for the News Junkie is needing MetaMask and USDC before the first bet. Polymarket solves this through MoonPay/Transak [?], but it's not highlighted as a UX priority.
-*Data: [aarrr.md: Activation — "Fiat first"] · [competitive-analysis.md: open question 1]*
+_Test signal:_ if completion rate from cold News Junkie traffic is below 10%, the barrier is motivation, not friction - the Riskiest Assumption is false.
+*Data: [aarrr.md: Activation — "Fiat first"] · [competitive-analysis.md: open question 1] · [strategy.md: Riskiest Assumption]*
 
 **H2 — Story-driven UX will increase conversion of new users to first bet**
 _If_ every event has a narrative unit (context + what the market says + resolution conditions),
@@ -445,11 +453,13 @@ _because_ hidden fees are the #1 cause of churn and negative reviews in fintech.
 | Q5 | Resolution without regulation - is team multisig enough at launch? | Core trust problem | Unchanged [?] |
 | Q6 | Does a demo bet increase or decrease conversion? | Activation decision | UPDATED: Manifold sunsetting sweepcash March 2025 suggests play-money does not convert. Lean toward skipping demo bet. |
 | Q7 | Futuur: how exactly is crypto+fiat hybrid structured? | Reference for our model | Unchanged [? still not fully public] |
-| ~~Q8~~ | ~~Sports markets at MVP?~~ | DECIDED: post-MVP. Sports exceeds MVP scope. Events-first launch, sports added after. | CLOSED |
-| Q9 | NEW: Fee on win vs fee per trade? | Industry moved to fee-per-trade (Polymarket March 2026, DraftKings Dec 2025). Fee on win is psychologically softer but earns less per trade. | NEW OPEN QUESTION |
+| ~~Q8~~ | ~~Sports markets at MVP?~~ | DECIDED: post-MVP with 3-month checkpoint. Events-first launch, sports as month-4 decision after launch data. | CLOSED |
+| Q9 | Fee on win vs fee per trade? | Industry 2026 standard: tiered taker fees (Polymarket 0%-1.80% by category, Kalshi formula, DraftKings $0.01 flat). Fee on win is softer but earns less. Consider Option B + free category at MVP, migrate to Option A at scale. | OPEN - decide before build |
+| Q10 | NEW: Which jurisdictions are accessible under our expected license? | EU MiCA enforcement July 2026 blocks FR, DE, NL, PL, BE for Curacao-licensed platforms. Non-US, non-EU accessible market must be defined explicitly before market selection and acquisition planning. | NEW OPEN QUESTION |
+| Q11 | NEW: How do we address insider trading risk without CFTC enforcement tools? | Kalshi: 150+ investigations, employer-disclosure, whistleblower tools. Polymarket: CFTC complaint filed June 2026. On-chain settlement provides verification but not market integrity governance. | NEW OPEN QUESTION |
 
 ---
 
-*Compiled from: [product-model.md](./product-model.md) - [aarrr.md](./aarrr.md) - [competitive-analysis.md](./competitive-analysis.md) - [benchmark-trust.md](./benchmark-trust.md) - [ux-patterns.md](./ux-patterns.md) - [research.md](./research.md)*
-*Screenshots: `research/screens/` (26 files, including 5 new from v_refresh: DraftKings Predictions, Azuro, Bet365, eToro, Betfair Predicts)*
-*v_refresh sources: [Kalshi 2025 revenue](https://finance.yahoo.com/news/kalshi-fee-revenue-2025-263-145801350.html) - [Polymarket fee docs](https://docs.polymarket.com/trading/fees) - [Polymarket $1M/day](https://finance.yahoo.com/markets/crypto/articles/polymarket-fee-overhaul-pushes-daily-054836739.html) - [DraftKings Predictions](https://www.gamblinginsider.com/news/159764/draftkings-combos-fee-structure-predictions-platform) - [Betfair Predicts](https://www.casino.org/news/betfair-eyes-prediction-market-growth-with-betfair-predicts/) - [Manifold stats](https://manifold.markets/stats)*
+*Compiled from: [strategy.md](./strategy.md) - [product-model.md](./product-model.md) (history) - [aarrr.md](./aarrr.md) - [competitive-analysis.md](./competitive-analysis.md) - [benchmark-trust.md](./benchmark-trust.md) - [ux-patterns.md](./ux-patterns.md) - [research.md](./research.md)*
+*Screenshots: `research/screens/` (26 files, including 5 new from v_refresh: DraftKings Predictions, Bet365, eToro, Betfair Predicts, Azuro)*
+*v_refresh sources June 2026: [Kalshi $22B Series F](https://sacra.com/research/kalshi/) - [Kalshi volume leader CNBC](https://www.cnbc.com/2026/05/kalshi-polymarket-volume-comparison.html) - [Polymarket Fee V2 docs](https://docs.polymarket.com/trading/fees) - [Polymarket ICE $9B](https://financialcontent.com/marketscreener/polymarket-ice-investment-2026) - [Hyperliquid HIP-4](https://bitcoinnews.com/defi/hyperliquid-hip-4-prediction-markets-2026/) - [DraftKings Predictions Combos](https://www.gamblinginsider.com/news/159764/draftkings-combos-fee-structure-predictions-platform) - [Betfair Predicts](https://www.casino.org/news/betfair-eyes-prediction-market-growth-with-betfair-predicts/) - [EU MiCA enforcement](https://trmlabs.com/post/mica-enforcement-2026)*
