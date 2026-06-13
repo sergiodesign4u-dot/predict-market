@@ -446,16 +446,16 @@ _because_ hidden fees are the #1 cause of churn and negative reviews in fintech.
 
 | # | Question | Why it matters | v_refresh status |
 |---|---|---|---|
-| Q1 | CLOB vs AMM for MVP? | Affects pricing mechanics, bet UX, and cold-start liquidity | UPDATED: Azuro vAMM documented as the decentralized AMM path; still unresolved [?] |
+| Q1 | CLOB vs AMM for MVP? | Affects pricing mechanics, bet UX, and cold-start liquidity | **CLOSED → AMM.** Cold-start liquidity requires it. CLOB with thin orderbook on a new platform = bets don't fill = trust 0. See strategy.md §5 D1. |
 | Q2 | Fiat on-ramp provider? MoonPay vs Transak vs Stripe | Affects onboarding UX and commission | **CLOSED →** See §10. Primary: Transak (local rails LatAm/SEA/ME). Fallback: MoonPay. Post-MVP: Onramper aggregator. |
 | Q3 | KYC threshold? At what deposit amount does verification trigger | Activation friction | **CLOSED →** See §10. Wallet-connect = no KYC. Fiat = on-ramp handles it (Transak Level 1: name+address only up to $20K). Platform-level trigger if needed: $2,000 cumulative (Futuur model). |
 | Q4 | Minimum bet? | Psychological barrier vs UX | **CLOSED →** See §10. Technical minimum: $1 USDC. UX default pre-fill: $5. Quick-select: $5 / $10 / $25 / $50. |
-| Q5 | Resolution without regulation - is team multisig enough at launch? | Core trust problem | Unchanged [?] |
+| Q5 | Resolution without regulation - is team multisig enough at launch? | Core trust problem | **CLOSED → Team multisig MVP, oracle as target.** Every resolution documented publicly (source + criteria + team sig). UMA explicitly rejected — whale manipulation is #1 Trustpilot complaint on Polymarket. See strategy.md §5 D2. |
 | Q6 | Does a demo bet increase or decrease conversion? | Activation decision | UPDATED: Manifold sunsetting sweepcash March 2025 suggests play-money does not convert. Lean toward skipping demo bet. |
 | Q7 | Futuur: how exactly is crypto+fiat hybrid structured? | Reference for our model | Unchanged [? still not fully public] |
 | ~~Q8~~ | ~~Sports markets at MVP?~~ | DECIDED: post-MVP with 3-month checkpoint. Events-first launch, sports as month-4 decision after launch data. | CLOSED |
-| Q9 | Fee on win vs fee per trade? | Industry 2026 standard: tiered taker fees (Polymarket 0%-1.80% by category, Kalshi formula, DraftKings $0.01 flat). Fee on win is softer but earns less. Consider Option B + free category at MVP, migrate to Option A at scale. | OPEN - decide before build |
-| Q10 | NEW: Which jurisdictions are accessible under our expected license? | EU MiCA enforcement July 2026 blocks FR, DE, NL, PL, BE for Curacao-licensed platforms. Non-US, non-EU accessible market must be defined explicitly before market selection and acquisition planning. | NEW OPEN QUESTION |
+| Q9 | Fee on win vs fee per trade? | Industry 2026 standard: tiered taker fees (Polymarket 0%-1.80% by category, Kalshi formula, DraftKings $0.01 flat). | **CLOSED → Option A (tiered taker fee).** Politics/geopolitics: 0% (free acquisition tier). Crypto/culture: ~1% at 50/50. Maker rebates 20–25%. See strategy.md §3. |
+| Q10 | NEW: Which jurisdictions are accessible under our expected license? | EU MiCA enforcement July 2026 blocks FR, DE, NL, PL, BE for Curacao-licensed platforms. | **CLOSED → English-first global. Brazil as first localized market (PT-BR + PIX, month 2–3).** Priority stack: Brazil → UAE → Philippines → Mexico → Turkey. Avoid Indonesia + Vietnam. See strategy.md §5 D3. |
 | Q11 | NEW: How do we address insider trading risk without CFTC enforcement tools? | Kalshi: 150+ investigations, employer-disclosure, whistleblower tools. Polymarket: CFTC complaint filed June 2026. On-chain settlement provides verification but not market integrity governance. | NEW OPEN QUESTION |
 
 ---
