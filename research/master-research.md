@@ -447,9 +447,9 @@ _because_ hidden fees are the #1 cause of churn and negative reviews in fintech.
 | # | Question | Why it matters | v_refresh status |
 |---|---|---|---|
 | Q1 | CLOB vs AMM for MVP? | Affects pricing mechanics, bet UX, and cold-start liquidity | UPDATED: Azuro vAMM documented as the decentralized AMM path; still unresolved [?] |
-| Q2 | Fiat on-ramp provider? MoonPay vs Transak vs Stripe | Affects onboarding UX and commission | Unchanged [?] |
-| Q3 | KYC threshold? At what deposit amount does verification trigger | Activation friction | Unchanged [?] |
-| Q4 | Minimum bet? | Psychological barrier vs UX | UPDATED: lean toward $1-5 as first-bet minimum; demo bet likely counterproductive |
+| Q2 | Fiat on-ramp provider? MoonPay vs Transak vs Stripe | Affects onboarding UX and commission | **CLOSED →** See §10. Primary: Transak (local rails LatAm/SEA/ME). Fallback: MoonPay. Post-MVP: Onramper aggregator. |
+| Q3 | KYC threshold? At what deposit amount does verification trigger | Activation friction | **CLOSED →** See §10. Wallet-connect = no KYC. Fiat = on-ramp handles it (Transak Level 1: name+address only up to $20K). Platform-level trigger if needed: $2,000 cumulative (Futuur model). |
+| Q4 | Minimum bet? | Psychological barrier vs UX | **CLOSED →** See §10. Technical minimum: $1 USDC. UX default pre-fill: $5. Quick-select: $5 / $10 / $25 / $50. |
 | Q5 | Resolution without regulation - is team multisig enough at launch? | Core trust problem | Unchanged [?] |
 | Q6 | Does a demo bet increase or decrease conversion? | Activation decision | UPDATED: Manifold sunsetting sweepcash March 2025 suggests play-money does not convert. Lean toward skipping demo bet. |
 | Q7 | Futuur: how exactly is crypto+fiat hybrid structured? | Reference for our model | Unchanged [? still not fully public] |
@@ -645,6 +645,118 @@ Domer (#1 Polymarket trader by volume): still says "bet." Prophet (full-time Pol
 | Which specific events cause biggest activation spikes? | Still [?] |
 | Time from landing to first bet | Still [?] |
 | TAM for non-US News Junkie segment | Still [?] |
+
+---
+
+---
+
+## 10. Product Research — Decisions — June 2026
+
+*Source: Targeted research June 13, 2026. 20 agents, 12 sources. Closes Q2 (fiat on-ramp), Q3 (KYC threshold), Q4 (min bet), TAM question from §8.*
+
+---
+
+### Minimum Bet — CLOSED
+
+**Decision: $1 technical minimum · $5 UX default pre-fill**
+
+| Platform | Technical minimum | Practical floor |
+|---|---|---|
+| Polymarket | $0.01 (no enforced min) | $1–5 (liquidity-limited on CLOB) |
+| Kalshi | $1 confirmed | $5–10 (promo structures) |
+| Futuur | ~$1 (AMM, unconfirmed) | ~$1 |
+| DraftKings Predictions | $0.01/contract | Not confirmed |
+
+Polymarket avg transaction: ~$35. 82% of users traded under $10,000 in Q1 2026.
+
+The "real vs toy" threshold is $5–$10 — that's where platform promo structures calibrate "first real bet" UX. $1 activates skin-in-the-game psychology; $5 is where users stop feeling like they're testing. AMM model makes $1 safe (instant liquidity at any size, no orderbook dependency).
+
+**UX implementation:** $5 default pre-fill in bet input (users tap default on first bet, not type). Quick-select: $5 / $10 / $25 / $50. Technical minimum $1 in the background.
+
+**Do not conflate with on-ramp deposit minimum.** MoonPay enforces $20 deposit floor — that's a fiat provider constraint, not a platform policy. Users with USDC already in wallet can bet $1 regardless.
+
+*Sources: Kalshi help docs · MoonPay deposit policy · Polymarket trading data Q1 2026 · master-research.md aarrr.md v_refresh*
+
+---
+
+### Fiat On-ramp Provider — CLOSED
+
+**Decision: Transak primary · MoonPay fallback · Onramper post-MVP**
+
+| Provider | Card fee | Countries | Local rails | KYC friction | Verdict |
+|---|---|---|---|---|---|
+| **Transak** | 3.5–5.5% | 169 | PIX (Brazil) · UPI (India) · SPEI (Mexico) · SEPA Instant | Level 1: name+address only (up to $20K) | **Primary** |
+| **MoonPay** | 4.5% (min $3.99) | 160+ | Card only | Progressive, surprise threshold wall | **Fallback** |
+| Stripe | ~1.5% + $0.30 | 30–70 | None relevant | Low | Non-starter — excludes LatAm/SEA/ME |
+| Sardine | Undisclosed | Unspecified | — | — | Fraud layer only, not a consumer on-ramp |
+| **Onramper** | Varies (aggregator) | All providers | Routed per geo | Varies | **Post-MVP target architecture** |
+
+**Why Transak primary:** target markets are Brazil, UAE, Philippines, Mexico, Turkey. Transak is the only provider with local payment rails that make deposits feel like a local bank transfer. PIX (Brazil), UPI (India), SPEI (Mexico) mean no international card fees, instant settlement, no crypto literacy required. Light KYC (name+address up to $20K) matches the low-friction onboarding we need.
+
+**Why MoonPay fallback:** brand recognition reduces hesitation for first-time users (trust signal). Handles blockchain routing automatically (no wrong-network errors). Use for card payments where Transak local rails aren't available (Middle East Visa/Mastercard).
+
+**Critical risk on Transak:** KYC denial rate with no explanation + zero support escalation is documented as a conversion killer. Must negotiate a dedicated partner support SLA before launch. Test KYC approval rates in each target market in staging.
+
+**Post-MVP:** Onramper aggregator routes per geography and payment method to whichever provider converts best. Target architecture at month 2–3 once geo-level conversion data exists.
+
+*Sources: MoonPay docs 2026 · Transak docs 2026 · Stripe Crypto Onramp · Onramper comparison · Startupik research · Futuur review predictionmarketsxyz.substack.com Dec 2023*
+
+---
+
+### KYC Threshold — CLOSED
+
+**Decision: Two-layer model — wallet-connect = no KYC · fiat = on-ramp handles it**
+
+| Platform | KYC model | Threshold |
+|---|---|---|
+| Polymarket Global | No KYC (non-custodial, wallet-only) | None |
+| Polymarket US | Mandatory from account creation | None |
+| Kalshi US | Mandatory from account creation | None |
+| **Futuur** | Deferred | $2,000 cumulative lifetime deposits |
+| Decentralized (Azuro, Overtime) | No KYC by design | None |
+
+**Layer 1 — Wallet-connect entry:** users connecting self-custody wallet and depositing USDC directly → no platform KYC. Structurally identical to Polymarket Global. Platform does not hold funds (smart contracts do), so no custodial KYC obligation.
+
+**Layer 2 — Fiat on-ramp:** KYC handled entirely by the provider (Transak or MoonPay), not the platform. Transak Level 1 (name + address) covers transactions up to $20K. Platform never becomes the KYC-gating entity.
+
+**If platform-level KYC required** (e.g., Curacao licence obligation): use $2,000 cumulative lifetime deposits as the threshold — the Futuur precedent, the only published non-US non-custodial threshold in the market. No surprise threshold wall — communicate it in the onboarding flow preview before the deposit step.
+
+**Do not implement:** mandatory upfront KYC at registration. That is the CFTC-regulated custodial model. It will kill conversion for a cold-traffic news-junkie audience.
+
+**Open legal question (cannot close with research):** whether non-custodial smart wallet architecture fully eliminates platform KYC obligation under Curacao licence. Requires a crypto/gaming lawyer before launch.
+
+*Sources: Futuur review Dec 2023 · Polymarket help docs · Kalshi help docs · Transak KYC tier docs · Decentralized platform comparison Search 3*
+
+---
+
+### Non-US TAM — CLOSED (best available estimate)
+
+**Best estimate: ~1.5M active non-US, non-MiCA users today. News junkie sub-segment: ~450K–550K.**
+
+| Layer | Number | Confidence | Method |
+|---|---|---|---|
+| Total global PM users | 2.49M | HIGH | Gaming America / Slotegrator Feb 2026 |
+| Non-US share | ~74% (~1.84M) | HIGH | 25.56% US traffic on Polymarket (Semrush Dec 2025) |
+| Non-US, non-MiCA (excl. FR/DE/NL/PL/BE) | ~1.49M–1.57M | MEDIUM | Traffic share approximation |
+| News junkie / political bettor sub-segment | ~450K–550K | MEDIUM | 30–35% politics volume share on Polymarket applied to accessible base |
+
+These are current active users — a floor, not a ceiling. Volume grew 130× from early 2024 to end of 2025. 40+ brands entering in 2026.
+
+**Priority markets by risk-adjusted opportunity:**
+
+| Rank | Market | Signal | Risk |
+|---|---|---|---|
+| 1 | **Brazil** | #5 global crypto adoption · $318.8B crypto received 2025 (+250% YoY) · top-5 Kalshi demand · PIX rail via Transak | Low |
+| 2 | **UAE** | 241% crypto app download surge · VARA regulation in Dubai (progressive) · large educated expat base | Medium |
+| 3 | **Philippines** | GGR $7.16B in 2024 (+25%) · gambling-permissive culture · English-speaking | Medium |
+| 4 | **Mexico** | Remittance-driven crypto adoption +45% · SPEI rail via Transak | Medium |
+| 5 | **Turkey** | Non-EU Eastern European overlap · large retail crypto base | Medium |
+| ❌ | Indonesia | 33,000+ accounts frozen April 2026 | High — avoid |
+| ❌ | Vietnam | Active enforcement tightening | High — avoid |
+
+**What the TAM is NOT:** the Slotegrator "Political/News Enthusiast" segment is documented primarily for USA/UK/Canada/Australia. Non-US, non-English equivalent of this segment in LatAm/SEA/MENA has no direct measurement. The 450K–550K estimate applies the Polymarket politics-volume ratio to the accessible user base — it is a proxy, not a direct segment measurement.
+
+*Sources: Gaming America / Slotegrator Feb 2026 · Semrush Polymarket traffic Dec 2025 · Chainalysis 2025 Global Crypto Adoption Index · SEA sports betting CAGR report · UAE crypto app data · Kalshi demand market data · businessofigaming.com prediction market growth*
 
 ---
 
