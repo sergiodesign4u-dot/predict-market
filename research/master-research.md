@@ -533,6 +533,121 @@ The post-resolution loss screen is the highest-priority untested retention inter
 
 ---
 
+## 9. Post-Persona Research — June 2026
+
+*Source: Targeted follow-up research, June 13, 2026. 27 agents, 20 unique sources fetched. Answering 3 questions flagged by the personas.md audit: (1) friction vs. motivation, (2) post-loss behavior, (3) bettor identity language.*
+*Polls: casino.org 10,000+ respondents (April 2026) · Morning Consult 15,000+ adults (March 2026). Journalism: NPR, CBS, Fortune, Bloomberg, AOL. Academic: PMC/NCB 2024 loss-chasing study.*
+
+---
+
+### F4 — The Riskiest Assumption is substantially REFUTED. Barrier = motivation, not friction alone. `HIGH confidence`
+
+Four independent data points converge on the same conclusion:
+
+**1. Manifold Sweepcash failure (closest available A/B test).** Play-money Manifold users, when offered real-money access via Sweepcash (Sept 2024–March 2025), did not convert at scale. "Usage goals fell short." Mana sales collapsed post-sunset: $255 over two weeks vs. $10k/month target. Daily active trading users hit a record low of 886 just before shutdown. Play-money users with reduced friction chose to stay play-money.
+
+**2. Kalshi (fiat-native, no crypto): 93% DAU collapse regardless.** Kalshi's onboarding is equivalent to opening a brokerage account — ACH, debit card, Apple Pay, PayPal, Venmo, no crypto required. Peak: 400,000 DAU on November 6, 2024 (election day). By June 2025: 27,000–32,000 DAU. Easy fiat onboarding attracted a large election wave but did not produce sustained engagement. Retention collapsed when the triggering event resolved.
+
+**3. Free-rider problem is structural.** PM probabilities are public information (CNN, WSJ, CNBC now regularly cite Polymarket/Kalshi odds). PredictionCircle launched April 2026 explicitly for "the curious majority who follow politics, sports, and economics" who consume odds without betting. A venture-backed company was built on the premise that the passive-observer segment is large enough to serve without financial participation. ~50% of 2M Polymarket wallets since 2025 made or lost less than $10 total — they deposited but remained functionally passive.
+
+**4. Conversion trigger = informational edge, not ease of onboarding.** Every documented case of a news-following non-crypto user converting to a real-money bettor shares the same trigger: perceived informational advantage on a specific event. Campaign staffer (NPR 2026): *"it's almost foolish not to bet on it before it's made public."* Chioneso Bakr (Reynolds Center 2026): *"I said it's definitely not going to be Taylor Swift. I just knew that."* The motivation precedes and is independent of the onboarding experience.
+
+**What friction actually does:** Crypto/wallet friction is real (15–25 min, "feels weird and intimidating" — Medium reviewer Njuguna). It functions as a **multiplier on already-weak motivation** — not as the root cause of non-conversion. For a user with strong motivation (clear informational edge on a specific event), 15 minutes of wallet setup is acceptable. For a user with weak motivation (watches events, finds odds interesting, no specific "I know this" trigger), any friction ends the session.
+
+**Revised MVP implication:** A smooth fiat on-ramp will increase the size of the casual-experimenter cohort (under-$10 depositors) but will not produce sustained active bettors from the news-follower base. Conversion requires motivation activation — helping the user identify and articulate their informational edge BEFORE the deposit step. The product must create the feeling of "I know something worth staking" before presenting the deposit screen. PredictionStrike's framing is correct: the deposit is not a payment step, it is a commitment moment.
+
+→ **Updating H1 test signal:** if first-bet completion rate from cold News Junkie traffic is below 5%, the barrier is primarily motivation. 5–15%: friction + motivation mix. Above 20%: friction was the primary barrier (and we've effectively solved it).
+
+*Sources: longtermwiki.com citing Manifold March 2025 · Yahoo Finance Kalshi DAU data · AOL/AP PredictionCircle April 2026 · NPR/WXXINEWS 2026 · Reynolds Center April 2026 · PYMNTS/Bloomberg 2026 · SI.com Kalshi vs Polymarket · tech-insider.org May 2026*
+
+---
+
+### F5 — Post-loss trigger is the FIRST WIN, not the first loss. Chase pattern confirmed + trigger revised. `HIGH confidence`
+
+F3 (loss-chasing) is confirmed and upgraded in confidence. The causal trigger is revised.
+
+**Named case studies (all consistent):**
+- K.A., 24yo Virginia engineer (Kalshi): small Counter-Strike bets → early wins → escalated to $1,000+ NBA/tennis wagers → lost $10,000+ in 8 days → took out loans. Quit only when partner confronted him.
+- Lorenzo Miro, San Diego (Polymarket): first bet $498 → won $100+ → lost $1,700+ over 2 months → quit via lawsuit + app switch.
+- "Poly Hell" author (Substack): won early markets → deposited $10,000 MORE after losing $7,500 → never self-stopped.
+- beachboy4 trader (Polymarket): 51% win rate across 53 trades, still lost $2.36M due to position-sizing escalation.
+
+**Revised behavioral sequence:** First WIN → overconfidence → escalation → losses → loss-chasing → catastrophic exit (requires external force to stop).
+
+The first loss does not trigger quitting — it triggers escalation, because the user overestimates their edge from prior wins.
+
+**Three behavioral archetypes (previously only one was documented):**
+
+| Archetype | Pattern | Evidence | Design relevance |
+|---|---|---|---|
+| Loss Chaser | First win → overconfidence → escalation → chasing. Quits only via external force (partner, lawsuit, account block). | K.A., Lorenzo Miro, Poly Hell, beachboy4 | Post-loss screen intervention |
+| Casual Experimenter | Small first deposit ($<10), goes dormant after first loss or event ends. Never self-documents. | ~50% of 2M wallets made/lost <$10 (PYMNTS 2026) | Modal behavior — undesigned for |
+| Platform-Betrayal Quitter | Won or should have won, platform failed them. Writes angry Trustpilot review. Wants to return — just on a better platform. | Kalshi 1.9/5 · Polymarket 1.4/5, 90% one-star | Trust infrastructure priority |
+
+**Survivorship bias warning:** extreme escalators produce journalism; casual experimenters are silent. The modal News Junkie may be Archetype 2 (deposits → small loss → dormant), not Archetype 1. Post-loss screen should speak primarily to the casual experimenter — offer a re-entry path, not just a crisis intervention.
+
+**New design implication — the WIN screen:** Early wins → overconfidence → escalation is the cascade trigger. The post-resolution WIN screen needs design attention equal to the loss screen. Confetti or "you were right!" celebration copy without friction-point may inadvertently accelerate the escalation pattern.
+
+**Platform betrayal as the #1 churn driver:** Trustpilot negative reviews on Kalshi and Polymarket are not "I lost a bet." They are "I can't withdraw my money", "wrong payout calculation", "UMA whales manipulated the resolution." These users want to return — just on a platform that actually pays out. Transparent on-chain resolution + instant withdrawal are trust infrastructure, not UX polish.
+
+→ **F3 upgraded: MEDIUM → HIGH.** Confirmed by multiple independent case studies + PMC/NCB 2024 academic study (52.5% of subjects in loss condition continued playing vs 47.5% in control). Trigger revised from "first loss" to "first win."
+
+*Sources: AOL 2026 "Bam, everything's gone" · nimnim1.substack.com "Poly Hell" · beincrypto.com beachboy4 · PYMNTS/Bloomberg 2026 · PMC/NCB 2024 academic study · Trustpilot Kalshi + Polymarket*
+
+---
+
+### F6 — Bettor identity: forecaster/analyst self-image is real, but vocabulary defaults to "bet". `HIGH confidence`
+
+**Poll data (large samples, US):**
+- casino.org (10,000+ respondents, April 2026): 61% view PM as "closer to gambling"; 18% as "a mix of both gambling and investing"; 8% as investing; 28% call it "an investment vehicle."
+- Morning Consult (15,000+ adults, March 2026): 81% say betting through PM equals gambling. 73% say financial jargon ("event contracts," "swaps," "futures") obscures the gambling nature.
+
+**Three identity clusters:**
+
+| Cluster | Est. share | Self-description | Action verbs |
+|---|---|---|---|
+| Gambler | ~61% | "I know I'm gambling but it's more interesting than slots because I have an opinion" | bet, wager, lost, won |
+| Forecaster/Analyst | ~8–18% | "I have an edge because I follow this more closely than the market" | position, research, probability, my read |
+| Investor | ~28% | "This is a new asset class" | trade, portfolio, exposure |
+
+**The News Junkie target maps to the Forecaster/Analyst cluster (~8–18%).**
+
+**The verb/noun split — confirmed across all user quotes:**
+- Action verbs (what they do): "bet", "place a bet", "make a bet", "throw money in" — even the most analytical users
+- Identity/reasoning language (why they did it): "thesis", "high likelihood", "I knew that", "research", "my read"
+
+Nobody in the research corpus used "I predicted" or "I forecast" as a first-person action verb. The phrase "predicted" appears in platform marketing and media headlines ("prediction markets called the election"), not in user self-description.
+
+Domer (#1 Polymarket trader by volume): still says "bet." Prophet (full-time Polymarket participant, Substack writer): "I've been a full-time bettor on Polymarket since early last year." Campaign staffers with non-public polling data: "placing bets." Even Domer, who The Walrus describes as "not thinking of himself as a gambler" and who frames his activity as "taking very, very well-researched views on things" — still uses "bet" for the action.
+
+**Closest real-world "Alex" archetype found:** Chioneso Bakr, Brooklyn musician (Reynolds Center, April 2026): *"I said it's definitely not going to be Taylor Swift. I just knew that."* Won ~$100 on Polymarket. Knowledge-pride frame, not gambler frame. This is the "I understand how the world works" self-image in action — but note: she still went and *bet*, not *predicted*.
+
+**The anti-gambler identity is real but does not change vocabulary.** The stigma gap is exploitable: "gambling" triggers shame; "forecasting/I was right" triggers pride. The 18% "mix of both" group is the primary acquisition swing segment — open to the forecaster reframe but not committed. Onboarding and event discovery copy should activate the analyst self-image *before* the bet is placed.
+
+**Copy implication:**
+- Avoid "gamble" in copy — confirmed. Stigma association is real.
+- Do NOT replace "bet" with "predict" in functional UI copy — will feel tone-deaf; users say "I made a bet" naturally.
+- Use "predict/forecast" for **identity and aspiration copy**: marketing, onboarding headlines, profile framing ("your prediction track record").
+- Accept "bet/position" in **functional UI copy**: placing a bet, confirming a position.
+- The emotional payoff to design toward: "I was right / I called it" (outcome satisfaction) — not "I predicted" (action framing).
+
+*Sources: casino.org April 2026 10,000+ respondents · Morning Consult March 2026 15,000+ · NPR/WXXINEWS 2026 campaign staffers · CBS News 2026 · ChinaTalk Domer interview · Polymarket News Prophet interview · Reynolds Center April 2026 Chioneso Bakr · The Walrus Domer profile*
+
+---
+
+### Updated: What we now know vs. what remains unknown (vs. §8)
+
+| Question from §8 | Status after §9 research |
+|---|---|
+| Do News Junkies actually convert when friction is removed? | **SUBSTANTIALLY ANSWERED:** Fiat barrier alone is insufficient. Kalshi (fiat-native) still saw 93% DAU collapse. Manifold Sweepcash: play-money users didn't convert. Motivation must be activated before the deposit step. |
+| What trust signals work in users' own words? | **PARTIALLY ANSWERED:** Platform betrayal (frozen funds, wrong payouts, resolution disputes) is the #1 documented trust killer — more impactful than losing a bet. Fast withdrawal + transparent on-chain resolution = highest-value trust signals. |
+| Minimum bet size | Still [?] |
+| Which specific events cause biggest activation spikes? | Still [?] |
+| Time from landing to first bet | Still [?] |
+| TAM for non-US News Junkie segment | Still [?] |
+
+---
+
 *Compiled from: [strategy.md](./strategy.md) - [product-model.md](./product-model.md) (history) - [aarrr.md](./aarrr.md) - [competitive-analysis.md](./competitive-analysis.md) - [benchmark-trust.md](./benchmark-trust.md) - [ux-patterns.md](./ux-patterns.md) - [research.md](./research.md)*
 *Screenshots: `research/screens/` (26 files, including 5 new from v_refresh: DraftKings Predictions, Bet365, eToro, Betfair Predicts, Azuro)*
 *v_refresh sources June 2026: [Kalshi $22B Series F](https://sacra.com/research/kalshi/) - [Kalshi volume leader CNBC](https://www.cnbc.com/2026/05/kalshi-polymarket-volume-comparison.html) - [Polymarket Fee V2 docs](https://docs.polymarket.com/trading/fees) - [Polymarket ICE $9B](https://financialcontent.com/marketscreener/polymarket-ice-investment-2026) - [Hyperliquid HIP-4](https://bitcoinnews.com/defi/hyperliquid-hip-4-prediction-markets-2026/) - [DraftKings Predictions Combos](https://www.gamblinginsider.com/news/159764/draftkings-combos-fee-structure-predictions-platform) - [Betfair Predicts](https://www.casino.org/news/betfair-eyes-prediction-market-growth-with-betfair-predicts/) - [EU MiCA enforcement](https://trmlabs.com/post/mica-enforcement-2026)*

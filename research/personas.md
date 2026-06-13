@@ -1,8 +1,8 @@
 # Personas — Prediction Market Platform
 
-> Built from: master-research.md · strategy.md · ux-patterns.md · live-research F1–F3 (June 2026)
+> Built from: master-research.md · strategy.md · ux-patterns.md · live-research F1–F3 (June 2026) · post-persona research F4–F6 (June 2026)
 > Ground rules: confirmed data cited with source. Where evidence is absent — marked **(?)** and framed as a hypothesis, not a fact.
-> Last updated: June 13, 2026
+> Last updated: June 13, 2026 (post-persona research pass)
 
 ---
 
@@ -20,9 +20,11 @@ No personas were invented. Where we have no data on a dimension — that gap is 
 
 ### Why primary
 
-Largest reachable audience. Fiat on-ramp removes the only structural barrier between them and the product. Directly aligned with JTBD J2 — "follow events with real skin in the game." Confirmed primary across all 3 research iterations.
+Largest reachable audience. Directly aligned with JTBD J2 — "follow events with real skin in the game." Confirmed primary across all 3 research iterations.
 
-*Source: strategy.md — Audience · master-research.md §1 Key Conclusions #1*
+**⚠️ Updated June 2026 (F4):** The earlier claim that "fiat on-ramp removes the only structural barrier" is substantially refuted. Kalshi (fiat-native, no crypto) saw a 93% DAU collapse after the 2024 US election regardless of easy onboarding. Manifold Sweepcash: play-money users did not convert to real money even when friction was removed. The fiat on-ramp is necessary but not sufficient. The real barrier is motivation activation — helping Alex identify his informational edge before presenting a deposit screen. The barrier is motivation AND friction together, not friction alone.
+
+*Source: strategy.md — Audience · master-research.md §1 Key Conclusions #1 · master-research.md §9 F4*
 
 ---
 
@@ -32,9 +34,15 @@ Alex reads the news every morning — newsletters, Twitter/X, maybe a podcast. W
 
 He's heard of Polymarket. Maybe saw a screenshot on Twitter. Went to sign up — saw MetaMask, USDC, a wall of wallet icons — and closed the tab.
 
-He doesn't think of himself as a "bettor." He thinks of himself as someone who understands how the world works.
+**⚠️ Updated June 2026 (F6):** The claim "he doesn't think of himself as a bettor" is partially true but the copy implication is more nuanced than previously stated.
 
-*Source: master-research.md §4 Competitor gaps — "Onboarding assumes prior knowledge" · benchmark-trust.md C6 Onboarding friction · screens/polymarket-signup-mobile.png*
+The **identity tension is confirmed** — a Forecaster/Analyst cluster (~8–18% of PM users, per casino.org 10,000+ survey) genuinely resists the "gambler" label and frames activity as knowledge-validation. This is exactly the Alex segment. The closest real-world example found: Chioneso Bakr (Brooklyn musician, Polymarket): *"I said it's definitely not going to be Taylor Swift. I just knew that."* Knowledge-pride, not gambling frame.
+
+**BUT: vocabulary still uses "bet."** Even the most analytical users — Domer (#1 Polymarket trader), Prophet (full-time Polymarket bettor, Substack), campaign staffers with non-public polling — say "I bet", "placing bets", "I'm a full-time bettor." Nobody in the research corpus used "I predicted" as a first-person action verb.
+
+**The split: identity = analyst, action = bet.** Copy implication: use "predict/forecast" in marketing and profile framing (aspiration/identity layer). Accept "bet/position" in functional UI (action layer). The emotional payoff to activate: "I was right / I called it" — not "I predicted."
+
+*Source: master-research.md §9 F6 · casino.org April 2026 · Reynolds Center April 2026 · ChinaTalk Domer · Polymarket News Prophet · master-research.md §4 Competitor gaps · benchmark-trust.md C6*
 
 ---
 
@@ -234,31 +242,46 @@ She finds sports betting limiting: the house always sets the odds, and she can't
 
 This is not a persona to design for — it is a behavioral pattern that can emerge from **any** of the three personas above, especially Alex (News Junkie).
 
-**Pattern (confirmed, F3 — medium confidence):**
-1. Early wins → overconfidence
-2. Systematic losses → loss-chasing
-3. Escalating bet sizes → catastrophic exit (loan, $10,000+ lost in days)
+**Pattern (confirmed, F3+F5 — HIGH confidence ↑ upgraded from medium):**
+1. **First WIN** → overconfidence ← **trigger revised: it is the WIN, not the first loss**
+2. Escalating bet sizes → systematic losses
+3. Loss-chasing → catastrophic exit (loan, $10,000+ lost in days)
+4. Quit only via external force (partner confrontation, lawsuit, account block) — not self-regulation
 
-**Evidence:** 24-year-old Kalshi user, 2026. 19 federal lawsuits against Kalshi by Jan 2026. 70–84% of all PM traders lose money (F2).
+**Updated June 2026 (F5):** Multiple independent case studies confirmed and trigger revised. K.A. (24yo Kalshi engineer): early Counter-Strike wins → escalated to $1,000+ wagers → $10,000+ lost in 8 days → took out loans. Quit after partner found out. Lorenzo Miro (Polymarket): first bet won $100+ → lost $1,700+ over 2 months → quit via lawsuit. "Poly Hell" author: won early markets → deposited $10,000 MORE after losing $7,500. beachboy4 trader: 51% win rate, still lost $2.36M from position-sizing escalation.
 
-**Product implication:** the post-resolution loss screen is the intervention point. Before the chasing loop starts. No competitor designs this moment today. We must.
+**Three behavioral archetypes (new in F5):**
 
-*Source: live-research F3 · AOL 2026 · live-research F2 · Yahoo Finance / DeFi Oasis*
+| Archetype | Pattern | Evidence |
+|---|---|---|
+| Loss Chaser | First win → overconfidence → escalation → chasing. External force required to stop. | Named case studies (journalism) |
+| Casual Experimenter | Deposits small amount (<$10), goes dormant after first loss or when triggering event ends. Never documents. | ~50% of 2M Polymarket wallets made/lost <$10 (PYMNTS 2026) |
+| Platform-Betrayal Quitter | Won or should have won, platform failed them (frozen withdrawal, wrong payout, resolution dispute). Leaves angrily. Writes Trustpilot review. | Kalshi 1.9/5 · Polymarket 1.4/5, 90% one-star |
+
+**Product implication (updated):**
+- The **post-resolution WIN screen** needs design attention equal to the loss screen. Early wins set the overconfidence that fuels later escalation. Confetti or "you were right!" copy without friction may accelerate the pattern.
+- The **post-resolution LOSS screen** remains the intervention point — but it should primarily speak to the Casual Experimenter (re-entry path) rather than only to the escalation case.
+- **Platform betrayal** (frozen funds, wrong payouts, opaque resolution) is the documented #1 churn driver — more than losing a bet. Transparent on-chain resolution + instant withdrawal = trust infrastructure, not UX polish.
+- No competitor designs either of these moments. We must.
+
+**Evidence:** 24-year-old Kalshi user, 2026. 19 federal lawsuits against Kalshi by Jan 2026. 70–84% of all PM traders lose money (F2). PMC/NCB academic study 2024: 52.5% of subjects in loss condition continued playing vs 47.5% in control.
+
+*Source: live-research F3+F5 · AOL 2026 · Substack "Poly Hell" · beincrypto.com · PYMNTS/Bloomberg 2026 · PMC/NCB 2024 · Trustpilot Kalshi + Polymarket · master-research.md §9*
 
 ---
 
 ## What we still don't know about any of these personas
 
-| Gap | Affects |
-|---|---|
-| Does Alex actually want to bet, or just watch? (Riskiest Assumption) | Persona 1 — entire value proposition |
-| Min bet size that feels real without triggering loss-chasing | All personas, especially Persona 1 |
-| Which specific event brings Alex to the platform for the first time | Persona 1 — acquisition |
-| What trust signals actually work in their own words (no verified quotes) | All 3 personas |
-| Non-US TAM for Personas 1 and 3 | Market sizing |
-| When exactly does the Loss-Prone pattern activate — after how many losses? | Risk overlay |
+| Gap | Status | Affects |
+|---|---|---|
+| Does Alex actually want to bet, or just watch? (Riskiest Assumption) | **SUBSTANTIALLY ANSWERED (F4):** Motivation is the primary barrier, not friction alone. Fiat on-ramp is necessary but not sufficient. Kalshi + Manifold Sweepcash both confirm this. The product must activate informational-edge motivation BEFORE the deposit step. | Persona 1 — core acquisition strategy |
+| What trust signals work in their own words? | **PARTIALLY ANSWERED (F5):** Platform betrayal (frozen funds, wrong payout, opaque resolution) is the #1 documented trust killer. On-chain resolution + fast withdrawal = most actionable trust signals. | All 3 personas |
+| When exactly does the Loss-Prone pattern activate? | **REVISED (F5):** Trigger is first WIN (overconfidence), not first loss. Sequence: first win → escalation → losses → chasing. | Risk overlay |
+| Min bet size that feels real without triggering harm escalation | [?] No data. | All personas, especially Persona 1 |
+| Which specific event brings Alex to the platform for the first time | [?] No verified data. | Persona 1 — acquisition |
+| Non-US TAM for Personas 1 and 3 | [?] Poll data (casino.org, Morning Consult) is US-only. Non-US identity and motivation frames unknown. | Market sizing |
 
-*Source: master-research.md §8 — Open questions Q1, Q3, Q5, Q7, Q8*
+*Source: master-research.md §8–9 — Open questions Q1, Q3, Q5, Q7 · live-research F3–F6*
 
 ---
 
