@@ -460,6 +460,79 @@ _because_ hidden fees are the #1 cause of churn and negative reviews in fintech.
 
 ---
 
+## 8. Live User Research — June 2026
+
+*Source: Deep web research, June 13, 2026. 111 search agents, 28 sources fetched, 116 claims extracted → 4 confirmed after adversarial 3-vote verification. 21 claims killed.*
+*Angles searched: friction vs. motivation / post-loss behavior / bet sizing & play-money conversion / event-driven spikes / trust signals / non-US TAM / time-to-first-bet funnel.*
+
+---
+
+### Confirmed findings (survived adversarial verification)
+
+**F1 — Play-money → real-money conversion: does not work.** `HIGH confidence`
+
+Manifold's sweepstakes model (real money parallel to play-money mana) was sunset March 28, 2025. From Manifold's own blog post (February 2025): *"unfortunately haven't met our usage goals and they've been drawing focus away from building out the core platform."* Contributing factors: low volume that could not cover compliance overhead and support costs.
+
+→ **Confirms decision: no demo bet in MVP.** Play-money is not a path to real-money activation — tested at scale and failed.
+
+*Sources: [Manifold blog Feb 2025](https://news.manifold.markets/p/focusing-on-mana-bringing-sweepstakes) (primary) · [Gambling911](https://www.gambling911.com/gambling/manifold-eliminates%20sweepstakes-model)*
+
+---
+
+**F2 — 70–84% of prediction market traders lose money.** `HIGH confidence`
+
+Four independent analyses 2025–2026, all converging:
+
+| Study | Date | Sample | Loss rate |
+|---|---|---|---|
+| DeFi Oasis | Dec 2025 | 1.7M addresses | 70% |
+| Wall Street Journal | May 2026 | 1.6M accounts | >70% |
+| Academic study | Nov 2022 – Mar 2026 | — | 68.8% |
+| Andrey Sergeenkov | Apr 2026 | 2.5M addresses | 84.1% |
+
+**Implication for Riskiest Assumption:** removing friction (fiat on-ramp) is necessary but not sufficient. Even users who clear the crypto barrier predominantly lose money. The market is structurally tilted toward sophisticated traders. If News Junkies arrive and lose their first bets quickly — retention becomes the real problem, not activation.
+
+*Sources: [Yahoo Finance / DeFi Oasis Dec 2025](https://finance.yahoo.com/news/70-polymarket-traders-lost-money-192327162.html)*
+
+---
+
+**F3 — After a first loss: users don't leave — they chase losses.** `MEDIUM confidence`
+
+Journalistic case (2026): a 24-year-old engineer lost over $10,000 in 8 days on Kalshi, escalating from small bets to $1,000+ wagers, then taking out a loan to recover. Direct quote: *"There'll be a big winning streak at the beginning, which happened to me — then bam, everything's gone."*
+
+Pattern: early wins → overconfidence → systematic losses → loss-chasing → catastrophic exit.
+
+Context: 19 federal lawsuits against Kalshi by January 2026. Class-action from a user who lost tens of thousands in a single month. Confidence is medium — single anecdote, not a population study — but directionally credible given the lawsuit volume.
+
+→ **The post-resolution loss screen is not a UX detail.** It is the moment where we can intervene before the chasing loop begins. No competitor currently designs this moment.
+
+*Source: [AOL journalistic report 2026](https://www.aol.com/news/bam-everythings-gone-two-young-102401794.html)*
+
+---
+
+### What we still do not know (no data survived verification)
+
+| Question | Status |
+|---|---|
+| Do News Junkies without crypto actually convert when friction is removed? | [?] No verified case. The Riskiest Assumption remains untested in the wild. |
+| Minimum bet size that feels "real" without triggering harm escalation | [?] No data. Manifold-experiment failed but said nothing about optimal amount. |
+| Which specific events cause the biggest signup/activation spikes? | [?] All candidate claims failed adversarial verification. No verified data. |
+| Time from landing to first bet — funnel benchmark | [?] No verified data survived. |
+| What trust signals actually work, in users' own words? | [?] No verified quotes or reviews survived verification. |
+| TAM for non-US News Junkie segment | [?] All market-size projections were refuted. Genuinely unknown. |
+
+---
+
+### Key implication from this research
+
+The central question shifted: not "will News Junkies come?" but **"what happens after their first loss, and do they stay?"**
+
+This cannot be answered by research — only by real traffic data. First-bet completion rate and day-7 retention after a first loss are the two metrics that will tell us whether the Riskiest Assumption is true or false.
+
+The post-resolution loss screen is the highest-priority untested retention intervention. Design it before launch. Measure it as the first post-launch signal.
+
+---
+
 *Compiled from: [strategy.md](./strategy.md) - [product-model.md](./product-model.md) (history) - [aarrr.md](./aarrr.md) - [competitive-analysis.md](./competitive-analysis.md) - [benchmark-trust.md](./benchmark-trust.md) - [ux-patterns.md](./ux-patterns.md) - [research.md](./research.md)*
 *Screenshots: `research/screens/` (26 files, including 5 new from v_refresh: DraftKings Predictions, Bet365, eToro, Betfair Predicts, Azuro)*
 *v_refresh sources June 2026: [Kalshi $22B Series F](https://sacra.com/research/kalshi/) - [Kalshi volume leader CNBC](https://www.cnbc.com/2026/05/kalshi-polymarket-volume-comparison.html) - [Polymarket Fee V2 docs](https://docs.polymarket.com/trading/fees) - [Polymarket ICE $9B](https://financialcontent.com/marketscreener/polymarket-ice-investment-2026) - [Hyperliquid HIP-4](https://bitcoinnews.com/defi/hyperliquid-hip-4-prediction-markets-2026/) - [DraftKings Predictions Combos](https://www.gamblinginsider.com/news/159764/draftkings-combos-fee-structure-predictions-platform) - [Betfair Predicts](https://www.casino.org/news/betfair-eyes-prediction-market-growth-with-betfair-predicts/) - [EU MiCA enforcement](https://trmlabs.com/post/mica-enforcement-2026)*

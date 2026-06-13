@@ -724,6 +724,7 @@
       <a href="#benchmark" class="sidebar-sub-link">Benchmark</a>
       <a href="#patterns" class="sidebar-sub-link">UX Patterns</a>
       <a href="#conclusions" class="sidebar-sub-link">Conclusions</a>
+      <a href="#live-research" class="sidebar-sub-link">Live Research</a>
     </div>
     <div class="sidebar-divider">Plan</div>
     <a class="sidebar-page-link planned">Wireframes</a>
@@ -1661,6 +1662,90 @@
       <div class="question" style="border-color:rgba(95,168,255,.3)"><span class="qnum" style="color:#5fa8ff">Q11 NEW</span><span>Insider trading governance without CFTC tools? Kalshi launched 150+ investigations in Q1 2026 and employer-disclosure for high-risk markets. Polymarket faced CFTC complaint June 2026. On-chain settlement verifies outcomes but not market integrity. What is our equivalent?</span></div>
     </div>
 
+  </section>
+
+  <!-- ── LIVE RESEARCH ─────────────────────────────────── -->
+  <section id="live-research">
+    <div class="section-label">Live Research · June 2026</div>
+    <h2>Users — what the data actually says</h2>
+    <p class="lead" style="margin-bottom:8px">111 search agents · 28 sources · 116 claims extracted → 4 confirmed after adversarial 3-vote verification · 21 killed</p>
+    <p style="font-size:12px;color:#666;margin-bottom:32px">Angles: friction vs. motivation · post-loss behavior · play-money conversion · event spikes · trust signals · TAM · time-to-first-bet</p>
+
+    <h3>Confirmed findings</h3>
+
+    <div class="hypothesis" style="border-color:rgba(95,219,143,.3)">
+      <div class="hypothesis-id" style="color:var(--green);display:flex;align-items:center;gap:10px">
+        F1
+        <span style="font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;background:rgba(95,219,143,.12);color:var(--green);letter-spacing:.06em">HIGH CONFIDENCE</span>
+      </div>
+      <div class="hypothesis-title">Play-money → real-money conversion: does not work</div>
+      <div class="hyp-row">
+        <span class="hyp-key" style="color:var(--muted)">What</span>
+        <span class="hyp-val">Manifold's sweepstakes model (real money parallel to play-money mana) was sunset March 28, 2025. Their own blog: <em style="color:#ddd">"unfortunately haven't met our usage goals and they've been drawing focus away from building out the core platform."</em> Low volume couldn't cover compliance and support costs.</span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key then-key">Impact</span>
+        <span class="hyp-val"><strong>Confirms no demo bet in MVP.</strong> Play-money is not a path to real-money activation — tested at scale by Manifold and failed.</span>
+      </div>
+      <div class="hyp-source">Manifold blog Feb 2025 (primary source) · gambling911.com</div>
+    </div>
+
+    <div class="hypothesis" style="border-color:rgba(255,95,95,.3);margin-top:12px">
+      <div class="hypothesis-id" style="color:var(--red);display:flex;align-items:center;gap:10px">
+        F2
+        <span style="font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;background:rgba(255,95,95,.12);color:var(--red);letter-spacing:.06em">HIGH CONFIDENCE</span>
+      </div>
+      <div class="hypothesis-title">70–84% of prediction market traders lose money</div>
+      <div class="hyp-row">
+        <span class="hyp-key" style="color:var(--muted)">What</span>
+        <span class="hyp-val">Four independent analyses converge on the same number:</span>
+      </div>
+      <div style="margin:10px 0 12px 74px">
+        <div style="display:grid;grid-template-columns:auto auto 1fr;gap:6px 20px;font-size:12px">
+          <span style="color:var(--muted)">DeFi Oasis, Dec 2025</span><span style="color:#666">1.7M addresses</span><span style="color:var(--red);font-weight:700">70% loss</span>
+          <span style="color:var(--muted)">Wall Street Journal, May 2026</span><span style="color:#666">1.6M accounts</span><span style="color:var(--red);font-weight:700">>70% loss</span>
+          <span style="color:var(--muted)">Academic study, 2022–2026</span><span style="color:#666">—</span><span style="color:var(--red);font-weight:700">68.8% loss</span>
+          <span style="color:var(--muted)">Sergeenkov, Apr 2026</span><span style="color:#666">2.5M addresses</span><span style="color:var(--red);font-weight:700">84.1% loss</span>
+        </div>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key then-key">Impact</span>
+        <span class="hyp-val">Removing friction (fiat on-ramp) is necessary but not sufficient. The market is structurally tilted toward sophisticated traders. If News Junkies arrive and lose their first bets quickly — <strong>retention becomes the real problem, not activation.</strong></span>
+      </div>
+      <div class="hyp-source">Yahoo Finance / DeFi Oasis Dec 2025 · WSJ May 2026</div>
+    </div>
+
+    <div class="hypothesis" style="border-color:rgba(200,160,255,.25);margin-top:12px">
+      <div class="hypothesis-id" style="color:#c8a0ff;display:flex;align-items:center;gap:10px">
+        F3
+        <span style="font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;background:rgba(200,160,255,.1);color:#c8a0ff;letter-spacing:.06em">MEDIUM CONFIDENCE</span>
+      </div>
+      <div class="hypothesis-title">After a first loss: users don't leave — they chase</div>
+      <div class="hyp-row">
+        <span class="hyp-key" style="color:var(--muted)">What</span>
+        <span class="hyp-val">Journalistic case (2026): 24-year-old engineer lost $10,000+ in 8 days on Kalshi — escalated from small bets to $1,000+ per bet, took out a loan to recover. Direct quote: <em style="color:#ddd">"There'll be a big winning streak at the beginning, which happened to me — then bam, everything's gone."</em><br><span style="color:#888;font-size:12px">Context: 19 federal lawsuits against Kalshi by Jan 2026. Class-action from user who lost tens of thousands in one month. Single anecdote — directionally credible, not statistically proven.</span></span>
+      </div>
+      <div class="hyp-row">
+        <span class="hyp-key then-key">Impact</span>
+        <span class="hyp-val"><strong>The post-resolution loss screen is not a UX detail.</strong> It is the moment where we intervene before the chasing loop begins. No competitor designs this moment.</span>
+      </div>
+      <div class="hyp-source">AOL journalistic report 2026 · Kalshi federal lawsuits Jan 2026</div>
+    </div>
+
+    <h3 style="margin-top:40px">What we still do not know — no data survived verification</h3>
+    <div class="questions">
+      <div class="question"><span class="qnum" style="color:var(--muted)">Q1</span><span>Do News Junkies without crypto actually convert when friction is removed? The Riskiest Assumption remains completely untested in the wild. No verified case found.</span></div>
+      <div class="question"><span class="qnum" style="color:var(--muted)">Q3</span><span>Minimum bet size that feels "real" without triggering harm escalation? Manifold experiment failed but said nothing about the optimal amount.</span></div>
+      <div class="question"><span class="qnum" style="color:var(--muted)">Q5</span><span>Which specific events drive the biggest signup spikes? All candidate claims failed verification. No verified data on elections vs. crypto crashes vs. celebrity events.</span></div>
+      <div class="question"><span class="qnum" style="color:var(--muted)">Q6</span><span>Time from landing to first bet — funnel benchmark? No verified data survived.</span></div>
+      <div class="question"><span class="qnum" style="color:var(--muted)">Q7</span><span>What trust signals actually work, in users' own words? No verified quotes or reviews survived adversarial check.</span></div>
+      <div class="question"><span class="qnum" style="color:var(--muted)">Q8</span><span>TAM for non-US News Junkie? All market-size projections were refuted. Genuinely unknown.</span></div>
+    </div>
+
+    <div style="margin-top:32px;background:rgba(255,95,95,.06);border:1px solid rgba(255,95,95,.2);border-radius:8px;padding:20px 24px">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:10px">Key implication from live research</div>
+      <p style="margin:0;max-width:none;color:#ccc">The central question shifted: not <em>"will News Junkies come?"</em> but <strong style="color:#e8e8e8">"what happens after their first loss, and do they stay?"</strong> This cannot be answered by research — only by real traffic data. First-bet completion rate and day-7 retention after a first loss are the two metrics that will confirm or kill the Riskiest Assumption. The post-resolution loss screen is the highest-priority untested retention intervention. Design it before launch. Measure it as the first post-launch signal.</p>
+    </div>
   </section>
 
 </main>
