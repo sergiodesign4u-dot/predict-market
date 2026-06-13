@@ -35,42 +35,150 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── NAV ───────────────────────────────────────────── */
-  nav {
+  /* ── SIDEBAR ─────────────────────────────────────────── */
+  .sidebar {
     position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(14,14,14,.92);
-    backdrop-filter: blur(12px);
+    top: 0; left: 0;
+    width: 220px;
+    height: 100vh;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform .25s cubic-bezier(.4,0,.2,1);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar::-webkit-scrollbar { display: none; }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.open { display: block; }
+
+  .menu-toggle {
+    position: fixed;
+    top: 12px; left: 12px;
+    z-index: 201;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 36px; height: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 15px; height: 1.5px;
+    background: var(--text);
+    border-radius: 1px;
+  }
+
+  .sidebar-brand {
+    padding: 20px 16px 16px;
     border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .sidebar-project-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+
+  .sidebar-page-link {
     display: flex;
     align-items: center;
-    gap: 4px;
-    padding: 0 24px;
-    height: 48px;
-    overflow-x: auto;
-    scrollbar-width: none;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    padding: 7px 16px;
+    transition: background .15s;
+    cursor: pointer;
+    user-select: none;
   }
-  nav::-webkit-scrollbar { display: none; }
+  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
+  .sidebar-page-link.active { color: var(--accent); }
+  .sidebar-page-link.planned {
+    color: var(--muted);
+    cursor: default;
+    opacity: .6;
+  }
+  .sidebar-page-link.planned::after {
+    content: 'Soon';
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
 
-  nav a {
+  .sidebar-sub { padding: 2px 0 8px; }
+
+  .sidebar-sub-link {
+    display: block;
+    font-size: 12px;
     color: var(--muted);
     text-decoration: none;
-    font-size: 12px;
-    font-weight: 500;
-    white-space: nowrap;
-    padding: 6px 10px;
-    border-radius: 4px;
-    transition: color .15s, background .15s;
+    padding: 5px 16px 5px 28px;
+    transition: color .15s;
+    position: relative;
   }
-  nav a:hover { color: var(--text); background: var(--surface); }
-  nav .sep { color: var(--border); font-size: 16px; user-select: none; }
+  .sidebar-sub-link:hover { color: var(--text); }
+  .sidebar-sub-link.active { color: var(--text); }
+  .sidebar-sub-link.active::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 50%; transform: translateY(-50%);
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-divider {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 16px 16px 6px;
+    opacity: .45;
+  }
 
   /* ── LAYOUT ─────────────────────────────────────────── */
   main {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 80px 24px 120px;
+    padding: 60px 20px 80px;
+  }
+
+  @media (min-width: 860px) {
+    .sidebar { transform: translateX(0); transition: none; }
+    .sidebar-overlay { display: none !important; }
+    .menu-toggle { display: none; }
+    main { margin-left: 220px; padding: 48px 48px 120px; }
   }
 
   section {
@@ -596,23 +704,33 @@
 </head>
 <body>
 
-<nav>
-  <a href="#intro">Introduction</a>
-  <span class="sep">·</span>
-  <a href="#lean-ux-canvas">Lean UX Canvas</a>
-  <span class="sep">·</span>
-  <a href="#strategy">Strategy</a>
-  <span class="sep">·</span>
-  <a href="#aarrr">AARRR</a>
-  <span class="sep">·</span>
-  <a href="#competitors">Competitors</a>
-  <span class="sep">·</span>
-  <a href="#benchmark">Benchmark</a>
-  <span class="sep">·</span>
-  <a href="#patterns">Patterns</a>
-  <span class="sep">·</span>
-  <a href="#conclusions">Conclusions</a>
-</nav>
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a class="sidebar-page-link active">Research</a>
+    <div class="sidebar-sub">
+      <a href="#intro" class="sidebar-sub-link">Introduction</a>
+      <a href="#lean-ux-canvas" class="sidebar-sub-link">Lean UX Canvas</a>
+      <a href="#strategy" class="sidebar-sub-link">Strategy</a>
+      <a href="#aarrr" class="sidebar-sub-link">AARRR</a>
+      <a href="#competitors" class="sidebar-sub-link">Competitors</a>
+      <a href="#benchmark" class="sidebar-sub-link">Benchmark</a>
+      <a href="#patterns" class="sidebar-sub-link">UX Patterns</a>
+      <a href="#conclusions" class="sidebar-sub-link">Conclusions</a>
+    </div>
+    <div class="sidebar-divider">Plan</div>
+    <a class="sidebar-page-link planned">Wireframes</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
 
 <main>
 
@@ -1547,5 +1665,37 @@
 
 </main>
 
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const toggle = document.getElementById('menuToggle');
+
+  const openSidebar = () => { sidebar.classList.add('open'); overlay.classList.add('open'); };
+  const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+
+  toggle.addEventListener('click', openSidebar);
+  overlay.addEventListener('click', closeSidebar);
+
+  document.querySelectorAll('.sidebar-sub-link').forEach(l => {
+    l.addEventListener('click', () => { if (window.innerWidth < 860) closeSidebar(); });
+  });
+
+  const subLinks = document.querySelectorAll('.sidebar-sub-link');
+  const sectionIds = [...subLinks].map(l => l.getAttribute('href').slice(1));
+  const sections = sectionIds.map(id => document.getElementById(id));
+
+  const setActive = id => {
+    subLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+
+  sections.forEach(s => s && observer.observe(s));
+  if (sections[0]) setActive(sections[0].id);
+</script>
 </body>
 </html>
