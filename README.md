@@ -46,13 +46,13 @@ Single-page summary of all research phases. Open the link above in any browser -
 ---
 
 ## Key Docs
-- [CLAUDE.md](./CLAUDE.md) — full project brief, principles, scope
-- [research/master-research.md](./research/master-research.md) — **Master synthesis**: all research phases in one document
-- [research/strategy.md](./research/strategy.md) — **Strategy**: objectives, audience segments, business model, riskiest assumption (replaces product-model.md)
-- [research/personas.md](./research/personas.md) — **Personas**: Alex (primary), Dan, Maria, Loss-Prone overlay — with confidence levels and post-research updates
-- [research/jtbd.md](./research/jtbd.md) — **JTBD**: full job hierarchy (MJ → FJ/EJ/SJ/HJ), importance matrix, MVP conclusions
-- [research/aarrr.md](./research/aarrr.md) — AARRR framework: acquisition, activation, retention, revenue, referral
-- [research/competitive-analysis.md](./research/competitive-analysis.md) — Full competitor comparison: HARD / SOFT / ASPIRATIONAL groups, matrix, patterns, differences, open questions
-- [research/benchmark-trust.md](./research/benchmark-trust.md) — Trust benchmark: 5 products × 8 criteria, top mechanisms for MVP
-- [research/ux-patterns.md](./research/ux-patterns.md) — UX patterns: 5 approaches, behavioral analysis, pattern selection for MVP
-- [research/product-model.md](./research/product-model.md) — Prior product model (history, preserved)
+- [CLAUDE.md](./CLAUDE.md) - full project brief, principles, scope
+- [research/master-research.md](./research/master-research.md) - **Master synthesis**: all research phases in one document
+- [research/strategy.md](./research/strategy.md) - **Strategy**: objectives, audience segments, business model, riskiest assumption (replaces product-model.md)
+- [research/personas.md](./research/personas.md) - **Personas**: Alex (primary), Dan, Maria, Loss-Prone overlay - with confidence levels and post-research updates
+- [research/jtbd.md](./research/jtbd.md) - **JTBD**: full job hierarchy (MJ → FJ/EJ/SJ/HJ), importance matrix, MVP conclusions
+- [research/aarrr.md](./research/aarrr.md) - AARRR framework: acquisition, activation, retention, revenue, referral
+- [research/competitive-analysis.md](./research/competitive-analysis.md) - Full competitor comparison: HARD / SOFT / ASPIRATIONAL groups, matrix, patterns, differences, open questions
+- [research/benchmark-trust.md](./research/benchmark-trust.md) - Trust benchmark: 5 products × 8 criteria, top mechanisms for MVP
+- [research/ux-patterns.md](./research/ux-patterns.md) - UX patterns: 5 approaches, behavioral analysis, pattern selection for MVP
+- [research/product-model.md](./research/product-model.md) - Prior product model (history, preserved)

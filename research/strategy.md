@@ -86,20 +86,20 @@ Users bring capital and knowledge. The platform provides the event markets, reso
 - User loses: platform does not take a fee on the losing side (option B - fee on win only) OR platform takes fee on every trade regardless of outcome (option A - fee per trade, industry standard as of 2026)
 - Platform earns on volume, not on house edge - there is no house position
 
-### Fee Model — DECIDED: Option A (tiered taker fee per trade)
+### Fee Model - DECIDED: Option A (tiered taker fee per trade)
 
 | Option | When taken | Psychology | Industry examples |
 |---|---|---|---|
 | **A: tiered taker fee per trade** ← **CHOSEN** | On every buy/sell, rate by category | Feels like a cost to participate, but variable rates allow "free" entry in low-risk categories | Polymarket Fee V2 (March 30, 2026): 0% geopolitics to 1.80% crypto at 50/50 midpoint. DraftKings: $0.01/contract. Kalshi: 0.07 x p x (1-p), max ~1.75% at 50c. |
 | ~~B: fee on win~~ | On winning payout only | "Pay only when you earned" - softer psychologically | No direct competitor uses this in 2026 |
 
-**Decision rationale:** Option A is the 2026 industry standard and earns on all volume — including the 70–84% of users who lose. Option B only earns from the 16–30% who win, which would severely limit early revenue. Industry evidence (Polymarket crossing $1M/day revenue post Fee V2) confirms taker fee per trade is viable and accepted.
+**Decision rationale:** Option A is the 2026 industry standard and earns on all volume - including the 70–84% of users who lose. Option B only earns from the 16–30% who win, which would severely limit early revenue. Industry evidence (Polymarket crossing $1M/day revenue post Fee V2) confirms taker fee per trade is viable and accepted.
 
 **Implementation for MVP:**
-- Politics / geopolitics: 0% (free category — acquisition lever, Polymarket model)
+- Politics / geopolitics: 0% (free category - acquisition lever, Polymarket model)
 - Crypto / culture / general: ~1% taker fee at 50/50 midpoint
 - Maker rebates: 20–25% of collected fees to incentivize liquidity (standard Polymarket/Kalshi model)
-- Kalshi's formula reference: `0.07 × p × (1-p)` — fees highest near 50/50, lowest near resolved. Consider for v2.
+- Kalshi's formula reference: `0.07 × p × (1-p)` - fees highest near 50/50, lowest near resolved. Consider for v2.
 
 *Decision made: June 13, 2026. Source: master-research.md §10 · Polymarket Fee V2 docs · Kalshi fee structure*
 
@@ -116,10 +116,10 @@ No subscription. No account tiers at MVP. Fee only applies to resolved bets (Opt
 
 **Potential hook:** free markets in one category (geopolitics or politics) as an acquisition lever - Polymarket's geopolitics-free category model is referenced. This gives a "no fee" entry message while monetizing higher-frequency users. Consider from launch.
 
-### Bet Size — DECIDED
+### Bet Size - DECIDED
 
 - Technical minimum: **$1 USDC**
-- UX default pre-fill: **$5** (users tap the default on first bet — this anchors first engagement)
+- UX default pre-fill: **$5** (users tap the default on first bet - this anchors first engagement)
 - Quick-select buttons: **$5 / $10 / $25 / $50**
 - No maximum at launch
 
@@ -185,17 +185,17 @@ The Riskiest Assumption is the underlying condition for H1 (fiat on-ramp increas
 
 ---
 
-## 5. Product Decisions — June 2026
+## 5. Product Decisions - June 2026
 
 Four open questions closed as explicit decisions. Not hypotheses.
 
 ---
 
-### D1 — Market Mechanism: AMM
+### D1 - Market Mechanism: AMM
 
 **Decision: AMM (automated market maker), not CLOB.**
 
-AMM guarantees instant liquidity at any bet size from day 1 — no orderbook, no waiting for a counterparty. A $1 bet fills the same as a $1,000 bet. CLOB requires deep liquidity to function; a thin orderbook on a cold-start platform creates the worst possible first impression (bet placed, not filled).
+AMM guarantees instant liquidity at any bet size from day 1 - no orderbook, no waiting for a counterparty. A $1 bet fills the same as a $1,000 bet. CLOB requires deep liquidity to function; a thin orderbook on a cold-start platform creates the worst possible first impression (bet placed, not filled).
 
 Implication for smart contract architecture: use an LMSR-style or constant-product AMM pool per market. Reference: Azuro vAMM (documented in master-research.md), Futuur.
 
@@ -203,11 +203,11 @@ Implication for smart contract architecture: use an LMSR-style or constant-produ
 
 ---
 
-### D2 — Resolution Mechanism: Team Multisig → Oracle
+### D2 - Resolution Mechanism: Team Multisig → Oracle
 
 **Decision: Team multisig for MVP. On-chain oracle (Chainlink / Pyth + API) as the explicit target architecture.**
 
-**MVP:** team resolves markets manually using a multisig wallet. Every resolution is publicly documented with the source (AP, Reuters, official API). Resolution criteria written into each market before it opens — no ambiguity post-event.
+**MVP:** team resolves markets manually using a multisig wallet. Every resolution is publicly documented with the source (AP, Reuters, official API). Resolution criteria written into each market before it opens - no ambiguity post-event.
 
 Why this is acceptable for MVP: with 10–20 curated markets, manual resolution is manageable and honest. Full transparency (criteria + source + team signature) is more trust-building than opaque oracle systems for a new platform.
 
@@ -219,22 +219,22 @@ Why this is acceptable for MVP: with 10–20 curated markets, manual resolution 
 
 ---
 
-### D3 — Geography: English-first Global + Brazil as First Localized Market
+### D3 - Geography: English-first Global + Brazil as First Localized Market
 
 **Decision: Launch in English globally. Localize for Brazil (PT-BR) as the first regional push.**
 
-**Phase 1 — MVP (English-first global):**
+**Phase 1 - MVP (English-first global):**
 All copy, markets, and UI in English. Accessible to all non-blocked geographies (non-US, non-MiCA: no FR/DE/NL/PL/BE). No regional restrictions beyond what the licence requires. Fiat on-ramp via Transak covers 169 countries from day 1.
 
-**Phase 2 — Brazil localization (month 2–3 post-launch):**
+**Phase 2 - Brazil localization (month 2–3 post-launch):**
 PT-BR localization + PIX payment rail (via Transak). Brazil is the highest-confidence first regional market: #5 global crypto adoption, $318.8B crypto received in 2025 (+250% YoY), top-5 Kalshi demand market, and PIX makes instant deposit feel like a local bank transfer.
 
 **Priority market stack (for acquisition sequencing, not for product gates):**
-1. Brazil — first localization
-2. UAE — VARA regulation, 241% crypto app growth
-3. Philippines — gambling-permissive, English-speaking
-4. Mexico — PIX-equivalent via SPEI, remittance crypto adoption
-5. Turkey — large retail crypto base
+1. Brazil - first localization
+2. UAE - VARA regulation, 241% crypto app growth
+3. Philippines - gambling-permissive, English-speaking
+4. Mexico - PIX-equivalent via SPEI, remittance crypto adoption
+5. Turkey - large retail crypto base
 
 Avoid Indonesia and Vietnam at launch (active enforcement actions as of April 2026).
 
