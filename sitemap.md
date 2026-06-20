@@ -222,8 +222,10 @@ Event Detail                                 (FJ2 · MJ)     ⭐ PRIMARY + 🥈 
 ```
 
 **Event Feed** — cards of active markets, sorted by recency / trending. For the first visit: story-driven format (context visible on card, not just %). For return visits: denser feed. No sign-in required to browse.
+States: loading (initial data fetch) - empty (no events match current filter or category) - error (network fail, API unreachable).
 
 **Event Detail** — one event, full view: probability, chart, narrative context (why this price), resolution conditions, source. CTA: YES / NO. This screen is our primary differentiator — no competitor has context at this depth (FJ2 confirmed gap).
+States: loading (event data fetching) - error (load failure, T2 in MJ flow / T10 in FJ2 flow - user exits).
 
 ---
 
@@ -240,8 +242,10 @@ Deposit                                      (FJ3 · FJ4 · EJ2)   ⭐ PRIMARY
 ```
 
 **Sign In / Register** — social login (Google, X) for the News Junkie path. Crypto Native connects an existing USDC wallet here instead of using fiat. One screen, two branches. Triggered only at gate, never before the user has built bet intent.
+States: in-progress (OAuth redirect pending, wallet connect prompt open) - error (auth failed - T4, wallet connect failed - T7).
 
 **Deposit** — fiat card to USDC via Transak (primary), MoonPay (fallback). KYC runs inside the Transak widget - the user completes identity verification there, not on this platform. Risk block displayed inline before the user submits: "Your USDC is held 1:1 - we do not lend or invest deposited funds." Fee shown before submit. Also reachable standalone from Wallet for top-ups.
+States: in-progress (Transak widget loading, KYC pending inside widget) - error-card (card declined - T5) - error-KYC (KYC rejected - T6).
 
 ---
 
@@ -255,6 +259,7 @@ Bet Screen                                   (MJ · FJ3)     ⭐ PRIMARY + 🥈 
 ```
 
 **Bet Screen** — direction (YES/NO, pre-set from tap on Event Detail), amount input with default $5 pre-fill, quick-select ($5/$10/$25/$50), fee displayed before confirm ("platform earns $X if you win"), potential payout shown. Confirm button triggers the activation gate for logged-out users. Single screen: intent and confirmation in one place.
+States: intent (logged out - user builds the bet, no auth yet) - S5-reconcile (price moved during gate: shows old price vs new price, user must re-confirm) - error (bet registration failed on-chain - T9).
 
 ---
 
@@ -268,8 +273,10 @@ Loss Screen                                  (FJ5 · EJ3)    ⭐ PRIMARY + 🥈 
 ```
 
 **Win Screen** — "You were right." Amount won, resolution summary (what happened and why), Share Card auto-generated. CTA: Share · See next events. Design rationale: no confetti loop, no persistent celebration animation. Research finding F5 (master-research.md): first WIN is the trigger for overconfidence and escalation, not loss. The win screen must celebrate the outcome without feeding the loop. Celebratory but measured - one moment, then move on.
+States: loading (Share Card generation in progress) - error (Share Card not generated, SJ1 blocked - T14 in flows).
 
 **Loss Screen** — "Here's what happened." Plain-language resolution note (what resolved and why), amount lost, one clear next step (not "bet again" promo). This screen is undesigned by every competitor — it is our primary retention intervention against loss-chasing (FJ5 + EJ3 confirmed gap).
+States: loading (resolution note fetching).
 
 ---
 
@@ -283,6 +290,7 @@ Bet History                                  (SJ2 · EJ1)                   ⭐ 
 ```
 
 **Active Bets** — list of open positions: event name, direction, current market value vs entry, deadline. Drives hot-return behavior (check odds, aarrr.md retention D1–D3).
+States: loading (fetching positions) - empty (no active bets - new user or all bets resolved).
 
 **Bet History** — all resolved bets: won/lost, payout, event outcome. Feeds the public profile track record (SJ2). Could be the same screen as Active Bets with a tab — depth decision deferred to step 3.
 
@@ -297,8 +305,9 @@ Notifications                                (FJ1 · FJ5)    ⭐ PRIMARY + 🥈 
 ```
 
 **Notifications** — list of unread and recent alerts: odds moved significantly · event deadline approaching · position resolved · new event in followed category. Tapping any item navigates to the relevant screen (Event Detail or Active Bets). Notification types map directly to the hot/warm return signals in aarrr.md retention model (D1–D3).
+States: loading (fetching list) - empty (no notifications yet - new user or no events followed).
 
-Note: Settings / Notification Preferences remains `[SIROTA]` — configuring which notifications you receive is not a confirmed job. The list screen (above) is sufficient for MVP.
+Note: Settings / Notification Preferences remains `[SIROTA]` — configuring which notifications you receive is not a confirmed job. The list screen (above) is sufficient for MVP. [?] S11 open question: does the user need per-event mute controls, or is category-level preference sufficient? Cannot be derived from current research - defer to user testing.
 
 ---
 
