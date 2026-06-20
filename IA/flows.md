@@ -1,7 +1,7 @@
 # User Flows - Prediction Market Platform
 
-> Built from: sitemap.md - jtbd.md
-> `[Square brackets]` = screens from sitemap.md. `{Diamonds}` = decisions. `([Stadiums])` = terminal states.
+> Built from: IA/sitemap.md - jtbd.md
+> `[Square brackets]` = screens from IA/sitemap.md. `{Diamonds}` = decisions. `([Stadiums])` = terminal states.
 > Success terminals: T14/mjDone, fj2Done, fj5Done, sj1Done. Error/churn terminals T1-T3, T5-T12, T13a, T13b, T15-T16 each have at least one recovery edge. T4 retired as terminal (replaced by escalation-path edge in FJ5).
 
 ---
