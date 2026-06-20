@@ -201,58 +201,70 @@
   <h2>Level 0 and Level 1 screens</h2>
   <p>13 standalone screens total. Level 0 = bottom nav destinations. Level 1 = one tap from Level 0. Flow/invoked screens are reached only inside a flow.</p>
 
-  <p style="font-size:12px;color:var(--muted);margin-bottom:8px">Navigation hierarchy: Level 0 bottom-nav slots branch to Level 1 screens. Header, invoked, and deferred screens shown as distinct muted clusters.</p>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:16px">Navigation hierarchy: Level 0 bottom-nav slots branch to Level 1 screens. Header, invoked, and deferred screens follow below as distinct muted groups.</p>
+
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:8px">Bottom Navigation</div>
   <div class="mermaid-wrap">
     <div class="mermaid">
 graph TD
   classDef l0 fill:#1e2a0e,stroke:#c8ff00,color:#e8e8e8,font-weight:bold
   classDef l1 fill:#152008,stroke:#4a6010,color:#c8c8c8
+
+  APP(("App"))
+  EV["Events"]:::l0
+  MB["My Bets"]:::l0
+  NO["Notifications"]:::l0
+  PR["Profile"]:::l0
+  EF["Event Feed (FJ1)"]:::l1
+  ED["Event Detail (FJ2, MJ)"]:::l1
+  AB["Active Bets (EJ1)"]:::l1
+  BH["Bet History tab (EJ1)"]:::l1
+  NT["Notifications list (FJ1, FJ5, EJ3)"]:::l1
+  MP["My Profile (SJ1, SJ2)"]:::l1
+
+  APP --> EV
+  APP --> MB
+  APP --> NO
+  APP --> PR
+  EV --> EF
+  EF --> ED
+  MB --> AB
+  AB --> BH
+  NO --> NT
+  PR --> MP
+    </div>
+  </div>
+
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#556688;margin:24px 0 8px">Header / Second-level</div>
+  <div class="mermaid-wrap" style="opacity:.72">
+    <div class="mermaid">
+graph LR
   classDef hdr fill:#181a2a,stroke:#334466,color:#9999cc
+  WA["Wallet (FJ3, FJ4)"]:::hdr
+  HIW["How It Works (FJ4, EJ2)"]:::hdr
+    </div>
+  </div>
+
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#664433;margin:24px 0 8px">Invoked by action - not navigation</div>
+  <div class="mermaid-wrap" style="opacity:.62">
+    <div class="mermaid">
+graph LR
   classDef inv fill:#1a1212,stroke:#443322,stroke-dasharray:5 3,color:#997766
-  classDef def fill:#111111,stroke:#222222,stroke-dasharray:6 3,color:#555555
+  BS["Bet Screen (MJ)"]:::inv
+  WS["Win Screen (SJ1)"]:::inv
+  LS["Loss Screen (FJ5, EJ3)"]:::inv
+  SI["Sign In / Register (MJ)"]:::inv
+  DEP["Deposit (MJ)"]:::inv
+    </div>
+  </div>
 
-  subgraph primary["Bottom Navigation"]
-    APP(("App"))
-    EV["Events"]:::l0
-    MB["My Bets"]:::l0
-    NO["Notifications"]:::l0
-    PR["Profile"]:::l0
-    EF["Event Feed (FJ1)"]:::l1
-    ED["Event Detail (FJ2, MJ)"]:::l1
-    AB["Active Bets (EJ1)"]:::l1
-    BH["Bet History tab (EJ1)"]:::l1
-    NT["Notifications list (FJ1, FJ5, EJ3)"]:::l1
-    MP["My Profile (SJ1, SJ2)"]:::l1
-
-    APP --> EV
-    APP --> MB
-    APP --> NO
-    APP --> PR
-    EV --> EF
-    EF --> ED
-    MB --> AB
-    AB --> BH
-    NO --> NT
-    PR --> MP
-  end
-
-  subgraph header["Header / Second-level"]
-    WA["Wallet (FJ3, FJ4)"]:::hdr
-    HIW["How It Works (FJ4, EJ2)"]:::hdr
-  end
-
-  subgraph flow["Invoked by action - not navigation"]
-    BS["Bet Screen (MJ)"]:::inv
-    WS["Win Screen (SJ1)"]:::inv
-    LS["Loss Screen (FJ5, EJ3)"]:::inv
-    SI["Sign In / Register (MJ)"]:::inv
-    DEP["Deposit (FJ4, MJ)"]:::inv
-  end
-
-  subgraph deferred["Deferred / post-MVP"]
-    PP["Public Profile (G3, external link only)"]:::def
-    SRCH["Search (deferred until catalog scale)"]:::def
-  end
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#444;margin:24px 0 8px">Deferred / post-MVP</div>
+  <div class="mermaid-wrap" style="opacity:.45">
+    <div class="mermaid">
+graph LR
+  classDef def fill:#111111,stroke:#2a2a2a,stroke-dasharray:6 3,color:#555555
+  PP["Public Profile (G3, external link only)"]:::def
+  SRCH["Search (deferred until catalog scale)"]:::def
     </div>
   </div>
 
