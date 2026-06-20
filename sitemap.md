@@ -286,13 +286,13 @@ User returns to check how their positions are moving (position monitoring behavi
 
 ```
 Active Bets                                  (EJ1 - position monitoring)   ⭐ PRIMARY + 🥈 SECONDARY
-Bet History                                  (SJ2 · EJ1)                   ⭐ PRIMARY + 🥈 SECONDARY
+Bet History                                  (EJ1)                          ⭐ PRIMARY + 🥈 SECONDARY
 ```
 
 **Active Bets** - list of open positions: event name, direction, current market value vs entry, deadline. Drives hot-return behavior (check odds, aarrr.md retention D1–D3).
 States: loading (fetching positions) - empty (no active bets - new user or all bets resolved).
 
-**Bet History** - all resolved bets: won/lost, payout, event outcome. Feeds the public profile track record (SJ2). Could be the same screen as Active Bets with a tab - depth decision deferred to step 3.
+**Bet History** - private view of one's own resolved bets: won/lost, payout, event outcome. The public track record lives on My Profile and Public Profile, not here. Could be the same screen as Active Bets with a tab - depth decision deferred to navigation pass.
 
 ---
 
