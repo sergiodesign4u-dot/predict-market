@@ -307,7 +307,7 @@ Notifications                                (FJ1 · FJ5)    ⭐ PRIMARY + 🥈 
 **Notifications** - list of unread and recent alerts: odds moved significantly · event deadline approaching · position resolved · new event in followed category. Tapping any item navigates to the relevant screen (Event Detail or Active Bets). Notification types map directly to the hot/warm return signals in aarrr.md retention model (D1–D3).
 States: loading (fetching list) - empty (no notifications yet - new user or no events followed).
 
-Note: Settings / Notification Preferences remains `[SIROTA]` - configuring which notifications you receive is not a confirmed job. The list screen (above) is sufficient for MVP. [?] S11 open question: does the user need per-event mute controls, or is category-level preference sufficient? Cannot be derived from current research - defer to user testing.
+Note: Settings / Notification Preferences remains `[SIROTA]` - configuring which notifications you receive is not a confirmed job. The list screen (above) is sufficient for MVP. [?] Q-notif-prefs open question: does the user need per-event mute controls, or is category-level preference sufficient? Cannot be derived from current research - defer to user testing.
 
 ---
 
@@ -469,8 +469,8 @@ Items that cannot be decided without knowing screen depth, tab structure, and na
 
 | Code | Item | Why deferred |
 |---|---|---|
-| **G1 nav** | Deep-link back-navigation | flows.md handles the entry path (triggerLink -> Event Detail). Navigation design must decide: what tab is active after deep-link arrival, what does "back" do (close app vs go to feed), how in-app notifications that resolve to a deep link behave. |
-| **G3** | How It Works depth and entry points | Screen exists and jobs are confirmed (FJ4 + EJ2). Navigation design must decide: dedicated tab, modal overlay, or nested page under Deposit. Current: reachable from Deposit ("learn more") and main nav - depth TBD. |
-| **G4** | Bet History vs Active Bets - merge or keep | Bet History covers EJ1 only (1 job, lowest coverage). Navigation design must decide: tab inside Active Bets screen (reduces screen count to 13), or keep as standalone screen. Verify coverage survives the merge. |
-| **G5** | Notifications placement and badge trigger | Notifications screen confirmed (FJ1 + FJ5). Navigation design must decide: where in nav structure (tab, header icon, drawer item), what triggers the unread badge, whether in-app alert vs OS push are surfaced identically. |
-| **S11** | Notification preference granularity | [?] open question: does the user need per-event mute controls, or is category-level preference sufficient? Cannot be derived from current research. Decide in navigation pass after user testing signal or explicit product decision. |
+| **G1 nav** | Notification routing nav pattern | The core resolution deep-link is built as a flow edge in FJ5 (resolution notification -> Loss Screen directly). Navigation design must decide: what tab is active after notification arrival, in-app vs OS alert surfacing, and back-navigation behavior after a notification-triggered deep link. |
+| **G3** | In-app path to Public Profile | For MVP, entry to Public Profile is via an external shared-card link. In-app discovery (leaderboard, search) is deferred. Navigation design must decide: whether any in-app surface links to another user's profile, and if so, from where. |
+| **G4** | Wallet and Deposit first-level navigation placement | Returning users need to top up without entering the full bet flow. Navigation design must decide: depth of Wallet and Deposit in the nav hierarchy, and whether re-deposit is one tap from the home surface. |
+| **G5** | Bet History placement and Active Bets / Bet History merge | Bet History covers EJ1 only (1 job, lowest coverage). Navigation design must decide: tab inside Active Bets screen (reduces screen count to 13), or standalone screen. Verify EJ1 coverage survives the merge. |
+| **S11** | Aggregation of simultaneous resolutions | [?] open question: when multiple bets resolve at the same time, does the user see a single Resolution Summary screen or a sequence of separate Win/Loss screens? Cannot be derived from current research. Decide in navigation pass. |
