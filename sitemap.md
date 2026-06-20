@@ -1,6 +1,6 @@
 # Sitemap - Prediction Market Platform
 
-> Status: pre-wireframe refinement complete. Navigation structure and screen depth TBD (navigation design pass).
+> Status: navigation design complete. Ready for wireframes.
 > Built from: personas.md · jtbd.md · master-research.md
 
 ---
@@ -292,7 +292,7 @@ Bet History                                  (EJ1)                          ⭐ 
 **Active Bets** - list of open positions: event name, direction, current market value vs entry, deadline. Drives hot-return behavior (check odds, aarrr.md retention D1–D3).
 States: loading (fetching positions) - empty (no active bets - new user or all bets resolved).
 
-**Bet History** - private view of one's own resolved bets: won/lost, payout, event outcome. The public track record lives on My Profile and Public Profile, not here. Could be the same screen as Active Bets with a tab - depth decision deferred to navigation pass.
+**Bet History** - private view of one's own resolved bets: won/lost, payout, event outcome. The public track record lives on My Profile and Public Profile, not here. G5 resolved: Bet History is now the History tab inside My Bets (Active Bets screen), not a standalone screen.
 
 ---
 
@@ -368,7 +368,108 @@ Help / FAQ                                  [SIROTA]        - EJ2 is served by D
 
 ---
 
-*Next: navigation structure and depth (step 3) - pending tracing review.*
+---
+
+## Navigation
+
+### User-model rationale
+
+Navigation is derived from the user's job sequence, not from a competitor tab bar. The primary path is: **follow an event** (find what is happening in the world) → **place a stake** (confirm your opinion with real money) → **watch the position move** (return to track odds) → **return for the resolution** (see what happened and how you did) → **build reputation** (show you were right). Each bottom-nav slot maps directly to one phase of this loop. Service-layer concerns - money, history, other users, help - are not part of the active loop and live at the second level or are invoked in context, never given a scarce top-level slot.
+
+### Bottom navigation - 4 slots
+
+**Alternative considered and set aside:** a 3-slot version placing Notifications as a header bell icon, saving one bottom slot. Set aside because the unread badge is a retention anchor - it must be permanently visible in the thumb zone to drive hot/warm return (FJ1, FJ5, EJ3 depend on it; aarrr.md D1-D3). A header bell is easy to miss on mobile. The badge in the bottom bar earns its slot.
+
+| Slot | Label | Opens | Jobs served | Why it earns a top-level slot |
+|---|---|---|---|---|
+| 1 | **Events** | Event Feed | FJ1, FJ2, MJ | The entry point. Users open the app because something happened in the world. Every session starts here. |
+| 2 | **My Bets** | Active Bets (two tabs: Active / History) | EJ1, MJ, FJ5, EJ3 | The position monitor. Users return specifically to track odds movement and see resolved bets. History tab implements G5: Bet History becomes a tab inside Active Bets, not a standalone screen. EJ1 coverage is preserved. |
+| 3 | **Notifications** | Notifications list | FJ1, FJ5, EJ3 | The return trigger. Badge drives hot/warm return (aarrr.md D1-D3). Without a permanent bottom slot with unread count, FJ1/FJ5/EJ3 depend on OS alerts only with no in-app recovery path for missed alerts. |
+| 4 | **Profile** | My Profile | SJ1, SJ2 | Reputation is a first-class product value for the News Junkie: "I was right, publicly" is why they share. Not an account settings screen - earns a slot as the identity surface. |
+
+### Header and second-level
+
+| Entry | Where | Why NOT a bottom slot |
+|---|---|---|
+| **Wallet / Deposit** | Header icon (wallet icon), also accessible via Profile | Money is not why users open the app. Re-deposit for returning users is solved in context: Bet Screen insufficient-balance state invokes Deposit directly (1 step, no multi-tap trip to a Wallet tab). A Wallet bottom slot would signal "trading terminal"; this platform is event-first. (G4 decision) |
+| **How It Works** | Header info icon accessible from Events; also linked from Deposit | Pre-bet trust signal for new users, reachable before deposit and before sign-in. Not a recurring destination - a one-time reassurance step inside FJ4/EJ2. A bottom slot would waste a scarce position on a screen most users visit once. |
+| **My Profile (avatar)** | Header avatar shortcut in addition to Profile tab | Quick identity access without leaving the Events context. Does not replace the Profile bottom slot - the slot is the primary destination for SJ1/SJ2. |
+
+### Not navigation destinations
+
+These screens are reached only inside a flow, triggered by a user action. They are never a bottom-nav slot and cannot be reached by tapping the nav bar:
+
+- **Bet Screen** - invoked when user taps YES or NO on Event Detail.
+- **Win Screen** - invoked when a bet resolves with a win (via notification or resolved item in Active Bets).
+- **Loss Screen** - invoked when a bet resolves with a loss (G1 direct: 1 tap from resolution notification; or via resolved item in Active Bets).
+- **Sign In / Register** - invoked at the activation gate (Confirm tap on Bet Screen), never before the user has bet intent.
+- **Deposit** - invoked at the activation gate (News Junkie path post-auth) and from Wallet (standalone top-up).
+
+### Deferred
+
+| Item | Status | Reason |
+|---|---|---|
+| **Public Profile** | Deferred to post-MVP (G3) | Reachable only via external shared-card link for MVP. No in-app discovery at 10-20 curated markets: users do not browse others' track records unprompted. In-app path added when leaderboard or social discovery is confirmed. |
+| **Search** | Deferred until catalog scale | At 10-20 curated markets, users scan the Event Feed; they do not search. Search does not close a confirmed job at this scale. When added, it attaches to the Events tab under FJ1 - not a bottom slot. |
+| **Leaderboard** | [SIROTA] | No confirmed job. SJ2 is served by My Profile and Public Profile. Leaderboard is a view over profiles, not a job-closing destination. |
+
+---
+
+## Depth Map
+
+Navigation depth for each screen in the inventory. Used to verify the 3-tap rule for the primary persona (Alex, News Junkie).
+
+### Hierarchy
+
+```
+Level 0 - bottom nav destinations (1 tap from anywhere in the app)
+  Events
+    Event Feed
+  My Bets
+    Active Bets (Active tab - default view)
+    Bet History (History tab inside My Bets - G5 merge)
+  Notifications
+    Notifications list
+  Profile
+    My Profile
+
+Level 1 - one tap below a Level 0 screen
+  under Events:
+    Event Detail (tap any event card on Event Feed)
+  under Profile (via header - available at Level 0):
+    Wallet (tap header wallet icon)
+    How It Works (tap header info icon, also linked from Deposit)
+
+Flow / invoked - reached only inside a flow, not via nav bar
+  Bet Screen        invoked: tap YES or NO on Event Detail
+  Win Screen        invoked: bet resolves as win (notification tap or Active Bets resolved item)
+  Loss Screen       invoked: bet resolves as loss (G1: notification tap direct; or Active Bets resolved item)
+  Sign In / Register   invoked: activation gate (Confirm tap on Bet Screen)
+  Deposit           invoked: activation gate (News Junkie path) or Wallet top-up button
+  Public Profile    invoked: external shared-card link only (no in-app nav at MVP)
+```
+
+### Depth check - primary persona (Alex, News Junkie)
+
+**MJ main job: Event Feed → Event Detail → Bet Screen**
+- Events tab (Level 0) → tap event card → Event Detail (1 tap) → tap YES or NO → Bet Screen (2 taps) → Confirm (3 taps, activation gate fires here).
+- Result: 2 taps to reach Bet Screen, 3 taps to trigger the gate. Within the 3-tap rule. Confirmed.
+
+**G1 retention path: resolution notification → Loss Screen**
+- Tap resolution notification (OS banner or Notifications list item) → Loss Screen directly (1 tap).
+- Matches the G1 edge in flows.md FJ5: `triggerNotif -->|"G1: direct to Loss Screen"| LS`.
+- The manual fallback path (My Bets → tap resolved item → Loss Screen) is 2 taps. G1 cuts this to 1 tap so the resolution note reaches the user before the impulse to chase.
+- Result: 1 tap from notification. Confirmed.
+
+**Returning-user re-deposit**
+- Bet Screen insufficient-balance state shows inline: "you have $X, can bet up to $X or deposit more" with a direct CTA to Deposit.
+- Result: invoked in context from Bet Screen, 1 step. Not a multi-tap trip to Wallet. Confirmed.
+
+### Depth risks
+
+No depth risks for the primary persona's confirmed jobs at this navigation structure. All primary-persona paths reach their destination in 3 taps or fewer, with contextual shortcuts where the job depends on speed (G1, re-deposit).
+
+Flag for wireframes: the manual path to Loss Screen via My Bets depends on the user noticing the resolved item in Active Bets. Consider a resolved-bets badge or a "recently resolved" section above the fold in Active Bets so the item is not missed below active positions.
 
 ---
 
@@ -452,27 +553,34 @@ Minimally covered jobs (2 screens) - not orphans, but worth attention:
 
 ### Tracing conclusion
 
-**No confirmed orphans.** Matrix is closed: all 14 screens have a job (Onboarding removed), all 11 jobs have a screen. BH x SJ2 corrected - Bet History now carries EJ1 only (1 job, lowest coverage, merge candidate in navigation pass).
+**No confirmed orphans.** Matrix is closed: all 14 matrix columns have a job (Onboarding removed), all 11 jobs have a screen. BH x SJ2 corrected - Bet History now carries EJ1 only (1 job, lowest coverage). G5 resolved: Bet History is now a History tab inside My Bets, not a standalone screen. Standalone screen count is 13 (matrix columns unchanged at 14 - BH column preserved, now represents the History tab).
 
 One systemic gap was found and closed during tracing: FJ1 / FJ5 / EJ3 depended on the Notification entity with no screen of its own. Notifications (NT) added to sitemap and matrix - gap resolved.
 
-**Remaining decisions for navigation design pass:**
+**Navigation design decisions (resolved in navigation pass):**
 
-| Action | What to do |
+| Code | Decision |
 |---|---|
-| **Merge or keep** | Bet History + Active Bets - verify a tab in one screen covers EJ1 only (SJ2 removed from BH) |
-| **Backlog** | Settings / Notification Preferences - remains `[SIROTA]` until a job is confirmed |
+| **G1 nav** | Deep-link routing: notification tap opens target (Loss Screen, Event Detail) modally over the current tab. Back returns to prior context. 1 tap from OS banner or Notifications list item to Loss Screen (G1 direct path). |
+| **G3** | Public Profile reachable only via external shared-card link for MVP. No in-app discovery. Added when leaderboard or social features are confirmed. |
+| **G4** | Wallet and Deposit live in the header (wallet icon), not a bottom-nav slot. Re-deposit is invoked from Bet Screen insufficient-balance state - 1 step in context. |
+| **G5** | Bet History merged as History tab inside My Bets. EJ1 coverage preserved (private resolved bets view). Standalone screen count drops from 14 to 13; matrix column BH retained. |
+| **S11** | Simultaneous resolutions: show a sequence of separate Win/Loss screens, swipeable. No aggregated Resolution Summary screen at MVP. Wireframe-spec detail, not a navigation slot. |
+
+**Backlog (open):**
+- Settings / Notification Preferences - remains `[SIROTA]` until a job is confirmed.
+- Search - deferred until catalog scale (see Navigation - Deferred section).
 
 ---
 
-## Deferred to Navigation Design Pass
+## Navigation Design Pass - Resolved
 
-Items that cannot be decided without knowing screen depth, tab structure, and navigation hierarchy. Do not design these in isolation.
+All items deferred to the navigation pass are now resolved. See Navigation section and Depth Map above for full rationale.
 
-| Code | Item | Why deferred |
+| Code | Item | Decision |
 |---|---|---|
-| **G1 nav** | Notification routing nav pattern | The core resolution deep-link is built as a flow edge in FJ5 (resolution notification -> Loss Screen directly). Navigation design must decide: what tab is active after notification arrival, in-app vs OS alert surfacing, and back-navigation behavior after a notification-triggered deep link. |
-| **G3** | In-app path to Public Profile | For MVP, entry to Public Profile is via an external shared-card link. In-app discovery (leaderboard, search) is deferred. Navigation design must decide: whether any in-app surface links to another user's profile, and if so, from where. |
-| **G4** | Wallet and Deposit first-level navigation placement | Returning users need to top up without entering the full bet flow. Navigation design must decide: depth of Wallet and Deposit in the nav hierarchy, and whether re-deposit is one tap from the home surface. |
-| **G5** | Bet History placement and Active Bets / Bet History merge | Bet History covers EJ1 only (1 job, lowest coverage). Navigation design must decide: tab inside Active Bets screen (reduces screen count to 13), or standalone screen. Verify EJ1 coverage survives the merge. |
-| **S11** | Aggregation of simultaneous resolutions | [?] open question: when multiple bets resolve at the same time, does the user see a single Resolution Summary screen or a sequence of separate Win/Loss screens? Cannot be derived from current research. Decide in navigation pass. |
+| **G1 nav** | Notification routing nav pattern | Resolved. Notification tap opens target modally over the current tab; back returns to prior context. 1 tap from notification to Loss Screen (G1 direct path confirmed in FJ5 flow and Depth Map). |
+| **G3** | In-app path to Public Profile | Resolved. MVP: external shared-card link only. No in-app discovery. In-app path deferred until leaderboard or social discovery is confirmed. |
+| **G4** | Wallet and Deposit navigation placement | Resolved. Wallet/Deposit lives in the header (wallet icon), not a bottom-nav slot. Re-deposit invoked from Bet Screen insufficient-balance state in context (1 step). |
+| **G5** | Bet History placement and merge | Resolved. Bet History merged as History tab inside My Bets. EJ1 coverage preserved. Standalone screen count: 13. Matrix column BH retained. |
+| **S11** | Aggregation of simultaneous resolutions | Resolved. Sequence of separate Win/Loss screens, swipeable. No aggregated Resolution Summary screen at MVP. Wireframe-spec detail. |
