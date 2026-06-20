@@ -154,12 +154,19 @@ flowchart TD
     seesResolved -->|"yes"| LS
 
     LS --> readsNote{"reads the resolution explanation?"}
-    readsNote -->|"no - bets immediately"| BS["Bet Screen"]
+
+    %% Default beat: resolution note is read first, then next action
+    readsNote -->|"yes - default path"| nextAction
+
+    %% Escalation path: user skips note and bets immediately - routes through friction node
+    readsNote -->|"no - bets immediately (escalation path)"| pause["pause: resolution note shown, brief beat before re-bet"]
+    sessionHook(["reserved: session-aware chasing check, post-MVP, not built"])
+    pause -.->|"reserved hook (not built)"| sessionHook
+    pause -->|"proceeds - escalation path (F5 risk)"| BS["Bet Screen"]
     BS --> escalationConfirm{"confirms next bet?"}
     escalationConfirm -->|"no, reconsiders"| nextAction
     escalationConfirm -->|"yes - escalation path (F5 risk)"| AB
 
-    readsNote -->|"yes"| nextAction
     nextAction -->|"closes app"| T10(["T10 - dormant, churn risk D7 (Casual Experimenter)"])
     T10 -->|"scheduled push: new event in category fires later"| EF["Event Feed"]
     nextAction -->|"browses events"| EF
