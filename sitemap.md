@@ -378,26 +378,28 @@ Help / FAQ                                  [SIROTA]        — EJ2 is served by
 
 ### Матриця покриття
 
-| Job | EF | ED | SI | OB | DEP | BS | WS | LS | AB | BH | WA | MP | PP | HIW | NT |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **MJ** — реальна ставка на подію | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | |
-| **FJ1** — знайти подію поки актуальна | ✓ | ✓ | | | | | | | | | | | | | ✓ |
-| **FJ2** — зрозуміти чому ця ймовірність | ✓ | ✓ | | | | | | | | | | | | | |
-| **FJ3** — поставити без крипто-бар'єру | | | ✓ | ✓ | ✓ | ✓ | | | | | ✓ | | | | |
-| **FJ4** — впевнитись що гроші в безпеці | | | | ✓ | ✓ | | | | | | ✓ | | | ✓ | |
-| **FJ5** — пережити поразку без чейсингу | | | | | | | | ✓ | ✓ | | | | | | ✓ |
-| **EJ1** — відчути що розумію краще за більшість | | ✓ | | | | | ✓ | | ✓ | ✓ | | ✓ | | | |
-| **EJ2** — відчути безпеку до першого депозиту | ✓ | | | ✓ | ✓ | | | | | | | | | ✓ | |
-| **EJ3** — вийти з поразки усвідомлено | | | | | | | | ✓ | ✓ | | | | | | |
-| **SJ1** — показати що був правий | | | | | | | ✓ | | | | | ✓ | | | |
-| **SJ2** — накопичити публічний трек-рекорд | | | | | | | | | | ✓ | | ✓ | ✓ | | |
-| **Покриття (jobs)** | 4 | 5 | 2 | 4 | 4 | 2 | 3 | 3 | 4 | 2 | 2 | 3 | 1 | 2 | 2 |
+OB (Onboarding) column removed - screen removed in Step 2. BH x SJ2 corrected: Bet History is a private view, SJ2 requires public visibility.
+
+| Job | EF | ED | SI | DEP | BS | WS | LS | AB | BH | WA | MP | PP | HIW | NT |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **MJ** — реальна ставка на подію | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | |
+| **FJ1** — знайти подію поки актуальна | ✓ | ✓ | | | | | | | | | | | | ✓ |
+| **FJ2** — зрозуміти чому ця ймовірність | ✓ | ✓ | | | | | | | | | | | | |
+| **FJ3** — поставити без крипто-бар'єру | | | ✓ | ✓ | ✓ | | | | | ✓ | | | | |
+| **FJ4** — впевнитись що гроші в безпеці | | | | ✓ | | | | | | ✓ | | | ✓ | |
+| **FJ5** — пережити поразку без чейсингу | | | | | | | ✓ | ✓ | | | | | | ✓ |
+| **EJ1** — відчути що розумію краще за більшість | | ✓ | | | | ✓ | | ✓ | ✓ | | ✓ | | | |
+| **EJ2** — відчути безпеку до першого депозиту | ✓ | | | ✓ | | | | | | | | | ✓ | |
+| **EJ3** — вийти з поразки усвідомлено | | | | | | | ✓ | ✓ | | | | | | |
+| **SJ1** — показати що був правий | | | | | | ✓ | | | | | ✓ | | | |
+| **SJ2** — накопичити публічний трек-рекорд | | | | | | | | | | | ✓ | ✓ | | |
+| **Покриття (jobs)** | 4 | 4 | 2 | 4 | 2 | 3 | 3 | 4 | 1 | 2 | 3 | 1 | 2 | 2 |
 
 **Легенда колонок:**
-EF = Event Feed · ED = Event Detail · SI = Sign In / Register · OB = Onboarding (4 swipes) · DEP = Deposit · BS = Bet Screen · WS = Win Screen · LS = Loss Screen · AB = Active Bets · BH = Bet History · WA = Wallet · MP = My Profile · PP = Public Profile (another user) · HIW = How It Works · NT = Notifications
+EF = Event Feed · ED = Event Detail · SI = Sign In / Register · DEP = Deposit · BS = Bet Screen · WS = Win Screen · LS = Loss Screen · AB = Active Bets · BH = Bet History · WA = Wallet · MP = My Profile · PP = Public Profile (another user) · HIW = How It Works · NT = Notifications
 
 **Покриття рядків (скільки екранів на job):**
-MJ 9 · FJ1 3 · FJ2 2 · FJ3 5 · FJ4 4 · FJ5 3 · EJ1 5 · EJ2 4 · EJ3 2 · SJ1 2 · SJ2 3
+MJ 8 · FJ1 3 · FJ2 2 · FJ3 4 · FJ4 3 · FJ5 3 · EJ1 5 · EJ2 3 · EJ3 2 · SJ1 2 · SJ2 2
 
 ---
 
@@ -426,9 +428,9 @@ MJ 9 · FJ1 3 · FJ2 2 · FJ3 5 · FJ4 4 · FJ5 3 · EJ1 5 · EJ2 4 · EJ3 2 · 
 |---|---|---|
 | **Public Profile** | SJ2 (1 job) | Найслабше покриття. Виправданий: SJ2 ВИМАГАЄ щоб інші бачили трек-рекорд — без цього екрана job фізично не закривається. Залишити. |
 | **Bet Screen** | MJ + FJ3 (2 jobs) | Вузька роль — цілеспрямована дія, а не мультизадачний хаб. Нормально для action screen. Залишити. |
-| **Bet History** | EJ1 + SJ2 (2 jobs) | Ризик дублювання з My Profile. Якщо Bet History — таб в Active Bets, а не окремий екран → злити на кроці 3 і перевірити чи покриття збережеться. |
+| **Bet History** | EJ1 (1 job) | BH x SJ2 removed: Bet History is a private view, SJ2 requires public-facing visibility. Corrected to EJ1 only. Lowest coverage in matrix - review merge with Active Bets in navigation pass. |
 | **Wallet** | FJ3 + FJ4 (2 jobs) | Фінансовий хаб з вузькою роллю. Виправданий: без нього немає де побачити баланс і ініціювати вивід. Залишити. |
-| **How It Works** | FJ4 + EJ2 (2 jobs) | Єдиний екран без жодної взаємодії з MJ або FJ1/FJ2. Ризик що його ніхто не відкриє. Рішення: не робити окремим пунктом навігації — відкривати тільки з Deposit ("Дізнатись більше") та Onboarding. Зберегти як модаль або вкладену сторінку. |
+| **How It Works** | FJ4 + EJ2 (2 jobs) | Pre-deposit access confirmed: reachable from main nav before deposit, not restricted to gate flow. Restriction from prior tracing note (modal only from Deposit + Onboarding) reversed - Onboarding removed, HIW now open. |
 
 ---
 
@@ -448,7 +450,7 @@ MJ 9 · FJ1 3 · FJ2 2 · FJ3 5 · FJ4 4 · FJ5 3 · EJ1 5 · EJ2 4 · EJ3 2 · 
 
 ### Висновок трасування
 
-**Підтверджених сиріт немає.** Матриця закрита: всі 15 екранів мають job, всі 11 jobs мають екран.
+**Підтверджених сиріт немає.** Матриця закрита: всі 14 екранів мають job (Onboarding removed), всі 11 jobs мають екран. BH x SJ2 corrected - Bet History now carries EJ1 only (1 job, lowest coverage, merge candidate in navigation pass).
 
 В процесі трасування виявлено і закрито один системний gap: FJ1 / FJ5 / EJ3 залежали від Notification-entity без власного екрана. Notifications (NT) доданий у sitemap і матрицю — gap усунено.
 
