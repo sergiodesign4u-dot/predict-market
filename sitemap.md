@@ -225,7 +225,7 @@ Event Detail                                 (FJ2 · MJ)     ⭐ PRIMARY + 🥈 
 States: loading (initial data fetch) - empty (no events match current filter or category) - error (network fail, API unreachable).
 
 **Event Detail** - one event, full view: probability, chart, narrative context (why this price), resolution conditions, source. CTA: YES / NO. This screen is our primary differentiator - no competitor has context at this depth (FJ2 confirmed gap).
-States: loading (event data fetching) - error (load failure, T2 in MJ flow / T10 in FJ2 flow - user exits).
+States: loading (event data fetching) - error (load failure, T8 in MJ and FJ2 flows - retry returns to Event Detail) - resolved-while-reading (this event just resolved: [outcome] - navigate to Win/Loss Screen if user holds a position, else to Event Feed).
 
 ---
 
@@ -242,10 +242,10 @@ Deposit                                      (FJ3 · FJ4 · EJ2)   ⭐ PRIMARY
 ```
 
 **Sign In / Register** - social login (Google, X) for the News Junkie path. Crypto Native connects an existing USDC wallet here instead of using fiat. One screen, two branches. Triggered only at gate, never before the user has built bet intent.
-States: in-progress (OAuth redirect pending, wallet connect prompt open) - error (auth failed - T4, wallet connect failed - T7).
+States: in-progress (OAuth redirect pending, wallet connect prompt open) - error (auth failed - T5, wallet connect failed - T15).
 
 **Deposit** - fiat card to USDC via Transak (primary), MoonPay (fallback). KYC runs inside the Transak widget - the user completes identity verification there, not on this platform. Risk block displayed inline before the user submits: "Your USDC is held 1:1 - we do not lend or invest deposited funds." Fee shown before submit. Also reachable standalone from Wallet for top-ups.
-States: in-progress (Transak widget loading, KYC pending inside widget) - error-card (card declined - T5) - error-KYC (KYC rejected - T6).
+States: in-progress (Transak widget loading, KYC pending inside widget) - error-card (card declined - T2) - error-KYC (KYC rejected - T1) - widget-load-failure (Transak iframe blocked or network error: fallback to "open Transak directly" or "connect a USDC wallet" - S3 fix) - pending (payment under review, usually under 5 min) - minimum-not-met (inline error before submit, shown against amount input).
 
 ---
 
@@ -259,7 +259,7 @@ Bet Screen                                   (MJ · FJ3)     ⭐ PRIMARY + 🥈 
 ```
 
 **Bet Screen** - direction (YES/NO, pre-set from tap on Event Detail), amount input with default $5 pre-fill, quick-select ($5/$10/$25/$50), fee displayed before confirm ("platform earns $X if you win"), potential payout shown. Confirm button triggers the activation gate for logged-out users. Single screen: intent and confirmation in one place.
-States: intent (logged out - user builds the bet, no auth yet) - S5-reconcile (price moved during gate: shows old price vs new price, user must re-confirm) - error (bet registration failed on-chain - T9).
+States: intent (logged out - user builds the bet, no auth yet) - S5-reconcile (price moved during gate: shows old price vs new price, user must re-confirm) - error (bet registration failed on-chain - T3) - insufficient-balance (inline: "you have $X, can bet up to $X or deposit more" with options to change amount or go to Deposit) - event-closed (this event just resolved while on screen: navigate to Win/Loss Screen if user holds a position, else to Event Feed).
 
 ---
 
@@ -273,10 +273,10 @@ Loss Screen                                  (FJ5 · EJ3)    ⭐ PRIMARY + 🥈 
 ```
 
 **Win Screen** - "You were right." Amount won, resolution summary (what happened and why), Share Card auto-generated. CTA: Share · See next events. Design rationale: no confetti loop, no persistent celebration animation. Research finding F5 (master-research.md): first WIN is the trigger for overconfidence and escalation, not loss. The win screen must celebrate the outcome without feeding the loop. Celebratory but measured - one moment, then move on.
-States: loading (Share Card generation in progress) - error (Share Card not generated, SJ1 blocked - T14 in flows).
+States: loading (Share Card generation in progress) - error (Share Card not generated, SJ1 blocked - T11 in flows) - payout-pending (your payout will arrive in a few minutes, on-chain settlement delay).
 
 **Loss Screen** - "Here's what happened." Plain-language resolution note (what resolved and why), amount lost, one clear next step (not "bet again" promo). This screen is undesigned by every competitor - it is our primary retention intervention against loss-chasing (FJ5 + EJ3 confirmed gap).
-States: loading (resolution note fetching).
+States: loading (resolution note fetching) - payout-pending (your payout will arrive in a few minutes, on-chain settlement delay).
 
 ---
 
@@ -320,6 +320,7 @@ Wallet                                       (FJ4)          ⭐ PRIMARY + 🥈 S
 ```
 
 **Wallet** - available balance, in-play balance, transaction history (deposits, payouts, fees, withdrawals), deposit again (same Deposit screen). Funds protection message visible here too (EJ2 secondary). Single screen at this depth.
+Deferred state: balance-syncing (cosmetic, momentary sync delay between on-chain confirmation and UI update) - deferred to wireframe spec.
 
 Withdrawal flow (not a separate screen - a flow inside Wallet): enter amount, enter destination USDC address (MVP) or PIX (Phase 2 Brazil), confirm, states: pending/confirmed/failed. Withdrawal is always in crypto (USDC) for MVP - no fiat payout rail at launch.
 
@@ -335,6 +336,7 @@ Public Profile (another user)                (SJ2)          🥈 SECONDARY > ⭐
 ```
 
 **My Profile** - prediction track record: total bets, win rate, history of resolved bets (public). Share card gallery (past wins). Editable display name and avatar.
+Deferred state: empty-state (cosmetic, first-time user with no predictions yet) - deferred to wireframe spec.
 
 **Public Profile** - same data, read-only, for another user. Dan uses this more (reputation-first behavior). Alex arrives here via a shared win card or leaderboard - secondary path for him.
 
