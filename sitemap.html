@@ -1,0 +1,975 @@
+<!-- Static snapshot of IA/sitemap.md, regenerate with this pass if the source changes. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sitemap - Prediction Market Platform</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* SIDEBAR */
+  .sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; scrollbar-width: none; z-index: 200; transform: translateX(-100%); transition: transform .25s cubic-bezier(.4,0,.2,1); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar::-webkit-scrollbar { display: none; }
+  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 199; backdrop-filter: blur(2px); }
+  .sidebar-overlay.open { display: block; }
+  .menu-toggle { position: fixed; top: 12px; left: 12px; z-index: 201; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; width: 36px; height: 36px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; padding: 0; }
+  .menu-toggle span { display: block; width: 15px; height: 1.5px; background: var(--text); border-radius: 1px; }
+  .sidebar-brand { padding: 20px 16px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .sidebar-project-name { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); line-height: 1.4; }
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+  .sidebar-page-link { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 500; color: var(--text); text-decoration: none; padding: 7px 16px; transition: background .15s; cursor: pointer; user-select: none; }
+  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
+  .sidebar-page-link.active { color: var(--accent); }
+  .sidebar-page-link.planned { color: var(--muted); cursor: default; opacity: .6; }
+  .sidebar-page-link.planned::after { content: 'Soon'; font-size: 9px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; background: rgba(255,255,255,.04); color: var(--muted); padding: 2px 5px; border-radius: 3px; border: 1px solid var(--border); }
+  .sidebar-sub { padding: 2px 0 8px; }
+  .sidebar-sub-link { display: block; font-size: 12px; color: var(--muted); text-decoration: none; padding: 5px 16px 5px 28px; transition: color .15s; position: relative; }
+  .sidebar-sub-link:hover { color: var(--text); }
+  .sidebar-sub-link.active { color: var(--text); }
+  .sidebar-sub-link.active::before { content: ''; position: absolute; left: 17px; top: 50%; transform: translateY(-50%); width: 3px; height: 3px; border-radius: 50%; background: var(--accent); }
+  .sidebar-divider { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 16px 16px 6px; opacity: .45; }
+
+  /* LAYOUT */
+  main { padding: 60px 20px 80px; }
+  @media (min-width: 860px) { .sidebar { transform: translateX(0); transition: none; } .sidebar-overlay { display: none !important; } .menu-toggle { display: none; } main { margin-left: 220px; padding: 48px 48px 120px; } }
+  section { padding-top: var(--gap); margin-top: var(--gap); border-top: 1px solid var(--border); }
+  section:first-child { border-top: none; }
+
+  /* TYPOGRAPHY */
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 16px; }
+  h2 { font-size: 22px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 20px; }
+  h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 12px; margin-top: 32px; }
+  h3:first-child { margin-top: 0; }
+  p { color: #aaa; margin-bottom: 12px; max-width: 680px; }
+  strong { color: var(--text); font-weight: 600; }
+  .lead { font-size: 16px; color: #bbb; max-width: 640px; margin-bottom: 32px; line-height: 1.7; }
+  .hero { padding-top: 0; border-top: none; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(200,255,0,.2); }
+  .tag.grey { background: rgba(255,255,255,.04); color: var(--muted); border-color: var(--border); }
+  .hero-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--r); margin-top: 20px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th { background: var(--surface); color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  tbody td { padding: 11px 14px; border-bottom: 1px solid var(--border); color: #c8c8c8; vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,.015); }
+  td.label { font-weight: 600; color: var(--text); white-space: nowrap; }
+  td.mono { font-family: var(--mono); font-size: 12px; }
+  td.muted { color: var(--muted); }
+  td.center { text-align: center; }
+  .check { color: var(--accent); font-weight: 700; }
+  .cov-4 { background: rgba(95,219,143,.08); color: var(--green); font-weight: 700; }
+  .cov-3 { background: rgba(200,255,0,.05); color: #a8e89c; }
+  .cov-2 { color: #c8c8c8; }
+  .cov-1 { background: rgba(255,95,95,.06); color: #e89c9c; }
+
+  /* CARDS */
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 20px; margin-bottom: 12px; }
+  .card.muted-card { border-color: rgba(255,255,255,.06); opacity: .7; }
+  .card-id { font-family: var(--mono); font-size: 10px; color: var(--accent); margin-bottom: 8px; font-weight: 700; letter-spacing: .08em; }
+  .card h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+  .card p { font-size: 13px; color: #999; margin: 0 0 12px; max-width: none; }
+  .card p:last-child { margin-bottom: 0; }
+
+  /* SCREEN TREE */
+  .screen-group { margin-top: 32px; }
+  .screen-group-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .screen-item { padding: 14px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 8px; }
+  .screen-item.sirota { border-color: rgba(255,95,95,.25); background: rgba(255,95,95,.04); }
+  .screen-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .screen-jobs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+  .job-badge { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(200,255,0,.2); }
+  .job-badge.sirota-badge { background: rgba(255,95,95,.1); color: var(--red); border-color: rgba(255,95,95,.25); }
+  .persona-badge { font-size: 10px; color: var(--muted); margin-left: 4px; }
+  .screen-states { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+  .state-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 6px; }
+  .state-list { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+  .state-list li { font-size: 12px; color: #888; padding-left: 12px; position: relative; }
+  .state-list li::before { content: '-'; position: absolute; left: 0; color: #555; }
+  .screen-desc { font-size: 13px; color: #999; margin-top: 6px; }
+  .screen-note { font-size: 12px; color: #666; font-style: italic; margin-top: 6px; }
+
+  /* NAV TABLE */
+  .nav-slot { font-size: 13px; font-weight: 700; color: var(--text); }
+  .not-dest-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+  .not-dest-list li { font-size: 13px; color: #aaa; padding: 10px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
+  .not-dest-list li strong { color: var(--text); }
+
+  /* DEPTH MAP */
+  .depth-tree { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 20px; font-family: var(--mono); font-size: 13px; line-height: 1.8; margin-top: 16px; overflow-x: auto; }
+  .depth-tree .l0 { color: var(--accent); font-weight: 700; }
+  .depth-tree .l1 { color: var(--text); margin-left: 20px; }
+  .depth-tree .l1-sub { color: #bbb; margin-left: 40px; }
+  .depth-tree .linvoked { color: var(--muted); margin-left: 20px; }
+  .depth-check { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 20px; margin-top: 16px; }
+  .depth-check-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .depth-check-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .depth-path { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .depth-result { font-size: 12px; color: var(--green); }
+  .depth-flag { font-size: 12px; color: #e8b96c; padding: 10px 14px; background: rgba(232,185,108,.06); border: 1px solid rgba(232,185,108,.2); border-radius: 6px; margin-top: 8px; }
+
+  /* MATRIX */
+  .matrix-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--r); margin-top: 20px; }
+  .matrix-wrap table { min-width: 900px; }
+  .matrix-wrap thead th { font-size: 10px; padding: 8px 10px; }
+  .matrix-wrap tbody td { padding: 8px 10px; font-size: 12px; }
+  .matrix-check { color: var(--accent); font-weight: 700; text-align: center; }
+  .matrix-empty { color: var(--border); text-align: center; }
+  .matrix-job { font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap; }
+  .matrix-sub { font-size: 11px; color: var(--muted); }
+  .cov-row { background: rgba(255,255,255,.02); font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  /* LEGEND */
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; font-size: 12px; color: var(--muted); }
+  .legend span { white-space: nowrap; }
+
+  /* INLINE CODE */
+  code { font-family: var(--mono); font-size: 12px; background: rgba(255,255,255,.06); padding: 1px 5px; border-radius: 3px; color: #bbb; }
+
+  /* RATIONALE TABLE */
+  .rationale-item { padding: 12px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 8px; }
+  .rationale-cell { font-size: 11px; font-weight: 700; font-family: var(--mono); color: var(--accent); margin-bottom: 4px; }
+  .rationale-text { font-size: 13px; color: #aaa; }
+
+  /* DEFECTS */
+  .defect-item { padding: 14px 16px; background: var(--surface); border: 1px solid rgba(255,95,95,.2); border-radius: 6px; margin-bottom: 8px; }
+  .defect-item.ok { border-color: rgba(95,219,143,.2); }
+  .defect-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .defect-desc { font-size: 12px; color: #999; }
+
+  /* DECISIONS */
+  .decision-item { padding: 12px 14px; background: var(--surface); border: 1px solid rgba(95,168,255,.2); border-radius: 6px; margin-bottom: 8px; }
+  .decision-code { font-family: var(--mono); font-size: 11px; color: var(--blue); font-weight: 700; margin-bottom: 4px; }
+  .decision-text { font-size: 13px; color: #bbb; }
+
+  .divider { height: 1px; background: var(--border); margin: 24px 0; }
+  .inline-note { font-size: 11px; color: var(--muted); font-style: italic; margin-top: -4px; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="research.html" class="sidebar-page-link">Research</a>
+    <a href="personas.html" class="sidebar-page-link">Personas</a>
+    <a href="jtbd.html" class="sidebar-page-link">JTBD</a>
+    <div class="sidebar-divider">Information Architecture</div>
+    <a href="ia.html" class="sidebar-page-link">Overview</a>
+    <a href="sitemap.html" class="sidebar-page-link active">Sitemap</a>
+    <div class="sidebar-sub">
+      <a href="#entities" class="sidebar-sub-link">Entities</a>
+      <a href="#screens" class="sidebar-sub-link">Screens</a>
+      <a href="#navigation" class="sidebar-sub-link">Navigation</a>
+      <a href="#depth-map" class="sidebar-sub-link">Depth Map</a>
+      <a href="#tracing" class="sidebar-sub-link">Tracing</a>
+    </div>
+    <a href="flows.html" class="sidebar-page-link">Flows</a>
+    <div class="sidebar-divider">Plan</div>
+    <a class="sidebar-page-link planned">Wireframes</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-meta">
+    <span class="tag">Information Architecture</span>
+    <span class="tag grey">Prediction Market Platform</span>
+    <span class="tag grey">MVP · 2026</span>
+  </div>
+  <h1>Sitemap</h1>
+  <p class="lead">Full inventory of entities, screens, navigation design, depth map, and job coverage tracing. Source of truth before wireframes.</p>
+  <p style="font-size:12px;color:#555;margin-bottom:0">Built from: personas.md · jtbd.md · master-research.md. <a href="ia.html" style="color:var(--muted);text-decoration:underline">Overview</a> &middot; <a href="flows.html" style="color:var(--muted);text-decoration:underline">All Flows</a></p>
+</section>
+
+<!-- ENTITIES -->
+<section id="entities">
+  <div class="section-label">Entities</div>
+  <h2>What the user interacts with</h2>
+  <p>Objects the user directly interacts with to close their jobs. Each entity exists only if at least one confirmed job (MJ/FJ/EJ/SJ) requires it.</p>
+
+  <!-- Entity 1: Event -->
+  <div class="card">
+    <div class="card-id">01 / EVENT (MARKET)</div>
+    <h4>The central object</h4>
+    <p>The thing a user finds, reads about, and bets on. Without it, no job is closable.</p>
+    <p><strong>Jobs served:</strong> MJ &middot; FJ1 &middot; FJ2 &nbsp;&nbsp; <strong>Related to:</strong> Bet &middot; Resolution &middot; Notification</p>
+    <div class="table-wrap" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Field</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Question / title</td><td>"Will X happen before [date]?"</td></tr>
+          <tr><td class="label">Type</td><td>Binary (YES/NO) &middot; Multi-outcome (multiple options, each with YES/NO)</td></tr>
+          <tr><td class="label">Category</td><td>Politics &middot; Crypto &middot; Culture &middot; General</td></tr>
+          <tr><td class="label">Current probability (%)</td><td>The "price" - primary display number on every card</td></tr>
+          <tr><td class="label">Probability chart</td><td>History of odds movement over time</td></tr>
+          <tr><td class="label">Context / narrative</td><td>Why this event matters, what drives the odds, key arguments for YES and NO - <strong>our differentiator (FJ2)</strong></td></tr>
+          <tr><td class="label">Resolution conditions</td><td>What counts as YES, what source is authoritative</td></tr>
+          <tr><td class="label">Status</td><td>Active &middot; Resolved &middot; Cancelled</td></tr>
+          <tr><td class="label">Resolution deadline</td><td>When the event closes for new bets</td></tr>
+          <tr><td class="label">Volume</td><td>Total USDC staked across all positions</td></tr>
+          <tr><td class="label">Created by</td><td>Platform team (MVP)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Entity 2: Bet -->
+  <div class="card">
+    <div class="card-id">02 / BET (POSITION)</div>
+    <h4>The user's stake</h4>
+    <p>Created the moment a user places a bet. This is the MJ itself - the "real stake with real consequences."</p>
+    <p><strong>Jobs served:</strong> MJ &middot; FJ3 &middot; FJ5 &middot; EJ1 &middot; EJ3 &nbsp;&nbsp; <strong>Related to:</strong> User &middot; Event &middot; Resolution &middot; Wallet</p>
+    <div class="table-wrap" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Field</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Direction</td><td>YES &middot; NO</td></tr>
+          <tr><td class="label">Amount staked (USDC)</td><td>What the user put in</td></tr>
+          <tr><td class="label">Entry probability</td><td>Odds at the moment of placing - AMM determines this</td></tr>
+          <tr><td class="label">Fee amount</td><td>Shown before confirmation ("platform earns $X if you win") - H6</td></tr>
+          <tr><td class="label">Potential payout</td><td>Calculated at entry, shown pre-confirmation</td></tr>
+          <tr><td class="label">Current value</td><td>Mark-to-market as odds move</td></tr>
+          <tr><td class="label">Status</td><td>Active &middot; Won &middot; Lost &middot; Cancelled</td></tr>
+          <tr><td class="label">Placed at</td><td>Timestamp</td></tr>
+          <tr><td class="label">Resolution payout</td><td>Actual amount received after event resolves</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Entity 3: User -->
+  <div class="card">
+    <div class="card-id">03 / USER (ACCOUNT)</div>
+    <h4>The authenticated person</h4>
+    <p>Required for every job that involves memory, state, or money.</p>
+    <p><strong>Jobs served:</strong> all (actor in every job) &nbsp;&nbsp; <strong>Related to:</strong> Bet &middot; Wallet &middot; Profile &middot; Notification</p>
+    <div class="table-wrap" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Field</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Social login</td><td>Google &middot; X (OAuth) - no password at MVP</td></tr>
+          <tr><td class="label">Display name</td><td>Shown on Profile</td></tr>
+          <tr><td class="label">Wallet</td><td>Custodial (platform-managed) or connected self-custody</td></tr>
+          <tr><td class="label">KYC status</td><td>None &middot; Level-1 via on-ramp (name+address up to $20K) &middot; Platform-level (if triggered at $2K cumulative)</td></tr>
+          <tr><td class="label">Notification preferences</td><td>Which event types trigger alerts</td></tr>
+          <tr><td class="label">Joined date</td><td>-</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Entity 4: Wallet -->
+  <div class="card">
+    <div class="card-id">04 / WALLET (BALANCE)</div>
+    <h4>The user's financial state</h4>
+    <p>Separate from User because it has its own lifecycle: deposit, lock, payout, withdrawal.</p>
+    <p><strong>Jobs served:</strong> FJ3 &middot; FJ4 &middot; EJ2 &nbsp;&nbsp; <strong>Related to:</strong> User &middot; Bet (deducts/credits) &middot; Resolution (credits payout)</p>
+    <div class="table-wrap" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Field</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Available balance (USDC)</td><td>Ready to bet</td></tr>
+          <tr><td class="label">In-play balance (USDC)</td><td>Locked in active bets</td></tr>
+          <tr><td class="label">Total deposited (lifetime)</td><td>For KYC threshold tracking</td></tr>
+          <tr><td class="label">Transaction history</td><td>Deposits &middot; Withdrawals &middot; Payouts &middot; Fees</td></tr>
+          <tr><td class="label">Connected address</td><td>If self-custody wallet; empty if custodial</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px;font-size:12px;color:var(--muted)">Transaction sub-object: Type (Deposit/Withdrawal/Payout/Fee) &middot; Amount &middot; Status (Pending/Confirmed/Failed) &middot; On-chain hash &middot; KYC applied &middot; On-ramp provider (Transak / MoonPay)</p>
+  </div>
+
+  <!-- Entity 5: Resolution -->
+  <div class="card">
+    <div class="card-id">05 / RESOLUTION</div>
+    <h4>Determining the outcome</h4>
+    <p>Separate from Event because it has its own lifecycle, evidence, and on-chain proof. This is the moment that triggers payouts, post-resolution screens, and share cards.</p>
+    <p><strong>Jobs served:</strong> FJ5 &middot; EJ1 &middot; EJ3 &middot; SJ1 &nbsp;&nbsp; <strong>Related to:</strong> Event (one-to-one) &middot; Bet (triggers status + payout)</p>
+    <div class="table-wrap" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Field</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Outcome</td><td>YES &middot; NO (or which option in multi-outcome)</td></tr>
+          <tr><td class="label">Evidence / source</td><td>URL or description of what determined the outcome</td></tr>
+          <tr><td class="label">Resolved by</td><td>Team multisig (MVP) - oracle (post-MVP)</td></tr>
+          <tr><td class="label">On-chain transaction hash</td><td>Public verifiability</td></tr>
+          <tr><td class="label">Timestamp</td><td>-</td></tr>
+          <tr><td class="label">Resolution note</td><td>Plain-language explanation of what happened and why - FJ5 "what happened"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Entity 6: Profile -->
+  <div class="card">
+    <div class="card-id">06 / PROFILE (PUBLIC)</div>
+    <h4>The user's public reputation</h4>
+    <p>Visible to other users. Serves the "I called it" social identity.</p>
+    <p><strong>Jobs served:</strong> SJ1 &middot; SJ2 &nbsp;&nbsp; <strong>Related to:</strong> User &middot; Bet (resolved) &middot; Share Card</p>
+    <div class="table-wrap" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Field</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Display name</td><td>-</td></tr>
+          <tr><td class="label">Avatar</td><td>-</td></tr>
+          <tr><td class="label">Total predictions</td><td>Count of resolved bets placed</td></tr>
+          <tr><td class="label">Win rate</td><td>% correct on resolved bets</td></tr>
+          <tr><td class="label">Prediction history</td><td>List of resolved bets (event, direction, outcome, profit/loss) - public</td></tr>
+          <tr><td class="label">Notable calls</td><td>[?] Could surface "biggest wins" or "most accurate category" - hypothesis, no confirmed job yet</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Entity 7: Share Card -->
+  <div class="card">
+    <div class="card-id">07 / SHARE CARD</div>
+    <h4>Auto-generated artifact after resolution</h4>
+    <p>The "I told you so" object - created without user effort, immediately shareable. Serves SJ1 directly. Without this, sharing requires manual effort, which kills the social loop.</p>
+    <p><strong>Jobs served:</strong> SJ1 &nbsp;&nbsp; <strong>Related to:</strong> Resolution &middot; User &middot; Profile</p>
+    <div class="table-wrap" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Field</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Event question</td><td>Pulled from Event</td></tr>
+          <tr><td class="label">User's call</td><td>YES or NO</td></tr>
+          <tr><td class="label">Outcome</td><td>What actually happened</td></tr>
+          <tr><td class="label">Result</td><td>Won &middot; Lost</td></tr>
+          <tr><td class="label">Profit/Loss</td><td>Amount</td></tr>
+          <tr><td class="label">Generated image</td><td>OG-image for social sharing (Twitter/X card, WhatsApp preview)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Entity 8: Notification -->
+  <div class="card">
+    <div class="card-id">08 / NOTIFICATION</div>
+    <h4>Alert that brings the user back</h4>
+    <p>Directly enables FJ1 (find the event while it's still relevant) for return visits, and is the primary retention mechanism for hot/warm/cold return (aarrr.md).</p>
+    <p><strong>Jobs served:</strong> FJ1 (return path) &middot; Retention (aarrr.md) &nbsp;&nbsp; <strong>Related to:</strong> User &middot; Event &middot; Bet</p>
+    <div class="table-wrap" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Field</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Type</td><td>Odds moved significantly &middot; Deadline approaching &middot; Event resolved &middot; New event in followed category</td></tr>
+          <tr><td class="label">User reference</td><td>-</td></tr>
+          <tr><td class="label">Event reference</td><td>-</td></tr>
+          <tr><td class="label">Position reference</td><td>(if about the user's active bet)</td></tr>
+          <tr><td class="label">Read / unread</td><td>-</td></tr>
+          <tr><td class="label">Sent at</td><td>-</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Under Question -->
+  <h3 style="margin-top:40px">Under Question</h3>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:16px">Objects mentioned in product docs but not mapped to a confirmed job. Not in the main entity list - review before building.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Object</th><th>Why it's here</th><th>Why it's in question</th></tr></thead>
+      <tbody>
+        <tr><td class="label" style="opacity:.7">Category</td><td>Events grouped by Politics / Crypto / Culture / General</td><td>Taxonomy attribute of Event, not an object with its own lifecycle. No job requires "interacting with a category" as a standalone object. Could remain a field on Event.</td></tr>
+        <tr><td class="label" style="opacity:.7">Leaderboard</td><td>Listed in CLAUDE.md MVP features</td><td>No explicit job in jtbd.md. SJ2 (public track record) is served by Profile. Leaderboard is a view over Profiles - a feature, not a distinct entity. Revisit if social competition mechanics are confirmed.</td></tr>
+        <tr><td class="label" style="opacity:.7">Odds Chart</td><td>Every competitor has it; part of Event detail</td><td>Attribute of Event (probability history), not a standalone entity. Lives inside Event.</td></tr>
+        <tr><td class="label" style="opacity:.7">Fiat Transaction</td><td>Deposit/withdrawal via Transak/MoonPay</td><td>Modeled as sub-object of Wallet. Promote to standalone entity only if on-ramp flow reveals complexity that can't fit inside Wallet.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SCREENS -->
+<section id="screens">
+  <div class="section-label">Screens</div>
+  <h2>Screen inventory</h2>
+  <p>Job in <code>(parentheses)</code> = job from jtbd.md this screen closes. No job = <code>[SIROTA]</code>. &#11088; PRIMARY = Alex (News Junkie). &#129352; SECONDARY = Dan (Crypto Native).</p>
+  <p class="inline-note">States (empty, error, loading) are NOT screens - they are states of the screens listed below.</p>
+
+  <!-- EVENTS -->
+  <div class="screen-group">
+    <div class="screen-group-label">Events - what to bet on</div>
+    <div class="screen-item">
+      <div class="screen-name">Event Feed</div>
+      <div class="screen-jobs"><span class="job-badge">FJ1</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
+      <div class="screen-desc">Cards of active markets, sorted by recency / trending. First visit: story-driven format (context visible on card, not just %). Return visits: denser feed. No sign-in required to browse.</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>loading (initial data fetch)</li>
+          <li>empty (no events match current filter or category)</li>
+          <li>error (network fail, API unreachable)</li>
+        </ul>
+        <div class="screen-note">Note: push-permission-missing banner also surfaced on Event Feed when OS push is denied (see Notifications states).</div>
+      </div>
+    </div>
+    <div class="screen-item">
+      <div class="screen-name">Event Detail</div>
+      <div class="screen-jobs"><span class="job-badge">FJ2</span><span class="job-badge">MJ</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
+      <div class="screen-desc">One event, full view: probability, chart, narrative context (why this price), resolution conditions, source. CTA: YES / NO. Primary differentiator - no competitor has context at this depth (FJ2 confirmed gap).</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>loading (event data fetching)</li>
+          <li>error (load failure, T8 in MJ and FJ2 flows - retry returns to Event Detail)</li>
+          <li>resolved-while-reading (this event just resolved: [outcome] - navigate to Win/Loss Screen if user holds a position, else to Event Feed)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVATION GATE -->
+  <div class="screen-group">
+    <div class="screen-group-label">Activation Gate - bet-first, gate at confirm (Variant B)</div>
+    <p style="font-size:13px;color:#888;margin-bottom:12px">User browses and builds a bet logged out. Gate fires only when they tap "Confirm" on the Bet Screen. Two branches: News Junkie (social login then fiat deposit) and Crypto Native (connect existing USDC wallet). After the gate, S5 AMM price reconcile checks whether the price moved during auth/deposit before executing.</p>
+    <div class="screen-item">
+      <div class="screen-name">Sign In / Register</div>
+      <div class="screen-jobs"><span class="job-badge">FJ3</span><span class="persona-badge">&#11088; PRIMARY &middot; &#129352; SECONDARY (wallet connect path)</span></div>
+      <div class="screen-desc">Social login (Google, X) for the News Junkie path. Crypto Native connects an existing USDC wallet here instead of using fiat. One screen, two branches. Triggered only at gate, never before bet intent.</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>in-progress (OAuth redirect pending, wallet connect prompt open)</li>
+          <li>error (auth failed - T5, wallet connect failed - T15)</li>
+          <li>error-provider-conflict (account exists under a different provider, e.g. registered via X, trying Google: prompt to use the original provider or link accounts)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="screen-item">
+      <div class="screen-name">Deposit</div>
+      <div class="screen-jobs"><span class="job-badge">FJ3</span><span class="job-badge">FJ4</span><span class="job-badge">EJ2</span><span class="persona-badge">&#11088; PRIMARY</span></div>
+      <div class="screen-desc">Fiat card to USDC via Transak (primary), MoonPay (fallback). KYC runs inside the Transak widget. Risk block displayed inline before submit. Fee shown before submit. Also reachable standalone from Wallet for top-ups.</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>in-progress (Transak widget loading, KYC pending inside widget)</li>
+          <li>error-card (card declined - T2)</li>
+          <li>error-KYC (KYC rejected - T1)</li>
+          <li>widget-load-failure (Transak iframe blocked or network error: fallback to "open Transak directly" or "connect a USDC wallet" - S3 fix)</li>
+          <li>pending (payment under review, usually under 5 min)</li>
+          <li>minimum-not-met (inline error before submit, shown against amount input)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- BET -->
+  <div class="screen-group">
+    <div class="screen-group-label">Bet - place and confirm a bet</div>
+    <div class="screen-item">
+      <div class="screen-name">Bet Screen</div>
+      <div class="screen-jobs"><span class="job-badge">MJ</span><span class="job-badge">FJ3</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
+      <div class="screen-desc">Direction (YES/NO, pre-set from Event Detail tap), amount input with $5 default pre-fill, quick-select ($5/$10/$25/$50), fee displayed before confirm, potential payout shown. Confirm button triggers the activation gate for logged-out users. Single screen: intent and confirmation in one place.</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>intent (logged out - user builds the bet, no auth yet)</li>
+          <li>S5-reconcile (price moved during gate: shows old price vs new price, user must re-confirm)</li>
+          <li>error (bet registration failed on-chain - T3)</li>
+          <li>insufficient-balance (inline: "you have $X, can bet up to $X or deposit more" with options to change amount or go to Deposit)</li>
+          <li>event-closed (this event just resolved while on screen: navigate to Win/Loss Screen if user holds a position, else to Event Feed)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESOLUTION -->
+  <div class="screen-group">
+    <div class="screen-group-label">Resolution - what happened after the event closes</div>
+    <p style="font-size:13px;color:#888;margin-bottom:12px">Triggered by a notification or by the user opening an Active Bet that has resolved.</p>
+    <div class="screen-item">
+      <div class="screen-name">Win Screen</div>
+      <div class="screen-jobs"><span class="job-badge">EJ1</span><span class="job-badge">SJ1</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
+      <div class="screen-desc">"You were right." Amount won, resolution summary, Share Card auto-generated. Design rationale: no confetti loop, no persistent celebration animation. Per F5 (master-research.md): first WIN is the trigger for overconfidence and escalation, not loss. Celebratory but measured - one moment, then move on. Share / mark the moment is the default next action; "see next events" is a deliberate secondary CTA, shaped for overconfidence rather than impulse.</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>loading (Share Card generation in progress)</li>
+          <li>error (Share Card not generated, SJ1 blocked - T11 in flows)</li>
+          <li>payout-pending (your payout will arrive in a few minutes, on-chain settlement delay)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="screen-item">
+      <div class="screen-name">Loss Screen</div>
+      <div class="screen-jobs"><span class="job-badge">FJ5</span><span class="job-badge">EJ3</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
+      <div class="screen-desc">"Here's what happened." Plain-language resolution note (what resolved and why), amount lost, one clear next step (not "bet again" promo). Undesigned by every competitor - our primary retention intervention against loss-chasing (FJ5 + EJ3 confirmed gap). Design rationale: the resolution note is the default beat before any re-bet (O1 trust over O4 volume). Friction is calm, non-punitive, non-blocking - the user can always proceed. The escalation branch in IA/flows.md FJ5 routes through an explicit pause node before reaching Bet Screen. Reserved: session-aware chasing check (C-logic), post-MVP, not built.</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>loading (resolution note fetching)</li>
+        </ul>
+        <div class="screen-note">Note: Cancelled-event refund flow is deferred to post-MVP, so no refund/payout state exists on this screen at MVP.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MY BETS -->
+  <div class="screen-group">
+    <div class="screen-group-label">My Bets - follow active positions and history</div>
+    <div class="screen-item">
+      <div class="screen-name">Active Bets</div>
+      <div class="screen-jobs"><span class="job-badge">EJ1</span><span class="persona-badge">position monitoring &middot; &#11088; PRIMARY + &#129352; SECONDARY</span></div>
+      <div class="screen-desc">List of open positions: event name, direction, current market value vs entry, deadline. Drives hot-return behavior (check odds, aarrr.md retention D1-D3).</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>loading (fetching positions)</li>
+          <li>empty-new (new user, no bets placed yet: CTA to Event Feed to find events)</li>
+          <li>empty-resolved (all positions closed: CTA to History tab to see resolved bets)</li>
+          <li>error (failed to load positions - retry CTA)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="screen-item">
+      <div class="screen-name">Bet History <span style="font-size:11px;color:var(--muted);font-weight:400">(History tab inside My Bets - G5 merge)</span></div>
+      <div class="screen-jobs"><span class="job-badge">EJ1</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
+      <div class="screen-desc">Private view of one's own resolved bets: won/lost, payout, event outcome. The public track record lives on My Profile and Public Profile, not here. G5 resolved: Bet History is now the History tab inside My Bets, not a standalone screen.</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>loading (fetching resolved bets)</li>
+          <li>empty (no resolved bets yet: CTA to Event Feed to find events)</li>
+          <li>error (failed to load resolved bets - retry CTA)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTIFICATIONS -->
+  <div class="screen-group">
+    <div class="screen-group-label">Notifications - return trigger</div>
+    <div class="screen-item">
+      <div class="screen-name">Notifications</div>
+      <div class="screen-jobs"><span class="job-badge">FJ1</span><span class="job-badge">FJ5</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
+      <div class="screen-desc">List of unread and recent alerts: odds moved significantly &middot; event deadline approaching &middot; position resolved &middot; new event in followed category. Tapping any item navigates to the relevant screen (Event Detail or Active Bets). Notification types map directly to hot/warm return signals in aarrr.md (D1-D3).</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>loading (fetching list)</li>
+          <li>empty (no notifications yet - new user or no events followed)</li>
+          <li>error (notifications failed to load - retry CTA)</li>
+          <li>push-permission-missing (OS push denied: show in-app banner "Enable notifications to get live updates" with system settings deep-link)</li>
+        </ul>
+        <div class="screen-note">Note: Settings / Notification Preferences remains [SIROTA] - configuring which notifications you receive is not a confirmed job. [?] Q-notif-prefs open: does the user need per-event mute controls, or is category-level preference sufficient? Defer to user testing.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WALLET -->
+  <div class="screen-group">
+    <div class="screen-group-label">Wallet - money in and out</div>
+    <div class="screen-item">
+      <div class="screen-name">Wallet</div>
+      <div class="screen-jobs"><span class="job-badge">FJ4</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
+      <div class="screen-desc">Available balance, in-play balance, transaction history (deposits, payouts, fees, withdrawals), deposit again. Funds protection message visible here too (EJ2 secondary). Single screen at this depth. Withdrawal flow (not a separate screen - a flow inside Wallet): enter amount, enter destination USDC address (MVP) or PIX (Phase 2 Brazil), confirm, states: pending/confirmed/failed. Withdrawal always in crypto (USDC) for MVP - no fiat payout rail at launch.</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>loading (initial balance fetch)</li>
+          <li>error (wallet data failed to load - retry CTA)</li>
+        </ul>
+        <div class="screen-note">Deferred state: balance-syncing (cosmetic, momentary sync delay between on-chain confirmation and UI update) - deferred to wireframe spec.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="screen-group">
+    <div class="screen-group-label">Profile - public reputation</div>
+    <div class="screen-item">
+      <div class="screen-name">My Profile</div>
+      <div class="screen-jobs"><span class="job-badge">SJ1</span><span class="job-badge">SJ2</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
+      <div class="screen-desc">Prediction track record: total bets, win rate, history of resolved bets (public). Share card gallery (past wins). Editable display name and avatar.</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>loading (profile data fetching)</li>
+          <li>error (profile failed to load - retry CTA)</li>
+        </ul>
+        <div class="screen-note">Deferred state: empty-state (cosmetic, first-time user with no predictions yet) - deferred to wireframe spec.</div>
+      </div>
+    </div>
+    <div class="screen-item">
+      <div class="screen-name">Public Profile <span style="font-size:11px;color:var(--muted);font-weight:400">(another user)</span></div>
+      <div class="screen-jobs"><span class="job-badge">SJ2</span><span class="persona-badge">&#129352; SECONDARY &gt; &#11088; PRIMARY</span></div>
+      <div class="screen-desc">Same data as My Profile, read-only, for another user. Dan uses this more (reputation-first behavior). Alex arrives here via a shared win card - secondary path. Reachable ONLY via external shared-card link at MVP (G3 decision). No in-app discovery.</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>loading (profile data fetching)</li>
+          <li>error (failed to load: retry CTA or return to Event Feed)</li>
+          <li>not-found / link-expired (this profile no longer exists or the link has expired: CTA to Event Feed)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="screen-group">
+    <div class="screen-group-label">How It Works - trust anchor</div>
+    <div class="screen-item">
+      <div class="screen-name">How It Works</div>
+      <div class="screen-jobs"><span class="job-badge">FJ4</span><span class="job-badge">EJ2</span><span class="persona-badge">&#11088; PRIMARY</span></div>
+      <div class="screen-desc">Funds protection (one sentence: "Your USDC is held 1:1"), resolution process (who decides, what evidence, on-chain proof), resolved markets count as social proof. Not a FAQ - a trust declaration, written as a promise. Pre-bet trust signal for new users who want to understand before committing money. Reachable from Deposit screen and from main navigation - accessible before deposit.</div>
+    </div>
+  </div>
+
+  <!-- ORPHANS -->
+  <div class="screen-group">
+    <div class="screen-group-label" style="color:rgba(255,95,95,.7)">Orphans [SIROTA] - no confirmed job maps here</div>
+    <p style="font-size:13px;color:#888;margin-bottom:12px">Do not build until a job is confirmed.</p>
+    <div class="screen-item sirota">
+      <div class="screen-name">Settings / Notification Preferences <span class="job-badge sirota-badge">SIROTA</span></div>
+      <div class="screen-desc" style="color:#777">Notification prefs are adjacent to FJ1 return path but no job in jtbd.md requires a settings screen.</div>
+    </div>
+    <div class="screen-item sirota">
+      <div class="screen-name">Leaderboard <span class="job-badge sirota-badge">SIROTA</span></div>
+      <div class="screen-desc" style="color:#777">No confirmed job. SJ2 is served by Profile. Leaderboard is a view, not a job-closing screen.</div>
+    </div>
+    <div class="screen-item sirota">
+      <div class="screen-name">Help / FAQ <span class="job-badge sirota-badge">SIROTA</span></div>
+      <div class="screen-desc" style="color:#777">EJ2 is served by Deposit + How It Works. A generic FAQ adds friction without closing a job.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NAVIGATION -->
+<section id="navigation">
+  <div class="section-label">Navigation</div>
+  <h2>Navigation design</h2>
+
+  <h3>User-model rationale</h3>
+  <p>Navigation is derived from the user's job sequence, not from a competitor tab bar. The primary path is: <strong>follow an event</strong> (find what is happening in the world) - <strong>place a stake</strong> (confirm your opinion with real money) - <strong>watch the position move</strong> (return to track odds) - <strong>return for the resolution</strong> (see what happened and how you did) - <strong>build reputation</strong> (show you were right). Each bottom-nav slot maps directly to one phase of this loop. Service-layer concerns - money, history, other users, help - live at the second level or are invoked in context, never a scarce top-level slot.</p>
+
+  <h3>Alternative considered and set aside</h3>
+  <p>A 3-slot version placing Notifications as a header bell icon was considered and set aside. The unread badge must be permanently visible in the thumb zone to drive hot/warm return (FJ1, FJ5, EJ3 depend on it; aarrr.md D1-D3). A header bell is easy to miss on mobile. The badge in the bottom bar earns its slot.</p>
+
+  <h3>Bottom navigation - 4 slots</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Label</th><th>Opens</th><th>Jobs served</th><th>Why it earns a top-level slot</th></tr></thead>
+      <tbody>
+        <tr><td class="label">1</td><td class="nav-slot">Events</td><td>Event Feed</td><td><code>FJ1</code> <code>FJ2</code> <code>MJ</code></td><td>The entry point. Users open the app because something happened in the world. Every session starts here.</td></tr>
+        <tr><td class="label">2</td><td class="nav-slot">My Bets</td><td>Active Bets (two tabs: Active / History)</td><td><code>EJ1</code> <code>MJ</code> <code>FJ5</code> <code>EJ3</code></td><td>The position monitor. Users return to track odds movement and see resolved bets. History tab implements G5: Bet History becomes a tab inside Active Bets, not a standalone screen.</td></tr>
+        <tr><td class="label">3</td><td class="nav-slot">Notifications</td><td>Notifications list</td><td><code>FJ1</code> <code>FJ5</code> <code>EJ3</code></td><td>The return trigger. Badge drives hot/warm return (aarrr.md D1-D3). Without a permanent bottom slot with unread count, FJ1/FJ5/EJ3 depend on OS alerts only with no in-app recovery path for missed alerts.</td></tr>
+        <tr><td class="label">4</td><td class="nav-slot">Profile</td><td>My Profile</td><td><code>SJ1</code> <code>SJ2</code></td><td>Reputation is a first-class product value for the News Junkie: "I was right, publicly." Not an account settings screen - earns a slot as the identity surface.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Header and second-level</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Entry</th><th>Where</th><th>Why NOT a bottom slot</th></tr></thead>
+      <tbody>
+        <tr><td class="label">Wallet / Deposit</td><td>Header icon (wallet icon), also accessible via Profile</td><td>Money is not why users open the app. Re-deposit for returning users is solved in context: Bet Screen insufficient-balance state invokes Deposit directly (1 step). A Wallet bottom slot would signal "trading terminal." (G4 decision)</td></tr>
+        <tr><td class="label">How It Works</td><td>Header info icon accessible from Events; also linked from Deposit</td><td>Pre-bet trust signal for new users, reachable before deposit and before sign-in. Not a recurring destination - a one-time reassurance step inside FJ4/EJ2. A bottom slot would waste a scarce position on a screen most users visit once.</td></tr>
+        <tr><td class="label">My Profile (avatar)</td><td>Header avatar shortcut in addition to Profile tab</td><td>Quick identity access without leaving the Events context. Does not replace the Profile bottom slot.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Not navigation destinations</h3>
+  <p>Reached only inside a flow, triggered by a user action. Never a bottom-nav slot.</p>
+  <ul class="not-dest-list">
+    <li><strong>Bet Screen</strong> - invoked when user taps YES or NO on Event Detail.</li>
+    <li><strong>Win Screen</strong> - invoked when a bet resolves with a win (via notification or resolved item in Active Bets).</li>
+    <li><strong>Loss Screen</strong> - invoked when a bet resolves with a loss (G1 direct: 1 tap from resolution notification; or via resolved item in Active Bets).</li>
+    <li><strong>Sign In / Register</strong> - invoked at the activation gate (Confirm tap on Bet Screen), never before bet intent.</li>
+    <li><strong>Deposit</strong> - invoked at the activation gate (News Junkie path post-auth) and from Wallet (standalone top-up).</li>
+  </ul>
+
+  <h3>Deferred</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Item</th><th>Status</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td class="label">Public Profile</td><td>Deferred to post-MVP (G3)</td><td>Reachable only via external shared-card link for MVP. No in-app discovery at 10-20 curated markets. In-app path added when leaderboard or social discovery is confirmed.</td></tr>
+        <tr><td class="label">Search</td><td>Deferred until catalog scale</td><td>At 10-20 curated markets, users scan the Event Feed; they do not search. Search does not close a confirmed job at this scale. When added, it attaches to the Events tab under FJ1 - not a bottom slot.</td></tr>
+        <tr><td class="label">Leaderboard</td><td>[SIROTA]</td><td>No confirmed job. SJ2 is served by My Profile and Public Profile. Leaderboard is a view over profiles, not a job-closing destination.</td></tr>
+        <tr><td class="label">Responsible-play slot (D-logic)</td><td>Reserved, post-MVP, not built</td><td>Account-level deposit and loss limits, cooldown period, self-exclusion. Mandatory for Brazil Phase 2 (Law 14.790 / Ordinance 1,231 self-exclusion and responsible-gambling requirements). Do not discover this late.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- DEPTH MAP -->
+<section id="depth-map">
+  <div class="section-label">Depth Map</div>
+  <h2>Navigation depth</h2>
+  <p>Depth for each screen in the inventory. Used to verify the 3-tap rule for the primary persona (Alex, News Junkie).</p>
+
+  <h3>Hierarchy</h3>
+  <div class="depth-tree">
+    <div class="l0">Level 0 - bottom nav destinations (1 tap from anywhere in the app)</div>
+    <div class="l1">Events</div>
+    <div class="l1-sub">Event Feed</div>
+    <div class="l1">My Bets</div>
+    <div class="l1-sub">Active Bets (Active tab - default view)</div>
+    <div class="l1-sub">Bet History (History tab inside My Bets - G5 merge)</div>
+    <div class="l1">Notifications</div>
+    <div class="l1-sub">Notifications list</div>
+    <div class="l1">Profile</div>
+    <div class="l1-sub">My Profile</div>
+    <br>
+    <div class="l0">Level 1 - one tap below a Level 0 screen</div>
+    <div class="l1">under Events:</div>
+    <div class="l1-sub">Event Detail (tap any event card on Event Feed)</div>
+    <div class="l1">under Profile (via header - available at Level 0):</div>
+    <div class="l1-sub">Wallet (tap header wallet icon)</div>
+    <div class="l1-sub">How It Works (tap header info icon, also linked from Deposit)</div>
+    <br>
+    <div class="l0">Flow / invoked - reached only inside a flow, not via nav bar</div>
+    <div class="linvoked">Bet Screen &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; invoked: tap YES or NO on Event Detail</div>
+    <div class="linvoked">Win Screen &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; invoked: bet resolves as win (notification tap or Active Bets resolved item)</div>
+    <div class="linvoked">Loss Screen &nbsp;&nbsp;&nbsp;&nbsp; invoked: bet resolves as loss (G1: notification tap direct; or Active Bets resolved item)</div>
+    <div class="linvoked">Sign In / Register &nbsp; invoked: activation gate (Confirm tap on Bet Screen)</div>
+    <div class="linvoked">Deposit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; invoked: activation gate (News Junkie path) or Wallet top-up button</div>
+    <div class="linvoked">Public Profile &nbsp;&nbsp;&nbsp;&nbsp; invoked: external shared-card link only (no in-app nav at MVP)</div>
+  </div>
+
+  <h3>Depth check - primary persona (Alex, News Junkie)</h3>
+  <div class="depth-check">
+    <div class="depth-check-item">
+      <div class="depth-path">MJ main job: Event Feed - Event Detail - Bet Screen</div>
+      <p style="font-size:13px;color:#999;margin:6px 0">Events tab (Level 0) - tap event card - Event Detail (1 tap) - tap YES or NO - Bet Screen (2 taps) - Confirm (3 taps, activation gate fires here).</p>
+      <div class="depth-result">Result: 2 taps to reach Bet Screen, 3 taps to trigger the gate. Within the 3-tap rule. Confirmed.</div>
+    </div>
+    <div class="depth-check-item">
+      <div class="depth-path">G1 retention path: resolution notification - Loss Screen</div>
+      <p style="font-size:13px;color:#999;margin:6px 0">Tap resolution notification (OS banner or Notifications list item) - Loss Screen directly (1 tap). Matches the G1 edge in IA/flows.md FJ5. The manual fallback path (My Bets - tap resolved item - Loss Screen) is 2 taps. G1 cuts this to 1 tap so the resolution note reaches the user before the impulse to chase.</p>
+      <div class="depth-result">Result: 1 tap from notification. Confirmed.</div>
+    </div>
+    <div class="depth-check-item">
+      <div class="depth-path">Win Screen retention path: win resolution notification - Win Screen</div>
+      <p style="font-size:13px;color:#999;margin:6px 0">Tap win resolution notification (OS banner or Notifications list item) - Win Screen directly (1 tap). Matches the G1-equivalent edge in IA/flows.md SJ1. The manual fallback path (My Bets - History tab - tap won item - Win Screen) is 2 taps. Ensures the share impulse window is not missed (SJ1).</p>
+      <div class="depth-result">Result: 1 tap from notification. Confirmed.</div>
+    </div>
+    <div class="depth-check-item">
+      <div class="depth-path">Returning-user re-deposit</div>
+      <p style="font-size:13px;color:#999;margin:6px 0">Bet Screen insufficient-balance state shows inline: "you have $X, can bet up to $X or deposit more" with a direct CTA to Deposit.</p>
+      <div class="depth-result">Result: invoked in context from Bet Screen, 1 step. Not a multi-tap trip to Wallet. Confirmed.</div>
+    </div>
+    <div class="depth-check-item">
+      <div class="depth-path">Proactive top-up: header wallet icon - Wallet - Deposit</div>
+      <p style="font-size:13px;color:#999;margin:6px 0">Tap header wallet icon - Wallet (1 tap) - Deposit CTA - Deposit (2 taps).</p>
+      <div class="depth-result">Result: 2 taps, acceptable.</div>
+    </div>
+  </div>
+
+  <h3>Depth risks</h3>
+  <div class="depth-flag">
+    No depth risks for the primary persona's confirmed jobs at this navigation structure. All primary-persona paths reach their destination in 3 taps or fewer, with contextual shortcuts where the job depends on speed (G1, re-deposit).<br><br>
+    <strong style="color:#e8b96c">Flag for wireframes:</strong> the manual path to Loss Screen via My Bets depends on the user noticing the resolved item in Active Bets. Consider a resolved-bets badge or a "recently resolved" section above the fold in Active Bets so the item is not missed below active positions.
+  </div>
+</section>
+
+<!-- TRACING -->
+<section id="tracing">
+  <div class="section-label">Tracing</div>
+  <h2>Job coverage matrix</h2>
+  <p>Jobs: 11 confirmed (MJ + FJ1-5 + EJ1-3 + SJ1-2). HJ1-4 excluded - hypotheses without data, not confirmed jobs.</p>
+  <p class="inline-note">&#10003; = screen genuinely participates in closing the job. Empty = does not. OB (Onboarding) column removed - screen removed. BH &times; SJ2 corrected: Bet History is a private view, SJ2 requires public visibility.</p>
+
+  <div class="matrix-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Job</th>
+          <th title="Event Feed">EF</th>
+          <th title="Event Detail">ED</th>
+          <th title="Sign In / Register">SI</th>
+          <th title="Deposit">DEP</th>
+          <th title="Bet Screen">BS</th>
+          <th title="Win Screen">WS</th>
+          <th title="Loss Screen">LS</th>
+          <th title="Active Bets">AB</th>
+          <th title="Bet History">BH</th>
+          <th title="Wallet">WA</th>
+          <th title="My Profile">MP</th>
+          <th title="Public Profile">PP</th>
+          <th title="How It Works">HIW</th>
+          <th title="Notifications">NT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="matrix-job">MJ</span><br><span class="matrix-sub">real stake on an event</span></td>
+          <td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+        </tr>
+        <tr>
+          <td><span class="matrix-job">FJ1</span><br><span class="matrix-sub">find event while still relevant</span></td>
+          <td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td>
+        </tr>
+        <tr>
+          <td><span class="matrix-job">FJ2</span><br><span class="matrix-sub">understand why market prices it that way</span></td>
+          <td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+        </tr>
+        <tr>
+          <td><span class="matrix-job">FJ3</span><br><span class="matrix-sub">bet without crypto barrier</span></td>
+          <td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+        </tr>
+        <tr>
+          <td><span class="matrix-job">FJ4</span><br><span class="matrix-sub">feel confident money is safe</span></td>
+          <td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td>
+        </tr>
+        <tr>
+          <td><span class="matrix-job">FJ5</span><br><span class="matrix-sub">survive loss without chasing</span></td>
+          <td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td>
+        </tr>
+        <tr>
+          <td><span class="matrix-job">EJ1</span><br><span class="matrix-sub">feel I understand better than most</span></td>
+          <td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+        </tr>
+        <tr>
+          <td><span class="matrix-job">EJ2</span><br><span class="matrix-sub">feel safe before first deposit</span></td>
+          <td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td>
+        </tr>
+        <tr>
+          <td><span class="matrix-job">EJ3</span><br><span class="matrix-sub">exit loss consciously</span></td>
+          <td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+        </tr>
+        <tr>
+          <td><span class="matrix-job">SJ1</span><br><span class="matrix-sub">show that I was right</span></td>
+          <td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+        </tr>
+        <tr>
+          <td><span class="matrix-job">SJ2</span><br><span class="matrix-sub">build a public track record</span></td>
+          <td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+        </tr>
+        <tr class="cov-row">
+          <td><strong>Coverage (jobs)</strong></td>
+          <td class="cov-3">4</td><td class="cov-3">4</td><td class="cov-2">2</td><td class="cov-4">4</td><td class="cov-2">2</td><td class="cov-3">3</td><td class="cov-3">3</td><td class="cov-4">4</td><td class="cov-1">1</td><td class="cov-2">2</td><td class="cov-3">3</td><td class="cov-1">1</td><td class="cov-2">2</td><td class="cov-2">2</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="legend">
+    <span>EF = Event Feed</span>
+    <span>ED = Event Detail</span>
+    <span>SI = Sign In / Register</span>
+    <span>DEP = Deposit</span>
+    <span>BS = Bet Screen</span>
+    <span>WS = Win Screen</span>
+    <span>LS = Loss Screen</span>
+    <span>AB = Active Bets</span>
+    <span>BH = Bet History</span>
+    <span>WA = Wallet</span>
+    <span>MP = My Profile</span>
+    <span>PP = Public Profile</span>
+    <span>HIW = How It Works</span>
+    <span>NT = Notifications</span>
+  </div>
+
+  <h3 style="margin-top:32px">Row coverage (screens per job)</h3>
+  <p style="font-size:13px;color:#888">MJ 8 &middot; FJ1 3 &middot; FJ2 2 &middot; FJ3 4 &middot; FJ4 3 &middot; FJ5 3 &middot; EJ1 5 &middot; EJ2 3 &middot; EJ3 2 &middot; SJ1 2 &middot; SJ2 2</p>
+
+  <h3 style="margin-top:32px">Non-trivial checkmark rationale</h3>
+  <div class="rationale-item"><div class="rationale-cell">FJ2 + EF</div><div class="rationale-text">Event Feed in story-driven mode shows context on the card (not just %), partially closes "why this probability" before the user taps into detail.</div></div>
+  <div class="rationale-item"><div class="rationale-cell">EJ2 + EF</div><div class="rationale-text">First impression of the product (benchmark-trust C5: 5/5 Bet365) is Event Feed without registration. Cognitive clarity on the first screen = first layer of EJ2.</div></div>
+  <div class="rationale-item"><div class="rationale-cell">FJ3 + BS</div><div class="rationale-text">Bet Screen has $5 default pre-fill, quick-select buttons, and fee display - this is "bet without learning unfamiliar technology" at the confirm step.</div></div>
+  <div class="rationale-item"><div class="rationale-cell">EJ1 + ED</div><div class="rationale-text">Knowledge validation: user sees the probability and compares it to their own forecast - "market thinks 67%, I know better." The sense of edge emerges here.</div></div>
+  <div class="rationale-item"><div class="rationale-cell">EJ1 + AB</div><div class="rationale-text">Tracking price movement of their position (position monitoring) - intermediate confirmation that "I was right, price is moving my way."</div></div>
+  <div class="rationale-item"><div class="rationale-cell">FJ3 + WA</div><div class="rationale-text">Wallet "Deposit again" button - re-entry into the top-up flow without a crypto barrier, for returning users.</div></div>
+
+  <h3 style="margin-top:32px">Defects</h3>
+
+  <div class="defect-item ok">
+    <div class="defect-title">Screen orphans</div>
+    <div class="defect-desc">No orphans. All 14 screens are covered by at least one confirmed job. Minimally covered screens (1 job): Public Profile (SJ2) and Bet History (EJ1) - both justified (see below).</div>
+  </div>
+  <div class="defect-item ok">
+    <div class="defect-title">Job orphans</div>
+    <div class="defect-desc">No orphans. All 11 confirmed jobs are covered by at least one screen. Minimally covered jobs: FJ1 (EF + ED + NT), FJ5 (LS + AB + NT), EJ3 (LS + AB) - dependency on Notifications gap was found and closed by adding NT column.</div>
+  </div>
+
+  <p style="font-size:13px;color:#888;margin-top:16px">Minimally covered screens worth attention:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Screen</th><th>Jobs</th><th>Risk</th></tr></thead>
+      <tbody>
+        <tr><td class="label">Public Profile</td><td>SJ2 (1 job)</td><td>Weakest coverage. Justified: SJ2 requires other users to see the track record - without this screen the job physically cannot close.</td></tr>
+        <tr><td class="label">Bet Screen</td><td>MJ + FJ3 (2 jobs)</td><td>Narrow role - a focused action screen. Normal. Keep.</td></tr>
+        <tr><td class="label">Bet History</td><td>EJ1 (1 job)</td><td>BH x SJ2 removed: Bet History is a private view, SJ2 requires public-facing visibility. Lowest coverage in matrix. G5 merge resolves placement.</td></tr>
+        <tr><td class="label">Wallet</td><td>FJ3 + FJ4 (2 jobs)</td><td>Financial hub with a narrow role. Without it there is nowhere to see balance or initiate withdrawal. Keep.</td></tr>
+        <tr><td class="label">How It Works</td><td>FJ4 + EJ2 (2 jobs)</td><td>Pre-deposit access confirmed: reachable from main nav before deposit, not restricted to gate flow. Keep.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:32px">Tracing conclusion</h3>
+  <p>No confirmed orphans. Matrix is closed: all 14 matrix columns have a job (Onboarding removed), all 11 jobs have a screen. G5 resolved: Bet History is now a History tab inside My Bets, not a standalone screen. Standalone screen count is 13 (matrix columns unchanged at 14 - BH column preserved, now represents the History tab).</p>
+  <p>One systemic gap was found and closed during tracing: FJ1 / FJ5 / EJ3 depended on the Notification entity with no screen of its own. Notifications (NT) added to sitemap and matrix - gap resolved.</p>
+
+  <h3 style="margin-top:32px">Navigation design decisions (resolved)</h3>
+  <div class="decision-item"><div class="decision-code">G1 nav</div><div class="decision-text">Deep-link routing: notification tap opens target (Loss Screen, Event Detail) modally over the current tab. Back returns to prior context. 1 tap from OS banner or Notifications list item to Loss Screen (G1 direct path).</div></div>
+  <div class="decision-item"><div class="decision-code">G3</div><div class="decision-text">Public Profile reachable only via external shared-card link for MVP. No in-app discovery. Added when leaderboard or social features are confirmed.</div></div>
+  <div class="decision-item"><div class="decision-code">G4</div><div class="decision-text">Wallet and Deposit live in the header (wallet icon), not a bottom-nav slot. Re-deposit is invoked from Bet Screen insufficient-balance state - 1 step in context.</div></div>
+  <div class="decision-item"><div class="decision-code">G5</div><div class="decision-text">Bet History merged as History tab inside My Bets. EJ1 coverage preserved (private resolved bets view). Standalone screen count drops from 14 to 13; matrix column BH retained.</div></div>
+  <div class="decision-item"><div class="decision-code">S11</div><div class="decision-text">Simultaneous resolutions: show a sequence of separate Win/Loss screens, swipeable. No aggregated Resolution Summary screen at MVP. Wireframe-spec detail, not a navigation slot.</div></div>
+
+  <h3 style="margin-top:32px">Backlog (open)</h3>
+  <p style="font-size:13px;color:#888">Settings / Notification Preferences - remains [SIROTA] until a job is confirmed. &nbsp;|&nbsp; Search - deferred until catalog scale (see Navigation - Deferred section).</p>
+</section>
+
+</main>
+
+<script>
+const toggle = document.getElementById('menuToggle')
+const overlay = document.getElementById('sidebarOverlay')
+const sidebar = document.getElementById('sidebar')
+toggle.addEventListener('click', () => { sidebar.classList.toggle('open'); overlay.classList.toggle('open') })
+overlay.addEventListener('click', () => { sidebar.classList.remove('open'); overlay.classList.remove('open') })
+
+const subLinks = document.querySelectorAll('.sidebar-sub-link')
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      subLinks.forEach(l => l.classList.remove('active'))
+      const link = document.querySelector(`.sidebar-sub-link[href="#${e.target.id}"]`)
+      if (link) link.classList.add('active')
+    }
+  })
+}, { rootMargin: '-15% 0px -75% 0px' })
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s))
+</script>
+
+</body>
+</html>

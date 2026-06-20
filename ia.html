@@ -1,0 +1,478 @@
+<!-- Static snapshot of IA/sitemap.md and IA/flows.md, regenerate with this pass if the source changes. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA Overview - Prediction Market Platform</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* SIDEBAR */
+  .sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; scrollbar-width: none; z-index: 200; transform: translateX(-100%); transition: transform .25s cubic-bezier(.4,0,.2,1); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar::-webkit-scrollbar { display: none; }
+  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 199; backdrop-filter: blur(2px); }
+  .sidebar-overlay.open { display: block; }
+  .menu-toggle { position: fixed; top: 12px; left: 12px; z-index: 201; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; width: 36px; height: 36px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; padding: 0; }
+  .menu-toggle span { display: block; width: 15px; height: 1.5px; background: var(--text); border-radius: 1px; }
+  .sidebar-brand { padding: 20px 16px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .sidebar-project-name { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); line-height: 1.4; }
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+  .sidebar-page-link { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 500; color: var(--text); text-decoration: none; padding: 7px 16px; transition: background .15s; cursor: pointer; user-select: none; }
+  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
+  .sidebar-page-link.active { color: var(--accent); }
+  .sidebar-page-link.planned { color: var(--muted); cursor: default; opacity: .6; }
+  .sidebar-page-link.planned::after { content: 'Soon'; font-size: 9px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; background: rgba(255,255,255,.04); color: var(--muted); padding: 2px 5px; border-radius: 3px; border: 1px solid var(--border); }
+  .sidebar-sub { padding: 2px 0 8px; }
+  .sidebar-sub-link { display: block; font-size: 12px; color: var(--muted); text-decoration: none; padding: 5px 16px 5px 28px; transition: color .15s; position: relative; }
+  .sidebar-sub-link:hover { color: var(--text); }
+  .sidebar-sub-link.active { color: var(--text); }
+  .sidebar-sub-link.active::before { content: ''; position: absolute; left: 17px; top: 50%; transform: translateY(-50%); width: 3px; height: 3px; border-radius: 50%; background: var(--accent); }
+  .sidebar-divider { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 16px 16px 6px; opacity: .45; }
+
+  /* LAYOUT */
+  main { padding: 60px 20px 80px; }
+  @media (min-width: 860px) { .sidebar { transform: translateX(0); transition: none; } .sidebar-overlay { display: none !important; } .menu-toggle { display: none; } main { margin-left: 220px; padding: 48px 48px 120px; } }
+  section { padding-top: var(--gap); margin-top: var(--gap); border-top: 1px solid var(--border); }
+  section:first-child { border-top: none; }
+
+  /* TYPOGRAPHY */
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 16px; }
+  h2 { font-size: 22px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 20px; }
+  h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 12px; margin-top: 32px; }
+  h3:first-child { margin-top: 0; }
+  p { color: #aaa; margin-bottom: 12px; max-width: 680px; }
+  strong { color: var(--text); font-weight: 600; }
+  .lead { font-size: 16px; color: #bbb; max-width: 640px; margin-bottom: 32px; line-height: 1.7; }
+  .hero { padding-top: 0; border-top: none; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(200,255,0,.2); }
+  .tag.grey { background: rgba(255,255,255,.04); color: var(--muted); border-color: var(--border); }
+  .hero-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+
+  /* QUICK LINKS */
+  .quick-links { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+  .quick-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--text); text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); transition: border-color .15s, background .15s; }
+  .quick-link:hover { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+
+  /* USER LOOP */
+  .loop-steps { display: flex; gap: 0; margin-top: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .loop-step { padding: 10px 16px; background: var(--surface); border: 1px solid var(--border); border-right: none; font-size: 13px; color: #bbb; }
+  .loop-step:first-child { border-radius: 6px 0 0 6px; }
+  .loop-step:last-child { border-right: 1px solid var(--border); border-radius: 0 6px 6px 0; }
+  .loop-step .step-num { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 2px; }
+  @media (max-width: 600px) { .loop-step { border-right: 1px solid var(--border); border-radius: 6px; margin-bottom: 4px; } }
+
+  /* SCREEN TREE */
+  .tree { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 20px; margin-top: 16px; }
+  .tree-l0 { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+  .tree-l0:last-child { border-bottom: none; margin-bottom: 0; }
+  .tree-slot { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; min-width: 80px; }
+  .tree-screen { font-size: 13px; font-weight: 600; color: var(--text); }
+  .tree-jobs { font-size: 11px; color: var(--muted); margin-left: 8px; }
+  .tree-l1s { display: flex; flex-direction: column; gap: 3px; margin-left: 20px; padding: 4px 0; }
+  .tree-l1 { font-size: 12px; color: #999; padding: 2px 0; }
+  .tree-l1 .t-screen { color: var(--text); font-weight: 500; }
+  .tree-l1 .t-job { color: var(--muted); font-size: 11px; }
+
+  /* NAV COMPACT */
+  .nav-compact { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 16px; }
+  .nav-slot-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; }
+  .nav-slot-num { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+  .nav-slot-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .nav-slot-opens { font-size: 12px; color: #999; margin-bottom: 4px; }
+  .nav-slot-jobs { font-size: 11px; color: var(--muted); }
+  .header-items { font-size: 13px; color: #999; margin-top: 12px; padding: 10px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
+
+  /* DEPTH SUMMARY */
+  .depth-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 16px; }
+  .depth-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; }
+  .depth-card .d-label { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
+  .depth-card .d-path { font-size: 12px; color: #bbb; margin-bottom: 6px; }
+  .depth-card .d-result { font-size: 12px; font-weight: 700; color: var(--green); }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--r); margin-top: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th { background: var(--surface); color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: #c8c8c8; vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,.015); }
+  td.check { color: var(--accent); font-weight: 700; text-align: center; }
+  td.empty { color: var(--border); text-align: center; }
+  td.cov { font-family: var(--mono); font-size: 11px; font-weight: 700; text-align: center; }
+  td.cov-hi { color: var(--green); }
+  td.cov-lo { color: #e89c9c; }
+  td.job-name { font-weight: 600; color: var(--text); white-space: nowrap; font-size: 12px; }
+
+  /* MERMAID */
+  .mermaid-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; overflow-x: auto; margin-top: 16px; }
+  .mermaid { min-width: 400px; }
+
+  /* MORE LINK */
+  .more-link { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted); text-decoration: none; }
+  .more-link:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="research.html" class="sidebar-page-link">Research</a>
+    <a href="personas.html" class="sidebar-page-link">Personas</a>
+    <a href="jtbd.html" class="sidebar-page-link">JTBD</a>
+    <div class="sidebar-divider">Information Architecture</div>
+    <a href="ia.html" class="sidebar-page-link active">Overview</a>
+    <div class="sidebar-sub">
+      <a href="#intro" class="sidebar-sub-link">Intro</a>
+      <a href="#screen-tree" class="sidebar-sub-link">Screen Tree</a>
+      <a href="#nav-design" class="sidebar-sub-link">Navigation</a>
+      <a href="#depth" class="sidebar-sub-link">Depth</a>
+      <a href="#main-flow" class="sidebar-sub-link">Main Flow</a>
+      <a href="#coverage" class="sidebar-sub-link">Coverage</a>
+    </div>
+    <a href="sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <a href="flows.html" class="sidebar-page-link">Flows</a>
+    <div class="sidebar-divider">Plan</div>
+    <a class="sidebar-page-link planned">Wireframes</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<main>
+
+<!-- INTRO -->
+<section class="hero" id="intro">
+  <div class="hero-meta">
+    <span class="tag">Information Architecture</span>
+    <span class="tag grey">Prediction Market Platform</span>
+    <span class="tag grey">MVP · 2026</span>
+  </div>
+  <h1>IA Overview</h1>
+  <p class="lead">A mobile-first Web3 prediction market where users bet YES/NO on real-world events using stablecoins. The differentiator is clarity for new users - everyone always understands what they're doing and what happens next.</p>
+
+  <div class="quick-links">
+    <a href="sitemap.html" class="quick-link">Full Sitemap &rarr;</a>
+    <a href="flows.html" class="quick-link">All Flows &rarr;</a>
+  </div>
+
+  <h3>The user loop</h3>
+  <div class="loop-steps">
+    <div class="loop-step"><div class="step-num">1</div>Follow</div>
+    <div class="loop-step"><div class="step-num">2</div>Stake</div>
+    <div class="loop-step"><div class="step-num">3</div>Watch</div>
+    <div class="loop-step"><div class="step-num">4</div>Resolve</div>
+    <div class="loop-step"><div class="step-num">5</div>Reputation</div>
+  </div>
+  <p style="font-size:13px;color:#777">Each bottom-nav slot maps to one phase of this loop. Sources: IA/sitemap.md and IA/flows.md.</p>
+</section>
+
+<!-- SCREEN TREE -->
+<section id="screen-tree">
+  <div class="section-label">Screen Tree</div>
+  <h2>Level 0 and Level 1 screens</h2>
+  <p>13 standalone screens total. Level 0 = bottom nav destinations. Level 1 = one tap from Level 0. Flow/invoked screens are reached only inside a flow.</p>
+
+  <div class="tree">
+    <div class="tree-l0">
+      <span class="tree-slot">Events</span>
+      <div>
+        <div class="tree-screen">Event Feed <span class="tree-jobs">(FJ1)</span></div>
+        <div class="tree-l1s">
+          <div class="tree-l1"><span class="t-screen">Event Detail</span> <span class="t-job">(FJ2 &middot; MJ)</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-l0">
+      <span class="tree-slot">My Bets</span>
+      <div>
+        <div class="tree-screen">Active Bets <span class="tree-jobs">(EJ1)</span></div>
+        <div class="tree-l1s">
+          <div class="tree-l1"><span class="t-screen">Bet History tab</span> <span class="t-job">(EJ1 - G5 merge, History tab inside Active Bets)</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-l0">
+      <span class="tree-slot">Notifications</span>
+      <div>
+        <div class="tree-screen">Notifications list <span class="tree-jobs">(FJ1 &middot; FJ5)</span></div>
+      </div>
+    </div>
+    <div class="tree-l0">
+      <span class="tree-slot">Profile</span>
+      <div>
+        <div class="tree-screen">My Profile <span class="tree-jobs">(SJ1 &middot; SJ2)</span></div>
+        <div class="tree-l1s">
+          <div class="tree-l1"><span class="t-screen">Wallet</span> <span class="t-job">(FJ4 - header wallet icon)</span></div>
+          <div class="tree-l1"><span class="t-screen">How It Works</span> <span class="t-job">(FJ4 &middot; EJ2 - header info icon)</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-l0" style="opacity:.65;border-top:1px solid var(--border);margin-top:8px;padding-top:8px">
+      <span class="tree-slot" style="color:var(--muted)">Flow only</span>
+      <div style="font-size:12px;color:#777;line-height:1.8">
+        Bet Screen (YES/NO tap on Event Detail) &middot; Win Screen (win notification or Active Bets resolved item) &middot; Loss Screen (G1: win notification 1 tap; or Active Bets resolved item) &middot; Sign In / Register (gate at Confirm) &middot; Deposit (gate; or Wallet top-up) &middot; Public Profile (external link only - G3)
+      </div>
+    </div>
+  </div>
+
+  <a href="sitemap.html#screens" class="more-link">Full screen detail with states &rarr; sitemap.html</a>
+</section>
+
+<!-- NAVIGATION -->
+<section id="nav-design">
+  <div class="section-label">Navigation</div>
+  <h2>Bottom navigation - 4 slots</h2>
+  <p>Derived from the follow-stake-watch-resolve-reputation loop, not from any competitor tab bar. Money, help, and other users' profiles are second-level - not why the user opens the app.</p>
+
+  <div class="nav-compact">
+    <div class="nav-slot-card">
+      <div class="nav-slot-num">Slot 1</div>
+      <div class="nav-slot-name">Events</div>
+      <div class="nav-slot-opens">Opens: Event Feed</div>
+      <div class="nav-slot-jobs">Jobs: FJ1 &middot; FJ2 &middot; MJ</div>
+    </div>
+    <div class="nav-slot-card">
+      <div class="nav-slot-num">Slot 2</div>
+      <div class="nav-slot-name">My Bets</div>
+      <div class="nav-slot-opens">Opens: Active Bets (Active / History tabs)</div>
+      <div class="nav-slot-jobs">Jobs: EJ1 &middot; MJ &middot; FJ5 &middot; EJ3</div>
+    </div>
+    <div class="nav-slot-card">
+      <div class="nav-slot-num">Slot 3</div>
+      <div class="nav-slot-name">Notifications</div>
+      <div class="nav-slot-opens">Opens: Notifications list</div>
+      <div class="nav-slot-jobs">Jobs: FJ1 &middot; FJ5 &middot; EJ3</div>
+    </div>
+    <div class="nav-slot-card">
+      <div class="nav-slot-num">Slot 4</div>
+      <div class="nav-slot-name">Profile</div>
+      <div class="nav-slot-opens">Opens: My Profile</div>
+      <div class="nav-slot-jobs">Jobs: SJ1 &middot; SJ2</div>
+    </div>
+  </div>
+
+  <div class="header-items">
+    <strong>Header (not bottom nav):</strong> Wallet / Deposit (wallet icon) &middot; How It Works (info icon) &middot; My Profile avatar shortcut &nbsp;&middot;&nbsp; Money is not why users open the app (G4 decision). Re-deposit invoked from Bet Screen insufficient-balance state in context - 1 step.
+  </div>
+
+  <a href="sitemap.html#navigation" class="more-link">Full navigation rationale and deferred items &rarr; sitemap.html</a>
+</section>
+
+<!-- DEPTH -->
+<section id="depth">
+  <div class="section-label">Depth</div>
+  <h2>Depth to main job (primary persona: Alex, News Junkie)</h2>
+
+  <div class="depth-cards">
+    <div class="depth-card">
+      <div class="d-label">MJ main job</div>
+      <div class="d-path">Events (L0) &rarr; Event Detail (1 tap) &rarr; Bet Screen (2 taps) &rarr; Confirm / gate (3 taps)</div>
+      <div class="d-result">3 taps to gate. Within rule. Confirmed.</div>
+    </div>
+    <div class="depth-card">
+      <div class="d-label">G1 - Loss Screen (retention)</div>
+      <div class="d-path">Resolution notification &rarr; Loss Screen directly</div>
+      <div class="d-result">1 tap. Confirmed. Cuts impulse window.</div>
+    </div>
+    <div class="depth-card">
+      <div class="d-label">G1-equivalent - Win Screen</div>
+      <div class="d-path">Win resolution notification &rarr; Win Screen directly</div>
+      <div class="d-result">1 tap. Confirmed. Share impulse window preserved (SJ1).</div>
+    </div>
+    <div class="depth-card">
+      <div class="d-label">Re-deposit (returning user)</div>
+      <div class="d-path">Bet Screen insufficient-balance state &rarr; Deposit (inline CTA)</div>
+      <div class="d-result">1 step in context. No multi-tap trip to Wallet.</div>
+    </div>
+    <div class="depth-card">
+      <div class="d-label">Proactive top-up</div>
+      <div class="d-path">Header wallet icon &rarr; Wallet (1 tap) &rarr; Deposit CTA &rarr; Deposit (2 taps)</div>
+      <div class="d-result">2 taps. Acceptable.</div>
+    </div>
+  </div>
+
+  <a href="sitemap.html#depth-map" class="more-link">Full depth map and depth risks &rarr; sitemap.html</a>
+</section>
+
+<!-- MAIN FLOW -->
+<section id="main-flow">
+  <div class="section-label">Main Flow</div>
+  <h2>MJ - When an event I follow is approaching resolution, I want a real stake on the outcome</h2>
+  <p>The primary job. Two persona branches at the gate (News Junkie / Crypto Native). S5 AMM price reconcile before execution. <a href="flows.html" style="color:var(--muted);text-decoration:underline">See flows.html for all four flows</a> (FJ2, FJ5+EJ3, SJ1).</p>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+flowchart TD
+    walletOk{"wallet connected?"}
+    S5{"S5: AMM price moved?"}
+
+    triggerFeed(["external trigger: news, notification"])
+    triggerFeed --> EF["Event Feed"]
+    EF --> found{"found a relevant event?"}
+    found -->|"no"| T6(["T6 - empty feed"])
+    T6 -->|"subscribe"| EF
+    found -->|"yes"| ED["Event Detail"]
+
+    ED --> ctxOk{"context loaded?"}
+    ctxOk -->|"no"| T8(["T8 - load error"])
+    T8 -->|"retry"| ED
+    ctxOk -->|"yes"| wantsBet{"wants to bet?"}
+    wantsBet -->|"no"| T7(["T7 - not convinced"])
+    T7 -->|"back to feed"| EF
+    wantsBet -->|"yes"| BS1["Bet Screen (intent)"]
+
+    BS1 --> confirmedIntent{"confirms?"}
+    confirmedIntent -->|"no"| ED
+    confirmedIntent -->|"yes - gate fires"| personaType{"account type?"}
+
+    personaType -->|"News Junkie"| SI["Sign In / Register"]
+    personaType -->|"Crypto Native"| walletOk
+
+    SI --> authOk{"auth ok?"}
+    authOk -->|"no"| T5(["T5 - auth error"])
+    T5 -->|"retry"| SI
+    authOk -->|"yes"| DEP["Deposit"]
+    DEP --> depOk{"deposit ok?"}
+    depOk -->|"card declined"| T2(["T2 - card declined"])
+    T2 -->|"retry"| DEP
+    depOk -->|"KYC rejected"| T1(["T1 - KYC rejected"])
+    T1 -->|"connect USDC wallet"| walletOk
+    depOk -->|"yes"| S5
+
+    walletOk -->|"no"| T15(["T15 - connect failed"])
+    T15 -->|"retry"| walletOk
+    walletOk -->|"yes"| S5
+
+    S5 -->|"no change"| BS2["Bet Screen (execute)"]
+    S5 -->|"yes"| priceConfirm{"accept new price?"}
+    priceConfirm -->|"no"| T16(["T16 - price rejected"])
+    T16 -->|"re-evaluate"| ED
+    priceConfirm -->|"yes"| BS2
+
+    BS2 --> techOk{"registered on-chain?"}
+    techOk -->|"no"| T3(["T3 - bet failed"])
+    T3 -->|"retry"| BS2
+    techOk -->|"yes"| AB["Active Bets"]
+    AB --> mjDone(["T14 - MJ closed: bet placed"])
+    </div>
+  </div>
+
+  <a href="flows.html" class="more-link">All four flows (FJ2, FJ5+EJ3, SJ1) &rarr; flows.html</a>
+</section>
+
+<!-- COVERAGE -->
+<section id="coverage">
+  <div class="section-label">Coverage</div>
+  <h2>Job coverage summary</h2>
+  <p>11 confirmed jobs &times; 14 screens. No orphans - all jobs have a screen, all screens have a job. 13 standalone screens (Bet History is the History tab inside Active Bets after G5 merge).</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Job</th>
+          <th>EF</th><th>ED</th><th>SI</th><th>DEP</th><th>BS</th><th>WS</th><th>LS</th><th>AB</th><th>BH</th><th>WA</th><th>MP</th><th>PP</th><th>HIW</th><th>NT</th>
+          <th>Screens</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="job-name">MJ</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="cov cov-hi">8</td></tr>
+        <tr><td class="job-name">FJ1</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="cov">3</td></tr>
+        <tr><td class="job-name">FJ2</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="cov">2</td></tr>
+        <tr><td class="job-name">FJ3</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="cov">4</td></tr>
+        <tr><td class="job-name">FJ4</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="cov">3</td></tr>
+        <tr><td class="job-name">FJ5</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="cov">3</td></tr>
+        <tr><td class="job-name">EJ1</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="cov cov-hi">5</td></tr>
+        <tr><td class="job-name">EJ2</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="cov">3</td></tr>
+        <tr><td class="job-name">EJ3</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="cov">2</td></tr>
+        <tr><td class="job-name">SJ1</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="cov">2</td></tr>
+        <tr><td class="job-name">SJ2</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="cov">2</td></tr>
+        <tr style="background:rgba(255,255,255,.02)">
+          <td style="font-size:11px;color:var(--muted);font-family:var(--mono)">Jobs/screen</td>
+          <td class="cov">4</td><td class="cov">4</td><td class="cov">2</td><td class="cov cov-hi">4</td><td class="cov">2</td><td class="cov">3</td><td class="cov">3</td><td class="cov cov-hi">4</td><td class="cov cov-lo">1</td><td class="cov">2</td><td class="cov">3</td><td class="cov cov-lo">1</td><td class="cov">2</td><td class="cov">2</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:12px;color:var(--muted);margin-top:10px">EF=Event Feed &middot; ED=Event Detail &middot; SI=Sign In &middot; DEP=Deposit &middot; BS=Bet Screen &middot; WS=Win Screen &middot; LS=Loss Screen &middot; AB=Active Bets &middot; BH=Bet History &middot; WA=Wallet &middot; MP=My Profile &middot; PP=Public Profile &middot; HIW=How It Works &middot; NT=Notifications</p>
+
+  <a href="sitemap.html#tracing" class="more-link">Full tracing with rationale and defects analysis &rarr; sitemap.html</a>
+</section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'dark',
+  themeVariables: {
+    background: '#161616',
+    primaryColor: '#1e2a0e',
+    primaryTextColor: '#e8e8e8',
+    primaryBorderColor: '#c8ff00',
+    lineColor: '#444',
+    secondaryColor: '#1a1a1a',
+    tertiaryColor: '#222',
+    edgeLabelBackground: '#0e0e0e',
+    nodeTextColor: '#e8e8e8',
+    mainBkg: '#1a1a1a',
+    nodeBorder: '#333',
+    clusterBkg: '#161616',
+    titleColor: '#c8ff00',
+    fontFamily: 'Inter, system-ui, sans-serif'
+  }
+})
+
+const toggle = document.getElementById('menuToggle')
+const overlay = document.getElementById('sidebarOverlay')
+const sidebar = document.getElementById('sidebar')
+toggle.addEventListener('click', () => { sidebar.classList.toggle('open'); overlay.classList.toggle('open') })
+overlay.addEventListener('click', () => { sidebar.classList.remove('open'); overlay.classList.remove('open') })
+
+const subLinks = document.querySelectorAll('.sidebar-sub-link')
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      subLinks.forEach(l => l.classList.remove('active'))
+      const link = document.querySelector(`.sidebar-sub-link[href="#${e.target.id}"]`)
+      if (link) link.classList.add('active')
+    }
+  })
+}, { rootMargin: '-15% 0px -75% 0px' })
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s))
+</script>
+
+</body>
+</html>
