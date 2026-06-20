@@ -18,9 +18,14 @@ Single-page summary of all research phases. Open the link above in any browser -
 
 ## Repo Structure
 
-| Folder | What's inside |
+| Folder / File | What's inside |
 |---|---|
-| [`research/`](./research/) | Competitor analysis, open questions |
+| [`IA/sitemap.md`](./IA/sitemap.md) | **IA source**: entities, screens, navigation design, depth map, coverage matrix |
+| [`IA/flows.md`](./IA/flows.md) | **IA source**: four user flows (MJ, FJ2, FJ5+EJ3, SJ1) in Mermaid |
+| [`ia.html`](./ia.html) | **IA Overview** visualization: screen tree, nav, depth, MJ flow, coverage summary |
+| [`sitemap.html`](./sitemap.html) | **Sitemap** visualization: full entity/screen/nav/tracing detail |
+| [`flows.html`](./flows.html) | **Flows** visualization: all four flows rendered as Mermaid diagrams |
+| [`research/`](./research/) | Competitor analysis, strategy, JTBD, personas, AARRR |
 | [`research/screens/`](./research/screens/) | Competitor screenshots |
 | [`wireframes/`](./wireframes/) | Low-fi flows and layouts |
 | [`concept/`](./concept/) | Visual direction, moodboard |
@@ -46,7 +51,9 @@ Single-page summary of all research phases. Open the link above in any browser -
 ---
 
 ## Key Docs
-- [CLAUDE.md](./CLAUDE.md) - full project brief, principles, scope
+- [CLAUDE.md](./CLAUDE.md) - full project brief, principles, scope, IA summary
+- [IA/sitemap.md](./IA/sitemap.md) - **IA source**: entities, screens, navigation, depth map, coverage matrix
+- [IA/flows.md](./IA/flows.md) - **IA source**: four user flows (MJ, FJ2, FJ5+EJ3, SJ1)
 - [research/master-research.md](./research/master-research.md) - **Master synthesis**: all research phases in one document
 - [research/strategy.md](./research/strategy.md) - **Strategy**: objectives, audience segments, business model, riskiest assumption (replaces product-model.md)
 - [research/personas.md](./research/personas.md) - **Personas**: Alex (primary), Dan, Maria, Loss-Prone overlay - with confidence levels and post-research updates

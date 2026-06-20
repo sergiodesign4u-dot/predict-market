@@ -116,3 +116,41 @@ Users stake crypto on whether an event will happen or not, and earn/lose based o
 
 ## Team
 Solo - product, design, and development
+
+---
+
+## Information Architecture
+
+IA sources: `IA/sitemap.md` (entities, screens, navigation, depth map, tracing) and `IA/flows.md` (user flows). Visualized in `ia.html` (overview), `sitemap.html` (full detail), `flows.html` (Mermaid flows).
+
+### Top-level navigation - 4 bottom-nav slots
+
+| Slot | Label | Opens | Jobs |
+|---|---|---|---|
+| 1 | Events | Event Feed | FJ1, FJ2, MJ |
+| 2 | My Bets | Active Bets (Active + History tabs) | EJ1, MJ, FJ5, EJ3 |
+| 3 | Notifications | Notifications list | FJ1, FJ5, EJ3 |
+| 4 | Profile | My Profile | SJ1, SJ2 |
+
+Header (not bottom nav): Wallet/Deposit (wallet icon), How It Works (info icon). Money is not why users open the app (G4).
+
+### Primary screen hierarchy
+
+- Level 0: Event Feed, Active Bets, Notifications, My Profile
+- Level 1: Event Detail (under Events), Wallet and How It Works (header icons)
+- Flow/invoked: Bet Screen, Win Screen, Loss Screen, Sign In/Register, Deposit, Public Profile
+
+### Depth to main job (Alex, News Junkie)
+
+- MJ path: Events (L0) - Event Detail (1 tap) - Bet Screen (2 taps) - gate fires at Confirm (3 taps). Within 3-tap rule.
+- G1 retention path: resolution notification - Loss Screen directly, 1 tap.
+- G1-equivalent win path: win notification - Win Screen directly, 1 tap (SJ1 share impulse window preserved).
+- Re-deposit: invoked from Bet Screen insufficient-balance state, 1 step in context.
+
+### Main flow (MJ)
+
+Event Feed - found event - Event Detail - YES/NO tap - Bet Screen (intent) - Confirm gate - two branches:
+- News Junkie: Sign In/Register - Deposit - S5 reconcile - Bet Screen (execute) - Active Bets.
+- Crypto Native: wallet connect - S5 reconcile - Bet Screen (execute) - Active Bets.
+
+S5 = AMM price reconcile node (price may move during auth/deposit). Four flows total: MJ, FJ2 (understand odds), FJ5+EJ3 (conscious loss exit with friction node), SJ1 (win share, overconfidence friction per F5).
