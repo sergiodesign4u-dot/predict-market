@@ -1,6 +1,6 @@
 # Sitemap - Prediction Market Platform
 
-> Status: draft — entities + screens (step 2). Navigation and depth TBD.
+> Status: pre-wireframe refinement complete. Navigation structure and screen depth TBD (navigation design pass).
 > Built from: personas.md · jtbd.md · master-research.md
 
 ---
@@ -24,7 +24,7 @@ Without it, no job is closable.
 | Question / title | "Will X happen before [date]?" |
 | Type | Binary (YES/NO) · Multi-outcome (multiple options, each with YES/NO) |
 | Category | Politics · Crypto · Culture · General |
-| Current probability (%) | The "price" — primary display number on every card |
+| Current probability (%) | The "price" - primary display number on every card |
 | Probability chart | History of odds movement over time |
 | Context / narrative | Why this event matters, what drives the odds, key arguments for YES and NO ← **our differentiator (FJ2)** |
 | Resolution conditions | What counts as YES, what source is authoritative |
@@ -40,7 +40,7 @@ Without it, no job is closable.
 ### 2. Bet (Position)
 
 The user's stake on one side of an event. Created the moment a user places a bet.
-This is the MJ itself — the "real stake with real consequences."
+This is the MJ itself - the "real stake with real consequences."
 
 **Jobs served:** MJ · FJ3 · FJ5 · EJ1 · EJ3
 
@@ -48,8 +48,8 @@ This is the MJ itself — the "real stake with real consequences."
 |---|---|
 | Direction | YES · NO |
 | Amount staked (USDC) | What the user put in |
-| Entry probability | Odds at the moment of placing — AMM determines this |
-| Fee amount | Shown before confirmation ("platform earns $X if you win") — H6 |
+| Entry probability | Odds at the moment of placing - AMM determines this |
+| Fee amount | Shown before confirmation ("platform earns $X if you win") - H6 |
 | Potential payout | Calculated at entry, shown pre-confirmation |
 | Current value | Mark-to-market as odds move |
 | Status | Active · Won · Lost · Cancelled |
@@ -68,12 +68,12 @@ The authenticated person. Required for every job that involves memory, state, or
 
 | Field | Notes |
 |---|---|
-| Social login | Google · X (OAuth) — no password at MVP |
+| Social login | Google · X (OAuth) - no password at MVP |
 | Display name | Shown on Profile |
 | Wallet | Custodial (platform-managed) or connected self-custody |
 | KYC status | None · Level-1 via on-ramp (name+address up to $20K) · Platform-level (if triggered at $2K cumulative) |
 | Notification preferences | Which event types trigger alerts |
-| Joined date | — |
+| Joined date | - |
 
 **Related to:** Bet · Wallet · Profile · Notification
 
@@ -98,7 +98,7 @@ The user's financial state on the platform. Separate from User because it has it
 | Field | Notes |
 |---|---|
 | Type | Deposit · Withdrawal · Payout · Fee |
-| Amount | — |
+| Amount | - |
 | Status | Pending · Confirmed · Failed |
 | On-chain hash | For crypto-path transactions |
 | KYC applied | Tier used at this transaction |
@@ -121,7 +121,7 @@ This is the moment that triggers payouts, post-resolution screens, and share car
 | Evidence / source | URL or description of what determined the outcome |
 | Resolved by | Team multisig (MVP) → oracle (post-MVP) |
 | On-chain transaction hash | Public verifiability |
-| Timestamp | — |
+| Timestamp | - |
 | Resolution note | Plain-language explanation of what happened and why ← FJ5 "what happened" |
 
 **Related to:** Event (one-to-one) · Bet (triggers status + payout for all positions on this event)
@@ -137,12 +137,12 @@ Serves the "I called it" social identity.
 
 | Field | Notes |
 |---|---|
-| Display name | — |
-| Avatar | — |
+| Display name | - |
+| Avatar | - |
 | Total predictions | Count of resolved bets placed |
 | Win rate | % correct on resolved bets |
-| Prediction history | List of resolved bets (event, direction, outcome, profit/loss) — public |
-| Notable calls | (?) Could surface "biggest wins" or "most accurate category" — hypothesis, no confirmed job yet |
+| Prediction history | List of resolved bets (event, direction, outcome, profit/loss) - public |
+| Notable calls | (?) Could surface "biggest wins" or "most accurate category" - hypothesis, no confirmed job yet |
 
 **Related to:** User · Bet (resolved) · Share Card
 
@@ -150,7 +150,7 @@ Serves the "I called it" social identity.
 
 ### 7. Share Card
 
-Auto-generated artifact after a resolution. The "I told you so" object — created without user effort, immediately shareable.
+Auto-generated artifact after a resolution. The "I told you so" object - created without user effort, immediately shareable.
 Serves SJ1 directly. Without this, sharing requires manual effort, which kills the social loop.
 
 **Jobs served:** SJ1
@@ -178,11 +178,11 @@ Not in jtbd.md as a direct job, but directly enables FJ1 (find the event while i
 | Field | Notes |
 |---|---|
 | Type | Odds moved significantly · Deadline approaching · Event resolved · New event in followed category |
-| User reference | — |
-| Event reference | — |
+| User reference | - |
+| Event reference | - |
 | Position reference | (if about the user's active bet) |
-| Read / unread | — |
-| Sent at | — |
+| Read / unread | - |
+| Sent at | - |
 
 **Related to:** User · Event · Bet
 
@@ -190,12 +190,12 @@ Not in jtbd.md as a direct job, but directly enables FJ1 (find the event while i
 
 ## Under Question
 
-Objects mentioned in product docs but not mapped to a confirmed job. Included here for review — not in the main entity list.
+Objects mentioned in product docs but not mapped to a confirmed job. Included here for review - not in the main entity list.
 
 | Object | Why it's here | Why it's in question |
 |---|---|---|
 | **Category** | Events are grouped by Politics / Crypto / Culture / General | Taxonomy attribute of Event, not an object with its own lifecycle. No job requires "interacting with a category" as a standalone object. Could remain a field on Event. |
-| **Leaderboard** | Listed in CLAUDE.md MVP features | No explicit job in jtbd.md. SJ2 (public track record) is served by Profile. Leaderboard is a view over Profiles — a feature, not a distinct entity. Revisit if social competition mechanics are confirmed. |
+| **Leaderboard** | Listed in CLAUDE.md MVP features | No explicit job in jtbd.md. SJ2 (public track record) is served by Profile. Leaderboard is a view over Profiles - a feature, not a distinct entity. Revisit if social competition mechanics are confirmed. |
 | **Odds Chart** | Every competitor has it; part of Event detail | Attribute of Event (probability history), not a standalone entity. Lives inside Event. |
 | **Fiat Transaction** | Deposit/withdrawal via Transak/MoonPay | Currently modeled as sub-object of Wallet. Promote to standalone entity only if on-ramp flow reveals complexity that can't fit inside Wallet (e.g., multi-step KYC state machine per transaction). |
 
@@ -207,11 +207,11 @@ Objects mentioned in product docs but not mapped to a confirmed job. Included he
 > Job in `(parentheses)` = job from jtbd.md this screen closes. No job = `[SIROTA]`.
 > ⭐ PRIMARY = Alex (News Junkie). 🥈 SECONDARY = Dan (Crypto Native).
 > Screens without persona mark serve both.
-> States (empty, error, loading) are NOT screens — they are states of the screens below.
+> States (empty, error, loading) are NOT screens - they are states of the screens below.
 
 ---
 
-### EVENTS — what to bet on
+### EVENTS - what to bet on
 
 The user arrives because something happened in the world (FJ1).
 This group is the entry point for both personas.
@@ -221,10 +221,10 @@ Event Feed                                   (FJ1)          ⭐ PRIMARY + 🥈 S
 Event Detail                                 (FJ2 · MJ)     ⭐ PRIMARY + 🥈 SECONDARY
 ```
 
-**Event Feed** — cards of active markets, sorted by recency / trending. For the first visit: story-driven format (context visible on card, not just %). For return visits: denser feed. No sign-in required to browse.
+**Event Feed** - cards of active markets, sorted by recency / trending. For the first visit: story-driven format (context visible on card, not just %). For return visits: denser feed. No sign-in required to browse.
 States: loading (initial data fetch) - empty (no events match current filter or category) - error (network fail, API unreachable).
 
-**Event Detail** — one event, full view: probability, chart, narrative context (why this price), resolution conditions, source. CTA: YES / NO. This screen is our primary differentiator — no competitor has context at this depth (FJ2 confirmed gap).
+**Event Detail** - one event, full view: probability, chart, narrative context (why this price), resolution conditions, source. CTA: YES / NO. This screen is our primary differentiator - no competitor has context at this depth (FJ2 confirmed gap).
 States: loading (event data fetching) - error (load failure, T2 in MJ flow / T10 in FJ2 flow - user exits).
 
 ---
@@ -241,15 +241,15 @@ Sign In / Register                           (FJ3)          ⭐ PRIMARY · 🥈 
 Deposit                                      (FJ3 · FJ4 · EJ2)   ⭐ PRIMARY
 ```
 
-**Sign In / Register** — social login (Google, X) for the News Junkie path. Crypto Native connects an existing USDC wallet here instead of using fiat. One screen, two branches. Triggered only at gate, never before the user has built bet intent.
+**Sign In / Register** - social login (Google, X) for the News Junkie path. Crypto Native connects an existing USDC wallet here instead of using fiat. One screen, two branches. Triggered only at gate, never before the user has built bet intent.
 States: in-progress (OAuth redirect pending, wallet connect prompt open) - error (auth failed - T4, wallet connect failed - T7).
 
-**Deposit** — fiat card to USDC via Transak (primary), MoonPay (fallback). KYC runs inside the Transak widget - the user completes identity verification there, not on this platform. Risk block displayed inline before the user submits: "Your USDC is held 1:1 - we do not lend or invest deposited funds." Fee shown before submit. Also reachable standalone from Wallet for top-ups.
+**Deposit** - fiat card to USDC via Transak (primary), MoonPay (fallback). KYC runs inside the Transak widget - the user completes identity verification there, not on this platform. Risk block displayed inline before the user submits: "Your USDC is held 1:1 - we do not lend or invest deposited funds." Fee shown before submit. Also reachable standalone from Wallet for top-ups.
 States: in-progress (Transak widget loading, KYC pending inside widget) - error-card (card declined - T5) - error-KYC (KYC rejected - T6).
 
 ---
 
-### BET — place and confirm a bet
+### BET - place and confirm a bet
 
 Reached from Event Detail when the user taps YES or NO. No auth required to reach it - the user is still logged out at this point (Variant B).
 Auth and deposit happen only at the confirm step, via the activation gate.
@@ -258,12 +258,12 @@ Auth and deposit happen only at the confirm step, via the activation gate.
 Bet Screen                                   (MJ · FJ3)     ⭐ PRIMARY + 🥈 SECONDARY
 ```
 
-**Bet Screen** — direction (YES/NO, pre-set from tap on Event Detail), amount input with default $5 pre-fill, quick-select ($5/$10/$25/$50), fee displayed before confirm ("platform earns $X if you win"), potential payout shown. Confirm button triggers the activation gate for logged-out users. Single screen: intent and confirmation in one place.
+**Bet Screen** - direction (YES/NO, pre-set from tap on Event Detail), amount input with default $5 pre-fill, quick-select ($5/$10/$25/$50), fee displayed before confirm ("platform earns $X if you win"), potential payout shown. Confirm button triggers the activation gate for logged-out users. Single screen: intent and confirmation in one place.
 States: intent (logged out - user builds the bet, no auth yet) - S5-reconcile (price moved during gate: shows old price vs new price, user must re-confirm) - error (bet registration failed on-chain - T9).
 
 ---
 
-### RESOLUTION — what happened after the event closes
+### RESOLUTION - what happened after the event closes
 
 Triggered by a notification or by the user opening an Active Bet that has resolved.
 
@@ -272,46 +272,46 @@ Win Screen                                   (EJ1 · SJ1)    ⭐ PRIMARY + 🥈 
 Loss Screen                                  (FJ5 · EJ3)    ⭐ PRIMARY + 🥈 SECONDARY
 ```
 
-**Win Screen** — "You were right." Amount won, resolution summary (what happened and why), Share Card auto-generated. CTA: Share · See next events. Design rationale: no confetti loop, no persistent celebration animation. Research finding F5 (master-research.md): first WIN is the trigger for overconfidence and escalation, not loss. The win screen must celebrate the outcome without feeding the loop. Celebratory but measured - one moment, then move on.
+**Win Screen** - "You were right." Amount won, resolution summary (what happened and why), Share Card auto-generated. CTA: Share · See next events. Design rationale: no confetti loop, no persistent celebration animation. Research finding F5 (master-research.md): first WIN is the trigger for overconfidence and escalation, not loss. The win screen must celebrate the outcome without feeding the loop. Celebratory but measured - one moment, then move on.
 States: loading (Share Card generation in progress) - error (Share Card not generated, SJ1 blocked - T14 in flows).
 
-**Loss Screen** — "Here's what happened." Plain-language resolution note (what resolved and why), amount lost, one clear next step (not "bet again" promo). This screen is undesigned by every competitor — it is our primary retention intervention against loss-chasing (FJ5 + EJ3 confirmed gap).
+**Loss Screen** - "Here's what happened." Plain-language resolution note (what resolved and why), amount lost, one clear next step (not "bet again" promo). This screen is undesigned by every competitor - it is our primary retention intervention against loss-chasing (FJ5 + EJ3 confirmed gap).
 States: loading (resolution note fetching).
 
 ---
 
-### MY BETS — follow active positions and history
+### MY BETS - follow active positions and history
 
 User returns to check how their positions are moving (position monitoring behavioral pattern).
 
 ```
-Active Bets                                  (EJ1 — position monitoring)   ⭐ PRIMARY + 🥈 SECONDARY
+Active Bets                                  (EJ1 - position monitoring)   ⭐ PRIMARY + 🥈 SECONDARY
 Bet History                                  (SJ2 · EJ1)                   ⭐ PRIMARY + 🥈 SECONDARY
 ```
 
-**Active Bets** — list of open positions: event name, direction, current market value vs entry, deadline. Drives hot-return behavior (check odds, aarrr.md retention D1–D3).
+**Active Bets** - list of open positions: event name, direction, current market value vs entry, deadline. Drives hot-return behavior (check odds, aarrr.md retention D1–D3).
 States: loading (fetching positions) - empty (no active bets - new user or all bets resolved).
 
-**Bet History** — all resolved bets: won/lost, payout, event outcome. Feeds the public profile track record (SJ2). Could be the same screen as Active Bets with a tab — depth decision deferred to step 3.
+**Bet History** - all resolved bets: won/lost, payout, event outcome. Feeds the public profile track record (SJ2). Could be the same screen as Active Bets with a tab - depth decision deferred to step 3.
 
 ---
 
-### NOTIFICATIONS — return trigger
+### NOTIFICATIONS - return trigger
 
-Discovered in tracing: FJ1, FJ5, EJ3 depend on delivery via notification — entity without a screen. Without a list screen, users see alerts in OS only (no in-app history, no way to recover a missed alert).
+Discovered in tracing: FJ1, FJ5, EJ3 depend on delivery via notification - entity without a screen. Without a list screen, users see alerts in OS only (no in-app history, no way to recover a missed alert).
 
 ```
 Notifications                                (FJ1 · FJ5)    ⭐ PRIMARY + 🥈 SECONDARY
 ```
 
-**Notifications** — list of unread and recent alerts: odds moved significantly · event deadline approaching · position resolved · new event in followed category. Tapping any item navigates to the relevant screen (Event Detail or Active Bets). Notification types map directly to the hot/warm return signals in aarrr.md retention model (D1–D3).
+**Notifications** - list of unread and recent alerts: odds moved significantly · event deadline approaching · position resolved · new event in followed category. Tapping any item navigates to the relevant screen (Event Detail or Active Bets). Notification types map directly to the hot/warm return signals in aarrr.md retention model (D1–D3).
 States: loading (fetching list) - empty (no notifications yet - new user or no events followed).
 
-Note: Settings / Notification Preferences remains `[SIROTA]` — configuring which notifications you receive is not a confirmed job. The list screen (above) is sufficient for MVP. [?] S11 open question: does the user need per-event mute controls, or is category-level preference sufficient? Cannot be derived from current research - defer to user testing.
+Note: Settings / Notification Preferences remains `[SIROTA]` - configuring which notifications you receive is not a confirmed job. The list screen (above) is sufficient for MVP. [?] S11 open question: does the user need per-event mute controls, or is category-level preference sufficient? Cannot be derived from current research - defer to user testing.
 
 ---
 
-### WALLET — money in and out
+### WALLET - money in and out
 
 Standalone money management, reached outside the betting flow.
 
@@ -319,13 +319,13 @@ Standalone money management, reached outside the betting flow.
 Wallet                                       (FJ4)          ⭐ PRIMARY + 🥈 SECONDARY
 ```
 
-**Wallet** — available balance, in-play balance, transaction history (deposits, payouts, fees, withdrawals), deposit again (same Deposit screen). Funds protection message visible here too (EJ2 secondary). Single screen at this depth.
+**Wallet** - available balance, in-play balance, transaction history (deposits, payouts, fees, withdrawals), deposit again (same Deposit screen). Funds protection message visible here too (EJ2 secondary). Single screen at this depth.
 
 Withdrawal flow (not a separate screen - a flow inside Wallet): enter amount, enter destination USDC address (MVP) or PIX (Phase 2 Brazil), confirm, states: pending/confirmed/failed. Withdrawal is always in crypto (USDC) for MVP - no fiat payout rail at launch.
 
 ---
 
-### PROFILE — public reputation
+### PROFILE - public reputation
 
 The "I called it" identity surface. Accessible to others, not just the account owner.
 
@@ -334,13 +334,13 @@ My Profile                                   (SJ1 · SJ2)    ⭐ PRIMARY + 🥈 
 Public Profile (another user)                (SJ2)          🥈 SECONDARY > ⭐ PRIMARY
 ```
 
-**My Profile** — prediction track record: total bets, win rate, history of resolved bets (public). Share card gallery (past wins). Editable display name and avatar.
+**My Profile** - prediction track record: total bets, win rate, history of resolved bets (public). Share card gallery (past wins). Editable display name and avatar.
 
-**Public Profile** — same data, read-only, for another user. Dan uses this more (reputation-first behavior). Alex arrives here via a shared win card or leaderboard — secondary path for him.
+**Public Profile** - same data, read-only, for another user. Dan uses this more (reputation-first behavior). Alex arrives here via a shared win card or leaderboard - secondary path for him.
 
 ---
 
-### HOW IT WORKS — trust anchor
+### HOW IT WORKS - trust anchor
 
 Pre-bet trust signal for new users who want to understand before committing money.
 Reachable from Deposit screen ("learn more" link) and from main navigation - accessible before the user has deposited anything. FJ4 closes here for users who need reassurance before their first deposit.
@@ -349,115 +349,114 @@ Reachable from Deposit screen ("learn more" link) and from main navigation - acc
 How It Works                                 (FJ4 · EJ2)    ⭐ PRIMARY
 ```
 
-**How It Works** — funds protection (one sentence: "Your USDC is held 1:1"), resolution process (who decides, what evidence, on-chain proof), resolved markets count as social proof (benchmark-trust.md Top 3 mechanisms). Not a FAQ — a trust declaration, written as a promise.
+**How It Works** - funds protection (one sentence: "Your USDC is held 1:1"), resolution process (who decides, what evidence, on-chain proof), resolved markets count as social proof (benchmark-trust.md Top 3 mechanisms). Not a FAQ - a trust declaration, written as a promise.
 
 ---
 
-### ORPHANS `[SIROTA]` — no confirmed job maps here
+### ORPHANS `[SIROTA]` - no confirmed job maps here
 
 Screens referenced in product docs but not derived from any jtbd.md job.
 Do not build until a job is confirmed.
 
 ```
-Settings / Notification Preferences         [SIROTA]        — notification prefs are adjacent to FJ1 return path but no job in jtbd.md requires a settings screen
-Leaderboard                                 [SIROTA]        — no confirmed job; SJ2 is served by Profile; leaderboard is a view, not a job-closing screen
-Help / FAQ                                  [SIROTA]        — EJ2 is served by Deposit + How It Works; a generic FAQ adds friction without closing a job
+Settings / Notification Preferences         [SIROTA]        - notification prefs are adjacent to FJ1 return path but no job in jtbd.md requires a settings screen
+Leaderboard                                 [SIROTA]        - no confirmed job; SJ2 is served by Profile; leaderboard is a view, not a job-closing screen
+Help / FAQ                                  [SIROTA]        - EJ2 is served by Deposit + How It Works; a generic FAQ adds friction without closing a job
 ```
 
 ---
 
-*Next: navigation structure and depth (step 3) — pending tracing review.*
+*Next: navigation structure and depth (step 3) - pending tracing review.*
 
 ---
 
-## Трасування
+## Tracing
 
-> Jobs: 11 підтверджених (MJ + FJ1–5 + EJ1–3 + SJ1–2). HJ1–4 виключені — це гіпотези без даних, не підтверджені job-и.
-> ✓ = екран реально бере участь у закритті job. Порожньо = не бере.
-> Короткі коди колонок розшифровані в легенді нижче.
+> Jobs: 11 confirmed (MJ + FJ1-5 + EJ1-3 + SJ1-2). HJ1-4 excluded - hypotheses without data, not confirmed jobs.
+> ✓ = screen genuinely participates in closing the job. Empty = does not.
+> Column codes defined in legend below.
 
-### Матриця покриття
+### Coverage Matrix
 
 OB (Onboarding) column removed - screen removed in Step 2. BH x SJ2 corrected: Bet History is a private view, SJ2 requires public visibility.
 
 | Job | EF | ED | SI | DEP | BS | WS | LS | AB | BH | WA | MP | PP | HIW | NT |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **MJ** — реальна ставка на подію | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | |
-| **FJ1** — знайти подію поки актуальна | ✓ | ✓ | | | | | | | | | | | | ✓ |
-| **FJ2** — зрозуміти чому ця ймовірність | ✓ | ✓ | | | | | | | | | | | | |
-| **FJ3** — поставити без крипто-бар'єру | | | ✓ | ✓ | ✓ | | | | | ✓ | | | | |
-| **FJ4** — впевнитись що гроші в безпеці | | | | ✓ | | | | | | ✓ | | | ✓ | |
-| **FJ5** — пережити поразку без чейсингу | | | | | | | ✓ | ✓ | | | | | | ✓ |
-| **EJ1** — відчути що розумію краще за більшість | | ✓ | | | | ✓ | | ✓ | ✓ | | ✓ | | | |
-| **EJ2** — відчути безпеку до першого депозиту | ✓ | | | ✓ | | | | | | | | | ✓ | |
-| **EJ3** — вийти з поразки усвідомлено | | | | | | | ✓ | ✓ | | | | | | |
-| **SJ1** — показати що був правий | | | | | | ✓ | | | | | ✓ | | | |
-| **SJ2** — накопичити публічний трек-рекорд | | | | | | | | | | | ✓ | ✓ | | |
-| **Покриття (jobs)** | 4 | 4 | 2 | 4 | 2 | 3 | 3 | 4 | 1 | 2 | 3 | 1 | 2 | 2 |
+| **MJ** - real stake on an event | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | |
+| **FJ1** - find the event while it is still relevant | ✓ | ✓ | | | | | | | | | | | | ✓ |
+| **FJ2** - understand why the market prices it that way | ✓ | ✓ | | | | | | | | | | | | |
+| **FJ3** - bet without a crypto barrier | | | ✓ | ✓ | ✓ | | | | | ✓ | | | | |
+| **FJ4** - feel confident the money is safe | | | | ✓ | | | | | | ✓ | | | ✓ | |
+| **FJ5** - survive a loss without chasing | | | | | | | ✓ | ✓ | | | | | | ✓ |
+| **EJ1** - feel I understand better than most | | ✓ | | | | ✓ | | ✓ | ✓ | | ✓ | | | |
+| **EJ2** - feel safe before the first deposit | ✓ | | | ✓ | | | | | | | | | ✓ | |
+| **EJ3** - exit a loss consciously | | | | | | | ✓ | ✓ | | | | | | |
+| **SJ1** - show that I was right | | | | | | ✓ | | | | | ✓ | | | |
+| **SJ2** - build a public track record | | | | | | | | | | | ✓ | ✓ | | |
+| **Coverage (jobs)** | 4 | 4 | 2 | 4 | 2 | 3 | 3 | 4 | 1 | 2 | 3 | 1 | 2 | 2 |
 
-**Легенда колонок:**
+**Column legend:**
 EF = Event Feed · ED = Event Detail · SI = Sign In / Register · DEP = Deposit · BS = Bet Screen · WS = Win Screen · LS = Loss Screen · AB = Active Bets · BH = Bet History · WA = Wallet · MP = My Profile · PP = Public Profile (another user) · HIW = How It Works · NT = Notifications
 
-**Покриття рядків (скільки екранів на job):**
+**Row coverage (screens per job):**
 MJ 8 · FJ1 3 · FJ2 2 · FJ3 4 · FJ4 3 · FJ5 3 · EJ1 5 · EJ2 3 · EJ3 2 · SJ1 2 · SJ2 2
 
 ---
 
-### Обґрунтування нетривіальних ✓
+### Non-trivial checkmark rationale
 
-| Клітинка | Чому ✓, а не порожньо |
+| Cell | Why checked, not empty |
 |---|---|
-| FJ2 + EF | Event Feed у story-driven режимі показує контекст на картці (не тільки %), частково закриває "чому ця ймовірність" ще до переходу на деталь |
-| EJ2 + EF | Перше враження від продукту (benchmark-trust C5: 5/5 Bet365) — це Event Feed без реєстрації. Когнітивна ясність на першому екрані = перший шар EJ2 |
-| FJ3 + BS | Bet Screen містить дефолтне заповнення $5, quick-select і відображення комісії — це і є "поставити без вивчення незнайомих технологій" на кроці підтвердження |
-| EJ1 + ED | Knowledge validation: користувач бачить ймовірність і порівнює з власним прогнозом — "ринок думає 67%, а я знаю краще". Відчуття переваги виникає вже тут |
-| EJ1 + AB | Стеження за рухом ціни своєї позиції (position monitoring) — проміжне підтвердження що "я мав рацію, ціна рухається в мій бік" |
-| FJ3 + WA | Wallet → кнопка "Deposit again" — повторний вхід у flow поповнення без крипто-бар'єру, для повернення користувача |
+| FJ2 + EF | Event Feed in story-driven mode shows context on the card (not just %), partially closes "why this probability" before the user even taps into detail |
+| EJ2 + EF | First impression of the product (benchmark-trust C5: 5/5 Bet365) is Event Feed without registration. Cognitive clarity on the first screen = first layer of EJ2 |
+| FJ3 + BS | Bet Screen has $5 default pre-fill, quick-select buttons, and fee display - this is "bet without learning unfamiliar technology" at the confirm step |
+| EJ1 + ED | Knowledge validation: user sees the probability and compares it to their own forecast - "market thinks 67%, I know better." The sense of edge emerges here |
+| EJ1 + AB | Tracking price movement of their position (position monitoring) - intermediate confirmation that "I was right, price is moving my way" |
+| FJ3 + WA | Wallet "Deposit again" button - re-entry into the top-up flow without a crypto barrier, for returning users |
 
 ---
 
-### Дефекти
+### Defects
 
-#### ЕКРАНИ-СИРОТИ — колонки без жодного ✓
+#### SCREEN ORPHANS - columns with no checkmarks
 
-**Сиріт немає.** Кожен з 14 екранів покритий мінімум одним підтвердженим job.
+**No orphans.** All 14 screens are covered by at least one confirmed job.
 
-Мінімально покриті екрани (1–2 jobs) — не сироти, але варті уваги:
+Minimally covered screens (1-2 jobs) - not orphans, but worth attention:
 
-| Екран | Jobs | Ризик |
+| Screen | Jobs | Risk |
 |---|---|---|
-| **Public Profile** | SJ2 (1 job) | Найслабше покриття. Виправданий: SJ2 ВИМАГАЄ щоб інші бачили трек-рекорд — без цього екрана job фізично не закривається. Залишити. |
-| **Bet Screen** | MJ + FJ3 (2 jobs) | Вузька роль — цілеспрямована дія, а не мультизадачний хаб. Нормально для action screen. Залишити. |
+| **Public Profile** | SJ2 (1 job) | Weakest coverage. Justified: SJ2 requires other users to see the track record - without this screen the job physically cannot close. Keep. |
+| **Bet Screen** | MJ + FJ3 (2 jobs) | Narrow role - a focused action, not a multi-purpose hub. Normal for an action screen. Keep. |
 | **Bet History** | EJ1 (1 job) | BH x SJ2 removed: Bet History is a private view, SJ2 requires public-facing visibility. Corrected to EJ1 only. Lowest coverage in matrix - review merge with Active Bets in navigation pass. |
-| **Wallet** | FJ3 + FJ4 (2 jobs) | Фінансовий хаб з вузькою роллю. Виправданий: без нього немає де побачити баланс і ініціювати вивід. Залишити. |
+| **Wallet** | FJ3 + FJ4 (2 jobs) | Financial hub with a narrow role. Justified: without it there is nowhere to see balance or initiate withdrawal. Keep. |
 | **How It Works** | FJ4 + EJ2 (2 jobs) | Pre-deposit access confirmed: reachable from main nav before deposit, not restricted to gate flow. Restriction from prior tracing note (modal only from Deposit + Onboarding) reversed - Onboarding removed, HIW now open. |
 
 ---
 
-#### JOBS-СИРОТИ — рядки без жодного ✓
+#### JOB ORPHANS - rows with no checkmarks
 
-**Сиріт немає.** Кожен з 11 підтверджених jobs покритий мінімум одним екраном.
+**No orphans.** All 11 confirmed jobs are covered by at least one screen.
 
-Мінімально покриті jobs (2 екрани) — не сироти, але варті уваги:
+Minimally covered jobs (2 screens) - not orphans, but worth attention:
 
-| Job | Екрани | Ризик |
+| Job | Screens | Risk |
 |---|---|---|
-| **FJ1** — знайти подію поки актуальна | EF + ED | Покриття є, але FJ1 сильно залежить від Notification (entity, не екран). Якщо нотифікація не спрацює — FJ1 не закриється для повернення користувача. Нотифікації — entity без свого екрана в sitemap. **Рішення: додати в sitemap екран Notifications (список нотифікацій) з job FJ1 → backlog MVP.** |
-| **FJ5** — пережити поразку без чейсингу | LS + AB | 2 екрани — достатньо, але обидва залежать від того чи користувач ВІДКРИЄ Loss Screen. Якщо нотифікація не веде до AB → LS, job не закривається. Та сама залежність від Notifications. |
-| **EJ3** — вийти з поразки усвідомлено | LS + AB | Ідентично FJ5 — один і той самий gap. Обидва jobs вирішуються одним рішенням: Notifications → Active Bets. |
+| **FJ1** - find the event while still relevant | EF + ED | Coverage exists, but FJ1 heavily depends on Notification (entity, not a screen). If notification does not fire, FJ1 does not close for returning users. Gap closed: Notifications screen added to sitemap and matrix (NT column). |
+| **FJ5** - survive a loss without chasing | LS + AB | 2 screens are sufficient, but both depend on the user opening Loss Screen. If notification does not route to AB then LS, the job does not close. Same dependency on Notifications - gap closed by NT. |
+| **EJ3** - exit a loss consciously | LS + AB | Same gap as FJ5. Both jobs resolved by the same solution: Notifications leads to Active Bets. |
 
 ---
 
-### Висновок трасування
+### Tracing conclusion
 
-**Підтверджених сиріт немає.** Матриця закрита: всі 14 екранів мають job (Onboarding removed), всі 11 jobs мають екран. BH x SJ2 corrected - Bet History now carries EJ1 only (1 job, lowest coverage, merge candidate in navigation pass).
+**No confirmed orphans.** Matrix is closed: all 14 screens have a job (Onboarding removed), all 11 jobs have a screen. BH x SJ2 corrected - Bet History now carries EJ1 only (1 job, lowest coverage, merge candidate in navigation pass).
 
-В процесі трасування виявлено і закрито один системний gap: FJ1 / FJ5 / EJ3 залежали від Notification-entity без власного екрана. Notifications (NT) доданий у sitemap і матрицю — gap усунено.
+One systemic gap was found and closed during tracing: FJ1 / FJ5 / EJ3 depended on the Notification entity with no screen of its own. Notifications (NT) added to sitemap and matrix - gap resolved.
 
-**Залишкові рішення для кроку 3:**
+**Remaining decisions for navigation design pass:**
 
-| Дія | Що зробити |
+| Action | What to do |
 |---|---|
-| **Злити або залишити** | Bet History + Active Bets — перевірити чи таб в одному екрані покриває EJ1 + SJ2 |
-| **Модаль, не сторінка** | How It Works → тільки з Deposit і Onboarding, не окремий пункт навігації |
-| **Backlog** | Settings / Notification Preferences — залишається `[SIROTA]` до підтвердження job |
+| **Merge or keep** | Bet History + Active Bets - verify a tab in one screen covers EJ1 only (SJ2 removed from BH) |
+| **Backlog** | Settings / Notification Preferences - remains `[SIROTA]` until a job is confirmed |
