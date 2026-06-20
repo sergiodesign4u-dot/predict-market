@@ -189,13 +189,15 @@ flowchart TD
     triggerManual --> ABhistory["My Bets (History tab)"]
     ABhistory -->|"tap won item"| WS
 
+    %% Default next action: share / mark the moment (SJ1 primary path)
+    %% "See next events" is a deliberate secondary CTA - not the primary - per F5 (overconfidence risk)
     WS --> cardOk{"Share Card auto-generated?"}
     cardOk -->|"no"| T11(["T11 - Share Card not generated, SJ1 blocked"])
     T11 -->|"fallback: share as text"| T13a(["T13a - returned after text-share fallback"])
     T13a --> EF["Event Feed"]
     EF --> sj1Done(["SJ1 closed - win publicly shown"])
 
-    cardOk -->|"yes"| shares{"user shares?"}
+    cardOk -->|"yes"| shares{"user shares? (primary CTA)"}
     shares -->|"no"| MP["My Profile"]
     MP --> T12(["T12 - profile only, track record updated, SJ1 no"])
     T12 -->|"find a new event"| EF
@@ -205,4 +207,7 @@ flowchart TD
     newUser -->|"yes"| EF
     newUser -->|"no"| T13b(["T13b - returned after card-share, no click-through"])
     T13b --> EF
+
+    %% Secondary path: see next events (lower-emphasis CTA, overconfidence risk per F5)
+    WS -->|"secondary: see next events (overconfidence risk per F5)"| EF
 ```
