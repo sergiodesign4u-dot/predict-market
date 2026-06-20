@@ -460,3 +460,17 @@ One systemic gap was found and closed during tracing: FJ1 / FJ5 / EJ3 depended o
 |---|---|
 | **Merge or keep** | Bet History + Active Bets - verify a tab in one screen covers EJ1 only (SJ2 removed from BH) |
 | **Backlog** | Settings / Notification Preferences - remains `[SIROTA]` until a job is confirmed |
+
+---
+
+## Deferred to Navigation Design Pass
+
+Items that cannot be decided without knowing screen depth, tab structure, and navigation hierarchy. Do not design these in isolation.
+
+| Code | Item | Why deferred |
+|---|---|---|
+| **G1 nav** | Deep-link back-navigation | flows.md handles the entry path (triggerLink -> Event Detail). Navigation design must decide: what tab is active after deep-link arrival, what does "back" do (close app vs go to feed), how in-app notifications that resolve to a deep link behave. |
+| **G3** | How It Works depth and entry points | Screen exists and jobs are confirmed (FJ4 + EJ2). Navigation design must decide: dedicated tab, modal overlay, or nested page under Deposit. Current: reachable from Deposit ("learn more") and main nav - depth TBD. |
+| **G4** | Bet History vs Active Bets - merge or keep | Bet History covers EJ1 only (1 job, lowest coverage). Navigation design must decide: tab inside Active Bets screen (reduces screen count to 13), or keep as standalone screen. Verify coverage survives the merge. |
+| **G5** | Notifications placement and badge trigger | Notifications screen confirmed (FJ1 + FJ5). Navigation design must decide: where in nav structure (tab, header icon, drawer item), what triggers the unread badge, whether in-app alert vs OS push are surfaced identically. |
+| **S11** | Notification preference granularity | [?] open question: does the user need per-event mute controls, or is category-level preference sufficient? Cannot be derived from current research. Decide in navigation pass after user testing signal or explicit product decision. |
