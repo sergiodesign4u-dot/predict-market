@@ -2,7 +2,7 @@
 
 > Built from: sitemap.md - jtbd.md
 > `[Square brackets]` = screens from sitemap.md. `{Diamonds}` = decisions. `([Stadiums])` = terminal states.
-> Success terminals: T14/mjDone, fj2Done, fj5Done, sj1Done. Error/churn terminals T1-T3, T5-T13, T15-T16 each have at least one recovery edge. T4 retired as terminal (replaced by escalation-path edge in FJ5).
+> Success terminals: T14/mjDone, fj2Done, fj5Done, sj1Done. Error/churn terminals T1-T3, T5-T12, T13a, T13b, T15-T16 each have at least one recovery edge. T4 retired as terminal (replaced by escalation-path edge in FJ5).
 
 ---
 
@@ -22,10 +22,15 @@
 | T10 | Dormant (closed app) | FJ5 - conscious-exit path | churn |
 | T11 | Share Card not generated | SJ1 - after Win Screen | error |
 | T12 | Profile only (shared nothing) | SJ1 - shares no | churn |
-| T13 | Returned after share | SJ1 - after external share | recovery |
+| T13a | Returned after text-share fallback (Share Card not generated) | SJ1 - T11 path | recovery |
+| T13b | Returned after card-share, no click-through | SJ1 - no new user followed link | recovery |
 | T14 | MJ closed - bet placed | MJ - success | success |
 | T15 | Wallet connect failed | MJ - Crypto Native branch | error |
 | T16 | Price rejected at S5 reconcile | MJ - priceConfirm no | churn |
+
+> Coverage note: Flows are drawn for the main job and key related jobs only. Jobs and screens without a dedicated flow (SJ2, Notifications list, Bet History tab) are covered passively or inside existing screens - this is by design, not a gap.
+
+> Deferred polish (P3 - later pass): P3-3 (HIW static vs fetch clarification), P3-4 (first-visit vs return-visit layout naming on Event Feed), P3-6 (minimal Wallet withdrawal flow), P3-7 (HIW as optional step in FJ2).
 
 ---
 
@@ -75,9 +80,9 @@ flowchart TD
     moreInfo -->|"no"| depOk{"deposit successful?"}
     depOk -->|"card declined"| T2(["T2 - card declined"])
     T2 -->|"try another card or connect a USDC wallet"| DEP
-    depOk -->|"KYC rejected"| T1(["T1 - KYC rejected"])
+    depOk -->|"KYC rejected"| T1(["T1 - KYC rejected: connect USDC wallet (no KYC) or contact support"])
     T1 -->|"connect a USDC wallet, no KYC"| walletOk
-    T1 -->|"contact support"| supportContact(["i - contact support"])
+    T1 -->|"back to feed"| EF
     depOk -->|"yes"| S5
 
     walletOk -->|"no"| T15(["T15 - wallet connect failed"])
@@ -99,7 +104,6 @@ flowchart TD
     techOk -->|"yes"| AB["Active Bets"]
 
     AB --> mjDone(["T14 - MJ closed: bet placed, user follows the event"])
-    mjDone -->|"monitor position"| EDmon["Event Detail"]
 ```
 
 ---
@@ -122,6 +126,7 @@ flowchart TD
     understood -->|"yes"| hasEdge{"has information edge over the market?"}
 
     hasEdge -->|"no, market may be right"| watcher(["i - watcher: understood, not betting. FJ2 closed, MJ no."])
+    watcher -->|"back to feed"| EF
     hasEdge -->|"yes, confident in own position"| BS["Bet Screen"]
 
     BS --> fj2Done(["FJ2 closed - understood the odds, moved to bet"])
@@ -168,13 +173,19 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    trigger(["event resolved - win"])
-    trigger --> WS["Win Screen"]
+    %% Path A: G1-equivalent - win notification routes directly to Win Screen (1 tap, fast path)
+    triggerNotif(["win resolution notification"])
+    triggerNotif -->|"direct: 1 tap to Win Screen"| WS["Win Screen"]
+
+    %% Path B: manual - user opens My Bets History tab, taps a won item
+    triggerManual(["user opens My Bets - History tab"])
+    triggerManual --> ABhistory["My Bets (History tab)"]
+    ABhistory -->|"tap won item"| WS
 
     WS --> cardOk{"Share Card auto-generated?"}
     cardOk -->|"no"| T11(["T11 - Share Card not generated, SJ1 blocked"])
-    T11 -->|"fallback: share as text"| T13(["T13 - returned after share"])
-    T13 -->|"Win Screen: what next?"| EF["Event Feed"]
+    T11 -->|"fallback: share as text"| T13a(["T13a - returned after text-share fallback"])
+    T13a --> EF["Event Feed"]
     EF --> sj1Done(["SJ1 closed - win publicly shown"])
 
     cardOk -->|"yes"| shares{"user shares?"}
@@ -185,5 +196,6 @@ flowchart TD
     shares -->|"yes"| ext(["external share: Twitter/X, WhatsApp, Telegram"])
     ext --> newUser{"new user follows the link?"}
     newUser -->|"yes"| EF
-    newUser -->|"no"| T13
+    newUser -->|"no"| T13b(["T13b - returned after card-share, no click-through"])
+    T13b --> EF
 ```

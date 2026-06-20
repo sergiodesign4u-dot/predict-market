@@ -223,6 +223,7 @@ Event Detail                                 (FJ2 · MJ)     ⭐ PRIMARY + 🥈 
 
 **Event Feed** - cards of active markets, sorted by recency / trending. For the first visit: story-driven format (context visible on card, not just %). For return visits: denser feed. No sign-in required to browse.
 States: loading (initial data fetch) - empty (no events match current filter or category) - error (network fail, API unreachable).
+Note: push-permission-missing banner also surfaced on Event Feed when OS push is denied (see Notifications states).
 
 **Event Detail** - one event, full view: probability, chart, narrative context (why this price), resolution conditions, source. CTA: YES / NO. This screen is our primary differentiator - no competitor has context at this depth (FJ2 confirmed gap).
 States: loading (event data fetching) - error (load failure, T8 in MJ and FJ2 flows - retry returns to Event Detail) - resolved-while-reading (this event just resolved: [outcome] - navigate to Win/Loss Screen if user holds a position, else to Event Feed).
@@ -242,7 +243,7 @@ Deposit                                      (FJ3 · FJ4 · EJ2)   ⭐ PRIMARY
 ```
 
 **Sign In / Register** - social login (Google, X) for the News Junkie path. Crypto Native connects an existing USDC wallet here instead of using fiat. One screen, two branches. Triggered only at gate, never before the user has built bet intent.
-States: in-progress (OAuth redirect pending, wallet connect prompt open) - error (auth failed - T5, wallet connect failed - T15).
+States: in-progress (OAuth redirect pending, wallet connect prompt open) - error (auth failed - T5, wallet connect failed - T15) - error-provider-conflict (account exists under a different provider, e.g. registered via X, trying Google: prompt to use the original provider or link accounts).
 
 **Deposit** - fiat card to USDC via Transak (primary), MoonPay (fallback). KYC runs inside the Transak widget - the user completes identity verification there, not on this platform. Risk block displayed inline before the user submits: "Your USDC is held 1:1 - we do not lend or invest deposited funds." Fee shown before submit. Also reachable standalone from Wallet for top-ups.
 States: in-progress (Transak widget loading, KYC pending inside widget) - error-card (card declined - T2) - error-KYC (KYC rejected - T1) - widget-load-failure (Transak iframe blocked or network error: fallback to "open Transak directly" or "connect a USDC wallet" - S3 fix) - pending (payment under review, usually under 5 min) - minimum-not-met (inline error before submit, shown against amount input).
@@ -276,7 +277,8 @@ Loss Screen                                  (FJ5 · EJ3)    ⭐ PRIMARY + 🥈 
 States: loading (Share Card generation in progress) - error (Share Card not generated, SJ1 blocked - T11 in flows) - payout-pending (your payout will arrive in a few minutes, on-chain settlement delay).
 
 **Loss Screen** - "Here's what happened." Plain-language resolution note (what resolved and why), amount lost, one clear next step (not "bet again" promo). This screen is undesigned by every competitor - it is our primary retention intervention against loss-chasing (FJ5 + EJ3 confirmed gap).
-States: loading (resolution note fetching) - payout-pending (your payout will arrive in a few minutes, on-chain settlement delay).
+States: loading (resolution note fetching).
+Note: Cancelled-event refund flow is deferred to post-MVP, so no refund/payout state exists on this screen at MVP.
 
 ---
 
@@ -290,9 +292,10 @@ Bet History                                  (EJ1)                          ⭐ 
 ```
 
 **Active Bets** - list of open positions: event name, direction, current market value vs entry, deadline. Drives hot-return behavior (check odds, aarrr.md retention D1–D3).
-States: loading (fetching positions) - empty (no active bets - new user or all bets resolved).
+States: loading (fetching positions) - empty-new (new user, no bets placed yet: CTA to Event Feed to find events) - empty-resolved (all positions closed: CTA to History tab to see resolved bets) - error (failed to load positions - retry CTA).
 
 **Bet History** - private view of one's own resolved bets: won/lost, payout, event outcome. The public track record lives on My Profile and Public Profile, not here. G5 resolved: Bet History is now the History tab inside My Bets (Active Bets screen), not a standalone screen.
+States: loading (fetching resolved bets) - empty (no resolved bets yet: CTA to Event Feed to find events) - error (failed to load resolved bets - retry CTA).
 
 ---
 
@@ -305,7 +308,7 @@ Notifications                                (FJ1 · FJ5)    ⭐ PRIMARY + 🥈 
 ```
 
 **Notifications** - list of unread and recent alerts: odds moved significantly · event deadline approaching · position resolved · new event in followed category. Tapping any item navigates to the relevant screen (Event Detail or Active Bets). Notification types map directly to the hot/warm return signals in aarrr.md retention model (D1–D3).
-States: loading (fetching list) - empty (no notifications yet - new user or no events followed).
+States: loading (fetching list) - empty (no notifications yet - new user or no events followed) - error (notifications failed to load - retry CTA) - push-permission-missing (OS push denied: show in-app banner "Enable notifications to get live updates" with system settings deep-link).
 
 Note: Settings / Notification Preferences remains `[SIROTA]` - configuring which notifications you receive is not a confirmed job. The list screen (above) is sufficient for MVP. [?] Q-notif-prefs open question: does the user need per-event mute controls, or is category-level preference sufficient? Cannot be derived from current research - defer to user testing.
 
@@ -320,6 +323,7 @@ Wallet                                       (FJ4)          ⭐ PRIMARY + 🥈 S
 ```
 
 **Wallet** - available balance, in-play balance, transaction history (deposits, payouts, fees, withdrawals), deposit again (same Deposit screen). Funds protection message visible here too (EJ2 secondary). Single screen at this depth.
+States: loading (initial balance fetch) - error (wallet data failed to load - retry CTA).
 Deferred state: balance-syncing (cosmetic, momentary sync delay between on-chain confirmation and UI update) - deferred to wireframe spec.
 
 Withdrawal flow (not a separate screen - a flow inside Wallet): enter amount, enter destination USDC address (MVP) or PIX (Phase 2 Brazil), confirm, states: pending/confirmed/failed. Withdrawal is always in crypto (USDC) for MVP - no fiat payout rail at launch.
@@ -336,9 +340,11 @@ Public Profile (another user)                (SJ2)          🥈 SECONDARY > ⭐
 ```
 
 **My Profile** - prediction track record: total bets, win rate, history of resolved bets (public). Share card gallery (past wins). Editable display name and avatar.
+States: loading (profile data fetching) - error (profile failed to load - retry CTA).
 Deferred state: empty-state (cosmetic, first-time user with no predictions yet) - deferred to wireframe spec.
 
 **Public Profile** - same data, read-only, for another user. Dan uses this more (reputation-first behavior). Alex arrives here via a shared win card or leaderboard - secondary path for him.
+States: loading (profile data fetching) - error (failed to load: retry CTA or return to Event Feed) - not-found / link-expired (this profile no longer exists or the link has expired: CTA to Event Feed).
 
 ---
 
@@ -461,9 +467,18 @@ Flow / invoked - reached only inside a flow, not via nav bar
 - The manual fallback path (My Bets → tap resolved item → Loss Screen) is 2 taps. G1 cuts this to 1 tap so the resolution note reaches the user before the impulse to chase.
 - Result: 1 tap from notification. Confirmed.
 
+**Win Screen retention path: win resolution notification → Win Screen**
+- Tap win resolution notification (OS banner or Notifications list item) → Win Screen directly (1 tap).
+- Matches the G1-equivalent edge in flows.md SJ1: `triggerNotif -->|"direct: 1 tap to Win Screen"| WS`.
+- The manual fallback path (My Bets → History tab → tap won item → Win Screen) is 2 taps. The notification path ensures the share impulse window is not missed (SJ1).
+- Result: 1 tap from notification. Confirmed.
+
 **Returning-user re-deposit**
 - Bet Screen insufficient-balance state shows inline: "you have $X, can bet up to $X or deposit more" with a direct CTA to Deposit.
 - Result: invoked in context from Bet Screen, 1 step. Not a multi-tap trip to Wallet. Confirmed.
+
+**Proactive top-up: header wallet icon → Wallet → Deposit**
+- Tap header wallet icon → Wallet (1 tap) → Deposit CTA → Deposit (2 taps). 2 taps, acceptable.
 
 ### Depth risks
 
