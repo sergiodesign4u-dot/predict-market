@@ -121,23 +121,27 @@ Solo - product, design, and development
 
 ## Information Architecture
 
-IA sources: `IA/sitemap.md` (entities, screens, navigation, depth map, tracing) and `IA/flows.md` (user flows). Visualized in `ia.html` (overview), `sitemap.html` (full detail), `flows.html` (Mermaid flows).
+IA sources (source of truth): `IA/sitemap.md` (entities, screens, navigation, desktop layer, depth map, tracing) and `IA/flows.md` (user flows). The HTML visualizations `ia.html`, `sitemap.html`, `flows.html` are being revised in the wireframe pass and may lag the markdown; trust the markdown until they are re-synced.
 
-### Top-level navigation - 4 bottom-nav slots
+### Top-level navigation (revised in the wireframe pass)
+
+Mobile-first. Mobile = bottom nav, 4 slots with icons; desktop = lean header (no center nav row). Full rationale in `IA/sitemap.md` Desktop layer.
+
+Mobile bottom nav - 4 slots:
 
 | Slot | Label | Opens | Jobs |
 |---|---|---|---|
-| 1 | Events | Event Feed | FJ1, FJ2, MJ |
+| 1 | Events | Event Feed (the logo is also Events/home on desktop) | FJ1, FJ2, MJ |
 | 2 | My Bets | Active Bets (Active + History tabs) | EJ1, MJ, FJ5, EJ3 |
-| 3 | Notifications | Notifications list | FJ1, FJ5, EJ3 |
-| 4 | Profile | My Profile | SJ1, SJ2 |
+| 3 | Favorites | Saved view (a filter over the feed) | FJ1 (return / watchlist) |
+| 4 | Portfolio | My Profile + a portfolio summary (account hub); shows the balance figure in place of an icon | SJ1, SJ2, FJ4 |
 
-Header (not bottom nav): Wallet/Deposit (wallet icon), How It Works (info icon). Money is not why users open the app (G4).
+Desktop lean header: logo = Events/home; hamburger (reserved for scaling); right utility cluster = Portfolio/Cash balance swap, Favorites (heart), Notifications (bell + permanent badge), avatar dropdown (My Profile, My Bets, Wallet/Deposit, How It Works, Logout). Categories are a second-level sub-nav band under the header; the feed heading echoes the active category and the sort is a dropdown on that row. Notifications is a header bell on both breakpoints (badge = retention anchor), not a bottom slot. Money stays a utility, not a primary destination (G4 spirit; refined - the Portfolio slot surfaces a balance but opens the account hub, not a bare wallet).
 
 ### Primary screen hierarchy
 
-- Level 0: Event Feed, Active Bets, Notifications, My Profile
-- Level 1: Event Detail (under Events), Wallet and How It Works (header icons)
+- Level 0: Event Feed, Active Bets (My Bets), Saved view (Favorites), Portfolio hub (My Profile + balance). Notifications is reached via the header bell.
+- Level 1: Event Detail (under Events); Wallet/Deposit and How It Works (avatar dropdown, footer, and the Portfolio hub).
 - Flow/invoked: Bet Screen, Win Screen, Loss Screen, Sign In/Register, Deposit, Public Profile
 
 ### Depth to main job (Alex, News Junkie)
