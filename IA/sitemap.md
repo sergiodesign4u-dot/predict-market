@@ -241,7 +241,7 @@ Two card layouts, both built (Event.Type already supports this, no new field):
 - Multi-outcome: N options, each row is an option plus its % plus compact YES / NO controls.
 - Multi-outcome is a normal event type from Event.Type, NOT the rejected "Market Board / trading view" pattern (jtbd.md "features to cut"). It is a card layout for events with more than two options, not a trader terminal.
 
-Controls placement: sort and filter controls sit on the "Live events" heading row (the section header of the feed), not as a separate band above it. Exact sort labels are a wireframe detail. Categories stay the locked four (Politics, Crypto, Culture, General) for MVP; the category mechanism is built to scale to more categories later without rework. Do not add empty categories now.
+Controls placement (revised in the wireframe pass): categories are second-level navigation in a sub-nav band directly under the header (Trending default, then Politics, Crypto, Culture, General), not on the feed heading row. The sort control (a feed control, not navigation) sits on the "Live events" heading row. Exact sort labels are a wireframe detail. Categories stay the locked four for MVP; the category mechanism is built to scale to more categories later without rework. Do not add empty categories now.
 
 Saved view: a filter / view over the Event Feed showing only saved events. It is NOT a new bottom-nav slot (the 4 slots are locked) and NOT a new top-level destination; it is a view within Events, the same way categories filter the feed. Reached from the bookmark control on cards and, on desktop, from the Favorites (heart) entry in the header utility cluster (see Desktop layer). See Saved events for the relationship and the alert hypothesis.
 
@@ -419,11 +419,12 @@ Help / FAQ                                  [SIROTA]        - EJ2 is served by D
 ## Navigation
 
 > Desktop note: the mobile navigation below is the source of truth and keeps all
-> 4 bottom-nav slots. Its desktop mapping (top bar with a 3-slot primary nav,
-> Events / My Bets / Notifications, plus a right-hand utility cluster with
-> Balance and Deposit, Favorites, and the avatar that carries Profile) is in the
-> Desktop layer (responsive, mobile-first) section directly after Navigation. The
-> mobile content here is unchanged.
+> 4 bottom-nav slots. Its desktop mapping is a lean header (Events as the logo,
+> My Bets and Profile in the avatar dropdown, Notifications and Favorites as icons
+> in the utility cluster, Balance as text, a reserved hamburger, and a
+> second-level category nav under the header). Full detail in the Desktop layer
+> (responsive, mobile-first) section directly after Navigation. The mobile content
+> here is unchanged.
 
 ### User-model rationale
 
@@ -480,43 +481,59 @@ desktop question; none of them changes a mobile decision.
 
 ### D-desktop-1: Primary navigation
 
+> Revised in the wireframe pass (lean header). The earlier "3 destinations in a
+> center top nav" framing is superseded by the lean-header model below. Mobile is
+> unchanged.
+
 - **Mobile:** bottom nav, 4 slots (Events, My Bets, Notifications, Profile), in
   the thumb zone. Unchanged. Mobile keeps all 4 slots including Profile, since
   there is no avatar in the bottom bar.
-- **Desktop:** the primary nav (center of the top bar) holds THREE destinations
-  only: Events, My Bets, Notifications. Profile is NOT a separate text item in
-  the desktop primary nav; the avatar in the utility cluster is the home for
-  Profile on desktop (see D-desktop-4). This resolves a Profile duplication
-  (avatar plus a "Profile" nav item would point at the same destination twice).
-- **Final desktop header composition:** brand left; primary nav center (Events,
-  My Bets, Notifications with its permanent unread badge); right utility cluster
-  (Balance plus Deposit, Favorites heart, avatar). See D-desktop-4.
-- **Mobile-to-desktop mapping:** bottom bar 4 slots (thumb zone) -> top bar with
-  3 primary slots plus Profile folded into the avatar in the utility cluster.
-  No destination is lost; Profile is reached via the avatar.
-- **Job rationale:** the mobile argument against a top placement was "easy to
-  miss in the thumb zone on mobile" (Navigation, bottom-nav alternative). That
-  constraint does not apply on desktop, where a persistent top bar sits in the
-  viewport and the cursor lives in that zone. Event-first identity is preserved:
-  the feed stays the centered hero, consistent with G4 (do not signal a trading
-  terminal).
+- **Desktop (lean header):** the desktop header does not carry a center row of
+  text nav items. Primary destinations are placed as follows:
+  - **Events** is the logo: clicking the brand returns to the Event Feed (home).
+  - **My Bets** lives in the avatar dropdown (see D-desktop-4).
+  - **Notifications** is a bell icon with a permanent unread badge in the right
+    utility cluster (see D-desktop-2).
+  - **Profile** is the avatar in the utility cluster (resolves the earlier
+    Profile duplication; the avatar is Profile's home on desktop).
+  - **Favorites** (Saved view) is a heart icon in the utility cluster.
+  - A **hamburger** icon sits at the left, reserved for future scaling; it holds
+    no primary items at MVP (Events is the logo, My Bets is in the avatar menu).
+- **Second-level navigation:** the categories (Trending default, Politics,
+  Crypto, Culture, General) are a second-level sub-nav band directly under the
+  header. Categories are navigation (second level); the feed sort control is a
+  feed control on the "Live events" heading row, not navigation. See the Event
+  Feed screen description.
+- **Final desktop header composition:** left: hamburger (reserved) + logo (=
+  Events home). Right utility cluster: Balance (text), Favorites (heart),
+  Notifications (bell + badge), avatar (dropdown). Second-level category nav
+  under the header.
+- **Mobile-to-desktop mapping:** bottom bar 4 slots (thumb zone) -> lean desktop
+  header where Events is the logo, My Bets and Profile fold into the avatar menu,
+  Notifications and Favorites are icons in the cluster. No destination is lost.
+- **Job rationale:** keeps the header short and event-first (the feed is the
+  hero), consistent with G4 (do not signal a trading terminal). Tradeoff to note:
+  My Bets on desktop is one level deeper (inside the avatar menu) than the locked
+  bottom-nav slot it keeps on mobile; the user accepted this for a lean header,
+  and the hamburger is reserved to surface more nav as the app scales.
 
 ### D-desktop-2: Notifications badge
 
-- **Decision:** the unread badge sits on the Notifications item in the top bar
-  on desktop. Notifications stays a first-class, badged item in the primary nav,
-  it is NOT demoted to a utility-cluster bell icon.
-- **Mobile-to-desktop mapping:** badge on the bottom-nav Notifications slot ->
-  badge on the top-bar primary-nav Notifications item. Same permanent-visibility
-  guarantee.
-- **Job rationale:** the locked retention requirement is that the badge is
-  permanently visible to drive hot and warm return (FJ1, FJ5, EJ3; aarrr
-  D1-D3). A persistent top bar satisfies "always visible" on desktop. The
-  mobile-only constraint (thumb zone, miss risk) is lifted, so the requirement
-  carries over intact, it is not weakened. A header bell was already considered
-  and set aside on mobile (Navigation, bottom-nav alternative); the same reason
-  keeps Notifications in the primary nav on desktop. The label-versus-icon
-  treatment is a wireframe detail; the badge and the prominence are required.
+- **Decision (revised in the wireframe pass):** on desktop, Notifications is a
+  bell icon in the right utility cluster, carrying a permanent unread badge. The
+  earlier rule (keep it as a text item in a center primary nav, not a bell) is
+  superseded by the lean-header model in D-desktop-1.
+- **Requirement that is preserved:** the badge is permanently visible. It rides
+  on the bell icon, so the retention anchor is kept even though the item is now
+  an icon, not a labeled nav item.
+- **Mobile-to-desktop mapping:** badge on the bottom-nav Notifications slot
+  (mobile) -> badge on the bell icon in the desktop utility cluster. Same
+  permanent-visibility guarantee.
+- **Job rationale:** the locked retention requirement is that the unread badge is
+  permanently visible to drive hot and warm return (FJ1, FJ5, EJ3; aarrr D1-D3).
+  The badge-on-bell satisfies "always visible". The label-versus-icon treatment
+  was a wireframe detail; the user chose the icon for a lean header, and the
+  required property (a permanently visible badge) is unchanged.
 
 ### D-desktop-3: Event Feed grid
 
@@ -542,25 +559,27 @@ desktop question; none of them changes a mobile decision.
 
 - **Mobile:** Wallet and How It Works are header icons, not nav slots (G4).
   Unchanged.
-- **Desktop:** a right-hand utility cluster in the top bar, visually secondary
-  to the primary nav, holds: **Balance plus Deposit** (shows the account
-  balance and a deposit entry), **Favorites** (heart, opens the Saved view),
-  and the **avatar**.
-- **Avatar dropdown (desktop):** the avatar opens a dropdown populated from OUR
-  IA only, not from competitor menus: My Profile (SJ1/SJ2), Wallet / Deposit
-  (FJ4), How It Works (FJ4/EJ2), Logout. Do NOT add Leaderboard (it is
-  [SIROTA]), Rewards, or APIs (not our product).
-- **How It Works placement:** removed from any persistent header bar position;
-  it now lives in the footer and in the avatar dropdown. It was never a bottom
-  slot; this just relocates the header info entry. Pre-deposit access is
-  preserved (footer plus dropdown, both reachable before deposit).
-- **Mobile-to-desktop mapping:** header icons (wallet, info, avatar) -> utility
-  cluster (Balance plus Deposit, Favorites, avatar with dropdown), with How It
-  Works moved into the footer and the dropdown.
-- **Job rationale:** the desktop equivalent of the mobile header utilities. G4
-  carries over intact: money is a utility in the cluster (Balance plus Deposit),
-  not a primary destination; promoting Wallet to a primary nav slot would signal
-  a trading terminal and is rejected.
+- **Desktop (revised in the wireframe pass):** a right-hand utility cluster,
+  visually secondary, holds: **Balance** (text, the account balance), **Favorites**
+  (heart icon, opens the Saved view), **Notifications** (bell icon + permanent
+  badge, see D-desktop-2), and the **avatar** (dropdown). A standalone Deposit
+  button is NOT in the header; Deposit is reached from the avatar dropdown
+  (Wallet / Deposit) and in context from the Bet Screen insufficient-balance
+  state.
+- **Avatar dropdown (desktop):** collapsed by default, opens on click. Populated
+  from OUR IA only, not from competitor menus: My Profile (SJ1/SJ2), My Bets
+  (EJ1), Wallet / Deposit (FJ4), How It Works (FJ4/EJ2), Logout. Do NOT add
+  Leaderboard (it is [SIROTA]), Rewards, or APIs (not our product).
+- **How It Works placement:** removed from any persistent header bar position; it
+  lives in the footer and in the avatar dropdown. Pre-deposit access is preserved
+  (footer plus dropdown, both reachable before deposit).
+- **Mobile-to-desktop mapping:** mobile header icons (wallet/balance, info,
+  avatar) -> desktop utility cluster (Balance, Favorites, Notifications bell,
+  avatar with dropdown), with How It Works in the footer and the dropdown, and
+  My Bets folded into the dropdown.
+- **Job rationale:** G4 carries over intact: money is a utility (Balance text,
+  Deposit in the avatar menu), not a primary destination; promoting Wallet to a
+  primary slot would signal a trading terminal and is rejected.
 - **Deferred / folded utilities:**
   - Language switcher: deferred to Phase 2 (Brazil, Portuguese). English-first
     MVP needs no switcher.

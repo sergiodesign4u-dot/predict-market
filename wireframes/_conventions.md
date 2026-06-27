@@ -88,9 +88,10 @@ responsive screen, not a separate desktop mock.
 **Mobile-to-desktop mapping** (from `IA/sitemap.md`, Desktop layer section,
 restated here so a builder does not need to cross-read):
 
-- **Navigation:** bottom nav with 4 slots on mobile becomes a horizontal top
-  nav with the same 4 destinations on desktop, plus a right-hand utility
-  cluster (Wallet, How It Works, avatar). No destination added or removed.
+- **Navigation:** bottom nav with 4 slots on mobile; on desktop the same lean
+  header (S2) is used, the bottom nav is hidden, and primary destinations are
+  reached via the logo (Events), the avatar dropdown (My Bets, Profile), and the
+  utility-cluster icons (Notifications, Favorites). No destination is removed.
 - **Notifications badge:** on the Notifications item, in the bottom nav on
   mobile, in the top nav on desktop. Always visible on both.
 - **Event Feed:** single column on mobile, a responsive card grid up to 4 per
@@ -105,8 +106,8 @@ restated here so a builder does not need to cross-read):
 pixels as a conventions detail):
 
 - mobile, base: 1 column, bottom nav.
-- min-width 640px: 2-column feed grid, and navigation switches from bottom nav
-  to top nav at this first desktop breakpoint.
+- min-width 640px: 2-column feed grid, and the mobile bottom nav is hidden at
+  this first desktop breakpoint (the lean header is present at all widths).
 - min-width 960px: 3-column feed grid.
 - min-width 1280px: 4-column feed grid.
 
@@ -142,18 +143,31 @@ screen. Grey-box like the rest. Composition:
   placeholder for MVP.
 - Copyright line.
 
-### S2. Header (shared component)
+### S2. Header (shared component, lean header)
 
-The header is the same component across screens, reused on every screen.
+The header is the same lean component across screens, reused on every screen,
+and is the same at all widths.
 
-- **Desktop:** brand left; primary nav center with Events, My Bets, and
-  Notifications (Notifications keeps a permanent unread badge); right utility
-  cluster with Balance plus Deposit, Favorites (heart), and the avatar. The
-  avatar opens a dropdown: My Profile, Wallet / Deposit, How It Works, Logout.
-- **Mobile:** bottom nav with the 4 slots (Events, My Bets, Notifications
-  badged, Profile); header utilities as icons.
-- **Logged-out delta:** the utility cluster shows a "Sign in" entry instead of
-  Balance plus avatar; nothing else in the header changes.
+- **Left:** a hamburger icon (reserved for future scaling, no primary items at
+  MVP) and the brand logo. The logo is Events / home: clicking it returns to the
+  Event Feed.
+- **Right utility cluster:** Balance (text), Favorites (heart icon, opens the
+  Saved view), Notifications (bell icon with a permanent unread badge), and the
+  avatar. The avatar opens a dropdown, collapsed by default, opening on click:
+  My Profile, My Bets, Wallet / Deposit, How It Works, Logout. There is no
+  standalone Deposit button in the header (Deposit is in the dropdown).
+- **Second-level navigation:** a category sub-nav band sits directly under the
+  header (Trending default, Politics, Crypto, Culture, General). Categories are
+  navigation; the feed sort control is a feed control on the feed heading row,
+  not in this band.
+- **Mobile:** the same lean header, plus the bottom nav with the 4 slots
+  (Events, My Bets, Notifications badged, Profile) in the thumb zone.
+- **Icons:** simple monochrome outline icons (grey stroke, no color, no fill),
+  drawn at a consistent size so the element footprint is realistic. Use an icon
+  or a text label per element as space dictates; both stay grey-box.
+- **Logged-out delta:** the right cluster shows a "Sign in" entry instead of
+  Balance, Favorites, Notifications, and the avatar; the logo, the category
+  sub-nav, and the body are unchanged.
 
 ### S3. Event card (shared pattern, two layouts)
 
