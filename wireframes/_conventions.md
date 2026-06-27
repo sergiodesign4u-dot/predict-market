@@ -7,14 +7,17 @@ visuals.
 
 ---
 
-## The 6 base conventions
+## The 7 base conventions
 
 ### 1. Fidelity: structure only
 
 Show structure, hierarchy, and zones. Grey box. No color, no fonts, no brand,
 no images, no finished UI. The layout and the order of content on the page are
 what we are designing here. If a decision is about how something looks rather
-than where it sits and what it says, it does not belong in a wireframe.
+than where it sits and what it says, it does not belong in a wireframe. The
+grey-box layout is now responsive: structure and zones reflow across
+breakpoints (see convention 7), while still grey with no color, fonts, icons,
+or shadows.
 
 ### 2. Markup: semantic HTML
 
@@ -65,6 +68,10 @@ structure, different content.
   `-pending`).
 - Every real state listed for a screen in `_screens.md` must become its own
   page when that screen is built. Nothing listed there is dropped or merged.
+- For invoked screens (Bet Screen, Sign In / Register, Deposit, Win Screen,
+  Loss Screen), the base and state pages render as modal or bottom-sheet
+  overlay content, not as a full-page layout. Their states are still separate
+  pages, exactly as above.
 
 ### 6. Deferred to later phases (Concept onward), not allowed in wireframes
 
@@ -72,9 +79,48 @@ Not part of the wireframe deliverable and not to appear on any wireframe page:
 color, typography, shadows, icons, finished UI, motion. These belong to the
 Concept phase and later, never here.
 
+### 7. Responsive build (mobile-first)
+
+The product is responsive and built mobile-first. The mobile layout is the
+base; desktop is a min-width expansion of the same screen. Wireframes build one
+responsive screen, not a separate desktop mock.
+
+**Mobile-to-desktop mapping** (from `IA/sitemap.md`, Desktop layer section,
+restated here so a builder does not need to cross-read):
+
+- **Navigation:** bottom nav with 4 slots on mobile becomes a horizontal top
+  nav with the same 4 destinations on desktop, plus a right-hand utility
+  cluster (Wallet, How It Works, avatar). No destination added or removed.
+- **Notifications badge:** on the Notifications item, in the bottom nav on
+  mobile, in the top nav on desktop. Always visible on both.
+- **Event Feed:** single column on mobile, a responsive card grid up to 4 per
+  row on desktop. The per-card context snippet is never dropped to fit more
+  columns (snippet hard-lock, minimum card width around 280px).
+- **Invoked screens** (Bet Screen, Sign In / Register, Deposit, Win Screen,
+  Loss Screen): presented as an overlay in context on both breakpoints, a
+  centered modal on desktop, a full-height bottom sheet on mobile. They are
+  never a separate full-page destination and never a nav slot.
+
+**Breakpoint thresholds** (set here, since `IA/sitemap.md` left the exact
+pixels as a conventions detail):
+
+- mobile, base: 1 column, bottom nav.
+- min-width 640px: 2-column feed grid, and navigation switches from bottom nav
+  to top nav at this first desktop breakpoint.
+- min-width 960px: 3-column feed grid.
+- min-width 1280px: 4-column feed grid.
+
+Each threshold is the width where one more ~280px card column fits with gaps
+without crowding out the context snippet. These are the feed-grid thresholds;
+other screens reflow at the same mobile-first base but do not need a column
+count.
+
+This stays grey-box: the layout reflows across breakpoints, but everything is
+still grey, with no color, fonts, icons, or shadows.
+
 ---
 
-## Three additions (Predict Market needs these beyond the base 6)
+## Three additions (Predict Market needs these beyond the base 7)
 
 ### A. Grey-box rule for data
 
