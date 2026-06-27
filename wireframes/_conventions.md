@@ -189,13 +189,21 @@ The event card is a reusable pattern. Composition:
   with the side, and for multi-outcome the option, pre-selected. It does NOT
   place a bet on the card and does not bypass Event Detail.
 - Small meta: volume and closing date.
-- Bookmark control (see S4).
+- Bookmark control, placed as a small element in the meta row (see S4).
 - No category badge, no context snippet.
+- No "Open event detail" button. The card has no footer and no full-width open
+  button; the event question itself is the link to Event Detail (neutral entry).
+  This keeps the card compact and the list quick to scan.
 
 Two layouts:
 
 - **Binary:** one question, the % of one side, large YES / NO controls.
-- **Multi-outcome:** rows of option plus % plus compact YES / NO controls.
+- **Multi-outcome:** rows of option plus % plus compact YES / NO controls, but
+  the feed card shows at most the two leading positions (the options with the
+  highest probability / most stake at that moment), followed by a "+N more" link.
+  The full option list is shown only after the user opens the event. This caps
+  multi-outcome cards to roughly the height of a binary card so the feed reads
+  evenly instead of having tall, dense cards next to short ones.
 
 Multi-outcome is a normal `Event.Type` layout, not the rejected trading-board
 view. Note: this card pattern supersedes the earlier "context snippet on the

@@ -72,13 +72,17 @@ non-main-flow screens are deferred (see the Deferred to Step 08 section).
   framing above):**
   - Card composition: thumbnail placeholder image, event question (primary
     hook), compact probability % (does not dominate), YES / NO controls as a
-    trigger-entry, small meta (volume and closing date), and a bookmark control.
-    No category badge, no context snippet. The FJ2 context block now lives on
-    Event Detail only.
+    trigger-entry, small meta (volume and closing date) with a bookmark control
+    placed in the meta row. No category badge, no context snippet, no
+    "Open event detail" button and no card footer (the question itself is the
+    link to Event Detail). The FJ2 context block now lives on Event Detail only.
   - Two layouts, both built: Binary (one question, the % of one side, large
     YES / NO) and Multi-outcome (rows of option plus % plus compact YES / NO).
-    Multi-outcome is a normal `Event.Type` layout, not the rejected
-    trading-board view.
+    Multi-outcome cards in the feed show at most the two leading positions
+    (highest probability / most stake) plus a "+N more" link; the full option
+    list is on Event Detail. This caps multi-outcome cards to roughly binary-card
+    height so the list reads evenly. Multi-outcome is a normal `Event.Type`
+    layout, not the rejected trading-board view.
   - Trigger-entry: tapping YES or NO on a card routes to Event Detail with the
     side, and for multi-outcome the option, pre-selected (`IA/flows.md` MJ). It
     does not place a bet and does not bypass Event Detail; no Feed to Bet edge is
