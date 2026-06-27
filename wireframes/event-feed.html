@@ -99,8 +99,17 @@
       justify-content: space-between; border-bottom: 1px solid #bbb; padding-bottom: 8px; margin-bottom: 10px;
     }
     .feed-head h2 { font-size: 13px; margin: 0; }
-    .sort-row { display: flex; align-items: center; gap: 6px; font-size: 11px; }
-    .sort-row select { border: 1px solid #888; background: #d6d6d6; padding: 3px; font-size: 11px; }
+    /* Sort as a Kalshi-style dropdown (label = current sort, panel with options + reverse) */
+    .sort-menu { position: relative; }
+    .sort-menu summary { list-style: none; border: 1px solid #888; background: #d6d6d6; padding: 5px 8px; font-size: 11px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
+    .sort-menu summary::-webkit-details-marker { display: none; }
+    .sort-panel { position: absolute; right: 0; top: calc(100% + 4px); min-width: 190px; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
+    .sort-panel .zone-tag { background: #cdcdcd; }
+    .sort-panel ul { list-style: none; margin: 0; padding: 4px 0; }
+    .sort-panel li label { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: 11px; cursor: pointer; }
+    .reverse-row { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #ccc; padding: 7px 10px; font-size: 11px; }
+    .toggle { border: 1px solid #888; background: #cfcfcf; font-size: 10px; padding: 2px 8px; cursor: pointer; }
+    .toggle[aria-checked="true"] { background: #b8b8b8; font-weight: bold; }
 
     .grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
     .card { background: #ededed; display: flex; flex-direction: column; }
@@ -261,16 +270,32 @@
       <div class="feed-inner">
 
         <div class="feed-head">
-          <h2>Live events</h2>
-          <div class="sort-row">
-            <label for="sort">Sort:</label>
-            <select id="sort">
-              <option>Trending</option>
-              <option>Newest</option>
-              <option>Closing soon</option>
-              <option>Volume</option>
-            </select>
-          </div>
+          <!-- Heading echoes the active second-level category (here: Trending), not a generic "Live events". -->
+          <h2 id="feedHeading">Trending</h2>
+
+          <!-- Sort: Kalshi-style dropdown. Summary shows the current sort; panel has options + reverse toggle. -->
+          <details class="sort-menu">
+            <summary aria-label="Sort by">
+              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
+              <span>Sort: <span id="sortCurrent">Trending</span></span>
+              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="sort-panel">
+              <span class="zone-tag">sort options</span>
+              <ul role="radiogroup" aria-label="Sort by">
+                <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
+                <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
+                <li><label><input type="radio" name="sort" value="New"> New</label></li>
+                <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
+                <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
+                <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
+              </ul>
+              <div class="reverse-row">
+                <span>Reverse sort</span>
+                <button type="button" class="toggle" role="switch" aria-checked="false">off</button>
+              </div>
+            </div>
+          </details>
         </div>
 
         <div class="grid">
@@ -542,9 +567,13 @@
         <li><strong>Second-level category nav</strong> -&gt; Trending (default),
           Politics, Crypto, Culture, General as a sub-nav band under the header.
           Categories are navigation (second level), separated from feed controls.</li>
-        <li><strong>Sort (feed control on the heading row)</strong> -&gt; Trending,
-          Newest, Closing soon, Volume. A feed control, not navigation, so it stays
-          on the "Live events" row.</li>
+        <li><strong>Feed heading echoes the active category</strong> -&gt; the
+          heading is the selected second-level category (here "Trending"), not a
+          generic "Live events". It updates when you pick another category.</li>
+        <li><strong>Sort (Kalshi-style dropdown on the heading row)</strong> -&gt;
+          a control whose label shows the current sort; opens a panel with Trending,
+          Volatile, New, Closing soon, Volume, 50-50 plus a Reverse sort toggle. A
+          feed control, not navigation. Exact labels are a wireframe detail.</li>
         <li><strong>YES/NO trigger-entry on the card</strong> -&gt; routes to Event
           Detail with the side (and for multi-outcome the option) pre-selected. It
           does not place a bet and does not bypass Event Detail, so FJ2 is preserved
@@ -638,6 +667,41 @@ Active Bets    (MJ success, T14)</pre>
           btn.setAttribute('aria-label', 'Swap balance (showing ' + states[i].label + ')');
         });
       }
+    })();
+
+    // Sort dropdown: update the "Sort: X" label and close the menu on choose.
+    (function () {
+      var menu = document.querySelector('.sort-menu');
+      if (!menu) return;
+      var current = document.getElementById('sortCurrent');
+      menu.querySelectorAll('input[name="sort"]').forEach(function (r) {
+        r.addEventListener('change', function () {
+          current.textContent = r.value;
+          menu.open = false;
+        });
+      });
+      var rev = menu.querySelector('.toggle');
+      if (rev) {
+        rev.addEventListener('click', function () {
+          var on = rev.getAttribute('aria-checked') === 'true';
+          rev.setAttribute('aria-checked', on ? 'false' : 'true');
+          rev.textContent = on ? 'off' : 'on';
+        });
+      }
+    })();
+
+    // Category second-level nav: set active and echo it in the feed heading.
+    (function () {
+      var nav = document.querySelector('.cat-nav');
+      var heading = document.getElementById('feedHeading');
+      if (!nav || !heading) return;
+      nav.querySelectorAll('button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          nav.querySelectorAll('li').forEach(function (li) { li.removeAttribute('aria-current'); });
+          b.parentNode.setAttribute('aria-current', 'page');
+          heading.textContent = b.textContent;
+        });
+      });
     })();
   </script>
 

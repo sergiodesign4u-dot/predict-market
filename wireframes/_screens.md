@@ -83,12 +83,13 @@ non-main-flow screens are deferred (see the Deferred to Step 08 section).
     side, and for multi-outcome the option, pre-selected (`IA/flows.md` MJ). It
     does not place a bet and does not bypass Event Detail; no Feed to Bet edge is
     added. Tapping the card body or question opens Event Detail neutrally.
-  - Default sorted view is Trending (not a neutral "All"); recency is the
-    alternate. Categories are second-level navigation in a sub-nav band under
-    the header (Trending default, then Politics, Crypto, Culture, General); the
-    sort control (a feed control) sits on the feed heading row ("Live events").
-    Categories stay the four locked ones; the mechanism scales to more later
-    without rework.
+  - Default sorted view is Trending (not a neutral "All"). Categories are
+    second-level navigation in a sub-nav band under the header (Trending default,
+    then Politics, Crypto, Culture, General). The feed heading echoes the active
+    category (e.g. "Trending"), not a generic "Live events". The sort control is
+    a Kalshi-style dropdown on the heading row (label = current sort; panel of
+    options plus a Reverse sort toggle). Categories stay the four locked ones;
+    the mechanism scales to more later without rework.
 - **Saved view (not a spine screen):** Saved is a view / filter under Events
   (reached from the card bookmark and the desktop Favorites entry), not a new
   spine screen or destination. It is therefore not added to the spine or the
