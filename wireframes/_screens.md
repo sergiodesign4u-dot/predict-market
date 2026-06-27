@@ -68,6 +68,36 @@ non-main-flow screens are deferred (see the Deferred to Step 08 section).
   - first-visit story-driven layout (context visible on card, not just %) vs
     return-visit denser feed. Naming deferred: P3-4 in `IA/flows.md`
     (first-visit vs return-visit layout naming on Event Feed).
+- **Revised card and feed (IA propagation pass, supersedes the story-driven card
+  framing above):**
+  - Card composition: thumbnail placeholder image, event question (primary
+    hook), compact probability % (does not dominate), YES / NO controls as a
+    trigger-entry, small meta (volume and closing date), and a bookmark control.
+    No category badge, no context snippet. The FJ2 context block now lives on
+    Event Detail only.
+  - Two layouts, both built: Binary (one question, the % of one side, large
+    YES / NO) and Multi-outcome (rows of option plus % plus compact YES / NO).
+    Multi-outcome is a normal `Event.Type` layout, not the rejected
+    trading-board view.
+  - Trigger-entry: tapping YES or NO on a card routes to Event Detail with the
+    side, and for multi-outcome the option, pre-selected (`IA/flows.md` MJ). It
+    does not place a bet and does not bypass Event Detail; no Feed to Bet edge is
+    added. Tapping the card body or question opens Event Detail neutrally.
+  - Default sorted view is Trending (not a neutral "All"); recency is the
+    alternate. Sort and filter controls sit on the feed heading row ("Live
+    events"), not a separate band. Categories stay the four locked ones
+    (Politics, Crypto, Culture, General); the mechanism scales to more later
+    without rework.
+- **Saved view (not a spine screen):** Saved is a view / filter under Events
+  (reached from the card bookmark and the desktop Favorites entry), not a new
+  spine screen or destination. It is therefore not added to the spine or the
+  state table.
+- **Auth-state note (no separate logged-out page):** the browse screens (Event
+  Feed, Event Detail) render registered by default; logged-out is a
+  header-level delta (Sign in replaces Balance plus avatar), body identical and
+  browsable in both. No separate logged-out page is added to the spine. The auth
+  branch concentrates at the gate, already in the spine (Sign In / Register,
+  Deposit).
 
 ---
 

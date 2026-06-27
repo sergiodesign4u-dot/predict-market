@@ -120,6 +120,84 @@ still grey, with no color, fonts, icons, or shadows.
 
 ---
 
+## Shared patterns and axes (from the revised IA)
+
+These are reusable elements defined once here, so every later screen reuses them
+rather than reinventing them. All trace to the revised `IA/sitemap.md` (Desktop
+layer, Event Feed card, Saved view, Auth-state axis) and `IA/flows.md`
+(trigger-entry edge). They stay grey-box like everything else.
+
+### S1. Footer (global element)
+
+Every screen carries the same footer, defined once here and reused on every
+screen. Grey-box like the rest. Composition:
+
+- Navigation: Events, My Bets, How It Works, Wallet.
+- Legal: Terms, Privacy.
+- One-line risk disclaimer: generic and honest, for example "Prediction markets
+  involve risk of loss". No invented statistic.
+- Regulatory / licensing line: a labeled placeholder only. Do not invent a
+  license number or a regulator name.
+- Responsible play link: the reserved D-logic slot from `IA/sitemap.md`, a
+  placeholder for MVP.
+- Copyright line.
+
+### S2. Header (shared component)
+
+The header is the same component across screens, reused on every screen.
+
+- **Desktop:** brand left; primary nav center with Events, My Bets, and
+  Notifications (Notifications keeps a permanent unread badge); right utility
+  cluster with Balance plus Deposit, Favorites (heart), and the avatar. The
+  avatar opens a dropdown: My Profile, Wallet / Deposit, How It Works, Logout.
+- **Mobile:** bottom nav with the 4 slots (Events, My Bets, Notifications
+  badged, Profile); header utilities as icons.
+- **Logged-out delta:** the utility cluster shows a "Sign in" entry instead of
+  Balance plus avatar; nothing else in the header changes.
+
+### S3. Event card (shared pattern, two layouts)
+
+The event card is a reusable pattern. Composition:
+
+- Thumbnail placeholder image.
+- Event question (the primary hook).
+- Compact probability %, which does not dominate the card.
+- YES / NO controls that act as a trigger-entry: a tap routes to Event Detail
+  with the side, and for multi-outcome the option, pre-selected. It does NOT
+  place a bet on the card and does not bypass Event Detail.
+- Small meta: volume and closing date.
+- Bookmark control (see S4).
+- No category badge, no context snippet.
+
+Two layouts:
+
+- **Binary:** one question, the % of one side, large YES / NO controls.
+- **Multi-outcome:** rows of option plus % plus compact YES / NO controls.
+
+Multi-outcome is a normal `Event.Type` layout, not the rejected trading-board
+view. Note: this card pattern supersedes the earlier "context snippet on the
+card" and snippet hard-lock framing in convention 7 and Addition C; the card is
+now clean and the FJ2 context block lives on Event Detail only.
+
+### S4. Bookmark / saved (pattern)
+
+Cards carry a bookmark control. Saved events are reached through the Saved view
+under Events (a filter over the feed) and via the Favorites (heart) entry in the
+desktop header. Saved is a view, not a new destination or screen, so it is not a
+separate wireframe screen.
+
+### S5. Auth-state axis (containment rule)
+
+Logged-out versus registered is a documented axis, not a per-screen state
+column. Browse screens (Event Feed, Event Detail) render registered by default;
+logged-out is the header-level delta from S2 (Sign in replaces Balance plus
+avatar), with the body identical and browsable in both. Wireframes do NOT build
+a separate duplicate logged-out page for a browse screen. The real auth branch
+lives at the activation gate (Bet Screen Confirm -> Sign In -> Deposit), which
+has its own screens and states.
+
+---
+
 ## Three additions (Predict Market needs these beyond the base 7)
 
 ### A. Grey-box rule for data
