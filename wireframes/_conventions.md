@@ -155,20 +155,22 @@ and is the same at all widths.
   swap (one figure at a time + a swap icon: Portfolio = Cash + In-play, default,
   toggles to Cash = available; not two figures like competitors), Favorites
   (heart icon, opens the Saved view), Notifications (bell icon with a permanent
-  unread badge, desktop only), and the avatar. The avatar opens a dropdown,
-  collapsed by default, opening on click: My Profile, My Bets, Wallet / Deposit,
-  How It Works, Logout. There is no standalone Deposit button in the header.
+  unread badge), and the avatar. The avatar opens a dropdown, collapsed by
+  default, opening on click: My Profile, My Bets, Wallet / Deposit, How It Works,
+  Logout. There is no standalone Deposit button in the header.
 - **Second-level navigation:** a category sub-nav band sits directly under the
   header (Trending default, Politics, Crypto, Culture, General). Categories are
   navigation; the feed sort control is a feed control on the feed heading row,
   not in this band.
-- **Mobile:** the same lean header, but the right side keeps only Favorites and
-  the avatar (the balance and the Notifications bell are removed: no room at
-  360px, and Notifications lives in the bottom bar). Bottom nav, 4 slots with
-  icons: Events, My Bets, Notifications (badged), and Portfolio. The Portfolio
-  slot replaces Profile, shows the portfolio balance figure in place of the icon
-  (label "Portfolio"), and opens the account hub (My Profile extended with a
-  portfolio summary). Profile is reached there, not as its own slot.
+- **Mobile:** the same lean header, but the right side keeps the Notifications
+  bell (with badge) and the avatar (the balance is removed: no room at 360px).
+  Bottom nav, 4 slots with icons: Events, My Bets, Favorites, and Portfolio.
+  Notifications and Favorites are swapped vs the cluster: Notifications is the
+  header bell at both breakpoints; Favorites is the mobile bottom slot (and a
+  desktop header heart). The Portfolio slot replaces Profile, shows the portfolio
+  balance figure in place of the icon (label "Portfolio"), and opens the account
+  hub (My Profile extended with a portfolio summary). Profile is reached there,
+  not as its own slot.
 - **Icons:** simple monochrome outline icons (grey stroke, no color, no fill),
   drawn at a consistent size so the element footprint is realistic. Use an icon
   or a text label per element as space dictates; both stay grey-box.

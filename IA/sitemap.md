@@ -248,7 +248,7 @@ Two card layouts, both built (Event.Type already supports this, no new field):
 
 Controls placement (revised in the wireframe pass): categories are second-level navigation in a sub-nav band directly under the header (Trending default, then Politics, Crypto, Culture, General), not on the feed heading row. The sort control (a feed control, not navigation) sits on the "Live events" heading row. Exact sort labels are a wireframe detail. Categories stay the locked four for MVP; the category mechanism is built to scale to more categories later without rework. Do not add empty categories now.
 
-Saved view: a filter / view over the Event Feed showing only saved events. It is NOT a new bottom-nav slot (the 4 slots are locked) and NOT a new top-level destination; it is a view within Events, the same way categories filter the feed. Reached from the bookmark control on cards and, on desktop, from the Favorites (heart) entry in the header utility cluster (see Desktop layer). See Saved events for the relationship and the alert hypothesis.
+Saved view: a filter / view over the Event Feed showing only saved events. It is a view within Events, the same way categories filter the feed, not a separate screen. Reached from the bookmark control on cards, from the Favorites (heart) entry in the desktop header, and from the Favorites bottom-nav slot on mobile (the wireframe pass moved Favorites into the mobile bottom bar, swapping with Notifications). See Saved events for the relationship and the alert hypothesis.
 
 **Event Detail** - one event, full view: probability, chart, narrative context (why this price), resolution conditions, source. CTA: YES / NO. This screen is our primary differentiator - no competitor has context at this depth (FJ2 confirmed gap). With the card snippet removed, this context block is now the sole home of the FJ2 differentiator and must be strong.
 States: loading (event data fetching) - error (load failure, T8 in MJ and FJ2 flows - retry returns to Event Detail) - resolved-while-reading (this event just resolved: [outcome] - navigate to Win/Loss Screen if user holds a position, else to Event Feed) - pre-selected entry variant (arrived from a card YES/NO tap with a side and, for multi-outcome, an option pre-selected; the bet is still placed here, FJ2 context shown first; to be detailed when Event Detail is built).
@@ -259,7 +259,7 @@ This is a new addition to the IA, stated plainly as new, not a pre-existing job.
 
 - **Relationship:** User saves / follows Event (a bookmark). Added to the User entity (Saved / followed events) and the Event entity (Related to: User).
 - **Saved view:** a filter / view over the Event Feed showing only saved events. NOT a new bottom-nav slot and NOT a new top-level destination; a view within Events, like a category filter.
-- **Affordances:** a bookmark control on each event card; a Favorites (heart) entry in the desktop header utility cluster that opens the Saved view (see Desktop layer D-desktop-4).
+- **Affordances:** a bookmark control on each event card; a Favorites (heart) entry in the desktop header utility cluster; and a Favorites bottom-nav slot on mobile (wireframe pass), all opening the Saved view (see Desktop layer D-desktop-4 and the bottom-nav table).
 - **Alert on a saved event moving significantly: [hypothesis].** Not a confirmed job, not wired as a confirmed Notification type. The confirmed Notification types stay as they are (entity 8). A proactive "your saved event moved" alert is flagged for later validation only.
 - **Rationale:** saving improves convenience and retention; every benchmarked competitor exposes a bookmark on the card. The confirmed job backing is partial (retention, FJ1 return), so the save relationship is added now, but the proactive saved-event alert stays a hypothesis until validated.
 
@@ -438,13 +438,13 @@ Navigation is derived from the user's job sequence, not from a competitor tab ba
 
 ### Bottom navigation - 4 slots
 
-**Alternative considered and set aside:** a 3-slot version placing Notifications as a header bell icon, saving one bottom slot. Set aside because the unread badge is a retention anchor - it must be permanently visible in the thumb zone to drive hot/warm return (FJ1, FJ5, EJ3 depend on it; aarrr.md D1-D3). A header bell is easy to miss on mobile. The badge in the bottom bar earns its slot.
+**Notifications placement (revised in the wireframe pass):** Notifications is now a header bell with a permanent badge on both breakpoints, NOT a bottom-nav slot. The earlier reasoning (the badge must sit in the bottom thumb zone) was reconsidered: the unread badge drives hot/warm return (FJ1, FJ5, EJ3; aarrr.md D1-D3) by being VISIBLE, and a top-right bell with a count is visible too. The thumb slot is more valuable for a destination users actively navigate to, so it was given to Favorites (Saved). Notifications and Favorites were swapped: Notifications to the header, Favorites to the bottom bar on mobile.
 
 | Slot | Label | Opens | Jobs served | Why it earns a top-level slot |
 |---|---|---|---|---|
 | 1 | **Events** | Event Feed | FJ1, FJ2, MJ | The entry point. Users open the app because something happened in the world. Every session starts here. |
 | 2 | **My Bets** | Active Bets (two tabs: Active / History) | EJ1, MJ, FJ5, EJ3 | The position monitor. Users return specifically to track odds movement and see resolved bets. History tab implements G5: Bet History becomes a tab inside Active Bets, not a standalone screen. EJ1 coverage is preserved. |
-| 3 | **Notifications** | Notifications list | FJ1, FJ5, EJ3 | The return trigger. Badge drives hot/warm return (aarrr.md D1-D3). Without a permanent bottom slot with unread count, FJ1/FJ5/EJ3 depend on OS alerts only with no in-app recovery path for missed alerts. |
+| 3 | **Favorites** | Saved view (a filter over the Event Feed) | FJ1 (return / watchlist) | Revised in the wireframe pass. The mobile thumb slot for actively filtering to saved events (your watchlist). On desktop, Favorites is a heart icon in the header instead. Notifications, which used to hold this slot, is now a header bell on both breakpoints (its badge stays visible, so its retention role is preserved). Caveat: Saved is a newer, partially-confirmed feature; revisit this slot if usage data is low. |
 | 4 | **Portfolio** | My Profile, extended with a portfolio summary on top (Portfolio = Cash + In-play, plus Deposit / Wallet), above the track record. Combined account / identity hub. | SJ1, SJ2, FJ4 | Revised in the wireframe pass. The slot shows the portfolio balance figure instead of an icon (label "Portfolio"); it opens the account hub, identity plus money. Reputation (SJ1/SJ2) stays first-class here; the balance is surfaced because the mobile header drops the balance for space. |
 
 > Slot 4 change (wireframe pass): the mobile slot 4 was **Profile** (My Profile, SJ1/SJ2). It is now **Portfolio**, a combined account hub that opens My Profile extended with a portfolio summary (Portfolio / Cash + a Deposit / Wallet entry) above the track record. This is a deliberate, documented partial override of G4: the slot surfaces a balance, but the destination is the identity / account hub, not a bare trading wallet, so the platform still reads event-first rather than terminal-like. Profile is no longer a separate slot; reputation is reached inside this hub (and via the desktop avatar). My Bets (positions / history) is untouched, so there is no duplication.
@@ -458,6 +458,8 @@ Navigation is derived from the user's job sequence, not from a competitor tab ba
 | **Wallet / Deposit** | Avatar dropdown (desktop) and inside the Portfolio hub (mobile); re-deposit also invoked in context from the Bet Screen | Money is not why users open the app. Re-deposit is solved in context: Bet Screen insufficient-balance state invokes Deposit directly (1 step). G4 holds on desktop (money is a utility, not a slot). Mobile nuance (wireframe pass): the balance is surfaced in the Portfolio slot, but that slot opens the account / identity hub, not a bare Wallet, so the event-first read is preserved. A pure standalone Wallet bottom slot is still rejected. |
 | **How It Works** | Header info icon accessible from Events; also linked from Deposit | Pre-bet trust signal for new users, reachable before deposit and before sign-in. Not a recurring destination - a one-time reassurance step inside FJ4/EJ2. A bottom slot would waste a scarce position on a screen most users visit once. |
 | **My Profile (avatar)** | Header avatar dropdown (desktop); on mobile, My Profile is reached via the Portfolio bottom slot (account hub) | Quick identity access without leaving the Events context. After the wireframe pass there is no separate Profile bottom slot; reputation (SJ1/SJ2) is reached via the Portfolio account hub on mobile and the avatar on desktop. |
+| **Notifications (bell)** | Header bell with a permanent unread badge, both breakpoints | Revised in the wireframe pass: moved out of the bottom bar. The badge stays permanently visible (retention anchor, FJ1/FJ5/EJ3), and the thumb slot it vacated went to Favorites. The bell opens the Notifications list for in-app recovery of missed alerts. |
+| **Favorites (heart)** | Header heart icon on desktop; bottom-nav slot on mobile | Opens the Saved view. On mobile it earns the thumb slot for active filtering to the watchlist; on desktop it is a header utility. |
 
 ### Not navigation destinations
 
@@ -536,12 +538,15 @@ desktop question; none of them changes a mobile decision.
 - **Requirement that is preserved:** the badge is permanently visible. It rides
   on the bell icon, so the retention anchor is kept even though the item is now
   an icon, not a labeled nav item.
-- **One place per breakpoint:** the bell lives in the desktop header cluster
-  only. On mobile, Notifications is the bottom-bar slot only and the bell is
-  removed from the header, so it is not shown twice.
-- **Mobile-to-desktop mapping:** Notifications bottom-nav slot with badge
-  (mobile) -> bell icon with badge in the desktop utility cluster. Same
-  permanent-visibility guarantee, never duplicated within one breakpoint.
+- **Header bell on both breakpoints (revised in the wireframe pass):** the bell
+  with its badge lives in the header at all widths. Notifications no longer holds
+  a bottom-nav slot; it was swapped with Favorites (which took the mobile slot).
+  The badge is visible whether at the top or the bottom, so the retention anchor
+  is preserved; the scarce thumb slot is spent on a more actively-navigated
+  control (Favorites / Saved). This overturns the earlier "Notifications must be
+  a bottom slot" decision (see the bottom-nav table note).
+- **Mobile-to-desktop mapping:** bell icon with badge in the header, the same at
+  both breakpoints. Not duplicated anywhere.
 - **Job rationale:** the locked retention requirement is that the unread badge is
   permanently visible to drive hot and warm return (FJ1, FJ5, EJ3; aarrr D1-D3).
   The badge-on-bell satisfies "always visible". The label-versus-icon treatment
@@ -571,16 +576,17 @@ desktop question; none of them changes a mobile decision.
 ### D-desktop-4: Header utilities
 
 - **Mobile (revised in the wireframe pass):** the lean header right side holds
-  Favorites and the avatar only. Balance is not in the mobile header (it is in
-  the Portfolio bottom slot); How It Works lives in the avatar dropdown and the
-  footer; Deposit lives in the avatar dropdown and the Portfolio hub. Money is
-  still not a header destination (G4 spirit preserved).
+  the Notifications bell (with badge) and the avatar. Favorites moved to the
+  bottom bar (swapped with Notifications). Balance is not in the mobile header
+  (it is in the Portfolio bottom slot); How It Works lives in the avatar dropdown
+  and the footer; Deposit lives in the avatar dropdown and the Portfolio hub.
+  Money is still not a header destination (G4 spirit preserved).
 - **Desktop (revised in the wireframe pass):** a right-hand utility cluster,
   visually secondary, holds: **Balance as a Portfolio / Cash swap** (one figure
   at a time, a swap icon toggles Portfolio = Cash + In-play, default, and Cash =
   available; not two figures like competitors), **Favorites** (heart icon, opens
-  the Saved view), **Notifications** (bell icon + permanent badge, desktop only,
-  see D-desktop-2), and the **avatar** (dropdown). A standalone Deposit button is
+  the Saved view), **Notifications** (bell icon + permanent badge, see
+  D-desktop-2), and the **avatar** (dropdown). A standalone Deposit button is
   NOT in the header; Deposit is reached from the avatar dropdown (Wallet /
   Deposit) and in context from the Bet Screen insufficient-balance state.
 - **Mobile:** the balance is removed from the header (no room at small widths;
@@ -652,15 +658,16 @@ Level 0 - bottom nav destinations (1 tap from anywhere in the app)
   My Bets
     Active Bets (Active tab - default view)
     Bet History (History tab inside My Bets - G5 merge)
-  Notifications
-    Notifications list
+  Favorites (mobile slot 3; on desktop a header heart icon)
+    Saved view (a filter over the Event Feed)
   Portfolio (mobile slot 4; on desktop via the avatar + the header balance swap)
     My Profile, extended with a portfolio summary (Portfolio / Cash + Deposit) above the track record
 
 Level 1 - one tap below a Level 0 screen
   under Events:
     Event Detail (tap any event card on Event Feed)
-  under Portfolio / avatar (available at Level 0):
+  via the header (available at Level 0):
+    Notifications list (header bell, both breakpoints)
     Wallet / Deposit (avatar dropdown, or inside the Portfolio hub)
     How It Works (avatar dropdown and footer, also linked from Deposit)
 
