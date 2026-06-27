@@ -380,6 +380,11 @@ Help / FAQ                                  [SIROTA]        - EJ2 is served by D
 
 ## Navigation
 
+> Desktop note: the mobile navigation below is the source of truth. Its desktop
+> mapping (top nav with the same 4 slots, right-hand utility cluster, badge in
+> the bar) is in the Desktop layer (responsive, mobile-first) section directly
+> after Navigation. The mobile content here is unchanged.
+
 ### User-model rationale
 
 Navigation is derived from the user's job sequence, not from a competitor tab bar. The primary path is: **follow an event** (find what is happening in the world) → **place a stake** (confirm your opinion with real money) → **watch the position move** (return to track odds) → **return for the resolution** (see what happened and how you did) → **build reputation** (show you were right). Each bottom-nav slot maps directly to one phase of this loop. Service-layer concerns - money, history, other users, help - are not part of the active loop and live at the second level or are invoked in context, never given a scarce top-level slot.
@@ -421,6 +426,105 @@ These screens are reached only inside a flow, triggered by a user action. They a
 | **Search** | Deferred until catalog scale | At 10-20 curated markets, users scan the Event Feed; they do not search. Search does not close a confirmed job at this scale. When added, it attaches to the Events tab under FJ1 - not a bottom slot. |
 | **Leaderboard** | [SIROTA] | No confirmed job. SJ2 is served by My Profile and Public Profile. Leaderboard is a view over profiles, not a job-closing destination. |
 | **Responsible-play slot (D-logic)** | Reserved, post-MVP, not built | Account-level deposit and loss limits, cooldown period, self-exclusion. Mandatory for Brazil Phase 2 (Law 14.790 / Ordinance 1,231 self-exclusion and responsible-gambling requirements). Do not discover this late. |
+
+---
+
+## Desktop layer (responsive, mobile-first)
+
+The product is mobile-first and responsive. The mobile layer above is unchanged
+and remains the structural source of truth: the same 4 destinations, the same
+header utilities, the same jobs. The desktop layer below is the same IA derived
+from the same jobs, expanded at wider widths via min-width. It introduces no new
+destination, no new job, and no new entity. Each decision below resolves a
+desktop question; none of them changes a mobile decision.
+
+### D-desktop-1: Primary navigation
+
+- **Mobile:** bottom nav, 4 slots (Events, My Bets, Notifications, Profile), in
+  the thumb zone.
+- **Desktop:** the same 4 destinations move to a horizontal top navigation bar.
+  No destination is added or removed.
+- **Mobile-to-desktop mapping:** bottom bar (thumb zone) -> top bar (persistent,
+  in the cursor and viewport zone). Same labels, same order, same targets.
+- **Job rationale:** the mobile argument against a top placement was "easy to
+  miss in the thumb zone on mobile" (Navigation, bottom-nav alternative). That
+  constraint does not apply on desktop, where a persistent top bar sits in the
+  viewport and the cursor lives in that zone. Event-first identity is preserved:
+  the feed stays the centered hero, consistent with G4 (do not signal a trading
+  terminal).
+
+### D-desktop-2: Notifications badge
+
+- **Decision:** the unread badge sits on the Notifications item in the top bar
+  on desktop.
+- **Mobile-to-desktop mapping:** badge on the bottom-nav Notifications slot ->
+  badge on the top-bar Notifications item. Same permanent-visibility guarantee.
+- **Job rationale:** the locked retention requirement is that the badge is
+  permanently visible to drive hot and warm return (FJ1, FJ5, EJ3; aarrr
+  D1-D3). A persistent top bar satisfies "always visible" on desktop. The
+  mobile-only constraint (thumb zone, miss risk) is lifted, so the requirement
+  carries over intact, it is not weakened.
+
+### D-desktop-3: Event Feed grid
+
+- **Mobile:** single column.
+- **Desktop:** a responsive card grid, mobile-first. Columns are determined by
+  how many cards fit at a minimum card width that still guarantees the context
+  snippet line on the card (target minimum card width around 280px). This yields
+  up to 4 cards per row on a wide desktop, 3 at medium width, 2 below that, 1 on
+  mobile.
+- **Hard lock:** the per-card context snippet (the one-line teaser of "why this
+  price") is never dropped to fit more columns. The snippet is the single
+  differentiator that separates our card from a competitor's bare-percentage
+  card; full context still lives on Event Detail where FJ2 closes, but the card
+  teaser is what makes the feed ours. Density is achieved by the responsive
+  grid, not by removing the snippet. Competitors reach 4-per-row precisely
+  because their card carries nothing but the percentage; matching their density
+  must not cost us the snippet.
+- **Job rationale:** FJ2 differentiator (master-research gap, no competitor
+  explains the price). Density up to 4 per row is desired and allowed; the
+  min-width rule is the guardrail that keeps the snippet, not a cap on density.
+
+### D-desktop-4: Header utilities
+
+- **Mobile:** Wallet and How It Works are header icons, not nav slots (G4).
+- **Desktop:** a right-hand utility cluster in the top bar holds Wallet, How It
+  Works, and the avatar, visually secondary to the 4 primary destinations.
+- **Mobile-to-desktop mapping:** header icons (wallet, info, avatar) -> a
+  right-aligned utility cluster, kept secondary to the 4 primary destinations.
+- **Job rationale:** the desktop equivalent of the mobile header icons. G4
+  carries over intact: money is not a primary destination, promoting Wallet to a
+  primary slot would signal a trading terminal and is rejected.
+
+### D-desktop-5: Invoked screens as modal overlays (both breakpoints)
+
+- **Decision:** the invoked screens (Bet Screen, Sign In / Register, Deposit,
+  Win Screen, Loss Screen) are presented as an overlay in context, not as a
+  separate full-page destination, on both breakpoints. Desktop: a centered modal
+  over the feed. Mobile: a full-height bottom sheet. The user stays in context;
+  they are not thrown across separate screens.
+- **Multi-step stack:** the activation gate (Sign In then Deposit) and the S5
+  reconcile step on Bet Screen run as a multi-step stack inside the same overlay.
+- **Mobile-to-desktop mapping:** in-context overlay on both breakpoints -
+  centered modal on desktop, full-height bottom sheet on mobile.
+- **Consistency with locked IA:** this aligns with the G1 nav decision already
+  in IA/sitemap.md and IA/flows.md, where a notification tap "opens target
+  modally over the current tab". Modal presentation of invoked screens extends
+  G1, it does not contradict it. The invoked screens remain non-navigation
+  destinations (they are still never a nav slot), exactly as the locked "Not
+  navigation destinations" list states.
+- **Job rationale:** preserves the feed context during the bet, sign-in, and
+  deposit steps; matches the in-context routing already chosen for
+  notifications.
+
+### Breakpoint principle
+
+Mobile is the base; desktop is a min-width expansion. The exact pixel thresholds
+are a wireframe and convention detail (to be set in wireframes/_conventions.md),
+not fixed here. Only the relative order is fixed: the Event Feed grid goes from 1
+column on mobile, to 2, to 3, and up to 4 on a wide desktop, per D-desktop-3, and
+the primary navigation moves from the bottom bar to a top bar at the desktop
+breakpoint per D-desktop-1.
 
 ---
 
