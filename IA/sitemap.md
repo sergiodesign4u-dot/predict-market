@@ -89,11 +89,16 @@ The user's financial state on the platform. Separate from User because it has it
 
 | Field | Notes |
 |---|---|
-| Available balance (USDC) | Ready to bet |
+| Available balance (USDC) | Ready to bet. Displayed as **Cash** in the UI. |
 | In-play balance (USDC) | Locked in active bets |
 | Total deposited (lifetime) | For KYC threshold tracking |
 | Transaction history | Deposits · Withdrawals · Payouts · Fees |
 | Connected address | If self-custody wallet; empty if custodial |
+
+**Display labels (UI framing, not new fields):**
+- **Portfolio** = all money on the platform = Available (Cash) + In-play. The total value, including funds in active events.
+- **Cash** = Available balance = the amount ready for new entries.
+Competitors show both at once; we show one figure at a time with a swap control on desktop (Portfolio default), and surface the Portfolio figure in the mobile Portfolio bottom slot. See Desktop layer D-desktop-4 and the Navigation bottom-nav table.
 
 **Transaction sub-object:**
 
@@ -419,10 +424,11 @@ Help / FAQ                                  [SIROTA]        - EJ2 is served by D
 ## Navigation
 
 > Desktop note: the mobile navigation below is the source of truth and keeps all
-> 4 bottom-nav slots. Its desktop mapping is a lean header (Events as the logo,
+> 4 bottom-nav slots (slot 4 is Portfolio after the wireframe pass, see the
+> bottom-nav table). Its desktop mapping is a lean header (Events as the logo,
 > My Bets and Profile in the avatar dropdown, Notifications and Favorites as icons
-> in the utility cluster, Balance as text, a reserved hamburger, and a
-> second-level category nav under the header). Full detail in the Desktop layer
+> in the utility cluster, a Portfolio / Cash balance swap, a reserved hamburger,
+> and a second-level category nav under the header). Full detail in the Desktop layer
 > (responsive, mobile-first) section directly after Navigation. The mobile content
 > here is unchanged.
 
@@ -439,15 +445,19 @@ Navigation is derived from the user's job sequence, not from a competitor tab ba
 | 1 | **Events** | Event Feed | FJ1, FJ2, MJ | The entry point. Users open the app because something happened in the world. Every session starts here. |
 | 2 | **My Bets** | Active Bets (two tabs: Active / History) | EJ1, MJ, FJ5, EJ3 | The position monitor. Users return specifically to track odds movement and see resolved bets. History tab implements G5: Bet History becomes a tab inside Active Bets, not a standalone screen. EJ1 coverage is preserved. |
 | 3 | **Notifications** | Notifications list | FJ1, FJ5, EJ3 | The return trigger. Badge drives hot/warm return (aarrr.md D1-D3). Without a permanent bottom slot with unread count, FJ1/FJ5/EJ3 depend on OS alerts only with no in-app recovery path for missed alerts. |
-| 4 | **Profile** | My Profile | SJ1, SJ2 | Reputation is a first-class product value for the News Junkie: "I was right, publicly" is why they share. Not an account settings screen - earns a slot as the identity surface. |
+| 4 | **Portfolio** | My Profile, extended with a portfolio summary on top (Portfolio = Cash + In-play, plus Deposit / Wallet), above the track record. Combined account / identity hub. | SJ1, SJ2, FJ4 | Revised in the wireframe pass. The slot shows the portfolio balance figure instead of an icon (label "Portfolio"); it opens the account hub, identity plus money. Reputation (SJ1/SJ2) stays first-class here; the balance is surfaced because the mobile header drops the balance for space. |
+
+> Slot 4 change (wireframe pass): the mobile slot 4 was **Profile** (My Profile, SJ1/SJ2). It is now **Portfolio**, a combined account hub that opens My Profile extended with a portfolio summary (Portfolio / Cash + a Deposit / Wallet entry) above the track record. This is a deliberate, documented partial override of G4: the slot surfaces a balance, but the destination is the identity / account hub, not a bare trading wallet, so the platform still reads event-first rather than terminal-like. Profile is no longer a separate slot; reputation is reached inside this hub (and via the desktop avatar). My Bets (positions / history) is untouched, so there is no duplication.
+
+> Bottom-nav icons (wireframe pass): all four slots carry an icon. Slot 4 (Portfolio) shows the balance figure in place of the icon, with the label below.
 
 ### Header and second-level
 
 | Entry | Where | Why NOT a bottom slot |
 |---|---|---|
-| **Wallet / Deposit** | Header icon (wallet icon), also accessible via Profile | Money is not why users open the app. Re-deposit for returning users is solved in context: Bet Screen insufficient-balance state invokes Deposit directly (1 step, no multi-tap trip to a Wallet tab). A Wallet bottom slot would signal "trading terminal"; this platform is event-first. (G4 decision) |
+| **Wallet / Deposit** | Avatar dropdown (desktop) and inside the Portfolio hub (mobile); re-deposit also invoked in context from the Bet Screen | Money is not why users open the app. Re-deposit is solved in context: Bet Screen insufficient-balance state invokes Deposit directly (1 step). G4 holds on desktop (money is a utility, not a slot). Mobile nuance (wireframe pass): the balance is surfaced in the Portfolio slot, but that slot opens the account / identity hub, not a bare Wallet, so the event-first read is preserved. A pure standalone Wallet bottom slot is still rejected. |
 | **How It Works** | Header info icon accessible from Events; also linked from Deposit | Pre-bet trust signal for new users, reachable before deposit and before sign-in. Not a recurring destination - a one-time reassurance step inside FJ4/EJ2. A bottom slot would waste a scarce position on a screen most users visit once. |
-| **My Profile (avatar)** | Header avatar shortcut in addition to Profile tab | Quick identity access without leaving the Events context. Does not replace the Profile bottom slot - the slot is the primary destination for SJ1/SJ2. |
+| **My Profile (avatar)** | Header avatar dropdown (desktop); on mobile, My Profile is reached via the Portfolio bottom slot (account hub) | Quick identity access without leaving the Events context. After the wireframe pass there is no separate Profile bottom slot; reputation (SJ1/SJ2) is reached via the Portfolio account hub on mobile and the avatar on desktop. |
 
 ### Not navigation destinations
 
@@ -526,9 +536,12 @@ desktop question; none of them changes a mobile decision.
 - **Requirement that is preserved:** the badge is permanently visible. It rides
   on the bell icon, so the retention anchor is kept even though the item is now
   an icon, not a labeled nav item.
-- **Mobile-to-desktop mapping:** badge on the bottom-nav Notifications slot
-  (mobile) -> badge on the bell icon in the desktop utility cluster. Same
-  permanent-visibility guarantee.
+- **One place per breakpoint:** the bell lives in the desktop header cluster
+  only. On mobile, Notifications is the bottom-bar slot only and the bell is
+  removed from the header, so it is not shown twice.
+- **Mobile-to-desktop mapping:** Notifications bottom-nav slot with badge
+  (mobile) -> bell icon with badge in the desktop utility cluster. Same
+  permanent-visibility guarantee, never duplicated within one breakpoint.
 - **Job rationale:** the locked retention requirement is that the unread badge is
   permanently visible to drive hot and warm return (FJ1, FJ5, EJ3; aarrr D1-D3).
   The badge-on-bell satisfies "always visible". The label-versus-icon treatment
@@ -557,15 +570,23 @@ desktop question; none of them changes a mobile decision.
 
 ### D-desktop-4: Header utilities
 
-- **Mobile:** Wallet and How It Works are header icons, not nav slots (G4).
-  Unchanged.
+- **Mobile (revised in the wireframe pass):** the lean header right side holds
+  Favorites and the avatar only. Balance is not in the mobile header (it is in
+  the Portfolio bottom slot); How It Works lives in the avatar dropdown and the
+  footer; Deposit lives in the avatar dropdown and the Portfolio hub. Money is
+  still not a header destination (G4 spirit preserved).
 - **Desktop (revised in the wireframe pass):** a right-hand utility cluster,
-  visually secondary, holds: **Balance** (text, the account balance), **Favorites**
-  (heart icon, opens the Saved view), **Notifications** (bell icon + permanent
-  badge, see D-desktop-2), and the **avatar** (dropdown). A standalone Deposit
-  button is NOT in the header; Deposit is reached from the avatar dropdown
-  (Wallet / Deposit) and in context from the Bet Screen insufficient-balance
-  state.
+  visually secondary, holds: **Balance as a Portfolio / Cash swap** (one figure
+  at a time, a swap icon toggles Portfolio = Cash + In-play, default, and Cash =
+  available; not two figures like competitors), **Favorites** (heart icon, opens
+  the Saved view), **Notifications** (bell icon + permanent badge, desktop only,
+  see D-desktop-2), and the **avatar** (dropdown). A standalone Deposit button is
+  NOT in the header; Deposit is reached from the avatar dropdown (Wallet /
+  Deposit) and in context from the Bet Screen insufficient-balance state.
+- **Mobile:** the balance is removed from the header (no room at small widths;
+  a large figure would overflow at 360px) and is surfaced in the Portfolio bottom
+  slot instead (see the Navigation bottom-nav table). The bell is also removed
+  from the mobile header (Notifications is the bottom-bar slot there).
 - **Avatar dropdown (desktop):** collapsed by default, opens on click. Populated
   from OUR IA only, not from competitor menus: My Profile (SJ1/SJ2), My Bets
   (EJ1), Wallet / Deposit (FJ4), How It Works (FJ4/EJ2), Logout. Do NOT add
@@ -613,8 +634,8 @@ Mobile is the base; desktop is a min-width expansion. The exact pixel thresholds
 are a wireframe and convention detail (to be set in wireframes/_conventions.md),
 not fixed here. Only the relative order is fixed: the Event Feed grid goes from 1
 column on mobile, to 2, to 3, and up to 4 on a wide desktop, per D-desktop-3, and
-the primary navigation moves from the bottom bar to a top bar at the desktop
-breakpoint per D-desktop-1.
+the mobile bottom nav is replaced on desktop by the lean header (logo, avatar
+dropdown, and utility-cluster icons) per D-desktop-1.
 
 ---
 
@@ -633,15 +654,15 @@ Level 0 - bottom nav destinations (1 tap from anywhere in the app)
     Bet History (History tab inside My Bets - G5 merge)
   Notifications
     Notifications list
-  Profile
-    My Profile
+  Portfolio (mobile slot 4; on desktop via the avatar + the header balance swap)
+    My Profile, extended with a portfolio summary (Portfolio / Cash + Deposit) above the track record
 
 Level 1 - one tap below a Level 0 screen
   under Events:
     Event Detail (tap any event card on Event Feed)
-  under Profile (via header - available at Level 0):
-    Wallet (tap header wallet icon)
-    How It Works (tap header info icon, also linked from Deposit)
+  under Portfolio / avatar (available at Level 0):
+    Wallet / Deposit (avatar dropdown, or inside the Portfolio hub)
+    How It Works (avatar dropdown and footer, also linked from Deposit)
 
 Flow / invoked - reached only inside a flow, not via nav bar
   Bet Screen        invoked: tap YES or NO on Event Detail

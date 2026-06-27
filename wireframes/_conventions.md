@@ -151,23 +151,30 @@ and is the same at all widths.
 - **Left:** a hamburger icon (reserved for future scaling, no primary items at
   MVP) and the brand logo. The logo is Events / home: clicking it returns to the
   Event Feed.
-- **Right utility cluster:** Balance (text), Favorites (heart icon, opens the
-  Saved view), Notifications (bell icon with a permanent unread badge), and the
-  avatar. The avatar opens a dropdown, collapsed by default, opening on click:
-  My Profile, My Bets, Wallet / Deposit, How It Works, Logout. There is no
-  standalone Deposit button in the header (Deposit is in the dropdown).
+- **Right utility cluster (desktop):** a balance shown as a Portfolio / Cash
+  swap (one figure at a time + a swap icon: Portfolio = Cash + In-play, default,
+  toggles to Cash = available; not two figures like competitors), Favorites
+  (heart icon, opens the Saved view), Notifications (bell icon with a permanent
+  unread badge, desktop only), and the avatar. The avatar opens a dropdown,
+  collapsed by default, opening on click: My Profile, My Bets, Wallet / Deposit,
+  How It Works, Logout. There is no standalone Deposit button in the header.
 - **Second-level navigation:** a category sub-nav band sits directly under the
   header (Trending default, Politics, Crypto, Culture, General). Categories are
   navigation; the feed sort control is a feed control on the feed heading row,
   not in this band.
-- **Mobile:** the same lean header, plus the bottom nav with the 4 slots
-  (Events, My Bets, Notifications badged, Profile) in the thumb zone.
+- **Mobile:** the same lean header, but the right side keeps only Favorites and
+  the avatar (the balance and the Notifications bell are removed: no room at
+  360px, and Notifications lives in the bottom bar). Bottom nav, 4 slots with
+  icons: Events, My Bets, Notifications (badged), and Portfolio. The Portfolio
+  slot replaces Profile, shows the portfolio balance figure in place of the icon
+  (label "Portfolio"), and opens the account hub (My Profile extended with a
+  portfolio summary). Profile is reached there, not as its own slot.
 - **Icons:** simple monochrome outline icons (grey stroke, no color, no fill),
   drawn at a consistent size so the element footprint is realistic. Use an icon
   or a text label per element as space dictates; both stay grey-box.
-- **Logged-out delta:** the right cluster shows a "Sign in" entry instead of
-  Balance, Favorites, Notifications, and the avatar; the logo, the category
-  sub-nav, and the body are unchanged.
+- **Logged-out delta:** the right cluster (and the mobile Portfolio slot) show a
+  "Sign in" entry instead of the balance, Favorites, Notifications, and the
+  avatar; the logo, the category sub-nav, and the body are unchanged.
 
 ### S3. Event card (shared pattern, two layouts)
 
