@@ -3,218 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Event Feed (base / success, responsive)</title>
+  <title>Wireframe - Event Feed (base / success, registered, responsive)</title>
   <style>
     /* Grey-box wireframe, responsive mobile-first. No color, no brand, no
        icons, no shadows. Borders and grey fills mark zones only.
        Base = mobile (1 column, bottom nav). Min-width expansions:
        640px -> top nav replaces bottom nav, 2-column feed
        960px -> 3-column feed
-       1280px -> 4-column feed
-       The per-card context snippet is never dropped to add a column. */
+       1280px -> 4-column feed */
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: #e9e9e9;
-      color: #222;
-      line-height: 1.4;
-    }
+    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; }
+
     .page-label {
-      border: 1px dashed #888;
-      background: #dcdcdc;
-      padding: 6px 10px;
-      font-size: 12px;
+      border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px; font-size: 12px;
     }
 
-    /* The responsive product screen. Full width on mobile, expands on desktop. */
     .device {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      background: #f4f4f4;
-      border-left: 1px solid #999;
-      border-right: 1px solid #999;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      width: 100%; max-width: 1400px; margin: 0 auto; background: #f4f4f4;
+      border-left: 1px solid #999; border-right: 1px solid #999;
+      min-height: 100vh; display: flex; flex-direction: column;
     }
 
-    header, nav, main, section, article, footer, aside {
-      border: 1px solid #999;
-    }
+    header, nav, main, section, article, footer, aside { border: 1px solid #999; }
     .zone-tag {
-      display: block;
-      font-size: 10px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      background: #d2d2d2;
-      border-bottom: 1px solid #aaa;
-      padding: 2px 6px;
+      display: block; font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase;
+      background: #d2d2d2; border-bottom: 1px solid #aaa; padding: 2px 6px;
     }
+    button, select { font: inherit; }
 
-    /* ---- App header: brand + utility cluster, plus desktop top nav ---- */
+    /* ---- App header ---- */
     .app-header { background: #e2e2e2; margin: 0; }
     .app-header .row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 8px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 8px; padding: 8px;
     }
     .app-header .brand { font-size: 13px; font-weight: bold; }
-    .utility { display: flex; gap: 6px; }
-    .app-header button,
-    .utility button {
-      border: 1px solid #888;
-      background: #cfcfcf;
-      padding: 6px 8px;
-      font-size: 11px;
-      cursor: pointer;
+    .utility { display: flex; gap: 6px; align-items: center; }
+    .app-header button, .utility button {
+      border: 1px solid #888; background: #cfcfcf; padding: 6px 8px; font-size: 11px; cursor: pointer;
     }
+    .balance { border: 1px solid #888; background: #d9d9d9; padding: 4px 8px; font-size: 11px; }
 
-    /* Desktop top nav: hidden on mobile, shown at >=640px */
     .top-nav { display: none; }
     .top-nav ul { list-style: none; display: flex; margin: 0; padding: 0; gap: 4px; }
-    .top-nav li { }
-    .top-nav button {
-      border: 1px solid #999;
-      background: #d6d6d6;
-      padding: 8px 12px;
-      font-size: 12px;
-      cursor: pointer;
+    .top-nav button { border: 1px solid #999; background: #d6d6d6; padding: 8px 12px; font-size: 12px; cursor: pointer; }
+    .top-nav li[aria-current="page"] button { background: #b8b8b8; font-weight: bold; border-width: 2px; }
+
+    /* avatar dropdown (shown open for the wireframe) */
+    .avatar-wrap { position: relative; }
+    .dropdown {
+      border: 1px solid #888; background: #e6e6e6; margin-top: 4px; padding: 0; min-width: 160px;
     }
-    .top-nav li[aria-current="page"] button {
-      background: #b8b8b8;
-      font-weight: bold;
-      border-width: 2px;
+    .dropdown .zone-tag { background: #cdcdcd; }
+    .dropdown ul { list-style: none; margin: 0; padding: 0; }
+    .dropdown li { border-top: 1px solid #ccc; }
+    .dropdown li:first-child { border-top: none; }
+    .dropdown button { width: 100%; text-align: left; border: none; background: transparent; padding: 7px 10px; font-size: 11px; cursor: pointer; }
+
+    .badge {
+      display: inline-block; border: 1px solid #777; background: #cccccc; border-radius: 8px;
+      font-size: 9px; padding: 0 4px; margin-left: 2px;
     }
 
-    /* ---- Category + sort bar ---- */
-    .filter-bar { background: #ededed; margin: 0; }
-    .filter-bar .controls {
-      padding: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px 16px;
-      justify-content: space-between;
-    }
-    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-    .chips button {
-      border: 1px solid #888;
-      background: #d6d6d6;
-      padding: 5px 9px;
-      font-size: 11px;
-      cursor: pointer;
-    }
-    .chips button[aria-pressed="true"] {
-      background: #b8b8b8;
-      border-width: 2px;
-      font-weight: bold;
-    }
-    .sort-row { display: flex; align-items: center; gap: 6px; font-size: 11px; }
-    .sort-row select { border: 1px solid #888; background: #d6d6d6; padding: 3px; font-size: 11px; }
-
-    /* ---- Feed (responsive grid) ---- */
+    /* ---- Feed heading row with in-heading controls ---- */
     .feed { background: #f4f4f4; margin: 0; flex: 1; }
     .feed-inner { padding: 8px; }
-    .feed h2 { font-size: 12px; margin: 4px 2px 8px; }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;   /* mobile base: 1 column */
-      gap: 10px;
+    .feed-head {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;
+      justify-content: space-between; border-bottom: 1px solid #bbb; padding-bottom: 8px; margin-bottom: 10px;
     }
-    .card {
-      background: #ededed;
-      display: flex;
-      flex-direction: column;
-    }
-    .card .card-body { padding: 8px 10px; flex: 1; }
-    .card .cat {
-      display: inline-block;
-      border: 1px solid #999;
-      background: #d9d9d9;
-      font-size: 10px;
-      padding: 1px 6px;
-      margin-bottom: 6px;
-    }
-    .card .q { font-size: 13px; font-weight: bold; margin: 0 0 6px; }
-    .card .prob-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 6px; }
-    .card .prob {
-      font-size: 20px;
-      font-weight: bold;
-      border: 1px solid #999;
-      background: #dcdcdc;
-      padding: 2px 8px;
-    }
-    .card .prob-label { font-size: 10px; }
-    .card .context {
-      font-size: 11px;
-      border-left: 3px solid #aaa;
-      padding-left: 8px;
-      margin: 0 0 8px;
-    }
-    .card .meta {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      font-size: 10px;
-      border-top: 1px solid #ccc;
-      padding-top: 6px;
-    }
-    .card .open-btn {
-      border: 1px solid #888;
-      background: #d6d6d6;
-      padding: 8px;
-      font-size: 12px;
-      cursor: pointer;
-    }
+    .feed-head h2 { font-size: 13px; margin: 0; }
+    .head-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chips button { border: 1px solid #888; background: #d6d6d6; padding: 5px 9px; font-size: 11px; cursor: pointer; }
+    .chips button[aria-pressed="true"] { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .sort-row { display: flex; align-items: center; gap: 6px; font-size: 11px; }
+    .sort-row select { border: 1px solid #888; background: #d6d6d6; padding: 3px; font-size: 11px; }
+    .scale-note { font-size: 10px; margin: 0 0 10px; }
 
-    /* ---- Bottom nav: mobile only ---- */
+    /* ---- Feed grid + cards ---- */
+    .grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .card { background: #ededed; display: flex; flex-direction: column; }
+    .card .card-body { padding: 8px 10px; flex: 1; }
+    .card .top { display: flex; gap: 8px; align-items: flex-start; }
+    .thumb {
+      width: 56px; height: 56px; flex: 0 0 56px; border: 1px solid #999; background: #d2d2d2;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; padding: 2px;
+    }
+    .card .q { font-size: 13px; font-weight: bold; margin: 0; }
+    .card .prob-line { font-size: 11px; margin: 8px 0 6px; }
+    .card .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; }
+    .yesno { display: flex; gap: 6px; margin: 0 0 8px; }
+    .yesno button { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 9px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .yesno.compact button { padding: 4px 8px; font-size: 11px; flex: 0 0 auto; }
+
+    /* multi-outcome rows */
+    .options { margin: 6px 0 8px; }
+    .opt-row {
+      display: flex; align-items: center; gap: 6px; border-top: 1px solid #ccc; padding: 6px 0; font-size: 12px;
+    }
+    .opt-row:first-child { border-top: none; }
+    .opt-row .opt-name { flex: 1; }
+    .opt-row .opt-prob { border: 1px solid #999; background: #dcdcdc; padding: 1px 5px; font-size: 11px; font-weight: bold; }
+
+    .card .meta {
+      display: flex; justify-content: space-between; gap: 8px; font-size: 10px;
+      border-top: 1px solid #ccc; padding-top: 6px; margin-top: 4px;
+    }
+    .card-foot { display: flex; gap: 6px; border-top: 1px solid #ccc; }
+    .card-foot button { border: none; background: #d6d6d6; padding: 8px; font-size: 11px; cursor: pointer; }
+    .card-foot .open-btn { flex: 1; border-right: 1px solid #ccc; }
+    .card-foot .bookmark-btn { flex: 0 0 auto; }
+
+    /* ---- Bottom nav (mobile only) ---- */
     .bottom-nav { background: #e2e2e2; margin: 0; position: sticky; bottom: 0; }
     .bottom-nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
     .bottom-nav li { flex: 1; text-align: center; border-right: 1px solid #bbb; }
     .bottom-nav li:last-child { border-right: none; }
-    .bottom-nav button {
-      width: 100%;
-      border: none;
-      background: transparent;
-      padding: 10px 4px;
-      font-size: 10px;
-      cursor: pointer;
-    }
+    .bottom-nav button { width: 100%; border: none; background: transparent; padding: 10px 4px; font-size: 10px; cursor: pointer; }
     .bottom-nav li[aria-current="page"] button { background: #c4c4c4; font-weight: bold; }
-    .badge {
-      display: inline-block;
-      border: 1px solid #777;
-      background: #cccccc;
-      border-radius: 8px;
-      font-size: 9px;
-      padding: 0 4px;
-      margin-left: 2px;
-    }
 
-    /* ---- Annotations + nav tree (out of the layout flow) ---- */
+    /* ---- Footer (global element) ---- */
+    .app-footer { background: #e2e2e2; margin: 0; font-size: 11px; }
+    .app-footer .footer-inner { padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+    .app-footer nav { border: none; }
+    .app-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+    .app-footer a { color: #222; }
+    .placeholder-line { border: 1px dashed #999; background: #ededed; padding: 4px 6px; font-size: 10px; }
+
+    /* ---- Annotations + nav tree (out of layout flow) ---- */
     .side { width: 100%; max-width: 1400px; margin: 16px auto; padding: 0 8px; }
     .side aside, .side section { background: #f4f4f4; margin: 0 0 12px; }
     .side .zone-tag { background: #cdcdcd; }
     .annotations, .navtree { padding: 8px 12px; font-size: 12px; }
     .annotations ol { margin: 6px 0 0; padding-left: 18px; }
     .annotations li { margin-bottom: 6px; }
-    .annotations code, .navtree code { background: #e0e0e0; padding: 0 3px; }
-    .navtree pre {
-      margin: 6px 0 0;
-      font-size: 12px;
-      background: #e8e8e8;
-      border: 1px solid #bbb;
-      padding: 8px;
-      white-space: pre-wrap;
-    }
+    .navtree pre { margin: 6px 0 0; font-size: 12px; background: #e8e8e8; border: 1px solid #bbb; padding: 8px; white-space: pre-wrap; }
     .ref { font-size: 11px; }
 
-    /* ============ RESPONSIVE BREAKPOINTS ============ */
-    /* First desktop breakpoint: top nav replaces bottom nav, 2-column feed */
+    /* logged-out delta mini header */
+    .delta { width: 100%; max-width: 1400px; margin: 0 auto 16px; }
+    .delta .mini-header { background: #e2e2e2; border: 1px solid #999; }
+    .delta .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; padding: 8px; }
+    .delta .brand { font-size: 13px; font-weight: bold; }
+
+    /* ============ RESPONSIVE ============ */
     @media (min-width: 640px) {
       .top-nav { display: block; }
       .bottom-nav { display: none; }
@@ -224,21 +157,15 @@
       .side > aside { flex: 2; }
       .side > .nav-col { flex: 1; }
     }
-    /* 3-column feed */
-    @media (min-width: 960px) {
-      .grid { grid-template-columns: repeat(3, minmax(280px, 1fr)); }
-    }
-    /* 4-column feed */
-    @media (min-width: 1280px) {
-      .grid { grid-template-columns: repeat(4, minmax(280px, 1fr)); }
-    }
+    @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, minmax(280px, 1fr)); } }
+    @media (min-width: 1280px) { .grid { grid-template-columns: repeat(4, minmax(280px, 1fr)); } }
   </style>
 </head>
 <body>
 
   <div class="page-label">
     <strong>Wireframe:</strong> Event Feed &nbsp;|&nbsp;
-    base state: success (first-visit, story-driven layout) &nbsp;|&nbsp;
+    base state: success (registered) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
     file: wireframes/event-feed.html
   </div>
@@ -246,160 +173,267 @@
   <!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
   <div class="device">
 
-    <!-- Zone: Top bar / nav (brand + utility cluster + desktop top nav) -->
+    <!-- Header (shared pattern) -->
     <header class="app-header">
-      <span class="zone-tag">zone: top bar (mobile header icons / desktop top nav)</span>
+      <span class="zone-tag">zone: header (mobile icons / desktop top nav, registered)</span>
       <div class="row">
         <span class="brand">Predict Market</span>
 
-        <!-- Desktop primary destinations: shown at >=640px -->
+        <!-- Desktop primary nav: 3 slots, shown at >=640px -->
         <nav class="top-nav" aria-label="Primary (desktop)">
           <ul>
             <li aria-current="page"><button type="button">Events</button></li>
             <li><button type="button">My Bets</button></li>
             <li><button type="button">Notifications <span class="badge">3</span></button></li>
-            <li><button type="button">Profile</button></li>
           </ul>
         </nav>
 
-        <!-- Utility cluster: mobile header icons, desktop right cluster -->
+        <!-- Utility cluster: Balance + Deposit, Favorites, avatar (with open dropdown) -->
         <span class="utility">
-          <button type="button">Wallet / Deposit</button>
-          <button type="button">How It Works</button>
-          <button type="button">Profile (avatar)</button>
+          <span class="balance">Balance: $42.00</span>
+          <button type="button">Deposit</button>
+          <button type="button" aria-label="Favorites">Favorites (heart)</button>
+          <span class="avatar-wrap">
+            <button type="button" aria-expanded="true">Avatar</button>
+            <div class="dropdown" role="menu" aria-label="Account menu (shown open for the wireframe)">
+              <span class="zone-tag">avatar dropdown (shown open)</span>
+              <ul>
+                <li><button type="button" role="menuitem">My Profile</button></li>
+                <li><button type="button" role="menuitem">Wallet / Deposit</button></li>
+                <li><button type="button" role="menuitem">How It Works</button></li>
+                <li><button type="button" role="menuitem">Logout</button></li>
+              </ul>
+            </div>
+          </span>
         </span>
       </div>
     </header>
 
-    <!-- Zone: Category and sort bar -->
-    <nav class="filter-bar" aria-label="Categories and sort">
-      <span class="zone-tag">zone: category + sort bar</span>
-      <div class="controls">
-        <div class="chips" role="group" aria-label="Category filter">
-          <button type="button" aria-pressed="true">All</button>
-          <button type="button" aria-pressed="false">Politics</button>
-          <button type="button" aria-pressed="false">Crypto</button>
-          <button type="button" aria-pressed="false">Culture</button>
-          <button type="button" aria-pressed="false">General</button>
-        </div>
-        <div class="sort-row">
-          <label for="sort">Sort:</label>
-          <select id="sort">
-            <option>Trending</option>
-            <option>Recency</option>
-          </select>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Zone: Feed (responsive grid 1/2/3/4 columns) -->
+    <!-- Feed with in-heading controls -->
     <main class="feed">
-      <span class="zone-tag">zone: feed (story-driven cards, responsive grid)</span>
+      <span class="zone-tag">zone: feed (in-heading controls, responsive grid, decluttered cards)</span>
       <div class="feed-inner">
-        <h2>Live events</h2>
+
+        <!-- Heading row: title + controls on the SAME row -->
+        <div class="feed-head">
+          <h2>Live events</h2>
+          <div class="head-controls">
+            <div class="chips" role="group" aria-label="Category filter">
+              <button type="button" aria-pressed="true">Trending</button>
+              <button type="button" aria-pressed="false">Politics</button>
+              <button type="button" aria-pressed="false">Crypto</button>
+              <button type="button" aria-pressed="false">Culture</button>
+              <button type="button" aria-pressed="false">General</button>
+            </div>
+            <div class="sort-row">
+              <label for="sort">Sort:</label>
+              <select id="sort">
+                <option>Trending</option>
+                <option>Newest</option>
+                <option>Closing soon</option>
+                <option>Volume</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <p class="scale-note">Categories are the four locked for MVP. The category mechanism scales to more categories later without rework.</p>
+
         <div class="grid">
 
-          <!-- Card 1 -->
+          <!-- Binary card 1 -->
           <article class="card">
             <div class="card-body">
-              <span class="cat">Politics</span>
-              <p class="q">Will the US government shut down before March 1, 2027?</p>
-              <div class="prob-row"><span class="prob">38%</span><span class="prob-label">probability of YES</span></div>
-              <p class="context">Funding talks stalled in committee this week; a short stopgap is on the table but no deal yet. Sample context, not a real market.</p>
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <p class="q">Will the US government shut down before March 1, 2027?</p>
+              </div>
+              <p class="prob-line">YES <span class="prob">38%</span></p>
+              <div class="yesno">
+                <button type="button">YES</button>
+                <button type="button">NO</button>
+              </div>
               <p class="meta"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></p>
             </div>
-            <button type="button" class="open-btn">Open event detail</button>
+            <div class="card-foot">
+              <button type="button" class="open-btn">Open event detail</button>
+              <button type="button" class="bookmark-btn" aria-pressed="false">Bookmark</button>
+            </div>
           </article>
 
-          <!-- Card 2 -->
+          <!-- Binary card 2 -->
           <article class="card">
             <div class="card-body">
-              <span class="cat">Crypto</span>
-              <p class="q">Will Bitcoin close above $150,000 before October 1, 2026?</p>
-              <div class="prob-row"><span class="prob">61%</span><span class="prob-label">probability of YES</span></div>
-              <p class="context">Price is up sharply since spring, but the move leans on a few large buyers and could reverse fast. Sample context, not a real market.</p>
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <p class="q">Will Bitcoin close above $150,000 before October 1, 2026?</p>
+              </div>
+              <p class="prob-line">YES <span class="prob">61%</span></p>
+              <div class="yesno">
+                <button type="button">YES</button>
+                <button type="button">NO</button>
+              </div>
               <p class="meta"><span>Volume: $212,900</span><span>Closes: Oct 1, 2026</span></p>
             </div>
-            <button type="button" class="open-btn">Open event detail</button>
-          </article>
-
-          <!-- Card 3 -->
-          <article class="card">
-            <div class="card-body">
-              <span class="cat">Culture</span>
-              <p class="q">Will the next lead actor for the Bond film be announced before December 31, 2026?</p>
-              <div class="prob-row"><span class="prob">47%</span><span class="prob-label">probability of YES</span></div>
-              <p class="context">The studio says casting is underway but has named no date; announcements here have slipped before. Sample context, not a real market.</p>
-              <p class="meta"><span>Volume: $19,400</span><span>Closes: Dec 31, 2026</span></p>
+            <div class="card-foot">
+              <button type="button" class="open-btn">Open event detail</button>
+              <button type="button" class="bookmark-btn" aria-pressed="true">Bookmarked</button>
             </div>
-            <button type="button" class="open-btn">Open event detail</button>
           </article>
 
-          <!-- Card 4 -->
+          <!-- Multi-outcome card 1 -->
           <article class="card">
             <div class="card-body">
-              <span class="cat">Crypto</span>
-              <p class="q">Will Ethereum complete its next major network upgrade before November 1, 2026?</p>
-              <div class="prob-row"><span class="prob">72%</span><span class="prob-label">probability of YES</span></div>
-              <p class="context">Core developers set a tentative testnet date and prior upgrades shipped close to plan, but a slip is possible. Sample context, not a real market.</p>
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <p class="q">Who will win the 2027 Eurovision final?</p>
+              </div>
+              <div class="options">
+                <div class="opt-row">
+                  <span class="opt-name">Sweden</span>
+                  <span class="opt-prob">34%</span>
+                  <span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span>
+                </div>
+                <div class="opt-row">
+                  <span class="opt-name">Italy</span>
+                  <span class="opt-prob">27%</span>
+                  <span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span>
+                </div>
+                <div class="opt-row">
+                  <span class="opt-name">France</span>
+                  <span class="opt-prob">19%</span>
+                  <span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span>
+                </div>
+                <div class="opt-row">
+                  <span class="opt-name">Any other country</span>
+                  <span class="opt-prob">20%</span>
+                  <span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span>
+                </div>
+              </div>
+              <p class="meta"><span>Volume: $61,500</span><span>Closes: May 15, 2027</span></p>
+            </div>
+            <div class="card-foot">
+              <button type="button" class="open-btn">Open event detail</button>
+              <button type="button" class="bookmark-btn" aria-pressed="false">Bookmark</button>
+            </div>
+          </article>
+
+          <!-- Binary card 3 -->
+          <article class="card">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <p class="q">Will Ethereum complete its next major network upgrade before November 1, 2026?</p>
+              </div>
+              <p class="prob-line">YES <span class="prob">72%</span></p>
+              <div class="yesno">
+                <button type="button">YES</button>
+                <button type="button">NO</button>
+              </div>
               <p class="meta"><span>Volume: $147,650</span><span>Closes: Nov 1, 2026</span></p>
             </div>
-            <button type="button" class="open-btn">Open event detail</button>
-          </article>
-
-          <!-- Card 5 -->
-          <article class="card">
-            <div class="card-body">
-              <span class="cat">General</span>
-              <p class="q">Will the EU formally admit a new member state before January 1, 2028?</p>
-              <div class="prob-row"><span class="prob">23%</span><span class="prob-label">probability of YES</span></div>
-              <p class="context">Several candidates are in talks, but accession votes are slow and no file is near the final stage. Sample context, not a real market.</p>
-              <p class="meta"><span>Volume: $33,100</span><span>Closes: Jan 1, 2028</span></p>
+            <div class="card-foot">
+              <button type="button" class="open-btn">Open event detail</button>
+              <button type="button" class="bookmark-btn" aria-pressed="false">Bookmark</button>
             </div>
-            <button type="button" class="open-btn">Open event detail</button>
           </article>
 
-          <!-- Card 6 -->
+          <!-- Binary card 4 -->
           <article class="card">
             <div class="card-body">
-              <span class="cat">Politics</span>
-              <p class="q">Will a UK general election be called before July 1, 2027?</p>
-              <div class="prob-row"><span class="prob">31%</span><span class="prob-label">probability of YES</span></div>
-              <p class="context">The government holds a working majority and no fixed-term trigger is near, but a snap call is not ruled out. Sample context, not a real market.</p>
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <p class="q">Will the next lead actor for the Bond film be announced before December 31, 2026?</p>
+              </div>
+              <p class="prob-line">YES <span class="prob">47%</span></p>
+              <div class="yesno">
+                <button type="button">YES</button>
+                <button type="button">NO</button>
+              </div>
+              <p class="meta"><span>Volume: $19,400</span><span>Closes: Dec 31, 2026</span></p>
+            </div>
+            <div class="card-foot">
+              <button type="button" class="open-btn">Open event detail</button>
+              <button type="button" class="bookmark-btn" aria-pressed="false">Bookmark</button>
+            </div>
+          </article>
+
+          <!-- Multi-outcome card 2 -->
+          <article class="card">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <p class="q">Which party will win the most seats in the next UK general election?</p>
+              </div>
+              <div class="options">
+                <div class="opt-row">
+                  <span class="opt-name">Labour</span>
+                  <span class="opt-prob">44%</span>
+                  <span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span>
+                </div>
+                <div class="opt-row">
+                  <span class="opt-name">Conservatives</span>
+                  <span class="opt-prob">33%</span>
+                  <span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span>
+                </div>
+                <div class="opt-row">
+                  <span class="opt-name">Another party</span>
+                  <span class="opt-prob">23%</span>
+                  <span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span>
+                </div>
+              </div>
               <p class="meta"><span>Volume: $58,700</span><span>Closes: Jul 1, 2027</span></p>
             </div>
-            <button type="button" class="open-btn">Open event detail</button>
-          </article>
-
-          <!-- Card 7 -->
-          <article class="card">
-            <div class="card-body">
-              <span class="cat">Culture</span>
-              <p class="q">Will a single film cross $2 billion at the global box office before January 1, 2027?</p>
-              <div class="prob-row"><span class="prob">18%</span><span class="prob-label">probability of YES</span></div>
-              <p class="context">The release slate has two big tentpoles, but only a handful of films have ever cleared this bar. Sample context, not a real market.</p>
-              <p class="meta"><span>Volume: $11,950</span><span>Closes: Jan 1, 2027</span></p>
+            <div class="card-foot">
+              <button type="button" class="open-btn">Open event detail</button>
+              <button type="button" class="bookmark-btn" aria-pressed="false">Bookmark</button>
             </div>
-            <button type="button" class="open-btn">Open event detail</button>
           </article>
 
-          <!-- Card 8 -->
+          <!-- Binary card 5 -->
           <article class="card">
             <div class="card-body">
-              <span class="cat">General</span>
-              <p class="q">Will 2026 be confirmed as one of the three warmest years on record before April 1, 2027?</p>
-              <div class="prob-row"><span class="prob">55%</span><span class="prob-label">probability of YES</span></div>
-              <p class="context">Mid-year readings are running high, but the official ranking depends on the second half and final dataset revisions. Sample context, not a real market.</p>
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <p class="q">Will the EU formally admit a new member state before January 1, 2028?</p>
+              </div>
+              <p class="prob-line">YES <span class="prob">23%</span></p>
+              <div class="yesno">
+                <button type="button">YES</button>
+                <button type="button">NO</button>
+              </div>
+              <p class="meta"><span>Volume: $33,100</span><span>Closes: Jan 1, 2028</span></p>
+            </div>
+            <div class="card-foot">
+              <button type="button" class="open-btn">Open event detail</button>
+              <button type="button" class="bookmark-btn" aria-pressed="false">Bookmark</button>
+            </div>
+          </article>
+
+          <!-- Binary card 6 -->
+          <article class="card">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <p class="q">Will 2026 be confirmed as one of the three warmest years on record before April 1, 2027?</p>
+              </div>
+              <p class="prob-line">YES <span class="prob">55%</span></p>
+              <div class="yesno">
+                <button type="button">YES</button>
+                <button type="button">NO</button>
+              </div>
               <p class="meta"><span>Volume: $26,300</span><span>Closes: Apr 1, 2027</span></p>
             </div>
-            <button type="button" class="open-btn">Open event detail</button>
+            <div class="card-foot">
+              <button type="button" class="open-btn">Open event detail</button>
+              <button type="button" class="bookmark-btn" aria-pressed="false">Bookmark</button>
+            </div>
           </article>
 
         </div>
       </div>
     </main>
 
-    <!-- Zone: Bottom navigation (mobile only) -->
+    <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <span class="zone-tag">zone: bottom nav (mobile only, swaps to top nav at 640px)</span>
       <ul>
@@ -410,6 +444,45 @@
       </ul>
     </nav>
 
+    <!-- Footer (global element) -->
+    <footer class="app-footer">
+      <span class="zone-tag">zone: footer (global, reused on every screen)</span>
+      <div class="footer-inner">
+        <nav aria-label="Footer navigation">
+          <ul>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">My Bets</a></li>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Wallet</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Legal">
+          <ul>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Responsible play</a></li>
+          </ul>
+        </nav>
+        <p>Prediction markets involve risk of loss.</p>
+        <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set]</p>
+        <p>Copyright (c) Predict Market. Sample wireframe content.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ============ LOGGED-OUT HEADER DELTA (annotated variant, not a separate page) ============ -->
+  <div class="delta">
+    <span class="zone-tag" style="display:inline-block; border:1px solid #999;">logged-out header delta (auth-state axis, header-level only)</span>
+    <div class="mini-header">
+      <div class="row">
+        <span class="brand">Predict Market</span>
+        <span class="utility">
+          <button type="button">Sign in</button>
+        </span>
+      </div>
+    </div>
+    <p class="ref" style="padding:6px 2px;">Only the utility cluster changes: "Sign in" replaces Balance plus Deposit, Favorites, and the avatar. The primary nav, the feed body, and all cards are identical and browsable. No separate logged-out page is built (Auth-state axis); the real auth branch is at the gate (Bet Screen Confirm -&gt; Sign In -&gt; Deposit).</p>
   </div>
 
   <!-- ============ ANNOTATIONS + NAV TREE (out of layout flow) ============ -->
@@ -418,29 +491,42 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>Top bar / utility cluster (no sign-in to browse)</strong> -&gt;
-          EJ2 first impression: the product is legible before any registration.
-          Wallet and How It Works stay utilities, not a primary slot (G4).</li>
-        <li><strong>Top nav 4 slots, badge in the bar (desktop)</strong> -&gt;
-          Desktop layer D-desktop-1 and D-desktop-2: same 4 destinations move to a
-          top bar at >=640px; the unread badge stays permanently visible.</li>
-        <li><strong>Category + sort bar</strong> -&gt; FJ1: find the event while it
-          is still relevant. Categories Politics, Crypto, Culture, General.</li>
-        <li><strong>Context snippet on each card</strong> -&gt; FJ2 differentiator:
-          context before the tap, "why this price", not just a percentage. Snippet
-          hard-lock: present at every breakpoint, never dropped to add a column
-          (D-desktop-3).</li>
-        <li><strong>Probability % as a real number</strong> -&gt; Addition A
-          (grey-box data): the number carries meaning, so it is a labeled sample
-          value, not an empty box.</li>
-        <li><strong>Card -&gt; Open event detail</strong> -&gt; MJ entry: the first
-          tap of the main flow (Event Feed -&gt; Event Detail).</li>
-        <li><strong>Notifications badge</strong> -&gt; FJ1 return trigger; the unread
-          count drives hot/warm return (aarrr D1-D3). Appears once per breakpoint:
-          bottom nav on mobile, top nav on desktop, never both at once.</li>
-        <li><strong>Sample-content honesty</strong> -&gt; Addition B: every event is
-          illustrative sample data, marked as such, never a real market or a
-          verified fact.</li>
+        <li><strong>3-slot primary nav, no duplicate Profile</strong> -&gt;
+          Desktop layer D-desktop-1: Events, My Bets, Notifications in the bar;
+          the avatar carries Profile (dedupe).</li>
+        <li><strong>Avatar dropdown</strong> -&gt; populated from our IA only
+          (My Profile, Wallet / Deposit, How It Works, Logout); shown open so the
+          contents are visible. How It Works lives here and in the footer, not in
+          the header bar.</li>
+        <li><strong>Balance plus Deposit in the cluster</strong> -&gt; G4 holds:
+          money is a utility in the cluster, not a primary destination, so it does
+          not signal a trading terminal.</li>
+        <li><strong>Notifications badged in the nav</strong> -&gt; retention anchor
+          (FJ1, FJ5, EJ3; aarrr D1-D3). First-class, not demoted to a bell.</li>
+        <li><strong>YES/NO trigger-entry on the card</strong> -&gt; routes to Event
+          Detail with the side (and for multi-outcome the option) pre-selected.
+          It does not place a bet and does not bypass Event Detail, so FJ2 (context
+          before the bet) is preserved (IA/flows.md trigger-entry edge).</li>
+        <li><strong>Compact % (binary and per-option)</strong> -&gt; Addition A:
+          meaning shown as a number, but it does not dominate the card.</li>
+        <li><strong>No category badge, no context snippet</strong> -&gt; the FJ2
+          context is now concentrated on Event Detail; the card is clean. Category
+          lives in the filter.</li>
+        <li><strong>Multi-outcome layout</strong> -&gt; a normal Event.Type layout
+          (options plus % plus compact YES/NO), NOT the rejected trading-board
+          view.</li>
+        <li><strong>Bookmark plus Saved view</strong> -&gt; convenience and
+          retention (FJ1 return). The proactive saved-event alert is a hypothesis,
+          not a confirmed Notification type. Saved is a view under Events, not a
+          new screen.</li>
+        <li><strong>In-heading controls, Trending default</strong> -&gt; controls
+          sit on the "Live events" row; Trending is the default sorted view, not a
+          neutral "All".</li>
+        <li><strong>Footer (risk + responsible play)</strong> -&gt; EJ2/FJ4 trust,
+          a harm-aware line. Regulatory and licensing text is a placeholder, never
+          invented.</li>
+        <li><strong>Sample-content honesty</strong> -&gt; Addition B: every event
+          here is illustrative sample data, never a real market or a verified fact.</li>
       </ol>
     </aside>
 
@@ -469,20 +555,19 @@ Active Bets    (MJ success, T14)</pre>
         <span class="zone-tag">documented variant (not built here)</span>
         <p class="ref">
           <strong>Return-visit denser layout:</strong> on return visits the feed is
-          denser (context trimmed, more cards above the fold) per IA/sitemap.md
-          Event Feed. It is a documented variant, not a separate page in this step.
-          First-visit vs return-visit naming stays deferred (P3-4 in IA/flows.md).
-          The page above is the first-visit, story-driven layout.
+          denser per IA/sitemap.md Event Feed. It is a documented variant, not a
+          separate page in this step. First-visit vs return-visit naming stays
+          deferred (P3-4 in IA/flows.md). The page above is the registered,
+          success base render.
         </p>
       </section>
 
       <section class="navtree" aria-label="Responsive behavior">
         <span class="zone-tag">responsive behavior (verify by resizing)</span>
         <p class="ref">
-          Mobile base: 1-column feed, bottom nav. At >=640px: top nav replaces
-          bottom nav, 2-column feed. At >=960px: 3-column feed. At >=1280px:
-          4-column feed. Minimum card width around 280px caps the column count; the
-          context snippet is never removed to add a column.
+          Mobile base: 1-column feed, bottom nav (4 slots). At >=640px: 3-slot top
+          nav replaces the bottom nav, 2-column feed. At >=960px: 3-column feed. At
+          >=1280px: 4-column feed. Cards stay legible at every width.
         </p>
       </section>
     </div>
