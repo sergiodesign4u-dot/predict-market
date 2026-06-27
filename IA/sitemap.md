@@ -22,7 +22,8 @@ Without it, no job is closable.
 | Field | Notes |
 |---|---|
 | Question / title | "Will X happen before [date]?" |
-| Type | Binary (YES/NO) · Multi-outcome (multiple options, each with YES/NO) |
+| Type | Binary (YES/NO) · Multi-outcome (multiple options, each with YES/NO). The card must render both layouts, see Event Feed card composition. This is the existing Type field, no new field is added for it. |
+| Thumbnail image | Per-event image used on the card as a visual differentiator. Real field; renders as a grey-box placeholder in wireframes (conventions Addition A), a sample image in concept and a real image in production. |
 | Category | Politics · Crypto · Culture · General |
 | Current probability (%) | The "price" - primary display number on every card |
 | Probability chart | History of odds movement over time |
@@ -33,7 +34,7 @@ Without it, no job is closable.
 | Volume | Total USDC staked across all positions |
 | Created by | Platform team (MVP) |
 
-**Related to:** Bet · Resolution · Notification
+**Related to:** Bet · Resolution · Notification · User (a user can save / follow this event, a bookmark, see Saved events)
 
 ---
 
@@ -73,9 +74,10 @@ The authenticated person. Required for every job that involves memory, state, or
 | Wallet | Custodial (platform-managed) or connected self-custody |
 | KYC status | None · Level-1 via on-ramp (name+address up to $20K) · Platform-level (if triggered at $2K cumulative) |
 | Notification preferences | Which event types trigger alerts |
+| Saved / followed events | Bookmarks: events the user chose to follow. Powers the Saved view under Events. NEW relationship, added in the Event Feed revision pass. |
 | Joined date | - |
 
-**Related to:** Bet · Wallet · Profile · Notification
+**Related to:** Bet · Wallet · Profile · Notification · Event (saves / follows, a bookmark, see Saved events)
 
 ---
 
@@ -221,12 +223,48 @@ Event Feed                                   (FJ1)          ⭐ PRIMARY + 🥈 S
 Event Detail                                 (FJ2 · MJ)     ⭐ PRIMARY + 🥈 SECONDARY
 ```
 
-**Event Feed** - cards of active markets, sorted by recency / trending. For the first visit: story-driven format (context visible on card, not just %). For return visits: denser feed. No sign-in required to browse.
+**Event Feed** - cards of active markets. The product home, the entry of every session. Default sorted view is Trending (not a neutral "All"); recency is the alternate sort. No sign-in required to browse.
 States: loading (initial data fetch) - empty (no events match current filter or category) - error (network fail, API unreachable).
 Note: push-permission-missing banner also surfaced on Event Feed when OS push is denied (see Notifications states).
 
-**Event Detail** - one event, full view: probability, chart, narrative context (why this price), resolution conditions, source. CTA: YES / NO. This screen is our primary differentiator - no competitor has context at this depth (FJ2 confirmed gap).
-States: loading (event data fetching) - error (load failure, T8 in MJ and FJ2 flows - retry returns to Event Detail) - resolved-while-reading (this event just resolved: [outcome] - navigate to Win/Loss Screen if user holds a position, else to Event Feed).
+Card composition (revised, decluttered):
+- Thumbnail placeholder image next to the event question (visual differentiator, Event.Thumbnail image field).
+- Event question (the primary hook).
+- Current probability %, compact, must not dominate the card.
+- YES / NO controls as a trigger-entry (routes to Event Detail with a pre-selected side, see flow change below), not a bet placed on the card.
+- Small meta: volume and closing date (a light liquidity and relevance signal, FJ1).
+- Bookmark control (save / follow the event, see Saved events).
+- REMOVED from the card: the category badge (category lives in the filter, not on the card) and the context snippet. The card is now clean; the price context lives on Event Detail only, where FJ2 closes. Removing the snippet concentrates the FJ2 differentiator on Event Detail, so the Event Detail context block must be strong when that screen is built. (This supersedes the earlier "context visible on card" and "snippet hard-lock" framing; the card teaser is retired in favour of a clean card plus a strong Event Detail context block. The first-visit story-driven vs return denser distinction is no longer the card's job.)
+
+Two card layouts, both built (Event.Type already supports this, no new field):
+- Binary: one question, the % of one side, large YES / NO controls.
+- Multi-outcome: N options, each row is an option plus its % plus compact YES / NO controls.
+- Multi-outcome is a normal event type from Event.Type, NOT the rejected "Market Board / trading view" pattern (jtbd.md "features to cut"). It is a card layout for events with more than two options, not a trader terminal.
+
+Controls placement: sort and filter controls sit on the "Live events" heading row (the section header of the feed), not as a separate band above it. Exact sort labels are a wireframe detail. Categories stay the locked four (Politics, Crypto, Culture, General) for MVP; the category mechanism is built to scale to more categories later without rework. Do not add empty categories now.
+
+Saved view: a filter / view over the Event Feed showing only saved events. It is NOT a new bottom-nav slot (the 4 slots are locked) and NOT a new top-level destination; it is a view within Events, the same way categories filter the feed. Reached from the bookmark control on cards and, on desktop, from the Favorites (heart) entry in the header utility cluster (see Desktop layer). See Saved events for the relationship and the alert hypothesis.
+
+**Event Detail** - one event, full view: probability, chart, narrative context (why this price), resolution conditions, source. CTA: YES / NO. This screen is our primary differentiator - no competitor has context at this depth (FJ2 confirmed gap). With the card snippet removed, this context block is now the sole home of the FJ2 differentiator and must be strong.
+States: loading (event data fetching) - error (load failure, T8 in MJ and FJ2 flows - retry returns to Event Detail) - resolved-while-reading (this event just resolved: [outcome] - navigate to Win/Loss Screen if user holds a position, else to Event Feed) - pre-selected entry variant (arrived from a card YES/NO tap with a side and, for multi-outcome, an option pre-selected; the bet is still placed here, FJ2 context shown first; to be detailed when Event Detail is built).
+
+#### Saved events (NEW addition)
+
+This is a new addition to the IA, stated plainly as new, not a pre-existing job.
+
+- **Relationship:** User saves / follows Event (a bookmark). Added to the User entity (Saved / followed events) and the Event entity (Related to: User).
+- **Saved view:** a filter / view over the Event Feed showing only saved events. NOT a new bottom-nav slot and NOT a new top-level destination; a view within Events, like a category filter.
+- **Affordances:** a bookmark control on each event card; a Favorites (heart) entry in the desktop header utility cluster that opens the Saved view (see Desktop layer D-desktop-4).
+- **Alert on a saved event moving significantly: [hypothesis].** Not a confirmed job, not wired as a confirmed Notification type. The confirmed Notification types stay as they are (entity 8). A proactive "your saved event moved" alert is flagged for later validation only.
+- **Rationale:** saving improves convenience and retention; every benchmarked competitor exposes a bookmark on the card. The confirmed job backing is partial (retention, FJ1 return), so the save relationship is added now, but the proactive saved-event alert stays a hypothesis until validated.
+
+#### Auth-state axis
+
+Logged-out versus registered is a cross-cutting axis across the browse screens (Event Feed, Event Detail) and the gate, not a per-screen state column on every screen.
+
+- **Default render of browse screens (Event Feed, Event Detail) is registered.** Logged-out is a header-level delta on those screens: the utility cluster shows a "Sign in" entry instead of Balance plus avatar; the feed body and cards are identical and browsable in both. Do NOT create a full duplicate logged-out page for each browse screen.
+- **The real auth branch concentrates at the activation gate** (Bet Screen Confirm -> Sign In / Register -> Deposit), which already exists as its own screens and states. Edge cases (logged-out at confirm; registered with no balance -> Deposit) live there, per Variant B, already locked.
+- **Effect:** the auth edge cases stay localized at the gate, not spread across browse screens. No page explosion.
 
 ---
 
@@ -380,10 +418,12 @@ Help / FAQ                                  [SIROTA]        - EJ2 is served by D
 
 ## Navigation
 
-> Desktop note: the mobile navigation below is the source of truth. Its desktop
-> mapping (top nav with the same 4 slots, right-hand utility cluster, badge in
-> the bar) is in the Desktop layer (responsive, mobile-first) section directly
-> after Navigation. The mobile content here is unchanged.
+> Desktop note: the mobile navigation below is the source of truth and keeps all
+> 4 bottom-nav slots. Its desktop mapping (top bar with a 3-slot primary nav,
+> Events / My Bets / Notifications, plus a right-hand utility cluster with
+> Balance and Deposit, Favorites, and the avatar that carries Profile) is in the
+> Desktop layer (responsive, mobile-first) section directly after Navigation. The
+> mobile content here is unchanged.
 
 ### User-model rationale
 
@@ -441,11 +481,19 @@ desktop question; none of them changes a mobile decision.
 ### D-desktop-1: Primary navigation
 
 - **Mobile:** bottom nav, 4 slots (Events, My Bets, Notifications, Profile), in
-  the thumb zone.
-- **Desktop:** the same 4 destinations move to a horizontal top navigation bar.
-  No destination is added or removed.
-- **Mobile-to-desktop mapping:** bottom bar (thumb zone) -> top bar (persistent,
-  in the cursor and viewport zone). Same labels, same order, same targets.
+  the thumb zone. Unchanged. Mobile keeps all 4 slots including Profile, since
+  there is no avatar in the bottom bar.
+- **Desktop:** the primary nav (center of the top bar) holds THREE destinations
+  only: Events, My Bets, Notifications. Profile is NOT a separate text item in
+  the desktop primary nav; the avatar in the utility cluster is the home for
+  Profile on desktop (see D-desktop-4). This resolves a Profile duplication
+  (avatar plus a "Profile" nav item would point at the same destination twice).
+- **Final desktop header composition:** brand left; primary nav center (Events,
+  My Bets, Notifications with its permanent unread badge); right utility cluster
+  (Balance plus Deposit, Favorites heart, avatar). See D-desktop-4.
+- **Mobile-to-desktop mapping:** bottom bar 4 slots (thumb zone) -> top bar with
+  3 primary slots plus Profile folded into the avatar in the utility cluster.
+  No destination is lost; Profile is reached via the avatar.
 - **Job rationale:** the mobile argument against a top placement was "easy to
   miss in the thumb zone on mobile" (Navigation, bottom-nav alternative). That
   constraint does not apply on desktop, where a persistent top bar sits in the
@@ -456,14 +504,19 @@ desktop question; none of them changes a mobile decision.
 ### D-desktop-2: Notifications badge
 
 - **Decision:** the unread badge sits on the Notifications item in the top bar
-  on desktop.
+  on desktop. Notifications stays a first-class, badged item in the primary nav,
+  it is NOT demoted to a utility-cluster bell icon.
 - **Mobile-to-desktop mapping:** badge on the bottom-nav Notifications slot ->
-  badge on the top-bar Notifications item. Same permanent-visibility guarantee.
+  badge on the top-bar primary-nav Notifications item. Same permanent-visibility
+  guarantee.
 - **Job rationale:** the locked retention requirement is that the badge is
   permanently visible to drive hot and warm return (FJ1, FJ5, EJ3; aarrr
   D1-D3). A persistent top bar satisfies "always visible" on desktop. The
   mobile-only constraint (thumb zone, miss risk) is lifted, so the requirement
-  carries over intact, it is not weakened.
+  carries over intact, it is not weakened. A header bell was already considered
+  and set aside on mobile (Navigation, bottom-nav alternative); the same reason
+  keeps Notifications in the primary nav on desktop. The label-versus-icon
+  treatment is a wireframe detail; the badge and the prominence are required.
 
 ### D-desktop-3: Event Feed grid
 
@@ -488,13 +541,31 @@ desktop question; none of them changes a mobile decision.
 ### D-desktop-4: Header utilities
 
 - **Mobile:** Wallet and How It Works are header icons, not nav slots (G4).
-- **Desktop:** a right-hand utility cluster in the top bar holds Wallet, How It
-  Works, and the avatar, visually secondary to the 4 primary destinations.
-- **Mobile-to-desktop mapping:** header icons (wallet, info, avatar) -> a
-  right-aligned utility cluster, kept secondary to the 4 primary destinations.
-- **Job rationale:** the desktop equivalent of the mobile header icons. G4
-  carries over intact: money is not a primary destination, promoting Wallet to a
-  primary slot would signal a trading terminal and is rejected.
+  Unchanged.
+- **Desktop:** a right-hand utility cluster in the top bar, visually secondary
+  to the primary nav, holds: **Balance plus Deposit** (shows the account
+  balance and a deposit entry), **Favorites** (heart, opens the Saved view),
+  and the **avatar**.
+- **Avatar dropdown (desktop):** the avatar opens a dropdown populated from OUR
+  IA only, not from competitor menus: My Profile (SJ1/SJ2), Wallet / Deposit
+  (FJ4), How It Works (FJ4/EJ2), Logout. Do NOT add Leaderboard (it is
+  [SIROTA]), Rewards, or APIs (not our product).
+- **How It Works placement:** removed from any persistent header bar position;
+  it now lives in the footer and in the avatar dropdown. It was never a bottom
+  slot; this just relocates the header info entry. Pre-deposit access is
+  preserved (footer plus dropdown, both reachable before deposit).
+- **Mobile-to-desktop mapping:** header icons (wallet, info, avatar) -> utility
+  cluster (Balance plus Deposit, Favorites, avatar with dropdown), with How It
+  Works moved into the footer and the dropdown.
+- **Job rationale:** the desktop equivalent of the mobile header utilities. G4
+  carries over intact: money is a utility in the cluster (Balance plus Deposit),
+  not a primary destination; promoting Wallet to a primary nav slot would signal
+  a trading terminal and is rejected.
+- **Deferred / folded utilities:**
+  - Language switcher: deferred to Phase 2 (Brazil, Portuguese). English-first
+    MVP needs no switcher.
+  - Swap / transfer icon: folded into Wallet (withdrawal and transfer are a
+    Wallet flow), not a standalone header icon.
 
 ### D-desktop-5: Invoked screens as modal overlays (both breakpoints)
 

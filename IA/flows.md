@@ -50,7 +50,8 @@ flowchart TD
     found -->|"no"| T6(["T6 - empty feed, no matching events"])
     T6 -->|"subscribe: notify me of new events in category"| EF
 
-    found -->|"yes"| ED["Event Detail"]
+    found -->|"yes - taps card body or question (neutral entry)"| ED["Event Detail"]
+    found -->|"yes - taps YES or NO on card (trigger-entry: side, and option for multi-outcome, pre-selected)"| ED
     triggerLink --> ED
 
     ED --> ctxOk{"context loaded?"}
@@ -105,6 +106,20 @@ flowchart TD
 
     AB --> mjDone(["T14 - MJ closed: bet placed, user follows the event"])
 ```
+
+**Card trigger-entry (Event Feed -> Event Detail, two variants of the same edge):**
+Tapping a card never places a bet and never bypasses Event Detail. Two ways into
+Event Detail from a card:
+- Tap the card body or question: opens Event Detail neutrally (the beginner who
+  wants to understand first).
+- Tap YES or NO on the card: opens Event Detail with the side pre-selected and,
+  for multi-outcome, the option pre-selected (the informed user who wants to move
+  faster).
+Both land on Event Detail, so FJ2 (context before the bet) is preserved for
+everyone. The bet is still placed on Event Detail / Bet Screen. There is no
+Feed -> Bet Screen edge: nothing bypasses the context screen. Event Detail must
+accept a pre-selected option and side on entry (pre-selected entry variant, see
+IA/sitemap.md Event Detail states).
 
 ---
 
