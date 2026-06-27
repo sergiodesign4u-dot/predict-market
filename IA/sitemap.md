@@ -434,7 +434,7 @@ Help / FAQ                                  [SIROTA]        - EJ2 is served by D
 
 ### User-model rationale
 
-Navigation is derived from the user's job sequence, not from a competitor tab bar. The primary path is: **follow an event** (find what is happening in the world) → **place a stake** (confirm your opinion with real money) → **watch the position move** (return to track odds) → **return for the resolution** (see what happened and how you did) → **build reputation** (show you were right). Each bottom-nav slot maps directly to one phase of this loop. Service-layer concerns - money, history, other users, help - are not part of the active loop and live at the second level or are invoked in context, never given a scarce top-level slot.
+Navigation is derived from the user's job sequence, not from a competitor tab bar. The primary path is: **follow an event** (find what is happening in the world) → **place a stake** (confirm your opinion with real money) → **watch the position move** (return to track odds) → **return for the resolution** (see what happened and how you did) → **build reputation** (show you were right). The original mapping gave each bottom slot one loop phase. The wireframe pass refined this: the mobile bottom bar is now Events, My Bets, Favorites, and Portfolio. Notifications moved to a header bell (its badge still drives return, see the Notifications placement note). Money and reputation are no longer a separate "never a top slot" rule on mobile: they are merged into the Portfolio account hub, which surfaces a balance but opens the identity / account hub rather than a bare trading wallet, so the feed stays the event-first hero (G4 spirit, see D-desktop-4 and the Wallet / Deposit row).
 
 ### Bottom navigation - 4 slots
 
@@ -497,9 +497,11 @@ desktop question; none of them changes a mobile decision.
 > center top nav" framing is superseded by the lean-header model below. Mobile is
 > unchanged.
 
-- **Mobile:** bottom nav, 4 slots (Events, My Bets, Notifications, Profile), in
-  the thumb zone. Unchanged. Mobile keeps all 4 slots including Profile, since
-  there is no avatar in the bottom bar.
+- **Mobile (revised in the wireframe pass):** bottom nav, 4 slots with icons, in
+  the thumb zone: Events, My Bets, Favorites, and Portfolio. Notifications is not
+  a bottom slot (it is the header bell, see D-desktop-2); Profile is not a bottom
+  slot (reached via the Portfolio account hub). Slot 4 (Portfolio) shows the
+  portfolio balance in place of an icon.
 - **Desktop (lean header):** the desktop header does not carry a center row of
   text nav items. Primary destinations are placed as follows:
   - **Events** is the logo: clicking the brand returns to the Event Feed (home).
@@ -517,12 +519,14 @@ desktop question; none of them changes a mobile decision.
   feed control on the "Live events" heading row, not navigation. See the Event
   Feed screen description.
 - **Final desktop header composition:** left: hamburger (reserved) + logo (=
-  Events home). Right utility cluster: Balance (text), Favorites (heart),
-  Notifications (bell + badge), avatar (dropdown). Second-level category nav
-  under the header.
-- **Mobile-to-desktop mapping:** bottom bar 4 slots (thumb zone) -> lean desktop
-  header where Events is the logo, My Bets and Profile fold into the avatar menu,
-  Notifications and Favorites are icons in the cluster. No destination is lost.
+  Events home). Right utility cluster: Portfolio / Cash balance swap, Favorites
+  (heart), Notifications (bell + badge), avatar (dropdown). Second-level category
+  nav under the header.
+- **Mobile-to-desktop mapping:** mobile bottom bar (Events, My Bets, Favorites,
+  Portfolio) plus header bell and avatar -> lean desktop header where Events is
+  the logo, My Bets and Profile fold into the avatar menu, Notifications and
+  Favorites are icons in the cluster, and the Portfolio balance is the cluster
+  swap. No destination is lost.
 - **Job rationale:** keeps the header short and event-first (the feed is the
   hero), consistent with G4 (do not signal a trading terminal). Tradeoff to note:
   My Bets on desktop is one level deeper (inside the avatar menu) than the locked
@@ -702,8 +706,8 @@ Flow / invoked - reached only inside a flow, not via nav bar
 - Bet Screen insufficient-balance state shows inline: "you have $X, can bet up to $X or deposit more" with a direct CTA to Deposit.
 - Result: invoked in context from Bet Screen, 1 step. Not a multi-tap trip to Wallet. Confirmed.
 
-**Proactive top-up: header wallet icon → Wallet → Deposit**
-- Tap header wallet icon → Wallet (1 tap) → Deposit CTA → Deposit (2 taps). 2 taps, acceptable.
+**Proactive top-up (revised in the wireframe pass)**
+- Desktop: avatar dropdown → Wallet / Deposit → Deposit (2 taps). Mobile: Portfolio bottom slot → Deposit / Wallet entry in the hub → Deposit (2 taps). 2 taps, acceptable. (There is no standalone header wallet icon anymore; Deposit lives in the avatar dropdown and the Portfolio hub.)
 
 ### Depth risks
 
@@ -803,7 +807,7 @@ One systemic gap was found and closed during tracing: FJ1 / FJ5 / EJ3 depended o
 |---|---|
 | **G1 nav** | Deep-link routing: notification tap opens target (Loss Screen, Event Detail) modally over the current tab. Back returns to prior context. 1 tap from OS banner or Notifications list item to Loss Screen (G1 direct path). |
 | **G3** | Public Profile reachable only via external shared-card link for MVP. No in-app discovery. Added when leaderboard or social features are confirmed. |
-| **G4** | Wallet and Deposit live in the header (wallet icon), not a bottom-nav slot. Re-deposit is invoked from Bet Screen insufficient-balance state - 1 step in context. |
+| **G4** | Wallet and Deposit live in the header, not a bottom-nav slot. Re-deposit is invoked from Bet Screen insufficient-balance state - 1 step in context. Refined in the wireframe pass: Deposit is in the avatar dropdown and the Portfolio hub (no standalone wallet icon); a Portfolio balance is surfaced on mobile via the account hub, not a bare Wallet slot. See D-desktop-4 and the Wallet / Deposit row. |
 | **G5** | Bet History merged as History tab inside My Bets. EJ1 coverage preserved (private resolved bets view). Standalone screen count drops from 14 to 13; matrix column BH retained. |
 | **S11** | Simultaneous resolutions: show a sequence of separate Win/Loss screens, swipeable. No aggregated Resolution Summary screen at MVP. Wireframe-spec detail, not a navigation slot. |
 
@@ -821,6 +825,6 @@ All items deferred to the navigation pass are now resolved. See Navigation secti
 |---|---|---|
 | **G1 nav** | Notification routing nav pattern | Resolved. Notification tap opens target modally over the current tab; back returns to prior context. 1 tap from notification to Loss Screen (G1 direct path confirmed in FJ5 flow and Depth Map). |
 | **G3** | In-app path to Public Profile | Resolved. MVP: external shared-card link only. No in-app discovery. In-app path deferred until leaderboard or social discovery is confirmed. |
-| **G4** | Wallet and Deposit navigation placement | Resolved. Wallet/Deposit lives in the header (wallet icon), not a bottom-nav slot. Re-deposit invoked from Bet Screen insufficient-balance state in context (1 step). |
+| **G4** | Wallet and Deposit navigation placement | Resolved, then refined in the wireframe pass. Deposit lives in the avatar dropdown and the Portfolio hub (no standalone header wallet icon); re-deposit invoked from Bet Screen insufficient-balance state in context (1 step). A Portfolio balance is surfaced on mobile via the account hub, not a bare Wallet bottom slot. See D-desktop-4. |
 | **G5** | Bet History placement and merge | Resolved. Bet History merged as History tab inside My Bets. EJ1 coverage preserved. Standalone screen count: 13. Matrix column BH retained. |
 | **S11** | Aggregation of simultaneous resolutions | Resolved. Sequence of separate Win/Loss screens, swipeable. No aggregated Resolution Summary screen at MVP. Wireframe-spec detail. |
