@@ -25,6 +25,7 @@ Without it, no job is closable.
 | Type | Binary (YES/NO) · Multi-outcome (multiple options, each with YES/NO). The card must render both layouts, see Event Feed card composition. This is the existing Type field, no new field is added for it. |
 | Thumbnail image | Per-event image used on the card as a visual differentiator. Real field; renders as a grey-box placeholder in wireframes (conventions Addition A), a sample image in concept and a real image in production. |
 | Category | Politics · Crypto · Culture · General |
+| Frequency / recurrence | One-time or recurring. Recurring cadence: Hourly · Daily · Weekly · Monthly. NEW (wireframe pass): introduces recurring markets, and powers the Frequency filter on the Event Feed. Resolution mechanics for recurring markets are to be detailed later (each cadence instance resolves on its own schedule). |
 | Current probability (%) | The "price" - primary display number on every card |
 | Probability chart | History of odds movement over time |
 | Context / narrative | Why this event matters, what drives the odds, key arguments for YES and NO ← **our differentiator (FJ2)** |
@@ -246,7 +247,12 @@ Two card layouts, both built (Event.Type already supports this, no new field):
 - Multi-outcome: N options, each row is an option plus its % plus compact YES / NO controls.
 - Multi-outcome is a normal event type from Event.Type, NOT the rejected "Market Board / trading view" pattern (jtbd.md "features to cut"). It is a card layout for events with more than two options, not a trader terminal.
 
-Controls placement (revised in the wireframe pass): categories are second-level navigation in a sub-nav band directly under the header (Trending default, then Politics, Crypto, Culture, General). The feed heading echoes the active category (for example "Trending"), not a generic "Live events" label, and updates when another category is chosen. The sort control (a feed control, not navigation) sits on the right of that heading row as a Kalshi-style dropdown: the label shows the current sort, and the panel lists the sort options (Trending, Volatile, New, Closing soon, Volume, 50-50) plus a Reverse sort toggle. Exact sort labels are a wireframe detail. Categories stay the locked four for MVP; the category mechanism is built to scale to more categories later without rework. Do not add empty categories now.
+Controls placement (revised in the wireframe pass): categories are second-level navigation in a sub-nav band directly under the header (Trending default, then Politics, Crypto, Culture, General). The feed heading echoes the active category (for example "Trending"), not a generic "Live events" label, and updates when another category is chosen. The heading row carries a Kalshi-style filter cluster (feed controls, not navigation), each a dropdown whose label shows the current value:
+- **Sort:** Trending, Volatile, New, Closing soon, Volume, 50-50, plus a Reverse sort toggle.
+- **Frequency:** All, One-time, Hourly, Daily, Weekly, Monthly (filters by the Event Frequency attribute, recurring markets).
+- **Category:** the full category list. This is redundant-by-design with the second-level chip nav: the chips are quick access to the main categories, the dropdown is the full list that scales as categories grow. The dropdown, the chips, and the heading stay in sync (selecting in one updates the others).
+
+Exact sort and filter labels are a wireframe detail. Categories stay the locked four for MVP; the category mechanism is built to scale to more categories later without rework. Do not add empty categories now.
 
 Saved view: a filter / view over the Event Feed showing only saved events. It is a view within Events, the same way categories filter the feed, not a separate screen. Reached from the bookmark control on cards, from the Favorites (heart) entry in the desktop header, and from the Favorites bottom-nav slot on mobile (the wireframe pass moved Favorites into the mobile bottom bar, swapping with Notifications). See Saved events for the relationship and the alert hypothesis.
 

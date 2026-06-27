@@ -86,10 +86,12 @@ non-main-flow screens are deferred (see the Deferred to Step 08 section).
   - Default sorted view is Trending (not a neutral "All"). Categories are
     second-level navigation in a sub-nav band under the header (Trending default,
     then Politics, Crypto, Culture, General). The feed heading echoes the active
-    category (e.g. "Trending"), not a generic "Live events". The sort control is
-    a Kalshi-style dropdown on the heading row (label = current sort; panel of
-    options plus a Reverse sort toggle). Categories stay the four locked ones;
-    the mechanism scales to more later without rework.
+    category (e.g. "Trending"), not a generic "Live events". The heading row
+    carries a Kalshi-style filter cluster (feed controls, not navigation): Sort
+    (options + Reverse toggle), Frequency (All / One-time / Hourly / Daily /
+    Weekly / Monthly, for recurring markets), and Category (full list, syncs with
+    the chips and the heading). Categories stay the four locked ones; the
+    mechanism scales to more later without rework.
 - **Saved view (not a spine screen):** Saved is a view / filter under Events
   (reached from the card bookmark and the desktop Favorites entry), not a new
   spine screen or destination. It is therefore not added to the spine or the

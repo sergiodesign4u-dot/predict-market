@@ -39,6 +39,7 @@ Users stake crypto on whether an event will happen or not, and earn/lose based o
 ### Market Types (MVP)
 - **Binary markets** - YES / NO on a single event
 - **Multi-outcome markets** - multiple options, each with YES / NO
+- **Frequency (orthogonal to type, added in the wireframe pass)** - markets are one-time or recurring (Hourly / Daily / Weekly / Monthly). Powers the Frequency filter on the Event Feed. Resolution mechanics for recurring markets to be detailed (each cadence instance resolves on its own schedule). See `IA/sitemap.md` Event entity.
 
 ### Event Resolution
 - Events are real-world occurrences

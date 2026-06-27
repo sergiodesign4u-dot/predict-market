@@ -99,14 +99,15 @@
       justify-content: space-between; border-bottom: 1px solid #bbb; padding-bottom: 8px; margin-bottom: 10px;
     }
     .feed-head h2 { font-size: 13px; margin: 0; }
-    /* Sort as a Kalshi-style dropdown (label = current sort, panel with options + reverse) */
-    .sort-menu { position: relative; }
-    .sort-menu summary { list-style: none; border: 1px solid #888; background: #d6d6d6; padding: 5px 8px; font-size: 11px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
-    .sort-menu summary::-webkit-details-marker { display: none; }
-    .sort-panel { position: absolute; right: 0; top: calc(100% + 4px); min-width: 190px; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
-    .sort-panel .zone-tag { background: #cdcdcd; }
-    .sort-panel ul { list-style: none; margin: 0; padding: 4px 0; }
-    .sort-panel li label { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: 11px; cursor: pointer; }
+    /* Feed filters: Kalshi-style dropdowns (Sort, Frequency, Category) */
+    .feed-controls { display: flex; flex-wrap: wrap; gap: 6px; }
+    .filter-menu { position: relative; }
+    .filter-menu summary { list-style: none; border: 1px solid #888; background: #d6d6d6; padding: 5px 8px; font-size: 11px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
+    .filter-menu summary::-webkit-details-marker { display: none; }
+    .filter-panel { position: absolute; right: 0; top: calc(100% + 4px); min-width: 190px; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
+    .filter-panel .zone-tag { background: #cdcdcd; }
+    .filter-panel ul { list-style: none; margin: 0; padding: 4px 0; }
+    .filter-panel li label { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: 11px; cursor: pointer; }
     .reverse-row { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #ccc; padding: 7px 10px; font-size: 11px; }
     .toggle { border: 1px solid #888; background: #cfcfcf; font-size: 10px; padding: 2px 8px; cursor: pointer; }
     .toggle[aria-checked="true"] { background: #b8b8b8; font-weight: bold; }
@@ -270,32 +271,73 @@
       <div class="feed-inner">
 
         <div class="feed-head">
-          <!-- Heading echoes the active second-level category (here: Trending), not a generic "Live events". -->
+          <!-- Heading echoes the active category (here: Trending), not a generic "Live events". -->
           <h2 id="feedHeading">Trending</h2>
 
-          <!-- Sort: Kalshi-style dropdown. Summary shows the current sort; panel has options + reverse toggle. -->
-          <details class="sort-menu">
-            <summary aria-label="Sort by">
-              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
-              <span>Sort: <span id="sortCurrent">Trending</span></span>
-              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </summary>
-            <div class="sort-panel">
-              <span class="zone-tag">sort options</span>
-              <ul role="radiogroup" aria-label="Sort by">
-                <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
-                <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
-                <li><label><input type="radio" name="sort" value="New"> New</label></li>
-                <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
-                <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
-                <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
-              </ul>
-              <div class="reverse-row">
-                <span>Reverse sort</span>
-                <button type="button" class="toggle" role="switch" aria-checked="false">off</button>
+          <!-- Kalshi-style filter row: Sort, Frequency, Category. Each label shows the current value. -->
+          <div class="feed-controls">
+
+            <details class="filter-menu" id="sortMenu">
+              <summary aria-label="Sort by">
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
+                <span>Sort: <span id="sortCurrent">Trending</span></span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="filter-panel">
+                <span class="zone-tag">sort options</span>
+                <ul role="radiogroup" aria-label="Sort by">
+                  <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
+                  <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
+                  <li><label><input type="radio" name="sort" value="New"> New</label></li>
+                  <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
+                  <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
+                  <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
+                </ul>
+                <div class="reverse-row">
+                  <span>Reverse sort</span>
+                  <button type="button" class="toggle" role="switch" aria-checked="false">off</button>
+                </div>
               </div>
-            </div>
-          </details>
+            </details>
+
+            <details class="filter-menu" id="freqMenu">
+              <summary aria-label="Filter by frequency">
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <span>Frequency: <span id="freqCurrent">All</span></span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="filter-panel">
+                <span class="zone-tag">event frequency (recurring markets)</span>
+                <ul role="radiogroup" aria-label="Frequency">
+                  <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
+                  <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
+                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
+                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
+                  <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
+                  <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="filter-menu" id="catMenu">
+              <summary aria-label="Filter by category">
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v6H4zM13 5h7v6h-7zM4 13h7v6H4zM13 13h7v6h-7z"/></svg>
+                <span>Category: <span id="catCurrent">Trending</span></span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="filter-panel">
+                <span class="zone-tag">category filter (full list, syncs with the chips)</span>
+                <ul role="radiogroup" aria-label="Category">
+                  <li><label><input type="radio" name="catf" value="Trending" checked> Trending</label></li>
+                  <li><label><input type="radio" name="catf" value="Politics"> Politics</label></li>
+                  <li><label><input type="radio" name="catf" value="Crypto"> Crypto</label></li>
+                  <li><label><input type="radio" name="catf" value="Culture"> Culture</label></li>
+                  <li><label><input type="radio" name="catf" value="General"> General</label></li>
+                </ul>
+              </div>
+            </details>
+
+          </div>
         </div>
 
         <div class="grid">
@@ -570,10 +612,19 @@
         <li><strong>Feed heading echoes the active category</strong> -&gt; the
           heading is the selected second-level category (here "Trending"), not a
           generic "Live events". It updates when you pick another category.</li>
-        <li><strong>Sort (Kalshi-style dropdown on the heading row)</strong> -&gt;
-          a control whose label shows the current sort; opens a panel with Trending,
-          Volatile, New, Closing soon, Volume, 50-50 plus a Reverse sort toggle. A
-          feed control, not navigation. Exact labels are a wireframe detail.</li>
+        <li><strong>Filter row (Kalshi-style dropdowns on the heading row)</strong>
+          -&gt; three controls, each label showing the current value: <em>Sort</em>
+          (Trending, Volatile, New, Closing soon, Volume, 50-50 plus a Reverse
+          toggle), <em>Frequency</em> (All, One-time, Hourly, Daily, Weekly, Monthly)
+          and <em>Category</em>. Feed controls, not navigation.</li>
+        <li><strong>Frequency -&gt; recurring markets (NEW concept)</strong>
+          -&gt; introduces event cadence (one-time vs hourly/daily/weekly/monthly
+          recurring markets). New Event attribute, added to IA/sitemap.md Event
+          entity; resolution mechanics for recurring markets to be detailed later.</li>
+        <li><strong>Category dropdown syncs with the chips</strong> -&gt; the
+          heading-row Category control is the full category list (scales as
+          categories grow) and stays in sync with the second-level chip nav and the
+          heading; both update the active category.</li>
         <li><strong>YES/NO trigger-entry on the card</strong> -&gt; routes to Event
           Detail with the side (and for multi-outcome the option) pre-selected. It
           does not place a bet and does not bypass Event Detail, so FJ2 is preserved
@@ -669,39 +720,58 @@ Active Bets    (MJ success, T14)</pre>
       }
     })();
 
-    // Sort dropdown: update the "Sort: X" label and close the menu on choose.
-    (function () {
-      var menu = document.querySelector('.sort-menu');
+    // Feed filters: each dropdown updates its own label and closes on choose.
+    function wireFilter(menuId, currentId, name, onChange) {
+      var menu = document.getElementById(menuId);
       if (!menu) return;
-      var current = document.getElementById('sortCurrent');
-      menu.querySelectorAll('input[name="sort"]').forEach(function (r) {
+      var cur = document.getElementById(currentId);
+      menu.querySelectorAll('input[name="' + name + '"]').forEach(function (r) {
         r.addEventListener('change', function () {
-          current.textContent = r.value;
+          if (cur) cur.textContent = r.value;
           menu.open = false;
+          if (onChange) onChange(r.value);
         });
       });
-      var rev = menu.querySelector('.toggle');
-      if (rev) {
-        rev.addEventListener('click', function () {
-          var on = rev.getAttribute('aria-checked') === 'true';
-          rev.setAttribute('aria-checked', on ? 'false' : 'true');
-          rev.textContent = on ? 'off' : 'on';
-        });
-      }
+    }
+
+    // Sort + its reverse toggle.
+    wireFilter('sortMenu', 'sortCurrent', 'sort');
+    (function () {
+      var rev = document.querySelector('#sortMenu .toggle');
+      if (!rev) return;
+      rev.addEventListener('click', function () {
+        var on = rev.getAttribute('aria-checked') === 'true';
+        rev.setAttribute('aria-checked', on ? 'false' : 'true');
+        rev.textContent = on ? 'off' : 'on';
+      });
     })();
 
-    // Category second-level nav: set active and echo it in the feed heading.
+    // Frequency.
+    wireFilter('freqMenu', 'freqCurrent', 'freq');
+
+    // Category: the dropdown and the chip nav stay in sync, and the heading echoes the choice.
     (function () {
-      var nav = document.querySelector('.cat-nav');
       var heading = document.getElementById('feedHeading');
-      if (!nav || !heading) return;
-      nav.querySelectorAll('button').forEach(function (b) {
-        b.addEventListener('click', function () {
-          nav.querySelectorAll('li').forEach(function (li) { li.removeAttribute('aria-current'); });
-          b.parentNode.setAttribute('aria-current', 'page');
-          heading.textContent = b.textContent;
+      var nav = document.querySelector('.cat-nav');
+      var catCur = document.getElementById('catCurrent');
+      function activate(name) {
+        if (heading) heading.textContent = name;
+        if (catCur) catCur.textContent = name;
+        if (nav) {
+          nav.querySelectorAll('li').forEach(function (li) {
+            var on = li.querySelector('button').textContent.trim() === name;
+            if (on) li.setAttribute('aria-current', 'page'); else li.removeAttribute('aria-current');
+          });
+        }
+        var radio = document.querySelector('#catMenu input[value="' + name + '"]');
+        if (radio) radio.checked = true;
+      }
+      wireFilter('catMenu', 'catCurrent', 'catf', activate);
+      if (nav) {
+        nav.querySelectorAll('button').forEach(function (b) {
+          b.addEventListener('click', function () { activate(b.textContent.trim()); });
         });
-      });
+      }
     })();
   </script>
 
