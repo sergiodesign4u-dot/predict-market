@@ -286,7 +286,7 @@ earlier rules:
   CTAs). Verified by clicking the whole spine in the browser and a broken-link
   audit (0 broken internal links across all pages).
 - **Whole-product reconciliation (Krok 8) - the set is consistent.** Coverage:
-  every sitemap screen has a wireframe family (96 pages); orphans `[SIROTA]`
+  every sitemap screen has a wireframe family (99 pages); orphans `[SIROTA]`
   unbuilt by design; the standalone Bet Screen is dissolved into the Event Detail
   panel. A parallel consistency audit (one subagent per screen family, same
   11-point checklist: tree nav, zones, header-by-auth, bottom-nav slots, state
@@ -300,7 +300,7 @@ earlier rules:
   their rows above). All other families (Event Detail, Categories, Gate,
   Resolution + Notifications, Wallet, My Profile, Active Bets / Bet History) audited
   CONSISTENT. Result: 0 em-dash, 0 broken links, consistent zones / naming /
-  navigation across all 96 pages.
+  navigation across all 99 pages.
 
 ### 6. Deferred to later phases (Concept onward), not allowed in wireframes
 

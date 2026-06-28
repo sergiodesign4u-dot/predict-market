@@ -43,7 +43,7 @@ Single-page summary of all research phases. Open the link above in any browser -
 | Brief | ✅ Done |
 | Research | ✅ Done (competitive analysis, screens captured) |
 | IA (sitemap + flows) | ✅ Done (sources + 3 visualizations, synced) |
-| Wireframes | ✅ Done (96 pages, all screens + states, flow-linked, critique pass) |
+| Wireframes | ✅ Done (99 pages: all screens + states + Favorites view + Event Detail tabs, flow-linked, header / nav wired, critique pass) |
 | Concept | ⬜ Not started |
 | Design system | ⬜ Not started |
 | Components | ⬜ Not started |
