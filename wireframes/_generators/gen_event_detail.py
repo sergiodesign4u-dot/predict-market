@@ -330,6 +330,7 @@ TAB_CSS = """
     .hold-row:first-of-type { border-top: none; }
     .hold-rank { width: 14px; color: #777; font-size: 11px; }
     .hold-name { flex: 1; }
+    .hold-out { border: 1px solid #bbb; background: #e6e6e6; font-size: 9px; padding: 0 5px; white-space: nowrap; }
     .hold-amt { color: #555; font-size: 11px; white-space: nowrap; }
     .ptable { width: 100%; font-size: 11px; border-collapse: collapse; }
     .ptable th, .ptable td { text-align: left; padding: 6px 6px; border-bottom: 1px solid #e0e0e0; }
@@ -394,7 +395,22 @@ def comments_panel(auth):
             '            </div>\n')
 
 
-def holders_panel():
+def holders_panel(view):
+    open_tag = '            <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Top holders">\n'
+    if view == "multi":
+        # multi-outcome: one ranked list, each holder tagged with the outcome they hold
+        rows = [("whale_07", "JD Vance", "1,240"), ("hedge_hannah", "Donald Trump", "980"),
+                ("marketmaven", "JD Vance", "620"), ("alpha_ape", "Ron DeSantis", "410"),
+                ("satoshi_jr", "Nikki Haley", "250"), ("riskoff", "Other", "180")]
+        rr = "".join(
+            f'                <div class="hold-row"><span class="hold-rank">{i}</span>'
+            f'<span class="cmt-av">{n[:2]}</span>'
+            f'<span class="hold-name">{n} <span class="hold-out">{out}</span></span>'
+            f'<span class="hold-amt">{a} shares</span></div>\n' for i, (n, out, a) in enumerate(rows, 1))
+        return (open_tag
+                + '              <div class="hold-cols">\n'
+                '                <div class="hold-col">\n                  <h4>Top holders by outcome</h4>\n'
+                + rr + '                </div>\n              </div>\n            </div>\n')
     yes = [("whale_07", "1,240"), ("marketmaven", "320"), ("alpha_ape", "280"), ("satoshi_jr", "150")]
     no = [("hedge_hannah", "980"), ("polly_predicts", "150"), ("caut_carl", "120"), ("riskoff", "90")]
 
@@ -404,8 +420,7 @@ def holders_panel():
             f'<span class="cmt-av">{n[:2]}</span><span class="hold-name">{n}</span>'
             f'<span class="hold-amt">{a} shares</span></div>\n' for i, (n, a) in enumerate(rows, 1))
         return f'              <div class="hold-col">\n                <h4>{title}</h4>\n' + rr + '              </div>\n'
-    return ('            <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Top holders">\n'
-            '              <div class="hold-cols">\n' + col("YES holders", yes) + col("NO holders", no)
+    return (open_tag + '              <div class="hold-cols">\n' + col("YES holders", yes) + col("NO holders", no)
             + '              </div>\n            </div>\n')
 
 
@@ -427,12 +442,19 @@ def positions_panel(auth):
             '              </table>\n' + note + '            </div>\n')
 
 
-def activity_panel():
-    acts = [("wh", "whale_07", "bought", "500 YES", "$0.35", "$175", "2m ago"),
-            ("hh", "hedge_hannah", "bought", "300 NO", "$0.60", "$180", "14m ago"),
-            ("mm", "marketmaven", "sold", "80 YES", "$0.39", "$31", "1h ago"),
-            ("pp", "polly_predicts", "bought", "150 NO", "$0.58", "$87", "3h ago"),
-            ("nh", "newhere", "bought", "13 YES", "$0.38", "$4.94", "5h ago")]
+def activity_panel(view):
+    if view == "multi":
+        acts = [("wh", "whale_07", "bought", "500 JD Vance YES", "$0.41", "$205", "2m ago"),
+                ("hh", "hedge_hannah", "bought", "300 Donald Trump YES", "$0.22", "$66", "14m ago"),
+                ("mm", "marketmaven", "sold", "80 JD Vance YES", "$0.41", "$33", "1h ago"),
+                ("po", "polly_predicts", "bought", "150 Ron DeSantis YES", "$0.14", "$21", "3h ago"),
+                ("nh", "newhere", "bought", "20 Nikki Haley YES", "$0.08", "$1.60", "5h ago")]
+    else:
+        acts = [("wh", "whale_07", "bought", "500 YES", "$0.35", "$175", "2m ago"),
+                ("hh", "hedge_hannah", "bought", "300 NO", "$0.60", "$180", "14m ago"),
+                ("mm", "marketmaven", "sold", "80 YES", "$0.39", "$31", "1h ago"),
+                ("pp", "polly_predicts", "bought", "150 NO", "$0.58", "$87", "3h ago"),
+                ("nh", "newhere", "bought", "13 YES", "$0.38", "$4.94", "5h ago")]
     rows = "".join(
         f'              <div class="act-row"><span class="cmt-av">{av}</span>'
         f'<span class="act-txt"><b>{u}</b> {act} <b>{sz}</b> at {pr} ({val})</span>'
@@ -456,7 +478,7 @@ def tabs_section(view, auth):
             '                <label class="ed-tablabel" for="edtab-positions">Positions</label>\n'
             '                <label class="ed-tablabel" for="edtab-activity">Activity</label>\n'
             '              </div>\n'
-            + comments_panel(auth) + holders_panel() + positions_panel(auth) + activity_panel()
+            + comments_panel(auth) + holders_panel(view) + positions_panel(auth) + activity_panel(view)
             + '            </div>\n'
             '          </section>\n')
 

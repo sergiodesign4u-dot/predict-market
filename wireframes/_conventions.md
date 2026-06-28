@@ -643,6 +643,9 @@ when logged in (logged-out prompts sign-in); Top Holders and Activity are public
 Present on binary / multi / resolved, logged-in and logged-out. Built in
 `gen_event_detail.py` with a page-local `<style>` (the `.ed-tab*` / `.cmt-*` /
 `.hold-*` / `.ptable` / `.act-*` classes), so the tab CSS lives only on Event Detail.
+On multi-outcome markets the Top Holders and Activity tabs are outcome-aware
+(holders listed in one ranked list tagged by outcome; trades named by outcome,
+e.g. "bought 500 JD Vance YES"); binary keeps the YES / NO two-column holders.
 
 ## What comes next
 
