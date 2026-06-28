@@ -261,6 +261,25 @@ earlier rules:
   every screen in the S6 tree is built; nothing remains `planned` (orphans
   `[SIROTA]` - Settings, Leaderboard, Help / FAQ - stay unbuilt by design, no
   confirmed job).
+- **Flow linking pass (Krok 7) - the main flow is clickable end to end.** Each
+  screen's main action is now a real `<a href>` along the IA/flows.md routes, only
+  to screens / states that exist, with branch exits both ways and no dead ends.
+  Wired: Event Feed / category **card question and YES / NO trigger-entries** ->
+  the correct Event Detail (binary -> `event-detail.html`, multi -> `-multi`;
+  logged-out feeds -> the `-logged-out` Event Detail), via the idempotent
+  `wire_flow.py` (re-run after regenerating feed / category pages, like
+  `wire_catnav.py`). Bet panel happy path: **S5 reconcile Confirm -> processing ->
+  Active Bets** (T14), reconcile Cancel -> Event Detail (T16); on-chain error (T3)
+  **Try again -> processing**, **Check wallet -> Wallet**. Gate reference pages are
+  traversable too: **sign-in.html providers -> deposit.html** (authOk -> DEP),
+  **deposit.html Add funds -> S5 reconcile** (depOk -> S5), and a **How it works ->
+  how-it-works.html** link (moreInfo -> HIW; HIW Add funds -> Deposit). The live
+  shared dialogs remain the quick happy path (Confirm -> Sign In -> Deposit over
+  the page); the reference pages give the full step-through to Active Bets. State
+  exits were already wired (empty -> feed, error -> retry, T1 / T2 deposit
+  recovery, notifications -> Win / Loss, Bet History rows -> Win / Loss, Win / Loss
+  CTAs). Verified by clicking the whole spine in the browser and a broken-link
+  audit (0 broken internal links across all pages).
 
 ### 6. Deferred to later phases (Concept onward), not allowed in wireframes
 
