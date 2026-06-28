@@ -71,15 +71,17 @@ OUTCOMES = [("JD Vance", "41%", True), ("Donald Trump", "22%", False), ("Ron DeS
 
 def outcomes_section():
     rows = []
-    for name, pct, lead in OUTCOMES:
-        tag = ' <span class="ed-cat">leading</span>' if lead else ''
-        rows.append(f'              <div class="opt-row"><span class="opt-name">{name}{tag}</span>'
+    for name, pct, sel in OUTCOMES:  # sel = the outcome currently loaded in the bet panel
+        rowcls = "opt-row sel" if sel else "opt-row"
+        tag = ' <span class="opt-sel-tag">selected</span>' if sel else ''
+        yescls = ' class="sel"' if sel else ''
+        rows.append(f'              <div class="{rowcls}"><span class="opt-name">{name}{tag}</span>'
                     f'<span class="opt-prob">{pct}</span>'
-                    f'<span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>')
-    return ('          <section class="ed-section">\n'
+                    f'<span class="yesno compact"><button type="button"{yescls}>YES</button><button type="button">NO</button></span></div>')
+    return ('          <section class="ed-section" id="edOutcomes">\n'
             '            <h3>Outcomes</h3>\n'
             '            <div class="options opt-list">\n' + "\n".join(rows) + '\n            </div>\n'
-            '            <p class="fine">Each outcome trades YES / NO independently. Pick one in the bet panel to stake.</p>\n'
+            '            <p class="fine">Tap YES or NO on an outcome to load it into the bet panel. The panel stays focused on the one you picked, however long this list gets.</p>\n'
             '          </section>\n')
 
 
@@ -177,15 +179,13 @@ def main_text(view):
 # ---------- bet panel (parameterised by view + panel state) ----------
 def panel_dir(view):
     if view == "multi":
-        opts = []
-        for name, pct, sel in OUTCOMES:
-            cls = " sel" if sel else ""
-            ch = " checked" if sel else ""
-            opts.append(f'                <label class="bp-opt{cls}"><input type="radio" name="bpopt"{ch}> {name} '
-                        f'<span class="bp-opt-pct">{pct}</span></label>')
-        return ('              <span class="field-label">Pick an outcome</span>\n'
-                '              <div class="bp-opts">\n' + "\n".join(opts) + '\n              </div>\n'
-                '              <span class="bp-hint">Betting on: <strong>JD Vance</strong></span>\n'
+        # Focused on the outcome picked in the left list (scales past a long list,
+        # 10-20 outcomes, since the panel never repeats the whole list).
+        return ('              <span class="field-label">Your outcome</span>\n'
+                '              <div class="bp-selected">\n'
+                '                <span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span>\n'
+                '                <a href="#edOutcomes" class="bp-change">Change</a>\n'
+                '              </div>\n'
                 '              <div class="bp-dir">\n'
                 '                <button type="button" class="bp-side sel">YES <span class="bp-pct">41%</span></button>\n'
                 '                <button type="button" class="bp-side">NO <span class="bp-pct">59%</span></button>\n'
@@ -343,6 +343,12 @@ TAB_CSS = """
     .act-row:first-child { border-top: none; }
     .act-txt { flex: 1; min-width: 0; }
     .act-time { color: #777; font-size: 10px; white-space: nowrap; }
+    /* multi: left list marks the selected outcome; right panel focuses on it */
+    .opt-row.sel { background: #e6e6e6; border-left: 3px solid #777; padding-left: 6px; }
+    .opt-sel-tag { font-size: 9px; border: 1px solid #999; background: #dcdcdc; padding: 0 5px; }
+    .bp-selected { display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid #888; background: #dcdcdc; padding: 8px; }
+    .bp-sel-name { font-size: 13px; font-weight: bold; display: flex; align-items: center; gap: 6px; }
+    .bp-change { font-size: 10px; color: #333; text-decoration: underline; white-space: nowrap; }
     @media (min-width: 640px) {
       .hold-cols { flex-direction: row; }
       .hold-col { flex: 1; }
@@ -367,7 +373,9 @@ def _cmt(av, user, badge, time, text, likes, reply=False):
             f'                </div>\n')
 
 
-def comments_panel(auth):
+def comments_panel(auth, view):
+    badge1 = "Holds 320 JD Vance" if view == "multi" else "Holds 320 YES"
+    badge2 = "Holds 150 Donald Trump" if view == "multi" else "Holds 150 NO"
     if auth == "in":
         compose = ('              <div class="cmt-compose">\n'
                    '                <span class="cmt-av">you</span>\n'
@@ -376,11 +384,11 @@ def comments_panel(auth):
                    '              </div>\n')
     else:
         compose = '              <button type="button" class="cmt-signin" data-open="signin">Sign in to join the discussion</button>\n'
-    lst = (_cmt("mm", "marketmaven", "Holds 320 YES", "2h ago",
+    lst = (_cmt("mm", "marketmaven", badge1, "2h ago",
                "These always go to the wire. I am holding my position and adding if it dips.", "24")
            + _cmt("dd", "deadline_dan", "", "1h ago",
                   "The committee bloc looks firmer this time though.", "6", reply=True)
-           + _cmt("pp", "polly_predicts", "Holds 150 NO", "5h ago",
+           + _cmt("pp", "polly_predicts", badge2, "5h ago",
                   "Volume jumped right after the headline. Watching how it settles.", "11")
            + _cmt("nh", "newhere", "", "1d ago",
                   "First bet here. The resolution source being official notices makes this easy to trust.", "8"))
@@ -424,11 +432,19 @@ def holders_panel(view):
             + '              </div>\n            </div>\n')
 
 
-def positions_panel(auth):
-    rows = [("whale_07", "YES", "1,240", "$0.35", "$471"), ("hedge_hannah", "NO", "980", "$0.60", "$588"),
-            ("marketmaven", "YES", "320", "$0.41", "$121"), ("polly_predicts", "NO", "150", "$0.58", "$87")]
-    you = ('                <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td>'
-           '<td>13</td><td>$0.38</td><td>$4.94</td></tr>\n') if auth == "in" else ''
+def positions_panel(auth, view):
+    if view == "multi":
+        col2 = "Outcome"
+        rows = [("whale_07", "JD Vance", "1,240", "$0.35", "$434"), ("hedge_hannah", "Donald Trump", "980", "$0.20", "$196"),
+                ("marketmaven", "JD Vance", "620", "$0.41", "$254"), ("polly_predicts", "Ron DeSantis", "150", "$0.14", "$21")]
+        you = ('                <tr class="you"><td>You</td><td><span class="pos-side">JD Vance</span></td>'
+               '<td>13</td><td>$0.41</td><td>$5.33</td></tr>\n') if auth == "in" else ''
+    else:
+        col2 = "Side"
+        rows = [("whale_07", "YES", "1,240", "$0.35", "$471"), ("hedge_hannah", "NO", "980", "$0.60", "$588"),
+                ("marketmaven", "YES", "320", "$0.41", "$121"), ("polly_predicts", "NO", "150", "$0.58", "$87")]
+        you = ('                <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td>'
+               '<td>13</td><td>$0.38</td><td>$4.94</td></tr>\n') if auth == "in" else ''
     body = you + "".join(
         f'                <tr><td>{u}</td><td><span class="pos-side">{s}</span></td>'
         f'<td>{sh}</td><td>{a}</td><td>{v}</td></tr>\n' for u, s, sh, a, v in rows)
@@ -437,7 +453,7 @@ def positions_panel(auth):
             else '              <button type="button" class="cmt-signin" data-open="signin">Sign in to open and track your position</button>\n')
     return ('            <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Positions">\n'
             '              <table class="ptable">\n'
-            '                <thead><tr><th>Holder</th><th>Side</th><th>Shares</th><th>Avg</th><th>Value</th></tr></thead>\n'
+            f'                <thead><tr><th>Holder</th><th>{col2}</th><th>Shares</th><th>Avg</th><th>Value</th></tr></thead>\n'
             '                <tbody>\n' + body + '                </tbody>\n'
             '              </table>\n' + note + '            </div>\n')
 
@@ -478,7 +494,7 @@ def tabs_section(view, auth):
             '                <label class="ed-tablabel" for="edtab-positions">Positions</label>\n'
             '                <label class="ed-tablabel" for="edtab-activity">Activity</label>\n'
             '              </div>\n'
-            + comments_panel(auth) + holders_panel(view) + positions_panel(auth) + activity_panel(view)
+            + comments_panel(auth, view) + holders_panel(view) + positions_panel(auth, view) + activity_panel(view)
             + '            </div>\n'
             '          </section>\n')
 

@@ -643,9 +643,18 @@ when logged in (logged-out prompts sign-in); Top Holders and Activity are public
 Present on binary / multi / resolved, logged-in and logged-out. Built in
 `gen_event_detail.py` with a page-local `<style>` (the `.ed-tab*` / `.cmt-*` /
 `.hold-*` / `.ptable` / `.act-*` classes), so the tab CSS lives only on Event Detail.
-On multi-outcome markets the Top Holders and Activity tabs are outcome-aware
-(holders listed in one ranked list tagged by outcome; trades named by outcome,
-e.g. "bought 500 JD Vance YES"); binary keeps the YES / NO two-column holders.
+On multi-outcome markets all four tabs are outcome-aware: Top Holders is one
+ranked list tagged by outcome, Activity names the outcome (e.g. "bought 500 JD
+Vance YES"), Positions swaps the Side column for an Outcome column, and the comment
+holder badges name the outcome ("Holds 320 JD Vance"). Binary keeps the YES / NO
+form.
+
+**Multi bet panel focus:** the sticky bet panel does NOT repeat the outcome list
+(which can run 10-20 long). The left column lists every outcome with YES / NO
+triggers and marks the selected one; the right panel stays focused on that single
+chosen outcome (name + %, YES / NO, amount, payout, Confirm) with a "Change" link
+back to the list (`#edOutcomes`). This keeps the panel fixed-size regardless of how
+many outcomes the market has.
 
 ## What comes next
 

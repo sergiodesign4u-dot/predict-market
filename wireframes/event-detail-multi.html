@@ -539,6 +539,12 @@
     .act-row:first-child { border-top: none; }
     .act-txt { flex: 1; min-width: 0; }
     .act-time { color: #777; font-size: 10px; white-space: nowrap; }
+    /* multi: left list marks the selected outcome; right panel focuses on it */
+    .opt-row.sel { background: #e6e6e6; border-left: 3px solid #777; padding-left: 6px; }
+    .opt-sel-tag { font-size: 9px; border: 1px solid #999; background: #dcdcdc; padding: 0 5px; }
+    .bp-selected { display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid #888; background: #dcdcdc; padding: 8px; }
+    .bp-sel-name { font-size: 13px; font-weight: bold; display: flex; align-items: center; gap: 6px; }
+    .bp-change { font-size: 10px; color: #333; text-decoration: underline; white-space: nowrap; }
     @media (min-width: 640px) {
       .hold-cols { flex-direction: row; }
       .hold-col { flex: 1; }
@@ -875,16 +881,16 @@
               </div>
             </div>
           </article>
-          <section class="ed-section">
+          <section class="ed-section" id="edOutcomes">
             <h3>Outcomes</h3>
             <div class="options opt-list">
-              <div class="opt-row"><span class="opt-name">JD Vance <span class="ed-cat">leading</span></span><span class="opt-prob">41%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+              <div class="opt-row sel"><span class="opt-name">JD Vance <span class="opt-sel-tag">selected</span></span><span class="opt-prob">41%</span><span class="yesno compact"><button type="button" class="sel">YES</button><button type="button">NO</button></span></div>
               <div class="opt-row"><span class="opt-name">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
               <div class="opt-row"><span class="opt-name">Ron DeSantis</span><span class="opt-prob">14%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
               <div class="opt-row"><span class="opt-name">Nikki Haley</span><span class="opt-prob">8%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
               <div class="opt-row"><span class="opt-name">Other</span><span class="opt-prob">15%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
             </div>
-            <p class="fine">Each outcome trades YES / NO independently. Pick one in the bet panel to stake.</p>
+            <p class="fine">Tap YES or NO on an outcome to load it into the bet panel. The panel stays focused on the one you picked, however long this list gets.</p>
           </section>
           <section class="ed-section">
             <h3>Price chart</h3>
@@ -958,7 +964,7 @@
                 <div class="cmt">
                   <span class="cmt-av">mm</span>
                   <div class="cmt-body">
-                    <div class="cmt-meta"><span class="cmt-user">marketmaven</span><span class="cmt-badge">Holds 320 YES</span><span>2h ago</span></div>
+                    <div class="cmt-meta"><span class="cmt-user">marketmaven</span><span class="cmt-badge">Holds 320 JD Vance</span><span>2h ago</span></div>
                     <p class="cmt-text">These always go to the wire. I am holding my position and adding if it dips.</p>
                     <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>24</button><button type="button">Reply</button></div>
                   </div>
@@ -974,7 +980,7 @@
                 <div class="cmt">
                   <span class="cmt-av">pp</span>
                   <div class="cmt-body">
-                    <div class="cmt-meta"><span class="cmt-user">polly_predicts</span><span class="cmt-badge">Holds 150 NO</span><span>5h ago</span></div>
+                    <div class="cmt-meta"><span class="cmt-user">polly_predicts</span><span class="cmt-badge">Holds 150 Donald Trump</span><span>5h ago</span></div>
                     <p class="cmt-text">Volume jumped right after the headline. Watching how it settles.</p>
                     <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>11</button><button type="button">Reply</button></div>
                   </div>
@@ -1004,13 +1010,13 @@
             </div>
             <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Positions">
               <table class="ptable">
-                <thead><tr><th>Holder</th><th>Side</th><th>Shares</th><th>Avg</th><th>Value</th></tr></thead>
+                <thead><tr><th>Holder</th><th>Outcome</th><th>Shares</th><th>Avg</th><th>Value</th></tr></thead>
                 <tbody>
-                <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>13</td><td>$0.38</td><td>$4.94</td></tr>
-                <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>1,240</td><td>$0.35</td><td>$471</td></tr>
-                <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>980</td><td>$0.60</td><td>$588</td></tr>
-                <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>320</td><td>$0.41</td><td>$121</td></tr>
-                <tr><td>polly_predicts</td><td><span class="pos-side">NO</span></td><td>150</td><td>$0.58</td><td>$87</td></tr>
+                <tr class="you"><td>You</td><td><span class="pos-side">JD Vance</span></td><td>13</td><td>$0.41</td><td>$5.33</td></tr>
+                <tr><td>whale_07</td><td><span class="pos-side">JD Vance</span></td><td>1,240</td><td>$0.35</td><td>$434</td></tr>
+                <tr><td>hedge_hannah</td><td><span class="pos-side">Donald Trump</span></td><td>980</td><td>$0.20</td><td>$196</td></tr>
+                <tr><td>marketmaven</td><td><span class="pos-side">JD Vance</span></td><td>620</td><td>$0.41</td><td>$254</td></tr>
+                <tr><td>polly_predicts</td><td><span class="pos-side">Ron DeSantis</span></td><td>150</td><td>$0.14</td><td>$21</td></tr>
                 </tbody>
               </table>
               <p class="pos-note">Your row is highlighted. Positions update as the market trades.</p>
@@ -1032,15 +1038,11 @@
             <span class="zone-tag">zone: bet panel (sticky right rail; fast entry, MJ). States migrated from the old Bet modal.</span>
             <div class="bp-inner">
               <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
-              <span class="field-label">Pick an outcome</span>
-              <div class="bp-opts">
-                <label class="bp-opt sel"><input type="radio" name="bpopt" checked> JD Vance <span class="bp-opt-pct">41%</span></label>
-                <label class="bp-opt"><input type="radio" name="bpopt"> Donald Trump <span class="bp-opt-pct">22%</span></label>
-                <label class="bp-opt"><input type="radio" name="bpopt"> Ron DeSantis <span class="bp-opt-pct">14%</span></label>
-                <label class="bp-opt"><input type="radio" name="bpopt"> Nikki Haley <span class="bp-opt-pct">8%</span></label>
-                <label class="bp-opt"><input type="radio" name="bpopt"> Other <span class="bp-opt-pct">15%</span></label>
+              <span class="field-label">Your outcome</span>
+              <div class="bp-selected">
+                <span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span>
+                <a href="#edOutcomes" class="bp-change">Change</a>
               </div>
-              <span class="bp-hint">Betting on: <strong>JD Vance</strong></span>
               <div class="bp-dir">
                 <button type="button" class="bp-side sel">YES <span class="bp-pct">41%</span></button>
                 <button type="button" class="bp-side">NO <span class="bp-pct">59%</span></button>

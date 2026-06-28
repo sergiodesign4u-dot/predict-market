@@ -539,6 +539,12 @@
     .act-row:first-child { border-top: none; }
     .act-txt { flex: 1; min-width: 0; }
     .act-time { color: #777; font-size: 10px; white-space: nowrap; }
+    /* multi: left list marks the selected outcome; right panel focuses on it */
+    .opt-row.sel { background: #e6e6e6; border-left: 3px solid #777; padding-left: 6px; }
+    .opt-sel-tag { font-size: 9px; border: 1px solid #999; background: #dcdcdc; padding: 0 5px; }
+    .bp-selected { display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid #888; background: #dcdcdc; padding: 8px; }
+    .bp-sel-name { font-size: 13px; font-weight: bold; display: flex; align-items: center; gap: 6px; }
+    .bp-change { font-size: 10px; color: #333; text-decoration: underline; white-space: nowrap; }
     @media (min-width: 640px) {
       .hold-cols { flex-direction: row; }
       .hold-col { flex: 1; }
