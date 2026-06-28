@@ -610,6 +610,22 @@ Wiring is applied by the idempotent post-processor `fixpack.py` (run after the
 generators). The **Saved view** (`saved.html` + empty + loading) is the logged-in
 "filter over the feed" target for the Favorites control.
 
+### Header dropdowns + in-context deposit + logged-out redirect (`chrome2.py`)
+
+- **Notifications bell (logged-in)** is a native `<details>` dropdown (no chevron):
+  click shows a mini-list of recent notifications plus a `See all` link to
+  `notifications.html`, so it does NOT navigate the user away from the current page.
+- **"+" by the desktop balance** opens the deposit dialog directly
+  (`data-open="deposit"`), so a user can top up in context (e.g. while on an event)
+  instead of leaving for the Wallet / Profile and losing their place.
+- **Logged-out redirect:** logged-out pages carry `body[data-loggedin-target]` (the
+  logged-in counterpart, e.g. `event-feed-logged-out.html` -> `event-feed.html`).
+  After sign-in (a provider choice), closing OR funding the deposit dialog navigates
+  to that target, because the user is now authenticated. Closing the sign-in dialog
+  *before* choosing a provider still keeps you on the page (not signed in).
+
+Applied by `chrome2.py` (idempotent, run after `fixpack.py`).
+
 ## What comes next
 
 The per-screen file list and the screens themselves are produced from Step 03

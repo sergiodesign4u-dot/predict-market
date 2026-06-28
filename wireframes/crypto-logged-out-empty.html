@@ -436,7 +436,7 @@
     .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
   </style>
 </head>
-<body>
+<body data-loggedin-target="crypto-empty.html">
   <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
   <button type="button" class="wf-toggle" id="wfToggle" aria-label="Open screen tree" aria-expanded="false">
     <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -1125,16 +1125,20 @@
   </dialog>
 
   <script>
-    // Shared dialogs: open over the current page; close (button / backdrop / Esc) stays on the page.
+    // Shared dialogs: open over the current page. On logged-out pages, completing
+    // sign-in then closing / funding the deposit lands on the logged-in counterpart
+    // (body[data-loggedin-target]); closing sign-in before signing in stays put.
     (function () {
       function dlg(id) { return document.getElementById(id); }
       function open(id) { var d = dlg(id); if (!d) return; if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
       function close(d) { if (!d) return; if (d.close) d.close(); else d.removeAttribute('open'); }
+      var target = document.body.getAttribute('data-loggedin-target');
+      var signedIn = false;
       document.addEventListener('click', function (e) {
         var o = e.target.closest('[data-open]');
         if (o) { e.preventDefault(); open(o.getAttribute('data-open') === 'deposit' ? 'depositDialog' : 'signinDialog'); return; }
         var f = e.target.closest('[data-flow="signin-to-deposit"]');
-        if (f) { e.preventDefault(); close(dlg('signinDialog')); open('depositDialog'); return; }
+        if (f) { e.preventDefault(); signedIn = true; close(dlg('signinDialog')); open('depositDialog'); return; }
         var c = e.target.closest('[data-close-dialog]');
         if (c) { close(c.closest('dialog')); return; }
       });
@@ -1142,8 +1146,9 @@
         var d = dlg(id); if (!d) return;
         d.addEventListener('click', function (e) { if (e.target === d) close(d); });
       });
+      var dep = dlg('depositDialog');
+      if (dep) dep.addEventListener('close', function () { if (target && signedIn) window.location.href = target; });
     })();
   </script>
-
 </body>
 </html>

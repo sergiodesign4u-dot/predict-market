@@ -58,6 +58,10 @@ responsive. Neutral greys only - no color, type, shadows, or finished UI (those
 belong to the Concept phase). Open any file in [`wireframes/`](./wireframes/) in a
 browser; a left screen-tree panel navigates the whole set.
 
+**Start here:** [`wireframes/event-feed.html`](./wireframes/event-feed.html) - the
+main-flow entry (the Event Feed). From there the journey is clickable end to end:
+Event Feed -> Event Detail -> sign-in / deposit gate -> Active Bets.
+
 - **Coverage:** 99 pages - every screen in the IA screen tree, each state its own
   page. Event Feed, Event Detail (binary + multi, inline bet panel), 4 Category
   pages, Saved view (Favorites), Sign In / Deposit (shared in-page dialogs), Win /

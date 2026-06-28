@@ -434,6 +434,20 @@
     dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
     dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
+    /* notifications dropdown (header bell -> mini-list, no chevron) */
+    .notif-menu { position: relative; }
+    .notif-menu summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; }
+    .notif-menu summary::-webkit-details-marker { display: none; }
+    .notif-menu .dropdown { position: absolute; right: 0; top: calc(100% + 4px); width: 260px; max-width: 80vw; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
+    .notif-menu .dropdown .zone-tag { background: #cdcdcd; }
+    .notif-drop ul { list-style: none; margin: 0; padding: 0; }
+    .notif-drop li { border-top: 1px solid #ccc; }
+    .notif-drop li:first-child { border-top: none; }
+    .notif-drop li a { display: block; padding: 8px 10px; text-decoration: none; color: #222; }
+    .notif-drop li a strong { display: block; font-size: 12px; }
+    .notif-drop li a span { display: block; font-size: 10px; color: #555; }
+    .notif-all { display: block; text-align: center; padding: 8px; border-top: 1px solid #999; font-size: 11px; text-decoration: none; color: #222; background: #dcdcdc; }
+    .bal-add { padding: 3px; }
   </style>
 </head>
 <body>
@@ -697,16 +711,30 @@
             <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
               <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
             </button>
+            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
           </div>
           <a href="saved.html" aria-label="Favorites, see saved events"><button type="button" class="icon-btn desk-only" aria-label="Favorites">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           </button></a>
-          <span class="bell-wrap">
-            <a href="notifications.html"><button type="button" class="icon-btn" aria-label="Notifications, 3 unread">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-            </button></a>
-            <span class="badge-dot">3</span>
-          </span>
+          <details class="notif-menu">
+            <summary aria-label="Notifications, 3 unread">
+              <span class="bell-wrap">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+                <span class="badge-dot">3</span>
+              </span>
+            </summary>
+            <div class="dropdown notif-drop" role="menu">
+              <span class="zone-tag">latest notifications (tap a row, or see all)</span>
+              <ul>
+                <li><a href="win.html"><strong>Position resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+                <li><a href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+                <li><a href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
+              </ul>
+              <a class="notif-all" href="notifications.html">See all notifications</a>
+            </div>
+          </details>
           <details class="avatar-menu">
             <summary aria-label="Account menu">
               <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
@@ -1143,16 +1171,20 @@ Active Bets    (MJ success, T14)</pre>
   </dialog>
 
   <script>
-    // Shared dialogs: open over the current page; close (button / backdrop / Esc) stays on the page.
+    // Shared dialogs: open over the current page. On logged-out pages, completing
+    // sign-in then closing / funding the deposit lands on the logged-in counterpart
+    // (body[data-loggedin-target]); closing sign-in before signing in stays put.
     (function () {
       function dlg(id) { return document.getElementById(id); }
       function open(id) { var d = dlg(id); if (!d) return; if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
       function close(d) { if (!d) return; if (d.close) d.close(); else d.removeAttribute('open'); }
+      var target = document.body.getAttribute('data-loggedin-target');
+      var signedIn = false;
       document.addEventListener('click', function (e) {
         var o = e.target.closest('[data-open]');
         if (o) { e.preventDefault(); open(o.getAttribute('data-open') === 'deposit' ? 'depositDialog' : 'signinDialog'); return; }
         var f = e.target.closest('[data-flow="signin-to-deposit"]');
-        if (f) { e.preventDefault(); close(dlg('signinDialog')); open('depositDialog'); return; }
+        if (f) { e.preventDefault(); signedIn = true; close(dlg('signinDialog')); open('depositDialog'); return; }
         var c = e.target.closest('[data-close-dialog]');
         if (c) { close(c.closest('dialog')); return; }
       });
@@ -1160,8 +1192,9 @@ Active Bets    (MJ success, T14)</pre>
         var d = dlg(id); if (!d) return;
         d.addEventListener('click', function (e) { if (e.target === d) close(d); });
       });
+      var dep = dlg('depositDialog');
+      if (dep) dep.addEventListener('close', function () { if (target && signedIn) window.location.href = target; });
     })();
   </script>
-
 </body>
 </html>

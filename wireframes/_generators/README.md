@@ -30,6 +30,10 @@ individual pages.
    - `inject_signin.py` - inject the shared dialogs into the hand-authored event-feed family.
    - `fixpack.py` - wire header + bottom-nav controls and inject the dialog CSS
      for the event-feed family (the chrome-wiring fix pass).
+   - `chrome2.py` - turn the notifications bell into a `<details>` dropdown, add
+     the "+" in-context deposit button by the balance, and add
+     `body[data-loggedin-target]` so logged-out pages redirect to their logged-in
+     counterpart after sign-in. Run after `fixpack.py`.
 
 All post-processors are safe to re-run; each skips work already applied.
 
