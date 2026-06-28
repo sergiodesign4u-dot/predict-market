@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Event Detail (logged in - state: error (load failed, T8))</title>
+  <title>Wireframe - Win Screen (state: error (card not generated, T11))</title>
 <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -467,12 +467,12 @@
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="event-detail.html" class="active" aria-current="page">Event Detail</a>
+        <a href="event-detail.html">Event Detail</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
           <li><a href="event-detail.html">success / binary</a></li>
           <li><a href="event-detail-multi.html">success / multi-outcome</a></li>
-          <li class="cur"><a href="event-detail-error.html">error (this page)</a></li>
+          <li><a href="event-detail-error.html">error</a></li>
           <li><a href="event-detail-loading.html">loading</a></li>
           <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
           <li><a href="event-detail-bet-insufficient.html">bet panel: insufficient-balance</a></li>
@@ -573,11 +573,11 @@
       </li>
       <li class="wf-sec">Resolution</li>
       <li class="wf-screen">
-        <a href="win.html">Win Screen</a>
+        <a href="win.html" class="active" aria-current="page">Win Screen</a>
         <ul class="wf-states">
           <li><a href="win.html">success</a></li>
           <li><a href="win-loading.html">loading (share card)</a></li>
-          <li><a href="win-error.html">error (card not generated, T11)</a></li>
+          <li class="cur"><a href="win-error.html">error (card not generated, T11) (this page)</a></li>
           <li><a href="win-payout-pending.html">payout-pending</a></li>
         </ul>
       </li>
@@ -659,229 +659,40 @@
   </nav>
 
   <div class="page-label">
-    <strong>Wireframe:</strong> Event Detail &nbsp;|&nbsp;
-    logged in - state: error (load failed, T8) &nbsp;|&nbsp;
+    <strong>Wireframe:</strong> Win Screen &nbsp;|&nbsp;
+    state: error (card not generated, T11) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/event-detail-error.html
+    file: wireframes/win-error.html
   </div>
 
-  <nav class="state-switch" aria-label="States of this screen (auth, view and bet-panel state)">
-    <div class="ss-row"><span class="ss-label">Auth</span><a href="event-detail-error.html" aria-current="page">Logged in</a><a href="event-detail-logged-out-error.html">Logged out</a></div>
-    <div class="ss-row"><span class="ss-label">View</span><a href="event-detail.html">Binary</a><a href="event-detail-multi.html">Multi</a><a href="event-detail-error.html" aria-current="page">Error</a><a href="event-detail-loading.html">Loading</a><a href="event-detail-resolved.html">Resolved</a></div>
-    <div class="ss-row"><span class="ss-label">Bet</span><a href="event-detail.html">Intent</a><a href="event-detail-bet-insufficient.html">Insufficient</a><a href="event-detail-bet-reconcile.html">S5 reconcile</a><a href="event-detail-bet-processing.html">Processing</a><a href="event-detail-bet-error.html">On-chain error</a></div>
+  <nav class="state-switch" aria-label="States of this screen">
+    <div class="ss-row"><span class="ss-label">State</span><a href="win.html">Success</a><a href="win-loading.html">Loading (card)</a><a href="win-error.html" aria-current="page">Card failed (T11)</a><a href="win-payout-pending.html">Payout pending</a></div>
   </nav>
 
   <div class="device">
-    <!-- Header (lean: logo = Events/home, right icon cluster) -->
-    <header class="app-header">
-      <span class="zone-tag">zone: header (lean, same at all widths; logo = Events home)</span>
-      <div class="row">
-        <div class="left">
-          <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-          </button>
-          <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+    <div class="backdrop">
+      <span class="zone-tag" style="position:absolute;left:8px;bottom:8px;">zone: Win Screen - error (Share Card not generated, SJ1 blocked - T11; text-share fallback)</span>
+      <span class="dim-note">underlying screen dimmed: Active Bets (resolved item) or a tapped win notification</span>
+      <section class="sheet" aria-label="You were right">
+        <div class="grab"></div>
+        <div class="sheet-head">
+          <h2>You were right</h2>
+          <a href="active-bets.html"><button type="button" class="sheet-close" aria-label="Close">x</button></a>
         </div>
-        <div class="utility">
-          <div class="bal-toggle desk-only">
-            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
-            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
-            </button>
+        <div class="sheet-body">
+          <p class="fine" style="font-weight:bold;font-size:13px;color:#222;margin:0;">Will the US government shut down before March 1, 2027?</p>
+          <div class="reconcile-box" style="align-items:center;text-align:center;">
+            <span class="field-label">You were right - you won</span>
+            <strong style="font-size:24px;">+$13.20</strong>
+            <span class="fine">$5.00 stake returned + $8.20 winnings. You held YES, avg price 38%.</span>
           </div>
-          <button type="button" class="icon-btn desk-only" aria-label="Favorites">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
-          </button>
-          <span class="bell-wrap">
-            <button type="button" class="icon-btn" aria-label="Notifications, 3 unread">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-            </button>
-            <span class="badge-dot">3</span>
-          </span>
-          <details class="avatar-menu">
-            <summary aria-label="Account menu">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </summary>
-            <div class="dropdown" role="menu">
-              <span class="zone-tag">avatar dropdown (collapsed by default, click to open)</span>
-              <ul>
-                <li><button type="button" role="menuitem">My Profile</button></li>
-                <li><button type="button" role="menuitem">My Bets</button></li>
-                <li><button type="button" role="menuitem">Wallet / Deposit</button></li>
-                <li><button type="button" role="menuitem">How It Works</button></li>
-                <li><button type="button" role="menuitem">Logout</button></li>
-              </ul>
-            </div>
-          </details>
+          <div class="inline-error">We couldn't generate your Share Card (T11). Your win and payout are not affected. You can share as text instead.</div>
+          <button type="button" class="confirm-btn">Share as text</button>
+          <a href="event-feed.html"><button type="button" class="provider-btn" style="justify-content:center;width:100%;">See next events</button></a>
+          <p class="fine" style="text-align:center;">Per IA/flows.md SJ1: a missing card (T11) falls back to a text share (T13a), not a dead end - the win is still shown.</p>
         </div>
-      </div>
-    </header>
-    <!-- Second-level navigation: categories route to their own pages (links) -->
-    <nav class="cat-nav" aria-label="Categories (second level)">
-      <span class="zone-tag">zone: second-level navigation (categories; active = this event's category)</span>
-      <ul>
-        <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
-        <li aria-current="page"><a href="politics.html"><button type="button">Politics</button></a></li>
-        <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
-        <li><a href="culture.html"><button type="button">Culture</button></a></li>
-        <li><a href="general.html"><button type="button">General</button></a></li>
-      </ul>
-    </nav>
-    <main class="feed">
-      <span class="zone-tag">zone: event detail (error: load failed, T8 - retry returns to Event Detail)</span>
-      <div class="state-block" style="margin:8px;">
-        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
-        <h2 class="state-title">Couldn't load this event</h2>
-        <p class="state-msg">Something went wrong while loading the event details. Check your connection and try again.</p>
-        <div class="state-actions">
-          <a href="event-detail.html"><button type="button" class="state-btn primary">Try again</button></a>
-          <a href="event-feed.html"><button type="button" class="state-btn">Back to feed</button></a>
-        </div>
-      </div>
-    </main>
-    <!-- Bottom navigation (mobile only) -->
-    <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
-      <ul>
-        <li aria-current="page"><button type="button">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
-          <span>Events</span>
-        </button></li>
-        <li><button type="button">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
-          <span>My Bets</span>
-        </button></li>
-        <li><button type="button">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
-          <span>Favorites</span>
-        </button></li>
-        <li><button type="button" aria-label="Portfolio, balance $142">
-          <span class="bn-bal">$142</span>
-          <span>Portfolio</span>
-        </button></li>
-      </ul>
-    </nav>
-    <!-- Footer (global element) -->
-    <footer class="app-footer">
-      <span class="zone-tag">zone: footer (global, reused on every screen; TBD = not in MVP)</span>
-      <div class="footer-inner">
-
-        <div class="footer-top">
-
-          <!-- Brand block: logo, tagline, social, language -->
-          <div class="footer-brand">
-            <span class="footer-logo">logo placeholder</span>
-            <p class="footer-tagline">Tagline placeholder <span class="tbd">TBD</span></p>
-            <div class="social-row" role="list" aria-label="Social media">
-              <a href="#" role="listitem" aria-label="X (Twitter)" title="X (Twitter)">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
-              </a>
-              <a href="#" role="listitem" aria-label="Discord" title="Discord">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2l-1-2H8l-1 2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/><circle cx="10" cy="12" r="1.1"/><circle cx="14" cy="12" r="1.1"/></svg>
-              </a>
-              <a href="#" role="listitem" aria-label="Telegram" title="Telegram">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l6 2 2 6 3-4 5 4z"/></svg>
-              </a>
-              <a href="#" role="listitem" aria-label="Instagram" title="Instagram">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="16.6" cy="7.4" r="0.7"/></svg>
-              </a>
-              <a href="#" role="listitem" aria-label="TikTok" title="TikTok">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5v9.5a3 3 0 1 1-2.5-3"/><path d="M11 5c.5 2.5 2.5 4 4.5 4"/></svg>
-              </a>
-            </div>
-            <details class="filter-menu lang-menu" id="langMenu">
-              <summary aria-label="Language (placeholder)">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
-                <span id="langCurrent">English</span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-                <span class="tbd">TBD</span>
-              </summary>
-              <div class="filter-panel">
-                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
-                <ul>
-                  <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
-                  <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
-                  <li><label><input type="radio" name="lang" value="Portuguese"> Portuguese</label></li>
-                  <li><label><input type="radio" name="lang" value="German"> German</label></li>
-                  <li><label><input type="radio" name="lang" value="French"> French</label></li>
-                </ul>
-              </div>
-            </details>
-          </div>
-
-          <!-- Link columns -->
-          <div class="footer-cols">
-
-            <nav class="footer-col" aria-label="Markets">
-              <h3>Markets</h3>
-              <p class="sub-label">By category</p>
-              <ul>
-                <li><a href="#">Politics</a></li>
-                <li><a href="#">Crypto</a></li>
-                <li><a href="#">Culture</a></li>
-                <li><a href="#">General</a></li>
-                <li><a href="#">Sports</a> <span class="tbd">post-MVP</span></li>
-              </ul>
-              <p class="sub-label">By topic</p>
-              <ul>
-                <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
-                <li><a href="#">View all markets</a></li>
-              </ul>
-            </nav>
-
-            <nav class="footer-col" aria-label="Product">
-              <h3>Product</h3>
-              <ul>
-                <li><a href="#">How It Works</a></li>
-                <li><a href="#">Leaderboard</a></li>
-                <li><a href="#">Wallet</a></li>
-                <li><a href="#">My Bets</a></li>
-                <li><a href="#">API / Developers</a> <span class="tbd">post-MVP</span></li>
-                <li><a href="#">Status</a> <span class="tbd">TBD</span></li>
-              </ul>
-            </nav>
-
-            <nav class="footer-col" aria-label="Support">
-              <h3>Support</h3>
-              <ul>
-                <li><a href="#">Help Center</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">FAQ</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">Contact</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">How It Works</a></li>
-              </ul>
-            </nav>
-
-            <nav class="footer-col" aria-label="Company">
-              <h3>Company</h3>
-              <ul>
-                <li><a href="#">About</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">Careers</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">Press</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">Brand</a> <span class="tbd">TBD</span></li>
-              </ul>
-            </nav>
-
-          </div>
-        </div>
-
-        <!-- Legal strip -->
-        <div class="footer-legal">
-          <nav aria-label="Legal">
-            <ul class="legal-links">
-              <li><a href="#">Terms</a></li>
-              <li><a href="#">Privacy</a></li>
-              <li><a href="#">Responsible play</a></li>
-              <li><a href="#">Geo restrictions</a> <span class="tbd">TBD</span></li>
-            </ul>
-          </nav>
-          <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
-          <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.]</p>
-          <p>Copyright (c) Predict Market. Sample wireframe content.</p>
-        </div>
-
-      </div>
-    </footer>
+      </section>
+    </div>
 
   </div>
 
@@ -889,26 +700,35 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>Sticky bet panel (right rail desktop / bottom dock mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while scrolling. Binary = YES / NO; multi-outcome = pick one outcome, then YES / NO on it.</li>
-        <li><strong>Bet states migrated into the panel</strong> -&gt; intent, insufficient-balance (inline guard), S5 reconcile (price moved during the gate), execute processing, on-chain error (T3). The old standalone Bet modal is gone; event-closed is the resolved state.</li>
-        <li><strong>Price chart (schematic) + Why this price</strong> -&gt; FJ2 differentiator, below the chart and facts so the panel leads.</li>
-        <li><strong>Confirm fires the gate</strong> -&gt; opens the Sign In dialog over this page, then Deposit (insufficient-balance jumps straight to the Deposit dialog).</li>
-        <li><strong>Auth + states</strong> -&gt; logged-in / logged-out, binary / multi success, error (T8), loading, resolved-while-reading.</li>
+        <li><strong>"You were right" + amount won + why</strong> -&gt; EJ1: the sense of edge (own forecast beat the market) is named here, with the plain resolution summary.</li>
+        <li><strong>Share Card auto-generated, Share is the primary CTA</strong> -&gt; SJ1: show the win to my circle with one tap; the card is the shareable artifact (IA/sitemap.md Share Card entity).</li>
+        <li><strong>"See next events" deliberately secondary</strong> -&gt; research F5: the first WIN triggers overconfidence and escalation, not loss. Celebratory but measured - no confetti loop, no "bet again" push.</li>
+        <li><strong>error = Share Card not generated (T11)</strong> -&gt; IA/flows.md SJ1 fallback: text-share (T13a), never a dead end; win still shown.</li>
+        <li><strong>payout-pending</strong> -&gt; on-chain settlement delay; the win and sharing are not gated on settlement (SJ1 share-impulse window preserved).</li>
+        <li><strong>Invoked overlay over a dimmed screen</strong> -&gt; reached 1 tap from a win notification (G1-equivalent), or from a resolved item in My Bets. No auth axis (account-bound).</li>
       </ol>
     </aside>
 
     <div class="nav-col">
       <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (main-flow spine)</span>
-<pre>Event Feed
-   v
-[Event Detail]   &lt;- current (binary; bet panel: intent)
-   v
-Sign In / Deposit (dialogs over the page)
-   v
-Active Bets    (MJ success, T14)</pre>
-        <p class="ref">Flow position: MJ, one node after Event Feed. Bet intent + states
-          live in the panel; the gate (Sign In, Deposit) fires on Confirm as dialogs.</p>
+        <span class="zone-tag">on-page nav tree (resolution flow, SJ1)</span>
+<pre>Resolution flow (SJ1 - win share):
+
+win notification --- 1 tap (G1-equiv) ---+
+                                         v
+My Bets (History) -- tap won item --&gt; [Win Screen]   &lt;- current
+                                         v
+                          Share Card --&gt; external share (X / WhatsApp / Telegram)
+                                         '--&gt; See next events (secondary, F5)</pre>
+        <p class="ref">Flow position: IA/flows.md SJ1 (triggerNotif -&gt; Win Screen -&gt; cardOk -&gt;
+          shares). Serves SJ1 (primary) and EJ1 (the edge). Not on the MJ spine.</p>
+      </section>
+
+      <section class="navtree" aria-label="States">
+        <span class="zone-tag">states of this screen</span>
+        <p class="ref">success (amount won, summary, Share Card), loading (card generating),
+          error (card not generated, T11 - text-share fallback), payout-pending (on-chain
+          settlement delay). Invoked overlay, account-bound, no auth axis.</p>
       </section>
     </div>
 
