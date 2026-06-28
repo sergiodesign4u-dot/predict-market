@@ -236,10 +236,12 @@ earlier rules:
   `-not-found`, 4 pages): the same track record + gallery **read-only** for another
   user - no portfolio summary, no edit, no private data. Reached via an external
   shared win card / leaderboard link (in-app discovery deferred post-MVP, G3); SJ2,
-  Dan's primary surface. No bottom slot is current (`bottom_in("none")`); no auth
-  axis (a public page; the viewer's login state does not change it). Extra state
-  **not-found / link-expired** routes a stale link back to the Event Feed. Both
-  serve SJ1 / SJ2. Still `planned`: How It Works, Bet History tab.
+  Dan's primary surface. Carries the **logged-out header** (Log in / Sign up, no
+  balance / avatar) because the primary entry is an external shared-card link where
+  the viewer is often logged out; no bottom slot is current (`bottom_out("none")`);
+  no auth axis built (single representative variant). Extra state **not-found /
+  link-expired** routes a stale link back to the Event Feed. Both serve SJ1 / SJ2.
+  Still `planned`: How It Works, Bet History tab.
 - **How It Works + Bet History built - planned-screens block complete.**
   **How It Works** (`how-it-works.html`, 1 static page; `gen_howitworks.py`, small
   page-local `<style>` for the trust sections): a trust *declaration*, not a FAQ -
@@ -248,8 +250,11 @@ earlier rules:
   AMM timing, fee only on a win, no subscription; "proven not promised" with a
   resolved-markets social-proof stat), CTAs Browse events / Add funds (shared
   dialog), and a note that it is reachable before any deposit (menu / footer /
-  Deposit "learn more"). Serves FJ4 + EJ2. No loading / error / empty (static); no
-  auth axis (content identical logged-in or out); no bottom slot current.
+  Deposit "learn more"). Serves FJ4 + EJ2. No loading / error / empty (static).
+  Carries the **logged-out header** (Log in / Sign up, no balance / avatar) since
+  the primary entry is a pre-deposit / pre-signup new user; the body is identical
+  whatever the auth state, so no auth axis is built; no bottom slot is current
+  (`bottom_out("none")`).
   **Bet History (History tab)** (`active-bets-history.html` + `-empty` / `-error` /
   `-loading`, 4 pages; `gen_history.py`): the History tab inside My Bets (G5 - not
   a standalone screen), a private list of resolved bets (won / lost, stake, payout,
@@ -280,6 +285,22 @@ earlier rules:
   recovery, notifications -> Win / Loss, Bet History rows -> Win / Loss, Win / Loss
   CTAs). Verified by clicking the whole spine in the browser and a broken-link
   audit (0 broken internal links across all pages).
+- **Whole-product reconciliation (Krok 8) - the set is consistent.** Coverage:
+  every sitemap screen has a wireframe family (96 pages); orphans `[SIROTA]`
+  unbuilt by design; the standalone Bet Screen is dissolved into the Event Detail
+  panel. A parallel consistency audit (one subagent per screen family, same
+  11-point checklist: tree nav, zones, header-by-auth, bottom-nav slots, state
+  switcher, grey-box, no em-dash, real text, naming, flow links, page-label) found
+  three deviations, all resolved: (1) four logged-out Event Feed pages had a
+  bottom-nav zone-tag reading "slot 4 = Portfolio" while slot 4 is Sign in -
+  corrected; (2) `active-bets-empty-resolved` History CTA was a bare button -
+  wrapped in `<a href="active-bets-history.html">`; (3) **Public Profile and How
+  It Works carried the logged-in header (balance) though both are commonly reached
+  logged out** - switched both to the **logged-out header** (decision recorded in
+  their rows above). All other families (Event Detail, Categories, Gate,
+  Resolution + Notifications, Wallet, My Profile, Active Bets / Bet History) audited
+  CONSISTENT. Result: 0 em-dash, 0 broken links, consistent zones / naming /
+  navigation across all 96 pages.
 
 ### 6. Deferred to later phases (Concept onward), not allowed in wireframes
 
