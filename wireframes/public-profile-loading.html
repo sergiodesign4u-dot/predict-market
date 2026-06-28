@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Notifications (logged in - state: loading (fetching list))</title>
+  <title>Wireframe - Public Profile (viewing another user - state: loading (profile fetch))</title>
 <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -435,6 +435,18 @@
     dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
   </style>
+  <style>
+    .idrow { display: flex; align-items: center; gap: 12px; padding: 4px 0 10px; }
+    .idrow .av { width: 56px; height: 56px; flex: 0 0 56px; border: 1px solid #999; background: #d2d2d2;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; }
+    .idrow .who { flex: 1; min-width: 0; }
+    .idrow .name { font-size: 16px; font-weight: bold; }
+    .idrow .handle { font-size: 11px; color: #555; }
+    .idrow .edit { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 11px; cursor: pointer; }
+    .gallery { display: flex; gap: 8px; flex-wrap: wrap; }
+    .gallery .card { flex: 0 0 auto; width: 120px; height: 74px; border: 1px dashed #999; background: #ededed;
+      display: flex; align-items: center; justify-content: center; text-align: center; font-size: 9px; color: #555; padding: 4px; }
+  </style>
 </head>
 <body>
   <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
@@ -610,12 +622,12 @@
       </li>
       <li class="wf-sec">Notifications</li>
       <li class="wf-screen">
-        <a href="notifications.html" class="active" aria-current="page">Notifications</a>
+        <a href="notifications.html">Notifications</a>
         <ul class="wf-states">
           <li><a href="notifications.html">success</a></li>
           <li><a href="notifications-empty.html">empty</a></li>
           <li><a href="notifications-error.html">error</a></li>
-          <li class="cur"><a href="notifications-loading.html">loading (this page)</a></li>
+          <li><a href="notifications-loading.html">loading</a></li>
           <li><a href="notifications-push.html">push-permission-missing</a></li>
         </ul>
       </li>
@@ -639,10 +651,10 @@
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="public-profile.html">Public Profile</a>
+        <a href="public-profile.html" class="active" aria-current="page">Public Profile</a>
         <ul class="wf-states">
           <li><a href="public-profile.html">success</a></li>
-          <li><a href="public-profile-loading.html">loading</a></li>
+          <li class="cur"><a href="public-profile-loading.html">loading (this page)</a></li>
           <li><a href="public-profile-error.html">error</a></li>
           <li><a href="public-profile-not-found.html">not-found / link-expired</a></li>
         </ul>
@@ -660,14 +672,14 @@
   </nav>
 
   <div class="page-label">
-    <strong>Wireframe:</strong> Notifications &nbsp;|&nbsp;
-    logged in - state: loading (fetching list) &nbsp;|&nbsp;
+    <strong>Wireframe:</strong> Public Profile &nbsp;|&nbsp;
+    viewing another user - state: loading (profile fetch) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/notifications-loading.html
+    file: wireframes/public-profile-loading.html
   </div>
 
   <nav class="state-switch" aria-label="States of this screen">
-    <div class="ss-row"><span class="ss-label">State</span><a href="notifications.html">Success</a><a href="notifications-empty.html">Empty</a><a href="notifications-error.html">Error</a><a href="notifications-loading.html" aria-current="page">Loading</a><a href="notifications-push.html">Push denied</a></div>
+    <div class="ss-row"><span class="ss-label">State</span><a href="public-profile.html">Success</a><a href="public-profile-loading.html" aria-current="page">Loading</a><a href="public-profile-error.html">Error</a><a href="public-profile-not-found.html">Not found</a></div>
   </nav>
 
   <div class="device">
@@ -717,24 +729,24 @@
       </div>
     </header>
     <main class="feed">
-      <span class="zone-tag">zone: Notifications (loading: fetching the alert list)</span>
+      <span class="zone-tag">zone: Public Profile (loading: profile data fetching)</span>
       <div class="feed-inner">
-        <div class="feed-head"><h2>Notifications</h2></div>
+        <div class="feed-head"><h2>Profile</h2></div>
+        <article class="pos skeleton" aria-hidden="true">
+          <div class="sk-line w40"></div>
+          <div class="sk-line w70"></div>
+        </article>
         <div class="pos-list" aria-busy="true">
           <article class="pos skeleton" aria-hidden="true">
             <div class="sk-line w70"></div>
             <div class="sk-line w40"></div>
           </article>
           <article class="pos skeleton" aria-hidden="true">
-            <div class="sk-line w40"></div>
-            <div class="sk-line w40"></div>
-          </article>
-          <article class="pos skeleton" aria-hidden="true">
             <div class="sk-line w70"></div>
             <div class="sk-line w40"></div>
           </article>
           <article class="pos skeleton" aria-hidden="true">
-            <div class="sk-line w40"></div>
+            <div class="sk-line w70"></div>
             <div class="sk-line w40"></div>
           </article>
         </div>
@@ -889,35 +901,34 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>In-app alert list</strong> -&gt; the return trigger discovered in tracing (IA/sitemap.md): FJ1, FJ5 and EJ3 all depend on delivery via notification. Without this screen, a missed OS alert is unrecoverable; here it has in-app history.</li>
-        <li><strong>Four alert types</strong> -&gt; position resolved (routes to Win / Loss), odds moved significantly, event deadline approaching, new event in a followed category. They map to the hot / warm return signals in aarrr.md (D1-D3).</li>
-        <li><strong>Tap routes to the target screen</strong> -&gt; each item navigates to where the action is: Event Detail (odds / deadline / new event) or the resolution screen (Win / Loss). A resolved-position tap is the 1-tap G1 path to Win / Loss.</li>
-        <li><strong>Reached from the header bell (both breakpoints)</strong> -&gt; Notifications is a header bell with a permanent unread badge, not a bottom-nav slot (the wireframe pass swapped it with Favorites). The badge stays visible as the retention anchor.</li>
-        <li><strong>push-permission-missing</strong> -&gt; if OS push is denied, an in-app banner offers a system-settings deep-link; in-app alerts still show. Same banner surfaces on the Event Feed.</li>
-        <li><strong>Account-bound (logged-in only)</strong> -&gt; alerts need an account; logged-out, the bell routes to Sign In and shows no badge. No auth axis on this screen.</li>
+        <li><strong>Same data, read-only</strong> -&gt; SJ2: another user's public track record. No balance, no private data, no edit controls, no portfolio summary.</li>
+        <li><strong>Reached via a shared win card or leaderboard</strong> -&gt; the SJ1 share lands a new or existing user here. In-app discovery of other profiles is deferred post-MVP (G3); the MVP path is the external shared-card link.</li>
+        <li><strong>Dan (Crypto Native) uses this more</strong> -&gt; reputation-first behavior; Alex (News Junkie) arrives here secondarily, via a shared card.</li>
+        <li><strong>not-found / link-expired</strong> -&gt; a stale or removed profile link routes to a clear dead-end recovery (back to the Event Feed), never a blank page.</li>
+        <li><strong>No auth axis</strong> -&gt; a public page about another user; the viewer's own login state does not change what is shown. Not a browse screen, so no logged-in / logged-out variants are built.</li>
       </ol>
     </aside>
 
     <div class="nav-col">
       <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (return trigger)</span>
-<pre>Return trigger (FJ1 / FJ5 / EJ3):
+        <span class="zone-tag">on-page nav tree (external entry)</span>
+<pre>Public reputation (SJ2):
 
-[Notifications]   &lt;- current (header bell, both breakpoints)
+shared win card / leaderboard link
    |
-   +-- position resolved --&gt; Win / Loss Screen
-   +-- odds moved        --&gt; Event Detail
-   +-- deadline approaching --&gt; Event Detail
-   '-- new in category   --&gt; Event Detail / category</pre>
-        <p class="ref">Flow position: the return-trigger source (IA/sitemap.md Notifications;
-          IA/flows.md FJ5 / SJ1 triggerNotif). Serves FJ1, FJ5, EJ3; aarrr.md D1-D3.</p>
+   v
+[Public Profile]   &lt;- current (read-only, another user)
+   |
+   '-- (in-app discovery of profiles: deferred post-MVP, G3)</pre>
+        <p class="ref">Flow position: SJ2 public reputation surface, reached via external
+          shared-card link at MVP (IA/sitemap.md Public Profile). Read-only.</p>
       </section>
 
       <section class="navtree" aria-label="States">
         <span class="zone-tag">states of this screen</span>
-        <p class="ref">success (unread + earlier list), empty (no alerts yet -&gt; follow events),
-          error (load failed, retry), loading (fetching), push-permission-missing (OS push
-          denied, in-app banner + settings deep-link). Account-bound, no auth axis.</p>
+        <p class="ref">success (read-only track record + gallery), loading (profile fetch),
+          error (retry or back to feed), not-found / link-expired (stale link -&gt; Event Feed).
+          No auth axis.</p>
       </section>
     </div>
 

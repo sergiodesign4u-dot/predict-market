@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Notifications (logged in - state: loading (fetching list))</title>
+  <title>Wireframe - My Profile (logged in - state: error (load failed))</title>
 <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -435,6 +435,18 @@
     dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
   </style>
+  <style>
+    .idrow { display: flex; align-items: center; gap: 12px; padding: 4px 0 10px; }
+    .idrow .av { width: 56px; height: 56px; flex: 0 0 56px; border: 1px solid #999; background: #d2d2d2;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; }
+    .idrow .who { flex: 1; min-width: 0; }
+    .idrow .name { font-size: 16px; font-weight: bold; }
+    .idrow .handle { font-size: 11px; color: #555; }
+    .idrow .edit { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 11px; cursor: pointer; }
+    .gallery { display: flex; gap: 8px; flex-wrap: wrap; }
+    .gallery .card { flex: 0 0 auto; width: 120px; height: 74px; border: 1px dashed #999; background: #ededed;
+      display: flex; align-items: center; justify-content: center; text-align: center; font-size: 9px; color: #555; padding: 4px; }
+  </style>
 </head>
 <body>
   <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
@@ -610,12 +622,12 @@
       </li>
       <li class="wf-sec">Notifications</li>
       <li class="wf-screen">
-        <a href="notifications.html" class="active" aria-current="page">Notifications</a>
+        <a href="notifications.html">Notifications</a>
         <ul class="wf-states">
           <li><a href="notifications.html">success</a></li>
           <li><a href="notifications-empty.html">empty</a></li>
           <li><a href="notifications-error.html">error</a></li>
-          <li class="cur"><a href="notifications-loading.html">loading (this page)</a></li>
+          <li><a href="notifications-loading.html">loading</a></li>
           <li><a href="notifications-push.html">push-permission-missing</a></li>
         </ul>
       </li>
@@ -631,11 +643,11 @@
       <li class="wf-note">Withdrawal is a flow inside Wallet (amount -&gt; USDC address -&gt; confirm; pending / confirmed / failed), not a separate screen.</li>
       <li class="wf-sec">Profile</li>
       <li class="wf-screen">
-        <a href="my-profile.html">My Profile</a>
+        <a href="my-profile.html" class="active" aria-current="page">My Profile</a>
         <ul class="wf-states">
           <li><a href="my-profile.html">success</a></li>
           <li><a href="my-profile-loading.html">loading</a></li>
-          <li><a href="my-profile-error.html">error</a></li>
+          <li class="cur"><a href="my-profile-error.html">error (this page)</a></li>
         </ul>
       </li>
       <li class="wf-screen">
@@ -660,14 +672,14 @@
   </nav>
 
   <div class="page-label">
-    <strong>Wireframe:</strong> Notifications &nbsp;|&nbsp;
-    logged in - state: loading (fetching list) &nbsp;|&nbsp;
+    <strong>Wireframe:</strong> My Profile &nbsp;|&nbsp;
+    logged in - state: error (load failed) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/notifications-loading.html
+    file: wireframes/my-profile-error.html
   </div>
 
   <nav class="state-switch" aria-label="States of this screen">
-    <div class="ss-row"><span class="ss-label">State</span><a href="notifications.html">Success</a><a href="notifications-empty.html">Empty</a><a href="notifications-error.html">Error</a><a href="notifications-loading.html" aria-current="page">Loading</a><a href="notifications-push.html">Push denied</a></div>
+    <div class="ss-row"><span class="ss-label">State</span><a href="my-profile.html">Success</a><a href="my-profile-loading.html">Loading</a><a href="my-profile-error.html" aria-current="page">Error</a></div>
   </nav>
 
   <div class="device">
@@ -717,26 +729,14 @@
       </div>
     </header>
     <main class="feed">
-      <span class="zone-tag">zone: Notifications (loading: fetching the alert list)</span>
+      <span class="zone-tag">zone: My Profile (error: profile failed to load - retry)</span>
       <div class="feed-inner">
-        <div class="feed-head"><h2>Notifications</h2></div>
-        <div class="pos-list" aria-busy="true">
-          <article class="pos skeleton" aria-hidden="true">
-            <div class="sk-line w70"></div>
-            <div class="sk-line w40"></div>
-          </article>
-          <article class="pos skeleton" aria-hidden="true">
-            <div class="sk-line w40"></div>
-            <div class="sk-line w40"></div>
-          </article>
-          <article class="pos skeleton" aria-hidden="true">
-            <div class="sk-line w70"></div>
-            <div class="sk-line w40"></div>
-          </article>
-          <article class="pos skeleton" aria-hidden="true">
-            <div class="sk-line w40"></div>
-            <div class="sk-line w40"></div>
-          </article>
+        <div class="feed-head"><h2>My Profile</h2></div>
+        <div class="state-block">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+          <h2 class="state-title">Couldn't load your profile</h2>
+          <p class="state-msg">Something went wrong while loading your track record. Try again.</p>
+          <div class="state-actions"><a href="my-profile.html"><button type="button" class="state-btn primary">Try again</button></a></div>
         </div>
       </div>
     </main>
@@ -756,7 +756,7 @@
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           <span>Favorites</span>
         </button></li>
-        <li><button type="button" aria-label="Portfolio, balance $142">
+        <li aria-current="page"><button type="button" aria-label="Portfolio, balance $142">
           <span class="bn-bal">$142</span>
           <span>Portfolio</span>
         </button></li>
@@ -889,35 +889,33 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>In-app alert list</strong> -&gt; the return trigger discovered in tracing (IA/sitemap.md): FJ1, FJ5 and EJ3 all depend on delivery via notification. Without this screen, a missed OS alert is unrecoverable; here it has in-app history.</li>
-        <li><strong>Four alert types</strong> -&gt; position resolved (routes to Win / Loss), odds moved significantly, event deadline approaching, new event in a followed category. They map to the hot / warm return signals in aarrr.md (D1-D3).</li>
-        <li><strong>Tap routes to the target screen</strong> -&gt; each item navigates to where the action is: Event Detail (odds / deadline / new event) or the resolution screen (Win / Loss). A resolved-position tap is the 1-tap G1 path to Win / Loss.</li>
-        <li><strong>Reached from the header bell (both breakpoints)</strong> -&gt; Notifications is a header bell with a permanent unread badge, not a bottom-nav slot (the wireframe pass swapped it with Favorites). The badge stays visible as the retention anchor.</li>
-        <li><strong>push-permission-missing</strong> -&gt; if OS push is denied, an in-app banner offers a system-settings deep-link; in-app alerts still show. Same banner surfaces on the Event Feed.</li>
-        <li><strong>Account-bound (logged-in only)</strong> -&gt; alerts need an account; logged-out, the bell routes to Sign In and shows no badge. No auth axis on this screen.</li>
+        <li><strong>Track record = reputation</strong> -&gt; SJ2: total bets, win rate and resolved predictions are the public proof of being right. Reputation is the track record, not the balance.</li>
+        <li><strong>Share card gallery (past wins)</strong> -&gt; SJ1: the cards generated on the Win Screen collect here, a re-shareable history of called-it moments.</li>
+        <li><strong>Portfolio summary on top</strong> -&gt; this screen IS the mobile Portfolio account hub (slot 4): My Profile extended with Portfolio / Cash + Deposit / Wallet above the track record (IA/sitemap.md slot-4 note). Identity and money in one hub, identity first.</li>
+        <li><strong>Editable name &amp; avatar</strong> -&gt; the owner can edit display name and avatar (the only write controls; the record itself is not editable).</li>
+        <li><strong>Reached from the avatar dropdown (desktop) / Portfolio slot (mobile)</strong> -&gt; account-bound, logged-in only - no auth axis. The Portfolio slot is the current marker.</li>
       </ol>
     </aside>
 
     <div class="nav-col">
       <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (return trigger)</span>
-<pre>Return trigger (FJ1 / FJ5 / EJ3):
+        <span class="zone-tag">on-page nav tree (identity hub)</span>
+<pre>Identity / reputation (SJ1 + SJ2):
 
-[Notifications]   &lt;- current (header bell, both breakpoints)
-   |
-   +-- position resolved --&gt; Win / Loss Screen
-   +-- odds moved        --&gt; Event Detail
-   +-- deadline approaching --&gt; Event Detail
-   '-- new in category   --&gt; Event Detail / category</pre>
-        <p class="ref">Flow position: the return-trigger source (IA/sitemap.md Notifications;
-          IA/flows.md FJ5 / SJ1 triggerNotif). Serves FJ1, FJ5, EJ3; aarrr.md D1-D3.</p>
+avatar dropdown (desktop) ----+
+Portfolio slot (mobile) ------+--&gt; [My Profile]   &lt;- current
+   |                                  (= account hub: portfolio
+   |                                   summary + track record)
+   +-- Win Screen --&gt; Share Card --&gt; gallery here</pre>
+        <p class="ref">Flow position: identity surface off the betting spine (IA/sitemap.md
+          My Profile). Serves SJ1 (share history) and SJ2 (public reputation).</p>
       </section>
 
       <section class="navtree" aria-label="States">
         <span class="zone-tag">states of this screen</span>
-        <p class="ref">success (unread + earlier list), empty (no alerts yet -&gt; follow events),
-          error (load failed, retry), loading (fetching), push-permission-missing (OS push
-          denied, in-app banner + settings deep-link). Account-bound, no auth axis.</p>
+        <p class="ref">success (track record + gallery + portfolio summary), loading
+          (profile fetch), error (retry). empty-state (first-time, no predictions) deferred.
+          Account-bound, no auth axis.</p>
       </section>
     </div>
 
