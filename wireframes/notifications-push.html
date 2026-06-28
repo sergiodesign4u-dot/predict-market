@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Event Detail (logged in - state: resolved-while-reading / event-closed)</title>
+  <title>Wireframe - Notifications (logged in - state: push-permission-missing (OS push denied))</title>
 <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -467,14 +467,14 @@
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="event-detail.html" class="active" aria-current="page">Event Detail</a>
+        <a href="event-detail.html">Event Detail</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
           <li><a href="event-detail.html">success / binary</a></li>
           <li><a href="event-detail-multi.html">success / multi-outcome</a></li>
           <li><a href="event-detail-error.html">error</a></li>
           <li><a href="event-detail-loading.html">loading</a></li>
-          <li class="cur"><a href="event-detail-resolved.html">resolved-while-reading (this page)</a></li>
+          <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
           <li><a href="event-detail-bet-insufficient.html">bet panel: insufficient-balance</a></li>
           <li><a href="event-detail-bet-reconcile.html">bet panel: S5 reconcile</a></li>
           <li><a href="event-detail-bet-processing.html">bet panel: processing</a></li>
@@ -610,13 +610,13 @@
       </li>
       <li class="wf-sec">Notifications</li>
       <li class="wf-screen">
-        <a href="notifications.html">Notifications</a>
+        <a href="notifications.html" class="active" aria-current="page">Notifications</a>
         <ul class="wf-states">
           <li><a href="notifications.html">success</a></li>
           <li><a href="notifications-empty.html">empty</a></li>
           <li><a href="notifications-error.html">error</a></li>
           <li><a href="notifications-loading.html">loading</a></li>
-          <li><a href="notifications-push.html">push-permission-missing</a></li>
+          <li class="cur"><a href="notifications-push.html">push-permission-missing (this page)</a></li>
         </ul>
       </li>
       <li class="wf-sec">Wallet</li>
@@ -659,16 +659,14 @@
   </nav>
 
   <div class="page-label">
-    <strong>Wireframe:</strong> Event Detail &nbsp;|&nbsp;
-    logged in - state: resolved-while-reading / event-closed &nbsp;|&nbsp;
+    <strong>Wireframe:</strong> Notifications &nbsp;|&nbsp;
+    logged in - state: push-permission-missing (OS push denied) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/event-detail-resolved.html
+    file: wireframes/notifications-push.html
   </div>
 
-  <nav class="state-switch" aria-label="States of this screen (auth, view and bet-panel state)">
-    <div class="ss-row"><span class="ss-label">Auth</span><a href="event-detail-resolved.html" aria-current="page">Logged in</a><a href="event-detail-logged-out.html">Logged out</a></div>
-    <div class="ss-row"><span class="ss-label">View</span><a href="event-detail.html">Binary</a><a href="event-detail-multi.html">Multi</a><a href="event-detail-error.html">Error</a><a href="event-detail-loading.html">Loading</a><a href="event-detail-resolved.html" aria-current="page">Resolved</a></div>
-    <div class="ss-row"><span class="ss-label">Bet</span><a href="event-detail.html">Intent</a><a href="event-detail-bet-insufficient.html">Insufficient</a><a href="event-detail-bet-reconcile.html">S5 reconcile</a><a href="event-detail-bet-processing.html">Processing</a><a href="event-detail-bet-error.html">On-chain error</a></div>
+  <nav class="state-switch" aria-label="States of this screen">
+    <div class="ss-row"><span class="ss-label">State</span><a href="notifications.html">Success</a><a href="notifications-empty.html">Empty</a><a href="notifications-error.html">Error</a><a href="notifications-loading.html">Loading</a><a href="notifications-push.html" aria-current="page">Push denied</a></div>
   </nav>
 
   <div class="device">
@@ -717,92 +715,77 @@
         </div>
       </div>
     </header>
-    <!-- Second-level navigation: categories route to their own pages (links) -->
-    <nav class="cat-nav" aria-label="Categories (second level)">
-      <span class="zone-tag">zone: second-level navigation (categories; active = this event's category)</span>
-      <ul>
-        <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
-        <li aria-current="page"><a href="politics.html"><button type="button">Politics</button></a></li>
-        <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
-        <li><a href="culture.html"><button type="button">Culture</button></a></li>
-        <li><a href="general.html"><button type="button">General</button></a></li>
-      </ul>
-    </nav>
     <main class="feed">
-      <span class="zone-tag">zone: event detail (resolved-while-reading / event-closed: market closed)</span>
-      <div class="state-block" style="margin:8px;">
-        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
-        <h2 class="state-title">This event just resolved</h2>
-        <p class="state-msg">The market closed while you were reading (event-closed). Betting is no longer available. You hold a position, so you can open your result.</p>
-        <div class="state-actions">
-          <a href="active-bets.html"><button type="button" class="state-btn primary">See your position</button></a>
-          <a href="event-feed.html"><button type="button" class="state-btn">Back to feed</button></a>
+      <span class="zone-tag">zone: Notifications (push-permission-missing: OS push denied; in-app banner + settings deep-link, list still shown)</span>
+      <div class="feed-inner">
+        <div class="feed-head"><h2>Notifications</h2></div>
+        <div class="push-banner" role="region" aria-label="Notifications permission">
+          <span class="push-msg">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+            Push is off. Enable notifications to get live updates on the events you follow.
+          </span>
+          <span class="push-actions">
+            <button type="button" class="state-btn primary">Open system settings</button>
+            <button type="button" class="state-btn">Not now</button>
+          </span>
+        </div>
+        <p class="fine">In-app notifications still work here. Enable system push so alerts reach you when the app is closed.</p>
+        <div class="pos-list">
+          <p class="pos-status" style="margin:10px 0 2px;text-transform:uppercase;letter-spacing:.04em;">Unread</p>
+          <a href="win.html" style="text-decoration:none;color:inherit;display:block;">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Your bet resolved: US government shutdown - YES won. Tap to see your win.</span>
+                <span class="pos-status" style="white-space:nowrap;">2m</span>
+              </div>
+              <span class="pos-status"><span aria-label="unread">[unread] </span>Position resolved</span>
+            </article>
+          </a>
+          <a href="event-detail.html" style="text-decoration:none;color:inherit;display:block;">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Odds moved: "Bitcoin above $150,000" jumped from 58% to 64%.</span>
+                <span class="pos-status" style="white-space:nowrap;">18m</span>
+              </div>
+              <span class="pos-status"><span aria-label="unread">[unread] </span>Odds moved significantly</span>
+            </article>
+          </a>
+          <a href="event-detail-multi.html" style="text-decoration:none;color:inherit;display:block;">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Closing soon: "Which party wins the most UK seats" closes in 6 hours.</span>
+                <span class="pos-status" style="white-space:nowrap;">1h</span>
+              </div>
+              <span class="pos-status"><span aria-label="unread">[unread] </span>Event deadline approaching</span>
+            </article>
+          </a>
+          <p class="pos-status" style="margin:10px 0 2px;text-transform:uppercase;letter-spacing:.04em;">Earlier</p>
+          <a href="crypto.html" style="text-decoration:none;color:inherit;display:block;">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">New in Crypto: "Will ETH flip BTC by 2027?" is now live.</span>
+                <span class="pos-status" style="white-space:nowrap;">Yesterday</span>
+              </div>
+              <span class="pos-status">New event in a followed category</span>
+            </article>
+          </a>
+          <a href="loss.html" style="text-decoration:none;color:inherit;display:block;">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Your bet resolved: ETF approval - NO. Tap to see what happened.</span>
+                <span class="pos-status" style="white-space:nowrap;">2d</span>
+              </div>
+              <span class="pos-status">Position resolved</span>
+            </article>
+          </a>
         </div>
       </div>
-      <div class="feed-inner"><div class="ed-main">
-          <article class="card" style="border:none;">
-            <div class="ed-head">
-              <span class="ed-thumb">thumbnail placeholder</span>
-              <div>
-                <span class="ed-cat">Politics &middot; One-time market</span>
-                <h2 class="ed-q">Will the US government shut down before March 1, 2027?</h2>
-                <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
-              </div>
-            </div>
-          </article>
-          <section class="ed-section">
-            <h3>Price chart</h3>
-            <div class="chart-wrap">
-              <svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" role="img" aria-label="YES probability over the last 30 days (schematic)">
-                <line class="grid-l" x1="0" y1="25" x2="300" y2="25"/>
-                <line class="grid-l" x1="0" y1="50" x2="300" y2="50"/>
-                <line class="grid-l" x1="0" y1="75" x2="300" y2="75"/>
-                <polyline points="0,58 25,55 50,63 75,52 100,57 125,49 150,55 175,47 200,52 225,44 250,50 275,43 300,62"/>
-                <line class="nowline" x1="300" y1="0" x2="300" y2="100"/>
-              </svg>
-              <p class="chart-cap"><span>30 days ago</span><span>1d &middot; 1w &middot; 1m &middot; all</span><span>YES 38% now</span></p>
-            </div>
-          </section>
-          <div class="ed-facts">
-            <span>Volume<b>$84,200</b></span>
-            <span>Liquidity<b>$31,500</b></span>
-            <span>Closes<b>Mar 1, 2027</b></span>
-            <span>Frequency<b>One-time</b></span>
-            <span>Bookmark<b>save event</b></span>
-          </div>
-          <section class="ed-section">
-            <h3>Why this price</h3>
-            <p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
-            <div class="args">
-              <div class="arg-col">
-                <h4>For YES</h4>
-                <ul>
-                  <li>Budget talks stalled in committee, no scheduled vote.</li>
-                  <li>A bloc has committed to opposing the stopgap bill.</li>
-                </ul>
-              </div>
-              <div class="arg-col">
-                <h4>For NO</h4>
-                <ul>
-                  <li>Last three deadlines met with short-term funding.</li>
-                  <li>Both parties signalled willingness to extend.</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          <section class="ed-section">
-            <h3>Resolution conditions</h3>
-            <p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
-            <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Predict Market team.</p>
-          </section>
-      </div></div>
     </main>
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
       <ul>
-        <li aria-current="page"><button type="button">
+        <li><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
           <span>Events</span>
         </button></li>
@@ -947,26 +930,35 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>Sticky bet panel (right rail desktop / bottom dock mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while scrolling. Binary = YES / NO; multi-outcome = pick one outcome, then YES / NO on it.</li>
-        <li><strong>Bet states migrated into the panel</strong> -&gt; intent, insufficient-balance (inline guard), S5 reconcile (price moved during the gate), execute processing, on-chain error (T3). The old standalone Bet modal is gone; event-closed is the resolved state.</li>
-        <li><strong>Price chart (schematic) + Why this price</strong> -&gt; FJ2 differentiator, below the chart and facts so the panel leads.</li>
-        <li><strong>Confirm fires the gate</strong> -&gt; opens the Sign In dialog over this page, then Deposit (insufficient-balance jumps straight to the Deposit dialog).</li>
-        <li><strong>Auth + states</strong> -&gt; logged-in / logged-out, binary / multi success, error (T8), loading, resolved-while-reading.</li>
+        <li><strong>In-app alert list</strong> -&gt; the return trigger discovered in tracing (IA/sitemap.md): FJ1, FJ5 and EJ3 all depend on delivery via notification. Without this screen, a missed OS alert is unrecoverable; here it has in-app history.</li>
+        <li><strong>Four alert types</strong> -&gt; position resolved (routes to Win / Loss), odds moved significantly, event deadline approaching, new event in a followed category. They map to the hot / warm return signals in aarrr.md (D1-D3).</li>
+        <li><strong>Tap routes to the target screen</strong> -&gt; each item navigates to where the action is: Event Detail (odds / deadline / new event) or the resolution screen (Win / Loss). A resolved-position tap is the 1-tap G1 path to Win / Loss.</li>
+        <li><strong>Reached from the header bell (both breakpoints)</strong> -&gt; Notifications is a header bell with a permanent unread badge, not a bottom-nav slot (the wireframe pass swapped it with Favorites). The badge stays visible as the retention anchor.</li>
+        <li><strong>push-permission-missing</strong> -&gt; if OS push is denied, an in-app banner offers a system-settings deep-link; in-app alerts still show. Same banner surfaces on the Event Feed.</li>
+        <li><strong>Account-bound (logged-in only)</strong> -&gt; alerts need an account; logged-out, the bell routes to Sign In and shows no badge. No auth axis on this screen.</li>
       </ol>
     </aside>
 
     <div class="nav-col">
       <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (main-flow spine)</span>
-<pre>Event Feed
-   v
-[Event Detail]   &lt;- current (binary; bet panel: intent)
-   v
-Sign In / Deposit (dialogs over the page)
-   v
-Active Bets    (MJ success, T14)</pre>
-        <p class="ref">Flow position: MJ, one node after Event Feed. Bet intent + states
-          live in the panel; the gate (Sign In, Deposit) fires on Confirm as dialogs.</p>
+        <span class="zone-tag">on-page nav tree (return trigger)</span>
+<pre>Return trigger (FJ1 / FJ5 / EJ3):
+
+[Notifications]   &lt;- current (header bell, both breakpoints)
+   |
+   +-- position resolved --&gt; Win / Loss Screen
+   +-- odds moved        --&gt; Event Detail
+   +-- deadline approaching --&gt; Event Detail
+   '-- new in category   --&gt; Event Detail / category</pre>
+        <p class="ref">Flow position: the return-trigger source (IA/sitemap.md Notifications;
+          IA/flows.md FJ5 / SJ1 triggerNotif). Serves FJ1, FJ5, EJ3; aarrr.md D1-D3.</p>
+      </section>
+
+      <section class="navtree" aria-label="States">
+        <span class="zone-tag">states of this screen</span>
+        <p class="ref">success (unread + earlier list), empty (no alerts yet -&gt; follow events),
+          error (load failed, retry), loading (fetching), push-permission-missing (OS push
+          denied, in-app banner + settings deep-link). Account-bound, no auth axis.</p>
       </section>
     </div>
 
