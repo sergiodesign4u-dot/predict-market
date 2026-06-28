@@ -128,20 +128,42 @@ rather than reinventing them. All trace to the revised `IA/sitemap.md` (Desktop
 layer, Event Feed card, Saved view, Auth-state axis) and `IA/flows.md`
 (trigger-entry edge). They stay grey-box like everything else.
 
-### S1. Footer (global element)
+### S1. Footer (global element, product footer)
 
 Every screen carries the same footer, defined once here and reused on every
-screen. Grey-box like the rest. Composition:
+screen. Grey-box like the rest. This is a multi-column product footer (not a
+flat link strip), structured from a prediction-market competitor scan
+(Polymarket, Kalshi, Manifold, Limitless). Composition:
 
-- Navigation: Events, My Bets, How It Works, Wallet.
-- Legal: Terms, Privacy.
-- One-line risk disclaimer: generic and honest, for example "Prediction markets
-  involve risk of loss". No invented statistic.
-- Regulatory / licensing line: a labeled placeholder only. Do not invent a
-  license number or a regulator name.
-- Responsible play link: the reserved D-logic slot from `IA/sitemap.md`, a
-  placeholder for MVP.
-- Copyright line.
+- **Brand block:** logo placeholder, a tagline placeholder (TBD), a social-icon
+  row, and a language selector.
+  - Social icons: X / Twitter and Discord are the mandatory pair (present on
+    every competitor); Instagram and TikTok added for consumer reach; Telegram
+    for the crypto audience.
+  - Language selector: a placeholder slot (TBD). No competitor exposes one in
+    the footer and MVP is English-only (see memory `feedback-language`); the slot
+    is reserved for future localization, not an MVP feature.
+- **Markets column:** by category (Politics, Crypto, Culture, General now;
+  Sports is post-MVP) and by topic (Trending topics, dynamic / data-driven, plus
+  "View all markets"). Only Polymarket puts market links in the footer and they
+  are dynamic trending topics, not fixed buckets; we follow that for the topic
+  group while still listing the fixed MVP categories.
+- **Product column:** How It Works, Leaderboard, Wallet, My Bets (the real MVP
+  destinations), plus API / Developers (post-MVP) and Status (TBD).
+- **Support column:** Help Center, FAQ, Contact (all TBD, no support infra at
+  MVP) and How It Works.
+- **Company column:** About, Careers, Press, Brand (all TBD company pages).
+- **Legal strip (bottom):** Terms, Privacy, Responsible play (the reserved
+  D-logic slot from `IA/sitemap.md`), Geo restrictions (TBD); a one-line honest
+  risk disclaimer ("Prediction markets involve risk of loss", no invented
+  statistic); a regulatory / licensing labeled placeholder (no invented license
+  number or regulator name; notes no-US real-money and geo + KYC per regulation);
+  and a copyright line.
+
+TBD convention: anything not in MVP carries a small dashed `TBD` (or `post-MVP`
+/ `dynamic`) tag rather than being omitted, so the footer doubles as a roadmap.
+Skipped deliberately (no competitor uses them in the footer and they are not MVP):
+app-store badges and a newsletter signup.
 
 ### S2. Header (shared component, lean header)
 
