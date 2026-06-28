@@ -72,6 +72,19 @@ structure, different content.
   Loss Screen), the base and state pages render as modal or bottom-sheet
   overlay content, not as a full-page layout. Their states are still separate
   pages, exactly as above.
+- Every state page carries a state-switcher strip at the very top (above the
+  device), linking all the states of that one screen so they open side by side;
+  the current state is marked. Same structure and zones as the base page, only
+  the content area changes. Empty and error states must show a visible exit
+  action (not a dead end), and that exit is verified against `IA/flows.md`. UI
+  copy on state pages is real English text (project rule: all files English),
+  never lorem.
+- **Event Feed states built (Step 5):** `event-feed.html` (success, the base),
+  `-empty`, `-error`, `-loading`, `-push-permission-missing`. Empty exit = Clear
+  filters + "Notify me of new events in this category" (`flows.md` T6 subscribe
+  edge). Error exit = Try again (mirrors the `flows.md` T8 retry pattern).
+  Loading = grey skeleton cards. Push = the success feed plus the in-app
+  "Enable notifications" banner (sitemap push-permission-missing).
 
 ### 6. Deferred to later phases (Concept onward), not allowed in wireframes
 

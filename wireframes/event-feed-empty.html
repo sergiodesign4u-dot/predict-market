@@ -308,9 +308,9 @@
       <li class="wf-screen">
         <a href="event-feed.html" class="active" aria-current="page">Event Feed</a>
         <ul class="wf-states">
-          <li class="cur"><a href="event-feed.html">success - logged in (this page)</a></li>
+          <li><a href="event-feed.html">success - logged in</a></li>
           <li><a href="event-feed.html#logged-out">success - logged out (header delta)</a></li>
-          <li><a href="event-feed-empty.html">empty</a></li>
+          <li class="cur"><a href="event-feed-empty.html">empty (this page)</a></li>
           <li><a href="event-feed-error.html">error</a></li>
           <li><a href="event-feed-loading.html">loading</a></li>
           <li><a href="event-feed-push-permission-missing.html">push-permission-missing</a></li>
@@ -458,16 +458,16 @@
 
   <div class="page-label">
     <strong>Wireframe:</strong> Event Feed &nbsp;|&nbsp;
-    base state: success (registered) &nbsp;|&nbsp;
+    state: empty (no events match filters) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/event-feed.html
+    file: wireframes/event-feed-empty.html
   </div>
 
   <!-- States of this screen: open them side by side. Same structure, different content. -->
   <nav class="state-switch" aria-label="States of this screen">
     <span class="ss-label">Event Feed states</span>
-    <a href="event-feed.html" aria-current="page">Success</a>
-    <a href="event-feed-empty.html">Empty</a>
+    <a href="event-feed.html">Success</a>
+    <a href="event-feed-empty.html" aria-current="page">Empty</a>
     <a href="event-feed-error.html">Error</a>
     <a href="event-feed-loading.html">Loading</a>
     <a href="event-feed-push-permission-missing.html">Push denied</a>
@@ -616,156 +616,14 @@
           </div>
         </div>
 
-        <div class="grid">
-
-          <!-- Binary card 1 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Will the US government shut down before March 1, 2027?</a>
-              </div>
-              <p class="prob-line">YES <span class="prob">38%</span></p>
-              <div class="yesno"><button type="button">YES</button><button type="button">NO</button></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 2 (bookmarked) -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Will Bitcoin close above $150,000 before October 1, 2026?</a>
-              </div>
-              <p class="prob-line">YES <span class="prob">61%</span></p>
-              <div class="yesno"><button type="button">YES</button><button type="button">NO</button></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $212,900</span><span>Closes: Oct 1, 2026</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="true" aria-label="Bookmarked">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Multi-outcome card 1 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Who will win the 2027 Eurovision final?</a>
-              </div>
-              <div class="options">
-                <div class="opt-row"><span class="opt-name">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
-                <div class="opt-row"><span class="opt-name">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
-              </div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $61,500</span><span>Closes: May 15, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 3 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Will Ethereum complete its next major network upgrade before November 1, 2026?</a>
-              </div>
-              <p class="prob-line">YES <span class="prob">72%</span></p>
-              <div class="yesno"><button type="button">YES</button><button type="button">NO</button></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $147,650</span><span>Closes: Nov 1, 2026</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 4 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Will the next lead actor for the Bond film be announced before December 31, 2026?</a>
-              </div>
-              <p class="prob-line">YES <span class="prob">47%</span></p>
-              <div class="yesno"><button type="button">YES</button><button type="button">NO</button></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $19,400</span><span>Closes: Dec 31, 2026</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Multi-outcome card 2 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Which party will win the most seats in the next UK general election?</a>
-              </div>
-              <div class="options">
-                <div class="opt-row"><span class="opt-name">Labour</span><span class="opt-prob">44%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
-                <div class="opt-row"><span class="opt-name">Conservatives</span><span class="opt-prob">33%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
-              </div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $58,700</span><span>Closes: Jul 1, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 5 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Will the EU formally admit a new member state before January 1, 2028?</a>
-              </div>
-              <p class="prob-line">YES <span class="prob">23%</span></p>
-              <div class="yesno"><button type="button">YES</button><button type="button">NO</button></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $33,100</span><span>Closes: Jan 1, 2028</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 6 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Will 2026 be confirmed as one of the three warmest years on record before April 1, 2027?</a>
-              </div>
-              <p class="prob-line">YES <span class="prob">55%</span></p>
-              <div class="yesno"><button type="button">YES</button><button type="button">NO</button></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $26,300</span><span>Closes: Apr 1, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
+        <div class="state-block" role="status" aria-live="polite">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+          <p class="state-title">No events match your filters</p>
+          <p class="state-msg">There are no markets for this category and filter combination right now. Try clearing the filters, or get notified when a new event shows up here.</p>
+          <div class="state-actions">
+            <button type="button" class="state-btn primary">Clear filters</button>
+            <button type="button" class="state-btn">Notify me of new events in this category</button>
+          </div>
         </div>
       </div>
     </main>

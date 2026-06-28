@@ -308,12 +308,12 @@
       <li class="wf-screen">
         <a href="event-feed.html" class="active" aria-current="page">Event Feed</a>
         <ul class="wf-states">
-          <li class="cur"><a href="event-feed.html">success - logged in (this page)</a></li>
+          <li><a href="event-feed.html">success - logged in</a></li>
           <li><a href="event-feed.html#logged-out">success - logged out (header delta)</a></li>
           <li><a href="event-feed-empty.html">empty</a></li>
           <li><a href="event-feed-error.html">error</a></li>
           <li><a href="event-feed-loading.html">loading</a></li>
-          <li><a href="event-feed-push-permission-missing.html">push-permission-missing</a></li>
+          <li class="cur"><a href="event-feed-push-permission-missing.html">push-permission-missing (this page)</a></li>
         </ul>
       </li>
       <li class="wf-screen">
@@ -458,19 +458,19 @@
 
   <div class="page-label">
     <strong>Wireframe:</strong> Event Feed &nbsp;|&nbsp;
-    base state: success (registered) &nbsp;|&nbsp;
+    state: push-permission-missing (banner) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/event-feed.html
+    file: wireframes/event-feed-push-permission-missing.html
   </div>
 
   <!-- States of this screen: open them side by side. Same structure, different content. -->
   <nav class="state-switch" aria-label="States of this screen">
     <span class="ss-label">Event Feed states</span>
-    <a href="event-feed.html" aria-current="page">Success</a>
+    <a href="event-feed.html">Success</a>
     <a href="event-feed-empty.html">Empty</a>
     <a href="event-feed-error.html">Error</a>
     <a href="event-feed-loading.html">Loading</a>
-    <a href="event-feed-push-permission-missing.html">Push denied</a>
+    <a href="event-feed-push-permission-missing.html" aria-current="page">Push denied</a>
   </nav>
 
   <!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
@@ -614,6 +614,17 @@
             </details>
 
           </div>
+        </div>
+
+        <div class="push-banner" role="region" aria-label="Notifications permission">
+          <span class="push-msg">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+            Enable notifications to get live updates on the events you follow.
+          </span>
+          <span class="push-actions">
+            <button type="button" class="state-btn primary">Enable notifications</button>
+            <button type="button" class="state-btn">Not now</button>
+          </span>
         </div>
 
         <div class="grid">
