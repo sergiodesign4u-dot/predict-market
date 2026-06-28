@@ -72,19 +72,23 @@ structure, different content.
   Loss Screen), the base and state pages render as modal or bottom-sheet
   overlay content, not as a full-page layout. Their states are still separate
   pages, exactly as above.
-- Every state page carries a state-switcher strip at the very top (above the
-  device), linking all the states of that one screen so they open side by side;
-  the current state is marked. Same structure and zones as the base page, only
-  the content area changes. Empty and error states must show a visible exit
-  action (not a dead end), and that exit is verified against `IA/flows.md`. UI
-  copy on state pages is real English text (project rule: all files English),
-  never lorem.
-- **Event Feed states built (Step 5):** `event-feed.html` (success, the base),
-  `-empty`, `-error`, `-loading`, `-push-permission-missing`. Empty exit = Clear
-  filters + "Notify me of new events in this category" (`flows.md` T6 subscribe
-  edge). Error exit = Try again (mirrors the `flows.md` T8 retry pattern).
-  Loading = grey skeleton cards. Push = the success feed plus the in-app
-  "Enable notifications" banner (sitemap push-permission-missing).
+- Every state page carries a state-switcher at the very top (above the device).
+  On screens with the auth axis (S5) it is a 2D switcher: an Auth row
+  (Logged in / Logged out) and a State row (success / empty / ...), each marking
+  the current value, so any auth/state combination opens side by side. Same
+  structure and zones as the base page, only the content area (and, across auth,
+  the header) changes. Empty and error states must show a visible exit action
+  (not a dead end), verified against `IA/flows.md`. UI copy on state pages is
+  real English text (project rule: all files English), never lorem.
+- **Event Feed auth x state matrix built (Step 5, revised in the auth pass):**
+  logged-in `event-feed.html` (success base), `-empty`, `-error`, `-loading`,
+  `-push-permission-missing`; logged-out `event-feed-logged-out.html` (success),
+  `-logged-out-empty`, `-logged-out-error`, `-logged-out-loading`
+  (push-permission-missing is logged-in only). Empty exit = Clear filters +
+  "Notify me of new events in this category" (`flows.md` T6 subscribe edge).
+  Error exit = Try again (mirrors `flows.md` T8 retry). Loading = grey skeleton
+  cards. Push = the success feed plus the in-app "Enable notifications" banner
+  (sitemap push-permission-missing).
 
 ### 6. Deferred to later phases (Concept onward), not allowed in wireframes
 
@@ -255,15 +259,33 @@ under Events (a filter over the feed) and via the Favorites (heart) entry in the
 desktop header. Saved is a view, not a new destination or screen, so it is not a
 separate wireframe screen.
 
-### S5. Auth-state axis (containment rule)
+### S5. Auth-state axis (top-level page axis)
 
-Logged-out versus registered is a documented axis, not a per-screen state
-column. Browse screens (Event Feed, Event Detail) render registered by default;
-logged-out is the header-level delta from S2 (Sign in replaces Balance plus
-avatar), with the body identical and browsable in both. Wireframes do NOT build
-a separate duplicate logged-out page for a browse screen. The real auth branch
-lives at the activation gate (Bet Screen Confirm -> Sign In -> Deposit), which
-has its own screens and states.
+Logged-out versus logged-in is a TOP-LEVEL axis of the page states, sitting
+above the screen states. Each browse screen exists as a logged-in and a
+logged-out variant, and under each, the screen states (success / empty / error /
+loading / ...). It is a real page variant, not a header-only delta appended to
+one page, because the logged-out header is materially different (no account).
+
+- **Logged-in header (S2):** balance (Portfolio / Cash swap), Favorites,
+  Notifications (with unread badge), avatar dropdown.
+- **Logged-out header:** the balance figure and the avatar dropdown are removed
+  and replaced by Log in + Sign up entries. Favorites (heart) and Notifications
+  (bell) are kept as affordances, but tapping either while logged out routes to
+  Sign In (saving and alerts need an account), and the bell shows no unread
+  badge. On mobile the Portfolio bottom-nav slot becomes a Sign in entry.
+- The logo (Events home), the second-level category nav, the feed body, and all
+  cards are identical and browsable in both auth states; only the header (and the
+  mobile slot 4) differ.
+- **Naming:** logged-in pages keep the base names (`event-feed*.html`);
+  logged-out pages add a `-logged-out[-state]` suffix. `push-permission-missing`
+  is logged-in only (account-bound), so it has no logged-out counterpart.
+- Every state page carries a 2D state-switcher (Auth row + State row) so the
+  matching auth/state combinations open side by side, and the screen tree (S6)
+  nests the states under a Logged in / Logged out sub-group per screen.
+- The real auth branch still lives at the activation gate (Bet Screen Confirm ->
+  Sign In -> Deposit); that is unchanged. (This supersedes the earlier
+  "header-level delta, no separate logged-out page" containment rule.)
 
 ### S6. Screen-tree nav (global wireframe element)
 
@@ -277,8 +299,9 @@ anywhere. Same grey-box styling as the rest; no color.
   Notifications, Wallet, Profile, How It Works, Orphans). States per screen come
   from that screen's States line in the sitemap and the screen x state table in
   `_screens.md` (loading / empty / error / success plus the notable
-  product-specific ones). The logged-in / logged-out axis (S5) is shown as states
-  under the browse screens (Event Feed, Event Detail).
+  product-specific ones). On screens with the auth axis (S5), the states are
+  nested under a Logged in / Logged out sub-group (S5 is the top level), so the
+  tree reads section -> screen -> auth -> state.
 - **Links and current:** each screen node links to its page (planned pages are
   tagged `planned` until built); the current page and its current state are
   marked active.

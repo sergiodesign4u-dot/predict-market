@@ -317,12 +317,12 @@
           <li class="wf-substate">Logged in</li>
           <li><a href="event-feed.html">success</a></li>
           <li><a href="event-feed-empty.html">empty</a></li>
-          <li class="cur"><a href="event-feed-error.html">error (this page)</a></li>
+          <li><a href="event-feed-error.html">error</a></li>
           <li><a href="event-feed-loading.html">loading</a></li>
           <li><a href="event-feed-push-permission-missing.html">push-permission-missing</a></li>
           <li class="wf-substate">Logged out</li>
           <li><a href="event-feed-logged-out.html">success</a></li>
-          <li><a href="event-feed-logged-out-empty.html">empty</a></li>
+          <li class="cur"><a href="event-feed-logged-out-empty.html">empty (this page)</a></li>
           <li><a href="event-feed-logged-out-error.html">error</a></li>
           <li><a href="event-feed-logged-out-loading.html">loading</a></li>
         </ul>
@@ -474,15 +474,15 @@
 
   <div class="page-label">
     <strong>Wireframe:</strong> Event Feed &nbsp;|&nbsp;
-    logged in - state: error (load failure) &nbsp;|&nbsp;
+    logged out - state: empty (no events match filters) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/event-feed-error.html
+    file: wireframes/event-feed-logged-out-empty.html
   </div>
 
   <!-- States of this screen: open them side by side. Same structure, different content. -->
   <nav class="state-switch" aria-label="States of this screen (auth and screen state)">
-    <div class="ss-row"><span class="ss-label">Auth</span><a href="event-feed-error.html" aria-current="page">Logged in</a><a href="event-feed-logged-out-error.html">Logged out</a></div>
-    <div class="ss-row"><span class="ss-label">State</span><a href="event-feed.html">Success</a><a href="event-feed-empty.html">Empty</a><a href="event-feed-error.html" aria-current="page">Error</a><a href="event-feed-loading.html">Loading</a><a href="event-feed-push-permission-missing.html">Push denied</a></div>
+    <div class="ss-row"><span class="ss-label">Auth</span><a href="event-feed-empty.html">Logged in</a><a href="event-feed-logged-out-empty.html" aria-current="page">Logged out</a></div>
+    <div class="ss-row"><span class="ss-label">State</span><a href="event-feed-logged-out.html">Success</a><a href="event-feed-logged-out-empty.html" aria-current="page">Empty</a><a href="event-feed-logged-out-error.html">Error</a><a href="event-feed-logged-out-loading.html">Loading</a></div>
   </nav>
 
   <!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
@@ -490,7 +490,7 @@
 
     <!-- Header (lean: logo = Events/home, right icon cluster) -->
     <header class="app-header">
-      <span class="zone-tag">zone: header (lean, same at all widths; logo = Events home)</span>
+      <span class="zone-tag">zone: header (logged-out: no account; Log in / Sign up replace balance and avatar)</span>
       <div class="row">
         <div class="left">
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
@@ -500,43 +500,21 @@
         </div>
 
         <div class="utility">
-          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
-          <div class="bal-toggle desk-only">
-            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
-            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
-            </button>
-          </div>
-
-          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
-          <button type="button" class="icon-btn desk-only" aria-label="Favorites">
+          <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
+          <button type="button" class="icon-btn desk-only" aria-label="Favorites (sign in to save)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           </button>
 
-          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
-          <span class="bell-wrap">
-            <button type="button" class="icon-btn" aria-label="Notifications, 3 unread">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-            </button>
-            <span class="badge-dot">3</span>
-          </span>
+          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
+          <button type="button" class="icon-btn" aria-label="Notifications (sign in)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+          </button>
 
-          <details class="avatar-menu">
-            <summary aria-label="Account menu">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </summary>
-            <div class="dropdown" role="menu">
-              <span class="zone-tag">avatar dropdown (collapsed by default, click to open)</span>
-              <ul>
-                <li><button type="button" role="menuitem">My Profile</button></li>
-                <li><button type="button" role="menuitem">My Bets</button></li>
-                <li><button type="button" role="menuitem">Wallet / Deposit</button></li>
-                <li><button type="button" role="menuitem">How It Works</button></li>
-                <li><button type="button" role="menuitem">Logout</button></li>
-              </ul>
-            </div>
-          </details>
+          <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
+          <div class="auth-btns">
+            <button type="button" class="auth-btn">Log in</button>
+            <button type="button" class="auth-btn primary">Sign up</button>
+          </div>
         </div>
       </div>
     </header>
@@ -628,12 +606,13 @@
           </div>
         </div>
 
-        <div class="state-block" role="alert">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>
-          <p class="state-title">Couldn't load events</p>
-          <p class="state-msg">Something went wrong reaching the network. Check your connection and try again.</p>
+        <div class="state-block" role="status" aria-live="polite">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+          <p class="state-title">No events match your filters</p>
+          <p class="state-msg">There are no markets for this category and filter combination right now. Try clearing the filters, or get notified when a new event shows up here.</p>
           <div class="state-actions">
-            <button type="button" class="state-btn primary">Try again</button>
+            <button type="button" class="state-btn primary">Clear filters</button>
+            <button type="button" class="state-btn">Notify me of new events in this category</button>
           </div>
         </div>
       </div>
@@ -655,9 +634,9 @@
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           <span>Favorites</span>
         </button></li>
-        <li><button type="button" aria-label="Portfolio, balance $142">
-          <span class="bn-bal">$142</span>
-          <span>Portfolio</span>
+        <li><button type="button" aria-label="Sign in">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 12h10M16 8l4 4-4 4M14 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/></svg>
+          <span>Sign in</span>
         </button></li>
       </ul>
     </nav>

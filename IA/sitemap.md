@@ -272,11 +272,13 @@ This is a new addition to the IA, stated plainly as new, not a pre-existing job.
 
 #### Auth-state axis
 
-Logged-out versus registered is a cross-cutting axis across the browse screens (Event Feed, Event Detail) and the gate, not a per-screen state column on every screen.
+Logged-out versus logged-in is a TOP-LEVEL axis of the page states on the browse screens (Event Feed, Event Detail), sitting above the screen states. Each browse screen is built as a logged-in and a logged-out variant, and under each, its screen states (success / empty / error / loading / ...). Revised in the wireframe pass: this is a real page variant, not a header-only delta tacked onto one page, because the logged-out header is materially different (no account).
 
-- **Default render of browse screens (Event Feed, Event Detail) is registered.** Logged-out is a header-level delta on those screens: the utility cluster shows a "Sign in" entry instead of Balance plus avatar; the feed body and cards are identical and browsable in both. Do NOT create a full duplicate logged-out page for each browse screen.
-- **The real auth branch concentrates at the activation gate** (Bet Screen Confirm -> Sign In / Register -> Deposit), which already exists as its own screens and states. Edge cases (logged-out at confirm; registered with no balance -> Deposit) live there, per Variant B, already locked.
-- **Effect:** the auth edge cases stay localized at the gate, not spread across browse screens. No page explosion.
+- **Logged-in header:** balance (Portfolio / Cash swap), Favorites, Notifications (with unread badge), avatar dropdown.
+- **Logged-out header:** the balance figure and the avatar dropdown are removed and replaced by Log in + Sign up entries. Favorites (heart) and Notifications (bell) are kept as affordances, but tapping either while logged out routes to Sign In (saving and alerts need an account), and the bell shows no unread badge. On mobile the Portfolio bottom-nav slot becomes a Sign in entry.
+- **Identical in both:** the logo (Events home), the second-level category nav, the feed body, and all cards are identical and browsable; only the header (and the mobile slot 4) differ. `push-permission-missing` is logged-in only (account-bound), so it has no logged-out counterpart.
+- **The real auth branch still concentrates at the activation gate** (Bet Screen Confirm -> Sign In / Register -> Deposit), which exists as its own screens and states. Edge cases (logged-out at confirm; registered with no balance -> Deposit) live there, per Variant B, already locked.
+- **Why the change:** the earlier "header-level delta, no separate logged-out page" rule under-modeled how different the logged-out header is (no profile, no balance, login entries). Treating auth as the top page axis is the honest structure; the body is still shared, so only the header markup duplicates.
 
 ---
 

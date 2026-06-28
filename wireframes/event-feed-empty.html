@@ -56,12 +56,18 @@
     }
 
     /* ---- State pages (empty / error / loading / push-permission-missing) ---- */
-    .state-switch { border: 1px dashed #888; background: #e3e3e3; padding: 6px 10px; font-size: 11px;
-      display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-    .state-switch .ss-label { text-transform: uppercase; letter-spacing: .05em; color: #555; font-size: 10px; margin-right: 2px; }
+    .state-switch { border: 1px dashed #888; background: #e3e3e3; padding: 7px 10px; font-size: 11px;
+      display: flex; flex-direction: column; gap: 5px; }
+    .state-switch .ss-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .state-switch .ss-label { text-transform: uppercase; letter-spacing: .05em; color: #555; font-size: 10px; width: 44px; flex: 0 0 44px; }
     .state-switch a { color: #222; text-decoration: none; border: 1px solid #999; background: #d6d6d6; padding: 2px 8px; }
     .state-switch a:hover { background: #cccccc; }
     .state-switch a[aria-current="page"] { background: #bdbdbd; font-weight: bold; }
+    .auth-btns { display: flex; gap: 6px; }
+    .auth-btn { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    .auth-btn.primary { background: #c4c4c4; font-weight: bold; }
+    .wf-states .wf-substate { padding: 7px 12px 2px 20px; color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: .05em; font-weight: bold; }
+    .wf-states .wf-substate::before { display: none; }
 
     .state-block { border: 1px dashed #999; background: #ededed; padding: 30px 18px; margin: 4px 0;
       display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
@@ -308,19 +314,29 @@
       <li class="wf-screen">
         <a href="event-feed.html" class="active" aria-current="page">Event Feed</a>
         <ul class="wf-states">
-          <li><a href="event-feed.html">success - logged in</a></li>
-          <li><a href="event-feed.html#logged-out">success - logged out (header delta)</a></li>
+          <li class="wf-substate">Logged in</li>
+          <li><a href="event-feed.html">success</a></li>
           <li class="cur"><a href="event-feed-empty.html">empty (this page)</a></li>
           <li><a href="event-feed-error.html">error</a></li>
           <li><a href="event-feed-loading.html">loading</a></li>
           <li><a href="event-feed-push-permission-missing.html">push-permission-missing</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="event-feed-logged-out.html">success</a></li>
+          <li><a href="event-feed-logged-out-empty.html">empty</a></li>
+          <li><a href="event-feed-logged-out-error.html">error</a></li>
+          <li><a href="event-feed-logged-out-loading.html">loading</a></li>
         </ul>
       </li>
       <li class="wf-screen">
         <a href="event-detail.html" class="planned">Event Detail</a>
         <ul class="wf-states">
-          <li>success / pre-selected - logged in</li>
-          <li>success - logged out (header delta)</li>
+          <li class="wf-substate">Logged in</li>
+          <li>success / pre-selected</li>
+          <li>error</li>
+          <li>loading</li>
+          <li>resolved-while-reading</li>
+          <li class="wf-substate">Logged out</li>
+          <li>success / pre-selected</li>
           <li>error</li>
           <li>loading</li>
           <li>resolved-while-reading</li>
@@ -458,19 +474,15 @@
 
   <div class="page-label">
     <strong>Wireframe:</strong> Event Feed &nbsp;|&nbsp;
-    state: empty (no events match filters) &nbsp;|&nbsp;
+    logged in - state: empty (no events match filters) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
     file: wireframes/event-feed-empty.html
   </div>
 
   <!-- States of this screen: open them side by side. Same structure, different content. -->
-  <nav class="state-switch" aria-label="States of this screen">
-    <span class="ss-label">Event Feed states</span>
-    <a href="event-feed.html">Success</a>
-    <a href="event-feed-empty.html" aria-current="page">Empty</a>
-    <a href="event-feed-error.html">Error</a>
-    <a href="event-feed-loading.html">Loading</a>
-    <a href="event-feed-push-permission-missing.html">Push denied</a>
+  <nav class="state-switch" aria-label="States of this screen (auth and screen state)">
+    <div class="ss-row"><span class="ss-label">Auth</span><a href="event-feed-empty.html" aria-current="page">Logged in</a><a href="event-feed-logged-out-empty.html">Logged out</a></div>
+    <div class="ss-row"><span class="ss-label">State</span><a href="event-feed.html">Success</a><a href="event-feed-empty.html" aria-current="page">Empty</a><a href="event-feed-error.html">Error</a><a href="event-feed-loading.html">Loading</a><a href="event-feed-push-permission-missing.html">Push denied</a></div>
   </nav>
 
   <!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
@@ -772,18 +784,6 @@
       </div>
     </footer>
 
-  </div>
-
-  <!-- ============ LOGGED-OUT HEADER DELTA (annotated variant, not a separate page) ============ -->
-  <div class="delta" id="logged-out">
-    <span class="zone-tag" style="display:inline-block; border:1px solid #999;">logged-out header delta (auth-state axis, header-level only)</span>
-    <div class="mini-header">
-      <div class="row">
-        <span class="brand">Predict Market</span>
-        <span class="utility"><button type="button" class="logo-btn">Sign in</button></span>
-      </div>
-    </div>
-    <p class="ref" style="padding:6px 2px;">Only the right cluster changes: "Sign in" replaces the Portfolio / Cash balance, Favorites, Notifications, and the avatar (on mobile, the Portfolio bottom slot becomes a "Sign in" entry too). The logo (Events home), the second-level category nav, the feed body, and all cards are identical and browsable. No separate logged-out page is built (Auth-state axis); the real auth branch is at the gate (Bet Screen Confirm -&gt; Sign In -&gt; Deposit).</p>
   </div>
 
   <!-- ============ ANNOTATIONS + NAV TREE (out of layout flow) ============ -->

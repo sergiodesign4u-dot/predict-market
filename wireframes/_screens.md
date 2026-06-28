@@ -100,12 +100,17 @@ non-main-flow screens are deferred (see the Deferred to Step 08 section).
   (reached from the card bookmark and the desktop Favorites entry), not a new
   spine screen or destination. It is therefore not added to the spine or the
   state table.
-- **Auth-state note (no separate logged-out page):** the browse screens (Event
-  Feed, Event Detail) render registered by default; logged-out is a
-  header-level delta (Sign in replaces Balance plus avatar), body identical and
-  browsable in both. No separate logged-out page is added to the spine. The auth
-  branch concentrates at the gate, already in the spine (Sign In / Register,
-  Deposit).
+- **Auth-state note (top-level page axis, revised):** logged-in vs logged-out is
+  a top-level axis above the screen states on the browse screens (Event Feed,
+  Event Detail). Each is a real page variant: the logged-out header drops the
+  balance and avatar and shows Log in + Sign up (Favorites and Notifications stay
+  as Sign-In triggers; mobile slot 4 becomes Sign in), while the body and cards
+  are identical and browsable. The Event Feed auth x state matrix is built (see
+  `_conventions.md` S5): logged-in {success, empty, error, loading,
+  push-permission-missing} and logged-out {success, empty, error, loading};
+  push-permission-missing is logged-in only. The real auth branch still
+  concentrates at the gate (Sign In / Register, Deposit). This supersedes the
+  earlier "header-level delta, no separate logged-out page" note.
 
 ---
 
