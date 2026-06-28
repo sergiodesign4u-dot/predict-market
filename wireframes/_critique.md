@@ -41,3 +41,22 @@ Done 2026-06-28, after the Krok 7 flow-linking and Krok 8 reconciliation passes
 Net: one real defect (a dead-end in 8 category empty-states), fixed; one optional
 footer item left by decision. The wireframe set is clickable end to end with no
 dead-ends in any built state.
+
+## Follow-up fix pass (2026-06-28, user review)
+
+A later visual review surfaced three more defects, all in the shared chrome:
+
+| # | Screen(s) | Category | What was wrong | Fix | Status |
+|---|---|---|---|---|---|
+| 3 | 9 event-feed family pages (`event-feed*.html`) | Leaked / broken appearance | The sign-in / deposit `<dialog>` markup + JS were injected on these hand-authored pages, but the dialog CSS rules were not, so the dialog opened as an unstyled broken box | Inject a self-contained dialog CSS block (`dialog.app-dialog` scoped) before `</style>` (idempotent, `fixpack.py`) | FIXED |
+| 4 | All logged-in pages (header) | Dead controls | The Favorites heart, Notifications bell, and the 5 avatar-dropdown items were bare `<button>`s with no navigation | Wired: heart -> `saved.html`, bell -> `notifications.html`, avatar -> my-profile / active-bets / wallet / how-it-works / event-feed-logged-out (Logout) | FIXED |
+| 5 | All pages (bottom nav) | Dead controls | The mobile bottom-nav slots (Events / My Bets / Favorites / Portfolio, and logged-out Events) were bare `<button>`s | Wired per auth: logged-in -> feed / active-bets / saved / my-profile; logged-out Events -> logged-out feed, My Bets + Favorites -> sign-in dialog | FIXED |
+
+New screen built to remove the Favorites dead-end: **Saved view** (`saved.html` +
+`saved-empty.html` + `saved-loading.html`) - the logged-in "filter over the feed"
+the IA always described, now a real destination with empty / loading states. Added
+to the screen tree (`_shell.nav_tree`). Total pages: 96 -> 99.
+
+Health after this pass: 0 em-dash, 0 broken internal links, 0 dead bottom-nav /
+header controls across all 99 pages. Wiring applied by the idempotent post-processor
+`fixpack.py` (header + bottom nav + dialog CSS) and `gen_saved.py`.

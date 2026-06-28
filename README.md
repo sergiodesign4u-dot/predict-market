@@ -27,7 +27,7 @@ Single-page summary of all research phases. Open the link above in any browser -
 | [`flows.html`](./flows.html) | **Flows** visualization: all four flows rendered as Mermaid diagrams |
 | [`research/`](./research/) | Competitor analysis, strategy, JTBD, personas, AARRR |
 | [`research/screens/`](./research/screens/) | Competitor screenshots |
-| [`wireframes/`](./wireframes/) | **Grey-box wireframes**: 96 pages, every sitemap screen + all states, flow-linked, clickable end to end |
+| [`wireframes/`](./wireframes/) | **Grey-box wireframes**: 99 pages, every sitemap screen + all states + Saved view, flow-linked, header / nav wired, clickable end to end |
 | [`concept/`](./concept/) | Visual direction, moodboard |
 | [`tokens/`](./tokens/) | Design tokens: color, type, spacing |
 | [`components/`](./components/) | UI component specs |
@@ -58,14 +58,18 @@ responsive. Neutral greys only - no color, type, shadows, or finished UI (those
 belong to the Concept phase). Open any file in [`wireframes/`](./wireframes/) in a
 browser; a left screen-tree panel navigates the whole set.
 
-- **Coverage:** 96 pages - every screen in the IA screen tree, each state its own
+- **Coverage:** 99 pages - every screen in the IA screen tree, each state its own
   page. Event Feed, Event Detail (binary + multi, inline bet panel), 4 Category
-  pages, Sign In / Deposit (shared in-page dialogs), Win / Loss, Notifications,
-  Wallet, My Profile / Public Profile, How It Works, Active Bets / Bet History.
+  pages, Saved view (Favorites), Sign In / Deposit (shared in-page dialogs), Win /
+  Loss, Notifications, Wallet, My Profile / Public Profile, How It Works, Active
+  Bets / Bet History.
 - **Auth axis:** browse screens have logged-in and logged-out variants.
 - **Flow-linked:** the main flow is clickable end to end (Event Feed -> Event
   Detail -> gate -> Active Bets), with branch exits and no dead-ends, wired along
   the routes in [`IA/flows.md`](./IA/flows.md).
+- **Chrome wired:** header (Favorites / Notifications / avatar dropdown) and the
+  mobile bottom nav are real links, not dead buttons; logged-out controls open the
+  sign-in dialog.
 - **Quality gates:** 0 em-dash, 0 broken links; a defect critique pass is recorded
   in [`wireframes/_critique.md`](./wireframes/_critique.md); the build contract is
   [`wireframes/_conventions.md`](./wireframes/_conventions.md).

@@ -487,7 +487,15 @@
         </ul>
       </li>
       <li class="wf-note">Bet intent + states (reconcile, insufficient-balance, event-closed, processing, on-chain error) now live in the Event Detail bet panel - states to come (the standalone Bet modal was removed).</li>
-      <li class="wf-note">Saved view - a filter over the feed, not a separate screen.</li>
+      <li class="wf-screen">
+        <a href="saved.html">Saved (Favorites)</a>
+        <ul class="wf-states">
+          <li><a href="saved.html">success</a></li>
+          <li><a href="saved-empty.html">empty</a></li>
+          <li><a href="saved-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-note">Saved view - a filter over the feed (logged-in only); the Favorites control opens it.</li>
       <li class="wf-sec">Category pages (second-level nav -> own page)</li>
       <li class="wf-screen">
         <a href="politics.html">Politics</a>
@@ -829,15 +837,15 @@
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <span class="zone-tag">zone: bottom nav (mobile only; logged-out slot 4 = Sign in)</span>
       <ul>
-        <li aria-current="page"><button type="button">
+        <li aria-current="page"><a href="event-feed-logged-out.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
           <span>Events</span>
-        </button></li>
-        <li><button type="button">
+        </button></a></li>
+        <li><button type="button" data-open="signin">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
           <span>My Bets</span>
         </button></li>
-        <li><button type="button">
+        <li><button type="button" data-open="signin">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           <span>Favorites</span>
         </button></li>

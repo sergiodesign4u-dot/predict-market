@@ -591,6 +591,25 @@ this here so the page count is expected, not a surprise, in Step 03.
 
 ---
 
+## Shared chrome wiring (2026-06-28)
+
+Header and bottom-nav controls are real navigation, not dead buttons:
+
+- **Logged-in header:** Favorites heart -> `saved.html`, Notifications bell ->
+  `notifications.html`, avatar dropdown -> My Profile / My Bets (`active-bets.html`)
+  / Wallet / How It Works / Logout (`event-feed-logged-out.html`).
+- **Logged-out header:** Favorites + Notifications + Log in / Sign up open the
+  sign-in dialog (no account to navigate to yet).
+- **Bottom nav (mobile):** logged-in Events / My Bets / Favorites / Portfolio ->
+  feed / active-bets / `saved.html` / my-profile; logged-out Events -> logged-out
+  feed, My Bets + Favorites -> sign-in dialog, Sign in -> sign-in dialog.
+- **Dialog CSS:** any page that carries the sign-in / deposit `<dialog>` markup
+  must also carry the `dialog.app-dialog` CSS, or the dialog renders unstyled.
+
+Wiring is applied by the idempotent post-processor `fixpack.py` (run after the
+generators). The **Saved view** (`saved.html` + empty + loading) is the logged-in
+"filter over the feed" target for the Favorites control.
+
 ## What comes next
 
 The per-screen file list and the screens themselves are produced from Step 03

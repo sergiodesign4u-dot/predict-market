@@ -323,7 +323,7 @@ Bet-panel states (migrated from the old Bet Screen): intent (default) - insuffic
 This is a new addition to the IA, stated plainly as new, not a pre-existing job.
 
 - **Relationship:** User saves / follows Event (a bookmark). Added to the User entity (Saved / followed events) and the Event entity (Related to: User).
-- **Saved view:** a filter / view over the Event Feed showing only saved events. NOT a new bottom-nav slot and NOT a new top-level destination; a view within Events, like a category filter.
+- **Saved view:** a filter / view over the Event Feed showing only saved events. NOT a new bottom-nav slot and NOT a new top-level destination; a view within Events, like a category filter. In the wireframes this view is realized as `saved.html` (reusing the feed chrome, with empty / loading states) so the Favorites control has a concrete destination - it is still the feed filtered to saved events, not separate chrome.
 - **Affordances:** a bookmark control on each event card; a Favorites (heart) entry in the desktop header utility cluster; and a Favorites bottom-nav slot on mobile (wireframe pass), all opening the Saved view (see Desktop layer D-desktop-4 and the bottom-nav table).
 - **Alert on a saved event moving significantly: [hypothesis].** Not a confirmed job, not wired as a confirmed Notification type. The confirmed Notification types stay as they are (entity 8). A proactive "your saved event moved" alert is flagged for later validation only.
 - **Rationale:** saving improves convenience and retention; every benchmarked competitor exposes a bookmark on the card. The confirmed job backing is partial (retention, FJ1 return), so the save relationship is added now, but the proactive saved-event alert stays a hypothesis until validated.

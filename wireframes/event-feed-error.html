@@ -293,6 +293,26 @@
     }
     @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, minmax(280px, 1fr)); } }
     @media (min-width: 1280px) { .grid { grid-template-columns: repeat(4, minmax(280px, 1fr)); } }
+    /* ---- Shared in-page dialogs (native <dialog>) - injected for event-feed family ---- */
+    dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
+    dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
+    dialog.app-dialog .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
+    dialog.app-dialog .sheet-head h2 { font-size: 14px; margin: 0; }
+    dialog.app-dialog .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
+    dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    dialog.app-dialog .fine { font-size: 11px; color: #555; line-height: 1.5; }
+    dialog.app-dialog .field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    dialog.app-dialog .amount-row { display: flex; align-items: center; gap: 8px; }
+    dialog.app-dialog .amount-input { flex: 1; border: 1px solid #888; background: #fff; padding: 10px; font-size: 18px; }
+    dialog.app-dialog .quick { display: flex; gap: 6px; flex-wrap: wrap; }
+    dialog.app-dialog .quick button { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    dialog.app-dialog .quick button.sel { background: #b8b8b8; font-weight: bold; }
+    dialog.app-dialog .provider-btn { display: flex; align-items: center; gap: 10px; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; cursor: pointer; width: 100%; text-align: left; }
+    dialog.app-dialog .provider-btn .ic { width: 18px; height: 18px; }
+    dialog.app-dialog .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
+    dialog.app-dialog .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
+    dialog.app-dialog .confirm-btn { border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; cursor: pointer; width: 100%; }
+    .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
   </style>
 </head>
 <body>
@@ -347,7 +367,15 @@
         </ul>
       </li>
       <li class="wf-note">Bet intent + states (reconcile, insufficient-balance, event-closed, processing, on-chain error) now live in the Event Detail bet panel - states to come (the standalone Bet modal was removed).</li>
-      <li class="wf-note">Saved view - a filter over the feed, not a separate screen.</li>
+      <li class="wf-screen">
+        <a href="saved.html">Saved (Favorites)</a>
+        <ul class="wf-states">
+          <li><a href="saved.html">success</a></li>
+          <li><a href="saved-empty.html">empty</a></li>
+          <li><a href="saved-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-note">Saved view - a filter over the feed (logged-in only); the Favorites control opens it.</li>
       <li class="wf-sec">Category pages (second-level nav -> own page)</li>
       <li class="wf-screen">
         <a href="politics.html">Politics</a>
@@ -556,15 +584,15 @@
           </div>
 
           <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
-          <button type="button" class="icon-btn desk-only" aria-label="Favorites">
+          <a href="saved.html" aria-label="Favorites, see saved events"><button type="button" class="icon-btn desk-only" aria-label="Favorites">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
-          </button>
+          </button></a>
 
           <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
           <span class="bell-wrap">
-            <button type="button" class="icon-btn" aria-label="Notifications, 3 unread">
+            <a href="notifications.html"><button type="button" class="icon-btn" aria-label="Notifications, 3 unread">
               <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-            </button>
+            </button></a>
             <span class="badge-dot">3</span>
           </span>
 
@@ -576,11 +604,11 @@
             <div class="dropdown" role="menu">
               <span class="zone-tag">avatar dropdown (collapsed by default, click to open)</span>
               <ul>
-                <li><button type="button" role="menuitem">My Profile</button></li>
-                <li><button type="button" role="menuitem">My Bets</button></li>
-                <li><button type="button" role="menuitem">Wallet / Deposit</button></li>
-                <li><button type="button" role="menuitem">How It Works</button></li>
-                <li><button type="button" role="menuitem">Logout</button></li>
+                <li><a href="my-profile.html"><button type="button" role="menuitem">My Profile</button></a></li>
+                <li><a href="active-bets.html"><button type="button" role="menuitem">My Bets</button></a></li>
+                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet / Deposit</button></a></li>
+                <li><a href="how-it-works.html"><button type="button" role="menuitem">How It Works</button></a></li>
+                <li><a href="event-feed-logged-out.html"><button type="button" role="menuitem">Logout</button></a></li>
               </ul>
             </div>
           </details>
@@ -690,22 +718,22 @@
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
       <ul>
-        <li aria-current="page"><button type="button">
+        <li aria-current="page"><a href="event-feed.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
           <span>Events</span>
-        </button></li>
-        <li><button type="button">
+        </button></a></li>
+        <li><a href="active-bets.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
           <span>My Bets</span>
-        </button></li>
-        <li><button type="button">
+        </button></a></li>
+        <li><a href="saved.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           <span>Favorites</span>
-        </button></li>
-        <li><button type="button" aria-label="Portfolio, balance $142">
+        </button></a></li>
+        <li><a href="my-profile.html"><button type="button" aria-label="Portfolio, balance $142">
           <span class="bn-bal">$142</span>
           <span>Portfolio</span>
-        </button></li>
+        </button></a></li>
       </ul>
     </nav>
 
