@@ -3,6 +3,8 @@
 > Built from: IA/sitemap.md - jtbd.md
 > `[Square brackets]` = screens from IA/sitemap.md. `{Diamonds}` = decisions. `([Stadiums])` = terminal states.
 > Success terminals: T14/mjDone, fj2Done, fj5Done, sj1Done. Error/churn terminals T1-T3, T5-T12, T13a, T13b, T15-T16 each have at least one recovery edge. T4 retired as terminal (replaced by escalation-path edge in FJ5).
+>
+> Wireframe build pass (re-sync with IA/sitemap.md "Wireframe build pass"): the flow logic is unchanged, only the surfaces are renamed. **BS1 / BS2 are the Event Detail bet panel** (build the bet inline, then execute), not a standalone Bet Screen. **SI (Sign In) and DEP (Deposit) are in-page dialogs** opened over the current page (close stays on the page; Sign In chains to Deposit). The sequence build -> confirm -> gate -> S5 reconcile -> execute -> Active Bets is the same. A category page (Politics/Crypto/Culture/General) is an optional browse node between Event Feed and Event Detail; it is omitted from the charts to keep them stable (it inherits the Event Feed -> Event Detail edge).
 
 ---
 
@@ -61,19 +63,19 @@ flowchart TD
 
     wantsBet -->|"no"| T7(["T7 - not convinced, exits without bet"])
     T7 -->|"back to feed"| EF
-    wantsBet -->|"yes - taps YES or NO"| BS1["Bet Screen (intent)"]
+    wantsBet -->|"yes - taps YES or NO"| BS1["Event Detail bet panel (intent)"]
 
     BS1 --> confirmedIntent{"confirms the bet?"}
     confirmedIntent -->|"no, changed mind"| ED
     confirmedIntent -->|"yes - gate fires"| personaType{"account type?"}
 
-    personaType -->|"News Junkie"| SI["Sign In / Register"]
+    personaType -->|"News Junkie"| SI["Sign In / Register (dialog)"]
     personaType -->|"Crypto Native"| walletOk
 
     SI --> authOk{"auth successful?"}
     authOk -->|"no"| T5(["T5 - auth error"])
     T5 -->|"retry or use other provider"| SI
-    authOk -->|"yes"| DEP["Deposit"]
+    authOk -->|"yes"| DEP["Deposit (dialog)"]
 
     DEP --> moreInfo{"wants to understand fund safety?"}
     moreInfo -->|"yes"| HIW["How It Works"]
@@ -91,7 +93,7 @@ flowchart TD
     T15 -->|"switch to News Junkie path: social login and deposit"| SI
     walletOk -->|"yes"| S5
 
-    S5 -->|"no change"| BS2["Bet Screen (execute)"]
+    S5 -->|"no change"| BS2["Bet panel (execute)"]
     S5 -->|"yes - was X, now Y"| priceConfirm
     priceConfirm -->|"no"| T16(["T16 - price rejected, bet cancelled"])
     T16 -->|"re-evaluate event"| ED
@@ -116,8 +118,8 @@ Event Detail from a card:
   for multi-outcome, the option pre-selected (the informed user who wants to move
   faster).
 Both land on Event Detail, so FJ2 (context before the bet) is preserved for
-everyone. The bet is still placed on Event Detail / Bet Screen. There is no
-Feed -> Bet Screen edge: nothing bypasses the context screen. Event Detail must
+everyone. The bet is still placed on Event Detail (in its inline bet panel). There
+is no Feed -> bet edge: nothing bypasses the context screen. Event Detail must
 accept a pre-selected option and side on entry (pre-selected entry variant, see
 IA/sitemap.md Event Detail states).
 
@@ -142,7 +144,7 @@ flowchart TD
 
     hasEdge -->|"no, market may be right"| watcher(["i - watcher: understood, not betting. FJ2 closed, MJ no."])
     watcher -->|"back to feed"| EF
-    hasEdge -->|"yes, confident in own position"| BS["Bet Screen"]
+    hasEdge -->|"yes, confident in own position"| BS["Event Detail bet panel"]
 
     BS --> fj2Done(["FJ2 closed - understood the odds, moved to bet"])
 ```
@@ -177,7 +179,7 @@ flowchart TD
     readsNote -->|"no - bets immediately (escalation path)"| pause["pause: resolution note shown, brief beat before re-bet"]
     sessionHook(["reserved: session-aware chasing check, post-MVP, not built"])
     pause -.->|"reserved hook (not built)"| sessionHook
-    pause -->|"proceeds - escalation path (F5 risk)"| BS["Bet Screen"]
+    pause -->|"proceeds - escalation path (F5 risk)"| BS["Event Detail bet panel"]
     BS --> escalationConfirm{"confirms next bet?"}
     escalationConfirm -->|"no, reconsiders"| nextAction
     escalationConfirm -->|"yes - escalation path (F5 risk)"| AB
