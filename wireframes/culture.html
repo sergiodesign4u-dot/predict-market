@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Bet Screen (state: insufficient-balance (inline))</title>
+  <title>Wireframe - Category: Culture (logged in - success)</title>
 <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -363,6 +363,71 @@
     .pos.skeleton .sk-line { height: 10px; background: #d8d8d8; margin: 6px 0; }
     .pos.skeleton .w70 { width: 70%; } .pos.skeleton .w40 { width: 40%; }
     .pos-status { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+
+    /* ---- Event Detail two-column: scrolling content + sticky bet panel ---- */
+    .ed-layout { display: flex; flex-direction: column; }
+    .ed-main { flex: 1; min-width: 0; }
+    /* schematic probability chart (raised fidelity per design call: a drawn grey line, still no color) */
+    .chart-wrap { padding: 0; }
+    .chart-svg { width: 100%; height: 130px; display: block; border: 1px solid #bbb; background: #ededed; }
+    .chart-svg polyline { fill: none; stroke: #777; stroke-width: 1.5; }
+    .chart-svg .grid-l { stroke: #d2d2d2; stroke-width: 1; }
+    .chart-svg .nowline { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
+    .chart-svg text { fill: #777; font-size: 7px; }
+    .chart-cap { font-size: 10px; color: #555; margin: 4px 0 0; display: flex; justify-content: space-between; }
+    .ed-facts { display: flex; flex-wrap: wrap; gap: 16px; font-size: 10px; color: #555; padding: 8px 10px; border-top: 1px solid #ccc; }
+    .ed-facts b { display: block; font-size: 12px; color: #222; }
+
+    /* bet panel (desktop sticky sidebar) */
+    .bet-panel { display: none; }
+    .bet-panel .bp-inner { padding: 10px; display: flex; flex-direction: column; gap: 9px; }
+    .bp-head { display: flex; align-items: center; justify-content: space-between; }
+    .bp-head h3 { font-size: 13px; margin: 0; }
+    .bp-hint { font-size: 10px; color: #555; }
+    .bp-dir { display: flex; gap: 6px; }
+    .bp-side { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 10px 6px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .bp-side.sel { background: #b8b8b8; border-width: 2px; }
+    .bp-side .bp-pct { display: block; font-size: 11px; font-weight: normal; }
+    .bp-opts { display: flex; flex-direction: column; gap: 0; border: 1px solid #ccc; max-height: 168px; overflow: auto; }
+    .bp-opt { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-top: 1px solid #ddd; font-size: 12px; cursor: pointer; }
+    .bp-opt:first-child { border-top: none; }
+    .bp-opt.sel { background: #dcdcdc; font-weight: bold; }
+    .bp-opt .bp-opt-pct { margin-left: auto; border: 1px solid #999; background: #e0e0e0; padding: 0 5px; font-size: 11px; }
+
+    /* mobile sticky bet dock (collapsed bar above the bottom nav; taps expand to a sheet) */
+    .bet-dock { position: sticky; bottom: 52px; z-index: 4; background: #e2e2e2; border: 1px solid #999; border-bottom: none;
+      display: flex; align-items: center; gap: 6px; padding: 8px; }
+    .bet-dock .bp-side { padding: 11px 6px; }
+    .bet-dock .dock-meta { font-size: 9px; color: #555; flex: 0 0 auto; text-align: center; }
+    .bet-dock .dock-meta b { display: block; font-size: 12px; color: #222; }
+
+    @media (min-width: 640px) {
+      .ed-layout { flex-direction: row; align-items: flex-start; }
+      .ed-main { border-right: 1px solid #999; }
+      .bet-panel { display: block; flex: 0 0 300px; position: sticky; top: 8px; align-self: flex-start; }
+      .bet-dock { display: none; }
+    }
+
+    /* ---- Category page: side sub-category panel + filtered feed ---- */
+    .cat-layout { display: flex; flex-direction: column; gap: 0; }
+    .cat-main { flex: 1; min-width: 0; }
+    .subcat { background: #ededed; }
+    .subcat .zone-tag { background: #d2d2d2; }
+    .subcat-head { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; padding: 8px 10px 0; }
+    .subcat ul { list-style: none; margin: 0; padding: 8px; display: flex; gap: 6px; overflow-x: auto; flex-wrap: nowrap; }
+    .subcat li { flex: 0 0 auto; }
+    .subcat button { border: 1px solid #888; background: #d6d6d6; padding: 5px 9px; font-size: 11px; cursor: pointer;
+      white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+    .subcat li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .subcat .cnt { font-size: 9px; color: #555; border: 1px solid #bbb; background: #e8e8e8; padding: 0 4px; }
+    @media (min-width: 640px) {
+      .cat-layout { flex-direction: row; align-items: flex-start; }
+      .subcat { flex: 0 0 210px; position: sticky; top: 8px; border: 1px solid #999; }
+      .subcat ul { flex-direction: column; overflow: visible; flex-wrap: nowrap; }
+      .subcat button { width: 100%; justify-content: space-between; }
+    }
+    /* Category grid adapts to the width left by the sub-category rail (no fixed 4-col overflow). */
+    .cat-main .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
   </style>
 </head>
 <body>
@@ -409,7 +474,45 @@
           <li><a href="event-detail-logged-out-loading.html">loading</a></li>
         </ul>
       </li>
+      <li class="wf-note">Bet intent + states (reconcile, insufficient-balance, event-closed, processing, on-chain error) now live in the Event Detail bet panel - states to come (the standalone Bet modal was removed).</li>
       <li class="wf-note">Saved view - a filter over the feed, not a separate screen.</li>
+      <li class="wf-sec">Category pages (second-level nav -> own page)</li>
+      <li class="wf-screen">
+        <a href="politics.html">Politics</a>
+        <ul class="wf-states">
+          <li><a href="politics.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="crypto.html">Crypto</a>
+        <ul class="wf-states">
+          <li><a href="crypto.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="culture.html" class="active" aria-current="page">Culture</a>
+        <ul class="wf-states">
+          <li class="cur"><a href="culture.html">success / sub-categories (this page)</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="general.html">General</a>
+        <ul class="wf-states">
+          <li><a href="general.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
       <li class="wf-sec">Activation gate</li>
       <li class="wf-screen">
         <a href="sign-in.html">Sign In / Register</a>
@@ -430,18 +533,6 @@
           <li><a href="deposit-loading.html">loading (widget in-progress)</a></li>
           <li><a href="deposit-pending.html">pending (under review)</a></li>
           <li><a href="deposit-minimum-not-met.html">minimum-not-met</a></li>
-        </ul>
-      </li>
-      <li class="wf-sec">Bet</li>
-      <li class="wf-screen">
-        <a href="bet-screen.html" class="active" aria-current="page">Bet Screen</a>
-        <ul class="wf-states">
-          <li><a href="bet-screen.html">intent (base, logged out)</a></li>
-          <li><a href="bet-screen-reconcile.html">S5-reconcile (price moved)</a></li>
-          <li class="cur"><a href="bet-screen-insufficient-balance.html">insufficient-balance (this page)</a></li>
-          <li><a href="bet-screen-event-closed.html">event-closed</a></li>
-          <li><a href="bet-screen-error.html">error (on-chain, T3)</a></li>
-          <li><a href="bet-screen-processing.html">execute processing</a></li>
         </ul>
       </li>
       <li class="wf-sec">Resolution</li>
@@ -532,44 +623,392 @@
   </nav>
 
   <div class="page-label">
-    <strong>Wireframe:</strong> Bet Screen &nbsp;|&nbsp;
-    state: insufficient-balance (inline) &nbsp;|&nbsp;
+    <strong>Wireframe:</strong> Culture (category) &nbsp;|&nbsp;
+    logged in - state: success (Culture, sub-categories) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/bet-screen-insufficient-balance.html
+    file: wireframes/culture.html
   </div>
 
   <nav class="state-switch" aria-label="States of this screen">
-    <div class="ss-row"><span class="ss-label">State</span><a href="bet-screen.html">Intent</a><a href="bet-screen-reconcile.html">S5 reconcile</a><a href="bet-screen-insufficient-balance.html" aria-current="page">Insufficient balance</a><a href="bet-screen-event-closed.html">Event closed</a><a href="bet-screen-error.html">Error (on-chain)</a><a href="bet-screen-processing.html">Processing</a></div>
+    <div class="ss-row"><span class="ss-label">Auth</span><a href="culture.html" aria-current="page">Logged in</a><span style="opacity:.5;padding:2px 8px;">Logged out (rollout)</span></div>
+    <div class="ss-row"><span class="ss-label">State</span><a href="culture.html" aria-current="page">Success</a><span style="opacity:.5;padding:2px 8px;">empty</span><span style="opacity:.5;padding:2px 8px;">error</span><span style="opacity:.5;padding:2px 8px;">loading</span></div>
   </nav>
 
   <div class="device">
-    <div class="backdrop">
-      <span class="zone-tag" style="position:absolute;left:8px;bottom:8px;">zone: Bet Screen - insufficient-balance (inline: bet up to balance or deposit more)</span>
-      <span class="dim-note">underlying screen dimmed: Event Detail (YES tapped)</span>
-      <section class="sheet" aria-label="Place your bet">
-        <div class="grab"></div>
-        <div class="sheet-head">
-          <h2>Place your bet</h2>
-          <a href="event-detail.html"><button type="button" class="sheet-close" aria-label="Close">x</button></a>
+    <!-- Header (lean: logo = Events/home, right icon cluster) -->
+    <header class="app-header">
+      <span class="zone-tag">zone: header (lean, same at all widths; logo = Events home)</span>
+      <div class="row">
+        <div class="left">
+          <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          </button>
+          <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
         </div>
-        <div class="sheet-body">
-          <div>
-            <span class="field-label">Your side</span><br>
-            <span class="dir-pill">YES &middot; 38%</span>
-            <button type="button" class="quick" style="border:none;background:none;padding:0;"><span style="text-decoration:underline;font-size:11px;">switch to NO</span></button>
+        <div class="utility">
+          <div class="bal-toggle desk-only">
+            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
+            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
+            </button>
           </div>
-          <p class="fine" style="margin:0;">Will the US government shut down before March 1, 2027?</p>
-          <div>
-            <span class="field-label">Amount</span>
-            <div class="amount-row"><span class="amount-input">$25.00</span></div>
-            <div class="inline-error">You have $3.00. You can bet up to $3.00, or add funds to bet more.</div>
-            <div class="quick"><button type="button">$1</button><button type="button">$3 (max)</button></div>
-          </div>
-          <a href="deposit.html"><button type="button" class="confirm-btn">Add funds</button></a>
-          <button type="button" class="provider-btn" style="justify-content:center;">Bet $3.00 instead</button>
+          <button type="button" class="icon-btn desk-only" aria-label="Favorites">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
+          </button>
+          <span class="bell-wrap">
+            <button type="button" class="icon-btn" aria-label="Notifications, 3 unread">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+            </button>
+            <span class="badge-dot">3</span>
+          </span>
+          <details class="avatar-menu">
+            <summary aria-label="Account menu">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="dropdown" role="menu">
+              <span class="zone-tag">avatar dropdown (collapsed by default, click to open)</span>
+              <ul>
+                <li><button type="button" role="menuitem">My Profile</button></li>
+                <li><button type="button" role="menuitem">My Bets</button></li>
+                <li><button type="button" role="menuitem">Wallet / Deposit</button></li>
+                <li><button type="button" role="menuitem">How It Works</button></li>
+                <li><button type="button" role="menuitem">Logout</button></li>
+              </ul>
+            </div>
+          </details>
         </div>
-      </section>
-    </div>
+      </div>
+    </header>
+    <!-- Second-level navigation: categories route to their own pages (links) -->
+    <nav class="cat-nav" aria-label="Categories (second level)">
+      <span class="zone-tag">zone: second-level navigation (each category opens its own page)</span>
+      <ul>
+        <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
+        <li><a href="politics.html"><button type="button">Politics</button></a></li>
+        <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
+        <li aria-current="page"><a href="culture.html"><button type="button">Culture</button></a></li>
+        <li><a href="general.html"><button type="button">General</button></a></li>
+      </ul>
+    </nav>
+    <main class="feed">
+      <span class="zone-tag">zone: Culture category (sub-category rail + sort/frequency + filtered grid)</span>
+      <div class="cat-layout">
+      <nav class="subcat" aria-label="Culture sub-categories">
+        <span class="zone-tag">zone: sub-categories (left rail on desktop, scrolling chips on mobile; counts are sample data)</span>
+        <p class="subcat-head">Sub-categories</p>
+        <ul>
+        <li aria-current="page"><button type="button">All <span class="cnt">1.4K</span></button></li>
+        <li><button type="button">Movies <span class="cnt">180</span></button></li>
+        <li><button type="button">Music <span class="cnt">120</span></button></li>
+        <li><button type="button">Awards <span class="cnt">64</span></button></li>
+        <li><button type="button">TV & Streaming <span class="cnt">90</span></button></li>
+        <li><button type="button">Celebrities <span class="cnt">145</span></button></li>
+        <li><button type="button">Internet & Memes <span class="cnt">38</span></button></li>
+        <li><button type="button">Books <span class="cnt">22</span></button></li>
+        <li><button type="button">Gaming <span class="cnt">51</span></button></li>
+        </ul>
+      </nav>
+      <div class="cat-main">
+        <div class="feed-inner">
+        <div class="feed-head">
+          <h2 id="feedHeading">Culture</h2>
+          <div class="feed-controls">
+
+            <details class="filter-menu" id="sortMenu">
+              <summary aria-label="Sort by">
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
+                <span>Sort: <span id="sortCurrent">Trending</span></span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="filter-panel">
+                <span class="zone-tag">sort options</span>
+                <ul role="radiogroup" aria-label="Sort by">
+                  <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
+                  <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
+                  <li><label><input type="radio" name="sort" value="New"> New</label></li>
+                  <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
+                  <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
+                  <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
+                </ul>
+                <div class="reverse-row">
+                  <span>Reverse sort</span>
+                  <button type="button" class="toggle" role="switch" aria-checked="false">off</button>
+                </div>
+              </div>
+            </details>
+
+            <details class="filter-menu" id="freqMenu">
+              <summary aria-label="Filter by frequency">
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <span>Frequency: <span id="freqCurrent">All</span></span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="filter-panel">
+                <span class="zone-tag">event frequency (recurring markets)</span>
+                <ul role="radiogroup" aria-label="Frequency">
+                  <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
+                  <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
+                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
+                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
+                  <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
+                  <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
+                </ul>
+              </div>
+            </details>
+
+          </div>
+        </div>
+          <div class="grid">
+
+          <article class="card">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <a class="q" href="event-detail.html">Will the next lead actor for the Bond film be announced before December 31, 2026?</a>
+              </div>
+              <p class="prob-line">YES <span class="prob">47%</span></p>
+              <div class="yesno"><button type="button">YES</button><button type="button">NO</button></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $19,400</span><span>Closes: Dec 31, 2026</span></span>
+                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <a class="q" href="event-detail.html">Who will win Album of the Year at the 2027 Grammys?</a>
+              </div>
+              <div class="options">
+                <div class="opt-row"><span class="opt-name">Taylor Swift</span><span class="opt-prob">29%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+                <div class="opt-row"><span class="opt-name">Kendrick Lamar</span><span class="opt-prob">24%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+              </div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $44,500</span><span>Closes: Feb 1, 2027</span></span>
+                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <a class="q" href="event-detail.html">Will a single film cross $2B at the global box office in 2026?</a>
+              </div>
+              <p class="prob-line">YES <span class="prob">31%</span></p>
+              <div class="yesno"><button type="button">YES</button><button type="button">NO</button></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $27,800</span><span>Closes: Jan 1, 2027</span></span>
+                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <a class="q" href="event-detail.html">Will the most-streamed show of 2026 be a returning series?</a>
+              </div>
+              <p class="prob-line">YES <span class="prob">58%</span></p>
+              <div class="yesno"><button type="button">YES</button><button type="button">NO</button></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $15,900</span><span>Closes: Jan 1, 2027</span></span>
+                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <a class="q" href="event-detail.html">Who will win the 2027 Eurovision final?</a>
+              </div>
+              <div class="options">
+                <div class="opt-row"><span class="opt-name">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+                <div class="opt-row"><span class="opt-name">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+              </div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $61,500</span><span>Closes: May 15, 2027</span></span>
+                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <a class="q" href="event-detail.html">Will a reunion tour by a 1990s band be announced before 2027?</a>
+              </div>
+              <p class="prob-line">YES <span class="prob">63%</span></p>
+              <div class="yesno"><button type="button">YES</button><button type="button">NO</button></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $12,300</span><span>Closes: Jan 1, 2027</span></span>
+                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          </div>
+        </div>
+      </div>
+      </div>
+    </main>
+    <!-- Bottom navigation (mobile only) -->
+    <nav class="bottom-nav" aria-label="Primary (mobile)">
+      <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
+      <ul>
+        <li aria-current="page"><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
+          <span>Events</span>
+        </button></li>
+        <li><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          <span>My Bets</span>
+        </button></li>
+        <li><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
+          <span>Favorites</span>
+        </button></li>
+        <li><button type="button" aria-label="Portfolio, balance $142">
+          <span class="bn-bal">$142</span>
+          <span>Portfolio</span>
+        </button></li>
+      </ul>
+    </nav>
+    <!-- Footer (global element) -->
+    <footer class="app-footer">
+      <span class="zone-tag">zone: footer (global, reused on every screen; TBD = not in MVP)</span>
+      <div class="footer-inner">
+
+        <div class="footer-top">
+
+          <!-- Brand block: logo, tagline, social, language -->
+          <div class="footer-brand">
+            <span class="footer-logo">logo placeholder</span>
+            <p class="footer-tagline">Tagline placeholder <span class="tbd">TBD</span></p>
+            <div class="social-row" role="list" aria-label="Social media">
+              <a href="#" role="listitem" aria-label="X (Twitter)" title="X (Twitter)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Discord" title="Discord">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2l-1-2H8l-1 2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/><circle cx="10" cy="12" r="1.1"/><circle cx="14" cy="12" r="1.1"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Telegram" title="Telegram">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l6 2 2 6 3-4 5 4z"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Instagram" title="Instagram">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="16.6" cy="7.4" r="0.7"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="TikTok" title="TikTok">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5v9.5a3 3 0 1 1-2.5-3"/><path d="M11 5c.5 2.5 2.5 4 4.5 4"/></svg>
+              </a>
+            </div>
+            <details class="filter-menu lang-menu" id="langMenu">
+              <summary aria-label="Language (placeholder)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
+                <span id="langCurrent">English</span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                <span class="tbd">TBD</span>
+              </summary>
+              <div class="filter-panel">
+                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
+                <ul>
+                  <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
+                  <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
+                  <li><label><input type="radio" name="lang" value="Portuguese"> Portuguese</label></li>
+                  <li><label><input type="radio" name="lang" value="German"> German</label></li>
+                  <li><label><input type="radio" name="lang" value="French"> French</label></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <!-- Link columns -->
+          <div class="footer-cols">
+
+            <nav class="footer-col" aria-label="Markets">
+              <h3>Markets</h3>
+              <p class="sub-label">By category</p>
+              <ul>
+                <li><a href="#">Politics</a></li>
+                <li><a href="#">Crypto</a></li>
+                <li><a href="#">Culture</a></li>
+                <li><a href="#">General</a></li>
+                <li><a href="#">Sports</a> <span class="tbd">post-MVP</span></li>
+              </ul>
+              <p class="sub-label">By topic</p>
+              <ul>
+                <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
+                <li><a href="#">View all markets</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Product">
+              <h3>Product</h3>
+              <ul>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="#">Wallet</a></li>
+                <li><a href="#">My Bets</a></li>
+                <li><a href="#">API / Developers</a> <span class="tbd">post-MVP</span></li>
+                <li><a href="#">Status</a> <span class="tbd">TBD</span></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Support">
+              <h3>Support</h3>
+              <ul>
+                <li><a href="#">Help Center</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">FAQ</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Contact</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">How It Works</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Company">
+              <h3>Company</h3>
+              <ul>
+                <li><a href="#">About</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Careers</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Press</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Brand</a> <span class="tbd">TBD</span></li>
+              </ul>
+            </nav>
+
+          </div>
+        </div>
+
+        <!-- Legal strip -->
+        <div class="footer-legal">
+          <nav aria-label="Legal">
+            <ul class="legal-links">
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Responsible play</a></li>
+              <li><a href="#">Geo restrictions</a> <span class="tbd">TBD</span></li>
+            </ul>
+          </nav>
+          <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
+          <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.]</p>
+          <p>Copyright (c) Predict Market. Sample wireframe content.</p>
+        </div>
+
+      </div>
+    </footer>
 
   </div>
 
@@ -577,40 +1016,36 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>Pre-set direction (YES) + $5 default amount</strong> -&gt; MJ + FJ3: the real stake with low friction; side comes from the card / Event Detail tap, amount is pre-filled and quick-selectable.</li>
-        <li><strong>Fee and potential payout inline</strong> -&gt; transparency (design principle): "platform earns its fee only if you win"; payout depends on timing (AMM).</li>
-        <li><strong>Confirm fires the gate</strong> -&gt; intent is logged out; Confirm routes to Sign In, then Deposit (IA/flows.md confirmedIntent -&gt; gate).</li>
-        <li><strong>S5 reconcile</strong> -&gt; the AMM price can move during the gate; old vs new price is shown and the user re-confirms, or cancels (T16).</li>
-        <li><strong>insufficient-balance / event-closed / error / processing</strong> -&gt; deposit more or bet to balance; closed market exits to feed / My Bets; on-chain failure (T3) retries; the processing state is the transitional execute moment.</li>
+        <li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Culture here), each with its own structure. Trending stays the main feed (event-feed.html).</li>
+        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
+        <li><strong>Sort + Frequency on the heading row</strong> -&gt; feed controls carried over from the main feed; the Category dropdown is dropped here (the page IS the category).</li>
+        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome (two leading positions), question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li>
+        <li><strong>Browse screen</strong> -&gt; FJ1 (find the event), first layer of FJ2 and EJ2. Auth axis and empty / error / loading states come in the rollout.</li>
       </ol>
     </aside>
 
     <div class="nav-col">
       <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (main-flow spine)</span>
-<pre>Main-flow spine (MJ, News Junkie):
-
-Event Feed
-   v
-Event Detail
-   v
-[Bet Screen]   &lt;- current screen
-   v
-Sign In / Register
-   v
-Deposit
-   v
-Active Bets</pre>
-        <p class="ref">Flow position: MJ, after the YES/NO tap (IA/flows.md BS1 intent -&gt;
-          gate -&gt; ... -&gt; S5 reconcile -&gt; BS2 execute -&gt; Active Bets). Serves MJ, FJ3.</p>
+        <span class="zone-tag">on-page nav tree (where this sits)</span>
+<pre>Events (browse)
+   Event Feed  (Trending = main)
+   Politics / Crypto / Culture / General
+        ^ [Culture]   &lt;- current category page
+        v
+   Event Detail
+        v
+   Bet -> Sign In -> Deposit -> Active Bets</pre>
+        <p class="ref">A category page is a browse entry parallel to the main feed
+          (IA/sitemap.md second-level navigation). Same card pattern, scoped to one
+          category with a sub-category filter.</p>
       </section>
 
-      <section class="navtree" aria-label="States">
-        <span class="zone-tag">states of this screen</span>
-        <p class="ref">intent (base, logged out), S5-reconcile (price moved, re-confirm / T16),
-          insufficient-balance (inline), event-closed (resolved while on screen),
-          error (on-chain, T3 retry), execute processing (transitional). The base is intent,
-          so there is no separate success page: success is the move to Active Bets. Invoked overlay.</p>
+      <section class="navtree" aria-label="Rollout">
+        <span class="zone-tag">rollout (still to come)</span>
+        <p class="ref">Built: Politics, Crypto, Culture, General (success). Still to come:
+          each category's empty / error / loading states and the logged-out auth variant,
+          the real sub-category taxonomy per category, and the sitemap.md update
+          (category pages + sub-categories).</p>
       </section>
     </div>
 

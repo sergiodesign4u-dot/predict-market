@@ -340,7 +340,45 @@
           <li><a href="event-detail-logged-out-loading.html">loading</a></li>
         </ul>
       </li>
+      <li class="wf-note">Bet intent + states (reconcile, insufficient-balance, event-closed, processing, on-chain error) now live in the Event Detail bet panel - states to come (the standalone Bet modal was removed).</li>
       <li class="wf-note">Saved view - a filter over the feed, not a separate screen.</li>
+      <li class="wf-sec">Category pages (second-level nav -> own page)</li>
+      <li class="wf-screen">
+        <a href="politics.html">Politics</a>
+        <ul class="wf-states">
+          <li><a href="politics.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="crypto.html">Crypto</a>
+        <ul class="wf-states">
+          <li><a href="crypto.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="culture.html">Culture</a>
+        <ul class="wf-states">
+          <li><a href="culture.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="general.html">General</a>
+        <ul class="wf-states">
+          <li><a href="general.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
       <li class="wf-sec">Activation gate</li>
       <li class="wf-screen">
         <a href="sign-in.html">Sign In / Register</a>
@@ -361,18 +399,6 @@
           <li><a href="deposit-loading.html">loading (widget in-progress)</a></li>
           <li><a href="deposit-pending.html">pending (under review)</a></li>
           <li><a href="deposit-minimum-not-met.html">minimum-not-met</a></li>
-        </ul>
-      </li>
-      <li class="wf-sec">Bet</li>
-      <li class="wf-screen">
-        <a href="bet-screen.html">Bet Screen</a>
-        <ul class="wf-states">
-          <li><a href="bet-screen.html">intent (base, logged out)</a></li>
-          <li><a href="bet-screen-reconcile.html">S5-reconcile (price moved)</a></li>
-          <li><a href="bet-screen-insufficient-balance.html">insufficient-balance</a></li>
-          <li><a href="bet-screen-event-closed.html">event-closed</a></li>
-          <li><a href="bet-screen-error.html">error (on-chain, T3)</a></li>
-          <li><a href="bet-screen-processing.html">execute processing</a></li>
         </ul>
       </li>
       <li class="wf-sec">Resolution</li>
@@ -511,13 +537,13 @@
 
     <!-- Second-level navigation: categories -->
     <nav class="cat-nav" aria-label="Categories (second level)">
-      <span class="zone-tag">zone: second-level navigation (categories)</span>
+      <span class="zone-tag">zone: second-level navigation (each category opens its own page)</span>
       <ul>
-        <li aria-current="page"><button type="button">Trending</button></li>
-        <li><button type="button">Politics</button></li>
-        <li><button type="button">Crypto</button></li>
-        <li><button type="button">Culture</button></li>
-        <li><button type="button">General</button></li>
+        <li aria-current="page"><a href="event-feed.html"><button type="button">Trending</button></a></li>
+        <li><a href="politics.html"><button type="button">Politics</button></a></li>
+        <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
+        <li><a href="culture.html"><button type="button">Culture</button></a></li>
+        <li><a href="general.html"><button type="button">General</button></a></li>
       </ul>
     </nav>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Event Detail (logged out - state: success / pre-selected)</title>
+  <title>Wireframe - Event Detail (logged out - state: success / pre-selected (binary))</title>
 <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -363,6 +363,71 @@
     .pos.skeleton .sk-line { height: 10px; background: #d8d8d8; margin: 6px 0; }
     .pos.skeleton .w70 { width: 70%; } .pos.skeleton .w40 { width: 40%; }
     .pos-status { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+
+    /* ---- Event Detail two-column: scrolling content + sticky bet panel ---- */
+    .ed-layout { display: flex; flex-direction: column; }
+    .ed-main { flex: 1; min-width: 0; }
+    /* schematic probability chart (raised fidelity per design call: a drawn grey line, still no color) */
+    .chart-wrap { padding: 0; }
+    .chart-svg { width: 100%; height: 130px; display: block; border: 1px solid #bbb; background: #ededed; }
+    .chart-svg polyline { fill: none; stroke: #777; stroke-width: 1.5; }
+    .chart-svg .grid-l { stroke: #d2d2d2; stroke-width: 1; }
+    .chart-svg .nowline { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
+    .chart-svg text { fill: #777; font-size: 7px; }
+    .chart-cap { font-size: 10px; color: #555; margin: 4px 0 0; display: flex; justify-content: space-between; }
+    .ed-facts { display: flex; flex-wrap: wrap; gap: 16px; font-size: 10px; color: #555; padding: 8px 10px; border-top: 1px solid #ccc; }
+    .ed-facts b { display: block; font-size: 12px; color: #222; }
+
+    /* bet panel (desktop sticky sidebar) */
+    .bet-panel { display: none; }
+    .bet-panel .bp-inner { padding: 10px; display: flex; flex-direction: column; gap: 9px; }
+    .bp-head { display: flex; align-items: center; justify-content: space-between; }
+    .bp-head h3 { font-size: 13px; margin: 0; }
+    .bp-hint { font-size: 10px; color: #555; }
+    .bp-dir { display: flex; gap: 6px; }
+    .bp-side { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 10px 6px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .bp-side.sel { background: #b8b8b8; border-width: 2px; }
+    .bp-side .bp-pct { display: block; font-size: 11px; font-weight: normal; }
+    .bp-opts { display: flex; flex-direction: column; gap: 0; border: 1px solid #ccc; max-height: 168px; overflow: auto; }
+    .bp-opt { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-top: 1px solid #ddd; font-size: 12px; cursor: pointer; }
+    .bp-opt:first-child { border-top: none; }
+    .bp-opt.sel { background: #dcdcdc; font-weight: bold; }
+    .bp-opt .bp-opt-pct { margin-left: auto; border: 1px solid #999; background: #e0e0e0; padding: 0 5px; font-size: 11px; }
+
+    /* mobile sticky bet dock (collapsed bar above the bottom nav; taps expand to a sheet) */
+    .bet-dock { position: sticky; bottom: 52px; z-index: 4; background: #e2e2e2; border: 1px solid #999; border-bottom: none;
+      display: flex; align-items: center; gap: 6px; padding: 8px; }
+    .bet-dock .bp-side { padding: 11px 6px; }
+    .bet-dock .dock-meta { font-size: 9px; color: #555; flex: 0 0 auto; text-align: center; }
+    .bet-dock .dock-meta b { display: block; font-size: 12px; color: #222; }
+
+    @media (min-width: 640px) {
+      .ed-layout { flex-direction: row; align-items: flex-start; }
+      .ed-main { border-right: 1px solid #999; }
+      .bet-panel { display: block; flex: 0 0 300px; position: sticky; top: 8px; align-self: flex-start; }
+      .bet-dock { display: none; }
+    }
+
+    /* ---- Category page: side sub-category panel + filtered feed ---- */
+    .cat-layout { display: flex; flex-direction: column; gap: 0; }
+    .cat-main { flex: 1; min-width: 0; }
+    .subcat { background: #ededed; }
+    .subcat .zone-tag { background: #d2d2d2; }
+    .subcat-head { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; padding: 8px 10px 0; }
+    .subcat ul { list-style: none; margin: 0; padding: 8px; display: flex; gap: 6px; overflow-x: auto; flex-wrap: nowrap; }
+    .subcat li { flex: 0 0 auto; }
+    .subcat button { border: 1px solid #888; background: #d6d6d6; padding: 5px 9px; font-size: 11px; cursor: pointer;
+      white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+    .subcat li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .subcat .cnt { font-size: 9px; color: #555; border: 1px solid #bbb; background: #e8e8e8; padding: 0 4px; }
+    @media (min-width: 640px) {
+      .cat-layout { flex-direction: row; align-items: flex-start; }
+      .subcat { flex: 0 0 210px; position: sticky; top: 8px; border: 1px solid #999; }
+      .subcat ul { flex-direction: column; overflow: visible; flex-wrap: nowrap; }
+      .subcat button { width: 100%; justify-content: space-between; }
+    }
+    /* Category grid adapts to the width left by the sub-category rail (no fixed 4-col overflow). */
+    .cat-main .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
   </style>
 </head>
 <body>
@@ -409,7 +474,45 @@
           <li><a href="event-detail-logged-out-loading.html">loading</a></li>
         </ul>
       </li>
+      <li class="wf-note">Bet intent + states (reconcile, insufficient-balance, event-closed, processing, on-chain error) now live in the Event Detail bet panel - states to come (the standalone Bet modal was removed).</li>
       <li class="wf-note">Saved view - a filter over the feed, not a separate screen.</li>
+      <li class="wf-sec">Category pages (second-level nav -> own page)</li>
+      <li class="wf-screen">
+        <a href="politics.html">Politics</a>
+        <ul class="wf-states">
+          <li><a href="politics.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="crypto.html">Crypto</a>
+        <ul class="wf-states">
+          <li><a href="crypto.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="culture.html">Culture</a>
+        <ul class="wf-states">
+          <li><a href="culture.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="general.html">General</a>
+        <ul class="wf-states">
+          <li><a href="general.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
       <li class="wf-sec">Activation gate</li>
       <li class="wf-screen">
         <a href="sign-in.html">Sign In / Register</a>
@@ -430,18 +533,6 @@
           <li><a href="deposit-loading.html">loading (widget in-progress)</a></li>
           <li><a href="deposit-pending.html">pending (under review)</a></li>
           <li><a href="deposit-minimum-not-met.html">minimum-not-met</a></li>
-        </ul>
-      </li>
-      <li class="wf-sec">Bet</li>
-      <li class="wf-screen">
-        <a href="bet-screen.html">Bet Screen</a>
-        <ul class="wf-states">
-          <li><a href="bet-screen.html">intent (base, logged out)</a></li>
-          <li><a href="bet-screen-reconcile.html">S5-reconcile (price moved)</a></li>
-          <li><a href="bet-screen-insufficient-balance.html">insufficient-balance</a></li>
-          <li><a href="bet-screen-event-closed.html">event-closed</a></li>
-          <li><a href="bet-screen-error.html">error (on-chain, T3)</a></li>
-          <li><a href="bet-screen-processing.html">execute processing</a></li>
         </ul>
       </li>
       <li class="wf-sec">Resolution</li>
@@ -533,7 +624,7 @@
 
   <div class="page-label">
     <strong>Wireframe:</strong> Event Detail &nbsp;|&nbsp;
-    logged out - state: success / pre-selected &nbsp;|&nbsp;
+    logged out - state: success / pre-selected (binary) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
     file: wireframes/event-detail-logged-out.html
   </div>
@@ -568,79 +659,116 @@
         </div>
       </div>
     </header>
-    <!-- Second-level navigation: categories (this event sits in Politics) -->
+    <!-- Second-level navigation: categories route to their own pages (links) -->
     <nav class="cat-nav" aria-label="Categories (second level)">
       <span class="zone-tag">zone: second-level navigation (categories; active = this event's category)</span>
       <ul>
-        <li><button type="button">Trending</button></li>
-        <li aria-current="page"><button type="button">Politics</button></li>
-        <li><button type="button">Crypto</button></li>
-        <li><button type="button">Culture</button></li>
-        <li><button type="button">General</button></li>
+        <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
+        <li aria-current="page"><a href="politics.html"><button type="button">Politics</button></a></li>
+        <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
+        <li><a href="culture.html"><button type="button">Culture</button></a></li>
+        <li><a href="general.html"><button type="button">General</button></a></li>
       </ul>
     </nav>
     <main class="feed">
-      <span class="zone-tag">zone: event detail (context before the bet: chart, why-this-price, resolution, YES/NO CTA)</span>
-      <div class="feed-inner">
-        <article class="card">
-          <p class="preselect-note">Pre-selected entry: you tapped <strong>YES</strong> on the card, so YES is highlighted in the bet bar below. You can switch to NO before you bet, or read on first.</p>
-          <div class="ed-head">
-            <span class="ed-thumb">thumbnail placeholder</span>
-            <div>
-              <span class="ed-cat">Politics &middot; One-time market</span>
-              <h2 class="ed-q">Will the US government shut down before March 1, 2027?</h2>
-              <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+      <span class="zone-tag">zone: event detail (binary: chart, facts, why-this-price, resolution + sticky bet panel)</span>
+      <div class="ed-layout">
+        <div class="ed-main">
+          <article class="card" style="border:none;">
+            <div class="ed-head">
+              <span class="ed-thumb">thumbnail placeholder</span>
+              <div>
+                <span class="ed-cat">Politics &middot; One-time market</span>
+                <h2 class="ed-q">Will the US government shut down before March 1, 2027?</h2>
+                <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+              </div>
             </div>
+          </article>
+          <section class="ed-section">
+            <h3>Price chart</h3>
+            <div class="chart-wrap">
+              <svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" role="img" aria-label="YES probability over the last 30 days (schematic)">
+                <line class="grid-l" x1="0" y1="25" x2="300" y2="25"/>
+                <line class="grid-l" x1="0" y1="50" x2="300" y2="50"/>
+                <line class="grid-l" x1="0" y1="75" x2="300" y2="75"/>
+                <polyline points="0,58 25,55 50,63 75,50 100,57 125,48 150,54 175,46 200,52 225,45 250,51 275,44 300,62"/>
+                <line class="nowline" x1="300" y1="0" x2="300" y2="100"/>
+              </svg>
+              <p class="chart-cap"><span>30 days ago</span><span>1d &middot; 1w &middot; 1m &middot; all</span><span>YES 38% now</span></p>
+            </div>
+          </section>
+
+          <div class="ed-facts">
+            <span>Volume<b>$84,200</b></span>
+            <span>Liquidity<b>$31,500</b></span>
+            <span>Closes<b>Mar 1, 2027</b></span>
+            <span>Frequency<b>One-time</b></span>
+            <span>Bookmark<b>save event</b></span>
           </div>
-          <p class="meta" style="display:flex;justify-content:space-between;gap:8px;font-size:10px;border-top:1px solid #ccc;padding:6px 10px;margin:0;">
-            <span class="meta-txt" style="display:flex;flex-wrap:wrap;gap:10px;"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span><span>Frequency: One-time</span></span>
-            <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Bookmark">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-            </button>
-          </p>
-        </article>
-
-        <section class="ed-section">
-          <h3>Price chart</h3>
-          <div class="chart-box">probability chart placeholder (YES % over time, last 30 days)</div>
-        </section>
-
-        <section class="ed-section">
-          <h3>Why this price</h3>
-          <p class="resolution">The market prices YES at 38%. Funding talks have stalled twice this quarter, but both sides have settled before the deadline in the last three cycles. Below is what is moving the number.</p>
-          <div class="args">
-            <div class="arg-col">
-              <h4>Arguments for YES</h4>
-              <ul>
-                <li>Budget negotiations stalled in committee with no scheduled vote.</li>
-                <li>A bloc of legislators has publicly committed to opposing the stopgap bill.</li>
-                <li>Only 9 working days remain before the funding deadline.</li>
-              </ul>
+          <section class="ed-section">
+            <h3>Why this price</h3>
+            <p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
+            <div class="args">
+              <div class="arg-col">
+                <h4>For YES</h4>
+                <ul>
+                  <li>Budget talks stalled in committee, no scheduled vote.</li>
+                  <li>A bloc has committed to opposing the stopgap bill.</li>
+                </ul>
+              </div>
+              <div class="arg-col">
+                <h4>For NO</h4>
+                <ul>
+                  <li>Last three deadlines met with short-term funding.</li>
+                  <li>Both parties signalled willingness to extend.</li>
+                </ul>
+              </div>
             </div>
-            <div class="arg-col">
-              <h4>Arguments for NO</h4>
-              <ul>
-                <li>The last three deadlines were resolved with last-minute short-term funding.</li>
-                <li>Leadership from both parties has signalled willingness to extend.</li>
-                <li>A shutdown carries direct political cost in an election year.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+          </section>
 
-        <section class="ed-section">
-          <h3>Resolution conditions</h3>
-          <p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a partial or full government shutdown that begins before 00:00 ET on March 1, 2027.<br>
-          <strong>Resolves NO</strong> if funding is in place through that date.<br>
-          <strong>Authoritative source:</strong> official notices from the US Office of Management and Budget. Resolved by the Predict Market team.</p>
-        </section>
-      </div>
-        <div class="cta-bar">
-          <span class="zone-tag" style="position:absolute;left:0;top:-16px;">zone: bet CTA (taps route to Bet Screen, MJ)</span>
-          <a href="bet-screen.html" style="flex:1;"><button type="button" style="width:100%;">YES &middot; 38%</button></a>
-          <a href="bet-screen.html" style="flex:1;"><button type="button" style="width:100%;">NO &middot; 62%</button></a>
+          <section class="ed-section">
+            <h3>Resolution conditions</h3>
+            <p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
+            <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Predict Market team.</p>
+          </section>
         </div>
+          <aside class="bet-panel">
+            <span class="zone-tag">zone: bet panel (sticky right rail; fast entry, MJ). Confirm fires the gate.</span>
+            <div class="bp-inner">
+              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+              <div class="bp-dir">
+                <button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button>
+                <button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button>
+              </div>
+              <div>
+                <span class="field-label">Amount</span>
+                <div class="amount-row"><span class="amount-input">$5.00</span></div>
+                <div class="quick">
+                  <button type="button" class="sel">$5</button>
+                  <button type="button">$10</button>
+                  <button type="button">$25</button>
+                  <button type="button">$50</button>
+                </div>
+              </div>
+              <div>
+                <div class="line"><span>Price now</span><span>38%</span></div>
+                <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+                <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+                <div class="line"><span>Your balance</span><span>$42.00</span></div>
+              </div>
+              <a href="sign-in.html"><button type="button" class="confirm-btn">Confirm bet</button></a>
+              <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM pricing). Confirm signs you in, then deposits if needed.</p>
+            </div>
+          </aside>
+      </div>
     </main>
+      <!-- Mobile sticky bet dock (above the bottom nav; taps expand to a confirm sheet) -->
+      <div class="bet-dock" aria-label="Place your bet">
+        <button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button>
+        <button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button>
+        <span class="dock-meta">$5 to win<b>$13.20</b></span>
+        <a href="sign-in.html"><button type="button" class="confirm-btn" style="width:auto;padding:11px 14px;">Bet</button></a>
+      </div>
     <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <span class="zone-tag">zone: bottom nav (mobile only; logged-out slot 4 = Sign in)</span>
@@ -790,10 +918,11 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>Pre-selected entry</strong> -&gt; arriving from a YES/NO card tap highlights that side here (IA/flows.md trigger-entry edge). The bet is still placed from this screen, nothing is bypassed.</li>
-        <li><strong>Price chart + Why this price (YES / NO arguments)</strong> -&gt; FJ2 differentiator: no competitor explains the price at this depth. This is where the information edge (EJ1) forms.</li>
-        <li><strong>Resolution conditions + authoritative source</strong> -&gt; trust signal (EJ2, design principle "trust signals everywhere"): the user knows exactly what counts as YES and who resolves it.</li>
-        <li><strong>YES / NO CTA bar</strong> -&gt; MJ: tapping routes to the Bet Screen (IA/flows.md wantsBet -&gt; BS1). Present logged-in and logged-out; the auth gate fires later at Confirm.</li>
+        <li><strong>Sticky bet panel (right rail on desktop, bottom dock on mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while the user scrolls the context, so an informed user can stake immediately. Replaces the old bet modal; the side / option arrives pre-selected from the card tap (IA/flows.md trigger-entry).</li>
+        <li><strong>Price chart (schematic line)</strong> + <strong>Why this price</strong> -&gt; FJ2 differentiator: no competitor explains the price at this depth. Why-this-price sits below the chart and facts, not above the fold, so the bet panel leads.</li>
+        <li><strong>Facts row (volume, liquidity, closes, frequency)</strong> -&gt; Polymarket / Kalshi-style at-a-glance market data.</li>
+        <li><strong>Resolution conditions + source</strong> -&gt; trust signal (EJ2): exactly what counts as YES and who resolves it.</li>
+        <li><strong>Confirm fires the gate</strong> -&gt; Confirm routes to Sign In, then Deposit (IA/flows.md confirmedIntent -&gt; gate). Sign In and Deposit stay as modals; the bet intent itself is no longer a modal.</li>
         <li><strong>resolved-while-reading</strong> -&gt; the event can close while open; with a position held it routes to the result (Win/Loss, planned) via My Bets, else back to the feed.</li>
       </ol>
     </aside>
@@ -805,26 +934,23 @@
 
 Event Feed
    v
-[Event Detail]   &lt;- current screen
+[Event Detail]   &lt;- current screen (bet panel inline)
    v
-Bet Screen
+Sign In / Register   (gate, modal)
    v
-Sign In / Register
-   v
-Deposit
+Deposit   (gate, modal)
    v
 Active Bets    (MJ success, T14)</pre>
-        <p class="ref">Flow position: MJ, one node after Event Feed (IA/flows.md MJ,
-          found -&gt; Event Detail -&gt; wantsBet -&gt; Bet Screen). Core node of FJ2.
+        <p class="ref">Flow position: MJ, one node after Event Feed. The Bet intent now
+          lives here as a sticky panel; the gate (Sign In, Deposit) fires on Confirm.
           Serves FJ2, MJ, EJ1.</p>
       </section>
 
       <section class="navtree" aria-label="States">
         <span class="zone-tag">states of this screen</span>
-        <p class="ref">success / pre-selected (base), error (T8 load failure, retry returns here),
-          loading (event data fetching), resolved-while-reading (logged-in only: market
-          closed mid-read). Logged-out carries success / error / loading; the body and
-          context are identical, only the header differs (no account).</p>
+        <p class="ref">success / pre-selected (base; binary here, multi-outcome variant to come),
+          error (T8 load failure), loading, resolved-while-reading (logged-in only).
+          Logged-out carries success / error / loading; body identical, header differs.</p>
       </section>
     </div>
 

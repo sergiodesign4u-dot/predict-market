@@ -363,6 +363,71 @@
     .pos.skeleton .sk-line { height: 10px; background: #d8d8d8; margin: 6px 0; }
     .pos.skeleton .w70 { width: 70%; } .pos.skeleton .w40 { width: 40%; }
     .pos-status { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+
+    /* ---- Event Detail two-column: scrolling content + sticky bet panel ---- */
+    .ed-layout { display: flex; flex-direction: column; }
+    .ed-main { flex: 1; min-width: 0; }
+    /* schematic probability chart (raised fidelity per design call: a drawn grey line, still no color) */
+    .chart-wrap { padding: 0; }
+    .chart-svg { width: 100%; height: 130px; display: block; border: 1px solid #bbb; background: #ededed; }
+    .chart-svg polyline { fill: none; stroke: #777; stroke-width: 1.5; }
+    .chart-svg .grid-l { stroke: #d2d2d2; stroke-width: 1; }
+    .chart-svg .nowline { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
+    .chart-svg text { fill: #777; font-size: 7px; }
+    .chart-cap { font-size: 10px; color: #555; margin: 4px 0 0; display: flex; justify-content: space-between; }
+    .ed-facts { display: flex; flex-wrap: wrap; gap: 16px; font-size: 10px; color: #555; padding: 8px 10px; border-top: 1px solid #ccc; }
+    .ed-facts b { display: block; font-size: 12px; color: #222; }
+
+    /* bet panel (desktop sticky sidebar) */
+    .bet-panel { display: none; }
+    .bet-panel .bp-inner { padding: 10px; display: flex; flex-direction: column; gap: 9px; }
+    .bp-head { display: flex; align-items: center; justify-content: space-between; }
+    .bp-head h3 { font-size: 13px; margin: 0; }
+    .bp-hint { font-size: 10px; color: #555; }
+    .bp-dir { display: flex; gap: 6px; }
+    .bp-side { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 10px 6px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .bp-side.sel { background: #b8b8b8; border-width: 2px; }
+    .bp-side .bp-pct { display: block; font-size: 11px; font-weight: normal; }
+    .bp-opts { display: flex; flex-direction: column; gap: 0; border: 1px solid #ccc; max-height: 168px; overflow: auto; }
+    .bp-opt { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-top: 1px solid #ddd; font-size: 12px; cursor: pointer; }
+    .bp-opt:first-child { border-top: none; }
+    .bp-opt.sel { background: #dcdcdc; font-weight: bold; }
+    .bp-opt .bp-opt-pct { margin-left: auto; border: 1px solid #999; background: #e0e0e0; padding: 0 5px; font-size: 11px; }
+
+    /* mobile sticky bet dock (collapsed bar above the bottom nav; taps expand to a sheet) */
+    .bet-dock { position: sticky; bottom: 52px; z-index: 4; background: #e2e2e2; border: 1px solid #999; border-bottom: none;
+      display: flex; align-items: center; gap: 6px; padding: 8px; }
+    .bet-dock .bp-side { padding: 11px 6px; }
+    .bet-dock .dock-meta { font-size: 9px; color: #555; flex: 0 0 auto; text-align: center; }
+    .bet-dock .dock-meta b { display: block; font-size: 12px; color: #222; }
+
+    @media (min-width: 640px) {
+      .ed-layout { flex-direction: row; align-items: flex-start; }
+      .ed-main { border-right: 1px solid #999; }
+      .bet-panel { display: block; flex: 0 0 300px; position: sticky; top: 8px; align-self: flex-start; }
+      .bet-dock { display: none; }
+    }
+
+    /* ---- Category page: side sub-category panel + filtered feed ---- */
+    .cat-layout { display: flex; flex-direction: column; gap: 0; }
+    .cat-main { flex: 1; min-width: 0; }
+    .subcat { background: #ededed; }
+    .subcat .zone-tag { background: #d2d2d2; }
+    .subcat-head { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; padding: 8px 10px 0; }
+    .subcat ul { list-style: none; margin: 0; padding: 8px; display: flex; gap: 6px; overflow-x: auto; flex-wrap: nowrap; }
+    .subcat li { flex: 0 0 auto; }
+    .subcat button { border: 1px solid #888; background: #d6d6d6; padding: 5px 9px; font-size: 11px; cursor: pointer;
+      white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+    .subcat li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .subcat .cnt { font-size: 9px; color: #555; border: 1px solid #bbb; background: #e8e8e8; padding: 0 4px; }
+    @media (min-width: 640px) {
+      .cat-layout { flex-direction: row; align-items: flex-start; }
+      .subcat { flex: 0 0 210px; position: sticky; top: 8px; border: 1px solid #999; }
+      .subcat ul { flex-direction: column; overflow: visible; flex-wrap: nowrap; }
+      .subcat button { width: 100%; justify-content: space-between; }
+    }
+    /* Category grid adapts to the width left by the sub-category rail (no fixed 4-col overflow). */
+    .cat-main .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
   </style>
 </head>
 <body>
@@ -409,7 +474,45 @@
           <li><a href="event-detail-logged-out-loading.html">loading</a></li>
         </ul>
       </li>
+      <li class="wf-note">Bet intent + states (reconcile, insufficient-balance, event-closed, processing, on-chain error) now live in the Event Detail bet panel - states to come (the standalone Bet modal was removed).</li>
       <li class="wf-note">Saved view - a filter over the feed, not a separate screen.</li>
+      <li class="wf-sec">Category pages (second-level nav -> own page)</li>
+      <li class="wf-screen">
+        <a href="politics.html">Politics</a>
+        <ul class="wf-states">
+          <li><a href="politics.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="crypto.html">Crypto</a>
+        <ul class="wf-states">
+          <li><a href="crypto.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="culture.html">Culture</a>
+        <ul class="wf-states">
+          <li><a href="culture.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="general.html">General</a>
+        <ul class="wf-states">
+          <li><a href="general.html">success / sub-categories</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
       <li class="wf-sec">Activation gate</li>
       <li class="wf-screen">
         <a href="sign-in.html" class="active" aria-current="page">Sign In / Register</a>
@@ -430,18 +533,6 @@
           <li><a href="deposit-loading.html">loading (widget in-progress)</a></li>
           <li><a href="deposit-pending.html">pending (under review)</a></li>
           <li><a href="deposit-minimum-not-met.html">minimum-not-met</a></li>
-        </ul>
-      </li>
-      <li class="wf-sec">Bet</li>
-      <li class="wf-screen">
-        <a href="bet-screen.html">Bet Screen</a>
-        <ul class="wf-states">
-          <li><a href="bet-screen.html">intent (base, logged out)</a></li>
-          <li><a href="bet-screen-reconcile.html">S5-reconcile (price moved)</a></li>
-          <li><a href="bet-screen-insufficient-balance.html">insufficient-balance</a></li>
-          <li><a href="bet-screen-event-closed.html">event-closed</a></li>
-          <li><a href="bet-screen-error.html">error (on-chain, T3)</a></li>
-          <li><a href="bet-screen-processing.html">execute processing</a></li>
         </ul>
       </li>
       <li class="wf-sec">Resolution</li>
@@ -545,12 +636,12 @@
   <div class="device">
     <div class="backdrop">
       <span class="zone-tag" style="position:absolute;left:8px;bottom:8px;">zone: Sign In / Register (modal on desktop, bottom sheet on mobile; social login, FJ3)</span>
-      <span class="dim-note">underlying screen dimmed: Bet Screen (gate fired at Confirm)</span>
+      <span class="dim-note">underlying screen dimmed: Event Detail (Confirm in the bet panel)</span>
       <section class="sheet" aria-label="Sign in or create account">
         <div class="grab"></div>
         <div class="sheet-head">
           <h2>Sign in or create account</h2>
-          <a href="bet-screen.html"><button type="button" class="sheet-close" aria-label="Close">x</button></a>
+          <a href="event-detail.html"><button type="button" class="sheet-close" aria-label="Close">x</button></a>
         </div>
         <div class="sheet-body">
           <p class="fine">You are about to place a bet. Sign in or create an account to continue. It takes a few seconds.</p>
@@ -592,9 +683,7 @@
 
 Event Feed
    v
-Event Detail
-   v
-Bet Screen   (gate fires at Confirm)
+Event Detail   (bet panel; Confirm fires the gate)
    v
 [Sign In / Register]   &lt;- current screen
    v

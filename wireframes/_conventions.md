@@ -118,6 +118,39 @@ structure, different content.
     History tab stay `planned`. Generators: scratchpad `_shell.py` +
     `gen_event_detail.py` / `gen_active_bets.py` / `gen_overlays.py` / `resync.py`.
 
+### 5b. Wireframe revision pass (post Step 6, design-led)
+
+Decisions taken while reviewing the built screens, superseding the matching
+earlier rules:
+
+- **Bet entry is an inline sticky panel on Event Detail, not a modal.** The
+  standalone Bet modal (the old `bet-screen*.html`) is removed. The bet panel is
+  a sticky right rail on desktop and a sticky bottom dock on mobile (taps expand
+  to a confirm sheet), so an informed user can stake while scrolling the context.
+  Confirm fires the gate; **Sign In and Deposit stay modals**. The bet states
+  (intent, S5-reconcile, insufficient-balance, event-closed, on-chain error,
+  execute processing) become states of this panel (to be built on Event Detail).
+  Supersedes the "Bet Screen = invoked overlay" line in convention 5.
+- **Event Detail content order:** event header, then the schematic price chart and
+  facts row, then Why this price (FJ2) lower, then Resolution. The bet panel leads
+  visually; the narrative is below the fold.
+- **Price chart fidelity:** a drawn schematic line (still grey, no color), a
+  deliberate step up from the labeled-placeholder rule in Addition A for this one
+  element (design call). Money values and the % stay real sample numbers.
+- **Category pages (second-level nav -> own page).** Each category opens its own
+  page (`politics.html`, `crypto.html`, `culture.html`, `general.html`), not an
+  in-feed toggle. Layout: a sub-category side rail (left sticky on desktop,
+  scrolling chips on mobile) with sample counts, plus Sort + Frequency on the
+  heading row and the category-scoped card grid. The grid is `auto-fill`
+  (minmax 240px) so it fits the width left by the rail (no fixed-4-col overflow).
+  Sub-category taxonomy and counts are illustrative sample data (Polymarket /
+  Kalshi-modelled). Open: per-category empty / error / loading + logged-out auth
+  variants, and the `sitemap.md` update (category pages + sub-categories).
+- **Open decision (not built): how Sign In / Deposit dialogs are presented** -
+  standalone pages (current, for state review) vs a shared in-page overlay opened
+  over the current page (more interactive, single-source via the shell). To be
+  decided before the gate is wired interactively.
+
 ### 6. Deferred to later phases (Concept onward), not allowed in wireframes
 
 Not part of the wireframe deliverable and not to appear on any wireframe page:
