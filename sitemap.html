@@ -204,8 +204,17 @@
 
 <main>
 
-<div role="note" style="margin:16px auto;max-width:1000px;padding:12px 16px;border:1px solid #b9892b;border-left:4px solid #b9892b;background:rgba(185,137,43,0.12);color:#e8d9b0;font-size:14px;line-height:1.5;border-radius:6px;">
-  <strong>Revision in progress.</strong> The navigation shown below reflects the earlier model. It was revised in the wireframe pass: lean desktop header (logo = Events, hamburger reserved), Portfolio / Cash balance swap, mobile bottom nav = Events / My Bets / Favorites / Portfolio, Notifications as a header bell on both breakpoints, categories as a second-level sub-nav. Source of truth: <code>IA/sitemap.md</code> (already updated). This visualization will be re-synced once the wireframe navigation stabilizes.
+<div role="note" style="margin:16px auto;max-width:1000px;padding:12px 16px;border:1px solid #3a7a4a;border-left:4px solid #5fdb8f;background:rgba(95,219,143,0.10);color:#bfe9cf;font-size:14px;line-height:1.5;border-radius:6px;">
+  <strong>Synced with the wireframe build.</strong> Current navigation: lean header (logo = Events, hamburger reserved), Portfolio / Cash balance swap, mobile bottom nav = Events / My Bets / Favorites / Portfolio, Notifications as a header bell, categories as second-level pages. The wireframe build pass (summary below) revised several structural decisions; where this page's older rationale prose still says "Bet Screen", read it as the Event Detail bet panel. Source of truth: <code>IA/sitemap.md</code>.
+</div>
+
+<div role="note" style="margin:12px auto 0;max-width:1000px;padding:12px 16px;border:1px solid #2a3a55;background:rgba(95,168,255,0.07);color:#bcd; font-size:13px;line-height:1.6;border-radius:6px;">
+  <strong style="color:#9cf">Wireframe build pass - structural revisions (authoritative):</strong>
+  <ol style="margin:8px 0 0 18px;padding:0">
+    <li><strong>Category pages are real browse screens</strong> - each second-level category (Politics / Crypto / Culture / General) opens its own page with a sub-category side rail + Sort / Frequency, with the auth axis and success / empty / error / loading states. <strong>Sub-category</strong> is a new Event attribute.</li>
+    <li><strong>Betting is an inline panel on Event Detail</strong>, not a standalone Bet Screen. The bet states (intent, insufficient-balance, S5-reconcile, processing, on-chain error) are Event Detail bet-panel states; event-closed = the resolved state. Event Detail has binary and multi-outcome success views.</li>
+    <li><strong>Sign In / Register and Deposit are shared in-page dialogs</strong> opened over the current page (close stays on the page; Sign In chains to Deposit). Win / Loss remain invoked overlays.</li>
+  </ol>
 </div>
 
 <!-- HERO -->
@@ -445,13 +454,17 @@
     <div class="screen-item">
       <div class="screen-name">Event Detail</div>
       <div class="screen-jobs"><span class="job-badge">FJ2</span><span class="job-badge">MJ</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
-      <div class="screen-desc">One event, full view: probability, chart, narrative context (why this price), resolution conditions, source. CTA: YES / NO. Primary differentiator - no competitor has context at this depth (FJ2 confirmed gap).</div>
+      <div class="screen-desc">One event, full view: probability, schematic price chart, narrative context (why this price), resolution conditions, source. Primary differentiator - no competitor has context at this depth (FJ2 confirmed gap). <strong>Betting happens here</strong> in an inline sticky panel (right rail on desktop; a bottom dock that expands to a sheet on mobile). Two success views: <strong>binary</strong> (one YES / NO) and <strong>multi-outcome</strong> (pick an outcome, then YES / NO). Confirm in the panel fires the gate (Sign In then Deposit dialogs). This replaces the standalone Bet Screen.</div>
       <div class="screen-states">
-        <div class="state-label">States</div>
+        <div class="state-label">States (page-level)</div>
         <ul class="state-list">
           <li>loading (event data fetching)</li>
           <li>error (load failure, T8 in MJ and FJ2 flows - retry returns to Event Detail)</li>
-          <li>resolved-while-reading (this event just resolved: [outcome] - navigate to Win/Loss Screen if user holds a position, else to Event Feed)</li>
+          <li>resolved-while-reading / event-closed (this event just resolved: navigate to Win/Loss Screen if user holds a position, else to Event Feed)</li>
+        </ul>
+        <div class="state-label" style="margin-top:8px">Bet-panel states (migrated from the old Bet Screen)</div>
+        <ul class="state-list">
+          <li>intent (default) - insufficient-balance (inline guard, opens the Deposit dialog) - S5-reconcile (price moved during the gate, re-confirm / T16) - execute processing (registering on-chain) - on-chain error (T3, retry)</li>
         </ul>
       </div>
     </div>
@@ -460,9 +473,9 @@
   <!-- ACTIVATION GATE -->
   <div class="screen-group">
     <div class="screen-group-label">Activation Gate - bet-first, gate at confirm (Variant B)</div>
-    <p style="font-size:13px;color:#888;margin-bottom:12px">User browses and builds a bet logged out. Gate fires only when they tap "Confirm" on the Bet Screen. Two branches: News Junkie (social login then fiat deposit) and Crypto Native (connect existing USDC wallet). After the gate, S5 AMM price reconcile checks whether the price moved during auth/deposit before executing.</p>
+    <p style="font-size:13px;color:#888;margin-bottom:12px">User browses and builds a bet logged out. Gate fires only when they tap "Confirm" in the Event Detail bet panel. Sign In and Deposit open as in-page dialogs over the current page (Sign In chains to Deposit). Two branches: News Junkie (social login then fiat deposit) and Crypto Native (connect existing USDC wallet). After the gate, S5 AMM price reconcile checks whether the price moved during auth/deposit before executing.</p>
     <div class="screen-item">
-      <div class="screen-name">Sign In / Register</div>
+      <div class="screen-name">Sign In / Register <span style="font-weight:400;color:#777;font-size:12px">(in-page dialog)</span></div>
       <div class="screen-jobs"><span class="job-badge">FJ3</span><span class="persona-badge">&#11088; PRIMARY &middot; &#129352; SECONDARY (wallet connect path)</span></div>
       <div class="screen-desc">Social login (Google, X) for the News Junkie path. Crypto Native connects an existing USDC wallet here instead of using fiat. One screen, two branches. Triggered only at gate, never before bet intent.</div>
       <div class="screen-states">
@@ -475,7 +488,7 @@
       </div>
     </div>
     <div class="screen-item">
-      <div class="screen-name">Deposit</div>
+      <div class="screen-name">Deposit <span style="font-weight:400;color:#777;font-size:12px">(in-page dialog)</span></div>
       <div class="screen-jobs"><span class="job-badge">FJ3</span><span class="job-badge">FJ4</span><span class="job-badge">EJ2</span><span class="persona-badge">&#11088; PRIMARY</span></div>
       <div class="screen-desc">Fiat card to USDC via Transak (primary), MoonPay (fallback). KYC runs inside the Transak widget. Risk block displayed inline before submit. Fee shown before submit. Also reachable standalone from Wallet for top-ups.</div>
       <div class="screen-states">
@@ -494,11 +507,12 @@
 
   <!-- BET -->
   <div class="screen-group">
-    <div class="screen-group-label">Bet - place and confirm a bet</div>
+    <div class="screen-group-label">Bet - the inline panel on Event Detail (was a standalone Bet Screen)</div>
+    <p style="font-size:13px;color:#888;margin-bottom:12px">REVISED (wireframe build pass): the standalone Bet Screen is dissolved. Betting is the inline sticky panel on Event Detail; the states below are its bet-panel states (also listed under Event Detail). Kept here for continuity.</p>
     <div class="screen-item">
-      <div class="screen-name">Bet Screen</div>
+      <div class="screen-name">Bet panel <span style="font-weight:400;color:#777;font-size:12px">(inline on Event Detail)</span></div>
       <div class="screen-jobs"><span class="job-badge">MJ</span><span class="job-badge">FJ3</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
-      <div class="screen-desc">Direction (YES/NO, pre-set from Event Detail tap), amount input with $5 default pre-fill, quick-select ($5/$10/$25/$50), fee displayed before confirm, potential payout shown. Confirm button triggers the activation gate for logged-out users. Single screen: intent and confirmation in one place.</div>
+      <div class="screen-desc">Direction (YES/NO, pre-set from the card/Event Detail tap), amount input with $5 default pre-fill, quick-select ($5/$10/$25/$50), fee displayed before confirm, potential payout shown. Confirm fires the activation gate (Sign In then Deposit dialogs). Lives in the Event Detail right rail (desktop) / bottom dock (mobile); for multi-outcome it first picks an outcome.</div>
       <div class="screen-states">
         <div class="state-label">States</div>
         <ul class="state-list">
@@ -691,8 +705,8 @@
       <tbody>
         <tr><td class="label">1</td><td class="nav-slot">Events</td><td>Event Feed</td><td><code>FJ1</code> <code>FJ2</code> <code>MJ</code></td><td>The entry point. Users open the app because something happened in the world. Every session starts here.</td></tr>
         <tr><td class="label">2</td><td class="nav-slot">My Bets</td><td>Active Bets (two tabs: Active / History)</td><td><code>EJ1</code> <code>MJ</code> <code>FJ5</code> <code>EJ3</code></td><td>The position monitor. Users return to track odds movement and see resolved bets. History tab implements G5: Bet History becomes a tab inside Active Bets, not a standalone screen.</td></tr>
-        <tr><td class="label">3</td><td class="nav-slot">Notifications</td><td>Notifications list</td><td><code>FJ1</code> <code>FJ5</code> <code>EJ3</code></td><td>The return trigger. Badge drives hot/warm return (aarrr.md D1-D3). Without a permanent bottom slot with unread count, FJ1/FJ5/EJ3 depend on OS alerts only with no in-app recovery path for missed alerts.</td></tr>
-        <tr><td class="label">4</td><td class="nav-slot">Profile</td><td>My Profile</td><td><code>SJ1</code> <code>SJ2</code></td><td>Reputation is a first-class product value for the News Junkie: "I was right, publicly." Not an account settings screen - earns a slot as the identity surface.</td></tr>
+        <tr><td class="label">3</td><td class="nav-slot">Favorites</td><td>Saved view (a filter over the feed)</td><td><code>FJ1</code> (return / watchlist)</td><td>Revised in the wireframe pass. The mobile thumb slot for filtering to saved events (your watchlist); on desktop a header heart. Notifications, which used to hold this slot, is now a header bell on both breakpoints (its badge stays visible). Caveat: Saved is a newer feature; revisit if usage is low.</td></tr>
+        <tr><td class="label">4</td><td class="nav-slot">Portfolio</td><td>My Profile + portfolio summary (account hub); shows the balance figure</td><td><code>SJ1</code> <code>SJ2</code> <code>FJ4</code></td><td>Revised in the wireframe pass. The slot shows the portfolio balance in place of an icon and opens the account / identity hub (reputation + money). Profile is no longer a separate slot; the mobile header dropped the balance, so it surfaces here.</td></tr>
       </tbody>
     </table>
   </div>
@@ -712,11 +726,11 @@
   <h3>Not navigation destinations</h3>
   <p>Reached only inside a flow, triggered by a user action. Never a bottom-nav slot.</p>
   <ul class="not-dest-list">
-    <li><strong>Bet Screen</strong> - invoked when user taps YES or NO on Event Detail.</li>
+    <li><strong>Bet panel (Event Detail)</strong> - not a screen: the inline panel on Event Detail where the bet is built (replaces the old standalone Bet Screen).</li>
     <li><strong>Win Screen</strong> - invoked when a bet resolves with a win (via notification or resolved item in Active Bets).</li>
     <li><strong>Loss Screen</strong> - invoked when a bet resolves with a loss (G1 direct: 1 tap from resolution notification; or via resolved item in Active Bets).</li>
-    <li><strong>Sign In / Register</strong> - invoked at the activation gate (Confirm tap on Bet Screen), never before bet intent.</li>
-    <li><strong>Deposit</strong> - invoked at the activation gate (News Junkie path post-auth) and from Wallet (standalone top-up).</li>
+    <li><strong>Sign In / Register</strong> - in-page dialog at the activation gate (Confirm in the Event Detail bet panel), never before bet intent.</li>
+    <li><strong>Deposit</strong> - in-page dialog at the activation gate (chained after Sign In) and from Wallet (standalone top-up).</li>
   </ul>
 
   <h3>Deferred</h3>
@@ -743,37 +757,39 @@
   <div class="depth-tree">
     <div class="l0">Level 0 - bottom nav destinations (1 tap from anywhere in the app)</div>
     <div class="l1">Events</div>
-    <div class="l1-sub">Event Feed</div>
+    <div class="l1-sub">Event Feed / Trending</div>
     <div class="l1">My Bets</div>
     <div class="l1-sub">Active Bets (Active tab - default view)</div>
     <div class="l1-sub">Bet History (History tab inside My Bets - G5 merge)</div>
-    <div class="l1">Notifications</div>
-    <div class="l1-sub">Notifications list</div>
-    <div class="l1">Profile</div>
-    <div class="l1-sub">My Profile</div>
+    <div class="l1">Favorites</div>
+    <div class="l1-sub">Saved view (a filter over the feed)</div>
+    <div class="l1">Portfolio</div>
+    <div class="l1-sub">My Profile + portfolio summary (account hub)</div>
     <br>
     <div class="l0">Level 1 - one tap below a Level 0 screen</div>
     <div class="l1">under Events:</div>
-    <div class="l1-sub">Event Detail (tap any event card on Event Feed)</div>
-    <div class="l1">under Profile (via header - available at Level 0):</div>
-    <div class="l1-sub">Wallet (tap header wallet icon)</div>
-    <div class="l1-sub">How It Works (tap header info icon, also linked from Deposit)</div>
+    <div class="l1-sub">Category page (tap a category: Politics / Crypto / Culture / General)</div>
+    <div class="l1-sub">Event Detail (tap any event card; the bet panel is inline)</div>
+    <div class="l1">via the header (available at Level 0):</div>
+    <div class="l1-sub">Notifications list (header bell, both breakpoints)</div>
+    <div class="l1-sub">Wallet / Deposit (avatar dropdown or the Portfolio hub)</div>
+    <div class="l1-sub">How It Works (avatar dropdown and footer, also linked from Deposit)</div>
     <br>
     <div class="l0">Flow / invoked - reached only inside a flow, not via nav bar</div>
-    <div class="linvoked">Bet Screen &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; invoked: tap YES or NO on Event Detail</div>
+    <div class="linvoked">Bet panel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inline on Event Detail (not a separate screen; replaces the old Bet Screen)</div>
     <div class="linvoked">Win Screen &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; invoked: bet resolves as win (notification tap or Active Bets resolved item)</div>
     <div class="linvoked">Loss Screen &nbsp;&nbsp;&nbsp;&nbsp; invoked: bet resolves as loss (G1: notification tap direct; or Active Bets resolved item)</div>
-    <div class="linvoked">Sign In / Register &nbsp; invoked: activation gate (Confirm tap on Bet Screen)</div>
-    <div class="linvoked">Deposit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; invoked: activation gate (News Junkie path) or Wallet top-up button</div>
+    <div class="linvoked">Sign In / Register &nbsp; dialog: activation gate (Confirm in the Event Detail bet panel)</div>
+    <div class="linvoked">Deposit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dialog: activation gate (chained after Sign In) or Wallet top-up button</div>
     <div class="linvoked">Public Profile &nbsp;&nbsp;&nbsp;&nbsp; invoked: external shared-card link only (no in-app nav at MVP)</div>
   </div>
 
   <h3>Depth check - primary persona (Alex, News Junkie)</h3>
   <div class="depth-check">
     <div class="depth-check-item">
-      <div class="depth-path">MJ main job: Event Feed - Event Detail - Bet Screen</div>
-      <p style="font-size:13px;color:#999;margin:6px 0">Events tab (Level 0) - tap event card - Event Detail (1 tap) - tap YES or NO - Bet Screen (2 taps) - Confirm (3 taps, activation gate fires here).</p>
-      <div class="depth-result">Result: 2 taps to reach Bet Screen, 3 taps to trigger the gate. Within the 3-tap rule. Confirmed.</div>
+      <div class="depth-path">MJ main job: Event Feed - Event Detail (inline bet panel)</div>
+      <p style="font-size:13px;color:#999;margin:6px 0">Events tab (Level 0) - tap event card - Event Detail (1 tap; the bet panel is inline) - build the bet in the panel (no extra navigation) - Confirm fires the gate (2 taps, the Sign In dialog opens over the page).</p>
+      <div class="depth-result">Result: bet intent at 1 tap, gate at 2 taps (was 3; the standalone Bet Screen was removed). Within the 3-tap rule. Confirmed.</div>
     </div>
     <div class="depth-check-item">
       <div class="depth-path">G1 retention path: resolution notification - Loss Screen</div>
@@ -890,7 +906,7 @@
     <span>ED = Event Detail</span>
     <span>SI = Sign In / Register</span>
     <span>DEP = Deposit</span>
-    <span>BS = Bet Screen</span>
+    <span>BS = Bet panel on Event Detail (was the standalone Bet Screen)</span>
     <span>WS = Win Screen</span>
     <span>LS = Loss Screen</span>
     <span>AB = Active Bets</span>

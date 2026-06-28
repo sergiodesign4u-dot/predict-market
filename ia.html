@@ -169,8 +169,8 @@
 
 <main>
 
-<div role="note" style="margin:16px auto;max-width:1000px;padding:12px 16px;border:1px solid #b9892b;border-left:4px solid #b9892b;background:rgba(185,137,43,0.12);color:#e8d9b0;font-size:14px;line-height:1.5;border-radius:6px;">
-  <strong>Revision in progress.</strong> The navigation shown below reflects the earlier model. It was revised in the wireframe pass: lean desktop header (logo = Events, hamburger reserved), Portfolio / Cash balance swap, mobile bottom nav = Events / My Bets / Favorites / Portfolio, Notifications as a header bell on both breakpoints, categories as a second-level sub-nav. Source of truth: <code>IA/sitemap.md</code>. This visualization will be re-synced once the wireframe navigation stabilizes.
+<div role="note" style="margin:16px auto;max-width:1000px;padding:12px 16px;border:1px solid #3a7a4a;border-left:4px solid #5fdb8f;background:rgba(95,219,143,0.10);color:#bfe9cf;font-size:14px;line-height:1.5;border-radius:6px;">
+  <strong>Synced with the wireframe build.</strong> This overview reflects the current IA: lean header (logo = Events, hamburger reserved), Portfolio / Cash balance swap, mobile bottom nav = Events / My Bets / Favorites / Portfolio, Notifications as a header bell on both breakpoints, categories as second-level pages, the bet as an inline panel on Event Detail (the standalone Bet Screen is dissolved), and Sign In / Deposit as in-page dialogs over the current page. Source of truth: <code>IA/sitemap.md</code> and <code>IA/flows.md</code>.
 </div>
 
 <!-- INTRO -->
@@ -203,9 +203,9 @@
 <section id="screen-tree">
   <div class="section-label">Screen Tree</div>
   <h2>Level 0 and Level 1 screens</h2>
-  <p>13 standalone screens total. Level 0 = bottom nav destinations. Level 1 = one tap from Level 0. Flow/invoked screens are reached only inside a flow.</p>
+  <p>Level 0 = bottom nav destinations (Events, My Bets, Favorites, Portfolio). Level 1 = one tap from Level 0. Category pages (Politics / Crypto / Culture / General) are browse screens under Events. The bet is an inline panel on Event Detail, not a separate screen; Sign In / Deposit are in-page dialogs.</p>
 
-  <p style="font-size:12px;color:var(--muted);margin-bottom:16px">Navigation hierarchy: Level 0 bottom-nav slots branch to Level 1 screens. Header, invoked, and deferred screens follow below as distinct muted groups.</p>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:16px">Navigation hierarchy: Level 0 bottom-nav slots branch to Level 1 screens. Header (Notifications bell, Favorites heart, Wallet, How It Works), invoked dialogs/overlays, and deferred screens follow below as distinct muted groups.</p>
 
   <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:8px">Bottom Navigation</div>
   <div class="mermaid-wrap">
@@ -217,25 +217,28 @@ graph TD
   APP(("App"))
   EV["Events"]:::l0
   MB["My Bets"]:::l0
-  NO["Notifications"]:::l0
-  PR["Profile"]:::l0
-  EF["Event Feed (FJ1)"]:::l1
-  ED["Event Detail (FJ2, MJ)"]:::l1
+  FAV["Favorites"]:::l0
+  PORT["Portfolio"]:::l0
+  EF["Event Feed / Trending (FJ1)"]:::l1
+  CAT["Category pages: Politics/Crypto/Culture/General (FJ1)"]:::l1
+  ED["Event Detail + inline bet panel (FJ2, MJ)"]:::l1
   AB["Active Bets (EJ1)"]:::l1
   BH["Bet History tab (EJ1)"]:::l1
-  NT["Notifications list (FJ1, FJ5, EJ3)"]:::l1
-  MP["My Profile (SJ1, SJ2)"]:::l1
+  SAV["Saved view (FJ1 return)"]:::l1
+  MP["My Profile / account hub (SJ1, SJ2, FJ4)"]:::l1
 
   APP --> EV
   APP --> MB
-  APP --> NO
-  APP --> PR
+  APP --> FAV
+  APP --> PORT
   EV --> EF
+  EF --> CAT
   EF --> ED
+  CAT --> ED
   MB --> AB
   AB --> BH
-  NO --> NT
-  PR --> MP
+  FAV --> SAV
+  PORT --> MP
     </div>
   </div>
 
@@ -244,21 +247,24 @@ graph TD
     <div class="mermaid">
 graph LR
   classDef hdr fill:#181a2a,stroke:#334466,color:#9999cc
-  WA["Wallet (FJ3, FJ4)"]:::hdr
-  HIW["How It Works (FJ4, EJ2)"]:::hdr
+  NOT["Notifications (header bell + badge, both breakpoints)"]:::hdr
+  FAVH["Favorites (header heart, desktop)"]:::hdr
+  CATN["Categories (second-level nav band)"]:::hdr
+  WA["Wallet / Deposit (avatar menu)"]:::hdr
+  HIW["How It Works (avatar menu + footer)"]:::hdr
     </div>
   </div>
 
   <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#664433;margin:24px 0 8px">Invoked by action - not navigation</div>
+  <p style="font-size:12px;color:#777;margin:0 0 8px">The bet is no longer an invoked screen: it is the inline panel on Event Detail. Sign In and Deposit are in-page dialogs (over the current page); Win / Loss remain invoked overlays.</p>
   <div class="mermaid-wrap" style="opacity:.62">
     <div class="mermaid">
 graph LR
   classDef inv fill:#1a1212,stroke:#443322,stroke-dasharray:5 3,color:#997766
-  BS["Bet Screen (MJ)"]:::inv
+  SI["Sign In / Register (dialog, MJ)"]:::inv
+  DEP["Deposit (dialog, MJ)"]:::inv
   WS["Win Screen (SJ1)"]:::inv
   LS["Loss Screen (FJ5, EJ3)"]:::inv
-  SI["Sign In / Register (MJ)"]:::inv
-  DEP["Deposit (MJ)"]:::inv
     </div>
   </div>
 
@@ -277,9 +283,10 @@ graph LR
     <div class="tree-l0">
       <span class="tree-slot">Events</span>
       <div>
-        <div class="tree-screen">Event Feed <span class="tree-jobs">(FJ1)</span></div>
+        <div class="tree-screen">Event Feed / Trending <span class="tree-jobs">(FJ1)</span></div>
         <div class="tree-l1s">
-          <div class="tree-l1"><span class="t-screen">Event Detail</span> <span class="t-job">(FJ2 &middot; MJ)</span></div>
+          <div class="tree-l1"><span class="t-screen">Category pages</span> <span class="t-job">(Politics &middot; Crypto &middot; Culture &middot; General - own page + sub-category rail, FJ1)</span></div>
+          <div class="tree-l1"><span class="t-screen">Event Detail</span> <span class="t-job">(FJ2 &middot; MJ - inline bet panel: binary / multi)</span></div>
         </div>
       </div>
     </div>
@@ -293,25 +300,31 @@ graph LR
       </div>
     </div>
     <div class="tree-l0">
-      <span class="tree-slot">Notifications</span>
+      <span class="tree-slot">Favorites</span>
       <div>
-        <div class="tree-screen">Notifications list <span class="tree-jobs">(FJ1 &middot; FJ5)</span></div>
+        <div class="tree-screen">Saved view <span class="tree-jobs">(FJ1 return - a filter over the feed)</span></div>
       </div>
     </div>
     <div class="tree-l0">
-      <span class="tree-slot">Profile</span>
+      <span class="tree-slot">Portfolio</span>
       <div>
-        <div class="tree-screen">My Profile <span class="tree-jobs">(SJ1 &middot; SJ2)</span></div>
+        <div class="tree-screen">My Profile / account hub <span class="tree-jobs">(SJ1 &middot; SJ2 &middot; FJ4)</span></div>
         <div class="tree-l1s">
-          <div class="tree-l1"><span class="t-screen">Wallet</span> <span class="t-job">(FJ4 - header wallet icon)</span></div>
-          <div class="tree-l1"><span class="t-screen">How It Works</span> <span class="t-job">(FJ4 &middot; EJ2 - header info icon)</span></div>
+          <div class="tree-l1"><span class="t-screen">Wallet / Deposit</span> <span class="t-job">(FJ4 - in the hub / avatar menu)</span></div>
+          <div class="tree-l1"><span class="t-screen">How It Works</span> <span class="t-job">(FJ4 &middot; EJ2 - avatar menu + footer)</span></div>
         </div>
+      </div>
+    </div>
+    <div class="tree-l0" style="opacity:.8">
+      <span class="tree-slot" style="color:#9999cc">Header</span>
+      <div>
+        <div class="tree-screen">Notifications list <span class="tree-jobs">(FJ1 &middot; FJ5 - header bell + badge, both breakpoints)</span></div>
       </div>
     </div>
     <div class="tree-l0" style="opacity:.65;border-top:1px solid var(--border);margin-top:8px;padding-top:8px">
       <span class="tree-slot" style="color:var(--muted)">Flow only</span>
       <div style="font-size:12px;color:#777;line-height:1.8">
-        Bet Screen (YES/NO tap on Event Detail) &middot; Win Screen (win notification or Active Bets resolved item) &middot; Loss Screen (G1: win notification 1 tap; or Active Bets resolved item) &middot; Sign In / Register (gate at Confirm) &middot; Deposit (gate; or Wallet top-up) &middot; Public Profile (external link only - G3)
+        Bet panel (inline on Event Detail, YES/NO tap) &middot; Sign In / Register (dialog at Confirm) &middot; Deposit (dialog; chained after Sign In, or Wallet top-up) &middot; Win Screen (win notification or Active Bets resolved item) &middot; Loss Screen (G1: resolution notification 1 tap; or Active Bets resolved item) &middot; Public Profile (external link only - G3)
       </div>
     </div>
   </div>
@@ -340,20 +353,20 @@ graph LR
     </div>
     <div class="nav-slot-card">
       <div class="nav-slot-num">Slot 3</div>
-      <div class="nav-slot-name">Notifications</div>
-      <div class="nav-slot-opens">Opens: Notifications list</div>
-      <div class="nav-slot-jobs">Jobs: FJ1 &middot; FJ5 &middot; EJ3</div>
+      <div class="nav-slot-name">Favorites</div>
+      <div class="nav-slot-opens">Opens: Saved view (a filter over the feed)</div>
+      <div class="nav-slot-jobs">Jobs: FJ1 (return / watchlist)</div>
     </div>
     <div class="nav-slot-card">
       <div class="nav-slot-num">Slot 4</div>
-      <div class="nav-slot-name">Profile</div>
-      <div class="nav-slot-opens">Opens: My Profile</div>
-      <div class="nav-slot-jobs">Jobs: SJ1 &middot; SJ2</div>
+      <div class="nav-slot-name">Portfolio</div>
+      <div class="nav-slot-opens">Opens: My Profile + portfolio summary (account hub); shows the balance figure</div>
+      <div class="nav-slot-jobs">Jobs: SJ1 &middot; SJ2 &middot; FJ4</div>
     </div>
   </div>
 
   <div class="header-items">
-    <strong>Header (not bottom nav):</strong> Wallet / Deposit (wallet icon) &middot; How It Works (info icon) &middot; My Profile avatar shortcut &nbsp;&middot;&nbsp; Money is not why users open the app (G4 decision). Re-deposit invoked from Bet Screen insufficient-balance state in context - 1 step.
+    <strong>Header (not bottom nav):</strong> Notifications (bell + permanent badge, both breakpoints) &middot; Favorites (heart, desktop) &middot; Portfolio / Cash balance swap (desktop) &middot; avatar dropdown: My Profile, My Bets, Wallet / Deposit, How It Works, Logout &middot; second-level category nav band. &nbsp;&middot;&nbsp; Money is a utility, not a primary destination (G4). Re-deposit is invoked from the Event Detail bet-panel insufficient-balance state (opens the Deposit dialog) - 1 step.
   </div>
 
   <a href="sitemap.html#navigation" class="more-link">Full navigation rationale and deferred items &rarr; sitemap.html</a>
@@ -367,8 +380,8 @@ graph LR
   <div class="depth-cards">
     <div class="depth-card">
       <div class="d-label">MJ main job</div>
-      <div class="d-path">Events (L0) &rarr; Event Detail (1 tap) &rarr; Bet Screen (2 taps) &rarr; Confirm / gate (3 taps)</div>
-      <div class="d-result">3 taps to gate. Within rule. Confirmed.</div>
+      <div class="d-path">Events (L0) &rarr; Event Detail (1 tap; bet panel is inline) &rarr; Confirm in the panel fires the gate (2 taps)</div>
+      <div class="d-result">2 taps to gate (was 3, the standalone Bet Screen was removed). Within rule. Confirmed.</div>
     </div>
     <div class="depth-card">
       <div class="d-label">G1 - Loss Screen (retention)</div>
@@ -382,12 +395,12 @@ graph LR
     </div>
     <div class="depth-card">
       <div class="d-label">Re-deposit (returning user)</div>
-      <div class="d-path">Bet Screen insufficient-balance state &rarr; Deposit (inline CTA)</div>
+      <div class="d-path">Event Detail bet-panel insufficient-balance state &rarr; Deposit dialog (inline CTA)</div>
       <div class="d-result">1 step in context. No multi-tap trip to Wallet.</div>
     </div>
     <div class="depth-card">
       <div class="d-label">Proactive top-up</div>
-      <div class="d-path">Header wallet icon &rarr; Wallet (1 tap) &rarr; Deposit CTA &rarr; Deposit (2 taps)</div>
+      <div class="d-path">Avatar dropdown (desktop) / Portfolio hub (mobile) &rarr; Wallet / Deposit &rarr; Deposit (2 taps)</div>
       <div class="d-result">2 taps. Acceptable.</div>
     </div>
   </div>
@@ -420,19 +433,19 @@ flowchart TD
     ctxOk -->|"yes"| wantsBet{"wants to bet?"}
     wantsBet -->|"no"| T7(["T7 - not convinced"])
     T7 -->|"back to feed"| EF
-    wantsBet -->|"yes"| BS1["Bet Screen (intent)"]
+    wantsBet -->|"yes"| BS1["Event Detail bet panel (intent)"]
 
     BS1 --> confirmedIntent{"confirms?"}
     confirmedIntent -->|"no"| ED
     confirmedIntent -->|"yes - gate fires"| personaType{"account type?"}
 
-    personaType -->|"News Junkie"| SI["Sign In / Register"]
+    personaType -->|"News Junkie"| SI["Sign In / Register (dialog)"]
     personaType -->|"Crypto Native"| walletOk
 
     SI --> authOk{"auth ok?"}
     authOk -->|"no"| T5(["T5 - auth error"])
     T5 -->|"retry"| SI
-    authOk -->|"yes"| DEP["Deposit"]
+    authOk -->|"yes"| DEP["Deposit (dialog)"]
     DEP --> depOk{"deposit ok?"}
     depOk -->|"card declined"| T2(["T2 - card declined"])
     T2 -->|"retry"| DEP
@@ -444,7 +457,7 @@ flowchart TD
     T15 -->|"retry"| walletOk
     walletOk -->|"yes"| S5
 
-    S5 -->|"no change"| BS2["Bet Screen (execute)"]
+    S5 -->|"no change"| BS2["Bet panel (execute)"]
     S5 -->|"yes"| priceConfirm{"accept new price?"}
     priceConfirm -->|"no"| T16(["T16 - price rejected"])
     T16 -->|"re-evaluate"| ED
@@ -497,7 +510,7 @@ flowchart TD
     </table>
   </div>
 
-  <p style="font-size:12px;color:var(--muted);margin-top:10px">EF=Event Feed &middot; ED=Event Detail &middot; SI=Sign In &middot; DEP=Deposit &middot; BS=Bet Screen &middot; WS=Win Screen &middot; LS=Loss Screen &middot; AB=Active Bets &middot; BH=Bet History &middot; WA=Wallet &middot; MP=My Profile &middot; PP=Public Profile &middot; HIW=How It Works &middot; NT=Notifications</p>
+  <p style="font-size:12px;color:var(--muted);margin-top:10px">EF=Event Feed &middot; ED=Event Detail &middot; SI=Sign In (dialog) &middot; DEP=Deposit (dialog) &middot; BS=Bet panel on Event Detail (was the standalone Bet Screen) &middot; WS=Win Screen &middot; LS=Loss Screen &middot; AB=Active Bets &middot; BH=Bet History &middot; WA=Wallet &middot; MP=My Profile &middot; PP=Public Profile &middot; HIW=How It Works &middot; NT=Notifications. Category pages are browse screens that inherit EF's FJ1 row; they are not a separate column.</p>
 
   <a href="sitemap.html#tracing" class="more-link">Full tracing with rationale and defects analysis &rarr; sitemap.html</a>
 </section>
