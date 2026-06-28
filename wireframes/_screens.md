@@ -79,10 +79,10 @@ non-main-flow screens are deferred (see the Deferred to Step 08 section).
   - Two layouts, both built: Binary (one question, the % of one side, large
     YES / NO) and Multi-outcome (rows of option plus % plus compact YES / NO).
     Multi-outcome cards in the feed show at most the two leading positions
-    (highest probability / most stake) plus a "+N more" link; the full option
-    list is on Event Detail. This caps multi-outcome cards to roughly binary-card
-    height so the list reads evenly. Multi-outcome is a normal `Event.Type`
-    layout, not the rejected trading-board view.
+    (highest probability / most stake), with no "+N more" line; the full option
+    list is on Event Detail. This keeps multi-outcome cards close to binary-card
+    height so the meta rows line up and the list reads evenly. Multi-outcome is a
+    normal `Event.Type` layout, not the rejected trading-board view.
   - Trigger-entry: tapping YES or NO on a card routes to Event Detail with the
     side, and for multi-outcome the option, pre-selected (`IA/flows.md` MJ). It
     does not place a bet and does not bypass Event Detail; no Feed to Bet edge is

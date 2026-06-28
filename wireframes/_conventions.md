@@ -200,10 +200,11 @@ Two layouts:
 - **Binary:** one question, the % of one side, large YES / NO controls.
 - **Multi-outcome:** rows of option plus % plus compact YES / NO controls, but
   the feed card shows at most the two leading positions (the options with the
-  highest probability / most stake at that moment), followed by a "+N more" link.
-  The full option list is shown only after the user opens the event. This caps
-  multi-outcome cards to roughly the height of a binary card so the feed reads
-  evenly instead of having tall, dense cards next to short ones.
+  highest probability / most stake at that moment) and no "+N more" line. The
+  full option list is shown only after the user opens the event (via the question
+  link). Omitting the extra line keeps multi-outcome cards close to the height of
+  a binary card, so meta rows line up across the grid instead of leaving tall,
+  empty cards next to short ones.
 
 Multi-outcome is a normal `Event.Type` layout, not the rejected trading-board
 view. Note: this card pattern supersedes the earlier "context snippet on the
