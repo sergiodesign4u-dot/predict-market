@@ -167,8 +167,10 @@
     .social-row { display: flex; gap: 6px; }
     .social-row a { width: 30px; height: 30px; border: 1px solid #999; background: #d6d6d6; display: inline-flex; align-items: center; justify-content: center; }
     .social-row .ic { width: 17px; height: 17px; }
-    .lang-select { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #999; background: #d6d6d6; padding: 5px 8px; width: max-content; cursor: pointer; }
-    .lang-select .ic { width: 15px; height: 15px; }
+    .lang-menu { width: max-content; }
+    .lang-menu summary .ic { width: 15px; height: 15px; }
+    .lang-menu summary .ic-sm { width: 12px; height: 12px; }
+    .lang-menu .filter-panel { top: auto; bottom: calc(100% + 4px); right: auto; left: 0; min-width: 150px; }
 
     .footer-cols { display: flex; flex-direction: column; gap: 16px; }
     .footer-col h3 { font-size: 11px; margin: 0 0 7px; text-transform: uppercase; letter-spacing: .04em; }
@@ -574,12 +576,24 @@
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5v9.5a3 3 0 1 1-2.5-3"/><path d="M11 5c.5 2.5 2.5 4 4.5 4"/></svg>
               </a>
             </div>
-            <button type="button" class="lang-select" aria-label="Language (placeholder)">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
-              English
-              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              <span class="tbd">TBD</span>
-            </button>
+            <details class="filter-menu lang-menu" id="langMenu">
+              <summary aria-label="Language (placeholder)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
+                <span id="langCurrent">English</span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                <span class="tbd">TBD</span>
+              </summary>
+              <div class="filter-panel">
+                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
+                <ul>
+                  <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
+                  <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
+                  <li><label><input type="radio" name="lang" value="Portuguese"> Portuguese</label></li>
+                  <li><label><input type="radio" name="lang" value="German"> German</label></li>
+                  <li><label><input type="radio" name="lang" value="French"> French</label></li>
+                </ul>
+              </div>
+            </details>
           </div>
 
           <!-- Link columns -->
@@ -868,6 +882,9 @@ Active Bets    (MJ success, T14)</pre>
 
     // Frequency.
     wireFilter('freqMenu', 'freqCurrent', 'freq');
+
+    // Footer language selector (placeholder: updates label, English-only at MVP).
+    wireFilter('langMenu', 'langCurrent', 'lang');
 
     // Category: the dropdown and the chip nav stay in sync, and the heading echoes the choice.
     (function () {

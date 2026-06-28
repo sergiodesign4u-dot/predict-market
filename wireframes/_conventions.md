@@ -140,9 +140,11 @@ flat link strip), structured from a prediction-market competitor scan
   - Social icons: X / Twitter and Discord are the mandatory pair (present on
     every competitor); Instagram and TikTok added for consumer reach; Telegram
     for the crypto audience.
-  - Language selector: a placeholder slot (TBD). No competitor exposes one in
-    the footer and MVP is English-only (see memory `feedback-language`); the slot
-    is reserved for future localization, not an MVP feature.
+  - Language selector: wired as a working dropdown (same `details` + radio
+    pattern as the feed filters, updates its own label on choose), but it is a
+    placeholder (TBD). No competitor exposes one in the footer and MVP is
+    English-only (see memory `feedback-language`); the slot and its language list
+    are reserved for future localization, not an MVP feature.
 - **Markets column:** by category (Politics, Crypto, Culture, General now;
   Sports is post-MVP) and by topic (Trending topics, dynamic / data-driven, plus
   "View all markets"). Only Polymarket puts market links in the footer and they
