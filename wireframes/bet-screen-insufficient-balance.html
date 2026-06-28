@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Event Feed (base / success, registered, responsive)</title>
-  <style>
+  <title>Wireframe - Bet Screen (state: insufficient-balance (inline))</title>
+<style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
        Base = mobile (1 column, bottom nav). Min-width expansions:
@@ -293,10 +293,79 @@
     }
     @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, minmax(280px, 1fr)); } }
     @media (min-width: 1280px) { .grid { grid-template-columns: repeat(4, minmax(280px, 1fr)); } }
+  
+    /* ---- Event Detail ---- */
+    .ed-head { display: flex; gap: 10px; padding: 10px; align-items: flex-start; }
+    .ed-thumb { width: 72px; height: 72px; flex: 0 0 72px; border: 1px solid #999; background: #d2d2d2;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; padding: 2px; }
+    .ed-cat { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; }
+    .ed-q { font-size: 16px; font-weight: bold; margin: 4px 0 6px; }
+    .ed-prob-big { font-size: 13px; margin: 0; }
+    .ed-prob-big .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; font-size: 14px; }
+    .ed-section { padding: 10px; border-top: 1px solid #ccc; }
+    .ed-section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 6px; }
+    .chart-box { border: 1px dashed #999; background: #ededed; height: 120px; display: flex; align-items: center;
+      justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 6px; }
+    .args { display: flex; flex-direction: column; gap: 12px; }
+    .arg-col h4 { margin: 0 0 4px; font-size: 11px; }
+    .arg-col ul { margin: 0; padding-left: 16px; font-size: 12px; }
+    .arg-col li { margin-bottom: 4px; }
+    .resolution { font-size: 12px; line-height: 1.5; }
+    .opt-list { display: flex; flex-direction: column; }
+    .preselect-note { border: 1px solid #999; background: #e0e0e0; padding: 6px 8px; font-size: 11px; margin: 0 10px 0; }
+    .cta-bar { position: sticky; bottom: 0; background: #e2e2e2; border: 1px solid #999; padding: 8px 10px; display: flex; gap: 8px; }
+    .cta-bar button { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; font-weight: bold; cursor: pointer; }
+    @media (min-width: 640px) { .args { flex-direction: row; } .arg-col { flex: 1; } }
+
+    /* ---- Invoked overlays (Bet / Sign In / Deposit): modal on desktop, bottom sheet on mobile ---- */
+    .backdrop { background: #cfcfcf; flex: 1; position: relative; min-height: 70vh; display: flex;
+      align-items: flex-end; justify-content: center; }
+    .dim-note { position: absolute; top: 8px; left: 8px; font-size: 10px; color: #555; background: #dcdcdc; border: 1px solid #aaa; padding: 2px 6px; }
+    .sheet { width: 100%; background: #f0f0f0; border: 1px solid #999; border-bottom: none; }
+    .grab { width: 36px; height: 4px; background: #bbb; border-radius: 2px; margin: 6px auto 0; }
+    .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
+    .sheet-head h2 { font-size: 14px; margin: 0; }
+    .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
+    .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    @media (min-width: 640px) { .backdrop { align-items: center; padding: 24px; } .sheet { max-width: 420px; border-bottom: 1px solid #999; } }
+
+    .dir-pill { border: 1px solid #888; background: #dcdcdc; padding: 4px 10px; font-weight: bold; font-size: 12px; display: inline-block; }
+    .field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    .amount-row { display: flex; align-items: center; gap: 8px; }
+    .amount-input { flex: 1; border: 1px solid #888; background: #fff; padding: 10px; font-size: 18px; }
+    .quick { display: flex; gap: 6px; flex-wrap: wrap; }
+    .quick button { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    .quick button.sel { background: #b8b8b8; font-weight: bold; }
+    .line { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-top: 1px solid #ddd; }
+    .line.total { font-weight: bold; border-top: 1px solid #999; }
+    .inline-error { border: 1px solid #999; background: #e0e0e0; padding: 8px; font-size: 12px; }
+    .reconcile-box { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
+    .confirm-btn { border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; cursor: pointer; width: 100%; }
+    .provider-btn { display: flex; align-items: center; gap: 10px; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; cursor: pointer; width: 100%; text-align: left; }
+    .provider-btn .ic { width: 18px; height: 18px; }
+    .spinner-box { border: 1px dashed #999; background: #ededed; padding: 24px; text-align: center; font-size: 12px; color: #555; }
+    .fine { font-size: 11px; color: #555; line-height: 1.5; }
+    .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center;
+      justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
+    .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
+
+    /* ---- Active Bets ---- */
+    .tabs { display: flex; gap: 0; margin: 0 0 10px; }
+    .tabs button { border: 1px solid #888; border-bottom: 1px solid #bbb; background: #dcdcdc; padding: 8px 14px; font-size: 12px; cursor: pointer; }
+    .tabs button[aria-selected="true"] { background: #f4f4f4; font-weight: bold; border-bottom-color: #f4f4f4; }
+    .pos-list { display: flex; flex-direction: column; gap: 8px; }
+    .pos { border: 1px solid #bbb; background: #ededed; padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; }
+    .pos-top { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+    .pos-q { font-size: 13px; font-weight: bold; }
+    .pos-side { font-size: 11px; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; height: max-content; white-space: nowrap; }
+    .pos-figures { display: flex; gap: 16px; font-size: 10px; flex-wrap: wrap; color: #555; }
+    .pos-fig b { display: block; font-size: 12px; color: #222; }
+    .pos.skeleton .sk-line { height: 10px; background: #d8d8d8; margin: 6px 0; }
+    .pos.skeleton .w70 { width: 70%; } .pos.skeleton .w40 { width: 40%; }
+    .pos-status { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
   </style>
 </head>
 <body>
-
   <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
   <button type="button" class="wf-toggle" id="wfToggle" aria-label="Open screen tree" aria-expanded="false">
     <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -311,12 +380,12 @@
     <ul class="wf-tree">
       <li class="wf-sec">Events</li>
       <li class="wf-screen">
-        <a href="event-feed.html" class="active" aria-current="page">Event Feed</a>
+        <a href="event-feed.html">Event Feed</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
           <li><a href="event-feed.html">success</a></li>
           <li><a href="event-feed-empty.html">empty</a></li>
-          <li class="cur"><a href="event-feed-error.html">error (this page)</a></li>
+          <li><a href="event-feed-error.html">error</a></li>
           <li><a href="event-feed-loading.html">loading</a></li>
           <li><a href="event-feed-push-permission-missing.html">push-permission-missing</a></li>
           <li class="wf-substate">Logged out</li>
@@ -365,11 +434,11 @@
       </li>
       <li class="wf-sec">Bet</li>
       <li class="wf-screen">
-        <a href="bet-screen.html">Bet Screen</a>
+        <a href="bet-screen.html" class="active" aria-current="page">Bet Screen</a>
         <ul class="wf-states">
           <li><a href="bet-screen.html">intent (base, logged out)</a></li>
           <li><a href="bet-screen-reconcile.html">S5-reconcile (price moved)</a></li>
-          <li><a href="bet-screen-insufficient-balance.html">insufficient-balance</a></li>
+          <li class="cur"><a href="bet-screen-insufficient-balance.html">insufficient-balance (this page)</a></li>
           <li><a href="bet-screen-event-closed.html">event-closed</a></li>
           <li><a href="bet-screen-error.html">error (on-chain, T3)</a></li>
           <li><a href="bet-screen-processing.html">execute processing</a></li>
@@ -463,410 +532,56 @@
   </nav>
 
   <div class="page-label">
-    <strong>Wireframe:</strong> Event Feed &nbsp;|&nbsp;
-    logged in - state: error (load failure) &nbsp;|&nbsp;
+    <strong>Wireframe:</strong> Bet Screen &nbsp;|&nbsp;
+    state: insufficient-balance (inline) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/event-feed-error.html
+    file: wireframes/bet-screen-insufficient-balance.html
   </div>
 
-  <!-- States of this screen: open them side by side. Same structure, different content. -->
-  <nav class="state-switch" aria-label="States of this screen (auth and screen state)">
-    <div class="ss-row"><span class="ss-label">Auth</span><a href="event-feed-error.html" aria-current="page">Logged in</a><a href="event-feed-logged-out-error.html">Logged out</a></div>
-    <div class="ss-row"><span class="ss-label">State</span><a href="event-feed.html">Success</a><a href="event-feed-empty.html">Empty</a><a href="event-feed-error.html" aria-current="page">Error</a><a href="event-feed-loading.html">Loading</a><a href="event-feed-push-permission-missing.html">Push denied</a></div>
+  <nav class="state-switch" aria-label="States of this screen">
+    <div class="ss-row"><span class="ss-label">State</span><a href="bet-screen.html">Intent</a><a href="bet-screen-reconcile.html">S5 reconcile</a><a href="bet-screen-insufficient-balance.html" aria-current="page">Insufficient balance</a><a href="bet-screen-event-closed.html">Event closed</a><a href="bet-screen-error.html">Error (on-chain)</a><a href="bet-screen-processing.html">Processing</a></div>
   </nav>
 
-  <!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
   <div class="device">
-
-    <!-- Header (lean: logo = Events/home, right icon cluster) -->
-    <header class="app-header">
-      <span class="zone-tag">zone: header (lean, same at all widths; logo = Events home)</span>
-      <div class="row">
-        <div class="left">
-          <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-          </button>
-          <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+    <div class="backdrop">
+      <span class="zone-tag" style="position:absolute;left:8px;bottom:8px;">zone: Bet Screen - insufficient-balance (inline: bet up to balance or deposit more)</span>
+      <span class="dim-note">underlying screen dimmed: Event Detail (YES tapped)</span>
+      <section class="sheet" aria-label="Place your bet">
+        <div class="grab"></div>
+        <div class="sheet-head">
+          <h2>Place your bet</h2>
+          <a href="event-detail.html"><button type="button" class="sheet-close" aria-label="Close">x</button></a>
         </div>
-
-        <div class="utility">
-          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
-          <div class="bal-toggle desk-only">
-            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
-            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
-            </button>
+        <div class="sheet-body">
+          <div>
+            <span class="field-label">Your side</span><br>
+            <span class="dir-pill">YES &middot; 38%</span>
+            <button type="button" class="quick" style="border:none;background:none;padding:0;"><span style="text-decoration:underline;font-size:11px;">switch to NO</span></button>
           </div>
-
-          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
-          <button type="button" class="icon-btn desk-only" aria-label="Favorites">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
-          </button>
-
-          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
-          <span class="bell-wrap">
-            <button type="button" class="icon-btn" aria-label="Notifications, 3 unread">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-            </button>
-            <span class="badge-dot">3</span>
-          </span>
-
-          <details class="avatar-menu">
-            <summary aria-label="Account menu">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </summary>
-            <div class="dropdown" role="menu">
-              <span class="zone-tag">avatar dropdown (collapsed by default, click to open)</span>
-              <ul>
-                <li><button type="button" role="menuitem">My Profile</button></li>
-                <li><button type="button" role="menuitem">My Bets</button></li>
-                <li><button type="button" role="menuitem">Wallet / Deposit</button></li>
-                <li><button type="button" role="menuitem">How It Works</button></li>
-                <li><button type="button" role="menuitem">Logout</button></li>
-              </ul>
-            </div>
-          </details>
-        </div>
-      </div>
-    </header>
-
-    <!-- Second-level navigation: categories -->
-    <nav class="cat-nav" aria-label="Categories (second level)">
-      <span class="zone-tag">zone: second-level navigation (categories)</span>
-      <ul>
-        <li aria-current="page"><button type="button">Trending</button></li>
-        <li><button type="button">Politics</button></li>
-        <li><button type="button">Crypto</button></li>
-        <li><button type="button">Culture</button></li>
-        <li><button type="button">General</button></li>
-      </ul>
-    </nav>
-
-    <!-- Feed -->
-    <main class="feed">
-      <span class="zone-tag">zone: feed (heading row + sort control, responsive grid, decluttered cards)</span>
-      <div class="feed-inner">
-
-        <div class="feed-head">
-          <!-- Heading echoes the active category (here: Trending), not a generic "Live events". -->
-          <h2 id="feedHeading">Trending</h2>
-
-          <!-- Kalshi-style filter row: Sort, Frequency, Category. Each label shows the current value. -->
-          <div class="feed-controls">
-
-            <details class="filter-menu" id="sortMenu">
-              <summary aria-label="Sort by">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
-                <span>Sort: <span id="sortCurrent">Trending</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <span class="zone-tag">sort options</span>
-                <ul role="radiogroup" aria-label="Sort by">
-                  <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
-                  <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
-                  <li><label><input type="radio" name="sort" value="New"> New</label></li>
-                  <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
-                  <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
-                  <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
-                </ul>
-                <div class="reverse-row">
-                  <span>Reverse sort</span>
-                  <button type="button" class="toggle" role="switch" aria-checked="false">off</button>
-                </div>
-              </div>
-            </details>
-
-            <details class="filter-menu" id="freqMenu">
-              <summary aria-label="Filter by frequency">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                <span>Frequency: <span id="freqCurrent">All</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <span class="zone-tag">event frequency (recurring markets)</span>
-                <ul role="radiogroup" aria-label="Frequency">
-                  <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
-                  <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
-                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
-                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
-                  <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
-                  <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
-                </ul>
-              </div>
-            </details>
-
-            <details class="filter-menu" id="catMenu">
-              <summary aria-label="Filter by category">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v6H4zM13 5h7v6h-7zM4 13h7v6H4zM13 13h7v6h-7z"/></svg>
-                <span>Category: <span id="catCurrent">Trending</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <span class="zone-tag">category filter (full list, syncs with the chips)</span>
-                <ul role="radiogroup" aria-label="Category">
-                  <li><label><input type="radio" name="catf" value="Trending" checked> Trending</label></li>
-                  <li><label><input type="radio" name="catf" value="Politics"> Politics</label></li>
-                  <li><label><input type="radio" name="catf" value="Crypto"> Crypto</label></li>
-                  <li><label><input type="radio" name="catf" value="Culture"> Culture</label></li>
-                  <li><label><input type="radio" name="catf" value="General"> General</label></li>
-                </ul>
-              </div>
-            </details>
-
+          <p class="fine" style="margin:0;">Will the US government shut down before March 1, 2027?</p>
+          <div>
+            <span class="field-label">Amount</span>
+            <div class="amount-row"><span class="amount-input">$25.00</span></div>
+            <div class="inline-error">You have $3.00. You can bet up to $3.00, or add funds to bet more.</div>
+            <div class="quick"><button type="button">$1</button><button type="button">$3 (max)</button></div>
           </div>
+          <a href="deposit.html"><button type="button" class="confirm-btn">Add funds</button></a>
+          <button type="button" class="provider-btn" style="justify-content:center;">Bet $3.00 instead</button>
         </div>
-
-        <div class="state-block" role="alert">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>
-          <p class="state-title">Couldn't load events</p>
-          <p class="state-msg">Something went wrong reaching the network. Check your connection and try again.</p>
-          <div class="state-actions">
-            <button type="button" class="state-btn primary">Try again</button>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <!-- Bottom navigation (mobile only) -->
-    <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
-      <ul>
-        <li aria-current="page"><button type="button">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
-          <span>Events</span>
-        </button></li>
-        <li><button type="button">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
-          <span>My Bets</span>
-        </button></li>
-        <li><button type="button">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
-          <span>Favorites</span>
-        </button></li>
-        <li><button type="button" aria-label="Portfolio, balance $142">
-          <span class="bn-bal">$142</span>
-          <span>Portfolio</span>
-        </button></li>
-      </ul>
-    </nav>
-
-    <!-- Footer (global element) -->
-    <footer class="app-footer">
-      <span class="zone-tag">zone: footer (global, reused on every screen; TBD = not in MVP)</span>
-      <div class="footer-inner">
-
-        <div class="footer-top">
-
-          <!-- Brand block: logo, tagline, social, language -->
-          <div class="footer-brand">
-            <span class="footer-logo">logo placeholder</span>
-            <p class="footer-tagline">Tagline placeholder <span class="tbd">TBD</span></p>
-            <div class="social-row" role="list" aria-label="Social media">
-              <a href="#" role="listitem" aria-label="X (Twitter)" title="X (Twitter)">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
-              </a>
-              <a href="#" role="listitem" aria-label="Discord" title="Discord">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2l-1-2H8l-1 2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/><circle cx="10" cy="12" r="1.1"/><circle cx="14" cy="12" r="1.1"/></svg>
-              </a>
-              <a href="#" role="listitem" aria-label="Telegram" title="Telegram">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l6 2 2 6 3-4 5 4z"/></svg>
-              </a>
-              <a href="#" role="listitem" aria-label="Instagram" title="Instagram">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="16.6" cy="7.4" r="0.7"/></svg>
-              </a>
-              <a href="#" role="listitem" aria-label="TikTok" title="TikTok">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5v9.5a3 3 0 1 1-2.5-3"/><path d="M11 5c.5 2.5 2.5 4 4.5 4"/></svg>
-              </a>
-            </div>
-            <details class="filter-menu lang-menu" id="langMenu">
-              <summary aria-label="Language (placeholder)">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
-                <span id="langCurrent">English</span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-                <span class="tbd">TBD</span>
-              </summary>
-              <div class="filter-panel">
-                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
-                <ul>
-                  <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
-                  <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
-                  <li><label><input type="radio" name="lang" value="Portuguese"> Portuguese</label></li>
-                  <li><label><input type="radio" name="lang" value="German"> German</label></li>
-                  <li><label><input type="radio" name="lang" value="French"> French</label></li>
-                </ul>
-              </div>
-            </details>
-          </div>
-
-          <!-- Link columns -->
-          <div class="footer-cols">
-
-            <nav class="footer-col" aria-label="Markets">
-              <h3>Markets</h3>
-              <p class="sub-label">By category</p>
-              <ul>
-                <li><a href="#">Politics</a></li>
-                <li><a href="#">Crypto</a></li>
-                <li><a href="#">Culture</a></li>
-                <li><a href="#">General</a></li>
-                <li><a href="#">Sports</a> <span class="tbd">post-MVP</span></li>
-              </ul>
-              <p class="sub-label">By topic</p>
-              <ul>
-                <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
-                <li><a href="#">View all markets</a></li>
-              </ul>
-            </nav>
-
-            <nav class="footer-col" aria-label="Product">
-              <h3>Product</h3>
-              <ul>
-                <li><a href="#">How It Works</a></li>
-                <li><a href="#">Leaderboard</a></li>
-                <li><a href="#">Wallet</a></li>
-                <li><a href="#">My Bets</a></li>
-                <li><a href="#">API / Developers</a> <span class="tbd">post-MVP</span></li>
-                <li><a href="#">Status</a> <span class="tbd">TBD</span></li>
-              </ul>
-            </nav>
-
-            <nav class="footer-col" aria-label="Support">
-              <h3>Support</h3>
-              <ul>
-                <li><a href="#">Help Center</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">FAQ</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">Contact</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">How It Works</a></li>
-              </ul>
-            </nav>
-
-            <nav class="footer-col" aria-label="Company">
-              <h3>Company</h3>
-              <ul>
-                <li><a href="#">About</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">Careers</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">Press</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">Brand</a> <span class="tbd">TBD</span></li>
-              </ul>
-            </nav>
-
-          </div>
-        </div>
-
-        <!-- Legal strip -->
-        <div class="footer-legal">
-          <nav aria-label="Legal">
-            <ul class="legal-links">
-              <li><a href="#">Terms</a></li>
-              <li><a href="#">Privacy</a></li>
-              <li><a href="#">Responsible play</a></li>
-              <li><a href="#">Geo restrictions</a> <span class="tbd">TBD</span></li>
-            </ul>
-          </nav>
-          <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
-          <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.]</p>
-          <p>Copyright (c) Predict Market. Sample wireframe content.</p>
-        </div>
-
-      </div>
-    </footer>
+      </section>
+    </div>
 
   </div>
 
-  <!-- ============ ANNOTATIONS + NAV TREE (out of layout flow) ============ -->
   <div class="side">
-
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>Logo = Events / home</strong> -&gt; primary entry; clicking the
-          brand returns to the Event Feed. Event-first identity, consistent with G4.</li>
-        <li><strong>Hamburger (left)</strong> -&gt; reserved for future scaling; no
-          primary items at MVP (Events is the logo, My Bets is in the avatar menu).</li>
-        <li><strong>Balance: Portfolio / Cash swap (desktop cluster only)</strong>
-          -&gt; one figure at a time, swap icon toggles Portfolio (= Cash + In-play,
-          shown $142) and Cash (= available, $42). Not two figures like competitors.
-          On mobile the balance is removed from the header (no room at 360px) and
-          surfaced in the Portfolio bottom slot instead. G4 still holds on desktop:
-          money is a utility in the cluster, Deposit lives in the avatar menu.</li>
-        <li><strong>Favorites (Saved view)</strong> -&gt; opens the Saved filter
-          over the feed. On mobile it is a bottom-bar slot (thumb reach for active
-          filtering to your watchlist); on desktop it is a heart icon in the
-          header. Saved is a view, not a new screen.</li>
-        <li><strong>Notifications (header bell on both breakpoints)</strong> -&gt;
-          bell icon + permanent badge in the header at all widths. Swapped with
-          Favorites (the bell left the bottom bar; Favorites took the slot). The
-          badge is visible whether at top or bottom, so the retention anchor (FJ1,
-          FJ5, EJ3; aarrr D1-D3) is preserved; the thumb slot goes to a more
-          actively-navigated control (Favorites). Overrides the locked
-          bottom-slot-for-Notifications decision.</li>
-        <li><strong>Portfolio bottom slot (mobile, combined account hub)</strong>
-          -&gt; replaces the Profile slot; shows the portfolio sum ($142) instead of
-          an icon, label "Portfolio" (Kalshi-style). Opens My Profile extended with a
-          portfolio summary on top (Portfolio / Cash, Deposit) above the track record.
-          A deliberate, documented partial override of G4: the slot is the account /
-          identity hub with a balance, not a bare trading wallet. Profile is no longer
-          a separate bottom slot; reputation stays reachable here and via the desktop
-          avatar. My Bets is untouched (positions / history), no duplication.</li>
-        <li><strong>Avatar dropdown</strong> -&gt; collapsed by default, opens on
-          click (keeps the header short). Items: My Profile, My Bets, Wallet /
-          Deposit, How It Works, Logout. My Bets now lives here on desktop; on
-          mobile it stays a bottom-nav slot.</li>
-        <li><strong>Second-level category nav</strong> -&gt; Trending (default),
-          Politics, Crypto, Culture, General as a sub-nav band under the header.
-          Categories are navigation (second level), separated from feed controls.</li>
-        <li><strong>Feed heading echoes the active category</strong> -&gt; the
-          heading is the selected second-level category (here "Trending"), not a
-          generic "Live events". It updates when you pick another category.</li>
-        <li><strong>Filter row (Kalshi-style dropdowns on the heading row)</strong>
-          -&gt; three controls, each label showing the current value: <em>Sort</em>
-          (Trending, Volatile, New, Closing soon, Volume, 50-50 plus a Reverse
-          toggle), <em>Frequency</em> (All, One-time, Hourly, Daily, Weekly, Monthly)
-          and <em>Category</em>. Feed controls, not navigation.</li>
-        <li><strong>Frequency -&gt; recurring markets (NEW concept)</strong>
-          -&gt; introduces event cadence (one-time vs hourly/daily/weekly/monthly
-          recurring markets). New Event attribute, added to IA/sitemap.md Event
-          entity; resolution mechanics for recurring markets to be detailed later.</li>
-        <li><strong>Category dropdown syncs with the chips</strong> -&gt; the
-          heading-row Category control is the full category list (scales as
-          categories grow) and stays in sync with the second-level chip nav and the
-          heading; both update the active category.</li>
-        <li><strong>Card entry = the question title (no Open button)</strong> -&gt;
-          the large "Open event detail" button was removed from every card; the
-          card title is the link to Event Detail (neutral entry). Cards stay compact
-          and the list scans faster.</li>
-        <li><strong>YES/NO trigger-entry on the card</strong> -&gt; routes to Event
-          Detail with the side (and for multi-outcome the option) pre-selected. It
-          does not place a bet and does not bypass Event Detail, so FJ2 is preserved
-          (IA/flows.md trigger-entry edge).</li>
-        <li><strong>Compact %, no badge, no snippet</strong> -&gt; Addition A: the
-          number is shown but does not dominate; FJ2 context is concentrated on
-          Event Detail.</li>
-        <li><strong>Multi-outcome layout -&gt; max 2 visible positions</strong>
-          -&gt; the feed card shows at most the two leading positions (the options
-          with the highest probability / most stake right now) and nothing else,
-          no "+N more" line. The full option list is seen after the user opens the
-          event (via the question link). Dropping the extra line keeps multi-outcome
-          cards close to binary-card height, so the meta row lines up across the
-          grid instead of leaving empty space. NOT the rejected trading-board view.</li>
-        <li><strong>Bookmark icon in the card meta row</strong> -&gt; moved into the
-          meta row as a small element (no card footer). Saves / follows the event,
-          feeds the Saved view (retention, FJ1 return). The proactive saved-event
-          alert is a hypothesis, not a confirmed Notification type.</li>
-        <li><strong>Footer (multi-column product footer)</strong> -&gt; EJ2/FJ4
-          trust. Structured from a prediction-market competitor scan (Polymarket,
-          Kalshi, Manifold, Limitless): a brand block (logo, tagline, social
-          icons, language), a Markets column (by category + by topic), Product,
-          Support and Company columns, and a bottom legal strip. X / Twitter and
-          Discord are the mandatory social pair; Instagram, TikTok and Telegram
-          extend reach. Regulatory and licensing text is a placeholder, never
-          invented. Anything outside MVP carries a dashed TBD / post-MVP / dynamic
-          tag, so the footer doubles as a roadmap. Skipped (no competitor uses
-          them in the footer, not MVP): app-store badges and a newsletter.</li>
-        <li><strong>Sample-content honesty</strong> -&gt; Addition B: all events are
-          illustrative sample data, never a real market or a verified fact.</li>
+        <li><strong>Pre-set direction (YES) + $5 default amount</strong> -&gt; MJ + FJ3: the real stake with low friction; side comes from the card / Event Detail tap, amount is pre-filled and quick-selectable.</li>
+        <li><strong>Fee and potential payout inline</strong> -&gt; transparency (design principle): "platform earns its fee only if you win"; payout depends on timing (AMM).</li>
+        <li><strong>Confirm fires the gate</strong> -&gt; intent is logged out; Confirm routes to Sign In, then Deposit (IA/flows.md confirmedIntent -&gt; gate).</li>
+        <li><strong>S5 reconcile</strong> -&gt; the AMM price can move during the gate; old vs new price is shown and the user re-confirms, or cancels (T16).</li>
+        <li><strong>insufficient-balance / event-closed / error / processing</strong> -&gt; deposit more or bet to balance; closed market exits to feed / My Bets; on-chain failure (T3) retries; the processing state is the transitional execute moment.</li>
       </ol>
     </aside>
 
@@ -875,57 +590,32 @@
         <span class="zone-tag">on-page nav tree (main-flow spine)</span>
 <pre>Main-flow spine (MJ, News Junkie):
 
-[Event Feed]   &lt;- current screen
+Event Feed
    v
 Event Detail
    v
-Bet Screen
+[Bet Screen]   &lt;- current screen
    v
 Sign In / Register
    v
 Deposit
    v
-Active Bets    (MJ success, T14)</pre>
-        <p class="ref">Flow position: MJ entry (IA/flows.md MJ,
-          triggerFeed -&gt; Event Feed -&gt; Event Detail). Serves FJ1, with a first
-          layer of FJ2 and EJ2.</p>
+Active Bets</pre>
+        <p class="ref">Flow position: MJ, after the YES/NO tap (IA/flows.md BS1 intent -&gt;
+          gate -&gt; ... -&gt; S5 reconcile -&gt; BS2 execute -&gt; Active Bets). Serves MJ, FJ3.</p>
       </section>
 
-      <section class="navtree" aria-label="Header model">
-        <span class="zone-tag">desktop header model (revised)</span>
-        <p class="ref">
-          Lean header. Left: hamburger (reserved) + logo (= Events home).
-          Desktop right cluster: Portfolio / Cash swap, Favorites (heart),
-          Notifications (bell + badge), avatar dropdown (My Profile, My Bets,
-          Wallet / Deposit, How It Works, Logout). Second-level category nav under
-          the header. Mobile: header drops the balance; right side keeps the
-          Notifications bell (badge) + avatar. Bottom nav (icons): Events, My Bets,
-          Favorites, Portfolio (balance + account hub, replaces Profile).
-        </p>
-      </section>
-
-      <section class="navtree" aria-label="Responsive behavior">
-        <span class="zone-tag">responsive behavior (verify by resizing)</span>
-        <p class="ref">
-          Mobile base: 1-column feed, bottom nav (4 slots), lean header. At >=640px:
-          bottom nav hidden, 2-column feed. At >=960px: 3 columns. At >=1280px: 4
-          columns. Header and category nav are present at every width.
-        </p>
-      </section>
-
-      <section class="navtree" aria-label="Documented variant">
-        <span class="zone-tag">documented variant (not built here)</span>
-        <p class="ref">
-          <strong>Return-visit denser layout:</strong> on return visits the feed is
-          denser per IA/sitemap.md Event Feed. A documented variant, not a separate
-          page in this step (P3-4 naming deferred).
-        </p>
+      <section class="navtree" aria-label="States">
+        <span class="zone-tag">states of this screen</span>
+        <p class="ref">intent (base, logged out), S5-reconcile (price moved, re-confirm / T16),
+          insufficient-balance (inline), event-closed (resolved while on screen),
+          error (on-chain, T3 retry), execute processing (transitional). The base is intent,
+          so there is no separate success page: success is the move to Active Bets. Invoked overlay.</p>
       </section>
     </div>
 
   </div>
 
-  <!-- Minimal interaction: desktop balance swap Portfolio <-> Cash (wireframe behavior, no styling) -->
   <script>
     (function () {
       var states = [

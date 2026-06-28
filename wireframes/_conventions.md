@@ -89,6 +89,34 @@ structure, different content.
   Error exit = Try again (mirrors `flows.md` T8 retry). Loading = grey skeleton
   cards. Push = the success feed plus the in-app "Enable notifications" banner
   (sitemap push-permission-missing).
+- **Step 6 - remaining spine screens built (the rest of the `_screens.md`
+  table).** Every state in that table is now its own page, following the Event
+  Feed standard (shared shell, S6 screen tree, state-switcher, real domain text,
+  grey-box, no em dash). The auth axis (S5) applies only to the browse screens
+  (Event Feed, Event Detail); the activation-gate and Bet screens are invoked
+  overlays (modal on desktop, bottom sheet on mobile) and Active Bets is
+  account-bound, so those carry a 1D state-switcher only.
+  - **Event Detail** (auth axis): logged-in `event-detail.html` (success /
+    pre-selected base), `-error` (T8, retry returns here), `-loading`,
+    `-resolved` (resolved-while-reading, logged-in only); logged-out
+    `event-detail-logged-out.html` + `-error`, `-loading`. Body is identical
+    across auth; only the header differs.
+  - **Bet Screen** (invoked overlay, base = intent): `bet-screen.html` (intent,
+    logged out), `-reconcile` (S5 price moved, T16 cancel), `-insufficient-balance`,
+    `-event-closed`, `-error` (on-chain T3), `-processing` (execute moment). No
+    separate `-success` page (success is the move to Active Bets).
+  - **Sign In / Register** (invoked overlay, base = form): `sign-in.html`,
+    `-loading` (OAuth), `-error` (T5), `-provider-conflict`.
+  - **Deposit** (invoked overlay, base = form): `deposit.html`, `-loading`,
+    `-error-card` (T2), `-error-kyc` (T1), `-widget-load-failure` (S3 fallback),
+    `-pending`, `-minimum-not-met`.
+  - **Active Bets** (account-bound, logged-in only): `active-bets.html`
+    (success / open positions, MJ terminal T14), `-empty-new` (CTA to feed),
+    `-empty-resolved` (CTA to History), `-error`, `-loading`.
+  - The screen tree (S6) now links these five screens (was `planned`) on every
+    page; Win, Loss, Notifications, Wallet, Profile, How It Works, and the Bet
+    History tab stay `planned`. Generators: scratchpad `_shell.py` +
+    `gen_event_detail.py` / `gen_active_bets.py` / `gen_overlays.py` / `resync.py`.
 
 ### 6. Deferred to later phases (Concept onward), not allowed in wireframes
 

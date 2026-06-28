@@ -309,7 +309,6 @@
       <button type="button" class="wf-nav-close" id="wfClose" aria-label="Close screen tree">x</button>
     </div>
     <ul class="wf-tree">
-
       <li class="wf-sec">Events</li>
       <li class="wf-screen">
         <a href="event-feed.html" class="active" aria-current="page">Event Feed</a>
@@ -328,56 +327,54 @@
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="event-detail.html" class="planned">Event Detail</a>
+        <a href="event-detail.html">Event Detail</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
-          <li>success / pre-selected</li>
-          <li>error</li>
-          <li>loading</li>
-          <li>resolved-while-reading</li>
+          <li><a href="event-detail.html">success / pre-selected</a></li>
+          <li><a href="event-detail-error.html">error</a></li>
+          <li><a href="event-detail-loading.html">loading</a></li>
+          <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
           <li class="wf-substate">Logged out</li>
-          <li>success / pre-selected</li>
-          <li>error</li>
-          <li>loading</li>
-          <li>resolved-while-reading</li>
+          <li><a href="event-detail-logged-out.html">success / pre-selected</a></li>
+          <li><a href="event-detail-logged-out-error.html">error</a></li>
+          <li><a href="event-detail-logged-out-loading.html">loading</a></li>
         </ul>
       </li>
       <li class="wf-note">Saved view - a filter over the feed, not a separate screen.</li>
-
       <li class="wf-sec">Activation gate</li>
       <li class="wf-screen">
-        <a href="sign-in.html" class="planned">Sign In / Register</a>
+        <a href="sign-in.html">Sign In / Register</a>
         <ul class="wf-states">
-          <li>success</li>
-          <li>error (auth failed)</li>
-          <li>loading (OAuth in-progress)</li>
-          <li>provider-conflict</li>
+          <li><a href="sign-in.html">success / form</a></li>
+          <li><a href="sign-in-error.html">error (auth failed)</a></li>
+          <li><a href="sign-in-loading.html">loading (OAuth in-progress)</a></li>
+          <li><a href="sign-in-provider-conflict.html">provider-conflict</a></li>
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="deposit.html" class="planned">Deposit</a>
+        <a href="deposit.html">Deposit</a>
         <ul class="wf-states">
-          <li>success</li>
-          <li>error (card / KYC / widget)</li>
-          <li>loading (widget in-progress)</li>
-          <li>pending</li>
-          <li>minimum-not-met</li>
+          <li><a href="deposit.html">success / form</a></li>
+          <li><a href="deposit-error-card.html">error-card (declined)</a></li>
+          <li><a href="deposit-error-kyc.html">error-KYC (rejected)</a></li>
+          <li><a href="deposit-widget-load-failure.html">widget-load-failure</a></li>
+          <li><a href="deposit-loading.html">loading (widget in-progress)</a></li>
+          <li><a href="deposit-pending.html">pending (under review)</a></li>
+          <li><a href="deposit-minimum-not-met.html">minimum-not-met</a></li>
         </ul>
       </li>
-
       <li class="wf-sec">Bet</li>
       <li class="wf-screen">
-        <a href="bet.html" class="planned">Bet Screen</a>
+        <a href="bet-screen.html">Bet Screen</a>
         <ul class="wf-states">
-          <li>intent (logged out)</li>
-          <li>S5-reconcile (price moved)</li>
-          <li>success</li>
-          <li>error (on-chain)</li>
-          <li>insufficient-balance</li>
-          <li>event-closed</li>
+          <li><a href="bet-screen.html">intent (base, logged out)</a></li>
+          <li><a href="bet-screen-reconcile.html">S5-reconcile (price moved)</a></li>
+          <li><a href="bet-screen-insufficient-balance.html">insufficient-balance</a></li>
+          <li><a href="bet-screen-event-closed.html">event-closed</a></li>
+          <li><a href="bet-screen-error.html">error (on-chain, T3)</a></li>
+          <li><a href="bet-screen-processing.html">execute processing</a></li>
         </ul>
       </li>
-
       <li class="wf-sec">Resolution</li>
       <li class="wf-screen">
         <a href="win.html" class="planned">Win Screen</a>
@@ -395,16 +392,15 @@
           <li>loading</li>
         </ul>
       </li>
-
       <li class="wf-sec">My Bets</li>
       <li class="wf-screen">
-        <a href="active-bets.html" class="planned">Active Bets</a>
+        <a href="active-bets.html">Active Bets</a>
         <ul class="wf-states">
-          <li>success</li>
-          <li>empty-new</li>
-          <li>empty-resolved</li>
-          <li>error</li>
-          <li>loading</li>
+          <li><a href="active-bets.html">success (open positions)</a></li>
+          <li><a href="active-bets-empty-new.html">empty-new</a></li>
+          <li><a href="active-bets-empty-resolved.html">empty-resolved</a></li>
+          <li><a href="active-bets-error.html">error</a></li>
+          <li><a href="active-bets-loading.html">loading</a></li>
         </ul>
       </li>
       <li class="wf-screen">
@@ -416,7 +412,6 @@
           <li>loading</li>
         </ul>
       </li>
-
       <li class="wf-sec">Notifications</li>
       <li class="wf-screen">
         <a href="notifications.html" class="planned">Notifications</a>
@@ -428,7 +423,6 @@
           <li>push-permission-missing</li>
         </ul>
       </li>
-
       <li class="wf-sec">Wallet</li>
       <li class="wf-screen">
         <a href="wallet.html" class="planned">Wallet</a>
@@ -438,7 +432,6 @@
           <li>error</li>
         </ul>
       </li>
-
       <li class="wf-sec">Profile</li>
       <li class="wf-screen">
         <a href="my-profile.html" class="planned">My Profile</a>
@@ -457,7 +450,6 @@
           <li>not-found / link-expired</li>
         </ul>
       </li>
-
       <li class="wf-sec">How It Works</li>
       <li class="wf-screen">
         <a href="how-it-works.html" class="planned">How It Works</a>
@@ -465,10 +457,8 @@
           <li>success (static trust page)</li>
         </ul>
       </li>
-
       <li class="wf-sec">Orphans [SIROTA] - not built (no confirmed job)</li>
       <li class="wf-note">Settings / Notification Preferences, Leaderboard, Help / FAQ.</li>
-
     </ul>
   </nav>
 
