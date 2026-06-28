@@ -249,10 +249,10 @@ WALLET_STATES = [("success", "wallet.html"), ("loading", "wallet-loading.html"),
                  ("error", "wallet-error.html")]
 MYPROFILE_STATES = [("success", "my-profile.html"), ("loading", "my-profile-loading.html"),
                     ("error", "my-profile-error.html")]
-# Saved view (Favorites target). Logged-in only - a filter over the feed, built as
-# its own page so the Favorites control (header heart + bottom slot) has a destination.
-SAVED_STATES = [("success", "saved.html"), ("empty", "saved-empty.html"),
-                ("loading", "saved-loading.html")]
+# Favorites view. Logged-in only - a filter over the feed, built as its own page so
+# the Favorites control (header heart + bottom slot) has a destination.
+FAVORITES_STATES = [("success", "favorites.html"), ("empty", "favorites-empty.html"),
+                    ("loading", "favorites-loading.html")]
 PUBPROFILE_STATES = [("success", "public-profile.html"), ("loading", "public-profile-loading.html"),
                      ("error", "public-profile-error.html"),
                      ("not-found / link-expired", "public-profile-not-found.html")]
@@ -309,8 +309,8 @@ def nav_tree(cur_file):
     screen("Event Feed", "event-feed.html", True, cur_file, axis=True, instates=EF_IN, outstates=EF_OUT)
     screen("Event Detail", "event-detail.html", True, cur_file, axis=True, instates=ED_IN, outstates=ED_OUT)
     a('      <li class="wf-note">Bet intent + states (reconcile, insufficient-balance, event-closed, processing, on-chain error) now live in the Event Detail bet panel - states to come (the standalone Bet modal was removed).</li>')
-    screen("Saved (Favorites)", "saved.html", True, cur_file, flat=SAVED_STATES)
-    a('      <li class="wf-note">Saved view - a filter over the feed (logged-in only); the Favorites control opens it.</li>')
+    screen("Favorites", "favorites.html", True, cur_file, flat=FAVORITES_STATES)
+    a('      <li class="wf-note">Favorites - a filter over the feed (logged-in only); the Favorites control opens it.</li>')
 
     a('      <li class="wf-sec">Category pages (second-level nav -> own page)</li>')
     for _cn, _stem in (("Politics", "politics"), ("Crypto", "crypto"), ("Culture", "culture"), ("General", "general")):

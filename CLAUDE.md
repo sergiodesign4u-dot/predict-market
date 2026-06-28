@@ -134,14 +134,14 @@ Mobile bottom nav - 4 slots:
 |---|---|---|---|
 | 1 | Events | Event Feed (the logo is also Events/home on desktop) | FJ1, FJ2, MJ |
 | 2 | My Bets | Active Bets (Active + History tabs) | EJ1, MJ, FJ5, EJ3 |
-| 3 | Favorites | Saved view (a filter over the feed) | FJ1 (return / watchlist) |
+| 3 | Favorites | Favorites view (a filter over the feed) | FJ1 (return / watchlist) |
 | 4 | Portfolio | My Profile + a portfolio summary (account hub); shows the balance figure in place of an icon | SJ1, SJ2, FJ4 |
 
 Desktop lean header: logo = Events/home; hamburger (reserved for scaling); right utility cluster = Portfolio/Cash balance swap, Favorites (heart), Notifications (bell + permanent badge), avatar dropdown (My Profile, My Bets, Wallet/Deposit, How It Works, Logout). Categories are a second-level sub-nav band under the header; the feed heading echoes the active category and the sort is a dropdown on that row. Notifications is a header bell on both breakpoints (badge = retention anchor), not a bottom slot. Money stays a utility, not a primary destination (G4 spirit; refined - the Portfolio slot surfaces a balance but opens the account hub, not a bare wallet).
 
 ### Primary screen hierarchy
 
-- Level 0: Event Feed, Active Bets (My Bets), Saved view (Favorites), Portfolio hub (My Profile + balance). Notifications is reached via the header bell.
+- Level 0: Event Feed, Active Bets (My Bets), Favorites view (Favorites), Portfolio hub (My Profile + balance). Notifications is reached via the header bell.
 - Level 1: Event Detail (under Events); Wallet/Deposit and How It Works (avatar dropdown, footer, and the Portfolio hub).
 - Flow/invoked: Bet Screen, Win Screen, Loss Screen, Sign In/Register, Deposit, Public Profile
 
@@ -166,10 +166,10 @@ S5 = AMM price reconcile node (price may move during auth/deposit). Four flows t
 
 Grey-box (low-fidelity) wireframes for the whole product live in `wireframes/`. Contract: `wireframes/_conventions.md` (grey-box rules, zones, nav, states, mobile-first, no em-dash, the build passes). Critique log: `wireframes/_critique.md`.
 
-- **Status: complete.** 99 pages - every screen in the IA screen tree, each state its own page, plus the Saved view (`saved.html` + empty + loading). Orphans `[SIROTA]` (Settings, Leaderboard, Help/FAQ) unbuilt by design; the standalone Bet Screen is dissolved into the inline Event Detail bet panel.
+- **Status: complete.** 99 pages - every screen in the IA screen tree, each state its own page, plus the Favorites view (`favorites.html` + empty + loading). Orphans `[SIROTA]` (Settings, Leaderboard, Help/FAQ) unbuilt by design; the standalone Bet Screen is dissolved into the inline Event Detail bet panel.
 - **Style:** neutral greys only - no color, type, shadows, icons-as-art, or finished UI (those are the Concept phase). Monochrome outline SVG icons only. A left screen-tree panel is on every page.
 - **States & auth:** browse screens (Event Feed, Event Detail, Category pages) have logged-in and logged-out variants; each screen carries its full state set (loading/empty/error/success + product-specific). Public Profile and How It Works carry the logged-out header (reached pre-auth).
 - **Flow-linked:** the main flow is clickable end to end (Event Feed -> Event Detail -> gate dialogs -> Active Bets) with branch exits and no dead-ends, wired along `IA/flows.md`. Sign In / Deposit are shared in-page `<dialog>`s; Win / Loss are invoked overlays.
-- **Chrome wiring:** header (Favorites -> Saved, bell -> Notifications, avatar dropdown -> Profile/My Bets/Wallet/How It Works/Logout) and the mobile bottom nav are real links, not dead buttons; logged-out controls open the sign-in dialog. Favorites resolves to the Saved view. See `wireframes/_conventions.md` Shared chrome wiring. Applied by the idempotent `fixpack.py` post-processor.
+- **Chrome wiring:** header (Favorites -> Favorites view, bell -> Notifications, avatar dropdown -> Profile/My Bets/Wallet/How It Works/Logout) and the mobile bottom nav are real links, not dead buttons; logged-out controls open the sign-in dialog. Favorites resolves to the Favorites view. See `wireframes/_conventions.md` Shared chrome wiring. Applied by the idempotent `fixpack.py` post-processor.
 - **Generated, not hand-authored:** pages are built by Python generators (in the session scratchpad) from a shared shell that extracts canonical CSS/footer/scripts from `event-feed.html`, so chrome stays byte-identical. To change shared chrome, edit the shell + regenerate, do not hand-edit individual pages.
 - **Quality gates:** 0 em-dash, 0 broken internal links; consistency reconciled across all families (Krok 8) and a defect critique pass applied (Krok 9).

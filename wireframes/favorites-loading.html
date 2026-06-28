@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Saved (empty, registered, responsive)</title>
+  <title>Wireframe - Favorites (loading, registered, responsive)</title>
   <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -327,7 +327,6 @@
     .notif-drop li a span { display: block; font-size: 10px; color: #555; }
     .notif-all { display: block; text-align: center; padding: 8px; border-top: 1px solid #999; font-size: 11px; text-decoration: none; color: #222; background: #dcdcdc; }
     .bal-add { padding: 3px; }
-    .notif-empty { margin: 0; padding: 14px 10px; text-align: center; font-size: 11px; color: #555; }
   </style>
 </head>
 <body>
@@ -383,14 +382,14 @@
       </li>
       <li class="wf-note">Bet intent + states (reconcile, insufficient-balance, event-closed, processing, on-chain error) now live in the Event Detail bet panel - states to come (the standalone Bet modal was removed).</li>
       <li class="wf-screen">
-        <a href="saved.html" class="active" aria-current="page">Saved (Favorites)</a>
+        <a href="favorites.html" class="active" aria-current="page">Favorites</a>
         <ul class="wf-states">
-          <li><a href="saved.html">success</a></li>
-          <li class="cur"><a href="saved-empty.html">empty (this page)</a></li>
-          <li><a href="saved-loading.html">loading</a></li>
+          <li><a href="favorites.html">success</a></li>
+          <li><a href="favorites-empty.html">empty</a></li>
+          <li class="cur"><a href="favorites-loading.html">loading (this page)</a></li>
         </ul>
       </li>
-      <li class="wf-note">Saved view - a filter over the feed (logged-in only); the Favorites control opens it.</li>
+      <li class="wf-note">Favorites - a filter over the feed (logged-in only); the Favorites control opens it.</li>
       <li class="wf-sec">Category pages (second-level nav -> own page)</li>
       <li class="wf-screen">
         <a href="politics.html">Politics</a>
@@ -563,15 +562,15 @@
   </nav>
 
   <div class="page-label">
-    <strong>Wireframe:</strong> Event Feed &nbsp;|&nbsp;
-    logged in - state: empty (no events match filters) &nbsp;|&nbsp;
+    <strong>Wireframe:</strong> Favorites &nbsp;|&nbsp;
+    logged in - state: loading (initial fetch) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/event-feed-empty.html
+    file: wireframes/favorites-loading.html
   </div>
 
   <!-- States of this screen: open them side by side. Same structure, different content. -->
   <nav class="state-switch" aria-label="States of this screen">
-    <div class="ss-row"><span class="ss-label">State</span><a href="saved.html">Success</a><a href="saved-empty.html" aria-current="page">Empty</a><a href="saved-loading.html">Loading</a></div>
+    <div class="ss-row"><span class="ss-label">State</span><a href="favorites.html">Success</a><a href="favorites-empty.html">Empty</a><a href="favorites-loading.html" aria-current="page">Loading</a></div>
   </nav>
 
   <!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
@@ -601,21 +600,26 @@
           </div>
 
           <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
-          <a href="saved.html" aria-label="Favorites, see saved events"><button type="button" class="icon-btn desk-only" aria-label="Favorites">
+          <a href="favorites.html" aria-label="Favorites, see saved events"><button type="button" class="icon-btn desk-only" aria-label="Favorites">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           </button></a>
 
           <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
           <details class="notif-menu">
-            <summary aria-label="Notifications, none">
+            <summary aria-label="Notifications, 3 unread">
               <span class="bell-wrap">
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+                <span class="badge-dot">3</span>
               </span>
             </summary>
             <div class="dropdown notif-drop" role="menu">
-              <span class="zone-tag">latest notifications (empty)</span>
-              <p class="notif-empty">No notifications yet. We will let you know when an event you follow moves or resolves.</p>
-              <a class="notif-all" href="notifications-empty.html">See all notifications</a>
+              <span class="zone-tag">latest notifications (tap a row, or see all)</span>
+              <ul>
+                <li><a href="win.html"><strong>Position resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+                <li><a href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+                <li><a href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
+              </ul>
+              <a class="notif-all" href="notifications.html">See all notifications</a>
             </div>
           </details>
 
@@ -653,12 +657,12 @@
 
     <!-- Feed -->
     <main class="feed">
-      <span class="zone-tag">zone: feed (Saved view - your saved events; a filter over the feed)</span>
+      <span class="zone-tag">zone: feed (Favorites - your saved events; a filter over the feed)</span>
       <div class="feed-inner">
 
         <div class="feed-head">
           <!-- Heading echoes the active category (here: Trending), not a generic "Live events". -->
-          <h2 id="feedHeading">Saved</h2>
+          <h2 id="feedHeading">Favorites</h2>
 
           <!-- Kalshi-style filter row: Sort, Frequency, Category. Each label shows the current value. -->
           <div class="feed-controls">
@@ -726,13 +730,80 @@
           </div>
         </div>
 
-        <div class="state-block" role="status" aria-live="polite">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-          <p class="state-title">No saved events yet</p>
-          <p class="state-msg">You have not saved any events yet. Tap the bookmark on any event to keep it here for quick access.</p>
-          <div class="state-actions">
-            <a href="event-feed.html"><button type="button" class="state-btn primary">Browse events</button></a>
-          </div>
+        <div class="grid" aria-busy="true">
+
+          <article class="card skeleton" aria-hidden="true">
+            <div class="card-body">
+              <div class="top">
+                <span class="sk-thumb"></span>
+                <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+              </div>
+              <span class="sk-line w40"></span>
+              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+              <span class="sk-line w60"></span>
+            </div>
+          </article>
+
+          <article class="card skeleton" aria-hidden="true">
+            <div class="card-body">
+              <div class="top">
+                <span class="sk-thumb"></span>
+                <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+              </div>
+              <span class="sk-line w40"></span>
+              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+              <span class="sk-line w60"></span>
+            </div>
+          </article>
+
+          <article class="card skeleton" aria-hidden="true">
+            <div class="card-body">
+              <div class="top">
+                <span class="sk-thumb"></span>
+                <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+              </div>
+              <span class="sk-line w40"></span>
+              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+              <span class="sk-line w60"></span>
+            </div>
+          </article>
+
+          <article class="card skeleton" aria-hidden="true">
+            <div class="card-body">
+              <div class="top">
+                <span class="sk-thumb"></span>
+                <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+              </div>
+              <span class="sk-line w40"></span>
+              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+              <span class="sk-line w60"></span>
+            </div>
+          </article>
+
+          <article class="card skeleton" aria-hidden="true">
+            <div class="card-body">
+              <div class="top">
+                <span class="sk-thumb"></span>
+                <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+              </div>
+              <span class="sk-line w40"></span>
+              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+              <span class="sk-line w60"></span>
+            </div>
+          </article>
+
+          <article class="card skeleton" aria-hidden="true">
+            <div class="card-body">
+              <div class="top">
+                <span class="sk-thumb"></span>
+                <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+              </div>
+              <span class="sk-line w40"></span>
+              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+              <span class="sk-line w60"></span>
+            </div>
+          </article>
+
         </div>
       </div>
     </main>
@@ -749,7 +820,7 @@
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
           <span>My Bets</span>
         </button></a></li>
-        <li aria-current="page"><a href="saved.html"><button type="button">
+        <li aria-current="page"><a href="favorites.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           <span>Favorites</span>
         </button></a></li>
@@ -899,7 +970,7 @@
           On mobile the balance is removed from the header (no room at 360px) and
           surfaced in the Portfolio bottom slot instead. G4 still holds on desktop:
           money is a utility in the cluster, Deposit lives in the avatar menu.</li>
-        <li><strong>Favorites (Saved view)</strong> -&gt; opens the Saved filter
+        <li><strong>Favorites</strong> -&gt; opens the Favorites filter
           over the feed. On mobile it is a bottom-bar slot (thumb reach for active
           filtering to your watchlist); on desktop it is a heart icon in the
           header. Saved is a view, not a new screen.</li>
@@ -961,7 +1032,7 @@
           grid instead of leaving empty space. NOT the rejected trading-board view.</li>
         <li><strong>Bookmark icon in the card meta row</strong> -&gt; moved into the
           meta row as a small element (no card footer). Saves / follows the event,
-          feeds the Saved view (retention, FJ1 return). The proactive saved-event
+          feeds the Favorites view (retention, FJ1 return). The proactive saved-event
           alert is a hypothesis, not a confirmed Notification type.</li>
         <li><strong>Footer (multi-column product footer)</strong> -&gt; EJ2/FJ4
           trust. Structured from a prediction-market competitor scan (Polymarket,

@@ -27,7 +27,7 @@ Single-page summary of all research phases. Open the link above in any browser -
 | [`flows.html`](./flows.html) | **Flows** visualization: all four flows rendered as Mermaid diagrams |
 | [`research/`](./research/) | Competitor analysis, strategy, JTBD, personas, AARRR |
 | [`research/screens/`](./research/screens/) | Competitor screenshots |
-| [`wireframes/`](./wireframes/) | **Grey-box wireframes**: 99 pages, every sitemap screen + all states + Saved view, flow-linked, header / nav wired, clickable end to end |
+| [`wireframes/`](./wireframes/) | **Grey-box wireframes**: 99 pages, every sitemap screen + all states + Favorites view, flow-linked, header / nav wired, clickable end to end |
 | [`concept/`](./concept/) | Visual direction, moodboard |
 | [`tokens/`](./tokens/) | Design tokens: color, type, spacing |
 | [`components/`](./components/) | UI component specs |
@@ -64,7 +64,7 @@ Event Feed -> Event Detail -> sign-in / deposit gate -> Active Bets.
 
 - **Coverage:** 99 pages - every screen in the IA screen tree, each state its own
   page. Event Feed, Event Detail (binary + multi, inline bet panel), 4 Category
-  pages, Saved view (Favorites), Sign In / Deposit (shared in-page dialogs), Win /
+  pages, Favorites view (Favorites), Sign In / Deposit (shared in-page dialogs), Win /
   Loss, Notifications, Wallet, My Profile / Public Profile, How It Works, Active
   Bets / Bet History.
 - **Auth axis:** browse screens have logged-in and logged-out variants.

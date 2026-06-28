@@ -354,7 +354,7 @@ still grey, with no color, fonts, icons, or shadows.
 
 These are reusable elements defined once here, so every later screen reuses them
 rather than reinventing them. All trace to the revised `IA/sitemap.md` (Desktop
-layer, Event Feed card, Saved view, Auth-state axis) and `IA/flows.md`
+layer, Event Feed card, Favorites view, Auth-state axis) and `IA/flows.md`
 (trigger-entry edge). They stay grey-box like everything else.
 
 ### S1. Footer (global element, product footer)
@@ -407,7 +407,7 @@ and is the same at all widths.
 - **Right utility cluster (desktop):** a balance shown as a Portfolio / Cash
   swap (one figure at a time + a swap icon: Portfolio = Cash + In-play, default,
   toggles to Cash = available; not two figures like competitors), Favorites
-  (heart icon, opens the Saved view), Notifications (bell icon with a permanent
+  (heart icon, opens the Favorites view), Notifications (bell icon with a permanent
   unread badge), and the avatar. The avatar opens a dropdown, collapsed by
   default, opening on click: My Profile, My Bets, Wallet / Deposit, How It Works,
   Logout. There is no standalone Deposit button in the header.
@@ -466,10 +466,10 @@ now clean and the FJ2 context block lives on Event Detail only.
 
 ### S4. Bookmark / saved (pattern)
 
-Cards carry a bookmark control. Saved events are reached through the Saved view
+Cards carry a bookmark control. Saved events are reached through the Favorites view
 under Events (a filter over the feed) and via the Favorites (heart) entry in the
-desktop header. Saved is a view, not a new destination or screen, so it is not a
-separate wireframe screen.
+desktop header. Favorites is a view, not a new destination or screen, so it is not
+a separate wireframe screen.
 
 ### S5. Auth-state axis (top-level page axis)
 
@@ -595,19 +595,19 @@ this here so the page count is expected, not a surprise, in Step 03.
 
 Header and bottom-nav controls are real navigation, not dead buttons:
 
-- **Logged-in header:** Favorites heart -> `saved.html`, Notifications bell ->
+- **Logged-in header:** Favorites heart -> `favorites.html`, Notifications bell ->
   `notifications.html`, avatar dropdown -> My Profile / My Bets (`active-bets.html`)
   / Wallet / How It Works / Logout (`event-feed-logged-out.html`).
 - **Logged-out header:** Favorites + Notifications + Log in / Sign up open the
   sign-in dialog (no account to navigate to yet).
 - **Bottom nav (mobile):** logged-in Events / My Bets / Favorites / Portfolio ->
-  feed / active-bets / `saved.html` / my-profile; logged-out Events -> logged-out
+  feed / active-bets / `favorites.html` / my-profile; logged-out Events -> logged-out
   feed, My Bets + Favorites -> sign-in dialog, Sign in -> sign-in dialog.
 - **Dialog CSS:** any page that carries the sign-in / deposit `<dialog>` markup
   must also carry the `dialog.app-dialog` CSS, or the dialog renders unstyled.
 
 Wiring is applied by the idempotent post-processor `fixpack.py` (run after the
-generators). The **Saved view** (`saved.html` + empty + loading) is the logged-in
+generators). The **Favorites view** (`favorites.html` + empty + loading) is the logged-in
 "filter over the feed" target for the Favorites control.
 
 ### Header dropdowns + in-context deposit + logged-out redirect (`chrome2.py`)

@@ -22,7 +22,7 @@ individual pages.
 1. **Per-screen generators** (independent, any order): `gen_event_detail.py`,
    `gen_category.py`, `gen_active_bets.py`, `gen_history.py`, `gen_overlays.py`,
    `gen_resolution.py`, `gen_notifications.py`, `gen_wallet.py`, `gen_profile.py`,
-   `gen_howitworks.py`, `gen_auth_states.py`, `gen_states.py`, `gen_saved.py`.
+   `gen_howitworks.py`, `gen_auth_states.py`, `gen_states.py`, `gen_favorites.py`.
 2. **Post-processors** (idempotent, run after the generators):
    - `resync.py` - rebuild the left screen-tree panel on every page from `nav_tree`.
    - `wire_catnav.py` - second-level category nav -> real links.
