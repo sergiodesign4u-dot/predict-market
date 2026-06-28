@@ -285,14 +285,191 @@ def bet_dock(view):
             '      </div>\n')
 
 
-def main_success(view, panel_state):
-    zone = ("binary: chart, facts, why-this-price, resolution + sticky bet panel" if view == "binary"
-            else "multi-outcome: outcomes list, chart, why-this-price + sticky bet panel (pick an outcome)")
+# ---------- content tabs (Comments / Top Holders / Positions / Activity) ----------
+TAB_CSS = """
+    /* ---- Event Detail content tabs (Comments / Top Holders / Positions / Activity) ---- */
+    .ed-tabs { padding: 0; }
+    .ed-tabwrap { border-top: 1px solid #ccc; }
+    .ed-tabradio { position: absolute; left: -9999px; }
+    .ed-tabbar { display: flex; gap: 0; overflow-x: auto; border-bottom: 1px solid #999; background: #ededed; }
+    .ed-tablabel { flex: 0 0 auto; padding: 9px 12px; font-size: 12px; cursor: pointer; border-right: 1px solid #ccc; white-space: nowrap; color: #555; }
+    .ed-tab-count { font-size: 10px; color: #777; }
+    .ed-tabpanel { display: none; padding: 10px; }
+    #edtab-comments:checked ~ .ed-tabbar label[for="edtab-comments"],
+    #edtab-holders:checked ~ .ed-tabbar label[for="edtab-holders"],
+    #edtab-positions:checked ~ .ed-tabbar label[for="edtab-positions"],
+    #edtab-activity:checked ~ .ed-tabbar label[for="edtab-activity"] { background: #f4f4f4; color: #111; font-weight: bold; box-shadow: inset 0 -2px 0 #777; }
+    #edtab-comments:checked ~ .ed-panel-comments,
+    #edtab-holders:checked ~ .ed-panel-holders,
+    #edtab-positions:checked ~ .ed-panel-positions,
+    #edtab-activity:checked ~ .ed-panel-activity { display: block; }
+    .cmt-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; font-size: 11px; color: #555; }
+    .cmt-controls .seg { display: inline-flex; border: 1px solid #999; }
+    .cmt-controls .seg button { border: none; border-right: 1px solid #999; background: #e2e2e2; padding: 4px 8px; font-size: 11px; cursor: pointer; }
+    .cmt-controls .seg button:last-child { border-right: none; }
+    .cmt-controls .seg button.sel { background: #c4c4c4; font-weight: bold; }
+    .cmt-compose { display: flex; gap: 8px; align-items: center; border: 1px solid #bbb; background: #ededed; padding: 8px; margin-bottom: 10px; }
+    .cmt-av { width: 28px; height: 28px; flex: 0 0 28px; border: 1px solid #999; background: #d2d2d2; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 8px; color: #555; }
+    .cmt-input { flex: 1; border: 1px solid #888; background: #fff; padding: 8px; font-size: 12px; color: #777; }
+    .cmt-post { border: 1px solid #888; background: #c4c4c4; padding: 8px 12px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .cmt-signin { width: 100%; border: 1px dashed #999; background: #ededed; padding: 12px; font-size: 12px; text-align: center; cursor: pointer; }
+    .cmt-list { display: flex; flex-direction: column; gap: 12px; }
+    .cmt { display: flex; gap: 8px; }
+    .cmt.reply { margin-left: 32px; }
+    .cmt-body { flex: 1; min-width: 0; }
+    .cmt-meta { font-size: 11px; color: #555; display: flex; gap: 6px; flex-wrap: wrap; align-items: baseline; }
+    .cmt-user { font-weight: bold; color: #222; font-size: 12px; }
+    .cmt-badge { border: 1px solid #bbb; background: #e6e6e6; font-size: 9px; padding: 0 5px; }
+    .cmt-text { font-size: 12px; margin: 3px 0; }
+    .cmt-actions { display: flex; gap: 14px; font-size: 11px; color: #555; }
+    .cmt-actions button { border: none; background: transparent; padding: 0; font-size: 11px; color: #555; cursor: pointer; display: inline-flex; gap: 4px; align-items: center; }
+    .cmt-actions .ic { width: 13px; height: 13px; }
+    .hold-cols { display: flex; flex-direction: column; gap: 12px; }
+    .hold-col h4 { font-size: 12px; margin: 0 0 4px; }
+    .hold-row { display: flex; align-items: center; gap: 8px; font-size: 12px; padding: 5px 0; border-top: 1px solid #e0e0e0; }
+    .hold-row:first-of-type { border-top: none; }
+    .hold-rank { width: 14px; color: #777; font-size: 11px; }
+    .hold-name { flex: 1; }
+    .hold-amt { color: #555; font-size: 11px; white-space: nowrap; }
+    .ptable { width: 100%; font-size: 11px; border-collapse: collapse; }
+    .ptable th, .ptable td { text-align: left; padding: 6px 6px; border-bottom: 1px solid #e0e0e0; }
+    .ptable th { color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: .03em; }
+    .ptable tr.you td { background: #e6e6e6; font-weight: bold; }
+    .pos-side { border: 1px solid #999; background: #dcdcdc; padding: 0 5px; font-size: 10px; }
+    .pos-note { font-size: 11px; color: #555; margin: 8px 0 0; }
+    .act-list { display: flex; flex-direction: column; }
+    .act-row { display: flex; gap: 8px; align-items: center; font-size: 12px; padding: 7px 0; border-top: 1px solid #e0e0e0; }
+    .act-row:first-child { border-top: none; }
+    .act-txt { flex: 1; min-width: 0; }
+    .act-time { color: #777; font-size: 10px; white-space: nowrap; }
+    @media (min-width: 640px) {
+      .hold-cols { flex-direction: row; }
+      .hold-col { flex: 1; }
+      .hold-col:first-child { border-right: 1px solid #ddd; padding-right: 12px; }
+    }
+"""
+
+HEART = ('<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 '
+         '6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>')
+
+
+def _cmt(av, user, badge, time, text, likes, reply=False):
+    b = f'<span class="cmt-badge">{badge}</span>' if badge else ''
+    cls = "cmt reply" if reply else "cmt"
+    return (f'                <div class="{cls}">\n'
+            f'                  <span class="cmt-av">{av}</span>\n'
+            f'                  <div class="cmt-body">\n'
+            f'                    <div class="cmt-meta"><span class="cmt-user">{user}</span>{b}<span>{time}</span></div>\n'
+            f'                    <p class="cmt-text">{text}</p>\n'
+            f'                    <div class="cmt-actions"><button type="button">{HEART}{likes}</button><button type="button">Reply</button></div>\n'
+            f'                  </div>\n'
+            f'                </div>\n')
+
+
+def comments_panel(auth):
+    if auth == "in":
+        compose = ('              <div class="cmt-compose">\n'
+                   '                <span class="cmt-av">you</span>\n'
+                   '                <span class="cmt-input">Add a comment...</span>\n'
+                   '                <button type="button" class="cmt-post">Post</button>\n'
+                   '              </div>\n')
+    else:
+        compose = '              <button type="button" class="cmt-signin" data-open="signin">Sign in to join the discussion</button>\n'
+    lst = (_cmt("mm", "marketmaven", "Holds 320 YES", "2h ago",
+               "These always go to the wire. I am holding my position and adding if it dips.", "24")
+           + _cmt("dd", "deadline_dan", "", "1h ago",
+                  "The committee bloc looks firmer this time though.", "6", reply=True)
+           + _cmt("pp", "polly_predicts", "Holds 150 NO", "5h ago",
+                  "Volume jumped right after the headline. Watching how it settles.", "11")
+           + _cmt("nh", "newhere", "", "1d ago",
+                  "First bet here. The resolution source being official notices makes this easy to trust.", "8"))
+    return ('            <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">\n'
+            '              <div class="cmt-controls">\n'
+            '                <span>128 comments</span>\n'
+            '                <span class="seg"><button type="button" class="sel">Newest</button>'
+            '<button type="button">Top</button><button type="button">Holders</button></span>\n'
+            '              </div>\n'
+            + compose
+            + '              <div class="cmt-list">\n' + lst + '              </div>\n'
+            '            </div>\n')
+
+
+def holders_panel():
+    yes = [("whale_07", "1,240"), ("marketmaven", "320"), ("alpha_ape", "280"), ("satoshi_jr", "150")]
+    no = [("hedge_hannah", "980"), ("polly_predicts", "150"), ("caut_carl", "120"), ("riskoff", "90")]
+
+    def col(title, rows):
+        rr = "".join(
+            f'                <div class="hold-row"><span class="hold-rank">{i}</span>'
+            f'<span class="cmt-av">{n[:2]}</span><span class="hold-name">{n}</span>'
+            f'<span class="hold-amt">{a} shares</span></div>\n' for i, (n, a) in enumerate(rows, 1))
+        return f'              <div class="hold-col">\n                <h4>{title}</h4>\n' + rr + '              </div>\n'
+    return ('            <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Top holders">\n'
+            '              <div class="hold-cols">\n' + col("YES holders", yes) + col("NO holders", no)
+            + '              </div>\n            </div>\n')
+
+
+def positions_panel(auth):
+    rows = [("whale_07", "YES", "1,240", "$0.35", "$471"), ("hedge_hannah", "NO", "980", "$0.60", "$588"),
+            ("marketmaven", "YES", "320", "$0.41", "$121"), ("polly_predicts", "NO", "150", "$0.58", "$87")]
+    you = ('                <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td>'
+           '<td>13</td><td>$0.38</td><td>$4.94</td></tr>\n') if auth == "in" else ''
+    body = you + "".join(
+        f'                <tr><td>{u}</td><td><span class="pos-side">{s}</span></td>'
+        f'<td>{sh}</td><td>{a}</td><td>{v}</td></tr>\n' for u, s, sh, a, v in rows)
+    note = ('              <p class="pos-note">Your row is highlighted. Positions update as the market trades.</p>\n'
+            if auth == "in"
+            else '              <button type="button" class="cmt-signin" data-open="signin">Sign in to open and track your position</button>\n')
+    return ('            <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Positions">\n'
+            '              <table class="ptable">\n'
+            '                <thead><tr><th>Holder</th><th>Side</th><th>Shares</th><th>Avg</th><th>Value</th></tr></thead>\n'
+            '                <tbody>\n' + body + '                </tbody>\n'
+            '              </table>\n' + note + '            </div>\n')
+
+
+def activity_panel():
+    acts = [("wh", "whale_07", "bought", "500 YES", "$0.35", "$175", "2m ago"),
+            ("hh", "hedge_hannah", "bought", "300 NO", "$0.60", "$180", "14m ago"),
+            ("mm", "marketmaven", "sold", "80 YES", "$0.39", "$31", "1h ago"),
+            ("pp", "polly_predicts", "bought", "150 NO", "$0.58", "$87", "3h ago"),
+            ("nh", "newhere", "bought", "13 YES", "$0.38", "$4.94", "5h ago")]
+    rows = "".join(
+        f'              <div class="act-row"><span class="cmt-av">{av}</span>'
+        f'<span class="act-txt"><b>{u}</b> {act} <b>{sz}</b> at {pr} ({val})</span>'
+        f'<span class="act-time">{t}</span></div>\n' for av, u, act, sz, pr, val, t in acts)
+    return ('            <div class="ed-tabpanel ed-panel-activity" role="tabpanel" aria-label="Activity">\n'
+            '              <p class="pos-note" style="margin:0 0 8px;">Recent trades, largest first. Filter: over $5.</p>\n'
+            '              <div class="act-list">\n' + rows + '              </div>\n'
+            '            </div>\n')
+
+
+def tabs_section(view, auth):
+    return ('          <section class="ed-section ed-tabs">\n'
+            '            <div class="ed-tabwrap">\n'
+            '              <input type="radio" name="edtab" id="edtab-comments" class="ed-tabradio" checked>\n'
+            '              <input type="radio" name="edtab" id="edtab-holders" class="ed-tabradio">\n'
+            '              <input type="radio" name="edtab" id="edtab-positions" class="ed-tabradio">\n'
+            '              <input type="radio" name="edtab" id="edtab-activity" class="ed-tabradio">\n'
+            '              <div class="ed-tabbar" role="tablist">\n'
+            '                <label class="ed-tablabel" for="edtab-comments">Comments <span class="ed-tab-count">128</span></label>\n'
+            '                <label class="ed-tablabel" for="edtab-holders">Top Holders</label>\n'
+            '                <label class="ed-tablabel" for="edtab-positions">Positions</label>\n'
+            '                <label class="ed-tablabel" for="edtab-activity">Activity</label>\n'
+            '              </div>\n'
+            + comments_panel(auth) + holders_panel() + positions_panel(auth) + activity_panel()
+            + '            </div>\n'
+            '          </section>\n')
+
+
+def main_success(view, panel_state, auth):
+    zone = ("binary: chart, facts, why-this-price, resolution, tabs + sticky bet panel" if view == "binary"
+            else "multi-outcome: outcomes, chart, why-this-price, tabs + sticky bet panel (pick an outcome)")
     return ('    <main class="feed">\n'
             f'      <span class="zone-tag">zone: event detail ({zone})</span>\n'
             '      <div class="ed-layout">\n'
             '        <div class="ed-main">\n'
             + main_text(view)
+            + tabs_section(view, auth)
             + '        </div>\n'
             + bet_panel(view, panel_state)
             + '      </div>\n'
@@ -300,7 +477,7 @@ def main_success(view, panel_state):
             + bet_dock(view))
 
 
-def main_resolved():
+def main_resolved(auth="in"):
     banner = """      <div class="state-block" style="margin:8px;">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
         <h2 class="state-title">This event just resolved</h2>
@@ -314,7 +491,8 @@ def main_resolved():
     return ('    <main class="feed">\n'
             '      <span class="zone-tag">zone: event detail (resolved-while-reading / event-closed: market closed)</span>\n'
             + banner
-            + '      <div class="feed-inner"><div class="ed-main">\n' + main_text("binary") + '      </div></div>\n'
+            + '      <div class="feed-inner"><div class="ed-main">\n' + main_text("binary")
+            + tabs_section("binary", auth) + '      </div></div>\n'
             + '    </main>\n')
 
 
@@ -374,6 +552,7 @@ def side(view, panel_state):
         <li><strong>Sticky bet panel (right rail desktop / bottom dock mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while scrolling. Binary = YES / NO; multi-outcome = pick one outcome, then YES / NO on it.</li>
         <li><strong>Bet states migrated into the panel</strong> -&gt; intent, insufficient-balance (inline guard), S5 reconcile (price moved during the gate), execute processing, on-chain error (T3). The old standalone Bet modal is gone; event-closed is the resolved state.</li>
         <li><strong>Price chart (schematic) + Why this price</strong> -&gt; FJ2 differentiator, below the chart and facts so the panel leads.</li>
+        <li><strong>Content tabs (Comments / Top Holders / Positions / Activity)</strong> -&gt; below the event content, a Polymarket-style tab strip (CSS-only switch). Comments has sort + composer (logged-out prompts sign-in); Positions highlights your row when logged in; Holders and Activity are public. Depth / social proof for FJ2 and engagement.</li>
         <li><strong>Confirm fires the gate</strong> -&gt; opens the Sign In dialog over this page, then Deposit (insufficient-balance jumps straight to the Deposit dialog).</li>
         <li><strong>Auth + states</strong> -&gt; logged-in / logged-out, binary / multi success, error (T8), loading, resolved-while-reading.</li>
       </ol>
@@ -403,9 +582,11 @@ def build(auth, state_key, view="binary", panel="intent"):
     header = S.HEADER_IN_OPEN if auth == "in" else S.HEADER_OUT_OPEN
     bottom = S.bottom_in("events") if auth == "in" else S.bottom_out()
     if state_key in ("binary", "multi"):
-        main = main_success(view, panel)
+        main = main_success(view, panel, auth)
+    elif state_key == "resolved":
+        main = main_resolved(auth)
     else:
-        main = {"error": main_error, "loading": main_loading, "resolved": main_resolved}[state_key]()
+        main = {"error": main_error, "loading": main_loading}[state_key]()
     device = header + S.cat_nav("Politics", "zone: second-level navigation (categories; active = this event's category)") + main + bottom + "    " + S.FOOTER + "\n"
     view_lbl = {"binary": "binary", "multi": "multi-outcome"}.get(view, view)
     if state_key in ("binary", "multi"):
@@ -416,6 +597,8 @@ def build(auth, state_key, view="binary", panel="intent"):
     authstate = ("logged in" if auth == "in" else "logged out") + " - state: " + st
     html = S.assemble(f"Wireframe - Event Detail ({authstate})", cur_file, "Event Detail",
                       authstate, switcher(auth, state_key, panel), device, side(view_lbl, panel))
+    if state_key in ("binary", "multi", "resolved"):
+        html = html.replace("\n  </style>", TAB_CSS + "  </style>", 1)
     return S.write(cur_file, html)
 
 

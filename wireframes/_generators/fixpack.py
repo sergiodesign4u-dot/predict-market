@@ -60,13 +60,18 @@ def _extract(pattern):
     return m.group(0)
 
 FAV_OLD = _extract(r' *<button type="button" class="icon-btn desk-only" aria-label="Favorites">.*?</button>')
-BELL_OLD = _extract(r' *<button type="button" class="icon-btn" aria-label="Notifications, 3 unread">.*?</button>')
-
 FAV_NEW = '<a href="favorites.html" aria-label="Favorites, see saved events">' + FAV_OLD.strip() + '</a>'
 # keep the original indentation of the favorites button line
 FAV_NEW = FAV_OLD[:len(FAV_OLD) - len(FAV_OLD.lstrip())] + FAV_NEW
-BELL_NEW = BELL_OLD[:len(BELL_OLD) - len(BELL_OLD.lstrip())] + \
-    '<a href="notifications.html">' + BELL_OLD.strip() + '</a>'
+
+# The notifications bell used to be a bare button wired to a link here; HEADER_IN_OPEN
+# now emits the notifications <details> dropdown directly, so bell wiring is obsolete.
+# Kept optional for back-compat with any page still carrying the old raw bell button.
+_bell = re.search(r' *<button type="button" class="icon-btn" aria-label="Notifications, 3 unread">.*?</button>',
+                  S.HEADER_IN_OPEN, re.S)
+BELL_OLD = _bell.group(0) if _bell else None
+BELL_NEW = (BELL_OLD[:len(BELL_OLD) - len(BELL_OLD.lstrip())]
+            + '<a href="notifications.html">' + BELL_OLD.strip() + '</a>') if BELL_OLD else None
 
 AVATAR = [
     ('My Profile', 'my-profile.html'),
@@ -79,7 +84,8 @@ AVATAR = [
 
 def wire_header(html):
     changed = False
-    for old, new in ((FAV_OLD, FAV_NEW), (BELL_OLD, BELL_NEW)):
+    pairs = [(FAV_OLD, FAV_NEW)] + ([(BELL_OLD, BELL_NEW)] if BELL_OLD else [])
+    for old, new in pairs:
         if new in html:
             continue
         if old in html:

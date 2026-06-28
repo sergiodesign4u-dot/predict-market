@@ -293,6 +293,40 @@
     }
     @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, minmax(280px, 1fr)); } }
     @media (min-width: 1280px) { .grid { grid-template-columns: repeat(4, minmax(280px, 1fr)); } }
+    /* ---- Shared in-page dialogs (native <dialog>) - injected for event-feed family ---- */
+    dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
+    dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
+    dialog.app-dialog .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
+    dialog.app-dialog .sheet-head h2 { font-size: 14px; margin: 0; }
+    dialog.app-dialog .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
+    dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    dialog.app-dialog .fine { font-size: 11px; color: #555; line-height: 1.5; }
+    dialog.app-dialog .field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    dialog.app-dialog .amount-row { display: flex; align-items: center; gap: 8px; }
+    dialog.app-dialog .amount-input { flex: 1; border: 1px solid #888; background: #fff; padding: 10px; font-size: 18px; }
+    dialog.app-dialog .quick { display: flex; gap: 6px; flex-wrap: wrap; }
+    dialog.app-dialog .quick button { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    dialog.app-dialog .quick button.sel { background: #b8b8b8; font-weight: bold; }
+    dialog.app-dialog .provider-btn { display: flex; align-items: center; gap: 10px; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; cursor: pointer; width: 100%; text-align: left; }
+    dialog.app-dialog .provider-btn .ic { width: 18px; height: 18px; }
+    dialog.app-dialog .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
+    dialog.app-dialog .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
+    dialog.app-dialog .confirm-btn { border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; cursor: pointer; width: 100%; }
+    .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
+    /* notifications dropdown (header bell -> mini-list, no chevron) */
+    .notif-menu { position: relative; }
+    .notif-menu summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; }
+    .notif-menu summary::-webkit-details-marker { display: none; }
+    .notif-menu .dropdown { position: absolute; right: 0; top: calc(100% + 4px); width: 260px; max-width: 80vw; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
+    .notif-menu .dropdown .zone-tag { background: #cdcdcd; }
+    .notif-drop ul { list-style: none; margin: 0; padding: 0; }
+    .notif-drop li { border-top: 1px solid #ccc; }
+    .notif-drop li:first-child { border-top: none; }
+    .notif-drop li a { display: block; padding: 8px 10px; text-decoration: none; color: #222; }
+    .notif-drop li a strong { display: block; font-size: 12px; }
+    .notif-drop li a span { display: block; font-size: 10px; color: #555; }
+    .notif-all { display: block; text-align: center; padding: 8px; border-top: 1px solid #999; font-size: 11px; text-decoration: none; color: #222; background: #dcdcdc; }
+    .bal-add { padding: 3px; }
   
     /* ---- Event Detail ---- */
     .ed-head { display: flex; gap: 10px; padding: 10px; align-items: flex-start; }
@@ -434,6 +468,7 @@
     dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
     dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
+
     /* notifications dropdown (header bell -> mini-list, no chevron) */
     .notif-menu { position: relative; }
     .notif-menu summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; }
@@ -929,6 +964,7 @@
         <li><strong>Sticky bet panel (right rail desktop / bottom dock mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while scrolling. Binary = YES / NO; multi-outcome = pick one outcome, then YES / NO on it.</li>
         <li><strong>Bet states migrated into the panel</strong> -&gt; intent, insufficient-balance (inline guard), S5 reconcile (price moved during the gate), execute processing, on-chain error (T3). The old standalone Bet modal is gone; event-closed is the resolved state.</li>
         <li><strong>Price chart (schematic) + Why this price</strong> -&gt; FJ2 differentiator, below the chart and facts so the panel leads.</li>
+        <li><strong>Content tabs (Comments / Top Holders / Positions / Activity)</strong> -&gt; below the event content, a Polymarket-style tab strip (CSS-only switch). Comments has sort + composer (logged-out prompts sign-in); Positions highlights your row when logged in; Holders and Activity are public. Depth / social proof for FJ2 and engagement.</li>
         <li><strong>Confirm fires the gate</strong> -&gt; opens the Sign In dialog over this page, then Deposit (insufficient-balance jumps straight to the Deposit dialog).</li>
         <li><strong>Auth + states</strong> -&gt; logged-in / logged-out, binary / multi success, error (T8), loading, resolved-while-reading.</li>
       </ol>

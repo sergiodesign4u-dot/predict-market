@@ -632,6 +632,18 @@ Applied by `chrome2.py` (idempotent, run after `fixpack.py`).
   consistent instead of previewing notifications that lead to the populated page.
   Applied by `chrome3.py` (run after `chrome2.py`).
 
+### Event Detail content tabs
+
+Below the event content (chart, why-this-price, resolution) Event Detail carries a
+Polymarket-style tab strip: **Comments**, **Top Holders**, **Positions**,
+**Activity**. It is a CSS-only switch (hidden radio inputs + `:checked ~` sibling
+selectors), no JS. Comments has a sort segment and a composer (logged-out shows a
+"Sign in to join the discussion" prompt); Positions highlights the user's own row
+when logged in (logged-out prompts sign-in); Top Holders and Activity are public.
+Present on binary / multi / resolved, logged-in and logged-out. Built in
+`gen_event_detail.py` with a page-local `<style>` (the `.ed-tab*` / `.cmt-*` /
+`.hold-*` / `.ptable` / `.act-*` classes), so the tab CSS lives only on Event Detail.
+
 ## What comes next
 
 The per-screen file list and the screens themselves are produced from Step 03
