@@ -240,6 +240,27 @@ earlier rules:
   axis (a public page; the viewer's login state does not change it). Extra state
   **not-found / link-expired** routes a stale link back to the Event Feed. Both
   serve SJ1 / SJ2. Still `planned`: How It Works, Bet History tab.
+- **How It Works + Bet History built - planned-screens block complete.**
+  **How It Works** (`how-it-works.html`, 1 static page; `gen_howitworks.py`, small
+  page-local `<style>` for the trust sections): a trust *declaration*, not a FAQ -
+  a lead promise then four sections (USDC held 1:1; how events resolve: conditions
+  up front, platform team vs public evidence, on-chain proof; pricing / payout:
+  AMM timing, fee only on a win, no subscription; "proven not promised" with a
+  resolved-markets social-proof stat), CTAs Browse events / Add funds (shared
+  dialog), and a note that it is reachable before any deposit (menu / footer /
+  Deposit "learn more"). Serves FJ4 + EJ2. No loading / error / empty (static); no
+  auth axis (content identical logged-in or out); no bottom slot current.
+  **Bet History (History tab)** (`active-bets-history.html` + `-empty` / `-error` /
+  `-loading`, 4 pages; `gen_history.py`): the History tab inside My Bets (G5 - not
+  a standalone screen), a private list of resolved bets (won / lost, stake, payout,
+  your side, outcome); **tapping a resolved item routes to Win / Loss** (SJ1
+  win-share / FJ5 + EJ3 loss entries start here). empty -&gt; Event Feed; account-
+  bound, logged-in only, My Bets bottom slot current, no auth axis. The Active /
+  History **tabs are now real links** (shared `S.tabs(active)` in the shell;
+  `gen_active_bets.py` regenerated to match), so the two tabs navigate. With these,
+  every screen in the S6 tree is built; nothing remains `planned` (orphans
+  `[SIROTA]` - Settings, Leaderboard, Help / FAQ - stay unbuilt by design, no
+  confirmed job).
 
 ### 6. Deferred to later phases (Concept onward), not allowed in wireframes
 
