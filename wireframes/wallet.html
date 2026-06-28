@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Category: Culture (logged out - state: loading (skeleton))</title>
+  <title>Wireframe - Wallet (logged in - state: success (balance + history))</title>
 <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -435,6 +435,12 @@
     dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
   </style>
+  <style>
+    .wd-flow { border: 1px solid #999; background: #ededed; margin: 8px 0; }
+    .wd-flow > summary { cursor: pointer; padding: 10px; font-size: 13px; font-weight: bold; }
+    .wd-flow[open] > summary { border-bottom: 1px solid #ccc; }
+    .wd-flow .sheet-body { padding: 10px; }
+  </style>
 </head>
 <body>
   <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
@@ -520,7 +526,7 @@
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="culture.html" class="active" aria-current="page">Culture</a>
+        <a href="culture.html">Culture</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
           <li><a href="culture.html">success</a></li>
@@ -531,7 +537,7 @@
           <li><a href="culture-logged-out.html">success</a></li>
           <li><a href="culture-logged-out-empty.html">empty</a></li>
           <li><a href="culture-logged-out-error.html">error</a></li>
-          <li class="cur"><a href="culture-logged-out-loading.html">loading (this page)</a></li>
+          <li><a href="culture-logged-out-loading.html">loading</a></li>
         </ul>
       </li>
       <li class="wf-screen">
@@ -621,9 +627,9 @@
       </li>
       <li class="wf-sec">Wallet</li>
       <li class="wf-screen">
-        <a href="wallet.html">Wallet</a>
+        <a href="wallet.html" class="active" aria-current="page">Wallet</a>
         <ul class="wf-states">
-          <li><a href="wallet.html">success</a></li>
+          <li class="cur"><a href="wallet.html">success (this page)</a></li>
           <li><a href="wallet-loading.html">loading</a></li>
           <li><a href="wallet-error.html">error</a></li>
         </ul>
@@ -660,21 +666,20 @@
   </nav>
 
   <div class="page-label">
-    <strong>Wireframe:</strong> Culture (category) &nbsp;|&nbsp;
-    logged out - state: loading (skeleton) &nbsp;|&nbsp;
+    <strong>Wireframe:</strong> Wallet &nbsp;|&nbsp;
+    logged in - state: success (balance + history) &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/culture-logged-out-loading.html
+    file: wireframes/wallet.html
   </div>
 
-  <nav class="state-switch" aria-label="States of this screen (auth and screen state)">
-    <div class="ss-row"><span class="ss-label">Auth</span><a href="culture-loading.html">Logged in</a><a href="culture-logged-out-loading.html" aria-current="page">Logged out</a></div>
-    <div class="ss-row"><span class="ss-label">State</span><a href="culture-logged-out.html">Success</a><a href="culture-logged-out-empty.html">Empty</a><a href="culture-logged-out-error.html">Error</a><a href="culture-logged-out-loading.html" aria-current="page">Loading</a></div>
+  <nav class="state-switch" aria-label="States of this screen">
+    <div class="ss-row"><span class="ss-label">State</span><a href="wallet.html" aria-current="page">Success</a><a href="wallet-loading.html">Loading</a><a href="wallet-error.html">Error</a></div>
   </nav>
 
   <div class="device">
-    <!-- Header (logged-out: no account; Log in / Sign up replace balance and avatar) -->
+    <!-- Header (lean: logo = Events/home, right icon cluster) -->
     <header class="app-header">
-      <span class="zone-tag">zone: header (logged-out: no account; Log in / Sign up replace balance and avatar)</span>
+      <span class="zone-tag">zone: header (lean, same at all widths; logo = Events home)</span>
       <div class="row">
         <div class="left">
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
@@ -683,153 +688,119 @@
           <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
         </div>
         <div class="utility">
-          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
+          <div class="bal-toggle desk-only">
+            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
+            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
+            </button>
+          </div>
+          <button type="button" class="icon-btn desk-only" aria-label="Favorites">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           </button>
-          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-          </button>
-          <div class="auth-btns">
-            <button type="button" class="auth-btn" data-open="signin">Log in</button>
-            <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
-          </div>
+          <span class="bell-wrap">
+            <button type="button" class="icon-btn" aria-label="Notifications, 3 unread">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+            </button>
+            <span class="badge-dot">3</span>
+          </span>
+          <details class="avatar-menu">
+            <summary aria-label="Account menu">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="dropdown" role="menu">
+              <span class="zone-tag">avatar dropdown (collapsed by default, click to open)</span>
+              <ul>
+                <li><button type="button" role="menuitem">My Profile</button></li>
+                <li><button type="button" role="menuitem">My Bets</button></li>
+                <li><button type="button" role="menuitem">Wallet / Deposit</button></li>
+                <li><button type="button" role="menuitem">How It Works</button></li>
+                <li><button type="button" role="menuitem">Logout</button></li>
+              </ul>
+            </div>
+          </details>
         </div>
       </div>
     </header>
-    <!-- Second-level navigation: categories route to their own pages (links) -->
-    <nav class="cat-nav" aria-label="Categories (second level)">
-      <span class="zone-tag">zone: second-level navigation (each category opens its own page)</span>
-      <ul>
-        <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
-        <li><a href="politics.html"><button type="button">Politics</button></a></li>
-        <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
-        <li aria-current="page"><a href="culture.html"><button type="button">Culture</button></a></li>
-        <li><a href="general.html"><button type="button">General</button></a></li>
-      </ul>
-    </nav>
     <main class="feed">
-      <span class="zone-tag">zone: Culture category (loading: fetching markets (skeleton grid))</span>
-      <div class="cat-layout">
-      <nav class="subcat" aria-label="Culture sub-categories">
-        <span class="zone-tag">zone: sub-categories (left rail on desktop, scrolling chips on mobile; counts are sample data)</span>
-        <p class="subcat-head">Sub-categories</p>
-        <ul>
-        <li aria-current="page"><button type="button">All <span class="cnt">1.4K</span></button></li>
-        <li><button type="button">Movies <span class="cnt">180</span></button></li>
-        <li><button type="button">Music <span class="cnt">120</span></button></li>
-        <li><button type="button">Awards <span class="cnt">64</span></button></li>
-        <li><button type="button">TV & Streaming <span class="cnt">90</span></button></li>
-        <li><button type="button">Celebrities <span class="cnt">145</span></button></li>
-        <li><button type="button">Internet & Memes <span class="cnt">38</span></button></li>
-        <li><button type="button">Books <span class="cnt">22</span></button></li>
-        <li><button type="button">Gaming <span class="cnt">51</span></button></li>
-        </ul>
-      </nav>
-      <div class="cat-main">
-        <div class="feed-inner">
-        <div class="feed-head">
-          <h2 id="feedHeading">Culture</h2>
-          <div class="feed-controls">
-
-            <details class="filter-menu" id="sortMenu">
-              <summary aria-label="Sort by">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
-                <span>Sort: <span id="sortCurrent">Trending</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <span class="zone-tag">sort options</span>
-                <ul role="radiogroup" aria-label="Sort by">
-                  <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
-                  <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
-                  <li><label><input type="radio" name="sort" value="New"> New</label></li>
-                  <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
-                  <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
-                  <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
-                </ul>
-                <div class="reverse-row">
-                  <span>Reverse sort</span>
-                  <button type="button" class="toggle" role="switch" aria-checked="false">off</button>
-                </div>
-              </div>
-            </details>
-
-            <details class="filter-menu" id="freqMenu">
-              <summary aria-label="Filter by frequency">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                <span>Frequency: <span id="freqCurrent">All</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <span class="zone-tag">event frequency (recurring markets)</span>
-                <ul role="radiogroup" aria-label="Frequency">
-                  <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
-                  <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
-                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
-                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
-                  <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
-                  <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
-                </ul>
-              </div>
-            </details>
-
+      <span class="zone-tag">zone: Wallet (balance + transaction history + deposit / withdraw; funds-protection, FJ4 / EJ2)</span>
+      <div class="feed-inner">
+        <div class="feed-head"><h2>Wallet</h2></div>
+        <article class="pos" aria-label="Balance summary">
+          <div class="pos-figures" style="font-size:11px;">
+            <span class="pos-fig">Portfolio total<b>$142.00</b></span>
+            <span class="pos-fig">Cash (available)<b>$92.00</b></span>
+            <span class="pos-fig">In-play (open bets)<b>$50.00</b></span>
           </div>
+          <span class="pos-status">Portfolio = Cash + In-play. In-play is locked in open positions until they resolve.</span>
+        </article>
+        <div class="cta-bar" style="position:static;">
+          <button type="button" data-open="deposit">Deposit</button>
+          <button type="button" onclick="var d=document.getElementById('wd');if(d){d.open=!d.open;d.scrollIntoView();}">Withdraw</button>
         </div>
-          <div class="grid" aria-busy="true">
-
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+        <details id="wd" class="wd-flow">
+          <summary>Withdraw funds (USDC)</summary>
+          <div class="sheet-body" style="padding:10px 0;">
+            <div>
+              <span class="field-label">Amount to withdraw</span>
+              <div class="amount-row"><span class="amount-input">$30.00</span></div>
+              <span class="fine">Available to withdraw: $92.00 (Cash only; in-play funds are locked).</span>
             </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+            <div>
+              <span class="field-label">Destination USDC address</span>
+              <div class="amount-row"><span class="amount-input" style="font-size:12px;">0x1A2b...9F3c</span></div>
             </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-
+            <p class="fine">Withdrawals are in USDC only at MVP (no fiat payout rail). PIX payout is Phase 2 (Brazil). Network fee applies.</p>
+            <button type="button" class="confirm-btn">Confirm withdrawal</button>
+            <p class="fine">After confirm, the withdrawal moves through: pending (on-chain) -&gt; confirmed, or failed (funds returned to Cash). Tracked in the history below.</p>
           </div>
+        </details>
+        <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds. Deposits, payouts and withdrawals are recorded below.</p>
+        <p class="pos-status" style="margin:10px 0 2px;text-transform:uppercase;letter-spacing:.04em;">Transaction history</p>
+        <div class="pos-list">
+          <article class="pos">
+            <div class="pos-top">
+              <span class="pos-q">Withdrawal to USDC address</span>
+              <span class="pos-status" style="white-space:nowrap;">-$30.00</span>
+            </div>
+            <span class="pos-status">Jun 28 &middot; pending (on-chain)</span>
+          </article>
+          <article class="pos">
+            <div class="pos-top">
+              <span class="pos-q">Payout: US government shutdown - YES won</span>
+              <span class="pos-status" style="white-space:nowrap;">+$13.20</span>
+            </div>
+            <span class="pos-status">Jun 27 &middot; completed</span>
+          </article>
+          <article class="pos">
+            <div class="pos-top">
+              <span class="pos-q">Platform fee (won bet)</span>
+              <span class="pos-status" style="white-space:nowrap;">-$0.40</span>
+            </div>
+            <span class="pos-status">Jun 27 &middot; completed</span>
+          </article>
+          <article class="pos">
+            <div class="pos-top">
+              <span class="pos-q">Stake: Bitcoin above $150,000 - YES</span>
+              <span class="pos-status" style="white-space:nowrap;">-$25.00</span>
+            </div>
+            <span class="pos-status">Jun 26 &middot; locked in-play</span>
+          </article>
+          <article class="pos">
+            <div class="pos-top">
+              <span class="pos-q">Deposit via card (Transak)</span>
+              <span class="pos-status" style="white-space:nowrap;">+$20.00</span>
+            </div>
+            <span class="pos-status">Jun 26 &middot; completed</span>
+          </article>
         </div>
-      </div>
       </div>
     </main>
-    <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
+    <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <span class="zone-tag">zone: bottom nav (mobile only; logged-out slot 4 = Sign in)</span>
+      <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
       <ul>
-        <li aria-current="page"><button type="button">
+        <li><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
           <span>Events</span>
         </button></li>
@@ -841,9 +812,9 @@
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           <span>Favorites</span>
         </button></li>
-        <li><button type="button" data-open="signin" aria-label="Sign in">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3M14 4h5v16h-5"/></svg>
-          <span>Sign in</span>
+        <li aria-current="page"><button type="button" aria-label="Portfolio, balance $142">
+          <span class="bn-bal">$142</span>
+          <span>Portfolio</span>
         </button></li>
       </ul>
     </nav>
@@ -974,36 +945,36 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Culture here). Trending stays the main feed (event-feed.html).</li>
-        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
-        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li>
+        <li><strong>Balance split: Cash (available) vs In-play (locked)</strong> -&gt; FJ4: a clear answer to "where is my money". Portfolio = Cash + In-play; in-play is locked in open positions until they resolve.</li>
+        <li><strong>Funds-protection line (held 1:1)</strong> -&gt; EJ2 (secondary): the same trust message as Deposit, visible at the money hub too.</li>
+        <li><strong>Transaction history (deposits, payouts, fees, stakes, withdrawals)</strong> -&gt; the audit trail: every movement is recorded, supporting the transparency principle.</li>
+        <li><strong>Deposit opens the shared Deposit dialog</strong> -&gt; standalone top-up reuses the same Deposit flow (no second deposit screen); IA/sitemap.md "deposit again (same Deposit screen)".</li>
+        <li><strong>Withdraw is a flow inside Wallet, not a screen</strong> -&gt; amount -&gt; USDC address -&gt; confirm, with pending / confirmed / failed states tracked in history. USDC-only at MVP (no fiat payout); PIX is Phase 2.</li>
+        <li><strong>Reached from the avatar dropdown (desktop) / the Portfolio hub (mobile)</strong> -&gt; money is a utility, not a primary destination (G4). Account-bound, logged-in only - no auth axis.</li>
       </ol>
     </aside>
 
     <div class="nav-col">
       <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (where this sits)</span>
-<pre>Events (browse)
-   Event Feed  (Trending = main)
-   Politics / Crypto / Culture / General
-        ^ [Culture]   &lt;- current category page
-        v
-   Event Detail
-        v
-   Sign In / Deposit (dialogs) -> Active Bets</pre>
-        <p class="ref">A category page is a browse entry parallel to the main feed
-          (IA/sitemap.md second-level navigation), with the auth axis and the
-          success / empty / error / loading states.</p>
+        <span class="zone-tag">on-page nav tree (account hub)</span>
+<pre>Account / money (off the betting spine):
+
+avatar dropdown (desktop) -----+
+Portfolio hub (mobile) --------+--&gt; [Wallet]   &lt;- current
+                                      |
+                                      +-- Deposit (shared dialog)
+                                      '-- Withdraw (in-Wallet flow:
+                                            amount -&gt; USDC addr -&gt; confirm)</pre>
+        <p class="ref">Flow position: standalone money management off the betting flow
+          (IA/sitemap.md Wallet). Serves FJ4 (primary) and EJ2 (secondary).</p>
       </section>
 
-      <section class="navtree" aria-label="Rollout">
-        <span class="zone-tag">rollout status</span>
-        <p class="ref">Built: Politics, Crypto, Culture, General, each with logged-in
-          and logged-out x success / empty / error / loading. Still to come: the real
-          sub-category taxonomy per category and the sitemap.md update (category pages
-          + sub-categories).</p>
+      <section class="navtree" aria-label="States">
+        <span class="zone-tag">states of this screen</span>
+        <p class="ref">success (balance + history + deposit / withdraw), loading (initial
+          balance fetch), error (wallet data failed, retry). balance-syncing deferred.
+          Withdrawal sub-states (pending / confirmed / failed) live inside the flow.
+          Account-bound, no auth axis.</p>
       </section>
     </div>
 
