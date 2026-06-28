@@ -626,6 +626,12 @@ generators). The **Saved view** (`saved.html` + empty + loading) is the logged-i
 
 Applied by `chrome2.py` (idempotent, run after `fixpack.py`).
 
+- **Empty notifications dropdown:** on logged-in empty-state pages (`*-empty*`)
+  the bell dropdown is itself empty (no badge, "No notifications yet") and its
+  `See all` link points at `notifications-empty.html`, so the empty flow stays
+  consistent instead of previewing notifications that lead to the populated page.
+  Applied by `chrome3.py` (run after `chrome2.py`).
+
 ## What comes next
 
 The per-screen file list and the screens themselves are produced from Step 03

@@ -34,6 +34,8 @@ individual pages.
      the "+" in-context deposit button by the balance, and add
      `body[data-loggedin-target]` so logged-out pages redirect to their logged-in
      counterpart after sign-in. Run after `fixpack.py`.
+   - `chrome3.py` - swap the bell dropdown to its empty variant (linking to
+     `notifications-empty.html`) on logged-in `*-empty*` pages. Run after `chrome2.py`.
 
 All post-processors are safe to re-run; each skips work already applied.
 

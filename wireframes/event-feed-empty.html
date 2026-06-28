@@ -327,6 +327,7 @@
     .notif-drop li a span { display: block; font-size: 10px; color: #555; }
     .notif-all { display: block; text-align: center; padding: 8px; border-top: 1px solid #999; font-size: 11px; text-decoration: none; color: #222; background: #dcdcdc; }
     .bal-add { padding: 3px; }
+    .notif-empty { margin: 0; padding: 14px 10px; text-align: center; font-size: 11px; color: #555; }
   </style>
 </head>
 <body>
@@ -607,20 +608,15 @@
 
           <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
           <details class="notif-menu">
-            <summary aria-label="Notifications, 3 unread">
+            <summary aria-label="Notifications, none">
               <span class="bell-wrap">
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-                <span class="badge-dot">3</span>
               </span>
             </summary>
             <div class="dropdown notif-drop" role="menu">
-              <span class="zone-tag">latest notifications (tap a row, or see all)</span>
-              <ul>
-                <li><a href="win.html"><strong>Position resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
-                <li><a href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
-                <li><a href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
-              </ul>
-              <a class="notif-all" href="notifications.html">See all notifications</a>
+              <span class="zone-tag">latest notifications (empty)</span>
+              <p class="notif-empty">No notifications yet. We will let you know when an event you follow moves or resolves.</p>
+              <a class="notif-all" href="notifications-empty.html">See all notifications</a>
             </div>
           </details>
 
