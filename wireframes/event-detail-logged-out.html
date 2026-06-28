@@ -428,6 +428,12 @@
     }
     /* Category grid adapts to the width left by the sub-category rail (no fixed 4-col overflow). */
     .cat-main .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+
+    /* ---- Shared in-page dialogs (native <dialog>, opened over the current page) ---- */
+    dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
+    dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
+    dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
   </style>
 </head>
 <body>
@@ -646,15 +652,15 @@
           <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
         </div>
         <div class="utility">
-          <button type="button" class="icon-btn desk-only" aria-label="Favorites (sign in to save)">
+          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           </button>
-          <button type="button" class="icon-btn" aria-label="Notifications (sign in)">
+          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
           </button>
           <div class="auth-btns">
-            <button type="button" class="auth-btn">Log in</button>
-            <button type="button" class="auth-btn primary">Sign up</button>
+            <button type="button" class="auth-btn" data-open="signin">Log in</button>
+            <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
           </div>
         </div>
       </div>
@@ -756,8 +762,8 @@
                 <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
                 <div class="line"><span>Your balance</span><span>$42.00</span></div>
               </div>
-              <a href="sign-in.html"><button type="button" class="confirm-btn">Confirm bet</button></a>
-              <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM pricing). Confirm signs you in, then deposits if needed.</p>
+              <button type="button" class="confirm-btn" data-open="signin">Confirm bet</button>
+              <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM pricing). Confirm opens sign-in (over this page), then deposit if needed.</p>
             </div>
           </aside>
       </div>
@@ -767,7 +773,7 @@
         <button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button>
         <button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button>
         <span class="dock-meta">$5 to win<b>$13.20</b></span>
-        <a href="sign-in.html"><button type="button" class="confirm-btn" style="width:auto;padding:11px 14px;">Bet</button></a>
+        <button type="button" class="confirm-btn" data-open="signin" style="width:auto;padding:11px 14px;">Bet</button>
       </div>
     <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
@@ -785,7 +791,7 @@
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           <span>Favorites</span>
         </button></li>
-        <li><button type="button" aria-label="Sign in">
+        <li><button type="button" data-open="signin" aria-label="Sign in">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3M14 4h5v16h-5"/></svg>
           <span>Sign in</span>
         </button></li>
@@ -1052,6 +1058,70 @@ Active Bets    (MJ success, T14)</pre>
       // Choosing a screen on a narrow viewport closes the drawer.
       nav.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', function () { if (window.innerWidth < 1440) set(false); });
+      });
+    })();
+  </script>
+
+  <dialog id="signinDialog" class="app-dialog" aria-label="Sign in or create account">
+    <div class="sheet-head">
+      <h2>Sign in or create account</h2>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
+    </div>
+    <div class="sheet-body">
+      <p class="fine">You are about to place a bet. Sign in or create an account to continue. No crypto wallet required.</p>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+        Continue with Google
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        Continue with X
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7c1-2 3-3 4-3 0 2-1 3-2 4M9 9c-2 0-4 2-4 5s2 6 4 6c1 0 1.5-.5 3-.5s2 .5 3 .5c1.5 0 3-2 3-4-2-1-2-4 0-5-1-1.5-3-1.5-4-1.5S11 9 9 9z"/></svg>
+        Continue with Apple
+      </button>
+      <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+    </div>
+    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
+  </dialog>
+
+  <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
+    <div class="sheet-head">
+      <h2>Add funds</h2>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
+    </div>
+    <div class="sheet-body">
+      <div>
+        <span class="field-label">Amount to add</span>
+        <div class="amount-row"><span class="amount-input">$20.00</span></div>
+        <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
+      </div>
+      <div class="widget-box">Transak payment widget (card to USDC)</div>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
+      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
+    </div>
+    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
+  </dialog>
+
+  <script>
+    // Shared dialogs: open over the current page; close (button / backdrop / Esc) stays on the page.
+    (function () {
+      function dlg(id) { return document.getElementById(id); }
+      function open(id) { var d = dlg(id); if (!d) return; if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+      function close(d) { if (!d) return; if (d.close) d.close(); else d.removeAttribute('open'); }
+      document.addEventListener('click', function (e) {
+        var o = e.target.closest('[data-open]');
+        if (o) { e.preventDefault(); open(o.getAttribute('data-open') === 'deposit' ? 'depositDialog' : 'signinDialog'); return; }
+        var f = e.target.closest('[data-flow="signin-to-deposit"]');
+        if (f) { e.preventDefault(); close(dlg('signinDialog')); open('depositDialog'); return; }
+        var c = e.target.closest('[data-close-dialog]');
+        if (c) { close(c.closest('dialog')); return; }
+      });
+      ['signinDialog', 'depositDialog'].forEach(function (id) {
+        var d = dlg(id); if (!d) return;
+        d.addEventListener('click', function (e) { if (e.target === d) close(d); });
       });
     })();
   </script>

@@ -428,6 +428,12 @@
     }
     /* Category grid adapts to the width left by the sub-category rail (no fixed 4-col overflow). */
     .cat-main .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+
+    /* ---- Shared in-page dialogs (native <dialog>, opened over the current page) ---- */
+    dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
+    dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
+    dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
   </style>
 </head>
 <body>
@@ -986,6 +992,70 @@ Active Bets    (MJ success, T14)</pre>
       // Choosing a screen on a narrow viewport closes the drawer.
       nav.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', function () { if (window.innerWidth < 1440) set(false); });
+      });
+    })();
+  </script>
+
+  <dialog id="signinDialog" class="app-dialog" aria-label="Sign in or create account">
+    <div class="sheet-head">
+      <h2>Sign in or create account</h2>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
+    </div>
+    <div class="sheet-body">
+      <p class="fine">You are about to place a bet. Sign in or create an account to continue. No crypto wallet required.</p>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+        Continue with Google
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        Continue with X
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7c1-2 3-3 4-3 0 2-1 3-2 4M9 9c-2 0-4 2-4 5s2 6 4 6c1 0 1.5-.5 3-.5s2 .5 3 .5c1.5 0 3-2 3-4-2-1-2-4 0-5-1-1.5-3-1.5-4-1.5S11 9 9 9z"/></svg>
+        Continue with Apple
+      </button>
+      <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+    </div>
+    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
+  </dialog>
+
+  <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
+    <div class="sheet-head">
+      <h2>Add funds</h2>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
+    </div>
+    <div class="sheet-body">
+      <div>
+        <span class="field-label">Amount to add</span>
+        <div class="amount-row"><span class="amount-input">$20.00</span></div>
+        <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
+      </div>
+      <div class="widget-box">Transak payment widget (card to USDC)</div>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
+      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
+    </div>
+    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
+  </dialog>
+
+  <script>
+    // Shared dialogs: open over the current page; close (button / backdrop / Esc) stays on the page.
+    (function () {
+      function dlg(id) { return document.getElementById(id); }
+      function open(id) { var d = dlg(id); if (!d) return; if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+      function close(d) { if (!d) return; if (d.close) d.close(); else d.removeAttribute('open'); }
+      document.addEventListener('click', function (e) {
+        var o = e.target.closest('[data-open]');
+        if (o) { e.preventDefault(); open(o.getAttribute('data-open') === 'deposit' ? 'depositDialog' : 'signinDialog'); return; }
+        var f = e.target.closest('[data-flow="signin-to-deposit"]');
+        if (f) { e.preventDefault(); close(dlg('signinDialog')); open('depositDialog'); return; }
+        var c = e.target.closest('[data-close-dialog]');
+        if (c) { close(c.closest('dialog')); return; }
+      });
+      ['signinDialog', 'depositDialog'].forEach(function (id) {
+        var d = dlg(id); if (!d) return;
+        d.addEventListener('click', function (e) { if (e.target === d) close(d); });
       });
     })();
   </script>

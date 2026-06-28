@@ -146,10 +146,17 @@ earlier rules:
   Sub-category taxonomy and counts are illustrative sample data (Polymarket /
   Kalshi-modelled). Open: per-category empty / error / loading + logged-out auth
   variants, and the `sitemap.md` update (category pages + sub-categories).
-- **Open decision (not built): how Sign In / Deposit dialogs are presented** -
-  standalone pages (current, for state review) vs a shared in-page overlay opened
-  over the current page (more interactive, single-source via the shell). To be
-  decided before the gate is wired interactively.
+- **Sign In / Deposit dialogs: hybrid (decided + built).** A shared native
+  `<dialog>` (Sign In and Deposit) is defined once in the shell and emitted on
+  every page; triggers (`data-open="signin"` on the logged-out Log in / Sign up /
+  Favorites / Notifications / mobile Sign-in slot, and the Event Detail bet-panel
+  Confirm / dock Bet) open it over the current page, and Close / backdrop / Esc
+  keep you on that page. Providers chain Sign In -> Deposit (`data-flow`). The
+  standalone `sign-in-*.html` / `deposit-*.html` pages are kept as the per-state
+  design reference (in the tree + switcher); the live dialog covers the happy
+  path. Single-source in `_shell` (no per-page hand-duplication); the feed pages,
+  authored earlier, are patched by `inject_signin.py`. Native `<dialog>`, minimal
+  JS, no libraries.
 
 ### 6. Deferred to later phases (Concept onward), not allowed in wireframes
 
