@@ -27,7 +27,7 @@ Single-page summary of all research phases. Open the link above in any browser -
 | [`flows.html`](./flows.html) | **Flows** visualization: all four flows rendered as Mermaid diagrams |
 | [`research/`](./research/) | Competitor analysis, strategy, JTBD, personas, AARRR |
 | [`research/screens/`](./research/screens/) | Competitor screenshots |
-| [`wireframes/`](./wireframes/) | Low-fi flows and layouts |
+| [`wireframes/`](./wireframes/) | **Grey-box wireframes**: 96 pages, every sitemap screen + all states, flow-linked, clickable end to end |
 | [`concept/`](./concept/) | Visual direction, moodboard |
 | [`tokens/`](./tokens/) | Design tokens: color, type, spacing |
 | [`components/`](./components/) | UI component specs |
@@ -42,7 +42,8 @@ Single-page summary of all research phases. Open the link above in any browser -
 |---|---|
 | Brief | ✅ Done |
 | Research | ✅ Done (competitive analysis, screens captured) |
-| Wireframes | ⬜ Not started |
+| IA (sitemap + flows) | ✅ Done (sources + 3 visualizations, synced) |
+| Wireframes | ✅ Done (96 pages, all screens + states, flow-linked, critique pass) |
 | Concept | ⬜ Not started |
 | Design system | ⬜ Not started |
 | Components | ⬜ Not started |
@@ -50,8 +51,31 @@ Single-page summary of all research phases. Open the link above in any browser -
 
 ---
 
+## Wireframes
+
+Grey-box (low-fidelity) wireframes for the whole product, mobile-first and
+responsive. Neutral greys only - no color, type, shadows, or finished UI (those
+belong to the Concept phase). Open any file in [`wireframes/`](./wireframes/) in a
+browser; a left screen-tree panel navigates the whole set.
+
+- **Coverage:** 96 pages - every screen in the IA screen tree, each state its own
+  page. Event Feed, Event Detail (binary + multi, inline bet panel), 4 Category
+  pages, Sign In / Deposit (shared in-page dialogs), Win / Loss, Notifications,
+  Wallet, My Profile / Public Profile, How It Works, Active Bets / Bet History.
+- **Auth axis:** browse screens have logged-in and logged-out variants.
+- **Flow-linked:** the main flow is clickable end to end (Event Feed -> Event
+  Detail -> gate -> Active Bets), with branch exits and no dead-ends, wired along
+  the routes in [`IA/flows.md`](./IA/flows.md).
+- **Quality gates:** 0 em-dash, 0 broken links; a defect critique pass is recorded
+  in [`wireframes/_critique.md`](./wireframes/_critique.md); the build contract is
+  [`wireframes/_conventions.md`](./wireframes/_conventions.md).
+
+---
+
 ## Key Docs
 - [CLAUDE.md](./CLAUDE.md) - full project brief, principles, scope, IA summary
+- [wireframes/_conventions.md](./wireframes/_conventions.md) - **Wireframe contract**: grey-box rules, zones, nav, states, the build passes
+- [wireframes/_critique.md](./wireframes/_critique.md) - **Wireframe critique**: defect table and resolutions (Krok 9)
 - [IA/sitemap.md](./IA/sitemap.md) - **IA source**: entities, screens, navigation, depth map, coverage matrix
 - [IA/flows.md](./IA/flows.md) - **IA source**: four user flows (MJ, FJ2, FJ5+EJ3, SJ1)
 - [research/master-research.md](./research/master-research.md) - **Master synthesis**: all research phases in one document

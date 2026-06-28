@@ -122,7 +122,7 @@ Solo - product, design, and development
 
 ## Information Architecture
 
-IA sources (source of truth): `IA/sitemap.md` (entities, screens, navigation, desktop layer, depth map, tracing) and `IA/flows.md` (user flows). The HTML visualizations `ia.html`, `sitemap.html`, `flows.html` are being revised in the wireframe pass and may lag the markdown; trust the markdown until they are re-synced.
+IA sources (source of truth): `IA/sitemap.md` (entities, screens, navigation, desktop layer, depth map, tracing) and `IA/flows.md` (user flows). The HTML visualizations `ia.html`, `sitemap.html`, `flows.html` are re-synced to the markdown (green "Synced" banners); the markdown stays the source of truth if they ever diverge again.
 
 ### Top-level navigation (revised in the wireframe pass)
 
@@ -159,3 +159,16 @@ Event Feed - found event - Event Detail - YES/NO tap - Bet Screen (intent) - Con
 - Crypto Native: wallet connect - S5 reconcile - Bet Screen (execute) - Active Bets.
 
 S5 = AMM price reconcile node (price may move during auth/deposit). Four flows total: MJ, FJ2 (understand odds), FJ5+EJ3 (conscious loss exit with friction node), SJ1 (win share, overconfidence friction per F5).
+
+---
+
+## Wireframes
+
+Grey-box (low-fidelity) wireframes for the whole product live in `wireframes/`. Contract: `wireframes/_conventions.md` (grey-box rules, zones, nav, states, mobile-first, no em-dash, the build passes). Critique log: `wireframes/_critique.md`.
+
+- **Status: complete.** 96 pages - every screen in the IA screen tree, each state its own page. Orphans `[SIROTA]` (Settings, Leaderboard, Help/FAQ) unbuilt by design; the standalone Bet Screen is dissolved into the inline Event Detail bet panel.
+- **Style:** neutral greys only - no color, type, shadows, icons-as-art, or finished UI (those are the Concept phase). Monochrome outline SVG icons only. A left screen-tree panel is on every page.
+- **States & auth:** browse screens (Event Feed, Event Detail, Category pages) have logged-in and logged-out variants; each screen carries its full state set (loading/empty/error/success + product-specific). Public Profile and How It Works carry the logged-out header (reached pre-auth).
+- **Flow-linked:** the main flow is clickable end to end (Event Feed -> Event Detail -> gate dialogs -> Active Bets) with branch exits and no dead-ends, wired along `IA/flows.md`. Sign In / Deposit are shared in-page `<dialog>`s; Win / Loss are invoked overlays.
+- **Generated, not hand-authored:** pages are built by Python generators (in the session scratchpad) from a shared shell that extracts canonical CSS/footer/scripts from `event-feed.html`, so chrome stays byte-identical. To change shared chrome, edit the shell + regenerate, do not hand-edit individual pages.
+- **Quality gates:** 0 em-dash, 0 broken internal links; consistency reconciled across all families (Krok 8) and a defect critique pass applied (Krok 9).
