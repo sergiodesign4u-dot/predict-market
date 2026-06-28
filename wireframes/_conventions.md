@@ -127,10 +127,18 @@ earlier rules:
   standalone Bet modal (the old `bet-screen*.html`) is removed. The bet panel is
   a sticky right rail on desktop and a sticky bottom dock on mobile (taps expand
   to a confirm sheet), so an informed user can stake while scrolling the context.
-  Confirm fires the gate; **Sign In and Deposit stay modals**. The bet states
-  (intent, S5-reconcile, insufficient-balance, event-closed, on-chain error,
-  execute processing) become states of this panel (to be built on Event Detail).
-  Supersedes the "Bet Screen = invoked overlay" line in convention 5.
+  Confirm fires the gate; **Sign In and Deposit stay modals**. The bet states are
+  now built as panel states on Event Detail: `event-detail.html` (intent),
+  `-bet-insufficient` (inline guard -> Deposit dialog), `-bet-reconcile` (S5 price
+  moved, re-confirm / T16), `-bet-processing` (execute on-chain), `-bet-error`
+  (T3); event-closed is the `-resolved` state. Supersedes the "Bet Screen =
+  invoked overlay" line in convention 5.
+- **Event Detail has binary and multi-outcome success views.** Binary = one
+  YES / NO; multi (`event-detail-multi.html`, + logged-out) lists the outcomes in
+  the main column and the panel becomes "pick an outcome" -> YES / NO on it. The
+  Event Detail state-switcher is 3 rows: Auth, View (Binary / Multi / Error /
+  Loading / Resolved), Bet (Intent / Insufficient / S5 reconcile / Processing /
+  On-chain error).
 - **Event Detail content order:** event header, then the schematic price chart and
   facts row, then Why this price (FJ2) lower, then Resolution. The bet panel leads
   visually; the narrative is below the fold.

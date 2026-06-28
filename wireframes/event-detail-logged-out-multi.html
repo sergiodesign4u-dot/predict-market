@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Category: Crypto (logged in - state: loading (skeleton))</title>
+  <title>Wireframe - Event Detail (logged out - state: success / multi-outcome)</title>
 <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -467,7 +467,7 @@
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="event-detail.html">Event Detail</a>
+        <a href="event-detail.html" class="active" aria-current="page">Event Detail</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
           <li><a href="event-detail.html">success / binary</a></li>
@@ -481,7 +481,7 @@
           <li><a href="event-detail-bet-error.html">bet panel: on-chain error</a></li>
           <li class="wf-substate">Logged out</li>
           <li><a href="event-detail-logged-out.html">success / binary</a></li>
-          <li><a href="event-detail-logged-out-multi.html">success / multi-outcome</a></li>
+          <li class="cur"><a href="event-detail-logged-out-multi.html">success / multi-outcome (this page)</a></li>
           <li><a href="event-detail-logged-out-error.html">error</a></li>
           <li><a href="event-detail-logged-out-loading.html">loading</a></li>
         </ul>
@@ -505,13 +505,13 @@
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="crypto.html" class="active" aria-current="page">Crypto</a>
+        <a href="crypto.html">Crypto</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
           <li><a href="crypto.html">success</a></li>
           <li><a href="crypto-empty.html">empty</a></li>
           <li><a href="crypto-error.html">error</a></li>
-          <li class="cur"><a href="crypto-loading.html">loading (this page)</a></li>
+          <li><a href="crypto-loading.html">loading</a></li>
           <li class="wf-substate">Logged out</li>
           <li><a href="crypto-logged-out.html">success</a></li>
           <li><a href="crypto-logged-out-empty.html">empty</a></li>
@@ -659,21 +659,21 @@
   </nav>
 
   <div class="page-label">
-    <strong>Wireframe:</strong> Crypto (category) &nbsp;|&nbsp;
-    logged in - state: loading (skeleton) &nbsp;|&nbsp;
+    <strong>Wireframe:</strong> Event Detail &nbsp;|&nbsp;
+    logged out - state: success / multi-outcome &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/crypto-loading.html
+    file: wireframes/event-detail-logged-out-multi.html
   </div>
 
-  <nav class="state-switch" aria-label="States of this screen (auth and screen state)">
-    <div class="ss-row"><span class="ss-label">Auth</span><a href="crypto-loading.html" aria-current="page">Logged in</a><a href="crypto-logged-out-loading.html">Logged out</a></div>
-    <div class="ss-row"><span class="ss-label">State</span><a href="crypto.html">Success</a><a href="crypto-empty.html">Empty</a><a href="crypto-error.html">Error</a><a href="crypto-loading.html" aria-current="page">Loading</a></div>
+  <nav class="state-switch" aria-label="States of this screen (auth, view and bet-panel state)">
+    <div class="ss-row"><span class="ss-label">Auth</span><a href="event-detail-multi.html">Logged in</a><a href="event-detail-logged-out-multi.html" aria-current="page">Logged out</a></div>
+    <div class="ss-row"><span class="ss-label">View</span><a href="event-detail-logged-out.html">Binary</a><a href="event-detail-logged-out-multi.html" aria-current="page">Multi</a><a href="event-detail-logged-out-error.html">Error</a><a href="event-detail-logged-out-loading.html">Loading</a></div>
   </nav>
 
   <div class="device">
-    <!-- Header (lean: logo = Events/home, right icon cluster) -->
+    <!-- Header (logged-out: no account; Log in / Sign up replace balance and avatar) -->
     <header class="app-header">
-      <span class="zone-tag">zone: header (lean, same at all widths; logo = Events home)</span>
+      <span class="zone-tag">zone: header (logged-out: no account; Log in / Sign up replace balance and avatar)</span>
       <div class="row">
         <div class="left">
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
@@ -682,173 +682,146 @@
           <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
         </div>
         <div class="utility">
-          <div class="bal-toggle desk-only">
-            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
-            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
-            </button>
-          </div>
-          <button type="button" class="icon-btn desk-only" aria-label="Favorites">
+          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           </button>
-          <span class="bell-wrap">
-            <button type="button" class="icon-btn" aria-label="Notifications, 3 unread">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-            </button>
-            <span class="badge-dot">3</span>
-          </span>
-          <details class="avatar-menu">
-            <summary aria-label="Account menu">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </summary>
-            <div class="dropdown" role="menu">
-              <span class="zone-tag">avatar dropdown (collapsed by default, click to open)</span>
-              <ul>
-                <li><button type="button" role="menuitem">My Profile</button></li>
-                <li><button type="button" role="menuitem">My Bets</button></li>
-                <li><button type="button" role="menuitem">Wallet / Deposit</button></li>
-                <li><button type="button" role="menuitem">How It Works</button></li>
-                <li><button type="button" role="menuitem">Logout</button></li>
-              </ul>
-            </div>
-          </details>
+          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+          </button>
+          <div class="auth-btns">
+            <button type="button" class="auth-btn" data-open="signin">Log in</button>
+            <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
+          </div>
         </div>
       </div>
     </header>
     <!-- Second-level navigation: categories route to their own pages (links) -->
     <nav class="cat-nav" aria-label="Categories (second level)">
-      <span class="zone-tag">zone: second-level navigation (each category opens its own page)</span>
+      <span class="zone-tag">zone: second-level navigation (categories; active = this event's category)</span>
       <ul>
         <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
-        <li><a href="politics.html"><button type="button">Politics</button></a></li>
-        <li aria-current="page"><a href="crypto.html"><button type="button">Crypto</button></a></li>
+        <li aria-current="page"><a href="politics.html"><button type="button">Politics</button></a></li>
+        <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
         <li><a href="culture.html"><button type="button">Culture</button></a></li>
         <li><a href="general.html"><button type="button">General</button></a></li>
       </ul>
     </nav>
     <main class="feed">
-      <span class="zone-tag">zone: Crypto category (loading: fetching markets (skeleton grid))</span>
-      <div class="cat-layout">
-      <nav class="subcat" aria-label="Crypto sub-categories">
-        <span class="zone-tag">zone: sub-categories (left rail on desktop, scrolling chips on mobile; counts are sample data)</span>
-        <p class="subcat-head">Sub-categories</p>
-        <ul>
-        <li aria-current="page"><button type="button">All <span class="cnt">2K</span></button></li>
-        <li><button type="button">Bitcoin <span class="cnt">312</span></button></li>
-        <li><button type="button">Ethereum <span class="cnt">168</span></button></li>
-        <li><button type="button">Solana <span class="cnt">74</span></button></li>
-        <li><button type="button">Price Predictions <span class="cnt">220</span></button></li>
-        <li><button type="button">ETFs <span class="cnt">33</span></button></li>
-        <li><button type="button">Stablecoins <span class="cnt">19</span></button></li>
-        <li><button type="button">Memecoins <span class="cnt">58</span></button></li>
-        <li><button type="button">Layer 2s <span class="cnt">27</span></button></li>
-        <li><button type="button">Fed & Macro <span class="cnt">41</span></button></li>
-        </ul>
-      </nav>
-      <div class="cat-main">
-        <div class="feed-inner">
-        <div class="feed-head">
-          <h2 id="feedHeading">Crypto</h2>
-          <div class="feed-controls">
-
-            <details class="filter-menu" id="sortMenu">
-              <summary aria-label="Sort by">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
-                <span>Sort: <span id="sortCurrent">Trending</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <span class="zone-tag">sort options</span>
-                <ul role="radiogroup" aria-label="Sort by">
-                  <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
-                  <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
-                  <li><label><input type="radio" name="sort" value="New"> New</label></li>
-                  <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
-                  <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
-                  <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
-                </ul>
-                <div class="reverse-row">
-                  <span>Reverse sort</span>
-                  <button type="button" class="toggle" role="switch" aria-checked="false">off</button>
-                </div>
+      <span class="zone-tag">zone: event detail (multi-outcome: outcomes list, chart, why-this-price + sticky bet panel (pick an outcome))</span>
+      <div class="ed-layout">
+        <div class="ed-main">
+          <article class="card" style="border:none;">
+            <div class="ed-head">
+              <span class="ed-thumb">thumbnail placeholder</span>
+              <div>
+                <span class="ed-cat">Politics &middot; One-time market &middot; 5 outcomes</span>
+                <h2 class="ed-q">Who will win the 2028 Republican presidential nomination?</h2>
+                <p class="ed-prob-big">Leading: JD Vance <span class="prob">41%</span></p>
               </div>
-            </details>
-
-            <details class="filter-menu" id="freqMenu">
-              <summary aria-label="Filter by frequency">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                <span>Frequency: <span id="freqCurrent">All</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <span class="zone-tag">event frequency (recurring markets)</span>
-                <ul role="radiogroup" aria-label="Frequency">
-                  <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
-                  <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
-                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
-                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
-                  <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
-                  <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
+            </div>
+          </article>
+          <section class="ed-section">
+            <h3>Outcomes</h3>
+            <div class="options opt-list">
+              <div class="opt-row"><span class="opt-name">JD Vance <span class="ed-cat">leading</span></span><span class="opt-prob">41%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+              <div class="opt-row"><span class="opt-name">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+              <div class="opt-row"><span class="opt-name">Ron DeSantis</span><span class="opt-prob">14%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+              <div class="opt-row"><span class="opt-name">Nikki Haley</span><span class="opt-prob">8%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+              <div class="opt-row"><span class="opt-name">Other</span><span class="opt-prob">15%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+            </div>
+            <p class="fine">Each outcome trades YES / NO independently. Pick one in the bet panel to stake.</p>
+          </section>
+          <section class="ed-section">
+            <h3>Price chart</h3>
+            <div class="chart-wrap">
+              <svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" role="img" aria-label="YES probability over the last 30 days (schematic)">
+                <line class="grid-l" x1="0" y1="25" x2="300" y2="25"/>
+                <line class="grid-l" x1="0" y1="50" x2="300" y2="50"/>
+                <line class="grid-l" x1="0" y1="75" x2="300" y2="75"/>
+                <polyline points="0,58 25,55 50,63 75,52 100,57 125,49 150,55 175,47 200,52 225,44 250,50 275,43 300,62"/>
+                <line class="nowline" x1="300" y1="0" x2="300" y2="100"/>
+              </svg>
+              <p class="chart-cap"><span>30 days ago</span><span>1d &middot; 1w &middot; 1m &middot; all</span><span>JD Vance 41% now</span></p>
+            </div>
+          </section>
+          <div class="ed-facts">
+            <span>Volume<b>$1,200,000</b></span>
+            <span>Liquidity<b>$180,000</b></span>
+            <span>Closes<b>Jul 1, 2028</b></span>
+            <span>Frequency<b>One-time</b></span>
+            <span>Bookmark<b>save event</b></span>
+          </div>
+          <section class="ed-section">
+            <h3>Why this price</h3>
+            <p class="resolution">JD Vance leads at 41% as the incumbent-aligned candidate, with Trump-endorsed momentum the main swing factor. What is moving the field:</p>
+            <div class="args">
+              <div class="arg-col">
+                <h4>For the leader (Vance)</h4>
+                <ul>
+                  <li>Strong early-state polling and party-establishment backing.</li>
+                  <li>Front-runner fundraising lead over the rest of the field.</li>
                 </ul>
               </div>
-            </details>
+              <div class="arg-col">
+                <h4>Against / for the field</h4>
+                <ul>
+                  <li>A late entrant could consolidate the anti-front-runner vote.</li>
+                  <li>Early primaries historically reshuffle the order.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
 
-          </div>
+          <section class="ed-section">
+            <h3>Resolution conditions</h3>
+            <p class="resolution"><strong>Resolves to the candidate</strong> who is the Republican Party's official presidential nominee at the 2028 national convention. All other outcomes resolve NO.<br>
+            <strong>Source:</strong> official Republican National Committee certification. Resolved by the Predict Market team.</p>
+          </section>
         </div>
-          <div class="grid" aria-busy="true">
-
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+          <aside class="bet-panel">
+            <span class="zone-tag">zone: bet panel (sticky right rail; fast entry, MJ). States migrated from the old Bet modal.</span>
+            <div class="bp-inner">
+              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+              <span class="field-label">Pick an outcome</span>
+              <div class="bp-opts">
+                <label class="bp-opt sel"><input type="radio" name="bpopt" checked> JD Vance <span class="bp-opt-pct">41%</span></label>
+                <label class="bp-opt"><input type="radio" name="bpopt"> Donald Trump <span class="bp-opt-pct">22%</span></label>
+                <label class="bp-opt"><input type="radio" name="bpopt"> Ron DeSantis <span class="bp-opt-pct">14%</span></label>
+                <label class="bp-opt"><input type="radio" name="bpopt"> Nikki Haley <span class="bp-opt-pct">8%</span></label>
+                <label class="bp-opt"><input type="radio" name="bpopt"> Other <span class="bp-opt-pct">15%</span></label>
+              </div>
+              <span class="bp-hint">Betting on: <strong>JD Vance</strong></span>
+              <div class="bp-dir">
+                <button type="button" class="bp-side sel">YES <span class="bp-pct">41%</span></button>
+                <button type="button" class="bp-side">NO <span class="bp-pct">59%</span></button>
+              </div>
+              <div>
+                <span class="field-label">Amount</span>
+                <div class="amount-row"><span class="amount-input">$5.00</span></div>
+                <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
+              </div>
+              <div>
+                <div class="line"><span>Price now</span><span>41%</span></div>
+                <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+                <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
+                <div class="line"><span>Your balance</span><span>$42.00</span></div>
+              </div>
+              <button type="button" class="confirm-btn" data-open="signin">Confirm bet</button>
+              <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM). Confirm opens sign-in (over this page), then deposit if needed.</p>
             </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-
-          </div>
-        </div>
-      </div>
+          </aside>
       </div>
     </main>
-    <!-- Bottom navigation (mobile only) -->
+      <!-- Mobile sticky bet dock (above the bottom nav; taps expand to a confirm sheet) -->
+      <div class="bet-dock" aria-label="Place your bet">
+        <button type="button" class="bp-side sel">JD Vance YES <span class="bp-pct">41%</span></button>
+        <button type="button" class="bp-side">NO <span class="bp-pct">59%</span></button>
+        <span class="dock-meta">$5 to win<b>$12.20</b></span>
+        <button type="button" class="confirm-btn" data-open="signin" style="width:auto;padding:11px 14px;">Bet</button>
+      </div>
+    <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
+      <span class="zone-tag">zone: bottom nav (mobile only; logged-out slot 4 = Sign in)</span>
       <ul>
         <li aria-current="page"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
@@ -862,9 +835,9 @@
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           <span>Favorites</span>
         </button></li>
-        <li><button type="button" aria-label="Portfolio, balance $142">
-          <span class="bn-bal">$142</span>
-          <span>Portfolio</span>
+        <li><button type="button" data-open="signin" aria-label="Sign in">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3M14 4h5v16h-5"/></svg>
+          <span>Sign in</span>
         </button></li>
       </ul>
     </nav>
@@ -995,36 +968,26 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Crypto here). Trending stays the main feed (event-feed.html).</li>
-        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
-        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li>
+        <li><strong>Sticky bet panel (right rail desktop / bottom dock mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while scrolling. Binary = YES / NO; multi-outcome = pick one outcome, then YES / NO on it.</li>
+        <li><strong>Bet states migrated into the panel</strong> -&gt; intent, insufficient-balance (inline guard), S5 reconcile (price moved during the gate), execute processing, on-chain error (T3). The old standalone Bet modal is gone; event-closed is the resolved state.</li>
+        <li><strong>Price chart (schematic) + Why this price</strong> -&gt; FJ2 differentiator, below the chart and facts so the panel leads.</li>
+        <li><strong>Confirm fires the gate</strong> -&gt; opens the Sign In dialog over this page, then Deposit (insufficient-balance jumps straight to the Deposit dialog).</li>
+        <li><strong>Auth + states</strong> -&gt; logged-in / logged-out, binary / multi success, error (T8), loading, resolved-while-reading.</li>
       </ol>
     </aside>
 
     <div class="nav-col">
       <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (where this sits)</span>
-<pre>Events (browse)
-   Event Feed  (Trending = main)
-   Politics / Crypto / Culture / General
-        ^ [Crypto]   &lt;- current category page
-        v
-   Event Detail
-        v
-   Sign In / Deposit (dialogs) -> Active Bets</pre>
-        <p class="ref">A category page is a browse entry parallel to the main feed
-          (IA/sitemap.md second-level navigation), with the auth axis and the
-          success / empty / error / loading states.</p>
-      </section>
-
-      <section class="navtree" aria-label="Rollout">
-        <span class="zone-tag">rollout status</span>
-        <p class="ref">Built: Politics, Crypto, Culture, General, each with logged-in
-          and logged-out x success / empty / error / loading. Still to come: the real
-          sub-category taxonomy per category and the sitemap.md update (category pages
-          + sub-categories).</p>
+        <span class="zone-tag">on-page nav tree (main-flow spine)</span>
+<pre>Event Feed
+   v
+[Event Detail]   &lt;- current (multi-outcome; bet panel: intent)
+   v
+Sign In / Deposit (dialogs over the page)
+   v
+Active Bets    (MJ success, T14)</pre>
+        <p class="ref">Flow position: MJ, one node after Event Feed. Bet intent + states
+          live in the panel; the gate (Sign In, Deposit) fires on Confirm as dialogs.</p>
       </section>
     </div>
 

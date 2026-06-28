@@ -470,12 +470,18 @@
         <a href="event-detail.html" class="active" aria-current="page">Event Detail</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
-          <li><a href="event-detail.html">success / pre-selected</a></li>
+          <li><a href="event-detail.html">success / binary</a></li>
+          <li><a href="event-detail-multi.html">success / multi-outcome</a></li>
           <li><a href="event-detail-error.html">error</a></li>
           <li class="cur"><a href="event-detail-loading.html">loading (this page)</a></li>
           <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
+          <li><a href="event-detail-bet-insufficient.html">bet panel: insufficient-balance</a></li>
+          <li><a href="event-detail-bet-reconcile.html">bet panel: S5 reconcile</a></li>
+          <li><a href="event-detail-bet-processing.html">bet panel: processing</a></li>
+          <li><a href="event-detail-bet-error.html">bet panel: on-chain error</a></li>
           <li class="wf-substate">Logged out</li>
-          <li><a href="event-detail-logged-out.html">success / pre-selected</a></li>
+          <li><a href="event-detail-logged-out.html">success / binary</a></li>
+          <li><a href="event-detail-logged-out-multi.html">success / multi-outcome</a></li>
           <li><a href="event-detail-logged-out-error.html">error</a></li>
           <li><a href="event-detail-logged-out-loading.html">loading</a></li>
         </ul>
@@ -659,9 +665,10 @@
     file: wireframes/event-detail-loading.html
   </div>
 
-  <nav class="state-switch" aria-label="States of this screen (auth and screen state)">
+  <nav class="state-switch" aria-label="States of this screen (auth, view and bet-panel state)">
     <div class="ss-row"><span class="ss-label">Auth</span><a href="event-detail-loading.html" aria-current="page">Logged in</a><a href="event-detail-logged-out-loading.html">Logged out</a></div>
-    <div class="ss-row"><span class="ss-label">State</span><a href="event-detail.html">Success</a><a href="event-detail-error.html">Error</a><a href="event-detail-loading.html" aria-current="page">Loading</a><a href="event-detail-resolved.html">Resolved</a></div>
+    <div class="ss-row"><span class="ss-label">View</span><a href="event-detail.html">Binary</a><a href="event-detail-multi.html">Multi</a><a href="event-detail-error.html">Error</a><a href="event-detail-loading.html" aria-current="page">Loading</a><a href="event-detail-resolved.html">Resolved</a></div>
+    <div class="ss-row"><span class="ss-label">Bet</span><a href="event-detail.html">Intent</a><a href="event-detail-bet-insufficient.html">Insufficient</a><a href="event-detail-bet-reconcile.html">S5 reconcile</a><a href="event-detail-bet-processing.html">Processing</a><a href="event-detail-bet-error.html">On-chain error</a></div>
   </nav>
 
   <div class="device">
@@ -729,9 +736,7 @@
             <div class="ed-head">
               <span class="sk-thumb" style="width:72px;height:72px;flex:0 0 72px;"></span>
               <div style="flex:1;">
-                <div class="sk-line w40"></div>
-                <div class="sk-line w80"></div>
-                <div class="sk-line w60"></div>
+                <div class="sk-line w40"></div><div class="sk-line w80"></div><div class="sk-line w60"></div>
               </div>
             </div>
           </article>
@@ -740,21 +745,14 @@
             <div class="chart-svg" style="display:flex;align-items:center;justify-content:center;color:#777;font-size:11px;">loading chart...</div>
           </section>
           <section class="ed-section">
-            <div class="sk-line w40"></div>
-            <div class="sk-line w80"></div>
-            <div class="sk-line w80"></div>
-            <div class="sk-line w60"></div>
+            <div class="sk-line w40"></div><div class="sk-line w80"></div><div class="sk-line w80"></div><div class="sk-line w60"></div>
           </section>
         </div>
         <aside class="bet-panel">
           <div class="bp-inner" aria-busy="true">
             <div class="sk-line w60"></div>
-            <div class="bp-dir">
-              <span class="bp-side" style="background:#e0e0e0;">&nbsp;</span>
-              <span class="bp-side" style="background:#e0e0e0;">&nbsp;</span>
-            </div>
-            <div class="sk-line w80"></div>
-            <div class="sk-line w40"></div>
+            <div class="bp-dir"><span class="bp-side" style="background:#e0e0e0;">&nbsp;</span><span class="bp-side" style="background:#e0e0e0;">&nbsp;</span></div>
+            <div class="sk-line w80"></div><div class="sk-line w40"></div>
           </div>
         </aside>
       </div>
@@ -908,39 +906,26 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>Sticky bet panel (right rail on desktop, bottom dock on mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while the user scrolls the context, so an informed user can stake immediately. Replaces the old bet modal; the side / option arrives pre-selected from the card tap (IA/flows.md trigger-entry).</li>
-        <li><strong>Price chart (schematic line)</strong> + <strong>Why this price</strong> -&gt; FJ2 differentiator: no competitor explains the price at this depth. Why-this-price sits below the chart and facts, not above the fold, so the bet panel leads.</li>
-        <li><strong>Facts row (volume, liquidity, closes, frequency)</strong> -&gt; Polymarket / Kalshi-style at-a-glance market data.</li>
-        <li><strong>Resolution conditions + source</strong> -&gt; trust signal (EJ2): exactly what counts as YES and who resolves it.</li>
-        <li><strong>Confirm fires the gate</strong> -&gt; Confirm routes to Sign In, then Deposit (IA/flows.md confirmedIntent -&gt; gate). Sign In and Deposit stay as modals; the bet intent itself is no longer a modal.</li>
-        <li><strong>resolved-while-reading</strong> -&gt; the event can close while open; with a position held it routes to the result (Win/Loss, planned) via My Bets, else back to the feed.</li>
+        <li><strong>Sticky bet panel (right rail desktop / bottom dock mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while scrolling. Binary = YES / NO; multi-outcome = pick one outcome, then YES / NO on it.</li>
+        <li><strong>Bet states migrated into the panel</strong> -&gt; intent, insufficient-balance (inline guard), S5 reconcile (price moved during the gate), execute processing, on-chain error (T3). The old standalone Bet modal is gone; event-closed is the resolved state.</li>
+        <li><strong>Price chart (schematic) + Why this price</strong> -&gt; FJ2 differentiator, below the chart and facts so the panel leads.</li>
+        <li><strong>Confirm fires the gate</strong> -&gt; opens the Sign In dialog over this page, then Deposit (insufficient-balance jumps straight to the Deposit dialog).</li>
+        <li><strong>Auth + states</strong> -&gt; logged-in / logged-out, binary / multi success, error (T8), loading, resolved-while-reading.</li>
       </ol>
     </aside>
 
     <div class="nav-col">
       <section class="navtree" aria-label="Navigation tree">
         <span class="zone-tag">on-page nav tree (main-flow spine)</span>
-<pre>Main-flow spine (MJ, News Junkie):
-
-Event Feed
+<pre>Event Feed
    v
-[Event Detail]   &lt;- current screen (bet panel inline)
+[Event Detail]   &lt;- current (binary; bet panel: intent)
    v
-Sign In / Register   (gate, modal)
-   v
-Deposit   (gate, modal)
+Sign In / Deposit (dialogs over the page)
    v
 Active Bets    (MJ success, T14)</pre>
-        <p class="ref">Flow position: MJ, one node after Event Feed. The Bet intent now
-          lives here as a sticky panel; the gate (Sign In, Deposit) fires on Confirm.
-          Serves FJ2, MJ, EJ1.</p>
-      </section>
-
-      <section class="navtree" aria-label="States">
-        <span class="zone-tag">states of this screen</span>
-        <p class="ref">success / pre-selected (base; binary here, multi-outcome variant to come),
-          error (T8 load failure), loading, resolved-while-reading (logged-in only).
-          Logged-out carries success / error / loading; body identical, header differs.</p>
+        <p class="ref">Flow position: MJ, one node after Event Feed. Bet intent + states
+          live in the panel; the gate (Sign In, Deposit) fires on Confirm as dialogs.</p>
       </section>
     </div>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Event Detail (logged out - state: success / pre-selected (binary))</title>
+  <title>Wireframe - Event Detail (logged out - state: success / binary)</title>
 <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -470,12 +470,18 @@
         <a href="event-detail.html" class="active" aria-current="page">Event Detail</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
-          <li><a href="event-detail.html">success / pre-selected</a></li>
+          <li><a href="event-detail.html">success / binary</a></li>
+          <li><a href="event-detail-multi.html">success / multi-outcome</a></li>
           <li><a href="event-detail-error.html">error</a></li>
           <li><a href="event-detail-loading.html">loading</a></li>
           <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
+          <li><a href="event-detail-bet-insufficient.html">bet panel: insufficient-balance</a></li>
+          <li><a href="event-detail-bet-reconcile.html">bet panel: S5 reconcile</a></li>
+          <li><a href="event-detail-bet-processing.html">bet panel: processing</a></li>
+          <li><a href="event-detail-bet-error.html">bet panel: on-chain error</a></li>
           <li class="wf-substate">Logged out</li>
-          <li class="cur"><a href="event-detail-logged-out.html">success / pre-selected (this page)</a></li>
+          <li class="cur"><a href="event-detail-logged-out.html">success / binary (this page)</a></li>
+          <li><a href="event-detail-logged-out-multi.html">success / multi-outcome</a></li>
           <li><a href="event-detail-logged-out-error.html">error</a></li>
           <li><a href="event-detail-logged-out-loading.html">loading</a></li>
         </ul>
@@ -654,14 +660,14 @@
 
   <div class="page-label">
     <strong>Wireframe:</strong> Event Detail &nbsp;|&nbsp;
-    logged out - state: success / pre-selected (binary) &nbsp;|&nbsp;
+    logged out - state: success / binary &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
     file: wireframes/event-detail-logged-out.html
   </div>
 
-  <nav class="state-switch" aria-label="States of this screen (auth and screen state)">
+  <nav class="state-switch" aria-label="States of this screen (auth, view and bet-panel state)">
     <div class="ss-row"><span class="ss-label">Auth</span><a href="event-detail.html">Logged in</a><a href="event-detail-logged-out.html" aria-current="page">Logged out</a></div>
-    <div class="ss-row"><span class="ss-label">State</span><a href="event-detail-logged-out.html" aria-current="page">Success</a><a href="event-detail-logged-out-error.html">Error</a><a href="event-detail-logged-out-loading.html">Loading</a></div>
+    <div class="ss-row"><span class="ss-label">View</span><a href="event-detail-logged-out.html" aria-current="page">Binary</a><a href="event-detail-logged-out-multi.html">Multi</a><a href="event-detail-logged-out-error.html">Error</a><a href="event-detail-logged-out-loading.html">Loading</a></div>
   </nav>
 
   <div class="device">
@@ -721,13 +727,12 @@
                 <line class="grid-l" x1="0" y1="25" x2="300" y2="25"/>
                 <line class="grid-l" x1="0" y1="50" x2="300" y2="50"/>
                 <line class="grid-l" x1="0" y1="75" x2="300" y2="75"/>
-                <polyline points="0,58 25,55 50,63 75,50 100,57 125,48 150,54 175,46 200,52 225,45 250,51 275,44 300,62"/>
+                <polyline points="0,58 25,55 50,63 75,52 100,57 125,49 150,55 175,47 200,52 225,44 250,50 275,43 300,62"/>
                 <line class="nowline" x1="300" y1="0" x2="300" y2="100"/>
               </svg>
               <p class="chart-cap"><span>30 days ago</span><span>1d &middot; 1w &middot; 1m &middot; all</span><span>YES 38% now</span></p>
             </div>
           </section>
-
           <div class="ed-facts">
             <span>Volume<b>$84,200</b></span>
             <span>Liquidity<b>$31,500</b></span>
@@ -763,7 +768,7 @@
           </section>
         </div>
           <aside class="bet-panel">
-            <span class="zone-tag">zone: bet panel (sticky right rail; fast entry, MJ). Confirm fires the gate.</span>
+            <span class="zone-tag">zone: bet panel (sticky right rail; fast entry, MJ). States migrated from the old Bet modal.</span>
             <div class="bp-inner">
               <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
               <div class="bp-dir">
@@ -773,12 +778,7 @@
               <div>
                 <span class="field-label">Amount</span>
                 <div class="amount-row"><span class="amount-input">$5.00</span></div>
-                <div class="quick">
-                  <button type="button" class="sel">$5</button>
-                  <button type="button">$10</button>
-                  <button type="button">$25</button>
-                  <button type="button">$50</button>
-                </div>
+                <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
               </div>
               <div>
                 <div class="line"><span>Price now</span><span>38%</span></div>
@@ -787,7 +787,7 @@
                 <div class="line"><span>Your balance</span><span>$42.00</span></div>
               </div>
               <button type="button" class="confirm-btn" data-open="signin">Confirm bet</button>
-              <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM pricing). Confirm opens sign-in (over this page), then deposit if needed.</p>
+              <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM). Confirm opens sign-in (over this page), then deposit if needed.</p>
             </div>
           </aside>
       </div>
@@ -948,39 +948,26 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>Sticky bet panel (right rail on desktop, bottom dock on mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while the user scrolls the context, so an informed user can stake immediately. Replaces the old bet modal; the side / option arrives pre-selected from the card tap (IA/flows.md trigger-entry).</li>
-        <li><strong>Price chart (schematic line)</strong> + <strong>Why this price</strong> -&gt; FJ2 differentiator: no competitor explains the price at this depth. Why-this-price sits below the chart and facts, not above the fold, so the bet panel leads.</li>
-        <li><strong>Facts row (volume, liquidity, closes, frequency)</strong> -&gt; Polymarket / Kalshi-style at-a-glance market data.</li>
-        <li><strong>Resolution conditions + source</strong> -&gt; trust signal (EJ2): exactly what counts as YES and who resolves it.</li>
-        <li><strong>Confirm fires the gate</strong> -&gt; Confirm routes to Sign In, then Deposit (IA/flows.md confirmedIntent -&gt; gate). Sign In and Deposit stay as modals; the bet intent itself is no longer a modal.</li>
-        <li><strong>resolved-while-reading</strong> -&gt; the event can close while open; with a position held it routes to the result (Win/Loss, planned) via My Bets, else back to the feed.</li>
+        <li><strong>Sticky bet panel (right rail desktop / bottom dock mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while scrolling. Binary = YES / NO; multi-outcome = pick one outcome, then YES / NO on it.</li>
+        <li><strong>Bet states migrated into the panel</strong> -&gt; intent, insufficient-balance (inline guard), S5 reconcile (price moved during the gate), execute processing, on-chain error (T3). The old standalone Bet modal is gone; event-closed is the resolved state.</li>
+        <li><strong>Price chart (schematic) + Why this price</strong> -&gt; FJ2 differentiator, below the chart and facts so the panel leads.</li>
+        <li><strong>Confirm fires the gate</strong> -&gt; opens the Sign In dialog over this page, then Deposit (insufficient-balance jumps straight to the Deposit dialog).</li>
+        <li><strong>Auth + states</strong> -&gt; logged-in / logged-out, binary / multi success, error (T8), loading, resolved-while-reading.</li>
       </ol>
     </aside>
 
     <div class="nav-col">
       <section class="navtree" aria-label="Navigation tree">
         <span class="zone-tag">on-page nav tree (main-flow spine)</span>
-<pre>Main-flow spine (MJ, News Junkie):
-
-Event Feed
+<pre>Event Feed
    v
-[Event Detail]   &lt;- current screen (bet panel inline)
+[Event Detail]   &lt;- current (binary; bet panel: intent)
    v
-Sign In / Register   (gate, modal)
-   v
-Deposit   (gate, modal)
+Sign In / Deposit (dialogs over the page)
    v
 Active Bets    (MJ success, T14)</pre>
-        <p class="ref">Flow position: MJ, one node after Event Feed. The Bet intent now
-          lives here as a sticky panel; the gate (Sign In, Deposit) fires on Confirm.
-          Serves FJ2, MJ, EJ1.</p>
-      </section>
-
-      <section class="navtree" aria-label="States">
-        <span class="zone-tag">states of this screen</span>
-        <p class="ref">success / pre-selected (base; binary here, multi-outcome variant to come),
-          error (T8 load failure), loading, resolved-while-reading (logged-in only).
-          Logged-out carries success / error / loading; body identical, header differs.</p>
+        <p class="ref">Flow position: MJ, one node after Event Feed. Bet intent + states
+          live in the panel; the gate (Sign In, Deposit) fires on Confirm as dialogs.</p>
       </section>
     </div>
 

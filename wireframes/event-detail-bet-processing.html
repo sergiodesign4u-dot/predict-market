@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Category: Crypto (logged in - state: loading (skeleton))</title>
+  <title>Wireframe - Event Detail (logged in - state: success / binary - bet panel: processing)</title>
 <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -467,7 +467,7 @@
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="event-detail.html">Event Detail</a>
+        <a href="event-detail.html" class="active" aria-current="page">Event Detail</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
           <li><a href="event-detail.html">success / binary</a></li>
@@ -477,7 +477,7 @@
           <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
           <li><a href="event-detail-bet-insufficient.html">bet panel: insufficient-balance</a></li>
           <li><a href="event-detail-bet-reconcile.html">bet panel: S5 reconcile</a></li>
-          <li><a href="event-detail-bet-processing.html">bet panel: processing</a></li>
+          <li class="cur"><a href="event-detail-bet-processing.html">bet panel: processing (this page)</a></li>
           <li><a href="event-detail-bet-error.html">bet panel: on-chain error</a></li>
           <li class="wf-substate">Logged out</li>
           <li><a href="event-detail-logged-out.html">success / binary</a></li>
@@ -505,13 +505,13 @@
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="crypto.html" class="active" aria-current="page">Crypto</a>
+        <a href="crypto.html">Crypto</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
           <li><a href="crypto.html">success</a></li>
           <li><a href="crypto-empty.html">empty</a></li>
           <li><a href="crypto-error.html">error</a></li>
-          <li class="cur"><a href="crypto-loading.html">loading (this page)</a></li>
+          <li><a href="crypto-loading.html">loading</a></li>
           <li class="wf-substate">Logged out</li>
           <li><a href="crypto-logged-out.html">success</a></li>
           <li><a href="crypto-logged-out-empty.html">empty</a></li>
@@ -659,15 +659,16 @@
   </nav>
 
   <div class="page-label">
-    <strong>Wireframe:</strong> Crypto (category) &nbsp;|&nbsp;
-    logged in - state: loading (skeleton) &nbsp;|&nbsp;
+    <strong>Wireframe:</strong> Event Detail &nbsp;|&nbsp;
+    logged in - state: success / binary - bet panel: processing &nbsp;|&nbsp;
     responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/crypto-loading.html
+    file: wireframes/event-detail-bet-processing.html
   </div>
 
-  <nav class="state-switch" aria-label="States of this screen (auth and screen state)">
-    <div class="ss-row"><span class="ss-label">Auth</span><a href="crypto-loading.html" aria-current="page">Logged in</a><a href="crypto-logged-out-loading.html">Logged out</a></div>
-    <div class="ss-row"><span class="ss-label">State</span><a href="crypto.html">Success</a><a href="crypto-empty.html">Empty</a><a href="crypto-error.html">Error</a><a href="crypto-loading.html" aria-current="page">Loading</a></div>
+  <nav class="state-switch" aria-label="States of this screen (auth, view and bet-panel state)">
+    <div class="ss-row"><span class="ss-label">Auth</span><a href="event-detail.html" aria-current="page">Logged in</a><a href="event-detail-logged-out.html">Logged out</a></div>
+    <div class="ss-row"><span class="ss-label">View</span><a href="event-detail.html" aria-current="page">Binary</a><a href="event-detail-multi.html">Multi</a><a href="event-detail-error.html">Error</a><a href="event-detail-loading.html">Loading</a><a href="event-detail-resolved.html">Resolved</a></div>
+    <div class="ss-row"><span class="ss-label">Bet</span><a href="event-detail.html">Intent</a><a href="event-detail-bet-insufficient.html">Insufficient</a><a href="event-detail-bet-reconcile.html">S5 reconcile</a><a href="event-detail-bet-processing.html" aria-current="page">Processing</a><a href="event-detail-bet-error.html">On-chain error</a></div>
   </nav>
 
   <div class="device">
@@ -718,134 +719,102 @@
     </header>
     <!-- Second-level navigation: categories route to their own pages (links) -->
     <nav class="cat-nav" aria-label="Categories (second level)">
-      <span class="zone-tag">zone: second-level navigation (each category opens its own page)</span>
+      <span class="zone-tag">zone: second-level navigation (categories; active = this event's category)</span>
       <ul>
         <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
-        <li><a href="politics.html"><button type="button">Politics</button></a></li>
-        <li aria-current="page"><a href="crypto.html"><button type="button">Crypto</button></a></li>
+        <li aria-current="page"><a href="politics.html"><button type="button">Politics</button></a></li>
+        <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
         <li><a href="culture.html"><button type="button">Culture</button></a></li>
         <li><a href="general.html"><button type="button">General</button></a></li>
       </ul>
     </nav>
     <main class="feed">
-      <span class="zone-tag">zone: Crypto category (loading: fetching markets (skeleton grid))</span>
-      <div class="cat-layout">
-      <nav class="subcat" aria-label="Crypto sub-categories">
-        <span class="zone-tag">zone: sub-categories (left rail on desktop, scrolling chips on mobile; counts are sample data)</span>
-        <p class="subcat-head">Sub-categories</p>
-        <ul>
-        <li aria-current="page"><button type="button">All <span class="cnt">2K</span></button></li>
-        <li><button type="button">Bitcoin <span class="cnt">312</span></button></li>
-        <li><button type="button">Ethereum <span class="cnt">168</span></button></li>
-        <li><button type="button">Solana <span class="cnt">74</span></button></li>
-        <li><button type="button">Price Predictions <span class="cnt">220</span></button></li>
-        <li><button type="button">ETFs <span class="cnt">33</span></button></li>
-        <li><button type="button">Stablecoins <span class="cnt">19</span></button></li>
-        <li><button type="button">Memecoins <span class="cnt">58</span></button></li>
-        <li><button type="button">Layer 2s <span class="cnt">27</span></button></li>
-        <li><button type="button">Fed & Macro <span class="cnt">41</span></button></li>
-        </ul>
-      </nav>
-      <div class="cat-main">
-        <div class="feed-inner">
-        <div class="feed-head">
-          <h2 id="feedHeading">Crypto</h2>
-          <div class="feed-controls">
-
-            <details class="filter-menu" id="sortMenu">
-              <summary aria-label="Sort by">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
-                <span>Sort: <span id="sortCurrent">Trending</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <span class="zone-tag">sort options</span>
-                <ul role="radiogroup" aria-label="Sort by">
-                  <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
-                  <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
-                  <li><label><input type="radio" name="sort" value="New"> New</label></li>
-                  <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
-                  <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
-                  <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
-                </ul>
-                <div class="reverse-row">
-                  <span>Reverse sort</span>
-                  <button type="button" class="toggle" role="switch" aria-checked="false">off</button>
-                </div>
+      <span class="zone-tag">zone: event detail (binary: chart, facts, why-this-price, resolution + sticky bet panel)</span>
+      <div class="ed-layout">
+        <div class="ed-main">
+          <article class="card" style="border:none;">
+            <div class="ed-head">
+              <span class="ed-thumb">thumbnail placeholder</span>
+              <div>
+                <span class="ed-cat">Politics &middot; One-time market</span>
+                <h2 class="ed-q">Will the US government shut down before March 1, 2027?</h2>
+                <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
               </div>
-            </details>
-
-            <details class="filter-menu" id="freqMenu">
-              <summary aria-label="Filter by frequency">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                <span>Frequency: <span id="freqCurrent">All</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <span class="zone-tag">event frequency (recurring markets)</span>
-                <ul role="radiogroup" aria-label="Frequency">
-                  <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
-                  <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
-                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
-                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
-                  <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
-                  <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
+            </div>
+          </article>
+          <section class="ed-section">
+            <h3>Price chart</h3>
+            <div class="chart-wrap">
+              <svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" role="img" aria-label="YES probability over the last 30 days (schematic)">
+                <line class="grid-l" x1="0" y1="25" x2="300" y2="25"/>
+                <line class="grid-l" x1="0" y1="50" x2="300" y2="50"/>
+                <line class="grid-l" x1="0" y1="75" x2="300" y2="75"/>
+                <polyline points="0,58 25,55 50,63 75,52 100,57 125,49 150,55 175,47 200,52 225,44 250,50 275,43 300,62"/>
+                <line class="nowline" x1="300" y1="0" x2="300" y2="100"/>
+              </svg>
+              <p class="chart-cap"><span>30 days ago</span><span>1d &middot; 1w &middot; 1m &middot; all</span><span>YES 38% now</span></p>
+            </div>
+          </section>
+          <div class="ed-facts">
+            <span>Volume<b>$84,200</b></span>
+            <span>Liquidity<b>$31,500</b></span>
+            <span>Closes<b>Mar 1, 2027</b></span>
+            <span>Frequency<b>One-time</b></span>
+            <span>Bookmark<b>save event</b></span>
+          </div>
+          <section class="ed-section">
+            <h3>Why this price</h3>
+            <p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
+            <div class="args">
+              <div class="arg-col">
+                <h4>For YES</h4>
+                <ul>
+                  <li>Budget talks stalled in committee, no scheduled vote.</li>
+                  <li>A bloc has committed to opposing the stopgap bill.</li>
                 </ul>
               </div>
-            </details>
+              <div class="arg-col">
+                <h4>For NO</h4>
+                <ul>
+                  <li>Last three deadlines met with short-term funding.</li>
+                  <li>Both parties signalled willingness to extend.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
 
-          </div>
+          <section class="ed-section">
+            <h3>Resolution conditions</h3>
+            <p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
+            <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Predict Market team.</p>
+          </section>
         </div>
-          <div class="grid" aria-busy="true">
-
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+          <aside class="bet-panel">
+            <span class="zone-tag">zone: bet panel (sticky right rail; fast entry, MJ). States migrated from the old Bet modal.</span>
+            <div class="bp-inner">
+              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">submitting</span></div>
+              <div class="bp-dir">
+                <button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button>
+                <button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button>
+              </div>
+              <div>
+                <span class="field-label">Amount</span>
+                <div class="amount-row"><span class="amount-input">$5.00</span></div>
+                <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
+              </div>
+              <div class="spinner-box">Registering your bet on-chain...<br><span class="fine">A few seconds. Keep this open.</span></div>
+              <p class="fine">execute on-chain processing: transitional to Active Bets or T3.</p>
             </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-          <article class="card skeleton" aria-hidden="true">
-            <div class="card-body">
-              <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
-              <div class="sk-line w40"></div>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-            </div>
-          </article>
-
-          </div>
-        </div>
-      </div>
+          </aside>
       </div>
     </main>
+      <!-- Mobile sticky bet dock (above the bottom nav; taps expand to a confirm sheet) -->
+      <div class="bet-dock" aria-label="Place your bet">
+        <button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button>
+        <button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button>
+        <span class="dock-meta">$5 to win<b>$13.20</b></span>
+        <button type="button" class="confirm-btn" data-open="signin" style="width:auto;padding:11px 14px;">Bet</button>
+      </div>
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
@@ -995,36 +964,26 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Crypto here). Trending stays the main feed (event-feed.html).</li>
-        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
-        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li>
+        <li><strong>Sticky bet panel (right rail desktop / bottom dock mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while scrolling. Binary = YES / NO; multi-outcome = pick one outcome, then YES / NO on it.</li>
+        <li><strong>Bet states migrated into the panel</strong> -&gt; intent, insufficient-balance (inline guard), S5 reconcile (price moved during the gate), execute processing, on-chain error (T3). The old standalone Bet modal is gone; event-closed is the resolved state.</li>
+        <li><strong>Price chart (schematic) + Why this price</strong> -&gt; FJ2 differentiator, below the chart and facts so the panel leads.</li>
+        <li><strong>Confirm fires the gate</strong> -&gt; opens the Sign In dialog over this page, then Deposit (insufficient-balance jumps straight to the Deposit dialog).</li>
+        <li><strong>Auth + states</strong> -&gt; logged-in / logged-out, binary / multi success, error (T8), loading, resolved-while-reading.</li>
       </ol>
     </aside>
 
     <div class="nav-col">
       <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (where this sits)</span>
-<pre>Events (browse)
-   Event Feed  (Trending = main)
-   Politics / Crypto / Culture / General
-        ^ [Crypto]   &lt;- current category page
-        v
-   Event Detail
-        v
-   Sign In / Deposit (dialogs) -> Active Bets</pre>
-        <p class="ref">A category page is a browse entry parallel to the main feed
-          (IA/sitemap.md second-level navigation), with the auth axis and the
-          success / empty / error / loading states.</p>
-      </section>
-
-      <section class="navtree" aria-label="Rollout">
-        <span class="zone-tag">rollout status</span>
-        <p class="ref">Built: Politics, Crypto, Culture, General, each with logged-in
-          and logged-out x success / empty / error / loading. Still to come: the real
-          sub-category taxonomy per category and the sitemap.md update (category pages
-          + sub-categories).</p>
+        <span class="zone-tag">on-page nav tree (main-flow spine)</span>
+<pre>Event Feed
+   v
+[Event Detail]   &lt;- current (binary; bet panel: processing)
+   v
+Sign In / Deposit (dialogs over the page)
+   v
+Active Bets    (MJ success, T14)</pre>
+        <p class="ref">Flow position: MJ, one node after Event Feed. Bet intent + states
+          live in the panel; the gate (Sign In, Deposit) fires on Confirm as dialogs.</p>
       </section>
     </div>
 
