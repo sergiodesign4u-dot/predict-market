@@ -440,7 +440,7 @@
     <div class="screen-item">
       <div class="screen-name">Event Feed</div>
       <div class="screen-jobs"><span class="job-badge">FJ1</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
-      <div class="screen-desc">Cards of active markets, sorted by recency / trending. First visit: story-driven format (context visible on card, not just %). Return visits: denser feed. No sign-in required to browse.</div>
+      <div class="screen-desc">Cards of active markets, default Trending. Each card: thumbnail, the event question (the hook), a compact probability %, YES / NO trigger-entry, and a meta row (volume, closing date, bookmark). Binary and multi-outcome card layouts. The "why this price" context snippet was removed from cards in the wireframe build pass and now lives on Event Detail only. Categories are second-level nav (own pages); a Kalshi-style Sort / Frequency / Category filter row sits on the heading. Logged-in and logged-out variants. No sign-in required to browse.</div>
       <div class="screen-states">
         <div class="state-label">States</div>
         <ul class="state-list">
@@ -449,6 +449,21 @@
           <li>error (network fail, API unreachable)</li>
         </ul>
         <div class="screen-note">Note: push-permission-missing banner also surfaced on Event Feed when OS push is denied (see Notifications states).</div>
+      </div>
+    </div>
+    <div class="screen-item">
+      <div class="screen-name">Category page - Politics / Crypto / Culture / General</div>
+      <div class="screen-jobs"><span class="job-badge">FJ1</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
+      <div class="screen-desc">NEW in the wireframe build pass: the second-level categories open their own browse pages (not in-feed toggles). Each has a sub-category rail (left sticky on desktop, scrolling chips on mobile) with counts, plus Sort / Frequency controls and the category-scoped card grid. Logged-in and logged-out variants.</div>
+      <div class="screen-states">
+        <div class="state-label">States</div>
+        <ul class="state-list">
+          <li>loading (skeleton grid)</li>
+          <li>success (category-scoped cards)</li>
+          <li>empty (no events match: Clear filters + Notify me, T6)</li>
+          <li>error (Try again + Back to Trending)</li>
+        </ul>
+        <div class="screen-note">Each state as logged-in and logged-out (auth axis). 32 pages total (4 categories x 2 auth x 4 states).</div>
       </div>
     </div>
     <div class="screen-item">
@@ -922,7 +937,7 @@
   <p style="font-size:13px;color:#888">MJ 8 &middot; FJ1 3 &middot; FJ2 2 &middot; FJ3 4 &middot; FJ4 3 &middot; FJ5 3 &middot; EJ1 5 &middot; EJ2 3 &middot; EJ3 2 &middot; SJ1 2 &middot; SJ2 2</p>
 
   <h3 style="margin-top:32px">Non-trivial checkmark rationale</h3>
-  <div class="rationale-item"><div class="rationale-cell">FJ2 + EF</div><div class="rationale-text">Event Feed in story-driven mode shows context on the card (not just %), partially closes "why this probability" before the user taps into detail.</div></div>
+  <div class="rationale-item"><div class="rationale-cell">FJ2 + EF</div><div class="rationale-text">Event Feed shows each event's question and probability %, so it opens "why this probability"; the full context (the "why this price" block) moved to Event Detail in the wireframe build pass, which closes FJ2. The feed enters the job, Event Detail completes it.</div></div>
   <div class="rationale-item"><div class="rationale-cell">EJ2 + EF</div><div class="rationale-text">First impression of the product (benchmark-trust C5: 5/5 Bet365) is Event Feed without registration. Cognitive clarity on the first screen = first layer of EJ2.</div></div>
   <div class="rationale-item"><div class="rationale-cell">FJ3 + BS</div><div class="rationale-text">Bet Screen has $5 default pre-fill, quick-select buttons, and fee display - this is "bet without learning unfamiliar technology" at the confirm step.</div></div>
   <div class="rationale-item"><div class="rationale-cell">EJ1 + ED</div><div class="rationale-text">Knowledge validation: user sees the probability and compares it to their own forecast - "market thinks 67%, I know better." The sense of edge emerges here.</div></div>

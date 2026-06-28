@@ -1,7 +1,8 @@
 # Sitemap - Prediction Market Platform
 
-> Status: wireframe build in progress. Navigation design complete; the wireframe
-> build pass (below) revises several structural decisions.
+> Status: wireframe build complete (2026-06-28). Navigation design complete; the
+> wireframe build pass (below) revises several structural decisions. Every screen in
+> the S6 screen tree is built (orphans [SIROTA] excepted, by design).
 > Built from: personas.md · jtbd.md · master-research.md
 
 ---
@@ -702,8 +703,10 @@ desktop question; none of them changes a mobile decision.
 > - it is the inline panel on Event Detail. Of the invoked screens, **Sign In /
 > Register and Deposit** are now shared in-page `<dialog>` overlays opened over the
 > current page (close stays on the page; providers chain Sign In -> Deposit). Win
-> and Loss Screens remain invoked overlays (to be built). The rest of this section
-> stands as the overlay-presentation rationale for the remaining overlays.
+> and Loss Screens are also invoked overlays, now built (modal on desktop, bottom
+> sheet on mobile, over a dimmed Active Bets / notification context; reached 1 tap
+> from a resolution notification or a resolved item in My Bets). The rest of this
+> section stands as the overlay-presentation rationale for the remaining overlays.
 
 - **Decision:** the invoked screens (Sign In / Register, Deposit, Win Screen,
   Loss Screen) are presented as an overlay in context, not as a separate full-page
