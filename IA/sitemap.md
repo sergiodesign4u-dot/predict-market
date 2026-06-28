@@ -1,7 +1,58 @@
 # Sitemap - Prediction Market Platform
 
-> Status: navigation design complete. Ready for wireframes.
+> Status: wireframe build in progress. Navigation design complete; the wireframe
+> build pass (below) revises several structural decisions.
 > Built from: personas.md · jtbd.md · master-research.md
+
+---
+
+## Wireframe build pass - structural revisions (current, authoritative)
+
+> The wireframes (`wireframes/*.html`, rulebook `wireframes/_conventions.md`) are
+> the live build. The decisions here revise earlier sitemap structure. Where this
+> section and an older passage disagree, **this section is authoritative**; the
+> older text is kept for history, annotated where practical.
+
+1. **Category pages are real screens (second-level nav -> own page).** Tapping a
+   category (Politics, Crypto, Culture, General) opens its own page, not an
+   in-feed filter toggle. Each category page = a sub-category side rail (left
+   sticky rail on desktop, horizontal scrolling chips on mobile) + Sort / Frequency
+   on the heading + the category-scoped card grid. Trending stays the main Event
+   Feed (`event-feed.html`). Each category page is a browse screen with the auth
+   axis and success / empty / error / loading states (logged-in and logged-out).
+   Built: `politics*`, `crypto*`, `culture*`, `general*`.
+
+2. **Sub-category is a NEW Event attribute.** Within a category, events carry a
+   sub-category (Politics: Trump, Midterm Elections, Primaries, Congress, Courts,
+   Epstein, Government Shutdown, ...; Crypto: Bitcoin, Ethereum, Solana, ETFs,
+   Stablecoins, Memecoins, ...; etc.). The category page's left rail filters by
+   sub-category, each with a count. Taxonomy and counts are illustrative sample
+   data at wireframe stage (Polymarket / Kalshi-modelled), pending a real taxonomy.
+
+3. **Betting is an inline panel on Event Detail, not a standalone Bet Screen.**
+   The bet intent and all bet states live in a sticky bet panel on Event Detail
+   (right rail on desktop; a bottom dock that expands to a sheet on mobile). The
+   standalone "Bet Screen" is dissolved: its states become Event Detail panel
+   states - intent, insufficient-balance (inline guard -> Deposit), S5-reconcile,
+   execute processing, on-chain error (T3); event-closed is the Event Detail
+   resolved state. Event Detail now has two success views: **binary** (one YES / NO)
+   and **multi-outcome** (pick an outcome, then YES / NO on it). Confirm fires the
+   gate.
+
+4. **Sign In / Register and Deposit are shared in-page dialogs.** Native
+   `<dialog>`, opened over the current page; Close / backdrop / Esc keep the user on
+   that page. One dialog markup is defined once and emitted on every page; the
+   providers chain Sign In -> Deposit. The standalone `sign-in-*.html` /
+   `deposit-*.html` pages are kept as the per-state design reference. This refines
+   D-desktop-5: the bet is no longer a separate invoked overlay; only Sign In and
+   Deposit remain overlays, now as dialogs.
+
+5. **Consequences for older sections** (revised by the above): "Under Question ->
+   Category" (Category is now a screen with its own page, not only an Event field);
+   "BET - Bet Screen" (dissolved into the Event Detail panel); D-desktop-5 (bet
+   inline; gate = dialogs over the page); "Not navigation destinations" (Bet Screen
+   removed as a screen); the Tracing **BS** column now represents the Event Detail
+   bet panel (MJ / FJ3 coverage unchanged).
 
 ---
 
@@ -24,7 +75,8 @@ Without it, no job is closable.
 | Question / title | "Will X happen before [date]?" |
 | Type | Binary (YES/NO) · Multi-outcome (multiple options, each with YES/NO). The card must render both layouts, see Event Feed card composition. This is the existing Type field, no new field is added for it. |
 | Thumbnail image | Per-event image used on the card as a visual differentiator. Real field; renders as a grey-box placeholder in wireframes (conventions Addition A), a sample image in concept and a real image in production. |
-| Category | Politics · Crypto · Culture · General |
+| Category | Politics · Crypto · Culture · General. Each category is now a screen with its own page (see Wireframe build pass #1), not only a filter on the feed. |
+| Sub-category | NEW (wireframe build pass). A finer tag within a category (e.g. Politics: Trump, Midterm Elections, Primaries, Congress, Courts, Epstein, Government Shutdown). Powers the sub-category rail on the category page. Taxonomy is illustrative sample data at wireframe stage. |
 | Frequency / recurrence | One-time or recurring. Recurring cadence: Hourly · Daily · Weekly · Monthly. NEW (wireframe pass): introduces recurring markets, and powers the Frequency filter on the Event Feed. Resolution mechanics for recurring markets are to be detailed later (each cadence instance resolves on its own schedule). |
 | Current probability (%) | The "price" - primary display number on every card |
 | Probability chart | History of odds movement over time |
@@ -202,7 +254,7 @@ Objects mentioned in product docs but not mapped to a confirmed job. Included he
 
 | Object | Why it's here | Why it's in question |
 |---|---|---|
-| **Category** | Events are grouped by Politics / Crypto / Culture / General | Taxonomy attribute of Event, not an object with its own lifecycle. No job requires "interacting with a category" as a standalone object. Could remain a field on Event. |
+| **Category** | Events are grouped by Politics / Crypto / Culture / General | RESOLVED in the wireframe build pass (#1): Category is promoted to a navigation screen - each category opens its own page with a sub-category rail, sort/frequency, and the auth axis + states. It is both an Event field and a browse screen. Sub-category was added as a new Event attribute. |
 | **Leaderboard** | Listed in CLAUDE.md MVP features | No explicit job in jtbd.md. SJ2 (public track record) is served by Profile. Leaderboard is a view over Profiles - a feature, not a distinct entity. Revisit if social competition mechanics are confirmed. |
 | **Odds Chart** | Every competitor has it; part of Event detail | Attribute of Event (probability history), not a standalone entity. Lives inside Event. |
 | **Fiat Transaction** | Deposit/withdrawal via Transak/MoonPay | Currently modeled as sub-object of Wallet. Promote to standalone entity only if on-ramp flow reveals complexity that can't fit inside Wallet (e.g., multi-step KYC state machine per transaction). |
@@ -226,6 +278,7 @@ This group is the entry point for both personas.
 
 ```
 Event Feed                                   (FJ1)          ⭐ PRIMARY + 🥈 SECONDARY
+Category page (Politics/Crypto/Culture/General) (FJ1)       ⭐ PRIMARY + 🥈 SECONDARY   NEW (wireframe build pass)
 Event Detail                                 (FJ2 · MJ)     ⭐ PRIMARY + 🥈 SECONDARY
 ```
 
@@ -257,8 +310,12 @@ Exact sort and filter labels are a wireframe detail. Categories stay the locked 
 
 Saved view: a filter / view over the Event Feed showing only saved events. It is a view within Events, the same way categories filter the feed, not a separate screen. Reached from the bookmark control on cards, from the Favorites (heart) entry in the desktop header, and from the Favorites bottom-nav slot on mobile (the wireframe pass moved Favorites into the mobile bottom bar, swapping with Notifications). See Saved events for the relationship and the alert hypothesis.
 
-**Event Detail** - one event, full view: probability, chart, narrative context (why this price), resolution conditions, source. CTA: YES / NO. This screen is our primary differentiator - no competitor has context at this depth (FJ2 confirmed gap). With the card snippet removed, this context block is now the sole home of the FJ2 differentiator and must be strong.
-States: loading (event data fetching) - error (load failure, T8 in MJ and FJ2 flows - retry returns to Event Detail) - resolved-while-reading (this event just resolved: [outcome] - navigate to Win/Loss Screen if user holds a position, else to Event Feed) - pre-selected entry variant (arrived from a card YES/NO tap with a side and, for multi-outcome, an option pre-selected; the bet is still placed here, FJ2 context shown first; to be detailed when Event Detail is built).
+**Category page** (NEW, wireframe build pass) - a category opened as its own page: Politics, Crypto, Culture, General. Same card pattern as the Event Feed, scoped to one category, with a sub-category side rail (left sticky rail on desktop, horizontal scrolling chips on mobile) listing the category's sub-categories with per-sub-category counts, plus Sort and Frequency on the heading row. The second-level category nav routes here (links, not in-feed toggles); Trending stays the main Event Feed. Browse screen with the auth axis.
+States: success (grid) - empty (no events match the sub-category / filters: Clear filters + "Notify me of new <category> events", T6 subscribe edge) - error (failed to load: Try again + Back to Trending) - loading (skeleton grid). Built as the full auth x state matrix (logged-in and logged-out).
+
+**Event Detail** - one event, full view: probability, schematic price chart, narrative context (why this price), resolution conditions, source. This screen is our primary differentiator - no competitor has context at this depth (FJ2 confirmed gap). With the card snippet removed, this context block is the sole home of the FJ2 differentiator. **Betting happens here** in a sticky bet panel (right rail on desktop; a bottom dock that expands to a sheet on mobile), so an informed user can stake while scrolling the context. Two success views: **binary** (one YES / NO) and **multi-outcome** (the outcomes are listed in the main column and the panel becomes "pick an outcome", then YES / NO on it). Content order: header -> chart + facts -> why this price -> resolution; the panel leads. Confirm in the panel fires the activation gate (Sign In then Deposit, as dialogs over the page). This replaces the standalone Bet Screen (see Wireframe build pass #3).
+States (page-level): loading (event data fetching) - error (load failure, T8 in MJ and FJ2 flows - retry returns to Event Detail) - resolved-while-reading / event-closed (this event just resolved: navigate to Win/Loss Screen if user holds a position, else to Event Feed) - pre-selected entry variant (arrived from a card YES/NO tap with a side and, for multi-outcome, an option pre-selected).
+Bet-panel states (migrated from the old Bet Screen): intent (default) - insufficient-balance (inline guard: bet up to balance or open the Deposit dialog) - S5-reconcile (price moved during the gate: old vs new, re-confirm or cancel, T16) - execute processing (registering on-chain) - on-chain error (T3, retry). The Event Detail state-switcher is built as three axes: Auth, View (binary / multi / error / loading / resolved), Bet panel (intent / insufficient / reconcile / processing / on-chain error).
 
 #### Saved events (NEW addition)
 
@@ -284,7 +341,13 @@ Logged-out versus logged-in is a TOP-LEVEL axis of the page states on the browse
 
 ### ACTIVATION GATE - bet-first, gate at confirm (Variant B)
 
-The user browses and builds a bet logged out. The gate fires only when they tap "Confirm" on the Bet Screen - not at YES/NO tap.
+> REVISED (wireframe build pass #4): Sign In / Register and Deposit are shared
+> in-page **dialogs** (native `<dialog>`) opened over the current page; closing
+> keeps the user on that page, and the providers chain Sign In -> Deposit. The
+> standalone `sign-in-*.html` / `deposit-*.html` pages remain as the per-state
+> design reference.
+
+The user browses and builds a bet logged out. The gate fires only when they tap "Confirm" in the Event Detail bet panel - not at YES/NO tap.
 Two branches at the gate: News Junkie (social login then fiat deposit) and Crypto Native (connect existing USDC wallet, no fiat, no KYC on platform).
 After the gate, a mandatory AMM price reconcile step (S5) checks whether the price moved during auth/deposit before executing the bet.
 Teaching formerly in Onboarding swipes is redistributed to live screens: Event Detail explains odds context, Bet Screen shows fee and payout inline, Deposit explains fund safety.
@@ -303,6 +366,13 @@ States: in-progress (Transak widget loading, KYC pending inside widget) - error-
 ---
 
 ### BET - place and confirm a bet
+
+> REVISED (wireframe build pass #3): the standalone **Bet Screen is dissolved**.
+> Betting is an inline sticky panel on Event Detail (right rail desktop / bottom
+> dock mobile), and its states are Event Detail bet-panel states (see the Event
+> Detail screen above). The text below is kept for history; "Bet Screen" now means
+> "the Event Detail bet panel". The flow is unchanged in substance: build the bet
+> in the panel, Confirm fires the activation gate (Sign In then Deposit dialogs).
 
 Reached from Event Detail when the user taps YES or NO. No auth required to reach it - the user is still logged out at this point (Variant B).
 Auth and deposit happen only at the confirm step, via the activation gate.
@@ -474,11 +544,11 @@ Navigation is derived from the user's job sequence, not from a competitor tab ba
 
 These screens are reached only inside a flow, triggered by a user action. They are never a bottom-nav slot and cannot be reached by tapping the nav bar:
 
-- **Bet Screen** - invoked when user taps YES or NO on Event Detail.
+- **Bet panel (Event Detail)** - not a screen: the inline sticky panel on Event Detail where the bet is built (replaces the old standalone Bet Screen, wireframe build pass #3).
 - **Win Screen** - invoked when a bet resolves with a win (via notification or resolved item in Active Bets).
 - **Loss Screen** - invoked when a bet resolves with a loss (G1 direct: 1 tap from resolution notification; or via resolved item in Active Bets).
-- **Sign In / Register** - invoked at the activation gate (Confirm tap on Bet Screen), never before the user has bet intent.
-- **Deposit** - invoked at the activation gate (News Junkie path post-auth) and from Wallet (standalone top-up).
+- **Sign In / Register** - shared in-page dialog, opened at the activation gate (Confirm in the Event Detail bet panel), never before the user has bet intent.
+- **Deposit** - shared in-page dialog, opened at the activation gate (News Junkie path, chained after Sign In) and from Wallet (standalone top-up).
 
 ### Deferred
 
@@ -628,11 +698,19 @@ desktop question; none of them changes a mobile decision.
 
 ### D-desktop-5: Invoked screens as modal overlays (both breakpoints)
 
-- **Decision:** the invoked screens (Bet Screen, Sign In / Register, Deposit,
-  Win Screen, Loss Screen) are presented as an overlay in context, not as a
-  separate full-page destination, on both breakpoints. Desktop: a centered modal
-  over the feed. Mobile: a full-height bottom sheet. The user stays in context;
-  they are not thrown across separate screens.
+> REVISED (wireframe build pass #3-4): the **bet is no longer an invoked overlay**
+> - it is the inline panel on Event Detail. Of the invoked screens, **Sign In /
+> Register and Deposit** are now shared in-page `<dialog>` overlays opened over the
+> current page (close stays on the page; providers chain Sign In -> Deposit). Win
+> and Loss Screens remain invoked overlays (to be built). The rest of this section
+> stands as the overlay-presentation rationale for the remaining overlays.
+
+- **Decision:** the invoked screens (Sign In / Register, Deposit, Win Screen,
+  Loss Screen) are presented as an overlay in context, not as a separate full-page
+  destination, on both breakpoints. Desktop: a centered modal over the page.
+  Mobile: a full-height bottom sheet. The user stays in context; they are not
+  thrown across separate screens. (The bet itself is the inline Event Detail panel,
+  not an overlay.)
 - **Multi-step stack:** the activation gate (Sign In then Deposit) and the S5
   reconcile step on Bet Screen run as a multi-step stack inside the same overlay.
 - **Mobile-to-desktop mapping:** in-context overlay on both breakpoints -
@@ -678,26 +756,27 @@ Level 0 - bottom nav destinations (1 tap from anywhere in the app)
 
 Level 1 - one tap below a Level 0 screen
   under Events:
-    Event Detail (tap any event card on Event Feed)
+    Category page (tap a category in the second-level nav: Politics/Crypto/Culture/General)
+    Event Detail (tap any event card on Event Feed or a category page)
   via the header (available at Level 0):
     Notifications list (header bell, both breakpoints)
     Wallet / Deposit (avatar dropdown, or inside the Portfolio hub)
     How It Works (avatar dropdown and footer, also linked from Deposit)
 
 Flow / invoked - reached only inside a flow, not via nav bar
-  Bet Screen        invoked: tap YES or NO on Event Detail
+  Bet panel         inline on Event Detail (not a separate screen; replaces the old Bet Screen)
   Win Screen        invoked: bet resolves as win (notification tap or Active Bets resolved item)
   Loss Screen       invoked: bet resolves as loss (G1: notification tap direct; or Active Bets resolved item)
-  Sign In / Register   invoked: activation gate (Confirm tap on Bet Screen)
-  Deposit           invoked: activation gate (News Junkie path) or Wallet top-up button
+  Sign In / Register   dialog: activation gate (Confirm in the Event Detail bet panel)
+  Deposit           dialog: activation gate (chained after Sign In) or Wallet top-up button
   Public Profile    invoked: external shared-card link only (no in-app nav at MVP)
 ```
 
 ### Depth check - primary persona (Alex, News Junkie)
 
-**MJ main job: Event Feed → Event Detail → Bet Screen**
-- Events tab (Level 0) → tap event card → Event Detail (1 tap) → tap YES or NO → Bet Screen (2 taps) → Confirm (3 taps, activation gate fires here).
-- Result: 2 taps to reach Bet Screen, 3 taps to trigger the gate. Within the 3-tap rule. Confirmed.
+**MJ main job: Event Feed → Event Detail → bet panel (inline)**
+- Events tab (Level 0) → tap event card → Event Detail (1 tap). The bet panel is already on Event Detail, so building the bet is in-place (set side/amount, 0 extra navigation) → Confirm in the panel fires the activation gate (2 taps total, the gate opens as the Sign In dialog over the page).
+- Result: bet intent is reachable in 1 tap (Event Detail), the gate fires at 2 taps. Better than the old 3-tap path (the standalone Bet Screen was removed). Within the 3-tap rule. Confirmed.
 
 **G1 retention path: resolution notification → Loss Screen**
 - Tap resolution notification (OS banner or Notifications list item) → Loss Screen directly (1 tap).
@@ -752,7 +831,9 @@ OB (Onboarding) column removed - screen removed in Step 2. BH x SJ2 corrected: B
 | **Coverage (jobs)** | 4 | 4 | 2 | 4 | 2 | 3 | 3 | 4 | 1 | 2 | 3 | 1 | 2 | 2 |
 
 **Column legend:**
-EF = Event Feed · ED = Event Detail · SI = Sign In / Register · DEP = Deposit · BS = Bet Screen · WS = Win Screen · LS = Loss Screen · AB = Active Bets · BH = Bet History · WA = Wallet · MP = My Profile · PP = Public Profile (another user) · HIW = How It Works · NT = Notifications
+EF = Event Feed · ED = Event Detail · SI = Sign In / Register · DEP = Deposit · BS = Bet panel on Event Detail (was the standalone Bet Screen; wireframe build pass #3) · WS = Win Screen · LS = Loss Screen · AB = Active Bets · BH = Bet History · WA = Wallet · MP = My Profile · PP = Public Profile (another user) · HIW = How It Works · NT = Notifications
+
+> Note (wireframe build pass): the **BS** column is now the Event Detail bet panel, not a standalone screen. Its MJ / FJ3 coverage is unchanged. Category pages (new browse screens) inherit EF's FJ1 row and are not added as a separate column, to keep the matrix stable.
 
 **Row coverage (screens per job):**
 MJ 8 · FJ1 3 · FJ2 2 · FJ3 4 · FJ4 3 · FJ5 3 · EJ1 5 · EJ2 3 · EJ3 2 · SJ1 2 · SJ2 2
