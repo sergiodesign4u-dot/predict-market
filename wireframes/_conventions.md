@@ -252,6 +252,31 @@ a separate duplicate logged-out page for a browse screen. The real auth branch
 lives at the activation gate (Bet Screen Confirm -> Sign In -> Deposit), which
 has its own screens and states.
 
+### S6. Screen-tree nav (global wireframe element)
+
+Every wireframe page carries the same left navigation panel, a tree of the whole
+screen inventory, so the full structure is visible from any page and you can jump
+anywhere. Same grey-box styling as the rest; no color.
+
+- **Structure (source of truth, nothing invented):** section -> screen -> its
+  states, indented to show nesting. Sections and screens are the groups from
+  `IA/sitemap.md` Screens (Events, Activation gate, Bet, Resolution, My Bets,
+  Notifications, Wallet, Profile, How It Works, Orphans). States per screen come
+  from that screen's States line in the sitemap and the screen x state table in
+  `_screens.md` (loading / empty / error / success plus the notable
+  product-specific ones). The logged-in / logged-out axis (S5) is shown as states
+  under the browse screens (Event Feed, Event Detail).
+- **Links and current:** each screen node links to its page (planned pages are
+  tagged `planned` until built); the current page and its current state are
+  marked active.
+- **Responsive:** a fixed left rail at >= 1440px (body gets a left padding so the
+  device clears it); below that it is a toggle-button drawer that slides over the
+  content (overlay), so it never reduces the responsive device width or disturbs
+  the feed grid. Same drawer pattern the project's IA pages use, restyled
+  grey-box.
+- **Every new wireframe screen gets this same panel**, with its own node marked
+  active. Keep the tree in sync when screens or states are added.
+
 ---
 
 ## Three additions (Predict Market needs these beyond the base 7)

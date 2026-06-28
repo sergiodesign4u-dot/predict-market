@@ -16,7 +16,44 @@
     * { box-sizing: border-box; }
     body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; }
 
-    .page-label { border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px; font-size: 12px; }
+    .page-label { border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px 6px 104px; font-size: 12px; }
+
+    /* ---- Wireframe screen-tree nav (meta-nav, identical on every wireframe page) ---- */
+    .wf-toggle { position: fixed; top: 8px; left: 8px; z-index: 60; display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid #888; background: #d6d6d6; padding: 6px 9px; font-size: 11px; cursor: pointer; }
+    .wf-toggle .ic { width: 16px; height: 16px; }
+    .wf-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 49; display: none; }
+    .wf-overlay.open { display: block; }
+    .wf-nav { position: fixed; top: 0; left: 0; width: 250px; height: 100vh; overflow-y: auto; margin: 0;
+      background: #dedede; border: none; border-right: 1px solid #999; z-index: 50;
+      transform: translateX(-100%); transition: transform .2s ease; font-size: 12px; }
+    .wf-nav.open { transform: translateX(0); }
+    .wf-nav-head { background: #cdcdcd; border-bottom: 1px solid #999; padding: 10px 12px; font-size: 11px;
+      text-transform: uppercase; letter-spacing: .05em; font-weight: bold; position: sticky; top: 0; }
+    .wf-nav-close { float: right; border: 1px solid #888; background: #d6d6d6; font-size: 11px; cursor: pointer; padding: 0 7px; line-height: 1.5; }
+    .wf-tree { list-style: none; margin: 0; padding: 4px 0 28px; }
+    .wf-sec { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: #555; padding: 13px 12px 3px; font-weight: bold; }
+    .wf-screen > a { display: block; padding: 5px 12px; color: #222; text-decoration: none; border-left: 3px solid transparent; }
+    .wf-screen > a:hover { background: #d2d2d2; }
+    .wf-screen > a.active { background: #c5c5c5; border-left-color: #555; font-weight: bold; }
+    .wf-screen > a.planned { color: #777; }
+    .wf-screen > a.planned::after { content: "planned"; font-size: 8px; text-transform: uppercase; letter-spacing: .05em;
+      border: 1px solid #aaa; background: #e8e8e8; color: #666; padding: 0 4px; margin-left: 6px; }
+    .wf-states { list-style: none; margin: 0; padding: 0 0 4px; }
+    .wf-states li { padding: 3px 12px 3px 30px; color: #555; position: relative; }
+    .wf-states li::before { content: ""; position: absolute; left: 19px; top: 11px; width: 6px; height: 1px; background: #9a9a9a; }
+    .wf-states li.cur { color: #111; font-weight: bold; }
+    .wf-states li.cur::before { background: #555; width: 9px; height: 2px; }
+    .wf-states a { color: inherit; text-decoration: none; }
+    .wf-states a:hover { text-decoration: underline; }
+    .wf-note { padding: 2px 12px 4px 30px; color: #777; font-style: italic; }
+
+    @media (min-width: 1440px) {
+      .wf-nav { transform: none; }
+      .wf-toggle, .wf-overlay { display: none !important; }
+      body { padding-left: 250px; }
+      .page-label { padding-left: 10px; }
+    }
 
     .device {
       width: 100%; max-width: 1400px; margin: 0 auto; background: #f4f4f4;
@@ -220,6 +257,170 @@
   </style>
 </head>
 <body>
+
+  <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
+  <button type="button" class="wf-toggle" id="wfToggle" aria-label="Open screen tree" aria-expanded="false">
+    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    Screens
+  </button>
+  <div class="wf-overlay" id="wfOverlay"></div>
+  <nav class="wf-nav" id="wfNav" aria-label="Wireframe screens">
+    <div class="wf-nav-head">
+      Wireframes - screen tree
+      <button type="button" class="wf-nav-close" id="wfClose" aria-label="Close screen tree">x</button>
+    </div>
+    <ul class="wf-tree">
+
+      <li class="wf-sec">Events</li>
+      <li class="wf-screen">
+        <a href="event-feed.html" class="active" aria-current="page">Event Feed</a>
+        <ul class="wf-states">
+          <li class="cur"><a href="event-feed.html">success - logged in (this page)</a></li>
+          <li><a href="event-feed.html#logged-out">success - logged out (header delta)</a></li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="event-detail.html" class="planned">Event Detail</a>
+        <ul class="wf-states">
+          <li>success / pre-selected - logged in</li>
+          <li>success - logged out (header delta)</li>
+          <li>error</li>
+          <li>loading</li>
+          <li>resolved-while-reading</li>
+        </ul>
+      </li>
+      <li class="wf-note">Saved view - a filter over the feed, not a separate screen.</li>
+
+      <li class="wf-sec">Activation gate</li>
+      <li class="wf-screen">
+        <a href="sign-in.html" class="planned">Sign In / Register</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>error (auth failed)</li>
+          <li>loading (OAuth in-progress)</li>
+          <li>provider-conflict</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="deposit.html" class="planned">Deposit</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>error (card / KYC / widget)</li>
+          <li>loading (widget in-progress)</li>
+          <li>pending</li>
+          <li>minimum-not-met</li>
+        </ul>
+      </li>
+
+      <li class="wf-sec">Bet</li>
+      <li class="wf-screen">
+        <a href="bet.html" class="planned">Bet Screen</a>
+        <ul class="wf-states">
+          <li>intent (logged out)</li>
+          <li>S5-reconcile (price moved)</li>
+          <li>success</li>
+          <li>error (on-chain)</li>
+          <li>insufficient-balance</li>
+          <li>event-closed</li>
+        </ul>
+      </li>
+
+      <li class="wf-sec">Resolution</li>
+      <li class="wf-screen">
+        <a href="win.html" class="planned">Win Screen</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>loading (share card)</li>
+          <li>error</li>
+          <li>payout-pending</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="loss.html" class="planned">Loss Screen</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>loading</li>
+        </ul>
+      </li>
+
+      <li class="wf-sec">My Bets</li>
+      <li class="wf-screen">
+        <a href="active-bets.html" class="planned">Active Bets</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>empty-new</li>
+          <li>empty-resolved</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="active-bets.html" class="planned">Bet History (History tab)</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+
+      <li class="wf-sec">Notifications</li>
+      <li class="wf-screen">
+        <a href="notifications.html" class="planned">Notifications</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+          <li>push-permission-missing</li>
+        </ul>
+      </li>
+
+      <li class="wf-sec">Wallet</li>
+      <li class="wf-screen">
+        <a href="wallet.html" class="planned">Wallet</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>loading</li>
+          <li>error</li>
+        </ul>
+      </li>
+
+      <li class="wf-sec">Profile</li>
+      <li class="wf-screen">
+        <a href="my-profile.html" class="planned">My Profile</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>loading</li>
+          <li>error</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="public-profile.html" class="planned">Public Profile</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>loading</li>
+          <li>error</li>
+          <li>not-found / link-expired</li>
+        </ul>
+      </li>
+
+      <li class="wf-sec">How It Works</li>
+      <li class="wf-screen">
+        <a href="how-it-works.html" class="planned">How It Works</a>
+        <ul class="wf-states">
+          <li>success (static trust page)</li>
+        </ul>
+      </li>
+
+      <li class="wf-sec">Orphans [SIROTA] - not built (no confirmed job)</li>
+      <li class="wf-note">Settings / Notification Preferences, Leaderboard, Help / FAQ.</li>
+
+    </ul>
+  </nav>
 
   <div class="page-label">
     <strong>Wireframe:</strong> Event Feed &nbsp;|&nbsp;
@@ -672,7 +873,7 @@
   </div>
 
   <!-- ============ LOGGED-OUT HEADER DELTA (annotated variant, not a separate page) ============ -->
-  <div class="delta">
+  <div class="delta" id="logged-out">
     <span class="zone-tag" style="display:inline-block; border:1px solid #999;">logged-out header delta (auth-state axis, header-level only)</span>
     <div class="mini-header">
       <div class="row">
@@ -909,6 +1110,28 @@ Active Bets    (MJ success, T14)</pre>
           b.addEventListener('click', function () { activate(b.textContent.trim()); });
         });
       }
+    })();
+
+    // Wireframe screen-tree drawer (toggle on small screens; a fixed rail at >= 1440px).
+    (function () {
+      var nav = document.getElementById('wfNav');
+      var ov = document.getElementById('wfOverlay');
+      var tg = document.getElementById('wfToggle');
+      var cl = document.getElementById('wfClose');
+      if (!nav || !tg) return;
+      function set(open) {
+        nav.classList.toggle('open', open);
+        ov.classList.toggle('open', open);
+        tg.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      tg.addEventListener('click', function () { set(!nav.classList.contains('open')); });
+      cl.addEventListener('click', function () { set(false); });
+      ov.addEventListener('click', function () { set(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+      // Choosing a screen on a narrow viewport closes the drawer.
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { if (window.innerWidth < 1440) set(false); });
+      });
     })();
   </script>
 
