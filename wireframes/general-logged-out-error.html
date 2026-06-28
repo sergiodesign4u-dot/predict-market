@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe - Category: General (logged out - state: error (load failed))</title>
+<style>
+    /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
+       Simple monochrome outline icons (stroke grey) so element footprint is real.
+       Base = mobile (1 column, bottom nav). Min-width expansions:
+       640px -> bottom nav hidden, 2-column feed
+       960px -> 3-column feed
+       1280px -> 4-column feed
+       Header is the same lean component at all widths (logo + icon cluster);
+       the second-level category nav sits directly under it. */
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; }
+
+    .page-label { border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px 6px 104px; font-size: 12px; }
+
+    /* ---- Wireframe screen-tree nav (meta-nav, identical on every wireframe page) ---- */
+    .wf-toggle { position: fixed; top: 8px; left: 8px; z-index: 60; display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid #888; background: #d6d6d6; padding: 6px 9px; font-size: 11px; cursor: pointer; }
+    .wf-toggle .ic { width: 16px; height: 16px; }
+    .wf-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 49; display: none; }
+    .wf-overlay.open { display: block; }
+    .wf-nav { position: fixed; top: 0; left: 0; width: 250px; height: 100vh; overflow-y: auto; margin: 0;
+      background: #dedede; border: none; border-right: 1px solid #999; z-index: 50;
+      transform: translateX(-100%); transition: transform .2s ease; font-size: 12px; }
+    .wf-nav.open { transform: translateX(0); }
+    .wf-nav-head { background: #cdcdcd; border-bottom: 1px solid #999; padding: 10px 12px; font-size: 11px;
+      text-transform: uppercase; letter-spacing: .05em; font-weight: bold; position: sticky; top: 0; }
+    .wf-nav-close { float: right; border: 1px solid #888; background: #d6d6d6; font-size: 11px; cursor: pointer; padding: 0 7px; line-height: 1.5; }
+    .wf-tree { list-style: none; margin: 0; padding: 4px 0 28px; }
+    .wf-sec { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: #555; padding: 13px 12px 3px; font-weight: bold; }
+    .wf-screen > a { display: block; padding: 5px 12px; color: #222; text-decoration: none; border-left: 3px solid transparent; }
+    .wf-screen > a:hover { background: #d2d2d2; }
+    .wf-screen > a.active { background: #c5c5c5; border-left-color: #555; font-weight: bold; }
+    .wf-screen > a.planned { color: #777; }
+    .wf-screen > a.planned::after { content: "planned"; font-size: 8px; text-transform: uppercase; letter-spacing: .05em;
+      border: 1px solid #aaa; background: #e8e8e8; color: #666; padding: 0 4px; margin-left: 6px; }
+    .wf-states { list-style: none; margin: 0; padding: 0 0 4px; }
+    .wf-states li { padding: 3px 12px 3px 30px; color: #555; position: relative; }
+    .wf-states li::before { content: ""; position: absolute; left: 19px; top: 11px; width: 6px; height: 1px; background: #9a9a9a; }
+    .wf-states li.cur { color: #111; font-weight: bold; }
+    .wf-states li.cur::before { background: #555; width: 9px; height: 2px; }
+    .wf-states a { color: inherit; text-decoration: none; }
+    .wf-states a:hover { text-decoration: underline; }
+    .wf-note { padding: 2px 12px 4px 30px; color: #777; font-style: italic; }
+
+    @media (min-width: 1440px) {
+      .wf-nav { transform: none; }
+      .wf-toggle, .wf-overlay { display: none !important; }
+      body { padding-left: 250px; }
+      .page-label { padding-left: 10px; }
+    }
+
+    /* ---- State pages (empty / error / loading / push-permission-missing) ---- */
+    .state-switch { border: 1px dashed #888; background: #e3e3e3; padding: 7px 10px; font-size: 11px;
+      display: flex; flex-direction: column; gap: 5px; }
+    .state-switch .ss-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .state-switch .ss-label { text-transform: uppercase; letter-spacing: .05em; color: #555; font-size: 10px; width: 44px; flex: 0 0 44px; }
+    .state-switch a { color: #222; text-decoration: none; border: 1px solid #999; background: #d6d6d6; padding: 2px 8px; }
+    .state-switch a:hover { background: #cccccc; }
+    .state-switch a[aria-current="page"] { background: #bdbdbd; font-weight: bold; }
+    .auth-btns { display: flex; gap: 6px; }
+    .auth-btn { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    .auth-btn.primary { background: #c4c4c4; font-weight: bold; }
+    .wf-states .wf-substate { padding: 7px 12px 2px 20px; color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: .05em; font-weight: bold; }
+    .wf-states .wf-substate::before { display: none; }
+
+    .state-block { border: 1px dashed #999; background: #ededed; padding: 30px 18px; margin: 4px 0;
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+    .state-block .ic { width: 30px; height: 30px; }
+    .state-title { font-size: 14px; font-weight: bold; margin: 0; }
+    .state-msg { font-size: 12px; color: #444; margin: 0; max-width: 380px; line-height: 1.5; }
+    .state-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 4px; }
+    .state-btn { border: 1px solid #888; background: #d6d6d6; padding: 8px 12px; font-size: 12px; cursor: pointer; }
+    .state-btn.primary { background: #c4c4c4; font-weight: bold; }
+
+    /* loading skeletons */
+    .card.skeleton .sk-thumb { width: 56px; height: 56px; flex: 0 0 56px; background: #d2d2d2; border: 1px solid #cccccc; }
+    .card.skeleton .sk-head { flex: 1; }
+    .card.skeleton .sk-line { height: 10px; background: #d8d8d8; margin: 7px 0; }
+    .card.skeleton .sk-line.w80 { width: 80%; }
+    .card.skeleton .sk-line.w60 { width: 60%; }
+    .card.skeleton .sk-line.w40 { width: 40%; }
+    .card.skeleton .sk-row { display: flex; gap: 6px; margin-top: 10px; }
+    .card.skeleton .sk-btn { height: 32px; background: #d8d8d8; flex: 1; }
+
+    /* push-permission-missing banner */
+    .push-banner { border: 1px solid #999; background: #e0e0e0; padding: 10px 12px; margin: 0 0 10px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+    .push-banner .push-msg { font-size: 12px; display: flex; align-items: center; gap: 8px; }
+    .push-banner .push-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .device {
+      width: 100%; max-width: 1400px; margin: 0 auto; background: #f4f4f4;
+      border-left: 1px solid #999; border-right: 1px solid #999;
+      min-height: 100vh; display: flex; flex-direction: column;
+    }
+
+    header, nav, main, section, article, footer, aside { border: 1px solid #999; }
+    .zone-tag {
+      display: block; font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase;
+      background: #d2d2d2; border-bottom: 1px solid #aaa; padding: 2px 6px;
+    }
+    button, select, summary { font: inherit; }
+
+    /* ---- Icons (simple monochrome outline) ---- */
+    .ic { width: 22px; height: 22px; stroke: #444; fill: none; stroke-width: 1.6;
+      stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; display: block; }
+    .ic-sm { width: 13px; height: 13px; stroke: #444; fill: none; stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round; }
+
+    .icon-btn {
+      border: 1px solid #999; background: #d9d9d9; padding: 5px; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; line-height: 0;
+    }
+
+    /* ---- Header (lean, same at all widths) ---- */
+    .app-header { background: #e2e2e2; margin: 0; position: sticky; top: 0; z-index: 5; }
+    .app-header .row {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 8px; padding: 6px 8px;
+    }
+    .app-header .left { display: flex; align-items: center; gap: 8px; }
+    .logo-btn { border: 1px solid #888; background: #cfcfcf; padding: 6px 10px; font-size: 13px; font-weight: bold; cursor: pointer; }
+    .utility { display: flex; align-items: center; gap: 6px; }
+    /* balance toggle (desktop only): one figure + swap icon Portfolio <-> Cash */
+    .bal-toggle { display: inline-flex; align-items: center; gap: 4px; border: 1px solid #888; background: #d9d9d9; padding: 3px 4px 3px 8px; white-space: nowrap; }
+    .bal-figure { font-size: 11px; }
+    .bal-figure .bal-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.03em; }
+    .bal-figure .bal-amt { font-weight: bold; }
+    .bal-swap { padding: 3px; }
+    .desk-only { display: none; }
+
+    .bell-wrap { position: relative; display: inline-flex; }
+    .badge-dot {
+      position: absolute; top: -5px; right: -5px; border: 1px solid #777; background: #cccccc;
+      border-radius: 8px; font-size: 9px; line-height: 1; padding: 1px 4px;
+    }
+
+    /* avatar dropdown via native <details> (collapsed by default, no JS) */
+    .avatar-menu { position: relative; }
+    .avatar-menu summary {
+      list-style: none; border: 1px solid #999; background: #d9d9d9; padding: 5px 6px;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 3px;
+    }
+    .avatar-menu summary::-webkit-details-marker { display: none; }
+    .avatar-menu .dropdown {
+      position: absolute; right: 0; top: calc(100% + 4px); min-width: 170px;
+      border: 1px solid #888; background: #e6e6e6; z-index: 10;
+    }
+    .avatar-menu .dropdown .zone-tag { background: #cdcdcd; }
+    .avatar-menu ul { list-style: none; margin: 0; padding: 0; }
+    .avatar-menu li { border-top: 1px solid #ccc; }
+    .avatar-menu li:first-child { border-top: none; }
+    .avatar-menu .dropdown button { width: 100%; text-align: left; border: none; background: transparent; padding: 8px 10px; font-size: 11px; cursor: pointer; }
+
+    /* ---- Second-level navigation: categories ---- */
+    .cat-nav { background: #ededed; margin: 0; }
+    .cat-nav ul {
+      list-style: none; margin: 0; padding: 6px 8px; display: flex; gap: 6px;
+      overflow-x: auto; flex-wrap: nowrap;
+    }
+    .cat-nav button { border: 1px solid #888; background: #d6d6d6; padding: 5px 10px; font-size: 11px; cursor: pointer; white-space: nowrap; }
+    .cat-nav li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+
+    /* ---- Feed ---- */
+    .feed { background: #f4f4f4; margin: 0; flex: 1; }
+    .feed-inner { padding: 8px; }
+    .feed-head {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;
+      justify-content: space-between; border-bottom: 1px solid #bbb; padding-bottom: 8px; margin-bottom: 10px;
+    }
+    .feed-head h2 { font-size: 13px; margin: 0; }
+    /* Feed filters: Kalshi-style dropdowns (Sort, Frequency, Category) */
+    .feed-controls { display: flex; flex-wrap: wrap; gap: 6px; }
+    .filter-menu { position: relative; }
+    .filter-menu summary { list-style: none; border: 1px solid #888; background: #d6d6d6; padding: 5px 8px; font-size: 11px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
+    .filter-menu summary::-webkit-details-marker { display: none; }
+    .filter-panel { position: absolute; right: 0; top: calc(100% + 4px); min-width: 190px; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
+    .filter-panel .zone-tag { background: #cdcdcd; }
+    .filter-panel ul { list-style: none; margin: 0; padding: 4px 0; }
+    .filter-panel li label { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: 11px; cursor: pointer; }
+    .reverse-row { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #ccc; padding: 7px 10px; font-size: 11px; }
+    .toggle { border: 1px solid #888; background: #cfcfcf; font-size: 10px; padding: 2px 8px; cursor: pointer; }
+    .toggle[aria-checked="true"] { background: #b8b8b8; font-weight: bold; }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .card { background: #ededed; display: flex; flex-direction: column; }
+    .card .card-body { padding: 8px 10px; flex: 1; }
+    .card .top { display: flex; gap: 8px; align-items: flex-start; }
+    .thumb {
+      width: 56px; height: 56px; flex: 0 0 56px; border: 1px solid #999; background: #d2d2d2;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; padding: 2px;
+    }
+    .card .q { font-size: 13px; font-weight: bold; margin: 0; }
+    .card a.q { color: #222; text-decoration: none; }
+    .card a.q:hover { text-decoration: underline; }
+    .card .prob-line { font-size: 11px; margin: 8px 0 6px; }
+    .card .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; }
+    .yesno { display: flex; gap: 6px; margin: 0 0 8px; }
+    .yesno button { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 9px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .yesno.compact button { padding: 4px 8px; font-size: 11px; flex: 0 0 auto; }
+
+    .options { margin: 6px 0 8px; }
+    .opt-row { display: flex; align-items: center; gap: 6px; border-top: 1px solid #ccc; padding: 6px 0; font-size: 12px; }
+    .opt-row:first-child { border-top: none; }
+    .opt-row .opt-name { flex: 1; }
+    .opt-row .opt-prob { border: 1px solid #999; background: #dcdcdc; padding: 1px 5px; font-size: 11px; font-weight: bold; }
+
+    .card .meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 10px; border-top: 1px solid #ccc; padding-top: 6px; margin-top: 4px; }
+    .card .meta .meta-txt { display: flex; flex-wrap: wrap; gap: 10px; }
+    .card .bookmark-btn { flex: 0 0 auto; border: 1px solid #bbb; background: #e0e0e0; padding: 3px 5px; cursor: pointer; display: inline-flex; align-items: center; line-height: 0; }
+    .card .bookmark-btn .ic { width: 14px; height: 14px; }
+    .card .bookmark-btn[aria-pressed="true"] .ic { fill: #888; }
+
+    /* ---- Bottom nav (mobile only) ---- */
+    .bottom-nav { background: #e2e2e2; margin: 0; position: sticky; bottom: 0; }
+    .bottom-nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
+    .bottom-nav li { flex: 1; text-align: center; border-right: 1px solid #bbb; }
+    .bottom-nav li:last-child { border-right: none; }
+    .bottom-nav button { width: 100%; border: none; background: transparent; padding: 8px 4px; font-size: 10px; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .bottom-nav .ic { width: 20px; height: 20px; }
+    .bottom-nav li[aria-current="page"] button { background: #c4c4c4; font-weight: bold; }
+    .bottom-nav .badge-dot { position: static; margin-left: 2px; }
+    .bn-bal { font-weight: bold; font-size: 12px; border: 1px solid #999; background: #dcdcdc; padding: 0 5px; line-height: 1.4; }
+
+    /* ---- Footer (global element, product footer) ---- */
+    .app-footer { background: #e2e2e2; margin: 0; font-size: 11px; }
+    .app-footer .footer-inner { padding: 16px 12px; display: flex; flex-direction: column; gap: 18px; }
+    .app-footer nav { border: none; }
+    .app-footer a { color: #222; text-decoration: none; }
+    .app-footer a:hover { text-decoration: underline; }
+
+    .footer-top { display: flex; flex-direction: column; gap: 20px; }
+    .footer-brand { display: flex; flex-direction: column; gap: 12px; }
+    .footer-logo { width: 130px; height: 30px; border: 1px solid #999; background: #d2d2d2; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+    .footer-tagline { margin: 0; color: #555; max-width: 280px; }
+    .social-row { display: flex; gap: 6px; }
+    .social-row a { width: 30px; height: 30px; border: 1px solid #999; background: #d6d6d6; display: inline-flex; align-items: center; justify-content: center; }
+    .social-row .ic { width: 17px; height: 17px; }
+    .lang-menu { width: max-content; }
+    .lang-menu summary .ic { width: 15px; height: 15px; }
+    .lang-menu summary .ic-sm { width: 12px; height: 12px; }
+    .lang-menu .filter-panel { top: auto; bottom: calc(100% + 4px); right: auto; left: 0; min-width: 150px; }
+
+    .footer-cols { display: flex; flex-direction: column; gap: 16px; }
+    .footer-col h3 { font-size: 11px; margin: 0 0 7px; text-transform: uppercase; letter-spacing: .04em; }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+    .footer-col .sub-label { font-size: 9px; color: #777; margin: 9px 0 4px; text-transform: uppercase; letter-spacing: .03em; }
+    .tbd { display: inline-block; font-size: 9px; border: 1px dashed #999; padding: 0 4px; margin-left: 4px; color: #555; background: #ededed; vertical-align: middle; }
+
+    .footer-legal { border-top: 1px solid #ccc; padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .footer-legal .legal-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+    .footer-legal p { margin: 0; }
+    .placeholder-line { border: 1px dashed #999; background: #ededed; padding: 4px 6px; font-size: 10px; }
+
+    @media (min-width: 640px) {
+      .footer-top { flex-direction: row; justify-content: space-between; gap: 28px; }
+      .footer-brand { flex: 0 0 240px; }
+      .footer-cols { flex-direction: row; gap: 28px; flex: 1; flex-wrap: wrap; }
+      .footer-col { min-width: 120px; }
+    }
+
+    /* ---- Annotations + nav tree (out of layout flow) ---- */
+    .side { width: 100%; max-width: 1400px; margin: 16px auto; padding: 0 8px; }
+    .side aside, .side section { background: #f4f4f4; margin: 0 0 12px; }
+    .side .zone-tag { background: #cdcdcd; }
+    .annotations, .navtree { padding: 8px 12px; font-size: 12px; }
+    .annotations ol { margin: 6px 0 0; padding-left: 18px; }
+    .annotations li { margin-bottom: 6px; }
+    .navtree pre { margin: 6px 0 0; font-size: 12px; background: #e8e8e8; border: 1px solid #bbb; padding: 8px; white-space: pre-wrap; }
+    .ref { font-size: 11px; }
+
+    .delta { width: 100%; max-width: 1400px; margin: 0 auto 16px; }
+    .delta .mini-header { background: #e2e2e2; border: 1px solid #999; }
+    .delta .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; padding: 8px; }
+    .delta .brand { font-size: 13px; font-weight: bold; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (min-width: 640px) {
+      .bottom-nav { display: none; }
+      .desk-only { display: inline-flex; }
+      .grid { grid-template-columns: repeat(2, minmax(280px, 1fr)); }
+      .side { display: flex; gap: 16px; align-items: flex-start; }
+      .side aside, .side section { margin: 0; }
+      .side > aside { flex: 2; }
+      .side > .nav-col { flex: 1; }
+    }
+    @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, minmax(280px, 1fr)); } }
+    @media (min-width: 1280px) { .grid { grid-template-columns: repeat(4, minmax(280px, 1fr)); } }
+  
+    /* ---- Event Detail ---- */
+    .ed-head { display: flex; gap: 10px; padding: 10px; align-items: flex-start; }
+    .ed-thumb { width: 72px; height: 72px; flex: 0 0 72px; border: 1px solid #999; background: #d2d2d2;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; padding: 2px; }
+    .ed-cat { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; }
+    .ed-q { font-size: 16px; font-weight: bold; margin: 4px 0 6px; }
+    .ed-prob-big { font-size: 13px; margin: 0; }
+    .ed-prob-big .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; font-size: 14px; }
+    .ed-section { padding: 10px; border-top: 1px solid #ccc; }
+    .ed-section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 6px; }
+    .chart-box { border: 1px dashed #999; background: #ededed; height: 120px; display: flex; align-items: center;
+      justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 6px; }
+    .args { display: flex; flex-direction: column; gap: 12px; }
+    .arg-col h4 { margin: 0 0 4px; font-size: 11px; }
+    .arg-col ul { margin: 0; padding-left: 16px; font-size: 12px; }
+    .arg-col li { margin-bottom: 4px; }
+    .resolution { font-size: 12px; line-height: 1.5; }
+    .opt-list { display: flex; flex-direction: column; }
+    .preselect-note { border: 1px solid #999; background: #e0e0e0; padding: 6px 8px; font-size: 11px; margin: 0 10px 0; }
+    .cta-bar { position: sticky; bottom: 0; background: #e2e2e2; border: 1px solid #999; padding: 8px 10px; display: flex; gap: 8px; }
+    .cta-bar button { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; font-weight: bold; cursor: pointer; }
+    @media (min-width: 640px) { .args { flex-direction: row; } .arg-col { flex: 1; } }
+
+    /* ---- Invoked overlays (Bet / Sign In / Deposit): modal on desktop, bottom sheet on mobile ---- */
+    .backdrop { background: #cfcfcf; flex: 1; position: relative; min-height: 70vh; display: flex;
+      align-items: flex-end; justify-content: center; }
+    .dim-note { position: absolute; top: 8px; left: 8px; font-size: 10px; color: #555; background: #dcdcdc; border: 1px solid #aaa; padding: 2px 6px; }
+    .sheet { width: 100%; background: #f0f0f0; border: 1px solid #999; border-bottom: none; }
+    .grab { width: 36px; height: 4px; background: #bbb; border-radius: 2px; margin: 6px auto 0; }
+    .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
+    .sheet-head h2 { font-size: 14px; margin: 0; }
+    .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
+    .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    @media (min-width: 640px) { .backdrop { align-items: center; padding: 24px; } .sheet { max-width: 420px; border-bottom: 1px solid #999; } }
+
+    .dir-pill { border: 1px solid #888; background: #dcdcdc; padding: 4px 10px; font-weight: bold; font-size: 12px; display: inline-block; }
+    .field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    .amount-row { display: flex; align-items: center; gap: 8px; }
+    .amount-input { flex: 1; border: 1px solid #888; background: #fff; padding: 10px; font-size: 18px; }
+    .quick { display: flex; gap: 6px; flex-wrap: wrap; }
+    .quick button { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    .quick button.sel { background: #b8b8b8; font-weight: bold; }
+    .line { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-top: 1px solid #ddd; }
+    .line.total { font-weight: bold; border-top: 1px solid #999; }
+    .inline-error { border: 1px solid #999; background: #e0e0e0; padding: 8px; font-size: 12px; }
+    .reconcile-box { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
+    .confirm-btn { border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; cursor: pointer; width: 100%; }
+    .provider-btn { display: flex; align-items: center; gap: 10px; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; cursor: pointer; width: 100%; text-align: left; }
+    .provider-btn .ic { width: 18px; height: 18px; }
+    .spinner-box { border: 1px dashed #999; background: #ededed; padding: 24px; text-align: center; font-size: 12px; color: #555; }
+    .fine { font-size: 11px; color: #555; line-height: 1.5; }
+    .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center;
+      justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
+    .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
+
+    /* ---- Active Bets ---- */
+    .tabs { display: flex; gap: 0; margin: 0 0 10px; }
+    .tabs button { border: 1px solid #888; border-bottom: 1px solid #bbb; background: #dcdcdc; padding: 8px 14px; font-size: 12px; cursor: pointer; }
+    .tabs button[aria-selected="true"] { background: #f4f4f4; font-weight: bold; border-bottom-color: #f4f4f4; }
+    .pos-list { display: flex; flex-direction: column; gap: 8px; }
+    .pos { border: 1px solid #bbb; background: #ededed; padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; }
+    .pos-top { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+    .pos-q { font-size: 13px; font-weight: bold; }
+    .pos-side { font-size: 11px; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; height: max-content; white-space: nowrap; }
+    .pos-figures { display: flex; gap: 16px; font-size: 10px; flex-wrap: wrap; color: #555; }
+    .pos-fig b { display: block; font-size: 12px; color: #222; }
+    .pos.skeleton .sk-line { height: 10px; background: #d8d8d8; margin: 6px 0; }
+    .pos.skeleton .w70 { width: 70%; } .pos.skeleton .w40 { width: 40%; }
+    .pos-status { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+
+    /* ---- Event Detail two-column: scrolling content + sticky bet panel ---- */
+    .ed-layout { display: flex; flex-direction: column; }
+    .ed-main { flex: 1; min-width: 0; }
+    /* schematic probability chart (raised fidelity per design call: a drawn grey line, still no color) */
+    .chart-wrap { padding: 0; }
+    .chart-svg { width: 100%; height: 130px; display: block; border: 1px solid #bbb; background: #ededed; }
+    .chart-svg polyline { fill: none; stroke: #777; stroke-width: 1.5; }
+    .chart-svg .grid-l { stroke: #d2d2d2; stroke-width: 1; }
+    .chart-svg .nowline { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
+    .chart-svg text { fill: #777; font-size: 7px; }
+    .chart-cap { font-size: 10px; color: #555; margin: 4px 0 0; display: flex; justify-content: space-between; }
+    .ed-facts { display: flex; flex-wrap: wrap; gap: 16px; font-size: 10px; color: #555; padding: 8px 10px; border-top: 1px solid #ccc; }
+    .ed-facts b { display: block; font-size: 12px; color: #222; }
+
+    /* bet panel (desktop sticky sidebar) */
+    .bet-panel { display: none; }
+    .bet-panel .bp-inner { padding: 10px; display: flex; flex-direction: column; gap: 9px; }
+    .bp-head { display: flex; align-items: center; justify-content: space-between; }
+    .bp-head h3 { font-size: 13px; margin: 0; }
+    .bp-hint { font-size: 10px; color: #555; }
+    .bp-dir { display: flex; gap: 6px; }
+    .bp-side { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 10px 6px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .bp-side.sel { background: #b8b8b8; border-width: 2px; }
+    .bp-side .bp-pct { display: block; font-size: 11px; font-weight: normal; }
+    .bp-opts { display: flex; flex-direction: column; gap: 0; border: 1px solid #ccc; max-height: 168px; overflow: auto; }
+    .bp-opt { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-top: 1px solid #ddd; font-size: 12px; cursor: pointer; }
+    .bp-opt:first-child { border-top: none; }
+    .bp-opt.sel { background: #dcdcdc; font-weight: bold; }
+    .bp-opt .bp-opt-pct { margin-left: auto; border: 1px solid #999; background: #e0e0e0; padding: 0 5px; font-size: 11px; }
+
+    /* mobile sticky bet dock (collapsed bar above the bottom nav; taps expand to a sheet) */
+    .bet-dock { position: sticky; bottom: 52px; z-index: 4; background: #e2e2e2; border: 1px solid #999; border-bottom: none;
+      display: flex; align-items: center; gap: 6px; padding: 8px; }
+    .bet-dock .bp-side { padding: 11px 6px; }
+    .bet-dock .dock-meta { font-size: 9px; color: #555; flex: 0 0 auto; text-align: center; }
+    .bet-dock .dock-meta b { display: block; font-size: 12px; color: #222; }
+
+    @media (min-width: 640px) {
+      .ed-layout { flex-direction: row; align-items: flex-start; }
+      .ed-main { border-right: 1px solid #999; }
+      .bet-panel { display: block; flex: 0 0 300px; position: sticky; top: 8px; align-self: flex-start; }
+      .bet-dock { display: none; }
+    }
+
+    /* ---- Category page: side sub-category panel + filtered feed ---- */
+    .cat-layout { display: flex; flex-direction: column; gap: 0; }
+    .cat-main { flex: 1; min-width: 0; }
+    .subcat { background: #ededed; }
+    .subcat .zone-tag { background: #d2d2d2; }
+    .subcat-head { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; padding: 8px 10px 0; }
+    .subcat ul { list-style: none; margin: 0; padding: 8px; display: flex; gap: 6px; overflow-x: auto; flex-wrap: nowrap; }
+    .subcat li { flex: 0 0 auto; }
+    .subcat button { border: 1px solid #888; background: #d6d6d6; padding: 5px 9px; font-size: 11px; cursor: pointer;
+      white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+    .subcat li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .subcat .cnt { font-size: 9px; color: #555; border: 1px solid #bbb; background: #e8e8e8; padding: 0 4px; }
+    @media (min-width: 640px) {
+      .cat-layout { flex-direction: row; align-items: flex-start; }
+      .subcat { flex: 0 0 210px; position: sticky; top: 8px; border: 1px solid #999; }
+      .subcat ul { flex-direction: column; overflow: visible; flex-wrap: nowrap; }
+      .subcat button { width: 100%; justify-content: space-between; }
+    }
+    /* Category grid adapts to the width left by the sub-category rail (no fixed 4-col overflow). */
+    .cat-main .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+
+    /* ---- Shared in-page dialogs (native <dialog>, opened over the current page) ---- */
+    dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
+    dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
+    dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
+  </style>
+</head>
+<body>
+  <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
+  <button type="button" class="wf-toggle" id="wfToggle" aria-label="Open screen tree" aria-expanded="false">
+    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    Screens
+  </button>
+  <div class="wf-overlay" id="wfOverlay"></div>
+  <nav class="wf-nav" id="wfNav" aria-label="Wireframe screens">
+    <div class="wf-nav-head">
+      Wireframes - screen tree
+      <button type="button" class="wf-nav-close" id="wfClose" aria-label="Close screen tree">x</button>
+    </div>
+    <ul class="wf-tree">
+      <li class="wf-sec">Events</li>
+      <li class="wf-screen">
+        <a href="event-feed.html">Event Feed</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="event-feed.html">success</a></li>
+          <li><a href="event-feed-empty.html">empty</a></li>
+          <li><a href="event-feed-error.html">error</a></li>
+          <li><a href="event-feed-loading.html">loading</a></li>
+          <li><a href="event-feed-push-permission-missing.html">push-permission-missing</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="event-feed-logged-out.html">success</a></li>
+          <li><a href="event-feed-logged-out-empty.html">empty</a></li>
+          <li><a href="event-feed-logged-out-error.html">error</a></li>
+          <li><a href="event-feed-logged-out-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="event-detail.html">Event Detail</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="event-detail.html">success / pre-selected</a></li>
+          <li><a href="event-detail-error.html">error</a></li>
+          <li><a href="event-detail-loading.html">loading</a></li>
+          <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="event-detail-logged-out.html">success / pre-selected</a></li>
+          <li><a href="event-detail-logged-out-error.html">error</a></li>
+          <li><a href="event-detail-logged-out-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-note">Bet intent + states (reconcile, insufficient-balance, event-closed, processing, on-chain error) now live in the Event Detail bet panel - states to come (the standalone Bet modal was removed).</li>
+      <li class="wf-note">Saved view - a filter over the feed, not a separate screen.</li>
+      <li class="wf-sec">Category pages (second-level nav -> own page)</li>
+      <li class="wf-screen">
+        <a href="politics.html">Politics</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="politics.html">success</a></li>
+          <li><a href="politics-empty.html">empty</a></li>
+          <li><a href="politics-error.html">error</a></li>
+          <li><a href="politics-loading.html">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="politics-logged-out.html">success</a></li>
+          <li><a href="politics-logged-out-empty.html">empty</a></li>
+          <li><a href="politics-logged-out-error.html">error</a></li>
+          <li><a href="politics-logged-out-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="crypto.html">Crypto</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="crypto.html">success</a></li>
+          <li><a href="crypto-empty.html">empty</a></li>
+          <li><a href="crypto-error.html">error</a></li>
+          <li><a href="crypto-loading.html">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="crypto-logged-out.html">success</a></li>
+          <li><a href="crypto-logged-out-empty.html">empty</a></li>
+          <li><a href="crypto-logged-out-error.html">error</a></li>
+          <li><a href="crypto-logged-out-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="culture.html">Culture</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="culture.html">success</a></li>
+          <li><a href="culture-empty.html">empty</a></li>
+          <li><a href="culture-error.html">error</a></li>
+          <li><a href="culture-loading.html">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="culture-logged-out.html">success</a></li>
+          <li><a href="culture-logged-out-empty.html">empty</a></li>
+          <li><a href="culture-logged-out-error.html">error</a></li>
+          <li><a href="culture-logged-out-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="general.html" class="active" aria-current="page">General</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="general.html">success</a></li>
+          <li><a href="general-empty.html">empty</a></li>
+          <li><a href="general-error.html">error</a></li>
+          <li><a href="general-loading.html">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="general-logged-out.html">success</a></li>
+          <li><a href="general-logged-out-empty.html">empty</a></li>
+          <li class="cur"><a href="general-logged-out-error.html">error (this page)</a></li>
+          <li><a href="general-logged-out-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Activation gate</li>
+      <li class="wf-screen">
+        <a href="sign-in.html">Sign In / Register</a>
+        <ul class="wf-states">
+          <li><a href="sign-in.html">success / form</a></li>
+          <li><a href="sign-in-error.html">error (auth failed)</a></li>
+          <li><a href="sign-in-loading.html">loading (OAuth in-progress)</a></li>
+          <li><a href="sign-in-provider-conflict.html">provider-conflict</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="deposit.html">Deposit</a>
+        <ul class="wf-states">
+          <li><a href="deposit.html">success / form</a></li>
+          <li><a href="deposit-error-card.html">error-card (declined)</a></li>
+          <li><a href="deposit-error-kyc.html">error-KYC (rejected)</a></li>
+          <li><a href="deposit-widget-load-failure.html">widget-load-failure</a></li>
+          <li><a href="deposit-loading.html">loading (widget in-progress)</a></li>
+          <li><a href="deposit-pending.html">pending (under review)</a></li>
+          <li><a href="deposit-minimum-not-met.html">minimum-not-met</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Resolution</li>
+      <li class="wf-screen">
+        <a href="win.html" class="planned">Win Screen</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>loading (share card)</li>
+          <li>error</li>
+          <li>payout-pending</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="loss.html" class="planned">Loss Screen</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-sec">My Bets</li>
+      <li class="wf-screen">
+        <a href="active-bets.html">Active Bets</a>
+        <ul class="wf-states">
+          <li><a href="active-bets.html">success (open positions)</a></li>
+          <li><a href="active-bets-empty-new.html">empty-new</a></li>
+          <li><a href="active-bets-empty-resolved.html">empty-resolved</a></li>
+          <li><a href="active-bets-error.html">error</a></li>
+          <li><a href="active-bets-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="active-bets.html" class="planned">Bet History (History tab)</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+        </ul>
+      </li>
+      <li class="wf-sec">Notifications</li>
+      <li class="wf-screen">
+        <a href="notifications.html" class="planned">Notifications</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>empty</li>
+          <li>error</li>
+          <li>loading</li>
+          <li>push-permission-missing</li>
+        </ul>
+      </li>
+      <li class="wf-sec">Wallet</li>
+      <li class="wf-screen">
+        <a href="wallet.html" class="planned">Wallet</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>loading</li>
+          <li>error</li>
+        </ul>
+      </li>
+      <li class="wf-sec">Profile</li>
+      <li class="wf-screen">
+        <a href="my-profile.html" class="planned">My Profile</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>loading</li>
+          <li>error</li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="public-profile.html" class="planned">Public Profile</a>
+        <ul class="wf-states">
+          <li>success</li>
+          <li>loading</li>
+          <li>error</li>
+          <li>not-found / link-expired</li>
+        </ul>
+      </li>
+      <li class="wf-sec">How It Works</li>
+      <li class="wf-screen">
+        <a href="how-it-works.html" class="planned">How It Works</a>
+        <ul class="wf-states">
+          <li>success (static trust page)</li>
+        </ul>
+      </li>
+      <li class="wf-sec">Orphans [SIROTA] - not built (no confirmed job)</li>
+      <li class="wf-note">Settings / Notification Preferences, Leaderboard, Help / FAQ.</li>
+    </ul>
+  </nav>
+
+  <div class="page-label">
+    <strong>Wireframe:</strong> General (category) &nbsp;|&nbsp;
+    logged out - state: error (load failed) &nbsp;|&nbsp;
+    responsive (mobile-first) &nbsp;|&nbsp;
+    file: wireframes/general-logged-out-error.html
+  </div>
+
+  <nav class="state-switch" aria-label="States of this screen (auth and screen state)">
+    <div class="ss-row"><span class="ss-label">Auth</span><a href="general-error.html">Logged in</a><a href="general-logged-out-error.html" aria-current="page">Logged out</a></div>
+    <div class="ss-row"><span class="ss-label">State</span><a href="general-logged-out.html">Success</a><a href="general-logged-out-empty.html">Empty</a><a href="general-logged-out-error.html" aria-current="page">Error</a><a href="general-logged-out-loading.html">Loading</a></div>
+  </nav>
+
+  <div class="device">
+    <!-- Header (logged-out: no account; Log in / Sign up replace balance and avatar) -->
+    <header class="app-header">
+      <span class="zone-tag">zone: header (logged-out: no account; Log in / Sign up replace balance and avatar)</span>
+      <div class="row">
+        <div class="left">
+          <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          </button>
+          <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+        </div>
+        <div class="utility">
+          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
+          </button>
+          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+          </button>
+          <div class="auth-btns">
+            <button type="button" class="auth-btn" data-open="signin">Log in</button>
+            <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Second-level navigation: categories route to their own pages (links) -->
+    <nav class="cat-nav" aria-label="Categories (second level)">
+      <span class="zone-tag">zone: second-level navigation (each category opens its own page)</span>
+      <ul>
+        <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
+        <li><a href="politics.html"><button type="button">Politics</button></a></li>
+        <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
+        <li><a href="culture.html"><button type="button">Culture</button></a></li>
+        <li aria-current="page"><a href="general.html"><button type="button">General</button></a></li>
+      </ul>
+    </nav>
+    <main class="feed">
+      <span class="zone-tag">zone: General category (error: failed to load, retry)</span>
+      <div class="cat-layout">
+      <nav class="subcat" aria-label="General sub-categories">
+        <span class="zone-tag">zone: sub-categories (left rail on desktop, scrolling chips on mobile; counts are sample data)</span>
+        <p class="subcat-head">Sub-categories</p>
+        <ul>
+        <li aria-current="page"><button type="button">All <span class="cnt">1.1K</span></button></li>
+        <li><button type="button">Science & Tech <span class="cnt">160</span></button></li>
+        <li><button type="button">Climate <span class="cnt">88</span></button></li>
+        <li><button type="button">Space <span class="cnt">54</span></button></li>
+        <li><button type="button">AI <span class="cnt">132</span></button></li>
+        <li><button type="button">Health <span class="cnt">70</span></button></li>
+        <li><button type="button">Business <span class="cnt">96</span></button></li>
+        <li><button type="button">World <span class="cnt">140</span></button></li>
+        </ul>
+      </nav>
+      <div class="cat-main">
+        <div class="feed-inner">
+        <div class="feed-head">
+          <h2 id="feedHeading">General</h2>
+          <div class="feed-controls">
+
+            <details class="filter-menu" id="sortMenu">
+              <summary aria-label="Sort by">
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
+                <span>Sort: <span id="sortCurrent">Trending</span></span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="filter-panel">
+                <span class="zone-tag">sort options</span>
+                <ul role="radiogroup" aria-label="Sort by">
+                  <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
+                  <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
+                  <li><label><input type="radio" name="sort" value="New"> New</label></li>
+                  <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
+                  <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
+                  <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
+                </ul>
+                <div class="reverse-row">
+                  <span>Reverse sort</span>
+                  <button type="button" class="toggle" role="switch" aria-checked="false">off</button>
+                </div>
+              </div>
+            </details>
+
+            <details class="filter-menu" id="freqMenu">
+              <summary aria-label="Filter by frequency">
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <span>Frequency: <span id="freqCurrent">All</span></span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="filter-panel">
+                <span class="zone-tag">event frequency (recurring markets)</span>
+                <ul role="radiogroup" aria-label="Frequency">
+                  <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
+                  <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
+                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
+                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
+                  <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
+                  <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
+                </ul>
+              </div>
+            </details>
+
+          </div>
+        </div>
+          <div class="state-block">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+            <h2 class="state-title">Couldn't load General</h2>
+            <p class="state-msg">Something went wrong while loading these markets. Check your connection and try again.</p>
+            <div class="state-actions">
+              <button type="button" class="state-btn primary">Try again</button>
+              <a href="event-feed.html"><button type="button" class="state-btn">Back to Trending</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </main>
+    <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
+    <nav class="bottom-nav" aria-label="Primary (mobile)">
+      <span class="zone-tag">zone: bottom nav (mobile only; logged-out slot 4 = Sign in)</span>
+      <ul>
+        <li aria-current="page"><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
+          <span>Events</span>
+        </button></li>
+        <li><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          <span>My Bets</span>
+        </button></li>
+        <li><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
+          <span>Favorites</span>
+        </button></li>
+        <li><button type="button" data-open="signin" aria-label="Sign in">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3M14 4h5v16h-5"/></svg>
+          <span>Sign in</span>
+        </button></li>
+      </ul>
+    </nav>
+    <!-- Footer (global element) -->
+    <footer class="app-footer">
+      <span class="zone-tag">zone: footer (global, reused on every screen; TBD = not in MVP)</span>
+      <div class="footer-inner">
+
+        <div class="footer-top">
+
+          <!-- Brand block: logo, tagline, social, language -->
+          <div class="footer-brand">
+            <span class="footer-logo">logo placeholder</span>
+            <p class="footer-tagline">Tagline placeholder <span class="tbd">TBD</span></p>
+            <div class="social-row" role="list" aria-label="Social media">
+              <a href="#" role="listitem" aria-label="X (Twitter)" title="X (Twitter)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Discord" title="Discord">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2l-1-2H8l-1 2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/><circle cx="10" cy="12" r="1.1"/><circle cx="14" cy="12" r="1.1"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Telegram" title="Telegram">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l6 2 2 6 3-4 5 4z"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Instagram" title="Instagram">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="16.6" cy="7.4" r="0.7"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="TikTok" title="TikTok">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5v9.5a3 3 0 1 1-2.5-3"/><path d="M11 5c.5 2.5 2.5 4 4.5 4"/></svg>
+              </a>
+            </div>
+            <details class="filter-menu lang-menu" id="langMenu">
+              <summary aria-label="Language (placeholder)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
+                <span id="langCurrent">English</span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                <span class="tbd">TBD</span>
+              </summary>
+              <div class="filter-panel">
+                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
+                <ul>
+                  <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
+                  <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
+                  <li><label><input type="radio" name="lang" value="Portuguese"> Portuguese</label></li>
+                  <li><label><input type="radio" name="lang" value="German"> German</label></li>
+                  <li><label><input type="radio" name="lang" value="French"> French</label></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <!-- Link columns -->
+          <div class="footer-cols">
+
+            <nav class="footer-col" aria-label="Markets">
+              <h3>Markets</h3>
+              <p class="sub-label">By category</p>
+              <ul>
+                <li><a href="#">Politics</a></li>
+                <li><a href="#">Crypto</a></li>
+                <li><a href="#">Culture</a></li>
+                <li><a href="#">General</a></li>
+                <li><a href="#">Sports</a> <span class="tbd">post-MVP</span></li>
+              </ul>
+              <p class="sub-label">By topic</p>
+              <ul>
+                <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
+                <li><a href="#">View all markets</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Product">
+              <h3>Product</h3>
+              <ul>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="#">Wallet</a></li>
+                <li><a href="#">My Bets</a></li>
+                <li><a href="#">API / Developers</a> <span class="tbd">post-MVP</span></li>
+                <li><a href="#">Status</a> <span class="tbd">TBD</span></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Support">
+              <h3>Support</h3>
+              <ul>
+                <li><a href="#">Help Center</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">FAQ</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Contact</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">How It Works</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Company">
+              <h3>Company</h3>
+              <ul>
+                <li><a href="#">About</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Careers</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Press</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Brand</a> <span class="tbd">TBD</span></li>
+              </ul>
+            </nav>
+
+          </div>
+        </div>
+
+        <!-- Legal strip -->
+        <div class="footer-legal">
+          <nav aria-label="Legal">
+            <ul class="legal-links">
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Responsible play</a></li>
+              <li><a href="#">Geo restrictions</a> <span class="tbd">TBD</span></li>
+            </ul>
+          </nav>
+          <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
+          <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.]</p>
+          <p>Copyright (c) Predict Market. Sample wireframe content.</p>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <div class="side">
+    <aside class="annotations" aria-label="Annotations">
+      <span class="zone-tag">annotations: zone to job / finding</span>
+      <ol>
+        <li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (General here). Trending stays the main feed (event-feed.html).</li>
+        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
+        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
+        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
+        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li>
+      </ol>
+    </aside>
+
+    <div class="nav-col">
+      <section class="navtree" aria-label="Navigation tree">
+        <span class="zone-tag">on-page nav tree (where this sits)</span>
+<pre>Events (browse)
+   Event Feed  (Trending = main)
+   Politics / Crypto / Culture / General
+        ^ [General]   &lt;- current category page
+        v
+   Event Detail
+        v
+   Sign In / Deposit (dialogs) -> Active Bets</pre>
+        <p class="ref">A category page is a browse entry parallel to the main feed
+          (IA/sitemap.md second-level navigation), with the auth axis and the
+          success / empty / error / loading states.</p>
+      </section>
+
+      <section class="navtree" aria-label="Rollout">
+        <span class="zone-tag">rollout status</span>
+        <p class="ref">Built: Politics, Crypto, Culture, General, each with logged-in
+          and logged-out x success / empty / error / loading. Still to come: the real
+          sub-category taxonomy per category and the sitemap.md update (category pages
+          + sub-categories).</p>
+      </section>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      var states = [
+        { label: 'Portfolio', amount: '$142.00' },
+        { label: 'Cash', amount: '$42.00' }
+      ];
+      var i = 0;
+      var lbl = document.getElementById('balLabel');
+      var amt = document.getElementById('balAmt');
+      var btn = document.getElementById('balSwap');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          i = (i + 1) % states.length;
+          lbl.textContent = states[i].label;
+          amt.textContent = states[i].amount;
+          btn.setAttribute('aria-label', 'Swap balance (showing ' + states[i].label + ')');
+        });
+      }
+    })();
+
+    // Feed filters: each dropdown updates its own label and closes on choose.
+    function wireFilter(menuId, currentId, name, onChange) {
+      var menu = document.getElementById(menuId);
+      if (!menu) return;
+      var cur = document.getElementById(currentId);
+      menu.querySelectorAll('input[name="' + name + '"]').forEach(function (r) {
+        r.addEventListener('change', function () {
+          if (cur) cur.textContent = r.value;
+          menu.open = false;
+          if (onChange) onChange(r.value);
+        });
+      });
+    }
+
+    // Sort + its reverse toggle.
+    wireFilter('sortMenu', 'sortCurrent', 'sort');
+    (function () {
+      var rev = document.querySelector('#sortMenu .toggle');
+      if (!rev) return;
+      rev.addEventListener('click', function () {
+        var on = rev.getAttribute('aria-checked') === 'true';
+        rev.setAttribute('aria-checked', on ? 'false' : 'true');
+        rev.textContent = on ? 'off' : 'on';
+      });
+    })();
+
+    // Frequency.
+    wireFilter('freqMenu', 'freqCurrent', 'freq');
+
+    // Footer language selector (placeholder: updates label, English-only at MVP).
+    wireFilter('langMenu', 'langCurrent', 'lang');
+
+    // Category: the dropdown and the chip nav stay in sync, and the heading echoes the choice.
+    (function () {
+      var heading = document.getElementById('feedHeading');
+      var nav = document.querySelector('.cat-nav');
+      var catCur = document.getElementById('catCurrent');
+      function activate(name) {
+        if (heading) heading.textContent = name;
+        if (catCur) catCur.textContent = name;
+        if (nav) {
+          nav.querySelectorAll('li').forEach(function (li) {
+            var on = li.querySelector('button').textContent.trim() === name;
+            if (on) li.setAttribute('aria-current', 'page'); else li.removeAttribute('aria-current');
+          });
+        }
+        var radio = document.querySelector('#catMenu input[value="' + name + '"]');
+        if (radio) radio.checked = true;
+      }
+      wireFilter('catMenu', 'catCurrent', 'catf', activate);
+      if (nav) {
+        nav.querySelectorAll('button').forEach(function (b) {
+          b.addEventListener('click', function () { activate(b.textContent.trim()); });
+        });
+      }
+    })();
+
+    // Wireframe screen-tree drawer (toggle on small screens; a fixed rail at >= 1440px).
+    (function () {
+      var nav = document.getElementById('wfNav');
+      var ov = document.getElementById('wfOverlay');
+      var tg = document.getElementById('wfToggle');
+      var cl = document.getElementById('wfClose');
+      if (!nav || !tg) return;
+      function set(open) {
+        nav.classList.toggle('open', open);
+        ov.classList.toggle('open', open);
+        tg.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      tg.addEventListener('click', function () { set(!nav.classList.contains('open')); });
+      cl.addEventListener('click', function () { set(false); });
+      ov.addEventListener('click', function () { set(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+      // Choosing a screen on a narrow viewport closes the drawer.
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { if (window.innerWidth < 1440) set(false); });
+      });
+    })();
+  </script>
+
+  <dialog id="signinDialog" class="app-dialog" aria-label="Sign in or create account">
+    <div class="sheet-head">
+      <h2>Sign in or create account</h2>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
+    </div>
+    <div class="sheet-body">
+      <p class="fine">You are about to place a bet. Sign in or create an account to continue. No crypto wallet required.</p>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+        Continue with Google
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        Continue with X
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7c1-2 3-3 4-3 0 2-1 3-2 4M9 9c-2 0-4 2-4 5s2 6 4 6c1 0 1.5-.5 3-.5s2 .5 3 .5c1.5 0 3-2 3-4-2-1-2-4 0-5-1-1.5-3-1.5-4-1.5S11 9 9 9z"/></svg>
+        Continue with Apple
+      </button>
+      <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+    </div>
+    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
+  </dialog>
+
+  <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
+    <div class="sheet-head">
+      <h2>Add funds</h2>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
+    </div>
+    <div class="sheet-body">
+      <div>
+        <span class="field-label">Amount to add</span>
+        <div class="amount-row"><span class="amount-input">$20.00</span></div>
+        <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
+      </div>
+      <div class="widget-box">Transak payment widget (card to USDC)</div>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
+      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
+    </div>
+    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
+  </dialog>
+
+  <script>
+    // Shared dialogs: open over the current page; close (button / backdrop / Esc) stays on the page.
+    (function () {
+      function dlg(id) { return document.getElementById(id); }
+      function open(id) { var d = dlg(id); if (!d) return; if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+      function close(d) { if (!d) return; if (d.close) d.close(); else d.removeAttribute('open'); }
+      document.addEventListener('click', function (e) {
+        var o = e.target.closest('[data-open]');
+        if (o) { e.preventDefault(); open(o.getAttribute('data-open') === 'deposit' ? 'depositDialog' : 'signinDialog'); return; }
+        var f = e.target.closest('[data-flow="signin-to-deposit"]');
+        if (f) { e.preventDefault(); close(dlg('signinDialog')); open('depositDialog'); return; }
+        var c = e.target.closest('[data-close-dialog]');
+        if (c) { close(c.closest('dialog')); return; }
+      });
+      ['signinDialog', 'depositDialog'].forEach(function (id) {
+        var d = dlg(id); if (!d) return;
+        d.addEventListener('click', function (e) { if (e.target === d) close(d); });
+      });
+    })();
+  </script>
+
+</body>
+</html>

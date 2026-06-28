@@ -144,8 +144,13 @@ earlier rules:
   heading row and the category-scoped card grid. The grid is `auto-fill`
   (minmax 240px) so it fits the width left by the rail (no fixed-4-col overflow).
   Sub-category taxonomy and counts are illustrative sample data (Polymarket /
-  Kalshi-modelled). Open: per-category empty / error / loading + logged-out auth
-  variants, and the `sitemap.md` update (category pages + sub-categories).
+  Kalshi-modelled). Each category is a browse screen with the **auth axis** and a
+  2D state-switcher: logged-in and logged-out x success / empty / error / loading
+  (32 pages: `politics*`, `crypto*`, `culture*`, `general*`). Empty exit = Clear
+  filters + "Notify me of new <category> events" (T6 subscribe edge); error exit =
+  Try again + Back to Trending; loading = skeleton grid; logged-out swaps the
+  header (Log in / Sign up open the Sign In dialog over the page). Open: the
+  `sitemap.md` update (category pages + sub-categories).
 - **Sign In / Deposit dialogs: hybrid (decided + built).** A shared native
   `<dialog>` (Sign In and Deposit) is defined once in the shell and emitted on
   every page; triggers (`data-open="signin"` on the logged-out Log in / Sign up /

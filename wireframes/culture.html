@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Category: Culture (logged in - success)</title>
+  <title>Wireframe - Category: Culture (logged in - state: success (Culture, sub-categories))</title>
 <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -486,37 +486,61 @@
       <li class="wf-screen">
         <a href="politics.html">Politics</a>
         <ul class="wf-states">
-          <li><a href="politics.html">success / sub-categories</a></li>
-          <li>empty</li>
-          <li>error</li>
-          <li>loading</li>
+          <li class="wf-substate">Logged in</li>
+          <li><a href="politics.html">success</a></li>
+          <li><a href="politics-empty.html">empty</a></li>
+          <li><a href="politics-error.html">error</a></li>
+          <li><a href="politics-loading.html">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="politics-logged-out.html">success</a></li>
+          <li><a href="politics-logged-out-empty.html">empty</a></li>
+          <li><a href="politics-logged-out-error.html">error</a></li>
+          <li><a href="politics-logged-out-loading.html">loading</a></li>
         </ul>
       </li>
       <li class="wf-screen">
         <a href="crypto.html">Crypto</a>
         <ul class="wf-states">
-          <li><a href="crypto.html">success / sub-categories</a></li>
-          <li>empty</li>
-          <li>error</li>
-          <li>loading</li>
+          <li class="wf-substate">Logged in</li>
+          <li><a href="crypto.html">success</a></li>
+          <li><a href="crypto-empty.html">empty</a></li>
+          <li><a href="crypto-error.html">error</a></li>
+          <li><a href="crypto-loading.html">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="crypto-logged-out.html">success</a></li>
+          <li><a href="crypto-logged-out-empty.html">empty</a></li>
+          <li><a href="crypto-logged-out-error.html">error</a></li>
+          <li><a href="crypto-logged-out-loading.html">loading</a></li>
         </ul>
       </li>
       <li class="wf-screen">
         <a href="culture.html" class="active" aria-current="page">Culture</a>
         <ul class="wf-states">
-          <li class="cur"><a href="culture.html">success / sub-categories (this page)</a></li>
-          <li>empty</li>
-          <li>error</li>
-          <li>loading</li>
+          <li class="wf-substate">Logged in</li>
+          <li class="cur"><a href="culture.html">success (this page)</a></li>
+          <li><a href="culture-empty.html">empty</a></li>
+          <li><a href="culture-error.html">error</a></li>
+          <li><a href="culture-loading.html">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="culture-logged-out.html">success</a></li>
+          <li><a href="culture-logged-out-empty.html">empty</a></li>
+          <li><a href="culture-logged-out-error.html">error</a></li>
+          <li><a href="culture-logged-out-loading.html">loading</a></li>
         </ul>
       </li>
       <li class="wf-screen">
         <a href="general.html">General</a>
         <ul class="wf-states">
-          <li><a href="general.html">success / sub-categories</a></li>
-          <li>empty</li>
-          <li>error</li>
-          <li>loading</li>
+          <li class="wf-substate">Logged in</li>
+          <li><a href="general.html">success</a></li>
+          <li><a href="general-empty.html">empty</a></li>
+          <li><a href="general-error.html">error</a></li>
+          <li><a href="general-loading.html">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="general-logged-out.html">success</a></li>
+          <li><a href="general-logged-out-empty.html">empty</a></li>
+          <li><a href="general-logged-out-error.html">error</a></li>
+          <li><a href="general-logged-out-loading.html">loading</a></li>
         </ul>
       </li>
       <li class="wf-sec">Activation gate</li>
@@ -635,9 +659,9 @@
     file: wireframes/culture.html
   </div>
 
-  <nav class="state-switch" aria-label="States of this screen">
-    <div class="ss-row"><span class="ss-label">Auth</span><a href="culture.html" aria-current="page">Logged in</a><span style="opacity:.5;padding:2px 8px;">Logged out (rollout)</span></div>
-    <div class="ss-row"><span class="ss-label">State</span><a href="culture.html" aria-current="page">Success</a><span style="opacity:.5;padding:2px 8px;">empty</span><span style="opacity:.5;padding:2px 8px;">error</span><span style="opacity:.5;padding:2px 8px;">loading</span></div>
+  <nav class="state-switch" aria-label="States of this screen (auth and screen state)">
+    <div class="ss-row"><span class="ss-label">Auth</span><a href="culture.html" aria-current="page">Logged in</a><a href="culture-logged-out.html">Logged out</a></div>
+    <div class="ss-row"><span class="ss-label">State</span><a href="culture.html" aria-current="page">Success</a><a href="culture-empty.html">Empty</a><a href="culture-error.html">Error</a><a href="culture-loading.html">Loading</a></div>
   </nav>
 
   <div class="device">
@@ -1022,11 +1046,11 @@
     <aside class="annotations" aria-label="Annotations">
       <span class="zone-tag">annotations: zone to job / finding</span>
       <ol>
-        <li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Culture here), each with its own structure. Trending stays the main feed (event-feed.html).</li>
+        <li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Culture here). Trending stays the main feed (event-feed.html).</li>
         <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Sort + Frequency on the heading row</strong> -&gt; feed controls carried over from the main feed; the Category dropdown is dropped here (the page IS the category).</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome (two leading positions), question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li>
-        <li><strong>Browse screen</strong> -&gt; FJ1 (find the event), first layer of FJ2 and EJ2. Auth axis and empty / error / loading states come in the rollout.</li>
+        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
+        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
+        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li>
       </ol>
     </aside>
 
@@ -1040,18 +1064,18 @@
         v
    Event Detail
         v
-   Bet -> Sign In -> Deposit -> Active Bets</pre>
+   Sign In / Deposit (dialogs) -> Active Bets</pre>
         <p class="ref">A category page is a browse entry parallel to the main feed
-          (IA/sitemap.md second-level navigation). Same card pattern, scoped to one
-          category with a sub-category filter.</p>
+          (IA/sitemap.md second-level navigation), with the auth axis and the
+          success / empty / error / loading states.</p>
       </section>
 
       <section class="navtree" aria-label="Rollout">
-        <span class="zone-tag">rollout (still to come)</span>
-        <p class="ref">Built: Politics, Crypto, Culture, General (success). Still to come:
-          each category's empty / error / loading states and the logged-out auth variant,
-          the real sub-category taxonomy per category, and the sitemap.md update
-          (category pages + sub-categories).</p>
+        <span class="zone-tag">rollout status</span>
+        <p class="ref">Built: Politics, Crypto, Culture, General, each with logged-in
+          and logged-out x success / empty / error / loading. Still to come: the real
+          sub-category taxonomy per category and the sitemap.md update (category pages
+          + sub-categories).</p>
       </section>
     </div>
 
