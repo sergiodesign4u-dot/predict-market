@@ -58,6 +58,8 @@ responsive. Neutral greys only - no color, type, shadows, or finished UI (those
 belong to the Concept phase). Open any file in [`wireframes/`](./wireframes/) in a
 browser; a left screen-tree panel navigates the whole set.
 
+**[View the main screen live](https://sergiodesign4u-dot.github.io/predict-market/wireframes/event-feed.html)** - opens the rendered Event Feed in any browser, no local server needed.
+
 **Start here:** [`wireframes/event-feed.html`](./wireframes/event-feed.html) - the
 main-flow entry (the Event Feed). From there the journey is clickable end to end:
 Event Feed -> Event Detail -> sign-in / deposit gate -> Active Bets.
