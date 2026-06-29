@@ -202,7 +202,10 @@
     .card .prob-line { font-size: 11px; margin: 8px 0 6px; }
     .card .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; }
     .yesno { display: flex; gap: 6px; margin: 0 0 8px; }
+    .yesno > a { flex: 1; display: flex; }
+    .yesno > a > button { width: 100%; }
     .yesno button { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 9px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .yesno.compact > a { flex: 0 0 auto; }
     .yesno.compact button { padding: 4px 8px; font-size: 11px; flex: 0 0 auto; }
 
     .options { margin: 6px 0 8px; }
