@@ -74,8 +74,10 @@ Event Feed -> Event Detail -> sign-in / deposit gate -> Active Bets.
 - **Chrome wired:** header (Favorites / Notifications / avatar dropdown) and the
   mobile bottom nav are real links, not dead buttons; logged-out controls open the
   sign-in dialog.
-- **Quality gates:** 0 em-dash, 0 broken links; a defect critique pass is recorded
-  in [`wireframes/_critique.md`](./wireframes/_critique.md); the build contract is
+- **Quality gates:** 0 em-dash, 0 broken links; two defect critique passes are
+  recorded in [`wireframes/_critique.md`](./wireframes/_critique.md) (the second a
+  2026-06-29 fresh multi-agent re-audit of all 99 pages - set clean bar one minor
+  clarity fix); the build contract is
   [`wireframes/_conventions.md`](./wireframes/_conventions.md).
 
 ---

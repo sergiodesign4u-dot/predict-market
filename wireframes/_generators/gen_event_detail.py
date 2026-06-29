@@ -526,10 +526,18 @@ def main_resolved(auth="in"):
         </div>
       </div>
 """
+    # Reuse the live binary body, but reframe it for a closed market: the meta line
+    # marks trading closed and the chart caption reads "at close" rather than "now",
+    # so the body no longer implies live, actionable odds (the bet panel/dock are
+    # already omitted on this state). Outcome is opened from the position (Active Bets).
+    body = (main_text("binary")
+            .replace('Politics &middot; One-time market',
+                     'Politics &middot; One-time market &middot; Trading closed', 1)
+            .replace('YES 38% now', 'YES 38% at close', 1))
     return ('    <main class="feed">\n'
             '      <span class="zone-tag">zone: event detail (resolved-while-reading / event-closed: market closed)</span>\n'
             + banner
-            + '      <div class="feed-inner"><div class="ed-main">\n' + main_text("binary")
+            + '      <div class="feed-inner"><div class="ed-main">\n' + body
             + tabs_section("binary", auth) + '      </div></div>\n'
             + '    </main>\n')
 

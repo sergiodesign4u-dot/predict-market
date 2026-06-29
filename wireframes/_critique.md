@@ -60,3 +60,27 @@ to the screen tree (`_shell.nav_tree`). Total pages: 96 -> 99.
 Health after this pass: 0 em-dash, 0 broken internal links, 0 dead bottom-nav /
 header controls across all 99 pages. Wiring applied by the idempotent post-processor
 `fixpack.py` (header + bottom nav + dialog CSS) and `gen_favorites.py`.
+
+## Re-critique pass (2026-06-29, fresh multi-agent audit)
+
+A second full critique, this time fanned out across five parallel auditors (one per
+screen family: Event Feed + Favorites, Category pages, Event Detail, Bet-flow +
+dialogs, Account + utility). Each checked the same six categories - style leak,
+placeholder, missing state, dead-end, zone-without-action, off-map - against
+`_conventions.md`, `_screens.md`, `IA/sitemap.md`, `IA/flows.md`.
+
+Result: the set held up. Across all 99 pages exactly one genuine (minor, clarity)
+defect, plus one false positive that was verified and dismissed.
+
+| # | Screen | Category | What was wrong | Fix | Verdict |
+|---|---|---|---|---|---|
+| 6 | `event-detail-resolved.html` | Clarity (not a dead-end) | The resolved-while-reading body reused the live binary detail verbatim, so the meta line and chart caption framed the odds as live ("YES 38% now") on a market that had already closed. The top state-block already said betting was closed and the bet panel / dock were correctly omitted, so this was a wording mismatch, not a trap. | In `gen_event_detail.py` `main_resolved()`, post-process the reused body: meta line gains " &middot; Trading closed" and the chart caption reads "YES 38% at close" instead of "now". The live `event-detail.html` is untouched (the swap is local to the resolved builder). Regenerated + idempotent pipeline re-run. | FIXED |
+| - | `event-detail-logged-out-error.html` | Missing state (claimed) | An auditor reported the logged-out Event Detail error variant as missing. | Verified false: the file exists (state-block + "Try again" -> logged-out detail + "Back to feed"). No action. | FALSE POSITIVE |
+
+Clean families (no defects): Event Feed + Favorites (12), Category pages (32),
+Bet-flow + dialogs (26), Account + utility (16), and the rest of Event Detail (the
+tab strip is outcome-aware on multi, the multi bet panel focuses the selected
+outcome with a "Change" anchor, and all bet sub-states are present).
+
+Health after this pass: 0 em-dash, 0 broken internal links across all 99 pages; one
+clarity fix applied via the generator (not hand-edited).
