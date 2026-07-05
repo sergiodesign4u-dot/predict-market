@@ -685,7 +685,6 @@
   <div class="device">
     <!-- Header (logged-out: no account; Log in / Sign up replace balance and avatar) -->
     <header class="app-header">
-      <span class="zone-tag">zone: header (logged-out: no account; Log in / Sign up replace balance and avatar)</span>
       <div class="row">
         <div class="left">
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
@@ -701,7 +700,7 @@
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
           </button>
           <div class="auth-btns">
-            <button type="button" class="auth-btn" data-open="signin">Log in</button>
+            <button type="button" class="auth-btn" data-open="signin">Sign in</button>
             <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
           </div>
         </div>
@@ -709,7 +708,6 @@
     </header>
     <!-- Second-level navigation: categories route to their own pages (links) -->
     <nav class="cat-nav" aria-label="Categories (second level)">
-      <span class="zone-tag">zone: second-level navigation (each category opens its own page)</span>
       <ul>
         <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
         <li aria-current="page"><a href="politics.html"><button type="button">Politics</button></a></li>
@@ -719,10 +717,8 @@
       </ul>
     </nav>
     <main class="feed">
-      <span class="zone-tag">zone: Politics category (loading: fetching markets (skeleton grid))</span>
       <div class="cat-layout">
       <nav class="subcat" aria-label="Politics sub-categories">
-        <span class="zone-tag">zone: sub-categories (left rail on desktop, scrolling chips on mobile; counts are sample data)</span>
         <p class="subcat-head">Sub-categories</p>
         <ul>
         <li aria-current="page"><button type="button">All <span class="cnt">2K</span></button></li>
@@ -752,7 +748,6 @@
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">sort options</span>
                 <ul role="radiogroup" aria-label="Sort by">
                   <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
                   <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
@@ -775,7 +770,6 @@
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">event frequency (recurring markets)</span>
                 <ul role="radiogroup" aria-label="Frequency">
                   <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
                   <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
@@ -841,7 +835,6 @@
     </main>
     <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <span class="zone-tag">zone: bottom nav (mobile only; logged-out slot 4 = Sign in)</span>
       <ul>
         <li aria-current="page"><a href="event-feed-logged-out.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
@@ -863,7 +856,6 @@
     </nav>
     <!-- Footer (global element) -->
     <footer class="app-footer">
-      <span class="zone-tag">zone: footer (global, reused on every screen; TBD = not in MVP)</span>
       <div class="footer-inner">
 
         <div class="footer-top">
@@ -897,7 +889,6 @@
                 <span class="tbd">TBD</span>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
                 <ul>
                   <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
                   <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
@@ -913,7 +904,7 @@
           <div class="footer-cols">
 
             <nav class="footer-col" aria-label="Markets">
-              <h3>Markets</h3>
+              <h3>Events</h3>
               <p class="sub-label">By category</p>
               <ul>
                 <li><a href="#">Politics</a></li>
@@ -925,7 +916,7 @@
               <p class="sub-label">By topic</p>
               <ul>
                 <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
-                <li><a href="#">View all markets</a></li>
+                <li><a href="#">View all events</a></li>
               </ul>
             </nav>
 
@@ -981,45 +972,6 @@
 
       </div>
     </footer>
-
-  </div>
-
-  <div class="side">
-    <aside class="annotations" aria-label="Annotations">
-      <span class="zone-tag">annotations: zone to job / finding</span>
-      <ol>
-        <li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Politics here). Trending stays the main feed (event-feed.html).</li>
-        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
-        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li>
-      </ol>
-    </aside>
-
-    <div class="nav-col">
-      <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (where this sits)</span>
-<pre>Events (browse)
-   Event Feed  (Trending = main)
-   Politics / Crypto / Culture / General
-        ^ [Politics]   &lt;- current category page
-        v
-   Event Detail
-        v
-   Sign In / Deposit (dialogs) -> Active Bets</pre>
-        <p class="ref">A category page is a browse entry parallel to the main feed
-          (IA/sitemap.md second-level navigation), with the auth axis and the
-          success / empty / error / loading states.</p>
-      </section>
-
-      <section class="navtree" aria-label="Rollout">
-        <span class="zone-tag">rollout status</span>
-        <p class="ref">Built: Politics, Crypto, Culture, General, each with logged-in
-          and logged-out x success / empty / error / loading. Still to come: the real
-          sub-category taxonomy per category and the sitemap.md update (category pages
-          + sub-categories).</p>
-      </section>
-    </div>
 
   </div>
 
@@ -1144,7 +1096,6 @@
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
     </div>
-    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
@@ -1159,11 +1110,10 @@
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
-      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
-      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
-    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
   </dialog>
 
   <script>

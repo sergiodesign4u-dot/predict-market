@@ -554,21 +554,31 @@ market and not a finding from research.
 This keeps the "never invent" rule intact while the screens stay legible: the
 content looks like the product, but no page claims a sample event is real.
 
-### C. Annotations and on-page navigation tree
+### C. Annotations and on-page navigation tree (moved out of the wireframes)
 
-Per the Phase B roadmap, every wireframe ties back to the research. Two required
-page elements:
+Per the Phase B roadmap, every wireframe ties back to the research through two
+elements: **light annotations** (each major block links to the job / research
+finding it serves, e.g. "context narrative -> FJ2 differentiator") and an
+**on-page navigation tree** (where the screen sits on the main-flow spine).
 
-- **Light annotations.** Each major block on a screen carries a short note
-  linking it to the job or research finding it serves (for example "context
-  narrative -> FJ2 differentiator", "fee line -> H6"). Keep annotations out of
-  the layout flow: put them in a side note or a footnote list, so the grey box
-  stays clean and the annotations do not get mistaken for UI.
-- **On-page navigation tree.** Each wireframe page shows a short tree of where
-  this screen sits among the others (the main-flow spine from `_screens.md`:
-  Event Feed -> Event Detail -> Bet Screen -> Sign In / Register -> Deposit ->
-  Active Bets), so any single page is readable in context. This is a required
-  element of every page. It is described here, not built here.
+**These no longer live inside the wireframe pages.** The wireframes are now kept
+clean grey-box UI only. The inline `zone:` chips, the `.side` block (the
+`zone -> job / finding` annotation list and the nav-tree / header-model /
+responsive / variant notes) were extracted into a dedicated IA visualization:
+
+- **`IA/annotations/` (one HTML page per screen family, all states inside).**
+  Each page shows, per state: a **zone map** (the ordered layout zones, with
+  sub-region labels nested under their parent zone), the **annotations** list
+  (zone -> job / finding), a link to the live wireframe, plus shared
+  **structure / flow** notes (main-flow spine, header model, responsive
+  behavior, documented variants, rollout status). `IA/annotations/index.html`
+  is the entry point. Category pages (Politics / Crypto / Culture / General)
+  share one template doc.
+- **Generated, idempotent.** Built by `wireframes/_generators/ia_annotations.py`
+  (`build` extracts to `IA/annotations/`; `strip` removes the blocks from the
+  wireframes; `all` does both). To re-derive after any wireframe edit that still
+  carries the blocks, run `build` **before** `strip`. IA source of truth stays
+  `IA/sitemap.md` + `IA/flows.md`.
 
 ---
 

@@ -683,8 +683,6 @@
 
   <div class="device">
     <div class="backdrop">
-      <span class="zone-tag" style="position:absolute;left:8px;bottom:8px;">zone: Deposit (widget-load-failure: Transak iframe blocked - open directly or connect a wallet)</span>
-      <span class="dim-note">underlying screen dimmed: Sign In / Register (just authenticated)</span>
       <section class="sheet" aria-label="Payment didn't load">
         <div class="grab"></div>
         <div class="sheet-head">
@@ -692,51 +690,10 @@
           <a href="event-detail.html"><button type="button" class="sheet-close" aria-label="Close">x</button></a>
         </div>
         <div class="sheet-body">
-          <div class="widget-box">Payment widget failed to load.<br><span class="fine">The Transak iframe was blocked or the network dropped.</span></div>
+          <div class="widget-box">Payment widget failed to load.<br><span class="fine">The payment widget was blocked or the network dropped.</span></div>
           <button type="button" class="confirm-btn">Open Transak directly</button>
           <button type="button" class="provider-btn" style="justify-content:center;">Connect a USDC wallet instead</button>
-          <p class="fine">Fallback per S3: route around the embedded widget when it cannot load.</p>
         </div>
-      </section>
-    </div>
-
-  </div>
-
-  <div class="side">
-    <aside class="annotations" aria-label="Annotations">
-      <span class="zone-tag">annotations: zone to job / finding</span>
-      <ol>
-        <li><strong>Card to USDC via Transak</strong> -&gt; FJ3: ordinary money, no unfamiliar technology. Fiat on-ramp inside the platform.</li>
-        <li><strong>Funds-protection line (held 1:1)</strong> -&gt; FJ4 + EJ2: a clear answer to "what happens to my money", shown before submit. Trust signal.</li>
-        <li><strong>error-card (T2) / error-KYC (T1)</strong> -&gt; IA/flows.md recovery edges: a declined card offers another card or a wallet; a rejected KYC offers a no-KYC wallet path or support, never a dead end.</li>
-        <li><strong>widget-load-failure</strong> -&gt; S3 fallback: open Transak directly or connect a wallet when the embedded widget is blocked.</li>
-        <li><strong>pending / minimum-not-met</strong> -&gt; payment under review (with exits to the event or My Bets), and an inline minimum guard before submit.</li>
-      </ol>
-    </aside>
-
-    <div class="nav-col">
-      <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (main-flow spine)</span>
-<pre>Main-flow spine (MJ, News Junkie):
-
-Event Feed
-   v
-Event Detail   (bet panel)
-   v
-Sign In / Register
-   v
-[Deposit]   &lt;- current screen
-   v
-Active Bets</pre>
-        <p class="ref">Flow position: MJ, after Sign In on the News Junkie path
-          (IA/flows.md authOk -&gt; Deposit -&gt; depOk -&gt; S5 reconcile). Serves FJ3, FJ4, EJ2.</p>
-      </section>
-
-      <section class="navtree" aria-label="States">
-        <span class="zone-tag">states of this screen</span>
-        <p class="ref">form (base), loading (widget / KYC in-progress), error-card (T2),
-          error-KYC (T1), widget-load-failure (S3 fallback), pending (under review),
-          minimum-not-met (inline). Invoked overlay, no auth axis.</p>
       </section>
     </div>
 
@@ -863,7 +820,6 @@ Active Bets</pre>
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
     </div>
-    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
@@ -878,11 +834,10 @@ Active Bets</pre>
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
-      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
-      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
-    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
   </dialog>
 
   <script>

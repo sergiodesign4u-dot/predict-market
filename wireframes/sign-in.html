@@ -683,8 +683,6 @@
 
   <div class="device">
     <div class="backdrop">
-      <span class="zone-tag" style="position:absolute;left:8px;bottom:8px;">zone: Sign In / Register (modal on desktop, bottom sheet on mobile; social login, FJ3)</span>
-      <span class="dim-note">underlying screen dimmed: Event Detail (Confirm in the bet panel)</span>
       <section class="sheet" aria-label="Sign in or create account">
         <div class="grab"></div>
         <div class="sheet-head">
@@ -705,48 +703,8 @@
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7c1-2 3-3 4-3 0 2-1 3-2 4M9 9c-2 0-4 2-4 5s2 6 4 6c1 0 1.5-.5 3-.5s2 .5 3 .5c1.5 0 3-2 3-4-2-1-2-4 0-5-1-1.5-3-1.5-4-1.5S11 9 9 9z"/></svg>
             Continue with Apple
           </button></a>
-          <p class="fine">No crypto wallet required. By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>. Deposits via card require KYC; crypto-only accounts can connect a wallet instead.</p>
+          <p class="fine">No crypto wallet required. By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>. Adding funds by card requires KYC; crypto-only accounts can connect a wallet instead.</p>
         </div>
-      </section>
-    </div>
-
-  </div>
-
-  <div class="side">
-    <aside class="annotations" aria-label="Annotations">
-      <span class="zone-tag">annotations: zone to job / finding</span>
-      <ol>
-        <li><strong>Social login (Google, X, Apple)</strong> -&gt; FJ3: bet with ordinary effort, no unfamiliar technology. News Junkie path, no crypto wallet required.</li>
-        <li><strong>Modal / bottom sheet over a dimmed screen</strong> -&gt; invoked screen (conventions 5 + 7): the bet context behind stays visible, so the gate does not feel like leaving the flow.</li>
-        <li><strong>error -&gt; retry or other provider</strong> -&gt; IA/flows.md T5 (auth error) recovery edge: T5 returns to Sign In.</li>
-        <li><strong>provider-conflict</strong> -&gt; account exists under a different provider; resolve by using the original or linking, so the user is not locked out or duplicated.</li>
-        <li><strong>Success leads to Deposit</strong> -&gt; on auth success the flow continues to Deposit (IA/flows.md authOk -&gt; DEP); there is no separate success page, the form is the base.</li>
-      </ol>
-    </aside>
-
-    <div class="nav-col">
-      <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (main-flow spine)</span>
-<pre>Main-flow spine (MJ, News Junkie):
-
-Event Feed
-   v
-Event Detail   (bet panel; Confirm fires the gate)
-   v
-[Sign In / Register]   &lt;- current screen
-   v
-Deposit
-   v
-Active Bets</pre>
-        <p class="ref">Flow position: MJ, News Junkie branch of the gate (IA/flows.md
-          personaType -&gt; Sign In -&gt; authOk -&gt; Deposit). Serves FJ3.</p>
-      </section>
-
-      <section class="navtree" aria-label="States">
-        <span class="zone-tag">states of this screen</span>
-        <p class="ref">form (base / representative), loading (OAuth redirect pending),
-          error (auth failed, T5 - retry or other provider), provider-conflict
-          (account exists under another provider). Invoked overlay, no auth axis.</p>
       </section>
     </div>
 
@@ -873,7 +831,6 @@ Active Bets</pre>
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
     </div>
-    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
@@ -888,11 +845,10 @@ Active Bets</pre>
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
-      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
-      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
-    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
   </dialog>
 
   <script>

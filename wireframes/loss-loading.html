@@ -683,8 +683,6 @@
 
   <div class="device">
     <div class="backdrop">
-      <span class="zone-tag" style="position:absolute;left:8px;bottom:8px;">zone: Loss Screen - loading (fetching the resolution note)</span>
-      <span class="dim-note">underlying screen dimmed: Active Bets (resolved item) or a tapped resolution notification (G1: 1 tap)</span>
       <section class="sheet" aria-label="Here's what happened">
         <div class="grab"></div>
         <div class="sheet-head">
@@ -695,45 +693,6 @@
           <p class="fine" style="font-weight:bold;font-size:13px;color:#222;margin:0;">Will the US government shut down before March 1, 2027?</p>
           <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
         </div>
-      </section>
-    </div>
-
-  </div>
-
-  <div class="side">
-    <aside class="annotations" aria-label="Annotations">
-      <span class="zone-tag">annotations: zone to job / finding</span>
-      <ol>
-        <li><strong>Plain-language resolution note shown first</strong> -&gt; FJ5 + EJ3: understand what resolved and why before any next action. The note leads, the figures follow.</li>
-        <li><strong>Amount lost stated plainly, no euphemism</strong> -&gt; trust / transparency: the outcome is owned, not softened.</li>
-        <li><strong>One calm next step, no "bet again" promo</strong> -&gt; this screen is our primary retention intervention against loss-chasing (a gap every competitor leaves undesigned). Default exits are "back to your bets" / "browse events", not a re-bet push.</li>
-        <li><strong>No refund / payout state at MVP</strong> -&gt; cancelled-event refunds are deferred post-MVP (IA/sitemap.md), so this screen has only success and loading.</li>
-        <li><strong>G1 fast path</strong> -&gt; reached 1 tap from a resolution notification, so the note reaches the user before the impulse to chase (IA/flows.md FJ5 triggerNotif -&gt; Loss Screen). No auth axis (account-bound).</li>
-      </ol>
-    </aside>
-
-    <div class="nav-col">
-      <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (resolution flow, FJ5 + EJ3)</span>
-<pre>Resolution flow (FJ5 + EJ3 - conscious-loss exit):
-
-resolution notification --- G1: 1 tap ---+
-                                         v
-My Bets -- resolved item ------------&gt; [Loss Screen]   &lt;- current
-                                         v
-                          read resolution note (default first)
-                                         v
-                   browse events / close  (no chase)
-                   escalation path -.-&gt; bet panel (friction beat, F5)</pre>
-        <p class="ref">Flow position: IA/flows.md FJ5 + EJ3 (triggerNotif / Active Bets -&gt;
-          Loss Screen -&gt; readsNote -&gt; nextAction). Not on the MJ spine.</p>
-      </section>
-
-      <section class="navtree" aria-label="States">
-        <span class="zone-tag">states of this screen</span>
-        <p class="ref">success (resolution note, amount lost, one next step), loading
-          (fetching the resolution). No error/payout state at MVP (refunds deferred).
-          Invoked overlay, account-bound, no auth axis.</p>
       </section>
     </div>
 
@@ -860,7 +819,6 @@ My Bets -- resolved item ------------&gt; [Loss Screen]   &lt;- current
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
     </div>
-    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
@@ -875,11 +833,10 @@ My Bets -- resolved item ------------&gt; [Loss Screen]   &lt;- current
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
-      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
-      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
-    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
   </dialog>
 
   <script>

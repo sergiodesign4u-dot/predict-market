@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notifications - Wireframe Annotations</title>
+<style>
+:root{--bg:#0e0e0e;--surface:#161616;--surface2:#1c1c1c;--border:#242424;--text:#e8e8e8;--muted:#666;--accent:#c8ff00;--blue:#5fa8ff;--green:#5fdb8f;--red:#ff5f5f;--r:8px;--font:'Inter',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono','Fira Code',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+/* ---- sidebar (shared with research.html) ---- */
+.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:200;transform:translateX(-100%);transition:transform .25s cubic-bezier(.4,0,.2,1)}
+.sidebar.open{transform:translateX(0)}
+.sidebar::-webkit-scrollbar{display:none}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:199;backdrop-filter:blur(2px)}
+.sidebar-overlay.open{display:block}
+.menu-toggle{position:fixed;top:12px;left:12px;z-index:201;background:var(--surface);border:1px solid var(--border);border-radius:6px;width:36px;height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;padding:0}
+.menu-toggle span{display:block;width:15px;height:1.5px;background:var(--text);border-radius:1px}
+.sidebar-brand{padding:20px 16px 16px;border-bottom:1px solid var(--border);flex-shrink:0}
+.sidebar-project-name{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);line-height:1.4}
+.sidebar-nav{padding:12px 0;flex:1}
+.sidebar-page-link{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:500;color:var(--text);text-decoration:none;padding:7px 16px;transition:background .15s;cursor:pointer;user-select:none}
+.sidebar-page-link:hover:not(.planned){background:rgba(255,255,255,.04);text-decoration:none}
+.sidebar-page-link.active{color:var(--accent)}
+.sidebar-page-link.planned{color:var(--muted);cursor:default;opacity:.6}
+.sidebar-page-link.planned::after{content:'Soon';font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:rgba(255,255,255,.04);color:var(--muted);padding:2px 5px;border-radius:3px;border:1px solid var(--border)}
+.sidebar-sub{padding:2px 0 8px}
+.sidebar-sub-link{display:block;font-size:12px;color:var(--muted);text-decoration:none;padding:5px 16px 5px 28px;transition:color .15s;position:relative}
+.sidebar-sub-link:hover{color:var(--text);text-decoration:none}
+.sidebar-sub-link.active{color:var(--text)}
+.sidebar-sub-link.active::before{content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:3px;height:3px;border-radius:50%;background:var(--accent)}
+.sidebar-divider{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:16px 16px 6px;opacity:.45}
+/* ---- layout ---- */
+main{padding:60px 20px 80px}
+@media(min-width:860px){.sidebar{transform:translateX(0);transition:none}.sidebar-overlay{display:none!important}.menu-toggle{display:none}main{margin-left:220px;padding:48px 48px 100px}}
+.wrap{max-width:1040px}
+/* ---- content ---- */
+.crumbs{font-size:11px;letter-spacing:.04em;color:var(--muted);margin-bottom:14px}
+.crumbs a{color:var(--muted)}
+.section-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h1{font-size:26px;font-weight:700;letter-spacing:-.01em;margin:0 0 8px}
+h2{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:44px 0 14px;padding-top:24px;border-top:1px solid var(--border)}
+h4{font-size:10px;font-weight:700;margin:0 0 8px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.muted{color:var(--muted)}
+.sub{color:#9a9a9a;font-size:13.5px;max-width:70ch}
+code{background:var(--surface2);border:1px solid var(--border);padding:1px 5px;border-radius:4px;font-family:var(--mono);font-size:11.5px;color:#cdd6a0}
+.callout{background:rgba(95,168,255,.06);border:1px solid rgba(95,168,255,.22);border-radius:var(--r);padding:14px 16px;margin:16px 0;font-size:13px}
+.callout strong{color:#e8e8e8}
+.cattable{border-collapse:collapse;margin-top:12px;width:100%}
+.cattable th{text-align:left;padding:5px 12px 5px 0;white-space:nowrap;vertical-align:top;color:#cfcfcf;font-weight:600}
+.cattable td{padding:5px 0;font-size:12px;color:var(--muted)}
+.note{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 10px}
+.note h4{margin-bottom:8px;color:var(--accent);opacity:.85}
+.note pre{background:#0a0a0a;border:1px solid var(--border);border-radius:6px;padding:10px 12px;overflow:auto;font-family:var(--mono);font-size:11.5px;line-height:1.5;white-space:pre-wrap;margin:8px 0 0;color:#bcd08a}
+.note .ref{font-size:12.5px;color:#9a9a9a;margin:8px 0 0}
+.note .ref strong{color:var(--text)}
+.zstack{display:flex;flex-direction:column;gap:5px}
+.zbox{background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:5px;padding:7px 11px}
+.zbox.zsub{margin-left:22px;background:var(--surface);border-left:3px dashed #3a3a3a;padding:5px 11px}
+.zbox.zsub .zname{font-weight:500;font-size:11.5px;color:#c4c4c4}
+.zname{font-weight:600;display:block;font-size:12.5px;color:var(--text)}
+.zdesc{color:var(--muted);font-size:11.5px}
+details.state{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);margin:0 0 10px}
+details.state[open]{border-color:#333}
+details.state>summary{cursor:pointer;padding:12px 15px;font-weight:600;list-style:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+details.state>summary::-webkit-details-marker{display:none}
+details.state>summary::before{content:"\25B8";color:var(--muted);font-weight:400}
+details.state[open]>summary::before{content:"\25BE";color:var(--accent)}
+details.state>summary:hover{background:rgba(255,255,255,.02)}
+.stlabel{font-size:14px}
+.wflink{margin-left:auto;font-weight:500;font-size:11.5px;color:var(--blue)}
+.stbody{padding:4px 15px 16px;border-top:1px solid var(--border)}
+.cols{display:grid;grid-template-columns:1fr;gap:20px;margin-top:14px}
+.ann ol{margin:0;padding-left:20px}
+.ann li{margin-bottom:9px;font-size:13px;color:#c4c4c4}
+.ann li strong{color:var(--text)}
+.toc{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr;gap:2px}
+.toc li{margin:0}
+.toc a{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:11px 14px;border:1px solid var(--border);border-radius:var(--r);background:var(--surface);color:var(--text);transition:border-color .15s,background .15s}
+.toc a:hover{border-color:#3a3a3a;background:var(--surface2);text-decoration:none}
+.toc .tname{font-weight:600;font-size:14px}
+.toc .tmeta{font-size:11px;color:var(--muted);white-space:nowrap}
+@media(min-width:640px){.toc{grid-template-columns:1fr 1fr;gap:8px}}
+@media(min-width:900px){.cols{grid-template-columns:minmax(240px,330px) 1fr}}
+</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="../../research.html" class="sidebar-page-link">Research</a>
+    <a href="../../personas.html" class="sidebar-page-link">Personas</a>
+    <a href="../../jtbd.html" class="sidebar-page-link">JTBD</a>
+    <div class="sidebar-divider">Information Architecture</div>
+    <a href="../../ia.html" class="sidebar-page-link">Overview</a>
+    <a href="../../sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <a href="../../flows.html" class="sidebar-page-link">Flows</a>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="index.html" class="sidebar-page-link active">Wireframe Annotations</a>
+    <div class="sidebar-sub">
+      <a href="event-feed.html" class="sidebar-sub-link">Event Feed</a>
+      <a href="event-detail.html" class="sidebar-sub-link">Event Detail</a>
+      <a href="category.html" class="sidebar-sub-link">Category Pages</a>
+      <a href="active-bets.html" class="sidebar-sub-link">My Bets</a>
+      <a href="favorites.html" class="sidebar-sub-link">Favorites</a>
+      <a href="deposit.html" class="sidebar-sub-link">Deposit</a>
+      <a href="sign-in.html" class="sidebar-sub-link">Sign In</a>
+      <a href="my-profile.html" class="sidebar-sub-link">My Profile</a>
+      <a href="public-profile.html" class="sidebar-sub-link">Public Profile</a>
+      <a href="wallet.html" class="sidebar-sub-link">Wallet</a>
+      <a href="notifications.html" class="sidebar-sub-link active">Notifications</a>
+      <a href="how-it-works.html" class="sidebar-sub-link">How It Works</a>
+      <a href="win.html" class="sidebar-sub-link">Win Screen</a>
+      <a href="loss.html" class="sidebar-sub-link">Loss Screen</a>
+    </div>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+<main>
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Wireframe Annotations</a> &nbsp;/&nbsp; Notifications</div>
+    <div class="section-label">Wireframe Annotations</div>
+    <h1>Notifications</h1>
+    <p class="sub">Zone maps, zone&#8594;job / finding annotations and structural notes for this screen and all 5 of its states. Extracted from the wireframes so the wireframes themselves stay clean grey-box UI.</p>
+    
+    <h2>Structure &amp; flow</h2>
+    <section class="note"><h4>on-page nav tree (return trigger)</h4><pre>Return trigger (FJ1 / FJ5 / EJ3):
+
+[Notifications]   &lt;- current (header bell, both breakpoints)
+   |
+   +-- position resolved --&gt; Win / Loss Screen
+   +-- odds moved        --&gt; Event Detail
+   +-- deadline approaching --&gt; Event Detail
+   '-- new in category   --&gt; Event Detail / category</pre>
+        <p class="ref">Flow position: the return-trigger source (IA/sitemap.md Notifications;
+          IA/flows.md FJ5 / SJ1 triggerNotif). Serves FJ1, FJ5, EJ3; aarrr.md D1-D3.</p></section><section class="note"><h4>states of this screen</h4><p class="ref">success (unread + earlier list), empty (no alerts yet -&gt; follow events),
+          error (load failed, retry), loading (fetching), push-permission-missing (OS push
+          denied, in-app banner + settings deep-link). Account-bound, no auth axis.</p></section>
+    <h2>States &amp; annotations</h2>
+    
+    <details class="state" open>
+      <summary><span class="stlabel">Default</span> <code>notifications.html</code>
+        <a class="wflink" href="../../wireframes/notifications.html" target="_blank" rel="noopener">open wireframe &#8599;</a></summary>
+      <div class="stbody">
+        <div class="cols">
+          <div class="col-zones">
+            <h4>Zone map</h4>
+            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">lean, same at all widths; logo = Events home</span></div><div class="zbox zsub"><span class="zname">latest notifications</span><span class="zdesc">tap a row, or see all</span></div><div class="zbox zsub"><span class="zname">avatar dropdown</span><span class="zdesc">collapsed by default, click to open</span></div><div class="zbox"><span class="zname">Notifications</span><span class="zdesc">list of unread + recent alerts; tap routes to target screen</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only, icons; slot 4 = Portfolio with balance</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+          </div>
+          <div class="col-ann">
+            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>In-app alert list</strong> -&gt; the return trigger discovered in tracing (IA/sitemap.md): FJ1, FJ5 and EJ3 all depend on delivery via notification. Without this screen, a missed OS alert is unrecoverable; here it has in-app history.</li>
+        <li><strong>Four alert types</strong> -&gt; position resolved (routes to Win / Loss), odds moved significantly, event deadline approaching, new event in a followed category. They map to the hot / warm return signals in aarrr.md (D1-D3).</li>
+        <li><strong>Tap routes to the target screen</strong> -&gt; each item navigates to where the action is: Event Detail (odds / deadline / new event) or the resolution screen (Win / Loss). A resolved-position tap is the 1-tap G1 path to Win / Loss.</li>
+        <li><strong>Reached from the header bell (both breakpoints)</strong> -&gt; Notifications is a header bell with a permanent unread badge, not a bottom-nav slot (the wireframe pass swapped it with Favorites). The badge stays visible as the retention anchor.</li>
+        <li><strong>push-permission-missing</strong> -&gt; if OS push is denied, an in-app banner offers a system-settings deep-link; in-app alerts still show. Same banner surfaces on the Event Feed.</li>
+        <li><strong>Account-bound (logged-in only)</strong> -&gt; alerts need an account; logged-out, the bell routes to Sign In and shows no badge. No auth axis on this screen.</li></ol></div>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="state">
+      <summary><span class="stlabel">Loading</span> <code>notifications-loading.html</code>
+        <a class="wflink" href="../../wireframes/notifications-loading.html" target="_blank" rel="noopener">open wireframe &#8599;</a></summary>
+      <div class="stbody">
+        <div class="cols">
+          <div class="col-zones">
+            <h4>Zone map</h4>
+            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">lean, same at all widths; logo = Events home</span></div><div class="zbox zsub"><span class="zname">latest notifications</span><span class="zdesc">tap a row, or see all</span></div><div class="zbox zsub"><span class="zname">avatar dropdown</span><span class="zdesc">collapsed by default, click to open</span></div><div class="zbox"><span class="zname">Notifications</span><span class="zdesc">loading: fetching the alert list</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only, icons; slot 4 = Portfolio with balance</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+          </div>
+          <div class="col-ann">
+            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>In-app alert list</strong> -&gt; the return trigger discovered in tracing (IA/sitemap.md): FJ1, FJ5 and EJ3 all depend on delivery via notification. Without this screen, a missed OS alert is unrecoverable; here it has in-app history.</li>
+        <li><strong>Four alert types</strong> -&gt; position resolved (routes to Win / Loss), odds moved significantly, event deadline approaching, new event in a followed category. They map to the hot / warm return signals in aarrr.md (D1-D3).</li>
+        <li><strong>Tap routes to the target screen</strong> -&gt; each item navigates to where the action is: Event Detail (odds / deadline / new event) or the resolution screen (Win / Loss). A resolved-position tap is the 1-tap G1 path to Win / Loss.</li>
+        <li><strong>Reached from the header bell (both breakpoints)</strong> -&gt; Notifications is a header bell with a permanent unread badge, not a bottom-nav slot (the wireframe pass swapped it with Favorites). The badge stays visible as the retention anchor.</li>
+        <li><strong>push-permission-missing</strong> -&gt; if OS push is denied, an in-app banner offers a system-settings deep-link; in-app alerts still show. Same banner surfaces on the Event Feed.</li>
+        <li><strong>Account-bound (logged-in only)</strong> -&gt; alerts need an account; logged-out, the bell routes to Sign In and shows no badge. No auth axis on this screen.</li></ol></div>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="state">
+      <summary><span class="stlabel">Empty</span> <code>notifications-empty.html</code>
+        <a class="wflink" href="../../wireframes/notifications-empty.html" target="_blank" rel="noopener">open wireframe &#8599;</a></summary>
+      <div class="stbody">
+        <div class="cols">
+          <div class="col-zones">
+            <h4>Zone map</h4>
+            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">lean, same at all widths; logo = Events home</span></div><div class="zbox zsub"><span class="zname">latest notifications</span><span class="zdesc">empty</span></div><div class="zbox zsub"><span class="zname">avatar dropdown</span><span class="zdesc">collapsed by default, click to open</span></div><div class="zbox"><span class="zname">Notifications</span><span class="zdesc">empty: no notifications yet - new user or no events followed</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only, icons; slot 4 = Portfolio with balance</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+          </div>
+          <div class="col-ann">
+            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>In-app alert list</strong> -&gt; the return trigger discovered in tracing (IA/sitemap.md): FJ1, FJ5 and EJ3 all depend on delivery via notification. Without this screen, a missed OS alert is unrecoverable; here it has in-app history.</li>
+        <li><strong>Four alert types</strong> -&gt; position resolved (routes to Win / Loss), odds moved significantly, event deadline approaching, new event in a followed category. They map to the hot / warm return signals in aarrr.md (D1-D3).</li>
+        <li><strong>Tap routes to the target screen</strong> -&gt; each item navigates to where the action is: Event Detail (odds / deadline / new event) or the resolution screen (Win / Loss). A resolved-position tap is the 1-tap G1 path to Win / Loss.</li>
+        <li><strong>Reached from the header bell (both breakpoints)</strong> -&gt; Notifications is a header bell with a permanent unread badge, not a bottom-nav slot (the wireframe pass swapped it with Favorites). The badge stays visible as the retention anchor.</li>
+        <li><strong>push-permission-missing</strong> -&gt; if OS push is denied, an in-app banner offers a system-settings deep-link; in-app alerts still show. Same banner surfaces on the Event Feed.</li>
+        <li><strong>Account-bound (logged-in only)</strong> -&gt; alerts need an account; logged-out, the bell routes to Sign In and shows no badge. No auth axis on this screen.</li></ol></div>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="state">
+      <summary><span class="stlabel">Error</span> <code>notifications-error.html</code>
+        <a class="wflink" href="../../wireframes/notifications-error.html" target="_blank" rel="noopener">open wireframe &#8599;</a></summary>
+      <div class="stbody">
+        <div class="cols">
+          <div class="col-zones">
+            <h4>Zone map</h4>
+            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">lean, same at all widths; logo = Events home</span></div><div class="zbox zsub"><span class="zname">latest notifications</span><span class="zdesc">tap a row, or see all</span></div><div class="zbox zsub"><span class="zname">avatar dropdown</span><span class="zdesc">collapsed by default, click to open</span></div><div class="zbox"><span class="zname">Notifications</span><span class="zdesc">error: failed to load - retry</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only, icons; slot 4 = Portfolio with balance</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+          </div>
+          <div class="col-ann">
+            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>In-app alert list</strong> -&gt; the return trigger discovered in tracing (IA/sitemap.md): FJ1, FJ5 and EJ3 all depend on delivery via notification. Without this screen, a missed OS alert is unrecoverable; here it has in-app history.</li>
+        <li><strong>Four alert types</strong> -&gt; position resolved (routes to Win / Loss), odds moved significantly, event deadline approaching, new event in a followed category. They map to the hot / warm return signals in aarrr.md (D1-D3).</li>
+        <li><strong>Tap routes to the target screen</strong> -&gt; each item navigates to where the action is: Event Detail (odds / deadline / new event) or the resolution screen (Win / Loss). A resolved-position tap is the 1-tap G1 path to Win / Loss.</li>
+        <li><strong>Reached from the header bell (both breakpoints)</strong> -&gt; Notifications is a header bell with a permanent unread badge, not a bottom-nav slot (the wireframe pass swapped it with Favorites). The badge stays visible as the retention anchor.</li>
+        <li><strong>push-permission-missing</strong> -&gt; if OS push is denied, an in-app banner offers a system-settings deep-link; in-app alerts still show. Same banner surfaces on the Event Feed.</li>
+        <li><strong>Account-bound (logged-in only)</strong> -&gt; alerts need an account; logged-out, the bell routes to Sign In and shows no badge. No auth axis on this screen.</li></ol></div>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="state">
+      <summary><span class="stlabel">Push permission prompt</span> <code>notifications-push.html</code>
+        <a class="wflink" href="../../wireframes/notifications-push.html" target="_blank" rel="noopener">open wireframe &#8599;</a></summary>
+      <div class="stbody">
+        <div class="cols">
+          <div class="col-zones">
+            <h4>Zone map</h4>
+            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">lean, same at all widths; logo = Events home</span></div><div class="zbox zsub"><span class="zname">latest notifications</span><span class="zdesc">tap a row, or see all</span></div><div class="zbox zsub"><span class="zname">avatar dropdown</span><span class="zdesc">collapsed by default, click to open</span></div><div class="zbox"><span class="zname">Notifications</span><span class="zdesc">push-permission-missing: OS push denied; in-app banner + settings deep-link, list still shown</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only, icons; slot 4 = Portfolio with balance</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+          </div>
+          <div class="col-ann">
+            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>In-app alert list</strong> -&gt; the return trigger discovered in tracing (IA/sitemap.md): FJ1, FJ5 and EJ3 all depend on delivery via notification. Without this screen, a missed OS alert is unrecoverable; here it has in-app history.</li>
+        <li><strong>Four alert types</strong> -&gt; position resolved (routes to Win / Loss), odds moved significantly, event deadline approaching, new event in a followed category. They map to the hot / warm return signals in aarrr.md (D1-D3).</li>
+        <li><strong>Tap routes to the target screen</strong> -&gt; each item navigates to where the action is: Event Detail (odds / deadline / new event) or the resolution screen (Win / Loss). A resolved-position tap is the 1-tap G1 path to Win / Loss.</li>
+        <li><strong>Reached from the header bell (both breakpoints)</strong> -&gt; Notifications is a header bell with a permanent unread badge, not a bottom-nav slot (the wireframe pass swapped it with Favorites). The badge stays visible as the retention anchor.</li>
+        <li><strong>push-permission-missing</strong> -&gt; if OS push is denied, an in-app banner offers a system-settings deep-link; in-app alerts still show. Same banner surfaces on the Event Feed.</li>
+        <li><strong>Account-bound (logged-in only)</strong> -&gt; alerts need an account; logged-out, the bell routes to Sign In and shows no badge. No auth axis on this screen.</li></ol></div>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+</main>
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const toggle = document.getElementById('menuToggle');
+  const openSidebar = () => { sidebar.classList.add('open'); overlay.classList.add('open'); };
+  const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+  toggle.addEventListener('click', openSidebar);
+  overlay.addEventListener('click', closeSidebar);
+  document.querySelectorAll('.sidebar a[href]').forEach(l => {
+    l.addEventListener('click', () => { if (window.innerWidth < 860) closeSidebar(); });
+  });
+</script>
+</body>
+</html>

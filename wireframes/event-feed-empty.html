@@ -583,7 +583,6 @@
 
     <!-- Header (lean: logo = Events/home, right icon cluster) -->
     <header class="app-header">
-      <span class="zone-tag">zone: header (lean, same at all widths; logo = Events home)</span>
       <div class="row">
         <div class="left">
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
@@ -618,9 +617,8 @@
               </span>
             </summary>
             <div class="dropdown notif-drop" role="menu">
-              <span class="zone-tag">latest notifications (tap a row, or see all)</span>
               <ul>
-                <li><a href="win.html"><strong>Position resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+                <li><a href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
                 <li><a href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
                 <li><a href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
               </ul>
@@ -634,11 +632,10 @@
               <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </summary>
             <div class="dropdown" role="menu">
-              <span class="zone-tag">avatar dropdown (collapsed by default, click to open)</span>
               <ul>
                 <li><a href="my-profile.html"><button type="button" role="menuitem">My Profile</button></a></li>
                 <li><a href="active-bets.html"><button type="button" role="menuitem">My Bets</button></a></li>
-                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet / Deposit</button></a></li>
+                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet</button></a></li>
                 <li><a href="how-it-works.html"><button type="button" role="menuitem">How It Works</button></a></li>
                 <li><a href="event-feed-logged-out.html"><button type="button" role="menuitem">Logout</button></a></li>
               </ul>
@@ -650,7 +647,6 @@
 
     <!-- Second-level navigation: categories -->
     <nav class="cat-nav" aria-label="Categories (second level)">
-      <span class="zone-tag">zone: second-level navigation (each category opens its own page)</span>
       <ul>
         <li aria-current="page"><a href="event-feed.html"><button type="button">Trending</button></a></li>
         <li><a href="politics.html"><button type="button">Politics</button></a></li>
@@ -662,7 +658,6 @@
 
     <!-- Feed -->
     <main class="feed">
-      <span class="zone-tag">zone: feed (heading row + sort control, responsive grid, decluttered cards)</span>
       <div class="feed-inner">
 
         <div class="feed-head">
@@ -679,7 +674,6 @@
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">sort options</span>
                 <ul role="radiogroup" aria-label="Sort by">
                   <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
                   <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
@@ -702,7 +696,6 @@
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">event frequency (recurring markets)</span>
                 <ul role="radiogroup" aria-label="Frequency">
                   <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
                   <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
@@ -721,7 +714,6 @@
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">category filter (full list, syncs with the chips)</span>
                 <ul role="radiogroup" aria-label="Category">
                   <li><label><input type="radio" name="catf" value="Trending" checked> Trending</label></li>
                   <li><label><input type="radio" name="catf" value="Politics"> Politics</label></li>
@@ -738,7 +730,7 @@
         <div class="state-block" role="status" aria-live="polite">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
           <p class="state-title">No events match your filters</p>
-          <p class="state-msg">There are no markets for this category and filter combination right now. Try clearing the filters, or get notified when a new event shows up here.</p>
+          <p class="state-msg">There are no events for this category and filters right now. Clear the filters, or get notified when a new event shows up here.</p>
           <div class="state-actions">
             <button type="button" class="state-btn primary">Clear filters</button>
             <button type="button" class="state-btn">Notify me of new events in this category</button>
@@ -749,7 +741,6 @@
 
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
       <ul>
         <li aria-current="page"><a href="event-feed.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
@@ -772,7 +763,6 @@
 
     <!-- Footer (global element) -->
     <footer class="app-footer">
-      <span class="zone-tag">zone: footer (global, reused on every screen; TBD = not in MVP)</span>
       <div class="footer-inner">
 
         <div class="footer-top">
@@ -806,7 +796,6 @@
                 <span class="tbd">TBD</span>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
                 <ul>
                   <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
                   <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
@@ -822,7 +811,7 @@
           <div class="footer-cols">
 
             <nav class="footer-col" aria-label="Markets">
-              <h3>Markets</h3>
+              <h3>Events</h3>
               <p class="sub-label">By category</p>
               <ul>
                 <li><a href="#">Politics</a></li>
@@ -834,7 +823,7 @@
               <p class="sub-label">By topic</p>
               <ul>
                 <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
-                <li><a href="#">View all markets</a></li>
+                <li><a href="#">View all events</a></li>
               </ul>
             </nav>
 
@@ -893,155 +882,6 @@
 
   </div>
 
-  <!-- ============ ANNOTATIONS + NAV TREE (out of layout flow) ============ -->
-  <div class="side">
-
-    <aside class="annotations" aria-label="Annotations">
-      <span class="zone-tag">annotations: zone to job / finding</span>
-      <ol>
-        <li><strong>Logo = Events / home</strong> -&gt; primary entry; clicking the
-          brand returns to the Event Feed. Event-first identity, consistent with G4.</li>
-        <li><strong>Hamburger (left)</strong> -&gt; reserved for future scaling; no
-          primary items at MVP (Events is the logo, My Bets is in the avatar menu).</li>
-        <li><strong>Balance: Portfolio / Cash swap (desktop cluster only)</strong>
-          -&gt; one figure at a time, swap icon toggles Portfolio (= Cash + In-play,
-          shown $142) and Cash (= available, $42). Not two figures like competitors.
-          On mobile the balance is removed from the header (no room at 360px) and
-          surfaced in the Portfolio bottom slot instead. G4 still holds on desktop:
-          money is a utility in the cluster, Deposit lives in the avatar menu.</li>
-        <li><strong>Favorites</strong> -&gt; opens the Favorites filter
-          over the feed. On mobile it is a bottom-bar slot (thumb reach for active
-          filtering to your watchlist); on desktop it is a heart icon in the
-          header. Saved is a view, not a new screen.</li>
-        <li><strong>Notifications (header bell on both breakpoints)</strong> -&gt;
-          bell icon + permanent badge in the header at all widths. Swapped with
-          Favorites (the bell left the bottom bar; Favorites took the slot). The
-          badge is visible whether at top or bottom, so the retention anchor (FJ1,
-          FJ5, EJ3; aarrr D1-D3) is preserved; the thumb slot goes to a more
-          actively-navigated control (Favorites). Overrides the locked
-          bottom-slot-for-Notifications decision.</li>
-        <li><strong>Portfolio bottom slot (mobile, combined account hub)</strong>
-          -&gt; replaces the Profile slot; shows the portfolio sum ($142) instead of
-          an icon, label "Portfolio" (Kalshi-style). Opens My Profile extended with a
-          portfolio summary on top (Portfolio / Cash, Deposit) above the track record.
-          A deliberate, documented partial override of G4: the slot is the account /
-          identity hub with a balance, not a bare trading wallet. Profile is no longer
-          a separate bottom slot; reputation stays reachable here and via the desktop
-          avatar. My Bets is untouched (positions / history), no duplication.</li>
-        <li><strong>Avatar dropdown</strong> -&gt; collapsed by default, opens on
-          click (keeps the header short). Items: My Profile, My Bets, Wallet /
-          Deposit, How It Works, Logout. My Bets now lives here on desktop; on
-          mobile it stays a bottom-nav slot.</li>
-        <li><strong>Second-level category nav</strong> -&gt; Trending (default),
-          Politics, Crypto, Culture, General as a sub-nav band under the header.
-          Categories are navigation (second level), separated from feed controls.</li>
-        <li><strong>Feed heading echoes the active category</strong> -&gt; the
-          heading is the selected second-level category (here "Trending"), not a
-          generic "Live events". It updates when you pick another category.</li>
-        <li><strong>Filter row (Kalshi-style dropdowns on the heading row)</strong>
-          -&gt; three controls, each label showing the current value: <em>Sort</em>
-          (Trending, Volatile, New, Closing soon, Volume, 50-50 plus a Reverse
-          toggle), <em>Frequency</em> (All, One-time, Hourly, Daily, Weekly, Monthly)
-          and <em>Category</em>. Feed controls, not navigation.</li>
-        <li><strong>Frequency -&gt; recurring markets (NEW concept)</strong>
-          -&gt; introduces event cadence (one-time vs hourly/daily/weekly/monthly
-          recurring markets). New Event attribute, added to IA/sitemap.md Event
-          entity; resolution mechanics for recurring markets to be detailed later.</li>
-        <li><strong>Category dropdown syncs with the chips</strong> -&gt; the
-          heading-row Category control is the full category list (scales as
-          categories grow) and stays in sync with the second-level chip nav and the
-          heading; both update the active category.</li>
-        <li><strong>Card entry = the question title (no Open button)</strong> -&gt;
-          the large "Open event detail" button was removed from every card; the
-          card title is the link to Event Detail (neutral entry). Cards stay compact
-          and the list scans faster.</li>
-        <li><strong>YES/NO trigger-entry on the card</strong> -&gt; routes to Event
-          Detail with the side (and for multi-outcome the option) pre-selected. It
-          does not place a bet and does not bypass Event Detail, so FJ2 is preserved
-          (IA/flows.md trigger-entry edge).</li>
-        <li><strong>Compact %, no badge, no snippet</strong> -&gt; Addition A: the
-          number is shown but does not dominate; FJ2 context is concentrated on
-          Event Detail.</li>
-        <li><strong>Multi-outcome layout -&gt; max 2 visible positions</strong>
-          -&gt; the feed card shows at most the two leading positions (the options
-          with the highest probability / most stake right now) and nothing else,
-          no "+N more" line. The full option list is seen after the user opens the
-          event (via the question link). Dropping the extra line keeps multi-outcome
-          cards close to binary-card height, so the meta row lines up across the
-          grid instead of leaving empty space. NOT the rejected trading-board view.</li>
-        <li><strong>Bookmark icon in the card meta row</strong> -&gt; moved into the
-          meta row as a small element (no card footer). Saves / follows the event,
-          feeds the Favorites view (retention, FJ1 return). The proactive saved-event
-          alert is a hypothesis, not a confirmed Notification type.</li>
-        <li><strong>Footer (multi-column product footer)</strong> -&gt; EJ2/FJ4
-          trust. Structured from a prediction-market competitor scan (Polymarket,
-          Kalshi, Manifold, Limitless): a brand block (logo, tagline, social
-          icons, language), a Markets column (by category + by topic), Product,
-          Support and Company columns, and a bottom legal strip. X / Twitter and
-          Discord are the mandatory social pair; Instagram, TikTok and Telegram
-          extend reach. Regulatory and licensing text is a placeholder, never
-          invented. Anything outside MVP carries a dashed TBD / post-MVP / dynamic
-          tag, so the footer doubles as a roadmap. Skipped (no competitor uses
-          them in the footer, not MVP): app-store badges and a newsletter.</li>
-        <li><strong>Sample-content honesty</strong> -&gt; Addition B: all events are
-          illustrative sample data, never a real market or a verified fact.</li>
-      </ol>
-    </aside>
-
-    <div class="nav-col">
-      <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (main-flow spine)</span>
-<pre>Main-flow spine (MJ, News Junkie):
-
-[Event Feed]   &lt;- current screen
-   v
-Event Detail
-   v
-Bet Screen
-   v
-Sign In / Register
-   v
-Deposit
-   v
-Active Bets    (MJ success, T14)</pre>
-        <p class="ref">Flow position: MJ entry (IA/flows.md MJ,
-          triggerFeed -&gt; Event Feed -&gt; Event Detail). Serves FJ1, with a first
-          layer of FJ2 and EJ2.</p>
-      </section>
-
-      <section class="navtree" aria-label="Header model">
-        <span class="zone-tag">desktop header model (revised)</span>
-        <p class="ref">
-          Lean header. Left: hamburger (reserved) + logo (= Events home).
-          Desktop right cluster: Portfolio / Cash swap, Favorites (heart),
-          Notifications (bell + badge), avatar dropdown (My Profile, My Bets,
-          Wallet / Deposit, How It Works, Logout). Second-level category nav under
-          the header. Mobile: header drops the balance; right side keeps the
-          Notifications bell (badge) + avatar. Bottom nav (icons): Events, My Bets,
-          Favorites, Portfolio (balance + account hub, replaces Profile).
-        </p>
-      </section>
-
-      <section class="navtree" aria-label="Responsive behavior">
-        <span class="zone-tag">responsive behavior (verify by resizing)</span>
-        <p class="ref">
-          Mobile base: 1-column feed, bottom nav (4 slots), lean header. At >=640px:
-          bottom nav hidden, 2-column feed. At >=960px: 3 columns. At >=1280px: 4
-          columns. Header and category nav are present at every width.
-        </p>
-      </section>
-
-      <section class="navtree" aria-label="Documented variant">
-        <span class="zone-tag">documented variant (not built here)</span>
-        <p class="ref">
-          <strong>Return-visit denser layout:</strong> on return visits the feed is
-          denser per IA/sitemap.md Event Feed. A documented variant, not a separate
-          page in this step (P3-4 naming deferred).
-        </p>
-      </section>
-    </div>
-
-  </div>
 
   <!-- Minimal interaction: desktop balance swap Portfolio <-> Cash (wireframe behavior, no styling) -->
   <script>
@@ -1165,7 +1005,6 @@ Active Bets    (MJ success, T14)</pre>
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
     </div>
-    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
@@ -1180,11 +1019,10 @@ Active Bets    (MJ success, T14)</pre>
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
-      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
-      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
-    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
   </dialog>
 
   <script>

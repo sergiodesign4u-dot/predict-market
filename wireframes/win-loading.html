@@ -683,8 +683,6 @@
 
   <div class="device">
     <div class="backdrop">
-      <span class="zone-tag" style="position:absolute;left:8px;bottom:8px;">zone: Win Screen - loading (Share Card generation in progress)</span>
-      <span class="dim-note">underlying screen dimmed: Active Bets (resolved item) or a tapped win notification</span>
       <section class="sheet" aria-label="You were right">
         <div class="grab"></div>
         <div class="sheet-head">
@@ -700,44 +698,6 @@
           </div>
           <div class="spinner-box">Generating your Share Card...<br><span class="fine">Your win and payout are confirmed. The shareable card is being created.</span></div>
         </div>
-      </section>
-    </div>
-
-  </div>
-
-  <div class="side">
-    <aside class="annotations" aria-label="Annotations">
-      <span class="zone-tag">annotations: zone to job / finding</span>
-      <ol>
-        <li><strong>"You were right" + amount won + why</strong> -&gt; EJ1: the sense of edge (own forecast beat the market) is named here, with the plain resolution summary.</li>
-        <li><strong>Share Card auto-generated, Share is the primary CTA</strong> -&gt; SJ1: show the win to my circle with one tap; the card is the shareable artifact (IA/sitemap.md Share Card entity).</li>
-        <li><strong>"See next events" deliberately secondary</strong> -&gt; research F5: the first WIN triggers overconfidence and escalation, not loss. Celebratory but measured - no confetti loop, no "bet again" push.</li>
-        <li><strong>error = Share Card not generated (T11)</strong> -&gt; IA/flows.md SJ1 fallback: text-share (T13a), never a dead end; win still shown.</li>
-        <li><strong>payout-pending</strong> -&gt; on-chain settlement delay; the win and sharing are not gated on settlement (SJ1 share-impulse window preserved).</li>
-        <li><strong>Invoked overlay over a dimmed screen</strong> -&gt; reached 1 tap from a win notification (G1-equivalent), or from a resolved item in My Bets. No auth axis (account-bound).</li>
-      </ol>
-    </aside>
-
-    <div class="nav-col">
-      <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (resolution flow, SJ1)</span>
-<pre>Resolution flow (SJ1 - win share):
-
-win notification --- 1 tap (G1-equiv) ---+
-                                         v
-My Bets (History) -- tap won item --&gt; [Win Screen]   &lt;- current
-                                         v
-                          Share Card --&gt; external share (X / WhatsApp / Telegram)
-                                         '--&gt; See next events (secondary, F5)</pre>
-        <p class="ref">Flow position: IA/flows.md SJ1 (triggerNotif -&gt; Win Screen -&gt; cardOk -&gt;
-          shares). Serves SJ1 (primary) and EJ1 (the edge). Not on the MJ spine.</p>
-      </section>
-
-      <section class="navtree" aria-label="States">
-        <span class="zone-tag">states of this screen</span>
-        <p class="ref">success (amount won, summary, Share Card), loading (card generating),
-          error (card not generated, T11 - text-share fallback), payout-pending (on-chain
-          settlement delay). Invoked overlay, account-bound, no auth axis.</p>
       </section>
     </div>
 
@@ -864,7 +824,6 @@ My Bets (History) -- tap won item --&gt; [Win Screen]   &lt;- current
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
     </div>
-    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
@@ -879,11 +838,10 @@ My Bets (History) -- tap won item --&gt; [Win Screen]   &lt;- current
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
-      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
-      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
-    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
   </dialog>
 
   <script>

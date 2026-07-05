@@ -704,7 +704,6 @@
   <div class="device">
     <!-- Header (lean: logo = Events/home, right icon cluster) -->
     <header class="app-header">
-      <span class="zone-tag">zone: header (lean, same at all widths; logo = Events home)</span>
       <div class="row">
         <div class="left">
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
@@ -733,9 +732,8 @@
               </span>
             </summary>
             <div class="dropdown notif-drop" role="menu">
-              <span class="zone-tag">latest notifications (tap a row, or see all)</span>
               <ul>
-                <li><a href="win.html"><strong>Position resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+                <li><a href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
                 <li><a href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
                 <li><a href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
               </ul>
@@ -748,11 +746,10 @@
               <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </summary>
             <div class="dropdown" role="menu">
-              <span class="zone-tag">avatar dropdown (collapsed by default, click to open)</span>
               <ul>
                 <li><a href="my-profile.html"><button type="button" role="menuitem">My Profile</button></a></li>
                 <li><a href="active-bets.html"><button type="button" role="menuitem">My Bets</button></a></li>
-                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet / Deposit</button></a></li>
+                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet</button></a></li>
                 <li><a href="how-it-works.html"><button type="button" role="menuitem">How It Works</button></a></li>
                 <li><a href="event-feed-logged-out.html"><button type="button" role="menuitem">Logout</button></a></li>
               </ul>
@@ -762,7 +759,6 @@
       </div>
     </header>
     <main class="feed">
-      <span class="zone-tag">zone: Wallet (balance + transaction history + deposit / withdraw; funds-protection, FJ4 / EJ2)</span>
       <div class="feed-inner">
         <div class="feed-head"><h2>Wallet</h2></div>
         <article class="pos" aria-label="Balance summary">
@@ -774,7 +770,7 @@
           <span class="pos-status">Portfolio = Cash + In-play. In-play is locked in open positions until they resolve.</span>
         </article>
         <div class="cta-bar" style="position:static;">
-          <button type="button" data-open="deposit">Deposit</button>
+          <button type="button" data-open="deposit">Add funds</button>
           <button type="button" onclick="var d=document.getElementById('wd');if(d){d.open=!d.open;d.scrollIntoView();}">Withdraw</button>
         </div>
         <details id="wd" class="wd-flow">
@@ -789,12 +785,12 @@
               <span class="field-label">Destination USDC address</span>
               <div class="amount-row"><span class="amount-input" style="font-size:12px;">0x1A2b...9F3c</span></div>
             </div>
-            <p class="fine">Withdrawals are in USDC only at MVP (no fiat payout rail). PIX payout is Phase 2 (Brazil). Network fee applies.</p>
+            <p class="fine">Withdrawals are in USDC only. A network fee applies.</p>
             <button type="button" class="confirm-btn">Confirm withdrawal</button>
-            <p class="fine">After confirm, the withdrawal moves through: pending (on-chain) -&gt; confirmed, or failed (funds returned to Cash). Tracked in the history below.</p>
+            <p class="fine">On-chain transfers can't be reversed, so check the address before you confirm. After that, the withdrawal shows as pending, then confirmed once it settles, or failed with the funds returned to your Cash. It's tracked in the history below.</p>
           </div>
         </details>
-        <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds. Deposits, payouts and withdrawals are recorded below.</p>
+        <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds. Added funds, payouts and withdrawals are recorded below.</p>
         <p class="pos-status" style="margin:10px 0 2px;text-transform:uppercase;letter-spacing:.04em;">Transaction history</p>
         <div class="pos-list">
           <article class="pos">
@@ -827,7 +823,7 @@
           </article>
           <article class="pos">
             <div class="pos-top">
-              <span class="pos-q">Deposit via card (Transak)</span>
+              <span class="pos-q">Added funds via card (Transak)</span>
               <span class="pos-status" style="white-space:nowrap;">+$20.00</span>
             </div>
             <span class="pos-status">Jun 26 &middot; completed</span>
@@ -837,7 +833,6 @@
     </main>
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
       <ul>
         <li><a href="event-feed.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
@@ -859,7 +854,6 @@
     </nav>
     <!-- Footer (global element) -->
     <footer class="app-footer">
-      <span class="zone-tag">zone: footer (global, reused on every screen; TBD = not in MVP)</span>
       <div class="footer-inner">
 
         <div class="footer-top">
@@ -893,7 +887,6 @@
                 <span class="tbd">TBD</span>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
                 <ul>
                   <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
                   <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
@@ -909,7 +902,7 @@
           <div class="footer-cols">
 
             <nav class="footer-col" aria-label="Markets">
-              <h3>Markets</h3>
+              <h3>Events</h3>
               <p class="sub-label">By category</p>
               <ul>
                 <li><a href="#">Politics</a></li>
@@ -921,7 +914,7 @@
               <p class="sub-label">By topic</p>
               <ul>
                 <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
-                <li><a href="#">View all markets</a></li>
+                <li><a href="#">View all events</a></li>
               </ul>
             </nav>
 
@@ -977,45 +970,6 @@
 
       </div>
     </footer>
-
-  </div>
-
-  <div class="side">
-    <aside class="annotations" aria-label="Annotations">
-      <span class="zone-tag">annotations: zone to job / finding</span>
-      <ol>
-        <li><strong>Balance split: Cash (available) vs In-play (locked)</strong> -&gt; FJ4: a clear answer to "where is my money". Portfolio = Cash + In-play; in-play is locked in open positions until they resolve.</li>
-        <li><strong>Funds-protection line (held 1:1)</strong> -&gt; EJ2 (secondary): the same trust message as Deposit, visible at the money hub too.</li>
-        <li><strong>Transaction history (deposits, payouts, fees, stakes, withdrawals)</strong> -&gt; the audit trail: every movement is recorded, supporting the transparency principle.</li>
-        <li><strong>Deposit opens the shared Deposit dialog</strong> -&gt; standalone top-up reuses the same Deposit flow (no second deposit screen); IA/sitemap.md "deposit again (same Deposit screen)".</li>
-        <li><strong>Withdraw is a flow inside Wallet, not a screen</strong> -&gt; amount -&gt; USDC address -&gt; confirm, with pending / confirmed / failed states tracked in history. USDC-only at MVP (no fiat payout); PIX is Phase 2.</li>
-        <li><strong>Reached from the avatar dropdown (desktop) / the Portfolio hub (mobile)</strong> -&gt; money is a utility, not a primary destination (G4). Account-bound, logged-in only - no auth axis.</li>
-      </ol>
-    </aside>
-
-    <div class="nav-col">
-      <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (account hub)</span>
-<pre>Account / money (off the betting spine):
-
-avatar dropdown (desktop) -----+
-Portfolio hub (mobile) --------+--&gt; [Wallet]   &lt;- current
-                                      |
-                                      +-- Deposit (shared dialog)
-                                      '-- Withdraw (in-Wallet flow:
-                                            amount -&gt; USDC addr -&gt; confirm)</pre>
-        <p class="ref">Flow position: standalone money management off the betting flow
-          (IA/sitemap.md Wallet). Serves FJ4 (primary) and EJ2 (secondary).</p>
-      </section>
-
-      <section class="navtree" aria-label="States">
-        <span class="zone-tag">states of this screen</span>
-        <p class="ref">success (balance + history + deposit / withdraw), loading (initial
-          balance fetch), error (wallet data failed, retry). balance-syncing deferred.
-          Withdrawal sub-states (pending / confirmed / failed) live inside the flow.
-          Account-bound, no auth axis.</p>
-      </section>
-    </div>
 
   </div>
 
@@ -1140,7 +1094,6 @@ Portfolio hub (mobile) --------+--&gt; [Wallet]   &lt;- current
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
     </div>
-    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
@@ -1155,11 +1108,10 @@ Portfolio hub (mobile) --------+--&gt; [Wallet]   &lt;- current
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
-      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
-      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
-    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
   </dialog>
 
   <script>
