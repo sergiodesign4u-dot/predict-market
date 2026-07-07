@@ -14,7 +14,7 @@
        Header is the same lean component at all widths (logo + icon cluster);
        the second-level category nav sits directly under it. */
     * { box-sizing: border-box; }
-    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; }
+    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; padding-top: 44px; }
 
     .page-label { border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px 6px 104px; font-size: 12px; }
 
@@ -51,7 +51,7 @@
     @media (min-width: 1440px) {
       .wf-nav { transform: none; }
       .wf-toggle, .wf-overlay { display: none !important; }
-      body { padding-left: 250px; }
+      body { padding-left: 250px; padding-top: 0; }
       .page-label { padding-left: 10px; }
     }
 
@@ -670,12 +670,6 @@
     </ul>
   </nav>
 
-  <div class="page-label">
-    <strong>Wireframe:</strong> Sign In / Register &nbsp;|&nbsp;
-    state: loading (OAuth in-progress) &nbsp;|&nbsp;
-    responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/sign-in-loading.html
-  </div>
 
   <nav class="state-switch" aria-label="States of this screen">
     <div class="ss-row"><span class="ss-label">State</span><a href="sign-in.html">Form</a><a href="sign-in-error.html">Error</a><a href="sign-in-loading.html" aria-current="page">Loading</a><a href="sign-in-provider-conflict.html">Provider conflict</a></div>

@@ -203,3 +203,20 @@ clean here.
 Health: 0 em-dash, 0 broken internal links, 0 style leaks, 0 leaked codes across
 all 99 pages. The wireframe set is final. No files changed in this pass (verification
 only).
+
+## Status-line removal (2026-07-07)
+
+Removed the `.page-label` meta bar from the top of every wireframe - the tooling
+caption reading `Wireframe: {screen} | {auth} - state: {state} | responsive
+(mobile-first) | file: wireframes/{file}.html`. It was scaffolding, not part of the
+screen, and cluttered the top of the page. Deleted the `<div class="page-label">`
+block from all 99 pages (the now-unused `.page-label` CSS rule is left in place,
+harmless).
+
+Because that bar had `padding-left: 104px` that housed the fixed "Screens"
+drawer-toggle, removing it let the toggle overlap the first `.state-switch` chip at
+widths below 1440px (where the toggle floats; at >=1440px the screen-tree is a
+permanent sidebar and the toggle is hidden, so the desktop view was already clean).
+Fix: `body { padding-top: 44px }` at narrow widths, reset to `0` in the
+`@media (min-width:1440px)` block - a clean top strip for the floating toggle.
+Verified clean at 1280px and 1600px. The `.state-switch` state navigator is kept.
