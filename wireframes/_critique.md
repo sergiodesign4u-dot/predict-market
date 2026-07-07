@@ -220,3 +220,12 @@ permanent sidebar and the toggle is hidden, so the desktop view was already clea
 Fix: `body { padding-top: 44px }` at narrow widths, reset to `0` in the
 `@media (min-width:1440px)` block - a clean top strip for the floating toggle.
 Verified clean at 1280px and 1600px. The `.state-switch` state navigator is kept.
+
+**Follow-up: state-switch removed too (same day).** The top `.state-switch`
+navigator (the `Auth: Logged in / Logged out` and `State: Success / Empty / Error /
+...` chip rows) was also removed from all 99 pages - it duplicated the left
+screen-tree, which already lists every screen family with its auth variants and
+states. Removing both bars leaves a clean top: just the floating "Screens"
+drawer-toggle (in its 44px strip), then the product screen. All state / auth
+navigation stays reachable via the screen-tree drawer. The `.state-switch` CSS is
+left in place (unused, harmless). 0 broken links, 0 em-dash.
