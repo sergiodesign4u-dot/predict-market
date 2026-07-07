@@ -14,7 +14,7 @@
        Header is the same lean component at all widths (logo + icon cluster);
        the second-level category nav sits directly under it. */
     * { box-sizing: border-box; }
-    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; }
+    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; padding-top: 44px; }
 
     .page-label { border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px 6px 104px; font-size: 12px; }
 
@@ -51,7 +51,7 @@
     @media (min-width: 1440px) {
       .wf-nav { transform: none; }
       .wf-toggle, .wf-overlay { display: none !important; }
-      body { padding-left: 250px; }
+      body { padding-left: 250px; padding-top: 0; }
       .page-label { padding-left: 10px; }
     }
 
@@ -786,23 +786,9 @@
     </ul>
   </nav>
 
-  <div class="page-label">
-    <strong>Wireframe:</strong> Event Detail &nbsp;|&nbsp;
-    logged in - state: success / binary &nbsp;|&nbsp;
-    responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/event-detail.html
-  </div>
-
-  <nav class="state-switch" aria-label="States of this screen (auth, view and bet-panel state)">
-    <div class="ss-row"><span class="ss-label">Auth</span><a href="event-detail.html" aria-current="page">Logged in</a><a href="event-detail-logged-out.html">Logged out</a></div>
-    <div class="ss-row"><span class="ss-label">View</span><a href="event-detail.html" aria-current="page">Binary</a><a href="event-detail-multi.html">Multi</a><a href="event-detail-error.html">Error</a><a href="event-detail-loading.html">Loading</a><a href="event-detail-resolved.html">Resolved</a></div>
-    <div class="ss-row"><span class="ss-label">Bet</span><a href="event-detail.html" aria-current="page">Intent</a><a href="event-detail-bet-insufficient.html">Insufficient</a><a href="event-detail-bet-reconcile.html">S5 reconcile</a><a href="event-detail-bet-processing.html">Processing</a><a href="event-detail-bet-error.html">On-chain error</a></div>
-  </nav>
-
   <div class="device">
     <!-- Header (lean: logo = Events/home, right icon cluster) -->
     <header class="app-header">
-      <span class="zone-tag">zone: header (lean, same at all widths; logo = Events home)</span>
       <div class="row">
         <div class="left">
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
@@ -831,9 +817,8 @@
               </span>
             </summary>
             <div class="dropdown notif-drop" role="menu">
-              <span class="zone-tag">latest notifications (tap a row, or see all)</span>
               <ul>
-                <li><a href="win.html"><strong>Position resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+                <li><a href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
                 <li><a href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
                 <li><a href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
               </ul>
@@ -846,11 +831,10 @@
               <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </summary>
             <div class="dropdown" role="menu">
-              <span class="zone-tag">avatar dropdown (collapsed by default, click to open)</span>
               <ul>
                 <li><a href="my-profile.html"><button type="button" role="menuitem">My Profile</button></a></li>
                 <li><a href="active-bets.html"><button type="button" role="menuitem">My Bets</button></a></li>
-                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet / Deposit</button></a></li>
+                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet</button></a></li>
                 <li><a href="how-it-works.html"><button type="button" role="menuitem">How It Works</button></a></li>
                 <li><a href="event-feed-logged-out.html"><button type="button" role="menuitem">Logout</button></a></li>
               </ul>
@@ -861,7 +845,6 @@
     </header>
     <!-- Second-level navigation: categories route to their own pages (links) -->
     <nav class="cat-nav" aria-label="Categories (second level)">
-      <span class="zone-tag">zone: second-level navigation (categories; active = this event's category)</span>
       <ul>
         <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
         <li aria-current="page"><a href="politics.html"><button type="button">Politics</button></a></li>
@@ -871,14 +854,13 @@
       </ul>
     </nav>
     <main class="feed">
-      <span class="zone-tag">zone: event detail (binary: chart, facts, why-this-price, resolution, tabs + sticky bet panel)</span>
       <div class="ed-layout">
         <div class="ed-main">
           <article class="card" style="border:none;">
             <div class="ed-head">
               <span class="ed-thumb">thumbnail placeholder</span>
               <div>
-                <span class="ed-cat">Politics &middot; One-time market</span>
+                <span class="ed-cat">Politics &middot; One-time event</span>
                 <h2 class="ed-q">Will the US government shut down before March 1, 2027?</h2>
                 <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
               </div>
@@ -899,10 +881,10 @@
           </section>
           <div class="ed-facts">
             <span>Volume<b>$84,200</b></span>
-            <span>Liquidity<b>$31,500</b></span>
+            <span>Open to bet<b>$31,500</b></span>
             <span>Closes<b>Mar 1, 2027</b></span>
             <span>Frequency<b>One-time</b></span>
-            <span>Bookmark<b>save event</b></span>
+            <span>Save<b>to Favorites</b></span>
           </div>
           <section class="ed-section">
             <h3>Why this price</h3>
@@ -938,8 +920,8 @@
               <input type="radio" name="edtab" id="edtab-activity" class="ed-tabradio">
               <div class="ed-tabbar" role="tablist">
                 <label class="ed-tablabel" for="edtab-comments">Comments <span class="ed-tab-count">128</span></label>
-                <label class="ed-tablabel" for="edtab-holders">Top Holders</label>
-                <label class="ed-tablabel" for="edtab-positions">Positions</label>
+                <label class="ed-tablabel" for="edtab-holders">Biggest bets</label>
+                <label class="ed-tablabel" for="edtab-positions">Bets</label>
                 <label class="ed-tablabel" for="edtab-activity">Activity</label>
               </div>
             <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
@@ -987,52 +969,51 @@
                 </div>
               </div>
             </div>
-            <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Top holders">
+            <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Biggest bets">
               <div class="hold-cols">
               <div class="hold-col">
-                <h4>YES holders</h4>
-                <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">wh</span><span class="hold-name">whale_07</span><span class="hold-amt">1,240 shares</span></div>
-                <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">ma</span><span class="hold-name">marketmaven</span><span class="hold-amt">320 shares</span></div>
-                <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">al</span><span class="hold-name">alpha_ape</span><span class="hold-amt">280 shares</span></div>
-                <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">sa</span><span class="hold-name">satoshi_jr</span><span class="hold-amt">150 shares</span></div>
+                <h4>Biggest YES bets</h4>
+                <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">wh</span><span class="hold-name">whale_07</span><span class="hold-amt">$1,240</span></div>
+                <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">ma</span><span class="hold-name">marketmaven</span><span class="hold-amt">$320</span></div>
+                <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">al</span><span class="hold-name">alpha_ape</span><span class="hold-amt">$280</span></div>
+                <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">sa</span><span class="hold-name">satoshi_jr</span><span class="hold-amt">$150</span></div>
               </div>
               <div class="hold-col">
-                <h4>NO holders</h4>
-                <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">he</span><span class="hold-name">hedge_hannah</span><span class="hold-amt">980 shares</span></div>
-                <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">po</span><span class="hold-name">polly_predicts</span><span class="hold-amt">150 shares</span></div>
-                <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">ca</span><span class="hold-name">caut_carl</span><span class="hold-amt">120 shares</span></div>
-                <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">ri</span><span class="hold-name">riskoff</span><span class="hold-amt">90 shares</span></div>
+                <h4>Biggest NO bets</h4>
+                <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">he</span><span class="hold-name">hedge_hannah</span><span class="hold-amt">$980</span></div>
+                <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">po</span><span class="hold-name">polly_predicts</span><span class="hold-amt">$150</span></div>
+                <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">ca</span><span class="hold-name">caut_carl</span><span class="hold-amt">$120</span></div>
+                <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">ri</span><span class="hold-name">riskoff</span><span class="hold-amt">$90</span></div>
               </div>
               </div>
             </div>
-            <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Positions">
+            <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
               <table class="ptable">
-                <thead><tr><th>Holder</th><th>Side</th><th>Shares</th><th>Avg</th><th>Value</th></tr></thead>
+                <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
                 <tbody>
-                <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>13</td><td>$0.38</td><td>$4.94</td></tr>
-                <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>1,240</td><td>$0.35</td><td>$471</td></tr>
-                <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>980</td><td>$0.60</td><td>$588</td></tr>
-                <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>320</td><td>$0.41</td><td>$121</td></tr>
-                <tr><td>polly_predicts</td><td><span class="pos-side">NO</span></td><td>150</td><td>$0.58</td><td>$87</td></tr>
+                <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
+                <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
+                <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>$588</td></tr>
+                <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>$121</td></tr>
+                <tr><td>polly_predicts</td><td><span class="pos-side">NO</span></td><td>$87</td></tr>
                 </tbody>
               </table>
-              <p class="pos-note">Your row is highlighted. Positions update as the market trades.</p>
+              <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
             </div>
             <div class="ed-tabpanel ed-panel-activity" role="tabpanel" aria-label="Activity">
-              <p class="pos-note" style="margin:0 0 8px;">Recent trades, largest first. Filter: over $5.</p>
+              <p class="pos-note" style="margin:0 0 8px;">Recent bets, largest first. Filter: over $5.</p>
               <div class="act-list">
-              <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bought <b>500 YES</b> at $0.35 ($175)</span><span class="act-time">2m ago</span></div>
-              <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bought <b>300 NO</b> at $0.60 ($180)</span><span class="act-time">14m ago</span></div>
-              <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> sold <b>80 YES</b> at $0.39 ($31)</span><span class="act-time">1h ago</span></div>
-              <div class="act-row"><span class="cmt-av">pp</span><span class="act-txt"><b>polly_predicts</b> bought <b>150 NO</b> at $0.58 ($87)</span><span class="act-time">3h ago</span></div>
-              <div class="act-row"><span class="cmt-av">nh</span><span class="act-txt"><b>newhere</b> bought <b>13 YES</b> at $0.38 ($4.94)</span><span class="act-time">5h ago</span></div>
+              <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
+              <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$180</b> on NO</span><span class="act-time">14m ago</span></div>
+              <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> cashed out <b>$31</b> on YES</span><span class="act-time">1h ago</span></div>
+              <div class="act-row"><span class="cmt-av">pp</span><span class="act-txt"><b>polly_predicts</b> bet <b>$87</b> on NO</span><span class="act-time">3h ago</span></div>
+              <div class="act-row"><span class="cmt-av">nh</span><span class="act-txt"><b>newhere</b> bet <b>$4.94</b> on YES</span><span class="act-time">5h ago</span></div>
               </div>
             </div>
             </div>
           </section>
         </div>
           <aside class="bet-panel">
-            <span class="zone-tag">zone: bet panel (sticky right rail; fast entry, MJ). States migrated from the old Bet modal.</span>
             <div class="bp-inner">
               <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
               <div class="bp-dir">
@@ -1051,7 +1032,7 @@
                 <div class="line"><span>Your balance</span><span>$42.00</span></div>
               </div>
               <button type="button" class="confirm-btn" data-open="signin">Confirm bet</button>
-              <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM). Confirm opens sign-in (over this page), then deposit if needed.</p>
+              <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
             </div>
           </aside>
       </div>
@@ -1061,11 +1042,10 @@
         <button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button>
         <button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button>
         <span class="dock-meta">$5 to win<b>$13.20</b></span>
-        <button type="button" class="confirm-btn" data-open="signin" style="width:auto;padding:11px 14px;">Bet</button>
+        <button type="button" class="confirm-btn" data-open="signin" style="width:auto;padding:11px 14px;">Confirm bet</button>
       </div>
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
       <ul>
         <li aria-current="page"><a href="event-feed.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
@@ -1087,7 +1067,6 @@
     </nav>
     <!-- Footer (global element) -->
     <footer class="app-footer">
-      <span class="zone-tag">zone: footer (global, reused on every screen; TBD = not in MVP)</span>
       <div class="footer-inner">
 
         <div class="footer-top">
@@ -1121,7 +1100,6 @@
                 <span class="tbd">TBD</span>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
                 <ul>
                   <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
                   <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
@@ -1137,7 +1115,7 @@
           <div class="footer-cols">
 
             <nav class="footer-col" aria-label="Markets">
-              <h3>Markets</h3>
+              <h3>Events</h3>
               <p class="sub-label">By category</p>
               <ul>
                 <li><a href="#">Politics</a></li>
@@ -1149,7 +1127,7 @@
               <p class="sub-label">By topic</p>
               <ul>
                 <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
-                <li><a href="#">View all markets</a></li>
+                <li><a href="#">View all events</a></li>
               </ul>
             </nav>
 
@@ -1205,36 +1183,6 @@
 
       </div>
     </footer>
-
-  </div>
-
-  <div class="side">
-    <aside class="annotations" aria-label="Annotations">
-      <span class="zone-tag">annotations: zone to job / finding</span>
-      <ol>
-        <li><strong>Sticky bet panel (right rail desktop / bottom dock mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while scrolling. Binary = YES / NO; multi-outcome = pick one outcome, then YES / NO on it.</li>
-        <li><strong>Bet states migrated into the panel</strong> -&gt; intent, insufficient-balance (inline guard), S5 reconcile (price moved during the gate), execute processing, on-chain error (T3). The old standalone Bet modal is gone; event-closed is the resolved state.</li>
-        <li><strong>Price chart (schematic) + Why this price</strong> -&gt; FJ2 differentiator, below the chart and facts so the panel leads.</li>
-        <li><strong>Content tabs (Comments / Top Holders / Positions / Activity)</strong> -&gt; below the event content, a Polymarket-style tab strip (CSS-only switch). Comments has sort + composer (logged-out prompts sign-in); Positions highlights your row when logged in; Holders and Activity are public. Depth / social proof for FJ2 and engagement.</li>
-        <li><strong>Confirm fires the gate</strong> -&gt; opens the Sign In dialog over this page, then Deposit (insufficient-balance jumps straight to the Deposit dialog).</li>
-        <li><strong>Auth + states</strong> -&gt; logged-in / logged-out, binary / multi success, error (T8), loading, resolved-while-reading.</li>
-      </ol>
-    </aside>
-
-    <div class="nav-col">
-      <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (main-flow spine)</span>
-<pre>Event Feed
-   v
-[Event Detail]   &lt;- current (binary; bet panel: intent)
-   v
-Sign In / Deposit (dialogs over the page)
-   v
-Active Bets    (MJ success, T14)</pre>
-        <p class="ref">Flow position: MJ, one node after Event Feed. Bet intent + states
-          live in the panel; the gate (Sign In, Deposit) fires on Confirm as dialogs.</p>
-      </section>
-    </div>
 
   </div>
 
@@ -1359,7 +1307,6 @@ Active Bets    (MJ success, T14)</pre>
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
     </div>
-    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
@@ -1374,11 +1321,10 @@ Active Bets    (MJ success, T14)</pre>
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
-      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
-      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
-    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
   </dialog>
 
   <script>

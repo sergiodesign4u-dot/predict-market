@@ -84,3 +84,148 @@ outcome with a "Change" anchor, and all bet sub-states are present).
 
 Health after this pass: 0 em-dash, 0 broken internal links across all 99 pages; one
 clarity fix applied via the generator (not hand-edited).
+
+## Flow-wiring audit (2026-07-07, step 7 - user path)
+
+Full audit of the clickable user path against `IA/flows.md`: every screen's
+primary action must be a real `<a href>` to the next screen, state transitions
+(loading -> success, error -> try again, empty -> filled) must be wired, branches
+must go both ways, and no dead-ends - only routes drawn in `flows.md`. Method: a
+chrome-stripped parser (drops the left screen-tree, header, footer, state-switch)
+extracting the actionable controls inside `<main>` + the `wf-overlay` invoked
+screens + the shared `<dialog>`s, cross-referenced edge-by-edge to the four flows
+(MJ, FJ2, FJ5+EJ3, SJ1).
+
+Result: the main chain held up end to end - EF -> ED (card body / YES / NO)
+-> bet panel (intent) -> Confirm gate fires the **Sign In dialog** -> **Deposit
+dialog** -> "Add funds" -> **S5 reconcile** -> execute (`bet-processing`)
+-> "View your bet" -> **Active Bets**. Branch edges verified both ways: ED error
+`Try again` <-> `Back to feed`; bet on-chain error (T3) `Try again` (execute) +
+`Check wallet` (-> Wallet); S5 reconcile `Confirm at new price` (execute) +
+`Cancel and re-evaluate` (-> ED); insufficient-balance `Add funds` (deposit
+dialog). Deposit success -> reconcile; KYC error (T1) `Browse events` -> feed;
+`How it works` -> How It Works page and back. Sign In providers -> Deposit dialog
+(the SI -> DEP chain). Loss `Back to your bets` (-> Active Bets) + `Browse events`
+(-> feed), no "bet again". Win close -> Active Bets, `Browse events` -> feed.
+Notifications route to `win.html` / `loss.html` / `event-detail.html` (G1 fast
+paths). My Bets History and the Active-tab resolved rows -> Win / Loss.
+
+Two genuine gaps found and fixed (naked buttons where `flows.md` requires an edge;
+each matched to the pattern its sibling screens already used):
+
+| # | Screen(s) | Element | Was | Became | Flow edge |
+|---|---|---|---|---|---|
+| 1 | `event-feed-error`, `event-feed-logged-out-error`, and all 8 Category error pages (`{politics,crypto,culture,general}-error` + `-logged-out-error`) | `Try again` | bare `<button>` (dead) | wrapped in `<a href="{success}.html">` -> the page's own success state | error -> retry -> loaded (T8-style recovery). Every *other* error screen (Event Detail, My Bets, Wallet, My/Public Profile, Notifications) already linked `Try again`; the feed + category errors were the only ones left naked. |
+| 2 | `deposit-error-card` | `Try another card` | bare `<button>` (dead) | wrapped in `<a href="deposit.html">` -> the Deposit form | MJ T2: card declined -> "try another card" -> back to **DEP**. |
+
+Deliberately NOT changed (verified non-navigational actions, not dead-ends - each
+screen has other real exits): `Share` / `Share as text` (OS share sheet, SJ1
+"shares yes" leaves the app), `Enable notifications` / `Open system settings` /
+`Not now` (OS permission prompts), `Clear filters` / `Notify me of new ... events`
+(in-page filter / subscribe, and the empty pages also carry `Browse events` ->
+feed), `Open Transak directly` (external), `Confirm withdrawal` (Wallet withdrawal
+is P3-6 deferred, not a built flow), `Add funds` on `deposit-minimum-not-met` (the
+validation-blocked confirm), and `Connect a USDC wallet ...` on the deposit errors
+(the Crypto-Native wallet-connect surface is abstracted - kept naked on purpose,
+consistent across both deposit error pages). Footer/dialog `Terms` / `Privacy`
+stay `href="#"` grey-box placeholders.
+
+Also confirmed as intentional (not a gap): resolved bets are reached through the
+My Bets **History tab** (which links each row to Win / Loss), not from a
+"recently-resolved" block on the Active tab - this matches the existing
+`active-bets-empty-resolved` copy "See resolved bets (History tab)". The FJ5
+"finds the resolved item -> Loss Screen" intent is satisfied via History.
+
+Health after this pass: 0 em-dash, 0 broken internal links across all 99 pages;
+11 files edited (10 `Try again` + 1 `Try another card`), link wrappers only - no
+copy, structure, or chrome changed.
+
+## Coverage audit (2026-07-07, step 8 - roll out to the whole product)
+
+The main flow was wired in step 7; step 8 verifies the roll-out is complete -
+every screen and every state in `IA/sitemap.md` "## Screens" has a wireframe, with
+nothing left orphaned. For our project this is a **coverage verification**, not new
+construction: the wireframe build already produced the full set (99 pages), so
+fanning out builder agents would rebuild what exists. Method: extract the canonical
+screen + state inventory from `sitemap.md`, diff it against the files on disk.
+
+Result: full coverage, 99/99, zero gaps.
+
+| Sitemap screen | States required (sitemap) | Wireframes | ✓ |
+|---|---|---|---|
+| Event Feed (× auth) | loading, empty, error, push-permission-missing (logged-in only) | `event-feed{,-empty,-error,-loading,-push-permission-missing}` + `-logged-out{,-empty,-error,-loading}` (9) | ✓ |
+| Category page ×4 (× auth) | success, empty, error, loading | `{politics,crypto,culture,general}{,-empty,-error,-loading,-logged-out,-logged-out-empty,-logged-out-error,-logged-out-loading}` (32) | ✓ |
+| Event Detail (× auth) | loading, error, resolved-while-reading, pre-selected entry; views binary/multi; bet-panel intent/insufficient/reconcile/processing/on-chain-error | `event-detail{,-multi,-resolved,-loading,-error,-bet-processing,-bet-reconcile,-bet-insufficient,-bet-error}` + `-logged-out{,-multi,-error,-loading}` (13) | ✓ |
+| Favorites view | (feed chrome) empty, loading | `favorites{,-empty,-loading}` (3) | ✓ |
+| Sign In / Register | in-progress, error, error-provider-conflict | `sign-in{,-loading,-error,-provider-conflict}` (4) | ✓ |
+| Deposit | in-progress, error-card, error-KYC, widget-load-failure, pending, minimum-not-met | `deposit{,-loading,-error-card,-error-kyc,-widget-load-failure,-pending,-minimum-not-met}` (7) | ✓ |
+| Win Screen | loading, error, payout-pending | `win{,-loading,-error,-payout-pending}` (4) | ✓ |
+| Loss Screen | loading | `loss{,-loading}` (2) | ✓ |
+| Active Bets + Bet History (History tab) | AB: loading, empty-new, empty-resolved, error; History: loading, empty, error | `active-bets{,-empty-new,-empty-resolved,-error,-loading,-history,-history-empty,-history-error,-history-loading}` (9) | ✓ |
+| Notifications | loading, empty, error, push-permission-missing | `notifications{,-empty,-error,-loading,-push}` (5) | ✓ |
+| Wallet | loading, error | `wallet{,-error,-loading}` (3) | ✓ |
+| My Profile | loading, error | `my-profile{,-error,-loading}` (3) | ✓ |
+| Public Profile | loading, error, not-found | `public-profile{,-error,-loading,-not-found}` (4) | ✓ |
+| How It Works | (single state) | `how-it-works` (1) | ✓ |
+
+**Correctly absent (sitemap says "do not build" - not gaps, per "don't invent states not in the table"):**
+- **Bet Screen** - dissolved into the Event Detail bet panel (build pass #3); its states live as Event Detail bet-panel states.
+- **Pre-selected entry variant** (Event Detail) - a variant of the bet-panel *intent* state (panel opens with the side pre-selected), not a separate page. Folded into intent, as designed.
+- **Orphans `[SIROTA]`** - Settings / Notification Preferences, Leaderboard, Help/FAQ: no confirmed job maps to them; sitemap says "do not build until a job is confirmed".
+- **Deferred cosmetic states** - Wallet `balance-syncing` and My Profile `empty-state`: sitemap marks both "deferred to wireframe spec". The Wallet withdrawal is a flow inside Wallet (states pending/confirmed/failed), not a separate screen.
+
+Consistency after this pass: the set is unchanged since the 2026-06-29 re-critique
+except the step-6 microcopy edits (text) and the step-7 flow-wiring edits (link
+wrappers on 11 files); both were re-verified at 0 em-dash / 0 broken internal links
+across all 99 pages. No screen is orphaned; nothing new invented.
+
+## Final defect pass (2026-07-07, step 9 - check and finalize)
+
+The closing sweep across all six defect categories - style leak, placeholders,
+missing states, dead-ends, zone-without-action, off-map - run after the step-6
+microcopy rewrite (text) and the step-7 flow-wiring edits (link wrappers), to catch
+any regression before finalizing. Method: mechanical greps over all 99 pages plus
+the step-7/8 audit tooling re-run.
+
+Result: no new defects; the set is clean in every category. Dead-ends and missing
+states (the priority categories) were already closed in steps 7 and 8 and re-verify
+clean here.
+
+| Category | Check | Verdict |
+|---|---|---|
+| Style leak | non-grey hex colors (R!=G!=B), gradients, colored shadows, emoji | **clean** - 0 non-grey colors, 0 gradients, 0 emoji; the only `box-shadow` is `inset 0 -2px 0 #777` (a grey 2px underline affordance, no blur/elevation, palette-compliant) |
+| Placeholders / leaked codes | internal codes (T1/T2/T3/S5), spec-notes, dev jargon, TODO/lorem | **clean** - the only remaining `(T11)` is inside `<nav class="state-switch">` ("Card failed (T11)"), the wireframe state-switcher tooling, not product copy. The `*placeholder` / `licensing line` / `Tagline` / `Sample wireframe content` strings are the intentional honest grey-box stand-ins kept by design (footer + card thumbnails + win share-card image) |
+| Missing states | sitemap state list vs files on disk | **clean** - 99/99 coverage confirmed in the step-8 coverage audit; deliberate exclusions (Bet Screen dissolved, `[SIROTA]` orphans, deferred cosmetic states) are correct |
+| Dead-ends | broken internal links; naked flow-edge buttons | **clean** - 0 broken internal links; 0 naked `Try again` / `Try another card` (fixed in step 7) |
+| Zone without action | interactive-looking zones with no handler | **clean** - actionable zones wired (step-7 flow audit); the only action-free zones are the intentional grey-box placeholders |
+| Off-map | files not mapping to a `sitemap.md` screen | **clean** - all 99 files map to a sitemap screen family; no orphan pages (`[SIROTA]` screens correctly unbuilt) |
+
+Health: 0 em-dash, 0 broken internal links, 0 style leaks, 0 leaked codes across
+all 99 pages. The wireframe set is final. No files changed in this pass (verification
+only).
+
+## Status-line removal (2026-07-07)
+
+Removed the `.page-label` meta bar from the top of every wireframe - the tooling
+caption reading `Wireframe: {screen} | {auth} - state: {state} | responsive
+(mobile-first) | file: wireframes/{file}.html`. It was scaffolding, not part of the
+screen, and cluttered the top of the page. Deleted the `<div class="page-label">`
+block from all 99 pages (the now-unused `.page-label` CSS rule is left in place,
+harmless).
+
+Because that bar had `padding-left: 104px` that housed the fixed "Screens"
+drawer-toggle, removing it let the toggle overlap the first `.state-switch` chip at
+widths below 1440px (where the toggle floats; at >=1440px the screen-tree is a
+permanent sidebar and the toggle is hidden, so the desktop view was already clean).
+Fix: `body { padding-top: 44px }` at narrow widths, reset to `0` in the
+`@media (min-width:1440px)` block - a clean top strip for the floating toggle.
+Verified clean at 1280px and 1600px. The `.state-switch` state navigator is kept.
+
+**Follow-up: state-switch removed too (same day).** The top `.state-switch`
+navigator (the `Auth: Logged in / Logged out` and `State: Success / Empty / Error /
+...` chip rows) was also removed from all 99 pages - it duplicated the left
+screen-tree, which already lists every screen family with its auth variants and
+states. Removing both bars leaves a clean top: just the floating "Screens"
+drawer-toggle (in its 44px strip), then the product screen. All state / auth
+navigation stays reachable via the screen-tree drawer. The `.state-switch` CSS is
+left in place (unused, harmless). 0 broken links, 0 em-dash.

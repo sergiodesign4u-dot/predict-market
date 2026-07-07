@@ -14,7 +14,7 @@
        Header is the same lean component at all widths (logo + icon cluster);
        the second-level category nav sits directly under it. */
     * { box-sizing: border-box; }
-    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; }
+    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; padding-top: 44px; }
 
     .page-label { border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px 6px 104px; font-size: 12px; }
 
@@ -51,7 +51,7 @@
     @media (min-width: 1440px) {
       .wf-nav { transform: none; }
       .wf-toggle, .wf-overlay { display: none !important; }
-      body { padding-left: 250px; }
+      body { padding-left: 250px; padding-top: 0; }
       .page-label { padding-left: 10px; }
     }
 
@@ -696,21 +696,9 @@
     </ul>
   </nav>
 
-  <div class="page-label">
-    <strong>Wireframe:</strong> My Profile &nbsp;|&nbsp;
-    logged in - state: success (track record + portfolio) &nbsp;|&nbsp;
-    responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/my-profile.html
-  </div>
-
-  <nav class="state-switch" aria-label="States of this screen">
-    <div class="ss-row"><span class="ss-label">State</span><a href="my-profile.html" aria-current="page">Success</a><a href="my-profile-loading.html">Loading</a><a href="my-profile-error.html">Error</a></div>
-  </nav>
-
   <div class="device">
     <!-- Header (lean: logo = Events/home, right icon cluster) -->
     <header class="app-header">
-      <span class="zone-tag">zone: header (lean, same at all widths; logo = Events home)</span>
       <div class="row">
         <div class="left">
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
@@ -739,9 +727,8 @@
               </span>
             </summary>
             <div class="dropdown notif-drop" role="menu">
-              <span class="zone-tag">latest notifications (tap a row, or see all)</span>
               <ul>
-                <li><a href="win.html"><strong>Position resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+                <li><a href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
                 <li><a href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
                 <li><a href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
               </ul>
@@ -754,11 +741,10 @@
               <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </summary>
             <div class="dropdown" role="menu">
-              <span class="zone-tag">avatar dropdown (collapsed by default, click to open)</span>
               <ul>
                 <li><a href="my-profile.html"><button type="button" role="menuitem">My Profile</button></a></li>
                 <li><a href="active-bets.html"><button type="button" role="menuitem">My Bets</button></a></li>
-                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet / Deposit</button></a></li>
+                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet</button></a></li>
                 <li><a href="how-it-works.html"><button type="button" role="menuitem">How It Works</button></a></li>
                 <li><a href="event-feed-logged-out.html"><button type="button" role="menuitem">Logout</button></a></li>
               </ul>
@@ -768,7 +754,6 @@
       </div>
     </header>
     <main class="feed">
-      <span class="zone-tag">zone: My Profile (Portfolio account hub: portfolio summary on top, then public track record; SJ1 / SJ2)</span>
       <div class="feed-inner">
         <div class="feed-head"><h2>My Profile</h2></div>
         <p class="pos-status" style="margin:12px 0 4px;text-transform:uppercase;letter-spacing:.04em;">Portfolio</p>
@@ -779,7 +764,7 @@
             <span class="pos-fig">In-play<b>$50.00</b></span>
           </div>
           <div class="cta-bar" style="position:static;padding:8px 0 0;border:none;background:none;">
-            <button type="button" data-open="deposit">Deposit</button>
+            <button type="button" data-open="deposit">Add funds</button>
             <a href="wallet.html" style="flex:1;"><button type="button" style="width:100%;">Open Wallet</button></a>
           </div>
         </article>
@@ -839,7 +824,6 @@
     </main>
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
       <ul>
         <li><a href="event-feed.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
@@ -861,7 +845,6 @@
     </nav>
     <!-- Footer (global element) -->
     <footer class="app-footer">
-      <span class="zone-tag">zone: footer (global, reused on every screen; TBD = not in MVP)</span>
       <div class="footer-inner">
 
         <div class="footer-top">
@@ -895,7 +878,6 @@
                 <span class="tbd">TBD</span>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
                 <ul>
                   <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
                   <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
@@ -911,7 +893,7 @@
           <div class="footer-cols">
 
             <nav class="footer-col" aria-label="Markets">
-              <h3>Markets</h3>
+              <h3>Events</h3>
               <p class="sub-label">By category</p>
               <ul>
                 <li><a href="#">Politics</a></li>
@@ -923,7 +905,7 @@
               <p class="sub-label">By topic</p>
               <ul>
                 <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
-                <li><a href="#">View all markets</a></li>
+                <li><a href="#">View all events</a></li>
               </ul>
             </nav>
 
@@ -979,42 +961,6 @@
 
       </div>
     </footer>
-
-  </div>
-
-  <div class="side">
-    <aside class="annotations" aria-label="Annotations">
-      <span class="zone-tag">annotations: zone to job / finding</span>
-      <ol>
-        <li><strong>Track record = reputation</strong> -&gt; SJ2: total bets, win rate and resolved predictions are the public proof of being right. Reputation is the track record, not the balance.</li>
-        <li><strong>Share card gallery (past wins)</strong> -&gt; SJ1: the cards generated on the Win Screen collect here, a re-shareable history of called-it moments.</li>
-        <li><strong>Portfolio summary on top</strong> -&gt; this screen IS the mobile Portfolio account hub (slot 4): My Profile extended with Portfolio / Cash + Deposit / Wallet above the track record (IA/sitemap.md slot-4 note). Identity and money in one hub, identity first.</li>
-        <li><strong>Editable name &amp; avatar</strong> -&gt; the owner can edit display name and avatar (the only write controls; the record itself is not editable).</li>
-        <li><strong>Reached from the avatar dropdown (desktop) / Portfolio slot (mobile)</strong> -&gt; account-bound, logged-in only - no auth axis. The Portfolio slot is the current marker.</li>
-      </ol>
-    </aside>
-
-    <div class="nav-col">
-      <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (identity hub)</span>
-<pre>Identity / reputation (SJ1 + SJ2):
-
-avatar dropdown (desktop) ----+
-Portfolio slot (mobile) ------+--&gt; [My Profile]   &lt;- current
-   |                                  (= account hub: portfolio
-   |                                   summary + track record)
-   +-- Win Screen --&gt; Share Card --&gt; gallery here</pre>
-        <p class="ref">Flow position: identity surface off the betting spine (IA/sitemap.md
-          My Profile). Serves SJ1 (share history) and SJ2 (public reputation).</p>
-      </section>
-
-      <section class="navtree" aria-label="States">
-        <span class="zone-tag">states of this screen</span>
-        <p class="ref">success (track record + gallery + portfolio summary), loading
-          (profile fetch), error (retry). empty-state (first-time, no predictions) deferred.
-          Account-bound, no auth axis.</p>
-      </section>
-    </div>
 
   </div>
 
@@ -1139,7 +1085,6 @@ Portfolio slot (mobile) ------+--&gt; [My Profile]   &lt;- current
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
     </div>
-    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
@@ -1154,11 +1099,10 @@ Portfolio slot (mobile) ------+--&gt; [My Profile]   &lt;- current
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
-      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
-      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
-    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
   </dialog>
 
   <script>

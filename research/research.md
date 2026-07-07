@@ -121,3 +121,49 @@ Based on JTBD (J2 primary: engaged spectator with skin in the game):
 - [ ] AMM mechanism: LMSR vs CPMM - which to implement?
 - [ ] Fiat on-ramp providers: MoonPay, Transak, Stripe (crypto) - pricing and UX comparison needed
 - [ ] Futuur's crypto + fiat hybrid - how exactly do they handle currency switching?
+
+---
+
+## Competitor language (Мова конкурентів)
+
+> Added 2026-07-03 to ground the product voice guide (`voice/voice.md`). Verbatim interface + marketing copy pulled from competitor sites (web fetch, July 2026) plus the prior screen captures and `benchmark-trust.md`. The value is the shared pattern at the end: where every competitor writes the same, our difference is voice.
+
+### Polymarket (polymarket.com, verbatim)
+- Tagline: **"The World's Largest Prediction Market™"**
+- Sort / nav: "Browse · New · Trending · Popular · Liquid · Ending Soon · Competitive"
+- Bet interface: **"Buy Yes / No"** priced in cents (e.g. "Buy Yes 37¢"); card meta "$5M Vol"
+- Risk (footer only): "Trading involves substantial risk of loss."
+
+### Manifold (manifold.markets/about, verbatim)
+- Tagline: **"Manifold is the world's largest social prediction market."**
+- Sub: "Get accurate real-time odds on politics, tech, sports, and more."
+- CTA: **"Get Ṁ1,000 to start trading!"**
+- Explainer: **"Our probabilities are created by users buying and selling shares of a market."**
+- Mission: "Combat misleading news by incentivising traders to be fast and correct."
+- Note: "Many people who don't like betting still use Manifold to get reliable news."
+
+### Metaculus (metaculus.com, verbatim)
+- Tagline: **"Clarity in a complex world"**
+- Sub: "Collective intelligence for the public good"
+- Descriptor: "...an online forecasting platform and aggregation engine working to improve human reasoning and coordination..."
+- Metric: "3.99M+ Predictions"; primary action button: **"Predict"**
+
+### Kalshi (prior captures + `benchmark-trust.md`; site rate-limited on refetch)
+- CFTC-regulated badge as the headline trust signal (C1: 5/5)
+- Prices shown in cents; "LIVE" hero card; auto-modal signup fired on entry
+- Interface density trending toward a "Bloomberg Terminal" look
+
+### Adjacent tone models (from `benchmark-trust.md` / `competitive-analysis.md`)
+- Bet365: "world's favourite online sports betting company"; responsible-gambling line **"When the fun stops, stop."**
+- Coinbase: **"Your crypto is safe here"** (funds-protection copy)
+- Robinhood: "commission-free"; plain-English errors; **confetti on first trade**
+- Cash App: **"No jargon"**
+
+### The shared pattern - where everyone writes the same
+1. **Lead with the naked number** (%, cents, a gauge) and no reason beside it. "The % is the language of the genre" (`competitive-analysis.md`); no competitor answers "why this price?".
+2. **Superlative scale as the headline** - "world's largest / world's favourite / collective intelligence." At launch we cannot honestly compete on this claim.
+3. **Trading-desk vocabulary** - "Buy Yes shares", "cents", "liquidity", Bloomberg density. Trader's language, not a spectator's.
+4. **Trust / funds copy buried or absent** - Polymarket has no "where is my USDC" line; risk sits in the footer.
+5. **The loss moment is undesigned** - nobody has a "here's what happened, here's your next step" screen after a resolution.
+
+**Our difference is voice, not features:** the sentence next to the number, one plain trust line before the ask, spectator words, honest specifics over superlatives, and a designed loss. Turned into rules in `voice/voice.md`.

@@ -14,7 +14,7 @@
        Header is the same lean component at all widths (logo + icon cluster);
        the second-level category nav sits directly under it. */
     * { box-sizing: border-box; }
-    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; }
+    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; padding-top: 44px; }
 
     .page-label { border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px 6px 104px; font-size: 12px; }
 
@@ -51,7 +51,7 @@
     @media (min-width: 1440px) {
       .wf-nav { transform: none; }
       .wf-toggle, .wf-overlay { display: none !important; }
-      body { padding-left: 250px; }
+      body { padding-left: 250px; padding-top: 0; }
       .page-label { padding-left: 10px; }
     }
 
@@ -682,21 +682,9 @@
     </ul>
   </nav>
 
-  <div class="page-label">
-    <strong>Wireframe:</strong> Public Profile &nbsp;|&nbsp;
-    viewing another user - state: success (read-only track record) &nbsp;|&nbsp;
-    responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/public-profile.html
-  </div>
-
-  <nav class="state-switch" aria-label="States of this screen">
-    <div class="ss-row"><span class="ss-label">State</span><a href="public-profile.html" aria-current="page">Success</a><a href="public-profile-loading.html">Loading</a><a href="public-profile-error.html">Error</a><a href="public-profile-not-found.html">Not found</a></div>
-  </nav>
-
   <div class="device">
     <!-- Header (logged-out: no account; Log in / Sign up replace balance and avatar) -->
     <header class="app-header">
-      <span class="zone-tag">zone: header (logged-out: no account; Log in / Sign up replace balance and avatar)</span>
       <div class="row">
         <div class="left">
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
@@ -712,14 +700,13 @@
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
           </button>
           <div class="auth-btns">
-            <button type="button" class="auth-btn" data-open="signin">Log in</button>
+            <button type="button" class="auth-btn" data-open="signin">Sign in</button>
             <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
           </div>
         </div>
       </div>
     </header>
     <main class="feed">
-      <span class="zone-tag">zone: Public Profile (another user, read-only; reached via a shared win card or leaderboard; SJ2)</span>
       <div class="feed-inner">
         <div class="feed-head"><h2>Profile</h2></div>
         <div class="idrow">
@@ -778,7 +765,6 @@
     </main>
     <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <span class="zone-tag">zone: bottom nav (mobile only; logged-out slot 4 = Sign in)</span>
       <ul>
         <li><a href="event-feed-logged-out.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
@@ -800,7 +786,6 @@
     </nav>
     <!-- Footer (global element) -->
     <footer class="app-footer">
-      <span class="zone-tag">zone: footer (global, reused on every screen; TBD = not in MVP)</span>
       <div class="footer-inner">
 
         <div class="footer-top">
@@ -834,7 +819,6 @@
                 <span class="tbd">TBD</span>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
                 <ul>
                   <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
                   <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
@@ -850,7 +834,7 @@
           <div class="footer-cols">
 
             <nav class="footer-col" aria-label="Markets">
-              <h3>Markets</h3>
+              <h3>Events</h3>
               <p class="sub-label">By category</p>
               <ul>
                 <li><a href="#">Politics</a></li>
@@ -862,7 +846,7 @@
               <p class="sub-label">By topic</p>
               <ul>
                 <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
-                <li><a href="#">View all markets</a></li>
+                <li><a href="#">View all events</a></li>
               </ul>
             </nav>
 
@@ -918,43 +902,6 @@
 
       </div>
     </footer>
-
-  </div>
-
-  <div class="side">
-    <aside class="annotations" aria-label="Annotations">
-      <span class="zone-tag">annotations: zone to job / finding</span>
-      <ol>
-        <li><strong>Same data, read-only</strong> -&gt; SJ2: another user's public track record. No balance, no private data, no edit controls, no portfolio summary.</li>
-        <li><strong>Reached via a shared win card or leaderboard</strong> -&gt; the SJ1 share lands a new or existing user here. In-app discovery of other profiles is deferred post-MVP (G3); the MVP path is the external shared-card link.</li>
-        <li><strong>Dan (Crypto Native) uses this more</strong> -&gt; reputation-first behavior; Alex (News Junkie) arrives here secondarily, via a shared card.</li>
-        <li><strong>not-found / link-expired</strong> -&gt; a stale or removed profile link routes to a clear dead-end recovery (back to the Event Feed), never a blank page.</li>
-        <li><strong>No auth axis</strong> -&gt; a public page about another user; the viewer's own login state does not change what is shown. Not a browse screen, so no logged-in / logged-out variants are built.</li>
-      </ol>
-    </aside>
-
-    <div class="nav-col">
-      <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (external entry)</span>
-<pre>Public reputation (SJ2):
-
-shared win card / leaderboard link
-   |
-   v
-[Public Profile]   &lt;- current (read-only, another user)
-   |
-   '-- (in-app discovery of profiles: deferred post-MVP, G3)</pre>
-        <p class="ref">Flow position: SJ2 public reputation surface, reached via external
-          shared-card link at MVP (IA/sitemap.md Public Profile). Read-only.</p>
-      </section>
-
-      <section class="navtree" aria-label="States">
-        <span class="zone-tag">states of this screen</span>
-        <p class="ref">success (read-only track record + gallery), loading (profile fetch),
-          error (retry or back to feed), not-found / link-expired (stale link -&gt; Event Feed).
-          No auth axis.</p>
-      </section>
-    </div>
 
   </div>
 
@@ -1079,7 +1026,6 @@ shared win card / leaderboard link
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
     </div>
-    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
@@ -1094,11 +1040,10 @@ shared win card / leaderboard link
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
-      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
-      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
-    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
   </dialog>
 
   <script>

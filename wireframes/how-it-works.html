@@ -14,7 +14,7 @@
        Header is the same lean component at all widths (logo + icon cluster);
        the second-level category nav sits directly under it. */
     * { box-sizing: border-box; }
-    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; }
+    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; padding-top: 44px; }
 
     .page-label { border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px 6px 104px; font-size: 12px; }
 
@@ -51,7 +51,7 @@
     @media (min-width: 1440px) {
       .wf-nav { transform: none; }
       .wf-toggle, .wf-overlay { display: none !important; }
-      body { padding-left: 250px; }
+      body { padding-left: 250px; padding-top: 0; }
       .page-label { padding-left: 10px; }
     }
 
@@ -677,21 +677,9 @@
     </ul>
   </nav>
 
-  <div class="page-label">
-    <strong>Wireframe:</strong> How It Works &nbsp;|&nbsp;
-    state: success (static trust page) &nbsp;|&nbsp;
-    responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/how-it-works.html
-  </div>
-
-  <nav class="state-switch" aria-label="States of this screen">
-    <div class="ss-row"><span class="ss-label">State</span><a href="how-it-works.html" aria-current="page">Static trust page</a></div>
-  </nav>
-
   <div class="device">
     <!-- Header (logged-out: no account; Log in / Sign up replace balance and avatar) -->
     <header class="app-header">
-      <span class="zone-tag">zone: header (logged-out: no account; Log in / Sign up replace balance and avatar)</span>
       <div class="row">
         <div class="left">
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
@@ -707,20 +695,19 @@
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
           </button>
           <div class="auth-btns">
-            <button type="button" class="auth-btn" data-open="signin">Log in</button>
+            <button type="button" class="auth-btn" data-open="signin">Sign in</button>
             <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
           </div>
         </div>
       </div>
     </header>
     <main class="feed">
-      <span class="zone-tag">zone: How It Works (trust declaration, not a FAQ; funds protection + resolution + on-chain proof; FJ4 / EJ2)</span>
       <div class="feed-inner">
         <div class="feed-head"><h2>How It Works</h2></div>
         <p class="hiw-lead">You always know what you are doing, why, and what happens to your money. This is a promise, not a FAQ.</p>
         <section class="hiw-sec">
           <h3>Your money is held 1:1</h3>
-          <p>Your USDC is held 1:1. We never lend it, invest it, or move it. It is yours until you place a bet or withdraw - deposits, payouts and withdrawals are all recorded in your Wallet.</p>
+          <p>Your USDC is held 1:1. We never lend it, invest it, or move it. It is yours until you place a bet or withdraw - added funds, payouts and withdrawals are all recorded in your Wallet.</p>
         </section>
         <section class="hiw-sec">
           <h3>How events resolve</h3>
@@ -737,22 +724,20 @@
         </section>
         <article class="pos" aria-label="Resolved markets">
           <div class="pos-figures" style="font-size:11px;">
-            <span class="pos-fig">Markets resolved<b>1,240</b></span>
+            <span class="pos-fig">Events resolved<b>1,240</b></span>
             <span class="pos-fig">On-chain proofs<b>100%</b></span>
             <span class="pos-fig">USDC held 1:1<b>always</b></span>
           </div>
-          <span class="pos-status">Resolved-market count as social proof (benchmark-trust.md Top 3 trust mechanisms).</span>
+          
         </article>
         <div class="cta-bar" style="position:static;border:none;background:none;padding:10px 0 0;">
           <a href="event-feed.html" style="flex:1;"><button type="button" style="width:100%;">Browse events</button></a>
           <button type="button" data-open="deposit" style="flex:1;">Add funds</button>
         </div>
-        <p class="fine">Reachable before you deposit anything (from the menu and the footer) and from the Deposit dialog "learn more" link, so the answer to "what happens to my money" comes before the money does.</p>
       </div>
     </main>
     <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <span class="zone-tag">zone: bottom nav (mobile only; logged-out slot 4 = Sign in)</span>
       <ul>
         <li><a href="event-feed-logged-out.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
@@ -774,7 +759,6 @@
     </nav>
     <!-- Footer (global element) -->
     <footer class="app-footer">
-      <span class="zone-tag">zone: footer (global, reused on every screen; TBD = not in MVP)</span>
       <div class="footer-inner">
 
         <div class="footer-top">
@@ -808,7 +792,6 @@
                 <span class="tbd">TBD</span>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
                 <ul>
                   <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
                   <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
@@ -824,7 +807,7 @@
           <div class="footer-cols">
 
             <nav class="footer-col" aria-label="Markets">
-              <h3>Markets</h3>
+              <h3>Events</h3>
               <p class="sub-label">By category</p>
               <ul>
                 <li><a href="#">Politics</a></li>
@@ -836,7 +819,7 @@
               <p class="sub-label">By topic</p>
               <ul>
                 <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
-                <li><a href="#">View all markets</a></li>
+                <li><a href="#">View all events</a></li>
               </ul>
             </nav>
 
@@ -892,40 +875,6 @@
 
       </div>
     </footer>
-
-  </div>
-
-  <div class="side">
-    <aside class="annotations" aria-label="Annotations">
-      <span class="zone-tag">annotations: zone to job / finding</span>
-      <ol>
-        <li><strong>Funds protection, one sentence</strong> -&gt; FJ4 + EJ2: "Your USDC is held 1:1". The clear answer to "what happens to my money", stated as a promise.</li>
-        <li><strong>Resolution process: who decides, what evidence, on-chain proof</strong> -&gt; the core trust differentiator: no competitor explains resolution at this depth. Conditions written up front, resolved against public evidence, recorded on-chain.</li>
-        <li><strong>Pricing and payout, transparently</strong> -&gt; AMM timing (earlier = better), fee only on a win, no subscription. Teaching that used to be in onboarding now lives on a live trust page.</li>
-        <li><strong>Resolved-markets count as social proof</strong> -&gt; benchmark-trust.md Top 3 mechanisms: a real number of settled markets earns more trust than copy.</li>
-        <li><strong>A trust declaration, not a FAQ</strong> -&gt; written as a promise. Reachable before any deposit (menu / footer) and from the Deposit dialog, so FJ4 can close before the first deposit.</li>
-      </ol>
-    </aside>
-
-    <div class="nav-col">
-      <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (trust anchor)</span>
-<pre>Trust anchor (FJ4 + EJ2):
-
-main menu / footer ------+
-Deposit dialog ("learn   +--&gt; [How It Works]   &lt;- current
-  more" link) -----------+         |
-                                   '-- Browse events / Add funds</pre>
-        <p class="ref">Flow position: pre-bet trust signal, reachable before depositing
-          (IA/sitemap.md How It Works; IA/flows.md Deposit moreInfo -&gt; HIW -&gt; back). Serves FJ4, EJ2.</p>
-      </section>
-
-      <section class="navtree" aria-label="States">
-        <span class="zone-tag">states of this screen</span>
-        <p class="ref">success (static trust page). A static declaration - no loading / error /
-          empty states. Reachable logged-in or logged-out (no auth axis built; content is identical).</p>
-      </section>
-    </div>
 
   </div>
 
@@ -1050,7 +999,6 @@ Deposit dialog ("learn   +--&gt; [How It Works]   &lt;- current
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
     </div>
-    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
@@ -1065,11 +1013,10 @@ Deposit dialog ("learn   +--&gt; [How It Works]   &lt;- current
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
-      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
-      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
-    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
   </dialog>
 
   <script>

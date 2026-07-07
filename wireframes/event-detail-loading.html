@@ -14,7 +14,7 @@
        Header is the same lean component at all widths (logo + icon cluster);
        the second-level category nav sits directly under it. */
     * { box-sizing: border-box; }
-    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; }
+    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; padding-top: 44px; }
 
     .page-label { border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px 6px 104px; font-size: 12px; }
 
@@ -51,7 +51,7 @@
     @media (min-width: 1440px) {
       .wf-nav { transform: none; }
       .wf-toggle, .wf-overlay { display: none !important; }
-      body { padding-left: 250px; }
+      body { padding-left: 250px; padding-top: 0; }
       .page-label { padding-left: 10px; }
     }
 
@@ -719,23 +719,9 @@
     </ul>
   </nav>
 
-  <div class="page-label">
-    <strong>Wireframe:</strong> Event Detail &nbsp;|&nbsp;
-    logged in - state: loading (fetching event) &nbsp;|&nbsp;
-    responsive (mobile-first) &nbsp;|&nbsp;
-    file: wireframes/event-detail-loading.html
-  </div>
-
-  <nav class="state-switch" aria-label="States of this screen (auth, view and bet-panel state)">
-    <div class="ss-row"><span class="ss-label">Auth</span><a href="event-detail-loading.html" aria-current="page">Logged in</a><a href="event-detail-logged-out-loading.html">Logged out</a></div>
-    <div class="ss-row"><span class="ss-label">View</span><a href="event-detail.html">Binary</a><a href="event-detail-multi.html">Multi</a><a href="event-detail-error.html">Error</a><a href="event-detail-loading.html" aria-current="page">Loading</a><a href="event-detail-resolved.html">Resolved</a></div>
-    <div class="ss-row"><span class="ss-label">Bet</span><a href="event-detail.html">Intent</a><a href="event-detail-bet-insufficient.html">Insufficient</a><a href="event-detail-bet-reconcile.html">S5 reconcile</a><a href="event-detail-bet-processing.html">Processing</a><a href="event-detail-bet-error.html">On-chain error</a></div>
-  </nav>
-
   <div class="device">
     <!-- Header (lean: logo = Events/home, right icon cluster) -->
     <header class="app-header">
-      <span class="zone-tag">zone: header (lean, same at all widths; logo = Events home)</span>
       <div class="row">
         <div class="left">
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
@@ -764,9 +750,8 @@
               </span>
             </summary>
             <div class="dropdown notif-drop" role="menu">
-              <span class="zone-tag">latest notifications (tap a row, or see all)</span>
               <ul>
-                <li><a href="win.html"><strong>Position resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+                <li><a href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
                 <li><a href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
                 <li><a href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
               </ul>
@@ -779,11 +764,10 @@
               <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </summary>
             <div class="dropdown" role="menu">
-              <span class="zone-tag">avatar dropdown (collapsed by default, click to open)</span>
               <ul>
                 <li><a href="my-profile.html"><button type="button" role="menuitem">My Profile</button></a></li>
                 <li><a href="active-bets.html"><button type="button" role="menuitem">My Bets</button></a></li>
-                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet / Deposit</button></a></li>
+                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet</button></a></li>
                 <li><a href="how-it-works.html"><button type="button" role="menuitem">How It Works</button></a></li>
                 <li><a href="event-feed-logged-out.html"><button type="button" role="menuitem">Logout</button></a></li>
               </ul>
@@ -794,7 +778,6 @@
     </header>
     <!-- Second-level navigation: categories route to their own pages (links) -->
     <nav class="cat-nav" aria-label="Categories (second level)">
-      <span class="zone-tag">zone: second-level navigation (categories; active = this event's category)</span>
       <ul>
         <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
         <li aria-current="page"><a href="politics.html"><button type="button">Politics</button></a></li>
@@ -804,7 +787,6 @@
       </ul>
     </nav>
     <main class="feed">
-      <span class="zone-tag">zone: event detail (loading: event data fetching)</span>
       <div class="ed-layout">
         <div class="ed-main" aria-busy="true">
           <article class="card skeleton" style="border:none;">
@@ -834,7 +816,6 @@
     </main>
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <span class="zone-tag">zone: bottom nav (mobile only, icons; slot 4 = Portfolio with balance)</span>
       <ul>
         <li aria-current="page"><a href="event-feed.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
@@ -856,7 +837,6 @@
     </nav>
     <!-- Footer (global element) -->
     <footer class="app-footer">
-      <span class="zone-tag">zone: footer (global, reused on every screen; TBD = not in MVP)</span>
       <div class="footer-inner">
 
         <div class="footer-top">
@@ -890,7 +870,6 @@
                 <span class="tbd">TBD</span>
               </summary>
               <div class="filter-panel">
-                <span class="zone-tag">language (placeholder, English-only at MVP)</span>
                 <ul>
                   <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
                   <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
@@ -906,7 +885,7 @@
           <div class="footer-cols">
 
             <nav class="footer-col" aria-label="Markets">
-              <h3>Markets</h3>
+              <h3>Events</h3>
               <p class="sub-label">By category</p>
               <ul>
                 <li><a href="#">Politics</a></li>
@@ -918,7 +897,7 @@
               <p class="sub-label">By topic</p>
               <ul>
                 <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
-                <li><a href="#">View all markets</a></li>
+                <li><a href="#">View all events</a></li>
               </ul>
             </nav>
 
@@ -974,36 +953,6 @@
 
       </div>
     </footer>
-
-  </div>
-
-  <div class="side">
-    <aside class="annotations" aria-label="Annotations">
-      <span class="zone-tag">annotations: zone to job / finding</span>
-      <ol>
-        <li><strong>Sticky bet panel (right rail desktop / bottom dock mobile)</strong> -&gt; fast entry (MJ): the bet stays in view while scrolling. Binary = YES / NO; multi-outcome = pick one outcome, then YES / NO on it.</li>
-        <li><strong>Bet states migrated into the panel</strong> -&gt; intent, insufficient-balance (inline guard), S5 reconcile (price moved during the gate), execute processing, on-chain error (T3). The old standalone Bet modal is gone; event-closed is the resolved state.</li>
-        <li><strong>Price chart (schematic) + Why this price</strong> -&gt; FJ2 differentiator, below the chart and facts so the panel leads.</li>
-        <li><strong>Content tabs (Comments / Top Holders / Positions / Activity)</strong> -&gt; below the event content, a Polymarket-style tab strip (CSS-only switch). Comments has sort + composer (logged-out prompts sign-in); Positions highlights your row when logged in; Holders and Activity are public. Depth / social proof for FJ2 and engagement.</li>
-        <li><strong>Confirm fires the gate</strong> -&gt; opens the Sign In dialog over this page, then Deposit (insufficient-balance jumps straight to the Deposit dialog).</li>
-        <li><strong>Auth + states</strong> -&gt; logged-in / logged-out, binary / multi success, error (T8), loading, resolved-while-reading.</li>
-      </ol>
-    </aside>
-
-    <div class="nav-col">
-      <section class="navtree" aria-label="Navigation tree">
-        <span class="zone-tag">on-page nav tree (main-flow spine)</span>
-<pre>Event Feed
-   v
-[Event Detail]   &lt;- current (binary; bet panel: intent)
-   v
-Sign In / Deposit (dialogs over the page)
-   v
-Active Bets    (MJ success, T14)</pre>
-        <p class="ref">Flow position: MJ, one node after Event Feed. Bet intent + states
-          live in the panel; the gate (Sign In, Deposit) fires on Confirm as dialogs.</p>
-      </section>
-    </div>
 
   </div>
 
@@ -1128,7 +1077,6 @@ Active Bets    (MJ success, T14)</pre>
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
     </div>
-    <p class="dlg-note">Opens over the current page; closing keeps you here. Error / loading / provider-conflict: see reference pages sign-in-*.html.</p>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
@@ -1143,11 +1091,10 @@ Active Bets    (MJ success, T14)</pre>
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
-      <p class="protect">Your USDC is held 1:1 - we do not lend or invest deposited funds.</p>
-      <p class="fine">Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
-    <p class="dlg-note">Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html.</p>
   </dialog>
 
   <script>
