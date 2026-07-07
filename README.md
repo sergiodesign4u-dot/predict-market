@@ -89,6 +89,31 @@ Event Feed -> Event Detail -> sign-in / deposit gate -> Active Bets.
 
 ---
 
+## Voice
+
+The product voice is **rules, not a mood** - every rule carries an example, an
+anti-example, and the research line it comes from, so every UI line reads the same
+whoever writes it.
+
+- **[`voice/voice.md`](./voice/voice.md)** - the contract: five **principles**
+  (explain the number, trust before the ask, speak to a spectator not a trader,
+  design the loss / mark the win without a fuse, say the specific provable thing),
+  a **lexicon** (event not market, bet not position, Add funds, Save, Sign in,
+  Browse events, Confirm bet), a **forbidden** list (no "Something went wrong",
+  greetings, celebrations, "successfully", exclamations, emoji, apologies, internal
+  codes), and per-element **microcopy** rules.
+- **[`voice/microcopy.md`](./voice/microcopy.md)** - the read-only text inventory
+  (with same-thing / same-action / cliche flags) and the line-by-line rewrite log.
+  Every screen was rewritten against the voice; the closing audit is clean across
+  all 99 pages. The Event Detail social panel was moved from trader vocabulary
+  (Top Holders / Positions / shares) to spectator language (Biggest bets / Bets).
+- **State tone:** errors say what happened and what to do (no joke, no apology),
+  empty states give a way out, and results state the fact without celebrating
+  (Win = "You were right", no confetti; Loss = "Here's what happened", no "bet
+  again").
+
+---
+
 ## Key Docs
 - [CLAUDE.md](./CLAUDE.md) - full project brief, principles, scope, IA summary
 - [wireframes/_conventions.md](./wireframes/_conventions.md) - **Wireframe contract**: grey-box rules, zones, nav, states, the build passes

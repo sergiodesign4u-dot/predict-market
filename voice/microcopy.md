@@ -1127,3 +1127,53 @@ The remaining screen families in the tree, same pattern: only states already pre
 **Checked and deliberately NOT changed:**
 - **Screen-tree label "Deposit"** (`<li class="wf-screen"><a href="deposit.html">Deposit</a>`, on all 99 pages): first flagged as a "footer Deposit link", but on inspection it is the **left screen-tree scaffolding** (the wireframe's IA index of screen families + states), not product copy - the real product `<footer>` carries no deposit link (its funding entry is "Wallet"). This is the IA node name for the screen family (route `deposit.html`), in the same tooling class as the state-switcher chips; it is out of scope for the copy rewrite and left as-is. The user-facing funding action is already "Add funds" everywhere. No lexicon violation remains.
 
+
+### Step 14 - Krok 7 (check and finalize): straggler fixes + content-tabs spectator rewrite
+
+The closing verification pass of the voice workstream (Lesson 05, step 7): a full
+audit of every `wireframes/*.html` against `voice.md` (Lexicon / Forbidden /
+per-element rules) surfaced the lines the screen-by-screen rewrite (Steps 05-13)
+had missed, plus the one item it had deliberately deferred. Method: a
+chrome-stripped visible-text grep for each Lexicon term (market / position / shares
+/ Deposit / bookmark / Log in / trader jargon) and each Forbidden pattern, then
+per-hit judgement (brand name "Predict Market", the voice-sanctioned "the market
+resolved YES/NO", and user content excluded). Clean on `bookmark`, `Log in`,
+`cents/spread/liquidity/order book/buy-sell`, `Oops/Welcome/Congratulations/Sorry`,
+exclamations and emoji. The stragglers and the deferred cluster, fixed:
+
+| Screen(s) | Was | Became | Rule |
+|---|---|---|---|
+| `event-detail-error`, `event-detail-logged-out-error` | **Something went wrong** while loading the event details. Check your connection and try again. | We couldn't load this event. Check your connection and try again. | Forbidden: drop "Something went wrong" |
+| `event-detail-error`, `-logged-out-error`, `-resolved` | CTA **Back to feed** | **Browse events** | Lexicon: one go-to-events label |
+| `event-detail-resolved` | The **market** closed while you were reading **(event-closed)**. ... You hold a **position**, so you can open your result. | The **event** closed while you were reading. ... You hold a **bet**, so you can open your result. | Lexicon (market->event, position->bet) + strip leaked state code |
+| `event-detail-resolved` | CTA **See your position** | **See your bet** | Lexicon: position->bet |
+| `wallet` | In-play is locked in open **positions** until they resolve. | ... in open **bets** until they resolve. | Lexicon: position->bet |
+| `how-it-works` | `.pos-status` "Resolved-market count as social proof **(benchmark-trust.md Top 3 trust mechanisms)**." | *(removed)* | Forbidden: leaked spec-note |
+| `event-detail`, `-multi`, `-logged-out`, `-logged-out-multi` | `.fine` "... Payout depends on when you bet (AMM). **Confirm opens sign-in (over this page), then deposit if needed.**" | "... Payout depends on when you bet (AMM)." | Forbidden: trailing spec-note trimmed |
+
+**Content tabs -> spectator language (the deferred cluster from Step 06, 9 Event
+Detail pages, binary + multi).** The Polymarket-style Comments / Top Holders /
+Positions / Activity strip was built on trader vocabulary; per the user's call it
+was rewritten to a spectator, not a trader, reading (P3):
+
+| Element | Was | Became |
+|---|---|---|
+| Tab labels | **Top Holders** / **Positions** | **Biggest bets** / **Bets** |
+| Holders headers | YES holders / NO holders / Top holders by outcome | Biggest YES bets / Biggest NO bets / Biggest bets by outcome |
+| Holders amount | "1,240 **shares**" | "$1,240" (spectator $, illustrative grey-box figure) |
+| Bets table | columns **Holder · Side · Shares · Avg · Value** | **Bettor · Side · Amount** (dropped the trader Shares/Avg columns; Amount = the $ figure) |
+| Helper | Your row is highlighted. **Positions** update as the **market trades**. | Your bet is highlighted. **Bets** update as the **odds move**. |
+| Logged-out prompt | Sign in to open and track your **position** | Sign in to place and track your **bet** |
+| Activity feed | "whale_07 **bought 500 YES at $0.35** ($175)" / "marketmaven **sold 80 YES at $0.39** ($31)" | "whale_07 **bet $175 on YES**" / "marketmaven **cashed out $31 on YES**" |
+
+Sample usernames and the sample figures stay illustrative (grey-box); the
+"Biggest bets" $ amounts are not reconciled row-for-row against the "Bets" table
+(different sample panels), which is acceptable for a wireframe. **Not touched:** the
+AMM line "Prices move with the market (AMM)" on How It Works (voice.md allows
+"market" in a mechanics gloss); "The market resolved YES/NO" on Win/Loss (voice.md
+P4 example). The stale `_generators/gen_event_detail.py` was **not** regenerated -
+it still holds pre-rewrite copy ("Liquidity", bare "Bet", "One-time market",
+"Bookmark"), so regenerating would revert Steps 05-14; the pages are hand-maintained
+from here (do not regenerate without back-porting the rewrite into the generator).
+
+Health after the pass: 0 em-dash, 0 broken internal links across all 99 pages.
