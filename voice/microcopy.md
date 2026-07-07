@@ -1177,3 +1177,27 @@ it still holds pre-rewrite copy ("Liquidity", bare "Bet", "One-time market",
 from here (do not regenerate without back-porting the rewrite into the generator).
 
 Health after the pass: 0 em-dash, 0 broken internal links across all 99 pages.
+
+### Krok 6 reconciliation - same action, same label across all screens
+
+The closing deliverable of the roll-out step (Lesson 05 step 6): after every screen
+was rewritten, reconcile that one action carries one label everywhere. Method: extract
+every product button / CTA / state-action label across all 99 pages (chrome + tooling
+stripped), bucket by action, and flag any action with more than one distinct label.
+
+| Action | Labels found | Verdict |
+|---|---|---|
+| Retry a load | **Try again** (x19) | one label - clean |
+| Add funds | **Add funds** (x99) | one label - clean |
+| Save / Favorites shelf | **Save** / **Saved** (card aria) into **Favorites** (x82) | one label - clean |
+| Sign in | **Sign in** + **Sign up** | correct: two *different* actions (return vs new), not a discrepancy |
+| Place the bet | **Confirm bet** (primary) · **Bet $3.00 instead** (insufficient-balance fallback) · **Confirm at new price (41%)** (S5 reconcile) | correct: three different moments; the reconcile label must show the new price (dangerous-action rule) |
+| Go to the events feed | **Browse events** ... and **Back to Trending** (8 category-error pages) | **DISCREPANCY -> fixed**: "Back to Trending" went to `event-feed.html`, the same destination as "Browse events"; unified to **Browse events** on all 8 category-error pages (`{politics,crypto,culture,general}-error` + `-logged-out-error`). Now one label (x24). |
+
+**Left as context-appropriate (surfaced, not forced):**
+- **Subscribe to new events** - "Notify me of new **{Category}** events" on category pages vs "Notify me of new events **in this category**" on the Event Feed empty state. Same action, but the category page can name the category while the feed empty is category-agnostic (it depends on the active filter). Kept.
+- **Go to My Bets** - "**Back to your bets**" on the Loss screen (FJ5-scripted, a calm *return* - you arrived from Active Bets) vs "**Go to My Bets**" on deposit-pending (a *forward* nav - you came from the bet flow). Same destination, but "back" vs "go" is accurate to each context. Kept.
+
+Everything else (event vs market, bet vs position, Add funds, Sign in, one go-to-events
+label) was already reconciled in the screen passes and the step-7 audit. Health: 0 em-dash,
+0 broken internal links.
