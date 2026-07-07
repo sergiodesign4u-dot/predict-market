@@ -72,12 +72,19 @@ structure, different content.
   Loss Screen), the base and state pages render as modal or bottom-sheet
   overlay content, not as a full-page layout. Their states are still separate
   pages, exactly as above.
-- Every state page carries a state-switcher at the very top (above the device).
-  On screens with the auth axis (S5) it is a 2D switcher: an Auth row
-  (Logged in / Logged out) and a State row (success / empty / ...), each marking
-  the current value, so any auth/state combination opens side by side. Same
-  structure and zones as the base page, only the content area (and, across auth,
-  the header) changes. Empty and error states must show a visible exit action
+- Every state is a separate page, navigated from the **left screen-tree drawer**
+  (which lists each screen family with its auth variants and states). On screens
+  with the auth axis (S5) the states span a 2D matrix: Auth (Logged in / Logged
+  out) x State (success / empty / ...), so any auth/state combination is one click
+  away in the tree. Same structure and zones as the base page, only the content
+  area (and, across auth, the header) changes.
+  > **Top bars removed (2026-07-07):** the in-page `.state-switch` bar (Auth /
+  > State chip rows) and the `.page-label` status caption that used to sit above
+  > the device were deleted from all 99 pages - they duplicated the screen-tree.
+  > The state *inventory* below is unchanged (it documents which states each screen
+  > has); only the redundant top navigator is gone. See `_critique.md`.
+
+  Empty and error states must show a visible exit action
   (not a dead end), verified against `IA/flows.md`. UI copy on state pages is
   real English text (project rule: all files English), never lorem.
 - **Event Feed auth x state matrix built (Step 5, revised in the auth pass):**
@@ -492,9 +499,10 @@ one page, because the logged-out header is materially different (no account).
 - **Naming:** logged-in pages keep the base names (`event-feed*.html`);
   logged-out pages add a `-logged-out[-state]` suffix. `push-permission-missing`
   is logged-in only (account-bound), so it has no logged-out counterpart.
-- Every state page carries a 2D state-switcher (Auth row + State row) so the
-  matching auth/state combinations open side by side, and the screen tree (S6)
-  nests the states under a Logged in / Logged out sub-group per screen.
+- The auth/state combinations span a 2D matrix (Auth x State); the screen tree
+  (S6) nests the states under a Logged in / Logged out sub-group per screen, and is
+  now the only navigator between them (the in-page state-switcher bar was removed,
+  see above).
 - The real auth branch still lives at the activation gate (Bet Screen Confirm ->
   Sign In -> Deposit); that is unchanged. (This supersedes the earlier
   "header-level delta, no separate logged-out page" containment rule.)
