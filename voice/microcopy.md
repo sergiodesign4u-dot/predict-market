@@ -1107,3 +1107,23 @@ Already the most carefully toned screens (Win "You were right", no confetti; Los
 
 **Kept (already on-voice):** "You were right" / "You were right - you won", "What happened", "Result", "Share" / "Share as text", "Share Card (auto-generated)", "Here's what happened", "Back to your bets" (goes to My Bets, not the feed), "Your payout is on the way" + the settlement note, win-loading / loss-loading. The resolution narrative and Share Card text are per-event / user content, untouched. (The state-switcher chip "Card failed (T11)" is wireframe tooling, not product copy.)
 
+### Step 13 - The rest of the screens (Favorites 3 pages, My Profile 3, Public Profile 4, How It Works 1)
+
+The remaining screen families in the tree, same pattern: only states already present in the inventory, no new copy invented. The track-record blocks on My / Public Profile were already spectator-clean ("Total bets", "Win rate", "Resolved predictions", "bets" not "positions"), and the profile funding button was already fixed to "Add funds" in the Step 10 Wallet pass. Sample usernames, event titles, win-card text, resolved-list rows and figures are user content, untouched.
+
+| Page | Element | Was | Became | Rule |
+|---|---|---|---|---|
+| favorites-empty | Empty body | You have not saved any events yet. Tap **the bookmark** on any event to keep it here for quick access. | ... Tap **Save** on any event ... | Lexicon: Save (not "bookmark", browser jargon) - matches the card control now labelled "Save" |
+| my-profile-error | Error body | **Something went wrong** while loading your track record. Try again. | We couldn't load your track record. Try again. | Forbidden: drop "Something went wrong"; Microcopy/error |
+| public-profile-error | Error body | **Something went wrong** while loading this track record. Try again, or **go back to events**. | We couldn't load this track record. Try again, or **browse events**. | Forbidden: drop "Something went wrong"; Lexicon: one go-to-events label |
+| public-profile-error | Error CTA | **Back to events** | **Browse events** | Lexicon: one go-to-events label |
+| public-profile-not-found | Not-found CTA | **Go to events** | **Browse events** | Lexicon: one go-to-events label |
+| how-it-works | Money-held body | ... place a bet or withdraw - **deposits**, payouts and withdrawals are all recorded in your Wallet. | ... **added funds**, payouts and withdrawals ... | Lexicon: retire the "deposit" noun (matches the Wallet pass) |
+| how-it-works | Social-proof stat | **Markets resolved** (1,240) | **Events resolved** (1,240) | Lexicon: market -> event in the UI (consistency with the whole product; the source phrase in `benchmark-trust.md` uses "markets", but the UI lexicon is "event") |
+| how-it-works | Rationale note | `.fine` "Reachable before you deposit anything (from the menu and the footer) ... so the answer to 'what happens to my money' comes before the money does." | *(removed)* | Forbidden: leaked spec-note (describes where the screen sits, not user copy) |
+
+**Kept (already on-voice):** Favorites - "Favorites" heading, "No favorites yet", sort/frequency/category filter labels, "Browse events", card controls (aria already "Save" / "Saved" from the Step 06 shared-card pass). My / Public Profile - "My Profile" / "Profile", "Couldn't load your/this profile", "Try again", "Portfolio" / "Cash (available)" / "In-play" / "Open Wallet", "Add funds" (fixed in Step 10), "Track record" / "Total bets" / "Win rate" / "Resolved" / "Member since", the win-rate gloss ("Reputation = the track record, not the balance"), "Resolved predictions (public)", "Edit name & avatar", "Public track record · read-only" + the read-only trust line, "Profile not found" + its body. How It Works - the intro ("You always know what you are doing ... a promise, not a FAQ"), all section headings + bodies (already P5-specific: resolution conditions, on-chain, AMM-timing payout, "fee only when you win"), "On-chain proofs" / "USDC held 1:1" / "always", "Browse events", "Add funds".
+
+**Checked and deliberately NOT changed:**
+- **Screen-tree label "Deposit"** (`<li class="wf-screen"><a href="deposit.html">Deposit</a>`, on all 99 pages): first flagged as a "footer Deposit link", but on inspection it is the **left screen-tree scaffolding** (the wireframe's IA index of screen families + states), not product copy - the real product `<footer>` carries no deposit link (its funding entry is "Wallet"). This is the IA node name for the screen family (route `deposit.html`), in the same tooling class as the state-switcher chips; it is out of scope for the copy rewrite and left as-is. The user-facing funding action is already "Add funds" everywhere. No lexicon violation remains.
+

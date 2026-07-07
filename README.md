@@ -71,15 +71,20 @@ Event Feed -> Event Detail -> sign-in / deposit gate -> Active Bets.
   Bets / Bet History.
 - **Auth axis:** browse screens have logged-in and logged-out variants.
 - **Flow-linked:** the main flow is clickable end to end (Event Feed -> Event
-  Detail -> gate -> Active Bets), with branch exits and no dead-ends, wired along
-  the routes in [`IA/flows.md`](./IA/flows.md).
+  Detail -> gate -> Active Bets), with branch exits and no dead-ends, wired and
+  audited edge-by-edge against the routes in [`IA/flows.md`](./IA/flows.md)
+  (loading -> success, error -> try again, empty -> filled; branches both ways).
 - **Chrome wired:** header (Favorites / Notifications / avatar dropdown) and the
   mobile bottom nav are real links, not dead buttons; logged-out controls open the
   sign-in dialog.
-- **Quality gates:** 0 em-dash, 0 broken links; two defect critique passes are
-  recorded in [`wireframes/_critique.md`](./wireframes/_critique.md) (the second a
-  2026-06-29 fresh multi-agent re-audit of all 99 pages - set clean bar one minor
-  clarity fix); the build contract is
+- **Interface copy** rewritten line-by-line against the product voice
+  ([`voice/voice.md`](./voice/voice.md)); the rewrite log and the read-only text
+  inventory it was edited from live in [`voice/microcopy.md`](./voice/microcopy.md).
+- **Quality gates:** 0 em-dash, 0 broken links, 0 style leaks; the defect passes
+  are recorded in [`wireframes/_critique.md`](./wireframes/_critique.md) - two full
+  critiques (the second a 2026-06-29 multi-agent re-audit), a flow-wiring audit
+  against `IA/flows.md`, a 99/99 coverage audit against `IA/sitemap.md`, and a final
+  six-category defect pass, all clean. The build contract is
   [`wireframes/_conventions.md`](./wireframes/_conventions.md).
 
 ---
@@ -87,7 +92,9 @@ Event Feed -> Event Detail -> sign-in / deposit gate -> Active Bets.
 ## Key Docs
 - [CLAUDE.md](./CLAUDE.md) - full project brief, principles, scope, IA summary
 - [wireframes/_conventions.md](./wireframes/_conventions.md) - **Wireframe contract**: grey-box rules, zones, nav, states, the build passes
-- [wireframes/_critique.md](./wireframes/_critique.md) - **Wireframe critique**: defect table and resolutions (Krok 9)
+- [wireframes/_critique.md](./wireframes/_critique.md) - **Wireframe critique**: defect tables and resolutions (Krok 9, 2026-06-29 re-audit, flow-wiring / coverage / final passes)
+- [voice/voice.md](./voice/voice.md) - **Product voice**: five principles, lexicon, forbidden list, per-element rules
+- [voice/microcopy.md](./voice/microcopy.md) - **Microcopy**: read-only text inventory + the line-by-line rewrite log
 - [IA/sitemap.md](./IA/sitemap.md) - **IA source**: entities, screens, navigation, depth map, coverage matrix
 - [IA/flows.md](./IA/flows.md) - **IA source**: four user flows (MJ, FJ2, FJ5+EJ3, SJ1)
 - [research/master-research.md](./research/master-research.md) - **Master synthesis**: all research phases in one document
