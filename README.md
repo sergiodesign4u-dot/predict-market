@@ -28,6 +28,7 @@ Single-page summary of all research phases. Open the link above in any browser -
 | [`research/`](./research/) | Competitor analysis, strategy, JTBD, personas, AARRR |
 | [`research/screens/`](./research/screens/) | Competitor screenshots |
 | [`wireframes/`](./wireframes/) | **Grey-box wireframes**: 99 pages, every sitemap screen + all states + Favorites view, flow-linked, header / nav wired, clickable end to end |
+| [`voice.html`](./voice.html) | **Voice & Microcopy** visualization: principles, lexicon, forbidden list, element rules, the rewrite (wired into the shared sidebar) |
 | [`concept/`](./concept/) | Visual direction, moodboard |
 | [`tokens/`](./tokens/) | Design tokens: color, type, spacing |
 | [`components/`](./components/) | UI component specs |
