@@ -560,6 +560,13 @@
     .footer-popular h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
     .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
     .popular-links a { color: #444; }
+    /* ---- Event Detail Related events block (WF reconcile, Krok 6) ---- */
+    .related-events { border-top: 1px solid #ccc; margin: 14px 0 0; padding: 12px 0 4px; }
+    .related-events h2 { font-size: 14px; margin: 0 0 8px; }
+    .related-list { list-style: none; padding: 0; margin: 0; }
+    .related-list li { border-bottom: 1px solid #e2e2e2; }
+    .related-list a { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; color: #333; font-size: 13px; }
+    .rel-odds { color: #555; white-space: nowrap; }
   </style>
 </head>
 <body data-loggedin-target="event-detail.html">
@@ -1036,6 +1043,16 @@
             </div>
           </aside>
       </div>
+      <!-- Related events (crawlable internal-linking block, WF reconcile) -->
+      <section class="related-events" aria-label="Related events">
+        <h2>Related events</h2>
+        <ul class="related-list">
+          <li><a href="event-detail.html">Will Bitcoin close above $150,000 before October 1, 2026?<span class="rel-odds">YES 61%</span></a></li>
+          <li><a href="event-detail.html">Will Ethereum complete its next major network upgrade before November 1, 2026?<span class="rel-odds">YES 72%</span></a></li>
+          <li><a href="event-detail-multi.html">Which party will win the most seats in the next UK general election?<span class="rel-odds">4 options</span></a></li>
+          <li><a href="event-feed.html">Browse more events</a></li>
+        </ul>
+      </section>
     </main>
       <!-- Mobile sticky bet dock (above the bottom nav; taps expand to a confirm sheet) -->
       <div class="bet-dock" aria-label="Place your bet">

@@ -1302,3 +1302,20 @@ Below-fold SEO sections (event-feed.html + event-feed-logged-out.html, verbatim 
 (explain-the-number), **Common questions** (FAQ x3: crypto to start / smallest bet / how it
 resolves). The why lines and event questions are user/editorial content, not voice-forced.
 Health: 0 em-dash, 16025 links / 0 broken. Category-card "why" is handled in the Category step.
+
+---
+
+### Step 19 - Event Detail "Related events" block (9 full-content pages)
+
+seo.md section 2 specced a crawlable Related-events internal-linking block below the tabs; the
+audit found it absent. Added by `_generators/related_events.py` (idempotent, voice-safe) to the
+9 full-content Event Detail pages (binary / multi / resolved / logged-out / logged-out-multi +
+the 4 bet-panel states); skipped on the loading and error states.
+
+| Element | Text | Rule / source |
+|---|---|---|
+| Heading | **Related events** | seo.md section 2 B (internal-linking block) |
+| Row (sample) | event question + odds, linking to a sibling event detail | crawlable internal link; questions + odds are sample content |
+| Last row | **Browse more events** (-> event-feed.html) | category-agnostic exit, works on every variant |
+
+Health: 0 em-dash, 16061 links / 0 broken (+36 = 4 links x 9 pages).
