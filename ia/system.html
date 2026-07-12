@@ -1,0 +1,585 @@
+<!-- Static render of ia/docs/pages/system.md (System and global nodes, IA Detailed layer). Regenerate with the same pass if the source changes. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System nodes - IA Detailed layer</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* SIDEBAR */
+  .sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; scrollbar-width: none; z-index: 200; transform: translateX(-100%); transition: transform .25s cubic-bezier(.4,0,.2,1); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar::-webkit-scrollbar { display: none; }
+  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 199; backdrop-filter: blur(2px); }
+  .sidebar-overlay.open { display: block; }
+  .menu-toggle { position: fixed; top: 12px; left: 12px; z-index: 201; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; width: 36px; height: 36px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; padding: 0; }
+  .menu-toggle span { display: block; width: 15px; height: 1.5px; background: var(--text); border-radius: 1px; }
+  .sidebar-brand { padding: 20px 16px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .sidebar-project-name { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); line-height: 1.4; }
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+  .sidebar-page-link { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 500; color: var(--text); text-decoration: none; padding: 7px 16px; transition: background .15s; cursor: pointer; user-select: none; }
+  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
+  .sidebar-page-link.active { color: var(--accent); }
+  .sidebar-page-link.planned { color: var(--muted); cursor: default; opacity: .6; }
+  .sidebar-page-link.planned::after { content: 'Soon'; font-size: 9px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; background: rgba(255,255,255,.04); color: var(--muted); padding: 2px 5px; border-radius: 3px; border: 1px solid var(--border); }
+  .sidebar-sub { padding: 2px 0 8px; }
+  .sidebar-sub-link { display: block; font-size: 12px; color: var(--muted); text-decoration: none; padding: 5px 16px 5px 28px; transition: color .15s; position: relative; }
+  .sidebar-sub-link:hover { color: var(--text); }
+  .sidebar-sub-link.active { color: var(--text); }
+  .sidebar-sub-link.active::before { content: ''; position: absolute; left: 17px; top: 50%; transform: translateY(-50%); width: 3px; height: 3px; border-radius: 50%; background: var(--accent); }
+  .sidebar-divider { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 16px 16px 6px; opacity: .45; }
+
+  /* LAYOUT */
+  main { padding: 60px 20px 80px; }
+  @media (min-width: 860px) { .sidebar { transform: translateX(0); transition: none; } .sidebar-overlay { display: none !important; } .menu-toggle { display: none; } main { margin-left: 220px; padding: 48px 48px 120px; } }
+  section { padding-top: var(--gap); margin-top: var(--gap); border-top: 1px solid var(--border); }
+  section:first-child { border-top: none; }
+
+  /* TYPOGRAPHY */
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 16px; }
+  h2 { font-size: 22px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 20px; }
+  h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 12px; margin-top: 32px; }
+  h3:first-child { margin-top: 0; }
+  p { color: #aaa; margin-bottom: 12px; max-width: 680px; }
+  strong { color: var(--text); font-weight: 600; }
+  .lead { font-size: 16px; color: #bbb; max-width: 640px; margin-bottom: 32px; line-height: 1.7; }
+  .hero { padding-top: 0; border-top: none; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(200,255,0,.2); }
+  .tag.grey { background: rgba(255,255,255,.04); color: var(--muted); border-color: var(--border); }
+  .hero-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+
+  /* QUICK LINKS */
+  .quick-links { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+  .quick-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--text); text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); transition: border-color .15s, background .15s; }
+  .quick-link:hover { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+
+  /* USER LOOP */
+  .loop-steps { display: flex; gap: 0; margin-top: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .loop-step { padding: 10px 16px; background: var(--surface); border: 1px solid var(--border); border-right: none; font-size: 13px; color: #bbb; }
+  .loop-step:first-child { border-radius: 6px 0 0 6px; }
+  .loop-step:last-child { border-right: 1px solid var(--border); border-radius: 0 6px 6px 0; }
+  .loop-step .step-num { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 2px; }
+  @media (max-width: 600px) { .loop-step { border-right: 1px solid var(--border); border-radius: 6px; margin-bottom: 4px; } }
+
+  /* SCREEN TREE */
+  .tree { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 20px; margin-top: 16px; }
+  .tree-l0 { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+  .tree-l0:last-child { border-bottom: none; margin-bottom: 0; }
+  .tree-slot { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; min-width: 80px; }
+  .tree-screen { font-size: 13px; font-weight: 600; color: var(--text); }
+  .tree-jobs { font-size: 11px; color: var(--muted); margin-left: 8px; }
+  .tree-l1s { display: flex; flex-direction: column; gap: 3px; margin-left: 20px; padding: 4px 0; }
+  .tree-l1 { font-size: 12px; color: #999; padding: 2px 0; }
+  .tree-l1 .t-screen { color: var(--text); font-weight: 500; }
+  .tree-l1 .t-job { color: var(--muted); font-size: 11px; }
+
+  /* NAV COMPACT */
+  .nav-compact { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 16px; }
+  .nav-slot-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; }
+  .nav-slot-num { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+  .nav-slot-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .nav-slot-opens { font-size: 12px; color: #999; margin-bottom: 4px; }
+  .nav-slot-jobs { font-size: 11px; color: var(--muted); }
+  .header-items { font-size: 13px; color: #999; margin-top: 12px; padding: 10px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
+
+  /* DEPTH SUMMARY */
+  .depth-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 16px; }
+  .depth-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; }
+  .depth-card .d-label { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
+  .depth-card .d-path { font-size: 12px; color: #bbb; margin-bottom: 6px; }
+  .depth-card .d-result { font-size: 12px; font-weight: 700; color: var(--green); }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--r); margin-top: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th { background: var(--surface); color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: #c8c8c8; vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,.015); }
+  td.check { color: var(--accent); font-weight: 700; text-align: center; }
+  td.empty { color: var(--border); text-align: center; }
+  td.cov { font-family: var(--mono); font-size: 11px; font-weight: 700; text-align: center; }
+  td.cov-hi { color: var(--green); }
+  td.cov-lo { color: #e89c9c; }
+  td.job-name { font-weight: 600; color: var(--text); white-space: nowrap; font-size: 12px; }
+
+  /* MERMAID */
+  .mermaid-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; overflow-x: auto; margin-top: 16px; }
+  .mermaid { min-width: 400px; }
+
+  /* MORE LINK */
+  .more-link { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted); text-decoration: none; }
+  .more-link:hover { color: var(--text); }
+
+  /* SEO LAYER additions - literal ship-copy, inline code tokens, open-question marker.
+     Reuses the same variables and radius token; no new color system. */
+  code { font-family: var(--mono); font-size: 12px; background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; color: #d6d6d6; word-break: break-word; }
+  .copy { font-family: var(--mono); font-size: 12.5px; line-height: 1.65; color: #d7dec2; background: rgba(200,255,0,.035); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--r); padding: 12px 15px; margin: 8px 0 16px; max-width: 720px; }
+  .copy .lbl { display: block; font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; font-family: var(--font); }
+  .copy p { color: #d7dec2; margin: 0 0 10px; max-width: none; }
+  .copy p:last-child { margin-bottom: 0; }
+  .copy ul { margin: 4px 0 0; padding-left: 18px; }
+  .copy li { margin-bottom: 9px; }
+  .copy li:last-child { margin-bottom: 0; }
+  .copy .q-item { color: var(--text); }
+  .q { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 700; color: #e6b800; background: rgba(230,184,0,.08); border: 1px solid rgba(230,184,0,.28); border-radius: 3px; padding: 0 4px; }
+  .meta-list { list-style: none; margin: 8px 0 8px; padding: 0; max-width: 760px; }
+  .meta-list li { padding: 7px 0; border-bottom: 1px solid var(--border); color: #aaa; }
+  .meta-list li:last-child { border-bottom: none; }
+  .meta-list .k { color: var(--text); font-weight: 600; font-family: var(--mono); font-size: 12px; margin-right: 8px; }
+  .cc { color: var(--muted); font-size: 11px; font-family: var(--mono); }
+  ul.prose, ol.prose { margin: 8px 0 12px; padding-left: 20px; max-width: 700px; color: #aaa; }
+  ol.prose { padding-left: 24px; }
+  ul.prose li, ol.prose li { margin-bottom: 8px; }
+  ul.prose li:last-child, ol.prose li:last-child { margin-bottom: 0; }
+  .delta { font-size: 12px; color: #7d7d7d; max-width: 700px; margin: 4px 0 12px; }
+  .delta strong { color: #9a9a9a; }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a href="../user-research/personas.html" class="sidebar-page-link">Personas</a>
+    <a href="../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a href="../user-research/cjm-as-is.html" class="sidebar-page-link">CJM As-Is</a>
+    <a href="../user-research/cjm-to-be.html" class="sidebar-page-link">CJM To-Be</a>
+    <div class="sidebar-divider">Information Architecture</div>
+    <div class="sidebar-divider">Basic layer</div>
+    <a href="../ia/flows.html" class="sidebar-page-link">Flows</a>
+    <a href="../ia/concept-map.html" class="sidebar-page-link">Concept map</a>
+    <div class="sidebar-divider">Detailed layer</div>
+    <a href="../ia/ia.html" class="sidebar-page-link">Overview</a>
+    <a href="../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <a href="../ia/seo.html" class="sidebar-page-link">SEO layer</a>
+    <a class="sidebar-page-link active">System nodes</a>
+    <div class="sidebar-sub">
+      <a href="#intro" class="sidebar-sub-link">Intro</a>
+      <a href="#overview" class="sidebar-sub-link">Overview</a>
+      <a href="#n404" class="sidebar-sub-link">404</a>
+      <a href="#n500" class="sidebar-sub-link">500</a>
+      <a href="#n503" class="sidebar-sub-link">503 Maintenance</a>
+      <a href="#cookie-consent" class="sidebar-sub-link">Cookie consent</a>
+      <a href="#toast" class="sidebar-sub-link">Toast</a>
+      <a href="#references" class="sidebar-sub-link">References</a>
+    </div>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
+    <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a class="sidebar-page-link planned">Concept</a>
+    <a class="sidebar-page-link planned">UI + Visual</a>
+    <a class="sidebar-page-link planned">Tokens + Components</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<main>
+
+<div role="note" style="margin:16px auto;max-width:1000px;padding:12px 16px;border:1px solid #35597a;border-left:4px solid #5fa8ff;background:rgba(95,168,255,0.08);color:#c4dcf2;font-size:14px;line-height:1.5;border-radius:6px;">
+  <strong>System and global nodes (targeted reconcile).</strong> This page specs the nodes that do not belong to any cluster and are easy to forget: the error and maintenance pages (<code>404</code> / <code>500</code> / <code>503</code>), the cookie-consent banner, and toasts. Part of the IA Detailed layer. The wireframes carry per-screen error and loading states, but none of these global system nodes exist yet as dedicated pages or components. Source of truth: <code>ia/docs/pages/system.md</code>.
+</div>
+
+<!-- INTRO -->
+<section class="hero" id="intro">
+  <div class="hero-meta">
+    <span class="tag">Information Architecture</span>
+    <span class="tag grey">Detailed layer</span>
+    <span class="tag grey">Stage 03b</span>
+  </div>
+  <h1>System and global nodes</h1>
+  <p class="lead">The nodes that do not belong to any cluster and are easy to forget: the error and maintenance pages, the cookie-consent banner, and toasts. Part of the IA Detailed layer (targeted reconcile).</p>
+
+  <p>This file specs the system and global nodes that sit outside every screen cluster. The wireframes carry per-screen error and loading states, but none of these global nodes exist yet as dedicated pages or components; this file adds them. Ready product copy is shown as literal strings and follows the product voice: name what happened and the way out, no apology, no joke, no "something went wrong", no exclamation.</p>
+
+  <h3>Grounding</h3>
+  <p>Legal claims (the cookie banner) are grounded in real sources, cited in <a href="#references" class="more-link" style="margin-top:0">References</a>, not invented. The product is global with geo-restrictions, so the banner is built to the strictest common bar, GDPR and the ePrivacy Directive, which also satisfies Ukraine law (Law No. 2297-VI).</p>
+
+  <h3>Convention</h3>
+  <p>Where a requirement is uncertain it is marked <span class="q">[?]</span>. No em dash.</p>
+
+  <div class="quick-links" style="margin-top:24px">
+    <a href="seo.html" class="quick-link">SEO layer &rarr;</a>
+    <a href="sitemap.html" class="quick-link">Full Sitemap &rarr;</a>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="section-label">Overview</div>
+  <h2>The system and global nodes</h2>
+  <p>Each node, its type, HTTP status, robots directive, and the rule that keeps it from being a dead-end. Error and maintenance pages return a real HTTP status; the banner and toast are components with no URL and no SEO impact.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Node</th>
+          <th>Type</th>
+          <th>HTTP</th>
+          <th>Robots</th>
+          <th>Never a dead-end</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="job-name">404 Not Found</td><td>page</td><td><code>404</code></td><td><code>noindex,follow</code></td><td>search or quick links + home</td></tr>
+        <tr><td class="job-name">500 Server Error</td><td>page</td><td><code>500</code></td><td><code>noindex</code></td><td>retry + home, funds reassurance</td></tr>
+        <tr><td class="job-name">503 Maintenance</td><td>page</td><td><code>503</code> + <code>Retry-After</code></td><td><code>noindex</code></td><td>retry + expected time</td></tr>
+        <tr><td class="job-name">Cookie consent</td><td>component (banner)</td><td>n/a</td><td>n/a</td><td>dismissible, reopenable from footer</td></tr>
+        <tr><td class="job-name">Toast / notification</td><td>component</td><td>n/a</td><td>n/a</td><td>auto-dismiss + manual close</td></tr>
+        <tr><td class="job-name">Search</td><td>deferred</td><td>n/a</td><td><code>noindex,follow</code> when built</td><td>out of scope now (see note)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="delta" style="margin-top:16px">Search is <strong>deferred</strong> in <code>sitemap.md</code> ("Search - Deferred until catalog scale"), so it is not built here; when it ships, results are <code>noindex,follow</code> with a no-results state that offers a way out (this is already recorded in the indexation policy in <code>seo.md</code>).</p>
+</section>
+
+<!-- 1. 404 -->
+<section id="n404">
+  <div class="section-label">Node 1</div>
+  <h2>404 Not Found</h2>
+  <div class="header-items">
+    <strong>Node:</strong> 404 Not Found &middot; <strong>Type:</strong> page - a full page with the global header and footer, not a bare message<br>
+    <strong>HTTP:</strong> <code>404</code> (a real 404, never a soft-404 that returns <code>200</code>) &middot; <strong>Robots:</strong> <code>noindex,follow</code><br>
+    <strong>Purpose:</strong> a broken or old link, or a removed event, must still land the user somewhere useful
+  </div>
+
+  <h3>Content</h3>
+  <ul class="prose">
+    <li>H1 and a one-line reason</li>
+    <li>A primary way forward (Browse events) plus quick links to the four categories and How it works</li>
+    <li>The global header and footer stay, so the user is never stranded</li>
+  </ul>
+
+  <h3>Ready copy</h3>
+  <div class="copy">
+    <span class="lbl">H1</span>
+    <p>This page does not exist</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">Body</span>
+    <p>The link may be old, or the event may have been removed.</p>
+  </div>
+  <p><strong>Primary action:</strong> <code>Browse events</code>. Secondary: the four categories, <code>How it works</code>, <code>Home</code>.</p>
+
+  <h3>Wireframe sketch (layout only, grayscale)</h3>
+  <div style="max-width:360px;border:1px solid var(--border);border-radius:var(--r);background:#0f0f0f;overflow:hidden;margin:10px 0 4px;">
+    <div style="height:28px;background:#181818;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;padding:0 12px;">
+      <span style="width:44px;height:7px;background:#3a3a3a;border-radius:2px;"></span>
+      <span style="margin-left:auto;width:8px;height:8px;background:#2a2a2a;border-radius:50%;"></span>
+      <span style="width:8px;height:8px;background:#2a2a2a;border-radius:50%;"></span>
+      <span style="width:8px;height:8px;background:#2a2a2a;border-radius:50%;"></span>
+    </div>
+    <div style="padding:24px 16px;text-align:center;">
+      <div style="font-family:var(--mono);font-size:30px;font-weight:700;color:#6f6f6f;letter-spacing:.06em;">404</div>
+      <div style="height:9px;background:#2c2c2c;border-radius:2px;width:72%;margin:14px auto 7px;"></div>
+      <div style="height:7px;background:#242424;border-radius:2px;width:54%;margin:0 auto 18px;"></div>
+      <div style="display:inline-block;padding:8px 18px;border:1px solid #4d4d4d;border-radius:6px;color:#b0b0b0;font-family:var(--mono);font-size:11px;">Browse events</div>
+      <div style="display:flex;gap:6px;justify-content:center;margin-top:14px;flex-wrap:wrap;">
+        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">Politics</span>
+        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">Crypto</span>
+        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">Culture</span>
+        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">General</span>
+        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">How it works</span>
+      </div>
+    </div>
+    <div style="height:26px;background:#141414;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 12px;">
+      <span style="width:26px;height:5px;background:#2a2a2a;border-radius:2px;"></span>
+      <span style="width:26px;height:5px;background:#2a2a2a;border-radius:2px;"></span>
+      <span style="width:26px;height:5px;background:#2a2a2a;border-radius:2px;"></span>
+      <span style="margin-left:auto;width:40px;height:5px;background:#222;border-radius:2px;"></span>
+    </div>
+  </div>
+
+  <h3>a11y / SEO</h3>
+  <p>A real <code>404</code> status so crawlers drop the URL; the page is <code>noindex</code> but its links are followed; it is reachable from any bad URL and is never a dead-end.</p>
+</section>
+
+<!-- 2. 500 -->
+<section id="n500">
+  <div class="section-label">Node 2</div>
+  <h2>500 Server Error</h2>
+  <div class="header-items">
+    <strong>Node:</strong> 500 Server Error &middot; <strong>Type:</strong> page - a minimal template that does not depend on the backend that just failed<br>
+    <strong>HTTP:</strong> <code>500</code> &middot; <strong>Robots:</strong> <code>noindex</code><br>
+    <strong>Purpose:</strong> name that the fault is on our side, reassure on money, offer a retry
+  </div>
+
+  <h3>Content</h3>
+  <ul class="prose">
+    <li>H1 and a one-line, plain reason (server-side, not the user's bet or funds)</li>
+    <li>A retry action and a way home</li>
+    <li>A one-line funds reassurance (the trust principle applies even in an error)</li>
+  </ul>
+
+  <h3>Ready copy</h3>
+  <div class="copy">
+    <span class="lbl">H1</span>
+    <p>We could not load this page</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">Body</span>
+    <p>This is on our side, not your bet or your funds. Your money is safe.</p>
+  </div>
+  <p><strong>Primary action:</strong> <code>Try again</code>. Secondary: <code>Home</code>.</p>
+
+  <h3>Wireframe sketch (layout only, grayscale)</h3>
+  <div style="max-width:360px;border:1px solid var(--border);border-radius:var(--r);background:#0f0f0f;overflow:hidden;margin:10px 0 4px;">
+    <div style="height:28px;background:#181818;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;padding:0 12px;">
+      <span style="width:44px;height:7px;background:#3a3a3a;border-radius:2px;"></span>
+      <span style="margin-left:auto;width:8px;height:8px;background:#2a2a2a;border-radius:50%;"></span>
+      <span style="width:8px;height:8px;background:#2a2a2a;border-radius:50%;"></span>
+      <span style="width:8px;height:8px;background:#2a2a2a;border-radius:50%;"></span>
+    </div>
+    <div style="padding:24px 16px;text-align:center;">
+      <div style="font-family:var(--mono);font-size:30px;font-weight:700;color:#6f6f6f;letter-spacing:.06em;">500</div>
+      <div style="height:9px;background:#2c2c2c;border-radius:2px;width:74%;margin:14px auto 7px;"></div>
+      <div style="height:7px;background:#242424;border-radius:2px;width:56%;margin:0 auto 18px;"></div>
+      <div style="display:flex;gap:8px;justify-content:center;">
+        <span style="display:inline-block;padding:8px 18px;border:1px solid #4d4d4d;border-radius:6px;color:#b0b0b0;font-family:var(--mono);font-size:11px;">Try again</span>
+        <span style="display:inline-block;padding:8px 18px;border:1px solid var(--border);border-radius:6px;color:#7a7a7a;font-family:var(--mono);font-size:11px;">Home</span>
+      </div>
+      <div style="display:inline-block;margin-top:14px;padding:5px 12px;border:1px dashed var(--border);border-radius:5px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">Your money is safe</div>
+    </div>
+    <div style="height:26px;background:#141414;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 12px;">
+      <span style="width:26px;height:5px;background:#2a2a2a;border-radius:2px;"></span>
+      <span style="width:26px;height:5px;background:#2a2a2a;border-radius:2px;"></span>
+      <span style="margin-left:auto;width:40px;height:5px;background:#222;border-radius:2px;"></span>
+    </div>
+  </div>
+
+  <h3>a11y / SEO</h3>
+  <p>Served with a <code>500</code> status; static template (inline critical CSS) so it renders even if the app server is down; <code>noindex</code>.</p>
+</section>
+
+<!-- 3. 503 -->
+<section id="n503">
+  <div class="section-label">Node 3</div>
+  <h2>503 Maintenance</h2>
+  <div class="header-items">
+    <strong>Node:</strong> 503 Maintenance &middot; <strong>Type:</strong> page - a static template for planned downtime, independent of the backend<br>
+    <strong>HTTP:</strong> <code>503</code> with a <code>Retry-After</code> header (tells crawlers to come back, keeps rankings) &middot; <strong>Robots:</strong> <code>noindex</code><br>
+    <strong>Purpose:</strong> planned maintenance, not a crash; set expectation and reassure
+  </div>
+
+  <h3>Content</h3>
+  <ul class="prose">
+    <li>H1 and a one-line note that this is scheduled</li>
+    <li>A funds-and-bets reassurance and, where known, an expected return time</li>
+    <li>A retry action</li>
+  </ul>
+
+  <h3>Ready copy</h3>
+  <div class="copy">
+    <span class="lbl">H1</span>
+    <p>Predict Market is down for scheduled maintenance</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">Body</span>
+    <p>Your bets and funds are safe. We will be back shortly.<br><span class="cc">(add the expected time when known)</span></p>
+  </div>
+  <p><strong>Primary action:</strong> <code>Try again</code>.</p>
+
+  <h3>Wireframe sketch (layout only, grayscale)</h3>
+  <div style="max-width:360px;border:1px solid var(--border);border-radius:var(--r);background:#0f0f0f;overflow:hidden;margin:10px 0 4px;">
+    <div style="height:28px;background:#181818;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;padding:0 12px;">
+      <span style="width:44px;height:7px;background:#3a3a3a;border-radius:2px;"></span>
+      <span style="margin-left:auto;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:#5a5a5a;font-family:var(--mono);font-size:9px;">Retry-After</span>
+    </div>
+    <div style="padding:24px 16px;text-align:center;">
+      <div style="font-family:var(--mono);font-size:30px;font-weight:700;color:#6f6f6f;letter-spacing:.06em;">503</div>
+      <div style="height:9px;background:#2c2c2c;border-radius:2px;width:80%;margin:14px auto 7px;"></div>
+      <div style="height:7px;background:#242424;border-radius:2px;width:60%;margin:0 auto 12px;"></div>
+      <div style="display:inline-block;margin-bottom:16px;padding:5px 12px;border:1px dashed var(--border);border-radius:5px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">Back shortly</div>
+      <div style="display:block;">
+        <span style="display:inline-block;padding:8px 18px;border:1px solid #4d4d4d;border-radius:6px;color:#b0b0b0;font-family:var(--mono);font-size:11px;">Try again</span>
+      </div>
+    </div>
+    <div style="height:26px;background:#141414;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 12px;">
+      <span style="width:26px;height:5px;background:#2a2a2a;border-radius:2px;"></span>
+      <span style="width:26px;height:5px;background:#2a2a2a;border-radius:2px;"></span>
+      <span style="margin-left:auto;width:40px;height:5px;background:#222;border-radius:2px;"></span>
+    </div>
+  </div>
+
+  <h3>a11y / SEO</h3>
+  <p><code>503</code> + <code>Retry-After</code> is the correct signal (not <code>200</code>, not <code>404</code>), so search does not treat downtime as content loss; <code>noindex</code>.</p>
+</section>
+
+<!-- 4. COOKIE CONSENT -->
+<section id="cookie-consent">
+  <div class="section-label">Node 4</div>
+  <h2>Cookie consent (banner component)</h2>
+  <div class="header-items">
+    <strong>Node:</strong> Cookie consent &middot; <strong>Type:</strong> component (a banner, not a page); appears on first visit before non-essential cookies are set &middot; <strong>Robots:</strong> n/a<br>
+    <strong>Purpose:</strong> obtain valid prior consent for non-essential cookies, and let the user change it later
+  </div>
+
+  <h3>Grounding</h3>
+  <p>The product is global with geo-restrictions, so it is built to the strictest common bar, GDPR and the ePrivacy Directive, which also satisfies Ukraine's less prescriptive law. The rules that shape this component:</p>
+  <ul class="prose">
+    <li><strong>Prior consent.</strong> Non-essential cookies (analytics, marketing) are blocked until the user opts in. Setting them on landing, or treating "continue browsing" or scrolling as consent, is not valid. <span class="cc">[<a href="#ref1" style="color:inherit;text-decoration:none;">1</a>][<a href="#ref2" style="color:inherit;text-decoration:none;">2</a>][<a href="#ref4" style="color:inherit;text-decoration:none;">4</a>]</span></li>
+    <li><strong>Reject as easy as accept.</strong> "Reject all" has the same prominence as "Accept all" - same level, same weight, not a small "Manage" link that hides the reject path. <span class="cc">[<a href="#ref1" style="color:inherit;text-decoration:none;">1</a>][<a href="#ref3" style="color:inherit;text-decoration:none;">3</a>]</span></li>
+    <li><strong>No pre-ticked boxes.</strong> Analytics and marketing are unticked by default; the user actively turns them on. <span class="cc">[<a href="#ref1" style="color:inherit;text-decoration:none;">1</a>][<a href="#ref3" style="color:inherit;text-decoration:none;">3</a>]</span></li>
+    <li><strong>Granular and withdrawable.</strong> Consent is per category and can be changed or withdrawn at any time, as easily as it was given. <span class="cc">[<a href="#ref2" style="color:inherit;text-decoration:none;">2</a>][<a href="#ref4" style="color:inherit;text-decoration:none;">4</a>]</span></li>
+    <li><strong>Ukraine.</strong> Law No. 2297-VI requires prior consent with the privacy policy readable first; there is no statutory cookie definition or mandated banner, but a banner is the practical way to obtain informed consent, and cookies-on-landing via inaction are not proper consent. <span class="cc">[<a href="#ref5" style="color:inherit;text-decoration:none;">5</a>][<a href="#ref6" style="color:inherit;text-decoration:none;">6</a>]</span></li>
+  </ul>
+
+  <h3>Structure</h3>
+  <ul class="prose">
+    <li>A short plain explanation and a link to the Privacy policy and Cookie policy (register both in <code>sitemap.md</code>, Step 7)</li>
+    <li>Three top-level actions of equal prominence: <code>Accept all</code>, <code>Reject all</code>, <code>Manage</code></li>
+    <li>Manage opens per-category toggles: <code>Necessary</code> (always on, control disabled and explained), <code>Analytics</code> (off by default), <code>Marketing</code> (off by default)</li>
+    <li>Re-entry: a <code>Cookie preferences</code> link in the footer reopens this banner so the choice can be changed later</li>
+  </ul>
+
+  <h3>Ready copy</h3>
+  <div class="copy">
+    <span class="lbl">Text</span>
+    <p>We use cookies to run the site and, only if you allow it, to measure and improve it.</p>
+  </div>
+  <p style="margin-bottom:6px"><strong>Actions:</strong> <code>Accept all</code> &middot; <code>Reject all</code> &middot; <code>Manage</code></p>
+  <p style="margin-bottom:6px"><strong>Toggle labels:</strong> <code>Necessary (always on)</code> &middot; <code>Analytics</code> &middot; <code>Marketing</code></p>
+  <p><strong>Footer re-entry:</strong> <code>Cookie preferences</code></p>
+
+  <h3>Wireframe sketch (layout only, grayscale)</h3>
+  <div style="max-width:420px;border:1px solid var(--border);border-radius:var(--r);background:#0f0f0f;padding:14px;margin:10px 0 4px;">
+    <div style="height:8px;background:#2c2c2c;border-radius:2px;width:92%;margin-bottom:6px;"></div>
+    <div style="height:8px;background:#242424;border-radius:2px;width:70%;margin-bottom:6px;"></div>
+    <div style="font-family:var(--mono);font-size:10px;color:#6a6a6a;margin-bottom:12px;">Privacy policy &middot; Cookie policy</div>
+    <div style="display:flex;gap:8px;margin-bottom:14px;">
+      <span style="flex:1;text-align:center;padding:8px 0;border:1px solid #4d4d4d;border-radius:6px;color:#b0b0b0;font-family:var(--mono);font-size:11px;">Accept all</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border:1px solid #4d4d4d;border-radius:6px;color:#b0b0b0;font-family:var(--mono);font-size:11px;">Reject all</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border:1px solid #4d4d4d;border-radius:6px;color:#b0b0b0;font-family:var(--mono);font-size:11px;">Manage</span>
+    </div>
+    <div style="border-top:1px solid var(--border);padding-top:12px;display:flex;flex-direction:column;gap:11px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-family:var(--mono);font-size:11px;color:#8a8a8a;">Necessary (always on)</span>
+        <span style="display:inline-flex;justify-content:flex-end;align-items:center;width:32px;height:16px;background:#333;border:1px solid var(--border);border-radius:10px;padding:2px;opacity:.55;"><span style="width:11px;height:11px;background:#888;border-radius:50%;"></span></span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-family:var(--mono);font-size:11px;color:#8a8a8a;">Analytics</span>
+        <span style="display:inline-flex;align-items:center;width:32px;height:16px;background:#1e1e1e;border:1px solid var(--border);border-radius:10px;padding:2px;"><span style="width:11px;height:11px;background:#555;border-radius:50%;"></span></span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-family:var(--mono);font-size:11px;color:#8a8a8a;">Marketing</span>
+        <span style="display:inline-flex;align-items:center;width:32px;height:16px;background:#1e1e1e;border:1px solid var(--border);border-radius:10px;padding:2px;"><span style="width:11px;height:11px;background:#555;border-radius:50%;"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <h3>a11y</h3>
+  <p>Keyboard reachable, focus trapped in the banner until a choice is made, the three actions are real buttons with equal visual weight (no dark pattern). No SEO impact.</p>
+</section>
+
+<!-- 5. TOAST -->
+<section id="toast">
+  <div class="section-label">Node 5</div>
+  <h2>Toast / notification (component)</h2>
+  <div class="header-items">
+    <strong>Node:</strong> Toast / notification &middot; <strong>Type:</strong> component - a transient message for the result of an action; not a page, no own URL, no SEO impact<br>
+    <strong>Purpose:</strong> confirm an action or report a failure inline, then get out of the way
+  </div>
+
+  <h3>Behavior</h3>
+  <ul class="prose">
+    <li>Appears briefly, auto-dismisses, and also has a manual close</li>
+    <li><code>aria-live="polite"</code> for confirmations, <code>aria-live="assertive"</code> for errors, so screen readers announce it</li>
+    <li>Does not block the page; never the only place a critical error is shown</li>
+  </ul>
+
+  <h3>Ready copy <span class="cc">(voice: state the fact and the next step, no celebration)</span></h3>
+  <p style="margin-bottom:6px"><strong>Success:</strong> <code>Bet placed</code> &middot; <code>Funds added</code> &middot; <code>Saved into Favorites</code></p>
+  <p><strong>Error:</strong> <code>We could not place your bet. Try again.</code></p>
+
+  <h3>Wireframe sketch (layout only, grayscale)</h3>
+  <div style="max-width:340px;margin:10px 0 4px;display:flex;flex-direction:column;gap:8px;">
+    <div style="display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:8px;background:#161616;padding:10px 12px;">
+      <span style="width:8px;height:8px;border-radius:50%;background:#7a7a7a;flex-shrink:0;"></span>
+      <span style="font-family:var(--mono);font-size:11px;color:#b0b0b0;">Bet placed</span>
+      <span style="margin-left:auto;color:#6a6a6a;font-family:var(--mono);font-size:12px;">x</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;border:1px solid #3a3a3a;border-radius:8px;background:#161616;padding:10px 12px;">
+      <span style="width:8px;height:8px;border-radius:50%;background:#9a9a9a;flex-shrink:0;"></span>
+      <span style="font-family:var(--mono);font-size:11px;color:#b0b0b0;">We could not place your bet. Try again.</span>
+      <span style="margin-left:auto;color:#6a6a6a;font-family:var(--mono);font-size:12px;">x</span>
+    </div>
+  </div>
+  <p class="delta">Two variants shown: a success confirmation and an error. Both carry a manual close and auto-dismiss; grayscale, layout only.</p>
+</section>
+
+<!-- REFERENCES -->
+<section id="references">
+  <div class="section-label">References</div>
+  <h2>Sources for the cookie-consent grounding</h2>
+  <p>The legal claims above are grounded in these sources, cited inline by number.</p>
+  <ol class="prose">
+    <li id="ref1">Secure Privacy - GDPR Cookie Consent Requirements 2025: prior consent, reject as easy as accept, dark-pattern enforcement (CNIL EUR 325M fine, Sept 2025). <a href="https://secureprivacy.ai/blog/gdpr-cookie-consent-requirements-2025">secureprivacy.ai/blog/gdpr-cookie-consent-requirements-2025</a></li>
+    <li id="ref2">EU ePrivacy Directive (the "cookie law") overview. <a href="https://www.recordinglaw.com/world-laws/world-data-privacy-laws/eu-data-privacy-laws/eprivacy-directive-cookie-law/">recordinglaw.com/world-laws/world-data-privacy-laws/eu-data-privacy-laws/eprivacy-directive-cookie-law</a></li>
+    <li id="ref3">Termly - Pre-ticked GDPR checkboxes for cookies are not allowed. <a href="https://termly.io/resources/articles/gdpr-checkboxes/">termly.io/resources/articles/gdpr-checkboxes</a></li>
+    <li id="ref4">Your Europe (European Commission) - Online privacy: how to use cookies. <a href="https://europa.eu/youreurope/business/dealing-with-customers/data-protection/online-privacy/index_en.htm">europa.eu/youreurope/business/dealing-with-customers/data-protection/online-privacy</a></li>
+    <li id="ref5">Sayenko Kharenko - Ukraine: Cookies and similar technologies (Law No. 2297-VI, prior consent, no statutory cookie definition). <a href="https://sk.ua/ukraine-cookies-similar-technologies/">sk.ua/ukraine-cookies-similar-technologies</a></li>
+    <li id="ref6">DataGuidance - Ukraine: Cookies and similar technologies (implied consent hard to prove; cookies-on-landing not proper consent). <a href="https://www.dataguidance.com/notes/ukraine-cookies-similar-technologies">dataguidance.com/notes/ukraine-cookies-similar-technologies</a></li>
+  </ol>
+</section>
+
+</main>
+
+<script>
+const toggle = document.getElementById('menuToggle')
+const overlay = document.getElementById('sidebarOverlay')
+const sidebar = document.getElementById('sidebar')
+toggle.addEventListener('click', () => { sidebar.classList.toggle('open'); overlay.classList.toggle('open') })
+overlay.addEventListener('click', () => { sidebar.classList.remove('open'); overlay.classList.remove('open') })
+
+const subLinks = document.querySelectorAll('.sidebar-sub-link')
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      subLinks.forEach(l => l.classList.remove('active'))
+      const link = document.querySelector(`.sidebar-sub-link[href="#${e.target.id}"]`)
+      if (link) link.classList.add('active')
+    }
+  })
+}, { rootMargin: '-15% 0px -75% 0px' })
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s))
+</script>
+
+</body>
+</html>
