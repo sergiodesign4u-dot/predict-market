@@ -371,6 +371,8 @@ def render_sidebar(active_slug):
     <div class="sidebar-divider">Detailed layer</div>
     <a href="../../ia/ia.html" class="sidebar-page-link">Overview</a>
     <a href="../../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <a href="../../ia/seo.html" class="sidebar-page-link">SEO layer</a>
+    <a href="../../ia/system.html" class="sidebar-page-link">System nodes</a>
     <div class="sidebar-divider">Plan</div>
     <a href="../../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
     <a href="index.html" class="sidebar-page-link@@ANN_ACTIVE@@">Wireframe Annotations</a>

@@ -510,6 +510,33 @@ Leaderboard                                 [ORPHAN]        - no confirmed job; 
 Help / FAQ                                  [ORPHAN]        - EJ2 is served by Deposit + How It Works; a generic FAQ adds friction without closing a job
 ```
 
+### SYSTEM AND GLOBAL - out-of-cluster nodes (Detailed layer)
+
+Global system nodes and the footer / legal destinations, specified in the IA Detailed layer
+(`ia/docs/pages/system.md`, rendered `ia/system.html`). Registered here so the footer and the
+cookie banner never promise a destination the map omits. The SEO structural layer for the
+indexed pages lives in `ia/docs/pages/seo.md` (rendered `ia/seo.html`).
+
+```
+404 Not Found            page       HTTP 404, noindex,follow    full page, never a dead-end (quick links + home)
+500 Server Error         page       HTTP 500, noindex           static template, funds reassurance + retry
+503 Maintenance          page       HTTP 503 + Retry-After       planned downtime, bets and funds safe
+Cookie consent           component  banner, prior opt-in         reject as easy as accept, no pre-ticked, reopen from footer
+Toast / notification     component  aria-live, transient         action result, auto-dismiss + manual close
+```
+
+Footer and legal destinations, promised by the footer node (`seo.md`); page content is post-MVP
+`[?]` where marked, but the destination is registered now so map and footer stay in sync:
+
+```
+Terms of Service         page       index,follow                legal
+Privacy Policy           page       index,follow                legal; linked from the cookie banner
+Cookie Policy            page       index,follow                legal; linked from the cookie banner
+Responsible betting      page       index,follow                trust and legal
+About                    page       index,follow                company
+Contact / Support        page       [?]                         support entry; Help / FAQ stays [ORPHAN]
+```
+
 ---
 
 ---

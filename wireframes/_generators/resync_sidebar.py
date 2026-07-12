@@ -47,6 +47,8 @@ NAV = [
     ("divider", "Detailed layer"),
     ("item", "overview", "Overview", "ia/ia.html", False),
     ("item", "sitemap", "Sitemap", "ia/sitemap.html", False),
+    ("item", "seo", "SEO layer", "ia/seo.html", False),
+    ("item", "system", "System nodes", "ia/system.html", False),
     ("divider", "Plan"),
     ("item", "wireframes", "Wireframes", "wireframes/event-feed.html", False),
     ("item", "annotations", "Wireframe Annotations", "ia/annotations/index.html", False),
@@ -72,6 +74,8 @@ PAGES = {
     "ia/sitemap.html": "sitemap",
     "ia/flows.html": "flows",
     "ia/concept-map.html": "concept-map",
+    "ia/seo.html": "seo",
+    "ia/system.html": "system",
     "voice/voice.html": "voice",
 }
 
