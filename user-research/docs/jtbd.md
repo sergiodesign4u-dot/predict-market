@@ -3,7 +3,7 @@
 > Format: Когда [ситуация] → я хочу [мотивация] → чтобы [результат]
 > Rule: no product feature names in formulations - only human progress.
 > Source discipline: each job cites persona + research origin. Jobs without data → Hypotheses section only.
-> Built from: personas.md · master-research.md · CLAUDE.md · ux-patterns.md · aarrr.md · benchmark-trust.md · live-research F1–F3
+> Built from: personas.md · research.md · CLAUDE.md · ux-patterns.md · aarrr.md · benchmark.md · live-research F1–F3
 
 ---
 
@@ -32,8 +32,8 @@ A person can fail at FJ2 and never reach MJ. EJ and SJ don't depend on each othe
 
 | Что подтверждает | Источник |
 |---|---|
-| JTBD J2: "follow events with real skin in the game" - primary JTBD, confirmed across all 3 research iterations | CLAUDE.md · master-research.md §1 Key Conclusions #1 |
-| "Engaged spectator with skin in the game" - формулировка из strategy.md | master-research.md §3 How We're Solving It |
+| JTBD J2: "follow events with real skin in the game" - primary JTBD, confirmed across all 3 research iterations | CLAUDE.md · research.md §1 Key Conclusions #1 |
+| "Engaged spectator with skin in the game" - формулировка из strategy.md | research.md §3 How We're Solving It |
 | News Junkie: "Prove they're right on current events" - сегмент подтверждён как primary | strategy.md · personas.md Persona 1 |
 
 ---
@@ -52,7 +52,7 @@ A person can fail at FJ2 and never reach MJ. EJ and SJ don't depend on each othe
 | Что подтверждает | Источник |
 |---|---|
 | "Event-triggered arrival - KEY pattern for all segments. Entry point." | ux-patterns.md - Audience Behavioral Patterns |
-| "How we greet the user 'from the news' determines activation and the first bet" | master-research.md §6 |
+| "How we greet the user 'from the news' determines activation and the first bet" | research.md §6 |
 | Path to AHA: Arrived → Registered → … → Found a market | aarrr.md - PATH TO AHA MOMENT |
 
 ---
@@ -64,9 +64,9 @@ A person can fail at FJ2 and never reach MJ. EJ and SJ don't depend on each othe
 
 | Что подтверждает | Источник |
 |---|---|
-| ПОДТВЕРЖДЁН КАК ДИФФЕРЕНЦИАТОР: "No competitor explains 'why is the price this?'" | master-research.md §4 Gap table · §1 Key Conclusions #2 |
+| ПОДТВЕРЖДЁН КАК ДИФФЕРЕНЦИАТОР: "No competitor explains 'why is the price this?'" | research.md §4 Gap table · §1 Key Conclusions #2 |
 | "Markets are isolated questions without context. This is our differentiator." | ux-patterns.md - Story-driven Discovery Reason 2 |
-| Benchmark: ни один из 5 продуктов не объясняет контекст цены внутри продукта | benchmark-trust.md C3 fee transparency + C8 resolution clarity |
+| Benchmark: ни один из 5 продуктов не объясняет контекст цены внутри продукта | benchmark.md C3 fee transparency + C8 resolution clarity |
 
 ---
 
@@ -77,10 +77,10 @@ A person can fail at FJ2 and never reach MJ. EJ and SJ don't depend on each othe
 
 | Что подтверждает | Источник |
 |---|---|
-| RISKIEST ASSUMPTION PROXY: "The main barrier for News Junkie is needing MetaMask and USDC before the first bet" | master-research.md §7 H1 · strategy.md Riskiest Assumption |
-| "8+ wallet icons = cognitive overload" на экране signup Polymarket | master-research.md §7 Gap #5 · screens/polymarket-signup-mobile.png |
-| "No PM has solved onboarding without a Web3 wallet" | master-research.md §7 Gap #1 · competitive-analysis.md Q1 |
-| "Onboarding assumes prior knowledge of the product type" | master-research.md §4 Competitor gaps |
+| RISKIEST ASSUMPTION PROXY: "The main barrier for News Junkie is needing MetaMask and USDC before the first bet" | research.md §7 H1 · strategy.md Riskiest Assumption |
+| "8+ wallet icons = cognitive overload" на экране signup Polymarket | research.md §7 Gap #5 · screens/polymarket-signup-mobile.png |
+| "No PM has solved onboarding without a Web3 wallet" | research.md §7 Gap #1 · competitors.md Q1 |
+| "Onboarding assumes prior knowledge of the product type" | research.md §4 Competitor gaps |
 
 ---
 
@@ -91,9 +91,9 @@ A person can fail at FJ2 and never reach MJ. EJ and SJ don't depend on each othe
 
 | Что подтверждает | Источник |
 |---|---|
-| "New fintech user's primary fear is 'what happens to my money'" | benchmark-trust.md Top 3 mechanisms #2 · hypothesis H4 |
-| Futuur - ближайший аналог - C2 (Funds protection): 1/5. Polymarket: 1/5. Это открытый gap. | benchmark-trust.md scores |
-| Revolut решает это одной фразой и получает C2: 5/5 - шаблон для нас | benchmark-trust.md Top 3 mechanisms #2 |
+| "New fintech user's primary fear is 'what happens to my money'" | benchmark.md Top 3 mechanisms #2 · hypothesis H4 |
+| Futuur - ближайший аналог - C2 (Funds protection): 1/5. Polymarket: 1/5. Это открытый gap. | benchmark.md scores |
+| Revolut решает это одной фразой и получает C2: 5/5 - шаблон для нас | benchmark.md Top 3 mechanisms #2 |
 | 70–84% трейдеров теряют деньги - структурный факт рынка, усиливает этот страх | live-research F2 · Yahoo Finance / DeFi Oasis Dec 2025 |
 
 ---
@@ -105,10 +105,10 @@ A person can fail at FJ2 and never reach MJ. EJ and SJ don't depend on each othe
 
 | Что подтверждает | Источник |
 |---|---|
-| "Post-resolution experience is undesigned - especially for losses. No competitor has a 'here's what happened, here's next' loss screen." | master-research.md §4 Competitor gap table |
+| "Post-resolution experience is undesigned - especially for losses. No competitor has a 'here's what happened, here's next' loss screen." | research.md §4 Competitor gap table |
 | Паттерн F3: после первой потери - не уход, а чейсинг и эскалация. Цитата: "then bam, everything's gone." | live-research F3 · AOL 2026 |
 | "Losing first bet → doesn't return" - отмечен как ключевой риск в воронке | aarrr.md Funnel |
-| "Post-resolution loss screen + prediction streak mechanic" - решение из v_refresh | master-research.md §3 AARRR Product Decisions |
+| "Post-resolution loss screen + prediction streak mechanic" - решение из v_refresh | research.md §3 AARRR Product Decisions |
 
 ---
 
@@ -126,7 +126,7 @@ A person can fail at FJ2 and never reach MJ. EJ and SJ don't depend on each othe
 |---|---|
 | "Prove they're right on current events" - формулировка мотивации сегмента | strategy.md · personas.md Persona 1 J1 |
 | "Knowledge validation: user already has an opinion and comes to check whether the market agrees" | ux-patterns.md Audience Behavioral Patterns |
-| JTBD J2: "skin in the game" - не про деньги, а про участие | CLAUDE.md · master-research.md §3 |
+| JTBD J2: "skin in the game" - не про деньги, а про участие | CLAUDE.md · research.md §3 |
 
 ---
 
@@ -136,9 +136,9 @@ A person can fail at FJ2 and never reach MJ. EJ and SJ don't depend on each othe
 
 | Что подтверждает | Источник |
 |---|---|
-| Trust - #1 value для аудитории 20–40 | CLAUDE.md Target Audience · benchmark-trust.md Why Trust |
-| "Первый сбой доверия - когнитивная тревога ('что вообще это такое?')" | benchmark-trust.md Top 3 mechanisms #1 |
-| Bet365 убирает тревогу мгновенно, C5: 5/5. Futuur - C5: 3/5. Polymarket - C5: 3/5. | benchmark-trust.md C5 Clarity of first impression |
+| Trust - #1 value для аудитории 20–40 | CLAUDE.md Target Audience · benchmark.md Why Trust |
+| "Первый сбой доверия - когнитивная тревога ('что вообще это такое?')" | benchmark.md Top 3 mechanisms #1 |
+| Bet365 убирает тревогу мгновенно, C5: 5/5. Futuur - C5: 3/5. Polymarket - C5: 3/5. | benchmark.md C5 Clarity of first impression |
 
 ---
 
@@ -149,7 +149,7 @@ A person can fail at FJ2 and never reach MJ. EJ and SJ don't depend on each othe
 | Что подтверждает | Источник |
 |---|---|
 | F3: паттерн escalation - early wins → overconfidence → loss-chasing. Интервенция нужна именно здесь. | live-research F3 · AOL 2026 |
-| "Post-resolution loss screen is the intervention point before chasing begins. No competitor designs this." | master-research.md §8 Key Implication |
+| "Post-resolution loss screen is the intervention point before chasing begins. No competitor designs this." | research.md §8 Key Implication |
 | 19 федеральных исков против Kalshi к январю 2026 - контекст масштаба проблемы | live-research F3 |
 
 ---
@@ -166,10 +166,10 @@ A person can fail at FJ2 and never reach MJ. EJ and SJ don't depend on each othe
 
 | Что подтверждает | Источник |
 |---|---|
-| "'I told you so' is a powerful social instinct. A win makes people want to show it off." | master-research.md §7 H5 |
+| "'I told you so' is a powerful social instinct. A win makes people want to show it off." | research.md §7 H5 |
 | "Social sharing - wants to show prediction/win. Especially News Junkie." | ux-patterns.md Audience Behavioral Patterns |
 | H5: Share card после каждой резолюции → >20% нового трафика через шэринг | aarrr.md Referral · hypothesis H5 |
-| Robinhood и Spotify Wrapped подтвердили этот паттерн в других вертикалях | master-research.md §7 H5 |
+| Robinhood и Spotify Wrapped подтвердили этот паттерн в других вертикалях | research.md §7 H5 |
 
 ---
 
@@ -179,9 +179,9 @@ A person can fail at FJ2 and never reach MJ. EJ and SJ don't depend on each othe
 
 | Что подтверждает | Источник |
 |---|---|
-| "Public prediction track record from day one (eToro CopyTrader model)" - добавлено в v_refresh | master-research.md §3 AARRR Product Decisions - Referral |
+| "Public prediction track record from day one (eToro CopyTrader model)" - добавлено в v_refresh | research.md §3 AARRR Product Decisions - Referral |
 | "Profile: prediction track record as reputation" - в описании продукта | CLAUDE.md Product implications |
-| Metaculus как референс - качество прогнозов как социальная валюта | master-research.md §4 Competitors - SOFT group |
+| Metaculus как референс - качество прогнозов как социальная валюта | research.md §4 Competitors - SOFT group |
 
 ---
 
@@ -232,11 +232,11 @@ Jobs без достаточной доказательной базы. Не в�
 | Какое конкретное событие первым приводит Alex на платформу? | FJ1 - точка входа в воронку |
 | Что именно говорят пользователи о моменте после потери - в их словах? | FJ5 + EJ3 - нет верифицированных цитат |
 
-*Source: master-research.md §8 Open questions Q1, Q3, Q5 · live-research Q1, Q3, Q5, Q7*
+*Source: research.md §8 Open questions Q1, Q3, Q5 · live-research Q1, Q3, Q5, Q7*
 
 ---
 
-*Compiled from: CLAUDE.md · personas.md · master-research.md · strategy.md · ux-patterns.md · aarrr.md · benchmark-trust.md · live-research F1–F3 (June 2026)*
+*Compiled from: CLAUDE.md · personas.md · research.md · strategy.md · ux-patterns.md · aarrr.md · benchmark.md · live-research F1–F3 (June 2026)*
 
 ---
 
@@ -252,10 +252,10 @@ Jobs без достаточной доказательной базы. Не в�
 |---|---|---|---|---|---|
 | **MJ** Реальна ставка на подію | **3** - JTBD J2 primary, підтверджено в усіх 3 ітераціях ресёрчу | **2** - той самий job, вже на Polymarket, менша гострота | **2** - новий домен для досвідченого бетора | Флоу події → YES/NO → підтвердження | Polymarket ✓ Kalshi ✓ (US only) Futuur ✓ - всі закривають, але не для аудиторії Алекса |
 | **FJ1** Знайти подію поки актуальна | **3** - "Event-triggered arrival = KEY for all segments" · ux-patterns.md | **2** - орієнтується самостійно | **2** - звик до фідів Bet365 | Фід подій зі стислим контекстом (не просто заголовки) | Polymarket ✓ Kalshi ✓ Futuur ✓ - всі мають фіди, але без наративу навколо події |
-| **FJ2** Чому саме ця ймовірність | **3** - ПІДТВЕРДЖЕНИЙ ДИФЕРЕНЦІАТОР · "no competitor explains 'why this price?'" · master-research.md §4 | **1** - розуміє ринки, пояснення не потрібне | **2** - грамотний з odds, але новачок у PM | Story-driven блок контексту на сторінці події | **НІХТО** · Підтверджений gap у всіх 5 бенчмаркованих продуктах · master-research.md §4 gap table |
-| **FJ3** Поповнити рахунок без крипто | **3** - RISKIEST ASSUMPTION PROXY · головна точка дропауту · master-research.md §7 H1 | **1** - немає бар'єру, є MetaMask | **2** - немає крипто, потрібен картковий шлях | Fiat on-ramp (картка → USDC) з першого екрану після реєстрації | Kalshi ✓ але US only · Futuur [?] частково · Polymarket через MoonPay але не UX-пріоритет (C6: 2/5) · Інші: ні |
-| **FJ4** Впевнитися що гроші в безпеці | **3** - головний страх перед депозитом · benchmark-trust.md C2 · hypothesis H4 | **2** - on-chain верифікація важлива | **3** - референс Bet365 (C2: 4/5), дуже чутлива до ліцензій | Один рядок захисту коштів на екрані депозиту + on-chain підтвердження | Bet365 ✓ C2: 4/5 · Revolut ✓ C2: 5/5 · **Polymarket ✗ C2: 1/5 · Futuur ✗ C2: 1/5** · Gap 14–19 pts нижче референсу |
-| **FJ5** Пережити першу поразку без чейсингу | **3** - F3: паттерн ескалації підтверджено · головний ризик D7 retention | **2** - актуально, менш гостро (досвід) | **2** - досвід ставок допомагає, але ризик є | Екран після резолюції для програшу ("що сталося + наступний крок") | **НІХТО** · "no competitor has a 'here's what happened, here's next' loss screen" · master-research.md §4 |
+| **FJ2** Чому саме ця ймовірність | **3** - ПІДТВЕРДЖЕНИЙ ДИФЕРЕНЦІАТОР · "no competitor explains 'why this price?'" · research.md §4 | **1** - розуміє ринки, пояснення не потрібне | **2** - грамотний з odds, але новачок у PM | Story-driven блок контексту на сторінці події | **НІХТО** · Підтверджений gap у всіх 5 бенчмаркованих продуктах · research.md §4 gap table |
+| **FJ3** Поповнити рахунок без крипто | **3** - RISKIEST ASSUMPTION PROXY · головна точка дропауту · research.md §7 H1 | **1** - немає бар'єру, є MetaMask | **2** - немає крипто, потрібен картковий шлях | Fiat on-ramp (картка → USDC) з першого екрану після реєстрації | Kalshi ✓ але US only · Futuur [?] частково · Polymarket через MoonPay але не UX-пріоритет (C6: 2/5) · Інші: ні |
+| **FJ4** Впевнитися що гроші в безпеці | **3** - головний страх перед депозитом · benchmark.md C2 · hypothesis H4 | **2** - on-chain верифікація важлива | **3** - референс Bet365 (C2: 4/5), дуже чутлива до ліцензій | Один рядок захисту коштів на екрані депозиту + on-chain підтвердження | Bet365 ✓ C2: 4/5 · Revolut ✓ C2: 5/5 · **Polymarket ✗ C2: 1/5 · Futuur ✗ C2: 1/5** · Gap 14–19 pts нижче референсу |
+| **FJ5** Пережити першу поразку без чейсингу | **3** - F3: паттерн ескалації підтверджено · головний ризик D7 retention | **2** - актуально, менш гостро (досвід) | **2** - досвід ставок допомагає, але ризик є | Екран після резолюції для програшу ("що сталося + наступний крок") | **НІХТО** · "no competitor has a 'here's what happened, here's next' loss screen" · research.md §4 |
 | **EJ1** Відчути що я розумію краще за більшість | **3** - "I told you so" - первинний драйв Алекса · personas.md J1 · ux-patterns.md Knowledge validation | **2** - другорядне відносно грошей | **[?]** - немає даних: для неї важливіше виграти чи довести правоту? | [?] не визначено - кандидати: win-screen, "you were right" copy, prediction history | Metaculus ✓ частково (прогнози як репутація, але play-money) · Polymarket/Kalshi: частково (share) |
 | **EJ2** Відчути безпеку коштів | **3** - той самий страх що FJ4, але емоційний шар на кожному екрані | **2** - on-chain докази важливі | **3** - критично, Bet365 = референсна планка (33/40) | Довірчий текст на екрані депозиту · "Your USDC is held 1:1" | Bet365 ✓ C2: 4/5 · Revolut ✓ C2: 5/5 · **Polymarket ✗ 1/5 · Futuur ✗ 1/5** |
 | **EJ3** Вийти з поразки усвідомлено | **3** - F3: потрібна інтервенція до початку чейсинг-петлі · live-research F3 | **1** - керує собою самостійно | **2** - досвід бетора є, але ризик залишається | Той самий екран що FJ5 (одна функція закриває два jobs) | **НІХТО** · жоден конкурент не проектує цей момент |
@@ -278,7 +278,7 @@ Jobs без достаточной доказательной базы. Не в�
 
 → **Функція-кандидат:** story-driven блок контексту на сторінці кожної події (наратив + чому ціна = X + умови резолюції)
 
-*master-research.md §4 gap table · benchmark-trust.md усі 5 продуктів · ux-patterns.md Story-driven Reason 2*
+*research.md §4 gap table · benchmark.md усі 5 продуктів · ux-patterns.md Story-driven Reason 2*
 
 ---
 
@@ -290,7 +290,7 @@ Jobs без достаточной доказательной базы. Не в�
 
 → **Функція-кандидат:** fiat on-ramp (картка → USDC) з першого екрану після реєстрації, без редиректу на сторонній сервіс
 
-*master-research.md §7 H1 · aarrr.md PATH TO AHA · competitive-analysis.md Q1*
+*research.md §7 H1 · aarrr.md PATH TO AHA · competitors.md Q1*
 
 ---
 
@@ -302,7 +302,7 @@ Jobs без достаточной доказательной базы. Не в�
 
 → **Функція-кандидат:** post-resolution loss screen: пояснення результату + один чіткий наступний крок (не промо нової ставки)
 
-*live-research F2 + F3 · master-research.md §4 gap "post-resolution undesigned" · aarrr.md Retention "first-bet loss"*
+*live-research F2 + F3 · research.md §4 gap "post-resolution undesigned" · aarrr.md Retention "first-bet loss"*
 
 ---
 
@@ -316,4 +316,4 @@ Jobs без достаточной доказательной базы. Не в�
 | **Market Board / Trading view** | HJ2 (Dan, гіпотеза) | Прямо відхилений для primary аудиторії в ux-patterns.md. "Мова трейдера, не глядача." Для Alex - дропаут. |
 | **Спортивні ринки на MVP** | HJ3 (Maria, post-MVP) | Рішення прийнято: post-MVP з 3-місячним чекпоінтом. Не закриває жодного job Alex. Додає складність без перевірки ядра. |
 
-*master-research.md §1 Key Conclusions #6 · live-research F1 · ux-patterns.md "❌ Not a Fit: Market Board"*
+*research.md §1 Key Conclusions #6 · live-research F1 · ux-patterns.md "❌ Not a Fit: Market Board"*

@@ -862,7 +862,7 @@ _1 state page(s): how-it-works.html_
 | Main | Label | On-chain proofs |  |
 | Main | Label | USDC held 1:1 |  |
 | Main | Label | always |  |
-| Main | Label | Resolved-market count as social proof (benchmark-trust.md Top 3 trust mechanisms). |  |
+| Main | Label | Resolved-market count as social proof (benchmark.md Top 3 trust mechanisms). |  |
 | Main | Button | Browse events | **same-action / go-to-events button varies** |
 | Main | Button | Add funds | **same-thing / Deposit vs Add funds** |
 | Main | Text | Reachable before you deposit anything (from the menu and the footer) and from the Deposit dialog "learn more" link, so the answer to "what happens to my money" comes before the money does. |  |
@@ -881,7 +881,7 @@ _4 state page(s): win-error.html, win-loading.html, win-payout-pending.html, win
 | Main | Text | We couldn't generate your Share Card (T11). Your win and payout are not affected. You can share as text instead. | **leftover spec-note (internal codes)** |
 | Main | Button | Share as text |  |
 | Main | Button | See next events | **same-action / go-to-events button varies** |
-| Main | Text | Per IA/flows.md SJ1: a missing card (T11) falls back to a text share (T13a), not a dead end - the win is still shown. | **leftover spec-note (internal codes)** |
+| Main | Text | Per ia/docs/flows.md SJ1: a missing card (T11) falls back to a text share (T13a), not a dead end - the win is still shown. | **leftover spec-note (internal codes)** |
 | Main | Text | Generating your Share Card... |  |
 | Main | Label | Your win and payout are confirmed. The shareable card is being created. |  |
 | Main | Label | You held YES, avg price 38%. Payout is settling on-chain. |  |
@@ -1103,7 +1103,7 @@ Already the most carefully toned screens (Win "You were right", no confetti; Los
 | win-error | Body | We couldn't generate your Share Card **(T11)**. Your win and payout are not affected. You can share as text instead. | We couldn't generate your Share Card. Your win and payout are not affected. You can share as text instead. | Forbidden: strip internal code |
 | win | Rationale note | `.fine` "One moment, then move on - no confetti loop. Share is the primary action ... (research F5 ...)." | *(removed)* | Forbidden: leaked spec-note |
 | loss | Rationale note | `.fine` "One clear next step, and no "bet again" prompt. ... (FJ5 + EJ3 ...)." | *(removed)* | Forbidden: leaked spec-note |
-| win-error | Spec-note | `.fine` "Per IA/flows.md SJ1: a missing card (T11) falls back to a text share (T13a) ..." | *(removed)* | Forbidden: leaked spec-note |
+| win-error | Spec-note | `.fine` "Per ia/docs/flows.md SJ1: a missing card (T11) falls back to a text share (T13a) ..." | *(removed)* | Forbidden: leaked spec-note |
 
 **Kept (already on-voice):** "You were right" / "You were right - you won", "What happened", "Result", "Share" / "Share as text", "Share Card (auto-generated)", "Here's what happened", "Back to your bets" (goes to My Bets, not the feed), "Your payout is on the way" + the settlement note, win-loading / loss-loading. The resolution narrative and Share Card text are per-event / user content, untouched. (The state-switcher chip "Card failed (T11)" is wireframe tooling, not product copy.)
 
@@ -1119,7 +1119,7 @@ The remaining screen families in the tree, same pattern: only states already pre
 | public-profile-error | Error CTA | **Back to events** | **Browse events** | Lexicon: one go-to-events label |
 | public-profile-not-found | Not-found CTA | **Go to events** | **Browse events** | Lexicon: one go-to-events label |
 | how-it-works | Money-held body | ... place a bet or withdraw - **deposits**, payouts and withdrawals are all recorded in your Wallet. | ... **added funds**, payouts and withdrawals ... | Lexicon: retire the "deposit" noun (matches the Wallet pass) |
-| how-it-works | Social-proof stat | **Markets resolved** (1,240) | **Events resolved** (1,240) | Lexicon: market -> event in the UI (consistency with the whole product; the source phrase in `benchmark-trust.md` uses "markets", but the UI lexicon is "event") |
+| how-it-works | Social-proof stat | **Markets resolved** (1,240) | **Events resolved** (1,240) | Lexicon: market -> event in the UI (consistency with the whole product; the source phrase in `benchmark.md` uses "markets", but the UI lexicon is "event") |
 | how-it-works | Rationale note | `.fine` "Reachable before you deposit anything (from the menu and the footer) ... so the answer to 'what happens to my money' comes before the money does." | *(removed)* | Forbidden: leaked spec-note (describes where the screen sits, not user copy) |
 
 **Kept (already on-voice):** Favorites - "Favorites" heading, "No favorites yet", sort/frequency/category filter labels, "Browse events", card controls (aria already "Save" / "Saved" from the Step 06 shared-card pass). My / Public Profile - "My Profile" / "Profile", "Couldn't load your/this profile", "Try again", "Portfolio" / "Cash (available)" / "In-play" / "Open Wallet", "Add funds" (fixed in Step 10), "Track record" / "Total bets" / "Win rate" / "Resolved" / "Member since", the win-rate gloss ("Reputation = the track record, not the balance"), "Resolved predictions (public)", "Edit name & avatar", "Public track record · read-only" + the read-only trust line, "Profile not found" + its body. How It Works - the intro ("You always know what you are doing ... a promise, not a FAQ"), all section headings + bodies (already P5-specific: resolution conditions, on-chain, AMM-timing payout, "fee only when you win"), "On-chain proofs" / "USDC held 1:1" / "always", "Browse events", "Add funds".
@@ -1148,7 +1148,7 @@ exclamations and emoji. The stragglers and the deferred cluster, fixed:
 | `event-detail-resolved` | The **market** closed while you were reading **(event-closed)**. ... You hold a **position**, so you can open your result. | The **event** closed while you were reading. ... You hold a **bet**, so you can open your result. | Lexicon (market->event, position->bet) + strip leaked state code |
 | `event-detail-resolved` | CTA **See your position** | **See your bet** | Lexicon: position->bet |
 | `wallet` | In-play is locked in open **positions** until they resolve. | ... in open **bets** until they resolve. | Lexicon: position->bet |
-| `how-it-works` | `.pos-status` "Resolved-market count as social proof **(benchmark-trust.md Top 3 trust mechanisms)**." | *(removed)* | Forbidden: leaked spec-note |
+| `how-it-works` | `.pos-status` "Resolved-market count as social proof **(benchmark.md Top 3 trust mechanisms)**." | *(removed)* | Forbidden: leaked spec-note |
 | `event-detail`, `-multi`, `-logged-out`, `-logged-out-multi` | `.fine` "... Payout depends on when you bet (AMM). **Confirm opens sign-in (over this page), then deposit if needed.**" | "... Payout depends on when you bet (AMM)." | Forbidden: trailing spec-note trimmed |
 
 **Content tabs -> spectator language (the deferred cluster from Step 06, 9 Event

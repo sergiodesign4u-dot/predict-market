@@ -3,7 +3,7 @@
 > Status: wireframe build complete (2026-06-28). Navigation design complete; the
 > wireframe build pass (below) revises several structural decisions. Every screen in
 > the S6 screen tree is built (orphans [SIROTA] excepted, by design).
-> Built from: personas.md · jtbd.md · master-research.md
+> Built from: personas.md · jtbd.md · research.md
 
 ---
 
@@ -396,12 +396,12 @@ Win Screen                                   (EJ1 · SJ1)    ⭐ PRIMARY + 🥈 
 Loss Screen                                  (FJ5 · EJ3)    ⭐ PRIMARY + 🥈 SECONDARY
 ```
 
-**Win Screen** - "You were right." Amount won, resolution summary (what happened and why), Share Card auto-generated. CTA: Share · See next events. Design rationale: no confetti loop, no persistent celebration animation. Research finding F5 (master-research.md): first WIN is the trigger for overconfidence and escalation, not loss. The win screen must celebrate the outcome without feeding the loop. Celebratory but measured - one moment, then move on.
-Per F5, the first win is the stronger escalation trigger (overconfidence). Share / mark the moment is the default next action; "see next events" is a deliberate secondary CTA, not the primary. Symmetric with the Loss intervention, shaped for overconfidence rather than impulse. Modeled in IA/flows.md SJ1: share path is the primary edge, secondary "see next events" edge is labeled with the overconfidence risk.
+**Win Screen** - "You were right." Amount won, resolution summary (what happened and why), Share Card auto-generated. CTA: Share · See next events. Design rationale: no confetti loop, no persistent celebration animation. Research finding F5 (research.md): first WIN is the trigger for overconfidence and escalation, not loss. The win screen must celebrate the outcome without feeding the loop. Celebratory but measured - one moment, then move on.
+Per F5, the first win is the stronger escalation trigger (overconfidence). Share / mark the moment is the default next action; "see next events" is a deliberate secondary CTA, not the primary. Symmetric with the Loss intervention, shaped for overconfidence rather than impulse. Modeled in ia/docs/flows.md SJ1: share path is the primary edge, secondary "see next events" edge is labeled with the overconfidence risk.
 States: loading (Share Card generation in progress) - error (Share Card not generated, SJ1 blocked - T11 in flows) - payout-pending (your payout will arrive in a few minutes, on-chain settlement delay).
 
 **Loss Screen** - "Here's what happened." Plain-language resolution note (what resolved and why), amount lost, one clear next step (not "bet again" promo). This screen is undesigned by every competitor - it is our primary retention intervention against loss-chasing (FJ5 + EJ3 confirmed gap).
-Design rationale: the resolution note is the default beat before any re-bet (intervention against loss-chasing, per product strategy O1 trust over O4 volume). Friction is calm, non-punitive, and non-blocking - the user can always proceed. The escalation branch in IA/flows.md FJ5 routes through an explicit pause node before reaching Bet Screen. Reserved: session-aware chasing check (C-logic), post-MVP, not built in this pass.
+Design rationale: the resolution note is the default beat before any re-bet (intervention against loss-chasing, per product strategy O1 trust over O4 volume). Friction is calm, non-punitive, and non-blocking - the user can always proceed. The escalation branch in ia/docs/flows.md FJ5 routes through an explicit pause node before reaching Bet Screen. Reserved: session-aware chasing check (C-logic), post-MVP, not built in this pass.
 States: loading (resolution note fetching).
 Note: Cancelled-event refund flow is deferred to post-MVP, so no refund/payout state exists on this screen at MVP.
 
@@ -482,7 +482,7 @@ Reachable from Deposit screen ("learn more" link) and from main navigation - acc
 How It Works                                 (FJ4 · EJ2)    ⭐ PRIMARY
 ```
 
-**How It Works** - funds protection (one sentence: "Your USDC is held 1:1"), resolution process (who decides, what evidence, on-chain proof), resolved markets count as social proof (benchmark-trust.md Top 3 mechanisms). Not a FAQ - a trust declaration, written as a promise.
+**How It Works** - funds protection (one sentence: "Your USDC is held 1:1"), resolution process (who decides, what evidence, on-chain proof), resolved markets count as social proof (benchmark.md Top 3 mechanisms). Not a FAQ - a trust declaration, written as a promise.
 
 ---
 
@@ -719,7 +719,7 @@ desktop question; none of them changes a mobile decision.
 - **Mobile-to-desktop mapping:** in-context overlay on both breakpoints -
   centered modal on desktop, full-height bottom sheet on mobile.
 - **Consistency with locked IA:** this aligns with the G1 nav decision already
-  in IA/sitemap.md and IA/flows.md, where a notification tap "opens target
+  in ia/docs/sitemap.md and ia/docs/flows.md, where a notification tap "opens target
   modally over the current tab". Modal presentation of invoked screens extends
   G1, it does not contradict it. The invoked screens remain non-navigation
   destinations (they are still never a nav slot), exactly as the locked "Not
@@ -783,13 +783,13 @@ Flow / invoked - reached only inside a flow, not via nav bar
 
 **G1 retention path: resolution notification → Loss Screen**
 - Tap resolution notification (OS banner or Notifications list item) → Loss Screen directly (1 tap).
-- Matches the G1 edge in IA/flows.md FJ5: `triggerNotif -->|"G1: direct to Loss Screen"| LS`.
+- Matches the G1 edge in ia/docs/flows.md FJ5: `triggerNotif -->|"G1: direct to Loss Screen"| LS`.
 - The manual fallback path (My Bets → tap resolved item → Loss Screen) is 2 taps. G1 cuts this to 1 tap so the resolution note reaches the user before the impulse to chase.
 - Result: 1 tap from notification. Confirmed.
 
 **Win Screen retention path: win resolution notification → Win Screen**
 - Tap win resolution notification (OS banner or Notifications list item) → Win Screen directly (1 tap).
-- Matches the G1-equivalent edge in IA/flows.md SJ1: `triggerNotif -->|"direct: 1 tap to Win Screen"| WS`.
+- Matches the G1-equivalent edge in ia/docs/flows.md SJ1: `triggerNotif -->|"direct: 1 tap to Win Screen"| WS`.
 - The manual fallback path (My Bets → History tab → tap won item → Win Screen) is 2 taps. The notification path ensures the share impulse window is not missed (SJ1).
 - Result: 1 tap from notification. Confirmed.
 

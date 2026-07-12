@@ -7,7 +7,7 @@
 > analysis); nothing is taken on taste alone.
 
 **Context that sets the tone.** This is crypto money, on real-world events, among
-strangers, with no regulatory badge we are allowed to show (`benchmark-trust.md`:
+strangers, with no regulatory badge we are allowed to show (`benchmark.md`:
 "Regulatory badges ... require real licenses we do not hold"). In that context
 **trust matters more than wit**. The reader is a news-follower who arrives from a
 headline, not a trader - they need the concrete thing (a date, a source, a plain
@@ -43,7 +43,7 @@ This is our differentiator"; `jtbd.md:60` (FJ2) - the user wants to understand
 Alex "doesn't understand why the price is 67%, what affects it, or what
 'resolves' means." Competitor language confirms the gap: all of them lead with a
 naked % / cents / gauge ("The % is the language of the genre",
-`competitive-analysis.md`). Our voice is the sentence next to the number.
+`competitors.md`). Our voice is the sentence next to the number.
 `research.md:111` even scripts it: show "if YES wins, you get $X", not abstract ¢.
 
 ---
@@ -63,7 +63,7 @@ authority (badges, "bank-grade", "fully protected") that we do not actually hold
 - "Bank-grade security. Your funds are fully protected. 🔒"
 - Fee revealed only on the confirmation receipt.
 
-**Why (from the data).** `benchmark-trust.md:86` gives the model sentence
+**Why (from the data).** `benchmark.md:86` gives the model sentence
 verbatim - "Your USDC is held 1:1. We never lend it without your permission. Not
 legal text - one plain sentence" - and `:110-113` sets the rule "Transparency
 over authority", warning at `:106-108` that faking authority signals "reads as
@@ -71,10 +71,10 @@ fake ... destroys trust the moment a user checks." `personas.md:76` lists Alex's
 trust trigger as exactly "One clear sentence about funds before he deposits", and
 `:81` names his primary fear, "What happens to my money?"; `jtbd.md:133` (EJ2)
 wants the safety anxiety gone "до того, как я нажму 'подтвердить'." Fee timing is
-a scored criterion: `benchmark-trust.md:17` (C3, "cost visible BEFORE the user
+a scored criterion: `benchmark.md:17` (C3, "cost visible BEFORE the user
 confirms") and `personas.md:78` ("Understands the fee before he bets - no
 surprises"). Competitor contrast: Polymarket has "no 'where is my USDC' copy"
-(`competitive-analysis.md:102,142`); the model to borrow is Coinbase's "Your
+(`competitors.md:102,142`); the model to borrow is Coinbase's "Your
 crypto is safe here" (`:84`).
 
 ---
@@ -134,7 +134,7 @@ happened,' no next step." The jobs demand a calm exit: `jtbd.md:101` (FJ5) "уй
 крок (не промо нової ставки)", because `:151` traces "early wins → overconfidence
 → loss-chasing." No competitor designs this: `jtbd.md:301` "Жоден конкурент не має
 екрану між 'програв' і 'наступна ставка'"; the anti-model is Robinhood's "confetti
-on first trade" (`competitive-analysis.md:85`). And the stakes are retention:
+on first trade" (`competitors.md:85`). And the stakes are retention:
 `personas.md:264` - "Platform betrayal ... is the documented #1 churn driver -
 more than losing a bet."
 
@@ -158,9 +158,9 @@ language: Polymarket "The World's Largest Prediction Market™", Manifold "the
 world's largest social prediction market", Bet365 "world's favourite", Metaculus
 "Collective intelligence for the public good" - **everyone leads with a
 superlative scale claim** (research.md Competitor language). We cannot match that
-claim at launch and, per `benchmark-trust.md:108`, "Attempting to match their
+claim at launch and, per `benchmark.md:108`, "Attempting to match their
 authority signals ... with no history reads as fake." The honest alternative is
-specified at `benchmark-trust.md:96` - "N markets resolved correctly · since
+specified at `benchmark.md:96` - "N markets resolved correctly · since
 [date] · all on-chain verifiable" - and `:111-113` "show the resolution source,
 the criteria, and the outcome for every resolved market. Let the track record
 build itself." Where they all write the same superlative, our difference is the
@@ -179,7 +179,7 @@ specific, checkable fact.
 - Sources of truth: `research/` (personas, jtbd, research, benchmark-trust,
   competitive-analysis, ux-patterns), `CLAUDE.md` (Design Principles: "Clarity
   first", "Trust signals everywhere"), and the competitor language section of
-  `research/research.md`.
+  `research/docs/research.md`.
 - The five principles say *how* we sound. The three sections below make them
   operational: the **Lexicon** (which word), **Forbidden** (what we never write),
   and **Microcopy** (how each element type is written).
@@ -199,7 +199,7 @@ persona's own language, not in bureaucratic register.
 | Putting money on an outcome | **bet** (verb + noun); **YES / NO** for the side | position, wager, trade, buy/sell shares | "Even the most analytical users say 'I bet', 'placing bets' ... nobody used 'I predicted'" (`personas.md:41`). "Position" is Dan's trader word. |
 | Your record / identity layer | **predict / forecast**, and **"I was right / I called it"** | - | The split from `personas.md:41-43`: "identity = analyst, action = bet ... use predict/forecast in marketing and profile framing, accept bet/position in functional UI. The emotional payoff to activate: 'I was right / I called it'." So the button says **bet**; the profile and share say **predict / called it**. |
 | Your bets, collected | **My Bets** | My Positions, Portfolio, Dashboard | Same reason as *bet*: it is the user's word for the stakes they took, not a trader's ledger. |
-| Putting money in | **Add funds** | Deposit, top up, fund account | Alex wants "ordinary money without learning unfamiliar technology" (`jtbd.md` FJ3); "add funds" is ordinary-money language, while "deposit" carries the bank framing the product openly disclaims ("We are not a bank or broker", `benchmark-trust.md`). *(Close call; if we prefer the shorter IA name, flip the whole product to "Deposit" - but pick one.)* |
+| Putting money in | **Add funds** | Deposit, top up, fund account | Alex wants "ordinary money without learning unfamiliar technology" (`jtbd.md` FJ3); "add funds" is ordinary-money language, while "deposit" carries the bank framing the product openly disclaims ("We are not a bank or broker", `benchmark.md`). *(Close call; if we prefer the shorter IA name, flip the whole product to "Deposit" - but pick one.)* |
 | Keeping an event to watch it | **Save** (action) into **Favorites** (the shelf) | Bookmark, save event, watchlist | The user "follows" events they care about (`jtbd.md` FJ1: "an event you follow"); "save" is the plain everyday verb, "bookmark" is browser jargon. "Favorites" is the settled shelf name (the IA entity is "Saved events"). |
 | Entering the account | **Sign in** (returning) / **Sign up** or **Create account** (new) | Log in, Login, Register (as a button) | The primary surface already frames it this way - "Sign in or create account", "Continue with Google". One pair, used on every screen. |
 | Going to the feed | **Browse events** | Find events, See next events, Go to events, Back to feed, markets | One label for one action. The object is always **events** (never "feed" or "markets"), so the same button reads the same on the win screen, the empty state and the profile. |

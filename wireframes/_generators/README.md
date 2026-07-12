@@ -37,7 +37,7 @@ individual pages.
    - `chrome3.py` - swap the bell dropdown to its empty variant (linking to
      `notifications-empty.html`) on logged-in `*-empty*` pages. Run after `chrome2.py`.
    - `ia_annotations.py` - extract the zone chips + `.side` annotation/nav-tree
-     blocks into `IA/annotations/` (one page per screen family) and strip them
+     blocks into `ia/annotations/` (one page per screen family) and strip them
      from the wireframes so the wireframes render clean. `build` (extract),
      `strip` (remove from wireframes), `all` (both). **Run `build` before
      `strip`**: strip reads the annotations from the wireframes, so once stripped
@@ -51,7 +51,7 @@ All post-processors are safe to re-run; each skips work already applied.
 - `microcopy_extract.py` - walk every `wireframes/*.html`, pull the product UI
   text (scoped to `.device` + dialogs, excluding the `.wf-*` / `.page-label` /
   `.state-switch` tooling) into `microcopy_raw.json`.
-- `microcopy_build.py` - read that JSON and write `../../voice/microcopy.md`: a
+- `microcopy_build.py` - read that JSON and write `../../voice/docs/microcopy.md`: a
   curated, per-screen inventory (Zone / Type / Line / Flag) with consistency
   issues marked (event vs market, Deposit vs Add funds, go-to-events button
   variants, leftover spec-notes, placeholders, ...) plus a user-content list.

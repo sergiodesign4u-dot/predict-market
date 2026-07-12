@@ -1,6 +1,6 @@
 # Personas - Prediction Market Platform
 
-> Built from: master-research.md · strategy.md · ux-patterns.md · live-research F1–F3 (June 2026) · post-persona research F4–F6 (June 2026)
+> Built from: research.md · strategy.md · ux-patterns.md · live-research F1–F3 (June 2026) · post-persona research F4–F6 (June 2026)
 > Ground rules: confirmed data cited with source. Where evidence is absent - marked **(?)** and framed as a hypothesis, not a fact.
 > Last updated: June 13, 2026 (post-persona research pass)
 
@@ -24,7 +24,7 @@ Largest reachable audience. Directly aligned with JTBD J2 - "follow events with 
 
 **⚠️ Updated June 2026 (F4):** The earlier claim that "fiat on-ramp removes the only structural barrier" is substantially refuted. Kalshi (fiat-native, no crypto) saw a 93% DAU collapse after the 2024 US election regardless of easy onboarding. Manifold Sweepcash: play-money users did not convert to real money even when friction was removed. The fiat on-ramp is necessary but not sufficient. The real barrier is motivation activation - helping Alex identify his informational edge before presenting a deposit screen. The barrier is motivation AND friction together, not friction alone.
 
-*Source: strategy.md - Audience · master-research.md §1 Key Conclusions #1 · master-research.md §9 F4*
+*Source: strategy.md - Audience · research.md §1 Key Conclusions #1 · research.md §9 F4*
 
 ---
 
@@ -42,7 +42,7 @@ The **identity tension is confirmed** - a Forecaster/Analyst cluster (~8–18% o
 
 **The split: identity = analyst, action = bet.** Copy implication: use "predict/forecast" in marketing and profile framing (aspiration/identity layer). Accept "bet/position" in functional UI (action layer). The emotional payoff to activate: "I was right / I called it" - not "I predicted."
 
-*Source: master-research.md §9 F6 · casino.org April 2026 · Reynolds Center April 2026 · ChinaTalk Domer · Polymarket News Prophet · master-research.md §4 Competitor gaps · benchmark-trust.md C6*
+*Source: research.md §9 F6 · casino.org April 2026 · Reynolds Center April 2026 · ChinaTalk Domer · Polymarket News Prophet · research.md §4 Competitor gaps · benchmark.md C6*
 
 ---
 
@@ -61,27 +61,27 @@ The **identity tension is confirmed** - a Forecaster/Analyst cluster (~8–18% o
 
 ### Pains with current products
 
-- **Crypto wall at signup.** MetaMask + USDC + 8+ wallet icons before seeing a single market. He closes the tab. *(screens/polymarket-signup-mobile.png · benchmark-trust.md C6: 2/5)*
-- **No context inside the market.** "Will X happen - YES / NO" with a probability number and nothing else. He doesn't understand why the price is 67%, what affects it, or what "resolves" means. *(master-research.md §4 - "No 'why this price?'" gap)*
+- **Crypto wall at signup.** MetaMask + USDC + 8+ wallet icons before seeing a single market. He closes the tab. *(screens/polymarket-signup-mobile.png · benchmark.md C6: 2/5)*
+- **No context inside the market.** "Will X happen - YES / NO" with a probability number and nothing else. He doesn't understand why the price is 67%, what affects it, or what "resolves" means. *(research.md §4 - "No 'why this price?'" gap)*
 - **Markets feel disconnected from the news he's reading.** The event exists in isolation. There's no story around it. *(ux-patterns.md Story-driven Discovery - Reason 2)*
-- **He doesn't know what happens to his money.** No clear explanation of funds protection before the first deposit. *(benchmark-trust.md C2: Futuur 1/5, Polymarket 1/5)*
-- **After a loss - nothing.** No context, no "here's what happened," no next step. Just gone. *(master-research.md §4 - "Post-resolution experience is undesigned" gap · live-research F3)*
+- **He doesn't know what happens to his money.** No clear explanation of funds protection before the first deposit. *(benchmark.md C2: Futuur 1/5, Polymarket 1/5)*
+- **After a loss - nothing.** No context, no "here's what happened," no next step. Just gone. *(research.md §4 - "Post-resolution experience is undesigned" gap · live-research F3)*
 
 ---
 
 ### Trust triggers
 
 **What convinces:**
-- Product is immediately understandable - he gets what it is in 3 seconds without signing up *(benchmark-trust.md C5 - Bet365 5/5 as reference)*
-- One clear sentence about funds before he deposits: "Your USDC is held 1:1. We never lend it." *(benchmark-trust.md Top 3 mechanisms #2 - Revolut C2: 5/5)*
-- Sees a number of resolved markets - evidence the platform delivers on its promise *(benchmark-trust.md Top 3 mechanisms #3)*
+- Product is immediately understandable - he gets what it is in 3 seconds without signing up *(benchmark.md C5 - Bet365 5/5 as reference)*
+- One clear sentence about funds before he deposits: "Your USDC is held 1:1. We never lend it." *(benchmark.md Top 3 mechanisms #2 - Revolut C2: 5/5)*
+- Sees a number of resolved markets - evidence the platform delivers on its promise *(benchmark.md Top 3 mechanisms #3)*
 - Understands the fee before he bets - no surprises *(hypothesis H6 · aarrr.md Revenue transparency)*
 
 **What scares:**
-- "What happens to my money?" - primary fear at first deposit *(benchmark-trust.md C2 · hypothesis H4)*
+- "What happens to my money?" - primary fear at first deposit *(benchmark.md C2 · hypothesis H4)*
 - Platform looks like crypto - he associates crypto with scams *(?)* - hypothesis, no direct data
 - Losing the first bet and not understanding why *(live-research F3 · aarrr.md Retention - first-bet loss)*
-- Having to learn a new financial product before he can do anything *(benchmark-trust.md C5 cognitive anxiety)*
+- Having to learn a new financial product before he can do anything *(benchmark.md C5 cognitive anxiety)*
 
 ---
 
@@ -99,7 +99,7 @@ The **identity tension is confirmed** - a Forecaster/Analyst cluster (~8–18% o
 
 ### Open gaps for this persona
 
-- **(?)** Does Alex actually want to bet real money - or just watch? The Riskiest Assumption is untested. *(master-research.md §8 - Riskiest Assumption)*
+- **(?)** Does Alex actually want to bet real money - or just watch? The Riskiest Assumption is untested. *(research.md §8 - Riskiest Assumption)*
 - **(?)** What minimum bet feels "real" to him without being scary? No data. *(live-research Q3)*
 - **(?)** Which specific event type first brings him to the platform? Elections? Crypto? No verified data. *(live-research Q5)*
 
@@ -113,7 +113,7 @@ The **identity tension is confirmed** - a Forecaster/Analyst cluster (~8–18% o
 
 Already inside the ecosystem - no crypto barrier to remove. Arrives without the main friction we're solving. Still valuable: provides early liquidity and activity that makes the platform feel alive for News Junkies. But designing for Dan first would make us "another Polymarket" - against our core differentiator.
 
-*Source: strategy.md - Audience · master-research.md §1 Key Conclusions - "differentiator is being more understandable"*
+*Source: strategy.md - Audience · research.md §1 Key Conclusions - "differentiator is being more understandable"*
 
 ---
 
@@ -123,7 +123,7 @@ Dan uses Polymarket already - or at least has tried it. He tracks crypto prices,
 
 What frustrates him: Polymarket's liquidity on smaller markets is thin. Spreads are bad on niche events. He can't always get the size he wants. He's looking for better markets with fairer pricing.
 
-*Source: master-research.md §4 Competitor analysis - Polymarket "CLOB + thin liquidity on smaller markets" · competitive-analysis.md*
+*Source: research.md §4 Competitor analysis - Polymarket "CLOB + thin liquidity on smaller markets" · competitors.md*
 
 ---
 
@@ -141,23 +141,23 @@ What frustrates him: Polymarket's liquidity on smaller markets is thin. Spreads 
 
 ### Pains with current products
 
-- **Thin liquidity on anything not major.** Big markets (US election, BTC price) are fine. Anything smaller - wide spreads, hard to get size. *(master-research.md §4 - CLOB liquidity problem · competitive-analysis.md Q2)*
-- **Polymarket's trust score is 19/40** - lowest of all benchmarked products. Funds protection is 1/5. Even Dan is nervous about large positions. *(benchmark-trust.md total scores)*
-- **No explanation of resolution.** For complex events - who decides the outcome? Team multisig? He wants to know. *(master-research.md §7 Q5 - "Resolution without regulation")*
-- **(?)** Hypothesis: fees on crypto markets feel high - Polymarket charges up to 1.80% on crypto category. He may prefer platforms with taker rebates. *(competitive-analysis.md - Polymarket Fee V2)*
+- **Thin liquidity on anything not major.** Big markets (US election, BTC price) are fine. Anything smaller - wide spreads, hard to get size. *(research.md §4 - CLOB liquidity problem · competitors.md Q2)*
+- **Polymarket's trust score is 19/40** - lowest of all benchmarked products. Funds protection is 1/5. Even Dan is nervous about large positions. *(benchmark.md total scores)*
+- **No explanation of resolution.** For complex events - who decides the outcome? Team multisig? He wants to know. *(research.md §7 Q5 - "Resolution without regulation")*
+- **(?)** Hypothesis: fees on crypto markets feel high - Polymarket charges up to 1.80% on crypto category. He may prefer platforms with taker rebates. *(competitors.md - Polymarket Fee V2)*
 
 ---
 
 ### Trust triggers
 
 **What convinces:**
-- On-chain settlement - he can verify every resolved market himself *(master-research.md §5 - "on-chain transparency as alternative to FSCS")*
-- Maker rebates (20–25%) to incentivize liquidity - he could be a maker, not just a taker *(master-research.md §3 Business Model · Polymarket model reference)*
-- Public track record - resolved markets count, verifiable on-chain *(benchmark-trust.md Top 3 mechanisms #3)*
+- On-chain settlement - he can verify every resolved market himself *(research.md §5 - "on-chain transparency as alternative to FSCS")*
+- Maker rebates (20–25%) to incentivize liquidity - he could be a maker, not just a taker *(research.md §3 Business Model · Polymarket model reference)*
+- Public track record - resolved markets count, verifiable on-chain *(benchmark.md Top 3 mechanisms #3)*
 
 **What scares:**
-- Regulatory risk - will the platform be shut down? *(master-research.md §4 - Polymarket CFTC complaint June 2026)*
-- Team multisig resolution on disputed outcomes - who arbitrates? *(master-research.md §7 Q5)*
+- Regulatory risk - will the platform be shut down? *(research.md §4 - Polymarket CFTC complaint June 2026)*
+- Team multisig resolution on disputed outcomes - who arbitrates? *(research.md §7 Q5)*
 - **(?)** Low liquidity at launch = bad prices. He won't use a market where he can't get fair execution. Hypothesis.
 
 ---
@@ -168,7 +168,7 @@ What frustrates him: Polymarket's liquidity on smaller markets is thin. Spreads 
 
 > "Polymarket works for big markets but the spreads on anything below $1M volume are brutal. Looking for something with better liquidity on geopolitics."
 
-*Framed as hypothesis based on competitive-analysis.md liquidity findings. Not a verified user quote.*
+*Framed as hypothesis based on competitors.md liquidity findings. Not a verified user quote.*
 
 ---
 
@@ -180,7 +180,7 @@ What frustrates him: Polymarket's liquidity on smaller markets is thin. Spreads 
 
 Research explicitly marks this segment as "Later." Sports = post-MVP decision. Including here as a planning reference because Maria will be the primary acquisition driver once sports markets are added (Kalshi's 89% revenue from sports confirms the size of this segment). Design for MVP should not block her future entry.
 
-*Source: strategy.md - Crossover Bettor · master-research.md §1 Key Conclusions #6 - Sports post-MVP*
+*Source: strategy.md - Crossover Bettor · research.md §1 Key Conclusions #6 - Sports post-MVP*
 
 ---
 
@@ -190,7 +190,7 @@ Maria places bets on football, tennis, Formula 1. She uses Bet365 or a local boo
 
 She finds sports betting limiting: the house always sets the odds, and she can't bet on things that matter outside sports. She saw a headline about prediction markets during the US election and thought "that's basically what I do, but for news."
 
-*Source: strategy.md - Crossover Bettor segment description · master-research.md §4 Competitor analysis - Bet365 as SOFT competitor*
+*Source: strategy.md - Crossover Bettor segment description · research.md §4 Competitor analysis - Bet365 as SOFT competitor*
 
 ---
 
@@ -208,8 +208,8 @@ She finds sports betting limiting: the house always sets the odds, and she can't
 
 ### Pains with current products
 
-- **Bet365 trust is 33/40 - the reference bar is high.** Whatever we build, Maria will compare it to Bet365's polish, 20-year brand, and clear odds. *(benchmark-trust.md total scores - Bet365 33/40 vs. our analog Futuur 14/40)*
-- **Prediction markets feel unregulated.** She's used to licensed bookmakers with responsible gambling tools. Curacao license means little to her. *(benchmark-trust.md C1 - Polymarket 2/5, Futuur 1/5)*
+- **Bet365 trust is 33/40 - the reference bar is high.** Whatever we build, Maria will compare it to Bet365's polish, 20-year brand, and clear odds. *(benchmark.md total scores - Bet365 33/40 vs. our analog Futuur 14/40)*
+- **Prediction markets feel unregulated.** She's used to licensed bookmakers with responsible gambling tools. Curacao license means little to her. *(benchmark.md C1 - Polymarket 2/5, Futuur 1/5)*
 - **Crypto friction.** Like Alex, she has no crypto wallet. But unlike Alex, she's less motivated by the "proving I'm right" angle - she wants to bet, not to validate a worldview. *(?)*
 - **No parlays / combos yet in PM space** - DraftKings added combos in May 2026, prediction markets haven't. *(?)*  hypothesis based on her sports betting background.
 
@@ -218,12 +218,12 @@ She finds sports betting limiting: the house always sets the odds, and she can't
 ### Trust triggers
 
 **What convinces:**
-- Clear resolution rules before betting - who decides, what evidence counts *(benchmark-trust.md C8)*
-- Responsible gambling tools - she's used to them, their absence is a red flag *(benchmark-trust.md - Bet365 reference)*
-- Familiar UX - bottom tab bar, live odds movement, position tracking *(master-research.md §4 - "3 common patterns present in all")*
+- Clear resolution rules before betting - who decides, what evidence counts *(benchmark.md C8)*
+- Responsible gambling tools - she's used to them, their absence is a red flag *(benchmark.md - Bet365 reference)*
+- Familiar UX - bottom tab bar, live odds movement, position tracking *(research.md §4 - "3 common patterns present in all")*
 
 **What scares:**
-- No regulatory badge. She knows what FSCS means. "Blockchain verifiable" is not the same to her. *(benchmark-trust.md - "1 mechanism that won't work")*
+- No regulatory badge. She knows what FSCS means. "Blockchain verifiable" is not the same to her. *(benchmark.md - "1 mechanism that won't work")*
 - **(?)** Fear of complex crypto mechanics before she can place a simple bet. Hypothesis.
 
 ---
@@ -234,7 +234,7 @@ She finds sports betting limiting: the house always sets the odds, and she can't
 
 > "I've been betting on football for years. Prediction markets seem interesting but I have no idea if they're legit or how I'd even get started."
 
-*Hypothesis based on Crossover Bettor segment description (strategy.md) and benchmark-trust.md trust gap findings.*
+*Hypothesis based on Crossover Bettor segment description (strategy.md) and benchmark.md trust gap findings.*
 
 ---
 
@@ -266,7 +266,7 @@ This is not a persona to design for - it is a behavioral pattern that can emerge
 
 **Evidence:** 24-year-old Kalshi user, 2026. 19 federal lawsuits against Kalshi by Jan 2026. 70–84% of all PM traders lose money (F2). PMC/NCB academic study 2024: 52.5% of subjects in loss condition continued playing vs 47.5% in control.
 
-*Source: live-research F3+F5 · AOL 2026 · Substack "Poly Hell" · beincrypto.com · PYMNTS/Bloomberg 2026 · PMC/NCB 2024 · Trustpilot Kalshi + Polymarket · master-research.md §9*
+*Source: live-research F3+F5 · AOL 2026 · Substack "Poly Hell" · beincrypto.com · PYMNTS/Bloomberg 2026 · PMC/NCB 2024 · Trustpilot Kalshi + Polymarket · research.md §9*
 
 ---
 
@@ -281,8 +281,8 @@ This is not a persona to design for - it is a behavioral pattern that can emerge
 | Which specific event brings Alex to the platform for the first time | [?] No verified data. | Persona 1 - acquisition |
 | Non-US TAM for Personas 1 and 3 | [?] Poll data (casino.org, Morning Consult) is US-only. Non-US identity and motivation frames unknown. | Market sizing |
 
-*Source: master-research.md §8–9 - Open questions Q1, Q3, Q5, Q7 · live-research F3–F6*
+*Source: research.md §8–9 - Open questions Q1, Q3, Q5, Q7 · live-research F3–F6*
 
 ---
 
-*Compiled from: master-research.md · strategy.md · ux-patterns.md · benchmark-trust.md · competitive-analysis.md · live-research findings F1–F3 (June 2026)*
+*Compiled from: research.md · strategy.md · ux-patterns.md · benchmark.md · competitors.md · live-research findings F1–F3 (June 2026)*

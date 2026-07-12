@@ -1,7 +1,7 @@
 # Wireframes - Critique pass (Krok 9)
 
 Rigorous defect audit of all `wireframes/*.html` (96 pages) against
-`_conventions.md`, `IA/sitemap.md`, and `IA/flows.md`. Method: mechanical greps
+`_conventions.md`, `ia/docs/sitemap.md`, and `ia/docs/flows.md`. Method: mechanical greps
 (appearance, placeholders, palette, off-map), a state-coverage cross-check against
 `_screens.md` / sitemap state lists, and a dead-end / zone-without-action check.
 Done 2026-06-28, after the Krok 7 flow-linking and Krok 8 reconciliation passes
@@ -67,7 +67,7 @@ A second full critique, this time fanned out across five parallel auditors (one 
 screen family: Event Feed + Favorites, Category pages, Event Detail, Bet-flow +
 dialogs, Account + utility). Each checked the same six categories - style leak,
 placeholder, missing state, dead-end, zone-without-action, off-map - against
-`_conventions.md`, `_screens.md`, `IA/sitemap.md`, `IA/flows.md`.
+`_conventions.md`, `_screens.md`, `ia/docs/sitemap.md`, `ia/docs/flows.md`.
 
 Result: the set held up. Across all 99 pages exactly one genuine (minor, clarity)
 defect, plus one false positive that was verified and dismissed.
@@ -87,7 +87,7 @@ clarity fix applied via the generator (not hand-edited).
 
 ## Flow-wiring audit (2026-07-07, step 7 - user path)
 
-Full audit of the clickable user path against `IA/flows.md`: every screen's
+Full audit of the clickable user path against `ia/docs/flows.md`: every screen's
 primary action must be a real `<a href>` to the next screen, state transitions
 (loading -> success, error -> try again, empty -> filled) must be wired, branches
 must go both ways, and no dead-ends - only routes drawn in `flows.md`. Method: a
@@ -143,7 +143,7 @@ copy, structure, or chrome changed.
 ## Coverage audit (2026-07-07, step 8 - roll out to the whole product)
 
 The main flow was wired in step 7; step 8 verifies the roll-out is complete -
-every screen and every state in `IA/sitemap.md` "## Screens" has a wireframe, with
+every screen and every state in `ia/docs/sitemap.md` "## Screens" has a wireframe, with
 nothing left orphaned. For our project this is a **coverage verification**, not new
 construction: the wireframe build already produced the full set (99 pages), so
 fanning out builder agents would rebuild what exists. Method: extract the canonical

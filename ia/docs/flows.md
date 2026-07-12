@@ -1,10 +1,10 @@
 # User Flows - Prediction Market Platform
 
-> Built from: IA/sitemap.md - jtbd.md
-> `[Square brackets]` = screens from IA/sitemap.md. `{Diamonds}` = decisions. `([Stadiums])` = terminal states.
+> Built from: ia/docs/sitemap.md - jtbd.md
+> `[Square brackets]` = screens from ia/docs/sitemap.md. `{Diamonds}` = decisions. `([Stadiums])` = terminal states.
 > Success terminals: T14/mjDone, fj2Done, fj5Done, sj1Done. Error/churn terminals T1-T3, T5-T12, T13a, T13b, T15-T16 each have at least one recovery edge. T4 retired as terminal (replaced by escalation-path edge in FJ5).
 >
-> Wireframe build pass (re-sync with IA/sitemap.md "Wireframe build pass"): the flow logic is unchanged, only the surfaces are renamed. **BS1 / BS2 are the Event Detail bet panel** (build the bet inline, then execute), not a standalone Bet Screen. **SI (Sign In) and DEP (Deposit) are in-page dialogs** opened over the current page (close stays on the page; Sign In chains to Deposit). The sequence build -> confirm -> gate -> S5 reconcile -> execute -> Active Bets is the same. A category page (Politics/Crypto/Culture/General) is an optional browse node between Event Feed and Event Detail; it is omitted from the charts to keep them stable (it inherits the Event Feed -> Event Detail edge).
+> Wireframe build pass (re-sync with ia/docs/sitemap.md "Wireframe build pass"): the flow logic is unchanged, only the surfaces are renamed. **BS1 / BS2 are the Event Detail bet panel** (build the bet inline, then execute), not a standalone Bet Screen. **SI (Sign In) and DEP (Deposit) are in-page dialogs** opened over the current page (close stays on the page; Sign In chains to Deposit). The sequence build -> confirm -> gate -> S5 reconcile -> execute -> Active Bets is the same. A category page (Politics/Crypto/Culture/General) is an optional browse node between Event Feed and Event Detail; it is omitted from the charts to keep them stable (it inherits the Event Feed -> Event Detail edge).
 
 ---
 
@@ -121,7 +121,7 @@ Both land on Event Detail, so FJ2 (context before the bet) is preserved for
 everyone. The bet is still placed on Event Detail (in its inline bet panel). There
 is no Feed -> bet edge: nothing bypasses the context screen. Event Detail must
 accept a pre-selected option and side on entry (pre-selected entry variant, see
-IA/sitemap.md Event Detail states).
+ia/docs/sitemap.md Event Detail states).
 
 ---
 
