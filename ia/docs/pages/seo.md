@@ -138,3 +138,88 @@ worth more.
 - Text not in images (odds and labels are live text).
 - Core Web Vitals budget: LCP < 2.5s, CLS < 0.1 (reserve card heights so odds loading does not shift layout), INP < 200ms.
 - `robots`: `index,follow` confirmed.
+
+---
+
+## 2. Event Detail
+
+- Node: Event Detail - Type: page (inline bet panel, no separate URL) - serves MJ (the bet happens here), FJ2 (understand the odds), SJ1 (share)
+- URL / slug: `/event/{slug}` - `{slug}` is the event question slugified, stable, and it does NOT change when the odds move
+- Breadcrumbs: `Home > {Category} > {Event}` (e.g. `Home > Politics > Will the incumbent win`)
+- Indexation: `index,follow` - the deep-link target of every share and search result
+
+The event question, the one-line why, the news story, comments, usernames and sample figures
+are user or team content and are never voice-rewritten (see voice rule). Below, those are
+template slots `{...}`; only the evergreen / reusable copy is fixed.
+
+### A. Meta tags
+
+- `title` (template, <= 60): **{Question} - Predict Market**. If the question is long, truncate the question, keep the brand suffix. Example: **Will Bitcoin close above $100k on Dec 31? - Predict Market** (58 chars).
+- `meta description` (template, <= 155): **{YES}% YES right now on: {Question, truncated}. See the odds in plain language, why they moved, and how this event resolves. Bet from $1.** Dynamic parts are the odds and the question. Example: **62% YES right now on Bitcoin above $100k by Dec 31. See the odds in plain language, why they moved, and how it resolves. Bet from $1.** (133 chars)
+- `canonical`: `{ROOT}/event/{slug}`
+- `hreflang`: `en` -> `{ROOT}/event/{slug}` (more locales `[?]`)
+- `robots`: `index,follow` (a resolved event stays `index,follow`, see E)
+- `og:title`: {Question}
+- `og:description`: the short "{YES}% YES, plain-language odds, how it resolves" line
+- `og:type`: `website` (NOT `article`; the page is a live market, not a dated article)
+- `og:url`: `{ROOT}/event/{slug}`
+- `og:image`: `{ROOT}/og/event/{slug}.png` - the per-event Share Card (question + current odds, 1200x630), regenerated on an odds snapshot; this is the SJ1 share asset
+- `twitter:card`: `summary_large_image`; title / description / image mirror OG
+
+### B. Heading structure
+
+- `H1`: **{the event question}** (exactly one H1, the question itself)
+- `H2` in mobile block order:
+  1. **Odds** (the YES / NO odds and the inline bet panel)
+  2. **Why this number** (the one-line why and the news story)
+  3. **How this event resolves** (the resolution rule and its source)
+  4. **Comments** (user discussion; fresh, long-tail content)
+  5. **Related events** (crawlable links to sibling events in the same category)
+
+Wireframe delta: blocks 1-4 already render in `event-detail.html` (odds + inline bet panel,
+the content tabs incl. Comments). "Related events" is an SEO internal-linking block to add
+below the tabs; small, optional, logged for the wireframe to validate.
+
+### C. Ready SEO body text
+
+**Evergreen intro (reusable on every event).** Back YES or NO on this event. You see the odds
+in plain language and how it resolves before you bet. The minimum is one dollar, and you can
+build your bet before you connect a wallet.
+
+**Why this number (template).** Right now the odds put YES at {YES}%. {One-line why - team
+editorial, e.g. "The latest polls moved toward the incumbent this week."} The number is a live
+price, so it moves as people bet.
+
+**How this event resolves (template, mostly reusable).** This event resolves YES if {the
+condition stated on the event}. The team resolves it against the real-world outcome using
+{named source}. Resolution date: {date}. Once resolved, the outcome and the timing of every
+bet stay visible.
+
+### D. Structured data - the per-event schema decision (resolves the §1 `[?]`)
+
+**Use `WebPage` + `BreadcrumbList`.** Optionally add `Comment` for the discussion and `FAQPage`
+for the resolution Q&A if surfaced.
+
+Rejected, with reasons:
+- **`schema.org/Event`** - NO. It models a scheduled real-world happening (startDate, location,
+  performer) and makes the page eligible for Google event rich results, which would misrepresent
+  a prediction market as a ticketed event. A market question is not an `Event`.
+- **`QAPage`** - declined. It expects one user question with an accepted answer and an answer
+  count; a market question with betting + comments does not fit that shape.
+- **`Product` / `Offer`** - declined. Treating a bet as a product invites e-commerce price
+  rich results (price, availability) that misframe a wager and carry compliance risk.
+
+So: `WebPage` (name = the question, `breadcrumb`), `BreadcrumbList` (Home > Category > Event),
+plus `Comment` / `FAQPage` where the content exists. This stays honest and avoids a rich-result
+mismatch. `[?]` resolved.
+
+### E. Optimization checklist
+
+- Exactly one `H1` = the event question; unique `title` and `description` per event (templated from question + odds), no duplicate meta across events.
+- Slug is human-readable and stable; it does not change when odds move.
+- A **resolved** event keeps its URL, stays `200` and `index,follow`, and shows the resolved state (outcome + at-close odds); it is never redirected or 404'd. It is an indexed archive, not a dead-end (matches `event-detail-resolved.html`).
+- Crawlable `<a>` to Related events and to the parent Category (internal linking).
+- Odds are live text on the page (not only baked into the OG image).
+- Canonical self-referential; strip share / tracking params (`?ref=`, `?utm=`) via canonical.
+- Comments and tab content are in the DOM (crawlable), not loaded only on interaction.
+- Core Web Vitals: LCP = the question + odds block; reserve the bet-panel height to avoid CLS as odds load.
