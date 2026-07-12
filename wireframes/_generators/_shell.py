@@ -260,6 +260,13 @@ HISTORY_STATES = [("success", "active-bets-history.html"), ("empty", "active-bet
                   ("error", "active-bets-history-error.html"), ("loading", "active-bets-history-loading.html")]
 HIW_STATES = [("success (static trust page)", "how-it-works.html")]
 
+# System and global nodes (IA Detailed layer, ia/docs/pages/system.md).
+SYS_404_STATES = [("full page (HTTP 404)", "404.html")]
+SYS_500_STATES = [("full page (HTTP 500)", "500.html")]
+SYS_503_STATES = [("maintenance (HTTP 503)", "maintenance.html")]
+SYS_COOKIE_STATES = [("consent banner", "cookie-consent.html")]
+SYS_TOAST_STATES = [("toast component", "toasts.html")]
+
 
 # My Bets tabs (Active = open positions / Active Bets; History = resolved bets / Bet History).
 # Shared so both screens render identical, linked tabs. active in {"active","history"}.
@@ -342,6 +349,13 @@ def nav_tree(cur_file):
 
     a('      <li class="wf-sec">How It Works</li>')
     screen("How It Works", "how-it-works.html", True, cur_file, flat=HIW_STATES)
+
+    a('      <li class="wf-sec">System and global</li>')
+    screen("404 Not Found", "404.html", True, cur_file, flat=SYS_404_STATES)
+    screen("500 Server Error", "500.html", True, cur_file, flat=SYS_500_STATES)
+    screen("Maintenance", "maintenance.html", True, cur_file, flat=SYS_503_STATES)
+    screen("Cookie consent", "cookie-consent.html", True, cur_file, flat=SYS_COOKIE_STATES)
+    screen("Toasts", "toasts.html", True, cur_file, flat=SYS_TOAST_STATES)
 
     a('      <li class="wf-sec">Orphans [SIROTA] - not built (no confirmed job)</li>')
     a('      <li class="wf-note">Settings / Notification Preferences, Leaderboard, Help / FAQ.</li>')

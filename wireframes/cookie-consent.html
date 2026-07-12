@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Event Feed (base / success, registered, responsive)</title>
-  <style>
+  <title>Wireframe - Cookie consent banner</title>
+<style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
        Base = mobile (1 column, bottom nav). Min-width expansions:
@@ -296,44 +296,170 @@
     }
     @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, minmax(280px, 1fr)); } }
     @media (min-width: 1280px) { .grid { grid-template-columns: repeat(4, minmax(280px, 1fr)); } }
-    /* ---- Shared in-page dialogs (native <dialog>) - injected for event-feed family ---- */
+  
+    /* ---- Event Detail ---- */
+    .ed-head { display: flex; gap: 10px; padding: 10px; align-items: flex-start; }
+    .ed-thumb { width: 72px; height: 72px; flex: 0 0 72px; border: 1px solid #999; background: #d2d2d2;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; padding: 2px; }
+    .ed-cat { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; }
+    .ed-q { font-size: 16px; font-weight: bold; margin: 4px 0 6px; }
+    .ed-prob-big { font-size: 13px; margin: 0; }
+    .ed-prob-big .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; font-size: 14px; }
+    .ed-section { padding: 10px; border-top: 1px solid #ccc; }
+    .ed-section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 6px; }
+    .chart-box { border: 1px dashed #999; background: #ededed; height: 120px; display: flex; align-items: center;
+      justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 6px; }
+    .args { display: flex; flex-direction: column; gap: 12px; }
+    .arg-col h4 { margin: 0 0 4px; font-size: 11px; }
+    .arg-col ul { margin: 0; padding-left: 16px; font-size: 12px; }
+    .arg-col li { margin-bottom: 4px; }
+    .resolution { font-size: 12px; line-height: 1.5; }
+    .opt-list { display: flex; flex-direction: column; }
+    .preselect-note { border: 1px solid #999; background: #e0e0e0; padding: 6px 8px; font-size: 11px; margin: 0 10px 0; }
+    .cta-bar { position: sticky; bottom: 0; background: #e2e2e2; border: 1px solid #999; padding: 8px 10px; display: flex; gap: 8px; }
+    .cta-bar button { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; font-weight: bold; cursor: pointer; }
+    @media (min-width: 640px) { .args { flex-direction: row; } .arg-col { flex: 1; } }
+
+    /* ---- Invoked overlays (Bet / Sign In / Deposit): modal on desktop, bottom sheet on mobile ---- */
+    .backdrop { background: #cfcfcf; flex: 1; position: relative; min-height: 70vh; display: flex;
+      align-items: flex-end; justify-content: center; }
+    .dim-note { position: absolute; top: 8px; left: 8px; font-size: 10px; color: #555; background: #dcdcdc; border: 1px solid #aaa; padding: 2px 6px; }
+    .sheet { width: 100%; background: #f0f0f0; border: 1px solid #999; border-bottom: none; }
+    .grab { width: 36px; height: 4px; background: #bbb; border-radius: 2px; margin: 6px auto 0; }
+    .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
+    .sheet-head h2 { font-size: 14px; margin: 0; }
+    .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
+    .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    @media (min-width: 640px) { .backdrop { align-items: center; padding: 24px; } .sheet { max-width: 420px; border-bottom: 1px solid #999; } }
+
+    .dir-pill { border: 1px solid #888; background: #dcdcdc; padding: 4px 10px; font-weight: bold; font-size: 12px; display: inline-block; }
+    .field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    .amount-row { display: flex; align-items: center; gap: 8px; }
+    .amount-input { flex: 1; border: 1px solid #888; background: #fff; padding: 10px; font-size: 18px; }
+    .quick { display: flex; gap: 6px; flex-wrap: wrap; }
+    .quick button { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    .quick button.sel { background: #b8b8b8; font-weight: bold; }
+    .line { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-top: 1px solid #ddd; }
+    .line.total { font-weight: bold; border-top: 1px solid #999; }
+    .inline-error { border: 1px solid #999; background: #e0e0e0; padding: 8px; font-size: 12px; }
+    .reconcile-box { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
+    .confirm-btn { border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; cursor: pointer; width: 100%; }
+    .provider-btn { display: flex; align-items: center; gap: 10px; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; cursor: pointer; width: 100%; text-align: left; }
+    .provider-btn .ic { width: 18px; height: 18px; }
+    .spinner-box { border: 1px dashed #999; background: #ededed; padding: 24px; text-align: center; font-size: 12px; color: #555; }
+    .fine { font-size: 11px; color: #555; line-height: 1.5; }
+    .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center;
+      justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
+    .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
+
+    /* ---- Active Bets ---- */
+    .tabs { display: flex; gap: 0; margin: 0 0 10px; }
+    .tabs button { border: 1px solid #888; border-bottom: 1px solid #bbb; background: #dcdcdc; padding: 8px 14px; font-size: 12px; cursor: pointer; }
+    .tabs button[aria-selected="true"] { background: #f4f4f4; font-weight: bold; border-bottom-color: #f4f4f4; }
+    .pos-list { display: flex; flex-direction: column; gap: 8px; }
+    .pos { border: 1px solid #bbb; background: #ededed; padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; }
+    .pos-top { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+    .pos-q { font-size: 13px; font-weight: bold; }
+    .pos-side { font-size: 11px; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; height: max-content; white-space: nowrap; }
+    .pos-figures { display: flex; gap: 16px; font-size: 10px; flex-wrap: wrap; color: #555; }
+    .pos-fig b { display: block; font-size: 12px; color: #222; }
+    .pos.skeleton .sk-line { height: 10px; background: #d8d8d8; margin: 6px 0; }
+    .pos.skeleton .w70 { width: 70%; } .pos.skeleton .w40 { width: 40%; }
+    .pos-status { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+
+    /* ---- Event Detail two-column: scrolling content + sticky bet panel ---- */
+    .ed-layout { display: flex; flex-direction: column; }
+    .ed-main { flex: 1; min-width: 0; }
+    /* schematic probability chart (raised fidelity per design call: a drawn grey line, still no color) */
+    .chart-wrap { padding: 0; }
+    .chart-svg { width: 100%; height: 130px; display: block; border: 1px solid #bbb; background: #ededed; }
+    .chart-svg polyline { fill: none; stroke: #777; stroke-width: 1.5; }
+    .chart-svg .grid-l { stroke: #d2d2d2; stroke-width: 1; }
+    .chart-svg .nowline { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
+    .chart-svg text { fill: #777; font-size: 7px; }
+    .chart-cap { font-size: 10px; color: #555; margin: 4px 0 0; display: flex; justify-content: space-between; }
+    .ed-facts { display: flex; flex-wrap: wrap; gap: 16px; font-size: 10px; color: #555; padding: 8px 10px; border-top: 1px solid #ccc; }
+    .ed-facts b { display: block; font-size: 12px; color: #222; }
+
+    /* bet panel (desktop sticky sidebar) */
+    .bet-panel { display: none; }
+    .bet-panel .bp-inner { padding: 10px; display: flex; flex-direction: column; gap: 9px; }
+    .bp-head { display: flex; align-items: center; justify-content: space-between; }
+    .bp-head h3 { font-size: 13px; margin: 0; }
+    .bp-hint { font-size: 10px; color: #555; }
+    .bp-dir { display: flex; gap: 6px; }
+    .bp-side { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 10px 6px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .bp-side.sel { background: #b8b8b8; border-width: 2px; }
+    .bp-side .bp-pct { display: block; font-size: 11px; font-weight: normal; }
+    .bp-opts { display: flex; flex-direction: column; gap: 0; border: 1px solid #ccc; max-height: 168px; overflow: auto; }
+    .bp-opt { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-top: 1px solid #ddd; font-size: 12px; cursor: pointer; }
+    .bp-opt:first-child { border-top: none; }
+    .bp-opt.sel { background: #dcdcdc; font-weight: bold; }
+    .bp-opt .bp-opt-pct { margin-left: auto; border: 1px solid #999; background: #e0e0e0; padding: 0 5px; font-size: 11px; }
+
+    /* mobile sticky bet dock (collapsed bar above the bottom nav; taps expand to a sheet) */
+    .bet-dock { position: sticky; bottom: 52px; z-index: 4; background: #e2e2e2; border: 1px solid #999; border-bottom: none;
+      display: flex; align-items: center; gap: 6px; padding: 8px; }
+    .bet-dock .bp-side { padding: 11px 6px; }
+    .bet-dock .dock-meta { font-size: 9px; color: #555; flex: 0 0 auto; text-align: center; }
+    .bet-dock .dock-meta b { display: block; font-size: 12px; color: #222; }
+
+    @media (min-width: 640px) {
+      .ed-layout { flex-direction: row; align-items: flex-start; }
+      .ed-main { border-right: 1px solid #999; }
+      .bet-panel { display: block; flex: 0 0 300px; position: sticky; top: 8px; align-self: flex-start; }
+      .bet-dock { display: none; }
+    }
+
+    /* ---- Category page: side sub-category panel + filtered feed ---- */
+    .cat-layout { display: flex; flex-direction: column; gap: 0; }
+    .cat-main { flex: 1; min-width: 0; }
+    .subcat { background: #ededed; }
+    .subcat .zone-tag { background: #d2d2d2; }
+    .subcat-head { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; padding: 8px 10px 0; }
+    .subcat ul { list-style: none; margin: 0; padding: 8px; display: flex; gap: 6px; overflow-x: auto; flex-wrap: nowrap; }
+    .subcat li { flex: 0 0 auto; }
+    .subcat button { border: 1px solid #888; background: #d6d6d6; padding: 5px 9px; font-size: 11px; cursor: pointer;
+      white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+    .subcat li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .subcat .cnt { font-size: 9px; color: #555; border: 1px solid #bbb; background: #e8e8e8; padding: 0 4px; }
+    @media (min-width: 640px) {
+      .cat-layout { flex-direction: row; align-items: flex-start; }
+      .subcat { flex: 0 0 210px; position: sticky; top: 8px; border: 1px solid #999; }
+      .subcat ul { flex-direction: column; overflow: visible; flex-wrap: nowrap; }
+      .subcat button { width: 100%; justify-content: space-between; }
+    }
+    /* Category grid adapts to the width left by the sub-category rail (no fixed 4-col overflow). */
+    .cat-main .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+
+    /* ---- Shared in-page dialogs (native <dialog>, opened over the current page) ---- */
     dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
     dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
-    dialog.app-dialog .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
-    dialog.app-dialog .sheet-head h2 { font-size: 14px; margin: 0; }
-    dialog.app-dialog .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
     dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
-    dialog.app-dialog .fine { font-size: 11px; color: #555; line-height: 1.5; }
-    dialog.app-dialog .field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
-    dialog.app-dialog .amount-row { display: flex; align-items: center; gap: 8px; }
-    dialog.app-dialog .amount-input { flex: 1; border: 1px solid #888; background: #fff; padding: 10px; font-size: 18px; }
-    dialog.app-dialog .quick { display: flex; gap: 6px; flex-wrap: wrap; }
-    dialog.app-dialog .quick button { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
-    dialog.app-dialog .quick button.sel { background: #b8b8b8; font-weight: bold; }
-    dialog.app-dialog .provider-btn { display: flex; align-items: center; gap: 10px; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; cursor: pointer; width: 100%; text-align: left; }
-    dialog.app-dialog .provider-btn .ic { width: 18px; height: 18px; }
-    dialog.app-dialog .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
-    dialog.app-dialog .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
-    dialog.app-dialog .confirm-btn { border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; cursor: pointer; width: 100%; }
     .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
-    /* notifications dropdown (header bell -> mini-list, no chevron) */
-    .notif-menu { position: relative; }
-    .notif-menu summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; }
-    .notif-menu summary::-webkit-details-marker { display: none; }
-    .notif-menu .dropdown { position: absolute; right: 0; top: calc(100% + 4px); width: 260px; max-width: 80vw; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
-    .notif-menu .dropdown .zone-tag { background: #cdcdcd; }
-    .notif-drop ul { list-style: none; margin: 0; padding: 0; }
-    .notif-drop li { border-top: 1px solid #ccc; }
-    .notif-drop li:first-child { border-top: none; }
-    .notif-drop li a { display: block; padding: 8px 10px; text-decoration: none; color: #222; }
-    .notif-drop li a strong { display: block; font-size: 12px; }
-    .notif-drop li a span { display: block; font-size: 10px; color: #555; }
-    .notif-all { display: block; text-align: center; padding: 8px; border-top: 1px solid #999; font-size: 11px; text-decoration: none; color: #222; background: #dcdcdc; }
-    .bal-add { padding: 3px; }
+  </style>
+  <style>
+    .sys-note { font-size: 11px; color: #555; margin: 12px 0 0; line-height: 1.5; }
+    .cc-ph { border: 1px dashed #bbb; background: #efefef; padding: 12px; opacity: .55; }
+    .cc-ph-line { height: 10px; background: #d8d8d8; margin: 8px 0; }
+    .cc-ph-line.w90 { width: 90%; } .cc-ph-line.w80 { width: 80%; } .cc-ph-line.w60 { width: 60%; } .cc-ph-line.w40 { width: 40%; }
+    .cc-banner { background: #e6e6e6; margin: 10px 0 0; }
+    .cc-inner { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+    .cc-text { font-size: 13px; margin: 0; line-height: 1.5; }
+    .cc-policy { font-size: 12px; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
+    .cc-policy a { color: #222; }
+    .cc-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cc-btn { flex: 1 1 30%; min-width: 110px; border: 1px solid #888; background: #d6d6d6; padding: 10px 12px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .cc-note { font-size: 11px; color: #555; margin: 0; }
+    .cc-manage { border-top: 1px solid #ccc; padding-top: 10px; }
+    .cc-cats { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .cc-cat { border: 1px solid #bbb; background: #ededed; padding: 8px 10px; }
+    .cc-cat-main { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .cc-cat-name { font-size: 12px; font-weight: bold; }
+    .cc-cat-desc { font-size: 11px; color: #555; margin: 4px 0 0; line-height: 1.4; }
   </style>
 </head>
-<body>
-
+<body data-loggedin-target="event-feed.html">
   <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
   <button type="button" class="wf-toggle" id="wfToggle" aria-label="Open screen tree" aria-expanded="false">
     <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -348,10 +474,10 @@
     <ul class="wf-tree">
       <li class="wf-sec">Events</li>
       <li class="wf-screen">
-        <a href="event-feed.html" class="active" aria-current="page">Event Feed</a>
+        <a href="event-feed.html">Event Feed</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
-          <li class="cur"><a href="event-feed.html">success (this page)</a></li>
+          <li><a href="event-feed.html">success</a></li>
           <li><a href="event-feed-empty.html">empty</a></li>
           <li><a href="event-feed-error.html">error</a></li>
           <li><a href="event-feed-loading.html">loading</a></li>
@@ -579,9 +705,9 @@
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="cookie-consent.html">Cookie consent</a>
+        <a href="cookie-consent.html" class="active" aria-current="page">Cookie consent</a>
         <ul class="wf-states">
-          <li><a href="cookie-consent.html">consent banner</a></li>
+          <li class="cur"><a href="cookie-consent.html">consent banner (this page)</a></li>
         </ul>
       </li>
       <li class="wf-screen">
@@ -595,10 +721,8 @@
     </ul>
   </nav>
 
-  <!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
   <div class="device">
-
-    <!-- Header (lean: logo = Events/home, right icon cluster) -->
+    <!-- Header (logged-out: no account; Log in / Sign up replace balance and avatar) -->
     <header class="app-header">
       <div class="row">
         <div class="left">
@@ -607,319 +731,102 @@
           </button>
           <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
         </div>
-
         <div class="utility">
-          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
-          <div class="bal-toggle desk-only">
-            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
-            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
-            </button>
-            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
-          </div>
-
-          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
-          <a href="favorites.html" aria-label="Favorites, see saved events"><button type="button" class="icon-btn desk-only" aria-label="Favorites">
+          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
-          </button></a>
-
-          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
-          <details class="notif-menu">
-            <summary aria-label="Notifications, 3 unread">
-              <span class="bell-wrap">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-                <span class="badge-dot">3</span>
-              </span>
-            </summary>
-            <div class="dropdown notif-drop" role="menu">
-              <ul>
-                <li><a href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
-                <li><a href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
-                <li><a href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
-              </ul>
-              <a class="notif-all" href="notifications.html">See all notifications</a>
-            </div>
-          </details>
-
-          <details class="avatar-menu">
-            <summary aria-label="Account menu">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </summary>
-            <div class="dropdown" role="menu">
-              <ul>
-                <li><a href="my-profile.html"><button type="button" role="menuitem">My Profile</button></a></li>
-                <li><a href="active-bets.html"><button type="button" role="menuitem">My Bets</button></a></li>
-                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet</button></a></li>
-                <li><a href="how-it-works.html"><button type="button" role="menuitem">How It Works</button></a></li>
-                <li><a href="event-feed-logged-out.html"><button type="button" role="menuitem">Logout</button></a></li>
-              </ul>
-            </div>
-          </details>
+          </button>
+          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+          </button>
+          <div class="auth-btns">
+            <button type="button" class="auth-btn" data-open="signin">Sign in</button>
+            <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
+          </div>
         </div>
       </div>
     </header>
-
-    <!-- Second-level navigation: categories -->
-    <nav class="cat-nav" aria-label="Categories (second level)">
-      <ul>
-        <li aria-current="page"><a href="event-feed.html"><button type="button">Trending</button></a></li>
-        <li><a href="politics.html"><button type="button">Politics</button></a></li>
-        <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
-        <li><a href="culture.html"><button type="button">Culture</button></a></li>
-        <li><a href="general.html"><button type="button">General</button></a></li>
-      </ul>
-    </nav>
-
-    <!-- Feed -->
     <main class="feed">
       <div class="feed-inner">
+        <div class="feed-head"><h2>Cookie consent banner</h2></div>
 
-        <div class="feed-head">
-          <!-- Heading echoes the active category (here: Trending), not a generic "Live events". -->
-          <h2 id="feedHeading">Trending</h2>
-
-          <!-- Kalshi-style filter row: Sort, Frequency, Category. Each label shows the current value. -->
-          <div class="feed-controls">
-
-            <details class="filter-menu" id="sortMenu">
-              <summary aria-label="Sort by">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
-                <span>Sort: <span id="sortCurrent">Trending</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <ul role="radiogroup" aria-label="Sort by">
-                  <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
-                  <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
-                  <li><label><input type="radio" name="sort" value="New"> New</label></li>
-                  <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
-                  <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
-                  <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
-                </ul>
-                <div class="reverse-row">
-                  <span>Reverse sort</span>
-                  <button type="button" class="toggle" role="switch" aria-checked="false">off</button>
-                </div>
-              </div>
-            </details>
-
-            <details class="filter-menu" id="freqMenu">
-              <summary aria-label="Filter by frequency">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                <span>Frequency: <span id="freqCurrent">All</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <ul role="radiogroup" aria-label="Frequency">
-                  <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
-                  <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
-                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
-                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
-                  <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
-                  <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
-                </ul>
-              </div>
-            </details>
-
-            <details class="filter-menu" id="catMenu">
-              <summary aria-label="Filter by category">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v6H4zM13 5h7v6h-7zM4 13h7v6H4zM13 13h7v6h-7z"/></svg>
-                <span>Category: <span id="catCurrent">Trending</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <ul role="radiogroup" aria-label="Category">
-                  <li><label><input type="radio" name="catf" value="Trending" checked> Trending</label></li>
-                  <li><label><input type="radio" name="catf" value="Politics"> Politics</label></li>
-                  <li><label><input type="radio" name="catf" value="Crypto"> Crypto</label></li>
-                  <li><label><input type="radio" name="catf" value="Culture"> Culture</label></li>
-                  <li><label><input type="radio" name="catf" value="General"> General</label></li>
-                </ul>
-              </div>
-            </details>
-
+        <section class="cc-page" aria-hidden="true">
+          <span class="zone-tag">Page content, dimmed while the consent choice is pending</span>
+          <div class="cc-ph">
+            <div class="cc-ph-line w90"></div>
+            <div class="cc-ph-line w80"></div>
+            <div class="cc-ph-line w60"></div>
+            <div class="cc-ph-line w40"></div>
           </div>
-        </div>
+        </section>
 
-        <div class="grid">
-
-          <!-- Binary card 1 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Will the US government shut down before March 1, 2027?</a>
-              </div>
-              <p class="prob-line">YES <span class="prob">38%</span></p>
-              <div class="yesno"><a href="event-detail.html"><button type="button">YES</button></a><a href="event-detail.html"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
+        <section class="cc-banner" role="region" aria-label="Cookie consent">
+          <span class="zone-tag">Cookie banner, pinned to the bottom on first visit</span>
+          <div class="cc-inner">
+            <p class="cc-text">We use cookies to run the site and, only if you allow it, to measure and improve it.</p>
+            <p class="cc-policy">
+              <a href="#">Privacy policy</a> <span class="tbd">to be built</span>
+              <a href="#">Cookie policy</a> <span class="tbd">to be built</span>
+            </p>
+            <div class="cc-actions">
+              <button type="button" class="cc-btn">Accept all</button>
+              <button type="button" class="cc-btn">Reject all</button>
+              <button type="button" class="cc-btn">Manage</button>
             </div>
-          </article>
+            <p class="cc-note">Reject is one tap, the same as Accept. Nothing here is pre-ticked.</p>
 
-          <!-- Binary card 2 (bookmarked) -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Will Bitcoin close above $150,000 before October 1, 2026?</a>
-              </div>
-              <p class="prob-line">YES <span class="prob">61%</span></p>
-              <div class="yesno"><a href="event-detail.html"><button type="button">YES</button></a><a href="event-detail.html"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $212,900</span><span>Closes: Oct 1, 2026</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="true" aria-label="Saved">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
+            <div class="cc-manage">
+              <span class="field-label">Manage cookie categories, shown after tapping Manage</span>
+              <ul class="cc-cats">
+                <li class="cc-cat">
+                  <div class="cc-cat-main">
+                    <span class="cc-cat-name">Necessary (always on)</span>
+                    <input type="checkbox" checked disabled aria-label="Necessary cookies, always on">
+                  </div>
+                  <p class="cc-cat-desc">Needed to run the site and keep your session and funds secure. This one cannot be turned off.</p>
+                </li>
+                <li class="cc-cat">
+                  <div class="cc-cat-main">
+                    <span class="cc-cat-name">Analytics</span>
+                    <input type="checkbox" aria-label="Analytics cookies, off by default">
+                  </div>
+                  <p class="cc-cat-desc">Helps us measure and improve the site. Off unless you turn it on.</p>
+                </li>
+                <li class="cc-cat">
+                  <div class="cc-cat-main">
+                    <span class="cc-cat-name">Marketing</span>
+                    <input type="checkbox" aria-label="Marketing cookies, off by default">
+                  </div>
+                  <p class="cc-cat-desc">Used to show you relevant campaigns. Off unless you turn it on.</p>
+                </li>
+              </ul>
             </div>
-          </article>
+          </div>
+        </section>
 
-          <!-- Multi-outcome card 1 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail-multi.html">Who will win the 2027 Eurovision final?</a>
-              </div>
-              <div class="options">
-                <div class="opt-row"><span class="opt-name">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="event-detail-multi.html"><button type="button">YES</button></a><a href="event-detail-multi.html"><button type="button">NO</button></a></span></div>
-                <div class="opt-row"><span class="opt-name">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="event-detail-multi.html"><button type="button">YES</button></a><a href="event-detail-multi.html"><button type="button">NO</button></a></span></div>
-              </div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $61,500</span><span>Closes: May 15, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 3 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Will Ethereum complete its next major network upgrade before November 1, 2026?</a>
-              </div>
-              <p class="prob-line">YES <span class="prob">72%</span></p>
-              <div class="yesno"><a href="event-detail.html"><button type="button">YES</button></a><a href="event-detail.html"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $147,650</span><span>Closes: Nov 1, 2026</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 4 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Will the next lead actor for the Bond film be announced before December 31, 2026?</a>
-              </div>
-              <p class="prob-line">YES <span class="prob">47%</span></p>
-              <div class="yesno"><a href="event-detail.html"><button type="button">YES</button></a><a href="event-detail.html"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $19,400</span><span>Closes: Dec 31, 2026</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Multi-outcome card 2 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail-multi.html">Which party will win the most seats in the next UK general election?</a>
-              </div>
-              <div class="options">
-                <div class="opt-row"><span class="opt-name">Labour</span><span class="opt-prob">44%</span><span class="yesno compact"><a href="event-detail-multi.html"><button type="button">YES</button></a><a href="event-detail-multi.html"><button type="button">NO</button></a></span></div>
-                <div class="opt-row"><span class="opt-name">Conservatives</span><span class="opt-prob">33%</span><span class="yesno compact"><a href="event-detail-multi.html"><button type="button">YES</button></a><a href="event-detail-multi.html"><button type="button">NO</button></a></span></div>
-              </div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $58,700</span><span>Closes: Jul 1, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 5 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Will the EU formally admit a new member state before January 1, 2028?</a>
-              </div>
-              <p class="prob-line">YES <span class="prob">23%</span></p>
-              <div class="yesno"><a href="event-detail.html"><button type="button">YES</button></a><a href="event-detail.html"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $33,100</span><span>Closes: Jan 1, 2028</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 6 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="event-detail.html">Will 2026 be confirmed as one of the three warmest years on record before April 1, 2027?</a>
-              </div>
-              <p class="prob-line">YES <span class="prob">55%</span></p>
-              <div class="yesno"><a href="event-detail.html"><button type="button">YES</button></a><a href="event-detail.html"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $26,300</span><span>Closes: Apr 1, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-        </div>
+        <p class="sys-note">Re-entry: a Cookie preferences link in the footer reopens this banner, so the choice can be changed at any time.</p>
       </div>
     </main>
-
-    <!-- Bottom navigation (mobile only) -->
+    <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
-        <li aria-current="page"><a href="event-feed.html"><button type="button">
+        <li><a href="event-feed-logged-out.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
           <span>Events</span>
         </button></a></li>
-        <li><a href="active-bets.html"><button type="button">
+        <li><button type="button" data-open="signin">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
           <span>My Bets</span>
-        </button></a></li>
-        <li><a href="favorites.html"><button type="button">
+        </button></li>
+        <li><button type="button" data-open="signin">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
           <span>Favorites</span>
-        </button></a></li>
-        <li><a href="my-profile.html"><button type="button" aria-label="Portfolio, balance $142">
-          <span class="bn-bal">$142</span>
-          <span>Portfolio</span>
-        </button></a></li>
+        </button></li>
+        <li><button type="button" data-open="signin" aria-label="Sign in">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3M14 4h5v16h-5"/></svg>
+          <span>Sign in</span>
+        </button></li>
       </ul>
     </nav>
-
     <!-- Footer (global element) -->
     <footer class="app-footer">
       <div class="footer-inner">
@@ -1041,7 +948,6 @@
 
   </div>
 
-  <!-- Minimal interaction: desktop balance swap Portfolio <-> Cash (wireframe behavior, no styling) -->
   <script>
     (function () {
       var states = [

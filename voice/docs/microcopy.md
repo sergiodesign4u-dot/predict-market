@@ -1201,3 +1201,33 @@ stripped), bucket by action, and flag any action with more than one distinct lab
 Everything else (event vs market, bet vs position, Add funds, Sign in, one go-to-events
 label) was already reconciled in the screen passes and the step-7 audit. Health: 0 em-dash,
 0 broken internal links.
+
+---
+
+### Step 15 - System and global nodes (new pages: 404 / 500 / maintenance / cookie-consent / toasts)
+
+New wireframes for the IA Detailed-layer system nodes (`ia/docs/pages/system.md`). This copy is
+NEW (not a rewrite), written to the voice from the start: an error names what happened and the
+way out, no apology, no joke, no "something went wrong", no exclamation; the funds-safety and
+consent lines follow "one plain sentence of trust before the ask" and "say the specific
+provable thing". Source of truth for the text is `system.md`; the wireframes render it verbatim.
+
+| Page | Element | Text | Rule / source |
+|---|---|---|---|
+| 404.html | H1 | **This page does not exist** | error names what happened, not "Something went wrong" |
+| 404.html | Body | **The link may be old, or the event may have been removed.** | plain reason |
+| 404.html | Primary / secondary | **Browse events** + quick links (Home, How it works, the 4 categories) | never a dead-end; go-to-events label reused |
+| 500.html | H1 | **We could not load this page** | names the failure plainly |
+| 500.html | Body | **This is on our side, not your bet or your funds. Your money is safe.** | trust before the ask, even in an error |
+| 500.html | Actions | **Try again** + **Home** | visible exit; reuses the canonical retry label |
+| maintenance.html | H1 | **Predict Market is down for scheduled maintenance** | states the fact, planned not crashed |
+| maintenance.html | Body | **Your bets and funds are safe. We will be back shortly.** | trust reassurance |
+| maintenance.html | Action | **Try again** | visible exit |
+| cookie-consent.html | Banner text | **We use cookies to run the site and, only if you allow it, to measure and improve it.** | plain, no dark pattern |
+| cookie-consent.html | Actions | **Accept all** / **Reject all** / **Manage** | reject as easy as accept (equal weight) |
+| cookie-consent.html | Toggles | **Necessary (always on)** / **Analytics** / **Marketing** | Analytics + Marketing off by default, nothing pre-ticked |
+| toasts.html | Success | **Bet placed** · **Funds added** · **Saved into Favorites** | state the fact, no celebration; labels reuse the lexicon |
+| toasts.html | Error | **We could not place your bet. Try again.** | names it + the way out |
+
+User content (sample resolved counts, placeholder legal-page labels) is not rewritten. Health
+after this step: 0 em-dash on the 5 new pages, 0 broken internal links across all 104 wireframes.

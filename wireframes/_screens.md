@@ -289,6 +289,24 @@ produce this state.
 
 ---
 
+## System and global nodes (IA Detailed layer 03b, added 2026-07-12)
+
+Out-of-cluster system pages and global components, rendered from `ia/docs/pages/system.md`.
+These are not empty/error/loading/success screens; each is a single page or component with its
+own HTTP contract. Never a dead-end (every one has a visible exit).
+
+| Screen | File | HTTP / type | Notes |
+|---|---|---|---|
+| 404 Not Found | `404.html` | HTTP 404 | full page (header + footer), quick links + Browse events, not a soft-404 |
+| 500 Server Error | `500.html` | HTTP 500 | static template, funds reassurance, Try again + Home |
+| Maintenance | `maintenance.html` | HTTP 503 + Retry-After | planned downtime, bets and funds safe, Try again |
+| Cookie consent | `cookie-consent.html` | banner component | Accept all / Reject all / Manage at equal weight, 3 category toggles (Analytics + Marketing off by default), no pre-ticked |
+| Toasts | `toasts.html` | toast component | transient aria-live confirmations + an error variant; auto-dismiss + manual close |
+
+Registered in the screen tree under "System and global" (`_shell.py` `nav_tree` + `resync.py`).
+
+---
+
 ## Deferred to Step 08
 
 These are explicitly out of scope for this step so nothing below reads as a gap
