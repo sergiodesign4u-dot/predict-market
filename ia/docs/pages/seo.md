@@ -414,3 +414,34 @@ stake. The remaining content (record, current bets, activity) is the user's own 
 - The handle in the URL is stable; a rename sets a `301` from the old handle `[?]`.
 - **Thin profile:** a profile with no resolved bets is thin; consider `noindex` until it has public content `[?]`.
 - Canonical self-referential; text not in images; Core Web Vitals budget as §1.
+
+---
+
+## Global: Footer - internal-linking and trust surface
+
+- Node: Footer - Type: global component (on every page) - not indexed itself; its value is the second internal-linking plane plus a repeated trust signal
+- No H1 (a global component never owns the page H1); rendered in a `<footer>` landmark
+
+The footer is the one place this reconcile adds a structural node rather than a per-page SEO
+block, because it is a site-wide SEO surface. Structure (adapting the existing wireframe footer):
+
+- **Trust strip** (a thin band above the footer, on every page): the funds-safety line
+  repeated site-wide - "USDC held 1:1, we never lend it" - next to "Transparent resolution" and
+  the resolved-events count. This is the voice "trust before the ask" principle made persistent.
+- **Link columns** (all crawlable `<a>`):
+  - Product: Browse events, How it works, the four categories (Politics, Crypto, Culture, General)
+  - Company and legal: About, Terms, Privacy, Responsible betting, Cookie preferences (opens the consent banner, see `system.md`)
+  - Support: Help / FAQ (`[?]` orphan, post-MVP), Contact
+- **SEO popular-links block:** a crawlable `<a>` list to priority pages - the categories, trending or ending-soon events, and How it works. The block structure is fixed now; the exact link list is keyword-research-driven `[?]` and finalized in production.
+- **Bottom row:** copyright, the geo-restriction note (no US real-money markets), USDC / chain badge where appropriate, social links `[?]`.
+
+### SEO / a11y
+
+- Every footer link is a real crawlable `<a>` (the second internal-linking plane); never a JS-only handler.
+- Global component, no H1; `<footer>` semantic plus `nav` landmarks; tap targets >= 44px.
+- Mobile: the link columns and the SEO block collapse into accordions, but stay in the DOM (collapsed, still crawled).
+- **Register every destination the footer promises** (About, Terms, Privacy, Responsible betting, Cookie preferences, Contact) as a node in `sitemap.md`, so the map and the footer do not diverge. This is a Step 7 reconcile item.
+
+Wireframe delta: `event-feed.html` already has `<footer class="app-footer">` with brand,
+tagline, link columns and a legal row. Missing vs this spec: the trust strip above the footer
+and the SEO popular-links block. Both are small additions, logged here for the wireframe.

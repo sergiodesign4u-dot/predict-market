@@ -1,0 +1,737 @@
+<!-- Static render of ia/docs/pages/seo.md (SEO structural layer, IA Detailed layer). Regenerate with the same pass if the source changes. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO layer - IA Detailed layer</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* SIDEBAR */
+  .sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; scrollbar-width: none; z-index: 200; transform: translateX(-100%); transition: transform .25s cubic-bezier(.4,0,.2,1); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar::-webkit-scrollbar { display: none; }
+  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 199; backdrop-filter: blur(2px); }
+  .sidebar-overlay.open { display: block; }
+  .menu-toggle { position: fixed; top: 12px; left: 12px; z-index: 201; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; width: 36px; height: 36px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; padding: 0; }
+  .menu-toggle span { display: block; width: 15px; height: 1.5px; background: var(--text); border-radius: 1px; }
+  .sidebar-brand { padding: 20px 16px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .sidebar-project-name { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); line-height: 1.4; }
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+  .sidebar-page-link { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 500; color: var(--text); text-decoration: none; padding: 7px 16px; transition: background .15s; cursor: pointer; user-select: none; }
+  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
+  .sidebar-page-link.active { color: var(--accent); }
+  .sidebar-page-link.planned { color: var(--muted); cursor: default; opacity: .6; }
+  .sidebar-page-link.planned::after { content: 'Soon'; font-size: 9px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; background: rgba(255,255,255,.04); color: var(--muted); padding: 2px 5px; border-radius: 3px; border: 1px solid var(--border); }
+  .sidebar-sub { padding: 2px 0 8px; }
+  .sidebar-sub-link { display: block; font-size: 12px; color: var(--muted); text-decoration: none; padding: 5px 16px 5px 28px; transition: color .15s; position: relative; }
+  .sidebar-sub-link:hover { color: var(--text); }
+  .sidebar-sub-link.active { color: var(--text); }
+  .sidebar-sub-link.active::before { content: ''; position: absolute; left: 17px; top: 50%; transform: translateY(-50%); width: 3px; height: 3px; border-radius: 50%; background: var(--accent); }
+  .sidebar-divider { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 16px 16px 6px; opacity: .45; }
+
+  /* LAYOUT */
+  main { padding: 60px 20px 80px; }
+  @media (min-width: 860px) { .sidebar { transform: translateX(0); transition: none; } .sidebar-overlay { display: none !important; } .menu-toggle { display: none; } main { margin-left: 220px; padding: 48px 48px 120px; } }
+  section { padding-top: var(--gap); margin-top: var(--gap); border-top: 1px solid var(--border); }
+  section:first-child { border-top: none; }
+
+  /* TYPOGRAPHY */
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 16px; }
+  h2 { font-size: 22px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 20px; }
+  h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 12px; margin-top: 32px; }
+  h3:first-child { margin-top: 0; }
+  p { color: #aaa; margin-bottom: 12px; max-width: 680px; }
+  strong { color: var(--text); font-weight: 600; }
+  .lead { font-size: 16px; color: #bbb; max-width: 640px; margin-bottom: 32px; line-height: 1.7; }
+  .hero { padding-top: 0; border-top: none; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(200,255,0,.2); }
+  .tag.grey { background: rgba(255,255,255,.04); color: var(--muted); border-color: var(--border); }
+  .hero-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+
+  /* QUICK LINKS */
+  .quick-links { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+  .quick-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--text); text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); transition: border-color .15s, background .15s; }
+  .quick-link:hover { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+
+  /* USER LOOP */
+  .loop-steps { display: flex; gap: 0; margin-top: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .loop-step { padding: 10px 16px; background: var(--surface); border: 1px solid var(--border); border-right: none; font-size: 13px; color: #bbb; }
+  .loop-step:first-child { border-radius: 6px 0 0 6px; }
+  .loop-step:last-child { border-right: 1px solid var(--border); border-radius: 0 6px 6px 0; }
+  .loop-step .step-num { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 2px; }
+  @media (max-width: 600px) { .loop-step { border-right: 1px solid var(--border); border-radius: 6px; margin-bottom: 4px; } }
+
+  /* SCREEN TREE */
+  .tree { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 20px; margin-top: 16px; }
+  .tree-l0 { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+  .tree-l0:last-child { border-bottom: none; margin-bottom: 0; }
+  .tree-slot { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; min-width: 80px; }
+  .tree-screen { font-size: 13px; font-weight: 600; color: var(--text); }
+  .tree-jobs { font-size: 11px; color: var(--muted); margin-left: 8px; }
+  .tree-l1s { display: flex; flex-direction: column; gap: 3px; margin-left: 20px; padding: 4px 0; }
+  .tree-l1 { font-size: 12px; color: #999; padding: 2px 0; }
+  .tree-l1 .t-screen { color: var(--text); font-weight: 500; }
+  .tree-l1 .t-job { color: var(--muted); font-size: 11px; }
+
+  /* NAV COMPACT */
+  .nav-compact { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 16px; }
+  .nav-slot-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; }
+  .nav-slot-num { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+  .nav-slot-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .nav-slot-opens { font-size: 12px; color: #999; margin-bottom: 4px; }
+  .nav-slot-jobs { font-size: 11px; color: var(--muted); }
+  .header-items { font-size: 13px; color: #999; margin-top: 12px; padding: 10px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
+
+  /* DEPTH SUMMARY */
+  .depth-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 16px; }
+  .depth-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; }
+  .depth-card .d-label { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
+  .depth-card .d-path { font-size: 12px; color: #bbb; margin-bottom: 6px; }
+  .depth-card .d-result { font-size: 12px; font-weight: 700; color: var(--green); }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--r); margin-top: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th { background: var(--surface); color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: #c8c8c8; vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,.015); }
+  td.check { color: var(--accent); font-weight: 700; text-align: center; }
+  td.empty { color: var(--border); text-align: center; }
+  td.cov { font-family: var(--mono); font-size: 11px; font-weight: 700; text-align: center; }
+  td.cov-hi { color: var(--green); }
+  td.cov-lo { color: #e89c9c; }
+  td.job-name { font-weight: 600; color: var(--text); white-space: nowrap; font-size: 12px; }
+
+  /* MERMAID */
+  .mermaid-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; overflow-x: auto; margin-top: 16px; }
+  .mermaid { min-width: 400px; }
+
+  /* MORE LINK */
+  .more-link { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted); text-decoration: none; }
+  .more-link:hover { color: var(--text); }
+
+  /* SEO LAYER additions - literal ship-copy, inline code tokens, open-question marker.
+     Reuses the same variables and radius token; no new color system. */
+  code { font-family: var(--mono); font-size: 12px; background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; color: #d6d6d6; word-break: break-word; }
+  .copy { font-family: var(--mono); font-size: 12.5px; line-height: 1.65; color: #d7dec2; background: rgba(200,255,0,.035); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--r); padding: 12px 15px; margin: 8px 0 16px; max-width: 720px; }
+  .copy .lbl { display: block; font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; font-family: var(--font); }
+  .copy p { color: #d7dec2; margin: 0 0 10px; max-width: none; }
+  .copy p:last-child { margin-bottom: 0; }
+  .copy ul { margin: 4px 0 0; padding-left: 18px; }
+  .copy li { margin-bottom: 9px; }
+  .copy li:last-child { margin-bottom: 0; }
+  .copy .q-item { color: var(--text); }
+  .q { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 700; color: #e6b800; background: rgba(230,184,0,.08); border: 1px solid rgba(230,184,0,.28); border-radius: 3px; padding: 0 4px; }
+  .meta-list { list-style: none; margin: 8px 0 8px; padding: 0; max-width: 760px; }
+  .meta-list li { padding: 7px 0; border-bottom: 1px solid var(--border); color: #aaa; }
+  .meta-list li:last-child { border-bottom: none; }
+  .meta-list .k { color: var(--text); font-weight: 600; font-family: var(--mono); font-size: 12px; margin-right: 8px; }
+  .cc { color: var(--muted); font-size: 11px; font-family: var(--mono); }
+  ul.prose, ol.prose { margin: 8px 0 12px; padding-left: 20px; max-width: 700px; color: #aaa; }
+  ol.prose { padding-left: 24px; }
+  ul.prose li, ol.prose li { margin-bottom: 8px; }
+  ul.prose li:last-child, ol.prose li:last-child { margin-bottom: 0; }
+  .delta { font-size: 12px; color: #7d7d7d; max-width: 700px; margin: 4px 0 12px; }
+  .delta strong { color: #9a9a9a; }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a href="../user-research/personas.html" class="sidebar-page-link">Personas</a>
+    <a href="../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a href="../user-research/cjm-as-is.html" class="sidebar-page-link">CJM As-Is</a>
+    <a href="../user-research/cjm-to-be.html" class="sidebar-page-link">CJM To-Be</a>
+    <div class="sidebar-divider">Information Architecture</div>
+    <div class="sidebar-divider">Basic layer</div>
+    <a href="../ia/flows.html" class="sidebar-page-link">Flows</a>
+    <a href="../ia/concept-map.html" class="sidebar-page-link">Concept map</a>
+    <div class="sidebar-divider">Detailed layer</div>
+    <a href="../ia/ia.html" class="sidebar-page-link">Overview</a>
+    <a href="../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <a class="sidebar-page-link active">SEO layer</a>
+    <div class="sidebar-sub">
+      <a href="#intro" class="sidebar-sub-link">Intro</a>
+      <a href="#indexation" class="sidebar-sub-link">Indexation policy</a>
+      <a href="#template" class="sidebar-sub-link">A-E template</a>
+      <a href="#event-feed" class="sidebar-sub-link">Event Feed</a>
+      <a href="#event-detail" class="sidebar-sub-link">Event Detail</a>
+      <a href="#category" class="sidebar-sub-link">Category</a>
+      <a href="#how-it-works" class="sidebar-sub-link">How It Works</a>
+      <a href="#public-profile" class="sidebar-sub-link">Public Profile</a>
+      <a href="#footer" class="sidebar-sub-link">Footer</a>
+    </div>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
+    <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a class="sidebar-page-link planned">Concept</a>
+    <a class="sidebar-page-link planned">UI + Visual</a>
+    <a class="sidebar-page-link planned">Tokens + Components</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<main>
+
+<div role="note" style="margin:16px auto;max-width:1000px;padding:12px 16px;border:1px solid #35597a;border-left:4px solid #5fa8ff;background:rgba(95,168,255,0.08);color:#c4dcf2;font-size:14px;line-height:1.5;border-radius:6px;">
+  <strong>SEO structural layer (targeted reconcile).</strong> This page fixes URL, headings, schema, indexation and internal-linking for the indexed public pages, ahead of production copy. Only the <code>index</code> pages get an A-E block; every private or transactional zone is <code>noindex</code> and is listed once in the indexation policy, not spec'd page by page. Source of truth: <code>ia/docs/pages/seo.md</code>.
+</div>
+
+<!-- INTRO -->
+<section class="hero" id="intro">
+  <div class="hero-meta">
+    <span class="tag">Information Architecture</span>
+    <span class="tag grey">Detailed layer</span>
+    <span class="tag grey">Stage 03b</span>
+  </div>
+  <h1>SEO layer</h1>
+  <p class="lead">The structural SEO layer for the indexed public pages. Part of the Information Architecture, not a production content pass: it fixes URL, headings, schema, indexation and internal-linking now, so the wireframe only has to validate the layout and production only has to supply final copy and real query volumes.</p>
+
+  <p>This file is the structural SEO layer for the indexed public pages. It is part of the Information Architecture, not a production content pass: it fixes URL, headings, schema, indexation and internal-linking now, so the wireframe only has to validate the layout and production only has to supply final copy and real query volumes (SEO-ahead, see CLAUDE.md IA &gt; Detailed layer). The 99 wireframes are the per-page B/W render; this file does not redraw them, it adds the SEO structure they deliberately do not carry.</p>
+
+  <h3>Scope (targeted reconcile)</h3>
+  <p>A-E blocks are written only for the pages that are actually indexed (below). Every private or transactional zone is <code>noindex</code> and gets no schema; those are listed once in the indexation policy, not spec'd page by page.</p>
+
+  <h3>Convention</h3>
+  <p><code>{ROOT}</code> = the production origin (domain not chosen yet, <span class="q">[?]</span>). All canonical URLs are shown relative to it. Language rule: analysis and labels are English; the ready product copy inside A-E blocks (title, H1/H2, body text) is the product language (English here), because a wireframe or a build carries it verbatim as real UI text. No em dash.</p>
+
+  <div class="quick-links" style="margin-top:24px">
+    <a href="ia.html" class="quick-link">IA Overview &rarr;</a>
+    <a href="sitemap.html" class="quick-link">Full Sitemap &rarr;</a>
+  </div>
+</section>
+
+<!-- INDEXATION POLICY -->
+<section id="indexation">
+  <div class="section-label">Indexation policy</div>
+  <h2>One row per screen family</h2>
+  <p><code>index,follow</code> = crawled and eligible to rank; <code>noindex,follow</code> = kept out of the index but its links are still followed; private and transactional zones are <code>noindex</code>. Only the <code>index</code> rows get an A-E block in this file.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Screen family</th>
+          <th>URL pattern</th>
+          <th>Robots</th>
+          <th>Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="job-name">Event Feed (home)</td><td><code>/</code></td><td><code>index,follow</code></td><td>The entry page and the main ranking surface. &sect;1</td></tr>
+        <tr><td class="job-name">Event Detail</td><td><code>/event/{slug}</code></td><td><code>index,follow</code></td><td>The money pages; one indexed URL per event, the deep-link target of shares and search. &sect;2</td></tr>
+        <tr><td class="job-name">Category</td><td><code>/c/{category}</code></td><td><code>index,follow</code></td><td>Intent landing per category (Politics, Crypto, Culture, General). &sect;3</td></tr>
+        <tr><td class="job-name">How It Works</td><td><code>/how-it-works</code></td><td><code>index,follow</code></td><td>Trust and explainer page; ranks for "how do prediction markets work" intent. &sect;4</td></tr>
+        <tr><td class="job-name">Public Profile</td><td><code>/u/{handle}</code></td><td><code>index,follow</code> <span class="q">[?]</span></td><td>Public reputation / track record. Indexed by default; per-user opt-out to <code>noindex</code> is a <span class="q">[?]</span> for the privacy pass. &sect;5</td></tr>
+        <tr><td class="job-name">Favorites view</td><td><code>/favorites</code></td><td><code>noindex,follow</code></td><td>Personal watchlist, requires auth, no unique public content</td></tr>
+        <tr><td class="job-name">Sign In / Register</td><td><code>/signin</code></td><td><code>noindex,follow</code></td><td>Thin transactional gate; links followed</td></tr>
+        <tr><td class="job-name">Deposit / Add funds</td><td><code>/deposit</code></td><td><code>noindex</code></td><td>Transactional, auth-gated, no schema</td></tr>
+        <tr><td class="job-name">Wallet</td><td><code>/wallet</code></td><td><code>noindex</code></td><td>Private balance and transactions</td></tr>
+        <tr><td class="job-name">Bet panel</td><td>inline on Event Detail</td><td>n/a</td><td>No own URL (inline panel), inherits Event Detail</td></tr>
+        <tr><td class="job-name">Win / Loss</td><td>invoked overlay</td><td><code>noindex</code></td><td>Personal outcome, reached from a notification, no own indexable URL</td></tr>
+        <tr><td class="job-name">Active Bets / History</td><td><code>/my-bets</code></td><td><code>noindex</code></td><td>Private positions</td></tr>
+        <tr><td class="job-name">Notifications</td><td><code>/notifications</code></td><td><code>noindex</code></td><td>Private</td></tr>
+        <tr><td class="job-name">My Profile (self)</td><td><code>/profile</code></td><td><code>noindex</code></td><td>Private; the Public Profile (&sect;5) is the indexed twin</td></tr>
+        <tr><td class="job-name">Search results</td><td><code>/search</code></td><td><code>noindex,follow</code></td><td>Deferred until catalog scale; when live, results are <code>noindex,follow</code></td></tr>
+        <tr><td class="job-name">System (404 / 500 / 503)</td><td>n/a</td><td><code>noindex</code></td><td>Error and maintenance pages, never indexed. See <code>system.md</code></td></tr>
+        <tr><td class="job-name">Cookie consent</td><td>banner component</td><td>n/a</td><td>Not a page. See <code>system.md</code></td></tr>
+        <tr><td class="job-name">Orphans: Settings</td><td><code>/settings</code></td><td><code>noindex</code></td><td>Private</td></tr>
+        <tr><td class="job-name">Orphans: Leaderboard</td><td><code>/leaderboard</code></td><td><code>index,follow</code> <span class="q">[?]</span></td><td>Post-MVP; indexed when built</td></tr>
+        <tr><td class="job-name">Orphans: Help / FAQ</td><td><code>/help</code></td><td><code>index,follow</code> <span class="q">[?]</span></td><td>Post-MVP; indexed when built</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- A-E TEMPLATE -->
+<section id="template">
+  <div class="section-label">The A-E template</div>
+  <h2>Every indexed page carries the same five blocks</h2>
+
+  <div class="tree">
+    <div class="tree-l0" style="align-items:flex-start">
+      <span class="tree-slot">A</span>
+      <div><span class="tree-screen">Meta tags (ready copy).</span> <span class="tree-jobs" style="margin-left:0"><code>title</code> (&lt;= 60 chars), <code>meta description</code> (&lt;= 155), <code>canonical</code>, <code>hreflang</code>, <code>robots</code>, Open Graph (<code>og:title</code>, <code>og:description</code>, <code>og:type</code>, <code>og:url</code>, <code>og:image</code>), Twitter (<code>twitter:card</code>, <code>title</code>, <code>description</code>, <code>image</code>).</span></div>
+    </div>
+    <div class="tree-l0" style="align-items:flex-start">
+      <span class="tree-slot">B</span>
+      <div><span class="tree-screen">Heading structure.</span> <span class="tree-jobs" style="margin-left:0">Exactly one <code>H1</code>, then the ordered <code>H2</code> list in the same order as the mobile-first block stack.</span></div>
+    </div>
+    <div class="tree-l0" style="align-items:flex-start">
+      <span class="tree-slot">C</span>
+      <div><span class="tree-screen">Ready SEO body text.</span> <span class="tree-jobs" style="margin-left:0">The copy that actually ships in the page's text sections, in the product voice. Not "fill in later".</span></div>
+    </div>
+    <div class="tree-l0" style="align-items:flex-start">
+      <span class="tree-slot">D</span>
+      <div><span class="tree-screen">Structured data.</span> <span class="tree-jobs" style="margin-left:0">The schema.org types for the page and their key properties.</span></div>
+    </div>
+    <div class="tree-l0" style="align-items:flex-start">
+      <span class="tree-slot">E</span>
+      <div><span class="tree-screen">Optimization checklist.</span> <span class="tree-jobs" style="margin-left:0">One H1, LCP target, crawlable <code>&lt;a&gt;</code>, canonical + hreflang, text-not-in-images, Core Web Vitals budget, correct robots directive.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 1. EVENT FEED -->
+<section id="event-feed">
+  <div class="section-label">Page 1</div>
+  <h2>Event Feed (home)</h2>
+  <div class="header-items">
+    <strong>Node:</strong> Event Feed &middot; <strong>Type:</strong> page &middot; serves FJ1 (find / return), FJ2 (understand the odds), MJ (entry to the main job)<br>
+    <strong>URL / slug:</strong> <code>/</code> &middot; <strong>Breadcrumbs:</strong> none (home is the root)<br>
+    <strong>Indexation:</strong> <code>index,follow</code> - the single most important ranking page
+  </div>
+
+  <h3>A. Meta tags</h3>
+  <ul class="meta-list">
+    <li><span class="k">title</span> <code>Predict Market - bet YES or NO on live events</code> <span class="cc">(46 chars)</span></li>
+    <li><span class="k">meta description</span> <code>Browse live events and back your opinion with a real stake. Plain-language odds, a one-line why, and how each event resolves. Start with no wallet.</code> <span class="cc">(147 chars)</span></li>
+    <li><span class="k">canonical</span> <code>{ROOT}/</code></li>
+    <li><span class="k">hreflang</span> <code>en</code> -&gt; <code>{ROOT}/</code> (single locale now; more locales <span class="q">[?]</span> TBD)</li>
+    <li><span class="k">robots</span> <code>index,follow</code></li>
+    <li><span class="k">og:title</span> <code>Predict Market - bet YES or NO on live events</code></li>
+    <li><span class="k">og:description</span> <code>Back your opinion on real-world events with a real stake. Odds in plain language, no wallet to start.</code></li>
+    <li><span class="k">og:type</span> <code>website</code></li>
+    <li><span class="k">og:url</span> <code>{ROOT}/</code></li>
+    <li><span class="k">og:image</span> <code>{ROOT}/og/home.png</code> (1200x630, the Share Card asset; <span class="q">[?]</span> asset TBD)</li>
+    <li><span class="k">twitter:card</span> <code>summary_large_image</code>; <code>twitter:title</code> / <code>twitter:description</code> / <code>twitter:image</code> mirror the OG values</li>
+  </ul>
+
+  <h3>B. Heading structure</h3>
+  <p><strong>H1:</strong> <code>Live events</code> (the feed heading; on a Category page the active category echoes into the H1, see &sect;3)</p>
+  <p style="margin-bottom:6px"><strong>H2</strong> in mobile block order:</p>
+  <ol class="prose">
+    <li><code>Trending now</code> (default sort band)</li>
+    <li><code>Ending soon</code></li>
+    <li><code>Browse by category</code> (Politics, Crypto, Culture, General - each a crawlable <code>&lt;a&gt;</code>)</li>
+    <li><code>How betting works here</code> (short explainer, links to How It Works)</li>
+    <li><code>Why the odds move</code> (the explain-the-number teaser)</li>
+    <li><code>Common questions</code> (feeds the FAQPage schema)</li>
+  </ol>
+  <p class="delta"><strong>Wireframe delta:</strong> bands 1-3 already render in <code>event-feed.html</code>. Sections 4-6 are SEO content blocks that belong below the fold; adding them to the feed is a small, optional delta (they do not change the primary layout), logged here so the wireframe can validate the slot later.</p>
+
+  <h3>C. Ready SEO body text</h3>
+  <div class="copy">
+    <span class="lbl">How betting works here</span>
+    <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">Why the odds move</span>
+    <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">Common questions</span>
+    <ul>
+      <li><span class="q-item">Do I need crypto to start?</span> No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</li>
+      <li><span class="q-item">What is the smallest bet?</span> One dollar. The default is five.</li>
+      <li><span class="q-item">How does an event resolve?</span> Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</li>
+    </ul>
+  </div>
+
+  <h3>D. Structured data</h3>
+  <ul class="prose">
+    <li><code>WebSite</code> - <code>name</code> "Predict Market", <code>url</code> <code>{ROOT}/</code>. No <code>SearchAction</code> (search is deferred, <span class="q">[?]</span>).</li>
+    <li><code>Organization</code> - <code>name</code>, <code>url</code>, <code>logo</code>, <code>sameAs</code> social profiles <span class="q">[?]</span>.</li>
+    <li><code>CollectionPage</code> - the feed itself; <code>mainEntity</code> -&gt; the <code>ItemList</code> below.</li>
+    <li><code>ItemList</code> - the visible events, each <code>ListItem</code> linking to its Event Detail URL (<code>/event/{slug}</code>). The rich per-event schema lives on Event Detail (&sect;2), not here.</li>
+    <li><code>FAQPage</code> - the three "Common questions" Q&amp;A pairs.</li>
+  </ul>
+
+  <h3>E. Optimization checklist</h3>
+  <ul class="prose">
+    <li>Exactly one <code>H1</code> ("Live events").</li>
+    <li>LCP: server-render the first ~6 event cards (above the fold) so LCP is a card, not a late JS paint; no large blocking hero image.</li>
+    <li>Crawlable <code>&lt;a&gt;</code>: every event card and every category is a real <code>&lt;a href&gt;</code>, not a JS-only handler, so crawlers reach Event Detail (&sect;2) and Category (&sect;3).</li>
+    <li>Canonical self-referential (<code>{ROOT}/</code>); sort and filter params (<code>?sort=</code>, <code>?freq=</code>) canonical back to <code>{ROOT}/</code> and are <code>noindex</code> facet combinations.</li>
+    <li><code>hreflang</code> present (<code>en</code> only now; more locales <span class="q">[?]</span>).</li>
+    <li>Text not in images (odds and labels are live text).</li>
+    <li>Core Web Vitals budget: LCP &lt; 2.5s, CLS &lt; 0.1 (reserve card heights so odds loading does not shift layout), INP &lt; 200ms.</li>
+    <li><code>robots</code>: <code>index,follow</code> confirmed.</li>
+  </ul>
+</section>
+
+<!-- 2. EVENT DETAIL -->
+<section id="event-detail">
+  <div class="section-label">Page 2</div>
+  <h2>Event Detail</h2>
+  <div class="header-items">
+    <strong>Node:</strong> Event Detail &middot; <strong>Type:</strong> page (inline bet panel, no separate URL) &middot; serves MJ (the bet happens here), FJ2 (understand the odds), SJ1 (share)<br>
+    <strong>URL / slug:</strong> <code>/event/{slug}</code> &middot; <code>{slug}</code> is the event question slugified, stable, and it does NOT change when the odds move<br>
+    <strong>Breadcrumbs:</strong> <code>Home &gt; {Category} &gt; {Event}</code> (e.g. <code>Home &gt; Politics &gt; Will the incumbent win</code>)<br>
+    <strong>Indexation:</strong> <code>index,follow</code> - the deep-link target of every share and search result
+  </div>
+  <p class="delta">The event question, the one-line why, the news story, comments, usernames and sample figures are user or team content and are never voice-rewritten (see voice rule). Below, those are template slots <code>{...}</code>; only the evergreen / reusable copy is fixed.</p>
+
+  <h3>A. Meta tags</h3>
+  <ul class="meta-list">
+    <li><span class="k">title</span> (template, &lt;= 60) <code>{Question} - Predict Market</code>. If the question is long, truncate the question, keep the brand suffix. Example: <code>Will Bitcoin close above $100k on Dec 31? - Predict Market</code> <span class="cc">(58 chars)</span></li>
+    <li><span class="k">meta description</span> (template, &lt;= 155) <code>{YES}% YES right now on: {Question, truncated}. See the odds in plain language, why they moved, and how this event resolves. Bet from $1.</code> Dynamic parts are the odds and the question. Example: <code>62% YES right now on Bitcoin above $100k by Dec 31. See the odds in plain language, why they moved, and how it resolves. Bet from $1.</code> <span class="cc">(133 chars)</span></li>
+    <li><span class="k">canonical</span> <code>{ROOT}/event/{slug}</code></li>
+    <li><span class="k">hreflang</span> <code>en</code> -&gt; <code>{ROOT}/event/{slug}</code> (more locales <span class="q">[?]</span>)</li>
+    <li><span class="k">robots</span> <code>index,follow</code> (a resolved event stays <code>index,follow</code>, see E)</li>
+    <li><span class="k">og:title</span> <code>{Question}</code></li>
+    <li><span class="k">og:description</span> the short "{YES}% YES, plain-language odds, how it resolves" line</li>
+    <li><span class="k">og:type</span> <code>website</code> (NOT <code>article</code>; the page is a live market, not a dated article)</li>
+    <li><span class="k">og:url</span> <code>{ROOT}/event/{slug}</code></li>
+    <li><span class="k">og:image</span> <code>{ROOT}/og/event/{slug}.png</code> - the per-event Share Card (question + current odds, 1200x630), regenerated on an odds snapshot; this is the SJ1 share asset</li>
+    <li><span class="k">twitter:card</span> <code>summary_large_image</code>; title / description / image mirror OG</li>
+  </ul>
+
+  <h3>B. Heading structure</h3>
+  <p><strong>H1:</strong> <code>{the event question}</code> (exactly one H1, the question itself)</p>
+  <p style="margin-bottom:6px"><strong>H2</strong> in mobile block order:</p>
+  <ol class="prose">
+    <li><code>Odds</code> (the YES / NO odds and the inline bet panel)</li>
+    <li><code>Why this number</code> (the one-line why and the news story)</li>
+    <li><code>How this event resolves</code> (the resolution rule and its source)</li>
+    <li><code>Comments</code> (user discussion; fresh, long-tail content)</li>
+    <li><code>Related events</code> (crawlable links to sibling events in the same category)</li>
+  </ol>
+  <p class="delta"><strong>Wireframe delta:</strong> blocks 1-4 already render in <code>event-detail.html</code> (odds + inline bet panel, the content tabs incl. Comments). "Related events" is an SEO internal-linking block to add below the tabs; small, optional, logged for the wireframe to validate.</p>
+
+  <h3>C. Ready SEO body text</h3>
+  <div class="copy">
+    <span class="lbl">Evergreen intro (reusable on every event)</span>
+    <p>Back YES or NO on this event. You see the odds in plain language and how it resolves before you bet. The minimum is one dollar, and you can build your bet before you connect a wallet.</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">Why this number (template)</span>
+    <p>Right now the odds put YES at {YES}%. {One-line why - team editorial, e.g. "The latest polls moved toward the incumbent this week."} The number is a live price, so it moves as people bet.</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">How this event resolves (template, mostly reusable)</span>
+    <p>This event resolves YES if {the condition stated on the event}. The team resolves it against the real-world outcome using {named source}. Resolution date: {date}. Once resolved, the outcome and the timing of every bet stay visible.</p>
+  </div>
+
+  <h3>D. Structured data - the per-event schema decision (resolves the &sect;1 <span class="q">[?]</span>)</h3>
+  <p><strong>Use <code>WebPage</code> + <code>BreadcrumbList</code>.</strong> Optionally add <code>Comment</code> for the discussion and <code>FAQPage</code> for the resolution Q&amp;A if surfaced.</p>
+  <p style="margin-bottom:6px">Rejected, with reasons:</p>
+  <ul class="prose">
+    <li><code>schema.org/Event</code> - NO. It models a scheduled real-world happening (startDate, location, performer) and makes the page eligible for Google event rich results, which would misrepresent a prediction market as a ticketed event. A market question is not an <code>Event</code>.</li>
+    <li><code>QAPage</code> - declined. It expects one user question with an accepted answer and an answer count; a market question with betting + comments does not fit that shape.</li>
+    <li><code>Product</code> / <code>Offer</code> - declined. Treating a bet as a product invites e-commerce price rich results (price, availability) that misframe a wager and carry compliance risk.</li>
+  </ul>
+  <p>So: <code>WebPage</code> (name = the question, <code>breadcrumb</code>), <code>BreadcrumbList</code> (Home &gt; Category &gt; Event), plus <code>Comment</code> / <code>FAQPage</code> where the content exists. This stays honest and avoids a rich-result mismatch. <span class="q">[?]</span> resolved.</p>
+
+  <h3>E. Optimization checklist</h3>
+  <ul class="prose">
+    <li>Exactly one <code>H1</code> = the event question; unique <code>title</code> and <code>description</code> per event (templated from question + odds), no duplicate meta across events.</li>
+    <li>Slug is human-readable and stable; it does not change when odds move.</li>
+    <li>A <strong>resolved</strong> event keeps its URL, stays <code>200</code> and <code>index,follow</code>, and shows the resolved state (outcome + at-close odds); it is never redirected or 404'd. It is an indexed archive, not a dead-end (matches <code>event-detail-resolved.html</code>).</li>
+    <li>Crawlable <code>&lt;a&gt;</code> to Related events and to the parent Category (internal linking).</li>
+    <li>Odds are live text on the page (not only baked into the OG image).</li>
+    <li>Canonical self-referential; strip share / tracking params (<code>?ref=</code>, <code>?utm=</code>) via canonical.</li>
+    <li>Comments and tab content are in the DOM (crawlable), not loaded only on interaction.</li>
+    <li>Core Web Vitals: LCP = the question + odds block; reserve the bet-panel height to avoid CLS as odds load.</li>
+  </ul>
+</section>
+
+<!-- 3. CATEGORY -->
+<section id="category">
+  <div class="section-label">Page 3</div>
+  <h2>Category</h2>
+  <div class="header-items">
+    <strong>Node:</strong> Category &middot; <strong>Type:</strong> page (one canonical listing template for all categories) &middot; serves FJ1 (browse by interest)<br>
+    <strong>URL / slug:</strong> <code>/c/{category}</code>, <code>{category}</code> in <code>politics | crypto | culture | general</code> (more categories post-MVP)<br>
+    <strong>Breadcrumbs:</strong> <code>Home &gt; {Category}</code><br>
+    <strong>Indexation:</strong> <code>index,follow</code> on the clean category URL; facet combinations are <code>noindex</code> (see E)
+  </div>
+  <p class="delta">One template renders every category; only the H1, the "about" copy, and the meta differ. Sports and other post-MVP categories reuse the same template.</p>
+
+  <h3>A. Meta tags</h3>
+  <ul class="meta-list">
+    <li><span class="k">title</span> (template, &lt;= 60) <code>{Category} events - Predict Market</code>. Example: <code>Politics events - Predict Market</code> <span class="cc">(32 chars)</span></li>
+    <li><span class="k">meta description</span> (template, &lt;= 155) <code>Bet YES or NO on live {category} events. Plain-language odds, a one-line why, and how each resolves. Browse {category} now, no wallet to start.</code> Example (politics): <code>Bet YES or NO on live politics events. Plain-language odds, a one-line why, and how each resolves. Browse politics now, no wallet to start.</code> <span class="cc">(139 chars)</span></li>
+    <li><span class="k">canonical</span> <code>{ROOT}/c/{category}</code></li>
+    <li><span class="k">hreflang</span> <code>en</code> -&gt; <code>{ROOT}/c/{category}</code> (more locales <span class="q">[?]</span>)</li>
+    <li><span class="k">robots</span> <code>index,follow</code></li>
+    <li><span class="k">og:title</span> <code>{Category} events</code>; <span class="k">og:description</span> the short listing line; <span class="k">og:type</span> <code>website</code>; <span class="k">og:url</span> <code>{ROOT}/c/{category}</code>; <span class="k">og:image</span> <code>{ROOT}/og/c/{category}.png</code> (<span class="q">[?]</span> asset TBD)</li>
+    <li><span class="k">twitter:card</span> <code>summary_large_image</code>; mirrors OG</li>
+  </ul>
+
+  <h3>B. Heading structure</h3>
+  <p><strong>H1:</strong> <code>{Category} events</code> (the active category echoes into the H1, e.g. "Politics events")</p>
+  <p style="margin-bottom:6px"><strong>H2</strong> in mobile block order:</p>
+  <ol class="prose">
+    <li><code>Trending in {category}</code></li>
+    <li><code>Ending soon</code></li>
+    <li><code>All {category} events</code></li>
+    <li><code>About {category} events</code> (SEO body, below the fold)</li>
+    <li><code>Common questions</code> (reuses the home FAQ set)</li>
+  </ol>
+  <p class="delta"><strong>Wireframe delta:</strong> the four category pages exist (<code>category-*.html</code>) with the event bands (1-3). "About {category} events" is the one SEO text block to add below the fold; small, optional.</p>
+
+  <h3>C. Ready SEO body text</h3>
+  <div class="copy">
+    <span class="lbl">About {category} events (template)</span>
+    <p>Follow {category} events and back your opinion with a real stake. You see the odds in plain language and how each event resolves before you bet, from one dollar, with no wallet to start. The one-line "what this category covers" fill per category:</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Category</th><th>"This category covers ..." fill</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="job-name">Politics</td><td>elections, policy votes, appointments, and other public decisions</td></tr>
+        <tr><td class="job-name">Crypto</td><td>token prices, launches, network upgrades, and protocol milestones</td></tr>
+        <tr><td class="job-name">Culture</td><td>awards, releases, sports and entertainment milestones, and cultural firsts</td></tr>
+        <tr><td class="job-name">General</td><td>real-world questions that do not fit the other categories</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>D. Structured data</h3>
+  <ul class="prose">
+    <li><code>CollectionPage</code> - the category listing; <code>mainEntity</code> -&gt; the <code>ItemList</code>.</li>
+    <li><code>BreadcrumbList</code> - <code>Home &gt; {Category}</code>.</li>
+    <li><code>ItemList</code> - the category's events, each <code>ListItem</code> linking to its Event Detail URL (<code>/event/{slug}</code>).</li>
+    <li><code>WebSite</code> / <code>Organization</code> inherited site-wide (declared once on the home, &sect;1).</li>
+  </ul>
+
+  <h3>E. Optimization checklist</h3>
+  <ul class="prose">
+    <li>Exactly one <code>H1</code> = "{Category} events"; unique <code>title</code> / <code>description</code> per category, no duplication across categories.</li>
+    <li><strong>Facet control:</strong> the clean <code>/c/{category}</code> is indexed; sort and frequency combinations (<code>?sort=</code>, <code>?freq=hourly</code>) are <code>noindex,follow</code> and canonical back to <code>/c/{category}</code>, so facets do not bloat the index.</li>
+    <li>Crawlable <code>&lt;a&gt;</code> to every event, to the sibling categories (cross-linking), and back to the home.</li>
+    <li><strong>Pagination:</strong> if a category paginates, page URLs are <code>?page=N</code> with a self-referential canonical per page; <code>rel=next/prev</code> is optional <span class="q">[?]</span>.</li>
+    <li><strong>Empty category:</strong> a category with no live events is still a valid page with a way out (upcoming or recently resolved), not a soft-404; consider <code>noindex</code> only while genuinely empty <span class="q">[?]</span> (matches the empty-state wireframe).</li>
+    <li>Text not in images; server-render the first cards; reserve card heights (CLS).</li>
+    <li>Core Web Vitals budget as &sect;1.</li>
+  </ul>
+</section>
+
+<!-- 4. HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-label">Page 4</div>
+  <h2>How It Works</h2>
+  <div class="header-items">
+    <strong>Node:</strong> How It Works &middot; <strong>Type:</strong> page &middot; serves SJ2 (understand and trust the mechanics), HJ (help)<br>
+    <strong>URL / slug:</strong> <code>/how-it-works</code> &middot; <strong>Breadcrumbs:</strong> <code>Home &gt; How it works</code><br>
+    <strong>Indexation:</strong> <code>index,follow</code> - the trust and explainer page; the ranking target for "how do prediction markets work" and "how to bet on events" intent
+  </div>
+  <p class="delta">This is a genuine content page (not user content), so the copy below is real ships-copy.</p>
+
+  <h3>A. Meta tags</h3>
+  <ul class="meta-list">
+    <li><span class="k">title</span> (&lt;= 60) <code>How prediction markets work - Predict Market</code> <span class="cc">(44 chars)</span></li>
+    <li><span class="k">meta description</span> (&lt;= 155) <code>See how betting on real-world events works: pick an event, read the odds in plain language, back YES or NO, and see how it resolves. Bet from $1.</code> <span class="cc">(145 chars)</span></li>
+    <li><span class="k">canonical</span> <code>{ROOT}/how-it-works</code></li>
+    <li><span class="k">hreflang</span> <code>en</code> -&gt; <code>{ROOT}/how-it-works</code> (more locales <span class="q">[?]</span>)</li>
+    <li><span class="k">robots</span> <code>index,follow</code></li>
+    <li><span class="k">og:title</span> <code>How prediction markets work</code>; <span class="k">og:description</span> the short explainer line; <span class="k">og:type</span> <code>website</code>; <span class="k">og:url</span> <code>{ROOT}/how-it-works</code>; <span class="k">og:image</span> <code>{ROOT}/og/how-it-works.png</code> (<span class="q">[?]</span>)</li>
+    <li><span class="k">twitter:card</span> <code>summary_large_image</code>; mirrors OG</li>
+  </ul>
+
+  <h3>B. Heading structure</h3>
+  <p><strong>H1:</strong> <code>How it works</code> (the product heading; the query "prediction markets" is carried by the title and the first H2)</p>
+  <p style="margin-bottom:6px"><strong>H2</strong> in mobile block order:</p>
+  <ol class="prose">
+    <li><code>What a prediction market is</code></li>
+    <li><code>Pick an event and read the odds</code></li>
+    <li><code>Back YES or NO</code></li>
+    <li><code>Why the odds move</code></li>
+    <li><code>How events resolve</code></li>
+    <li><code>Your money and safety</code></li>
+    <li><code>Common questions</code></li>
+  </ol>
+
+  <h3>C. Ready SEO body text</h3>
+  <div class="copy">
+    <span class="lbl">What a prediction market is</span>
+    <p>A prediction market lets you back your opinion on a real-world event with a real stake. Each event is a yes-or-no question, like whether something will happen by a date. You bet YES or NO, and you earn or lose based on the outcome.</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">Pick an event and read the odds</span>
+    <p>Every event shows its odds as a plain-language number, plus a one-line why and the news behind it. The odds are the current price, not a fixed quote.</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">Back YES or NO</span>
+    <p>Choose a side and an amount. The minimum is one dollar and the default is five. You can browse and build your bet before you connect a wallet; you add funds by card or crypto only when you confirm, and the fee is shown before you confirm.</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">Why the odds move</span>
+    <p>The odds are set by what people bet. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">How events resolve</span>
+    <p>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events. If you were right, you can see it and share it; if not, you can see what happened.</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">Your money and safety</span>
+    <p>Funds are held in USDC, one to one, and we never lend it out. You can add or withdraw at any time. The fee for a bet is shown before you confirm.</p>
+  </div>
+  <div class="copy">
+    <span class="lbl">Common questions</span>
+    <p>Reuses the home FAQ set (do I need crypto to start, the smallest bet, how an event resolves), plus one:</p>
+    <ul>
+      <li><span class="q-item">Can I lose more than I bet?</span> No. Your loss is limited to what you staked on the bet.</li>
+    </ul>
+  </div>
+
+  <h3>D. Structured data</h3>
+  <ul class="prose">
+    <li><code>WebPage</code> + <code>BreadcrumbList</code> (<code>Home &gt; How it works</code>).</li>
+    <li><code>FAQPage</code> - the "Common questions" block.</li>
+    <li><code>schema.org/HowTo</code> is declined: Google deprecated HowTo rich results (2023), so it earns no enhanced result and adds risk. A plain <code>WebPage</code> with clear headings is the honest choice.</li>
+  </ul>
+
+  <h3>E. Optimization checklist</h3>
+  <ul class="prose">
+    <li>Exactly one <code>H1</code>; evergreen, indexable content; no thin or duplicate text.</li>
+    <li>Crawlable <code>&lt;a&gt;</code> to Event Feed and the categories (the page CTA is "Browse events"); the home and footer link IN to this page.</li>
+    <li>FAQ Q&amp;A is in the DOM (crawlable), matching the visible <code>FAQPage</code> schema.</li>
+    <li>Text not in images; canonical self-referential.</li>
+    <li>Core Web Vitals budget as &sect;1.</li>
+  </ul>
+</section>
+
+<!-- 5. PUBLIC PROFILE -->
+<section id="public-profile">
+  <div class="section-label">Page 5</div>
+  <h2>Public Profile</h2>
+  <div class="header-items">
+    <strong>Node:</strong> Public Profile &middot; <strong>Type:</strong> page &middot; serves SJ1 / SJ2 (reputation, track record as trust)<br>
+    <strong>URL / slug:</strong> <code>/u/{handle}</code> &middot; <strong>Breadcrumbs:</strong> <code>Home &gt; {handle}</code><br>
+    <strong>Indexation:</strong> <code>index,follow</code> by default, with a per-user opt-out to <code>noindex</code> <span class="q">[?]</span> (privacy pass). The private self-view (My Profile, <code>/profile</code>) is always <code>noindex</code> (policy table).
+  </div>
+  <p class="delta">Stats, the handle, and figures are user data and are never voice-rewritten; below they are template slots <code>{...}</code>. Only public fields are ever indexed - never email, wallet, or balance.</p>
+
+  <h3>A. Meta tags</h3>
+  <ul class="meta-list">
+    <li><span class="k">title</span> (template, &lt;= 60) <code>{Handle} - track record - Predict Market</code>. Example (handle "alex"): <code>alex - track record - Predict Market</code> <span class="cc">(36 chars)</span></li>
+    <li><span class="k">meta description</span> (template, &lt;= 155) <code>See {handle}'s prediction track record on Predict Market: resolved events, the calls that were right, and current bets.</code> Example: <code>See alex's prediction track record on Predict Market: resolved events, the calls that were right, and current bets.</code> <span class="cc">(115 chars)</span></li>
+    <li><span class="k">canonical</span> <code>{ROOT}/u/{handle}</code></li>
+    <li><span class="k">hreflang</span> <code>en</code> -&gt; <code>{ROOT}/u/{handle}</code> (more locales <span class="q">[?]</span>)</li>
+    <li><span class="k">robots</span> <code>index,follow</code> (per-user opt-out -&gt; <code>noindex</code> <span class="q">[?]</span>)</li>
+    <li><span class="k">og:title</span> <code>{handle} on Predict Market</code>; <span class="k">og:description</span> the short track-record line; <span class="k">og:type</span> <code>profile</code>; <span class="k">og:url</span> <code>{ROOT}/u/{handle}</code>; <span class="k">og:image</span> <code>{ROOT}/og/u/{handle}.png</code> (<span class="q">[?]</span>)</li>
+    <li><span class="k">twitter:card</span> <code>summary_large_image</code>; mirrors OG</li>
+  </ul>
+
+  <h3>B. Heading structure</h3>
+  <p><strong>H1:</strong> <code>{handle}</code> (the public handle or display name; exactly one H1)</p>
+  <p style="margin-bottom:6px"><strong>H2</strong> in mobile block order:</p>
+  <ol class="prose">
+    <li><code>Track record</code> (resolved calls and the record)</li>
+    <li><code>Current bets</code> (public bets only)</li>
+    <li><code>Recent activity</code></li>
+  </ol>
+
+  <h3>C. Ready SEO body text</h3>
+  <div class="copy">
+    <span class="lbl">Evergreen line (reusable)</span>
+    <p>This is {handle}'s public track record on Predict Market. The numbers count resolved events only. Follow real-world events and back your opinion with a real stake. The remaining content (record, current bets, activity) is the user's own data.</p>
+  </div>
+
+  <h3>D. Structured data</h3>
+  <ul class="prose">
+    <li><code>ProfilePage</code> (schema.org/ProfilePage) - the honest fit for a person's public profile.</li>
+    <li><code>Person</code> - <code>name</code> / handle, public fields only.</li>
+    <li><code>BreadcrumbList</code> - <code>Home &gt; {handle}</code>.</li>
+  </ul>
+
+  <h3>E. Optimization checklist</h3>
+  <ul class="prose">
+    <li>Exactly one <code>H1</code> = the handle; <code>index,follow</code> by default with a per-user <code>noindex</code> opt-out <span class="q">[?]</span>.</li>
+    <li>The private self-view <code>/profile</code> is <code>noindex</code> (policy table); do not let it and <code>/u/{handle}</code> index the same content.</li>
+    <li>Only public fields are indexed - never email, wallet address, or balance (PII).</li>
+    <li>Crawlable <code>&lt;a&gt;</code> from the profile to the user's public events.</li>
+    <li>The handle in the URL is stable; a rename sets a <code>301</code> from the old handle <span class="q">[?]</span>.</li>
+    <li><strong>Thin profile:</strong> a profile with no resolved bets is thin; consider <code>noindex</code> until it has public content <span class="q">[?]</span>.</li>
+    <li>Canonical self-referential; text not in images; Core Web Vitals budget as &sect;1.</li>
+  </ul>
+</section>
+
+<!-- GLOBAL: FOOTER -->
+<section id="footer">
+  <div class="section-label">Global component</div>
+  <h2>Footer - internal-linking and trust surface</h2>
+  <div class="header-items">
+    <strong>Node:</strong> Footer &middot; <strong>Type:</strong> global component (on every page) &middot; not indexed itself; its value is the second internal-linking plane plus a repeated trust signal<br>
+    <strong>No H1</strong> (a global component never owns the page H1); rendered in a <code>&lt;footer&gt;</code> landmark
+  </div>
+  <p>The footer is the one place this reconcile adds a structural node rather than a per-page SEO block, because it is a site-wide SEO surface. Structure (adapting the existing wireframe footer):</p>
+  <ul class="prose">
+    <li><strong>Trust strip</strong> (a thin band above the footer, on every page): the funds-safety line repeated site-wide - "USDC held 1:1, we never lend it" - next to "Transparent resolution" and the resolved-events count. This is the voice "trust before the ask" principle made persistent.</li>
+    <li><strong>Link columns</strong> (all crawlable <code>&lt;a&gt;</code>):
+      <ul class="prose" style="margin-top:8px">
+        <li>Product: Browse events, How it works, the four categories (Politics, Crypto, Culture, General)</li>
+        <li>Company and legal: About, Terms, Privacy, Responsible betting, Cookie preferences (opens the consent banner, see <code>system.md</code>)</li>
+        <li>Support: Help / FAQ (<span class="q">[?]</span> orphan, post-MVP), Contact</li>
+      </ul>
+    </li>
+    <li><strong>SEO popular-links block:</strong> a crawlable <code>&lt;a&gt;</code> list to priority pages - the categories, trending or ending-soon events, and How it works. The block structure is fixed now; the exact link list is keyword-research-driven <span class="q">[?]</span> and finalized in production.</li>
+    <li><strong>Bottom row:</strong> copyright, the geo-restriction note (no US real-money markets), USDC / chain badge where appropriate, social links <span class="q">[?]</span>.</li>
+  </ul>
+
+  <h3>SEO / a11y</h3>
+  <ul class="prose">
+    <li>Every footer link is a real crawlable <code>&lt;a&gt;</code> (the second internal-linking plane); never a JS-only handler.</li>
+    <li>Global component, no H1; <code>&lt;footer&gt;</code> semantic plus <code>nav</code> landmarks; tap targets &gt;= 44px.</li>
+    <li>Mobile: the link columns and the SEO block collapse into accordions, but stay in the DOM (collapsed, still crawled).</li>
+    <li><strong>Register every destination the footer promises</strong> (About, Terms, Privacy, Responsible betting, Cookie preferences, Contact) as a node in <code>sitemap.md</code>, so the map and the footer do not diverge. This is a Step 7 reconcile item.</li>
+  </ul>
+  <p class="delta"><strong>Wireframe delta:</strong> <code>event-feed.html</code> already has <code>&lt;footer class="app-footer"&gt;</code> with brand, tagline, link columns and a legal row. Missing vs this spec: the trust strip above the footer and the SEO popular-links block. Both are small additions, logged here for the wireframe.</p>
+</section>
+
+</main>
+
+<script>
+const toggle = document.getElementById('menuToggle')
+const overlay = document.getElementById('sidebarOverlay')
+const sidebar = document.getElementById('sidebar')
+toggle.addEventListener('click', () => { sidebar.classList.toggle('open'); overlay.classList.toggle('open') })
+overlay.addEventListener('click', () => { sidebar.classList.remove('open'); overlay.classList.remove('open') })
+
+const subLinks = document.querySelectorAll('.sidebar-sub-link')
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      subLinks.forEach(l => l.classList.remove('active'))
+      const link = document.querySelector(`.sidebar-sub-link[href="#${e.target.id}"]`)
+      if (link) link.classList.add('active')
+    }
+  })
+}, { rootMargin: '-15% 0px -75% 0px' })
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s))
+</script>
+
+</body>
+</html>
