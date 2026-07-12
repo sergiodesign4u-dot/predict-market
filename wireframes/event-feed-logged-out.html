@@ -323,6 +323,14 @@
     .footer-popular h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
     .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
     .popular-links a { color: #444; }
+    /* ---- Per-card why + feed SEO sections (WF reconcile, Krok 5) ---- */
+    .why { font-size: 12px; color: #555; margin: 3px 0 0; line-height: 1.4; }
+    .feed-seo { border-top: 1px solid #ccc; padding: 12px 4px; }
+    .feed-seo h2 { font-size: 14px; margin: 0 0 6px; }
+    .feed-seo p { font-size: 13px; color: #333; margin: 0; line-height: 1.5; }
+    .feed-seo dl { margin: 0; }
+    .feed-seo dt { font-size: 13px; font-weight: bold; margin: 8px 0 2px; }
+    .feed-seo dd { font-size: 13px; color: #333; margin: 0 0 6px; line-height: 1.5; }
   </style>
 </head>
 <body data-loggedin-target="event-feed.html">
@@ -712,6 +720,7 @@
                 <span class="thumb">thumbnail placeholder</span>
                 <a class="q" href="event-detail-logged-out.html">Will the US government shut down before March 1, 2027?</a>
               </div>
+              <p class="why">Funding talks have stalled twice this quarter, but past deadlines settled late.</p>
               <p class="prob-line">YES <span class="prob">38%</span></p>
               <div class="yesno"><a href="event-detail-logged-out.html"><button type="button">YES</button></a><a href="event-detail-logged-out.html"><button type="button">NO</button></a></div>
               <p class="meta">
@@ -730,6 +739,7 @@
                 <span class="thumb">thumbnail placeholder</span>
                 <a class="q" href="event-detail-logged-out.html">Will Bitcoin close above $150,000 before October 1, 2026?</a>
               </div>
+              <p class="why">Price has held above $120k for three weeks as inflows climb.</p>
               <p class="prob-line">YES <span class="prob">61%</span></p>
               <div class="yesno"><a href="event-detail-logged-out.html"><button type="button">YES</button></a><a href="event-detail-logged-out.html"><button type="button">NO</button></a></div>
               <p class="meta">
@@ -748,6 +758,7 @@
                 <span class="thumb">thumbnail placeholder</span>
                 <a class="q" href="event-detail-logged-out-multi.html">Who will win the 2027 Eurovision final?</a>
               </div>
+              <p class="why">Three acts are polling close after the national finals.</p>
               <div class="options">
                 <div class="opt-row"><span class="opt-name">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="event-detail-logged-out-multi.html"><button type="button">YES</button></a><a href="event-detail-logged-out-multi.html"><button type="button">NO</button></a></span></div>
                 <div class="opt-row"><span class="opt-name">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="event-detail-logged-out-multi.html"><button type="button">YES</button></a><a href="event-detail-logged-out-multi.html"><button type="button">NO</button></a></span></div>
@@ -768,6 +779,7 @@
                 <span class="thumb">thumbnail placeholder</span>
                 <a class="q" href="event-detail-logged-out.html">Will Ethereum complete its next major network upgrade before November 1, 2026?</a>
               </div>
+              <p class="why">The upgrade is on the testnet with a target window announced.</p>
               <p class="prob-line">YES <span class="prob">72%</span></p>
               <div class="yesno"><a href="event-detail-logged-out.html"><button type="button">YES</button></a><a href="event-detail-logged-out.html"><button type="button">NO</button></a></div>
               <p class="meta">
@@ -786,6 +798,7 @@
                 <span class="thumb">thumbnail placeholder</span>
                 <a class="q" href="event-detail-logged-out.html">Will the next lead actor for the Bond film be announced before December 31, 2026?</a>
               </div>
+              <p class="why">The studio says casting is underway, with no shortlist confirmed.</p>
               <p class="prob-line">YES <span class="prob">47%</span></p>
               <div class="yesno"><a href="event-detail-logged-out.html"><button type="button">YES</button></a><a href="event-detail-logged-out.html"><button type="button">NO</button></a></div>
               <p class="meta">
@@ -804,6 +817,7 @@
                 <span class="thumb">thumbnail placeholder</span>
                 <a class="q" href="event-detail-logged-out-multi.html">Which party will win the most seats in the next UK general election?</a>
               </div>
+              <p class="why">Two parties are within the margin of error in recent polls.</p>
               <div class="options">
                 <div class="opt-row"><span class="opt-name">Labour</span><span class="opt-prob">44%</span><span class="yesno compact"><a href="event-detail-logged-out-multi.html"><button type="button">YES</button></a><a href="event-detail-logged-out-multi.html"><button type="button">NO</button></a></span></div>
                 <div class="opt-row"><span class="opt-name">Conservatives</span><span class="opt-prob">33%</span><span class="yesno compact"><a href="event-detail-logged-out-multi.html"><button type="button">YES</button></a><a href="event-detail-logged-out-multi.html"><button type="button">NO</button></a></span></div>
@@ -824,6 +838,7 @@
                 <span class="thumb">thumbnail placeholder</span>
                 <a class="q" href="event-detail-logged-out.html">Will the EU formally admit a new member state before January 1, 2028?</a>
               </div>
+              <p class="why">Accession talks are open but no candidate has cleared the final chapters.</p>
               <p class="prob-line">YES <span class="prob">23%</span></p>
               <div class="yesno"><a href="event-detail-logged-out.html"><button type="button">YES</button></a><a href="event-detail-logged-out.html"><button type="button">NO</button></a></div>
               <p class="meta">
@@ -842,6 +857,7 @@
                 <span class="thumb">thumbnail placeholder</span>
                 <a class="q" href="event-detail-logged-out.html">Will 2026 be confirmed as one of the three warmest years on record before April 1, 2027?</a>
               </div>
+              <p class="why">The year is tracking near record heat through the first quarter.</p>
               <p class="prob-line">YES <span class="prob">55%</span></p>
               <div class="yesno"><a href="event-detail-logged-out.html"><button type="button">YES</button></a><a href="event-detail-logged-out.html"><button type="button">NO</button></a></div>
               <p class="meta">
@@ -854,6 +870,27 @@
           </article>
 
         </div>
+
+        <!-- SEO content sections (below the fold, WF reconcile) -->
+        <section class="feed-seo" aria-label="How betting works here">
+          <h2>How betting works here</h2>
+          <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+        </section>
+        <section class="feed-seo" aria-label="Why the odds move">
+          <h2>Why the odds move</h2>
+          <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+        </section>
+        <section class="feed-seo" aria-label="Common questions">
+          <h2>Common questions</h2>
+          <dl>
+            <dt>Do I need crypto to start?</dt>
+            <dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd>
+            <dt>What is the smallest bet?</dt>
+            <dd>One dollar. The default is five.</dd>
+            <dt>How does an event resolve?</dt>
+            <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
+          </dl>
+        </section>
       </div>
     </main>
 

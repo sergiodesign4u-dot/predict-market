@@ -1271,3 +1271,34 @@ states a fact, does not moralize, has no exclamation, and does not push the next
 
 Not touched: `win-loading.html` (skeleton). Health: 0 em-dash on the 3 pages, no new links.
 (The generator `gen_resolution.py` is intentionally not back-ported, per the voice-safe rule.)
+
+---
+
+### Step 18 - Feed story-led reconcile: per-card "why" + below-fold SEO sections
+
+The audit found the feed cards carried plain odds but no per-card "why" (the story-led entry is
+the product differentiator, and it only lived on Event Detail), and the seo.md below-the-fold
+SEO sections were missing. Stamped in place by `_generators/feed_reconcile.py` (idempotent,
+voice-safe): a one-line why under each of the 8 cards on the 3 populated feed pages, and the 3
+SEO sections on the two indexed feed success pages. The why lines are sample editorial content
+(spectator language, specific, no superlative, no motivational tone); the SEO section copy is
+lifted verbatim from `seo.md` section 1.
+
+Per-card why (one line under each card question, story-led):
+
+| Card question (sample) | Why line (new) |
+|---|---|
+| US government shutdown | One right sentence of context under the number: "Funding talks have stalled twice this quarter, but past deadlines settled late." |
+| Bitcoin above $150k | "Price has held above $120k for three weeks as inflows climb." |
+| Eurovision 2027 | "Three acts are polling close after the national finals." |
+| Ethereum upgrade | "The upgrade is on the testnet with a target window announced." |
+| Bond lead actor | "The studio says casting is underway, with no shortlist confirmed." |
+| UK election seats | "Two parties are within the margin of error in recent polls." |
+| EU new member | "Accession talks are open but no candidate has cleared the final chapters." |
+| 2026 warmest years | "The year is tracking near record heat through the first quarter." |
+
+Below-fold SEO sections (event-feed.html + event-feed-logged-out.html, verbatim from seo.md §1):
+**How betting works here** (what the platform is, no wallet to start), **Why the odds move**
+(explain-the-number), **Common questions** (FAQ x3: crypto to start / smallest bet / how it
+resolves). The why lines and event questions are user/editorial content, not voice-forced.
+Health: 0 em-dash, 16025 links / 0 broken. Category-card "why" is handled in the Category step.
