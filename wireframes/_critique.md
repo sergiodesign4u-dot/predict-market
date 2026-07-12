@@ -229,3 +229,34 @@ states. Removing both bars leaves a clean top: just the floating "Screens"
 drawer-toggle (in its 44px strip), then the product screen. All state / auth
 navigation stays reachable via the screen-tree drawer. The `.state-switch` CSS is
 left in place (unused, harmless). 0 broken links, 0 em-dash.
+
+---
+
+## Stage-04 reconcile (2026-07-12) - wireframes vs the new IA Detailed layer + CJM
+
+The 99 wireframes predate the IA Detailed layer (03b) and the CJM, so course Stage 04 was run
+as a targeted reconcile (audit first, then fix the real gaps), not a rebuild. A subagent audit
+compared the set against the new IA nodes (`ia/docs/pages/seo.md` + `system.md`), the CJM To-Be,
+and the Stage-04 checklist. All fixes are voice-safe: new pages hand-authored from an existing
+shell, and shared/global changes applied by idempotent in-place post-processors (the `fixpack.py`
+pattern) - `gen_*.py` was NEVER run (it holds pre-voice copy and would revert the rewrite).
+
+Content gaps (wireframes did not render newly-specced IA):
+- System / global nodes were absent. Built 5 new pages: `404` / `500` / `maintenance` (503) / `cookie-consent` / `toasts` (from the `how-it-works.html` shell + `system.md` copy). Registered in `_shell.py` `nav_tree` ("System and global"); `resync.py` stamped the tree onto all 104 pages. Set grew 99 -> 104.
+- Footer had no trust strip and no SEO internal-linking, and its links were `href="#"`. `footer_reconcile.py` stamps a trust strip (USDC 1:1 + resolution + resolved-count), a "Popular right now" crawlable block, real category / How It Works / Wallet / My Bets hrefs, and a "Cookie preferences" re-entry - on all 87 footer pages.
+- Feed cards carried plain odds but no story-led "why", and the below-fold SEO sections were missing. `feed_reconcile.py` adds a one-line why under each of the 8 feed cards (3 feed pages) plus How betting works here / Why the odds move / Common questions (2 success pages).
+- Event Detail had no Related-events block. `related_events.py` adds a crawlable Related events block to the 9 full-content Event Detail pages (loading / error skipped).
+- Category pages had no story-led why and no About text. `category_reconcile.py` adds a per-card why + an "About {category} events" block on the 8 category success pages; shared events reuse the same why as the feed.
+
+CJM misalignments:
+- Win screen lacked the F5 overconfidence-friction. Added a "Before the next one" grounding note (no "bet again") on `win` / `win-error` / `win-payout-pending`, between Share and Browse events.
+- Feed story-led framing lived only on Event Detail; the per-card why (above) now puts it on the feed and category cards too. No-wallet-until-Confirm and the non-chasing Loss screen were already aligned.
+
+Deliberately not done (Stage-04 infra is EQUIVALENT to ours, no functional loss): the course
+`docs/screens.md` / `conventions.md` / `critique.md` map to our `_screens.md` / `_conventions.md`
+/ `_critique.md`; `_nav.js` -> `_shell.py nav_tree` + `resync.py`; `_wf.css` -> CSS inlined from
+`event-feed.html`; the `index.html` coverage map -> the per-page left screen-tree + `_screens.md`.
+
+New copy logged in `voice/docs/microcopy.md` (Steps 15-20). New post-processors
+(`footer_reconcile` / `feed_reconcile` / `related_events` / `category_reconcile`) are idempotent
+with an em-dash guard. Final gates: 104 pages, 16061 internal links, 0 broken, 0 em-dash.

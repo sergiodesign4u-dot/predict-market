@@ -49,7 +49,7 @@ The old→new folder map is recorded in [`STRUCTURE.md`](./STRUCTURE.md).
 | User Research (Personas + JTBD) | ✅ Done |
 | CJM (As-Is + To-Be) | ✅ Done (Alex x MJ; As-Is emotional curve + 5 growth zones, To-Be map + MVP backlog; 2 pages) |
 | Information Architecture (Basic + Detailed) | ✅ Done - Basic (flows + concept-map by intent) + Detailed (overview + sitemap + SEO layer + system nodes); flows color-coded by outcome + traced to CJM, jobs x screens matrix, no orphans. Detailed layer (targeted reconcile, since the wireframes already render pages): A-E SEO for the 5 indexed pages + footer, and 404 / 500 / 503 / cookie / toast grounded in law |
-| Wireframes | ✅ Done (99 pages: all screens + states + Favorites view + Event Detail tabs, flow-linked, header / nav wired, critique pass) |
+| Wireframes | ✅ Done (104 pages: all screens + states + Favorites + Event Detail tabs + 5 system pages, flow-linked, header / nav wired, critique pass). Stage-04 reconcile: system pages (404/500/503/cookie/toasts), footer trust strip + SEO links, story-led per-card "why" + SEO sections, Related events, Win F5 friction |
 | Voice | ✅ Done (5 principles, lexicon, forbidden list, per-element rules; all 99 pages rewritten) |
 | Concept | ⬜ Not started |
 | UI + Visual | ⬜ Not started |
