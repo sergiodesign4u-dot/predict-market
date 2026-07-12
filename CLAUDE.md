@@ -132,6 +132,20 @@ IA sources (source of truth): `ia/docs/sitemap.md` (entities, screens, navigatio
 
 **Repo layout:** 13-stage course structure, one folder per stage, raw markdown in each stage's `docs/` and the stage HTML flat at the folder root. Full map in `STRUCTURE.md`. User Research now has 4 pages (Personas, JTBD, CJM As-Is, CJM To-Be); CJM (As-Is + To-Be) is a separate status row and lives inside User Research. The CJM sharpens the MVP scope above (one version, not a fork).
 
+### Detailed layer (Stage 03b) - stance + scope
+
+Three decisions that govern every page-level IA node:
+- **Stance: mobile-first, fully adaptive.** Desktop <-> mobile responsive, but mobile is the priority; block priority and the first screen are reasoned from mobile (base 360px). Desktop is designed deliberately, not derived.
+- **Two IA layers.** Global (Stage 03a - concept-map + flows, done) answers "where can the user go"; per-page (this layer) answers "what is on each page and how it behaves" (blocks, states, components, SEO).
+- **SEO-ahead.** The structural SEO layer (URL/slug, H1/H2, breadcrumbs, schema.org, indexation, internal-linking) is defined here in IA. The wireframe validates layout only; production supplies final content + real query volumes. The three are not mixed, so finding "a block is missing" never means redrawing a wireframe.
+
+**Scope = targeted reconcile (2026-07-12), not the full node-by-node build.** The 99 wireframes already exist and ARE the per-page B/W render, so we do NOT redraw pages, write a `pages/*.md` per screen, add an `ia/_nav.js`, or renumber the sitemap to X.Y (all would duplicate the wireframes or `resync_sidebar.py`). We build only what the wireframes deliberately omit and a launch needs:
+- the **A-E SEO structural layer** for the indexed public pages (Event Feed, Event Detail, Category, How It Works, Public Profile); every private/transactional zone is `noindex`, no schema;
+- the **footer** as an SEO / internal-linking node;
+- the **system / global nodes** (404, 500, maintenance 503, cookie-consent grounded in law, toasts).
+
+New sources live in `ia/docs/pages/` (`seo.md`, `system.md`); rendered B/W as `ia/seo.html`, `ia/system.html`. The shared sidebar stays single-source via `resync_sidebar.py` (not `_nav.js`); new IA pages register there.
+
 ### Top-level navigation (revised in the wireframe pass)
 
 Mobile-first. Mobile = bottom nav, 4 slots with icons; desktop = lean header (no center nav row). Full rationale in `ia/docs/sitemap.md` Desktop layer.
