@@ -2,7 +2,7 @@
 
 > Synthesis of all research phases. Source of truth before wireframes.
 > v_refresh - June 2026. Updated June 12, 2026 with: (1) fresh competitor data - Hyperliquid HIP-4, Polymarket declining, Kalshi volume leader $22B valuation, EU MiCA enforcement; (2) Product Model migrated to Strategy (AIDA retired, Business Model + Riskiest Assumption added); (3) AARRR one-metric-per-stage clarified.
-> Sources: [strategy.md](./strategy.md) - [product-model.md](./product-model.md) (preserved for history) - [aarrr.md](./aarrr.md) - [competitive-analysis.md](./competitive-analysis.md) - [benchmark-trust.md](./benchmark-trust.md) - [ux-patterns.md](./ux-patterns.md) - [research.md](./research.md) - [CLAUDE.md](../CLAUDE.md) - screens in `screens/`
+> Sources: this doc's own §2 Strategy (folds the retired strategy.md and product-model.md; one-page canvas view in [lean-ux-canvas.md](./lean-ux-canvas.md)) - [aarrr.md](./aarrr.md) - [competitors.md](./competitors.md) - [benchmark.md](./benchmark.md) - [ux-patterns.md](./ux-patterns.md) - [CLAUDE.md](../../CLAUDE.md) - screens in `../screens/`
 
 ---
 
@@ -64,7 +64,7 @@ Research goal: understand WHAT and FOR WHOM we're building, what solutions alrea
 
 ## 2. Strategy
 
-*Source: [strategy.md](./strategy.md) - Prior file [product-model.md](./product-model.md) preserved for history*
+*Source: this section folds the decided items from the retired strategy.md and product-model.md. One-page canvas view: [lean-ux-canvas.md](./lean-ux-canvas.md).*
 
 ### Objectives
 
@@ -102,13 +102,26 @@ Research goal: understand WHAT and FOR WHOM we're building, what solutions alrea
 
 ### Business Model Summary
 
-- **Primary fee:** trading fee per resolved bet (Option B: ~2% on win) or per trade (Option A: tiered taker fee 0%-1.8% by category). Decision required before build.
-- **Industry direction 2026:** tiered taker fees per trade (Polymarket, Kalshi, DraftKings). Free entry in one category (geopolitics/politics) is an activation lever.
-- **No subscription, no account tiers at MVP.** Maker rebates (20-25% of collected fees) to incentivize liquidity - consider from launch.
-- **Value exchange:** users bring capital and knowledge. Platform earns from volume, not house edge.
-- **Free-entry hook hypothesis:** 0% fee on one category to lower the first-bet psychological cost.
+- **Fee model - DECIDED: Option A (tiered taker fee per trade).** Rate by category, taken on every buy/sell, not a fee on winnings (Option B, rejected). Politics / geopolitics: 0% (free-entry acquisition lever). Crypto / culture / general: ~1% at the 50/50 midpoint. Maker rebates 20-25% of collected fees to seed liquidity. Rationale: Option A earns on all volume including the 70-84% of users who lose, whereas fee-on-win earns only from the winners; Polymarket crossing $1M/day after its March 2026 Fee V2 confirms taker-fee-per-trade is viable and accepted.
+- **Bet size - DECIDED.** Technical minimum $1 USDC; UX default pre-fill $5 (anchors first engagement); quick-select $5 / $10 / $25 / $50; no maximum at launch. AMM makes a $1 bet safe (instant liquidity at any size).
+- **Industry direction 2026:** tiered taker fees per trade (Polymarket, Kalshi, DraftKings). Free entry in one category (geopolitics / politics) is the activation lever we adopt.
+- **No subscription, no account tiers at MVP.**
+- **Value exchange:** users bring capital and knowledge. The platform earns from volume, not a house edge - there is no house position.
+- **On-ramp fee:** passed through from the provider (Transak / MoonPay affiliate), not our commission.
 
-*Full detail: [strategy.md - Business Model](./strategy.md)*
+*Decided June 2026. Deep detail in §10 Product Research; canvas view: [lean-ux-canvas.md](./lean-ux-canvas.md).*
+
+---
+
+### Product Decisions (D1-D3)
+
+Four open questions closed as explicit decisions, not hypotheses. Folded from the retired strategy.md §5; underlying research in §7 Open Questions (Q1, Q5, Q10) and §10.
+
+- **D1 - Market mechanism: AMM (not CLOB).** Guarantees instant liquidity at any bet size from day 1; a $1 bet fills like a $1,000 bet. A thin CLOB orderbook on a cold-start platform produces the worst first impression (bet placed, not filled). LMSR-style or constant-product pool per market (reference: Azuro vAMM, Futuur).
+- **D2 - Resolution: team multisig for MVP, on-chain oracle as target.** The team resolves the 10-20 curated markets via a multisig, each resolution documented publicly (source + criteria written before the market opens + team signature). UMA-style token-holder oracle explicitly rejected - whale manipulation is the #1 Trustpilot complaint on Polymarket. Target post-MVP: Chainlink / Pyth for unambiguous API-verifiable outcomes.
+- **D3 - Geography: English-first global, Brazil as first localized market.** English globally to all non-blocked geographies (non-US, non-MiCA: no FR/DE/NL/PL/BE), Transak covering 169 countries from day 1. Brazil localization (PT-BR + PIX) at month 2-3. Priority stack: Brazil, UAE, Philippines, Mexico, Turkey. Avoid Indonesia and Vietnam (active enforcement, April 2026).
+
+*Decided June 2026. Canvas view: [lean-ux-canvas.md](./lean-ux-canvas.md).*
 
 ---
 
@@ -120,7 +133,7 @@ Research goal: understand WHAT and FOR WHOM we're building, what solutions alrea
 - Test signal: first-bet completion rate from cold News Junkie traffic. Below 10% = motivation problem.
 - H1 (fiat on-ramp increases activation) tests friction. The Riskiest Assumption tests motivation. Both must be true.
 
-*Full detail: [strategy.md - Riskiest Assumption](./strategy.md)*
+*Canvas view: [lean-ux-canvas.md](./lean-ux-canvas.md) (Riskiest assumption + First test). Motivation-side evidence: §9 F4.*
 
 ---
 
@@ -196,7 +209,7 @@ REFERRAL ────────────────────── goal
 
 ## 4. Competitors
 
-*Sources: [competitive-analysis.md](./competitive-analysis.md) - screens in `screens/`*
+*Sources: [competitors.md](./competitors.md) - screens in `../screens/`*
 *v_refresh: Restructured into HARD / SOFT / ASPIRATIONAL groups. Matrix refreshed with new data.*
 
 ### Competitor Groups
@@ -205,7 +218,7 @@ REFERRAL ────────────────────── goal
 **SOFT** (same JTBD, different product): Bet365, Betfair Predicts (beta April 2026, UK), eToro (IPO May 2025), Manifold (play-money only), DraftKings DFS
 **ASPIRATIONAL** (best-in-class UX benchmarks): Revolut, Coinbase, Robinhood, Cash App, Duolingo
 
-*Full tables with rationale: [competitive-analysis.md](./competitive-analysis.md)*
+*Full tables with rationale: [competitors.md](./competitors.md)*
 
 ### Matrix by Axis - v_refresh (5 most relevant)
 
@@ -219,7 +232,7 @@ REFERRAL ────────────────────── goal
 
 *Sources: [Polymarket fees](https://docs.polymarket.com/trading/fees) - [Kalshi 2025 revenue](https://finance.yahoo.com/news/kalshi-fee-revenue-2025-263-145801350.html) - [Polymarket daily revenue April 2026](https://finance.yahoo.com/markets/crypto/articles/polymarket-fee-overhaul-pushes-daily-054836739.html) - [DraftKings Predictions fees](https://www.gamblinginsider.com/news/159764/draftkings-combos-fee-structure-predictions-platform)*
 
-*Screenshots: [polymarket-home-mobile.png](./screens/polymarket-home-mobile.png) - [kalshi-home-mobile.png](./screens/kalshi-home-mobile.png) - [futuur-home-mobile.png](./screens/futuur-home-mobile.png) - [draftkings-predictions-home-mobile.png](./screens/draftkings-predictions-home-mobile.png) - [bet365-home-mobile.png](./screens/bet365-home-mobile.png)*
+*Screenshots: [polymarket-home-mobile.png](../screens/polymarket-home-mobile.png) - [kalshi-home-mobile.png](../screens/kalshi-home-mobile.png) - [futuur-home-mobile.png](../screens/futuur-home-mobile.png) - [draftkings-predictions-home-mobile.png](../screens/draftkings-predictions-home-mobile.png) - [bet365-home-mobile.png](../screens/bet365-home-mobile.png)*
 
 ---
 
@@ -264,7 +277,7 @@ Polymarket + Kalshi = order book (CLOB). Azuro = decentralized AMM. Bet365 = hou
 
 ## 5. Benchmark: Trust & First-Time Credibility
 
-*Source: [benchmark-trust.md](./benchmark-trust.md) · screenshots in `screens/`*
+*Source: [benchmark.md](./benchmark.md) · screenshots in `../screens/`*
 *v_refresh: Products changed from (Revolut/Coinbase/Robinhood/Kalshi/Polymarket) to (Polymarket/Kalshi/Futuur/Bet365/Revolut). New set is specific to our market: top 3 HARD competitors + 1 SOFT + 1 ASPIRATIONAL.*
 
 ### Why Trust as a Dimension
@@ -287,7 +300,7 @@ Trust is the #1 value for the audience (20-40, real money, fintech). This is exa
 
 **Key insight:** Futuur (our closest structural analog - global, crypto+fiat, no US regulation) scores 14/40 - worse than Polymarket. Our market has a trust floor of 14-19/40. The Crossover Bettor's reference (Bet365) scores 33/40. That is a gap of 14-19 points we need to close through design decisions, not licensing.
 
-*Screenshots: [polymarket-home-mobile.png](./screens/polymarket-home-mobile.png) - [kalshi-home-mobile.png](./screens/kalshi-home-mobile.png) - [futuur-home-mobile.png](./screens/futuur-home-mobile.png) - [bet365-home-mobile.png](./screens/bet365-home-mobile.png) - [revolut-trust-mobile.png](./screens/revolut-trust-mobile.png)*
+*Screenshots: [polymarket-home-mobile.png](../screens/polymarket-home-mobile.png) - [kalshi-home-mobile.png](../screens/kalshi-home-mobile.png) - [futuur-home-mobile.png](../screens/futuur-home-mobile.png) - [bet365-home-mobile.png](../screens/bet365-home-mobile.png) - [revolut-trust-mobile.png](../screens/revolut-trust-mobile.png)*
 
 ---
 
@@ -319,7 +332,7 @@ Why it works: users need evidence the platform has delivered on its core promise
 These badges require real licenses we do not hold. Bet365 scores 33/40 through 20 years + 30 licenses - that track record is not copyable at launch.
 
 **Alternative:** on-chain transparency + non-bank disclosure: "All settlements are on the blockchain. Any user can verify every resolved market." This is the honest equivalent.
-*[benchmark-trust.md]*
+*[benchmark.md]*
 
 ---
 
@@ -364,7 +377,7 @@ These badges require real licenses we do not hold. Bet365 scores 33/40 through 2
 No competitor explains why the price is what it is and what will affect the outcome. Markets are isolated questions without context. This is our differentiator. *[research.md: What's missing - "No clear why this number?"]*
 
 **Reason 3 - Builds trust without regulatory badges.**
-A clear event description + resolution conditions + source = the platform knows what it's talking about. Trust through content transparency - our alternative to FSCS/SIPC. *[benchmark-trust.md: 1 mechanism that won't work]*
+A clear event description + resolution conditions + source = the platform knows what it's talking about. Trust through content transparency - our alternative to FSCS/SIPC. *[benchmark.md: 1 mechanism that won't work]*
 
 ---
 
@@ -389,26 +402,26 @@ Audience 20–40, trust-first, J2-first (engaged spectator). Market Board requir
 
 | Gap | Where confirmed |
 |---|---|
-| No PM has solved onboarding without a Web3 wallet | [competitive-analysis.md: open question 1] |
+| No PM has solved onboarding without a Web3 wallet | [competitors.md: open question 1] |
 | No one explains "why this price" | [research.md: What's missing] |
 | Markets are isolated from news context | [research.md: What's missing] |
-| Polymarket trust score - 19/40 (lowest) | [benchmark-trust.md: scores] |
-| Polymarket signup: 8+ wallet icons = cognitive overload | [screens/polymarket-signup-mobile.png] |
-| CLOB vs AMM for MVP: CLOB requires liquidity from day 1 | [competitive-analysis.md: open question 2] |
-| Resolution trust without regulation and track record | [competitive-analysis.md: open question 3] |
+| Polymarket trust score - 19/40 (lowest) | [benchmark.md: scores] |
+| Polymarket signup: 8+ wallet icons = cognitive overload | [../screens/polymarket-signup-mobile.png] |
+| CLOB vs AMM for MVP: CLOB requires liquidity from day 1 | [competitors.md: open question 2] |
+| Resolution trust without regulation and track record | [competitors.md: open question 3] |
 
 ---
 
 ### Hypotheses in Format: if / then / because
 
-> Note on Riskiest Assumption: H1 is the closest proxy for the Riskiest Assumption but tests the friction side. The Riskiest Assumption tests the motivation side - whether News Junkies will bet at all, not just whether they can bet without a crypto wallet. Both must be true. H1 is the MOST TESTABLE hypothesis and the FIRST to validate. See [strategy.md - Riskiest Assumption](./strategy.md).
+> Note on Riskiest Assumption: H1 is the closest proxy for the Riskiest Assumption but tests the friction side. The Riskiest Assumption tests the motivation side - whether News Junkies will bet at all, not just whether they can bet without a crypto wallet. Both must be true. H1 is the MOST TESTABLE hypothesis and the FIRST to validate. See §2 Strategy - Riskiest Assumption, and [lean-ux-canvas.md](./lean-ux-canvas.md).
 
 **H1 - Fiat on-ramp will increase activation** ← CLOSEST TO RISKIEST ASSUMPTION
 _If_ we provide the ability to deposit by card without a Web3 wallet from the first screen after registration,
 _then_ the % of users who placed their first bet within 24 hrs will exceed 40%,
 _because_ the main barrier for the News Junkie is needing MetaMask and USDC before the first bet. Polymarket solves this through MoonPay/Transak [?], but it's not highlighted as a UX priority.
 _Test signal:_ if completion rate from cold News Junkie traffic is below 10%, the barrier is motivation, not friction - the Riskiest Assumption is false.
-*Data: [aarrr.md: Activation - "Fiat first"] · [competitive-analysis.md: open question 1] · [strategy.md: Riskiest Assumption]*
+*Data: [aarrr.md: Activation - "Fiat first"] · [competitors.md: open question 1] · [research.md §2: Riskiest Assumption]*
 
 **H2 - Story-driven UX will increase conversion of new users to first bet**
 _If_ every event has a narrative unit (context + what the market says + resolution conditions),
@@ -426,7 +439,7 @@ _because_ "paid and lost" is the most painful scenario. "Only pay when you earn"
 _If_ the first deposit screen shows: "Your USDC is held 1:1. We never lend it without your permission",
 _then_ deposit completion rate will increase,
 _because_ the new fintech user's primary fear is "what happens to my money." Coinbase solves it exactly the same way and has C2: 5/5 in our benchmark.
-*Data: [benchmark-trust.md: Top 3 mechanisms - Coinbase] · [screens/coinbase-trust-signals.png]*
+*Data: [benchmark.md: Top 3 mechanisms - Coinbase] · [../screens/coinbase-trust-signals.png]*
 
 **H5 - Share card after resolution will drive >20% organic traffic**
 _If_ after every resolution a share card with the result is automatically generated,
@@ -438,7 +451,7 @@ _because_ "I told you so" is a powerful social instinct. A win makes people want
 _If_ the exact fee amount is shown before every bet confirmation ("The platform earns $0.40 if you win"),
 _then_ the number of complaints and refund requests will be lower,
 _because_ hidden fees are the #1 cause of churn and negative reviews in fintech. Robinhood made "Commission-Free" their main message and got the highest C3 (5/5) in the benchmark.
-*Data: [benchmark-trust.md: Top 3 mechanisms - Robinhood] · [aarrr.md: Revenue - transparency]*
+*Data: [benchmark.md: Top 3 mechanisms - Robinhood] · [aarrr.md: Revenue - transparency]*
 
 ---
 
@@ -446,16 +459,16 @@ _because_ hidden fees are the #1 cause of churn and negative reviews in fintech.
 
 | # | Question | Why it matters | v_refresh status |
 |---|---|---|---|
-| Q1 | CLOB vs AMM for MVP? | Affects pricing mechanics, bet UX, and cold-start liquidity | **CLOSED → AMM.** Cold-start liquidity requires it. CLOB with thin orderbook on a new platform = bets don't fill = trust 0. See strategy.md §5 D1. |
+| Q1 | CLOB vs AMM for MVP? | Affects pricing mechanics, bet UX, and cold-start liquidity | **CLOSED → AMM.** Cold-start liquidity requires it. CLOB with thin orderbook on a new platform = bets don't fill = trust 0. See §2 Strategy - Product Decisions D1. |
 | Q2 | Fiat on-ramp provider? MoonPay vs Transak vs Stripe | Affects onboarding UX and commission | **CLOSED →** See §10. Primary: Transak (local rails LatAm/SEA/ME). Fallback: MoonPay. Post-MVP: Onramper aggregator. |
 | Q3 | KYC threshold? At what deposit amount does verification trigger | Activation friction | **CLOSED →** See §10. Wallet-connect = no KYC. Fiat = on-ramp handles it (Transak Level 1: name+address only up to $20K). Platform-level trigger if needed: $2,000 cumulative (Futuur model). |
 | Q4 | Minimum bet? | Psychological barrier vs UX | **CLOSED →** See §10. Technical minimum: $1 USDC. UX default pre-fill: $5. Quick-select: $5 / $10 / $25 / $50. |
-| Q5 | Resolution without regulation - is team multisig enough at launch? | Core trust problem | **CLOSED → Team multisig MVP, oracle as target.** Every resolution documented publicly (source + criteria + team sig). UMA explicitly rejected - whale manipulation is #1 Trustpilot complaint on Polymarket. See strategy.md §5 D2. |
+| Q5 | Resolution without regulation - is team multisig enough at launch? | Core trust problem | **CLOSED → Team multisig MVP, oracle as target.** Every resolution documented publicly (source + criteria + team sig). UMA explicitly rejected - whale manipulation is #1 Trustpilot complaint on Polymarket. See §2 Strategy - Product Decisions D2. |
 | Q6 | Does a demo bet increase or decrease conversion? | Activation decision | UPDATED: Manifold sunsetting sweepcash March 2025 suggests play-money does not convert. Lean toward skipping demo bet. |
 | Q7 | Futuur: how exactly is crypto+fiat hybrid structured? | Reference for our model | Unchanged [? still not fully public] |
 | ~~Q8~~ | ~~Sports markets at MVP?~~ | DECIDED: post-MVP with 3-month checkpoint. Events-first launch, sports as month-4 decision after launch data. | CLOSED |
-| Q9 | Fee on win vs fee per trade? | Industry 2026 standard: tiered taker fees (Polymarket 0%-1.80% by category, Kalshi formula, DraftKings $0.01 flat). | **CLOSED → Option A (tiered taker fee).** Politics/geopolitics: 0% (free acquisition tier). Crypto/culture: ~1% at 50/50. Maker rebates 20–25%. See strategy.md §3. |
-| Q10 | NEW: Which jurisdictions are accessible under our expected license? | EU MiCA enforcement July 2026 blocks FR, DE, NL, PL, BE for Curacao-licensed platforms. | **CLOSED → English-first global. Brazil as first localized market (PT-BR + PIX, month 2–3).** Priority stack: Brazil → UAE → Philippines → Mexico → Turkey. Avoid Indonesia + Vietnam. See strategy.md §5 D3. |
+| Q9 | Fee on win vs fee per trade? | Industry 2026 standard: tiered taker fees (Polymarket 0%-1.80% by category, Kalshi formula, DraftKings $0.01 flat). | **CLOSED → Option A (tiered taker fee).** Politics/geopolitics: 0% (free acquisition tier). Crypto/culture: ~1% at 50/50. Maker rebates 20–25%. See §2 Strategy - Business Model Summary. |
+| Q10 | NEW: Which jurisdictions are accessible under our expected license? | EU MiCA enforcement July 2026 blocks FR, DE, NL, PL, BE for Curacao-licensed platforms. | **CLOSED → English-first global. Brazil as first localized market (PT-BR + PIX, month 2–3).** Priority stack: Brazil → UAE → Philippines → Mexico → Turkey. Avoid Indonesia + Vietnam. See §2 Strategy - Product Decisions D3. |
 | Q11 | NEW: How do we address insider trading risk without CFTC enforcement tools? | Kalshi: 150+ investigations, employer-disclosure, whistleblower tools. Polymarket: CFTC complaint filed June 2026. On-chain settlement provides verification but not market integrity governance. | NEW OPEN QUESTION |
 
 ---
@@ -675,7 +688,7 @@ The "real vs toy" threshold is $5–$10 - that's where platform promo structures
 
 **Do not conflate with on-ramp deposit minimum.** MoonPay enforces $20 deposit floor - that's a fiat provider constraint, not a platform policy. Users with USDC already in wallet can bet $1 regardless.
 
-*Sources: Kalshi help docs · MoonPay deposit policy · Polymarket trading data Q1 2026 · master-research.md aarrr.md v_refresh*
+*Sources: Kalshi help docs · MoonPay deposit policy · Polymarket trading data Q1 2026 · research.md aarrr.md v_refresh*
 
 ---
 
@@ -760,6 +773,6 @@ These are current active users - a floor, not a ceiling. Volume grew 130× from 
 
 ---
 
-*Compiled from: [strategy.md](./strategy.md) - [product-model.md](./product-model.md) (history) - [aarrr.md](./aarrr.md) - [competitive-analysis.md](./competitive-analysis.md) - [benchmark-trust.md](./benchmark-trust.md) - [ux-patterns.md](./ux-patterns.md) - [research.md](./research.md)*
+*Compiled from: §2 Strategy (folds the retired strategy.md + product-model.md; canvas: [lean-ux-canvas.md](./lean-ux-canvas.md)) - [aarrr.md](./aarrr.md) - [competitors.md](./competitors.md) - [benchmark.md](./benchmark.md) - [ux-patterns.md](./ux-patterns.md)*
 *Screenshots: `research/screens/` (26 files, including 5 new from v_refresh: DraftKings Predictions, Bet365, eToro, Betfair Predicts, Azuro)*
 *v_refresh sources June 2026: [Kalshi $22B Series F](https://sacra.com/research/kalshi/) - [Kalshi volume leader CNBC](https://www.cnbc.com/2026/05/kalshi-polymarket-volume-comparison.html) - [Polymarket Fee V2 docs](https://docs.polymarket.com/trading/fees) - [Polymarket ICE $9B](https://financialcontent.com/marketscreener/polymarket-ice-investment-2026) - [Hyperliquid HIP-4](https://bitcoinnews.com/defi/hyperliquid-hip-4-prediction-markets-2026/) - [DraftKings Predictions Combos](https://www.gamblinginsider.com/news/159764/draftkings-combos-fee-structure-predictions-platform) - [Betfair Predicts](https://www.casino.org/news/betfair-eyes-prediction-market-growth-with-betfair-predicts/) - [EU MiCA enforcement](https://trmlabs.com/post/mica-enforcement-2026)*
