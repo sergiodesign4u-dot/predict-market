@@ -128,11 +128,11 @@ Solo - product, design, and development
 
 ## Information Architecture
 
-IA sources (source of truth): `ia/docs/sitemap.md` (entities, screens, navigation, desktop layer, depth map, tracing) and `ia/docs/flows.md` (user flows). The HTML visualizations `ia/ia.html`, `ia/sitemap.html`, `ia/flows.html` are re-synced to the markdown (green "Synced" banners); the markdown stays the source of truth if they ever diverge again.
+IA sources (source of truth): `ia/docs/sitemap.md` (entities, screens, navigation, desktop layer, depth map, tracing), `ia/docs/flows.md` (user flows), and the Detailed-layer page sources `ia/docs/pages/seo.md` (the A-E SEO structural layer) + `ia/docs/pages/system.md` (system / global nodes). The HTML visualizations `ia/ia.html`, `ia/sitemap.html`, `ia/flows.html`, `ia/concept-map.html`, `ia/seo.html`, `ia/system.html` render the markdown; the markdown stays the source of truth if they ever diverge.
 
 **Repo layout:** 13-stage course structure, one folder per stage, raw markdown in each stage's `docs/` and the stage HTML flat at the folder root. Full map in `STRUCTURE.md`. User Research now has 4 pages (Personas, JTBD, CJM As-Is, CJM To-Be); CJM (As-Is + To-Be) is a separate status row and lives inside User Research. The CJM sharpens the MVP scope above (one version, not a fork).
 
-### Detailed layer (Stage 03b) - stance + scope
+### Detailed layer (Stage 03b) - DONE (targeted reconcile)
 
 Three decisions that govern every page-level IA node:
 - **Stance: mobile-first, fully adaptive.** Desktop <-> mobile responsive, but mobile is the priority; block priority and the first screen are reasoned from mobile (base 360px). Desktop is designed deliberately, not derived.
@@ -145,6 +145,8 @@ Three decisions that govern every page-level IA node:
 - the **system / global nodes** (404, 500, maintenance 503, cookie-consent grounded in law, toasts).
 
 New sources live in `ia/docs/pages/` (`seo.md`, `system.md`); rendered B/W as `ia/seo.html`, `ia/system.html`. The shared sidebar stays single-source via `resync_sidebar.py` (not `_nav.js`); new IA pages register there.
+
+**Built (2026-07-12).** `seo.md` carries the indexation policy (every screen family index vs noindex) + the A-E template + full A-E for Event Feed, Event Detail (with the per-event schema decision: `WebPage` + `BreadcrumbList`, `schema.org/Event` rejected), Category, How It Works, Public Profile, and the footer node. `system.md` carries 404 / 500 / 503 / cookie-consent (grounded in GDPR + ePrivacy + UA Law 2297-VI, cited) / toasts; Search stays deferred. Both render to `ia/seo.html` + `ia/system.html`, wired into the shared sidebar under IA > Detailed layer (SEO layer, System nodes) on all pages. `sitemap.md` registers the system + footer/legal destinations (SYSTEM AND GLOBAL). Link check: 27 pages, 743 links, 0 broken. Deliberately not done (would duplicate the wireframes): per-screen B/W redraws, `pages/*.md` per screen, `ia/_nav.js`, X.Y renumbering.
 
 ### Top-level navigation (revised in the wireframe pass)
 
