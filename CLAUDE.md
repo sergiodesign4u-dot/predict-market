@@ -52,14 +52,20 @@ Users stake crypto on whether an event will happen or not, and earn/lose based o
 - Post-MVP: Sports and expansion based on interest/demand
 
 ### MVP Feature Scope
-- Binary YES/NO markets
-- Multi-outcome markets
-- User account (social login - Google, X, etc.)
-- Crypto wallet (stablecoins primary, multi-token support)
-- Fiat on-ramp (card → crypto)
-- Leaderboard
-- Notifications (event outcomes, position updates)
-- Staking system - TBD / to research
+Sharpened by the CJM To-Be backlog (`user-research/docs/cjm-to-be.md`, Alex x main job). One list, ordered by the To-Be path. The motivation features (story-led entry, explain the number) are co-equal MVP with the friction fixes, since the riskiest assumption "the barrier is friction, not motivation" was substantially refuted (research §9 F4).
+- Story-led event feed as the first page (live events, not a signup) - the motivation entry
+- "Explain the number": plain-language odds + one-line why + the news story, spectator language (not trader)
+- Browse and form the bet intent with no wallet upfront; the auth / crypto gate fires at Confirm, not at entry (the core clarity inversion)
+- User account via social login (Google, X)
+- Fiat on-ramp (card -> stablecoin); a crypto wallet stays available for crypto-native users but is not required until Confirm
+- One plain funds-safety line before deposit ("USDC held 1:1, we never lend it") + the fee shown before Confirm
+- Confirm with AMM price reconcile if the price moved (S5)
+- Binary YES/NO and multi-outcome markets (multi is product scope, not CJM-derived)
+- $1 / $5 bet sizing (low min, $5 default); the size that feels "real but not scary" is a `[?]` to test
+- Active Bets + outcome / position notifications (retention anchor)
+- Win screen ("You were right") + share, with overconfidence friction; Loss screen ("Here's what happened") with context and a next step that is NOT "bet again"
+- Transparent resolution + a resolved-markets count (against the #1 trust killer: platform betrayal)
+- Post-MVP / Later: Leaderboard, Staking (TBD) - orphans relative to this CJM; Sports (needs Maria's own CJM)
 
 ---
 
@@ -124,7 +130,7 @@ Solo - product, design, and development
 
 IA sources (source of truth): `ia/docs/sitemap.md` (entities, screens, navigation, desktop layer, depth map, tracing) and `ia/docs/flows.md` (user flows). The HTML visualizations `ia/ia.html`, `ia/sitemap.html`, `ia/flows.html` are re-synced to the markdown (green "Synced" banners); the markdown stays the source of truth if they ever diverge again.
 
-**Repo layout:** 13-stage course structure, one folder per stage, raw markdown in each stage's `docs/` and the stage HTML flat at the folder root. Full map in `STRUCTURE.md`.
+**Repo layout:** 13-stage course structure, one folder per stage, raw markdown in each stage's `docs/` and the stage HTML flat at the folder root. Full map in `STRUCTURE.md`. User Research now has 4 pages (Personas, JTBD, CJM As-Is, CJM To-Be); CJM (As-Is + To-Be) is a separate status row and lives inside User Research. The CJM sharpens the MVP scope above (one version, not a fork).
 
 ### Top-level navigation (revised in the wireframe pass)
 

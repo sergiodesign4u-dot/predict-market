@@ -14,7 +14,7 @@ A mobile-first Web3 platform for prediction markets. Users bet YES/NO on real-wo
 
 Single-page summary of all research phases. Open the link above in any browser - no local server needed.
 
-**CJM (live):** [As-Is](https://sergiodesign4u-dot.github.io/predict-market/user-research/cjm-as-is.html) - [To-Be](https://sergiodesign4u-dot.github.io/predict-market/user-research/cjm-to-be.html) (these paths go live once the branch is merged to main, which serves GitHub Pages).
+**CJM (live):** [As-Is](https://sergiodesign4u-dot.github.io/predict-market/user-research/cjm-as-is.html) - [To-Be](https://sergiodesign4u-dot.github.io/predict-market/user-research/cjm-to-be.html) (these paths go live once the branch is merged to main, which serves GitHub Pages). Takeaway: the deepest As-Is dip is the crypto wall (mass abandonment); To-Be flattens it by letting Alex browse and form the bet intent before any wallet, with the auth / crypto gate at Confirm.
 
 ---
 
