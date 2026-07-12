@@ -97,13 +97,15 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
     <div class="sidebar-project-name">Prediction Market</div>
   </div>
   <div class="sidebar-nav">
-    <a href="../../research.html" class="sidebar-page-link">Research</a>
-    <a href="../../personas.html" class="sidebar-page-link">Personas</a>
-    <a href="../../jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a href="../../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a href="../../user-research/personas.html" class="sidebar-page-link">Personas</a>
+    <a href="../../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a class="sidebar-page-link planned">CJM</a>
     <div class="sidebar-divider">Information Architecture</div>
-    <a href="../../ia.html" class="sidebar-page-link">Overview</a>
-    <a href="../../sitemap.html" class="sidebar-page-link">Sitemap</a>
-    <a href="../../flows.html" class="sidebar-page-link">Flows</a>
+    <a href="../../ia/ia.html" class="sidebar-page-link">Overview</a>
+    <a href="../../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <a href="../../ia/flows.html" class="sidebar-page-link">Flows</a>
     <div class="sidebar-divider">Plan</div>
     <a href="../../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
     <a href="index.html" class="sidebar-page-link active">Wireframe Annotations</a>
@@ -123,7 +125,14 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
       <a href="win.html" class="sidebar-sub-link">Win Screen</a>
       <a href="loss.html" class="sidebar-sub-link">Loss Screen</a>
     </div>
+    <a href="../../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a class="sidebar-page-link planned">Concept</a>
+    <a class="sidebar-page-link planned">UI + Visual</a>
+    <a class="sidebar-page-link planned">Tokens + Components</a>
     <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
     <a class="sidebar-page-link planned">Handoff</a>
   </div>
 </aside>
@@ -135,20 +144,7 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
     <p class="sub">Zone maps, zone&#8594;job / finding annotations and structural notes for this screen and all 8 of its states. Extracted from the wireframes so the wireframes themselves stay clean grey-box UI.</p>
     <div class="callout"><strong>This template applies to all four category pages.</strong> The zone map and annotations below use <code>politics</code> as the representative; <code>crypto</code>, <code>culture</code> and <code>general</code> are structurally identical (each with the same eight states).<table class="cattable"><tr><th>Politics</th><td><a href="../../wireframes/politics.html" target="_blank" rel="noopener">default</a> &middot; <a href="../../wireframes/politics-loading.html" target="_blank" rel="noopener">loading</a> &middot; <a href="../../wireframes/politics-empty.html" target="_blank" rel="noopener">empty</a> &middot; <a href="../../wireframes/politics-error.html" target="_blank" rel="noopener">error</a> &middot; <a href="../../wireframes/politics-logged-out.html" target="_blank" rel="noopener">logged out</a></td></tr><tr><th>Crypto</th><td><a href="../../wireframes/crypto.html" target="_blank" rel="noopener">default</a> &middot; <a href="../../wireframes/crypto-loading.html" target="_blank" rel="noopener">loading</a> &middot; <a href="../../wireframes/crypto-empty.html" target="_blank" rel="noopener">empty</a> &middot; <a href="../../wireframes/crypto-error.html" target="_blank" rel="noopener">error</a> &middot; <a href="../../wireframes/crypto-logged-out.html" target="_blank" rel="noopener">logged out</a></td></tr><tr><th>Culture</th><td><a href="../../wireframes/culture.html" target="_blank" rel="noopener">default</a> &middot; <a href="../../wireframes/culture-loading.html" target="_blank" rel="noopener">loading</a> &middot; <a href="../../wireframes/culture-empty.html" target="_blank" rel="noopener">empty</a> &middot; <a href="../../wireframes/culture-error.html" target="_blank" rel="noopener">error</a> &middot; <a href="../../wireframes/culture-logged-out.html" target="_blank" rel="noopener">logged out</a></td></tr><tr><th>General</th><td><a href="../../wireframes/general.html" target="_blank" rel="noopener">default</a> &middot; <a href="../../wireframes/general-loading.html" target="_blank" rel="noopener">loading</a> &middot; <a href="../../wireframes/general-empty.html" target="_blank" rel="noopener">empty</a> &middot; <a href="../../wireframes/general-error.html" target="_blank" rel="noopener">error</a> &middot; <a href="../../wireframes/general-logged-out.html" target="_blank" rel="noopener">logged out</a></td></tr></table></div>
     <h2>Structure &amp; flow</h2>
-    <section class="note"><h4>on-page nav tree (where this sits)</h4><pre>Events (browse)
-   Event Feed  (Trending = main)
-   Politics / Crypto / Culture / General
-        ^ [Politics]   &lt;- current category page
-        v
-   Event Detail
-        v
-   Sign In / Deposit (dialogs) -> Active Bets</pre>
-        <p class="ref">A category page is a browse entry parallel to the main feed
-          (IA/sitemap.md second-level navigation), with the auth axis and the
-          success / empty / error / loading states.</p></section><section class="note"><h4>rollout status</h4><p class="ref">Built: Politics, Crypto, Culture, General, each with logged-in
-          and logged-out x success / empty / error / loading. Still to come: the real
-          sub-category taxonomy per category and the sitemap.md update (category pages
-          + sub-categories).</p></section>
+    
     <h2>States &amp; annotations</h2>
     
     <details class="state" open>
@@ -158,14 +154,10 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">lean, same at all widths; logo = Events home</span></div><div class="zbox zsub"><span class="zname">latest notifications</span><span class="zdesc">tap a row, or see all</span></div><div class="zbox zsub"><span class="zname">avatar dropdown</span><span class="zdesc">collapsed by default, click to open</span></div><div class="zbox"><span class="zname">second-level navigation</span><span class="zdesc">each category opens its own page</span></div><div class="zbox"><span class="zname">Politics category</span><span class="zdesc">sub-category rail + sort/frequency + filtered grid</span></div><div class="zbox"><span class="zname">sub-categories</span><span class="zdesc">left rail on desktop, scrolling chips on mobile; counts are sample data</span></div><div class="zbox zsub"><span class="zname">sort options</span></div><div class="zbox zsub"><span class="zname">event frequency</span><span class="zdesc">recurring markets</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only, icons; slot 4 = Portfolio with balance</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Politics here). Trending stays the main feed (event-feed.html).</li>
-        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
-        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -177,14 +169,10 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">lean, same at all widths; logo = Events home</span></div><div class="zbox zsub"><span class="zname">latest notifications</span><span class="zdesc">tap a row, or see all</span></div><div class="zbox zsub"><span class="zname">avatar dropdown</span><span class="zdesc">collapsed by default, click to open</span></div><div class="zbox"><span class="zname">second-level navigation</span><span class="zdesc">each category opens its own page</span></div><div class="zbox"><span class="zname">Politics category</span><span class="zdesc">loading: fetching markets (skeleton grid)</span></div><div class="zbox"><span class="zname">sub-categories</span><span class="zdesc">left rail on desktop, scrolling chips on mobile; counts are sample data</span></div><div class="zbox zsub"><span class="zname">sort options</span></div><div class="zbox zsub"><span class="zname">event frequency</span><span class="zdesc">recurring markets</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only, icons; slot 4 = Portfolio with balance</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Politics here). Trending stays the main feed (event-feed.html).</li>
-        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
-        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -196,14 +184,10 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">lean, same at all widths; logo = Events home</span></div><div class="zbox zsub"><span class="zname">latest notifications</span><span class="zdesc">tap a row, or see all</span></div><div class="zbox zsub"><span class="zname">avatar dropdown</span><span class="zdesc">collapsed by default, click to open</span></div><div class="zbox"><span class="zname">second-level navigation</span><span class="zdesc">each category opens its own page</span></div><div class="zbox"><span class="zname">Politics category</span><span class="zdesc">empty: no events match the sub-category / filters (T6 subscribe exit)</span></div><div class="zbox"><span class="zname">sub-categories</span><span class="zdesc">left rail on desktop, scrolling chips on mobile; counts are sample data</span></div><div class="zbox zsub"><span class="zname">sort options</span></div><div class="zbox zsub"><span class="zname">event frequency</span><span class="zdesc">recurring markets</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only, icons; slot 4 = Portfolio with balance</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Politics here). Trending stays the main feed (event-feed.html).</li>
-        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
-        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -215,14 +199,10 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">lean, same at all widths; logo = Events home</span></div><div class="zbox zsub"><span class="zname">latest notifications</span><span class="zdesc">tap a row, or see all</span></div><div class="zbox zsub"><span class="zname">avatar dropdown</span><span class="zdesc">collapsed by default, click to open</span></div><div class="zbox"><span class="zname">second-level navigation</span><span class="zdesc">each category opens its own page</span></div><div class="zbox"><span class="zname">Politics category</span><span class="zdesc">error: failed to load, retry</span></div><div class="zbox"><span class="zname">sub-categories</span><span class="zdesc">left rail on desktop, scrolling chips on mobile; counts are sample data</span></div><div class="zbox zsub"><span class="zname">sort options</span></div><div class="zbox zsub"><span class="zname">event frequency</span><span class="zdesc">recurring markets</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only, icons; slot 4 = Portfolio with balance</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Politics here). Trending stays the main feed (event-feed.html).</li>
-        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
-        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -234,14 +214,10 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">logged-out: no account; Log in / Sign up replace balance and avatar</span></div><div class="zbox"><span class="zname">second-level navigation</span><span class="zdesc">each category opens its own page</span></div><div class="zbox"><span class="zname">Politics category</span><span class="zdesc">sub-category rail + sort/frequency + filtered grid</span></div><div class="zbox"><span class="zname">sub-categories</span><span class="zdesc">left rail on desktop, scrolling chips on mobile; counts are sample data</span></div><div class="zbox zsub"><span class="zname">sort options</span></div><div class="zbox zsub"><span class="zname">event frequency</span><span class="zdesc">recurring markets</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only; logged-out slot 4 = Sign in</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Politics here). Trending stays the main feed (event-feed.html).</li>
-        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
-        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -253,14 +229,10 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">logged-out: no account; Log in / Sign up replace balance and avatar</span></div><div class="zbox"><span class="zname">second-level navigation</span><span class="zdesc">each category opens its own page</span></div><div class="zbox"><span class="zname">Politics category</span><span class="zdesc">loading: fetching markets (skeleton grid)</span></div><div class="zbox"><span class="zname">sub-categories</span><span class="zdesc">left rail on desktop, scrolling chips on mobile; counts are sample data</span></div><div class="zbox zsub"><span class="zname">sort options</span></div><div class="zbox zsub"><span class="zname">event frequency</span><span class="zdesc">recurring markets</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only; logged-out slot 4 = Sign in</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Politics here). Trending stays the main feed (event-feed.html).</li>
-        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
-        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -272,14 +244,10 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">logged-out: no account; Log in / Sign up replace balance and avatar</span></div><div class="zbox"><span class="zname">second-level navigation</span><span class="zdesc">each category opens its own page</span></div><div class="zbox"><span class="zname">Politics category</span><span class="zdesc">empty: no events match the sub-category / filters (T6 subscribe exit)</span></div><div class="zbox"><span class="zname">sub-categories</span><span class="zdesc">left rail on desktop, scrolling chips on mobile; counts are sample data</span></div><div class="zbox zsub"><span class="zname">sort options</span></div><div class="zbox zsub"><span class="zname">event frequency</span><span class="zdesc">recurring markets</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only; logged-out slot 4 = Sign in</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Politics here). Trending stays the main feed (event-feed.html).</li>
-        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
-        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -291,14 +259,10 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">logged-out: no account; Log in / Sign up replace balance and avatar</span></div><div class="zbox"><span class="zname">second-level navigation</span><span class="zdesc">each category opens its own page</span></div><div class="zbox"><span class="zname">Politics category</span><span class="zdesc">error: failed to load, retry</span></div><div class="zbox"><span class="zname">sub-categories</span><span class="zdesc">left rail on desktop, scrolling chips on mobile; counts are sample data</span></div><div class="zbox zsub"><span class="zname">sort options</span></div><div class="zbox zsub"><span class="zname">event frequency</span><span class="zdesc">recurring markets</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only; logged-out slot 4 = Sign in</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Category = its own page (not an in-feed toggle)</strong> -&gt; the second-level nav routes to a real page per category (Politics here). Trending stays the main feed (event-feed.html).</li>
-        <li><strong>Sub-category side panel with counts</strong> -&gt; Polymarket-style drill-down inside the category. Left sticky rail on desktop, scrolling chips on mobile. Counts are illustrative sample data (Addition B).</li>
-        <li><strong>Auth axis (logged in / logged out)</strong> -&gt; a browse screen like Event Feed: the body and rail are identical, only the header differs (logged-out drops the account and shows Log in / Sign up, which open the Sign In dialog over this page).</li>
-        <li><strong>States</strong> -&gt; success (grid), empty (no match: Clear filters or "Notify me", the T6 subscribe edge), error (Try again or back to Trending), loading (skeleton grid). Each is its own page.</li>
-        <li><strong>Cards reuse the shared S3 pattern</strong> -&gt; binary and multi-outcome, question links to Event Detail, YES/NO trigger-entry, bookmark in the meta row.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>

@@ -97,13 +97,15 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
     <div class="sidebar-project-name">Prediction Market</div>
   </div>
   <div class="sidebar-nav">
-    <a href="../../research.html" class="sidebar-page-link">Research</a>
-    <a href="../../personas.html" class="sidebar-page-link">Personas</a>
-    <a href="../../jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a href="../../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a href="../../user-research/personas.html" class="sidebar-page-link">Personas</a>
+    <a href="../../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a class="sidebar-page-link planned">CJM</a>
     <div class="sidebar-divider">Information Architecture</div>
-    <a href="../../ia.html" class="sidebar-page-link">Overview</a>
-    <a href="../../sitemap.html" class="sidebar-page-link">Sitemap</a>
-    <a href="../../flows.html" class="sidebar-page-link">Flows</a>
+    <a href="../../ia/ia.html" class="sidebar-page-link">Overview</a>
+    <a href="../../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <a href="../../ia/flows.html" class="sidebar-page-link">Flows</a>
     <div class="sidebar-divider">Plan</div>
     <a href="../../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
     <a href="index.html" class="sidebar-page-link active">Wireframe Annotations</a>
@@ -123,7 +125,14 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
       <a href="win.html" class="sidebar-sub-link">Win Screen</a>
       <a href="loss.html" class="sidebar-sub-link">Loss Screen</a>
     </div>
+    <a href="../../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a class="sidebar-page-link planned">Concept</a>
+    <a class="sidebar-page-link planned">UI + Visual</a>
+    <a class="sidebar-page-link planned">Tokens + Components</a>
     <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
     <a class="sidebar-page-link planned">Handoff</a>
   </div>
 </aside>
@@ -135,17 +144,7 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
     <p class="sub">Zone maps, zone&#8594;job / finding annotations and structural notes for this screen and all 3 of its states. Extracted from the wireframes so the wireframes themselves stay clean grey-box UI.</p>
     
     <h2>Structure &amp; flow</h2>
-    <section class="note"><h4>on-page nav tree (identity hub)</h4><pre>Identity / reputation (SJ1 + SJ2):
-
-avatar dropdown (desktop) ----+
-Portfolio slot (mobile) ------+--&gt; [My Profile]   &lt;- current
-   |                                  (= account hub: portfolio
-   |                                   summary + track record)
-   +-- Win Screen --&gt; Share Card --&gt; gallery here</pre>
-        <p class="ref">Flow position: identity surface off the betting spine (IA/sitemap.md
-          My Profile). Serves SJ1 (share history) and SJ2 (public reputation).</p></section><section class="note"><h4>states of this screen</h4><p class="ref">success (track record + gallery + portfolio summary), loading
-          (profile fetch), error (retry). empty-state (first-time, no predictions) deferred.
-          Account-bound, no auth axis.</p></section>
+    
     <h2>States &amp; annotations</h2>
     
     <details class="state" open>
@@ -155,14 +154,10 @@ Portfolio slot (mobile) ------+--&gt; [My Profile]   &lt;- current
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">lean, same at all widths; logo = Events home</span></div><div class="zbox zsub"><span class="zname">latest notifications</span><span class="zdesc">tap a row, or see all</span></div><div class="zbox zsub"><span class="zname">avatar dropdown</span><span class="zdesc">collapsed by default, click to open</span></div><div class="zbox"><span class="zname">My Profile</span><span class="zdesc">Portfolio account hub: portfolio summary on top, then public track record; SJ1 / SJ2</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only, icons; slot 4 = Portfolio with balance</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Track record = reputation</strong> -&gt; SJ2: total bets, win rate and resolved predictions are the public proof of being right. Reputation is the track record, not the balance.</li>
-        <li><strong>Share card gallery (past wins)</strong> -&gt; SJ1: the cards generated on the Win Screen collect here, a re-shareable history of called-it moments.</li>
-        <li><strong>Portfolio summary on top</strong> -&gt; this screen IS the mobile Portfolio account hub (slot 4): My Profile extended with Portfolio / Cash + Deposit / Wallet above the track record (IA/sitemap.md slot-4 note). Identity and money in one hub, identity first.</li>
-        <li><strong>Editable name &amp; avatar</strong> -&gt; the owner can edit display name and avatar (the only write controls; the record itself is not editable).</li>
-        <li><strong>Reached from the avatar dropdown (desktop) / Portfolio slot (mobile)</strong> -&gt; account-bound, logged-in only - no auth axis. The Portfolio slot is the current marker.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -174,14 +169,10 @@ Portfolio slot (mobile) ------+--&gt; [My Profile]   &lt;- current
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">lean, same at all widths; logo = Events home</span></div><div class="zbox zsub"><span class="zname">latest notifications</span><span class="zdesc">tap a row, or see all</span></div><div class="zbox zsub"><span class="zname">avatar dropdown</span><span class="zdesc">collapsed by default, click to open</span></div><div class="zbox"><span class="zname">My Profile</span><span class="zdesc">loading: profile data fetching</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only, icons; slot 4 = Portfolio with balance</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Track record = reputation</strong> -&gt; SJ2: total bets, win rate and resolved predictions are the public proof of being right. Reputation is the track record, not the balance.</li>
-        <li><strong>Share card gallery (past wins)</strong> -&gt; SJ1: the cards generated on the Win Screen collect here, a re-shareable history of called-it moments.</li>
-        <li><strong>Portfolio summary on top</strong> -&gt; this screen IS the mobile Portfolio account hub (slot 4): My Profile extended with Portfolio / Cash + Deposit / Wallet above the track record (IA/sitemap.md slot-4 note). Identity and money in one hub, identity first.</li>
-        <li><strong>Editable name &amp; avatar</strong> -&gt; the owner can edit display name and avatar (the only write controls; the record itself is not editable).</li>
-        <li><strong>Reached from the avatar dropdown (desktop) / Portfolio slot (mobile)</strong> -&gt; account-bound, logged-in only - no auth axis. The Portfolio slot is the current marker.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -193,14 +184,10 @@ Portfolio slot (mobile) ------+--&gt; [My Profile]   &lt;- current
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">header</span><span class="zdesc">lean, same at all widths; logo = Events home</span></div><div class="zbox zsub"><span class="zname">latest notifications</span><span class="zdesc">tap a row, or see all</span></div><div class="zbox zsub"><span class="zname">avatar dropdown</span><span class="zdesc">collapsed by default, click to open</span></div><div class="zbox"><span class="zname">My Profile</span><span class="zdesc">error: profile failed to load - retry</span></div><div class="zbox"><span class="zname">bottom nav</span><span class="zdesc">mobile only, icons; slot 4 = Portfolio with balance</span></div><div class="zbox"><span class="zname">footer</span><span class="zdesc">global, reused on every screen; TBD = not in MVP</span></div><div class="zbox zsub"><span class="zname">language</span><span class="zdesc">placeholder, English-only at MVP</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Track record = reputation</strong> -&gt; SJ2: total bets, win rate and resolved predictions are the public proof of being right. Reputation is the track record, not the balance.</li>
-        <li><strong>Share card gallery (past wins)</strong> -&gt; SJ1: the cards generated on the Win Screen collect here, a re-shareable history of called-it moments.</li>
-        <li><strong>Portfolio summary on top</strong> -&gt; this screen IS the mobile Portfolio account hub (slot 4): My Profile extended with Portfolio / Cash + Deposit / Wallet above the track record (IA/sitemap.md slot-4 note). Identity and money in one hub, identity first.</li>
-        <li><strong>Editable name &amp; avatar</strong> -&gt; the owner can edit display name and avatar (the only write controls; the record itself is not editable).</li>
-        <li><strong>Reached from the avatar dropdown (desktop) / Portfolio slot (mobile)</strong> -&gt; account-bound, logged-in only - no auth axis. The Portfolio slot is the current marker.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>

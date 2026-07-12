@@ -97,13 +97,15 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
     <div class="sidebar-project-name">Prediction Market</div>
   </div>
   <div class="sidebar-nav">
-    <a href="../../research.html" class="sidebar-page-link">Research</a>
-    <a href="../../personas.html" class="sidebar-page-link">Personas</a>
-    <a href="../../jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a href="../../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a href="../../user-research/personas.html" class="sidebar-page-link">Personas</a>
+    <a href="../../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a class="sidebar-page-link planned">CJM</a>
     <div class="sidebar-divider">Information Architecture</div>
-    <a href="../../ia.html" class="sidebar-page-link">Overview</a>
-    <a href="../../sitemap.html" class="sidebar-page-link">Sitemap</a>
-    <a href="../../flows.html" class="sidebar-page-link">Flows</a>
+    <a href="../../ia/ia.html" class="sidebar-page-link">Overview</a>
+    <a href="../../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <a href="../../ia/flows.html" class="sidebar-page-link">Flows</a>
     <div class="sidebar-divider">Plan</div>
     <a href="../../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
     <a href="index.html" class="sidebar-page-link active">Wireframe Annotations</a>
@@ -123,7 +125,14 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
       <a href="win.html" class="sidebar-sub-link">Win Screen</a>
       <a href="loss.html" class="sidebar-sub-link">Loss Screen</a>
     </div>
+    <a href="../../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a class="sidebar-page-link planned">Concept</a>
+    <a class="sidebar-page-link planned">UI + Visual</a>
+    <a class="sidebar-page-link planned">Tokens + Components</a>
     <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
     <a class="sidebar-page-link planned">Handoff</a>
   </div>
 </aside>
@@ -135,21 +144,7 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
     <p class="sub">Zone maps, zone&#8594;job / finding annotations and structural notes for this screen and all 7 of its states. Extracted from the wireframes so the wireframes themselves stay clean grey-box UI.</p>
     
     <h2>Structure &amp; flow</h2>
-    <section class="note"><h4>on-page nav tree (main-flow spine)</h4><pre>Main-flow spine (MJ, News Junkie):
-
-Event Feed
-   v
-Event Detail   (bet panel)
-   v
-Sign In / Register
-   v
-[Deposit]   &lt;- current screen
-   v
-Active Bets</pre>
-        <p class="ref">Flow position: MJ, after Sign In on the News Junkie path
-          (IA/flows.md authOk -&gt; Deposit -&gt; depOk -&gt; S5 reconcile). Serves FJ3, FJ4, EJ2.</p></section><section class="note"><h4>states of this screen</h4><p class="ref">form (base), loading (widget / KYC in-progress), error-card (T2),
-          error-KYC (T1), widget-load-failure (S3 fallback), pending (under review),
-          minimum-not-met (inline). Invoked overlay, no auth axis.</p></section>
+    
     <h2>States &amp; annotations</h2>
     
     <details class="state" open>
@@ -159,14 +154,10 @@ Active Bets</pre>
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Deposit</span><span class="zdesc">fiat card to USDC via Transak; funds-protection line, FJ4 / EJ2</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Card to USDC via Transak</strong> -&gt; FJ3: ordinary money, no unfamiliar technology. Fiat on-ramp inside the platform.</li>
-        <li><strong>Funds-protection line (held 1:1)</strong> -&gt; FJ4 + EJ2: a clear answer to "what happens to my money", shown before submit. Trust signal.</li>
-        <li><strong>error-card (T2) / error-KYC (T1)</strong> -&gt; IA/flows.md recovery edges: a declined card offers another card or a wallet; a rejected KYC offers a no-KYC wallet path or support, never a dead end.</li>
-        <li><strong>widget-load-failure</strong> -&gt; S3 fallback: open Transak directly or connect a wallet when the embedded widget is blocked.</li>
-        <li><strong>pending / minimum-not-met</strong> -&gt; payment under review (with exits to the event or My Bets), and an inline minimum guard before submit.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -178,14 +169,10 @@ Active Bets</pre>
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Deposit</span><span class="zdesc">loading: Transak widget loading / KYC pending inside the widget</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Card to USDC via Transak</strong> -&gt; FJ3: ordinary money, no unfamiliar technology. Fiat on-ramp inside the platform.</li>
-        <li><strong>Funds-protection line (held 1:1)</strong> -&gt; FJ4 + EJ2: a clear answer to "what happens to my money", shown before submit. Trust signal.</li>
-        <li><strong>error-card (T2) / error-KYC (T1)</strong> -&gt; IA/flows.md recovery edges: a declined card offers another card or a wallet; a rejected KYC offers a no-KYC wallet path or support, never a dead end.</li>
-        <li><strong>widget-load-failure</strong> -&gt; S3 fallback: open Transak directly or connect a wallet when the embedded widget is blocked.</li>
-        <li><strong>pending / minimum-not-met</strong> -&gt; payment under review (with exits to the event or My Bets), and an inline minimum guard before submit.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -197,14 +184,10 @@ Active Bets</pre>
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Deposit</span><span class="zdesc">pending: payment under review, usually under 5 min</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Card to USDC via Transak</strong> -&gt; FJ3: ordinary money, no unfamiliar technology. Fiat on-ramp inside the platform.</li>
-        <li><strong>Funds-protection line (held 1:1)</strong> -&gt; FJ4 + EJ2: a clear answer to "what happens to my money", shown before submit. Trust signal.</li>
-        <li><strong>error-card (T2) / error-KYC (T1)</strong> -&gt; IA/flows.md recovery edges: a declined card offers another card or a wallet; a rejected KYC offers a no-KYC wallet path or support, never a dead end.</li>
-        <li><strong>widget-load-failure</strong> -&gt; S3 fallback: open Transak directly or connect a wallet when the embedded widget is blocked.</li>
-        <li><strong>pending / minimum-not-met</strong> -&gt; payment under review (with exits to the event or My Bets), and an inline minimum guard before submit.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -216,14 +199,10 @@ Active Bets</pre>
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Deposit</span><span class="zdesc">minimum-not-met: inline error before submit, shown against the amount</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Card to USDC via Transak</strong> -&gt; FJ3: ordinary money, no unfamiliar technology. Fiat on-ramp inside the platform.</li>
-        <li><strong>Funds-protection line (held 1:1)</strong> -&gt; FJ4 + EJ2: a clear answer to "what happens to my money", shown before submit. Trust signal.</li>
-        <li><strong>error-card (T2) / error-KYC (T1)</strong> -&gt; IA/flows.md recovery edges: a declined card offers another card or a wallet; a rejected KYC offers a no-KYC wallet path or support, never a dead end.</li>
-        <li><strong>widget-load-failure</strong> -&gt; S3 fallback: open Transak directly or connect a wallet when the embedded widget is blocked.</li>
-        <li><strong>pending / minimum-not-met</strong> -&gt; payment under review (with exits to the event or My Bets), and an inline minimum guard before submit.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -235,14 +214,10 @@ Active Bets</pre>
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Deposit</span><span class="zdesc">error-card: card declined, T2 - try another card or connect a wallet</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Card to USDC via Transak</strong> -&gt; FJ3: ordinary money, no unfamiliar technology. Fiat on-ramp inside the platform.</li>
-        <li><strong>Funds-protection line (held 1:1)</strong> -&gt; FJ4 + EJ2: a clear answer to "what happens to my money", shown before submit. Trust signal.</li>
-        <li><strong>error-card (T2) / error-KYC (T1)</strong> -&gt; IA/flows.md recovery edges: a declined card offers another card or a wallet; a rejected KYC offers a no-KYC wallet path or support, never a dead end.</li>
-        <li><strong>widget-load-failure</strong> -&gt; S3 fallback: open Transak directly or connect a wallet when the embedded widget is blocked.</li>
-        <li><strong>pending / minimum-not-met</strong> -&gt; payment under review (with exits to the event or My Bets), and an inline minimum guard before submit.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -254,14 +229,10 @@ Active Bets</pre>
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Deposit</span><span class="zdesc">error-KYC: KYC rejected, T1 - connect a USDC wallet or contact support</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Card to USDC via Transak</strong> -&gt; FJ3: ordinary money, no unfamiliar technology. Fiat on-ramp inside the platform.</li>
-        <li><strong>Funds-protection line (held 1:1)</strong> -&gt; FJ4 + EJ2: a clear answer to "what happens to my money", shown before submit. Trust signal.</li>
-        <li><strong>error-card (T2) / error-KYC (T1)</strong> -&gt; IA/flows.md recovery edges: a declined card offers another card or a wallet; a rejected KYC offers a no-KYC wallet path or support, never a dead end.</li>
-        <li><strong>widget-load-failure</strong> -&gt; S3 fallback: open Transak directly or connect a wallet when the embedded widget is blocked.</li>
-        <li><strong>pending / minimum-not-met</strong> -&gt; payment under review (with exits to the event or My Bets), and an inline minimum guard before submit.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -273,14 +244,10 @@ Active Bets</pre>
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Deposit</span><span class="zdesc">widget-load-failure: Transak iframe blocked - open directly or connect a wallet</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Card to USDC via Transak</strong> -&gt; FJ3: ordinary money, no unfamiliar technology. Fiat on-ramp inside the platform.</li>
-        <li><strong>Funds-protection line (held 1:1)</strong> -&gt; FJ4 + EJ2: a clear answer to "what happens to my money", shown before submit. Trust signal.</li>
-        <li><strong>error-card (T2) / error-KYC (T1)</strong> -&gt; IA/flows.md recovery edges: a declined card offers another card or a wallet; a rejected KYC offers a no-KYC wallet path or support, never a dead end.</li>
-        <li><strong>widget-load-failure</strong> -&gt; S3 fallback: open Transak directly or connect a wallet when the embedded widget is blocked.</li>
-        <li><strong>pending / minimum-not-met</strong> -&gt; payment under review (with exits to the event or My Bets), and an inline minimum guard before submit.</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>

@@ -358,20 +358,29 @@ def render_sidebar(active_slug):
     <div class="sidebar-project-name">Prediction Market</div>
   </div>
   <div class="sidebar-nav">
-    <a href="../../research.html" class="sidebar-page-link">Research</a>
-    <a href="../../personas.html" class="sidebar-page-link">Personas</a>
-    <a href="../../jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a href="../../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a href="../../user-research/personas.html" class="sidebar-page-link">Personas</a>
+    <a href="../../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a class="sidebar-page-link planned">CJM</a>
     <div class="sidebar-divider">Information Architecture</div>
-    <a href="../../ia.html" class="sidebar-page-link">Overview</a>
-    <a href="../../sitemap.html" class="sidebar-page-link">Sitemap</a>
-    <a href="../../flows.html" class="sidebar-page-link">Flows</a>
+    <a href="../../ia/ia.html" class="sidebar-page-link">Overview</a>
+    <a href="../../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <a href="../../ia/flows.html" class="sidebar-page-link">Flows</a>
     <div class="sidebar-divider">Plan</div>
     <a href="../../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
     <a href="index.html" class="sidebar-page-link@@ANN_ACTIVE@@">Wireframe Annotations</a>
     <div class="sidebar-sub">
       @@SUBS@@
     </div>
+    <a href="../../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a class="sidebar-page-link planned">Concept</a>
+    <a class="sidebar-page-link planned">UI + Visual</a>
+    <a class="sidebar-page-link planned">Tokens + Components</a>
     <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
     <a class="sidebar-page-link planned">Handoff</a>
   </div>
 </aside>""".replace("@@ANN_ACTIVE@@", ann_active).replace("@@SUBS@@", "\n      ".join(subs))

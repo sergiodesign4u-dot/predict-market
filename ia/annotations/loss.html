@@ -97,13 +97,15 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
     <div class="sidebar-project-name">Prediction Market</div>
   </div>
   <div class="sidebar-nav">
-    <a href="../../research.html" class="sidebar-page-link">Research</a>
-    <a href="../../personas.html" class="sidebar-page-link">Personas</a>
-    <a href="../../jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a href="../../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a href="../../user-research/personas.html" class="sidebar-page-link">Personas</a>
+    <a href="../../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a class="sidebar-page-link planned">CJM</a>
     <div class="sidebar-divider">Information Architecture</div>
-    <a href="../../ia.html" class="sidebar-page-link">Overview</a>
-    <a href="../../sitemap.html" class="sidebar-page-link">Sitemap</a>
-    <a href="../../flows.html" class="sidebar-page-link">Flows</a>
+    <a href="../../ia/ia.html" class="sidebar-page-link">Overview</a>
+    <a href="../../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <a href="../../ia/flows.html" class="sidebar-page-link">Flows</a>
     <div class="sidebar-divider">Plan</div>
     <a href="../../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
     <a href="index.html" class="sidebar-page-link active">Wireframe Annotations</a>
@@ -123,7 +125,14 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
       <a href="win.html" class="sidebar-sub-link">Win Screen</a>
       <a href="loss.html" class="sidebar-sub-link active">Loss Screen</a>
     </div>
+    <a href="../../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a class="sidebar-page-link planned">Concept</a>
+    <a class="sidebar-page-link planned">UI + Visual</a>
+    <a class="sidebar-page-link planned">Tokens + Components</a>
     <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
     <a class="sidebar-page-link planned">Handoff</a>
   </div>
 </aside>
@@ -135,20 +144,7 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
     <p class="sub">Zone maps, zone&#8594;job / finding annotations and structural notes for this screen and all 2 of its states. Extracted from the wireframes so the wireframes themselves stay clean grey-box UI.</p>
     
     <h2>Structure &amp; flow</h2>
-    <section class="note"><h4>on-page nav tree (resolution flow, FJ5 + EJ3)</h4><pre>Resolution flow (FJ5 + EJ3 - conscious-loss exit):
-
-resolution notification --- G1: 1 tap ---+
-                                         v
-My Bets -- resolved item ------------&gt; [Loss Screen]   &lt;- current
-                                         v
-                          read resolution note (default first)
-                                         v
-                   browse events / close  (no chase)
-                   escalation path -.-&gt; bet panel (friction beat, F5)</pre>
-        <p class="ref">Flow position: IA/flows.md FJ5 + EJ3 (triggerNotif / Active Bets -&gt;
-          Loss Screen -&gt; readsNote -&gt; nextAction). Not on the MJ spine.</p></section><section class="note"><h4>states of this screen</h4><p class="ref">success (resolution note, amount lost, one next step), loading
-          (fetching the resolution). No error/payout state at MVP (refunds deferred).
-          Invoked overlay, account-bound, no auth axis.</p></section>
+    
     <h2>States &amp; annotations</h2>
     
     <details class="state" open>
@@ -158,14 +154,10 @@ My Bets -- resolved item ------------&gt; [Loss Screen]   &lt;- current
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Loss Screen - success</span><span class="zdesc">plain resolution note first, amount lost, one calm next step; FJ5 + EJ3</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Plain-language resolution note shown first</strong> -&gt; FJ5 + EJ3: understand what resolved and why before any next action. The note leads, the figures follow.</li>
-        <li><strong>Amount lost stated plainly, no euphemism</strong> -&gt; trust / transparency: the outcome is owned, not softened.</li>
-        <li><strong>One calm next step, no "bet again" promo</strong> -&gt; this screen is our primary retention intervention against loss-chasing (a gap every competitor leaves undesigned). Default exits are "back to your bets" / "browse events", not a re-bet push.</li>
-        <li><strong>No refund / payout state at MVP</strong> -&gt; cancelled-event refunds are deferred post-MVP (IA/sitemap.md), so this screen has only success and loading.</li>
-        <li><strong>G1 fast path</strong> -&gt; reached 1 tap from a resolution notification, so the note reaches the user before the impulse to chase (IA/flows.md FJ5 triggerNotif -&gt; Loss Screen). No auth axis (account-bound).</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -177,14 +169,10 @@ My Bets -- resolved item ------------&gt; [Loss Screen]   &lt;- current
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Loss Screen - loading</span><span class="zdesc">fetching the resolution note</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>Plain-language resolution note shown first</strong> -&gt; FJ5 + EJ3: understand what resolved and why before any next action. The note leads, the figures follow.</li>
-        <li><strong>Amount lost stated plainly, no euphemism</strong> -&gt; trust / transparency: the outcome is owned, not softened.</li>
-        <li><strong>One calm next step, no "bet again" promo</strong> -&gt; this screen is our primary retention intervention against loss-chasing (a gap every competitor leaves undesigned). Default exits are "back to your bets" / "browse events", not a re-bet push.</li>
-        <li><strong>No refund / payout state at MVP</strong> -&gt; cancelled-event refunds are deferred post-MVP (IA/sitemap.md), so this screen has only success and loading.</li>
-        <li><strong>G1 fast path</strong> -&gt; reached 1 tap from a resolution notification, so the note reaches the user before the impulse to chase (IA/flows.md FJ5 triggerNotif -&gt; Loss Screen). No auth axis (account-bound).</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>

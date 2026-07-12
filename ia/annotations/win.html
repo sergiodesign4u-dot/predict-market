@@ -97,13 +97,15 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
     <div class="sidebar-project-name">Prediction Market</div>
   </div>
   <div class="sidebar-nav">
-    <a href="../../research.html" class="sidebar-page-link">Research</a>
-    <a href="../../personas.html" class="sidebar-page-link">Personas</a>
-    <a href="../../jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a href="../../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a href="../../user-research/personas.html" class="sidebar-page-link">Personas</a>
+    <a href="../../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a class="sidebar-page-link planned">CJM</a>
     <div class="sidebar-divider">Information Architecture</div>
-    <a href="../../ia.html" class="sidebar-page-link">Overview</a>
-    <a href="../../sitemap.html" class="sidebar-page-link">Sitemap</a>
-    <a href="../../flows.html" class="sidebar-page-link">Flows</a>
+    <a href="../../ia/ia.html" class="sidebar-page-link">Overview</a>
+    <a href="../../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <a href="../../ia/flows.html" class="sidebar-page-link">Flows</a>
     <div class="sidebar-divider">Plan</div>
     <a href="../../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
     <a href="index.html" class="sidebar-page-link active">Wireframe Annotations</a>
@@ -123,7 +125,14 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
       <a href="win.html" class="sidebar-sub-link active">Win Screen</a>
       <a href="loss.html" class="sidebar-sub-link">Loss Screen</a>
     </div>
+    <a href="../../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a class="sidebar-page-link planned">Concept</a>
+    <a class="sidebar-page-link planned">UI + Visual</a>
+    <a class="sidebar-page-link planned">Tokens + Components</a>
     <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
     <a class="sidebar-page-link planned">Handoff</a>
   </div>
 </aside>
@@ -135,18 +144,7 @@ details.state>summary:hover{background:rgba(255,255,255,.02)}
     <p class="sub">Zone maps, zone&#8594;job / finding annotations and structural notes for this screen and all 4 of its states. Extracted from the wireframes so the wireframes themselves stay clean grey-box UI.</p>
     
     <h2>Structure &amp; flow</h2>
-    <section class="note"><h4>on-page nav tree (resolution flow, SJ1)</h4><pre>Resolution flow (SJ1 - win share):
-
-win notification --- 1 tap (G1-equiv) ---+
-                                         v
-My Bets (History) -- tap won item --&gt; [Win Screen]   &lt;- current
-                                         v
-                          Share Card --&gt; external share (X / WhatsApp / Telegram)
-                                         '--&gt; See next events (secondary, F5)</pre>
-        <p class="ref">Flow position: IA/flows.md SJ1 (triggerNotif -&gt; Win Screen -&gt; cardOk -&gt;
-          shares). Serves SJ1 (primary) and EJ1 (the edge). Not on the MJ spine.</p></section><section class="note"><h4>states of this screen</h4><p class="ref">success (amount won, summary, Share Card), loading (card generating),
-          error (card not generated, T11 - text-share fallback), payout-pending (on-chain
-          settlement delay). Invoked overlay, account-bound, no auth axis.</p></section>
+    
     <h2>States &amp; annotations</h2>
     
     <details class="state" open>
@@ -156,15 +154,10 @@ My Bets (History) -- tap won item --&gt; [Win Screen]   &lt;- current
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Win Screen - success</span><span class="zdesc">amount won, resolution summary, Share Card; CTA Share / See next events</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>"You were right" + amount won + why</strong> -&gt; EJ1: the sense of edge (own forecast beat the market) is named here, with the plain resolution summary.</li>
-        <li><strong>Share Card auto-generated, Share is the primary CTA</strong> -&gt; SJ1: show the win to my circle with one tap; the card is the shareable artifact (IA/sitemap.md Share Card entity).</li>
-        <li><strong>"See next events" deliberately secondary</strong> -&gt; research F5: the first WIN triggers overconfidence and escalation, not loss. Celebratory but measured - no confetti loop, no "bet again" push.</li>
-        <li><strong>error = Share Card not generated (T11)</strong> -&gt; IA/flows.md SJ1 fallback: text-share (T13a), never a dead end; win still shown.</li>
-        <li><strong>payout-pending</strong> -&gt; on-chain settlement delay; the win and sharing are not gated on settlement (SJ1 share-impulse window preserved).</li>
-        <li><strong>Invoked overlay over a dimmed screen</strong> -&gt; reached 1 tap from a win notification (G1-equivalent), or from a resolved item in My Bets. No auth axis (account-bound).</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -176,15 +169,10 @@ My Bets (History) -- tap won item --&gt; [Win Screen]   &lt;- current
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Win Screen - loading</span><span class="zdesc">Share Card generation in progress</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>"You were right" + amount won + why</strong> -&gt; EJ1: the sense of edge (own forecast beat the market) is named here, with the plain resolution summary.</li>
-        <li><strong>Share Card auto-generated, Share is the primary CTA</strong> -&gt; SJ1: show the win to my circle with one tap; the card is the shareable artifact (IA/sitemap.md Share Card entity).</li>
-        <li><strong>"See next events" deliberately secondary</strong> -&gt; research F5: the first WIN triggers overconfidence and escalation, not loss. Celebratory but measured - no confetti loop, no "bet again" push.</li>
-        <li><strong>error = Share Card not generated (T11)</strong> -&gt; IA/flows.md SJ1 fallback: text-share (T13a), never a dead end; win still shown.</li>
-        <li><strong>payout-pending</strong> -&gt; on-chain settlement delay; the win and sharing are not gated on settlement (SJ1 share-impulse window preserved).</li>
-        <li><strong>Invoked overlay over a dimmed screen</strong> -&gt; reached 1 tap from a win notification (G1-equivalent), or from a resolved item in My Bets. No auth axis (account-bound).</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -196,15 +184,10 @@ My Bets (History) -- tap won item --&gt; [Win Screen]   &lt;- current
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Win Screen - payout-pending</span><span class="zdesc">payout settling on-chain; sharing not blocked</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>"You were right" + amount won + why</strong> -&gt; EJ1: the sense of edge (own forecast beat the market) is named here, with the plain resolution summary.</li>
-        <li><strong>Share Card auto-generated, Share is the primary CTA</strong> -&gt; SJ1: show the win to my circle with one tap; the card is the shareable artifact (IA/sitemap.md Share Card entity).</li>
-        <li><strong>"See next events" deliberately secondary</strong> -&gt; research F5: the first WIN triggers overconfidence and escalation, not loss. Celebratory but measured - no confetti loop, no "bet again" push.</li>
-        <li><strong>error = Share Card not generated (T11)</strong> -&gt; IA/flows.md SJ1 fallback: text-share (T13a), never a dead end; win still shown.</li>
-        <li><strong>payout-pending</strong> -&gt; on-chain settlement delay; the win and sharing are not gated on settlement (SJ1 share-impulse window preserved).</li>
-        <li><strong>Invoked overlay over a dimmed screen</strong> -&gt; reached 1 tap from a win notification (G1-equivalent), or from a resolved item in My Bets. No auth axis (account-bound).</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
@@ -216,15 +199,10 @@ My Bets (History) -- tap won item --&gt; [Win Screen]   &lt;- current
         <div class="cols">
           <div class="col-zones">
             <h4>Zone map</h4>
-            <div class="zstack"><div class="zbox"><span class="zname">Win Screen - error</span><span class="zdesc">Share Card not generated, SJ1 blocked - T11; text-share fallback</span></div></div>
+            <p class="muted">No inline zone chips on this state (inherits the layout of the base state).</p>
           </div>
           <div class="col-ann">
-            <div class="ann"><h4>Annotations <span class="muted">(zone to job / finding)</span></h4><ol><li><strong>"You were right" + amount won + why</strong> -&gt; EJ1: the sense of edge (own forecast beat the market) is named here, with the plain resolution summary.</li>
-        <li><strong>Share Card auto-generated, Share is the primary CTA</strong> -&gt; SJ1: show the win to my circle with one tap; the card is the shareable artifact (IA/sitemap.md Share Card entity).</li>
-        <li><strong>"See next events" deliberately secondary</strong> -&gt; research F5: the first WIN triggers overconfidence and escalation, not loss. Celebratory but measured - no confetti loop, no "bet again" push.</li>
-        <li><strong>error = Share Card not generated (T11)</strong> -&gt; IA/flows.md SJ1 fallback: text-share (T13a), never a dead end; win still shown.</li>
-        <li><strong>payout-pending</strong> -&gt; on-chain settlement delay; the win and sharing are not gated on settlement (SJ1 share-impulse window preserved).</li>
-        <li><strong>Invoked overlay over a dimmed screen</strong> -&gt; reached 1 tap from a win notification (G1-equivalent), or from a resolved item in My Bets. No auth axis (account-bound).</li></ol></div>
+            <p class="muted">No page-specific annotations (inherits the base state).</p>
           </div>
         </div>
       </div>
