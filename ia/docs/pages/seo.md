@@ -288,3 +288,129 @@ one dollar, with no wallet to start. The one-line "what this category covers" fi
 - **Empty category:** a category with no live events is still a valid page with a way out (upcoming or recently resolved), not a soft-404; consider `noindex` only while genuinely empty `[?]` (matches the empty-state wireframe).
 - Text not in images; server-render the first cards; reserve card heights (CLS).
 - Core Web Vitals budget as §1.
+
+---
+
+## 4. How It Works
+
+- Node: How It Works - Type: page - serves SJ2 (understand and trust the mechanics), HJ (help)
+- URL / slug: `/how-it-works` - Breadcrumbs: `Home > How it works`
+- Indexation: `index,follow` - the trust and explainer page; the ranking target for "how do prediction markets work" and "how to bet on events" intent
+
+This is a genuine content page (not user content), so the copy below is real ships-copy.
+
+### A. Meta tags
+
+- `title` (<= 60): **How prediction markets work - Predict Market** (44 chars)
+- `meta description` (<= 155): **See how betting on real-world events works: pick an event, read the odds in plain language, back YES or NO, and see how it resolves. Bet from $1.** (145 chars)
+- `canonical`: `{ROOT}/how-it-works`
+- `hreflang`: `en` -> `{ROOT}/how-it-works` (more locales `[?]`)
+- `robots`: `index,follow`
+- `og:title`: How prediction markets work; `og:description`: the short explainer line; `og:type`: `website`; `og:url`: `{ROOT}/how-it-works`; `og:image`: `{ROOT}/og/how-it-works.png` (`[?]`)
+- `twitter:card`: `summary_large_image`; mirrors OG
+
+### B. Heading structure
+
+- `H1`: **How it works** (the product heading; the query "prediction markets" is carried by the title and the first H2)
+- `H2` in mobile block order:
+  1. **What a prediction market is**
+  2. **Pick an event and read the odds**
+  3. **Back YES or NO**
+  4. **Why the odds move**
+  5. **How events resolve**
+  6. **Your money and safety**
+  7. **Common questions**
+
+### C. Ready SEO body text
+
+**What a prediction market is.** A prediction market lets you back your opinion on a real-world
+event with a real stake. Each event is a yes-or-no question, like whether something will happen
+by a date. You bet YES or NO, and you earn or lose based on the outcome.
+
+**Pick an event and read the odds.** Every event shows its odds as a plain-language number,
+plus a one-line why and the news behind it. The odds are the current price, not a fixed quote.
+
+**Back YES or NO.** Choose a side and an amount. The minimum is one dollar and the default is
+five. You can browse and build your bet before you connect a wallet; you add funds by card or
+crypto only when you confirm, and the fee is shown before you confirm.
+
+**Why the odds move.** The odds are set by what people bet. When more money backs YES, YES costs
+more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the
+outcome, so reading an event early and being right is worth more.
+
+**How events resolve.** Each event states its resolution rule up front. The team resolves it
+against the real-world outcome, and you can see the record of resolved events. If you were
+right, you can see it and share it; if not, you can see what happened.
+
+**Your money and safety.** Funds are held in USDC, one to one, and we never lend it out. You
+can add or withdraw at any time. The fee for a bet is shown before you confirm.
+
+**Common questions.** Reuses the home FAQ set (do I need crypto to start, the smallest bet, how
+an event resolves), plus one: **Can I lose more than I bet?** No. Your loss is limited to what
+you staked on the bet.
+
+### D. Structured data
+
+- `WebPage` + `BreadcrumbList` (`Home > How it works`).
+- `FAQPage` - the "Common questions" block.
+- `schema.org/HowTo` is declined: Google deprecated HowTo rich results (2023), so it earns no
+  enhanced result and adds risk. A plain `WebPage` with clear headings is the honest choice.
+
+### E. Optimization checklist
+
+- Exactly one `H1`; evergreen, indexable content; no thin or duplicate text.
+- Crawlable `<a>` to Event Feed and the categories (the page CTA is "Browse events"); the home and footer link IN to this page.
+- FAQ Q&A is in the DOM (crawlable), matching the visible `FAQPage` schema.
+- Text not in images; canonical self-referential.
+- Core Web Vitals budget as §1.
+
+---
+
+## 5. Public Profile
+
+- Node: Public Profile - Type: page - serves SJ1 / SJ2 (reputation, track record as trust)
+- URL / slug: `/u/{handle}` - Breadcrumbs: `Home > {handle}`
+- Indexation: `index,follow` by default, with a per-user opt-out to `noindex` `[?]` (privacy pass). The private self-view (My Profile, `/profile`) is always `noindex` (policy table).
+
+Stats, the handle, and figures are user data and are never voice-rewritten; below they are
+template slots `{...}`. Only public fields are ever indexed - never email, wallet, or balance.
+
+### A. Meta tags
+
+- `title` (template, <= 60): **{Handle} - track record - Predict Market**. Example (handle "alex"): **alex - track record - Predict Market** (36 chars).
+- `meta description` (template, <= 155): **See {handle}'s prediction track record on Predict Market: resolved events, the calls that were right, and current bets.** Example: **See alex's prediction track record on Predict Market: resolved events, the calls that were right, and current bets.** (115 chars)
+- `canonical`: `{ROOT}/u/{handle}`
+- `hreflang`: `en` -> `{ROOT}/u/{handle}` (more locales `[?]`)
+- `robots`: `index,follow` (per-user opt-out -> `noindex` `[?]`)
+- `og:title`: {handle} on Predict Market; `og:description`: the short track-record line; `og:type`: `profile`; `og:url`: `{ROOT}/u/{handle}`; `og:image`: `{ROOT}/og/u/{handle}.png` (`[?]`)
+- `twitter:card`: `summary_large_image`; mirrors OG
+
+### B. Heading structure
+
+- `H1`: **{handle}** (the public handle or display name; exactly one H1)
+- `H2` in mobile block order:
+  1. **Track record** (resolved calls and the record)
+  2. **Current bets** (public bets only)
+  3. **Recent activity**
+
+### C. Ready SEO body text
+
+**Evergreen line (reusable).** This is {handle}'s public track record on Predict Market. The
+numbers count resolved events only. Follow real-world events and back your opinion with a real
+stake. The remaining content (record, current bets, activity) is the user's own data.
+
+### D. Structured data
+
+- `ProfilePage` (schema.org/ProfilePage) - the honest fit for a person's public profile.
+- `Person` - `name` / handle, public fields only.
+- `BreadcrumbList` - `Home > {handle}`.
+
+### E. Optimization checklist
+
+- Exactly one `H1` = the handle; `index,follow` by default with a per-user `noindex` opt-out `[?]`.
+- The private self-view `/profile` is `noindex` (policy table); do not let it and `/u/{handle}` index the same content.
+- Only public fields are indexed - never email, wallet address, or balance (PII).
+- Crawlable `<a>` from the profile to the user's public events.
+- The handle in the URL is stable; a rename sets a `301` from the old handle `[?]`.
+- **Thin profile:** a profile with no resolved bets is thin; consider `noindex` until it has public content `[?]`.
+- Canonical self-referential; text not in images; Core Web Vitals budget as §1.
