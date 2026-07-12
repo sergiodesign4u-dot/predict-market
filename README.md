@@ -48,7 +48,7 @@ The old→new folder map is recorded in [`STRUCTURE.md`](./STRUCTURE.md).
 | Foundation Research | ✅ Done (competitors, benchmark, Lean UX Canvas, AARRR, UX patterns, synthesis; screens captured) |
 | User Research (Personas + JTBD) | ✅ Done |
 | CJM (As-Is + To-Be) | ✅ Done (Alex x MJ; As-Is emotional curve + 5 growth zones, To-Be map + MVP backlog; 2 pages) |
-| Information Architecture (Basic + Detailed) | ✅ Done (sources + 3 visualizations, synced) |
+| Information Architecture (Basic + Detailed) | ✅ Done - Basic (flows + concept-map by intent) + Detailed (overview + sitemap); flows color-coded by outcome + traced to CJM, jobs x screens matrix, no orphans |
 | Wireframes | ✅ Done (99 pages: all screens + states + Favorites view + Event Detail tabs, flow-linked, header / nav wired, critique pass) |
 | Voice | ✅ Done (5 principles, lexicon, forbidden list, per-element rules; all 99 pages rewritten) |
 | Concept | ⬜ Not started |

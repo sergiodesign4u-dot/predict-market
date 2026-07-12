@@ -2,7 +2,7 @@
 
 > Status: wireframe build complete (2026-06-28). Navigation design complete; the
 > wireframe build pass (below) revises several structural decisions. Every screen in
-> the S6 screen tree is built (orphans [SIROTA] excepted, by design).
+> the S6 screen tree is built (orphans [ORPHAN] excepted, by design).
 > Built from: personas.md · jtbd.md · research.md
 
 ---
@@ -262,10 +262,23 @@ Objects mentioned in product docs but not mapped to a confirmed job. Included he
 
 ---
 
+## Concept sitemap (by intent)
+
+Screens grouped by what Alex is trying to do (not by site section). Each screen carries its job tag; a screen with no job is `[ORPHAN]`. States (empty / error / loading) live in the flows, not here; page contents live in the detailed layer. This is the concept view rendered in `ia/concept-map.html`. Clusters A to D mirror the CJM To-Be journey (Find -> Stake -> Follow / settle -> Share).
+
+- **A. Find an event worth a stake:** Event Feed (FJ1), Category pages (FJ1), Favorites (FJ1), Event Detail (FJ2 / MJ)
+- **B. Put real skin in the game:** Event Detail bet panel (MJ), Sign In / Register (MJ gate), Deposit (FJ4), Wallet (FJ4), Confirm / processing (MJ)
+- **C. Follow and settle my stake:** Active Bets, Active + History (EJ1), Win Screen (MJ), Loss Screen (FJ5 + EJ3), Notifications (EJ1)
+- **D. Prove I was right, share:** Win Screen share (SJ1), Public Profile (SJ2), Share Card (SJ1)
+- **E. Understand and trust the platform:** How It Works (EJ2), My Profile / account hub (EJ2)
+- **`[ORPHAN]`** (no job): Settings, Leaderboard, Help / FAQ
+
+The section-grouped screen inventory below stays as the fuller reference; this intent view is the concept map the flows and the detailed layer build on.
+
 ## Screens
 
 > Notation:
-> Job in `(parentheses)` = job from jtbd.md this screen closes. No job = `[SIROTA]`.
+> Job in `(parentheses)` = job from jtbd.md this screen closes. No job = `[ORPHAN]`.
 > ⭐ PRIMARY = Alex (News Junkie). 🥈 SECONDARY = Dan (Crypto Native).
 > Screens without persona mark serve both.
 > States (empty, error, loading) are NOT screens - they are states of the screens below.
@@ -435,7 +448,7 @@ Notifications                                (FJ1 · FJ5)    ⭐ PRIMARY + 🥈 
 **Notifications** - list of unread and recent alerts: odds moved significantly · event deadline approaching · position resolved · new event in followed category. Tapping any item navigates to the relevant screen (Event Detail or Active Bets). Notification types map directly to the hot/warm return signals in aarrr.md retention model (D1–D3).
 States: loading (fetching list) - empty (no notifications yet - new user or no events followed) - error (notifications failed to load - retry CTA) - push-permission-missing (OS push denied: show in-app banner "Enable notifications to get live updates" with system settings deep-link).
 
-Note: Settings / Notification Preferences remains `[SIROTA]` - configuring which notifications you receive is not a confirmed job. The list screen (above) is sufficient for MVP. [?] Q-notif-prefs open question: does the user need per-event mute controls, or is category-level preference sufficient? Cannot be derived from current research - defer to user testing.
+Note: Settings / Notification Preferences remains `[ORPHAN]` - configuring which notifications you receive is not a confirmed job. The list screen (above) is sufficient for MVP. [?] Q-notif-prefs open question: does the user need per-event mute controls, or is category-level preference sufficient? Cannot be derived from current research - defer to user testing.
 
 ---
 
@@ -486,15 +499,15 @@ How It Works                                 (FJ4 · EJ2)    ⭐ PRIMARY
 
 ---
 
-### ORPHANS `[SIROTA]` - no confirmed job maps here
+### ORPHANS `[ORPHAN]` - no confirmed job maps here
 
 Screens referenced in product docs but not derived from any jtbd.md job.
 Do not build until a job is confirmed.
 
 ```
-Settings / Notification Preferences         [SIROTA]        - notification prefs are adjacent to FJ1 return path but no job in jtbd.md requires a settings screen
-Leaderboard                                 [SIROTA]        - no confirmed job; SJ2 is served by Profile; leaderboard is a view, not a job-closing screen
-Help / FAQ                                  [SIROTA]        - EJ2 is served by Deposit + How It Works; a generic FAQ adds friction without closing a job
+Settings / Notification Preferences         [ORPHAN]        - notification prefs are adjacent to FJ1 return path but no job in jtbd.md requires a settings screen
+Leaderboard                                 [ORPHAN]        - no confirmed job; SJ2 is served by Profile; leaderboard is a view, not a job-closing screen
+Help / FAQ                                  [ORPHAN]        - EJ2 is served by Deposit + How It Works; a generic FAQ adds friction without closing a job
 ```
 
 ---
@@ -557,7 +570,7 @@ These screens are reached only inside a flow, triggered by a user action. They a
 |---|---|---|
 | **Public Profile** | Deferred to post-MVP (G3) | Reachable only via external shared-card link for MVP. No in-app discovery at 10-20 curated markets: users do not browse others' track records unprompted. In-app path added when leaderboard or social discovery is confirmed. |
 | **Search** | Deferred until catalog scale | At 10-20 curated markets, users scan the Event Feed; they do not search. Search does not close a confirmed job at this scale. When added, it attaches to the Events tab under FJ1 - not a bottom slot. |
-| **Leaderboard** | [SIROTA] | No confirmed job. SJ2 is served by My Profile and Public Profile. Leaderboard is a view over profiles, not a job-closing destination. |
+| **Leaderboard** | [ORPHAN] | No confirmed job. SJ2 is served by My Profile and Public Profile. Leaderboard is a view over profiles, not a job-closing destination. |
 | **Responsible-play slot (D-logic)** | Reserved, post-MVP, not built | Account-level deposit and loss limits, cooldown period, self-exclusion. Mandatory for Brazil Phase 2 (Law 14.790 / Ordinance 1,231 self-exclusion and responsible-gambling requirements). Do not discover this late. |
 
 ---
@@ -680,7 +693,7 @@ desktop question; none of them changes a mobile decision.
 - **Avatar dropdown (desktop):** collapsed by default, opens on click. Populated
   from OUR IA only, not from competitor menus: My Profile (SJ1/SJ2), My Bets
   (EJ1), Wallet / Deposit (FJ4), How It Works (FJ4/EJ2), Logout. Do NOT add
-  Leaderboard (it is [SIROTA]), Rewards, or APIs (not our product).
+  Leaderboard (it is [ORPHAN]), Rewards, or APIs (not our product).
 - **How It Works placement:** removed from any persistent header bar position; it
   lives in the footer and in the avatar dropdown. Pre-deposit access is preserved
   (footer plus dropdown, both reachable before deposit).
@@ -905,7 +918,7 @@ One systemic gap was found and closed during tracing: FJ1 / FJ5 / EJ3 depended o
 | **S11** | Simultaneous resolutions: show a sequence of separate Win/Loss screens, swipeable. No aggregated Resolution Summary screen at MVP. Wireframe-spec detail, not a navigation slot. |
 
 **Backlog (open):**
-- Settings / Notification Preferences - remains `[SIROTA]` until a job is confirmed.
+- Settings / Notification Preferences - remains `[ORPHAN]` until a job is confirmed.
 - Search - deferred until catalog scale (see Navigation - Deferred section).
 
 ---

@@ -41,9 +41,12 @@ NAV = [
     ("item", "cjm-as-is", "CJM As-Is", "user-research/cjm-as-is.html", False),
     ("item", "cjm-to-be", "CJM To-Be", "user-research/cjm-to-be.html", False),
     ("divider", "Information Architecture"),
+    ("divider", "Basic layer"),
+    ("item", "flows", "Flows", "ia/flows.html", False),
+    ("item", "concept-map", "Concept map", "ia/concept-map.html", False),
+    ("divider", "Detailed layer"),
     ("item", "overview", "Overview", "ia/ia.html", False),
     ("item", "sitemap", "Sitemap", "ia/sitemap.html", False),
-    ("item", "flows", "Flows", "ia/flows.html", False),
     ("divider", "Plan"),
     ("item", "wireframes", "Wireframes", "wireframes/event-feed.html", False),
     ("item", "annotations", "Wireframe Annotations", "ia/annotations/index.html", False),
@@ -68,6 +71,7 @@ PAGES = {
     "ia/ia.html": "overview",
     "ia/sitemap.html": "sitemap",
     "ia/flows.html": "flows",
+    "ia/concept-map.html": "concept-map",
     "voice/voice.html": "voice",
 }
 

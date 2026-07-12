@@ -12,7 +12,7 @@ not `research/html/research.html`).
 | 01 | Foundation Research | `research/` | `research/research.html` | Done |
 | 02 | User Research (Personas + JTBD) | `user-research/` | `personas.html`, `jtbd.html` | Done |
 | 03 | CJM (As-Is + To-Be) | `user-research/` (lives inside User Research) | `cjm-as-is.html`, `cjm-to-be.html` | Done |
-| 04 | Information Architecture (Basic + Detailed) | `ia/` | `ia.html`, `sitemap.html`, `flows.html` | Done |
+| 04 | Information Architecture (Basic + Detailed) | `ia/` | Basic: `flows.html`, `concept-map.html`; Detailed: `ia.html`, `sitemap.html` | Done |
 | 05 | Wireframes | `wireframes/` | 99 pages | Done |
 | 06 | Voice | `voice/` | `voice/voice.html` | Done |
 | 07 | Concept | `concept/` | - | Not started |

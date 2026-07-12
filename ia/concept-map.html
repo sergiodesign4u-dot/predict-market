@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept Map - Prediction Market Platform</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── SIDEBAR ─────────────────────────────────────────── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 220px;
+    height: 100vh;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform .25s cubic-bezier(.4,0,.2,1);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar::-webkit-scrollbar { display: none; }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.open { display: block; }
+
+  .menu-toggle {
+    position: fixed;
+    top: 12px; left: 12px;
+    z-index: 201;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 36px; height: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 15px; height: 1.5px;
+    background: var(--text);
+    border-radius: 1px;
+  }
+
+  .sidebar-brand {
+    padding: 20px 16px 16px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .sidebar-project-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+
+  .sidebar-page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    padding: 7px 16px;
+    transition: background .15s;
+    cursor: pointer;
+    user-select: none;
+  }
+  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
+  .sidebar-page-link.active { color: var(--accent); }
+  .sidebar-page-link.planned {
+    color: var(--muted);
+    cursor: default;
+    opacity: .6;
+  }
+  .sidebar-page-link.planned::after {
+    content: 'Soon';
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
+
+  .sidebar-sub { padding: 2px 0 8px; }
+
+  .sidebar-sub-link {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 5px 16px 5px 28px;
+    transition: color .15s;
+    position: relative;
+  }
+  .sidebar-sub-link:hover { color: var(--text); }
+  .sidebar-sub-link.active { color: var(--text); }
+  .sidebar-sub-link.active::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 50%; transform: translateY(-50%);
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-divider {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 16px 16px 6px;
+    opacity: .45;
+  }
+
+  /* ── LAYOUT ─────────────────────────────────────────── */
+  main {
+    padding: 60px 20px 80px;
+  }
+
+  @media (min-width: 860px) {
+    .sidebar { transform: translateX(0); transition: none; }
+    .sidebar-overlay { display: none !important; }
+    .menu-toggle { display: none; }
+    main { margin-left: 220px; padding: 48px 48px 120px; }
+  }
+
+  section {
+    padding-top: var(--gap);
+    margin-top: var(--gap);
+    border-top: 1px solid var(--border);
+  }
+  section:first-child { border-top: none; }
+
+  /* ── TYPOGRAPHY ─────────────────────────────────────── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    margin-top: 32px;
+  }
+  h3:first-child { margin-top: 0; }
+
+  p {
+    color: #aaa;
+    margin-bottom: 12px;
+    max-width: 680px;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  .lead {
+    font-size: 16px;
+    color: #bbb;
+    max-width: 640px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero { padding-top: 0; border-top: none; }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid rgba(200,255,0,.2);
+  }
+  .tag.grey {
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    border-color: var(--border);
+  }
+
+  /* ── TABLES ─────────────────────────────────────────── */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    background: var(--surface);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #c8c8c8;
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,.015); }
+
+  td.label {
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  td.mono { font-family: var(--mono); font-size: 12px; }
+  td.muted { color: var(--muted); }
+
+  .status-confirmed { color: var(--green); font-weight: 600; }
+  .status-hyp { color: #ffc04d; font-weight: 600; }
+  .status-q { color: var(--muted); }
+
+  /* ── MISC ───────────────────────────────────────────── */
+  .divider { height: 1px; background: var(--border); margin: 28px 0; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* ── GROUNDRULE ──────────────────────────────────────── */
+  .groundrule {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(95,168,255,.05);
+    border: 1px solid rgba(95,168,255,.15);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-top: 16px;
+    font-size: 12px;
+    color: #aac4e0;
+  }
+
+  .source-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  /* ── MERMAID ─────────────────────────────────────────── */
+  .mermaid-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 24px;
+    overflow-x: auto;
+    margin-top: 20px;
+  }
+  .mermaid { min-width: 400px; }
+
+  /* ── CAPTION ─────────────────────────────────────────── */
+  .caption {
+    font-size: 13px;
+    color: #9a9a9a;
+    max-width: 780px;
+    margin-bottom: 4px;
+    line-height: 1.7;
+  }
+  .caption strong { color: var(--text); }
+
+  /* ── INTENT LEGEND ───────────────────────────────────── */
+  .intent-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 4px;
+  }
+  .intent-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #c8c8c8;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: var(--surface);
+  }
+  .intent-chip .dot {
+    width: 9px; height: 9px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── NAV SPLIT ───────────────────────────────────────── */
+  .split-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+  }
+  @media (max-width: 760px) { .split-grid { grid-template-columns: 1fr; } }
+
+  .split-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 18px 20px;
+  }
+  .split-col-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .split-col.global .split-col-label { color: var(--accent); }
+  .split-col.deep   .split-col-label { color: var(--blue); }
+  .split-col.ctx    .split-col-label { color: #e8c04d; }
+  .split-col-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .split-item {
+    font-size: 12.5px;
+    color: #bbb;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .split-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .split-item strong { color: var(--text); font-weight: 600; }
+
+  /* ── MATRIX ──────────────────────────────────────────── */
+  .matrix-table th, .matrix-table td { border-right: 1px solid var(--border); }
+  .matrix-table th:last-child, .matrix-table td:last-child { border-right: none; }
+  .matrix-table thead th.cell,
+  .matrix-table thead th.cov { text-align: center; }
+  .matrix-table td.cell {
+    text-align: center;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+  .matrix-table td.hit {
+    background: rgba(200,255,0,.06);
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .matrix-table td.jobcell { white-space: nowrap; }
+  .matrix-table td.jobcell .jcode {
+    font-family: var(--mono);
+    font-weight: 700;
+    color: var(--text);
+    font-size: 12px;
+  }
+  .matrix-table td.jobcell .jd {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 400;
+    white-space: normal;
+    max-width: 210px;
+    margin-top: 2px;
+  }
+  .matrix-table td.cov, .matrix-table th.cov {
+    text-align: center;
+    font-family: var(--mono);
+    font-weight: 700;
+    color: var(--green);
+    background: rgba(95,219,143,.05);
+  }
+  .matrix-table tfoot td {
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    text-align: center;
+    color: var(--green);
+    background: var(--surface);
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .matrix-table tfoot td.foot-label {
+    text-align: left;
+    font-family: var(--font);
+    color: var(--muted);
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: .08em;
+    font-weight: 700;
+  }
+
+  .legend-inline {
+    font-size: 12px;
+    color: #999;
+    margin-top: 18px;
+    line-height: 1.9;
+    max-width: none;
+  }
+  .legend-inline code {
+    font-family: var(--mono);
+    color: #c8c8c8;
+  }
+  .ok-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(95,219,143,.06);
+    border: 1px solid rgba(95,219,143,.2);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: #9fdcb6;
+  }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a href="../user-research/personas.html" class="sidebar-page-link">Personas</a>
+    <a href="../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a href="../user-research/cjm-as-is.html" class="sidebar-page-link">CJM As-Is</a>
+    <a href="../user-research/cjm-to-be.html" class="sidebar-page-link">CJM To-Be</a>
+    <div class="sidebar-divider">Information Architecture</div>
+    <div class="sidebar-divider">Basic layer</div>
+    <a href="../ia/flows.html" class="sidebar-page-link">Flows</a>
+    <a class="sidebar-page-link active">Concept map</a>
+    <div class="sidebar-sub">
+      <a href="#schema" class="sidebar-sub-link">Concept sitemap</a>
+      <a href="#nav" class="sidebar-sub-link">Navigation model</a>
+      <a href="#matrix" class="sidebar-sub-link">Trace matrix</a>
+    </div>
+    <div class="sidebar-divider">Detailed layer</div>
+    <a href="../ia/ia.html" class="sidebar-page-link">Overview</a>
+    <a href="../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
+    <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a class="sidebar-page-link planned">Concept</a>
+    <a class="sidebar-page-link planned">UI + Visual</a>
+    <a class="sidebar-page-link planned">Tokens + Components</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<main>
+
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-meta">
+      <span class="tag">Concept Map</span>
+      <span class="tag grey">Screens by intent</span>
+      <span class="tag grey">Source: ia/docs/sitemap.md</span>
+    </div>
+    <h1>Concept Map</h1>
+    <p class="lead">The concept layer of the IA: screens grouped by the user's intent, the navigation model that reaches them, and the trace matrix that proves every job and every screen is covered.</p>
+
+    <div class="groundrule">
+      <span style="font-size:16px;flex-shrink:0">&#9432;</span>
+      <span><strong style="color:#c8ddf0">Reading order:</strong> the concept sitemap shows <em>what</em> screens exist and why (grouped by intent). States (empty, error, loading) live in the flows layer; page contents live in the detailed wireframe layer, not here.</span>
+    </div>
+  </section>
+
+  <!-- ── 1 · CONCEPT SITEMAP ──────────────────────────── -->
+  <section id="schema">
+    <div class="section-label">01 / Concept sitemap</div>
+    <h2>Concept sitemap by intent</h2>
+
+    <p class="caption"><strong>Concept map - screens grouped by user intent.</strong> States live in the flows; page contents live in the detailed layer. Each node is a screen carrying its job tag. Clusters <strong>A &rarr; B &rarr; C &rarr; D</strong> mirror the CJM To-Be journey: Find &rarr; Stake &rarr; Follow / settle &rarr; Share. Cluster E is the trust anchor that runs alongside; the ORPHAN cluster holds screens that no confirmed job maps to (not built).</p>
+
+    <div class="intent-legend">
+      <span class="intent-chip"><span class="dot" style="background:#c8ff00"></span>A &middot; Find an event</span>
+      <span class="intent-chip"><span class="dot" style="background:#5fa8ff"></span>B &middot; Put real skin in the game</span>
+      <span class="intent-chip"><span class="dot" style="background:#5fdb8f"></span>C &middot; Follow and settle</span>
+      <span class="intent-chip"><span class="dot" style="background:#b98fff"></span>D &middot; Prove I was right</span>
+      <span class="intent-chip"><span class="dot" style="background:#e8c04d"></span>E &middot; Understand and trust</span>
+      <span class="intent-chip"><span class="dot" style="background:#444"></span>ORPHAN &middot; no job</span>
+    </div>
+
+    <div class="mermaid-wrap">
+      <div class="mermaid">
+graph TD
+  classDef find fill:#1e2a0e,stroke:#c8ff00,color:#e8e8e8
+  classDef stake fill:#0e2233,stroke:#5fa8ff,color:#e8e8e8
+  classDef follow fill:#122820,stroke:#5fdb8f,color:#e8e8e8
+  classDef prove fill:#20182c,stroke:#b98fff,color:#e8e8e8
+  classDef trust fill:#2a2410,stroke:#e8c04d,color:#e8e8e8
+  classDef orphan fill:#141414,stroke:#333,stroke-dasharray:5 3,color:#777
+
+  subgraph A["A - Find an event worth a stake"]
+    EF["Event Feed<br/>FJ1"]:::find
+    CAT["Category pages<br/>FJ1"]:::find
+    FAV["Favorites<br/>FJ1"]:::find
+    ED["Event Detail<br/>FJ2 / MJ"]:::find
+  end
+
+  subgraph B["B - Put real skin in the game"]
+    BP["Event Detail bet panel<br/>MJ"]:::stake
+    SI["Sign In / Register<br/>MJ gate"]:::stake
+    DEP["Deposit<br/>FJ4"]:::stake
+    WA["Wallet<br/>FJ4"]:::stake
+    CONF["Confirm / processing<br/>MJ"]:::stake
+  end
+
+  subgraph C["C - Follow and settle my stake"]
+    AB["Active Bets: Active + History<br/>EJ1"]:::follow
+    WS["Win Screen<br/>MJ"]:::follow
+    LS["Loss Screen<br/>FJ5 + EJ3"]:::follow
+    NT["Notifications<br/>EJ1"]:::follow
+  end
+
+  subgraph D["D - Prove I was right / share"]
+    WSH["Win Screen share<br/>SJ1"]:::prove
+    PP["Public Profile<br/>SJ2"]:::prove
+    SC["Share Card<br/>SJ1"]:::prove
+  end
+
+  subgraph E["E - Understand and trust the platform"]
+    HIW["How It Works<br/>EJ2"]:::trust
+    MP["My Profile / account hub<br/>EJ2"]:::trust
+  end
+
+  subgraph ORPH["ORPHAN - no confirmed job maps here"]
+    SET["Settings"]:::orphan
+    LB["Leaderboard"]:::orphan
+    HELP["Help / FAQ"]:::orphan
+  end
+
+  ED --> BP
+  BP --> CONF
+  CONF --> AB
+  WS --> WSH
+  LS --> AB
+      </div>
+    </div>
+    <p class="source-note">The dark arrows trace the journey spine: Event Detail opens the bet panel, Confirm carries the user into Active Bets, and a win flows on to the share surface. Non-spine screens (Category pages, Favorites, Sign In, Deposit, Wallet, Notifications, Public Profile, How It Works, account hub) sit inside their intent cluster without a spine edge.</p>
+  </section>
+
+  <!-- ── 2 · NAVIGATION MODEL ─────────────────────────── -->
+  <section id="nav">
+    <div class="section-label">02 / Navigation model</div>
+    <h2>Navigation model</h2>
+
+    <p>Navigation is derived from the job sequence, not a competitor tab bar. Each global entry maps to one intent cluster, so the nav bar and the concept sitemap tell the same story. Mobile is the source of truth (bottom nav, 4 slots plus a header bell); desktop is the same set re-expressed as a lean header.</p>
+
+    <h3>Global navigation - each entry is an intent cluster</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Entry</th><th>Opens</th><th>Intent cluster</th><th>Jobs served</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">Events <span style="color:var(--muted);font-weight:400">(slot 1)</span></td>
+            <td>Event Feed</td>
+            <td><strong style="color:var(--accent)">A</strong> &middot; Find an event</td>
+            <td class="mono">FJ1, FJ2, MJ</td>
+          </tr>
+          <tr>
+            <td class="label">My Bets <span style="color:var(--muted);font-weight:400">(slot 2)</span></td>
+            <td>Active Bets (Active + History)</td>
+            <td><strong style="color:var(--green)">C</strong> &middot; Follow and settle</td>
+            <td class="mono">EJ1, MJ, FJ5, EJ3</td>
+          </tr>
+          <tr>
+            <td class="label">Favorites <span style="color:var(--muted);font-weight:400">(slot 3)</span></td>
+            <td>Favorites view (a filter over the feed)</td>
+            <td><strong style="color:var(--accent)">A</strong> &middot; Find an event (return / watchlist)</td>
+            <td class="mono">FJ1</td>
+          </tr>
+          <tr>
+            <td class="label">Portfolio <span style="color:var(--muted);font-weight:400">(slot 4)</span></td>
+            <td>My Profile + portfolio summary (account hub)</td>
+            <td><strong style="color:#b98fff">D</strong> + <strong style="color:#e8c04d">E</strong> &middot; Prove / trust</td>
+            <td class="mono">SJ1, SJ2, FJ4</td>
+          </tr>
+          <tr>
+            <td class="label">Notifications <span style="color:var(--muted);font-weight:400">(header bell)</span></td>
+            <td>Notifications list (both breakpoints)</td>
+            <td><strong style="color:var(--green)">C</strong> &middot; Follow and settle (return trigger)</td>
+            <td class="mono">FJ1, FJ5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Tap count to the primary job (Alex, News Junkie)</h3>
+    <div class="groundrule">
+      <span style="font-size:16px;flex-shrink:0">&#9432;</span>
+      <span><strong style="color:#c8ddf0">MJ, real stake on an event, within the 3-tap rule.</strong> Events (Level 0) &rarr; tap an event card &rarr; <strong>Event Detail (1 tap)</strong>. The bet panel is already on Event Detail, so building the bet adds no navigation; <strong>Confirm in the panel fires the activation gate at 2 taps total</strong>. Bet intent is reachable in 1 tap, the gate fires at 2. Confirmed in sitemap.md Depth Map (better than the old 3-tap standalone Bet Screen path).</span>
+    </div>
+
+    <h3>Global / contextual / deep split</h3>
+    <div class="split-grid">
+      <div class="split-col global">
+        <div class="split-col-label">Global</div>
+        <div class="split-col-sub">Level 0. One tap from anywhere in the app.</div>
+        <div class="split-item"><strong>Events</strong> - Event Feed</div>
+        <div class="split-item"><strong>My Bets</strong> - Active Bets</div>
+        <div class="split-item"><strong>Favorites</strong> - Favorites view</div>
+        <div class="split-item"><strong>Portfolio</strong> - account hub</div>
+        <div class="split-item"><strong>Notifications</strong> - header bell + badge</div>
+      </div>
+      <div class="split-col deep">
+        <div class="split-col-label">Deep</div>
+        <div class="split-col-sub">Level 1. One tap below a Level 0 screen.</div>
+        <div class="split-item"><strong>Category page</strong> - from the second-level nav</div>
+        <div class="split-item"><strong>Event Detail</strong> - tap any event card</div>
+        <div class="split-item"><strong>Notifications list</strong> - header bell</div>
+        <div class="split-item"><strong>Wallet / Deposit</strong> - avatar menu, Portfolio hub</div>
+        <div class="split-item"><strong>How It Works</strong> - avatar menu + footer</div>
+      </div>
+      <div class="split-col ctx">
+        <div class="split-col-label">Contextual / invoked</div>
+        <div class="split-col-sub">Reached only inside a flow. Never a nav slot.</div>
+        <div class="split-item"><strong>Bet panel</strong> - inline on Event Detail</div>
+        <div class="split-item"><strong>Sign In / Register</strong> - dialog at the gate</div>
+        <div class="split-item"><strong>Deposit</strong> - dialog chained after Sign In</div>
+        <div class="split-item"><strong>Win / Loss Screen</strong> - invoked on resolution</div>
+        <div class="split-item"><strong>Public Profile</strong> - external shared-card link only</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3 · TRACE MATRIX ─────────────────────────────── -->
+  <section id="matrix">
+    <div class="section-label">03 / Trace matrix</div>
+    <h2>Trace matrix</h2>
+
+    <p>Jobs (rows) against screens (columns), from the sitemap.md Coverage Matrix. A checkmark means the screen genuinely participates in closing the job. An empty row would be an orphan job (no screen closes it); an empty column would be an orphan screen (no job needs it). The last column and the footer row carry the coverage counts, so any orphan would read as a zero.</p>
+
+    <div class="table-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Job</th>
+            <th class="cell">EF</th>
+            <th class="cell">ED</th>
+            <th class="cell">SI</th>
+            <th class="cell">DEP</th>
+            <th class="cell">BS</th>
+            <th class="cell">WS</th>
+            <th class="cell">LS</th>
+            <th class="cell">AB</th>
+            <th class="cell">BH</th>
+            <th class="cell">WA</th>
+            <th class="cell">MP</th>
+            <th class="cell">PP</th>
+            <th class="cell">HIW</th>
+            <th class="cell">NT</th>
+            <th class="cov">Screens</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="jobcell"><span class="jcode">MJ</span><span class="jd">real stake on an event</span></td>
+            <td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td>
+            <td class="cov">8</td>
+          </tr>
+          <tr>
+            <td class="jobcell"><span class="jcode">FJ1</span><span class="jd">find the event while it is still relevant</span></td>
+            <td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td>
+            <td class="cov">3</td>
+          </tr>
+          <tr>
+            <td class="jobcell"><span class="jcode">FJ2</span><span class="jd">understand why the market prices it that way</span></td>
+            <td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td>
+            <td class="cov">2</td>
+          </tr>
+          <tr>
+            <td class="jobcell"><span class="jcode">FJ3</span><span class="jd">bet without a crypto barrier</span></td>
+            <td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td>
+            <td class="cov">4</td>
+          </tr>
+          <tr>
+            <td class="jobcell"><span class="jcode">FJ4</span><span class="jd">feel confident the money is safe</span></td>
+            <td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell"></td>
+            <td class="cov">3</td>
+          </tr>
+          <tr>
+            <td class="jobcell"><span class="jcode">FJ5</span><span class="jd">survive a loss without chasing</span></td>
+            <td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td>
+            <td class="cov">3</td>
+          </tr>
+          <tr>
+            <td class="jobcell"><span class="jcode">EJ1</span><span class="jd">feel I understand better than most</span></td>
+            <td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td>
+            <td class="cov">5</td>
+          </tr>
+          <tr>
+            <td class="jobcell"><span class="jcode">EJ2</span><span class="jd">feel safe before the first deposit</span></td>
+            <td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell"></td>
+            <td class="cov">3</td>
+          </tr>
+          <tr>
+            <td class="jobcell"><span class="jcode">EJ3</span><span class="jd">exit a loss consciously</span></td>
+            <td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td>
+            <td class="cov">2</td>
+          </tr>
+          <tr>
+            <td class="jobcell"><span class="jcode">SJ1</span><span class="jd">show that I was right</span></td>
+            <td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td><td class="cell"></td>
+            <td class="cov">2</td>
+          </tr>
+          <tr>
+            <td class="jobcell"><span class="jcode">SJ2</span><span class="jd">build a public track record</span></td>
+            <td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell hit">&#10003;</td><td class="cell hit">&#10003;</td><td class="cell"></td><td class="cell"></td>
+            <td class="cov">2</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="foot-label">Jobs (coverage)</td>
+            <td>4</td><td>4</td><td>2</td><td>4</td><td>2</td><td>3</td><td>3</td><td>4</td><td>1</td><td>2</td><td>3</td><td>1</td><td>2</td><td>2</td>
+            <td class="cov" style="color:var(--muted)">-</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="ok-note">
+      <span style="font-size:14px">&#10003;</span>
+      <span><strong style="color:#c8ffd8">No orphan rows or columns.</strong> Every job has at least one screen (rows range 2 to 8) and every screen has at least one job (columns range 1 to 4). Per sitemap.md the matrix is closed.</span>
+    </div>
+
+    <p class="legend-inline">
+      <strong style="color:var(--text)">Column legend.</strong>
+      <code>EF</code> Event Feed &middot;
+      <code>ED</code> Event Detail &middot;
+      <code>SI</code> Sign In / Register &middot;
+      <code>DEP</code> Deposit &middot;
+      <code>BS</code> Bet panel on Event Detail (was the standalone Bet Screen) &middot;
+      <code>WS</code> Win Screen &middot;
+      <code>LS</code> Loss Screen &middot;
+      <code>AB</code> Active Bets &middot;
+      <code>BH</code> Bet History (History tab in My Bets) &middot;
+      <code>WA</code> Wallet &middot;
+      <code>MP</code> My Profile &middot;
+      <code>PP</code> Public Profile &middot;
+      <code>HIW</code> How It Works &middot;
+      <code>NT</code> Notifications.
+    </p>
+    <p class="source-note">Category pages (new browse screens) inherit the Event Feed FJ1 row rather than adding a separate column, to keep the matrix stable. BS is the inline Event Detail bet panel; its MJ / FJ3 coverage is unchanged from the dissolved standalone Bet Screen.</p>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'dark',
+  themeVariables: {
+    background: '#161616',
+    primaryColor: '#1e2a0e',
+    primaryTextColor: '#e8e8e8',
+    primaryBorderColor: '#c8ff00',
+    lineColor: '#555',
+    secondaryColor: '#1a1a1a',
+    tertiaryColor: '#222',
+    edgeLabelBackground: '#0e0e0e',
+    nodeTextColor: '#e8e8e8',
+    mainBkg: '#1a1a1a',
+    nodeBorder: '#333',
+    clusterBkg: '#161616',
+    clusterBorder: '#2a2a2a',
+    titleColor: '#c8ff00',
+    fontFamily: 'Inter, system-ui, sans-serif'
+  }
+});
+
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+const toggle = document.getElementById('menuToggle');
+
+const openSidebar = () => { sidebar.classList.add('open'); overlay.classList.add('open'); };
+const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+
+toggle.addEventListener('click', openSidebar);
+overlay.addEventListener('click', closeSidebar);
+
+document.querySelectorAll('.sidebar-sub-link').forEach(l => {
+  l.addEventListener('click', () => { if (window.innerWidth < 860) closeSidebar(); });
+});
+
+const subLinks = document.querySelectorAll('.sidebar-sub-link');
+const sectionIds = [...subLinks].map(l => l.getAttribute('href').slice(1));
+const sections = sectionIds.map(id => document.getElementById(id));
+
+const setActive = id => {
+  subLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+};
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) setActive(entry.target.id);
+  });
+}, { rootMargin: '-15% 0px -75% 0px' });
+
+sections.forEach(s => s && observer.observe(s));
+if (sections[0]) setActive(sections[0].id);
+</script>
+</body>
+</html>

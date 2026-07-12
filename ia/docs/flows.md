@@ -5,6 +5,10 @@
 > Success terminals: T14/mjDone, fj2Done, fj5Done, sj1Done. Error/churn terminals T1-T3, T5-T12, T13a, T13b, T15-T16 each have at least one recovery edge. T4 retired as terminal (replaced by escalation-path edge in FJ5).
 >
 > Wireframe build pass (re-sync with ia/docs/sitemap.md "Wireframe build pass"): the flow logic is unchanged, only the surfaces are renamed. **BS1 / BS2 are the Event Detail bet panel** (build the bet inline, then execute), not a standalone Bet Screen. **SI (Sign In) and DEP (Deposit) are in-page dialogs** opened over the current page (close stays on the page; Sign In chains to Deposit). The sequence build -> confirm -> gate -> S5 reconcile -> execute -> Active Bets is the same. A category page (Politics/Crypto/Culture/General) is an optional browse node between Event Feed and Event Detail; it is omitted from the charts to keep them stable (it inherits the Event Feed -> Event Detail edge).
+>
+> **Outcome coloring (added this pass):** every Mermaid flow is colored by outcome - green = the happy-path start node + the job-closed success terminal; red = a true dead-end (a terminal with no path back to the goal); grey/neutral = every intermediate screen, decision, and loading/empty/error node that recovers. Verified: all error and churn terminals here (T6, T7, T9, T10, T12, T16 and the rest) carry a recovery edge back into the flow, so none are true dead-ends - the red `dead` class stays defined but unused.
+>
+> **Traces to the CJM To-Be** (`user-research/docs/cjm-to-be.md`, Alex x MJ). The 7 To-Be steps: 1. arrive on a live event, not a signup; 2. understand the market before any account; 3. tap YES/NO and see the bet intent before signing in; 4. sign in and fund with one funds-safety line; 5. confirm with the price reconciled; 6. follow your bet with live context; 7. resolution designed both ways. Per-flow mapping is under each diagram.
 
 ---
 
@@ -48,7 +52,8 @@ flowchart TD
     triggerLink(["deep link from news or notification to event"])
 
     triggerFeed --> EF["Event Feed"]
-    EF --> found{"found a relevant event?"}
+    EF --> feedLoad["Loading: fetching live events"]
+    feedLoad --> found{"found a relevant event?"}
     found -->|"no"| T6(["T6 - empty feed, no matching events"])
     T6 -->|"subscribe: notify me of new events in category"| EF
 
@@ -80,7 +85,8 @@ flowchart TD
     DEP --> moreInfo{"wants to understand fund safety?"}
     moreInfo -->|"yes"| HIW["How It Works"]
     HIW --> DEP
-    moreInfo -->|"no"| depOk{"deposit successful?"}
+    moreInfo -->|"no"| depProcessing["Loading: processing your payment"]
+    depProcessing --> depOk{"deposit successful?"}
     depOk -->|"card declined"| T2(["T2 - card declined"])
     T2 -->|"try another card or connect a USDC wallet"| DEP
     depOk -->|"KYC rejected"| T1(["T1 - KYC rejected: connect USDC wallet (no KYC) or contact support"])
@@ -100,14 +106,32 @@ flowchart TD
     T16 -->|"re-enter at new price"| BS1
     priceConfirm -->|"yes"| BS2
 
-    BS2 --> techOk{"bet registered on-chain?"}
+    BS2 --> betProcessing["Loading: confirming your bet on-chain"]
+    betProcessing --> techOk{"bet registered on-chain?"}
     techOk -->|"no"| T3(["T3 - bet registration failed on-chain"])
     T3 -->|"retry"| BS2
     T3 -->|"check balance"| WA["Wallet"]
     techOk -->|"yes"| AB["Active Bets"]
 
     AB --> mjDone(["T14 - MJ closed: bet placed, user follows the event"])
+
+    classDef success fill:#12351f,stroke:#3fb56b,color:#eafff9;
+    classDef dead fill:#3a1618,stroke:#e5484d,color:#ffd7d7;
+    classDef neutral fill:#1b1b1b,stroke:#5a5a5a,color:#dddddd;
+    class triggerFeed,mjDone success;
+    class triggerLink,EF,feedLoad,found,T6,ED,ctxOk,T8,wantsBet,T7,BS1,confirmedIntent,personaType,SI,authOk,T5,DEP,moreInfo,HIW,depProcessing,depOk,T2,T1,S5,walletOk,T15,priceConfirm,T16,BS2,betProcessing,techOk,T3,WA,AB neutral;
 ```
+
+**Loading states (async waits, neutral):** three inline loading nodes mark the real
+waits - `feedLoad` (fetching the live feed) before the feed decision, `depProcessing`
+(processing the card payment) before the deposit result, and `betProcessing` (confirming
+the bet on-chain) before the on-chain result.
+
+**Traces to CJM To-Be (Alex x MJ, steps 1-7):** story-led feed (1) -> explain the number
+on Event Detail (2) -> tap YES/NO, bet intent before the wallet, gate at Confirm (3) ->
+Sign In + fund with the funds-safety line (4) -> Confirm with the S5 price reconcile (5) ->
+follow the bet in Active Bets (6) -> resolution both ways (7). Source:
+`user-research/docs/cjm-to-be.md`.
 
 **Card trigger-entry (Event Feed -> Event Detail, two variants of the same edge):**
 Tapping a card never places a bet and never bypasses Event Detail. Two ways into
@@ -147,7 +171,17 @@ flowchart TD
     hasEdge -->|"yes, confident in own position"| BS["Event Detail bet panel"]
 
     BS --> fj2Done(["FJ2 closed - understood the odds, moved to bet"])
+
+    classDef success fill:#12351f,stroke:#3fb56b,color:#eafff9;
+    classDef dead fill:#3a1618,stroke:#e5484d,color:#ffd7d7;
+    classDef neutral fill:#1b1b1b,stroke:#5a5a5a,color:#dddddd;
+    class trigger,fj2Done success;
+    class EF,ED,ctxOk,T8,understood,T7,hasEdge,watcher,BS neutral;
 ```
+
+**Traces to CJM To-Be step 2** (understand the market before any account: explain the
+number, inline probability + one-line why + the story, spectator language), feeding step 3
+(bet intent) for the user who finds an edge. Source: `user-research/docs/cjm-to-be.md`.
 
 ---
 
@@ -189,7 +223,17 @@ flowchart TD
     nextAction -->|"browses events"| EF
 
     EF --> fj5Done(["FJ5 + EJ3 closed - exited consciously, no impulse to chase"])
+
+    classDef success fill:#12351f,stroke:#3fb56b,color:#eafff9;
+    classDef dead fill:#3a1618,stroke:#e5484d,color:#ffd7d7;
+    classDef neutral fill:#1b1b1b,stroke:#5a5a5a,color:#dddddd;
+    class triggerNotif,fj5Done success;
+    class nextAction,triggerManual,AB,seesResolved,T9,LS,readsNote,pause,sessionHook,BS,escalationConfirm,T10,EF neutral;
 ```
+
+**Traces to CJM To-Be step 7, loss half** (resolution designed both ways: "Here's what
+happened" + context + a next step that is NOT "bet again"; the pause / escalation node
+embodies the F5 loss-chasing guardrail). Source: `user-research/docs/cjm-to-be.md`.
 
 ---
 
@@ -227,4 +271,14 @@ flowchart TD
 
     %% Secondary path: see next events (lower-emphasis CTA, overconfidence risk per F5)
     WS -->|"secondary: see next events (overconfidence risk per F5)"| EF
+
+    classDef success fill:#12351f,stroke:#3fb56b,color:#eafff9;
+    classDef dead fill:#3a1618,stroke:#e5484d,color:#ffd7d7;
+    classDef neutral fill:#1b1b1b,stroke:#5a5a5a,color:#dddddd;
+    class triggerNotif,sj1Done success;
+    class WS,triggerManual,ABhistory,cardOk,T11,T13a,EF,shares,MP,T12,ext,newUser,T13b neutral;
 ```
+
+**Traces to CJM To-Be step 7, win half** ("You were right" + share, with the F5
+overconfidence friction; "see next events" is the deliberate secondary CTA, not the
+primary). Source: `user-research/docs/cjm-to-be.md`.

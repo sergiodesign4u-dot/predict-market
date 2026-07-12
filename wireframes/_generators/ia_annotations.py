@@ -365,9 +365,12 @@ def render_sidebar(active_slug):
     <a href="../../user-research/cjm-as-is.html" class="sidebar-page-link">CJM As-Is</a>
     <a href="../../user-research/cjm-to-be.html" class="sidebar-page-link">CJM To-Be</a>
     <div class="sidebar-divider">Information Architecture</div>
+    <div class="sidebar-divider">Basic layer</div>
+    <a href="../../ia/flows.html" class="sidebar-page-link">Flows</a>
+    <a href="../../ia/concept-map.html" class="sidebar-page-link">Concept map</a>
+    <div class="sidebar-divider">Detailed layer</div>
     <a href="../../ia/ia.html" class="sidebar-page-link">Overview</a>
     <a href="../../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
-    <a href="../../ia/flows.html" class="sidebar-page-link">Flows</a>
     <div class="sidebar-divider">Plan</div>
     <a href="../../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
     <a href="index.html" class="sidebar-page-link@@ANN_ACTIVE@@">Wireframe Annotations</a>
