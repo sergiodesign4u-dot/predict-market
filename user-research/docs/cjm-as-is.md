@@ -27,19 +27,34 @@ The path is derived from how Alex reaches this job today, with existing products
 
 ## Emotions and barriers (per phase)
 
-Lite pass: emotions are re-projected from the existing research (personas.md, research.md §4/§9, benchmark.md) and the captured competitor screens; no fresh verbatim reviews were mined, so the Quote column is `[?]` throughout - honest, not drawn. Strength: signal = one mention, pattern = repeated across sources or HIGH-confidence.
+Lite pass plus a targeted step-6 re-research. Emotions are re-projected from the existing research (personas.md, research.md §4/§9, benchmark.md) and the captured competitor screens; the two most decision-critical phases (the crypto wall and the post-loss moment) were then confirmed with real public quotes mined in step 6 (see "Re-research" below and research.md "Re-research for CJM"). Phases still on re-projection alone keep `[?]` in the Quote column. Strength: signal = one mention, pattern = repeated across sources or HIGH-confidence.
 
 | Phase | Thoughts / questions (derived) | Emotion (sign · 1-5 · strength) | Barrier | Quote |
 |---|---|---|---|---|
 | 1 Trigger | "I called this. I want in on it." | + · 4 · **pattern** (research.md §9 F4 HIGH; personas Context) | none yet; latent - no accessible way to act on the take | `[?]` |
 | 2 Looking for a way | "Where do I even do this? Is Polymarket the thing? Is it legit and safe?" | neutral to - · 2 · **signal** (discovery action is `[?]`) | unclear where to go or whether it is legitimate; `[?]` exact action | `[?]` |
-| 3 Hitting the platform wall | "Wait, I need a crypto wallet just to look? What is MetaMask?" | - · **5** · **pattern** (personas "closed the tab" + benchmark C6: 2/5) | crypto wall: MetaMask / USDC / 8+ wallet icons before any market | `[?]` (exact words of abandonment - Deep gap) |
-| 4 Trying to make sense of a market | "Why is it 67 percent? What does 'resolves' mean? What am I even betting on?" | - · 4 · **pattern** (research.md §4 "no why this price"; "event in isolation") | no context or story; trader vocabulary | `[?]` |
-| 5 The money question | "What happens to my money? Where does my USDC sit? What are the fees?" | - · 4 · **pattern** (benchmark C2: 1/5 Futuur / Polymarket; H4) | no funds-safety explanation before deposit; opaque fees | `[?]` |
+| 3 Hitting the platform wall | "Wait, I need a crypto wallet just to look? What is MetaMask?" | - · **5** · **pattern** (personas "closed the tab" + benchmark C6: 2/5; step-6 mine) | crypto wall: MetaMask / USDC / 8+ wallet icons before any market | "connected my wallet successfully, but I'm a bit confused about how users usually fund their accounts" (Reddit, pattern) - Q1 |
+| 4 Trying to make sense of a market | "Why is it 67 percent? What does 'resolves' mean? What am I even betting on?" | - · 4 · **pattern** (research.md §4 "no why this price"; "event in isolation"; step-6 mine) | no context or story; trader vocabulary | "the website ... feels more like scrolling an Excel spreadsheet ... confusing overwhelming" (Reddit, signal) |
+| 5 The money question | "What happens to my money? Where does my USDC sit? What are the fees?" | - · 4 · **pattern** (benchmark C2: 1/5 Futuur / Polymarket; H4; step-6 mine) | no funds-safety explanation before deposit; opaque fees | "deposited 25 USDC ... wouldn't allow me to bet ... in some wallet I can't access. Basically lost 25 USDC" (Trustpilot, pattern) |
 | 6 Placing the bet and following | "OK, I'm in. Let's see if I was right." | + · 3 · **signal** (reached by few; inferred) | reached by few (attrition); tracking happens outside the product | `[?]` |
-| 7 Resolution | win: "I told you!" / loss: "...now what? Why did I lose?" | win + · 4 · **pattern** (SJ share) / loss - · **5** · **pattern** (research.md §9 F3 post-loss undesigned; §4; F5 betrayal HIGH) | after a loss "nothing", no context or next step; platform-betrayal fear (frozen funds / opaque resolution) = #1 trust killer | `[?]` |
+| 7 Resolution | win: "I told you!" / loss: "...now what? Why did I lose?" | win + · 4 · **pattern** (SJ share) / loss - · **5** · **pattern** (research.md §9 F3, §4, F5 HIGH; step-6 mine) | after a loss "nothing", no context or next step; platform-betrayal fear (frozen funds / opaque resolution) = #1 trust killer | "I am so confused ... What do I do?" · "never do that again" · "what's the point" · "try to make it back" (Reddit, pattern) - Q2 |
 
-**Most-dangerous `[?]`:** the exact words at the wall (phase 3) and right after a first loss (phase 7). They most shape To-Be, yet rest on re-projection, not a fresh quote. Candidates for the step-6 critique or a targeted Deep mine.
+**Most-dangerous `[?]`, now closed (step 6):** the exact words at the wall (phase 3) and right after a first loss (phase 7) were the two re-projection-only points that most shape To-Be. Both were confirmed with real public quotes in the step-6 re-research below, so their `[?]` is removed. Phases 1, 2 and 6 keep `[?]` on the quote (low design impact, honestly marked).
+
+### Re-research (step 6): sourced quotes
+
+Targeted Deep mine on the two decision-critical phases, public / pre-login only (Reddit via old.reddit.com, Trustpilot). Six evidence screenshots in `research/screens/` (prefix `cjm-mining-`). Full log in `research/docs/research.md` -> "Re-research for CJM".
+
+**Q1 - crypto wall and funding (phases 3-5):**
+- "I connected my wallet successfully, but I'm a bit confused about how users usually fund their accounts and manage balances on the platform." - Reddit r/Polymarket, ~2 mo ago. `research/screens/cjm-mining-polymarket-newuser-wallet-confused-reddit.png`. Strength: pattern (a single r/Polymarket search surfaced ~25 deposit-trouble threads).
+- "The website itself is a bit chaotic and messy, at times it feels more like scrolling an Excel spreadsheet. Information isn't always clear and it can be a little confusing overwhelming." - Reddit r/Polymarket, "Rookie Impression". `cjm-mining-polymarket-rookie-impression-clarity-reddit.png`. Strength: signal.
+- "I deposited 25 USDC using coinbase and then the website wouldn't allow me to bet so I tried to withdraw the money ... instead it is in some wallet I can't access. Basically lost 25 USDC. This site is SCAM." - Trustpilot (Polymarket 1.4/5, 589 reviews), Feb 2026. `cjm-mining-polymarket-usdc-coinbase-lost-trustpilot.png`. Strength: pattern.
+
+**Q2 - the moment after a loss (phase 7):**
+- "I am so confused ... Polymarket didn't count the game ... as a win? What do I do?" - Reddit r/Polymarket, "How did I lose?". `cjm-mining-polymarket-howdidilose-confused-reddit.png`. Strength: pattern (many near-identical "why didn't this resolve" posts).
+- "lost the bet whatever ... Definitely will never do that again lol" - Reddit r/PredictionsMarkets. `cjm-mining-polymarket-loss-noclosure-scam-reddit.png`. Strength: pattern (loss -> quit arc).
+- "the Switzerland game fucked me over no response from support like what's the point of this app then" - Reddit, same thread. Strength: pattern (no closure / no support).
+- "Right now I'm down $2300 ... Going to try to make it back with a few parlays on world cup." - Reddit r/Polymarket, "What's the most you lost/gained". `cjm-mining-polymarket-most-lost-chasing-reddit.png`. Strength: signal (loss chasing, ties to F5 / EJ3).
 
 ## Emotional curve and growth zones
 

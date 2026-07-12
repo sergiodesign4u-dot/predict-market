@@ -773,6 +773,25 @@ These are current active users - a floor, not a ceiling. Volume grew 130× from 
 
 ---
 
+## Re-research for CJM (2026-07)
+
+Targeted voice-of-customer mine run during the CJM As-Is critique (step 6) to close the two most decision-critical `[?]` on the As-Is emotional curve: the exact words at the crypto wall (phase 3) and right after a first loss (phase 7). Public / pre-login only (Reddit via old.reddit.com, Trustpilot); no login, no accounts. Verbatim quotes only. Feeds `user-research/docs/cjm-as-is.md`. Six evidence screenshots in `research/screens/` (prefix `cjm-mining-`).
+
+**Crypto wall / funding (Q1) - confirmed as pattern:**
+- "connected my wallet successfully, but I'm a bit confused about how users usually fund their accounts" - Reddit r/Polymarket (a single search surfaced ~25 deposit-trouble threads).
+- "chaotic and messy ... feels more like scrolling an Excel spreadsheet ... confusing overwhelming" - Reddit r/Polymarket "Rookie Impression" (signal).
+- "deposited 25 USDC ... wouldn't allow me to bet ... in some wallet I can't access. Basically lost 25 USDC. This site is SCAM." - Trustpilot (Polymarket 1.4/5, 589 reviews).
+
+**After a loss (Q2) - confirmed as pattern:**
+- "I am so confused ... didn't count the game ... as a win? What do I do?" - Reddit "How did I lose?" (no closure).
+- "lost the bet whatever ... Definitely will never do that again" - Reddit r/PredictionsMarkets (loss -> quit).
+- "no response from support like what's the point of this app then" - same thread (no support / no closure).
+- "down $2300 ... Going to try to make it back with a few parlays" - Reddit (loss chasing; ties to §9 F5 / EJ3).
+
+Effect: removes the `[?]` on the phase-3 and phase-7 quotes in cjm-as-is.md; both the crypto-wall abandonment and the undesigned post-loss moment are now sourced verbatim, reinforcing growth zones 1 and 4. Phases 1, 2 and 6 keep `[?]` on the quote (low design impact).
+
+---
+
 *Compiled from: §2 Strategy (folds the retired strategy.md + product-model.md; canvas: [lean-ux-canvas.md](./lean-ux-canvas.md)) - [aarrr.md](./aarrr.md) - [competitors.md](./competitors.md) - [benchmark.md](./benchmark.md) - [ux-patterns.md](./ux-patterns.md)*
 *Screenshots: `research/screens/` (26 files, including 5 new from v_refresh: DraftKings Predictions, Bet365, eToro, Betfair Predicts, Azuro)*
 *v_refresh sources June 2026: [Kalshi $22B Series F](https://sacra.com/research/kalshi/) - [Kalshi volume leader CNBC](https://www.cnbc.com/2026/05/kalshi-polymarket-volume-comparison.html) - [Polymarket Fee V2 docs](https://docs.polymarket.com/trading/fees) - [Polymarket ICE $9B](https://financialcontent.com/marketscreener/polymarket-ice-investment-2026) - [Hyperliquid HIP-4](https://bitcoinnews.com/defi/hyperliquid-hip-4-prediction-markets-2026/) - [DraftKings Predictions Combos](https://www.gamblinginsider.com/news/159764/draftkings-combos-fee-structure-predictions-platform) - [Betfair Predicts](https://www.casino.org/news/betfair-eyes-prediction-market-growth-with-betfair-predicts/) - [EU MiCA enforcement](https://trmlabs.com/post/mica-enforcement-2026)*
