@@ -1253,3 +1253,21 @@ provable thing"; the popular-links block is the second internal-linking plane (c
 Real hrefs also wired where a wireframe exists (categories, How It Works, Wallet, My Bets, View
 all events); legal pages that are not built yet (Terms, Privacy, About) stay placeholder links.
 Health: 0 em-dash across all 104 wireframes, 0 broken internal links (16025 checked).
+
+---
+
+### Step 17 - Win screen F5 overconfidence-friction (win + win-error + win-payout-pending)
+
+The audit found the Win screen had share + no "bet again" (correct) but no CJM F5
+overconfidence-friction (the first win drives overconfidence into the next bet). Added a
+grounding note on the path from Share to Browse events, on all three "you won" pages. Voice
+principle 4 (mark the win without lighting a fuse) + "say the specific provable thing": it
+states a fact, does not moralize, has no exclamation, and does not push the next bet.
+
+| Page(s) | Element | Text (new) | Rule / source |
+|---|---|---|---|
+| win.html, win-error.html, win-payout-pending.html | Grounding note (label) | **Before the next one** | placed between Share and Browse events |
+| same | Grounding body | **One right call is not a streak. The next event has its own odds, and this win does not change them. Read the next one on its own terms.** | CJM F5; voice principle 4 (mark the win, no fuse); spectator "read the event" framing |
+
+Not touched: `win-loading.html` (skeleton). Health: 0 em-dash on the 3 pages, no new links.
+(The generator `gen_resolution.py` is intentionally not back-ported, per the voice-safe rule.)
