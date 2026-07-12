@@ -1319,3 +1319,22 @@ the 4 bet-panel states); skipped on the loading and error states.
 | Last row | **Browse more events** (-> event-feed.html) | category-agnostic exit, works on every variant |
 
 Health: 0 em-dash, 16061 links / 0 broken (+36 = 4 links x 9 pages).
+
+---
+
+### Step 20 - Category reconcile: per-card "why" + "About {category}" text (8 success pages)
+
+Finishes the story-led feed pattern on the category pages and adds the seo.md section-3 "About
+{category} events" text. Stamped by `_generators/category_reconcile.py` (idempotent, voice-safe)
+on the 8 category success pages (politics / crypto / culture / general x logged-in + logged-out);
+empty / error / loading skipped. Shared events reuse the same why as the feed for consistency.
+
+| Element | Text | Rule / source |
+|---|---|---|
+| Per-card why | one line under each of the 6 cards per category (spectator, specific, no hype) | story-led; sample editorial content, reused from the feed where the event repeats |
+| About heading | **About {Category} events** | seo.md section 3 C |
+| About body (template) | **Follow {category} events and back your opinion with a real stake. These events cover {fill}. You see the odds in plain language and how each event resolves before you bet, from one dollar, with no wallet to start.** | seo.md section 3 |
+| Fill per category | Politics = elections, policy votes, appointments; Crypto = token prices, launches, upgrades; Culture = awards, releases, sports and entertainment milestones; General = real-world questions that do not fit the others | seo.md section 3 table |
+
+Health: 0 em-dash across all 104 wireframes, 16061 links / 0 broken. The story-led "why" now
+covers both the feed and the category pages; the feed + category SEO sections are all rendered.
