@@ -1231,3 +1231,25 @@ provable thing". Source of truth for the text is `system.md`; the wireframes ren
 
 User content (sample resolved counts, placeholder legal-page labels) is not rewritten. Health
 after this step: 0 em-dash on the 5 new pages, 0 broken internal links across all 104 wireframes.
+
+---
+
+### Step 16 - Footer reconcile (trust strip + SEO popular-links, stamped on all 87 footer pages)
+
+New footer copy from the IA footer node (`ia/docs/pages/seo.md`), stamped in place by
+`_generators/footer_reconcile.py` (idempotent, voice-safe: does not regenerate pages). The
+trust-strip lines follow "one plain sentence of trust before the ask" and "say the specific
+provable thing"; the popular-links block is the second internal-linking plane (crawlable).
+
+| Element | Text | Rule / source |
+|---|---|---|
+| Trust strip 1 | **Your USDC is held 1:1, we never lend it.** | funds-safety line, persistent site-wide |
+| Trust strip 2 | **Every event resolves against a public source.** | specific provable thing, not a superlative |
+| Trust strip 3 | **1,284 events resolved** | resolved-count trust signal (sample figure, user content) |
+| Popular block heading | **Popular right now** | SEO internal-linking surface |
+| Popular links | **Politics events** / **Crypto events** / **Culture events** / **General events** / **Trending events** / **Ending soon** / **How it works** | crawlable links to priority pages |
+| Legal re-entry | **Cookie preferences** | reopens the cookie-consent banner |
+
+Real hrefs also wired where a wireframe exists (categories, How It Works, Wallet, My Bets, View
+all events); legal pages that are not built yet (Terms, Privacy, About) stay placeholder links.
+Health: 0 em-dash across all 104 wireframes, 0 broken internal links (16025 checked).

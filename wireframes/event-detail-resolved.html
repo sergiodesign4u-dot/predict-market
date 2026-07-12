@@ -553,6 +553,13 @@
       .hold-col { flex: 1; }
       .hold-col:first-child { border-right: 1px solid #ddd; padding-right: 12px; }
     }
+    /* ---- Footer trust strip + SEO popular-links (WF reconcile, Krok 3) ---- */
+    .footer-trust { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; padding: 10px 12px; border-bottom: 1px solid #ccc; font-size: 12px; color: #444; }
+    .footer-trust .trust-item { display: inline-block; }
+    .footer-popular { padding: 10px 12px; border-top: 1px solid #ccc; }
+    .footer-popular h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
+    .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
+    .popular-links a { color: #444; }
   </style>
 </head>
 <body>
@@ -1078,6 +1085,13 @@
     <footer class="app-footer">
       <div class="footer-inner">
 
+        <!-- Trust strip (persistent funds-safety + resolution signal, WF reconcile) -->
+        <div class="footer-trust">
+          <span class="trust-item">Your USDC is held 1:1, we never lend it.</span>
+          <span class="trust-item">Every event resolves against a public source.</span>
+          <span class="trust-item">1,284 events resolved</span>
+        </div>
+
         <div class="footer-top">
 
           <!-- Brand block: logo, tagline, social, language -->
@@ -1127,26 +1141,26 @@
               <h3>Events</h3>
               <p class="sub-label">By category</p>
               <ul>
-                <li><a href="#">Politics</a></li>
-                <li><a href="#">Crypto</a></li>
-                <li><a href="#">Culture</a></li>
-                <li><a href="#">General</a></li>
+                <li><a href="politics.html">Politics</a></li>
+                <li><a href="crypto.html">Crypto</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="general.html">General</a></li>
                 <li><a href="#">Sports</a> <span class="tbd">post-MVP</span></li>
               </ul>
               <p class="sub-label">By topic</p>
               <ul>
                 <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
-                <li><a href="#">View all events</a></li>
+                <li><a href="event-feed.html">View all events</a></li>
               </ul>
             </nav>
 
             <nav class="footer-col" aria-label="Product">
               <h3>Product</h3>
               <ul>
-                <li><a href="#">How It Works</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
                 <li><a href="#">Leaderboard</a></li>
-                <li><a href="#">Wallet</a></li>
-                <li><a href="#">My Bets</a></li>
+                <li><a href="wallet.html">Wallet</a></li>
+                <li><a href="active-bets.html">My Bets</a></li>
                 <li><a href="#">API / Developers</a> <span class="tbd">post-MVP</span></li>
                 <li><a href="#">Status</a> <span class="tbd">TBD</span></li>
               </ul>
@@ -1158,7 +1172,7 @@
                 <li><a href="#">Help Center</a> <span class="tbd">TBD</span></li>
                 <li><a href="#">FAQ</a> <span class="tbd">TBD</span></li>
                 <li><a href="#">Contact</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">How It Works</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
               </ul>
             </nav>
 
@@ -1175,6 +1189,20 @@
           </div>
         </div>
 
+        <!-- SEO popular-links block (second internal-linking plane, WF reconcile) -->
+        <div class="footer-popular">
+          <h3>Popular right now</h3>
+          <ul class="popular-links">
+            <li><a href="politics.html">Politics events</a></li>
+            <li><a href="crypto.html">Crypto events</a></li>
+            <li><a href="culture.html">Culture events</a></li>
+            <li><a href="general.html">General events</a></li>
+            <li><a href="event-feed.html">Trending events</a></li>
+            <li><a href="event-feed.html">Ending soon</a></li>
+            <li><a href="how-it-works.html">How it works</a></li>
+          </ul>
+        </div>
+
         <!-- Legal strip -->
         <div class="footer-legal">
           <nav aria-label="Legal">
@@ -1183,6 +1211,7 @@
               <li><a href="#">Privacy</a></li>
               <li><a href="#">Responsible play</a></li>
               <li><a href="#">Geo restrictions</a> <span class="tbd">TBD</span></li>
+              <li><a href="cookie-consent.html">Cookie preferences</a></li>
             </ul>
           </nav>
           <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
