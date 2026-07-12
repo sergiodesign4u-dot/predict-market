@@ -38,7 +38,8 @@ NAV = [
     ("divider", "User Research"),
     ("item", "personas", "Personas", "user-research/personas.html", False),
     ("item", "jtbd", "JTBD", "user-research/jtbd.html", False),
-    ("item", "cjm", "CJM", None, True),                     # planned until built
+    ("item", "cjm-as-is", "CJM As-Is", "user-research/cjm-as-is.html", False),
+    ("item", "cjm-to-be", "CJM To-Be", "user-research/cjm-to-be.html", False),
     ("divider", "Information Architecture"),
     ("item", "overview", "Overview", "ia/ia.html", False),
     ("item", "sitemap", "Sitemap", "ia/sitemap.html", False),
@@ -62,6 +63,8 @@ PAGES = {
     "research/research.html": "foundation",
     "user-research/personas.html": "personas",
     "user-research/jtbd.html": "jtbd",
+    "user-research/cjm-as-is.html": "cjm-as-is",
+    "user-research/cjm-to-be.html": "cjm-to-be",
     "ia/ia.html": "overview",
     "ia/sitemap.html": "sitemap",
     "ia/flows.html": "flows",

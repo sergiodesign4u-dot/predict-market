@@ -14,6 +14,8 @@ A mobile-first Web3 platform for prediction markets. Users bet YES/NO on real-wo
 
 Single-page summary of all research phases. Open the link above in any browser - no local server needed.
 
+**CJM (live):** [As-Is](https://sergiodesign4u-dot.github.io/predict-market/user-research/cjm-as-is.html) - [To-Be](https://sergiodesign4u-dot.github.io/predict-market/user-research/cjm-to-be.html) (these paths go live once the branch is merged to main, which serves GitHub Pages).
+
 ---
 
 ## Repo Structure
@@ -23,8 +25,7 @@ Per-stage layout: raw markdown lives in each stage's `docs/`, and the stage's HT
 | Folder / File | What's inside |
 |---|---|
 | [`research/`](./research/) | **Foundation Research**: `docs/` (competitors, benchmark, lean-ux-canvas, aarrr, ux-patterns, and the `research.md` synthesis), `screens/` (competitor screenshots), and `research.html` |
-| [`user-research/`](./user-research/) | **User Research**: personas + JTBD (`docs/` + `personas.html` + `jtbd.html`) |
-| [`cjm/`](./cjm/) | **Customer Journey Maps** (As-Is + To-Be) |
+| [`user-research/`](./user-research/) | **User Research + CJM**: personas + JTBD + the Customer Journey Maps (`docs/` incl. `cjm-as-is.md` / `cjm-to-be.md`; pages `personas.html`, `jtbd.html`, `cjm-as-is.html`, `cjm-to-be.html`) |
 | [`ia/`](./ia/) | **Information Architecture**: `docs/sitemap.md` + `docs/flows.md` (sources), `ia.html` / `sitemap.html` / `flows.html` (visualizations), and `annotations/` (wireframe annotations, generated) |
 | [`wireframes/`](./wireframes/) | **Grey-box wireframes**: 99 pages, every sitemap screen + all states + Favorites view, flow-linked, header / nav wired, clickable end to end |
 | [`voice/`](./voice/) | **Voice & Microcopy**: `docs/voice.md` + `docs/microcopy.md` + `voice.html` |
@@ -46,7 +47,7 @@ The old→new folder map is recorded in [`STRUCTURE.md`](./STRUCTURE.md).
 |---|---|
 | Foundation Research | ✅ Done (competitors, benchmark, Lean UX Canvas, AARRR, UX patterns, synthesis; screens captured) |
 | User Research (Personas + JTBD) | ✅ Done |
-| CJM (As-Is + To-Be) | ⬜ Not started |
+| CJM (As-Is + To-Be) | ✅ Done (Alex x MJ; As-Is emotional curve + 5 growth zones, To-Be map + MVP backlog; 2 pages) |
 | Information Architecture (Basic + Detailed) | ✅ Done (sources + 3 visualizations, synced) |
 | Wireframes | ✅ Done (99 pages: all screens + states + Favorites view + Event Detail tabs, flow-linked, header / nav wired, critique pass) |
 | Voice | ✅ Done (5 principles, lexicon, forbidden list, per-element rules; all 99 pages rewritten) |

@@ -11,7 +11,7 @@ not `research/html/research.html`).
 |---|---|---|---|---|
 | 01 | Foundation Research | `research/` | `research/research.html` | Done |
 | 02 | User Research (Personas + JTBD) | `user-research/` | `personas.html`, `jtbd.html` | Done |
-| 03 | CJM (As-Is + To-Be) | `cjm/` | `cjm/cjm.html` | Not started |
+| 03 | CJM (As-Is + To-Be) | `user-research/` (lives inside User Research) | `cjm-as-is.html`, `cjm-to-be.html` | Done |
 | 04 | Information Architecture (Basic + Detailed) | `ia/` | `ia.html`, `sitemap.html`, `flows.html` | Done |
 | 05 | Wireframes | `wireframes/` | 99 pages | Done |
 | 06 | Voice | `voice/` | `voice/voice.html` | Done |
@@ -57,7 +57,7 @@ The repo was reorganized from a flat, ~9-stage anticipated layout to the layout 
 | File | Notes |
 |---|---|
 | `research/docs/lean-ux-canvas.md` | Lean UX Canvas v2 (Jeff Gothelf), compiled from the existing strategy + synthesis + JTBD |
-| `cjm/` (As-Is + To-Be) | New stage, to be built |
+| CJM As-Is + To-Be (under `user-research/`) | New stage, built in the CJM pass (2 md + 2 pages); lives inside User Research per the course layout |
 
 ### Retired (content folded, then removed)
 
