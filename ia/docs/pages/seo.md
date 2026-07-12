@@ -223,3 +223,68 @@ mismatch. `[?]` resolved.
 - Canonical self-referential; strip share / tracking params (`?ref=`, `?utm=`) via canonical.
 - Comments and tab content are in the DOM (crawlable), not loaded only on interaction.
 - Core Web Vitals: LCP = the question + odds block; reserve the bet-panel height to avoid CLS as odds load.
+
+---
+
+## 3. Category
+
+- Node: Category - Type: page (one canonical listing template for all categories) - serves FJ1 (browse by interest)
+- URL / slug: `/c/{category}`, `{category}` in `politics | crypto | culture | general` (more categories post-MVP)
+- Breadcrumbs: `Home > {Category}`
+- Indexation: `index,follow` on the clean category URL; facet combinations are `noindex` (see E)
+
+One template renders every category; only the H1, the "about" copy, and the meta differ. Sports
+and other post-MVP categories reuse the same template.
+
+### A. Meta tags
+
+- `title` (template, <= 60): **{Category} events - Predict Market**. Example: **Politics events - Predict Market** (32 chars).
+- `meta description` (template, <= 155): **Bet YES or NO on live {category} events. Plain-language odds, a one-line why, and how each resolves. Browse {category} now, no wallet to start.** Example (politics): **Bet YES or NO on live politics events. Plain-language odds, a one-line why, and how each resolves. Browse politics now, no wallet to start.** (139 chars)
+- `canonical`: `{ROOT}/c/{category}`
+- `hreflang`: `en` -> `{ROOT}/c/{category}` (more locales `[?]`)
+- `robots`: `index,follow`
+- `og:title`: {Category} events; `og:description`: the short listing line; `og:type`: `website`; `og:url`: `{ROOT}/c/{category}`; `og:image`: `{ROOT}/og/c/{category}.png` (`[?]` asset TBD)
+- `twitter:card`: `summary_large_image`; mirrors OG
+
+### B. Heading structure
+
+- `H1`: **{Category} events** (the active category echoes into the H1, e.g. "Politics events")
+- `H2` in mobile block order:
+  1. **Trending in {category}**
+  2. **Ending soon**
+  3. **All {category} events**
+  4. **About {category} events** (SEO body, below the fold)
+  5. **Common questions** (reuses the home FAQ set)
+
+Wireframe delta: the four category pages exist (`category-*.html`) with the event bands (1-3).
+"About {category} events" is the one SEO text block to add below the fold; small, optional.
+
+### C. Ready SEO body text
+
+**About {category} events (template).** Follow {category} events and back your opinion with a
+real stake. You see the odds in plain language and how each event resolves before you bet, from
+one dollar, with no wallet to start. The one-line "what this category covers" fill per category:
+
+| Category | "This category covers ..." fill |
+|---|---|
+| Politics | elections, policy votes, appointments, and other public decisions |
+| Crypto | token prices, launches, network upgrades, and protocol milestones |
+| Culture | awards, releases, sports and entertainment milestones, and cultural firsts |
+| General | real-world questions that do not fit the other categories |
+
+### D. Structured data
+
+- `CollectionPage` - the category listing; `mainEntity` -> the `ItemList`.
+- `BreadcrumbList` - `Home > {Category}`.
+- `ItemList` - the category's events, each `ListItem` linking to its Event Detail URL (`/event/{slug}`).
+- `WebSite` / `Organization` inherited site-wide (declared once on the home, §1).
+
+### E. Optimization checklist
+
+- Exactly one `H1` = "{Category} events"; unique `title` / `description` per category, no duplication across categories.
+- **Facet control:** the clean `/c/{category}` is indexed; sort and frequency combinations (`?sort=`, `?freq=hourly`) are `noindex,follow` and canonical back to `/c/{category}`, so facets do not bloat the index.
+- Crawlable `<a>` to every event, to the sibling categories (cross-linking), and back to the home.
+- **Pagination:** if a category paginates, page URLs are `?page=N` with a self-referential canonical per page; `rel=next/prev` is optional `[?]`.
+- **Empty category:** a category with no live events is still a valid page with a way out (upcoming or recently resolved), not a soft-404; consider `noindex` only while genuinely empty `[?]` (matches the empty-state wireframe).
+- Text not in images; server-render the first cards; reserve card heights (CLS).
+- Core Web Vitals budget as §1.
