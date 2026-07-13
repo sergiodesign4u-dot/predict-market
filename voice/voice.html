@@ -135,6 +135,8 @@
     border-radius: 3px;
     border: 1px solid var(--border);
   }
+  .sidebar-page-link.planned.next { opacity: 1; }
+  .sidebar-page-link.planned.next::after { content: 'Next'; color: var(--accent); border-color: var(--accent); }
 
   .sidebar-sub { padding: 2px 0 8px; }
 
@@ -737,20 +739,8 @@
   </div>
   <div class="sidebar-nav">
     <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
-    <div class="sidebar-divider">User Research</div>
-    <a href="../user-research/personas.html" class="sidebar-page-link">Personas</a>
-    <a href="../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
-    <a href="../user-research/cjm-as-is.html" class="sidebar-page-link">CJM As-Is</a>
-    <a href="../user-research/cjm-to-be.html" class="sidebar-page-link">CJM To-Be</a>
-    <div class="sidebar-divider">Information Architecture</div>
-    <div class="sidebar-divider">Basic layer</div>
-    <a href="../ia/flows.html" class="sidebar-page-link">Flows</a>
-    <a href="../ia/concept-map.html" class="sidebar-page-link">Concept map</a>
-    <div class="sidebar-divider">Detailed layer</div>
-    <a href="../ia/ia.html" class="sidebar-page-link">Overview</a>
-    <a href="../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
-    <a href="../ia/seo.html" class="sidebar-page-link">SEO layer</a>
-    <a href="../ia/system.html" class="sidebar-page-link">System nodes</a>
+    <a href="../user-research/personas.html" class="sidebar-page-link">User Research</a>
+    <a href="../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
     <div class="sidebar-divider">Plan</div>
     <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
     <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
@@ -763,7 +753,7 @@
       <a href="#rewrite" class="sidebar-sub-link">The rewrite</a>
     </div>
     <div class="sidebar-divider">Design and Delivery</div>
-    <a class="sidebar-page-link planned">Concept</a>
+    <a class="sidebar-page-link planned next">Concept</a>
     <a class="sidebar-page-link planned">UI + Visual</a>
     <a class="sidebar-page-link planned">Tokens + Components</a>
     <a class="sidebar-page-link planned">Design System</a>

@@ -342,7 +342,11 @@ SIDEBAR_LABELS = {
 
 def render_sidebar(active_slug):
     """The shared dark sidebar. active_slug = a family slug, or '__index__' for
-    the index page. Root links go up two levels (ia/annotations/ -> repo root)."""
+    the index page. Root links go up two levels (ia/annotations/ -> repo root).
+    Static accordion: annotation pages live under the Wireframe Annotations stage
+    (never inside the User Research or Information Architecture groups), so both of
+    those groups always render collapsed here - each a single link to its first
+    page. Mirrors resync_sidebar.py."""
     subs = []
     for slug, _t, _s in FAMILIES:
         cls = "sidebar-sub-link active" if slug == active_slug else "sidebar-sub-link"
@@ -359,20 +363,8 @@ def render_sidebar(active_slug):
   </div>
   <div class="sidebar-nav">
     <a href="../../research/research.html" class="sidebar-page-link">Foundation Research</a>
-    <div class="sidebar-divider">User Research</div>
-    <a href="../../user-research/personas.html" class="sidebar-page-link">Personas</a>
-    <a href="../../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
-    <a href="../../user-research/cjm-as-is.html" class="sidebar-page-link">CJM As-Is</a>
-    <a href="../../user-research/cjm-to-be.html" class="sidebar-page-link">CJM To-Be</a>
-    <div class="sidebar-divider">Information Architecture</div>
-    <div class="sidebar-divider">Basic layer</div>
-    <a href="../../ia/flows.html" class="sidebar-page-link">Flows</a>
-    <a href="../../ia/concept-map.html" class="sidebar-page-link">Concept map</a>
-    <div class="sidebar-divider">Detailed layer</div>
-    <a href="../../ia/ia.html" class="sidebar-page-link">Overview</a>
-    <a href="../../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
-    <a href="../../ia/seo.html" class="sidebar-page-link">SEO layer</a>
-    <a href="../../ia/system.html" class="sidebar-page-link">System nodes</a>
+    <a href="../../user-research/personas.html" class="sidebar-page-link">User Research</a>
+    <a href="../../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
     <div class="sidebar-divider">Plan</div>
     <a href="../../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
     <a href="index.html" class="sidebar-page-link@@ANN_ACTIVE@@">Wireframe Annotations</a>
@@ -381,7 +373,7 @@ def render_sidebar(active_slug):
     </div>
     <a href="../../voice/voice.html" class="sidebar-page-link">Voice</a>
     <div class="sidebar-divider">Design and Delivery</div>
-    <a class="sidebar-page-link planned">Concept</a>
+    <a class="sidebar-page-link planned next">Concept</a>
     <a class="sidebar-page-link planned">UI + Visual</a>
     <a class="sidebar-page-link planned">Tokens + Components</a>
     <a class="sidebar-page-link planned">Design System</a>
@@ -432,6 +424,8 @@ a:hover{text-decoration:underline}
 .sidebar-page-link.active{color:var(--accent)}
 .sidebar-page-link.planned{color:var(--muted);cursor:default;opacity:.6}
 .sidebar-page-link.planned::after{content:'Soon';font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:rgba(255,255,255,.04);color:var(--muted);padding:2px 5px;border-radius:3px;border:1px solid var(--border)}
+.sidebar-page-link.planned.next{opacity:1}
+.sidebar-page-link.planned.next::after{content:'Next';color:var(--accent);border-color:var(--accent)}
 .sidebar-sub{padding:2px 0 8px}
 .sidebar-sub-link{display:block;font-size:12px;color:var(--muted);text-decoration:none;padding:5px 16px 5px 28px;transition:color .15s;position:relative}
 .sidebar-sub-link:hover{color:var(--text);text-decoration:none}

@@ -42,6 +42,8 @@
   .sidebar-page-link.active { color: var(--accent); }
   .sidebar-page-link.planned { color: var(--muted); cursor: default; opacity: .6; }
   .sidebar-page-link.planned::after { content: 'Soon'; font-size: 9px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; background: rgba(255,255,255,.04); color: var(--muted); padding: 2px 5px; border-radius: 3px; border: 1px solid var(--border); }
+  .sidebar-page-link.planned.next { opacity: 1; }
+  .sidebar-page-link.planned.next::after { content: 'Next'; color: var(--accent); border-color: var(--accent); }
   .sidebar-sub { padding: 2px 0 8px; }
   .sidebar-sub-link { display: block; font-size: 12px; color: var(--muted); text-decoration: none; padding: 5px 16px 5px 28px; transition: color .15s; position: relative; }
   .sidebar-sub-link:hover { color: var(--text); }
@@ -182,11 +184,7 @@
   </div>
   <div class="sidebar-nav">
     <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
-    <div class="sidebar-divider">User Research</div>
-    <a href="../user-research/personas.html" class="sidebar-page-link">Personas</a>
-    <a href="../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
-    <a href="../user-research/cjm-as-is.html" class="sidebar-page-link">CJM As-Is</a>
-    <a href="../user-research/cjm-to-be.html" class="sidebar-page-link">CJM To-Be</a>
+    <a href="../user-research/personas.html" class="sidebar-page-link">User Research</a>
     <div class="sidebar-divider">Information Architecture</div>
     <div class="sidebar-divider">Basic layer</div>
     <a href="../ia/flows.html" class="sidebar-page-link">Flows</a>
@@ -208,7 +206,7 @@
     <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
     <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
     <div class="sidebar-divider">Design and Delivery</div>
-    <a class="sidebar-page-link planned">Concept</a>
+    <a class="sidebar-page-link planned next">Concept</a>
     <a class="sidebar-page-link planned">UI + Visual</a>
     <a class="sidebar-page-link planned">Tokens + Components</a>
     <a class="sidebar-page-link planned">Design System</a>
