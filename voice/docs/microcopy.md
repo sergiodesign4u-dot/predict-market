@@ -1338,3 +1338,24 @@ empty / error / loading skipped. Shared events reuse the same why as the feed fo
 
 Health: 0 em-dash across all 104 wireframes, 16061 links / 0 broken. The story-led "why" now
 covers both the feed and the category pages; the feed + category SEO sections are all rendered.
+
+### Step 21 - How it works header dialog (button next to the logo, 87 header pages)
+
+Surfaces the feed explainer as a quick, always-available header affordance: a `How it works`
+button next to the logo opens a native `<dialog>` with the same three sections, and a link out
+to the full How It Works page. Stamped by `_generators/howitworks.py` (idempotent, voice-safe,
+self-contained `.hiw-*` styling) on every page that carries the shared app-header (87 pages);
+the 17 header-less pages (win/loss overlays, 404 / 500 / maintenance, cookie, toasts) are not
+touched. The three section bodies are reused verbatim from the feed SEO sections (Step 18), so
+the only genuinely new strings are the trigger label and the read-more link.
+
+| Element | Text | Rule / source |
+|---|---|---|
+| Header trigger | **How it works** | button; sentence case, matches the footer link; opens the dialog |
+| Dialog title | **How it works** | heading; names the thing, no greeting |
+| Section labels | **How betting works here** / **Why the odds move** / **Common questions** | reused from the feed SEO sections (Step 18) |
+| Section bodies + Q&A | reused verbatim from the feed below-fold SEO sections | Step 18; explain-the-number, spectator voice |
+| Read-more link | **Read the full guide** | button; sends to how-it-works.html so the dialog is not a dead end |
+
+Health: 0 em-dash across all 104 wireframes, 16148 links / 0 broken (the read-more link adds 87).
+The feed keeps its below-fold SEO sections; the dialog is the interactive quick version.
