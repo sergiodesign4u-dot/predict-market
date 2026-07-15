@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personas - Prediction Market Platform</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── SIDEBAR ─────────────────────────────────────────── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 220px;
+    height: 100vh;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform .25s cubic-bezier(.4,0,.2,1);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar::-webkit-scrollbar { display: none; }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.open { display: block; }
+
+  .menu-toggle {
+    position: fixed;
+    top: 12px; left: 12px;
+    z-index: 201;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 36px; height: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 15px; height: 1.5px;
+    background: var(--text);
+    border-radius: 1px;
+  }
+
+  .sidebar-brand {
+    padding: 20px 16px 16px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .sidebar-project-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+
+  .sidebar-page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    padding: 7px 16px;
+    transition: background .15s;
+    cursor: pointer;
+    user-select: none;
+  }
+  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
+  .sidebar-page-link.active { color: var(--accent); }
+  .sidebar-page-link.planned {
+    color: var(--muted);
+    cursor: default;
+    opacity: .6;
+  }
+  .sidebar-page-link.planned::after {
+    content: 'Soon';
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
+  .sidebar-page-link.planned.next { opacity: 1; }
+  .sidebar-page-link.planned.next::after { content: 'Next'; color: var(--accent); border-color: var(--accent); }
+
+  .sidebar-sub { padding: 2px 0 8px; }
+
+  .sidebar-sub-link {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 5px 16px 5px 28px;
+    transition: color .15s;
+    position: relative;
+  }
+  .sidebar-sub-link:hover { color: var(--text); }
+  .sidebar-sub-link.active { color: var(--text); }
+  .sidebar-sub-link.active::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 50%; transform: translateY(-50%);
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-divider {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 16px 16px 6px;
+    opacity: .45;
+  }
+
+  /* ── LAYOUT ─────────────────────────────────────────── */
+  main {
+    padding: 60px 20px 80px;
+  }
+
+  @media (min-width: 860px) {
+    .sidebar { transform: translateX(0); transition: none; }
+    .sidebar-overlay { display: none !important; }
+    .menu-toggle { display: none; }
+    main { margin-left: 220px; padding: 48px 48px 120px; }
+  }
+
+  section {
+    padding-top: var(--gap);
+    margin-top: var(--gap);
+    border-top: 1px solid var(--border);
+  }
+  section:first-child { border-top: none; }
+
+  /* ── TYPOGRAPHY ─────────────────────────────────────── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    margin-top: 32px;
+  }
+  h3:first-child { margin-top: 0; }
+
+  p {
+    color: #aaa;
+    margin-bottom: 12px;
+    max-width: 680px;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  .lead {
+    font-size: 16px;
+    color: #bbb;
+    max-width: 640px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero { padding-top: 0; border-top: none; }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid rgba(200,255,0,.2);
+  }
+  .tag.grey {
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    border-color: var(--border);
+  }
+
+  /* ── TABLES ─────────────────────────────────────────── */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    background: var(--surface);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #c8c8c8;
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,.015); }
+
+  td.label {
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  td.mono { font-family: var(--mono); font-size: 12px; }
+  td.muted { color: var(--muted); }
+
+  .status-confirmed { color: var(--green); font-weight: 600; }
+  .status-hyp { color: #ffc04d; font-weight: 600; }
+  .status-q { color: var(--muted); }
+
+  /* ── MISC ───────────────────────────────────────────── */
+  .divider { height: 1px; background: var(--border); margin: 28px 0; }
+
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  .pill-q { background: rgba(255,255,255,.06); color: var(--muted); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* ── PERSONA CARDS ───────────────────────────────────── */
+  .persona-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 28px;
+    margin-top: 20px;
+    border-left-width: 3px;
+  }
+  .persona-card.accent { border-left-color: var(--accent); }
+  .persona-card.blue { border-left-color: var(--blue); }
+  .persona-card.muted-border { border-left-color: #383838; }
+  .persona-card.red { border-left-color: var(--red); background: rgba(255,95,95,.03); }
+
+  .persona-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  .persona-badge.primary { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(200,255,0,.2); }
+  .persona-badge.secondary { background: rgba(95,168,255,.08); color: var(--blue); border: 1px solid rgba(95,168,255,.2); }
+  .persona-badge.tertiary { background: rgba(255,255,255,.04); color: var(--muted); border: 1px solid var(--border); }
+  .persona-badge.risk { background: rgba(255,95,95,.08); color: var(--red); border: 1px solid rgba(255,95,95,.2); }
+
+  .persona-name {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .persona-profile {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  /* ── INLINE BADGES ───────────────────────────────────── */
+  .q-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: rgba(255,255,255,.06);
+    color: var(--muted);
+    vertical-align: middle;
+    margin-left: 2px;
+  }
+
+  .hyp-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: rgba(255,180,50,.1);
+    color: #ffc04d;
+    border: 1px solid rgba(255,180,50,.2);
+    vertical-align: middle;
+    margin-left: 2px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  .conf-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: rgba(95,219,143,.08);
+    color: var(--green);
+    border: 1px solid rgba(95,219,143,.2);
+    vertical-align: middle;
+    margin-left: 2px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  /* ── UPDATE WARNING ──────────────────────────────────── */
+  .update-warning {
+    display: flex;
+    gap: 10px;
+    background: rgba(255,180,50,.06);
+    border: 1px solid rgba(255,180,50,.2);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 16px 0;
+    font-size: 13px;
+    color: #e8c880;
+    line-height: 1.6;
+  }
+  .update-warning .update-icon {
+    flex-shrink: 0;
+    font-size: 14px;
+    margin-top: 1px;
+  }
+
+  /* ── SUB-BLOCK ───────────────────────────────────────── */
+  .sub-block {
+    background: rgba(255,255,255,.025);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin: 20px 0;
+  }
+  .sub-block-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  /* ── PAINS LIST ──────────────────────────────────────── */
+  .pain-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .pain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255,95,95,.04);
+    border: 1px solid rgba(255,95,95,.1);
+    border-radius: 6px;
+    font-size: 13px;
+    color: #c8c8c8;
+  }
+  .pain-bullet {
+    color: var(--red);
+    font-size: 16px;
+    line-height: 1.3;
+    flex-shrink: 0;
+  }
+  .pain-source {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  /* ── TRUST GRID ──────────────────────────────────────── */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  @media (max-width: 540px) { .trust-grid { grid-template-columns: 1fr; } }
+
+  .trust-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+  }
+  .trust-col-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .trust-col.convinces .trust-col-label { color: var(--green); }
+  .trust-col.scares .trust-col-label { color: var(--red); }
+
+  .trust-item {
+    font-size: 13px;
+    color: #bbb;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .trust-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  /* ── QUOTE ───────────────────────────────────────────── */
+  .quote-block {
+    background: rgba(255,255,255,.025);
+    border-left: 3px solid var(--border);
+    border-radius: 0 6px 6px 0;
+    padding: 18px 20px;
+    margin: 20px 0;
+  }
+  .quote-text {
+    font-size: 15px;
+    color: #ddd;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .quote-attribution {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .quote-note {
+    font-size: 12px;
+    color: #888;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── SOURCE NOTE ─────────────────────────────────────── */
+  .source-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  /* ── GROUNDRULE ──────────────────────────────────────── */
+  .groundrule {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(95,168,255,.05);
+    border: 1px solid rgba(95,168,255,.15);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-top: 16px;
+    font-size: 12px;
+    color: #aac4e0;
+  }
+
+  /* ── ARCHETYPE TABLE ─────────────────────────────────── */
+  .archetype-table .archetype-label {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* ── BEHAVIORAL SEQUENCE ─────────────────────────────── */
+  .behavior-sequence {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 16px 0;
+  }
+  .behavior-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    color: #bbb;
+  }
+  .behavior-step-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    padding-top: 1px;
+    min-width: 20px;
+  }
+  .behavior-step strong { color: var(--text); }
+
+  /* ── DESIGN IMPLICATIONS ─────────────────────────────── */
+  .implication-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .implication-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(200,255,0,.03);
+    border: 1px solid rgba(200,255,0,.1);
+    border-radius: 6px;
+    font-size: 13px;
+    color: #c8c8c8;
+  }
+  .implication-bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    line-height: 1.5;
+  }
+
+  /* ── GAPS TABLE ──────────────────────────────────────── */
+  .gap-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    color: #bbb;
+    margin-bottom: 8px;
+  }
+  .gap-status {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .gap-status.answered { color: var(--green); }
+  .gap-status.partial { color: #ffc04d; }
+  .gap-status.unknown { color: var(--muted); }
+
+  .confidence-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(255,95,95,.1);
+    color: var(--red);
+    border: 1px solid rgba(255,95,95,.2);
+    margin-bottom: 16px;
+  }
+
+  .open-gaps-table td:first-child { min-width: 180px; }
+  .open-gaps-table td:nth-child(2) { max-width: 260px; }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a class="sidebar-page-link active">Personas</a>
+    <div class="sidebar-sub">
+      <a href="#alex" class="sidebar-sub-link">Alex · Primary</a>
+      <a href="#dan" class="sidebar-sub-link">Dan · Secondary</a>
+      <a href="#maria" class="sidebar-sub-link">Maria · Post-MVP</a>
+      <a href="#loss-prone" class="sidebar-sub-link">Loss-Prone Overlay</a>
+      <a href="#gaps" class="sidebar-sub-link">Open Gaps</a>
+    </div>
+    <a href="../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a href="../user-research/cjm-as-is.html" class="sidebar-page-link">CJM As-Is</a>
+    <a href="../user-research/cjm-to-be.html" class="sidebar-page-link">CJM To-Be</a>
+    <a href="../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
+    <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a href="../concept/concept.html" class="sidebar-page-link">Concept</a>
+    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
+    <a class="sidebar-page-link planned next">Tokens + Components</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<main>
+
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero-meta">
+      <span class="tag">3 Personas</span>
+      <span class="tag grey">1 Risk Overlay</span>
+      <span class="tag grey">Updated June 13 2026</span>
+    </div>
+    <h1>Personas</h1>
+    <p class="lead">3 segments + 1 behavioral risk overlay. Built from master-research.md · live-research F1–F6 · June 2026.</p>
+
+    <div class="groundrule">
+      <span style="font-size:16px;flex-shrink:0">&#9432;</span>
+      <span><strong style="color:#c8ddf0">Source groundrule:</strong> Confirmed data cited with source. Unverified claims marked <span class="q-badge">[?]</span> as hypothesis.</span>
+    </div>
+  </section>
+
+  <!-- ── ALEX ──────────────────────────────────────────── -->
+  <section id="alex">
+    <div class="section-label">Persona 1</div>
+
+    <div class="persona-card accent">
+      <div class="persona-badge primary">&#9733; Primary</div>
+      <div class="persona-name">Alex · News Junkie</div>
+      <div class="persona-profile">28–38 · follows news daily · no crypto wallet · has opinions about everything</div>
+
+      <!-- Why Primary -->
+      <div class="sub-block">
+        <div class="sub-block-label">Why Primary</div>
+        <p style="margin-bottom:10px;max-width:none;color:#bbb">Confirmed primary across 3 research iterations (strategy.md).</p>
+        <div class="update-warning">
+          <span class="update-icon">&#9888;&#65039;</span>
+          <span><strong>Updated F4 Jun 2026:</strong> Fiat on-ramp is necessary but NOT sufficient. Kalshi (fiat-native) still saw 93% DAU collapse. Manifold Sweepcash users didn't convert. Real barrier = motivation activation - helping Alex feel "I know something worth staking" BEFORE the deposit step.</span>
+        </div>
+      </div>
+
+      <!-- Context -->
+      <h3>Context</h3>
+      <p style="max-width:none">Alex reads the news every morning - newsletters, Twitter/X, maybe a podcast. When Trump won, when Bitcoin crashed, when a controversial bill passed - he had an opinion before most people knew what was happening.</p>
+      <p style="max-width:none">He's heard of Polymarket. Maybe saw a screenshot on Twitter. Went to sign up - saw MetaMask, USDC, a wall of wallet icons - and closed the tab.</p>
+
+      <div class="update-warning">
+        <span class="update-icon">&#9888;&#65039;</span>
+        <span><strong>Updated F6:</strong> He resists the "bettor" label - sees himself as someone who understands how the world works. BUT: even the most analytical users say "I bet" and "I made a bet", not "I predicted". <strong style="color:#e8c880">Copy rule:</strong> "predict/forecast" for marketing and profile identity; "bet/position" OK in functional UI. Emotional payoff: "I was right / I called it".</span>
+      </div>
+
+      <p class="source-note">Source: master-research.md §4 · benchmark-trust.md C6 · master-research.md §9 F6</p>
+
+      <!-- Jobs -->
+      <h3>Jobs</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Job</th><th>Format</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="label mono">J1 <span style="font-size:10px;color:var(--accent)">(primary)</span></td>
+              <td>Prove he was right - with money on the line</td>
+              <td style="color:#999;">"When I follow events that matter, I want real skin in the game"</td>
+              <td class="status-confirmed">&#10003; Confirmed</td>
+            </tr>
+            <tr>
+              <td class="label mono">J2</td>
+              <td>Check whether market agrees with his opinion</td>
+              <td style="color:#999;">"I already have a view - I want to see what the crowd thinks"</td>
+              <td class="status-confirmed">&#10003; Confirmed</td>
+            </tr>
+            <tr>
+              <td class="label mono">J3</td>
+              <td>Share a win publicly</td>
+              <td style="color:#999;">"I told you so" - make it visible</td>
+              <td><span class="hyp-badge">hypothesis</span></td>
+            </tr>
+            <tr>
+              <td class="label mono">J4</td>
+              <td>Earn money from his knowledge</td>
+              <td style="color:#999;">Secondary motivation vs J1</td>
+              <td><span class="q-badge">[?]</span> <span class="status-q">Hypothesis</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pains -->
+      <h3>Pains</h3>
+      <div class="pain-list">
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            Crypto wall at signup
+            <div class="pain-source"><span class="conf-badge">Confirmed</span> polymarket-signup-mobile.png · C6: 2/5</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            No context inside market
+            <div class="pain-source"><span class="conf-badge">Confirmed</span> master-research.md §4</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            Markets feel disconnected from news
+            <div class="pain-source"><span class="conf-badge">Confirmed</span> ux-patterns.md</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            Doesn't know what happens to his money
+            <div class="pain-source"><span class="conf-badge">Confirmed</span> benchmark-trust.md C2: Futuur 1/5</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            After a loss - nothing
+            <div class="pain-source"><span class="conf-badge">Confirmed</span> live-research F3 · F5</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Triggers -->
+      <h3>Trust Triggers</h3>
+      <div class="trust-grid">
+        <div class="trust-col convinces">
+          <div class="trust-col-label">Convinces</div>
+          <div class="trust-item">Understandable in 3 sec (Bet365 C5: 5/5)</div>
+          <div class="trust-item">One sentence about where funds are held</div>
+          <div class="trust-item">Number of resolved markets visible</div>
+          <div class="trust-item">Fee shown before placing bet</div>
+        </div>
+        <div class="trust-col scares">
+          <div class="trust-col-label">Scares</div>
+          <div class="trust-item">"What happens to my money?" (C2)</div>
+          <div class="trust-item">Platform looks like crypto = scam <span class="q-badge">[?]</span></div>
+          <div class="trust-item">Losing first bet without understanding why (F3)</div>
+          <div class="trust-item">Learning a new financial product before doing anything</div>
+        </div>
+      </div>
+
+      <!-- Quote -->
+      <div class="quote-block">
+        <div class="quote-text">"There'll be a big winning streak at the beginning, which happened to me - then bam, everything's gone."</div>
+        <div class="quote-attribution">24-year-old engineer, Kalshi, 2026. Lost $10,000+ in 8 days. Source: live-research F3 · AOL 2026</div>
+        <div class="quote-note">From a loss-escalation case. Illustrates what happens when the post-loss experience is undesigned.</div>
+      </div>
+
+      <!-- Open Gaps -->
+      <h3>Open Gaps for Alex</h3>
+      <div class="pain-list" style="gap:8px">
+        <div class="pain-item" style="background:rgba(255,255,255,.02);border-color:var(--border)">
+          <span class="pain-bullet" style="color:var(--muted)">?</span>
+          <div>
+            Does Alex actually want to bet, or just watch?
+            <div class="pain-source"><span class="q-badge">[?]</span> F4: motivation is the primary barrier. Fiat on-ramp alone won't convert.</div>
+          </div>
+        </div>
+        <div class="pain-item" style="background:rgba(255,255,255,.02);border-color:var(--border)">
+          <span class="pain-bullet" style="color:var(--muted)">?</span>
+          <div>
+            Min bet size that feels "real" without triggering escalation
+            <div class="pain-source"><span class="q-badge">[?]</span> No data</div>
+          </div>
+        </div>
+        <div class="pain-item" style="background:rgba(255,255,255,.02);border-color:var(--border)">
+          <span class="pain-bullet" style="color:var(--muted)">?</span>
+          <div>
+            Which specific event first brings Alex to the platform
+            <div class="pain-source"><span class="q-badge">[?]</span> No data</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DAN ───────────────────────────────────────────── -->
+  <section id="dan">
+    <div class="section-label">Persona 2</div>
+
+    <div class="persona-card blue">
+      <div class="persona-badge secondary">&#129352; Secondary</div>
+      <div class="persona-name">Dan · Crypto Native</div>
+      <div class="persona-profile">23–34 · DeFi user · has MetaMask · follows crypto + politics</div>
+
+      <!-- Why Secondary -->
+      <div class="sub-block">
+        <div class="sub-block-label">Why Secondary</div>
+        <p style="max-width:none;color:#bbb;margin-bottom:0">Already in the ecosystem - no crypto barrier. Valuable for early liquidity. Designing for Dan first = "another Polymarket" - directly against our core differentiator of clarity for newcomers.</p>
+      </div>
+
+      <!-- Context -->
+      <h3>Context</h3>
+      <p style="max-width:none">Dan uses Polymarket already (or has tried it). Tracks crypto prices, on-chain analytics. Knows AMM and CLOB. Frustration: thin liquidity on smaller markets, wide spreads on niche events.</p>
+
+      <!-- Jobs -->
+      <h3>Jobs</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Job</th><th>Format</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="label mono">J1</td>
+              <td>Monetize superior knowledge of crypto and macro</td>
+              <td style="color:#999;">"I understand this better - convert to money"</td>
+              <td><span class="hyp-badge">hypothesis</span></td>
+            </tr>
+            <tr>
+              <td class="label mono">J2</td>
+              <td>Find markets where probability is mispriced</td>
+              <td style="color:#999;">Value hunting</td>
+              <td><span class="hyp-badge">hypothesis</span></td>
+            </tr>
+            <tr>
+              <td class="label mono">J3</td>
+              <td>Diversify beyond crypto trading</td>
+              <td style="color:#999;">-</td>
+              <td><span class="q-badge">[?]</span> <span class="status-q">Hypothesis</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pains -->
+      <h3>Pains</h3>
+      <div class="pain-list">
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            Thin liquidity on non-major markets
+            <div class="pain-source"><span class="conf-badge">Confirmed</span> competitive-analysis.md</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            Polymarket trust 19/40 - lowest of all platforms benchmarked
+            <div class="pain-source"><span class="conf-badge">Confirmed</span> benchmark-trust.md</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            No resolution explanation
+            <div class="pain-source"><span class="conf-badge">Confirmed</span> master-research.md §7 Q5</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            Fees feel high on crypto markets
+            <div class="pain-source"><span class="q-badge">[?]</span> Hypothesis</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Triggers -->
+      <h3>Trust Triggers</h3>
+      <div class="trust-grid">
+        <div class="trust-col convinces">
+          <div class="trust-col-label">Convinces</div>
+          <div class="trust-item">On-chain settlement - verify every resolved market</div>
+          <div class="trust-item">Maker rebates 20–25%</div>
+          <div class="trust-item">Public track record</div>
+        </div>
+        <div class="trust-col scares">
+          <div class="trust-col-label">Scares</div>
+          <div class="trust-item">Regulatory risk (Polymarket CFTC complaint June 2026)</div>
+          <div class="trust-item">Team multisig resolution <span class="q-badge">[?]</span></div>
+          <div class="trust-item">Low liquidity at launch <span class="q-badge">[?]</span></div>
+        </div>
+      </div>
+
+      <!-- Quote -->
+      <div class="quote-block">
+        <div class="quote-text"><span class="q-badge">[?]</span> No verified quote. Hypothesis: "Polymarket works for big markets but the spreads on anything below $1M volume are brutal."</div>
+        <div class="quote-attribution">Unverified · Hypothesis only</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MARIA ─────────────────────────────────────────── -->
+  <section id="maria">
+    <div class="section-label">Persona 3</div>
+
+    <div class="persona-card muted-border">
+      <div class="persona-badge tertiary">&#129351; Secondary · Post-MVP</div>
+      <div class="persona-name">Maria · Crossover Bettor</div>
+      <div class="persona-profile">29–42 · bets on sports (Bet365, DraftKings) · analysis over luck</div>
+
+      <!-- Why Post-MVP -->
+      <div class="sub-block">
+        <div class="sub-block-label">Why Post-MVP</div>
+        <p style="max-width:none;color:#bbb;margin-bottom:10px">Sports = post-MVP decision. Kalshi 89% revenue from sports confirms segment size.</p>
+        <div class="update-warning">
+          <span class="update-icon">&#9888;&#65039;</span>
+          <span><span class="hyp-badge">hypothesis</span> Maria will be primary acquisition driver once sports markets are added - no crossover-migration data exists.</span>
+        </div>
+      </div>
+
+      <!-- Context -->
+      <h3>Context</h3>
+      <p style="max-width:none">Maria bets on football, tennis, F1. Uses Bet365. Comfortable with odds. Doesn't bet randomly - she researches. Found prediction markets during the US election.</p>
+
+      <!-- Jobs -->
+      <h3>Jobs</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Job</th><th>Format</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="label mono">J1</td>
+              <td>Apply analytical skills to a new domain</td>
+              <td style="color:#999;">"I'm good at reading a situation - I want an arena where that matters"</td>
+              <td><span class="hyp-badge">hypothesis</span></td>
+            </tr>
+            <tr>
+              <td class="label mono">J2</td>
+              <td>Bet on events beyond sports</td>
+              <td style="color:#999;">"Sports is what I know, but I want more"</td>
+              <td><span class="hyp-badge">hypothesis</span></td>
+            </tr>
+            <tr>
+              <td class="label mono">J3</td>
+              <td>Find better odds than the bookmaker</td>
+              <td style="color:#999;">-</td>
+              <td><span class="q-badge">[?]</span> <span class="status-q">Hypothesis</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pains -->
+      <h3>Pains</h3>
+      <div class="pain-list">
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            Bet365 trust 33/40 - that's the reference bar this platform must meet
+            <div class="pain-source"><span class="conf-badge">Confirmed</span> benchmark-trust.md</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            Prediction markets feel unregulated
+            <div class="pain-source"><span class="conf-badge">Confirmed</span> C1: Polymarket 2/5</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            No crypto wallet (like Alex)
+            <div class="pain-source"><span class="q-badge">[?]</span> Hypothesis</div>
+          </div>
+        </div>
+        <div class="pain-item">
+          <span class="pain-bullet">&#8212;</span>
+          <div>
+            No parlays/combos in the prediction market space
+            <div class="pain-source"><span class="q-badge">[?]</span> Hypothesis</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Triggers -->
+      <h3>Trust Triggers</h3>
+      <div class="trust-grid">
+        <div class="trust-col convinces">
+          <div class="trust-col-label">Convinces</div>
+          <div class="trust-item">Clear resolution rules before betting (C8)</div>
+          <div class="trust-item">Responsible gambling tools</div>
+          <div class="trust-item">Familiar UX: bottom tab, live odds</div>
+        </div>
+        <div class="trust-col scares">
+          <div class="trust-col-label">Scares</div>
+          <div class="trust-item">No regulatory badge - "blockchain verifiable" ≠ FSCS for her</div>
+          <div class="trust-item">Complex crypto mechanics <span class="q-badge">[?]</span></div>
+        </div>
+      </div>
+
+      <!-- Quote -->
+      <div class="quote-block">
+        <div class="quote-text"><span class="q-badge">[?]</span> No verified quote. Hypothesis: "I've been betting on football for years. Prediction markets seem interesting but I have no idea if they're legit."</div>
+        <div class="quote-attribution">Unverified · Hypothesis only</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LOSS-PRONE OVERLAY ─────────────────────────────── -->
+  <section id="loss-prone">
+    <div class="section-label">Risk Overlay</div>
+
+    <div class="persona-card red">
+      <div class="confidence-badge">HIGH &#8593; upgraded from medium - June 2026 (F5)</div>
+      <div class="persona-name" style="color:#ff9f9f;">The Loss-Prone User</div>
+      <p style="color:#e8b0b0;margin-bottom:4px;max-width:none"><strong style="color:#ffcfcf">Not a persona, a behavioral pattern.</strong> This pattern can emerge from ANY of the three personas above, especially Alex.</p>
+
+      <!-- Revised Behavioral Sequence -->
+      <h3 style="color:var(--red);">Revised Behavioral Sequence</h3>
+      <div class="behavior-sequence">
+        <div class="behavior-step">
+          <span class="behavior-step-num">01</span>
+          <span><strong>First WIN</strong> → overconfidence <span style="color:var(--red);font-size:12px">← trigger is the WIN, not the first loss</span></span>
+        </div>
+        <div class="behavior-step">
+          <span class="behavior-step-num">02</span>
+          <span>Escalating bet sizes → systematic losses</span>
+        </div>
+        <div class="behavior-step">
+          <span class="behavior-step-num">03</span>
+          <span>Loss-chasing → catastrophic exit</span>
+        </div>
+        <div class="behavior-step">
+          <span class="behavior-step-num">04</span>
+          <span>Stops only via external force (partner confrontation, lawsuit, account block) - <strong>not self-regulation</strong></span>
+        </div>
+      </div>
+
+      <!-- Three Archetypes -->
+      <h3 style="color:var(--red);">Three Behavioral Archetypes</h3>
+      <div class="table-wrap">
+        <table class="archetype-table">
+          <thead>
+            <tr><th>Archetype</th><th>Pattern</th><th>Evidence</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="archetype-label">Loss Chaser</td>
+              <td>First win → overconfidence → escalation → chasing</td>
+              <td style="font-size:12px;color:#bbb;">K.A. (Kalshi, $10K in 8 days), Lorenzo Miro (Polymarket, $1.7K), "Poly Hell" author ($10K more after losing $7.5K)</td>
+            </tr>
+            <tr>
+              <td class="archetype-label">Casual Experimenter</td>
+              <td>Small deposit (&lt;$10), dormant after first loss or event ends</td>
+              <td style="font-size:12px;color:#bbb;">~50% of 2M Polymarket wallets made/lost &lt;$10 (PYMNTS 2026) - MODAL behavior</td>
+            </tr>
+            <tr>
+              <td class="archetype-label">Platform-Betrayal Quitter</td>
+              <td>Won or should have won, platform failed them. Writes Trustpilot review. Wants to return.</td>
+              <td style="font-size:12px;color:#bbb;">Kalshi 1.9/5, Polymarket 1.4/5, 90% one-star</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Design Implications -->
+      <h3 style="color:var(--red);">Design Implications</h3>
+      <div class="implication-list">
+        <div class="implication-item">
+          <span class="implication-bullet">&#8594;</span>
+          <span>WIN screen needs design attention equal to loss screen - early wins trigger overconfidence</span>
+        </div>
+        <div class="implication-item">
+          <span class="implication-bullet">&#8594;</span>
+          <span>POST-LOSS screen: intervention point before chasing begins - speak to Casual Experimenter first (re-entry path)</span>
+        </div>
+        <div class="implication-item">
+          <span class="implication-bullet">&#8594;</span>
+          <span>Platform betrayal (frozen funds, wrong payouts, resolution disputes) = #1 documented churn driver</span>
+        </div>
+        <div class="implication-item">
+          <span class="implication-bullet">&#8594;</span>
+          <span>No competitor designs either moment today</span>
+        </div>
+      </div>
+
+      <!-- Evidence -->
+      <div class="sub-block" style="margin-top:24px">
+        <div class="sub-block-label">Evidence</div>
+        <p style="max-width:none;color:#bbb;margin-bottom:0">PMC/NCB 2024 study: 52.5% of subjects in loss condition continued playing vs 47.5% in control.</p>
+      </div>
+
+      <p class="source-note">Source: F3+F5 · AOL 2026 · Substack "Poly Hell" · PYMNTS/Bloomberg 2026 · Trustpilot · master-research.md §9</p>
+    </div>
+  </section>
+
+  <!-- ── OPEN GAPS ──────────────────────────────────────── -->
+  <section id="gaps">
+    <div class="section-label">What We Still Don't Know</div>
+    <h2>Open Gaps</h2>
+
+    <div class="table-wrap">
+      <table class="open-gaps-table">
+        <thead>
+          <tr><th>Gap</th><th>Status</th><th>Affects</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">Does Alex want to bet or just watch?</td>
+            <td><span class="conf-badge">&#10003; Answered (F4)</span> motivation is primary barrier. Fiat on-ramp alone insufficient.</td>
+            <td class="muted">Entire acquisition strategy</td>
+          </tr>
+          <tr>
+            <td class="label">What trust signals work in users' own words?</td>
+            <td><span style="color:#ffc04d;font-weight:600;font-size:11px">~ Partially Answered (F5)</span> platform betrayal = #1 churn driver</td>
+            <td class="muted">All 3 personas</td>
+          </tr>
+          <tr>
+            <td class="label">When does Loss-Prone pattern activate?</td>
+            <td><span class="conf-badge">&#10003; Revised (F5)</span> trigger = first WIN</td>
+            <td class="muted">Risk overlay design</td>
+          </tr>
+          <tr>
+            <td class="label">Min bet size without triggering harm</td>
+            <td><span class="q-badge">[?]</span> <span style="color:var(--muted);">No data</span></td>
+            <td class="muted">All personas</td>
+          </tr>
+          <tr>
+            <td class="label">Which specific event brings Alex first</td>
+            <td><span class="q-badge">[?]</span> <span style="color:var(--muted);">No data</span></td>
+            <td class="muted">Acquisition</td>
+          </tr>
+          <tr>
+            <td class="label">Non-US TAM by segment</td>
+            <td><span class="q-badge">[?]</span> <span style="color:var(--muted);">Poll data US-only</span></td>
+            <td class="muted">Market sizing</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const toggle = document.getElementById('menuToggle');
+
+  const openSidebar = () => { sidebar.classList.add('open'); overlay.classList.add('open'); };
+  const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+
+  toggle.addEventListener('click', openSidebar);
+  overlay.addEventListener('click', closeSidebar);
+
+  document.querySelectorAll('.sidebar-sub-link').forEach(l => {
+    l.addEventListener('click', () => { if (window.innerWidth < 860) closeSidebar(); });
+  });
+
+  const subLinks = document.querySelectorAll('.sidebar-sub-link');
+  const sectionIds = [...subLinks].map(l => l.getAttribute('href').slice(1));
+  const sections = sectionIds.map(id => document.getElementById(id));
+
+  const setActive = id => {
+    subLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+
+  sections.forEach(s => s && observer.observe(s));
+  if (sections[0]) setActive(sections[0].id);
+</script>
+</body>
+</html>

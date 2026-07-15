@@ -3,7 +3,7 @@
 ia_annotations.py  -  Extract wireframe annotations into IA visualization pages.
 
 Two responsibilities (run in order):
-  1. build_ia_pages()  -> reads wireframes/*.html, writes IA/annotations/*.html
+  1. build_ia_pages()  -> reads wireframes/*.html, writes ia/annotations/*.html
                           (one page per screen family, all states inside; zone maps,
                           zone->job/finding annotations, nav-tree / structure notes).
   2. strip_wireframes() -> removes the .side annotation block and the inline
@@ -14,7 +14,7 @@ Idempotent, like fixpack.py. The wireframes stay the render surface; the IA
 annotation pages become the single home for the zone/annotation/structure notes.
 
 Usage:
-    python3 ia_annotations.py build     # only (re)build IA/annotations/
+    python3 ia_annotations.py build     # only (re)build ia/annotations/
     python3 ia_annotations.py strip     # only strip wireframes
     python3 ia_annotations.py all       # build then strip  (default)
 """
@@ -27,7 +27,7 @@ import html as _html
 HERE = os.path.dirname(os.path.abspath(__file__))
 WF_DIR = os.path.dirname(HERE)                       # wireframes/
 ROOT = os.path.dirname(WF_DIR)                        # repo root
-OUT_DIR = os.path.join(ROOT, "IA", "annotations")     # IA/annotations/
+OUT_DIR = os.path.join(ROOT, "ia", "annotations")     # ia/annotations/
 
 # ---------------------------------------------------------------------------
 # Screen families: title -> list of (filename, state-label). Base state first.
@@ -342,7 +342,11 @@ SIDEBAR_LABELS = {
 
 def render_sidebar(active_slug):
     """The shared dark sidebar. active_slug = a family slug, or '__index__' for
-    the index page. Root links go up two levels (IA/annotations/ -> repo root)."""
+    the index page. Root links go up two levels (ia/annotations/ -> repo root).
+    Static accordion: annotation pages live under the Wireframe Annotations stage
+    (never inside the User Research or Information Architecture groups), so both of
+    those groups always render collapsed here - each a single link to its first
+    page. Mirrors resync_sidebar.py."""
     subs = []
     for slug, _t, _s in FAMILIES:
         cls = "sidebar-sub-link active" if slug == active_slug else "sidebar-sub-link"
@@ -358,20 +362,23 @@ def render_sidebar(active_slug):
     <div class="sidebar-project-name">Prediction Market</div>
   </div>
   <div class="sidebar-nav">
-    <a href="../../research.html" class="sidebar-page-link">Research</a>
-    <a href="../../personas.html" class="sidebar-page-link">Personas</a>
-    <a href="../../jtbd.html" class="sidebar-page-link">JTBD</a>
-    <div class="sidebar-divider">Information Architecture</div>
-    <a href="../../ia.html" class="sidebar-page-link">Overview</a>
-    <a href="../../sitemap.html" class="sidebar-page-link">Sitemap</a>
-    <a href="../../flows.html" class="sidebar-page-link">Flows</a>
+    <a href="../../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <a href="../../user-research/personas.html" class="sidebar-page-link">User Research</a>
+    <a href="../../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
     <div class="sidebar-divider">Plan</div>
     <a href="../../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
     <a href="index.html" class="sidebar-page-link@@ANN_ACTIVE@@">Wireframe Annotations</a>
     <div class="sidebar-sub">
       @@SUBS@@
     </div>
+    <a href="../../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a href="../../concept/concept.html" class="sidebar-page-link">Concept</a>
+    <a href="../../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
+    <a class="sidebar-page-link planned next">Tokens + Components</a>
     <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
     <a class="sidebar-page-link planned">Handoff</a>
   </div>
 </aside>""".replace("@@ANN_ACTIVE@@", ann_active).replace("@@SUBS@@", "\n      ".join(subs))
@@ -417,6 +424,8 @@ a:hover{text-decoration:underline}
 .sidebar-page-link.active{color:var(--accent)}
 .sidebar-page-link.planned{color:var(--muted);cursor:default;opacity:.6}
 .sidebar-page-link.planned::after{content:'Soon';font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:rgba(255,255,255,.04);color:var(--muted);padding:2px 5px;border-radius:3px;border:1px solid var(--border)}
+.sidebar-page-link.planned.next{opacity:1}
+.sidebar-page-link.planned.next::after{content:'Next';color:var(--accent);border-color:var(--accent)}
 .sidebar-sub{padding:2px 0 8px}
 .sidebar-sub-link{display:block;font-size:12px;color:var(--muted);text-decoration:none;padding:5px 16px 5px 28px;transition:color .15s;position:relative}
 .sidebar-sub-link:hover{color:var(--text);text-decoration:none}
@@ -525,7 +534,7 @@ INDEX_TMPL = """<!DOCTYPE html>
     <ul class="toc">
       @@ITEMS@@
     </ul>
-    <p class="sub" style="margin-top:28px">Source of truth for the IA remains <code>IA/sitemap.md</code> and <code>IA/flows.md</code>. These pages are generated by <code>wireframes/_generators/ia_annotations.py</code> from the wireframe HTML.</p>
+    <p class="sub" style="margin-top:28px">Source of truth for the IA remains <code>ia/docs/sitemap.md</code> and <code>ia/docs/flows.md</code>. These pages are generated by <code>wireframes/_generators/ia_annotations.py</code> from the wireframe HTML.</p>
   </div>
 </main>
 """ + SIDEBAR_JS + """

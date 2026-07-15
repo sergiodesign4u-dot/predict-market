@@ -27,7 +27,7 @@ research pages that exist in the project root, add them now.
 
 Step 1 - Audit [personas.md / jtbd.md / equivalent docs]:
 For every claim in each file, classify as one of:
-  - CONFIRMED: backed by research cited in master-research.md
+  - CONFIRMED: backed by research cited in research.md
   - HYPOTHESIS: educated guess, marked [?] or not
   - INVENTED: no source, no marker, presented as fact
 
@@ -41,7 +41,7 @@ and where to look for the answer (specific forums, products, reviews).
 
 Step 3 - Close the top 3-5 gaps:
 Run live web research (Reddit, X, Trustpilot, product blogs, 2024-2026
-sources only). For each gap: find evidence, update master-research.md
+sources only). For each gap: find evidence, update research.md
 in a new section "§[N] Post-Audit Research - [Month Year]".
 In the source doc, replace [?] markers where answered; note what changed
 and why where claims were refuted.
@@ -76,7 +76,7 @@ Context:
   --green:#5fdb8f; --blue:#5fa8ff
 
 Step 1 - Lock in decisions:
-Update strategy.md (or equivalent) and master-research.md to reflect
+Update strategy.md (or equivalent) and research.md to reflect
 each decision. Mark open questions as CLOSED. Cross-reference decisions
 to any HYPOTHESIS claims in personas/jtbd that the decisions now resolve.
 

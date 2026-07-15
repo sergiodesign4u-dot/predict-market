@@ -2,7 +2,7 @@
 
 **Purpose:** This file is the screen order for the Wireframes phase, main flow
 only, primary persona Alex (News Junkie). It is pure synthesis from
-`IA/sitemap.md`, `IA/flows.md`, and `research/jtbd.md`. It builds no HTML. Its
+`ia/docs/sitemap.md`, `ia/docs/flows.md`, and `user-research/docs/jtbd.md`. It builds no HTML. Its
 single output is the ordered 6-screen spine plus the screen x state map that
 Step 02 and later wireframe steps build from. Nothing here is invented:
 every screen, job, flow position, and state traces to one of those three files.
@@ -11,15 +11,15 @@ every screen, job, flow position, and state traces to one of those three files.
 
 ## Main flow definition
 
-**Primary persona:** Alex (News Junkie), PRIMARY per `research/jtbd.md` (MJ
+**Primary persona:** Alex (News Junkie), PRIMARY per `user-research/docs/jtbd.md` (MJ
 persona line).
 
 **Main job (MJ):** "When an event I follow is approaching resolution, I want a
 real stake on the outcome, so that it is not just news but my own
-participation with real consequences." (`research/jtbd.md`, MJ.)
+participation with real consequences." (`user-research/docs/jtbd.md`, MJ.)
 
 **Main-flow spine, in order (News Junkie branch only, from the MJ flow in
-`IA/flows.md`):**
+`ia/docs/flows.md`):**
 
 1. Event Feed
 2. Event Detail
@@ -51,7 +51,7 @@ non-main-flow screens are deferred (see the Deferred to Step 08 section).
   - EJ2: "When a platform asks me to trust it with money for the first time, I
     want to feel it is a serious and transparent organization." First
     impression layer, no registration required.
-- **Place in the flow:** MJ entry. In `IA/flows.md` MJ, `triggerFeed --> EF`,
+- **Place in the flow:** MJ entry. In `ia/docs/flows.md` MJ, `triggerFeed --> EF`,
   then `found{"found a relevant event?"}`. Also the entry node of the FJ2 flow.
 - **Canonical states:**
   - empty ✓ - T6 in MJ (`found -->|"no"| T6`): no events match the current
@@ -66,7 +66,7 @@ non-main-flow screens are deferred (see the Deferred to Step 08 section).
   - push-permission-missing banner (surfaced on Event Feed when OS push is
     denied; cross-referenced from Notifications states)
   - first-visit story-driven layout (context visible on card, not just %) vs
-    return-visit denser feed. Naming deferred: P3-4 in `IA/flows.md`
+    return-visit denser feed. Naming deferred: P3-4 in `ia/docs/flows.md`
     (first-visit vs return-visit layout naming on Event Feed).
 - **Revised card and feed (IA propagation pass, supersedes the story-driven card
   framing above):**
@@ -84,7 +84,7 @@ non-main-flow screens are deferred (see the Deferred to Step 08 section).
     height so the meta rows line up and the list reads evenly. Multi-outcome is a
     normal `Event.Type` layout, not the rejected trading-board view.
   - Trigger-entry: tapping YES or NO on a card routes to Event Detail with the
-    side, and for multi-outcome the option, pre-selected (`IA/flows.md` MJ). It
+    side, and for multi-outcome the option, pre-selected (`ia/docs/flows.md` MJ). It
     does not place a bet and does not bypass Event Detail; no Feed to Bet edge is
     added. Tapping the card body or question opens Event Detail neutrally.
   - Default sorted view is Trending (not a neutral "All"). Categories are
@@ -171,7 +171,7 @@ non-main-flow screens are deferred (see the Deferred to Step 08 section).
 - **Product-specific states (sitemap, verbatim):**
   - intent (logged out, user builds the bet, no auth yet)
   - S5-reconcile (price moved during gate: shows old price vs new price, user
-    must re-confirm; rejection routes to T16 in `IA/flows.md`)
+    must re-confirm; rejection routes to T16 in `ia/docs/flows.md`)
   - error (bet registration failed on-chain, T3)
   - insufficient-balance (inline: "you have $X, can bet up to $X or deposit
     more" with options to change amount or go to Deposit)
@@ -289,6 +289,24 @@ produce this state.
 
 ---
 
+## System and global nodes (IA Detailed layer 03b, added 2026-07-12)
+
+Out-of-cluster system pages and global components, rendered from `ia/docs/pages/system.md`.
+These are not empty/error/loading/success screens; each is a single page or component with its
+own HTTP contract. Never a dead-end (every one has a visible exit).
+
+| Screen | File | HTTP / type | Notes |
+|---|---|---|---|
+| 404 Not Found | `404.html` | HTTP 404 | full page (header + footer), quick links + Browse events, not a soft-404 |
+| 500 Server Error | `500.html` | HTTP 500 | static template, funds reassurance, Try again + Home |
+| Maintenance | `maintenance.html` | HTTP 503 + Retry-After | planned downtime, bets and funds safe, Try again |
+| Cookie consent | `cookie-consent.html` | banner component | Accept all / Reject all / Manage at equal weight, 3 category toggles (Analytics + Marketing off by default), no pre-ticked |
+| Toasts | `toasts.html` | toast component | transient aria-live confirmations + an error variant; auto-dismiss + manual close |
+
+Registered in the screen tree under "System and global" (`_shell.py` `nav_tree` + `resync.py`).
+
+---
+
 ## Deferred to Step 08
 
 These are explicitly out of scope for this step so nothing below reads as a gap
@@ -296,10 +314,10 @@ in the main-flow spine. They are real and will be built later; they are simply
 not part of the News Junkie main-flow synthesis here.
 
 - **Crypto Native branch of the gate** (wallet connect, terminal T15 in
-  `IA/flows.md` MJ): secondary persona Dan (Crypto Native), not the main path.
+  `ia/docs/flows.md` MJ): secondary persona Dan (Crypto Native), not the main path.
   The `personaType -->|"Crypto Native"| walletOk` branch and its T15 terminal
   are deferred.
-- **Non-main-flow screens** (from `IA/sitemap.md`, none on the MJ News Junkie
+- **Non-main-flow screens** (from `ia/docs/sitemap.md`, none on the MJ News Junkie
   spine):
   - Win Screen
   - Loss Screen
@@ -316,22 +334,22 @@ not part of the News Junkie main-flow synthesis here.
 
 What was checked, and against which source file:
 
-- **Screen names matched to `IA/sitemap.md`:** all 6 spine names (Event Feed,
+- **Screen names matched to `ia/docs/sitemap.md`:** all 6 spine names (Event Feed,
   Event Detail, Bet Screen, Sign In / Register, Deposit, Active Bets) are taken
   verbatim from the Screens section of the sitemap. No renaming or rephrasing.
-- **Jobs matched to `research/jtbd.md`:** each job code (MJ, FJ1, FJ2, FJ3,
+- **Jobs matched to `user-research/docs/jtbd.md`:** each job code (MJ, FJ1, FJ2, FJ3,
   FJ4, FJ5, EJ1, EJ2, EJ3) maps to a job defined in jtbd.md. The one-line
   formulations are English renderings of the jtbd.md formulations (the source
   states them in Russian; the MJ English line is the one fixed in the Step 01
   brief). Job-to-screen assignments cross-checked against the sitemap Tracing
   Coverage Matrix (rows MJ, FJ1-FJ5, EJ1-EJ3 vs columns EF, ED, SI, DEP, BS,
   AB).
-- **Flow positions and terminal codes matched to `IA/flows.md`:** the spine
+- **Flow positions and terminal codes matched to `ia/docs/flows.md`:** the spine
   order and each node citation (triggerFeed, EF, found, ED, ctxOk, wantsBet,
   BS1, confirmedIntent, gate, SI, authOk, DEP, depOk, S5, BS2, techOk, AB) and
   terminals (T6, T8, T3, T5, T2, T1, T16, T14) are taken from the MJ flow.
   Out-of-scope terminal T15 is named only to mark the Crypto Native boundary.
-- **State cells matched to `IA/sitemap.md` state lists:** every product-specific
+- **State cells matched to `ia/docs/sitemap.md` state lists:** every product-specific
   state listed per screen is copied verbatim from that screen's States line in
   the sitemap. Canonical empty/error/loading/success marks were verified against
   both the sitemap state lists and the flow terminal codes (empty = T6 for

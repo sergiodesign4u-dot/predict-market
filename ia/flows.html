@@ -1,0 +1,489 @@
+<!-- Static snapshot of IA/flows.md, regenerate with this pass if the source changes. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flows - Prediction Market Platform</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* SIDEBAR */
+  .sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; scrollbar-width: none; z-index: 200; transform: translateX(-100%); transition: transform .25s cubic-bezier(.4,0,.2,1); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar::-webkit-scrollbar { display: none; }
+  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 199; backdrop-filter: blur(2px); }
+  .sidebar-overlay.open { display: block; }
+  .menu-toggle { position: fixed; top: 12px; left: 12px; z-index: 201; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; width: 36px; height: 36px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; padding: 0; }
+  .menu-toggle span { display: block; width: 15px; height: 1.5px; background: var(--text); border-radius: 1px; }
+  .sidebar-brand { padding: 20px 16px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .sidebar-project-name { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); line-height: 1.4; }
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+  .sidebar-page-link { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 500; color: var(--text); text-decoration: none; padding: 7px 16px; transition: background .15s; cursor: pointer; user-select: none; }
+  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
+  .sidebar-page-link.active { color: var(--accent); }
+  .sidebar-page-link.planned { color: var(--muted); cursor: default; opacity: .6; }
+  .sidebar-page-link.planned::after { content: 'Soon'; font-size: 9px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; background: rgba(255,255,255,.04); color: var(--muted); padding: 2px 5px; border-radius: 3px; border: 1px solid var(--border); }
+  .sidebar-page-link.planned.next { opacity: 1; }
+  .sidebar-page-link.planned.next::after { content: 'Next'; color: var(--accent); border-color: var(--accent); }
+  .sidebar-sub { padding: 2px 0 8px; }
+  .sidebar-sub-link { display: block; font-size: 12px; color: var(--muted); text-decoration: none; padding: 5px 16px 5px 28px; transition: color .15s; position: relative; }
+  .sidebar-sub-link:hover { color: var(--text); }
+  .sidebar-sub-link.active { color: var(--text); }
+  .sidebar-sub-link.active::before { content: ''; position: absolute; left: 17px; top: 50%; transform: translateY(-50%); width: 3px; height: 3px; border-radius: 50%; background: var(--accent); }
+  .sidebar-divider { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 16px 16px 6px; opacity: .45; }
+
+  /* LAYOUT */
+  main { padding: 60px 20px 80px; }
+  @media (min-width: 860px) { .sidebar { transform: translateX(0); transition: none; } .sidebar-overlay { display: none !important; } .menu-toggle { display: none; } main { margin-left: 220px; padding: 48px 48px 120px; } }
+  section { padding-top: var(--gap); margin-top: var(--gap); border-top: 1px solid var(--border); }
+  section:first-child { border-top: none; }
+
+  /* TYPOGRAPHY */
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 16px; }
+  h2 { font-size: 22px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 20px; }
+  h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 12px; margin-top: 32px; }
+  h3:first-child { margin-top: 0; }
+  p { color: #aaa; margin-bottom: 12px; max-width: 680px; }
+  strong { color: var(--text); font-weight: 600; }
+  .lead { font-size: 16px; color: #bbb; max-width: 640px; margin-bottom: 32px; line-height: 1.7; }
+  .hero { padding-top: 0; border-top: none; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(200,255,0,.2); }
+  .tag.grey { background: rgba(255,255,255,.04); color: var(--muted); border-color: var(--border); }
+  .hero-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+
+  /* FLOW CARDS */
+  .flow-job { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+  .flow-title { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -.01em; }
+  .flow-desc { font-size: 14px; color: #999; margin-bottom: 20px; }
+
+  /* MERMAID CONTAINER */
+  .mermaid-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; overflow-x: auto; margin-top: 16px; margin-bottom: 16px; }
+  .mermaid { min-width: 500px; }
+
+  /* TERMINAL TABLE */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--r); margin-top: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th { background: var(--surface); color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  tbody td { padding: 11px 14px; border-bottom: 1px solid var(--border); color: #c8c8c8; vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,.015); }
+  td.label { font-weight: 600; color: var(--text); white-space: nowrap; font-family: var(--mono); font-size: 12px; }
+  td.type-error { color: var(--red); font-size: 11px; font-weight: 600; }
+  td.type-churn { color: #e8b96c; font-size: 11px; font-weight: 600; }
+  td.type-success { color: var(--green); font-size: 11px; font-weight: 600; }
+  td.type-recovery { color: var(--blue); font-size: 11px; font-weight: 600; }
+  td.type-retired { color: var(--muted); font-size: 11px; font-weight: 600; text-decoration: line-through; }
+
+  /* NOTE BOXES */
+  .note-box { background: rgba(95,168,255,.06); border: 1px solid rgba(95,168,255,.2); border-radius: 6px; padding: 12px 16px; margin-bottom: 12px; font-size: 13px; color: #9cc4ff; }
+  .legend-box { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; margin-bottom: 20px; font-size: 13px; color: #aaa; line-height: 1.8; }
+  .legend-box code { font-family: var(--mono); font-size: 12px; background: rgba(255,255,255,.06); padding: 1px 5px; border-radius: 3px; color: #bbb; }
+
+  /* DEFERRED NOTE */
+  .deferred-box { background: rgba(232,185,108,.06); border: 1px solid rgba(232,185,108,.2); border-radius: 6px; padding: 12px 16px; margin-bottom: 12px; font-size: 12px; color: #c8a870; }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <a href="../user-research/personas.html" class="sidebar-page-link">User Research</a>
+    <div class="sidebar-divider">Information Architecture</div>
+    <div class="sidebar-divider">Basic layer</div>
+    <a class="sidebar-page-link active">Flows</a>
+    <div class="sidebar-sub">
+      <a href="#mj" class="sidebar-sub-link">MJ - Main Job</a>
+      <a href="#fj2" class="sidebar-sub-link">FJ2 - Understand odds</a>
+      <a href="#fj5" class="sidebar-sub-link">FJ5+EJ3 - Conscious exit</a>
+      <a href="#sj1" class="sidebar-sub-link">SJ1 - Share the win</a>
+    </div>
+    <a href="../ia/concept-map.html" class="sidebar-page-link">Concept map</a>
+    <div class="sidebar-divider">Detailed layer</div>
+    <a href="../ia/ia.html" class="sidebar-page-link">Overview</a>
+    <a href="../ia/sitemap.html" class="sidebar-page-link">Sitemap</a>
+    <a href="../ia/seo.html" class="sidebar-page-link">SEO layer</a>
+    <a href="../ia/system.html" class="sidebar-page-link">System nodes</a>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
+    <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a href="../concept/concept.html" class="sidebar-page-link">Concept</a>
+    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
+    <a class="sidebar-page-link planned next">Tokens + Components</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<main>
+
+<div role="note" style="margin:16px auto;max-width:1000px;padding:12px 16px;border:1px solid #3a7a4a;border-left:4px solid #5fdb8f;background:rgba(95,219,143,0.10);color:#bfe9cf;font-size:14px;line-height:1.5;border-radius:6px;">
+  <strong>Synced with the wireframe build.</strong> The flow logic is unchanged; the surfaces are renamed to match the build: <strong>BS1 / BS2 are the Event Detail bet panel</strong> (inline, not a standalone Bet Screen), and <strong>Sign In / Deposit are in-page dialogs</strong> over the current page (Sign In chains to Deposit). Source of truth: <code>IA/flows.md</code>.
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-meta">
+    <span class="tag">Information Architecture</span>
+    <span class="tag grey">Prediction Market Platform</span>
+    <span class="tag grey">MVP · 2026</span>
+  </div>
+  <h1>User Flows</h1>
+  <p class="lead">Four key flows rendered as Mermaid diagrams. Built from: IA/sitemap.md - jtbd.md. Each flow covers one or more confirmed jobs.</p>
+  <p style="font-size:12px;color:#555;margin-bottom:16px"><a href="ia.html" style="color:var(--muted);text-decoration:underline">Overview</a> &middot; <a href="sitemap.html" style="color:var(--muted);text-decoration:underline">Full Sitemap</a></p>
+
+  <div class="legend-box">
+    <strong style="color:var(--text)">Outcome color</strong> (nodes are colored by outcome):<br>
+    <span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#12351f;border:1px solid #3fb56b;vertical-align:middle;margin:0 5px 0 2px"></span>green = happy-path start + the job-closed success terminal &nbsp;&middot;&nbsp;
+    <span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#3a1618;border:1px solid #e5484d;vertical-align:middle;margin:0 5px 0 2px"></span>red = a true dead-end (no path back to the goal) &nbsp;&middot;&nbsp;
+    <span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#1b1b1b;border:1px solid #5a5a5a;vertical-align:middle;margin:0 5px 0 2px"></span>grey = neutral: intermediate screens, decisions, and loading/empty/error nodes that recover.<br>
+    <span style="color:var(--muted)">In these four flows every error and churn terminal (T6, T7, T9, T10, T12, T16 and the rest) recovers with an arrow back into the flow, so none are true dead-ends; the red class is defined but unused.</span>
+    <hr style="border:none;border-top:1px solid var(--border);margin:10px 0">
+    <code>[Square brackets]</code> = screens from IA/sitemap.md &nbsp;&middot;&nbsp;
+    <code>{Diamonds}</code> = decisions &nbsp;&middot;&nbsp;
+    <code>([Stadiums])</code> = terminal states<br>
+    Success terminals: T14/mjDone, fj2Done, fj5Done, sj1Done.<br>
+    Error/churn terminals T1-T3, T5-T12, T13a, T13b, T15-T16 each have at least one recovery edge. T4 retired as terminal (replaced by escalation-path edge in FJ5).
+  </div>
+
+  <div class="note-box">
+    Coverage note: Flows are drawn for the main job and key related jobs only. Jobs and screens without a dedicated flow (SJ2, Notifications list, Bet History tab) are covered passively or inside existing screens - this is by design, not a gap.
+  </div>
+
+  <div class="note-box">
+    Traces to the CJM To-Be (user-research/docs/cjm-to-be.md, Alex x MJ). The 7 To-Be steps: 1. arrive on a live event, not a signup; 2. understand the market before any account; 3. tap YES/NO and see the bet intent before signing in; 4. sign in and fund with one funds-safety line; 5. confirm with the price reconciled; 6. follow your bet with live context; 7. resolution designed both ways. Per-flow mapping is under each diagram below.
+  </div>
+
+  <div class="deferred-box">
+    Deferred polish (P3 - later pass): P3-3 (HIW static vs fetch clarification), P3-4 (first-visit vs return-visit layout naming on Event Feed), P3-6 (minimal Wallet withdrawal flow), P3-7 (HIW as optional step in FJ2).
+  </div>
+
+  <h3>Terminal map</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>T#</th><th>Meaning</th><th>Flow</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td class="label">T1</td><td>KYC rejected</td><td>MJ - Deposit branch</td><td class="type-error">error</td></tr>
+        <tr><td class="label">T2</td><td>Card declined</td><td>MJ - Deposit branch</td><td class="type-error">error</td></tr>
+        <tr><td class="label">T3</td><td>Bet registration failed on-chain</td><td>MJ - after execute</td><td class="type-error">error</td></tr>
+        <tr><td class="label">T4</td><td>RETIRED - was chasing risk sink</td><td>FJ5</td><td class="type-retired">retired</td></tr>
+        <tr><td class="label">T5</td><td>Auth error</td><td>MJ - Sign In branch</td><td class="type-error">error</td></tr>
+        <tr><td class="label">T6</td><td>Empty feed (first visit, no events)</td><td>MJ - after Event Feed</td><td class="type-churn">churn</td></tr>
+        <tr><td class="label">T7</td><td>Not convinced / context insufficient</td><td>MJ + FJ2 - after Event Detail</td><td class="type-churn">churn</td></tr>
+        <tr><td class="label">T8</td><td>Event Detail load error</td><td>MJ + FJ2</td><td class="type-error">error</td></tr>
+        <tr><td class="label">T9</td><td>Resolved bet not noticed</td><td>FJ5 - Active Bets</td><td class="type-churn">churn</td></tr>
+        <tr><td class="label">T10</td><td>Dormant (closed app)</td><td>FJ5 - conscious-exit path</td><td class="type-churn">churn</td></tr>
+        <tr><td class="label">T11</td><td>Share Card not generated</td><td>SJ1 - after Win Screen</td><td class="type-error">error</td></tr>
+        <tr><td class="label">T12</td><td>Profile only (shared nothing)</td><td>SJ1 - shares no</td><td class="type-churn">churn</td></tr>
+        <tr><td class="label">T13a</td><td>Returned after text-share fallback (Share Card not generated)</td><td>SJ1 - T11 path</td><td class="type-recovery">recovery</td></tr>
+        <tr><td class="label">T13b</td><td>Returned after card-share, no click-through</td><td>SJ1 - no new user followed link</td><td class="type-recovery">recovery</td></tr>
+        <tr><td class="label">T14</td><td>MJ closed - bet placed</td><td>MJ - success</td><td class="type-success">success</td></tr>
+        <tr><td class="label">T15</td><td>Wallet connect failed</td><td>MJ - Crypto Native branch</td><td class="type-error">error</td></tr>
+        <tr><td class="label">T16</td><td>Price rejected at S5 reconcile</td><td>MJ - priceConfirm no</td><td class="type-churn">churn</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- MJ FLOW -->
+<section id="mj">
+  <div class="flow-job">MJ - Main Job</div>
+  <div class="flow-title">When an event I follow is approaching resolution, I want a real stake on the outcome</div>
+  <div class="flow-desc">The primary job. Entry from news/notification or Event Feed. Two persona branches at the gate (News Junkie / Crypto Native). S5 AMM price reconcile before bet execution. Success: T14 - bet placed, user follows the event.</div>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+flowchart TD
+    walletOk{"wallet connected?"}
+    S5{"S5: AMM price moved during gate?"}
+    priceConfirm{"accept new price?"}
+
+    triggerFeed(["external trigger: news, notification"])
+    triggerLink(["deep link from news or notification to event"])
+
+    triggerFeed --> EF["Event Feed"]
+    EF --> feedLoad["Loading: fetching live events"]
+    feedLoad --> found{"found a relevant event?"}
+    found -->|"no"| T6(["T6 - empty feed, no matching events"])
+    T6 -->|"subscribe: notify me of new events in category"| EF
+
+    found -->|"yes"| ED["Event Detail"]
+    triggerLink --> ED
+
+    ED --> ctxOk{"context loaded?"}
+    ctxOk -->|"no"| T8(["T8 - load error"])
+    T8 -->|"retry"| ED
+    ctxOk -->|"yes"| wantsBet{"wants to bet?"}
+
+    wantsBet -->|"no"| T7(["T7 - not convinced, exits without bet"])
+    T7 -->|"back to feed"| EF
+    wantsBet -->|"yes - taps YES or NO"| BS1["Event Detail bet panel (intent)"]
+
+    BS1 --> confirmedIntent{"confirms the bet?"}
+    confirmedIntent -->|"no, changed mind"| ED
+    confirmedIntent -->|"yes - gate fires"| personaType{"account type?"}
+
+    personaType -->|"News Junkie"| SI["Sign In / Register (dialog)"]
+    personaType -->|"Crypto Native"| walletOk
+
+    SI --> authOk{"auth successful?"}
+    authOk -->|"no"| T5(["T5 - auth error"])
+    T5 -->|"retry or use other provider"| SI
+    authOk -->|"yes"| DEP["Deposit (dialog)"]
+
+    DEP --> moreInfo{"wants to understand fund safety?"}
+    moreInfo -->|"yes"| HIW["How It Works"]
+    HIW --> DEP
+    moreInfo -->|"no"| depProcessing["Loading: processing your payment"]
+    depProcessing --> depOk{"deposit successful?"}
+    depOk -->|"card declined"| T2(["T2 - card declined"])
+    T2 -->|"try another card or connect a USDC wallet"| DEP
+    depOk -->|"KYC rejected"| T1(["T1 - KYC rejected: connect USDC wallet or contact support"])
+    T1 -->|"connect a USDC wallet, no KYC"| walletOk
+    T1 -->|"back to feed"| EF
+    depOk -->|"yes"| S5
+
+    walletOk -->|"no"| T15(["T15 - wallet connect failed"])
+    T15 -->|"retry connect"| walletOk
+    T15 -->|"switch to News Junkie path: social login and deposit"| SI
+    walletOk -->|"yes"| S5
+
+    S5 -->|"no change"| BS2["Bet panel (execute)"]
+    S5 -->|"yes - was X, now Y"| priceConfirm
+    priceConfirm -->|"no"| T16(["T16 - price rejected, bet cancelled"])
+    T16 -->|"re-evaluate event"| ED
+    T16 -->|"re-enter at new price"| BS1
+    priceConfirm -->|"yes"| BS2
+
+    BS2 --> betProcessing["Loading: confirming your bet on-chain"]
+    betProcessing --> techOk{"bet registered on-chain?"}
+    techOk -->|"no"| T3(["T3 - bet registration failed on-chain"])
+    T3 -->|"retry"| BS2
+    T3 -->|"check balance"| WA["Wallet"]
+    techOk -->|"yes"| AB["Active Bets"]
+
+    AB --> mjDone(["T14 - MJ closed: bet placed, user follows the event"])
+
+    classDef success fill:#12351f,stroke:#3fb56b,color:#eafff9;
+    classDef dead fill:#3a1618,stroke:#e5484d,color:#ffd7d7;
+    classDef neutral fill:#1b1b1b,stroke:#5a5a5a,color:#dddddd;
+    class triggerFeed,mjDone success;
+    class triggerLink,EF,feedLoad,found,T6,ED,ctxOk,T8,wantsBet,T7,BS1,confirmedIntent,personaType,SI,authOk,T5,DEP,moreInfo,HIW,depProcessing,depOk,T2,T1,S5,walletOk,T15,priceConfirm,T16,BS2,betProcessing,techOk,T3,WA,AB neutral;
+    </div>
+  </div>
+  <p style="font-size:12px;color:#8a8a8a;max-width:820px;margin-top:4px">
+    <strong style="color:#aaa">Loading states:</strong> three inline neutral loading nodes mark the async waits - feedLoad (fetching the live feed), depProcessing (processing the card payment), and betProcessing (confirming the bet on-chain).<br>
+    <strong style="color:#aaa">Traces to CJM To-Be steps 1-7:</strong> story-led feed (1) -&gt; explain the number (2) -&gt; bet intent before the wallet, gate at Confirm (3) -&gt; sign in + fund (4) -&gt; confirm + S5 reconcile (5) -&gt; follow in Active Bets (6) -&gt; resolution both ways (7).
+  </p>
+</section>
+
+<!-- FJ2 FLOW -->
+<section id="fj2">
+  <div class="flow-job">FJ2 - Functional Job 2</div>
+  <div class="flow-title">When I see an event and its probability, I want to understand why the market prices it that way</div>
+  <div class="flow-desc">The "understand the odds" job. Entry from Event Feed percentage or an article. Two outcomes: watcher (understood, not betting) or proceeds to the bet (the inline panel on Event Detail).</div>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+flowchart TD
+    trigger(["trigger: saw percentage on Event Feed or arrived from an article"])
+    trigger --> EF["Event Feed"]
+    EF --> ED["Event Detail"]
+
+    ED --> ctxOk{"context loaded?"}
+    ctxOk -->|"no"| T8(["T8 - load error"])
+    T8 -->|"retry"| ED
+    ctxOk -->|"yes"| understood{"understood why this probability?"}
+
+    understood -->|"no, context insufficient"| T7(["T7 - unclear, exits without bet"])
+    T7 -->|"back to feed"| EF
+    understood -->|"yes"| hasEdge{"has information edge over the market?"}
+
+    hasEdge -->|"no, market may be right"| watcher(["i - watcher: understood, not betting. FJ2 closed, MJ no."])
+    watcher -->|"back to feed"| EF
+    hasEdge -->|"yes, confident in own position"| BS["Event Detail bet panel"]
+
+    BS --> fj2Done(["FJ2 closed - understood the odds, moved to bet"])
+
+    classDef success fill:#12351f,stroke:#3fb56b,color:#eafff9;
+    classDef dead fill:#3a1618,stroke:#e5484d,color:#ffd7d7;
+    classDef neutral fill:#1b1b1b,stroke:#5a5a5a,color:#dddddd;
+    class trigger,fj2Done success;
+    class EF,ED,ctxOk,T8,understood,T7,hasEdge,watcher,BS neutral;
+    </div>
+  </div>
+  <p style="font-size:12px;color:#8a8a8a;max-width:820px;margin-top:4px"><strong style="color:#aaa">Traces to CJM To-Be step 2:</strong> understand the market before any account (explain the number: inline probability + one-line why + the story), feeding step 3 (bet intent) for the user with an edge.</p>
+</section>
+
+<!-- FJ5 + EJ3 FLOW -->
+<section id="fj5">
+  <div class="flow-job">FJ5 + EJ3 - Functional Job 5 + Emotional Job 3</div>
+  <div class="flow-title">When an event I bet on resolves with a loss, I want to exit consciously without the impulse to chase</div>
+  <div class="flow-desc">The loss-chasing intervention flow. Two entry paths: G1 (direct notification - 1 tap) and manual (Active Bets). The resolution note is the default beat. Escalation path routes through a friction node (pause). Reserved session-aware hook placed but not built. Conscious exit leads to Event Feed.</div>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+flowchart TD
+    nextAction{"next action?"}
+
+    triggerNotif(["resolution notification"])
+    triggerNotif -->|"G1: direct to Loss Screen"| LS["Loss Screen"]
+
+    triggerManual(["user opens Active Bets"])
+    triggerManual --> AB["Active Bets"]
+    AB --> seesResolved{"sees a resolved losing bet?"}
+    seesResolved -->|"no"| T9(["T9 - resolved bet not noticed"])
+    T9 -->|"sees recently-resolved section in Active Bets"| LS
+    seesResolved -->|"yes"| LS
+
+    LS --> readsNote{"reads the resolution explanation?"}
+
+    readsNote -->|"yes - default path"| nextAction
+
+    readsNote -->|"no - bets immediately (escalation path)"| pause["pause: resolution note shown, brief beat before re-bet"]
+    sessionHook(["reserved: session-aware chasing check, post-MVP, not built"])
+    pause -.->|"reserved hook (not built)"| sessionHook
+    pause -->|"proceeds - escalation path (F5 risk)"| BS["Event Detail bet panel"]
+    BS --> escalationConfirm{"confirms next bet?"}
+    escalationConfirm -->|"no, reconsiders"| nextAction
+    escalationConfirm -->|"yes - escalation path (F5 risk)"| AB
+
+    nextAction -->|"closes app"| T10(["T10 - dormant, churn risk D7 (Casual Experimenter)"])
+    T10 -->|"scheduled push: new event in category fires later"| EF["Event Feed"]
+    nextAction -->|"browses events"| EF
+
+    EF --> fj5Done(["FJ5 + EJ3 closed - exited consciously, no impulse to chase"])
+
+    classDef success fill:#12351f,stroke:#3fb56b,color:#eafff9;
+    classDef dead fill:#3a1618,stroke:#e5484d,color:#ffd7d7;
+    classDef neutral fill:#1b1b1b,stroke:#5a5a5a,color:#dddddd;
+    class triggerNotif,fj5Done success;
+    class nextAction,triggerManual,AB,seesResolved,T9,LS,readsNote,pause,sessionHook,BS,escalationConfirm,T10,EF neutral;
+    </div>
+  </div>
+  <p style="font-size:12px;color:#8a8a8a;max-width:820px;margin-top:4px"><strong style="color:#aaa">Traces to CJM To-Be step 7 (loss half):</strong> resolution both ways - "Here's what happened" + context + a next step that is NOT "bet again"; the pause / escalation node is the F5 loss-chasing guardrail.</p>
+</section>
+
+<!-- SJ1 FLOW -->
+<section id="sj1">
+  <div class="flow-job">SJ1 - Social Job 1</div>
+  <div class="flow-title">When I win a bet on an event everyone talked about, I want to easily show that to my circle</div>
+  <div class="flow-desc">The win-share flow. Two entry paths: G1-equivalent win notification (1 tap) and manual via My Bets History tab. Default next action is share / mark the moment (SJ1 primary). "See next events" is a deliberate secondary CTA per F5 (overconfidence risk). T13a and T13b are distinct recovery terminals.</div>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+flowchart TD
+    triggerNotif(["win resolution notification"])
+    triggerNotif -->|"direct: 1 tap to Win Screen"| WS["Win Screen"]
+
+    triggerManual(["user opens My Bets - History tab"])
+    triggerManual --> ABhistory["My Bets (History tab)"]
+    ABhistory -->|"tap won item"| WS
+
+    WS --> cardOk{"Share Card auto-generated?"}
+    cardOk -->|"no"| T11(["T11 - Share Card not generated, SJ1 blocked"])
+    T11 -->|"fallback: share as text"| T13a(["T13a - returned after text-share fallback"])
+    T13a --> EF["Event Feed"]
+    EF --> sj1Done(["SJ1 closed - win publicly shown"])
+
+    cardOk -->|"yes"| shares{"user shares? (primary CTA)"}
+    shares -->|"no"| MP["My Profile"]
+    MP --> T12(["T12 - profile only, track record updated, SJ1 no"])
+    T12 -->|"find a new event"| EF
+
+    shares -->|"yes"| ext(["external share: Twitter/X, WhatsApp, Telegram"])
+    ext --> newUser{"new user follows the link?"}
+    newUser -->|"yes"| EF
+    newUser -->|"no"| T13b(["T13b - returned after card-share, no click-through"])
+    T13b --> EF
+
+    WS -->|"secondary: see next events (overconfidence risk per F5)"| EF
+
+    classDef success fill:#12351f,stroke:#3fb56b,color:#eafff9;
+    classDef dead fill:#3a1618,stroke:#e5484d,color:#ffd7d7;
+    classDef neutral fill:#1b1b1b,stroke:#5a5a5a,color:#dddddd;
+    class triggerNotif,sj1Done success;
+    class WS,triggerManual,ABhistory,cardOk,T11,T13a,EF,shares,MP,T12,ext,newUser,T13b neutral;
+    </div>
+  </div>
+  <p style="font-size:12px;color:#8a8a8a;max-width:820px;margin-top:4px"><strong style="color:#aaa">Traces to CJM To-Be step 7 (win half):</strong> "You were right" + share with the F5 overconfidence friction; "see next events" is the deliberate secondary CTA.</p>
+</section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'dark',
+  themeVariables: {
+    background: '#161616',
+    primaryColor: '#1e2a0e',
+    primaryTextColor: '#e8e8e8',
+    primaryBorderColor: '#c8ff00',
+    lineColor: '#444',
+    secondaryColor: '#1a1a1a',
+    tertiaryColor: '#222',
+    edgeLabelBackground: '#0e0e0e',
+    nodeTextColor: '#e8e8e8',
+    mainBkg: '#1a1a1a',
+    nodeBorder: '#333',
+    clusterBkg: '#161616',
+    titleColor: '#c8ff00',
+    fontFamily: 'Inter, system-ui, sans-serif'
+  }
+})
+
+const toggle = document.getElementById('menuToggle')
+const overlay = document.getElementById('sidebarOverlay')
+const sidebar = document.getElementById('sidebar')
+toggle.addEventListener('click', () => { sidebar.classList.toggle('open'); overlay.classList.toggle('open') })
+overlay.addEventListener('click', () => { sidebar.classList.remove('open'); overlay.classList.remove('open') })
+
+const subLinks = document.querySelectorAll('.sidebar-sub-link')
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      subLinks.forEach(l => l.classList.remove('active'))
+      const link = document.querySelector(`.sidebar-sub-link[href="#${e.target.id}"]`)
+      if (link) link.classList.add('active')
+    }
+  })
+}, { rootMargin: '-15% 0px -75% 0px' })
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s))
+</script>
+
+</body>
+</html>

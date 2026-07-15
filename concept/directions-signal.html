@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal · card variants</title>
+<meta name="description" content="The Signal direction applied to the real wireframe feed card, in four variants with a small image. Pick one.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ---- Signal tokens (locked from directions.html d2) ---- */
+  :root{
+    --canvas:#0b0a12;--surface:#151322;--surface-2:#1d1a2e;--border:#2a2440;
+    --ink:#f1edff;--muted:#a7a0c4;
+    --accent:#8b5cf6;--lime:#c9f24e;
+    --yes:#2fbf73;--on-yes:#04210e;--no:#f0555a;--on-no:#ffffff;
+    --radius:16px;--radius-btn:10px;
+    --display:'Sora';--ease:cubic-bezier(.2,.7,.2,1);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--canvas);color:var(--ink);
+    font-family:Inter,system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(560px 300px at 15% -4%,color-mix(in oklab,var(--accent) 20%,transparent),transparent 70%),
+      radial-gradient(460px 300px at 96% 2%,color-mix(in oklab,var(--lime) 8%,transparent),transparent 72%);
+    background-repeat:no-repeat;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:clamp(20px,4vw,52px) clamp(16px,4vw,36px)}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+
+  .head{max-width:720px;margin-bottom:26px}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--muted);margin:0 0 14px}
+  .kicker .dot{width:7px;height:7px;border-radius:99px;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+  h1{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1.05;font-size:clamp(26px,5vw,42px);margin:0 0 12px;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--lime)}
+  .head p{font-size:clamp(14px,2vw,16px);color:#cfc9e6;margin:0;max-width:66ch;text-wrap:pretty}
+  .head code{font-family:var(--display);font-size:.92em;color:var(--lime)}
+
+  /* palette lock */
+  .lock{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 8px}
+  .lock .sw{display:flex;align-items:center;gap:8px;padding:6px 11px 6px 7px;border-radius:99px;background:var(--surface);border:1px solid var(--border);font-size:12px;color:var(--muted)}
+  .lock .sw i{width:16px;height:16px;border-radius:5px;display:block}
+  .lock .sw b{color:var(--ink);font-weight:600}
+
+  .grid{margin-top:30px;display:grid;gap:20px;grid-template-columns:1fr}
+  @media(min-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
+
+  .variant{display:flex;flex-direction:column;gap:12px}
+  .vlabel{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+  .vlabel .tag{font-family:var(--display);font-weight:800;font-size:13px;color:var(--canvas);background:var(--lime);border-radius:6px;padding:2px 8px;letter-spacing:.01em}
+  .vlabel b{font-family:var(--display);font-weight:700;font-size:16px;color:var(--ink)}
+  .vlabel span{font-size:13px;color:var(--muted)}
+
+  /* ===== the card (structure + content from wireframes/event-feed.html) ===== */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 50px -34px var(--accent)}
+  .card-body{padding:15px}
+  .top{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
+  .thumb{flex:none;width:60px;height:60px;border-radius:12px;object-fit:cover;background:#221f33;border:1px solid var(--border)}
+  .q{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.22;letter-spacing:-.01em;text-decoration:none;color:var(--ink);text-wrap:balance}
+  .q:hover{color:var(--accent)}
+  .why{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--muted);margin:0 0 13px;line-height:1.45}
+  .why svg{width:15px;height:15px;flex:none;margin-top:2px;color:var(--accent)}
+  .why b{color:var(--ink);font-weight:600}
+
+  .prob-line{display:flex;align-items:baseline;gap:8px;margin:0 0 11px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .prob-line .prob{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.01em;color:var(--ink);text-transform:none}
+
+  .yesno{display:flex;gap:8px}
+  .yesno .btn{flex:1;border:0;cursor:pointer;border-radius:var(--radius-btn);font-family:Inter,sans-serif;font-weight:700;font-size:14px;padding:11px 12px;transition:transform .16s var(--ease),filter .16s var(--ease)}
+  .yesno .btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+  .yesno .btn.yes{background:var(--yes);color:var(--on-yes)}
+  .yesno .btn.no{background:var(--no);color:var(--on-no)}
+
+  .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0 0;font-size:12px;color:var(--muted)}
+  .meta .meta-txt{display:flex;flex-wrap:wrap;gap:4px 12px}
+  .bookmark-btn{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:.16s var(--ease)}
+  .bookmark-btn svg{width:17px;height:17px}
+  .bookmark-btn[aria-pressed="true"]{color:var(--lime);border-color:color-mix(in oklab,var(--lime) 40%,var(--border))}
+  .bookmark-btn:hover{color:var(--accent);border-color:color-mix(in oklab,var(--accent) 40%,var(--border))}
+
+  /* B: odds bar */
+  .oddsbar{margin:0 0 12px}
+  .oddsbar .track{height:8px;border-radius:99px;overflow:hidden;display:flex;background:var(--no)}
+  .oddsbar .fill{background:var(--yes);box-shadow:0 0 14px color-mix(in oklab,var(--yes) 60%,transparent)}
+  .oddsbar .lbls{display:flex;justify-content:space-between;margin-top:7px;font-size:12px;font-weight:600}
+  .oddsbar .lbls .l-yes{color:var(--yes)}
+  .oddsbar .lbls .l-no{color:var(--no)}
+
+  /* C: short media strip */
+  .strip{position:relative;height:112px;overflow:hidden}
+  .strip img{width:100%;height:100%;object-fit:cover}
+  .strip::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,color-mix(in oklab,var(--surface) 88%,transparent))}
+  .strip .chip{position:absolute;top:10px;left:10px;z-index:2;display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:color-mix(in oklab,var(--canvas) 70%,transparent);color:var(--ink);border:1px solid color-mix(in oklab,var(--ink) 16%,transparent);backdrop-filter:blur(6px)}
+  .strip .chip .live{width:6px;height:6px;border-radius:99px;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pulse 2.4s var(--ease) infinite}
+  .strip .save{position:absolute;top:8px;right:8px;z-index:2}
+
+  /* D: multi options */
+  .options{display:flex;flex-direction:column;gap:8px;margin:0 0 12px}
+  .opt-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:9px 11px;border-radius:11px;background:var(--surface-2);border:1px solid var(--border)}
+  .opt-name{font-weight:600;font-size:14px;color:var(--ink)}
+  .opt-prob{font-family:var(--display);font-weight:800;font-size:16px;color:var(--ink)}
+  .yesno.compact .btn{padding:6px 10px;font-size:12px;flex:none}
+  .yesno.compact{gap:6px}
+
+  .note{margin-top:34px;padding:16px 18px;border:1px dashed var(--border);border-radius:14px;font-size:13.5px;color:#b3adca;background:color-mix(in oklab,var(--surface) 60%,var(--canvas))}
+  .note b{color:var(--ink)}
+
+  /* section divider */
+  .more-head{max-width:760px;margin:46px 0 4px}
+  .more-head h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,3.4vw,28px);letter-spacing:-.02em;margin:0 0 8px}
+  .more-head h2 em{font-style:normal;color:var(--lime)}
+  .more-head p{color:#cfc9e6;margin:0;font-size:14.5px;max-width:64ch}
+
+  /* E: number-forward */
+  .hero-num{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 6px}
+  .hero-num .big{display:flex;flex-direction:column;line-height:1}
+  .hero-num .big .n{font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.02em;color:var(--ink)}
+  .hero-num .big .l{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  .yesno.tight{flex:none}
+  .yesno.tight .btn{flex:none}
+  .btn.priced{display:flex;flex-direction:column;gap:1px;min-width:74px}
+  .btn.priced small{font-weight:600;font-size:11px;opacity:.85}
+
+  /* F: two outcome tiles */
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:2px 0 6px}
+  .tile{border:1px solid;border-radius:12px;padding:12px 13px;cursor:pointer;text-align:left;transition:transform .16s var(--ease),filter .16s var(--ease)}
+  .tile:hover{transform:translateY(-1px);filter:brightness(1.08)}
+  .tile .t-n{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1;display:block}
+  .tile .t-l{font-size:12px;font-weight:700;letter-spacing:.05em;margin-top:6px;display:block}
+  .tile.yes{background:color-mix(in oklab,var(--yes) 14%,var(--canvas));border-color:color-mix(in oklab,var(--yes) 36%,transparent)}
+  .tile.yes .t-n,.tile.yes .t-l{color:#4fd98d}
+  .tile.no{background:color-mix(in oklab,var(--no) 14%,var(--canvas));border-color:color-mix(in oklab,var(--no) 36%,transparent)}
+  .tile.no .t-n,.tile.no .t-l{color:#ff8489}
+
+  /* G: featured/live glow + sparkline */
+  .card.featured{box-shadow:0 0 0 1px color-mix(in oklab,var(--accent) 32%,transparent),0 22px 60px -28px var(--accent)}
+  .card.featured .card-body{position:relative}
+  .headwrap{display:flex;flex-direction:column;gap:7px}
+  .chip-live{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:99px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:color-mix(in oklab,var(--accent) 18%,var(--canvas));color:var(--ink);border:1px solid color-mix(in oklab,var(--accent) 32%,transparent)}
+  .chip-live .live{width:6px;height:6px;border-radius:99px;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pulse 2.4s var(--ease) infinite}
+  .spark{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+  .spark svg{width:80px;height:26px;flex:none}
+  .spark .trend{font-size:12px;font-weight:600;color:var(--lime)}
+
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+  /* course roadmap sidebar - self-contained (Signal dark), injected by _directions_sidebar.py */
+  .rmx-toggle{position:fixed;top:12px;left:12px;z-index:201;background:#151322;border:1px solid #2a2440;border-radius:6px;width:36px;height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+  .rmx-toggle span{display:block;width:15px;height:1.5px;background:#e8eaf0;border-radius:1px}
+  .rmx-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:199;backdrop-filter:blur(2px)}
+  .rmx-overlay.open{display:block}
+  .sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:#14121f;border-right:1px solid #2a2440;display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:200;transform:translateX(-100%);transition:transform .25s cubic-bezier(.4,0,.2,1)}
+  .sidebar.open{transform:translateX(0)}
+  .sidebar::-webkit-scrollbar{display:none}
+  .sidebar-brand{padding:20px 16px 16px;border-bottom:1px solid #2a2440;flex-shrink:0}
+  .sidebar-project-name{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9b7bff;line-height:1.4}
+  .sidebar-nav{padding:12px 0;flex:1}
+  .sidebar-page-link{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:500;color:#d7d3e6;text-decoration:none;padding:7px 16px;cursor:pointer}
+  .sidebar-page-link:hover:not(.planned){background:rgba(255,255,255,.04)}
+  .sidebar-page-link.active{color:#9b7bff}
+  .sidebar-page-link.planned{color:#8b86a3;cursor:default;opacity:.6}
+  .sidebar-page-link.planned::after{content:'Soon';font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:rgba(255,255,255,.04);color:#8b86a3;padding:2px 5px;border-radius:3px;border:1px solid #2a2440}
+  .sidebar-page-link.planned.next{opacity:1}
+  .sidebar-page-link.planned.next::after{content:'Next';color:#9b7bff;border-color:#8b5cf6}
+  .sidebar-sub{padding:2px 0 8px}
+  .sidebar-sub-link{display:block;font-size:12px;color:#8b86a3;text-decoration:none;padding:5px 16px 5px 28px;position:relative}
+  .sidebar-sub-link:hover{color:#d7d3e6}
+  .sidebar-sub-link.active{color:#d7d3e6}
+  .sidebar-sub-link.active::before{content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:3px;height:3px;border-radius:50%;background:#9b7bff}
+  .sidebar-divider{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#8b86a3;padding:16px 16px 6px;opacity:.55}
+  @media(max-width:859px){.wrap{padding-top:64px!important}}
+  @media(min-width:860px){
+    .rmx-toggle,.rmx-overlay{display:none!important}
+    .sidebar{transform:translateX(0);transition:none}
+    body{padding-left:220px}
+  }
+</style>
+</head>
+<body>
+<button class="rmx-toggle" id="rmxToggle" aria-label="Open navigation"><span></span><span></span><span></span></button>
+<div class="rmx-overlay" id="rmxOverlay"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><div class="sidebar-project-name">Prediction Market</div></div>
+  <div class="sidebar-nav">
+    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <a href="../user-research/personas.html" class="sidebar-page-link">User Research</a>
+    <a href="../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
+    <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a href="directions.html" class="sidebar-page-link">Directions</a>
+    <div class="sidebar-sub">
+      <a class="sidebar-sub-link active">Signal deep-dive</a>
+    </div>
+    <a href="concept.html" class="sidebar-page-link">Concept</a>
+    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
+    <a class="sidebar-page-link planned next">Tokens + Components</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15l5-5 3 3 6-7"/><path d="M15 6h5v5"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v16l-5-3.2L7 20z"/></symbol>
+</defs></svg>
+
+<div class="wrap">
+
+  <header class="head">
+    <p class="kicker"><span class="dot"></span> Stage 06 · Concept · Signal, refined</p>
+    <h1>Signal, on the real card. <em>Smaller image, four ways.</em></h1>
+    <p>You picked 2 (Signal). Two fixes applied: the image is now a small thumbnail, and the structure plus content come straight from <code>wireframes/event-feed.html</code> (question, why, YES + probability, YES/NO, volume, closes, bookmark). No invented per-card safety line, that lives on the deposit screen. Same Signal palette in all four. Pick the card treatment.</p>
+  </header>
+
+  <div class="lock" aria-label="Signal palette, locked">
+    <span class="sw"><i style="background:#0b0a12"></i><b>Canvas</b> #0B0A12</span>
+    <span class="sw"><i style="background:#8b5cf6"></i><b>Brand</b> #8B5CF6</span>
+    <span class="sw"><i style="background:#c9f24e"></i><b>Lime</b> #C9F24E</span>
+    <span class="sw"><i style="background:#2fbf73"></i><b>Yes</b> #2FBF73</span>
+    <span class="sw"><i style="background:#f0555a"></i><b>No</b> #F0555A</span>
+    <span class="sw"><b>Sora</b> display · Inter body</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- ===== Variant A: wireframe-faithful, thumbnail left ===== -->
+    <div class="variant">
+      <div class="vlabel"><span class="tag">A</span><b>Wireframe-faithful</b><span>smallest footprint, thumbnail beside the question</span></div>
+      <article class="card">
+        <div class="card-body">
+          <div class="top">
+            <img class="thumb" src="assets/event-crypto.jpg" alt="Crypto markets">
+            <a class="q" href="#">Will Ethereum complete its next major network upgrade before November 1, 2026?</a>
+          </div>
+          <p class="why"><svg><use href="#i-trend"/></svg><span>The upgrade is on the testnet with a <b>target window announced</b>.</span></p>
+          <p class="prob-line">YES <span class="prob">72%</span></p>
+          <div class="yesno"><button class="btn yes">YES</button><button class="btn no">NO</button></div>
+          <p class="meta">
+            <span class="meta-txt"><span>Volume: $147,650</span><span>Closes: Nov 1, 2026</span></span>
+            <button class="bookmark-btn" aria-pressed="false" aria-label="Save"><svg><use href="#i-bookmark"/></svg></button>
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- ===== Variant B: with an odds bar ===== -->
+    <div class="variant">
+      <div class="vlabel"><span class="tag">B</span><b>With an odds bar</b><span>the YES/NO split, at a glance</span></div>
+      <article class="card">
+        <div class="card-body">
+          <div class="top">
+            <img class="thumb" src="assets/event-politics.jpg" alt="Government chamber">
+            <a class="q" href="#">Will the US government shut down before March 1, 2027?</a>
+          </div>
+          <p class="why"><svg><use href="#i-trend"/></svg><span>Funding talks have <b>stalled twice</b> this quarter, but past deadlines settled late.</span></p>
+          <div class="oddsbar">
+            <div class="track"><span class="fill" style="width:38%"></span></div>
+            <div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div>
+          </div>
+          <div class="yesno"><button class="btn yes">YES</button><button class="btn no">NO</button></div>
+          <p class="meta">
+            <span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span>
+            <button class="bookmark-btn" aria-pressed="false" aria-label="Save"><svg><use href="#i-bookmark"/></svg></button>
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- ===== Variant C: short media strip ===== -->
+    <div class="variant">
+      <div class="vlabel"><span class="tag">C</span><b>Short media strip</b><span>a photo, but a third of the old height</span></div>
+      <article class="card">
+        <div class="strip">
+          <img src="assets/spare-markets-dark.jpg" alt="Market chart">
+          <span class="chip"><span class="live"></span>Crypto</span>
+          <button class="bookmark-btn save" aria-pressed="true" aria-label="Saved"><svg><use href="#i-bookmark"/></svg></button>
+        </div>
+        <div class="card-body">
+          <a class="q" href="#" style="display:block;margin-bottom:10px">Will Bitcoin close above $150,000 before October 1, 2026?</a>
+          <p class="why"><svg><use href="#i-trend"/></svg><span>Price has <b>held above $120k</b> for three weeks as inflows climb.</span></p>
+          <p class="prob-line">YES <span class="prob">61%</span></p>
+          <div class="yesno"><button class="btn yes">YES</button><button class="btn no">NO</button></div>
+          <p class="meta">
+            <span class="meta-txt"><span>Volume: $212,900</span><span>Closes: Oct 1, 2026</span></span>
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- ===== Variant D: multi-outcome ===== -->
+    <div class="variant">
+      <div class="vlabel"><span class="tag">D</span><b>Multi-outcome</b><span>same language, option rows per wireframe</span></div>
+      <article class="card">
+        <div class="card-body">
+          <div class="top">
+            <img class="thumb" src="assets/event-politics.jpg" alt="Parliament">
+            <a class="q" href="#">Which party will win the most seats in the next UK general election?</a>
+          </div>
+          <p class="why"><svg><use href="#i-trend"/></svg><span>Two parties are <b>within the margin of error</b> in recent polls.</span></p>
+          <div class="options">
+            <div class="opt-row"><span class="opt-name">Labour</span><span class="opt-prob">44%</span><span class="yesno compact"><button class="btn yes">YES</button><button class="btn no">NO</button></span></div>
+            <div class="opt-row"><span class="opt-name">Conservatives</span><span class="opt-prob">33%</span><span class="yesno compact"><button class="btn yes">YES</button><button class="btn no">NO</button></span></div>
+          </div>
+          <p class="meta">
+            <span class="meta-txt"><span>Volume: $58,700</span><span>Closes: Jul 1, 2027</span></span>
+            <button class="bookmark-btn" aria-pressed="false" aria-label="Save"><svg><use href="#i-bookmark"/></svg></button>
+          </p>
+        </div>
+      </article>
+    </div>
+
+  </div>
+
+  <div class="more-head">
+    <h2>Locked: <em>B</em> for binary, <em>D</em> for multi. Three more to compare.</h2>
+    <p>Same Signal palette, same wireframe card, three other ways to show the odds. E and F are pure restyles of the same content; G adds a small trend sparkline (a candidate addition to the feed card, since odds movement is what pulls a user back).</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- ===== Variant E: number-forward ===== -->
+    <div class="variant">
+      <div class="vlabel"><span class="tag">E</span><b>Number-forward</b><span>the probability leads, YES/NO carry the price</span></div>
+      <article class="card">
+        <div class="card-body">
+          <div class="top">
+            <img class="thumb" src="assets/spare-reader.jpg" alt="Person reading the news">
+            <a class="q" href="#">Will the next lead actor for the Bond film be announced before December 31, 2026?</a>
+          </div>
+          <p class="why"><svg><use href="#i-trend"/></svg><span>The studio says <b>casting is underway</b>, with no shortlist confirmed.</span></p>
+          <div class="hero-num">
+            <div class="big"><span class="n">47%</span><span class="l">chance yes</span></div>
+            <div class="yesno tight">
+              <button class="btn yes priced">YES<small>47%</small></button>
+              <button class="btn no priced">NO<small>53%</small></button>
+            </div>
+          </div>
+          <p class="meta">
+            <span class="meta-txt"><span>Volume: $19,400</span><span>Closes: Dec 31, 2026</span></span>
+            <button class="bookmark-btn" aria-pressed="false" aria-label="Save"><svg><use href="#i-bookmark"/></svg></button>
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- ===== Variant F: two outcome tiles ===== -->
+    <div class="variant">
+      <div class="vlabel"><span class="tag">F</span><b>Two outcome tiles</b><span>YES/NO split as tiles, the imbalance is visible</span></div>
+      <article class="card">
+        <div class="card-body">
+          <div class="top">
+            <img class="thumb" src="assets/event-crypto.jpg" alt="Crypto markets">
+            <a class="q" href="#">Will Ethereum complete its next major network upgrade before November 1, 2026?</a>
+          </div>
+          <p class="why"><svg><use href="#i-trend"/></svg><span>The upgrade is on the testnet with a <b>target window announced</b>.</span></p>
+          <div class="tiles">
+            <button class="tile yes"><span class="t-n">72%</span><span class="t-l">YES</span></button>
+            <button class="tile no"><span class="t-n">28%</span><span class="t-l">NO</span></button>
+          </div>
+          <p class="meta">
+            <span class="meta-txt"><span>Volume: $147,650</span><span>Closes: Nov 1, 2026</span></span>
+            <button class="bookmark-btn" aria-pressed="false" aria-label="Save"><svg><use href="#i-bookmark"/></svg></button>
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- ===== Variant G: featured / live with sparkline ===== -->
+    <div class="variant">
+      <div class="vlabel"><span class="tag">G</span><b>Featured, live</b><span>stronger glow + a trend sparkline (candidate IA add)</span></div>
+      <article class="card featured">
+        <div class="card-body">
+          <div class="top">
+            <img class="thumb" src="assets/spare-markets-dark.jpg" alt="Market chart">
+            <div class="headwrap">
+              <span class="chip-live"><span class="live"></span>Live</span>
+              <a class="q" href="#">Will Bitcoin close above $150,000 before October 1, 2026?</a>
+            </div>
+          </div>
+          <p class="why"><svg><use href="#i-trend"/></svg><span>Price has <b>held above $120k</b> for three weeks as inflows climb.</span></p>
+          <div class="spark">
+            <svg viewBox="0 0 80 26" fill="none" aria-hidden="true"><polyline points="0,21 13,19 26,20 39,13 52,15 65,8 74,5" stroke="var(--lime)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="74" cy="5" r="2.6" fill="var(--lime)"/></svg>
+            <span class="trend">YES 61% · up 6 pts this week</span>
+          </div>
+          <div class="yesno"><button class="btn yes">YES</button><button class="btn no">NO</button></div>
+          <p class="meta">
+            <span class="meta-txt"><span>Volume: $212,900</span><span>Closes: Oct 1, 2026</span></span>
+            <button class="bookmark-btn" aria-pressed="true" aria-label="Saved"><svg><use href="#i-bookmark"/></svg></button>
+          </p>
+        </div>
+      </article>
+    </div>
+
+  </div>
+
+  <p class="note"><b>Next:</b> tell me the letter (for example, "B", or "A for binary + D for multi"). I lock it into concept.md, build the full Signal stand (concept/concept.html) with the WCAG AA contrast table, then apply it to the real screens as color copies in ui-visual/. Structure and content stay owned by wireframes/; the color copy owns only the visual layer.</p>
+
+</div>
+<script>
+  (function(){
+    var sb=document.getElementById('sidebar'),ov=document.getElementById('rmxOverlay'),tg=document.getElementById('rmxToggle');
+    if(tg)tg.addEventListener('click',function(){sb.classList.add('open');ov.classList.add('open');});
+    if(ov)ov.addEventListener('click',function(){sb.classList.remove('open');ov.classList.remove('open');});
+  })();
+</script>
+</body>
+</html>

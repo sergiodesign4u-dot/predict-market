@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CJM As-Is - Prediction Market Platform</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── SIDEBAR ─────────────────────────────────────────── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 220px;
+    height: 100vh;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform .25s cubic-bezier(.4,0,.2,1);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar::-webkit-scrollbar { display: none; }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.open { display: block; }
+
+  .menu-toggle {
+    position: fixed;
+    top: 12px; left: 12px;
+    z-index: 201;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 36px; height: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 15px; height: 1.5px;
+    background: var(--text);
+    border-radius: 1px;
+  }
+
+  .sidebar-brand {
+    padding: 20px 16px 16px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .sidebar-project-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+
+  .sidebar-page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    padding: 7px 16px;
+    transition: background .15s;
+    cursor: pointer;
+    user-select: none;
+  }
+  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
+  .sidebar-page-link.active { color: var(--accent); }
+  .sidebar-page-link.planned {
+    color: var(--muted);
+    cursor: default;
+    opacity: .6;
+  }
+  .sidebar-page-link.planned::after {
+    content: 'Soon';
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
+  .sidebar-page-link.planned.next { opacity: 1; }
+  .sidebar-page-link.planned.next::after { content: 'Next'; color: var(--accent); border-color: var(--accent); }
+
+  .sidebar-sub { padding: 2px 0 8px; }
+
+  .sidebar-sub-link {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 5px 16px 5px 28px;
+    transition: color .15s;
+    position: relative;
+  }
+  .sidebar-sub-link:hover { color: var(--text); }
+  .sidebar-sub-link.active { color: var(--text); }
+  .sidebar-sub-link.active::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 50%; transform: translateY(-50%);
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-divider {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 16px 16px 6px;
+    opacity: .45;
+  }
+
+  /* ── LAYOUT ─────────────────────────────────────────── */
+  main {
+    padding: 60px 20px 80px;
+  }
+
+  @media (min-width: 860px) {
+    .sidebar { transform: translateX(0); transition: none; }
+    .sidebar-overlay { display: none !important; }
+    .menu-toggle { display: none; }
+    main { margin-left: 220px; padding: 48px 48px 120px; }
+  }
+
+  section {
+    padding-top: var(--gap);
+    margin-top: var(--gap);
+    border-top: 1px solid var(--border);
+  }
+  section:first-child { border-top: none; }
+
+  /* ── TYPOGRAPHY ─────────────────────────────────────── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    margin-top: 32px;
+  }
+  h3:first-child { margin-top: 0; }
+
+  p {
+    color: #aaa;
+    margin-bottom: 12px;
+    max-width: 680px;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  .lead {
+    font-size: 16px;
+    color: #bbb;
+    max-width: 680px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero { padding-top: 0; border-top: none; }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid rgba(200,255,0,.2);
+  }
+  .tag.grey {
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    border-color: var(--border);
+  }
+  .tag.blue {
+    background: rgba(95,168,255,.1);
+    color: var(--blue);
+    border-color: rgba(95,168,255,.25);
+  }
+
+  /* ── TABLES ─────────────────────────────────────────── */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    margin-top: 20px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th {
+    background: var(--surface);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #c8c8c8;
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,.015); }
+  td.label { font-weight: 600; color: var(--text); white-space: nowrap; }
+  td.mono { font-family: var(--mono); font-size: 12px; }
+  td.muted { color: var(--muted); }
+
+  /* ── BADGES / PILLS ─────────────────────────────────── */
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  .pill-q { background: rgba(255,255,255,.06); color: var(--muted); }
+
+  .q-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: rgba(255,255,255,.06);
+    color: var(--muted);
+    vertical-align: middle;
+    margin: 0 1px;
+  }
+
+  .hyp-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: rgba(255,180,50,.1);
+    color: #ffc04d;
+    border: 1px solid rgba(255,180,50,.2);
+    vertical-align: middle;
+    margin: 0 1px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  .strength {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 1px 6px;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  .strength.pattern { background: rgba(95,219,143,.1); color: var(--green); border: 1px solid rgba(95,219,143,.2); }
+  .strength.signal { background: rgba(255,255,255,.05); color: var(--muted); border: 1px dashed var(--border); }
+
+  /* ── GROUNDRULE / CALLOUT ───────────────────────────── */
+  .groundrule {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(95,168,255,.05);
+    border: 1px solid rgba(95,168,255,.15);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-top: 16px;
+    font-size: 12px;
+    color: #aac4e0;
+  }
+
+  .callout {
+    background: rgba(255,255,255,.025);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--muted);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #bbb;
+    max-width: 760px;
+  }
+  .callout.warn { border-left-color: var(--red); background: rgba(255,95,95,.04); }
+  .callout .co-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .callout.warn .co-label { color: var(--red); }
+
+  .source-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  /* ── PERSONA / FOCUS CARD ───────────────────────────── */
+  .persona-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 28px;
+    margin-top: 20px;
+    border-left-width: 3px;
+  }
+  .persona-card.accent { border-left-color: var(--accent); }
+
+  .persona-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  .persona-badge.primary { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(200,255,0,.2); }
+
+  .persona-name {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .persona-profile { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+
+  .sub-block {
+    background: rgba(255,255,255,.025);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin: 20px 0;
+  }
+  .sub-block-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .job-quote {
+    font-size: 16px;
+    color: #ddd;
+    font-style: italic;
+    line-height: 1.7;
+    border-left: 3px solid var(--accent);
+    padding: 4px 0 4px 18px;
+    margin: 4px 0 8px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* ── AS-IS PATH TRACK ───────────────────────────────── */
+  .phase-track {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    margin-top: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .track-hint {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  .phase-card {
+    flex: 0 0 300px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--muted);
+    border-radius: var(--r);
+    padding: 18px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .phase-card.pos { border-top-color: var(--green); }
+  .phase-card.mid { border-top-color: #ffc04d; }
+  .phase-card.neg { border-top-color: #e08a8a; }
+  .phase-card.dip { border-top-color: var(--red); background: rgba(255,95,95,.03); }
+  .phase-card.split { border-top-color: transparent; background-image: linear-gradient(90deg, var(--green) 0 50%, var(--red) 50% 100%); background-repeat: no-repeat; background-size: 100% 3px; background-position: top; }
+
+  .phase-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .phase-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .marker-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  .marker-tag.peak { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(200,255,0,.25); }
+  .marker-tag.dip { background: rgba(255,95,95,.1); color: var(--red); border: 1px solid rgba(255,95,95,.25); }
+
+  .phase-name { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.3; }
+  .phase-goal {
+    font-size: 12px;
+    color: #9a9a9a;
+    line-height: 1.5;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .phase-goal .gk {
+    display: block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+
+  .pm-row { font-size: 12px; color: #bbb; line-height: 1.5; }
+  .pm-row .pm-k {
+    display: block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+
+  .phase-emotion {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    align-self: flex-start;
+  }
+  .phase-emotion.pos { background: rgba(95,219,143,.08); color: var(--green); }
+  .phase-emotion.mid { background: rgba(255,192,77,.08); color: #ffc04d; }
+  .phase-emotion.neg { background: rgba(224,138,138,.08); color: #e89c9c; }
+  .phase-emotion.dip { background: rgba(255,95,95,.1); color: var(--red); }
+
+  .phase-thought {
+    font-size: 12.5px;
+    color: #ddd;
+    font-style: italic;
+    line-height: 1.55;
+    border-left: 2px solid var(--border);
+    padding-left: 12px;
+  }
+
+  .phase-barrier {
+    font-size: 12px;
+    color: #c8a0a0;
+    line-height: 1.5;
+    background: rgba(255,95,95,.04);
+    border: 1px solid rgba(255,95,95,.1);
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+  .phase-barrier .pb-k {
+    display: block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 2px;
+    opacity: .85;
+  }
+
+  .phase-quote {
+    font-size: 11.5px;
+    color: #aaa;
+    line-height: 1.5;
+  }
+  .phase-quote .src {
+    display: block;
+    margin-top: 4px;
+    font-size: 10px;
+    color: var(--muted);
+    font-style: normal;
+  }
+  .phase-quote.none { color: var(--muted); font-style: italic; }
+
+  /* ── EMOTIONAL CURVE ────────────────────────────────── */
+  .curve-wrap {
+    margin-top: 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    background: var(--surface);
+    padding: 20px 20px 12px;
+    overflow-x: auto;
+  }
+  .curve-wrap svg { display: block; width: 100%; min-width: 640px; height: auto; }
+
+  .curve-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 22px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: #aaa;
+  }
+  .legend-swatch { width: 26px; height: 0; flex-shrink: 0; position: relative; }
+  .legend-swatch::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 0; right: 0;
+    height: 2.5px;
+    border-radius: 2px;
+  }
+  .legend-swatch.solid::before { background: var(--accent); }
+  .legend-swatch.dashed::before { background: repeating-linear-gradient(90deg, var(--muted) 0 5px, transparent 5px 9px); height: 2px; }
+  .legend-swatch.win::before { background: var(--green); }
+  .legend-swatch.loss::before { background: var(--red); }
+  .legend-dot {
+    width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+  }
+  .legend-dot.pattern { background: var(--green); }
+  .legend-dot.signal { background: rgba(150,150,150,.4); border: 1.5px dashed var(--muted); width: 10px; height: 10px; }
+
+  .key-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .key-chip {
+    font-size: 11px;
+    color: #bbb;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.02);
+  }
+  .key-chip b { color: var(--text); font-weight: 700; }
+  .key-chip.peak { border-color: rgba(200,255,0,.3); }
+  .key-chip.peak b { color: var(--accent); }
+  .key-chip.dip { border-color: rgba(255,95,95,.3); }
+  .key-chip.dip b { color: var(--red); }
+
+  /* ── QUOTE GROUPS ───────────────────────────────────── */
+  .quote-group { margin-top: 24px; }
+  .quote-group-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .quote-block {
+    background: rgba(255,255,255,.025);
+    border-left: 3px solid var(--border);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .quote-block.pattern { border-left-color: var(--green); }
+  .quote-block.signal { border-left-color: var(--muted); }
+  .quote-text {
+    font-size: 14px;
+    color: #ddd;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .quote-attribution { font-size: 11px; color: var(--muted); }
+
+  /* ── GROWTH ZONES ───────────────────────────────────── */
+  .zone-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .zone-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .zone-card.deepest { border-color: rgba(255,95,95,.3); }
+  .zone-head { display: flex; align-items: flex-start; gap: 12px; }
+  .zone-num {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .zone-card.deepest .zone-num { color: var(--red); }
+  .zone-title { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.35; }
+  .zone-row { font-size: 12.5px; color: #bbb; line-height: 1.55; }
+  .zone-row .zk {
+    display: inline-block;
+    min-width: 62px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    vertical-align: top;
+  }
+  .zone-tag {
+    align-self: flex-start;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: rgba(255,95,95,.1);
+    color: var(--red);
+    border: 1px solid rgba(255,95,95,.25);
+  }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a href="../user-research/personas.html" class="sidebar-page-link">Personas</a>
+    <a href="../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a class="sidebar-page-link active">CJM As-Is</a>
+    <div class="sidebar-sub">
+      <a href="#focus" class="sidebar-sub-link">Focus</a>
+      <a href="#path" class="sidebar-sub-link">As-Is path</a>
+      <a href="#curve" class="sidebar-sub-link">Emotional curve</a>
+      <a href="#zones" class="sidebar-sub-link">Growth zones</a>
+    </div>
+    <a href="../user-research/cjm-to-be.html" class="sidebar-page-link">CJM To-Be</a>
+    <a href="../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
+    <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a href="../concept/concept.html" class="sidebar-page-link">Concept</a>
+    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
+    <a class="sidebar-page-link planned next">Tokens + Components</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<main>
+
+  <!-- ── FOCUS ─────────────────────────────────────────── -->
+  <section class="hero" id="focus">
+    <div class="hero-meta">
+      <span class="tag">CJM As-Is</span>
+      <span class="tag grey">Current Experience</span>
+      <span class="tag grey">7 phases</span>
+      <span class="tag blue">Mining depth: Lite</span>
+    </div>
+    <h1>As-Is Customer Journey</h1>
+    <p class="lead">How Alex reaches the job today, with existing products, not a generic funnel. Every emotion stands on a source. No source means <span class="q-badge">[?]</span>, not a drawn emotion. Signal = one mention, pattern = repeated across sources.</p>
+
+    <div class="section-label">Focus</div>
+    <h2>Persona x Job</h2>
+
+    <div class="persona-card accent">
+      <div class="persona-badge primary">&#9733; Primary persona &times; Main Job</div>
+      <div class="persona-name">Alex &middot; News Junkie &times; MJ</div>
+      <div class="persona-profile">Follows news daily &middot; forms a take before others &middot; no crypto wallet &middot; wants real skin in the game</div>
+
+      <div class="sub-block">
+        <div class="sub-block-label">The job (English gloss)</div>
+        <div class="job-quote">"When an event I follow nears its outcome, I want a real stake in the result, so it is not just news but my personal participation with real consequences."</div>
+        <p style="font-size:11px;color:#666;margin:0;max-width:none">Source: <span class="mono" style="font-family:var(--mono)">user-research/docs/jtbd.md</span> (MJ &middot; Main Job), <span class="mono" style="font-family:var(--mono)">research/docs/lean-ux-canvas.md</span> &sect;4.</p>
+      </div>
+
+      <div class="two-col">
+        <div class="sub-block" style="margin:0">
+          <div class="sub-block-label">Mining depth</div>
+          <p style="font-size:13px;color:#bbb;margin:0;max-width:none"><strong>Lite.</strong> Re-projection of existing research, search autosuggest, and observed friction from the captured competitor screens in <span style="font-family:var(--mono)">research/screens/</span>.</p>
+        </div>
+        <div class="sub-block" style="margin:0">
+          <div class="sub-block-label">Honesty rule</div>
+          <p style="font-size:13px;color:#bbb;margin:0;max-width:none">Every emotion stands on a source. No source means <span class="q-badge">[?]</span>, not a drawn emotion. The two most decision-critical phases (the crypto wall, the post-loss moment) were confirmed with real public quotes in step 6.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="groundrule">
+      <span style="font-size:16px;flex-shrink:0">&#9432;</span>
+      <span><strong style="color:#c8ddf0">Path honesty:</strong> this is not "Alex successfully bets." Today there is mass attrition at phases 3 to 6 (the crypto wall), and his real behavior often falls back to being a passive observer, reading odds cited in the media, never betting. Source: research.md &sect;9 F4 #3.</span>
+    </div>
+  </section>
+
+  <!-- ── AS-IS PATH ────────────────────────────────────── -->
+  <section id="path">
+    <div class="section-label">As-Is path</div>
+    <h2>Seven phases, today</h2>
+    <p>Each card carries the phase goal, actions, touchpoints, the thought running in Alex's head, the emotion (sign &middot; 1-5 intensity &middot; strength), the barrier, and the sourced quote where we have one. Scroll the track sideways to move through the journey.</p>
+
+    <div class="phase-track">
+
+      <!-- P1 -->
+      <div class="phase-card pos">
+        <div class="phase-head">
+          <span class="phase-num">Phase 1</span>
+          <span class="marker-tag peak">Peak</span>
+        </div>
+        <div class="phase-name">Trigger: the news moment</div>
+        <div class="phase-goal"><span class="gk">Goal (job)</span>Turn a followed event plus his own opinion into a real stake (MJ)</div>
+        <div class="pm-row"><span class="pm-k">Actions</span>Reads the morning news, forms a take before others, feels the "I called it" pull as the event nears its climax</div>
+        <div class="pm-row"><span class="pm-k">Touchpoints</span>News media, X, podcasts</div>
+        <div class="phase-emotion pos">+ &middot; 4 &middot; <span class="strength pattern">pattern</span></div>
+        <div class="phase-thought">"I called this. I want in on it."</div>
+        <div class="phase-barrier"><span class="pb-k">Barrier</span>None yet; latent - no accessible way to act on the take</div>
+        <div class="phase-quote none">Quote <span class="q-badge">[?]</span> - low design impact, honestly marked</div>
+      </div>
+
+      <!-- P2 -->
+      <div class="phase-card mid">
+        <div class="phase-head">
+          <span class="phase-num">Phase 2</span>
+        </div>
+        <div class="phase-name">Looking for a way to act</div>
+        <div class="phase-goal"><span class="gk">Goal (job)</span>Find where to place a real stake on this specific event</div>
+        <div class="pm-row"><span class="pm-k">Actions</span>Recalls prediction markets or a Polymarket screenshot seen on X; looks for a platform. <span class="q-badge">[?]</span> exact discovery action (search term / cited-odds click / a friend) is not in the data</div>
+        <div class="pm-row"><span class="pm-k">Touchpoints</span>X (screenshots), media citing Polymarket / Kalshi odds, word of mouth</div>
+        <div class="phase-emotion mid">neutral to - &middot; 2 &middot; <span class="strength signal">signal</span></div>
+        <div class="phase-thought">"Where do I even do this? Is Polymarket the thing? Is it legit and safe?"</div>
+        <div class="phase-barrier"><span class="pb-k">Barrier</span>Unclear where to go or whether it is legitimate; <span class="q-badge">[?]</span> exact action</div>
+        <div class="phase-quote none">Quote <span class="q-badge">[?]</span> - discovery action unsourced</div>
+      </div>
+
+      <!-- P3 -->
+      <div class="phase-card dip">
+        <div class="phase-head">
+          <span class="phase-num">Phase 3</span>
+          <span class="marker-tag dip">Dip 1 &middot; deepest</span>
+        </div>
+        <div class="phase-name">Hitting the platform wall</div>
+        <div class="phase-goal"><span class="gk">Goal (job)</span>Get in and see a market</div>
+        <div class="pm-row"><span class="pm-k">Actions</span>Opens Polymarket / Futuur, meets MetaMask + USDC + 8+ wallet icons before any market, frequently closes the tab</div>
+        <div class="pm-row"><span class="pm-k">Touchpoints</span>Polymarket, Futuur (crypto-native signup)</div>
+        <div class="phase-emotion dip">- &middot; 5 &middot; <span class="strength pattern">pattern</span></div>
+        <div class="phase-thought">"Wait, I need a crypto wallet just to look? What is MetaMask?"</div>
+        <div class="phase-barrier"><span class="pb-k">Barrier</span>Crypto wall: MetaMask / USDC / 8+ wallet icons before any market</div>
+        <div class="phase-quote">"connected my wallet successfully, but I'm a bit confused about how users usually fund their accounts"<span class="src">Reddit &middot; pattern &middot; Q1</span></div>
+      </div>
+
+      <!-- P4 -->
+      <div class="phase-card neg">
+        <div class="phase-head">
+          <span class="phase-num">Phase 4</span>
+        </div>
+        <div class="phase-name">Trying to make sense of a market</div>
+        <div class="phase-goal"><span class="gk">Goal (job)</span>Understand what he would bet on and why the price is what it is</div>
+        <div class="pm-row"><span class="pm-k">Actions</span>If past the wall, sees "67%" and "resolves"; no story or context; the market feels detached from the news he was reading</div>
+        <div class="pm-row"><span class="pm-k">Touchpoints</span>Competitor market-detail pages</div>
+        <div class="phase-emotion neg">- &middot; 4 &middot; <span class="strength pattern">pattern</span></div>
+        <div class="phase-thought">"Why is it 67 percent? What does 'resolves' mean? What am I even betting on?"</div>
+        <div class="phase-barrier"><span class="pb-k">Barrier</span>No context or story; trader vocabulary</div>
+        <div class="phase-quote">"the website ... feels more like scrolling an Excel spreadsheet ... confusing overwhelming"<span class="src">Reddit &middot; signal</span></div>
+      </div>
+
+      <!-- P5 -->
+      <div class="phase-card neg">
+        <div class="phase-head">
+          <span class="phase-num">Phase 5</span>
+        </div>
+        <div class="phase-name">The money question</div>
+        <div class="phase-goal"><span class="gk">Goal (job)</span>Fund the bet without feeling he will lose money to fees or risk</div>
+        <div class="pm-row"><span class="pm-k">Actions</span>Faces fiat-to-crypto conversion; asks "what happens to my money?"; no clear answer before deposit; unclear fees</div>
+        <div class="pm-row"><span class="pm-k">Touchpoints</span>On-ramp / wallet steps on competitor platforms</div>
+        <div class="phase-emotion neg">- &middot; 4 &middot; <span class="strength pattern">pattern</span></div>
+        <div class="phase-thought">"What happens to my money? Where does my USDC sit? What are the fees?"</div>
+        <div class="phase-barrier"><span class="pb-k">Barrier</span>No funds-safety explanation before deposit; opaque fees</div>
+        <div class="phase-quote">"deposited 25 USDC ... wouldn't allow me to bet ... in some wallet I can't access. Basically lost 25 USDC"<span class="src">Trustpilot &middot; pattern</span></div>
+      </div>
+
+      <!-- P6 -->
+      <div class="phase-card pos">
+        <div class="phase-head">
+          <span class="phase-num">Phase 6</span>
+        </div>
+        <div class="phase-name">Placing the bet and following the event</div>
+        <div class="phase-goal"><span class="gk">Goal (job)</span>Have real skin in the game and track it against reality (MJ)</div>
+        <div class="pm-row"><span class="pm-k">Actions</span>Reached by few: places a YES / NO stake, then follows the event through the news he already consumes</div>
+        <div class="pm-row"><span class="pm-k">Touchpoints</span>Competitor bet interface; his existing news channels</div>
+        <div class="phase-emotion pos">+ &middot; 3 &middot; <span class="strength signal">signal</span></div>
+        <div class="phase-thought">"OK, I'm in. Let's see if I was right."</div>
+        <div class="phase-barrier"><span class="pb-k">Barrier</span>Reached by few (attrition); tracking happens outside the product</div>
+        <div class="phase-quote none">Quote <span class="q-badge">[?]</span> - reached by few, inferred</div>
+      </div>
+
+      <!-- P7 -->
+      <div class="phase-card split">
+        <div class="phase-head">
+          <span class="phase-num">Phase 7</span>
+          <span class="marker-tag dip">Split &middot; Dip 2</span>
+        </div>
+        <div class="phase-name">Resolution: win or loss</div>
+        <div class="phase-goal"><span class="gk">Goal (job)</span>Get vindication (win) or closure (loss)</div>
+        <div class="pm-row"><span class="pm-k">Actions</span>Outcome resolves. On a win he wants to share "I told you this would happen" (SJ). On a loss, "after a loss, nothing", no context, no next step; latent fear of platform betrayal</div>
+        <div class="pm-row"><span class="pm-k">Touchpoints</span>Competitor resolution / notifications; chats and social for sharing</div>
+        <div class="phase-emotion pos" style="margin-bottom:2px">win &middot; + &middot; 4 &middot; <span class="strength pattern">pattern</span></div>
+        <div class="phase-emotion dip">loss &middot; - &middot; 5 &middot; <span class="strength pattern">pattern</span></div>
+        <div class="phase-thought">win: "I told you!" / loss: "...now what? Why did I lose?"</div>
+        <div class="phase-barrier"><span class="pb-k">Barrier</span>After a loss "nothing", no context or next step; platform-betrayal fear (frozen funds / opaque resolution) = #1 trust killer</div>
+        <div class="phase-quote">"I am so confused ... What do I do?" &middot; "never do that again" &middot; "what's the point" &middot; "try to make it back"<span class="src">Reddit &middot; pattern &middot; Q2</span></div>
+      </div>
+
+    </div>
+    <p class="track-hint">Track scrolls horizontally &middot; colored top edge encodes the emotion sign (green positive, amber weak, red negative, split at resolution).</p>
+
+    <div class="callout warn">
+      <span class="co-label">Most-dangerous [?], now closed (step 6)</span>
+      The exact words at the wall (phase 3) and right after a first loss (phase 7) were the two re-projection-only points that most shape To-Be. Both were confirmed with real public quotes in the step-6 re-research, so their <span class="q-badge">[?]</span> is removed. Phases 1, 2 and 6 keep <span class="q-badge">[?]</span> on the quote (low design impact, honestly marked).
+    </div>
+  </section>
+
+  <!-- ── EMOTIONAL CURVE ───────────────────────────────── -->
+  <section id="curve">
+    <div class="section-label">Emotional curve</div>
+    <h2>Mood across the seven phases</h2>
+    <p>High start, crash at the wall, negative through market-confusion and money, a small lift for the few, then a split at resolution: a win spike and a loss crater. Two dips: phase 3 (the wall) and phase 7 loss. Signal points render lighter and smaller than pattern points; nothing here is interpolated.</p>
+
+    <div class="curve-wrap">
+      <svg viewBox="0 0 860 430" role="img" aria-label="Line chart of Alex's mood from plus five to minus five across seven phases, peaking at phase 1, dipping to minus five at the phase 3 wall, and splitting at phase 7 into a win at plus four and a loss at minus five.">
+
+        <!-- mood bands -->
+        <rect x="70" y="40" width="690" height="160" fill="rgba(95,219,143,.035)"/>
+        <rect x="70" y="200" width="690" height="160" fill="rgba(255,95,95,.035)"/>
+
+        <!-- frame + gridlines -->
+        <line x1="70" y1="40"  x2="760" y2="40"  stroke="#242424" stroke-width="1"/>
+        <line x1="70" y1="72"  x2="760" y2="72"  stroke="#1c1c1c" stroke-width="1"/>
+        <line x1="70" y1="328" x2="760" y2="328" stroke="#1c1c1c" stroke-width="1"/>
+        <line x1="70" y1="360" x2="760" y2="360" stroke="#242424" stroke-width="1"/>
+        <line x1="70" y1="200" x2="760" y2="200" stroke="#3a3a3a" stroke-width="1" stroke-dasharray="4 4"/>
+        <line x1="70" y1="40"  x2="70"  y2="360" stroke="#242424" stroke-width="1"/>
+
+        <!-- y-axis labels -->
+        <text x="60" y="44"  fill="#5fdb8f" font-family="var(--mono), monospace" font-size="11" text-anchor="end">+5</text>
+        <text x="60" y="76"  fill="#666"    font-family="var(--mono), monospace" font-size="10" text-anchor="end">+4</text>
+        <text x="60" y="204" fill="#888"    font-family="var(--mono), monospace" font-size="11" text-anchor="end">0</text>
+        <text x="60" y="332" fill="#666"    font-family="var(--mono), monospace" font-size="10" text-anchor="end">-4</text>
+        <text x="60" y="364" fill="#ff5f5f" font-family="var(--mono), monospace" font-size="11" text-anchor="end">-5</text>
+        <text x="30" y="205" fill="#555" font-family="var(--font), sans-serif" font-size="9" letter-spacing="1" text-anchor="middle" transform="rotate(-90 30 205)">MOOD</text>
+
+        <!-- connecting segments (solid = pattern-to-pattern, dashed = touches a signal point) -->
+        <line x1="80"  y1="72"  x2="192" y2="264" stroke="#c8ff00" stroke-width="2.5" stroke-dasharray="5 4" opacity=".85"/>
+        <line x1="192" y1="264" x2="304" y2="360" stroke="#c8ff00" stroke-width="2.5" stroke-dasharray="5 4" opacity=".85"/>
+        <line x1="304" y1="360" x2="416" y2="328" stroke="#c8ff00" stroke-width="2.5"/>
+        <line x1="416" y1="328" x2="528" y2="328" stroke="#c8ff00" stroke-width="2.5"/>
+        <line x1="528" y1="328" x2="640" y2="104" stroke="#c8ff00" stroke-width="2.5" stroke-dasharray="5 4" opacity=".85"/>
+        <!-- split branches from P6 -->
+        <line x1="640" y1="104" x2="752" y2="72"  stroke="#5fdb8f" stroke-width="2.5" stroke-dasharray="5 4"/>
+        <line x1="640" y1="104" x2="752" y2="360" stroke="#ff5f5f" stroke-width="2.5" stroke-dasharray="5 4"/>
+
+        <!-- points -->
+        <!-- P1 peak (pattern, positive) -->
+        <circle cx="80" cy="72" r="11" fill="none" stroke="#c8ff00" stroke-width="1.5" opacity=".45"/>
+        <circle cx="80" cy="72" r="6.5" fill="#5fdb8f"/>
+        <!-- P2 signal (lighter, smaller) -->
+        <circle cx="192" cy="264" r="5" fill="rgba(150,150,150,.35)" stroke="#666" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
+        <!-- P3 dip1 (pattern, negative) -->
+        <circle cx="304" cy="360" r="11" fill="none" stroke="#ff5f5f" stroke-width="1.5" opacity=".5"/>
+        <circle cx="304" cy="360" r="7" fill="#ff5f5f"/>
+        <!-- P4 (pattern, negative) -->
+        <circle cx="416" cy="328" r="6" fill="#e08a8a"/>
+        <!-- P5 (pattern, negative) -->
+        <circle cx="528" cy="328" r="6" fill="#e08a8a"/>
+        <!-- P6 signal (lighter, smaller, positive) -->
+        <circle cx="640" cy="104" r="5" fill="rgba(150,150,150,.35)" stroke="#666" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
+        <!-- P7 win (pattern, positive) -->
+        <circle cx="752" cy="72" r="6.5" fill="#5fdb8f"/>
+        <!-- P7 loss dip2 (pattern, negative) -->
+        <circle cx="752" cy="360" r="11" fill="none" stroke="#ff5f5f" stroke-width="1.5" opacity=".5"/>
+        <circle cx="752" cy="360" r="7" fill="#ff5f5f"/>
+
+        <!-- point value labels -->
+        <text x="80"  y="58"  fill="#5fdb8f" font-size="11" font-weight="700" text-anchor="middle">+4</text>
+        <text x="192" y="252" fill="#999"    font-size="10" text-anchor="middle">-2</text>
+        <text x="304" y="380" fill="#ff5f5f" font-size="11" font-weight="700" text-anchor="middle">-5</text>
+        <text x="416" y="316" fill="#c88" font-size="10" text-anchor="middle">-4</text>
+        <text x="528" y="316" fill="#c88" font-size="10" text-anchor="middle">-4</text>
+        <text x="640" y="92"  fill="#999"    font-size="10" text-anchor="middle">+3</text>
+
+        <!-- split endpoint labels -->
+        <text x="762" y="66"  fill="#5fdb8f" font-size="11" font-weight="700" text-anchor="start">Win +4</text>
+        <text x="762" y="356" fill="#ff5f5f" font-size="11" font-weight="700" text-anchor="start">Loss -5</text>
+
+        <!-- x-axis phase labels -->
+        <g font-family="var(--font), sans-serif" text-anchor="middle">
+          <text x="80"  y="400" fill="#888" font-size="10" font-weight="700">P1</text>
+          <text x="80"  y="414" fill="#666" font-size="10">Trigger</text>
+          <text x="192" y="400" fill="#888" font-size="10" font-weight="700">P2</text>
+          <text x="192" y="414" fill="#666" font-size="10">Looking</text>
+          <text x="304" y="400" fill="#888" font-size="10" font-weight="700">P3</text>
+          <text x="304" y="414" fill="#666" font-size="10">Wall</text>
+          <text x="416" y="400" fill="#888" font-size="10" font-weight="700">P4</text>
+          <text x="416" y="414" fill="#666" font-size="10">Market</text>
+          <text x="528" y="400" fill="#888" font-size="10" font-weight="700">P5</text>
+          <text x="528" y="414" fill="#666" font-size="10">Money</text>
+          <text x="640" y="400" fill="#888" font-size="10" font-weight="700">P6</text>
+          <text x="640" y="414" fill="#666" font-size="10">Bet</text>
+          <text x="752" y="400" fill="#888" font-size="10" font-weight="700">P7</text>
+          <text x="752" y="414" fill="#666" font-size="10">Resolution</text>
+        </g>
+      </svg>
+
+      <div class="curve-legend">
+        <div class="legend-item"><span class="legend-dot pattern"></span> Pattern point (repeated across sources) - solid, larger</div>
+        <div class="legend-item"><span class="legend-dot signal"></span> Signal point (single source) - lighter, smaller</div>
+        <div class="legend-item"><span class="legend-swatch solid"></span> Pattern-to-pattern segment</div>
+        <div class="legend-item"><span class="legend-swatch dashed"></span> Segment touching a signal point</div>
+        <div class="legend-item"><span class="legend-swatch win"></span> Win branch (P7)</div>
+        <div class="legend-item"><span class="legend-swatch loss"></span> Loss branch (P7)</div>
+      </div>
+    </div>
+
+    <p class="track-hint" style="margin-top:14px">Legend: lighter = single-source signal, solid = pattern. No <span class="q-badge">[?]</span>-only points remain on this curve (the P3 and P7 quotes were sourced in step 6), but the dashed / grey treatment is kept ready for future single-source points.</p>
+
+    <div class="key-chips">
+      <span class="key-chip peak"><b>Peak</b> &middot; P1 Trigger, +4 &middot; enters most motivated</span>
+      <span class="key-chip dip"><b>Dip 1 (deepest)</b> &middot; P3 Wall, -5 &middot; crypto wall, mass attrition</span>
+      <span class="key-chip dip"><b>Dip 2</b> &middot; P7 loss, -5 &middot; "after a loss, nothing" + betrayal fear</span>
+    </div>
+
+    <h3>Sourced quotes (step-6 re-research)</h3>
+    <p style="font-size:12px;color:#888">Targeted Deep mine on the two decision-critical phases, public / pre-login only (Reddit via old.reddit.com, Trustpilot). Six evidence screenshots in <span style="font-family:var(--mono)">research/screens/</span> (prefix <span style="font-family:var(--mono)">cjm-mining-</span>).</p>
+
+    <div class="quote-group">
+      <div class="quote-group-label">Q1 - crypto wall and funding (phases 3 to 5)</div>
+      <div class="quote-block pattern">
+        <div class="quote-text">"I connected my wallet successfully, but I'm a bit confused about how users usually fund their accounts and manage balances on the platform."</div>
+        <div class="quote-attribution">Reddit r/Polymarket, ~2 months ago &middot; <span class="strength pattern">pattern</span> (a single r/Polymarket search surfaced ~25 deposit-trouble threads)</div>
+      </div>
+      <div class="quote-block signal">
+        <div class="quote-text">"The website itself is a bit chaotic and messy, at times it feels more like scrolling an Excel spreadsheet. Information isn't always clear and it can be a little confusing overwhelming."</div>
+        <div class="quote-attribution">Reddit r/Polymarket, "Rookie Impression" &middot; <span class="strength signal">signal</span></div>
+      </div>
+      <div class="quote-block pattern">
+        <div class="quote-text">"I deposited 25 USDC using coinbase and then the website wouldn't allow me to bet so I tried to withdraw the money ... instead it is in some wallet I can't access. Basically lost 25 USDC. This site is SCAM."</div>
+        <div class="quote-attribution">Trustpilot (Polymarket 1.4/5, 589 reviews), Feb 2026 &middot; <span class="strength pattern">pattern</span></div>
+      </div>
+    </div>
+
+    <div class="quote-group">
+      <div class="quote-group-label">Q2 - the moment after a loss (phase 7)</div>
+      <div class="quote-block pattern">
+        <div class="quote-text">"I am so confused ... Polymarket didn't count the game ... as a win? What do I do?"</div>
+        <div class="quote-attribution">Reddit r/Polymarket, "How did I lose?" &middot; <span class="strength pattern">pattern</span> (many near-identical "why didn't this resolve" posts)</div>
+      </div>
+      <div class="quote-block pattern">
+        <div class="quote-text">"lost the bet whatever ... Definitely will never do that again lol"</div>
+        <div class="quote-attribution">Reddit r/PredictionsMarkets &middot; <span class="strength pattern">pattern</span> (loss to quit arc)</div>
+      </div>
+      <div class="quote-block pattern">
+        <div class="quote-text">"the Switzerland game fucked me over no response from support like what's the point of this app then"</div>
+        <div class="quote-attribution">Reddit, same thread &middot; <span class="strength pattern">pattern</span> (no closure / no support)</div>
+      </div>
+      <div class="quote-block signal">
+        <div class="quote-text">"Right now I'm down $2300 ... Going to try to make it back with a few parlays on world cup."</div>
+        <div class="quote-attribution">Reddit r/Polymarket, "What's the most you lost/gained" &middot; <span class="strength signal">signal</span> (loss chasing, ties to F5 / EJ3)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GROWTH ZONES ──────────────────────────────────── -->
+  <section id="zones">
+    <div class="section-label">Growth zones</div>
+    <h2>Where today's experience hurts most</h2>
+    <p>Where we can win the comparison. Each zone is tied to a step-4 barrier and a research gap; solutions are deferred to To-Be (step 7). All five are pattern-backed.</p>
+
+    <div class="zone-grid">
+
+      <div class="zone-card deepest">
+        <div class="zone-head">
+          <span class="zone-num">1</span>
+          <span class="zone-title">Kill the crypto wall</span>
+        </div>
+        <span class="zone-tag">Deepest dip</span>
+        <div class="zone-row"><span class="zk">Barrier</span> Phase 3 - wallets before any market.</div>
+        <div class="zone-row"><span class="zk">Research gap</span> benchmark.md C6 (2/5), personas.md "closed the tab".</div>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-head">
+          <span class="zone-num">2</span>
+          <span class="zone-title">Explain the number, tell the story</span>
+        </div>
+        <div class="zone-row"><span class="zk">Barrier</span> Phase 4 - no "why this price", event in isolation.</div>
+        <div class="zone-row"><span class="zk">Research gap</span> research.md &sect;4, ux-patterns.md (Story-driven).</div>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-head">
+          <span class="zone-num">3</span>
+          <span class="zone-title">Answer "what happens to my money" before deposit</span>
+        </div>
+        <div class="zone-row"><span class="zk">Barrier</span> Phase 5 - no funds safety, opaque fees.</div>
+        <div class="zone-row"><span class="zk">Research gap</span> benchmark.md C2 (1/5), H4 / H6.</div>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-head">
+          <span class="zone-num">4</span>
+          <span class="zone-title">Design the loss and the post-resolution moment</span>
+        </div>
+        <div class="zone-row"><span class="zk">Barrier</span> Phase 7 loss - "after a loss, nothing".</div>
+        <div class="zone-row"><span class="zk">Research gap</span> research.md &sect;4 (post-resolution undesigned), &sect;9 F3.</div>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-head">
+          <span class="zone-num">5</span>
+          <span class="zone-title">Earn trust against the betrayal fear</span>
+        </div>
+        <div class="zone-row"><span class="zk">Barrier</span> Latent phase 7 - platform betrayal = #1 trust killer.</div>
+        <div class="zone-row"><span class="zk">Research gap</span> research.md &sect;9 F5 (HIGH).</div>
+      </div>
+
+    </div>
+
+    <div class="callout">
+      <span class="co-label">How the zones map to the product</span>
+      Zones 1 to 3 and 5 map onto the product core (clarity + trust); zone 4 maps onto the voice principle "design the loss". These are the candidates To-Be must close.
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const toggle = document.getElementById('menuToggle');
+
+  const openSidebar = () => { sidebar.classList.add('open'); overlay.classList.add('open'); };
+  const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+
+  toggle.addEventListener('click', openSidebar);
+  overlay.addEventListener('click', closeSidebar);
+
+  document.querySelectorAll('.sidebar-sub-link').forEach(l => {
+    l.addEventListener('click', () => { if (window.innerWidth < 860) closeSidebar(); });
+  });
+
+  const subLinks = document.querySelectorAll('.sidebar-sub-link');
+  const sectionIds = [...subLinks].map(l => l.getAttribute('href').slice(1));
+  const sections = sectionIds.map(id => document.getElementById(id));
+
+  const setActive = id => {
+    subLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+
+  sections.forEach(s => s && observer.observe(s));
+  if (sections[0]) setActive(sections[0].id);
+</script>
+</body>
+</html>

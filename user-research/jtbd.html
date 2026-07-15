@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JTBD - Prediction Market Platform</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --purple: #c8a0ff;
+    --amber: #ffb347;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── SIDEBAR ─────────────────────────────────────────── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 220px;
+    height: 100vh;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform .25s cubic-bezier(.4,0,.2,1);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar::-webkit-scrollbar { display: none; }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.open { display: block; }
+
+  .menu-toggle {
+    position: fixed;
+    top: 12px; left: 12px;
+    z-index: 201;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 36px; height: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 15px; height: 1.5px;
+    background: var(--text);
+    border-radius: 1px;
+  }
+
+  .sidebar-brand {
+    padding: 20px 16px 16px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .sidebar-project-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+
+  .sidebar-page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    padding: 7px 16px;
+    transition: background .15s;
+    cursor: pointer;
+    user-select: none;
+  }
+  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
+  .sidebar-page-link.active { color: var(--accent); }
+  .sidebar-page-link.planned {
+    color: var(--muted);
+    cursor: default;
+    opacity: .6;
+  }
+  .sidebar-page-link.planned::after {
+    content: 'Soon';
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
+  .sidebar-page-link.planned.next { opacity: 1; }
+  .sidebar-page-link.planned.next::after { content: 'Next'; color: var(--accent); border-color: var(--accent); }
+
+  .sidebar-sub { padding: 2px 0 8px; }
+
+  .sidebar-sub-link {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 5px 16px 5px 28px;
+    transition: color .15s;
+    position: relative;
+  }
+  .sidebar-sub-link:hover { color: var(--text); }
+  .sidebar-sub-link.active { color: var(--text); }
+  .sidebar-sub-link.active::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 50%; transform: translateY(-50%);
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-divider {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 16px 16px 6px;
+    opacity: .45;
+  }
+
+  /* ── LAYOUT ─────────────────────────────────────────── */
+  main {
+    padding: 60px 20px 80px;
+  }
+
+  @media (min-width: 860px) {
+    .sidebar { transform: translateX(0); transition: none; }
+    .sidebar-overlay { display: none !important; }
+    .menu-toggle { display: none; }
+    main { margin-left: 220px; padding: 48px 48px 120px; }
+  }
+
+  section {
+    padding-top: var(--gap);
+    margin-top: var(--gap);
+    border-top: 1px solid var(--border);
+  }
+  section:first-child { border-top: none; }
+
+  /* ── TYPOGRAPHY ─────────────────────────────────────── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    margin-top: 32px;
+  }
+  h3:first-child { margin-top: 0; }
+
+  p {
+    color: #aaa;
+    margin-bottom: 12px;
+    max-width: 680px;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  .lead {
+    font-size: 16px;
+    color: #bbb;
+    max-width: 640px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero { padding-top: 0; border-top: none; }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid rgba(200,255,0,.2);
+  }
+  .tag.grey {
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    border-color: var(--border);
+  }
+
+  .hero-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* ── TABLES ─────────────────────────────────────────── */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    background: var(--surface);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #c8c8c8;
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,.015); }
+
+  td.label {
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  td.mono { font-family: var(--mono); font-size: 12px; }
+  td.muted { color: var(--muted); }
+
+  /* ── JTBD CARDS ─────────────────────────────────────── */
+
+  /* Main Job */
+  .mj-card {
+    background: var(--accent-dim);
+    border: 1px solid rgba(200,255,0,.3);
+    border-radius: var(--r);
+    padding: 28px 28px 24px;
+    margin-top: 20px;
+  }
+
+  .mj-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #000;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+  }
+
+  .mj-statement {
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.45;
+    margin-bottom: 24px;
+    max-width: 760px;
+  }
+
+  .mj-persona {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: .04em;
+    margin-top: 16px;
+  }
+
+  /* Job cards - FJ / EJ / SJ / HJ */
+  .job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .job-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px 24px;
+    border-left-width: 3px;
+  }
+
+  .job-card.fj { border-left-color: var(--accent); }
+  .job-card.ej { border-left-color: var(--blue); }
+  .job-card.sj { border-left-color: var(--purple); }
+
+  .hyp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px 24px;
+    border-left: 3px solid var(--amber);
+  }
+
+  .job-id-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-bottom: 12px;
+  }
+
+  .job-card.fj .job-id-badge { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(200,255,0,.2); }
+  .job-card.ej .job-id-badge { background: rgba(95,168,255,.1); color: var(--blue); border: 1px solid rgba(95,168,255,.2); }
+  .job-card.sj .job-id-badge { background: rgba(200,160,255,.08); color: var(--purple); border: 1px solid rgba(200,160,255,.2); }
+  .hyp-card .job-id-badge { background: rgba(255,179,71,.08); color: var(--amber); border: 1px solid rgba(255,179,71,.2); }
+
+  .job-statement {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    align-items: center;
+  }
+
+  .job-meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin-right: 4px;
+  }
+
+  .persona-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.04);
+    color: #bbb;
+  }
+  .persona-tag.primary { color: var(--accent); border-color: rgba(200,255,0,.2); background: var(--accent-dim); }
+  .persona-tag.secondary { color: var(--blue); border-color: rgba(95,168,255,.2); background: rgba(95,168,255,.06); }
+
+  .aarrr-tag {
+    font-size: 11px;
+    color: var(--muted);
+    padding: 2px 7px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.02);
+  }
+
+  .job-evidence {
+    margin-top: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+
+  .evidence-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px 16px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    font-size: 12px;
+  }
+  .evidence-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .evidence-text { color: #bbb; }
+  .evidence-source { font-size: 11px; color: var(--muted); white-space: nowrap; font-family: var(--mono); }
+
+  /* Status badges */
+  .conf-high {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--green);
+    background: rgba(95,219,143,.08);
+    border: 1px solid rgba(95,219,143,.2);
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-top: 12px;
+  }
+
+  .conf-medium {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-top: 12px;
+  }
+
+  /* Update warning block */
+  .update-warning {
+    background: rgba(255,179,71,.06);
+    border: 1px solid rgba(255,179,71,.25);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 12px;
+    color: #e8d0a0;
+    line-height: 1.5;
+  }
+  .update-warning strong { color: var(--amber); }
+
+  /* Q badge */
+  .q-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: rgba(255,255,255,.06);
+    color: var(--muted);
+    vertical-align: middle;
+    font-family: var(--mono);
+    margin-left: 2px;
+  }
+
+  /* Hyp badge */
+  .hyp-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: rgba(255,179,71,.08);
+    color: var(--amber);
+    border: 1px solid rgba(255,179,71,.2);
+    vertical-align: middle;
+    letter-spacing: .04em;
+  }
+
+  /* Hypothesis reason block */
+  .hyp-reason {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(255,179,71,.04);
+    border-radius: 6px;
+    font-size: 12px;
+    color: #c8b890;
+    line-height: 1.5;
+  }
+  .hyp-reason strong { color: var(--amber); }
+
+  /* ── SECTION SUBTITLE ───────────────────────────────── */
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 4px;
+    max-width: 680px;
+  }
+
+  /* ── MATRIX TABLE SPECIFIC ──────────────────────────── */
+  .matrix-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    line-height: 1.5;
+    max-width: 680px;
+  }
+
+  .imp-3 { color: var(--green); font-weight: 700; }
+  .imp-2 { color: var(--text); }
+  .imp-1 { color: var(--muted); }
+
+  td.nobody { color: var(--red); font-weight: 600; }
+  td .ok { color: var(--green); }
+  td .bad { color: var(--red); }
+  td .na { color: var(--muted); }
+
+  .matrix-job-id {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ── MVP CONCLUSIONS ────────────────────────────────── */
+  .mvp-card {
+    background: var(--surface);
+    border: 1px solid rgba(200,255,0,.25);
+    border-radius: var(--r);
+    padding: 22px 24px;
+  }
+
+  .mvp-card + .mvp-card { margin-top: 12px; }
+
+  .mvp-card-id {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mvp-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 8px;
+    margin-top: 0;
+    color: #e8e8e8;
+  }
+
+  .mvp-card p { font-size: 13px; color: #999; margin-bottom: 8px; max-width: none; }
+
+  .mvp-arrow {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: #bbb;
+  }
+  .mvp-arrow-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--accent);
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  .mvp-source {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+    font-family: var(--mono);
+  }
+
+  /* Cut table */
+  .cut-table-wrap {
+    overflow-x: auto;
+    border: 1px solid rgba(255,95,95,.2);
+    border-radius: var(--r);
+    margin-top: 20px;
+  }
+  .cut-table-wrap table { }
+  .cut-table-wrap thead th {
+    background: rgba(255,95,95,.06);
+  }
+  .cut-table-wrap td { color: #bbb; }
+
+  /* misc */
+  .divider { height: 1px; background: var(--border); margin: 28px 0; }
+
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  .pill-q { background: rgba(255,255,255,.06); color: var(--muted); }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a href="../user-research/personas.html" class="sidebar-page-link">Personas</a>
+    <a class="sidebar-page-link active">JTBD</a>
+    <div class="sidebar-sub">
+      <a href="#mj" class="sidebar-sub-link">Main Job</a>
+      <a href="#functional" class="sidebar-sub-link">Functional Jobs</a>
+      <a href="#emotional" class="sidebar-sub-link">Emotional Jobs</a>
+      <a href="#social" class="sidebar-sub-link">Social Jobs</a>
+      <a href="#hypotheses" class="sidebar-sub-link">Hypotheses</a>
+      <a href="#matrix" class="sidebar-sub-link">JTBD Matrix</a>
+      <a href="#mvp" class="sidebar-sub-link">MVP Conclusions</a>
+    </div>
+    <a href="../user-research/cjm-as-is.html" class="sidebar-page-link">CJM As-Is</a>
+    <a href="../user-research/cjm-to-be.html" class="sidebar-page-link">CJM To-Be</a>
+    <a href="../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
+    <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a href="../concept/concept.html" class="sidebar-page-link">Concept</a>
+    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
+    <a class="sidebar-page-link planned next">Tokens + Components</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<main>
+
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero-meta">
+      <span class="tag">1 Main Job</span>
+      <span class="tag">5 Functional</span>
+      <span class="tag grey">3 Emotional</span>
+      <span class="tag grey">2 Social</span>
+      <span class="tag grey">4 Hypotheses</span>
+    </div>
+    <h1>Jobs To Be Done</h1>
+    <p class="lead">Format: When [situation] &rarr; I want [motivation] &rarr; so that [outcome]. No feature names &mdash; only human progress.</p>
+    <p class="hero-note">Built from: personas.md &middot; master-research.md &middot; strategy.md &middot; ux-patterns.md &middot; aarrr.md &middot; benchmark-trust.md &middot; live-research F1&ndash;F6</p>
+  </section>
+
+  <!-- ── MAIN JOB ──────────────────────────────────────── -->
+  <section id="mj">
+    <div class="section-label">MJ &middot; MAIN JOB</div>
+
+    <div class="mj-card">
+      <div class="mj-badge">MJ &mdash; MAIN JOB</div>
+      <div class="mj-statement">"When an event I follow is approaching its conclusion, I want a real stake in the outcome &mdash; so that it's not just news, but my personal involvement with real consequences."</div>
+
+      <div class="table-wrap" style="margin-top:0">
+        <table>
+          <thead>
+            <tr><th>What confirms</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>JTBD J2: "follow events with real skin in the game" &mdash; confirmed across all 3 research iterations</td>
+              <td class="muted">CLAUDE.md &middot; master-research.md &sect;1</td>
+            </tr>
+            <tr>
+              <td>"Engaged spectator with skin in the game"</td>
+              <td class="muted">strategy.md</td>
+            </tr>
+            <tr>
+              <td>News Junkie: "Prove they're right on current events" &mdash; confirmed as primary</td>
+              <td class="muted">personas.md Persona 1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mj-persona">Persona: Alex (News Junkie) &mdash; PRIMARY</div>
+    </div>
+  </section>
+
+  <!-- ── FUNCTIONAL JOBS ───────────────────────────────── -->
+  <section id="functional">
+    <div class="section-label">FJ &middot; FUNCTIONAL JOBS</div>
+    <h2>Functional Jobs</h2>
+    <p class="section-subtitle">Steps without which MJ is impossible. Each = a possible dropout point.</p>
+
+    <div class="job-list">
+
+      <!-- FJ1 -->
+      <div class="job-card fj">
+        <div class="job-id-badge">FJ1</div>
+        <div class="job-statement">"When something important happens and I have an opinion on the outcome, I want to quickly find this event among active markets &mdash; so I don't miss the moment while the topic is relevant."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Personas</span>
+          <span class="persona-tag primary">Alex PRIMARY</span>
+          <span class="persona-tag secondary">Dan secondary</span>
+        </div>
+        <div class="job-meta">
+          <span class="job-meta-label">AARRR</span>
+          <span class="aarrr-tag">Acquisition &rarr; Activation</span>
+        </div>
+        <div class="job-evidence">
+          <div class="evidence-row">
+            <span class="evidence-text">"Event-triggered arrival = KEY pattern for all segments"</span>
+            <span class="evidence-source">ux-patterns.md</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">"Path to AHA: Arrived &rarr; Found a market"</span>
+            <span class="evidence-source">aarrr.md</span>
+          </div>
+        </div>
+        <div><span class="conf-high">&#10003; Confirmed</span></div>
+      </div>
+
+      <!-- FJ2 -->
+      <div class="job-card fj">
+        <div class="job-id-badge">FJ2</div>
+        <div class="job-statement">"When I see an event and a probability next to it, I want to understand why the market thinks that and what could change this number &mdash; so I can make an informed decision, not bet blindly."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Personas</span>
+          <span class="persona-tag primary">Alex PRIMARY</span>
+        </div>
+        <div class="job-meta">
+          <span class="job-meta-label">AARRR</span>
+          <span class="aarrr-tag">Inside Activation &mdash; between "Found market" and "Understood mechanics"</span>
+        </div>
+        <div class="job-evidence">
+          <div class="evidence-row">
+            <span class="evidence-text"><strong>CONFIRMED DIFFERENTIATOR: No competitor explains "why is the price this?"</strong></span>
+            <span class="evidence-source">master-research.md &sect;4</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">Benchmark: none of 5 products explains price context</span>
+            <span class="evidence-source">benchmark-trust.md</span>
+          </div>
+        </div>
+        <div><span class="conf-high">&#10003; Confirmed differentiator &mdash; NOBODY closes this</span></div>
+      </div>
+
+      <!-- FJ3 -->
+      <div class="job-card fj">
+        <div class="job-id-badge">FJ3</div>
+        <div class="job-statement">"When I decided to bet, I want to do it with regular money without learning unfamiliar technology &mdash; so the barrier involves only the event, not the infrastructure around it."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Personas</span>
+          <span class="persona-tag primary">Alex PRIMARY</span>
+        </div>
+        <div class="job-meta">
+          <span class="job-meta-label">AARRR</span>
+          <span class="aarrr-tag">Between "Registered" and "Fiat on-ramp" &mdash; main dropout point</span>
+        </div>
+        <div class="update-warning">
+          <strong>Updated F4 block:</strong> Riskiest Assumption status revised. Fiat on-ramp alone is insufficient. Kalshi (fiat-native) saw 93% DAU collapse. Manifold Sweepcash users didn't convert. The deposit is a commitment moment &mdash; motivation must be activated before it.
+        </div>
+        <div class="job-evidence">
+          <div class="evidence-row">
+            <span class="evidence-text">"RISKIEST ASSUMPTION PROXY: Main barrier = needing MetaMask + USDC"</span>
+            <span class="evidence-source">master-research.md &sect;7 H1</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">"8+ wallet icons = cognitive overload"</span>
+            <span class="evidence-source">screens/polymarket-signup-mobile.png</span>
+          </div>
+        </div>
+        <div><span class="conf-medium">Hypothesis (barrier confirmed, conversion after removal &mdash; partially refuted)</span></div>
+      </div>
+
+      <!-- FJ4 -->
+      <div class="job-card fj">
+        <div class="job-id-badge">FJ4</div>
+        <div class="job-statement">"When I see an unfamiliar platform and am about to deposit real money, I want a clear answer to 'what will happen to it' &mdash; so my risk involves the event, not the platform itself."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Personas</span>
+          <span class="persona-tag primary">Alex PRIMARY</span>
+          <span class="persona-tag secondary">Maria secondary</span>
+        </div>
+        <div class="job-meta">
+          <span class="job-meta-label">AARRR</span>
+          <span class="aarrr-tag">Between "Fiat on-ramp" and "Placed bet" &mdash; fear before deposit</span>
+        </div>
+        <div class="job-evidence">
+          <div class="evidence-row">
+            <span class="evidence-text">"Primary fear of new fintech user: 'what happens to my money'"</span>
+            <span class="evidence-source">benchmark-trust.md</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">Futuur C2: 1/5 &middot; Polymarket C2: 1/5 &middot; Revolut solves it with one sentence, gets C2: 5/5</span>
+            <span class="evidence-source">benchmark-trust.md</span>
+          </div>
+        </div>
+        <div><span class="conf-high">&#10003; Confirmed</span></div>
+      </div>
+
+      <!-- FJ5 -->
+      <div class="job-card fj">
+        <div class="job-id-badge">FJ5</div>
+        <div class="job-statement">"When an event resolved and I lost, I want to understand what happened and see a next step &mdash; so I leave with a sense of fair play, not an impulse to increase my bet."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Personas</span>
+          <span class="persona-tag primary">Alex PRIMARY &mdash; especially vulnerable as new user</span>
+        </div>
+        <div class="job-meta">
+          <span class="job-meta-label">AARRR</span>
+          <span class="aarrr-tag">Activation &rarr; Retention &mdash; loss after first bet = main D7 churn risk</span>
+        </div>
+        <div class="update-warning">
+          <strong>Updated F5 block:</strong> Trigger revised: first WIN creates overconfidence, not first loss. Win &rarr; overconfidence &rarr; escalation &rarr; loss-chasing. WIN screen needs equal design attention.
+        </div>
+        <div class="job-evidence">
+          <div class="evidence-row">
+            <span class="evidence-text">"Post-resolution experience is undesigned &mdash; no competitor has a loss screen"</span>
+            <span class="evidence-source">master-research.md &sect;4</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">F3 pattern: early wins &rarr; chasing</span>
+            <span class="evidence-source">live-research F3+F5</span>
+          </div>
+        </div>
+        <div><span class="conf-high">&#10003; Confirmed &mdash; NOBODY designs this moment</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── EMOTIONAL JOBS ────────────────────────────────── -->
+  <section id="emotional">
+    <div class="section-label">EJ &middot; EMOTIONAL JOBS</div>
+    <h2>Emotional Jobs</h2>
+    <p class="section-subtitle">How the person wants to feel. Work in parallel with FJ, not after.</p>
+
+    <div class="job-list">
+
+      <!-- EJ1 -->
+      <div class="job-card ej">
+        <div class="job-id-badge">EJ1</div>
+        <div class="job-statement">"When my prediction turned out to be correct, I want to feel that I understand what's happening better than most &mdash; so it's validation of my worldview, not random luck."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Persona</span>
+          <span class="persona-tag primary">Alex PRIMARY &mdash; this is his primary motivation</span>
+        </div>
+        <div class="job-evidence">
+          <div class="evidence-row">
+            <span class="evidence-text">"Prove they're right on current events"</span>
+            <span class="evidence-source">strategy.md</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">"Knowledge validation"</span>
+            <span class="evidence-source">ux-patterns.md</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">JTBD J2 "skin in the game" &mdash; about participation not money</span>
+            <span class="evidence-source">CLAUDE.md</span>
+          </div>
+        </div>
+        <p style="font-size:12px;color:#888;margin:10px 0 0;max-width:none">Identity confirmed (~8&ndash;18% Forecaster/Analyst cluster, casino.org 10K survey). But copy rule: "I was right / I called it" is the payoff &mdash; not "I predicted" as action verb. (F6)</p>
+        <div><span class="conf-high">&#10003; Confirmed (identity cluster)</span> <span class="hyp-badge" style="margin-left:8px">Copy nuance: Updated F6</span></div>
+      </div>
+
+      <!-- EJ2 -->
+      <div class="job-card ej">
+        <div class="job-id-badge">EJ2</div>
+        <div class="job-statement">"When the platform first asks me to trust it with money, I want to feel this is a serious and transparent organization &mdash; so my anxiety about fund safety is gone before I press confirm."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Personas</span>
+          <span class="persona-tag primary">Alex PRIMARY</span>
+          <span class="persona-tag secondary">Maria secondary</span>
+        </div>
+        <div class="job-evidence">
+          <div class="evidence-row">
+            <span class="evidence-text">Trust = #1 value for 20&ndash;40 audience</span>
+            <span class="evidence-source">CLAUDE.md</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">"First trust failure = cognitive anxiety"</span>
+            <span class="evidence-source">benchmark-trust.md</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">Bet365 C5: 5/5 &middot; Futuur C5: 3/5</span>
+            <span class="evidence-source">benchmark-trust.md</span>
+          </div>
+        </div>
+        <div><span class="conf-high">&#10003; Confirmed</span></div>
+      </div>
+
+      <!-- EJ3 -->
+      <div class="job-card ej">
+        <div class="job-id-badge">EJ3</div>
+        <div class="job-statement">"When I lost a bet, I want to exit that moment feeling I understood something new &mdash; not with the urge to get it back &mdash; so my next decision is conscious, not emotional."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Persona</span>
+          <span class="persona-tag primary">Alex PRIMARY &mdash; especially after first loss</span>
+        </div>
+        <div class="job-evidence">
+          <div class="evidence-row">
+            <span class="evidence-text">F5: behavioral sequence first WIN &rarr; escalation &rarr; chasing. Intervention needed before the loop starts. No competitor designs this.</span>
+            <span class="evidence-source">live-research F5 &middot; master-research.md &sect;9</span>
+          </div>
+        </div>
+        <div><span class="conf-high">&#10003; Confirmed (intervention need) &mdash; cause revised to first WIN</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SOCIAL JOBS ───────────────────────────────────── -->
+  <section id="social">
+    <div class="section-label">SJ &middot; SOCIAL JOBS</div>
+    <h2>Social Jobs</h2>
+    <p class="section-subtitle">What the person wants others to see.</p>
+
+    <div class="job-list">
+
+      <!-- SJ1 -->
+      <div class="job-card sj">
+        <div class="job-id-badge">SJ1</div>
+        <div class="job-statement">"When I won a bet on an event everyone was talking about, I want to easily show it to my circle &mdash; so people see: I understood the outcome before most."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Personas</span>
+          <span class="persona-tag primary">Alex PRIMARY</span>
+          <span class="persona-tag">all segments to lesser degree</span>
+        </div>
+        <div class="job-evidence">
+          <div class="evidence-row">
+            <span class="evidence-text">"'I told you so' &mdash; powerful social instinct"</span>
+            <span class="evidence-source">master-research.md &sect;7 H5</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">"Social sharing &mdash; News Junkie most"</span>
+            <span class="evidence-source">ux-patterns.md</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">H5: Share card &rarr; &gt;20% new traffic <span class="q-badge">[?]</span> hypothesis &middot; Robinhood and Spotify Wrapped confirmed in other verticals</span>
+            <span class="evidence-source">master-research.md &sect;7</span>
+          </div>
+        </div>
+        <div><span class="conf-medium">Hypothesis (social instinct confirmed, &gt;20% traffic &mdash; no PM-specific data)</span></div>
+      </div>
+
+      <!-- SJ2 -->
+      <div class="job-card sj">
+        <div class="job-id-badge">SJ2</div>
+        <div class="job-statement">"When I make predictions regularly, I want my history to be publicly visible and verifiable &mdash; so my reputation as someone who 'gets it' is built on facts, not words."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Personas</span>
+          <span class="persona-tag secondary">Dan SECONDARY (primary for him)</span>
+          <span class="persona-tag">Alex</span>
+        </div>
+        <div class="job-evidence">
+          <div class="evidence-row">
+            <span class="evidence-text">"Public prediction track record from day one (eToro CopyTrader model)"</span>
+            <span class="evidence-source">master-research.md &sect;3</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">"Profile: prediction track record as reputation"</span>
+            <span class="evidence-source">CLAUDE.md</span>
+          </div>
+          <div class="evidence-row">
+            <span class="evidence-text">Metaculus as reference</span>
+            <span class="evidence-source">competitive-analysis.md</span>
+          </div>
+        </div>
+        <div><span class="conf-medium">Hypothesis (pattern confirmed in other products, PM desire &mdash; not verified)</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── HYPOTHESES ─────────────────────────────────────── -->
+  <section id="hypotheses">
+    <div class="section-label">HJ &middot; HYPOTHESES</div>
+    <h2>Hypotheses</h2>
+    <p class="section-subtitle">Jobs without sufficient evidence. Not in the main list. Need validation.</p>
+
+    <div class="job-list">
+
+      <!-- HJ1 -->
+      <div class="hyp-card">
+        <div class="job-id-badge">HJ1 <span class="hyp-badge" style="margin-left:6px">Hypothesis</span></div>
+        <div class="job-statement">"When I understand a situation better than the market, I want to convert this into money as simply as possible &mdash; so knowledge gives a material result without trading complexity."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Persona</span>
+          <span class="persona-tag">Alex and Dan presumably</span>
+        </div>
+        <div class="hyp-reason">
+          <strong>Why hypothesis:</strong> CLAUDE.md calls this secondary JTBD. Research confirms J2 ("prove right") as primary. Money may be a consequence, not driver &mdash; no direct data.
+        </div>
+      </div>
+
+      <!-- HJ2 -->
+      <div class="hyp-card">
+        <div class="job-id-badge">HJ2 <span class="hyp-badge" style="margin-left:6px">Hypothesis</span></div>
+        <div class="job-statement">"When I see the market has mispriced the probability of an event, I want to take a position before correction &mdash; to lock in advantage from more precise analysis."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Persona</span>
+          <span class="persona-tag secondary">Dan (Crypto Native)</span>
+        </div>
+        <div class="hyp-reason">
+          <strong>Why hypothesis:</strong> "Value hunting" confirmed as pattern, but that it's primary for Dan specifically vs. Polymarket &mdash; no direct data.
+        </div>
+      </div>
+
+      <!-- HJ3 -->
+      <div class="hyp-card">
+        <div class="job-id-badge">HJ3 <span class="hyp-badge" style="margin-left:6px">Hypothesis</span></div>
+        <div class="job-statement">"When I understand sports event analysis well, I want to apply the same skills to politics and news &mdash; so my analytical approach works beyond sports."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Persona</span>
+          <span class="persona-tag">Maria (post-MVP)</span>
+        </div>
+        <div class="hyp-reason">
+          <strong>Why hypothesis:</strong> Segment marked "Later." Motivation logically follows from description &mdash; no interviews, forum posts, reviews.
+        </div>
+      </div>
+
+      <!-- HJ4 -->
+      <div class="hyp-card">
+        <div class="job-id-badge">HJ4 <span class="hyp-badge" style="margin-left:6px">Hypothesis</span></div>
+        <div class="job-statement">"When I want to try the platform without risk, I want to play with virtual money first &mdash; to understand the mechanics before a real bet."</div>
+        <div class="job-meta">
+          <span class="job-meta-label">Persona</span>
+          <span class="persona-tag">Presumably Alex on first contact</span>
+        </div>
+        <div class="hyp-reason">
+          <strong>Why hypothesis:</strong> live-research F1 directly refutes effectiveness. Manifold tested and closed Sweepcash. Job may exist for user, but fulfilling it does not convert to MJ. Decision: no demo bet.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── JTBD MATRIX ───────────────────────────────────── -->
+  <section id="matrix">
+    <div class="section-label">JTBD MATRIX</div>
+    <h2>JTBD Matrix</h2>
+    <p class="matrix-note">Importance: 3 = critical (reason to come/stay) &middot; 2 = relevant &middot; 1 = minor &middot; <span class="q-badge">[?]</span> = no data. FUNCTION = what in the product closes this job. COMPETITORS = do market players close it?</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Job</th>
+            <th>Alex &#9733;</th>
+            <th>Dan &#9842;</th>
+            <th>Maria &#9843;</th>
+            <th>Function</th>
+            <th>Competitors</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="matrix-job-id">MJ</span></td>
+            <td><span class="imp-3">3</span> &mdash; JTBD J2, all 3 iterations</td>
+            <td><span class="imp-2">2</span> &mdash; same job, already on Polymarket</td>
+            <td><span class="imp-2">2</span> &mdash; new domain for experienced bettor</td>
+            <td>Event &rarr; YES/NO &rarr; confirm</td>
+            <td>Polymarket <span class="ok">&#10003;</span> Kalshi <span class="ok">&#10003;</span> (US only) Futuur <span class="ok">&#10003;</span> &mdash; all close, but not for Alex's audience</td>
+          </tr>
+          <tr>
+            <td><span class="matrix-job-id">FJ1</span></td>
+            <td><span class="imp-3">3</span> &mdash; "Event-triggered arrival = KEY" ux-patterns.md</td>
+            <td><span class="imp-2">2</span> &mdash; navigates independently</td>
+            <td><span class="imp-2">2</span> &mdash; used to Bet365 feeds</td>
+            <td>Event feed with brief context</td>
+            <td>Polymarket <span class="ok">&#10003;</span> Kalshi <span class="ok">&#10003;</span> &mdash; but no narrative around event</td>
+          </tr>
+          <tr>
+            <td><span class="matrix-job-id">FJ2</span></td>
+            <td><span class="imp-3">3</span> &mdash; CONFIRMED DIFFERENTIATOR</td>
+            <td><span class="imp-1">1</span> &mdash; understands markets, no explanation needed</td>
+            <td><span class="imp-2">2</span> &mdash; competent with odds, new to PM</td>
+            <td>Story-driven context block on event page</td>
+            <td class="nobody">NOBODY &mdash; gap confirmed in all 5 benchmarked products</td>
+          </tr>
+          <tr>
+            <td><span class="matrix-job-id">FJ3</span></td>
+            <td><span class="imp-3">3</span> &mdash; RISKIEST ASSUMPTION <span class="hyp-badge">F4 revised</span></td>
+            <td><span class="imp-1">1</span> &mdash; no barrier, has MetaMask</td>
+            <td><span class="imp-2">2</span> &mdash; no crypto, needs card path</td>
+            <td>Fiat on-ramp (card &rarr; USDC) from first screen after registration</td>
+            <td>Kalshi <span class="ok">&#10003;</span> US only &middot; Futuur <span class="na">[?]</span> partial &middot; Polymarket via MoonPay not UX priority (C6: 2/5)</td>
+          </tr>
+          <tr>
+            <td><span class="matrix-job-id">FJ4</span></td>
+            <td><span class="imp-3">3</span> &mdash; primary fear before deposit</td>
+            <td><span class="imp-2">2</span> &mdash; on-chain verification important</td>
+            <td><span class="imp-3">3</span> &mdash; critical, Bet365 reference (C2: 4/5)</td>
+            <td>Trust copy on deposit screen: "Your USDC held 1:1" + on-chain confirm</td>
+            <td>Bet365 <span class="ok">&#10003;</span> C2:4/5 &middot; Revolut <span class="ok">&#10003;</span> C2:5/5 &middot; <span class="bad">Polymarket &#10007; 1/5 &middot; Futuur &#10007; 1/5</span></td>
+          </tr>
+          <tr>
+            <td><span class="matrix-job-id">FJ5</span></td>
+            <td><span class="imp-3">3</span> &mdash; F3+F5 escalation pattern, main D7 risk</td>
+            <td><span class="imp-2">2</span> &mdash; relevant, less acute (experience)</td>
+            <td><span class="imp-2">2</span> &mdash; betting experience helps, risk remains</td>
+            <td>Post-resolution screen for loss ("what happened + next step")</td>
+            <td class="nobody">NOBODY &mdash; no competitor designs this moment</td>
+          </tr>
+          <tr>
+            <td><span class="matrix-job-id">EJ1</span></td>
+            <td><span class="imp-3">3</span> &mdash; "I told you so" &mdash; primary drive &middot; knowledge validation</td>
+            <td><span class="imp-2">2</span> &mdash; secondary vs money</td>
+            <td><span class="q-badge">[?]</span> &mdash; no data: winning more important or proving right?</td>
+            <td><span class="q-badge">[?]</span> Candidates: win-screen copy "you were right", prediction history</td>
+            <td>Metaculus <span class="ok">&#10003;</span> partial (play-money) &middot; Polymarket/Kalshi: partial (share)</td>
+          </tr>
+          <tr>
+            <td><span class="matrix-job-id">EJ2</span></td>
+            <td><span class="imp-3">3</span> &mdash; same fear as FJ4, emotional layer on every screen</td>
+            <td><span class="imp-2">2</span> &mdash; on-chain proofs important</td>
+            <td><span class="imp-3">3</span> &mdash; critical, Bet365 = reference bar (33/40)</td>
+            <td>Trust copy on deposit &middot; "Your USDC held 1:1"</td>
+            <td>Bet365 <span class="ok">&#10003;</span> C2:4/5 &middot; Revolut <span class="ok">&#10003;</span> C2:5/5 &middot; <span class="bad">Polymarket &#10007; 1/5 &middot; Futuur &#10007; 1/5</span></td>
+          </tr>
+          <tr>
+            <td><span class="matrix-job-id">EJ3</span></td>
+            <td><span class="imp-3">3</span> &mdash; F5: intervention needed before chasing loop</td>
+            <td><span class="imp-1">1</span> &mdash; manages himself independently</td>
+            <td><span class="imp-2">2</span> &mdash; betting experience exists, risk remains</td>
+            <td>Same screen as FJ5 (one function closes two jobs)</td>
+            <td class="nobody">NOBODY &mdash; no competitor designs this moment</td>
+          </tr>
+          <tr>
+            <td><span class="matrix-job-id">SJ1</span></td>
+            <td><span class="imp-3">3</span> &mdash; "I told you so" &mdash; strongest social motive</td>
+            <td><span class="imp-2">2</span> &mdash; secondary</td>
+            <td><span class="q-badge">[?]</span> &mdash; no data for sports bettor</td>
+            <td>Auto share-card after resolution (Robinhood model)</td>
+            <td>Polymarket <span class="ok">&#10003;</span> partial (shareable links) &middot; <span class="bad">No auto-cards on any platform</span></td>
+          </tr>
+          <tr>
+            <td><span class="matrix-job-id">SJ2</span></td>
+            <td><span class="imp-2">2</span> &mdash; relevant but secondary vs SJ1</td>
+            <td><span class="imp-3">3</span> &mdash; "smart trader" reputation &mdash; primary</td>
+            <td><span class="q-badge">[?]</span> &mdash; no data</td>
+            <td>Public prediction profile (eToro CopyTrader model)</td>
+            <td>Metaculus <span class="ok">&#10003;</span> (play-money) &middot; PM competitors: not closing</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── MVP CONCLUSIONS ───────────────────────────────── -->
+  <section id="mvp">
+    <div class="section-label">MVP CONCLUSIONS</div>
+    <h2>MVP Conclusions</h2>
+
+    <h3>Three core MVP jobs</h3>
+
+    <div class="mvp-card">
+      <div class="mvp-card-id">MVP Job 1</div>
+      <h3>FJ2: Why is this probability?</h3>
+      <p>Alex: <span class="imp-3">3</span> &middot; <strong style="color:var(--red)">NOBODY closes this.</strong></p>
+      <p>"The only confirmed differentiator in all research. None of the 5 benchmarked products explains price context inside the product."</p>
+      <div class="mvp-arrow">
+        <span class="mvp-arrow-label">Function</span>
+        <span>Story-driven context block on every event page (narrative + why price = X + resolution conditions)</span>
+      </div>
+      <div class="mvp-source">master-research.md &sect;4 &middot; benchmark-trust.md all 5 products &middot; ux-patterns.md</div>
+    </div>
+
+    <div class="mvp-card">
+      <div class="mvp-card-id">MVP Job 2</div>
+      <h3>FJ3: Deposit without crypto <span class="hyp-badge" style="margin-left:6px">F4 warning</span></h3>
+      <p>Alex: <span class="imp-3">3</span> &middot; Only Kalshi closes (US-only, not our audience). <span class="hyp-badge">F4 warning:</span> fiat on-ramp is necessary but not sufficient. Must activate motivation BEFORE deposit step.</p>
+      <div class="mvp-arrow">
+        <span class="mvp-arrow-label">Function</span>
+        <span>Fiat on-ramp (card &rarr; USDC) from first screen after registration</span>
+      </div>
+      <div class="mvp-source">master-research.md &sect;7 H1 &middot; &sect;9 F4 &middot; aarrr.md</div>
+    </div>
+
+    <div class="mvp-card">
+      <div class="mvp-card-id">MVP Job 3</div>
+      <h3>FJ5 + EJ3: Survive first loss without chasing</h3>
+      <p>Alex: <span class="imp-3">3</span> &middot; <strong style="color:var(--red)">NOBODY designs this moment.</strong></p>
+      <p>70&ndash;84% of PM traders lose money (F2). Pattern: first WIN &rarr; overconfidence &rarr; escalation &rarr; chasing (F5). WIN screen needs attention too.</p>
+      <div class="mvp-arrow">
+        <span class="mvp-arrow-label">Function</span>
+        <span>Post-resolution loss screen (what happened + one clear next step, not a promo for next bet) + measured WIN screen (validation, not celebration amplification)</span>
+      </div>
+      <div class="mvp-source">live-research F2+F3+F5 &middot; master-research.md &sect;4 gap &middot; &sect;9</div>
+    </div>
+
+    <h3 style="margin-top:40px">Functions to cut</h3>
+
+    <div class="cut-table-wrap">
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>JTBD</th><th>Reason to cut</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">Demo bet / play-money</td>
+            <td>HJ4 (hypothesis)</td>
+            <td>F1: Manifold tested and closed. Play-money doesn't convert.</td>
+          </tr>
+          <tr>
+            <td class="label">Market Board / Trading view</td>
+            <td>HJ2 (Dan, hypothesis)</td>
+            <td>Rejected for primary audience. "Trader language, not spectator language."</td>
+          </tr>
+          <tr>
+            <td class="label">Sports markets at MVP</td>
+            <td>HJ3 (Maria, post-MVP)</td>
+            <td>Decision made: post-MVP with 3-month checkpoint.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const toggle = document.getElementById('menuToggle');
+
+  const openSidebar = () => { sidebar.classList.add('open'); overlay.classList.add('open'); };
+  const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+
+  toggle.addEventListener('click', openSidebar);
+  overlay.addEventListener('click', closeSidebar);
+
+  document.querySelectorAll('.sidebar-sub-link').forEach(l => {
+    l.addEventListener('click', () => { if (window.innerWidth < 860) closeSidebar(); });
+  });
+
+  const subLinks = document.querySelectorAll('.sidebar-sub-link');
+  const sectionIds = [...subLinks].map(l => l.getAttribute('href').slice(1));
+  const sections = sectionIds.map(id => document.getElementById(id));
+
+  const setActive = id => {
+    subLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+
+  sections.forEach(s => s && observer.observe(s));
+  if (sections[0]) setActive(sections[0].id);
+</script>
+</body>
+</html>

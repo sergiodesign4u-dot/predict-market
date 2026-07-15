@@ -435,8 +435,27 @@
     /* ---- Shared in-page dialogs (native <dialog>, opened over the current page) ---- */
     dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
     dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
+    /* ---- How it works: header button + quick-explainer dialog (WF) ---- */
+    .hiw-btn { border: 1px solid #999; background: #e0e0e0; padding: 5px 10px; font-size: 12px; cursor: pointer; }
+    dialog.app-dialog .hiw-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
+    dialog.app-dialog .hiw-head h2 { font-size: 14px; margin: 0; }
+    dialog.app-dialog .hiw-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
+    dialog.app-dialog .hiw-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    dialog.app-dialog .hiw-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    dialog.app-dialog .hiw-sec p { font-size: 13px; color: #333; line-height: 1.5; margin: 4px 0 0; }
+    dialog.app-dialog .hiw-sec dl { margin: 0; }
+    dialog.app-dialog .hiw-sec dt { font-size: 13px; font-weight: bold; margin: 8px 0 2px; }
+    dialog.app-dialog .hiw-sec dd { font-size: 13px; color: #333; line-height: 1.5; margin: 0; }
+    dialog.app-dialog .hiw-full { display: block; box-sizing: border-box; border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; text-align: center; text-decoration: none; color: #222; }
     dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
+    /* ---- Footer trust strip + SEO popular-links (WF reconcile, Krok 3) ---- */
+    .footer-trust { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; padding: 10px 12px; border-bottom: 1px solid #ccc; font-size: 12px; color: #444; }
+    .footer-trust .trust-item { display: inline-block; }
+    .footer-popular { padding: 10px 12px; border-top: 1px solid #ccc; }
+    .footer-popular h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
+    .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
+    .popular-links a { color: #444; }
   </style>
 </head>
 <body data-loggedin-target="culture-empty.html">
@@ -665,6 +684,37 @@
           <li><a href="how-it-works.html">success (static trust page)</a></li>
         </ul>
       </li>
+      <li class="wf-sec">System and global</li>
+      <li class="wf-screen">
+        <a href="404.html">404 Not Found</a>
+        <ul class="wf-states">
+          <li><a href="404.html">full page (HTTP 404)</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="500.html">500 Server Error</a>
+        <ul class="wf-states">
+          <li><a href="500.html">full page (HTTP 500)</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="maintenance.html">Maintenance</a>
+        <ul class="wf-states">
+          <li><a href="maintenance.html">maintenance (HTTP 503)</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="cookie-consent.html">Cookie consent</a>
+        <ul class="wf-states">
+          <li><a href="cookie-consent.html">consent banner</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="toasts.html">Toasts</a>
+        <ul class="wf-states">
+          <li><a href="toasts.html">toast component</a></li>
+        </ul>
+      </li>
       <li class="wf-sec">Orphans [SIROTA] - not built (no confirmed job)</li>
       <li class="wf-note">Settings / Notification Preferences, Leaderboard, Help / FAQ.</li>
     </ul>
@@ -679,6 +729,7 @@
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
           </button>
           <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+          <button type="button" class="hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
         <div class="utility">
           <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
@@ -806,6 +857,13 @@
     <footer class="app-footer">
       <div class="footer-inner">
 
+        <!-- Trust strip (persistent funds-safety + resolution signal, WF reconcile) -->
+        <div class="footer-trust">
+          <span class="trust-item">Your USDC is held 1:1, we never lend it.</span>
+          <span class="trust-item">Every event resolves against a public source.</span>
+          <span class="trust-item">1,284 events resolved</span>
+        </div>
+
         <div class="footer-top">
 
           <!-- Brand block: logo, tagline, social, language -->
@@ -855,26 +913,26 @@
               <h3>Events</h3>
               <p class="sub-label">By category</p>
               <ul>
-                <li><a href="#">Politics</a></li>
-                <li><a href="#">Crypto</a></li>
-                <li><a href="#">Culture</a></li>
-                <li><a href="#">General</a></li>
+                <li><a href="politics.html">Politics</a></li>
+                <li><a href="crypto.html">Crypto</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="general.html">General</a></li>
                 <li><a href="#">Sports</a> <span class="tbd">post-MVP</span></li>
               </ul>
               <p class="sub-label">By topic</p>
               <ul>
                 <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
-                <li><a href="#">View all events</a></li>
+                <li><a href="event-feed.html">View all events</a></li>
               </ul>
             </nav>
 
             <nav class="footer-col" aria-label="Product">
               <h3>Product</h3>
               <ul>
-                <li><a href="#">How It Works</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
                 <li><a href="#">Leaderboard</a></li>
-                <li><a href="#">Wallet</a></li>
-                <li><a href="#">My Bets</a></li>
+                <li><a href="wallet.html">Wallet</a></li>
+                <li><a href="active-bets.html">My Bets</a></li>
                 <li><a href="#">API / Developers</a> <span class="tbd">post-MVP</span></li>
                 <li><a href="#">Status</a> <span class="tbd">TBD</span></li>
               </ul>
@@ -886,7 +944,7 @@
                 <li><a href="#">Help Center</a> <span class="tbd">TBD</span></li>
                 <li><a href="#">FAQ</a> <span class="tbd">TBD</span></li>
                 <li><a href="#">Contact</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">How It Works</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
               </ul>
             </nav>
 
@@ -903,6 +961,20 @@
           </div>
         </div>
 
+        <!-- SEO popular-links block (second internal-linking plane, WF reconcile) -->
+        <div class="footer-popular">
+          <h3>Popular right now</h3>
+          <ul class="popular-links">
+            <li><a href="politics.html">Politics events</a></li>
+            <li><a href="crypto.html">Crypto events</a></li>
+            <li><a href="culture.html">Culture events</a></li>
+            <li><a href="general.html">General events</a></li>
+            <li><a href="event-feed.html">Trending events</a></li>
+            <li><a href="event-feed.html">Ending soon</a></li>
+            <li><a href="how-it-works.html">How it works</a></li>
+          </ul>
+        </div>
+
         <!-- Legal strip -->
         <div class="footer-legal">
           <nav aria-label="Legal">
@@ -911,6 +983,7 @@
               <li><a href="#">Privacy</a></li>
               <li><a href="#">Responsible play</a></li>
               <li><a href="#">Geo restrictions</a> <span class="tbd">TBD</span></li>
+              <li><a href="cookie-consent.html">Cookie preferences</a></li>
             </ul>
           </nav>
           <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
@@ -1064,6 +1137,35 @@
     </div>
   </dialog>
 
+  <dialog id="howitworksDialog" class="app-dialog" aria-label="How it works">
+    <div class="hiw-head">
+      <h2>How it works</h2>
+      <button type="button" class="hiw-close" data-close-dialog aria-label="Close">x</button>
+    </div>
+    <div class="hiw-body">
+      <div class="hiw-sec">
+        <span class="hiw-label">How betting works here</span>
+        <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+      </div>
+      <div class="hiw-sec">
+        <span class="hiw-label">Why the odds move</span>
+        <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+      </div>
+      <div class="hiw-sec">
+        <span class="hiw-label">Common questions</span>
+        <dl>
+          <dt>Do I need crypto to start?</dt>
+          <dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd>
+          <dt>What is the smallest bet?</dt>
+          <dd>One dollar. The default is five.</dd>
+          <dt>How does an event resolve?</dt>
+          <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
+        </dl>
+      </div>
+      <a href="how-it-works.html" class="hiw-full">Read the full guide</a>
+    </div>
+  </dialog>
+
   <script>
     // Shared dialogs: open over the current page. On logged-out pages, completing
     // sign-in then closing / funding the deposit lands on the logged-in counterpart
@@ -1076,13 +1178,13 @@
       var signedIn = false;
       document.addEventListener('click', function (e) {
         var o = e.target.closest('[data-open]');
-        if (o) { e.preventDefault(); open(o.getAttribute('data-open') === 'deposit' ? 'depositDialog' : 'signinDialog'); return; }
+        if (o) { e.preventDefault(); var dv = o.getAttribute('data-open'); open(dv === 'deposit' ? 'depositDialog' : dv === 'howitworks' ? 'howitworksDialog' : 'signinDialog'); return; }
         var f = e.target.closest('[data-flow="signin-to-deposit"]');
         if (f) { e.preventDefault(); signedIn = true; close(dlg('signinDialog')); open('depositDialog'); return; }
         var c = e.target.closest('[data-close-dialog]');
         if (c) { close(c.closest('dialog')); return; }
       });
-      ['signinDialog', 'depositDialog'].forEach(function (id) {
+      ['signinDialog', 'depositDialog', 'howitworksDialog'].forEach(function (id) {
         var d = dlg(id); if (!d) return;
         d.addEventListener('click', function (e) { if (e.target === d) close(d); });
       });

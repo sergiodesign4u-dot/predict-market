@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice &amp; Microcopy - Prediction Market</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── SIDEBAR ─────────────────────────────────────────── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 220px;
+    height: 100vh;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform .25s cubic-bezier(.4,0,.2,1);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar::-webkit-scrollbar { display: none; }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.open { display: block; }
+
+  .menu-toggle {
+    position: fixed;
+    top: 12px; left: 12px;
+    z-index: 201;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 36px; height: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 15px; height: 1.5px;
+    background: var(--text);
+    border-radius: 1px;
+  }
+
+  .sidebar-brand {
+    padding: 20px 16px 16px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .sidebar-project-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+
+  .sidebar-page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    padding: 7px 16px;
+    transition: background .15s;
+    cursor: pointer;
+    user-select: none;
+  }
+  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
+  .sidebar-page-link.active { color: var(--accent); }
+  .sidebar-page-link.planned {
+    color: var(--muted);
+    cursor: default;
+    opacity: .6;
+  }
+  .sidebar-page-link.planned::after {
+    content: 'Soon';
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
+  .sidebar-page-link.planned.next { opacity: 1; }
+  .sidebar-page-link.planned.next::after { content: 'Next'; color: var(--accent); border-color: var(--accent); }
+
+  .sidebar-sub { padding: 2px 0 8px; }
+
+  .sidebar-sub-link {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 5px 16px 5px 28px;
+    transition: color .15s;
+    position: relative;
+  }
+  .sidebar-sub-link:hover { color: var(--text); }
+  .sidebar-sub-link.active { color: var(--text); }
+  .sidebar-sub-link.active::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 50%; transform: translateY(-50%);
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-divider {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 16px 16px 6px;
+    opacity: .45;
+  }
+
+  /* ── LAYOUT ─────────────────────────────────────────── */
+  main {
+    padding: 60px 20px 80px;
+  }
+
+  @media (min-width: 860px) {
+    .sidebar { transform: translateX(0); transition: none; }
+    .sidebar-overlay { display: none !important; }
+    .menu-toggle { display: none; }
+    main { margin-left: 220px; padding: 48px 48px 120px; }
+  }
+
+  section {
+    padding-top: var(--gap);
+    margin-top: var(--gap);
+    border-top: 1px solid var(--border);
+  }
+  section:first-child { border-top: none; }
+
+  /* ── TYPOGRAPHY ─────────────────────────────────────── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    margin-top: 32px;
+  }
+  h3:first-child { margin-top: 0; }
+
+  p {
+    color: #aaa;
+    margin-bottom: 12px;
+    max-width: 680px;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  .lead {
+    font-size: 16px;
+    color: #bbb;
+    max-width: 640px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero { padding-top: 0; border-top: none; }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid rgba(200,255,0,.2);
+  }
+  .tag.grey {
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    border-color: var(--border);
+  }
+
+  .conclusion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .conclusion-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 16px;
+  }
+  .conclusion-card .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .conclusion-card p {
+    font-size: 13px;
+    color: #bbb;
+    margin: 0;
+    max-width: none;
+  }
+
+  /* ── TABLES ─────────────────────────────────────────── */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    background: var(--surface);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #c8c8c8;
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,.015); }
+
+  td.label {
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  td.mono { font-family: var(--mono); font-size: 12px; }
+  td.muted { color: var(--muted); }
+
+  /* score cells */
+  .score-5 { color: var(--green); font-weight: 700; }
+  .score-4 { color: #a8e89c; font-weight: 600; }
+  .score-3 { color: #c8c8c8; }
+  .score-2 { color: #e89c9c; }
+  .score-1 { color: var(--red); }
+  .score-bold { font-size: 15px; }
+
+  /* ── CARDS GRID ─────────────────────────────────────── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px;
+  }
+
+  .card-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .card p {
+    font-size: 13px;
+    color: #999;
+    margin: 0;
+    max-width: none;
+  }
+
+  .card.bad { border-color: rgba(255,95,95,.25); }
+  .card.bad .card-num { color: var(--red); }
+  .card.bad h4 { color: #ff9f9f; }
+
+  .card.good { border-color: rgba(95,219,143,.2); }
+
+  /* ── FUNNEL ─────────────────────────────────────────── */
+  .funnel {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 20px;
+    max-width: 640px;
+  }
+
+  .funnel-step {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .funnel-step-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .funnel-step-desc {
+    font-size: 13px;
+    color: #aaa;
+  }
+
+  .funnel-step-metric {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    text-align: right;
+  }
+  .funnel-step-metric .val {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .funnel-arrow {
+    text-align: center;
+    color: var(--border);
+    font-size: 16px;
+    line-height: 1;
+    padding: 2px 0;
+  }
+
+  /* ── PATTERNS ───────────────────────────────────────── */
+  .pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .pattern-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px;
+  }
+  .pattern-card.chosen {
+    border-color: var(--accent);
+    background: rgba(200,255,0,.04);
+  }
+  .pattern-card.no {
+    border-color: rgba(255,95,95,.2);
+    opacity: .7;
+  }
+  .pattern-card .badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  .pattern-card.chosen .badge { background: var(--accent); color: #000; }
+  .pattern-card.no .badge { background: rgba(255,95,95,.15); color: var(--red); }
+  .pattern-card .badge.cond { background: rgba(95,168,255,.12); color: var(--blue); }
+
+  .pattern-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .pattern-card p { font-size: 12px; color: #888; margin: 4px 0 0; max-width: none; }
+
+  /* ── HYPOTHESES ─────────────────────────────────────── */
+  .hypothesis {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px 24px;
+    margin-top: 12px;
+  }
+
+  .hypothesis-id {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+
+  .hypothesis-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .hyp-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 8px 14px;
+    margin-bottom: 4px;
+  }
+  .hyp-key {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding-top: 1px;
+  }
+  .if-key { color: var(--blue); }
+  .then-key { color: var(--green); }
+  .because-key { color: #c8a0ff; }
+  .hyp-val { font-size: 13px; color: #bbb; }
+  .hyp-source { font-size: 11px; color: var(--muted); margin-top: 10px; }
+
+  /* ── SEGMENTS ───────────────────────────────────────── */
+  .segment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .segment {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px;
+  }
+  .segment.primary-seg {
+    border-color: var(--accent);
+    background: rgba(200,255,0,.04);
+  }
+
+  .segment-priority {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 8px;
+  }
+  .segment.primary-seg .segment-priority { color: var(--accent); }
+  .segment-priority.sec { color: var(--blue); }
+  .segment-priority.later { color: var(--muted); }
+
+  .segment h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .segment .age { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .segment p { font-size: 13px; color: #999; margin: 0; max-width: none; }
+
+  /* ── SCREENS GALLERY ────────────────────────────────── */
+  .screen-group { margin-top: 32px; }
+
+  .screen-group-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .screens {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .screen-item { flex-shrink: 0; width: 160px; }
+
+  .screen-item img {
+    width: 160px;
+    height: 280px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    display: block;
+    transition: transform .2s, border-color .2s;
+  }
+  .screen-item img:hover { transform: scale(1.02); border-color: #444; }
+
+  .screen-item figcaption {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 7px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* ── GAPS ───────────────────────────────────────────── */
+  .gap-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .gap-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    color: #bbb;
+  }
+  .gap-item .source { font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+  /* ── OPEN QUESTIONS ─────────────────────────────────── */
+  .questions {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .question {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #bbb;
+    display: flex;
+    gap: 10px;
+  }
+  .question .qnum {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+
+  /* ── MISC ───────────────────────────────────────────── */
+  .divider { height: 1px; background: var(--border); margin: 28px 0; }
+
+  .inline-note {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: -4px;
+    margin-bottom: 12px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  .pill-q { background: rgba(255,255,255,.06); color: var(--muted); }
+
+  .aida-flow {
+    display: flex;
+    gap: 0;
+    margin-top: 8px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .aida-step {
+    flex: 1;
+    padding: 10px 12px;
+    border-right: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .aida-step:last-child { border-right: none; }
+  .aida-step .aida-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .aida-step p { font-size: 12px; color: #999; margin: 0; max-width: none; }
+</style>
+
+<style>
+  .principle { margin-top: 40px; }
+  .principle:first-of-type { margin-top: 24px; }
+  .principle .rule { color: #d8d8d8; font-size: 15px; max-width: 720px; margin: 6px 0 4px; }
+  .why { font-size: 12px; color: var(--muted); max-width: 720px; margin-top: 12px; line-height: 1.6; }
+  .why b { color: #8a8a8a; font-weight: 600; }
+  .ex-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  @media (max-width: 640px) { .ex-grid { grid-template-columns: 1fr; } }
+  .card.good .card-num { color: var(--green); }
+  .ex-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; }
+  .card.good .ex-label { color: var(--green); }
+  .card.bad .ex-label { color: var(--red); }
+  .card.good .ex, .card.bad .ex { font-size: 13px; color: #d0d0d0; line-height: 1.55; }
+  .card.bad .ex { color: #c0a0a0; }
+  .stat-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 18px; min-width: 120px; }
+  .stat .n { font-family: var(--mono); font-size: 22px; color: var(--accent); font-weight: 700; }
+  .stat .l { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  td.say { color: var(--green); font-weight: 600; white-space: nowrap; }
+  td.not { color: #c08a8a; }
+  .arrow { color: var(--muted); }
+</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <a href="../user-research/personas.html" class="sidebar-page-link">User Research</a>
+    <a href="../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
+    <a class="sidebar-page-link active">Voice</a>
+    <div class="sidebar-sub">
+      <a href="#principles" class="sidebar-sub-link">Principles</a>
+      <a href="#lexicon" class="sidebar-sub-link">Lexicon</a>
+      <a href="#forbidden" class="sidebar-sub-link">Forbidden</a>
+      <a href="#microcopy" class="sidebar-sub-link">Microcopy rules</a>
+      <a href="#rewrite" class="sidebar-sub-link">The rewrite</a>
+    </div>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a href="../concept/concept.html" class="sidebar-page-link">Concept</a>
+    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
+    <a class="sidebar-page-link planned next">Tokens + Components</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<main>
+
+  <section class="hero" id="top">
+    <div class="hero-meta">
+      <span class="tag">Voice &amp; Microcopy</span>
+      <span class="tag grey">Lesson 05</span>
+      <span class="tag grey">99 pages</span>
+      <span class="tag" style="background:rgba(95,219,143,.1);color:#5fdb8f;border-color:rgba(95,219,143,.25)">Complete &middot; 2026</span>
+    </div>
+    <h1>Product Voice &amp; Microcopy</h1>
+    <p class="lead">The voice is <strong>rules, not a mood</strong>. Every rule carries an example, an anti-example, and the research line it derives from &mdash; so every UI line reads the same, whoever writes it. Two files: <strong>voice.md</strong> (the contract) and <strong>microcopy.md</strong> (the inventory + the line-by-line rewrite log).</p>
+    <div class="stat-row">
+      <div class="stat"><div class="n">5</div><div class="l">Principles</div></div>
+      <div class="stat"><div class="n">9</div><div class="l">Lexicon terms</div></div>
+      <div class="stat"><div class="n">9</div><div class="l">Forbidden</div></div>
+      <div class="stat"><div class="n">8</div><div class="l">Element rules</div></div>
+      <div class="stat"><div class="n">99</div><div class="l">Pages rewritten</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">Violations left</div></div>
+    </div>
+  </section>
+
+  <section id="principles">
+    <div class="section-label">The contract &middot; voice.md</div>
+    <h2>Five principles</h2>
+    <p>Ordered by how often they fire, most-used first. The context sets the tone: crypto money, on real-world events, among strangers, with no regulatory badge we may show &mdash; so <strong>trust matters more than wit</strong>.</p>
+    
+    <div class="principle">
+      <h3>1 &middot; Explain the number, never just show it</h3>
+      <p class="rule">Every number carries the one plain reason it is what it is; we never leave a bare figure to speak for itself.</p>
+      <div class="ex-grid">
+        <div class="card good"><div class="ex-label">Example</div><div class="ex">&ldquo;YES 38%. Funding talks have stalled twice this quarter &mdash; that is what is holding the price down.&rdquo;</div></div>
+        <div class="card bad"><div class="ex-label">Anti-example</div><div class="ex">&ldquo;YES 38%&rdquo; (and nothing else). &nbsp;&middot;&nbsp; &ldquo;Buy Yes 37&cent;.&rdquo;</div></div>
+      </div>
+      <p class="why">Why: The confirmed differentiator, not a nicety. <b>research.md</b>: competitors have &ldquo;no clear <i>why this number</i> explanation&rdquo;; <b>jtbd.md FJ2</b>: the user wants to understand why the market prices it so, not bet blind.</p>
+    </div>
+    <div class="principle">
+      <h3>2 &middot; One plain sentence of trust, before the ask &mdash; never borrowed authority</h3>
+      <p class="rule">Before we move a user's money we say what happens to it in one plain sentence, and show the cost before Confirm; we never dress up authority we do not hold.</p>
+      <div class="ex-grid">
+        <div class="card good"><div class="ex-label">Example</div><div class="ex">&ldquo;Your USDC is held 1:1. We never lend it without your permission.&rdquo; &nbsp;&middot;&nbsp; &ldquo;You pay a 2% fee only if you win. Nothing on a loss.&rdquo;</div></div>
+        <div class="card bad"><div class="ex-label">Anti-example</div><div class="ex">&ldquo;Bank-grade security.&rdquo; &nbsp;&middot;&nbsp; &ldquo;Fully protected.&rdquo; &nbsp;&middot;&nbsp; a regulatory badge we cannot show.</div></div>
+      </div>
+      <p class="why">Why: <b>benchmark-trust.md</b>: regulatory badges require real licenses we do not hold; matching their authority signals with no history &ldquo;reads as fake.&rdquo;</p>
+    </div>
+    <div class="principle">
+      <h3>3 &middot; Speak to a spectator with an opinion, not a trader</h3>
+      <p class="rule">We use the words a news-follower already owns &mdash; event, bet, YES / NO, &ldquo;if YES wins you get $X&rdquo; &mdash; and keep trading-desk jargon out of the primary path.</p>
+      <div class="ex-grid">
+        <div class="card good"><div class="ex-label">Example</div><div class="ex">&ldquo;Bet YES &mdash; if it happens, $5 becomes $13.20.&rdquo; &nbsp;&middot;&nbsp; Profile: &ldquo;Your record: 12 calls, 9 right.&rdquo;</div></div>
+        <div class="card bad"><div class="ex-label">Anti-example</div><div class="ex">&ldquo;Buy 13 YES shares at $0.38 avg, spread 2&cent;.&rdquo; &nbsp;&middot;&nbsp; &ldquo;Provide liquidity to this market.&rdquo;</div></div>
+      </div>
+      <p class="why">Why: <b>ux-patterns.md</b>: &ldquo;a table with prices in cents is the language of a trader, not a spectator.&rdquo; <b>personas.md</b>: identity = analyst, action = bet.</p>
+    </div>
+    <div class="principle">
+      <h3>4 &middot; Design the loss; mark the win without lighting a fuse</h3>
+      <p class="rule">After a result we explain what happened in plain words and offer one calm next step. We acknowledge being right without confetti, and never nudge &ldquo;bet again&rdquo; after a loss.</p>
+      <div class="ex-grid">
+        <div class="card good"><div class="ex-label">Example</div><div class="ex">Win: &ldquo;You were right. +$13.20.&rdquo; &nbsp;&middot;&nbsp; Loss: &ldquo;Here's what happened: Congress passed a stopgap bill &mdash; no shutdown.&rdquo; + one next step.</div></div>
+        <div class="card bad"><div class="ex-label">Anti-example</div><div class="ex">&ldquo;Congratulations, you WON! Ride your streak &mdash; bet again now!&rdquo; &nbsp;&middot;&nbsp; after a loss: &ldquo;Don't give up &mdash; win it back!&rdquo;</div></div>
+      </div>
+      <p class="why">Why: <b>personas.md</b>: confetti without friction accelerates loss-chasing; platform betrayal is the documented <b>#1 churn driver</b> &mdash; more than losing a bet.</p>
+    </div>
+    <div class="principle">
+      <h3>5 &middot; Say the specific, provable thing &mdash; not a superlative</h3>
+      <p class="rule">We name the concrete fact &mdash; a date, a source, a real count &mdash; instead of marketing scale; if we cannot prove it today, we do not claim it.</p>
+      <div class="ex-grid">
+        <div class="card good"><div class="ex-label">Example</div><div class="ex">&ldquo;214 markets resolved since March 2026. Verify every one on-chain.&rdquo;</div></div>
+        <div class="card bad"><div class="ex-label">Anti-example</div><div class="ex">&ldquo;The world's most trusted prediction market.&rdquo; &nbsp;&middot;&nbsp; &ldquo;Join millions of winners!&rdquo;</div></div>
+      </div>
+      <p class="why">Why: <b>research.md</b> competitor language: everyone leads with a superlative (&ldquo;World's Largest&rdquo;). We can't match that at launch &mdash; our difference is the specific, checkable fact.</p>
+    </div>
+  </section>
+
+  <section id="lexicon">
+    <div class="section-label">One concept, one word</div>
+    <h2>Lexicon</h2>
+    <p>Each entry settles a &ldquo;same-thing, two names&rdquo; discrepancy that was flagged in the inventory. No invented terms &mdash; every word already existed in the product or the research.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Concept</th><th>We say</th><th>Not</th><th>Why</th></tr></thead>
+        <tbody><tr><td class="label">The thing you bet on</td><td class="say">event</td><td class="not">market, question</td><td class="muted">Alex arrives &ldquo;from the news&rdquo;; &ldquo;market&rdquo; is the trader's word (kept only in mechanics docs).</td></tr><tr><td class="label">Putting money on an outcome</td><td class="say">bet &middot; YES / NO</td><td class="not">position, wager, trade, shares</td><td class="muted">&ldquo;Even the most analytical users say <i>I bet</i> &hellip; nobody used <i>I predicted</i>.&rdquo;</td></tr><tr><td class="label">Your record / identity</td><td class="say">predict, forecast, &ldquo;I called it&rdquo;</td><td class="not">&mdash;</td><td class="muted">Identity = analyst, action = bet: predict/forecast in profile &amp; share, bet in functional UI.</td></tr><tr><td class="label">Your bets, collected</td><td class="say">My Bets</td><td class="not">My Positions, Portfolio, Dashboard</td><td class="muted">The user's word for the stakes they took, not a trader's ledger.</td></tr><tr><td class="label">Putting money in</td><td class="say">Add funds</td><td class="not">Deposit, top up</td><td class="muted">Ordinary-money language; &ldquo;deposit&rdquo; carries a bank framing we openly disclaim.</td></tr><tr><td class="label">Keeping an event to watch</td><td class="say">Save &rarr; Favorites</td><td class="not">Bookmark, watchlist</td><td class="muted">&ldquo;Save&rdquo; is the plain everyday verb; &ldquo;bookmark&rdquo; is browser jargon.</td></tr><tr><td class="label">Entering the account</td><td class="say">Sign in / Sign up</td><td class="not">Log in, Login, Register</td><td class="muted">One pair, used on every screen.</td></tr><tr><td class="label">Going to the feed</td><td class="say">Browse events</td><td class="not">Find events, See next events, Back to feed</td><td class="muted">One label for one action; the object is always <i>events</i>.</td></tr><tr><td class="label">Placing the bet (commit)</td><td class="say">&ldquo;Place your bet&rdquo; / &ldquo;Confirm bet&rdquo;</td><td class="not">bare &ldquo;Bet&rdquo;, &ldquo;Buy&rdquo;</td><td class="muted">Verb + object that shows the result; &ldquo;Confirm&rdquo; marks the consequential step.</td></tr></tbody>
+      </table>
+    </div>
+    <p class="why" style="margin-top:16px">Address the user as <b>&ldquo;you&rdquo;</b>, informal and plain, the same on every screen &mdash; never &ldquo;users&rdquo;, never a corporate register, never greet by name.</p>
+  </section>
+
+  <section id="forbidden">
+    <div class="section-label">What we never write</div>
+    <h2>Forbidden</h2>
+    <p>The tone leaks marked in the inventory, plus the register the research rules out &mdash; each with the before &rarr; after so the ban is testable.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Never</th><th>Instead</th></tr></thead>
+        <tbody><tr><td class="not">&ldquo;Something went wrong&rdquo; / &ldquo;Oops&rdquo;</td><td class="say">&ldquo;Couldn't load events. Check your connection and try again.&rdquo;</td></tr><tr><td class="not">&ldquo;Welcome!&rdquo; / greetings by name</td><td class="say">&ldquo;You're signed in.&rdquo; (or nothing &mdash; just show the feed)</td></tr><tr><td class="not">&ldquo;Congratulations, you won!&rdquo;</td><td class="say">&ldquo;You were right. +$13.20.&rdquo;</td></tr><tr><td class="not">Motivational / journey tone</td><td class="say">The concrete next step, stated plainly.</td></tr><tr><td class="not">Exclamation marks in system messages</td><td class="say">Calm by default.</td></tr><tr><td class="not">Emoji in status / errors / confirmations</td><td class="say">None.</td></tr><tr><td class="not">&ldquo;successfully&rdquo; / &ldquo;success&rdquo;</td><td class="say">&ldquo;Bet placed. It is in My Bets now.&rdquo;</td></tr><tr><td class="not">Apologies (&ldquo;Sorry &hellip;&rdquo;)</td><td class="say">&ldquo;Your funds are safe. Try again.&rdquo;</td></tr><tr><td class="not">Internal codes (T2 / T3 / S5) &amp; placeholders</td><td class="say">Never user-facing.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="microcopy">
+    <div class="section-label">Rules by element</div>
+    <h2>Microcopy</h2>
+    <p>The principles applied at the level of a single element &mdash; each with one real line from our own screens.</p>
+    <div class="card-grid"><div class="card"><div class="card-num">01</div><h4>Button</h4><p style="margin-bottom:10px">An action verb whose object shows the result; never a bare OK / Next / Submit or a naked &ldquo;Bet&rdquo;.</p><p style="color:var(--green);font-size:12px"><b style="color:var(--green)">Ours:</b> &ldquo;Confirm bet&rdquo; &middot; &ldquo;Add funds&rdquo; &middot; &ldquo;Browse events&rdquo;</p></div><div class="card"><div class="card-num">02</div><h4>Screen heading</h4><p style="margin-bottom:10px">Name the place in the words the user already uses; not a trading-desk label.</p><p style="color:var(--green);font-size:12px"><b style="color:var(--green)">Ours:</b> &ldquo;My Bets&rdquo; &middot; &ldquo;Wallet&rdquo; &middot; &ldquo;How events resolve&rdquo;</p></div><div class="card"><div class="card-num">03</div><h4>Form field</h4><p style="margin-bottom:10px">Label says what to enter, hint says how, error says exactly what to fix.</p><p style="color:var(--green);font-size:12px"><b style="color:var(--green)">Ours:</b> &ldquo;Amount to add&rdquo; + &ldquo;Minimum $10 &hellip;&rdquo; + &ldquo;The minimum is $10. Enter $10 or more.&rdquo;</p></div><div class="card"><div class="card-num">04</div><h4>Empty state</h4><p style="margin-bottom:10px">Say why it is empty and give the one next step; never a bare icon or &ldquo;Nothing here yet&rdquo;.</p><p style="color:var(--green);font-size:12px"><b style="color:var(--green)">Ours:</b> &ldquo;No active bets yet. &hellip; put a real stake on it.&rdquo; + &ldquo;Browse events&rdquo;</p></div><div class="card"><div class="card-num">05</div><h4>Error</h4><p style="margin-bottom:10px">Say what happened and what to do next; no apology, no joke, no filler.</p><p style="color:var(--green);font-size:12px"><b style="color:var(--green)">Ours:</b> &ldquo;Couldn't load your wallet. Your funds are safe &hellip; Try again.&rdquo;</p></div><div class="card"><div class="card-num">06</div><h4>Loading</h4><p style="margin-bottom:10px">Stay silent (a skeleton) or name exactly what is loading; never a hype line.</p><p style="color:var(--green);font-size:12px"><b style="color:var(--green)">Ours:</b> &ldquo;Registering your bet on-chain &hellip;&rdquo; (else a silent skeleton)</p></div><div class="card"><div class="card-num">07</div><h4>Success</h4><p style="margin-bottom:10px">Name the fact and the next step; mark being right, but do not celebrate.</p><p style="color:var(--green);font-size:12px"><b style="color:var(--green)">Ours:</b> &ldquo;You were right. +$13.20. The market resolved YES, the side you held.&rdquo;</p></div><div class="card"><div class="card-num">08</div><h4>Dangerous / irreversible</h4><p style="margin-bottom:10px">Before the press, say what will happen and what cannot be undone.</p><p style="color:var(--green);font-size:12px"><b style="color:var(--green)">Ours:</b> &ldquo;On-chain transfers are final and cannot be reversed &mdash; check the address before you confirm.&rdquo;</p></div></div>
+  </section>
+
+  <section id="rewrite">
+    <div class="section-label">microcopy.md &middot; rewrite log</div>
+    <h2>The rewrite</h2>
+    <p>Every UI line on all 99 wireframe pages was rewritten line-by-line against voice.md (Steps 05&ndash;14), one screen family at a time, with a before / after row logged for each change. User-written content &mdash; event questions, comments, usernames &mdash; is never touched. The closing audit found <strong>0 lexicon or forbidden violations</strong> left in product copy.</p>
+
+    <h3>The panel that moved from trader to spectator</h3>
+    <p>The Event Detail social panel (Comments / Holders / Positions / Activity) was built on trading-desk vocabulary. It was rewritten to a spectator reading (Principle 3):</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Element</th><th>Trader (was)</th><th>Spectator (became)</th></tr></thead>
+        <tbody><tr><td class="label">Tab labels</td><td class="not">Top Holders &middot; Positions</td><td class="say">Biggest bets &middot; Bets</td></tr><tr><td class="label">Table columns</td><td class="not">Holder &middot; Side &middot; Shares &middot; Avg &middot; Value</td><td class="say">Bettor &middot; Side &middot; Amount</td></tr><tr><td class="label">Holdings</td><td class="not">&ldquo;1,240 shares&rdquo;</td><td class="say">&ldquo;$1,240&rdquo;</td></tr><tr><td class="label">Activity feed</td><td class="not">&ldquo;whale_07 bought 500 YES at $0.35 ($175)&rdquo;</td><td class="say">&ldquo;whale_07 bet $175 on YES&rdquo;</td></tr><tr><td class="label">Helper</td><td class="not">&ldquo;Positions update as the market trades.&rdquo;</td><td class="say">&ldquo;Bets update as the odds move.&rdquo;</td></tr></tbody>
+      </table>
+    </div>
+
+    <h3>Same action, same label</h3>
+    <p>The closing reconciliation confirmed one action carries one label everywhere: retry is always <strong style="color:var(--green)">&ldquo;Try again&rdquo;</strong>, funding is always <strong style="color:var(--green)">&ldquo;Add funds&rdquo;</strong>, the feed CTA is always <strong style="color:var(--green)">&ldquo;Browse events&rdquo;</strong> (the last stray &ldquo;Back to Trending&rdquo; unified), the commit is always <strong style="color:var(--green)">&ldquo;Confirm bet&rdquo;</strong>, and auth is always <strong style="color:var(--green)">&ldquo;Sign in / Sign up&rdquo;</strong>.</p>
+    <p class="why">Sources of truth: <b>voice/voice.md</b> (principles + lexicon + forbidden + element rules) and <b>voice/microcopy.md</b> (inventory + rewrite log). The wireframes stay the render surface; to change shipped copy, edit the HTML and log the before/after there.</p>
+  </section>
+
+</main>
+
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const toggle = document.getElementById('menuToggle');
+
+  const openSidebar = () => { sidebar.classList.add('open'); overlay.classList.add('open'); };
+  const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+
+  toggle.addEventListener('click', openSidebar);
+  overlay.addEventListener('click', closeSidebar);
+
+  document.querySelectorAll('.sidebar-sub-link').forEach(l => {
+    l.addEventListener('click', () => { if (window.innerWidth < 860) closeSidebar(); });
+  });
+
+  const subLinks = document.querySelectorAll('.sidebar-sub-link');
+  const sectionIds = [...subLinks].map(l => l.getAttribute('href').slice(1));
+  const sections = sectionIds.map(id => document.getElementById(id));
+
+  const setActive = id => {
+    subLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+
+  sections.forEach(s => s && observer.observe(s));
+  if (sections[0]) setActive(sections[0].id);
+</script>
+</body>
+</html>

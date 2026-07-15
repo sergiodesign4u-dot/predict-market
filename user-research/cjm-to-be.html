@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CJM To-Be - Prediction Market Platform</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── SIDEBAR ─────────────────────────────────────────── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 220px;
+    height: 100vh;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform .25s cubic-bezier(.4,0,.2,1);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar::-webkit-scrollbar { display: none; }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.open { display: block; }
+
+  .menu-toggle {
+    position: fixed;
+    top: 12px; left: 12px;
+    z-index: 201;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 36px; height: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 15px; height: 1.5px;
+    background: var(--text);
+    border-radius: 1px;
+  }
+
+  .sidebar-brand {
+    padding: 20px 16px 16px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .sidebar-project-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+
+  .sidebar-page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    padding: 7px 16px;
+    transition: background .15s;
+    cursor: pointer;
+    user-select: none;
+  }
+  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
+  .sidebar-page-link.active { color: var(--accent); }
+  .sidebar-page-link.planned {
+    color: var(--muted);
+    cursor: default;
+    opacity: .6;
+  }
+  .sidebar-page-link.planned::after {
+    content: 'Soon';
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
+  .sidebar-page-link.planned.next { opacity: 1; }
+  .sidebar-page-link.planned.next::after { content: 'Next'; color: var(--accent); border-color: var(--accent); }
+
+  .sidebar-sub { padding: 2px 0 8px; }
+
+  .sidebar-sub-link {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 5px 16px 5px 28px;
+    transition: color .15s;
+    position: relative;
+  }
+  .sidebar-sub-link:hover { color: var(--text); }
+  .sidebar-sub-link.active { color: var(--text); }
+  .sidebar-sub-link.active::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 50%; transform: translateY(-50%);
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-divider {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 16px 16px 6px;
+    opacity: .45;
+  }
+
+  /* ── LAYOUT ─────────────────────────────────────────── */
+  main {
+    padding: 60px 20px 80px;
+  }
+
+  @media (min-width: 860px) {
+    .sidebar { transform: translateX(0); transition: none; }
+    .sidebar-overlay { display: none !important; }
+    .menu-toggle { display: none; }
+    main { margin-left: 220px; padding: 48px 48px 120px; }
+  }
+
+  section {
+    padding-top: var(--gap);
+    margin-top: var(--gap);
+    border-top: 1px solid var(--border);
+  }
+  section:first-child { border-top: none; }
+
+  /* ── TYPOGRAPHY ─────────────────────────────────────── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    margin-top: 32px;
+  }
+  h3:first-child { margin-top: 0; }
+
+  p {
+    color: #aaa;
+    margin-bottom: 12px;
+    max-width: 680px;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  .lead {
+    font-size: 16px;
+    color: #bbb;
+    max-width: 640px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero { padding-top: 0; border-top: none; }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid rgba(200,255,0,.2);
+  }
+  .tag.grey {
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    border-color: var(--border);
+  }
+
+  /* ── TABLES ─────────────────────────────────────────── */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    background: var(--surface);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #c8c8c8;
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(255,255,255,.015); }
+
+  td.label {
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  td.mono { font-family: var(--mono); font-size: 12px; }
+  td.muted { color: var(--muted); }
+
+  /* ── CARDS / CONCLUSIONS ────────────────────────────── */
+  .conclusion-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 16px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px;
+  }
+
+  /* ── PERSONA CARD ────────────────────────────────────── */
+  .persona-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 28px;
+    margin-top: 20px;
+    border-left-width: 3px;
+  }
+  .persona-card.accent { border-left-color: var(--accent); }
+
+  .persona-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid rgba(200,255,0,.2);
+  }
+  .persona-name {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .persona-profile { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+
+  .job-quote {
+    background: rgba(255,255,255,.025);
+    border-left: 3px solid var(--border);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 20px;
+    margin: 18px 0;
+    font-size: 15px;
+    color: #ddd;
+    font-style: italic;
+    line-height: 1.7;
+    max-width: 720px;
+  }
+  .source-note { font-size: 11px; color: var(--muted); font-style: italic; }
+
+  /* ── MISC ───────────────────────────────────────────── */
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  .pill-q { background: rgba(255,255,255,.06); color: var(--muted); }
+  .hyp-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: rgba(255,180,50,.1);
+    color: #ffc04d;
+    border: 1px solid rgba(255,180,50,.2);
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  .design-note {
+    background: rgba(95,168,255,.05);
+    border: 1px solid rgba(95,168,255,.18);
+    border-radius: var(--r);
+    padding: 14px 18px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #aac4e0;
+    max-width: 740px;
+    line-height: 1.65;
+  }
+
+  /* ── TO-BE PATH TRACK ────────────────────────────────── */
+  .path-track {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    padding: 8px 2px 16px;
+    margin-top: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .step-card {
+    flex: 0 0 258px;
+    width: 258px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+  }
+  .step-card.core { border-color: var(--accent); background: rgba(200,255,0,.04); }
+  .path-arrow {
+    flex: 0 0 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 18px;
+  }
+  .step-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: .08em;
+    margin-bottom: 8px;
+  }
+  .step-card h4 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.35; }
+  .step-goal { font-size: 12px; color: #8f8f8f; margin-bottom: 12px; line-height: 1.5; }
+  .closes-label { font-size: 9px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); display: block; margin-bottom: 4px; }
+  .closes-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    padding: 4px 9px;
+    border-radius: 4px;
+    background: rgba(255,95,95,.1);
+    color: #ff9f9f;
+    border: 1px solid rgba(255,95,95,.22);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .step-cap { font-size: 12px; color: #bbb; margin-bottom: 14px; line-height: 1.55; }
+  .step-cap .chosen { color: var(--accent); font-weight: 600; }
+  .emotion-tag {
+    margin-top: auto;
+    font-size: 12px;
+    color: #ddd;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+  .emotion-tag .em-label { font-size: 9px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); display: block; margin-bottom: 4px; }
+  .emotion-tag .delta { font-family: var(--mono); font-size: 11px; }
+  .delta.up { color: var(--green); }
+  .delta.flat { color: #cfcfcf; }
+  .delta.split { color: #cfcfcf; }
+
+  /* ── EMOTIONAL CURVE ─────────────────────────────────── */
+  .curve-wrap {
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    background: var(--surface);
+    padding: 20px 16px 10px;
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+  .curve-wrap svg { width: 100%; min-width: 640px; height: auto; display: block; }
+  .curve-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    margin-top: 8px;
+    padding: 16px 4px 4px;
+    border-top: 1px solid var(--border);
+  }
+  .lg-item { display: flex; align-items: center; gap: 10px; font-size: 12px; color: #bbb; }
+  .lg-line { width: 34px; height: 0; flex-shrink: 0; }
+  .lg-line.solid { border-top: 3px solid var(--red); }
+  .lg-line.dashed { border-top: 3px dashed var(--accent); }
+  .curve-caption { font-size: 12px; color: #888; margin-top: 14px; max-width: 740px; line-height: 1.6; }
+
+  /* ── BACKLOG ─────────────────────────────────────────── */
+  tr.mvp-row td { background: rgba(200,255,0,.035); }
+  tr.core-row td { background: rgba(200,255,0,.075); }
+  tr.mvp-row:hover td, tr.core-row:hover td { background: rgba(200,255,0,.1); }
+  .prio {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase; padding: 2px 7px; border-radius: 3px; white-space: nowrap;
+  }
+  .prio.mvp { background: var(--accent); color: #000; }
+  .prio.core { background: var(--accent); color: #000; border: 1px solid #000; }
+  .prio.later { background: rgba(255,255,255,.05); color: var(--muted); border: 1px solid var(--border); }
+  .parent-tag { font-family: var(--mono); font-size: 11px; color: #c8a0ff; }
+  .core-flag { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .05em; }
+
+  .reconcile-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 20px; }
+  @media (max-width: 760px) { .reconcile-grid { grid-template-columns: 1fr; } }
+  .reconcile-col { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px; }
+  .reconcile-col .rc-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+  .reconcile-col.confirmed .rc-label { color: var(--green); }
+  .reconcile-col.sharpened .rc-label { color: var(--accent); }
+  .reconcile-col.orphan .rc-label { color: var(--muted); }
+  .reconcile-col ul { list-style: none; margin: 0; padding: 0; }
+  .reconcile-col li { font-size: 12px; color: #bbb; padding: 6px 0; border-bottom: 1px solid var(--border); line-height: 1.5; }
+  .reconcile-col li:last-child { border-bottom: none; padding-bottom: 0; }
+
+  /* ── CRITIQUE ────────────────────────────────────────── */
+  .crit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 12px; margin-top: 20px; }
+  .crit-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; }
+  .crit-card.warn { border-color: rgba(255,180,50,.28); }
+  .crit-card.risk { border-color: rgba(255,95,95,.28); }
+  .crit-card .crit-h { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); margin-bottom: 10px; }
+  .crit-card.warn .crit-h { color: #ffc04d; }
+  .crit-card.risk .crit-h { color: var(--red); }
+  .crit-card p { font-size: 13px; color: #bbb; margin: 0; max-width: none; line-height: 1.6; }
+  .crit-card p + p { margin-top: 10px; }
+  .carried-q {
+    margin-top: 16px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 14px 18px;
+    font-size: 13px;
+    color: #bbb;
+    line-height: 1.6;
+    max-width: 740px;
+  }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-project-name">Prediction Market</div>
+  </div>
+  <div class="sidebar-nav">
+    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <div class="sidebar-divider">User Research</div>
+    <a href="../user-research/personas.html" class="sidebar-page-link">Personas</a>
+    <a href="../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
+    <a href="../user-research/cjm-as-is.html" class="sidebar-page-link">CJM As-Is</a>
+    <a class="sidebar-page-link active">CJM To-Be</a>
+    <div class="sidebar-sub">
+      <a href="#focus" class="sidebar-sub-link">Focus</a>
+      <a href="#path" class="sidebar-sub-link">To-Be path</a>
+      <a href="#curve" class="sidebar-sub-link">Emotional curve</a>
+      <a href="#backlog" class="sidebar-sub-link">Backlog and MVP</a>
+      <a href="#critique" class="sidebar-sub-link">Critique and risks</a>
+    </div>
+    <a href="../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
+    <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a href="../concept/concept.html" class="sidebar-page-link">Concept</a>
+    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
+    <a class="sidebar-page-link planned next">Tokens + Components</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<main>
+
+  <!-- ── FOCUS ─────────────────────────────────────────── -->
+  <section class="hero" id="focus">
+    <div class="hero-meta">
+      <span class="tag">CJM To-Be</span>
+      <span class="tag grey">Future Experience</span>
+      <span class="tag grey">Design half</span>
+      <span class="tag" style="background:rgba(95,168,255,.1);color:#5fa8ff;border-color:rgba(95,168,255,.25)">Alex x Main Job</span>
+    </div>
+    <h1>CJM To-Be</h1>
+    <p class="lead">The ideal in-product journey, designed step by step. Every step pays with a trace to a concrete As-Is barrier or a job, so there are no orphans. This is a sharpening of the existing MVP core, not a fork.</p>
+
+    <div class="section-label">Focus</div>
+    <h2>Alex (News Junkie) x Main Job</h2>
+
+    <div class="persona-card accent">
+      <div class="persona-badge">&#9733; Primary persona x MJ</div>
+      <div class="persona-name">Alex &middot; News Junkie</div>
+      <div class="persona-profile">Follows events daily &middot; no crypto wallet &middot; has an opinion before most people</div>
+
+      <div class="job-quote">"When an event I follow nears its outcome, I want a real stake in the result, so it is not just news but my personal participation with real consequences."</div>
+
+      <p class="source-note">Source: user-research/docs/jtbd.md (MJ &middot; Main Job), research/docs/lean-ux-canvas.md &sect;4.</p>
+    </div>
+
+    <div class="design-note">
+      <strong style="color:#c8ddf0">Design rule for the path:</strong> the future is designed, but every step pays with a trace to a concrete As-Is barrier / growth zone (from CJM As-Is) or a job (from JTBD). A step that closes no barrier and serves no job is an orphan and is cut. This sharpens the existing MVP core (feed &rarr; detail &rarr; YES / NO &rarr; bet panel &rarr; gate at Confirm &rarr; Active Bets); it does not fork it.
+    </div>
+  </section>
+
+  <!-- ── TO-BE PATH ────────────────────────────────────── -->
+  <section id="path">
+    <div class="section-label">To-Be path</div>
+    <h2>Seven in-product steps, each closing a barrier</h2>
+    <p>Diverge to converge: each step lists the candidates considered and the chosen capability. The <span style="color:#ff9f9f">closes</span> tag makes the trace visible, and the target emotion is stated against the As-Is baseline. Scroll the track sideways.</p>
+
+    <div class="path-track">
+
+      <div class="step-card">
+        <div class="step-num">STEP 1</div>
+        <h4>Arrive on a live event, not a signup</h4>
+        <div class="step-goal">Act on the take immediately (MJ).</div>
+        <span class="closes-label">Closes</span>
+        <span class="closes-tag">As-Is phase 2 discovery <span class="pill pill-q">[?]</span> &middot; "first page = live events, not sign up"</span>
+        <div class="step-cap">Story-led event cards as home. Candidates: generic list / story-led cards / category-first &rarr; <span class="chosen">story-led</span> (generic reads as the "Excel spreadsheet" complaint; category-first buries the live moment).</div>
+        <div class="emotion-tag">
+          <span class="em-label">Target emotion vs As-Is</span>
+          "this is my event" <span class="delta flat">+4 (peak kept, not crashed)</span>
+        </div>
+      </div>
+
+      <div class="path-arrow">&rarr;</div>
+
+      <div class="step-card">
+        <div class="step-num">STEP 2</div>
+        <h4>Understand the market before any account</h4>
+        <div class="step-goal">Understand the bet and why the price (FJ2).</div>
+        <span class="closes-label">Closes</span>
+        <span class="closes-tag">GZ2 &middot; phase 4: no "why this price", event in isolation</span>
+        <div class="step-cap">"Explain the number": plain probability + one-line why + the news story, spectator language. Candidates: tooltip / inline + story / full page &rarr; <span class="chosen">inline + story</span> (tooltip too shallow; full page too heavy).</div>
+        <div class="emotion-tag">
+          <span class="em-label">Target emotion vs As-Is</span>
+          "I get it" <span class="delta up">-4 &rarr; +3</span>
+        </div>
+      </div>
+
+      <div class="path-arrow">&rarr;</div>
+
+      <div class="step-card core">
+        <div class="step-num">STEP 3 &middot; CORE INVERSION</div>
+        <h4>Tap YES / NO and see the bet intent before signing in</h4>
+        <div class="step-goal">Reach the bet without the crypto wall (MJ). The gate fires at Confirm, not at entry.</div>
+        <span class="closes-label">Closes</span>
+        <span class="closes-tag">GZ1 &middot; phase 3 wall &middot; the deepest dip</span>
+        <div class="step-cap">Browse + bet-intent with no wallet upfront; gate at Confirm. Candidates: wallet-connect first / social login + custodial stablecoin / guest bet then auth &rarr; <span class="chosen">guest-bet then auth + social login</span> (wallet-first IS the wall we are killing).</div>
+        <div class="emotion-tag">
+          <span class="em-label">Target emotion vs As-Is</span>
+          "in flow, not blocked" <span class="delta up">-5 &rarr; +2 (deepest dip flattened)</span>
+        </div>
+      </div>
+
+      <div class="path-arrow">&rarr;</div>
+
+      <div class="step-card">
+        <div class="step-num">STEP 4</div>
+        <h4>Sign in and fund with one clear funds-safety line</h4>
+        <div class="step-goal">Fund the bet without fear.</div>
+        <span class="closes-label">Closes</span>
+        <span class="closes-tag">GZ3 &middot; phase 5: money question, opaque fees</span>
+        <div class="step-cap">Social login; fiat &rarr; stablecoin on-ramp; "Your USDC is held 1:1, we never lend it"; fee shown before Confirm. Candidates: ToS link / one plain sentence / badge only &rarr; <span class="chosen">one plain sentence</span> (Revolut C2 5/5, benchmark Top 3 #2).</div>
+        <div class="emotion-tag">
+          <span class="em-label">Target emotion vs As-Is</span>
+          "reassured" <span class="delta up">-4 &rarr; +2</span>
+        </div>
+      </div>
+
+      <div class="path-arrow">&rarr;</div>
+
+      <div class="step-card">
+        <div class="step-num">STEP 5</div>
+        <h4>Confirm the bet with the price reconciled</h4>
+        <div class="step-goal">Have real skin in the game (MJ).</div>
+        <span class="closes-label">Closes</span>
+        <span class="closes-tag">Attrition (phase 6, few reached) + AMM price move (S5 reconcile)</span>
+        <div class="step-cap">Confirm screen: fee + potential outcome + AMM reconcile if the price moved. Candidates: instant confirm / reconcile on move &rarr; <span class="chosen">reconcile</span> (D1 AMM; a silent price change breaks trust).</div>
+        <div class="emotion-tag">
+          <span class="em-label">Target emotion vs As-Is</span>
+          "committed, clear" <span class="delta flat">+3</span>
+        </div>
+      </div>
+
+      <div class="path-arrow">&rarr;</div>
+
+      <div class="step-card">
+        <div class="step-num">STEP 6</div>
+        <h4>Follow your bet with live context</h4>
+        <div class="step-goal">Track the stake against reality (MJ + track).</div>
+        <span class="closes-label">Closes</span>
+        <span class="closes-tag">Tracking happens outside the product (phase 6)</span>
+        <div class="step-cap">Active Bets + outcome notifications (retention anchor). Candidates: email / in-app / push &rarr; <span class="chosen">push + in-app</span> (email = low salience).</div>
+        <div class="emotion-tag">
+          <span class="em-label">Target emotion vs As-Is</span>
+          "in the loop" <span class="delta flat">+3</span>
+        </div>
+      </div>
+
+      <div class="path-arrow">&rarr;</div>
+
+      <div class="step-card core">
+        <div class="step-num">STEP 7 &middot; DESIGN THE LOSS</div>
+        <h4>Resolution designed both ways</h4>
+        <div class="step-goal">Vindication (win) / closure (loss), without betrayal.</div>
+        <span class="closes-label">Closes</span>
+        <span class="closes-tag">GZ4 &middot; phase 7 loss + GZ5 &middot; betrayal fear</span>
+        <div class="step-cap">Win "You were right" + share (overconfidence friction, F5); Loss "Here's what happened" + context + a next step that is <span class="chosen">NOT "bet again"</span>; transparent resolution + resolved-markets count. ("bet again" weaponizes the mined "$2300, make it back" chasing; "nothing" is the As-Is void.)</div>
+        <div class="emotion-tag">
+          <span class="em-label">Target emotion vs As-Is</span>
+          <span class="delta split">win +4 (share window) &middot;</span> <span class="delta up">loss -5 &rarr; -1 (closure, not void)</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="design-note" style="border-color:rgba(200,255,0,.18);background:rgba(200,255,0,.03);color:#cfe0a8">
+      <strong style="color:var(--accent)">Tracing is clean.</strong> Every step closes a specific As-Is barrier / growth zone or a job, so there are no orphans. It is a sharpening, not a fork: the path matches the existing MVP flow and the voice principles.
+    </div>
+  </section>
+
+  <!-- ── EMOTIONAL CURVE ───────────────────────────────── -->
+  <section id="curve">
+    <div class="section-label">Emotional curve</div>
+    <h2>To-Be vs As-Is</h2>
+    <p>Two curves across the seven journey phases, emotion on a -5 to +5 scale. The As-Is line is the evidenced baseline (measured from research). The To-Be line is a <strong>projected target</strong>, designed, not measured. The gap at phase 3 (the crypto wall) and phase 7 loss is where the redesign lifts the mood most.</p>
+
+    <div class="curve-wrap">
+      <svg viewBox="0 0 860 470" role="img" aria-label="Emotional curve: To-Be projected target vs As-Is evidenced baseline across seven phases">
+
+        <!-- emotion zones -->
+        <rect x="60" y="30" width="700" height="185" fill="#5fdb8f" opacity="0.035"/>
+        <rect x="60" y="215" width="700" height="185" fill="#ff5f5f" opacity="0.035"/>
+
+        <!-- horizontal gridlines at each integer -->
+        <g stroke="#242424" stroke-width="1" opacity="0.6">
+          <line x1="60" y1="30" x2="760" y2="30"/>
+          <line x1="60" y1="67" x2="760" y2="67"/>
+          <line x1="60" y1="104" x2="760" y2="104"/>
+          <line x1="60" y1="141" x2="760" y2="141"/>
+          <line x1="60" y1="178" x2="760" y2="178"/>
+          <line x1="60" y1="252" x2="760" y2="252"/>
+          <line x1="60" y1="289" x2="760" y2="289"/>
+          <line x1="60" y1="326" x2="760" y2="326"/>
+          <line x1="60" y1="363" x2="760" y2="363"/>
+          <line x1="60" y1="400" x2="760" y2="400"/>
+        </g>
+        <!-- zero baseline -->
+        <line x1="60" y1="215" x2="760" y2="215" stroke="#3a3a3a" stroke-width="1.4"/>
+
+        <!-- vertical phase gridlines -->
+        <g stroke="#242424" stroke-width="1" opacity="0.5">
+          <line x1="60" y1="30" x2="60" y2="400"/>
+          <line x1="177" y1="30" x2="177" y2="400"/>
+          <line x1="293" y1="30" x2="293" y2="400"/>
+          <line x1="410" y1="30" x2="410" y2="400"/>
+          <line x1="527" y1="30" x2="527" y2="400"/>
+          <line x1="643" y1="30" x2="643" y2="400"/>
+          <line x1="760" y1="30" x2="760" y2="400"/>
+        </g>
+
+        <!-- y-axis labels -->
+        <g fill="#666" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">
+          <text x="50" y="33">+5</text>
+          <text x="50" y="70">+4</text>
+          <text x="50" y="107">+3</text>
+          <text x="50" y="144">+2</text>
+          <text x="50" y="181">+1</text>
+          <text x="50" y="218" fill="#999">0</text>
+          <text x="50" y="255">-1</text>
+          <text x="50" y="292">-2</text>
+          <text x="50" y="329">-3</text>
+          <text x="50" y="366">-4</text>
+          <text x="50" y="403">-5</text>
+        </g>
+
+        <!-- lift markers (P3 wall, P7 loss) -->
+        <g opacity="0.65">
+          <line x1="293" y1="396" x2="293" y2="149" stroke="#c8ff00" stroke-width="1" stroke-dasharray="2 3"/>
+          <path d="M293,143 l-4,8 l8,0 z" fill="#c8ff00"/>
+          <text x="300" y="272" fill="#c8ff00" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">+7</text>
+          <line x1="760" y1="396" x2="760" y2="260" stroke="#c8ff00" stroke-width="1" stroke-dasharray="2 3"/>
+          <path d="M760,254 l-4,8 l8,0 z" fill="#c8ff00"/>
+          <text x="752" y="335" fill="#c8ff00" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" text-anchor="end">+4</text>
+        </g>
+
+        <!-- AS-IS: solid, evidenced baseline (red) -->
+        <polyline points="60,67 177,289 293,400 410,363 527,363 643,104" fill="none" stroke="#ff5f5f" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity="0.9"/>
+        <line x1="643" y1="104" x2="760" y2="67" stroke="#ff5f5f" stroke-width="2.5" opacity="0.9" stroke-linecap="round"/>
+        <line x1="643" y1="104" x2="760" y2="400" stroke="#ff5f5f" stroke-width="2.5" opacity="0.9" stroke-linecap="round"/>
+
+        <!-- TO-BE: dashed, projected target (accent) -->
+        <polyline points="60,67 177,104 293,141 410,141 527,104 643,104" fill="none" stroke="#c8ff00" stroke-width="2.5" stroke-dasharray="7 5" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="643" y1="104" x2="760" y2="67" stroke="#c8ff00" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round"/>
+        <line x1="643" y1="104" x2="760" y2="252" stroke="#c8ff00" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round"/>
+
+        <!-- AS-IS points -->
+        <g fill="#ff5f5f">
+          <circle cx="60" cy="67" r="3.5"><title>As-Is P1 Trigger: +4</title></circle>
+          <circle cx="177" cy="289" r="3.5"><title>As-Is P2 Looking for a way: -2 (signal)</title></circle>
+          <circle cx="293" cy="400" r="4"><title>As-Is P3 Platform wall: -5 (deepest dip)</title></circle>
+          <circle cx="410" cy="363" r="3.5"><title>As-Is P4 Make sense of market: -4</title></circle>
+          <circle cx="527" cy="363" r="3.5"><title>As-Is P5 Money question: -4</title></circle>
+          <circle cx="643" cy="104" r="3.5"><title>As-Is P6 Place and follow: +3 (signal)</title></circle>
+          <circle cx="760" cy="67" r="3.5"><title>As-Is P7 win: +4</title></circle>
+          <circle cx="760" cy="400" r="4"><title>As-Is P7 loss: -5 (after a loss, nothing)</title></circle>
+        </g>
+
+        <!-- TO-BE points -->
+        <g fill="#c8ff00" stroke="#0e0e0e" stroke-width="1">
+          <circle cx="60" cy="67" r="3.6"><title>To-Be P1 Arrive on a live event: +4</title></circle>
+          <circle cx="177" cy="104" r="3.6"><title>To-Be P2 Understand before account: +3</title></circle>
+          <circle cx="293" cy="141" r="3.6"><title>To-Be P3 Bet intent, no wall: +2</title></circle>
+          <circle cx="410" cy="141" r="3.6"><title>To-Be P4 Fund with funds-safety line: +2</title></circle>
+          <circle cx="527" cy="104" r="3.6"><title>To-Be P5 Confirm reconciled: +3</title></circle>
+          <circle cx="643" cy="104" r="3.6"><title>To-Be P6 Follow with live context: +3</title></circle>
+          <circle cx="760" cy="67" r="3.6"><title>To-Be P7 win: +4</title></circle>
+          <circle cx="760" cy="252" r="3.6"><title>To-Be P7 loss: -1 (closure, not void)</title></circle>
+        </g>
+
+        <!-- endpoint labels -->
+        <g font-family="'Inter', sans-serif" font-size="10">
+          <text x="770" y="65" fill="#cfcfcf">win +4</text>
+          <text x="770" y="255" fill="#c8ff00">loss -1</text>
+          <text x="770" y="403" fill="#ff5f5f">loss -5</text>
+        </g>
+
+        <!-- x-axis phase labels -->
+        <g font-family="'Inter', sans-serif" text-anchor="middle">
+          <text x="60"  y="424" fill="#999" font-size="11" font-weight="700">P1</text>
+          <text x="177" y="424" fill="#999" font-size="11" font-weight="700">P2</text>
+          <text x="293" y="424" fill="#999" font-size="11" font-weight="700">P3</text>
+          <text x="410" y="424" fill="#999" font-size="11" font-weight="700">P4</text>
+          <text x="527" y="424" fill="#999" font-size="11" font-weight="700">P5</text>
+          <text x="643" y="424" fill="#999" font-size="11" font-weight="700">P6</text>
+          <text x="760" y="424" fill="#999" font-size="11" font-weight="700">P7</text>
+          <text x="60"  y="440" fill="#666" font-size="9">Arrive</text>
+          <text x="177" y="440" fill="#666" font-size="9">Understand</text>
+          <text x="293" y="440" fill="#666" font-size="9">Bet intent / wall</text>
+          <text x="410" y="440" fill="#666" font-size="9">Fund</text>
+          <text x="527" y="440" fill="#666" font-size="9">Confirm</text>
+          <text x="643" y="440" fill="#666" font-size="9">Follow</text>
+          <text x="760" y="440" fill="#666" font-size="9">Resolve</text>
+        </g>
+
+      </svg>
+
+      <div class="curve-legend">
+        <div class="lg-item"><span class="lg-line solid"></span> As-Is &middot; evidenced baseline (measured from research)</div>
+        <div class="lg-item"><span class="lg-line dashed"></span> To-Be &middot; projected target (designed, not measured) <span class="hyp-badge" style="margin-left:6px">hypothesis</span></div>
+      </div>
+    </div>
+
+    <p class="curve-caption">Where To-Be lifts the mood: <strong>P3 the crypto wall</strong> (-5 &rarr; +2, the deepest As-Is dip flattened by browsing and betting before any wallet) and <strong>P7 the loss</strong> (-5 &rarr; -1, "after a loss, nothing" replaced by context and a neutral next step). At P1, P6 and the win the two curves coincide - the As-Is already had strong moments there, and the To-Be keeps them rather than crashing them. As-Is phases P2 (looking for a way, signal) and P6 (place and follow, signal) rest on weaker evidence than the pattern-backed dips; the To-Be line is projected throughout and is a target to test, not a measured result.</p>
+  </section>
+
+  <!-- ── BACKLOG AND MVP ───────────────────────────────── -->
+  <section id="backlog">
+    <div class="section-label">Backlog and MVP</div>
+    <h2>One backlog that sharpens the MVP core</h2>
+    <p>Each item has a parent (an As-Is barrier or a job), a priority, and a success signal (metric-hypothesis, AARRR). The MVP rows are highlighted - without them the To-Be path breaks. This is one list that sharpens the existing MVP core, not a second parallel backlog.</p>
+
+    <h3>MVP - without it the To-Be path breaks</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>Parent (trace)</th><th>Priority</th><th>Success signal (metric-hypothesis, AARRR)</th></tr>
+        </thead>
+        <tbody>
+          <tr class="mvp-row">
+            <td class="label">Story-led event feed (home)</td>
+            <td><span class="parent-tag">JTBD "first page = live events" + GZ2</span></td>
+            <td><span class="prio mvp">MVP</span></td>
+            <td>% of sessions that open an event within N seconds (Activation)</td>
+          </tr>
+          <tr class="mvp-row">
+            <td class="label">"Explain the number" (inline probability + why + story, spectator language)</td>
+            <td><span class="parent-tag">GZ2 / FJ2</span></td>
+            <td><span class="prio mvp">MVP</span></td>
+            <td>% who reach bet-intent after opening an event (Activation)</td>
+          </tr>
+          <tr class="core-row">
+            <td class="label">Browse + bet-intent with no wallet upfront; gate at Confirm <span class="core-flag">core inversion</span></td>
+            <td><span class="parent-tag">GZ1 (crypto wall)</span></td>
+            <td><span class="prio core">MVP core</span></td>
+            <td>bounce at the first wallet prompt drops; first-bet within 24h &gt; 40% (O3)</td>
+          </tr>
+          <tr class="mvp-row">
+            <td class="label">Social login (Google / X)</td>
+            <td><span class="parent-tag">GZ1</span></td>
+            <td><span class="prio mvp">MVP</span></td>
+            <td>signup completion rate</td>
+          </tr>
+          <tr class="mvp-row">
+            <td class="label">Fiat on-ramp (card &rarr; stablecoin)</td>
+            <td><span class="parent-tag">GZ1 / GZ3</span></td>
+            <td><span class="prio mvp">MVP</span></td>
+            <td>deposit completion rate</td>
+          </tr>
+          <tr class="mvp-row">
+            <td class="label">Funds-safety line "USDC held 1:1, we never lend it"</td>
+            <td><span class="parent-tag">GZ3 / GZ5</span></td>
+            <td><span class="prio mvp">MVP</span></td>
+            <td>deposit conversion after the line (H4)</td>
+          </tr>
+          <tr class="mvp-row">
+            <td class="label">Fee shown before Confirm</td>
+            <td><span class="parent-tag">GZ3</span></td>
+            <td><span class="prio mvp">MVP</span></td>
+            <td>fewer post-bet fee complaints (H6)</td>
+          </tr>
+          <tr class="mvp-row">
+            <td class="label">Confirm + AMM price reconcile (S5) <span class="hyp-badge">weak parent</span></td>
+            <td><span class="parent-tag">AMM / trust</span></td>
+            <td><span class="prio mvp">MVP</span></td>
+            <td>bet-completion at Confirm; zero "silent price move" complaints</td>
+          </tr>
+          <tr class="mvp-row">
+            <td class="label">$1 / $5 bet sizing (low min, $5 default)</td>
+            <td><span class="parent-tag">low barrier + <span class="pill pill-q">[?]</span> "real but not scary"</span></td>
+            <td><span class="prio mvp">MVP</span></td>
+            <td>distribution of first-bet sizes</td>
+          </tr>
+          <tr class="mvp-row">
+            <td class="label">Active Bets view</td>
+            <td><span class="parent-tag">track (phase 6)</span></td>
+            <td><span class="prio mvp">MVP</span></td>
+            <td>return rate to Active Bets (Retention)</td>
+          </tr>
+          <tr class="mvp-row">
+            <td class="label">Outcome / position notifications</td>
+            <td><span class="parent-tag">tracking happens outside the product</span></td>
+            <td><span class="prio mvp">MVP</span></td>
+            <td>notification-driven return (D30 &gt; 15%, O2)</td>
+          </tr>
+          <tr class="mvp-row">
+            <td class="label">Win "You were right" + share (overconfidence friction)</td>
+            <td><span class="parent-tag">SJ / win</span></td>
+            <td><span class="prio mvp">MVP</span></td>
+            <td>share rate; SJ1 share window</td>
+          </tr>
+          <tr class="core-row">
+            <td class="label">Loss "Here's what happened" + context + a next step that is NOT "bet again" <span class="core-flag">design the loss</span></td>
+            <td><span class="parent-tag">GZ4</span></td>
+            <td><span class="prio core">MVP core</span></td>
+            <td>post-loss retention without a loss-chasing spike (guardrail)</td>
+          </tr>
+          <tr class="mvp-row">
+            <td class="label">Transparent resolution + resolved-markets count</td>
+            <td><span class="parent-tag">GZ5 (betrayal fear)</span></td>
+            <td><span class="prio mvp">MVP</span></td>
+            <td>resolved-count visibility &rarr; deposit / return</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Later - improves, but the path works without it</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>Parent (trace)</th><th>Priority</th><th>Note</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">Multi-outcome markets</td>
+            <td><span class="parent-tag" style="color:var(--muted)">product scope, not CJM-derived</span></td>
+            <td><span class="prio later">Later</span></td>
+            <td class="muted">Kept in MVP scope as scope, marked not-CJM-derived (the focus was binary).</td>
+          </tr>
+          <tr>
+            <td class="label">Leaderboard, Staking (TBD)</td>
+            <td><span class="parent-tag" style="color:var(--muted)">orphans relative to this CJM</span></td>
+            <td><span class="prio later">Later</span></td>
+            <td class="muted">In the old core, not mapped to any To-Be step. Moved to Later, outside this focus.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Reconcile with the existing MVP core (sharpening, not a fork)</h3>
+    <div class="reconcile-grid">
+      <div class="reconcile-col confirmed">
+        <div class="rc-label">Confirmed by To-Be</div>
+        <ul>
+          <li>Social login</li>
+          <li>Fiat on-ramp</li>
+          <li>Funds-safety line</li>
+          <li>Fee-before-Confirm</li>
+          <li>AMM / S5 reconcile</li>
+          <li>$1 / $5 sizing</li>
+          <li>Active Bets</li>
+          <li>Notifications</li>
+          <li>Win + share</li>
+          <li>Story-driven discovery</li>
+        </ul>
+      </div>
+      <div class="reconcile-col sharpened">
+        <div class="rc-label">Sharpened</div>
+        <ul>
+          <li>"Explain the number" &rarr; spectator language</li>
+          <li><strong>No wallet until Confirm</strong> - the key inversion</li>
+          <li>The loss screen carries <strong>no "bet again"</strong> - straight from the mined "$2300, make it back" chasing quote</li>
+        </ul>
+      </div>
+      <div class="reconcile-col orphan">
+        <div class="rc-label">Orphans relative to this CJM</div>
+        <ul>
+          <li>Leaderboard &rarr; Later</li>
+          <li>Staking (TBD) &rarr; Later</li>
+          <li>Multi-outcome stays as scope, marked</li>
+          <li style="color:#888">One consistent list, not two.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CRITIQUE AND RISKS ────────────────────────────── -->
+  <section id="critique">
+    <div class="section-label">Critique and risks</div>
+    <h2>Step-9 audit</h2>
+    <p>Every MVP feature traces to a parent; no orphans. What follows are the honest weak spots kept and flagged, the alignment against the riskiest assumption, and the one open question carried forward.</p>
+
+    <div class="crit-grid">
+
+      <div class="crit-card warn">
+        <div class="crit-h">Two weaker parents, kept but flagged</div>
+        <p><strong>Confirm + AMM reconcile</strong> is mechanism-derived (AMM D1 / S5), not a felt As-Is pain.</p>
+        <p><strong>$1 / $5 sizing</strong> traces to the <span class="pill pill-q">[?]</span> "real but not scary" unknown, so its default is a hypothesis to test, not a settled fact.</p>
+      </div>
+
+      <div class="crit-card">
+        <div class="crit-h">Sharpening, not a fork</div>
+        <p>The backlog matches lean-ux-canvas.md &sect;5 Solutions. The one sharpening to propagate is <strong>"no wallet until Confirm"</strong>, which must be reflected in the CLAUDE.md MVP block so the core stays one version (done in step 11).</p>
+      </div>
+
+      <div class="crit-card risk">
+        <div class="crit-h">MVP vs the riskiest assumption</div>
+        <p>The riskiest assumption ("the barrier is friction, not motivation") was substantially refuted (research.md &sect;9 F4 - motivation must be activated pre-deposit).</p>
+        <p>The MVP is friction-heavy, so the two motivation features - the <strong>story-led entry (step 1)</strong> and <strong>"explain the number" (step 2)</strong> - are <strong>co-equal MVP</strong>, not secondary. No-wallet is not a silver bullet. The first test (lean-ux-canvas.md &sect;8 landing A/B) measures motivation, not only funnel completion.</p>
+      </div>
+
+      <div class="crit-card">
+        <div class="crit-h">Path-break vs differentiator</div>
+        <p>Strictly path-breaking MVP = story-led feed, explain the number, no-wallet, social login, on-ramp, confirm + reconcile, win / loss.</p>
+        <p>The trust items (funds-safety line, fee-before-Confirm, resolved-count) are MVP for the differentiator (clarity + trust), not for the raw path. Kept MVP, marked honestly.</p>
+      </div>
+
+    </div>
+
+    <div class="carried-q">
+      <span class="pill pill-q">[?]</span> <strong>Carried open question:</strong> the bet size that feels "real but not scary" (parent of $1 / $5 sizing). Its default stays a hypothesis to test, not a settled fact.
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const toggle = document.getElementById('menuToggle');
+
+  const openSidebar = () => { sidebar.classList.add('open'); overlay.classList.add('open'); };
+  const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+
+  toggle.addEventListener('click', openSidebar);
+  overlay.addEventListener('click', closeSidebar);
+
+  document.querySelectorAll('.sidebar-sub-link').forEach(l => {
+    l.addEventListener('click', () => { if (window.innerWidth < 860) closeSidebar(); });
+  });
+
+  const subLinks = document.querySelectorAll('.sidebar-sub-link');
+  const sectionIds = [...subLinks].map(l => l.getAttribute('href').slice(1));
+  const sections = sectionIds.map(id => document.getElementById(id));
+
+  const setActive = id => {
+    subLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+
+  sections.forEach(s => s && observer.observe(s));
+  if (sections[0]) setActive(sections[0].id);
+</script>
+</body>
+</html>
