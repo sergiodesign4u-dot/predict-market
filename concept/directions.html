@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept · Three directions</title>
+<meta name="description" content="Three contrasting visual-language directions for the prediction market, spanning calm-credible to crypto-native. Pick one.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Archivo:wght@600;700;800&family=Sora:wght@600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page-bg:#08090c;
+    --page-ink:#e8eaf0;
+    --page-muted:#8b90a0;
+    --page-border:#1c1e26;
+    --z-tooltip:60;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--page-bg);
+    color:var(--page-ink);
+    font-family:Inter,system-ui,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:1280px;margin:0 auto;padding:clamp(20px,4vw,56px) clamp(16px,4vw,40px)}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+
+  /* ---------- page header ---------- */
+  .masthead{max-width:760px}
+  .masthead .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:600;letter-spacing:.02em;
+    color:var(--page-muted);margin:0 0 18px
+  }
+  .masthead .eyebrow .dot{width:7px;height:7px;border-radius:999px;background:#7c5cff;box-shadow:0 0 12px #7c5cff}
+  .masthead h1{
+    font-family:'Space Grotesk',Inter,sans-serif;
+    font-weight:700;letter-spacing:-.03em;line-height:1.02;
+    font-size:clamp(30px,6vw,54px);margin:0 0 16px;text-wrap:balance
+  }
+  .masthead h1 em{font-style:normal;color:#c9f24e}
+  .masthead p{font-size:clamp(15px,2.2vw,18px);color:#c2c6d2;margin:0;max-width:64ch;text-wrap:pretty}
+
+  /* shared DNA strip */
+  .dna{
+    margin:28px 0 6px;padding:18px;border:1px solid var(--page-border);border-radius:16px;
+    background:#0c0e13;
+    display:grid;grid-template-columns:1fr;gap:14px
+  }
+  @media(min-width:720px){.dna{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1080px){.dna{grid-template-columns:repeat(4,1fr)}}
+  .dna h2{grid-column:1/-1;margin:0;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--page-muted)}
+  .dna-item{display:flex;gap:11px;align-items:flex-start}
+  .dna-item svg{width:20px;height:20px;flex:none;margin-top:1px;color:#7c5cff}
+  .dna-item b{display:block;font-size:14px;font-weight:600;color:#eceef4;margin-bottom:2px}
+  .dna-item span{font-size:13px;color:#9298a8;line-height:1.45}
+
+  /* ---------- directions grid ---------- */
+  .directions{
+    margin-top:32px;
+    display:grid;gap:22px;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:760px){.directions{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1160px){.directions{grid-template-columns:repeat(3,1fr)}}
+
+  /* a direction = a self-contained dark specimen panel that owns its own canvas + tokens */
+  .dir{
+    --radius:16px;--radius-btn:10px;--icon-stroke:1.7;
+    position:relative;overflow:hidden;
+    border-radius:22px;
+    background:var(--canvas);
+    border:1px solid var(--border);
+    color:var(--ink);
+    padding:20px 18px 22px;
+    font-family:Inter,sans-serif;
+  }
+  .dir .glow{position:absolute;inset:0;pointer-events:none;z-index:0}
+  .dir > *{position:relative;z-index:1}
+
+  .dir-head{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}
+  .scale{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .scale .segs{display:flex;gap:4px}
+  .scale .seg{width:22px;height:4px;border-radius:99px;background:var(--border)}
+  .scale .seg.on{background:var(--accent);box-shadow:0 0 10px color-mix(in oklab,var(--accent) 70%,transparent)}
+  .dir-name{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1.04;font-size:clamp(22px,2.4vw,27px);margin:0}
+  .dir-name em{font-style:normal;color:var(--lime)}
+  .dir-tag{font-size:13.5px;color:var(--muted);margin:0;line-height:1.45}
+
+  /* ---------- live event card ---------- */
+  .ev{
+    border-radius:var(--radius);
+    background:var(--surface);
+    border:1px solid var(--border);
+    overflow:hidden;
+    box-shadow:var(--card-shadow,none);
+  }
+  .ev-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:#111}
+  .ev-media img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02)}
+  .ev-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,color-mix(in oklab,var(--surface) 82%,transparent) 100%)}
+  .chip{
+    position:absolute;top:11px;left:11px;z-index:2;
+    display:inline-flex;align-items:center;gap:6px;
+    padding:5px 10px;border-radius:999px;
+    font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    background:color-mix(in oklab,var(--canvas) 72%,transparent);
+    color:var(--ink);border:1px solid color-mix(in oklab,var(--ink) 16%,transparent);
+    backdrop-filter:blur(6px)
+  }
+  .chip .live{width:6px;height:6px;border-radius:99px;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pulse 2.4s var(--ease) infinite}
+  .save{
+    position:absolute;top:9px;right:9px;z-index:2;
+    display:grid;place-items:center;width:34px;height:34px;border-radius:10px;border:0;cursor:pointer;
+    background:color-mix(in oklab,var(--canvas) 72%,transparent);color:var(--ink);
+    backdrop-filter:blur(6px);transition:background .18s var(--ease)
+  }
+  .save:hover{background:color-mix(in oklab,var(--accent) 34%,var(--canvas))}
+  .save svg{width:18px;height:18px}
+
+  .ev-body{padding:15px 15px 16px;margin-top:-26px;position:relative;z-index:2}
+  .ev-q{font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.16;font-size:18px;margin:0 0 9px;text-wrap:balance}
+  .ev-why{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--muted);margin:0 0 15px;line-height:1.45}
+  .ev-why svg{width:16px;height:16px;flex:none;margin-top:2px;color:var(--accent)}
+  .ev-why b{color:var(--ink);font-weight:600}
+
+  .ev-odds{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+  .prob{display:flex;flex-direction:column;line-height:1}
+  .prob-num{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-.02em}
+  .prob-lbl{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+  .yn{display:flex;gap:8px;flex:none}
+  .btn{
+    border:0;cursor:pointer;border-radius:var(--radius-btn);
+    font-family:Inter,sans-serif;font-weight:700;font-size:14px;
+    padding:11px 16px;transition:transform .16s var(--ease),filter .16s var(--ease);
+    display:inline-flex;flex-direction:column;align-items:center;gap:1px;min-width:64px
+  }
+  .btn small{font-weight:600;font-size:11px;opacity:.8}
+  .btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+  .btn:active{transform:translateY(0)}
+  .btn.yes{background:var(--yes);color:var(--on-yes)}
+  .btn.no{background:var(--no);color:var(--on-no)}
+
+  .ev-safety{
+    display:flex;align-items:center;gap:8px;
+    padding:10px 12px;border-radius:11px;
+    background:color-mix(in oklab,var(--accent) 8%,var(--canvas));
+    border:1px solid color-mix(in oklab,var(--accent) 22%,var(--border));
+    font-size:12.5px;color:var(--ink);margin-bottom:12px
+  }
+  .ev-safety svg{width:17px;height:17px;flex:none;color:var(--accent)}
+  .ev-safety a{color:var(--accent);text-decoration:none;font-weight:600;white-space:nowrap}
+  .ev-safety a:hover{text-decoration:underline}
+
+  .ev-meta{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--muted)}
+  .ev-meta span{display:inline-flex;align-items:center;gap:6px}
+  .ev-meta svg{width:14px;height:14px;color:var(--muted)}
+
+  /* ---------- palette ---------- */
+  .spec{margin-top:18px}
+  .spec-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 9px}
+  .swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+  .sw{border-radius:9px;overflow:hidden;border:1px solid color-mix(in oklab,var(--ink) 10%,transparent)}
+  .sw .chip-c{height:34px}
+  .sw .m{padding:5px 6px;background:color-mix(in oklab,var(--canvas) 60%,#000)}
+  .sw .m b{display:block;font-size:10px;font-weight:700;letter-spacing:.02em;color:var(--ink)}
+  .sw .m code{font-size:9.5px;color:var(--muted);font-family:'Space Grotesk',monospace}
+
+  /* ---------- type + icons ---------- */
+  .foot{margin-top:16px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+  .type-mini b{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.01em}
+  .type-mini span{font-size:12px;color:var(--muted);display:block;margin-top:2px}
+  .iconset{display:flex;gap:10px;color:var(--ink)}
+  .iconset svg{width:22px;height:22px}
+
+  .built{
+    margin-top:16px;padding-top:14px;border-top:1px solid var(--border);
+    font-size:12.5px;color:var(--muted);line-height:1.5
+  }
+  .built b{color:var(--ink);font-weight:600}
+  .built .atts{display:inline-flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+  .att{font-size:10.5px;font-weight:700;letter-spacing:.03em;padding:3px 7px;border-radius:6px;background:color-mix(in oklab,var(--accent) 16%,var(--canvas));color:var(--ink);border:1px solid color-mix(in oklab,var(--accent) 26%,transparent)}
+
+  /* ---------- direction tokens ---------- */
+  /* D1 · Newsroom after dark — calm, credible, editorial */
+  .d1{
+    --canvas:#0e1116;--surface:#161b22;--border:#2a313c;--ink:#edf1f7;--muted:#9ba6b4;
+    --accent:#7c5cff;--lime:#c9f24e;--yes:#34c77b;--on-yes:#06210f;--no:#e5484d;--on-no:#ffffff;
+    --display:'Archivo';--radius:12px;--radius-btn:8px;--icon-stroke:1.6;
+  }
+  .d1 .glow{background:radial-gradient(420px 220px at 78% -6%,color-mix(in oklab,#7c5cff 16%,transparent),transparent 70%)}
+
+  /* D2 · Signal — balanced, alive, the synthesis center */
+  .d2{
+    --canvas:#0b0a12;--surface:#151322;--border:#2a2440;--ink:#f1edff;--muted:#a7a0c4;
+    --accent:#8b5cf6;--lime:#c9f24e;--yes:#2fbf73;--on-yes:#04210e;--no:#f0555a;--on-no:#ffffff;
+    --display:'Sora';--radius:16px;--radius-btn:10px;--icon-stroke:1.8;--card-shadow:0 18px 50px -30px #8b5cf6;
+  }
+  .d2 .glow{
+    background:
+      radial-gradient(360px 200px at 22% -8%,color-mix(in oklab,#8b5cf6 24%,transparent),transparent 68%),
+      radial-gradient(320px 200px at 92% 8%,color-mix(in oklab,#c9f24e 12%,transparent),transparent 70%),
+      radial-gradient(color-mix(in oklab,#8b5cf6 12%,transparent) 1px,transparent 1.4px);
+    background-size:auto,auto,22px 22px;
+    background-position:0 0,0 0,0 0;
+    opacity:.9
+  }
+
+  /* D3 · Arena — crypto-native pole, neon energy, still spectator density */
+  .d3{
+    --canvas:#060609;--surface:#0f0f16;--border:#2e2748;--ink:#ffffff;--muted:#9a99ad;
+    --accent:#7c4dff;--lime:#b6ff3c;--yes:#22c55e;--on-yes:#032312;--no:#ff3b47;--on-no:#ffffff;
+    --display:'Space Grotesk';--radius:16px;--radius-btn:10px;--icon-stroke:2.1;
+    --card-shadow:0 0 0 1px color-mix(in oklab,#7c4dff 40%,transparent),0 24px 60px -26px #7c4dff;
+  }
+  .d3 .glow{
+    background:
+      radial-gradient(300px 300px at 84% 0%,color-mix(in oklab,#7c4dff 30%,transparent),transparent 62%),
+      radial-gradient(260px 220px at 6% 96%,color-mix(in oklab,#b6ff3c 14%,transparent),transparent 66%)
+  }
+  .d3 .prob-num{text-shadow:0 0 22px color-mix(in oklab,var(--lime) 40%,transparent)}
+  .d3 .dir-name{font-weight:700;text-transform:uppercase;letter-spacing:0}
+  .d3 .btn{box-shadow:0 6px 22px -12px color-mix(in oklab,var(--yes) 80%,transparent)}
+  .d3 .btn.no{box-shadow:0 6px 22px -12px color-mix(in oklab,var(--no) 80%,transparent)}
+
+  /* icon stroke inherits per direction */
+  .dir svg[data-i]{stroke-width:var(--icon-stroke)}
+
+  /* footer note */
+  .pagenote{
+    margin-top:34px;padding:18px 20px;border:1px dashed var(--page-border);border-radius:16px;
+    font-size:14px;color:#aeb3c1;background:#0a0b10
+  }
+  .pagenote b{color:#eceef4}
+
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+<style>
+  /* course roadmap sidebar - self-contained (Signal dark), injected by _directions_sidebar.py */
+  .rmx-toggle{position:fixed;top:12px;left:12px;z-index:201;background:#151322;border:1px solid #2a2440;border-radius:6px;width:36px;height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+  .rmx-toggle span{display:block;width:15px;height:1.5px;background:#e8eaf0;border-radius:1px}
+  .rmx-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:199;backdrop-filter:blur(2px)}
+  .rmx-overlay.open{display:block}
+  .sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:#14121f;border-right:1px solid #2a2440;display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:200;transform:translateX(-100%);transition:transform .25s cubic-bezier(.4,0,.2,1)}
+  .sidebar.open{transform:translateX(0)}
+  .sidebar::-webkit-scrollbar{display:none}
+  .sidebar-brand{padding:20px 16px 16px;border-bottom:1px solid #2a2440;flex-shrink:0}
+  .sidebar-project-name{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9b7bff;line-height:1.4}
+  .sidebar-nav{padding:12px 0;flex:1}
+  .sidebar-page-link{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:500;color:#d7d3e6;text-decoration:none;padding:7px 16px;cursor:pointer}
+  .sidebar-page-link:hover:not(.planned){background:rgba(255,255,255,.04)}
+  .sidebar-page-link.active{color:#9b7bff}
+  .sidebar-page-link.planned{color:#8b86a3;cursor:default;opacity:.6}
+  .sidebar-page-link.planned::after{content:'Soon';font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:rgba(255,255,255,.04);color:#8b86a3;padding:2px 5px;border-radius:3px;border:1px solid #2a2440}
+  .sidebar-page-link.planned.next{opacity:1}
+  .sidebar-page-link.planned.next::after{content:'Next';color:#9b7bff;border-color:#8b5cf6}
+  .sidebar-sub{padding:2px 0 8px}
+  .sidebar-sub-link{display:block;font-size:12px;color:#8b86a3;text-decoration:none;padding:5px 16px 5px 28px;position:relative}
+  .sidebar-sub-link:hover{color:#d7d3e6}
+  .sidebar-sub-link.active{color:#d7d3e6}
+  .sidebar-sub-link.active::before{content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:3px;height:3px;border-radius:50%;background:#9b7bff}
+  .sidebar-divider{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#8b86a3;padding:16px 16px 6px;opacity:.55}
+  @media(max-width:859px){.wrap{padding-top:64px!important}}
+  @media(min-width:860px){
+    .rmx-toggle,.rmx-overlay{display:none!important}
+    .sidebar{transform:translateX(0);transition:none}
+    body{padding-left:220px}
+  }
+</style>
+</head>
+<body>
+<button class="rmx-toggle" id="rmxToggle" aria-label="Open navigation"><span></span><span></span><span></span></button>
+<div class="rmx-overlay" id="rmxOverlay"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><div class="sidebar-project-name">Prediction Market</div></div>
+  <div class="sidebar-nav">
+    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <a href="../user-research/personas.html" class="sidebar-page-link">User Research</a>
+    <a href="../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
+    <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a class="sidebar-page-link active">Directions</a>
+    <div class="sidebar-sub">
+      <a href="directions-signal.html" class="sidebar-sub-link">Signal deep-dive</a>
+    </div>
+    <a href="concept.html" class="sidebar-page-link">Concept</a>
+    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
+    <a class="sidebar-page-link planned next">Tokens + Components</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+
+<!-- icon sprite (Solar-style, monoline; per-direction stroke weight approximates linear/bold) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="base" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></g>
+  </defs>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/>
+  </symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 15l5-5 3 3 6-7"/><path d="M15 6h5v5"/>
+  </symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4a5 5 0 0 1 5 5v3l1.7 2.6a.7.7 0 0 1-.6 1.1H5.9a.7.7 0 0 1-.6-1.1L7 12V9a5 5 0 0 1 5-5z"/><path d="M10 19a2 2 0 0 0 4 0"/>
+  </symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 4h10v16l-5-3.2L7 20z"/>
+  </symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 12S6 6 12 6s9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"/><circle cx="12" cy="12" r="2.6"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/><path d="M12 8v4.3l3 1.8"/>
+  </symbol>
+  <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3v11"/><path d="M8 7l4-4 4 4"/><path d="M6 13v6h12v-6"/>
+  </symbol>
+</svg>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow"><span class="dot"></span> Stage 06 · Concept · pick one direction</p>
+    <h1>One product, three visual languages. <em>Choose the register.</em></h1>
+    <p>Same dark, high-contrast DNA in all three. They span a spectrum from calm and credible to crypto-native, so the choice is how far to lean, not what to build. Open in a browser, then tell me the number and name.</p>
+  </header>
+
+  <section class="dna" aria-label="Shared DNA across all three">
+    <h2>Shared across all three</h2>
+    <div class="dna-item"><svg viewBox="0 0 24 24"><use href="#i-eye"/></svg><div><b>Dark, high contrast</b><span>Near-black canvas, one loud accent. Solves the Kalshi contrast complaint.</span></div></div>
+    <div class="dna-item"><svg viewBox="0 0 24 24"><use href="#i-trend"/></svg><div><b>One number + one-line why</b><span>Spectator clarity, not a trader terminal. FJ2, the differentiator.</span></div></div>
+    <div class="dna-item"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg><div><b>Safety line before the ask</b><span>USDC held 1:1, verify on-chain. FJ4 fear, closed proactively.</span></div></div>
+    <div class="dna-item"><svg viewBox="0 0 24 24"><use href="#i-bookmark"/></svg><div><b>Green = Yes, red = No</b><span>Outcome colors reserved. Brand accent is violet, so it never collides.</span></div></div>
+  </section>
+
+  <div class="directions">
+
+    <!-- ============ DIRECTION 1 ============ -->
+    <section class="dir d1" aria-label="Direction 1: Newsroom after dark">
+      <div class="glow"></div>
+      <div class="dir-head">
+        <div class="scale"><span>Calm · credible</span><span class="segs"><i class="seg on"></i><i class="seg"></i><i class="seg"></i></span></div>
+        <h2 class="dir-name">Newsroom after dark</h2>
+        <p class="dir-tag">Editorial and restrained. The accent under 10%, glow barely there. Reads like a serious dark newsroom, furthest from crypto.</p>
+      </div>
+
+      <article class="ev">
+        <div class="ev-media">
+          <img src="assets/event-politics.jpg" alt="Parliament chamber in session" loading="lazy">
+          <span class="chip"><span class="live"></span>Politics</span>
+          <button class="save" aria-label="Save into Favorites"><svg viewBox="0 0 24 24" data-i><use href="#i-bookmark"/></svg></button>
+        </div>
+        <div class="ev-body">
+          <h3 class="ev-q">Will the 2026 budget pass its final vote this month?</h3>
+          <p class="ev-why"><svg viewBox="0 0 24 24" data-i><use href="#i-trend"/></svg><span>It cleared committee <b>14 to 9</b>; the floor vote is the last hurdle before recess.</span></p>
+          <div class="ev-odds">
+            <div class="prob"><span class="prob-num">62%</span><span class="prob-lbl">chance yes</span></div>
+            <div class="yn">
+              <button class="btn yes">Yes<small>62%</small></button>
+              <button class="btn no">No<small>38%</small></button>
+            </div>
+          </div>
+          <div class="ev-safety"><svg viewBox="0 0 24 24" data-i><use href="#i-shield"/></svg><span>USDC held 1:1</span><a href="#">verify on-chain</a></div>
+          <div class="ev-meta"><span><svg viewBox="0 0 24 24" data-i><use href="#i-eye"/></svg>$18,400 in play</span><span><svg viewBox="0 0 24 24" data-i><use href="#i-clock"/></svg>closes Mar 30</span></div>
+        </div>
+      </article>
+
+      <div class="spec">
+        <p class="spec-label">Palette</p>
+        <div class="swatches">
+          <div class="sw"><div class="chip-c" style="background:#0e1116"></div><div class="m"><b>Canvas</b><code>#0E1116</code></div></div>
+          <div class="sw"><div class="chip-c" style="background:#7c5cff"></div><div class="m"><b>Brand</b><code>#7C5CFF</code></div></div>
+          <div class="sw"><div class="chip-c" style="background:#34c77b"></div><div class="m"><b>Yes</b><code>#34C77B</code></div></div>
+          <div class="sw"><div class="chip-c" style="background:#e5484d"></div><div class="m"><b>No</b><code>#E5484D</code></div></div>
+        </div>
+      </div>
+
+      <div class="foot">
+        <div class="type-mini"><b>Archivo</b><span>display · Inter body</span></div>
+        <div class="iconset">
+          <svg viewBox="0 0 24 24" data-i><use href="#i-bell"/></svg>
+          <svg viewBox="0 0 24 24" data-i><use href="#i-shield"/></svg>
+          <svg viewBox="0 0 24 24" data-i><use href="#i-trend"/></svg>
+          <svg viewBox="0 0 24 24" data-i><use href="#i-share"/></svg>
+        </div>
+      </div>
+
+      <div class="built">
+        <b>Leans on:</b> A2 credible, A3 spectator clarity, A4 safety visible. Lime nearly absent, one soft violet halo, hairline borders, Solar linear icons.
+        <span class="atts"><span class="att">A2</span><span class="att">A3</span><span class="att">A4</span><span class="att">A5</span></span>
+      </div>
+    </section>
+
+    <!-- ============ DIRECTION 2 ============ -->
+    <section class="dir d2" aria-label="Direction 2: Signal">
+      <div class="glow"></div>
+      <div class="dir-head">
+        <div class="scale"><span>Balanced</span><span class="segs"><i class="seg"></i><i class="seg on"></i><i class="seg"></i></span></div>
+        <h2 class="dir-name">Signal</h2>
+        <p class="dir-tag">Violet and lime both present but disciplined. Soft glow and a backlit dot-grid, a two-tone display. The synthesis center of taste and data.</p>
+      </div>
+
+      <article class="ev">
+        <div class="ev-media">
+          <img src="assets/event-crypto.jpg" alt="Phone showing a crypto markets list" loading="lazy">
+          <span class="chip"><span class="live"></span>Crypto</span>
+          <button class="save" aria-label="Save into Favorites"><svg viewBox="0 0 24 24" data-i><use href="#i-bookmark"/></svg></button>
+        </div>
+        <div class="ev-body">
+          <h3 class="ev-q">Will Bitcoin close above $100,000 this year?</h3>
+          <p class="ev-why"><svg viewBox="0 0 24 24" data-i><use href="#i-trend"/></svg><span>It is up <b>40% since October</b> and sits $6k short with two months to go.</span></p>
+          <div class="ev-odds">
+            <div class="prob"><span class="prob-num">58%</span><span class="prob-lbl">chance yes</span></div>
+            <div class="yn">
+              <button class="btn yes">Yes<small>58%</small></button>
+              <button class="btn no">No<small>42%</small></button>
+            </div>
+          </div>
+          <div class="ev-safety"><svg viewBox="0 0 24 24" data-i><use href="#i-shield"/></svg><span>USDC held 1:1</span><a href="#">verify on-chain</a></div>
+          <div class="ev-meta"><span><svg viewBox="0 0 24 24" data-i><use href="#i-eye"/></svg>$96,200 in play</span><span><svg viewBox="0 0 24 24" data-i><use href="#i-clock"/></svg>closes Dec 31</span></div>
+        </div>
+      </article>
+
+      <div class="spec">
+        <p class="spec-label">Palette</p>
+        <div class="swatches">
+          <div class="sw"><div class="chip-c" style="background:#0b0a12"></div><div class="m"><b>Canvas</b><code>#0B0A12</code></div></div>
+          <div class="sw"><div class="chip-c" style="background:#8b5cf6"></div><div class="m"><b>Brand</b><code>#8B5CF6</code></div></div>
+          <div class="sw"><div class="chip-c" style="background:#c9f24e"></div><div class="m"><b>Lime</b><code>#C9F24E</code></div></div>
+          <div class="sw"><div class="chip-c" style="background:#2fbf73"></div><div class="m"><b>Yes</b><code>#2FBF73</code></div></div>
+        </div>
+      </div>
+
+      <div class="foot">
+        <div class="type-mini"><b>Sora</b><span>display · Inter body</span></div>
+        <div class="iconset">
+          <svg viewBox="0 0 24 24" data-i><use href="#i-bell"/></svg>
+          <svg viewBox="0 0 24 24" data-i><use href="#i-shield"/></svg>
+          <svg viewBox="0 0 24 24" data-i><use href="#i-trend"/></svg>
+          <svg viewBox="0 0 24 24" data-i><use href="#i-share"/></svg>
+        </div>
+      </div>
+
+      <div class="built">
+        <b>Leans on:</b> A1 alive and A5 story, balanced by A2 and A3. Violet brand plus a sparing lime highlight, soft glow, dot-grid, Solar bold-duotone icons.
+        <span class="atts"><span class="att">A1</span><span class="att">A2</span><span class="att">A3</span><span class="att">A5</span></span>
+      </div>
+    </section>
+
+    <!-- ============ DIRECTION 3 ============ -->
+    <section class="dir d3" aria-label="Direction 3: Arena">
+      <div class="glow"></div>
+      <div class="dir-head">
+        <div class="scale"><span>Crypto-native</span><span class="segs"><i class="seg"></i><i class="seg"></i><i class="seg on"></i></span></div>
+        <h2 class="dir-name">Arena</h2>
+        <p class="dir-tag">MELEE and Jupiter energy: neon glow, loud accent, heavy display. Still spectator density (one number, why, Yes/No), no leverage or PNL. The crypto-native pole.</p>
+      </div>
+
+      <article class="ev">
+        <div class="ev-media">
+          <img src="assets/event-sports.jpg" alt="Packed stadium at night" loading="lazy">
+          <span class="chip"><span class="live"></span>Sports</span>
+          <button class="save" aria-label="Save into Favorites"><svg viewBox="0 0 24 24" data-i><use href="#i-bookmark"/></svg></button>
+        </div>
+        <div class="ev-body">
+          <h3 class="ev-q">Will the host nation reach the World Cup final?</h3>
+          <p class="ev-why"><svg viewBox="0 0 24 24" data-i><use href="#i-trend"/></svg><span>They <b>topped the group</b> and drew the weaker side of the bracket.</span></p>
+          <div class="ev-odds">
+            <div class="prob"><span class="prob-num">31%</span><span class="prob-lbl">chance yes</span></div>
+            <div class="yn">
+              <button class="btn yes">Yes<small>31%</small></button>
+              <button class="btn no">No<small>69%</small></button>
+            </div>
+          </div>
+          <div class="ev-safety"><svg viewBox="0 0 24 24" data-i><use href="#i-shield"/></svg><span>USDC held 1:1</span><a href="#">verify on-chain</a></div>
+          <div class="ev-meta"><span><svg viewBox="0 0 24 24" data-i><use href="#i-eye"/></svg>$41,900 in play</span><span><svg viewBox="0 0 24 24" data-i><use href="#i-clock"/></svg>closes Jul 12</span></div>
+        </div>
+      </article>
+
+      <div class="spec">
+        <p class="spec-label">Palette</p>
+        <div class="swatches">
+          <div class="sw"><div class="chip-c" style="background:#060609"></div><div class="m"><b>Canvas</b><code>#060609</code></div></div>
+          <div class="sw"><div class="chip-c" style="background:#7c4dff"></div><div class="m"><b>Brand</b><code>#7C4DFF</code></div></div>
+          <div class="sw"><div class="chip-c" style="background:#b6ff3c"></div><div class="m"><b>Lime</b><code>#B6FF3C</code></div></div>
+          <div class="sw"><div class="chip-c" style="background:#ff3b47"></div><div class="m"><b>No</b><code>#FF3B47</code></div></div>
+        </div>
+      </div>
+
+      <div class="foot">
+        <div class="type-mini"><b>Space Grotesk</b><span>display · Inter body</span></div>
+        <div class="iconset">
+          <svg viewBox="0 0 24 24" data-i><use href="#i-bell"/></svg>
+          <svg viewBox="0 0 24 24" data-i><use href="#i-shield"/></svg>
+          <svg viewBox="0 0 24 24" data-i><use href="#i-trend"/></svg>
+          <svg viewBox="0 0 24 24" data-i><use href="#i-share"/></svg>
+        </div>
+      </div>
+
+      <div class="built">
+        <b>Leans on:</b> A1 pushed to max energy, MELEE register. Loud violet plus acid lime, neon halos, heavy display, glowing number. A3 held as the guardrail, no terminal density.
+        <span class="atts"><span class="att">A1</span><span class="att">A3</span></span>
+      </div>
+    </section>
+
+  </div>
+
+  <p class="pagenote"><b>Next:</b> open this in a browser and pick one direction by number and name (for example, "2, Signal"). At Step 4 I build the full concept stand (concept.html) from your pick, wire the roadmap sidebar, and keep the other two directions on record in concept.md. Photos are real Unsplash shots stored in <code>concept/assets/</code>; sources are logged in concept.md.</p>
+
+</div>
+<script>
+  (function(){
+    var sb=document.getElementById('sidebar'),ov=document.getElementById('rmxOverlay'),tg=document.getElementById('rmxToggle');
+    if(tg)tg.addEventListener('click',function(){sb.classList.add('open');ov.classList.add('open');});
+    if(ov)ov.addEventListener('click',function(){sb.classList.remove('open');ov.classList.remove('open');});
+  })();
+</script>
+</body>
+</html>
