@@ -10,7 +10,8 @@
   --accent:#8b5cf6;--accent-text:#9b7bff;--lime:#c9f24e;
   --yes:#2fbf73;--on-yes:#04210e;--no:#f0555a;--on-no:#2b0406;
   --page:#08090c;
-  --rm-bg:#161616;--rm-border:#242424;--rm-text:#e8e8e8;--rm-muted:#7a7a7a;--rm-accent:#c8ff00;
+  /* course-roadmap sidebar chrome - Signal palette, unified with concept/directions.html (see _unify_sidebar.py) */
+  --rm-bg:#14121f;--rm-border:#2a2440;--rm-text:#d7d3e6;--rm-muted:#8b86a3;--rm-accent:#9b7bff;
 }
 
 /* ---------- page + full-bleed device ---------- */
