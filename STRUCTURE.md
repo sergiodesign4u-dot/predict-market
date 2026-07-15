@@ -15,8 +15,8 @@ not `research/html/research.html`).
 | 04 | Information Architecture (Basic + Detailed) | `ia/` | Basic: `flows.html`, `concept-map.html`; Detailed: `ia.html`, `sitemap.html` | Done |
 | 05 | Wireframes | `wireframes/` | 99 pages | Done |
 | 06 | Voice | `voice/` | `voice/voice.html` | Done |
-| 07 | Concept | `concept/` | - | Not started |
-| 08 | UI + Visual | `ui-visual/` | - | Not started |
+| 07 | Concept | `concept/` | `concept.html` (+ `directions.html`) | Done |
+| 08 | UI + Visual | `ui-visual/` | `event-feed.html` (+ 8 state pages) | In progress (Event Feed family done) |
 | 09 | Tokens + Components | `tokens-components/` | - | Not started |
 | 10 | Design System | `design-system/` | - | Not started |
 | 11 | Responsive | `responsive/` | - | Not started |
