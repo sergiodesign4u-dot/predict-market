@@ -373,9 +373,9 @@ def render_sidebar(active_slug):
     </div>
     <a href="../../voice/voice.html" class="sidebar-page-link">Voice</a>
     <div class="sidebar-divider">Design and Delivery</div>
-    <a class="sidebar-page-link planned next">Concept</a>
-    <a class="sidebar-page-link planned">UI + Visual</a>
-    <a class="sidebar-page-link planned">Tokens + Components</a>
+    <a href="../../concept/concept.html" class="sidebar-page-link">Concept</a>
+    <a href="../../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
+    <a class="sidebar-page-link planned next">Tokens + Components</a>
     <a class="sidebar-page-link planned">Design System</a>
     <a class="sidebar-page-link planned">Responsive</a>
     <a class="sidebar-page-link planned">Animation</a>
