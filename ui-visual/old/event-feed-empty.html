@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UI Visual - Event Feed</title>
+  <title>Concept - Event Feed (empty state)</title>
   <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -360,31 +360,23 @@
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="_theme.css">
 </head>
 <body>
-
-  <!-- Solar Bold icon sprite: filled glyphs referenced via <use>; rendered filled by _theme.css .ic:has(use) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-    <symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></symbol>
-    <symbol id="i-bell-b" viewBox="0 0 24 24"><path fill="currentColor" d="M18.75 9.71v-.705C18.75 5.136 15.726 2 12 2S5.25 5.136 5.25 9.005v.705a4.4 4.4 0 0 1-.692 2.375L3.45 13.81c-1.011 1.575.062 3.68 1.966 3.843a51 51 0 0 0 13.167 0c1.904-.163 2.977-2.268 1.966-3.843l-1.108-1.725a4.4 4.4 0 0 1-.692-2.375"/><path fill="currentColor" d="M7.243 18.545a5.002 5.002 0 0 0 9.513 0c-3.145.28-6.367.281-9.513 0"/></symbol>
-    <symbol id="i-shield-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.378 5.082C3 5.62 3 7.22 3 10.417v1.574c0 5.638 4.239 8.375 6.899 9.536c.721.315 1.082.473 2.101.473c1.02 0 1.38-.158 2.101-.473C16.761 20.365 21 17.63 21 11.991v-1.574c0-3.198 0-4.797-.378-5.335c-.377-.537-1.88-1.052-4.887-2.081l-.573-.196C13.595 2.268 12.812 2 12 2s-1.595.268-3.162.805L8.265 3c-3.007 1.03-4.51 1.545-4.887 2.082M15.06 10.5a.75.75 0 0 0-1.12-.999l-3.011 3.374l-.87-.974a.75.75 0 0 0-1.118 1l1.428 1.6a.75.75 0 0 0 1.119 0z" clip-rule="evenodd"/></symbol>
-    <symbol id="i-verified-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9.592 3.2a6 6 0 0 1-.495.399c-.298.2-.633.338-.985.408c-.153.03-.313.043-.632.068c-.801.064-1.202.096-1.536.214a2.71 2.71 0 0 0-1.655 1.655c-.118.334-.15.735-.214 1.536a6 6 0 0 1-.068.632c-.07.352-.208.687-.408.985c-.087.13-.191.252-.399.495c-.521.612-.782.918-.935 1.238c-.353.74-.353 1.6 0 2.34c.153.32.414.626.935 1.238c.208.243.312.365.399.495c.2.298.338.633.408.985c.03.153.043.313.068.632c.064.801.096 1.202.214 1.536a2.71 2.71 0 0 0 1.655 1.655c.334.118.735.15 1.536.214c.319.025.479.038.632.068c.352.07.687.209.985.408c.13.087.252.191.495.399c.612.521.918.782 1.238.935c.74.353 1.6.353 2.34 0c.32-.153.626-.414 1.238-.935c.243-.208.365-.312.495-.399c.298-.2.633-.338.985-.408c.153-.03.313-.043.632-.068c.801-.064 1.202-.096 1.536-.214a2.71 2.71 0 0 0 1.655-1.655c.118-.334.15-.735.214-1.536c.025-.319.038-.479.068-.632c.07-.352.209-.687.408-.985c.087-.13.191-.252.399-.495c.521-.612.782-.918.935-1.238c.353-.74.353-1.6 0-2.34c-.153-.32-.414-.626-.935-1.238a6 6 0 0 1-.399-.495a2.7 2.7 0 0 1-.408-.985a6 6 0 0 1-.068-.632c-.064-.801-.096-1.202-.214-1.536a2.71 2.71 0 0 0-1.655-1.655c-.334-.118-.735-.15-1.536-.214a6 6 0 0 1-.632-.068a2.7 2.7 0 0 1-.985-.408a6 6 0 0 1-.495-.399c-.612-.521-.918-.782-1.238-.935a2.71 2.71 0 0 0-2.34 0c-.32.153-.626.414-1.238.935m6.781 6.663a.814.814 0 0 0-1.15-1.15l-4.85 4.85l-1.596-1.595a.814.814 0 0 0-1.15 1.15l2.17 2.17a.814.814 0 0 0 1.15 0z" clip-rule="evenodd"/></symbol>
-  </defs></svg>
 
   <!-- ===== Roadmap sidebar (course chrome) + color-copy bar ===== -->
   <button type="button" class="rm-toggle" id="rmToggle" aria-label="Open roadmap"><span></span><span></span><span></span></button>
   <div class="rm-overlay" id="rmOverlay"></div>
   <aside class="sidebar" id="rmSidebar">
     <a href="../research/research.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>
-    <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual</div></div>
+    <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual - screens</div></div>
     <div class="sidebar-nav">
       <a class="sidebar-page-link active">Event Feed</a>
       <div class="sidebar-sub">
         <div class="sidebar-sub-head">Logged in</div>
-        <a href="event-feed.html" class="sidebar-sub-link active">success</a>
-        <a href="event-feed-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-empty.html" class="sidebar-sub-link active">empty</a>
         <a href="event-feed-error.html" class="sidebar-sub-link">error</a>
         <a href="event-feed-loading.html" class="sidebar-sub-link">loading</a>
         <a href="event-feed-push-permission-missing.html" class="sidebar-sub-link">push-permission-missing</a>
@@ -403,7 +395,7 @@
   </aside>
 
   <div class="uv-bar">
-    <span class="tag">Color copy of wireframes/event-feed.html</span>
+    <span class="tag">Color copy of wireframes/event-feed-empty.html</span>
     <span class="sep">·</span>
     <a href="../concept/concept.html">Concept stand</a>
     <span class="sep">·</span>
@@ -701,14 +693,14 @@
 
           <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
           <a href="#" aria-label="Favorites, see saved events"><button type="button" class="icon-btn desk-only" aria-label="Favorites">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
           </button></a>
 
           <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
           <details class="notif-menu">
             <summary aria-label="Notifications, 3 unread">
               <span class="bell-wrap">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
                 <span class="badge-dot">3</span>
               </span>
             </summary>
@@ -756,12 +748,12 @@
     <div class="feed-trustbar">
       <div class="ft-inner">
         <span class="ft-item">
-          <svg class="ft-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"/></svg>
+          <svg class="ft-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 6.5-7 9-4-2.5-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
           Your USDC is held 1:1, we never lend it.
         </span>
         <span class="ft-sep" aria-hidden="true">·</span>
         <span class="ft-item">
-          <svg class="ft-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-verified-b"/></svg>
+          <svg class="ft-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
           <b>1,284</b> events resolved on-chain
         </span>
       </div>
@@ -771,9 +763,6 @@
     <main class="feed">
       <div class="feed-inner">
 
-        <div class="cat-layout">
-        <nav class="subcat" id="subcatRail" hidden aria-label="Sub-categories"></nav>
-        <div class="cat-main">
         <div class="feed-head">
           <!-- Heading echoes the active category (here: Trending), not a generic "Live events". -->
           <h2 id="feedHeading">Trending</h2>
@@ -819,271 +808,15 @@
           </div>
         </div>
 
-        <div class="grid">
-
-          <!-- Binary card 1 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="#">Will the US government shut down before March 1, 2027?</a>
-              </div>
-              <p class="why">Funding talks have stalled twice this quarter, but past deadlines settled late.</p>
-              <p class="prob-line">YES <span class="prob">38%</span></p>
-              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 2 (bookmarked) -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="#">Will Bitcoin close above $150,000 before October 1, 2026?</a>
-              </div>
-              <p class="why">Price has held above $120k for three weeks as inflows climb.</p>
-              <p class="prob-line">YES <span class="prob">61%</span></p>
-              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $212,900</span><span>Closes: Oct 1, 2026</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="true" aria-label="Saved">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Multi-outcome card 1 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="#">Who will win the 2027 Eurovision final?</a>
-              </div>
-              <p class="why">Three acts are polling close after the national finals.</p>
-              <div class="options">
-                <div class="opt-row"><span class="opt-name">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
-                <div class="opt-row"><span class="opt-name">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
-              </div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $61,500</span><span>Closes: May 15, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 3 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="#">Will Ethereum complete its next major network upgrade before November 1, 2026?</a>
-              </div>
-              <p class="why">The upgrade is on the testnet with a target window announced.</p>
-              <p class="prob-line">YES <span class="prob">72%</span></p>
-              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $147,650</span><span>Closes: Nov 1, 2026</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 4 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="#">Will the next lead actor for the Bond film be announced before December 31, 2026?</a>
-              </div>
-              <p class="why">The studio says casting is underway, with no shortlist confirmed.</p>
-              <p class="prob-line">YES <span class="prob">47%</span></p>
-              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $19,400</span><span>Closes: Dec 31, 2026</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Multi-outcome card 2 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="#">Which party will win the most seats in the next UK general election?</a>
-              </div>
-              <p class="why">Two parties are within the margin of error in recent polls.</p>
-              <div class="options">
-                <div class="opt-row"><span class="opt-name">Labour</span><span class="opt-prob">44%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
-                <div class="opt-row"><span class="opt-name">Conservatives</span><span class="opt-prob">33%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
-              </div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $58,700</span><span>Closes: Jul 1, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 5 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="#">Will the EU formally admit a new member state before January 1, 2028?</a>
-              </div>
-              <p class="why">Accession talks are open but no candidate has cleared the final chapters.</p>
-              <p class="prob-line">YES <span class="prob">23%</span></p>
-              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $33,100</span><span>Closes: Jan 1, 2028</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 6 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="#">Will 2026 be confirmed as one of the three warmest years on record before April 1, 2027?</a>
-              </div>
-              <p class="why">The year is tracking near record heat through the first quarter.</p>
-              <p class="prob-line">YES <span class="prob">55%</span></p>
-              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $26,300</span><span>Closes: Apr 1, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 7 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="#">Will a spot Solana ETF be approved before September 1, 2027?</a>
-              </div>
-              <p class="why">Two issuers have active filings under review this quarter.</p>
-              <p class="prob-line">YES <span class="prob">44%</span></p>
-              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $71,300</span><span>Closes: Sep 1, 2027</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 8 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="#">Will the next US federal budget pass before the October deadline?</a>
-              </div>
-              <p class="why">Committee talks are moving but the largest line items stay open.</p>
-              <p class="prob-line">YES <span class="prob">41%</span></p>
-              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $52,800</span><span>Closes: Oct 1, 2026</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Multi-outcome card 3 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="#">Which party will control the US Senate after the next election?</a>
-              </div>
-              <p class="why">The count is within a few seats across recent polling.</p>
-              <div class="options">
-                <div class="opt-row"><span class="opt-name">Republicans</span><span class="opt-prob">52%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
-                <div class="opt-row"><span class="opt-name">Democrats</span><span class="opt-prob">48%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
-              </div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $96,400</span><span>Closes: Nov 3, 2026</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
-          <!-- Binary card 9 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
-                <a class="q" href="#">Will the next major game console launch before the 2026 holiday season?</a>
-              </div>
-              <p class="why">The maker confirmed a release window but has not set a date.</p>
-              <p class="prob-line">YES <span class="prob">58%</span></p>
-              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
-              <p class="meta">
-                <span class="meta-txt"><span>Volume: $18,900</span><span>Closes: Nov 1, 2026</span></span>
-                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
-                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-                </button>
-              </p>
-            </div>
-          </article>
-
+        <div class="state-block" role="status" aria-live="polite">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+          <p class="state-title">No events match your filters</p>
+          <p class="state-msg">There are no events for this category and filters right now. Clear the filters, or get notified when a new event shows up here.</p>
+          <div class="state-actions">
+            <button type="button" class="state-btn primary">Clear filters</button>
+            <button type="button" class="state-btn">Notify me of new events in this category</button>
+          </div>
         </div>
-
-        <!-- Load more (concept stand: shows the feed keeps paging) -->
-        <div class="load-more-wrap">
-          <button type="button" class="load-more" id="loadMore">Load more events</button>
-        </div>
-        </div><!-- /cat-main -->
-        </div><!-- /cat-layout -->
-
-        <!-- SEO content sections (below the fold, WF reconcile) -->
-        <section class="feed-seo" aria-label="How betting works here">
-          <h2>How betting works here</h2>
-          <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
-        </section>
-        <section class="feed-seo" aria-label="Why the odds move">
-          <h2>Why the odds move</h2>
-          <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
-        </section>
-        <section class="feed-seo" aria-label="Common questions">
-          <h2>Common questions</h2>
-          <dl>
-            <dt>Do I need crypto to start?</dt>
-            <dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd>
-            <dt>What is the smallest bet?</dt>
-            <dd>One dollar. The default is five.</dd>
-            <dt>How does an event resolve?</dt>
-            <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
-          </dl>
-        </section>
       </div>
     </main>
 
@@ -1099,7 +832,7 @@
           <span>My Bets</span>
         </button></a></li>
         <li><a href="#"><button type="button">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
           <span>Favorites</span>
         </button></a></li>
         <li><a href="#"><button type="button" aria-label="Portfolio, balance $142">
@@ -1317,32 +1050,11 @@
     // Footer language selector (placeholder: updates label, English-only at MVP).
     wireFilter('langMenu', 'langCurrent', 'lang');
 
-    // Category: the dropdown and the chip nav stay in sync, the heading echoes the
-    // choice, and picking a category reveals its sub-category rail (like the WF category pages).
+    // Category: the dropdown and the chip nav stay in sync, and the heading echoes the choice.
     (function () {
       var heading = document.getElementById('feedHeading');
       var nav = document.querySelector('.cat-nav');
       var catCur = document.getElementById('catCurrent');
-      var rail = document.getElementById('subcatRail');
-      // Sub-categories per category (counts mirror the wireframe category pages). Trending has none.
-      var SUBCATS = {
-        Politics: [['All', '2K'], ['Trump', '297'], ['Trump Daily', '3'], ['Midterm Elections', '537'], ['Global Elections', '122'], ['Primaries', '106'], ['Congress', '42'], ['Trump Cabinet', '16'], ['Courts', '30'], ['Epstein', '22'], ['Government Shutdown', '3'], ['LA Mayor', '5']],
-        Crypto: [['All', '2K'], ['Bitcoin', '312'], ['Ethereum', '168'], ['Solana', '74'], ['Price Predictions', '220'], ['ETFs', '33'], ['Stablecoins', '19'], ['Memecoins', '58'], ['Layer 2s', '27'], ['Fed & Macro', '41']],
-        Culture: [['All', '1.4K'], ['Movies', '180'], ['Music', '120'], ['Awards', '64'], ['TV & Streaming', '90'], ['Celebrities', '145'], ['Internet & Memes', '38'], ['Books', '22'], ['Gaming', '51']],
-        General: [['All', '1.1K'], ['Science & Tech', '160'], ['Climate', '88'], ['Space', '54'], ['AI', '132'], ['Health', '70'], ['Business', '96'], ['World', '140']]
-      };
-      function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-      function renderRail(name) {
-        if (!rail) return;
-        var rows = SUBCATS[name];
-        if (!rows) { rail.hidden = true; rail.innerHTML = ''; return; }   // Trending / unknown: no rail
-        var html = '<p class="subcat-head">' + esc(name) + ' sub-categories</p><ul>';
-        for (var i = 0; i < rows.length; i++) {
-          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button">' + esc(rows[i][0]) + ' <span class="cnt">' + esc(rows[i][1]) + '</span></button></li>';
-        }
-        rail.innerHTML = html + '</ul>';
-        rail.hidden = false;
-      }
       function activate(name) {
         if (heading) heading.textContent = name;
         if (catCur) catCur.textContent = name;
@@ -1354,21 +1066,11 @@
         }
         var radio = document.querySelector('#catMenu input[value="' + name + '"]');
         if (radio) radio.checked = true;
-        renderRail(name);
-      }
-      // Picking a sub-category highlights it (visual selection; the feed filter is product scope).
-      if (rail) {
-        rail.addEventListener('click', function (e) {
-          var b = e.target.closest('button'); if (!b) return;
-          var li = b.closest('li'); if (!li) return;
-          rail.querySelectorAll('li[aria-current]').forEach(function (x) { x.removeAttribute('aria-current'); });
-          li.setAttribute('aria-current', 'page');
-        });
       }
       wireFilter('catMenu', 'catCurrent', 'catf', activate);
       if (nav) {
         nav.querySelectorAll('button').forEach(function (b) {
-          b.addEventListener('click', function (e) { e.preventDefault(); activate(b.textContent.trim()); });
+          b.addEventListener('click', function () { activate(b.textContent.trim()); });
         });
       }
     })();

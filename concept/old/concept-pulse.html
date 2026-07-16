@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Concept - Prediction Market</title>
+<title>Concept · Pulse - Prediction Market</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-  /* ============ viz chrome (course theme) - Harbor navy ============ */
+  /* ============ viz chrome (course theme, shared with research/voice) ============ */
   :root{
-    --bg:#010613;--surface:#061230;--border:#112542;--text:#eaf0ff;--muted:#8fa0c8;
-    --accent:#ff8ac4;--accent-dim:rgba(255,46,136,.12);
+    --bg:#0e0e0e;--surface:#161616;--border:#242424;--text:#e8e8e8;--muted:#7a7a7a;
+    --accent:#ff85bb;--accent-dim:rgba(255,46,136,.10);
     --font:'DM Sans',system-ui,-apple-system,sans-serif;--mono:'IBM Plex Mono',monospace;
     --r:8px;--gap:44px;
   }
@@ -57,31 +57,31 @@
   h1{font-family:'Space Grotesk',var(--font);font-size:clamp(30px,5vw,50px);font-weight:700;letter-spacing:-.03em;line-height:1.04;margin-bottom:16px;text-wrap:balance}
   h1 em{font-style:normal;color:var(--accent)}
   h2{font-family:'Space Grotesk',var(--font);font-size:clamp(20px,3vw,26px);font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
-  .lede{font-size:16px;color:#c6d0ea;max-width:70ch;text-wrap:pretty}
+  .lede{font-size:16px;color:#c4c4c4;max-width:70ch;text-wrap:pretty}
   .sub{font-size:13.5px;color:var(--muted);max-width:72ch;margin-bottom:22px}
-  .att{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;padding:2px 6px;border-radius:5px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(255,138,196,.30);vertical-align:middle}
+  .att{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;padding:2px 6px;border-radius:5px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(255,133,187,.30);vertical-align:middle}
   .locks{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-  .locks span{font-size:12px;color:#c1cbe4;background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:6px 12px}
+  .locks span{font-size:12px;color:#bdbdbd;background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:6px 12px}
   .locks b{color:var(--text);font-weight:600}
 
-  /* ============ Harbor specimen scope ============ */
+  /* ============ Pulse specimen scope ============ */
   .stand{
-    --canvas:#02091b;--surface:#061230;--surface-2:#0c1e44;--border:#183155;
-    --ink:#eef3ff;--muted:#9fb0d8;
-    --accent:#ff2e88;--accent-2:#ff8ac4;--accent-text:#ff8ac4;--lime:#ff9ec7;
-    --yes:#43d98a;--on-yes:#08101f;--no:#f0616a;--on-no:#08101f;
+    --canvas:#14121c;--surface:#1e1b29;--surface-2:#272235;--border:#322c44;
+    --ink:#f2eff7;--muted:#a49db6;
+    --accent:#ff2e88;--accent-2:#ff85bb;--accent-text:#ff85bb;--lime:#ff9ec7;
+    --yes:#43d98a;--on-yes:#12101a;--no:#f0616a;--on-no:#12101a;
     --radius:16px;--radius-btn:11px;--display:'Space Grotesk';--ease:cubic-bezier(.2,.7,.2,1);
     color:var(--ink);
   }
   /* live cards + shared card anatomy (structure from wireframes/event-feed.html) */
-  .stand .card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 50px -34px #000}
-  /* soft pink wave lines in the top-right corner, kept quiet so the navy stays calm */
-  .stand .card::before{content:'';position:absolute;top:-4px;right:-8px;width:200px;height:122px;z-index:0;pointer-events:none;opacity:.42;
-    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ff8ac4' stroke-width='1.4'%3E%3Cpath d='M-10 14 C 20 4 40 24 70 14 S 120 4 150 14 S 200 24 230 14'/%3E%3Cpath d='M-10 30 C 20 20 40 40 70 30 S 120 20 150 30 S 200 40 230 30'/%3E%3Cpath d='M-10 46 C 20 36 40 56 70 46 S 120 36 150 46 S 200 56 230 46'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 78 C 20 68 40 88 70 78 S 120 68 150 78 S 200 88 230 78'/%3E%3Cpath d='M-10 94 C 20 84 40 104 70 94 S 120 84 150 94 S 200 104 230 94'/%3E%3C/g%3E%3C/svg%3E") no-repeat;
+  .stand .card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 50px -34px var(--accent)}
+  /* wave-lines corner texture (the Night / Wave signature), magenta, masked to the top-right */
+  .stand .card::before{content:'';position:absolute;top:-4px;right:-8px;width:200px;height:122px;z-index:0;pointer-events:none;opacity:.5;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ff85bb' stroke-width='1.4'%3E%3Cpath d='M-10 14 C 20 4 40 24 70 14 S 120 4 150 14 S 200 24 230 14'/%3E%3Cpath d='M-10 30 C 20 20 40 40 70 30 S 120 20 150 30 S 200 40 230 30'/%3E%3Cpath d='M-10 46 C 20 36 40 56 70 46 S 120 36 150 46 S 200 56 230 46'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 78 C 20 68 40 88 70 78 S 120 68 150 78 S 200 88 230 78'/%3E%3Cpath d='M-10 94 C 20 84 40 104 70 94 S 120 84 150 94 S 200 104 230 94'/%3E%3C/g%3E%3C/svg%3E") no-repeat;
     -webkit-mask-image:radial-gradient(150px 118px at 100% 0%,#000,transparent 72%);mask-image:radial-gradient(150px 118px at 100% 0%,#000,transparent 72%)}
   .stand .card-body{position:relative;z-index:1;padding:15px}
   .stand .top{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
-  .stand .thumb{flex:none;width:60px;height:60px;border-radius:12px;object-fit:cover;background:#091840;border:1px solid var(--border)}
+  .stand .thumb{flex:none;width:60px;height:60px;border-radius:12px;object-fit:cover;background:#241f2f;border:1px solid var(--border)}
   .stand .q{font-family:var(--display);font-weight:600;font-size:16px;line-height:1.22;letter-spacing:-.02em;text-decoration:none;color:var(--ink);text-wrap:balance;display:block}
   .stand .q:hover{color:var(--accent-text)}
   .stand .why{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--muted);margin:0 0 13px;line-height:1.45}
@@ -125,7 +125,7 @@
   .pal .c .b{padding:9px 10px}
   .pal .c .b .n{font-size:12px;font-weight:700;color:var(--text)}
   .pal .c .b .hex{font-family:var(--mono);font-size:11px;color:var(--muted);margin:2px 0 6px}
-  .pal .c .b .role{font-size:11px;color:#9fb0d8;line-height:1.4}
+  .pal .c .b .role{font-size:11px;color:#9a9a9a;line-height:1.4}
 
   /* type */
   .type-row{border-top:1px solid var(--border);padding:16px 0;display:grid;gap:4px}
@@ -133,25 +133,25 @@
   .type-row .meta-t{font-family:var(--mono);font-size:11px;color:var(--muted)}
   .t-display{font-family:'Space Grotesk';font-weight:700;font-size:40px;letter-spacing:-.03em;line-height:1.05;color:var(--text)}
   .t-h2{font-family:'Space Grotesk';font-weight:700;font-size:26px;letter-spacing:-.02em;color:var(--text)}
-  .t-body{font-family:'DM Sans';font-size:16px;color:#c6d0ea;max-width:60ch}
+  .t-body{font-family:'DM Sans';font-size:16px;color:#cfcfcf;max-width:60ch}
   .t-small{font-family:'DM Sans';font-size:13px;color:var(--muted)}
 
   /* form (radii, shadow, spacing) */
   .tokens{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
   .tok{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;min-width:120px}
-  .tok .demo{height:44px;background:#0c1e44;border:1px solid #183155;margin-bottom:9px}
-  .tok .demo.glow{box-shadow:0 12px 30px -14px #ff2e88;background:#061230}
+  .tok .demo{height:44px;background:#272235;border:1px solid #322c44;margin-bottom:9px}
+  .tok .demo.glow{box-shadow:0 12px 30px -14px #ff2e88;background:#1e1b29}
   .tok .k{font-size:12px;font-weight:600;color:var(--text)}
   .tok .v{font-family:var(--mono);font-size:11px;color:var(--muted)}
   .space-scale{display:flex;align-items:flex-end;gap:10px;margin-top:14px}
-  .space-scale .s{background:linear-gradient(180deg,#ff8ac4,#ff2e88);width:22px;border-radius:3px}
+  .space-scale .s{background:#ff2e88;width:22px;border-radius:3px}
   .space-scale .lab{font-family:var(--mono);font-size:10px;color:var(--muted);text-align:center;margin-top:4px}
 
   /* photography */
   .thumbs{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0 14px}
   .thumbs img{width:80px;height:80px;object-fit:cover;border-radius:12px;border:1px solid var(--border)}
   .src-list{font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.9}
-  .src-list b{color:#c1cbe4;font-weight:500}
+  .src-list b{color:#bdbdbd;font-weight:500}
 
   /* icons */
   .icgrid{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
@@ -166,24 +166,24 @@
   .comp-card h3{font-family:'Space Grotesk';font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px}
   .btn-lab{font-size:11px;color:var(--muted);margin:12px 0 5px}
   .pbtn{display:inline-flex;justify-content:center;font-family:'DM Sans';font-weight:700;font-size:14px;border-radius:10px;padding:11px 18px;border:0;cursor:pointer;width:100%}
-  .pbtn.primary{background:linear-gradient(135deg,#ff2e88,#ff8ac4);color:#180810}
-  .pbtn.secondary{background:transparent;color:#ff8ac4;border:1px solid #5a2b46}
-  .pbtn.yes{background:#43d98a;color:#08101f}
-  .pbtn.no{background:#f0616a;color:#08101f}
-  .pbtn.disabled{background:#0c1e44;color:#5f74a3;cursor:not-allowed}
-  .vcard{border-radius:12px;overflow:hidden;background:#061230;border:1px solid #183155}
+  .pbtn.primary{background:linear-gradient(135deg,#ff2e88,#ff85bb);color:#140a10}
+  .pbtn.secondary{background:transparent;color:#ff85bb;border:1px solid #5a2b46}
+  .pbtn.yes{background:#43d98a;color:#12101a}
+  .pbtn.no{background:#f0616a;color:#12101a}
+  .pbtn.disabled{background:#272235;color:#6b6484;cursor:not-allowed}
+  .vcard{border-radius:12px;overflow:hidden;background:#1e1b29;border:1px solid #322c44}
   .vcard .vthumb{height:96px;object-fit:cover;width:100%;display:block}
   .vcard .vb{padding:12px}
-  .vcard .vq{font-family:'Space Grotesk';font-weight:600;font-size:14px;color:#eef3ff;line-height:1.25;margin-bottom:9px;letter-spacing:-.02em}
-  .vbadge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#c6d0ea;background:color-mix(in oklab,#ff2e88 12%,#061230);border:1px solid color-mix(in oklab,#ff2e88 30%,#183155);border-radius:99px;padding:4px 9px}
-  .vbadge svg{width:14px;height:14px;color:#ff8ac4}
-  .field label{display:block;font-size:12px;font-weight:600;color:#c6d0ea;margin-bottom:6px}
-  .field .inp{display:flex;align-items:center;gap:2px;background:#030a1e;border:1px solid #183155;border-radius:10px;padding:11px 12px}
-  .field .inp .pre{color:#9fb0d8;font-weight:600}
-  .field .inp input{flex:1;background:transparent;border:0;outline:0;color:#eef3ff;font-family:'Space Grotesk';font-weight:700;font-size:18px;width:100%}
+  .vcard .vq{font-family:'Space Grotesk';font-weight:600;font-size:14px;color:#f2eff7;line-height:1.25;margin-bottom:9px;letter-spacing:-.02em}
+  .vbadge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#d4c6e0;background:color-mix(in oklab,#ff2e88 12%,#1e1b29);border:1px solid color-mix(in oklab,#ff2e88 30%,#322c44);border-radius:99px;padding:4px 9px}
+  .vbadge svg{width:14px;height:14px;color:#ff85bb}
+  .field label{display:block;font-size:12px;font-weight:600;color:#c9c2e6;margin-bottom:6px}
+  .field .inp{display:flex;align-items:center;gap:2px;background:#161320;border:1px solid #322c44;border-radius:10px;padding:11px 12px}
+  .field .inp .pre{color:#a49db6;font-weight:600}
+  .field .inp input{flex:1;background:transparent;border:0;outline:0;color:#f2eff7;font-family:'Space Grotesk';font-weight:700;font-size:18px;width:100%}
   .field .inp.focus{border-color:#ff2e88;box-shadow:0 0 0 3px rgba(255,46,136,.22)}
   .field .inp.err{border-color:#f0616a}
-  .field .help{font-size:12px;color:#9fb0d8;margin-top:6px}
+  .field .help{font-size:12px;color:#a49db6;margin-top:6px}
   .field .help.err{color:#ff8a91}
 
   /* contrast table */
@@ -195,29 +195,29 @@
   .pass{color:#5fdb8f;font-weight:700}
   .ratio{font-family:var(--mono);font-weight:700;color:var(--text)}
 
-  .foot-note{margin-top:40px;padding:16px 18px;border:1px dashed var(--border);border-radius:12px;font-size:13.5px;color:#b6c1dd}
+  .foot-note{margin-top:40px;padding:16px 18px;border:1px dashed var(--border);border-radius:12px;font-size:13.5px;color:#b0b0b0}
   .foot-note b{color:var(--text)}
 
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-  /* unified-sidebar (Harbor) - magenta on deep navy */
-  .sidebar{background:#040c22;border-right-color:#112542}
-  .sidebar-brand{border-bottom-color:#112542}
-  .sidebar-project-name{color:#ff8ac4}
-  .sidebar-page-link{color:#d3ddf3}
+  /* unified-sidebar (Pulse) - magenta on night, mirrors the specimen accent */
+  .sidebar{background:#181521;border-right-color:#322c44}
+  .sidebar-brand{border-bottom-color:#322c44}
+  .sidebar-project-name{color:#ff85bb}
+  .sidebar-page-link{color:#d9d3e6}
   .sidebar-page-link:hover:not(.planned){background:rgba(255,255,255,.04)}
-  .sidebar-page-link.active{color:#ff8ac4}
-  .sidebar-page-link.planned{color:#7f8fb8}
-  .sidebar-page-link.planned::after{color:#7f8fb8;border-color:#112542;background:rgba(255,255,255,.04)}
-  .sidebar-page-link.planned.next::after{color:#ff8ac4;border-color:#ff2e88}
-  .sidebar-divider{color:#7f8fb8}
-  .sidebar-sub-link{color:#7f8fb8}
-  .sidebar-sub-link:hover{color:#d3ddf3}
-  .sidebar-sub-link.active{color:#d3ddf3}
-  .sidebar-sub-link.active::before{background:#ff8ac4}
-  .menu-toggle{background:#040c22;border-color:#112542}
-  .menu-toggle span{background:#eaf0ff}
+  .sidebar-page-link.active{color:#ff85bb}
+  .sidebar-page-link.planned{color:#8f89a3}
+  .sidebar-page-link.planned::after{color:#8f89a3;border-color:#322c44;background:rgba(255,255,255,.04)}
+  .sidebar-page-link.planned.next::after{color:#ff85bb;border-color:#ff2e88}
+  .sidebar-divider{color:#8f89a3}
+  .sidebar-sub-link{color:#8f89a3}
+  .sidebar-sub-link:hover{color:#d9d3e6}
+  .sidebar-sub-link.active{color:#d9d3e6}
+  .sidebar-sub-link.active::before{background:#ff85bb}
+  .menu-toggle{background:#181521;border-color:#322c44}
+  .menu-toggle span{background:#e8eaf0}
 </style>
 </head>
 <body>
@@ -236,9 +236,8 @@
     <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
     <div class="sidebar-divider">Design and Delivery</div>
     <a href="directions.html" class="sidebar-page-link">Directions</a>
-    <a href="old/concept.html" class="sidebar-page-link">Concept · Signal (old)</a>
-    <a href="old/concept-pulse.html" class="sidebar-page-link">Concept · Pulse (old)</a>
-    <a class="sidebar-page-link active">Concept</a>
+    <a href="concept.html" class="sidebar-page-link">Concept · Signal</a>
+    <a class="sidebar-page-link active">Concept · Pulse</a>
     <div class="sidebar-sub">
       <a href="#live" class="sidebar-sub-link">Language, live</a>
       <a href="#palette" class="sidebar-sub-link">Palette</a>
@@ -249,7 +248,7 @@
       <a href="#components" class="sidebar-sub-link">Components</a>
       <a href="#contrast" class="sidebar-sub-link">Contrast</a>
     </div>
-    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
+    <a href="../ui-visual/event-feed-pulse.html" class="sidebar-page-link">UI + Visual · Pulse</a>
     <a class="sidebar-page-link planned">Tokens + Components</a>
     <a class="sidebar-page-link planned">Design System</a>
   </div>
@@ -270,14 +269,14 @@
 <div class="doc">
 
   <section id="top">
-    <div class="section-label">Stage 07 · Concept · Harbor</div>
-    <h1>Harbor <em>the visual language</em></h1>
-    <p class="lede">Calm before the call. A deep cobalt-navy canvas that reads as steady and safe (trust is the audience's number-one driver), with a single hot magenta-to-pink gradient reserved for the one thing that matters: the action. Green and red stay for outcomes, real event photography rides along as a small thumbnail. The quiet cousin of Signal and Pulse: same skeleton, a base that finally feels still.</p>
+    <div class="section-label">Stage 07 · Concept · Pulse (alternative direction)</div>
+    <h1>Pulse <em>the visual language</em></h1>
+    <p class="lede">The night register turned up: a warm near-black void, hot magenta as the single brand signal, and wave lines drawn softly into each card corner. A confident, high-energy read for a spectator with an opinion. Green and red stay reserved for outcomes, real event photography rides along as a small thumbnail. The alternative to Signal, sharing its structure but not its colour.</p>
     <div class="locks">
-      <span><b>Base:</b> deep cobalt navy, calm</span>
-      <span><b>Card:</b> lifted navy, one step up</span>
-      <span><b>Action:</b> magenta to pink gradient</span>
-      <span><b>Restraint:</b> gradient = action only</span>
+      <span><b>Base:</b> Night desk on deep void</span>
+      <span><b>Texture:</b> wave lines, corner-masked</span>
+      <span><b>Accent:</b> Magenta Max, hot pop</span>
+      <span><b>Restraint:</b> accent = action only</span>
       <span><b>Binary card:</b> B · <b>Multi:</b> D</span>
     </div>
   </section>
@@ -285,7 +284,7 @@
   <section id="live">
     <div class="section-label">Language, live</div>
     <h2>The two feed cards, in the chosen treatments</h2>
-    <p class="sub">Structure and content are owned by <span style="font-family:var(--mono);color:#c1cbe4">wireframes/event-feed.html</span>; this layer only colors them. Binary = treatment B (odds bar), multi = treatment D (option rows). The navy stays calm; the magenta gradient carries the action. <span class="att">A1</span> <span class="att">A2</span> <span class="att">A3</span> <span class="att">A5</span></p>
+    <p class="sub">Structure and content are owned by <span style="font-family:var(--mono);color:#bdbdbd">wireframes/event-feed.html</span>; this layer only colors them. Binary = treatment B (odds bar), multi = treatment D (option rows). The wave-line corner is the signature texture. <span class="att">A1</span> <span class="att">A2</span> <span class="att">A3</span> <span class="att">A5</span></p>
     <div class="live-grid stand">
       <div>
         <article class="card">
@@ -325,16 +324,16 @@
   <section id="palette">
     <div class="section-label">Palette</div>
     <h2>Every color earns its place</h2>
-    <p class="sub">Neutrals are a deep cobalt navy, not grey and not warm, so the page reads calm and trustworthy. The whole-site base is the darkest navy; cards lift one step. The accent is a hot magenta-to-pink gradient, rare and only ever action or active. Green and red never double as the brand.</p>
+    <p class="sub">Neutrals are a warm violet-black, not pure grey. The accent is hot magenta, rare and only ever action or active. Green and red never double as the brand. Each swatch names the attribute it serves.</p>
     <div class="pal">
-      <div class="c"><div class="sw" style="background:#010613"></div><div class="b"><div class="n">Page</div><div class="hex">#010613</div><div class="role">Whole-site base, deepest navy <span class="att">A1</span></div></div></div>
-      <div class="c"><div class="sw" style="background:#02091b"></div><div class="b"><div class="n">Canvas</div><div class="hex">#02091B</div><div class="role">Feed area, one step up <span class="att">A1</span></div></div></div>
-      <div class="c"><div class="sw" style="background:#061230"></div><div class="b"><div class="n">Surface</div><div class="hex">#061230</div><div class="role">Cards, lifted cobalt navy <span class="att">A1</span></div></div></div>
-      <div class="c"><div class="sw" style="background:#0c1e44"></div><div class="b"><div class="n">Surface 2</div><div class="hex">#0c1e44</div><div class="role">Option rows, nested <span class="att">A3</span></div></div></div>
-      <div class="c"><div class="sw" style="background:#183155"></div><div class="b"><div class="n">Border</div><div class="hex">#183155</div><div class="role">Hairlines, cool navy <span class="att">A2</span></div></div></div>
-      <div class="c"><div class="sw" style="background:#eef3ff"></div><div class="b"><div class="n">Ink</div><div class="hex">#EEF3FF</div><div class="role">Primary text, 14:1 on surface <span class="att">A2</span></div></div></div>
-      <div class="c"><div class="sw" style="background:#9fb0d8"></div><div class="b"><div class="n">Muted</div><div class="hex">#9FB0D8</div><div class="role">Secondary text, why line <span class="att">A3</span></div></div></div>
-      <div class="c"><div class="sw" style="background:linear-gradient(135deg,#ff2e88,#ff8ac4)"></div><div class="b"><div class="n">Action</div><div class="hex">#FF2E88 &rarr; #FF8AC4</div><div class="role">CTA gradient, active. Link tint #FF8AC4 <span class="att">A2</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#14121c"></div><div class="b"><div class="n">Canvas</div><div class="hex">#14121C</div><div class="role">Page base, warm near-black void <span class="att">A1</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#1e1b29"></div><div class="b"><div class="n">Surface</div><div class="hex">#1E1B29</div><div class="role">Cards, raised blocks <span class="att">A1</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#272235"></div><div class="b"><div class="n">Surface 2</div><div class="hex">#272235</div><div class="role">Option rows, nested <span class="att">A3</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#322c44"></div><div class="b"><div class="n">Border</div><div class="hex">#322C44</div><div class="role">Hairlines, cool violet-grey <span class="att">A2</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#f2eff7"></div><div class="b"><div class="n">Ink</div><div class="hex">#F2EFF7</div><div class="role">Primary text, 16:1 on canvas <span class="att">A2</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#a49db6"></div><div class="b"><div class="n">Muted</div><div class="hex">#A49DB6</div><div class="role">Secondary text, why line <span class="att">A3</span></div></div></div>
+      <div class="c"><div class="sw" style="background:linear-gradient(135deg,#ff2e88,#ff85bb)"></div><div class="b"><div class="n">Brand</div><div class="hex">#FF2E88</div><div class="role">Action, active, glow. Text tint #FF85BB <span class="att">A2</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#ff85bb"></div><div class="b"><div class="n">Magenta light</div><div class="hex">#FF85BB</div><div class="role">Gradient end, wave lines, links <span class="att">A1</span></div></div></div>
       <div class="c"><div class="sw" style="background:#43d98a"></div><div class="b"><div class="n">Yes</div><div class="hex">#43D98A</div><div class="role">Outcome only, never brand <span class="att">A3</span></div></div></div>
       <div class="c"><div class="sw" style="background:#f0616a"></div><div class="b"><div class="n">No</div><div class="hex">#F0616A</div><div class="role">Outcome only, never alarm chrome <span class="att">A3</span></div></div></div>
     </div>
@@ -353,7 +352,7 @@
   <section id="form">
     <div class="section-label">Form</div>
     <h2>Radius, elevation, spacing</h2>
-    <p class="sub">Soft but not round. Depth comes from a single magenta glow over the navy, not heavy shadows. <span class="att">A1</span> <span class="att">A2</span></p>
+    <p class="sub">Soft but not round. Depth comes from a single magenta glow, not heavy shadows. <span class="att">A1</span> <span class="att">A2</span></p>
     <div class="tokens">
       <div class="tok"><div class="demo" style="border-radius:16px"></div><div class="k">Card</div><div class="v">radius 16px</div></div>
       <div class="tok"><div class="demo" style="border-radius:11px"></div><div class="k">Button</div><div class="v">radius 11px</div></div>
@@ -374,7 +373,7 @@
   <section id="photo">
     <div class="section-label">Photography</div>
     <h2>A real event, at thumbnail size</h2>
-    <p class="sub">The photo makes a market feel like news, not a bare question, and it stays a small thumbnail so the number and the why still lead. Real Unsplash shots by subject, stored in <span style="font-family:var(--mono);color:#c1cbe4">concept/assets/</span> for offline and GitHub Pages. Never a grey placeholder. <span class="att">A5</span></p>
+    <p class="sub">The photo makes a market feel like news, not a bare question, and it stays a small thumbnail so the number and the why still lead. Real Unsplash shots by subject, stored in <span style="font-family:var(--mono);color:#bdbdbd">concept/assets/</span> for offline and GitHub Pages. Never a grey placeholder. <span class="att">A5</span></p>
     <div class="stand"><div class="thumbs">
       <img src="assets/event-politics.jpg" alt="Politics">
       <img src="assets/event-crypto.jpg" alt="Crypto">
@@ -392,7 +391,7 @@
   <section id="icons">
     <div class="section-label">Icons</div>
     <h2>Solar, bold, inline SVG</h2>
-    <p class="sub">Solid single-fill glyphs, rounded corners, drawn in the interface not as art. Coverage: bottom tab bar, card meta, verification badge, buttons, and states. <span class="att">A3</span></p>
+    <p class="sub">Solid single-fill glyphs, rounded corners, drawn in the interface not as art. The bolder cousin of Signal's outline set, matched to the higher-energy magenta. Coverage: bottom tab bar, card meta, verification badge, buttons, and states. <span class="att">A3</span></p>
     <div class="icgrid">
       <div class="ic-cell"><svg><use href="#i-bell"/></svg><span>Notify</span></div>
       <div class="ic-cell"><svg><use href="#i-shield"/></svg><span>Verify</span></div>
@@ -407,7 +406,7 @@
   <section id="components">
     <div class="section-label">Components</div>
     <h2>Three live pieces</h2>
-    <p class="sub">The action button set, a card with a verification badge, and a form field. Real product copy, product voice. The primary action is the magenta-to-pink gradient; YES and NO stay green and red as outcomes. <span class="att">A2</span> <span class="att">A3</span> <span class="att">A4</span></p>
+    <p class="sub">The action button set, a card with a verification badge, and a form field. Real product copy, product voice. <span class="att">A2</span> <span class="att">A3</span> <span class="att">A4</span></p>
     <div class="comp">
       <div class="comp-card">
         <h3>Action buttons</h3>
@@ -447,28 +446,29 @@
   <section id="contrast">
     <div class="section-label">Contrast · WCAG AA</div>
     <h2>Every text pair checked</h2>
-    <p class="sub">Ratios computed, not eyeballed. Body needs 4.5:1, large and button text 3:1. Hot magenta is used only as a gradient action fill (dark text on top); links use the lighter tint #FF8AC4 on the navy.</p>
+    <p class="sub">Ratios computed, not eyeballed. Body needs 4.5:1, large and button text 3:1. Hot magenta #FF2E88 clears 4.5:1 as an action fill; links use the lighter tint #FF85BB for extra headroom.</p>
     <div style="overflow-x:auto">
     <table class="ctab">
       <thead><tr><th>Text</th><th>On</th><th>Ratio</th><th>Use</th><th>AA</th></tr></thead>
       <tbody>
-        <tr><td><span class="swin" style="background:#eef3ff"></span>Ink #EEF3FF</td><td class="mono">Canvas #02091B</td><td class="ratio">18.45</td><td>body</td><td class="pass">PASS</td></tr>
-        <tr><td><span class="swin" style="background:#eef3ff"></span>Ink #EEF3FF</td><td class="mono">Surface #061230</td><td class="ratio">17.16</td><td>body</td><td class="pass">PASS</td></tr>
-        <tr><td><span class="swin" style="background:#9fb0d8"></span>Muted #9FB0D8</td><td class="mono">Canvas #02091B</td><td class="ratio">9.17</td><td>body</td><td class="pass">PASS</td></tr>
-        <tr><td><span class="swin" style="background:#9fb0d8"></span>Muted #9FB0D8</td><td class="mono">Surface #061230</td><td class="ratio">8.52</td><td>body</td><td class="pass">PASS</td></tr>
-        <tr><td><span class="swin" style="background:#ff8ac4"></span>Link #FF8AC4</td><td class="mono">Surface #061230</td><td class="ratio">8.45</td><td>link</td><td class="pass">PASS</td></tr>
-        <tr><td><span class="swin" style="background:#ff8ac4"></span>Link #FF8AC4</td><td class="mono">Canvas #02091B</td><td class="ratio">9.09</td><td>link</td><td class="pass">PASS</td></tr>
-        <tr><td><span class="swin" style="background:#43d98a"></span>Yes #43D98A</td><td class="mono">Surface #061230</td><td class="ratio">10.13</td><td>label</td><td class="pass">PASS</td></tr>
-        <tr><td><span class="swin" style="background:#f0616a"></span>No #F0616A</td><td class="mono">Surface #061230</td><td class="ratio">5.79</td><td>label</td><td class="pass">PASS</td></tr>
-        <tr><td><span class="swin" style="background:#08101f"></span>Text #08101F</td><td class="mono">Yes button #43D98A</td><td class="ratio">10.67</td><td>button</td><td class="pass">PASS</td></tr>
-        <tr><td><span class="swin" style="background:#08101f"></span>Text #08101F</td><td class="mono">No button #F0616A</td><td class="ratio">6.09</td><td>button</td><td class="pass">PASS</td></tr>
-        <tr><td><span class="swin" style="background:#180810"></span>Text #180810</td><td class="mono">Action magenta #FF2E88</td><td class="ratio">5.54</td><td>button</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#f2eff7"></span>Ink #F2EFF7</td><td class="mono">Canvas #14121C</td><td class="ratio">16.30</td><td>body</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#f2eff7"></span>Ink #F2EFF7</td><td class="mono">Surface #1E1B29</td><td class="ratio">14.84</td><td>body</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#a49db6"></span>Muted #A49DB6</td><td class="mono">Canvas #14121C</td><td class="ratio">7.13</td><td>body</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#a49db6"></span>Muted #A49DB6</td><td class="mono">Surface #1E1B29</td><td class="ratio">6.49</td><td>body</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#ff2e88"></span>Brand #FF2E88</td><td class="mono">Surface #1E1B29</td><td class="ratio">4.82</td><td>action</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#ff85bb"></span>Brand text #FF85BB</td><td class="mono">Surface #1E1B29</td><td class="ratio">7.44</td><td>link</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#ff85bb"></span>Brand text #FF85BB</td><td class="mono">Canvas #14121C</td><td class="ratio">8.17</td><td>link</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#43d98a"></span>Yes #43D98A</td><td class="mono">Surface #1E1B29</td><td class="ratio">9.26</td><td>label</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#f0616a"></span>No #F0616A</td><td class="mono">Surface #1E1B29</td><td class="ratio">5.29</td><td>label</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#12101a"></span>Text #12101A</td><td class="mono">Yes button #43D98A</td><td class="ratio">10.36</td><td>button</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#12101a"></span>Text #12101A</td><td class="mono">No button #F0616A</td><td class="ratio">5.92</td><td>button</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#140a10"></span>Text #140A10</td><td class="mono">CTA magenta #FF2E88</td><td class="ratio">5.54</td><td>button</td><td class="pass">PASS</td></tr>
       </tbody>
     </table>
     </div>
   </section>
 
-  <p class="foot-note"><b>Next:</b> apply Harbor to the reference screen, a color COPY of <span style="font-family:var(--mono)">wireframes/event-feed.html</span> at <span style="font-family:var(--mono)">ui-visual/event-feed.html</span> (its own <span style="font-family:var(--mono)">_theme.css</span>), plus its state pages, one-to-one in structure with the Signal and Pulse copies. The wireframe stays grey; Signal (violet), Pulse (magenta-night) and Harbor (calm navy) are three colour languages over the same skeleton.</p>
+  <p class="foot-note"><b>Next:</b> apply Pulse to the reference screen, a color COPY of <span style="font-family:var(--mono)">wireframes/event-feed.html</span> at <span style="font-family:var(--mono)">ui-visual/event-feed-pulse.html</span> (its own <span style="font-family:var(--mono)">_theme-pulse.css</span>), one-to-one in structure with the Signal copy. The wireframe stays grey; Pulse and Signal are two colour languages over the same skeleton. Sources for this direction: <span style="font-family:var(--mono)">Project One (UImax)</span> directions H (Night / Wave) and O (Magenta Max).</p>
 
 </div>
 </main>

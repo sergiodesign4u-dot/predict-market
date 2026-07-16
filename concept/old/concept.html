@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept · Signal - Prediction Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ viz chrome (course theme, shared with research/voice) ============ */
+  :root{
+    --bg:#0e0e0e;--surface:#161616;--border:#242424;--text:#e8e8e8;--muted:#7a7a7a;
+    --accent:#c8ff00;--accent-dim:rgba(200,255,0,.08);
+    --font:'Inter',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',monospace;
+    --r:8px;--gap:44px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+  .sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:200;transform:translateX(-100%);transition:transform .25s cubic-bezier(.4,0,.2,1)}
+  .sidebar.open{transform:translateX(0)}
+  .sidebar::-webkit-scrollbar{display:none}
+  .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:199;backdrop-filter:blur(2px)}
+  .sidebar-overlay.open{display:block}
+  .menu-toggle{position:fixed;top:12px;left:12px;z-index:201;background:var(--surface);border:1px solid var(--border);border-radius:6px;width:36px;height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+  .menu-toggle span{display:block;width:15px;height:1.5px;background:var(--text);border-radius:1px}
+  .sidebar-brand{padding:20px 16px 16px;border-bottom:1px solid var(--border);flex-shrink:0}
+  .sidebar-project-name{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);line-height:1.4}
+  .sidebar-nav{padding:12px 0;flex:1}
+  .sidebar-page-link{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:500;color:var(--text);text-decoration:none;padding:7px 16px;transition:background .15s;cursor:pointer;user-select:none}
+  .sidebar-page-link:hover:not(.planned){background:rgba(255,255,255,.04)}
+  .sidebar-page-link.active{color:var(--accent)}
+  .sidebar-page-link.planned{color:var(--muted);cursor:default;opacity:.6}
+  .sidebar-page-link.planned::after{content:'Soon';font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:rgba(255,255,255,.04);color:var(--muted);padding:2px 5px;border-radius:3px;border:1px solid var(--border)}
+  .sidebar-page-link.planned.next{opacity:1}
+  .sidebar-page-link.planned.next::after{content:'Next';color:var(--accent);border-color:var(--accent)}
+  .sidebar-sub{padding:2px 0 8px}
+  .sidebar-sub-link{display:block;font-size:12px;color:var(--muted);text-decoration:none;padding:5px 16px 5px 28px;transition:color .15s;position:relative}
+  .sidebar-sub-link:hover{color:var(--text)}
+  .sidebar-sub-link.active{color:var(--text)}
+  .sidebar-sub-link.active::before{content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:3px;height:3px;border-radius:50%;background:var(--accent)}
+  .sidebar-divider{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:16px 16px 6px;opacity:.55}
+
+  main{padding:60px 20px 80px}
+  @media(min-width:860px){
+    .sidebar{transform:translateX(0);transition:none}
+    .sidebar-overlay{display:none!important}
+    .menu-toggle{display:none}
+    main{margin-left:220px;padding:44px 44px 120px}
+  }
+  .doc{max-width:1000px}
+  section{padding-top:var(--gap);margin-top:var(--gap);border-top:1px solid var(--border)}
+  section:first-child{border-top:none;margin-top:0;padding-top:0}
+  .section-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+  h1{font-family:'Sora',var(--font);font-size:clamp(30px,5vw,50px);font-weight:800;letter-spacing:-.02em;line-height:1.04;margin-bottom:16px;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--accent)}
+  h2{font-family:'Sora',var(--font);font-size:clamp(20px,3vw,26px);font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+  .lede{font-size:16px;color:#c4c4c4;max-width:70ch;text-wrap:pretty}
+  .sub{font-size:13.5px;color:var(--muted);max-width:72ch;margin-bottom:22px}
+  .att{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;padding:2px 6px;border-radius:5px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(200,255,0,.25);vertical-align:middle}
+  .locks{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .locks span{font-size:12px;color:#bdbdbd;background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:6px 12px}
+  .locks b{color:var(--text);font-weight:600}
+
+  /* ============ Signal specimen scope ============ */
+  .stand{
+    --canvas:#0b0a12;--surface:#151322;--surface-2:#1d1a2e;--border:#2a2440;
+    --ink:#f1edff;--muted:#a7a0c4;
+    --accent:#8b5cf6;--accent-text:#9b7bff;--lime:#c9f24e;
+    --yes:#2fbf73;--on-yes:#04210e;--no:#f0555a;--on-no:#ffffff;
+    --radius:16px;--radius-btn:10px;--display:'Sora';--ease:cubic-bezier(.2,.7,.2,1);
+    color:var(--ink);
+  }
+  /* live cards + shared card anatomy (structure from wireframes/event-feed.html) */
+  .stand .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 50px -34px var(--accent)}
+  .stand .card-body{padding:15px}
+  .stand .top{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
+  .stand .thumb{flex:none;width:60px;height:60px;border-radius:12px;object-fit:cover;background:#221f33;border:1px solid var(--border)}
+  .stand .q{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.22;letter-spacing:-.01em;text-decoration:none;color:var(--ink);text-wrap:balance;display:block}
+  .stand .q:hover{color:var(--accent-text)}
+  .stand .why{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--muted);margin:0 0 13px;line-height:1.45}
+  .stand .why svg{width:15px;height:15px;flex:none;margin-top:2px;color:var(--accent-text)}
+  .stand .why b{color:var(--ink);font-weight:600}
+  .stand .prob-line{display:flex;align-items:baseline;gap:8px;margin:0 0 11px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .stand .prob-line .prob{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.01em;color:var(--ink);text-transform:none}
+  .stand .yesno{display:flex;gap:8px}
+  .stand .yesno .btn{flex:1;border:0;cursor:pointer;border-radius:var(--radius-btn);font-family:Inter,sans-serif;font-weight:700;font-size:14px;padding:11px 12px;transition:transform .16s var(--ease),filter .16s var(--ease)}
+  .stand .yesno .btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+  .stand .yesno .btn.yes{background:var(--yes);color:var(--on-yes)}
+  .stand .yesno .btn.no{background:var(--no);color:var(--on-no)}
+  .stand .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0 0;font-size:12px;color:var(--muted)}
+  .stand .meta .meta-txt{display:flex;flex-wrap:wrap;gap:4px 12px}
+  .stand .bookmark-btn{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:.16s var(--ease)}
+  .stand .bookmark-btn svg{width:17px;height:17px}
+  .stand .bookmark-btn[aria-pressed="true"]{color:var(--lime);border-color:color-mix(in oklab,var(--lime) 40%,var(--border))}
+  .stand .oddsbar{margin:0 0 12px}
+  .stand .oddsbar .track{height:8px;border-radius:99px;overflow:hidden;display:flex;background:var(--no)}
+  .stand .oddsbar .fill{background:var(--yes);box-shadow:0 0 14px color-mix(in oklab,var(--yes) 60%,transparent)}
+  .stand .oddsbar .lbls{display:flex;justify-content:space-between;margin-top:7px;font-size:12px;font-weight:600}
+  .stand .oddsbar .l-yes{color:var(--yes)}.stand .oddsbar .l-no{color:var(--no)}
+  .stand .options{display:flex;flex-direction:column;gap:8px;margin:0 0 12px}
+  .stand .opt-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:9px 11px;border-radius:11px;background:var(--surface-2);border:1px solid var(--border)}
+  .stand .opt-name{font-weight:600;font-size:14px;color:var(--ink)}
+  .stand .opt-prob{font-family:var(--display);font-weight:800;font-size:16px;color:var(--ink)}
+  .stand .yesno.compact{gap:6px}
+  .stand .yesno.compact .btn{padding:6px 10px;font-size:12px;flex:none}
+
+  .live-grid{display:grid;gap:18px;grid-template-columns:1fr}
+  @media(min-width:680px){.live-grid{grid-template-columns:1fr 1fr}}
+  .spec-cap{font-size:12px;color:var(--muted);margin-top:9px}
+  .spec-cap b{color:var(--text)}
+
+  /* palette */
+  .pal{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:6px}
+  @media(min-width:560px){.pal{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:900px){.pal{grid-template-columns:repeat(5,1fr)}}
+  .pal .c{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface)}
+  .pal .c .sw{height:52px}
+  .pal .c .b{padding:9px 10px}
+  .pal .c .b .n{font-size:12px;font-weight:700;color:var(--text)}
+  .pal .c .b .hex{font-family:var(--mono);font-size:11px;color:var(--muted);margin:2px 0 6px}
+  .pal .c .b .role{font-size:11px;color:#9a9a9a;line-height:1.4}
+
+  /* type */
+  .type-row{border-top:1px solid var(--border);padding:16px 0;display:grid;gap:4px}
+  .type-row:first-of-type{border-top:none}
+  .type-row .meta-t{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .t-display{font-family:'Sora';font-weight:800;font-size:40px;letter-spacing:-.02em;line-height:1.05;color:var(--text)}
+  .t-h2{font-family:'Sora';font-weight:700;font-size:26px;letter-spacing:-.01em;color:var(--text)}
+  .t-body{font-family:'Inter';font-size:16px;color:#cfcfcf;max-width:60ch}
+  .t-small{font-family:'Inter';font-size:13px;color:var(--muted)}
+
+  /* form (radii, shadow, spacing) */
+  .tokens{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
+  .tok{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;min-width:120px}
+  .tok .demo{height:44px;background:#211d33;border:1px solid #2a2440;margin-bottom:9px}
+  .tok .demo.glow{box-shadow:0 12px 30px -14px #8b5cf6;background:#151322}
+  .tok .k{font-size:12px;font-weight:600;color:var(--text)}
+  .tok .v{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .space-scale{display:flex;align-items:flex-end;gap:10px;margin-top:14px}
+  .space-scale .s{background:#8b5cf6;width:22px;border-radius:3px}
+  .space-scale .lab{font-family:var(--mono);font-size:10px;color:var(--muted);text-align:center;margin-top:4px}
+
+  /* photography */
+  .thumbs{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0 14px}
+  .thumbs img{width:80px;height:80px;object-fit:cover;border-radius:12px;border:1px solid var(--border)}
+  .src-list{font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.9}
+  .src-list b{color:#bdbdbd;font-weight:500}
+
+  /* icons */
+  .icgrid{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+  .ic-cell{display:flex;flex-direction:column;align-items:center;gap:7px;width:78px;padding:14px 6px;background:var(--surface);border:1px solid var(--border);border-radius:10px}
+  .ic-cell svg{width:24px;height:24px;color:var(--text)}
+  .ic-cell span{font-size:10.5px;color:var(--muted)}
+
+  /* components */
+  .comp{display:grid;gap:18px;grid-template-columns:1fr;margin-top:6px}
+  @media(min-width:760px){.comp{grid-template-columns:repeat(3,1fr)}}
+  .comp-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px}
+  .comp-card h3{font-family:'Sora';font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px}
+  .btn-lab{font-size:11px;color:var(--muted);margin:12px 0 5px}
+  .pbtn{display:inline-flex;justify-content:center;font-family:Inter;font-weight:700;font-size:14px;border-radius:10px;padding:11px 18px;border:0;cursor:pointer;width:100%}
+  .pbtn.primary{background:#8b5cf6;color:#fff}
+  .pbtn.secondary{background:transparent;color:#9b7bff;border:1px solid #4a3d7a}
+  .pbtn.yes{background:#2fbf73;color:#04210e}
+  .pbtn.no{background:#f0555a;color:#fff}
+  .pbtn.disabled{background:#211d33;color:#6b6484;cursor:not-allowed}
+  .vcard{border-radius:12px;overflow:hidden;background:#151322;border:1px solid #2a2440}
+  .vcard .vthumb{height:96px;object-fit:cover;width:100%;display:block}
+  .vcard .vb{padding:12px}
+  .vcard .vq{font-family:'Sora';font-weight:700;font-size:14px;color:#f1edff;line-height:1.25;margin-bottom:9px}
+  .vbadge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#c9c2e6;background:color-mix(in oklab,#8b5cf6 12%,#151322);border:1px solid color-mix(in oklab,#8b5cf6 30%,#2a2440);border-radius:99px;padding:4px 9px}
+  .vbadge svg{width:14px;height:14px;color:#9b7bff}
+  .field label{display:block;font-size:12px;font-weight:600;color:#c9c2e6;margin-bottom:6px}
+  .field .inp{display:flex;align-items:center;gap:2px;background:#0f0e17;border:1px solid #2a2440;border-radius:10px;padding:11px 12px}
+  .field .inp .pre{color:#a7a0c4;font-weight:600}
+  .field .inp input{flex:1;background:transparent;border:0;outline:0;color:#f1edff;font-family:'Sora';font-weight:700;font-size:18px;width:100%}
+  .field .inp.focus{border-color:#8b5cf6;box-shadow:0 0 0 3px rgba(139,92,246,.22)}
+  .field .inp.err{border-color:#f0555a}
+  .field .help{font-size:12px;color:#a7a0c4;margin-top:6px}
+  .field .help.err{color:#ff8489}
+
+  /* contrast table */
+  table.ctab{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}
+  table.ctab th,table.ctab td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border)}
+  table.ctab th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  table.ctab td.mono{font-family:var(--mono);font-size:12px}
+  .swin{display:inline-block;width:13px;height:13px;border-radius:3px;vertical-align:-2px;margin-right:7px;border:1px solid rgba(255,255,255,.15)}
+  .pass{color:#5fdb8f;font-weight:700}
+  .ratio{font-family:var(--mono);font-weight:700;color:var(--text)}
+
+  .foot-note{margin-top:40px;padding:16px 18px;border:1px dashed var(--border);border-radius:12px;font-size:13.5px;color:#b0b0b0}
+  .foot-note b{color:var(--text)}
+
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+  /* unified-sidebar (Signal) - injected by _unify_sidebar.py; keep colours in sync with concept/directions.html + ui-visual/_theme.css --rm-* */
+  .sidebar{background:#14121f;border-right-color:#2a2440}
+  .sidebar-brand{border-bottom-color:#2a2440}
+  .sidebar-project-name{color:#9b7bff}
+  .sidebar-page-link{color:#d7d3e6}
+  .sidebar-page-link:hover:not(.planned){background:rgba(255,255,255,.04)}
+  .sidebar-page-link.active{color:#9b7bff}
+  .sidebar-page-link.planned{color:#8b86a3}
+  .sidebar-page-link.planned::after{color:#8b86a3;border-color:#2a2440;background:rgba(255,255,255,.04)}
+  .sidebar-page-link.planned.next::after{color:#9b7bff;border-color:#8b5cf6}
+  .sidebar-divider{color:#8b86a3}
+  .sidebar-sub-link{color:#8b86a3}
+  .sidebar-sub-link:hover{color:#d7d3e6}
+  .sidebar-sub-link.active{color:#d7d3e6}
+  .sidebar-sub-link.active::before{background:#9b7bff}
+  .sidebar-back{color:#8b86a3;border-bottom-color:#2a2440}
+  .sidebar-back:hover{color:#9b7bff}
+  .sidebar-sub-head{color:#8b86a3}
+  .sidebar-note{color:#8b86a3}
+  .menu-toggle{background:#151322;border-color:#2a2440}
+  .menu-toggle span{background:#e8eaf0}
+</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation"><span></span><span></span><span></span></button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><div class="sidebar-project-name">Prediction Market</div></div>
+  <div class="sidebar-nav">
+    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
+    <a href="../user-research/personas.html" class="sidebar-page-link">User Research</a>
+    <a href="../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
+    <div class="sidebar-divider">Plan</div>
+    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
+    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
+    <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
+    <div class="sidebar-divider">Design and Delivery</div>
+    <a href="directions.html" class="sidebar-page-link">Directions</a>
+    <a class="sidebar-page-link active">Concept</a>
+    <div class="sidebar-sub">
+      <a href="#live" class="sidebar-sub-link">Language, live</a>
+      <a href="#palette" class="sidebar-sub-link">Palette</a>
+      <a href="#type" class="sidebar-sub-link">Typography</a>
+      <a href="#form" class="sidebar-sub-link">Form</a>
+      <a href="#photo" class="sidebar-sub-link">Photography</a>
+      <a href="#icons" class="sidebar-sub-link">Icons</a>
+      <a href="#components" class="sidebar-sub-link">Components</a>
+      <a href="#contrast" class="sidebar-sub-link">Contrast</a>
+    </div>
+    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
+    <a class="sidebar-page-link planned next">Tokens + Components</a>
+    <a class="sidebar-page-link planned">Design System</a>
+    <a class="sidebar-page-link planned">Responsive</a>
+    <a class="sidebar-page-link planned">Animation</a>
+    <a class="sidebar-page-link planned">Handoff</a>
+  </div>
+</aside>
+
+<!-- icon sprite (Solar-style monoline) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15l5-5 3 3 6-7"/><path d="M15 6h5v5"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v16l-5-3.2L7 20z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4a5 5 0 0 1 5 5v3l1.7 2.6a.7.7 0 0 1-.6 1.1H5.9a.7.7 0 0 1-.6-1.1L7 12V9a5 5 0 0 1 5-5z"/><path d="M10 19a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 6 12 6s9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"/><circle cx="12" cy="12" r="2.6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4.3l3 1.8"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11"/><path d="M8 7l4-4 4 4"/><path d="M6 13v6h12v-6"/></symbol>
+</defs></svg>
+
+<main>
+<div class="doc">
+
+  <section id="top">
+    <div class="section-label">Stage 06 · Concept</div>
+    <h1>Signal <em>the visual language</em></h1>
+    <p class="lede">A dark, high-contrast register for a spectator with an opinion. Electric violet leads, a single acid-lime highlight, green and red kept for outcomes, real event photography as a small thumbnail. Every decision below traces to an attribute (A1 to A5 in concept.md) or to the designer taste, never to a reflex.</p>
+    <div class="locks">
+      <span><b>Base:</b> Revolut method on dark</span>
+      <span><b>Ledger card:</b> N26</span>
+      <span><b>Restraint:</b> Monzo, accent = action</span>
+      <span><b>Energy:</b> MELEE / Jupiter taste</span>
+      <span><b>Binary card:</b> B · <b>Multi:</b> D</span>
+    </div>
+  </section>
+
+  <section id="live">
+    <div class="section-label">Language, live</div>
+    <h2>The two feed cards, in the chosen treatments</h2>
+    <p class="sub">Structure and content are owned by <span style="font-family:var(--mono);color:#bdbdbd">wireframes/event-feed.html</span>; this layer only colors them. Binary = treatment B (odds bar), multi = treatment D (option rows). <span class="att">A1</span> <span class="att">A2</span> <span class="att">A3</span> <span class="att">A5</span></p>
+    <div class="live-grid stand">
+      <div>
+        <article class="card">
+          <div class="card-body">
+            <div class="top">
+              <img class="thumb" src="assets/event-politics.jpg" alt="Government chamber">
+              <a class="q" href="#">Will the US government shut down before March 1, 2027?</a>
+            </div>
+            <p class="why"><svg><use href="#i-trend"/></svg><span>Funding talks have <b>stalled twice</b> this quarter, but past deadlines settled late.</span></p>
+            <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div><div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
+            <div class="yesno"><button class="btn yes">YES</button><button class="btn no">NO</button></div>
+            <p class="meta"><span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span><button class="bookmark-btn" aria-label="Save"><svg><use href="#i-bookmark"/></svg></button></p>
+          </div>
+        </article>
+        <p class="spec-cap"><b>Binary · B.</b> Thumbnail, why, odds bar, YES/NO, meta.</p>
+      </div>
+      <div>
+        <article class="card">
+          <div class="card-body">
+            <div class="top">
+              <img class="thumb" src="assets/event-politics.jpg" alt="Parliament">
+              <a class="q" href="#">Which party will win the most seats in the next UK general election?</a>
+            </div>
+            <p class="why"><svg><use href="#i-trend"/></svg><span>Two parties are <b>within the margin of error</b> in recent polls.</span></p>
+            <div class="options">
+              <div class="opt-row"><span class="opt-name">Labour</span><span class="opt-prob">44%</span><span class="yesno compact"><button class="btn yes">YES</button><button class="btn no">NO</button></span></div>
+              <div class="opt-row"><span class="opt-name">Conservatives</span><span class="opt-prob">33%</span><span class="yesno compact"><button class="btn yes">YES</button><button class="btn no">NO</button></span></div>
+            </div>
+            <p class="meta"><span class="meta-txt"><span>Volume: $58,700</span><span>Closes: Jul 1, 2027</span></span><button class="bookmark-btn" aria-label="Save"><svg><use href="#i-bookmark"/></svg></button></p>
+          </div>
+        </article>
+        <p class="spec-cap"><b>Multi · D.</b> Thumbnail, why, option rows, meta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="palette">
+    <div class="section-label">Palette</div>
+    <h2>Every color earns its place</h2>
+    <p class="sub">Neutrals are tilted toward the violet brand, not pure grey. The accent is rare and only ever action or active. Green and red never double as the brand. Each swatch names the attribute it serves.</p>
+    <div class="pal">
+      <div class="c"><div class="sw" style="background:#0b0a12"></div><div class="b"><div class="n">Canvas</div><div class="hex">#0B0A12</div><div class="role">Page base, near-black with a violet tilt <span class="att">A1</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#151322"></div><div class="b"><div class="n">Surface</div><div class="hex">#151322</div><div class="role">Cards, raised blocks <span class="att">A1</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#1d1a2e"></div><div class="b"><div class="n">Surface 2</div><div class="hex">#1D1A2E</div><div class="role">Option rows, nested <span class="att">A3</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#2a2440"></div><div class="b"><div class="n">Border</div><div class="hex">#2A2440</div><div class="role">Hairlines, tilted to violet <span class="att">A2</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#f1edff"></div><div class="b"><div class="n">Ink</div><div class="hex">#F1EDFF</div><div class="role">Primary text, 17:1 on canvas <span class="att">A2</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#a7a0c4"></div><div class="b"><div class="n">Muted</div><div class="hex">#A7A0C4</div><div class="role">Secondary text, why line <span class="att">A3</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#8b5cf6"></div><div class="b"><div class="n">Brand</div><div class="hex">#8B5CF6</div><div class="role">Action, active, glow. Text tint #9B7BFF <span class="att">A2</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#c9f24e"></div><div class="b"><div class="n">Lime</div><div class="hex">#C9F24E</div><div class="role">Highlight, live pulse, sparingly <span class="att">A1</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#2fbf73"></div><div class="b"><div class="n">Yes</div><div class="hex">#2FBF73</div><div class="role">Outcome only, never brand <span class="att">A3</span></div></div></div>
+      <div class="c"><div class="sw" style="background:#f0555a"></div><div class="b"><div class="n">No</div><div class="hex">#F0555A</div><div class="role">Outcome only, never alarm chrome <span class="att">A3</span></div></div></div>
+    </div>
+  </section>
+
+  <section id="type">
+    <div class="section-label">Typography</div>
+    <h2>Sora for the voice, Inter for the read</h2>
+    <p class="sub">A geometric display against a neutral workhorse, paired on a contrast axis. Sora carries questions and numbers with confidence; Inter carries the why line and meta, quietly. <span class="att">A2</span> <span class="att">A3</span></p>
+    <div class="type-row"><div class="meta-t">Sora 800 · display · 40px / -0.02em</div><div class="t-display">Will Bitcoin close above $150,000?</div></div>
+    <div class="type-row"><div class="meta-t">Sora 700 · heading · 26px</div><div class="t-h2">Trading closed. The market resolved YES.</div></div>
+    <div class="type-row"><div class="meta-t">Inter 400 · body · 16px</div><div class="t-body">Funding talks have stalled twice this quarter, but past deadlines settled late. The floor vote is the last hurdle before recess.</div></div>
+    <div class="type-row"><div class="meta-t">Inter 500 · small / meta · 13px</div><div class="t-small">Volume: $84,200 · Closes: Mar 1, 2027</div></div>
+  </section>
+
+  <section id="form">
+    <div class="section-label">Form</div>
+    <h2>Radius, elevation, spacing</h2>
+    <p class="sub">Soft but not round. Depth comes from a single violet glow, not heavy shadows. <span class="att">A1</span> <span class="att">A2</span></p>
+    <div class="tokens">
+      <div class="tok"><div class="demo" style="border-radius:16px"></div><div class="k">Card</div><div class="v">radius 16px</div></div>
+      <div class="tok"><div class="demo" style="border-radius:10px"></div><div class="k">Button</div><div class="v">radius 10px</div></div>
+      <div class="tok"><div class="demo" style="border-radius:12px"></div><div class="k">Thumbnail</div><div class="v">radius 12px</div></div>
+      <div class="tok"><div class="demo" style="border-radius:999px;height:16px;margin-top:14px"></div><div class="k">Pill / chip</div><div class="v">radius 999px</div></div>
+      <div class="tok"><div class="demo glow" style="border-radius:16px"></div><div class="k">Elevation</div><div class="v">violet glow, no black shadow</div></div>
+    </div>
+    <div class="space-scale">
+      <div><div class="s" style="height:4px"></div><div class="lab">4</div></div>
+      <div><div class="s" style="height:8px"></div><div class="lab">8</div></div>
+      <div><div class="s" style="height:12px"></div><div class="lab">12</div></div>
+      <div><div class="s" style="height:16px"></div><div class="lab">16</div></div>
+      <div><div class="s" style="height:24px"></div><div class="lab">24</div></div>
+      <div><div class="s" style="height:44px"></div><div class="lab">44</div></div>
+    </div>
+  </section>
+
+  <section id="photo">
+    <div class="section-label">Photography</div>
+    <h2>A real event, at thumbnail size</h2>
+    <p class="sub">The photo makes a market feel like news, not a bare question, and it stays a small thumbnail so the number and the why still lead. Real Unsplash shots by subject, stored in <span style="font-family:var(--mono);color:#bdbdbd">concept/assets/</span> for offline and GitHub Pages. Never a grey placeholder. <span class="att">A5</span></p>
+    <div class="stand"><div class="thumbs">
+      <img src="assets/event-politics.jpg" alt="Politics">
+      <img src="assets/event-crypto.jpg" alt="Crypto">
+      <img src="assets/event-sports.jpg" alt="Sports">
+      <img src="assets/spare-markets-dark.jpg" alt="Markets">
+    </div></div>
+    <p class="src-list">
+      Politics: <b>unsplash.com/photo-1529107386315-e1a2ed48a620</b> (parliament)<br>
+      Crypto: <b>unsplash.com/photo-1621761191319-c6fb62004040</b> (markets app)<br>
+      Sports: <b>unsplash.com/photo-1522778119026-d647f0596c20</b> (stadium)<br>
+      Markets (dark): <b>unsplash.com/photo-1611974789855-9c2a0a7236a3</b>
+    </p>
+  </section>
+
+  <section id="icons">
+    <div class="section-label">Icons</div>
+    <h2>Solar, monoline, inline SVG</h2>
+    <p class="sub">One weight, rounded joins, drawn in the interface not as art. Coverage: bottom tab bar, card meta, verification badge, buttons, and states. <span class="att">A3</span></p>
+    <div class="icgrid">
+      <div class="ic-cell"><svg><use href="#i-bell"/></svg><span>Notify</span></div>
+      <div class="ic-cell"><svg><use href="#i-shield"/></svg><span>Verify</span></div>
+      <div class="ic-cell"><svg><use href="#i-trend"/></svg><span>Why / move</span></div>
+      <div class="ic-cell"><svg><use href="#i-bookmark"/></svg><span>Save</span></div>
+      <div class="ic-cell"><svg><use href="#i-eye"/></svg><span>Volume</span></div>
+      <div class="ic-cell"><svg><use href="#i-clock"/></svg><span>Closes</span></div>
+      <div class="ic-cell"><svg><use href="#i-share"/></svg><span>Share</span></div>
+    </div>
+  </section>
+
+  <section id="components">
+    <div class="section-label">Components</div>
+    <h2>Three live pieces</h2>
+    <p class="sub">The action button set, a card with a verification badge, and a form field. Real product copy, product voice. <span class="att">A2</span> <span class="att">A3</span> <span class="att">A4</span></p>
+    <div class="comp">
+      <div class="comp-card">
+        <h3>Action buttons</h3>
+        <div class="btn-lab">Primary</div><button class="pbtn primary">Confirm bet</button>
+        <div class="btn-lab">Secondary</div><button class="pbtn secondary">Add funds</button>
+        <div class="btn-lab">Outcome</div>
+        <div style="display:flex;gap:8px"><button class="pbtn yes">YES</button><button class="pbtn no">NO</button></div>
+        <div class="btn-lab">Disabled</div><button class="pbtn disabled" disabled>Confirm bet</button>
+      </div>
+      <div class="comp-card">
+        <h3>Card with verification badge</h3>
+        <div class="vcard">
+          <img class="vthumb" src="assets/event-sports.jpg" alt="Stadium">
+          <div class="vb">
+            <div class="vq">Will the host nation reach the final?</div>
+            <div class="vbadge"><svg><use href="#i-shield"/></svg> Resolves on-chain</div>
+          </div>
+        </div>
+        <p class="spec-cap" style="margin-top:10px">The trust signal is a component, shown where money or resolution is at stake. <span class="att">A4</span></p>
+      </div>
+      <div class="comp-card">
+        <h3>Form field</h3>
+        <div class="field" style="margin-bottom:16px">
+          <label>Amount</label>
+          <div class="inp focus"><span class="pre">$</span><input value="5" aria-label="Amount"></div>
+          <div class="help">Minimum $1. Default $5.</div>
+        </div>
+        <div class="field">
+          <label>Amount</label>
+          <div class="inp err"><span class="pre">$</span><input value="0" aria-label="Amount"></div>
+          <div class="help err">Enter at least $1.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contrast">
+    <div class="section-label">Contrast · WCAG AA</div>
+    <h2>Every text pair checked</h2>
+    <p class="sub">Ratios computed, not eyeballed. Body needs 4.5:1, large and button text 3:1. The one pair that failed (brand violet as small text) is fixed with a lighter text tint #9B7BFF.</p>
+    <div style="overflow-x:auto">
+    <table class="ctab">
+      <thead><tr><th>Text</th><th>On</th><th>Ratio</th><th>Use</th><th>AA</th></tr></thead>
+      <tbody>
+        <tr><td><span class="swin" style="background:#f1edff"></span>Ink #F1EDFF</td><td class="mono">Canvas #0B0A12</td><td class="ratio">17.16</td><td>body</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#f1edff"></span>Ink #F1EDFF</td><td class="mono">Surface #151322</td><td class="ratio">15.94</td><td>body</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#a7a0c4"></span>Muted #A7A0C4</td><td class="mono">Canvas #0B0A12</td><td class="ratio">7.94</td><td>body</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#a7a0c4"></span>Muted #A7A0C4</td><td class="mono">Surface #151322</td><td class="ratio">7.38</td><td>body</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#9b7bff"></span>Brand text #9B7BFF</td><td class="mono">Surface #151322</td><td class="ratio">5.81</td><td>link</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#9b7bff"></span>Brand text #9B7BFF</td><td class="mono">Canvas #0B0A12</td><td class="ratio">6.26</td><td>link</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#c9f24e"></span>Lime #C9F24E</td><td class="mono">Canvas #0B0A12</td><td class="ratio">15.28</td><td>large</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#2fbf73"></span>Yes #2FBF73</td><td class="mono">Surface #151322</td><td class="ratio">7.68</td><td>label</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#f0555a"></span>No #F0555A</td><td class="mono">Surface #151322</td><td class="ratio">5.36</td><td>label</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#04210e"></span>Text #04210E</td><td class="mono">Yes button #2FBF73</td><td class="ratio">7.18</td><td>button</td><td class="pass">PASS</td></tr>
+        <tr><td><span class="swin" style="background:#ffffff"></span>Text #FFFFFF</td><td class="mono">No button #F0555A</td><td class="ratio">3.41</td><td>button</td><td class="pass">PASS</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <p class="foot-note"><b>Next (Step 5):</b> apply Signal to the reference screen, a color COPY of <span style="font-family:var(--mono)">wireframes/event-feed.html</span> in <span style="font-family:var(--mono)">ui-visual/</span>, with all its states. The wireframe stays grey; the copy owns only the visual layer. The two shelved directions (Newsroom, Arena) and treatments E, F, G stay recorded in concept.md.</p>
+
+</div>
+</main>
+
+<script>
+  const sidebar=document.getElementById('sidebar');
+  const overlay=document.getElementById('sidebarOverlay');
+  const toggle=document.getElementById('menuToggle');
+  const openS=()=>{sidebar.classList.add('open');overlay.classList.add('open')};
+  const closeS=()=>{sidebar.classList.remove('open');overlay.classList.remove('open')};
+  toggle.addEventListener('click',openS);
+  overlay.addEventListener('click',closeS);
+  document.querySelectorAll('.sidebar-sub-link').forEach(l=>l.addEventListener('click',()=>{if(window.innerWidth<860)closeS()}));
+  const subLinks=document.querySelectorAll('.sidebar-sub-link');
+  const sections=[...subLinks].map(l=>document.getElementById(l.getAttribute('href').slice(1)));
+  const setActive=id=>subLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
+  const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)setActive(e.target.id)}),{rootMargin:'-15% 0px -75% 0px'});
+  sections.forEach(s=>s&&observer.observe(s));
+  if(sections[0])setActive(sections[0].id);
+</script>
+</body>
+</html>
