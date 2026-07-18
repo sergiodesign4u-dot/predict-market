@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Concept - Event Feed (loading state)</title>
+  <title>UI Visual - General Events (Vault 3D)</title>
   <style>
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
@@ -395,7 +395,7 @@
         <a href="event-feed.html" class="sidebar-sub-link">success</a>
         <a href="event-feed-empty.html" class="sidebar-sub-link">empty</a>
         <a href="event-feed-error.html" class="sidebar-sub-link">error</a>
-        <a href="event-feed-loading.html" class="sidebar-sub-link active">loading</a>
+        <a href="event-feed-loading.html" class="sidebar-sub-link">loading</a>
         <a href="event-feed-push-permission-missing.html" class="sidebar-sub-link">push-permission-missing</a>
         <div class="sidebar-sub-head">Logged out</div>
         <a href="event-feed-logged-out.html" class="sidebar-sub-link">success</a>
@@ -406,7 +406,7 @@
         <a href="event-feed-politics.html" class="sidebar-sub-link">Politics</a>
         <a href="event-feed-crypto.html" class="sidebar-sub-link">Crypto</a>
         <a href="event-feed-culture.html" class="sidebar-sub-link">Culture</a>
-        <a href="event-feed-general.html" class="sidebar-sub-link">General</a>
+        <a href="event-feed-general.html" class="sidebar-sub-link active">General</a>
       </div>
       <a class="sidebar-page-link planned">Event Detail</a>
       <a class="sidebar-page-link planned">Bet / Confirm</a>
@@ -417,7 +417,7 @@
   </aside>
 
   <div class="uv-bar">
-    <span class="tag">Color copy of wireframes/event-feed-loading.html</span>
+    <span class="tag">Color copy of wireframes/event-feed.html</span>
     <span class="sep">·</span>
     <a href="../concept/concept.html">Concept stand</a>
     <span class="sep">·</span>
@@ -759,11 +759,11 @@
            Small, icon-less chips (the full bar below keeps its icons). -->
       <div class="cat-condensed" aria-hidden="true">
         <ul>
-          <li aria-current="page"><a href="event-feed.html"><button type="button">Trending</button></a></li>
+          <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
           <li><a href="event-feed-politics.html"><button type="button">Politics</button></a></li>
           <li><a href="event-feed-crypto.html"><button type="button">Crypto</button></a></li>
           <li><a href="event-feed-culture.html"><button type="button">Culture</button></a></li>
-          <li><a href="event-feed-general.html"><button type="button">General</button></a></li>
+          <li aria-current="page"><a href="event-feed-general.html"><button type="button">General</button></a></li>
         </ul>
       </div>
     </header>
@@ -788,21 +788,24 @@
     <!-- Feed -->
     <main class="feed">
       <div class="feed-inner">
+
+        <!-- Categories, on the content plate, reference-styled with icons -->
         <nav class="cat-nav" aria-label="Categories (second level)">
           <ul>
-            <li aria-current="page"><a href="event-feed.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></button></a></li>
+            <li><a href="event-feed.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></button></a></li>
             <li><a href="event-feed-politics.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></button></a></li>
             <li><a href="event-feed-crypto.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></button></a></li>
             <li><a href="event-feed-culture.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></button></a></li>
-            <li><a href="event-feed-general.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></button></a></li>
+            <li aria-current="page"><a href="event-feed-general.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></button></a></li>
           </ul>
         </nav>
-        <div class="cat-layout">
-        <div class="cat-main">
 
+        <div class="cat-layout">
+        <nav class="subcat" id="subcatRail" hidden aria-label="Sub-categories"></nav>
+        <div class="cat-main">
         <div class="feed-head">
           <!-- Heading echoes the active category (here: Trending), not a generic "Live events". -->
-          <h2 id="feedHeading">Trending</h2>
+          <h2 id="feedHeading">General</h2>
 
           <!-- Kalshi-style filter row: Sort, Frequency, Category. Each label shows the current value. -->
           <div class="feed-controls">
@@ -845,82 +848,151 @@
           </div>
         </div>
 
-        <div class="grid" aria-busy="true">
+        <div class="grid">
 
-          <article class="card skeleton" aria-hidden="true">
+          <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="sk-thumb"></span>
-                <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+                <span class="thumb">thumbnail placeholder</span>
+                <div class="top-txt"><a class="q" href="#">Will 2026 be confirmed as one of the three warmest years on record before April 1, 2027?</a><p class="why">The year is tracking near record heat through the first quarter.</p></div>
               </div>
-              <span class="sk-line w40"></span>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-              <span class="sk-line w60"></span>
+              <p class="prob-line">YES <span class="prob">55%</span></p>
+              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $26,300</span><span>Closes: Apr 1, 2027</span></span>
+                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
             </div>
           </article>
 
-          <article class="card skeleton" aria-hidden="true">
+          <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="sk-thumb"></span>
-                <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+                <span class="thumb">thumbnail placeholder</span>
+                <div class="top-txt"><a class="q" href="#">Will a new monthly global temperature record be set before September 1, 2026?</a><p class="why">Recent months have run close to prior highs.</p></div>
               </div>
-              <span class="sk-line w40"></span>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-              <span class="sk-line w60"></span>
+              <p class="prob-line">YES <span class="prob">48%</span></p>
+              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $17,600</span><span>Closes: Sep 1, 2026</span></span>
+                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
             </div>
           </article>
 
-          <article class="card skeleton" aria-hidden="true">
+          <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="sk-thumb"></span>
-                <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+                <span class="thumb">thumbnail placeholder</span>
+                <div class="top-txt"><a class="q" href="#">Will a crewed mission return from lunar orbit before January 1, 2028?</a><p class="why">The flight is on the schedule but the launch date keeps moving.</p></div>
               </div>
-              <span class="sk-line w40"></span>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-              <span class="sk-line w60"></span>
+              <p class="prob-line">YES <span class="prob">39%</span></p>
+              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $30,200</span><span>Closes: Jan 1, 2028</span></span>
+                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
             </div>
           </article>
 
-          <article class="card skeleton" aria-hidden="true">
+          <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="sk-thumb"></span>
-                <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+                <span class="thumb">thumbnail placeholder</span>
+                <div class="top-txt"><a class="q" href="#">Will a Category 5 hurricane form in the Atlantic during the 2026 season?</a><p class="why">Forecasters are calling for warmer than average ocean temperatures.</p></div>
               </div>
-              <span class="sk-line w40"></span>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-              <span class="sk-line w60"></span>
+              <p class="prob-line">YES <span class="prob">62%</span></p>
+              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $22,900</span><span>Closes: Nov 30, 2026</span></span>
+                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
             </div>
           </article>
 
-          <article class="card skeleton" aria-hidden="true">
+          <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="sk-thumb"></span>
-                <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+                <span class="thumb">thumbnail placeholder</span>
+                <div class="top-txt"><a class="q" href="#">Will global renewable capacity set a new annual record in 2026?</a><p class="why">Installations are running ahead of last year through the first half.</p></div>
               </div>
-              <span class="sk-line w40"></span>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-              <span class="sk-line w60"></span>
+              <p class="prob-line">YES <span class="prob">74%</span></p>
+              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $15,400</span><span>Closes: Dec 31, 2026</span></span>
+                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
             </div>
           </article>
 
-          <article class="card skeleton" aria-hidden="true">
+          <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="sk-thumb"></span>
-                <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+                <span class="thumb">thumbnail placeholder</span>
+                <div class="top-txt"><a class="q" href="#">Which energy source will add the most new capacity in 2026?</a><p class="why">The two leaders are close on projects already under construction.</p></div>
               </div>
-              <span class="sk-line w40"></span>
-              <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
-              <span class="sk-line w60"></span>
+              <div class="options">
+                <div class="opt-row"><span class="opt-name">Solar</span><span class="opt-prob">51%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
+                <div class="opt-row"><span class="opt-name">Wind</span><span class="opt-prob">32%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
+              </div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $19,700</span><span>Closes: Dec 31, 2026</span></span>
+                <button type="button" class="bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
             </div>
           </article>
 
         </div>
-      </div><!-- /cat-main --></div><!-- /cat-layout -->
+
+        <!-- Load more (concept stand: shows the feed keeps paging) -->
+        <div class="load-more-wrap">
+          <button type="button" class="load-more" id="loadMore">Load more events</button>
+        </div>
+        </div><!-- /cat-main -->
+        </div><!-- /cat-layout -->
+
+        <!-- SEO content sections (below the fold, WF reconcile) - on their own stone plate,
+             framed like the brand social tile (brass notched edge + brand statement) -->
+        <div class="feed-seo-wrap">
+        <div class="seo-text">
+        <section class="feed-seo" aria-label="How betting works here">
+          <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-guide"/></svg>How betting works here</h2>
+          <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+        </section>
+        <section class="feed-seo" aria-label="Why the odds move">
+          <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-chart"/></svg>Why the odds move</h2>
+          <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+        </section>
+        <section class="feed-seo" aria-label="Common questions">
+          <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-qa"/></svg>Common questions</h2>
+          <dl>
+            <dt>Do I need crypto to start?</dt>
+            <dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd>
+            <dt>What is the smallest bet?</dt>
+            <dd>One dollar. The default is five.</dd>
+            <dt>How does an event resolve?</dt>
+            <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
+          </dl>
+        </section>
+        </div><!-- /seo-text -->
+        <aside class="seo-brand">
+          <svg class="seo-tick" viewBox="0 0 26 18" aria-hidden="true"><path d="M2 15 L9 7 L13 10 L24 2" fill="none" stroke="#c99e3f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="seo-tagline">Not just news.<br>Your <em>stake.</em></p>
+          <span class="seo-by">Predict Market</span>
+        </aside>
+        </div><!-- /feed-seo-wrap -->
       </div>
     </main>
     </div><!-- /app-case -->

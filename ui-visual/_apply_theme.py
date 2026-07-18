@@ -69,13 +69,34 @@ def distill(frag):
     return frag
 
 
+# The themed second-level category bar lives inside <main> on the reference screen,
+# so swapping the whole <main> would drop it. Grab it once and re-inject it into each
+# state main, and put the head + state content on the same stone plate the feed uses,
+# so a state page reads as "the same feed, minus the cards", not a decapitated page.
+_, _, SHELL_CATNAV = block(SHELL, '<nav class="cat-nav"', "</nav>")
+
+
+def wrap_state_main(main_frag):
+    """Add the category bar and wrap the head + state content in .cat-layout/.cat-main
+    (the shared stone-plate structure), so states match event-feed.html's chrome."""
+    frag = main_frag.replace(
+        '<div class="feed-inner">',
+        '<div class="feed-inner">\n        ' + SHELL_CATNAV
+        + '\n        <div class="cat-layout">\n        <div class="cat-main">',
+        1,
+    )
+    cut = frag.rfind("</div>", 0, frag.rfind("</main>"))   # feed-inner's closing tag
+    return frag[:cut] + "</div><!-- /cat-main --></div><!-- /cat-layout -->\n      " + frag[cut:]
+
+
 def build(slug, wf_name, logged_out, title_suffix):
     wf = (WF / wf_name).read_text()
     out = SHELL
 
-    # main (always)
+    # main (always). Inject the category bar + shared plate AFTER neutralize so the
+    # bar's real category hrefs (event-feed-politics.html ...) survive and navigate.
     _, _, wf_main = block(wf, '<main class="feed">', "</main>")
-    out = swap(out, '<main class="feed">', "</main>", distill(neutralize(wf_main)))
+    out = swap(out, '<main class="feed">', "</main>", wrap_state_main(distill(neutralize(wf_main))))
 
     if logged_out:
         _, _, wf_header = block(wf, '<header class="app-header">', "</header>")

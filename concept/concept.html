@@ -145,17 +145,23 @@
   .fc-thumb{width:58px;height:58px;flex:0 0 58px;border-radius:12px;border:1px solid var(--brass-line);object-fit:cover;background:#0c0e11}
   .fc-q{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;line-height:1.16;letter-spacing:-.01em;color:var(--ink)}
   .fc-why{font-size:12.5px;color:var(--dim);margin-bottom:14px}
-  .oddsbar .track{height:9px;border-radius:99px;overflow:hidden;display:flex;background:var(--no)}
-  .oddsbar .fill{height:100%;background:var(--yes)}
+  /* thin bar + brass-less glow, exactly as ui-visual/_theme.css ships it */
+  .oddsbar .track{height:5px;border-radius:99px;overflow:hidden;display:flex;background:var(--no)}
+  .oddsbar .fill{height:100%;background:var(--yes);box-shadow:0 0 12px color-mix(in oklab,var(--yes) 55%,transparent)}
   .oddsbar .lbls{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;font-weight:700}
   .l-yes{color:var(--yes)}.l-no{color:var(--no)}
   .yesno{display:flex;gap:9px;margin:13px 0 0}
-  .yesno .btn{flex:1;min-height:44px;border-radius:12px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;cursor:pointer}
-  .yesno .yes{background:rgba(79,169,107,.12);color:#77d19b;border:1px solid #3f7d55}
-  .yesno .no{background:rgba(200,90,80,.12);color:#e79087;border:1px solid #8f4841}
+  .yesno .btn{flex:1;min-height:44px;border-radius:9px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:background .15s ease,border-color .15s ease}
+  /* tinted, not full-fill: the odds bar carries the colour, the buttons stay quiet
+     (spectator, not trader) - the shipped YES/NO tints, to the hex */
+  .yesno .yes{background:#123726;color:#4fd694;border:1px solid #2c6f4b}
+  .yesno .no{background:#3a1620;color:#ff868a;border:1px solid #8a3b40}
+  .yesno .yes:hover{background:color-mix(in oklab,var(--yes) 32%,#1c1f24);border-color:var(--yes)}
+  .yesno .no:hover{background:color-mix(in oklab,var(--no) 32%,#1c1f24);border-color:var(--no)}
   .fc-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:13px;padding-top:11px;font-family:var(--mono);font-size:11px;color:var(--dim);
     border-top:1px solid var(--groove-d);box-shadow:0 1px 0 var(--groove-l)}
   .fc-meta b{color:var(--ink);font-weight:600}
+  .fc-bk{width:15px;height:15px;flex:0 0 15px;fill:none;stroke:var(--dim);stroke-width:1.6;stroke-linejoin:round}
 
   /* --- 06 social tile: notched brass frame (Image #10) --- */
   .tile{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:#0e1013;
@@ -169,6 +175,20 @@
   .tile .by{position:absolute;left:26px;bottom:26px;font-size:12px;color:var(--brass-2)}
   .tile .inset{inset:14px;clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%)}
   .tile .inset::after{bottom:20px;width:32px}
+
+  /* --- 07 controls: one graphite chip family (cat-nav + filters + load-more) --- */
+  .ctrl-set{display:flex;flex-direction:column;gap:16px}
+  .ctrl-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .ctrl-chip{display:inline-flex;align-items:center;gap:10px;background:#1b1e23;
+    border:1px solid rgba(255,255,255,.06);border-radius:12px;color:#e9e3d7;
+    font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;padding:10px 17px;cursor:pointer}
+  .ctrl-chip svg{width:17px;height:17px;fill:currentColor;opacity:.9}
+  .ctrl-chip.active{background:rgba(199,162,78,.08);border-color:rgba(199,162,78,.42);
+    color:#e7d6a6;box-shadow:0 0 10px -8px rgba(199,162,78,.35)}
+  .ctrl-load{background:#1b1e23;border:1px solid rgba(255,255,255,.06);border-radius:12px;
+    color:#e9e3d7;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;
+    min-height:44px;padding:12px 24px;box-shadow:inset 0 1px 0 var(--groove-l);cursor:pointer}
+  .ctrl-cap{font-size:12px;color:var(--dim);max-width:34ch}
 
   .locks{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
   .locks span{font-size:12px;color:#d7cfbf;background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:7px 13px}
@@ -198,6 +218,7 @@
       <a href="#icons" class="sidebar-sub-link">Icons</a>
       <a href="#ui" class="sidebar-sub-link">UI direction</a>
       <a href="#social" class="sidebar-sub-link">Social tile</a>
+      <a href="#controls" class="sidebar-sub-link">Controls</a>
     </div>
     <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
     <a class="sidebar-page-link planned">Tokens + Components</a>
@@ -244,9 +265,9 @@
         <div class="z-label"><b>02</b> Palette</div>
         <div class="swatches">
           <div class="sw"><div class="chip" style="background:#14161a"></div><div class="nm">Graphite</div><div class="hx">#14161A</div></div>
-          <div class="sw"><div class="chip" style="background:#1e2126"></div><div class="nm">Surface</div><div class="hx">#1E2126</div></div>
+          <div class="sw"><div class="chip" style="background:#1c1f24"></div><div class="nm">Surface</div><div class="hx">#1C1F24</div></div>
           <div class="sw"><div class="chip" style="background:#ede7da"></div><div class="nm">Off-white</div><div class="hx">#EDE7DA</div></div>
-          <div class="sw"><div class="chip" style="background:#8c8578"></div><div class="nm">Stone</div><div class="hx">#8C8578</div></div>
+          <div class="sw"><div class="chip" style="background:#a49d8f"></div><div class="nm">Stone</div><div class="hx">#A49D8F</div></div>
           <div class="sw"><div class="chip" style="background:#c7a24e"></div><div class="nm">Brass</div><div class="hx">#C7A24E</div></div>
           <div class="sw"><div class="chip" style="background:#6e5a2e"></div><div class="nm">Bronze</div><div class="hx">#6E5A2E</div></div>
           <div class="sw"><div class="chip" style="background:#4fa96b"></div><div class="nm">Green · YES</div><div class="hx">#4FA96B</div></div>
@@ -293,7 +314,7 @@
             <p class="fc-why">Funding talks have stalled twice this quarter, but past deadlines settled late.</p>
             <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div><div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
             <div class="yesno"><button class="btn yes">YES</button><button class="btn no">NO</button></div>
-            <div class="fc-meta"><span>Volume <b>$84,200</b> · Closes <b>Mar 1, 2027</b></span><span>◇</span></div>
+            <div class="fc-meta"><span>Volume <b>$84,200</b> · Closes <b>Mar 1, 2027</b></span><svg class="fc-bk" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg></div>
           </article>
         </div>
       </section>
@@ -316,6 +337,23 @@
         </div>
       </section>
 
+      <!-- 07 controls: the stone-chip control family shipped in the feed -->
+      <section class="panel span-2" id="controls">
+        <div class="inset"></div>
+        <div class="z-label"><b>07</b> Controls &middot; one graphite chip</div>
+        <div class="ctrl-set">
+          <div class="ctrl-row">
+            <button type="button" class="ctrl-chip active"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></svg>Trending</button>
+            <button type="button" class="ctrl-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21.25 8.5c0-1.404 0-2.107-.337-2.611a2 2 0 0 0-.552-.552c-.441-.295-1.034-.332-2.115-.336q.005.438.004.91V7.25h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v6.5h-1.5V6c0-1.886 0-2.828-.586-3.414S14.636 2 12.75 2h-2c-1.886 0-2.828 0-3.414.586S6.75 4.114 6.75 6v15.25h-1.5v-6.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1V5.91q-.001-.47.004-.91c-1.081.005-1.674.042-2.115.337a2 2 0 0 0-.552.552C2.25 6.393 2.25 7.096 2.25 8.5v12.75h-.5a.75.75 0 0 0 0 1.5h20a.75.75 0 0 0 0-1.5h-.5zM9 11.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m2.75 3.5a.75.75 0 0 1 .75.75v2.25H11V19a.75.75 0 0 1 .75-.75M9 6.25a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 6.25m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 9.25" clip-rule="evenodd"/></svg>Politics</button>
+            <button type="button" class="ctrl-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m.75-16a.75.75 0 0 0-1.5 0v.317c-1.63.292-3 1.517-3 3.183c0 1.917 1.813 3.25 3.75 3.25c1.377 0 2.25.906 2.25 1.75s-.873 1.75-2.25 1.75c-1.376 0-2.25-.906-2.25-1.75a.75.75 0 0 0-1.5 0c0 1.666 1.37 2.891 3 3.183V18a.75.75 0 0 0 1.5 0v-.317c1.63-.292 3-1.517 3-3.183c0-1.917-1.813-3.25-3.75-3.25c-1.376 0-2.25-.906-2.25-1.75s.874-1.75 2.25-1.75c1.377 0 2.25.906 2.25 1.75a.75.75 0 0 0 1.5 0c0-1.666-1.37-2.891-3-3.183z" clip-rule="evenodd"/></svg>Crypto</button>
+          </div>
+          <div class="ctrl-row">
+            <button type="button" class="ctrl-load">Load more events</button>
+            <span class="ctrl-cap">Category nav, filters, and paging share one chip: graphite face, hairline rim, 12px radius, brass only on the active tab.</span>
+          </div>
+        </div>
+      </section>
+
     </div>
 
     <div class="locks">
@@ -324,6 +362,7 @@
       <span><b>Depth</b> embossed panels, floating cards</span>
       <span><b>Edge</b> inset brass frame + notched corner</span>
       <span><b>Outcome</b> green / red reserved for YES / NO</span>
+      <span><b>Controls</b> one graphite chip family</span>
     </div>
     <p class="foot-note">Derived from the brand plate in <code>concept/brand-toolkit/</code>. The live colour layer for the feed is <code>ui-visual/_theme.css</code> on <code>event-feed.html</code>.</p>
   </div>
