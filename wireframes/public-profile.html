@@ -367,6 +367,19 @@
     .pos.skeleton .w70 { width: 70%; } .pos.skeleton .w40 { width: 40%; }
     .pos-status { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
 
+    /* ---- Profile: CSS-only radio tabs (Track record / Past wins / Resolved) ---- */
+    .ptabs { margin-top: 14px; }
+    .ptab-in { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    .ptab-bar { display: flex; gap: 4px; border-bottom: 1px solid #bbb; margin-bottom: 12px; overflow-x: auto; }
+    .ptab-lbl { padding: 8px 12px; font-size: 12px; border: 1px solid #bbb; border-bottom: none; background: #e3e3e3; color: #444; cursor: pointer; white-space: nowrap; }
+    .ptab-panel { display: none; }
+    #ptab-record:checked ~ .ptab-bar label[for="ptab-record"],
+    #ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],
+    #ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"] { background: #f4f4f4; font-weight: bold; color: #111; }
+    #ptab-record:checked ~ #p-record,
+    #ptab-wins:checked ~ #p-wins,
+    #ptab-resolved:checked ~ #p-resolved { display: block; }
+
     /* ---- Event Detail two-column: scrolling content + sticky bet panel ---- */
     .ed-layout { display: flex; flex-direction: column; }
     .ed-main { flex: 1; min-width: 0; }
@@ -765,52 +778,66 @@
           <span class="who"><span class="name">crypto_dan</span><br><span class="handle">Public track record &middot; read-only</span></span>
         </div>
         <p class="fine">You opened this from a shared win card. This is a public, read-only track record - no balance or private data is shown.</p>
-        <p class="pos-status" style="margin:12px 0 4px;text-transform:uppercase;letter-spacing:.04em;">Track record</p>
-        <article class="pos" aria-label="Track record">
-          <div class="pos-figures" style="font-size:11px;">
-            <span class="pos-fig">Total bets<b>23</b></span>
-            <span class="pos-fig">Win rate<b>61%</b></span>
-            <span class="pos-fig">Resolved<b>18</b></span>
-            <span class="pos-fig">Member since<b>2026</b></span>
+        <!-- Track record / Past wins / Resolved as CSS-only radio tabs -->
+        <div class="ptabs">
+          <input type="radio" name="ptab" id="ptab-record" class="ptab-in" checked>
+          <input type="radio" name="ptab" id="ptab-wins" class="ptab-in">
+          <input type="radio" name="ptab" id="ptab-resolved" class="ptab-in">
+          <div class="ptab-bar" role="tablist">
+            <label for="ptab-record" class="ptab-lbl">Track record</label>
+            <label for="ptab-wins" class="ptab-lbl">Past wins</label>
+            <label for="ptab-resolved" class="ptab-lbl">Resolved</label>
           </div>
-          <span class="pos-status">Win rate is % correct on resolved bets (public). Reputation = the track record, not the balance.</span>
-        </article>
-        <p class="pos-status" style="margin:12px 0 4px;text-transform:uppercase;letter-spacing:.04em;">Share cards (past wins)</p>
-        <div class="gallery">
-          <div class="card">Win card: US shutdown YES +$13.20</div>
-          <div class="card">Win card: BTC &gt; $150k YES +$6.80</div>
-          <div class="card">Win card: ETF approval NO +$9.40</div>
-        </div>
-        <p class="pos-status" style="margin:12px 0 4px;text-transform:uppercase;letter-spacing:.04em;">Resolved predictions (public)</p>
-        <div class="pos-list">
-          <article class="pos">
-            <div class="pos-top">
-              <span class="pos-q">US government shutdown before Mar 1, 2027</span>
-              <span class="pos-side">WON</span>
+          <section class="ptab-panel" id="p-record" aria-label="Track record">
+            <article class="pos" aria-label="Track record">
+              <div class="pos-figures" style="font-size:11px;">
+                <span class="pos-fig">Total bets<b>23</b></span>
+                <span class="pos-fig">Win rate<b>61%</b></span>
+                <span class="pos-fig">Resolved<b>18</b></span>
+                <span class="pos-fig">Member since<b>2026</b></span>
+              </div>
+              <span class="pos-status">Win rate is % correct on resolved bets (public). Reputation = the track record, not the balance.</span>
+            </article>
+          </section>
+          <section class="ptab-panel" id="p-wins" aria-label="Past wins">
+            <div class="gallery">
+              <div class="card">Win card: US shutdown YES +$13.20</div>
+              <div class="card">Win card: BTC &gt; $150k YES +$6.80</div>
+              <div class="card">Win card: ETF approval NO +$9.40</div>
             </div>
-            <span class="pos-status">YES &middot; resolved Jun 27 &middot; +$13.20</span>
-          </article>
-          <article class="pos">
-            <div class="pos-top">
-              <span class="pos-q">Bitcoin above $150,000 before Oct 1, 2026</span>
-              <span class="pos-side">WON</span>
+          </section>
+          <section class="ptab-panel" id="p-resolved" aria-label="Resolved predictions (public)">
+            <div class="pos-list">
+              <article class="pos">
+                <div class="pos-top">
+                  <span class="pos-q">US government shutdown before Mar 1, 2027</span>
+                  <span class="pos-side">WON</span>
+                </div>
+                <span class="pos-status">YES &middot; resolved Jun 27 &middot; +$13.20</span>
+              </article>
+              <article class="pos">
+                <div class="pos-top">
+                  <span class="pos-q">Bitcoin above $150,000 before Oct 1, 2026</span>
+                  <span class="pos-side">WON</span>
+                </div>
+                <span class="pos-status">YES &middot; resolved Jun 20 &middot; +$6.80</span>
+              </article>
+              <article class="pos">
+                <div class="pos-top">
+                  <span class="pos-q">Spot ETH ETF approved in H1 2027</span>
+                  <span class="pos-side">LOST</span>
+                </div>
+                <span class="pos-status">NO &middot; resolved Jun 12 &middot; -$5.00</span>
+              </article>
+              <article class="pos">
+                <div class="pos-top">
+                  <span class="pos-q">Which party wins the most UK seats</span>
+                  <span class="pos-side">WON</span>
+                </div>
+                <span class="pos-status">NO &middot; Conservatives &middot; resolved Jun 2 &middot; +$11.10</span>
+              </article>
             </div>
-            <span class="pos-status">YES &middot; resolved Jun 20 &middot; +$6.80</span>
-          </article>
-          <article class="pos">
-            <div class="pos-top">
-              <span class="pos-q">Spot ETH ETF approved in H1 2027</span>
-              <span class="pos-side">LOST</span>
-            </div>
-            <span class="pos-status">NO &middot; resolved Jun 12 &middot; -$5.00</span>
-          </article>
-          <article class="pos">
-            <div class="pos-top">
-              <span class="pos-q">Which party wins the most UK seats</span>
-              <span class="pos-side">WON</span>
-            </div>
-            <span class="pos-status">NO &middot; Conservatives &middot; resolved Jun 2 &middot; +$11.10</span>
-          </article>
+          </section>
         </div>
       </div>
     </main>

@@ -363,7 +363,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="_theme.css">
 </head>
-<body>
+<body class="cat-culture">
 
   <!-- Solar Bold icon sprite: filled glyphs referenced via <use>; rendered filled by _theme.css .ic:has(use) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -408,10 +408,112 @@
         <a href="event-feed-culture.html" class="sidebar-sub-link active">Culture</a>
         <a href="event-feed-general.html" class="sidebar-sub-link">General</a>
       </div>
-      <a class="sidebar-page-link planned">Event Detail</a>
-      <a class="sidebar-page-link planned">Bet / Confirm</a>
-      <a class="sidebar-page-link planned">Win / Loss</a>
-      <a class="sidebar-page-link planned">Profile / Portfolio</a>
+      <a class="sidebar-page-link">Event Detail</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Logged in</div>
+        <a href="event-detail.html" class="sidebar-sub-link">binary</a>
+        <a href="event-detail-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-resolved.html" class="sidebar-sub-link">resolved</a>
+        <a href="event-detail-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-detail-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-sub-head">Placing a bet</div>
+        <a href="event-detail-bet-reconcile.html" class="sidebar-sub-link">price moved</a>
+        <a href="event-detail-bet-insufficient.html" class="sidebar-sub-link">low balance</a>
+        <a href="event-detail-bet-processing.html" class="sidebar-sub-link">processing</a>
+        <a href="event-detail-bet-error.html" class="sidebar-sub-link">on-chain error</a>
+        <div class="sidebar-sub-head">Logged out</div>
+        <a href="event-detail-logged-out.html" class="sidebar-sub-link">binary</a>
+        <a href="event-detail-logged-out-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-detail-logged-out-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">My Bets</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Active</div>
+        <a href="active-bets.html" class="sidebar-sub-link">success</a>
+        <a href="active-bets-empty-new.html" class="sidebar-sub-link">empty (new)</a>
+        <a href="active-bets-empty-resolved.html" class="sidebar-sub-link">empty (resolved)</a>
+        <a href="active-bets-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="active-bets-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-sub-head">History</div>
+        <a href="active-bets-history.html" class="sidebar-sub-link">success</a>
+        <a href="active-bets-history-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="active-bets-history-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="active-bets-history-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">Win / Loss</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Win</div>
+        <a href="win.html" class="sidebar-sub-link">you were right</a>
+        <a href="win-payout-pending.html" class="sidebar-sub-link">payout pending</a>
+        <a href="win-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="win-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-sub-head">Loss</div>
+        <a href="loss.html" class="sidebar-sub-link">what happened</a>
+        <a href="loss-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <a class="sidebar-page-link">Favorites</a>
+      <div class="sidebar-sub">
+        <a href="favorites.html" class="sidebar-sub-link">success</a>
+        <a href="favorites-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="favorites-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <a class="sidebar-page-link">Notifications</a>
+      <div class="sidebar-sub">
+        <a href="notifications.html" class="sidebar-sub-link">success</a>
+        <a href="notifications-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="notifications-error.html" class="sidebar-sub-link">error</a>
+        <a href="notifications-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="notifications-push.html" class="sidebar-sub-link">push permission</a>
+      </div>
+      <a class="sidebar-page-link">Wallet</a>
+      <div class="sidebar-sub">
+        <a href="wallet.html" class="sidebar-sub-link">success</a>
+        <a href="wallet-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="wallet-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">My Profile</a>
+      <div class="sidebar-sub">
+        <a href="my-profile.html" class="sidebar-sub-link">success</a>
+        <a href="my-profile-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="my-profile-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">Public Profile</a>
+      <div class="sidebar-sub">
+        <a href="public-profile.html" class="sidebar-sub-link">success</a>
+        <a href="public-profile-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="public-profile-error.html" class="sidebar-sub-link">error</a>
+        <a href="public-profile-not-found.html" class="sidebar-sub-link">not found</a>
+      </div>
+      <a class="sidebar-page-link">How It Works</a>
+      <div class="sidebar-sub">
+        <a href="how-it-works.html" class="sidebar-sub-link">success</a>
+      </div>
+      <a class="sidebar-page-link">Sign In</a>
+      <div class="sidebar-sub">
+        <a href="sign-in.html" class="sidebar-sub-link">success</a>
+        <a href="sign-in-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="sign-in-error.html" class="sidebar-sub-link">error</a>
+        <a href="sign-in-provider-conflict.html" class="sidebar-sub-link">provider conflict</a>
+      </div>
+      <a class="sidebar-page-link">Add funds</a>
+      <div class="sidebar-sub">
+        <a href="deposit.html" class="sidebar-sub-link">success</a>
+        <a href="deposit-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="deposit-pending.html" class="sidebar-sub-link">payment pending</a>
+        <a href="deposit-error-card.html" class="sidebar-sub-link">card declined</a>
+        <a href="deposit-error-kyc.html" class="sidebar-sub-link">KYC rejected</a>
+        <a href="deposit-minimum-not-met.html" class="sidebar-sub-link">minimum not met</a>
+        <a href="deposit-widget-load-failure.html" class="sidebar-sub-link">widget failed</a>
+      </div>
+      <a class="sidebar-page-link">System</a>
+      <div class="sidebar-sub">
+        <a href="404.html" class="sidebar-sub-link">404 not found</a>
+        <a href="500.html" class="sidebar-sub-link">500 server error</a>
+        <a href="maintenance.html" class="sidebar-sub-link">maintenance</a>
+        <a href="cookie-consent.html" class="sidebar-sub-link">cookie consent</a>
+        <a href="toasts.html" class="sidebar-sub-link">toasts</a>
+      </div>
       <div class="sidebar-note">Other screen families join this tree as they are colored.</div>
     </div>
   </aside>
@@ -1306,23 +1408,25 @@
     })();
   </script>
 
-  <dialog id="signinDialog" class="app-dialog" aria-label="Sign in or create account">
+  <dialog id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
     <div class="sheet-head">
       <h2>Sign in or create account</h2>
-      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
     </div>
     <div class="sheet-body">
-      <p class="fine">You are about to place a bet. Sign in or create an account to continue. No crypto wallet required.</p>
+      <p class="fine signin-lead">You are about to place a bet. Sign in or create an account to continue. No crypto wallet required.</p>
       <button type="button" class="provider-btn" data-flow="signin-to-deposit">
-        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+        <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
         Continue with Google
       </button>
       <button type="button" class="provider-btn" data-flow="signin-to-deposit">
-        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        <svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>
         Continue with X
       </button>
       <button type="button" class="provider-btn" data-flow="signin-to-deposit">
-        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7c1-2 3-3 4-3 0 2-1 3-2 4M9 9c-2 0-4 2-4 5s2 6 4 6c1 0 1.5-.5 3-.5s2 .5 3 .5c1.5 0 3-2 3-4-2-1-2-4 0-5-1-1.5-3-1.5-4-1.5S11 9 9 9z"/></svg>
+        <svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"/></svg>
         Continue with Apple
       </button>
       <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>

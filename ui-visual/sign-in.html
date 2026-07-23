@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Visual - Sign in</title>
+  <style>
+    /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
+       Simple monochrome outline icons (stroke grey) so element footprint is real.
+       Base = mobile (1 column, bottom nav). Min-width expansions:
+       640px -> bottom nav hidden, 2-column feed
+       960px -> 3-column feed
+       1280px -> 4-column feed
+       Header is the same lean component at all widths (logo + icon cluster);
+       the second-level category nav sits directly under it. */
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; padding-top: 44px; }
+
+    .page-label { border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px 6px 104px; font-size: 12px; }
+
+    /* ---- Wireframe screen-tree nav (meta-nav, identical on every wireframe page) ---- */
+    .wf-toggle { position: fixed; top: 8px; left: 8px; z-index: 60; display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid #888; background: #d6d6d6; padding: 6px 9px; font-size: 11px; cursor: pointer; }
+    .wf-toggle .ic { width: 16px; height: 16px; }
+    .wf-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 49; display: none; }
+    .wf-overlay.open { display: block; }
+    .wf-nav { position: fixed; top: 0; left: 0; width: 250px; height: 100vh; overflow-y: auto; margin: 0;
+      background: #dedede; border: none; border-right: 1px solid #999; z-index: 50;
+      transform: translateX(-100%); transition: transform .2s ease; font-size: 12px; }
+    .wf-nav.open { transform: translateX(0); }
+    .wf-nav-head { background: #cdcdcd; border-bottom: 1px solid #999; padding: 10px 12px; font-size: 11px;
+      text-transform: uppercase; letter-spacing: .05em; font-weight: bold; position: sticky; top: 0; }
+    .wf-nav-close { float: right; border: 1px solid #888; background: #d6d6d6; font-size: 11px; cursor: pointer; padding: 0 7px; line-height: 1.5; }
+    .wf-tree { list-style: none; margin: 0; padding: 4px 0 28px; }
+    .wf-sec { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: #555; padding: 13px 12px 3px; font-weight: bold; }
+    .wf-screen > a { display: block; padding: 5px 12px; color: #222; text-decoration: none; border-left: 3px solid transparent; }
+    .wf-screen > a:hover { background: #d2d2d2; }
+    .wf-screen > a.active { background: #c5c5c5; border-left-color: #555; font-weight: bold; }
+    .wf-screen > a.planned { color: #777; }
+    .wf-screen > a.planned::after { content: "planned"; font-size: 8px; text-transform: uppercase; letter-spacing: .05em;
+      border: 1px solid #aaa; background: #e8e8e8; color: #666; padding: 0 4px; margin-left: 6px; }
+    .wf-states { list-style: none; margin: 0; padding: 0 0 4px; }
+    .wf-states li { padding: 3px 12px 3px 30px; color: #555; position: relative; }
+    .wf-states li::before { content: ""; position: absolute; left: 19px; top: 11px; width: 6px; height: 1px; background: #9a9a9a; }
+    .wf-states li.cur { color: #111; font-weight: bold; }
+    .wf-states li.cur::before { background: #555; width: 9px; height: 2px; }
+    .wf-states a { color: inherit; text-decoration: none; }
+    .wf-states a:hover { text-decoration: underline; }
+    .wf-note { padding: 2px 12px 4px 30px; color: #777; font-style: italic; }
+
+    @media (min-width: 1440px) {
+      .wf-nav { transform: none; }
+      .wf-toggle, .wf-overlay { display: none !important; }
+      body { padding-left: 250px; padding-top: 0; }
+      .page-label { padding-left: 10px; }
+    }
+
+    /* ---- State pages (empty / error / loading / push-permission-missing) ---- */
+    .state-switch { border: 1px dashed #888; background: #e3e3e3; padding: 7px 10px; font-size: 11px;
+      display: flex; flex-direction: column; gap: 5px; }
+    .state-switch .ss-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .state-switch .ss-label { text-transform: uppercase; letter-spacing: .05em; color: #555; font-size: 10px; width: 44px; flex: 0 0 44px; }
+    .state-switch a { color: #222; text-decoration: none; border: 1px solid #999; background: #d6d6d6; padding: 2px 8px; }
+    .state-switch a:hover { background: #cccccc; }
+    .state-switch a[aria-current="page"] { background: #bdbdbd; font-weight: bold; }
+    .auth-btns { display: flex; gap: 6px; }
+    .auth-btn { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    .auth-btn.primary { background: #c4c4c4; font-weight: bold; }
+    .wf-states .wf-substate { padding: 7px 12px 2px 20px; color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: .05em; font-weight: bold; }
+    .wf-states .wf-substate::before { display: none; }
+
+    .state-block { border: 1px dashed #999; background: #ededed; padding: 30px 18px; margin: 4px 0;
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+    .state-block .ic { width: 30px; height: 30px; }
+    .state-title { font-size: 14px; font-weight: bold; margin: 0; }
+    .state-msg { font-size: 12px; color: #444; margin: 0; max-width: 380px; line-height: 1.5; }
+    .state-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 4px; }
+    .state-btn { border: 1px solid #888; background: #d6d6d6; padding: 8px 12px; font-size: 12px; cursor: pointer; }
+    .state-btn.primary { background: #c4c4c4; font-weight: bold; }
+
+    /* loading skeletons */
+    .card.skeleton .sk-thumb { width: 56px; height: 56px; flex: 0 0 56px; background: #d2d2d2; border: 1px solid #cccccc; }
+    .card.skeleton .sk-head { flex: 1; }
+    .card.skeleton .sk-line { height: 10px; background: #d8d8d8; margin: 7px 0; }
+    .card.skeleton .sk-line.w80 { width: 80%; }
+    .card.skeleton .sk-line.w60 { width: 60%; }
+    .card.skeleton .sk-line.w40 { width: 40%; }
+    .card.skeleton .sk-row { display: flex; gap: 6px; margin-top: 10px; }
+    .card.skeleton .sk-btn { height: 32px; background: #d8d8d8; flex: 1; }
+
+    /* push-permission-missing banner */
+    .push-banner { border: 1px solid #999; background: #e0e0e0; padding: 10px 12px; margin: 0 0 10px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+    .push-banner .push-msg { font-size: 12px; display: flex; align-items: center; gap: 8px; }
+    .push-banner .push-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .device {
+      width: 100%; max-width: 1400px; margin: 0 auto; background: #f4f4f4;
+      border-left: 1px solid #999; border-right: 1px solid #999;
+      min-height: 100vh; display: flex; flex-direction: column;
+    }
+
+    header, nav, main, section, article, footer, aside { border: 1px solid #999; }
+    .zone-tag {
+      display: block; font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase;
+      background: #d2d2d2; border-bottom: 1px solid #aaa; padding: 2px 6px;
+    }
+    button, select, summary { font: inherit; }
+
+    /* ---- Icons (simple monochrome outline) ---- */
+    .ic { width: 22px; height: 22px; stroke: #444; fill: none; stroke-width: 1.6;
+      stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; display: block; }
+    .ic-sm { width: 13px; height: 13px; stroke: #444; fill: none; stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round; }
+
+    .icon-btn {
+      border: 1px solid #999; background: #d9d9d9; padding: 5px; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; line-height: 0;
+    }
+
+    /* ---- Header (lean, same at all widths) ---- */
+    .app-header { background: #e2e2e2; margin: 0; position: sticky; top: 0; z-index: 5; }
+    .app-header .row {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 8px; padding: 6px 8px;
+    }
+    .app-header .left { display: flex; align-items: center; gap: 8px; }
+    .logo-btn { border: 1px solid #888; background: #cfcfcf; padding: 6px 10px; font-size: 13px; font-weight: bold; cursor: pointer; }
+    .utility { display: flex; align-items: center; gap: 6px; }
+    /* balance toggle (desktop only): one figure + swap icon Portfolio <-> Cash */
+    .bal-toggle { display: inline-flex; align-items: center; gap: 4px; border: 1px solid #888; background: #d9d9d9; padding: 3px 4px 3px 8px; white-space: nowrap; }
+    .bal-figure { font-size: 11px; }
+    .bal-figure .bal-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.03em; }
+    .bal-figure .bal-amt { font-weight: bold; }
+    .bal-swap { padding: 3px; }
+    .desk-only { display: none; }
+
+    .bell-wrap { position: relative; display: inline-flex; }
+    .badge-dot {
+      position: absolute; top: -5px; right: -5px; border: 1px solid #777; background: #cccccc;
+      border-radius: 8px; font-size: 9px; line-height: 1; padding: 1px 4px;
+    }
+
+    /* avatar dropdown via native <details> (collapsed by default, no JS) */
+    .avatar-menu { position: relative; }
+    .avatar-menu summary {
+      list-style: none; border: 1px solid #999; background: #d9d9d9; padding: 5px 6px;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 3px;
+    }
+    .avatar-menu summary::-webkit-details-marker { display: none; }
+    .avatar-menu .dropdown {
+      position: absolute; right: 0; top: calc(100% + 4px); min-width: 170px;
+      border: 1px solid #888; background: #e6e6e6; z-index: 10;
+    }
+    .avatar-menu .dropdown .zone-tag { background: #cdcdcd; }
+    .avatar-menu ul { list-style: none; margin: 0; padding: 0; }
+    .avatar-menu li { border-top: 1px solid #ccc; }
+    .avatar-menu li:first-child { border-top: none; }
+    .avatar-menu .dropdown button { width: 100%; text-align: left; border: none; background: transparent; padding: 8px 10px; font-size: 11px; cursor: pointer; }
+
+    /* ---- Second-level navigation: categories ---- */
+    .cat-nav { background: #ededed; margin: 0; }
+    .cat-nav ul {
+      list-style: none; margin: 0; padding: 6px 8px; display: flex; gap: 6px;
+      overflow-x: auto; flex-wrap: nowrap;
+    }
+    .cat-nav button { border: 1px solid #888; background: #d6d6d6; padding: 5px 10px; font-size: 11px; cursor: pointer; white-space: nowrap; }
+    .cat-nav li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+
+    /* ---- Feed ---- */
+    .feed { background: #f4f4f4; margin: 0; flex: 1; }
+    .feed-inner { padding: 8px; }
+    .feed-head {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;
+      justify-content: space-between; border-bottom: 1px solid #bbb; padding-bottom: 8px; margin-bottom: 10px;
+    }
+    .feed-head h2 { font-size: 13px; margin: 0; }
+    /* Feed filters: Kalshi-style dropdowns (Sort, Frequency, Category) */
+    .feed-controls { display: flex; flex-wrap: wrap; gap: 6px; }
+    .filter-menu { position: relative; }
+    .filter-menu summary { list-style: none; border: 1px solid #888; background: #d6d6d6; padding: 5px 8px; font-size: 11px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
+    .filter-menu summary::-webkit-details-marker { display: none; }
+    .filter-panel { position: absolute; right: 0; top: calc(100% + 4px); min-width: 190px; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
+    .filter-panel .zone-tag { background: #cdcdcd; }
+    .filter-panel ul { list-style: none; margin: 0; padding: 4px 0; }
+    .filter-panel li label { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: 11px; cursor: pointer; }
+    .reverse-row { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #ccc; padding: 7px 10px; font-size: 11px; }
+    .toggle { border: 1px solid #888; background: #cfcfcf; font-size: 10px; padding: 2px 8px; cursor: pointer; }
+    .toggle[aria-checked="true"] { background: #b8b8b8; font-weight: bold; }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .card { background: #ededed; display: flex; flex-direction: column; }
+    .card .card-body { padding: 8px 10px; flex: 1; }
+    .card .top { display: flex; gap: 8px; align-items: flex-start; }
+    .thumb {
+      width: 56px; height: 56px; flex: 0 0 56px; border: 1px solid #999; background: #d2d2d2;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; padding: 2px;
+    }
+    .card .q { font-size: 13px; font-weight: bold; margin: 0; }
+    .card a.q { color: #222; text-decoration: none; }
+    .card a.q:hover { text-decoration: underline; }
+    .card .prob-line { font-size: 11px; margin: 8px 0 6px; }
+    .card .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; }
+    .yesno { display: flex; gap: 6px; margin: 0 0 8px; }
+    .yesno > a { flex: 1; display: flex; }
+    .yesno > a > button { width: 100%; }
+    .yesno button { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 9px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .yesno.compact > a { flex: 0 0 auto; }
+    .yesno.compact button { padding: 4px 8px; font-size: 11px; flex: 0 0 auto; }
+
+    .options { margin: 6px 0 8px; }
+    .opt-row { display: flex; align-items: center; gap: 6px; border-top: 1px solid #ccc; padding: 6px 0; font-size: 12px; }
+    .opt-row:first-child { border-top: none; }
+    .opt-row .opt-name { flex: 1; }
+    .opt-row .opt-prob { border: 1px solid #999; background: #dcdcdc; padding: 1px 5px; font-size: 11px; font-weight: bold; }
+
+    .card .meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 10px; border-top: 1px solid #ccc; padding-top: 6px; margin-top: 4px; }
+    .card .meta .meta-txt { display: flex; flex-wrap: wrap; gap: 10px; }
+    .card .bookmark-btn { flex: 0 0 auto; border: 1px solid #bbb; background: #e0e0e0; padding: 3px 5px; cursor: pointer; display: inline-flex; align-items: center; line-height: 0; }
+    .card .bookmark-btn .ic { width: 14px; height: 14px; }
+    .card .bookmark-btn[aria-pressed="true"] .ic { fill: #888; }
+
+    /* ---- Bottom nav (mobile only) ---- */
+    .bottom-nav { background: #e2e2e2; margin: 0; position: sticky; bottom: 0; }
+    .bottom-nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
+    .bottom-nav li { flex: 1; text-align: center; border-right: 1px solid #bbb; }
+    .bottom-nav li:last-child { border-right: none; }
+    .bottom-nav button { width: 100%; border: none; background: transparent; padding: 8px 4px; font-size: 10px; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .bottom-nav .ic { width: 20px; height: 20px; }
+    .bottom-nav li[aria-current="page"] button { background: #c4c4c4; font-weight: bold; }
+    .bottom-nav .badge-dot { position: static; margin-left: 2px; }
+    .bn-bal { font-weight: bold; font-size: 12px; border: 1px solid #999; background: #dcdcdc; padding: 0 5px; line-height: 1.4; }
+
+    /* ---- Footer (global element, product footer) ---- */
+    .app-footer { background: #e2e2e2; margin: 0; font-size: 11px; }
+    .app-footer .footer-inner { padding: 16px 12px; display: flex; flex-direction: column; gap: 18px; }
+    .app-footer nav { border: none; }
+    .app-footer a { color: #222; text-decoration: none; }
+    .app-footer a:hover { text-decoration: underline; }
+
+    .footer-top { display: flex; flex-direction: column; gap: 20px; }
+    .footer-brand { display: flex; flex-direction: column; gap: 12px; }
+    .footer-logo { width: 130px; height: 30px; border: 1px solid #999; background: #d2d2d2; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+    .footer-tagline { margin: 0; color: #555; max-width: 280px; }
+    .social-row { display: flex; gap: 6px; }
+    .social-row a { width: 30px; height: 30px; border: 1px solid #999; background: #d6d6d6; display: inline-flex; align-items: center; justify-content: center; }
+    .social-row .ic { width: 17px; height: 17px; }
+    .lang-menu { width: max-content; }
+    .lang-menu summary .ic { width: 15px; height: 15px; }
+    .lang-menu summary .ic-sm { width: 12px; height: 12px; }
+    .lang-menu .filter-panel { top: auto; bottom: calc(100% + 4px); right: auto; left: 0; min-width: 150px; }
+
+    .footer-cols { display: flex; flex-direction: column; gap: 16px; }
+    .footer-col h3 { font-size: 11px; margin: 0 0 7px; text-transform: uppercase; letter-spacing: .04em; }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+    .footer-col .sub-label { font-size: 9px; color: #777; margin: 9px 0 4px; text-transform: uppercase; letter-spacing: .03em; }
+    .tbd { display: inline-block; font-size: 9px; border: 1px dashed #999; padding: 0 4px; margin-left: 4px; color: #555; background: #ededed; vertical-align: middle; }
+
+    .footer-legal { border-top: 1px solid #ccc; padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .footer-legal .legal-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+    .footer-legal p { margin: 0; }
+    .placeholder-line { border: 1px dashed #999; background: #ededed; padding: 4px 6px; font-size: 10px; }
+
+    @media (min-width: 640px) {
+      .footer-top { flex-direction: row; justify-content: space-between; gap: 28px; }
+      .footer-brand { flex: 0 0 240px; }
+      .footer-cols { flex-direction: row; gap: 28px; flex: 1; flex-wrap: wrap; }
+      .footer-col { min-width: 120px; }
+    }
+
+    /* ---- Annotations + nav tree (out of layout flow) ---- */
+    .side { width: 100%; max-width: 1400px; margin: 16px auto; padding: 0 8px; }
+    .side aside, .side section { background: #f4f4f4; margin: 0 0 12px; }
+    .side .zone-tag { background: #cdcdcd; }
+    .annotations, .navtree { padding: 8px 12px; font-size: 12px; }
+    .annotations ol { margin: 6px 0 0; padding-left: 18px; }
+    .annotations li { margin-bottom: 6px; }
+    .navtree pre { margin: 6px 0 0; font-size: 12px; background: #e8e8e8; border: 1px solid #bbb; padding: 8px; white-space: pre-wrap; }
+    .ref { font-size: 11px; }
+
+    .delta { width: 100%; max-width: 1400px; margin: 0 auto 16px; }
+    .delta .mini-header { background: #e2e2e2; border: 1px solid #999; }
+    .delta .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; padding: 8px; }
+    .delta .brand { font-size: 13px; font-weight: bold; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (min-width: 640px) {
+      .bottom-nav { display: none; }
+      .desk-only { display: inline-flex; }
+      .grid { grid-template-columns: repeat(2, minmax(280px, 1fr)); }
+      .side { display: flex; gap: 16px; align-items: flex-start; }
+      .side aside, .side section { margin: 0; }
+      .side > aside { flex: 2; }
+      .side > .nav-col { flex: 1; }
+    }
+    @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, minmax(280px, 1fr)); } }
+    @media (min-width: 1280px) { .grid { grid-template-columns: repeat(4, minmax(280px, 1fr)); } }
+    /* ---- Shared in-page dialogs (native <dialog>) - injected for event-feed family ---- */
+    dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
+    dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
+    /* ---- How it works: header button + quick-explainer dialog (WF) ---- */
+    .hiw-btn { border: 1px solid #999; background: #e0e0e0; padding: 5px 10px; font-size: 12px; cursor: pointer; }
+    dialog.app-dialog .hiw-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
+    dialog.app-dialog .hiw-head h2 { font-size: 14px; margin: 0; }
+    dialog.app-dialog .hiw-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
+    dialog.app-dialog .hiw-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    dialog.app-dialog .hiw-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    dialog.app-dialog .hiw-sec p { font-size: 13px; color: #333; line-height: 1.5; margin: 4px 0 0; }
+    dialog.app-dialog .hiw-sec dl { margin: 0; }
+    dialog.app-dialog .hiw-sec dt { font-size: 13px; font-weight: bold; margin: 8px 0 2px; }
+    dialog.app-dialog .hiw-sec dd { font-size: 13px; color: #333; line-height: 1.5; margin: 0; }
+    dialog.app-dialog .hiw-full { display: block; box-sizing: border-box; border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; text-align: center; text-decoration: none; color: #222; }
+    dialog.app-dialog .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
+    dialog.app-dialog .sheet-head h2 { font-size: 14px; margin: 0; }
+    dialog.app-dialog .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
+    dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    dialog.app-dialog .fine { font-size: 11px; color: #555; line-height: 1.5; }
+    dialog.app-dialog .field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    dialog.app-dialog .amount-row { display: flex; align-items: center; gap: 8px; }
+    dialog.app-dialog .amount-input { flex: 1; border: 1px solid #888; background: #fff; padding: 10px; font-size: 18px; }
+    dialog.app-dialog .quick { display: flex; gap: 6px; flex-wrap: wrap; }
+    dialog.app-dialog .quick button { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    dialog.app-dialog .quick button.sel { background: #b8b8b8; font-weight: bold; }
+    dialog.app-dialog .provider-btn { display: flex; align-items: center; gap: 10px; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; cursor: pointer; width: 100%; text-align: left; }
+    dialog.app-dialog .provider-btn .ic { width: 18px; height: 18px; }
+    dialog.app-dialog .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
+    dialog.app-dialog .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
+    dialog.app-dialog .confirm-btn { border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; cursor: pointer; width: 100%; }
+    .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
+    /* notifications dropdown (header bell -> mini-list, no chevron) */
+    .notif-menu { position: relative; }
+    .notif-menu summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; }
+    .notif-menu summary::-webkit-details-marker { display: none; }
+    .notif-menu .dropdown { position: absolute; right: 0; top: calc(100% + 4px); width: 260px; max-width: 80vw; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
+    .notif-menu .dropdown .zone-tag { background: #cdcdcd; }
+    .notif-drop ul { list-style: none; margin: 0; padding: 0; }
+    .notif-drop li { border-top: 1px solid #ccc; }
+    .notif-drop li:first-child { border-top: none; }
+    .notif-drop li a { display: block; padding: 8px 10px; text-decoration: none; color: #222; }
+    .notif-drop li a strong { display: block; font-size: 12px; }
+    .notif-drop li a span { display: block; font-size: 10px; color: #555; }
+    .notif-all { display: block; text-align: center; padding: 8px; border-top: 1px solid #999; font-size: 11px; text-decoration: none; color: #222; background: #dcdcdc; }
+    .bal-add { padding: 3px; }
+    /* ---- Footer trust strip + SEO popular-links (WF reconcile, Krok 3) ---- */
+    .footer-trust { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; padding: 10px 12px; border-bottom: 1px solid #ccc; font-size: 12px; color: #444; }
+    .footer-trust .trust-item { display: inline-block; }
+    .footer-popular { padding: 10px 12px; border-top: 1px solid #ccc; }
+    .footer-popular h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
+    .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
+    .popular-links a { color: #444; }
+    /* ---- Per-card why + feed SEO sections (WF reconcile, Krok 5) ---- */
+    .why { font-size: 12px; color: #555; margin: 3px 0 0; line-height: 1.4; }
+    .feed-seo { border-top: 1px solid #ccc; padding: 12px 4px; }
+    .feed-seo h2 { font-size: 14px; margin: 0 0 6px; }
+    .feed-seo p { font-size: 13px; color: #333; margin: 0; line-height: 1.5; }
+    .feed-seo dl { margin: 0; }
+    .feed-seo dt { font-size: 13px; font-weight: bold; margin: 8px 0 2px; }
+    .feed-seo dd { font-size: 13px; color: #333; margin: 0 0 6px; line-height: 1.5; }
+  
+    /* ---- family layout, grafted from the wireframe; _theme.css re-skins colour ---- */
+    /* ---- Event Detail ---- */
+    .ed-head { display: flex; gap: 10px; padding: 10px; align-items: flex-start; }
+    .ed-thumb { width: 72px; height: 72px; flex: 0 0 72px; border: 1px solid #999; background: #d2d2d2;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; padding: 2px; }
+    .ed-cat { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; }
+    .ed-q { font-size: 16px; font-weight: bold; margin: 4px 0 6px; }
+    .ed-prob-big { font-size: 13px; margin: 0; }
+    .ed-prob-big .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; font-size: 14px; }
+    .ed-section { padding: 10px; border-top: 1px solid #ccc; }
+    .ed-section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 6px; }
+    .chart-box { border: 1px dashed #999; background: #ededed; height: 120px; display: flex; align-items: center;
+      justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 6px; }
+    .args { display: flex; flex-direction: column; gap: 12px; }
+    .arg-col h4 { margin: 0 0 4px; font-size: 11px; }
+    .arg-col ul { margin: 0; padding-left: 16px; font-size: 12px; }
+    .arg-col li { margin-bottom: 4px; }
+    .resolution { font-size: 12px; line-height: 1.5; }
+    .opt-list { display: flex; flex-direction: column; }
+    .preselect-note { border: 1px solid #999; background: #e0e0e0; padding: 6px 8px; font-size: 11px; margin: 0 10px 0; }
+    .cta-bar { position: sticky; bottom: 0; background: #e2e2e2; border: 1px solid #999; padding: 8px 10px; display: flex; gap: 8px; }
+    .cta-bar button { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; font-weight: bold; cursor: pointer; }
+    @media (min-width: 640px) { .args { flex-direction: row; } .arg-col { flex: 1; } }
+    /* ---- Invoked overlays (Bet / Sign In / Deposit): modal on desktop, bottom sheet on mobile ---- */
+    .backdrop { background: #cfcfcf; flex: 1; position: relative; min-height: 70vh; display: flex;
+      align-items: flex-end; justify-content: center; }
+    .dim-note { position: absolute; top: 8px; left: 8px; font-size: 10px; color: #555; background: #dcdcdc; border: 1px solid #aaa; padding: 2px 6px; }
+    .sheet { width: 100%; background: #f0f0f0; border: 1px solid #999; border-bottom: none; }
+    .grab { width: 36px; height: 4px; background: #bbb; border-radius: 2px; margin: 6px auto 0; }
+    .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
+    .sheet-head h2 { font-size: 14px; margin: 0; }
+    .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
+    .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    @media (min-width: 640px) { .backdrop { align-items: center; padding: 24px; } .sheet { max-width: 420px; border-bottom: 1px solid #999; } }
+    .dir-pill { border: 1px solid #888; background: #dcdcdc; padding: 4px 10px; font-weight: bold; font-size: 12px; display: inline-block; }
+    .field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    .amount-row { display: flex; align-items: center; gap: 8px; }
+    .amount-input { flex: 1; border: 1px solid #888; background: #fff; padding: 10px; font-size: 18px; }
+    .quick { display: flex; gap: 6px; flex-wrap: wrap; }
+    .quick button { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    .quick button.sel { background: #b8b8b8; font-weight: bold; }
+    .line { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-top: 1px solid #ddd; }
+    .line.total { font-weight: bold; border-top: 1px solid #999; }
+    .inline-error { border: 1px solid #999; background: #e0e0e0; padding: 8px; font-size: 12px; }
+    .reconcile-box { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
+    .confirm-btn { border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; cursor: pointer; width: 100%; }
+    .provider-btn { display: flex; align-items: center; gap: 10px; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; cursor: pointer; width: 100%; text-align: left; }
+    .provider-btn .ic { width: 18px; height: 18px; }
+    .spinner-box { border: 1px dashed #999; background: #ededed; padding: 24px; text-align: center; font-size: 12px; color: #555; }
+    .fine { font-size: 11px; color: #555; line-height: 1.5; }
+    .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center;
+      justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
+    .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
+    /* ---- Active Bets ---- */
+    .tabs { display: flex; gap: 0; margin: 0 0 10px; }
+    .tabs button { border: 1px solid #888; border-bottom: 1px solid #bbb; background: #dcdcdc; padding: 8px 14px; font-size: 12px; cursor: pointer; }
+    .tabs button[aria-selected="true"] { background: #f4f4f4; font-weight: bold; border-bottom-color: #f4f4f4; }
+    .pos-list { display: flex; flex-direction: column; gap: 8px; }
+    .pos { border: 1px solid #bbb; background: #ededed; padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; }
+    .pos-top { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+    .pos-q { font-size: 13px; font-weight: bold; }
+    .pos-side { font-size: 11px; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; height: max-content; white-space: nowrap; }
+    .pos-figures { display: flex; gap: 16px; font-size: 10px; flex-wrap: wrap; color: #555; }
+    .pos-fig b { display: block; font-size: 12px; color: #222; }
+    .pos.skeleton .sk-line { height: 10px; background: #d8d8d8; margin: 6px 0; }
+    .pos.skeleton .w70 { width: 70%; } .pos.skeleton .w40 { width: 40%; }
+    .pos-status { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    /* ---- Event Detail two-column: scrolling content + sticky bet panel ---- */
+    .ed-layout { display: flex; flex-direction: column; }
+    .ed-main { flex: 1; min-width: 0; }
+    /* schematic probability chart (raised fidelity per design call: a drawn grey line, still no color) */
+    .chart-wrap { padding: 0; }
+    .chart-svg { width: 100%; height: 130px; display: block; border: 1px solid #bbb; background: #ededed; }
+    .chart-svg polyline { fill: none; stroke: #777; stroke-width: 1.5; }
+    .chart-svg .grid-l { stroke: #d2d2d2; stroke-width: 1; }
+    .chart-svg .nowline { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
+    .chart-svg text { fill: #777; font-size: 7px; }
+    .chart-cap { font-size: 10px; color: #555; margin: 4px 0 0; display: flex; justify-content: space-between; }
+    .ed-facts { display: flex; flex-wrap: wrap; gap: 16px; font-size: 10px; color: #555; padding: 8px 10px; border-top: 1px solid #ccc; }
+    .ed-facts b { display: block; font-size: 12px; color: #222; }
+    /* bet panel (desktop sticky sidebar) */
+    .bet-panel { display: none; }
+    .bet-panel .bp-inner { padding: 10px; display: flex; flex-direction: column; gap: 9px; }
+    .bp-head { display: flex; align-items: center; justify-content: space-between; }
+    .bp-head h3 { font-size: 13px; margin: 0; }
+    .bp-hint { font-size: 10px; color: #555; }
+    .bp-dir { display: flex; gap: 6px; }
+    .bp-side { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 10px 6px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .bp-side.sel { background: #b8b8b8; border-width: 2px; }
+    .bp-side .bp-pct { display: block; font-size: 11px; font-weight: normal; }
+    .bp-opts { display: flex; flex-direction: column; gap: 0; border: 1px solid #ccc; max-height: 168px; overflow: auto; }
+    .bp-opt { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-top: 1px solid #ddd; font-size: 12px; cursor: pointer; }
+    .bp-opt:first-child { border-top: none; }
+    .bp-opt.sel { background: #dcdcdc; font-weight: bold; }
+    .bp-opt .bp-opt-pct { margin-left: auto; border: 1px solid #999; background: #e0e0e0; padding: 0 5px; font-size: 11px; }
+    /* mobile sticky bet dock (collapsed bar above the bottom nav; taps expand to a sheet) */
+    .bet-dock { position: sticky; bottom: 52px; z-index: 4; background: #e2e2e2; border: 1px solid #999; border-bottom: none;
+      display: flex; align-items: center; gap: 6px; padding: 8px; }
+    .bet-dock .bp-side { padding: 11px 6px; }
+    .bet-dock .dock-meta { font-size: 9px; color: #555; flex: 0 0 auto; text-align: center; }
+    .bet-dock .dock-meta b { display: block; font-size: 12px; color: #222; }
+      .ed-layout { flex-direction: row; align-items: flex-start; }
+      .ed-main { border-right: 1px solid #999; }
+      .bet-panel { display: block; flex: 0 0 300px; position: sticky; top: 8px; align-self: flex-start; }
+      .bet-dock { display: none; }
+    /* ---- Category page: side sub-category panel + filtered feed ---- */
+    .cat-layout { display: flex; flex-direction: column; gap: 0; }
+    .cat-main { flex: 1; min-width: 0; }
+    .subcat { background: #ededed; }
+    .subcat .zone-tag { background: #d2d2d2; }
+    .subcat-head { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; padding: 8px 10px 0; }
+    .subcat ul { list-style: none; margin: 0; padding: 8px; display: flex; gap: 6px; overflow-x: auto; flex-wrap: nowrap; }
+    .subcat li { flex: 0 0 auto; }
+    .subcat button { border: 1px solid #888; background: #d6d6d6; padding: 5px 9px; font-size: 11px; cursor: pointer;
+      white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+    .subcat li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .subcat .cnt { font-size: 9px; color: #555; border: 1px solid #bbb; background: #e8e8e8; padding: 0 4px; }
+      .cat-layout { flex-direction: row; align-items: flex-start; }
+      .subcat { flex: 0 0 210px; position: sticky; top: 8px; border: 1px solid #999; }
+      .subcat ul { flex-direction: column; overflow: visible; flex-wrap: nowrap; }
+      .subcat button { width: 100%; justify-content: space-between; }
+    /* Category grid adapts to the width left by the sub-category rail (no fixed 4-col overflow). */
+    .cat-main .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    /* ---- Shared in-page dialogs (native <dialog>, opened over the current page) ---- */
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_theme.css">
+</head>
+<body>
+
+  <!-- Solar Bold icon sprite: filled glyphs referenced via <use>; rendered filled by _theme.css .ic:has(use) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></symbol>
+    <symbol id="i-bell-b" viewBox="0 0 24 24"><path fill="currentColor" d="M18.75 9.71v-.705C18.75 5.136 15.726 2 12 2S5.25 5.136 5.25 9.005v.705a4.4 4.4 0 0 1-.692 2.375L3.45 13.81c-1.011 1.575.062 3.68 1.966 3.843a51 51 0 0 0 13.167 0c1.904-.163 2.977-2.268 1.966-3.843l-1.108-1.725a4.4 4.4 0 0 1-.692-2.375"/><path fill="currentColor" d="M7.243 18.545a5.002 5.002 0 0 0 9.513 0c-3.145.28-6.367.281-9.513 0"/></symbol>
+    <symbol id="i-shield-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.378 5.082C3 5.62 3 7.22 3 10.417v1.574c0 5.638 4.239 8.375 6.899 9.536c.721.315 1.082.473 2.101.473c1.02 0 1.38-.158 2.101-.473C16.761 20.365 21 17.63 21 11.991v-1.574c0-3.198 0-4.797-.378-5.335c-.377-.537-1.88-1.052-4.887-2.081l-.573-.196C13.595 2.268 12.812 2 12 2s-1.595.268-3.162.805L8.265 3c-3.007 1.03-4.51 1.545-4.887 2.082M15.06 10.5a.75.75 0 0 0-1.12-.999l-3.011 3.374l-.87-.974a.75.75 0 0 0-1.118 1l1.428 1.6a.75.75 0 0 0 1.119 0z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-verified-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9.592 3.2a6 6 0 0 1-.495.399c-.298.2-.633.338-.985.408c-.153.03-.313.043-.632.068c-.801.064-1.202.096-1.536.214a2.71 2.71 0 0 0-1.655 1.655c-.118.334-.15.735-.214 1.536a6 6 0 0 1-.068.632c-.07.352-.208.687-.408.985c-.087.13-.191.252-.399.495c-.521.612-.782.918-.935 1.238c-.353.74-.353 1.6 0 2.34c.153.32.414.626.935 1.238c.208.243.312.365.399.495c.2.298.338.633.408.985c.03.153.043.313.068.632c.064.801.096 1.202.214 1.536a2.71 2.71 0 0 0 1.655 1.655c.334.118.735.15 1.536.214c.319.025.479.038.632.068c.352.07.687.209.985.408c.13.087.252.191.495.399c.612.521.918.782 1.238.935c.74.353 1.6.353 2.34 0c.32-.153.626-.414 1.238-.935c.243-.208.365-.312.495-.399c.298-.2.633-.338.985-.408c.153-.03.313-.043.632-.068c.801-.064 1.202-.096 1.536-.214a2.71 2.71 0 0 0 1.655-1.655c.118-.334.15-.735.214-1.536c.025-.319.038-.479.068-.632c.07-.352.209-.687.408-.985c.087-.13.191-.252.399-.495c.521-.612.782-.918.935-1.238c.353-.74.353-1.6 0-2.34c-.153-.32-.414-.626-.935-1.238a6 6 0 0 1-.399-.495a2.7 2.7 0 0 1-.408-.985a6 6 0 0 1-.068-.632c-.064-.801-.096-1.202-.214-1.536a2.71 2.71 0 0 0-1.655-1.655c-.334-.118-.735-.15-1.536-.214a6 6 0 0 1-.632-.068a2.7 2.7 0 0 1-.985-.408a6 6 0 0 1-.495-.399c-.612-.521-.918-.782-1.238-.935a2.71 2.71 0 0 0-2.34 0c-.32.153-.626.414-1.238.935m6.781 6.663a.814.814 0 0 0-1.15-1.15l-4.85 4.85l-1.596-1.595a.814.814 0 0 0-1.15 1.15l2.17 2.17a.814.814 0 0 0 1.15 0z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-fire" viewBox="0 0 24 24"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></symbol>
+    <symbol id="i-cat-politics" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21.25 8.5c0-1.404 0-2.107-.337-2.611a2 2 0 0 0-.552-.552c-.441-.295-1.034-.332-2.115-.336q.005.438.004.91V7.25h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v6.5h-1.5V6c0-1.886 0-2.828-.586-3.414S14.636 2 12.75 2h-2c-1.886 0-2.828 0-3.414.586S6.75 4.114 6.75 6v15.25h-1.5v-6.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1V5.91q-.001-.47.004-.91c-1.081.005-1.674.042-2.115.337a2 2 0 0 0-.552.552C2.25 6.393 2.25 7.096 2.25 8.5v12.75h-.5a.75.75 0 0 0 0 1.5h20a.75.75 0 0 0 0-1.5h-.5zM9 11.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m2.75 3.5a.75.75 0 0 1 .75.75v2.25H11V19a.75.75 0 0 1 .75-.75M9 6.25a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 6.25m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 9.25" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-crypto" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m.75-16a.75.75 0 0 0-1.5 0v.317c-1.63.292-3 1.517-3 3.183c0 1.917 1.813 3.25 3.75 3.25c1.377 0 2.25.906 2.25 1.75s-.873 1.75-2.25 1.75c-1.376 0-2.25-.906-2.25-1.75a.75.75 0 0 0-1.5 0c0 1.666 1.37 2.891 3 3.183V18a.75.75 0 0 0 1.5 0v-.317c1.63-.292 3-1.517 3-3.183c0-1.917-1.813-3.25-3.75-3.25c-1.376 0-2.25-.906-2.25-1.75s.874-1.75 2.25-1.75c1.377 0 2.25.906 2.25 1.75a.75.75 0 0 0 1.5 0c0-1.666-1.37-2.891-3-3.183z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-culture" viewBox="0 0 24 24"><path fill="currentColor" d="m21.537 9.136l-.846 3.297c-.43 1.676-1.306 2.855-2.336 3.685c.219-1.144.214-2.418-.144-3.814l-.864-3.37l-.15-.584a.9.9 0 0 1 .599-.044c.378.101.608.406.637.702a.75.75 0 1 0 1.493-.145c-.091-.942-.783-1.749-1.742-2.006a2.4 2.4 0 0 0-1.418.05l-.017-.044c-.224-.596-.552-1.229-1.171-1.693a3.5 3.5 0 0 0-1.13-.562c-.759-.215-1.463-.076-2.064.124c-.558.185-1.21.49-1.924.825l-.072.034c-1.185.555-1.659.773-2.144.928q-.22.07-.446.127l.327-1.267c.44-1.719.661-2.578 1.236-3.01c.193-.145.41-.252.638-.317c.684-.194 1.461.17 3.015.897c1.15.54 1.726.809 2.326 1q.314.099.632.176c.612.149 1.239.216 2.493.351c1.694.182 2.54.273 3.04.798c.167.177.303.383.4.609c.292.675.072 1.534-.368 3.253"/><path fill="currentColor" fill-rule="evenodd" d="m16.758 12.677l-.845-3.298c-.44-1.719-.66-2.578-1.236-3.01a2 2 0 0 0-.638-.317c-.684-.194-1.46.17-3.015.897c-1.15.54-1.726.809-2.326 1a10 10 0 0 1-.632.176c-.611.149-1.238.216-2.493.351c-1.694.182-2.54.273-3.04.798a2.1 2.1 0 0 0-.4.609c-.292.675-.072 1.534.369 3.253l.845 3.297c.993 3.876 4.296 5.096 6.516 5.473c.677.115 1.016.172 2.044-.116s1.294-.514 1.825-.968c1.742-1.487 4.02-4.27 3.026-8.145m-10.753.691c.029-.296.26-.6.638-.702c.379-.102.73.047.903.29a.75.75 0 0 0 1.22-.873c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.064-1.743 2.006a.75.75 0 0 0 1.493.145m5.796-1.553c.029-.296.26-.6.638-.702c.379-.102.73.047.903.289a.75.75 0 1 0 1.22-.872c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.063-1.743 2.006a.75.75 0 0 0 1.493.145m1.846 3.814a.75.75 0 0 1-.885 1.211l-.01-.006a2 2 0 0 0-.485-.2c-.36-.098-.929-.163-1.685.04c-.756.202-1.216.543-1.48.808a2 2 0 0 0-.32.416l-.005.01a.75.75 0 0 1-1.372-.607l.688.298c-.688-.298-.687-.3-.687-.3v-.001l.002-.004l.004-.009l.01-.022l.033-.064q.04-.078.115-.196c.1-.156.252-.36.468-.578c.437-.44 1.125-.924 2.156-1.2c1.031-.277 1.87-.2 2.467-.038c.296.08.53.18.694.266a3 3 0 0 1 .258.151l.02.015l.008.005l.003.003h.002z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-general" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M2 6.634a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0m10.732 10.732a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0" clip-rule="evenodd"/><path fill="currentColor" d="M2 17.5c0-2.121 0-3.182.659-3.841S4.379 13 6.5 13s3.182 0 3.841.659S11 15.379 11 17.5s0 3.182-.659 3.841S8.621 22 6.5 22s-3.182 0-3.841-.659S2 19.621 2 17.5m11-11c0-2.121 0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11s-3.182 0-3.841-.659S13 8.621 13 6.5"/></symbol>
+    <!-- SEO section heading icons (Solar-bold style, like the category icons) -->
+    <symbol id="i-seo-guide" viewBox="0 0 24 24"><path fill="currentColor" d="M11 4.2C9.6 3.3 7.9 2.8 6 2.8c-1.1 0-2.1.2-3 .5C2.4 3.5 2 4 2 4.6v12.2c0 .9.9 1.5 1.7 1.2c.7-.2 1.5-.3 2.3-.3c1.8 0 3.4.6 4.6 1.5c.2.2.5.3.8.3V5c-.1-.3-.2-.6-.4-.8m2 0c-.2.2-.3.5-.4.8v14.5c.3 0 .6-.1.8-.3c1.2-.9 2.8-1.5 4.6-1.5c.8 0 1.6.1 2.3.3c.8.3 1.7-.3 1.7-1.2V4.6c0-.6-.4-1.1-1-1.3c-.9-.3-1.9-.5-3-.5c-1.9 0-3.6.5-5 1.4"/></symbol>
+    <symbol id="i-seo-chart" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21a1.5 1.5 0 0 1-1.5-1.5v-3a1.5 1.5 0 0 1 3 0v3A1.5 1.5 0 0 1 5 21m7 0a1.5 1.5 0 0 1-1.5-1.5v-8a1.5 1.5 0 0 1 3 0v8A1.5 1.5 0 0 1 12 21m7 0a1.5 1.5 0 0 1-1.5-1.5V6a1.5 1.5 0 0 1 3 0v13.5A1.5 1.5 0 0 1 19 21"/></symbol>
+    <symbol id="i-seo-qa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a6 6 0 0 0-6 6a1.5 1.5 0 0 0 3 0a3 3 0 1 1 4.3 2.7c-1.1.6-2.8 1.7-2.8 3.8v.5a1.5 1.5 0 0 0 3 0v-.5c0-.3.4-.7 1.1-1.1A6 6 0 0 0 12 2m0 16.5A1.75 1.75 0 1 0 12 22a1.75 1.75 0 0 0 0-3.5"/></symbol>
+  </defs></svg>
+
+  <!-- ===== Roadmap sidebar (course chrome) + color-copy bar ===== -->
+  <button type="button" class="rm-toggle" id="rmToggle" aria-label="Open roadmap"><span></span><span></span><span></span></button>
+  <div class="rm-overlay" id="rmOverlay"></div>
+  <aside class="sidebar" id="rmSidebar">
+    <a href="../research/research.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>
+    <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual - screens</div></div>
+    <div class="sidebar-nav">
+      <a class="sidebar-page-link">Event Feed</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Logged in</div>
+        <a href="event-feed.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-feed-push-permission-missing.html" class="sidebar-sub-link">push-permission-missing</a>
+        <div class="sidebar-sub-head">Logged out</div>
+        <a href="event-feed-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Categories</div>
+        <a href="event-feed-politics.html" class="sidebar-sub-link">Politics</a>
+        <a href="event-feed-crypto.html" class="sidebar-sub-link">Crypto</a>
+        <a href="event-feed-culture.html" class="sidebar-sub-link">Culture</a>
+        <a href="event-feed-general.html" class="sidebar-sub-link">General</a>
+      </div>
+      <a class="sidebar-page-link">Event Detail</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Logged in</div>
+        <a href="event-detail.html" class="sidebar-sub-link">binary</a>
+        <a href="event-detail-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-resolved.html" class="sidebar-sub-link">resolved</a>
+        <a href="event-detail-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-detail-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-sub-head">Placing a bet</div>
+        <a href="event-detail-bet-reconcile.html" class="sidebar-sub-link">price moved</a>
+        <a href="event-detail-bet-insufficient.html" class="sidebar-sub-link">low balance</a>
+        <a href="event-detail-bet-processing.html" class="sidebar-sub-link">processing</a>
+        <a href="event-detail-bet-error.html" class="sidebar-sub-link">on-chain error</a>
+        <div class="sidebar-sub-head">Logged out</div>
+        <a href="event-detail-logged-out.html" class="sidebar-sub-link">binary</a>
+        <a href="event-detail-logged-out-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-detail-logged-out-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">My Bets</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Active</div>
+        <a href="active-bets.html" class="sidebar-sub-link">success</a>
+        <a href="active-bets-empty-new.html" class="sidebar-sub-link">empty (new)</a>
+        <a href="active-bets-empty-resolved.html" class="sidebar-sub-link">empty (resolved)</a>
+        <a href="active-bets-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="active-bets-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-sub-head">History</div>
+        <a href="active-bets-history.html" class="sidebar-sub-link">success</a>
+        <a href="active-bets-history-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="active-bets-history-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="active-bets-history-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">Win / Loss</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Win</div>
+        <a href="win.html" class="sidebar-sub-link">you were right</a>
+        <a href="win-payout-pending.html" class="sidebar-sub-link">payout pending</a>
+        <a href="win-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="win-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-sub-head">Loss</div>
+        <a href="loss.html" class="sidebar-sub-link">what happened</a>
+        <a href="loss-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <a class="sidebar-page-link">Favorites</a>
+      <div class="sidebar-sub">
+        <a href="favorites.html" class="sidebar-sub-link">success</a>
+        <a href="favorites-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="favorites-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <a class="sidebar-page-link">Notifications</a>
+      <div class="sidebar-sub">
+        <a href="notifications.html" class="sidebar-sub-link">success</a>
+        <a href="notifications-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="notifications-error.html" class="sidebar-sub-link">error</a>
+        <a href="notifications-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="notifications-push.html" class="sidebar-sub-link">push permission</a>
+      </div>
+      <a class="sidebar-page-link">Wallet</a>
+      <div class="sidebar-sub">
+        <a href="wallet.html" class="sidebar-sub-link">success</a>
+        <a href="wallet-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="wallet-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">My Profile</a>
+      <div class="sidebar-sub">
+        <a href="my-profile.html" class="sidebar-sub-link">success</a>
+        <a href="my-profile-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="my-profile-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">Public Profile</a>
+      <div class="sidebar-sub">
+        <a href="public-profile.html" class="sidebar-sub-link">success</a>
+        <a href="public-profile-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="public-profile-error.html" class="sidebar-sub-link">error</a>
+        <a href="public-profile-not-found.html" class="sidebar-sub-link">not found</a>
+      </div>
+      <a class="sidebar-page-link">How It Works</a>
+      <div class="sidebar-sub">
+        <a href="how-it-works.html" class="sidebar-sub-link">success</a>
+      </div>
+      <a class="sidebar-page-link active">Sign In</a>
+      <div class="sidebar-sub">
+        <a href="sign-in.html" class="sidebar-sub-link active">success</a>
+        <a href="sign-in-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="sign-in-error.html" class="sidebar-sub-link">error</a>
+        <a href="sign-in-provider-conflict.html" class="sidebar-sub-link">provider conflict</a>
+      </div>
+      <a class="sidebar-page-link">Add funds</a>
+      <div class="sidebar-sub">
+        <a href="deposit.html" class="sidebar-sub-link">success</a>
+        <a href="deposit-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="deposit-pending.html" class="sidebar-sub-link">payment pending</a>
+        <a href="deposit-error-card.html" class="sidebar-sub-link">card declined</a>
+        <a href="deposit-error-kyc.html" class="sidebar-sub-link">KYC rejected</a>
+        <a href="deposit-minimum-not-met.html" class="sidebar-sub-link">minimum not met</a>
+        <a href="deposit-widget-load-failure.html" class="sidebar-sub-link">widget failed</a>
+      </div>
+      <a class="sidebar-page-link">System</a>
+      <div class="sidebar-sub">
+        <a href="404.html" class="sidebar-sub-link">404 not found</a>
+        <a href="500.html" class="sidebar-sub-link">500 server error</a>
+        <a href="maintenance.html" class="sidebar-sub-link">maintenance</a>
+        <a href="cookie-consent.html" class="sidebar-sub-link">cookie consent</a>
+        <a href="toasts.html" class="sidebar-sub-link">toasts</a>
+      </div>
+      <div class="sidebar-note">Other screen families join this tree as they are colored.</div>
+    </div>
+  </aside>
+
+  <div class="uv-bar">
+    <span class="tag">Color copy of wireframes/sign-in.html</span>
+    <span class="sep">·</span>
+    <a href="../concept/concept.html">Concept stand</a>
+    <span class="sep">·</span>
+    <a href="../wireframes/event-feed.html">Grey wireframe</a>
+    <span class="sep">·</span>
+    <span style="color:#8f8aa8">States: <a href="event-feed-empty.html">empty</a> <a href="event-feed-error.html">error</a> <a href="event-feed-loading.html">loading</a> <a href="event-feed-logged-out.html">logged-out</a> <a href="event-feed-push-permission-missing.html">push</a></span>
+  </div>
+
+  <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
+  <button type="button" class="wf-toggle" id="wfToggle" aria-label="Open screen tree" aria-expanded="false">
+    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    Screens
+  </button>
+  <div class="wf-overlay" id="wfOverlay"></div>
+  <nav class="wf-nav" id="wfNav" aria-label="Wireframe screens">
+    <div class="wf-nav-head">
+      Wireframes - screen tree
+      <button type="button" class="wf-nav-close" id="wfClose" aria-label="Close screen tree">x</button>
+    </div>
+    <ul class="wf-tree">
+      <li class="wf-sec">Events</li>
+      <li class="wf-screen">
+        <a href="#" class="active" aria-current="page">Event Feed</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li class="cur"><a href="#">success (this page)</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+          <li><a href="#">push-permission-missing</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="#">success</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="#">Event Detail</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="#">success / binary</a></li>
+          <li><a href="#">success / multi-outcome</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+          <li><a href="#">resolved-while-reading</a></li>
+          <li><a href="#">bet panel: insufficient-balance</a></li>
+          <li><a href="#">bet panel: S5 reconcile</a></li>
+          <li><a href="#">bet panel: processing</a></li>
+          <li><a href="#">bet panel: on-chain error</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="#">success / binary</a></li>
+          <li><a href="#">success / multi-outcome</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-note">Bet intent + states (reconcile, insufficient-balance, event-closed, processing, on-chain error) now live in the Event Detail bet panel - states to come (the standalone Bet modal was removed).</li>
+      <li class="wf-screen">
+        <a href="#">Favorites</a>
+        <ul class="wf-states">
+          <li><a href="#">success</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-note">Favorites - a filter over the feed (logged-in only); the Favorites control opens it.</li>
+      <li class="wf-sec">Category pages (second-level nav -> own page)</li>
+      <li class="wf-screen">
+        <a href="#">Politics</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="#">success</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="#">success</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="#">Crypto</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="#">success</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="#">success</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="#">Culture</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="#">success</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="#">success</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="#">General</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="#">success</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="#">success</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Activation gate</li>
+      <li class="wf-screen">
+        <a href="#">Sign In / Register</a>
+        <ul class="wf-states">
+          <li><a href="#">success / form</a></li>
+          <li><a href="#">error (auth failed)</a></li>
+          <li><a href="#">loading (OAuth in-progress)</a></li>
+          <li><a href="#">provider-conflict</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="#">Deposit</a>
+        <ul class="wf-states">
+          <li><a href="#">success / form</a></li>
+          <li><a href="#">error-card (declined)</a></li>
+          <li><a href="#">error-KYC (rejected)</a></li>
+          <li><a href="#">widget-load-failure</a></li>
+          <li><a href="#">loading (widget in-progress)</a></li>
+          <li><a href="#">pending (under review)</a></li>
+          <li><a href="#">minimum-not-met</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Resolution</li>
+      <li class="wf-screen">
+        <a href="#">Win Screen</a>
+        <ul class="wf-states">
+          <li><a href="#">success</a></li>
+          <li><a href="#">loading (share card)</a></li>
+          <li><a href="#">error (card not generated, T11)</a></li>
+          <li><a href="#">payout-pending</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="#">Loss Screen</a>
+        <ul class="wf-states">
+          <li><a href="#">success</a></li>
+          <li><a href="#">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">My Bets</li>
+      <li class="wf-screen">
+        <a href="#">Active Bets</a>
+        <ul class="wf-states">
+          <li><a href="#">success (open positions)</a></li>
+          <li><a href="#">empty-new</a></li>
+          <li><a href="#">empty-resolved</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="#">Bet History (History tab)</a>
+        <ul class="wf-states">
+          <li><a href="#">success</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Notifications</li>
+      <li class="wf-screen">
+        <a href="#">Notifications</a>
+        <ul class="wf-states">
+          <li><a href="#">success</a></li>
+          <li><a href="#">empty</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">loading</a></li>
+          <li><a href="#">push-permission-missing</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Wallet</li>
+      <li class="wf-screen">
+        <a href="#">Wallet</a>
+        <ul class="wf-states">
+          <li><a href="#">success</a></li>
+          <li><a href="#">loading</a></li>
+          <li><a href="#">error</a></li>
+        </ul>
+      </li>
+      <li class="wf-note">Withdrawal is a flow inside Wallet (amount -&gt; USDC address -&gt; confirm; pending / confirmed / failed), not a separate screen.</li>
+      <li class="wf-sec">Profile</li>
+      <li class="wf-screen">
+        <a href="#">My Profile</a>
+        <ul class="wf-states">
+          <li><a href="#">success</a></li>
+          <li><a href="#">loading</a></li>
+          <li><a href="#">error</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="#">Public Profile</a>
+        <ul class="wf-states">
+          <li><a href="#">success</a></li>
+          <li><a href="#">loading</a></li>
+          <li><a href="#">error</a></li>
+          <li><a href="#">not-found / link-expired</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">How It Works</li>
+      <li class="wf-screen">
+        <a href="#">How It Works</a>
+        <ul class="wf-states">
+          <li><a href="#">success (static trust page)</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">System and global</li>
+      <li class="wf-screen">
+        <a href="#">404 Not Found</a>
+        <ul class="wf-states">
+          <li><a href="#">full page (HTTP 404)</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="#">500 Server Error</a>
+        <ul class="wf-states">
+          <li><a href="#">full page (HTTP 500)</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="#">Maintenance</a>
+        <ul class="wf-states">
+          <li><a href="#">maintenance (HTTP 503)</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="#">Cookie consent</a>
+        <ul class="wf-states">
+          <li><a href="#">consent banner</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="#">Toasts</a>
+        <ul class="wf-states">
+          <li><a href="#">toast component</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Orphans [SIROTA] - not built (no confirmed job)</li>
+      <li class="wf-note">Settings / Notification Preferences, Leaderboard, Help / FAQ.</li>
+    </ul>
+  </nav>
+
+  <!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
+  <div class="device">
+
+    <!-- Header (lean: logo = Events/home, right icon cluster) -->
+    <div class="app-case">
+    <header class="app-header">
+      <div class="row">
+        <div class="left">
+          <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          </button>
+          <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+          <button type="button" class="hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
+        </div>
+
+        <div class="utility">
+          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
+          <div class="bal-toggle desk-only">
+            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
+            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
+            </button>
+            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+
+          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
+          <a href="#" aria-label="Favorites, see saved events"><button type="button" class="icon-btn desk-only" aria-label="Favorites">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+          </button></a>
+
+          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
+          <details class="notif-menu">
+            <summary aria-label="Notifications, 3 unread">
+              <span class="bell-wrap">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
+                <span class="badge-dot">3</span>
+              </span>
+            </summary>
+            <div class="dropdown notif-drop" role="menu">
+              <ul>
+                <li><a href="#"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+                <li><a href="#"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+                <li><a href="#"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
+              </ul>
+              <a class="notif-all" href="#">See all notifications</a>
+            </div>
+          </details>
+
+          <details class="avatar-menu">
+            <summary aria-label="Account menu">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="dropdown" role="menu">
+              <ul>
+                <li><a href="#"><button type="button" role="menuitem">My Profile</button></a></li>
+                <li><a href="#"><button type="button" role="menuitem">My Bets</button></a></li>
+                <li><a href="#"><button type="button" role="menuitem">Wallet</button></a></li>
+                <li><a href="#"><button type="button" role="menuitem">How It Works</button></a></li>
+                <li><a href="#"><button type="button" role="menuitem">Logout</button></a></li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+      <!-- Condensed category strip: hidden until you scroll past the full category
+           bar, then it slides into the sticky header so the tabs stay reachable.
+           Small, icon-less chips (the full bar below keeps its icons). -->
+      <div class="cat-condensed" aria-hidden="true">
+        <ul>
+          <li aria-current="page"><a href="event-feed.html"><button type="button">Trending</button></a></li>
+          <li><a href="event-feed-politics.html"><button type="button">Politics</button></a></li>
+          <li><a href="event-feed-crypto.html"><button type="button">Crypto</button></a></li>
+          <li><a href="event-feed-culture.html"><button type="button">Culture</button></a></li>
+          <li><a href="event-feed-general.html"><button type="button">General</button></a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Second-level navigation moved onto the content plate (below) -->
+
+    <!-- Trust cue near the action (critique P2): trust is the persona's #1 driver, surfaced above the feed and on the logged-out first paint, not only in the footer. -->
+    <div class="feed-trustbar">
+      <div class="ft-inner">
+        <span class="ft-item">
+          <svg class="ft-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"/></svg>
+          Your USDC is held 1:1, we never lend it.
+        </span>
+        <span class="ft-sep" aria-hidden="true">·</span>
+        <span class="ft-item">
+          <svg class="ft-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-verified-b"/></svg>
+          <b>1,284</b> events resolved on-chain
+        </span>
+      </div>
+    </div>
+
+    <!-- Feed -->
+    <main class="feed">
+      <div class="feed-inner"></div>
+    </main>
+    </div><!-- /app-case -->
+
+    <!-- Bottom navigation (mobile only) -->
+    <nav class="bottom-nav" aria-label="Primary (mobile)">
+      <ul>
+        <li aria-current="page"><a href="#"><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
+          <span>Events</span>
+        </button></a></li>
+        <li><a href="#"><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          <span>My Bets</span>
+        </button></a></li>
+        <li><a href="#"><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+          <span>Favorites</span>
+        </button></a></li>
+        <li><a href="#"><button type="button" aria-label="Portfolio, balance $142">
+          <span class="bn-bal">$142</span>
+          <span>Portfolio</span>
+        </button></a></li>
+      </ul>
+    </nav>
+
+    <!-- Footer (global element) -->
+    <footer class="app-footer">
+      <div class="footer-inner">
+
+        <!-- Trust strip (persistent funds-safety + resolution signal, WF reconcile) -->
+        <div class="footer-trust">
+          <h3 class="trust-head">Built on trust, not on your balance</h3>
+          <div class="trust-items">
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/></svg>
+              <span class="tr-txt"><b>Your USDC is held 1:1</b><i>We never lend it.</i></span>
+            </span>
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
+              <span class="tr-txt"><b>Every event resolves against a public source</b><i>You can check it.</i></span>
+            </span>
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg>
+              <span class="tr-txt"><b>1,284 events resolved</b><i>On-chain, verifiable.</i></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="footer-top">
+
+          <!-- Brand block: logo, tagline, social, language -->
+          <div class="footer-brand">
+            <span class="footer-logo">Predict Market</span>
+            <p class="footer-tagline">Back the events you follow.</p>
+            <div class="social-row" role="list" aria-label="Social media">
+              <a href="#" role="listitem" aria-label="X (Twitter)" title="X (Twitter)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Discord" title="Discord">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2l-1-2H8l-1 2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/><circle cx="10" cy="12" r="1.1"/><circle cx="14" cy="12" r="1.1"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Telegram" title="Telegram">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l6 2 2 6 3-4 5 4z"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Instagram" title="Instagram">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="16.6" cy="7.4" r="0.7"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="TikTok" title="TikTok">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5v9.5a3 3 0 1 1-2.5-3"/><path d="M11 5c.5 2.5 2.5 4 4.5 4"/></svg>
+              </a>
+            </div>
+            <details class="filter-menu lang-menu" id="langMenu">
+              <summary aria-label="Language (placeholder)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
+                <span id="langCurrent">English</span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                <span class="tbd">TBD</span>
+              </summary>
+              <div class="filter-panel">
+                <ul>
+                  <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
+                  <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
+                  <li><label><input type="radio" name="lang" value="Portuguese"> Portuguese</label></li>
+                  <li><label><input type="radio" name="lang" value="German"> German</label></li>
+                  <li><label><input type="radio" name="lang" value="French"> French</label></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <!-- Link columns -->
+          <div class="footer-cols">
+
+            <nav class="footer-col" aria-label="Markets">
+              <h3>Events</h3>
+              <p class="sub-label">By category</p>
+              <ul>
+                <li><a href="#">Politics</a></li>
+                <li><a href="#">Crypto</a></li>
+                <li><a href="#">Culture</a></li>
+                <li><a href="#">General</a></li>
+                <li><a href="#">Sports</a> <span class="tbd">post-MVP</span></li>
+              </ul>
+              <p class="sub-label">By topic</p>
+              <ul>
+                <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
+                <li><a href="#">View all events</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Product">
+              <h3>Product</h3>
+              <ul>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="#">Wallet</a></li>
+                <li><a href="#">My Bets</a></li>
+                <li><a href="#">API / Developers</a> <span class="tbd">post-MVP</span></li>
+                <li><a href="#">Status</a> <span class="tbd">TBD</span></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Support">
+              <h3>Support</h3>
+              <ul>
+                <li><a href="#">Help Center</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">FAQ</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Contact</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">How It Works</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Company">
+              <h3>Company</h3>
+              <ul>
+                <li><a href="#">About</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Careers</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Press</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Brand</a> <span class="tbd">TBD</span></li>
+              </ul>
+            </nav>
+
+          </div>
+        </div>
+
+        <!-- SEO popular-links block (second internal-linking plane, WF reconcile) -->
+        <div class="footer-popular">
+          <h3>Popular right now</h3>
+          <ul class="popular-links">
+            <li><a href="#">Politics events</a></li>
+            <li><a href="#">Crypto events</a></li>
+            <li><a href="#">Culture events</a></li>
+            <li><a href="#">General events</a></li>
+            <li><a href="#">Trending events</a></li>
+            <li><a href="#">Ending soon</a></li>
+            <li><a href="#">How it works</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal strip -->
+        <div class="footer-legal">
+          <nav aria-label="Legal">
+            <ul class="legal-links">
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Responsible play</a></li>
+              <li><a href="#">Geo restrictions</a> <span class="tbd">TBD</span></li>
+              <li><a href="#">Cookie preferences</a></li>
+            </ul>
+          </nav>
+          <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
+          <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.]</p>
+          <p>Copyright (c) Predict Market. Sample wireframe content.</p>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Minimal interaction: desktop balance swap Portfolio <-> Cash (wireframe behavior, no styling) -->
+  <script>
+    (function () {
+      var states = [
+        { label: 'Portfolio', amount: '$142.00' },
+        { label: 'Cash', amount: '$42.00' }
+      ];
+      var i = 0;
+      var lbl = document.getElementById('balLabel');
+      var amt = document.getElementById('balAmt');
+      var btn = document.getElementById('balSwap');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          i = (i + 1) % states.length;
+          lbl.textContent = states[i].label;
+          amt.textContent = states[i].amount;
+          btn.setAttribute('aria-label', 'Swap balance (showing ' + states[i].label + ')');
+        });
+      }
+    })();
+
+    // Feed filters: each dropdown updates its own label and closes on choose.
+    function wireFilter(menuId, currentId, name, onChange) {
+      var menu = document.getElementById(menuId);
+      if (!menu) return;
+      var cur = document.getElementById(currentId);
+      menu.querySelectorAll('input[name="' + name + '"]').forEach(function (r) {
+        r.addEventListener('change', function () {
+          if (cur) cur.textContent = r.value;
+          menu.open = false;
+          if (onChange) onChange(r.value);
+        });
+      });
+    }
+
+    // Sort + its reverse toggle.
+    wireFilter('sortMenu', 'sortCurrent', 'sort');
+    (function () {
+      var rev = document.querySelector('#sortMenu .toggle');
+      if (!rev) return;
+      rev.addEventListener('click', function () {
+        var on = rev.getAttribute('aria-checked') === 'true';
+        rev.setAttribute('aria-checked', on ? 'false' : 'true');
+        rev.textContent = on ? 'off' : 'on';
+      });
+    })();
+
+    // Frequency.
+    wireFilter('freqMenu', 'freqCurrent', 'freq');
+
+    // Footer language selector (placeholder: updates label, English-only at MVP).
+    wireFilter('langMenu', 'langCurrent', 'lang');
+
+    // Category: the dropdown and the chip nav stay in sync, the heading echoes the
+    // choice, and picking a category reveals its sub-category rail (like the WF category pages).
+    (function () {
+      var heading = document.getElementById('feedHeading');
+      var nav = document.querySelector('.cat-nav');
+      var catCur = document.getElementById('catCurrent');
+      var rail = document.getElementById('subcatRail');
+      // Sub-categories per category (counts mirror the wireframe category pages). Trending has none.
+      var SUBCATS = {
+        Politics: [['All', '2K'], ['Trump', '297'], ['Trump Daily', '3'], ['Midterm Elections', '537'], ['Global Elections', '122'], ['Primaries', '106'], ['Congress', '42'], ['Trump Cabinet', '16'], ['Courts', '30'], ['Epstein', '22'], ['Government Shutdown', '3'], ['LA Mayor', '5']],
+        Crypto: [['All', '2K'], ['Bitcoin', '312'], ['Ethereum', '168'], ['Solana', '74'], ['Price Predictions', '220'], ['ETFs', '33'], ['Stablecoins', '19'], ['Memecoins', '58'], ['Layer 2s', '27'], ['Fed & Macro', '41']],
+        Culture: [['All', '1.4K'], ['Movies', '180'], ['Music', '120'], ['Awards', '64'], ['TV & Streaming', '90'], ['Celebrities', '145'], ['Internet & Memes', '38'], ['Books', '22'], ['Gaming', '51']],
+        General: [['All', '1.1K'], ['Science & Tech', '160'], ['Climate', '88'], ['Space', '54'], ['AI', '132'], ['Health', '70'], ['Business', '96'], ['World', '140']]
+      };
+      function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+      function renderRail(name) {
+        if (!rail) return;
+        var rows = SUBCATS[name];
+        if (!rows) { rail.hidden = true; rail.innerHTML = ''; return; }   // Trending / unknown: no rail
+        var html = '<p class="subcat-head">' + esc(name) + ' sub-categories</p><ul>';
+        for (var i = 0; i < rows.length; i++) {
+          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button">' + esc(rows[i][0]) + ' <span class="cnt">' + esc(rows[i][1]) + '</span></button></li>';
+        }
+        rail.innerHTML = html + '</ul>';
+        rail.hidden = false;
+      }
+      function activate(name) {
+        if (heading) heading.textContent = name;
+        if (catCur) catCur.textContent = name;
+        if (nav) {
+          nav.querySelectorAll('li').forEach(function (li) {
+            var on = li.querySelector('button').textContent.trim() === name;
+            if (on) li.setAttribute('aria-current', 'page'); else li.removeAttribute('aria-current');
+          });
+        }
+        var radio = document.querySelector('#catMenu input[value="' + name + '"]');
+        if (radio) radio.checked = true;
+        renderRail(name);
+      }
+      // Picking a sub-category highlights it (visual selection; the feed filter is product scope).
+      if (rail) {
+        rail.addEventListener('click', function (e) {
+          var b = e.target.closest('button'); if (!b) return;
+          var li = b.closest('li'); if (!li) return;
+          rail.querySelectorAll('li[aria-current]').forEach(function (x) { x.removeAttribute('aria-current'); });
+          li.setAttribute('aria-current', 'page');
+        });
+      }
+      wireFilter('catMenu', 'catCurrent', 'catf', activate);
+      // The top category nav navigates to per-category pages (event-feed-*.html),
+      // one page per category; it no longer switches the feed client-side, so the
+      // links are left to navigate natively (no preventDefault, no rail).
+    })();
+
+    // Wireframe screen-tree drawer (toggle on small screens; a fixed rail at >= 1440px).
+    (function () {
+      var nav = document.getElementById('wfNav');
+      var ov = document.getElementById('wfOverlay');
+      var tg = document.getElementById('wfToggle');
+      var cl = document.getElementById('wfClose');
+      if (!nav || !tg) return;
+      function set(open) {
+        nav.classList.toggle('open', open);
+        ov.classList.toggle('open', open);
+        tg.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      tg.addEventListener('click', function () { set(!nav.classList.contains('open')); });
+      cl.addEventListener('click', function () { set(false); });
+      ov.addEventListener('click', function () { set(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+      // Choosing a screen on a narrow viewport closes the drawer.
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { if (window.innerWidth < 1440) set(false); });
+      });
+    })();
+  </script>
+
+  <dialog id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
+    <div class="sheet-head">
+      <h2>Sign in or create account</h2>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="sheet-body">
+      <p class="fine signin-lead">You are about to place a bet. Sign in or create an account to continue. No crypto wallet required.</p>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
+        Continue with Google
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>
+        Continue with X
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"/></svg>
+        Continue with Apple
+      </button>
+      <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+    </div>
+  </dialog>
+
+  <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
+    <div class="sheet-head">
+      <h2>Add funds</h2>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
+    </div>
+    <div class="sheet-body">
+      <div>
+        <span class="field-label">Amount to add</span>
+        <div class="amount-row"><span class="amount-input">$20.00</span></div>
+        <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
+      </div>
+      <div class="widget-box">Transak payment widget (card to USDC)</div>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
+      <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
+    </div>
+  </dialog>
+
+  <dialog id="howitworksDialog" class="app-dialog hiw-dialog" aria-label="How it works">
+    <button type="button" class="hiw-close" data-close-dialog aria-label="Close">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="hiw-hero">
+      <span class="hiw-glow" aria-hidden="true"></span>
+      <div class="hiw-hero-inner">
+        <h2>How it works</h2>
+        <p class="hiw-tagline">Back the events you follow, in plain language.</p>
+      </div>
+    </div>
+    <div class="hiw-body">
+      <div class="hiw-sec">
+        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span>
+        <div class="hiw-sec-txt">
+          <span class="hiw-label">How betting works here</span>
+          <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+        </div>
+      </div>
+      <div class="hiw-sec">
+        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M4 15l5-5 4 3 6-8"/><path d="M20 5h-4M20 5v4"/></svg></span>
+        <div class="hiw-sec-txt">
+          <span class="hiw-label">Why the odds move</span>
+          <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+        </div>
+      </div>
+      <div class="hiw-sec hiw-faq">
+        <span class="hiw-label">Common questions</span>
+        <dl>
+          <dt>Do I need crypto to start?</dt>
+          <dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd>
+          <dt>What is the smallest bet?</dt>
+          <dd>One dollar. The default is five.</dd>
+          <dt>How does an event resolve?</dt>
+          <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
+        </dl>
+      </div>
+      <a href="#" class="hiw-full">Read the full guide <svg class="ic hiw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </dialog>
+
+  <script>
+    // Shared dialogs: open over the current page. On logged-out pages, completing
+    // sign-in then closing / funding the deposit lands on the logged-in counterpart
+    // (body[data-loggedin-target]); closing sign-in before signing in stays put.
+    (function () {
+      function dlg(id) { return document.getElementById(id); }
+      function open(id) { var d = dlg(id); if (!d) return; if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+      function close(d) { if (!d) return; if (d.close) d.close(); else d.removeAttribute('open'); }
+      var target = document.body.getAttribute('data-loggedin-target');
+      var signedIn = false;
+      document.addEventListener('click', function (e) {
+        var o = e.target.closest('[data-open]');
+        if (o) { e.preventDefault(); var dv = o.getAttribute('data-open'); open(dv === 'deposit' ? 'depositDialog' : dv === 'howitworks' ? 'howitworksDialog' : 'signinDialog'); return; }
+        var f = e.target.closest('[data-flow="signin-to-deposit"]');
+        if (f) { e.preventDefault(); signedIn = true; close(dlg('signinDialog')); open('depositDialog'); return; }
+        var c = e.target.closest('[data-close-dialog]');
+        if (c) { close(c.closest('dialog')); return; }
+      });
+      ['signinDialog', 'depositDialog', 'howitworksDialog'].forEach(function (id) {
+        var d = dlg(id); if (!d) return;
+        d.addEventListener('click', function (e) { if (e.target === d) close(d); });
+      });
+      var dep = dlg('depositDialog');
+      if (dep) dep.addEventListener('close', function () { if (target && signedIn) window.location.href = target; });
+    })();
+  </script>
+  <script>
+    (function () {
+      var sb = document.getElementById('rmSidebar'), ov = document.getElementById('rmOverlay'), tg = document.getElementById('rmToggle');
+      if (!sb || !ov || !tg) return;
+      var open = function () { sb.classList.add('open'); ov.classList.add('open'); };
+      var close = function () { sb.classList.remove('open'); ov.classList.remove('open'); };
+      tg.addEventListener('click', open);
+      ov.addEventListener('click', close);
+    })();
+  </script>
+  <script>
+    (function () {
+      // Odds bar on binary cards: a visual render of the existing prob (treatment B).
+      document.querySelectorAll('.grid > .card').forEach(function (card) {
+        if (card.querySelector('.options')) return;               // skip multi
+        var pl = card.querySelector('.prob-line'), yn = card.querySelector('.yesno');
+        var probEl = pl && pl.querySelector('.prob');
+        if (!pl || !yn || !probEl) return;
+        var yes = parseInt(probEl.textContent, 10);
+        if (isNaN(yes)) return;
+        var bar = document.createElement('div');
+        bar.className = 'oddsbar';
+        bar.innerHTML = '<div class="track"><span class="fill" style="width:' + yes + '%"></span></div>'
+          + '<div class="lbls"><span class="l-yes">YES ' + yes + '%</span><span class="l-no">NO ' + (100 - yes) + '%</span></div>';
+        pl.style.display = 'none';
+        yn.parentNode.insertBefore(bar, yn);
+      });
+      // Reverse-sort switch: flip aria-checked on click.
+      document.querySelectorAll('.toggle[role="switch"]').forEach(function (t) {
+        t.addEventListener('click', function () {
+          t.setAttribute('aria-checked', t.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
+        });
+      });
+      // Dropdowns: opening one closes the others; a click anywhere else closes all.
+      var menus = document.querySelectorAll('details.notif-menu, details.avatar-menu, details.filter-menu');
+      menus.forEach(function (d) {
+        d.addEventListener('toggle', function () {
+          if (d.open) menus.forEach(function (o) { if (o !== d) o.open = false; });
+        });
+      });
+      document.addEventListener('click', function (e) {
+        menus.forEach(function (d) { if (d.open && !d.contains(e.target)) d.open = false; });
+      });
+      // Meta values: dim the label, brighten the number/date so figures stand out.
+      document.querySelectorAll('.card .meta-txt > span').forEach(function (sp) {
+        var t = sp.textContent, i = t.indexOf(': ');
+        if (i < 0) return;
+        var label = document.createElement('span'); label.className = 'm-label'; label.textContent = t.slice(0, i + 2);
+        var val = document.createElement('span'); val.className = 'm-val'; val.textContent = t.slice(i + 2);
+        sp.textContent = ''; sp.append(label, val);
+      });
+      // Reveal the condensed category strip in the sticky header once the full
+      // (icon) category bar scrolls up under it.
+      (function () {
+        var header = document.querySelector('.app-header');
+        var fullNav = document.querySelector('.feed-inner > .cat-nav');
+        if (!header || !fullNav || !('IntersectionObserver' in window)) return;
+        var io = new IntersectionObserver(function (entries) {
+          header.classList.toggle('scrolled', !entries[0].isIntersecting);
+        }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 });
+        io.observe(fullNav);
+      })();
+    })();
+  </script><dialog class="app-case app-dialog outcome-dialog signin-dialog" id="outcomeDialog" aria-label="Sign in or create account"><div class="sheet-head"><h2>Sign in or create account</h2><a href="event-feed.html"><button type="button" class="sheet-close" aria-label="Close">x</button></a></div><div class="sheet-body">
+          <p class="fine">You are about to place a bet. Sign in or create an account to continue. It takes a few seconds.</p>
+          <a href="deposit.html"><button type="button" class="provider-btn">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            Continue with Google
+          </button></a>
+          <a href="deposit.html"><button type="button" class="provider-btn">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+            Continue with X
+          </button></a>
+          <a href="deposit.html"><button type="button" class="provider-btn">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7c1-2 3-3 4-3 0 2-1 3-2 4M9 9c-2 0-4 2-4 5s2 6 4 6c1 0 1.5-.5 3-.5s2 .5 3 .5c1.5 0 3-2 3-4-2-1-2-4 0-5-1-1.5-3-1.5-4-1.5S11 9 9 9z"/></svg>
+            Continue with Apple
+          </button></a>
+          <p class="fine">No crypto wallet required. By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>. Adding funds by card requires KYC; crypto-only accounts can connect a wallet instead.</p>
+        </div></dialog>
+  <script>(function(){var d=document.getElementById('outcomeDialog');if(d){if(d.showModal){try{d.showModal();}catch(e){d.setAttribute('open','');}}else{d.setAttribute('open','');}}})();</script></body>
+</html>
