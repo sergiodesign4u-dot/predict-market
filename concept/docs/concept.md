@@ -45,7 +45,7 @@
 | Decision | Choice | Note |
 |---|---|---|
 | Base canvas | **Dark, near-black, high contrast** | Flips the Step-1 light base. Revolut now contributes method only (photo carries the screen, one rare accent), not a light skin. |
-| Accent | **Electric violet = brand, acid lime = highlight** | Green and red stay reserved for YES / NO outcomes, so the brand accent never collides with the win/lose semantic. Exact pair seen in MELEE. |
+| Accent | **Electric violet = brand, acid lime = highlight** | Superseded 2026-07-16: the shipped accent is **matte brass `#c7a24e`**, not violet/lime (see the Vault section below and root `DESIGN.md`). The reserved-outcome rule was kept: green/red stay YES/NO only, so brass never collides with the win/lose semantic. |
 | Tone | **Span the three directions** | One calm-credible, one crypto-native, one in between. Decided live at Step 3. Energy is shared; density varies. |
 | Surface | **Hybrid: dark + real event photo + glow** | Real news/event photography carries the story (FJ2), on a dark canvas, with the vivid accent and a subtle glow / dot-grid (Jupiter detail). |
 
@@ -128,6 +128,11 @@ data caps taste, it is marked.
 
 ## Provisional palette seeds (finalised in concept.html at Step 4)
 
+> Superseded 2026-07-16. These violet/lime seeds were the Signal starting point; the shipped
+> palette is Vault (graphite + matte brass). The real, contrast-checked hex live in root
+> `DESIGN.md`; the Vault section at the end of this file explains the change. Kept here as the
+> historical record.
+
 Not final hex yet (colors are decided and contrast-checked on the stand at Step 4). Direction
 only, so Step 3 has a starting point:
 
@@ -178,7 +183,7 @@ section): **E** number-forward (probability leads, YES/NO carry the price), **F*
 tiles (green/red % tiles, imbalance visible), **G** featured/live (stronger glow + a trend
 sparkline; the sparkline is a candidate IA addition to the feed card, not yet in the wireframe).
 
-### LOCKED (2026-07-13)
+### LOCKED (2026-07-13), then SUPERSEDED by Vault (2026-07-16 - see the Vault section below)
 
 - **Direction: 2, Signal.**
 - **Binary feed card: treatment B** (thumbnail + why + odds bar + YES/NO + meta).
@@ -196,3 +201,54 @@ visual language. The full stand is `concept/concept.html` (Step 4).
 *Next (Step 3, under /impeccable): build concept/directions.html - three contrasting
 directions spanning calm-credible to crypto-native, each shown live (palette, a card with a
 real photo, icons), each labeled with the attributes above it is built from.*
+
+---
+
+## Vault - the shipped direction (LOCKED 2026-07-16, supersedes Signal)
+
+This section is written back FROM the built mockups (`concept/concept.html` +
+`ui-visual/event-feed.html` and the Event Detail family), which are the living truth. Where
+this file's earlier Signal decisions diverge from what shipped, the mockups win and the earlier
+lines are annotated "superseded" above. The token-level system is documented in root
+`DESIGN.md`; this section records only WHY the direction changed and how each attribute survived.
+
+**What Vault is.** A graphite canvas (`#0f1013` page / `#141619` device) with ONE matte-brass
+accent (`#c7a24e`, text-safe `#d7ac53`, lit `#e6c877`) and reserved green/red for YES/NO only.
+Real event photography, embossed two-stone plates (a lighter outer slab, darker inset plates and
+cards that float and cast shadow), inset brass hairlines + notched corners on the small tiles.
+Fonts: Space Grotesk (display), DM Sans (body), IBM Plex Mono (numbers). Signal, Newsroom and
+Arena are archived to `concept/old/pre-vault-3d/`.
+
+**The one honest divergence (taste vs shipped), named, not buried.** The taste doc above locked
+"electric violet = brand, acid lime = highlight" (the MELEE north star). Vault ships **matte
+brass on graphite instead**. This is a deliberate designer decision (Sergiy, 2026-07-16), made on
+the stand, not a silent model drift. Why it holds: brass on near-black solves the SAME root
+complaint the violet was chosen for (Kalshi: "the primary color has no contrast") while reading
+as *credible and weighty* rather than *neon and crypto-native* - which serves A2 (credible, not
+degen) and Alex's "looks like crypto = scam" fear better than acid lime did. The MELEE energy
+survives as high contrast + one loud accent + real photography; only the hue changed. Flagged here
+because it contradicts the "Accent" row of the taste-locked table; anyone re-reading that table
+should treat brass, not violet, as final.
+
+**How each attribute survived into Vault (macro reasons):**
+
+- **A1 - High-contrast and alive, not muddy and flat.** Kept, delivered differently: the energy
+  comes from a near-black graphite canvas + one loud brass accent + the two-stone emboss (cast rim
+  + drop shadow) and real event photos, instead of Signal's glow/dot-grid. Still the direct answer
+  to the Kalshi contrast complaint and the Hedgehog (muddy, flat) anti-reference.
+- **A2 - Credible and controlled, not hyped or degen.** Strengthened. Brass + stone reads as a
+  vault fitting, not a casino; the One-Accent rule (brass only on identity, active state, one CTA)
+  is the guardrail. This is the attribute that drove the violet -> brass change.
+- **A3 - A spectator's clarity, not a trader's terminal.** Kept intact. The odds bar carries the
+  outcome color so the tinted YES/NO buttons stay quiet; the AMM state is shown as a pool + depth
+  curve, never an order book. Numbers are always mono (the honesty cue).
+- **A4 - Proof of safety is visible, not buried.** Kept. The trust line ("USDC held 1:1, we never
+  lend it / N events resolved") sits near the action in neutral stone; the footer trust cards and
+  the notched brand tile carry it, calm by design (supports A2).
+- **A5 - The event is a story, not an isolated question.** Kept. Real event photography carries the
+  card (thumbnail masked and bleeding into the graphite) and the featured hero; never a grey
+  placeholder. The "why" line under each question is the story cue.
+
+*Rule still held: structure and content stay owned by `wireframes/`; the concept/visual layer owns
+only the visual language. The shipped stand is `concept/concept.html`; the token spec is root
+`DESIGN.md`.*

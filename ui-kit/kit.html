@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - UI Kit</title>
+<link rel="stylesheet" href="kit.css">
+<style>
+  .kit-wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  .kit-hero{padding:44px 0 4px}
+  .kit-hero h1{font-family:'Space Grotesk',sans-serif;color:var(--ink);font-size:clamp(30px,5vw,44px);font-weight:700;letter-spacing:-.03em;margin:0;text-wrap:balance}
+  .kit-hero p{color:var(--muted);font-family:'DM Sans',sans-serif;margin:10px 0 0;max-width:62ch;line-height:1.55}
+  .kit-hero code{font-family:'IBM Plex Mono',monospace;font-size:.9em;color:var(--accent-text)}
+  .kit-hero .kit-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent-text);border:1px solid var(--brass-line);border-radius:99px;padding:3px 10px;margin-top:16px}
+  .kit-jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .kit-jump a{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:99px;padding:5px 12px;text-decoration:none;transition:color .15s,border-color .15s}
+  .kit-jump a:hover{color:var(--accent-text);border-color:var(--brass-line)}
+  .kit-sec{margin-top:44px;border-top:1px solid var(--border);padding-top:24px;scroll-margin-top:20px}
+  .kit-sec > h2{font-family:'Space Grotesk',sans-serif;color:var(--accent-text);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+  .kit-sec > h2::before{content:attr(data-n);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--border);border-radius:5px;padding:1px 6px;letter-spacing:0}
+  .kit-sec > .kit-note{color:var(--muted);font-family:'DM Sans',sans-serif;font-size:12.5px;margin:0 0 18px;max-width:72ch;line-height:1.5}
+  .kit-subh{color:var(--muted);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:24px 0 10px}
+  .kit-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .kit-row.a-start{align-items:flex-start}
+  .kit-sws{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:14px}
+  .kit-sw{display:flex;flex-direction:column;gap:7px}
+  .kit-swatch{position:relative;height:60px;border-radius:8px;border:1px solid rgba(255,255,255,.09);overflow:hidden;display:flex;align-items:flex-end;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+  .kit-hex{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#fff;background:rgba(0,0,0,.42);padding:2px 6px;border-radius:5px;margin:6px}
+  .kit-sw-meta{display:flex;flex-direction:column;gap:2px}
+  .kit-sw-meta b{font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:600;color:var(--ink)}
+  .kit-sw-meta span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted)}
+  .kit-type{display:grid;gap:0}
+  .kit-type-row{display:grid;grid-template-columns:130px 1fr;gap:24px;align-items:baseline;padding:16px 0;border-top:1px solid var(--border)}
+  .kit-type-row:first-child{border-top:0;padding-top:2px}
+  .kit-role{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted);letter-spacing:.02em;line-height:1.5}
+  .kit-role b{display:block;color:var(--accent-text);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+  .kit-type-row > p{margin:0}
+  .t-display{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,4vw,38px);letter-spacing:-.03em;color:var(--ink);line-height:1.04}
+  .t-headline{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--ink)}
+  .t-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:-.02em;color:var(--ink)}
+  .t-body{font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--muted);max-width:65ch;line-height:1.5}
+  .t-label{font-family:'DM Sans',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text)}
+  .t-mono{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink)}
+  .kit-box{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:16px}
+  .kit-plate{margin:0}
+  dialog.app-dialog[open]{position:static;margin:0;width:100%}
+  .kit-dlgs{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+  .kit-dlgs > *{flex:0 1 380px}
+  /* showcase-only comfort: the opened dialog is framed with more air than the
+     mobile bottom-sheet ships with; the shipped ui-visual sheet is untouched */
+  .kit-dlgs .sheet-head{padding:13px 16px}
+  .kit-dlgs .sheet-body{padding:16px;gap:14px}
+  .kit-dlgs .quick{margin-top:12px}
+  main.feed{background:transparent}
+  /* chrome specimens: each shell piece framed on its own, not stacked as a page.
+     The bottom nav is mobile-only in the app; force it visible here so desktop
+     viewers can still see the specimen, and drop sticky so pieces sit in-frame. */
+  .kit-chrome-demo{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:8px;min-height:0;display:block}
+  .kit-chrome-demo .app-header,.kit-chrome-demo .bottom-nav,.kit-chrome-demo .app-footer{position:static}
+  .kit-chrome-demo .bottom-nav{display:block}
+  @media (max-width:560px){
+    .kit-type-row{grid-template-columns:1fr;gap:6px}
+  }
+</style>
+</head>
+<body class="app-case">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></symbol>
+    <symbol id="i-bell-b" viewBox="0 0 24 24"><path fill="currentColor" d="M18.75 9.71v-.705C18.75 5.136 15.726 2 12 2S5.25 5.136 5.25 9.005v.705a4.4 4.4 0 0 1-.692 2.375L3.45 13.81c-1.011 1.575.062 3.68 1.966 3.843a51 51 0 0 0 13.167 0c1.904-.163 2.977-2.268 1.966-3.843l-1.108-1.725a4.4 4.4 0 0 1-.692-2.375"/><path fill="currentColor" d="M7.243 18.545a5.002 5.002 0 0 0 9.513 0c-3.145.28-6.367.281-9.513 0"/></symbol>
+    <symbol id="i-shield-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.378 5.082C3 5.62 3 7.22 3 10.417v1.574c0 5.638 4.239 8.375 6.899 9.536c.721.315 1.082.473 2.101.473c1.02 0 1.38-.158 2.101-.473C16.761 20.365 21 17.63 21 11.991v-1.574c0-3.198 0-4.797-.378-5.335c-.377-.537-1.88-1.052-4.887-2.081l-.573-.196C13.595 2.268 12.812 2 12 2s-1.595.268-3.162.805L8.265 3c-3.007 1.03-4.51 1.545-4.887 2.082M15.06 10.5a.75.75 0 0 0-1.12-.999l-3.011 3.374l-.87-.974a.75.75 0 0 0-1.118 1l1.428 1.6a.75.75 0 0 0 1.119 0z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-verified-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9.592 3.2a6 6 0 0 1-.495.399c-.298.2-.633.338-.985.408c-.153.03-.313.043-.632.068c-.801.064-1.202.096-1.536.214a2.71 2.71 0 0 0-1.655 1.655c-.118.334-.15.735-.214 1.536a6 6 0 0 1-.068.632c-.07.352-.208.687-.408.985c-.087.13-.191.252-.399.495c-.521.612-.782.918-.935 1.238c-.353.74-.353 1.6 0 2.34c.153.32.414.626.935 1.238c.208.243.312.365.399.495c.2.298.338.633.408.985c.03.153.043.313.068.632c.064.801.096 1.202.214 1.536a2.71 2.71 0 0 0 1.655 1.655c.334.118.735.15 1.536.214c.319.025.479.038.632.068c.352.07.687.209.985.408c.13.087.252.191.495.399c.612.521.918.782 1.238.935c.74.353 1.6.353 2.34 0c.32-.153.626-.414 1.238-.935c.243-.208.365-.312.495-.399c.298-.2.633-.338.985-.408c.153-.03.313-.043.632-.068c.801-.064 1.202-.096 1.536-.214a2.71 2.71 0 0 0 1.655-1.655c.118-.334.15-.735.214-1.536c.025-.319.038-.479.068-.632c.07-.352.209-.687.408-.985c.087-.13.191-.252.399-.495c.521-.612.782-.918.935-1.238c.353-.74.353-1.6 0-2.34c-.153-.32-.414-.626-.935-1.238a6 6 0 0 1-.399-.495a2.7 2.7 0 0 1-.408-.985a6 6 0 0 1-.068-.632c-.064-.801-.096-1.202-.214-1.536a2.71 2.71 0 0 0-1.655-1.655c-.334-.118-.735-.15-1.536-.214a6 6 0 0 1-.632-.068a2.7 2.7 0 0 1-.985-.408a6 6 0 0 1-.495-.399c-.612-.521-.918-.782-1.238-.935a2.71 2.71 0 0 0-2.34 0c-.32.153-.626.414-1.238.935m6.781 6.663a.814.814 0 0 0-1.15-1.15l-4.85 4.85l-1.596-1.595a.814.814 0 0 0-1.15 1.15l2.17 2.17a.814.814 0 0 0 1.15 0z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-fire" viewBox="0 0 24 24"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></symbol>
+    <symbol id="i-cat-politics" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21.25 8.5c0-1.404 0-2.107-.337-2.611a2 2 0 0 0-.552-.552c-.441-.295-1.034-.332-2.115-.336q.005.438.004.91V7.25h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v6.5h-1.5V6c0-1.886 0-2.828-.586-3.414S14.636 2 12.75 2h-2c-1.886 0-2.828 0-3.414.586S6.75 4.114 6.75 6v15.25h-1.5v-6.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1V5.91q-.001-.47.004-.91c-1.081.005-1.674.042-2.115.337a2 2 0 0 0-.552.552C2.25 6.393 2.25 7.096 2.25 8.5v12.75h-.5a.75.75 0 0 0 0 1.5h20a.75.75 0 0 0 0-1.5h-.5zM9 11.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m2.75 3.5a.75.75 0 0 1 .75.75v2.25H11V19a.75.75 0 0 1 .75-.75M9 6.25a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 6.25m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 9.25" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-crypto" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m.75-16a.75.75 0 0 0-1.5 0v.317c-1.63.292-3 1.517-3 3.183c0 1.917 1.813 3.25 3.75 3.25c1.377 0 2.25.906 2.25 1.75s-.873 1.75-2.25 1.75c-1.376 0-2.25-.906-2.25-1.75a.75.75 0 0 0-1.5 0c0 1.666 1.37 2.891 3 3.183V18a.75.75 0 0 0 1.5 0v-.317c1.63-.292 3-1.517 3-3.183c0-1.917-1.813-3.25-3.75-3.25c-1.376 0-2.25-.906-2.25-1.75s.874-1.75 2.25-1.75c1.377 0 2.25.906 2.25 1.75a.75.75 0 0 0 1.5 0c0-1.666-1.37-2.891-3-3.183z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-culture" viewBox="0 0 24 24"><path fill="currentColor" d="m21.537 9.136l-.846 3.297c-.43 1.676-1.306 2.855-2.336 3.685c.219-1.144.214-2.418-.144-3.814l-.864-3.37l-.15-.584a.9.9 0 0 1 .599-.044c.378.101.608.406.637.702a.75.75 0 1 0 1.493-.145c-.091-.942-.783-1.749-1.742-2.006a2.4 2.4 0 0 0-1.418.05l-.017-.044c-.224-.596-.552-1.229-1.171-1.693a3.5 3.5 0 0 0-1.13-.562c-.759-.215-1.463-.076-2.064.124c-.558.185-1.21.49-1.924.825l-.072.034c-1.185.555-1.659.773-2.144.928q-.22.07-.446.127l.327-1.267c.44-1.719.661-2.578 1.236-3.01c.193-.145.41-.252.638-.317c.684-.194 1.461.17 3.015.897c1.15.54 1.726.809 2.326 1q.314.099.632.176c.612.149 1.239.216 2.493.351c1.694.182 2.54.273 3.04.798c.167.177.303.383.4.609c.292.675.072 1.534-.368 3.253"/><path fill="currentColor" fill-rule="evenodd" d="m16.758 12.677l-.845-3.298c-.44-1.719-.66-2.578-1.236-3.01a2 2 0 0 0-.638-.317c-.684-.194-1.46.17-3.015.897c-1.15.54-1.726.809-2.326 1a10 10 0 0 1-.632.176c-.611.149-1.238.216-2.493.351c-1.694.182-2.54.273-3.04.798a2.1 2.1 0 0 0-.4.609c-.292.675-.072 1.534.369 3.253l.845 3.297c.993 3.876 4.296 5.096 6.516 5.473c.677.115 1.016.172 2.044-.116s1.294-.514 1.825-.968c1.742-1.487 4.02-4.27 3.026-8.145m-10.753.691c.029-.296.26-.6.638-.702c.379-.102.73.047.903.29a.75.75 0 0 0 1.22-.873c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.064-1.743 2.006a.75.75 0 0 0 1.493.145m5.796-1.553c.029-.296.26-.6.638-.702c.379-.102.73.047.903.289a.75.75 0 1 0 1.22-.872c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.063-1.743 2.006a.75.75 0 0 0 1.493.145m1.846 3.814a.75.75 0 0 1-.885 1.211l-.01-.006a2 2 0 0 0-.485-.2c-.36-.098-.929-.163-1.685.04c-.756.202-1.216.543-1.48.808a2 2 0 0 0-.32.416l-.005.01a.75.75 0 0 1-1.372-.607l.688.298c-.688-.298-.687-.3-.687-.3v-.001l.002-.004l.004-.009l.01-.022l.033-.064q.04-.078.115-.196c.1-.156.252-.36.468-.578c.437-.44 1.125-.924 2.156-1.2c1.031-.277 1.87-.2 2.467-.038c.296.08.53.18.694.266a3 3 0 0 1 .258.151l.02.015l.008.005l.003.003h.002z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-general" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M2 6.634a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0m10.732 10.732a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0" clip-rule="evenodd"/><path fill="currentColor" d="M2 17.5c0-2.121 0-3.182.659-3.841S4.379 13 6.5 13s3.182 0 3.841.659S11 15.379 11 17.5s0 3.182-.659 3.841S8.621 22 6.5 22s-3.182 0-3.841-.659S2 19.621 2 17.5m11-11c0-2.121 0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11s-3.182 0-3.841-.659S13 8.621 13 6.5"/></symbol>
+    <!-- SEO section heading icons (Solar-bold style, like the category icons) -->
+    <symbol id="i-seo-guide" viewBox="0 0 24 24"><path fill="currentColor" d="M11 4.2C9.6 3.3 7.9 2.8 6 2.8c-1.1 0-2.1.2-3 .5C2.4 3.5 2 4 2 4.6v12.2c0 .9.9 1.5 1.7 1.2c.7-.2 1.5-.3 2.3-.3c1.8 0 3.4.6 4.6 1.5c.2.2.5.3.8.3V5c-.1-.3-.2-.6-.4-.8m2 0c-.2.2-.3.5-.4.8v14.5c.3 0 .6-.1.8-.3c1.2-.9 2.8-1.5 4.6-1.5c.8 0 1.6.1 2.3.3c.8.3 1.7-.3 1.7-1.2V4.6c0-.6-.4-1.1-1-1.3c-.9-.3-1.9-.5-3-.5c-1.9 0-3.6.5-5 1.4"/></symbol>
+    <symbol id="i-seo-chart" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21a1.5 1.5 0 0 1-1.5-1.5v-3a1.5 1.5 0 0 1 3 0v3A1.5 1.5 0 0 1 5 21m7 0a1.5 1.5 0 0 1-1.5-1.5v-8a1.5 1.5 0 0 1 3 0v8A1.5 1.5 0 0 1 12 21m7 0a1.5 1.5 0 0 1-1.5-1.5V6a1.5 1.5 0 0 1 3 0v13.5A1.5 1.5 0 0 1 19 21"/></symbol>
+    <symbol id="i-seo-qa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a6 6 0 0 0-6 6a1.5 1.5 0 0 0 3 0a3 3 0 1 1 4.3 2.7c-1.1.6-2.8 1.7-2.8 3.8v.5a1.5 1.5 0 0 0 3 0v-.5c0-.3.4-.7 1.1-1.1A6 6 0 0 0 12 2m0 16.5A1.75 1.75 0 1 0 12 22a1.75 1.75 0 0 0 0-3.5"/></symbol>
+  <symbol id="i-chat-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22"/></symbol><symbol id="i-share-b" viewBox="0 0 24 24"><path fill="currentColor" d="M13.803 5.333c0-1.84 1.507-3.333 3.365-3.333c1.86 0 3.366 1.492 3.366 3.333c0 1.841-1.507 3.334-3.366 3.334a3.38 3.38 0 0 1-2.037-.678l-4.67 3.204a3.3 3.3 0 0 1 0 1.62l4.67 3.204a3.38 3.38 0 0 1 2.037-.677c1.86 0 3.366 1.492 3.366 3.333S19.028 22 17.168 22c-1.858 0-3.365-1.492-3.365-3.333q0-.413.098-.804l-4.67-3.204a3.38 3.38 0 0 1-2.037.677C5.507 15.336 4 13.843 4 12.002s1.507-3.333 3.365-3.333c.762 0 1.474.252 2.037.677l4.67-3.204a3.3 3.3 0 0 1-.099-.809"/></symbol><symbol id="i-heart-b" viewBox="0 0 24 24"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></symbol></defs></svg>
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open roadmap"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar">
+  <a href="../research/research.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>
+  <div class="sidebar-brand"><div class="sidebar-project-name">UI Kit - components</div></div>
+  <nav class="sidebar-nav">
+    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual - screens</a>
+    <a class="sidebar-page-link active">UI Kit</a>
+    <div class="sidebar-sub">
+      <a href="#f-color" class="sidebar-sub-link">Color</a>
+      <a href="#f-type" class="sidebar-sub-link">Type</a>
+      <a href="#buttons" class="sidebar-sub-link">Buttons</a>
+      <a href="#chips" class="sidebar-sub-link">Chips and filters</a>
+      <a href="#cards" class="sidebar-sub-link">Event cards</a>
+      <a href="#states" class="sidebar-sub-link">States</a>
+      <a href="#dialogs" class="sidebar-sub-link">Shared dialogs</a>
+      <a href="#detail" class="sidebar-sub-link">Event Detail</a>
+      <a href="#chrome" class="sidebar-sub-link">Chrome</a>
+    </div>
+  </nav>
+</aside>
+
+<div class="kit-wrap">
+  <header class="kit-hero">
+    <h1>Predict Market UI Kit</h1>
+    <p>The Vault component kit. Every screen composes from these classes; the look lives in <code>kit.css</code>, the language in <code>DESIGN.md</code>. Seeded from the painted Event Feed and Event Detail families; the account, resolution and system families join it as they are built (Step 05).</p>
+    <span class="kit-badge">flat tokens - graphite + matte brass</span>
+    <nav class="kit-jump" aria-label="Sections">
+      <a href="#f-color">Color</a><a href="#f-type">Type</a><a href="#buttons">Buttons</a><a href="#chips">Chips</a><a href="#cards">Cards</a><a href="#states">States</a><a href="#dialogs">Dialogs</a><a href="#detail">Event Detail</a><a href="#chrome">Chrome</a>
+    </nav>
+  </header>
+
+  <section class="kit-sec" id="f-color">
+    <h2 data-n="01">Foundations - color</h2>
+    <p class="kit-note">One matte-brass accent on graphite. Green and red are reserved for the YES / NO outcome only.</p>
+    <div class="kit-sws">
+      <div class="kit-sw"><div class="kit-swatch" style="background:#c7a24e"><span class="kit-hex">#c7a24e</span></div><div class="kit-sw-meta"><b>Matte Brass</b><span>--brass</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#e6c877"><span class="kit-hex">#e6c877</span></div><div class="kit-sw-meta"><b>Brass Bright</b><span>--brass-2</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#d7ac53"><span class="kit-hex">#d7ac53</span></div><div class="kit-sw-meta"><b>Brass Text</b><span>--accent-text</span></div></div>
+      <div class="kit-sw"><div class="kit-swatch" style="background:#0f1013"><span class="kit-hex">#0f1013</span></div><div class="kit-sw-meta"><b>Page</b><span>--page</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#141619"><span class="kit-hex">#141619</span></div><div class="kit-sw-meta"><b>Graphite</b><span>--canvas</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#121417"><span class="kit-hex">#121417</span></div><div class="kit-sw-meta"><b>Content Plate</b><span>plate</span></div></div>
+      <div class="kit-sw"><div class="kit-swatch" style="background:#14161a"><span class="kit-hex">#14161a</span></div><div class="kit-sw-meta"><b>Card Face</b><span>card</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#1c1f24"><span class="kit-hex">#1c1f24</span></div><div class="kit-sw-meta"><b>Surface</b><span>--surface</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#2b2f38"><span class="kit-hex">#2b2f38</span></div><div class="kit-sw-meta"><b>Border</b><span>--border</span></div></div>
+      <div class="kit-sw"><div class="kit-swatch" style="background:#ede7da"><span class="kit-hex">#ede7da</span></div><div class="kit-sw-meta"><b>Ink</b><span>--ink</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#a49d8f"><span class="kit-hex">#a49d8f</span></div><div class="kit-sw-meta"><b>Muted</b><span>--muted</span></div></div>
+      <div class="kit-sw"><div class="kit-swatch" style="background:#4fa96b"><span class="kit-hex">#4fa96b</span></div><div class="kit-sw-meta"><b>Outcome Green</b><span>--yes</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#c85a50"><span class="kit-hex">#c85a50</span></div><div class="kit-sw-meta"><b>Outcome Red</b><span>--no</span></div></div>
+    </div>
+  </section>
+
+  <section class="kit-sec" id="f-type">
+    <h2 data-n="02">Foundations - type</h2>
+    <p class="kit-note">Three families on a contrast axis: Space Grotesk display, DM Sans body, IBM Plex Mono numbers.</p>
+    <div class="kit-type">
+      <div class="kit-type-row"><div class="kit-role"><b>Display</b>Space Grotesk 700</div><p class="t-display">Not just news. Your stake.</p></div>
+      <div class="kit-type-row"><div class="kit-role"><b>Headline</b>Space Grotesk 700</div><p class="t-headline">Will the U.S. government shut down before Nov 1?</p></div>
+      <div class="kit-type-row"><div class="kit-role"><b>Title</b>Space Grotesk 600 - 13px</div><p class="t-title">Bitcoin above $150,000 this year</p></div>
+      <div class="kit-type-row"><div class="kit-role"><b>Body</b>DM Sans 400</div><p class="t-body">Funding lapses at midnight Friday unless the Senate passes a stopgap. The odds move as new votes are scheduled.</p></div>
+      <div class="kit-type-row"><div class="kit-role"><b>Label</b>DM Sans 700 - caps</div><p class="t-label">Politics - resolves on-chain</p></div>
+      <div class="kit-type-row"><div class="kit-role"><b>Mono</b>IBM Plex Mono 500</div><p class="t-mono">64% - Vol $48.2k - Closes Oct 31</p></div>
+    </div>
+  </section>
+
+  <section class="kit-sec" id="buttons">
+    <h2 data-n="03">Buttons</h2>
+    <div class="kit-row">
+      <button class="state-btn primary">Confirm bet</button>
+      <div class="yesno" style="width:220px"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div>
+      <button class="icon-btn" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg></button>
+      <button class="load-more">Load more events</button>
+    </div>
+  </section>
+
+  <section class="kit-sec" id="chips">
+    <h2 data-n="04">Chips and filters</h2>
+    <div class="feed"><div class="feed-inner" style="padding:0">
+      <nav class="cat-nav" aria-label="Categories">
+        <ul>
+          <li aria-current="page"><a href="#"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg>Trending</button></a></li>
+          <li><a href="#"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg>Politics</button></a></li>
+          <li><a href="#"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg>Crypto</button></a></li>
+          <li><a href="#"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg>Culture</button></a></li>
+          <li><a href="#"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg>General</button></a></li>
+        </ul>
+      </nav>
+    </div></div>
+    <div class="kit-row" style="margin-top:14px">
+      <details class="filter-menu"><summary>Sort: Trending</summary><div class="filter-panel"><ul>
+        <li><label><input type="radio" name="s" checked> Trending</label></li>
+        <li><label><input type="radio" name="s"> Newest</label></li>
+        <li><label><input type="radio" name="s"> Closing soon</label></li></ul></div></details>
+      <span class="toggle" role="switch" aria-checked="true">Reverse order</span>
+    </div>
+  </section>
+
+  <section class="kit-sec" id="cards">
+    <h2 data-n="05">Event cards - signature</h2>
+    <p class="kit-note">Binary = treatment B (thin odds bar + tinted YES / NO). Multi = treatment D (option rows). On the two-stone content plate.</p>
+    <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
+      <div class="grid">
+        <article class="card"><div class="card-body">
+  <div class="top"><span class="thumb"></span><div class="top-txt">
+    <a class="q" href="#">Will the U.S. government shut down before Nov 1?</a><p class="why">Funding lapses at midnight Friday unless the Senate passes a stopgap.</p></div></div>
+  <div class="oddsbar"><div class="track"><span class="fill" style="width:64%"></span></div><div class="lbls"><span class="l-yes">Yes 64%</span><span class="l-no">No 36%</span></div></div>
+  <div class="yesno"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div>
+  <div class="meta"><div class="meta-txt"><span class="m-label">Vol</span> <span class="m-val">$48.2k</span> <span class="m-label">Closes</span> <span class="m-val">Oct 31</span></div>
+    <button class="bookmark-btn" aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button></div>
+</div></article>
+        <article class="card"><div class="card-body">
+  <div class="top"><span class="thumb"></span><div class="top-txt">
+    <a class="q" href="#">Will Bitcoin close above $150,000 this year?</a><p class="why">BTC is up 12% this week as spot-ETF inflows hit a record.</p></div></div>
+  <div class="oddsbar"><div class="track"><span class="fill" style="width:58%"></span></div><div class="lbls"><span class="l-yes">Yes 58%</span><span class="l-no">No 42%</span></div></div>
+  <div class="yesno"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div>
+  <div class="meta"><div class="meta-txt"><span class="m-label">Vol</span> <span class="m-val">$48.2k</span> <span class="m-label">Closes</span> <span class="m-val">Oct 31</span></div>
+    <button class="bookmark-btn" aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button></div>
+</div></article>
+        <article class="card"><div class="card-body">
+  <div class="top"><span class="thumb"></span><div class="top-txt">
+    <a class="q" href="#">Who will win the 2028 U.S. presidential election?</a>
+    <p class="why">Early primary polling is unusually close across four names.</p></div></div>
+  <div class="options">
+    <div class="opt-row"><span class="opt-name">JD Vance</span><span class="opt-prob">34%</span>
+      <div class="yesno compact"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div></div>
+    <div class="opt-row"><span class="opt-name">Gavin Newsom</span><span class="opt-prob">28%</span>
+      <div class="yesno compact"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div></div>
+  </div>
+  <div class="meta"><div class="meta-txt"><span class="m-label">Vol</span> <span class="m-val">$210k</span> <span class="m-label">Closes</span> <span class="m-val">Nov 2028</span></div>
+    <button class="bookmark-btn" aria-pressed="true" aria-label="Saved"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button></div>
+</div></article>
+      </div>
+    </div></div></div></main>
+  </section>
+
+  <section class="kit-sec" id="states">
+    <h2 data-n="06">States</h2>
+    <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
+      <div class="state-block">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+        <h2 class="state-title">No events match these filters</h2>
+        <p class="state-msg">Clear the filters to see everything, or get a note when a new event opens in this category.</p>
+        <div class="state-actions"><button class="state-btn primary">Clear filters</button><button class="state-btn">Notify me of new events</button></div>
+      </div>
+    </div></div></div></main>
+    <div class="kit-subh">Error</div>
+    <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
+      <div class="state-block">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17v.5"/></svg>
+        <h2 class="state-title">We could not load events</h2>
+        <p class="state-msg">The feed did not respond. Check your connection and try again.</p>
+        <div class="state-actions"><button class="state-btn primary">Try again</button></div>
+      </div>
+    </div></div></div></main>
+    <div class="kit-subh">Loading and push</div>
+    <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
+      <div class="push-banner"><span class="push-msg"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg> Turn on notifications to hear when your events resolve.</span>
+        <span class="push-actions"><button class="state-btn primary">Enable</button><button class="state-btn">Not now</button></span></div>
+      <div class="grid" style="margin-top:14px">
+        <article class="card skeleton"><div class="card-body"><div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div><div class="sk-line w40"></div><div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div></div></article>
+        <article class="card skeleton"><div class="card-body"><div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div><div class="sk-line w40"></div><div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div></div></article>
+      </div>
+    </div></div></div></main>
+  </section>
+
+  <section class="kit-sec" id="dialogs">
+    <h2 data-n="07">Shared dialogs</h2>
+    <p class="kit-note">Native <code>&lt;dialog&gt;</code> on the content-plate stone. Sign In (the gate) and Add funds; both emitted once in the shell. Shown inline here.</p>
+    <div class="kit-dlgs">
+      <dialog open id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
+    <div class="sheet-head">
+      <h2>Sign in or create account</h2>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="sheet-body">
+      <p class="fine signin-lead">You are about to place a bet. Sign in or create an account to continue. No crypto wallet required.</p>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
+        Continue with Google
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>
+        Continue with X
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"/></svg>
+        Continue with Apple
+      </button>
+      <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+    </div>
+  </dialog>
+      <dialog open id="depositDialog" class="app-dialog" aria-label="Add funds">
+    <div class="sheet-head">
+      <h2>Add funds</h2>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
+    </div>
+    <div class="sheet-body">
+      <div>
+        <span class="field-label">Amount to add</span>
+        <div class="amount-row"><span class="amount-input">$20.00</span></div>
+        <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
+      </div>
+      <div class="widget-box">Transak payment widget (card to USDC)</div>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
+      <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
+    </div>
+  </dialog>
+    </div>
+  </section>
+
+  <section class="kit-sec" id="detail">
+    <h2 data-n="08">Event Detail</h2>
+    <p class="kit-note">Two floating plates: scrolling content + a sticky bet panel. Compact here; the full family lives in ui-visual.</p>
+    <main class="feed"><div class="feed-inner"><div class="ed-layout">
+      <div class="ed-main"><div class="card"><div class="card-body">
+        <div class="ed-head">
+          <span class="ed-thumb"></span>
+          <div>
+            <span class="ed-cat">Politics</span>
+            <h1 class="ed-q">Will the U.S. government shut down before Nov 1?</h1>
+            <p class="ed-prob-big">Chance <span class="prob">64%</span> yes <span class="prob">36%</span> no</p>
+            <div class="ed-oddsbar"><span class="track"><span class="fill" style="width:64%"></span></span></div>
+          </div>
+          <div class="ed-actions">
+            <button aria-label="Comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"/></svg></button>
+            <button aria-label="Share"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share-b"/></svg></button>
+            <button data-fav aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button>
+          </div>
+        </div>
+        <div class="ed-section"><h3>Resolution</h3><p class="resolution">Resolves <strong>Yes</strong> if a federal funding gap begins before Nov 1, per the official Congressional record.</p></div>
+        <div class="ed-section"><h3>Why this price</h3>
+          <div class="args"><div class="arg-col"><h4>For Yes</h4><ul><li>No stopgap scheduled before the deadline.</li><li>Both chambers are out until Thursday.</li></ul></div>
+          <div class="arg-col"><h4>For No</h4><ul><li>Leadership signaled a short-term deal.</li><li>Markets are pricing a last-minute vote.</li></ul></div></div>
+        </div>
+      </div></div></div>
+      <aside class="bet-panel"><div class="bp-inner">
+        <div class="bp-head">Your bet</div>
+        <div class="yesno"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div>
+        <label class="field-label" style="margin-top:12px;display:block">Amount</label>
+        <div class="amount-row"><span class="cur">$</span><input class="amount-input" value="5" aria-label="Amount"></div>
+        <p class="bp-hint">If Yes wins you get $7.80. Fee $0.20, only on a win.</p>
+        <button class="state-btn primary" style="width:100%">Confirm bet</button>
+      </div></aside>
+    </div></div></main>
+    <div class="kit-subh">Comment</div>
+    <main class="feed"><div class="feed-inner">
+      <div class="ed-main"><div class="card"><div class="card-body">
+        <div class="ed-section">
+          <div class="cmt-list"><div class="cmt"><span class="cmt-av"></span><div class="cmt-body">
+            <div class="cmt-meta"><span class="cmt-user">mia_k</span> <span class="cmt-badge">Holds 320 Yes</span> <span>2h</span></div>
+            <p class="cmt-text">The stopgap vote keeps slipping. I think this closes higher than 64.</p>
+            <div class="cmt-actions"><button>Like 12</button><button>Reply</button></div>
+          </div></div></div>
+        </div>
+      </div></div>
+    </div></main>
+    <div class="kit-subh">Related events</div>
+    <main class="feed"><div class="feed-inner">
+      <section class="related-events" aria-label="Related events">
+        <h2>Related events</h2>
+        <ul class="related-list">
+          <li><a href="#"><span class="rel-thumb" style="background-image:url(../ui-visual/assets/event-politics.jpg)"></span><span class="rel-q">Will the debt ceiling be raised before Dec 15?</span><span class="rel-odds">Yes 72%</span></a></li>
+          <li><a href="#"><span class="rel-thumb" style="background-image:url(../ui-visual/assets/event-crypto.jpg)"></span><span class="rel-q">Will a continuing resolution pass this week?</span><span class="rel-odds">Yes 41%</span></a></li>
+        </ul>
+        <a href="#" class="related-more">Browse more events</a>
+      </section>
+    </div></main>
+  </section>
+
+  <section class="kit-sec" id="chrome">
+    <h2 data-n="09">Chrome</h2>
+    <p class="kit-note">The reusable shell, one piece at a time. On a real screen the header sticks to the top and the bottom nav to the bottom, so they are shown as separate specimens here (not stacked). The header is lean on desktop and compact on mobile; the bottom nav is the mobile-only 4-slot bar. See <code>shell.html</code>.</p>
+    <div class="kit-subh">Sticky app header</div>
+    <div class="device app-case kit-chrome-demo"><header class="app-header">
+      <div class="row">
+        <div class="left">
+          <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          </button>
+          <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+          <button type="button" class="hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
+        </div>
+
+        <div class="utility">
+          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
+          <div class="bal-toggle desk-only">
+            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
+            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
+            </button>
+            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+
+          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
+          <a href="#" aria-label="Favorites, see saved events"><button type="button" class="icon-btn desk-only" aria-label="Favorites">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+          </button></a>
+
+          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
+          <details class="notif-menu">
+            <summary aria-label="Notifications, 3 unread">
+              <span class="bell-wrap">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
+                <span class="badge-dot">3</span>
+              </span>
+            </summary>
+            <div class="dropdown notif-drop" role="menu">
+              <ul>
+                <li><a href="#"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+                <li><a href="#"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+                <li><a href="#"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
+              </ul>
+              <a class="notif-all" href="#">See all notifications</a>
+            </div>
+          </details>
+
+          <details class="avatar-menu">
+            <summary aria-label="Account menu">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="dropdown" role="menu">
+              <ul>
+                <li><a href="#"><button type="button" role="menuitem">My Profile</button></a></li>
+                <li><a href="#"><button type="button" role="menuitem">My Bets</button></a></li>
+                <li><a href="#"><button type="button" role="menuitem">Wallet</button></a></li>
+                <li><a href="#"><button type="button" role="menuitem">How It Works</button></a></li>
+                <li><a href="#"><button type="button" role="menuitem">Logout</button></a></li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+      <!-- Condensed category strip: hidden until you scroll past the full category
+           bar, then it slides into the sticky header so the tabs stay reachable.
+           Small, icon-less chips (the full bar below keeps its icons). -->
+      <div class="cat-condensed" aria-hidden="true">
+        <ul>
+          <li aria-current="page"><a href="event-feed.html"><button type="button">Trending</button></a></li>
+          <li><a href="event-feed-politics.html"><button type="button">Politics</button></a></li>
+          <li><a href="event-feed-crypto.html"><button type="button">Crypto</button></a></li>
+          <li><a href="event-feed-culture.html"><button type="button">Culture</button></a></li>
+          <li><a href="event-feed-general.html"><button type="button">General</button></a></li>
+        </ul>
+      </div>
+    </header></div>
+    <div class="kit-subh">Mobile bottom nav</div>
+    <div class="device app-case kit-chrome-demo"><nav class="bottom-nav" aria-label="Primary (mobile)">
+      <ul>
+        <li aria-current="page"><a href="#"><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
+          <span>Events</span>
+        </button></a></li>
+        <li><a href="#"><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          <span>My Bets</span>
+        </button></a></li>
+        <li><a href="#"><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+          <span>Favorites</span>
+        </button></a></li>
+        <li><a href="#"><button type="button" aria-label="Portfolio, balance $142">
+          <span class="bn-bal">$142</span>
+          <span>Portfolio</span>
+        </button></a></li>
+      </ul>
+    </nav></div>
+    <div class="kit-subh">Footer trust strip</div>
+    <div class="device app-case kit-chrome-demo">
+      <footer class="app-footer"><div class="footer-inner">
+        <div class="footer-trust"><h3 class="trust-head">Built on trust</h3><div class="trust-items">
+          <div class="trust-item"><svg class="tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"/></svg><div class="tr-txt"><b>USDC held 1:1</b><i>We never lend deposited funds.</i></div></div>
+          <div class="trust-item"><svg class="tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-verified-b"/></svg><div class="tr-txt"><b>Public sources</b><i>Every event cites its resolution source.</i></div></div>
+          <div class="trust-item"><svg class="tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-chart"/></svg><div class="tr-txt"><b>1,240 events resolved</b><i>On-chain, and visible to anyone.</i></div></div>
+        </div></div>
+        <div class="footer-legal"><a class="footer-logo">Predict Market</a><p class="footer-tagline">Not just news. Your stake.</p></div>
+      </div></footer>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){var sb=document.getElementById('rmSidebar'),ov=document.getElementById('rmOverlay'),tg=document.getElementById('rmToggle');if(!sb||!ov||!tg)return;var open=function(){sb.classList.add('open');ov.classList.add('open');},close=function(){sb.classList.remove('open');ov.classList.remove('open');};tg.addEventListener('click',open);ov.addEventListener('click',close);sb.querySelectorAll('.sidebar-sub-link').forEach(function(a){a.addEventListener('click',close);});})();
+</script>
+</body>
+</html>

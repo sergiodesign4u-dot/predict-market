@@ -429,3 +429,601 @@
   .card{transition:box-shadow .2s}
   .card:hover,.hero-mini:hover{transform:none}
 }
+
+/* ============================================================================
+   EVENT DETAIL - two floating stone plates (scrolling content + sticky bet
+   panel), a mobile sticky bet dock, content tabs, and a related-events plate.
+   All scoped to .app-case so nothing leaks onto the feed families. The detail
+   <main> rides the same feed-inner slab (flex column, 16px gap) as the feed.
+   ============================================================================ */
+/* shared stone-plate recipe - the SAME large-plate recipe the feed uses for its
+   .cat-layout / SEO plates: a dark near-black rim + embossed inset highlights (NOT
+   a brass outline; brass frames are for the feed's small cards, not big plates) */
+.app-case .ed-main,.app-case .bet-panel,.app-case .related-events{position:relative;overflow:hidden;
+  background-color:#121417;background-image:var(--stone-dark),linear-gradient(162deg,#17191d,#0f1013);background-blend-mode:overlay,normal;
+  border:1px solid rgba(0,0,0,.42);border-radius:9px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.17),inset 0 3px 9px -5px rgba(255,255,255,.1),
+    inset 1px 0 0 rgba(255,255,255,.05),
+    inset -1px 0 0 rgba(0,0,0,.35),inset 0 -1px 0 rgba(0,0,0,.55),
+    0 30px 58px -34px rgba(0,0,0,.85),0 12px 26px -18px rgba(0,0,0,.7)}
+
+/* layout: single column on mobile (dock is separate) -> two plates side by side */
+.app-case .ed-layout{display:flex;flex-direction:column;gap:16px;align-items:stretch}
+.app-case .ed-main{flex:1;min-width:0;border-right:0}
+.app-case .bet-panel{display:none}
+.app-case .bet-dock{display:flex}
+@media(min-width:760px){
+  .app-case .ed-layout{flex-direction:row;align-items:flex-start}
+  .app-case .bet-panel{display:block;flex:0 0 322px;position:sticky;top:78px}
+  .app-case .bet-dock{display:none}
+}
+.app-case .related-events{margin:0}
+
+/* event head: flatten the inner .card so it sits ON the plate (no double stone) */
+.app-case .ed-main>.card{background:none;border:0;box-shadow:none;border-radius:0;overflow:visible;transition:none}
+.app-case .ed-main>.card:hover{transform:none;box-shadow:none}
+.app-case .ed-main>.card::before,.app-case .ed-main>.card::after{display:none}
+.app-case .ed-head{position:relative;padding:16px 118px 14px 20px;gap:14px}
+.app-case .ed-thumb{width:76px;height:76px;flex:0 0 76px;border:1px solid var(--brass-line);border-radius:12px;
+  background:url(assets/event-politics.jpg) center/cover;color:transparent;font-size:0}
+.app-case .ed-cat{font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--brass-2)}
+.app-case .ed-q{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(19px,2vw,24px);line-height:1.14;letter-spacing:-.01em;color:var(--ink);margin:6px 0 0;text-wrap:balance}
+.app-case .ed-prob-big{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:10px 0 0}
+.app-case .ed-prob-big .prob{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:normal;text-transform:none;border:0;background:transparent;padding:0 3px}
+.app-case .ed-prob-big .prob:first-of-type{color:#77d19b}
+.app-case .ed-prob-big .prob:last-of-type{color:#e88a84}
+/* thin odds bar injected under the big odds (green YES over a red track) */
+.app-case .ed-oddsbar{margin:12px 0 4px}
+.app-case .ed-oddsbar .track{display:block;height:6px;border-radius:99px;background:var(--no);overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.5)}
+.app-case .ed-oddsbar .fill{display:block;height:100%;background:var(--yes);box-shadow:0 0 12px color-mix(in oklab,var(--yes) 55%,transparent)}
+
+/* sections + engraved dividers */
+.app-case .ed-section{padding:16px 20px;border-top:1px solid var(--groove-dark);box-shadow:inset 0 1px 0 var(--groove-light)}
+.app-case .ed-section h3{font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brass-2);margin:0 0 10px}
+.app-case .resolution{font-size:13px;line-height:1.6;color:var(--ink)}
+.app-case .resolution strong{color:var(--ink)}
+/* Rules / Market Context tabs (underline tabs, same family as Buy/Sell) */
+.app-case .ed-rules .rules-tabs{display:flex;gap:22px;border-bottom:1px solid var(--groove-dark);box-shadow:inset 0 -1px 0 var(--groove-light);margin:0 0 15px}
+.app-case .rules-tab{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;
+  color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;padding:0 0 10px;margin-bottom:-1px;cursor:pointer;transition:color .15s ease,border-color .15s ease}
+.app-case .rules-tab:hover{color:var(--ink)}
+.app-case .rules-tab.sel{color:var(--ink);border-bottom-color:var(--accent)}
+.app-case .rules-note{margin:14px 0 0;font-size:11.5px;line-height:1.55;color:var(--muted)}
+/* event head actions: comments / share / save-into-Favorites (top-right) */
+.app-case .ed-actions{position:absolute;top:16px;right:18px;display:flex;gap:7px;z-index:2}
+.app-case .ed-actions button{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;
+  background:var(--surface-2);border:1px solid var(--border);border-radius:10px;color:var(--muted);cursor:pointer;
+  transition:color .15s ease,border-color .15s ease,background .15s ease}
+.app-case .ed-actions button:hover{color:var(--ink);border-color:rgba(255,255,255,.2)}
+/* filled Solar-Bold sprites (#i-chat-b / #i-share-b / #i-bookmark-b) - same family as
+   the header chrome, so fill (not stroke) like the rest of the icon system */
+.app-case .ed-actions .ic{width:18px;height:18px;fill:currentColor;stroke:none}
+.app-case .ed-actions button[data-fav][aria-pressed="true"]{color:var(--accent-text);border-color:rgba(199,162,78,.42);background:rgba(199,162,78,.09)}
+@media(max-width:560px){.app-case .ed-head{padding-right:100px}.app-case .ed-actions{top:12px;right:12px;gap:5px}.app-case .ed-actions button{width:30px;height:30px}}
+/* AMM 'Market' panel: collapsible current state + price-by-bet-size depth (the
+   AMM-honest analog of an order book - a pool + curve, not a CLOB of asks/bids) */
+.app-case .market-box{border:0;padding:0}
+.app-case .market-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none}
+.app-case .market-head::-webkit-details-marker{display:none}
+.app-case .market-title{display:flex;align-items:center;gap:7px;font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brass-2)}
+.app-case .market-title .ic{width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:1.7}
+.app-case .market-chevron{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:1.8;transition:transform .2s ease}
+.app-case .market-box[open] .market-chevron{transform:rotate(180deg)}
+.app-case .market-body{margin-top:15px}
+.app-case .market-stats{display:flex;flex-wrap:wrap;gap:16px 26px;padding-bottom:15px;border-bottom:1px solid var(--groove-dark)}
+.app-case .market-stats > div{display:flex;flex-direction:column;gap:4px}
+.app-case .ms-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+.app-case .ms-val{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--ink)}
+.app-case .ms-yes{color:#77d19b}
+.app-case .ms-no{color:#e88a84}
+.app-case .ms-up{color:#77d19b}
+.app-case .market-depth{margin-top:15px}
+.app-case .md-title{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:var(--ink)}
+.app-case .md-sub{display:block;font-size:11.5px;line-height:1.5;color:var(--muted);margin:3px 0 11px}
+.app-case .md-table{display:flex;flex-direction:column;gap:2px}
+.app-case .md-row{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;align-items:center;padding:9px 11px;border-radius:7px;overflow:hidden;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink)}
+.app-case .md-row-head{padding:2px 11px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.03em}
+.app-case .md-bar{position:absolute;left:0;top:0;bottom:0;background:rgba(79,169,107,.12);z-index:0}
+.app-case .md-row > span:not(.md-bar){position:relative;z-index:1}
+.app-case .md-amt{font-weight:600}
+.app-case .md-price{color:#77d19b;text-align:center}
+.app-case .md-row-head > span:nth-child(2){text-align:center}
+.app-case .md-get,.app-case .md-row-head > span:last-child{text-align:right}
+/* resolved page: the 'This event just resolved' state as a right-column panel */
+.app-case .bet-panel.resolved-panel{display:block}
+.app-case .resolved-panel .rp-inner{padding:24px 20px}
+.app-case .resolved-panel .state-block{background:none;border:0;box-shadow:none;border-radius:0;margin:0!important;padding:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:9px}
+.app-case .resolved-panel .state-block .ic{width:30px;height:30px;stroke:var(--accent-text);fill:none}
+.app-case .resolved-panel .state-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin:0}
+.app-case .resolved-panel .state-msg{font-size:12.5px;line-height:1.5;color:var(--muted);margin:0}
+.app-case .resolved-panel .state-actions{flex-direction:column;width:100%;gap:8px;margin-top:6px}
+.app-case .resolved-panel .state-actions a{display:block;width:100%}
+.app-case .resolved-panel .state-btn{width:100%}
+
+/* schematic price chart */
+.app-case .chart-svg{border:1px solid var(--border);border-radius:10px;background:#101215}
+/* strokes stay a constant screen width despite the non-uniform viewBox stretch,
+   so the line reads as ONE crisp thin ribbon; round joins + a soft glow = pretty */
+.app-case .chart-svg polyline,.app-case .chart-svg line{vector-effect:non-scaling-stroke}
+.app-case .chart-svg polyline{stroke:#42d18a;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;
+  filter:drop-shadow(0 1px 4px rgba(66,209,138,.42))}
+.app-case .chart-svg .grid-l{stroke:rgba(255,255,255,.05);stroke-width:1}
+.app-case .chart-svg .nowline{stroke:rgba(199,162,78,.5);stroke-width:1;stroke-dasharray:3 3}
+.app-case .chart-svg text{fill:var(--muted)}
+
+/* facts strip */
+.app-case .ed-facts{gap:20px;padding:14px 20px;border-top:1px solid var(--groove-dark);box-shadow:inset 0 1px 0 var(--groove-light);
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+.app-case .ed-facts b{font-family:'Space Grotesk',sans-serif;font-size:14px;letter-spacing:0;text-transform:none;color:var(--ink);margin-top:3px}
+
+/* why-this-price arguments (YES column green, NO column red) */
+.app-case .args{gap:18px}
+.app-case .arg-col h4{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700}
+.app-case .args .arg-col:first-child h4{color:#77d19b}
+.app-case .args .arg-col:last-child h4{color:#e88a84}
+.app-case .arg-col ul{font-size:12.5px;color:var(--muted);line-height:1.55}
+.app-case .arg-col li{margin-bottom:6px}
+
+/* content tabs (Comments / Biggest bets / Bets / Activity) */
+.app-case .ed-tabwrap{border-top:1px solid var(--groove-dark);box-shadow:inset 0 1px 0 var(--groove-light)}
+.app-case .ed-tabbar{background:transparent;border-bottom:1px solid var(--groove-dark)}
+.app-case .ed-tablabel{border-right:0;font-family:'DM Sans',sans-serif;font-weight:600;font-size:12.5px;color:var(--muted)}
+.app-case .ed-tablabel:hover{color:var(--ink)}
+.app-case .ed-tab-count{color:var(--muted)}
+.app-case #edtab-comments:checked ~ .ed-tabbar label[for="edtab-comments"],
+.app-case #edtab-holders:checked ~ .ed-tabbar label[for="edtab-holders"],
+.app-case #edtab-positions:checked ~ .ed-tabbar label[for="edtab-positions"],
+.app-case #edtab-activity:checked ~ .ed-tabbar label[for="edtab-activity"]{background:transparent;color:var(--accent-text);font-weight:700;box-shadow:inset 0 -2px 0 var(--accent)}
+
+/* comments */
+/* controls row: the Newest/Top/Holders selector sits at the LEFT edge, the
+   "128 comments" count at the RIGHT edge */
+.app-case .cmt-controls{color:var(--muted);font-size:11.5px;justify-content:space-between}
+/* SAME segmented style as the chart range switcher (dark container + brass-tint
+   active pill), so every segmented switcher reads as one component family */
+.app-case .cmt-controls .seg{order:-1;display:inline-flex;gap:4px;padding:3px;background:#0d0f12;border:1px solid var(--border);border-radius:10px}
+.app-case .cmt-controls .seg button{border:0;background:transparent;color:var(--muted);border-radius:7px;padding:5px 12px;
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:11.5px;cursor:pointer;transition:background .15s ease,color .15s ease}
+.app-case .cmt-controls .seg button:hover{color:var(--ink)}
+.app-case .cmt-controls .seg button.sel{background:rgba(199,162,78,.16);color:var(--accent-text);font-weight:700}
+/* composer sits flush (no box) so the "you" avatar lines up with the comment
+   avatars below; the input itself carries the border */
+.app-case .cmt-compose{border:0;background:transparent;padding:0;align-items:center}
+.app-case .cmt-av{border:1px solid var(--brass-line);color:var(--accent-text);font-size:9px;
+  background:linear-gradient(140deg,color-mix(in oklab,var(--accent) 20%,var(--surface-2)),var(--surface-2))}
+.app-case .cmt-input{border:1px solid var(--border);border-radius:8px;background:#0d0f12;color:var(--muted)}
+.app-case .cmt-post{border:0;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#180810;font-weight:700}
+/* logged-out comment prompt: a clean solid bar (not a dashed placeholder), quiet
+   until hover, where it warms to brass so it reads as a real sign-in affordance */
+.app-case .cmt-signin{display:flex;align-items:center;justify-content:center;width:100%;
+  border:1px solid var(--border);border-radius:10px;background:#0d0f12;color:var(--muted);
+  padding:16px;margin-bottom:18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;
+  transition:border-color .15s ease,color .15s ease,background .15s ease}
+.app-case .cmt-signin:hover{border-color:rgba(199,162,78,.5);color:var(--accent-text);background:#14171c}
+.app-case .cmt-user{color:var(--ink)}
+.app-case .cmt-meta{color:var(--muted)}
+.app-case .cmt-badge{border:1px solid var(--brass-line);border-radius:6px;background:rgba(199,162,78,.08);color:var(--accent-text);font-size:9px}
+.app-case .cmt-text{color:var(--ink);font-size:12.5px;line-height:1.5}
+.app-case .cmt-actions,.app-case .cmt-actions button{color:var(--muted)}
+.app-case .cmt-actions button:hover{color:var(--accent-text)}
+.app-case .cmt-actions .ic{fill:currentColor;stroke:none}
+
+/* biggest bets (YES column green, NO column red) */
+.app-case .hold-col h4{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700}
+.app-case .hold-cols .hold-col:first-child h4{color:#77d19b}
+.app-case .hold-cols .hold-col:last-child h4{color:#e88a84}
+.app-case .hold-row{border-top:1px solid var(--groove-dark);font-size:12.5px;color:var(--ink)}
+.app-case .hold-rank{color:var(--accent-text);font-family:'Space Grotesk',sans-serif;font-weight:700}
+.app-case .hold-name{color:var(--ink)}
+.app-case .hold-amt{font-family:'IBM Plex Mono',monospace;color:var(--muted)}
+@media(min-width:640px){.app-case .hold-col:first-child{border-right:1px solid var(--groove-dark)}}
+
+/* bets table */
+.app-case .ptable th{color:var(--muted)}
+.app-case .ptable th,.app-case .ptable td{border-bottom:1px solid var(--groove-dark)}
+.app-case .ptable td{color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:11.5px}
+.app-case .ptable tr.you td{background:rgba(199,162,78,.09);font-weight:700}
+.app-case .pos-side{border:1px solid var(--border);border-radius:6px;background:var(--surface-2);color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.03em;white-space:nowrap}
+.app-case .pos-side.pos-yes,
+.app-case .pos-side.pos-won{color:#77d19b;border-color:#3f7d55;background:rgba(79,169,107,.12)}
+.app-case .pos-side.pos-no,
+.app-case .pos-side.pos-lost{color:#e79087;border-color:#8f4841;background:rgba(200,90,80,.12)}
+.app-case .pos-note{color:var(--muted)}
+
+/* ---- My Bets: Active / History tabs + position rows (on the stone plate) ---- */
+.app-case .tabs{gap:8px;margin:0 0 16px}
+.app-case .tabs button{border:1px solid var(--border);border-radius:999px;background:#1b1e23;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:600;font-size:12.5px;padding:8px 16px;min-height:36px;cursor:pointer}
+.app-case .tabs button:hover{color:var(--ink)}
+.app-case .tabs button[aria-selected="true"]{background:color-mix(in oklab,var(--accent) 16%,transparent);border-color:var(--accent);color:var(--accent-text);font-weight:700}
+.app-case .pos-list{gap:10px}
+.app-case .pos{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:14px 16px;gap:10px;box-shadow:inset 0 1px 0 var(--groove-light),0 12px 26px -22px #000}
+.app-case .pos-q{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;letter-spacing:-.01em;color:var(--ink);line-height:1.3}
+.app-case .pos-figures{gap:20px;color:var(--muted);font-size:9.5px;text-transform:uppercase;letter-spacing:.05em}
+.app-case .pos-fig b{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink);font-weight:600;letter-spacing:0;text-transform:none;margin-top:3px}
+.app-case .pos-status{color:var(--muted);font-size:10px;letter-spacing:.04em}
+.app-case .pos.skeleton{gap:8px}
+.app-case .pos.skeleton .sk-line{background:linear-gradient(90deg,#1b1e23,#24282f,#1b1e23);border-radius:4px}
+
+/* ---- Account cluster: CTA bar, withdraw flow, profile identity + gallery ---- */
+.app-case .cta-bar{position:sticky;bottom:0;background:var(--card);border:0;border-top:1px solid var(--border);border-radius:9px 9px 0 0;padding:12px;gap:10px;margin-top:14px;z-index:5}
+.app-case .cta-bar button{flex:1;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:600;font-size:13px;padding:13px;min-height:44px;cursor:pointer}
+.app-case .cta-bar button:hover{border-color:rgba(199,162,78,.45);background:#20242a}
+/* only the first ACTION is brass (a direct button, or the button in the first link);
+   secondary actions stay quiet stone even when each sits in its own wrapper */
+.app-case .cta-bar>button:first-child,
+.app-case .cta-bar>a:first-child button{background:linear-gradient(135deg,var(--accent),var(--accent-2));border:0;color:#180810;font-weight:700}
+/* withdraw flow (details) */
+.app-case .wd-flow{border:1px solid var(--border);border-radius:9px;background:var(--card);margin:10px 0;overflow:hidden}
+.app-case .wd-flow>summary{padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer}
+.app-case .wd-flow[open]>summary{border-bottom:1px solid var(--border)}
+.app-case .wd-flow .sheet-body{padding:14px;gap:11px}
+/* the grafted layout CSS flattened its @media wrapper, so .cat-layout keeps
+   align-items:flex-start at every width and no longer stretches .cat-main to full
+   width. Applied (non-category) pages have no .subcat rail - just one content
+   column - so stretch it back to fill the plate. Category pages (which DO carry a
+   .subcat) keep their intended row layout untouched. */
+.app-case .cat-layout:not(:has(.subcat)){align-items:stretch}
+
+/* ---- Profile: identity header, reputation stats, section rules, share cards ----
+   The profile leads with reputation, not balance (JTBD: track record IS the
+   reputation). Identity reads as a real header; the track record is a stat grid
+   with the win rate as the hero figure; money stays a quiet utility card. */
+
+/* section labels: the <p class="pos-status"> dividers become a quiet brass-ticked
+   rule, so the four sections read as one designed system, not four bare eyebrows */
+.app-case p.pos-status{
+  display:flex;align-items:center;gap:9px;
+  font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--muted);
+  margin:24px 0 11px !important;
+}
+.app-case p.pos-status::before{content:"";width:15px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));flex:0 0 auto}
+
+/* identity header: portrait + name/handle + edit, a proper masthead */
+.app-case .idrow{
+  display:flex;align-items:center;flex-wrap:wrap;gap:15px;
+  padding:2px 0 18px;margin:0 0 2px;border-bottom:1px solid var(--border);
+}
+.app-case .idrow .av{
+  display:inline-flex;width:72px;height:72px;flex:0 0 72px;border:0;border-radius:999px;
+  background:var(--surface-2) url(assets/avatar-2.jpg) center/cover;overflow:hidden;
+  color:transparent;font-size:0;
+  box-shadow:0 0 0 3px var(--canvas),0 0 0 4px color-mix(in oklab,var(--accent) 55%,transparent);
+}
+.app-case .idrow .who{display:flex;flex-direction:column;gap:3px;flex:1 1 150px;min-width:0}
+.app-case .idrow .who br{display:none}
+.app-case .idrow .name{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
+.app-case .idrow .handle{font-size:12px;color:var(--muted);letter-spacing:.01em}
+.app-case .idrow .edit{
+  align-self:center;flex:0 0 auto;margin-left:auto;
+  border:1px solid var(--border);border-radius:999px;background:var(--surface-2);
+  color:var(--ink);font-size:11px;font-weight:600;padding:9px 15px;min-height:38px;cursor:pointer;
+  transition:border-color .18s ease,color .18s ease;
+}
+.app-case .idrow .edit:hover{border-color:rgba(199,162,78,.55);color:#fff}
+
+/* track record = reputation: flatten the card, lay the figures out as stat tiles,
+   the win rate carries a brass tile as the hero number */
+.app-case .pos[aria-label="Track record"]{background:none;border:0;box-shadow:none;padding:0;gap:0}
+.app-case .pos[aria-label="Track record"] .pos-figures{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:0;font-size:9px;letter-spacing:.06em;
+}
+.app-case .pos[aria-label="Track record"] .pos-fig{
+  background:var(--surface-2);border:1px solid var(--border);border-radius:10px;
+  padding:13px 14px;gap:5px;color:var(--muted);
+}
+.app-case .pos[aria-label="Track record"] .pos-fig b{font-family:'IBM Plex Mono',monospace;font-size:20px;color:var(--ink);font-weight:600;margin-top:2px;letter-spacing:0;text-transform:none}
+.app-case .pos[aria-label="Track record"] .pos-fig:nth-child(2){
+  border-color:color-mix(in oklab,var(--accent) 42%,var(--border));
+  background:linear-gradient(150deg,color-mix(in oklab,var(--accent) 15%,var(--surface-2)),var(--surface-2) 74%);
+}
+.app-case .pos[aria-label="Track record"] .pos-fig:nth-child(2) b{color:var(--accent-text);font-size:24px}
+.app-case .pos[aria-label="Track record"] .pos-status{display:block;margin-top:11px;font-size:11px;line-height:1.5;color:var(--muted)}
+@media(min-width:520px){.app-case .pos[aria-label="Track record"] .pos-figures{grid-template-columns:repeat(4,1fr)}}
+
+/* portfolio stays a quiet utility card (money is not the hero of a profile),
+   but the three figures sit tidily in one row instead of wrapping 2 + 1 */
+.app-case .pos[aria-label="Portfolio summary"] .pos-figures{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.app-case .pos[aria-label="Portfolio summary"] .pos-fig:first-child b{color:var(--accent-text)}
+
+/* share-card gallery: a horizontal rail of shareable win cards.
+   width:0 + min-width:100% stops the rail's wide content from driving the
+   column's intrinsic width (which would push the whole page into h-scroll); it
+   fills its parent and scrolls its own overflow instead. */
+.app-case .gallery{display:flex;gap:12px;overflow-x:auto;padding:2px 0 6px;scrollbar-width:none;width:0;min-width:100%}
+.app-case .gallery::-webkit-scrollbar{display:none}
+.app-case .gallery .card{
+  width:172px;height:98px;flex:0 0 auto;border:1px solid var(--border);border-radius:12px;
+  background:linear-gradient(150deg,color-mix(in oklab,var(--accent) 11%,var(--surface-2)),var(--surface-2) 70%);
+  color:var(--ink);font-size:11px;line-height:1.35;font-weight:600;
+  padding:12px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;
+  position:relative;overflow:hidden;
+  box-shadow:inset 0 1px 0 var(--groove-light),0 14px 30px -24px #000;
+}
+/* these reuse the .card class, so kill the generic feed-card decorative art
+   (gold pinstripe ::before + trust-column ::after) that would otherwise bleed in */
+.app-case .gallery .card::before{display:none}
+.app-case .gallery .card::after{content:"\2197";background:none;position:absolute;top:8px;right:11px;left:auto;bottom:auto;width:auto;height:auto;color:var(--accent-text);font-size:14px;opacity:.85}
+
+/* profile section tabs (Track record / Past wins / Resolved): one tab language
+   with My Bets - graphite pill, brass-tint active. Overrides the grafted grey. */
+.app-case .ptabs{margin-top:22px}
+.app-case .ptab-bar{display:flex;gap:8px;border:0;margin:0 0 16px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.app-case .ptab-bar::-webkit-scrollbar{display:none}
+.app-case .ptab-lbl{
+  border:1px solid var(--border);border-radius:999px;background:#1b1e23;color:var(--muted);
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:12.5px;
+  padding:9px 16px;min-height:38px;display:inline-flex;align-items:center;cursor:pointer;white-space:nowrap;
+  transition:color .18s ease,border-color .18s ease,background .18s ease;
+}
+.app-case .ptab-lbl:hover{color:var(--ink)}
+.app-case #ptab-record:checked ~ .ptab-bar label[for="ptab-record"],
+.app-case #ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],
+.app-case #ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"]{
+  background:color-mix(in oklab,var(--accent) 16%,transparent);border-color:var(--accent);color:var(--accent-text);font-weight:700;
+}
+.app-case #ptab-record:focus-visible ~ .ptab-bar label[for="ptab-record"],
+.app-case #ptab-wins:focus-visible ~ .ptab-bar label[for="ptab-wins"],
+.app-case #ptab-resolved:focus-visible ~ .ptab-bar label[for="ptab-resolved"]{outline:2px solid var(--accent-text);outline-offset:2px}
+
+/* activity */
+.app-case .act-row{border-top:1px solid var(--groove-dark);color:var(--ink);font-size:12.5px}
+.app-case .act-txt b{color:var(--ink)}
+.app-case .act-time{font-family:'IBM Plex Mono',monospace;color:var(--muted)}
+
+/* ---- bet panel (desktop plate) ---- */
+.app-case .bet-panel .bp-inner{padding:18px;gap:13px}
+.app-case .bp-head h3{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--ink)}
+.app-case .bp-hint{color:var(--muted);font-size:10.5px}
+/* YES / NO = real buttons; the SELECTED one is FILLED with its outcome colour
+   (green YES / red NO), the other stays a quiet stone chip. Click switches (JS). */
+.app-case .bp-dir{display:flex;gap:8px;padding:0;background:transparent;border:0}
+.app-case .bp-dir .bp-side{flex:1;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);
+  color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;padding:12px 6px;cursor:pointer;
+  transition:background .15s ease,color .15s ease,border-color .15s ease}
+.app-case .bp-dir .bp-side .bp-pct{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;color:inherit;opacity:.78;margin-top:3px}
+.app-case .bp-dir .bp-side:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+.app-case .bp-dir .bp-side.sel:first-child{background:var(--yes);border-color:var(--yes);color:var(--on-yes)}
+.app-case .bp-dir .bp-side.sel:last-child{background:var(--no);border-color:var(--no);color:var(--on-no)}
+/* Polymarket-style amount: "Amount" + cash on the left, big value on the right
+   with only a faint underline (no box), quick chips right-aligned below. Extra
+   air above/below so the amount + entry can breathe. */
+.app-case .bp-amount-row{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:10px 0 20px}
+.app-case .bp-amount-lbl{display:flex;flex-direction:column;gap:5px}
+.app-case .bp-cash{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)}
+.app-case .bet-panel .bp-amount-row .amount-input{flex:0 1 auto;width:150px;max-width:56%;
+  -webkit-appearance:none;appearance:none;border:0;border-bottom:1.5px solid var(--border);border-radius:0;background:transparent;outline:none;
+  padding:0 2px 5px;line-height:1;font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:var(--ink);text-align:right}
+.app-case .bet-panel .bp-amount-row .amount-input:focus{border-bottom-color:var(--accent)}
+.app-case .bet-panel .bp-amount-row .amount-input::placeholder{color:var(--muted)}
+.app-case .bet-panel .quick{margin-top:0;justify-content:flex-end;flex-wrap:wrap}
+.app-case .bet-panel .field-label{color:var(--muted)}
+.app-case .bet-panel .amount-input{border:1px solid var(--border);border-radius:10px;background:#0d0f12;color:var(--ink);font-family:'Space Grotesk',sans-serif}
+.app-case .bet-panel .quick button{border:1px solid var(--border);border-radius:9px;background:var(--surface-2);color:var(--ink)}
+.app-case .bet-panel .quick button.sel{background:rgba(199,162,78,.14);border-color:rgba(199,162,78,.45);color:var(--accent-text);font-weight:700}
+.app-case .bet-panel .line{border-top:1px solid var(--groove-dark);color:var(--muted)}
+.app-case .bet-panel .line span:last-child{color:var(--ink)}
+.app-case .bet-panel .line.total{border-top:1px solid var(--border)}
+.app-case .bet-panel .line.total span:last-child{color:var(--accent-text)}
+.app-case .bet-panel .confirm-btn{border:0;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#180810;font-family:'DM Sans',sans-serif;font-weight:700}
+.app-case .bet-panel .fine{color:var(--muted)}
+
+/* ---- mobile bet dock (sticky above the bottom nav) ---- */
+.app-case .bet-dock{position:sticky;bottom:52px;z-index:6;gap:8px;padding:10px 12px;border:0;border-top:1px solid var(--brass-line);
+  background-color:#16181c;background-image:var(--stone-dark),linear-gradient(160deg,#191c20,#111316);background-blend-mode:overlay,normal;
+  box-shadow:0 -14px 26px -18px rgba(0,0,0,.9)}
+.app-case .bet-dock .bp-side{flex:1;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:700;padding:9px 6px;cursor:pointer}
+.app-case .bet-dock .bp-side .bp-pct{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:inherit;opacity:.85}
+.app-case .bet-dock .bp-side.sel:first-child{background:rgba(79,169,107,.2);color:#8fe0ad;border-color:#3f7d55}
+.app-case .bet-dock .bp-side.sel:last-child{background:rgba(200,90,80,.2);color:#ef9a92;border-color:#8f4841}
+.app-case .bet-dock .dock-meta{font-family:'IBM Plex Mono',monospace;color:var(--muted);font-size:9.5px}
+.app-case .bet-dock .dock-meta b{font-family:'Space Grotesk',sans-serif;color:var(--ink);font-size:13px}
+.app-case .bet-dock .confirm-btn{border:0;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#180810;font-weight:700}
+
+/* ---- related events plate: thumbnail rows + a Load-more-style button ---- */
+.app-case .related-events{padding:20px 22px 22px}
+.app-case .related-events h2{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin:0 0 8px}
+.app-case .related-list{display:flex;flex-direction:column}
+.app-case .related-list li{border-bottom:1px solid var(--groove-dark)}
+.app-case .related-list li:last-child{border-bottom:0}
+.app-case .related-list a{display:flex;align-items:center;gap:14px;padding:12px 4px;color:var(--ink);text-decoration:none}
+.app-case .rel-thumb{width:46px;height:46px;flex:0 0 46px;border-radius:10px;border:1px solid var(--border);background-size:cover;background-position:center}
+.app-case .rel-q{flex:1;min-width:0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13.5px;line-height:1.25;letter-spacing:-.01em;color:var(--ink);
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.app-case .related-list a:hover .rel-q{color:var(--accent-text)}
+.app-case .rel-odds{flex:0 0 auto;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);white-space:nowrap}
+/* "Browse more events" re-cut as the same stone chip as the feed Load-more */
+.app-case .related-more{display:flex;align-items:center;justify-content:center;margin:16px auto 2px;width:100%;max-width:300px;
+  min-height:44px;padding:12px 24px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;letter-spacing:.01em;
+  color:#e9e3d7;background:#1b1e23;border:1px solid rgba(255,255,255,.06);border-radius:12px;text-decoration:none;
+  box-shadow:inset 0 1px 0 var(--groove-light);transition:border-color .18s ease,background .18s ease,color .18s ease}
+.app-case .related-more:hover{border-color:rgba(199,162,78,.45);background:#20242a;color:#fff}
+
+/* ---- Event Detail: multi-outcome option list (main) + panel summary ---- */
+.app-case .opt-list{padding:2px 0}
+.app-case .opt-list .opt-row,.app-case .opt-list .opt-row:first-child{display:flex;align-items:center;gap:10px;
+  background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:9px 12px;margin-top:8px}
+.app-case .opt-list .opt-row:first-child{margin-top:0}
+.app-case .opt-list .opt-row.sel{border-color:rgba(199,162,78,.5);background:rgba(199,162,78,.09)}
+.app-case .opt-list .opt-name{flex:1;min-width:0;display:flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:600;color:var(--ink);font-size:13px}
+.app-case .opt-list .opt-prob{font-family:'Space Grotesk',sans-serif;background:transparent;border:0;color:var(--ink);font-size:14px;padding:0}
+.app-case .opt-sel-tag{font-size:9px;border:1px solid var(--brass-line);border-radius:5px;background:rgba(199,162,78,.10);color:var(--accent-text);padding:1px 6px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+/* the option-row YES/NO are bare <button>s here (no <a> wrapper), so tint directly */
+.app-case .opt-list .yesno.compact button{background:var(--surface-2);color:var(--ink);border:1px solid var(--border)}
+.app-case .opt-list .yesno.compact button:first-child{color:#77d19b;border-color:#3f7d55;background:rgba(79,169,107,.10)}
+.app-case .opt-list .yesno.compact button:last-child{color:#e79087;border-color:#8f4841;background:rgba(200,90,80,.10)}
+.app-case .opt-list .yesno.compact button.sel{background:rgba(79,169,107,.24);border-color:var(--yes);color:#8fe0ad}
+.app-case .bp-selected{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);padding:10px}
+.app-case .bp-sel-name{display:flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--ink)}
+.app-case .bp-sel-name .opt-prob{font-family:'IBM Plex Mono',monospace;background:transparent;border:0;color:var(--accent-text)}
+.app-case .bp-change{font-size:10px;color:var(--accent-text);text-decoration:underline;white-space:nowrap}
+
+/* ---- Event Detail: bet-state boxes (panel + dock) ---- */
+.app-case .protect{border:1px solid rgba(199,162,78,.24);border-radius:9px;background:rgba(199,162,78,.06);color:var(--muted);font-size:11px;padding:9px 10px}
+.app-case .protect b,.app-case .protect strong{color:var(--ink)}
+/* system error message: neutral stone, not red (red is reserved for the NO/LOST outcome) */
+.app-case .inline-error{border:1px solid var(--border);border-radius:9px;background:var(--surface-2);color:var(--ink);font-size:12px;line-height:1.5;padding:10px}
+.app-case .reconcile-box{border:1px solid rgba(199,162,78,.4);border-radius:9px;background:rgba(199,162,78,.09);color:var(--ink);font-size:12px;line-height:1.5;padding:10px}
+.app-case .reconcile-box b,.app-case .reconcile-box strong{color:var(--accent-text)}
+
+/* ---- Win / Loss outcome overlay (a modal dialog; principle 4: mark the win,
+   design the loss, no fuse - no confetti, no "bet again") ---- */
+dialog.app-dialog.outcome-dialog{max-width:420px}
+.outcome-dialog .sheet-head h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.02em;color:var(--ink)}
+.outcome-dialog .sheet-body{gap:14px}
+.outcome-dialog .fine,.outcome-dialog .protect{color:var(--muted);font-size:12px;line-height:1.5;margin:0}
+.outcome-dialog .sheet-body>.fine{color:var(--ink);font-weight:700;font-size:13px}
+.outcome-dialog .field-label{color:var(--muted)}
+.outcome-dialog .reconcile-box{align-items:center;text-align:center;gap:4px;padding:14px}
+.outcome-dialog .reconcile-box strong{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.win-dialog .reconcile-box strong{color:#77d19b}
+.loss-dialog .reconcile-box{border-color:var(--border);background:var(--surface-2)}
+.loss-dialog .reconcile-box strong{color:#e79087}
+.app-case .spinner-box{border:1px dashed var(--border);border-radius:9px;background:var(--surface-2);color:var(--muted);padding:22px;text-align:center;font-size:12px;line-height:1.6}
+.app-case .spinner-box .fine{color:var(--muted)}
+/* secondary action in the bet panel (Bet $3 instead / Cancel / Check wallet) -
+   the quiet stone chip, not the brass Confirm. .provider-btn is brass only in dialogs. */
+.app-case .bet-panel .provider-btn,.app-case .bet-dock .provider-btn{background:var(--surface-2);border:1px solid var(--border);color:var(--ink);border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:600}
+.app-case .bet-panel .provider-btn:hover,.app-case .bet-dock .provider-btn:hover{border-color:rgba(199,162,78,.45);background:#20242a;color:#fff}
+/* the confirm/cancel buttons are wrapped in <a href="#"> - kill the default link
+   underline + blue that leaks onto the button text (leave real links like .bp-change) */
+.app-case .bet-panel a:has(button),.app-case .bet-dock a:has(button){text-decoration:none;color:inherit;display:block}
+
+/* ---- Event Detail: price chart - range + current value lifted into the section
+   header (out of the bottom caption), and 2x taller on desktop ---- */
+.app-case .ed-chart-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px 16px;flex-wrap:wrap;margin:0 0 12px}
+.app-case .ed-chart-head h3{margin:0}
+.app-case .ed-chart-now{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#77d19b}
+/* graphic chart: a % Y-axis + a plot with gridlines + a time X-axis, and the
+   range buttons under it (bottom-right) */
+.app-case .ed-chart-area{display:grid;grid-template-columns:1fr 34px;gap:8px;align-items:stretch}
+.app-case .ed-plot{order:1;position:relative;min-width:0}
+.app-case .ed-yaxis{order:2;display:flex;flex-direction:column;justify-content:space-between;padding:1px 0 1px 2px;
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;line-height:1;color:var(--muted);text-align:left}
+.app-case .ed-xaxis{display:flex;justify-content:space-between;padding-right:42px;margin-top:8px;
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--muted)}
+.app-case .ed-chart-foot{display:flex;justify-content:flex-end;margin-top:14px}
+.app-case .ed-range{display:inline-flex;gap:4px;padding:3px;background:#0d0f12;border:1px solid var(--border);border-radius:10px}
+.app-case .ed-range button{border:0;background:transparent;color:var(--muted);border-radius:7px;padding:5px 12px;
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;cursor:pointer;transition:background .15s ease,color .15s ease}
+.app-case .ed-range button:hover{color:var(--ink)}
+.app-case .ed-range button.sel{background:rgba(199,162,78,.16);color:var(--accent-text);font-weight:600}
+.app-case .chart-svg{height:160px;display:block;width:100%}
+@media(min-width:760px){.app-case .chart-svg{height:280px}}
+/* multi-outcome chart: one line per outcome (stroke/width/opacity set by JS) + legend */
+.app-case .chart-svg .ml-line{filter:none;fill:none;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:opacity .2s ease,stroke-width .2s ease}
+.app-case .ed-legend{display:flex;flex-wrap:wrap;gap:7px 16px;margin-top:12px;padding-left:2px}
+.app-case .lg-item{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)}
+.app-case .lg-item.sel{color:var(--ink);font-weight:600}
+.app-case .lg-item i{width:10px;height:3px;border-radius:2px;flex:0 0 auto}
+/* outcome rows are a clickable selector; the SELECTED one is clearly filled */
+.app-case .opt-list .opt-row{cursor:pointer}
+.app-case .opt-list .opt-row.sel{border-color:rgba(199,162,78,.6);background:rgba(199,162,78,.16)}
+
+/* ===== Shared dialog surface = the content stone plate =====
+   Give the modal the SAME two-stone material as the page content (.cat-layout):
+   #121417 base + --stone-dark grain + a 162deg gradient, blended overlay - so a
+   dialog reads as the same slab lifted off the page, not a flatter lighter panel.
+   Keep a modal-strength drop shadow + the embossed inset rim. hiw-dialog's hero
+   paints over the top, so only its body shows the stone (consistent). */
+dialog.app-dialog{
+  background-color:#121417;
+  background-image:var(--stone-dark),linear-gradient(162deg,#17191d,#0f1013);
+  background-blend-mode:overlay,normal;
+  border:1px solid rgba(0,0,0,.5);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 1px 0 0 rgba(255,255,255,.04),
+    inset -1px 0 0 rgba(0,0,0,.35),inset 0 -1px 0 rgba(0,0,0,.55),
+    0 40px 80px -30px rgba(0,0,0,.9),0 16px 40px -20px rgba(0,0,0,.72)}
+
+/* ===== Sign-in dialog: real brand marks + brass polish (Vault) =====
+   Global (not .app-case) so it skins the shared dialog on both feed + detail.
+   The brand SVGs carry their own fills, so we cancel the wireframe's global
+   .ic{stroke:...;fill:none} (which is what made the old provider icons thin blue
+   outlines) on these icons only. */
+dialog.app-dialog.signin-dialog{max-width:410px}
+dialog.app-dialog.signin-dialog .sheet-head{padding:15px 16px}
+dialog.app-dialog.signin-dialog .sheet-head h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:-.02em;color:var(--ink)}
+dialog.app-dialog.signin-dialog .sheet-close{width:30px;height:30px;display:flex;align-items:center;justify-content:center;padding:0;border-radius:8px;cursor:pointer;transition:border-color .16s ease,background .16s ease}
+dialog.app-dialog.signin-dialog .sheet-close .ic{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round}
+dialog.app-dialog.signin-dialog .sheet-close:hover{border-color:rgba(199,162,78,.5);background:#14171c}
+dialog.app-dialog.signin-dialog .sheet-close:hover .ic{stroke:var(--accent-text)}
+dialog.app-dialog.signin-dialog .sheet-body{padding:16px 16px 18px;gap:11px}
+dialog.app-dialog.signin-dialog .signin-lead{font-size:12.5px;line-height:1.5;color:var(--muted);margin:0 0 3px}
+dialog.app-dialog.signin-dialog .provider-btn{justify-content:center;gap:11px;padding:13px;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;transition:border-color .16s ease,background .16s ease,transform .12s ease}
+dialog.app-dialog.signin-dialog .provider-btn:hover{border-color:rgba(199,162,78,.5);background:#20242a;transform:translateY(-1px)}
+dialog.app-dialog.signin-dialog .provider-btn .ic{width:19px;height:19px;flex:0 0 19px;stroke:none}
+dialog.app-dialog.signin-dialog .provider-btn .prov-x,
+dialog.app-dialog.signin-dialog .provider-btn .prov-apple{color:#f2eee4;fill:currentColor}
+dialog.app-dialog.signin-dialog .fine a{color:var(--accent-text);text-decoration:none;border-bottom:1px solid rgba(199,162,78,.4);padding-bottom:.5px}
+dialog.app-dialog.signin-dialog .fine a:hover{border-bottom-color:var(--accent-text)}
+
+/* ===== System pages (404 / 500 / maintenance / cookie-consent / toasts) ===== */
+/* shared: muted footnote + the grafted grey field-label recoloured for dark */
+.app-case .sys-note{color:var(--muted);font-size:12px;line-height:1.6;margin:14px 0 0}
+.app-case .field-label{color:var(--muted)}
+
+/* 404 / 500 quick links: kill the default browser blue, brass on graphite, no bullets */
+.app-case .sys-links{margin-top:22px;border-top:1px solid var(--border);padding-top:18px}
+.app-case .sys-links h2{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 12px}
+.app-case .sys-link-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px}
+.app-case .sys-link-list a{color:var(--accent-text);text-decoration:none;font-weight:600;font-size:14px;border-bottom:1px solid rgba(199,162,78,.35);padding-bottom:1px}
+.app-case .sys-link-list a:hover{border-bottom-color:var(--accent-text)}
+
+/* cookie consent: dimmed page skeleton behind, then the banner card */
+.app-case .cc-ph{display:flex;flex-direction:column;gap:10px;opacity:.5}
+.app-case .cc-ph-line{height:12px;border-radius:6px;background:var(--surface-2)}
+.app-case .cc-ph-line.w90{width:90%}.app-case .cc-ph-line.w80{width:80%}
+.app-case .cc-ph-line.w60{width:60%}.app-case .cc-ph-line.w40{width:40%}
+.app-case .cc-page,.app-case .tc-page{margin-bottom:16px}
+.app-case .cc-banner{border:1px solid var(--border);border-radius:14px;background:var(--card);box-shadow:inset 0 1px 0 var(--groove-light),0 20px 44px -26px #000;overflow:hidden}
+.app-case .cc-inner{padding:18px;display:flex;flex-direction:column;gap:12px}
+.app-case .cc-text{color:var(--ink);font-size:14px;line-height:1.5;margin:0}
+.app-case .cc-policy{margin:0;font-size:13px;display:flex;flex-wrap:wrap;gap:14px}
+.app-case .cc-policy a{color:var(--accent-text);text-decoration:none;border-bottom:1px solid rgba(199,162,78,.35);padding-bottom:1px}
+.app-case .cc-policy a:hover{border-bottom-color:var(--accent-text)}
+/* three equal-weight buttons on purpose: Reject is one tap, same as Accept (no dark pattern) */
+.app-case .cc-actions{display:flex;flex-wrap:wrap;gap:10px}
+.app-case .cc-btn{flex:1 1 auto;min-width:96px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:600;font-size:13px;padding:11px 14px;min-height:44px;cursor:pointer;transition:border-color .16s ease,background .16s ease}
+.app-case .cc-btn:hover{border-color:rgba(199,162,78,.45);background:#20242a}
+.app-case .cc-note{color:var(--muted);font-size:12px;line-height:1.5;margin:0}
+.app-case .cc-manage{border-top:1px solid var(--border);padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.app-case .cc-cats{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.app-case .cc-cat{border:1px solid var(--border);border-radius:10px;background:var(--surface-2);padding:12px 14px}
+.app-case .cc-cat-main{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.app-case .cc-cat-name{font-family:'DM Sans',sans-serif;font-weight:600;font-size:13.5px;color:var(--ink)}
+.app-case .cc-cat-desc{color:var(--muted);font-size:12px;line-height:1.5;margin:6px 0 0}
+.app-case .cc-cat input[type="checkbox"]{width:18px;height:18px;accent-color:var(--accent);flex:0 0 auto;cursor:pointer}
+.app-case .cc-cat input[type="checkbox"]:disabled{cursor:not-allowed;opacity:.7}
+
+/* toasts: dark stone cards over the page. green/red are reserved for OUTCOMES
+   only, so system feedback stays neutral: success = brass confirm tick, error =
+   neutral card + bright ink warning icon. The icon shape + text carry the meaning. */
+.app-case .toast-inner{display:flex;flex-direction:column;gap:14px}
+.app-case .toast-group{display:flex;flex-direction:column;gap:10px}
+.app-case .toast{display:flex;align-items:center;gap:11px;border:1px solid var(--border);border-radius:11px;background:var(--card);padding:12px 14px;box-shadow:0 18px 40px -24px #000,inset 0 1px 0 var(--groove-light)}
+.app-case .toast .ic-sm{width:18px;height:18px;flex:0 0 18px;stroke:var(--accent-text);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.app-case .toast-msg{flex:1;color:var(--ink);font-size:13.5px;font-weight:500}
+.app-case .toast-close{flex:0 0 auto;width:26px;height:26px;border:1px solid var(--border);border-radius:7px;background:transparent;color:var(--muted);font-size:12px;cursor:pointer;line-height:1}
+.app-case .toast-close:hover{border-color:rgba(199,162,78,.45);color:var(--ink)}
+/* error stays non-outcome (no red, no side-stripe) but out-weighs a success toast:
+   a bigger/bolder warning glyph + a brighter warm outline + elevation read as
+   "attention" at a glance. Meaning rides icon shape + copy (colorblind-safe);
+   the markup already carries role="alert" aria-live="assertive". */
+.app-case .toast.toast-error{border-color:#5a544a;background:var(--surface-2);box-shadow:0 22px 46px -22px #000,inset 0 1px 0 rgba(255,255,255,.06)}
+.app-case .toast.toast-error .ic-sm{width:22px;height:22px;flex:0 0 22px;stroke:var(--ink);stroke-width:2.4}
+.app-case .toast.toast-error .toast-msg{color:var(--ink);font-weight:600}
+
+/* dialog close button: brass focus ring instead of the browser default blue
+   (showModal autofocuses it, so this is what the user sees first) */
+.app-case .sheet-close:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px}
+/* the modal auto-focuses its close, which is an <a> wrapping the button: give any
+   dialog anchor the brass ring so the first thing shown is on-brand, not browser-blue */
+dialog.app-dialog a:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px;border-radius:6px}
+
+/* touch targets: the new profile/tab controls regressed under the 44px reference bar.
+   Bump them back on mobile (desktop keeps the compact pill). */
+@media(max-width:640px){
+  .app-case .ptab-lbl{min-height:44px}
+  .app-case .idrow .edit{min-height:44px}
+  .app-case .tabs button{min-height:44px}
+}
