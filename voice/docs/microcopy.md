@@ -1359,3 +1359,22 @@ the only genuinely new strings are the trigger label and the read-more link.
 
 Health: 0 em-dash across all 104 wireframes, 16148 links / 0 broken (the read-more link adds 87).
 The feed keeps its below-fold SEO sections; the dialog is the interactive quick version.
+
+### Step 22 - Shared dialog hero: Sign in + Add funds subtitles (ui-visual layer, 76 pages)
+
+A visual-layer change only (like the How-it-works hero tagline, which the grey wireframe
+does not carry): the Sign-in and Add-funds `<dialog>`s were pulled up to the How-it-works hero
+style - a brass band, a Space Grotesk display title and a one-line subtitle. The hero visual is
+CSS in `ui-visual/_theme.css`; the subtitle text is stamped into the two block-form dialogs by
+`ui-visual/_dialog_hero.py` (idempotent, voice-safe; the inline `outcome-dialog` Win/Loss
+variants are excluded, matching the CSS). No new marketing copy: each subtitle is an existing
+line condensed. The wireframes are untouched.
+
+| Element | Was | Became | Rule / source |
+|---|---|---|---|
+| Sign-in hero subtitle | body lead: **You are about to place a bet. Sign in or create an account to continue. No crypto wallet required.** | hero subtitle: **You are about to place a bet. No crypto wallet required.** (body lead removed - the title already says "Sign in or create account") | voice 2 (one plain line before the ask); relocated, not new |
+| Add-funds hero subtitle | (none) | **Card or crypto. Your USDC is held 1:1.** | voice 2 (trust before the ask); condensed from the protect line, which stays in the body with the full "we do not lend or invest" clause |
+
+Health: 0 em-dash across ui-visual; wireframes untouched; 76 pages carry both subtitles (152
+occurrences), 0 old `signin-lead` body leads remain. Win/Loss outcome dialogs keep their quiet
+green/red header (no brass hero, no subtitle).

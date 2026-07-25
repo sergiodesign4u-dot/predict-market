@@ -11,21 +11,71 @@
   .kit-hero h1{font-family:'Space Grotesk',sans-serif;color:var(--ink);font-size:clamp(30px,5vw,44px);font-weight:700;letter-spacing:-.03em;margin:0;text-wrap:balance}
   .kit-hero p{color:var(--muted);font-family:'DM Sans',sans-serif;margin:10px 0 0;max-width:62ch;line-height:1.55}
   .kit-hero code{font-family:'IBM Plex Mono',monospace;font-size:.9em;color:var(--accent-text)}
-  .kit-hero .kit-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent-text);border:1px solid var(--brass-line);border-radius:99px;padding:3px 10px;margin-top:16px}
+  .kit-hero .kit-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent-text);border:1px solid var(--brass-line);border-radius:100px;padding:3px 10px;margin-top:16px}
   .kit-jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-  .kit-jump a{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:99px;padding:5px 12px;text-decoration:none;transition:color .15s,border-color .15s}
+  .kit-jump a{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:5px 12px;text-decoration:none;transition:color .15s,border-color .15s}
   .kit-jump a:hover{color:var(--accent-text);border-color:var(--brass-line)}
   .kit-sec{margin-top:44px;border-top:1px solid var(--border);padding-top:24px;scroll-margin-top:20px}
   .kit-sec > h2{font-family:'Space Grotesk',sans-serif;color:var(--accent-text);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 4px;display:flex;align-items:center;gap:10px}
-  .kit-sec > h2::before{content:attr(data-n);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--border);border-radius:5px;padding:1px 6px;letter-spacing:0}
+  .kit-sec > h2::before{content:attr(data-n);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--border);border-radius:6px;padding:1px 6px;letter-spacing:0}
   .kit-sec > .kit-note{color:var(--muted);font-family:'DM Sans',sans-serif;font-size:12.5px;margin:0 0 18px;max-width:72ch;line-height:1.5}
+  .kit-icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(116px,1fr));gap:10px;margin:0 0 18px}
+  .kit-ico{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin:0;padding:16px 8px;border:1px solid var(--border);border-radius:12px;background:var(--surface);text-align:center;min-width:0;min-height:104px}
+  .kit-ico svg{width:24px;height:24px;flex:0 0 24px}
+  .kit-ico .ic{stroke-width:1.6}
+  .kit-ico .ic:not(:has(use)){stroke:var(--ink);fill:none}
+  .kit-ico .ic:has(use){color:var(--ink)}
+  .kit-ico .kit-brandic{color:var(--ink)}
+  .kit-ico figcaption{font-family:'DM Sans',sans-serif;font-size:10.5px;color:var(--muted);line-height:1.25}
+  .kit-ico code{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--accent-text);white-space:nowrap;line-height:1.2}
   .kit-subh{color:var(--muted);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:24px 0 10px}
+  .kit-surf-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);display:block}
+  .kit-tgl{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:12px}
+  .kit-shadows{display:flex;flex-wrap:wrap;gap:24px}
+  .kit-shadow{width:158px}
+  .kit-shadow .kit-shadow-box{height:84px;border-radius:12px;background:var(--card);border:1px solid var(--border)}
+  .kit-shadow b{display:block;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--ink);margin-top:12px}
+  .kit-shadow span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);line-height:1.5;margin-top:4px}
+  .kit-seps{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+  .kit-sep-demo{flex:1 1 300px;max-width:400px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2px 16px;box-shadow:inset 0 1px 0 var(--groove-light)}
+  .kit-sep-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted)}
+  .kit-sep-row span{font-family:'Space Grotesk',sans-serif;color:var(--ink);font-weight:600}
+  .kit-sep-legend{flex:0 0 auto;display:flex;flex-direction:column;gap:18px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted)}
+  .kit-sep-legend > div{display:flex;flex-direction:column;gap:9px}
+  .kit-sep-legend b{color:var(--accent-text);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700}
+  .kit-sep-swatch{display:block;width:210px;height:38px;background:var(--card);border-radius:6px}
+  .kit-sep-swatch.flat{border-top:1px solid rgba(255,255,255,.07)}
+  .kit-scale{display:flex;flex-direction:column;gap:8px;max-width:560px}
+  .kit-scale-row{display:flex;align-items:center;gap:14px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted)}
+  .kit-scale-n{flex:0 0 30px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+  .kit-scale-bar{height:14px;border-radius:4px;background:var(--surface-2);flex:0 0 auto}
+  .kit-scale-row.prim .kit-scale-n{color:var(--accent-text);font-weight:700}
+  .kit-scale-row.prim .kit-scale-bar{background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+  .kit-scale-use{color:var(--muted)}
+  .kit-rads{display:flex;flex-wrap:wrap;gap:20px}
+  .kit-rad{width:120px}
+  .kit-rad-box{height:72px;background:var(--surface-2);border:1px solid var(--border);box-shadow:inset 0 1px 0 var(--groove-light)}
+  .kit-rad b{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent-text);font-weight:700;margin-top:11px}
+  .kit-rad span{display:block;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);line-height:1.4;margin-top:3px}
   .kit-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
   .kit-row.a-start{align-items:flex-start}
+  /* Input-states specimen: the boxed amount field at default / hover / focus / disabled.
+     The .is-hover / .is-focus demo classes mirror the :hover / :focus pseudo-classes so
+     all four states render side by side without interaction. Matches the boxed
+     .amount-input (Add funds). */
+  .kit-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;max-width:720px}
+  .kit-field-wrap{display:flex;flex-direction:column;gap:7px}
+  .kit-field-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .kit-field{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:#0d0f12;color:var(--ink);
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;outline:none;transition:border-color .16s ease,box-shadow .16s ease,opacity .16s ease}
+  .kit-field::placeholder{color:var(--muted)}
+  .kit-field:hover:not(:disabled),.kit-field.is-hover{border-color:rgba(199,162,78,.55)}
+  .kit-field:focus,.kit-field.is-focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(199,162,78,.16)}
+  .kit-field:disabled,.kit-field.is-disabled{opacity:.45;cursor:not-allowed;background:var(--surface);border-color:var(--border);box-shadow:none}
   .kit-sws{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:14px}
   .kit-sw{display:flex;flex-direction:column;gap:7px}
   .kit-swatch{position:relative;height:60px;border-radius:8px;border:1px solid rgba(255,255,255,.09);overflow:hidden;display:flex;align-items:flex-end;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
-  .kit-hex{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#fff;background:rgba(0,0,0,.42);padding:2px 6px;border-radius:5px;margin:6px}
+  .kit-hex{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#fff;background:rgba(0,0,0,.42);padding:2px 6px;border-radius:6px;margin:6px}
   .kit-sw-meta{display:flex;flex-direction:column;gap:2px}
   .kit-sw-meta b{font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:600;color:var(--ink)}
   .kit-sw-meta span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted)}
@@ -41,16 +91,19 @@
   .t-body{font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--muted);max-width:65ch;line-height:1.5}
   .t-label{font-family:'DM Sans',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text)}
   .t-mono{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink)}
-  .kit-box{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:16px}
+  .kit-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px}
   .kit-plate{margin:0}
-  dialog.app-dialog[open]{position:static;margin:0;width:100%}
+  dialog.app-dialog[open]:not(.bet-sheet){position:static;margin:0;width:100%}
+  /* the bet sheet stays a real bottom drawer (opened via showModal), not framed inline */
+  dialog.app-dialog.bet-sheet[open]{position:fixed}
   .kit-dlgs{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
   .kit-dlgs > *{flex:0 1 380px}
   /* showcase-only comfort: the opened dialog is framed with more air than the
-     mobile bottom-sheet ships with; the shipped ui-visual sheet is untouched */
-  .kit-dlgs .sheet-head{padding:13px 16px}
+     mobile bottom-sheet ships with; the shipped ui-visual sheet is untouched.
+     (The chip-row breathing room is now in the shared theme - deposit .quick -
+     so kit and shipped stay in sync; only these two frame nudges are kit-only.) */
+  .kit-dlgs .sheet-head{padding:12px 16px}
   .kit-dlgs .sheet-body{padding:16px;gap:14px}
-  .kit-dlgs .quick{margin-top:12px}
   main.feed{background:transparent}
   /* chrome specimens: each shell piece framed on its own, not stacked as a page.
      The bottom nav is mobile-only in the app; force it visible here so desktop
@@ -95,9 +148,13 @@
       <a href="#cards" class="sidebar-sub-link">Event cards</a>
       <a href="#states" class="sidebar-sub-link">States</a>
       <a href="#dialogs" class="sidebar-sub-link">Shared dialogs</a>
+      <a href="#feedback" class="sidebar-sub-link">Feedback and overlays</a>
       <a href="#detail" class="sidebar-sub-link">Event Detail</a>
+      <a href="#profile" class="sidebar-sub-link">Profile and account</a>
       <a href="#chrome" class="sidebar-sub-link">Chrome</a>
+      <a href="#icons" class="sidebar-sub-link">Icons</a>
     </div>
+    <a href="shell.html" class="sidebar-page-link">Shell</a>
   </nav>
 </aside>
 
@@ -107,7 +164,7 @@
     <p>The Vault component kit. Every screen composes from these classes; the look lives in <code>kit.css</code>, the language in <code>DESIGN.md</code>. Seeded from the painted Event Feed and Event Detail families; the account, resolution and system families join it as they are built (Step 05).</p>
     <span class="kit-badge">flat tokens - graphite + matte brass</span>
     <nav class="kit-jump" aria-label="Sections">
-      <a href="#f-color">Color</a><a href="#f-type">Type</a><a href="#buttons">Buttons</a><a href="#chips">Chips</a><a href="#cards">Cards</a><a href="#states">States</a><a href="#dialogs">Dialogs</a><a href="#detail">Event Detail</a><a href="#chrome">Chrome</a>
+      <a href="#f-color">Color</a><a href="#f-type">Type</a><a href="#buttons">Buttons</a><a href="#chips">Chips</a><a href="#cards">Cards</a><a href="#states">States</a><a href="#dialogs">Dialogs</a><a href="#feedback">Feedback</a><a href="#detail">Event Detail</a><a href="#profile">Profile</a><a href="#chrome">Chrome</a>
     </nav>
   </header>
 
@@ -121,6 +178,79 @@
       <div class="kit-sw"><div class="kit-swatch" style="background:#ede7da"><span class="kit-hex">#ede7da</span></div><div class="kit-sw-meta"><b>Ink</b><span>--ink</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#a49d8f"><span class="kit-hex">#a49d8f</span></div><div class="kit-sw-meta"><b>Muted</b><span>--muted</span></div></div>
       <div class="kit-sw"><div class="kit-swatch" style="background:#4fa96b"><span class="kit-hex">#4fa96b</span></div><div class="kit-sw-meta"><b>Outcome Green</b><span>--yes</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#c85a50"><span class="kit-hex">#c85a50</span></div><div class="kit-sw-meta"><b>Outcome Red</b><span>--no</span></div></div>
     </div>
+
+    <div class="kit-subh">Surface ramp (two-stone plates)</div>
+    <div style="background:#0f1013;padding:16px;border-radius:14px;max-width:540px;border:1px solid #2b2f38">
+      <span class="kit-surf-lbl">page &middot; #0f1013</span>
+      <div style="background:#141619;padding:16px;border-radius:12px;margin-top:8px">
+        <span class="kit-surf-lbl">graphite (device) &middot; #141619</span>
+        <div style="background:#121417;padding:16px;border-radius:10px;margin-top:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 14px 30px -22px #000">
+          <span class="kit-surf-lbl">content plate &middot; #121417 (embossed, floats)</span>
+          <div style="background:#14161a;padding:16px;border-radius:10px;margin-top:8px;border:1px solid #2b2f38;box-shadow:0 1px 0 rgba(255,255,255,.03)">
+            <span class="kit-surf-lbl">card face &middot; #14161a + hairline border</span>
+            <div style="background:#1c1f24;padding:12px;border-radius:8px;margin-top:8px">
+              <span class="kit-surf-lbl">surface &middot; #1c1f24 (inputs, chips)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="kit-subh">Outcome semantics (green = YES / WON, red = NO / LOST, brass never collides)</div>
+    <div class="kit-row a-start">
+      <div class="yesno" style="width:200px"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div>
+      <div class="bp-dir" style="width:230px;display:flex;gap:6px"><button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button></div>
+      <span class="pos-side pos-won">WON</span>
+      <span class="pos-side pos-lost">LOST</span>
+    </div>
+    <div class="kit-subh">Elevation (the shadows we use)</div>
+    <div class="kit-shadows">
+      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:inset 0 1px 0 var(--groove-light)"></div><b>Groove edge</b><span>inset 0 1px 0 groove-light</span></div>
+      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:inset 0 1px 0 var(--groove-light),0 12px 26px -22px #000"></div><b>Card (resting)</b><span>inset groove + 0 12px 26px -22px #000</span></div>
+      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:0 18px 40px -24px #000,inset 0 1px 0 var(--groove-light)"></div><b>Content plate (floats)</b><span>0 18px 40px -24px #000 + inset groove</span></div>
+      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:0 20px 50px -24px #000"></div><b>Dropdown / panel</b><span>0 20px 50px -24px #000</span></div>
+      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:0 22px 46px -22px #000,inset 0 1px 0 rgba(255,255,255,.06)"></div><b>Dialog / overlay</b><span>0 22px 46px -22px #000 + inset hi</span></div>
+      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:0 8px 20px -8px var(--accent);border-color:var(--accent)"></div><b>Brass CTA glow</b><span>0 8px 20px -8px accent</span></div>
+    </div>
+    <div class="kit-subh">Separators (the engraved groove)</div>
+    <p class="kit-note">One separator, used everywhere: a dark hairline with a faint light highlight 1px below it, so it reads as a groove carved into the surface, never a flat black line. The reusable class is <code>.groove-sep</code> (recipe: <code>border-top:1px solid var(--groove-dark); box-shadow:inset 0 1px 0 var(--groove-light)</code>). It carries the facts strip, section tops, footer and the bet breakdown rows.</p>
+    <div class="kit-seps">
+      <div class="kit-sep-demo">
+        <div class="kit-sep-row">Price now <span>38%</span></div>
+        <div class="kit-sep-row groove-sep">Fee (only if you win) <span>$0.20</span></div>
+        <div class="kit-sep-row groove-sep">Potential payout <span>$13.20</span></div>
+      </div>
+      <div class="kit-sep-legend">
+        <div><span class="kit-sep-swatch groove-sep"></span><b>.groove-sep</b> engraved - use this</div>
+        <div><span class="kit-sep-swatch flat"></span>flat line - avoid (reads as a black gap)</div>
+      </div>
+    </div>
+    <div class="kit-subh">Spacing (the 2px grid)</div>
+    <p class="kit-note">Every gap, padding and margin is a multiple of 2. Primary steps <b>4 / 8 / 12 / 16 / 20 / 24</b> (the 8pt backbone); <b>2 / 6 / 10 / 14</b> fine-tune small elements. The one rule: the value is divisible by 2 - 16, never 15. Within a group gaps stay small (4-10); between groups they open up (16-24) - small-inside, bigger-outside.</p>
+    <div class="kit-scale">
+      <div class="kit-scale-row"><span class="kit-scale-n">2</span><span class="kit-scale-bar" style="width:2px"></span><span class="kit-scale-use">hairline nudge, icon gap</span></div>
+      <div class="kit-scale-row"><span class="kit-scale-n">4</span><span class="kit-scale-bar" style="width:4px"></span><span class="kit-scale-use">tight inner: label to value</span></div>
+      <div class="kit-scale-row"><span class="kit-scale-n">6</span><span class="kit-scale-bar" style="width:6px"></span><span class="kit-scale-use">chip gaps</span></div>
+      <div class="kit-scale-row prim"><span class="kit-scale-n">8</span><span class="kit-scale-bar" style="width:8px"></span><span class="kit-scale-use">inner group gap, small padding</span></div>
+      <div class="kit-scale-row"><span class="kit-scale-n">10</span><span class="kit-scale-bar" style="width:10px"></span><span class="kit-scale-use">button / pair gaps</span></div>
+      <div class="kit-scale-row prim"><span class="kit-scale-n">12</span><span class="kit-scale-bar" style="width:12px"></span><span class="kit-scale-use">component padding</span></div>
+      <div class="kit-scale-row"><span class="kit-scale-n">14</span><span class="kit-scale-bar" style="width:14px"></span><span class="kit-scale-use">fine-tune</span></div>
+      <div class="kit-scale-row prim"><span class="kit-scale-n">16</span><span class="kit-scale-bar" style="width:16px"></span><span class="kit-scale-use">block gap, card padding</span></div>
+      <div class="kit-scale-row prim"><span class="kit-scale-n">20</span><span class="kit-scale-bar" style="width:20px"></span><span class="kit-scale-use">outer gap between groups</span></div>
+      <div class="kit-scale-row prim"><span class="kit-scale-n">24</span><span class="kit-scale-bar" style="width:24px"></span><span class="kit-scale-use">section separation</span></div>
+      <div class="kit-scale-row"><span class="kit-scale-n">40</span><span class="kit-scale-bar" style="width:40px"></span><span class="kit-scale-use">page gutter</span></div>
+    </div>
+    <div class="kit-subh">Corner radius</div>
+    <p class="kit-note">Softly rounded, never sharp, and every radius is <b>even</b> - the 2px rule applies here too (no 9, no 7). <b>10</b> is the default (buttons, inputs, confirm, cards); chips and dropdowns at <b>12</b>, dialogs at <b>16</b>, the bottom sheet's top edge at <b>20</b>, and only real pills (the sort filter, feed YES / NO) go fully round.</p>
+    <div class="kit-rads">
+      <div class="kit-rad"><div class="kit-rad-box" style="border-radius:6px"></div><b>6</b><span>count chips, badges</span></div>
+      <div class="kit-rad"><div class="kit-rad-box" style="border-radius:8px"></div><b>8</b><span>small buttons, dialog close</span></div>
+      <div class="kit-rad"><div class="kit-rad-box" style="border-radius:10px"></div><b>10</b><span>default: buttons, inputs, confirm, cards</span></div>
+      <div class="kit-rad"><div class="kit-rad-box" style="border-radius:12px"></div><b>12</b><span>chips, dropdowns, feed cards</span></div>
+      <div class="kit-rad"><div class="kit-rad-box" style="border-radius:16px"></div><b>16</b><span>dialogs</span></div>
+      <div class="kit-rad"><div class="kit-rad-box" style="border-radius:20px"></div><b>20</b><span>bottom sheet top</span></div>
+      <div class="kit-rad"><div class="kit-rad-box" style="border-radius:1000px"></div><b>pill</b><span>sort filter, feed YES / NO</span></div>
+    </div>
+
   </section>
 
   <section class="kit-sec" id="f-type">
@@ -138,12 +268,33 @@
 
   <section class="kit-sec" id="buttons">
     <h2 data-n="03">Buttons</h2>
+    <p class="kit-note">One primary treatment (matte-brass, 135deg gradient, brass glow on hover) at three sizes; a secondary surface button; the tinted YES / NO outcome pair; an icon button; and Load more. The design's Confirm bet is the medium size. All corners 8 / 10 / 12px, heights 32 / 44 / 52px on the 2px grid.</p>
+    <div class="kit-subh">Primary - small / medium / large</div>
+    <div class="kit-row a-start">
+      <button type="button" class="btn-primary btn-sm">Confirm</button>
+      <button type="button" class="btn-primary btn-md">Confirm bet</button>
+      <button type="button" class="btn-primary btn-lg">Confirm bet</button>
+    </div>
+    <div class="kit-subh">Secondary - small / medium / large</div>
+    <div class="kit-row a-start">
+      <button type="button" class="btn-secondary btn-sm">Not now</button>
+      <button type="button" class="btn-secondary btn-md">Notify me of new events</button>
+      <button type="button" class="btn-secondary btn-lg">Open wallet</button>
+    </div>
+    <div class="kit-subh">Outcome pair, icon, and Load more</div>
     <div class="kit-row">
-      <button class="state-btn primary">Confirm bet</button>
       <div class="yesno" style="width:220px"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div>
       <button class="icon-btn" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg></button>
       <button class="load-more">Load more events</button>
     </div>
+    <div class="kit-subh">Text input - default / hover / focus / disabled</div>
+    <div class="kit-fields">
+      <label class="kit-field-wrap"><span class="kit-field-lbl">Default</span><input class="kit-field" type="text" inputmode="decimal" value="$20.00" aria-label="Amount, default"></label>
+      <label class="kit-field-wrap"><span class="kit-field-lbl">Hover</span><input class="kit-field is-hover" type="text" inputmode="decimal" value="$20.00" aria-label="Amount, hover"></label>
+      <label class="kit-field-wrap"><span class="kit-field-lbl">Focus</span><input class="kit-field is-focus" type="text" inputmode="decimal" value="$20.00" aria-label="Amount, focus"></label>
+      <label class="kit-field-wrap"><span class="kit-field-lbl">Disabled</span><input class="kit-field" type="text" inputmode="decimal" value="$20.00" disabled aria-label="Amount, disabled"></label>
+    </div>
+    <p class="kit-note">The amount field (Add funds, bet panel). Numeric only - letters are rejected as you type, and the quick chips set the value. Focus is a brass border plus a soft ring; disabled dims the field and blocks entry. The middle two show the hover and focus looks without needing a cursor.</p>
   </section>
 
   <section class="kit-sec" id="chips">
@@ -164,13 +315,113 @@
         <li><label><input type="radio" name="s" checked> Trending</label></li>
         <li><label><input type="radio" name="s"> Newest</label></li>
         <li><label><input type="radio" name="s"> Closing soon</label></li></ul></div></details>
-      <span class="toggle" role="switch" aria-checked="true">Reverse order</span>
+    </div>
+    <div class="kit-subh">Toggle (on / off / disabled)</div>
+    <div class="kit-row" style="gap:26px">
+      <span class="kit-tgl"><span class="toggle" role="switch" aria-checked="true" tabindex="0" aria-label="On"></span> On</span>
+      <span class="kit-tgl"><span class="toggle" role="switch" aria-checked="false" tabindex="0" aria-label="Off"></span> Off</span>
+      <span class="kit-tgl"><span class="toggle" role="switch" aria-checked="false" aria-disabled="true" tabindex="-1" aria-label="Disabled"></span> Disabled</span>
     </div>
   </section>
 
   <section class="kit-sec" id="cards">
-    <h2 data-n="05">Event cards - signature</h2>
-    <p class="kit-note">Binary = treatment B (thin odds bar + tinted YES / NO). Multi = treatment D (option rows). On the two-stone content plate.</p>
+    <h2 data-n="05">Feed and cards</h2>
+    <p class="kit-note">The signature browse surface: a featured hero band, the event cards (binary = treatment B thin odds bar + tinted YES / NO, multi = treatment D option rows), the trending sub-filter, the sub-category rail, and the below-fold SEO plate. On the two-stone content plate.</p>
+    <div class="kit-subh">Featured hero band</div>
+    <main class="feed"><div class="feed-inner">
+        <section class="feed-hero" aria-label="Featured events">
+          <div class="hero-main">
+            <article class="hero-feature">
+              <div class="hf-info">
+                <img class="hf-photo" src="../ui-visual/assets/hero-capitol.webp" alt="" aria-hidden="true">
+                <span class="hf-veil" aria-hidden="true"></span>
+                <span class="hf-eyebrow"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg>Trending now &middot; Politics</span>
+                <a class="hf-title" href="#">Will the US government shut down before March 1, 2027?</a>
+                <p class="hf-why">Funding talks have stalled twice this quarter, but past deadlines settled late.</p>
+                <div class="hf-odds">
+                  <div class="hf-bar"><span style="width:38%"></span></div>
+                  <div class="hf-odds-row"><span class="hf-yes">YES 38%</span><span class="hf-no">NO 62%</span></div>
+                </div>
+                <div class="hf-foot"><span>Volume <b>$84,200</b></span><span>Closes <b>Mar 1, 2027</b></span></div>
+                <div class="hf-cta">
+                  <a href="#"><button type="button" class="hf-btn yes">Back YES</button></a>
+                  <a href="#"><button type="button" class="hf-btn no">Back NO</button></a>
+                </div>
+              </div>
+              <div class="hf-chart">
+                <div class="hf-chart-legend">
+                  <span class="hf-tag no"><i></i>NO 62%</span>
+                  <span class="hf-tag yes"><i></i>YES 38%</span>
+                  <span class="hf-tag vol"><i></i>Vol</span>
+                </div>
+                <div class="hf-graph-wrap">
+                  <svg class="hf-graph" viewBox="0 0 360 190" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="hfyes" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#4fa96b" stop-opacity=".2"/>
+                        <stop offset="1" stop-color="#4fa96b" stop-opacity="0"/>
+                      </linearGradient>
+                      <linearGradient id="hfvol" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#c7a24e" stop-opacity=".2"/>
+                        <stop offset="1" stop-color="#c7a24e" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <g class="hf-grid" vector-effect="non-scaling-stroke">
+                      <line x1="16" y1="40" x2="344" y2="40"/><line x1="16" y1="80" x2="344" y2="80"/>
+                      <line x1="16" y1="120" x2="344" y2="120"/><line x1="16" y1="160" x2="344" y2="160"/>
+                    </g>
+                    <path class="hf-area" d="M16,97 L46,106.5 L76,90.7 L105,112.8 L135,103.3 L165,122.3 L195,109.6 L225,128.6 L255,119.1 L284,131.8 L314,125.4 L344,134.9 L344,190 L16,190 Z"/>
+                    <path class="hf-vol-area" d="M16,178 L46,169 L76,174 L105,160 L135,167 L165,151 L195,164 L225,147 L255,161 L284,153 L314,163 L344,149 L344,190 L16,190 Z"/>
+                    <polyline class="hf-vol-line" vector-effect="non-scaling-stroke" points="16,178 46,169 76,174 105,160 135,167 165,151 195,164 225,147 255,161 284,153 314,163 344,149"/>
+                    <polyline class="hf-line no" vector-effect="non-scaling-stroke" points="16,97 46,87.5 76,103.3 105,81.2 135,90.7 165,71.7 195,84.4 225,65.4 255,74.9 284,62.2 314,68.6 344,59.1"/>
+                    <polyline class="hf-line yes" vector-effect="non-scaling-stroke" points="16,97 46,106.5 76,90.7 105,112.8 135,103.3 165,122.3 195,109.6 225,128.6 255,119.1 284,131.8 314,125.4 344,134.9"/>
+                  </svg>
+                </div>
+                <span class="hf-chart-cap">Live odds &amp; volume &middot; last 30 days</span>
+              </div>
+            </article>
+            <div class="hero-duo">
+              <article class="hero-trust">
+                <img class="ht-art" src="../ui-visual/assets/trust-column.webp" alt="" aria-hidden="true">
+                <span class="ht-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"/></svg></span>
+                <div class="ht-body">
+                  <b>Your USDC is held 1:1</b>
+                  <span>We never lend it. Withdraw anytime.</span>
+                </div>
+              </article>
+              <article class="hero-trust">
+                <img class="ht-art" src="../ui-visual/assets/trust-globe.webp" alt="" aria-hidden="true">
+                <span class="ht-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-verified-b"/></svg></span>
+                <div class="ht-body">
+                  <b>1,284 events resolved on-chain</b>
+                  <span>Every outcome is public and verifiable.</span>
+                </div>
+              </article>
+            </div>
+          </div>
+          <aside class="hero-side">
+            <div class="hero-promo brand-tile">
+              <img class="bt-photo" src="../ui-visual/assets/brand-columns.webp" alt="" aria-hidden="true">
+              <span class="bt-veil" aria-hidden="true"></span>
+              <svg class="bt-tick" viewBox="0 0 26 18" aria-hidden="true"><path d="M2 15 L9 7 L13 10 L24 2" fill="none" stroke="#c99e3f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <p class="bt-quote">The market decides.<br>Opinions have <em>value.</em></p>
+              <span class="bt-by">Predict Market</span>
+            </div>
+            <div class="hero-hot">
+              <div class="hh-head"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><h3>Hot right now</h3></div>
+              <ol class="hh-list">
+                <li><span class="hh-rank">1</span><a class="hh-name" href="#">Bitcoin above $150k by October</a><span class="hh-prob">61%</span><span class="hh-vol">$212k</span></li>
+                <li><span class="hh-rank">2</span><a class="hh-name" href="#">US shutdown before March</a><span class="hh-prob">38%</span><span class="hh-vol">$84k</span></li>
+                <li><span class="hh-rank">3</span><a class="hh-name" href="#">Ethereum upgrade before November</a><span class="hh-prob">72%</span><span class="hh-vol">$58k</span></li>
+                <li><span class="hh-rank">4</span><a class="hh-name" href="#">Eurovision 2027 winner</a><span class="hh-prob">34%</span><span class="hh-vol">$61k</span></li>
+                <li><span class="hh-rank">5</span><a class="hh-name" href="#">EU admits a new member state</a><span class="hh-prob">19%</span><span class="hh-vol">$44k</span></li>
+              </ol>
+              <a class="hh-all" href="#">See all hot events</a>
+            </div>
+          </aside>
+        </section>
+</div></main>
+    <div class="kit-subh">Event cards</div>
     <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
       <div class="grid">
         <article class="card"><div class="card-body">
@@ -204,6 +455,58 @@
 </div></article>
       </div>
     </div></div></div></main>
+
+    <div class="kit-subh">Trending sub-filter</div>
+    <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
+      <nav class="feed-subfilter" aria-label="Filter events by category">
+        <ul>
+          <li aria-current="page"><a href="#"><button type="button">All</button></a></li>
+          <li><a href="#"><button type="button">Politics</button></a></li>
+          <li><a href="#"><button type="button">Crypto</button></a></li>
+          <li><a href="#"><button type="button">Culture</button></a></li>
+          <li><a href="#"><button type="button">General</button></a></li>
+        </ul>
+      </nav>
+    </div></div></div></main>
+
+    <div class="kit-subh">Sub-category rail (category pages)</div>
+    <main class="feed"><div class="feed-inner"><div class="cat-layout">
+      <nav class="subcat" id="subcatRail" aria-label="Sub-categories"><p class="subcat-head">Politics sub-categories</p><ul><li aria-current="page"><button type="button">All <span class="cnt">2K</span></button></li><li><button type="button">Trump <span class="cnt">297</span></button></li><li><button type="button">Trump Daily <span class="cnt">3</span></button></li><li><button type="button">Midterm Elections <span class="cnt">537</span></button></li><li><button type="button">Global Elections <span class="cnt">122</span></button></li><li><button type="button">Primaries <span class="cnt">106</span></button></li><li><button type="button">Congress <span class="cnt">42</span></button></li><li><button type="button">Courts <span class="cnt">30</span></button></li></ul></nav>
+      <div class="cat-main"><p style="color:var(--muted);font-family:'DM Sans',sans-serif;padding:24px 8px;margin:0">The filtered category feed renders beside the rail.</p></div>
+    </div></div></main>
+
+    <div class="kit-subh">Below-fold SEO plate</div>
+    <main class="feed"><div class="feed-inner">
+      <div class="feed-seo-wrap">
+        <div class="seo-text">
+          <section class="feed-seo" aria-label="How betting works here">
+            <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-guide"/></svg>How betting works here</h2>
+            <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+          </section>
+          <section class="feed-seo" aria-label="Why the odds move">
+            <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-chart"/></svg>Why the odds move</h2>
+            <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+          </section>
+          <section class="feed-seo" aria-label="Common questions">
+            <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-qa"/></svg>Common questions</h2>
+            <dl>
+              <dt>Do I need crypto to start?</dt>
+              <dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd>
+              <dt>What is the smallest bet?</dt>
+              <dd>One dollar. The default is five.</dd>
+              <dt>How does an event resolve?</dt>
+              <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
+            </dl>
+          </section>
+        </div>
+        <aside class="seo-brand">
+          <svg class="seo-tick" viewBox="0 0 26 18" aria-hidden="true"><path d="M2 15 L9 7 L13 10 L24 2" fill="none" stroke="#c99e3f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="seo-tagline">Not just news.<br>Your <em>stake.</em></p>
+          <span class="seo-by">Predict Market</span>
+        </aside>
+      </div>
+    </div></main>
+
   </section>
 
   <section class="kit-sec" id="states">
@@ -234,6 +537,17 @@
         <article class="card skeleton"><div class="card-body"><div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div><div class="sk-line w40"></div><div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div></div></article>
       </div>
     </div></div></div></main>
+
+    <div class="kit-subh">Empty list</div>
+    <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
+      <div class="state-block">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l3-8h12l3 8M3 13v6h18v-6M3 13h5l2 3h4l2-3h5"/></svg>
+        <h2 class="state-title">No active bets yet</h2>
+        <p class="state-msg">You haven't placed any bets. Find an event you have an opinion on and put a real stake on the outcome.</p>
+        <div class="state-actions"><a href="#"><button type="button" class="state-btn primary">Browse events</button></a></div>
+      </div>
+    </div></div></div></main>
+
   </section>
 
   <section class="kit-sec" id="dialogs">
@@ -243,12 +557,12 @@
       <dialog open id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
     <div class="sheet-head">
       <h2>Sign in or create account</h2>
+      <p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p>
       <button type="button" class="sheet-close" data-close-dialog aria-label="Close">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
     <div class="sheet-body">
-      <p class="fine signin-lead">You are about to place a bet. Sign in or create an account to continue. No crypto wallet required.</p>
       <button type="button" class="provider-btn" data-flow="signin-to-deposit">
         <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
         Continue with Google
@@ -267,12 +581,13 @@
       <dialog open id="depositDialog" class="app-dialog" aria-label="Add funds">
     <div class="sheet-head">
       <h2>Add funds</h2>
+      <p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p>
       <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
     </div>
     <div class="sheet-body">
       <div>
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-input">$20.00</span></div>
+        <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9.$]*" value="$20.00" aria-label="Amount to add"></div>
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
@@ -282,11 +597,138 @@
     </div>
   </dialog>
     </div>
+    <div class="kit-subh">How-it-works dialog</div>
+    <div class="kit-dlgs"><div style="flex:0 1 520px"><dialog open id="howitworksDialog" class="app-dialog hiw-dialog" aria-label="How it works">
+    <button type="button" class="hiw-close" data-close-dialog aria-label="Close">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="hiw-hero">
+      <span class="hiw-glow" aria-hidden="true"></span>
+      <div class="hiw-hero-inner">
+        <h2>How it works</h2>
+        <p class="hiw-tagline">Back the events you follow, in plain language.</p>
+      </div>
+    </div>
+    <div class="hiw-body">
+      <div class="hiw-sec">
+        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span>
+        <div class="hiw-sec-txt">
+          <span class="hiw-label">How betting works here</span>
+          <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+        </div>
+      </div>
+      <div class="hiw-sec">
+        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M4 15l5-5 4 3 6-8"/><path d="M20 5h-4M20 5v4"/></svg></span>
+        <div class="hiw-sec-txt">
+          <span class="hiw-label">Why the odds move</span>
+          <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+        </div>
+      </div>
+      <div class="hiw-sec hiw-faq">
+        <span class="hiw-label">Common questions</span>
+        <dl>
+          <dt>Do I need crypto to start?</dt>
+          <dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd>
+          <dt>What is the smallest bet?</dt>
+          <dd>One dollar. The default is five.</dd>
+          <dt>How does an event resolve?</dt>
+          <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
+        </dl>
+      </div>
+      <a href="#" class="hiw-full">Read the full guide <svg class="ic hiw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </dialog></div></div>
+  </section>
+
+
+  <section class="kit-sec" id="feedback">
+    <h2 data-n="08">Feedback and overlays</h2>
+    <p class="kit-note">Transient and outcome UI. Toasts confirm quietly - success takes a brass tick, and the error toast carries no red, since green and red are the YES / NO outcome only, so its salience rides icon weight and copy. Win and loss are invoked overlays: the win marks the result without lighting a fuse, the loss explains what happened and its next step is not "bet again".</p>
+    <div class="kit-subh">Toasts</div>
+    <div class="toast-inner" style="max-width:440px">
+      <div class="toast-group" role="status" aria-live="polite">
+        <div class="toast">
+          <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 7"/></svg>
+          <span class="toast-msg">Bet placed</span>
+          <button type="button" class="toast-close" aria-label="Dismiss">x</button>
+        </div>
+        <div class="toast">
+          <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 7"/></svg>
+          <span class="toast-msg">Funds added</span>
+          <button type="button" class="toast-close" aria-label="Dismiss">x</button>
+        </div>
+        <div class="toast">
+          <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 7"/></svg>
+          <span class="toast-msg">Saved into Favorites</span>
+          <button type="button" class="toast-close" aria-label="Dismiss">x</button>
+        </div>
+      </div>
+      <div class="toast-group" role="alert" aria-live="assertive">
+        <div class="toast toast-error">
+          <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>
+          <span class="toast-msg">We could not place your bet. Try again.</span>
+          <button type="button" class="toast-close" aria-label="Dismiss">x</button>
+        </div>
+      </div>
+    </div>
+    <div class="kit-subh">Trust bar (near the action)</div>
+    <div class="feed-trustbar" style="display:block">
+      <div class="ft-inner">
+        <span class="ft-item">
+          <svg class="ft-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"/></svg>
+          Your USDC is held 1:1, we never lend it.
+        </span>
+        <span class="ft-sep" aria-hidden="true">&middot;</span>
+        <span class="ft-item">
+          <svg class="ft-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-verified-b"/></svg>
+          <b>1,284</b> events resolved on-chain
+        </span>
+      </div>
+    </div>
+    <div class="kit-subh">Win and loss overlays</div>
+    <div class="kit-dlgs">
+      <dialog class="app-case app-dialog outcome-dialog win-dialog" open aria-label="You were right"><div class="sheet-head"><h2>You were right</h2><a href="#"><button type="button" class="sheet-close" aria-label="Close">x</button></a></div><div class="sheet-body">
+        <p class="fine" style="font-weight:bold;font-size:13px;margin:0;">Will the US government shut down before March 1, 2027?</p>
+        <div class="reconcile-box" style="align-items:center;text-align:center;">
+          <span class="field-label">You were right - you won</span>
+          <strong style="font-size:24px;">+$13.20</strong>
+          <span class="fine">$5.00 stake returned + $8.20 winnings. You held YES, avg price 38%.</span>
+        </div>
+        <div>
+          <span class="field-label">What happened</span>
+          <p class="protect">The federal government entered a shutdown on Feb 18, 2027 after Congress missed the funding deadline. The market resolved YES, the side you held.</p>
+        </div>
+        <div>
+          <span class="field-label">Share Card (auto-generated)</span>
+          <div class="widget-box">Share Card: "Called it - US shutdown, YES from 38%. +$13.20 on Predict Market." (image placeholder)</div>
+        </div>
+        <button type="button" class="confirm-btn">Share</button>
+        <div>
+          <span class="field-label">Before the next one</span>
+          <p class="protect">One right call is not a streak. The next event has its own odds, and this win does not change them. Read the next one on its own terms.</p>
+        </div>
+        <a href="#"><button type="button" class="provider-btn" style="justify-content:center;width:100%;">Browse events</button></a>
+      </div></dialog>
+      <dialog class="app-case app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="sheet-head"><h2>Here's what happened</h2><a href="#"><button type="button" class="sheet-close" aria-label="Close">x</button></a></div><div class="sheet-body">
+        <p class="fine" style="font-weight:bold;font-size:13px;margin:0;">Will the US government shut down before March 1, 2027?</p>
+        <div>
+          <span class="field-label">What happened</span>
+          <p class="protect">Congress passed a stopgap funding bill on Feb 27, 2027, two days before the deadline, so no shutdown occurred. The market resolved NO. You held YES.</p>
+        </div>
+        <div class="reconcile-box" style="align-items:center;text-align:center;">
+          <span class="field-label">Result</span>
+          <strong style="font-size:20px;">-$5.00</strong>
+          <span class="fine">Your $5.00 stake on YES did not return. Avg price 38%.</span>
+        </div>
+        <a href="#"><button type="button" class="confirm-btn">Back to your bets</button></a>
+        <a href="#"><button type="button" class="provider-btn" style="justify-content:center;width:100%;">Browse events</button></a>
+      </div></dialog>
+    </div>
   </section>
 
   <section class="kit-sec" id="detail">
-    <h2 data-n="08">Event Detail</h2>
-    <p class="kit-note">Two floating plates: scrolling content + a sticky bet panel. Compact here; the full family lives in ui-visual.</p>
+    <h2 data-n="09">Event Detail</h2>
+    <p class="kit-note">Two floating plates: scrolling content + a sticky bet panel, then the deeper pieces each on their own - price chart, facts, AMM market depth, the Comments / Biggest bets / Bets / Activity tabs, the bet-panel states, and the multi-outcome selector.</p>
     <main class="feed"><div class="feed-inner"><div class="ed-layout">
       <div class="ed-main"><div class="card"><div class="card-body">
         <div class="ed-head">
@@ -309,27 +751,247 @@
           <div class="arg-col"><h4>For No</h4><ul><li>Leadership signaled a short-term deal.</li><li>Markets are pricing a last-minute vote.</li></ul></div></div>
         </div>
       </div></div></div>
+      <aside class="bet-panel">
+        <div class="bp-inner">
+          <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+          <div class="bp-dir">
+            <button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button>
+            <button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button>
+          </div>
+          <div>
+            <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
+            <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
+          </div>
+          <div>
+            <div class="line"><span>Price now</span><span>38%</span></div>
+            <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+            <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+          </div>
+          <button type="button" class="confirm-btn">Confirm bet</button>
+          <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
+        </div>
+      </aside>
+    </div></div></main>
+
+    <div class="kit-subh">Price chart</div>
+    <main class="feed"><div class="feed-inner"><div class="ed-main"><div class="card"><div class="card-body">
+      <section class="ed-section ed-chart">
+        <div class="ed-chart-head"><h3>Price chart</h3><span class="ed-chart-now">YES 38% now</span></div>
+        <div class="ed-chart-area">
+          <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+          <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline points="0,52 30,48 60,55 90,60 120,57 150,63 180,61 210,67 240,59 270,63 300,62"/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
+        </div>
+        <div class="ed-xaxis" aria-hidden="true"></div>
+        <div class="ed-chart-foot"><div class="ed-range" role="group" aria-label="Time range"><button type="button">1d</button><button type="button">1w</button><button type="button">1m</button><button type="button" class="sel">all</button></div></div>
+      </section>
+    </div></div></div></div></main>
+
+    <div class="kit-subh">Facts strip</div>
+    <main class="feed"><div class="feed-inner"><div class="ed-main"><div class="card"><div class="card-body">
+      <div class="ed-facts">
+        <span>Volume<b>$84,200</b></span>
+        <span>Open to bet<b>$31,500</b></span>
+        <span>Closes<b>Mar 1, 2027</b></span>
+        <span>Frequency<b>One-time</b></span>
+      </div>
+    </div></div></div></div></main>
+
+    <div class="kit-subh">Market depth (AMM)</div>
+    <main class="feed"><div class="feed-inner"><div class="ed-main"><div class="card"><div class="card-body">
+      <details class="market-box" open>
+        <summary class="market-head"><span class="market-title">Market <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="market-body">
+          <div class="market-stats"><div><span class="ms-label">Yes price</span><span class="ms-val ms-yes">38%</span></div><div><span class="ms-label">No price</span><span class="ms-val ms-no">62%</span></div><div><span class="ms-label">24h</span><span class="ms-val ms-up">+2 pts</span></div><div><span class="ms-label">Volume</span><span class="ms-val">$84,200</span></div><div><span class="ms-label">Liquidity</span><span class="ms-val">$31,500</span></div></div>
+          <div class="market-depth"><span class="md-title">Price by bet size</span><span class="md-sub">How the YES price moves as your bet grows. This market runs on an AMM, not an order book.</span><div class="md-table"><div class="md-row md-row-head"><span>Bet</span><span>Avg YES price</span><span>You receive if YES</span></div><div class="md-row"><span class="md-bar" style="width:12%"></span><span class="md-amt">$10</span><span class="md-price">38%</span><span class="md-get">$26.32</span></div><div class="md-row"><span class="md-bar" style="width:30%"></span><span class="md-amt">$100</span><span class="md-price">39%</span><span class="md-get">$256.41</span></div><div class="md-row"><span class="md-bar" style="width:58%"></span><span class="md-amt">$1,000</span><span class="md-price">42%</span><span class="md-get">$2,380.95</span></div><div class="md-row"><span class="md-bar" style="width:88%"></span><span class="md-amt">$5,000</span><span class="md-price">49%</span><span class="md-get">$10,204.08</span></div></div></div>
+        </div>
+      </details>
+    </div></div></div></div></main>
+
+    <div class="kit-subh">Content tabs (Comments / Biggest bets / Bets / Activity)</div>
+    <main class="feed"><div class="feed-inner"><div class="ed-main"><div class="card"><div class="card-body">
+      <div class="ed-tabwrap">
+        <input type="radio" name="edtab" id="edtab-comments" class="ed-tabradio" checked>
+        <input type="radio" name="edtab" id="edtab-holders" class="ed-tabradio">
+        <input type="radio" name="edtab" id="edtab-positions" class="ed-tabradio">
+        <input type="radio" name="edtab" id="edtab-activity" class="ed-tabradio">
+        <div class="ed-tabbar" role="tablist">
+          <label class="ed-tablabel" for="edtab-comments">Comments <span class="ed-tab-count">128</span></label>
+          <label class="ed-tablabel" for="edtab-holders">Biggest bets</label>
+          <label class="ed-tablabel" for="edtab-positions">Bets</label>
+          <label class="ed-tablabel" for="edtab-activity">Activity</label>
+        </div>
+        <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
+          <div class="cmt-controls">
+            <span>128 comments</span>
+            <span class="seg"><button type="button" class="sel">Newest</button><button type="button">Top</button><button type="button">Holders</button></span>
+          </div>
+          <div class="cmt-compose">
+            <span class="cmt-av">you</span>
+            <span class="cmt-input">Add a comment...</span>
+            <button type="button" class="cmt-post">Post</button>
+          </div>
+          <div class="cmt-list">
+            <div class="cmt">
+              <span class="cmt-av">mm</span>
+              <div class="cmt-body">
+                <div class="cmt-meta"><span class="cmt-user">marketmaven</span><span class="cmt-badge">Holds 320 YES</span><span>2h ago</span></div>
+                <p class="cmt-text">These always go to the wire. I am holding my position and adding if it dips.</p>
+                <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>24</button><button type="button">Reply</button></div>
+              </div>
+            </div>
+            <div class="cmt reply">
+              <span class="cmt-av">dd</span>
+              <div class="cmt-body">
+                <div class="cmt-meta"><span class="cmt-user">deadline_dan</span><span>1h ago</span></div>
+                <p class="cmt-text">The committee bloc looks firmer this time though.</p>
+                <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>6</button><button type="button">Reply</button></div>
+              </div>
+            </div>
+            <div class="cmt">
+              <span class="cmt-av">pp</span>
+              <div class="cmt-body">
+                <div class="cmt-meta"><span class="cmt-user">polly_predicts</span><span class="cmt-badge">Holds 150 NO</span><span>5h ago</span></div>
+                <p class="cmt-text">Volume jumped right after the headline. Watching how it settles.</p>
+                <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>11</button><button type="button">Reply</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Biggest bets">
+          <div class="hold-cols">
+            <div class="hold-col">
+              <h4>Biggest YES bets</h4>
+              <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">wh</span><span class="hold-name">whale_07</span><span class="hold-amt">$1,240</span></div>
+              <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">ma</span><span class="hold-name">marketmaven</span><span class="hold-amt">$320</span></div>
+              <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">al</span><span class="hold-name">alpha_ape</span><span class="hold-amt">$280</span></div>
+            </div>
+            <div class="hold-col">
+              <h4>Biggest NO bets</h4>
+              <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">he</span><span class="hold-name">hedge_hannah</span><span class="hold-amt">$980</span></div>
+              <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">po</span><span class="hold-name">polly_predicts</span><span class="hold-amt">$150</span></div>
+              <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">ca</span><span class="hold-name">caut_carl</span><span class="hold-amt">$120</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
+          <table class="ptable">
+            <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
+            <tbody>
+            <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
+            <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
+            <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>$588</td></tr>
+            <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>$121</td></tr>
+            </tbody>
+          </table>
+          <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
+        </div>
+        <div class="ed-tabpanel ed-panel-activity" role="tabpanel" aria-label="Activity">
+          <p class="pos-note" style="margin:0 0 8px;">Recent bets, largest first. Filter: over $5.</p>
+          <div class="act-list">
+            <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
+            <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$180</b> on NO</span><span class="act-time">14m ago</span></div>
+            <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> cashed out <b>$31</b> on YES</span><span class="act-time">1h ago</span></div>
+            <div class="act-row"><span class="cmt-av">pp</span><span class="act-txt"><b>polly_predicts</b> bet <b>$87</b> on NO</span><span class="act-time">3h ago</span></div>
+          </div>
+        </div>
+      </div>
+    </div></div></div></div></main>
+
+    <div class="kit-subh">Bet panel states (funds line / insufficient / price moved / processing)</div>
+    <main class="feed"><div class="feed-inner">
+      <div class="kit-row a-start">
+        <aside class="bet-panel" style="display:block;position:static;flex:0 1 262px"><div class="bp-inner">
+          <div class="bp-head">Your bet</div>
+          <div class="bp-dir"><button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button></div>
+          <div class="bp-amount-row">
+            <span class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></span>
+            <input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount">
+          </div>
+          <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
+          <p class="bp-hint">If YES wins you get $13.20. Fee $0.20, only on a win.</p>
+          <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+          <button type="button" class="confirm-btn" style="width:100%">Confirm bet</button>
+        </div></aside>
+        <aside class="bet-panel" style="display:block;position:static;flex:0 1 262px"><div class="bp-inner">
+          <div class="bp-head">Your bet</div>
+          <div class="inline-error">You have $3.00. You can bet up to $3.00, or add funds to bet more.</div>
+          <button type="button" class="confirm-btn" data-open="deposit">Add funds</button>
+          <button type="button" class="provider-btn" style="justify-content:center;">Bet $3.00 instead</button>
+        </div></aside>
+        <aside class="bet-panel" style="display:block;position:static;flex:0 1 262px"><div class="bp-inner">
+          <div class="bp-head">Your bet</div>
+          <div class="reconcile-box">
+            <strong>The price moved while you signed in</strong>
+            <span>Was 38% &nbsp;-&gt;&nbsp; Now 41%. Payout $13.20 &nbsp;-&gt;&nbsp; $12.20 for $5.</span>
+          </div>
+          <button type="button" class="confirm-btn" style="width:100%;">Confirm at new price (41%)</button>
+          <button type="button" class="provider-btn" style="justify-content:center;width:100%;">Cancel and re-evaluate</button>
+        </div></aside>
+        <aside class="bet-panel" style="display:block;position:static;flex:0 1 262px"><div class="bp-inner">
+          <div class="bp-head">Your bet</div>
+          <div class="spinner-box">Registering your bet on-chain...<br><span class="fine">A few seconds. Keep this open.</span></div>
+          <button type="button" class="confirm-btn" style="width:100%;">View your bet</button>
+        </div></aside>
+      </div>
+    </div></main>
+
+    <div class="kit-subh">Mobile bet dock + bottom sheet (mobile only)</div>
+    <p class="kit-note">On mobile the compact dock sits above the bottom nav; tapping YES or NO slides up the bottom sheet below with the full form (amount, quick chips, payout breakdown, confirm) - the same fields as the desktop panel, so you set the stake without leaving the event. Tap a dock button to try it.</p>
+    <main class="feed"><div class="feed-inner">
+      <div class="bet-dock" style="display:flex;position:static;bottom:auto" aria-label="Place your bet">
+        <button type="button" class="bp-side sel" data-open-sheet="yes">YES <span class="bp-pct">38%</span></button>
+        <button type="button" class="bp-side" data-open-sheet="no">NO <span class="bp-pct">62%</span></button>
+      </div>
+    </div></main>
+    <dialog class="app-case app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
+      <button type="button" class="sheet-grab" data-close-dialog aria-label="Close"></button>
+      <div class="bp-inner">
+        <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+        <div class="bp-dir"><button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button></div>
+        <div>
+          <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
+          <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
+        </div>
+        <div>
+          <div class="line"><span>Price now</span><span>38%</span></div>
+          <div class="line"><span>Fee (only if you win)</span><span>$0.20</span></div>
+          <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+        </div>
+        <button type="button" class="confirm-btn" data-close-dialog style="width:100%">Confirm bet</button>
+        <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
+      </div>
+    </dialog>
+
+    <div class="kit-subh">Multi outcome (selector + bet panel summary)</div>
+    <main class="feed"><div class="feed-inner"><div class="ed-layout">
+      <div class="ed-main"><div class="card"><div class="card-body">
+        <div class="options opt-list">
+          <div class="opt-row sel"><span class="opt-name">JD Vance <span class="opt-sel-tag">selected</span></span><span class="opt-prob">41%</span><span class="yesno compact"><button type="button" class="sel">YES</button><button type="button">NO</button></span></div>
+          <div class="opt-row"><span class="opt-name">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+          <div class="opt-row"><span class="opt-name">Ron DeSantis</span><span class="opt-prob">14%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+          <div class="opt-row"><span class="opt-name">Nikki Haley</span><span class="opt-prob">8%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+          <div class="opt-row"><span class="opt-name">Other</span><span class="opt-prob">15%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+        </div>
+      </div></div></div>
       <aside class="bet-panel"><div class="bp-inner">
-        <div class="bp-head">Your bet</div>
-        <div class="yesno"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div>
-        <label class="field-label" style="margin-top:12px;display:block">Amount</label>
-        <div class="amount-row"><span class="cur">$</span><input class="amount-input" value="5" aria-label="Amount"></div>
-        <p class="bp-hint">If Yes wins you get $7.80. Fee $0.20, only on a win.</p>
-        <button class="state-btn primary" style="width:100%">Confirm bet</button>
+        <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+        <span class="field-label">Your outcome</span>
+        <div class="bp-selected"><span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span><a href="#" class="bp-change">Change</a></div>
+        <div class="bp-dir"><button type="button" class="bp-side sel">YES <span class="bp-pct">41%</span></button><button type="button" class="bp-side">NO <span class="bp-pct">59%</span></button></div>
+        <div>
+          <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
+          <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
+        </div>
+        <div>
+          <div class="line"><span>Price now</span><span>41%</span></div>
+          <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+          <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
+        </div>
+        <button type="button" class="confirm-btn" style="width:100%">Confirm bet</button>
+        <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
       </div></aside>
     </div></div></main>
-    <div class="kit-subh">Comment</div>
-    <main class="feed"><div class="feed-inner">
-      <div class="ed-main"><div class="card"><div class="card-body">
-        <div class="ed-section">
-          <div class="cmt-list"><div class="cmt"><span class="cmt-av"></span><div class="cmt-body">
-            <div class="cmt-meta"><span class="cmt-user">mia_k</span> <span class="cmt-badge">Holds 320 Yes</span> <span>2h</span></div>
-            <p class="cmt-text">The stopgap vote keeps slipping. I think this closes higher than 64.</p>
-            <div class="cmt-actions"><button>Like 12</button><button>Reply</button></div>
-          </div></div></div>
-        </div>
-      </div></div>
-    </div></main>
+
     <div class="kit-subh">Related events</div>
     <main class="feed"><div class="feed-inner">
       <section class="related-events" aria-label="Related events">
@@ -343,10 +1005,104 @@
     </div></main>
   </section>
 
+
+  <section class="kit-sec" id="profile">
+    <h2 data-n="10">Profile and account</h2>
+    <p class="kit-note">Identity first, then the portfolio, then the record as CSS-only radio tabs (Track record / Past wins / Resolved). Reputation is the track record, not the balance, so only the win-rate tile carries brass. Green and red appear solely as the WON / LOST outcome chips.</p>
+    <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
+      <div class="idrow">
+        <span class="av">avatar</span>
+        <span class="who"><span class="name">alex_predicts</span><br><span class="handle">Your public track record</span></span>
+        <button type="button" class="edit">Edit name &amp; avatar</button>
+      </div>
+      <p class="pos-status" style="margin:12px 0 4px;text-transform:uppercase;letter-spacing:.04em;">Portfolio</p>
+      <article class="pos" aria-label="Portfolio summary">
+        <div class="pos-figures" style="font-size:11px;">
+          <span class="pos-fig">Portfolio total<b>$142.00</b></span>
+          <span class="pos-fig">Cash (available)<b>$92.00</b></span>
+          <span class="pos-fig">In-play<b>$50.00</b></span>
+        </div>
+        <div class="cta-bar" style="position:static;padding:8px 0 0;border:none;background:none;">
+          <button type="button">Add funds</button>
+          <a href="#" style="flex:1;"><button type="button" style="width:100%;">Open Wallet</button></a>
+        </div>
+      </article>
+      <div class="ptabs">
+        <input type="radio" name="ptab" id="ptab-record" class="ptab-in" checked>
+        <input type="radio" name="ptab" id="ptab-wins" class="ptab-in">
+        <input type="radio" name="ptab" id="ptab-resolved" class="ptab-in">
+        <div class="ptab-bar" role="tablist">
+          <label for="ptab-record" class="ptab-lbl">Track record</label>
+          <label for="ptab-wins" class="ptab-lbl">Past wins</label>
+          <label for="ptab-resolved" class="ptab-lbl">Resolved</label>
+        </div>
+        <section class="ptab-panel" id="p-record" aria-label="Track record">
+          <article class="pos" aria-label="Track record">
+            <div class="pos-figures" style="font-size:11px;">
+              <span class="pos-fig">Total bets<b>23</b></span>
+              <span class="pos-fig">Win rate<b>61%</b></span>
+              <span class="pos-fig">Resolved<b>18</b></span>
+              <span class="pos-fig">Member since<b>2026</b></span>
+            </div>
+            <span class="pos-status">Win rate is % correct on resolved bets (public). Reputation = the track record, not the balance.</span>
+          </article>
+        </section>
+        <section class="ptab-panel" id="p-wins" aria-label="Past wins">
+          <div class="gallery">
+            <div class="card">Win card: US shutdown YES +$13.20</div>
+            <div class="card">Win card: BTC &gt; $150k YES +$6.80</div>
+            <div class="card">Win card: ETF approval NO +$9.40</div>
+          </div>
+        </section>
+        <section class="ptab-panel" id="p-resolved" aria-label="Resolved predictions (public)">
+          <div class="pos-list">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">US government shutdown before Mar 1, 2027</span>
+                <span class="pos-side pos-won">WON</span>
+              </div>
+              <span class="pos-status">YES &middot; resolved Jun 27 &middot; +$13.20</span>
+            </article>
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Bitcoin above $150,000 before Oct 1, 2026</span>
+                <span class="pos-side pos-won">WON</span>
+              </div>
+              <span class="pos-status">YES &middot; resolved Jun 20 &middot; +$6.80</span>
+            </article>
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Spot ETH ETF approved in H1 2027</span>
+                <span class="pos-side pos-lost">LOST</span>
+              </div>
+              <span class="pos-status">NO &middot; resolved Jun 12 &middot; -$5.00</span>
+            </article>
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Which party wins the most UK seats</span>
+                <span class="pos-side pos-won">WON</span>
+              </div>
+              <span class="pos-status">NO &middot; Conservatives &middot; resolved Jun 2 &middot; +$11.10</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div></div></div></main>
+    <div class="kit-subh">Transaction list (wallet)</div>
+    <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
+      <div class="pos-list">
+        <article class="pos"><div class="pos-top"><span class="pos-q">Withdrawal to USDC address</span><span class="pos-status" style="white-space:nowrap;">-$30.00</span></div><span class="pos-status">Jun 28 &middot; pending (on-chain)</span></article>
+        <article class="pos"><div class="pos-top"><span class="pos-q">Payout: US government shutdown - YES won</span><span class="pos-status" style="white-space:nowrap;">+$13.20</span></div><span class="pos-status">Jun 27 &middot; completed</span></article>
+        <article class="pos"><div class="pos-top"><span class="pos-q">Platform fee (won bet)</span><span class="pos-status" style="white-space:nowrap;">-$0.40</span></div><span class="pos-status">Jun 27 &middot; completed</span></article>
+        <article class="pos"><div class="pos-top"><span class="pos-q">Stake: Bitcoin above $150,000 - YES</span><span class="pos-status" style="white-space:nowrap;">-$25.00</span></div><span class="pos-status">Jun 26 &middot; locked in-play</span></article>
+      </div>
+    </div></div></div></main>
+  </section>
+
   <section class="kit-sec" id="chrome">
-    <h2 data-n="09">Chrome</h2>
-    <p class="kit-note">The reusable shell, one piece at a time. On a real screen the header sticks to the top and the bottom nav to the bottom, so they are shown as separate specimens here (not stacked). The header is lean on desktop and compact on mobile; the bottom nav is the mobile-only 4-slot bar. See <code>shell.html</code>.</p>
-    <div class="kit-subh">Sticky app header</div>
+    <h2 data-n="11">Chrome</h2>
+    <p class="kit-note">The reusable shell, one piece at a time. On a real screen the header sticks to the top and the bottom nav to the bottom, so they are shown as separate specimens here (not stacked). The header is lean on desktop and compact on mobile; logged out it swaps the balance and avatar for Sign in / Sign up. My Bets carries the Active / History tabs, the bottom nav is the mobile-only 4-slot bar, and the footer holds the trust strip, brand, social, language, link columns, popular links and legal. See <code>shell.html</code>.</p>
+    <div class="kit-subh">Sticky app header (logged in)</div>
     <div class="device app-case kit-chrome-demo"><header class="app-header">
       <div class="row">
         <div class="left">
@@ -422,6 +1178,41 @@
         </ul>
       </div>
     </header></div>
+    <div class="kit-subh">Header, logged out (Sign in / Sign up)</div>
+    <div class="device app-case kit-chrome-demo"><header class="app-header">
+      <div class="row">
+        <div class="left">
+          <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          </button>
+          <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+          <button type="button" class="hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
+        </div>
+
+        <div class="utility">
+          <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
+          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+          </button>
+
+          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
+          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+          </button>
+
+          <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
+          <div class="auth-btns">
+            <button type="button" class="auth-btn" data-open="signin">Sign in</button>
+            <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
+          </div>
+        </div>
+      </div>
+    </header></div>
+    <div class="kit-subh">My Bets tabs (Active / History)</div>
+    <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main"><div class="tabs" role="tablist" aria-label="My Bets">
+          <a href="#"><button type="button" role="tab" aria-selected="true">Active</button></a>
+          <a href="#"><button type="button" role="tab" aria-selected="false">History</button></a>
+        </div></div></div></div></main>
     <div class="kit-subh">Mobile bottom nav</div>
     <div class="device app-case kit-chrome-demo"><nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
@@ -443,22 +1234,289 @@
         </button></a></li>
       </ul>
     </nav></div>
-    <div class="kit-subh">Footer trust strip</div>
-    <div class="device app-case kit-chrome-demo">
-      <footer class="app-footer"><div class="footer-inner">
-        <div class="footer-trust"><h3 class="trust-head">Built on trust</h3><div class="trust-items">
-          <div class="trust-item"><svg class="tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"/></svg><div class="tr-txt"><b>USDC held 1:1</b><i>We never lend deposited funds.</i></div></div>
-          <div class="trust-item"><svg class="tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-verified-b"/></svg><div class="tr-txt"><b>Public sources</b><i>Every event cites its resolution source.</i></div></div>
-          <div class="trust-item"><svg class="tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-chart"/></svg><div class="tr-txt"><b>1,240 events resolved</b><i>On-chain, and visible to anyone.</i></div></div>
-        </div></div>
-        <div class="footer-legal"><a class="footer-logo">Predict Market</a><p class="footer-tagline">Not just news. Your stake.</p></div>
-      </div></footer>
-    </div>
+    <div class="kit-subh">Footer (full)</div>
+    <div class="device app-case kit-chrome-demo"><footer class="app-footer">
+      <div class="footer-inner">
+
+        <!-- Trust strip (persistent funds-safety + resolution signal, WF reconcile) -->
+        <div class="footer-trust">
+          <h3 class="trust-head">Built on trust, not on your balance</h3>
+          <div class="trust-items">
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/></svg>
+              <span class="tr-txt"><b>Your USDC is held 1:1</b><i>We never lend it.</i></span>
+            </span>
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
+              <span class="tr-txt"><b>Every event resolves against a public source</b><i>You can check it.</i></span>
+            </span>
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg>
+              <span class="tr-txt"><b>1,284 events resolved</b><i>On-chain, verifiable.</i></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="footer-top">
+
+          <!-- Brand block: logo, tagline, social, language -->
+          <div class="footer-brand">
+            <span class="footer-logo">Predict Market</span>
+            <p class="footer-tagline">Back the events you follow.</p>
+            <div class="social-row" role="list" aria-label="Social media">
+              <a href="#" role="listitem" aria-label="X (Twitter)" title="X (Twitter)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Discord" title="Discord">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2l-1-2H8l-1 2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/><circle cx="10" cy="12" r="1.1"/><circle cx="14" cy="12" r="1.1"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Telegram" title="Telegram">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l6 2 2 6 3-4 5 4z"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Instagram" title="Instagram">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="16.6" cy="7.4" r="0.7"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="TikTok" title="TikTok">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5v9.5a3 3 0 1 1-2.5-3"/><path d="M11 5c.5 2.5 2.5 4 4.5 4"/></svg>
+              </a>
+            </div>
+            <details class="filter-menu lang-menu" id="langMenu">
+              <summary aria-label="Language (placeholder)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
+                <span id="langCurrent">English</span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                <span class="tbd">TBD</span>
+              </summary>
+              <div class="filter-panel">
+                <ul>
+                  <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
+                  <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
+                  <li><label><input type="radio" name="lang" value="Portuguese"> Portuguese</label></li>
+                  <li><label><input type="radio" name="lang" value="German"> German</label></li>
+                  <li><label><input type="radio" name="lang" value="French"> French</label></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <!-- Link columns -->
+          <div class="footer-cols">
+
+            <nav class="footer-col" aria-label="Markets">
+              <h3>Events</h3>
+              <p class="sub-label">By category</p>
+              <ul>
+                <li><a href="#">Politics</a></li>
+                <li><a href="#">Crypto</a></li>
+                <li><a href="#">Culture</a></li>
+                <li><a href="#">General</a></li>
+                <li><a href="#">Sports</a> <span class="tbd">post-MVP</span></li>
+              </ul>
+              <p class="sub-label">By topic</p>
+              <ul>
+                <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
+                <li><a href="#">View all events</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Product">
+              <h3>Product</h3>
+              <ul>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="#">Wallet</a></li>
+                <li><a href="#">My Bets</a></li>
+                <li><a href="#">API / Developers</a> <span class="tbd">post-MVP</span></li>
+                <li><a href="#">Status</a> <span class="tbd">TBD</span></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Support">
+              <h3>Support</h3>
+              <ul>
+                <li><a href="#">Help Center</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">FAQ</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Contact</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">How It Works</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Company">
+              <h3>Company</h3>
+              <ul>
+                <li><a href="#">About</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Careers</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Press</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Brand</a> <span class="tbd">TBD</span></li>
+              </ul>
+            </nav>
+
+          </div>
+        </div>
+
+        <!-- SEO popular-links block (second internal-linking plane, WF reconcile) -->
+        <div class="footer-popular">
+          <h3>Popular right now</h3>
+          <ul class="popular-links">
+            <li><a href="#">Politics events</a></li>
+            <li><a href="#">Crypto events</a></li>
+            <li><a href="#">Culture events</a></li>
+            <li><a href="#">General events</a></li>
+            <li><a href="#">Trending events</a></li>
+            <li><a href="#">Ending soon</a></li>
+            <li><a href="#">How it works</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal strip -->
+        <div class="footer-legal">
+          <nav aria-label="Legal">
+            <ul class="legal-links">
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Responsible play</a></li>
+              <li><a href="#">Geo restrictions</a> <span class="tbd">TBD</span></li>
+              <li><a href="#">Cookie preferences</a></li>
+            </ul>
+          </nav>
+          <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
+          <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.]</p>
+          <p>Copyright (c) Predict Market. Sample wireframe content.</p>
+        </div>
+
+      </div>
+    </footer></div>
+  </section>
+
+  <section class="kit-sec" id="icons">
+    <h2 data-n="12">Icons</h2>
+    <p class="kit-note">The full icon set. <b>Named icons</b> come from the shared SVG sprite (Solar Bold, filled) - referenced with <code>&lt;use href="#i-..."&gt;</code>. <b>Interface icons</b> are inline outline glyphs (1.6 stroke, currentColor), scanned live from the painted screens so this list stays complete. <b>Brand marks</b> keep their own color. Every glyph sits on a 24px box.</p>
+    <div class="kit-subh">Named icons (sprite)</div>
+    <div class="kit-icons"><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><figcaption>Trending</figcaption><code>#i-cat-fire</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><figcaption>Politics</figcaption><code>#i-cat-politics</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><figcaption>Crypto</figcaption><code>#i-cat-crypto</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><figcaption>Culture</figcaption><code>#i-cat-culture</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><figcaption>General</figcaption><code>#i-cat-general</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg><figcaption>Notifications</figcaption><code>#i-bell-b</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg><figcaption>Save / favorite</figcaption><code>#i-bookmark-b</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg><figcaption>Like</figcaption><code>#i-heart-b</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"/></svg><figcaption>Comment</figcaption><code>#i-chat-b</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share-b"/></svg><figcaption>Share</figcaption><code>#i-share-b</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"/></svg><figcaption>Funds safety</figcaption><code>#i-shield-b</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-verified-b"/></svg><figcaption>Verified</figcaption><code>#i-verified-b</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-chart"/></svg><figcaption>Chart</figcaption><code>#i-seo-chart</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-guide"/></svg><figcaption>Guide</figcaption><code>#i-seo-guide</code></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-qa"/></svg><figcaption>Q and A</figcaption><code>#i-seo-qa</code></figure></div>
+    <div class="kit-subh">Interface icons</div>
+    <div class="kit-icons"><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg><figcaption>Menu</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg><figcaption>Swap</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><figcaption>Add</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><figcaption>User</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg><figcaption>Chevron down</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><figcaption>Search</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><figcaption>Events / grid</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><figcaption>List / My Bets</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/></svg><figcaption>Shield check</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg><figcaption>Globe</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg><figcaption>Check</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg><figcaption>Close</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2l-1-2H8l-1 2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/><circle cx="10" cy="12" r="1.1"/><circle cx="14" cy="12" r="1.1"/></svg><figcaption>Comment</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l6 2 2 6 3-4 5 4z"/></svg><figcaption>Send</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="16.6" cy="7.4" r="0.7"/></svg><figcaption>Camera</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5v9.5a3 3 0 1 1-2.5-3"/><path d="M11 5c.5 2.5 2.5 4 4.5 4"/></svg><figcaption>Audio</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><figcaption>Close</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><figcaption>Check (circle)</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15l5-5 4 3 6-8"/><path d="M20 5h-4M20 5v4"/></svg><figcaption>Trending up</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><figcaption>Arrow right</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg><figcaption>Warning</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l3-8h12l3 8M3 13v6h18v-6M3 13h5l2 3h4l2-3h5"/></svg><figcaption>Inbox</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><figcaption>Alert</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><figcaption>Info</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg><figcaption>Bookmark</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg><figcaption>Bell</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3M14 4h5v16h-5"/></svg><figcaption>Sign in</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg><figcaption>Description</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><figcaption>Clock</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg><figcaption>Search</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 12h10M16 8l4 4-4 4M14 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/></svg><figcaption>Sign out</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v6H4zM13 5h7v6h-7zM4 13h7v6H4zM13 13h7v6h-7z"/></svg><figcaption>Grid</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg><figcaption>Clock</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 10h.01M16 10h.01M8 15h8"/></svg><figcaption>Neutral face</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg><figcaption>Add (circle)</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7c1-2 3-3 4-3 0 2-1 3-2 4M9 9c-2 0-4 2-4 5s2 6 4 6c1 0 1.5-.5 3-.5s2 .5 3 .5c1.5 0 3-2 3-4-2-1-2-4 0-5-1-1.5-3-1.5-4-1.5S11 9 9 9z"/></svg><figcaption>Sparkle</figcaption></figure><figure class="kit-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 7"/></svg><figcaption>Check</figcaption></figure></div>
+    <div class="kit-subh">Brand and auth</div>
+    <div class="kit-icons"><figure class="kit-ico"><svg class="kit-brandic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg><figcaption>Google</figcaption></figure><figure class="kit-ico"><svg class="kit-brandic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg><figcaption>X</figcaption></figure><figure class="kit-ico"><svg class="kit-brandic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"/></svg><figcaption>Apple</figcaption></figure></div>
   </section>
 </div>
 
 <script>
-(function(){var sb=document.getElementById('rmSidebar'),ov=document.getElementById('rmOverlay'),tg=document.getElementById('rmToggle');if(!sb||!ov||!tg)return;var open=function(){sb.classList.add('open');ov.classList.add('open');},close=function(){sb.classList.remove('open');ov.classList.remove('open');};tg.addEventListener('click',open);ov.addEventListener('click',close);sb.querySelectorAll('.sidebar-sub-link').forEach(function(a){a.addEventListener('click',close);});})();
+(function(){
+  // roadmap sidebar drawer
+  var sb=document.getElementById('rmSidebar'),ov=document.getElementById('rmOverlay'),tg=document.getElementById('rmToggle');
+  if(sb&&ov&&tg){var o=function(){sb.classList.add('open');ov.classList.add('open');},c=function(){sb.classList.remove('open');ov.classList.remove('open');};tg.addEventListener('click',o);ov.addEventListener('click',c);sb.querySelectorAll('.sidebar-sub-link').forEach(function(a){a.addEventListener('click',c);});}
+
+  // inert placeholder links (href="#") must not jump to the top of the page
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href="#"]');if(a)e.preventDefault();});
+
+  // pill / tab groups (category nav, trending sub-filter, sub-category rail, mobile
+  // bottom nav): a click switches the active item (aria-current on the <li>)
+  ['.cat-nav','.feed-subfilter','.subcat','.bottom-nav'].forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(nav){
+      nav.addEventListener('click',function(e){
+        var li=e.target.closest('li'); if(!li||!nav.contains(li))return;
+        nav.querySelectorAll('li').forEach(function(x){x.removeAttribute('aria-current');});
+        li.setAttribute('aria-current','page');
+      });
+    });
+  });
+
+  // toggle switches: a click flips aria-checked, unless the switch is disabled
+  document.querySelectorAll('.toggle[role="switch"]').forEach(function(t){
+    t.addEventListener('click',function(){
+      if(t.getAttribute('aria-disabled')==='true')return;
+      t.setAttribute('aria-checked',t.getAttribute('aria-checked')==='true'?'false':'true');
+    });
+  });
+
+  // amount inputs stay numeric ($ prefix + digits + a single dot; no letters)
+  document.querySelectorAll('.amount-input,.kit-field').forEach(function(i){
+    i.addEventListener('input',function(){
+      var dollar=i.value.trim().charAt(0)==='$';
+      var v=i.value.replace(/[^0-9.]/g,''); var p=v.split('.'); if(p.length>2)v=p[0]+'.'+p.slice(1).join('');
+      i.value=(dollar?'$':'')+v;
+      var box=i.closest('.bp-inner,.sheet-body,.app-dialog');   // typing your own amount clears any preset chip
+      if(box)box.querySelectorAll('.quick button').forEach(function(b){b.classList.remove('sel');});
+    });
+  });
+  // quick-amount chips set the amount input value; the clicked chip becomes active
+  document.querySelectorAll('.quick').forEach(function(q){
+    q.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b||!q.contains(b))return;
+      q.querySelectorAll('button').forEach(function(x){x.classList.remove('sel');}); b.classList.add('sel');
+      var box=q.closest('.bp-inner,.sheet-body,.app-dialog')||document; var input=box.querySelector('.amount-input');
+      if(input){var v=b.textContent.replace(/[^0-9.]/g,'');var dollar=input.value.trim().charAt(0)==='$';input.value=(dollar?'$':'')+v+(dollar?'.00':'');}
+    });
+  });
+  // bet side (YES / NO): a click selects that side
+  document.querySelectorAll('.bp-dir').forEach(function(d){
+    d.addEventListener('click',function(e){var b=e.target.closest('.bp-side'); if(!b||!d.contains(b))return; d.querySelectorAll('.bp-side').forEach(function(x){x.classList.remove('sel');}); b.classList.add('sel');});
+  });
+
+  // multi-outcome selector: picking a YES / NO (or a row) on the LEFT drives the RIGHT
+  // bet panel - it becomes the chosen outcome, its side fills, and the panel's outcome
+  // name, YES/NO fill and percentages follow.
+  document.querySelectorAll('.opt-list').forEach(function(list){
+    var panel=list.closest('.ed-layout')?list.closest('.ed-layout').querySelector('.bet-panel'):null;
+    list.addEventListener('click',function(e){
+      var row=e.target.closest('.opt-row'); if(!row||!list.contains(row))return;
+      var btn=e.target.closest('.yesno.compact button');
+      list.querySelectorAll('.opt-row').forEach(function(r){r.classList.remove('sel');
+        r.querySelectorAll('.yesno.compact button').forEach(function(b){b.classList.remove('sel');});});
+      row.classList.add('sel');
+      var yn=row.querySelector('.yesno.compact');
+      var first=yn.querySelector('button:first-child');
+      var side=btn||first; side.classList.add('sel');
+      var isYes=(side===first);
+      if(!panel)return;
+      var name=row.querySelector('.opt-name'); var prob=row.querySelector('.opt-prob');
+      var nm=name?(name.childNodes[0].textContent||'').trim():''; var pct=prob?parseInt(prob.textContent,10):null;
+      var selName=panel.querySelector('.bp-sel-name');
+      if(selName)selName.innerHTML=nm+' <span class="opt-prob">'+(pct!=null?pct+'%':'')+'</span>';
+      var dir=panel.querySelector('.bp-dir');
+      if(dir){dir.querySelectorAll('.bp-side').forEach(function(b){b.classList.remove('sel');});
+        var yesBtn=dir.querySelector('.bp-side:first-child'), noBtn=dir.querySelector('.bp-side:last-child');
+        (isYes?yesBtn:noBtn).classList.add('sel');
+        if(pct!=null){var yp=yesBtn.querySelector('.bp-pct'), np=noBtn.querySelector('.bp-pct');
+          if(yp)yp.textContent=pct+'%'; if(np)np.textContent=(100-pct)+'%';}}
+    });
+  });
+
+  // filter menu (<details>): pick an option -> update the summary label + close it
+  document.querySelectorAll('details.filter-menu').forEach(function(d){
+    var sum=d.querySelector('summary');
+    d.querySelectorAll('.filter-panel input[type=radio]').forEach(function(r){
+      r.addEventListener('change',function(){
+        var lbl=r.closest('label'); if(sum&&lbl) sum.textContent='Sort: '+lbl.textContent.trim();
+        d.removeAttribute('open');
+      });
+    });
+  });
+  // filter menu (<details>): close it when a click lands outside the open menu
+  document.addEventListener('click',function(e){
+    document.querySelectorAll('details.filter-menu[open]').forEach(function(d){
+      if(!d.contains(e.target)) d.removeAttribute('open');
+    });
+  });
+
+  // mobile bet sheet: the dock's YES / NO / Confirm open the bottom drawer with the side
+  // preselected; the grabber, backdrop, and Confirm close it
+  var betSheet=document.getElementById('betSheet');
+  if(betSheet){
+    document.querySelectorAll('[data-open-sheet]').forEach(function(b){
+      b.addEventListener('click',function(){
+        var side=b.getAttribute('data-open-sheet');
+        if(side){var dir=betSheet.querySelector('.bp-dir');
+          if(dir){dir.querySelectorAll('.bp-side').forEach(function(x){x.classList.remove('sel');});
+            var t=side==='no'?dir.querySelector('.bp-side:last-child'):dir.querySelector('.bp-side:first-child');
+            if(t)t.classList.add('sel');}}
+        if(betSheet.showModal)betSheet.showModal();else betSheet.setAttribute('open','');
+      });
+    });
+    betSheet.addEventListener('click',function(e){if(e.target===betSheet)betSheet.close();});
+    betSheet.querySelectorAll('[data-close-dialog]').forEach(function(c){c.addEventListener('click',function(){betSheet.close();});});
+  }
+})();
 </script>
 </body>
 </html>

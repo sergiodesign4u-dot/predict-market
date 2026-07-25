@@ -1233,11 +1233,28 @@
     </div><!-- /feed-inner -->
     </main>
       <div class="bet-dock" aria-label="Place your bet">
-        <button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button>
-        <button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button>
-        <span class="dock-meta">$5 to win<b>$13.20</b></span>
-        <button type="button" class="confirm-btn" data-open="signin" style="width:auto;padding:11px 14px;">Confirm bet</button>
+        <button type="button" class="bp-side sel" data-open-sheet="yes">YES <span class="bp-pct">38%</span></button>
+        <button type="button" class="bp-side" data-open-sheet="no">NO <span class="bp-pct">62%</span></button>
       </div>
+    
+      <dialog class="app-case app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
+        <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
+        <div class="bp-inner">
+          <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
+          <div class="bp-dir"><button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button></div>
+          <div>
+            <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9.$]*" value="$5.00" aria-label="Bet amount"></div>
+            <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
+          </div>
+          <div>
+            <div class="line"><span>Price now</span><span>38%</span></div>
+            <div class="line"><span>Fee (only if you win)</span><span>$0.20</span></div>
+            <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+          </div>
+          <button type="button" class="confirm-btn" data-sheet-confirm style="width:100%">Confirm bet</button>
+          <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
+        </div>
+      </dialog>
     </div><!-- /app-case -->
 
     <!-- Bottom navigation (mobile only) -->
@@ -1550,12 +1567,12 @@
   <dialog id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
     <div class="sheet-head">
       <h2>Sign in or create account</h2>
+      <p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p>
       <button type="button" class="sheet-close" data-close-dialog aria-label="Close">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
     <div class="sheet-body">
-      <p class="fine signin-lead">You are about to place a bet. Sign in or create an account to continue. No crypto wallet required.</p>
       <button type="button" class="provider-btn" data-flow="signin-to-deposit">
         <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
         Continue with Google
@@ -1575,12 +1592,13 @@
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
     <div class="sheet-head">
       <h2>Add funds</h2>
+      <p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p>
       <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
     </div>
     <div class="sheet-body">
       <div>
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-input">$20.00</span></div>
+        <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9.$]*" value="$20.00" aria-label="Amount to add"></div>
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
@@ -1889,5 +1907,144 @@
   });
 })();
 </script>
+  <script id="uv-drawer">
+(function(){
+  // digit-only: bet amount takes numbers, a dot and $ only (no letters)
+  document.querySelectorAll('input.amount-input').forEach(function(inp){
+    inp.addEventListener('input',function(){
+      var caret=inp.selectionStart, cleaned=inp.value.replace(/[^0-9.$]/g,'');
+      if(cleaned!==inp.value){inp.value=cleaned;try{inp.setSelectionRange(caret-1,caret-1);}catch(e){}}
+    });
+  });
+
+  // multi: kit-style outcome selection. Clicking a row - or its YES / NO - selects
+  // that outcome AND that side on the LEFT (the compact button fills solid, others
+  // clear), then drives the desktop bet panel: outcome name, YES/NO side (solid),
+  // percentages, and the panel's own recompute (dispatched click).
+  var outBox=document.getElementById('edOutcomes');
+  var deskPanel=document.querySelector('.ed-layout .bet-panel')||document.querySelector('.bet-panel');
+  if(outBox){
+    outBox.addEventListener('click',function(e){
+      var row=e.target.closest('.opt-row'); if(!row||!outBox.contains(row))return;
+      var btn=e.target.closest('.yesno.compact button');
+      outBox.querySelectorAll('.opt-row').forEach(function(r){
+        r.classList.remove('sel');
+        r.querySelectorAll('.yesno.compact button').forEach(function(b){b.classList.remove('sel');});
+      });
+      row.classList.add('sel');
+      var yn=row.querySelector('.yesno.compact'); if(!yn)return;
+      var first=yn.querySelector('button:first-child');
+      var chosen=btn||first; if(chosen)chosen.classList.add('sel');
+      var isYes=(chosen===first);
+      if(!deskPanel)return;
+      var pe=row.querySelector('.opt-prob'), pct=pe?parseInt(pe.textContent,10):null;
+      var ne=row.querySelector('.opt-name'), nm=ne?(ne.childNodes[0].textContent||'').trim():'';
+      var selName=deskPanel.querySelector('.bp-sel-name');
+      if(selName)selName.innerHTML=nm+' <span class="opt-prob">'+(pct!=null?pct+'%':'')+'</span>';
+      var dir=deskPanel.querySelector('.bp-dir'); if(!dir)return;
+      var yesBtn=dir.querySelector('.bp-side:first-child'), noBtn=dir.querySelector('.bp-side:last-child');
+      var yp=yesBtn&&yesBtn.querySelector('.bp-pct'), np=noBtn&&noBtn.querySelector('.bp-pct');
+      if(pct!=null){ if(yp)yp.textContent=pct+'%'; if(np)np.textContent=(100-pct)+'%'; }
+      dir.querySelectorAll('.bp-side').forEach(function(x){x.classList.remove('sel');});
+      var deskSide=isYes?yesBtn:noBtn;
+      if(deskSide){deskSide.classList.add('sel'); deskSide.dispatchEvent(new MouseEvent('click',{bubbles:true}));}
+    });
+  }
+
+  // mobile bottom sheet
+  var sheet=document.getElementById('betSheet');
+  if(!sheet)return;
+  function num(v){return parseFloat(String(v).replace(/[^0-9.]/g,''))||0;}
+  function money(x){return '$'+x.toFixed(2);}
+  function side(){return sheet.querySelector('.bp-dir .bp-side.sel')||sheet.querySelector('.bp-dir .bp-side');}
+  function recompute(){
+    var inp=sheet.querySelector('.amount-input'); if(!inp)return;
+    var A=num(inp.value), b=side(); if(!b)return;
+    var pe=b.querySelector('.bp-pct'), p=pe?num(pe.textContent)/100:0.5;
+    var payout=p>0?A/p:0, fee=0.03*payout;
+    sheet.querySelectorAll('.line').forEach(function(l){
+      var s=l.querySelectorAll('span'); if(s.length<2)return;
+      var t=s[0].textContent;
+      if(t.indexOf('Price now')===0)s[s.length-1].textContent=Math.round(p*100)+'%';
+      else if(t.indexOf('Fee')===0)s[s.length-1].textContent=money(fee);
+      else if(t.indexOf('Potential payout')===0)s[s.length-1].textContent=money(payout);
+    });
+  }
+  sheet.querySelectorAll('.bp-dir .bp-side').forEach(function(b){
+    b.addEventListener('click',function(){
+      sheet.querySelectorAll('.bp-dir .bp-side').forEach(function(x){x.classList.remove('sel');});
+      b.classList.add('sel');
+      var h=sheet.querySelector('.bp-hint'); if(h)h.textContent=(b.textContent||'').trim().split(/\s+/)[0]+' selected';
+      recompute();
+    });
+  });
+  sheet.querySelectorAll('.quick button').forEach(function(c){
+    c.addEventListener('click',function(){
+      sheet.querySelectorAll('.quick button').forEach(function(x){x.classList.remove('sel');});
+      c.classList.add('sel');
+      var inp=sheet.querySelector('.amount-input'); if(inp)inp.value=money(num(c.textContent));
+      recompute();
+    });
+  });
+  var sinp=sheet.querySelector('.amount-input');
+  if(sinp){
+    sinp.addEventListener('input',function(){sheet.querySelectorAll('.quick button').forEach(function(x){x.classList.remove('sel');});recompute();});
+    sinp.addEventListener('blur',function(){sinp.value=money(num(sinp.value));recompute();});
+  }
+  function preselect(s){
+    if(!s)return; var d=sheet.querySelector('.bp-dir'); if(!d)return;
+    d.querySelectorAll('.bp-side').forEach(function(x){x.classList.remove('sel');});
+    (s==='no'?d.querySelector('.bp-side:last-child'):d.querySelector('.bp-side:first-child')).classList.add('sel');
+    var h=sheet.querySelector('.bp-hint'); if(h)h.textContent=(s==='no'?'NO':'YES')+' selected';
+    recompute();
+  }
+  document.querySelectorAll('[data-open-sheet]').forEach(function(b){
+    b.addEventListener('click',function(){
+      preselect(b.getAttribute('data-open-sheet'));
+      if(sheet.showModal)sheet.showModal();else sheet.setAttribute('open','');
+    });
+  });
+  function closeSheet(){ if(sheet.close)sheet.close(); else sheet.removeAttribute('open'); }
+  sheet.addEventListener('click',function(e){if(e.target===sheet)closeSheet();});
+  sheet.querySelectorAll('[data-close-sheet]').forEach(function(c){c.addEventListener('click',function(e){e.preventDefault();closeSheet();});});
+  var cf=sheet.querySelector('[data-sheet-confirm]');
+  if(cf)cf.addEventListener('click',function(){
+    closeSheet();
+    var s=document.getElementById('signinDialog');
+    if(s){if(s.showModal)s.showModal();else s.setAttribute('open','');}
+  });
+  recompute();
+})();
+  </script>
+  <script id="uv-deposit">
+(function(){
+  // Non-bet amount fields (the deposit dialog + the wallet withdraw form). Bet
+  // panels/sheets keep their own richer handlers, so skip .bp-inner contexts.
+  function betCtx(el){return el.closest('.bet-panel,.bet-sheet,.bp-inner');}
+  // amount stays numeric ($ + digits + a single dot; no letters); typing your own
+  // number clears any preset chip in the same group
+  document.querySelectorAll('input.amount-input').forEach(function(inp){
+    if(betCtx(inp))return;
+    inp.addEventListener('input',function(){
+      var dollar=inp.value.trim().charAt(0)==='$';
+      var v=inp.value.replace(/[^0-9.]/g,''); var p=v.split('.'); if(p.length>2)v=p[0]+'.'+p.slice(1).join('');
+      inp.value=(dollar?'$':'')+v;
+      var box=inp.closest('.sheet-body,.app-dialog,form');
+      if(box)box.querySelectorAll('.quick button').forEach(function(b){b.classList.remove('sel');});
+    });
+  });
+  // quick chip: select it and fill the nearest amount input
+  document.querySelectorAll('.quick').forEach(function(q){
+    if(betCtx(q))return;
+    q.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b||!q.contains(b))return;
+      q.querySelectorAll('button').forEach(function(x){x.classList.remove('sel');}); b.classList.add('sel');
+      var box=q.closest('.sheet-body,.app-dialog,form,section')||document;
+      var inp=box.querySelector('input.amount-input');
+      if(inp){var v=b.textContent.replace(/[^0-9.]/g,'');var dollar=inp.value.trim().charAt(0)==='$';inp.value=(dollar?'$':'')+v+(dollar?'.00':'');}
+    });
+  });
+})();
+  </script>
 </body>
 </html>

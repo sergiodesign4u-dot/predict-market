@@ -61,19 +61,26 @@ typography:
     lineHeight: 1.3
     letterSpacing: "0.03em"
 rounded:
-  xs: "6px"
-  sm: "7px"
-  md: "9px"
-  cta: "10px"
-  lg: "12px"
-  xl: "16px"
-  pill: "999px"
-spacing:
-  xs: "8px"
-  sm: "12px"
-  md: "16px"
-  lg: "24px"
-  gutter: "40px"
+  xs: "6px"         # every radius is even too (the 2px rule); count chips, badges
+  sm: "8px"         # small buttons, dialog close
+  md: "10px"        # cards, option rows
+  cta: "10px"       # DEFAULT: buttons, inputs, confirm
+  lg: "12px"        # chips, dropdowns, feed cards
+  xl: "16px"        # dialogs
+  sheet: "20px"     # bottom-sheet top edge
+  pill: "1000px"    # fully round: sort filter, feed YES/NO, icon circles
+spacing:            # 2px grid. Primary steps 4/8/12/16/20/24; 2/6/10/14 for fine-tuning. Every value is divisible by 2.
+  "2": "2px"        # hairline nudges, icon gaps
+  "4": "4px"        # tight inner (label to value)
+  "6": "6px"        # chip gaps
+  "8": "8px"        # inner group gap, small padding
+  "10": "10px"      # button/pair gaps
+  "12": "12px"      # component padding, inner section gap
+  "14": "14px"      # -
+  "16": "16px"      # block gap, card padding
+  "20": "20px"      # OUTER gap between groups (bet sheet)
+  "24": "24px"      # section separation
+  gutter: "40px"    # page gutter
 components:
   button-primary:
     backgroundColor: "{colors.brass}"
@@ -183,7 +190,17 @@ A graphite grayscale tilted warm, with a single matte-brass accent and a reserve
 ### Named Rules
 **The Numbers-Are-Mono Rule.** Every figure a spectator weighs (probability, volume, close time, pool size) is set in IBM Plex Mono. Prose and labels are never mono; numbers are never in the prose face.
 
-## 4. Elevation
+## 4. Spacing & Grid
+
+**The 2px grid.** Every gap, padding and margin is a multiple of 2. The primary steps are **4 / 8 / 12 / 16 / 20 / 24** (the 8pt-grid backbone); **2 / 6 / 10 / 14** exist for fine-tuning small elements. The only rule you must never break: **the value is divisible by 2** - 16, never 15; 10, never 11. This removes the "13 or 14px?" decision, keeps elements optically aligned, and makes the layout translate cleanly to code.
+
+- **Scale:** `2` (hairline nudges, icon gaps) · `4` (tight inner: label to value) · `6` (chip gaps) · `8` (inner group gap, small padding) · `10` (button / pair gaps) · `12` (component padding) · `16` (block gap, card padding) · `20` (outer gap between groups) · `24` (section separation) · `40` (page gutter).
+- **The inner/outer rhythm.** Within a group, gaps stay small (4-10); between groups, they open up (16-24). The bet sheet is the reference: ~20px between the header / YES-NO / amount / breakdown / confirm groups, ~6-12px inside each. Small-inside, bigger-outside is what makes a dense panel read as ordered rather than crammed.
+- **Exceptions are still even.** A one-off `2`, `6` or `10` for optical alignment is fine; an odd value (13, 15, 21) is not. When a legacy component needs a `9px` or `11px` tweak, round to the nearest even step.
+- **Touch targets** are a separate constraint layered on top: interactive controls are ≥44px on the tap surface (mobile), achieved with padding, not by breaking the grid.
+- **Enforcement status.** The Vault theme (`ui-visual/_theme.css` + `_theme-vault.css`, the source of truth for the component skins) is fully snapped to the grid - audited to 0 odd padding / margin / gap and 0 odd radius. The grey-box wireframe shell inherited into the pages still carries structural odd values; those are the structure layer, snapped page-by-page only when a screen is reworked, not swept blind. New Vault CSS must land even.
+
+## 5. Elevation
 
 Depth is the whole point of this system, and it is built from embossing plus real shadow, not from glass or glow. The surface is two stacked stones: a lighter outer slab (`#191b1f`) and darker inset plates and cards (`#121417` / `#14161a`) that hover above it. Every plate is a casting with an inset top highlight, inset side and bottom shadows (the "cast rim"), and a soft drop shadow beneath. Dividers are engraved, not drawn: a dark recessed line with a faint highlight below it. Motion is minimal and physical: cards lift on hover (`translateY(-3px)` with a deeper shadow, `ease` on a `cubic-bezier(.2,.7,.2,1)` curve), and the condensed category strip slides into the sticky header on scroll. Every transform has a `prefers-reduced-motion` fallback that drops to shadow-only.
 
@@ -197,7 +214,7 @@ Depth is the whole point of this system, and it is built from embossing plus rea
 ### Named Rules
 **The Cast-Plate Rule.** Every panel is a stone casting: dark near-black rim plus an inset top highlight, on its own drop shadow. Big plates are never given a brass outline (brass hairline frames belong only to the small notched tiles: the SEO brand plate, the hero brand tile, the footer trust cards). If a big surface has a bright outline, it is wrong.
 
-## 5. Components
+## 6. Components
 
 ### Buttons
 - **Shape:** primary CTA at 10px (`rounded.cta`); YES/NO at 9px (`rounded.md`); minimum touch target 44px.
@@ -231,7 +248,7 @@ Depth is the whole point of this system, and it is built from embossing plus rea
 - **Featured hero band:** a featured market (photo backdrop under a veil, AMM price chart), two trust cards, a notched brass brand tile, and a "hot right now" list, each on the shared card-face stone.
 - **Event Detail:** two floating plates (scrolling content + a sticky bet panel), a mobile sticky bet dock, an AMM "Market" depth panel (a pool + curve, not an order book), and content tabs (Comments / Biggest bets / Bets / Activity) in spectator language.
 
-## 6. Do's and Don'ts
+## 7. Do's and Don'ts
 
 ### Do:
 - **Do** keep the canvas graphite (`#0f1013` / `#141619`) and spend brass (`#c7a24e`) only on identity, the active state, and one primary CTA per view.

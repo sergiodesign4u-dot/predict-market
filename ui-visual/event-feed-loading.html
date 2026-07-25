@@ -1337,12 +1337,12 @@
   <dialog id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
     <div class="sheet-head">
       <h2>Sign in or create account</h2>
+      <p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p>
       <button type="button" class="sheet-close" data-close-dialog aria-label="Close">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
     <div class="sheet-body">
-      <p class="fine signin-lead">You are about to place a bet. Sign in or create an account to continue. No crypto wallet required.</p>
       <button type="button" class="provider-btn" data-flow="signin-to-deposit">
         <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
         Continue with Google
@@ -1362,12 +1362,13 @@
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
     <div class="sheet-head">
       <h2>Add funds</h2>
+      <p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p>
       <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
     </div>
     <div class="sheet-body">
       <div>
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-input">$20.00</span></div>
+        <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9.$]*" value="$20.00" aria-label="Amount to add"></div>
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
       <div class="widget-box">Transak payment widget (card to USDC)</div>
@@ -1507,5 +1508,35 @@
         io.observe(fullNav);
       })();
     })();
-  </script></body>
+  </script>  <script id="uv-deposit">
+(function(){
+  // Non-bet amount fields (the deposit dialog + the wallet withdraw form). Bet
+  // panels/sheets keep their own richer handlers, so skip .bp-inner contexts.
+  function betCtx(el){return el.closest('.bet-panel,.bet-sheet,.bp-inner');}
+  // amount stays numeric ($ + digits + a single dot; no letters); typing your own
+  // number clears any preset chip in the same group
+  document.querySelectorAll('input.amount-input').forEach(function(inp){
+    if(betCtx(inp))return;
+    inp.addEventListener('input',function(){
+      var dollar=inp.value.trim().charAt(0)==='$';
+      var v=inp.value.replace(/[^0-9.]/g,''); var p=v.split('.'); if(p.length>2)v=p[0]+'.'+p.slice(1).join('');
+      inp.value=(dollar?'$':'')+v;
+      var box=inp.closest('.sheet-body,.app-dialog,form');
+      if(box)box.querySelectorAll('.quick button').forEach(function(b){b.classList.remove('sel');});
+    });
+  });
+  // quick chip: select it and fill the nearest amount input
+  document.querySelectorAll('.quick').forEach(function(q){
+    if(betCtx(q))return;
+    q.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b||!q.contains(b))return;
+      q.querySelectorAll('button').forEach(function(x){x.classList.remove('sel');}); b.classList.add('sel');
+      var box=q.closest('.sheet-body,.app-dialog,form,section')||document;
+      var inp=box.querySelector('input.amount-input');
+      if(inp){var v=b.textContent.replace(/[^0-9.]/g,'');var dollar=inp.value.trim().charAt(0)==='$';inp.value=(dollar?'$':'')+v+(dollar?'.00':'');}
+    });
+  });
+})();
+  </script>
+</body>
 </html>
