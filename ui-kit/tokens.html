@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - Tokens</title>
+<link rel="stylesheet" href="kit.css">
+<link rel="stylesheet" href="../components/tokens.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body>
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open roadmap"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar">
+  <a href="../research/research.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>
+  <div class="sidebar-brand"><div class="sidebar-project-name">UI Kit - components</div></div>
+  <nav class="sidebar-nav">
+    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual - screens</a>
+    <a class="sidebar-page-link active">Tokens</a>
+    <div class="sidebar-sub">
+      <a href="#colour" class="sidebar-sub-link">Colour primitives</a>
+      <a href="#material" class="sidebar-sub-link">Material</a>
+      <a href="#geometry" class="sidebar-sub-link">Geometry</a>
+      <a href="#type" class="sidebar-sub-link">Type</a>
+      <a href="#motion" class="sidebar-sub-link">Motion</a>
+      <a href="#roles" class="sidebar-sub-link">Semantic roles</a>
+      <a href="#contrast" class="sidebar-sub-link">Contrast</a>
+      <a href="#log" class="sidebar-sub-link">Merges and open items</a>
+    </div>
+    <a href="kit.html" class="sidebar-page-link">UI Kit</a>
+    <a href="shell.html" class="sidebar-page-link">Shell</a>
+  </nav>
+</aside>
+
+<div class="tk-wrap">
+  <header class="tk-hero">
+    <h1>Tokens</h1>
+    <p>Two levels. <b>Primitive</b> is a raw value with no opinion: a graphite step, a brass step, a
+    gap, a radius, a type size. <b>Semantic</b> is a role: why this colour is in this place. A component
+    reads colour only through a role, and reads geometry straight from the primitive, because a radius
+    has nothing for a theme to override and a colour does.</p>
+    <p>This page links the real <code>components/tokens.css</code>, so every swatch below is painted by
+    the file itself. Names, values and notes are generated from it by
+    <code>ui-kit/_gen_tokens_page.py</code>; the reading behind the roles is in
+    <code>ui-kit/docs/tokens-audit.md</code>.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">183 primitives</span>
+      <span class="tk-badge">89 roles</span>
+      <span class="tk-badge">0 new values</span>
+      <span class="tk-badge">Vault</span>
+    </div>
+    <div class="tk-jump">
+      <a href="#colour">Colour</a><a href="#material">Material</a><a href="#geometry">Geometry</a>
+      <a href="#type">Type</a><a href="#motion">Motion</a><a href="#roles">Roles</a>
+      <a href="#contrast">Contrast</a><a href="#log">Merges</a>
+    </div>
+  </header>
+
+  <section class="tk-sec" id="colour">
+    <h2 data-n="01">Colour primitives</h2>
+    <p class="tk-note">Every value here already stood in <code>ui-kit/kit.css</code>. Nothing was
+    invented for this file; the four merged pairs are marked on the swatch that survived. Transparent
+    values sit on a checker so the alpha is visible.</p>
+    <h3 class="tk-subh">graphite ramp (dark to light). The Vault canvas and every stone</h3>
+<div class="tk-ramp"><i style="background:var(--graphite-950)" title="--graphite-950 #0b0c0e"><b>950</b></i><i style="background:var(--graphite-940)" title="--graphite-940 #0d0f12"><b>940</b></i><i style="background:var(--graphite-930)" title="--graphite-930 #0f1013"><b>930</b></i><i style="background:var(--graphite-920)" title="--graphite-920 #111316"><b>920</b></i><i style="background:var(--graphite-910)" title="--graphite-910 #121417"><b>910</b></i><i style="background:var(--graphite-915)" title="--graphite-915 #131417"><b>915</b></i><i style="background:var(--graphite-900)" title="--graphite-900 #141619"><b>900</b></i><i style="background:var(--graphite-880)" title="--graphite-880 #15171b"><b>880</b></i><i style="background:var(--graphite-870)" title="--graphite-870 #17191d"><b>870</b></i><i style="background:var(--graphite-860)" title="--graphite-860 #191b1f"><b>860</b></i><i style="background:var(--graphite-865)" title="--graphite-865 #191c20"><b>865</b></i><i style="background:var(--graphite-850)" title="--graphite-850 #1b1e23"><b>850</b></i><i style="background:var(--graphite-840)" title="--graphite-840 #1c1e22"><b>840</b></i><i style="background:var(--graphite-830)" title="--graphite-830 #1c1f24"><b>830</b></i><i style="background:var(--graphite-820)" title="--graphite-820 #1e2126"><b>820</b></i><i style="background:var(--graphite-800)" title="--graphite-800 #20242a"><b>800</b></i><i style="background:var(--graphite-790)" title="--graphite-790 #20242b"><b>790</b></i><i style="background:var(--graphite-780)" title="--graphite-780 #24282f"><b>780</b></i><i style="background:var(--graphite-720)" title="--graphite-720 #282b32"><b>720</b></i><i style="background:var(--graphite-750)" title="--graphite-750 #2b2f38"><b>750</b></i></div>
+<div class="tk-swatches">
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-950)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-950</b><span class="tk-sw-val">#0b0c0e</span><span class="tk-sw-cmt">engraved groove line</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-940)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-940</b><span class="tk-sw-val">#0d0f12</span><span class="tk-sw-cmt">input well, segmented container</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-930)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-930</b><span class="tk-sw-val">#0f1013</span><span class="tk-sw-cmt">page</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-920)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-920</b><span class="tk-sw-val">#111316</span><span class="tk-sw-cmt">card gradient end</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-915)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-915</b><span class="tk-sw-val">#131417</span><span class="tk-sw-cmt">course sidebar</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-910)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-910</b><span class="tk-sw-val">#121417</span><span class="tk-sw-cmt">content plate</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-900)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-900</b><span class="tk-sw-val">#141619</span><span class="tk-sw-cmt">device canvas, card base. merged: #14161a (delta 1 in blue)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-880)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-880</b><span class="tk-sw-val">#15171b</span><span class="tk-sw-cmt">quiet card block, declared in stage 08 as --card3d and never wired</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-870)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-870</b><span class="tk-sw-val">#17191d</span><span class="tk-sw-cmt">stone gradient start (slab, plate, card)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-865)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-865</b><span class="tk-sw-val">#191c20</span><span class="tk-sw-cmt">mobile bet dock gradient start</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-860)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-860</b><span class="tk-sw-val">#191b1f</span><span class="tk-sw-cmt">outer slab base</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-850)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-850</b><span class="tk-sw-val">#1b1e23</span><span class="tk-sw-cmt">graphite chip (cat-nav, tabs, options, load-more)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-840)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-840</b><span class="tk-sw-val">#1c1e22</span><span class="tk-sw-cmt">slab gradient top, sticky header</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-830)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-830</b><span class="tk-sw-val">#1c1f24</span><span class="tk-sw-cmt">raised surface: header, dialog, dropdown, footer, state block</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-820)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-820</b><span class="tk-sw-val">#1e2126</span><span class="tk-sw-cmt">declared in stage 08 as --slab and never wired</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-800)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-800</b><span class="tk-sw-val">#20242a</span><span class="tk-sw-cmt">control hover. merged: #20242b (delta 1 in blue)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-790)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-790</b><span class="tk-sw-val">#20242b</span><span class="tk-sw-cmt">dialog head gradient start</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-780)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-780</b><span class="tk-sw-val">#24282f</span><span class="tk-sw-cmt">quiet control fill</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-750)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-750</b><span class="tk-sw-val">#2b2f38</span><span class="tk-sw-cmt">hairline</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-720)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-720</b><span class="tk-sw-val">#282b32</span><span class="tk-sw-cmt">course sidebar hairline</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-a12)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-a12</b><span class="tk-sw-val">rgba(20,22,26,.12)</span><span class="tk-sw-cmt">graphite with alpha (photo veils on the featured hero)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-a50)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-a50</b><span class="tk-sw-val">rgba(20,22,26,.5)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-a55)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-a55</b><span class="tk-sw-val">rgba(20,22,26,.55)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--graphite-a82)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--graphite-a82</b><span class="tk-sw-val">rgba(20,22,26,.82)</span></span></div>
+</div>
+<h3 class="tk-subh">bone (the warm light ink of the Vault)</h3>
+<div class="tk-ramp"><i style="background:var(--bone-700)" title="--bone-700 #5a544a"><b>700</b></i><i style="background:var(--bone-600)" title="--bone-600 #8b8579"><b>600</b></i><i style="background:var(--bone-500)" title="--bone-500 #a49d8f"><b>500</b></i><i style="background:var(--bone-300)" title="--bone-300 #cbc3b2"><b>300</b></i><i style="background:var(--bone-250)" title="--bone-250 #d8d2c6"><b>250</b></i><i style="background:var(--bone-200)" title="--bone-200 #ded6c5"><b>200</b></i><i style="background:var(--bone-150)" title="--bone-150 #e9e3d7"><b>150</b></i><i style="background:var(--bone-100)" title="--bone-100 #ede7da"><b>100</b></i></div>
+<div class="tk-swatches">
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--bone-100)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--bone-100</b><span class="tk-sw-val">#ede7da</span><span class="tk-sw-cmt">primary text</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--bone-150)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--bone-150</b><span class="tk-sw-val">#e9e3d7</span><span class="tk-sw-cmt">chip label on hover</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--bone-200)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--bone-200</b><span class="tk-sw-val">#ded6c5</span><span class="tk-sw-cmt">notification icon</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--bone-250)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--bone-250</b><span class="tk-sw-val">#d8d2c6</span><span class="tk-sw-cmt">course sidebar text</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--bone-300)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--bone-300</b><span class="tk-sw-val">#cbc3b2</span><span class="tk-sw-cmt">default icon stroke</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--bone-500)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--bone-500</b><span class="tk-sw-val">#a49d8f</span><span class="tk-sw-cmt">secondary text</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--bone-600)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--bone-600</b><span class="tk-sw-val">#8b8579</span><span class="tk-sw-cmt">course sidebar muted</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--bone-700)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--bone-700</b><span class="tk-sw-val">#5a544a</span><span class="tk-sw-cmt">neutralised error border (toast)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--bone-a06)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--bone-a06</b><span class="tk-sw-val">rgba(237,231,218,.055)</span><span class="tk-sw-cmt">lit half of the engraved groove</span></span></div>
+</div>
+<h3 class="tk-subh">brass (the brand metal)</h3>
+<div class="tk-ramp"><i style="background:var(--brass-800)" title="--brass-800 #6e5a2e"><b>800</b></i><i style="background:var(--brass-500)" title="--brass-500 #c7a24e"><b>500</b></i><i style="background:var(--brass-400)" title="--brass-400 #d7ac53"><b>400</b></i><i style="background:var(--brass-300)" title="--brass-300 #d9b968"><b>300</b></i><i style="background:var(--brass-200)" title="--brass-200 #e6c877"><b>200</b></i><i style="background:var(--brass-250)" title="--brass-250 #e7d6a6"><b>250</b></i></div>
+<div class="tk-swatches">
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-200)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-200</b><span class="tk-sw-val">#e6c877</span><span class="tk-sw-cmt">lit brass text: hero eyebrow, SEO plate</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-250)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-250</b><span class="tk-sw-val">#e7d6a6</span><span class="tk-sw-cmt">active chip label</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-300)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-300</b><span class="tk-sw-val">#d9b968</span><span class="tk-sw-cmt">gradient lit end. merged: --lime, same value</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-400)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-400</b><span class="tk-sw-val">#d7ac53</span><span class="tk-sw-cmt">text-safe brass on graphite</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-500)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-500</b><span class="tk-sw-val">#c7a24e</span><span class="tk-sw-cmt">brand brass. merged: --brass, same value</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-800)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-800</b><span class="tk-sw-val">#6e5a2e</span><span class="tk-sw-cmt">bronze. Documented in DESIGN.md, no consumer in code yet</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-a06)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-a06</b><span class="tk-sw-val">rgba(199,162,78,.055)</span><span class="tk-sw-cmt">graph grid on the card</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-a16)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-a16</b><span class="tk-sw-val">rgba(199,162,78,.16)</span><span class="tk-sw-cmt">focus glow on a field</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-a30)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-a30</b><span class="tk-sw-val">rgba(199,162,78,.30)</span><span class="tk-sw-cmt">inset hairline of the plate</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-a35)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-a35</b><span class="tk-sw-val">rgba(199,162,78,.35)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-a45)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-a45</b><span class="tk-sw-val">rgba(199,162,78,.45)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-a50)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-a50</b><span class="tk-sw-val">rgba(199,162,78,.5)</span><span class="tk-sw-cmt">border on hover</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-a55)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-a55</b><span class="tk-sw-val">rgba(199,162,78,.55)</span></span></div>
+</div>
+<h3 class="tk-subh">plum (the near-black the brass carries as text)</h3>
+
+<div class="tk-swatches">
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--plum-950)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--plum-950</b><span class="tk-sw-val">#180810</span></span></div>
+</div>
+<h3 class="tk-subh">outcome green</h3>
+<div class="tk-ramp"><i style="background:var(--green-950)" title="--green-950 #0d1410"><b>950</b></i><i style="background:var(--green-975)" title="--green-975 #15211a"><b>975</b></i><i style="background:var(--green-700)" title="--green-700 #3f7d55"><b>700</b></i><i style="background:var(--green-500)" title="--green-500 #4fa96b"><b>500</b></i><i style="background:var(--green-300)" title="--green-300 #77d19b"><b>300</b></i><i style="background:var(--green-200)" title="--green-200 #4fd694"><b>200</b></i></div>
+<div class="tk-swatches">
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--green-200)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--green-200</b><span class="tk-sw-val">#4fd694</span><span class="tk-sw-cmt">YES line drawn over photography (hero chart)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--green-300)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--green-300</b><span class="tk-sw-val">#77d19b</span><span class="tk-sw-cmt">quiet YES text on graphite</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--green-500)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--green-500</b><span class="tk-sw-val">#4fa96b</span><span class="tk-sw-cmt">YES</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--green-700)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--green-700</b><span class="tk-sw-val">#3f7d55</span><span class="tk-sw-cmt">quiet YES line</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--green-950)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--green-950</b><span class="tk-sw-val">#0d1410</span><span class="tk-sw-cmt">ink on a filled YES</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--green-975)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--green-975</b><span class="tk-sw-val">#15211a</span><span class="tk-sw-cmt">win sheet head stone</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--green-a12)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--green-a12</b><span class="tk-sw-val">rgba(79,169,107,.12)</span><span class="tk-sw-cmt">quiet YES fill</span></span></div>
+</div>
+<h3 class="tk-subh">outcome red</h3>
+<div class="tk-ramp"><i style="background:var(--red-950)" title="--red-950 #160b09"><b>950</b></i><i style="background:var(--red-700)" title="--red-700 #8f4841"><b>700</b></i><i style="background:var(--red-500)" title="--red-500 #c85a50"><b>500</b></i><i style="background:var(--red-300)" title="--red-300 #e79087"><b>300</b></i></div>
+<div class="tk-swatches">
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--red-300)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--red-300</b><span class="tk-sw-val">#e79087</span><span class="tk-sw-cmt">quiet NO text. merged: #e88a84 (delta 1/6/3)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--red-500)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--red-500</b><span class="tk-sw-val">#c85a50</span><span class="tk-sw-cmt">NO</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--red-700)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--red-700</b><span class="tk-sw-val">#8f4841</span><span class="tk-sw-cmt">quiet NO line</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--red-950)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--red-950</b><span class="tk-sw-val">#160b09</span><span class="tk-sw-cmt">ink on a filled NO</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--red-a12)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--red-a12</b><span class="tk-sw-val">rgba(200,90,80,.12)</span><span class="tk-sw-cmt">quiet NO fill</span></span></div>
+</div>
+<h3 class="tk-subh">neutral extremes and the bevel alphas the embossed plates need</h3>
+
+<div class="tk-swatches">
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--white)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--white</b><span class="tk-sw-val">#fff</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--black)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--black</b><span class="tk-sw-val">#000</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--white-a03)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--white-a03</b><span class="tk-sw-val">rgba(255,255,255,.03)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--white-a04)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--white-a04</b><span class="tk-sw-val">rgba(255,255,255,.04)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--white-a05)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--white-a05</b><span class="tk-sw-val">rgba(255,255,255,.05)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--white-a06)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--white-a06</b><span class="tk-sw-val">rgba(255,255,255,.06)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--white-a09)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--white-a09</b><span class="tk-sw-val">rgba(255,255,255,.09)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--white-a10)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--white-a10</b><span class="tk-sw-val">rgba(255,255,255,.1)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--white-a14)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--white-a14</b><span class="tk-sw-val">rgba(255,255,255,.14)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--white-a16)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--white-a16</b><span class="tk-sw-val">rgba(255,255,255,.16)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--white-a17)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--white-a17</b><span class="tk-sw-val">rgba(255,255,255,.17)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--white-a32)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--white-a32</b><span class="tk-sw-val">rgba(255,255,255,.32)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--black-a30)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--black-a30</b><span class="tk-sw-val">rgba(0,0,0,.3)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--black-a35)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--black-a35</b><span class="tk-sw-val">rgba(0,0,0,.35)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--black-a50)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--black-a50</b><span class="tk-sw-val">rgba(0,0,0,.5)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--black-a78)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--black-a78</b><span class="tk-sw-val">rgba(0,0,0,.78)</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--black-a85)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--black-a85</b><span class="tk-sw-val">rgba(0,0,0,.85)</span></span></div>
+</div>
+<h3 class="tk-subh">material: the grain of each stone and the brass graph grid</h3>
+
+<div class="tk-swatches">
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--grain-coarse)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--grain-coarse</b><span class="tk-sw-val">url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)' opacity='0.9'/%3E%3C/svg%3E")</span><span class="tk-sw-cmt">150px, the coarse grain of the outer slab</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--grain-fine)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--grain-fine</b><span class="tk-sw-val">url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)' opacity='0.8'/%3E%3C/svg%3E")</span><span class="tk-sw-cmt">130px, the finer grain of the inner plate and the cards</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--grain-device)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--grain-device</b><span class="tk-sw-val">url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")</span><span class="tk-sw-cmt">160px, the device canvas; always blended over the stone, never alone</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--grain-card)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--grain-card</b><span class="tk-sw-val">url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.38'/%3E%3C/svg%3E")</span><span class="tk-sw-cmt">160px at a lower opacity, the card face</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--brass-grid)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--brass-grid</b><span class="tk-sw-val">repeating-linear-gradient(0deg,transparent 0 27px,var(--brass-a06) 27px 28px), repeating-linear-gradient(90deg,transparent 0 27px,var(--brass-a06) 27px 28px)</span><span class="tk-sw-cmt">the graph grid that fades in from the top-right corner of a card</span></span></div>
+<div class="tk-sw"><span class="tk-sw-chip"><i style="background:var(--logo-tick)"></i></span><span class="tk-sw-meta"><b class="tk-sw-name">--logo-tick</b><span class="tk-sw-val">url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='18'%3E%3Cpath d='M2 15 L9 7 L13 10 L24 2' fill='none' stroke='%23c99e3f' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")</span><span class="tk-sw-cmt">the brass up-trend mark before the wordmark</span></span></div>
+</div>
+  </section>
+
+  <section class="tk-sec" id="material">
+    <h2 data-n="02">Material</h2>
+    <p class="tk-note">The Vault is stone, not flat fill: each surface carries a grain, the card carries
+    a brass graph grid that fades from its corner, and the wordmark carries a brass tick. These are raw
+    values too, so they live in the primitive level.</p>
+    <div class="tk-mats">
+<div class="tk-mat"><i style="background-color:var(--bg-plate);background-image:var(--grain-coarse);background-blend-mode:overlay"></i><span><b>--grain-coarse</b>150px, the coarse grain of the outer slab</span></div>
+<div class="tk-mat"><i style="background-color:var(--bg-plate);background-image:var(--grain-fine);background-blend-mode:overlay"></i><span><b>--grain-fine</b>130px, the finer grain of the inner plate and the cards</span></div>
+<div class="tk-mat"><i style="background-color:var(--bg-plate);background-image:var(--grain-device);background-blend-mode:overlay"></i><span><b>--grain-device</b>160px, the device canvas; always blended over the stone, never alone</span></div>
+<div class="tk-mat"><i style="background-color:var(--bg-plate);background-image:var(--grain-card);background-blend-mode:overlay"></i><span><b>--grain-card</b>160px at a lower opacity, the card face</span></div>
+<div class="tk-mat"><i style="background-color:var(--bg-card);background-image:var(--brass-grid)"></i><span><b>--brass-grid</b>the graph grid that fades in from the top-right corner of a card</span></div>
+<div class="tk-mat"><i style="background:var(--bg-plate) var(--logo-tick) no-repeat center/40px"></i><span><b>--logo-tick</b>the brass up-trend mark before the wordmark</span></div>
+</div>
+  </section>
+
+  <section class="tk-sec" id="geometry">
+    <h2 data-n="03">Geometry</h2>
+    <p class="tk-note">Space, radius and size get no semantic level. They repeat, but they carry no
+    meaning a theme or a rebrand would move, so a component reads them directly.</p>
+    <h3 class="tk-subh">space</h3>
+    <div class="tk-scale">
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-1 1px</span><span class="tk-scale-bar" style="width:1.8%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-2 2px</span><span class="tk-scale-bar" style="width:3.6%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-3 3px</span><span class="tk-scale-bar" style="width:5.4%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-4 4px</span><span class="tk-scale-bar" style="width:7.1%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-5 5px</span><span class="tk-scale-bar" style="width:8.9%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-6 6px</span><span class="tk-scale-bar" style="width:10.7%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-7 7px</span><span class="tk-scale-bar" style="width:12.5%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-8 8px</span><span class="tk-scale-bar" style="width:14.3%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-9 9px</span><span class="tk-scale-bar" style="width:16.1%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-10 10px</span><span class="tk-scale-bar" style="width:17.9%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-12 12px</span><span class="tk-scale-bar" style="width:21.4%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-14 14px</span><span class="tk-scale-bar" style="width:25.0%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-16 16px</span><span class="tk-scale-bar" style="width:28.6%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-18 18px</span><span class="tk-scale-bar" style="width:32.1%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-20 20px</span><span class="tk-scale-bar" style="width:35.7%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-22 22px</span><span class="tk-scale-bar" style="width:39.3%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-24 24px</span><span class="tk-scale-bar" style="width:42.9%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-26 26px</span><span class="tk-scale-bar" style="width:46.4%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-28 28px</span><span class="tk-scale-bar" style="width:50.0%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-30 30px</span><span class="tk-scale-bar" style="width:53.6%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-34 34px</span><span class="tk-scale-bar" style="width:60.7%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-40 40px</span><span class="tk-scale-bar" style="width:71.4%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-42 42px</span><span class="tk-scale-bar" style="width:75.0%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-44 44px</span><span class="tk-scale-bar" style="width:78.6%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--space-56 56px</span><span class="tk-scale-bar" style="width:100.0%"></span></div>
+</div>
+    <h3 class="tk-subh">radius</h3>
+    <div class="tk-radii">
+<div class="tk-radius"><i style="border-radius:var(--radius-2)"></i><span>--radius-2<br>2px</span></div>
+<div class="tk-radius"><i style="border-radius:var(--radius-4)"></i><span>--radius-4<br>4px</span></div>
+<div class="tk-radius"><i style="border-radius:var(--radius-6)"></i><span>--radius-6<br>6px</span></div>
+<div class="tk-radius"><i style="border-radius:var(--radius-8)"></i><span>--radius-8<br>8px</span></div>
+<div class="tk-radius"><i style="border-radius:var(--radius-10)"></i><span>--radius-10<br>10px</span></div>
+<div class="tk-radius"><i style="border-radius:var(--radius-12)"></i><span>--radius-12<br>12px</span></div>
+<div class="tk-radius"><i style="border-radius:var(--radius-14)"></i><span>--radius-14<br>14px</span></div>
+<div class="tk-radius"><i style="border-radius:var(--radius-16)"></i><span>--radius-16<br>16px</span></div>
+<div class="tk-radius"><i style="border-radius:var(--radius-20)"></i><span>--radius-20<br>20px</span></div>
+<div class="tk-radius"><i style="border-radius:var(--radius-pill)"></i><span>--radius-pill<br>100px</span></div>
+<div class="tk-radius"><i style="border-radius:var(--radius-circle)"></i><span>--radius-circle<br>50%</span></div>
+</div>
+    <h3 class="tk-subh">control and icon sizes</h3>
+    <div class="tk-sizes">
+<div class="tk-size"><i style="height:var(--control-sm)"></i><span>--control-sm<br>32px</span></div>
+<div class="tk-size"><i style="height:var(--control-md)"></i><span>--control-md<br>36px</span></div>
+<div class="tk-size"><i style="height:var(--control-38)"></i><span>--control-38<br>38px</span></div>
+<div class="tk-size"><i style="height:var(--control-lg)"></i><span>--control-lg<br>44px</span></div>
+<div class="tk-size"><i style="height:var(--control-xl)"></i><span>--control-xl<br>52px</span></div>
+<div class="tk-size"><i style="width:var(--icon-15);height:var(--icon-15);border-radius:4px"></i><span>--icon-15<br>15px</span></div>
+<div class="tk-size"><i style="width:var(--icon-16);height:var(--icon-16);border-radius:4px"></i><span>--icon-16<br>16px</span></div>
+<div class="tk-size"><i style="width:var(--icon-17);height:var(--icon-17);border-radius:4px"></i><span>--icon-17<br>17px</span></div>
+<div class="tk-size"><i style="width:var(--icon-18);height:var(--icon-18);border-radius:4px"></i><span>--icon-18<br>18px</span></div>
+<div class="tk-size"><i style="width:var(--icon-22);height:var(--icon-22);border-radius:4px"></i><span>--icon-22<br>22px</span></div>
+<div class="tk-size"><i style="height:var(--size-thumb)"></i><span>--size-thumb<br>56px</span></div>
+<div class="tk-size"><i style="height:var(--size-avatar)"></i><span>--size-avatar<br>72px</span></div>
+</div>
+    <h3 class="tk-subh">page frame</h3>
+    <div class="tk-scale">
+<div class="tk-scale-row"><span class="tk-scale-lbl">--container-max 1400px</span><span class="tk-scale-bar" style="width:100.0%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--container-read 800px</span><span class="tk-scale-bar" style="width:57.1%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--container-dialog 464px</span><span class="tk-scale-bar" style="width:33.1%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--container-sheet 420px</span><span class="tk-scale-bar" style="width:30.0%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--container-sidebar 220px</span><span class="tk-scale-bar" style="width:15.7%"></span></div>
+<div class="tk-scale-row"><span class="tk-scale-lbl">--gutter 40px</span><span class="tk-scale-bar" style="width:2.9%"></span></div>
+</div>
+    <p class="tk-note">The gutter is the only responsive token: 14px below 640px, so the
+    inset plate still breathes on a phone.</p>
+  </section>
+
+  <section class="tk-sec" id="type">
+    <h2 data-n="04">Type</h2>
+    <p class="tk-note">Three families, one stack each. Samples are real product lines, not lorem.</p>
+    <div class="tk-fonts">
+<div class="tk-font"><b style="font-family:var(--font-display)">Predict Market</b><span>--font-display: 'Space Grotesk',sans-serif</span><i>headings, figures that must feel cut</i></div>
+<div class="tk-font"><b style="font-family:var(--font-body)">Predict Market</b><span>--font-body: 'DM Sans',system-ui,sans-serif</span><i>every running line of the interface</i></div>
+<div class="tk-font"><b style="font-family:var(--font-mono)">Predict Market</b><span>--font-mono: 'IBM Plex Mono',monospace</span><i>money, odds, counts, anything a person compares</i></div>
+</div>
+    <h3 class="tk-subh">size scale</h3>
+    <div class="tk-type-row"><span class="tk-type-lbl">--text-8 8px</span><span class="tk-type-smp" style="font-size:var(--text-8);font-family:var(--font-body)">Will the ECB cut rates in March?</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-9 9px</span><span class="tk-type-smp" style="font-size:var(--text-9);font-family:var(--font-body)">Confirm bet</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-9-5 9.5px</span><span class="tk-type-smp" style="font-size:var(--text-9-5);font-family:var(--font-body)">You were right</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-10 10px</span><span class="tk-type-smp" style="font-size:var(--text-10);font-family:var(--font-body)">USDC held 1:1, we never lend it</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-10-5 10.5px</span><span class="tk-type-smp" style="font-size:var(--text-10-5);font-family:var(--font-body)">Browse events</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-11 11px</span><span class="tk-type-smp" style="font-size:var(--text-11);font-family:var(--font-body)">Add funds</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-11-5 11.5px</span><span class="tk-type-smp" style="font-size:var(--text-11-5);font-family:var(--font-body)">Here is what happened</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-12 12px</span><span class="tk-type-smp" style="font-size:var(--text-12);font-family:var(--font-body)">Save into Favorites</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-12-5 12.5px</span><span class="tk-type-smp" style="font-size:var(--text-12-5);font-family:var(--font-body)">Will the ECB cut rates in March?</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-13 13px</span><span class="tk-type-smp" style="font-size:var(--text-13);font-family:var(--font-body)">Confirm bet</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-13-5 13.5px</span><span class="tk-type-smp" style="font-size:var(--text-13-5);font-family:var(--font-body)">You were right</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-14 14px</span><span class="tk-type-smp" style="font-size:var(--text-14);font-family:var(--font-body)">USDC held 1:1, we never lend it</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-15 15px</span><span class="tk-type-smp" style="font-size:var(--text-15);font-family:var(--font-body)">Browse events</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-16 16px</span><span class="tk-type-smp" style="font-size:var(--text-16);font-family:var(--font-body)">Add funds</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-18 18px</span><span class="tk-type-smp" style="font-size:var(--text-18);font-family:var(--font-body)">Here is what happened</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-19 19px</span><span class="tk-type-smp" style="font-size:var(--text-19);font-family:var(--font-body)">Save into Favorites</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-20 20px</span><span class="tk-type-smp" style="font-size:var(--text-20);font-family:var(--font-body)">Will the ECB cut rates in March?</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-23 23px</span><span class="tk-type-smp" style="font-size:var(--text-23);font-family:var(--font-body)">Confirm bet</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-24 24px</span><span class="tk-type-smp" style="font-size:var(--text-24);font-family:var(--font-body)">You were right</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-30 30px</span><span class="tk-type-smp" style="font-size:var(--text-30);font-family:var(--font-body)">USDC held 1:1, we never lend it</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--text-38 38px</span><span class="tk-type-smp" style="font-size:var(--text-38);font-family:var(--font-body)">Browse events</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--display-feed clamp(28px,4vw,38px)</span><span class="tk-type-smp" style="font-size:var(--display-feed);font-family:var(--font-display)">Add funds</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--display-hiw clamp(30px,7vw,38px)</span><span class="tk-type-smp" style="font-size:var(--display-hiw);font-family:var(--font-display)">Here is what happened</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--display-outcome clamp(24px,5.6vw,30px)</span><span class="tk-type-smp" style="font-size:var(--display-outcome);font-family:var(--font-display)">Save into Favorites</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--display-dialog clamp(23px,5.4vw,29px)</span><span class="tk-type-smp" style="font-size:var(--display-dialog);font-family:var(--font-display)">Will the ECB cut rates in March?</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--display-seo clamp(20px,2.6vw,24px)</span><span class="tk-type-smp" style="font-size:var(--display-seo);font-family:var(--font-display)">Confirm bet</span></div>
+    <h3 class="tk-subh">weight and leading</h3>
+    <div class="tk-type-row"><span class="tk-type-lbl">--weight-medium 500</span><span class="tk-type-smp" style="font-weight:var(--weight-medium);font-size:16px">Confirm bet</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--weight-semibold 600</span><span class="tk-type-smp" style="font-weight:var(--weight-semibold);font-size:16px">Confirm bet</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--weight-bold 700</span><span class="tk-type-smp" style="font-weight:var(--weight-bold);font-size:16px">Confirm bet</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--leading-flat 1.04</span><span class="tk-type-smp" style="line-height:var(--leading-flat);font-size:13px;white-space:normal;max-width:52ch">You bet YES at 34 cents. The market resolved YES, so the payout is settled at the price you paid.</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--leading-heading 1.05</span><span class="tk-type-smp" style="line-height:var(--leading-heading);font-size:13px;white-space:normal;max-width:52ch">You bet YES at 34 cents. The market resolved YES, so the payout is settled at the price you paid.</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--leading-tight 1.14</span><span class="tk-type-smp" style="line-height:var(--leading-tight);font-size:13px;white-space:normal;max-width:52ch">You bet YES at 34 cents. The market resolved YES, so the payout is settled at the price you paid.</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--leading-snug 1.3</span><span class="tk-type-smp" style="line-height:var(--leading-snug);font-size:13px;white-space:normal;max-width:52ch">You bet YES at 34 cents. The market resolved YES, so the payout is settled at the price you paid.</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--leading-body 1.45</span><span class="tk-type-smp" style="line-height:var(--leading-body);font-size:13px;white-space:normal;max-width:52ch">You bet YES at 34 cents. The market resolved YES, so the payout is settled at the price you paid.</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--leading-base 1.5</span><span class="tk-type-smp" style="line-height:var(--leading-base);font-size:13px;white-space:normal;max-width:52ch">You bet YES at 34 cents. The market resolved YES, so the payout is settled at the price you paid.</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--leading-relaxed 1.55</span><span class="tk-type-smp" style="line-height:var(--leading-relaxed);font-size:13px;white-space:normal;max-width:52ch">You bet YES at 34 cents. The market resolved YES, so the payout is settled at the price you paid.</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--leading-loose 1.6</span><span class="tk-type-smp" style="line-height:var(--leading-loose);font-size:13px;white-space:normal;max-width:52ch">You bet YES at 34 cents. The market resolved YES, so the payout is settled at the price you paid.</span></div>
+  </section>
+
+  <section class="tk-sec" id="motion">
+    <h2 data-n="05">Motion</h2>
+    <p class="tk-note">Collected from the kit as it stands. Hover a bar to see the duration. The
+    Animation stage decides which of these survive as a system.</p>
+    <div class="tk-type-row"><span class="tk-type-lbl">--dur-fast .12s</span><span class="tk-type-smp" style="display:block;height:14px;width:60px;border-radius:3px;background:var(--color-action);transition:width var(--dur-fast) var(--ease-out)" onmouseover="this.style.width='240px'" onmouseout="this.style.width='60px'"></span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--dur-quick .16s</span><span class="tk-type-smp" style="display:block;height:14px;width:60px;border-radius:3px;background:var(--color-action);transition:width var(--dur-quick) var(--ease-out)" onmouseover="this.style.width='240px'" onmouseout="this.style.width='60px'"></span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--dur-base .18s</span><span class="tk-type-smp" style="display:block;height:14px;width:60px;border-radius:3px;background:var(--color-action);transition:width var(--dur-base) var(--ease-out)" onmouseover="this.style.width='240px'" onmouseout="this.style.width='60px'"></span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--dur-slow .25s</span><span class="tk-type-smp" style="display:block;height:14px;width:60px;border-radius:3px;background:var(--color-action);transition:width var(--dur-slow) var(--ease-out)" onmouseover="this.style.width='240px'" onmouseout="this.style.width='60px'"></span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--dur-slower .3s</span><span class="tk-type-smp" style="display:block;height:14px;width:60px;border-radius:3px;background:var(--color-action);transition:width var(--dur-slower) var(--ease-out)" onmouseover="this.style.width='240px'" onmouseout="this.style.width='60px'"></span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--ease-out</span><span class="tk-type-smp" style="font-family:var(--font-mono);font-size:11px">cubic-bezier(.2,.7,.2,1)</span></div>
+<div class="tk-type-row"><span class="tk-type-lbl">--ease-inout</span><span class="tk-type-smp" style="font-family:var(--font-mono);font-size:11px">cubic-bezier(.4,0,.2,1)</span></div>
+  </section>
+
+  <section class="tk-sec" id="roles">
+    <h2 data-n="06">Semantic roles</h2>
+    <p class="tk-note">Colour only. Each role points at a primitive through <code>var()</code> and
+    carries the usage it was read from. Two roles may share a value and stay separate: that is the
+    point of the level, not a mistake.</p>
+    <h3 class="tk-subh">surfaces</h3><table class="tk-tbl"><thead><tr><th></th><th>role</th><th>points at</th><th>resolves to</th><th>read from</th></tr></thead><tbody><tr><td><span class="tk-dot" style="background:var(--bg-page)"></span></td><td class="tk-role">--bg-page</td><td class="tk-points">--graphite-930</td><td class="tk-hex">#0f1013</td><td class="tk-from">body, the ground behind the device</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-canvas)"></span></td><td class="tk-role">--bg-canvas</td><td class="tk-points">--graphite-900</td><td class="tk-hex">#141619</td><td class="tk-from">.device, .cat-nav, .feed (5 declarations)</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-slab)"></span></td><td class="tk-role">--bg-slab</td><td class="tk-points">--graphite-860</td><td class="tk-hex">#191b1f</td><td class="tk-from">the outer stone, the whole page width</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-slab-from)"></span></td><td class="tk-role">--bg-slab-from</td><td class="tk-points">--graphite-840</td><td class="tk-hex">#1c1e22</td><td class="tk-from">the slab top-lit gradient, and the sticky header</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-slab-to)"></span></td><td class="tk-role">--bg-slab-to</td><td class="tk-points">--graphite-870</td><td class="tk-hex">#17191d</td><td class="tk-from">the same gradient, bottom</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-plate)"></span></td><td class="tk-role">--bg-plate</td><td class="tk-points">--graphite-910</td><td class="tk-hex">#121417</td><td class="tk-from">the inset content plate (feed, category, dialog body)</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-plate-from)"></span></td><td class="tk-role">--bg-plate-from</td><td class="tk-points">--graphite-870</td><td class="tk-hex">#17191d</td><td class="tk-from">the plate gradient, top</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-plate-to)"></span></td><td class="tk-role">--bg-plate-to</td><td class="tk-points">--graphite-930</td><td class="tk-hex">#0f1013</td><td class="tk-from">the plate gradient, bottom</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-card)"></span></td><td class="tk-role">--bg-card</td><td class="tk-points">--graphite-900</td><td class="tk-hex">#141619</td><td class="tk-from">.card base under its grain</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-card-from)"></span></td><td class="tk-role">--bg-card-from</td><td class="tk-points">--graphite-870</td><td class="tk-hex">#17191d</td><td class="tk-from">the card gradient, top</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-card-to)"></span></td><td class="tk-role">--bg-card-to</td><td class="tk-points">--graphite-920</td><td class="tk-hex">#111316</td><td class="tk-from">the card gradient, bottom</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-card-quiet)"></span></td><td class="tk-role">--bg-card-quiet</td><td class="tk-points">--graphite-880</td><td class="tk-hex">#15171b</td><td class="tk-from">.pos, .cta-bar, .toast, .cc-banner, .wd-flow. These five read var(--card), which is declared NOWHERE (audit C4), so they render transparent today. The value restored here is --card3d, the token stage 08 declared for exactly this and never wired. The one intentional pixel change of this stage; it is shown in the step-3 diff</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-surface)"></span></td><td class="tk-role">--bg-surface</td><td class="tk-points">--graphite-830</td><td class="tk-hex">#1c1f24</td><td class="tk-from">.app-header, dialog, dropdown, .filter-panel, .state-block, .app-footer (18 declarations)</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-control)"></span></td><td class="tk-role">--bg-control</td><td class="tk-points">--graphite-780</td><td class="tk-hex">#24282f</td><td class="tk-from">58 declarations, background only: every quiet button, chip, toggle track and hover fill</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-control-hover)"></span></td><td class="tk-role">--bg-control-hover</td><td class="tk-points">--graphite-800</td><td class="tk-hex">#20242a</td><td class="tk-from">8 hover fills on those same controls</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-chip)"></span></td><td class="tk-role">--bg-chip</td><td class="tk-points">--graphite-850</td><td class="tk-hex">#1b1e23</td><td class="tk-from">the graphite chip family: cat-nav, tabs, options, load-more, profile tabs</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-well)"></span></td><td class="tk-role">--bg-well</td><td class="tk-points">--graphite-940</td><td class="tk-hex">#0d0f12</td><td class="tk-from">the amount input, comment input, segmented rails</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-dialog-head-from)"></span></td><td class="tk-role">--bg-dialog-head-from</td><td class="tk-points">--graphite-790</td><td class="tk-hex">#20242b</td><td class="tk-from">the dialog head gradient over the brass glow</td></tr></tbody></table>
+<h3 class="tk-subh">text</h3><table class="tk-tbl"><thead><tr><th></th><th>role</th><th>points at</th><th>resolves to</th><th>read from</th></tr></thead><tbody><tr><td><span class="tk-dot" style="background:var(--text-primary)"></span></td><td class="tk-role">--text-primary</td><td class="tk-points">--bone-100</td><td class="tk-hex">#ede7da</td><td class="tk-from">111 colour declarations, body downwards</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--text-muted)"></span></td><td class="tk-role">--text-muted</td><td class="tk-points">--bone-500</td><td class="tk-hex">#a49d8f</td><td class="tk-from">93 colour declarations, every secondary line</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--text-icon)"></span></td><td class="tk-role">--text-icon</td><td class="tk-points">--bone-300</td><td class="tk-hex">#cbc3b2</td><td class="tk-from">.ic, .ic-sm default stroke</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--text-icon-strong)"></span></td><td class="tk-role">--text-icon-strong</td><td class="tk-points">--bone-200</td><td class="tk-hex">#ded6c5</td><td class="tk-from">the notification bell</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--text-chip-hover)"></span></td><td class="tk-role">--text-chip-hover</td><td class="tk-points">--bone-150</td><td class="tk-hex">#e9e3d7</td><td class="tk-from">the chip family on hover</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--text-brass)"></span></td><td class="tk-role">--text-brass</td><td class="tk-points">--brass-400</td><td class="tk-hex">#d7ac53</td><td class="tk-from">37 colour + 8 stroke declarations: links, active nav, saved bookmark, the logo tick. Also the focus ring today; the focus role itself waits for the states stage</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--text-brass-lit)"></span></td><td class="tk-role">--text-brass-lit</td><td class="tk-points">--brass-200</td><td class="tk-hex">#e6c877</td><td class="tk-from">hero eyebrow, SEO tagline, trust badge</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--text-brass-chip)"></span></td><td class="tk-role">--text-brass-chip</td><td class="tk-points">--brass-250</td><td class="tk-hex">#e7d6a6</td><td class="tk-from">the active chip label</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--text-on-brass)"></span></td><td class="tk-role">--text-on-brass</td><td class="tk-points">--plum-950</td><td class="tk-hex">#180810</td><td class="tk-from">15 selectors on brass CTAs, hardcoded until now</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--text-on-yes)"></span></td><td class="tk-role">--text-on-yes</td><td class="tk-points">--green-950</td><td class="tk-hex">#0d1410</td><td class="tk-from">the filled YES side</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--text-on-no)"></span></td><td class="tk-role">--text-on-no</td><td class="tk-points">--red-950</td><td class="tk-hex">#160b09</td><td class="tk-from">the filled NO side</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--text-on-photo)"></span></td><td class="tk-role">--text-on-photo</td><td class="tk-points">--white</td><td class="tk-hex">#fff</td><td class="tk-from">dialog hero headings and their close mark</td></tr></tbody></table>
+<h3 class="tk-subh">edges</h3><table class="tk-tbl"><thead><tr><th></th><th>role</th><th>points at</th><th>resolves to</th><th>read from</th></tr></thead><tbody><tr><td><span class="tk-dot" style="background:var(--border-hairline)"></span></td><td class="tk-role">--border-hairline</td><td class="tk-points">--graphite-750</td><td class="tk-hex">#2b2f38</td><td class="tk-from">89 border declarations</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--border-brass)"></span></td><td class="tk-role">--border-brass</td><td class="tk-points">--brass-a30</td><td class="tk-hex">rgba(199,162,78,.30)</td><td class="tk-from">the inset hairline of card, plate, thumb, badge</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--border-brass-hover)"></span></td><td class="tk-role">--border-brass-hover</td><td class="tk-points">--brass-a50</td><td class="tk-hex">rgba(199,162,78,.5)</td><td class="tk-from">the hover border of the quiet button family</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--edge-groove-dark)"></span></td><td class="tk-role">--edge-groove-dark</td><td class="tk-points">--graphite-950</td><td class="tk-hex">#0b0c0e</td><td class="tk-from">27 declarations, the recessed line</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--edge-groove-light)"></span></td><td class="tk-role">--edge-groove-light</td><td class="tk-points">--bone-a06</td><td class="tk-hex">rgba(237,231,218,.055)</td><td class="tk-from">25 box-shadows, the lit lip of the same groove</td></tr></tbody></table>
+<h3 class="tk-subh">brand roles</h3><p class="tk-note">Two roles, one value today. The action colour and the trust colour are both brass now and have no reason to stay tied: an action can be re-toned without touching the trust language, and a trust tint can warm up without repainting every CTA. Split now, before a component reads the wrong one.</p><table class="tk-tbl"><thead><tr><th></th><th>role</th><th>points at</th><th>resolves to</th><th>read from</th></tr></thead><tbody><tr><td><span class="tk-dot" style="background:var(--color-action)"></span></td><td class="tk-role">--color-action</td><td class="tk-points">--brass-500</td><td class="tk-hex">#c7a24e</td><td class="tk-from">Confirm bet, Add funds, balance +, .btn-primary, the active category tab, the unread badge</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--color-action-lit)"></span></td><td class="tk-role">--color-action-lit</td><td class="tk-points">--brass-300</td><td class="tk-hex">#d9b968</td><td class="tk-from">the second stop of every action gradient</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--color-trust)"></span></td><td class="tk-role">--color-trust</td><td class="tk-points">--brass-500</td><td class="tk-hex">#c7a24e</td><td class="tk-from">the trust bar, the USDC 1:1 line, the push banner, the footer trust cards, the shield icon. Same value as --color-action today, different role</td></tr></tbody></table>
+<h3 class="tk-subh">outcome roles: the live bet side and the odds</h3><table class="tk-tbl"><thead><tr><th></th><th>role</th><th>points at</th><th>resolves to</th><th>read from</th></tr></thead><tbody><tr><td><span class="tk-dot" style="background:var(--outcome-yes)"></span></td><td class="tk-role">--outcome-yes</td><td class="tk-points">--green-500</td><td class="tk-hex">#4fa96b</td><td class="tk-from">odds-bar fill, selected YES side</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--outcome-no)"></span></td><td class="tk-role">--outcome-no</td><td class="tk-points">--red-500</td><td class="tk-hex">#c85a50</td><td class="tk-from">odds-bar track, selected NO side</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--outcome-yes-text)"></span></td><td class="tk-role">--outcome-yes-text</td><td class="tk-points">--green-300</td><td class="tk-hex">#77d19b</td><td class="tk-from">the quiet YES text on 15 selectors</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--outcome-yes-fill)"></span></td><td class="tk-role">--outcome-yes-fill</td><td class="tk-points">--green-a12</td><td class="tk-hex">rgba(79,169,107,.12)</td><td class="tk-from">the tinted YES button (spectator, not trader)</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--outcome-yes-line)"></span></td><td class="tk-role">--outcome-yes-line</td><td class="tk-points">--green-700</td><td class="tk-hex">#3f7d55</td><td class="tk-from">the tinted YES border</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--outcome-no-text)"></span></td><td class="tk-role">--outcome-no-text</td><td class="tk-points">--red-300</td><td class="tk-hex">#e79087</td><td class="tk-from">the quiet NO text</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--outcome-no-fill)"></span></td><td class="tk-role">--outcome-no-fill</td><td class="tk-points">--red-a12</td><td class="tk-hex">rgba(200,90,80,.12)</td><td class="tk-from">the tinted NO button</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--outcome-no-line)"></span></td><td class="tk-role">--outcome-no-line</td><td class="tk-points">--red-700</td><td class="tk-hex">#8f4841</td><td class="tk-from">the tinted NO border</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--outcome-line-yes)"></span></td><td class="tk-role">--outcome-line-yes</td><td class="tk-points">--green-200</td><td class="tk-hex">#4fd694</td><td class="tk-from">the YES line drawn over the hero photo, where the quiet green loses against the image</td></tr></tbody></table>
+<h3 class="tk-subh">result roles: the market already resolved</h3><p class="tk-note">Separate from the outcome pair on purpose. A live YES and a settled WON are the same green today and answer to different design questions: the outcome pair belongs to the odds and the bet side, the result pair belongs to the record (WON / LOST chips, the win overlay, the resolved history). Either can move without dragging the other.</p><table class="tk-tbl"><thead><tr><th></th><th>role</th><th>points at</th><th>resolves to</th><th>read from</th></tr></thead><tbody><tr><td><span class="tk-dot" style="background:var(--result-won)"></span></td><td class="tk-role">--result-won</td><td class="tk-points">--green-500</td><td class="tk-hex">#4fa96b</td><td class="tk-from">the win overlay glow and its reconcile box</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--result-won-text)"></span></td><td class="tk-role">--result-won-text</td><td class="tk-points">--green-300</td><td class="tk-hex">#77d19b</td><td class="tk-from">.pos-won, the win figure</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--result-won-fill)"></span></td><td class="tk-role">--result-won-fill</td><td class="tk-points">--green-a12</td><td class="tk-hex">rgba(79,169,107,.12)</td><td class="tk-from">the WON chip</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--result-won-line)"></span></td><td class="tk-role">--result-won-line</td><td class="tk-points">--green-700</td><td class="tk-hex">#3f7d55</td><td class="tk-from">the WON chip border</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--result-won-stone)"></span></td><td class="tk-role">--result-won-stone</td><td class="tk-points">--green-975</td><td class="tk-hex">#15211a</td><td class="tk-from">the win sheet head, green-tinted graphite</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--result-lost-text)"></span></td><td class="tk-role">--result-lost-text</td><td class="tk-points">--red-300</td><td class="tk-hex">#e79087</td><td class="tk-from">.pos-lost, the loss figure</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--result-lost-fill)"></span></td><td class="tk-role">--result-lost-fill</td><td class="tk-points">--red-a12</td><td class="tk-hex">rgba(200,90,80,.12)</td><td class="tk-from">the LOST chip</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--result-lost-line)"></span></td><td class="tk-role">--result-lost-line</td><td class="tk-points">--red-700</td><td class="tk-hex">#8f4841</td><td class="tk-from">the LOST chip border</td></tr></tbody></table>
+<h3 class="tk-subh">feedback</h3><table class="tk-tbl"><thead><tr><th></th><th>role</th><th>points at</th><th>resolves to</th><th>read from</th></tr></thead><tbody><tr><td><span class="tk-dot" style="background:var(--border-notice)"></span></td><td class="tk-role">--border-notice</td><td class="tk-points">--bone-700</td><td class="tk-hex">#5a544a</td><td class="tk-from">the neutralised error toast, warm grey, never red</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bevel-notice)"></span></td><td class="tk-role">--bevel-notice</td><td class="tk-points">--white-a06</td><td class="tk-hex">rgba(255,255,255,.06)</td><td class="tk-from">the same toast, its inset lip</td></tr></tbody></table>
+<h3 class="tk-subh">depth and material</h3><p class="tk-note">The embossed two-stone system is built from light and shade, and light is a colour role like any other: invert the theme and every highlight becomes a shadow. So the bevel and shadow inks live here, not as literals in a card.</p><table class="tk-tbl"><thead><tr><th></th><th>role</th><th>points at</th><th>resolves to</th><th>read from</th></tr></thead><tbody><tr><td><span class="tk-dot" style="background:var(--bevel-hi)"></span></td><td class="tk-role">--bevel-hi</td><td class="tk-points">--white-a17</td><td class="tk-hex">rgba(255,255,255,.17)</td><td class="tk-from">the plate top lip, strongest</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bevel-md)"></span></td><td class="tk-role">--bevel-md</td><td class="tk-points">--white-a14</td><td class="tk-hex">rgba(255,255,255,.14)</td><td class="tk-from">the raised plate</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bevel-lo)"></span></td><td class="tk-role">--bevel-lo</td><td class="tk-points">--white-a10</td><td class="tk-hex">rgba(255,255,255,.1)</td><td class="tk-from">the win and loss sheet head</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bevel-xs)"></span></td><td class="tk-role">--bevel-xs</td><td class="tk-points">--white-a09</td><td class="tk-hex">rgba(255,255,255,.09)</td><td class="tk-from">the inner plate</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bevel-faint)"></span></td><td class="tk-role">--bevel-faint</td><td class="tk-points">--white-a05</td><td class="tk-hex">rgba(255,255,255,.05)</td><td class="tk-from">the quiet blocks</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bevel-hair)"></span></td><td class="tk-role">--bevel-hair</td><td class="tk-points">--white-a04</td><td class="tk-hex">rgba(255,255,255,.04)</td><td class="tk-from">the left lip of a plate</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bevel-hair-soft)"></span></td><td class="tk-role">--bevel-hair-soft</td><td class="tk-points">--white-a03</td><td class="tk-hex">rgba(255,255,255,.03)</td><td class="tk-from">the same, one step quieter</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--edge-shade)"></span></td><td class="tk-role">--edge-shade</td><td class="tk-points">--black-a30</td><td class="tk-hex">rgba(0,0,0,.3)</td><td class="tk-from">the dark side of an emboss</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--edge-shade-strong)"></span></td><td class="tk-role">--edge-shade-strong</td><td class="tk-points">--black-a50</td><td class="tk-hex">rgba(0,0,0,.5)</td><td class="tk-from">the bottom edge of a lifted sheet</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--shadow-ink)"></span></td><td class="tk-role">--shadow-ink</td><td class="tk-points">--black</td><td class="tk-hex">#000</td><td class="tk-from">every drop shadow of the product</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--shadow-ink-soft)"></span></td><td class="tk-role">--shadow-ink-soft</td><td class="tk-points">--black-a78</td><td class="tk-hex">rgba(0,0,0,.78)</td><td class="tk-from">the sticky header shadow</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--shadow-ink-deep)"></span></td><td class="tk-role">--shadow-ink-deep</td><td class="tk-points">--black-a85</td><td class="tk-hex">rgba(0,0,0,.85)</td><td class="tk-from">the outcome overlay</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--scrim)"></span></td><td class="tk-role">--scrim</td><td class="tk-points">--black-a35</td><td class="tk-hex">rgba(0,0,0,.35)</td><td class="tk-from">the mobile drawer backdrop</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--surface-grid)"></span></td><td class="tk-role">--surface-grid</td><td class="tk-points">--brass-grid</td><td class="tk-hex">repeating-linear-gradient(0deg,transparent 0 27px,var(--brass-a06) 27px 28px), repeating-linear-gradient(90deg,transparent 0 27px,var(--brass-a06) 27px 28px)</td><td class="tk-from">the brass graph grid on the card corner</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--glow-brass)"></span></td><td class="tk-role">--glow-brass</td><td class="tk-points">--brass-a35</td><td class="tk-hex">rgba(199,162,78,.35)</td><td class="tk-from">the card and chip glow</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--glow-focus)"></span></td><td class="tk-role">--glow-focus</td><td class="tk-points">--brass-a16</td><td class="tk-hex">rgba(199,162,78,.16)</td><td class="tk-from">the focus ring on a field</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--line-brass-soft)"></span></td><td class="tk-role">--line-brass-soft</td><td class="tk-points">--brass-a45</td><td class="tk-hex">rgba(199,162,78,.45)</td><td class="tk-from">the quieter hover border</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--line-brass-strong)"></span></td><td class="tk-role">--line-brass-strong</td><td class="tk-points">--brass-a55</td><td class="tk-hex">rgba(199,162,78,.55)</td><td class="tk-from">the input hover border</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--bg-dock-from)"></span></td><td class="tk-role">--bg-dock-from</td><td class="tk-points">--graphite-865</td><td class="tk-hex">#191c20</td><td class="tk-from">the mobile bet dock gradient</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--veil-photo-edge)"></span></td><td class="tk-role">--veil-photo-edge</td><td class="tk-points">--graphite-a12</td><td class="tk-hex">rgba(20,22,26,.12)</td><td class="tk-from">the featured hero veil, transparent end</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--veil-photo-from)"></span></td><td class="tk-role">--veil-photo-from</td><td class="tk-points">--graphite-a50</td><td class="tk-hex">rgba(20,22,26,.5)</td><td class="tk-from"></td></tr>
+<tr><td><span class="tk-dot" style="background:var(--veil-photo-mid)"></span></td><td class="tk-role">--veil-photo-mid</td><td class="tk-points">--graphite-a55</td><td class="tk-hex">rgba(20,22,26,.55)</td><td class="tk-from"></td></tr>
+<tr><td><span class="tk-dot" style="background:var(--veil-photo-to)"></span></td><td class="tk-role">--veil-photo-to</td><td class="tk-points">--graphite-a82</td><td class="tk-hex">rgba(20,22,26,.82)</td><td class="tk-from">the same veil, where the text sits</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--line-on-photo)"></span></td><td class="tk-role">--line-on-photo</td><td class="tk-points">--white-a16</td><td class="tk-hex">rgba(255,255,255,.16)</td><td class="tk-from">the close mark on a photographic dialog head</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--line-on-photo-hover)"></span></td><td class="tk-role">--line-on-photo-hover</td><td class="tk-points">--white-a32</td><td class="tk-hex">rgba(255,255,255,.32)</td><td class="tk-from"></td></tr>
+<tr><td><span class="tk-dot" style="background:var(--control-knob)"></span></td><td class="tk-role">--control-knob</td><td class="tk-points">--white</td><td class="tk-hex">#fff</td><td class="tk-from">the toggle knob when it is on</td></tr>
+<tr><td><span class="tk-dot" style="background:var(--text-strong)"></span></td><td class="tk-role">--text-strong</td><td class="tk-points">--white</td><td class="tk-hex">#fff</td><td class="tk-from">the label of a quiet button on hover</td></tr></tbody></table>
+<h3 class="tk-subh">course chrome (the roadmap sidebar every course page carries).</h3><p class="tk-note">Not product. Kept apart so a product theme never has to think about it.</p><table class="tk-tbl"><thead><tr><th></th><th>role</th><th>points at</th><th>resolves to</th><th>read from</th></tr></thead><tbody><tr><td><span class="tk-dot" style="background:var(--chrome-bg)"></span></td><td class="tk-role">--chrome-bg</td><td class="tk-points">--graphite-915</td><td class="tk-hex">#131417</td><td class="tk-from"></td></tr>
+<tr><td><span class="tk-dot" style="background:var(--chrome-border)"></span></td><td class="tk-role">--chrome-border</td><td class="tk-points">--graphite-720</td><td class="tk-hex">#282b32</td><td class="tk-from"></td></tr>
+<tr><td><span class="tk-dot" style="background:var(--chrome-text)"></span></td><td class="tk-role">--chrome-text</td><td class="tk-points">--bone-250</td><td class="tk-hex">#d8d2c6</td><td class="tk-from"></td></tr>
+<tr><td><span class="tk-dot" style="background:var(--chrome-muted)"></span></td><td class="tk-role">--chrome-muted</td><td class="tk-points">--bone-600</td><td class="tk-hex">#8b8579</td><td class="tk-from"></td></tr>
+<tr><td><span class="tk-dot" style="background:var(--chrome-accent)"></span></td><td class="tk-role">--chrome-accent</td><td class="tk-points">--brass-400</td><td class="tk-hex">#d7ac53</td><td class="tk-from"></td></tr></tbody></table>
+  </section>
+
+  <section class="tk-sec" id="contrast">
+    <h2 data-n="07">Contrast</h2>
+    <p class="tk-note">Computed from the resolved values, tinted fills composited over their surface.
+    AA is 4.5:1 for body text and 3:1 for large text and interface edges. The dark theme adds its own
+    column here in step 6.</p>
+    <table class="tk-tbl"><thead><tr><th>text</th><th>on</th><th>ratio</th><th>WCAG</th><th>where</th></tr></thead><tbody><tr><td class="tk-role">--text-primary</td><td class="tk-points">--bg-page</td><td class="tk-hex">15.44:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">body text on the page</td></tr>
+<tr><td class="tk-role">--text-primary</td><td class="tk-points">--bg-plate</td><td class="tk-hex">14.97:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">text on the content plate</td></tr>
+<tr><td class="tk-role">--text-primary</td><td class="tk-points">--bg-surface</td><td class="tk-hex">13.41:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">text on a card, header, dialog</td></tr>
+<tr><td class="tk-role">--text-primary</td><td class="tk-points">--bg-control</td><td class="tk-hex">12.01:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">label inside a quiet control</td></tr>
+<tr><td class="tk-role">--text-muted</td><td class="tk-points">--bg-page</td><td class="tk-hex">7.06:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">secondary line on the page</td></tr>
+<tr><td class="tk-role">--text-muted</td><td class="tk-points">--bg-plate</td><td class="tk-hex">6.85:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">secondary line on the plate</td></tr>
+<tr><td class="tk-role">--text-muted</td><td class="tk-points">--bg-surface</td><td class="tk-hex">6.14:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">secondary line on a card</td></tr>
+<tr><td class="tk-role">--text-icon</td><td class="tk-points">--bg-surface</td><td class="tk-hex">9.43:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">default icon stroke</td></tr>
+<tr><td class="tk-role">--text-brass</td><td class="tk-points">--bg-page</td><td class="tk-hex">8.98:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">brass link on the page</td></tr>
+<tr><td class="tk-role">--text-brass</td><td class="tk-points">--bg-surface</td><td class="tk-hex">7.8:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">brass link on a card</td></tr>
+<tr><td class="tk-role">--text-brass-lit</td><td class="tk-points">--bg-plate</td><td class="tk-hex">11.33:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">hero and SEO brass</td></tr>
+<tr><td class="tk-role">--text-brass-chip</td><td class="tk-points">--bg-chip</td><td class="tk-hex">11.59:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">active chip label</td></tr>
+<tr><td class="tk-role">--text-on-brass</td><td class="tk-points">--color-action</td><td class="tk-hex">8.05:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">label on a brass CTA</td></tr>
+<tr><td class="tk-role">--text-on-yes</td><td class="tk-points">--outcome-yes</td><td class="tk-hex">6.42:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">label on a filled YES</td></tr>
+<tr><td class="tk-role">--text-on-no</td><td class="tk-points">--outcome-no</td><td class="tk-hex">4.64:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">label on a filled NO</td></tr>
+<tr><td class="tk-role">--outcome-yes-text</td><td class="tk-points">--bg-surface + --outcome-yes-fill</td><td class="tk-hex">7.44:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">tinted YES button</td></tr>
+<tr><td class="tk-role">--outcome-no-text</td><td class="tk-points">--bg-surface + --outcome-no-fill</td><td class="tk-hex">6.07:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">tinted NO button</td></tr>
+<tr><td class="tk-role">--result-won-text</td><td class="tk-points">--bg-card-quiet + --result-won-fill</td><td class="tk-hex">8.17:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">WON chip</td></tr>
+<tr><td class="tk-role">--result-lost-text</td><td class="tk-points">--bg-card-quiet + --result-lost-fill</td><td class="tk-hex">6.64:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">LOST chip</td></tr>
+<tr><td class="tk-role">--chrome-text</td><td class="tk-points">--chrome-bg</td><td class="tk-hex">12.24:1</td><td><span class="tk-pass">AA</span></td><td class="tk-from">course sidebar</td></tr></tbody></table>
+  </section>
+
+  <section class="tk-sec" id="log">
+    <h2 data-n="08">Merges and open items</h2>
+    <h3 class="tk-subh">drift merged into one value</h3>
+    <table class="tk-tbl"><thead><tr><th>was</th><th>now</th><th>why it is safe</th></tr></thead><tbody>
+      <tr><td class="tk-hex">#14161a</td><td class="tk-hex">#141619</td><td>one step in the blue channel, the same canvas stone</td></tr>
+      <tr><td class="tk-hex">#20242b</td><td class="tk-hex">#20242a</td><td>one step in the blue channel, the same hover fill</td></tr>
+      <tr><td class="tk-hex">#e88a84</td><td class="tk-hex">#e79087</td><td>two quiet reds for one job: the NO figure and the NO button</td></tr>
+      <tr><td class="tk-hex">border-radius 1000px</td><td class="tk-hex">100px</td><td>every control it is used on is under 60px tall, so both render the same pill</td></tr>
+      <tr><td class="tk-hex">--brass, --lime</td><td class="tk-hex">--brass-500, --brass-300</td><td>exact duplicates of the accent pair, left over from an earlier direction</td></tr>
+    </tbody></table>
+    <h3 class="tk-subh">not merged, on purpose</h3>
+    <p class="tk-note"><code>--green-200</code> stays its own value. It draws the YES line over the hero
+    photograph, where the quieter green loses against the image. Two values, two jobs, not drift.</p>
+    <h3 class="tk-subh">open until step 7</h3>
+    <p class="tk-note"><code>--brass-800</code> (bronze) and <code>--graphite-820</code> (the old
+    <code>--slab</code>) have no consumer: documented in DESIGN.md, never wired. They either find a place
+    or they go.<br>
+    <code>--bg-card-quiet</code> is the one intentional pixel change of this stage. Five surfaces
+    (<code>.pos</code>, <code>.cta-bar</code>, <code>.toast</code>, <code>.cc-banner</code>,
+    <code>.wd-flow</code>) read <code>var(--card)</code>, which is declared nowhere, so they render
+    transparent today. The value restored is <code>--card3d</code>, the token the previous stage declared
+    for exactly this and never wired.<br>
+    The focus ring is real (30-plus selectors read the brass text role for it) but it does not get its own
+    role here. Focus and the component states belong to the Design System stage, in both themes at once.</p>
+  </section>
+</div>
+
+<script>
+(function(){
+  var sb=document.getElementById('rmSidebar'),ov=document.getElementById('rmOverlay'),tg=document.getElementById('rmToggle');
+  if(sb&&ov&&tg){
+    var o=function(){sb.classList.add('open');ov.classList.add('open');},
+        c=function(){sb.classList.remove('open');ov.classList.remove('open');};
+    tg.addEventListener('click',o);ov.addEventListener('click',c);
+    sb.querySelectorAll('.sidebar-sub-link').forEach(function(a){a.addEventListener('click',c);});
+  }
+})();
+</script>
+</body>
+</html>
