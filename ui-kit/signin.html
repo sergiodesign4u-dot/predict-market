@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - Sign in dialog</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="signin">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<div class="tk-wrap">
+  <header class="tk-hero">
+    <h1>Sign in dialog</h1>
+    <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">components/signin.css</span>
+      <span class="tk-badge">2 rules</span>
+      <span class="tk-badge">3 classes</span>
+      <span class="tk-badge">76 screens</span>
+    </div>
+  </header>
+
+  <section class="tk-sec" id="live">
+    <h2 data-n="01">Live</h2>
+    <p class="tk-note">The component in the markup it ships with, lifted from the frozen kit so the
+    stand cannot drift from the product. Painted by <code>components/index.css</code>, nothing else.</p>
+    <div class="ck-scene"><span class="ck-scene-lbl">specimen 1</span><div class="ck-stage"><dialog open="" id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
+    <div class="sheet-head">
+      <h2>Sign in or create account</h2>
+      <p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p>
+      <button type="button" class="sheet-close" data-close-dialog="" aria-label="Close">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+    <div class="sheet-body">
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"></path><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"></path><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"></path><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"></path></svg>
+        Continue with Google
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"></path></svg>
+        Continue with X
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"></path></svg>
+        Continue with Apple
+      </button>
+      <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+    </div>
+  </dialog></div></div>
+  </section>
+
+  <section class="tk-sec" id="roles">
+    <h2 data-n="02">Roles it reads</h2>
+    <p class="tk-note">Colour comes in only through these. Change one on
+    <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span></div>
+  </section>
+
+  <section class="tk-sec" id="classes">
+    <h2 data-n="03">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry it.
+    A class on no screen is either a state the markup toggles or a candidate for deletion in step 7.</p>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody><tr><td class='tk-role'>.app-dialog</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.signin-dialog</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.signin-lead</td><td class='tk-hex'>0</td></tr></tbody></table>
+  </section>
+
+  <section class="tk-sec" id="screens">
+    <h2 data-n="04">Where it stands</h2>
+    <div class="ck-screens"><a href="../ui-visual/404.html">404</a><a href="../ui-visual/500.html">500</a><a href="../ui-visual/active-bets-empty-new.html">active-bets-empty-new</a><a href="../ui-visual/active-bets-empty-resolved.html">active-bets-empty-resolved</a><a href="../ui-visual/active-bets-error.html">active-bets-error</a><a href="../ui-visual/active-bets-history-empty.html">active-bets-history-empty</a><a href="../ui-visual/active-bets-history-error.html">active-bets-history-error</a><a href="../ui-visual/active-bets-history-loading.html">active-bets-history-loading</a><a href="../ui-visual/active-bets-history.html">active-bets-history</a><a href="../ui-visual/active-bets-loading.html">active-bets-loading</a><a href="../ui-visual/active-bets.html">active-bets</a><a href="../ui-visual/cookie-consent.html">cookie-consent</a><a href="../ui-visual/deposit-error-card.html">deposit-error-card</a><a href="../ui-visual/deposit-error-kyc.html">deposit-error-kyc</a><a href="../ui-visual/deposit-loading.html">deposit-loading</a><a href="../ui-visual/deposit-minimum-not-met.html">deposit-minimum-not-met</a><a href="../ui-visual/deposit-pending.html">deposit-pending</a><a href="../ui-visual/deposit-widget-load-failure.html">deposit-widget-load-failure</a><a href="../ui-visual/deposit.html">deposit</a><a href="../ui-visual/event-detail-bet-error.html">event-detail-bet-error</a><a href="../ui-visual/event-detail-bet-insufficient.html">event-detail-bet-insufficient</a><a href="../ui-visual/event-detail-bet-processing.html">event-detail-bet-processing</a><a href="../ui-visual/event-detail-bet-reconcile.html">event-detail-bet-reconcile</a><a href="../ui-visual/event-detail-error.html">event-detail-error</a><a href="../ui-visual/event-detail-loading.html">event-detail-loading</a><a href="../ui-visual/event-detail-logged-out-error.html">event-detail-logged-out-error</a><a href="../ui-visual/event-detail-logged-out-loading.html">event-detail-logged-out-loading</a><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-logged-out.html">event-detail-logged-out</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-detail-resolved.html">event-detail-resolved</a><a href="../ui-visual/event-detail.html">event-detail</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-empty.html">event-feed-empty</a><a href="../ui-visual/event-feed-error.html">event-feed-error</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-empty.html">event-feed-logged-out-empty</a><a href="../ui-visual/event-feed-logged-out-error.html">event-feed-logged-out-error</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-empty.html">favorites-empty</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/loss-loading.html">loss-loading</a><a href="../ui-visual/loss.html">loss</a><a href="../ui-visual/maintenance.html">maintenance</a><a href="../ui-visual/my-profile-error.html">my-profile-error</a><a href="../ui-visual/my-profile-loading.html">my-profile-loading</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/notifications-empty.html">notifications-empty</a><a href="../ui-visual/notifications-error.html">notifications-error</a><a href="../ui-visual/notifications-loading.html">notifications-loading</a><a href="../ui-visual/notifications-push.html">notifications-push</a><a href="../ui-visual/notifications.html">notifications</a><a href="../ui-visual/public-profile-error.html">public-profile-error</a><a href="../ui-visual/public-profile-loading.html">public-profile-loading</a><a href="../ui-visual/public-profile-not-found.html">public-profile-not-found</a><a href="../ui-visual/public-profile.html">public-profile</a><a href="../ui-visual/sign-in-error.html">sign-in-error</a><a href="../ui-visual/sign-in-loading.html">sign-in-loading</a><a href="../ui-visual/sign-in-provider-conflict.html">sign-in-provider-conflict</a><a href="../ui-visual/sign-in.html">sign-in</a><a href="../ui-visual/toasts.html">toasts</a><a href="../ui-visual/wallet-error.html">wallet-error</a><a href="../ui-visual/wallet-loading.html">wallet-loading</a><a href="../ui-visual/wallet.html">wallet</a><a href="../ui-visual/win-error.html">win-error</a><a href="../ui-visual/win-loading.html">win-loading</a><a href="../ui-visual/win-payout-pending.html">win-payout-pending</a><a href="../ui-visual/win.html">win</a></div>
+  </section>
+
+  <section class="tk-sec" id="css">
+    <h2 data-n="05">The file</h2>
+    <p class="tk-note">To change this component, edit <code>components/signin.css</code>. To change a
+    value it reads, edit the role in <code>components/tokens.css</code>.</p>
+    <details class="ck-src"><summary>components/signin.css</summary><pre>/* components/signin.css
+   Component: signin. Classes: .signin-dialog, .signin-lead.
+
+   Reads: --text-muted
+   Stand:  ui-kit/signin.html
+   Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+dialog.app-dialog.signin-dialog{max-width:410px}
+dialog.app-dialog.signin-dialog .signin-lead{font-size:var(--text-12-5);line-height:var(--leading-base);color:var(--text-muted);margin:0 0 var(--space-4)}
+</pre></details>
+  </section>
+</div>
+
+<script src="_nav.js"></script>
+</body>
+</html>

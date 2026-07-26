@@ -1,0 +1,31 @@
+/* components/related.css
+   Component: related. Classes: .rel-odds, .rel-q, .rel-thumb, .related-events, .related-list, .related-more.
+
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-chip, --bg-control-hover, --bg-page, --bg-plate, --bg-plate-from, --border-hairline, --edge-groove-dark, --edge-groove-light, --line-brass-soft, --scrim, --shadow-ink-42, --shadow-ink-55, --shadow-ink-70, --shadow-ink-deep, --text-brass, --text-chip-hover, --text-muted, --text-primary, --text-strong
+   Stand:  ui-kit/related.html
+   Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.related-events{border-top:1px solid var(--border-hairline);margin:var(--space-14) 0 0;padding:var(--space-12) 0 var(--space-4)}
+.related-events h2{font-size:var(--text-14);margin:0 0 var(--space-8)}
+.related-list{list-style:none;padding:0;margin:0}
+.related-list li{border-bottom:1px solid var(--border-hairline)}
+.related-list a{display:flex;justify-content:space-between;gap:var(--space-12);padding:var(--space-8) 0;font-size:var(--text-13)}
+.rel-odds{white-space:nowrap}
+.app-case .related-events{position:relative;overflow:hidden;background-color:var(--bg-plate);background-image:var(--grain-fine),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-42);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
+    inset 1px 0 0 var(--bevel-faint),
+    inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-55),
+    0 30px 58px -34px var(--shadow-ink-deep),0 12px 26px -18px var(--shadow-ink-70)}
+.app-case .related-events{margin:0}
+.app-case .related-events{padding:var(--space-20) var(--space-22) var(--space-22)}
+.app-case .related-events h2{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary);margin:0 0 var(--space-8)}
+.app-case .related-list{display:flex;flex-direction:column}
+.app-case .related-list li{border-bottom:1px solid var(--edge-groove-dark)}
+.app-case .related-list li:last-child{border-bottom:0}
+.app-case .related-list a{display:flex;align-items:center;gap:var(--space-14);padding:var(--space-12) var(--space-4);color:var(--text-primary);text-decoration:none}
+.app-case .rel-thumb{width:46px;height:46px;flex:0 0 46px;border-radius:var(--radius-10);border:1px solid var(--border-hairline);background-size:cover;background-position:center}
+.app-case .rel-q{flex:1;min-width:0;font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-13-5);line-height:1.25;letter-spacing:-.01em;color:var(--text-primary);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.app-case .related-list a:hover .rel-q{color:var(--text-brass)}
+.app-case .rel-odds{flex:0 0 auto;font-family:var(--font-mono);font-size:var(--text-12-5);color:var(--text-muted);white-space:nowrap}
+.app-case .related-more{display:flex;align-items:center;justify-content:center;margin:var(--space-16) auto var(--space-2);width:100%;max-width:300px;min-height:var(--control-lg);padding:var(--space-12) var(--space-24);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);letter-spacing:.01em;color:var(--text-chip-hover);background:var(--bg-chip);border:1px solid var(--bevel-notice);border-radius:var(--radius-12);text-decoration:none;box-shadow:inset 0 1px 0 var(--edge-groove-light);transition:border-color var(--dur-base) ease,background var(--dur-base) ease,color var(--dur-base) ease}
+.app-case .related-more:hover{border-color:var(--line-brass-soft);background:var(--bg-control-hover);color:var(--text-strong)}

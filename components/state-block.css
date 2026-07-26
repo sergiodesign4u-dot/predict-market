@@ -1,0 +1,40 @@
+/* components/state-block.css
+   Component: state-block. Classes: .ss-label, .ss-row, .state-actions, .state-block, .state-msg, .state-switch, .state-title, .sys-link-list, .sys-links, .sys-note.
+
+   Reads: --bg-control, --bg-surface, --border-hairline, --color-action, --color-action-lit, --glow-brass, --text-brass, --text-muted, --text-on-brass, --text-primary
+   Stand:  ui-kit/state-block.html
+   Stands on: 24 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.state-switch{padding:var(--space-7) var(--space-10);font-size:var(--text-11);display:flex;flex-direction:column;gap:var(--space-5)}
+.state-switch .ss-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-6)}
+.state-switch .ss-label{text-transform:uppercase;letter-spacing:.05em;font-size:var(--text-10);width:var(--control-lg);flex:0 0 44px}
+.state-switch a{text-decoration:none;padding:var(--space-2) var(--space-8)}
+.state-switch a[aria-current="page"]{font-weight:var(--weight-bold)}
+.state-block{padding:var(--space-30) var(--space-18);margin:var(--space-4) 0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-10)}
+.state-block .ic{width:var(--space-30);height:var(--space-30)}
+.state-title{font-size:var(--text-14);font-weight:var(--weight-bold);margin:0}
+.state-msg{font-size:var(--text-12);margin:0;max-width:380px;line-height:var(--leading-base)}
+.state-actions{display:flex;flex-wrap:wrap;gap:var(--space-8);justify-content:center;margin-top:var(--space-4)}
+.state-switch{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);color:var(--text-muted)}
+.state-switch .ss-label{color:var(--text-muted)}
+.state-switch a{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-8)}
+.state-switch a[aria-current="page"]{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);border-color:var(--color-action)}
+.state-block{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-16)}
+.state-block .ic{stroke:var(--text-brass)}
+.state-title{color:var(--text-primary);font-family:var(--font-display)}
+.state-msg{color:var(--text-muted)}
+.app-case .cat-main .state-block{background:transparent;border:0;border-radius:0;box-shadow:none;margin:0;padding:var(--space-44) var(--space-18) var(--space-40)}
+.app-case .cat-main .state-block .state-actions{margin-top:var(--space-20)}
+.app-case .resolved-panel .state-block{background:none;border:0;box-shadow:none;border-radius:0;margin:0!important;padding:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:var(--space-8)}
+.app-case .resolved-panel .state-block .ic{width:var(--space-30);height:var(--space-30);stroke:var(--text-brass);fill:none}
+.app-case .resolved-panel .state-title{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary);margin:0}
+.app-case .resolved-panel .state-msg{font-size:var(--text-12-5);line-height:var(--leading-base);color:var(--text-muted);margin:0}
+.app-case .resolved-panel .state-actions{flex-direction:column;width:100%;gap:var(--space-8);margin-top:var(--space-6)}
+.app-case .resolved-panel .state-actions a{display:block;width:100%}
+.app-case .sys-note{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-loose);margin:var(--space-14) 0 0}
+.app-case .sys-links{margin-top:var(--space-22);border-top:1px solid var(--border-hairline);padding-top:var(--space-18)}
+.app-case .sys-links h2{font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-semibold);text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin:0 0 var(--space-12)}
+.app-case .sys-link-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-10) var(--space-22)}
+.app-case .sys-link-list a{color:var(--text-brass);text-decoration:none;font-weight:var(--weight-semibold);font-size:var(--text-14);border-bottom:1px solid var(--glow-brass);padding-bottom:var(--space-2)}
+.app-case .sys-link-list a:hover{border-bottom-color:var(--text-brass)}

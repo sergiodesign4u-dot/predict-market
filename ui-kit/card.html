@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - Event card</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="card">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<div class="tk-wrap">
+  <header class="tk-hero">
+    <h1>Event card</h1>
+    <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">components/card.css</span>
+      <span class="tk-badge">76 rules</span>
+      <span class="tk-badge">24 classes</span>
+      <span class="tk-badge">76 screens</span>
+    </div>
+  </header>
+
+  <section class="tk-sec" id="live">
+    <h2 data-n="01">Live</h2>
+    <p class="tk-note">The component in the markup it ships with, lifted from the frozen kit so the
+    stand cannot drift from the product. Painted by <code>components/index.css</code>, nothing else.</p>
+    <div class="ck-scene"><span class="ck-scene-lbl">specimen 1</span><div class="ck-stage"><div class="grid"><article class="card"><div class="card-body">
+  <div class="top"><span class="thumb"></span><div class="top-txt">
+    <a class="q" href="#">Will the U.S. government shut down before Nov 1?</a><p class="why">Funding lapses at midnight Friday unless the Senate passes a stopgap.</p></div></div>
+  <div class="oddsbar"><div class="track"><span class="fill" style="width:64%"></span></div><div class="lbls"><span class="l-yes">Yes 64%</span><span class="l-no">No 36%</span></div></div>
+  <div class="yesno"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div>
+  <div class="meta"><div class="meta-txt"><span class="m-label">Vol</span> <span class="m-val">$48.2k</span> <span class="m-label">Closes</span> <span class="m-val">Oct 31</span></div>
+    <button class="bookmark-btn" aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></div>
+</div></article></div></div></div>
+<div class="ck-scene"><span class="ck-scene-lbl">specimen 2</span><div class="ck-stage"><div class="grid"><article class="card skeleton"><div class="card-body"><div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div><div class="sk-line w40"></div><div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div></div></article></div></div></div>
+<div class="ck-scene"><span class="ck-scene-lbl">specimen 3</span><div class="ck-stage"><div class="grid"><div class="card"><div class="card-body">
+        <div class="ed-head">
+          <span class="ed-thumb"></span>
+          <div>
+            <span class="ed-cat">Politics</span>
+            <h1 class="ed-q">Will the U.S. government shut down before Nov 1?</h1>
+            <p class="ed-prob-big">Chance <span class="prob">64%</span> yes <span class="prob">36%</span> no</p>
+            <div class="ed-oddsbar"><span class="track"><span class="fill" style="width:64%"></span></span></div>
+          </div>
+          <div class="ed-actions">
+            <button aria-label="Comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"></use></svg></button>
+            <button aria-label="Share"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share-b"></use></svg></button>
+            <button data-fav="" aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button>
+          </div>
+        </div>
+        <div class="ed-section"><h3>Resolution</h3><p class="resolution">Resolves <strong>Yes</strong> if a federal funding gap begins before Nov 1, per the official Congressional record.</p></div>
+        <div class="ed-section"><h3>Why this price</h3>
+          <div class="args"><div class="arg-col"><h4>For Yes</h4><ul><li>No stopgap scheduled before the deadline.</li><li>Both chambers are out until Thursday.</li></ul></div>
+          <div class="arg-col"><h4>For No</h4><ul><li>Leadership signaled a short-term deal.</li><li>Markets are pricing a last-minute vote.</li></ul></div></div>
+        </div>
+      </div></div></div></div></div>
+  </section>
+
+  <section class="tk-sec" id="roles">
+    <h2 data-n="02">Roles it reads</h2>
+    <p class="tk-note">Colour comes in only through these. Change one on
+    <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bevel-faint)"></i><code>--bevel-faint</code></span><span class="ck-role"><i style="background:var(--bevel-hair-soft)"></i><code>--bevel-hair-soft</code></span><span class="ck-role"><i style="background:var(--bevel-lo)"></i><code>--bevel-lo</code></span><span class="ck-role"><i style="background:var(--bevel-xs)"></i><code>--bevel-xs</code></span><span class="ck-role"><i style="background:var(--bg-card)"></i><code>--bg-card</code></span><span class="ck-role"><i style="background:var(--bg-card-from)"></i><code>--bg-card-from</code></span><span class="ck-role"><i style="background:var(--bg-card-to)"></i><code>--bg-card-to</code></span><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-surface)"></i><code>--bg-surface</code></span><span class="ck-role"><i style="background:var(--border-brass)"></i><code>--border-brass</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--edge-shade)"></i><code>--edge-shade</code></span><span class="ck-role"><i style="background:var(--edge-shade-strong)"></i><code>--edge-shade-strong</code></span><span class="ck-role"><i style="background:var(--outcome-no-figure)"></i><code>--outcome-no-figure</code></span><span class="ck-role"><i style="background:var(--outcome-yes-text)"></i><code>--outcome-yes-text</code></span><span class="ck-role"><i style="background:var(--shadow-ink)"></i><code>--shadow-ink</code></span><span class="ck-role"><i style="background:var(--shadow-ink-40)"></i><code>--shadow-ink-40</code></span><span class="ck-role"><i style="background:var(--shadow-ink-45)"></i><code>--shadow-ink-45</code></span><span class="ck-role"><i style="background:var(--shadow-ink-60)"></i><code>--shadow-ink-60</code></span><span class="ck-role"><i style="background:var(--shadow-ink-70)"></i><code>--shadow-ink-70</code></span><span class="ck-role"><i style="background:var(--shadow-ink-80)"></i><code>--shadow-ink-80</code></span><span class="ck-role"><i style="background:var(--shadow-ink-deep)"></i><code>--shadow-ink-deep</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
+  </section>
+
+  <section class="tk-sec" id="classes">
+    <h2 data-n="03">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry it.
+    A class on no screen is either a state the markup toggles or a candidate for deletion in step 7.</p>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.bookmark-btn</td><td class='tk-hex'>8</td></tr><tr><td class='tk-role'>.card</td><td class='tk-hex'>24</td></tr><tr><td class='tk-role'>.card-body</td><td class='tk-hex'>11</td></tr><tr><td class='tk-role'>.cat-crypto</td><td class='tk-hex'>1</td></tr><tr><td class='tk-role'>.cat-culture</td><td class='tk-hex'>1</td></tr><tr><td class='tk-role'>.cat-general</td><td class='tk-hex'>1</td></tr><tr><td class='tk-role'>.cat-politics</td><td class='tk-hex'>1</td></tr><tr><td class='tk-role'>.ed-main</td><td class='tk-hex'>11</td></tr><tr><td class='tk-role'>.ed-prob-big</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.gallery</td><td class='tk-hex'>2</td></tr><tr><td class='tk-role'>.grid</td><td class='tk-hex'>11</td></tr><tr><td class='tk-role'>.ic</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.m-label</td><td class='tk-hex'>0</td></tr><tr><td class='tk-role'>.m-val</td><td class='tk-hex'>0</td></tr><tr><td class='tk-role'>.meta</td><td class='tk-hex'>8</td></tr><tr><td class='tk-role'>.meta-txt</td><td class='tk-hex'>8</td></tr><tr><td class='tk-role'>.prob</td><td class='tk-hex'>17</td></tr><tr><td class='tk-role'>.prob-line</td><td class='tk-hex'>8</td></tr><tr><td class='tk-role'>.q</td><td class='tk-hex'>8</td></tr><tr><td class='tk-role'>.thumb</td><td class='tk-hex'>8</td></tr><tr><td class='tk-role'>.top</td><td class='tk-hex'>11</td></tr><tr><td class='tk-role'>.top-txt</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.why</td><td class='tk-hex'>7</td></tr></tbody></table>
+  </section>
+
+  <section class="tk-sec" id="screens">
+    <h2 data-n="04">Where it stands</h2>
+    <div class="ck-screens"><a href="../ui-visual/404.html">404</a><a href="../ui-visual/500.html">500</a><a href="../ui-visual/active-bets-empty-new.html">active-bets-empty-new</a><a href="../ui-visual/active-bets-empty-resolved.html">active-bets-empty-resolved</a><a href="../ui-visual/active-bets-error.html">active-bets-error</a><a href="../ui-visual/active-bets-history-empty.html">active-bets-history-empty</a><a href="../ui-visual/active-bets-history-error.html">active-bets-history-error</a><a href="../ui-visual/active-bets-history-loading.html">active-bets-history-loading</a><a href="../ui-visual/active-bets-history.html">active-bets-history</a><a href="../ui-visual/active-bets-loading.html">active-bets-loading</a><a href="../ui-visual/active-bets.html">active-bets</a><a href="../ui-visual/cookie-consent.html">cookie-consent</a><a href="../ui-visual/deposit-error-card.html">deposit-error-card</a><a href="../ui-visual/deposit-error-kyc.html">deposit-error-kyc</a><a href="../ui-visual/deposit-loading.html">deposit-loading</a><a href="../ui-visual/deposit-minimum-not-met.html">deposit-minimum-not-met</a><a href="../ui-visual/deposit-pending.html">deposit-pending</a><a href="../ui-visual/deposit-widget-load-failure.html">deposit-widget-load-failure</a><a href="../ui-visual/deposit.html">deposit</a><a href="../ui-visual/event-detail-bet-error.html">event-detail-bet-error</a><a href="../ui-visual/event-detail-bet-insufficient.html">event-detail-bet-insufficient</a><a href="../ui-visual/event-detail-bet-processing.html">event-detail-bet-processing</a><a href="../ui-visual/event-detail-bet-reconcile.html">event-detail-bet-reconcile</a><a href="../ui-visual/event-detail-error.html">event-detail-error</a><a href="../ui-visual/event-detail-loading.html">event-detail-loading</a><a href="../ui-visual/event-detail-logged-out-error.html">event-detail-logged-out-error</a><a href="../ui-visual/event-detail-logged-out-loading.html">event-detail-logged-out-loading</a><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-logged-out.html">event-detail-logged-out</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-detail-resolved.html">event-detail-resolved</a><a href="../ui-visual/event-detail.html">event-detail</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-empty.html">event-feed-empty</a><a href="../ui-visual/event-feed-error.html">event-feed-error</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-empty.html">event-feed-logged-out-empty</a><a href="../ui-visual/event-feed-logged-out-error.html">event-feed-logged-out-error</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-empty.html">favorites-empty</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/loss-loading.html">loss-loading</a><a href="../ui-visual/loss.html">loss</a><a href="../ui-visual/maintenance.html">maintenance</a><a href="../ui-visual/my-profile-error.html">my-profile-error</a><a href="../ui-visual/my-profile-loading.html">my-profile-loading</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/notifications-empty.html">notifications-empty</a><a href="../ui-visual/notifications-error.html">notifications-error</a><a href="../ui-visual/notifications-loading.html">notifications-loading</a><a href="../ui-visual/notifications-push.html">notifications-push</a><a href="../ui-visual/notifications.html">notifications</a><a href="../ui-visual/public-profile-error.html">public-profile-error</a><a href="../ui-visual/public-profile-loading.html">public-profile-loading</a><a href="../ui-visual/public-profile-not-found.html">public-profile-not-found</a><a href="../ui-visual/public-profile.html">public-profile</a><a href="../ui-visual/sign-in-error.html">sign-in-error</a><a href="../ui-visual/sign-in-loading.html">sign-in-loading</a><a href="../ui-visual/sign-in-provider-conflict.html">sign-in-provider-conflict</a><a href="../ui-visual/sign-in.html">sign-in</a><a href="../ui-visual/toasts.html">toasts</a><a href="../ui-visual/wallet-error.html">wallet-error</a><a href="../ui-visual/wallet-loading.html">wallet-loading</a><a href="../ui-visual/wallet.html">wallet</a><a href="../ui-visual/win-error.html">win-error</a><a href="../ui-visual/win-loading.html">win-loading</a><a href="../ui-visual/win-payout-pending.html">win-payout-pending</a><a href="../ui-visual/win.html">win</a></div>
+  </section>
+
+  <section class="tk-sec" id="css">
+    <h2 data-n="05">The file</h2>
+    <p class="tk-note">To change this component, edit <code>components/card.css</code>. To change a
+    value it reads, edit the role in <code>components/tokens.css</code>.</p>
+    <details class="ck-src"><summary>components/card.css</summary><pre>/* components/card.css
+   Component: card. Classes: .bookmark-btn, .card, .card-body, .m-label, .m-val, .meta, .meta-txt, .prob, .prob-line, .q, .thumb, .top, .top-txt, .why.
+
+   Reads: --bevel-faint, --bevel-hair-soft, --bevel-lo, --bevel-xs, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-surface, --border-brass, --border-hairline, --color-action, --edge-groove-light, --edge-shade, --edge-shade-strong, --outcome-no-figure, --outcome-yes-text, --shadow-ink, --shadow-ink-40, --shadow-ink-45, --shadow-ink-60, --shadow-ink-70, --shadow-ink-80, --shadow-ink-deep, --text-brass, --text-muted, --text-primary
+   Stand:  ui-kit/card.html
+   Stands on: 24 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.card .top{display:flex}
+.thumb{display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--space-2)}
+.card .q{font-size:var(--text-13);font-weight:var(--weight-bold);margin:0}
+.card a.q{text-decoration:none}
+.card .prob-line{margin:var(--space-8) 0 var(--space-6)}
+.card .prob{font-weight:var(--weight-bold)}
+.card .meta{display:flex;justify-content:space-between;gap:var(--space-8);font-size:var(--text-10)}
+.card .meta .meta-txt{display:flex;flex-wrap:wrap;gap:var(--space-10)}
+.card .bookmark-btn{flex:0 0 auto;cursor:pointer;display:inline-flex;align-items:center;line-height:0}
+.why{margin:var(--space-3) 0 0;line-height:1.4}
+.ed-prob-big .prob{font-weight:var(--weight-bold);border:1px solid var(--border-hairline);padding:var(--space-1) var(--space-6);font-size:var(--text-14)}
+.card{position:relative;display:flex;flex-direction:column;background:var(--bg-surface);overflow:hidden}
+.card::before{top:-4px;right:-8px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ff8ac4' stroke-width='1.4'%3E%3Cpath d='M-10 14 C 20 4 40 24 70 14 S 120 4 150 14 S 200 24 230 14'/%3E%3Cpath d='M-10 30 C 20 20 40 40 70 30 S 120 20 150 30 S 200 40 230 30'/%3E%3Cpath d='M-10 46 C 20 36 40 56 70 46 S 120 36 150 46 S 200 56 230 46'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 78 C 20 68 40 88 70 78 S 120 68 150 78 S 200 88 230 78'/%3E%3Cpath d='M-10 94 C 20 84 40 104 70 94 S 120 84 150 94 S 200 104 230 94'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / 220px 132px}
+.card &gt; *{position:relative;z-index:1}
+.card .card-body{display:flex;flex-direction:column;flex:1 1 auto;padding:var(--space-12) var(--space-12) var(--space-8)}
+.thumb{width:var(--space-56);height:var(--space-56);flex:0 0 56px;border:1px solid var(--border-hairline);background-size:cover;background-position:center;color:transparent;font-size:0}
+.grid &gt; .card:nth-of-type(1) .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
+.grid &gt; .card:nth-of-type(2) .thumb{background-image:url(../ui-visual/assets/event-crypto.jpg)}
+.grid &gt; .card:nth-of-type(3) .thumb{background-image:url(../ui-visual/assets/event-culture.jpg)}
+.grid &gt; .card:nth-of-type(4) .thumb{background-image:url(../ui-visual/assets/event-general.jpg)}
+.grid &gt; .card:nth-of-type(5) .thumb{background-image:url(../ui-visual/assets/event-crypto.jpg)}
+.grid &gt; .card:nth-of-type(6) .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
+.grid &gt; .card:nth-of-type(7) .thumb{background-image:url(../ui-visual/assets/event-general.jpg)}
+.grid &gt; .card:nth-of-type(8) .thumb{background-image:url(../ui-visual/assets/event-culture.jpg)}
+.grid &gt; .card:nth-of-type(9) .thumb{background-image:url(../ui-visual/assets/event-crypto.jpg)}
+.grid &gt; .card:nth-of-type(10) .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
+.grid &gt; .card:nth-of-type(11) .thumb{background-image:url(../ui-visual/assets/event-culture.jpg)}
+.grid &gt; .card:nth-of-type(12) .thumb{background-image:url(../ui-visual/assets/event-general.jpg)}
+.cat-politics .grid &gt; .card .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
+.cat-crypto .grid &gt; .card .thumb{background-image:url(../ui-visual/assets/event-crypto.jpg)}
+.cat-culture .grid &gt; .card .thumb{background-image:url(../ui-visual/assets/event-culture.jpg)}
+.cat-general .grid &gt; .card .thumb{background-image:url(../ui-visual/assets/event-general.jpg)}
+.card .q,.card a.q{font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-13);line-height:var(--leading-tight);letter-spacing:-.02em;color:var(--text-primary)}
+.card a.q:hover{color:var(--text-brass);text-decoration:none}
+.why{color:var(--text-muted);font-size:var(--text-12-5);min-height:35px;margin-bottom:var(--space-12)}
+.card .prob-line{color:var(--text-muted);font-size:var(--text-11);letter-spacing:.03em;text-transform:uppercase}
+.card .prob{font-family:var(--font-display);background:transparent;border:0;color:var(--text-primary);font-size:var(--text-15);padding:0 var(--space-2)}
+.card .meta{color:var(--text-muted);align-items:center;margin-bottom:0;padding-top:var(--space-8);font-family:var(--font-mono)}
+.card .meta .m-label{color:var(--text-muted)}
+.card .meta .m-val{color:var(--text-primary);font-weight:var(--weight-semibold)}
+.card .bookmark-btn{background:transparent;border:0;padding:0}
+.card .bookmark-btn .ic{width:var(--icon-15);height:var(--icon-15);stroke:var(--text-muted)}
+.card .bookmark-btn:hover .ic{stroke:var(--text-brass)}
+.card .bookmark-btn[aria-pressed="true"] .ic{fill:var(--text-brass);stroke:var(--text-brass)}
+.card .bookmark-btn .ic:has(use){color:var(--text-muted)}
+.card .bookmark-btn:hover .ic:has(use){color:var(--text-brass)}
+.card .bookmark-btn[aria-pressed="true"] .ic:has(use){color:var(--text-brass)}
+.bookmark-btn:focus-visible,.card .q:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
+@media(max-width:640px){
+  .card .bookmark-btn{min-width:var(--control-lg);min-height:var(--control-lg);display:inline-flex;align-items:center;justify-content:center;margin:-8px -8px -8px 0}
+}
+.card::before{content:'';position:absolute;inset:0;width:auto;height:auto;z-index:0;pointer-events:none;opacity:1;background-color:transparent;background-repeat:repeat;background-size:auto;background-image:repeating-linear-gradient(0deg,transparent 0 27px,var(--brass-a055) 27px 28px),
+    repeating-linear-gradient(90deg,transparent 0 27px,var(--brass-a055) 27px 28px)}
+.thumb{border-color:var(--border-brass)}
+.card{background-color:var(--bg-card);background-image:var(--grain-fine),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-40);border-radius:var(--radius-8);box-shadow:inset 0 1px 0 var(--bevel-xs),inset 1px 0 0 var(--bevel-hair-soft),inset -1px 0 0 var(--edge-shade),inset 0 -1px 0 var(--edge-shade-strong),0 16px 30px -18px var(--shadow-ink-80),0 5px 12px -6px var(--shadow-ink-60);transition:transform .28s var(--ease-out),box-shadow .28s var(--ease-out)}
+.card:hover{transform:translateY(-3px);box-shadow:inset 0 1px 0 var(--bevel-lo),inset 0 -1px 0 var(--edge-shade-strong),0 26px 44px -20px var(--shadow-ink-deep),0 10px 18px -8px var(--shadow-ink-70)}
+.card::after{content:'';display:block;position:absolute;left:-52px;bottom:0;width:168px;height:78%;z-index:0;pointer-events:none;opacity:.20;background:url("../ui-visual/assets/trust-column-full.webp") no-repeat center bottom;background-size:contain;-webkit-mask-image:linear-gradient(to right,var(--shadow-ink) 44%,transparent 94%);mask-image:linear-gradient(to right,var(--shadow-ink) 44%,transparent 94%)}
+.card .card-body{position:relative;z-index:1}
+.card::before{background-position:0 -10px;-webkit-mask-image:linear-gradient(to bottom left,var(--shadow-ink) 0%,var(--edge-shade-strong) 24%,transparent 56%);mask-image:linear-gradient(to bottom left,var(--shadow-ink) 0%,var(--edge-shade-strong) 24%,transparent 56%)}
+.card .meta{border-top:1px solid var(--shadow-ink-45);box-shadow:inset 0 1px 0 var(--bevel-faint);margin-top:auto}
+.card .top{align-items:stretch;gap:var(--space-14);margin-bottom:var(--space-14);min-height:88px}
+.card .top-txt{display:flex;flex-direction:column;gap:var(--space-8);min-width:0}
+.card .top-txt .why{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.card .thumb{width:60px;flex:0 0 60px;height:auto;align-self:stretch;min-height:84px;border:0;border-radius:var(--radius-6) var(--radius-4) var(--radius-4) var(--radius-6);background-size:cover;background-position:center;-webkit-mask-image:linear-gradient(to right,var(--shadow-ink) 52%,transparent);mask-image:linear-gradient(to right,var(--shadow-ink) 52%,transparent)}
+.card .top-txt .why{margin:0}
+.thumb{border-radius:var(--radius-6)}
+@media(prefers-reduced-motion:reduce){
+  .card{transition:box-shadow .2s}
+  .card:hover{transform:none}
+}
+.app-case .ed-main&gt;.card{background:none;border:0;box-shadow:none;border-radius:0;overflow:visible;transition:none}
+.app-case .ed-main&gt;.card:hover{transform:none;box-shadow:none}
+.app-case .ed-main&gt;.card::before,.app-case .ed-main&gt;.card::after{display:none}
+.app-case .ed-prob-big .prob{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-20);letter-spacing:normal;text-transform:none;border:0;background:transparent;padding:0 var(--space-4)}
+.app-case .ed-prob-big .prob:first-of-type{color:var(--outcome-yes-text)}
+.app-case .ed-prob-big .prob:last-of-type{color:var(--outcome-no-figure)}
+.app-case .gallery .card{width:172px;height:98px;flex:0 0 auto;border:1px solid var(--border-hairline);border-radius:var(--radius-12);background:linear-gradient(150deg,color-mix(in oklab,var(--color-action) 11%,var(--bg-control)),var(--bg-control) 70%);color:var(--text-primary);font-size:var(--text-11);line-height:1.35;font-weight:var(--weight-semibold);padding:var(--space-12);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 var(--edge-groove-light),0 14px 30px -24px var(--shadow-ink)}
+.app-case .gallery .card::before{display:none}
+.app-case .gallery .card::after{content:"\2197";background:none;position:absolute;top:8px;right:11px;left:auto;bottom:auto;width:auto;height:auto;color:var(--text-brass);font-size:var(--text-14);opacity:.85}
+</pre></details>
+  </section>
+</div>
+
+<script src="_nav.js"></script>
+</body>
+</html>

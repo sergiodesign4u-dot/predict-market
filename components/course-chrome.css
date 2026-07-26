@@ -1,0 +1,42 @@
+/* components/course-chrome.css
+   the course roadmap sidebar every page of this repo carries. Not product.
+
+   Reads: --bevel-hair, --border-hairline, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-text, --edge-shade-strong, --text-brass
+   Stand:  ui-kit/course-chrome.html
+   Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.wf-screen > a.planned::after{content:"planned";font-size:var(--text-8);text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--border-hairline);padding:0 var(--space-4);margin-left:var(--space-6)}
+.rm-toggle{position:fixed;top:12px;left:12px;z-index:201;background:var(--chrome-bg);border:1px solid var(--chrome-border);border-radius:var(--radius-6);width:var(--control-md);height:var(--control-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-4);cursor:pointer}
+.rm-toggle span{display:block;width:var(--icon-15);height:1.5px;background:var(--chrome-text);border-radius:var(--radius-2)}
+.rm-overlay{display:none;position:fixed;inset:0;background:var(--edge-shade-strong);z-index:199;backdrop-filter:blur(2px)}
+.rm-overlay.open{display:block}
+.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--chrome-bg);border-right:1px solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:200;transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
+.sidebar.open{transform:translateX(0)}
+.sidebar::-webkit-scrollbar{display:none}
+.sidebar-brand{padding:var(--space-20) var(--space-16) var(--space-16);border-bottom:1px solid var(--chrome-border)}
+.sidebar-project-name{font-size:var(--text-11);font-weight:var(--weight-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--chrome-accent);line-height:1.4}
+.sidebar-nav{padding:var(--space-12) 0;flex:1}
+.sidebar-page-link{display:flex;align-items:center;justify-content:space-between;font-size:var(--text-13);font-weight:var(--weight-medium);color:var(--chrome-text);text-decoration:none;padding:var(--space-8) var(--space-16);cursor:pointer}
+.sidebar-page-link:hover:not(.planned){background:var(--bevel-hair)}
+.sidebar-page-link.active{color:var(--chrome-accent)}
+.sidebar-page-link.planned{color:var(--chrome-muted);cursor:default;opacity:.6}
+.sidebar-page-link.planned::after{content:'Soon';font-size:var(--text-9);font-weight:var(--weight-bold);letter-spacing:.07em;text-transform:uppercase;background:var(--bevel-hair);color:var(--chrome-muted);padding:var(--space-2) var(--space-4);border-radius:var(--radius-4);border:1px solid var(--chrome-border)}
+.sidebar-page-link.planned.next{opacity:1}
+.sidebar-page-link.planned.next::after{content:'Next';color:var(--chrome-accent);border-color:var(--chrome-accent)}
+.sidebar-sub{padding:var(--space-2) 0 var(--space-8)}
+.sidebar-sub-link{display:block;font-size:var(--text-12);color:var(--chrome-muted);text-decoration:none;padding:var(--space-4) var(--space-16) var(--space-4) var(--space-28);position:relative}
+.sidebar-sub-link:hover{color:var(--chrome-text)}
+.sidebar-sub-link.active{color:var(--chrome-text)}
+.sidebar-sub-link.active::before{content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:var(--space-3);height:var(--space-3);border-radius:50%;background:var(--chrome-accent)}
+.sidebar-divider{font-size:var(--text-10);font-weight:var(--weight-semibold);letter-spacing:.1em;text-transform:uppercase;color:var(--chrome-muted);padding:var(--space-16) var(--space-16) var(--space-6);opacity:.55}
+.sidebar-back{display:flex;align-items:center;gap:var(--space-8);font-size:var(--text-12);font-weight:var(--weight-semibold);color:var(--chrome-muted);text-decoration:none;padding:var(--space-12) var(--space-16);border-bottom:1px solid var(--chrome-border)}
+.sidebar-back:hover{color:var(--chrome-accent);background:var(--bevel-hair)}
+.sidebar-back .bk-arrow{font-size:var(--text-14);line-height:1}
+.sidebar-sub-head{font-size:var(--text-9-5);font-weight:var(--weight-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--chrome-muted);padding:var(--space-8) var(--space-16) var(--space-4) var(--space-28);opacity:.7}
+.sidebar-note{font-size:var(--text-11);line-height:var(--leading-body);color:var(--chrome-muted);padding:var(--space-10) var(--space-16);opacity:.7}
+@media(min-width:860px){
+  .rm-toggle,.rm-overlay{display:none!important}
+  .sidebar{transform:none;transition:none}
+}
+.sidebar a:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}

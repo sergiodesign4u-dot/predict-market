@@ -22,15 +22,20 @@
   /* ---- graphite ramp (dark to light). The Vault canvas and every stone ---- */
   --graphite-950:#0b0c0e;   /* engraved groove line */
   --graphite-940:#0d0f12;   /* input well, segmented container */
+  --graphite-935:#101215;   /* the chart well */
   --graphite-930:#0f1013;   /* page */
   --graphite-920:#111316;   /* card gradient end */
   --graphite-915:#131417;   /* course sidebar */
   --graphite-910:#121417;   /* content plate */
-  --graphite-900:#141619;   /* device canvas, card base. merged: #14161a (delta 1 in blue) */
+  --graphite-905:#14161a;   /* card base and the hero veil */
+  --graphite-900:#141619;   /* device canvas */
+  --graphite-895:#14171c;   /* the logged-out comment prompt on hover */
+  --graphite-890:#16181c;   /* the mobile bet dock */
   --graphite-880:#15171b;   /* quiet card block, declared in stage 08 as --card3d and never wired */
   --graphite-870:#17191d;   /* stone gradient start (slab, plate, card) */
   --graphite-865:#191c20;   /* mobile bet dock gradient start */
   --graphite-860:#191b1f;   /* outer slab base */
+  --graphite-855:#191c21;   /* a chip pressed */
   --graphite-850:#1b1e23;   /* graphite chip (cat-nav, tabs, options, load-more) */
   --graphite-840:#1c1e22;   /* slab gradient top, sticky header */
   --graphite-830:#1c1f24;   /* raised surface: header, dialog, dropdown, footer, state block */
@@ -42,11 +47,13 @@
   --graphite-720:#282b32;   /* course sidebar hairline */
   /* graphite with alpha (photo veils on the featured hero) */
   --graphite-a12:rgba(20,22,26,.12);
+  --graphite-a28:rgba(18,20,23,.28);
   --graphite-a50:rgba(20,22,26,.5);
   --graphite-a55:rgba(20,22,26,.55);
   --graphite-a82:rgba(20,22,26,.82);
 
   /* ---- bone (the warm light ink of the Vault) ---- */
+  --bone-080:#f2eee4;       /* the plate a brand mark sits on */
   --bone-100:#ede7da;       /* primary text */
   --bone-150:#e9e3d7;       /* chip label on hover */
   --bone-200:#ded6c5;       /* notification icon */
@@ -59,13 +66,22 @@
 
   /* ---- brass (the brand metal) ---- */
   --brass-200:#e6c877;      /* lit brass text: hero eyebrow, SEO plate */
+  --brass-220:#d8bf7f;      /* the volume tag on the featured hero */
   --brass-250:#e7d6a6;      /* active chip label */
   --brass-300:#d9b968;      /* gradient lit end. merged: --lime, same value */
   --brass-400:#d7ac53;      /* text-safe brass on graphite */
   --brass-500:#c7a24e;      /* brand brass. merged: --brass, same value */
   --brass-800:#6e5a2e;      /* bronze. Documented in DESIGN.md, no consumer in code yet */
-  --brass-a06:rgba(199,162,78,.055);  /* graph grid on the card */
+  --brass-a055:rgba(199,162,78,.055); /* graph grid on the card */
+  --brass-a06:rgba(199,162,78,.06);
+  --brass-a08:rgba(199,162,78,.08);
+  --brass-a09:rgba(199,162,78,.09);
+  --brass-a14:rgba(199,162,78,.14);
   --brass-a16:rgba(199,162,78,.16);   /* focus glow on a field */
+  --brass-a24:rgba(199,162,78,.24);
+  --brass-a40:rgba(199,162,78,.4);
+  --brass-a42:rgba(199,162,78,.42);
+  --brass-a60:rgba(199,162,78,.6);
   --brass-a30:rgba(199,162,78,.30);   /* inset hairline of the plate */
   --brass-a35:rgba(199,162,78,.35);
   --brass-a45:rgba(199,162,78,.45);
@@ -76,20 +92,32 @@
   --plum-950:#180810;
 
   /* ---- outcome green ---- */
+  --green-150:#8fe0ad;      /* YES text on the filled mobile dock */
   --green-200:#4fd694;      /* YES line drawn over photography (hero chart) */
+  --green-250:#42d18a;      /* the price line on the event chart */
   --green-300:#77d19b;      /* quiet YES text on graphite */
   --green-500:#4fa96b;      /* YES */
   --green-700:#3f7d55;      /* quiet YES line */
   --green-950:#0d1410;      /* ink on a filled YES */
   --green-975:#15211a;      /* win sheet head stone */
+  --green-a10:rgba(79,169,107,.10);
   --green-a12:rgba(79,169,107,.12);   /* quiet YES fill */
+  --green-a20:rgba(79,169,107,.2);
+  --green-a42:rgba(66,209,138,.42);   /* the glow under the price line */
 
   /* ---- outcome red ---- */
-  --red-300:#e79087;        /* quiet NO text. merged: #e88a84 (delta 1/6/3) */
+  --red-250:#ef9a92;        /* NO text on the filled mobile dock */
+  --red-300:#e79087;        /* quiet NO text on a control */
+  --red-320:#e88a84;        /* the same quiet NO on a figure. One step apart from --red-300 and
+                               kept apart: merging them moved 36 declarations, and this stage
+                               does not move pixels. Step 7 decides whether they collapse */
+  --red-400:#e26d6d;        /* NO line drawn over photography (hero chart) */
   --red-500:#c85a50;        /* NO */
   --red-700:#8f4841;        /* quiet NO line */
   --red-950:#160b09;        /* ink on a filled NO */
+  --red-a10:rgba(200,90,80,.10);
   --red-a12:rgba(200,90,80,.12);      /* quiet NO fill */
+  --red-a20:rgba(200,90,80,.2);
 
   /* ---- neutral extremes and the bevel alphas the embossed plates need ---- */
   --white:#fff;
@@ -102,13 +130,24 @@
   --white-a10:rgba(255,255,255,.1);
   --white-a14:rgba(255,255,255,.14);
   --white-a16:rgba(255,255,255,.16);
+  --white-a15:rgba(255,255,255,.15);
   --white-a17:rgba(255,255,255,.17);
+  --white-a20:rgba(255,255,255,.2);
   --white-a32:rgba(255,255,255,.32);
   --black-a30:rgba(0,0,0,.3);
   --black-a35:rgba(0,0,0,.35);
+  --black-a40:rgba(0,0,0,.4);
+  --black-a42:rgba(0,0,0,.42);
+  --black-a45:rgba(0,0,0,.45);
   --black-a50:rgba(0,0,0,.5);
+  --black-a55:rgba(0,0,0,.55);
+  --black-a60:rgba(0,0,0,.6);
+  --black-a70:rgba(0,0,0,.7);
+  --black-a72:rgba(0,0,0,.72);
   --black-a78:rgba(0,0,0,.78);
+  --black-a80:rgba(0,0,0,.8);
   --black-a85:rgba(0,0,0,.85);
+  --black-a90:rgba(0,0,0,.9);
 
   /* ---- material: the grain of each stone and the brass graph grid ---- */
   /* 150px, the coarse grain of the outer slab */
@@ -120,8 +159,8 @@
   /* 160px at a lower opacity, the card face */
   --grain-card:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.38'/%3E%3C/svg%3E");
   /* the graph grid that fades in from the top-right corner of a card */
-  --brass-grid:repeating-linear-gradient(0deg,transparent 0 27px,var(--brass-a06) 27px 28px),
-               repeating-linear-gradient(90deg,transparent 0 27px,var(--brass-a06) 27px 28px);
+  --brass-grid:repeating-linear-gradient(0deg,transparent 0 27px,var(--brass-a055) 27px 28px),
+               repeating-linear-gradient(90deg,transparent 0 27px,var(--brass-a055) 27px 28px);
   /* the brass up-trend mark before the wordmark */
   --logo-tick:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='18'%3E%3Cpath d='M2 15 L9 7 L13 10 L24 2' fill='none' stroke='%23c99e3f' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 
@@ -144,7 +183,9 @@
   --radius-14:14px;
   --radius-16:16px;
   --radius-20:20px;
-  --radius-pill:100px;   /* merged: 1000px, identical on every control it is used on */
+  --radius-pill:100px;
+  --radius-round:1000px; /* renders the same pill as --radius-pill on every control that uses it,
+                            but the computed value differs, so both stay. Step 7 decides */
   --radius-circle:50%;
 
   /* ---- control and icon sizes ---- */
@@ -167,7 +208,8 @@
 
   /* ---- type ---- */
   --font-display:'Space Grotesk',sans-serif;
-  --font-body:'DM Sans',system-ui,sans-serif;   /* merged: the two DM Sans stacks */
+  --font-body:'DM Sans',sans-serif;             /* every component */
+  --font-body-root:'DM Sans',system-ui,sans-serif; /* body only: the root fallback chain is longer */
   --font-mono:'IBM Plex Mono',monospace;
 
   --text-8:8px;       --text-9:9px;       --text-9-5:9.5px;   --text-10:10px;
@@ -230,7 +272,7 @@
   --bg-plate-from:var(--graphite-870);  /* from: the plate gradient, top */
   --bg-plate-to:var(--graphite-930);    /* from: the plate gradient, bottom */
 
-  --bg-card:var(--graphite-900);        /* from: .card base under its grain */
+  --bg-card:var(--graphite-905);        /* from: .card base under its grain */
   --bg-card-from:var(--graphite-870);   /* from: the card gradient, top */
   --bg-card-to:var(--graphite-920);     /* from: the card gradient, bottom */
   --bg-card-quiet:var(--graphite-880);  /* from: .pos, .cta-bar, .toast, .cc-banner, .wd-flow.
@@ -249,6 +291,11 @@
                                            load-more, profile tabs */
   --bg-well:var(--graphite-940);        /* from: the amount input, comment input, segmented rails */
   --bg-dialog-head-from:var(--graphite-790); /* from: the dialog head gradient over the brass glow */
+  --bg-chart-well:var(--graphite-935);  /* from: the plotted chart and the range switcher */
+  --bg-dock:var(--graphite-890);        /* from: the mobile bet dock */
+  --bg-chip-pressed:var(--graphite-855);/* from: a chip while it is held down */
+  --bg-prompt-hover:var(--graphite-895);/* from: the logged-out comment prompt on hover */
+  --bg-brand-mark:var(--bone-080);      /* from: the plate under the X and Apple marks */
 
   /* ---- text ---- */
   --text-primary:var(--bone-100);       /* from: 111 colour declarations, body downwards */
@@ -261,6 +308,7 @@
                                            today; the focus role itself waits for the states stage */
   --text-brass-lit:var(--brass-200);    /* from: hero eyebrow, SEO tagline, trust badge */
   --text-brass-chip:var(--brass-250);   /* from: the active chip label */
+  --text-brass-vol:var(--brass-220);    /* from: the volume tag on the featured hero */
   --text-on-brass:var(--plum-950);      /* from: 15 selectors on brass CTAs, hardcoded until now */
   --text-on-yes:var(--green-950);       /* from: the filled YES side */
   --text-on-no:var(--red-950);          /* from: the filled NO side */
@@ -270,6 +318,14 @@
   --border-hairline:var(--graphite-750);   /* from: 89 border declarations */
   --border-brass:var(--brass-a30);         /* from: the inset hairline of card, plate, thumb, badge */
   --border-brass-hover:var(--brass-a50);   /* from: the hover border of the quiet button family */
+  --tint-brass-06:var(--brass-a06);        /* from: the quietest brass wash (funds-safety line) */
+  --tint-brass-08:var(--brass-a08);        /* from: the condensed category chip when active */
+  --tint-brass-09:var(--brass-a09);        /* from: the price-moved box */
+  --tint-brass-14:var(--brass-a14);        /* from: a selected quick amount */
+  --tint-brass-24:var(--brass-a24);        /* from: the funds-safety border */
+  --tint-brass-40:var(--brass-a40);        /* from: the price-moved border */
+  --tint-brass-42:var(--brass-a42);        /* from: the active condensed chip border */
+  --tint-brass-60:var(--brass-a60);        /* from: a selected outcome row */
   --edge-groove-dark:var(--graphite-950);  /* from: 27 declarations, the recessed line */
   --edge-groove-light:var(--bone-a06);     /* from: 25 box-shadows, the lit lip of the same groove */
 
@@ -291,11 +347,22 @@
   --outcome-yes-text:var(--green-300);       /* from: the quiet YES text on 15 selectors */
   --outcome-yes-fill:var(--green-a12);       /* from: the tinted YES button (spectator, not trader) */
   --outcome-yes-line:var(--green-700);       /* from: the tinted YES border */
-  --outcome-no-text:var(--red-300);          /* from: the quiet NO text */
+  --outcome-no-text:var(--red-300);          /* from: the quiet NO text on a button or chip */
+  --outcome-no-figure:var(--red-320);        /* from: the NO figure, column head and market stat.
+                                                Same job, one step brighter; see --red-320 */
   --outcome-no-fill:var(--red-a12);          /* from: the tinted NO button */
   --outcome-no-line:var(--red-700);          /* from: the tinted NO border */
+  --outcome-yes-fill-soft:var(--green-a10);  /* from: the compact YES in an outcome list */
+  --outcome-yes-fill-strong:var(--green-a20);/* from: the selected YES on the mobile dock */
+  --outcome-no-fill-soft:var(--red-a10);
+  --outcome-no-fill-strong:var(--red-a20);
+  --outcome-yes-text-lit:var(--green-150);   /* from: YES on the filled dock, brighter than the tint */
+  --outcome-no-text-lit:var(--red-250);
   --outcome-line-yes:var(--green-200);       /* from: the YES line drawn over the hero photo, where
                                                 the quiet green loses against the image */
+  --outcome-line-no:var(--red-400);          /* from: the NO line on the same photo */
+  --chart-line:var(--green-250);             /* from: the price line on the event chart */
+  --chart-line-glow:var(--green-a42);        /* from: the glow under that line */
 
   /* ---- result roles: the market already resolved ----
      Separate from the outcome pair on purpose. A live YES and a settled WON are
@@ -324,6 +391,8 @@
      shadow. So the bevel and shadow inks live here, not as literals in a card. */
   --bevel-hi:var(--white-a17);          /* from: the plate top lip, strongest */
   --bevel-md:var(--white-a14);          /* from: the raised plate */
+  --bevel-lit:var(--white-a15);         /* from: the dialog lip */
+  --bevel-strong:var(--white-a20);      /* from: an action on a photographic head */
   --bevel-lo:var(--white-a10);          /* from: the win and loss sheet head */
   --bevel-xs:var(--white-a09);          /* from: the inner plate */
   --bevel-faint:var(--white-a05);       /* from: the quiet blocks */
@@ -332,8 +401,17 @@
   --edge-shade:var(--black-a30);        /* from: the dark side of an emboss */
   --edge-shade-strong:var(--black-a50); /* from: the bottom edge of a lifted sheet */
   --shadow-ink:var(--black);            /* from: every drop shadow of the product */
+  --shadow-ink-40:var(--black-a40);     /* from: the card and plate depth stack, lightest */
+  --shadow-ink-42:var(--black-a42);     /* from: the trust card */
+  --shadow-ink-45:var(--black-a45);     /* from: the engraved line under a card meta row */
+  --shadow-ink-55:var(--black-a55);     /* from: the dialog */
+  --shadow-ink-60:var(--black-a60);
+  --shadow-ink-70:var(--black-a70);     /* from: a card on hover */
+  --shadow-ink-72:var(--black-a72);
+  --shadow-ink-80:var(--black-a80);
   --shadow-ink-soft:var(--black-a78);   /* from: the sticky header shadow */
   --shadow-ink-deep:var(--black-a85);   /* from: the outcome overlay */
+  --shadow-ink-90:var(--black-a90);     /* from: the deepest dialog lift */
   --scrim:var(--black-a35);             /* from: the mobile drawer backdrop */
   --surface-grid:var(--brass-grid);     /* from: the brass graph grid on the card corner */
   --glow-brass:var(--brass-a35);        /* from: the card and chip glow */
@@ -345,6 +423,7 @@
   --veil-photo-from:var(--graphite-a50);
   --veil-photo-mid:var(--graphite-a55);
   --veil-photo-to:var(--graphite-a82);  /* from: the same veil, where the text sits */
+  --veil-brand:var(--graphite-a28);     /* from: the brand tile over its photograph */
   --line-on-photo:var(--white-a16);     /* from: the close mark on a photographic dialog head */
   --line-on-photo-hover:var(--white-a32);
   --control-knob:var(--white);          /* from: the toggle knob when it is on */

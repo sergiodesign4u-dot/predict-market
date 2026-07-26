@@ -1,0 +1,37 @@
+/* components/options.css
+   Component: options. Classes: .bp-opt, .bp-opt-pct, .bp-opts, .opt-list, .opt-name, .opt-prob, .opt-row, .opt-sel-tag, .options, .preselect-note.
+
+   Reads: --bevel-notice, --bg-chip, --bg-control, --border-hairline, --glow-focus, --text-brass, --text-muted, --text-primary, --tint-brass-60
+   Stand:  ui-kit/options.html
+   Stands on: 21 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.opt-row{display:flex;align-items:center;gap:var(--space-6);border-top:1px solid var(--border-hairline);padding:var(--space-6) 0;font-size:var(--text-12)}
+.opt-row:first-child{border-top:none}
+.opt-row .opt-name{flex:1}
+.opt-row .opt-prob{border:1px solid var(--border-hairline);padding:var(--space-1) var(--space-5);font-size:var(--text-11);font-weight:var(--weight-bold)}
+.opt-list{display:flex;flex-direction:column}
+.preselect-note{border:1px solid var(--border-hairline);padding:var(--space-6) var(--space-8);font-size:var(--text-11);margin:0 var(--space-10) 0}
+.bp-opts{display:flex;flex-direction:column;gap:0;border:1px solid var(--border-hairline);max-height:168px;overflow:auto}
+.bp-opt{display:flex;align-items:center;gap:var(--space-8);padding:var(--space-7) var(--space-8);border-top:1px solid var(--border-hairline);font-size:var(--text-12);cursor:pointer}
+.bp-opt:first-child{border-top:none}
+.bp-opt.sel{font-weight:var(--weight-bold)}
+.bp-opt .bp-opt-pct{margin-left:auto;border:1px solid var(--border-hairline);padding:0 var(--space-5);font-size:var(--text-11)}
+.opt-row.sel{border-left:3px solid var(--text-muted);padding-left:var(--space-6)}
+.opt-sel-tag{font-size:var(--text-9);border:1px solid var(--border-hairline);padding:0 var(--space-5)}
+.options{display:flex;flex-direction:column;gap:var(--space-8);margin:var(--space-6) 0 var(--space-10)}
+.card .opt-row,.card .opt-row:first-child{display:flex;align-items:center;gap:var(--space-10);padding:var(--space-4) var(--space-12);min-height:0}
+.card .opt-row .opt-name{flex:1;font-weight:var(--weight-semibold);color:var(--text-primary);font-size:var(--text-13);line-height:1.1}
+.card .opt-row .opt-prob{font-family:var(--font-display);background:transparent;border:0;color:var(--text-primary);font-size:var(--text-14);line-height:1.1;letter-spacing:-.02em}
+.card .options{margin-top:auto}
+.card .opt-row,.card .opt-row:first-child{border-radius:var(--radius-10);background:var(--bg-chip);border:1px solid var(--bevel-notice);/* symmetric inset - equal gap on both sides, no dead space to the right of NO */
+  padding:4px 12px}
+.app-case .opt-list{padding:var(--space-2) 0}
+.app-case .opt-list .opt-row,.app-case .opt-list .opt-row:first-child{display:flex;align-items:center;gap:var(--space-10);background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-8) var(--space-12);margin-top:var(--space-8)}
+.app-case .opt-list .opt-row:first-child{margin-top:0}
+.app-case .opt-list .opt-name{flex:1;min-width:0;display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-body);font-weight:var(--weight-semibold);color:var(--text-primary);font-size:var(--text-13)}
+.app-case .opt-list .opt-prob{font-family:var(--font-display);background:transparent;border:0;color:var(--text-primary);font-size:var(--text-14);padding:0}
+.app-case .opt-sel-tag{display:none}
+.app-case .bp-sel-name .opt-prob{font-family:var(--font-mono);background:transparent;border:0;color:var(--text-brass)}
+.app-case .opt-list .opt-row{cursor:pointer}
+.app-case .opt-list .opt-row.sel{border-color:var(--tint-brass-60);background:var(--glow-focus)}

@@ -1,0 +1,43 @@
+/* components/comments.css
+   Component: comments. Classes: .cmt, .cmt-actions, .cmt-av, .cmt-badge, .cmt-body, .cmt-compose, .cmt-controls, .cmt-input, .cmt-list, .cmt-meta, .cmt-post, .cmt-signin, .cmt-text, .cmt-user and 1 more.
+
+   Reads: --bg-control, --bg-prompt-hover, --bg-well, --border-brass, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-08
+   Stand:  ui-kit/comments.html
+   Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.cmt-controls{display:flex;align-items:center;gap:var(--space-8);flex-wrap:wrap;margin-bottom:var(--space-8);font-size:var(--text-11)}
+.cmt-compose{display:flex;gap:var(--space-8);align-items:center;border:1px solid var(--border-hairline);padding:var(--space-8);margin-bottom:var(--space-10)}
+.cmt-av{width:var(--space-28);height:var(--space-28);flex:0 0 28px;border:1px solid var(--border-hairline);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:var(--text-8)}
+.cmt-input{flex:1;border:1px solid var(--border-hairline);padding:var(--space-8);font-size:var(--text-12)}
+.cmt-post{border:1px solid var(--border-hairline);padding:var(--space-8) var(--space-12);font-size:var(--text-12);font-weight:var(--weight-bold);cursor:pointer}
+.cmt-signin{width:100%;border:1px dashed var(--border-hairline);padding:var(--space-12);font-size:var(--text-12);text-align:center;cursor:pointer}
+.cmt-list{display:flex;flex-direction:column;gap:var(--space-12)}
+.cmt{display:flex;gap:var(--space-8)}
+.cmt.reply{margin-left:32px}
+.cmt-body{flex:1;min-width:0}
+.cmt-meta{font-size:var(--text-11);display:flex;gap:var(--space-6);flex-wrap:wrap;align-items:baseline}
+.cmt-user{font-weight:var(--weight-bold);font-size:var(--text-12)}
+.cmt-badge{border:1px solid var(--border-hairline);font-size:var(--text-9);padding:0 var(--space-5)}
+.cmt-text{font-size:var(--text-12);margin:var(--space-3) 0}
+.cmt-actions{display:flex;gap:var(--space-14);font-size:var(--text-11)}
+.cmt-actions button{border:none;background:transparent;padding:0;font-size:var(--text-11);cursor:pointer;display:inline-flex;gap:var(--space-4);align-items:center}
+.cmt-actions .ic{width:13px;height:13px}
+.cmt-list .cmt-av{background-image:url(../ui-visual/assets/avatar-2.jpg);background-size:cover;background-position:center;color:transparent;font-size:0;border:1px solid var(--border-hairline)}
+.cmt-list .cmt:nth-child(even) .cmt-av{background-image:url(../ui-visual/assets/avatar-1.jpg)}
+.app-case .cmt-post{transition:filter var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
+.app-case .cmt-post:hover{filter:brightness(1.08);box-shadow:0 6px 18px -8px var(--color-action)}
+.app-case .cmt-controls{color:var(--text-muted);font-size:var(--text-11-5);justify-content:space-between}
+.app-case .cmt-compose{border:0;background:transparent;padding:0;align-items:center}
+.app-case .cmt-av{border:1px solid var(--border-brass);color:var(--text-brass);font-size:var(--text-9);background:linear-gradient(140deg,color-mix(in oklab,var(--color-action) 20%,var(--bg-control)),var(--bg-control))}
+.app-case .cmt-input{border:1px solid var(--border-hairline);border-radius:var(--radius-8);background:var(--bg-well);color:var(--text-muted)}
+.app-case .cmt-post{border:0;border-radius:var(--radius-10);background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);font-weight:var(--weight-bold)}
+.app-case .cmt-signin{display:flex;align-items:center;justify-content:center;width:100%;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-muted);padding:var(--space-16);margin-bottom:var(--space-18);font-family:var(--font-body);font-size:var(--text-13);font-weight:var(--weight-semibold);cursor:pointer;transition:border-color .15s ease,color .15s ease,background .15s ease}
+.app-case .cmt-signin:hover{border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-prompt-hover)}
+.app-case .cmt-user{color:var(--text-primary)}
+.app-case .cmt-meta{color:var(--text-muted)}
+.app-case .cmt-badge{border:1px solid var(--border-brass);border-radius:var(--radius-6);background:var(--tint-brass-08);color:var(--text-brass);font-size:var(--text-9)}
+.app-case .cmt-text{color:var(--text-primary);font-size:var(--text-12-5);line-height:var(--leading-base)}
+.app-case .cmt-actions,.app-case .cmt-actions button{color:var(--text-muted)}
+.app-case .cmt-actions button:hover{color:var(--text-brass)}
+.app-case .cmt-actions .ic{fill:currentColor;stroke:none}

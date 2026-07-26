@@ -401,10 +401,10 @@ n_sem = sum(len(g["tokens"]) for g in SEM)
 SIDEBAR = """<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open roadmap"><span></span><span></span><span></span></button>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar">
-  <a href="../research/research.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>
-  <div class="sidebar-brand"><div class="sidebar-project-name">UI Kit - components</div></div>
+  <a href="overview.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Whole system</a>
+  <div class="sidebar-brand"><div class="sidebar-project-name">Design system</div></div>
   <nav class="sidebar-nav">
-    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual - screens</a>
+    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">Painted screens</a>
     <a class="sidebar-page-link active">Tokens</a>
     <div class="sidebar-sub">
       <a href="#colour" class="sidebar-sub-link">Colour primitives</a>

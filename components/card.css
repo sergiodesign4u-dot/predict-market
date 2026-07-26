@@ -1,0 +1,87 @@
+/* components/card.css
+   Component: card. Classes: .bookmark-btn, .card, .card-body, .m-label, .m-val, .meta, .meta-txt, .prob, .prob-line, .q, .thumb, .top, .top-txt, .why.
+
+   Reads: --bevel-faint, --bevel-hair-soft, --bevel-lo, --bevel-xs, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-surface, --border-brass, --border-hairline, --color-action, --edge-groove-light, --edge-shade, --edge-shade-strong, --outcome-no-figure, --outcome-yes-text, --shadow-ink, --shadow-ink-40, --shadow-ink-45, --shadow-ink-60, --shadow-ink-70, --shadow-ink-80, --shadow-ink-deep, --text-brass, --text-muted, --text-primary
+   Stand:  ui-kit/card.html
+   Stands on: 24 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.card .top{display:flex}
+.thumb{display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--space-2)}
+.card .q{font-size:var(--text-13);font-weight:var(--weight-bold);margin:0}
+.card a.q{text-decoration:none}
+.card .prob-line{margin:var(--space-8) 0 var(--space-6)}
+.card .prob{font-weight:var(--weight-bold)}
+.card .meta{display:flex;justify-content:space-between;gap:var(--space-8);font-size:var(--text-10)}
+.card .meta .meta-txt{display:flex;flex-wrap:wrap;gap:var(--space-10)}
+.card .bookmark-btn{flex:0 0 auto;cursor:pointer;display:inline-flex;align-items:center;line-height:0}
+.why{margin:var(--space-3) 0 0;line-height:1.4}
+.ed-prob-big .prob{font-weight:var(--weight-bold);border:1px solid var(--border-hairline);padding:var(--space-1) var(--space-6);font-size:var(--text-14)}
+.card{position:relative;display:flex;flex-direction:column;background:var(--bg-surface);overflow:hidden}
+.card::before{top:-4px;right:-8px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ff8ac4' stroke-width='1.4'%3E%3Cpath d='M-10 14 C 20 4 40 24 70 14 S 120 4 150 14 S 200 24 230 14'/%3E%3Cpath d='M-10 30 C 20 20 40 40 70 30 S 120 20 150 30 S 200 40 230 30'/%3E%3Cpath d='M-10 46 C 20 36 40 56 70 46 S 120 36 150 46 S 200 56 230 46'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 78 C 20 68 40 88 70 78 S 120 68 150 78 S 200 88 230 78'/%3E%3Cpath d='M-10 94 C 20 84 40 104 70 94 S 120 84 150 94 S 200 104 230 94'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / 220px 132px}
+.card > *{position:relative;z-index:1}
+.card .card-body{display:flex;flex-direction:column;flex:1 1 auto;padding:var(--space-12) var(--space-12) var(--space-8)}
+.thumb{width:var(--space-56);height:var(--space-56);flex:0 0 56px;border:1px solid var(--border-hairline);background-size:cover;background-position:center;color:transparent;font-size:0}
+.grid > .card:nth-of-type(1) .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
+.grid > .card:nth-of-type(2) .thumb{background-image:url(../ui-visual/assets/event-crypto.jpg)}
+.grid > .card:nth-of-type(3) .thumb{background-image:url(../ui-visual/assets/event-culture.jpg)}
+.grid > .card:nth-of-type(4) .thumb{background-image:url(../ui-visual/assets/event-general.jpg)}
+.grid > .card:nth-of-type(5) .thumb{background-image:url(../ui-visual/assets/event-crypto.jpg)}
+.grid > .card:nth-of-type(6) .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
+.grid > .card:nth-of-type(7) .thumb{background-image:url(../ui-visual/assets/event-general.jpg)}
+.grid > .card:nth-of-type(8) .thumb{background-image:url(../ui-visual/assets/event-culture.jpg)}
+.grid > .card:nth-of-type(9) .thumb{background-image:url(../ui-visual/assets/event-crypto.jpg)}
+.grid > .card:nth-of-type(10) .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
+.grid > .card:nth-of-type(11) .thumb{background-image:url(../ui-visual/assets/event-culture.jpg)}
+.grid > .card:nth-of-type(12) .thumb{background-image:url(../ui-visual/assets/event-general.jpg)}
+.cat-politics .grid > .card .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
+.cat-crypto .grid > .card .thumb{background-image:url(../ui-visual/assets/event-crypto.jpg)}
+.cat-culture .grid > .card .thumb{background-image:url(../ui-visual/assets/event-culture.jpg)}
+.cat-general .grid > .card .thumb{background-image:url(../ui-visual/assets/event-general.jpg)}
+.card .q,.card a.q{font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-13);line-height:var(--leading-tight);letter-spacing:-.02em;color:var(--text-primary)}
+.card a.q:hover{color:var(--text-brass);text-decoration:none}
+.why{color:var(--text-muted);font-size:var(--text-12-5);min-height:35px;margin-bottom:var(--space-12)}
+.card .prob-line{color:var(--text-muted);font-size:var(--text-11);letter-spacing:.03em;text-transform:uppercase}
+.card .prob{font-family:var(--font-display);background:transparent;border:0;color:var(--text-primary);font-size:var(--text-15);padding:0 var(--space-2)}
+.card .meta{color:var(--text-muted);align-items:center;margin-bottom:0;padding-top:var(--space-8);font-family:var(--font-mono)}
+.card .meta .m-label{color:var(--text-muted)}
+.card .meta .m-val{color:var(--text-primary);font-weight:var(--weight-semibold)}
+.card .bookmark-btn{background:transparent;border:0;padding:0}
+.card .bookmark-btn .ic{width:var(--icon-15);height:var(--icon-15);stroke:var(--text-muted)}
+.card .bookmark-btn:hover .ic{stroke:var(--text-brass)}
+.card .bookmark-btn[aria-pressed="true"] .ic{fill:var(--text-brass);stroke:var(--text-brass)}
+.card .bookmark-btn .ic:has(use){color:var(--text-muted)}
+.card .bookmark-btn:hover .ic:has(use){color:var(--text-brass)}
+.card .bookmark-btn[aria-pressed="true"] .ic:has(use){color:var(--text-brass)}
+.bookmark-btn:focus-visible,.card .q:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
+@media(max-width:640px){
+  .card .bookmark-btn{min-width:var(--control-lg);min-height:var(--control-lg);display:inline-flex;align-items:center;justify-content:center;margin:-8px -8px -8px 0}
+}
+.card::before{content:'';position:absolute;inset:0;width:auto;height:auto;z-index:0;pointer-events:none;opacity:1;background-color:transparent;background-repeat:repeat;background-size:auto;background-image:repeating-linear-gradient(0deg,transparent 0 27px,var(--brass-a055) 27px 28px),
+    repeating-linear-gradient(90deg,transparent 0 27px,var(--brass-a055) 27px 28px)}
+.thumb{border-color:var(--border-brass)}
+.card{background-color:var(--bg-card);background-image:var(--grain-fine),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-40);border-radius:var(--radius-8);box-shadow:inset 0 1px 0 var(--bevel-xs),inset 1px 0 0 var(--bevel-hair-soft),inset -1px 0 0 var(--edge-shade),inset 0 -1px 0 var(--edge-shade-strong),0 16px 30px -18px var(--shadow-ink-80),0 5px 12px -6px var(--shadow-ink-60);transition:transform .28s var(--ease-out),box-shadow .28s var(--ease-out)}
+.card:hover{transform:translateY(-3px);box-shadow:inset 0 1px 0 var(--bevel-lo),inset 0 -1px 0 var(--edge-shade-strong),0 26px 44px -20px var(--shadow-ink-deep),0 10px 18px -8px var(--shadow-ink-70)}
+.card::after{content:'';display:block;position:absolute;left:-52px;bottom:0;width:168px;height:78%;z-index:0;pointer-events:none;opacity:.20;background:url("../ui-visual/assets/trust-column-full.webp") no-repeat center bottom;background-size:contain;-webkit-mask-image:linear-gradient(to right,var(--shadow-ink) 44%,transparent 94%);mask-image:linear-gradient(to right,var(--shadow-ink) 44%,transparent 94%)}
+.card .card-body{position:relative;z-index:1}
+.card::before{background-position:0 -10px;-webkit-mask-image:linear-gradient(to bottom left,var(--shadow-ink) 0%,var(--edge-shade-strong) 24%,transparent 56%);mask-image:linear-gradient(to bottom left,var(--shadow-ink) 0%,var(--edge-shade-strong) 24%,transparent 56%)}
+.card .meta{border-top:1px solid var(--shadow-ink-45);box-shadow:inset 0 1px 0 var(--bevel-faint);margin-top:auto}
+.card .top{align-items:stretch;gap:var(--space-14);margin-bottom:var(--space-14);min-height:88px}
+.card .top-txt{display:flex;flex-direction:column;gap:var(--space-8);min-width:0}
+.card .top-txt .why{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.card .thumb{width:60px;flex:0 0 60px;height:auto;align-self:stretch;min-height:84px;border:0;border-radius:var(--radius-6) var(--radius-4) var(--radius-4) var(--radius-6);background-size:cover;background-position:center;-webkit-mask-image:linear-gradient(to right,var(--shadow-ink) 52%,transparent);mask-image:linear-gradient(to right,var(--shadow-ink) 52%,transparent)}
+.card .top-txt .why{margin:0}
+.thumb{border-radius:var(--radius-6)}
+@media(prefers-reduced-motion:reduce){
+  .card{transition:box-shadow .2s}
+  .card:hover{transform:none}
+}
+.app-case .ed-main>.card{background:none;border:0;box-shadow:none;border-radius:0;overflow:visible;transition:none}
+.app-case .ed-main>.card:hover{transform:none;box-shadow:none}
+.app-case .ed-main>.card::before,.app-case .ed-main>.card::after{display:none}
+.app-case .ed-prob-big .prob{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-20);letter-spacing:normal;text-transform:none;border:0;background:transparent;padding:0 var(--space-4)}
+.app-case .ed-prob-big .prob:first-of-type{color:var(--outcome-yes-text)}
+.app-case .ed-prob-big .prob:last-of-type{color:var(--outcome-no-figure)}
+.app-case .gallery .card{width:172px;height:98px;flex:0 0 auto;border:1px solid var(--border-hairline);border-radius:var(--radius-12);background:linear-gradient(150deg,color-mix(in oklab,var(--color-action) 11%,var(--bg-control)),var(--bg-control) 70%);color:var(--text-primary);font-size:var(--text-11);line-height:1.35;font-weight:var(--weight-semibold);padding:var(--space-12);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 var(--edge-groove-light),0 14px 30px -24px var(--shadow-ink)}
+.app-case .gallery .card::before{display:none}
+.app-case .gallery .card::after{content:"\2197";background:none;position:absolute;top:8px;right:11px;left:auto;bottom:auto;width:auto;height:auto;color:var(--text-brass);font-size:var(--text-14);opacity:.85}

@@ -4,59 +4,59 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - UI Kit</title>
-<link rel="stylesheet" href="kit.css">
+<link rel="stylesheet" href="../components/index.css">
 <style>
   .kit-wrap{max-width:1120px;margin:0 auto;padding:0 20px}
   .kit-hero{padding:44px 0 4px}
-  .kit-hero h1{font-family:'Space Grotesk',sans-serif;color:var(--ink);font-size:clamp(30px,5vw,44px);font-weight:700;letter-spacing:-.03em;margin:0;text-wrap:balance}
-  .kit-hero p{color:var(--muted);font-family:'DM Sans',sans-serif;margin:10px 0 0;max-width:62ch;line-height:1.55}
-  .kit-hero code{font-family:'IBM Plex Mono',monospace;font-size:.9em;color:var(--accent-text)}
-  .kit-hero .kit-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent-text);border:1px solid var(--brass-line);border-radius:100px;padding:3px 10px;margin-top:16px}
+  .kit-hero h1{font-family:'Space Grotesk',sans-serif;color:var(--text-primary);font-size:clamp(30px,5vw,44px);font-weight:700;letter-spacing:-.03em;margin:0;text-wrap:balance}
+  .kit-hero p{color:var(--text-muted);font-family:'DM Sans',sans-serif;margin:10px 0 0;max-width:62ch;line-height:1.55}
+  .kit-hero code{font-family:'IBM Plex Mono',monospace;font-size:.9em;color:var(--text-brass)}
+  .kit-hero .kit-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-brass);border:1px solid var(--border-brass);border-radius:100px;padding:3px 10px;margin-top:16px}
   .kit-jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-  .kit-jump a{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:5px 12px;text-decoration:none;transition:color .15s,border-color .15s}
-  .kit-jump a:hover{color:var(--accent-text);border-color:var(--brass-line)}
-  .kit-sec{margin-top:44px;border-top:1px solid var(--border);padding-top:24px;scroll-margin-top:20px}
-  .kit-sec > h2{font-family:'Space Grotesk',sans-serif;color:var(--accent-text);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 4px;display:flex;align-items:center;gap:10px}
-  .kit-sec > h2::before{content:attr(data-n);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--border);border-radius:6px;padding:1px 6px;letter-spacing:0}
-  .kit-sec > .kit-note{color:var(--muted);font-family:'DM Sans',sans-serif;font-size:12.5px;margin:0 0 18px;max-width:72ch;line-height:1.5}
+  .kit-jump a{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-muted);border:1px solid var(--border-hairline);border-radius:100px;padding:5px 12px;text-decoration:none;transition:color .15s,border-color .15s}
+  .kit-jump a:hover{color:var(--text-brass);border-color:var(--border-brass)}
+  .kit-sec{margin-top:44px;border-top:1px solid var(--border-hairline);padding-top:24px;scroll-margin-top:20px}
+  .kit-sec > h2{font-family:'Space Grotesk',sans-serif;color:var(--text-brass);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+  .kit-sec > h2::before{content:attr(data-n);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-muted);border:1px solid var(--border-hairline);border-radius:6px;padding:1px 6px;letter-spacing:0}
+  .kit-sec > .kit-note{color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:12.5px;margin:0 0 18px;max-width:72ch;line-height:1.5}
   .kit-icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(116px,1fr));gap:10px;margin:0 0 18px}
-  .kit-ico{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin:0;padding:16px 8px;border:1px solid var(--border);border-radius:12px;background:var(--surface);text-align:center;min-width:0;min-height:104px}
+  .kit-ico{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin:0;padding:16px 8px;border:1px solid var(--border-hairline);border-radius:12px;background:var(--bg-surface);text-align:center;min-width:0;min-height:104px}
   .kit-ico svg{width:24px;height:24px;flex:0 0 24px}
   .kit-ico .ic{stroke-width:1.6}
-  .kit-ico .ic:not(:has(use)){stroke:var(--ink);fill:none}
-  .kit-ico .ic:has(use){color:var(--ink)}
-  .kit-ico .kit-brandic{color:var(--ink)}
-  .kit-ico figcaption{font-family:'DM Sans',sans-serif;font-size:10.5px;color:var(--muted);line-height:1.25}
-  .kit-ico code{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--accent-text);white-space:nowrap;line-height:1.2}
-  .kit-subh{color:var(--muted);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:24px 0 10px}
-  .kit-surf-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);display:block}
-  .kit-tgl{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:12px}
+  .kit-ico .ic:not(:has(use)){stroke:var(--text-primary);fill:none}
+  .kit-ico .ic:has(use){color:var(--text-primary)}
+  .kit-ico .kit-brandic{color:var(--text-primary)}
+  .kit-ico figcaption{font-family:'DM Sans',sans-serif;font-size:10.5px;color:var(--text-muted);line-height:1.25}
+  .kit-ico code{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-brass);white-space:nowrap;line-height:1.2}
+  .kit-subh{color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:24px 0 10px}
+  .kit-surf-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-muted);display:block}
+  .kit-tgl{display:inline-flex;align-items:center;gap:8px;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:12px}
   .kit-shadows{display:flex;flex-wrap:wrap;gap:24px}
   .kit-shadow{width:158px}
-  .kit-shadow .kit-shadow-box{height:84px;border-radius:12px;background:var(--card);border:1px solid var(--border)}
-  .kit-shadow b{display:block;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--ink);margin-top:12px}
-  .kit-shadow span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);line-height:1.5;margin-top:4px}
+  .kit-shadow .kit-shadow-box{height:84px;border-radius:12px;background:var(--bg-card-quiet);border:1px solid var(--border-hairline)}
+  .kit-shadow b{display:block;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--text-primary);margin-top:12px}
+  .kit-shadow span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-muted);line-height:1.5;margin-top:4px}
   .kit-seps{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
-  .kit-sep-demo{flex:1 1 300px;max-width:400px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2px 16px;box-shadow:inset 0 1px 0 var(--groove-light)}
-  .kit-sep-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted)}
-  .kit-sep-row span{font-family:'Space Grotesk',sans-serif;color:var(--ink);font-weight:600}
-  .kit-sep-legend{flex:0 0 auto;display:flex;flex-direction:column;gap:18px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted)}
+  .kit-sep-demo{flex:1 1 300px;max-width:400px;background:var(--bg-card-quiet);border:1px solid var(--border-hairline);border-radius:12px;padding:2px 16px;box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+  .kit-sep-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text-muted)}
+  .kit-sep-row span{font-family:'Space Grotesk',sans-serif;color:var(--text-primary);font-weight:600}
+  .kit-sep-legend{flex:0 0 auto;display:flex;flex-direction:column;gap:18px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted)}
   .kit-sep-legend > div{display:flex;flex-direction:column;gap:9px}
-  .kit-sep-legend b{color:var(--accent-text);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700}
-  .kit-sep-swatch{display:block;width:210px;height:38px;background:var(--card);border-radius:6px}
+  .kit-sep-legend b{color:var(--text-brass);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700}
+  .kit-sep-swatch{display:block;width:210px;height:38px;background:var(--bg-card-quiet);border-radius:6px}
   .kit-sep-swatch.flat{border-top:1px solid rgba(255,255,255,.07)}
   .kit-scale{display:flex;flex-direction:column;gap:8px;max-width:560px}
-  .kit-scale-row{display:flex;align-items:center;gap:14px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted)}
-  .kit-scale-n{flex:0 0 30px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
-  .kit-scale-bar{height:14px;border-radius:4px;background:var(--surface-2);flex:0 0 auto}
-  .kit-scale-row.prim .kit-scale-n{color:var(--accent-text);font-weight:700}
-  .kit-scale-row.prim .kit-scale-bar{background:linear-gradient(135deg,var(--accent),var(--accent-2))}
-  .kit-scale-use{color:var(--muted)}
+  .kit-scale-row{display:flex;align-items:center;gap:14px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted)}
+  .kit-scale-n{flex:0 0 30px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-muted)}
+  .kit-scale-bar{height:14px;border-radius:4px;background:var(--bg-control);flex:0 0 auto}
+  .kit-scale-row.prim .kit-scale-n{color:var(--text-brass);font-weight:700}
+  .kit-scale-row.prim .kit-scale-bar{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit))}
+  .kit-scale-use{color:var(--text-muted)}
   .kit-rads{display:flex;flex-wrap:wrap;gap:20px}
   .kit-rad{width:120px}
-  .kit-rad-box{height:72px;background:var(--surface-2);border:1px solid var(--border);box-shadow:inset 0 1px 0 var(--groove-light)}
-  .kit-rad b{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent-text);font-weight:700;margin-top:11px}
-  .kit-rad span{display:block;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);line-height:1.4;margin-top:3px}
+  .kit-rad-box{height:72px;background:var(--bg-control);border:1px solid var(--border-hairline);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+  .kit-rad b{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-brass);font-weight:700;margin-top:11px}
+  .kit-rad span{display:block;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--text-muted);line-height:1.4;margin-top:3px}
   .kit-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
   .kit-row.a-start{align-items:flex-start}
   /* Input-states specimen: the boxed amount field at default / hover / focus / disabled.
@@ -65,33 +65,33 @@
      .amount-input (Add funds). */
   .kit-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;max-width:720px}
   .kit-field-wrap{display:flex;flex-direction:column;gap:7px}
-  .kit-field-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-  .kit-field{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:#0d0f12;color:var(--ink);
+  .kit-field-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted)}
+  .kit-field{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid var(--border-hairline);border-radius:10px;background:#0d0f12;color:var(--text-primary);
     font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;outline:none;transition:border-color .16s ease,box-shadow .16s ease,opacity .16s ease}
-  .kit-field::placeholder{color:var(--muted)}
+  .kit-field::placeholder{color:var(--text-muted)}
   .kit-field:hover:not(:disabled),.kit-field.is-hover{border-color:rgba(199,162,78,.55)}
-  .kit-field:focus,.kit-field.is-focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(199,162,78,.16)}
-  .kit-field:disabled,.kit-field.is-disabled{opacity:.45;cursor:not-allowed;background:var(--surface);border-color:var(--border);box-shadow:none}
+  .kit-field:focus,.kit-field.is-focus{border-color:var(--color-action);box-shadow:0 0 0 3px rgba(199,162,78,.16)}
+  .kit-field:disabled,.kit-field.is-disabled{opacity:.45;cursor:not-allowed;background:var(--bg-surface);border-color:var(--border-hairline);box-shadow:none}
   .kit-sws{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:14px}
   .kit-sw{display:flex;flex-direction:column;gap:7px}
   .kit-swatch{position:relative;height:60px;border-radius:8px;border:1px solid rgba(255,255,255,.09);overflow:hidden;display:flex;align-items:flex-end;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
   .kit-hex{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#fff;background:rgba(0,0,0,.42);padding:2px 6px;border-radius:6px;margin:6px}
   .kit-sw-meta{display:flex;flex-direction:column;gap:2px}
-  .kit-sw-meta b{font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:600;color:var(--ink)}
-  .kit-sw-meta span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted)}
+  .kit-sw-meta b{font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:600;color:var(--text-primary)}
+  .kit-sw-meta span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-muted)}
   .kit-type{display:grid;gap:0}
-  .kit-type-row{display:grid;grid-template-columns:130px 1fr;gap:24px;align-items:baseline;padding:16px 0;border-top:1px solid var(--border)}
+  .kit-type-row{display:grid;grid-template-columns:130px 1fr;gap:24px;align-items:baseline;padding:16px 0;border-top:1px solid var(--border-hairline)}
   .kit-type-row:first-child{border-top:0;padding-top:2px}
-  .kit-role{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted);letter-spacing:.02em;line-height:1.5}
-  .kit-role b{display:block;color:var(--accent-text);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+  .kit-role{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--text-muted);letter-spacing:.02em;line-height:1.5}
+  .kit-role b{display:block;color:var(--text-brass);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
   .kit-type-row > p{margin:0}
-  .t-display{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,4vw,38px);letter-spacing:-.03em;color:var(--ink);line-height:1.04}
-  .t-headline{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--ink)}
-  .t-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:-.02em;color:var(--ink)}
-  .t-body{font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--muted);max-width:65ch;line-height:1.5}
-  .t-label{font-family:'DM Sans',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text)}
-  .t-mono{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink)}
-  .kit-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px}
+  .t-display{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,4vw,38px);letter-spacing:-.03em;color:var(--text-primary);line-height:1.04}
+  .t-headline{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--text-primary)}
+  .t-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:-.02em;color:var(--text-primary)}
+  .t-body{font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--text-muted);max-width:65ch;line-height:1.5}
+  .t-label{font-family:'DM Sans',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-brass)}
+  .t-mono{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-primary)}
+  .kit-box{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:10px;padding:16px}
   .kit-plate{margin:0}
   dialog.app-dialog[open]:not(.bet-sheet){position:static;margin:0;width:100%}
   /* the bet sheet stays a real bottom drawer (opened via showModal), not framed inline */
@@ -108,7 +108,7 @@
   /* chrome specimens: each shell piece framed on its own, not stacked as a page.
      The bottom nav is mobile-only in the app; force it visible here so desktop
      viewers can still see the specimen, and drop sticky so pieces sit in-frame. */
-  .kit-chrome-demo{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:8px;min-height:0;display:block}
+  .kit-chrome-demo{border:1px solid var(--border-hairline);border-radius:12px;overflow:hidden;margin-bottom:8px;min-height:0;display:block}
   .kit-chrome-demo .app-header,.kit-chrome-demo .bottom-nav,.kit-chrome-demo .app-footer{position:static}
   .kit-chrome-demo .bottom-nav{display:block}
   @media (max-width:560px){
@@ -139,6 +139,7 @@
   <div class="sidebar-brand"><div class="sidebar-project-name">UI Kit - components</div></div>
   <nav class="sidebar-nav">
     <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual - screens</a>
+    <a href="overview.html" class="sidebar-page-link">Design system</a>
     <a href="tokens.html" class="sidebar-page-link">Tokens</a>
     <a class="sidebar-page-link active">UI Kit</a>
     <div class="sidebar-sub">
@@ -173,11 +174,11 @@
     <h2 data-n="01">Foundations - color</h2>
     <p class="kit-note">One matte-brass accent on graphite. Green and red are reserved for the YES / NO outcome only.</p>
     <div class="kit-sws">
-      <div class="kit-sw"><div class="kit-swatch" style="background:#c7a24e"><span class="kit-hex">#c7a24e</span></div><div class="kit-sw-meta"><b>Matte Brass</b><span>--brass</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#e6c877"><span class="kit-hex">#e6c877</span></div><div class="kit-sw-meta"><b>Brass Bright</b><span>--brass-2</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#d7ac53"><span class="kit-hex">#d7ac53</span></div><div class="kit-sw-meta"><b>Brass Text</b><span>--accent-text</span></div></div>
-      <div class="kit-sw"><div class="kit-swatch" style="background:#0f1013"><span class="kit-hex">#0f1013</span></div><div class="kit-sw-meta"><b>Page</b><span>--page</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#141619"><span class="kit-hex">#141619</span></div><div class="kit-sw-meta"><b>Graphite</b><span>--canvas</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#121417"><span class="kit-hex">#121417</span></div><div class="kit-sw-meta"><b>Content Plate</b><span>plate</span></div></div>
-      <div class="kit-sw"><div class="kit-swatch" style="background:#14161a"><span class="kit-hex">#14161a</span></div><div class="kit-sw-meta"><b>Card Face</b><span>card</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#1c1f24"><span class="kit-hex">#1c1f24</span></div><div class="kit-sw-meta"><b>Surface</b><span>--surface</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#2b2f38"><span class="kit-hex">#2b2f38</span></div><div class="kit-sw-meta"><b>Border</b><span>--border</span></div></div>
-      <div class="kit-sw"><div class="kit-swatch" style="background:#ede7da"><span class="kit-hex">#ede7da</span></div><div class="kit-sw-meta"><b>Ink</b><span>--ink</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#a49d8f"><span class="kit-hex">#a49d8f</span></div><div class="kit-sw-meta"><b>Muted</b><span>--muted</span></div></div>
-      <div class="kit-sw"><div class="kit-swatch" style="background:#4fa96b"><span class="kit-hex">#4fa96b</span></div><div class="kit-sw-meta"><b>Outcome Green</b><span>--yes</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#c85a50"><span class="kit-hex">#c85a50</span></div><div class="kit-sw-meta"><b>Outcome Red</b><span>--no</span></div></div>
+      <div class="kit-sw"><div class="kit-swatch" style="background:#c7a24e"><span class="kit-hex">#c7a24e</span></div><div class="kit-sw-meta"><b>Matte Brass</b><span>--brass</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#e6c877"><span class="kit-hex">#e6c877</span></div><div class="kit-sw-meta"><b>Brass Bright</b><span>--brass-2</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#d7ac53"><span class="kit-hex">#d7ac53</span></div><div class="kit-sw-meta"><b>Brass Text</b><span>--text-brass</span></div></div>
+      <div class="kit-sw"><div class="kit-swatch" style="background:#0f1013"><span class="kit-hex">#0f1013</span></div><div class="kit-sw-meta"><b>Page</b><span>--bg-page</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#141619"><span class="kit-hex">#141619</span></div><div class="kit-sw-meta"><b>Graphite</b><span>--bg-canvas</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#121417"><span class="kit-hex">#121417</span></div><div class="kit-sw-meta"><b>Content Plate</b><span>plate</span></div></div>
+      <div class="kit-sw"><div class="kit-swatch" style="background:#14161a"><span class="kit-hex">#14161a</span></div><div class="kit-sw-meta"><b>Card Face</b><span>card</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#1c1f24"><span class="kit-hex">#1c1f24</span></div><div class="kit-sw-meta"><b>Surface</b><span>--bg-surface</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#2b2f38"><span class="kit-hex">#2b2f38</span></div><div class="kit-sw-meta"><b>Border</b><span>--border-hairline</span></div></div>
+      <div class="kit-sw"><div class="kit-swatch" style="background:#ede7da"><span class="kit-hex">#ede7da</span></div><div class="kit-sw-meta"><b>Ink</b><span>--text-primary</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#a49d8f"><span class="kit-hex">#a49d8f</span></div><div class="kit-sw-meta"><b>Muted</b><span>--text-muted</span></div></div>
+      <div class="kit-sw"><div class="kit-swatch" style="background:#4fa96b"><span class="kit-hex">#4fa96b</span></div><div class="kit-sw-meta"><b>Outcome Green</b><span>--outcome-yes</span></div></div><div class="kit-sw"><div class="kit-swatch" style="background:#c85a50"><span class="kit-hex">#c85a50</span></div><div class="kit-sw-meta"><b>Outcome Red</b><span>--outcome-no</span></div></div>
     </div>
 
     <div class="kit-subh">Surface ramp (two-stone plates)</div>
@@ -205,15 +206,15 @@
     </div>
     <div class="kit-subh">Elevation (the shadows we use)</div>
     <div class="kit-shadows">
-      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:inset 0 1px 0 var(--groove-light)"></div><b>Groove edge</b><span>inset 0 1px 0 groove-light</span></div>
-      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:inset 0 1px 0 var(--groove-light),0 12px 26px -22px #000"></div><b>Card (resting)</b><span>inset groove + 0 12px 26px -22px #000</span></div>
-      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:0 18px 40px -24px #000,inset 0 1px 0 var(--groove-light)"></div><b>Content plate (floats)</b><span>0 18px 40px -24px #000 + inset groove</span></div>
+      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:inset 0 1px 0 var(--edge-groove-light)"></div><b>Groove edge</b><span>inset 0 1px 0 groove-light</span></div>
+      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:inset 0 1px 0 var(--edge-groove-light),0 12px 26px -22px #000"></div><b>Card (resting)</b><span>inset groove + 0 12px 26px -22px #000</span></div>
+      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:0 18px 40px -24px #000,inset 0 1px 0 var(--edge-groove-light)"></div><b>Content plate (floats)</b><span>0 18px 40px -24px #000 + inset groove</span></div>
       <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:0 20px 50px -24px #000"></div><b>Dropdown / panel</b><span>0 20px 50px -24px #000</span></div>
       <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:0 22px 46px -22px #000,inset 0 1px 0 rgba(255,255,255,.06)"></div><b>Dialog / overlay</b><span>0 22px 46px -22px #000 + inset hi</span></div>
-      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:0 8px 20px -8px var(--accent);border-color:var(--accent)"></div><b>Brass CTA glow</b><span>0 8px 20px -8px accent</span></div>
+      <div class="kit-shadow"><div class="kit-shadow-box" style="box-shadow:0 8px 20px -8px var(--color-action);border-color:var(--color-action)"></div><b>Brass CTA glow</b><span>0 8px 20px -8px accent</span></div>
     </div>
     <div class="kit-subh">Separators (the engraved groove)</div>
-    <p class="kit-note">One separator, used everywhere: a dark hairline with a faint light highlight 1px below it, so it reads as a groove carved into the surface, never a flat black line. The reusable class is <code>.groove-sep</code> (recipe: <code>border-top:1px solid var(--groove-dark); box-shadow:inset 0 1px 0 var(--groove-light)</code>). It carries the facts strip, section tops, footer and the bet breakdown rows.</p>
+    <p class="kit-note">One separator, used everywhere: a dark hairline with a faint light highlight 1px below it, so it reads as a groove carved into the surface, never a flat black line. The reusable class is <code>.groove-sep</code> (recipe: <code>border-top:1px solid var(--edge-groove-dark); box-shadow:inset 0 1px 0 var(--edge-groove-light)</code>). It carries the facts strip, section tops, footer and the bet breakdown rows.</p>
     <div class="kit-seps">
       <div class="kit-sep-demo">
         <div class="kit-sep-row">Price now <span>38%</span></div>
@@ -473,7 +474,7 @@
     <div class="kit-subh">Sub-category rail (category pages)</div>
     <main class="feed"><div class="feed-inner"><div class="cat-layout">
       <nav class="subcat" id="subcatRail" aria-label="Sub-categories"><p class="subcat-head">Politics sub-categories</p><ul><li aria-current="page"><button type="button">All <span class="cnt">2K</span></button></li><li><button type="button">Trump <span class="cnt">297</span></button></li><li><button type="button">Trump Daily <span class="cnt">3</span></button></li><li><button type="button">Midterm Elections <span class="cnt">537</span></button></li><li><button type="button">Global Elections <span class="cnt">122</span></button></li><li><button type="button">Primaries <span class="cnt">106</span></button></li><li><button type="button">Congress <span class="cnt">42</span></button></li><li><button type="button">Courts <span class="cnt">30</span></button></li></ul></nav>
-      <div class="cat-main"><p style="color:var(--muted);font-family:'DM Sans',sans-serif;padding:24px 8px;margin:0">The filtered category feed renders beside the rail.</p></div>
+      <div class="cat-main"><p style="color:var(--text-muted);font-family:'DM Sans',sans-serif;padding:24px 8px;margin:0">The filtered category feed renders beside the rail.</p></div>
     </div></div></main>
 
     <div class="kit-subh">Below-fold SEO plate</div>

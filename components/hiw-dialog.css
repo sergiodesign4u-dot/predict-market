@@ -1,0 +1,46 @@
+/* components/hiw-dialog.css
+   Component: hiw-dialog. Classes: .hiw-arrow, .hiw-body, .hiw-close, .hiw-dialog, .hiw-faq, .hiw-full, .hiw-glow, .hiw-head, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-lead, .hiw-sec and 2 more.
+
+   Reads: --bg-control, --bg-dialog-head-from, --bg-plate-to, --border-hairline, --color-action, --color-action-lit, --line-on-photo, --line-on-photo-hover, --shadow-ink, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong
+   Stand:  ui-kit/hiw-dialog.html
+   Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+dialog.app-dialog .hiw-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-10);border-bottom:1px solid var(--border-hairline)}
+dialog.app-dialog .hiw-head h2{font-size:var(--text-14);margin:0}
+dialog.app-dialog .hiw-close{border:1px solid var(--border-hairline);font-size:var(--text-12);cursor:pointer;padding:var(--space-2) var(--space-8)}
+dialog.app-dialog .hiw-body{padding:var(--space-10);display:flex;flex-direction:column;gap:var(--space-10)}
+dialog.app-dialog .hiw-label{font-size:var(--text-11);text-transform:uppercase;letter-spacing:.03em}
+dialog.app-dialog .hiw-sec p{font-size:var(--text-13);line-height:var(--leading-base);margin:var(--space-4) 0 0}
+dialog.app-dialog .hiw-sec dl{margin:0}
+dialog.app-dialog .hiw-sec dt{font-size:var(--text-13);font-weight:var(--weight-bold);margin:var(--space-8) 0 var(--space-2)}
+dialog.app-dialog .hiw-sec dd{font-size:var(--text-13);line-height:var(--leading-base);margin:0}
+dialog.app-dialog .hiw-full{display:block;box-sizing:border-box;padding:var(--space-12);font-size:var(--text-14);font-weight:var(--weight-bold);text-align:center;text-decoration:none}
+.hiw-close:focus-visible,.hiw-full:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
+dialog.app-dialog .hiw-full{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);border-radius:var(--radius-10)}
+.app-dialog.hiw-dialog{max-width:var(--container-dialog);overflow:hidden}
+.app-dialog.hiw-dialog .hiw-close{position:absolute;top:12px;right:12px;z-index:3;width:var(--control-sm);height:var(--control-sm);display:flex;align-items:center;justify-content:center;padding:0;border-radius:var(--radius-round);background:color-mix(in oklab,var(--shadow-ink) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+.app-dialog.hiw-dialog .hiw-close:hover{background:color-mix(in oklab,var(--shadow-ink) 55%,transparent);border-color:var(--line-on-photo-hover)}
+.app-dialog.hiw-dialog .hiw-close .ic{width:var(--icon-15);height:var(--icon-15);stroke:var(--text-on-photo)}
+.app-dialog.hiw-dialog .hiw-hero{position:relative;overflow:hidden;padding:32px var(--space-24) var(--space-28)}
+.app-dialog.hiw-dialog .hiw-hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--shadow-ink),transparent 72%);mask-image:linear-gradient(150deg,var(--shadow-ink),transparent 72%);opacity:.24;pointer-events:none}
+.app-dialog.hiw-dialog .hiw-glow{position:absolute;top:-72px;right:-52px;width:224px;height:224px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--color-action-lit) 65%,var(--color-action)) 0%,var(--color-action) 42%,transparent 70%);filter:blur(40px);opacity:.5;pointer-events:none}
+.app-dialog.hiw-dialog .hiw-hero-inner{position:relative;z-index:1}
+.app-dialog.hiw-dialog .hiw-hero h2{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:clamp(30px,7vw,38px);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;text-wrap:balance}
+.app-dialog.hiw-dialog .hiw-tagline{margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-body);color:var(--text-primary);max-width:32ch}
+.app-dialog.hiw-dialog .hiw-body{padding:var(--space-20) var(--space-22) var(--space-22);display:flex;flex-direction:column;gap:var(--space-18)}
+.app-dialog.hiw-dialog .hiw-sec{display:flex;gap:var(--space-12);align-items:flex-start}
+.app-dialog.hiw-dialog .hiw-ic{flex:0 0 34px;width:var(--space-34);height:var(--space-34);display:flex;align-items:center;justify-content:center;border-radius:var(--radius-10);background:color-mix(in oklab,var(--color-action) 16%,var(--bg-control));border:1px solid color-mix(in oklab,var(--color-action) 30%,var(--border-hairline))}
+.app-dialog.hiw-dialog .hiw-ic .ic{width:var(--icon-18);height:var(--icon-18);stroke:var(--text-brass)}
+.app-dialog.hiw-dialog .hiw-sec-txt{flex:1;min-width:0}
+.app-dialog.hiw-dialog .hiw-label{display:block;font-family:var(--font-display);font-size:var(--text-14);font-weight:var(--weight-bold);letter-spacing:-.02em;text-transform:none;color:var(--text-primary);margin:0 0 var(--space-4)}
+.app-dialog.hiw-dialog .hiw-sec p{font-size:var(--text-13);line-height:var(--leading-relaxed);color:var(--text-muted);margin:0}
+.app-dialog.hiw-dialog .hiw-faq{flex-direction:column;gap:0;padding-top:var(--space-16);border-top:1px solid var(--border-hairline)}
+.app-dialog.hiw-dialog .hiw-faq dl{margin:var(--space-8) 0 0}
+.app-dialog.hiw-dialog .hiw-faq dt{font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-primary);margin:var(--space-12) 0 var(--space-4)}
+.app-dialog.hiw-dialog .hiw-faq dt:first-of-type{margin-top:var(--space-2)}
+.app-dialog.hiw-dialog .hiw-faq dd{font-size:var(--text-13);line-height:var(--leading-relaxed);color:var(--text-muted);margin:0}
+.app-dialog.hiw-dialog .hiw-full{display:flex;align-items:center;justify-content:center;gap:var(--space-8);font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12);margin-top:var(--space-2)}
+.app-dialog.hiw-dialog .hiw-arrow{width:var(--icon-17);height:var(--icon-17);stroke:var(--text-on-brass);transition:transform var(--dur-base) ease}
+.app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow{transform:translateX(3px)}
+.app-dialog.hiw-dialog .hiw-hero{background:radial-gradient(120% 92% at 100% 0%,color-mix(in oklab,var(--color-action) 34%,transparent),transparent 58%),linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}

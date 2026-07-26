@@ -1,0 +1,82 @@
+/* ui-kit/_nav.js - the ONE registry of stand pages.
+
+   It renders two things from the same list: the cards on overview.html and the
+   kit-only side panel on every stand page. A component without a line here does
+   not exist as far as the system is concerned. Own namespace (window.KIT_NAV) so
+   it never collides with the course roadmap renderer in the repo root.
+   No em dash. */
+window.KIT_NAV = [
+  {group: "Foundations", name: "tokens", file: "tokens.html", label: "Tokens"},
+  {group: "Foundations", name: "base", file: "base.html", label: "Base and page frame"},
+  {group: "Foundations", name: "course-chrome", file: "course-chrome.html", label: "Course chrome"},
+  {group: "Navigation and chrome", name: "header", file: "header.html", label: "App header"},
+  {group: "Navigation and chrome", name: "catnav", file: "catnav.html", label: "Category nav"},
+  {group: "Navigation and chrome", name: "bottomnav", file: "bottomnav.html", label: "Bottom nav"},
+  {group: "Navigation and chrome", name: "tabs", file: "tabs.html", label: "Tabs"},
+  {group: "Navigation and chrome", name: "footer", file: "footer.html", label: "Footer"},
+  {group: "Navigation and chrome", name: "trustbar", file: "trustbar.html", label: "Trust bar and cards"},
+  {group: "Browse: feed and cards", name: "feed", file: "feed.html", label: "Feed layout"},
+  {group: "Browse: feed and cards", name: "card", file: "card.html", label: "Event card"},
+  {group: "Browse: feed and cards", name: "oddsbar", file: "oddsbar.html", label: "Odds bar"},
+  {group: "Browse: feed and cards", name: "yesno", file: "yesno.html", label: "YES / NO buttons"},
+  {group: "Browse: feed and cards", name: "options", file: "options.html", label: "Outcome rows"},
+  {group: "Browse: feed and cards", name: "hero", file: "hero.html", label: "Featured hero"},
+  {group: "Browse: feed and cards", name: "seo-plate", file: "seo-plate.html", label: "SEO plate"},
+  {group: "Browse: feed and cards", name: "loadmore", file: "loadmore.html", label: "Load more"},
+  {group: "Browse: feed and cards", name: "filters", file: "filters.html", label: "Sort and filters"},
+  {group: "Event Detail", name: "event-detail", file: "event-detail.html", label: "Event Detail layout"},
+  {group: "Event Detail", name: "chart", file: "chart.html", label: "Price chart"},
+  {group: "Event Detail", name: "betpanel", file: "betpanel.html", label: "Bet panel and dock"},
+  {group: "Event Detail", name: "market", file: "market.html", label: "AMM market panel"},
+  {group: "Event Detail", name: "comments", file: "comments.html", label: "Comments"},
+  {group: "Event Detail", name: "bets-table", file: "bets-table.html", label: "Bets and activity"},
+  {group: "Event Detail", name: "related", file: "related.html", label: "Related events"},
+  {group: "Forms, dialogs and inputs", name: "button", file: "button.html", label: "Buttons"},
+  {group: "Forms, dialogs and inputs", name: "input", file: "input.html", label: "Fields and amounts"},
+  {group: "Forms, dialogs and inputs", name: "dialog", file: "dialog.html", label: "Shared dialog"},
+  {group: "Forms, dialogs and inputs", name: "hiw-dialog", file: "hiw-dialog.html", label: "How-it-works dialog"},
+  {group: "Forms, dialogs and inputs", name: "signin", file: "signin.html", label: "Sign in dialog"},
+  {group: "Forms, dialogs and inputs", name: "notice", file: "notice.html", label: "Notices and banners"},
+  {group: "Feedback and states", name: "state-block", file: "state-block.html", label: "State block"},
+  {group: "Feedback and states", name: "skeleton", file: "skeleton.html", label: "Skeletons"},
+  {group: "Feedback and states", name: "toast", file: "toast.html", label: "Toasts"},
+  {group: "Feedback and states", name: "outcome-dialog", file: "outcome-dialog.html", label: "Win and loss overlays"},
+  {group: "Profile and account", name: "profile", file: "profile.html", label: "Profile identity"},
+  {group: "Profile and account", name: "position", file: "position.html", label: "Position rows"},
+  {group: "Profile and account", name: "account", file: "account.html", label: "Account bars"},
+  {group: "System", name: "cookie-consent", file: "cookie-consent.html", label: "Cookie consent"},
+];
+
+(function () {
+  var host = document.querySelector('[data-kit-nav]');
+  var current = document.body.getAttribute('data-kit-page') || '';
+  if (host) {
+    var h = ['<a href="overview.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Whole system</a>',
+             '<div class="sidebar-brand"><div class="sidebar-project-name">Design system</div></div>',
+             '<nav class="sidebar-nav">'];
+    var group = null;
+    window.KIT_NAV.forEach(function (e) {
+      if (e.group !== group) { group = e.group; h.push('<div class="sidebar-divider">' + group + '</div>'); }
+      h.push('<a href="' + e.file + '" class="sidebar-page-link' + (e.name === current ? ' active' : '') + '">' + e.label + '</a>');
+    });
+    h.push('</nav>');
+    h.push('<div class="sidebar-note">The kit itself: <a href="kit.html">kit.html</a>, <a href="shell.html">shell.html</a></div>');
+    host.innerHTML = h.join('');
+  }
+  var cards = document.getElementById('kitCards');
+  if (cards) {
+    var g = null, out = [];
+    window.KIT_NAV.forEach(function (e) {
+      if (e.group !== g) { g = e.group; out.push('</div><h3 class="tk-subh">' + g + '</h3><div class="ck-cards">'); }
+      out.push('<a class="ck-card" href="' + e.file + '"><b>' + e.label + '</b><code>' +
+               (e.name === 'tokens' ? 'components/tokens.css' : 'components/' + e.name + '.css') + '</code></a>');
+    });
+    cards.innerHTML = (out.join('') + '</div>').replace(/^<\/div>/, '');
+  }
+  var sb = document.querySelector('[data-kit-nav]'), ov = document.getElementById('rmOverlay'), tg = document.getElementById('rmToggle');
+  if (sb && ov && tg) {
+    var o = function () { sb.classList.add('open'); ov.classList.add('open'); },
+        c = function () { sb.classList.remove('open'); ov.classList.remove('open'); };
+    tg.addEventListener('click', o); ov.addEventListener('click', c);
+  }
+})();

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - Sort and filters</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="filters">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<div class="tk-wrap">
+  <header class="tk-hero">
+    <h1>Sort and filters</h1>
+    <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">components/filters.css</span>
+      <span class="tk-badge">29 rules</span>
+      <span class="tk-badge">6 classes</span>
+      <span class="tk-badge">76 screens</span>
+    </div>
+  </header>
+
+  <section class="tk-sec" id="live">
+    <h2 data-n="01">Live</h2>
+    <p class="tk-note">The component in the markup it ships with, lifted from the frozen kit so the
+    stand cannot drift from the product. Painted by <code>components/index.css</code>, nothing else.</p>
+    <div class="ck-scene"><span class="ck-scene-lbl">specimen 1</span><div class="ck-stage"><details class="filter-menu"><summary>Sort: Trending</summary><div class="filter-panel"><ul>
+        <li><label><input type="radio" name="s" checked=""> Trending</label></li>
+        <li><label><input type="radio" name="s"> Newest</label></li>
+        <li><label><input type="radio" name="s"> Closing soon</label></li></ul></div></details></div></div>
+<div class="ck-scene"><span class="ck-scene-lbl">specimen 2</span><div class="ck-stage"><details class="filter-menu lang-menu" id="langMenu">
+              <summary aria-label="Language (placeholder)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"></path></svg>
+                <span id="langCurrent">English</span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+                <span class="tbd">TBD</span>
+              </summary>
+              <div class="filter-panel">
+                <ul>
+                  <li><label><input type="radio" name="lang" value="English" checked=""> English</label></li>
+                  <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
+                  <li><label><input type="radio" name="lang" value="Portuguese"> Portuguese</label></li>
+                  <li><label><input type="radio" name="lang" value="German"> German</label></li>
+                  <li><label><input type="radio" name="lang" value="French"> French</label></li>
+                </ul>
+              </div>
+            </details></div></div>
+<div class="ck-scene"><span class="ck-scene-lbl">specimen 3</span><div class="ck-stage"><span class="toggle" role="switch" aria-checked="true" tabindex="0" aria-label="On"></span></div></div>
+  </section>
+
+  <section class="tk-sec" id="roles">
+    <h2 data-n="02">Roles it reads</h2>
+    <p class="tk-note">Colour comes in only through these. Change one on
+    <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-surface)"></i><code>--bg-surface</code></span><span class="ck-role"><i style="background:var(--border-brass-hover)"></i><code>--border-brass-hover</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--control-knob)"></i><code>--control-knob</code></span><span class="ck-role"><i style="background:var(--shadow-ink)"></i><code>--shadow-ink</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--text-strong)"></i><code>--text-strong</code></span></div>
+  </section>
+
+  <section class="tk-sec" id="classes">
+    <h2 data-n="03">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry it.
+    A class on no screen is either a state the markup toggles or a candidate for deletion in step 7.</p>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.filter-menu</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.filter-panel</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.lang-menu</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.reverse-row</td><td class='tk-hex'>3</td></tr><tr><td class='tk-role'>.toggle</td><td class='tk-hex'>3</td></tr></tbody></table>
+  </section>
+
+  <section class="tk-sec" id="screens">
+    <h2 data-n="04">Where it stands</h2>
+    <div class="ck-screens"><a href="../ui-visual/404.html">404</a><a href="../ui-visual/500.html">500</a><a href="../ui-visual/active-bets-empty-new.html">active-bets-empty-new</a><a href="../ui-visual/active-bets-empty-resolved.html">active-bets-empty-resolved</a><a href="../ui-visual/active-bets-error.html">active-bets-error</a><a href="../ui-visual/active-bets-history-empty.html">active-bets-history-empty</a><a href="../ui-visual/active-bets-history-error.html">active-bets-history-error</a><a href="../ui-visual/active-bets-history-loading.html">active-bets-history-loading</a><a href="../ui-visual/active-bets-history.html">active-bets-history</a><a href="../ui-visual/active-bets-loading.html">active-bets-loading</a><a href="../ui-visual/active-bets.html">active-bets</a><a href="../ui-visual/cookie-consent.html">cookie-consent</a><a href="../ui-visual/deposit-error-card.html">deposit-error-card</a><a href="../ui-visual/deposit-error-kyc.html">deposit-error-kyc</a><a href="../ui-visual/deposit-loading.html">deposit-loading</a><a href="../ui-visual/deposit-minimum-not-met.html">deposit-minimum-not-met</a><a href="../ui-visual/deposit-pending.html">deposit-pending</a><a href="../ui-visual/deposit-widget-load-failure.html">deposit-widget-load-failure</a><a href="../ui-visual/deposit.html">deposit</a><a href="../ui-visual/event-detail-bet-error.html">event-detail-bet-error</a><a href="../ui-visual/event-detail-bet-insufficient.html">event-detail-bet-insufficient</a><a href="../ui-visual/event-detail-bet-processing.html">event-detail-bet-processing</a><a href="../ui-visual/event-detail-bet-reconcile.html">event-detail-bet-reconcile</a><a href="../ui-visual/event-detail-error.html">event-detail-error</a><a href="../ui-visual/event-detail-loading.html">event-detail-loading</a><a href="../ui-visual/event-detail-logged-out-error.html">event-detail-logged-out-error</a><a href="../ui-visual/event-detail-logged-out-loading.html">event-detail-logged-out-loading</a><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-logged-out.html">event-detail-logged-out</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-detail-resolved.html">event-detail-resolved</a><a href="../ui-visual/event-detail.html">event-detail</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-empty.html">event-feed-empty</a><a href="../ui-visual/event-feed-error.html">event-feed-error</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-empty.html">event-feed-logged-out-empty</a><a href="../ui-visual/event-feed-logged-out-error.html">event-feed-logged-out-error</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-empty.html">favorites-empty</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/loss-loading.html">loss-loading</a><a href="../ui-visual/loss.html">loss</a><a href="../ui-visual/maintenance.html">maintenance</a><a href="../ui-visual/my-profile-error.html">my-profile-error</a><a href="../ui-visual/my-profile-loading.html">my-profile-loading</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/notifications-empty.html">notifications-empty</a><a href="../ui-visual/notifications-error.html">notifications-error</a><a href="../ui-visual/notifications-loading.html">notifications-loading</a><a href="../ui-visual/notifications-push.html">notifications-push</a><a href="../ui-visual/notifications.html">notifications</a><a href="../ui-visual/public-profile-error.html">public-profile-error</a><a href="../ui-visual/public-profile-loading.html">public-profile-loading</a><a href="../ui-visual/public-profile-not-found.html">public-profile-not-found</a><a href="../ui-visual/public-profile.html">public-profile</a><a href="../ui-visual/sign-in-error.html">sign-in-error</a><a href="../ui-visual/sign-in-loading.html">sign-in-loading</a><a href="../ui-visual/sign-in-provider-conflict.html">sign-in-provider-conflict</a><a href="../ui-visual/sign-in.html">sign-in</a><a href="../ui-visual/toasts.html">toasts</a><a href="../ui-visual/wallet-error.html">wallet-error</a><a href="../ui-visual/wallet-loading.html">wallet-loading</a><a href="../ui-visual/wallet.html">wallet</a><a href="../ui-visual/win-error.html">win-error</a><a href="../ui-visual/win-loading.html">win-loading</a><a href="../ui-visual/win-payout-pending.html">win-payout-pending</a><a href="../ui-visual/win.html">win</a></div>
+  </section>
+
+  <section class="tk-sec" id="css">
+    <h2 data-n="05">The file</h2>
+    <p class="tk-note">To change this component, edit <code>components/filters.css</code>. To change a
+    value it reads, edit the role in <code>components/tokens.css</code>.</p>
+    <details class="ck-src"><summary>components/filters.css</summary><pre>/* components/filters.css
+   Component: filters. Classes: .filter-menu, .filter-panel, .reverse-row, .toggle.
+
+   Reads: --bg-control, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --control-knob, --shadow-ink, --text-brass, --text-muted, --text-primary, --text-strong
+   Stand:  ui-kit/filters.html
+   Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.filter-menu{position:relative}
+.filter-menu summary{list-style:none;padding:var(--space-5) var(--space-8);font-size:var(--text-11);cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-5)}
+.filter-menu summary::-webkit-details-marker{display:none}
+.filter-panel{right:0}
+.filter-panel ul{list-style:none;margin:0;padding:var(--space-4) 0}
+.filter-panel li label{display:flex;align-items:center;gap:var(--space-8);font-size:var(--text-11);cursor:pointer}
+.reverse-row{display:flex;align-items:center;justify-content:space-between;padding:var(--space-7) var(--space-10);font-size:var(--text-11)}
+.toggle{border:1px solid var(--border-hairline);font-size:var(--text-10);padding:var(--space-2) var(--space-8);cursor:pointer}
+.toggle[aria-checked="true"]{font-weight:var(--weight-bold)}
+.lang-menu .filter-panel{top:auto;bottom:calc(100% + 4px);right:auto;left:0;min-width:150px}
+.filter-panel{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-12);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:50;min-width:196px}
+.filter-menu summary{background:var(--bg-surface);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
+.app-case .filter-menu summary{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20)!important;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+.app-case .filter-menu summary:hover{border-color:var(--border-brass-hover)!important;background:var(--bg-control);color:var(--text-strong)}
+.filter-panel input[type=radio],.filter-panel input[type=checkbox]{display:none}
+.filter-panel li{padding:0}
+.filter-panel li label{color:var(--text-primary);border-radius:var(--radius-8);margin:var(--space-2) var(--space-4);padding:var(--space-8) var(--space-10);transition:background var(--dur-fast),color var(--dur-fast)}
+.filter-panel li label:hover{background:var(--bg-control)}
+.filter-panel li label:has(input:checked){background:color-mix(in oklab,var(--color-action) 20%,transparent);color:var(--text-brass);font-weight:var(--weight-semibold)}
+.reverse-row{border-top:1px solid var(--border-hairline);color:var(--text-muted)}
+.toggle[role=switch]{position:relative;width:var(--space-40);height:var(--icon-22);border-radius:var(--radius-pill);background:var(--bg-control);border:1px solid var(--border-hairline);padding:0;font-size:0;flex:0 0 auto;cursor:pointer;transition:background var(--dur-quick)}
+.toggle[role=switch]::after{content:'';position:absolute;top:2px;left:2px;width:var(--icon-16);height:var(--icon-16);border-radius:50%;background:var(--text-muted);transition:left var(--dur-quick) var(--ease-out),background var(--dur-quick)}
+.toggle[role=switch][aria-checked=true]{background:var(--color-action);border-color:var(--color-action)}
+.toggle[role=switch][aria-checked=true]::after{left:20px;background:var(--control-knob)}
+.toggle[role=switch][aria-disabled=true]{opacity:.42;cursor:not-allowed}
+.filter-menu summary:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
+@media(max-width:640px){
+  .app-case .filter-menu summary{min-height:var(--control-lg)}
+  .filter-menu{position:relative}
+}
+</pre></details>
+  </section>
+</div>
+
+<script src="_nav.js"></script>
+</body>
+</html>

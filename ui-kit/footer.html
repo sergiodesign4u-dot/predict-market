@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - Footer</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="footer">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<div class="tk-wrap">
+  <header class="tk-hero">
+    <h1>Footer</h1>
+    <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">components/footer.css</span>
+      <span class="tk-badge">48 rules</span>
+      <span class="tk-badge">17 classes</span>
+      <span class="tk-badge">76 screens</span>
+    </div>
+  </header>
+
+  <section class="tk-sec" id="live">
+    <h2 data-n="01">Live</h2>
+    <p class="tk-note">The component in the markup it ships with, lifted from the frozen kit so the
+    stand cannot drift from the product. Painted by <code>components/index.css</code>, nothing else.</p>
+    <div class="ck-scene"><span class="ck-scene-lbl">specimen 1</span><div class="ck-stage"><footer class="app-footer">
+      <div class="footer-inner">
+
+        <!-- Trust strip (persistent funds-safety + resolution signal, WF reconcile) -->
+        <div class="footer-trust">
+          <h3 class="trust-head">Built on trust, not on your balance</h3>
+          <div class="trust-items">
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"></path><path d="M8.8 12l2.2 2.2L15.4 10"></path></svg>
+              <span class="tr-txt"><b>Your USDC is held 1:1</b><i>We never lend it.</i></span>
+            </span>
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"></path></svg>
+              <span class="tr-txt"><b>Every event resolves against a public source</b><i>You can check it.</i></span>
+            </span>
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"></path></svg>
+              <span class="tr-txt"><b>1,284 events resolved</b><i>On-chain, verifiable.</i></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="footer-top">
+
+          <!-- Brand block: logo, tagline, social, language -->
+          <div class="footer-brand">
+            <span class="footer-logo">Predict Market</span>
+            <p class="footer-tagline">Back the events you follow.</p>
+            <div class="social-row" role="list" aria-label="Social media">
+              <a href="#" role="listitem" aria-label="X (Twitter)" title="X (Twitter)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Discord" title="Discord">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2l-1-2H8l-1 2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"></path><circle cx="10" cy="12" r="1.1"></circle><circle cx="14" cy="12" r="1.1"></circle></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Telegram" title="Telegram">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l6 2 2 6 3-4 5 4z"></path></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Instagram" title="Instagram">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><circle cx="16.6" cy="7.4" r="0.7"></circle></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="TikTok" title="TikTok">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5v9.5a3 3 0 1 1-2.5-3"></path><path d="M11 5c.5 2.5 2.5 4 4.5 4"></path></svg>
+              </a>
+            </div>
+            <details class="filter-menu lang-menu" id="langMenu">
+              <summary aria-label="Language (placeholder)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"></path></svg>
+                <span id="langCurrent">English</span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+                <span class="tbd">TBD</span>
+              </summary>
+              <div class="filter-panel">
+                <ul>
+                  <li><label><input type="radio" name="lang" value="English" checked=""> English</label></li>
+                  <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
+                  <li><label><input type="radio" name="lang" value="Portuguese"> Portuguese</label></li>
+                  <li><label><input type="radio" name="lang" value="German"> German</label></li>
+                  <li><label><input type="radio" name="lang" value="French"> French</label></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <!-- Link columns -->
+          <div class="footer-cols">
+
+            <nav class="footer-col" aria-label="Markets">
+              <h3>Events</h3>
+              <p class="sub-label">By category</p>
+              <ul>
+                <li><a href="#">Politics</a></li>
+                <li><a href="#">Crypto</a></li>
+                <li><a href="#">Culture</a></li>
+                <li><a href="#">General</a></li>
+                <li><a href="#">Sports</a> <span class="tbd">post-MVP</span></li>
+              </ul>
+              <p class="sub-label">By topic</p>
+              <ul>
+                <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
+                <li><a href="#">View all events</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Product">
+              <h3>Product</h3>
+              <ul>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="#">Wallet</a></li>
+                <li><a href="#">My Bets</a></li>
+                <li><a href="#">API / Developers</a> <span class="tbd">post-MVP</span></li>
+                <li><a href="#">Status</a> <span class="tbd">TBD</span></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Support">
+              <h3>Support</h3>
+              <ul>
+                <li><a href="#">Help Center</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">FAQ</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Contact</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">How It Works</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Company">
+              <h3>Company</h3>
+              <ul>
+                <li><a href="#">About</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Careers</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Press</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Brand</a> <span class="tbd">TBD</span></li>
+              </ul>
+            </nav>
+
+          </div>
+        </div>
+
+        <!-- SEO popular-links block (second internal-linking plane, WF reconcile) -->
+        <div class="footer-popular">
+          <h3>Popular right now</h3>
+          <ul class="popular-links">
+            <li><a href="#">Politics events</a></li>
+            <li><a href="#">Crypto events</a></li>
+            <li><a href="#">Culture events</a></li>
+            <li><a href="#">General events</a></li>
+            <li><a href="#">Trending events</a></li>
+            <li><a href="#">Ending soon</a></li>
+            <li><a href="#">How it works</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal strip -->
+        <div class="footer-legal">
+          <nav aria-label="Legal">
+            <ul class="legal-links">
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Responsible play</a></li>
+              <li><a href="#">Geo restrictions</a> <span class="tbd">TBD</span></li>
+              <li><a href="#">Cookie preferences</a></li>
+            </ul>
+          </nav>
+          <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
+          <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.]</p>
+          <p>Copyright (c) Predict Market. Sample wireframe content.</p>
+        </div>
+
+      </div>
+    </footer></div></div>
+  </section>
+
+  <section class="tk-sec" id="roles">
+    <h2 data-n="02">Roles it reads</h2>
+    <p class="tk-note">Colour comes in only through these. Change one on
+    <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-surface)"></i><code>--bg-surface</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
+  </section>
+
+  <section class="tk-sec" id="classes">
+    <h2 data-n="03">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry it.
+    A class on no screen is either a state the markup toggles or a candidate for deletion in step 7.</p>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody><tr><td class='tk-role'>.app-footer</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.footer-brand</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.footer-col</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.footer-cols</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.footer-inner</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.footer-legal</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.footer-logo</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.footer-popular</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.footer-tagline</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.footer-top</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.ic</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.ic-sm</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.lang-menu</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.legal-links</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.popular-links</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.social-row</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.sub-label</td><td class='tk-hex'>76</td></tr></tbody></table>
+  </section>
+
+  <section class="tk-sec" id="screens">
+    <h2 data-n="04">Where it stands</h2>
+    <div class="ck-screens"><a href="../ui-visual/404.html">404</a><a href="../ui-visual/500.html">500</a><a href="../ui-visual/active-bets-empty-new.html">active-bets-empty-new</a><a href="../ui-visual/active-bets-empty-resolved.html">active-bets-empty-resolved</a><a href="../ui-visual/active-bets-error.html">active-bets-error</a><a href="../ui-visual/active-bets-history-empty.html">active-bets-history-empty</a><a href="../ui-visual/active-bets-history-error.html">active-bets-history-error</a><a href="../ui-visual/active-bets-history-loading.html">active-bets-history-loading</a><a href="../ui-visual/active-bets-history.html">active-bets-history</a><a href="../ui-visual/active-bets-loading.html">active-bets-loading</a><a href="../ui-visual/active-bets.html">active-bets</a><a href="../ui-visual/cookie-consent.html">cookie-consent</a><a href="../ui-visual/deposit-error-card.html">deposit-error-card</a><a href="../ui-visual/deposit-error-kyc.html">deposit-error-kyc</a><a href="../ui-visual/deposit-loading.html">deposit-loading</a><a href="../ui-visual/deposit-minimum-not-met.html">deposit-minimum-not-met</a><a href="../ui-visual/deposit-pending.html">deposit-pending</a><a href="../ui-visual/deposit-widget-load-failure.html">deposit-widget-load-failure</a><a href="../ui-visual/deposit.html">deposit</a><a href="../ui-visual/event-detail-bet-error.html">event-detail-bet-error</a><a href="../ui-visual/event-detail-bet-insufficient.html">event-detail-bet-insufficient</a><a href="../ui-visual/event-detail-bet-processing.html">event-detail-bet-processing</a><a href="../ui-visual/event-detail-bet-reconcile.html">event-detail-bet-reconcile</a><a href="../ui-visual/event-detail-error.html">event-detail-error</a><a href="../ui-visual/event-detail-loading.html">event-detail-loading</a><a href="../ui-visual/event-detail-logged-out-error.html">event-detail-logged-out-error</a><a href="../ui-visual/event-detail-logged-out-loading.html">event-detail-logged-out-loading</a><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-logged-out.html">event-detail-logged-out</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-detail-resolved.html">event-detail-resolved</a><a href="../ui-visual/event-detail.html">event-detail</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-empty.html">event-feed-empty</a><a href="../ui-visual/event-feed-error.html">event-feed-error</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-empty.html">event-feed-logged-out-empty</a><a href="../ui-visual/event-feed-logged-out-error.html">event-feed-logged-out-error</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-empty.html">favorites-empty</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/loss-loading.html">loss-loading</a><a href="../ui-visual/loss.html">loss</a><a href="../ui-visual/maintenance.html">maintenance</a><a href="../ui-visual/my-profile-error.html">my-profile-error</a><a href="../ui-visual/my-profile-loading.html">my-profile-loading</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/notifications-empty.html">notifications-empty</a><a href="../ui-visual/notifications-error.html">notifications-error</a><a href="../ui-visual/notifications-loading.html">notifications-loading</a><a href="../ui-visual/notifications-push.html">notifications-push</a><a href="../ui-visual/notifications.html">notifications</a><a href="../ui-visual/public-profile-error.html">public-profile-error</a><a href="../ui-visual/public-profile-loading.html">public-profile-loading</a><a href="../ui-visual/public-profile-not-found.html">public-profile-not-found</a><a href="../ui-visual/public-profile.html">public-profile</a><a href="../ui-visual/sign-in-error.html">sign-in-error</a><a href="../ui-visual/sign-in-loading.html">sign-in-loading</a><a href="../ui-visual/sign-in-provider-conflict.html">sign-in-provider-conflict</a><a href="../ui-visual/sign-in.html">sign-in</a><a href="../ui-visual/toasts.html">toasts</a><a href="../ui-visual/wallet-error.html">wallet-error</a><a href="../ui-visual/wallet-loading.html">wallet-loading</a><a href="../ui-visual/wallet.html">wallet</a><a href="../ui-visual/win-error.html">win-error</a><a href="../ui-visual/win-loading.html">win-loading</a><a href="../ui-visual/win-payout-pending.html">win-payout-pending</a><a href="../ui-visual/win.html">win</a></div>
+  </section>
+
+  <section class="tk-sec" id="css">
+    <h2 data-n="05">The file</h2>
+    <p class="tk-note">To change this component, edit <code>components/footer.css</code>. To change a
+    value it reads, edit the role in <code>components/tokens.css</code>.</p>
+    <details class="ck-src"><summary>components/footer.css</summary><pre>/* components/footer.css
+   Component: footer. Classes: .app-footer, .footer-brand, .footer-col, .footer-cols, .footer-inner, .footer-legal, .footer-logo, .footer-popular, .footer-tagline, .footer-top, .lang-menu, .legal-links, .popular-links, .social-row and 1 more.
+
+   Reads: --bg-control, --bg-surface, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --text-brass, --text-muted, --text-primary
+   Stand:  ui-kit/footer.html
+   Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.app-footer{margin:0;font-size:var(--text-11)}
+.app-footer .footer-inner{display:flex;flex-direction:column;gap:var(--space-18)}
+.app-footer nav{border:none}
+.app-footer a:hover{text-decoration:underline}
+.footer-top{display:flex;flex-direction:column;gap:var(--space-20)}
+.footer-brand{display:flex;flex-direction:column;gap:var(--space-12)}
+.footer-logo{justify-content:center}
+.footer-tagline{margin:0;max-width:280px}
+.social-row{display:flex;gap:var(--space-6)}
+.social-row a{width:var(--space-30);height:var(--space-30);display:inline-flex;align-items:center;justify-content:center}
+.social-row .ic{width:var(--icon-17);height:var(--icon-17)}
+.lang-menu{width:max-content}
+.lang-menu summary .ic{width:var(--icon-15);height:var(--icon-15)}
+.lang-menu summary .ic-sm{width:var(--space-12);height:var(--space-12)}
+.footer-cols{display:flex;flex-direction:column;gap:var(--space-16)}
+.footer-col h3{font-size:var(--text-11);margin:0 0 var(--space-7);text-transform:uppercase;letter-spacing:.04em}
+.footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-5)}
+.footer-col .sub-label{font-size:var(--text-9);margin:var(--space-9) 0 var(--space-4);text-transform:uppercase;letter-spacing:.03em}
+.footer-legal{padding-top:var(--space-12);display:flex;flex-direction:column;gap:var(--space-8)}
+.footer-legal .legal-links{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-10)}
+.footer-legal p{margin:0}
+@media (min-width: 640px){
+  .footer-top{flex-direction:row;justify-content:space-between;gap:var(--space-28)}
+  .footer-brand{flex:0 0 240px}
+  .footer-cols{flex-direction:row;gap:var(--space-28);flex:1;flex-wrap:wrap}
+  .footer-col{min-width:120px}
+}
+.footer-popular{padding:var(--space-10) var(--space-12)}
+.footer-popular h3{font-size:var(--text-11);text-transform:uppercase;letter-spacing:.03em;margin:0 0 var(--space-6)}
+.popular-links{display:flex;flex-wrap:wrap;gap:var(--space-6) var(--space-14);list-style:none;padding:0;margin:0;font-size:var(--text-12)}
+.app-footer a:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
+.app-footer{background:var(--bg-surface);color:var(--text-muted)}
+.app-footer .footer-inner{max-width:var(--container-max);margin:0 auto;padding:var(--space-22) var(--space-20)}
+.app-footer a{color:var(--text-muted);text-decoration:none}
+.app-footer a:hover,.popular-links a:hover,.footer-col a:hover,.legal-links a:hover{color:var(--text-brass);text-decoration:none}
+.footer-popular{border-top:1px solid var(--border-hairline)}
+.footer-popular h3,.footer-col h3{color:var(--text-primary)}
+.footer-tagline{color:var(--text-muted)}
+.footer-col .sub-label{color:var(--text-muted)}
+.social-row a{background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);transition:background var(--dur-base) ease,border-color var(--dur-base) ease,transform var(--dur-base) ease}
+.social-row a:hover{background:color-mix(in oklab,var(--color-action) 20%,var(--bg-control));border-color:var(--text-brass);transform:translateY(-2px)}
+.social-row a:hover .ic{stroke:var(--text-primary)}
+.footer-logo{width:auto;height:auto;padding:0;background:none;border:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-15);letter-spacing:-.02em;color:var(--text-primary)}
+.footer-legal{border-top:1px solid var(--border-hairline)}
+.app-footer{border-top:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
+.footer-logo{display:inline-flex;align-items:center;gap:var(--space-8)}
+.footer-logo::first-letter{color:var(--text-primary)}
+.footer-logo::before{content:'';flex:0 0 auto;width:21px;height:var(--icon-15);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='18'%3E%3Cpath d='M2 15 L9 7 L13 10 L24 2' fill='none' stroke='%23c99e3f' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/contain}
+.app-footer .footer-popular,.app-footer .footer-legal{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+</pre></details>
+  </section>
+</div>
+
+<script src="_nav.js"></script>
+</body>
+</html>

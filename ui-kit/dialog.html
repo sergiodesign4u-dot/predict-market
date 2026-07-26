@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - Shared dialog</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="dialog">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<div class="tk-wrap">
+  <header class="tk-hero">
+    <h1>Shared dialog</h1>
+    <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">components/dialog.css</span>
+      <span class="tk-badge">60 rules</span>
+      <span class="tk-badge">20 classes</span>
+      <span class="tk-badge">76 screens</span>
+    </div>
+  </header>
+
+  <section class="tk-sec" id="live">
+    <h2 data-n="01">Live</h2>
+    <p class="tk-note">The component in the markup it ships with, lifted from the frozen kit so the
+    stand cannot drift from the product. Painted by <code>components/index.css</code>, nothing else.</p>
+    <div class="ck-scene"><span class="ck-scene-lbl">specimen 1</span><div class="ck-stage"><dialog open="" id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
+    <div class="sheet-head">
+      <h2>Sign in or create account</h2>
+      <p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p>
+      <button type="button" class="sheet-close" data-close-dialog="" aria-label="Close">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+    <div class="sheet-body">
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"></path><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"></path><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"></path><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"></path></svg>
+        Continue with Google
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"></path></svg>
+        Continue with X
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"></path></svg>
+        Continue with Apple
+      </button>
+      <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+    </div>
+  </dialog></div></div>
+<div class="ck-scene"><span class="ck-scene-lbl">specimen 2</span><div class="ck-stage"><dialog open="" id="depositDialog" class="app-dialog" aria-label="Add funds">
+    <div class="sheet-head">
+      <h2>Add funds</h2>
+      <p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p>
+      <button type="button" class="sheet-close" data-close-dialog="" aria-label="Close">x</button>
+    </div>
+    <div class="sheet-body">
+      <div>
+        <span class="field-label">Amount to add</span>
+        <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9.$]*" value="$20.00" aria-label="Amount to add"></div>
+        <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
+      </div>
+      <div class="widget-box">Transak payment widget (card to USDC)</div>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
+      <button type="button" class="confirm-btn" data-close-dialog="">Add funds</button>
+    </div>
+  </dialog></div></div>
+<div class="ck-scene"><span class="ck-scene-lbl">specimen 3</span><div class="ck-stage"><dialog open="" id="howitworksDialog" class="app-dialog hiw-dialog" aria-label="How it works">
+    <button type="button" class="hiw-close" data-close-dialog="" aria-label="Close">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+    <div class="hiw-hero">
+      <span class="hiw-glow" aria-hidden="true"></span>
+      <div class="hiw-hero-inner">
+        <h2>How it works</h2>
+        <p class="hiw-tagline">Back the events you follow, in plain language.</p>
+      </div>
+    </div>
+    <div class="hiw-body">
+      <div class="hiw-sec">
+        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l3 3 5-6"></path></svg></span>
+        <div class="hiw-sec-txt">
+          <span class="hiw-label">How betting works here</span>
+          <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+        </div>
+      </div>
+      <div class="hiw-sec">
+        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M4 15l5-5 4 3 6-8"></path><path d="M20 5h-4M20 5v4"></path></svg></span>
+        <div class="hiw-sec-txt">
+          <span class="hiw-label">Why the odds move</span>
+          <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+        </div>
+      </div>
+      <div class="hiw-sec hiw-faq">
+        <span class="hiw-label">Common questions</span>
+        <dl>
+          <dt>Do I need crypto to start?</dt>
+          <dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd>
+          <dt>What is the smallest bet?</dt>
+          <dd>One dollar. The default is five.</dd>
+          <dt>How does an event resolve?</dt>
+          <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
+        </dl>
+      </div>
+      <a href="#" class="hiw-full">Read the full guide <svg class="ic hiw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+  </dialog></div></div>
+  </section>
+
+  <section class="tk-sec" id="roles">
+    <h2 data-n="02">Roles it reads</h2>
+    <p class="tk-note">Colour comes in only through these. Change one on
+    <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bevel-hair)"></i><code>--bevel-hair</code></span><span class="ck-role"><i style="background:var(--bevel-lit)"></i><code>--bevel-lit</code></span><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-dialog-head-from)"></i><code>--bg-dialog-head-from</code></span><span class="ck-role"><i style="background:var(--bg-plate)"></i><code>--bg-plate</code></span><span class="ck-role"><i style="background:var(--bg-plate-from)"></i><code>--bg-plate-from</code></span><span class="ck-role"><i style="background:var(--bg-plate-to)"></i><code>--bg-plate-to</code></span><span class="ck-role"><i style="background:var(--bg-surface)"></i><code>--bg-surface</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--color-action-lit)"></i><code>--color-action-lit</code></span><span class="ck-role"><i style="background:var(--control-knob)"></i><code>--control-knob</code></span><span class="ck-role"><i style="background:var(--edge-shade-strong)"></i><code>--edge-shade-strong</code></span><span class="ck-role"><i style="background:var(--line-on-photo)"></i><code>--line-on-photo</code></span><span class="ck-role"><i style="background:var(--line-on-photo-hover)"></i><code>--line-on-photo-hover</code></span><span class="ck-role"><i style="background:var(--result-won)"></i><code>--result-won</code></span><span class="ck-role"><i style="background:var(--result-won-stone)"></i><code>--result-won-stone</code></span><span class="ck-role"><i style="background:var(--scrim)"></i><code>--scrim</code></span><span class="ck-role"><i style="background:var(--shadow-ink)"></i><code>--shadow-ink</code></span><span class="ck-role"><i style="background:var(--shadow-ink-40)"></i><code>--shadow-ink-40</code></span><span class="ck-role"><i style="background:var(--shadow-ink-55)"></i><code>--shadow-ink-55</code></span><span class="ck-role"><i style="background:var(--shadow-ink-72)"></i><code>--shadow-ink-72</code></span><span class="ck-role"><i style="background:var(--shadow-ink-90)"></i><code>--shadow-ink-90</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--text-strong)"></i><code>--text-strong</code></span><span class="ck-role"><i style="background:var(--tint-brass-40)"></i><code>--tint-brass-40</code></span></div>
+  </section>
+
+  <section class="tk-sec" id="classes">
+    <h2 data-n="03">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry it.
+    A class on no screen is either a state the markup toggles or a candidate for deletion in step 7.</p>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.app-dialog</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.backdrop</td><td class='tk-hex'>0</td></tr><tr><td class='tk-role'>.bet-panel</td><td class='tk-hex'>11</td></tr><tr><td class='tk-role'>.bet-sheet</td><td class='tk-hex'>4</td></tr><tr><td class='tk-role'>.dlg-note</td><td class='tk-hex'>0</td></tr><tr><td class='tk-role'>.fine</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.grab</td><td class='tk-hex'>0</td></tr><tr><td class='tk-role'>.ic</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.loss-dialog</td><td class='tk-hex'>2</td></tr><tr><td class='tk-role'>.outcome-dialog</td><td class='tk-hex'>17</td></tr><tr><td class='tk-role'>.sheet</td><td class='tk-hex'>0</td></tr><tr><td class='tk-role'>.sheet-body</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.sheet-close</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.sheet-head</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.sheet-sub</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.signin-dialog</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.spinner-box</td><td class='tk-hex'>6</td></tr><tr><td class='tk-role'>.wd-flow</td><td class='tk-hex'>1</td></tr><tr><td class='tk-role'>.win-dialog</td><td class='tk-hex'>4</td></tr></tbody></table>
+  </section>
+
+  <section class="tk-sec" id="screens">
+    <h2 data-n="04">Where it stands</h2>
+    <div class="ck-screens"><a href="../ui-visual/404.html">404</a><a href="../ui-visual/500.html">500</a><a href="../ui-visual/active-bets-empty-new.html">active-bets-empty-new</a><a href="../ui-visual/active-bets-empty-resolved.html">active-bets-empty-resolved</a><a href="../ui-visual/active-bets-error.html">active-bets-error</a><a href="../ui-visual/active-bets-history-empty.html">active-bets-history-empty</a><a href="../ui-visual/active-bets-history-error.html">active-bets-history-error</a><a href="../ui-visual/active-bets-history-loading.html">active-bets-history-loading</a><a href="../ui-visual/active-bets-history.html">active-bets-history</a><a href="../ui-visual/active-bets-loading.html">active-bets-loading</a><a href="../ui-visual/active-bets.html">active-bets</a><a href="../ui-visual/cookie-consent.html">cookie-consent</a><a href="../ui-visual/deposit-error-card.html">deposit-error-card</a><a href="../ui-visual/deposit-error-kyc.html">deposit-error-kyc</a><a href="../ui-visual/deposit-loading.html">deposit-loading</a><a href="../ui-visual/deposit-minimum-not-met.html">deposit-minimum-not-met</a><a href="../ui-visual/deposit-pending.html">deposit-pending</a><a href="../ui-visual/deposit-widget-load-failure.html">deposit-widget-load-failure</a><a href="../ui-visual/deposit.html">deposit</a><a href="../ui-visual/event-detail-bet-error.html">event-detail-bet-error</a><a href="../ui-visual/event-detail-bet-insufficient.html">event-detail-bet-insufficient</a><a href="../ui-visual/event-detail-bet-processing.html">event-detail-bet-processing</a><a href="../ui-visual/event-detail-bet-reconcile.html">event-detail-bet-reconcile</a><a href="../ui-visual/event-detail-error.html">event-detail-error</a><a href="../ui-visual/event-detail-loading.html">event-detail-loading</a><a href="../ui-visual/event-detail-logged-out-error.html">event-detail-logged-out-error</a><a href="../ui-visual/event-detail-logged-out-loading.html">event-detail-logged-out-loading</a><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-logged-out.html">event-detail-logged-out</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-detail-resolved.html">event-detail-resolved</a><a href="../ui-visual/event-detail.html">event-detail</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-empty.html">event-feed-empty</a><a href="../ui-visual/event-feed-error.html">event-feed-error</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-empty.html">event-feed-logged-out-empty</a><a href="../ui-visual/event-feed-logged-out-error.html">event-feed-logged-out-error</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-empty.html">favorites-empty</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/loss-loading.html">loss-loading</a><a href="../ui-visual/loss.html">loss</a><a href="../ui-visual/maintenance.html">maintenance</a><a href="../ui-visual/my-profile-error.html">my-profile-error</a><a href="../ui-visual/my-profile-loading.html">my-profile-loading</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/notifications-empty.html">notifications-empty</a><a href="../ui-visual/notifications-error.html">notifications-error</a><a href="../ui-visual/notifications-loading.html">notifications-loading</a><a href="../ui-visual/notifications-push.html">notifications-push</a><a href="../ui-visual/notifications.html">notifications</a><a href="../ui-visual/public-profile-error.html">public-profile-error</a><a href="../ui-visual/public-profile-loading.html">public-profile-loading</a><a href="../ui-visual/public-profile-not-found.html">public-profile-not-found</a><a href="../ui-visual/public-profile.html">public-profile</a><a href="../ui-visual/sign-in-error.html">sign-in-error</a><a href="../ui-visual/sign-in-loading.html">sign-in-loading</a><a href="../ui-visual/sign-in-provider-conflict.html">sign-in-provider-conflict</a><a href="../ui-visual/sign-in.html">sign-in</a><a href="../ui-visual/toasts.html">toasts</a><a href="../ui-visual/wallet-error.html">wallet-error</a><a href="../ui-visual/wallet-loading.html">wallet-loading</a><a href="../ui-visual/wallet.html">wallet</a><a href="../ui-visual/win-error.html">win-error</a><a href="../ui-visual/win-loading.html">win-loading</a><a href="../ui-visual/win-payout-pending.html">win-payout-pending</a><a href="../ui-visual/win.html">win</a></div>
+  </section>
+
+  <section class="tk-sec" id="css">
+    <h2 data-n="05">The file</h2>
+    <p class="tk-note">To change this component, edit <code>components/dialog.css</code>. To change a
+    value it reads, edit the role in <code>components/tokens.css</code>.</p>
+    <details class="ck-src"><summary>components/dialog.css</summary><pre>/* components/dialog.css
+   Component: dialog. Classes: .app-dialog, .backdrop, .dlg-note, .fine, .grab, .sheet, .sheet-body, .sheet-close, .sheet-head, .sheet-sub.
+
+   Reads: --bevel-hair, --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --result-won, --result-won-stone, --scrim, --shadow-ink, --shadow-ink-40, --shadow-ink-55, --shadow-ink-72, --shadow-ink-90, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-40
+   Stand:  ui-kit/dialog.html
+   Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+dialog.app-dialog{width:92%;max-width:var(--container-sheet);padding:0}
+dialog.app-dialog::backdrop{background:var(--shadow-ink-40)}
+dialog.app-dialog .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-10)}
+dialog.app-dialog .sheet-head h2{font-size:var(--text-14);margin:0}
+dialog.app-dialog .sheet-close{font-size:var(--text-12);cursor:pointer;padding:var(--space-2) var(--space-8)}
+dialog.app-dialog .sheet-body{padding:var(--space-10);display:flex;flex-direction:column;gap:var(--space-10)}
+dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)}
+.dlg-note{font-size:var(--text-10);padding:var(--space-6) var(--space-10);border-top:1px dashed var(--border-hairline);margin:0}
+.backdrop{flex:1;position:relative;min-height:70vh;display:flex;align-items:flex-end;justify-content:center}
+.sheet{width:100%;border:1px solid var(--border-hairline);border-bottom:none}
+.grab{width:var(--control-md);height:var(--space-4);border-radius:var(--radius-2);margin:var(--space-6) auto 0}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-10);border-bottom:1px solid var(--border-hairline)}
+.sheet-head h2{font-size:var(--text-14);margin:0}
+.sheet-close{border:1px solid var(--border-hairline);font-size:var(--text-12);cursor:pointer;padding:var(--space-2) var(--space-8)}
+.sheet-body{padding:var(--space-10);display:flex;flex-direction:column;gap:var(--space-10)}
+@media (min-width: 640px){
+  .backdrop{align-items:center;padding:var(--space-24)}
+  .sheet{max-width:var(--container-sheet);border-bottom:1px solid var(--border-hairline)}
+}
+.fine{font-size:var(--text-11);line-height:var(--leading-base)}
+dialog.app-dialog{background:var(--bg-surface);border-radius:var(--radius-16);color:var(--text-primary)}
+dialog.app-dialog .sheet-head{border-bottom:1px solid var(--border-hairline)}
+dialog.app-dialog .sheet-close{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-8)}
+dialog.app-dialog .fine,dialog.app-dialog .dlg-note{color:var(--text-muted)}
+.app-case .wd-flow .sheet-body{padding:var(--space-14);gap:var(--space-12)}
+.app-case :is(.bet-panel,.bet-sheet) .fine{color:var(--text-muted)}
+.app-case .bet-sheet .fine{margin-top:-8px}
+dialog.app-dialog.outcome-dialog .sheet-head{position:relative;overflow:hidden;display:block;padding:var(--space-26) var(--space-22) var(--space-20);border-bottom:0}
+dialog.app-dialog.win-dialog .sheet-head{background:radial-gradient(120% 96% at 100% 0%,color-mix(in oklab,var(--result-won) 42%,transparent),transparent 60%),linear-gradient(158deg,var(--result-won-stone),var(--bg-plate-to))}
+dialog.app-dialog.loss-dialog .sheet-head{background:linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
+dialog.app-dialog.outcome-dialog .sheet-head::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--shadow-ink),transparent 72%);mask-image:linear-gradient(150deg,var(--shadow-ink),transparent 72%);opacity:.16;pointer-events:none}
+dialog.app-dialog.win-dialog .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--result-won) 70%,var(--control-knob) 6%) 0%,var(--result-won) 42%,transparent 70%);filter:blur(44px);opacity:.34;pointer-events:none}
+dialog.app-dialog.outcome-dialog .sheet-head h2{position:relative;z-index:1;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:clamp(24px,5.6vw,30px);line-height:var(--leading-heading);letter-spacing:-.03em;color:var(--text-strong);margin:0;max-width:16ch;text-wrap:balance}
+dialog.app-dialog.outcome-dialog .sheet-head a{position:absolute;top:0;right:0;z-index:3;line-height:0;text-decoration:none}
+dialog.app-dialog.outcome-dialog .sheet-close{position:absolute;top:13px;right:13px;width:var(--control-sm);height:var(--control-sm);padding:0;font-size:0;color:transparent;border-radius:var(--radius-round);background:color-mix(in oklab,var(--shadow-ink) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+dialog.app-dialog.outcome-dialog .sheet-close::before,dialog.app-dialog.outcome-dialog .sheet-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 7px);width:var(--space-14);height:var(--space-2);background:var(--control-knob);border-radius:var(--radius-2)}
+dialog.app-dialog.outcome-dialog .sheet-close::before{transform:rotate(45deg)}
+dialog.app-dialog.outcome-dialog .sheet-close::after{transform:rotate(-45deg)}
+dialog.app-dialog.outcome-dialog .sheet-close:hover{background:color-mix(in oklab,var(--shadow-ink) 55%,transparent);border-color:var(--line-on-photo-hover)}
+dialog.app-dialog.outcome-dialog .sheet-body{gap:var(--space-14);padding:var(--space-20) var(--space-22) var(--space-22)}
+.outcome-dialog .fine{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:0}
+.outcome-dialog .sheet-body&gt;.fine{color:var(--text-primary);font-weight:var(--weight-bold);font-size:var(--text-13)}
+.app-case .spinner-box .fine{color:var(--text-muted)}
+dialog.app-dialog{background-color:var(--bg-plate);background-image:var(--grain-fine),linear-gradient(162deg,var(--bg-plate-from),var(--bg-plate-to));background-blend-mode:overlay,normal;border:1px solid var(--edge-shade-strong);box-shadow:inset 0 1px 0 var(--bevel-lit),inset 1px 0 0 var(--bevel-hair),
+    inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-55),
+    0 40px 80px -30px var(--shadow-ink-90),0 16px 40px -20px var(--shadow-ink-72)}
+dialog.app-dialog{overflow:hidden}
+dialog.app-dialog:not(.outcome-dialog) .sheet-head{position:relative;overflow:hidden;display:block;padding:var(--space-26) var(--space-22) var(--space-20);border-bottom:0;background:radial-gradient(120% 96% at 100% 0%,color-mix(in oklab,var(--color-action) 34%,transparent),transparent 58%),linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
+dialog.app-dialog:not(.outcome-dialog) .sheet-head::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--shadow-ink),transparent 72%);mask-image:linear-gradient(150deg,var(--shadow-ink),transparent 72%);opacity:.2;pointer-events:none}
+dialog.app-dialog:not(.outcome-dialog) .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--color-action-lit) 60%,var(--color-action)) 0%,var(--color-action) 42%,transparent 70%);filter:blur(42px);opacity:.42;pointer-events:none}
+dialog.app-dialog:not(.outcome-dialog) .sheet-head h2{position:relative;z-index:1;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:clamp(23px,5.4vw,29px);line-height:1.06;letter-spacing:-.03em;color:var(--text-strong);margin:0;max-width:15ch;text-wrap:balance}
+dialog.app-dialog:not(.outcome-dialog) .sheet-sub{position:relative;z-index:1;margin:var(--space-8) 0 0;font-size:var(--text-13-5);line-height:var(--leading-body);color:var(--text-primary);max-width:34ch}
+dialog.app-dialog:not(.outcome-dialog) .sheet-close{position:absolute;top:13px;right:13px;z-index:3;width:var(--control-sm);height:var(--control-sm);padding:0;font-size:0;color:transparent;border-radius:var(--radius-round);background:color-mix(in oklab,var(--shadow-ink) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+dialog.app-dialog:not(.outcome-dialog) .sheet-close .ic{display:none}
+dialog.app-dialog:not(.outcome-dialog) .sheet-close::before,dialog.app-dialog:not(.outcome-dialog) .sheet-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 7px);width:var(--space-14);height:var(--space-2);background:var(--control-knob);border-radius:var(--radius-2)}
+dialog.app-dialog:not(.outcome-dialog) .sheet-close::before{transform:rotate(45deg)}
+dialog.app-dialog:not(.outcome-dialog) .sheet-close::after{transform:rotate(-45deg)}
+dialog.app-dialog:not(.outcome-dialog) .sheet-close:hover{background:color-mix(in oklab,var(--shadow-ink) 55%,transparent);border-color:var(--line-on-photo-hover)}
+dialog.app-dialog.signin-dialog .sheet-body{padding:var(--space-16) var(--space-16) var(--space-18);gap:var(--space-12)}
+dialog.app-dialog.signin-dialog .fine a{color:var(--text-brass);text-decoration:none;border-bottom:1px solid var(--tint-brass-40);padding-bottom:.4px}
+dialog.app-dialog.signin-dialog .fine a:hover{border-bottom-color:var(--text-brass)}
+.app-case .sheet-close:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
+dialog.app-dialog a:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px;border-radius:var(--radius-6)}
+</pre></details>
+  </section>
+</div>
+
+<script src="_nav.js"></script>
+</body>
+</html>

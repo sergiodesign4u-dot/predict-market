@@ -1,0 +1,10 @@
+/* components/outcome-dialog.css
+   Component: outcome-dialog. Classes: .loss-dialog, .outcome-dialog, .win-dialog.
+
+   Reads: no colour role
+   Stand:  ui-kit/outcome-dialog.html
+   Stands on: 17 ui-visual screens (deposit-error-card.html, deposit-error-kyc.html, deposit-loading.html, deposit-minimum-not-met.html, deposit-pending.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+dialog.app-dialog.outcome-dialog{max-width:var(--container-sheet)}
+.outcome-dialog a{text-decoration:none}
