@@ -30,7 +30,7 @@
     the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
     page of its own, so the width under the title is a real viewport and the media queries answer to
     it.</p>
-    <figure class="ck-scene" id="sp-seo-plate"><figcaption class="ck-scene-lbl"><b>Below-fold SEO plate</b><span class="ck-w">1120px</span><span class="ck-zoom" hidden></span><a href="specimens/seo-plate.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame"><iframe data-specimen="seo-plate" src="specimens/seo-plate.html" width="1120" height="320" loading="lazy" title="Below-fold SEO plate"></iframe></div></figure>
+    <figure class="ck-scene" id="sp-seo-plate"><figcaption class="ck-scene-lbl"><b>Below-fold SEO plate</b><span class="ck-w">1120px</span><span class="ck-zoom" hidden></span><a href="specimens/seo-plate.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:1120px"><iframe data-specimen="seo-plate" src="specimens/seo-plate.html" width="1120" height="320" loading="lazy" title="Below-fold SEO plate"></iframe></div></figure>
   </section>
 
   <section class="tk-sec" id="states">
@@ -50,8 +50,11 @@
   <section class="tk-sec" id="classes">
     <h2 data-n="05">Classes</h2>
     <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry
-    it. A class on no screen is either a state the markup toggles or a candidate for deletion.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.feed-inner</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.feed-seo</td><td class='tk-hex'>6</td></tr><tr><td class='tk-role'>.feed-seo-wrap</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.seo-brand</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.seo-by</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.seo-h-ic</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.seo-tagline</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.seo-text</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.seo-tick</td><td class='tk-hex'>5</td></tr></tbody></table>
+    it. A zero is not automatically dead: the last column says whether the class is built at runtime,
+    shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
+    used by nothing. Only the last kind is a deletion candidate, and they are collected in
+    <a href="docs/coverage.md">coverage.md</a>.</p>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.feed-inner</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.feed-seo</td><td class='tk-hex'>6</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.feed-seo-wrap</td><td class='tk-hex'>5</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.seo-brand</td><td class='tk-hex'>5</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.seo-by</td><td class='tk-hex'>5</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.seo-h-ic</td><td class='tk-hex'>5</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.seo-tagline</td><td class='tk-hex'>5</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.seo-text</td><td class='tk-hex'>5</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.seo-tick</td><td class='tk-hex'>5</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">

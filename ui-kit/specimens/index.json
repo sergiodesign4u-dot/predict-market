@@ -3,7 +3,7 @@
   "id": "button-primary",
   "component": "button",
   "title": "Primary button, three sizes",
-  "width": 720,
+  "width": 410,
   "source": "kit.html / buttons / Primary - small / medium / large",
   "rewrites": 0
  },
@@ -11,7 +11,7 @@
   "id": "button-secondary",
   "component": "button",
   "title": "Secondary button, three sizes",
-  "width": 720,
+  "width": 500,
   "source": "kit.html / buttons / Secondary - small / medium / large",
   "rewrites": 0
  },
@@ -19,7 +19,7 @@
   "id": "button-outcome-row",
   "component": "button",
   "title": "Outcome pair, icon button and Load more",
-  "width": 720,
+  "width": 500,
   "also": [
    "yesno",
    "loadmore",
@@ -32,7 +32,7 @@
   "id": "loadmore",
   "component": "loadmore",
   "title": "Load more",
-  "width": 420,
+  "width": 220,
   "source": "kit.html / buttons / Outcome pair, icon, and Load more",
   "rewrites": 0
  },
@@ -52,7 +52,7 @@
   "id": "filters-sort",
   "component": "filters",
   "title": "Sort menu",
-  "width": 420,
+  "width": 250,
   "state": "Shown closed, the way it ships. It opens on click, no script involved.",
   "source": "kit.html / chips / Chips and filters",
   "rewrites": 0
@@ -61,7 +61,7 @@
   "id": "filters-toggle",
   "component": "filters",
   "title": "Toggle: on, off, disabled",
-  "width": 560,
+  "width": 330,
   "source": "kit.html / chips / Toggle (on / off / disabled)",
   "rewrites": 0
  },
@@ -252,7 +252,7 @@
   "id": "trustbar-feed",
   "component": "trustbar",
   "title": "Trust bar, near the action",
-  "width": 900,
+  "width": 580,
   "source": "kit.html / feedback / Trust bar (near the action)",
   "rewrites": 0
  },
@@ -497,7 +497,7 @@
   "id": "icons-brand",
   "component": "icons",
   "title": "Brand and auth",
-  "width": 1120,
+  "width": 560,
   "source": "kit.html / icons / Brand and auth",
   "rewrites": 0
  },
@@ -505,8 +505,17 @@
   "id": "base-frame",
   "component": "base",
   "title": "The page frame and the text reset",
-  "width": 900,
+  "width": 760,
   "source": "specimens.extra.html / extra / Page frame and text reset",
+  "rewrites": 0
+ },
+ {
+  "id": "base-groove",
+  "component": "base",
+  "title": "The engraved separator",
+  "width": 760,
+  "note": "The .groove-sep utility next to the flat line it replaces. It is used on three elements in the frozen kit and on no painted screen, while its two declarations are hand-inlined in thirteen other component files. That is a finding, not dead weight.",
+  "source": "kit.html / f-color / Separators (the engraved groove)",
   "rewrites": 0
  },
  {

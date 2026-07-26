@@ -169,6 +169,30 @@ is quoted rather than described. The states that live in the markup (`open`, `ch
 `aria-current`, `.sel`, `.scrolled`, `.skeleton`, logged out) are shown as separate specimens and
 captioned with how the product sets them.
 
+### Three rules a specimen has to obey
+
+1. **It shows product markup, not invented markup.** The first version of the base specimen carried
+   a bare `<a>` and a bare `<ul>` to illustrate the reset. Nothing in `components/` styles either, so
+   the page showed browser blue and browser bullets and demonstrated the browser rather than the
+   system. If the system does not style something, the specimen does not contain it.
+2. **The declared width is the smallest one at which the component looks like itself**, not the width
+   of the screen it was cut from. A three-button row in a 720px frame is mostly empty canvas.
+3. **The frame is exactly as wide as the specimen.** The border sits on the edge of the thing, and
+   when the column is too narrow the frame scales down and says by how much.
+
+### Why a zero in the Classes table is not a verdict
+
+The table counts how many painted screens carry each class. A zero means one of five different
+things, and the last column says which: `runtime` (a script creates it, like the odds bar the feed
+builds from the probability text), `kit` (a real component the product has not adopted, like the
+`.btn-*` size ladder), `wireframe` (the grey-era version of a block the paint replaced), `docs` (a
+course page carries it, and those pages do not load the system), or `unused`. Only `unused` is a
+deletion candidate. All five lists are generated into `docs/coverage.md`.
+
+Nothing is deleted from `components/` while the painted screens still carry their own inline styles:
+until step 5 puts them all on `index.css`, a class can look unreachable from here and still be
+styled locally on a screen. Step 7 acts on the list.
+
 ## How to add a component
 
 Five things, or it does not exist:

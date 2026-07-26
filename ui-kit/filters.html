@@ -30,8 +30,8 @@
     the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
     page of its own, so the width under the title is a real viewport and the media queries answer to
     it.</p>
-    <figure class="ck-scene" id="sp-filters-sort"><figcaption class="ck-scene-lbl"><b>Sort menu</b><span class="ck-w">420px</span><span class="ck-zoom" hidden></span><a href="specimens/filters-sort.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame"><iframe data-specimen="filters-sort" src="specimens/filters-sort.html" width="420" height="320" loading="lazy" title="Sort menu"></iframe></div><p class="ck-cap"><span class="ck-cap-k">state</span> Shown closed, the way it ships. It opens on click, no script involved.</p></figure>
-<figure class="ck-scene" id="sp-filters-toggle"><figcaption class="ck-scene-lbl"><b>Toggle: on, off, disabled</b><span class="ck-w">560px</span><span class="ck-zoom" hidden></span><a href="specimens/filters-toggle.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame"><iframe data-specimen="filters-toggle" src="specimens/filters-toggle.html" width="560" height="320" loading="lazy" title="Toggle: on, off, disabled"></iframe></div></figure>
+    <figure class="ck-scene" id="sp-filters-sort"><figcaption class="ck-scene-lbl"><b>Sort menu</b><span class="ck-w">250px</span><span class="ck-zoom" hidden></span><a href="specimens/filters-sort.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:250px"><iframe data-specimen="filters-sort" src="specimens/filters-sort.html" width="250" height="320" loading="lazy" title="Sort menu"></iframe></div><p class="ck-cap"><span class="ck-cap-k">state</span> Shown closed, the way it ships. It opens on click, no script involved.</p></figure>
+<figure class="ck-scene" id="sp-filters-toggle"><figcaption class="ck-scene-lbl"><b>Toggle: on, off, disabled</b><span class="ck-w">330px</span><span class="ck-zoom" hidden></span><a href="specimens/filters-toggle.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:330px"><iframe data-specimen="filters-toggle" src="specimens/filters-toggle.html" width="330" height="320" loading="lazy" title="Toggle: on, off, disabled"></iframe></div></figure>
   </section>
 <section class="tk-sec" id="inside"><h2 data-n="02">Also rendered inside</h2><p class="tk-note">The same markup, shown once on the page of the component that owns it. Nothing here is a second copy.</p><div class="ck-screens"><a href="catnav.html#sp-catnav-chips">Category chips and the sort menu</a><a href="footer.html#sp-footer">Footer</a></div></section>
   <section class="tk-sec" id="states">
@@ -51,8 +51,11 @@
   <section class="tk-sec" id="classes">
     <h2 data-n="05">Classes</h2>
     <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry
-    it. A class on no screen is either a state the markup toggles or a candidate for deletion.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.filter-menu</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.filter-panel</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.lang-menu</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.reverse-row</td><td class='tk-hex'>3</td></tr><tr><td class='tk-role'>.toggle</td><td class='tk-hex'>3</td></tr></tbody></table>
+    it. A zero is not automatically dead: the last column says whether the class is built at runtime,
+    shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
+    used by nothing. Only the last kind is a deletion candidate, and they are collected in
+    <a href="docs/coverage.md">coverage.md</a>.</p>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.filter-menu</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.filter-panel</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.lang-menu</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.reverse-row</td><td class='tk-hex'>3</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toggle</td><td class='tk-hex'>3</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">

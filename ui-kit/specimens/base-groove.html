@@ -3,30 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mobile bet sheet</title>
+<title>The engraved separator</title>
 <link rel="stylesheet" href="../../components/index.css">
 <link rel="stylesheet" href="../_specimen.css">
 </head>
-<body class="spec-inflow">
+<body>
 <div class="device"><div class="app-case">
-<dialog open="" class="app-case app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
-      <button type="button" class="sheet-grab" data-close-dialog aria-label="Close"></button>
-      <div class="bp-inner">
-        <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
-        <div class="bp-dir"><button type="button" class="bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button></div>
-        <div>
-          <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
-          <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
-        </div>
-        <div>
-          <div class="line"><span>Price now</span><span>38%</span></div>
-          <div class="line"><span>Fee (only if you win)</span><span>$0.20</span></div>
-          <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
-        </div>
-        <button type="button" class="confirm-btn" data-close-dialog style="width:100%">Confirm bet</button>
-        <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
+<div class="kit-seps">
+      <div class="kit-sep-demo">
+        <div class="kit-sep-row">Price now <span>38%</span></div>
+        <div class="kit-sep-row groove-sep">Fee (only if you win) <span>$0.20</span></div>
+        <div class="kit-sep-row groove-sep">Potential payout <span>$13.20</span></div>
       </div>
-    </dialog>
+      <div class="kit-sep-legend">
+        <div><span class="kit-sep-swatch groove-sep"></span><b>.groove-sep</b> engraved - use this</div>
+        <div><span class="kit-sep-swatch flat"></span>flat line - avoid (reads as a black gap)</div>
+      </div>
+    </div>
 </div></div>
 <script>
 /* Report to the vitrine: how tall this specimen is, and whether it rendered.
@@ -81,7 +74,7 @@
     }
     try {
       parent.postMessage({
-        specimen: "betpanel-sheet",
+        specimen: "base-groove",
         height: height(),
         elements: document.body.getElementsByTagName("*").length,
         overflowX: doc.scrollWidth - doc.clientWidth,

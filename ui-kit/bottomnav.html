@@ -30,7 +30,7 @@
     the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
     page of its own, so the width under the title is a real viewport and the media queries answer to
     it.</p>
-    <figure class="ck-scene" id="sp-bottomnav"><figcaption class="ck-scene-lbl"><b>Mobile bottom nav</b><span class="ck-w">360px</span><span class="ck-zoom" hidden></span><a href="specimens/bottomnav.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame"><iframe data-specimen="bottomnav" src="specimens/bottomnav.html" width="360" height="320" loading="lazy" title="Mobile bottom nav"></iframe></div><p class="ck-cap"><span class="ck-cap-k">state</span> Shown at 360. Above 640 the media query hides it, and that is the product behaviour, not a defect of the stand.</p></figure>
+    <figure class="ck-scene" id="sp-bottomnav"><figcaption class="ck-scene-lbl"><b>Mobile bottom nav</b><span class="ck-w">360px</span><span class="ck-zoom" hidden></span><a href="specimens/bottomnav.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:360px"><iframe data-specimen="bottomnav" src="specimens/bottomnav.html" width="360" height="320" loading="lazy" title="Mobile bottom nav"></iframe></div><p class="ck-cap"><span class="ck-cap-k">state</span> Shown at 360. Above 640 the media query hides it, and that is the product behaviour, not a defect of the stand.</p></figure>
   </section>
 
   <section class="tk-sec" id="states">
@@ -50,8 +50,11 @@
   <section class="tk-sec" id="classes">
     <h2 data-n="05">Classes</h2>
     <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry
-    it. A class on no screen is either a state the markup toggles or a candidate for deletion.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody><tr><td class='tk-role'>.bn-bal</td><td class='tk-hex'>68</td></tr><tr><td class='tk-role'>.bottom-nav</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.ic</td><td class='tk-hex'>76</td></tr></tbody></table>
+    it. A zero is not automatically dead: the last column says whether the class is built at runtime,
+    shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
+    used by nothing. Only the last kind is a deletion candidate, and they are collected in
+    <a href="docs/coverage.md">coverage.md</a>.</p>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.bn-bal</td><td class='tk-hex'>68</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.bottom-nav</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ic</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">

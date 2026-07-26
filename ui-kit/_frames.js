@@ -12,10 +12,17 @@
      label says what it is being shown at. */
   function fit(f) {
     var box = f.parentElement, w = +f.getAttribute('width');
-    var s = Math.min(1, box.clientWidth / w);
+    /* The available width is the figure's, not the box's: the box is about to be
+       resized to whatever we decide, so measuring it would measure our own
+       previous answer. */
+    var avail = box.parentElement.clientWidth;
+    var s = Math.min(1, avail / w);
+    var h = parseFloat(f.style.height || f.getAttribute('height'));
     f.style.transformOrigin = '0 0';
     f.style.transform = s < 1 ? 'scale(' + s + ')' : 'none';
-    box.style.height = Math.ceil(parseFloat(f.style.height || f.getAttribute('height')) * s) + 'px';
+    /* The border hugs the specimen instead of leaving a strip of empty canvas. */
+    box.style.width = Math.ceil(w * s) + 'px';
+    box.style.height = Math.ceil(h * s) + 'px';
     var tag = box.parentElement.querySelector('.ck-zoom');
     if (tag) { tag.textContent = s < 1 ? Math.round(s * 100) + '%' : ''; tag.hidden = s >= 1; }
   }

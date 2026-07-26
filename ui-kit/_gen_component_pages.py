@@ -91,14 +91,65 @@ def esc(s):
     return html.escape(s, quote=False)
 
 
-# ---- how many painted screens carry each class -----------------------------
-uv_classes = {}
-for f in sorted(glob.glob(str(UV / "*.html"))):
-    body = re.sub(r"<style[^>]*>.*?</style>", "", open(f, encoding="utf-8").read(), flags=re.S)
-    cs = set()
-    for m in re.finditer(r'class="([^"]*)"', body):
-        cs.update(m.group(1).split())
-    uv_classes[os.path.basename(f)] = cs
+# ---- where a class is actually used ----------------------------------------
+# A class the painted screens do not carry can still be alive. A zero means one
+# of five things, and the Classes table says which, because "0" on its own reads
+# as "delete me" and four times out of five that would be wrong.
+#
+# The runtime list is short and each entry was checked by hand against the
+# script that creates it. It is not derived by pattern, because a pattern
+# matches "brand" inside "sidebar-brand".
+RUNTIME = {
+    "oddsbar": "built by the feed script from the probability text",
+    "track": "part of the odds bar the feed script builds",
+    "fill": "part of the odds bar the feed script builds",
+    "m-label": "the card meta row, split by the feed script",
+    "m-val": "the card meta row, split by the feed script",
+    "lg-item": "the chart legend, built by the detail script",
+    "scrolled": "added to the header by a scroll observer",
+    "open": "toggled on the drawer and the overlay by script",
+}
+
+
+def classes_in(pattern, strip_style=False):
+    out = {}
+    for f in sorted(glob.glob(pattern)):
+        text = open(f, encoding="utf-8", errors="ignore").read()
+        if strip_style:
+            text = re.sub(r"<style[^>]*>.*?</style>", "", text, flags=re.S)
+        cs = set()
+        for m in re.finditer(r'class="([^"]*)"', text):
+            cs.update(m.group(1).split())
+        out[os.path.basename(f)] = cs
+    return out
+
+
+def flat(d):
+    return set().union(*d.values()) if d else set()
+
+
+uv_classes = classes_in(str(UV / "*.html"), strip_style=True)
+kit_used = flat(classes_in(str(KIT / "specimens" / "*.html"))) \
+    | flat(classes_in(str(KIT / "kit.html"))) | flat(classes_in(str(KIT / "shell.html")))
+wf_used = flat(classes_in(str(ROOT / "wireframes" / "*.html"), strip_style=True))
+docs_used = flat(classes_in(str(ROOT / "*" / "*.html"), strip_style=True)) \
+    - flat(uv_classes) - kit_used
+uv_used = flat(uv_classes)
+
+
+def where(c):
+    """Why this class shows the count it shows."""
+    if c in uv_used:
+        return "", ""
+    if c in RUNTIME:
+        return "runtime", RUNTIME[c]
+    if c in kit_used:
+        return "kit", "shown in the frozen kit, never on a painted screen"
+    if c in wf_used:
+        return "wireframe", "the grey-era version of a block the paint replaced"
+    if c in docs_used:
+        return "docs", "used by a course page, which does not load the system"
+    return "unused", "styled and carried by no element anywhere"
 
 # ---- every class any component file declares, for the orphan check ----------
 declared = set()
@@ -147,7 +198,8 @@ def live(name):
             f'<span class="ck-w">{w}px</span><span class="ck-zoom" hidden></span>'
             f'<a href="specimens/{s["id"]}.html" target="_blank" rel="noopener">open on its own</a>'
             f"</figcaption>"
-            f'<div class="ck-frame"><iframe data-specimen="{s["id"]}" src="specimens/{s["id"]}.html" '
+            f'<div class="ck-frame" style="width:{w}px">'
+            f'<iframe data-specimen="{s["id"]}" src="specimens/{s["id"]}.html" '
             f'width="{w}" height="{s.get("height", 320)}" loading="lazy" '
             f'title="{esc(s["title"])}"></iframe></div>{caption}</figure>')
     return "\n".join(out)
@@ -190,9 +242,12 @@ def class_table(classes):
     rows = []
     for c in classes:
         n = sum(1 for cs in uv_classes.values() if c in cs)
-        rows.append(f"<tr><td class='tk-role'>.{esc(c)}</td><td class='tk-hex'>{n}</td></tr>")
-    return ('<table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody>'
-            + "".join(rows) + "</tbody></table>")
+        kind, why = where(c)
+        tag = f'<span class="ck-kind ck-{kind}" title="{esc(why)}">{kind}</span>' if kind else ""
+        rows.append(f"<tr><td class='tk-role'>.{esc(c)}</td><td class='tk-hex'>{n}</td>"
+                    f"<td class='tk-hex'>{tag}</td></tr>")
+    return ('<table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th>'
+            "</tr></thead><tbody>" + "".join(rows) + "</tbody></table>")
 
 
 def screen_links(screens):
@@ -254,7 +309,10 @@ PAGE = """<!doctype html>
   <section class="tk-sec" id="classes">
     <h2 data-n="05">Classes</h2>
     <p class="tk-note">Every class this file styles, and how many of the {nuv} painted screens carry
-    it. A class on no screen is either a state the markup toggles or a candidate for deletion.</p>
+    it. A zero is not automatically dead: the last column says whether the class is built at runtime,
+    shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
+    used by nothing. Only the last kind is a deletion candidate, and they are collected in
+    <a href="docs/coverage.md">coverage.md</a>.</p>
     {classes}
   </section>
 
@@ -342,7 +400,7 @@ nav.append("""];
       }
     });
     h.push('</nav>');
-    h.push('<div class="sidebar-note">The kit itself: <a href="kit.html">kit.html</a>, <a href="shell.html">shell.html</a>, <a href="selftest.html">self test</a></div>');
+    h.push('<div class="sidebar-note">The kit itself: <a class="ck-note-link" href="kit.html">kit.html</a>, <a class="ck-note-link" href="shell.html">shell.html</a>, <a class="ck-note-link" href="selftest.html">self test</a></div>');
     host.innerHTML = h.join('');
   }
   var cards = document.getElementById('kitCards');
@@ -393,10 +451,17 @@ nav.append("""];
      label says what it is being shown at. */
   function fit(f) {
     var box = f.parentElement, w = +f.getAttribute('width');
-    var s = Math.min(1, box.clientWidth / w);
+    /* The available width is the figure's, not the box's: the box is about to be
+       resized to whatever we decide, so measuring it would measure our own
+       previous answer. */
+    var avail = box.parentElement.clientWidth;
+    var s = Math.min(1, avail / w);
+    var h = parseFloat(f.style.height || f.getAttribute('height'));
     f.style.transformOrigin = '0 0';
     f.style.transform = s < 1 ? 'scale(' + s + ')' : 'none';
-    box.style.height = Math.ceil(parseFloat(f.style.height || f.getAttribute('height')) * s) + 'px';
+    /* The border hugs the specimen instead of leaving a strip of empty canvas. */
+    box.style.width = Math.ceil(w * s) + 'px';
+    box.style.height = Math.ceil(h * s) + 'px';
     var tag = box.parentElement.querySelector('.ck-zoom');
     if (tag) { tag.textContent = s < 1 ? Math.round(s * 100) + '%' : ''; tag.hidden = s >= 1; }
   }
@@ -499,12 +564,40 @@ hub = f"""<!doctype html>
 
 # ----------------------------------------------------------------- coverage --
 rows = []
+buckets = {}
 for name, c in built:
     mine = [s for s in SPECIMENS if s["component"] == name]
     inside = [s for s in SPECIMENS if name in s.get("also", [])]
     rows.append("| %s | %d | %s | %d | %d | %d |" % (
         name, len(mine), ", ".join(s["id"] for s in mine) or "-",
         len(inside), len(c["classes"]), len(c["screens"])))
+    for cls in c["classes"]:
+        kind, why = where(cls)
+        if kind:
+            buckets.setdefault(kind, []).append((cls, name, why))
+
+ORDER = [("unused", "Deletion candidates", "Styled, and carried by no element in the repo: not by a "
+          "painted screen, not by the kit, not by a wireframe, not by a course page, and not by any "
+          "script. Nothing is removed yet. The screens still carry their own inline style and only "
+          "move onto components/index.css in step 5, so the measurement is not final until then; "
+          "step 7 is the pass that acts on this list."),
+         ("wireframe", "Grey-era leftovers", "The wireframe version of a block the paint replaced. "
+          "Removing these needs the markup gone from wireframes/ first, which is a separate job."),
+         ("docs", "Used only by a course page", "Carried by a page in ia/, concept/, research/, "
+          "voice/ or user-research/. Those pages have their own inline styles and do not load the "
+          "system, so the rule here reaches nothing."),
+         ("kit", "Shown in the kit, not in the product", "A real component the painted screens have "
+          "not adopted. An offer, not debris. Do not delete without deciding against it first."),
+         ("runtime", "Built or toggled at runtime", "Never written into a file. Deleting any of "
+          "these breaks a screen silently, because the grep that says they are unused is wrong.")]
+
+sections = []
+for kind, title, blurb in ORDER:
+    items = sorted(buckets.get(kind, []))
+    sections.append("### %s (%d)\n\n%s\n\n| class | file | why |\n|---|---|---|\n%s\n"
+                    % (title, len(items), blurb,
+                       "\n".join("| `.%s` | %s.css | %s |" % (c, f, w) for c, f, w in items)
+                       or "| - | - | none |"))
 
 (KIT / "docs" / "coverage.md").write_text("""# Vitrine coverage
 
@@ -522,7 +615,17 @@ says so. No em dash.
 %s
 
 %d specimens over %d components.
-""" % (len(uv_classes), "\n".join(rows), len(SPECIMENS), len(built)), encoding="utf-8")
+
+---
+
+## Classes the painted screens do not carry
+
+Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
+that actually means. The Classes table on each component page shows the same verdict per row.
+
+%s
+""" % (len(uv_classes), "\n".join(rows), len(SPECIMENS), len(built), "\n".join(sections)),
+    encoding="utf-8")
 
 print("built %d component pages + overview.html + _nav.js + _frames.js + docs/coverage.md" % len(built))
 missing = [n for n, _ in built if not any(s["component"] == n for s in SPECIMENS)]

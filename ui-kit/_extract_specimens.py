@@ -266,12 +266,30 @@ TAIL = """{sprite}<script>
     return h;
   }}
 
+  /* A link with no rule behind it falls back to the browser blue, which is the
+     one colour the Vault has no place for. Counted, so it can never come back
+     unnoticed. Only links that render text of their own count: the product wraps
+     a button in a bare <a> in several places, and that anchor paints nothing. */
+  var UA_LINK = {{"rgb(0, 0, 238)": 1, "rgb(85, 26, 139)": 1, "rgb(0, 0, 255)": 1}};
+
+  function paintsText(el) {{
+    for (var i = 0; i < el.childNodes.length; i++) {{
+      var n = el.childNodes[i];
+      if (n.nodeType === 3 && n.textContent.trim()) return true;
+    }}
+    return false;
+  }}
+
   function send() {{
     var doc = document.documentElement;
     var dead = 0, uses = document.querySelectorAll("use");
     for (var i = 0; i < uses.length; i++) {{
       var ref = uses[i].getAttribute("href") || "";
       if (ref.charAt(0) === "#" && !document.getElementById(ref.slice(1))) dead++;
+    }}
+    var ua = 0, links = document.querySelectorAll("a");
+    for (var j = 0; j < links.length; j++) {{
+      if (UA_LINK[getComputedStyle(links[j]).color] && paintsText(links[j])) ua++;
     }}
     try {{
       parent.postMessage({{
@@ -280,6 +298,7 @@ TAIL = """{sprite}<script>
         elements: document.body.getElementsByTagName("*").length,
         overflowX: doc.scrollWidth - doc.clientWidth,
         deadIcons: dead,
+        uaLinks: ua,
         errors: errors
       }}, "*");
     }} catch (e) {{}}
@@ -321,7 +340,8 @@ SELFTEST = """<!doctype html>
   <section class="tk-sec">
     <h2 data-n="01">Result</h2>
     <table class="tk-tbl"><thead><tr><th>specimen</th><th>width</th><th>height</th>
-      <th>elements</th><th>overflow</th><th>dead icons</th><th>errors</th><th></th></tr></thead>
+      <th>elements</th><th>overflow</th><th>dead icons</th><th>ua links</th><th>errors</th>
+      <th></th></tr></thead>
       <tbody id="stRows"></tbody></table>
   </section>
 </div>
@@ -346,19 +366,20 @@ function render() {{
   var rows = [], bad = 0;
   SPECS.forEach(function (s) {{
     var d = seen[s.id];
-    if (!d) {{ rows.push("<tr><td class='tk-role'>" + s.id + "</td><td colspan='7'>waiting</td></tr>"); return; }}
+    if (!d) {{ rows.push("<tr><td class='tk-role'>" + s.id + "</td><td colspan='8'>waiting</td></tr>"); return; }}
     var fail = [];
     if (d.height <= 8) fail.push("empty");
     if (!d.elements) fail.push("no elements");
     if (d.overflowX > 1) fail.push("overflow");
     if (d.deadIcons) fail.push("dead icons");
+    if (d.uaLinks) fail.push("unstyled link");
     if (d.errors.length) fail.push("error");
     if (fail.length) bad++;
     rows.push("<tr><td class='tk-role'>" + s.id + "</td><td class='tk-hex'>" + s.width +
       "</td><td class='tk-hex'>" + d.height + "</td><td class='tk-hex'>" + d.elements +
       "</td><td class='tk-hex'>" + d.overflowX + "</td><td class='tk-hex'>" + d.deadIcons +
-      "</td><td class='tk-hex'>" + d.errors.length + "</td><td class='tk-hex'>" +
-      (fail.length ? fail.join(", ") : "pass") + "</td></tr>");
+      "</td><td class='tk-hex'>" + d.uaLinks + "</td><td class='tk-hex'>" + d.errors.length +
+      "</td><td class='tk-hex'>" + (fail.length ? fail.join(", ") : "pass") + "</td></tr>");
   }});
   document.getElementById("stRows").innerHTML = rows.join("");
   var done = Object.keys(seen).length;

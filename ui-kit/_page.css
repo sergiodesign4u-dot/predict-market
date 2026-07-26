@@ -15,6 +15,19 @@
   margin:10px 0 0;max-width:66ch;line-height:1.55;font-size:14px}
 .tk-hero code,.tk-note code,.tk-tbl code{font-family:var(--font-mono,'IBM Plex Mono',monospace);
   font-size:.9em;color:var(--text-brass,#d7ac53)}
+/* A link in running text. Without this it falls back to the browser blue, which
+   is the one colour the Vault has no place for. The chip-shaped links have their
+   own rules further down (.tk-jump, .ck-scene-lbl, .ck-screens). */
+.tk-note a,.tk-hero p a,.ck-cap a{color:var(--text-brass,#d7ac53);text-decoration:underline;
+  text-decoration-color:var(--border-brass,rgba(199,162,78,.3));text-underline-offset:2px}
+.tk-note a:hover,.tk-hero p a:hover,.ck-cap a:hover{text-decoration-color:currentColor}
+.tk-note a:focus-visible,.tk-hero p a:focus-visible,.ck-cap a:focus-visible{
+  outline:2px solid var(--text-brass,#d7ac53);outline-offset:2px;border-radius:3px}
+/* the three links in the sidebar note. They carry a stand class of their own so
+   this rule never has to reach for the course-chrome class around them. */
+.ck-note-link{color:var(--text-brass,#d7ac53);text-decoration:underline;
+  text-decoration-color:var(--border-brass,rgba(199,162,78,.3));text-underline-offset:2px}
+.ck-note-link:hover{text-decoration-color:currentColor}
 .tk-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .tk-badge{display:inline-block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
   color:var(--text-brass,#d7ac53);border:1px solid var(--border-brass,rgba(199,162,78,.3));
@@ -150,8 +163,12 @@
 /* The frame keeps the specimen at its declared width. If the column is narrower
    the frame scrolls sideways rather than squeezing the specimen, because the
    width is the point: it is what the media queries answer to. */
+/* The frame is exactly as wide as the specimen it holds, so the border sits on
+   the edge of the thing rather than around a strip of empty canvas. The width
+   comes inline from the generator and is kept in step by _frames.js when the
+   column is too narrow and the frame has to scale. */
 .ck-frame{border:1px solid var(--border-hairline,#2b2f38);border-radius:14px;overflow:hidden;
-  background:var(--bg-page,#0f1013)}
+  background:var(--bg-page,#0f1013);max-width:100%}
 .ck-frame iframe{display:block;border:0;max-width:none}
 .ck-zoom{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;letter-spacing:.03em;
   color:var(--text-brass,#d7ac53);border:1px solid var(--border-brass,rgba(199,162,78,.3));
@@ -172,6 +189,13 @@
   color:var(--text-brass,#d7ac53);letter-spacing:.06em;text-transform:uppercase}
 .ck-decl{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10.5px;
   color:var(--text-muted,#a49d8f);line-height:1.6;word-break:break-word}
+/* why a class shows zero screens. Only .ck-unused is a deletion candidate; the
+   other four are alive in a way a class attribute count cannot see. */
+.ck-kind{display:inline-block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:9.5px;
+  letter-spacing:.05em;text-transform:uppercase;border-radius:100px;padding:2px 8px;
+  border:1px solid var(--border-hairline,#2b2f38);color:var(--text-muted,#a49d8f)}
+.ck-unused{color:var(--outcome-no-text,#e79087);border-color:var(--outcome-no-line,rgba(200,90,80,.35))}
+.ck-runtime{color:var(--text-brass,#d7ac53);border-color:var(--border-brass,rgba(199,162,78,.3))}
 .ck-roles{display:flex;flex-wrap:wrap;gap:8px}
 .ck-role{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-hairline,#2b2f38);
   border-radius:100px;padding:5px 12px 5px 6px;background:var(--bg-surface,#1c1f24)}

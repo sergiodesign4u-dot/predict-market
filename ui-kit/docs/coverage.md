@@ -12,7 +12,7 @@ says so. No em dash.
 | component | own | specimens | inside | classes | screens |
 |---|---|---|---|---|---|
 | account | 1 | account-cta | 1 | 3 | 76 |
-| base | 1 | base-frame | 0 | 49 | 76 |
+| base | 2 | base-frame, base-groove | 0 | 49 | 76 |
 | betpanel | 3 | betpanel-states, betpanel-dock, betpanel-sheet | 2 | 23 | 76 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 16 | 76 |
 | bottomnav | 1 | bottomnav | 0 | 3 | 76 |
@@ -50,4 +50,94 @@ says so. No em dash.
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 13 | 76 |
 | yesno | 1 | yesno | 2 | 5 | 76 |
 
-58 specimens over 38 components.
+59 specimens over 38 components.
+
+---
+
+## Classes the painted screens do not carry
+
+Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
+that actually means. The Classes table on each component page shows the same verdict per row.
+
+### Deletion candidates (23)
+
+Styled, and carried by no element in the repo: not by a painted screen, not by the kit, not by a wireframe, not by a course page, and not by any script. Nothing is removed yet. The screens still carry their own inline style and only move onto components/index.css in step 5, so the measurement is not final until then; step 7 is the pass that acts on this list.
+
+| class | file | why |
+|---|---|---|
+| `.annotations` | base.css | styled and carried by no element anywhere |
+| `.bp-opt` | options.css | styled and carried by no element anywhere |
+| `.bp-opt-pct` | options.css | styled and carried by no element anywhere |
+| `.bp-opts` | options.css | styled and carried by no element anywhere |
+| `.brand` | base.css | styled and carried by no element anywhere |
+| `.btn-block` | button.css | styled and carried by no element anywhere |
+| `.chart-box` | chart.css | styled and carried by no element anywhere |
+| `.dim-note` | event-detail.css | styled and carried by no element anywhere |
+| `.dir-pill` | betpanel.css | styled and carried by no element anywhere |
+| `.dlg-note` | dialog.css | styled and carried by no element anywhere |
+| `.groove-sep-b` | base.css | styled and carried by no element anywhere |
+| `.hero-mini` | hero.css | styled and carried by no element anywhere |
+| `.mini-header` | header.css | styled and carried by no element anywhere |
+| `.nav-col` | base.css | styled and carried by no element anywhere |
+| `.navtree` | base.css | styled and carried by no element anywhere |
+| `.page-label` | base.css | styled and carried by no element anywhere |
+| `.preselect-note` | options.css | styled and carried by no element anywhere |
+| `.ref` | base.css | styled and carried by no element anywhere |
+| `.side` | base.css | styled and carried by no element anywhere |
+| `.signin-lead` | signin.css | styled and carried by no element anywhere |
+| `.ss-label` | state-block.css | styled and carried by no element anywhere |
+| `.ss-row` | state-block.css | styled and carried by no element anywhere |
+| `.state-switch` | state-block.css | styled and carried by no element anywhere |
+
+### Grey-era leftovers (6)
+
+The wireframe version of a block the paint replaced. Removing these needs the markup gone from wireframes/ first, which is a separate job.
+
+| class | file | why |
+|---|---|---|
+| `.backdrop` | dialog.css | the grey-era version of a block the paint replaced |
+| `.chart-cap` | chart.css | the grey-era version of a block the paint replaced |
+| `.chart-wrap` | chart.css | the grey-era version of a block the paint replaced |
+| `.grab` | dialog.css | the grey-era version of a block the paint replaced |
+| `.hiw-head` | hiw-dialog.css | the grey-era version of a block the paint replaced |
+| `.sheet` | dialog.css | the grey-era version of a block the paint replaced |
+
+### Used only by a course page (5)
+
+Carried by a page in ia/, concept/, research/, voice/ or user-research/. Those pages have their own inline styles and do not load the system, so the rule here reaches nothing.
+
+| class | file | why |
+|---|---|---|
+| `.delta` | base.css | used by a course page, which does not load the system |
+| `.delta` | header.css | used by a course page, which does not load the system |
+| `.next` | course-chrome.css | used by a course page, which does not load the system |
+| `.planned` | course-chrome.css | used by a course page, which does not load the system |
+| `.sidebar-divider` | course-chrome.css | used by a course page, which does not load the system |
+
+### Shown in the kit, not in the product (6)
+
+A real component the painted screens have not adopted. An offer, not debris. Do not delete without deciding against it first.
+
+| class | file | why |
+|---|---|---|
+| `.btn-lg` | button.css | shown in the frozen kit, never on a painted screen |
+| `.btn-md` | button.css | shown in the frozen kit, never on a painted screen |
+| `.btn-primary` | button.css | shown in the frozen kit, never on a painted screen |
+| `.btn-secondary` | button.css | shown in the frozen kit, never on a painted screen |
+| `.btn-sm` | button.css | shown in the frozen kit, never on a painted screen |
+| `.groove-sep` | base.css | shown in the frozen kit, never on a painted screen |
+
+### Built or toggled at runtime (7)
+
+Never written into a file. Deleting any of these breaks a screen silently, because the grep that says they are unused is wrong.
+
+| class | file | why |
+|---|---|---|
+| `.lg-item` | bets-table.css | the chart legend, built by the detail script |
+| `.m-label` | card.css | the card meta row, split by the feed script |
+| `.m-val` | card.css | the card meta row, split by the feed script |
+| `.oddsbar` | oddsbar.css | built by the feed script from the probability text |
+| `.open` | base.css | toggled on the drawer and the overlay by script |
+| `.open` | course-chrome.css | toggled on the drawer and the overlay by script |
+| `.scrolled` | header.css | added to the header by a scroll observer |
+

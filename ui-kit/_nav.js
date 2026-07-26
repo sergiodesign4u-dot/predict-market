@@ -69,7 +69,7 @@ window.KIT_NAV = [
       }
     });
     h.push('</nav>');
-    h.push('<div class="sidebar-note">The kit itself: <a href="kit.html">kit.html</a>, <a href="shell.html">shell.html</a>, <a href="selftest.html">self test</a></div>');
+    h.push('<div class="sidebar-note">The kit itself: <a class="ck-note-link" href="kit.html">kit.html</a>, <a class="ck-note-link" href="shell.html">shell.html</a>, <a class="ck-note-link" href="selftest.html">self test</a></div>');
     host.innerHTML = h.join('');
   }
   var cards = document.getElementById('kitCards');
