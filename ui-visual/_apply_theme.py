@@ -9,7 +9,10 @@ shell and swap in ONLY the regions that differ from the logged-in base:
   - logged-in states (empty/error/loading/push): swap <main> only.
   - logged-out states: swap <header>, <main>, and the mobile <nav.bottom-nav>.
 Grafted fragments come from wireframes/ (grey), so we run two voice-safe text
-transforms on them: product .html links -> "#", and the Favorites heart -> bookmark.
+transforms on them: the Favorites heart -> bookmark, and a product link is kept
+if the screen it points at has been painted (only an unpainted destination is
+flattened to "#"; see _relink.py, which repaired the pages this file used to
+flatten wholesale).
 Everything the theme needs is class-based, so the swapped content colours itself.
 
 Idempotent: re-running regenerates each state file from the current shell.
@@ -23,6 +26,12 @@ UIV = ROOT / "ui-visual"
 WF = ROOT / "wireframes"
 
 SHELL = (UIV / "event-feed.html").read_text()
+
+# What the painted tree can be linked to, and the one family the colour pass
+# renamed on the way in (grey politics.html is painted as event-feed-politics.html).
+PAINTED = {p.name for p in UIV.glob("*.html")}
+RENAME = {"%s.html" % c: "event-feed-%s.html" % c
+          for c in ("politics", "crypto", "culture", "general")}
 
 HEART = "M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"
 BOOKMARK = "M6 3h12v18l-6-4-6 4z"
@@ -52,9 +61,27 @@ def swap(html, open_marker, close_tag, new):
     return html[:s] + new + html[e:]
 
 
+def keep_or_kill(m):
+    """A grey link the painted tree can honour, or '#'.
+
+    This used to flatten every product link without asking, which is how the
+    whole coloured product ended up with no navigation (fixed by _relink.py).
+    Where a link goes is structure and structure belongs to the wireframes, so
+    the only thing worth deciding here is whether the destination has been
+    painted yet: if it has, the link stands; if it has not, pointing at it
+    would be a broken link rather than a dead one.
+    """
+    href = m.group(1)
+    base, _, frag = href.partition("#")
+    base = RENAME.get(base.split("?")[0], base.split("?")[0])
+    if base in PAINTED:
+        return 'href="%s"' % (base + ("#" + frag if frag else ""))
+    return 'href="#"'
+
+
 def neutralize(frag):
-    """Grey wireframe fragment -> concept-stand fragment (links dead, heart -> bookmark)."""
-    frag = re.sub(r'href="[^"]*\.html[^"]*"', 'href="#"', frag)
+    """Grey wireframe fragment -> painted fragment (heart -> bookmark)."""
+    frag = re.sub(r'href="([^"]*\.html[^"]*)"', keep_or_kill, frag)
     frag = frag.replace(HEART, BOOKMARK)
     return frag
 

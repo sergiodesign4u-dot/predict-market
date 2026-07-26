@@ -14,8 +14,9 @@ bottom-nav / footer, dialogs, scripts). For every page we start from that shell 
   2. graft the family's own grey inline LAYOUT CSS into <head>; _theme.css, linked
      after, re-skins the colour (Vault rules for the family's components live there);
   3. for logged-out variants, swap the header + mobile bottom-nav too;
-  4. neutralise product .html links to "#", except a per-family keep-list (e.g. the
-     Active / History tabs point at each other, which DO exist in ui-visual).
+  4. keep a product .html link when the screen it points at has been painted,
+     and flatten only the rest to "#" (see _relink.py, which repaired the pages
+     this step used to flatten wholesale).
 
 Idempotent. NEVER edits wireframes/, NEVER regenerates event-feed.html.
 Run:  python3 _apply_family.py [family ...]   then   python3 _resync_sidebar.py
@@ -29,6 +30,12 @@ UIV = ROOT / "ui-visual"
 WF = ROOT / "wireframes"
 
 SHELL = (UIV / "event-feed.html").read_text()
+
+# What the painted tree can be linked to, and the one family the colour pass
+# renamed on the way in (grey politics.html is painted as event-feed-politics.html).
+PAINTED = {p.name for p in UIV.glob("*.html")}
+RENAME = {"%s.html" % c: "event-feed-%s.html" % c
+          for c in ("politics", "crypto", "culture", "general")}
 
 HEART = "M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"
 BOOKMARK = "M6 3h12v18l-6-4-6 4z"
@@ -162,10 +169,26 @@ def swap(html, open_marker, close_tag, new):
 
 
 def neutralize(frag, keep=()):
-    """Product .html links -> '#', except targets in `keep` (they exist in ui-visual)."""
+    """A grey link the painted tree can honour, or '#'.
+
+    This used to flatten every product link that was not on a hand-written
+    per-family keep-list, which is how the whole coloured product ended up with
+    no navigation (repaired by _relink.py). The keep-list was the wrong shape:
+    where a link goes is structure, and structure belongs to the wireframes.
+    The only question worth asking here is whether the destination has been
+    painted yet, and that is a fact on disk, not a list to maintain. `keep` is
+    still honoured so an existing caller keeps working.
+    """
     def repl(m):
-        base = m.group(1).split("#")[0].split("?")[0]
-        return m.group(0) if any(base == k or base.endswith("/" + k) for k in keep) else 'href="#"'
+        href = m.group(1)
+        base, _, frag = href.partition("#")
+        base = base.split("?")[0]
+        if any(base == k or base.endswith("/" + k) for k in keep):
+            return m.group(0)
+        base = RENAME.get(base, base)
+        if base in PAINTED:
+            return 'href="%s"' % (base + ("#" + frag if frag else ""))
+        return 'href="#"'
     return re.sub(r'href="([^"]*\.html[^"]*)"', repl, frag)
 
 

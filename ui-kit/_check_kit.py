@@ -3,7 +3,7 @@
 
     python3 ui-kit/_check_kit.py
 
-Nine checks, each one a defect that actually happened at least once:
+Ten checks, each one a defect that actually happened at least once:
 
   1. the product did not move        components/ and wireframes/ clean, and a
                                      ui-visual/ page differs only in its sidebar
@@ -16,6 +16,7 @@ Nine checks, each one a defect that actually happened at least once:
   8. the registry is whole           every also target and every nav file exists
   9. one source of css               no screen styles itself, every screen
                                      links components/index.css and nothing else
+ 10. the painted product navigates   no link is dead in colour that is live in grey
 
 The live half of the verification is ui-kit/selftest.html, which loads every
 specimen in a frame and asks it whether it rendered. No em dash.
@@ -186,6 +187,18 @@ gone_kit = [str(p.relative_to(ROOT)) for p in
             list(ROOT.glob("*/*.html")) + list(ROOT.glob("*/*.css"))
             if 'href="kit.css"' in p.read_text(encoding="utf-8", errors="ignore")]
 check("9 nothing loads the flat kit", not gone_kit, ", ".join(gone_kit))
+
+# 10 --------------------------------------------------- the product navigates --
+# The colour pass shipped with every product link flattened to "#": the painted
+# screens looked finished and went nowhere, and nothing here noticed for two
+# stages. ui-visual/_relink.py is the repair, and it is also the test. It reads
+# the target of each anchor out of the grey twin, so a dry run that wants to
+# change something means a link is dead in colour that is live in grey.
+relink = subprocess.run([sys.executable, str(ROOT / "ui-visual" / "_relink.py"), "--dry-run"],
+                        cwd=ROOT, capture_output=True, text=True)
+first = (relink.stdout or "\n").splitlines()[0]
+check("10 painted product navigates", relink.returncode == 0 and " 0 links" in first,
+      first.strip() or relink.stderr.strip()[:80])
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:

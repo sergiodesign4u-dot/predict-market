@@ -59,6 +59,15 @@ GRID_RE      = re.compile(r'(<div class="grid">).*?(\n\s*</div>\s*\n\s*<!-- Load
 HEADING_RE   = re.compile(r'(<h2 id="feedHeading">)[^<]*(</h2>)')
 TITLE_RE     = re.compile(r'(<title>).*?(</title>)')
 
+# Where a card goes. The painted tree has one event page per market type, so a
+# card links by its type: the question, and both outcome buttons with it, since
+# tapping either is the same request to open the event with that side chosen.
+# These were "#" until the relink pass, which is how the four category feeds
+# shipped with dead cards.
+DETAIL = "event-detail.html"
+DETAIL_MULTI = "event-detail-multi.html"
+
+
 # --------------------------------------------------------------------------- cards
 def binary(q, why, p, vol, close, bm=False):
     pressed = "true" if bm else "false"
@@ -67,10 +76,10 @@ def binary(q, why, p, vol, close, bm=False):
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
-                <div class="top-txt"><a class="q" href="#">{q}</a><p class="why">{why}</p></div>
+                <div class="top-txt"><a class="q" href="{DETAIL}">{q}</a><p class="why">{why}</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">{p}%</span></p>
-              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+              <div class="yesno"><a href="{DETAIL}"><button type="button">YES</button></a><a href="{DETAIL}"><button type="button">NO</button></a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: {vol}</span><span>Closes: {close}</span></span>
                 <button type="button" class="bookmark-btn" aria-pressed="{pressed}" aria-label="{lab}">
@@ -84,15 +93,15 @@ def multi(q, why, opts, vol, close):
     rows = "\n".join(
         f'                <div class="opt-row"><span class="opt-name">{name}</span>'
         f'<span class="opt-prob">{pr}%</span><span class="yesno compact">'
-        f'<a href="#"><button type="button">YES</button></a>'
-        f'<a href="#"><button type="button">NO</button></a></span></div>'
+        f'<a href="{DETAIL_MULTI}"><button type="button">YES</button></a>'
+        f'<a href="{DETAIL_MULTI}"><button type="button">NO</button></a></span></div>'
         for name, pr in opts
     )
     return f'''          <article class="card">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
-                <div class="top-txt"><a class="q" href="#">{q}</a><p class="why">{why}</p></div>
+                <div class="top-txt"><a class="q" href="{DETAIL_MULTI}">{q}</a><p class="why">{why}</p></div>
               </div>
               <div class="options">
 {rows}
