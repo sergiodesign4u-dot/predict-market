@@ -177,8 +177,16 @@ captioned with how the product sets them.
    system. If the system does not style something, the specimen does not contain it.
 2. **The declared width is the smallest one at which the component looks like itself**, not the width
    of the screen it was cut from. A three-button row in a 720px frame is mostly empty canvas.
-3. **The frame is exactly as wide as the specimen.** The border sits on the edge of the thing, and
-   when the column is too narrow the frame scales down and says by how much.
+3. **The frame draws nothing.** No border, no corner radius, no background of its own: all three
+   cut into the components, because a rounded corner clips a control that sits flush to the edge of
+   its viewport and a hairline draws a line across it. What a specimen stands on is decided by the
+   specimen. A layout brings the product's own stone and plate, because that is the screen. A single
+   control is wrapped in `.app-case` alone, which is transparent, so a button stands on the page
+   rather than on a rectangle of stone it would never sit on in the product. `canvas: false` in the
+   map is what says so, and it is set for the button rows, the dialogs, the toast, the toggles, the
+   icon sets and the separator demo.
+
+   When the column is too narrow the frame scales the whole page down and the label says by how much.
 
 ### Why a zero in the Classes table is not a verdict
 

@@ -163,12 +163,14 @@
 /* The frame keeps the specimen at its declared width. If the column is narrower
    the frame scrolls sideways rather than squeezing the specimen, because the
    width is the point: it is what the media queries answer to. */
-/* The frame is exactly as wide as the specimen it holds, so the border sits on
-   the edge of the thing rather than around a strip of empty canvas. The width
-   comes inline from the generator and is kept in step by _frames.js when the
-   column is too narrow and the frame has to scale. */
-.ck-frame{border:1px solid var(--border-hairline,#2b2f38);border-radius:14px;overflow:hidden;
-  background:var(--bg-page,#0f1013);max-width:100%}
+/* The frame carries no chrome of its own: no border, no corner radius, no
+   background. It had all three and they cut into the components, because a
+   14px radius clips a control that sits flush to the edge of its viewport and a
+   hairline border draws a line across it. What a specimen stands on is now
+   decided by the specimen: a layout brings its own canvas and plate, a single
+   control stands on the page. The width comes inline from the generator and is
+   kept in step by _frames.js when the column is too narrow to hold it. */
+.ck-frame{overflow:hidden;max-width:100%}
 .ck-frame iframe{display:block;border:0;max-width:none}
 .ck-zoom{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;letter-spacing:.03em;
   color:var(--text-brass,#d7ac53);border:1px solid var(--border-brass,rgba(199,162,78,.3));

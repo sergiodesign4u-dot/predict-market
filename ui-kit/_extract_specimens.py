@@ -433,7 +433,15 @@ def build():
         if entry.get("set"):
             html = set_attrs(html, entry["set"])
         if entry.get("wrap") is not False:
-            html = '<div class="device"><div class="app-case">\n%s\n</div></div>' % html
+            # .device is the product's outer stone. A layout belongs on it. A single
+            # control does not: on a screen a button stands on a plate or a card, so
+            # framing it on the raw stone invents a surface and draws a box around
+            # something that has none. Those specimens get .app-case alone, which is
+            # transparent, and stand on the page.
+            open_ = '<div class="app-case">' if entry.get("canvas") is False \
+                else '<div class="device"><div class="app-case">'
+            close = "</div>" if entry.get("canvas") is False else "</div></div>"
+            html = "%s\n%s\n%s" % (open_, html, close)
         html, rewrites = relocate(html)
         used = {m for m in re.findall(r'href="#(i-[\w-]+)"', html)}
         missing = sorted(used - set(symbols))
