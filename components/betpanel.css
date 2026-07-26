@@ -19,8 +19,11 @@
 .bp-side .bp-pct{display:block;font-size:var(--text-11);font-weight:normal}
 .bet-dock{position:sticky;bottom:52px;z-index:4;border:1px solid var(--border-hairline);border-bottom:none;align-items:center;gap:var(--space-6);padding:var(--space-8)}
 .bet-dock .bp-side{padding:11px var(--space-6)}
-.bet-dock .dock-meta{font-size:var(--text-9);flex:0 0 auto;text-align:center}
-.bet-dock .dock-meta b{display:block;font-size:var(--text-12)}
+/* Label muted, figure bright: the same ranking the card meta row uses. The
+   colours are stated here because nothing else states them, and without them
+   the dock inherited body text for both halves. */
+.bet-dock .dock-meta{font-size:var(--text-9);flex:0 0 auto;text-align:center;color:var(--text-muted)}
+.bet-dock .dock-meta b{display:block;font-size:var(--text-12);color:var(--text-primary)}
 .bet-panel{display:block;flex:0 0 300px;position:sticky;top:8px;align-self:flex-start}
 .bet-dock{display:none}
 .bp-selected{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);border:1px solid var(--border-hairline);padding:var(--space-8)}

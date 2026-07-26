@@ -44,7 +44,8 @@ directly answers Alex's documented fear, "this looks like crypto, so it is a sca
   subject photo.
 - **Comment avatars** (`event-detail.html`): `.cmt-list .cmt-av` alternates `avatar-2` / `avatar-1`
   (`:nth-child(even)`); the composer "you" chip keeps its neutral fill.
-- The `ui-kit/` showcase inherits all of this through `kit.css` (rebuilt from the theme).
+- The `ui-kit/` showcase inherits all of this through `components/index.css`, the one stylesheet
+  every screen links.
 
 ## To swap or regenerate
 

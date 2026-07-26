@@ -3,7 +3,7 @@
 
     python3 ui-kit/_check_kit.py
 
-Eight checks, each one a defect that actually happened at least once:
+Nine checks, each one a defect that actually happened at least once:
 
   1. the product did not move        components/ and wireframes/ clean, and a
                                      ui-visual/ page differs only in its sidebar
@@ -14,6 +14,8 @@ Eight checks, each one a defect that actually happened at least once:
   6. layer purity                    no stand class in components/, no product class in _page.css
   7. no em dash                      the house rule
   8. the registry is whole           every also target and every nav file exists
+  9. one source of css               no screen styles itself, every screen
+                                     links components/index.css and nothing else
 
 The live half of the verification is ui-kit/selftest.html, which loads every
 specimen in a frame and asks it whether it rendered. No em dash.
@@ -144,7 +146,8 @@ check("6 components carry no stand class", not stand_in_comp, ", ".join(stand_in
 dash = [p.name for p in
         list(KIT.glob("*.html")) + list(SPECS.glob("*.html")) + list(KIT.glob("*.css"))
         + list(KIT.glob("*.py")) + list(KIT.glob("*.json")) + list((KIT / "docs").glob("*.md"))
-        if "\u2014" in p.read_text(encoding="utf-8")]
+        + list((KIT / "_verify").glob("*")) + list(COMP.glob("*.css"))
+        if p.is_file() and "\u2014" in p.read_text(encoding="utf-8", errors="ignore")]
 check("7 no em dash", not dash, ", ".join(dash))
 
 # 8 -------------------------------------------------------------- registry --
@@ -160,6 +163,29 @@ nav_dead = sorted(u for u in nav_links if not (KIT / u.split("#")[0]).exists())
 check("8 every sidebar link resolves", not nav_dead, ", ".join(nav_dead))
 bad_also = sorted({a for s in manifest for a in s.get("also", []) if a not in components})
 check("8 every cross reference exists", not bad_also, ", ".join(bad_also))
+
+# 9 ------------------------------------------------------- one source of css --
+# What step 5 bought: a screen has no styles of its own. Not one inline <style>,
+# not one stylesheet besides the system (the font <link>s are not css of ours).
+# The moment a screen carries a rule again, the system has stopped being the
+# source and the vitrine starts lying about what ships.
+UV = ROOT / "ui-visual"
+carries, wrong_link = [], []
+for page in sorted(UV.glob("*.html")):
+    src = page.read_text(encoding="utf-8")
+    if "<style" in src:
+        carries.append(page.name)
+    sheets = [h for h in re.findall(r'<link[^>]*rel="stylesheet"[^>]*href="([^"]+)"', src)
+              if not h.startswith("http")]
+    if sheets != ["../components/index.css"] and page.name != "overview.html":
+        wrong_link.append("%s -> %s" % (page.name, ", ".join(sheets) or "none"))
+check("9 no screen styles itself", not carries, "%d: %s" % (len(carries), ", ".join(carries[:4])))
+check("9 every screen links the system", not wrong_link,
+      "%d: %s" % (len(wrong_link), "; ".join(wrong_link[:3])))
+gone_kit = [str(p.relative_to(ROOT)) for p in
+            list(ROOT.glob("*/*.html")) + list(ROOT.glob("*/*.css"))
+            if 'href="kit.css"' in p.read_text(encoding="utf-8", errors="ignore")]
+check("9 nothing loads the flat kit", not gone_kit, ", ".join(gone_kit))
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:

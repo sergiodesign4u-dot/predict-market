@@ -25,7 +25,12 @@ dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)
   .backdrop{align-items:center;padding:var(--space-24)}
   .sheet{max-width:var(--container-sheet);border-bottom:1px solid var(--border-hairline)}
 }
-.fine{font-size:var(--text-11);line-height:var(--leading-base)}
+/* Fine print is muted wherever it stands, not only inside the containers named
+   further down. Without the colour here it inherits body text and reads as
+   loudly as the sentence it qualifies, which is what happened to the .fine
+   under a multi-outcome list once the screens stopped carrying their own copy
+   of the cascade. */
+.fine{font-size:var(--text-11);line-height:var(--leading-base);color:var(--text-muted)}
 dialog.app-dialog{background:var(--bg-surface);border-radius:var(--radius-16);color:var(--text-primary)}
 dialog.app-dialog .sheet-head{border-bottom:1px solid var(--border-hairline)}
 dialog.app-dialog .sheet-close{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-8)}

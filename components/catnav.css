@@ -10,11 +10,14 @@
 .cat-nav ul{list-style:none;margin:0;padding:var(--space-6) var(--space-8);display:flex;gap:var(--space-6);overflow-x:auto;flex-wrap:nowrap}
 .cat-nav button{padding:var(--space-5) var(--space-10);font-size:var(--text-11);cursor:pointer;white-space:nowrap}
 .cat-nav li[aria-current="page"] button{border-width:2px;font-weight:var(--weight-bold)}
-.subcat li[aria-current="page"] button{border-width:2px}
-.cat-layout{align-items:flex-start}
-.subcat{flex:0 0 210px;position:sticky;top:8px}
-.subcat ul{flex-direction:column;overflow:visible}
-.subcat button{width:100%;justify-content:space-between}
+/* Five rules used to sit here: the sub-category rail as a sticky 210px column,
+   its list stacked, its buttons full width. They are the DESKTOP layout, and
+   they belong to the min-width:900px block at the bottom of this file, which
+   states all five again with the Vault values. They reached the base scope
+   because the flat kit this file was split from had lost their @media header,
+   so at 380px the rail rendered as a vertical list instead of the row of chips
+   the screens actually show. Removed, not re-wrapped: the block below covers
+   them. */
 .cat-nav{background:var(--bg-canvas)}
 .cat-layout{display:flex;flex-direction:column;gap:var(--space-12)}
 .cat-main{flex:1;min-width:0}

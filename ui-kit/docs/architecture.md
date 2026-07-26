@@ -272,8 +272,13 @@ not have, either the component grows a variant class or the screen is wrong.
 
 ## The inheritance from the flat kit
 
-- `ui-kit/kit.css` is the flat file this system came out of. It stays until the painted screens move
-  onto `index.css` (step 5), then it goes; git remembers it.
+- The flat file this system came out of was `ui-kit/kit.css`, 2123 lines built from the feed and
+  detail inline blocks plus the two theme files. **Deleted in step 5**, together with the script that
+  built it, once the screens stopped needing a second source. Git remembers both. This is the only
+  place in the repo that still names it, on purpose: it is where 38 component files came from, and a
+  system with no record of its own provenance is worse than one line of history.
+- `ui-kit/shell.html` was written by that script and is now a static page, maintained by hand like
+  the rest.
 - `ui-kit/kit.html` is a frozen smoke test AND the specimen source. It is pointed at
   `../components/index.css` and it shows the kit as it stood at the end of the previous stage: if it
   still looks like yesterday, the split was clean. New components do NOT get added to it as pages;

@@ -38,7 +38,13 @@ header,nav,main,section,article,footer,aside{border:1px solid var(--border-hairl
 button,select,summary{font:inherit}
 .ic{width:var(--icon-22);height:var(--icon-22);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;display:block}
 .ic-sm{width:13px;height:13px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.desk-only{display:none}
+/* Marked important on purpose, and it has to stay that way. This is a
+   visibility utility: the element it is on has its own display from its own
+   component (.icon-btn and .bal-toggle both say inline-flex), and base.css is
+   imported first, so without this the component would win and the desktop
+   balance cluster would show up in the 380px header. In the flat kit the two
+   sat in one file and the utility happened to come last. */
+.desk-only{display:none!important}
 .tbd{display:inline-block;font-size:var(--text-9);border:1px dashed var(--border-hairline);padding:0 var(--space-4);margin-left:var(--space-4);vertical-align:middle}
 .placeholder-line{border:1px dashed var(--border-hairline);padding:var(--space-4) var(--space-6);font-size:var(--text-10)}
 .side{width:100%;max-width:var(--container-max);margin:var(--space-16) auto;padding:0 var(--space-8)}
@@ -51,7 +57,7 @@ button,select,summary{font:inherit}
 .delta{width:100%;max-width:var(--container-max);margin:0 auto var(--space-16)}
 .delta .brand{font-size:var(--text-13);font-weight:var(--weight-bold)}
 @media (min-width: 640px){
-  .desk-only{display:inline-flex}
+  .desk-only{display:inline-flex!important}   /* pairs with the rule above */
   .side{display:flex;gap:var(--space-16);align-items:flex-start}
   .side aside,.side section{margin:0}
   .side > aside{flex:2}

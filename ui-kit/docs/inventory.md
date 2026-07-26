@@ -3,7 +3,7 @@
 Read out of the whole product, not invented. Source: all `wireframes/*.html` (104 pages, every
 screen and state) read together with `ia/docs/sitemap.md` and `wireframes/_conventions.md` (the
 S1-S6 shared patterns), then re-read against the **shipped color layer** (`ui-visual/`, 76 pages +
-`_theme.css` / `_theme-vault.css`). This table is the build-list for `ui-kit/kit.css` +
+`_theme.css` / `_theme-vault.css`). This table is the build-list for `components/` +
 `ui-kit/kit.html`; the color language it is dressed in is root `DESIGN.md`.
 
 **Deep pass (2026-07-23).** Re-audited after the whole product shipped in color (Stage 08). Two
