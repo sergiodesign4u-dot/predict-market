@@ -3,7 +3,7 @@
   "id": "button-primary",
   "component": "button",
   "title": "Primary button, three sizes",
-  "width": 410,
+  "width": 374,
   "source": "kit.html / buttons / Primary - small / medium / large",
   "rewrites": 0
  },
@@ -11,7 +11,7 @@
   "id": "button-secondary",
   "component": "button",
   "title": "Secondary button, three sizes",
-  "width": 500,
+  "width": 459,
   "source": "kit.html / buttons / Secondary - small / medium / large",
   "rewrites": 0
  },
@@ -19,7 +19,7 @@
   "id": "button-outcome-row",
   "component": "button",
   "title": "Outcome pair, icon button and Load more",
-  "width": 500,
+  "width": 465,
   "also": [
    "yesno",
    "loadmore",
@@ -32,7 +32,7 @@
   "id": "loadmore",
   "component": "loadmore",
   "title": "Load more",
-  "width": 220,
+  "width": 173,
   "source": "kit.html / buttons / Outcome pair, icon, and Load more",
   "rewrites": 0
  },
@@ -52,7 +52,7 @@
   "id": "filters-sort",
   "component": "filters",
   "title": "Sort menu",
-  "width": 250,
+  "width": 196,
   "state": "Shown closed, the way it ships. It opens on click, no script involved.",
   "source": "kit.html / chips / Chips and filters",
   "rewrites": 0
@@ -61,7 +61,7 @@
   "id": "filters-toggle",
   "component": "filters",
   "title": "Toggle: on, off, disabled",
-  "width": 330,
+  "width": 278,
   "source": "kit.html / chips / Toggle (on / off / disabled)",
   "rewrites": 0
  },
@@ -205,7 +205,7 @@
   "id": "dialog-shared",
   "component": "dialog",
   "title": "Sign in and Add funds",
-  "width": 900,
+  "width": 780,
   "also": [
    "signin",
    "input",
@@ -236,7 +236,7 @@
   "id": "hiw-dialog",
   "component": "hiw-dialog",
   "title": "How-it-works dialog",
-  "width": 560,
+  "width": 533,
   "source": "kit.html / dialogs / How-it-works dialog",
   "rewrites": 0
  },
@@ -244,7 +244,7 @@
   "id": "toast",
   "component": "toast",
   "title": "Toasts",
-  "width": 560,
+  "width": 440,
   "source": "kit.html / feedback / Toasts",
   "rewrites": 0
  },
@@ -252,7 +252,7 @@
   "id": "trustbar-feed",
   "component": "trustbar",
   "title": "Trust bar, near the action",
-  "width": 580,
+  "width": 477,
   "source": "kit.html / feedback / Trust bar (near the action)",
   "rewrites": 0
  },
@@ -260,7 +260,7 @@
   "id": "outcome-overlays",
   "component": "outcome-dialog",
   "title": "Win and loss overlays",
-  "width": 900,
+  "width": 780,
   "source": "kit.html / feedback / Win and loss overlays",
   "rewrites": 0
  },
@@ -497,7 +497,7 @@
   "id": "icons-brand",
   "component": "icons",
   "title": "Brand and auth",
-  "width": 560,
+  "width": 418,
   "source": "kit.html / icons / Brand and auth",
   "rewrites": 0
  },
@@ -513,7 +513,7 @@
   "id": "base-groove",
   "component": "base",
   "title": "The engraved separator",
-  "width": 760,
+  "width": 638,
   "note": "The .groove-sep utility next to the flat line it replaces. It is used on three elements in the frozen kit and on no painted screen, while its two declarations are hand-inlined in thirteen other component files. That is a finding, not dead weight.",
   "source": "kit.html / f-color / Separators (the engraved groove)",
   "rewrites": 0
