@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - specimen self test</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="selftest">
+<div class="tk-wrap">
+  <header class="tk-hero">
+    <h1>Specimen self test</h1>
+    <p>Every specimen is loaded in a frame at its declared width and asked how it went. A specimen
+    passes when it rendered something, kept its icons, stayed inside its width and threw nothing.
+    Open this page after any change to the kit or to a component file.</p>
+    <div class="tk-badges"><span class="tk-badge" id="stVerdict">running</span>
+      <span class="tk-badge">58 specimens</span></div>
+  </header>
+  <section class="tk-sec">
+    <h2 data-n="01">Result</h2>
+    <table class="tk-tbl"><thead><tr><th>specimen</th><th>width</th><th>height</th>
+      <th>elements</th><th>overflow</th><th>dead icons</th><th>errors</th><th></th></tr></thead>
+      <tbody id="stRows"></tbody></table>
+  </section>
+</div>
+<div id="stFrames" style="position:absolute;left:-99999px;top:0" aria-hidden="true"></div>
+<script>
+var SPECS = [{"id": "button-primary", "width": 720}, {"id": "button-secondary", "width": 720}, {"id": "button-outcome-row", "width": 720}, {"id": "loadmore", "width": 420}, {"id": "catnav-chips", "width": 900}, {"id": "filters-sort", "width": 420}, {"id": "filters-toggle", "width": 560}, {"id": "hero-band", "width": 1120}, {"id": "feed-grid", "width": 1120}, {"id": "card-binary", "width": 440}, {"id": "card-multi", "width": 440}, {"id": "oddsbar", "width": 440}, {"id": "yesno", "width": 440}, {"id": "options-rows", "width": 440}, {"id": "catnav-subfilter", "width": 900}, {"id": "catnav-subcat", "width": 900}, {"id": "seo-plate", "width": 1120}, {"id": "state-empty-filters", "width": 900}, {"id": "state-error", "width": 900}, {"id": "state-empty", "width": 900}, {"id": "skeleton-grid", "width": 900}, {"id": "notice-push", "width": 900}, {"id": "dialog-shared", "width": 900}, {"id": "signin", "width": 420}, {"id": "input-amount", "width": 420}, {"id": "hiw-dialog", "width": 560}, {"id": "toast", "width": 560}, {"id": "trustbar-feed", "width": 900}, {"id": "outcome-overlays", "width": 900}, {"id": "event-detail", "width": 1120}, {"id": "chart", "width": 1120}, {"id": "facts-strip", "width": 1120}, {"id": "market-depth", "width": 1120}, {"id": "tabs-detail", "width": 1120}, {"id": "comments-thread", "width": 900}, {"id": "bets-biggest", "width": 900}, {"id": "bets-table", "width": 900}, {"id": "bets-activity", "width": 900}, {"id": "betpanel-states", "width": 1120}, {"id": "betpanel-dock", "width": 360}, {"id": "betpanel-sheet", "width": 360}, {"id": "options-multi", "width": 1120}, {"id": "related", "width": 900}, {"id": "profile-identity", "width": 1120}, {"id": "account-cta", "width": 900}, {"id": "position-list", "width": 1120}, {"id": "header-in", "width": 1120}, {"id": "header-out", "width": 1120}, {"id": "tabs-mybets", "width": 900}, {"id": "bottomnav", "width": 360}, {"id": "footer", "width": 1120}, {"id": "trustbar-footer", "width": 1120}, {"id": "icons-sprite", "width": 1120}, {"id": "icons-interface", "width": 1120}, {"id": "icons-brand", "width": 1120}, {"id": "base-frame", "width": 900}, {"id": "course-chrome", "width": 260}, {"id": "cookie-consent", "width": 900}];
+var seen = {};
+var host = document.getElementById("stFrames");
+SPECS.forEach(function (s) {
+  var f = document.createElement("iframe");
+  f.src = "specimens/" + s.id + ".html";
+  f.width = s.width; f.height = 600; f.style.border = "0";
+  host.appendChild(f);
+});
+window.addEventListener("message", function (e) {
+  var d = e.data;
+  if (!d || !d.specimen || seen[d.specimen]) return;
+  seen[d.specimen] = d;
+  render();
+});
+function render() {
+  var rows = [], bad = 0;
+  SPECS.forEach(function (s) {
+    var d = seen[s.id];
+    if (!d) { rows.push("<tr><td class='tk-role'>" + s.id + "</td><td colspan='7'>waiting</td></tr>"); return; }
+    var fail = [];
+    if (d.height <= 8) fail.push("empty");
+    if (!d.elements) fail.push("no elements");
+    if (d.overflowX > 1) fail.push("overflow");
+    if (d.deadIcons) fail.push("dead icons");
+    if (d.errors.length) fail.push("error");
+    if (fail.length) bad++;
+    rows.push("<tr><td class='tk-role'>" + s.id + "</td><td class='tk-hex'>" + s.width +
+      "</td><td class='tk-hex'>" + d.height + "</td><td class='tk-hex'>" + d.elements +
+      "</td><td class='tk-hex'>" + d.overflowX + "</td><td class='tk-hex'>" + d.deadIcons +
+      "</td><td class='tk-hex'>" + d.errors.length + "</td><td class='tk-hex'>" +
+      (fail.length ? fail.join(", ") : "pass") + "</td></tr>");
+  });
+  document.getElementById("stRows").innerHTML = rows.join("");
+  var done = Object.keys(seen).length;
+  document.getElementById("stVerdict").textContent =
+    done < SPECS.length ? (done + " of " + SPECS.length) : (bad ? bad + " failing" : "all pass");
+}
+render();
+</script>
+</body>
+</html>

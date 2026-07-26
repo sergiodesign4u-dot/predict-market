@@ -26,60 +26,43 @@
 
   <section class="tk-sec" id="live">
     <h2 data-n="01">Live</h2>
-    <p class="tk-note">The component in the markup it ships with, lifted from the frozen kit so the
-    stand cannot drift from the product. Painted by <code>components/index.css</code>, nothing else.</p>
-    <div class="ck-scene"><span class="ck-scene-lbl">specimen 1</span><div class="ck-stage"><div class="hold-cols">
-            <div class="hold-col">
-              <h4>Biggest YES bets</h4>
-              <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">wh</span><span class="hold-name">whale_07</span><span class="hold-amt">$1,240</span></div>
-              <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">ma</span><span class="hold-name">marketmaven</span><span class="hold-amt">$320</span></div>
-              <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">al</span><span class="hold-name">alpha_ape</span><span class="hold-amt">$280</span></div>
-            </div>
-            <div class="hold-col">
-              <h4>Biggest NO bets</h4>
-              <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">he</span><span class="hold-name">hedge_hannah</span><span class="hold-amt">$980</span></div>
-              <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">po</span><span class="hold-name">polly_predicts</span><span class="hold-amt">$150</span></div>
-              <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">ca</span><span class="hold-name">caut_carl</span><span class="hold-amt">$120</span></div>
-            </div>
-          </div></div></div>
-<div class="ck-scene"><span class="ck-scene-lbl">specimen 2</span><div class="ck-stage"><table class="ptable">
-            <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
-            <tbody>
-            <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
-            <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
-            <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>$588</td></tr>
-            <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>$121</td></tr>
-            </tbody>
-          </table></div></div>
-<div class="ck-scene"><span class="ck-scene-lbl">specimen 3</span><div class="ck-stage"><div class="act-list">
-            <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
-            <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$180</b> on NO</span><span class="act-time">14m ago</span></div>
-            <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> cashed out <b>$31</b> on YES</span><span class="act-time">1h ago</span></div>
-            <div class="act-row"><span class="cmt-av">pp</span><span class="act-txt"><b>polly_predicts</b> bet <b>$87</b> on NO</span><span class="act-time">3h ago</span></div>
-          </div></div></div>
+    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside
+    the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
+    page of its own, so the width under the title is a real viewport and the media queries answer to
+    it.</p>
+    <figure class="ck-scene" id="sp-bets-biggest"><figcaption class="ck-scene-lbl"><b>Biggest bets</b><span class="ck-w">900px</span><span class="ck-zoom" hidden></span><a href="specimens/bets-biggest.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame"><iframe data-specimen="bets-biggest" src="specimens/bets-biggest.html" width="900" height="320" loading="lazy" title="Biggest bets"></iframe></div></figure>
+<figure class="ck-scene" id="sp-bets-table"><figcaption class="ck-scene-lbl"><b>Bets table, your row highlighted</b><span class="ck-w">900px</span><span class="ck-zoom" hidden></span><a href="specimens/bets-table.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame"><iframe data-specimen="bets-table" src="specimens/bets-table.html" width="900" height="320" loading="lazy" title="Bets table, your row highlighted"></iframe></div></figure>
+<figure class="ck-scene" id="sp-bets-activity"><figcaption class="ck-scene-lbl"><b>Activity</b><span class="ck-w">900px</span><span class="ck-zoom" hidden></span><a href="specimens/bets-activity.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame"><iframe data-specimen="bets-activity" src="specimens/bets-activity.html" width="900" height="320" loading="lazy" title="Activity"></iframe></div></figure>
+  </section>
+<section class="tk-sec" id="inside"><h2 data-n="02">Also rendered inside</h2><p class="tk-note">The same markup, shown once on the page of the component that owns it. Nothing here is a second copy.</p><div class="ck-screens"><a href="tabs.html#sp-tabs-detail">Event Detail content tabs</a></div></section>
+  <section class="tk-sec" id="states">
+    <h2 data-n="03">States</h2>
+    <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
+    live, so hover them; what follows is what the file says will move.</p>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.app-case .lg-item.sel</td><td class='ck-decl'>color:var(--text-primary);font-weight:var(--weight-semibold)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
-    <h2 data-n="02">Roles it reads</h2>
+    <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
     <div class="ck-roles"><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--outcome-no-figure)"></i><code>--outcome-no-figure</code></span><span class="ck-role"><i style="background:var(--outcome-yes-text)"></i><code>--outcome-yes-text</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--tint-brass-09)"></i><code>--tint-brass-09</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
-    <h2 data-n="03">Classes</h2>
-    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry it.
-    A class on no screen is either a state the markup toggles or a candidate for deletion in step 7.</p>
+    <h2 data-n="05">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry
+    it. A class on no screen is either a state the markup toggles or a candidate for deletion.</p>
     <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody><tr><td class='tk-role'>.act-list</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.act-row</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.act-time</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.act-txt</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.hold-amt</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.hold-col</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.hold-cols</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.hold-name</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.hold-out</td><td class='tk-hex'>2</td></tr><tr><td class='tk-role'>.hold-rank</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.hold-row</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.lg-item</td><td class='tk-hex'>0</td></tr><tr><td class='tk-role'>.ptable</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.sel</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.you</td><td class='tk-hex'>7</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
-    <h2 data-n="04">Where it stands</h2>
+    <h2 data-n="06">Where it stands</h2>
     <div class="ck-screens"><a href="../ui-visual/404.html">404</a><a href="../ui-visual/500.html">500</a><a href="../ui-visual/active-bets-empty-new.html">active-bets-empty-new</a><a href="../ui-visual/active-bets-empty-resolved.html">active-bets-empty-resolved</a><a href="../ui-visual/active-bets-error.html">active-bets-error</a><a href="../ui-visual/active-bets-history-empty.html">active-bets-history-empty</a><a href="../ui-visual/active-bets-history-error.html">active-bets-history-error</a><a href="../ui-visual/active-bets-history-loading.html">active-bets-history-loading</a><a href="../ui-visual/active-bets-history.html">active-bets-history</a><a href="../ui-visual/active-bets-loading.html">active-bets-loading</a><a href="../ui-visual/active-bets.html">active-bets</a><a href="../ui-visual/cookie-consent.html">cookie-consent</a><a href="../ui-visual/deposit-error-card.html">deposit-error-card</a><a href="../ui-visual/deposit-error-kyc.html">deposit-error-kyc</a><a href="../ui-visual/deposit-loading.html">deposit-loading</a><a href="../ui-visual/deposit-minimum-not-met.html">deposit-minimum-not-met</a><a href="../ui-visual/deposit-pending.html">deposit-pending</a><a href="../ui-visual/deposit-widget-load-failure.html">deposit-widget-load-failure</a><a href="../ui-visual/deposit.html">deposit</a><a href="../ui-visual/event-detail-bet-error.html">event-detail-bet-error</a><a href="../ui-visual/event-detail-bet-insufficient.html">event-detail-bet-insufficient</a><a href="../ui-visual/event-detail-bet-processing.html">event-detail-bet-processing</a><a href="../ui-visual/event-detail-bet-reconcile.html">event-detail-bet-reconcile</a><a href="../ui-visual/event-detail-error.html">event-detail-error</a><a href="../ui-visual/event-detail-loading.html">event-detail-loading</a><a href="../ui-visual/event-detail-logged-out-error.html">event-detail-logged-out-error</a><a href="../ui-visual/event-detail-logged-out-loading.html">event-detail-logged-out-loading</a><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-logged-out.html">event-detail-logged-out</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-detail-resolved.html">event-detail-resolved</a><a href="../ui-visual/event-detail.html">event-detail</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-empty.html">event-feed-empty</a><a href="../ui-visual/event-feed-error.html">event-feed-error</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-empty.html">event-feed-logged-out-empty</a><a href="../ui-visual/event-feed-logged-out-error.html">event-feed-logged-out-error</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-empty.html">favorites-empty</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/loss-loading.html">loss-loading</a><a href="../ui-visual/loss.html">loss</a><a href="../ui-visual/maintenance.html">maintenance</a><a href="../ui-visual/my-profile-error.html">my-profile-error</a><a href="../ui-visual/my-profile-loading.html">my-profile-loading</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/notifications-empty.html">notifications-empty</a><a href="../ui-visual/notifications-error.html">notifications-error</a><a href="../ui-visual/notifications-loading.html">notifications-loading</a><a href="../ui-visual/notifications-push.html">notifications-push</a><a href="../ui-visual/notifications.html">notifications</a><a href="../ui-visual/public-profile-error.html">public-profile-error</a><a href="../ui-visual/public-profile-loading.html">public-profile-loading</a><a href="../ui-visual/public-profile-not-found.html">public-profile-not-found</a><a href="../ui-visual/public-profile.html">public-profile</a><a href="../ui-visual/sign-in-error.html">sign-in-error</a><a href="../ui-visual/sign-in-loading.html">sign-in-loading</a><a href="../ui-visual/sign-in-provider-conflict.html">sign-in-provider-conflict</a><a href="../ui-visual/sign-in.html">sign-in</a><a href="../ui-visual/toasts.html">toasts</a><a href="../ui-visual/wallet-error.html">wallet-error</a><a href="../ui-visual/wallet-loading.html">wallet-loading</a><a href="../ui-visual/wallet.html">wallet</a><a href="../ui-visual/win-error.html">win-error</a><a href="../ui-visual/win-loading.html">win-loading</a><a href="../ui-visual/win-payout-pending.html">win-payout-pending</a><a href="../ui-visual/win.html">win</a></div>
   </section>
 
   <section class="tk-sec" id="css">
-    <h2 data-n="05">The file</h2>
+    <h2 data-n="07">The file</h2>
     <p class="tk-note">To change this component, edit <code>components/bets-table.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/bets-table.css</summary><pre>/* components/bets-table.css
@@ -134,6 +117,7 @@
   </section>
 </div>
 
+<script src="_frames.js"></script>
 <script src="_nav.js"></script>
 </body>
 </html>

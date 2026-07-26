@@ -236,3 +236,15 @@ shipped `ui-visual/` page, values through `kit.css` variables, markup into `kit.
    graphite -> content plate -> card -> surface, nested to show the embossed two-stone depth) and an
    **outcome-semantics** row (tinted YES/NO, the filled bet side, the `.pos-won`/`.pos-lost` WON/LOST
    chips) so the green/red-is-outcome-only rule is documented in one place.
+
+---
+
+## The Kit column after the vitrine rebuild (Stage 09 step 4)
+
+The Kit column above measures the flat `kit.html`, which is now the specimen source rather than the
+vitrine. What each component actually renders on its own page is measured by the build and written to
+**`ui-kit/docs/coverage.md`**: own specimens, the ones it appears inside, its classes and its screens.
+
+Read the two together. A `~` or `-` above means the frozen kit shows no separate sample of that
+variant; it does not mean the component has no page. Every one of the 38 components owns at least one
+live specimen, and the build fails if that stops being true.

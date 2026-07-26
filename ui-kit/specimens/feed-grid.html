@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The card grid on the content plate</title>
+<link rel="stylesheet" href="../../components/index.css">
+<link rel="stylesheet" href="../_specimen.css">
+</head>
+<body>
+<div class="device"><div class="app-case">
+<main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
+      <div class="grid">
+        <article class="card"><div class="card-body">
+  <div class="top"><span class="thumb"></span><div class="top-txt">
+    <a class="q" href="#">Will the U.S. government shut down before Nov 1?</a><p class="why">Funding lapses at midnight Friday unless the Senate passes a stopgap.</p></div></div>
+  <div class="oddsbar"><div class="track"><span class="fill" style="width:64%"></span></div><div class="lbls"><span class="l-yes">Yes 64%</span><span class="l-no">No 36%</span></div></div>
+  <div class="yesno"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div>
+  <div class="meta"><div class="meta-txt"><span class="m-label">Vol</span> <span class="m-val">$48.2k</span> <span class="m-label">Closes</span> <span class="m-val">Oct 31</span></div>
+    <button class="bookmark-btn" aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button></div>
+</div></article>
+        <article class="card"><div class="card-body">
+  <div class="top"><span class="thumb"></span><div class="top-txt">
+    <a class="q" href="#">Will Bitcoin close above $150,000 this year?</a><p class="why">BTC is up 12% this week as spot-ETF inflows hit a record.</p></div></div>
+  <div class="oddsbar"><div class="track"><span class="fill" style="width:58%"></span></div><div class="lbls"><span class="l-yes">Yes 58%</span><span class="l-no">No 42%</span></div></div>
+  <div class="yesno"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div>
+  <div class="meta"><div class="meta-txt"><span class="m-label">Vol</span> <span class="m-val">$48.2k</span> <span class="m-label">Closes</span> <span class="m-val">Oct 31</span></div>
+    <button class="bookmark-btn" aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button></div>
+</div></article>
+        <article class="card"><div class="card-body">
+  <div class="top"><span class="thumb"></span><div class="top-txt">
+    <a class="q" href="#">Who will win the 2028 U.S. presidential election?</a>
+    <p class="why">Early primary polling is unusually close across four names.</p></div></div>
+  <div class="options">
+    <div class="opt-row"><span class="opt-name">JD Vance</span><span class="opt-prob">34%</span>
+      <div class="yesno compact"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div></div>
+    <div class="opt-row"><span class="opt-name">Gavin Newsom</span><span class="opt-prob">28%</span>
+      <div class="yesno compact"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div></div>
+  </div>
+  <div class="meta"><div class="meta-txt"><span class="m-label">Vol</span> <span class="m-val">$210k</span> <span class="m-label">Closes</span> <span class="m-val">Nov 2028</span></div>
+    <button class="bookmark-btn" aria-pressed="true" aria-label="Saved"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button></div>
+</div></article>
+      </div>
+    </div></div></div></main>
+</div></div>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></symbol></defs></svg>
+<script>
+/* Report to the vitrine: how tall this specimen is, and whether it rendered.
+   postMessage crosses origins, so this works from file:// as well as from a
+   server, where reading the frame document from the parent would not. */
+(function () {
+  var errors = [];
+  window.addEventListener("error", function (e) { errors.push(String(e.message)); });
+
+  function shown(el) {
+    if (el.checkVisibility) return el.checkVisibility({opacityProperty: true, visibilityProperty: true});
+    var s = getComputedStyle(el);
+    return s.display !== "none" && s.visibility !== "hidden" && s.opacity !== "0";
+  }
+
+  function height() {
+    /* An open dialog and the mobile bet sheet are out of flow, so scrollHeight
+       alone reports next to nothing for them. Sweep the boxes as well, but only
+       the ones a person can see: a closed dropdown still has a box. */
+    var h = document.body.scrollHeight, y = window.scrollY || 0, all = document.body.getElementsByTagName("*");
+    for (var i = 0; i < all.length; i++) {
+      var r = all[i].getBoundingClientRect();
+      if (r.height && r.bottom + y > h && shown(all[i])) h = Math.ceil(r.bottom + y);
+    }
+    return h;
+  }
+
+  function send() {
+    var doc = document.documentElement;
+    var dead = 0, uses = document.querySelectorAll("use");
+    for (var i = 0; i < uses.length; i++) {
+      var ref = uses[i].getAttribute("href") || "";
+      if (ref.charAt(0) === "#" && !document.getElementById(ref.slice(1))) dead++;
+    }
+    try {
+      parent.postMessage({
+        specimen: "feed-grid",
+        height: height(),
+        elements: document.body.getElementsByTagName("*").length,
+        overflowX: doc.scrollWidth - doc.clientWidth,
+        deadIcons: dead,
+        errors: errors
+      }, "*");
+    } catch (e) {}
+  }
+
+  /* The vitrine may finish loading after this frame does, so it also asks. */
+  window.addEventListener("message", function (e) { if (e.data && e.data.ping) send(); });
+  window.addEventListener("load", send);
+  window.addEventListener("resize", send);
+  if (window.ResizeObserver) new ResizeObserver(send).observe(document.documentElement);
+  if (document.fonts) document.fonts.ready.then(send);
+  setTimeout(send, 80);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,528 @@
+[
+ {
+  "id": "button-primary",
+  "component": "button",
+  "title": "Primary button, three sizes",
+  "width": 720,
+  "source": "kit.html / buttons / Primary - small / medium / large",
+  "rewrites": 0
+ },
+ {
+  "id": "button-secondary",
+  "component": "button",
+  "title": "Secondary button, three sizes",
+  "width": 720,
+  "source": "kit.html / buttons / Secondary - small / medium / large",
+  "rewrites": 0
+ },
+ {
+  "id": "button-outcome-row",
+  "component": "button",
+  "title": "Outcome pair, icon button and Load more",
+  "width": 720,
+  "also": [
+   "yesno",
+   "loadmore",
+   "header"
+  ],
+  "source": "kit.html / buttons / Outcome pair, icon, and Load more",
+  "rewrites": 0
+ },
+ {
+  "id": "loadmore",
+  "component": "loadmore",
+  "title": "Load more",
+  "width": 420,
+  "source": "kit.html / buttons / Outcome pair, icon, and Load more",
+  "rewrites": 0
+ },
+ {
+  "id": "catnav-chips",
+  "component": "catnav",
+  "title": "Category chips and the sort menu",
+  "width": 900,
+  "also": [
+   "filters",
+   "feed"
+  ],
+  "source": "kit.html / chips / Chips and filters",
+  "rewrites": 0
+ },
+ {
+  "id": "filters-sort",
+  "component": "filters",
+  "title": "Sort menu",
+  "width": 420,
+  "state": "Shown closed, the way it ships. It opens on click, no script involved.",
+  "source": "kit.html / chips / Chips and filters",
+  "rewrites": 0
+ },
+ {
+  "id": "filters-toggle",
+  "component": "filters",
+  "title": "Toggle: on, off, disabled",
+  "width": 560,
+  "source": "kit.html / chips / Toggle (on / off / disabled)",
+  "rewrites": 0
+ },
+ {
+  "id": "hero-band",
+  "component": "hero",
+  "title": "Featured hero band",
+  "width": 1120,
+  "source": "kit.html / cards / Featured hero band",
+  "rewrites": 4
+ },
+ {
+  "id": "feed-grid",
+  "component": "feed",
+  "title": "The card grid on the content plate",
+  "width": 1120,
+  "also": [
+   "card",
+   "catnav"
+  ],
+  "source": "kit.html / cards / Event cards",
+  "rewrites": 0
+ },
+ {
+  "id": "card-binary",
+  "component": "card",
+  "title": "Event card, binary (treatment B)",
+  "width": 440,
+  "also": [
+   "oddsbar",
+   "yesno"
+  ],
+  "note": "The photo is keyed off the card position in the grid, so a card shown alone always gets the politics image.",
+  "source": "kit.html / cards / Event cards",
+  "rewrites": 0
+ },
+ {
+  "id": "card-multi",
+  "component": "card",
+  "title": "Event card, multi outcome (treatment D)",
+  "width": 440,
+  "also": [
+   "options"
+  ],
+  "source": "kit.html / cards / Event cards",
+  "rewrites": 0
+ },
+ {
+  "id": "oddsbar",
+  "component": "oddsbar",
+  "title": "Odds bar",
+  "width": 440,
+  "note": "On a painted screen this markup is built by the feed script from the probability text; here it ships as markup.",
+  "source": "kit.html / cards / Event cards",
+  "rewrites": 0
+ },
+ {
+  "id": "yesno",
+  "component": "yesno",
+  "title": "Tinted YES / NO pair",
+  "width": 440,
+  "source": "kit.html / cards / Event cards",
+  "rewrites": 0
+ },
+ {
+  "id": "options-rows",
+  "component": "options",
+  "title": "Outcome rows",
+  "width": 440,
+  "source": "kit.html / cards / Event cards",
+  "rewrites": 0
+ },
+ {
+  "id": "catnav-subfilter",
+  "component": "catnav",
+  "title": "Trending sub-filter",
+  "width": 900,
+  "source": "kit.html / cards / Trending sub-filter",
+  "rewrites": 0
+ },
+ {
+  "id": "catnav-subcat",
+  "component": "catnav",
+  "title": "Sub-category rail",
+  "width": 900,
+  "source": "kit.html / cards / Sub-category rail (category pages)",
+  "rewrites": 0
+ },
+ {
+  "id": "seo-plate",
+  "component": "seo-plate",
+  "title": "Below-fold SEO plate",
+  "width": 1120,
+  "source": "kit.html / cards / Below-fold SEO plate",
+  "rewrites": 0
+ },
+ {
+  "id": "state-empty-filters",
+  "component": "state-block",
+  "title": "Nothing matches the filters",
+  "width": 900,
+  "source": "kit.html / states / States",
+  "rewrites": 0
+ },
+ {
+  "id": "state-error",
+  "component": "state-block",
+  "title": "Error",
+  "width": 900,
+  "source": "kit.html / states / Error",
+  "rewrites": 0
+ },
+ {
+  "id": "state-empty",
+  "component": "state-block",
+  "title": "Empty list",
+  "width": 900,
+  "source": "kit.html / states / Empty list",
+  "rewrites": 0
+ },
+ {
+  "id": "skeleton-grid",
+  "component": "skeleton",
+  "title": "Skeleton cards while the feed loads",
+  "width": 900,
+  "also": [
+   "card"
+  ],
+  "source": "kit.html / states / Loading and push",
+  "rewrites": 0
+ },
+ {
+  "id": "notice-push",
+  "component": "notice",
+  "title": "Push permission banner",
+  "width": 900,
+  "source": "kit.html / states / Loading and push",
+  "rewrites": 0
+ },
+ {
+  "id": "dialog-shared",
+  "component": "dialog",
+  "title": "Sign in and Add funds",
+  "width": 900,
+  "also": [
+   "signin",
+   "input",
+   "notice"
+  ],
+  "state": "Both carry the open attribute. In the product they are opened with showModal(), which is why the staging sheet puts them back in the flow.",
+  "source": "kit.html / dialogs / Shared dialogs",
+  "rewrites": 0
+ },
+ {
+  "id": "signin",
+  "component": "signin",
+  "title": "Sign in dialog",
+  "width": 420,
+  "source": "kit.html / dialogs / Shared dialogs",
+  "rewrites": 0
+ },
+ {
+  "id": "input-amount",
+  "component": "input",
+  "title": "Amount field, label and quick amounts",
+  "width": 420,
+  "note": "Every rule in input.css is scoped under dialog.app-dialog, so the field is shown inside the dialog it lives in.",
+  "source": "kit.html / dialogs / Shared dialogs",
+  "rewrites": 0
+ },
+ {
+  "id": "hiw-dialog",
+  "component": "hiw-dialog",
+  "title": "How-it-works dialog",
+  "width": 560,
+  "source": "kit.html / dialogs / How-it-works dialog",
+  "rewrites": 0
+ },
+ {
+  "id": "toast",
+  "component": "toast",
+  "title": "Toasts",
+  "width": 560,
+  "source": "kit.html / feedback / Toasts",
+  "rewrites": 0
+ },
+ {
+  "id": "trustbar-feed",
+  "component": "trustbar",
+  "title": "Trust bar, near the action",
+  "width": 900,
+  "source": "kit.html / feedback / Trust bar (near the action)",
+  "rewrites": 0
+ },
+ {
+  "id": "outcome-overlays",
+  "component": "outcome-dialog",
+  "title": "Win and loss overlays",
+  "width": 900,
+  "source": "kit.html / feedback / Win and loss overlays",
+  "rewrites": 0
+ },
+ {
+  "id": "event-detail",
+  "component": "event-detail",
+  "title": "Content plate and bet panel",
+  "width": 1120,
+  "also": [
+   "betpanel",
+   "oddsbar",
+   "chart"
+  ],
+  "source": "kit.html / detail / Event Detail",
+  "rewrites": 0
+ },
+ {
+  "id": "chart",
+  "component": "chart",
+  "title": "Price chart",
+  "width": 1120,
+  "source": "kit.html / detail / Price chart",
+  "rewrites": 0
+ },
+ {
+  "id": "facts-strip",
+  "component": "event-detail",
+  "title": "Facts strip",
+  "width": 1120,
+  "source": "kit.html / detail / Facts strip",
+  "rewrites": 0
+ },
+ {
+  "id": "market-depth",
+  "component": "market",
+  "title": "Market depth (AMM)",
+  "width": 1120,
+  "state": "Shown with the details element open.",
+  "source": "kit.html / detail / Market depth (AMM)",
+  "rewrites": 0
+ },
+ {
+  "id": "tabs-detail",
+  "component": "tabs",
+  "title": "Event Detail content tabs",
+  "width": 1120,
+  "also": [
+   "comments",
+   "bets-table"
+  ],
+  "state": "The tabs are a CSS-only radio switch, so the strip works here exactly as it does on a screen.",
+  "source": "kit.html / detail / Content tabs (Comments / Biggest bets / Bets / Activity)",
+  "rewrites": 0
+ },
+ {
+  "id": "comments-thread",
+  "component": "comments",
+  "title": "Sort, composer and thread",
+  "width": 900,
+  "note": "Lifted out of the tab panel, which is display:none until its radio is checked.",
+  "source": "kit.html / detail / Content tabs (Comments / Biggest bets / Bets / Activity)",
+  "rewrites": 0
+ },
+ {
+  "id": "bets-biggest",
+  "component": "bets-table",
+  "title": "Biggest bets",
+  "width": 900,
+  "source": "kit.html / detail / Content tabs (Comments / Biggest bets / Bets / Activity)",
+  "rewrites": 0
+ },
+ {
+  "id": "bets-table",
+  "component": "bets-table",
+  "title": "Bets table, your row highlighted",
+  "width": 900,
+  "source": "kit.html / detail / Content tabs (Comments / Biggest bets / Bets / Activity)",
+  "rewrites": 0
+ },
+ {
+  "id": "bets-activity",
+  "component": "bets-table",
+  "title": "Activity",
+  "width": 900,
+  "source": "kit.html / detail / Content tabs (Comments / Biggest bets / Bets / Activity)",
+  "rewrites": 0
+ },
+ {
+  "id": "betpanel-states",
+  "component": "betpanel",
+  "title": "Bet panel, four states",
+  "width": 1120,
+  "source": "kit.html / detail / Bet panel states (funds line / insufficient / price moved / processing)",
+  "rewrites": 0
+ },
+ {
+  "id": "betpanel-dock",
+  "component": "betpanel",
+  "title": "Mobile bet dock",
+  "width": 360,
+  "state": "Shown at 360 because the dock is mobile only. On a wider frame the media query hides it, which is exactly what the product does.",
+  "source": "kit.html / detail / Mobile bet dock + bottom sheet (mobile only)",
+  "rewrites": 0
+ },
+ {
+  "id": "betpanel-sheet",
+  "component": "betpanel",
+  "title": "Mobile bet sheet",
+  "width": 360,
+  "state": "Open, the way showModal opens it on a phone. It ships as a fixed bottom drawer and is put in the flow here so the frame can show all of it.",
+  "source": "kit.html / detail / Mobile bet dock + bottom sheet (mobile only)",
+  "rewrites": 0
+ },
+ {
+  "id": "options-multi",
+  "component": "options",
+  "title": "Multi outcome: selector and bet summary",
+  "width": 1120,
+  "also": [
+   "betpanel"
+  ],
+  "source": "kit.html / detail / Multi outcome (selector + bet panel summary)",
+  "rewrites": 0
+ },
+ {
+  "id": "related",
+  "component": "related",
+  "title": "Related events",
+  "width": 900,
+  "source": "kit.html / detail / Related events",
+  "rewrites": 2
+ },
+ {
+  "id": "profile-identity",
+  "component": "profile",
+  "title": "Identity, reputation and the profile tabs",
+  "width": 1120,
+  "also": [
+   "position",
+   "tabs",
+   "account"
+  ],
+  "source": "kit.html / profile / Profile and account",
+  "rewrites": 0
+ },
+ {
+  "id": "account-cta",
+  "component": "account",
+  "title": "Sticky action bar",
+  "width": 900,
+  "state": "Sticky on a screen, static here so it sits in the frame.",
+  "source": "kit.html / profile / Profile and account",
+  "rewrites": 0
+ },
+ {
+  "id": "position-list",
+  "component": "position",
+  "title": "Transaction list",
+  "width": 1120,
+  "source": "kit.html / profile / Transaction list (wallet)",
+  "rewrites": 0
+ },
+ {
+  "id": "header-in",
+  "component": "header",
+  "title": "App header, logged in",
+  "width": 1120,
+  "state": "The condensed category strip below the row is collapsed until the header gets .scrolled, which a scroll observer adds on a real screen.",
+  "source": "kit.html / chrome / Sticky app header (logged in)",
+  "rewrites": 5
+ },
+ {
+  "id": "header-out",
+  "component": "header",
+  "title": "App header, logged out",
+  "width": 1120,
+  "source": "kit.html / chrome / Header, logged out (Sign in / Sign up)",
+  "rewrites": 0
+ },
+ {
+  "id": "tabs-mybets",
+  "component": "tabs",
+  "title": "My Bets tabs",
+  "width": 900,
+  "source": "kit.html / chrome / My Bets tabs (Active / History)",
+  "rewrites": 0
+ },
+ {
+  "id": "bottomnav",
+  "component": "bottomnav",
+  "title": "Mobile bottom nav",
+  "width": 360,
+  "state": "Shown at 360. Above 640 the media query hides it, and that is the product behaviour, not a defect of the stand.",
+  "source": "kit.html / chrome / Mobile bottom nav",
+  "rewrites": 0
+ },
+ {
+  "id": "footer",
+  "component": "footer",
+  "title": "Footer",
+  "width": 1120,
+  "also": [
+   "trustbar",
+   "filters"
+  ],
+  "source": "kit.html / chrome / Footer (full)",
+  "rewrites": 0
+ },
+ {
+  "id": "trustbar-footer",
+  "component": "trustbar",
+  "title": "Footer trust strip",
+  "width": 1120,
+  "source": "kit.html / chrome / Footer (full)",
+  "rewrites": 0
+ },
+ {
+  "id": "icons-sprite",
+  "component": "icons",
+  "title": "Named icons (sprite)",
+  "width": 1120,
+  "source": "kit.html / icons / Named icons (sprite)",
+  "rewrites": 0
+ },
+ {
+  "id": "icons-interface",
+  "component": "icons",
+  "title": "Interface icons",
+  "width": 1120,
+  "source": "kit.html / icons / Interface icons",
+  "rewrites": 0
+ },
+ {
+  "id": "icons-brand",
+  "component": "icons",
+  "title": "Brand and auth",
+  "width": 1120,
+  "source": "kit.html / icons / Brand and auth",
+  "rewrites": 0
+ },
+ {
+  "id": "base-frame",
+  "component": "base",
+  "title": "The page frame and the text reset",
+  "width": 900,
+  "source": "specimens.extra.html / extra / Page frame and text reset",
+  "rewrites": 0
+ },
+ {
+  "id": "course-chrome",
+  "component": "course-chrome",
+  "title": "Roadmap sidebar",
+  "width": 260,
+  "source": "specimens.extra.html / extra / Roadmap sidebar",
+  "rewrites": 0
+ },
+ {
+  "id": "cookie-consent",
+  "component": "cookie-consent",
+  "title": "Cookie consent banner",
+  "width": 900,
+  "source": "specimens.extra.html / extra / Cookie consent banner",
+  "rewrites": 0
+ }
+]

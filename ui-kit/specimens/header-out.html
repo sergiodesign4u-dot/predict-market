@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App header, logged out</title>
+<link rel="stylesheet" href="../../components/index.css">
+<link rel="stylesheet" href="../_specimen.css">
+</head>
+<body>
+<div class="device app-case kit-chrome-demo"><header class="app-header">
+      <div class="row">
+        <div class="left">
+          <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          </button>
+          <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+          <button type="button" class="hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
+        </div>
+
+        <div class="utility">
+          <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
+          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+          </button>
+
+          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
+          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+          </button>
+
+          <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
+          <div class="auth-btns">
+            <button type="button" class="auth-btn" data-open="signin">Sign in</button>
+            <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
+          </div>
+        </div>
+      </div>
+    </header></div>
+<script>
+/* Report to the vitrine: how tall this specimen is, and whether it rendered.
+   postMessage crosses origins, so this works from file:// as well as from a
+   server, where reading the frame document from the parent would not. */
+(function () {
+  var errors = [];
+  window.addEventListener("error", function (e) { errors.push(String(e.message)); });
+
+  function shown(el) {
+    if (el.checkVisibility) return el.checkVisibility({opacityProperty: true, visibilityProperty: true});
+    var s = getComputedStyle(el);
+    return s.display !== "none" && s.visibility !== "hidden" && s.opacity !== "0";
+  }
+
+  function height() {
+    /* An open dialog and the mobile bet sheet are out of flow, so scrollHeight
+       alone reports next to nothing for them. Sweep the boxes as well, but only
+       the ones a person can see: a closed dropdown still has a box. */
+    var h = document.body.scrollHeight, y = window.scrollY || 0, all = document.body.getElementsByTagName("*");
+    for (var i = 0; i < all.length; i++) {
+      var r = all[i].getBoundingClientRect();
+      if (r.height && r.bottom + y > h && shown(all[i])) h = Math.ceil(r.bottom + y);
+    }
+    return h;
+  }
+
+  function send() {
+    var doc = document.documentElement;
+    var dead = 0, uses = document.querySelectorAll("use");
+    for (var i = 0; i < uses.length; i++) {
+      var ref = uses[i].getAttribute("href") || "";
+      if (ref.charAt(0) === "#" && !document.getElementById(ref.slice(1))) dead++;
+    }
+    try {
+      parent.postMessage({
+        specimen: "header-out",
+        height: height(),
+        elements: document.body.getElementsByTagName("*").length,
+        overflowX: doc.scrollWidth - doc.clientWidth,
+        deadIcons: dead,
+        errors: errors
+      }, "*");
+    } catch (e) {}
+  }
+
+  /* The vitrine may finish loading after this frame does, so it also asks. */
+  window.addEventListener("message", function (e) { if (e.data && e.data.ping) send(); });
+  window.addEventListener("load", send);
+  window.addEventListener("resize", send);
+  if (window.ResizeObserver) new ResizeObserver(send).observe(document.documentElement);
+  if (document.fonts) document.fonts.ready.then(send);
+  setTimeout(send, 80);
+})();
+</script>
+</body>
+</html>

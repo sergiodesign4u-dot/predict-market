@@ -33,6 +33,22 @@ Two rules follow, and both are checked in step 7:
 `--shadow-ink-45`. It answers "why this colour is in this place". Every role points at a primitive
 through `var()` and carries the usage it was read from.
 
+### Foundations are one page, with several doors
+
+The course asks for `colour.html`, `typography.html`, `geometry.html` and `icons.html`. We build one
+of the four, and the reason is the rule above it: one component is one css file, one page, one
+registry line. Colour, material, geometry, type and motion are all generated out of
+`components/tokens.css` and already render as sections of `tokens.html`. Four hand-built pages beside
+it would be a second answer to the same question, and would disagree with it the first time a token
+moved. So the hub carries five **doors** into `tokens.html#colour`, `#material`, `#geometry`, `#type`
+and `#motion`, and there are no separate pages behind them.
+
+`icons.html` is built, because it is the one foundation that is not a value. An icon is markup, no
+token file can hold it, and until this step the sprite existed only inside `kit.html`, which is why
+43 icon references across the stand pages pointed at symbols that were not in the document.
+
+This is a deliberate deviation, of the same kind as the non-alphabetical import order above.
+
 There is no component level (`--button-bg`, `--card-radius`). On a product this size it would only add
 a third round of renaming: to change the colour of a button you would walk three files instead of one.
 It becomes justified when a component has to differ from the role systematically (a brand theme over a
@@ -97,21 +113,94 @@ keeps the rule at its original position in the cascade.
 
 ---
 
+## How a specimen is made
+
+A component only looks like itself inside the markup it ships in. The painted product wraps every
+screen in `<div class="device"><div class="app-case">`, and 423 rules across `components/` are scoped
+under `.app-case`: the two-stone plates, the chip family, the condensed strip. A fragment lifted out
+of that wrapper renders as raw browser default, which is what the first version of these pages did.
+
+So a specimen is never a fragment. It is a **labelled block of the frozen kit**, taken whole, with
+the ancestors it already had.
+
+| File | Owner | What it is |
+|---|---|---|
+| `ui-kit/kit.html` | frozen | the source. 12 sections, 47 labelled blocks, each already staged in its real context, dialogs already open, the sprite. Read, never written |
+| `ui-kit/specimens.extra.html` | hand | blocks for the three things the kit does not stage: the page frame, the roadmap sidebar, the cookie banner. Same shape as a kit section |
+| `ui-kit/specimens.map.json` | hand | the curation: which block becomes which specimen, under what title, at what width, on whose page |
+| `ui-kit/specimens/<id>.html` | generated | one standalone page per specimen |
+| `ui-kit/specimens/index.json` | generated | the manifest the page generator reads |
+
+A map entry can take the whole block or `pick` one element out of it. A pick keeps the element's
+**real ancestor chain**, copied from the kit byte for byte, and drops only its siblings, so every
+descendant selector that painted it there still paints it here. `unwrap` removes a named wrapper from
+that chain, and exists for exactly one case: a tab panel is `display:none` until a radio outside the
+component is checked, and the radio is not part of the component being shown. `set` puts an attribute
+on an element the way the product puts it there (the `open` a summary toggles, the `checked` a tab
+radio carries), and every use of it is captioned on the page.
+
+### Why each specimen is a page, and why it is framed
+
+Each specimen is a real document, loaded in an `<iframe>` at a declared width.
+
+- **The width is the point.** `.bottom-nav` is `display:none` above 640px, so on a desktop stand page
+  the old bottom-nav specimen was an empty box. In a 360px frame it simply shows itself, because the
+  media query is telling the truth. Same for the bet dock and the bottom sheet.
+- **The stand cannot leak in.** A specimen page links `components/index.css` and `_specimen.css` and
+  nothing else. `_page.css` is not there to reach it.
+- **Sticky stays sticky, ids stay unique.** Four specimens can each carry `#edtab-comments` without
+  colliding, because they are four documents.
+- A frame reports its own height by `postMessage`, which crosses origins and therefore works from
+  `file://`, where reading the frame document from the parent does not. If the column is narrower
+  than the declared width the frame is scaled down rather than squeezed, and the label says by how
+  much.
+
+`ui-kit/_specimen.css` is the staging layer: it stops page-level behaviour (a header that sticks to
+the viewport, a dialog that positions itself against the page, a `min-height:100vh` canvas) from
+fighting a one-component frame, and it carries the `.kit-*` helpers the kit uses to lay several
+variants side by side. It restyles no product class beyond that, and the two rules that do touch one
+say why in a comment.
+
+### States
+
+Hover and focus are not faked with a stand class. The frames are live, so a hover is a real hover;
+next to them the page prints the state rules **read out of the component's own file**, so what moves
+is quoted rather than described. The states that live in the markup (`open`, `checked`,
+`aria-current`, `.sel`, `.scrolled`, `.skeleton`, logged out) are shown as separate specimens and
+captioned with how the product sets them.
+
 ## How to add a component
 
-Four things, or it does not exist:
+Five things, or it does not exist:
 
 1. `components/<name>.css` - the file, with the header comment: the roles it reads, its stand page,
    the screens it stands on.
-2. `ui-kit/<name>.html` - the stand page: the component live, the roles, the classes, the screens, the
-   file itself.
-3. a line in `ui-kit/_nav.js` - the registry that renders both the hub cards and the side panel.
-4. a row in `ui-kit/docs/inventory.md` - with the css file and the page filled in.
+2. a block to show it: either a labelled block already in `ui-kit/kit.html`, or a new one in
+   `ui-kit/specimens.extra.html`.
+3. an entry in `ui-kit/specimens.map.json` pointing at that block.
+4. a line in `ui-kit/_nav.js` - the registry that renders both the hub cards and the side panel.
+5. a row in `ui-kit/docs/inventory.md`.
 
-The stand pages and the registry are generated by `ui-kit/_gen_component_pages.py` from
-`components/*.css` plus the specimens in `ui-kit/_specimens.json`; `ui-kit/tokens.html` is generated
-by `ui-kit/_gen_tokens_page.py` from `components/tokens.css`. Re-run either after a change; both are
-idempotent and neither touches `components/` or `ui-visual/`.
+`ui-kit/<name>.html` is not on the list because it is generated. So is `docs/coverage.md`, which
+reports what each component actually renders.
+
+The build is three commands, in this order, all idempotent, none of which touches `components/` or
+`ui-visual/`:
+
+```
+python3 ui-kit/_extract_specimens.py     # blocks  -> specimens/ + selftest.html
+python3 ui-kit/_gen_component_pages.py   # css     -> 38 pages + overview + _nav.js + coverage.md
+python3 ui-kit/_gen_icons_page.py        # sprite  -> icons.html
+python3 ui-kit/_check_kit.py             # the gates
+```
+
+`ui-kit/tokens.html` is generated separately by `ui-kit/_gen_tokens_page.py` from
+`components/tokens.css`.
+
+A block in the kit with no map entry is a **build failure**, not a silent omission, and so is a map
+entry pointing at a block that no longer exists. A block we deliberately do not show is listed in
+`skip_blocks` with the reason: there is one, the input-states row, which is stand markup demonstrating
+no product class at all.
 
 ---
 
@@ -134,9 +223,11 @@ not have, either the component grows a variant class or the screen is wrong.
 
 - `ui-kit/kit.css` is the flat file this system came out of. It stays until the painted screens move
   onto `index.css` (step 5), then it goes; git remembers it.
-- `ui-kit/kit.html` is a frozen smoke test, not a vitrine. It is pointed at `../components/index.css`
-  and it shows the kit as it stood at the end of the previous stage: if it still looks like yesterday,
-  the split was clean. New components do NOT get added to it. Their home is their own page.
+- `ui-kit/kit.html` is a frozen smoke test AND the specimen source. It is pointed at
+  `../components/index.css` and it shows the kit as it stood at the end of the previous stage: if it
+  still looks like yesterday, the split was clean. New components do NOT get added to it as pages;
+  they get a labelled block, which is what a specimen is cut from. Renaming a block heading there
+  breaks the build on purpose.
 - `ui-kit/shell.html` is a composition (how the header and the tab bar stand together), not a source.
   The source of each part is its component page.
 

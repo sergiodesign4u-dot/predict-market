@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Specimens the frozen kit does not stage</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_specimen.css">
+</head>
+<body class="app-case">
+<!--
+  Hand-authored specimen blocks, in the same shape as the blocks in kit.html:
+  a section, a sub-heading per block, then the markup. Three components have no
+  block in the frozen kit, because the kit shows what a designer picks from a
+  screen and these three are the screen itself.
+
+  The markup is copied from the painted product, not invented:
+    cookie banner   ui-visual/cookie-consent.html
+    roadmap sidebar ui-visual/event-feed.html, shortened to two groups
+    page frame      the elements components/base.css actually resets
+
+  This file is a source for ui-kit/_extract_specimens.py. It is also openable on
+  its own, which is why it carries the two stylesheet links. No em dash.
+-->
+<section class="kit-sec" id="extra">
+  <h2 data-n="00">Extra</h2>
+
+  <div class="kit-subh">Page frame and text reset</div>
+  <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
+    <h1>Will the U.S. government shut down before Nov 1?</h1>
+    <h2>What base.css owns</h2>
+    <p>The canvas, the plate, the box model, the text colour and the body font. Everything a screen
+    inherits before a single component is loaded. A link looks like
+    <a href="#">this one</a>, and a list keeps its own marks:</p>
+    <ul>
+      <li>the graphite canvas and the two-stone slab under it</li>
+      <li>the reset: margins off, border-box on</li>
+      <li>the outline icon rule, and the block that hides what the grey wireframes left behind</li>
+    </ul>
+    <p><button type="button" class="state-btn">A button inherits the body font</button></p>
+  </div></div></div></main>
+
+  <div class="kit-subh">Roadmap sidebar</div>
+  <aside class="sidebar" id="rmSidebar">
+    <a href="#" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>
+    <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual - screens</div></div>
+    <div class="sidebar-nav">
+      <a class="sidebar-page-link active">Event Feed</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Logged in</div>
+        <a href="#" class="sidebar-sub-link active">success</a>
+        <a href="#" class="sidebar-sub-link">empty</a>
+        <a href="#" class="sidebar-sub-link">error</a>
+        <a href="#" class="sidebar-sub-link">loading</a>
+      </div>
+      <a href="#" class="sidebar-page-link">Event Detail</a>
+      <a href="#" class="sidebar-page-link">Active Bets</a>
+    </div>
+  </aside>
+
+  <div class="kit-subh">Cookie consent banner</div>
+  <section class="cc-banner" role="region" aria-label="Cookie consent">
+    <div class="cc-inner">
+      <p class="cc-text">We use cookies to run the site and, only if you allow it, to measure and improve it.</p>
+      <p class="cc-policy">
+        <a href="#">Privacy policy</a>
+        <a href="#">Cookie policy</a>
+      </p>
+      <div class="cc-actions">
+        <button type="button" class="cc-btn">Accept all</button>
+        <button type="button" class="cc-btn">Reject all</button>
+        <button type="button" class="cc-btn">Manage</button>
+      </div>
+      <p class="cc-note">Reject is one tap, the same as Accept. Nothing here is pre-ticked.</p>
+
+      <div class="cc-manage">
+        <span class="field-label">Manage cookie categories, shown after tapping Manage</span>
+        <ul class="cc-cats">
+          <li class="cc-cat">
+            <div class="cc-cat-main">
+              <span class="cc-cat-name">Necessary (always on)</span>
+              <input type="checkbox" checked disabled aria-label="Necessary cookies, always on">
+            </div>
+            <p class="cc-cat-desc">Needed to run the site and keep your session and funds secure. This one cannot be turned off.</p>
+          </li>
+          <li class="cc-cat">
+            <div class="cc-cat-main">
+              <span class="cc-cat-name">Analytics</span>
+              <input type="checkbox" aria-label="Analytics cookies, off by default">
+            </div>
+            <p class="cc-cat-desc">Helps us measure and improve the site. Off unless you turn it on.</p>
+          </li>
+          <li class="cc-cat">
+            <div class="cc-cat-main">
+              <span class="cc-cat-name">Marketing</span>
+              <input type="checkbox" aria-label="Marketing cookies, off by default">
+            </div>
+            <p class="cc-cat-desc">Used to show you relevant campaigns. Off unless you turn it on.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</section>
+</body>
+</html>

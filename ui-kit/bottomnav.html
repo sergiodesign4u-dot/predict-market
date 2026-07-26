@@ -26,51 +26,41 @@
 
   <section class="tk-sec" id="live">
     <h2 data-n="01">Live</h2>
-    <p class="tk-note">The component in the markup it ships with, lifted from the frozen kit so the
-    stand cannot drift from the product. Painted by <code>components/index.css</code>, nothing else.</p>
-    <div class="ck-scene"><span class="ck-scene-lbl">specimen 1</span><div class="ck-stage"><nav class="bottom-nav" aria-label="Primary (mobile)">
-      <ul>
-        <li aria-current="page"><a href="#"><button type="button">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>
-          <span>Events</span>
-        </button></a></li>
-        <li><a href="#"><button type="button">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg>
-          <span>My Bets</span>
-        </button></a></li>
-        <li><a href="#"><button type="button">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg>
-          <span>Favorites</span>
-        </button></a></li>
-        <li><a href="#"><button type="button" aria-label="Portfolio, balance $142">
-          <span class="bn-bal">$142</span>
-          <span>Portfolio</span>
-        </button></a></li>
-      </ul>
-    </nav></div></div>
+    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside
+    the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
+    page of its own, so the width under the title is a real viewport and the media queries answer to
+    it.</p>
+    <figure class="ck-scene" id="sp-bottomnav"><figcaption class="ck-scene-lbl"><b>Mobile bottom nav</b><span class="ck-w">360px</span><span class="ck-zoom" hidden></span><a href="specimens/bottomnav.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame"><iframe data-specimen="bottomnav" src="specimens/bottomnav.html" width="360" height="320" loading="lazy" title="Mobile bottom nav"></iframe></div><p class="ck-cap"><span class="ck-cap-k">state</span> Shown at 360. Above 640 the media query hides it, and that is the product behaviour, not a defect of the stand.</p></figure>
+  </section>
+
+  <section class="tk-sec" id="states">
+    <h2 data-n="03">States</h2>
+    <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
+    live, so hover them; what follows is what the file says will move.</p>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] button</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] .ic:has(use)</td><td class='ck-decl'>color:var(--text-brass)</td></tr><tr><td class='tk-role'>.bottom-nav button:focus-visible</td><td class='ck-decl'>outline:2px solid var(--text-brass);outline-offset:2px</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] button</td><td class='ck-decl'>background:transparent;color:var(--text-brass)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] .ic</td><td class='ck-decl'>stroke:var(--text-brass)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
-    <h2 data-n="02">Roles it reads</h2>
+    <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
     <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-surface)"></i><code>--bg-surface</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
-    <h2 data-n="03">Classes</h2>
-    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry it.
-    A class on no screen is either a state the markup toggles or a candidate for deletion in step 7.</p>
+    <h2 data-n="05">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry
+    it. A class on no screen is either a state the markup toggles or a candidate for deletion.</p>
     <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody><tr><td class='tk-role'>.bn-bal</td><td class='tk-hex'>68</td></tr><tr><td class='tk-role'>.bottom-nav</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.ic</td><td class='tk-hex'>76</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
-    <h2 data-n="04">Where it stands</h2>
+    <h2 data-n="06">Where it stands</h2>
     <div class="ck-screens"><a href="../ui-visual/404.html">404</a><a href="../ui-visual/500.html">500</a><a href="../ui-visual/active-bets-empty-new.html">active-bets-empty-new</a><a href="../ui-visual/active-bets-empty-resolved.html">active-bets-empty-resolved</a><a href="../ui-visual/active-bets-error.html">active-bets-error</a><a href="../ui-visual/active-bets-history-empty.html">active-bets-history-empty</a><a href="../ui-visual/active-bets-history-error.html">active-bets-history-error</a><a href="../ui-visual/active-bets-history-loading.html">active-bets-history-loading</a><a href="../ui-visual/active-bets-history.html">active-bets-history</a><a href="../ui-visual/active-bets-loading.html">active-bets-loading</a><a href="../ui-visual/active-bets.html">active-bets</a><a href="../ui-visual/cookie-consent.html">cookie-consent</a><a href="../ui-visual/deposit-error-card.html">deposit-error-card</a><a href="../ui-visual/deposit-error-kyc.html">deposit-error-kyc</a><a href="../ui-visual/deposit-loading.html">deposit-loading</a><a href="../ui-visual/deposit-minimum-not-met.html">deposit-minimum-not-met</a><a href="../ui-visual/deposit-pending.html">deposit-pending</a><a href="../ui-visual/deposit-widget-load-failure.html">deposit-widget-load-failure</a><a href="../ui-visual/deposit.html">deposit</a><a href="../ui-visual/event-detail-bet-error.html">event-detail-bet-error</a><a href="../ui-visual/event-detail-bet-insufficient.html">event-detail-bet-insufficient</a><a href="../ui-visual/event-detail-bet-processing.html">event-detail-bet-processing</a><a href="../ui-visual/event-detail-bet-reconcile.html">event-detail-bet-reconcile</a><a href="../ui-visual/event-detail-error.html">event-detail-error</a><a href="../ui-visual/event-detail-loading.html">event-detail-loading</a><a href="../ui-visual/event-detail-logged-out-error.html">event-detail-logged-out-error</a><a href="../ui-visual/event-detail-logged-out-loading.html">event-detail-logged-out-loading</a><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-logged-out.html">event-detail-logged-out</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-detail-resolved.html">event-detail-resolved</a><a href="../ui-visual/event-detail.html">event-detail</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-empty.html">event-feed-empty</a><a href="../ui-visual/event-feed-error.html">event-feed-error</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-empty.html">event-feed-logged-out-empty</a><a href="../ui-visual/event-feed-logged-out-error.html">event-feed-logged-out-error</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-empty.html">favorites-empty</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/loss-loading.html">loss-loading</a><a href="../ui-visual/loss.html">loss</a><a href="../ui-visual/maintenance.html">maintenance</a><a href="../ui-visual/my-profile-error.html">my-profile-error</a><a href="../ui-visual/my-profile-loading.html">my-profile-loading</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/notifications-empty.html">notifications-empty</a><a href="../ui-visual/notifications-error.html">notifications-error</a><a href="../ui-visual/notifications-loading.html">notifications-loading</a><a href="../ui-visual/notifications-push.html">notifications-push</a><a href="../ui-visual/notifications.html">notifications</a><a href="../ui-visual/public-profile-error.html">public-profile-error</a><a href="../ui-visual/public-profile-loading.html">public-profile-loading</a><a href="../ui-visual/public-profile-not-found.html">public-profile-not-found</a><a href="../ui-visual/public-profile.html">public-profile</a><a href="../ui-visual/sign-in-error.html">sign-in-error</a><a href="../ui-visual/sign-in-loading.html">sign-in-loading</a><a href="../ui-visual/sign-in-provider-conflict.html">sign-in-provider-conflict</a><a href="../ui-visual/sign-in.html">sign-in</a><a href="../ui-visual/toasts.html">toasts</a><a href="../ui-visual/wallet-error.html">wallet-error</a><a href="../ui-visual/wallet-loading.html">wallet-loading</a><a href="../ui-visual/wallet.html">wallet</a><a href="../ui-visual/win-error.html">win-error</a><a href="../ui-visual/win-loading.html">win-loading</a><a href="../ui-visual/win-payout-pending.html">win-payout-pending</a><a href="../ui-visual/win.html">win</a></div>
   </section>
 
   <section class="tk-sec" id="css">
-    <h2 data-n="05">The file</h2>
+    <h2 data-n="07">The file</h2>
     <p class="tk-note">To change this component, edit <code>components/bottomnav.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/bottomnav.css</summary><pre>/* components/bottomnav.css
@@ -107,6 +97,7 @@
   </section>
 </div>
 
+<script src="_frames.js"></script>
 <script src="_nav.js"></script>
 </body>
 </html>

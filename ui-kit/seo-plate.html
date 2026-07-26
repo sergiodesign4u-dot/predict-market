@@ -26,59 +26,41 @@
 
   <section class="tk-sec" id="live">
     <h2 data-n="01">Live</h2>
-    <p class="tk-note">The component in the markup it ships with, lifted from the frozen kit so the
-    stand cannot drift from the product. Painted by <code>components/index.css</code>, nothing else.</p>
-    <div class="ck-scene"><span class="ck-scene-lbl">specimen 1</span><div class="ck-stage"><div class="feed-seo-wrap">
-        <div class="seo-text">
-          <section class="feed-seo" aria-label="How betting works here">
-            <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-guide"></use></svg>How betting works here</h2>
-            <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
-          </section>
-          <section class="feed-seo" aria-label="Why the odds move">
-            <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-chart"></use></svg>Why the odds move</h2>
-            <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
-          </section>
-          <section class="feed-seo" aria-label="Common questions">
-            <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-qa"></use></svg>Common questions</h2>
-            <dl>
-              <dt>Do I need crypto to start?</dt>
-              <dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd>
-              <dt>What is the smallest bet?</dt>
-              <dd>One dollar. The default is five.</dd>
-              <dt>How does an event resolve?</dt>
-              <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
-            </dl>
-          </section>
-        </div>
-        <aside class="seo-brand">
-          <svg class="seo-tick" viewBox="0 0 26 18" aria-hidden="true"><path d="M2 15 L9 7 L13 10 L24 2" fill="none" stroke="#c99e3f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          <p class="seo-tagline">Not just news.<br>Your <em>stake.</em></p>
-          <span class="seo-by">Predict Market</span>
-        </aside>
-      </div></div></div>
+    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside
+    the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
+    page of its own, so the width under the title is a real viewport and the media queries answer to
+    it.</p>
+    <figure class="ck-scene" id="sp-seo-plate"><figcaption class="ck-scene-lbl"><b>Below-fold SEO plate</b><span class="ck-w">1120px</span><span class="ck-zoom" hidden></span><a href="specimens/seo-plate.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame"><iframe data-specimen="seo-plate" src="specimens/seo-plate.html" width="1120" height="320" loading="lazy" title="Below-fold SEO plate"></iframe></div></figure>
+  </section>
+
+  <section class="tk-sec" id="states">
+    <h2 data-n="03">States</h2>
+    <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
+    live, so hover them; what follows is what the file says will move.</p>
+    <p class="tk-note">This file declares no state rule: the component looks the same at rest, on hover and on focus.</p>
   </section>
 
   <section class="tk-sec" id="roles">
-    <h2 data-n="02">Roles it reads</h2>
+    <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
     <div class="ck-roles"><span class="ck-role"><i style="background:var(--bevel-faint)"></i><code>--bevel-faint</code></span><span class="ck-role"><i style="background:var(--bevel-hi)"></i><code>--bevel-hi</code></span><span class="ck-role"><i style="background:var(--bevel-lo)"></i><code>--bevel-lo</code></span><span class="ck-role"><i style="background:var(--bg-plate)"></i><code>--bg-plate</code></span><span class="ck-role"><i style="background:var(--bg-plate-from)"></i><code>--bg-plate-from</code></span><span class="ck-role"><i style="background:var(--bg-plate-to)"></i><code>--bg-plate-to</code></span><span class="ck-role"><i style="background:var(--border-brass)"></i><code>--border-brass</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--scrim)"></i><code>--scrim</code></span><span class="ck-role"><i style="background:var(--shadow-ink)"></i><code>--shadow-ink</code></span><span class="ck-role"><i style="background:var(--shadow-ink-42)"></i><code>--shadow-ink-42</code></span><span class="ck-role"><i style="background:var(--shadow-ink-45)"></i><code>--shadow-ink-45</code></span><span class="ck-role"><i style="background:var(--shadow-ink-55)"></i><code>--shadow-ink-55</code></span><span class="ck-role"><i style="background:var(--shadow-ink-70)"></i><code>--shadow-ink-70</code></span><span class="ck-role"><i style="background:var(--shadow-ink-deep)"></i><code>--shadow-ink-deep</code></span><span class="ck-role"><i style="background:var(--text-brass-lit)"></i><code>--text-brass-lit</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
-    <h2 data-n="03">Classes</h2>
-    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry it.
-    A class on no screen is either a state the markup toggles or a candidate for deletion in step 7.</p>
+    <h2 data-n="05">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry
+    it. A class on no screen is either a state the markup toggles or a candidate for deletion.</p>
     <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.feed-inner</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.feed-seo</td><td class='tk-hex'>6</td></tr><tr><td class='tk-role'>.feed-seo-wrap</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.seo-brand</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.seo-by</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.seo-h-ic</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.seo-tagline</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.seo-text</td><td class='tk-hex'>5</td></tr><tr><td class='tk-role'>.seo-tick</td><td class='tk-hex'>5</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
-    <h2 data-n="04">Where it stands</h2>
+    <h2 data-n="06">Where it stands</h2>
     <div class="ck-screens"><a href="../ui-visual/404.html">404</a><a href="../ui-visual/500.html">500</a><a href="../ui-visual/active-bets-empty-new.html">active-bets-empty-new</a><a href="../ui-visual/active-bets-empty-resolved.html">active-bets-empty-resolved</a><a href="../ui-visual/active-bets-error.html">active-bets-error</a><a href="../ui-visual/active-bets-history-empty.html">active-bets-history-empty</a><a href="../ui-visual/active-bets-history-error.html">active-bets-history-error</a><a href="../ui-visual/active-bets-history-loading.html">active-bets-history-loading</a><a href="../ui-visual/active-bets-history.html">active-bets-history</a><a href="../ui-visual/active-bets-loading.html">active-bets-loading</a><a href="../ui-visual/active-bets.html">active-bets</a><a href="../ui-visual/cookie-consent.html">cookie-consent</a><a href="../ui-visual/deposit-error-card.html">deposit-error-card</a><a href="../ui-visual/deposit-error-kyc.html">deposit-error-kyc</a><a href="../ui-visual/deposit-loading.html">deposit-loading</a><a href="../ui-visual/deposit-minimum-not-met.html">deposit-minimum-not-met</a><a href="../ui-visual/deposit-pending.html">deposit-pending</a><a href="../ui-visual/deposit-widget-load-failure.html">deposit-widget-load-failure</a><a href="../ui-visual/deposit.html">deposit</a><a href="../ui-visual/event-detail-bet-error.html">event-detail-bet-error</a><a href="../ui-visual/event-detail-bet-insufficient.html">event-detail-bet-insufficient</a><a href="../ui-visual/event-detail-bet-processing.html">event-detail-bet-processing</a><a href="../ui-visual/event-detail-bet-reconcile.html">event-detail-bet-reconcile</a><a href="../ui-visual/event-detail-error.html">event-detail-error</a><a href="../ui-visual/event-detail-loading.html">event-detail-loading</a><a href="../ui-visual/event-detail-logged-out-error.html">event-detail-logged-out-error</a><a href="../ui-visual/event-detail-logged-out-loading.html">event-detail-logged-out-loading</a><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-logged-out.html">event-detail-logged-out</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-detail-resolved.html">event-detail-resolved</a><a href="../ui-visual/event-detail.html">event-detail</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-empty.html">event-feed-empty</a><a href="../ui-visual/event-feed-error.html">event-feed-error</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-empty.html">event-feed-logged-out-empty</a><a href="../ui-visual/event-feed-logged-out-error.html">event-feed-logged-out-error</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-empty.html">favorites-empty</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/loss-loading.html">loss-loading</a><a href="../ui-visual/loss.html">loss</a><a href="../ui-visual/maintenance.html">maintenance</a><a href="../ui-visual/my-profile-error.html">my-profile-error</a><a href="../ui-visual/my-profile-loading.html">my-profile-loading</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/notifications-empty.html">notifications-empty</a><a href="../ui-visual/notifications-error.html">notifications-error</a><a href="../ui-visual/notifications-loading.html">notifications-loading</a><a href="../ui-visual/notifications-push.html">notifications-push</a><a href="../ui-visual/notifications.html">notifications</a><a href="../ui-visual/public-profile-error.html">public-profile-error</a><a href="../ui-visual/public-profile-loading.html">public-profile-loading</a><a href="../ui-visual/public-profile-not-found.html">public-profile-not-found</a><a href="../ui-visual/public-profile.html">public-profile</a><a href="../ui-visual/sign-in-error.html">sign-in-error</a><a href="../ui-visual/sign-in-loading.html">sign-in-loading</a><a href="../ui-visual/sign-in-provider-conflict.html">sign-in-provider-conflict</a><a href="../ui-visual/sign-in.html">sign-in</a><a href="../ui-visual/toasts.html">toasts</a><a href="../ui-visual/wallet-error.html">wallet-error</a><a href="../ui-visual/wallet-loading.html">wallet-loading</a><a href="../ui-visual/wallet.html">wallet</a><a href="../ui-visual/win-error.html">win-error</a><a href="../ui-visual/win-loading.html">win-loading</a><a href="../ui-visual/win-payout-pending.html">win-payout-pending</a><a href="../ui-visual/win.html">win</a></div>
   </section>
 
   <section class="tk-sec" id="css">
-    <h2 data-n="05">The file</h2>
+    <h2 data-n="07">The file</h2>
     <p class="tk-note">To change this component, edit <code>components/seo-plate.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/seo-plate.css</summary><pre>/* components/seo-plate.css
@@ -130,6 +112,7 @@
   </section>
 </div>
 
+<script src="_frames.js"></script>
 <script src="_nav.js"></script>
 </body>
 </html>

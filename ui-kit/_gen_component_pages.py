@@ -1,46 +1,59 @@
 #!/usr/bin/env python3
-"""Build one stand page per component in ui-kit/, plus the hub and the registry.
+"""Build one stand page per component, plus the hub and the registry.
 
 For every components/<name>.css it writes ui-kit/<name>.html carrying:
-  - the component live, in the markup it actually ships with (specimens lifted
-    from the frozen ui-kit/kit.html, so nothing is invented for the stand),
-  - the semantic roles the file reads, each with a swatch,
-  - the classes it owns and how many painted screens carry each one,
-  - the screens in ui-visual/ where the component stands, as links,
-  - the CSS itself, so the file and the page never drift apart.
+  - the component live, in a frame of its own, at the width it is meant to be
+    read at (a mobile-only piece gets 360, so the media query shows it instead
+    of being overridden);
+  - the states the markup carries, and the rules behind the states it cannot
+    hold still (hover, focus) quoted from the file rather than faked;
+  - the semantic roles the file reads, each with a swatch;
+  - the classes it owns and how many painted screens carry each one;
+  - the screens in ui-visual/ where the component stands, as links;
+  - the css itself, so the file and the page never drift apart.
 
-Also writes ui-kit/_nav.js (the one registry of stand pages) and
-ui-kit/overview.html (the hub of cards). Idempotent: re-run after any change to
-components/ or after re-extracting ui-kit/_specimens.json.
+Specimens come from ui-kit/specimens/, built by _extract_specimens.py out of the
+labelled blocks of the frozen kit. A component page renders only the specimens
+it OWNS; where it merely appears inside a bigger one, it links instead, so no
+markup is shown twice.
 
-    python3 ui-kit/_gen_component_pages.py
+Also writes ui-kit/_nav.js (the one registry), ui-kit/overview.html (the hub)
+and ui-kit/_frames.js (the parent half of the frame height handshake).
+
+    python3 ui-kit/_extract_specimens.py && python3 ui-kit/_gen_component_pages.py
+
+Idempotent. Never touches components/ or ui-visual/. No em dash.
 """
-import json, os, re, glob, pathlib, html
+import glob
+import html
+import json
+import os
+import pathlib
+import re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 COMP = ROOT / "components"
 KIT = ROOT / "ui-kit"
 UV = ROOT / "ui-visual"
 
-SPEC = json.loads(json.load(open(KIT / "_specimens.json", encoding="utf-8"))) \
-    if (KIT / "_specimens.json").exists() else {}
-
+SPECIMENS = json.loads((KIT / "specimens" / "index.json").read_text(encoding="utf-8"))
 TOKENS = (COMP / "tokens.css").read_text(encoding="utf-8")
 SEM = set(re.findall(r"(--[\w-]+)\s*:", TOKENS[TOKENS.index("2. SEMANTIC"):]))
 
 GROUPS = [
-    ("Foundations", ["tokens", "base", "course-chrome"]),
+    ("Foundations", ["tokens", "icons", "base", "course-chrome"]),
     ("Navigation and chrome", ["header", "catnav", "bottomnav", "tabs", "footer", "trustbar"]),
     ("Browse: feed and cards", ["feed", "card", "oddsbar", "yesno", "options", "hero", "seo-plate",
                                 "loadmore", "filters"]),
     ("Event Detail", ["event-detail", "chart", "betpanel", "market", "comments", "bets-table", "related"]),
     ("Forms, dialogs and inputs", ["button", "input", "dialog", "hiw-dialog", "signin", "notice"]),
-    ("Feedback and states", ["state-block", "skeleton", "toast", "outcome-dialog", "notifications"]),
+    ("Feedback and states", ["state-block", "skeleton", "toast", "outcome-dialog"]),
     ("Profile and account", ["profile", "position", "account"]),
     ("System", ["cookie-consent"]),
 ]
 LABEL = {
-    "tokens": "Tokens", "base": "Base and page frame", "course-chrome": "Course chrome",
+    "tokens": "Tokens", "icons": "Icons", "base": "Base and page frame",
+    "course-chrome": "Course chrome",
     "header": "App header", "catnav": "Category nav", "bottomnav": "Bottom nav", "tabs": "Tabs",
     "footer": "Footer", "trustbar": "Trust bar and cards", "feed": "Feed layout", "card": "Event card",
     "oddsbar": "Odds bar", "yesno": "YES / NO buttons", "options": "Outcome rows", "hero": "Featured hero",
@@ -50,7 +63,7 @@ LABEL = {
     "related": "Related events", "button": "Buttons", "input": "Fields and amounts",
     "dialog": "Shared dialog", "hiw-dialog": "How-it-works dialog", "signin": "Sign in dialog",
     "notice": "Notices and banners", "state-block": "State block", "skeleton": "Skeletons",
-    "toast": "Toasts", "outcome-dialog": "Win and loss overlays", "notifications": "Notifications",
+    "toast": "Toasts", "outcome-dialog": "Win and loss overlays",
     "profile": "Profile identity", "position": "Position rows", "account": "Account bars",
     "cookie-consent": "Cookie consent",
 }
@@ -59,8 +72,24 @@ NOTE = {
             "block that hides the grey-box scaffolding the wireframes left behind.",
     "course-chrome": "Not product: the roadmap sidebar every page of this repo carries. It ships with "
                      "the system only because the painted screens render it.",
-    "tokens": "The values behind everything else. Its own page is tokens.html.",
 }
+# Sections on tokens.html that answer a foundation question. One page, several doors.
+FOUNDATION_DOORS = [
+    ("Colour", "tokens.html#colour", "Every graphite step and every brass, and the roles that read them."),
+    ("Material", "tokens.html#material", "The two-stone plates, the grain, the bevels and the grooves."),
+    ("Geometry", "tokens.html#geometry", "Spacing, radius, control sizes, the container and the gutter."),
+    ("Type", "tokens.html#type", "Three families, the size ramp, weight and leading."),
+    ("Motion", "tokens.html#motion", "Durations and easings, shown moving."),
+]
+
+STATE_PAT = re.compile(r":hover|:focus-visible|:focus|:active|:disabled|:checked|"
+                       r"\[aria-current|\[aria-checked|\[open\]|\[disabled\]|"
+                       r"\.sel\b|\.active\b|\.open\b|\.scrolled\b|\.skeleton\b|\.is-[\w-]+")
+
+
+def esc(s):
+    return html.escape(s, quote=False)
+
 
 # ---- how many painted screens carry each class -----------------------------
 uv_classes = {}
@@ -71,9 +100,13 @@ for f in sorted(glob.glob(str(UV / "*.html"))):
         cs.update(m.group(1).split())
     uv_classes[os.path.basename(f)] = cs
 
-
-def esc(s):
-    return html.escape(s, quote=False)
+# ---- every class any component file declares, for the orphan check ----------
+declared = set()
+for path in COMP.glob("*.css"):
+    if path.stem in ("index", "tokens"):
+        continue
+    body = re.sub(r"url\([^)]*\)", "", path.read_text(encoding="utf-8"))
+    declared.update(re.findall(r"\.(-?[_a-zA-Z][\w-]*)", body))
 
 
 def parse_component(name):
@@ -84,24 +117,65 @@ def parse_component(name):
     classes = sorted({c for c in re.findall(r"\.(-?[_a-zA-Z][\w-]*)", re.sub(r"url\([^)]*\)", "", body))})
     rules = len(re.findall(r"\{", body))
     screens = sorted([p for p, cs in uv_classes.items() if cs & set(classes)])
-    return dict(css=css, head=head, body=body, roles=roles, classes=classes, rules=rules, screens=screens)
+    states = []
+    for m in re.finditer(r"([^{}\n][^{}]*)\{([^{}]*)\}", body):
+        sel = " ".join(m.group(1).split())
+        if STATE_PAT.search(sel) and not sel.startswith("@"):
+            states.append((sel, m.group(2).strip()))
+    return dict(css=css, body=body, roles=roles, classes=classes, rules=rules,
+                screens=screens, states=states)
 
 
-SCENE_WRAP = {"card": "grid", "options": "card", "oddsbar": "card", "yesno": "card"}
-
-
-def scene(name, spec):
-    if not spec["specimens"]:
-        return ('<p class="tk-note">No standalone specimen: this file styles a page-level block. '
-                'Open it on a screen below.</p>')
+# ---------------------------------------------------------------- sections ---
+def live(name):
+    mine = [s for s in SPECIMENS if s["component"] == name]
+    if not mine:
+        return ('<p class="tk-note">No specimen of its own yet. It is rendered inside the specimens '
+                'linked below.</p>')
     out = []
-    for i, s in enumerate(spec["specimens"], 1):
-        big = len(s) > 9000
-        w = SCENE_WRAP.get(name)
-        inner = f'<div class="{w}">{s}</div>' if w and w not in s[:60] else s
-        out.append(f'<div class="ck-scene"><span class="ck-scene-lbl">specimen {i}</span>'
-                   f'<div class="ck-stage{" ck-stage-wide" if big else ""}">{inner}</div></div>')
+    for s in mine:
+        w = s.get("width", 900)
+        cap = []
+        if s.get("state"):
+            cap.append('<span class="ck-cap-k">state</span> ' + esc(s["state"]))
+        if s.get("note"):
+            cap.append(esc(s["note"]))
+        caption = ('<p class="ck-cap">' + "<br>".join(cap) + "</p>") if cap else ""
+        out.append(
+            f'<figure class="ck-scene" id="sp-{s["id"]}">'
+            f'<figcaption class="ck-scene-lbl"><b>{esc(s["title"])}</b>'
+            f'<span class="ck-w">{w}px</span><span class="ck-zoom" hidden></span>'
+            f'<a href="specimens/{s["id"]}.html" target="_blank" rel="noopener">open on its own</a>'
+            f"</figcaption>"
+            f'<div class="ck-frame"><iframe data-specimen="{s["id"]}" src="specimens/{s["id"]}.html" '
+            f'width="{w}" height="{s.get("height", 320)}" loading="lazy" '
+            f'title="{esc(s["title"])}"></iframe></div>{caption}</figure>')
     return "\n".join(out)
+
+
+def elsewhere(name):
+    other = [s for s in SPECIMENS if name in s.get("also", [])]
+    if not other:
+        return ""
+    links = "".join(
+        f'<a href="{s["component"]}.html#sp-{s["id"]}">{esc(s["title"])}</a>' for s in other)
+    return ('<section class="tk-sec" id="inside"><h2 data-n="02">Also rendered inside</h2>'
+            '<p class="tk-note">The same markup, shown once on the page of the component that owns '
+            'it. Nothing here is a second copy.</p>'
+            f'<div class="ck-screens">{links}</div></section>')
+
+
+def states_table(states):
+    if not states:
+        return ('<p class="tk-note">This file declares no state rule: the component looks the same '
+                'at rest, on hover and on focus.</p>')
+    rows = "".join(
+        f"<tr><td class='tk-role'>{esc(sel)}</td><td class='ck-decl'>{esc(decl)}</td></tr>"
+        for sel, decl in states[:24])
+    more = ("<p class='tk-note'>%d more in the file below.</p>" % (len(states) - 24)) \
+        if len(states) > 24 else ""
+    return ('<table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead>'
+            f"<tbody>{rows}</tbody></table>{more}")
 
 
 def role_swatches(roles):
@@ -156,38 +230,48 @@ PAGE = """<!doctype html>
 
   <section class="tk-sec" id="live">
     <h2 data-n="01">Live</h2>
-    <p class="tk-note">The component in the markup it ships with, lifted from the frozen kit so the
-    stand cannot drift from the product. Painted by <code>components/index.css</code>, nothing else.</p>
-    {scene}
+    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside
+    the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
+    page of its own, so the width under the title is a real viewport and the media queries answer to
+    it.</p>
+    {live}
+  </section>
+{inside}
+  <section class="tk-sec" id="states">
+    <h2 data-n="03">States</h2>
+    <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
+    live, so hover them; what follows is what the file says will move.</p>
+    {states}
   </section>
 
   <section class="tk-sec" id="roles">
-    <h2 data-n="02">Roles it reads</h2>
+    <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
     {roles}
   </section>
 
   <section class="tk-sec" id="classes">
-    <h2 data-n="03">Classes</h2>
-    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry it.
-    A class on no screen is either a state the markup toggles or a candidate for deletion in step 7.</p>
+    <h2 data-n="05">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the {nuv} painted screens carry
+    it. A class on no screen is either a state the markup toggles or a candidate for deletion.</p>
     {classes}
   </section>
 
   <section class="tk-sec" id="screens">
-    <h2 data-n="04">Where it stands</h2>
+    <h2 data-n="06">Where it stands</h2>
     {screens}
   </section>
 
   <section class="tk-sec" id="css">
-    <h2 data-n="05">The file</h2>
+    <h2 data-n="07">The file</h2>
     <p class="tk-note">To change this component, edit <code>components/{name}.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/{name}.css</summary><pre>{css}</pre></details>
   </section>
 </div>
 
+<script src="_frames.js"></script>
 <script src="_nav.js"></script>
 </body>
 </html>
@@ -199,27 +283,27 @@ for path in sorted(COMP.glob("*.css")):
     if name in ("index", "tokens"):
         continue
     c = parse_component(name)
-    spec = SPEC.get(name, {"specimens": []})
     page = PAGE.format(
         name=name, label=LABEL.get(name, name), note=esc(NOTE.get(name, (
             "Every rule that paints this component, in one file. "
             "Colour through a role, geometry straight from a primitive."))),
         rules=c["rules"], nclasses=len(c["classes"]), nscreens=len(c["screens"]),
-        scene=scene(name, spec), roles=role_swatches(c["roles"]),
-        classes=class_table(c["classes"]), screens=screen_links(c["screens"]),
-        css=esc(c["css"]))
+        nuv=len(uv_classes),
+        live=live(name), inside=elsewhere(name), states=states_table(c["states"]),
+        roles=role_swatches(c["roles"]), classes=class_table(c["classes"]),
+        screens=screen_links(c["screens"]), css=esc(c["css"]))
     (KIT / (name + ".html")).write_text(page, encoding="utf-8")
-    built.append((name, c, spec))
+    built.append((name, c))
 
 # ------------------------------------------------------------------ registry --
 entries = []
 for group, names in GROUPS:
     for n in names:
-        if n == "tokens":
-            entries.append((group, n, "tokens.html", LABEL[n]))
+        if n in ("tokens", "icons"):
+            entries.append((group, n, n + ".html", LABEL[n]))
         elif (COMP / (n + ".css")).exists():
             entries.append((group, n, n + ".html", LABEL.get(n, n)))
-extra = [n for n, _, _ in built if n not in [e[1] for e in entries]]
+extra = [n for n, _ in built if n not in [e[1] for e in entries]]
 for n in sorted(extra):
     entries.append(("Unfiled", n, n + ".html", LABEL.get(n, n)))
 
@@ -229,10 +313,13 @@ nav = ["""/* ui-kit/_nav.js - the ONE registry of stand pages.
    kit-only side panel on every stand page. A component without a line here does
    not exist as far as the system is concerned. Own namespace (window.KIT_NAV) so
    it never collides with the course roadmap renderer in the repo root.
-   No em dash. */
-window.KIT_NAV = ["""]
+   Generated by _gen_component_pages.py. No em dash. */
+window.KIT_DOORS = %s;
+window.KIT_NAV = [""" % json.dumps([{"label": a, "file": b, "blurb": d}
+                                    for a, b, d in FOUNDATION_DOORS])]
 for g, n, f, l in entries:
-    nav.append('  {group: %s, name: %s, file: %s, label: %s},' % (json.dumps(g), json.dumps(n), json.dumps(f), json.dumps(l)))
+    nav.append('  {group: %s, name: %s, file: %s, label: %s},'
+               % (json.dumps(g), json.dumps(n), json.dumps(f), json.dumps(l)))
 nav.append("""];
 
 (function () {
@@ -246,9 +333,16 @@ nav.append("""];
     window.KIT_NAV.forEach(function (e) {
       if (e.group !== group) { group = e.group; h.push('<div class="sidebar-divider">' + group + '</div>'); }
       h.push('<a href="' + e.file + '" class="sidebar-page-link' + (e.name === current ? ' active' : '') + '">' + e.label + '</a>');
+      if (e.name === 'tokens') {
+        h.push('<div class="sidebar-sub">');
+        window.KIT_DOORS.forEach(function (d) {
+          h.push('<a href="' + d.file + '" class="sidebar-sub-link">' + d.label + '</a>');
+        });
+        h.push('</div>');
+      }
     });
     h.push('</nav>');
-    h.push('<div class="sidebar-note">The kit itself: <a href="kit.html">kit.html</a>, <a href="shell.html">shell.html</a></div>');
+    h.push('<div class="sidebar-note">The kit itself: <a href="kit.html">kit.html</a>, <a href="shell.html">shell.html</a>, <a href="selftest.html">self test</a></div>');
     host.innerHTML = h.join('');
   }
   var cards = document.getElementById('kitCards');
@@ -256,10 +350,23 @@ nav.append("""];
     var g = null, out = [];
     window.KIT_NAV.forEach(function (e) {
       if (e.group !== g) { g = e.group; out.push('</div><h3 class="tk-subh">' + g + '</h3><div class="ck-cards">'); }
-      out.push('<a class="ck-card" href="' + e.file + '"><b>' + e.label + '</b><code>' +
-               (e.name === 'tokens' ? 'components/tokens.css' : 'components/' + e.name + '.css') + '</code></a>');
+      var thumb = window.KIT_THUMBS && window.KIT_THUMBS[e.name];
+      out.push('<a class="ck-card" href="' + e.file + '">' +
+               (thumb ? '<span class="ck-thumb"><iframe src="specimens/' + thumb.id +
+                        '.html" width="' + thumb.w + '" height="' + thumb.h +
+                        '" style="transform:scale(' + thumb.s + ')" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe></span>' : '') +
+               '<b>' + e.label + '</b><code>' +
+               (e.name === 'tokens' ? 'components/tokens.css'
+                : e.name === 'icons' ? 'ui-kit/icons.html' : 'components/' + e.name + '.css') +
+               '</code></a>');
     });
     cards.innerHTML = (out.join('') + '</div>').replace(/^<\\/div>/, '');
+  }
+  var doors = document.getElementById('kitDoors');
+  if (doors) {
+    doors.innerHTML = window.KIT_DOORS.map(function (d) {
+      return '<a class="ck-card" href="' + d.file + '"><b>' + d.label + '</b><code>' + d.blurb + '</code></a>';
+    }).join('');
   }
   var sb = document.querySelector('[data-kit-nav]'), ov = document.getElementById('rmOverlay'), tg = document.getElementById('rmToggle');
   if (sb && ov && tg) {
@@ -271,8 +378,71 @@ nav.append("""];
 """)
 (KIT / "_nav.js").write_text("\n".join(nav), encoding="utf-8")
 
+# ------------------------------------------------------------------ frames ---
+(KIT / "_frames.js").write_text("""/* ui-kit/_frames.js - the parent half of the specimen frame handshake.
+
+   A specimen is a page of its own, so the vitrine cannot measure it by reading
+   its document: under file:// every document has its own opaque origin. The
+   specimen posts its height instead, which crosses origins by design. The frame
+   is matched by identity (contentWindow), not by the origin string, because
+   from file:// that string is "null" for everyone. No em dash. */
+(function () {
+  /* A specimen is rendered at the width it declares, because that width is what
+     its media queries answer to. When the column is narrower, the frame is
+     scaled down rather than squeezed: the layout stays the layout, and the
+     label says what it is being shown at. */
+  function fit(f) {
+    var box = f.parentElement, w = +f.getAttribute('width');
+    var s = Math.min(1, box.clientWidth / w);
+    f.style.transformOrigin = '0 0';
+    f.style.transform = s < 1 ? 'scale(' + s + ')' : 'none';
+    box.style.height = Math.ceil(parseFloat(f.style.height || f.getAttribute('height')) * s) + 'px';
+    var tag = box.parentElement.querySelector('.ck-zoom');
+    if (tag) { tag.textContent = s < 1 ? Math.round(s * 100) + '%' : ''; tag.hidden = s >= 1; }
+  }
+
+  window.addEventListener('message', function (e) {
+    var d = e.data;
+    if (!d || !d.specimen || !(d.height > 0)) return;
+    var frames = document.querySelectorAll('iframe[data-specimen]');
+    for (var i = 0; i < frames.length; i++) {
+      if (frames[i].contentWindow === e.source) {
+        frames[i].style.height = d.height + 'px';
+        fit(frames[i]);
+        return;
+      }
+    }
+  });
+  window.addEventListener('resize', function () {
+    var f = document.querySelectorAll('iframe[data-specimen]');
+    for (var i = 0; i < f.length; i++) fit(f[i]);
+  });
+  /* A frame that finished before this script ran has already spoken and will
+     not speak again, so ask it once it is there. */
+  var ask = function (f) {
+    try { f.contentWindow.postMessage({ping: true}, '*'); } catch (err) {}
+  };
+  var all = function () {
+    var f = document.querySelectorAll('iframe[data-specimen]');
+    for (var i = 0; i < f.length; i++) { ask(f[i]); f[i].addEventListener('load', ask.bind(null, f[i])); }
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', all);
+  else all();
+  window.addEventListener('load', all);
+})();
+""", encoding="utf-8")
+
 # ---------------------------------------------------------------------- hub ---
-total_rules = sum(c["rules"] for _, c, _ in built)
+THUMB_W = 236
+thumbs = {}
+for s in SPECIMENS:
+    if s["component"] in thumbs:
+        continue
+    w = s.get("width", 900)
+    scale = round(THUMB_W / w, 4)
+    thumbs[s["component"]] = {"id": s["id"], "w": w, "h": int(140 / scale), "s": scale}
+
+total_rules = sum(c["rules"] for _, c in built)
 hub = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -297,27 +467,64 @@ hub = f"""<!doctype html>
     <div class="tk-badges">
       <span class="tk-badge">{len(built)} components</span>
       <span class="tk-badge">{total_rules} rules</span>
+      <span class="tk-badge">{len(SPECIMENS)} specimens</span>
       <span class="tk-badge">one entry point</span>
     </div>
-    <div class="tk-jump"><a href="tokens.html">Tokens</a><a href="kit.html">Frozen kit</a>
-      <a href="shell.html">Shell</a><a href="../ui-visual/event-feed.html">Painted screens</a></div>
+    <div class="tk-jump"><a href="tokens.html">Tokens</a><a href="icons.html">Icons</a>
+      <a href="kit.html">Frozen kit</a><a href="selftest.html">Self test</a>
+      <a href="../ui-visual/event-feed.html">Painted screens</a></div>
   </header>
 
+  <section class="tk-sec" id="foundations">
+    <h2 data-n="01">Foundations</h2>
+    <p class="tk-note">Colour, material, geometry, type and motion are one page, because they are one
+    file: <code>components/tokens.css</code> generates all of it. These are the doors into it.</p>
+    <div class="ck-cards" id="kitDoors"></div>
+  </section>
+
   <section class="tk-sec" id="cards">
-    <h2 data-n="01">Every file, every page</h2>
+    <h2 data-n="02">Every file, every page</h2>
     <p class="tk-note">One component is one css file, one page here and one line in the registry.
     Missing any of the three means the component does not exist yet.</p>
     <div id="kitCards"></div>
   </section>
 </div>
 
+<script>window.KIT_THUMBS = {json.dumps(thumbs)};</script>
 <script src="_nav.js"></script>
 </body>
 </html>
 """
 (KIT / "overview.html").write_text(hub, encoding="utf-8")
 
-print("built %d component pages + overview.html + _nav.js" % len(built))
-missing = [n for n, _, s in built if not s["specimens"]]
+# ----------------------------------------------------------------- coverage --
+rows = []
+for name, c in built:
+    mine = [s for s in SPECIMENS if s["component"] == name]
+    inside = [s for s in SPECIMENS if name in s.get("also", [])]
+    rows.append("| %s | %d | %s | %d | %d | %d |" % (
+        name, len(mine), ", ".join(s["id"] for s in mine) or "-",
+        len(inside), len(c["classes"]), len(c["screens"])))
+
+(KIT / "docs" / "coverage.md").write_text("""# Vitrine coverage
+
+Generated by `ui-kit/_gen_component_pages.py`. Do not edit by hand.
+
+What each column means: **own** is how many specimens the component's page renders itself, **inside**
+is how many other specimens contain it and link to it instead of repeating it, **classes** is what the
+css file styles, **screens** is how many of the %d painted screens carry at least one of those classes.
+
+A component with 0 own specimens does not exist as far as the vitrine is concerned, and the build
+says so. No em dash.
+
+| component | own | specimens | inside | classes | screens |
+|---|---|---|---|---|---|
+%s
+
+%d specimens over %d components.
+""" % (len(uv_classes), "\n".join(rows), len(SPECIMENS), len(built)), encoding="utf-8")
+
+print("built %d component pages + overview.html + _nav.js + _frames.js + docs/coverage.md" % len(built))
+missing = [n for n, _ in built if not any(s["component"] == n for s in SPECIMENS)]
 if missing:
-    print("no live specimen for:", ", ".join(missing))
+    print("no specimen of its own:", ", ".join(missing))

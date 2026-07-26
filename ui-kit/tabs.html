@@ -26,181 +26,42 @@
 
   <section class="tk-sec" id="live">
     <h2 data-n="01">Live</h2>
-    <p class="tk-note">The component in the markup it ships with, lifted from the frozen kit so the
-    stand cannot drift from the product. Painted by <code>components/index.css</code>, nothing else.</p>
-    <div class="ck-scene"><span class="ck-scene-lbl">specimen 1</span><div class="ck-stage"><div class="tabs" role="tablist" aria-label="My Bets">
-          <a href="#"><button type="button" role="tab" aria-selected="true">Active</button></a>
-          <a href="#"><button type="button" role="tab" aria-selected="false">History</button></a>
-        </div></div></div>
-<div class="ck-scene"><span class="ck-scene-lbl">specimen 2</span><div class="ck-stage"><div class="ed-tabwrap">
-        <input type="radio" name="edtab" id="edtab-comments" class="ed-tabradio" checked="">
-        <input type="radio" name="edtab" id="edtab-holders" class="ed-tabradio">
-        <input type="radio" name="edtab" id="edtab-positions" class="ed-tabradio">
-        <input type="radio" name="edtab" id="edtab-activity" class="ed-tabradio">
-        <div class="ed-tabbar" role="tablist">
-          <label class="ed-tablabel" for="edtab-comments">Comments <span class="ed-tab-count">128</span></label>
-          <label class="ed-tablabel" for="edtab-holders">Biggest bets</label>
-          <label class="ed-tablabel" for="edtab-positions">Bets</label>
-          <label class="ed-tablabel" for="edtab-activity">Activity</label>
-        </div>
-        <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
-          <div class="cmt-controls">
-            <span>128 comments</span>
-            <span class="seg"><button type="button" class="sel">Newest</button><button type="button">Top</button><button type="button">Holders</button></span>
-          </div>
-          <div class="cmt-compose">
-            <span class="cmt-av">you</span>
-            <span class="cmt-input">Add a comment...</span>
-            <button type="button" class="cmt-post">Post</button>
-          </div>
-          <div class="cmt-list">
-            <div class="cmt">
-              <span class="cmt-av">mm</span>
-              <div class="cmt-body">
-                <div class="cmt-meta"><span class="cmt-user">marketmaven</span><span class="cmt-badge">Holds 320 YES</span><span>2h ago</span></div>
-                <p class="cmt-text">These always go to the wire. I am holding my position and adding if it dips.</p>
-                <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"></use></svg>24</button><button type="button">Reply</button></div>
-              </div>
-            </div>
-            <div class="cmt reply">
-              <span class="cmt-av">dd</span>
-              <div class="cmt-body">
-                <div class="cmt-meta"><span class="cmt-user">deadline_dan</span><span>1h ago</span></div>
-                <p class="cmt-text">The committee bloc looks firmer this time though.</p>
-                <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"></use></svg>6</button><button type="button">Reply</button></div>
-              </div>
-            </div>
-            <div class="cmt">
-              <span class="cmt-av">pp</span>
-              <div class="cmt-body">
-                <div class="cmt-meta"><span class="cmt-user">polly_predicts</span><span class="cmt-badge">Holds 150 NO</span><span>5h ago</span></div>
-                <p class="cmt-text">Volume jumped right after the headline. Watching how it settles.</p>
-                <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"></use></svg>11</button><button type="button">Reply</button></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Biggest bets">
-          <div class="hold-cols">
-            <div class="hold-col">
-              <h4>Biggest YES bets</h4>
-              <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">wh</span><span class="hold-name">whale_07</span><span class="hold-amt">$1,240</span></div>
-              <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">ma</span><span class="hold-name">marketmaven</span><span class="hold-amt">$320</span></div>
-              <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">al</span><span class="hold-name">alpha_ape</span><span class="hold-amt">$280</span></div>
-            </div>
-            <div class="hold-col">
-              <h4>Biggest NO bets</h4>
-              <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">he</span><span class="hold-name">hedge_hannah</span><span class="hold-amt">$980</span></div>
-              <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">po</span><span class="hold-name">polly_predicts</span><span class="hold-amt">$150</span></div>
-              <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">ca</span><span class="hold-name">caut_carl</span><span class="hold-amt">$120</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
-          <table class="ptable">
-            <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
-            <tbody>
-            <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
-            <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
-            <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>$588</td></tr>
-            <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>$121</td></tr>
-            </tbody>
-          </table>
-          <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
-        </div>
-        <div class="ed-tabpanel ed-panel-activity" role="tabpanel" aria-label="Activity">
-          <p class="pos-note" style="margin:0 0 8px;">Recent bets, largest first. Filter: over $5.</p>
-          <div class="act-list">
-            <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
-            <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$180</b> on NO</span><span class="act-time">14m ago</span></div>
-            <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> cashed out <b>$31</b> on YES</span><span class="act-time">1h ago</span></div>
-            <div class="act-row"><span class="cmt-av">pp</span><span class="act-txt"><b>polly_predicts</b> bet <b>$87</b> on NO</span><span class="act-time">3h ago</span></div>
-          </div>
-        </div>
-      </div></div></div>
-<div class="ck-scene"><span class="ck-scene-lbl">specimen 3</span><div class="ck-stage"><div class="ptabs">
-        <input type="radio" name="ptab" id="ptab-record" class="ptab-in" checked="">
-        <input type="radio" name="ptab" id="ptab-wins" class="ptab-in">
-        <input type="radio" name="ptab" id="ptab-resolved" class="ptab-in">
-        <div class="ptab-bar" role="tablist">
-          <label for="ptab-record" class="ptab-lbl">Track record</label>
-          <label for="ptab-wins" class="ptab-lbl">Past wins</label>
-          <label for="ptab-resolved" class="ptab-lbl">Resolved</label>
-        </div>
-        <section class="ptab-panel" id="p-record" aria-label="Track record">
-          <article class="pos" aria-label="Track record">
-            <div class="pos-figures" style="font-size:11px;">
-              <span class="pos-fig">Total bets<b>23</b></span>
-              <span class="pos-fig">Win rate<b>61%</b></span>
-              <span class="pos-fig">Resolved<b>18</b></span>
-              <span class="pos-fig">Member since<b>2026</b></span>
-            </div>
-            <span class="pos-status">Win rate is % correct on resolved bets (public). Reputation = the track record, not the balance.</span>
-          </article>
-        </section>
-        <section class="ptab-panel" id="p-wins" aria-label="Past wins">
-          <div class="gallery">
-            <div class="card">Win card: US shutdown YES +$13.20</div>
-            <div class="card">Win card: BTC &gt; $150k YES +$6.80</div>
-            <div class="card">Win card: ETF approval NO +$9.40</div>
-          </div>
-        </section>
-        <section class="ptab-panel" id="p-resolved" aria-label="Resolved predictions (public)">
-          <div class="pos-list">
-            <article class="pos">
-              <div class="pos-top">
-                <span class="pos-q">US government shutdown before Mar 1, 2027</span>
-                <span class="pos-side pos-won">WON</span>
-              </div>
-              <span class="pos-status">YES · resolved Jun 27 · +$13.20</span>
-            </article>
-            <article class="pos">
-              <div class="pos-top">
-                <span class="pos-q">Bitcoin above $150,000 before Oct 1, 2026</span>
-                <span class="pos-side pos-won">WON</span>
-              </div>
-              <span class="pos-status">YES · resolved Jun 20 · +$6.80</span>
-            </article>
-            <article class="pos">
-              <div class="pos-top">
-                <span class="pos-q">Spot ETH ETF approved in H1 2027</span>
-                <span class="pos-side pos-lost">LOST</span>
-              </div>
-              <span class="pos-status">NO · resolved Jun 12 · -$5.00</span>
-            </article>
-            <article class="pos">
-              <div class="pos-top">
-                <span class="pos-q">Which party wins the most UK seats</span>
-                <span class="pos-side pos-won">WON</span>
-              </div>
-              <span class="pos-status">NO · Conservatives · resolved Jun 2 · +$11.10</span>
-            </article>
-          </div>
-        </section>
-      </div></div></div>
+    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside
+    the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
+    page of its own, so the width under the title is a real viewport and the media queries answer to
+    it.</p>
+    <figure class="ck-scene" id="sp-tabs-detail"><figcaption class="ck-scene-lbl"><b>Event Detail content tabs</b><span class="ck-w">1120px</span><span class="ck-zoom" hidden></span><a href="specimens/tabs-detail.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame"><iframe data-specimen="tabs-detail" src="specimens/tabs-detail.html" width="1120" height="320" loading="lazy" title="Event Detail content tabs"></iframe></div><p class="ck-cap"><span class="ck-cap-k">state</span> The tabs are a CSS-only radio switch, so the strip works here exactly as it does on a screen.</p></figure>
+<figure class="ck-scene" id="sp-tabs-mybets"><figcaption class="ck-scene-lbl"><b>My Bets tabs</b><span class="ck-w">900px</span><span class="ck-zoom" hidden></span><a href="specimens/tabs-mybets.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame"><iframe data-specimen="tabs-mybets" src="specimens/tabs-mybets.html" width="900" height="320" loading="lazy" title="My Bets tabs"></iframe></div></figure>
+  </section>
+<section class="tk-sec" id="inside"><h2 data-n="02">Also rendered inside</h2><p class="tk-note">The same markup, shown once on the page of the component that owns it. Nothing here is a second copy.</p><div class="ck-screens"><a href="profile.html#sp-profile-identity">Identity, reputation and the profile tabs</a></div></section>
+  <section class="tk-sec" id="states">
+    <h2 data-n="03">States</h2>
+    <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
+    live, so hover them; what follows is what the file says will move.</p>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>#edtab-comments:checked ~ .ed-tabbar label[for="edtab-comments"],#edtab-holders:checked ~ .ed-tabbar label[for="edtab-holders"],#edtab-positions:checked ~ .ed-tabbar label[for="edtab-positions"],#edtab-activity:checked ~ .ed-tabbar label[for="edtab-activity"]</td><td class='ck-decl'>font-weight:var(--weight-bold);box-shadow:inset 0 -2px 0 var(--text-muted)</td></tr><tr><td class='tk-role'>#edtab-comments:checked ~ .ed-panel-comments,#edtab-holders:checked ~ .ed-panel-holders,#edtab-positions:checked ~ .ed-panel-positions,#edtab-activity:checked ~ .ed-panel-activity</td><td class='ck-decl'>display:block</td></tr><tr><td class='tk-role'>.cmt-controls .seg button.sel</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>#ptab-record:checked ~ .ptab-bar label[for="ptab-record"],#ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],#ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"]</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.app-case .rules-tab:hover</td><td class='ck-decl'>color:var(--text-primary)</td></tr><tr><td class='tk-role'>.app-case .rules-tab.sel</td><td class='ck-decl'>color:var(--text-primary);border-bottom-color:var(--color-action)</td></tr><tr><td class='tk-role'>.app-case .ed-tablabel:hover</td><td class='ck-decl'>color:var(--text-primary)</td></tr><tr><td class='tk-role'>.app-case #edtab-comments:checked ~ .ed-tabbar label[for="edtab-comments"],.app-case #edtab-holders:checked ~ .ed-tabbar label[for="edtab-holders"],.app-case #edtab-positions:checked ~ .ed-tabbar label[for="edtab-positions"],.app-case #edtab-activity:checked ~ .ed-tabbar label[for="edtab-activity"]</td><td class='ck-decl'>background:transparent;color:var(--text-brass);font-weight:var(--weight-bold);box-shadow:inset 0 -2px 0 var(--color-action)</td></tr><tr><td class='tk-role'>.app-case .cmt-controls .seg button:hover</td><td class='ck-decl'>color:var(--text-primary)</td></tr><tr><td class='tk-role'>.app-case .cmt-controls .seg button.sel</td><td class='ck-decl'>background:var(--glow-focus);color:var(--text-brass);font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.app-case .tabs button:hover</td><td class='ck-decl'>color:var(--text-primary)</td></tr><tr><td class='tk-role'>.app-case .ptab-lbl:hover</td><td class='ck-decl'>color:var(--text-primary)</td></tr><tr><td class='tk-role'>.app-case #ptab-record:checked ~ .ptab-bar label[for="ptab-record"],.app-case #ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],.app-case #ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"]</td><td class='ck-decl'>background:color-mix(in oklab,var(--color-action) 16%,transparent);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.app-case #ptab-record:focus-visible ~ .ptab-bar label[for="ptab-record"],.app-case #ptab-wins:focus-visible ~ .ptab-bar label[for="ptab-wins"],.app-case #ptab-resolved:focus-visible ~ .ptab-bar label[for="ptab-resolved"]</td><td class='ck-decl'>outline:2px solid var(--text-brass);outline-offset:2px</td></tr><tr><td class='tk-role'>.app-case .ed-range button:hover</td><td class='ck-decl'>color:var(--text-primary)</td></tr><tr><td class='tk-role'>.app-case .ed-range button.sel</td><td class='ck-decl'>background:var(--glow-focus);color:var(--text-brass);font-weight:var(--weight-semibold)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
-    <h2 data-n="02">Roles it reads</h2>
+    <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
     <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-chip)"></i><code>--bg-chip</code></span><span class="ck-role"><i style="background:var(--bg-well)"></i><code>--bg-well</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--glow-focus)"></i><code>--glow-focus</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
-    <h2 data-n="03">Classes</h2>
-    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry it.
-    A class on no screen is either a state the markup toggles or a candidate for deletion in step 7.</p>
+    <h2 data-n="05">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry
+    it. A class on no screen is either a state the markup toggles or a candidate for deletion.</p>
     <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.cmt-controls</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-panel-activity</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-panel-comments</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-panel-holders</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-panel-positions</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-range</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-rules</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-tab-count</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-tabbar</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-tablabel</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-tabpanel</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-tabradio</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-tabs</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ed-tabwrap</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.ptab-bar</td><td class='tk-hex'>2</td></tr><tr><td class='tk-role'>.ptab-in</td><td class='tk-hex'>2</td></tr><tr><td class='tk-role'>.ptab-lbl</td><td class='tk-hex'>2</td></tr><tr><td class='tk-role'>.ptab-panel</td><td class='tk-hex'>2</td></tr><tr><td class='tk-role'>.ptabs</td><td class='tk-hex'>2</td></tr><tr><td class='tk-role'>.rules-tab</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.rules-tabs</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.seg</td><td class='tk-hex'>9</td></tr><tr><td class='tk-role'>.sel</td><td class='tk-hex'>76</td></tr><tr><td class='tk-role'>.tabs</td><td class='tk-hex'>9</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
-    <h2 data-n="04">Where it stands</h2>
+    <h2 data-n="06">Where it stands</h2>
     <div class="ck-screens"><a href="../ui-visual/404.html">404</a><a href="../ui-visual/500.html">500</a><a href="../ui-visual/active-bets-empty-new.html">active-bets-empty-new</a><a href="../ui-visual/active-bets-empty-resolved.html">active-bets-empty-resolved</a><a href="../ui-visual/active-bets-error.html">active-bets-error</a><a href="../ui-visual/active-bets-history-empty.html">active-bets-history-empty</a><a href="../ui-visual/active-bets-history-error.html">active-bets-history-error</a><a href="../ui-visual/active-bets-history-loading.html">active-bets-history-loading</a><a href="../ui-visual/active-bets-history.html">active-bets-history</a><a href="../ui-visual/active-bets-loading.html">active-bets-loading</a><a href="../ui-visual/active-bets.html">active-bets</a><a href="../ui-visual/cookie-consent.html">cookie-consent</a><a href="../ui-visual/deposit-error-card.html">deposit-error-card</a><a href="../ui-visual/deposit-error-kyc.html">deposit-error-kyc</a><a href="../ui-visual/deposit-loading.html">deposit-loading</a><a href="../ui-visual/deposit-minimum-not-met.html">deposit-minimum-not-met</a><a href="../ui-visual/deposit-pending.html">deposit-pending</a><a href="../ui-visual/deposit-widget-load-failure.html">deposit-widget-load-failure</a><a href="../ui-visual/deposit.html">deposit</a><a href="../ui-visual/event-detail-bet-error.html">event-detail-bet-error</a><a href="../ui-visual/event-detail-bet-insufficient.html">event-detail-bet-insufficient</a><a href="../ui-visual/event-detail-bet-processing.html">event-detail-bet-processing</a><a href="../ui-visual/event-detail-bet-reconcile.html">event-detail-bet-reconcile</a><a href="../ui-visual/event-detail-error.html">event-detail-error</a><a href="../ui-visual/event-detail-loading.html">event-detail-loading</a><a href="../ui-visual/event-detail-logged-out-error.html">event-detail-logged-out-error</a><a href="../ui-visual/event-detail-logged-out-loading.html">event-detail-logged-out-loading</a><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-logged-out.html">event-detail-logged-out</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-detail-resolved.html">event-detail-resolved</a><a href="../ui-visual/event-detail.html">event-detail</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-empty.html">event-feed-empty</a><a href="../ui-visual/event-feed-error.html">event-feed-error</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-empty.html">event-feed-logged-out-empty</a><a href="../ui-visual/event-feed-logged-out-error.html">event-feed-logged-out-error</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-empty.html">favorites-empty</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/loss-loading.html">loss-loading</a><a href="../ui-visual/loss.html">loss</a><a href="../ui-visual/maintenance.html">maintenance</a><a href="../ui-visual/my-profile-error.html">my-profile-error</a><a href="../ui-visual/my-profile-loading.html">my-profile-loading</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/notifications-empty.html">notifications-empty</a><a href="../ui-visual/notifications-error.html">notifications-error</a><a href="../ui-visual/notifications-loading.html">notifications-loading</a><a href="../ui-visual/notifications-push.html">notifications-push</a><a href="../ui-visual/notifications.html">notifications</a><a href="../ui-visual/public-profile-error.html">public-profile-error</a><a href="../ui-visual/public-profile-loading.html">public-profile-loading</a><a href="../ui-visual/public-profile-not-found.html">public-profile-not-found</a><a href="../ui-visual/public-profile.html">public-profile</a><a href="../ui-visual/sign-in-error.html">sign-in-error</a><a href="../ui-visual/sign-in-loading.html">sign-in-loading</a><a href="../ui-visual/sign-in-provider-conflict.html">sign-in-provider-conflict</a><a href="../ui-visual/sign-in.html">sign-in</a><a href="../ui-visual/toasts.html">toasts</a><a href="../ui-visual/wallet-error.html">wallet-error</a><a href="../ui-visual/wallet-loading.html">wallet-loading</a><a href="../ui-visual/wallet.html">wallet</a><a href="../ui-visual/win-error.html">win-error</a><a href="../ui-visual/win-loading.html">win-loading</a><a href="../ui-visual/win-payout-pending.html">win-payout-pending</a><a href="../ui-visual/win.html">win</a></div>
   </section>
 
   <section class="tk-sec" id="css">
-    <h2 data-n="05">The file</h2>
+    <h2 data-n="07">The file</h2>
     <p class="tk-note">To change this component, edit <code>components/tabs.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/tabs.css</summary><pre>/* components/tabs.css
@@ -270,6 +131,7 @@
   </section>
 </div>
 
+<script src="_frames.js"></script>
 <script src="_nav.js"></script>
 </body>
 </html>

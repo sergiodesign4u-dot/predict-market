@@ -398,28 +398,9 @@ contrast_html = ('<table class="tk-tbl"><thead><tr><th>text</th><th>on</th><th>r
 n_prim = sum(len(g["tokens"]) for g in PRIM)
 n_sem = sum(len(g["tokens"]) for g in SEM)
 
-SIDEBAR = """<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open roadmap"><span></span><span></span><span></span></button>
+SIDEBAR = """<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
 <div class="rm-overlay" id="rmOverlay"></div>
-<aside class="sidebar" id="rmSidebar">
-  <a href="overview.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Whole system</a>
-  <div class="sidebar-brand"><div class="sidebar-project-name">Design system</div></div>
-  <nav class="sidebar-nav">
-    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">Painted screens</a>
-    <a class="sidebar-page-link active">Tokens</a>
-    <div class="sidebar-sub">
-      <a href="#colour" class="sidebar-sub-link">Colour primitives</a>
-      <a href="#material" class="sidebar-sub-link">Material</a>
-      <a href="#geometry" class="sidebar-sub-link">Geometry</a>
-      <a href="#type" class="sidebar-sub-link">Type</a>
-      <a href="#motion" class="sidebar-sub-link">Motion</a>
-      <a href="#roles" class="sidebar-sub-link">Semantic roles</a>
-      <a href="#contrast" class="sidebar-sub-link">Contrast</a>
-      <a href="#log" class="sidebar-sub-link">Merges and open items</a>
-    </div>
-    <a href="kit.html" class="sidebar-page-link">UI Kit</a>
-    <a href="shell.html" class="sidebar-page-link">Shell</a>
-  </nav>
-</aside>"""
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>"""
 
 HTML = f"""<!doctype html>
 <html lang="en">
@@ -427,11 +408,10 @@ HTML = f"""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - Tokens</title>
-<link rel="stylesheet" href="kit.css">
-<link rel="stylesheet" href="../components/tokens.css">
+<link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 </head>
-<body>
+<body data-kit-page="tokens">
 {SIDEBAR}
 
 <div class="tk-wrap">
@@ -561,6 +541,7 @@ HTML = f"""<!doctype html>
   }}
 }})();
 </script>
+<script src="_nav.js"></script>
 </body>
 </html>
 """

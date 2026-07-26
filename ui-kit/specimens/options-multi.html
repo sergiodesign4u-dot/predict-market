@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multi outcome: selector and bet summary</title>
+<link rel="stylesheet" href="../../components/index.css">
+<link rel="stylesheet" href="../_specimen.css">
+</head>
+<body>
+<div class="device"><div class="app-case">
+<main class="feed"><div class="feed-inner"><div class="ed-layout">
+      <div class="ed-main"><div class="card"><div class="card-body">
+        <div class="options opt-list">
+          <div class="opt-row sel"><span class="opt-name">JD Vance <span class="opt-sel-tag">selected</span></span><span class="opt-prob">41%</span><span class="yesno compact"><button type="button" class="sel">YES</button><button type="button">NO</button></span></div>
+          <div class="opt-row"><span class="opt-name">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+          <div class="opt-row"><span class="opt-name">Ron DeSantis</span><span class="opt-prob">14%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+          <div class="opt-row"><span class="opt-name">Nikki Haley</span><span class="opt-prob">8%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+          <div class="opt-row"><span class="opt-name">Other</span><span class="opt-prob">15%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+        </div>
+      </div></div></div>
+      <aside class="bet-panel"><div class="bp-inner">
+        <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+        <span class="field-label">Your outcome</span>
+        <div class="bp-selected"><span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span><a href="#" class="bp-change">Change</a></div>
+        <div class="bp-dir"><button type="button" class="bp-side sel">YES <span class="bp-pct">41%</span></button><button type="button" class="bp-side">NO <span class="bp-pct">59%</span></button></div>
+        <div>
+          <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
+          <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
+        </div>
+        <div>
+          <div class="line"><span>Price now</span><span>41%</span></div>
+          <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+          <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
+        </div>
+        <button type="button" class="confirm-btn" style="width:100%">Confirm bet</button>
+        <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
+      </div></aside>
+    </div></div></main>
+</div></div>
+<script>
+/* Report to the vitrine: how tall this specimen is, and whether it rendered.
+   postMessage crosses origins, so this works from file:// as well as from a
+   server, where reading the frame document from the parent would not. */
+(function () {
+  var errors = [];
+  window.addEventListener("error", function (e) { errors.push(String(e.message)); });
+
+  function shown(el) {
+    if (el.checkVisibility) return el.checkVisibility({opacityProperty: true, visibilityProperty: true});
+    var s = getComputedStyle(el);
+    return s.display !== "none" && s.visibility !== "hidden" && s.opacity !== "0";
+  }
+
+  function height() {
+    /* An open dialog and the mobile bet sheet are out of flow, so scrollHeight
+       alone reports next to nothing for them. Sweep the boxes as well, but only
+       the ones a person can see: a closed dropdown still has a box. */
+    var h = document.body.scrollHeight, y = window.scrollY || 0, all = document.body.getElementsByTagName("*");
+    for (var i = 0; i < all.length; i++) {
+      var r = all[i].getBoundingClientRect();
+      if (r.height && r.bottom + y > h && shown(all[i])) h = Math.ceil(r.bottom + y);
+    }
+    return h;
+  }
+
+  function send() {
+    var doc = document.documentElement;
+    var dead = 0, uses = document.querySelectorAll("use");
+    for (var i = 0; i < uses.length; i++) {
+      var ref = uses[i].getAttribute("href") || "";
+      if (ref.charAt(0) === "#" && !document.getElementById(ref.slice(1))) dead++;
+    }
+    try {
+      parent.postMessage({
+        specimen: "options-multi",
+        height: height(),
+        elements: document.body.getElementsByTagName("*").length,
+        overflowX: doc.scrollWidth - doc.clientWidth,
+        deadIcons: dead,
+        errors: errors
+      }, "*");
+    } catch (e) {}
+  }
+
+  /* The vitrine may finish loading after this frame does, so it also asks. */
+  window.addEventListener("message", function (e) { if (e.data && e.data.ping) send(); });
+  window.addEventListener("load", send);
+  window.addEventListener("resize", send);
+  if (window.ResizeObserver) new ResizeObserver(send).observe(document.documentElement);
+  if (document.fonts) document.fonts.ready.then(send);
+  setTimeout(send, 80);
+})();
+</script>
+</body>
+</html>

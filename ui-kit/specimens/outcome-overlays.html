@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Win and loss overlays</title>
+<link rel="stylesheet" href="../../components/index.css">
+<link rel="stylesheet" href="../_specimen.css">
+</head>
+<body>
+<div class="device"><div class="app-case">
+<div class="kit-dlgs">
+      <dialog class="app-case app-dialog outcome-dialog win-dialog" open aria-label="You were right"><div class="sheet-head"><h2>You were right</h2><a href="#"><button type="button" class="sheet-close" aria-label="Close">x</button></a></div><div class="sheet-body">
+        <p class="fine" style="font-weight:bold;font-size:13px;margin:0;">Will the US government shut down before March 1, 2027?</p>
+        <div class="reconcile-box" style="align-items:center;text-align:center;">
+          <span class="field-label">You were right - you won</span>
+          <strong style="font-size:24px;">+$13.20</strong>
+          <span class="fine">$5.00 stake returned + $8.20 winnings. You held YES, avg price 38%.</span>
+        </div>
+        <div>
+          <span class="field-label">What happened</span>
+          <p class="protect">The federal government entered a shutdown on Feb 18, 2027 after Congress missed the funding deadline. The market resolved YES, the side you held.</p>
+        </div>
+        <div>
+          <span class="field-label">Share Card (auto-generated)</span>
+          <div class="widget-box">Share Card: "Called it - US shutdown, YES from 38%. +$13.20 on Predict Market." (image placeholder)</div>
+        </div>
+        <button type="button" class="confirm-btn">Share</button>
+        <div>
+          <span class="field-label">Before the next one</span>
+          <p class="protect">One right call is not a streak. The next event has its own odds, and this win does not change them. Read the next one on its own terms.</p>
+        </div>
+        <a href="#"><button type="button" class="provider-btn" style="justify-content:center;width:100%;">Browse events</button></a>
+      </div></dialog>
+      <dialog class="app-case app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="sheet-head"><h2>Here's what happened</h2><a href="#"><button type="button" class="sheet-close" aria-label="Close">x</button></a></div><div class="sheet-body">
+        <p class="fine" style="font-weight:bold;font-size:13px;margin:0;">Will the US government shut down before March 1, 2027?</p>
+        <div>
+          <span class="field-label">What happened</span>
+          <p class="protect">Congress passed a stopgap funding bill on Feb 27, 2027, two days before the deadline, so no shutdown occurred. The market resolved NO. You held YES.</p>
+        </div>
+        <div class="reconcile-box" style="align-items:center;text-align:center;">
+          <span class="field-label">Result</span>
+          <strong style="font-size:20px;">-$5.00</strong>
+          <span class="fine">Your $5.00 stake on YES did not return. Avg price 38%.</span>
+        </div>
+        <a href="#"><button type="button" class="confirm-btn">Back to your bets</button></a>
+        <a href="#"><button type="button" class="provider-btn" style="justify-content:center;width:100%;">Browse events</button></a>
+      </div></dialog>
+    </div>
+</div></div>
+<script>
+/* Report to the vitrine: how tall this specimen is, and whether it rendered.
+   postMessage crosses origins, so this works from file:// as well as from a
+   server, where reading the frame document from the parent would not. */
+(function () {
+  var errors = [];
+  window.addEventListener("error", function (e) { errors.push(String(e.message)); });
+
+  function shown(el) {
+    if (el.checkVisibility) return el.checkVisibility({opacityProperty: true, visibilityProperty: true});
+    var s = getComputedStyle(el);
+    return s.display !== "none" && s.visibility !== "hidden" && s.opacity !== "0";
+  }
+
+  function height() {
+    /* An open dialog and the mobile bet sheet are out of flow, so scrollHeight
+       alone reports next to nothing for them. Sweep the boxes as well, but only
+       the ones a person can see: a closed dropdown still has a box. */
+    var h = document.body.scrollHeight, y = window.scrollY || 0, all = document.body.getElementsByTagName("*");
+    for (var i = 0; i < all.length; i++) {
+      var r = all[i].getBoundingClientRect();
+      if (r.height && r.bottom + y > h && shown(all[i])) h = Math.ceil(r.bottom + y);
+    }
+    return h;
+  }
+
+  function send() {
+    var doc = document.documentElement;
+    var dead = 0, uses = document.querySelectorAll("use");
+    for (var i = 0; i < uses.length; i++) {
+      var ref = uses[i].getAttribute("href") || "";
+      if (ref.charAt(0) === "#" && !document.getElementById(ref.slice(1))) dead++;
+    }
+    try {
+      parent.postMessage({
+        specimen: "outcome-overlays",
+        height: height(),
+        elements: document.body.getElementsByTagName("*").length,
+        overflowX: doc.scrollWidth - doc.clientWidth,
+        deadIcons: dead,
+        errors: errors
+      }, "*");
+    } catch (e) {}
+  }
+
+  /* The vitrine may finish loading after this frame does, so it also asks. */
+  window.addEventListener("message", function (e) { if (e.data && e.data.ping) send(); });
+  window.addEventListener("load", send);
+  window.addEventListener("resize", send);
+  if (window.ResizeObserver) new ResizeObserver(send).observe(document.documentElement);
+  if (document.fonts) document.fonts.ready.then(send);
+  setTimeout(send, 80);
+})();
+</script>
+</body>
+</html>
