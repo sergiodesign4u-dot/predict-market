@@ -35,10 +35,13 @@ SYMBOLS = re.findall(r'(<symbol id="([\w-]+)".*?</symbol>)', kit_src, re.S)
 SPECIMENS = [s for s in json.loads((KIT / "specimens" / "index.json").read_text(encoding="utf-8"))
              if s["component"] == "icons"]
 
-# how many painted screens use each symbol, and how many carry the sprite
+# how many painted screens use each symbol, and how many carry the sprite.
+# overview.html is the index OF the screens, not a screen, so it is not counted.
+SCREENS = [f for f in sorted(glob.glob(str(UV / "*.html")))
+           if os.path.basename(f) != "overview.html"]
 uses = {sid: 0 for _, sid in SYMBOLS}
 carriers = 0
-for f in sorted(glob.glob(str(UV / "*.html"))):
+for f in SCREENS:
     src = open(f, encoding="utf-8").read()
     if "<symbol id=" in src:
         carriers += 1
@@ -102,7 +105,7 @@ PAGE = f"""<!doctype html>
     own. Everything below is read out of the sprite the product ships.</p>
     <div class="tk-badges">
       <span class="tk-badge">{len(SYMBOLS)} named icons</span>
-      <span class="tk-badge">{carriers} of {len(glob.glob(str(UV / "*.html")))} screens carry the sprite</span>
+      <span class="tk-badge">{carriers} of {len(SCREENS)} screens carry the sprite</span>
       <span class="tk-badge">inline only</span>
     </div>
   </header>

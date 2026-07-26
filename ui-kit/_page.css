@@ -1,8 +1,10 @@
 /* ui-kit/_page.css - stand styles ONLY (the pages that show the system to a
    human): page frame, section headers, token tables, swatch tiles, scales.
 
-   Nothing here is product. No product class is styled here, and no screen in
-   ui-visual/ links this file. Product CSS lives in components/.
+   Nothing here is product. No product class is styled here, and no product
+   SCREEN links this file. The two index pages do (ui-kit/overview.html and
+   ui-visual/overview.html), because an index is a stand page that happens to
+   live next to the screens it lists. Product CSS lives in components/.
    Prefix: .tk-* (tokens stand). No em dash. */
 
 .tk-wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}

@@ -129,6 +129,10 @@ def flat(d):
 
 
 uv_classes = classes_in(str(UV / "*.html"), strip_style=True)
+# overview.html lives in ui-visual/ but is the index OF the screens, not one of
+# them. Counting it would inflate every screen count by one and, worse, would let
+# a class the index happens to use pass as "carried by a painted screen".
+uv_classes.pop("overview.html", None)
 kit_used = flat(classes_in(str(KIT / "specimens" / "*.html"))) \
     | flat(classes_in(str(KIT / "kit.html"))) | flat(classes_in(str(KIT / "shell.html")))
 wf_used = flat(classes_in(str(ROOT / "wireframes" / "*.html"), strip_style=True))
@@ -384,9 +388,14 @@ nav.append("""];
   var host = document.querySelector('[data-kit-nav]');
   var current = document.body.getAttribute('data-kit-page') || '';
   if (host) {
-    var h = ['<a href="overview.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Whole system</a>',
+    // The back arrow leaves the system for the thing the system is for: the
+    // painted screens. Overview is not a component, so it is not in the
+    // registry below; it is its own row above the first group, the way the
+    // screens have an Overview row above their families.
+    var h = ['<a href="../ui-visual/overview.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Painted screens</a>',
              '<div class="sidebar-brand"><div class="sidebar-project-name">Design system</div></div>',
-             '<nav class="sidebar-nav">'];
+             '<nav class="sidebar-nav">',
+             '<a href="overview.html" class="sidebar-page-link' + (current === 'overview' ? ' active' : '') + '">Overview</a>'];
     var group = null;
     window.KIT_NAV.forEach(function (e) {
       if (e.group !== group) { group = e.group; h.push('<div class="sidebar-divider">' + group + '</div>'); }
@@ -537,7 +546,7 @@ hub = f"""<!doctype html>
     </div>
     <div class="tk-jump"><a href="tokens.html">Tokens</a><a href="icons.html">Icons</a>
       <a href="kit.html">Frozen kit</a><a href="selftest.html">Self test</a>
-      <a href="../ui-visual/event-feed.html">Painted screens</a></div>
+      <a href="../ui-visual/overview.html">Painted screens</a></div>
   </header>
 
   <section class="tk-sec" id="foundations">

@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - UI screens</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="../ui-kit/_page.css">
+</head>
+<body>
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the screen tree"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar">
+    <a href="../research/research.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>
+    <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual - screens</div></div>
+    <div class="sidebar-nav">
+      <a href="overview.html" class="sidebar-page-link active">Overview</a>
+      <a class="sidebar-page-link">Event Feed</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Logged in</div>
+        <a href="event-feed.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-feed-push-permission-missing.html" class="sidebar-sub-link">push-permission-missing</a>
+        <div class="sidebar-sub-head">Logged out</div>
+        <a href="event-feed-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Categories</div>
+        <a href="event-feed-politics.html" class="sidebar-sub-link">Politics</a>
+        <a href="event-feed-crypto.html" class="sidebar-sub-link">Crypto</a>
+        <a href="event-feed-culture.html" class="sidebar-sub-link">Culture</a>
+        <a href="event-feed-general.html" class="sidebar-sub-link">General</a>
+      </div>
+      <a class="sidebar-page-link">Event Detail</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Logged in</div>
+        <a href="event-detail.html" class="sidebar-sub-link">binary</a>
+        <a href="event-detail-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-resolved.html" class="sidebar-sub-link">resolved</a>
+        <a href="event-detail-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-detail-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-sub-head">Placing a bet</div>
+        <a href="event-detail-bet-reconcile.html" class="sidebar-sub-link">price moved</a>
+        <a href="event-detail-bet-insufficient.html" class="sidebar-sub-link">low balance</a>
+        <a href="event-detail-bet-processing.html" class="sidebar-sub-link">processing</a>
+        <a href="event-detail-bet-error.html" class="sidebar-sub-link">on-chain error</a>
+        <div class="sidebar-sub-head">Logged out</div>
+        <a href="event-detail-logged-out.html" class="sidebar-sub-link">binary</a>
+        <a href="event-detail-logged-out-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-detail-logged-out-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">My Bets</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Active</div>
+        <a href="active-bets.html" class="sidebar-sub-link">success</a>
+        <a href="active-bets-empty-new.html" class="sidebar-sub-link">empty (new)</a>
+        <a href="active-bets-empty-resolved.html" class="sidebar-sub-link">empty (resolved)</a>
+        <a href="active-bets-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="active-bets-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-sub-head">History</div>
+        <a href="active-bets-history.html" class="sidebar-sub-link">success</a>
+        <a href="active-bets-history-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="active-bets-history-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="active-bets-history-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">Win / Loss</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Win</div>
+        <a href="win.html" class="sidebar-sub-link">you were right</a>
+        <a href="win-payout-pending.html" class="sidebar-sub-link">payout pending</a>
+        <a href="win-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="win-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-sub-head">Loss</div>
+        <a href="loss.html" class="sidebar-sub-link">what happened</a>
+        <a href="loss-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <a class="sidebar-page-link">Favorites</a>
+      <div class="sidebar-sub">
+        <a href="favorites.html" class="sidebar-sub-link">success</a>
+        <a href="favorites-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="favorites-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <a class="sidebar-page-link">Notifications</a>
+      <div class="sidebar-sub">
+        <a href="notifications.html" class="sidebar-sub-link">success</a>
+        <a href="notifications-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="notifications-error.html" class="sidebar-sub-link">error</a>
+        <a href="notifications-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="notifications-push.html" class="sidebar-sub-link">push permission</a>
+      </div>
+      <a class="sidebar-page-link">Wallet</a>
+      <div class="sidebar-sub">
+        <a href="wallet.html" class="sidebar-sub-link">success</a>
+        <a href="wallet-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="wallet-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">My Profile</a>
+      <div class="sidebar-sub">
+        <a href="my-profile.html" class="sidebar-sub-link">success</a>
+        <a href="my-profile-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="my-profile-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">Public Profile</a>
+      <div class="sidebar-sub">
+        <a href="public-profile.html" class="sidebar-sub-link">success</a>
+        <a href="public-profile-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="public-profile-error.html" class="sidebar-sub-link">error</a>
+        <a href="public-profile-not-found.html" class="sidebar-sub-link">not found</a>
+      </div>
+      <a class="sidebar-page-link">How It Works</a>
+      <div class="sidebar-sub">
+        <a href="how-it-works.html" class="sidebar-sub-link">success</a>
+      </div>
+      <a class="sidebar-page-link">Sign In</a>
+      <div class="sidebar-sub">
+        <a href="sign-in.html" class="sidebar-sub-link">success</a>
+        <a href="sign-in-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="sign-in-error.html" class="sidebar-sub-link">error</a>
+        <a href="sign-in-provider-conflict.html" class="sidebar-sub-link">provider conflict</a>
+      </div>
+      <a class="sidebar-page-link">Add funds</a>
+      <div class="sidebar-sub">
+        <a href="deposit.html" class="sidebar-sub-link">success</a>
+        <a href="deposit-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="deposit-pending.html" class="sidebar-sub-link">payment pending</a>
+        <a href="deposit-error-card.html" class="sidebar-sub-link">card declined</a>
+        <a href="deposit-error-kyc.html" class="sidebar-sub-link">KYC rejected</a>
+        <a href="deposit-minimum-not-met.html" class="sidebar-sub-link">minimum not met</a>
+        <a href="deposit-widget-load-failure.html" class="sidebar-sub-link">widget failed</a>
+      </div>
+      <a class="sidebar-page-link">System</a>
+      <div class="sidebar-sub">
+        <a href="404.html" class="sidebar-sub-link">404 not found</a>
+        <a href="500.html" class="sidebar-sub-link">500 server error</a>
+        <a href="maintenance.html" class="sidebar-sub-link">maintenance</a>
+        <a href="cookie-consent.html" class="sidebar-sub-link">cookie consent</a>
+        <a href="toasts.html" class="sidebar-sub-link">toasts</a>
+      </div>
+      <div class="sidebar-note">All 13 families are colored. Overview lists them as chips; the system they are painted with is in ui-kit.</div>
+    </div>
+  </aside>
+
+<div class="tk-wrap">
+  <header class="tk-hero">
+    <h1>The painted screens</h1>
+    <p>Every screen of the product in the Vault visual system: 13 families, 76 pages,
+    one page per state. Structure, copy and the state set are owned by the grey wireframes in
+    <code>wireframes/</code>; this layer owns colour, type and surface only, which is why a screen
+    here reads the same as the grey one beside it.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">76 screens</span>
+      <span class="tk-badge">13 families</span>
+      <span class="tk-badge">one page per state</span>
+      <span class="tk-badge">mobile first</span>
+    </div>
+    <div class="tk-jump"><a href="../ui-kit/overview.html">Design system</a><a href="../ui-kit/tokens.html">Tokens</a>
+      <a href="../wireframes/event-feed.html">Grey wireframes</a><a href="../research/research.html">Course roadmap</a></div>
+  </header>
+
+  <section class="tk-sec" id="event-feed">
+    <h2 data-n="01">Event Feed</h2>
+    <p class="tk-note">13 pages, one per state.</p>
+    <h3 class="tk-subh">Logged in</h3>
+    <div class="tk-jump">
+      <a href="event-feed.html" title="event-feed.html">success</a>
+      <a href="event-feed-empty.html" title="event-feed-empty.html">empty</a>
+      <a href="event-feed-error.html" title="event-feed-error.html">error</a>
+      <a href="event-feed-loading.html" title="event-feed-loading.html">loading</a>
+      <a href="event-feed-push-permission-missing.html" title="event-feed-push-permission-missing.html">push-permission-missing</a>
+    </div>
+    <h3 class="tk-subh">Logged out</h3>
+    <div class="tk-jump">
+      <a href="event-feed-logged-out.html" title="event-feed-logged-out.html">success</a>
+      <a href="event-feed-logged-out-empty.html" title="event-feed-logged-out-empty.html">empty</a>
+      <a href="event-feed-logged-out-error.html" title="event-feed-logged-out-error.html">error</a>
+      <a href="event-feed-logged-out-loading.html" title="event-feed-logged-out-loading.html">loading</a>
+    </div>
+    <h3 class="tk-subh">Categories</h3>
+    <div class="tk-jump">
+      <a href="event-feed-politics.html" title="event-feed-politics.html">Politics</a>
+      <a href="event-feed-crypto.html" title="event-feed-crypto.html">Crypto</a>
+      <a href="event-feed-culture.html" title="event-feed-culture.html">Culture</a>
+      <a href="event-feed-general.html" title="event-feed-general.html">General</a>
+    </div>
+  </section>
+  <section class="tk-sec" id="event-detail">
+    <h2 data-n="02">Event Detail</h2>
+    <p class="tk-note">13 pages, one per state.</p>
+    <h3 class="tk-subh">Logged in</h3>
+    <div class="tk-jump">
+      <a href="event-detail.html" title="event-detail.html">binary</a>
+      <a href="event-detail-multi.html" title="event-detail-multi.html">multi</a>
+      <a href="event-detail-resolved.html" title="event-detail-resolved.html">resolved</a>
+      <a href="event-detail-loading.html" title="event-detail-loading.html">loading</a>
+      <a href="event-detail-error.html" title="event-detail-error.html">error</a>
+    </div>
+    <h3 class="tk-subh">Placing a bet</h3>
+    <div class="tk-jump">
+      <a href="event-detail-bet-reconcile.html" title="event-detail-bet-reconcile.html">price moved</a>
+      <a href="event-detail-bet-insufficient.html" title="event-detail-bet-insufficient.html">low balance</a>
+      <a href="event-detail-bet-processing.html" title="event-detail-bet-processing.html">processing</a>
+      <a href="event-detail-bet-error.html" title="event-detail-bet-error.html">on-chain error</a>
+    </div>
+    <h3 class="tk-subh">Logged out</h3>
+    <div class="tk-jump">
+      <a href="event-detail-logged-out.html" title="event-detail-logged-out.html">binary</a>
+      <a href="event-detail-logged-out-multi.html" title="event-detail-logged-out-multi.html">multi</a>
+      <a href="event-detail-logged-out-loading.html" title="event-detail-logged-out-loading.html">loading</a>
+      <a href="event-detail-logged-out-error.html" title="event-detail-logged-out-error.html">error</a>
+    </div>
+  </section>
+  <section class="tk-sec" id="my-bets">
+    <h2 data-n="03">My Bets</h2>
+    <p class="tk-note">9 pages, one per state.</p>
+    <h3 class="tk-subh">Active</h3>
+    <div class="tk-jump">
+      <a href="active-bets.html" title="active-bets.html">success</a>
+      <a href="active-bets-empty-new.html" title="active-bets-empty-new.html">empty (new)</a>
+      <a href="active-bets-empty-resolved.html" title="active-bets-empty-resolved.html">empty (resolved)</a>
+      <a href="active-bets-loading.html" title="active-bets-loading.html">loading</a>
+      <a href="active-bets-error.html" title="active-bets-error.html">error</a>
+    </div>
+    <h3 class="tk-subh">History</h3>
+    <div class="tk-jump">
+      <a href="active-bets-history.html" title="active-bets-history.html">success</a>
+      <a href="active-bets-history-empty.html" title="active-bets-history-empty.html">empty</a>
+      <a href="active-bets-history-loading.html" title="active-bets-history-loading.html">loading</a>
+      <a href="active-bets-history-error.html" title="active-bets-history-error.html">error</a>
+    </div>
+  </section>
+  <section class="tk-sec" id="win-loss">
+    <h2 data-n="04">Win / Loss</h2>
+    <p class="tk-note">6 pages, one per state.</p>
+    <h3 class="tk-subh">Win</h3>
+    <div class="tk-jump">
+      <a href="win.html" title="win.html">you were right</a>
+      <a href="win-payout-pending.html" title="win-payout-pending.html">payout pending</a>
+      <a href="win-loading.html" title="win-loading.html">loading</a>
+      <a href="win-error.html" title="win-error.html">error</a>
+    </div>
+    <h3 class="tk-subh">Loss</h3>
+    <div class="tk-jump">
+      <a href="loss.html" title="loss.html">what happened</a>
+      <a href="loss-loading.html" title="loss-loading.html">loading</a>
+    </div>
+  </section>
+  <section class="tk-sec" id="favorites">
+    <h2 data-n="05">Favorites</h2>
+    <p class="tk-note">3 pages, one per state.</p>
+    <div class="tk-jump">
+      <a href="favorites.html" title="favorites.html">success</a>
+      <a href="favorites-empty.html" title="favorites-empty.html">empty</a>
+      <a href="favorites-loading.html" title="favorites-loading.html">loading</a>
+    </div>
+  </section>
+  <section class="tk-sec" id="notifications">
+    <h2 data-n="06">Notifications</h2>
+    <p class="tk-note">5 pages, one per state.</p>
+    <div class="tk-jump">
+      <a href="notifications.html" title="notifications.html">success</a>
+      <a href="notifications-empty.html" title="notifications-empty.html">empty</a>
+      <a href="notifications-error.html" title="notifications-error.html">error</a>
+      <a href="notifications-loading.html" title="notifications-loading.html">loading</a>
+      <a href="notifications-push.html" title="notifications-push.html">push permission</a>
+    </div>
+  </section>
+  <section class="tk-sec" id="wallet">
+    <h2 data-n="07">Wallet</h2>
+    <p class="tk-note">3 pages, one per state.</p>
+    <div class="tk-jump">
+      <a href="wallet.html" title="wallet.html">success</a>
+      <a href="wallet-loading.html" title="wallet-loading.html">loading</a>
+      <a href="wallet-error.html" title="wallet-error.html">error</a>
+    </div>
+  </section>
+  <section class="tk-sec" id="my-profile">
+    <h2 data-n="08">My Profile</h2>
+    <p class="tk-note">3 pages, one per state.</p>
+    <div class="tk-jump">
+      <a href="my-profile.html" title="my-profile.html">success</a>
+      <a href="my-profile-loading.html" title="my-profile-loading.html">loading</a>
+      <a href="my-profile-error.html" title="my-profile-error.html">error</a>
+    </div>
+  </section>
+  <section class="tk-sec" id="public-profile">
+    <h2 data-n="09">Public Profile</h2>
+    <p class="tk-note">4 pages, one per state.</p>
+    <div class="tk-jump">
+      <a href="public-profile.html" title="public-profile.html">success</a>
+      <a href="public-profile-loading.html" title="public-profile-loading.html">loading</a>
+      <a href="public-profile-error.html" title="public-profile-error.html">error</a>
+      <a href="public-profile-not-found.html" title="public-profile-not-found.html">not found</a>
+    </div>
+  </section>
+  <section class="tk-sec" id="how-it-works">
+    <h2 data-n="10">How It Works</h2>
+    <p class="tk-note">1 page.</p>
+    <div class="tk-jump">
+      <a href="how-it-works.html" title="how-it-works.html">success</a>
+    </div>
+  </section>
+  <section class="tk-sec" id="sign-in">
+    <h2 data-n="11">Sign In</h2>
+    <p class="tk-note">4 pages, one per state.</p>
+    <div class="tk-jump">
+      <a href="sign-in.html" title="sign-in.html">success</a>
+      <a href="sign-in-loading.html" title="sign-in-loading.html">loading</a>
+      <a href="sign-in-error.html" title="sign-in-error.html">error</a>
+      <a href="sign-in-provider-conflict.html" title="sign-in-provider-conflict.html">provider conflict</a>
+    </div>
+  </section>
+  <section class="tk-sec" id="deposit">
+    <h2 data-n="12">Add funds</h2>
+    <p class="tk-note">7 pages, one per state.</p>
+    <div class="tk-jump">
+      <a href="deposit.html" title="deposit.html">success</a>
+      <a href="deposit-loading.html" title="deposit-loading.html">loading</a>
+      <a href="deposit-pending.html" title="deposit-pending.html">payment pending</a>
+      <a href="deposit-error-card.html" title="deposit-error-card.html">card declined</a>
+      <a href="deposit-error-kyc.html" title="deposit-error-kyc.html">KYC rejected</a>
+      <a href="deposit-minimum-not-met.html" title="deposit-minimum-not-met.html">minimum not met</a>
+      <a href="deposit-widget-load-failure.html" title="deposit-widget-load-failure.html">widget failed</a>
+    </div>
+  </section>
+  <section class="tk-sec" id="system">
+    <h2 data-n="13">System</h2>
+    <p class="tk-note">5 pages, one per state.</p>
+    <div class="tk-jump">
+      <a href="404.html" title="404.html">404 not found</a>
+      <a href="500.html" title="500.html">500 server error</a>
+      <a href="maintenance.html" title="maintenance.html">maintenance</a>
+      <a href="cookie-consent.html" title="cookie-consent.html">cookie consent</a>
+      <a href="toasts.html" title="toasts.html">toasts</a>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  var sb = document.getElementById('rmSidebar'),
+      ov = document.getElementById('rmOverlay'),
+      tg = document.getElementById('rmToggle');
+  if (!sb || !ov || !tg) return;
+  tg.addEventListener('click', function () { sb.classList.add('open'); ov.classList.add('open'); });
+  ov.addEventListener('click', function () { sb.classList.remove('open'); ov.classList.remove('open'); });
+})();
+</script>
+</body>
+</html>

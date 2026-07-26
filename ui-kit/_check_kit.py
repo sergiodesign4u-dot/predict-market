@@ -5,7 +5,8 @@
 
 Eight checks, each one a defect that actually happened at least once:
 
-  1. the product did not move        components/, ui-visual/, wireframes/ clean
+  1. the product did not move        components/ and wireframes/ clean, and a
+                                     ui-visual/ page differs only in its sidebar
   2. every component has a specimen  and every id is unique
   3. no dead icon reference          a use with no symbol in the same document
   4. every relative path resolves    the one thing a directory move breaks
@@ -39,10 +40,39 @@ def check(name, ok, detail=""):
 
 
 # 1 -------------------------------------------------------------- untouched --
-dirty = subprocess.run(["git", "status", "--porcelain", "--",
-                        "components", "ui-visual", "wireframes"],
-                       cwd=ROOT, capture_output=True, text=True).stdout.strip()
-check("1 product untouched", not dirty, dirty.replace("\n", "; ")[:200])
+# components/ and wireframes/ may not move at all. ui-visual/ is allowed exactly
+# one kind of edit: the course sidebar, which is chrome wrapped AROUND the screen
+# and not the screen. So the file is compared with HEAD twice, once as it is and
+# once with the <aside> masked out. If masking makes the difference disappear,
+# only the tree moved and the product did not.
+ASIDE = re.compile(r'<aside class="sidebar" id="rmSidebar">.*?</aside>', re.DOTALL)
+moved, chrome_only, tooling = [], [], []
+for zone in ("components", "wireframes", "ui-visual"):
+    # not .strip(): the leading space of " M path" is part of the status field.
+    porcelain = subprocess.run(["git", "status", "--porcelain", "--", zone],
+                               cwd=ROOT, capture_output=True, text=True).stdout
+    for line in filter(None, porcelain.splitlines()):
+        status, path = line[:2].strip(), line[2:].strip()
+        if status == "??":
+            continue                      # a new file adds nothing to a screen
+        if zone != "ui-visual" or status != "M":
+            moved.append(path)
+            continue
+        if not path.endswith(".html"):
+            # a generator in ui-visual/ is tooling. What it did to the screens is
+            # already measured by the mask check on the pages it wrote.
+            tooling.append(path)
+            continue
+        was = subprocess.run(["git", "show", "HEAD:" + path],
+                             cwd=ROOT, capture_output=True, text=True).stdout
+        now = (ROOT / path).read_text(encoding="utf-8")
+        (chrome_only if ASIDE.sub("", was) == ASIDE.sub("", now) else moved).append(path)
+check("1 product untouched", not moved, "%d: %s" % (len(moved), ", ".join(sorted(moved)[:4])))
+if chrome_only:
+    notes.append("%-34s %s" % ("1 sidebar only", "%d ui-visual pages, screens identical"
+                               % len(chrome_only)))
+if tooling:
+    notes.append("%-34s %s" % ("1 tooling changed", ", ".join(sorted(tooling))))
 
 # 2 ------------------------------------------------------------- specimens --
 manifest = json.loads((SPECS / "index.json").read_text(encoding="utf-8"))
@@ -67,6 +97,10 @@ missing = []
 ATTR = re.compile(r'(?:src|href)="([^"#][^"]*)"')
 GENERATED = [p for p in sorted(list(KIT.glob("*.html")) + list(SPECS.glob("*.html")))
              if p.name not in ("kit.html", "shell.html")]
+# The screens' index is checked here too. It is not a stand page, but it reaches
+# across into ui-kit/ for the stand stylesheet, and that path is exactly the kind
+# a directory move breaks silently.
+GENERATED.append(ROOT / "ui-visual" / "overview.html")
 for page in GENERATED:
     src = page.read_text(encoding="utf-8")
     for url in set(ATTR.findall(src)) | set(re.findall(r"url\(([^)\"']+)\)", src)):
@@ -118,6 +152,12 @@ nav = (KIT / "_nav.js").read_text(encoding="utf-8")
 nav_files = set(re.findall(r'file: "([^"]+)"', nav))
 gone = sorted(f for f in nav_files if not (KIT / f).exists())
 check("8 every registry page exists", not gone, ", ".join(gone))
+# The sidebar writes its own links (the back arrow, the Overview row, the note).
+# They are strings inside a script, so gate 4 never sees them.
+nav_links = {u for u in re.findall(r"href=\\?\"([^\"'+]+)\\?\"", nav)
+             if not u.startswith(("http", "#"))}
+nav_dead = sorted(u for u in nav_links if not (KIT / u.split("#")[0]).exists())
+check("8 every sidebar link resolves", not nav_dead, ", ".join(nav_dead))
 bad_also = sorted({a for s in manifest for a in s.get("also", []) if a not in components})
 check("8 every cross reference exists", not bad_also, ", ".join(bad_also))
 

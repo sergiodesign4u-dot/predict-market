@@ -10,10 +10,12 @@ exist in the visual layer - not the whole course. On top it carries a single
 "back to the course roadmap" affordance (-> research/research.html), so nothing
 is lost.
 
-Today only the Event Feed family is colored, so the tree lists those 9 pages
-(logged-in + logged-out states), each a real clickable link, the current page
-marked active. As more families are colored, add them to FAMILIES below and
-re-run; the script is idempotent (like resync_sidebar.py / fixpack.py).
+All 13 families are colored, so the tree lists all 76 state pages, each a real
+clickable link, the current page marked active. Above them sits one row that
+belongs to no family: Overview, the index of the painted screens, built by
+_gen_overview.py. Add a page to FAMILIES below, re-run both scripts, and it
+appears in the tree and on the index; the script is idempotent (like
+resync_sidebar.py / fixpack.py).
 
 The block it rewrites is <aside class="sidebar" id="rmSidebar"> ... </aside>.
 Styling lives in _theme.css (.sidebar-* + .sidebar-back / .sidebar-sub-head /
@@ -30,6 +32,13 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))       # ui-visual/
 BACK_HREF = "../research/research.html"
 BACK_LABEL = "Course roadmap"
+
+# The index of the painted screens (built by _gen_overview.py). It sits above the
+# families as its own row, because it is not a screen and belongs to no family:
+# it is the front page every screen can get back to, and the place the design
+# system's back arrow lands.
+INDEX_FILE = "overview.html"
+INDEX_LABEL = "Overview"
 
 # ---------------------------------------------------------------------------
 # The colored screen families. Each family is a screen node with state rows,
@@ -238,6 +247,9 @@ def render_aside(active_file):
             href=BACK_HREF, label=BACK_LABEL),
         '    <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual - screens</div></div>',
         '    <div class="sidebar-nav">',
+        '      <a href="{href}" class="sidebar-page-link{active}">{label}</a>'.format(
+            href=INDEX_FILE, label=INDEX_LABEL,
+            active=" active" if active_file == INDEX_FILE else ""),
     ]
     for fam in FAMILIES:
         if not fam.get("built"):
@@ -256,7 +268,12 @@ def render_aside(active_file):
                 L.append('        <a href="{href}" class="{cls}">{label}</a>'.format(
                     href=fpath, cls=acls, label=label))
         L.append('      </div>')
-    L.append('      <div class="sidebar-note">Other screen families join this tree as they are colored.</div>')
+    # The note used to promise that more families would join the tree. They all
+    # have, so it now points at the two things this tree cannot show: the same
+    # pages laid out as chips, and the system they are painted with.
+    L.append('      <div class="sidebar-note">All {n} families are colored. '
+             'Overview lists them as chips; the system they are painted with is in '
+             'ui-kit.</div>'.format(n=len([f for f in FAMILIES if f.get("built")])))
     L.append('    </div>')
     L.append('  </aside>')
     return "\n".join(L)
@@ -281,7 +298,7 @@ def process(fname, write=True):
 
 def main():
     check = "--check" in sys.argv
-    for fname in sorted(STATE_FILES):
+    for fname in sorted(STATE_FILES | {INDEX_FILE}):
         status = process(fname, write=not check)
         print("{:10s} {}".format(status, fname))
 
