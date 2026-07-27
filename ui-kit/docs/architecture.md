@@ -182,7 +182,7 @@ dark grey. Two roles that look like one idea are two.
 
 ### What the theme found
 
-Every one of these was invisible while there was one ground, and all seven are fixed:
+Every one of these was invisible while there was one ground, and all nine are fixed:
 
 | # | The hole | Where |
 |---|---|---|
@@ -194,6 +194,7 @@ Every one of these was invisible while there was one ground, and all seven are f
 | 6 | five hex literals drew the multi-outcome chart from inside a page script | 13 screens, now `--series-1..5` |
 | 7 | a grey from the wireframe era written into a style attribute | 2 screens |
 | 8 | nine `mask-image` stops read the drop-shadow ink for "opaque" | 6 files, now `--mask-solid` / `--mask-mid` |
+| 9 | a role named for a plate that is really the glyph on it | `--bg-brand-mark`, now `--ink-900` in daylight |
 
 Number 8 is the twin of number 4 and the one a person caught before any measurement did. A mask keeps
 only the ALPHA of the colour it is handed, so what those stops need is "opaque, in any theme".
@@ -205,7 +206,13 @@ Number 6 is the one worth remembering: a whole categorical palette lived outside
 was invisible to the file, to the gates and to any theme. It is now a declared scale, handed to the
 SVG as `var(--series-N)` so the browser resolves it live and the chart follows the switch.
 
-### Three corrections the first cut needed, and what each one taught
+Number 9 is the cheapest lesson in the file. `--bg-brand-mark` is read as `color` on the X and the
+Apple mark, never as a background, and the comment beside it said "the plate under the marks". One
+ground hid it: a light value works for both a plate and a glyph when everything else is dark. On
+chalk the mark sat at 1.06:1 on its own button and was gone. A role name that describes the wrong
+half of the pair is a bug waiting for a second ground.
+
+### Four corrections the first cut needed, and what each one taught
 
 - **The stone was yellow.** The Vault reads warm, so chalk was cut warm and got warmer with depth: R
   minus B ran +8 to +36. Measuring the graphite says the opposite - the dark stone is faintly COOL
@@ -219,6 +226,26 @@ SVG as `var(--series-N)` so the browser resolves it live and the chart follows t
 - **The grain vanished.** It was dropped to a third on the theory that an overlay blend bites harder
   on a pale ground. It bites LESS: overlay above mid grey behaves like screen. Daylight uses the
   Vault's own opacities.
+- **The ramp was translated, not reflected**, and that one is the deepest of the four. The first cut
+  inverted the ORDER of the ramp and left its DIRECTION alone: the page landed in the middle at L*
+  85.6 and every surface still came forward by getting LIGHTER, exactly as it does on graphite. So
+  daylight was a generic grey theme, and it was one for a structural reason rather than a taste
+  reason. It also ran a third too loud: the graphite fills span 11.7 L* and that chalk ramp spanned
+  15.5, which is why a category chip stood 9.5 L* off its bar where the Vault puts it at 4.0.
+  Daylight is now the graphite ramp reflected about its own ground, computed rather than picked:
+
+      chalk L* = page L* minus (graphite step L* minus graphite page L*)
+
+  The page becomes the lightest thing on screen because it answers the darkest thing on screen, every
+  surface settles onto it instead of rising off it, and every separation keeps the Vault's own size
+  with the sign flipped. Twelve steps in, twelve steps out, each within 0.2 L* of its target, and the
+  name of a chalk step is the number of the graphite step it answers to, so a line of the theme block
+  can be checked against the same line of section 2 by eye.
+  What it costs is that a graded face reads as lit from below, since a lit stop reflects into a
+  shaded one. Holding the light overhead instead was tried and is worse: reflect the fills but not
+  the gradients and an element sitting on the light end of a gradient loses its ground, which is
+  exactly where the chip problem came back. The bevel keeps a lit lip on top in both themes, so a
+  face is never read upside down.
 
 ### A frame is a document, and does not inherit a theme
 

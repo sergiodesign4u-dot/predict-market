@@ -279,22 +279,45 @@ Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from:
   shade swap places, and the action still has to read as the action.
   **Roles only, 89 of them; not one primitive redefined.** Daylight's values are their own primitives
   at the end of section 1 (chalk ramp, warm ink ramp + alphas, one dark brass, darker green/red, five
-  chalk veil alphas, a weaker grain, a second logo mark). 265 -> 308 tokens, growth that buys a
+  chalk veil alphas, the Vault's own grain, a second logo mark). 265 -> 320 tokens, growth that buys a
   second theme rather than harvest. The semantic selector is now `:root,[data-theme="dark"]`, so any
   element can be marked and its subtree renders in that theme: `tokens.html` shows every role in both
   grounds at once, live, and its contrast table has a column per theme.
-  **What the theme found, seven holes, all fixed:** the stone grain read straight from a primitive
+  **What the theme found, nine holes, all fixed:** the stone grain read straight from a primitive
   (11 declarations in 10 files -> `--surface-grain`); the brass logo mark, same category
   (`--mark-logo`); the drawer backdrop reading the emboss shade instead of the scrim; the close disc
   on a photographic head reading the ink of a drop shadow (-> `--scrim-photo`); a SELECTED state
   painted with the focus-ring role (`tabs.css` x2, `options.css`); **five hex literals drawing the
   multi-outcome chart from inside the page script on 13 screens** (a whole categorical palette the
   token file could not see -> `--series-1..5`, handed to the SVG as `var()` so it follows the theme
-  live); and a wireframe-era grey in a style attribute. Also found: `_rescale.py`'s duplicate-role
-  sweep was file-wide and ate 8 theme overrides, now per block.
+  live); a wireframe-era grey in a style attribute; **nine `mask-image` stops reading `--shadow-ink`
+  for "opaque"** (a mask keeps only the ALPHA, so every masked photograph faded to a third in daylight
+  -> `--mask-solid` / `--mask-mid`, never themed); and `--bg-brand-mark`, a role named for the plate
+  under the X and Apple marks that is really the colour of the marks (1.06:1 on a pale button, now
+  `--ink-900`). Also found: `_rescale.py`'s duplicate-role sweep was file-wide and ate 8 theme
+  overrides, now per block.
   **The sharpest lesson:** a veil is not a dark colour over a picture, it is the layer that
   guarantees the words, so it follows the INK, not the photograph. `--scrim-photo` and
   `--veil-photo-*` look like one idea and are two.
+  **Four corrections the first cut needed** (all user-caught by eye, then measured): the stone was
+  yellow (chalk warmed with depth, +8 to +36; the graphite is faintly COOL at -4..-8 and all the
+  warmth is in the ink, bone +19 - now a constant +8 at unchanged luminance); the blocks went flat
+  (the shade ladder was scaled as a unit, right for a 1px inset edge and wrong for a blurred drop -
+  now split, edge .10/.16, drop .32/.44); the grain vanished (dropped to a third on a backwards
+  reading of `overlay`, which above mid grey behaves like screen and bites LESS - now the Vault's own
+  0.9/0.8); and **the ramp was translated, not reflected**, the deepest of the four. The first cut
+  inverted the ORDER and not the DIRECTION: the page sat mid-ramp at L* 85.6 and every surface still
+  came forward by getting LIGHTER, so daylight was a generic grey theme for a structural reason, and
+  it ran a third too loud (graphite fills span 11.7 L*, that chalk ramp 15.5; a category chip stood
+  9.5 L* off its bar where the Vault puts it at 4.0). Daylight is now the graphite ramp **reflected
+  about its own ground**, computed not picked: `chalk L* = page L* - (graphite step L* - graphite
+  page L*)`. The page becomes the lightest thing on screen, every surface settles onto it, every
+  separation keeps the Vault's size with the sign flipped; 12 steps, each within 0.2 L* of target,
+  and a chalk step carries the number of the graphite step it answers to (`--chalk-850` answers
+  `--graphite-850`), so the theme block is checkable line by line against section 2. The reflection
+  is TOTAL, gradients included: a graded face then reads as lit from below, which is the right trade,
+  because reflecting the fills but not the gradients loses the ground under anything sitting on a
+  gradient's light end (that is where the chip problem came back).
   **Switch:** above the tree in both panels, single-source markup + boot in
   `ui-visual/_theme_switch.py` (imported by `_resync_sidebar.py` and `_gen_component_pages.py`);
   inline in `<head>` so daylight never flashes graphite; `localStorage` key `pm-theme`. Gate 1 masks

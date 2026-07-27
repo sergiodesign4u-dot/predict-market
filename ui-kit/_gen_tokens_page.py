@@ -599,14 +599,26 @@ HTML = f"""<!doctype html>
     <code>--scrim-photo</code> stay where they are, and <code>--color-action</code> does not move at
     all, because a mid-luminance metal reads on both stones. What moves is brass as ink.</p>
     <h3 class="tk-subh">What it found</h3>
-    <p class="tk-note">A theme is a search as much as a feature. Six places in the system could not
+    <p class="tk-note">A theme is a search as much as a feature. Nine places in the system could not
     follow it, and every one of them was invisible while there was only one ground: the stone grain
     and the logo mark were read straight from a primitive by twelve component files; the drawer
     backdrop was reading the emboss shade instead of the scrim; the close disc on a photographic head
     was reading the ink of a drop shadow, two jobs on one role; five hex literals drew the
-    multi-outcome chart from inside a page script, a whole palette the token file could not see; and
-    a grey from the wireframe era was still written into a style attribute. All six are fixed, and
-    the last of them is now a declared series scale.</p>
+    multi-outcome chart from inside a page script, a whole palette the token file could not see; a
+    grey from the wireframe era was still written into a style attribute; nine mask stops read that
+    same drop-shadow ink for "opaque", and a mask keeps only the alpha, so every masked photograph
+    faded to a third of itself; and one role named for the plate under the X and Apple marks is
+    really the colour of the marks, which is why they vanished on a pale button. All nine are
+    fixed.</p>
+    <h3 class="tk-subh">The ramp is a reflection</h3>
+    <p class="tk-note">Daylight's stone is not picked, it is computed:
+    <code>chalk L* = page L* - (graphite step L* - graphite page L*)</code>. In the Vault the page is
+    the darkest thing on screen and every surface rises off it toward the light; reflected, the page
+    is the lightest thing on screen and every surface settles onto it. Twelve steps in, twelve out,
+    each within 0.2 L* of its target, and a chalk step carries the number of the graphite step it
+    answers to. The first cut inverted the order and not the direction, which left the page in the
+    middle of the ramp and every surface still rising off it: a generic grey theme, running a third
+    too loud, with a category chip standing 9.5 L* off its bar where the Vault puts it at 4.0.</p>
   </section>
 
   <section class="tk-sec" id="contrast">
