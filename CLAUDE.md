@@ -283,7 +283,7 @@ Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from:
   second theme rather than harvest. The semantic selector is now `:root,[data-theme="dark"]`, so any
   element can be marked and its subtree renders in that theme: `tokens.html` shows every role in both
   grounds at once, live, and its contrast table has a column per theme.
-  **What the theme found, nine holes, all fixed:** the stone grain read straight from a primitive
+  **What the theme found, twelve holes, all fixed:** the stone grain read straight from a primitive
   (11 declarations in 10 files -> `--surface-grain`); the brass logo mark, same category
   (`--mark-logo`); the drawer backdrop reading the emboss shade instead of the scrim; the close disc
   on a photographic head reading the ink of a drop shadow (-> `--scrim-photo`); a SELECTED state
@@ -294,12 +294,18 @@ Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from:
   for "opaque"** (a mask keeps only the ALPHA, so every masked photograph faded to a third in daylight
   -> `--mask-solid` / `--mask-mid`, never themed); and `--bg-brand-mark`, a role named for the plate
   under the X and Apple marks that is really the colour of the marks (1.06:1 on a pale button, now
-  `--ink-900`). Also found: `_rescale.py`'s duplicate-role sweep was file-wide and ate 8 theme
+  `--ink-900`); **a hover fill and a chart grid line both painted with the LIT LIP of an emboss**
+  (`--bevel-faint` did three jobs; on chalk a hover cannot reach for more light and a white grid line
+  on a white chart is not there -> `--tint-hover`, `--line-grid`); and **a filled glyph taking a text
+  role** (the bookmark: the reflection kept its contrast, 6.7:1 -> 7.2:1, and doubled its weight,
+  because light on dark spreads and ink on paper sits solid -> `--icon-quiet` 4.3:1, `--icon-brass`
+  3.2:1; the text-safe brass also reads brown at 16px, so the saved state stopped meaning gold).
+  Also found: `_rescale.py`'s duplicate-role sweep was file-wide and ate 8 theme
   overrides, now per block.
   **The sharpest lesson:** a veil is not a dark colour over a picture, it is the layer that
   guarantees the words, so it follows the INK, not the photograph. `--scrim-photo` and
   `--veil-photo-*` look like one idea and are two.
-  **Four corrections the first cut needed** (all user-caught by eye, then measured): the stone was
+  **Five corrections the first cut needed** (all user-caught by eye, then measured): the stone was
   yellow (chalk warmed with depth, +8 to +36; the graphite is faintly COOL at -4..-8 and all the
   warmth is in the ink, bone +19 - now a constant +8 at unchanged luminance); the blocks went flat
   (the shade ladder was scaled as a unit, right for a 1px inset edge and wrong for a blurred drop -
@@ -317,7 +323,16 @@ Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from:
   `--graphite-850`), so the theme block is checkable line by line against section 2. The reflection
   is TOTAL, gradients included: a graded face then reads as lit from below, which is the right trade,
   because reflecting the fills but not the gradients loses the ground under anything sitting on a
-  gradient's light end (that is where the chip problem came back).
+  gradient's light end (that is where the chip problem came back). Fifth: **the reflection went one
+  role too far.** Lightness on graphite carries depth AND presence, and only depth can invert:
+  reflecting a control puts the most present thing in the system 11 L* under the page, which reads as
+  dirt, and it is the exact grey the grey-box wireframes used. So six roles (surface, slab-from,
+  control, control-hover, chip, chip-pressed, dialog-head) leave the reflection and sit at the top of
+  the ramp in the Vault's own order and direction, and the EDGE carries what the fill gave up
+  (daylight's hairline is 2.2:1 against its surface, the Vault's 1.1:1). The chalk ramp is now 8
+  steps + 1 hairline, as long as the stone is. **Area is the tell:** a chip 6.5 L* under white is a
+  quiet pill, a header band the same 7 L* under white is a dirty field - depth is read against how
+  much of the screen it covers, which no token file can see.
   **Switch:** above the tree in both panels, single-source markup + boot in
   `ui-visual/_theme_switch.py` (imported by `_resync_sidebar.py` and `_gen_component_pages.py`);
   inline in `<head>` so daylight never flashes graphite; `localStorage` key `pm-theme`. Gate 1 masks

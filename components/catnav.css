@@ -1,7 +1,7 @@
 /* components/catnav.css
    Component: catnav. Classes: .cat-crypto, .cat-culture, .cat-general, .cat-ic, .cat-layout, .cat-main, .cat-nav, .cat-politics, .cnt, .feed-subfilter, .subcat, .subcat-head.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-canvas, --bg-chip, --bg-control-hover, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --line-brass-soft, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-canvas, --bg-chip, --bg-control-hover, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --line-brass-soft, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
    Stand:  ui-kit/catnav.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -63,7 +63,7 @@
 .cat-main .feed-subfilter li{flex:0 0 auto}
 .cat-main .feed-subfilter a{text-decoration:none}
 .cat-main .feed-subfilter button{display:inline-flex;align-items:center;min-height:0;cursor:pointer;background:transparent;border:1px solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-4) var(--space-12)}
-.cat-main .feed-subfilter button:hover{color:var(--text-chip-hover);background:var(--bevel-faint)}
+.cat-main .feed-subfilter button:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
 .cat-main .feed-subfilter li[aria-current="page"] button{background:var(--tint-brass-09);border:1px solid var(--tint-brass-45);color:var(--text-brass-chip);box-shadow:0 0 10px -8px var(--glow-brass)}
 .feed-inner .cat-nav{margin:0}
 .feed-inner .cat-nav>ul{max-width:none;margin:0;padding:var(--space-2);gap:var(--space-8);display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}

@@ -1,7 +1,7 @@
 /* components/card.css
    Component: card. Classes: .bookmark-btn, .card, .card-body, .m-label, .m-val, .meta, .meta-txt, .prob, .prob-line, .q, .thumb, .top, .top-txt, .why.
 
-   Reads: --bevel-faint, --bevel-hair-soft, --bevel-lo, --bevel-xs, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-surface, --border-brass, --border-hairline, --color-action, --edge-groove-light, --edge-shade, --edge-shade-strong, --mask-mid, --mask-solid, --outcome-no-figure, --outcome-yes-text, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grid, --text-brass, --text-muted, --text-primary
+   Reads: --bevel-faint, --bevel-hair-soft, --bevel-lo, --bevel-xs, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-surface, --border-brass, --border-hairline, --color-action, --edge-groove-light, --edge-shade, --edge-shade-strong, --icon-brass, --icon-quiet, --mask-mid, --mask-solid, --outcome-no-figure, --outcome-yes-text, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grid, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/card.html
    Stands on: 24 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -47,12 +47,12 @@
 .card .meta .m-label{color:var(--text-muted)}
 .card .meta .m-val{color:var(--text-primary);font-weight:var(--weight-semibold)}
 .card .bookmark-btn{background:transparent;border:0;padding:0}
-.card .bookmark-btn .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-muted)}
-.card .bookmark-btn:hover .ic{stroke:var(--text-brass)}
-.card .bookmark-btn[aria-pressed="true"] .ic{fill:var(--text-brass);stroke:var(--text-brass)}
-.card .bookmark-btn .ic:has(use){color:var(--text-muted)}
-.card .bookmark-btn:hover .ic:has(use){color:var(--text-brass)}
-.card .bookmark-btn[aria-pressed="true"] .ic:has(use){color:var(--text-brass)}
+.card .bookmark-btn .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--icon-quiet)}
+.card .bookmark-btn:hover .ic{stroke:var(--icon-brass)}
+.card .bookmark-btn[aria-pressed="true"] .ic{fill:var(--icon-brass);stroke:var(--icon-brass)}
+.card .bookmark-btn .ic:has(use){color:var(--icon-quiet)}
+.card .bookmark-btn:hover .ic:has(use){color:var(--icon-brass)}
+.card .bookmark-btn[aria-pressed="true"] .ic:has(use){color:var(--icon-brass)}
 .bookmark-btn:focus-visible,.card .q:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 @media(max-width:640px){
   .card .bookmark-btn{min-width:var(--control-44);min-height:var(--control-44);display:inline-flex;align-items:center;justify-content:center;margin:-8px -8px -8px 0}

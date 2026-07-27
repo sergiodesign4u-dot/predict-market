@@ -242,13 +242,16 @@
      every separation was a third too loud: a chip stood 9.5 L* off its bar where
      the Vault puts it at 4.0, and that is why the chips read as grey blocks.
 
-     The reflection is TOTAL: every graphite fill has exactly one chalk answer,
-     gradient stops included, and no step is tuned by hand. That is why the name
-     carries the number of the graphite step it answers to and not a position in
-     this ramp, which is also why the numbers run the other way here: --chalk-940
-     is the lightest because --graphite-940 is nearly the darkest. Read a line of
-     the theme block against the same line of section 2 and the two numbers match,
-     every time.
+     The reflection covers the STONE and nothing else, and the ramp is exactly as
+     long as the stone is: eight steps for the eight graphite fills that carry
+     depth, gradient stops included, none of them tuned by hand. The four graphite
+     fills that carry PRESENCE rather than depth (the raised surface, the chip,
+     the control and its hover) have no chalk step of their own, because on a pale
+     ground presence is not a lightness at all; section 3 says where they went and
+     why. That is why a name here carries the number of the graphite step it
+     answers to and not a position in this ramp, which is also why the numbers run
+     the other way: --chalk-940 is the lightest because --graphite-940 is nearly
+     the darkest.
 
      What it costs: a graded face reads as lit from below, since its lit stop
      reflects into the shaded one. That is the right trade. The alternative was
@@ -266,17 +269,13 @@
 
      Every value below is within 0.2 L* of its computed target. */
   --chalk-940:#fdfbf5;      /* every recess: input well, segmented rail, chart well */
-  --chalk-930:#fcfaf4;      /* page. The ground the whole reflection is measured from */
-  --chalk-920:#f9f7f1;      /* card gradient end */
-  --chalk-910:#f8f6f0;      /* content plate */
-  --chalk-900:#f5f3ed;      /* device canvas, card base, the prompt on hover */
-  --chalk-880:#f3f1eb;      /* quiet card block and the mobile bet dock */
+  --chalk-930:#fcfaf4;      /* page, and a control: the ground, and the thing furthest forward */
+  --chalk-920:#f9f7f1;      /* card gradient end, a control on hover, the dialog head */
+  --chalk-910:#f8f6f0;      /* content plate, and the raised surface that stands on it */
+  --chalk-900:#f5f3ed;      /* device canvas, card base, the chip, the prompt on hover */
+  --chalk-880:#f3f1eb;      /* quiet card block, the mobile bet dock, a chip pressed */
   --chalk-870:#f0eee8;      /* stone gradient start (slab, plate, card) */
-  --chalk-860:#eeece6;      /* outer slab base, dock gradient start, a chip pressed */
-  --chalk-850:#e9e7e1;      /* the chip (cat-nav, tabs, options, load-more) */
-  --chalk-830:#e8e6e0;      /* raised surface: header, dialog, dropdown, footer, state block */
-  --chalk-800:#e1dfd9;      /* control hover, and the dialog head gradient */
-  --chalk-780:#dcdad4;      /* quiet control fill. The darkest ground any text stands on */
+  --chalk-860:#eeece6;      /* outer slab base, and the dock gradient start */
   --chalk-750:#acaaa4;      /* the hairline, and the only step that is NOT a reflection: an edge
                                inverts its direction but not its distance, so on chalk it has to be
                                darker than its surface and it is cut by eye, not by the formula */
@@ -288,6 +287,10 @@
   --ink-700:#3a352c;        /* an icon that carries a control on its own */
   --ink-500:#565042;        /* secondary text */
   --ink-400:#6e6757;        /* the default icon stroke */
+  --ink-300:#787262;        /* a FILLED glyph. Reflecting an icon keeps its contrast and changes
+                               its weight: light on dark spreads and thins, ink on paper sits
+                               solid, so the same ratio reads heavier here and has to come down.
+                               4.3:1 on a card, against the Vault's 6.7:1 for the same mark */
   /* the shade ladder of daylight, against the five-step black one it answers to.
      Black at .45 is an outline on a pale stone and not a shadow, so daylight
      shades with the ink instead. The ladder is NOT read uniformly: a 1px inset
@@ -312,6 +315,9 @@
      One dark brass, not three. On graphite there is room to separate a link
      brass from a lit brass from a chip brass and keep all three legible; on
      chalk there is not, and a legible brass beats a distinguishable one. */
+  --brass-600:#a9822f;      /* brass as a SYMBOL rather than a word. A saved bookmark has to read
+                               gold, and the text-safe brass below reads brown at 16px. 3.2:1, which
+                               is the bar for a graphic, not the 4.5 a word answers to */
   --brass-700:#684f18;      /* text-safe brass on chalk, INCLUDING over a brass tint:
                                a selected chip puts brass on brass and that is the
                                ground the value was solved against, not bare stone */
@@ -397,6 +403,11 @@
   --text-primary:var(--bone-100);       /* from: 111 colour declarations, body downwards */
   --text-muted:var(--bone-500);         /* from: 93 colour declarations, every secondary line */
   --text-icon:var(--bone-300);          /* from: .ic, .ic-sm default stroke */
+  --icon-quiet:var(--bone-500);         /* from: the unsaved bookmark, a glyph drawn as a fill and
+                                           not as a stroke. Same value as --text-muted on graphite
+                                           and a different one on chalk, which is the whole reason
+                                           it is its own role */
+  --icon-brass:var(--brass-400);        /* from: the saved bookmark. Brass as a mark, not as a word */
   --text-icon-strong:var(--bone-200);   /* from: the notification bell */
   --text-chip-hover:var(--bone-100);    /* from: the chip family on hover */
   --text-brass:var(--brass-400);        /* from: 37 colour + 8 stroke declarations: links, active
@@ -537,6 +548,11 @@
   --glow-brass:var(--brass-a30);        /* from: the card and chip glow */
   --glow-focus:var(--brass-a16);        /* from: the focus ring on a field */
   --line-brass-soft:var(--brass-a45);   /* from: the quieter hover border */
+  --tint-hover:var(--white-a06);        /* from: the quiet hover wash on a chip (cat-nav condensed,
+                                           feed subfilter). It was reading --bevel-faint, which is
+                                           the LIT LIP of an emboss: the same value on graphite and
+                                           nothing at all on chalk, where more light is not available */
+  --line-grid:var(--white-a06);         /* from: the chart grid, same story: a line, not a lip */
   --line-brass-strong:var(--brass-a60); /* from: the input hover border */
   --bg-dock-from:var(--graphite-860);   /* from: the mobile bet dock gradient */
   --veil-photo-edge:var(--graphite-a12);/* from: the featured hero veil, transparent end */
@@ -616,7 +632,7 @@
   --bg-canvas:var(--chalk-900);
 
   --bg-slab:var(--chalk-860);
-  --bg-slab-from:var(--chalk-830);
+  --bg-slab-from:var(--chalk-910);      /* presence, not depth: this one is the app header */
   --bg-slab-to:var(--chalk-870);
 
   --bg-plate:var(--chalk-910);
@@ -628,17 +644,34 @@
   --bg-card-to:var(--chalk-920);
   --bg-card-quiet:var(--chalk-880);
 
-  --bg-surface:var(--chalk-830);
-  --bg-control:var(--chalk-780);
-  --bg-control-hover:var(--chalk-800);
-  --bg-chip:var(--chalk-850);
+  /* ---- and here the reflection stops. See the note under it ---- */
+  --bg-surface:var(--chalk-910);
+  --bg-control:var(--chalk-930);
+  --bg-control-hover:var(--chalk-920);
+  --bg-chip:var(--chalk-900);
+  --bg-chip-pressed:var(--chalk-880);
+  --bg-dialog-head-from:var(--chalk-920);
+
   --bg-well:var(--chalk-940);
-  --bg-dialog-head-from:var(--chalk-800);
   --bg-chart-well:var(--chalk-940);
   --bg-dock:var(--chalk-880);
   --bg-dock-from:var(--chalk-860);
-  --bg-chip-pressed:var(--chalk-860);
   --bg-prompt-hover:var(--chalk-900);
+  /* WHY THOSE SIX LEAVE THE REFLECTION. On graphite, lightness carries two jobs at once: how deep a
+     stone sits, and how far forward an object stands. A reflection can only invert one of them.
+     Depth inverts, and that is what makes daylight the Vault rather than a generic light theme: a
+     card settles onto the page instead of rising off it. Presence cannot, because the Vault spends
+     6 to 11 L* lifting a control off its page and daylight has 1.7 L* of room above white. Reflect
+     it and the most present thing in the system becomes the most buried: the header, the dropdown
+     and every pill land 7 to 11 L* under the page, which on a pale ground does not read as stone,
+     it reads as dirt, and it is the exact grey the grey-box wireframes were drawn in.
+     So the six roles that carry presence sit at the top of the ramp, in the Vault's own order and
+     the Vault's own direction (a control lighter than a panel, a hover darker than its rest, a
+     pressed chip deeper than an idle one) and the EDGE carries what the fill used to. That trade is
+     only available here: daylight's hairline runs at 2.2:1 against its surface where the Vault's
+     runs at 1.1:1, so on chalk an edge can hold a shape and on graphite it cannot.
+     Area is the tell. A chip 6.5 L* under white is a quiet pill; a header band the same 7 L* under
+     white is a dirty field. Depth is read against how much of the screen it covers. */
   --bg-brand-mark:var(--ink-900);       /* NOT a plate, whatever the name in section 2 says: it is
                                            the colour of the X and the Apple mark themselves, and a
                                            glyph on a pale button has to be ink. 11.8:1 */
@@ -649,6 +682,8 @@
   --text-primary:var(--ink-900);        /* 11.8:1 */
   --text-muted:var(--ink-500);          /* 5.7:1 */
   --text-icon:var(--ink-400);           /* 4.0:1, and an icon is a line */
+  --icon-quiet:var(--ink-300);          /* 4.3:1, and a filled glyph is neither a line nor a word */
+  --icon-brass:var(--brass-600);        /* 3.2:1 */
   --text-icon-strong:var(--ink-700);    /* 8.7:1 */
   --text-chip-hover:var(--ink-900);     /* 12.4:1 */
   --text-brass:var(--brass-700);        /* 4.7:1 over a brass tint, 5.3:1 on bare stone */
@@ -680,6 +715,8 @@
   --glow-brass:var(--brass-a45);
   --glow-focus:var(--brass-a45);
   --line-brass-soft:var(--brass-a60);
+  --tint-hover:var(--ink-a10);          /* on chalk a hover reaches for the ink, not for the light */
+  --line-grid:var(--ink-a10);
 
   /* ---- outcome. The fills and the lines carry over: a 12% green wash and a
      mid green border work on either stone. Only green and red as INK move ---- */

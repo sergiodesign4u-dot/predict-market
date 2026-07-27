@@ -182,7 +182,7 @@ dark grey. Two roles that look like one idea are two.
 
 ### What the theme found
 
-Every one of these was invisible while there was one ground, and all nine are fixed:
+Every one of these was invisible while there was one ground, and all twelve are fixed:
 
 | # | The hole | Where |
 |---|---|---|
@@ -195,6 +195,9 @@ Every one of these was invisible while there was one ground, and all nine are fi
 | 7 | a grey from the wireframe era written into a style attribute | 2 screens |
 | 8 | nine `mask-image` stops read the drop-shadow ink for "opaque" | 6 files, now `--mask-solid` / `--mask-mid` |
 | 9 | a role named for a plate that is really the glyph on it | `--bg-brand-mark`, now `--ink-900` in daylight |
+| 10 | a hover fill painted with the lit lip of an emboss | `catnav.css`, `header.css`, now `--tint-hover` |
+| 11 | a chart grid line painted with the same lip | `feed.css`, `hero.css`, now `--line-grid` |
+| 12 | a filled glyph taking a text role | the bookmark, now `--icon-quiet` / `--icon-brass` |
 
 Number 8 is the twin of number 4 and the one a person caught before any measurement did. A mask keeps
 only the ALPHA of the colour it is handed, so what those stops need is "opaque, in any theme".
@@ -206,13 +209,27 @@ Number 6 is the one worth remembering: a whole categorical palette lived outside
 was invisible to the file, to the gates and to any theme. It is now a declared scale, handed to the
 SVG as `var(--series-N)` so the browser resolves it live and the chart follows the switch.
 
+Numbers 10 and 11 are one hole seen twice: `--bevel-faint` was doing three jobs, a lit lip, a hover
+fill and a grid line, and on graphite all three want the same 6% white. On chalk they want three
+different things, and two of them want ink. A hover that reaches for more light has nowhere to go on
+a pale ground, and a white grid line on a white chart is not there at all.
+
+Number 12 is the one about weight rather than colour. The bookmark reads `--text-muted` and
+`--text-brass`, and both reflect correctly: the unsaved mark measures 6.7:1 on graphite and 7.2:1 on
+chalk, the same mark at the same contrast. It still looks twice as heavy, because a light shape on a
+dark ground spreads and thins while ink on paper sits solid. Contrast is preserved by the reflection
+and weight is not, so a filled glyph needs its own roles and its own values: `--icon-quiet` at 4.3:1
+and `--icon-brass` at 3.2:1, the bar for a graphic rather than the 4.5 a word answers to. The saved
+mark had a second problem on top of that: the text-safe brass reads brown at 16px, so the saved state
+stopped meaning gold.
+
 Number 9 is the cheapest lesson in the file. `--bg-brand-mark` is read as `color` on the X and the
 Apple mark, never as a background, and the comment beside it said "the plate under the marks". One
 ground hid it: a light value works for both a plate and a glyph when everything else is dark. On
 chalk the mark sat at 1.06:1 on its own button and was gone. A role name that describes the wrong
 half of the pair is a bug waiting for a second ground.
 
-### Four corrections the first cut needed, and what each one taught
+### Five corrections the first cut needed, and what each one taught
 
 - **The stone was yellow.** The Vault reads warm, so chalk was cut warm and got warmer with depth: R
   minus B ran +8 to +36. Measuring the graphite says the opposite - the dark stone is faintly COOL

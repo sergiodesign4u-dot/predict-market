@@ -599,7 +599,7 @@ HTML = f"""<!doctype html>
     <code>--scrim-photo</code> stay where they are, and <code>--color-action</code> does not move at
     all, because a mid-luminance metal reads on both stones. What moves is brass as ink.</p>
     <h3 class="tk-subh">What it found</h3>
-    <p class="tk-note">A theme is a search as much as a feature. Nine places in the system could not
+    <p class="tk-note">A theme is a search as much as a feature. Twelve places in the system could not
     follow it, and every one of them was invisible while there was only one ground: the stone grain
     and the logo mark were read straight from a primitive by twelve component files; the drawer
     backdrop was reading the emboss shade instead of the scrim; the close disc on a photographic head
@@ -608,8 +608,11 @@ HTML = f"""<!doctype html>
     grey from the wireframe era was still written into a style attribute; nine mask stops read that
     same drop-shadow ink for "opaque", and a mask keeps only the alpha, so every masked photograph
     faded to a third of itself; and one role named for the plate under the X and Apple marks is
-    really the colour of the marks, which is why they vanished on a pale button. All nine are
-    fixed.</p>
+    really the colour of the marks, which is why they vanished on a pale button; a hover fill and a
+    chart grid line were both painted with the LIT LIP of an emboss, which on chalk is a hover with
+    nowhere to go and a white line on a white chart; and a filled glyph was taking a text role, where
+    the reflection kept its contrast and doubled its weight, because a light shape on a dark ground
+    spreads and thins while ink on paper sits solid. All twelve are fixed.</p>
     <h3 class="tk-subh">The ramp is a reflection</h3>
     <p class="tk-note">Daylight's stone is not picked, it is computed:
     <code>chalk L* = page L* - (graphite step L* - graphite page L*)</code>. In the Vault the page is
@@ -619,6 +622,18 @@ HTML = f"""<!doctype html>
     answers to. The first cut inverted the order and not the direction, which left the page in the
     middle of the ramp and every surface still rising off it: a generic grey theme, running a third
     too loud, with a category chip standing 9.5 L* off its bar where the Vault puts it at 4.0.</p>
+    <h3 class="tk-subh">Where the reflection stops</h3>
+    <p class="tk-note">Lightness on graphite carries two jobs at once: how deep a stone sits, and how
+    far forward an object stands. A reflection can only invert one. Depth inverts, and that is what
+    makes daylight the Vault. Presence cannot, because the Vault spends 6 to 11 L* lifting a control
+    off its page and daylight has 1.7 L* of room above white: reflect it and the most present thing
+    in the system becomes the most buried, which on a pale ground does not read as stone, it reads as
+    dirt. So six roles sit at the top of the ramp instead, in the Vault's own order and direction,
+    and the EDGE carries what the fill gave up. That trade is only available here: daylight's
+    hairline runs at 2.2:1 against its surface where the Vault's runs at 1.1:1.
+    Area is the tell. A chip 6.5 L* under white is a quiet pill; a header band the same 7 L* under
+    white is a dirty field. How deep a fill reads depends on how much of the screen it covers, which
+    is not something a token file can see.</p>
   </section>
 
   <section class="tk-sec" id="contrast">

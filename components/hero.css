@@ -1,7 +1,7 @@
 /* components/hero.css
    Component: hero. Classes: .brand-tile, .bt-by, .bt-photo, .bt-quote, .bt-tick, .bt-veil, .feed-hero, .hero-duo, .hero-feature, .hero-hot, .hero-main, .hero-mini, .hero-promo, .hero-side and 36 more.
 
-   Reads: --bevel-faint, --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-brass, --border-hairline, --color-action, --color-action-lit, --mask-solid, --outcome-line-no, --outcome-line-yes, --outcome-no, --outcome-no-figure, --outcome-no-fill, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-brass-vol, --text-muted, --text-primary, --text-strong, --tint-brass-60, --veil-brand, --veil-photo-edge, --veil-photo-from, --veil-photo-mid, --veil-photo-to
+   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-brass, --border-hairline, --color-action, --color-action-lit, --line-grid, --mask-solid, --outcome-line-no, --outcome-line-yes, --outcome-no, --outcome-no-figure, --outcome-no-fill, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-brass-vol, --text-muted, --text-primary, --text-strong, --tint-brass-60, --veil-brand, --veil-photo-edge, --veil-photo-from, --veil-photo-mid, --veil-photo-to
    Stand:  ui-kit/hero.html
    Stands on: 1 ui-visual screens (event-feed.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -51,7 +51,7 @@
 .hf-tag.yes i{background:var(--outcome-yes)}
 .hf-graph-wrap{flex:1;min-height:148px}
 .hf-graph{width:100%;height:100%;display:block}
-.hf-grid line{stroke:var(--bevel-faint)}
+.hf-grid line{stroke:var(--line-grid)}
 .hf-area{fill:url(#hfyes)}
 .hf-vol-area{fill:url(#hfvol)}
 .hf-vol-line{fill:none;stroke:var(--tint-brass-60);stroke-width:1.4;stroke-dasharray:2 3}

@@ -1,7 +1,7 @@
 /* components/header.css
    Component: header. Classes: .app-header, .auth-btns, .avatar-menu, .badge-dot, .bal-add, .bal-amt, .bal-figure, .bal-label, .bal-swap, .bal-toggle, .bell-wrap, .cat-condensed, .dropdown, .hiw-btn and 9 more.
 
-   Reads: --bevel-faint, --bg-control, --bg-slab-from, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --shadow-ink, --shadow-ink-72, --text-brass, --text-brass-chip, --text-chip-hover, --text-icon-strong, --text-muted, --text-on-brass, --text-primary, --tint-brass-09, --tint-brass-45
+   Reads: --bg-control, --bg-slab-from, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --shadow-ink, --shadow-ink-72, --text-brass, --text-brass-chip, --text-chip-hover, --text-icon-strong, --text-muted, --text-on-brass, --text-primary, --tint-brass-09, --tint-brass-45, --tint-hover
    Stand:  ui-kit/header.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -89,6 +89,6 @@
 .app-case .app-header .cat-condensed li{flex:0 0 auto}
 .app-case .app-header .cat-condensed a{text-decoration:none}
 .app-case .app-header .cat-condensed button{display:inline-flex;align-items:center;min-height:0;background:transparent;border:1px solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-12);cursor:pointer}
-.app-case .app-header .cat-condensed button:hover{color:var(--text-chip-hover);background:var(--bevel-faint)}
+.app-case .app-header .cat-condensed button:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
 .app-case .app-header .cat-condensed li[aria-current="page"] button{background:var(--tint-brass-09);border:1px solid var(--tint-brass-45);color:var(--text-brass-chip);box-shadow:0 0 10px -8px var(--glow-brass)}
 .app-case .app-header .row{max-width:none;padding-left:var(--gutter);padding-right:var(--gutter)}
