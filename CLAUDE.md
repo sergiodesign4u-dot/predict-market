@@ -245,7 +245,7 @@ The visual language, decided as **rules traced to data + taste**, not a mood. So
 
 The styling layer became a system. `components/` holds `tokens.css` plus one css file per component,
 all reached through `components/index.css`; `ui-kit/` is the vitrine that shows it and the gates that
-keep it honest (`python3 ui-kit/_check_kit.py`, twelve checks, exits non-zero on the first failure).
+keep it honest (`python3 ui-kit/_check_kit.py`, fourteen checks, exits non-zero on the first failure).
 Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from: `ui-kit/docs/tokens-audit.md`.
 
 - **Step 5 (done):** every painted screen dropped its inline `<style>` and its `_theme.css` link and
@@ -383,6 +383,68 @@ Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from:
     `DESIGN.md` gained the two-level token section + the both-theme contrast table; `STRUCTURE.md`,
     `README.md` and the roadmap sidebar mark 08 and 09 Done.
 
+### Step 7b (done, 2026-07-27): the second audit, and what a passing build hides
+
+Run against `components/` and every painted screen on the premise that a system passing its own
+gates is where the interesting defects live. **14 findings, all closed.** Contrast was already clean
+in both themes and stayed clean; what the gates could not see was where the styling lived.
+
+- **One element, one rule.** Step 1 read the styling off the painted product, and the product had
+  TWO stylesheets on it: the grey-box skeleton written inline by the wireframe generator, and the
+  Vault theme loaded after it. The extraction concatenated them, so **116 selectors were written
+  twice and 200 declarations in the first layer rendered nowhere** (`loadmore.css` described one
+  button twice over, nine properties apart). Deleted by `ui-kit/_unfork.py`, whose argument is that
+  `.app-case S` is S plus one class and therefore always wins. **Five exceptions, measured not
+  assumed:** the footer language menu and the shared `<dialog>`s live OUTSIDE `.app-case` (a dialog
+  is appended at the end of the body, so it is a sibling), and for those the unprefixed rule is the
+  shipped one. The first cut deduced instead of measuring, deleted the footer menu's padding, and
+  the diff caught it in one run.
+- **An attribute is a rule.** Gate 9 asked about `<style>` blocks, gate 12 looked inside
+  `components/`, so **110 style attributes on 30 screens** were the one place neither looked: type,
+  geometry (`width:72px` beside an existing `--size-72`), layout variants, and twelve places where a
+  component was undone on the element. Half were already dead. Two explain an `!important`:
+  `profile.css` and `state-block.css` were shouting to beat an inline style, and both stopped.
+  **An `!important` is usually a fossil of something no longer there.** Gate 9 reads attributes now
+  (`ui-visual/_destyle.py`).
+- **Hidden is not gone.** Every painted screen carried the wireframe's screen-tree drawer, about
+  150 links hidden by one `display:none`: **1024 KB, 16 per cent of all HTML in `ui-visual/`**, a
+  second and invisible navigation on a page that has its own. `base.css` was carrying 25 rules to
+  style a drawer it also hid, plus `.device` four times and `body` three, each undoing the last;
+  117 lines to 66. Removed by `ui-visual/_strip_wireframe.py`; the record stays in `wireframes/`,
+  which owns structure.
+- **A stacking order is a list, so it is written as one.** 0 1 2 3 4 5 6 10 40 49 50 60 199 200 201
+  across twelve files became **eleven named layers** in `tokens.css` (`--z-under` to
+  `--z-chrome-top`). Three of the old numbers did one job; **199 next to 201 is the shape of a value
+  picked to win an argument rather than to sit in an order.**
+- **Every screen has exactly one `<h1>`.** 74 of 77 had none, while `ia/docs/pages/seo.md` has
+  specified one per indexed page since stage 03b. Only the tag moved, grey tree first
+  (`wireframes/_generators/page_heading.py`); the 19 overlay-only screens keep none, because
+  inventing a heading is inventing copy. Three section headings went h3 to h2 to close the skip the
+  promotion opened. **Heading skips across the painted tree: 0.**
+- **A system stylesheet names the font it needs; the document loads it.** `base.css` `@import`ed the
+  Google Fonts URL every page already `<link>`ed: one dependency declared twice, and the CSS copy
+  three hops from discovery. It is also the wrong place for the decision, since the call sends a
+  visitor's IP to a third party before consent in a product that ships a GDPR cookie banner.
+  **Self-hosting the three families is the production answer and is now an open decision, not a
+  silent default.**
+- Also: the bet amount field took `outline:none` and gave back a 1.5px underline colour change, the
+  only control in the product without a focus indicator and the field a person types a bet size
+  into; `<meta charset>` sat at byte 2064 on all 77 screens because the theme boot was inserted
+  ahead of it; 21 selectors nothing on any page could match; the four how-it-works section headings
+  had no rule at all (18.72px is what a browser gives an unstyled h3); 15 half-pixel type sizes in
+  the vitrine's own chrome; a comment naming `_theme.css`, deleted in step 7, on 76 screens.
+- **Three new gates**, so none of it grows back: **9** now fails on a style attribute, **12** owns
+  the stacking order, **14** fails on a selector no markup can match (the other half of gate 11).
+- **How it was verified, and a tool that had to exist.** `_verify/diff.cjs` walks two snapshots in
+  step, which is right while the DOM is fixed and useless the moment a pass removes markup: every
+  index after the removal points at a different element. **`_verify/visible.cjs`** keeps only what
+  the browser reports as visible and compares those sequences, so a `display:none` deletion proves
+  itself and a real side effect (a moved sibling, a renumbered `:nth-child`) still shows. Across the
+  whole pass, at 76 screens x 5 widths, what moved: four dock buttons and one CTA bar lost 2px of
+  padding (14px and 10px were never on the 4px grid, and an attribute never went through step 6),
+  six section labels took the system's `.1em` tracking, and four headings went 18.72px to 18px.
+  Everything else identical to measure; 0 text pairs below AA in either theme.
+
 ### The rule for a change, from here on
 
 Replaces the Stage-07 wording that pointed at `ui-kit/kit.css` and `ui-kit/kit.html`; neither has
@@ -394,9 +456,14 @@ that role any more.
   value (gate 12).
 - **Markup** goes to two places and only two: the component's page in `ui-kit/`, and the screens in
   `ui-visual/` where it stands. Never to a third copy.
+- **Never on the element.** A `style=` attribute is a rule in the one place the system cannot see, so
+  it fails gate 9. Three things are not styling and may stay: a datum (a bar drawn to a width), the
+  event photograph, and a value the page script writes at run time.
+- **A heading level is structure**, so it is decided in `wireframes/` and the colour copy follows.
+  Exactly one `<h1>` per screen, no skipped level.
 - **A new component** = css in `components/` + a page in `ui-kit/` + an entry in `ui-kit/_nav.js` +
   a row in `ui-kit/docs/inventory.md` (with its CSS file and Page columns). Then
-  `python3 ui-kit/_check_kit.py` has to pass, all thirteen.
+  `python3 ui-kit/_check_kit.py` has to pass, all fourteen.
 - **`ui-kit/kit.html` is frozen.** It is the flat kit the system was read out of and it is kept as
   provenance; a component is never added to it. **`ui-kit/shell.html` composes** the header and
   bottom-nav specimens and holds no markup of its own.

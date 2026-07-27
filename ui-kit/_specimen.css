@@ -99,5 +99,5 @@ main.feed{background:transparent}
 .kit-ico .ic:not(:has(use)){stroke:var(--text-primary);fill:none}
 .kit-ico .ic:has(use){color:var(--text-primary)}
 .kit-ico .kit-brandic{color:var(--text-primary)}
-.kit-ico figcaption{font-family:var(--font-body);font-size:10.5px;color:var(--text-muted);line-height:var(--leading-snug)}
-.kit-ico code{font-family:var(--font-mono);font-size:9px;color:var(--text-brass);white-space:nowrap;line-height:var(--leading-tight)}
+.kit-ico figcaption{font-family:var(--font-body);font-size:11px;color:var(--text-muted);line-height:var(--leading-snug)}
+.kit-ico code{font-family:var(--font-mono);font-size:10px;color:var(--text-brass);white-space:nowrap;line-height:var(--leading-tight)}

@@ -346,6 +346,102 @@ grammar; in a product these are field labels over data groups, and removing them
 the name of what they are looking at. Kept, deliberately, and written down here so the next audit does
 not re-open it.
 
+## What step 7b settled
+
+A second audit, run against `components/` and every painted screen, on the assumption that a system
+which passes its own gates is exactly where the interesting defects hide. Fourteen findings. Four of
+them changed a rule.
+
+### One element, one rule
+
+Step 1 read the styling out of the painted product, and the painted product had **two** stylesheets on
+it: the grey-box skeleton the wireframe generator wrote inline, and the Vault theme file loaded after
+it. The extraction kept both and concatenated them, so 116 selectors were written twice over. 200
+declarations in the first layer were overridden by the second and rendered nowhere at all;
+`loadmore.css` described one button twice, nine properties apart.
+
+Nothing rendered them because every place a component stands is inside `.app-case`, and `.app-case S`
+is S plus one class, so it wins wherever both apply, whatever the source order and whatever media
+block either sits in. That argument is what made the deletion safe, and `ui-kit/_unfork.py` is the
+argument written down.
+
+**The five exceptions are the interesting part.** `.filter-menu summary`, `.confirm-btn`,
+`.field-label`, `.protect` and `.provider-btn` match elements that live OUTSIDE the case: the footer
+language menu sits under the device, and a `<dialog>` is appended at the end of the body, so it is a
+sibling of `.app-case` and not a descendant. For those five the unprefixed rule is the shipped one and
+the `.app-case` twin is what is dead. That was not deduced, it was measured, by running every candidate
+through `querySelectorAll` on 77 screens and 45 stands and asking whether any match had no `.app-case`
+ancestor. The first cut of the pass did deduce it, deleted the footer menu's padding, and the diff
+caught it in one run.
+
+### An attribute is a rule
+
+Gate 9 asked whether a screen carries a `<style>` block or a second stylesheet. Gate 12 asked whether a
+raw scale value appears inside `components/*.css`. **A style attribute is neither**, so 110 declarations
+lived through two stages in the one place nothing looked: type (`font-size:24px`), geometry
+(`width:72px`, next to a `--size-72` that already existed), layout variants, and twelve places where a
+component was undone on the element with `border:none` or `position:static`.
+
+Half of them were already dead, which is what happens when nobody looks: the system had grown a rule
+saying the same thing. Two more explain an `!important`. `profile.css` and `state-block.css` were
+shouting to beat an inline style, and once the attribute went the shout went with it. **An `!important`
+in a system is usually a fossil of something that is no longer there**, and it is worth asking what,
+before adding another.
+
+Gate 9 reads the attribute now.
+
+### Hidden is not gone
+
+Every painted screen carried the wireframe's own screen-tree drawer: a button, an overlay and a `<nav>`
+of about 150 links, hidden by one `display:none` in `base.css`. 1024 KB across 76 screens, **16 per cent
+of all the HTML in `ui-visual/`**, and the second navigation on a page that already has its own. And
+because a rule that hides something is still a rule about something, `base.css` was carrying 25
+declarations to style a drawer it also hid, plus `.device` said four times and `body` three, each
+undoing the last.
+
+The record is not lost: `wireframes/` still has all of it, visible, and structure is owned there. Gate
+14 is the general form: **a rule nothing on any page can match is a fossil**, the other half of the
+orphan-token gate.
+
+### A stacking order is a list, so write it as one
+
+`z-index` was 0 1 2 3 4 5 6 10 40 49 50 60 199 200 201 across twelve files. Three of those did the same
+job, five belonged to markup deleted in this pass, and **199 next to 201 is the shape of a number picked
+to win an argument rather than to sit in an order**. It is eleven named layers in `tokens.css` now, from
+`--z-under` (the thing something else is read against) to `--z-chrome-top`, and gate 12 covers it.
+
+### Two smaller rules, both about where a declaration belongs
+
+**A heading level is structure, and structure is owned by `wireframes/`.** 74 of 77 screens had no
+`<h1>`; the outline started at h2, nothing looked broken, and `ia/docs/pages/seo.md` had specified one
+H1 per indexed page since stage 03b. The promotion ran over the grey tree first and the colour copy
+after, which is the same rule the Profile redesign set.
+
+**A system stylesheet names the font it needs; the document loads it.** `base.css` `@import`ed the
+Google Fonts URL that every page already carried a `<link>` to: one dependency declared twice, and the
+CSS copy was on the slowest possible path, three hops before the browser could even discover it. It is
+also the wrong place for the decision: a third-party font call sends the visitor's IP before consent,
+in a product that ships a cookie banner grounded in GDPR and ePrivacy. Self-hosting the three families
+is the production answer; until then the call is visible in every head instead of buried in the CSS.
+
+### How this pass was verified
+
+`ui-kit/_verify/diff.cjs` walks two snapshots in step, which is right while the DOM is fixed and only
+the styling moves. **The moment a pass removes markup it is useless**: every index after the removal
+points at a different element and the whole page reads as changed. `ui-kit/_verify/visible.cjs` is the
+answer: keep only the elements the browser reports as visible and compare those sequences. Removing
+something `display:none` cannot change what paints, so an honest pass shows two sequences that match
+element for element; and if a removal did move a sibling or renumber an `:nth-child`, it shows up on a
+real element instead of drowning in an index shift.
+
+Across the whole of step 7b, at 76 screens x 5 widths, what moved: four dock buttons and one CTA bar
+lost 2px of padding (14px and 10px were never on the 4px grid, and a value in an attribute never went
+through step 6), six section labels took the system's `.1em` tracking instead of the wireframe's
+`.04em`, and the four how-it-works section headings went from the browser's 18.72px default to 18px on
+the scale. Everything else is identical to measure.
+
+---
+
 ## Naming
 
 Roles are read out of the product, not borrowed. The audit (`tokens-audit.md`) lists, for every role,

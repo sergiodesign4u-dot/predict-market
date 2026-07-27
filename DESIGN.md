@@ -220,6 +220,7 @@ The product is dark; its theme is a light one, and it exists as a proof of the s
 - **Semantic** (section 2): 133 roles, colour only. Each one points at a primitive through `var()` and carries the usage it was read from. A component may read a colour ONLY through a role; gate 13 fails the build otherwise.
 - **Geometry, type and motion get no second level.** A radius or a gap has nothing for a theme to override, so components read those primitives directly. That is a decision, not an omission.
 - **Section 3 is the theme**, not a third level: the same roles again with the values daylight needs.
+- **The stacking order is a scale too**, and it is a list of eleven named layers in section 1, not a set of loose numbers: `--z-under` (the thing something else is read against), `--z-content`, `--z-float`, `--z-close`, `--z-dock`, `--z-nav`, `--z-header`, `--z-menu`, then the three course-chrome layers. The number is only the order; the name is the reason. A component may not type a raw `z-index`.
 
 **Pairs and their ratios, both themes.** Measured down each theme's own `var()` chain, against the tint the label actually sits on.
 
@@ -255,6 +256,9 @@ The last two are graphics, not words: the bar is 3:1. Everything else clears 4.5
 
 **Character:** A three-family pairing on a clear contrast axis, never two lookalike sans. Space Grotesk gives the headings and card questions a confident, slightly mechanical cut; DM Sans keeps the UI plain and legible; IBM Plex Mono makes every number read as a measured figure, not decoration. Numbers are always mono, which is the spectator's honesty cue.
 
+
+**Where the families come from.** Space Grotesk, DM Sans and IBM Plex Mono are loaded by the document, not by the system stylesheet: every head in `ui-visual/` and `ui-kit/` carries the `<link>`, and `components/tokens.css` names what has to arrive (`--font-display`, `--font-body`, `--font-mono`). `base.css` used to `@import` the same URL as well, which put a render-blocking third-party request three hops down a CSS chain AND declared one dependency twice. It is also the wrong place for the decision: the call sends a visitor's IP to a third party before consent, in a product that ships a cookie banner grounded in GDPR and ePrivacy. Self-hosting the three families is the production answer, and is an open decision rather than a silent default.
+
 ### Hierarchy
 - **Display** (Space Grotesk 700, `clamp(28px, 4vw, 38px)`, line-height 1.05, ls -0.03em): the feed H1 / page heading. `text-wrap: balance`.
 - **Headline** (Space Grotesk 700, `clamp(19px, 2vw, 24px)`, line-height 1.15, ls -0.01em): the event question on Event Detail and the section titles. The featured card title runs one rank down at `clamp(19px, 1.5vw, 23px)`, so a card never competes with a page heading.
@@ -286,6 +290,26 @@ Depth is the whole point of this system, and it is built from embossing plus rea
 - **Card rest** (`0 16px 30px -18px rgba(0,0,0,.8), 0 5px 12px -6px rgba(0,0,0,.6)` + cast rim): the floating feed card.
 - **Card hover** (`translateY(-3px)` + `0 26px 44px -20px rgba(0,0,0,.85), 0 10px 18px -8px rgba(0,0,0,.7)`): a quiet physical lift, never a color change.
 - **Engraved divider** (`border-top: 1px solid #0b0c0e; box-shadow: inset 0 1px 0 rgba(237,231,218,.055)`): every section rule, meta separator and footer divider.
+
+### The order of the layers
+
+| layer | what sits there |
+|---|---|
+| `--z-under` | a photograph, a veil, a decorative pseudo, the fill behind the text of its own row |
+| `--z-content` | content lifted above its own decoration |
+| `--z-float` | a frame or a control floating over a card |
+| `--z-close` | the close control on a photographic head |
+| `--z-dock` | sticky furniture at the foot of the content (the bet dock, the CTA bar) |
+| `--z-nav` | the mobile bottom nav, over the dock it meets |
+| `--z-header` | the sticky app header |
+| `--z-menu` | what opens from the header or the toolbar |
+| `--z-chrome-scrim` / `--z-chrome` / `--z-chrome-top` | the course drawer, which is not the product |
+
+**The Layer Rule.** Depth on screen is the shadow vocabulary above; depth in the code is this list.
+They are not the same thing and they are not interchangeable: a card reads as raised because of its
+cast rim and its drop, not because of a number. A `z-index` only ever answers "which of these two
+overlapping things wins", and if a component needs a new answer it needs a new name here, not a
+larger number.
 
 ### Named Rules
 **The Cast-Plate Rule.** Every panel is a stone casting: dark near-black rim plus an inset top highlight, on its own drop shadow. Big plates are never given a brass outline (brass hairline frames belong only to the small notched tiles: the SEO brand plate, the hero brand tile, the footer trust cards). If a big surface has a bright outline, it is wrong.

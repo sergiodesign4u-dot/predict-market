@@ -14,12 +14,17 @@ Thirteen checks, each one a defect that actually happened at least once:
   6. layer purity                    no stand class in components/, no product class in _page.css
   7. no em dash                      the house rule
   8. the registry is whole           every also target and every nav file exists
-  9. one source of css               no screen styles itself, every screen
-                                     links components/index.css and nothing else
+  9. one source of css               no screen styles itself, in a block OR in an
+                                     attribute; every screen links
+                                     components/index.css and nothing else
  10. the painted product navigates   no link is dead in colour that is live in grey
  11. no orphan token                 a value nobody reads is a transcript, not a system
  12. no raw scale value              a number typed into a rule is how a scale stops
-                                     being one
+                                     being one, and a stacking order is a scale
+ 13. colour goes through a role      a component reads a role, never a primitive,
+                                     and every screen and frame can switch theme
+ 14. no selector without markup      a rule nothing on any page can match is a
+                                     fossil, the other half of gate 11
 
 The live half of the verification is ui-kit/selftest.html, which loads every
 specimen in a frame and asks it whether it rendered. No em dash.
@@ -198,6 +203,29 @@ for page in sorted(UV.glob("*.html")):
     if sheets != ["../components/index.css"] and page.name != "overview.html":
         wrong_link.append("%s -> %s" % (page.name, ", ".join(sheets) or "none"))
 check("9 no screen styles itself", not carries, "%d: %s" % (len(carries), ", ".join(carries[:4])))
+
+# ...and a style attribute is a rule too. This is the hole step 7b found: gate 9
+# asked about <style> and a second stylesheet, gate 12 looked inside components/,
+# so 110 declarations lived for two stages in the one place neither looked. Three
+# kinds of attribute are not styling and stay: a datum (a bar drawn to a width,
+# an absolutely placed stop), the event photograph, and a value the page script
+# writes at run time.
+def is_styling(style):
+    s = style.strip()
+    if "'+" in s or "' +" in s:
+        return False
+    if re.fullmatch(r"width:\d+(\.\d+)?%;?", s) or s == "position:absolute":
+        return False
+    return "background-image:url" not in s
+
+
+styled = []
+for page in sorted(UV.glob("*.html")):
+    hits = [s for s in re.findall(r'style="([^"]*)"', page.read_text(encoding="utf-8"))
+            if is_styling(s)]
+    if hits:
+        styled.append("%s: %s" % (page.name, hits[0][:40]))
+check("9 no screen styles an element", not styled, "%d: %s" % (len(styled), "; ".join(styled[:3])))
 check("9 every screen links the system", not wrong_link,
       "%d: %s" % (len(wrong_link), "; ".join(wrong_link[:3])))
 gone_kit = [str(p.relative_to(ROOT)) for p in
@@ -277,6 +305,14 @@ for path in sorted(COMP.glob("*.css")):
                 break
 check("12 no raw scale value", not raw, "%d: %s" % (len(raw), "; ".join(raw[:3])))
 
+# A z-index is a scale too, and it was the last one written as loose numbers:
+# 0 1 2 3 4 5 6 10 40 49 50 60 199 200 201 across twelve files, three of them
+# doing one job. The order lives in tokens.css under --z-*, and nowhere else.
+zraw = ["%s %s" % (path.name, m.group(0))
+        for path in sorted(COMP.glob("*.css")) if path.name != "tokens.css"
+        for m in re.finditer(r"z-index:\s*-?\d+", path.read_text(encoding="utf-8"))]
+check("12 the stacking order is named", not zraw, "%d: %s" % (len(zraw), "; ".join(zraw[:3])))
+
 # The migration is its own test, the way _relink.py is: if a consumer still reads
 # a name the scales moved, a dry run wants to change something.
 rescale = subprocess.run([sys.executable, str(KIT / "_rescale.py"), "--dry-run"],
@@ -284,6 +320,37 @@ rescale = subprocess.run([sys.executable, str(KIT / "_rescale.py"), "--dry-run"]
 line = (rescale.stdout or "\n").splitlines()[0]
 check("12 every consumer rescaled", rescale.returncode == 0 and " 0 rewrites" in line,
       line.strip() or rescale.stderr.strip()[:80])
+
+# 14 ----------------------------------------------- no selector without markup --
+# The other half of gate 11: a token nobody reads is a transcript, and so is a
+# rule nobody can match. 21 of them were still here at step 7b, all inherited
+# from grey-box css that the extraction copied along with everything else. A
+# class toggled by script counts as carried, so classList add/remove/toggle is
+# read out of the pages too.
+carried = set()
+for page in (list(UV.glob("*.html")) + list(KIT.glob("*.html")) + list(SPECS.glob("*.html"))
+             + list((ROOT / "wireframes").glob("*.html"))):
+    src = page.read_text(encoding="utf-8", errors="ignore")
+    for group in re.findall(r'class=\\?["\']([^"\'\\]*)', src):
+        carried.update(group.split())
+    for call in re.findall(r"classList\.(?:add|remove|toggle)\(([^)]*)\)", src):
+        carried.update(re.findall(r"['\"]([\w-]+)['\"]", call))
+
+unmatched = []
+for path in sorted(COMP.glob("*.css")):
+    if path.name in ("tokens.css", "index.css"):
+        continue
+    body = re.sub(r"/\*.*?\*/", "", path.read_text(encoding="utf-8"), flags=re.S)
+    for block_sel in re.findall(r"([^{}]+)\{", body):
+        block_sel = block_sel.strip()
+        if block_sel.startswith("@") or not block_sel:
+            continue
+        for sel in block_sel.split(","):
+            classes = re.findall(r"\.([\w-]+)", sel)
+            if classes and not any(c in carried for c in classes):
+                unmatched.append("%s %s" % (path.name, " ".join(sel.split())[:40]))
+check("14 no selector without markup", not unmatched,
+      "%d: %s" % (len(unmatched), "; ".join(unmatched[:3])))
 
 # 13 ------------------------------------------------- colour through a role --
 # architecture.md states it as a rule and nothing enforced it, so it drifted in
