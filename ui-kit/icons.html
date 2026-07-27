@@ -4,6 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - Icons</title>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();
+if(on){r.removeAttribute('data-theme')}else{r.setAttribute('data-theme','light')}
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);});})();</script>
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 </head>

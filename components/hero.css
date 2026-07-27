@@ -1,7 +1,7 @@
 /* components/hero.css
    Component: hero. Classes: .brand-tile, .bt-by, .bt-photo, .bt-quote, .bt-tick, .bt-veil, .feed-hero, .hero-duo, .hero-feature, .hero-hot, .hero-main, .hero-mini, .hero-promo, .hero-side and 36 more.
 
-   Reads: --bevel-faint, --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-brass, --border-hairline, --color-action, --color-action-lit, --outcome-line-no, --outcome-line-yes, --outcome-no, --outcome-no-figure, --outcome-no-fill, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text, --scrim, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --text-brass-lit, --text-brass-vol, --text-muted, --text-primary, --text-strong, --tint-brass-60, --veil-brand, --veil-photo-edge, --veil-photo-from, --veil-photo-mid, --veil-photo-to
+   Reads: --bevel-faint, --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-brass, --border-hairline, --color-action, --color-action-lit, --outcome-line-no, --outcome-line-yes, --outcome-no, --outcome-no-figure, --outcome-no-fill, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text, --scrim, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-brass-vol, --text-muted, --text-primary, --text-strong, --tint-brass-60, --veil-brand, --veil-photo-edge, --veil-photo-from, --veil-photo-mid, --veil-photo-to
    Stand:  ui-kit/hero.html
    Stands on: 1 ui-visual screens (event-feed.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -10,7 +10,7 @@
 .hero-main{display:grid;grid-template-rows:1fr auto;gap:var(--space-16);min-width:0}
 .hero-duo{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-16);min-width:0}
 .hero-side{display:grid;grid-template-rows:auto 1fr;gap:var(--space-16);min-width:0}
-.hero-feature,.hero-trust,.hero-promo,.hero-hot{position:relative;overflow:hidden;background-color:var(--bg-card);background-image:var(--grain-fine),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-md),inset 1px 0 0 var(--bevel-hair),
+.hero-feature,.hero-trust,.hero-promo,.hero-hot{position:relative;overflow:hidden;background-color:var(--bg-card);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-md),inset 1px 0 0 var(--bevel-hair),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 24px 48px -30px var(--shadow-ink-85),0 10px 22px -16px var(--shadow-ink-72)}
 .hero-trust,.hero-feature{transition:transform .26s var(--ease-out),box-shadow .26s var(--ease-out)}

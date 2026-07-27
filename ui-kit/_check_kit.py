@@ -3,7 +3,7 @@
 
     python3 ui-kit/_check_kit.py
 
-Twelve checks, each one a defect that actually happened at least once:
+Thirteen checks, each one a defect that actually happened at least once:
 
   1. the product did not move        components/ and wireframes/ clean, and a
                                      ui-visual/ page differs only in its sidebar
@@ -34,6 +34,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 KIT = ROOT / "ui-kit"
 COMP = ROOT / "components"
+UVIS = ROOT / "ui-visual"
 SPECS = KIT / "specimens"
 
 fails = []
@@ -52,6 +53,15 @@ def check(name, ok, detail=""):
 # once with the <aside> masked out. If masking makes the difference disappear,
 # only the tree moved and the product did not.
 ASIDE = re.compile(r'<aside class="sidebar" id="rmSidebar">.*?</aside>', re.DOTALL)
+# the theme boot script is chrome by the same argument as the sidebar: it is
+# wrapped around the screen, sets an attribute on <html> and paints nothing.
+# Built and removed by ui-visual/_theme_switch.py.
+BOOT = re.compile(r'\n?<script id="uvTheme">.*?</script>', re.DOTALL)
+
+
+def bare(html):
+    return BOOT.sub("", ASIDE.sub("", html))
+
 moved, chrome_only, tooling = [], [], []
 for zone in ("components", "wireframes", "ui-visual"):
     # not .strip(): the leading space of " M path" is part of the status field.
@@ -72,7 +82,7 @@ for zone in ("components", "wireframes", "ui-visual"):
         was = subprocess.run(["git", "show", "HEAD:" + path],
                              cwd=ROOT, capture_output=True, text=True).stdout
         now = (ROOT / path).read_text(encoding="utf-8")
-        (chrome_only if ASIDE.sub("", was) == ASIDE.sub("", now) else moved).append(path)
+        (chrome_only if bare(was) == bare(now) else moved).append(path)
 check("1 product untouched", not moved, "%d: %s" % (len(moved), ", ".join(sorted(moved)[:4])))
 if chrome_only:
     notes.append("%-34s %s" % ("1 sidebar only", "%d ui-visual pages, screens identical"
@@ -214,6 +224,12 @@ TOK_BODY = re.sub(r"/\*.*?\*/", "", TOK, flags=re.S)
 declared = set(re.findall(r"(--[\w-]+)\s*:", TOK_BODY))
 readers = [p for p in COMP.glob("*.css") if p.name not in ("tokens.css", "index.css")]
 readers += [KIT / "_page.css", KIT / "_specimen.css"] + list(SPECS.glob("*.html"))
+# A screen is a reader too. Most of them consume the system through a class, but
+# a value can also be written straight into markup, and the multi-outcome chart
+# does exactly that: its page script hands the five --series-* roles to the SVG
+# so the browser resolves them live and the lines follow the theme. Counting
+# only the stylesheets would call those five roles orphans and lose them.
+readers += list(UVIS.glob("*.html"))
 read = set(re.findall(r"var\((--[\w-]+)", TOK_BODY))   # a role reading a primitive
 for p in readers:
     read |= set(re.findall(r"var\((--[\w-]+)", p.read_text(encoding="utf-8", errors="ignore")))
@@ -264,6 +280,38 @@ rescale = subprocess.run([sys.executable, str(KIT / "_rescale.py"), "--dry-run"]
 line = (rescale.stdout or "\n").splitlines()[0]
 check("12 every consumer rescaled", rescale.returncode == 0 and " 0 rewrites" in line,
       line.strip() or rescale.stderr.strip()[:80])
+
+# 13 ------------------------------------------------- colour through a role --
+# architecture.md states it as a rule and nothing enforced it, so it drifted in
+# six places at once and only the light theme found them. A primitive here is
+# any section-1 token whose value is a colour or a material (a gradient, a noise,
+# a data URI mark): those are what a theme moves. Geometry, type and motion
+# primitives are read directly on purpose and are not in this set.
+tok = (COMP / "tokens.css").read_text(encoding="utf-8")
+prim_src = tok[tok.index("1. PRIMITIVE"):tok.index("2. SEMANTIC")]
+COLOURISH = re.compile(r"#[0-9a-fA-F]{3,8}|rgba?\(|url\(|gradient\(")
+colour_prims = {m.group(1) for m in re.finditer(r"(--[\w-]+)\s*:\s*([^;]+);", prim_src)
+                if COLOURISH.search(m.group(2))}
+leaks = []
+for path in sorted(COMP.glob("*.css")):
+    if path.name == "tokens.css":
+        continue
+    body = path.read_text(encoding="utf-8")
+    body = re.sub(r"/\*.*?\*/", "", body, flags=re.DOTALL)   # the Reads: header is a list, not a read
+    for name in sorted(set(re.findall(r"var\((--[\w-]+)\)", body))):
+        if name in colour_prims:
+            leaks.append("%s reads %s" % (path.name, name))
+check("13 colour goes through a role", not leaks,
+      "%d: %s" % (len(leaks), "; ".join(leaks[:3])))
+
+# The switch itself has to survive a rebuild, in both trees, or the proof is only
+# true of whichever tree was regenerated last.
+boot_missing = [p.name for p in sorted(UVIS.glob("*.html"))
+                if "<script id=\"uvTheme\">" not in p.read_text(encoding="utf-8")]
+btn_missing = [p.name for p in sorted(UVIS.glob("*.html"))
+               if 'class="theme-switch"' not in p.read_text(encoding="utf-8")]
+check("13 every screen can switch", not boot_missing and not btn_missing,
+      "%d without boot, %d without button" % (len(boot_missing), len(btn_missing)))
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:

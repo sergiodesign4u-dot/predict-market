@@ -192,10 +192,27 @@ A graphite grayscale tilted warm, with a single matte-brass accent and a reserve
 - **Ink** (`#ede7da`): warm off-white body text. Never pure white.
 - **Muted** (`#a49d8f`): secondary text, labels, stone captions.
 
+### Series (multi-outcome charts only)
+Five categorical colors for the lines of a multi-outcome chart, where each line is a candidate and not an answer: `#4fd694` mint, `#5b9df0` blue, `#d9b968` brass, `#c77dff` violet, `#9aa0aa` slate. In daylight they darken to `#225b35`, `#22589b`, `#684f18`, `#7038a4`, `#4f5560`, because the reading under the chart is drawn in the selected line's color and has to stay legible. Open question: series 1 is the same green family as YES, so a candidate line borrows an outcome meaning it does not have.
+
+### Daylight (the light theme)
+The product is dark; its theme is a light one, and it exists as a proof of the semantic layer rather than as a shipped feature. Only roles move, never primitives.
+
+- **Chalk** (the pale stone, 9 steps `#fdfbf5` to `#b3a98f`): deliberately shallower than the graphite ramp. On a dark ground a recess reads by getting darker and there is room below; on a pale ground every step down is paid for in text contrast, so a recess reads by its inset shadow instead.
+- **Ink** (`#211f19` primary, `#565042` muted, `#6e6757` icon): warm, not neutral. The Vault reads warm in the dark because its light ink is bone; a neutral black would cool the whole product on the way over.
+- **Dark brass** (`#684f18`): one, not three. On graphite there is room to separate a link brass from a lit brass from a chip brass and keep all three legible; on chalk there is not, and a legible brass beats a distinguishable one. The value is solved against brass-on-brass (a selected chip), not against bare stone.
+- **Outcome ink** (`#225b35` YES, `#863228` NO): solved over their own 12% fills.
+- **What does not move:** `--color-action`, because a mid-luminance metal reads on both stones; the white glyph on a photographic dialog head and the disc behind it, because a photograph does not get lighter; the course chrome, because it is the frame and not the product.
+- **What inverts that looks like it should not:** the hairline, which is lighter than its surface on graphite and has to be darker on chalk; the emboss, where the lit lip goes from `rgba(255,255,255,.16)` to `.70` while the shade ladder drops to a fifth of its depth; and the photo veils, which follow the ink rather than the photograph.
+
+**Contrast, both themes.** Every text pair is computed down each theme's own chain and against the tint it actually sits on. Daylight clears AA (4.5:1 text, 3:1 lines and icons) on every pair, measured across all 77 painted screens at 380 and 1280. It does not clear it by the Vault's margin: on graphite the muted text sits at 6.1:1 and the brass link at 7.8:1, which no pale ground can match while staying brass.
+
 ### Named Rules
 **The One-Accent Rule.** Brass carries identity, the active state, and primary CTAs only. It is never a decorative fill and never competes with the outcome colors. If a screen has brass on more than the logo, the active chip, and the primary action, it is overspent.
 
 **The Reserved-Outcome Rule.** Green is YES, red is NO, forever. They never appear as brand, error, success, or decoration. The odds bar (green fill on a red track) carries the outcome color so the YES/NO buttons can stay quiet tints.
+
+**The Veil Rule.** A veil over a photograph is not a dark color, it is the layer that guarantees the words on top of it. It follows the ink: dark ink means a pale veil. A scrim behind a white glyph is a different thing and stays dark in both themes.
 
 ## 3. Typography
 

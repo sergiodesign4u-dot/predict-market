@@ -4,6 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - Base and page frame</title>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();
+if(on){r.removeAttribute('data-theme')}else{r.setAttribute('data-theme','light')}
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);});})();</script>
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 </head>
@@ -45,7 +62,7 @@
     <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-canvas)"></i><code>--bg-canvas</code></span><span class="ck-role"><i style="background:var(--bg-page)"></i><code>--bg-page</code></span><span class="ck-role"><i style="background:var(--bg-slab)"></i><code>--bg-slab</code></span><span class="ck-role"><i style="background:var(--bg-slab-from)"></i><code>--bg-slab-from</code></span><span class="ck-role"><i style="background:var(--bg-slab-to)"></i><code>--bg-slab-to</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--outcome-no-figure)"></i><code>--outcome-no-figure</code></span><span class="ck-role"><i style="background:var(--outcome-yes-fill)"></i><code>--outcome-yes-fill</code></span><span class="ck-role"><i style="background:var(--outcome-yes-text)"></i><code>--outcome-yes-text</code></span><span class="ck-role"><i style="background:var(--scrim)"></i><code>--scrim</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-icon)"></i><code>--text-icon</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-canvas)"></i><code>--bg-canvas</code></span><span class="ck-role"><i style="background:var(--bg-page)"></i><code>--bg-page</code></span><span class="ck-role"><i style="background:var(--bg-slab)"></i><code>--bg-slab</code></span><span class="ck-role"><i style="background:var(--bg-slab-from)"></i><code>--bg-slab-from</code></span><span class="ck-role"><i style="background:var(--bg-slab-to)"></i><code>--bg-slab-to</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--outcome-no-figure)"></i><code>--outcome-no-figure</code></span><span class="ck-role"><i style="background:var(--outcome-yes-fill)"></i><code>--outcome-yes-fill</code></span><span class="ck-role"><i style="background:var(--outcome-yes-text)"></i><code>--outcome-yes-text</code></span><span class="ck-role"><i style="background:var(--scrim)"></i><code>--scrim</code></span><span class="ck-role"><i style="background:var(--surface-grain-coarse)"></i><code>--surface-grain-coarse</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-icon)"></i><code>--text-icon</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
@@ -70,7 +87,7 @@
     <details class="ck-src"><summary>components/base.css</summary><pre>/* components/base.css
    the page frame itself: reset, body type, the device shell, the shared utility classes and the grey-box scaffolding the Vault layer neutralises.
 
-   Reads: --bg-canvas, --bg-page, --bg-slab, --bg-slab-from, --bg-slab-to, --border-hairline, --edge-groove-dark, --edge-groove-light, --outcome-no-figure, --outcome-yes-fill, --outcome-yes-text, --scrim, --text-brass, --text-icon, --text-muted, --text-primary
+   Reads: --bg-canvas, --bg-page, --bg-slab, --bg-slab-from, --bg-slab-to, --border-hairline, --edge-groove-dark, --edge-groove-light, --outcome-no-figure, --outcome-yes-fill, --outcome-yes-text, --scrim, --surface-grain-coarse, --text-brass, --text-icon, --text-muted, --text-primary
    Stand:  ui-kit/base.html
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
@@ -153,7 +170,7 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none}
 body{background:var(--bg-page)!important}
 .groove-sep{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 .groove-sep-b{border-bottom:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
-.device{max-width:none;background-color:var(--bg-slab);background-image:var(--grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal}
+.device{max-width:none;background-color:var(--bg-slab);background-image:var(--surface-grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal}
 .app-case{position:relative;background:transparent;border:0}
 @media(max-width:640px){
   :root{--gutter:14px}

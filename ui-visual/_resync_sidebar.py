@@ -29,6 +29,8 @@ import os
 import re
 import sys
 
+from _theme_switch import BUTTON                        # the theme switch markup
+
 HERE = os.path.dirname(os.path.abspath(__file__))       # ui-visual/
 BACK_HREF = "../research/research.html"
 BACK_LABEL = "Course roadmap"
@@ -246,6 +248,9 @@ def render_aside(active_file):
         '    <a href="{href}" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> {label}</a>'.format(
             href=BACK_HREF, label=BACK_LABEL),
         '    <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual - screens</div></div>',
+        # the switch acts on the screen, not on the tree, so it sits above the
+        # tree: the tree is 77 rows long and a control at its foot needs scrolling
+        '    ' + BUTTON,
         '    <div class="sidebar-nav">',
         '      <a href="{href}" class="sidebar-page-link{active}">{label}</a>'.format(
             href=INDEX_FILE, label=INDEX_LABEL,

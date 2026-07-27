@@ -4,6 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - Related events</title>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();
+if(on){r.removeAttribute('data-theme')}else{r.setAttribute('data-theme','light')}
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);});})();</script>
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 </head>
@@ -44,7 +61,7 @@
     <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bevel-faint)"></i><code>--bevel-faint</code></span><span class="ck-role"><i style="background:var(--bevel-hi)"></i><code>--bevel-hi</code></span><span class="ck-role"><i style="background:var(--bevel-lo)"></i><code>--bevel-lo</code></span><span class="ck-role"><i style="background:var(--bevel-notice)"></i><code>--bevel-notice</code></span><span class="ck-role"><i style="background:var(--bg-chip)"></i><code>--bg-chip</code></span><span class="ck-role"><i style="background:var(--bg-control-hover)"></i><code>--bg-control-hover</code></span><span class="ck-role"><i style="background:var(--bg-page)"></i><code>--bg-page</code></span><span class="ck-role"><i style="background:var(--bg-plate)"></i><code>--bg-plate</code></span><span class="ck-role"><i style="background:var(--bg-plate-from)"></i><code>--bg-plate-from</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--line-brass-soft)"></i><code>--line-brass-soft</code></span><span class="ck-role"><i style="background:var(--scrim)"></i><code>--scrim</code></span><span class="ck-role"><i style="background:var(--shadow-ink-45)"></i><code>--shadow-ink-45</code></span><span class="ck-role"><i style="background:var(--shadow-ink-60)"></i><code>--shadow-ink-60</code></span><span class="ck-role"><i style="background:var(--shadow-ink-72)"></i><code>--shadow-ink-72</code></span><span class="ck-role"><i style="background:var(--shadow-ink-85)"></i><code>--shadow-ink-85</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-chip-hover)"></i><code>--text-chip-hover</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--text-strong)"></i><code>--text-strong</code></span></div>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bevel-faint)"></i><code>--bevel-faint</code></span><span class="ck-role"><i style="background:var(--bevel-hi)"></i><code>--bevel-hi</code></span><span class="ck-role"><i style="background:var(--bevel-lo)"></i><code>--bevel-lo</code></span><span class="ck-role"><i style="background:var(--bevel-notice)"></i><code>--bevel-notice</code></span><span class="ck-role"><i style="background:var(--bg-chip)"></i><code>--bg-chip</code></span><span class="ck-role"><i style="background:var(--bg-control-hover)"></i><code>--bg-control-hover</code></span><span class="ck-role"><i style="background:var(--bg-page)"></i><code>--bg-page</code></span><span class="ck-role"><i style="background:var(--bg-plate)"></i><code>--bg-plate</code></span><span class="ck-role"><i style="background:var(--bg-plate-from)"></i><code>--bg-plate-from</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--line-brass-soft)"></i><code>--line-brass-soft</code></span><span class="ck-role"><i style="background:var(--scrim)"></i><code>--scrim</code></span><span class="ck-role"><i style="background:var(--shadow-ink-45)"></i><code>--shadow-ink-45</code></span><span class="ck-role"><i style="background:var(--shadow-ink-60)"></i><code>--shadow-ink-60</code></span><span class="ck-role"><i style="background:var(--shadow-ink-72)"></i><code>--shadow-ink-72</code></span><span class="ck-role"><i style="background:var(--shadow-ink-85)"></i><code>--shadow-ink-85</code></span><span class="ck-role"><i style="background:var(--surface-grain)"></i><code>--surface-grain</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-chip-hover)"></i><code>--text-chip-hover</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--text-strong)"></i><code>--text-strong</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
@@ -69,7 +86,7 @@
     <details class="ck-src"><summary>components/related.css</summary><pre>/* components/related.css
    Component: related. Classes: .rel-odds, .rel-q, .rel-thumb, .related-events, .related-list, .related-more.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-chip, --bg-control-hover, --bg-page, --bg-plate, --bg-plate-from, --border-hairline, --edge-groove-dark, --edge-groove-light, --line-brass-soft, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --text-brass, --text-chip-hover, --text-muted, --text-primary, --text-strong
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-chip, --bg-control-hover, --bg-page, --bg-plate, --bg-plate-from, --border-hairline, --edge-groove-dark, --edge-groove-light, --line-brass-soft, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-chip-hover, --text-muted, --text-primary, --text-strong
    Stand:  ui-kit/related.html
    Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -80,7 +97,7 @@
 .related-list li{border-bottom:1px solid var(--border-hairline)}
 .related-list a{display:flex;justify-content:space-between;gap:var(--space-12);padding:var(--space-8) 0;font-size:var(--text-13)}
 .rel-odds{white-space:nowrap}
-.app-case .related-events{position:relative;overflow:hidden;background-color:var(--bg-plate);background-image:var(--grain-fine),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
+.app-case .related-events{position:relative;overflow:hidden;background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
     inset 1px 0 0 var(--bevel-faint),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 30px 58px -34px var(--shadow-ink-85),0 12px 26px -18px var(--shadow-ink-72)}

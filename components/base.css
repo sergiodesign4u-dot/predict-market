@@ -1,7 +1,7 @@
 /* components/base.css
    the page frame itself: reset, body type, the device shell, the shared utility classes and the grey-box scaffolding the Vault layer neutralises.
 
-   Reads: --bg-canvas, --bg-page, --bg-slab, --bg-slab-from, --bg-slab-to, --border-hairline, --edge-groove-dark, --edge-groove-light, --outcome-no-figure, --outcome-yes-fill, --outcome-yes-text, --scrim, --text-brass, --text-icon, --text-muted, --text-primary
+   Reads: --bg-canvas, --bg-page, --bg-slab, --bg-slab-from, --bg-slab-to, --border-hairline, --edge-groove-dark, --edge-groove-light, --outcome-no-figure, --outcome-yes-fill, --outcome-yes-text, --scrim, --surface-grain-coarse, --text-brass, --text-icon, --text-muted, --text-primary
    Stand:  ui-kit/base.html
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
@@ -84,7 +84,7 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none}
 body{background:var(--bg-page)!important}
 .groove-sep{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 .groove-sep-b{border-bottom:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
-.device{max-width:none;background-color:var(--bg-slab);background-image:var(--grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal}
+.device{max-width:none;background-color:var(--bg-slab);background-image:var(--surface-grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal}
 .app-case{position:relative;background:transparent;border:0}
 @media(max-width:640px){
   :root{--gutter:14px}

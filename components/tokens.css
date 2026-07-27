@@ -96,6 +96,17 @@
   --red-a12:rgba(200,90,80,.12);      /* quiet NO fill */
   --red-a20:rgba(200,90,80,.2);
 
+  /* ---- the categorical series (the multi-outcome chart draws one line per
+     candidate). Not outcome colour: these say "a different thing", not "yes" or
+     "no". Two of the five were already here under other names, which is why only
+     three are declared: the series reads --green-200 and --brass-300 as well. ---- */
+  --blue-400:#5b9df0;
+  --violet-400:#c77dff;
+  --slate-400:#9aa0aa;
+  --blue-700:#22589b;       /* the same five, taken down onto chalk */
+  --violet-700:#7038a4;
+  --slate-700:#4f5560;
+
   /* ---- neutral extremes and the bevel alphas the embossed plates need ---- */
   --white:#fff;
   --black:#000;
@@ -203,6 +214,73 @@
   --dur-slower:.3s;
   --ease-out:cubic-bezier(.2,.7,.2,1);
   --ease-inout:cubic-bezier(.4,0,.2,1);
+
+  /* ======================================================================
+     The light theme's own raw values. Declared here, with the rest of the
+     primitives, because a primitive is a value and not a purpose: nothing
+     below carries an opinion about where it goes. Section 3 is where they
+     get one. The dark palette above is untouched, which is the point of the
+     two levels.
+     ====================================================================== */
+
+  /* ---- chalk (the pale stone of daylight) ----
+     Deliberately shallower than the graphite ramp. On a dark ground a recess
+     reads by getting darker and there is a lot of room below; on a pale ground
+     every step down is paid for in text contrast, and a recess reads by its
+     inset shadow instead. So this ramp spans 8 steps where graphite spans 15. */
+  --chalk-010:#fdfbf5;      /* the lit face of a raised stone */
+  --chalk-030:#f9f6ee;      /* raised: header, dialog, dropdown, footer, state block */
+  --chalk-060:#f5f1e7;      /* the card, and the device canvas */
+  --chalk-090:#efeade;      /* the card gradient bottom, and a quiet block */
+  --chalk-130:#eae4d5;      /* the outer slab */
+  --chalk-170:#e4ddcc;      /* the inset plate, and a quiet control */
+  --chalk-220:#ded6c3;      /* a chip, a well, the page behind the device */
+  --chalk-280:#d6cdb8;      /* a chip while it is held down. The one step below the
+                               text floor, and only a transient state stands on it */
+  --chalk-380:#b3a98f;      /* the hairline. Darker than its surface, because an edge inverts */
+
+  /* ---- ink (the dark text of daylight) ----
+     Warm, not neutral. The Vault reads warm in the dark because its light ink is
+     bone; a neutral black would cool the whole product on the way over. */
+  --ink-900:#211f19;        /* primary text */
+  --ink-700:#3a352c;        /* an icon that carries a control on its own */
+  --ink-500:#565042;        /* secondary text */
+  --ink-400:#6e6757;        /* the default icon stroke */
+  /* the shade ladder of daylight. Black at .45 is an outline on a pale stone,
+     not a shadow, so the light theme shades with warm ink at a fifth the depth */
+  --ink-a06:rgba(33,31,25,.06);
+  --ink-a10:rgba(33,31,25,.1);
+  --ink-a16:rgba(33,31,25,.16);
+  --ink-a24:rgba(33,31,25,.24);
+  --white-a70:rgba(255,255,255,.7);  /* the lit lip of an emboss, which needs far more on pale stone */
+  /* the veils that sit between a photograph and the words on top of it */
+  --chalk-a12:rgba(253,251,245,.12);
+  --chalk-a35:rgba(253,251,245,.35);
+  --chalk-a55:rgba(253,251,245,.55);
+  --chalk-a62:rgba(253,251,245,.62);
+  --chalk-a90:rgba(253,251,245,.9);
+
+  /* ---- the metal and the outcomes, taken down onto a pale ground ----
+     One dark brass, not three. On graphite there is room to separate a link
+     brass from a lit brass from a chip brass and keep all three legible; on
+     chalk there is not, and a legible brass beats a distinguishable one. */
+  --brass-700:#684f18;      /* text-safe brass on chalk, INCLUDING over a brass tint:
+                               a selected chip puts brass on brass and that is the
+                               ground the value was solved against, not bare stone */
+  --green-800:#225b35;      /* quiet YES text on chalk, over its own 12% fill */
+  --red-800:#863228;        /* quiet NO text on chalk, over its own 12% fill */
+  --green-050:#e4f0e7;      /* the win sheet head stone, in daylight */
+
+  /* the same noise, a third of the bite: an overlay blend on a pale stone
+     washes out where on graphite it grips, so the light theme has its own */
+  --grain-coarse-lit:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='sl'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sl)' opacity='0.3'/%3E%3C/svg%3E");
+  --grain-fine-lit:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cfilter id='dl'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23dl)' opacity='0.26'/%3E%3C/svg%3E");
+  /* the same graph grid, one rung up the brass ladder, for the same reason */
+  --brass-grid-lit:repeating-linear-gradient(0deg,transparent 0 27px,var(--brass-a16) 27px 28px),
+                   repeating-linear-gradient(90deg,transparent 0 27px,var(--brass-a16) 27px 28px);
+  /* the same mark, drawn in the dark brass. The colour is inside the file, so a
+     data URI can only be themed by having a second one */
+  --logo-tick-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='18'%3E%3Cpath d='M2 15 L9 7 L13 10 L24 2' fill='none' stroke='%23684f18' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 /* mobile: the plate breathes on a smaller inset (this is the one responsive token) */
@@ -214,9 +292,17 @@
    2. SEMANTIC - colour roles only
    Each role names WHY the colour is there, so a theme can move it without a
    component knowing. Read out of the usage table in ui-kit/docs/tokens-audit.md.
+
+   The selector carries [data-theme="dark"] as well as :root so that a theme is
+   not only a page-level state. Any element can be marked with either theme and
+   its subtree gets that theme's roles, which is what lets the token page show
+   both grounds side by side and what would let a screenshot, a preview or an
+   embedded card render in the theme it is describing rather than the one the
+   page happens to be in.
    ========================================================================== */
 
-:root{
+:root,
+[data-theme="dark"]{
 
   /* ---- surfaces ---- */
   --bg-page:var(--graphite-930);        /* from: body, the ground behind the device */
@@ -320,6 +406,21 @@
   --chart-line:var(--green-250);             /* from: the price line on the event chart */
   --chart-line-glow:var(--green-a42);        /* from: the glow under that line */
 
+  /* ---- the categorical series ----
+     from: the five lines and legend swatches of the multi-outcome chart. Until
+     the light theme they were an array of five hex literals inside the page
+     script on 13 screens: a whole palette the token file could not see, the
+     gates could not check and no theme could reach. Declared as roles so the
+     script can write var(--series-N) and the browser resolves it live.
+     Open question for a later stage, not decided here: --series-1 is the same
+     green the product uses for YES, so a candidate line borrows an outcome
+     meaning it does not have. */
+  --series-1:var(--green-200);
+  --series-2:var(--blue-400);
+  --series-3:var(--brass-300);
+  --series-4:var(--violet-400);
+  --series-5:var(--slate-400);
+
   /* ---- result roles: the market already resolved ----
      Separate from the outcome pair on purpose. A live YES and a settled WON are
      the same green today and answer to different design questions: the outcome
@@ -362,7 +463,18 @@
   --shadow-ink-72:var(--black-a72);     /* from: a card on hover */
   --shadow-ink-85:var(--black-a85);
   --scrim:var(--black-a30);             /* from: the mobile drawer backdrop */
+  /* the disc behind a close mark on a photographic head. It was reading
+     --shadow-ink, which is the ink of a drop shadow: two jobs on one role, and
+     the light theme is what showed it. A shadow follows the theme, a scrim over
+     a photograph does not, because the photograph is dark in both */
+  --scrim-photo:var(--black);
   --surface-grid:var(--brass-grid);     /* from: the brass graph grid on the card corner */
+  /* the grain of the stone is material, and material is what a theme moves: the
+     same noise that grips graphite washes out a pale stone. It was read straight
+     from the primitive by 11 component files until the light theme asked for it */
+  --surface-grain:var(--grain-fine);        /* from: card, plate, dialog, hero, dock, trust item */
+  --surface-grain-coarse:var(--grain-coarse); /* from: the outer slab */
+  --mark-logo:var(--logo-tick);         /* from: the brass up-trend mark before the wordmark */
   --glow-brass:var(--brass-a30);        /* from: the card and chip glow */
   --glow-focus:var(--brass-a16);        /* from: the focus ring on a field */
   --line-brass-soft:var(--brass-a45);   /* from: the quieter hover border */
@@ -385,4 +497,185 @@
   --chrome-text:var(--bone-250);
   --chrome-muted:var(--bone-600);
   --chrome-accent:var(--brass-400);
+  /* the two swatches on the theme switch. They are roles, not primitives read
+     raw, and section 3 deliberately does not move them: a control that shows you
+     the two grounds has to keep showing both, whichever one you are standing on */
+  --swatch-dark:var(--graphite-930);
+  --swatch-light:var(--chalk-060);
+}
+
+/* ==========================================================================
+   3. THEME - the Vault in daylight
+   ==========================================================================
+
+   The product is dark, so its theme is a LIGHT one. The attribute says what it
+   is, not what the exercise was called: [data-theme="light"].
+
+   This block is the proof that the two levels are worth their cost. A rebrand
+   would not prove it: swapping brass for cobalt is a change of primitive, and it
+   works fine on a flat file with no roles at all. A theme is different. The
+   ground inverts, the ink inverts, the light and the shade swap places, and the
+   ACTION has to stay the action through all of it. That is a sentence you can
+   only write if the reason a colour is there is stored somewhere, and here it is
+   stored in the role name.
+
+   Three rules held while writing it:
+
+   1. Only roles are overridden. Not one primitive is redefined, so the dark
+      palette above still says exactly what it said. The values daylight needs
+      are declared as their own primitives at the end of section 1.
+   2. Not everything inverts, and the roles that do not are the interesting
+      ones. --text-on-photo stays white and --scrim-photo stays black, because a
+      white glyph and the disc behind it sit straight on the photograph, and a
+      photograph does not get lighter. Brass stays the brand metal:
+      --color-action does not move at all, because a mid-luminance metal reads on
+      both stones. What moves is brass as INK.
+      The veils looked like they belonged in that list and do not, which is the
+      sharpest thing the theme taught. A veil is not "a dark colour over a
+      picture", it is the layer that guarantees the words, so it follows the INK
+      and not the photograph: when the ink went dark the veils had to go pale, or
+      the featured card reads dark grey on dark grey. --scrim-photo and
+      --veil-photo-* look like one idea and are two.
+   3. Contrast is measured, not assumed. Every text pair below was computed
+      against every ground it can land on; the number after a role is its worst
+      case. AA is 4.5 for text and 3.0 for a line or an icon.
+
+   Where the light theme is honestly weaker: on graphite the muted text sits at
+   6.1:1 and the brass link at 7.8:1, which no pale ground can match while
+   staying brass. Daylight clears AA; it does not clear it by the same margin.
+
+   No em dash. */
+
+[data-theme="light"]{
+
+  /* ---- surfaces. The ramp inverts, and the order of depth is preserved:
+     a recess is still below its plate, a card still above it ---- */
+  --bg-page:var(--chalk-220);
+  --bg-canvas:var(--chalk-060);
+
+  --bg-slab:var(--chalk-130);
+  --bg-slab-from:var(--chalk-030);
+  --bg-slab-to:var(--chalk-130);
+
+  --bg-plate:var(--chalk-170);
+  --bg-plate-from:var(--chalk-090);
+  --bg-plate-to:var(--chalk-170);
+
+  --bg-card:var(--chalk-060);
+  --bg-card-from:var(--chalk-010);
+  --bg-card-to:var(--chalk-090);
+  --bg-card-quiet:var(--chalk-090);
+
+  --bg-surface:var(--chalk-030);
+  --bg-control:var(--chalk-170);
+  --bg-control-hover:var(--chalk-220);
+  --bg-chip:var(--chalk-220);
+  --bg-well:var(--chalk-220);
+  --bg-dialog-head-from:var(--chalk-090);
+  --bg-chart-well:var(--chalk-220);
+  --bg-dock:var(--chalk-030);
+  --bg-dock-from:var(--chalk-060);
+  --bg-chip-pressed:var(--chalk-280);
+  --bg-prompt-hover:var(--chalk-090);
+  --bg-brand-mark:var(--chalk-220);
+
+  /* ---- text. Worst case is the deepest ground the role can land on ---- */
+  --text-primary:var(--ink-900);        /* 10.4:1 */
+  --text-muted:var(--ink-500);          /* 5.1:1 */
+  --text-icon:var(--ink-400);           /* 3.9:1, and an icon is a line */
+  --text-icon-strong:var(--ink-700);    /* 8.4:1 */
+  --text-chip-hover:var(--ink-900);     /* 10.4:1 */
+  --text-brass:var(--brass-700);        /* 4.6:1 over a brass tint, 5.3:1 on bare stone */
+  --text-brass-lit:var(--brass-700);    /* 4.6:1 */
+  --text-brass-chip:var(--brass-700);   /* 4.6:1 */
+  --text-brass-vol:var(--brass-700);    /* 4.6:1 */
+  --text-strong:var(--ink-900);         /* white on graphite, ink on chalk: the label
+                                           of a quiet button when it is hovered */
+  /* --text-on-brass, --text-on-yes, --text-on-no and --text-on-photo are NOT
+     here. Their ground is a brass fill, a green fill, a red fill and a
+     photograph, and none of those four moved. */
+
+  /* ---- edges. The hairline is the clearest inversion in the file: on graphite
+     it is LIGHTER than its surface, on chalk it has to be darker ---- */
+  --border-hairline:var(--chalk-380);   /* 2.0:1 against the surface, which is what a hairline is */
+  --edge-groove-dark:var(--chalk-380);
+  --edge-groove-light:var(--white-a70);
+  /* every brass tint steps up one rung: the same alpha over a pale stone reads
+     about a third as strongly as it does over graphite */
+  --border-brass:var(--brass-a45);
+  --border-brass-hover:var(--brass-a60);
+  --tint-brass-06:var(--brass-a09);
+  --tint-brass-09:var(--brass-a16);
+  --tint-brass-16:var(--brass-a30);
+  --tint-brass-30:var(--brass-a45);
+  --tint-brass-45:var(--brass-a60);
+  --glow-brass:var(--brass-a45);
+  --glow-focus:var(--brass-a45);
+  --line-brass-soft:var(--brass-a60);
+
+  /* ---- outcome. The fills and the lines carry over: a 12% green wash and a
+     mid green border work on either stone. Only green and red as INK move ---- */
+  --outcome-yes-text:var(--green-800);      /* 4.8:1 over the YES fill */
+  --outcome-no-text:var(--red-800);         /* 4.7:1 over the NO fill */
+  --outcome-no-figure:var(--red-800);       /* 4.7:1 */
+  --outcome-yes-text-lit:var(--green-800);  /* 4.8:1 */
+  --outcome-no-text-lit:var(--red-800);     /* 4.7:1 */
+  --chart-line:var(--green-700);            /* the bright chart green disappears on chalk */
+  /* the series is text as well as line: the reading under the chart is drawn in
+     the selected series colour, so all five clear 4.5 on the chart well */
+  --series-1:var(--green-800);              /* 4.8:1 */
+  --series-2:var(--blue-700);               /* 4.9:1 */
+  --series-3:var(--brass-700);              /* 5.3:1 */
+  --series-4:var(--violet-700);             /* 5.2:1 */
+  --series-5:var(--slate-700);              /* 5.2:1 */
+  /* --outcome-line-yes and --outcome-line-no stay: they are drawn straight on
+     the hero photograph, above the veil, and a line is not text. */
+
+  /* ---- result ---- */
+  --result-won-text:var(--green-800);   /* 4.8:1 over the WON chip */
+  --result-lost-text:var(--red-800);    /* 4.7:1 over the LOST chip */
+  --result-won-stone:var(--green-050);
+
+  /* ---- feedback ---- */
+  --border-notice:var(--chalk-380);
+  --bevel-notice:var(--white-a70);
+
+  /* ---- depth. Light and shade swap weight. On graphite the emboss is carried
+     by the lit lip and the shade only steadies it; on chalk a white lip barely
+     registers and has to be nearly opaque, while black at .45 stops being a
+     shadow and becomes an outline, so the whole shade ladder drops to a fifth ---- */
+  --bevel-hi:var(--white-a70);
+  --bevel-md:var(--white-a70);
+  --bevel-lit:var(--white-a70);
+  --bevel-strong:var(--white-a70);
+  --bevel-lo:var(--white-a32);
+  --bevel-xs:var(--white-a32);
+  --bevel-faint:var(--white-a20);
+  --bevel-hair:var(--white-a20);
+  --bevel-hair-soft:var(--white-a20);
+  --edge-shade:var(--ink-a06);
+  --edge-shade-strong:var(--ink-a10);
+  --shadow-ink:var(--ink-a24);
+  --shadow-ink-45:var(--ink-a10);
+  --shadow-ink-60:var(--ink-a16);
+  --shadow-ink-72:var(--ink-a16);
+  --shadow-ink-85:var(--ink-a24);
+  --scrim:var(--ink-a24);
+
+  /* ---- the veils. They follow the ink, not the photograph: see rule 2 ---- */
+  --veil-photo-edge:var(--chalk-a12);
+  --veil-photo-from:var(--chalk-a55);
+  --veil-photo-mid:var(--chalk-a62);
+  --veil-photo-to:var(--chalk-a90);
+  --veil-brand:var(--chalk-a35);
+
+  /* ---- material ---- */
+  --surface-grid:var(--brass-grid-lit);
+  --surface-grain:var(--grain-fine-lit);
+  --surface-grain-coarse:var(--grain-coarse-lit);
+  --mark-logo:var(--logo-tick-dark);
+
+  /* The course chrome is deliberately absent. It is the frame the stage is shown
+     in, not the product, and section 2 already keeps it apart for exactly this
+     reason: a product theme should not have to think about the roadmap sidebar. */
 }

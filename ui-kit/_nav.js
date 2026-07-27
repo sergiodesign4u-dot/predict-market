@@ -59,6 +59,9 @@ window.KIT_NAV = [
     // screens have an Overview row above their families.
     var h = ['<a href="../ui-visual/overview.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Painted screens</a>',
              '<div class="sidebar-brand"><div class="sidebar-project-name">Design system</div></div>',
+             // the switch acts on the page, not on the tree, so it sits above the
+             // tree: the panel is 40 rows long and a control at its foot needs scrolling
+             '<button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>',
              '<nav class="sidebar-nav">',
              '<a href="overview.html" class="sidebar-page-link' + (current === 'overview' ? ' active' : '') + '">Overview</a>'];
     var group = null;

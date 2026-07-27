@@ -22,7 +22,7 @@ says so. No em dash.
 | chart | 1 | chart | 1 | 15 | 76 |
 | comments | 1 | comments-thread | 1 | 17 | 76 |
 | cookie-consent | 1 | cookie-consent | 0 | 21 | 76 |
-| course-chrome | 1 | course-chrome | 0 | 19 | 76 |
+| course-chrome | 1 | course-chrome | 0 | 26 | 76 |
 | dialog | 1 | dialog-shared | 0 | 20 | 76 |
 | event-detail | 2 | event-detail, facts-strip | 0 | 20 | 76 |
 | feed | 1 | feed-grid | 1 | 9 | 76 |
@@ -59,7 +59,7 @@ says so. No em dash.
 Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
 that actually means. The Classes table on each component page shows the same verdict per row.
 
-### Deletion candidates (24)
+### Deletion candidates (25)
 
 Styled, and carried by no element in the repo: not by a painted screen, not by the kit, not by a wireframe, not by a course page, and not by any script. Nothing is removed yet. The screens still carry their own inline style and only move onto components/index.css in step 5, so the measurement is not final until then; step 7 is the pass that acts on this list.
 
@@ -89,6 +89,7 @@ Styled, and carried by no element in the repo: not by a painted screen, not by t
 | `.ss-label` | state-block.css | styled and carried by no element anywhere |
 | `.ss-row` | state-block.css | styled and carried by no element anywhere |
 | `.state-switch` | state-block.css | styled and carried by no element anywhere |
+| `.theme-switch-inline` | course-chrome.css | styled and carried by no element anywhere |
 
 ### Grey-era leftovers (6)
 

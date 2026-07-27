@@ -30,11 +30,19 @@ import json
 import os
 import pathlib
 import re
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 COMP = ROOT / "components"
 KIT = ROOT / "ui-kit"
 UV = ROOT / "ui-visual"
+
+# the theme switch is written once, in the tree that also puts it on the 76
+# painted screens. Importing it keeps the stand pages and the product on the
+# same boot script instead of two copies that can drift.
+sys.path.insert(0, str(UV))
+from _theme_switch import BOOT as THEME_BOOT, BUTTON as THEME_BUTTON, button  # noqa: E402
+THEME_BUTTON_INLINE = button(inline=True)
 
 SPECIMENS = json.loads((KIT / "specimens" / "index.json").read_text(encoding="utf-8"))
 TOKENS = (COMP / "tokens.css").read_text(encoding="utf-8")
@@ -267,6 +275,7 @@ PAGE = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - {label}</title>
+{theme_boot}
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 </head>
@@ -346,7 +355,7 @@ for path in sorted(COMP.glob("*.css")):
         continue
     c = parse_component(name)
     page = PAGE.format(
-        name=name, label=LABEL.get(name, name), note=esc(NOTE.get(name, (
+        theme_boot=THEME_BOOT, name=name, label=LABEL.get(name, name), note=esc(NOTE.get(name, (
             "Every rule that paints this component, in one file. "
             "Colour through a role, geometry straight from a primitive."))),
         rules=c["rules"], nclasses=len(c["classes"]), nscreens=len(c["screens"]),
@@ -394,6 +403,9 @@ nav.append("""];
     // screens have an Overview row above their families.
     var h = ['<a href="../ui-visual/overview.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Painted screens</a>',
              '<div class="sidebar-brand"><div class="sidebar-project-name">Design system</div></div>',
+             // the switch acts on the page, not on the tree, so it sits above the
+             // tree: the panel is 40 rows long and a control at its foot needs scrolling
+             '<button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>',
              '<nav class="sidebar-nav">',
              '<a href="overview.html" class="sidebar-page-link' + (current === 'overview' ? ' active' : '') + '">Overview</a>'];
     var group = null;
@@ -523,6 +535,7 @@ hub = f"""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - Design system</title>
+{THEME_BOOT}
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 </head>
@@ -544,6 +557,9 @@ hub = f"""<!doctype html>
       <span class="tk-badge">{len(SPECIMENS)} specimens</span>
       <span class="tk-badge">one entry point</span>
     </div>
+    <div class="tk-theme">{THEME_BUTTON_INLINE}<span class="tk-theme-note">The whole product, on the
+      other ground. Only roles move; not one primitive is redefined. Section 3 of
+      <code>components/tokens.css</code> is the entire theme.</span></div>
     <div class="tk-jump"><a href="tokens.html">Tokens</a><a href="icons.html">Icons</a>
       <a href="kit.html">Frozen kit</a><a href="selftest.html">Self test</a>
       <a href="../ui-visual/overview.html">Painted screens</a></div>

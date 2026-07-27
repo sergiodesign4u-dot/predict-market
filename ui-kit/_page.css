@@ -78,6 +78,33 @@
 .tk-sw-cmt{display:block;font-family:var(--font-body,'DM Sans',sans-serif);font-size:10.5px;
   color:var(--text-muted,#a49d8f);margin-top:6px;line-height:var(--leading-base)}
 
+/* ---- the two grounds ---- */
+/* Side by side. Each figure carries data-theme itself, so this is not a picture
+   of the other theme, it IS the other theme, rendered live on this page. */
+.tk-theme-grid{display:grid;grid-template-columns:1fr;gap:var(--space-16);margin:var(--space-20) 0}
+@media(min-width:720px){.tk-theme-grid{grid-template-columns:1fr 1fr}}
+.tk-theme-fig{padding:var(--space-16);border-radius:var(--radius-10);background:var(--bg-plate);border:1px solid var(--border-hairline);box-shadow:inset 0 1px 0 var(--bevel-hi),0 12px 26px -20px var(--shadow-ink-85)}
+.tk-theme-fig>b{display:block;font-family:var(--font-body);font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-12)}
+.tk-theme-demo{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-8);padding:var(--space-16);border-radius:var(--radius-10);background:var(--bg-card);border:1px solid var(--border-hairline)}
+.tk-theme-demo em{flex:1 1 100%;font-style:normal;font-family:var(--font-display);font-size:var(--text-14);font-weight:var(--weight-semibold);line-height:var(--leading-tight);color:var(--text-primary)}
+.tk-theme-demo i{font-style:normal;font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);padding:var(--space-8) var(--space-12);border-radius:var(--radius-6)}
+.tk-theme-cta{background:var(--color-action);color:var(--text-on-brass)}
+.tk-theme-yes{background:var(--outcome-yes-fill);border:1px solid var(--outcome-yes-line);color:var(--outcome-yes-text)}
+
+/* the role table shows both grounds, so it needs a pair of dots and room for
+   two value columns. Fixed layout keeps one long value from setting the width. */
+.tk-pair{white-space:nowrap}
+.tk-pair .tk-dot+.tk-dot{margin-left:var(--space-2)}
+.tk-same{font-size:var(--text-11);color:var(--text-muted);opacity:.75}
+.tk-tbl-theme th:first-child,.tk-tbl-theme td:first-child{width:52px}
+.tk-tbl-theme th:nth-child(2),.tk-tbl-theme td:nth-child(2){width:22%}
+.tk-tbl-theme th:last-child,.tk-tbl-theme td:last-child{width:22%}
+
+/* the theme switch in the hub header. The button itself is chrome and styled in
+   course-chrome.css; here it only gets a box to stand in and a sentence beside it */
+.tk-theme{display:flex;align-items:center;gap:var(--space-16);flex-wrap:wrap;margin:var(--space-20) 0 var(--space-12);padding:var(--space-4) 0 0;border-top:1px solid var(--chrome-border)}
+.tk-theme-note{flex:1 1 260px;min-width:0;font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted)}
+
 /* ---- role table ---- */
 /* table-layout:fixed on purpose. Without it a single long value (a role that
    resolves to the brass grid, a state rule that is a whole box-shadow stack)

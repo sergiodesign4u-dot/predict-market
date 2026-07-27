@@ -1,7 +1,7 @@
 /* components/tabs.css
    Component: tabs. Classes: .ed-panel-activity, .ed-panel-comments, .ed-panel-holders, .ed-panel-positions, .ed-range, .ed-tab-count, .ed-tabbar, .ed-tablabel, .ed-tabpanel, .ed-tabradio, .ed-tabs, .ed-tabwrap, .ptab-bar, .ptab-in and 8 more.
 
-   Reads: --bg-chip, --bg-well, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --glow-focus, --text-brass, --text-muted, --text-primary
+   Reads: --bg-chip, --bg-well, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --text-brass, --text-muted, --text-primary, --tint-brass-16
    Stand:  ui-kit/tabs.html
    Stands on: 20 ui-visual screens (active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, active-bets-history-empty.html, active-bets-history-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -41,7 +41,7 @@
 .app-case .cmt-controls .seg{order:-1;display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:1px solid var(--border-hairline);border-radius:var(--radius-10)}
 .app-case .cmt-controls .seg button{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background .15s ease,color .15s ease}
 .app-case .cmt-controls .seg button:hover{color:var(--text-primary)}
-.app-case .cmt-controls .seg button.sel{background:var(--glow-focus);color:var(--text-brass);font-weight:var(--weight-bold)}
+.app-case .cmt-controls .seg button.sel{background:var(--tint-brass-16);color:var(--text-brass);font-weight:var(--weight-bold)}
 .app-case .tabs{gap:var(--space-8);margin:0 0 var(--space-16)}
 .app-case .tabs button{border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer}
 .app-case .tabs button:hover{color:var(--text-primary)}
@@ -56,7 +56,7 @@
 .app-case .ed-range{display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:1px solid var(--border-hairline);border-radius:var(--radius-10)}
 .app-case .ed-range button{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-mono);font-size:var(--text-12);cursor:pointer;transition:background .15s ease,color .15s ease}
 .app-case .ed-range button:hover{color:var(--text-primary)}
-.app-case .ed-range button.sel{background:var(--glow-focus);color:var(--text-brass);font-weight:var(--weight-semibold)}
+.app-case .ed-range button.sel{background:var(--tint-brass-16);color:var(--text-brass);font-weight:var(--weight-semibold)}
 @media(max-width:640px){
   .app-case .ptab-lbl{min-height:var(--control-44)}
   .app-case .tabs button{min-height:var(--control-44)}

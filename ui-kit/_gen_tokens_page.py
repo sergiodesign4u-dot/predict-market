@@ -19,6 +19,10 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "components" / "tokens.css"
 OUT = ROOT / "ui-kit" / "tokens.html"
 
+# one definition of the theme switch, shared with the painted screens
+import sys; sys.path.insert(0, str(ROOT / "ui-visual"))
+from _theme_switch import BOOT as THEME_BOOT  # noqa: E402
+
 # ---------------------------------------------------------------- parsing ---
 
 def parse(text):
@@ -78,8 +82,12 @@ def clean(s):
 src = SRC.read_text(encoding="utf-8")
 head_end = src.index("1. PRIMITIVE")
 split = src.index("2. SEMANTIC")
+theme_split = src.index("3. THEME")
 PRIM = parse(src[head_end:split])
-SEM = parse(src[split:])
+SEM = parse(src[split:theme_split])
+# section 3 is not a third level of tokens. It is the same roles again, with the
+# values daylight needs, so it is parsed as an override map and never as a group.
+THEME = parse(src[theme_split:])
 
 # the one responsive token is declared twice (base + the mobile @media). Keep the
 # base declaration in "page frame" and remember the override for the caption.
@@ -96,15 +104,34 @@ for g in PRIM + SEM:
     for t in g["tokens"]:
         FLAT[t["name"]] = t["value"]
 
+# the light theme, as {role: value}. A role missing here is a role daylight
+# deliberately did not move, and the page says so rather than repeating a value.
+LIGHT = {}
+for g in THEME:
+    for t in g["tokens"]:
+        LIGHT[t["name"]] = t["value"]
 
-def resolve(value, depth=0):
-    """follow var() chains down to a literal"""
+
+def resolve(value, depth=0, light=False):
+    """follow var() chains down to a literal, in one theme or the other"""
     if depth > 8:
         return value
     m = re.fullmatch(r"var\((--[\w-]+)\)", value.strip())
-    if m and m.group(1) in FLAT:
-        return resolve(FLAT[m.group(1)], depth + 1)
+    if not m:
+        return value
+    name = m.group(1)
+    if light and name in LIGHT:
+        return resolve(LIGHT[name], depth + 1, light)
+    if name in FLAT:
+        return resolve(FLAT[name], depth + 1, light)
     return value
+
+
+def value_in(name, light=False):
+    """the declared value of a role in one theme"""
+    if light and name in LIGHT:
+        return LIGHT[name]
+    return FLAT.get(name, "")
 
 
 # --------------------------------------------------------------- contrast ---
@@ -140,13 +167,14 @@ def lum(c):
     return 0.2126 * ch(c[0]) + 0.7152 * ch(c[1]) + 0.0722 * ch(c[2])
 
 
-def ratio(fg_tok, bg_tok, tint_tok=None):
-    fg, bg = rgb(resolve(FLAT[fg_tok])), rgb(resolve(FLAT[bg_tok]))
+def ratio(fg_tok, bg_tok, tint_tok=None, light=False):
+    fg = rgb(resolve(value_in(fg_tok, light), light=light))
+    bg = rgb(resolve(value_in(bg_tok, light), light=light))
     if not fg or not bg:
         return None
     base = bg[:3]
     if tint_tok:
-        t = rgb(resolve(FLAT[tint_tok]))
+        t = rgb(resolve(value_in(tint_tok, light), light=light))
         if t:
             base = over(t, base)
     f = over(fg, base)
@@ -240,24 +268,39 @@ def scale_rows(tokens, cap=None):
 
 
 def role_table(g):
+    """Every role in both grounds at once. The two swatches are not a preview of
+       the switch: each one carries data-theme itself, so the row shows daylight
+       while you are standing in the Vault and the other way round. A role that
+       daylight did not move says so, because that is a decision and not a gap."""
     rows = []
     for t in g["tokens"]:
+        name = t["name"]
         target = re.fullmatch(r"var\((--[\w-]+)\)", t["value"].strip())
         target = target.group(1) if target else t["value"]
-        val = resolve(t["value"])
+        moved = name in LIGHT
+        lt_val = resolve(value_in(name, True), light=True)
+        lt_target = re.fullmatch(r"var\((--[\w-]+)\)", value_in(name, True).strip())
+        lt_target = lt_target.group(1) if lt_target else value_in(name, True)
         from_note = t["comment"]
         if from_note.lower().startswith("from:"):
             from_note = from_note[5:].strip()
+        light_cell = (f'<span class="tk-points">{esc(lt_target)}</span>'
+                      if moved else '<span class="tk-same">not moved</span>')
         rows.append(
-            f'<tr><td><span class="tk-dot" style="background:var({t["name"]})"></span></td>'
-            f'<td class="tk-role">{esc(t["name"])}</td>'
+            f'<tr><td class="tk-pair">'
+            f'<span class="tk-dot" data-theme="dark" style="background:var({name})"></span>'
+            f'<span class="tk-dot" data-theme="light" style="background:var({name})"></span></td>'
+            f'<td class="tk-role">{esc(name)}</td>'
             f'<td class="tk-points">{esc(target)}</td>'
-            f'<td class="tk-hex">{esc(val)}</td>'
+            f'<td class="tk-hex">{esc(resolve(t["value"]))}</td>'
+            f'<td>{light_cell}</td>'
+            f'<td class="tk-hex">{esc(lt_val) if moved else ""}</td>'
             f'<td class="tk-from">{esc(from_note)}</td></tr>')
     note = f'<p class="tk-note">{esc(g["note"])}</p>' if g["note"] else ""
     return (f'<h3 class="tk-subh">{esc(g["title"])}</h3>{note}'
-            '<table class="tk-tbl"><thead><tr><th></th><th>role</th><th>points at</th>'
-            '<th>resolves to</th><th>read from</th></tr></thead><tbody>'
+            '<table class="tk-tbl tk-tbl-theme"><thead><tr><th></th><th>role</th>'
+            '<th colspan="2">Vault</th><th colspan="2">Daylight</th>'
+            '<th>read from</th></tr></thead><tbody>'
             + "\n".join(rows) + "</tbody></table>")
 
 
@@ -386,24 +429,35 @@ motion_html = "\n".join(motion_html)
 sem_html = "\n".join(role_table(g) for g in SEM if g["tokens"])
 
 # ---- contrast
-crows = []
+def verdict(r):
+    return ('<span class="tk-pass">AA</span>' if r >= 4.5
+            else '<span class="tk-warn">AA large</span>' if r >= 3
+            else '<span class="tk-fail">below AA</span>')
+
+
+crows, worst_light = [], []
 for fg, bg, tint, what in PAIRS:
     r = ratio(fg, bg, tint)
+    rl = ratio(fg, bg, tint, light=True)
     if r is None:
         continue
-    verdict = ('<span class="tk-pass">AA</span>' if r >= 4.5
-               else '<span class="tk-warn">AA large</span>' if r >= 3
-               else '<span class="tk-fail">below AA</span>')
+    if rl is not None and rl < 4.5:
+        worst_light.append((what, rl))
     crows.append(f'<tr><td class="tk-role">{esc(fg)}</td><td class="tk-points">{esc(bg)}'
                  + (f' + {esc(tint)}' if tint else "")
-                 + f'</td><td class="tk-hex">{r}:1</td><td>{verdict}</td>'
-                 f'<td class="tk-from">{esc(what)}</td></tr>')
-contrast_html = ('<table class="tk-tbl"><thead><tr><th>text</th><th>on</th><th>ratio</th>'
-                 '<th>WCAG</th><th>where</th></tr></thead><tbody>'
+                 + f'</td><td class="tk-hex">{r}:1</td><td>{verdict(r)}</td>'
+                 + (f'<td class="tk-hex">{rl}:1</td><td>{verdict(rl)}</td>'
+                    if rl is not None else '<td colspan="2"></td>')
+                 + f'<td class="tk-from">{esc(what)}</td></tr>')
+contrast_html = ('<table class="tk-tbl"><thead><tr><th>text</th><th>on</th>'
+                 '<th colspan="2">Vault</th><th colspan="2">Daylight</th>'
+                 '<th>where</th></tr></thead><tbody>'
                  + "\n".join(crows) + "</tbody></table>")
 
 n_prim = sum(len(g["tokens"]) for g in PRIM)
 n_sem = sum(len(g["tokens"]) for g in SEM)
+n_light = len(LIGHT)
+n_kept = n_sem - n_light
 
 SIDEBAR = """<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
 <div class="rm-overlay" id="rmOverlay"></div>
@@ -415,6 +469,7 @@ HTML = f"""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - Tokens</title>
+{THEME_BOOT}
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 </head>
@@ -435,13 +490,13 @@ HTML = f"""<!doctype html>
     <div class="tk-badges">
       <span class="tk-badge">{n_prim} primitives</span>
       <span class="tk-badge">{n_sem} roles</span>
-      <span class="tk-badge">0 new values</span>
-      <span class="tk-badge">Vault</span>
+      <span class="tk-badge">{n_light} moved by daylight</span>
+      <span class="tk-badge">two themes</span>
     </div>
     <div class="tk-jump">
       <a href="#colour">Colour</a><a href="#material">Material</a><a href="#geometry">Geometry</a>
       <a href="#type">Type</a><a href="#motion">Motion</a><a href="#roles">Roles</a>
-      <a href="#contrast">Contrast</a><a href="#log">Merges</a>
+      <a href="#theme">Theme</a><a href="#contrast">Contrast</a><a href="#log">Merges</a>
     </div>
   </header>
 
@@ -513,16 +568,58 @@ HTML = f"""<!doctype html>
     {sem_html}
   </section>
 
+  <section class="tk-sec" id="theme">
+    <h2 data-n="07">The theme</h2>
+    <p class="tk-note">The product is dark, so its theme is a light one, and the attribute says what it
+    is: <code>[data-theme="light"]</code>. It exists as a <b>proof</b>, not as a feature. A rebrand
+    would prove nothing about this file, because swapping one metal for another is a change of
+    primitive and works just as well on a flat stylesheet with no roles in it at all. A theme is the
+    test that needs the second level: the ground inverts, the ink inverts, light and shade change
+    places, and the action has to still read as the action on the other side. That sentence is only
+    writable if the reason a colour is in a place is stored somewhere, and here it is stored in the
+    role name.</p>
+    <div class="tk-theme-grid">
+      <div class="tk-theme-fig" data-theme="dark"><b>Vault</b>
+        <span class="tk-theme-demo"><em>Will the ECB cut rates in March?</em>
+        <i class="tk-theme-cta">Confirm bet</i><i class="tk-theme-yes">YES 62c</i></span></div>
+      <div class="tk-theme-fig" data-theme="light"><b>Daylight</b>
+        <span class="tk-theme-demo"><em>Will the ECB cut rates in March?</em>
+        <i class="tk-theme-cta">Confirm bet</i><i class="tk-theme-yes">YES 62c</i></span></div>
+    </div>
+    <p class="tk-note">Both panels are on this page at the same time, in whichever theme you are
+    reading it in. Nothing is screenshotted: each one carries <code>data-theme</code> itself and the
+    roles resolve inside it, which is what section 2's selector buys.</p>
+    <h3 class="tk-subh">What it is allowed to touch</h3>
+    <p class="tk-note">{n_light} of the {n_sem} roles are overridden and <b>not one primitive is
+    redefined</b>, so the Vault palette above still says exactly what it said. The values daylight
+    needs are their own primitives at the end of section 1: a chalk ramp, a warm ink ramp and its
+    alphas, one dark brass, a darker green and red, a weaker grain and a second logo mark. The other
+    {n_kept} roles are the interesting half: a photograph is dark in both themes, so
+    <code>--text-on-photo</code>, the four <code>--veil-photo-*</code> stops and
+    <code>--scrim-photo</code> stay where they are, and <code>--color-action</code> does not move at
+    all, because a mid-luminance metal reads on both stones. What moves is brass as ink.</p>
+    <h3 class="tk-subh">What it found</h3>
+    <p class="tk-note">A theme is a search as much as a feature. Six places in the system could not
+    follow it, and every one of them was invisible while there was only one ground: the stone grain
+    and the logo mark were read straight from a primitive by twelve component files; the drawer
+    backdrop was reading the emboss shade instead of the scrim; the close disc on a photographic head
+    was reading the ink of a drop shadow, two jobs on one role; five hex literals drew the
+    multi-outcome chart from inside a page script, a whole palette the token file could not see; and
+    a grey from the wireframe era was still written into a style attribute. All six are fixed, and
+    the last of them is now a declared series scale.</p>
+  </section>
+
   <section class="tk-sec" id="contrast">
-    <h2 data-n="07">Contrast</h2>
-    <p class="tk-note">Computed from the resolved values, tinted fills composited over their surface.
-    AA is 4.5:1 for body text and 3:1 for large text and interface edges. The dark theme adds its own
-    column here in step 6.</p>
+    <h2 data-n="08">Contrast</h2>
+    <p class="tk-note">Computed from the resolved values, tinted fills composited over their surface,
+    and computed twice: once down each theme's own var() chain. AA is 4.5:1 for body text and 3:1 for
+    large text and interface edges. Daylight clears AA on every pair; it does not clear it by the
+    Vault's margin, and the two columns are here so that is visible rather than claimed.</p>
     {contrast_html}
   </section>
 
   <section class="tk-sec" id="log">
-    <h2 data-n="08">What the rescale moved</h2>
+    <h2 data-n="09">What the rescale moved</h2>
     <p class="tk-note">The file was <b>read out of the painted product</b>, which was the right method for
     a colour role and the wrong one for a scale: every literal anyone had typed became a token. 348 of
     them. This is what became of the families, and the whole map is data in

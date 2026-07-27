@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();
+if(on){r.removeAttribute('data-theme')}else{r.setAttribute('data-theme','light')}
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);});})();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UI Visual - Event Detail (error)</title>
@@ -34,6 +51,7 @@
   <aside class="sidebar" id="rmSidebar">
     <a href="../research/research.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>
     <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual - screens</div></div>
+    <button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>
     <div class="sidebar-nav">
       <a href="overview.html" class="sidebar-page-link">Overview</a>
       <a class="sidebar-page-link">Event Feed</a>
@@ -1135,7 +1153,7 @@
   /* multi-outcome chart: ALL outcome lines + legend; range switch + highlight */
   document.querySelectorAll('.ed-chart-multi').forEach(function(chart){
     var NAMES=['JD Vance','Donald Trump','Ron DeSantis','Nikki Haley','Other'];
-    var COLORS=['#4fd694','#5b9df0','#d9b968','#c77dff','#9aa0aa'];
+    var COLORS=['var(--series-1)','var(--series-2)','var(--series-3)','var(--series-4)','var(--series-5)'];
     var DATA=[
       [38,40,37,41,39,43,40,44,42,47,44,49,41],
       [26,24,27,25,23,22,24,21,23,20,22,21,22],

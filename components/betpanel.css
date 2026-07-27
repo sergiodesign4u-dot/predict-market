@@ -1,7 +1,7 @@
 /* components/betpanel.css
    Component: betpanel. Classes: .bet-dock, .bet-panel, .bet-sheet, .bp-amount-lbl, .bp-amount-row, .bp-cash, .bp-change, .bp-dir, .bp-head, .bp-hint, .bp-inner, .bp-pct, .bp-sel-name, .bp-selected and 6 more.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-strong, --bg-card-to, --bg-control, --bg-dock, --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --outcome-no, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text-lit, --outcome-yes, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text-lit, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --text-brass, --text-muted, --text-on-no, --text-on-yes, --text-primary
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-strong, --bg-card-to, --bg-control, --bg-dock, --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --outcome-no, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text-lit, --outcome-yes, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text-lit, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-no, --text-on-yes, --text-primary
    Stand:  ui-kit/betpanel.html
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -29,7 +29,7 @@
 .bp-selected{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);border:1px solid var(--border-hairline);padding:var(--space-8)}
 .bp-sel-name{font-size:var(--text-13);font-weight:var(--weight-bold);display:flex;align-items:center;gap:var(--space-8)}
 .bp-change{font-size:var(--text-10);text-decoration:underline;white-space:nowrap}
-.app-case .bet-panel{position:relative;overflow:hidden;background-color:var(--bg-plate);background-image:var(--grain-fine),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
+.app-case .bet-panel{position:relative;overflow:hidden;background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
     inset 1px 0 0 var(--bevel-faint),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 30px 58px -34px var(--shadow-ink-85),0 12px 26px -18px var(--shadow-ink-72)}
@@ -55,7 +55,7 @@
 .app-case :is(.bet-panel,.bet-sheet) .line span:last-child{color:var(--text-primary)}
 .app-case :is(.bet-panel,.bet-sheet) .line.total{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 .app-case :is(.bet-panel,.bet-sheet) .line.total span:last-child{color:var(--text-brass)}
-.app-case .bet-dock{position:sticky;bottom:52px;z-index:6;gap:var(--space-8);padding:var(--space-8) var(--space-12);border:0;border-top:1px solid var(--border-brass);background-color:var(--bg-dock);background-image:var(--grain-fine),linear-gradient(160deg,var(--bg-dock-from),var(--bg-card-to));background-blend-mode:overlay,normal;box-shadow:0 -14px 26px -18px var(--shadow-ink-85)}
+.app-case .bet-dock{position:sticky;bottom:52px;z-index:6;gap:var(--space-8);padding:var(--space-8) var(--space-12);border:0;border-top:1px solid var(--border-brass);background-color:var(--bg-dock);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-dock-from),var(--bg-card-to));background-blend-mode:overlay,normal;box-shadow:0 -14px 26px -18px var(--shadow-ink-85)}
 .app-case .bet-dock .bp-side{flex:1;border-radius:var(--radius-10);border:1px solid var(--border-hairline);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);padding:var(--space-8) var(--space-8);cursor:pointer}
 .app-case .bet-dock .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-10);font-weight:var(--weight-medium);color:inherit;opacity:.85}
 .app-case .bet-dock .bp-side.sel:first-child{background:var(--outcome-yes-fill-strong);color:var(--outcome-yes-text-lit);border-color:var(--outcome-yes-line)}

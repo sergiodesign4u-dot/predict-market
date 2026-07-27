@@ -1,7 +1,7 @@
 /* components/course-chrome.css
    the course roadmap sidebar every page of this repo carries. Not product.
 
-   Reads: --bevel-hair, --border-hairline, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-text, --edge-shade-strong, --text-brass
+   Reads: --bevel-hair, --border-hairline, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-text, --scrim, --swatch-dark, --swatch-light, --text-brass
    Stand:  ui-kit/course-chrome.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -9,7 +9,7 @@
 .wf-screen > a.planned::after{content:"planned";font-size:var(--text-10);text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--border-hairline);padding:0 var(--space-4);margin-left:var(--space-8)}
 .rm-toggle{position:fixed;top:12px;left:12px;z-index:201;background:var(--chrome-bg);border:1px solid var(--chrome-border);border-radius:var(--radius-6);width:var(--control-36);height:var(--control-36);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-4);cursor:pointer}
 .rm-toggle span{display:block;width:var(--icon-16);height:1.5px;background:var(--chrome-text);border-radius:var(--radius-2)}
-.rm-overlay{display:none;position:fixed;inset:0;background:var(--edge-shade-strong);z-index:199;backdrop-filter:blur(2px)}
+.rm-overlay{display:none;position:fixed;inset:0;background:var(--scrim);z-index:199;backdrop-filter:blur(2px)}
 .rm-overlay.open{display:block}
 .sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--chrome-bg);border-right:1px solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:200;transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
 .sidebar.open{transform:translateX(0)}
@@ -35,6 +35,23 @@
 .sidebar-back .bk-arrow{font-size:var(--text-14);line-height:var(--leading-none)}
 .sidebar-sub-head{font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--chrome-muted);padding:var(--space-8) var(--space-16) var(--space-4) var(--space-28);opacity:.7}
 .sidebar-note{font-size:var(--text-11);line-height:var(--leading-base);color:var(--chrome-muted);padding:var(--space-8) var(--space-16);opacity:.7}
+/* the theme switch. It lives in the chrome and is drawn in chrome colour on
+   purpose: it is the control that moves the product, so it must not move with
+   it. The two swatches are the two grounds, side by side, and the one in play
+   is ringed, so the button says what it will do without a word of label. */
+.theme-switch{display:flex;align-items:center;gap:var(--space-8);width:100%;box-sizing:border-box;margin:0;padding:var(--space-12) var(--space-16);background:none;border:0;border-bottom:1px solid var(--chrome-border);font-family:inherit;font-size:var(--text-12);font-weight:var(--weight-semibold);letter-spacing:.04em;color:var(--chrome-muted);text-align:left;cursor:pointer;min-height:var(--control-44)}
+.theme-switch:hover{color:var(--chrome-text);background:var(--bevel-hair)}
+.theme-switch .ts-swatches{display:flex;flex:0 0 auto;gap:var(--space-4)}
+.theme-switch .ts-sw{width:var(--space-16);height:var(--space-16);border-radius:var(--radius-6);border:1px solid var(--chrome-border);box-shadow:none}
+.theme-switch .ts-sw.ts-dark{background:var(--swatch-dark)}
+.theme-switch .ts-sw.ts-light{background:var(--swatch-light)}
+.theme-switch[aria-pressed="false"] .ts-sw.ts-dark,
+.theme-switch[aria-pressed="true"] .ts-sw.ts-light{border-color:var(--chrome-accent);box-shadow:0 0 0 1px var(--chrome-accent)}
+.theme-switch .ts-label{flex:1 1 auto;min-width:0}
+.theme-switch:focus-visible{outline:2px solid var(--chrome-accent);outline-offset:-2px}
+/* the same control laid out in a row rather than as the last item of a panel */
+.theme-switch-inline{width:auto;flex:0 0 auto;border-bottom:0;padding-left:0;padding-right:var(--space-16)}
+
 @media(min-width:860px){
   .rm-toggle,.rm-overlay{display:none!important}
   .sidebar{transform:none;transition:none}

@@ -140,6 +140,69 @@ Two gates hold the line, in `ui-kit/_check_kit.py`:
 
 ---
 
+## The theme, and why it is the proof
+
+The product is dark, so its theme is a light one. Section 3 of `tokens.css` is the whole of it:
+`[data-theme="light"]`, overriding **roles only**. Not one primitive is redefined; the values daylight
+needs are their own primitives at the end of section 1 (a chalk ramp, a warm ink ramp and its alphas,
+one dark brass, a darker green and red, five chalk veil alphas, a weaker grain, a second logo mark).
+
+It is a **proof, not a feature**. Whether daylight ships is a product decision taken separately;
+`python3 ui-visual/_theme_switch.py --strip` removes the harness in one command.
+
+**Why a theme and not a rebrand.** A rebrand swaps primitives, and it works just as well on a flat
+stylesheet with no roles in it: change the hex, everything follows. It proves nothing about the second
+level. A theme is the test that needs it, because the ground inverts, the ink inverts, light and shade
+swap places, and the ACTION still has to read as the action on the other side. That last sentence is
+only writable if the reason a colour is in a place is stored somewhere, and here it is stored in the
+role name.
+
+### The rules the theme block follows
+
+1. **Roles only.** A primitive redefined inside a theme is the two levels collapsing back into one.
+2. **A role that does not move is a decision.** `--color-action` does not move at all, because a
+   mid-luminance metal reads on both stones; what moves is brass as ink. `--text-on-photo` stays
+   white and `--scrim-photo` stays black, because a white glyph and the disc behind it sit straight
+   on a photograph and a photograph does not get lighter. The course chrome is absent on purpose: it
+   is the frame the stage is shown in, not the product.
+3. **Contrast is computed, not assumed**, in both themes, down each theme's own `var()` chain, and
+   against the tint a label actually sits on rather than the bare surface. `tokens.html#contrast`
+   prints both columns so the difference is visible instead of claimed. Daylight clears AA on every
+   pair; it does not clear it by the Vault's margin, and that is stated rather than hidden.
+4. **The selector is `:root,[data-theme="dark"]`.** A theme is then not only a page state: any
+   element can be marked and its subtree renders in that theme, which is what lets a role table show
+   both grounds at once, live, on one page.
+
+### A veil follows the ink, not the photograph
+
+The sharpest thing the theme taught. `--veil-photo-*` looks like it belongs with `--scrim-photo` and
+does not. A veil is not "a dark colour over a picture", it is the layer that guarantees the words on
+top of it: when the ink went dark the veils had to go pale, or the featured card reads dark grey on
+dark grey. Two roles that look like one idea are two.
+
+### What the theme found
+
+Every one of these was invisible while there was one ground, and all seven are fixed:
+
+| # | The hole | Where |
+|---|---|---|
+| 1 | the stone grain read straight from a primitive | 11 declarations in 10 component files, now `--surface-grain` |
+| 2 | the brass logo mark, same category | `footer.css`, now `--mark-logo` |
+| 3 | the drawer backdrop read the emboss shade, not the scrim | `course-chrome.css` |
+| 4 | the close disc on a photographic head read the ink of a drop shadow | 6 declarations, now `--scrim-photo` |
+| 5 | a SELECTED state painted with the focus-ring role | `tabs.css` x2, `options.css` |
+| 6 | five hex literals drew the multi-outcome chart from inside a page script | 13 screens, now `--series-1..5` |
+| 7 | a grey from the wireframe era written into a style attribute | 2 screens |
+
+Number 6 is the one worth remembering: a whole categorical palette lived outside the token file, so it
+was invisible to the file, to the gates and to any theme. It is now a declared scale, handed to the
+SVG as `var(--series-N)` so the browser resolves it live and the chart follows the switch.
+
+**Gate 13** makes the rule at the top of this section executable: a component that reads a colour or a
+material primitive fails the build, and every painted screen has to carry both halves of the switch.
+
+---
+
 ## Naming
 
 Roles are read out of the product, not borrowed. The audit (`tokens-audit.md`) lists, for every role,

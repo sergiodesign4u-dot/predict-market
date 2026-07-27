@@ -4,6 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - How-it-works dialog</title>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();
+if(on){r.removeAttribute('data-theme')}else{r.setAttribute('data-theme','light')}
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);});})();</script>
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 </head>
@@ -37,14 +54,14 @@
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.hiw-close:focus-visible,.hiw-full:focus-visible</td><td class='ck-decl'>outline:2px solid var(--text-brass);outline-offset:2px</td></tr><tr><td class='tk-role'>.app-dialog.hiw-dialog .hiw-close:hover</td><td class='ck-decl'>background:color-mix(in oklab,var(--shadow-ink) 55%,transparent);border-color:var(--line-on-photo-hover)</td></tr><tr><td class='tk-role'>.app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow</td><td class='ck-decl'>transform:translateX(3px)</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.hiw-close:focus-visible,.hiw-full:focus-visible</td><td class='ck-decl'>outline:2px solid var(--text-brass);outline-offset:2px</td></tr><tr><td class='tk-role'>.app-dialog.hiw-dialog .hiw-close:hover</td><td class='ck-decl'>background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)</td></tr><tr><td class='tk-role'>.app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow</td><td class='ck-decl'>transform:translateX(3px)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
     <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-dialog-head-from)"></i><code>--bg-dialog-head-from</code></span><span class="ck-role"><i style="background:var(--bg-plate-to)"></i><code>--bg-plate-to</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--color-action-lit)"></i><code>--color-action-lit</code></span><span class="ck-role"><i style="background:var(--line-on-photo)"></i><code>--line-on-photo</code></span><span class="ck-role"><i style="background:var(--line-on-photo-hover)"></i><code>--line-on-photo-hover</code></span><span class="ck-role"><i style="background:var(--shadow-ink)"></i><code>--shadow-ink</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-on-brass)"></i><code>--text-on-brass</code></span><span class="ck-role"><i style="background:var(--text-on-photo)"></i><code>--text-on-photo</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--text-strong)"></i><code>--text-strong</code></span></div>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-dialog-head-from)"></i><code>--bg-dialog-head-from</code></span><span class="ck-role"><i style="background:var(--bg-plate-to)"></i><code>--bg-plate-to</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--color-action-lit)"></i><code>--color-action-lit</code></span><span class="ck-role"><i style="background:var(--line-on-photo)"></i><code>--line-on-photo</code></span><span class="ck-role"><i style="background:var(--line-on-photo-hover)"></i><code>--line-on-photo-hover</code></span><span class="ck-role"><i style="background:var(--scrim-photo)"></i><code>--scrim-photo</code></span><span class="ck-role"><i style="background:var(--shadow-ink)"></i><code>--shadow-ink</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-on-brass)"></i><code>--text-on-brass</code></span><span class="ck-role"><i style="background:var(--text-on-photo)"></i><code>--text-on-photo</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--text-strong)"></i><code>--text-strong</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
@@ -69,7 +86,7 @@
     <details class="ck-src"><summary>components/hiw-dialog.css</summary><pre>/* components/hiw-dialog.css
    Component: hiw-dialog. Classes: .hiw-arrow, .hiw-body, .hiw-close, .hiw-dialog, .hiw-faq, .hiw-full, .hiw-glow, .hiw-head, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-lead, .hiw-sec and 2 more.
 
-   Reads: --bg-control, --bg-dialog-head-from, --bg-plate-to, --border-hairline, --color-action, --color-action-lit, --line-on-photo, --line-on-photo-hover, --shadow-ink, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong
+   Reads: --bg-control, --bg-dialog-head-from, --bg-plate-to, --border-hairline, --color-action, --color-action-lit, --line-on-photo, --line-on-photo-hover, --scrim-photo, --shadow-ink, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong
    Stand:  ui-kit/hiw-dialog.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -87,8 +104,8 @@ dialog.app-dialog .hiw-full{display:block;box-sizing:border-box;padding:var(--sp
 .hiw-close:focus-visible,.hiw-full:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 dialog.app-dialog .hiw-full{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);border-radius:var(--radius-10)}
 .app-dialog.hiw-dialog{max-width:var(--container-dialog);overflow:hidden}
-.app-dialog.hiw-dialog .hiw-close{position:absolute;top:12px;right:12px;z-index:3;width:var(--control-32);height:var(--control-32);display:flex;align-items:center;justify-content:center;padding:0;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--shadow-ink) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
-.app-dialog.hiw-dialog .hiw-close:hover{background:color-mix(in oklab,var(--shadow-ink) 55%,transparent);border-color:var(--line-on-photo-hover)}
+.app-dialog.hiw-dialog .hiw-close{position:absolute;top:12px;right:12px;z-index:3;width:var(--control-32);height:var(--control-32);display:flex;align-items:center;justify-content:center;padding:0;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+.app-dialog.hiw-dialog .hiw-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
 .app-dialog.hiw-dialog .hiw-close .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo)}
 .app-dialog.hiw-dialog .hiw-hero{position:relative;overflow:hidden;padding:var(--space-32) var(--space-24) var(--space-28)}
 .app-dialog.hiw-dialog .hiw-hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--shadow-ink),transparent 72%);mask-image:linear-gradient(150deg,var(--shadow-ink),transparent 72%);opacity:.24;pointer-events:none}

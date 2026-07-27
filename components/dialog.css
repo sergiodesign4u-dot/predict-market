@@ -1,7 +1,7 @@
 /* components/dialog.css
    Component: dialog. Classes: .app-dialog, .backdrop, .dlg-note, .fine, .grab, .sheet, .sheet-body, .sheet-close, .sheet-head, .sheet-sub.
 
-   Reads: --bevel-hair, --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --result-won, --result-won-stone, --scrim, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-45
+   Reads: --bevel-hair, --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --result-won, --result-won-stone, --scrim, --scrim-photo, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-45
    Stand:  ui-kit/dialog.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -45,16 +45,16 @@ dialog.app-dialog.outcome-dialog .sheet-head::before{content:'';position:absolut
 dialog.app-dialog.win-dialog .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--result-won) 70%,var(--control-knob) 6%) 0%,var(--result-won) 42%,transparent 70%);filter:blur(44px);opacity:.34;pointer-events:none}
 dialog.app-dialog.outcome-dialog .sheet-head h2{position:relative;z-index:1;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;max-width:16ch;text-wrap:balance}
 dialog.app-dialog.outcome-dialog .sheet-head a{position:absolute;top:0;right:0;z-index:3;line-height:0;text-decoration:none}
-dialog.app-dialog.outcome-dialog .sheet-close{position:absolute;top:13px;right:13px;width:var(--control-32);height:var(--control-32);padding:0;font-size:0;color:transparent;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--shadow-ink) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+dialog.app-dialog.outcome-dialog .sheet-close{position:absolute;top:13px;right:13px;width:var(--control-32);height:var(--control-32);padding:0;font-size:0;color:transparent;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
 dialog.app-dialog.outcome-dialog .sheet-close::before,dialog.app-dialog.outcome-dialog .sheet-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 7px);width:var(--space-12);height:var(--space-2);background:var(--control-knob);border-radius:var(--radius-2)}
 dialog.app-dialog.outcome-dialog .sheet-close::before{transform:rotate(45deg)}
 dialog.app-dialog.outcome-dialog .sheet-close::after{transform:rotate(-45deg)}
-dialog.app-dialog.outcome-dialog .sheet-close:hover{background:color-mix(in oklab,var(--shadow-ink) 55%,transparent);border-color:var(--line-on-photo-hover)}
+dialog.app-dialog.outcome-dialog .sheet-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
 dialog.app-dialog.outcome-dialog .sheet-body{gap:var(--space-12);padding:var(--space-20) var(--space-20) var(--space-20)}
 .outcome-dialog .fine{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:0}
 .outcome-dialog .sheet-body>.fine{color:var(--text-primary);font-weight:var(--weight-bold);font-size:var(--text-13)}
 .app-case .spinner-box .fine{color:var(--text-muted)}
-dialog.app-dialog{background-color:var(--bg-plate);background-image:var(--grain-fine),linear-gradient(162deg,var(--bg-plate-from),var(--bg-plate-to));background-blend-mode:overlay,normal;border:1px solid var(--edge-shade-strong);box-shadow:inset 0 1px 0 var(--bevel-lit),inset 1px 0 0 var(--bevel-hair),
+dialog.app-dialog{background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-plate-to));background-blend-mode:overlay,normal;border:1px solid var(--edge-shade-strong);box-shadow:inset 0 1px 0 var(--bevel-lit),inset 1px 0 0 var(--bevel-hair),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 40px 80px -30px var(--shadow-ink-85),0 16px 40px -20px var(--shadow-ink-72)}
 dialog.app-dialog{overflow:hidden}
@@ -63,12 +63,12 @@ dialog.app-dialog:not(.outcome-dialog) .sheet-head::before{content:'';position:a
 dialog.app-dialog:not(.outcome-dialog) .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--color-action-lit) 60%,var(--color-action)) 0%,var(--color-action) 42%,transparent 70%);filter:blur(42px);opacity:.42;pointer-events:none}
 dialog.app-dialog:not(.outcome-dialog) .sheet-head h2{position:relative;z-index:1;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;max-width:15ch;text-wrap:balance}
 dialog.app-dialog:not(.outcome-dialog) .sheet-sub{position:relative;z-index:1;margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-primary);max-width:34ch}
-dialog.app-dialog:not(.outcome-dialog) .sheet-close{position:absolute;top:13px;right:13px;z-index:3;width:var(--control-32);height:var(--control-32);padding:0;font-size:0;color:transparent;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--shadow-ink) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+dialog.app-dialog:not(.outcome-dialog) .sheet-close{position:absolute;top:13px;right:13px;z-index:3;width:var(--control-32);height:var(--control-32);padding:0;font-size:0;color:transparent;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
 dialog.app-dialog:not(.outcome-dialog) .sheet-close .ic{display:none}
 dialog.app-dialog:not(.outcome-dialog) .sheet-close::before,dialog.app-dialog:not(.outcome-dialog) .sheet-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 7px);width:var(--space-12);height:var(--space-2);background:var(--control-knob);border-radius:var(--radius-2)}
 dialog.app-dialog:not(.outcome-dialog) .sheet-close::before{transform:rotate(45deg)}
 dialog.app-dialog:not(.outcome-dialog) .sheet-close::after{transform:rotate(-45deg)}
-dialog.app-dialog:not(.outcome-dialog) .sheet-close:hover{background:color-mix(in oklab,var(--shadow-ink) 55%,transparent);border-color:var(--line-on-photo-hover)}
+dialog.app-dialog:not(.outcome-dialog) .sheet-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
 dialog.app-dialog.signin-dialog .sheet-body{padding:var(--space-16) var(--space-16) var(--space-16);gap:var(--space-12)}
 dialog.app-dialog.signin-dialog .fine a{color:var(--text-brass);text-decoration:none;border-bottom:1px solid var(--tint-brass-45);padding-bottom:.4px}
 dialog.app-dialog.signin-dialog .fine a:hover{border-bottom-color:var(--text-brass)}

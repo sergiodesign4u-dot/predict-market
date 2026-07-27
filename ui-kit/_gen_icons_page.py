@@ -28,6 +28,9 @@ import re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 KIT = ROOT / "ui-kit"
+# one definition of the theme switch, shared with the painted screens
+import sys; sys.path.insert(0, str(ROOT / "ui-visual"))
+from _theme_switch import BOOT as THEME_BOOT  # noqa: E402
 UV = ROOT / "ui-visual"
 
 kit_src = (KIT / "kit.html").read_text(encoding="utf-8")
@@ -85,6 +88,7 @@ PAGE = f"""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - Icons</title>
+{THEME_BOOT}
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 </head>

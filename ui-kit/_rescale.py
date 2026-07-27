@@ -332,15 +332,22 @@ def merge_tokens(src):
             moved.append((old, new))
     # a rename can leave the same role declared twice; the later one wins in css,
     # and both carry the same value, so the earlier declaration is dropped.
-    seen = set()
-    out = []
+    # PER BLOCK, and the word matters. When this was written the file had one
+    # block, so "declared twice" and "declared twice in the same block" were the
+    # same sentence. Then section 3 arrived and re-declared six of these roles
+    # with the values daylight needs, and the sweep ate them: a theme override IS
+    # the same name a second time, deliberately, in a different selector.
+    seen, depth, out = set(), 0, []
     for line in src.splitlines(True):
         m = re.match(r"[ \t]*(--[\w-]+):", line)
-        if m and m.group(1) in ROLE_RENAME.values():
+        if m and depth == 1 and m.group(1) in ROLE_RENAME.values():
             if m.group(1) in seen:
                 continue
             seen.add(m.group(1))
         out.append(line)
+        depth += line.count("{") - line.count("}")
+        if depth == 0:
+            seen.clear()          # a new block declares its own names
     return "".join(out), moved
 
 

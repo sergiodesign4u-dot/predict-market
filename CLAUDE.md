@@ -270,5 +270,38 @@ Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from:
   layout or type or a colour under deltaE 1.5, except `#e88a84` -> `#e79087` (two quiet reds for one
   job, the pair the file had already marked). No touch target fell below 44px (the deposit amount field
   now says `min-height:var(--control-44)` instead of reaching 45px by accident).
-- **Next: step 6b, the dark theme** as a stress test of the semantic roles, then step 7, the deletion
-  pass and the defect table.
+- **Step 6b (done, 2026-07-27): the theme, as the proof of the semantic layer.** The product is dark,
+  so its theme is a LIGHT one and the attribute says what it is: `[data-theme="light"]`, section 3 of
+  `components/tokens.css`. It exists as a proof, not as a feature (`ui-visual/_theme_switch.py
+  --strip` removes the harness in one command); whether daylight ships is a separate decision. A
+  rebrand would prove nothing, because swapping primitives works on a flat file with no roles at all.
+  A theme is the test that needs the second level: the ground inverts, the ink inverts, light and
+  shade swap places, and the action still has to read as the action.
+  **Roles only, 89 of them; not one primitive redefined.** Daylight's values are their own primitives
+  at the end of section 1 (chalk ramp, warm ink ramp + alphas, one dark brass, darker green/red, five
+  chalk veil alphas, a weaker grain, a second logo mark). 265 -> 308 tokens, growth that buys a
+  second theme rather than harvest. The semantic selector is now `:root,[data-theme="dark"]`, so any
+  element can be marked and its subtree renders in that theme: `tokens.html` shows every role in both
+  grounds at once, live, and its contrast table has a column per theme.
+  **What the theme found, seven holes, all fixed:** the stone grain read straight from a primitive
+  (11 declarations in 10 files -> `--surface-grain`); the brass logo mark, same category
+  (`--mark-logo`); the drawer backdrop reading the emboss shade instead of the scrim; the close disc
+  on a photographic head reading the ink of a drop shadow (-> `--scrim-photo`); a SELECTED state
+  painted with the focus-ring role (`tabs.css` x2, `options.css`); **five hex literals drawing the
+  multi-outcome chart from inside the page script on 13 screens** (a whole categorical palette the
+  token file could not see -> `--series-1..5`, handed to the SVG as `var()` so it follows the theme
+  live); and a wireframe-era grey in a style attribute. Also found: `_rescale.py`'s duplicate-role
+  sweep was file-wide and ate 8 theme overrides, now per block.
+  **The sharpest lesson:** a veil is not a dark colour over a picture, it is the layer that
+  guarantees the words, so it follows the INK, not the photograph. `--scrim-photo` and
+  `--veil-photo-*` look like one idea and are two.
+  **Switch:** above the tree in both panels, single-source markup + boot in
+  `ui-visual/_theme_switch.py` (imported by `_resync_sidebar.py` and `_gen_component_pages.py`);
+  inline in `<head>` so daylight never flashes graphite; `localStorage` key `pm-theme`. Gate 1 masks
+  it as chrome, like the sidebar. **Gate 13** is new: colour goes through a role (a component reading
+  a colour or material primitive fails the build) + every screen can switch.
+  **Verified:** 77 screens x 2 themes x {380, 1280} - 0 below AA, 0 overflow, 0 console errors;
+  selftest "all pass" in both themes. Pre-existing defect found, NOT theme-related, logged for step
+  7: the win overlay h2 renders 52px left of its content box and `overflow:hidden` clips it to "u
+  were right" in both themes.
+- **Next: step 7**, the deletion pass and the defect table.
