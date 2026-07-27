@@ -300,6 +300,14 @@ Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from:
   inline in `<head>` so daylight never flashes graphite; `localStorage` key `pm-theme`. Gate 1 masks
   it as chrome, like the sidebar. **Gate 13** is new: colour goes through a role (a component reading
   a colour or material primitive fails the build) + every screen can switch.
+  **A frame is a document.** The first cut of the theme lied in the vitrine: every stand page went
+  pale while every `<iframe>` inside it stayed graphite, because a specimen is its own page and
+  `data-theme` does not cross into it. Fixed both ways - the boot block is now in every specimen and
+  in `selftest.html` (so a frame is right at its own first paint), and the parent tells every frame
+  by `postMessage` on toggle and on `load` (so an open frame follows the switch). postMessage, not
+  `contentDocument`, for the reason `_frames.js` already had: from `file://` every document has an
+  opaque origin. Gate 13 gained "every frame follows"; gate 5 had to start its search at `<body>`,
+  since a head script now exists and its slice was coming out empty.
   **Verified:** 77 screens x 2 themes x {380, 1280} - 0 below AA, 0 overflow, 0 console errors;
   selftest "all pass" in both themes. Pre-existing defect found, NOT theme-related, logged for step
   7: the win overlay h2 renders 52px left of its content box and `overflow:hidden` clips it to "u

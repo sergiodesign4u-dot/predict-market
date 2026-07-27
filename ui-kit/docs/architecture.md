@@ -198,6 +198,20 @@ Number 6 is the one worth remembering: a whole categorical palette lived outside
 was invisible to the file, to the gates and to any theme. It is now a declared scale, handed to the
 SVG as `var(--series-N)` so the browser resolves it live and the chart follows the switch.
 
+### A frame is a document, and does not inherit a theme
+
+The first cut of the theme shipped a vitrine that lied. Every stand page went pale and every frame
+inside it stayed graphite, because a specimen is a page of its own: `data-theme` lands on the parent's
+`<html>` and nothing crosses into the child. The frames are where the system is actually shown, so
+that is not a cosmetic miss, it is the vitrine showing the wrong theme.
+
+Both halves are needed. The specimen carries the same boot block, so it is correct at its own first
+paint with no flash; and the parent tells every frame by `postMessage` on each toggle and on each
+frame's `load`, so an already-open frame follows the switch. `postMessage` and not reading into
+`contentDocument`, for the reason `_frames.js` already had: from `file://` every document has its own
+opaque origin and reading across is refused. Gate 13 now also fails the build if a framed page is
+missing the boot.
+
 **Gate 13** makes the rule at the top of this section executable: a component that reads a colour or a
 material primitive fails the build, and every painted screen has to carry both halves of the switch.
 

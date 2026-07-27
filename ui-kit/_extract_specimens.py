@@ -39,6 +39,10 @@ from html.parser import HTMLParser
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 KIT = ROOT / "ui-kit"
+# A specimen is a page of its own, so it does not inherit the theme from the
+# vitrine around it. It carries the same boot block and is told by postMessage.
+import sys; sys.path.insert(0, str(ROOT / "ui-visual"))
+from _theme_switch import BOOT as THEME_BOOT  # noqa: E402
 OUT = KIT / "specimens"
 
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link",
@@ -234,6 +238,7 @@ HEAD = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
+{theme_boot}
 <link rel="stylesheet" href="../../components/index.css">
 <link rel="stylesheet" href="../_specimen.css">
 </head>
@@ -324,6 +329,7 @@ SELFTEST = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - specimen self test</title>
+{THEME_BOOT}
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 </head>
@@ -396,8 +402,10 @@ render();
 def write_selftest(manifest):
     specs = [{"id": m["id"], "width": m.get("width", 900)} for m in manifest]
     (KIT / "selftest.html").write_text(
+        # the boot goes in LAST, after the brace unescape: it is javascript and
+        # carries a "}}" of its own, which the unescape would eat.
         SELFTEST.replace("{n}", str(len(specs))).replace("{specs}", json.dumps(specs))
-        .replace("{{", "{").replace("}}", "}"),
+        .replace("{{", "{").replace("}}", "}").replace("{THEME_BOOT}", THEME_BOOT),
         encoding="utf-8")
 
 
@@ -452,7 +460,7 @@ def build():
             sprite = ('<svg width="0" height="0" aria-hidden="true" style="position:absolute">'
                       "<defs>" + "".join(symbols[u] for u in sorted(used)) + "</defs></svg>\n")
         (OUT / (entry["id"] + ".html")).write_text(
-            HEAD.format(title=entry["title"],
+            HEAD.format(title=entry["title"], theme_boot=THEME_BOOT,
                         cls=' class="spec-inflow"' if entry.get("inflow") else "") + html + "\n" +
             TAIL.format(sprite=sprite, id=entry["id"]),
             encoding="utf-8")

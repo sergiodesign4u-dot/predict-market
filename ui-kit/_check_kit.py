@@ -134,7 +134,11 @@ check("4 every relative path resolves", not missing,
 seen, dupes = {}, []
 for s in manifest:
     body = (SPECS / (s["id"] + ".html")).read_text(encoding="utf-8")
-    body = body[body.index("<body"):body.index("<script")]
+    # the reporting script is the LAST thing in the body, but there is a script
+    # in the head now too (the theme boot), so the search has to start at <body>.
+    # Without the offset every slice came out empty and every specimen "matched".
+    start = body.index("<body")
+    body = body[start:body.index("<script", start)]
     digest = hashlib.sha256(body.encode()).hexdigest()
     if digest in seen:
         dupes.append("%s == %s" % (s["id"], seen[digest]))
@@ -312,6 +316,18 @@ btn_missing = [p.name for p in sorted(UVIS.glob("*.html"))
                if 'class="theme-switch"' not in p.read_text(encoding="utf-8")]
 check("13 every screen can switch", not boot_missing and not btn_missing,
       "%d without boot, %d without button" % (len(boot_missing), len(btn_missing)))
+
+# A specimen is a page of its own, so it does NOT inherit the attribute from the
+# vitrine that frames it. This is how the first cut of the theme shipped: every
+# stand page went pale and every frame inside it stayed graphite. The frames are
+# where the system is actually shown, so a specimen without the boot is the
+# whole vitrine lying about the theme.
+framed = list(SPECS.glob("*.html")) + [KIT / "selftest.html"]
+frame_missing = [p.name for p in sorted(framed)
+                 if "<script id=\"uvTheme\">" not in p.read_text(encoding="utf-8")]
+check("13 every frame follows", not frame_missing,
+      "%d of %d framed pages without boot: %s"
+      % (len(frame_missing), len(framed), ", ".join(frame_missing[:3])))
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
