@@ -227,17 +227,27 @@
      Deliberately shallower than the graphite ramp. On a dark ground a recess
      reads by getting darker and there is a lot of room below; on a pale ground
      every step down is paid for in text contrast, and a recess reads by its
-     inset shadow instead. So this ramp spans 8 steps where graphite spans 15. */
-  --chalk-010:#fdfbf5;      /* the lit face of a raised stone */
-  --chalk-030:#f9f6ee;      /* raised: header, dialog, dropdown, footer, state block */
-  --chalk-060:#f5f1e7;      /* the card, and the device canvas */
-  --chalk-090:#efeade;      /* the card gradient bottom, and a quiet block */
-  --chalk-130:#eae4d5;      /* the outer slab */
-  --chalk-170:#e4ddcc;      /* the inset plate, and a quiet control */
-  --chalk-220:#ded6c3;      /* a chip, a well, the page behind the device */
-  --chalk-280:#d6cdb8;      /* a chip while it is held down. The one step below the
+     inset shadow instead. So this ramp spans 9 steps where graphite spans 15.
+
+     And it is nearly NEUTRAL, which is the correction the first cut needed. The
+     Vault reads warm, so the first chalk ramp was cut warm and got warmer as it
+     went down: R minus B ran from +8 at the top to +36 at the bottom, and the
+     plates came out yellow. Measure the graphite and it says the opposite. The
+     dark stone is faintly COOL (R minus B is -4 to -8) and every bit of the
+     warmth is in the INK, where bone sits at +19. So daylight mirrors that: a
+     constant +8, shaped the way bone is shaped (blue drops further than red
+     rises), and it does not grow with depth. Same luminance as the first cut, so
+     no contrast number moved. */
+  --chalk-010:#fcfaf4;      /* the lit face of a raised stone */
+  --chalk-030:#f8f6f0;      /* raised: header, dialog, dropdown, footer, state block */
+  --chalk-060:#f3f1eb;      /* the card, and the device canvas */
+  --chalk-090:#eceae4;      /* the card gradient bottom, and a quiet block */
+  --chalk-130:#e6e4de;      /* the outer slab */
+  --chalk-170:#dfddd7;      /* the inset plate, and a quiet control */
+  --chalk-220:#d8d6d0;      /* a chip, a well, the page behind the device */
+  --chalk-280:#d0cec8;      /* a chip while it is held down. The one step below the
                                text floor, and only a transient state stands on it */
-  --chalk-380:#b3a98f;      /* the hairline. Darker than its surface, because an edge inverts */
+  --chalk-380:#acaaa4;      /* the hairline. Darker than its surface, because an edge inverts */
 
   /* ---- ink (the dark text of daylight) ----
      Warm, not neutral. The Vault reads warm in the dark because its light ink is
@@ -246,19 +256,25 @@
   --ink-700:#3a352c;        /* an icon that carries a control on its own */
   --ink-500:#565042;        /* secondary text */
   --ink-400:#6e6757;        /* the default icon stroke */
-  /* the shade ladder of daylight. Black at .45 is an outline on a pale stone,
-     not a shadow, so the light theme shades with warm ink at a fifth the depth */
-  --ink-a06:rgba(33,31,25,.06);
+  /* the shade ladder of daylight, against the five-step black one it answers to.
+     Black at .45 is an outline on a pale stone and not a shadow, so daylight
+     shades with the ink instead. The ladder is NOT read uniformly: a 1px inset
+     edge wants the quiet end and a blurred drop shadow wants the loud one, and
+     the first cut gave both the quiet end, which is why the blocks went flat.
+     Five steps, not six: .06 had a consumer until the depth pass took it and
+     nothing else wanted it, and a value nobody reads is a transcript. */
   --ink-a10:rgba(33,31,25,.1);
   --ink-a16:rgba(33,31,25,.16);
   --ink-a24:rgba(33,31,25,.24);
+  --ink-a32:rgba(33,31,25,.32);
+  --ink-a44:rgba(33,31,25,.44);
   --white-a70:rgba(255,255,255,.7);  /* the lit lip of an emboss, which needs far more on pale stone */
   /* the veils that sit between a photograph and the words on top of it */
-  --chalk-a12:rgba(253,251,245,.12);
-  --chalk-a35:rgba(253,251,245,.35);
-  --chalk-a55:rgba(253,251,245,.55);
-  --chalk-a62:rgba(253,251,245,.62);
-  --chalk-a90:rgba(253,251,245,.9);
+  --chalk-a12:rgba(252,250,244,.12);
+  --chalk-a35:rgba(252,250,244,.35);
+  --chalk-a55:rgba(252,250,244,.55);
+  --chalk-a62:rgba(252,250,244,.62);
+  --chalk-a90:rgba(252,250,244,.9);
 
   /* ---- the metal and the outcomes, taken down onto a pale ground ----
      One dark brass, not three. On graphite there is room to separate a link
@@ -271,10 +287,14 @@
   --red-800:#863228;        /* quiet NO text on chalk, over its own 12% fill */
   --green-050:#e4f0e7;      /* the win sheet head stone, in daylight */
 
-  /* the same noise, a third of the bite: an overlay blend on a pale stone
-     washes out where on graphite it grips, so the light theme has its own */
-  --grain-coarse-lit:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='sl'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sl)' opacity='0.3'/%3E%3C/svg%3E");
-  --grain-fine-lit:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cfilter id='dl'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23dl)' opacity='0.26'/%3E%3C/svg%3E");
+  /* the same noise at the same strength as the Vault's. The first cut dropped it
+     to a third on the theory that an overlay blend bites harder on a pale
+     ground; it does not, it bites LESS, because overlay above mid grey behaves
+     like screen. So the grain came out invisible and the stone read as flat
+     paper. These are the dark opacities, and the only reason the light theme
+     needs its own copy at all is that the value is inside the file. */
+  --grain-coarse-lit:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='sl'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sl)' opacity='0.9'/%3E%3C/svg%3E");
+  --grain-fine-lit:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cfilter id='dl'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23dl)' opacity='0.8'/%3E%3C/svg%3E");
   /* the same graph grid, one rung up the brass ladder, for the same reason */
   --brass-grid-lit:repeating-linear-gradient(0deg,transparent 0 27px,var(--brass-a16) 27px 28px),
                    repeating-linear-gradient(90deg,transparent 0 27px,var(--brass-a16) 27px 28px);
@@ -468,6 +488,13 @@
      the light theme is what showed it. A shadow follows the theme, a scrim over
      a photograph does not, because the photograph is dark in both */
   --scrim-photo:var(--black);
+  /* the stops of a mask. A mask keeps only the alpha of the colour it is given,
+     so these are not colours at all: they are "show it" and "half show it", and
+     a theme must never move them. Nine masks were reading --shadow-ink, which is
+     opaque in the Vault by coincidence and 32% ink in daylight, so every masked
+     photograph came out washed. Same shape of mistake as --scrim-photo. */
+  --mask-solid:var(--black);
+  --mask-mid:var(--black-a45);
   --surface-grid:var(--brass-grid);     /* from: the brass graph grid on the card corner */
   /* the grain of the stone is material, and material is what a theme moves: the
      same noise that grips graphite washes out a pale stone. It was read straight
@@ -641,9 +668,12 @@
   --bevel-notice:var(--white-a70);
 
   /* ---- depth. Light and shade swap weight. On graphite the emboss is carried
-     by the lit lip and the shade only steadies it; on chalk a white lip barely
-     registers and has to be nearly opaque, while black at .45 stops being a
-     shadow and becomes an outline, so the whole shade ladder drops to a fifth ---- */
+     by the lit lip and the shade only steadies it; on chalk the lip has to be
+     nearly opaque white to register at all, and the shade carries the block.
+     The first cut read that as "drop the whole shade ladder", and the blocks
+     went flat. The correct reading is that a 1px inset EDGE needs the quiet end
+     of the ladder while a blurred DROP needs the loud one, so they are set
+     apart here instead of scaled together ---- */
   --bevel-hi:var(--white-a70);
   --bevel-md:var(--white-a70);
   --bevel-lit:var(--white-a70);
@@ -653,14 +683,14 @@
   --bevel-faint:var(--white-a20);
   --bevel-hair:var(--white-a20);
   --bevel-hair-soft:var(--white-a20);
-  --edge-shade:var(--ink-a06);
-  --edge-shade-strong:var(--ink-a10);
-  --shadow-ink:var(--ink-a24);
-  --shadow-ink-45:var(--ink-a10);
-  --shadow-ink-60:var(--ink-a16);
-  --shadow-ink-72:var(--ink-a16);
-  --shadow-ink-85:var(--ink-a24);
-  --scrim:var(--ink-a24);
+  --edge-shade:var(--ink-a10);          /* a 1px inset edge: the quiet end of the ladder */
+  --edge-shade-strong:var(--ink-a16);
+  --shadow-ink-45:var(--ink-a16);       /* the card and plate BORDER, not a shadow */
+  --shadow-ink:var(--ink-a32);          /* a tight shadow with heavy negative spread */
+  --shadow-ink-60:var(--ink-a24);
+  --shadow-ink-72:var(--ink-a32);
+  --shadow-ink-85:var(--ink-a44);       /* the big drop under a card: the loud end */
+  --scrim:var(--ink-a44);
 
   /* ---- the veils. They follow the ink, not the photograph: see rule 2 ---- */
   --veil-photo-edge:var(--chalk-a12);

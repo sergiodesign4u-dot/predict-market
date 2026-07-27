@@ -1,7 +1,7 @@
 /* components/seo-plate.css
    Component: seo-plate. Classes: .feed-seo, .feed-seo-wrap, .seo-brand, .seo-by, .seo-h-ic, .seo-tagline, .seo-text, .seo-tick.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-plate, --bg-plate-from, --bg-plate-to, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --scrim, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-muted, --text-primary
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-plate, --bg-plate-from, --bg-plate-to, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --mask-solid, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-muted, --text-primary
    Stand:  ui-kit/seo-plate.html
    Stands on: 6 ui-visual screens (event-feed-crypto.html, event-feed-culture.html, event-feed-general.html, event-feed-logged-out.html, event-feed-politics.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -36,7 +36,7 @@
 .seo-tagline{margin:0;font-family:var(--font-display);font-weight:var(--weight-bold);text-transform:uppercase;font-size:var(--display-tagline);line-height:var(--leading-flat);letter-spacing:.01em;color:var(--text-primary);text-wrap:balance}
 .seo-tagline em{font-style:normal;color:var(--text-brass-lit)}
 .seo-by{margin-top:var(--space-24);font-family:var(--font-body);font-size:var(--text-13);letter-spacing:.05em;color:var(--text-brass-lit)}
-.seo-brand::after{content:'';position:absolute;inset:0 -12px 0 0;z-index:0;pointer-events:none;opacity:.18;background:url("../ui-visual/assets/trust-column-full.webp") no-repeat right center;background-size:auto 122%;-webkit-mask-image:linear-gradient(to left,var(--shadow-ink) 40%,transparent 90%);mask-image:linear-gradient(to left,var(--shadow-ink) 40%,transparent 90%)}
+.seo-brand::after{content:'';position:absolute;inset:0 -12px 0 0;z-index:0;pointer-events:none;opacity:.18;background:url("../ui-visual/assets/trust-column-full.webp") no-repeat right center;background-size:auto 122%;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 40%,transparent 90%);mask-image:linear-gradient(to left,var(--mask-solid) 40%,transparent 90%)}
 .seo-brand>*{position:relative;z-index:1}
 @media(max-width:760px){
   .app-case .feed-inner>.feed-seo-wrap{grid-template-columns:1fr;gap:var(--space-24);padding:var(--space-28) var(--space-24) var(--space-32)}

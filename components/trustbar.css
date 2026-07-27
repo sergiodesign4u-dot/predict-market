@@ -1,7 +1,7 @@
 /* components/trustbar.css
    Component: trustbar. Classes: .feed-trustbar, .footer-trust, .ft-ic, .ft-inner, .ft-item, .ft-sep, .tr-ic, .tr-txt, .trust-head, .trust-item, .trust-items.
 
-   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-page, --border-hairline, --color-trust, --edge-groove-dark, --edge-groove-light, --scrim, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-lit, --text-muted, --text-primary
+   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-page, --border-hairline, --color-trust, --edge-groove-dark, --edge-groove-light, --mask-solid, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-lit, --text-muted, --text-primary
    Stand:  ui-kit/trustbar.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -37,7 +37,7 @@ svg.ft-ic:has(use){fill:currentColor;stroke:none}
 .footer-trust .tr-txt{position:relative;z-index:1}
 .footer-trust .tr-txt b{color:var(--text-primary)}
 .footer-trust .tr-txt i{color:var(--text-muted)}
-.footer-trust .trust-item::after{content:'';position:absolute;top:0;bottom:0;right:0;width:46%;z-index:0;pointer-events:none;opacity:.5;background-repeat:no-repeat;background-position:center right;background-size:cover;-webkit-mask-image:linear-gradient(to left,var(--shadow-ink) 60%,transparent 99%);mask-image:linear-gradient(to left,var(--shadow-ink) 60%,transparent 99%)}
+.footer-trust .trust-item::after{content:'';position:absolute;top:0;bottom:0;right:0;width:46%;z-index:0;pointer-events:none;opacity:.5;background-repeat:no-repeat;background-position:center right;background-size:cover;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 60%,transparent 99%);mask-image:linear-gradient(to left,var(--mask-solid) 60%,transparent 99%)}
 .footer-trust .trust-item:nth-child(1)::after{background-image:url("../ui-visual/assets/trust-column.webp")}
 .footer-trust .trust-item:nth-child(2)::after{background-image:url("../ui-visual/assets/trust-source.webp")}
 .footer-trust .trust-item:nth-child(3)::after{background-image:url("../ui-visual/assets/trust-globe.webp")}

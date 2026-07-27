@@ -193,10 +193,32 @@ Every one of these was invisible while there was one ground, and all seven are f
 | 5 | a SELECTED state painted with the focus-ring role | `tabs.css` x2, `options.css` |
 | 6 | five hex literals drew the multi-outcome chart from inside a page script | 13 screens, now `--series-1..5` |
 | 7 | a grey from the wireframe era written into a style attribute | 2 screens |
+| 8 | nine `mask-image` stops read the drop-shadow ink for "opaque" | 6 files, now `--mask-solid` / `--mask-mid` |
+
+Number 8 is the twin of number 4 and the one a person caught before any measurement did. A mask keeps
+only the ALPHA of the colour it is handed, so what those stops need is "opaque, in any theme".
+`--shadow-ink` is opaque black in the Vault by coincidence and 32% ink in daylight, so every masked
+photograph came out washed to a third of itself. No contrast check can see that: the pixels are still
+the same colour, there are just fewer of them.
 
 Number 6 is the one worth remembering: a whole categorical palette lived outside the token file, so it
 was invisible to the file, to the gates and to any theme. It is now a declared scale, handed to the
 SVG as `var(--series-N)` so the browser resolves it live and the chart follows the switch.
+
+### Three corrections the first cut needed, and what each one taught
+
+- **The stone was yellow.** The Vault reads warm, so chalk was cut warm and got warmer with depth: R
+  minus B ran +8 to +36. Measuring the graphite says the opposite - the dark stone is faintly COOL
+  (-4 to -8) and all the warmth is in the ink, where bone sits at +19. Daylight now mirrors that: a
+  constant +8, shaped the way bone is shaped, not growing. Same luminance, so no contrast number
+  moved. The lesson is that "the product is warm" is a claim about the ink, and it has to be measured
+  before it is copied to the ground.
+- **The blocks went flat.** The shade ladder was scaled down as a unit, on the reasoning that black at
+  .45 is an outline rather than a shadow on pale stone. True for a 1px inset edge, false for a blurred
+  drop: one wants the quiet end of the ladder and the other the loud one. They are set apart now.
+- **The grain vanished.** It was dropped to a third on the theory that an overlay blend bites harder
+  on a pale ground. It bites LESS: overlay above mid grey behaves like screen. Daylight uses the
+  Vault's own opacities.
 
 ### A frame is a document, and does not inherit a theme
 

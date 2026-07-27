@@ -198,12 +198,14 @@ Five categorical colors for the lines of a multi-outcome chart, where each line 
 ### Daylight (the light theme)
 The product is dark; its theme is a light one, and it exists as a proof of the semantic layer rather than as a shipped feature. Only roles move, never primitives.
 
-- **Chalk** (the pale stone, 9 steps `#fdfbf5` to `#b3a98f`): deliberately shallower than the graphite ramp. On a dark ground a recess reads by getting darker and there is room below; on a pale ground every step down is paid for in text contrast, so a recess reads by its inset shadow instead.
+- **Chalk** (the pale stone, 9 steps `#fcfaf4` to `#acaaa4`): deliberately shallower than the graphite ramp, because on a pale ground every step down is paid for in text contrast and a recess reads by its inset shadow instead. Nearly **neutral**: R minus B is a constant +8, the same faint offset the graphite carries in the other direction. The warmth of the Vault is in the ink and the metal, not in the stone.
 - **Ink** (`#211f19` primary, `#565042` muted, `#6e6757` icon): warm, not neutral. The Vault reads warm in the dark because its light ink is bone; a neutral black would cool the whole product on the way over.
 - **Dark brass** (`#684f18`): one, not three. On graphite there is room to separate a link brass from a lit brass from a chip brass and keep all three legible; on chalk there is not, and a legible brass beats a distinguishable one. The value is solved against brass-on-brass (a selected chip), not against bare stone.
 - **Outcome ink** (`#225b35` YES, `#863228` NO): solved over their own 12% fills.
 - **What does not move:** `--color-action`, because a mid-luminance metal reads on both stones; the white glyph on a photographic dialog head and the disc behind it, because a photograph does not get lighter; the course chrome, because it is the frame and not the product.
-- **What inverts that looks like it should not:** the hairline, which is lighter than its surface on graphite and has to be darker on chalk; the emboss, where the lit lip goes from `rgba(255,255,255,.16)` to `.70` while the shade ladder drops to a fifth of its depth; and the photo veils, which follow the ink rather than the photograph.
+- **What inverts that looks like it should not:** the hairline, which is lighter than its surface on graphite and has to be darker on chalk; the emboss, where the lit lip goes from `rgba(255,255,255,.16)` to `.70`; and the photo veils, which follow the ink rather than the photograph.
+- **The grain is the Vault's own**, at the same strength. An overlay blend bites less on a pale ground, not more.
+- **The shade ladder is not scaled as a unit.** A 1px inset edge takes the quiet end (`.10` to `.16`) and a blurred drop takes the loud one (`.32` to `.44`). Scaling them together is what makes a light theme look flat.
 
 **Contrast, both themes.** Every text pair is computed down each theme's own chain and against the tint it actually sits on. Daylight clears AA (4.5:1 text, 3:1 lines and icons) on every pair, measured across all 77 painted screens at 380 and 1280. It does not clear it by the Vault's margin: on graphite the muted text sits at 6.1:1 and the brass link at 7.8:1, which no pale ground can match while staying brass.
 
