@@ -238,3 +238,37 @@ The visual language, decided as **rules traced to data + taste**, not a mood. So
 - **Sidebar (`_resync_sidebar.py`)** - single source of the ui-visual left screen-tree; gained a **Categories** group under Event Feed (Politics/Crypto/Culture/General), active-marked per page.
 - **Concept + DESIGN.md synced to Vault (2026-07-18):** `concept/concept.html` matches the shipped card (thin odds bar, tinted YES/NO) + a new **Controls** panel showing the chip family; `DESIGN.md` fully rewritten Signal -> Vault.
 - **Remaining:** apply the Vault language to the other screen families (Event Detail, Bet, Win/Loss, Profile, etc.).
+
+---
+
+## Tokens + Components (Stage 09) - IN PROGRESS
+
+The styling layer became a system. `components/` holds `tokens.css` plus one css file per component,
+all reached through `components/index.css`; `ui-kit/` is the vitrine that shows it and the gates that
+keep it honest (`python3 ui-kit/_check_kit.py`, twelve checks, exits non-zero on the first failure).
+Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from: `ui-kit/docs/tokens-audit.md`.
+
+- **Step 5 (done):** every painted screen dropped its inline `<style>` and its `_theme.css` link and
+  links exactly `../components/index.css`. Proof tooling lives in `ui-kit/_verify/` (snapshot every
+  screen at five widths, diff by element and property, group by cause). `ui-visual/_theme.css` and
+  `_theme-vault.css` are on disk but nothing loads them.
+- **Step 6 (done, 2026-07-27): the primitives became scales.** The token file had been READ out of the
+  product, which is right for a colour role and wrong for a scale: every literal anyone had typed
+  became a token, 348 of them. Space had 25 steps with 1 2 3 4 5 6 7 8 9 10 in a row, text had five
+  half pixels left from rem arithmetic, radius had two names for one pill, and the graphite ramp had 46
+  pairs no eye can separate. Now **265 tokens**: space 25 -> 11 on a 4px grid (plus `--hairline`, since
+  1px is a line and not a distance), radius 12 -> 5, control and icon value named with no odd sizes,
+  text 21 -> 10 with the half pixels rounded UP, display 5 declared and unused -> 7 wired (nine literal
+  `clamp()` gone), leading 8 -> 6, graphite 24 -> 15, alphas 54 -> 28. The whole map is data in
+  **`ui-kit/_rescale.py`** (idempotent, `--dry-run`), which is both the migration and its own test.
+  Rules now written down in `architecture.md`: round to the nearest step and break a tie toward the
+  heavier neighbour; a number is a step only up to 64px; a colour merges only under deltaE 1.5 AND when
+  the two never meet on screen. Two new gates stop the harvest growing back: **11** no orphan token,
+  **12** no raw scale value.
+- **Deliberate, measured pixel movement.** This is the one pass that moves the product on purpose. Every
+  change was checked against the map with `_verify/`: 1274 distinct property changes, all of them
+  layout or type or a colour under deltaE 1.5, except `#e88a84` -> `#e79087` (two quiet reds for one
+  job, the pair the file had already marked). No touch target fell below 44px (the deposit amount field
+  now says `min-height:var(--control-44)` instead of reaching 45px by accident).
+- **Next: step 6b, the dark theme** as a stress test of the semantic roles, then step 7, the deletion
+  pass and the defect table.

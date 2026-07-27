@@ -12,7 +12,7 @@ says so. No em dash.
 | component | own | specimens | inside | classes | screens |
 |---|---|---|---|---|---|
 | account | 1 | account-cta | 1 | 3 | 76 |
-| base | 2 | base-frame, base-groove | 0 | 49 | 76 |
+| base | 2 | base-frame, base-groove | 0 | 52 | 76 |
 | betpanel | 3 | betpanel-states, betpanel-dock, betpanel-sheet | 2 | 23 | 76 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 16 | 76 |
 | bottomnav | 1 | bottomnav | 0 | 3 | 76 |
@@ -59,7 +59,7 @@ says so. No em dash.
 Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
 that actually means. The Classes table on each component page shows the same verdict per row.
 
-### Deletion candidates (23)
+### Deletion candidates (24)
 
 Styled, and carried by no element in the repo: not by a painted screen, not by the kit, not by a wireframe, not by a course page, and not by any script. Nothing is removed yet. The screens still carry their own inline style and only move onto components/index.css in step 5, so the measurement is not final until then; step 7 is the pass that acts on this list.
 
@@ -72,6 +72,7 @@ Styled, and carried by no element in the repo: not by a painted screen, not by t
 | `.brand` | base.css | styled and carried by no element anywhere |
 | `.btn-block` | button.css | styled and carried by no element anywhere |
 | `.chart-box` | chart.css | styled and carried by no element anywhere |
+| `.css` | base.css | styled and carried by no element anywhere |
 | `.dim-note` | event-detail.css | styled and carried by no element anywhere |
 | `.dir-pill` | betpanel.css | styled and carried by no element anywhere |
 | `.dlg-note` | dialog.css | styled and carried by no element anywhere |

@@ -72,14 +72,18 @@
 .tk-sw-chip i{display:block;height:100%}
 .tk-sw-meta{padding:9px 10px 11px;border-top:1px solid var(--border-hairline,#2b2f38)}
 .tk-sw-name{display:block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
-  color:var(--text-primary,#ede7da);word-break:break-all;line-height:1.35}
+  color:var(--text-primary,#ede7da);word-break:break-all;line-height:var(--leading-snug)}
 .tk-sw-val{display:block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
   color:var(--text-brass,#d7ac53);margin-top:3px;word-break:break-all}
 .tk-sw-cmt{display:block;font-family:var(--font-body,'DM Sans',sans-serif);font-size:10.5px;
-  color:var(--text-muted,#a49d8f);margin-top:6px;line-height:1.4}
+  color:var(--text-muted,#a49d8f);margin-top:6px;line-height:var(--leading-base)}
 
 /* ---- role table ---- */
-.tk-tbl{width:100%;border-collapse:collapse;font-family:var(--font-body,'DM Sans',sans-serif);font-size:12px}
+/* table-layout:fixed on purpose. Without it a single long value (a role that
+   resolves to the brass grid, a state rule that is a whole box-shadow stack)
+   sets the column width and the page scrolls sideways on every breakpoint. */
+.tk-tbl{width:100%;table-layout:fixed;border-collapse:collapse;
+  font-family:var(--font-body,'DM Sans',sans-serif);font-size:12px}
 .tk-tbl th{text-align:left;font-family:var(--font-body,'DM Sans',sans-serif);font-size:10px;font-weight:700;
   letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted,#a49d8f);
   border-bottom:1px solid var(--border-hairline,#2b2f38);padding:0 12px 8px}
@@ -87,10 +91,12 @@
   color:var(--text-muted,#a49d8f);line-height:1.45}
 .tk-tbl tr:hover td{background:rgba(255,255,255,.02)}
 .tk-tbl .tk-role{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
-  color:var(--text-primary,#ede7da);white-space:nowrap}
+  color:var(--text-primary,#ede7da);overflow-wrap:anywhere}
 .tk-tbl .tk-points{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10.5px;
-  color:var(--text-brass,#d7ac53);white-space:nowrap}
-.tk-tbl .tk-hex{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10.5px;white-space:nowrap}
+  color:var(--text-brass,#d7ac53);overflow-wrap:anywhere}
+.tk-tbl .tk-hex{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10.5px;
+  overflow-wrap:anywhere}
+.tk-tbl .ck-decl{overflow-wrap:anywhere}
 .tk-dot{display:inline-block;width:34px;height:20px;border-radius:5px;border:1px solid rgba(255,255,255,.14);
   vertical-align:middle}
 .tk-tbl td.tk-from{max-width:44ch}
@@ -107,13 +113,15 @@
 .tk-radius i{display:block;height:64px;background:var(--bg-control,#24282f);
   border:1px solid var(--border-brass,rgba(199,162,78,.3))}
 .tk-radius span{display:block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
-  color:var(--text-muted,#a49d8f);margin-top:7px;line-height:1.4}
+  color:var(--text-muted,#a49d8f);margin-top:7px;line-height:var(--leading-base)}
 .tk-sizes{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}
-.tk-size{text-align:center}
-.tk-size i{display:block;width:84px;background:var(--bg-control,#24282f);border-radius:10px;
+.tk-size{width:118px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.tk-size i{display:block;background:var(--bg-control,#24282f);border-radius:10px;
   border:1px solid var(--border-hairline,#2b2f38)}
-.tk-size span{display:block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
-  color:var(--text-muted,#a49d8f);margin-top:7px}
+.tk-size span{display:block;text-align:center;font-family:var(--font-mono,'IBM Plex Mono',monospace);
+  font-size:10px;color:var(--text-muted,#a49d8f);margin-top:7px}
+.tk-size em{display:block;font-family:var(--font-body,sans-serif);font-style:normal;font-size:10px;
+  line-height:var(--leading-snug);margin-top:3px;color:var(--text-muted,#a49d8f);opacity:.75}
 
 /* ---- type ---- */
 .tk-type-row{display:flex;align-items:baseline;gap:16px;padding:9px 0;

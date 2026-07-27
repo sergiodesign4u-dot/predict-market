@@ -76,22 +76,22 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .filter-menu{position:relative}
-.filter-menu summary{list-style:none;padding:var(--space-5) var(--space-8);font-size:var(--text-11);cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-5)}
+.filter-menu summary{list-style:none;padding:var(--space-4) var(--space-8);font-size:var(--text-11);cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-4)}
 .filter-menu summary::-webkit-details-marker{display:none}
 .filter-panel{right:0}
 .filter-panel ul{list-style:none;margin:0;padding:var(--space-4) 0}
 .filter-panel li label{display:flex;align-items:center;gap:var(--space-8);font-size:var(--text-11);cursor:pointer}
-.reverse-row{display:flex;align-items:center;justify-content:space-between;padding:var(--space-7) var(--space-10);font-size:var(--text-11)}
+.reverse-row{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8);font-size:var(--text-11)}
 .toggle{border:1px solid var(--border-hairline);font-size:var(--text-10);padding:var(--space-2) var(--space-8);cursor:pointer}
 .toggle[aria-checked="true"]{font-weight:var(--weight-bold)}
 .lang-menu .filter-panel{top:auto;bottom:calc(100% + 4px);right:auto;left:0;min-width:150px}
-.filter-panel{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-12);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:50;min-width:196px}
+.filter-panel{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:50;min-width:196px}
 .filter-menu summary{background:var(--bg-surface);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
 .app-case .filter-menu summary{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20)!important;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 .app-case .filter-menu summary:hover{border-color:var(--border-brass-hover)!important;background:var(--bg-control);color:var(--text-strong)}
 .filter-panel input[type=radio],.filter-panel input[type=checkbox]{display:none}
 .filter-panel li{padding:0}
-.filter-panel li label{color:var(--text-primary);border-radius:var(--radius-8);margin:var(--space-2) var(--space-4);padding:var(--space-8) var(--space-10);transition:background var(--dur-fast),color var(--dur-fast)}
+.filter-panel li label{color:var(--text-primary);border-radius:var(--radius-10);margin:var(--space-2) var(--space-4);padding:var(--space-8) var(--space-8);transition:background var(--dur-fast),color var(--dur-fast)}
 .filter-panel li label:hover{background:var(--bg-control)}
 .filter-panel li label:has(input:checked){background:color-mix(in oklab,var(--color-action) 20%,transparent);color:var(--text-brass);font-weight:var(--weight-semibold)}
 .reverse-row{border-top:1px solid var(--border-hairline);color:var(--text-muted)}
@@ -102,7 +102,7 @@
 .toggle[role=switch][aria-disabled=true]{opacity:.42;cursor:not-allowed}
 .filter-menu summary:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 @media(max-width:640px){
-  .app-case .filter-menu summary{min-height:var(--control-lg)}
+  .app-case .filter-menu summary{min-height:var(--control-44)}
   .filter-menu{position:relative}
 }
 </pre></details>

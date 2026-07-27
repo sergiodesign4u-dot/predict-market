@@ -74,26 +74,26 @@
    Stands on: 10 ui-visual screens (event-detail-logged-out-multi.html, event-detail-multi.html, event-feed-crypto.html, event-feed-culture.html, event-feed-general.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.yesno{display:flex;gap:var(--space-6);margin:0 0 var(--space-8)}
+.yesno{display:flex;gap:var(--space-8);margin:0 0 var(--space-8)}
 .yesno &gt; a{flex:1;display:flex}
 .yesno &gt; a &gt; button{width:100%}
-.yesno button{flex:1;padding:var(--space-9);font-size:var(--text-12);cursor:pointer}
+.yesno button{flex:1;padding:var(--space-8);font-size:var(--text-12);cursor:pointer}
 .yesno.compact &gt; a{flex:0 0 auto}
 .yesno.compact button{flex:0 0 auto}
-.yesno button{border:1px solid;font-weight:var(--weight-bold);font-family:var(--font-body);text-decoration:none;min-height:var(--control-lg);background:var(--bg-control);transition:background .15s ease,border-color .15s ease}
+.yesno button{border:1px solid;font-weight:var(--weight-bold);font-family:var(--font-body);text-decoration:none;min-height:var(--control-44);background:var(--bg-control);transition:background .15s ease,border-color .15s ease}
 .yesno a,.yesno a:hover{text-decoration:none}
 .yesno &gt; a:first-of-type button:hover{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-control));border-color:var(--outcome-yes)}
 .yesno &gt; a:last-of-type button:hover{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-control));border-color:var(--outcome-no)}
-.yesno.compact{gap:var(--space-6);margin:0}
-.yesno.compact button{padding:var(--space-4) var(--space-12);font-size:var(--text-11);line-height:1.2}
+.yesno.compact{gap:var(--space-8);margin:0}
+.yesno.compact button{padding:var(--space-4) var(--space-12);font-size:var(--text-11);line-height:var(--leading-tight)}
 .yesno button:focus-visible,.yesno a:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 @media(max-width:640px){
-  .yesno.compact button{min-height:var(--control-lg)}
+  .yesno.compact button{min-height:var(--control-44)}
 }
 .yesno &gt; a:first-of-type button{background:var(--outcome-yes-fill);color:var(--outcome-yes-text);border-color:var(--outcome-yes-line)}
 .yesno &gt; a:last-of-type button{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
 .yesno button{border-radius:var(--radius-10)}
-.yesno.compact button{border-radius:var(--radius-8)}
+.yesno.compact button{border-radius:var(--radius-10)}
 .app-case .opt-list .yesno.compact button{background:var(--bg-control);color:var(--text-primary);border:1px solid var(--border-hairline)}
 .app-case .opt-list .yesno.compact button:first-child{color:var(--outcome-yes-text);border-color:var(--outcome-yes-line);background:var(--outcome-yes-fill-soft)}
 .app-case .opt-list .yesno.compact button:last-child{color:var(--outcome-no-text);border-color:var(--outcome-no-line);background:var(--outcome-no-fill-soft)}

@@ -381,3 +381,35 @@ Coverage rule for step 7: after the pages exist, every token in `tokens.css` and
    hide it.
 4. **A8 breakpoints:** recorded, not touched. Fixing them is stage 11.
 5. **Grey-box scaffolding:** hide (safe) or delete (clean) in step 3. Decision after the first diff.
+
+---
+
+## 9. What step 6 closed, and what the audit got wrong about itself
+
+The audit above is a reading of a product, and it read the colour layer correctly: the roles it
+proposed in section 5 are still the roles, and step 6 changed none of their names. It read the
+geometry and type layer the same way, and there the method was wrong. A colour in a screen is
+evidence of a decision. A `9.5px` in a screen is evidence that someone typed `.72rem`. Recording
+every literal as a token produced 348 entries: not a system, a transcript.
+
+Step 6 turned each family into a scale with a rule (`architecture.md`, "The scales"). The count went
+348 -> 265, and the map is data in `ui-kit/_rescale.py`.
+
+| Finding | What became of it |
+|---|---|
+| A4, two quiet reds for one job | merged. `#e88a84` -> `#e79087`, the one colour move above deltaE 1.5 (3.44) and the only one a person can see |
+| A5, the ramp written as tokens and as literals | closed by gate 12: a raw value in a scale property fails the build |
+| C1, the tokens declared and never wired | `--card3d` became `--bg-card-quiet` in step 2; `--slab` (`--graphite-820`) and the two 160px grains had no job and were deleted; `--surface-grid`, `--logo-tick`, `--bg-slab-to` and `--container-sidebar` turned out to be written as literals in a component and are now wired |
+| C4, `var(--card)` declared nowhere | closed in step 2 |
+| C10, 24 literal shadow recipes | the recipes stay (a box-shadow keeps its own offsets, by rule), but the inks under them went from 14 alphas to 5 |
+| B4, one outcome pair or two | two. `--result-won-*` and `--result-lost-*` existed since step 2 and nothing read them: `.pos-won` and `.pos-lost` were sharing the live outcome rule. They are wired now, at the same values, so the split is real and no pixel moved |
+| the coverage rule ("every token appears on a page or is deleted") | superseded by something stronger: gate 11 fails the build on a token nobody READS. Appearing on a page is not use |
+
+Two things this step found that the audit did not look for:
+
+- **A size wearing a spacing name.** `--space-5` was the height of the odds bar, `--space-3` a status
+  dot, `--space-1` a hairline and a 1x1 hidden input. Counting them as spacing is what let the space
+  scale reach 25 steps, and no amount of merging fixes a scale that is measuring two different things.
+- **A touch target built out of padding.** The deposit amount field reached 45px because its padding
+  happened to add up; on the 4px grid the same padding lands at 41 and the target is gone. It now
+  reads `min-height:var(--control-44)`, because a target is a rule and has to be written as one.

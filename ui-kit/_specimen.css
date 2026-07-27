@@ -77,7 +77,7 @@ main.feed{background:transparent}
   font-family:var(--font-display);font-weight:var(--weight-bold);font-size:18px;outline:none;transition:border-color .16s ease,box-shadow .16s ease,opacity .16s ease}
 .kit-field::placeholder{color:var(--text-muted)}
 .kit-field:hover:not(:disabled),.kit-field.is-hover{border-color:var(--line-brass-strong)}
-.kit-field:focus,.kit-field.is-focus{border-color:var(--color-action);box-shadow:0 0 0 3px var(--tint-brass-14)}
+.kit-field:focus,.kit-field.is-focus{border-color:var(--color-action);box-shadow:0 0 0 3px var(--tint-brass-16)}
 .kit-field:disabled,.kit-field.is-disabled{opacity:.45;cursor:not-allowed;background:var(--bg-surface);border-color:var(--border-hairline);box-shadow:none}
 
 /* The separator demo: an engraved groove next to the flat line it replaces. */
@@ -99,5 +99,5 @@ main.feed{background:transparent}
 .kit-ico .ic:not(:has(use)){stroke:var(--text-primary);fill:none}
 .kit-ico .ic:has(use){color:var(--text-primary)}
 .kit-ico .kit-brandic{color:var(--text-primary)}
-.kit-ico figcaption{font-family:var(--font-body);font-size:10.5px;color:var(--text-muted);line-height:1.25}
-.kit-ico code{font-family:var(--font-mono);font-size:9px;color:var(--text-brass);white-space:nowrap;line-height:1.2}
+.kit-ico figcaption{font-family:var(--font-body);font-size:10.5px;color:var(--text-muted);line-height:var(--leading-snug)}
+.kit-ico code{font-family:var(--font-mono);font-size:9px;color:var(--text-brass);white-space:nowrap;line-height:var(--leading-tight)}

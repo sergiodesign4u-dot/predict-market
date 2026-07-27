@@ -6,7 +6,7 @@ colors:
   graphite: "#141619"
   slab: "#191b1f"
   plate: "#121417"
-  card: "#14161a"
+  card: "#141619"
   surface: "#1c1f24"
   surface-2: "#24282f"
   border: "#2b2f38"
@@ -28,19 +28,19 @@ typography:
     fontFamily: "Space Grotesk, sans-serif"
     fontSize: "clamp(28px, 4vw, 38px)"
     fontWeight: 700
-    lineHeight: 1.04
+    lineHeight: 1.05
     letterSpacing: "-0.03em"
   headline:
     fontFamily: "Space Grotesk, sans-serif"
     fontSize: "clamp(19px, 2vw, 24px)"
     fontWeight: 700
-    lineHeight: 1.14
+    lineHeight: 1.15
     letterSpacing: "-0.01em"
   title:
     fontFamily: "Space Grotesk, sans-serif"
     fontSize: "13px"
     fontWeight: 600
-    lineHeight: 1.14
+    lineHeight: 1.15
     letterSpacing: "-0.02em"
   body:
     fontFamily: "DM Sans, system-ui, sans-serif"
@@ -50,9 +50,9 @@ typography:
     letterSpacing: "normal"
   label:
     fontFamily: "DM Sans, sans-serif"
-    fontSize: "11.5px"
+    fontSize: "12px"
     fontWeight: 700
-    lineHeight: 1.2
+    lineHeight: 1.15
     letterSpacing: "0.06em"
   mono:
     fontFamily: "IBM Plex Mono, monospace"
@@ -60,27 +60,53 @@ typography:
     fontWeight: 500
     lineHeight: 1.3
     letterSpacing: "0.03em"
-rounded:
-  xs: "6px"         # every radius is even too (the 2px rule); count chips, badges
-  sm: "8px"         # small buttons, dialog close
-  md: "10px"        # cards, option rows
-  cta: "10px"       # DEFAULT: buttons, inputs, confirm
-  lg: "12px"        # chips, dropdowns, feed cards
-  xl: "16px"        # dialogs
-  sheet: "20px"     # bottom-sheet top edge
-  pill: "1000px"    # fully round: sort filter, feed YES/NO, icon circles
-spacing:            # 2px grid. Primary steps 4/8/12/16/20/24; 2/6/10/14 for fine-tuning. Every value is divisible by 2.
-  "2": "2px"        # hairline nudges, icon gaps
+textScale:          # ten steps, by 1 up to 14 and then by 2 and 4. 10px is the floor
+  "10": "10px"      # a mono tag, a badge
+  "11": "11px"      # a kicker, a meta line
+  "12": "12px"      # a label, a chip, a compact row
+  "13": "13px"      # the body default and the card question
+  "14": "14px"      # long prose, a control label
+  "16": "16px"      # a figure on a card
+  "18": "18px"      # a small heading, the amount field
+  "20": "20px"      # a section heading
+  "24": "24px"      # a stat figure
+  "30": "30px"      # the largest fixed size; above this a heading is fluid
+leading:            # six measures
+  none: 1           # an icon or a badge: the box is the line
+  flat: 1.05        # display headings
+  tight: 1.15       # a card question, a headline
+  snug: 1.3         # a compact row
+  base: 1.5         # body, and every long line
+  loose: 1.6        # a reading column
+rounded:            # one corner per job, five of them
+  chip: "6px"       # chips, tags, small wells
+  cta: "10px"       # DEFAULT: buttons, inputs, cards, option rows, confirm
+  sheet: "16px"     # dialogs, sheets, plates
+  card: "2px"       # the near-square Vault corner, used on marks and notches
+  pill: "100px"     # fully round: sort filter, feed YES/NO, icon circles
+spacing:            # the grid is 4px and 2 is the only half step. Nothing else is a distance.
+  "2": "2px"        # the half step: a nudge, an icon gap
   "4": "4px"        # tight inner (label to value)
-  "6": "6px"        # chip gaps
   "8": "8px"        # inner group gap, small padding
-  "10": "10px"      # button/pair gaps
   "12": "12px"      # component padding, inner section gap
-  "14": "14px"      # -
   "16": "16px"      # block gap, card padding
   "20": "20px"      # OUTER gap between groups (bet sheet)
   "24": "24px"      # section separation
+  "28": "28px"      # a wide block inset
+  "32": "32px"      # a hero inset
+  "40": "40px"      # the largest step
+  "56": "56px"      # a full band
+  hairline: "1px"   # a line, not a distance: a rule, a 1px inset, a hidden input
   gutter: "40px"    # page gutter
+control:            # the height of the box a finger or a pointer lands on
+  dense: "32px"     # a desktop icon button
+  base: "36px"      # the standard control
+  tap: "44px"       # the mobile touch target (WCAG 2.5.5). Written as min-height, never as padding
+  hero: "52px"      # the primary action on a sheet
+icon:               # the mark inside a control. No odd sizes
+  sm: "16px"
+  md: "18px"
+  lg: "22px"
 components:
   button-primary:
     backgroundColor: "{colors.brass}"
@@ -159,7 +185,7 @@ A graphite grayscale tilted warm, with a single matte-brass accent and a reserve
 - **Graphite Canvas** (`#141619`): the device base.
 - **Outer Slab** (`#191b1f`): the lighter stone slab the header, categories and trust ride on.
 - **Content Plate** (`#121417`): the darker inset plates (content, event detail, bet panel, dialogs).
-- **Card Face** (`#14161a`): floating cards, hero blocks, footer trust cards.
+- **Card Face** (`#141619`): floating cards, hero blocks, footer trust cards.
 - **Surface / Surface-2** (`#1c1f24` / `#24282f`): raised chrome (header, dropdowns, chips, inputs-at-rest).
 - **Border** (`#2b2f38`): hairline chrome border.
 - **Groove Dark** (`#0b0c0e`): the recessed dark line of every engraved divider, paired with a `rgba(237,231,218,.055)` highlight below it.
@@ -180,12 +206,12 @@ A graphite grayscale tilted warm, with a single matte-brass accent and a reserve
 **Character:** A three-family pairing on a clear contrast axis, never two lookalike sans. Space Grotesk gives the headings and card questions a confident, slightly mechanical cut; DM Sans keeps the UI plain and legible; IBM Plex Mono makes every number read as a measured figure, not decoration. Numbers are always mono, which is the spectator's honesty cue.
 
 ### Hierarchy
-- **Display** (Space Grotesk 700, `clamp(28px, 4vw, 38px)`, line-height 1.04, ls -0.03em): the feed H1 / page heading. `text-wrap: balance`.
-- **Headline** (Space Grotesk 700, `clamp(19px, 2vw, 24px)`, line-height 1.14, ls -0.01em): the event question on Event Detail, featured-market title, section titles.
-- **Title** (Space Grotesk 600, 13px, line-height 1.14, ls -0.02em): the feed card question; hot-list heads and market-stat values run 15px/700.
+- **Display** (Space Grotesk 700, `clamp(28px, 4vw, 38px)`, line-height 1.05, ls -0.03em): the feed H1 / page heading. `text-wrap: balance`.
+- **Headline** (Space Grotesk 700, `clamp(19px, 2vw, 24px)`, line-height 1.15, ls -0.01em): the event question on Event Detail and the section titles. The featured card title runs one rank down at `clamp(19px, 1.5vw, 23px)`, so a card never competes with a page heading.
+- **Title** (Space Grotesk 600, 13px, line-height 1.15, ls -0.02em): the feed card question; hot-list heads and market-stat values run 16px/700.
 - **Body** (DM Sans 400/500, 13-14px, line-height 1.5): the story-led "why" line, resolution text, comments. Cap prose at 60-75ch (the SEO plate holds `max-width: 60ch`).
-- **Label** (DM Sans 700, 11.5px, uppercase, ls 0.06-0.07em): category eyebrows and section kickers, in brass on the darker plates. Used deliberately, not above every block.
-- **Mono** (IBM Plex Mono 400/500, 10.5-12.5px): Volume / Closes, odds percentages, market stats, provenance tags.
+- **Label** (DM Sans 700, 12px, uppercase, ls 0.06-0.07em): category eyebrows and section kickers, in brass on the darker plates. Used deliberately, not above every block.
+- **Mono** (IBM Plex Mono 400/500, 11-13px): Volume / Closes, odds percentages, market stats, provenance tags.
 
 ### Named Rules
 **The Numbers-Are-Mono Rule.** Every figure a spectator weighs (probability, volume, close time, pool size) is set in IBM Plex Mono. Prose and labels are never mono; numbers are never in the prose face.
@@ -202,7 +228,7 @@ A graphite grayscale tilted warm, with a single matte-brass accent and a reserve
 
 ## 5. Elevation
 
-Depth is the whole point of this system, and it is built from embossing plus real shadow, not from glass or glow. The surface is two stacked stones: a lighter outer slab (`#191b1f`) and darker inset plates and cards (`#121417` / `#14161a`) that hover above it. Every plate is a casting with an inset top highlight, inset side and bottom shadows (the "cast rim"), and a soft drop shadow beneath. Dividers are engraved, not drawn: a dark recessed line with a faint highlight below it. Motion is minimal and physical: cards lift on hover (`translateY(-3px)` with a deeper shadow, `ease` on a `cubic-bezier(.2,.7,.2,1)` curve), and the condensed category strip slides into the sticky header on scroll. Every transform has a `prefers-reduced-motion` fallback that drops to shadow-only.
+Depth is the whole point of this system, and it is built from embossing plus real shadow, not from glass or glow. The surface is two stacked stones: a lighter outer slab (`#191b1f`) and darker inset plates and cards (`#121417` / `#141619`) that hover above it. Every plate is a casting with an inset top highlight, inset side and bottom shadows (the "cast rim"), and a soft drop shadow beneath. Dividers are engraved, not drawn: a dark recessed line with a faint highlight below it. Motion is minimal and physical: cards lift on hover (`translateY(-3px)` with a deeper shadow, `ease` on a `cubic-bezier(.2,.7,.2,1)` curve), and the condensed category strip slides into the sticky header on scroll. Every transform has a `prefers-reduced-motion` fallback that drops to shadow-only.
 
 ### Shadow Vocabulary
 - **Cast rim (every plate)** (`box-shadow: inset 0 1px 0 rgba(255,255,255,.17), inset 1px 0 0 rgba(255,255,255,.05), inset -1px 0 0 rgba(0,0,0,.35), inset 0 -1px 0 rgba(0,0,0,.55)`): the embossed top highlight + dark rim that makes a plate read as cast metal.
@@ -223,18 +249,18 @@ Depth is the whole point of this system, and it is built from embossing plus rea
 - **Ghost icon buttons:** transparent on a `#2b2f38` hairline, `999px`, 44px; hover shifts to a brass-tinted border. Used for the header utility cluster and the event actions (comment / share / save into Favorites).
 
 ### Chips
-- **Style:** one graphite chip across the family: face `#1b1e23`, hairline `rgba(255,255,255,.06)`, 12px radius (`rounded.lg`), DM Sans 600. Category nav carries a filled icon + label; the sub-filter and Load-more share the same chip.
+- **Style:** one graphite chip across the family: face `#1b1e23`, hairline `rgba(255,255,255,.06)`, 10px radius (`rounded.cta`), DM Sans 600. Category nav carries a filled icon + label; the sub-filter and Load-more share the same chip.
 - **State:** active is a brass tint (`rgba(199,162,78,.08)` fill, `rgba(199,162,78,.42)` border, `#e7d6a6` text, a faint brass glow). Brass appears only on the active chip. A condensed, icon-less version slides into the sticky header on scroll.
 
 ### Cards / Containers
 - **Corner Style:** floating event cards are near-square at 7px (`rounded.sm`); stone plates and the footer trust cards are 9px (`rounded.md`).
-- **Background:** card face `#14161a` with a fine stone grain and a 160deg gradient; a faint brass graph-grid fades in from the top-right corner; a symbolic Ionic-column watermark bleeds off the left edge (opacity ~.20) as a "built on trust" cue.
+- **Background:** card face `#141619` with a fine stone grain and a 160deg gradient; a faint brass graph-grid fades in from the top-right corner; a symbolic Ionic-column watermark bleeds off the left edge (opacity ~.20) as a "built on trust" cue.
 - **Shadow Strategy:** the Card rest / Card hover vocabulary from Elevation. Cards float; plates hover; nothing is flat at rest.
 - **Border:** a dark cast rim (`1px solid rgba(0,0,0,.4)` plus inset highlights), never a bright 1px line and never a nested card inside a card.
 - **Internal Padding:** card body 13px; content plate 24px 28px 30px; sections 16px 20px.
 
 ### Inputs / Fields
-- **Style:** the amount / text field sits recessed at `#0d0f12` with the `#2b2f38` hairline and a 12px radius, so it reads as cut into the plate rather than raised.
+- **Style:** the amount / text field sits recessed at `#0d0f12` with the `#2b2f38` hairline and a 10px radius, so it reads as cut into the plate rather than raised.
 - **Focus:** a 2px brass focus ring (`outline: 2px solid #d7ac53; outline-offset: 2px`) on every interactive control.
 
 ### Navigation
@@ -243,7 +269,7 @@ Depth is the whole point of this system, and it is built from embossing plus rea
 - **Mobile bottom nav:** four slots on `#1c1f24` with an engraved top groove; the active slot is brass-text with a brass icon. Money stays a utility (a balance figure), not a primary destination.
 
 ### Signature Components
-- **Event card, binary (treatment B):** editorial thumbnail (masked, bleeding left) + question (Space Grotesk) + a 2-line story "why" + the **odds bar** (a thin 5px pill: green YES fill with a soft glow on a red NO track, YES%/NO% labels in mono) + tinted YES/NO + a mono meta row (Volume / Closes) + bookmark. The action band is vertically centered so odds bars line up across cards.
+- **Event card, binary (treatment B):** editorial thumbnail (masked, bleeding left) + question (Space Grotesk) + a 2-line story "why" + the **odds bar** (a thin 4px pill: green YES fill with a soft glow on a red NO track, YES%/NO% labels in mono) + tinted YES/NO + a mono meta row (Volume / Closes) + bookmark. The action band is vertically centered so odds bars line up across cards.
 - **Event card, multi (treatment D):** option rows (name + probability in Space Grotesk + compact tinted YES/NO), each row a flat `#1b1e23` chip.
 - **Featured hero band:** a featured market (photo backdrop under a veil, AMM price chart), two trust cards, a notched brass brand tile, and a "hot right now" list, each on the shared card-face stone.
 - **Event Detail:** two floating plates (scrolling content + a sticky bet panel), a mobile sticky bet dock, an AMM "Market" depth panel (a pool + curve, not an order book), and content tabs (Comments / Biggest bets / Bets / Activity) in spectator language.

@@ -93,6 +93,53 @@ product theme, several products on one system), which is a later stage if the pr
 
 ---
 
+## The scales
+
+A primitive family is a **scale with a rule**, not a list of the values that happened to be in the
+product. It was a list once: the token file was read out of the painted screens in step 1, so space
+had 25 steps (1, 2, 3, 4, 5, 6, 7, 8, 9, 10 in a row), text had five half pixels left over from the
+wireframe's rem arithmetic, and radius carried two names for the same pill. Step 6 turned each family
+into a scale. The map that did it is data in `ui-kit/_rescale.py` and can be read back.
+
+| Family | Rule | Steps |
+|---|---|---|
+| space | the grid is 4px, 2 is the only half step | `2 4 8 12 16 20 24 28 32 40 56` |
+| hairline | 1px is a line, not a distance, so it is not on the space scale | `--hairline` |
+| radius | one corner per job | `2 6 10 16 pill` |
+| control | the height of the box a finger or a pointer lands on | `32 36 44 52` |
+| icon | the mark drawn inside a control | `16 18 22` |
+| size | a fixed piece of content | `56 72` |
+| text | steps by 1 to 14, then by 2 and 4 | `10 11 12 13 14 16 18 20 24 30` |
+| display | a fluid heading is one token, never a size plus a rule | 7 clamps, all wired |
+| leading | six measures, from a display line to a reading column | `1 1.05 1.15 1.3 1.5 1.6` |
+
+Three rules govern a change to any of them:
+
+- **Round to the nearest step. On a tie, take the heavier neighbour**, measured on the declarations that
+  read it. It is objective, it needs no taste, and on this product it always picks the smaller step, so
+  a rescale can never inflate a layout.
+- **A number is a step only up to 64px.** Above that it is a layout position (the 104px rail offset, the
+  118px inset behind an overlapping figure) and it stays literal, per the exceptions above.
+- **A value off the grid is a category error, not a missing step.** `--space-5` was the height of the
+  odds bar, `--space-3` a status dot, `--space-1` a hairline: sizes wearing a spacing name. That is how
+  a scale reaches 25 steps. Ask what the number measures before adding a step for it.
+
+Colour has one extra rule, because a merge there is invisible and therefore easy to get wrong. Two
+primitives merge only when **both** hold: they are under deltaE 1.5 in Lab, which no eye separates side
+by side, **and they never meet** on screen, neither as two stops of one gradient nor as parent and
+child. That is why `--graphite-850` (a chip) does not fold into `--graphite-830` (the surface a chip
+sits on) at deltaE 0.49.
+
+Two gates hold the line, in `ui-kit/_check_kit.py`:
+
+- **11, no orphan token.** A declared value nobody reads is a transcript, not a system. One documented
+  exception, `--brass-800`, because DESIGN.md names bronze as part of the brand metal.
+- **12, no raw scale value.** A px literal in `padding`, `margin`, `gap`, `font-size`, `border-radius`
+  or a unitless `line-height` fails the build, up to the 64px cut. This is how the harvest grew the
+  first time.
+
+---
+
 ## Naming
 
 Roles are read out of the product, not borrowed. The audit (`tokens-audit.md`) lists, for every role,

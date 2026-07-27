@@ -309,15 +309,22 @@ for t in radius["tokens"]:
 radius_html.append("</div>")
 radius_html = "\n".join(radius_html)
 
+# Three shapes, because the three families are three different things and showing
+# them all as one bar is what made "control" unreadable: a control is a box a
+# finger lands on, an icon is the mark inside it, a size is a piece of content.
 size_html = ['<div class="tk-sizes">']
 for t in sizes["tokens"]:
-    v = resolve(t["value"])
-    if "icon" in t["name"]:
-        size_html.append(f'<div class="tk-size"><i style="width:var({t["name"]});height:var({t["name"]});'
-                         f'border-radius:4px"></i><span>{esc(t["name"])}<br>{esc(v)}</span></div>')
+    v, job = resolve(t["value"]), esc(t["comment"] or "")
+    if t["name"].startswith("--icon-"):
+        box = (f'width:var({t["name"]});height:var({t["name"]});border-radius:var(--radius-2);'
+               f'background:var(--text-icon)')
+    elif t["name"].startswith("--size-"):
+        box = (f'width:var({t["name"]});height:var({t["name"]});border-radius:var(--radius-2);'
+               f'border:1px solid var(--border-brass)')
     else:
-        size_html.append(f'<div class="tk-size"><i style="height:var({t["name"]})"></i>'
-                         f'<span>{esc(t["name"])}<br>{esc(v)}</span></div>')
+        box = (f'width:var({t["name"]});height:var({t["name"]});border-radius:var(--radius-10)')
+    size_html.append(f'<div class="tk-size"><i style="{box}"></i>'
+                     f'<span>{esc(t["name"])}<br>{esc(v)}<br><em>{job}</em></span></div>')
 size_html.append("</div>")
 size_html = "\n".join(size_html)
 
@@ -459,10 +466,21 @@ HTML = f"""<!doctype html>
     <p class="tk-note">Space, radius and size get no semantic level. They repeat, but they carry no
     meaning a theme or a rebrand would move, so a component reads them directly.</p>
     <h3 class="tk-subh">space</h3>
+    <p class="tk-note"><b>The grid is 4px and 2 is the only half step.</b> A value off the grid is not a
+    distance: 1px is a line, so it is <code>--hairline</code>, and the measurement of a thing is a
+    control or a size below. The scale was 25 steps read out of the wireframe, including 1 3 5 7 9 in a
+    row; each one moved to its nearest step, and a value that sat exactly between two broke toward the
+    heavier one, so nothing inflated and nothing moved more than 2px.</p>
     {scale_rows(space["tokens"])}
     <h3 class="tk-subh">radius</h3>
+    <p class="tk-note">One corner per job, five of them. <code>--radius-round</code> (1000px) rendered
+    the same pill as <code>--radius-pill</code> on every control it touched, and
+    <code>--radius-circle</code> had no consumer at all.</p>
     {radius_html}
     <h3 class="tk-subh">control and icon sizes</h3>
+    <p class="tk-note">A <b>control</b> size is the height of the box a finger or a pointer lands on; an
+    <b>icon</b> size is the drawn mark inside it; a <b>size</b> is a fixed piece of content. Shown at
+    the real size, with the job each one is for.</p>
     {size_html}
     <h3 class="tk-subh">page frame</h3>
     {scale_rows(frame["tokens"])}
@@ -504,27 +522,41 @@ HTML = f"""<!doctype html>
   </section>
 
   <section class="tk-sec" id="log">
-    <h2 data-n="08">Merges and open items</h2>
-    <h3 class="tk-subh">drift merged into one value</h3>
-    <table class="tk-tbl"><thead><tr><th>was</th><th>now</th><th>why it is safe</th></tr></thead><tbody>
-      <tr><td class="tk-hex">#14161a</td><td class="tk-hex">#141619</td><td>one step in the blue channel, the same canvas stone</td></tr>
-      <tr><td class="tk-hex">#20242b</td><td class="tk-hex">#20242a</td><td>one step in the blue channel, the same hover fill</td></tr>
-      <tr><td class="tk-hex">#e88a84</td><td class="tk-hex">#e79087</td><td>two quiet reds for one job: the NO figure and the NO button</td></tr>
-      <tr><td class="tk-hex">border-radius 1000px</td><td class="tk-hex">100px</td><td>every control it is used on is under 60px tall, so both render the same pill</td></tr>
-      <tr><td class="tk-hex">--brass, --lime</td><td class="tk-hex">--brass-500, --brass-300</td><td>exact duplicates of the accent pair, left over from an earlier direction</td></tr>
+    <h2 data-n="08">What the rescale moved</h2>
+    <p class="tk-note">The file was <b>read out of the painted product</b>, which was the right method for
+    a colour role and the wrong one for a scale: every literal anyone had typed became a token. 348 of
+    them. This is what became of the families, and the whole map is data in
+    <code>ui-kit/_rescale.py</code>, so any one of these can be traced to the declarations it moved.</p>
+    <table class="tk-tbl"><thead><tr><th>family</th><th>was</th><th>now</th><th>the rule it now follows</th></tr></thead><tbody>
+      <tr><td class="tk-hex">space</td><td class="tk-hex">25</td><td class="tk-hex">11</td><td>the grid is 4px, 2 is the only half step; nothing moved more than 2px, and a tie broke toward the heavier neighbour, so nothing inflated</td></tr>
+      <tr><td class="tk-hex">radius</td><td class="tk-hex">12</td><td class="tk-hex">5</td><td>one corner per job. 1000px and 100px rendered the same pill; 50% had no consumer</td></tr>
+      <tr><td class="tk-hex">control and icon</td><td class="tk-hex">10</td><td class="tk-hex">9</td><td>value named like the rest of the geometry, each with its job. No odd sizes: 15 and 17 are gone, and so is the nameless 38</td></tr>
+      <tr><td class="tk-hex">text</td><td class="tk-hex">21</td><td class="tk-hex">10</td><td>the half pixels were rem arithmetic and rounded UP, so no line got smaller. Three sizes existed only inside a clamp</td></tr>
+      <tr><td class="tk-hex">display</td><td class="tk-hex">5 declared, 0 used</td><td class="tk-hex">7 used</td><td>nine clamp() were written straight into the components; now every fluid heading reads a token</td></tr>
+      <tr><td class="tk-hex">leading</td><td class="tk-hex">8</td><td class="tk-hex">6</td><td>1.04 and 1.05 are the same line, and 1.45 / 1.5 / 1.55 were three body measures. 22 literal line heights joined the scale</td></tr>
+      <tr><td class="tk-hex">graphite</td><td class="tk-hex">24</td><td class="tk-hex">15</td><td>a step merged only if it was under deltaE 1.5 AND the two never meet, so a chip does not fold into the surface it sits on</td></tr>
+      <tr><td class="tk-hex">alphas</td><td class="tk-hex">54</td><td class="tk-hex">28</td><td>one ladder per family. A step of .05 on a hairline, a tint or a shadow is below what a screen shows</td></tr>
     </tbody></table>
+    <h3 class="tk-subh">the one change a person can see</h3>
+    <p class="tk-note"><code>#e88a84</code> folded into <code>#e79087</code>: two quiet reds for one job,
+    the NO figure and the NO button. At deltaE 3.44 it is the only colour move above the threshold of an
+    eye, and the file had already marked the pair for this step. Everything else measured under 1.5.</p>
     <h3 class="tk-subh">not merged, on purpose</h3>
     <p class="tk-note"><code>--green-200</code> stays its own value. It draws the YES line over the hero
-    photograph, where the quieter green loses against the image. Two values, two jobs, not drift.</p>
+    photograph, where the quieter green loses against the image. Two values, two jobs, not drift.<br>
+    <code>--display-hero</code> stays apart from <code>--display-question</code>. Folding them grew the
+    featured card title from 19.2px to 24px at 1280, which is a redesign and not a rounding.<br>
+    <code>--graphite-920</code> stays out of <code>--graphite-930</code> at deltaE 1.23: it ends the card
+    gradient, and merging it would give a card the same gradient as the plate it sits on.</p>
     <h3 class="tk-subh">open until step 7</h3>
-    <p class="tk-note"><code>--brass-800</code> (bronze) and <code>--graphite-820</code> (the old
-    <code>--slab</code>) have no consumer: documented in DESIGN.md, never wired. They either find a place
-    or they go.<br>
-    <code>--bg-card-quiet</code> is the one intentional pixel change of this stage. Five surfaces
-    (<code>.pos</code>, <code>.cta-bar</code>, <code>.toast</code>, <code>.cc-banner</code>,
-    <code>.wd-flow</code>) read <code>var(--card)</code>, which is declared nowhere, so they render
-    transparent today. The value restored is <code>--card3d</code>, the token the previous stage declared
-    for exactly this and never wired.<br>
+    <p class="tk-note"><code>--brass-800</code> (bronze) is the one token nothing reads. DESIGN.md names it
+    as part of the brand metal, so it is documented rather than dead, and gate 11 carries it as its single
+    exception. It either finds a place or it goes.<br>
+    Three bevel roles (<code>--bevel-md</code>, <code>--bevel-lit</code>, <code>--bevel-hi</code>) now share
+    one value. They were one role per ink depth, and the depths merged; whether the roles follow is a
+    question for the deletion pass.<br>
+    <code>.ic-sm</code> is still drawn at a literal 13px, below the icon ramp. It is a mark sized to a line
+    of text rather than to a control, which is an argument, not yet a decision.<br>
     The focus ring is real (30-plus selectors read the brass text role for it) but it does not get its own
     role here. Focus and the component states belong to the Design System stage, in both themes at once.</p>
   </section>

@@ -3,7 +3,7 @@
 
     python3 ui-kit/_check_kit.py
 
-Ten checks, each one a defect that actually happened at least once:
+Twelve checks, each one a defect that actually happened at least once:
 
   1. the product did not move        components/ and wireframes/ clean, and a
                                      ui-visual/ page differs only in its sidebar
@@ -17,6 +17,9 @@ Ten checks, each one a defect that actually happened at least once:
   9. one source of css               no screen styles itself, every screen
                                      links components/index.css and nothing else
  10. the painted product navigates   no link is dead in colour that is live in grey
+ 11. no orphan token                 a value nobody reads is a transcript, not a system
+ 12. no raw scale value              a number typed into a rule is how a scale stops
+                                     being one
 
 The live half of the verification is ui-kit/selftest.html, which loads every
 specimen in a frame and asks it whether it rendered. No em dash.
@@ -199,6 +202,68 @@ relink = subprocess.run([sys.executable, str(ROOT / "ui-visual" / "_relink.py"),
 first = (relink.stdout or "\n").splitlines()[0]
 check("10 painted product navigates", relink.returncode == 0 and " 0 links" in first,
       first.strip() or relink.stderr.strip()[:80])
+
+# 11 -------------------------------------------------------- no orphan token --
+# How the token file grew to 348 entries: it was READ out of the painted product,
+# so every literal anyone had typed became a token, and nothing ever asked whether
+# a token was read back. A declared value nobody reads is not a system, it is a
+# transcript. ui-kit/tokens.html is not a consumer: it shows every token by
+# definition, so counting it would make this gate always pass.
+TOK = (COMP / "tokens.css").read_text(encoding="utf-8")
+TOK_BODY = re.sub(r"/\*.*?\*/", "", TOK, flags=re.S)
+declared = set(re.findall(r"(--[\w-]+)\s*:", TOK_BODY))
+readers = [p for p in COMP.glob("*.css") if p.name not in ("tokens.css", "index.css")]
+readers += [KIT / "_page.css", KIT / "_specimen.css"] + list(SPECS.glob("*.html"))
+read = set(re.findall(r"var\((--[\w-]+)", TOK_BODY))   # a role reading a primitive
+for p in readers:
+    read |= set(re.findall(r"var\((--[\w-]+)", p.read_text(encoding="utf-8", errors="ignore")))
+# The one exception, with its reason: DESIGN.md names bronze as part of the brand
+# metal, so it is documented rather than dead. Anything else has to go or be wired.
+RESERVED = {"--brass-800"}
+orphan = sorted(declared - read - RESERVED)
+check("11 no orphan token", not orphan, "%d: %s" % (len(orphan), ", ".join(orphan[:5])))
+dangling = sorted({m for p in readers
+                   for m in re.findall(r"var\((--[\w-]+)", p.read_text(encoding="utf-8", errors="ignore"))
+                   if m not in declared})
+check("11 no dangling var()", not dangling, "%d: %s" % (len(dangling), ", ".join(dangling[:5])))
+
+# 12 ------------------------------------------------------ no raw scale value --
+# A number typed into a rule is how a scale stops being one. Only the properties
+# where a number IS a step are checked, and only up to 64px: above that it is a
+# layout position (the 104px rail offset, the 118px inset behind a figure), which
+# architecture.md already rules out of the scale.
+SCALE_PROPS = {"padding", "padding-top", "padding-right", "padding-bottom", "padding-left",
+               "margin", "margin-top", "margin-right", "margin-bottom", "margin-left",
+               "gap", "row-gap", "column-gap", "font-size", "border-radius", "line-height"}
+# named, with the reason, the same way the orphan gate names its one exception
+RAW_OK = {("chart.css", "font-size")}   # svg text inside a scaled viewBox: not a screen px
+raw = []
+for path in sorted(COMP.glob("*.css")):
+    if path.name in ("tokens.css", "index.css"):
+        continue
+    body = re.sub(r'url\("[^"]*"\)', "URL", re.sub(r"/\*.*?\*/", "", path.read_text(encoding="utf-8"),
+                                                   flags=re.S))
+    for m in re.finditer(r"(?:^|[;{])\s*([a-z-]+)\s*:\s*([^;{}]*)", body):
+        prop, val = m.group(1), m.group(2)
+        if prop not in SCALE_PROPS or (path.name, prop) in RAW_OK:
+            continue
+        if prop == "line-height":
+            if re.fullmatch(r"[\d.]+", val.strip()) and float(val.strip()) != 0:
+                raw.append("%s %s:%s" % (path.name, prop, val.strip()))
+            continue
+        for lit in re.findall(r"(?<![\w.-])(\d+(?:\.\d+)?)px", val):
+            if float(lit) <= 64:
+                raw.append("%s %s:%s" % (path.name, prop, val.strip()[:40]))
+                break
+check("12 no raw scale value", not raw, "%d: %s" % (len(raw), "; ".join(raw[:3])))
+
+# The migration is its own test, the way _relink.py is: if a consumer still reads
+# a name the scales moved, a dry run wants to change something.
+rescale = subprocess.run([sys.executable, str(KIT / "_rescale.py"), "--dry-run"],
+                         cwd=ROOT, capture_output=True, text=True)
+line = (rescale.stdout or "\n").splitlines()[0]
+check("12 every consumer rescaled", rescale.returncode == 0 and " 0 rewrites" in line,
+      line.strip() or rescale.stderr.strip()[:80])
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
