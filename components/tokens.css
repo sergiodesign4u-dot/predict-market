@@ -174,6 +174,27 @@
   --size-56:56px;      /* the card thumbnail */
   --size-72:72px;      /* the profile avatar and the event-detail thumbnail */
 
+  /* ---- layers ----
+     A stacking order is a list, so it is written as one. The number is only the
+     order; the name is the reason, and nothing outside this block may type a
+     raw z-index. What was here before was 0 1 2 3 4 5 6 10 40 49 50 60 199 200
+     201: three of those did the same job, five belonged to markup that has been
+     deleted, and 199 next to 201 is the shape of a value that was picked to win
+     an argument rather than to sit in an order.
+     Below the product: a photograph, a veil, a decorative pseudo, the fill
+     behind the text of its own row. Above it: everything that has to be read. */
+  --z-under:0;         /* the thing something else is read against */
+  --z-content:1;       /* content lifted above its own decoration */
+  --z-float:2;         /* a frame or a control floating over a card */
+  --z-close:3;         /* the close control on a photographic head */
+  --z-dock:4;          /* sticky furniture at the foot of the content */
+  --z-nav:5;           /* the mobile bottom nav, over the dock it meets */
+  --z-header:6;        /* the sticky app header */
+  --z-menu:7;          /* what opens from the header or the toolbar */
+  --z-chrome-scrim:8;  /* course chrome only, below: the drawer scrim */
+  --z-chrome:9;        /* the course drawer */
+  --z-chrome-top:10;   /* its toggle, which stays reachable while it is open */
+
   /* ---- page frame ---- */
   --container-max:1400px;    /* the product grid */
   --container-read:800px;    /* SEO reading column */

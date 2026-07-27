@@ -7,11 +7,11 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .wf-screen > a.planned::after{content:"planned";font-size:var(--text-10);text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--border-hairline);padding:0 var(--space-4);margin-left:var(--space-8)}
-.rm-toggle{position:fixed;top:12px;left:12px;z-index:201;background:var(--chrome-bg);border:1px solid var(--chrome-border);border-radius:var(--radius-6);width:var(--control-36);height:var(--control-36);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-4);cursor:pointer}
+.rm-toggle{position:fixed;top:12px;left:12px;z-index:var(--z-chrome-top);background:var(--chrome-bg);border:1px solid var(--chrome-border);border-radius:var(--radius-6);width:var(--control-36);height:var(--control-36);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-4);cursor:pointer}
 .rm-toggle span{display:block;width:var(--icon-16);height:1.5px;background:var(--chrome-text);border-radius:var(--radius-2)}
-.rm-overlay{display:none;position:fixed;inset:0;background:var(--scrim);z-index:199;backdrop-filter:blur(2px)}
+.rm-overlay{display:none;position:fixed;inset:0;background:var(--scrim);z-index:var(--z-chrome-scrim);backdrop-filter:blur(2px)}
 .rm-overlay.open{display:block}
-.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--chrome-bg);border-right:1px solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:200;transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
+.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--chrome-bg);border-right:1px solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
 .sidebar.open{transform:translateX(0)}
 .sidebar::-webkit-scrollbar{display:none}
 .sidebar-brand{padding:var(--space-20) var(--space-16) var(--space-16);border-bottom:1px solid var(--chrome-border)}

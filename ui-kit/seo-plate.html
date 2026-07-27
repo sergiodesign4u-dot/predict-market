@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - SEO plate</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
@@ -121,8 +124,8 @@ push();});})();</script>
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 30px 58px -34px var(--shadow-ink-85),0 12px 26px -18px var(--shadow-ink-72)}
 .app-case .feed-inner&gt;.feed-seo-wrap{position:relative;padding:var(--space-40) var(--space-40) var(--space-40);display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,.82fr);gap:var(--space-40);align-items:stretch}
-.feed-seo-wrap::before{content:'';position:absolute;inset:var(--space-16);pointer-events:none;z-index:1;border:1px solid var(--border-brass);border-radius:var(--radius-6);clip-path:polygon(0 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%)}
-.feed-seo-wrap::after{content:'';position:absolute;right:12px;bottom:25px;width:var(--space-28);height:var(--hairline);z-index:1;background:var(--border-brass);transform:rotate(-45deg);pointer-events:none}
+.feed-seo-wrap::before{content:'';position:absolute;inset:var(--space-16);pointer-events:none;z-index:var(--z-content);border:1px solid var(--border-brass);border-radius:var(--radius-6);clip-path:polygon(0 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%)}
+.feed-seo-wrap::after{content:'';position:absolute;right:12px;bottom:25px;width:var(--space-28);height:var(--hairline);z-index:var(--z-content);background:var(--border-brass);transform:rotate(-45deg);pointer-events:none}
 .feed-seo-wrap .feed-seo{max-width:none;margin-left:0;margin-right:0;/* engraved groove like the header, tuned for the darker plate surface */
   border-top:1px solid var(--shadow-ink-45);box-shadow:inset 0 1px 0 var(--bevel-faint)}
 .feed-seo-wrap .feed-seo:first-of-type{margin-top:0;border-top:0;box-shadow:none}
@@ -135,8 +138,8 @@ push();});})();</script>
 .seo-tagline{margin:0;font-family:var(--font-display);font-weight:var(--weight-bold);text-transform:uppercase;font-size:var(--display-tagline);line-height:var(--leading-flat);letter-spacing:.01em;color:var(--text-primary);text-wrap:balance}
 .seo-tagline em{font-style:normal;color:var(--text-brass-lit)}
 .seo-by{margin-top:var(--space-24);font-family:var(--font-body);font-size:var(--text-13);letter-spacing:.05em;color:var(--text-brass-lit)}
-.seo-brand::after{content:'';position:absolute;inset:0 -12px 0 0;z-index:0;pointer-events:none;opacity:.18;background:url("../ui-visual/assets/trust-column-full.webp") no-repeat right center;background-size:auto 122%;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 40%,transparent 90%);mask-image:linear-gradient(to left,var(--mask-solid) 40%,transparent 90%)}
-.seo-brand&gt;*{position:relative;z-index:1}
+.seo-brand::after{content:'';position:absolute;inset:0 -12px 0 0;z-index:var(--z-under);pointer-events:none;opacity:.18;background:url("../ui-visual/assets/trust-column-full.webp") no-repeat right center;background-size:auto 122%;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 40%,transparent 90%);mask-image:linear-gradient(to left,var(--mask-solid) 40%,transparent 90%)}
+.seo-brand&gt;*{position:relative;z-index:var(--z-content)}
 @media(max-width:760px){
   .app-case .feed-inner&gt;.feed-seo-wrap{grid-template-columns:1fr;gap:var(--space-24);padding:var(--space-28) var(--space-24) var(--space-32)}
   .seo-brand{padding-left:0;padding-top:var(--space-24);border-left:0;box-shadow:none;border-top:1px solid var(--edge-groove-dark)}

@@ -16,7 +16,7 @@
 .toggle{border:1px solid var(--border-hairline);font-size:var(--text-10);padding:var(--space-2) var(--space-8);cursor:pointer}
 .toggle[aria-checked="true"]{font-weight:var(--weight-bold)}
 .lang-menu .filter-panel{top:auto;bottom:calc(100% + 4px);right:auto;left:0;min-width:150px}
-.filter-panel{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:50;min-width:196px}
+.filter-panel{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
 .filter-menu summary{background:var(--bg-surface);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
 .app-case .filter-menu summary{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20)!important;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 .app-case .filter-menu summary:hover{border-color:var(--border-brass-hover)!important;background:var(--bg-control);color:var(--text-strong)}

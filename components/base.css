@@ -5,7 +5,22 @@
    Stand:  ui-kit/base.html
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+/* THE FONTS ARE NOT IMPORTED HERE, AND THAT IS THE POINT. This file used to
+   @import them, which meant the browser could not even discover the request
+   until it had fetched and parsed index.css and then base.css: three hops for a
+   render-blocking resource, while every page ALSO carried a <link> to the same
+   URL in its head. One dependency, declared twice, on the slowest possible path.
+
+   A system stylesheet should name the family it needs and let the document load
+   it, which is also where the decision belongs: this is a third-party request
+   that sends the visitor's IP to Google before any consent is given, and this
+   product ships a cookie banner grounded in GDPR and ePrivacy. Self-hosting the
+   three families is the production answer; until then the call is visible in the
+   head of every page instead of buried three levels down in the CSS.
+
+   Every head carries it: ui-visual/*.html in the markup, ui-kit through the four
+   generators that share _theme_switch. --font-display, --font-body and
+   --font-mono in tokens.css name what has to arrive. */
 
 *{box-sizing:border-box}
 body{margin:0;line-height:var(--leading-base);color:var(--text-primary);font-family:var(--font-body-root);background:var(--bg-page)}
@@ -43,8 +58,8 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none}
 .app-case .md-table{display:flex;flex-direction:column;gap:var(--space-2)}
 .app-case .md-row{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-8);align-items:center;padding:var(--space-8) var(--space-12);border-radius:var(--radius-10);overflow:clip;font-family:var(--font-mono);font-size:var(--text-12);color:var(--text-primary)}
 .app-case .md-row-head{padding:var(--space-2) var(--space-12);color:var(--text-muted);font-size:var(--text-10);text-transform:uppercase;letter-spacing:.03em}
-.app-case .md-bar{position:absolute;left:0;top:0;bottom:0;background:var(--outcome-yes-fill);z-index:0}
-.app-case .md-row > span:not(.md-bar){position:relative;z-index:1}
+.app-case .md-bar{position:absolute;left:0;top:0;bottom:0;background:var(--outcome-yes-fill);z-index:var(--z-under)}
+.app-case .md-row > span:not(.md-bar){position:relative;z-index:var(--z-content)}
 .app-case .md-amt{font-weight:var(--weight-semibold)}
 .app-case .md-price{color:var(--outcome-yes-text);text-align:center}
 .app-case .md-row-head > span:nth-child(2){text-align:center}

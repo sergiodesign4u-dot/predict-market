@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
    A frame is a document of its own, so it does not inherit the attribute: this
    block runs in the frames too and they are told by postMessage, the same
@@ -32,7 +33,6 @@ setTimeout(wire,0);
 var f=document.getElementsByTagName('iframe');
 for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
 push();});})();</script>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UI Visual - How It Works</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -299,24 +299,24 @@ push();});})();</script>
       <div class="feed-inner">
         <div class="cat-layout">
         <div class="cat-main">
-        <div class="feed-head"><h2>How It Works</h2></div>
+        <div class="feed-head"><h1>How It Works</h1></div>
         <p class="hiw-lead">You always know what you are doing, why, and what happens to your money. This is a promise, not a FAQ.</p>
         <section class="hiw-sec">
-          <h3>Your money is held 1:1</h3>
+          <h2>Your money is held 1:1</h2>
           <p>Your USDC is held 1:1. We never lend it, invest it, or move it. It is yours until you place a bet or withdraw - added funds, payouts and withdrawals are all recorded in your Wallet.</p>
         </section>
         <section class="hiw-sec">
-          <h3>How events resolve</h3>
+          <h2>How events resolve</h2>
           <p>Each event has clear resolution conditions, written before betting opens. When the event happens, the platform team resolves it against public evidence (official sources, on-chain data, named references).</p>
           <p>Every resolution is recorded on-chain, so the outcome and the payout are verifiable and cannot be changed after the fact.</p>
         </section>
         <section class="hiw-sec">
-          <h3>How pricing and payouts work</h3>
+          <h2>How pricing and payouts work</h2>
           <p>Prices move with the market (AMM). Your payout depends on when you bet: earlier stakes at a better price earn more. The amount and potential payout are always shown before you confirm.</p>
           <p>There is no subscription. The platform earns a small fee only when you win - never on a losing bet.</p>
         </section>
         <section class="hiw-sec">
-          <h3>Proven, not promised</h3>
+          <h2>Proven, not promised</h2>
         </section>
         <article class="pos" aria-label="Resolved markets">
           <div class="pos-figures">
@@ -362,7 +362,7 @@ push();});})();</script>
 
         <!-- Trust strip (persistent funds-safety + resolution signal, WF reconcile) -->
         <div class="footer-trust">
-          <h3 class="trust-head">Built on trust, not on your balance</h3>
+          <h2 class="trust-head">Built on trust, not on your balance</h2>
           <div class="trust-items">
             <span class="trust-item">
               <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/></svg>

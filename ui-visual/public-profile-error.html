@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
    A frame is a document of its own, so it does not inherit the attribute: this
    block runs in the frames too and they are told by postMessage, the same
@@ -32,7 +33,6 @@ setTimeout(wire,0);
 var f=document.getElementsByTagName('iframe');
 for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
 push();});})();</script>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UI Visual - Public Profile, error</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -299,7 +299,7 @@ push();});})();</script>
       <div class="feed-inner">
         <div class="cat-layout">
         <div class="cat-main">
-        <div class="feed-head"><h2>Profile</h2></div>
+        <div class="feed-head"><h1>Profile</h1></div>
         <div class="state-block">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
           <h2 class="state-title">Couldn't load this profile</h2>
@@ -338,7 +338,7 @@ push();});})();</script>
 
         <!-- Trust strip (persistent funds-safety + resolution signal, WF reconcile) -->
         <div class="footer-trust">
-          <h3 class="trust-head">Built on trust, not on your balance</h3>
+          <h2 class="trust-head">Built on trust, not on your balance</h2>
           <div class="trust-items">
             <span class="trust-item">
               <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/></svg>

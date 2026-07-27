@@ -36,8 +36,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 1. Navigation and chrome
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | App header (lean) | `header.css` | [header](../header.html) | all header screens (feed, category, detail, active-bets, notifications, wallet, profile, how-it-works) | logged-in / logged-out; rest / `.scrolled` (condensed) | 87 | WF | - | + |
 | Logo (Events home) | `header.css` | [header](../header.html) | every header screen | default | 87 | WF | - | + |
 | Balance / Portfolio-Cash swap | `header.css` | [header](../header.html) | logged-in header | swap Portfolio <-> Cash; "+" opens Deposit | 53 | WF | - | + |
@@ -56,8 +56,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 2. Browse: feed and cards
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Two-stone plate / surface system (`.cat-layout`, `.feed-inner` inset plates, notched brass frames, groove edges, trust-column watermark `card::after`) | `catnav.css`, `feed.css`, `card.css` | [catnav](../catnav.html), [feed](../feed.html), [card](../card.html) | every color page (the substrate) | - | - | UV | art | + |
 | Event card, binary (treatment B) | `card.css` | [card](../card.html) | feed, category, favorites, event-feed-push | rest / hover | 36 | WF | event | + |
 | Event card, multi (treatment D) | `card.css` | [card](../card.html) | feed, category, event-detail, favorites | rest; 2 leading options | 20 | WF | event | + |
@@ -77,8 +77,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 3. Event Detail
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Two-plate layout (`.ed-layout`: content + sticky bet panel) | `event-detail.css` | [event-detail](../event-detail.html) | event-detail, event-detail-bet | binary / multi | 10 | WF | - | + |
 | Event head (`.ed-head`: thumb, category, question, big prob, thin `.ed-oddsbar`, actions) | `event-detail.css`, `oddsbar.css` | [event-detail](../event-detail.html), [oddsbar](../oddsbar.html) | event-detail (+ bet variants) | binary / multi | 11 | WF | event | + |
 | Bet panel (`.bet-panel`: `.bp-dir` filled-selected side, amount, quick chips, payout line, Confirm) | `betpanel.css` | [betpanel](../betpanel.html) | event-detail (+ bet variants) | intent / insufficient / reconcile / processing / error / resolved | 10-36 | WF | - | + |
@@ -100,8 +100,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 4. Forms, dialogs and inputs
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Shared dialog shell (`dialog.app-dialog`, stone-plate material) | `dialog.css` | [dialog](../dialog.html), [outcome-dialog](../outcome-dialog.html), [signin](../signin.html) | every page (emitted in shell) | open / close (backdrop, Esc); modal (desktop) / sheet (mobile) | 104 | WF/UV | - | ~ |
 | Provider buttons (Google / X / Apple, real brand marks) | `button.css` | [button](../button.html) | Sign In dialog + sign-in pages | rest / hover | 104 | WF/UV | - | + |
 | Amount field + quick-amount chips | `input.css` | [input](../input.html) | Deposit dialog + deposit pages | rest / selected / focus | 104 | WF | - | + |
@@ -120,8 +120,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 5. Feedback and states
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | State block (`.state-block`: icon + title + message + action) | `state-block.css` | [state-block](../state-block.html) | feed, category, detail, active-bets, notifications, wallet, profile, 404, 500, maintenance | empty / error | 38 | WF | - | + |
 | Skeleton cards / lines (`.card.skeleton` / `.pos.skeleton` shimmer) | `card.css`, `position.css` | [card](../card.html), [position](../position.html) | feed, category, detail, active-bets, notifications, wallet, profile | loading | 19 | WF/UV | - | ~ |
 | Empty list (`.pos-list` empty variant) | `position.css` | [position](../position.html) | active-bets, favorites, notifications | empty | 3 | WF | - | + |
@@ -134,8 +134,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 6. Profile and account (REDESIGNED in color - the whole cluster)
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Identity row (`.idrow`: ringed 72px avatar `.av`, name, handle, Edit pill) | `profile.css` | [profile](../profile.html) | my-profile, public-profile | own (Edit) / read-only | 2 | WF/UV | portrait | + |
 | Section divider (`p.pos-status`, brass tick) | `position.css` | [position](../position.html) | my-profile, public-profile | default | 2 | UV | - | + |
 | Reputation stat-grid (Track record: tiles, brass win-rate hero tile) | `profile.css` | [profile](../profile.html) | my-profile, public-profile | default | 2 | WF/UV | - | + |
@@ -149,8 +149,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 7. Footer
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Product footer (brand, markets, product, support, company, legal) | `footer.css` | [footer](../footer.html) | every footer screen | default | 87 | WF | - | + |
 | Footer trust strip ("Built on trust" cards, gold art bleed) | `trustbar.css` | [trustbar](../trustbar.html) | every footer screen | default | 87 | WF/UV | art | + |
 | Social icon row (`.social-row`) | `footer.css` | [footer](../footer.html) | footer | rest / hover | 87 | WF | - | + |

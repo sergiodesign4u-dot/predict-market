@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - Fields and amounts</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
@@ -49,7 +52,7 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/input.css</span>
-      <span class="tk-badge">39 rules</span>
+      <span class="tk-badge">40 rules</span>
       <span class="tk-badge">15 classes</span>
       <span class="tk-badge">76 screens</span>
     </div>
@@ -68,7 +71,7 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>dialog.app-dialog .quick button.sel</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.quick button.sel</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>dialog.app-dialog .amount-input:hover:not(:disabled)</td><td class='ck-decl'>border-color:var(--line-brass-strong)</td></tr><tr><td class='tk-role'>dialog.app-dialog .amount-input:focus</td><td class='ck-decl'>outline:none;border-color:var(--color-action);box-shadow:0 0 0 3px var(--glow-focus)</td></tr><tr><td class='tk-role'>dialog.app-dialog .amount-input:disabled</td><td class='ck-decl'>opacity:.45;cursor:not-allowed;background:var(--bg-surface)</td></tr><tr><td class='tk-role'>dialog.app-dialog .quick button:hover:not(.sel)</td><td class='ck-decl'>border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)</td></tr><tr><td class='tk-role'>dialog.app-dialog .quick button.sel</td><td class='ck-decl'>background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);border-color:var(--color-action)</td></tr><tr><td class='tk-role'>dialog.app-dialog .quick button.sel:hover</td><td class='ck-decl'>filter:brightness(1.06)</td></tr><tr><td class='tk-role'>.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:hover:not(:disabled)</td><td class='ck-decl'>border-bottom-color:var(--border-brass-hover)</td></tr><tr><td class='tk-role'>.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus</td><td class='ck-decl'>border-bottom-color:var(--color-action)</td></tr><tr><td class='tk-role'>.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:disabled</td><td class='ck-decl'>opacity:.45;cursor:not-allowed;border-bottom-color:var(--border-hairline)</td></tr><tr><td class='tk-role'>.app-case :is(.bet-panel,.bet-sheet) .quick button.sel</td><td class='ck-decl'>background:var(--tint-brass-16);border-color:var(--line-brass-soft);color:var(--text-brass);font-weight:var(--weight-bold)</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>dialog.app-dialog .quick button.sel</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.quick button.sel</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>dialog.app-dialog .amount-input:hover:not(:disabled)</td><td class='ck-decl'>border-color:var(--line-brass-strong)</td></tr><tr><td class='tk-role'>dialog.app-dialog .amount-input:focus</td><td class='ck-decl'>outline:none;border-color:var(--color-action);box-shadow:0 0 0 3px var(--glow-focus)</td></tr><tr><td class='tk-role'>dialog.app-dialog .amount-input:disabled</td><td class='ck-decl'>opacity:.45;cursor:not-allowed;background:var(--bg-surface)</td></tr><tr><td class='tk-role'>dialog.app-dialog .quick button:hover:not(.sel)</td><td class='ck-decl'>border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)</td></tr><tr><td class='tk-role'>dialog.app-dialog .quick button.sel</td><td class='ck-decl'>background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);border-color:var(--color-action)</td></tr><tr><td class='tk-role'>dialog.app-dialog .quick button.sel:hover</td><td class='ck-decl'>filter:brightness(1.06)</td></tr><tr><td class='tk-role'>.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:hover:not(:disabled)</td><td class='ck-decl'>border-bottom-color:var(--border-brass-hover)</td></tr><tr><td class='tk-role'>.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus</td><td class='ck-decl'>border-bottom-color:var(--color-action)</td></tr><tr><td class='tk-role'>/* A 1.5px underline changing colour is a state, not a focus indicator: it is the one control in the product that took outline:none and gave nothing back, and it is the field a person types the size of a bet into. Same ring as everything else. */ .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus-visible</td><td class='ck-decl'>outline:2px solid var(--text-brass);outline-offset:2px</td></tr><tr><td class='tk-role'>.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:disabled</td><td class='ck-decl'>opacity:.45;cursor:not-allowed;border-bottom-color:var(--border-hairline)</td></tr><tr><td class='tk-role'>.app-case :is(.bet-panel,.bet-sheet) .quick button.sel</td><td class='ck-decl'>background:var(--tint-brass-16);border-color:var(--line-brass-soft);color:var(--text-brass);font-weight:var(--weight-bold)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
@@ -134,6 +137,10 @@ dialog.app-dialog .amount-input{background:var(--bg-well)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input{flex:0 1 auto;width:150px;max-width:56%;-webkit-appearance:none;appearance:none;border:0;border-bottom:1.5px solid var(--border-hairline);border-radius:0;background:transparent;outline:none;padding:0 var(--space-2) var(--space-4);line-height:var(--leading-none);font-family:var(--font-display);font-size:var(--text-30);font-weight:var(--weight-bold);color:var(--text-primary);text-align:right}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:hover:not(:disabled){border-bottom-color:var(--border-brass-hover)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus{border-bottom-color:var(--color-action)}
+/* A 1.5px underline changing colour is a state, not a focus indicator: it is the
+   one control in the product that took outline:none and gave nothing back, and it
+   is the field a person types the size of a bet into. Same ring as everything else. */
+.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:disabled{opacity:.45;cursor:not-allowed;border-bottom-color:var(--border-hairline)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input::placeholder{color:var(--text-muted)}
 .app-case :is(.bet-panel,.bet-sheet) .quick{margin-top:0;justify-content:flex-end;flex-wrap:wrap}

@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - Trust bar and cards</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
@@ -132,11 +135,11 @@ svg.ft-ic:has(use){fill:currentColor;stroke:none}
 .footer-trust .trust-item{position:relative;overflow:clip;align-items:center;gap:var(--space-12);padding:var(--space-16) var(--space-20);min-height:82px;min-width:0;background-color:var(--bg-card);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-md),inset 1px 0 0 var(--bevel-hair),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 24px 48px -30px var(--shadow-ink-85),0 10px 22px -16px var(--shadow-ink-72)}
-.footer-trust .tr-ic{width:var(--icon-22);height:var(--icon-22);flex:0 0 22px;padding:var(--space-8);box-sizing:content-box;border-radius:var(--radius-10);position:relative;z-index:1;fill:none;stroke:var(--text-brass-lit);box-shadow:none;background:linear-gradient(140deg,color-mix(in oklab,var(--color-trust) 24%,var(--bg-control)),var(--bg-control) 74%);border:1px solid color-mix(in oklab,var(--color-trust) 32%,var(--border-hairline))}
-.footer-trust .tr-txt{position:relative;z-index:1}
+.footer-trust .tr-ic{width:var(--icon-22);height:var(--icon-22);flex:0 0 22px;padding:var(--space-8);box-sizing:content-box;border-radius:var(--radius-10);position:relative;z-index:var(--z-content);fill:none;stroke:var(--text-brass-lit);box-shadow:none;background:linear-gradient(140deg,color-mix(in oklab,var(--color-trust) 24%,var(--bg-control)),var(--bg-control) 74%);border:1px solid color-mix(in oklab,var(--color-trust) 32%,var(--border-hairline))}
+.footer-trust .tr-txt{position:relative;z-index:var(--z-content)}
 .footer-trust .tr-txt b{color:var(--text-primary)}
 .footer-trust .tr-txt i{color:var(--text-muted)}
-.footer-trust .trust-item::after{content:'';position:absolute;top:0;bottom:0;right:0;width:46%;z-index:0;pointer-events:none;opacity:.5;background-repeat:no-repeat;background-position:center right;background-size:cover;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 60%,transparent 99%);mask-image:linear-gradient(to left,var(--mask-solid) 60%,transparent 99%)}
+.footer-trust .trust-item::after{content:'';position:absolute;top:0;bottom:0;right:0;width:46%;z-index:var(--z-under);pointer-events:none;opacity:.5;background-repeat:no-repeat;background-position:center right;background-size:cover;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 60%,transparent 99%);mask-image:linear-gradient(to left,var(--mask-solid) 60%,transparent 99%)}
 .footer-trust .trust-item:nth-child(1)::after{background-image:url("../ui-visual/assets/trust-column.webp")}
 .footer-trust .trust-item:nth-child(2)::after{background-image:url("../ui-visual/assets/trust-source.webp")}
 .footer-trust .trust-item:nth-child(3)::after{background-image:url("../ui-visual/assets/trust-globe.webp")}

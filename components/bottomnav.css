@@ -20,7 +20,7 @@
 .bottom-nav .ic:has(use){color:var(--text-muted)}
 .bottom-nav li[aria-current="page"] .ic:has(use){color:var(--text-brass)}
 .bottom-nav button:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
-.bottom-nav{background:var(--bg-surface);z-index:40}
+.bottom-nav{background:var(--bg-surface);z-index:var(--z-nav)}
 .bottom-nav li{border-right:1px solid var(--border-hairline)}
 .bottom-nav a{display:block;text-decoration:none;color:inherit}
 .bottom-nav button{color:var(--text-muted)}

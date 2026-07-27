@@ -7,8 +7,14 @@ WHY IT IS INLINE AND WHY IT IS IN THE HEAD. The stored choice has to be on the
 <html> element before the first paint, or the page shows one theme and then
 snaps to the other. That rules out the end of the body, and an external file
 would still be a request the browser can miss when a page is opened straight off
-the disk. So: one small inline block, first thing in the head, and it is the
-only script on a painted screen that is allowed there.
+the disk. So: one small inline block, high in the head, and it is the only
+script on a painted screen that is allowed there.
+
+WHY IT IS NOT THE VERY FIRST THING. It used to be, and that pushed <meta
+charset> to byte 2064 on all 77 screens. The declaration has to be inside the
+first 1024 bytes or it does not count, and a browser left to sniff the encoding
+is a browser that can get it wrong. The charset goes first, the boot goes
+straight after it, and the first paint is still correct.
 
 WHAT IT IS NOT. This is a harness, not a product feature. The switch exists to
 prove that the semantic layer holds when the ground inverts (see section 3 of
@@ -87,7 +93,8 @@ BUTTON = ('<button type="button" class="theme-switch" aria-pressed="false">'
           '<span class="ts-label">Vault</span></button>')
 
 BOOT_RE = re.compile(r'\n?<script id="uvTheme">.*?</script>', re.DOTALL)
-HEAD_RE = re.compile(r"(<head>)", re.IGNORECASE)
+# after <head>, and after <meta charset> when the page declares one
+HEAD_RE = re.compile(r"(<head>\s*(?:<meta\s+charset=[^>]*>)?)", re.IGNORECASE)
 
 
 def process(path, mode):
@@ -99,15 +106,14 @@ def process(path, mode):
             return "unchanged"
         new = BOOT_RE.sub("", html)
     else:
-        if has:
-            # rewrite in place, so an edit to BOOT reaches every page
-            new = BOOT_RE.sub("\n" + BOOT, html)
-            if new == html:
-                return "unchanged"
-        else:
-            if not HEAD_RE.search(html):
-                return "no-head"
-            new = HEAD_RE.sub(lambda m: m.group(1) + "\n" + BOOT, html, count=1)
+        # take out whatever is there and put it back at the anchor, so an edit to
+        # BOOT and a move of the anchor both reach every page
+        bare = BOOT_RE.sub("", html)
+        if not HEAD_RE.search(bare):
+            return "no-head"
+        new = HEAD_RE.sub(lambda m: m.group(1) + "\n" + BOOT, bare, count=1)
+        if new == html:
+            return "unchanged"
     if mode != "check":
         with open(path, "w", encoding="utf-8") as fh:
             fh.write(new)

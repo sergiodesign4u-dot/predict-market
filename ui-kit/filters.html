@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - Sort and filters</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
@@ -116,7 +119,7 @@ push();});})();</script>
 .toggle{border:1px solid var(--border-hairline);font-size:var(--text-10);padding:var(--space-2) var(--space-8);cursor:pointer}
 .toggle[aria-checked="true"]{font-weight:var(--weight-bold)}
 .lang-menu .filter-panel{top:auto;bottom:calc(100% + 4px);right:auto;left:0;min-width:150px}
-.filter-panel{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:50;min-width:196px}
+.filter-panel{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
 .filter-menu summary{background:var(--bg-surface);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
 .app-case .filter-menu summary{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20)!important;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 .app-case .filter-menu summary:hover{border-color:var(--border-brass-hover)!important;background:var(--bg-control);color:var(--text-strong)}

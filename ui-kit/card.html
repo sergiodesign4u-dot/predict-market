@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - Event card</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
@@ -118,7 +121,7 @@ push();});})();</script>
 .why{margin:var(--space-4) 0 0;line-height:var(--leading-base)}
 .card{position:relative;display:flex;flex-direction:column;background:var(--bg-surface);overflow:clip}
 .card::before{top:-4px;right:-8px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ff8ac4' stroke-width='1.4'%3E%3Cpath d='M-10 14 C 20 4 40 24 70 14 S 120 4 150 14 S 200 24 230 14'/%3E%3Cpath d='M-10 30 C 20 20 40 40 70 30 S 120 20 150 30 S 200 40 230 30'/%3E%3Cpath d='M-10 46 C 20 36 40 56 70 46 S 120 36 150 46 S 200 56 230 46'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 78 C 20 68 40 88 70 78 S 120 68 150 78 S 200 88 230 78'/%3E%3Cpath d='M-10 94 C 20 84 40 104 70 94 S 120 84 150 94 S 200 104 230 94'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / 220px 132px}
-.card &gt; *{position:relative;z-index:1}
+.card &gt; *{position:relative;z-index:var(--z-content)}
 .card .card-body{display:flex;flex-direction:column;flex:1 1 auto;padding:var(--space-12) var(--space-12) var(--space-8)}
 .thumb{width:var(--size-56);height:var(--size-56);flex:0 0 var(--size-56);border:1px solid var(--border-hairline);background-size:cover;background-position:center;color:transparent;font-size:0}
 .grid &gt; .card:nth-of-type(1) .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
@@ -156,12 +159,12 @@ push();});})();</script>
 @media(max-width:640px){
   .card .bookmark-btn{min-width:var(--control-44);min-height:var(--control-44);display:inline-flex;align-items:center;justify-content:center;margin:-8px -8px -8px 0}
 }
-.card::before{content:'';position:absolute;inset:0;width:auto;height:auto;z-index:0;pointer-events:none;opacity:1;background-color:transparent;background-repeat:repeat;background-size:auto;background-image:var(--surface-grid)}
+.card::before{content:'';position:absolute;inset:0;width:auto;height:auto;z-index:var(--z-under);pointer-events:none;opacity:1;background-color:transparent;background-repeat:repeat;background-size:auto;background-image:var(--surface-grid)}
 .thumb{border-color:var(--border-brass)}
 .card{background-color:var(--bg-card);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-xs),inset 1px 0 0 var(--bevel-hair-soft),inset -1px 0 0 var(--edge-shade),inset 0 -1px 0 var(--edge-shade-strong),0 16px 30px -18px var(--shadow-ink-85),0 5px 12px -6px var(--shadow-ink-60);transition:transform .28s var(--ease-out),box-shadow .28s var(--ease-out)}
 .card:hover{transform:translateY(-3px);box-shadow:inset 0 1px 0 var(--bevel-lo),inset 0 -1px 0 var(--edge-shade-strong),0 26px 44px -20px var(--shadow-ink-85),0 10px 18px -8px var(--shadow-ink-72)}
-.card::after{content:'';display:block;position:absolute;left:-52px;bottom:0;width:168px;height:78%;z-index:0;pointer-events:none;opacity:.20;background:url("../ui-visual/assets/trust-column-full.webp") no-repeat center bottom;background-size:contain;-webkit-mask-image:linear-gradient(to right,var(--mask-solid) 44%,transparent 94%);mask-image:linear-gradient(to right,var(--mask-solid) 44%,transparent 94%)}
-.card .card-body{position:relative;z-index:1}
+.card::after{content:'';display:block;position:absolute;left:-52px;bottom:0;width:168px;height:78%;z-index:var(--z-under);pointer-events:none;opacity:.20;background:url("../ui-visual/assets/trust-column-full.webp") no-repeat center bottom;background-size:contain;-webkit-mask-image:linear-gradient(to right,var(--mask-solid) 44%,transparent 94%);mask-image:linear-gradient(to right,var(--mask-solid) 44%,transparent 94%)}
+.card .card-body{position:relative;z-index:var(--z-content)}
 .card::before{background-position:0 -10px;-webkit-mask-image:linear-gradient(to bottom left,var(--mask-solid) 0%,var(--mask-mid) 24%,transparent 56%);mask-image:linear-gradient(to bottom left,var(--mask-solid) 0%,var(--mask-mid) 24%,transparent 56%)}
 .card .meta{border-top:1px solid var(--shadow-ink-45);box-shadow:inset 0 1px 0 var(--bevel-faint);margin-top:auto}
 .card .top{align-items:stretch;gap:var(--space-12);margin-bottom:var(--space-12);min-height:88px}

@@ -35,6 +35,10 @@ dialog.app-dialog .amount-input{background:var(--bg-well)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input{flex:0 1 auto;width:150px;max-width:56%;-webkit-appearance:none;appearance:none;border:0;border-bottom:1.5px solid var(--border-hairline);border-radius:0;background:transparent;outline:none;padding:0 var(--space-2) var(--space-4);line-height:var(--leading-none);font-family:var(--font-display);font-size:var(--text-30);font-weight:var(--weight-bold);color:var(--text-primary);text-align:right}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:hover:not(:disabled){border-bottom-color:var(--border-brass-hover)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus{border-bottom-color:var(--color-action)}
+/* A 1.5px underline changing colour is a state, not a focus indicator: it is the
+   one control in the product that took outline:none and gave nothing back, and it
+   is the field a person types the size of a bet into. Same ring as everything else. */
+.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:disabled{opacity:.45;cursor:not-allowed;border-bottom-color:var(--border-hairline)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input::placeholder{color:var(--text-muted)}
 .app-case :is(.bet-panel,.bet-sheet) .quick{margin-top:0;justify-content:flex-end;flex-wrap:wrap}

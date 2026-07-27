@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - Bet panel and dock</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
@@ -148,7 +151,7 @@ push();});})();</script>
 .app-case :is(.bet-panel,.bet-sheet) .line span:last-child{color:var(--text-primary)}
 .app-case :is(.bet-panel,.bet-sheet) .line.total{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 .app-case :is(.bet-panel,.bet-sheet) .line.total span:last-child{color:var(--text-brass)}
-.app-case .bet-dock{position:sticky;bottom:52px;z-index:6;gap:var(--space-8);padding:var(--space-8) var(--space-12);border:0;border-top:1px solid var(--border-brass);background-color:var(--bg-dock);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-dock-from),var(--bg-card-to));background-blend-mode:overlay,normal;box-shadow:0 -14px 26px -18px var(--shadow-ink-85)}
+.app-case .bet-dock{position:sticky;bottom:52px;z-index:var(--z-dock);gap:var(--space-8);padding:var(--space-8) var(--space-12);border:0;border-top:1px solid var(--border-brass);background-color:var(--bg-dock);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-dock-from),var(--bg-card-to));background-blend-mode:overlay,normal;box-shadow:0 -14px 26px -18px var(--shadow-ink-85)}
 .app-case .bet-dock .bp-side{flex:1;border-radius:var(--radius-10);border:1px solid var(--border-hairline);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);padding:var(--space-8) var(--space-8);cursor:pointer}
 .app-case .bet-dock .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-10);font-weight:var(--weight-medium);color:inherit;opacity:.85}
 .app-case .bet-dock .bp-side.sel:first-child{background:var(--outcome-yes-fill-strong);color:var(--outcome-yes-text-lit);border-color:var(--outcome-yes-line)}

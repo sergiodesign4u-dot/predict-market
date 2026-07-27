@@ -19,13 +19,13 @@ dialog.app-dialog .hiw-full{display:block;box-sizing:border-box;padding:var(--sp
 .hiw-close:focus-visible,.hiw-full:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 dialog.app-dialog .hiw-full{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);border-radius:var(--radius-10)}
 .app-dialog.hiw-dialog{max-width:var(--container-dialog);overflow:clip}
-.app-dialog.hiw-dialog .hiw-close{position:absolute;top:12px;right:12px;z-index:3;width:var(--control-32);height:var(--control-32);display:flex;align-items:center;justify-content:center;padding:0;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+.app-dialog.hiw-dialog .hiw-close{position:absolute;top:12px;right:12px;z-index:var(--z-close);width:var(--control-32);height:var(--control-32);display:flex;align-items:center;justify-content:center;padding:0;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
 .app-dialog.hiw-dialog .hiw-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
 .app-dialog.hiw-dialog .hiw-close .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo)}
 .app-dialog.hiw-dialog .hiw-hero{position:relative;overflow:clip;padding:var(--space-32) var(--space-24) var(--space-28)}
 .app-dialog.hiw-dialog .hiw-hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);opacity:.24;pointer-events:none}
 .app-dialog.hiw-dialog .hiw-glow{position:absolute;top:-72px;right:-52px;width:224px;height:224px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--color-action-lit) 65%,var(--color-action)) 0%,var(--color-action) 42%,transparent 70%);filter:blur(40px);opacity:.5;pointer-events:none}
-.app-dialog.hiw-dialog .hiw-hero-inner{position:relative;z-index:1}
+.app-dialog.hiw-dialog .hiw-hero-inner{position:relative;z-index:var(--z-content)}
 .app-dialog.hiw-dialog .hiw-hero h2{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-hiw);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;text-wrap:balance}
 .app-dialog.hiw-dialog .hiw-tagline{margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-primary);max-width:32ch}
 .app-dialog.hiw-dialog .hiw-body{padding:var(--space-20) var(--space-20) var(--space-20);display:flex;flex-direction:column;gap:var(--space-16)}
@@ -44,3 +44,8 @@ dialog.app-dialog .hiw-full{background:linear-gradient(135deg,var(--color-action
 .app-dialog.hiw-dialog .hiw-arrow{width:var(--icon-18);height:var(--icon-18);stroke:var(--text-on-brass);transition:transform var(--dur-base) ease}
 .app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow{transform:translateX(3px)}
 .app-dialog.hiw-dialog .hiw-hero{background:radial-gradient(120% 92% at 100% 0%,color-mix(in oklab,var(--color-action) 34%,transparent),transparent 58%),linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
+/* The how-it-works PAGE, not the dialog. Its section headings had no rule at all:
+   18.72px with 1em margins is what a browser gives an h3 when nobody has said
+   anything, which is not a size that was chosen. Pinned to the scale, and the
+   family left inherited, so the only thing that moves is 0.7px. */
+.app-case .hiw-sec>:is(h2,h3){font-size:var(--text-18);font-weight:var(--weight-bold);margin:var(--space-20) 0}
