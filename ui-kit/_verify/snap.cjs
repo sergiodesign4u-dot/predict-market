@@ -15,7 +15,16 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE
   || '/Users/sergiyshevchenko/.npm/_npx/9833c18b2d85bc59/node_modules/playwright');
 
 const ROOT = require('path').resolve(__dirname, '..', '..');
-const BASE = 'http://localhost:8901/ui-visual/';
+// Which tree to walk. It used to be ui-visual only, and that is how step 7b
+// broke the vitrine without noticing: `.sidebar-divider` is built at run time by
+// _nav.js, so deleting the rule left every group heading in the kit's side panel
+// as unstyled text, and no snapshot covered the page it happened on. A pass that
+// edits components/ has to be able to prove BOTH trees.
+//     node snap.cjs <outDir>                 the painted product
+//     node snap.cjs <outDir> --kit           the vitrine and its specimens
+const KIT_MODE = process.argv.includes('--kit');
+const BASE = 'http://localhost:' + (process.env.SNAP_PORT || '8901') + '/';
+const TREE = KIT_MODE ? 'ui-kit/' : 'ui-visual/';
 // One width inside every band the system has a breakpoint for (640, 860, 900,
 // 1440), so a rule that escaped its media query cannot hide between two of them.
 const VIEWPORTS = [
@@ -80,8 +89,13 @@ async function snapshot(page) {
 
 (async () => {
   const outDir = process.argv[2];
-  let pages = process.argv.slice(3);
-  if (!pages.length) {
+  let pages = process.argv.slice(3).filter((a) => !a.startsWith('--'));
+  if (!pages.length && KIT_MODE) {
+    pages = fs.readdirSync(path.join(ROOT, 'ui-kit'))
+      .filter((f) => f.endsWith('.html') && f !== 'selftest.html').sort()
+      .concat(fs.readdirSync(path.join(ROOT, 'ui-kit', 'specimens'))
+        .filter((f) => f.endsWith('.html')).sort().map((f) => 'specimens/' + f));
+  } else if (!pages.length) {
     pages = fs.readdirSync(path.join(ROOT, 'ui-visual'))
       .filter((f) => f.endsWith('.html') && f !== 'overview.html').sort();
   }
@@ -92,14 +106,14 @@ async function snapshot(page) {
     const ctx = await browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: 1 });
     const page = await ctx.newPage();
     for (const name of pages) {
-      await page.goto(BASE + name, { waitUntil: 'load' });
+      await page.goto(BASE + TREE + name, { waitUntil: 'load' });
       await page.evaluate(() => document.fonts.ready);
       // Freeze anything that moves, in both runs alike, so a shimmer never
       // reads as a difference.
       await page.addStyleTag({ content: '*,*::before,*::after{animation-play-state:paused!important}' });
       await page.waitForTimeout(120);
       const snap = await snapshot(page);
-      fs.writeFileSync(path.join(outDir, `${name}.${vp}.json.gz`),
+      fs.writeFileSync(path.join(outDir, `${name.replace('/', '-')}.${vp}.json.gz`),
         zlib.gzipSync(JSON.stringify(snap)));
       process.stdout.write('.');
     }

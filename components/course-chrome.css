@@ -33,6 +33,7 @@
 .sidebar-back:hover{color:var(--chrome-accent);background:var(--bevel-hair)}
 .sidebar-back .bk-arrow{font-size:var(--text-14);line-height:var(--leading-none)}
 .sidebar-sub-head{font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--chrome-muted);padding:var(--space-8) var(--space-16) var(--space-4) var(--space-28);opacity:.7}
+.sidebar-divider{font-size:var(--text-10);font-weight:var(--weight-semibold);letter-spacing:.1em;text-transform:uppercase;color:var(--chrome-muted);padding:var(--space-16) var(--space-16) var(--space-8);opacity:.55}
 .sidebar-note{font-size:var(--text-11);line-height:var(--leading-base);color:var(--chrome-muted);padding:var(--space-8) var(--space-16);opacity:.7}
 /* the theme switch. It lives in the chrome and is drawn in chrome colour on
    purpose: it is the control that moves the product, so it must not move with

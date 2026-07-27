@@ -433,6 +433,17 @@ in both themes and stayed clean; what the gates could not see was where the styl
   ahead of it; 21 selectors nothing on any page could match; the four how-it-works section headings
   had no rule at all (18.72px is what a browser gives an unstyled h3); 15 half-pixel type sizes in
   the vitrine's own chrome; a comment naming `_theme.css`, deleted in step 7, on 76 screens.
+- **Two things this pass got wrong and had to come back for**, both the same shape. `.sidebar-divider`
+  is written at run time by `ui-kit/_nav.js` out of a template string, so a scan that read only
+  `class="..."` in HTML called it dead; deleting it left every group heading in the vitrine's side
+  panel as unstyled text. **A class inside a template string is markup**, and gate 14 reads the
+  scripts now. The reason nobody noticed is worse than the bug: `_verify/snap.cjs` walked
+  `ui-visual/` and nothing else, so a pass editing `components/` could prove the product and say
+  nothing about the vitrine the same file paints. It takes `--kit` now, and re-running it against a
+  worktree of the pre-pass tree found two more: `kit.html` has `<body class="app-case">` and
+  `.app-case` is transparent by design, so the body stopped painting the page; and one label took an
+  inline margin the removed `!important` had been out-shouting. **Removing an `!important` is only
+  safe once you have found what it was arguing with.**
 - **Three new gates**, so none of it grows back: **9** now fails on a style attribute, **12** owns
   the stacking order, **14** fails on a selector no markup can match (the other half of gate 11).
 - **How it was verified, and a tool that had to exist.** `_verify/diff.cjs` walks two snapshots in

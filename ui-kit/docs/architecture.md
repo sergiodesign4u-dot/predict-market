@@ -424,6 +424,24 @@ also the wrong place for the decision: a third-party font call sends the visitor
 in a product that ships a cookie banner grounded in GDPR and ePrivacy. Self-hosting the three families
 is the production answer; until then the call is visible in every head instead of buried in the CSS.
 
+### Markup is not only in .html files
+
+The first cut of gate 14 read `class="..."` out of the HTML and `classList` out of the scripts, and
+concluded that `.sidebar-divider` was dead. It is not: the vitrine's own side panel is built at run
+time by `_nav.js` out of a template string, so deleting the rule turned every group heading in the
+panel into unstyled default text, in both themes, on all 45 stand pages. **A class inside a template
+string is markup**, and the gate reads the `.js` files now.
+
+The deeper mistake was in the verification, not the scan. `_verify/snap.cjs` walked `ui-visual/` and
+nothing else, so a pass that edits `components/` could prove the product and say nothing at all about
+the vitrine that the same file paints. It takes `--kit` now, and the pass was re-run against the tree
+as it stood before step 7b, from a git worktree on a second port. That comparison found two more
+things the deletion of an `!important` had let go: `kit.html` has `<body class="app-case">`, and
+`.app-case` is transparent by design so the device slab shows through, so the body stopped painting
+the page; and one section label on the same page took an inline margin the component had been
+out-shouting. **An `!important` is a fossil of something that is no longer there, and removing it is
+only safe once you have found what it was arguing with.**
+
 ### How this pass was verified
 
 `ui-kit/_verify/diff.cjs` walks two snapshots in step, which is right while the DOM is fixed and only

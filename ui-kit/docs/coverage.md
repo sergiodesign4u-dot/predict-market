@@ -12,7 +12,7 @@ says so. No em dash.
 | component | own | specimens | inside | classes | screens |
 |---|---|---|---|---|---|
 | account | 1 | account-cta | 1 | 4 | 76 |
-| base | 2 | base-frame, base-groove | 0 | 24 | 76 |
+| base | 2 | base-frame, base-groove | 0 | 27 | 76 |
 | betpanel | 3 | betpanel-states, betpanel-dock, betpanel-sheet | 2 | 22 | 76 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 16 | 76 |
 | bottomnav | 1 | bottomnav | 0 | 3 | 76 |
@@ -22,7 +22,7 @@ says so. No em dash.
 | chart | 1 | chart | 1 | 14 | 76 |
 | comments | 1 | comments-thread | 1 | 17 | 76 |
 | cookie-consent | 1 | cookie-consent | 0 | 21 | 76 |
-| course-chrome | 1 | course-chrome | 0 | 25 | 76 |
+| course-chrome | 1 | course-chrome | 0 | 26 | 76 |
 | dialog | 1 | dialog-shared | 0 | 18 | 76 |
 | event-detail | 2 | event-detail, facts-strip | 0 | 19 | 76 |
 | feed | 1 | feed-grid | 1 | 9 | 76 |
@@ -59,7 +59,7 @@ says so. No em dash.
 Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
 that actually means. The Classes table on each component page shows the same verdict per row.
 
-### Deletion candidates (5)
+### Deletion candidates (6)
 
 Styled, and carried by no element in the repo: not by a painted screen, not by the kit, not by a wireframe, not by a course page, and not by any script. Nothing is removed yet. The screens still carry their own inline style and only move onto components/index.css in step 5, so the measurement is not final until then; step 7 is the pass that acts on this list.
 
@@ -68,6 +68,7 @@ Styled, and carried by no element in the repo: not by a painted screen, not by t
 | `.btn-block` | button.css | styled and carried by no element anywhere |
 | `.css` | base.css | styled and carried by no element anywhere |
 | `.html` | base.css | styled and carried by no element anywhere |
+| `.py` | base.css | styled and carried by no element anywhere |
 | `.signin-lead` | signin.css | styled and carried by no element anywhere |
 | `.theme-switch-inline` | course-chrome.css | styled and carried by no element anywhere |
 
@@ -85,7 +86,7 @@ The wireframe version of a block the paint replaced. Removing these needs the ma
 | `.sheet` | dialog.css | the grey-era version of a block the paint replaced |
 | `.wf-screen` | course-chrome.css | the grey-era version of a block the paint replaced |
 
-### Used only by a course page (3)
+### Used only by a course page (4)
 
 Carried by a page in ia/, concept/, research/, voice/ or user-research/. Those pages have their own inline styles and do not load the system, so the rule here reaches nothing.
 
@@ -94,8 +95,9 @@ Carried by a page in ia/, concept/, research/, voice/ or user-research/. Those p
 | `.delta` | header.css | used by a course page, which does not load the system |
 | `.next` | course-chrome.css | used by a course page, which does not load the system |
 | `.planned` | course-chrome.css | used by a course page, which does not load the system |
+| `.sidebar-divider` | course-chrome.css | used by a course page, which does not load the system |
 
-### Shown in the kit, not in the product (6)
+### Shown in the kit, not in the product (8)
 
 A real component the painted screens have not adopted. An offer, not debris. Do not delete without deciding against it first.
 
@@ -107,6 +109,8 @@ A real component the painted screens have not adopted. An offer, not debris. Do 
 | `.btn-secondary` | button.css | shown in the frozen kit, never on a painted screen |
 | `.btn-sm` | button.css | shown in the frozen kit, never on a painted screen |
 | `.groove-sep` | base.css | shown in the frozen kit, never on a painted screen |
+| `.placeholder-line` | base.css | shown in the frozen kit, never on a painted screen |
+| `.tbd` | base.css | shown in the frozen kit, never on a painted screen |
 
 ### Built or toggled at runtime (6)
 

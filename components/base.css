@@ -43,9 +43,18 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none}
    itself: transparent, so the slab shows through. */
 .device{width:100%;max-width:none;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative;border:0;background-color:var(--bg-slab);background-image:var(--surface-grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal}
 .app-case{position:relative;background:transparent;border:0}
+/* .app-case is transparent so the device slab shows through it. On the frozen kit
+   the app-case IS the body, and a body with no background lets the canvas fall back
+   to white. This is what the !important on body{background} used to be for. */
+body.app-case{background:var(--bg-page)}
 @media(min-width:860px){
   body:has(#rmSidebar){padding-left:var(--container-sidebar)}
 }
+/* The frozen kit still carries the wireframe's [TBD] and [placeholder] chips, and
+   it must keep rendering the way it did, so the rule that hides them stays. The
+   painted screens no longer have the markup at all (ui-visual/_strip_wireframe.py):
+   an annotation about what is not built yet belongs in wireframes/, which owns it. */
+.tbd,.placeholder-line{display:none}
 .groove-sep{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 #ptab-record:checked ~ #p-record,#ptab-wins:checked ~ #p-wins,#ptab-resolved:checked ~ #p-resolved{display:block}
 .app-case .ms-label{font-family:var(--font-mono);font-size:var(--text-10);letter-spacing:.03em;text-transform:uppercase;color:var(--text-muted)}

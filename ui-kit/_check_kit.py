@@ -324,12 +324,19 @@ check("12 every consumer rescaled", rescale.returncode == 0 and " 0 rewrites" in
 # 14 ----------------------------------------------- no selector without markup --
 # The other half of gate 11: a token nobody reads is a transcript, and so is a
 # rule nobody can match. 21 of them were still here at step 7b, all inherited
-# from grey-box css that the extraction copied along with everything else. A
-# class toggled by script counts as carried, so classList add/remove/toggle is
-# read out of the pages too.
+# from grey-box css that the extraction copied along with everything else.
+#
+# MARKUP IS NOT ONLY IN .html FILES, which is the mistake the first cut of this
+# gate made and the user caught by eye: the vitrine's own side panel is built at
+# run time by _nav.js out of a template string, so `.sidebar-divider` looked dead
+# to a scan that only read HTML, and deleting it turned every group heading in
+# the panel into unstyled text. A class in a template string is markup. So the
+# .js files are read too, and a class toggled by script counts as carried
+# (classList add/remove/toggle).
 carried = set()
 for page in (list(UV.glob("*.html")) + list(KIT.glob("*.html")) + list(SPECS.glob("*.html"))
-             + list((ROOT / "wireframes").glob("*.html"))):
+             + list((ROOT / "wireframes").glob("*.html"))
+             + list(UV.glob("*.js")) + list(KIT.glob("*.js"))):
     src = page.read_text(encoding="utf-8", errors="ignore")
     for group in re.findall(r'class=\\?["\']([^"\'\\]*)', src):
         carried.update(group.split())
