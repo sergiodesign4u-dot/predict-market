@@ -17,3 +17,5 @@
 .pos.skeleton .sk-line{height:var(--space-8);margin:var(--space-8) 0}
 .card.skeleton .sk-thumb,.card.skeleton .sk-line,.card.skeleton .sk-btn{background:var(--bg-control);border-color:var(--border-hairline)}
 .app-case .pos.skeleton .sk-line{background:linear-gradient(90deg,var(--bg-chip),var(--bg-control),var(--bg-chip));border-radius:var(--radius-6)}
+.app-case .ed-head .sk-thumb{width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72)}
+.app-case .card.skeleton .ed-head>div{flex:1}

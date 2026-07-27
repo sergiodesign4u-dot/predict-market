@@ -11,40 +11,40 @@ says so. No em dash.
 
 | component | own | specimens | inside | classes | screens |
 |---|---|---|---|---|---|
-| account | 1 | account-cta | 1 | 2 | 76 |
-| base | 2 | base-frame, base-groove | 0 | 49 | 76 |
-| betpanel | 3 | betpanel-states, betpanel-dock, betpanel-sheet | 2 | 23 | 76 |
+| account | 1 | account-cta | 1 | 4 | 76 |
+| base | 2 | base-frame, base-groove | 0 | 23 | 76 |
+| betpanel | 3 | betpanel-states, betpanel-dock, betpanel-sheet | 2 | 22 | 76 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 16 | 76 |
 | bottomnav | 1 | bottomnav | 0 | 3 | 76 |
 | button | 3 | button-primary, button-secondary, button-outcome-row | 0 | 22 | 76 |
 | card | 2 | card-binary, card-multi | 2 | 24 | 76 |
 | catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 10 | 76 |
-| chart | 1 | chart | 1 | 15 | 76 |
+| chart | 1 | chart | 1 | 14 | 76 |
 | comments | 1 | comments-thread | 1 | 17 | 76 |
 | cookie-consent | 1 | cookie-consent | 0 | 21 | 76 |
-| course-chrome | 1 | course-chrome | 0 | 26 | 76 |
-| dialog | 1 | dialog-shared | 0 | 20 | 76 |
-| event-detail | 2 | event-detail, facts-strip | 0 | 20 | 76 |
+| course-chrome | 1 | course-chrome | 0 | 25 | 76 |
+| dialog | 1 | dialog-shared | 0 | 18 | 76 |
+| event-detail | 2 | event-detail, facts-strip | 0 | 19 | 76 |
 | feed | 1 | feed-grid | 1 | 9 | 76 |
 | filters | 2 | filters-sort, filters-toggle | 2 | 6 | 76 |
 | footer | 1 | footer | 0 | 17 | 76 |
-| header | 2 | header-in, header-out | 1 | 28 | 76 |
-| hero | 1 | hero-band | 0 | 53 | 1 |
+| header | 2 | header-in, header-out | 1 | 27 | 76 |
+| hero | 1 | hero-band | 0 | 52 | 1 |
 | hiw-dialog | 1 | hiw-dialog | 0 | 17 | 76 |
 | input | 1 | input-amount | 1 | 15 | 76 |
 | loadmore | 1 | loadmore | 1 | 3 | 76 |
 | market | 1 | market-depth | 0 | 9 | 76 |
 | notice | 1 | notice-push | 1 | 13 | 76 |
 | oddsbar | 1 | oddsbar | 2 | 9 | 76 |
-| options | 2 | options-rows, options-multi | 1 | 14 | 76 |
+| options | 2 | options-rows, options-multi | 1 | 10 | 76 |
 | outcome-dialog | 1 | outcome-overlays | 0 | 2 | 76 |
-| position | 1 | position-list | 1 | 16 | 76 |
-| profile | 1 | profile-identity | 0 | 10 | 76 |
+| position | 1 | position-list | 1 | 19 | 76 |
+| profile | 1 | profile-identity | 0 | 11 | 76 |
 | related | 1 | related | 0 | 7 | 76 |
 | seo-plate | 1 | seo-plate | 0 | 10 | 76 |
 | signin | 1 | signin | 1 | 3 | 76 |
-| skeleton | 1 | skeleton-grid | 0 | 12 | 76 |
-| state-block | 3 | state-empty-filters, state-error, state-empty | 0 | 14 | 76 |
+| skeleton | 1 | skeleton-grid | 0 | 13 | 76 |
+| state-block | 3 | state-empty-filters, state-error, state-empty | 0 | 11 | 76 |
 | tabs | 2 | tabs-detail, tabs-mybets | 1 | 25 | 76 |
 | toast | 1 | toast | 0 | 9 | 76 |
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 13 | 76 |
@@ -59,40 +59,18 @@ says so. No em dash.
 Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
 that actually means. The Classes table on each component page shows the same verdict per row.
 
-### Deletion candidates (26)
+### Deletion candidates (4)
 
 Styled, and carried by no element in the repo: not by a painted screen, not by the kit, not by a wireframe, not by a course page, and not by any script. Nothing is removed yet. The screens still carry their own inline style and only move onto components/index.css in step 5, so the measurement is not final until then; step 7 is the pass that acts on this list.
 
 | class | file | why |
 |---|---|---|
-| `.annotations` | base.css | styled and carried by no element anywhere |
-| `.bp-opt` | options.css | styled and carried by no element anywhere |
-| `.bp-opt-pct` | options.css | styled and carried by no element anywhere |
-| `.bp-opts` | options.css | styled and carried by no element anywhere |
-| `.brand` | base.css | styled and carried by no element anywhere |
 | `.btn-block` | button.css | styled and carried by no element anywhere |
-| `.chart-box` | chart.css | styled and carried by no element anywhere |
 | `.css` | base.css | styled and carried by no element anywhere |
-| `.dim-note` | event-detail.css | styled and carried by no element anywhere |
-| `.dir-pill` | betpanel.css | styled and carried by no element anywhere |
-| `.dlg-note` | dialog.css | styled and carried by no element anywhere |
-| `.groove-sep-b` | base.css | styled and carried by no element anywhere |
-| `.hero-mini` | hero.css | styled and carried by no element anywhere |
-| `.mini-header` | header.css | styled and carried by no element anywhere |
-| `.nav-col` | base.css | styled and carried by no element anywhere |
-| `.navtree` | base.css | styled and carried by no element anywhere |
-| `.page-label` | base.css | styled and carried by no element anywhere |
-| `.preselect-note` | options.css | styled and carried by no element anywhere |
-| `.ref` | base.css | styled and carried by no element anywhere |
-| `.side` | base.css | styled and carried by no element anywhere |
 | `.signin-lead` | signin.css | styled and carried by no element anywhere |
-| `.ss-label` | state-block.css | styled and carried by no element anywhere |
-| `.ss-row` | state-block.css | styled and carried by no element anywhere |
-| `.state-switch` | state-block.css | styled and carried by no element anywhere |
 | `.theme-switch-inline` | course-chrome.css | styled and carried by no element anywhere |
-| `.wd-flow` | dialog.css | styled and carried by no element anywhere |
 
-### Grey-era leftovers (6)
+### Grey-era leftovers (7)
 
 The wireframe version of a block the paint replaced. Removing these needs the markup gone from wireframes/ first, which is a separate job.
 
@@ -104,18 +82,17 @@ The wireframe version of a block the paint replaced. Removing these needs the ma
 | `.grab` | dialog.css | the grey-era version of a block the paint replaced |
 | `.hiw-head` | hiw-dialog.css | the grey-era version of a block the paint replaced |
 | `.sheet` | dialog.css | the grey-era version of a block the paint replaced |
+| `.wf-screen` | course-chrome.css | the grey-era version of a block the paint replaced |
 
-### Used only by a course page (5)
+### Used only by a course page (3)
 
 Carried by a page in ia/, concept/, research/, voice/ or user-research/. Those pages have their own inline styles and do not load the system, so the rule here reaches nothing.
 
 | class | file | why |
 |---|---|---|
-| `.delta` | base.css | used by a course page, which does not load the system |
 | `.delta` | header.css | used by a course page, which does not load the system |
 | `.next` | course-chrome.css | used by a course page, which does not load the system |
 | `.planned` | course-chrome.css | used by a course page, which does not load the system |
-| `.sidebar-divider` | course-chrome.css | used by a course page, which does not load the system |
 
 ### Shown in the kit, not in the product (6)
 
@@ -130,7 +107,7 @@ A real component the painted screens have not adopted. An offer, not debris. Do 
 | `.btn-sm` | button.css | shown in the frozen kit, never on a painted screen |
 | `.groove-sep` | base.css | shown in the frozen kit, never on a painted screen |
 
-### Built or toggled at runtime (7)
+### Built or toggled at runtime (6)
 
 Never written into a file. Deleting any of these breaks a screen silently, because the grep that says they are unused is wrong.
 
@@ -140,7 +117,6 @@ Never written into a file. Deleting any of these breaks a screen silently, becau
 | `.m-label` | card.css | the card meta row, split by the feed script |
 | `.m-val` | card.css | the card meta row, split by the feed script |
 | `.oddsbar` | oddsbar.css | built by the feed script from the probability text |
-| `.open` | base.css | toggled on the drawer and the overlay by script |
 | `.open` | course-chrome.css | toggled on the drawer and the overlay by script |
 | `.scrolled` | header.css | added to the header by a scroll observer |
 

@@ -1,7 +1,7 @@
 /* components/feed.css
    Component: feed. Classes: .feed, .feed-controls, .feed-head, .feed-inner, .grid, .grid-l.
 
-   Reads: --bg-canvas, --line-grid, --text-primary
+   Reads: --line-grid, --text-primary
    Stand:  ui-kit/feed.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -20,9 +20,7 @@
 @media (min-width: 1280px){
   .grid{grid-template-columns:repeat(4, minmax(280px, 1fr))}
 }
-.chart-svg .grid-l{stroke-width:1}
 .cat-main .grid{grid-template-columns:repeat(auto-fill, minmax(240px, 1fr))}
-.feed{background:var(--bg-canvas)}
 .feed-inner{max-width:var(--container-max);margin:0 auto;padding:var(--space-16) var(--space-20)}
 .feed-head{border-bottom:0;padding-bottom:0}
 .feed-head h2{font-family:var(--font-display);font-size:var(--display-feed);font-weight:var(--weight-bold);letter-spacing:-.03em;line-height:var(--leading-flat);color:var(--text-primary);text-wrap:balance}

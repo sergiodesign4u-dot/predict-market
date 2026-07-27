@@ -6,29 +6,21 @@
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.dir-pill{border:1px solid var(--border-hairline);padding:var(--space-4) var(--space-8);font-weight:var(--weight-bold);font-size:var(--text-12);display:inline-block}
 .line{display:flex;justify-content:space-between;font-size:var(--text-12);padding:var(--space-4) 0;border-top:1px solid var(--border-hairline)}
 .line.total{font-weight:var(--weight-bold);border-top:1px solid var(--border-hairline)}
 .bet-panel .bp-inner{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
 .bp-head{display:flex;align-items:center;justify-content:space-between}
-.bp-head h3{font-size:var(--text-13);margin:0}
-.bp-hint{font-size:var(--text-10)}
-.bp-dir{display:flex;gap:var(--space-8)}
+.bp-head h3{margin:0}
 .bp-side{flex:1;border:1px solid var(--border-hairline);padding:var(--space-8) var(--space-8);font-size:var(--text-12);font-weight:var(--weight-bold);cursor:pointer}
 .bp-side.sel{border-width:2px}
 .bp-side .bp-pct{display:block;font-size:var(--text-11);font-weight:normal}
-.bet-dock{position:sticky;bottom:52px;z-index:4;border:1px solid var(--border-hairline);border-bottom:none;align-items:center;gap:var(--space-8);padding:var(--space-8)}
-.bet-dock .bp-side{padding:var(--space-12) var(--space-8)}
+.bet-dock{border-bottom:none;align-items:center}
 /* Label muted, figure bright: the same ranking the card meta row uses. The
    colours are stated here because nothing else states them, and without them
    the dock inherited body text for both halves. */
 .bet-dock .dock-meta{font-size:var(--text-10);flex:0 0 auto;text-align:center;color:var(--text-muted)}
 .bet-dock .dock-meta b{display:block;font-size:var(--text-12);color:var(--text-primary)}
-.bet-panel{display:block;flex:0 0 300px;position:sticky;top:8px;align-self:flex-start}
-.bet-dock{display:none}
-.bp-selected{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);border:1px solid var(--border-hairline);padding:var(--space-8)}
-.bp-sel-name{font-size:var(--text-13);font-weight:var(--weight-bold);display:flex;align-items:center;gap:var(--space-8)}
-.bp-change{font-size:var(--text-10);text-decoration:underline;white-space:nowrap}
+.bet-panel{flex:0 0 300px;top:8px;align-self:flex-start}
 .app-case .bet-panel{position:relative;overflow:clip;background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
     inset 1px 0 0 var(--bevel-faint),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),

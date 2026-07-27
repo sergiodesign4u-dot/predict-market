@@ -13,7 +13,6 @@ dialog.app-dialog .sheet-head h2{font-size:var(--text-14);margin:0}
 dialog.app-dialog .sheet-close{font-size:var(--text-12);cursor:pointer;padding:var(--space-2) var(--space-8)}
 dialog.app-dialog .sheet-body{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
 dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)}
-.dlg-note{font-size:var(--text-10);padding:var(--space-8) var(--space-8);border-top:1px dashed var(--border-hairline);margin:0}
 .backdrop{flex:1;position:relative;min-height:70vh;display:flex;align-items:flex-end;justify-content:center}
 .sheet{width:100%;border:1px solid var(--border-hairline);border-bottom:none}
 .grab{width:var(--control-36);height:var(--space-4);border-radius:var(--radius-2);margin:var(--space-8) auto 0}
@@ -34,8 +33,8 @@ dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)
 dialog.app-dialog{background:var(--bg-surface);border-radius:var(--radius-16);color:var(--text-primary)}
 dialog.app-dialog .sheet-head{border-bottom:1px solid var(--border-hairline)}
 dialog.app-dialog .sheet-close{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
-dialog.app-dialog .fine,dialog.app-dialog .dlg-note{color:var(--text-muted)}
-.app-case .wd-flow .sheet-body{padding:var(--space-12);gap:var(--space-12)}
+dialog.app-dialog .fine{color:var(--text-muted)}
+.outcome-dialog .sheet-body>.fine:first-child{font-weight:var(--weight-bold);font-size:var(--text-13);margin:0}
 .app-case :is(.bet-panel,.bet-sheet) .fine{color:var(--text-muted)}
 .app-case .bet-sheet .fine{margin-top:-8px}
 dialog.app-dialog.outcome-dialog .sheet-head{position:relative;overflow:clip;display:block;padding:var(--space-24) var(--space-20) var(--space-20);border-bottom:0}

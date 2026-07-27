@@ -8,7 +8,7 @@
 
 .auth-btns{display:flex;gap:var(--space-8)}
 .icon-btn{padding:var(--space-4);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;line-height:0}
-.app-header{margin:0;position:sticky;top:0;z-index:5}
+.app-header{margin:0}
 .app-header .row{display:flex;justify-content:space-between;align-items:center;gap:var(--space-8)}
 .app-header .left{display:flex;align-items:center;gap:var(--space-8)}
 .logo-btn{cursor:pointer}
@@ -27,7 +27,6 @@
 .avatar-menu li:first-child{border-top:none}
 .avatar-menu .dropdown button{width:100%;text-align:left;border:none;background:transparent;padding:var(--space-8) var(--space-8);font-size:var(--text-11);cursor:pointer}
 .bottom-nav .badge-dot{position:static;margin-left:var(--space-2)}
-.delta .mini-header{border:1px solid var(--border-hairline)}
 .delta .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-8);padding:var(--space-8)}
 .hiw-btn{padding:var(--space-4) var(--space-8);font-size:var(--text-12);cursor:pointer}
 .notif-menu{position:relative}
@@ -42,8 +41,7 @@
 .notif-drop li a span{display:block;font-size:var(--text-10)}
 .notif-all{display:block;text-align:center;padding:var(--space-8);font-size:var(--text-11);text-decoration:none}
 .bal-add{padding:var(--space-4)}
-.app-header{background:var(--bg-surface)}
-.app-header .row{max-width:var(--container-max);margin:0 auto;padding:var(--space-8) var(--space-20);box-sizing:border-box;min-height:58px}
+.app-header .row{margin:0 auto;padding:var(--space-8) var(--space-20);box-sizing:border-box;min-height:58px}
 .logo-btn{background:transparent;border:0;color:var(--text-primary);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:-.02em;padding:var(--space-8) var(--space-4);white-space:nowrap}
 .utility{align-items:center;gap:var(--space-8)}
 .utility > *{align-self:center}
@@ -77,7 +75,6 @@
   .hiw-btn{display:none}
   .app-header .row{padding-left:var(--space-56)}
 }
-.app-header{border-bottom:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
 .logo-btn{display:inline-flex;align-items:center;gap:var(--space-8)}
 .logo-btn::first-letter{color:var(--text-primary)}
 .logo-btn::before{content:'';flex:0 0 auto;width:23px;height:var(--icon-16);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='18'%3E%3Cpath d='M2 15 L9 7 L13 10 L24 2' fill='none' stroke='%23c99e3f' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/contain}

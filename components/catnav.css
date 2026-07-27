@@ -1,7 +1,7 @@
 /* components/catnav.css
    Component: catnav. Classes: .cat-crypto, .cat-culture, .cat-general, .cat-ic, .cat-layout, .cat-main, .cat-nav, .cat-politics, .cnt, .feed-subfilter, .subcat, .subcat-head.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-canvas, --bg-chip, --bg-control-hover, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --line-brass-soft, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-chip, --bg-control-hover, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --line-brass-soft, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
    Stand:  ui-kit/catnav.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -18,7 +18,6 @@
    so at 380px the rail rendered as a vertical list instead of the row of chips
    the screens actually show. Removed, not re-wrapped: the block below covers
    them. */
-.cat-nav{background:var(--bg-canvas)}
 .cat-layout{display:flex;flex-direction:column;gap:var(--space-12)}
 .cat-main{flex:1;min-width:0}
 .subcat{background:transparent;border:0;border-radius:0;padding:0}

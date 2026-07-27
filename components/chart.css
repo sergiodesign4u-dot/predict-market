@@ -6,11 +6,8 @@
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.chart-box{border:1px dashed var(--border-hairline);height:120px;display:flex;align-items:center;justify-content:center;font-size:var(--text-11);text-align:center;padding:var(--space-8)}
 .chart-wrap{padding:0}
-.chart-svg{width:100%;height:130px;display:block;border:1px solid var(--border-hairline)}
-.chart-svg polyline{fill:none;stroke-width:1.5}
-.chart-svg .nowline{stroke-width:1;stroke-dasharray:3 3}
+.chart-svg polyline{fill:none}
 .chart-svg text{font-size:7px}
 .chart-cap{font-size:var(--text-10);margin:var(--space-4) 0 0;display:flex;justify-content:space-between}
 .app-case .chart-svg{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-chart-well)}
@@ -27,6 +24,7 @@
 .app-case .ed-xaxis{display:flex;justify-content:space-between;padding-right:var(--space-40);margin-top:var(--space-8);font-family:var(--font-mono);font-size:var(--text-10);color:var(--text-muted)}
 .app-case .ed-chart-foot{display:flex;justify-content:flex-end;margin-top:var(--space-12)}
 .app-case .chart-svg{height:160px;display:block;width:100%}
+.app-case div.chart-svg{display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:var(--text-11)}
 @media(min-width:760px){
   .app-case .chart-svg{height:280px}
 }

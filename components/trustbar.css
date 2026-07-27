@@ -1,14 +1,13 @@
 /* components/trustbar.css
    Component: trustbar. Classes: .feed-trustbar, .footer-trust, .ft-ic, .ft-inner, .ft-item, .ft-sep, .tr-ic, .tr-txt, .trust-head, .trust-item, .trust-items.
 
-   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-page, --border-hairline, --color-trust, --edge-groove-dark, --edge-groove-light, --mask-solid, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-lit, --text-muted, --text-primary
+   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-hairline, --color-trust, --edge-groove-dark, --edge-groove-light, --mask-solid, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-lit, --text-muted, --text-primary
    Stand:  ui-kit/trustbar.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .footer-trust{flex-wrap:wrap;gap:var(--space-8) var(--space-16);justify-content:center;font-size:var(--text-12)}
-.feed-trustbar{background:color-mix(in oklab,var(--color-trust) 6%,var(--bg-page))}
-.feed-trustbar .ft-inner{max-width:var(--container-max);margin:0 auto;padding:var(--space-8) var(--space-20);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-8) var(--space-16);font-size:var(--text-13);color:var(--text-muted);line-height:var(--leading-snug)}
+.feed-trustbar .ft-inner{margin:0 auto;padding:var(--space-8) var(--space-20);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-8) var(--space-16);font-size:var(--text-13);color:var(--text-muted);line-height:var(--leading-snug)}
 .feed-trustbar .ft-item{display:inline-flex;align-items:center;gap:var(--space-8)}
 .feed-trustbar .ft-item b{color:var(--text-primary);font-weight:var(--weight-semibold)}
 .feed-trustbar .ft-ic{width:var(--icon-16);height:var(--icon-16);flex:0 0 var(--icon-16);stroke:var(--text-brass);fill:none;stroke-width:1.7}

@@ -102,5 +102,4 @@
   .hero-duo{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
-  .hero-mini:hover{transform:none}
 }

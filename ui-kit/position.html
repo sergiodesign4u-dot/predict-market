@@ -49,8 +49,8 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/position.css</span>
-      <span class="tk-badge">33 rules</span>
-      <span class="tk-badge">16 classes</span>
+      <span class="tk-badge">35 rules</span>
+      <span class="tk-badge">19 classes</span>
       <span class="tk-badge">76 screens</span>
     </div>
   </header>
@@ -85,7 +85,7 @@ push();});})();</script>
     shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
     used by nothing. Only the last kind is a deletion candidate, and they are collected in
     <a href="docs/coverage.md">coverage.md</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos</td><td class='tk-hex'>14</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-fig</td><td class='tk-hex'>6</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-figures</td><td class='tk-hex'>6</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-list</td><td class='tk-hex'>13</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-lost</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-no</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-note</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-q</td><td class='tk-hex'>7</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-side</td><td class='tk-hex'>13</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-top</td><td class='tk-hex'>7</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-won</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-yes</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.skeleton</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.w40</td><td class='tk-hex'>12</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.w70</td><td class='tk-hex'>6</td><td class='tk-hex'></td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.cat-main</td><td class='tk-hex'>48</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-panel-activity</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos</td><td class='tk-hex'>14</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-fig</td><td class='tk-hex'>6</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-figures</td><td class='tk-hex'>6</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-list</td><td class='tk-hex'>13</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-lost</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-no</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-note</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-q</td><td class='tk-hex'>7</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-side</td><td class='tk-hex'>13</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-top</td><td class='tk-hex'>7</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-won</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos-yes</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ptab-panel</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.skeleton</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.w40</td><td class='tk-hex'>12</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.w70</td><td class='tk-hex'>6</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
@@ -105,16 +105,15 @@ push();});})();</script>
    Stands on: 23 ui-visual screens (active-bets-history-loading.html, active-bets-history.html, active-bets-loading.html, active-bets.html, event-detail-bet-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.pos-list{display:flex;flex-direction:column;gap:var(--space-8)}
-.pos{border:1px solid var(--border-hairline);padding:var(--space-8) var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
+.pos-list{display:flex;flex-direction:column}
+.pos{display:flex;flex-direction:column}
 .pos-top{display:flex;justify-content:space-between;gap:var(--space-8);align-items:flex-start}
-.pos-q{font-size:var(--text-13);font-weight:var(--weight-bold)}
-.pos-side{height:max-content;white-space:nowrap}
-.pos-figures{display:flex;gap:var(--space-16);font-size:var(--text-10);flex-wrap:wrap}
-.pos-fig b{display:block;font-size:var(--text-12)}
+.pos-side{height:max-content}
+.pos-figures{display:flex;flex-wrap:wrap}
+.pos-fig b{display:block}
 .pos.skeleton .w70{width:70%}
 .pos.skeleton .w40{width:40%}
-.pos-side{border:1px solid var(--border-hairline);padding:0 var(--space-4);font-size:var(--text-10)}
+.pos-side{padding:0 var(--space-4)}
 .pos-note{font-size:var(--text-11);margin:var(--space-8) 0 0}
 .app-case .pos-side{border:1px solid var(--border-hairline);border-radius:var(--radius-6);background:var(--bg-control);color:var(--text-muted);font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.03em;white-space:nowrap}
 .app-case .pos-side.pos-yes{color:var(--outcome-yes-text);border-color:var(--outcome-yes-line);background:var(--outcome-yes-fill)}
@@ -141,6 +140,9 @@ push();});})();</script>
   .app-case .pos[aria-label="Track record"] .pos-figures{grid-template-columns:repeat(4,1fr)}
 }
 .app-case .pos[aria-label="Portfolio summary"] .pos-figures{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-12)}
+.app-case .ed-panel-activity .pos-note{margin:0 0 var(--space-8)}
+.app-case .cat-main&gt;.pos .pos-figures,.app-case .ptab-panel&gt;.pos .pos-figures{font-size:var(--text-11)}
+.app-case a:has(&gt;.pos){text-decoration:none;color:inherit;display:block}
 .app-case .pos[aria-label="Portfolio summary"] .pos-fig:first-child b{color:var(--text-brass)}
 </pre></details>
   </section>

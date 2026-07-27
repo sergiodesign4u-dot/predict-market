@@ -49,7 +49,7 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/feed.css</span>
-      <span class="tk-badge">25 rules</span>
+      <span class="tk-badge">23 rules</span>
       <span class="tk-badge">9 classes</span>
       <span class="tk-badge">76 screens</span>
     </div>
@@ -75,7 +75,7 @@ push();});})();</script>
     <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-canvas)"></i><code>--bg-canvas</code></span><span class="ck-role"><i style="background:var(--line-grid)"></i><code>--line-grid</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--line-grid)"></i><code>--line-grid</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
@@ -100,7 +100,7 @@ push();});})();</script>
     <details class="ck-src"><summary>components/feed.css</summary><pre>/* components/feed.css
    Component: feed. Classes: .feed, .feed-controls, .feed-head, .feed-inner, .grid, .grid-l.
 
-   Reads: --bg-canvas, --line-grid, --text-primary
+   Reads: --line-grid, --text-primary
    Stand:  ui-kit/feed.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -119,9 +119,7 @@ push();});})();</script>
 @media (min-width: 1280px){
   .grid{grid-template-columns:repeat(4, minmax(280px, 1fr))}
 }
-.chart-svg .grid-l{stroke-width:1}
 .cat-main .grid{grid-template-columns:repeat(auto-fill, minmax(240px, 1fr))}
-.feed{background:var(--bg-canvas)}
 .feed-inner{max-width:var(--container-max);margin:0 auto;padding:var(--space-16) var(--space-20)}
 .feed-head{border-bottom:0;padding-bottom:0}
 .feed-head h2{font-family:var(--font-display);font-size:var(--display-feed);font-weight:var(--weight-bold);letter-spacing:-.03em;line-height:var(--leading-flat);color:var(--text-primary);text-wrap:balance}

@@ -6,10 +6,11 @@
    Stands on: 7 ui-visual screens (active-bets-history.html, active-bets.html, my-profile.html, notifications-push.html, notifications.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.pos-status{font-size:var(--text-10);text-transform:uppercase;letter-spacing:.03em}
+.pos-status{text-transform:uppercase}
 .app-case .pos-status{color:var(--text-muted);font-size:var(--text-10);letter-spacing:.04em}
-.app-case p.pos-status{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-display);font-size:var(--text-11);font-weight:var(--weight-semibold);text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin:var(--space-24) 0 var(--space-12) !important}
+.app-case p.pos-status{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-display);font-size:var(--text-11);font-weight:var(--weight-semibold);text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin:var(--space-24) 0 var(--space-12)}
 .app-case p.pos-status::before{content:"";width:var(--icon-16);height:var(--space-2);border-radius:var(--radius-2);background:linear-gradient(90deg,var(--color-action),var(--color-action-lit));flex:0 0 auto}
+.app-case .pos-top .pos-status{white-space:nowrap}
 .app-case .idrow{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-16);padding:var(--space-2) 0 var(--space-16);margin:0 0 var(--space-2);border-bottom:1px solid var(--border-hairline)}
 .app-case .idrow .av{display:inline-flex;width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72);border:0;border-radius:var(--radius-pill);background:var(--bg-control) url(../ui-visual/assets/avatar-2.jpg) center/cover;overflow:hidden;color:transparent;font-size:0;box-shadow:0 0 0 3px var(--bg-canvas),0 0 0 4px color-mix(in oklab,var(--color-action) 55%,transparent)}
 .app-case .idrow .who{display:flex;flex-direction:column;gap:var(--space-4);flex:1 1 150px;min-width:0}

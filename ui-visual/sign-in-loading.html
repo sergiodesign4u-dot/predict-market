@@ -196,269 +196,7 @@ push();});})();</script>
       <div class="sidebar-note">All 13 families are colored. Overview lists them as chips; the system they are painted with is in ui-kit.</div>
     </div>
   </aside>
-
-  <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
-  <button type="button" class="wf-toggle" id="wfToggle" aria-label="Open screen tree" aria-expanded="false">
-    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-    Screens
-  </button>
-  <div class="wf-overlay" id="wfOverlay"></div>
-  <nav class="wf-nav" id="wfNav" aria-label="Wireframe screens">
-    <div class="wf-nav-head">
-      Wireframes - screen tree
-      <button type="button" class="wf-nav-close" id="wfClose" aria-label="Close screen tree">x</button>
-    </div>
-    <ul class="wf-tree">
-      <li class="wf-sec">Events</li>
-      <li class="wf-screen">
-        <a href="event-feed.html" class="active" aria-current="page">Event Feed</a>
-        <ul class="wf-states">
-          <li class="wf-substate">Logged in</li>
-          <li class="cur"><a href="event-feed.html">success (this page)</a></li>
-          <li><a href="event-feed-empty.html">empty</a></li>
-          <li><a href="event-feed-error.html">error</a></li>
-          <li><a href="event-feed-loading.html">loading</a></li>
-          <li><a href="event-feed-push-permission-missing.html">push-permission-missing</a></li>
-          <li class="wf-substate">Logged out</li>
-          <li><a href="event-feed-logged-out.html">success</a></li>
-          <li><a href="event-feed-logged-out-empty.html">empty</a></li>
-          <li><a href="event-feed-logged-out-error.html">error</a></li>
-          <li><a href="event-feed-logged-out-loading.html">loading</a></li>
-        </ul>
-      </li>
-      <li class="wf-screen">
-        <a href="event-detail.html">Event Detail</a>
-        <ul class="wf-states">
-          <li class="wf-substate">Logged in</li>
-          <li><a href="event-detail.html">success / binary</a></li>
-          <li><a href="event-detail-multi.html">success / multi-outcome</a></li>
-          <li><a href="event-detail-error.html">error</a></li>
-          <li><a href="event-detail-loading.html">loading</a></li>
-          <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
-          <li><a href="event-detail-bet-insufficient.html">bet panel: insufficient-balance</a></li>
-          <li><a href="event-detail-bet-reconcile.html">bet panel: S5 reconcile</a></li>
-          <li><a href="event-detail-bet-processing.html">bet panel: processing</a></li>
-          <li><a href="event-detail-bet-error.html">bet panel: on-chain error</a></li>
-          <li class="wf-substate">Logged out</li>
-          <li><a href="event-detail-logged-out.html">success / binary</a></li>
-          <li><a href="event-detail-logged-out-multi.html">success / multi-outcome</a></li>
-          <li><a href="event-detail-logged-out-error.html">error</a></li>
-          <li><a href="event-detail-logged-out-loading.html">loading</a></li>
-        </ul>
-      </li>
-      <li class="wf-note">Bet intent + states (reconcile, insufficient-balance, event-closed, processing, on-chain error) now live in the Event Detail bet panel - states to come (the standalone Bet modal was removed).</li>
-      <li class="wf-screen">
-        <a href="favorites.html">Favorites</a>
-        <ul class="wf-states">
-          <li><a href="favorites.html">success</a></li>
-          <li><a href="favorites-empty.html">empty</a></li>
-          <li><a href="favorites-loading.html">loading</a></li>
-        </ul>
-      </li>
-      <li class="wf-note">Favorites - a filter over the feed (logged-in only); the Favorites control opens it.</li>
-      <li class="wf-sec">Category pages (second-level nav -> own page)</li>
-      <li class="wf-screen">
-        <a href="event-feed-politics.html">Politics</a>
-        <ul class="wf-states">
-          <li class="wf-substate">Logged in</li>
-          <li><a href="event-feed-politics.html">success</a></li>
-          <li><a href="#">empty</a></li>
-          <li><a href="#">error</a></li>
-          <li><a href="#">loading</a></li>
-          <li class="wf-substate">Logged out</li>
-          <li><a href="#">success</a></li>
-          <li><a href="#">empty</a></li>
-          <li><a href="#">error</a></li>
-          <li><a href="#">loading</a></li>
-        </ul>
-      </li>
-      <li class="wf-screen">
-        <a href="event-feed-crypto.html">Crypto</a>
-        <ul class="wf-states">
-          <li class="wf-substate">Logged in</li>
-          <li><a href="event-feed-crypto.html">success</a></li>
-          <li><a href="#">empty</a></li>
-          <li><a href="#">error</a></li>
-          <li><a href="#">loading</a></li>
-          <li class="wf-substate">Logged out</li>
-          <li><a href="#">success</a></li>
-          <li><a href="#">empty</a></li>
-          <li><a href="#">error</a></li>
-          <li><a href="#">loading</a></li>
-        </ul>
-      </li>
-      <li class="wf-screen">
-        <a href="event-feed-culture.html">Culture</a>
-        <ul class="wf-states">
-          <li class="wf-substate">Logged in</li>
-          <li><a href="event-feed-culture.html">success</a></li>
-          <li><a href="#">empty</a></li>
-          <li><a href="#">error</a></li>
-          <li><a href="#">loading</a></li>
-          <li class="wf-substate">Logged out</li>
-          <li><a href="#">success</a></li>
-          <li><a href="#">empty</a></li>
-          <li><a href="#">error</a></li>
-          <li><a href="#">loading</a></li>
-        </ul>
-      </li>
-      <li class="wf-screen">
-        <a href="event-feed-general.html">General</a>
-        <ul class="wf-states">
-          <li class="wf-substate">Logged in</li>
-          <li><a href="event-feed-general.html">success</a></li>
-          <li><a href="#">empty</a></li>
-          <li><a href="#">error</a></li>
-          <li><a href="#">loading</a></li>
-          <li class="wf-substate">Logged out</li>
-          <li><a href="#">success</a></li>
-          <li><a href="#">empty</a></li>
-          <li><a href="#">error</a></li>
-          <li><a href="#">loading</a></li>
-        </ul>
-      </li>
-      <li class="wf-sec">Activation gate</li>
-      <li class="wf-screen">
-        <a href="sign-in.html">Sign In / Register</a>
-        <ul class="wf-states">
-          <li><a href="sign-in.html">success / form</a></li>
-          <li><a href="sign-in-error.html">error (auth failed)</a></li>
-          <li><a href="sign-in-loading.html">loading (OAuth in-progress)</a></li>
-          <li><a href="sign-in-provider-conflict.html">provider-conflict</a></li>
-        </ul>
-      </li>
-      <li class="wf-screen">
-        <a href="deposit.html">Deposit</a>
-        <ul class="wf-states">
-          <li><a href="deposit.html">success / form</a></li>
-          <li><a href="deposit-error-card.html">error-card (declined)</a></li>
-          <li><a href="deposit-error-kyc.html">error-KYC (rejected)</a></li>
-          <li><a href="deposit-widget-load-failure.html">widget-load-failure</a></li>
-          <li><a href="deposit-loading.html">loading (widget in-progress)</a></li>
-          <li><a href="deposit-pending.html">pending (under review)</a></li>
-          <li><a href="deposit-minimum-not-met.html">minimum-not-met</a></li>
-        </ul>
-      </li>
-      <li class="wf-sec">Resolution</li>
-      <li class="wf-screen">
-        <a href="win.html">Win Screen</a>
-        <ul class="wf-states">
-          <li><a href="win.html">success</a></li>
-          <li><a href="win-loading.html">loading (share card)</a></li>
-          <li><a href="win-error.html">error (card not generated, T11)</a></li>
-          <li><a href="win-payout-pending.html">payout-pending</a></li>
-        </ul>
-      </li>
-      <li class="wf-screen">
-        <a href="loss.html">Loss Screen</a>
-        <ul class="wf-states">
-          <li><a href="loss.html">success</a></li>
-          <li><a href="loss-loading.html">loading</a></li>
-        </ul>
-      </li>
-      <li class="wf-sec">My Bets</li>
-      <li class="wf-screen">
-        <a href="active-bets.html">Active Bets</a>
-        <ul class="wf-states">
-          <li><a href="active-bets.html">success (open positions)</a></li>
-          <li><a href="active-bets-empty-new.html">empty-new</a></li>
-          <li><a href="active-bets-empty-resolved.html">empty-resolved</a></li>
-          <li><a href="active-bets-error.html">error</a></li>
-          <li><a href="active-bets-loading.html">loading</a></li>
-        </ul>
-      </li>
-      <li class="wf-screen">
-        <a href="active-bets-history.html">Bet History (History tab)</a>
-        <ul class="wf-states">
-          <li><a href="active-bets-history.html">success</a></li>
-          <li><a href="active-bets-history-empty.html">empty</a></li>
-          <li><a href="active-bets-history-error.html">error</a></li>
-          <li><a href="active-bets-history-loading.html">loading</a></li>
-        </ul>
-      </li>
-      <li class="wf-sec">Notifications</li>
-      <li class="wf-screen">
-        <a href="notifications.html">Notifications</a>
-        <ul class="wf-states">
-          <li><a href="notifications.html">success</a></li>
-          <li><a href="notifications-empty.html">empty</a></li>
-          <li><a href="notifications-error.html">error</a></li>
-          <li><a href="notifications-loading.html">loading</a></li>
-          <li><a href="notifications-push.html">push-permission-missing</a></li>
-        </ul>
-      </li>
-      <li class="wf-sec">Wallet</li>
-      <li class="wf-screen">
-        <a href="wallet.html">Wallet</a>
-        <ul class="wf-states">
-          <li><a href="wallet.html">success</a></li>
-          <li><a href="wallet-loading.html">loading</a></li>
-          <li><a href="wallet-error.html">error</a></li>
-        </ul>
-      </li>
-      <li class="wf-note">Withdrawal is a flow inside Wallet (amount -&gt; USDC address -&gt; confirm; pending / confirmed / failed), not a separate screen.</li>
-      <li class="wf-sec">Profile</li>
-      <li class="wf-screen">
-        <a href="my-profile.html">My Profile</a>
-        <ul class="wf-states">
-          <li><a href="my-profile.html">success</a></li>
-          <li><a href="my-profile-loading.html">loading</a></li>
-          <li><a href="my-profile-error.html">error</a></li>
-        </ul>
-      </li>
-      <li class="wf-screen">
-        <a href="public-profile.html">Public Profile</a>
-        <ul class="wf-states">
-          <li><a href="public-profile.html">success</a></li>
-          <li><a href="public-profile-loading.html">loading</a></li>
-          <li><a href="public-profile-error.html">error</a></li>
-          <li><a href="public-profile-not-found.html">not-found / link-expired</a></li>
-        </ul>
-      </li>
-      <li class="wf-sec">How It Works</li>
-      <li class="wf-screen">
-        <a href="how-it-works.html">How It Works</a>
-        <ul class="wf-states">
-          <li><a href="how-it-works.html">success (static trust page)</a></li>
-        </ul>
-      </li>
-      <li class="wf-sec">System and global</li>
-      <li class="wf-screen">
-        <a href="404.html">404 Not Found</a>
-        <ul class="wf-states">
-          <li><a href="404.html">full page (HTTP 404)</a></li>
-        </ul>
-      </li>
-      <li class="wf-screen">
-        <a href="500.html">500 Server Error</a>
-        <ul class="wf-states">
-          <li><a href="500.html">full page (HTTP 500)</a></li>
-        </ul>
-      </li>
-      <li class="wf-screen">
-        <a href="maintenance.html">Maintenance</a>
-        <ul class="wf-states">
-          <li><a href="maintenance.html">maintenance (HTTP 503)</a></li>
-        </ul>
-      </li>
-      <li class="wf-screen">
-        <a href="cookie-consent.html">Cookie consent</a>
-        <ul class="wf-states">
-          <li><a href="cookie-consent.html">consent banner</a></li>
-        </ul>
-      </li>
-      <li class="wf-screen">
-        <a href="toasts.html">Toasts</a>
-        <ul class="wf-states">
-          <li><a href="toasts.html">toast component</a></li>
-        </ul>
-      </li>
-      <li class="wf-sec">Orphans [SIROTA] - not built (no confirmed job)</li>
-      <li class="wf-note">Settings / Notification Preferences, Leaderboard, Help / FAQ.</li>
-    </ul>
-  </nav>
-
-  <!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
+<!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
   <div class="device">
 
     <!-- Header (lean: logo = Events/home, right icon cluster) -->
@@ -635,7 +373,6 @@ push();});})();</script>
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
                 <span id="langCurrent">English</span>
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-                <span class="tbd">TBD</span>
               </summary>
               <div class="filter-panel">
                 <ul>
@@ -660,11 +397,11 @@ push();});})();</script>
                 <li><a href="event-feed-crypto.html">Crypto</a></li>
                 <li><a href="event-feed-culture.html">Culture</a></li>
                 <li><a href="event-feed-general.html">General</a></li>
-                <li><a href="#">Sports</a> <span class="tbd">post-MVP</span></li>
+                <li><a href="#">Sports</a></li>
               </ul>
               <p class="sub-label">By topic</p>
               <ul>
-                <li><a href="#">Trending topics</a> <span class="tbd">dynamic</span></li>
+                <li><a href="#">Trending topics</a></li>
                 <li><a href="event-feed.html">View all events</a></li>
               </ul>
             </nav>
@@ -676,17 +413,17 @@ push();});})();</script>
                 <li><a href="#">Leaderboard</a></li>
                 <li><a href="wallet.html">Wallet</a></li>
                 <li><a href="active-bets.html">My Bets</a></li>
-                <li><a href="#">API / Developers</a> <span class="tbd">post-MVP</span></li>
-                <li><a href="#">Status</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">API / Developers</a></li>
+                <li><a href="#">Status</a></li>
               </ul>
             </nav>
 
             <nav class="footer-col" aria-label="Support">
               <h3>Support</h3>
               <ul>
-                <li><a href="#">Help Center</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">FAQ</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">Contact</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact</a></li>
                 <li><a href="how-it-works.html">How It Works</a></li>
               </ul>
             </nav>
@@ -694,10 +431,10 @@ push();});})();</script>
             <nav class="footer-col" aria-label="Company">
               <h3>Company</h3>
               <ul>
-                <li><a href="#">About</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">Careers</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">Press</a> <span class="tbd">TBD</span></li>
-                <li><a href="#">Brand</a> <span class="tbd">TBD</span></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Brand</a></li>
               </ul>
             </nav>
 
@@ -725,12 +462,11 @@ push();});})();</script>
               <li><a href="#">Terms</a></li>
               <li><a href="#">Privacy</a></li>
               <li><a href="#">Responsible play</a></li>
-              <li><a href="#">Geo restrictions</a> <span class="tbd">TBD</span></li>
+              <li><a href="#">Geo restrictions</a></li>
               <li><a href="cookie-consent.html">Cookie preferences</a></li>
             </ul>
           </nav>
           <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
-          <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.]</p>
           <p>Copyright (c) Predict Market. Sample wireframe content.</p>
         </div>
 
@@ -844,28 +580,6 @@ push();});})();</script>
       // The top category nav navigates to per-category pages (event-feed-*.html),
       // one page per category; it no longer switches the feed client-side, so the
       // links are left to navigate natively (no preventDefault, no rail).
-    })();
-
-    // Wireframe screen-tree drawer (toggle on small screens; a fixed rail at >= 1440px).
-    (function () {
-      var nav = document.getElementById('wfNav');
-      var ov = document.getElementById('wfOverlay');
-      var tg = document.getElementById('wfToggle');
-      var cl = document.getElementById('wfClose');
-      if (!nav || !tg) return;
-      function set(open) {
-        nav.classList.toggle('open', open);
-        ov.classList.toggle('open', open);
-        tg.setAttribute('aria-expanded', open ? 'true' : 'false');
-      }
-      tg.addEventListener('click', function () { set(!nav.classList.contains('open')); });
-      cl.addEventListener('click', function () { set(false); });
-      ov.addEventListener('click', function () { set(false); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
-      // Choosing a screen on a narrow viewport closes the drawer.
-      nav.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () { if (window.innerWidth < 1440) set(false); });
-      });
     })();
   </script>
 
@@ -1045,7 +759,7 @@ push();});})();</script>
     })();
   </script><dialog class="app-case app-dialog outcome-dialog signin-dialog" id="outcomeDialog" aria-label="Signing you in"><div class="sheet-head"><h2>Signing you in</h2><a href="event-feed.html"><button type="button" class="sheet-close" aria-label="Close">x</button></a></div><div class="sheet-body">
           <div class="spinner-box">Redirecting to Google to sign in...<br><span class="fine">Waiting for the provider. This window stays open.</span></div>
-          <button type="button" class="provider-btn" style="justify-content:center;">Cancel and choose another provider</button>
+          <button type="button" class="provider-btn">Cancel and choose another provider</button>
         </div></dialog>
   <script>(function(){var d=document.getElementById('outcomeDialog');if(d){if(d.showModal){try{d.showModal();}catch(e){d.setAttribute('open','');}}else{d.setAttribute('open','');}}})();</script>  <script id="uv-deposit">
 (function(){

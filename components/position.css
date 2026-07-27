@@ -6,16 +6,15 @@
    Stands on: 23 ui-visual screens (active-bets-history-loading.html, active-bets-history.html, active-bets-loading.html, active-bets.html, event-detail-bet-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.pos-list{display:flex;flex-direction:column;gap:var(--space-8)}
-.pos{border:1px solid var(--border-hairline);padding:var(--space-8) var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
+.pos-list{display:flex;flex-direction:column}
+.pos{display:flex;flex-direction:column}
 .pos-top{display:flex;justify-content:space-between;gap:var(--space-8);align-items:flex-start}
-.pos-q{font-size:var(--text-13);font-weight:var(--weight-bold)}
-.pos-side{height:max-content;white-space:nowrap}
-.pos-figures{display:flex;gap:var(--space-16);font-size:var(--text-10);flex-wrap:wrap}
-.pos-fig b{display:block;font-size:var(--text-12)}
+.pos-side{height:max-content}
+.pos-figures{display:flex;flex-wrap:wrap}
+.pos-fig b{display:block}
 .pos.skeleton .w70{width:70%}
 .pos.skeleton .w40{width:40%}
-.pos-side{border:1px solid var(--border-hairline);padding:0 var(--space-4);font-size:var(--text-10)}
+.pos-side{padding:0 var(--space-4)}
 .pos-note{font-size:var(--text-11);margin:var(--space-8) 0 0}
 .app-case .pos-side{border:1px solid var(--border-hairline);border-radius:var(--radius-6);background:var(--bg-control);color:var(--text-muted);font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.03em;white-space:nowrap}
 .app-case .pos-side.pos-yes{color:var(--outcome-yes-text);border-color:var(--outcome-yes-line);background:var(--outcome-yes-fill)}
@@ -42,4 +41,7 @@
   .app-case .pos[aria-label="Track record"] .pos-figures{grid-template-columns:repeat(4,1fr)}
 }
 .app-case .pos[aria-label="Portfolio summary"] .pos-figures{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-12)}
+.app-case .ed-panel-activity .pos-note{margin:0 0 var(--space-8)}
+.app-case .cat-main>.pos .pos-figures,.app-case .ptab-panel>.pos .pos-figures{font-size:var(--text-11)}
+.app-case a:has(>.pos){text-decoration:none;color:inherit;display:block}
 .app-case .pos[aria-label="Portfolio summary"] .pos-fig:first-child b{color:var(--text-brass)}

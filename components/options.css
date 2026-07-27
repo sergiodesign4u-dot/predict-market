@@ -11,12 +11,6 @@
 .opt-row .opt-name{flex:1}
 .opt-row .opt-prob{border:1px solid var(--border-hairline);padding:var(--space-2) var(--space-4);font-size:var(--text-11);font-weight:var(--weight-bold)}
 .opt-list{display:flex;flex-direction:column}
-.preselect-note{border:1px solid var(--border-hairline);padding:var(--space-8) var(--space-8);font-size:var(--text-11);margin:0 var(--space-8) 0}
-.bp-opts{display:flex;flex-direction:column;gap:0;border:1px solid var(--border-hairline);max-height:168px;overflow:auto}
-.bp-opt{display:flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-8);border-top:1px solid var(--border-hairline);font-size:var(--text-12);cursor:pointer}
-.bp-opt:first-child{border-top:none}
-.bp-opt.sel{font-weight:var(--weight-bold)}
-.bp-opt .bp-opt-pct{margin-left:auto;border:1px solid var(--border-hairline);padding:0 var(--space-4);font-size:var(--text-11)}
 .opt-row.sel{background:var(--tint-brass-09);padding-left:var(--space-8);padding-right:var(--space-8);border-radius:var(--radius-6)}
 .opt-sel-tag{font-size:var(--text-10);border:1px solid var(--border-hairline);padding:0 var(--space-4)}
 .options{display:flex;flex-direction:column;gap:var(--space-8);margin:var(--space-8) 0 var(--space-8)}

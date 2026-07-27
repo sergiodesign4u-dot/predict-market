@@ -6,12 +6,9 @@
    Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.related-events{border-top:1px solid var(--border-hairline);margin:var(--space-12) 0 0;padding:var(--space-12) 0 var(--space-4)}
-.related-events h2{font-size:var(--text-14);margin:0 0 var(--space-8)}
+.related-events{border-top:1px solid var(--border-hairline)}
 .related-list{list-style:none;padding:0;margin:0}
-.related-list li{border-bottom:1px solid var(--border-hairline)}
-.related-list a{display:flex;justify-content:space-between;gap:var(--space-12);padding:var(--space-8) 0;font-size:var(--text-13)}
-.rel-odds{white-space:nowrap}
+.related-list a{justify-content:space-between;font-size:var(--text-13)}
 .app-case .related-events{position:relative;overflow:clip;background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
     inset 1px 0 0 var(--bevel-faint),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
