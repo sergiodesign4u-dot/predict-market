@@ -16,8 +16,8 @@ not `research/html/research.html`).
 | 05 | Wireframes | `wireframes/` | 99 pages | Done |
 | 06 | Voice | `voice/` | `voice/voice.html` | Done |
 | 07 | Concept | `concept/` | `concept.html` (+ `directions.html`) | Done |
-| 08 | UI + Visual | `ui-visual/` | `event-feed.html` (+ 8 state pages) | In progress (Event Feed family done) |
-| 09 | Tokens + Components | `tokens-components/` | - | Not started |
+| 08 | UI + Visual | `ui-visual/` | 76 painted screens, every family | Done |
+| 09 | Tokens + Components | `components/` (the system) + `ui-kit/` (the vitrine) | `ui-kit/overview.html` | Done |
 | 10 | Design System | `design-system/` | - | Not started |
 | 11 | Responsive | `responsive/` | - | Not started |
 | 12 | Animation | `animation/` | - | Not started |
@@ -50,7 +50,7 @@ The repo was reorganized from a flat, ~9-stage anticipated layout to the layout 
 | `IA/annotations/` | `ia/annotations/` |
 | `voice/voice.md`, `voice/microcopy.md` | `voice/docs/voice.md`, `voice/docs/microcopy.md` |
 | `voice.html` | `voice/voice.html` |
-| `tokens/`, `components/` | merged into `tokens-components/` |
+| `tokens/`, `components/` | the code lives in `components/`, the vitrine and its docs in `ui-kit/`; the planned `tokens-components/` folder was never used and was deleted in step 7 |
 
 ### New artifacts (did not exist before)
 

@@ -22,7 +22,7 @@
 .cmt-text{font-size:var(--text-12);margin:var(--space-4) 0}
 .cmt-actions{display:flex;gap:var(--space-12);font-size:var(--text-11)}
 .cmt-actions button{border:none;background:transparent;padding:0;font-size:var(--text-11);cursor:pointer;display:inline-flex;gap:var(--space-4);align-items:center}
-.cmt-actions .ic{width:13px;height:13px}
+.cmt-actions .ic{width:var(--icon-12);height:var(--icon-12)}
 .cmt-list .cmt-av{background-image:url(../ui-visual/assets/avatar-2.jpg);background-size:cover;background-position:center;color:transparent;font-size:0;border:1px solid var(--border-hairline)}
 .cmt-list .cmt:nth-child(even) .cmt-av{background-image:url(../ui-visual/assets/avatar-1.jpg)}
 .app-case .cmt-post{transition:filter var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}

@@ -5,7 +5,9 @@ behind it, and where a value is written past the variable. Nothing is renamed or
 
 **Sources read:** `ui-kit/kit.css` (2123 lines), `ui-kit/kit.html`, `ui-kit/shell.html`,
 `ui-kit/docs/inventory.md`, and all 76 painted pages in `ui-visual/` with their state pages, plus
-`ui-visual/_theme.css` and `ui-visual/_theme-vault.css`.
+`ui-visual/_theme.css` and `ui-visual/_theme-vault.css`. Both files were deleted in step 7: step 5
+moved every screen onto `components/index.css` and nothing had loaded them since. This document is
+the record of what was read out of them, and it is kept as provenance, not as a live path.
 **Not read, by rule:** `wireframes/` - the grey prototype runs on its own `_wf.css` and owns no
 product token.
 

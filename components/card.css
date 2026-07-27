@@ -17,7 +17,7 @@
 .card .bookmark-btn{flex:0 0 auto;cursor:pointer;display:inline-flex;align-items:center;line-height:0}
 .why{margin:var(--space-4) 0 0;line-height:var(--leading-base)}
 .ed-prob-big .prob{font-weight:var(--weight-bold);border:1px solid var(--border-hairline);padding:var(--space-2) var(--space-8);font-size:var(--text-14)}
-.card{position:relative;display:flex;flex-direction:column;background:var(--bg-surface);overflow:hidden}
+.card{position:relative;display:flex;flex-direction:column;background:var(--bg-surface);overflow:clip}
 .card::before{top:-4px;right:-8px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ff8ac4' stroke-width='1.4'%3E%3Cpath d='M-10 14 C 20 4 40 24 70 14 S 120 4 150 14 S 200 24 230 14'/%3E%3Cpath d='M-10 30 C 20 20 40 40 70 30 S 120 20 150 30 S 200 40 230 30'/%3E%3Cpath d='M-10 46 C 20 36 40 56 70 46 S 120 36 150 46 S 200 56 230 46'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 78 C 20 68 40 88 70 78 S 120 68 150 78 S 200 88 230 78'/%3E%3Cpath d='M-10 94 C 20 84 40 104 70 94 S 120 84 150 94 S 200 104 230 94'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / 220px 132px}
 .card > *{position:relative;z-index:1}
 .card .card-body{display:flex;flex-direction:column;flex:1 1 auto;padding:var(--space-12) var(--space-12) var(--space-8)}
@@ -46,7 +46,7 @@
 .card .meta{color:var(--text-muted);align-items:center;margin-bottom:0;padding-top:var(--space-8);font-family:var(--font-mono)}
 .card .meta .m-label{color:var(--text-muted)}
 .card .meta .m-val{color:var(--text-primary);font-weight:var(--weight-semibold)}
-.card .bookmark-btn{background:transparent;border:0;padding:0}
+.card .bookmark-btn{background:transparent;border:0;padding:0;display:inline-flex;align-items:center;justify-content:center;min-width:var(--control-44);min-height:var(--control-44);margin:calc((var(--control-44) - var(--icon-16)) / -2)}
 .card .bookmark-btn .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--icon-quiet)}
 .card .bookmark-btn:hover .ic{stroke:var(--icon-brass)}
 .card .bookmark-btn[aria-pressed="true"] .ic{fill:var(--icon-brass);stroke:var(--icon-brass)}
@@ -68,7 +68,7 @@
 .card .top{align-items:stretch;gap:var(--space-12);margin-bottom:var(--space-12);min-height:88px}
 .card .top-txt{display:flex;flex-direction:column;gap:var(--space-8);min-width:0}
 .card .top-txt .why{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-.card .thumb{width:60px;flex:0 0 60px;height:auto;align-self:stretch;min-height:84px;border:0;border-radius:var(--radius-6) var(--radius-6) var(--radius-6) var(--radius-6);background-size:cover;background-position:center;-webkit-mask-image:linear-gradient(to right,var(--mask-solid) 52%,transparent);mask-image:linear-gradient(to right,var(--mask-solid) 52%,transparent)}
+.card .thumb{width:var(--size-56);flex:0 0 var(--size-56);height:auto;align-self:stretch;min-height:84px;border:0;border-radius:var(--radius-6) var(--radius-6) var(--radius-6) var(--radius-6);background-size:cover;background-position:center;-webkit-mask-image:linear-gradient(to right,var(--mask-solid) 52%,transparent);mask-image:linear-gradient(to right,var(--mask-solid) 52%,transparent)}
 .card .top-txt .why{margin:0}
 .thumb{border-radius:var(--radius-6)}
 @media(prefers-reduced-motion:reduce){

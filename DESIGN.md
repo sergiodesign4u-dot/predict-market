@@ -193,7 +193,9 @@ A graphite grayscale tilted warm, with a single matte-brass accent and a reserve
 - **Muted** (`#a49d8f`): secondary text, labels, stone captions.
 
 ### Series (multi-outcome charts only)
-Five categorical colors for the lines of a multi-outcome chart, where each line is a candidate and not an answer: `#4fd694` mint, `#5b9df0` blue, `#d9b968` brass, `#c77dff` violet, `#9aa0aa` slate. In daylight they darken to `#225b35`, `#22589b`, `#684f18`, `#7038a4`, `#4f5560`, because the reading under the chart is drawn in the selected line's color and has to stay legible. Open question: series 1 is the same green family as YES, so a candidate line borrows an outcome meaning it does not have.
+Five categorical colors for the lines of a multi-outcome chart, where each line is a candidate and not an answer: `#45c8d8` cyan, `#5b9df0` blue, `#c77dff` violet, `#f07ab8` magenta, `#9aa0aa` slate. In daylight they darken to `#17697a`, `#22589b`, `#7038a4`, `#a33372`, `#4f5560`, because the reading under the chart is drawn in the selected line's color and has to stay legible; all five clear 4.5:1 on the chart well in both themes.
+
+**Green, red and gold are reserved.** The first cut of the series read `#4fd694` and `#d9b968`, which are the YES line and the lit brand brass: a candidate line drawn in the ink that means "this side won" and another in the ink that means "this is us". A reader cannot be asked to hold two meanings for one color. So the series lives in the arc the three reserved meanings leave free, cyan 187 through magenta 328, plus one desaturated neutral.
 
 ### Daylight (the light theme)
 The product is dark; its theme is a light one, and it exists as a proof of the semantic layer rather than as a shipped feature. Only roles move, never primitives.
@@ -210,6 +212,31 @@ The product is dark; its theme is a light one, and it exists as a proof of the s
 - **What inverts that looks like it should not:** the hairline, which is lighter than its surface on graphite and has to be darker on chalk; the emboss, where the lit lip goes from `rgba(255,255,255,.16)` to `.70`; and the photo veils, which follow the ink rather than the photograph.
 - **The grain is the Vault's own**, at the same strength. An overlay blend bites less on a pale ground, not more.
 - **The shade ladder is not scaled as a unit.** A 1px inset edge takes the quiet end (`.10` to `.16`) and a blurred drop takes the loud one (`.32` to `.44`). Scaling them together is what makes a light theme look flat.
+
+### The token file, in two levels
+`components/tokens.css` is the whole system and it has exactly two levels.
+
+- **Primitive** (section 1): raw values with no opinion about purpose. The graphite ramp, bone, brass, the outcome greens and reds, the series, the alphas, the grain, and daylight's own primitives (chalk, ink, dark brass, the darker outcomes). A primitive is never read by a component.
+- **Semantic** (section 2): 133 roles, colour only. Each one points at a primitive through `var()` and carries the usage it was read from. A component may read a colour ONLY through a role; gate 13 fails the build otherwise.
+- **Geometry, type and motion get no second level.** A radius or a gap has nothing for a theme to override, so components read those primitives directly. That is a decision, not an omission.
+- **Section 3 is the theme**, not a third level: the same roles again with the values daylight needs.
+
+**Pairs and their ratios, both themes.** Measured down each theme's own `var()` chain, against the tint the label actually sits on.
+
+| text role | on | Vault | Daylight |
+|---|---|---|---|
+| `--text-primary` | `--bg-page` | 15.4:1 | 15.8:1 |
+| `--text-primary` | the deepest fill | 12.0:1 | 13.9:1 |
+| `--text-muted` | `--bg-surface` | 6.1:1 | 7.4:1 |
+| `--text-icon` | `--bg-surface` | 9.4:1 | 5.2:1 |
+| `--text-brass` | `--bg-surface` | 7.8:1 | 7.1:1 |
+| `--text-brass-chip` | `--bg-chip` over a brass tint | 10.0:1 | 6.2:1 |
+| `--outcome-yes-text` | its own 12% fill | 8.3:1 | 6.5:1 |
+| `--outcome-no-text` | its own 12% fill | 6.7:1 | 6.6:1 |
+| `--icon-quiet` (a filled glyph) | `--bg-card` | 6.7:1 | 4.3:1 |
+| `--icon-brass` (a saved mark) | `--bg-card` | 8.6:1 | 3.2:1 |
+
+The last two are graphics, not words: the bar is 3:1. Everything else clears 4.5:1 in both themes.
 
 **Contrast, both themes.** Every text pair is computed down each theme's own chain and against the tint it actually sits on. Daylight clears AA (4.5:1 text, 3:1 lines and icons) on every pair, measured across all 77 painted screens at 380 and 1280. It does not clear it by the Vault's margin: on graphite the muted text sits at 6.1:1 and the brass link at 7.8:1, which no pale ground can match while staying brass.
 

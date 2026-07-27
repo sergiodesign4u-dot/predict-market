@@ -1,7 +1,7 @@
 /* components/base.css
    the page frame itself: reset, body type, the device shell, the shared utility classes and the grey-box scaffolding the Vault layer neutralises.
 
-   Reads: --bg-canvas, --bg-page, --bg-slab, --bg-slab-from, --bg-slab-to, --border-hairline, --edge-groove-dark, --edge-groove-light, --outcome-no-figure, --outcome-yes-fill, --outcome-yes-text, --scrim, --surface-grain-coarse, --text-brass, --text-icon, --text-muted, --text-primary
+   Reads: --bg-canvas, --bg-page, --bg-slab, --bg-slab-from, --bg-slab-to, --border-hairline, --edge-groove-dark, --edge-groove-light, --outcome-no-figure, --outcome-yes-fill, --outcome-yes-text, --scrim, --surface-grain-coarse, --text-icon, --text-muted, --text-primary
    Stand:  ui-kit/base.html
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
@@ -37,7 +37,7 @@ header,nav,main,section,article,footer,aside{border:1px solid var(--border-hairl
 .zone-tag{display:block;font-size:var(--text-10);letter-spacing:0.04em;text-transform:uppercase;border-bottom:1px solid var(--border-hairline);padding:var(--space-2) var(--space-8)}
 button,select,summary{font:inherit}
 .ic{width:var(--icon-22);height:var(--icon-22);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;display:block}
-.ic-sm{width:13px;height:13px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ic-sm{width:var(--icon-12);height:var(--icon-12);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 /* Marked important on purpose, and it has to stay that way. This is a
    visibility utility: the element it is on has its own display from its own
    component (.icon-btn and .bal-toggle both say inline-flex), and base.css is
@@ -71,15 +71,9 @@ header,nav,main,section,article,aside,footer{border:0}
 @media(min-width:860px){
   body:has(#rmSidebar){padding-left:var(--container-sidebar)!important}
 }
-.uv-bar{max-width:none;margin:0 auto;padding:var(--space-8) var(--space-20);font-size:var(--text-12);color:var(--text-muted);flex-wrap:wrap;gap:var(--space-8) var(--space-12);align-items:center;border-bottom:1px solid var(--border-hairline);background:var(--bg-page)}
-.uv-bar .tag{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
-.uv-bar a{color:var(--text-brass);text-decoration:none;font-weight:var(--weight-semibold)}
-.uv-bar a:hover{text-decoration:underline}
-.uv-bar .sep{color:var(--border-hairline)}
 .ic,.ic-sm{stroke:var(--text-icon)}
 svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none}
 .tbd,.placeholder-line{display:none}
-.uv-bar{display:none}
 .device{position:relative}
 body{background:var(--bg-page)!important}
 .groove-sep{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
@@ -108,4 +102,15 @@ body{background:var(--bg-page)!important}
 @keyframes betSheetUp{
   from{transform:translateY(100%)}
   to{transform:translateY(0)}
+}
+
+/* Reduced motion, declared once for the whole system. Three components carried their own block and
+   twenty did not, which is the wrong shape for a promise that has to hold everywhere: a person who
+   asks the operating system for less motion is not asking twenty components individually. */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important}
 }

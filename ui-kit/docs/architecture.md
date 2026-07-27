@@ -283,6 +283,69 @@ material primitive fails the build, and every painted screen has to carry both h
 
 ---
 
+## What step 7 settled
+
+The deletion pass and the defect table. Thirty-four findings, all closed; the ones that changed a rule
+rather than a line are here.
+
+### A box that clips decoration must not be a scroll container
+
+`overflow:hidden` makes a box scrollable, it only hides the scrollbar. Thirteen stones in this system
+clip a decorative pseudo-element (a brass glow, a photographic head, a grain plate), and one of them
+was actually scrolled: `.sheet-head` sat at `scrollLeft:52`, which dragged the win overlay's heading
+out of its own box and clipped "You were right" to "u were right", in both themes, on four screens.
+
+`overflow:clip` creates no scroll container at all, so the same clipping cannot move. All thirteen are
+`clip` now, and the rule is: **hidden is for a box that may scroll and you do not want the bar; clip is
+for a box that must never scroll.** Almost every decorative clip in a product is the second one.
+
+### Target size follows the pointer, not the viewport
+
+WCAG 2.5.5 asks for 44px because a finger is 44px wide, and a finger does not get smaller when the
+window gets wider: a touch laptop at 1280 needs what a phone needs. The rule was bound to
+`max-width:640px`, so every icon button on a touch screen above that width was 36px. It is bound to
+`@media (pointer:coarse)` now. A fine pointer keeps 36px, which clears 2.5.8 (24x24) with room to
+spare, and the two levels of the standard end up matching the two kinds of hand.
+
+### A filled glyph is neither a line nor a word
+
+The card bookmark was a 16x16 target: below 2.5.5, below 2.5.8, and small enough that it is a miss
+rather than a tap. It now carries a 44px box with a negative margin equal to half the difference, so
+the target grew and not one pixel moved.
+
+### Reduced motion is a promise, so it is made once
+
+Three components carried a `prefers-reduced-motion` block and twenty did not. A person who asks the
+operating system for less motion is not asking twenty components individually, so the block is in
+`base.css` now, once, for everything.
+
+### A candidate is not an outcome
+
+The multi-outcome chart drew its first line in `--green-200` and its third in `--brass-300`: the same
+pixels the product uses to mean "this side won" and "this is us". Green, red and gold are reserved
+meanings here, so the categorical series moved into the arc those leave free, cyan 187 through
+magenta 328, with one desaturated neutral. All five clear 4.5:1 on the chart well in both themes,
+because the reading under the chart is drawn in the selected line's colour.
+
+### Two roles may share a value
+
+Twenty-seven groups of roles resolve to one colour in both themes. That is not duplication to merge:
+a role is a reason, not a value, and the day an outcome and a result need to differ, the file has
+somewhere to put the difference. The rule written above section 2 is that a coincidence is declared
+where it happens, and the gate for a role with no reason at all is 11.
+
+### A third copy is a fork
+
+`shell.html` held its own hand-kept copy of the app header, next to the copy on `header.html` and the
+copy on 76 painted screens. It composes the component specimens now and holds no markup of its own.
+
+### The register decides whether a small-caps label is a tell
+
+`PRICE CHART`, `VOLUME`, `WHAT HAPPENED`. In a landing page an eyebrow above every section is AI
+grammar; in a product these are field labels over data groups, and removing them would cost a reader
+the name of what they are looking at. Kept, deliberately, and written down here so the next audit does
+not re-open it.
+
 ## Naming
 
 Roles are read out of the product, not borrowed. The audit (`tokens-audit.md`) lists, for every role,

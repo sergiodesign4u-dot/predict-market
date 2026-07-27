@@ -69,14 +69,14 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.bp-opt.sel</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.opt-row.sel</td><td class='ck-decl'>border-left:3px solid var(--text-muted);padding-left:var(--space-8)</td></tr><tr><td class='tk-role'>.app-case .opt-list .opt-row.sel</td><td class='ck-decl'>border-color:var(--tint-brass-60);background:var(--tint-brass-16)</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.bp-opt.sel</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.opt-row.sel</td><td class='ck-decl'>background:var(--tint-brass-09);padding-left:var(--space-8);padding-right:var(--space-8);border-radius:var(--radius-6)</td></tr><tr><td class='tk-role'>.app-case .opt-list .opt-row.sel</td><td class='ck-decl'>border-color:var(--tint-brass-60);background:var(--tint-brass-16)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
     <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bevel-notice)"></i><code>--bevel-notice</code></span><span class="ck-role"><i style="background:var(--bg-chip)"></i><code>--bg-chip</code></span><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--tint-brass-16)"></i><code>--tint-brass-16</code></span><span class="ck-role"><i style="background:var(--tint-brass-60)"></i><code>--tint-brass-60</code></span></div>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bevel-notice)"></i><code>--bevel-notice</code></span><span class="ck-role"><i style="background:var(--bg-chip)"></i><code>--bg-chip</code></span><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--tint-brass-09)"></i><code>--tint-brass-09</code></span><span class="ck-role"><i style="background:var(--tint-brass-16)"></i><code>--tint-brass-16</code></span><span class="ck-role"><i style="background:var(--tint-brass-60)"></i><code>--tint-brass-60</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
@@ -101,7 +101,7 @@ push();});})();</script>
     <details class="ck-src"><summary>components/options.css</summary><pre>/* components/options.css
    Component: options. Classes: .bp-opt, .bp-opt-pct, .bp-opts, .opt-list, .opt-name, .opt-prob, .opt-row, .opt-sel-tag, .options, .preselect-note.
 
-   Reads: --bevel-notice, --bg-chip, --bg-control, --border-hairline, --text-brass, --text-muted, --text-primary, --tint-brass-16, --tint-brass-60
+   Reads: --bevel-notice, --bg-chip, --bg-control, --border-hairline, --text-brass, --text-primary, --tint-brass-09, --tint-brass-16, --tint-brass-60
    Stand:  ui-kit/options.html
    Stands on: 21 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -117,7 +117,7 @@ push();});})();</script>
 .bp-opt:first-child{border-top:none}
 .bp-opt.sel{font-weight:var(--weight-bold)}
 .bp-opt .bp-opt-pct{margin-left:auto;border:1px solid var(--border-hairline);padding:0 var(--space-4);font-size:var(--text-11)}
-.opt-row.sel{border-left:3px solid var(--text-muted);padding-left:var(--space-8)}
+.opt-row.sel{background:var(--tint-brass-09);padding-left:var(--space-8);padding-right:var(--space-8);border-radius:var(--radius-6)}
 .opt-sel-tag{font-size:var(--text-10);border:1px solid var(--border-hairline);padding:0 var(--space-4)}
 .options{display:flex;flex-direction:column;gap:var(--space-8);margin:var(--space-8) 0 var(--space-8)}
 .card .opt-row,.card .opt-row:first-child{display:flex;align-items:center;gap:var(--space-8);padding:var(--space-4) var(--space-12);min-height:0}

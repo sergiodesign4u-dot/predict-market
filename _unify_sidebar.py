@@ -15,7 +15,7 @@ Depth-agnostic: an inline <style> needs no ../ vs ../../ path, so 1-deep root
 pages and 2-deep ia/annotations/ pages take the identical block.
 
 NOT handled here (already single-sourced elsewhere, same literal colors):
-  - ui-visual/*  -> the sidebar reads --rm-* in ui-visual/_theme.css (edit there)
+  - ui-visual/*  -> the sidebar reads --rm-* from components/course-chrome.css (edit there)
   - concept/directions.html, directions-signal.html -> reference look already,
     self-contained via concept/_directions_sidebar.py
 
@@ -36,10 +36,10 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 MARKER = "unified-sidebar (Signal)"
 
 # The one canonical Signal sidebar palette (identical to concept/directions.html
-# and to ui-visual/_theme.css --rm-*). Only colour-bearing properties are set, so
+# and to components/course-chrome.css --rm-*). Only colour-bearing properties are set, so
 # each page keeps its own sidebar geometry.
 BLOCK = """<style>
-  /* {marker} - injected by _unify_sidebar.py; keep colours in sync with concept/directions.html + ui-visual/_theme.css --rm-* */
+  /* {marker} - injected by _unify_sidebar.py; keep colours in sync with concept/directions.html + components/course-chrome.css --rm-* */
   .sidebar{{background:#14121f;border-right-color:#2a2440}}
   .sidebar-brand{{border-bottom-color:#2a2440}}
   .sidebar-project-name{{color:#9b7bff}}

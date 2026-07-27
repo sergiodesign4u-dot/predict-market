@@ -45,5 +45,5 @@ dialog.app-dialog.outcome-dialog .provider-btn:hover{border-color:var(--border-b
 .app-case :is(.bet-panel,.bet-sheet) .provider-btn:hover,.app-case .bet-dock .provider-btn:hover{border-color:var(--line-brass-soft);background:var(--bg-control-hover);color:var(--text-strong)}
 dialog.app-dialog.signin-dialog .provider-btn{justify-content:center;gap:var(--space-12);padding:var(--space-12);font-family:var(--font-body);font-size:var(--text-14);font-weight:var(--weight-semibold);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,transform var(--dur-fast) ease}
 dialog.app-dialog.signin-dialog .provider-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover);transform:translateY(-1px)}
-dialog.app-dialog.signin-dialog .provider-btn .ic{width:19px;height:19px;flex:0 0 19px;stroke:none}
+dialog.app-dialog.signin-dialog .provider-btn .ic{width:var(--icon-18);height:var(--icon-18);flex:0 0 var(--icon-18);stroke:none}
 dialog.app-dialog.signin-dialog .provider-btn .prov-x,dialog.app-dialog.signin-dialog .provider-btn .prov-apple{color:var(--bg-brand-mark);fill:currentColor}

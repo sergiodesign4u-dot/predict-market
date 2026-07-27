@@ -1,7 +1,7 @@
 /* components/options.css
    Component: options. Classes: .bp-opt, .bp-opt-pct, .bp-opts, .opt-list, .opt-name, .opt-prob, .opt-row, .opt-sel-tag, .options, .preselect-note.
 
-   Reads: --bevel-notice, --bg-chip, --bg-control, --border-hairline, --text-brass, --text-muted, --text-primary, --tint-brass-16, --tint-brass-60
+   Reads: --bevel-notice, --bg-chip, --bg-control, --border-hairline, --text-brass, --text-primary, --tint-brass-09, --tint-brass-16, --tint-brass-60
    Stand:  ui-kit/options.html
    Stands on: 21 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -17,7 +17,7 @@
 .bp-opt:first-child{border-top:none}
 .bp-opt.sel{font-weight:var(--weight-bold)}
 .bp-opt .bp-opt-pct{margin-left:auto;border:1px solid var(--border-hairline);padding:0 var(--space-4);font-size:var(--text-11)}
-.opt-row.sel{border-left:3px solid var(--text-muted);padding-left:var(--space-8)}
+.opt-row.sel{background:var(--tint-brass-09);padding-left:var(--space-8);padding-right:var(--space-8);border-radius:var(--radius-6)}
 .opt-sel-tag{font-size:var(--text-10);border:1px solid var(--border-hairline);padding:0 var(--space-4)}
 .options{display:flex;flex-direction:column;gap:var(--space-8);margin:var(--space-8) 0 var(--space-8)}
 .card .opt-row,.card .opt-row:first-child{display:flex;align-items:center;gap:var(--space-8);padding:var(--space-4) var(--space-12);min-height:0}

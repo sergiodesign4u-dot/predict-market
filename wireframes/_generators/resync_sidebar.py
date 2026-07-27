@@ -84,7 +84,7 @@ LAYOUT = [
     ("divider", "Design and Delivery"),
     ("item", "concept", "Concept", "concept/concept.html", False),
     ("item", "ui-visual", "UI + Visual", "ui-visual/event-feed.html", False),
-    ("item", "tokens-components", "Tokens + Components", None, True),
+    ("item", "tokens-components", "Tokens + Components", "ui-kit/overview.html", False),
     ("item", "design-system", "Design System", None, True),
     ("item", "responsive", "Responsive", None, True),
     ("item", "animation", "Animation", None, True),

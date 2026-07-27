@@ -224,7 +224,7 @@ The visual language, decided as **rules traced to data + taste**, not a mood. So
 - Binary feed card = **treatment B** (odds bar), multi-outcome = **treatment D** (option rows). Reference screen for the color pass = `event-feed.html`.
 - All accent/text-on-graphite pairs contrast-checked WCAG AA on the stand. Full system: `DESIGN.md`.
 
-## UI + Visual (Stage 08) - IN PROGRESS (Event Feed family done)
+## UI + Visual (Stage 08) - DONE (76 painted screens, every family)
 
 **The color layer lives in `ui-visual/` as COLOR COPIES of the grey wireframes.** Hard rule (like the wireframes voice-safe rule): **never paint `wireframes/`** - they stay grey; `ui-visual/` owns ONLY the visual layer (color, type, radius, photos, texture), structure/text/state-set stay owned by `wireframes/`.
 
@@ -241,7 +241,7 @@ The visual language, decided as **rules traced to data + taste**, not a mood. So
 
 ---
 
-## Tokens + Components (Stage 09) - IN PROGRESS
+## Tokens + Components (Stage 09) - DONE
 
 The styling layer became a system. `components/` holds `tokens.css` plus one css file per component,
 all reached through `components/index.css`; `ui-kit/` is the vitrine that shows it and the gates that
@@ -251,7 +251,7 @@ Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from:
 - **Step 5 (done):** every painted screen dropped its inline `<style>` and its `_theme.css` link and
   links exactly `../components/index.css`. Proof tooling lives in `ui-kit/_verify/` (snapshot every
   screen at five widths, diff by element and property, group by cause). `ui-visual/_theme.css` and
-  `_theme-vault.css` are on disk but nothing loads them.
+  `_theme-vault.css` were deleted in step 7.
 - **Step 6 (done, 2026-07-27): the primitives became scales.** The token file had been READ out of the
   product, which is right for a colour role and wrong for a scale: every literal anyone had typed
   became a token, 348 of them. Space had 25 steps with 1 2 3 4 5 6 7 8 9 10 in a row, text had five
@@ -350,4 +350,58 @@ Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from:
   selftest "all pass" in both themes. Pre-existing defect found, NOT theme-related, logged for step
   7: the win overlay h2 renders 52px left of its content box and `overflow:hidden` clips it to "u
   were right" in both themes.
-- **Next: step 7**, the deletion pass and the defect table.
+- **Step 7 (done, 2026-07-27): the deletion pass, the defect table, the finish.** Audited
+  `components/` + `ui-kit/` + all 77 painted screens against the step-7 checklist and `/impeccable
+  audit` (16/20 Good). **34 findings, all closed.** The ones that changed a rule and not just a line:
+  - **`overflow:hidden` makes a box scrollable, it only hides the bar.** Thirteen stones clip a
+    decorative pseudo; one was actually scrolled (`.sheet-head`, `scrollLeft:52`), which dragged the
+    win overlay heading out of its box and clipped it to "u were right" in both themes on 4 screens.
+    All thirteen are `overflow:clip` now, which creates no scroll container. Sweep: 0 scrolled.
+  - **Target size follows the POINTER, not the viewport.** 44px was bound to `max-width:640px`, so a
+    touch laptop got 36px. Now `@media(pointer:coarse)`; a fine pointer keeps 36, which clears
+    2.5.8 (24x24). The card bookmark was 16x16 (fails both bars) and now carries a 44px box with a
+    negative margin, so the target grew and not one pixel moved.
+  - **Reduced motion, once, in `base.css`** (3 of 23 components had a block; a promise is not made
+    component by component).
+  - **A candidate is not an outcome:** the multi-outcome series drew line 1 in the YES green and
+    line 3 in the lit brand brass. Green, red and gold are reserved; the series moved into the arc
+    they leave free (cyan 187 -> magenta 328 + one neutral), all five >= 4.5:1 in both themes.
+  - **Two roles may share a value** (27 groups do): a role is a reason, not a value. The rule is
+    written above section 2 and the coincidences are declared where they happen.
+  - **A third copy is a fork:** `shell.html` held its own hand-kept header next to `header.html` and
+    76 screens; it composes the specimens now and holds no markup.
+  - Also: `.opt-row.sel` side-stripe -> tint (an impeccable absolute ban), 13px/19px icons onto the
+    scale (`--icon-12` added), `--brass-800` orphan deleted with its gate exception, `.uv-bar` +
+    its wireframe-era grey gone from 76 screens, the Favorites category bar restored from the grey
+    twin (and its now-duplicate Category dropdown dropped), `<img>` given `width`/`height`/`lazy`.
+  - **Deleted:** `ui-visual/_theme.css` + `_theme-vault.css` (132 KB, unloaded since step 5) and the
+    empty `tokens-components/`.
+  - **Living documents:** `inventory.md` gained **CSS file** and **Page** columns, filled for all 87
+    component rows by `ui-kit/_fill_inventory.py` (class-matched against each file's `Classes:`
+    header, so it stays true when a class moves); `coverage.md` records the decision on the six
+    kit-only classes (all six stay, with the reason); `architecture.md` gained "What step 7 settled";
+    `DESIGN.md` gained the two-level token section + the both-theme contrast table; `STRUCTURE.md`,
+    `README.md` and the roadmap sidebar mark 08 and 09 Done.
+
+### The rule for a change, from here on
+
+Replaces the Stage-07 wording that pointed at `ui-kit/kit.css` and `ui-kit/kit.html`; neither has
+that role any more.
+
+- **A value** goes to the token of its own level and reaches every screen by itself: a colour is a
+  **semantic role** in section 2 of `components/tokens.css`, a raw value is a **primitive** in
+  section 1. A component may never read a colour primitive (gate 13) and may never write a raw scale
+  value (gate 12).
+- **Markup** goes to two places and only two: the component's page in `ui-kit/`, and the screens in
+  `ui-visual/` where it stands. Never to a third copy.
+- **A new component** = css in `components/` + a page in `ui-kit/` + an entry in `ui-kit/_nav.js` +
+  a row in `ui-kit/docs/inventory.md` (with its CSS file and Page columns). Then
+  `python3 ui-kit/_check_kit.py` has to pass, all thirteen.
+- **`ui-kit/kit.html` is frozen.** It is the flat kit the system was read out of and it is kept as
+  provenance; a component is never added to it. **`ui-kit/shell.html` composes** the header and
+  bottom-nav specimens and holds no markup of its own.
+- **Two token levels, not three.** Primitive + semantic. Colour is the only thing with a second
+  level, because a radius or a gap has nothing for a theme to override; a component level is not
+  part of this stage.
+- **Never paint `wireframes/`.** Structure and copy are owned there and stay grey; `ui-visual/` owns
+  the visual layer only.

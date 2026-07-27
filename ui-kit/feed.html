@@ -75,7 +75,7 @@ push();});})();</script>
     <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bevel-faint)"></i><code>--bevel-faint</code></span><span class="ck-role"><i style="background:var(--bg-canvas)"></i><code>--bg-canvas</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-canvas)"></i><code>--bg-canvas</code></span><span class="ck-role"><i style="background:var(--line-grid)"></i><code>--line-grid</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
@@ -100,7 +100,7 @@ push();});})();</script>
     <details class="ck-src"><summary>components/feed.css</summary><pre>/* components/feed.css
    Component: feed. Classes: .feed, .feed-controls, .feed-head, .feed-inner, .grid, .grid-l.
 
-   Reads: --bevel-faint, --bg-canvas, --text-primary
+   Reads: --bg-canvas, --line-grid, --text-primary
    Stand:  ui-kit/feed.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -133,7 +133,7 @@ push();});})();</script>
 @media(max-width:640px){
   .app-case .feed .feed-inner{margin-top:var(--space-16);padding:0}
 }
-.app-case .chart-svg .grid-l{stroke:var(--bevel-faint);stroke-width:1}
+.app-case .chart-svg .grid-l{stroke:var(--line-grid);stroke-width:1}
 </pre></details>
   </section>
 </div>

@@ -239,7 +239,7 @@ for p in readers:
     read |= set(re.findall(r"var\((--[\w-]+)", p.read_text(encoding="utf-8", errors="ignore")))
 # The one exception, with its reason: DESIGN.md names bronze as part of the brand
 # metal, so it is documented rather than dead. Anything else has to go or be wired.
-RESERVED = {"--brass-800"}
+RESERVED = set()   # --brass-800 (bronze) was the one exception; step 7 deleted it instead
 orphan = sorted(declared - read - RESERVED)
 check("11 no orphan token", not orphan, "%d: %s" % (len(orphan), ", ".join(orphan[:5])))
 dangling = sorted({m for p in readers

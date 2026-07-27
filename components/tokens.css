@@ -60,7 +60,6 @@
   --brass-300:#d9b968;      /* gradient lit end. merged: --lime, same value */
   --brass-400:#d7ac53;      /* text-safe brass on graphite */
   --brass-500:#c7a24e;      /* brand brass. merged: --brass, same value */
-  --brass-800:#6e5a2e;      /* bronze. Documented in DESIGN.md, no consumer in code yet */
   /* one ladder, six steps. A brass wash, a tint, a hairline and a glow are the
      same colour at different depths; a step of .05 is below what a screen shows */
   --brass-a06:rgba(199,162,78,.06);   /* the quietest wash */
@@ -98,13 +97,23 @@
 
   /* ---- the categorical series (the multi-outcome chart draws one line per
      candidate). Not outcome colour: these say "a different thing", not "yes" or
-     "no". Two of the five were already here under other names, which is why only
-     three are declared: the series reads --green-200 and --brass-300 as well. ---- */
+     "no", and for two of them that used to be a lie. The series read --green-200
+     and --brass-300, so a candidate line was drawn in the YES ink and another in
+     the brand metal: the same pixels the product uses to mean "this side won" and
+     "this is us". A reader cannot be asked to hold two meanings for one colour.
+     Green, red and gold are therefore reserved, and the series lives in the arc
+     they leave free, cyan 187 through magenta 328, with one desaturated neutral.
+     All five clear 4.5:1 on the chart well in both themes, because the reading
+     under the chart is drawn in the selected line's colour. ---- */
+  --cyan-400:#45c8d8;
   --blue-400:#5b9df0;
   --violet-400:#c77dff;
+  --magenta-400:#f07ab8;
   --slate-400:#9aa0aa;
-  --blue-700:#22589b;       /* the same five, taken down onto chalk */
+  --cyan-700:#17697a;       /* the same five, taken down onto chalk */
+  --blue-700:#22589b;
   --violet-700:#7038a4;
+  --magenta-700:#a33372;
   --slate-700:#4f5560;
 
   /* ---- neutral extremes and the bevel alphas the embossed plates need ---- */
@@ -158,6 +167,7 @@
   --control-36:36px;   /* the standard control height */
   --control-44:44px;   /* the mobile touch target (WCAG 2.5.5) */
   --control-52:52px;   /* the primary action on a sheet */
+  --icon-12:12px;      /* a mark inside a control that already has a label */
   --icon-16:16px;      /* the default mark */
   --icon-18:18px;      /* a mark that carries a control on its own */
   --icon-22:22px;      /* a state or hero mark */
@@ -346,6 +356,18 @@
   :root{--gutter:14px}
 }
 
+/* WHEN TWO ROLES HOLD THE SAME VALUE. Twenty-seven groups below resolve to one
+   colour in both themes: --outcome-yes and --result-won are both #4fa96b,
+   --border-brass and --tint-brass-30 and --glow-brass are all brass at 30%.
+   That is deliberate and it is not a duplicate to merge. A role is a reason, not
+   a value: an outcome is what a market says, a result is what happened to your
+   money, and the day those two need to differ the file has somewhere to put the
+   difference. Merge them now and that day costs a rename across every component.
+   The rule, then: two roles may share a value, and each says so where it is
+   declared. A role that has never had a reason of its own is the one to delete,
+   and the gate for that is 11, not this note.
+   ========================================================================== */
+
 /* ==========================================================================
    2. SEMANTIC - colour roles only
    Each role names WHY the colour is there, so a theme can move it without a
@@ -367,7 +389,9 @@
   --bg-canvas:var(--graphite-900);      /* from: .device, .cat-nav, .feed (5 declarations) */
 
   --bg-slab:var(--graphite-860);        /* from: the outer stone, the whole page width */
-  --bg-slab-from:var(--graphite-830);   /* from: the slab top-lit gradient, and the sticky header */
+  --bg-slab-from:var(--graphite-830);   /* same value as --bg-surface for now: the app header IS the
+                                           lit top of the device slab, and it is also a raised panel.
+                                           In daylight both step off the reflection together */   /* from: the slab top-lit gradient, and the sticky header */
   --bg-slab-to:var(--graphite-870);     /* from: the same gradient, bottom */
 
   --bg-plate:var(--graphite-910);       /* from: the inset content plate (feed, category, dialog body) */
@@ -428,7 +452,8 @@
   --tint-brass-06:var(--brass-a06);        /* from: the quietest brass wash (funds-safety line) */
   --tint-brass-09:var(--brass-a09);        /* from: the condensed category chip when active */
   --tint-brass-16:var(--brass-a16);        /* from: a selected quick amount */
-  --tint-brass-30:var(--brass-a30);        /* from: the funds-safety border */
+  --tint-brass-30:var(--brass-a30);        /* same value as --border-brass and --glow-brass for now:
+                                              a fill, an edge and a glow at one depth of the metal */        /* from: the funds-safety border */
   --tint-brass-45:var(--brass-a45);        /* from: the price-moved border */
   --tint-brass-60:var(--brass-a60);        /* from: a selected outcome row */
   --edge-groove-dark:var(--graphite-950);  /* from: 27 declarations, the recessed line */
@@ -459,7 +484,7 @@
   --outcome-no-line:var(--red-700);          /* from: the tinted NO border */
   --outcome-yes-fill-soft:var(--green-a12);  /* from: the compact YES in an outcome list */
   --outcome-yes-fill-strong:var(--green-a20);/* from: the selected YES on the mobile dock */
-  --outcome-no-fill-soft:var(--red-a12);
+  --outcome-no-fill-soft:var(--red-a12);     /* from: the compact NO in an outcome list */
   --outcome-no-fill-strong:var(--red-a20);
   --outcome-yes-text-lit:var(--green-150);   /* from: YES on the filled dock, brighter than the tint */
   --outcome-no-text-lit:var(--red-250);
@@ -478,10 +503,10 @@
      Open question for a later stage, not decided here: --series-1 is the same
      green the product uses for YES, so a candidate line borrows an outcome
      meaning it does not have. */
-  --series-1:var(--green-200);
+  --series-1:var(--cyan-400);
   --series-2:var(--blue-400);
-  --series-3:var(--brass-300);
-  --series-4:var(--violet-400);
+  --series-3:var(--violet-400);
+  --series-4:var(--magenta-400);
   --series-5:var(--slate-400);
 
   /* ---- result roles: the market already resolved ----
@@ -490,7 +515,8 @@
      pair belongs to the odds and the bet side, the result pair belongs to the
      record (WON / LOST chips, the win overlay, the resolved history). Either can
      move without dragging the other. */
-  --result-won:var(--green-500);             /* from: the win overlay glow and its reconcile box */
+  --result-won:var(--green-500);        /* same value as --outcome-yes for now: a market saying YES
+                                           and your bet paying out are two facts, not one */             /* from: the win overlay glow and its reconcile box */
   --result-won-text:var(--green-300);        /* from: .pos-won, the win figure */
   --result-won-fill:var(--green-a12);        /* from: the WON chip */
   --result-won-line:var(--green-700);        /* from: the WON chip border */
@@ -510,7 +536,8 @@
      colour role like any other: invert the theme and every highlight becomes a
      shadow. So the bevel and shadow inks live here, not as literals in a card. */
   --bevel-hi:var(--white-a16);          /* from: the plate top lip, strongest */
-  --bevel-md:var(--white-a16);          /* from: the raised plate */
+  --bevel-md:var(--white-a16);          /* same value as --bevel-hi and --bevel-lit for now: three
+                                           lips that happen to catch the light equally */          /* from: the raised plate */
   --bevel-lit:var(--white-a16);         /* from: the dialog lip */
   --bevel-strong:var(--white-a20);      /* from: an action on a photographic head */
   --bevel-lo:var(--white-a10);          /* from: the win and loss sheet head */
@@ -552,11 +579,13 @@
                                            feed subfilter). It was reading --bevel-faint, which is
                                            the LIT LIP of an emboss: the same value on graphite and
                                            nothing at all on chalk, where more light is not available */
-  --line-grid:var(--white-a06);         /* from: the chart grid, same story: a line, not a lip */
+  --line-grid:var(--white-a06);         /* same value as --tint-hover for now: a line on a chart and
+                                           a wash under a cursor, which move apart the moment either
+                                           needs to */         /* from: the chart grid, same story: a line, not a lip */
   --line-brass-strong:var(--brass-a60); /* from: the input hover border */
   --bg-dock-from:var(--graphite-860);   /* from: the mobile bet dock gradient */
   --veil-photo-edge:var(--graphite-a12);/* from: the featured hero veil, transparent end */
-  --veil-photo-from:var(--graphite-a50);
+  --veil-photo-from:var(--graphite-a50);/* from: the same veil, where it starts to bite */
   --veil-photo-mid:var(--graphite-a55);
   --veil-photo-to:var(--graphite-a82);  /* from: the same veil, where the text sits */
   --veil-brand:var(--graphite-a28);     /* from: the brand tile over its photograph */
@@ -575,7 +604,7 @@
   /* the two swatches on the theme switch. They are roles, not primitives read
      raw, and section 3 deliberately does not move them: a control that shows you
      the two grounds has to keep showing both, whichever one you are standing on */
-  --swatch-dark:var(--graphite-930);
+  --swatch-dark:var(--graphite-930);    /* from: the two swatches on the theme switch itself */
   --swatch-light:var(--chalk-930);
 }
 
@@ -674,23 +703,25 @@
      white is a dirty field. Depth is read against how much of the screen it covers. */
   --bg-brand-mark:var(--ink-900);       /* NOT a plate, whatever the name in section 2 says: it is
                                            the colour of the X and the Apple mark themselves, and a
-                                           glyph on a pale button has to be ink. 11.8:1 */
+                                           glyph on a pale button has to be ink. 13.9:1 */
 
-  /* ---- text. Worst case is the deepest ground the role can land on, which is
-     --bg-control. Every number here rose when the ramp was reflected, because
-     the darkest ground text stands on went from L* 82.8 to L* 87.1 ---- */
-  --text-primary:var(--ink-900);        /* 11.8:1 */
-  --text-muted:var(--ink-500);          /* 5.7:1 */
-  --text-icon:var(--ink-400);           /* 4.0:1, and an icon is a line */
-  --icon-quiet:var(--ink-300);          /* 4.3:1, and a filled glyph is neither a line nor a word */
+  /* ---- text. Worst case is the deepest ground the role can land on. That used
+     to be --bg-control; once the presence roles left the reflection the deepest
+     fill in daylight is the outer slab at L* 93.4, so every number here rose
+     again ---- */
+  --text-primary:var(--ink-900);        /* 13.9:1 */
+  --text-muted:var(--ink-500);          /* 6.8:1 */
+  --text-icon:var(--ink-400);           /* 4.8:1, and an icon is a line */
+  --icon-quiet:var(--ink-300);          /* 4.1:1 worst case, and a filled glyph is neither a line nor
+                                           a word: the bar it answers to is 3:1 */
   --icon-brass:var(--brass-600);        /* 3.2:1 */
-  --text-icon-strong:var(--ink-700);    /* 8.7:1 */
-  --text-chip-hover:var(--ink-900);     /* 12.4:1 */
-  --text-brass:var(--brass-700);        /* 4.7:1 over a brass tint, 5.3:1 on bare stone */
-  --text-brass-lit:var(--brass-700);    /* 4.7:1 */
-  --text-brass-chip:var(--brass-700);   /* 4.7:1 */
-  --text-brass-vol:var(--brass-700);    /* 4.7:1 */
-  --text-strong:var(--ink-900);         /* 11.8:1. White on graphite, ink on chalk: the label
+  --text-icon-strong:var(--ink-700);    /* 10.3:1 */
+  --text-chip-hover:var(--ink-900);     /* 13.9:1 */
+  --text-brass:var(--brass-700);        /* 5.3:1 over the deepest brass tint, 6.5:1 on bare stone */
+  --text-brass-lit:var(--brass-700);    /* 5.3:1 */
+  --text-brass-chip:var(--brass-700);   /* 5.3:1 */
+  --text-brass-vol:var(--brass-700);    /* 5.3:1 */
+  --text-strong:var(--ink-900);         /* 13.9:1. White on graphite, ink on chalk: the label
                                            of a quiet button when it is hovered */
   /* --text-on-brass, --text-on-yes, --text-on-no and --text-on-photo are NOT
      here. Their ground is a brass fill, a green fill, a red fill and a
@@ -698,7 +729,7 @@
 
   /* ---- edges. The hairline is the clearest inversion in the file: on graphite
      it is LIGHTER than its surface, on chalk it has to be darker ---- */
-  --border-hairline:var(--chalk-750);   /* 1.7:1 on a control, 2.2:1 on the page. A hairline is not
+  --border-hairline:var(--chalk-750);   /* 2.0:1 on the outer slab, 2.2:1 on the page. A hairline is not
                                            held to AA: it separates two stones, it does not carry a
                                            word. The Vault's own runs at 1.1:1 */
   --edge-groove-dark:var(--chalk-750);
@@ -720,18 +751,18 @@
 
   /* ---- outcome. The fills and the lines carry over: a 12% green wash and a
      mid green border work on either stone. Only green and red as INK move ---- */
-  --outcome-yes-text:var(--green-800);      /* 5.3:1 over the YES fill, 5.0 over the strong one */
-  --outcome-no-text:var(--red-800);         /* 5.3:1 over the NO fill, 4.9 over the strong one */
+  --outcome-yes-text:var(--green-800);      /* 6.1:1 over the YES fill, 5.7 over the strong one */
+  --outcome-no-text:var(--red-800);         /* 6.2:1 over the NO fill, 5.6 over the strong one */
   --outcome-no-figure:var(--red-800);       /* 5.3:1 */
   --outcome-yes-text-lit:var(--green-800);  /* 5.3:1 */
   --outcome-no-text-lit:var(--red-800);     /* 5.3:1 */
   --chart-line:var(--green-700);            /* the bright chart green disappears on chalk */
   /* the series is text as well as line: the reading under the chart is drawn in
      the selected series colour, so all five clear 4.5 on the chart well */
-  --series-1:var(--green-800);              /* 7.8:1 */
+  --series-1:var(--cyan-700);               /* 6.1:1 */
   --series-2:var(--blue-700);               /* 6.9:1 */
-  --series-3:var(--brass-700);              /* 7.5:1 */
-  --series-4:var(--violet-700);             /* 7.3:1 */
+  --series-3:var(--violet-700);             /* 7.3:1 */
+  --series-4:var(--magenta-700);            /* 6.2:1 */
   --series-5:var(--slate-700);              /* 7.3:1 */
   /* --outcome-line-yes and --outcome-line-no stay: they are drawn straight on
      the hero photograph, above the veil, and a line is not text. */

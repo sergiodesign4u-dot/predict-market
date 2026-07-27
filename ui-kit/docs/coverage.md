@@ -12,7 +12,7 @@ says so. No em dash.
 | component | own | specimens | inside | classes | screens |
 |---|---|---|---|---|---|
 | account | 1 | account-cta | 1 | 3 | 76 |
-| base | 2 | base-frame, base-groove | 0 | 52 | 76 |
+| base | 2 | base-frame, base-groove | 0 | 49 | 76 |
 | betpanel | 3 | betpanel-states, betpanel-dock, betpanel-sheet | 2 | 23 | 76 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 16 | 76 |
 | bottomnav | 1 | bottomnav | 0 | 3 | 76 |
