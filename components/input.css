@@ -47,3 +47,6 @@ dialog.app-dialog .sheet-body .quick{margin-top:var(--space-12)}
 .outcome-dialog .field-label{color:var(--text-muted)}
 .win-dialog .reconcile-box .field-label{color:color-mix(in oklab,var(--result-won) 45%,var(--text-primary))}
 .app-case .field-label{color:var(--text-muted)}
+/* the destination address is not an amount: it is a value you check, so it reads as data and
+   never invites a keystroke */
+dialog.app-dialog .amount-input.addr{display:flex;align-items:center;font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

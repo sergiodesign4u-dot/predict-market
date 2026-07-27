@@ -135,9 +135,14 @@ def main():
         if set(cells[0]) <= set("-: "):
             out.append("| " + " | ".join(["---"] * (len(cells) + 2)) + " |")
             continue
-        # drop any columns a previous run added, then add them again
-        if len(cells) >= 3 and (cells[1].endswith(".css") or cells[1] == "-"):
-            cells = cells[:1] + cells[3:]
+        # drop every pair a previous run added, then add one back. It loops because a
+        # run that failed to recognise its own output once left two pairs behind.
+        while len(cells) >= 3:
+            prev = cells[1].strip("`")
+            if prev.endswith(".css") or prev == "-":
+                cells = cells[:1] + cells[3:]
+            else:
+                break
         stems = stems_for(cells[0], owner)
         if stems:
             css = ", ".join("`%s.css`" % s for s in stems)

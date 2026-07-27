@@ -11,7 +11,7 @@ says so. No em dash.
 
 | component | own | specimens | inside | classes | screens |
 |---|---|---|---|---|---|
-| account | 1 | account-cta | 1 | 3 | 76 |
+| account | 1 | account-cta | 1 | 2 | 76 |
 | base | 2 | base-frame, base-groove | 0 | 49 | 76 |
 | betpanel | 3 | betpanel-states, betpanel-dock, betpanel-sheet | 2 | 23 | 76 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 16 | 76 |
@@ -31,7 +31,7 @@ says so. No em dash.
 | header | 2 | header-in, header-out | 1 | 28 | 76 |
 | hero | 1 | hero-band | 0 | 53 | 1 |
 | hiw-dialog | 1 | hiw-dialog | 0 | 17 | 76 |
-| input | 1 | input-amount | 1 | 14 | 76 |
+| input | 1 | input-amount | 1 | 15 | 76 |
 | loadmore | 1 | loadmore | 1 | 3 | 76 |
 | market | 1 | market-depth | 0 | 9 | 76 |
 | notice | 1 | notice-push | 1 | 13 | 76 |
@@ -59,7 +59,7 @@ says so. No em dash.
 Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
 that actually means. The Classes table on each component page shows the same verdict per row.
 
-### Deletion candidates (25)
+### Deletion candidates (26)
 
 Styled, and carried by no element in the repo: not by a painted screen, not by the kit, not by a wireframe, not by a course page, and not by any script. Nothing is removed yet. The screens still carry their own inline style and only move onto components/index.css in step 5, so the measurement is not final until then; step 7 is the pass that acts on this list.
 
@@ -90,6 +90,7 @@ Styled, and carried by no element in the repo: not by a painted screen, not by t
 | `.ss-row` | state-block.css | styled and carried by no element anywhere |
 | `.state-switch` | state-block.css | styled and carried by no element anywhere |
 | `.theme-switch-inline` | course-chrome.css | styled and carried by no element anywhere |
+| `.wd-flow` | dialog.css | styled and carried by no element anywhere |
 
 ### Grey-era leftovers (6)
 

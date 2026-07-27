@@ -1,5 +1,6 @@
 /* components/account.css
-   Component: account. Classes: .cta-bar, .wd-flow.
+
+   Component: account. Classes: .cta-bar.
 
    Reads: --bg-card-quiet, --bg-control, --bg-control-hover, --border-hairline, --color-action, --color-action-lit, --line-brass-soft, --text-on-brass, --text-primary
    Stand:  ui-kit/account.html
@@ -13,6 +14,3 @@
 .app-case .cta-bar button:hover{border-color:var(--line-brass-soft);background:var(--bg-control-hover)}
 .app-case .cta-bar>button:first-child,.app-case .cta-bar>a:first-child button{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);font-weight:var(--weight-bold);transition:filter var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
 .app-case .cta-bar>button:first-child:hover,.app-case .cta-bar>a:first-child button:hover{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);filter:brightness(1.08);box-shadow:0 6px 18px -8px var(--color-action)}
-.app-case .wd-flow{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);margin:var(--space-8) 0;overflow:hidden}
-.app-case .wd-flow>summary{padding:var(--space-12) var(--space-12);font-family:var(--font-body);font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-primary);cursor:pointer}
-.app-case .wd-flow[open]>summary{border-bottom:1px solid var(--border-hairline)}

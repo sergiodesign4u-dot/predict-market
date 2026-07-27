@@ -1378,3 +1378,17 @@ line condensed. The wireframes are untouched.
 Health: 0 em-dash across ui-visual; wireframes untouched; 76 pages carry both subtitles (152
 occurrences), 0 old `signin-lead` body leads remain. Win/Loss outcome dialogs keep their quiet
 green/red header (no brass hero, no subtitle).
+
+### Step 23 - Withdraw becomes a dialog (wallet, grey + color)
+
+Adding funds and taking them out are the same kind of act, and one of them was a dialog while the
+other was a collapse in the middle of the page. No new lines were written: the summary became the
+heading, one fine-print line became the subtitle, and the warning that matters most was promoted out
+of the closing paragraph to sit above the button, where a person reads it before they act instead of
+after.
+
+| was | became | where | why |
+|---|---|---|---|
+| `Withdraw funds (USDC)` (summary of a collapse) | `Withdraw funds` (dialog heading) | `.sheet-head h2` | the currency is in the subtitle now, so the heading says the act |
+| (none) | `Withdrawals are in USDC only. A network fee applies.` | `.sheet-sub` | moved up from the body, where it was a fine-print line under the address |
+| `On-chain transfers can't be reversed, so check the address before you confirm. After that, the withdrawal shows as pending, then confirmed once it settles, or failed with the funds returned to your Cash. It's tracked in the history below.` | split: `On-chain transfers can't be reversed, so check the address before you confirm.` above the button, the rest below it | `.protect` + `.fine` | principle 2: one plain sentence of trust before the ask. What cannot be undone belongs before the button; what happens next belongs after it |
