@@ -7,9 +7,9 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .feed{margin:0;flex:1}
-.feed-head{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-8) var(--space-16);justify-content:space-between;margin-bottom:var(--space-10)}
+.feed-head{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-8) var(--space-16);justify-content:space-between;margin-bottom:var(--space-8)}
 .feed-head h2{margin:0}
-.feed-controls{display:flex;flex-wrap:wrap;gap:var(--space-6)}
+.feed-controls{display:flex;flex-wrap:wrap;gap:var(--space-8)}
 .grid{display:grid}
 @media (min-width: 640px){
   .grid{grid-template-columns:repeat(2, minmax(280px, 1fr))}
@@ -25,10 +25,10 @@
 .feed{background:var(--bg-canvas)}
 .feed-inner{max-width:var(--container-max);margin:0 auto;padding:var(--space-16) var(--space-20)}
 .feed-head{border-bottom:0;padding-bottom:0}
-.feed-head h2{font-family:var(--font-display);font-size:clamp(28px,4vw,38px);font-weight:var(--weight-bold);letter-spacing:-.03em;line-height:var(--leading-flat);color:var(--text-primary);text-wrap:balance}
+.feed-head h2{font-family:var(--font-display);font-size:var(--display-feed);font-weight:var(--weight-bold);letter-spacing:-.03em;line-height:var(--leading-flat);color:var(--text-primary);text-wrap:balance}
 .grid{align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))!important}
 .app-case .feed{background:transparent;padding:0}
-.app-case .feed .feed-inner{max-width:none;margin:var(--gutter);margin-top:var(--space-14);padding:0;background:none;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;gap:var(--space-16)}
+.app-case .feed .feed-inner{max-width:none;margin:var(--gutter);margin-top:var(--space-12);padding:0;background:none;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;gap:var(--space-16)}
 .grid{gap:var(--space-16)}
 .feed-head h2{margin-bottom:0}
 @media(max-width:640px){

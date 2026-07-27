@@ -6,12 +6,12 @@
    Stands on: 5 ui-visual screens (event-feed-crypto.html, event-feed-culture.html, event-feed-general.html, event-feed-politics.html, event-feed.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.load-more-wrap{display:flex;justify-content:center;padding:var(--space-26) var(--space-20) var(--space-34)}
+.load-more-wrap{display:flex;justify-content:center;padding:var(--space-24) var(--space-20) var(--space-32)}
 .load-more{font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-13);color:var(--text-primary);background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-pill);padding:var(--space-12) var(--space-28);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease,transform var(--dur-base) ease}
 .load-more:hover{background:color-mix(in oklab,var(--color-action) 22%,var(--bg-control));border-color:var(--text-brass);transform:translateY(-1px)}
 .load-more:active{transform:translateY(0)}
 .load-more:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
-.app-case .load-more-wrap{padding:var(--space-18) var(--space-20) var(--space-2)}
-.app-case .load-more{font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);letter-spacing:.01em;color:var(--text-chip-hover);background:var(--bg-chip);border:1px solid var(--bevel-notice);border-radius:var(--radius-12);min-height:var(--control-lg);padding:var(--space-12) var(--space-24);box-shadow:inset 0 1px 0 var(--edge-groove-light);transition:border-color var(--dur-base) ease,background var(--dur-base) ease,color var(--dur-base) ease}
+.app-case .load-more-wrap{padding:var(--space-16) var(--space-20) var(--space-2)}
+.app-case .load-more{font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);letter-spacing:.01em;color:var(--text-chip-hover);background:var(--bg-chip);border:1px solid var(--bevel-notice);border-radius:var(--radius-10);min-height:var(--control-44);padding:var(--space-12) var(--space-24);box-shadow:inset 0 1px 0 var(--edge-groove-light);transition:border-color var(--dur-base) ease,background var(--dur-base) ease,color var(--dur-base) ease}
 .app-case .load-more:hover{border-color:var(--line-brass-soft);background:var(--bg-control-hover);color:var(--text-strong);transform:none}
 .app-case .load-more:active{background:var(--bg-chip-pressed)}

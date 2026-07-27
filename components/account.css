@@ -6,13 +6,13 @@
    Stands on: 3 ui-visual screens (how-it-works.html, my-profile.html, wallet.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.cta-bar{position:sticky;bottom:0;border:1px solid var(--border-hairline);padding:var(--space-8) var(--space-10);display:flex;gap:var(--space-8)}
+.cta-bar{position:sticky;bottom:0;border:1px solid var(--border-hairline);padding:var(--space-8) var(--space-8);display:flex;gap:var(--space-8)}
 .cta-bar button{flex:1;border:1px solid var(--border-hairline);padding:var(--space-12);font-size:var(--text-13);font-weight:var(--weight-bold);cursor:pointer}
-.app-case .cta-bar{position:sticky;bottom:0;background:var(--bg-card-quiet);border:0;border-top:1px solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0;padding:var(--space-12);gap:var(--space-10);margin-top:var(--space-14);z-index:5}
-.app-case .cta-bar button{flex:1;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-12);min-height:var(--control-lg);cursor:pointer}
+.app-case .cta-bar{position:sticky;bottom:0;background:var(--bg-card-quiet);border:0;border-top:1px solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0;padding:var(--space-12);gap:var(--space-8);margin-top:var(--space-12);z-index:5}
+.app-case .cta-bar button{flex:1;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-12);min-height:var(--control-44);cursor:pointer}
 .app-case .cta-bar button:hover{border-color:var(--line-brass-soft);background:var(--bg-control-hover)}
 .app-case .cta-bar>button:first-child,.app-case .cta-bar>a:first-child button{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);font-weight:var(--weight-bold);transition:filter var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
 .app-case .cta-bar>button:first-child:hover,.app-case .cta-bar>a:first-child button:hover{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);filter:brightness(1.08);box-shadow:0 6px 18px -8px var(--color-action)}
-.app-case .wd-flow{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);margin:var(--space-10) 0;overflow:hidden}
-.app-case .wd-flow>summary{padding:var(--space-12) var(--space-14);font-family:var(--font-body);font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-primary);cursor:pointer}
+.app-case .wd-flow{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);margin:var(--space-8) 0;overflow:hidden}
+.app-case .wd-flow>summary{padding:var(--space-12) var(--space-12);font-family:var(--font-body);font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-primary);cursor:pointer}
 .app-case .wd-flow[open]>summary{border-bottom:1px solid var(--border-hairline)}

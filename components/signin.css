@@ -7,4 +7,4 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 dialog.app-dialog.signin-dialog{max-width:410px}
-dialog.app-dialog.signin-dialog .signin-lead{font-size:var(--text-12-5);line-height:var(--leading-base);color:var(--text-muted);margin:0 0 var(--space-4)}
+dialog.app-dialog.signin-dialog .signin-lead{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0 0 var(--space-4)}

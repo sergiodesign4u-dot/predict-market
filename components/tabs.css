@@ -6,58 +6,58 @@
    Stands on: 20 ui-visual screens (active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, active-bets-history-empty.html, active-bets-history-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.tabs{display:flex;gap:0;margin:0 0 var(--space-10)}
-.tabs button{border:1px solid var(--border-hairline);border-bottom:1px solid var(--border-hairline);padding:var(--space-8) var(--space-14);font-size:var(--text-12);cursor:pointer}
+.tabs{display:flex;gap:0;margin:0 0 var(--space-8)}
+.tabs button{border:1px solid var(--border-hairline);border-bottom:1px solid var(--border-hairline);padding:var(--space-8) var(--space-12);font-size:var(--text-12);cursor:pointer}
 .tabs button[aria-selected="true"]{font-weight:var(--weight-bold)}
 .ed-tabs{padding:0}
 .ed-tabwrap{border-top:1px solid var(--border-hairline)}
 .ed-tabradio{position:absolute;left:-9999px}
 .ed-tabbar{display:flex;gap:0;overflow-x:auto;border-bottom:1px solid var(--border-hairline)}
-.ed-tablabel{flex:0 0 auto;padding:var(--space-9) var(--space-12);font-size:var(--text-12);cursor:pointer;border-right:1px solid var(--border-hairline);white-space:nowrap}
+.ed-tablabel{flex:0 0 auto;padding:var(--space-8) var(--space-12);font-size:var(--text-12);cursor:pointer;border-right:1px solid var(--border-hairline);white-space:nowrap}
 .ed-tab-count{font-size:var(--text-10)}
-.ed-tabpanel{display:none;padding:var(--space-10)}
+.ed-tabpanel{display:none;padding:var(--space-8)}
 #edtab-comments:checked ~ .ed-tabbar label[for="edtab-comments"],#edtab-holders:checked ~ .ed-tabbar label[for="edtab-holders"],#edtab-positions:checked ~ .ed-tabbar label[for="edtab-positions"],#edtab-activity:checked ~ .ed-tabbar label[for="edtab-activity"]{font-weight:var(--weight-bold);box-shadow:inset 0 -2px 0 var(--text-muted)}
 #edtab-comments:checked ~ .ed-panel-comments,#edtab-holders:checked ~ .ed-panel-holders,#edtab-positions:checked ~ .ed-panel-positions,#edtab-activity:checked ~ .ed-panel-activity{display:block}
 .cmt-controls .seg{display:inline-flex;border:1px solid var(--border-hairline)}
 .cmt-controls .seg button{border:none;border-right:1px solid var(--border-hairline);padding:var(--space-4) var(--space-8);font-size:var(--text-11);cursor:pointer}
 .cmt-controls .seg button:last-child{border-right:none}
 .cmt-controls .seg button.sel{font-weight:var(--weight-bold)}
-.ptabs{margin-top:var(--space-14)}
-.ptab-in{position:absolute;width:var(--space-1);height:var(--space-1);opacity:0;pointer-events:none}
+.ptabs{margin-top:var(--space-12)}
+.ptab-in{position:absolute;width:var(--hairline);height:var(--hairline);opacity:0;pointer-events:none}
 .ptab-bar{display:flex;gap:var(--space-4);border-bottom:1px solid var(--border-hairline);margin-bottom:var(--space-12);overflow-x:auto}
 .ptab-lbl{padding:var(--space-8) var(--space-12);font-size:var(--text-12);border:1px solid var(--border-hairline);border-bottom:none;cursor:pointer;white-space:nowrap}
 .ptab-panel{display:none}
 #ptab-record:checked ~ .ptab-bar label[for="ptab-record"],#ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],#ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"]{font-weight:var(--weight-bold)}
-.app-case .ed-rules .rules-tabs{display:flex;gap:var(--space-22);border-bottom:1px solid var(--edge-groove-dark);box-shadow:inset 0 -1px 0 var(--edge-groove-light);margin:0 0 var(--space-16)}
-.app-case .rules-tab{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:0 0 var(--space-10);margin-bottom:-2px;cursor:pointer;transition:color .15s ease,border-color .15s ease}
+.app-case .ed-rules .rules-tabs{display:flex;gap:var(--space-20);border-bottom:1px solid var(--edge-groove-dark);box-shadow:inset 0 -1px 0 var(--edge-groove-light);margin:0 0 var(--space-16)}
+.app-case .rules-tab{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:0 0 var(--space-8);margin-bottom:-2px;cursor:pointer;transition:color .15s ease,border-color .15s ease}
 .app-case .rules-tab:hover{color:var(--text-primary)}
 .app-case .rules-tab.sel{color:var(--text-primary);border-bottom-color:var(--color-action)}
 .app-case .ed-tabwrap{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 .app-case .ed-tabbar{background:transparent;border-bottom:1px solid var(--edge-groove-dark)}
-.app-case .ed-tablabel{border-right:0;font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12-5);color:var(--text-muted)}
+.app-case .ed-tablabel{border-right:0;font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);color:var(--text-muted)}
 .app-case .ed-tablabel:hover{color:var(--text-primary)}
 .app-case .ed-tab-count{color:var(--text-muted)}
 .app-case #edtab-comments:checked ~ .ed-tabbar label[for="edtab-comments"],.app-case #edtab-holders:checked ~ .ed-tabbar label[for="edtab-holders"],.app-case #edtab-positions:checked ~ .ed-tabbar label[for="edtab-positions"],.app-case #edtab-activity:checked ~ .ed-tabbar label[for="edtab-activity"]{background:transparent;color:var(--text-brass);font-weight:var(--weight-bold);box-shadow:inset 0 -2px 0 var(--color-action)}
 .app-case .cmt-controls .seg{order:-1;display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:1px solid var(--border-hairline);border-radius:var(--radius-10)}
-.app-case .cmt-controls .seg button{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-8);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-11-5);cursor:pointer;transition:background .15s ease,color .15s ease}
+.app-case .cmt-controls .seg button{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background .15s ease,color .15s ease}
 .app-case .cmt-controls .seg button:hover{color:var(--text-primary)}
 .app-case .cmt-controls .seg button.sel{background:var(--glow-focus);color:var(--text-brass);font-weight:var(--weight-bold)}
 .app-case .tabs{gap:var(--space-8);margin:0 0 var(--space-16)}
-.app-case .tabs button{border:1px solid var(--border-hairline);border-radius:var(--radius-round);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12-5);padding:var(--space-8) var(--space-16);min-height:var(--control-md);cursor:pointer}
+.app-case .tabs button{border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer}
 .app-case .tabs button:hover{color:var(--text-primary)}
 .app-case .tabs button[aria-selected="true"]{background:color-mix(in oklab,var(--color-action) 16%,transparent);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
-.app-case .ptabs{margin-top:var(--space-22)}
+.app-case .ptabs{margin-top:var(--space-20)}
 .app-case .ptab-bar{display:flex;gap:var(--space-8);border:0;margin:0 0 var(--space-16);overflow-x:auto;scrollbar-width:none;padding-bottom:var(--space-2)}
 .app-case .ptab-bar::-webkit-scrollbar{display:none}
-.app-case .ptab-lbl{border:1px solid var(--border-hairline);border-radius:var(--radius-round);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12-5);padding:var(--space-8) var(--space-16);min-height:var(--control-38);display:inline-flex;align-items:center;cursor:pointer;white-space:nowrap;transition:color var(--dur-base) ease,border-color var(--dur-base) ease,background var(--dur-base) ease}
+.app-case .ptab-lbl{border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);display:inline-flex;align-items:center;cursor:pointer;white-space:nowrap;transition:color var(--dur-base) ease,border-color var(--dur-base) ease,background var(--dur-base) ease}
 .app-case .ptab-lbl:hover{color:var(--text-primary)}
 .app-case #ptab-record:checked ~ .ptab-bar label[for="ptab-record"],.app-case #ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],.app-case #ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"]{background:color-mix(in oklab,var(--color-action) 16%,transparent);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
 .app-case #ptab-record:focus-visible ~ .ptab-bar label[for="ptab-record"],.app-case #ptab-wins:focus-visible ~ .ptab-bar label[for="ptab-wins"],.app-case #ptab-resolved:focus-visible ~ .ptab-bar label[for="ptab-resolved"]{outline:2px solid var(--text-brass);outline-offset:2px}
 .app-case .ed-range{display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:1px solid var(--border-hairline);border-radius:var(--radius-10)}
-.app-case .ed-range button{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-8);padding:var(--space-4) var(--space-12);font-family:var(--font-mono);font-size:var(--text-11-5);cursor:pointer;transition:background .15s ease,color .15s ease}
+.app-case .ed-range button{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-mono);font-size:var(--text-12);cursor:pointer;transition:background .15s ease,color .15s ease}
 .app-case .ed-range button:hover{color:var(--text-primary)}
 .app-case .ed-range button.sel{background:var(--glow-focus);color:var(--text-brass);font-weight:var(--weight-semibold)}
 @media(max-width:640px){
-  .app-case .ptab-lbl{min-height:var(--control-lg)}
-  .app-case .tabs button{min-height:var(--control-lg)}
+  .app-case .ptab-lbl{min-height:var(--control-44)}
+  .app-case .tabs button{min-height:var(--control-44)}
 }

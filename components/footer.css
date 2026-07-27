@@ -7,25 +7,25 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .app-footer{margin:0;font-size:var(--text-11)}
-.app-footer .footer-inner{display:flex;flex-direction:column;gap:var(--space-18)}
+.app-footer .footer-inner{display:flex;flex-direction:column;gap:var(--space-16)}
 .app-footer nav{border:none}
 .app-footer a:hover{text-decoration:underline}
 .footer-top{display:flex;flex-direction:column;gap:var(--space-20)}
 .footer-brand{display:flex;flex-direction:column;gap:var(--space-12)}
 .footer-logo{justify-content:center}
 .footer-tagline{margin:0;max-width:280px}
-.social-row{display:flex;gap:var(--space-6)}
-.social-row a{width:var(--space-30);height:var(--space-30);display:inline-flex;align-items:center;justify-content:center}
-.social-row .ic{width:var(--icon-17);height:var(--icon-17)}
+.social-row{display:flex;gap:var(--space-8)}
+.social-row a{width:var(--space-28);height:var(--space-28);display:inline-flex;align-items:center;justify-content:center}
+.social-row .ic{width:var(--icon-18);height:var(--icon-18)}
 .lang-menu{width:max-content}
-.lang-menu summary .ic{width:var(--icon-15);height:var(--icon-15)}
+.lang-menu summary .ic{width:var(--icon-16);height:var(--icon-16)}
 .lang-menu summary .ic-sm{width:var(--space-12);height:var(--space-12)}
 .footer-cols{display:flex;flex-direction:column;gap:var(--space-16)}
-.footer-col h3{font-size:var(--text-11);margin:0 0 var(--space-7);text-transform:uppercase;letter-spacing:.04em}
-.footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-5)}
-.footer-col .sub-label{font-size:var(--text-9);margin:var(--space-9) 0 var(--space-4);text-transform:uppercase;letter-spacing:.03em}
+.footer-col h3{font-size:var(--text-11);margin:0 0 var(--space-8);text-transform:uppercase;letter-spacing:.04em}
+.footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-4)}
+.footer-col .sub-label{font-size:var(--text-10);margin:var(--space-8) 0 var(--space-4);text-transform:uppercase;letter-spacing:.03em}
 .footer-legal{padding-top:var(--space-12);display:flex;flex-direction:column;gap:var(--space-8)}
-.footer-legal .legal-links{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-10)}
+.footer-legal .legal-links{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-8)}
 .footer-legal p{margin:0}
 @media (min-width: 640px){
   .footer-top{flex-direction:row;justify-content:space-between;gap:var(--space-28)}
@@ -33,12 +33,12 @@
   .footer-cols{flex-direction:row;gap:var(--space-28);flex:1;flex-wrap:wrap}
   .footer-col{min-width:120px}
 }
-.footer-popular{padding:var(--space-10) var(--space-12)}
-.footer-popular h3{font-size:var(--text-11);text-transform:uppercase;letter-spacing:.03em;margin:0 0 var(--space-6)}
-.popular-links{display:flex;flex-wrap:wrap;gap:var(--space-6) var(--space-14);list-style:none;padding:0;margin:0;font-size:var(--text-12)}
+.footer-popular{padding:var(--space-8) var(--space-12)}
+.footer-popular h3{font-size:var(--text-11);text-transform:uppercase;letter-spacing:.03em;margin:0 0 var(--space-8)}
+.popular-links{display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-12);list-style:none;padding:0;margin:0;font-size:var(--text-12)}
 .app-footer a:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 .app-footer{background:var(--bg-surface);color:var(--text-muted)}
-.app-footer .footer-inner{max-width:var(--container-max);margin:0 auto;padding:var(--space-22) var(--space-20)}
+.app-footer .footer-inner{max-width:var(--container-max);margin:0 auto;padding:var(--space-20) var(--space-20)}
 .app-footer a{color:var(--text-muted);text-decoration:none}
 .app-footer a:hover,.popular-links a:hover,.footer-col a:hover,.legal-links a:hover{color:var(--text-brass);text-decoration:none}
 .footer-popular{border-top:1px solid var(--border-hairline)}
@@ -48,10 +48,10 @@
 .social-row a{background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);transition:background var(--dur-base) ease,border-color var(--dur-base) ease,transform var(--dur-base) ease}
 .social-row a:hover{background:color-mix(in oklab,var(--color-action) 20%,var(--bg-control));border-color:var(--text-brass);transform:translateY(-2px)}
 .social-row a:hover .ic{stroke:var(--text-primary)}
-.footer-logo{width:auto;height:auto;padding:0;background:none;border:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-15);letter-spacing:-.02em;color:var(--text-primary)}
+.footer-logo{width:auto;height:auto;padding:0;background:none;border:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:-.02em;color:var(--text-primary)}
 .footer-legal{border-top:1px solid var(--border-hairline)}
 .app-footer{border-top:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
 .footer-logo{display:inline-flex;align-items:center;gap:var(--space-8)}
 .footer-logo::first-letter{color:var(--text-primary)}
-.footer-logo::before{content:'';flex:0 0 auto;width:21px;height:var(--icon-15);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='18'%3E%3Cpath d='M2 15 L9 7 L13 10 L24 2' fill='none' stroke='%23c99e3f' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/contain}
+.footer-logo::before{content:'';flex:0 0 auto;width:21px;height:var(--icon-16);background:var(--logo-tick) no-repeat center/contain}
 .app-footer .footer-popular,.app-footer .footer-legal{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
