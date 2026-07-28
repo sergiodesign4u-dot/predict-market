@@ -67,7 +67,12 @@ WRAPPERS = {"cat-layout", "cat-main", "feed-inner"}
 # feed came out 14px wider than the phone it was drawn for. Listed by hand and
 # kept short on purpose: a general "restyle everything in main" rule would be
 # stable too, and would quietly redraw the whole wireframe from the product.
-RESTYLE = {"cat-nav"}
+#
+# .hiw-sec joined it in step 7f for the same reason: it used to be a section with
+# a heading and a paragraph in it, and it is now a row with an icon chip beside a
+# text column. The old grey rule still matched, so nothing looked missing, and
+# the chip sat above the heading in a wireframe of a layout that puts it beside.
+RESTYLE = {"cat-nav", "hiw-sec"}
 
 # The two trees do not name the same screen the same way, and until step 7e
 # nobody had to care: the category pages are event-feed-politics.html in colour

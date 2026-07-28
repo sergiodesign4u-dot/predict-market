@@ -70,6 +70,14 @@ MARKER = ps.CHROME_MARKER
 # Not product screens.
 SKIP = {"overview.html"}
 
+# The shared dialogs, which are chrome by every test that matters: one markup,
+# embedded on every screen, wrapped around the page rather than part of it. They
+# were never compared either, and the how-it-works one had drifted furthest of
+# anything in the repo, 42 elements in grey against 64 in colour, because Stage
+# 08 rebuilt it with a hero, icon chips and an FAQ list and the tree that owns
+# structure never heard. Ported from the canonical painted copy, like the header.
+SHARED_DIALOGS = ("signinDialog", "depositDialog", "howitworksDialog")
+
 # The overlay THIS SCREEN IS. A painted overlay page carries four dialogs (the
 # shared sign-in, deposit and how-it-works, plus its own), and the shared ones
 # are emitted before it, so "the first .sheet-body in the document" is the
@@ -230,6 +238,10 @@ def main():
         ("nav", "out"): grey_of(ps.region(out_feed, "nav", "bottom-nav")[0], out_feed),
         "trust": grey_of(ps.region(feed, "div", "footer-trust")[0], feed),
     }
+    for did in SHARED_DIALOGS:
+        m = re.search(r'<dialog[^>]*id="%s"' % did, feed)
+        blk = ps.region(feed[m.start():], "dialog")[0] if m else None
+        canon[did] = grey_of(blk, feed) if blk else None
 
     changed = 0
     for name in sorted(os.listdir(GREY)):
@@ -252,6 +264,42 @@ def main():
                 out, ok = swap(out, grey_of(src, paint), "div", "sheet-body")
                 if ok:
                     moved.append("sheet-body")
+            # The sub-line under the sheet title is copy, and copy is owned here.
+            # The head itself is not ported: its heading level and its close are
+            # the declared per-context difference, and this sentence is neither.
+            #
+            # Read out of the screen's OWN dialog, never out of the document. The
+            # first cut asked the page for its first .sheet-sub and got the shared
+            # sign-in one, which every overlay page embeds before its own, so the
+            # grey Deposit was told "You are about to place a bet. No crypto
+            # wallet required." That is the same trap gate 19's first cut fell
+            # into an hour earlier in this same pass: a page with several of a
+            # thing has to be asked by id, and knowing the rule is not the same
+            # as applying it.
+            om = re.search(r'<dialog[^>]*id="%s"' % OUTCOME_ID, paint)
+            mine = ps.region(paint[om.start():], "dialog")[0] if om else ""
+            head = ps.region(out, "div", "sheet-head")[0]
+            sub = re.search(r'<p class="sheet-sub">.*?</p>', mine or "", re.S)
+            if head is not None and sub and sub.group(0) not in head:
+                new = re.sub(r"(</h[12]>)", lambda m: m.group(1) + sub.group(0),
+                             head, count=1)
+                if new != head:
+                    out, ok = swap(out, new, "div", "sheet-head")
+                    if ok:
+                        moved.append("sheet-sub")
+
+        # 1b. the shared dialogs, one markup wherever they are embedded
+        for did in SHARED_DIALOGS:
+            if not canon[did]:
+                continue
+            m = re.search(r'<dialog[^>]*id="%s"' % did, out)
+            if not m:
+                continue
+            old, a, b = ps.region(out[m.start():], "dialog")
+            if old is None or old == canon[did]:
+                continue
+            out = out[:m.start() + a] + canon[did] + out[m.start() + b:]
+            moved.append(did)
 
         # 2. the footer trust block, and only it
         old, a, b = ps.region(out, "div", "footer-trust")
@@ -303,6 +351,10 @@ def main():
             blk = ps.region(out, tag, cls)[0]
             if blk:
                 classes |= ps.classes_in(blk)
+        for did in SHARED_DIALOGS:
+            m = re.search(r'<dialog[^>]*id="%s"' % did, out)
+            if m:
+                classes |= ps.classes_in(ps.region(out[m.start():], "dialog")[0] or "")
         new_classes = classes - styled(out)
         if new_classes:
             out = apply_css(out, new_classes)

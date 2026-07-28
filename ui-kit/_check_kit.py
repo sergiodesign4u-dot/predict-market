@@ -671,6 +671,77 @@ for page in sorted((ROOT / "ui-visual").glob("*.html")):
 check("18 the two trees agree", not drift and not frame,
       "%d: %s" % (len(drift) + len(frame), ", ".join((drift + frame)[:4])))
 
+# 19 --------------------------------------------------- one dialog, one copy --
+# Gate 18 compares a screen with its GREY TWIN, and never with its own second
+# copy in the same tree. Sign In and Deposit each have one: the shared <dialog>
+# embedded on all 76 screens, and the standalone page that IS that dialog. Stage
+# 08 painted the shared copy into a real component and left the standalone on
+# the markup the grey generator wrote, and for two stages nothing looked: the
+# shared dialog carries the real Google, X and Apple marks while the page a
+# person actually opens carries the wireframe placeholders, the one standing in
+# for Google being a circle with a plus in it.
+#
+# THREE THINGS DIFFER BY CONTEXT AND ARE NOT DRIFT, which is why this compares
+# the BODY and not the dialog:
+#   the head. A dialog is opened over a page, so it heads with <h2> and closes
+#       with data-close-dialog; a page heads with <h1> (gate 15) and closes with
+#       a link back to where it came from.
+#   the wiring. In a dialog a provider button opens the next sheet over the page
+#       you are already on; on a page it navigates, so each control is wrapped in
+#       an <a>. The wrapper is dropped before comparing; what it wraps is not.
+#   the state screens. sign-in-error and the rest are states, not copies, so only
+#       the BASE page of each family is compared.
+#
+# And a mark is not a shape, which shape() cannot see: it drops <path> and
+# <circle> because the two trees draw an icon by different mechanisms. So the
+# provider marks are checked by name, wherever a provider button stands.
+PAIRS = {"signinDialog": "sign-in.html", "depositDialog": "deposit.html"}
+UNWRAP_A = re.compile(r"</?a\b[^>]*>")
+
+forked = []
+for did, page in PAIRS.items():
+    for tree in ("ui-visual", "wireframes"):
+        home = ROOT / tree
+        base = home / page
+        if not base.exists():
+            continue
+        anchor = next((p for p in sorted(home.glob("*.html"))
+                       if re.search(r'<dialog[^>]*id="%s"' % did, p.read_text(encoding="utf-8"))), None)
+        if anchor is None:
+            continue
+        m = re.search(r'<dialog[^>]*id="%s"' % did, anchor.read_text(encoding="utf-8"))
+        shared = region(anchor.read_text(encoding="utf-8")[m.start():], "dialog")
+        html = base.read_text(encoding="utf-8")
+        # By id, never "the first dialog": the standalone page embeds the shared
+        # sign-in, deposit and how-it-works dialogs BEFORE its own, so the first
+        # one in the document is the sign-in sheet on every page of both trees.
+        # The first cut of this gate asked for the first dialog and reported a
+        # fork that was its own.
+        om = re.search(r'<dialog[^>]*id="outcomeDialog"', html)
+        own = region(html[om.start():], "dialog") if om else \
+            region(html, "section", "sheet")
+        a = region(shared or "", "div", "sheet-body")
+        b = region(own or "", "div", "sheet-body")
+        if not a or not b:
+            forked.append("%s/%s no body" % (tree, page))
+            continue
+        if shape(UNWRAP_A.sub("", a)) != shape(UNWRAP_A.sub("", b)):
+            forked.append("%s/%s body" % (tree, page))
+
+PROVIDERS = [("Google", "prov-google"), ("Apple", "prov-apple"), ("with X", "prov-x")]
+for pagefile in sorted((ROOT / "ui-visual").glob("*.html")):
+    html = pagefile.read_text(encoding="utf-8")
+    for m in re.finditer(r'<button\b[^>]*class="[^"]*\bprovider-btn\b[^"]*"[^>]*>', html):
+        btn = region(html[m.start():], "button") or ""
+        if "<svg" not in btn:
+            continue                      # a control with no mark is not a fork
+        label = re.sub(r"<[^>]+>", " ", btn)
+        want = next((cls for text, cls in PROVIDERS if text in label), None)
+        if want and want not in btn:
+            forked.append("%s %s" % (pagefile.name, want))
+check("19 one dialog, one copy", not forked,
+      "%d: %s" % (len(forked), ", ".join(forked[:4])))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

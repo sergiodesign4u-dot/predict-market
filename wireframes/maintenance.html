@@ -461,6 +461,25 @@
   /* ---- chrome ported from the painted twin by port_chrome.py ---- */
     /* Layout taken from components/, every colour replaced by the
        wireframe palette. See wireframes/_generators/port_chrome.py. */
+    .app-dialog.hiw-dialog { max-width: 464px; overflow: clip; }
+    .hiw-hero { position: relative; overflow: clip; padding: 32px 24px 28px; }
+    .hiw-glow { position: absolute; top: -72px; right: -52px; width: 224px; height: 224px; }
+    .hiw-hero-inner { position: relative; }
+    .hiw-hero :is(h1,h2) { font-weight: 700; line-height: 1.05; letter-spacing: -.03em; margin: 0; }
+    .hiw-tagline { margin: 8px 0 0; font-size: 14px; line-height: 1.5; max-width: 32ch; }
+    .hiw-ic { flex: 0 0 32px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+    .hiw-sec-txt { flex: 1; min-width: 0; }
+    .hiw-faq { flex-direction: column; gap: 0; padding-top: 16px; }
+    .hiw-faq dl { margin: 8px 0 0; }
+    .hiw-faq dt { font-size: 13px; font-weight: 600; margin: 12px 0 4px; }
+    .hiw-faq dt:first-of-type { margin-top: 2px; }
+    .hiw-faq dd { font-size: 13px; line-height: 1.5; margin: 0; }
+    .app-dialog.hiw-dialog .hiw-arrow { width: 18px; height: 18px; }
+    .hiw-hero { margin: 0 0 20px; }
+    .hiw-hero { padding: 32px 24px; }
+    .hiw-tagline { font-size: 16px; max-width: 44ch; }
+    .hiw-faq dt { font-size: 14px; }
+    .hiw-faq dd { font-size: 14px; }
     .app-header .cat-condensed { max-height: 0; overflow: clip; }
     .app-header.scrolled .cat-condensed { max-height: 54px; }
     .app-header .cat-condensed ul { list-style: none; margin: 0; display: flex; flex-wrap: nowrap; gap: 8px; padding: 8px 14px; overflow-x: auto; }
@@ -474,6 +493,7 @@
     .footer-trust .trust-items { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
     .footer-trust .tr-ic { width: 22px; height: 22px; flex: 0 0 22px; padding: 8px; box-sizing: content-box; position: relative; }
     .footer-trust .tr-txt { position: relative; }
+    dialog.app-dialog.signin-dialog { max-width: 410px; }
     @media(pointer:coarse) {
       .app-header .cat-condensed button { min-height: 44px; }
     }
@@ -1077,62 +1097,79 @@
     })();
   </script>
 
-  <dialog id="signinDialog" class="app-dialog" aria-label="Sign in or create account">
+  <dialog id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
     <div class="sheet-head">
       <h2>Sign in or create account</h2>
-      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
+      <p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
     </div>
     <div class="sheet-body">
-      <p class="fine">You are about to place a bet. Sign in or create an account to continue. No crypto wallet required.</p>
       <button type="button" class="provider-btn" data-flow="signin-to-deposit">
-        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+        <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
         Continue with Google
       </button>
       <button type="button" class="provider-btn" data-flow="signin-to-deposit">
-        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        <svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>
         Continue with X
       </button>
       <button type="button" class="provider-btn" data-flow="signin-to-deposit">
-        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7c1-2 3-3 4-3 0 2-1 3-2 4M9 9c-2 0-4 2-4 5s2 6 4 6c1 0 1.5-.5 3-.5s2 .5 3 .5c1.5 0 3-2 3-4-2-1-2-4 0-5-1-1.5-3-1.5-4-1.5S11 9 9 9z"/></svg>
+        <svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"/></svg>
         Continue with Apple
       </button>
-      <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+      <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>. Adding funds by card requires KYC; crypto-only accounts can connect a wallet instead.</p>
     </div>
   </dialog>
 
   <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
     <div class="sheet-head">
       <h2>Add funds</h2>
+      <p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p>
       <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
     </div>
     <div class="sheet-body">
       <div>
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-input">$20.00</span></div>
+        <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9.$]*" value="$20.00" aria-label="Amount to add"></div>
         <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
       </div>
-      <div class="widget-box">Transak payment widget (card to USDC)</div>
+      <div><span class="field-label">Pay with</span>
+      <div class="widget-box">Transak payment widget (card to USDC)</div></div>
       <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
-      <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
+      <button type="button" class="provider-btn" data-open="howitworks">How it works (what happens to my money)</button>
       <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
     </div>
   </dialog>
 
-  <dialog id="howitworksDialog" class="app-dialog" aria-label="How it works">
-    <div class="hiw-head">
-      <h2>How it works</h2>
-      <button type="button" class="hiw-close" data-close-dialog aria-label="Close">x</button>
+  <dialog id="howitworksDialog" class="app-dialog hiw-dialog" aria-label="How it works">
+    <button type="button" class="hiw-close" data-close-dialog aria-label="Close">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="hiw-hero">
+      <span class="hiw-glow" aria-hidden="true"></span>
+      <div class="hiw-hero-inner">
+        <h2>How it works</h2>
+        <p class="hiw-tagline">Back the events you follow, in plain language.</p>
+      </div>
     </div>
     <div class="hiw-body">
       <div class="hiw-sec">
-        <span class="hiw-label">How betting works here</span>
-        <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span>
+        <div class="hiw-sec-txt">
+          <span class="hiw-label">How betting works here</span>
+          <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+        </div>
       </div>
       <div class="hiw-sec">
-        <span class="hiw-label">Why the odds move</span>
-        <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M4 15l5-5 4 3 6-8"/><path d="M20 5h-4M20 5v4"/></svg></span>
+        <div class="hiw-sec-txt">
+          <span class="hiw-label">Why the odds move</span>
+          <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+        </div>
       </div>
-      <div class="hiw-sec">
+      <div class="hiw-sec hiw-faq">
         <span class="hiw-label">Common questions</span>
         <dl>
           <dt>Do I need crypto to start?</dt>
@@ -1143,7 +1180,7 @@
           <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
         </dl>
       </div>
-      <a href="how-it-works.html" class="hiw-full">Read the full guide</a>
+      <a href="how-it-works.html" class="hiw-full">Read the full guide <svg class="ic hiw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </dialog>
 

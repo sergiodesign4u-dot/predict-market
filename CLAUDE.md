@@ -245,7 +245,7 @@ The visual language, decided as **rules traced to data + taste**, not a mood. So
 
 The styling layer became a system. `components/` holds `tokens.css` plus one css file per component,
 all reached through `components/index.css`; `ui-kit/` is the vitrine that shows it and the gates that
-keep it honest (`python3 ui-kit/_check_kit.py`, eighteen checks, exits non-zero on the first failure).
+keep it honest (`python3 ui-kit/_check_kit.py`, nineteen checks, exits non-zero on the first failure).
 Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from: `ui-kit/docs/tokens-audit.md`.
 
 - **Step 5 (done):** every painted screen dropped its inline `<style>` and its `_theme.css` link and
@@ -650,6 +650,50 @@ settled".
   **16597 grey links, 110 broken -> 0**. Gate 18 tested by injecting drift into each of the five
   compared regions in turn. All five tools reach their fixed point in one run. **Gates: 18.**
 
+### Step 7f (done, 2026-07-28): one dialog, one copy, and scope as a place
+
+Found by looking at the product instead of the build: the sign-in dialog on `ui-visual/sign-in.html`
+did not look like the sign-in dialog on every other screen. **A screen can disagree with its grey
+twin, and it can also disagree with its own second copy in the same tree, and only the first of those
+was ever checked.** Full record in `ui-kit/docs/architecture.md`, "What step 7f settled".
+
+- **A dialog that also has a page has two copies.** Sign In and Deposit each exist as the shared
+  `<dialog>` on all 76 painted screens AND as the standalone page that IS that dialog. Stage 08
+  painted the shared copy and left the standalone on the grey generator's markup, so **the page a
+  person actually opens carried the wireframe placeholders, the one standing in for Google being a
+  circle with a plus in it**, while the shared dialog carried the real brand marks. Four copies of
+  that body existed in the repo and all four differed.
+- **"The newer copy wins" would have deleted the best thing on the screen.** The standalone Deposit
+  had three things the shared one had lost: a label over the payment widget, the sentence saying card
+  payments are converted via Transak, and **an exit to How It Works, which is the trust affordance
+  that screen exists to earn**. Merged element by element, then one markup from there
+  (`ui-visual/_unify_dialogs.py`). **Gate 19** fails the build when it drifts again, in either tree,
+  and checks the marks by name, because `shape()` drops `<path>` and `<circle>` and so cannot see
+  that a button is drawing the wrong logo.
+- **Scope is where a block may stand.** The How It Works page rendered as an unstyled document
+  because every rule for the hero, the icon chips and the FAQ list began `.app-dialog.hiw-dialog`:
+  the page the dialog links to as "the full guide" could not reach one of them. A rule that describes
+  a BLOCK is now written unscoped; only what is about being a dialog keeps the ancestor.
+- **A page is not a bigger dialog.** The page was composed, not re-marked: page text size instead of
+  a sheet's 13px, sections apart instead of stacked, and the brand tile and the resolved-events count
+  moved into a side column, because **a claim and its proof belong beside the argument, not after
+  it**. It also gained what a page called How It Works owed a reader and did not have: how to place a
+  bet. One line of copy written (Step 27 in `microcopy.md`), the rest already shipped.
+- Also: the heading `Proven, not promised` had been sitting in a `<section>` **with nothing in it**,
+  above three numbers in a different element; `.app-case .hiw-sec > :is(h2,h3)` from step 7c stopped
+  matching the moment the heading moved, a fossil created by the fix for a fossil; and `.hiw-sec`
+  joined `port_structure.RESTYLE`, because **"already styled" is the wrong question when the markup
+  changed shape** and the wireframe was drawing the chip above the heading in a layout that puts it
+  beside.
+- **Two checkers reported their own defects**, both mine: gate 19's first cut asked for "the first
+  `<dialog>` in the document" and got the shared sign-in sheet that every standalone page embeds
+  first, so **a page with several of a thing has to be asked by id**; and `_unify_dialogs.py` had to
+  be told that a button with no mark keeps none, since swapping a placeholder for the real logo ends
+  a fork but putting a logo on a control that never had one starts a design decision.
+- **Verified:** both trees at 380 and 1280, grey 0 overflow / 0 errors / 0 colour outside the
+  palette, painted 0 below AA in both themes, 0 broken links either side. Gate 19 tested by injecting
+  each of its three kinds of drift. **Gates: 19.**
+
 ### The rule for a change, from here on
 
 Replaces the Stage-07 wording that pointed at `ui-kit/kit.css` and `ui-kit/kit.html`; neither has
@@ -660,7 +704,10 @@ that role any more.
   section 1. A component may never read a colour primitive (gate 13) and may never write a raw scale
   value (gate 12).
 - **Markup** goes to two places and only two: the component's page in `ui-kit/`, and the screens in
-  `ui-visual/` where it stands. Never to a third copy.
+  `ui-visual/` where it stands. Never to a third copy. **A dialog that also has a standalone page is
+  one markup, not two** (gate 19): the canonical copy is the one in `ui-visual/event-feed.html`, and
+  only the head, the wiring and the state screens may differ, for the reasons written in
+  `wireframes/_conventions.md`.
 - **Never on the element.** A `style=` attribute is a rule in the one place the system cannot see, so
   it fails gate 9. Three things are not styling and may stay: a datum (a bar drawn to a width), the
   event photograph, and a value the page script writes at run time.
@@ -675,7 +722,7 @@ that role any more.
   root, owned by neither layer.
 - **A new component** = css in `components/` + a page in `ui-kit/` + an entry in `ui-kit/_nav.js` +
   a row in `ui-kit/docs/inventory.md` (with its CSS file and Page columns). Then
-  `python3 ui-kit/_check_kit.py` has to pass, all eighteen.
+  `python3 ui-kit/_check_kit.py` has to pass, all nineteen.
 - **`ui-kit/kit.html` is frozen.** It is the flat kit the system was read out of and it is kept as
   provenance; a component is never added to it. **`ui-kit/shell.html` composes** the header and
   bottom-nav specimens and holds no markup of its own.

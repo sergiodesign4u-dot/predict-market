@@ -683,6 +683,86 @@ tree, **110 broken -> 0**. Gate 18 was tested by injecting drift into each of th
 regions in turn and confirming it names the right one. All three ports and both post-processors reach
 their fixed point in one run. **Gates: 18.**
 
+## What step 7f settled
+
+Step 7e gave the chrome a gate. This pass answers the question that gate does not ask: **a screen can
+disagree with its grey twin, and it can also disagree with its own second copy in the same tree, and
+only the first of those was ever checked.** Found by looking at the product rather than at the build:
+the sign-in dialog on `ui-visual/sign-in.html` did not look like the sign-in dialog on every other
+screen.
+
+### A dialog that also has a page has two copies, and nobody was comparing them
+
+Sign In and Deposit each exist twice per tree: the shared `<dialog>` embedded on all 76 painted
+screens, and the standalone page that IS that dialog. Stage 08 painted the shared copy into a real
+component and left the standalone on the markup the grey generator wrote. What that looked like: the
+shared dialog carries the real Google, X and Apple marks; **the page a person actually opens carried
+the wireframe placeholders, and the one standing in for Google is a circle with a plus in it.** Four
+copies of the sign-in body existed in the repo (grey shared, grey standalone, painted shared, painted
+standalone) and all four differed.
+
+### "The newer copy wins" would have deleted the best thing on the screen
+
+The obvious rule is wrong here, and reading both copies is what shows it. The standalone Deposit had
+three things the shared one had lost: a label over the payment widget, the sentence saying card
+payments are converted via Transak, and **an exit to How It Works, which is the trust affordance the
+deposit screen exists to earn**. A merge decided element by element, then one markup from there.
+`ui-visual/_unify_dialogs.py` keeps it; **gate 19** fails the build when it drifts again, in either
+tree, and it also checks the marks by name, because `shape()` drops `<path>` and `<circle>` (the icon
+mechanism is a declared boundary) and therefore cannot see that a button is drawing the wrong logo.
+
+Three differences are context and are declared in `wireframes/_conventions.md`: the head (h2 and
+`data-close-dialog` in a dialog, h1 and a link back on a page), the wiring (a dialog opens the next
+sheet over the page you are on, a page navigates, so each control is wrapped in an `<a>`), and the
+state screens, which are states and not copies.
+
+### Scope is where a block may stand
+
+The How It Works page rendered as an unstyled document, and the cause was one word in a selector:
+every rule for the hero, the glow, the icon chips, the section rhythm and the FAQ list began
+`.app-dialog.hiw-dialog`. The page the dialog links to as "the full guide" could not reach a single
+one of them. **A rule that describes a BLOCK is written unscoped**; what stays scoped is what is
+about being a dialog, its width, its close disc, a sheet's body padding.
+
+The page was then composed rather than re-marked: a page is not a bigger dialog. It has room, so the
+sections take the page text size instead of a sheet's 13px, they sit apart instead of stacked in a
+scroll, and the two things that are not the guide (the brand tile and the count of resolved events)
+moved into a side column, because **a claim and its proof belong beside the argument, not after it**.
+One line of copy was written (Step 27 in `microcopy.md`); everything else already shipped, four
+sections on the page and the rest in the dialog this page is the full version of. The page also
+gained the one thing a page called How It Works owed a reader and did not have: how to place a bet.
+
+Two smaller things fell out of it. The heading `Proven, not promised` had been sitting in a
+`<section>` of its own **with nothing in it**, above three numbers in a different element. And
+`.app-case .hiw-sec > :is(h2,h3)`, added in step 7c to pin a heading nobody had sized, stopped
+matching the moment the heading became `.hiw-label` inside `.hiw-sec-txt`: a fossil created by the
+fix for a fossil.
+
+### Already styled is the wrong question when the markup changed shape
+
+`.hiw-sec` used to be a section with a heading and a paragraph in it; it is now a row with an icon
+chip beside a text column. The grey tree's old rule still matched, so the port left it alone and
+nothing looked missing, and the wireframe drew the chip above the heading in a layout that puts it
+beside. It joins `.cat-nav` in `port_structure.RESTYLE`, which is the second time that list has
+grown for exactly this reason.
+
+### Two checkers that reported their own defects
+
+Both were mine and both are the same shape as the ones in 7c and 7e. Gate 19's first cut asked for
+"the first `<dialog>` in the document" and got the shared sign-in sheet, which every standalone page
+embeds before its own, so it reported a fork in Deposit that did not exist. **A page with several of
+a thing has to be asked by id.** And `_unify_dialogs.py` had to be told that a button with no mark
+keeps none: swapping a placeholder for the real logo ends a fork, but putting a logo on a control
+that never had one starts a design decision, and a tool doing that quietly is worse than the drift.
+
+### Verified
+
+Both trees at 380 and 1280. Grey: 208 page loads, 0 overflow, 0 page errors, 0 colour outside the
+wireframe palette. Painted: 308 page loads across both themes, 0 below AA, 0 overflow. Links: 0
+broken in either tree. Gate 19 was tested by injecting each of its three kinds of drift (a stale mark
+on the page, a block dropped from the page, the shared copy edited alone) and confirming it names the
+right one. Every tool reaches its fixed point in one run. **Gates: 19.**
+
 ## Naming
 
 Roles are read out of the product, not borrowed. The audit (`tokens-audit.md`) lists, for every role,

@@ -1,7 +1,7 @@
 /* components/hiw-dialog.css
-   Component: hiw-dialog. Classes: .hiw-arrow, .hiw-body, .hiw-close, .hiw-dialog, .hiw-faq, .hiw-full, .hiw-glow, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-sec, .hiw-sec-txt, .hiw-tagline.
+   Component: hiw-dialog. Classes: .hiw-arrow, .hiw-body, .hiw-close, .hiw-col-main, .hiw-col-side, .hiw-cols, .hiw-dialog, .hiw-faq, .hiw-full, .hiw-glow, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-sec, .hiw-sec-txt, .hiw-tagline.
 
-   Reads: --bg-control, --bg-dialog-head-from, --bg-plate-to, --border-hairline, --color-action, --color-action-lit, --line-on-photo, --line-on-photo-hover, --mask-solid, --scrim-photo, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong
+   Reads: --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate-to, --border-hairline, --color-action, --color-action-lit, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --mask-solid, --scrim-photo, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong
    Stand:  ui-kit/hiw-dialog.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -23,30 +23,69 @@ dialog.app-dialog .hiw-full{background:linear-gradient(135deg,var(--color-action
 .app-dialog.hiw-dialog .hiw-close{position:absolute;top:12px;right:12px;z-index:var(--z-close);width:var(--control-32);height:var(--control-32);display:flex;align-items:center;justify-content:center;padding:0;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
 .app-dialog.hiw-dialog .hiw-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
 .app-dialog.hiw-dialog .hiw-close .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo)}
-.app-dialog.hiw-dialog .hiw-hero{position:relative;overflow:clip;padding:var(--space-32) var(--space-24) var(--space-28)}
-.app-dialog.hiw-dialog .hiw-hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);opacity:.24;pointer-events:none}
-.app-dialog.hiw-dialog .hiw-glow{position:absolute;top:-72px;right:-52px;width:224px;height:224px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--color-action-lit) 65%,var(--color-action)) 0%,var(--color-action) 42%,transparent 70%);filter:blur(40px);opacity:.5;pointer-events:none}
-.app-dialog.hiw-dialog .hiw-hero-inner{position:relative;z-index:var(--z-content)}
-.app-dialog.hiw-dialog .hiw-hero h2{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-hiw);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;text-wrap:balance}
-.app-dialog.hiw-dialog .hiw-tagline{margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-primary);max-width:32ch}
+/* THE BLOCK, NOT THE DIALOG (step 7f). Every rule below used to begin
+   .app-dialog.hiw-dialog, which meant the hero, the icon chips, the section
+   rhythm and the FAQ list could only ever exist inside a dialog. The page this
+   dialog links to as "the full guide" was therefore a document: four bare
+   headings, some paragraphs and two buttons, because not one of these rules
+   could reach it. Scope describes where a thing may stand, and the answer for a
+   block like this is "wherever the block stands". What stays scoped below is the
+   part that is genuinely about being a dialog: its width, its close disc and the
+   body padding of a sheet. */
+.hiw-hero{position:relative;overflow:clip;padding:var(--space-32) var(--space-24) var(--space-28)}
+.hiw-hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);opacity:.24;pointer-events:none}
+.hiw-glow{position:absolute;top:-72px;right:-52px;width:224px;height:224px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--color-action-lit) 65%,var(--color-action)) 0%,var(--color-action) 42%,transparent 70%);filter:blur(40px);opacity:.5;pointer-events:none}
+.hiw-hero-inner{position:relative;z-index:var(--z-content)}
+/* h1 on the page, h2 in the dialog: a page has exactly one h1 and a dialog is
+   opened over a page that already spent it. Same heading, two levels. */
+.hiw-hero :is(h1,h2){font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-hiw);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;text-wrap:balance}
+.hiw-tagline{margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-primary);max-width:32ch}
 .app-dialog.hiw-dialog .hiw-body{padding:var(--space-20) var(--space-20) var(--space-20);display:flex;flex-direction:column;gap:var(--space-16)}
-.app-dialog.hiw-dialog .hiw-sec{display:flex;gap:var(--space-12);align-items:flex-start}
-.app-dialog.hiw-dialog .hiw-ic{flex:0 0 var(--size-32);width:var(--size-32);height:var(--size-32);display:flex;align-items:center;justify-content:center;border-radius:var(--radius-10);background:color-mix(in oklab,var(--color-action) 16%,var(--bg-control));border:1px solid color-mix(in oklab,var(--color-action) 30%,var(--border-hairline))}
-.app-dialog.hiw-dialog .hiw-ic .ic{width:var(--icon-18);height:var(--icon-18);stroke:var(--text-brass)}
-.app-dialog.hiw-dialog .hiw-sec-txt{flex:1;min-width:0}
-.app-dialog.hiw-dialog .hiw-label{display:block;font-family:var(--font-display);font-size:var(--text-14);font-weight:var(--weight-bold);letter-spacing:-.02em;text-transform:none;color:var(--text-primary);margin:0 0 var(--space-4)}
-.app-dialog.hiw-dialog .hiw-sec p{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0}
-.app-dialog.hiw-dialog .hiw-faq{flex-direction:column;gap:0;padding-top:var(--space-16);border-top:1px solid var(--border-hairline)}
-.app-dialog.hiw-dialog .hiw-faq dl{margin:var(--space-8) 0 0}
-.app-dialog.hiw-dialog .hiw-faq dt{font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-primary);margin:var(--space-12) 0 var(--space-4)}
-.app-dialog.hiw-dialog .hiw-faq dt:first-of-type{margin-top:var(--space-2)}
-.app-dialog.hiw-dialog .hiw-faq dd{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0}
+.hiw-sec{display:flex;gap:var(--space-12);align-items:flex-start}
+.hiw-ic{flex:0 0 var(--size-32);width:var(--size-32);height:var(--size-32);display:flex;align-items:center;justify-content:center;border-radius:var(--radius-10);background:color-mix(in oklab,var(--color-action) 16%,var(--bg-control));border:1px solid color-mix(in oklab,var(--color-action) 30%,var(--border-hairline))}
+.hiw-ic .ic{width:var(--icon-18);height:var(--icon-18);stroke:var(--text-brass)}
+.hiw-sec-txt{flex:1;min-width:0}
+.hiw-label{display:block;font-family:var(--font-display);font-size:var(--text-14);font-weight:var(--weight-bold);letter-spacing:-.02em;text-transform:none;color:var(--text-primary);margin:0 0 var(--space-4)}
+.hiw-sec p{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0}
+.hiw-faq{flex-direction:column;gap:0;padding-top:var(--space-16);border-top:1px solid var(--border-hairline)}
+.hiw-faq dl{margin:var(--space-8) 0 0}
+.hiw-faq dt{font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-primary);margin:var(--space-12) 0 var(--space-4)}
+.hiw-faq dt:first-of-type{margin-top:var(--space-2)}
+.hiw-faq dd{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0}
 .app-dialog.hiw-dialog .hiw-full{display:flex;align-items:center;justify-content:center;gap:var(--space-8);font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12);margin-top:var(--space-2)}
 .app-dialog.hiw-dialog .hiw-arrow{width:var(--icon-18);height:var(--icon-18);stroke:var(--text-on-brass);transition:transform var(--dur-base) ease}
 .app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow{transform:translateX(3px)}
-.app-dialog.hiw-dialog .hiw-hero{background:radial-gradient(120% 92% at 100% 0%,color-mix(in oklab,var(--color-action) 34%,transparent),transparent 58%),linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
-/* The how-it-works PAGE, not the dialog. Its section headings had no rule at all:
-   18.72px with 1em margins is what a browser gives an h3 when nobody has said
-   anything, which is not a size that was chosen. Pinned to the scale, and the
-   family left inherited, so the only thing that moves is 0.7px. */
-.app-case .hiw-sec>:is(h2,h3){font-size:var(--text-18);font-weight:var(--weight-bold);margin:var(--space-20) 0}
+.hiw-hero{background:radial-gradient(120% 92% at 100% 0%,color-mix(in oklab,var(--color-action) 34%,transparent),transparent 58%),linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
+
+/* THE PAGE. A page is not a bigger dialog: it has room, so the hero gets an edge
+   of its own instead of the sheet's, the reading column takes the page text size
+   rather than a sheet's 13px, and the sections sit apart instead of stacked in a
+   scroll. The side column exists because the two things that are not the guide,
+   the brand tile and the count of resolved events, are a claim and its proof and
+   belong beside the argument rather than after it.
+   The rule that used to live here, .app-case .hiw-sec > :is(h2,h3), is gone: the
+   heading is .hiw-label now and it is no longer a child of .hiw-sec, so the
+   selector could not match anything the page has. */
+.app-case .hiw-hero{border:1px solid var(--edge-shade-strong);border-radius:var(--radius-16);margin:0 0 var(--space-20);box-shadow:inset 0 1px 0 var(--bevel-lit)}
+.app-case .hiw-hero{padding:var(--space-32) var(--space-24)}
+.app-case .hiw-tagline{font-size:var(--text-16);max-width:44ch}
+.app-case .hiw-cols{display:grid;grid-template-columns:1fr;gap:var(--space-20)}
+.app-case .hiw-col-main{display:flex;flex-direction:column;gap:var(--space-20)}
+.app-case .hiw-col-side{display:flex;flex-direction:column;gap:var(--space-16)}
+.app-case .hiw-sec p{font-size:var(--text-14)}
+.app-case .hiw-label{font-size:var(--text-18)}
+.app-case .hiw-sec+.hiw-sec{padding-top:var(--space-20);border-top:1px solid var(--border-hairline)}
+.app-case .hiw-faq dt{font-size:var(--text-14)}
+.app-case .hiw-faq dd{font-size:var(--text-14)}
+/* The questions block takes no chip, on the page for the same reason as in the
+   dialog: there is no mark for it that the product already draws, and inventing
+   one to fill a slot is how a sheet of icons grows. It takes the INDENT the chip
+   would have made instead, or its heading hangs a chip's width left of the four
+   above it, which reads as a mistake rather than as a different kind of block. */
+.app-case .hiw-faq{padding-left:calc(var(--size-32) + var(--space-12))}
+.app-case .hiw-col-side .brand-tile{min-height:250px}
+.app-case .hiw-col-side .pos{padding:var(--space-20)}
+@media(min-width:900px){
+  .app-case .hiw-cols{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:var(--space-28);align-items:start}
+  .app-case .hiw-col-side{position:sticky;top:var(--space-20)}
+}

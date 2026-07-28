@@ -32,8 +32,8 @@ says so. No em dash.
 | filters | 2 | filters-sort, filters-toggle | 2 | 4 | 76 |
 | footer | 1 | footer | 0 | 15 | 76 |
 | header | 2 | header-in, header-out | 1 | 22 | 76 |
-| hero | 1 | hero-band | 0 | 51 | 1 |
-| hiw-dialog | 1 | hiw-dialog | 0 | 14 | 76 |
+| hero | 1 | hero-band | 0 | 51 | 2 |
+| hiw-dialog | 1 | hiw-dialog | 0 | 17 | 76 |
 | input | 2 | input-amount, input-states | 1 | 5 | 76 |
 | loadmore | 1 | loadmore | 1 | 2 | 5 |
 | market | 1 | market-depth | 0 | 21 | 9 |
@@ -62,7 +62,7 @@ says so. No em dash.
 Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
 that actually means. The Classes table on each component page shows the same verdict per row.
 
-### Deletion candidates (20)
+### Deletion candidates (21)
 
 Styled, and carried by no element in the repo: not by a painted screen, not by the kit, not by a wireframe, not by a course page, and not by any script. Nothing is removed yet. The screens still carry their own inline style and only move onto components/index.css in step 5, so the measurement is not final until then; step 7 is the pass that acts on this list.
 
@@ -79,6 +79,7 @@ Styled, and carried by no element in the repo: not by a painted screen, not by t
 | `.css` | input.css | styled and carried by no element anywhere |
 | `.css` | market.css | styled and carried by no element anywhere |
 | `.css` | tabs.css | styled and carried by no element anywhere |
+| `.hiw-head` | hiw-dialog.css | styled and carried by no element anywhere |
 | `.html` | base.css | styled and carried by no element anywhere |
 | `.html` | course-chrome.css | styled and carried by no element anywhere |
 | `.html` | dialog.css | styled and carried by no element anywhere |
@@ -89,7 +90,7 @@ Styled, and carried by no element in the repo: not by a painted screen, not by t
 | `.signin-lead` | signin.css | styled and carried by no element anywhere |
 | `.theme-switch-inline` | course-chrome.css | styled and carried by no element anywhere |
 
-### Carried only by the grey tree (5)
+### Carried only by the grey tree (4)
 
 Dead, and this section used to say the opposite: it called them the wireframe version of a block the paint replaced and said removing them needed the markup gone from wireframes/ first. It does not. wireframes/ carries its own inline grey-box css and never links index.css, so no rule in components/ has ever applied to it, and a class carried only there is a class this sheet does not have. Step 7e deleted the ones that were left and took wireframes/ out of gate 14's markup scan, which had been keeping them alive.
 
@@ -97,7 +98,6 @@ Dead, and this section used to say the opposite: it called them the wireframe ve
 |---|---|---|
 | `.backdrop` | dialog.css | carried only by wireframes/, which never loads this sheet |
 | `.grab` | dialog.css | carried only by wireframes/, which never loads this sheet |
-| `.hiw-head` | hiw-dialog.css | carried only by wireframes/, which never loads this sheet |
 | `.sheet` | dialog.css | carried only by wireframes/, which never loads this sheet |
 | `.wf-screen` | course-chrome.css | carried only by wireframes/, which never loads this sheet |
 

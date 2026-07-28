@@ -44,7 +44,9 @@ The chrome is the exception that proves it. Inside `<header>`, the bottom nav an
 steps: `ui-visual/_reconcile_chrome.py` gives the paint back the state the grey tree
 owns (auth variant, active nav slot, empty notifications), then
 `wireframes/_generators/port_chrome.py` copies the corrected shape back. Gate 18
-compares all four regions plus the sheet body of an invoked overlay.
+compares all four regions plus the sheet body of an invoked overlay, and **gate 19**
+compares a dialog that also has a standalone page with that page, because a screen
+can drift from its own second copy in the same tree and only the twin was checked.
 
 ## Old -> new map (the restructure)
 

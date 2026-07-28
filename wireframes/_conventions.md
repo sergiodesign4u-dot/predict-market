@@ -738,3 +738,43 @@ shape back. **The paint owns the shape of the chrome; the grey tree owns which
 state it is in.** The one exception is the auth variant on the ten screens that
 disagreed: there was no fact to read, so it was decided page by page with a
 reason each, written once in `_reconcile_chrome.py`, and both trees follow it.
+
+## One dialog, one copy (2026-07-28, Stage 09 step 7f)
+
+Sign In and Deposit each exist twice in each tree: as the shared `<dialog>`
+embedded on every screen, and as the **standalone page that IS that dialog**.
+Gate 18 compares a screen with its grey twin and never with its own second copy,
+so the two drifted from Stage 08 until step 7f: the shared dialog carried the
+real Google, X and Apple marks and the page a person actually opens carried the
+wireframe placeholders, the one standing in for Google being a circle with a plus
+in it.
+
+One markup now, kept by `ui-visual/_unify_dialogs.py` and checked by **gate 19**.
+The canonical copy is the one in `ui-visual/event-feed.html`; every other screen
+gets it byte for byte, and the standalone page gets its body and its sub-line.
+**Three differences are context, not drift:**
+
+| what | in a dialog | on the page | why |
+|---|---|---|---|
+| the heading level and the close | `<h2>`, closes with `data-close-dialog` | `<h1>` (gate 15), closes with a link back | a dialog is opened over a page that has already spent its h1. Only these two: the sentence under the title is copy and belongs to both |
+| the wiring | `data-flow` / `data-open` open the next sheet over the screen you are on | each control wrapped in `<a href>` | there is nothing behind a page to stay on. The table of hrefs is in `_unify_dialogs.py`, the one place either wiring is written |
+| the state screens | n/a | `sign-in-error` and the rest have their own bodies | a state is not a copy, so only the BASE page of each family is compared |
+
+Neither copy simply won. Reading both is what showed why: the standalone Deposit
+had three things the shared one had lost, a label over the payment widget, the
+sentence that says card payments are converted via Transak, and the exit to How
+It Works, which is the trust affordance that screen exists to earn. Those were
+merged into the canonical copy (Step 27 in `voice/docs/microcopy.md`) before the
+tool was written.
+
+The three shared dialogs are ported between trees as well, like the header. The
+how-it-works one had drifted furthest of anything in the repo, 42 elements in
+grey against 64 in colour, because Stage 08 rebuilt it with a hero, icon chips
+and an FAQ list and the tree that owns structure never heard.
+
+**Scope is where a block may stand.** The same pass found the How It Works page
+rendering as an unstyled document, and the cause was one word in a selector:
+every rule for the hero, the icon chips and the FAQ list began
+`.app-dialog.hiw-dialog`, so none of them could reach a page. A rule that
+describes a BLOCK is written unscoped; only what is about being a dialog (its
+width, its close disc, a sheet's body padding) keeps the ancestor.

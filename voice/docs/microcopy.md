@@ -1478,3 +1478,33 @@ ships in both trees now. The row it already had stands.
 Health: 5 strings added to the grey tree, 2 replaced, 0 invented. Both trees carry identical copy in
 `<main>`, `<header>`, the bottom nav and `<footer>` on all 55 twinned screens, which gate 18 checks.
 0 em-dash.
+
+### Step 27 - One dialog, one copy, and the page that was left as a document
+
+Step 7f closed a fork nobody had a check for: Sign In and Deposit each exist twice, as the shared
+`<dialog>` on 76 screens and as the standalone page that IS that dialog, and the two had drifted since
+Stage 08. Merging them moved four lines from the page onto 76 screens, and none of them was written
+here first, because the page they were written on was outside the last two audits.
+
+**Merged into the shared dialog** (was on the standalone page only, now on both):
+
+| line | where | rule it answers |
+|---|---|---|
+| `Adding funds by card requires KYC; crypto-only accounts can connect a wallet instead.` | the sign-in `.fine` | principle 2: the ask names its own condition before it is made, not after |
+| `Pay with` | a `.field-label` over the payment widget | the field rule: a field says what it is. The widget had no label at all in the dialog |
+| `Card payments are converted to USDC via Transak.` | the deposit `.fine` | principle 1: explain the number, and here the mechanism. A card charge that arrives as USDC needs a sentence or it reads as a swap nobody agreed to |
+| `How it works (what happens to my money)` | a `.provider-btn` under the deposit fine print | principle 2 again, and it is the reason this merge went this way: the exit to How It Works is the trust affordance the deposit screen is there to earn, and the shared dialog had lost it |
+
+**Moved from the dialog to the page** (the page is the full version the dialog links to, so this is
+the same string on a second surface, not a rewrite): `How betting works here` and its paragraph, and
+the three questions under `Common questions`. The page never said how to place a bet, which is the
+first thing a page with that title owes a reader.
+
+**Written for this pass, one line:**
+
+| line | where | why it exists |
+|---|---|---|
+| `Every figure here is a count you can check, not a claim.` | `.pos-note`, under `Proven, not promised` in the How It Works side column | principle 5. The heading `Proven, not promised` used to sit in a section of its own with nothing in it, above three numbers that never said what made them proof. The sentence is the difference between a stat strip and evidence |
+
+Health: 1 line written, 4 moved onto 76 screens, 4 moved onto one page, 0 rewritten. Gate 19 now
+fails the build when a screen and its family's shared dialog disagree, in either tree. 0 em-dash.

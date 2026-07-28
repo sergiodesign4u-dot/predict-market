@@ -3,7 +3,7 @@
 
    Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-brass, --border-hairline, --color-action, --color-action-lit, --line-grid, --mask-solid, --outcome-line-no, --outcome-line-yes, --outcome-no, --outcome-no-figure, --outcome-no-fill, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-brass-vol, --text-muted, --text-primary, --text-strong, --tint-brass-60, --veil-brand, --veil-photo-edge, --veil-photo-from, --veil-photo-mid, --veil-photo-to
    Stand:  ui-kit/hero.html
-   Stands on: 1 ui-visual screens (event-feed.html)
+   Stands on: 2 ui-visual screens (event-feed.html, how-it-works.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .feed-hero{display:grid;grid-template-columns:minmax(0,1.72fr) minmax(0,1fr);gap:var(--space-16);align-items:stretch}
