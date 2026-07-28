@@ -921,6 +921,30 @@ findings, all closed.** Full record in `ui-kit/docs/architecture.md`, "What step
   Gate 22 tested by injecting each of its four kinds of drift; all six generators reach a fixed point
   together over three rounds. **Gates: 22.**
 
+### Where the audit passes stopped, and what is still unread (2026-07-28)
+
+Nine passes ran over this stage (7, 7b, 7c, 7d, 7e, 7f, 8, 8b, 9), yielding 34, 14, 24, 11, 10, 8,
+15, 9 and 20 findings. **That sequence does not decay, and that is the argument for stopping rather
+than running a tenth.** A pass re-reading a region it had already read would tail off; each of these
+instead found a region nobody had read. Yield tracked unread surface, not effort, and the surfaces
+with nothing pointed at them are now countable. The list is in `ui-kit/docs/architecture.md` ("What
+has not been read yet, and which stage owns it") with today's measurements:
+
+| Surface | Size | Owner |
+|---|---|---|
+| The 28 course pages' own content | 203 KB inline css, unread (step 9 took only the panel) | now, or never |
+| `wireframes/` inline css | 34 distinct `<style>` bodies over 104 pages, largest 52 KB; gate 14 was narrowed away from it in step 7e | now, or never |
+| The page scripts as code | 15 distinct bodies in 810 blocks; every sweep reads their output | Stage 12 |
+| What a screen reader is told on change | `aria-live` / `role="status"` on 9 screens of 105 | Stage 10 |
+| Page weight, font swap, layout shift | never measured, any width, either theme | Stage 13 |
+
+Not a defect list: no entry is a known bug, each is a place a bug would be invisible. And not a
+claim that accessibility is undone, which was checked before the table was written because a large
+hole there would have changed the answer: **0 buttons without an accessible name** across 105
+screens, every `<img>` with `alt`, native `<dialog>` supplying `aria-modal` and inerting the page,
+tab strips as radio groups that arrow keys already drive. The one real gap is the announcement, and
+a toast is a state, so Stage 10 owns it.
+
 ### The rule for a change, from here on
 
 Replaces the Stage-07 wording that pointed at `ui-kit/kit.css` and `ui-kit/kit.html`; neither has

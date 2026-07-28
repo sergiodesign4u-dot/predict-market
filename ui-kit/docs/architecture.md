@@ -1451,3 +1451,40 @@ The light-theme sweep reported 105 failures at 1.12:1 and they were the `<script
 inside the `<aside>`: the checker counted a script's source as text. In the dark theme a script
 inherits light ink on the dark panel and passes; the moment the ground inverts it reads dark on dark.
 **A checker with a missing guard fails in one theme and looks exactly like a finding.**
+
+## What has not been read yet, and which stage owns it
+
+Nine audit passes ran over this stage: 7, 7b, 7c, 7d, 7e, 7f, 8, 8b and 9. Their yields were 34, 14,
+24, 11, 10, 8, 15, 9 and 20 findings. **That sequence does not decay, and the reason it does not is
+the argument for stopping.** A pass that re-read a region it had already read would tail off; every
+one of these instead found a region nobody had read at all. 7d found that the two screen trees had
+gone structurally apart, 7e found the header and the footer, 8 found a whole family with no twin, 9
+found the `<aside>` gate 1 masks. Yield tracked unread surface, not effort.
+
+So the question at the end of the stage is not "is the product clean enough", which twenty-two gates
+and five browser sweeps now answer on every build. It is **which surfaces still have nothing pointed
+at them**, and that list is short and countable. It is written here rather than acted on, because
+three of the five belong to a later stage by the course and auditing them now means auditing them
+twice.
+
+| Surface | Measured today | Owner |
+|---|---|---|
+| The 28 course pages' own content | 203 KB of inline css nothing has read; step 9 took only the panel | now, or never |
+| `wireframes/` inline css | 34 distinct `<style>` bodies over 104 pages, largest 52 KB; **gate 14 was explicitly narrowed away from it** in step 7e | now, or never |
+| The page scripts as code | 15 distinct bodies in 810 blocks across the painted tree; every sweep reads their output, none reads them | Stage 12, Animation |
+| What a screen reader is told when something changes | `aria-live` or `role="status"` on **9 screens of 105**; a toast appears and announces nothing | Stage 10, States |
+| Page weight, font swap, layout shift | never measured once, at any width, in either theme | Stage 13, Handoff |
+
+Two things this table is deliberately not saying. It is not a defect list: no entry here is a known
+bug, each is a place where a bug would currently be invisible. And it is not a claim that the
+accessibility work is undone. That was checked before the table was written, because a large hole
+there would have changed the answer: across the 105 painted screens there is **no button without an
+accessible name**, every `<img>` carries `alt`, the dialogs are native so the browser supplies
+`aria-modal` and inerts the rest of the page, and the tab strips are radio groups, which arrow keys
+already drive. The one real gap is the announcement, and a toast is a state, so it falls into the
+next stage on its own.
+
+**The two rows marked "now, or never" are the honest ones.** Nothing downstream will re-open the
+course pages or the grey tree's stylesheet, so if they are not read before Stage 10 they will not be
+read. They are recorded at their real size rather than promised, so that a later pass can pick them
+up knowing what it is taking on.
