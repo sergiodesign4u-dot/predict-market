@@ -151,6 +151,7 @@
   --space-16:16px; --space-20:20px; --space-24:24px; --space-28:28px;
   --space-32:32px; --space-40:40px; --space-56:56px;
   --hairline:1px;  /* a rule, a 1px inset, the 1x1 box of a visually hidden input */
+  --ring:2px;      /* the width of a focus outline, and its offset from the control */
 
   /* ---- radius (one corner per job) ---- */
   --radius-2:2px;      /* the near-square card corner of the Vault */
@@ -171,6 +172,23 @@
   --icon-16:16px;      /* the default mark */
   --icon-18:18px;      /* a mark that carries a control on its own */
   --icon-22:22px;      /* a state or hero mark */
+  /* The measurement scale. It shipped with two steps, 56 and 72, and a product
+     needs ten: every other box in the system therefore borrowed a --space-* step
+     for its own width and height. That reads as an accident in the file and it is
+     a real one, because the two scales answer to different questions. A gap is a
+     distance between things and can be retuned as a rhythm; the side of an avatar,
+     an icon plate or a legend swatch is the size of a thing and moves when the
+     thing does. Same numbers today, different reasons, so different names. */
+  --size-2:2px;        /* the thickness of a drawn bar: a status rule, a tab underline */
+  --size-4:4px;        /* a thin track: the odds bar, the hero probability bar */
+  --size-8:8px;        /* a thick track, a skeleton line, a legend swatch */
+  --size-12:12px;      /* a rank column, a grab handle */
+  --size-16:16px;      /* a small square block */
+  --size-20:20px;      /* a nav glyph box */
+  --size-24:24px;      /* a toast mark */
+  --size-28:28px;      /* an avatar, a state mark, a footer mark */
+  --size-32:32px;      /* an icon plate inside a dialog */
+  --size-40:40px;      /* a badge, a toggle track, a sheet grab */
   --size-56:56px;      /* the card thumbnail */
   --size-72:72px;      /* the profile avatar and the event-detail thumbnail */
 
@@ -412,12 +430,12 @@
   --bg-slab:var(--graphite-860);        /* from: the outer stone, the whole page width */
   --bg-slab-from:var(--graphite-830);   /* same value as --bg-surface for now: the app header IS the
                                            lit top of the device slab, and it is also a raised panel.
-                                           In daylight both step off the reflection together */   /* from: the slab top-lit gradient, and the sticky header */
+                                           In daylight both step off the reflection together .      From: the slab top-lit gradient, and the sticky header */
   --bg-slab-to:var(--graphite-870);     /* from: the same gradient, bottom */
 
   --bg-plate:var(--graphite-910);       /* from: the inset content plate (feed, category, dialog body) */
   --bg-plate-from:var(--graphite-870);  /* from: the plate gradient, top */
-  --bg-plate-to:var(--graphite-930);    /* from: the plate gradient, bottom */
+  --bg-plate-to:var(--graphite-930);   /* same value as --bg-page for now: a plate that fades into its own ground .       From: the plate gradient, bottom */
 
   --bg-card:var(--graphite-900);        /* from: .card base under its grain */
   --bg-card-from:var(--graphite-870);   /* from: the card gradient, top */
@@ -437,9 +455,9 @@
   --bg-chip:var(--graphite-850);        /* from: the graphite chip family: cat-nav, tabs, options,
                                            load-more, profile tabs */
   --bg-well:var(--graphite-940);        /* from: the amount input, comment input, segmented rails */
-  --bg-dialog-head-from:var(--graphite-800); /* from: the dialog head gradient over the brass glow */
-  --bg-chart-well:var(--graphite-940);  /* from: the plotted chart and the range switcher */
-  --bg-dock:var(--graphite-880);        /* from: the mobile bet dock */
+  --bg-dialog-head-from:var(--graphite-800); /* same value as --bg-control-hover for now .    From: the dialog head gradient over the brass glow */
+  --bg-chart-well:var(--graphite-940);  /* same value as --bg-well for now: a chart is a well with a plot in it .     From: the plotted chart and the range switcher */
+  --bg-dock:var(--graphite-880);        /* same value as --bg-card-quiet for now: two quiet blocks at one depth .           From: the mobile bet dock */
   --bg-chip-pressed:var(--graphite-860);/* from: a chip while it is held down */
   --bg-prompt-hover:var(--graphite-900);/* from: the logged-out comment prompt on hover */
   --bg-brand-mark:var(--bone-080);      /* from: the plate under the X and Apple marks */
@@ -454,7 +472,7 @@
                                            it is its own role */
   --icon-brass:var(--brass-400);        /* from: the saved bookmark. Brass as a mark, not as a word */
   --text-icon-strong:var(--bone-200);   /* from: the notification bell */
-  --text-chip-hover:var(--bone-100);    /* from: the chip family on hover */
+  --text-chip-hover:var(--bone-100);    /* same value as --text-primary for now: a chip label reaching full ink .       From: the chip family on hover */
   --text-brass:var(--brass-400);        /* from: 37 colour + 8 stroke declarations: links, active
                                            nav, saved bookmark, the logo tick. Also the focus ring
                                            today; the focus role itself waits for the states stage */
@@ -474,7 +492,7 @@
   --tint-brass-09:var(--brass-a09);        /* from: the condensed category chip when active */
   --tint-brass-16:var(--brass-a16);        /* from: a selected quick amount */
   --tint-brass-30:var(--brass-a30);        /* same value as --border-brass and --glow-brass for now:
-                                              a fill, an edge and a glow at one depth of the metal */        /* from: the funds-safety border */
+                                              a fill, an edge and a glow at one depth of the metal .           From: the funds-safety border */
   --tint-brass-45:var(--brass-a45);        /* from: the price-moved border */
   --tint-brass-60:var(--brass-a60);        /* from: a selected outcome row */
   --edge-groove-dark:var(--graphite-950);  /* from: 27 declarations, the recessed line */
@@ -499,16 +517,17 @@
   --outcome-yes-fill:var(--green-a12);       /* from: the tinted YES button (spectator, not trader) */
   --outcome-yes-line:var(--green-700);       /* from: the tinted YES border */
   --outcome-no-text:var(--red-300);          /* from: the quiet NO text on a button or chip */
-  --outcome-no-figure:var(--red-300);        /* from: the NO figure, column head and market stat.
-                                                Same job, one step brighter; see --red-320 */
-  --outcome-no-fill:var(--red-a12);          /* from: the tinted NO button */
-  --outcome-no-line:var(--red-700);          /* from: the tinted NO border */
+  --outcome-no-figure:var(--red-300);        /* same value as --outcome-no-text and --result-lost-text
+                                                for now. From: the NO figure, column head and market stat.
+                                                Same job, one step brighter; the two merged into --red-300 in step 6 */
+  --outcome-no-fill:var(--red-a12);          /* same value as --outcome-no-fill-soft and --result-lost-fill for now .             From: the tinted NO button */
+  --outcome-no-line:var(--red-700);          /* same value as --result-lost-line for now .             From: the tinted NO border */
   --outcome-yes-fill-soft:var(--green-a12);  /* from: the compact YES in an outcome list */
   --outcome-yes-fill-strong:var(--green-a20);/* from: the selected YES on the mobile dock */
   --outcome-no-fill-soft:var(--red-a12);     /* from: the compact NO in an outcome list */
-  --outcome-no-fill-strong:var(--red-a20);
+  --outcome-no-fill-strong:var(--red-a20);  /* from: the selected NO on the mobile dock */
   --outcome-yes-text-lit:var(--green-150);   /* from: YES on the filled dock, brighter than the tint */
-  --outcome-no-text-lit:var(--red-250);
+  --outcome-no-text-lit:var(--red-250);   /* from: NO on the filled dock */
   --outcome-line-yes:var(--green-200);       /* from: the YES line drawn over the hero photo, where
                                                 the quiet green loses against the image */
   --outcome-line-no:var(--red-400);          /* from: the NO line on the same photo */
@@ -521,9 +540,9 @@
      script on 13 screens: a whole palette the token file could not see, the
      gates could not check and no theme could reach. Declared as roles so the
      script can write var(--series-N) and the browser resolves it live.
-     Open question for a later stage, not decided here: --series-1 is the same
-     green the product uses for YES, so a candidate line borrows an outcome
-     meaning it does not have. */
+     (The open question this block used to end on, that --series-1 was the YES
+     green, is what the paragraph above answers: step 7 moved all five. The note
+     outlived the defect by one pass, which is how a comment starts lying.) */
   --series-1:var(--cyan-400);
   --series-2:var(--blue-400);
   --series-3:var(--violet-400);
@@ -537,7 +556,7 @@
      record (WON / LOST chips, the win overlay, the resolved history). Either can
      move without dragging the other. */
   --result-won:var(--green-500);        /* same value as --outcome-yes for now: a market saying YES
-                                           and your bet paying out are two facts, not one */             /* from: the win overlay glow and its reconcile box */
+                                           and your bet paying out are two facts, not one .                From: the win overlay glow and its reconcile box */
   --result-won-text:var(--green-300);        /* from: .pos-won, the win figure */
   --result-won-fill:var(--green-a12);        /* from: the WON chip */
   --result-won-line:var(--green-700);        /* from: the WON chip border */
@@ -558,21 +577,24 @@
      shadow. So the bevel and shadow inks live here, not as literals in a card. */
   --bevel-hi:var(--white-a16);          /* from: the plate top lip, strongest */
   --bevel-md:var(--white-a16);          /* same value as --bevel-hi and --bevel-lit for now: three
-                                           lips that happen to catch the light equally */          /* from: the raised plate */
+                                           lips that happen to catch the light equally .             From: the raised plate */
   --bevel-lit:var(--white-a16);         /* from: the dialog lip */
   --bevel-strong:var(--white-a20);      /* from: an action on a photographic head */
   --bevel-lo:var(--white-a10);          /* from: the win and loss sheet head */
   --bevel-xs:var(--white-a10);          /* from: the inner plate */
   --bevel-faint:var(--white-a06);       /* from: the quiet blocks */
-  --bevel-hair:var(--white-a04);        /* from: the left lip of a plate */
-  --bevel-hair-soft:var(--white-a04);   /* from: the same, one step quieter */
+  --bevel-hair:var(--white-a04);        /* from: the left lip of a plate, a card and a trust item.
+                                           There used to be a --bevel-hair-soft beside it, described
+                                           as "the same, one step quieter" and identical in both
+                                           themes: a role that never had a reason of its own, which
+                                           is the one kind this file says to delete */
   --edge-shade:var(--black-a30);        /* from: the dark side of an emboss */
   --edge-shade-strong:var(--black-a45); /* from: the bottom edge of a lifted sheet */
   --shadow-ink:var(--black);            /* from: every drop shadow of the product */
-  --shadow-ink-45:var(--black-a45);     /* from: the card and plate depth stack, lightest */
+  --shadow-ink-45:var(--black-a45);     /* same value as --edge-shade-strong for now: an edge and the lightest drop .        From: the card and plate depth stack, lightest */
   --shadow-ink-60:var(--black-a60);     /* from: the dialog */
   --shadow-ink-72:var(--black-a72);     /* from: a card on hover */
-  --shadow-ink-85:var(--black-a85);
+  --shadow-ink-85:var(--black-a85);     /* from: the big drop under a card, a plate and a dialog */
   --scrim:var(--black-a30);             /* from: the mobile drawer backdrop */
   /* the disc behind a close mark on a photographic head. It was reading
      --shadow-ink, which is the ink of a drop shadow: two jobs on one role, and
@@ -584,7 +606,7 @@
      a theme must never move them. Nine masks were reading --shadow-ink, which is
      opaque in the Vault by coincidence and 32% ink in daylight, so every masked
      photograph came out washed. Same shape of mistake as --scrim-photo. */
-  --mask-solid:var(--black);
+  --mask-solid:var(--black);                 /* same value as --scrim-photo, and for opposite reasons: one is a colour that must not move, the other is not a colour at all */
   --mask-mid:var(--black-a45);
   --surface-grid:var(--brass-grid);     /* from: the brass graph grid on the card corner */
   /* the grain of the stone is material, and material is what a theme moves: the
@@ -595,6 +617,9 @@
   --mark-logo:var(--logo-tick);         /* from: the brass up-trend mark before the wordmark */
   --glow-brass:var(--brass-a30);        /* from: the card and chip glow */
   --glow-focus:var(--brass-a16);        /* from: the focus ring on a field */
+  --focus-ring:var(--brass-400);        /* same value as --text-brass for now: the ring is not a word,
+                                           and the day a states pass gives focus its own colour the
+                                           links must not follow it .           From: :focus-visible, declared once in base.css */
   --line-brass-soft:var(--brass-a45);   /* from: the quieter hover border */
   --tint-hover:var(--white-a06);        /* from: the quiet hover wash on a chip (cat-nav condensed,
                                            feed subfilter). It was reading --bevel-faint, which is
@@ -602,17 +627,17 @@
                                            nothing at all on chalk, where more light is not available */
   --line-grid:var(--white-a06);         /* same value as --tint-hover for now: a line on a chart and
                                            a wash under a cursor, which move apart the moment either
-                                           needs to */         /* from: the chart grid, same story: a line, not a lip */
+                                           needs to .            From: the chart grid, same story: a line, not a lip */
   --line-brass-strong:var(--brass-a60); /* from: the input hover border */
   --bg-dock-from:var(--graphite-860);   /* from: the mobile bet dock gradient */
   --veil-photo-edge:var(--graphite-a12);/* from: the featured hero veil, transparent end */
   --veil-photo-from:var(--graphite-a50);/* from: the same veil, where it starts to bite */
-  --veil-photo-mid:var(--graphite-a55);
+  --veil-photo-mid:var(--graphite-a55);/* from: the same veil, mid stop */
   --veil-photo-to:var(--graphite-a82);  /* from: the same veil, where the text sits */
   --veil-brand:var(--graphite-a28);     /* from: the brand tile over its photograph */
   --line-on-photo:var(--white-a16);     /* from: the close mark on a photographic dialog head */
-  --line-on-photo-hover:var(--white-a32);
-  --control-knob:var(--white);          /* from: the toggle knob when it is on */
+  --line-on-photo-hover:var(--white-a32);  /* from: the same close mark, hovered */
+  --control-knob:var(--white);          /* same value as --text-on-photo for now: both sit on something that does not theme .             From: the toggle knob when it is on */
   --text-strong:var(--white);           /* from: the label of a quiet button on hover */
 
   /* ---- course chrome (the roadmap sidebar every course page carries).
@@ -626,7 +651,7 @@
      raw, and section 3 deliberately does not move them: a control that shows you
      the two grounds has to keep showing both, whichever one you are standing on */
   --swatch-dark:var(--graphite-930);    /* from: the two swatches on the theme switch itself */
-  --swatch-light:var(--chalk-930);
+  --swatch-light:var(--chalk-930);    /* from: the pale half of the theme switch */
 }
 
 /* ==========================================================================
@@ -739,6 +764,7 @@
   --text-icon-strong:var(--ink-700);    /* 10.3:1 */
   --text-chip-hover:var(--ink-900);     /* 13.9:1 */
   --text-brass:var(--brass-700);        /* 5.3:1 over the deepest brass tint, 6.5:1 on bare stone */
+  --focus-ring:var(--brass-700);        /* 5.3:1, and a ring answers to 3:1 */
   --text-brass-lit:var(--brass-700);    /* 5.3:1 */
   --text-brass-chip:var(--brass-700);   /* 5.3:1 */
   --text-brass-vol:var(--brass-700);    /* 5.3:1 */
@@ -812,7 +838,6 @@
   --bevel-xs:var(--white-a32);
   --bevel-faint:var(--white-a20);
   --bevel-hair:var(--white-a20);
-  --bevel-hair-soft:var(--white-a20);
   --edge-shade:var(--ink-a10);          /* a 1px inset edge: the quiet end of the ladder */
   --edge-shade-strong:var(--ink-a16);
   --shadow-ink-45:var(--ink-a16);       /* the card and plate BORDER, not a shadow */

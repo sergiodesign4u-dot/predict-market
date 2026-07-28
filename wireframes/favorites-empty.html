@@ -252,7 +252,7 @@
     .lang-menu .filter-panel { top: auto; bottom: calc(100% + 4px); right: auto; left: 0; min-width: 150px; }
 
     .footer-cols { display: flex; flex-direction: column; gap: 16px; }
-    .footer-col h3 { font-size: 11px; margin: 0 0 7px; text-transform: uppercase; letter-spacing: .04em; }
+    .footer-col h2 { font-size: 11px; margin: 0 0 7px; text-transform: uppercase; letter-spacing: .04em; }
     .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
     .footer-col .sub-label { font-size: 9px; color: #777; margin: 9px 0 4px; text-transform: uppercase; letter-spacing: .03em; }
     .tbd { display: inline-block; font-size: 9px; border: 1px dashed #999; padding: 0 4px; margin-left: 4px; color: #555; background: #ededed; vertical-align: middle; }
@@ -312,7 +312,7 @@
     dialog.app-dialog .hiw-sec dd { font-size: 13px; color: #333; line-height: 1.5; margin: 0; }
     dialog.app-dialog .hiw-full { display: block; box-sizing: border-box; border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; text-align: center; text-decoration: none; color: #222; }
     dialog.app-dialog .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
-    dialog.app-dialog .sheet-head h2 { font-size: 14px; margin: 0; }
+    dialog.app-dialog .sheet-head :is(h1,h2) { font-size: 14px; margin: 0; }
     dialog.app-dialog .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
     dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     dialog.app-dialog .fine { font-size: 11px; color: #555; line-height: 1.5; }
@@ -347,7 +347,7 @@
     .footer-trust { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; padding: 10px 12px; border-bottom: 1px solid #ccc; font-size: 12px; color: #444; }
     .footer-trust .trust-item { display: inline-block; }
     .footer-popular { padding: 10px 12px; border-top: 1px solid #ccc; }
-    .footer-popular h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
+    .footer-popular h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
     .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
     .popular-links a { color: #444; }
   </style>
@@ -850,7 +850,7 @@
           <div class="footer-cols">
 
             <nav class="footer-col" aria-label="Markets">
-              <h3>Events</h3>
+              <h2>Events</h2>
               <p class="sub-label">By category</p>
               <ul>
                 <li><a href="politics.html">Politics</a></li>
@@ -867,7 +867,7 @@
             </nav>
 
             <nav class="footer-col" aria-label="Product">
-              <h3>Product</h3>
+              <h2>Product</h2>
               <ul>
                 <li><a href="how-it-works.html">How It Works</a></li>
                 <li><a href="#">Leaderboard</a></li>
@@ -879,7 +879,7 @@
             </nav>
 
             <nav class="footer-col" aria-label="Support">
-              <h3>Support</h3>
+              <h2>Support</h2>
               <ul>
                 <li><a href="#">Help Center</a> <span class="tbd">TBD</span></li>
                 <li><a href="#">FAQ</a> <span class="tbd">TBD</span></li>
@@ -889,7 +889,7 @@
             </nav>
 
             <nav class="footer-col" aria-label="Company">
-              <h3>Company</h3>
+              <h2>Company</h2>
               <ul>
                 <li><a href="#">About</a> <span class="tbd">TBD</span></li>
                 <li><a href="#">Careers</a> <span class="tbd">TBD</span></li>
@@ -903,7 +903,7 @@
 
         <!-- SEO popular-links block (second internal-linking plane, WF reconcile) -->
         <div class="footer-popular">
-          <h3>Popular right now</h3>
+          <h2>Popular right now</h2>
           <ul class="popular-links">
             <li><a href="politics.html">Politics events</a></li>
             <li><a href="crypto.html">Crypto events</a></li>

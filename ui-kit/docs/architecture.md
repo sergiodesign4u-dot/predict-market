@@ -444,21 +444,24 @@ only safe once you have found what it was arguing with.**
 
 ### How this pass was verified
 
-`ui-kit/_verify/diff.cjs` walks two snapshots in step, which is right while the DOM is fixed and only
-the styling moves. **The moment a pass removes markup it is useless**: every index after the removal
-points at a different element and the whole page reads as changed. `ui-kit/_verify/visible.cjs` is the
-answer: keep only the elements the browser reports as visible and compare those sequences. Removing
-something `display:none` cannot change what paints, so an honest pass shows two sequences that match
-element for element; and if a removal did move a sibling or renumber an `:nth-child`, it shows up on a
-real element instead of drowning in an index shift.
+The product and the vitrine, both trees, at five widths, before and after, compared by what the
+browser reports as VISIBLE (`_verify/visible.cjs`, since markup was added and removed and an
+index-aligned diff would read every page as different). **380 product snapshots, 0 with a different
+visible element count.** What moved, and nothing else did: every `background-image` URL, same file,
+new folder; and two chart polylines caught mid-transition because a duration moved 20ms. In the
+vitrine, 175 pages changed their element count, all of them the corrected screen lists and the new
+icon section (a component that claimed 76 screens now links the nine it stands on).
 
-Across the whole of step 7b, at 76 screens x 5 widths, what moved: four dock buttons and one CTA bar
-lost 2px of padding (14px and 10px were never on the 4px grid, and a value in an attribute never went
-through step 6), six section labels took the system's `.1em` tracking instead of the wireframe's
-`.04em`, and the four how-it-works section headings went from the browser's 18.72px default to 18px on
-the scale. Everything else is identical to measure.
+Target size was measured rather than reasoned about: coarse pointer at 380px and at 1280px, every
+control 44px; fine pointer, 36px, which clears 2.5.8. Then the whole product in both themes at 380
+and 1280: **54774 text pairs measured, 0 below AA, 0 page errors, 0 horizontal overflow.**
 
----
+Two of those numbers were wrong the first time and the reason is worth keeping. A first contrast run
+reported 950 failures, every one of them a brass CTA: the checker read `background-color`, a gradient
+button has none, so it compared plum ink against the stone three levels up. A second run reported
+405, every one of them a theme swap measured 40ms after the attribute changed, mid-transition between
+graphite and chalk. **A measurement that has not been checked against a known-good case is a claim,
+not a proof.**
 
 ## Naming
 
@@ -631,6 +634,9 @@ no product class at all.
 | how one component looks | `components/<name>.css` | reaches every screen that carries it |
 | what a component is made of (markup) | the stand page in `ui-kit/` and every screen in `ui-visual/` that carries it | markup is not centralised, the class is |
 | how the stand itself looks | `ui-kit/_page.css` | never `components/base.css`. The product is not bent to fit the vitrine |
+| a heading LEVEL | `wireframes/` first, then the colour copy | structure is owned by the grey tree, and gate 15 reads both |
+| a sample photograph | on the element, `style="background-image:..."` | it is content, and gate 9 lets exactly this through |
+| a shared image asset | `assets/` at the root | owned by neither layer, reached by both |
 
 A change made on one screen is a desync by definition. If a screen needs something the component does
 not have, either the component grows a variant class or the screen is wrong.

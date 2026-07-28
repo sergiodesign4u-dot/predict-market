@@ -172,6 +172,74 @@ for path in COMP.glob("*.css"):
     declared.update(re.findall(r"\.(-?[_a-zA-Z][\w-]*)", body))
 
 
+# ---- which file OWNS a class, and therefore where a component STANDS --------
+# `classes` below is every class a file mentions, which is the right answer to
+# "what does this file style" and the WRONG one to "where does this component
+# stand". market.css styles `.market-title .ic`: the icon is the subject of that
+# rule, so `.ic` landed in market's class list, `.ic` is on all 76 screens, and
+# coverage.md reported that a market-depth panel stands on every screen in the
+# product, 404 included. Thirty-four of thirty-six rows read 76 for that reason,
+# while the "Stands on:" line hand-written in each css header read the truth. Two
+# artifacts of one system disagreeing is the defect; one computation feeding both
+# is the fix, so this block now writes that header line as well.
+#
+# A class is OWNED by the file that styles it with the FEWEST ancestors. base.css
+# says `.ic{}` with none, card.css reaches it as `.card .ic`, and the file that
+# describes a thing in its own right owns it. A tie goes to the earlier file in
+# the cascade, which is an order index.css already fixes on purpose.
+#
+# SHARED is the short hand-checked list of words no component owns: a state and
+# three widths that six and three files respectively write as a modifier on their
+# own class. Attributing `.sel` to whichever file happens to mention it most is
+# how a bet panel came to stand on 76 screens. Like RUNTIME above, every entry was
+# read, not matched by pattern.
+SHARED = {
+    "sel": "the selected state, written by six components on their own class",
+    "w40": "a skeleton width, written by three components on their own line",
+    "w60": "a skeleton width, written by three components on their own line",
+    "w70": "a skeleton width, written by three components on their own line",
+    "w80": "a skeleton width, written by three components on their own line",
+}
+COMBINATOR = re.compile(r"\s*[>+~]\s*|\s+")
+PSEUDO = re.compile(r"::?[a-zA-Z-]+(?:\([^)]*\))?")
+
+
+def subjects_of(body):
+    """class -> the fewest other classes in any selector where it is the subject."""
+    found = {}
+    text = re.sub(r"/\*.*?\*/", "", re.sub(r"url\([^)]*\)", "", body), flags=re.S)
+    for m in re.finditer(r"([^{}]+)\{", text):
+        sel = m.group(1)
+        if sel.lstrip().startswith("@"):
+            continue
+        for one in sel.split(","):
+            one = one.strip()
+            if not one:
+                continue
+            depth = len(re.findall(r"\.(-?[_a-zA-Z][\w-]*)", PSEUDO.sub("", one))) - 1
+            last = PSEUDO.sub("", COMBINATOR.split(one)[-1])
+            for c in re.findall(r"\.(-?[_a-zA-Z][\w-]*)", last):
+                found[c] = min(found.get(c, 99), depth)
+    return found
+
+
+_CASCADE = [ln.split('"')[1][:-4] for ln in
+            (COMP / "index.css").read_text(encoding="utf-8").splitlines()
+            if ln.startswith("@import")]
+SUBJECTS = {}
+for _path in sorted(COMP.glob("*.css")):
+    if _path.stem in ("index", "tokens"):
+        continue
+    _css = _path.read_text(encoding="utf-8")
+    SUBJECTS[_path.stem] = subjects_of(_css[_css.index("*/") + 2:] if "*/" in _css else _css)
+OWNER = {}
+for _c in {c for d in SUBJECTS.values() for c in d}:
+    if _c in SHARED:
+        continue
+    OWNER[_c] = sorted(((d[_c], _CASCADE.index(f) if f in _CASCADE else 99, f)
+                        for f, d in SUBJECTS.items() if _c in d))[0][2]
+
+
 def parse_component(name):
     css = (COMP / (name + ".css")).read_text(encoding="utf-8")
     head = css[:css.index("*/") + 2] if "*/" in css else ""
@@ -179,14 +247,15 @@ def parse_component(name):
     roles = sorted({m for m in re.findall(r"var\((--[\w-]+)\)", body) if m in SEM})
     classes = sorted({c for c in re.findall(r"\.(-?[_a-zA-Z][\w-]*)", re.sub(r"url\([^)]*\)", "", body))})
     rules = len(re.findall(r"\{", body))
-    screens = sorted([p for p, cs in uv_classes.items() if cs & set(classes)])
+    owned = sorted(c for c in SUBJECTS.get(name, {}) if OWNER.get(c) == name)
+    screens = sorted([p for p, cs in uv_classes.items() if cs & set(owned)])
     states = []
     for m in re.finditer(r"([^{}\n][^{}]*)\{([^{}]*)\}", body):
         sel = " ".join(m.group(1).split())
         if STATE_PAT.search(sel) and not sel.startswith("@"):
             states.append((sel, m.group(2).strip()))
     return dict(css=css, body=body, roles=roles, classes=classes, rules=rules,
-                screens=screens, states=states)
+                screens=screens, owned=owned, states=states)
 
 
 # ---------------------------------------------------------------- sections ---
@@ -287,7 +356,7 @@ PAGE = """<!doctype html>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>{label}</h1>
     <p>{note}</p>
@@ -343,7 +412,7 @@ PAGE = """<!doctype html>
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/{name}.css</summary><pre>{css}</pre></details>
   </section>
-</div>
+</main>
 
 <script src="_frames.js"></script>
 <script src="_nav.js"></script>
@@ -550,7 +619,7 @@ hub = f"""<!doctype html>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>The system</h1>
     <p>Two levels of tokens and {len(built)} component files. The code lives in
@@ -584,7 +653,7 @@ hub = f"""<!doctype html>
     Missing any of the three means the component does not exist yet.</p>
     <div id="kitCards"></div>
   </section>
-</div>
+</main>
 
 <script>window.KIT_THUMBS = {json.dumps(thumbs)};</script>
 <script src="_nav.js"></script>
@@ -601,7 +670,7 @@ for name, c in built:
     inside = [s for s in SPECIMENS if name in s.get("also", [])]
     rows.append("| %s | %d | %s | %d | %d | %d |" % (
         name, len(mine), ", ".join(s["id"] for s in mine) or "-",
-        len(inside), len(c["classes"]), len(c["screens"])))
+        len(inside), len(c["owned"]), len(c["screens"])))
     for cls in c["classes"]:
         kind, why = where(cls)
         if kind:
@@ -635,8 +704,11 @@ for kind, title, blurb in ORDER:
 Generated by `ui-kit/_gen_component_pages.py`. Do not edit by hand.
 
 What each column means: **own** is how many specimens the component's page renders itself, **inside**
-is how many other specimens contain it and link to it instead of repeating it, **classes** is what the
-css file styles, **screens** is how many of the %d painted screens carry at least one of those classes.
+is how many other specimens contain it and link to it instead of repeating it, **classes** is how many classes the
+file OWNS (a class it styles with the fewest ancestors; a class it only reaches through someone
+else's belongs to that someone else), and **screens** is how many of the %d painted screens carry at
+least one of them. Counting every class a file merely mentions is what made this column read 76 for
+thirty-four of thirty-six components, a market-depth panel included.
 
 A component with 0 own specimens does not exist as far as the vitrine is concerned, and the build
 says so. No em dash.
@@ -658,7 +730,34 @@ that actually means. The Classes table on each component page shows the same ver
 """ % (len(uv_classes), "\n".join(rows), len(SPECIMENS), len(built), "\n".join(sections)),
     encoding="utf-8")
 
-print("built %d component pages + overview.html + _nav.js + _frames.js + docs/coverage.md" % len(built))
+# ------------------------------------------------- the css header line -------
+# The `Classes:` and `Stands on:` lines in each component file used to be prose
+# someone typed once. They said the truth and coverage.md said 76, and a reader
+# had no way to know which to believe. They are written from the same OWNER map
+# now, so there is one computation and two places that read it. Idempotent: the
+# line is replaced, never appended, and a file that carries neither is left alone
+# (base.css and course-chrome.css describe themselves in a sentence instead).
+hdr_written = 0
+for name, c in built:
+    path = COMP / (name + ".css")
+    text = path.read_text(encoding="utf-8")
+    if "*/" not in text:
+        continue
+    head, rest = text[:text.index("*/") + 2], text[text.index("*/") + 2:]
+    before = head
+    if "Classes:" in head:
+        head = re.sub(r"Classes:[^\n]*",
+                      "Classes: %s." % ", ".join("." + x for x in c["owned"]), head, count=1)
+    if "Stands on:" in head:
+        shown = ", ".join(c["screens"][:5]) + (", ..." if len(c["screens"]) > 5 else "")
+        head = re.sub(r"Stands on:[^\n]*",
+                      "Stands on: %d ui-visual screens (%s)" % (len(c["screens"]), shown or "none"),
+                      head, count=1)
+    if head != before:
+        path.write_text(head + rest, encoding="utf-8")
+        hdr_written += 1
+
+print("built %d component pages + overview.html + _nav.js + _frames.js + docs/coverage.md, %d css headers" % (len(built), hdr_written))
 missing = [n for n, _ in built if not any(s["component"] == n for s in SPECIMENS)]
 if missing:
     print("no specimen of its own:", ", ".join(missing))

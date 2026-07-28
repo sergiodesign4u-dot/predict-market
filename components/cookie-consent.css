@@ -1,5 +1,5 @@
 /* components/cookie-consent.css
-   Component: cookie-consent. Classes: .cc-actions, .cc-banner, .cc-btn, .cc-cat, .cc-cat-desc, .cc-cat-main, .cc-cat-name, .cc-cats, .cc-inner, .cc-manage, .cc-note, .cc-page, .cc-ph, .cc-ph-line and 2 more.
+   Component: cookie-consent. Classes: .cc-actions, .cc-banner, .cc-btn, .cc-cat, .cc-cat-desc, .cc-cat-main, .cc-cat-name, .cc-cats, .cc-inner, .cc-manage, .cc-note, .cc-page, .cc-ph, .cc-ph-line, .cc-policy, .cc-text, .w90.
 
    Reads: --bg-card-quiet, --bg-control, --bg-control-hover, --border-hairline, --color-action, --edge-groove-light, --glow-brass, --line-brass-soft, --shadow-ink, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/cookie-consent.html
@@ -7,7 +7,7 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .app-case .cc-ph{display:flex;flex-direction:column;gap:var(--space-8);opacity:.5}
-.app-case .cc-ph-line{height:var(--space-12);border-radius:var(--radius-6);background:var(--bg-control)}
+.app-case .cc-ph-line{height:var(--size-12);border-radius:var(--radius-6);background:var(--bg-control)}
 .app-case .cc-ph-line.w90{width:90%}
 .app-case .cc-ph-line.w80{width:80%}
 .app-case .cc-ph-line.w60{width:60%}

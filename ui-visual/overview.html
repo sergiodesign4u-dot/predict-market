@@ -2,9 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
    A frame is a document of its own, so it does not inherit the attribute: this
    block runs in the frames too and they are told by postMessage, the same
@@ -36,6 +33,9 @@ setTimeout(wire,0);
 var f=document.getElementsByTagName('iframe');
 for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
 push();});})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - UI screens</title>
 <link rel="stylesheet" href="../components/index.css">
@@ -179,7 +179,7 @@ push();});})();</script>
     </div>
   </aside>
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>The painted screens</h1>
     <p>Every screen of the product in the Vault visual system: 13 families, 76 pages,
@@ -372,7 +372,7 @@ push();});})();</script>
       <a href="toasts.html" title="toasts.html">toasts</a>
     </div>
   </section>
-</div>
+</main>
 
 <script>
 (function () {

@@ -26,7 +26,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
   `UV` = added only in the color layer (not in the grey
   wireframes) and so documented from the painted screens + `DESIGN.md`. Both belong in the kit.
 - **Photo** column: `-` none, `event` real event/news image, `portrait` a person, `art` decorative
-  brand/trust art (shipped as webp/jpg in `ui-visual/assets/`). Feeds Step 04 (visuals).
+  brand/trust art (shipped as webp/jpg in `assets/`). Feeds Step 04 (visuals).
 - **Kit** column: `+` a live sample renders in `ui-kit/kit.html`; `~` a base/related sample renders
   but this variant or state is not shown; `-` no sample yet (a Step-2 gap).
 
@@ -36,8 +36,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 1. Navigation and chrome
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | App header (lean) | `header.css` | [header](../header.html) | all header screens (feed, category, detail, active-bets, notifications, wallet, profile, how-it-works) | logged-in / logged-out; rest / `.scrolled` (condensed) | 87 | WF | - | + |
 | Logo (Events home) | `header.css` | [header](../header.html) | every header screen | default | 87 | WF | - | + |
 | Balance / Portfolio-Cash swap | `header.css` | [header](../header.html) | logged-in header | swap Portfolio <-> Cash; "+" opens Deposit | 53 | WF | - | + |
@@ -56,8 +56,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 2. Browse: feed and cards
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Two-stone plate / surface system (`.cat-layout`, `.feed-inner` inset plates, notched brass frames, groove edges, trust-column watermark `card::after`) | `catnav.css`, `feed.css`, `card.css` | [catnav](../catnav.html), [feed](../feed.html), [card](../card.html) | every color page (the substrate) | - | - | UV | art | + |
 | Event card, binary (treatment B) | `card.css` | [card](../card.html) | feed, category, favorites, event-feed-push | rest / hover | 36 | WF | event | + |
 | Event card, multi (treatment D) | `card.css` | [card](../card.html) | feed, category, event-detail, favorites | rest; 2 leading options | 20 | WF | event | + |
@@ -77,14 +77,14 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 3. Event Detail
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Two-plate layout (`.ed-layout`: content + sticky bet panel) | `event-detail.css` | [event-detail](../event-detail.html) | event-detail, event-detail-bet | binary / multi | 10 | WF | - | + |
 | Event head (`.ed-head`: thumb, category, question, big prob, thin `.ed-oddsbar`, actions) | `event-detail.css`, `oddsbar.css` | [event-detail](../event-detail.html), [oddsbar](../oddsbar.html) | event-detail (+ bet variants) | binary / multi | 11 | WF | event | + |
 | Bet panel (`.bet-panel`: `.bp-dir` filled-selected side, amount, quick chips, payout line, Confirm) | `betpanel.css` | [betpanel](../betpanel.html) | event-detail (+ bet variants) | intent / insufficient / reconcile / processing / error / resolved | 10-36 | WF | - | + |
 | Bet dock (mobile sticky, `.bet-dock`) | `betpanel.css` | [betpanel](../betpanel.html) | event-detail | collapsed -> expand to confirm | 8 | WF | - | + |
 | Multi outcome list (`.opt-list` + "pick an outcome") | `options.css` | [options](../options.html) | event-detail-multi | selected marked (`.sel`), Change link | 2 | WF | - | + |
-| Price chart (`.ed-chart` SVG plot + y/x axis + `.ed-range` switcher; multi adds `.ml-line` legend) | `chart.css`, `tabs.css` | [chart](../chart.html), [tabs](../tabs.html) | event-detail (+ bet variants) | binary / multi / range | 11 | WF/UV | - | + |
+| Price chart (`.ed-chart` SVG plot + y/x axis + `.ed-range` switcher; multi adds `.ml-line` legend) | `tabs.css`, `chart.css` | [tabs](../tabs.html), [chart](../chart.html) | event-detail (+ bet variants) | binary / multi / range | 11 | WF/UV | - | + |
 | Facts strip (`.ed-facts`) | `event-detail.css` | [event-detail](../event-detail.html) | event-detail | default | 9 | WF | - | + |
 | Why-this-price arguments (`.args`: YES col / NO col) | `event-detail.css` | [event-detail](../event-detail.html) | event-detail | default | 18 | WF | - | + |
 | Resolution block (`.resolution`, `.ed-rules` tabs) | `event-detail.css` | [event-detail](../event-detail.html) | event-detail | default / resolved | 18 | WF | - | + |
@@ -100,8 +100,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 4. Forms, dialogs and inputs
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Shared dialog shell (`dialog.app-dialog`, stone-plate material) | `dialog.css` | [dialog](../dialog.html), [outcome-dialog](../outcome-dialog.html), [signin](../signin.html) | every page (emitted in shell) | open / close (backdrop, Esc); modal (desktop) / sheet (mobile) | 104 | WF/UV | - | ~ |
 | Provider buttons (Google / X / Apple, real brand marks) | `button.css` | [button](../button.html) | Sign In dialog + sign-in pages | rest / hover | 104 | WF/UV | - | + |
 | Amount field + quick-amount chips | `input.css` | [input](../input.html) | Deposit dialog + deposit pages | rest / selected / focus | 104 | WF | - | + |
@@ -120,8 +120,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 5. Feedback and states
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | State block (`.state-block`: icon + title + message + action) | `state-block.css` | [state-block](../state-block.html) | feed, category, detail, active-bets, notifications, wallet, profile, 404, 500, maintenance | empty / error | 38 | WF | - | + |
 | Skeleton cards / lines (`.card.skeleton` / `.pos.skeleton` shimmer) | `card.css`, `position.css` | [card](../card.html), [position](../position.html) | feed, category, detail, active-bets, notifications, wallet, profile | loading | 19 | WF/UV | - | ~ |
 | Empty list (`.pos-list` empty variant) | `position.css` | [position](../position.html) | active-bets, favorites, notifications | empty | 3 | WF | - | + |
@@ -134,12 +134,12 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 6. Profile and account (REDESIGNED in color - the whole cluster)
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Identity row (`.idrow`: ringed 72px avatar `.av`, name, handle, Edit pill) | `profile.css` | [profile](../profile.html) | my-profile, public-profile | own (Edit) / read-only | 2 | WF/UV | portrait | + |
 | Section divider (`p.pos-status`, brass tick) | `position.css` | [position](../position.html) | my-profile, public-profile | default | 2 | UV | - | + |
 | Reputation stat-grid (Track record: tiles, brass win-rate hero tile) | `profile.css` | [profile](../profile.html) | my-profile, public-profile | default | 2 | WF/UV | - | + |
-| Profile tabs (`.ptabs` CSS-only radio: Track record / Past wins / Resolved) | `profile.css` | [profile](../profile.html) | my-profile, public-profile | per-tab active, focus ring | 2 | WF/UV | - | + |
+| Profile tabs (`.ptabs` CSS-only radio: Track record / Past wins / Resolved) | `tabs.css` | [tabs](../tabs.html) | my-profile, public-profile | per-tab active, focus ring | 2 | WF/UV | - | + |
 | Share-card gallery (`.gallery` horizontal rail of win cards) | `profile.css` | [profile](../profile.html) | my-profile, public-profile | populated | 7 | WF/UV | art / generated | + |
 | Resolved-predictions history (`.pos-side.pos-won` green / `.pos-lost` red) | `position.css` | [position](../position.html) | my-profile, public-profile, active-bets-history | list / empty | 4+ | WF/UV | - | + |
 | Portfolio summary (`.pos` 3-figure grid: total / cash / in-play + inline CTA) | `position.css` | [position](../position.html) | my-profile, wallet | default | 3 | WF/UV | - | + |
@@ -149,8 +149,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 7. Footer
 
-| Component | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Product footer (brand, markets, product, support, company, legal) | `footer.css` | [footer](../footer.html) | every footer screen | default | 87 | WF | - | + |
 | Footer trust strip ("Built on trust" cards, gold art bleed) | `trustbar.css` | [trustbar](../trustbar.html) | every footer screen | default | 87 | WF/UV | art | + |
 | Social icon row (`.social-row`) | `footer.css` | [footer](../footer.html) | footer | rest / hover | 87 | WF | - | + |
@@ -198,7 +198,13 @@ of the shipped product: whole screen families (Profile/account, Win/Loss, the de
 tabs) never made it into the kit because the kit was built at the Event-Feed stage and the rest
 shipped straight into `ui-visual/`. The `+ / ~ / -` column above is the gap. Grouped by build
 priority for Step 2 (add the `-` and finish the `~`, each new sample sourced from the already
-shipped `ui-visual/` page, values through `kit.css` variables, markup into `kit.html`):
+shipped `ui-visual/` page, values through `kit.css` variables, markup into `kit.html`).
+
+> **This section is a record of Step 2 and its paths are historical.** `kit.css` was deleted in step
+> 7 and `kit.html` was frozen in the same pass: no component is added to it any more. Since step 4
+> a component is a css file in `components/`, a page in `ui-kit/`, an entry in `ui-kit/_nav.js` and
+> a row in the table above. Read what follows as "how the vitrine caught up with the product in July
+> 2026", not as instructions.
 
 1. **Profile / account cluster (group 6)** - DONE (2026-07-23). Added a `#profile` vitrine section:
    identity row, portfolio summary, the CSS-only Track record / Past wins / Resolved tabs (the tab

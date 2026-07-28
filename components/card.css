@@ -1,7 +1,7 @@
 /* components/card.css
    Component: card. Classes: .bookmark-btn, .card, .card-body, .m-label, .m-val, .meta, .meta-txt, .prob, .prob-line, .q, .thumb, .top, .top-txt, .why.
 
-   Reads: --bevel-faint, --bevel-hair-soft, --bevel-lo, --bevel-xs, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-surface, --border-brass, --border-hairline, --color-action, --edge-groove-light, --edge-shade, --edge-shade-strong, --icon-brass, --icon-quiet, --mask-mid, --mask-solid, --outcome-no-figure, --outcome-yes-text, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grid, --text-brass, --text-muted, --text-primary
+   Reads: --bevel-faint, --bevel-hair, --bevel-lo, --bevel-xs, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-surface, --border-brass, --border-hairline, --color-action, --edge-groove-light, --edge-shade, --edge-shade-strong, --icon-brass, --icon-quiet, --mask-mid, --mask-solid, --outcome-no-figure, --outcome-yes-text, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grid, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/card.html
    Stands on: 24 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -21,22 +21,10 @@
 .card > *{position:relative;z-index:var(--z-content)}
 .card .card-body{display:flex;flex-direction:column;flex:1 1 auto;padding:var(--space-12) var(--space-12) var(--space-8)}
 .thumb{width:var(--size-56);height:var(--size-56);flex:0 0 var(--size-56);border:1px solid var(--border-hairline);background-size:cover;background-position:center;color:transparent;font-size:0}
-.grid > .card:nth-of-type(1) .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
-.grid > .card:nth-of-type(2) .thumb{background-image:url(../ui-visual/assets/event-crypto.jpg)}
-.grid > .card:nth-of-type(3) .thumb{background-image:url(../ui-visual/assets/event-culture.jpg)}
-.grid > .card:nth-of-type(4) .thumb{background-image:url(../ui-visual/assets/event-general.jpg)}
-.grid > .card:nth-of-type(5) .thumb{background-image:url(../ui-visual/assets/event-crypto.jpg)}
-.grid > .card:nth-of-type(6) .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
-.grid > .card:nth-of-type(7) .thumb{background-image:url(../ui-visual/assets/event-general.jpg)}
-.grid > .card:nth-of-type(8) .thumb{background-image:url(../ui-visual/assets/event-culture.jpg)}
-.grid > .card:nth-of-type(9) .thumb{background-image:url(../ui-visual/assets/event-crypto.jpg)}
-.grid > .card:nth-of-type(10) .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
-.grid > .card:nth-of-type(11) .thumb{background-image:url(../ui-visual/assets/event-culture.jpg)}
-.grid > .card:nth-of-type(12) .thumb{background-image:url(../ui-visual/assets/event-general.jpg)}
-.cat-politics .grid > .card .thumb{background-image:url(../ui-visual/assets/event-politics.jpg)}
-.cat-crypto .grid > .card .thumb{background-image:url(../ui-visual/assets/event-crypto.jpg)}
-.cat-culture .grid > .card .thumb{background-image:url(../ui-visual/assets/event-culture.jpg)}
-.cat-general .grid > .card .thumb{background-image:url(../ui-visual/assets/event-general.jpg)}
+/* The sixteen rules that used to sit here said which of the twelve feed cards shows which
+   photograph, keyed on :nth-of-type. That is not styling, it is the content of a screen, and the
+   system's own rule already names the event photograph as one of the three things that belong on
+   the element. So it is there now, and this file describes the frame the photograph sits in. */
 .card .q,.card a.q{font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-13);line-height:var(--leading-tight);letter-spacing:-.02em;color:var(--text-primary)}
 .card a.q:hover{color:var(--text-brass);text-decoration:none}
 .why{color:var(--text-muted);font-size:var(--text-13);min-height:35px;margin-bottom:var(--space-12)}
@@ -52,15 +40,17 @@
 .card .bookmark-btn .ic:has(use){color:var(--icon-quiet)}
 .card .bookmark-btn:hover .ic:has(use){color:var(--icon-brass)}
 .card .bookmark-btn[aria-pressed="true"] .ic:has(use){color:var(--icon-brass)}
-.bookmark-btn:focus-visible,.card .q:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
+/* The 44px box is unconditional above, so this block is not a touch-target rule any more: what is
+   left is a narrow-screen layout fact, the enlarged button pulled tighter into the meta row. It
+   stays on a width query for that reason, and its raw -8px went onto the grid. */
 @media(max-width:640px){
-  .card .bookmark-btn{min-width:var(--control-44);min-height:var(--control-44);display:inline-flex;align-items:center;justify-content:center;margin:-8px -8px -8px 0}
+  .card .bookmark-btn{margin:calc(var(--space-8) * -1) calc(var(--space-8) * -1) calc(var(--space-8) * -1) 0}
 }
 .card::before{content:'';position:absolute;inset:0;width:auto;height:auto;z-index:var(--z-under);pointer-events:none;opacity:1;background-color:transparent;background-repeat:repeat;background-size:auto;background-image:var(--surface-grid)}
 .thumb{border-color:var(--border-brass)}
-.card{background-color:var(--bg-card);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-xs),inset 1px 0 0 var(--bevel-hair-soft),inset -1px 0 0 var(--edge-shade),inset 0 -1px 0 var(--edge-shade-strong),0 16px 30px -18px var(--shadow-ink-85),0 5px 12px -6px var(--shadow-ink-60);transition:transform .28s var(--ease-out),box-shadow .28s var(--ease-out)}
+.card{background-color:var(--bg-card);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-xs),inset 1px 0 0 var(--bevel-hair),inset -1px 0 0 var(--edge-shade),inset 0 -1px 0 var(--edge-shade-strong),0 16px 30px -18px var(--shadow-ink-85),0 5px 12px -6px var(--shadow-ink-60);transition:transform var(--dur-slower) var(--ease-out),box-shadow var(--dur-slower) var(--ease-out)}
 .card:hover{transform:translateY(-3px);box-shadow:inset 0 1px 0 var(--bevel-lo),inset 0 -1px 0 var(--edge-shade-strong),0 26px 44px -20px var(--shadow-ink-85),0 10px 18px -8px var(--shadow-ink-72)}
-.card::after{content:'';display:block;position:absolute;left:-52px;bottom:0;width:168px;height:78%;z-index:var(--z-under);pointer-events:none;opacity:.20;background:url("../ui-visual/assets/trust-column-full.webp") no-repeat center bottom;background-size:contain;-webkit-mask-image:linear-gradient(to right,var(--mask-solid) 44%,transparent 94%);mask-image:linear-gradient(to right,var(--mask-solid) 44%,transparent 94%)}
+.card::after{content:'';display:block;position:absolute;left:-52px;bottom:0;width:168px;height:78%;z-index:var(--z-under);pointer-events:none;opacity:.20;background:url("../assets/trust-column-full.webp") no-repeat center bottom;background-size:contain;-webkit-mask-image:linear-gradient(to right,var(--mask-solid) 44%,transparent 94%);mask-image:linear-gradient(to right,var(--mask-solid) 44%,transparent 94%)}
 .card .card-body{position:relative;z-index:var(--z-content)}
 .card::before{background-position:0 -10px;-webkit-mask-image:linear-gradient(to bottom left,var(--mask-solid) 0%,var(--mask-mid) 24%,transparent 56%);mask-image:linear-gradient(to bottom left,var(--mask-solid) 0%,var(--mask-mid) 24%,transparent 56%)}
 .card .meta{border-top:1px solid var(--shadow-ink-45);box-shadow:inset 0 1px 0 var(--bevel-faint);margin-top:auto}
@@ -71,7 +61,7 @@
 .card .top-txt .why{margin:0}
 .thumb{border-radius:var(--radius-6)}
 @media(prefers-reduced-motion:reduce){
-  .card{transition:box-shadow .2s}
+  .card{transition:box-shadow var(--dur-base)}
   .card:hover{transform:none}
 }
 .app-case .ed-main>.card{background:none;border:0;box-shadow:none;border-radius:0;overflow:visible;transition:none}

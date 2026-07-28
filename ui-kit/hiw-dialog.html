@@ -46,13 +46,13 @@ push();});})();</script>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>How-it-works dialog</h1>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/hiw-dialog.css</span>
-      <span class="tk-badge">39 rules</span>
+      <span class="tk-badge">38 rules</span>
       <span class="tk-badge">18 classes</span>
       <span class="tk-badge">76 screens</span>
     </div>
@@ -71,7 +71,7 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.hiw-close:focus-visible,.hiw-full:focus-visible</td><td class='ck-decl'>outline:2px solid var(--text-brass);outline-offset:2px</td></tr><tr><td class='tk-role'>.app-dialog.hiw-dialog .hiw-close:hover</td><td class='ck-decl'>background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)</td></tr><tr><td class='tk-role'>.app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow</td><td class='ck-decl'>transform:translateX(3px)</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.app-dialog.hiw-dialog .hiw-close:hover</td><td class='ck-decl'>background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)</td></tr><tr><td class='tk-role'>.app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow</td><td class='ck-decl'>transform:translateX(3px)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
@@ -101,7 +101,7 @@ push();});})();</script>
     <p class="tk-note">To change this component, edit <code>components/hiw-dialog.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/hiw-dialog.css</summary><pre>/* components/hiw-dialog.css
-   Component: hiw-dialog. Classes: .hiw-arrow, .hiw-body, .hiw-close, .hiw-dialog, .hiw-faq, .hiw-full, .hiw-glow, .hiw-head, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-lead, .hiw-sec and 2 more.
+   Component: hiw-dialog. Classes: .hiw-arrow, .hiw-body, .hiw-close, .hiw-dialog, .hiw-faq, .hiw-full, .hiw-glow, .hiw-head, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-sec, .hiw-sec-txt, .hiw-tagline.
 
    Reads: --bg-control, --bg-dialog-head-from, --bg-plate-to, --border-hairline, --color-action, --color-action-lit, --line-on-photo, --line-on-photo-hover, --mask-solid, --scrim-photo, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong
    Stand:  ui-kit/hiw-dialog.html
@@ -118,7 +118,6 @@ dialog.app-dialog .hiw-sec dl{margin:0}
 dialog.app-dialog .hiw-sec dt{font-size:var(--text-13);font-weight:var(--weight-bold);margin:var(--space-8) 0 var(--space-2)}
 dialog.app-dialog .hiw-sec dd{font-size:var(--text-13);line-height:var(--leading-base);margin:0}
 dialog.app-dialog .hiw-full{display:block;box-sizing:border-box;padding:var(--space-12);font-size:var(--text-14);font-weight:var(--weight-bold);text-align:center;text-decoration:none}
-.hiw-close:focus-visible,.hiw-full:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 dialog.app-dialog .hiw-full{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);border-radius:var(--radius-10)}
 .app-dialog.hiw-dialog{max-width:var(--container-dialog);overflow:clip}
 .app-dialog.hiw-dialog .hiw-close{position:absolute;top:12px;right:12px;z-index:var(--z-close);width:var(--control-32);height:var(--control-32);display:flex;align-items:center;justify-content:center;padding:0;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
@@ -132,7 +131,7 @@ dialog.app-dialog .hiw-full{background:linear-gradient(135deg,var(--color-action
 .app-dialog.hiw-dialog .hiw-tagline{margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-primary);max-width:32ch}
 .app-dialog.hiw-dialog .hiw-body{padding:var(--space-20) var(--space-20) var(--space-20);display:flex;flex-direction:column;gap:var(--space-16)}
 .app-dialog.hiw-dialog .hiw-sec{display:flex;gap:var(--space-12);align-items:flex-start}
-.app-dialog.hiw-dialog .hiw-ic{flex:0 0 var(--space-32);width:var(--space-32);height:var(--space-32);display:flex;align-items:center;justify-content:center;border-radius:var(--radius-10);background:color-mix(in oklab,var(--color-action) 16%,var(--bg-control));border:1px solid color-mix(in oklab,var(--color-action) 30%,var(--border-hairline))}
+.app-dialog.hiw-dialog .hiw-ic{flex:0 0 var(--size-32);width:var(--size-32);height:var(--size-32);display:flex;align-items:center;justify-content:center;border-radius:var(--radius-10);background:color-mix(in oklab,var(--color-action) 16%,var(--bg-control));border:1px solid color-mix(in oklab,var(--color-action) 30%,var(--border-hairline))}
 .app-dialog.hiw-dialog .hiw-ic .ic{width:var(--icon-18);height:var(--icon-18);stroke:var(--text-brass)}
 .app-dialog.hiw-dialog .hiw-sec-txt{flex:1;min-width:0}
 .app-dialog.hiw-dialog .hiw-label{display:block;font-family:var(--font-display);font-size:var(--text-14);font-weight:var(--weight-bold);letter-spacing:-.02em;text-transform:none;color:var(--text-primary);margin:0 0 var(--space-4)}
@@ -153,7 +152,7 @@ dialog.app-dialog .hiw-full{background:linear-gradient(135deg,var(--color-action
 .app-case .hiw-sec&gt;:is(h2,h3){font-size:var(--text-18);font-weight:var(--weight-bold);margin:var(--space-20) 0}
 </pre></details>
   </section>
-</div>
+</main>
 
 <script src="_frames.js"></script>
 <script src="_nav.js"></script>

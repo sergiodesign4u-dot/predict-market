@@ -1,9 +1,9 @@
 /* components/position.css
-   Component: position. Classes: .pos, .pos-fig, .pos-figures, .pos-list, .pos-lost, .pos-no, .pos-note, .pos-q, .pos-side, .pos-top, .pos-won, .pos-yes.
+   Component: position. Classes: .pos, .pos-fig, .pos-figures, .pos-list, .pos-lost, .pos-no, .pos-note, .pos-q, .pos-record, .pos-side, .pos-top, .pos-won, .pos-yes, .skeleton.
 
    Reads: --bg-card-quiet, --bg-control, --border-hairline, --color-action, --edge-groove-light, --outcome-no-fill, --outcome-no-line, --outcome-no-text, --outcome-yes-fill, --outcome-yes-line, --outcome-yes-text, --result-lost-fill, --result-lost-line, --result-lost-text, --result-won-fill, --result-won-line, --result-won-text, --shadow-ink, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/position.html
-   Stands on: 23 ui-visual screens (active-bets-history-loading.html, active-bets-history.html, active-bets-loading.html, active-bets.html, event-detail-bet-error.html, ...)
+   Stands on: 28 ui-visual screens (active-bets-history-loading.html, active-bets-history.html, active-bets-loading.html, active-bets.html, event-detail-bet-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .pos-list{display:flex;flex-direction:column}
@@ -31,14 +31,14 @@
 .app-case .pos-figures{gap:var(--space-20);color:var(--text-muted);font-size:var(--text-10);text-transform:uppercase;letter-spacing:.05em}
 .app-case .pos-fig b{font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-primary);font-weight:var(--weight-semibold);letter-spacing:0;text-transform:none;margin-top:var(--space-4)}
 .app-case .pos.skeleton{gap:var(--space-8)}
-.app-case .pos[aria-label="Track record"]{background:none;border:0;box-shadow:none;padding:0;gap:0}
-.app-case .pos[aria-label="Track record"] .pos-figures{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-8);margin:0;font-size:var(--text-10);letter-spacing:.06em}
-.app-case .pos[aria-label="Track record"] .pos-fig{background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-12) var(--space-12);gap:var(--space-4);color:var(--text-muted)}
-.app-case .pos[aria-label="Track record"] .pos-fig b{font-family:var(--font-mono);font-size:var(--text-20);color:var(--text-primary);font-weight:var(--weight-semibold);margin-top:var(--space-2);letter-spacing:0;text-transform:none}
-.app-case .pos[aria-label="Track record"] .pos-fig:nth-child(2){border-color:color-mix(in oklab,var(--color-action) 42%,var(--border-hairline));background:linear-gradient(150deg,color-mix(in oklab,var(--color-action) 15%,var(--bg-control)),var(--bg-control) 74%)}
-.app-case .pos[aria-label="Track record"] .pos-fig:nth-child(2) b{color:var(--text-brass);font-size:var(--text-24)}
+.app-case .pos-record{background:none;border:0;box-shadow:none;padding:0;gap:0}
+.app-case .pos-record .pos-figures{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-8);margin:0;font-size:var(--text-10);letter-spacing:.06em}
+.app-case .pos-record .pos-fig{background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-12) var(--space-12);gap:var(--space-4);color:var(--text-muted)}
+.app-case .pos-record .pos-fig b{font-family:var(--font-mono);font-size:var(--text-20);color:var(--text-primary);font-weight:var(--weight-semibold);margin-top:var(--space-2);letter-spacing:0;text-transform:none}
+.app-case .pos-record .pos-fig:nth-child(2){border-color:color-mix(in oklab,var(--color-action) 42%,var(--border-hairline));background:linear-gradient(150deg,color-mix(in oklab,var(--color-action) 15%,var(--bg-control)),var(--bg-control) 74%)}
+.app-case .pos-record .pos-fig:nth-child(2) b{color:var(--text-brass);font-size:var(--text-24)}
 @media(min-width:520px){
-  .app-case .pos[aria-label="Track record"] .pos-figures{grid-template-columns:repeat(4,1fr)}
+  .app-case .pos-record .pos-figures{grid-template-columns:repeat(4,1fr)}
 }
 .app-case .pos[aria-label="Portfolio summary"] .pos-figures{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-12)}
 .app-case .ed-panel-activity .pos-note{margin:0 0 var(--space-8)}

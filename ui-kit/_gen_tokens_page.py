@@ -479,7 +479,7 @@ HTML = f"""<!doctype html>
 <body data-kit-page="tokens">
 {SIDEBAR}
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>Tokens</h1>
     <p>Two levels. <b>Primitive</b> is a raw value with no opinion: a graphite step, a brass step, a
@@ -687,7 +687,7 @@ HTML = f"""<!doctype html>
     The focus ring is real (30-plus selectors read the brass text role for it) but it does not get its own
     role here. Focus and the component states belong to the Design System stage, in both themes at once.</p>
   </section>
-</div>
+</main>
 
 <script>
 (function(){{

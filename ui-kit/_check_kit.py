@@ -228,10 +228,17 @@ for page in sorted(UV.glob("*.html")):
 check("9 no screen styles an element", not styled, "%d: %s" % (len(styled), "; ".join(styled[:3])))
 check("9 every screen links the system", not wrong_link,
       "%d: %s" % (len(wrong_link), "; ".join(wrong_link[:3])))
-gone_kit = [str(p.relative_to(ROOT)) for p in
+# Three stylesheets have been deleted across this stage: kit.css (the flat kit the
+# system was read out of), and _theme.css with _theme-vault.css (the colour layer
+# step 5 replaced). This check named only the first, and kit.css was already gone
+# when it was written, so it could not fail and it guarded nothing. It names all
+# three now, which is the only version of it that is a test.
+DEAD_SHEETS = ("kit.css", "_theme.css", "_theme-vault.css")
+gone_kit = ["%s -> %s" % (p.relative_to(ROOT), d) for p in
             list(ROOT.glob("*/*.html")) + list(ROOT.glob("*/*.css"))
-            if 'href="kit.css"' in p.read_text(encoding="utf-8", errors="ignore")]
-check("9 nothing loads the flat kit", not gone_kit, ", ".join(gone_kit))
+            for d in DEAD_SHEETS
+            if ('href="%s"' % d) in p.read_text(encoding="utf-8", errors="ignore")]
+check("9 nothing loads a deleted sheet", not gone_kit, ", ".join(gone_kit))
 
 # 10 --------------------------------------------------- the product navigates --
 # The colour pass shipped with every product link flattened to "#": the painted
@@ -402,6 +409,67 @@ frame_missing = [p.name for p in sorted(framed)
 check("13 every frame follows", not frame_missing,
       "%d of %d framed pages without boot: %s"
       % (len(frame_missing), len(framed), ", ".join(frame_missing[:3])))
+
+# 12 ------------------------------------------- a distance is not a measurement --
+# The other half of "no raw scale value". tokens.css says a --space-* step is the
+# distance BETWEEN things and that the size OF a thing is --size-*, --control-* or
+# --icon-*; the rule was written in step 6 and fifty-seven declarations broke it,
+# because the measurement scale shipped with two steps and the product needed ten.
+# A var() is invisible to the raw-value check, so this is the only place it shows.
+MEASURE = re.compile(r"(?<![\w-])(width|height|min-width|min-height|max-width|max-height"
+                     r"|flex|flex-basis)\s*:[^;{}]*?var\(--space-\d+\)")
+space_as_size = []
+for path in sorted(COMP.glob("*.css")):
+    if path.stem == "tokens":
+        continue
+    for i, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if MEASURE.search(line):
+            space_as_size.append("%s:%d" % (path.name, i))
+check("12 a distance is not a size", not space_as_size,
+      "%d: %s" % (len(space_as_size), ", ".join(space_as_size[:4])))
+
+# 16 ------------------------------------------------------- the css parses --
+# Added because this pass shipped a broken declaration and no gate saw it. A note
+# was appended to a token WITHOUT its comment markers, which put bare prose inside
+# the :root block; the browser dropped every declaration after it, and the whole
+# NO side of the outcome palette rendered transparent on twenty-eight screens. A
+# snapshot at five widths caught it. That is the right last line of defence and
+# the wrong first one, because it costs two browser runs and this costs nothing.
+DECL = re.compile(r"^\s*(?:--)?[-a-zA-Z*][\w-]*\s*:")
+parse_bad = []
+for path in sorted(COMP.glob("*.css")):
+    body = re.sub(r"/\*.*?\*/", "", path.read_text(encoding="utf-8"), flags=re.S)
+    for block in re.finditer(r"\{([^{}]*)\}", body):
+        for part in block.group(1).split(";"):
+            if part.strip() and not DECL.match(part):
+                parse_bad.append("%s: %s" % (path.name, " ".join(part.split())[:40]))
+check("16 every declaration parses", not parse_bad,
+      "%d: %s" % (len(parse_bad), "; ".join(parse_bad[:3])))
+
+# 15 -------------------------------------------------------------- headings --
+# One h1 per screen and no skipped level, in BOTH trees. Structure is owned by
+# wireframes/ and the colour copy follows, so a check that reads only the painted
+# tree can pass while the thing it is a copy OF is wrong: that is exactly how the
+# grey tree kept an h1-to-h3 jump on 46 pages after step 7b fixed the paint.
+# The two Event Detail loading skeletons carry no h1 on purpose. A skeleton has no
+# question yet, and inventing a heading is inventing copy.
+NO_H1 = {"event-detail-loading.html", "event-detail-logged-out-loading.html"}
+head_bad = []
+for tree in ("wireframes", "ui-visual"):
+    for page in sorted((ROOT / tree).glob("*.html")):
+        src = page.read_text(encoding="utf-8")
+        n1 = len(re.findall(r"<h1[ >]", src))
+        want = 0 if page.name in NO_H1 else 1
+        if n1 != want:
+            head_bad.append("%s/%s h1=%d" % (tree, page.name, n1))
+        prev = 0
+        for lvl in [int(m.group(1)) for m in re.finditer(r"<h([1-6])[ >]", src)]:
+            if prev and lvl > prev + 1:
+                head_bad.append("%s/%s h%d after h%d" % (tree, page.name, lvl, prev))
+                break
+            prev = lvl
+check("15 one h1, no skipped level", not head_bad,
+      "%d: %s" % (len(head_bad), ", ".join(head_bad[:4])))
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:

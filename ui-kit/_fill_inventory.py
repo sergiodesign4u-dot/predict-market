@@ -122,18 +122,28 @@ def main():
         lines = fh.read().splitlines()
     owner = class_owner()
     pages = {f[:-5] for f in os.listdir(KIT) if f.endswith(".html")}
-    out, filled, dashed = [], 0, 0
+    out, filled, dashed, header_width = [], 0, 0, 0
     for line in lines:
         if not (line.startswith("|") and line.count("|") >= 7):
             out.append(line)
             continue
         cells = [c.strip() for c in line.strip("|").split("|")]
         if cells[0] == "Component":
+            # Strip every pair a previous run added, then add one back. Without this
+            # the header grew by two cells per run while the data rows below it did
+            # not (they have their own strip), so after seven runs every table in the
+            # document had a 21-cell header over 9-cell rows and none of them
+            # rendered. A generator that is not idempotent on ALL of its row kinds is
+            # not idempotent.
+            while len(cells) >= 3 and cells[1] == "CSS file" and cells[2] == "Page":
+                cells = cells[:1] + cells[3:]
             cells = cells[:1] + ["CSS file", "Page"] + cells[1:]
+            header_width = len(cells)
             out.append("| " + " | ".join(cells) + " |")
             continue
         if set(cells[0]) <= set("-: "):
-            out.append("| " + " | ".join(["---"] * (len(cells) + 2)) + " |")
+            # rebuilt from the header just written, never grown from its own last state
+            out.append("| " + " | ".join(["---"] * header_width) + " |")
             continue
         # drop every pair a previous run added, then add one back. It loops because a
         # run that failed to recognise its own output once left two pairs behind.

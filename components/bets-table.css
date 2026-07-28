@@ -1,5 +1,5 @@
 /* components/bets-table.css
-   Component: bets-table. Classes: .act-list, .act-row, .act-time, .act-txt, .hold-amt, .hold-col, .hold-cols, .hold-name, .hold-out, .hold-rank, .hold-row, .lg-item, .ptable, .you.
+   Component: bets-table. Classes: .act-list, .act-row, .act-time, .act-txt, .hold-amt, .hold-col, .hold-cols, .hold-name, .hold-out, .hold-rank, .hold-row, .lg-item, .ptable.
 
    Reads: --border-hairline, --edge-groove-dark, --outcome-no-figure, --outcome-yes-text, --text-brass, --text-muted, --text-primary, --tint-brass-09
    Stand:  ui-kit/bets-table.html
@@ -7,10 +7,10 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .hold-cols{display:flex;gap:var(--space-12)}
-.hold-col h4{margin:0 0 var(--space-4)}
+.hold-col h3{margin:0 0 var(--space-4)}
 .hold-row{display:flex;align-items:center;gap:var(--space-8);padding:var(--space-4) 0}
 .hold-row:first-of-type{border-top:none}
-.hold-rank{width:var(--space-12);font-size:var(--text-11)}
+.hold-rank{width:var(--size-12);font-size:var(--text-11)}
 .hold-name{flex:1}
 .hold-out{border:1px solid var(--border-hairline);font-size:var(--text-10);padding:0 var(--space-4);white-space:nowrap}
 .hold-amt{font-size:var(--text-11);white-space:nowrap}
@@ -25,9 +25,11 @@
 .hold-cols{flex-direction:row}
 .hold-col{flex:1}
 .hold-col:first-child{border-right:1px solid var(--border-hairline);padding-right:var(--space-12)}
-.app-case .hold-col h4{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold)}
-.app-case .hold-cols .hold-col:first-child h4{color:var(--outcome-yes-text)}
-.app-case .hold-cols .hold-col:last-child h4{color:var(--outcome-no-figure)}
+/* same story as .arg-col h3 in event-detail.css: the .ed-section label sets properties this rule
+   does not, and a nested head has to answer for each of them */
+.app-case .hold-cols .hold-col h3{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);text-transform:none;letter-spacing:normal;margin:0 0 var(--space-4)}
+.app-case .hold-cols .hold-col:first-child h3{color:var(--outcome-yes-text)}
+.app-case .hold-cols .hold-col:last-child h3{color:var(--outcome-no-figure)}
 .app-case .hold-row{border-top:1px solid var(--edge-groove-dark);font-size:var(--text-13);color:var(--text-primary)}
 .app-case .hold-rank{color:var(--text-brass);font-family:var(--font-display);font-weight:var(--weight-bold)}
 .app-case .hold-name{color:var(--text-primary)}
@@ -44,4 +46,4 @@
 .app-case .act-time{font-family:var(--font-mono);color:var(--text-muted)}
 .app-case .lg-item{display:inline-flex;align-items:center;gap:var(--space-8);font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
 .app-case .lg-item.sel{color:var(--text-primary);font-weight:var(--weight-semibold)}
-.app-case .lg-item i{width:var(--space-8);height:var(--space-4);border-radius:var(--radius-2);flex:0 0 auto}
+.app-case .lg-item i{width:var(--size-8);height:var(--size-4);border-radius:var(--radius-2);flex:0 0 auto}

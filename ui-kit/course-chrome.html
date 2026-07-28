@@ -46,14 +46,14 @@ push();});})();</script>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>Course chrome</h1>
     <p>Not product: the roadmap sidebar every page of this repo carries. It ships with the system only because the painted screens render it.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/course-chrome.css</span>
-      <span class="tk-badge">43 rules</span>
-      <span class="tk-badge">26 classes</span>
+      <span class="tk-badge">42 rules</span>
+      <span class="tk-badge">27 classes</span>
       <span class="tk-badge">76 screens</span>
     </div>
   </header>
@@ -71,14 +71,14 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.rm-overlay.open</td><td class='ck-decl'>display:block</td></tr><tr><td class='tk-role'>.sidebar.open</td><td class='ck-decl'>transform:translateX(0)</td></tr><tr><td class='tk-role'>.sidebar-page-link:hover:not(.planned)</td><td class='ck-decl'>background:var(--bevel-hair)</td></tr><tr><td class='tk-role'>.sidebar-page-link.active</td><td class='ck-decl'>color:var(--chrome-accent)</td></tr><tr><td class='tk-role'>.sidebar-sub-link:hover</td><td class='ck-decl'>color:var(--chrome-text)</td></tr><tr><td class='tk-role'>.sidebar-sub-link.active</td><td class='ck-decl'>color:var(--chrome-text)</td></tr><tr><td class='tk-role'>.sidebar-sub-link.active::before</td><td class='ck-decl'>content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:var(--space-4);height:var(--space-4);border-radius:50%;background:var(--chrome-accent)</td></tr><tr><td class='tk-role'>.sidebar-back:hover</td><td class='ck-decl'>color:var(--chrome-accent);background:var(--bevel-hair)</td></tr><tr><td class='tk-role'>.theme-switch:hover</td><td class='ck-decl'>color:var(--chrome-text);background:var(--bevel-hair)</td></tr><tr><td class='tk-role'>.theme-switch:focus-visible</td><td class='ck-decl'>outline:2px solid var(--chrome-accent);outline-offset:-2px</td></tr><tr><td class='tk-role'>.sidebar a:focus-visible</td><td class='ck-decl'>outline:2px solid var(--text-brass);outline-offset:2px</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.rm-overlay.open</td><td class='ck-decl'>display:block</td></tr><tr><td class='tk-role'>.sidebar.open</td><td class='ck-decl'>transform:translateX(0)</td></tr><tr><td class='tk-role'>.sidebar-page-link:hover:not(.planned)</td><td class='ck-decl'>background:var(--bevel-hair)</td></tr><tr><td class='tk-role'>.sidebar-page-link.active</td><td class='ck-decl'>color:var(--chrome-accent)</td></tr><tr><td class='tk-role'>.sidebar-sub-link:hover</td><td class='ck-decl'>color:var(--chrome-text)</td></tr><tr><td class='tk-role'>.sidebar-sub-link.active</td><td class='ck-decl'>color:var(--chrome-text)</td></tr><tr><td class='tk-role'>.sidebar-sub-link.active::before</td><td class='ck-decl'>content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:var(--size-4);height:var(--size-4);border-radius:50%;background:var(--chrome-accent)</td></tr><tr><td class='tk-role'>.sidebar-back:hover</td><td class='ck-decl'>color:var(--chrome-accent);background:var(--bevel-hair)</td></tr><tr><td class='tk-role'>.theme-switch:hover</td><td class='ck-decl'>color:var(--chrome-text);background:var(--bevel-hair)</td></tr><tr><td class='tk-role'>/* one of the three exceptions to the default in base.css: an inset ring, because the switch sits flush against the panel edge and an outset one would be clipped */ .theme-switch:focus-visible</td><td class='ck-decl'>outline:var(--ring) solid var(--chrome-accent);outline-offset:calc(var(--ring) * -1)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
     <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bevel-hair)"></i><code>--bevel-hair</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--chrome-accent)"></i><code>--chrome-accent</code></span><span class="ck-role"><i style="background:var(--chrome-bg)"></i><code>--chrome-bg</code></span><span class="ck-role"><i style="background:var(--chrome-border)"></i><code>--chrome-border</code></span><span class="ck-role"><i style="background:var(--chrome-muted)"></i><code>--chrome-muted</code></span><span class="ck-role"><i style="background:var(--chrome-text)"></i><code>--chrome-text</code></span><span class="ck-role"><i style="background:var(--scrim)"></i><code>--scrim</code></span><span class="ck-role"><i style="background:var(--swatch-dark)"></i><code>--swatch-dark</code></span><span class="ck-role"><i style="background:var(--swatch-light)"></i><code>--swatch-light</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span></div>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bevel-hair)"></i><code>--bevel-hair</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--chrome-accent)"></i><code>--chrome-accent</code></span><span class="ck-role"><i style="background:var(--chrome-bg)"></i><code>--chrome-bg</code></span><span class="ck-role"><i style="background:var(--chrome-border)"></i><code>--chrome-border</code></span><span class="ck-role"><i style="background:var(--chrome-muted)"></i><code>--chrome-muted</code></span><span class="ck-role"><i style="background:var(--chrome-text)"></i><code>--chrome-text</code></span><span class="ck-role"><i style="background:var(--scrim)"></i><code>--scrim</code></span><span class="ck-role"><i style="background:var(--swatch-dark)"></i><code>--swatch-dark</code></span><span class="ck-role"><i style="background:var(--swatch-light)"></i><code>--swatch-light</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
@@ -88,7 +88,7 @@ push();});})();</script>
     shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
     used by nothing. Only the last kind is a deletion candidate, and they are collected in
     <a href="docs/coverage.md">coverage.md</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.active</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.bk-arrow</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.next</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-docs" title="used by a course page, which does not load the system">docs</span></td></tr><tr><td class='tk-role'>.open</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-runtime" title="toggled on the drawer and the overlay by script">runtime</span></td></tr><tr><td class='tk-role'>.planned</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-docs" title="used by a course page, which does not load the system">docs</span></td></tr><tr><td class='tk-role'>.rm-overlay</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.rm-toggle</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-back</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-brand</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-divider</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-docs" title="used by a course page, which does not load the system">docs</span></td></tr><tr><td class='tk-role'>.sidebar-nav</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-note</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-page-link</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-project-name</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-sub</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-sub-head</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-sub-link</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.theme-switch</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.theme-switch-inline</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.ts-dark</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-label</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-light</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-sw</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-swatches</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.wf-screen</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-wireframe" title="the grey-era version of a block the paint replaced">wireframe</span></td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.active</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.bk-arrow</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.css</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.next</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-docs" title="used by a course page, which does not load the system">docs</span></td></tr><tr><td class='tk-role'>.open</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-runtime" title="toggled on the drawer and the overlay by script">runtime</span></td></tr><tr><td class='tk-role'>.planned</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-docs" title="used by a course page, which does not load the system">docs</span></td></tr><tr><td class='tk-role'>.rm-overlay</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.rm-toggle</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-back</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-brand</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-divider</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-docs" title="used by a course page, which does not load the system">docs</span></td></tr><tr><td class='tk-role'>.sidebar-nav</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-note</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-page-link</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-project-name</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-sub</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-sub-head</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-sub-link</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.theme-switch</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.theme-switch-inline</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.ts-dark</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-label</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-light</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-sw</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-swatches</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.wf-screen</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-wireframe" title="the grey-era version of a block the paint replaced">wireframe</span></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
@@ -103,7 +103,7 @@ push();});})();</script>
     <details class="ck-src"><summary>components/course-chrome.css</summary><pre>/* components/course-chrome.css
    the course roadmap sidebar every page of this repo carries. Not product.
 
-   Reads: --bevel-hair, --border-hairline, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-text, --scrim, --swatch-dark, --swatch-light, --text-brass
+   Reads: --bevel-hair, --border-hairline, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-text, --scrim, --swatch-dark, --swatch-light
    Stand:  ui-kit/course-chrome.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -130,7 +130,7 @@ push();});})();</script>
 .sidebar-sub-link{display:block;font-size:var(--text-12);color:var(--chrome-muted);text-decoration:none;padding:var(--space-4) var(--space-16) var(--space-4) var(--space-28);position:relative}
 .sidebar-sub-link:hover{color:var(--chrome-text)}
 .sidebar-sub-link.active{color:var(--chrome-text)}
-.sidebar-sub-link.active::before{content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:var(--space-4);height:var(--space-4);border-radius:50%;background:var(--chrome-accent)}
+.sidebar-sub-link.active::before{content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:var(--size-4);height:var(--size-4);border-radius:50%;background:var(--chrome-accent)}
 .sidebar-back{display:flex;align-items:center;gap:var(--space-8);font-size:var(--text-12);font-weight:var(--weight-semibold);color:var(--chrome-muted);text-decoration:none;padding:var(--space-12) var(--space-16);border-bottom:1px solid var(--chrome-border)}
 .sidebar-back:hover{color:var(--chrome-accent);background:var(--bevel-hair)}
 .sidebar-back .bk-arrow{font-size:var(--text-14);line-height:var(--leading-none)}
@@ -144,13 +144,15 @@ push();});})();</script>
 .theme-switch{display:flex;align-items:center;gap:var(--space-8);width:100%;box-sizing:border-box;margin:0;padding:var(--space-12) var(--space-16);background:none;border:0;border-bottom:1px solid var(--chrome-border);font-family:inherit;font-size:var(--text-12);font-weight:var(--weight-semibold);letter-spacing:.04em;color:var(--chrome-muted);text-align:left;cursor:pointer;min-height:var(--control-44)}
 .theme-switch:hover{color:var(--chrome-text);background:var(--bevel-hair)}
 .theme-switch .ts-swatches{display:flex;flex:0 0 auto;gap:var(--space-4)}
-.theme-switch .ts-sw{width:var(--space-16);height:var(--space-16);border-radius:var(--radius-6);border:1px solid var(--chrome-border);box-shadow:none}
+.theme-switch .ts-sw{width:var(--size-16);height:var(--size-16);border-radius:var(--radius-6);border:1px solid var(--chrome-border);box-shadow:none}
 .theme-switch .ts-sw.ts-dark{background:var(--swatch-dark)}
 .theme-switch .ts-sw.ts-light{background:var(--swatch-light)}
 .theme-switch[aria-pressed="false"] .ts-sw.ts-dark,
 .theme-switch[aria-pressed="true"] .ts-sw.ts-light{border-color:var(--chrome-accent);box-shadow:0 0 0 1px var(--chrome-accent)}
 .theme-switch .ts-label{flex:1 1 auto;min-width:0}
-.theme-switch:focus-visible{outline:2px solid var(--chrome-accent);outline-offset:-2px}
+/* one of the three exceptions to the default in base.css: an inset ring, because the switch
+   sits flush against the panel edge and an outset one would be clipped */
+.theme-switch:focus-visible{outline:var(--ring) solid var(--chrome-accent);outline-offset:calc(var(--ring) * -1)}
 /* the same control laid out in a row rather than as the last item of a panel */
 .theme-switch-inline{width:auto;flex:0 0 auto;border-bottom:0;padding-left:0;padding-right:var(--space-16)}
 
@@ -158,10 +160,9 @@ push();});})();</script>
   .rm-toggle,.rm-overlay{display:none!important}
   .sidebar{transform:none;transition:none}
 }
-.sidebar a:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 </pre></details>
   </section>
-</div>
+</main>
 
 <script src="_frames.js"></script>
 <script src="_nav.js"></script>

@@ -3,7 +3,7 @@
 Own, brand-owned photography for the **Vault** visual system, replacing the earlier
 July stock. Generated, not sourced. This folder is the record: `masters/` holds the
 full-resolution originals; the web-optimized copies actually loaded by the screens live
-in `ui-visual/assets/`. The look is set by root `DESIGN.md`, not reinvented here.
+in `assets/`. The look is set by root `DESIGN.md`, not reinvented here.
 
 ## The look these had to hit
 
@@ -22,11 +22,11 @@ directly answers Alex's documented fear, "this looks like crypto, so it is a sca
   Crypto, Politics and the portraits, so the whole set shares one grade and mood.
 - **Selection:** each subject generated in 2 variants; the picked variant is listed below.
 - Masters exported at JPEG q92; shipped copies resized (events 1600px wide q82, avatars
-  400px q85) into `ui-visual/assets/`.
+  400px q85) into `assets/`.
 
 ## The set
 
-| Asset (`ui-visual/assets/`) | Subject | Picked frame | Prompt (abridged) |
+| Asset (`assets/`) | Subject | Picked frame | Prompt (abridged) |
 |---|---|---|---|
 | `event-politics.jpg` | Politics | capitol at dusk, foggy 3/4 | Neoclassical government capitol with a dome at dusk, warm brass light from tall windows, deep graphite blue-black sky, cinematic, muted, film grain, credible documentary, no people. |
 | `event-crypto.jpg` | Crypto / markets | bitcoin coin **inside a bank vault** | A single brushed-gold bitcoin coin on dark slate, dramatic warm brass side light, deep near-black graphite background, macro, weighty and credible like a vault, not neon, not a casino. (Chosen frame set it literally inside a vault - on-concept.) |
@@ -49,15 +49,15 @@ directly answers Alex's documented fear, "this looks like crypto, so it is a sca
 
 ## To swap or regenerate
 
-- **Swap a picture:** drop a replacement at the same `ui-visual/assets/<name>.jpg` path (same
+- **Swap a picture:** drop a replacement at the same `assets/<name>.jpg` path (same
   filename -> every screen updates; hard-refresh to clear the browser image cache).
 - **Regenerate:** re-run the prompt above on Nano Banana 2, pass one chosen frame as a `style`
   reference to keep the set cohesive, export the master here and the resized copy into
-  `ui-visual/assets/`.
+  `assets/`.
 - **More variety:** the category pages currently repeat one photo per subject. Generate 2-3 more
   frames per subject and extend the `.cat-*` rules with `:nth-of-type` to vary them.
 
-## Retired (still in `ui-visual/assets/`, no longer in the feed rotation)
+## Retired (still in `assets/`, no longer in the feed rotation)
 
 `event-sports.jpg`, `spare-markets-dark.jpg`, `spare-reader.jpg`, `spare-newspapers.jpg` - the
 July stock. Left on disk in case a Sports category is built later, but out of the Vault rotation.

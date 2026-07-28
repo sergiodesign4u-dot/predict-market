@@ -1,5 +1,5 @@
 /* components/skeleton.css
-   Component: skeleton. Classes: .sk-btn, .sk-head, .sk-line, .sk-row, .sk-thumb, .skeleton.
+   Component: skeleton. Classes: .sk-btn, .sk-head, .sk-line, .sk-row, .sk-thumb.
 
    Reads: --bg-chip, --bg-control, --border-hairline
    Stand:  ui-kit/skeleton.html
@@ -8,13 +8,13 @@
 
 .card.skeleton .sk-thumb{width:var(--size-56);height:var(--size-56);flex:0 0 var(--size-56);border:1px solid var(--border-hairline)}
 .card.skeleton .sk-head{flex:1}
-.card.skeleton .sk-line{height:var(--space-8);margin:var(--space-8) 0}
+.card.skeleton .sk-line{height:var(--size-8);margin:var(--space-8) 0}
 .card.skeleton .sk-line.w80{width:80%}
 .card.skeleton .sk-line.w60{width:60%}
 .card.skeleton .sk-line.w40{width:40%}
 .card.skeleton .sk-row{display:flex;gap:var(--space-8);margin-top:var(--space-8)}
 .card.skeleton .sk-btn{height:var(--control-32);flex:1}
-.pos.skeleton .sk-line{height:var(--space-8);margin:var(--space-8) 0}
+.pos.skeleton .sk-line{height:var(--size-8);margin:var(--space-8) 0}
 .card.skeleton .sk-thumb,.card.skeleton .sk-line,.card.skeleton .sk-btn{background:var(--bg-control);border-color:var(--border-hairline)}
 .app-case .pos.skeleton .sk-line{background:linear-gradient(90deg,var(--bg-chip),var(--bg-control),var(--bg-chip));border-radius:var(--radius-6)}
 .app-case .ed-head .sk-thumb{width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72)}

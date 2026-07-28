@@ -46,13 +46,13 @@ push();});})();</script>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>Buttons</h1>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/button.css</span>
-      <span class="tk-badge">42 rules</span>
+      <span class="tk-badge">40 rules</span>
       <span class="tk-badge">22 classes</span>
       <span class="tk-badge">76 screens</span>
     </div>
@@ -73,14 +73,14 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.auth-btn:focus-visible</td><td class='ck-decl'>outline:2px solid var(--text-brass);outline-offset:2px</td></tr><tr><td class='tk-role'>.app-case .state-btn.primary:hover,.app-case .confirm-btn:hover,.app-case .auth-btn.primary:hover</td><td class='ck-decl'>filter:brightness(1.08);box-shadow:0 6px 18px -8px var(--color-action)</td></tr><tr><td class='tk-role'>.app-case .state-btn:not(.primary):hover,.app-case .auth-btn:not(.primary):hover,.app-case .provider-btn:hover</td><td class='ck-decl'>border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)</td></tr><tr><td class='tk-role'>.app-case .btn-primary:hover</td><td class='ck-decl'>filter:brightness(1.08);box-shadow:0 6px 18px -8px var(--color-action)</td></tr><tr><td class='tk-role'>.app-case .btn-secondary:hover</td><td class='ck-decl'>border-color:var(--border-brass-hover);background:var(--bg-surface);color:var(--text-strong)</td></tr><tr><td class='tk-role'>.app-case .btn-primary:focus-visible,.app-case .btn-secondary:focus-visible</td><td class='ck-decl'>outline:2px solid var(--text-brass);outline-offset:2px</td></tr><tr><td class='tk-role'>dialog.app-dialog.outcome-dialog .provider-btn:hover</td><td class='ck-decl'>border-color:var(--border-brass-hover);background:var(--bg-surface);color:var(--text-strong)</td></tr><tr><td class='tk-role'>.app-case :is(.bet-panel,.bet-sheet) .provider-btn:hover,.app-case .bet-dock .provider-btn:hover</td><td class='ck-decl'>border-color:var(--line-brass-soft);background:var(--bg-control-hover);color:var(--text-strong)</td></tr><tr><td class='tk-role'>dialog.app-dialog.signin-dialog .provider-btn:hover</td><td class='ck-decl'>border-color:var(--border-brass-hover);background:var(--bg-control-hover);transform:translateY(-1px)</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.app-case .state-btn.primary:hover,.app-case .confirm-btn:hover,.app-case .auth-btn.primary:hover</td><td class='ck-decl'>filter:brightness(1.08);box-shadow:0 6px 18px -8px var(--color-action)</td></tr><tr><td class='tk-role'>.app-case .state-btn:not(.primary):hover,.app-case .auth-btn:not(.primary):hover,.app-case .provider-btn:hover</td><td class='ck-decl'>border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)</td></tr><tr><td class='tk-role'>.app-case .btn-primary:hover</td><td class='ck-decl'>filter:brightness(1.08);box-shadow:0 6px 18px -8px var(--color-action)</td></tr><tr><td class='tk-role'>.app-case .btn-secondary:hover</td><td class='ck-decl'>border-color:var(--border-brass-hover);background:var(--bg-surface);color:var(--text-strong)</td></tr><tr><td class='tk-role'>dialog.app-dialog.outcome-dialog .provider-btn:hover</td><td class='ck-decl'>border-color:var(--border-brass-hover);background:var(--bg-surface);color:var(--text-strong)</td></tr><tr><td class='tk-role'>.app-case :is(.bet-panel,.bet-sheet) .provider-btn:hover,.app-case .bet-dock .provider-btn:hover</td><td class='ck-decl'>border-color:var(--line-brass-soft);background:var(--bg-control-hover);color:var(--text-strong)</td></tr><tr><td class='tk-role'>dialog.app-dialog.signin-dialog .provider-btn:hover</td><td class='ck-decl'>border-color:var(--border-brass-hover);background:var(--bg-control-hover);transform:translateY(-1px)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
     <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-brand-mark)"></i><code>--bg-brand-mark</code></span><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-control-hover)"></i><code>--bg-control-hover</code></span><span class="ck-role"><i style="background:var(--bg-surface)"></i><code>--bg-surface</code></span><span class="ck-role"><i style="background:var(--border-brass-hover)"></i><code>--border-brass-hover</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--color-action-lit)"></i><code>--color-action-lit</code></span><span class="ck-role"><i style="background:var(--line-brass-soft)"></i><code>--line-brass-soft</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-on-brass)"></i><code>--text-on-brass</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--text-strong)"></i><code>--text-strong</code></span></div>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-brand-mark)"></i><code>--bg-brand-mark</code></span><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-control-hover)"></i><code>--bg-control-hover</code></span><span class="ck-role"><i style="background:var(--bg-surface)"></i><code>--bg-surface</code></span><span class="ck-role"><i style="background:var(--border-brass-hover)"></i><code>--border-brass-hover</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--color-action-lit)"></i><code>--color-action-lit</code></span><span class="ck-role"><i style="background:var(--line-brass-soft)"></i><code>--line-brass-soft</code></span><span class="ck-role"><i style="background:var(--text-on-brass)"></i><code>--text-on-brass</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--text-strong)"></i><code>--text-strong</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
@@ -103,9 +103,9 @@ push();});})();</script>
     <p class="tk-note">To change this component, edit <code>components/button.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/button.css</summary><pre>/* components/button.css
-   Component: button. Classes: .auth-btn, .btn-block, .btn-lg, .btn-md, .btn-primary, .btn-secondary, .btn-sm, .confirm-btn, .primary, .prov-apple, .prov-google, .prov-x, .provider-btn, .state-btn.
+   Component: button. Classes: .auth-btn, .btn-block, .btn-lg, .btn-md, .btn-primary, .btn-secondary, .btn-sm, .confirm-btn, .primary, .prov-apple, .prov-x, .provider-btn, .state-btn.
 
-   Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --line-brass-soft, --text-brass, --text-on-brass, --text-primary, --text-strong
+   Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --line-brass-soft, --text-on-brass, --text-primary, --text-strong
    Stand:  ui-kit/button.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -120,7 +120,6 @@ dialog.app-dialog .confirm-btn{padding:var(--space-12);font-size:var(--text-14);
 .confirm-btn{border:1px solid var(--border-hairline);padding:var(--space-12);font-size:var(--text-14);font-weight:var(--weight-bold);cursor:pointer;width:100%}
 .provider-btn{display:flex;align-items:center;gap:var(--space-8);border:1px solid var(--border-hairline);padding:var(--space-12);font-size:var(--text-13);cursor:pointer;width:100%;text-align:left}
 .provider-btn .ic{width:var(--icon-18);height:var(--icon-18)}
-.auth-btn:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 dialog.app-dialog .confirm-btn{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);border-radius:var(--radius-10)}
 dialog.app-dialog .provider-btn{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
 .auth-btn{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
@@ -139,7 +138,6 @@ dialog.app-dialog .provider-btn{background:var(--bg-control);border:1px solid va
 .app-case .btn-md{min-height:var(--control-44);padding:0 var(--space-16);font-size:var(--text-14)}
 .app-case .btn-lg{min-height:var(--control-52);padding:0 var(--space-24);font-size:var(--text-16);border-radius:var(--radius-10)}
 .app-case .btn-block{width:100%}
-.app-case .btn-primary:focus-visible,.app-case .btn-secondary:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 .app-case .resolved-panel .state-btn{width:100%}
 .app-case :is(.bet-panel,.bet-sheet) .confirm-btn{border:0;border-radius:var(--radius-10);background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);font-family:var(--font-body);font-weight:var(--weight-bold)}
 .app-case .bet-sheet .confirm-btn{padding:var(--space-16)}
@@ -154,7 +152,7 @@ dialog.app-dialog.signin-dialog .provider-btn .prov-x,dialog.app-dialog.signin-d
 .app-case .bet-dock .confirm-btn{width:auto;padding:var(--space-12)}
 </pre></details>
   </section>
-</div>
+</main>
 
 <script src="_frames.js"></script>
 <script src="_nav.js"></script>

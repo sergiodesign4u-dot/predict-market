@@ -1,7 +1,7 @@
 /* components/input.css
-   Component: input. Classes: .amount-input, .amount-row, .field-label, .quick.
+   Component: input. Classes: .addr, .amount-input, .amount-row, .field-label, .quick.
 
-   Reads: --bg-control, --bg-control-hover, --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --glow-focus, --line-brass-soft, --line-brass-strong, --result-won, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-16
+   Reads: --bg-control, --bg-control-hover, --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --focus-ring, --glow-focus, --line-brass-soft, --line-brass-strong, --result-won, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-16
    Stand:  ui-kit/input.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -38,7 +38,9 @@ dialog.app-dialog .amount-input{background:var(--bg-well)}
 /* A 1.5px underline changing colour is a state, not a focus indicator: it is the
    one control in the product that took outline:none and gave nothing back, and it
    is the field a person types the size of a bet into. Same ring as everything else. */
-.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
+/* this one has to out-specify the outline:none the field above sets, so it cannot come from
+   the one-line default in base.css */
+.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:disabled{opacity:.45;cursor:not-allowed;border-bottom-color:var(--border-hairline)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input::placeholder{color:var(--text-muted)}
 .app-case :is(.bet-panel,.bet-sheet) .quick{margin-top:0;justify-content:flex-end;flex-wrap:wrap}

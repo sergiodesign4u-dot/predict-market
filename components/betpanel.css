@@ -1,5 +1,5 @@
 /* components/betpanel.css
-   Component: betpanel. Classes: .bet-dock, .bet-panel, .bet-sheet, .bp-amount-lbl, .bp-amount-row, .bp-cash, .bp-change, .bp-dir, .bp-head, .bp-hint, .bp-inner, .bp-pct, .bp-sel-name, .bp-selected and 6 more.
+   Component: betpanel. Classes: .bet-dock, .bet-panel, .bet-sheet, .bp-amount-lbl, .bp-amount-row, .bp-cash, .bp-change, .bp-dir, .bp-head, .bp-hint, .bp-inner, .bp-pct, .bp-sel-name, .bp-selected, .bp-side, .dock-meta, .line, .sheet-grab, .total.
 
    Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-strong, --bg-card-to, --bg-control, --bg-dock, --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --outcome-no, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text-lit, --outcome-yes, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text-lit, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-no, --text-on-yes, --text-primary
    Stand:  ui-kit/betpanel.html
@@ -35,7 +35,7 @@
 .app-case .bp-head h3{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary)}
 .app-case .bp-hint{color:var(--text-muted);font-size:var(--text-11)}
 .app-case .bp-dir{display:flex;gap:var(--space-8);padding:0;background:transparent;border:0}
-.app-case .bp-dir .bp-side{flex:1;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);font-size:var(--text-16);padding:var(--space-12) var(--space-8);cursor:pointer;transition:background .15s ease,color .15s ease,border-color .15s ease}
+.app-case .bp-dir .bp-side{flex:1;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);font-size:var(--text-16);padding:var(--space-12) var(--space-8);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease,border-color var(--dur-quick) ease}
 .app-case .bp-dir .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-11);font-weight:var(--weight-medium);color:inherit;opacity:.78;margin-top:var(--space-4)}
 .app-case .bp-dir .bp-side:hover{border-color:var(--bevel-strong);color:var(--text-primary)}
 .app-case .bp-dir .bp-side.sel:first-child{background:var(--outcome-yes);border-color:var(--outcome-yes);color:var(--text-on-yes)}
@@ -56,14 +56,14 @@
 dialog.app-dialog.bet-sheet{position:fixed;left:0;right:0;bottom:0;top:auto;margin:0 auto;width:100%;max-width:560px;max-height:92vh;border:0;border-radius:var(--radius-16) var(--radius-16) 0 0;overflow-y:auto;overflow-x:hidden}
 dialog.app-dialog.bet-sheet::backdrop{background:var(--shadow-ink-60);backdrop-filter:blur(2px)}
 .app-case .bet-sheet .sheet-grab{display:block;width:100%;border:0;background:transparent;padding:var(--space-12) 0 var(--space-2);cursor:pointer}
-.app-case .bet-sheet .sheet-grab::before{content:'';display:block;width:var(--space-40);height:var(--space-4);border-radius:var(--radius-pill);background:var(--bg-control);margin:0 auto;transition:background var(--dur-quick) ease}
+.app-case .bet-sheet .sheet-grab::before{content:'';display:block;width:var(--size-40);height:var(--size-4);border-radius:var(--radius-pill);background:var(--bg-control);margin:0 auto;transition:background var(--dur-quick) ease}
 .app-case .bet-sheet .sheet-grab:hover::before{background:var(--border-hairline)}
 .app-case .bet-sheet .bp-head h3{font-family:var(--font-display);font-size:var(--text-18);font-weight:var(--weight-bold);color:var(--text-primary);margin:0}
 .app-case .bet-sheet .bp-inner{display:flex;flex-direction:column;padding:var(--space-12) var(--space-20) var(--space-24);gap:var(--space-20)}
 .app-case .bet-sheet .bp-dir{gap:var(--space-8)}
 .app-case .bet-sheet .bp-amount-row{margin:0 0 var(--space-12)}
 .app-case .bet-sheet .line{padding:var(--space-8) 0}
-dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slower) cubic-bezier(.2,.8,.2,1)}
+dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slower) var(--ease-out)}
 @media(prefers-reduced-motion:reduce){
   dialog.app-dialog.bet-sheet[open]{animation:none}
 }
@@ -71,3 +71,9 @@ dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slower) cubic-b
 .app-case .bp-sel-name{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-bold);color:var(--text-primary)}
 .app-case .bp-change{font-size:var(--text-10);color:var(--text-brass);text-decoration:underline;white-space:nowrap}
 .app-case .bet-panel a:has(button),.app-case .bet-dock a:has(button){text-decoration:none;color:inherit;display:block}
+
+/* The keyframe the bet sheet animates with, moved out of base.css next to its only consumer. */
+@keyframes betSheetUp{
+  from{transform:translateY(100%)}
+  to{transform:translateY(0)}
+}

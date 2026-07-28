@@ -1,5 +1,5 @@
 /* components/catnav.css
-   Component: catnav. Classes: .cat-crypto, .cat-culture, .cat-general, .cat-ic, .cat-layout, .cat-main, .cat-nav, .cat-politics, .cnt, .feed-subfilter, .subcat, .subcat-head.
+   Component: catnav. Classes: .cat-ic, .cat-layout, .cat-main, .cat-nav, .cnt, .feed-subfilter, .subcat, .subcat-head.
 
    Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-chip, --bg-control-hover, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --line-brass-soft, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
    Stand:  ui-kit/catnav.html
@@ -42,7 +42,6 @@
 .cat-nav > ul{max-width:var(--container-max);margin:0 auto;padding:var(--space-8) var(--space-20)}
 .cat-nav button{background:var(--bg-surface);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
 .cat-nav li[aria-current="page"] button{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border-color:var(--color-action);color:var(--text-on-brass)}
-.cat-nav a:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 @media(max-width:640px){
   .cat-nav button{position:relative}
 }

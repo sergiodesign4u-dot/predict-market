@@ -9,19 +9,24 @@
 .pos-status{text-transform:uppercase}
 .app-case .pos-status{color:var(--text-muted);font-size:var(--text-10);letter-spacing:.04em}
 .app-case p.pos-status{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-display);font-size:var(--text-11);font-weight:var(--weight-semibold);text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin:var(--space-24) 0 var(--space-12)}
-.app-case p.pos-status::before{content:"";width:var(--icon-16);height:var(--space-2);border-radius:var(--radius-2);background:linear-gradient(90deg,var(--color-action),var(--color-action-lit));flex:0 0 auto}
+.app-case p.pos-status::before{content:"";width:var(--icon-16);height:var(--size-2);border-radius:var(--radius-2);background:linear-gradient(90deg,var(--color-action),var(--color-action-lit));flex:0 0 auto}
 .app-case .pos-top .pos-status{white-space:nowrap}
 .app-case .idrow{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-16);padding:var(--space-2) 0 var(--space-16);margin:0 0 var(--space-2);border-bottom:1px solid var(--border-hairline)}
-.app-case .idrow .av{display:inline-flex;width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72);border:0;border-radius:var(--radius-pill);background:var(--bg-control) url(../ui-visual/assets/avatar-2.jpg) center/cover;overflow:hidden;color:transparent;font-size:0;box-shadow:0 0 0 3px var(--bg-canvas),0 0 0 4px color-mix(in oklab,var(--color-action) 55%,transparent)}
+/* Same placeholder story as .cmt-av and .ed-thumb: a sample face, written here so the stand has
+   one. The colour under it is a role; only the image is sample content. */
+.app-case .idrow .av{display:inline-flex;width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72);border:0;border-radius:var(--radius-pill);background:var(--bg-control) url(../assets/avatar-2.jpg) center/cover;overflow:hidden;color:transparent;font-size:0;box-shadow:0 0 0 3px var(--bg-canvas),0 0 0 4px color-mix(in oklab,var(--color-action) 55%,transparent)}
 .app-case .idrow .who{display:flex;flex-direction:column;gap:var(--space-4);flex:1 1 150px;min-width:0}
 .app-case .idrow .who br{display:none}
 .app-case .idrow .name{font-family:var(--font-display);font-size:var(--text-20);font-weight:var(--weight-bold);letter-spacing:-.02em;color:var(--text-primary);line-height:var(--leading-flat)}
 .app-case .idrow .handle{font-size:var(--text-12);color:var(--text-muted);letter-spacing:.01em}
 .app-case .idrow .edit{align-self:center;flex:0 0 auto;margin-left:auto;border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-control);color:var(--text-primary);font-size:var(--text-11);font-weight:var(--weight-semibold);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer;transition:border-color var(--dur-base) ease,color var(--dur-base) ease}
 .app-case .idrow .edit:hover{border-color:var(--line-brass-strong);color:var(--text-strong)}
-.app-case .pos[aria-label="Track record"] span.pos-status{display:block;margin-top:var(--space-12);font-size:var(--text-11);line-height:var(--leading-base);color:var(--text-muted)}
+.app-case .pos-record span.pos-status{display:block;margin-top:var(--space-12);font-size:var(--text-11);line-height:var(--leading-base);color:var(--text-muted)}
 .app-case .gallery{display:flex;gap:var(--space-12);overflow-x:auto;padding:var(--space-2) 0 var(--space-8);scrollbar-width:none;width:0;min-width:100%}
 .app-case .gallery::-webkit-scrollbar{display:none}
-@media(max-width:640px){
+/* Target size follows the POINTER, not the viewport. Step 7 wrote that rule and moved two
+   files; these stayed bound to a 640px viewport, so a touch tablet or a touch laptop got the
+   36px control. A fine pointer keeps 36, which clears 2.5.8 (24x24) with room. */
+@media(pointer:coarse){
   .app-case .idrow .edit{min-height:var(--control-44)}
 }

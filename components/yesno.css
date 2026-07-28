@@ -1,7 +1,7 @@
 /* components/yesno.css
    Component: yesno. Classes: .compact, .yesno.
 
-   Reads: --bg-control, --border-hairline, --outcome-no, --outcome-no-fill, --outcome-no-fill-soft, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-soft, --outcome-yes-line, --outcome-yes-text, --text-brass, --text-on-no, --text-on-yes, --text-primary
+   Reads: --bg-control, --border-hairline, --outcome-no, --outcome-no-fill, --outcome-no-fill-soft, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-soft, --outcome-yes-line, --outcome-yes-text, --text-on-no, --text-on-yes, --text-primary
    Stand:  ui-kit/yesno.html
    Stands on: 10 ui-visual screens (event-detail-logged-out-multi.html, event-detail-multi.html, event-feed-crypto.html, event-feed-culture.html, event-feed-general.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -12,16 +12,15 @@
 .yesno button{flex:1;padding:var(--space-8);font-size:var(--text-12);cursor:pointer}
 .yesno.compact > a{flex:0 0 auto}
 .yesno.compact button{flex:0 0 auto}
-.yesno button{border:1px solid;font-weight:var(--weight-bold);font-family:var(--font-body);text-decoration:none;min-height:var(--control-44);background:var(--bg-control);transition:background .15s ease,border-color .15s ease}
+.yesno button{border:1px solid;font-weight:var(--weight-bold);font-family:var(--font-body);text-decoration:none;min-height:var(--control-44);background:var(--bg-control);transition:background var(--dur-quick) ease,border-color var(--dur-quick) ease}
 .yesno a,.yesno a:hover{text-decoration:none}
 .yesno > a:first-of-type button:hover{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-control));border-color:var(--outcome-yes)}
 .yesno > a:last-of-type button:hover{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-control));border-color:var(--outcome-no)}
 .yesno.compact{gap:var(--space-8);margin:0}
 .yesno.compact button{padding:var(--space-4) var(--space-12);font-size:var(--text-11);line-height:var(--leading-tight)}
-.yesno button:focus-visible,.yesno a:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
-@media(max-width:640px){
-  .yesno.compact button{min-height:var(--control-44)}
-}
+/* No media block for the compact variant: `.yesno button` above sets min-height on every variant,
+   compact included, and nothing unsets it. The rule that used to live here re-stated 44px inside a
+   640px query, which read as "the target is a mobile concern". It is not. */
 .yesno > a:first-of-type button{background:var(--outcome-yes-fill);color:var(--outcome-yes-text);border-color:var(--outcome-yes-line)}
 .yesno > a:last-of-type button{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
 .yesno button{border-radius:var(--radius-10)}

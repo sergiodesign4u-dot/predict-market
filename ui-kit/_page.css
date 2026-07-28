@@ -11,72 +11,72 @@
 
 /* ---- page head ---- */
 .tk-hero{padding:44px 0 4px}
-.tk-hero h1{font-family:var(--font-display,'Space Grotesk',sans-serif);color:var(--text-primary,#ede7da);
+.tk-hero h1{font-family:var(--font-display);color:var(--text-primary);
   font-size:clamp(30px,5vw,44px);font-weight:700;letter-spacing:-.03em;margin:0;text-wrap:balance}
-.tk-hero p{color:var(--text-muted,#a49d8f);font-family:var(--font-body,'DM Sans',sans-serif);
+.tk-hero p{color:var(--text-muted);font-family:var(--font-body);
   margin:10px 0 0;max-width:66ch;line-height:1.55;font-size:14px}
-.tk-hero code,.tk-note code,.tk-tbl code{font-family:var(--font-mono,'IBM Plex Mono',monospace);
-  font-size:.9em;color:var(--text-brass,#d7ac53)}
+.tk-hero code,.tk-note code,.tk-tbl code{font-family:var(--font-mono);
+  font-size:.9em;color:var(--text-brass)}
 /* A link in running text. Without this it falls back to the browser blue, which
    is the one colour the Vault has no place for. The chip-shaped links have their
    own rules further down (.tk-jump, .ck-scene-lbl, .ck-screens). */
-.tk-note a,.tk-hero p a,.ck-cap a{color:var(--text-brass,#d7ac53);text-decoration:underline;
+.tk-note a,.tk-hero p a,.ck-cap a{color:var(--text-brass);text-decoration:underline;
   text-decoration-color:var(--border-brass,rgba(199,162,78,.3));text-underline-offset:2px}
 .tk-note a:hover,.tk-hero p a:hover,.ck-cap a:hover{text-decoration-color:currentColor}
 .tk-note a:focus-visible,.tk-hero p a:focus-visible,.ck-cap a:focus-visible{
-  outline:2px solid var(--text-brass,#d7ac53);outline-offset:2px;border-radius:3px}
+  outline:2px solid var(--text-brass);outline-offset:2px;border-radius:3px}
 /* the three links in the sidebar note. They carry a stand class of their own so
    this rule never has to reach for the course-chrome class around them. */
-.ck-note-link{color:var(--text-brass,#d7ac53);text-decoration:underline;
+.ck-note-link{color:var(--text-brass);text-decoration:underline;
   text-decoration-color:var(--border-brass,rgba(199,162,78,.3));text-underline-offset:2px}
 .ck-note-link:hover{text-decoration-color:currentColor}
 .tk-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.tk-badge{display:inline-block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
-  color:var(--text-brass,#d7ac53);border:1px solid var(--border-brass,rgba(199,162,78,.3));
+.tk-badge{display:inline-block;font-family:var(--font-mono);font-size:11px;
+  color:var(--text-brass);border:1px solid var(--border-brass,rgba(199,162,78,.3));
   border-radius:100px;padding:3px 10px}
 .tk-jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.tk-jump a{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
-  color:var(--text-muted,#a49d8f);border:1px solid var(--border-hairline,#2b2f38);border-radius:100px;
+.tk-jump a{font-family:var(--font-mono);font-size:11px;
+  color:var(--text-muted);border:1px solid var(--border-hairline);border-radius:100px;
   padding:5px 12px;text-decoration:none;transition:color .15s,border-color .15s}
-.tk-jump a:hover{color:var(--text-brass,#d7ac53);border-color:var(--border-brass,rgba(199,162,78,.3))}
+.tk-jump a:hover{color:var(--text-brass);border-color:var(--border-brass,rgba(199,162,78,.3))}
 
 /* ---- section ---- */
-.tk-sec{margin-top:44px;border-top:1px solid var(--border-hairline,#2b2f38);padding-top:24px;scroll-margin-top:20px}
-.tk-sec>h2{font-family:var(--font-display,'Space Grotesk',sans-serif);color:var(--text-brass,#d7ac53);
+.tk-sec{margin-top:44px;border-top:1px solid var(--border-hairline);padding-top:24px;scroll-margin-top:20px}
+.tk-sec>h2{font-family:var(--font-display);color:var(--text-brass);
   font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 6px;
   display:flex;align-items:center;gap:10px}
-.tk-sec>h2::before{content:attr(data-n);font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
-  color:var(--text-muted,#a49d8f);border:1px solid var(--border-hairline,#2b2f38);border-radius:6px;
+.tk-sec>h2::before{content:attr(data-n);font-family:var(--font-mono);font-size:10px;
+  color:var(--text-muted);border:1px solid var(--border-hairline);border-radius:6px;
   padding:1px 6px;letter-spacing:0}
-.tk-note{color:var(--text-muted,#a49d8f);font-family:var(--font-body,'DM Sans',sans-serif);font-size:13px;
+.tk-note{color:var(--text-muted);font-family:var(--font-body);font-size:13px;
   margin:0 0 18px;max-width:76ch;line-height:1.55}
-.tk-subh{color:var(--text-muted,#a49d8f);font-family:var(--font-body,'DM Sans',sans-serif);font-size:11px;
+.tk-subh{color:var(--text-muted);font-family:var(--font-body);font-size:11px;
   font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:26px 0 10px}
 
 /* ---- family ramp (the steps of one colour family, sorted by lightness) ---- */
-.tk-ramp{display:flex;border:1px solid var(--border-hairline,#2b2f38);border-radius:10px;overflow:hidden;
+.tk-ramp{display:flex;border:1px solid var(--border-hairline);border-radius:10px;overflow:hidden;
   margin:0 0 12px}
 .tk-ramp i{flex:1 1 0;min-width:0;height:56px;display:flex;align-items:flex-end;justify-content:center;
   padding-bottom:5px}
-.tk-ramp i b{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;font-weight:400;
-  color:var(--text-muted,#a49d8f);mix-blend-mode:difference;opacity:.9}
+.tk-ramp i b{font-family:var(--font-mono);font-size:10px;font-weight:400;
+  color:var(--text-muted);mix-blend-mode:difference;opacity:.9}
 
 /* ---- primitive swatches ---- */
 .tk-swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:10px}
-.tk-sw{border:1px solid var(--border-hairline,#2b2f38);border-radius:12px;overflow:hidden;
-  background:var(--bg-surface,#1c1f24)}
+.tk-sw{border:1px solid var(--border-hairline);border-radius:12px;overflow:hidden;
+  background:var(--bg-surface)}
 .tk-sw-chip{height:62px;display:block;
-  background-image:linear-gradient(45deg,#2a2d33 25%,transparent 25%,transparent 75%,#2a2d33 75%),
-    linear-gradient(45deg,#2a2d33 25%,transparent 25%,transparent 75%,#2a2d33 75%);
+  background-image:linear-gradient(45deg,var(--bg-control) 25%,transparent 25%,transparent 75%,var(--bg-control) 75%),
+    linear-gradient(45deg,var(--bg-control) 25%,transparent 25%,transparent 75%,var(--bg-control) 75%);
   background-size:12px 12px;background-position:0 0,6px 6px}
 .tk-sw-chip i{display:block;height:100%}
-.tk-sw-meta{padding:9px 10px 11px;border-top:1px solid var(--border-hairline,#2b2f38)}
-.tk-sw-name{display:block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
-  color:var(--text-primary,#ede7da);word-break:break-all;line-height:var(--leading-snug)}
-.tk-sw-val{display:block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
-  color:var(--text-brass,#d7ac53);margin-top:3px;word-break:break-all}
-.tk-sw-cmt{display:block;font-family:var(--font-body,'DM Sans',sans-serif);font-size:11px;
-  color:var(--text-muted,#a49d8f);margin-top:6px;line-height:var(--leading-base)}
+.tk-sw-meta{padding:9px 10px 11px;border-top:1px solid var(--border-hairline)}
+.tk-sw-name{display:block;font-family:var(--font-mono);font-size:11px;
+  color:var(--text-primary);word-break:break-all;line-height:var(--leading-snug)}
+.tk-sw-val{display:block;font-family:var(--font-mono);font-size:10px;
+  color:var(--text-brass);margin-top:3px;word-break:break-all}
+.tk-sw-cmt{display:block;font-family:var(--font-body);font-size:11px;
+  color:var(--text-muted);margin-top:6px;line-height:var(--leading-base)}
 
 /* ---- the two grounds ---- */
 /* Side by side. Each figure carries data-theme itself, so this is not a picture
@@ -110,18 +110,18 @@
    resolves to the brass grid, a state rule that is a whole box-shadow stack)
    sets the column width and the page scrolls sideways on every breakpoint. */
 .tk-tbl{width:100%;table-layout:fixed;border-collapse:collapse;
-  font-family:var(--font-body,'DM Sans',sans-serif);font-size:12px}
-.tk-tbl th{text-align:left;font-family:var(--font-body,'DM Sans',sans-serif);font-size:10px;font-weight:700;
-  letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted,#a49d8f);
-  border-bottom:1px solid var(--border-hairline,#2b2f38);padding:0 12px 8px}
-.tk-tbl td{border-bottom:1px solid var(--border-hairline,#2b2f38);padding:9px 12px;vertical-align:top;
-  color:var(--text-muted,#a49d8f);line-height:1.45}
+  font-family:var(--font-body);font-size:12px}
+.tk-tbl th{text-align:left;font-family:var(--font-body);font-size:10px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);
+  border-bottom:1px solid var(--border-hairline);padding:0 12px 8px}
+.tk-tbl td{border-bottom:1px solid var(--border-hairline);padding:9px 12px;vertical-align:top;
+  color:var(--text-muted);line-height:1.45}
 .tk-tbl tr:hover td{background:rgba(255,255,255,.02)}
-.tk-tbl .tk-role{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
-  color:var(--text-primary,#ede7da);overflow-wrap:anywhere}
-.tk-tbl .tk-points{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
-  color:var(--text-brass,#d7ac53);overflow-wrap:anywhere}
-.tk-tbl .tk-hex{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
+.tk-tbl .tk-role{font-family:var(--font-mono);font-size:11px;
+  color:var(--text-primary);overflow-wrap:anywhere}
+.tk-tbl .tk-points{font-family:var(--font-mono);font-size:11px;
+  color:var(--text-brass);overflow-wrap:anywhere}
+.tk-tbl .tk-hex{font-family:var(--font-mono);font-size:11px;
   overflow-wrap:anywhere}
 .tk-tbl .ck-decl{overflow-wrap:anywhere}
 .tk-dot{display:inline-block;width:34px;height:20px;border-radius:5px;border:1px solid rgba(255,255,255,.14);
@@ -131,56 +131,56 @@
 /* ---- scales ---- */
 .tk-scale{display:flex;flex-direction:column;gap:6px}
 .tk-scale-row{display:flex;align-items:center;gap:12px}
-.tk-scale-row .tk-scale-lbl{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
-  color:var(--text-muted,#a49d8f);width:120px;flex:0 0 120px}
+.tk-scale-row .tk-scale-lbl{font-family:var(--font-mono);font-size:11px;
+  color:var(--text-muted);width:120px;flex:0 0 120px}
 .tk-scale-row .tk-scale-bar{height:14px;border-radius:3px;
-  background:linear-gradient(90deg,var(--color-action,#c7a24e),var(--color-action-lit,#d9b968))}
+  background:linear-gradient(90deg,var(--color-action),var(--color-action-lit))}
 .tk-radii{display:flex;flex-wrap:wrap;gap:14px}
 .tk-radius{width:96px;text-align:center}
-.tk-radius i{display:block;height:64px;background:var(--bg-control,#24282f);
+.tk-radius i{display:block;height:64px;background:var(--bg-control);
   border:1px solid var(--border-brass,rgba(199,162,78,.3))}
-.tk-radius span{display:block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
-  color:var(--text-muted,#a49d8f);margin-top:7px;line-height:var(--leading-base)}
+.tk-radius span{display:block;font-family:var(--font-mono);font-size:10px;
+  color:var(--text-muted);margin-top:7px;line-height:var(--leading-base)}
 .tk-sizes{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}
 .tk-size{width:118px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
-.tk-size i{display:block;background:var(--bg-control,#24282f);border-radius:10px;
-  border:1px solid var(--border-hairline,#2b2f38)}
-.tk-size span{display:block;text-align:center;font-family:var(--font-mono,'IBM Plex Mono',monospace);
-  font-size:10px;color:var(--text-muted,#a49d8f);margin-top:7px}
-.tk-size em{display:block;font-family:var(--font-body,sans-serif);font-style:normal;font-size:10px;
-  line-height:var(--leading-snug);margin-top:3px;color:var(--text-muted,#a49d8f);opacity:.75}
+.tk-size i{display:block;background:var(--bg-control);border-radius:10px;
+  border:1px solid var(--border-hairline)}
+.tk-size span{display:block;text-align:center;font-family:var(--font-mono);
+  font-size:10px;color:var(--text-muted);margin-top:7px}
+.tk-size em{display:block;font-family:var(--font-body);font-style:normal;font-size:10px;
+  line-height:var(--leading-snug);margin-top:3px;color:var(--text-muted);opacity:.75}
 
 /* ---- type ---- */
 .tk-type-row{display:flex;align-items:baseline;gap:16px;padding:9px 0;
-  border-bottom:1px solid var(--border-hairline,#2b2f38)}
-.tk-type-row .tk-type-lbl{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
-  color:var(--text-muted,#a49d8f);width:130px;flex:0 0 130px}
-.tk-type-row .tk-type-smp{color:var(--text-primary,#ede7da);min-width:0;overflow:hidden;text-overflow:ellipsis;
+  border-bottom:1px solid var(--border-hairline)}
+.tk-type-row .tk-type-lbl{font-family:var(--font-mono);font-size:10px;
+  color:var(--text-muted);width:130px;flex:0 0 130px}
+.tk-type-row .tk-type-smp{color:var(--text-primary);min-width:0;overflow:hidden;text-overflow:ellipsis;
   white-space:nowrap}
 .tk-fonts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:22px}
-.tk-font{border:1px solid var(--border-hairline,#2b2f38);border-radius:12px;padding:16px;
-  background:var(--bg-surface,#1c1f24)}
-.tk-font b{display:block;font-size:22px;color:var(--text-primary,#ede7da);font-weight:700;letter-spacing:-.02em}
-.tk-font span{display:block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
-  color:var(--text-brass,#d7ac53);margin-top:8px;word-break:break-all}
-.tk-font i{display:block;font-family:var(--font-body,'DM Sans',sans-serif);font-size:12px;font-style:normal;
-  color:var(--text-muted,#a49d8f);margin-top:6px;line-height:1.5}
+.tk-font{border:1px solid var(--border-hairline);border-radius:12px;padding:16px;
+  background:var(--bg-surface)}
+.tk-font b{display:block;font-size:22px;color:var(--text-primary);font-weight:700;letter-spacing:-.02em}
+.tk-font span{display:block;font-family:var(--font-mono);font-size:10px;
+  color:var(--text-brass);margin-top:8px;word-break:break-all}
+.tk-font i{display:block;font-family:var(--font-body);font-size:12px;font-style:normal;
+  color:var(--text-muted);margin-top:6px;line-height:1.5}
 
 /* ---- material tiles ---- */
 .tk-mats{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-.tk-mat{border:1px solid var(--border-hairline,#2b2f38);border-radius:12px;overflow:hidden}
+.tk-mat{border:1px solid var(--border-hairline);border-radius:12px;overflow:hidden}
 .tk-mat i{display:block;height:96px}
-.tk-mat span{display:block;padding:9px 10px 11px;font-family:var(--font-mono,'IBM Plex Mono',monospace);
-  font-size:11px;color:var(--text-muted,#a49d8f);border-top:1px solid var(--border-hairline,#2b2f38);
+.tk-mat span{display:block;padding:9px 10px 11px;font-family:var(--font-mono);
+  font-size:11px;color:var(--text-muted);border-top:1px solid var(--border-hairline);
   line-height:1.45}
-.tk-mat span b{color:var(--text-primary,#ede7da);font-weight:400;display:block}
+.tk-mat span b{color:var(--text-primary);font-weight:400;display:block}
 
 /* ---- verdict chips ---- */
-.tk-pass,.tk-fail,.tk-warn{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
+.tk-pass,.tk-fail,.tk-warn{font-family:var(--font-mono);font-size:10px;
   border-radius:5px;padding:2px 7px;white-space:nowrap}
-.tk-pass{color:#77d19b;background:rgba(79,169,107,.12);border:1px solid #3f7d55}
-.tk-warn{color:#d7ac53;background:rgba(199,162,78,.12);border:1px solid rgba(199,162,78,.45)}
-.tk-fail{color:#e79087;background:rgba(200,90,80,.12);border:1px solid #8f4841}
+.tk-pass{color:var(--outcome-yes-text);background:rgba(79,169,107,.12);border:1px solid var(--outcome-yes-line)}
+.tk-warn{color:var(--text-brass);background:rgba(199,162,78,.12);border:1px solid rgba(199,162,78,.45)}
+.tk-fail{color:var(--outcome-no-text);background:rgba(200,90,80,.12);border:1px solid var(--outcome-no-line)}
 
 @media(max-width:640px){
   .tk-wrap{padding:0 14px 60px}
@@ -191,12 +191,12 @@
 /* ---- component stand pages (generated by _gen_component_pages.py) ---- */
 .ck-scene{margin:0 0 30px}
 .ck-scene-lbl{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:0 0 9px}
-.ck-scene-lbl b{font-family:var(--font-body,'DM Sans',sans-serif);font-size:13px;font-weight:600;
-  color:var(--text-primary,#ede7da)}
-.ck-w,.ck-scene-lbl a{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
-  color:var(--text-muted,#a49d8f);border:1px solid var(--border-hairline,#2b2f38);border-radius:100px;
+.ck-scene-lbl b{font-family:var(--font-body);font-size:13px;font-weight:600;
+  color:var(--text-primary)}
+.ck-w,.ck-scene-lbl a{font-family:var(--font-mono);font-size:10px;
+  color:var(--text-muted);border:1px solid var(--border-hairline);border-radius:100px;
   padding:2px 8px;text-decoration:none;letter-spacing:.03em}
-.ck-scene-lbl a:hover{color:var(--text-brass,#d7ac53);border-color:var(--border-brass,rgba(199,162,78,.3))}
+.ck-scene-lbl a:hover{color:var(--text-brass);border-color:var(--border-brass,rgba(199,162,78,.3))}
 /* The frame keeps the specimen at its declared width. If the column is narrower
    the frame scrolls sideways rather than squeezing the specimen, because the
    width is the point: it is what the media queries answer to. */
@@ -209,60 +209,60 @@
    kept in step by _frames.js when the column is too narrow to hold it. */
 .ck-frame{overflow:hidden;max-width:100%}
 .ck-frame iframe{display:block;border:0;max-width:none}
-.ck-zoom{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;letter-spacing:.03em;
-  color:var(--text-brass,#d7ac53);border:1px solid var(--border-brass,rgba(199,162,78,.3));
+.ck-zoom{font-family:var(--font-mono);font-size:10px;letter-spacing:.03em;
+  color:var(--text-brass);border:1px solid var(--border-brass,rgba(199,162,78,.3));
   border-radius:100px;padding:2px 8px}
 /* the icon grid on icons.html */
 .ck-icos{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
 .ck-ico{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;margin:0;
   padding:16px 8px;min-height:104px;text-align:center;border-radius:12px;
-  border:1px solid var(--border-hairline,#2b2f38);background:var(--bg-surface,#1c1f24)}
-.ck-ico svg{width:24px;height:24px;flex:0 0 24px;color:var(--text-primary,#ede7da)}
-.ck-ico figcaption{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
-  color:var(--text-primary,#ede7da);word-break:break-all}
-.ck-ico code{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
-  color:var(--text-muted,#a49d8f)}
-.ck-cap{font-family:var(--font-body,'DM Sans',sans-serif);font-size:12px;line-height:1.5;
-  color:var(--text-muted,#a49d8f);margin:9px 2px 0;max-width:76ch}
-.ck-cap-k{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
-  color:var(--text-brass,#d7ac53);letter-spacing:.06em;text-transform:uppercase}
-.ck-decl{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
-  color:var(--text-muted,#a49d8f);line-height:1.6;word-break:break-word}
+  border:1px solid var(--border-hairline);background:var(--bg-surface)}
+.ck-ico svg{width:24px;height:24px;flex:0 0 24px;color:var(--text-primary)}
+.ck-ico figcaption{font-family:var(--font-mono);font-size:10px;
+  color:var(--text-primary);word-break:break-all}
+.ck-ico code{font-family:var(--font-mono);font-size:10px;
+  color:var(--text-muted)}
+.ck-cap{font-family:var(--font-body);font-size:12px;line-height:1.5;
+  color:var(--text-muted);margin:9px 2px 0;max-width:76ch}
+.ck-cap-k{font-family:var(--font-mono);font-size:10px;
+  color:var(--text-brass);letter-spacing:.06em;text-transform:uppercase}
+.ck-decl{font-family:var(--font-mono);font-size:11px;
+  color:var(--text-muted);line-height:1.6;word-break:break-word}
 /* why a class shows zero screens. Only .ck-unused is a deletion candidate; the
    other four are alive in a way a class attribute count cannot see. */
-.ck-kind{display:inline-block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
+.ck-kind{display:inline-block;font-family:var(--font-mono);font-size:10px;
   letter-spacing:.05em;text-transform:uppercase;border-radius:100px;padding:2px 8px;
-  border:1px solid var(--border-hairline,#2b2f38);color:var(--text-muted,#a49d8f)}
-.ck-unused{color:var(--outcome-no-text,#e79087);border-color:var(--outcome-no-line,rgba(200,90,80,.35))}
-.ck-runtime{color:var(--text-brass,#d7ac53);border-color:var(--border-brass,rgba(199,162,78,.3))}
+  border:1px solid var(--border-hairline);color:var(--text-muted)}
+.ck-unused{color:var(--outcome-no-text);border-color:var(--outcome-no-line,rgba(200,90,80,.35))}
+.ck-runtime{color:var(--text-brass);border-color:var(--border-brass,rgba(199,162,78,.3))}
 .ck-roles{display:flex;flex-wrap:wrap;gap:8px}
-.ck-role{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-hairline,#2b2f38);
-  border-radius:100px;padding:5px 12px 5px 6px;background:var(--bg-surface,#1c1f24)}
+.ck-role{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-hairline);
+  border-radius:100px;padding:5px 12px 5px 6px;background:var(--bg-surface)}
 .ck-role i{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.14);flex:0 0 18px}
-.ck-role code{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
-  color:var(--text-primary,#ede7da)}
+.ck-role code{font-family:var(--font-mono);font-size:11px;
+  color:var(--text-primary)}
 .ck-screens{display:flex;flex-wrap:wrap;gap:6px}
-.ck-screens a{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
-  color:var(--text-muted,#a49d8f);border:1px solid var(--border-hairline,#2b2f38);border-radius:8px;
+.ck-screens a{font-family:var(--font-mono);font-size:11px;
+  color:var(--text-muted);border:1px solid var(--border-hairline);border-radius:8px;
   padding:4px 9px;text-decoration:none}
-.ck-screens a:hover{color:var(--text-brass,#d7ac53);border-color:var(--border-brass,rgba(199,162,78,.3))}
-.ck-src summary{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;
-  color:var(--text-brass,#d7ac53);cursor:pointer;padding:8px 0}
-.ck-src pre{margin:0;padding:16px;border:1px solid var(--border-hairline,#2b2f38);border-radius:12px;
-  background:var(--bg-page,#0f1013);color:var(--text-muted,#a49d8f);font-size:11px;line-height:1.6;
+.ck-screens a:hover{color:var(--text-brass);border-color:var(--border-brass,rgba(199,162,78,.3))}
+.ck-src summary{font-family:var(--font-mono);font-size:11px;
+  color:var(--text-brass);cursor:pointer;padding:8px 0}
+.ck-src pre{margin:0;padding:16px;border:1px solid var(--border-hairline);border-radius:12px;
+  background:var(--bg-page);color:var(--text-muted);font-size:11px;line-height:1.6;
   overflow-x:auto;white-space:pre-wrap;word-break:break-word}
 .ck-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:0 0 8px}
-.ck-card{display:block;border:1px solid var(--border-hairline,#2b2f38);border-radius:12px;padding:16px;
-  background:var(--bg-surface,#1c1f24);text-decoration:none;transition:border-color .16s ease,transform .16s ease}
+.ck-card{display:block;border:1px solid var(--border-hairline);border-radius:12px;padding:16px;
+  background:var(--bg-surface);text-decoration:none;transition:border-color .16s ease,transform .16s ease}
 .ck-card:hover{border-color:var(--border-brass,rgba(199,162,78,.3));transform:translateY(-2px)}
-.ck-card b{display:block;font-family:var(--font-body,'DM Sans',sans-serif);font-size:14px;font-weight:600;
-  color:var(--text-primary,#ede7da)}
-.ck-card code{display:block;font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:10px;
-  color:var(--text-muted,#a49d8f);margin-top:6px}
+.ck-card b{display:block;font-family:var(--font-body);font-size:14px;font-weight:600;
+  color:var(--text-primary)}
+.ck-card code{display:block;font-family:var(--font-mono);font-size:10px;
+  color:var(--text-muted);margin-top:6px}
 /* A card thumbnail is the specimen itself, scaled down and made inert. It is
    live rather than a screenshot, so it cannot go stale, and lazy plus
    content-visibility means only what is on screen is ever instantiated. */
 .ck-card{content-visibility:auto;contain-intrinsic-size:236px 210px}
 .ck-thumb{display:block;position:relative;height:140px;margin:-4px 0 12px;overflow:hidden;
-  border-radius:9px;border:1px solid var(--border-hairline,#2b2f38);background:var(--bg-page,#0f1013)}
+  border-radius:9px;border:1px solid var(--border-hairline);background:var(--bg-page)}
 .ck-thumb iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none}

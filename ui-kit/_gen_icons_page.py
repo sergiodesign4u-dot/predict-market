@@ -68,6 +68,43 @@ tiles = "".join(
     f"<figcaption>{esc(sid)}</figcaption><code>{uses[sid]} screens</code></figure>"
     for _, sid in SYMBOLS)
 
+
+# ---- the OTHER icon set, the one nothing was showing --------------------------
+# The sprite is fifteen symbols and this page documented all fifteen. The product
+# also DRAWS icons, inline, as <svg class="ic"> with raw paths: 39 distinct marks
+# over two thousand instances, none of them here. So the page described the
+# smaller of the two mechanisms and a person looking for the calendar or the
+# search glyph found nothing and had no way to learn that a second set existed.
+#
+# They are collected here rather than named by hand, because a name invented for
+# a shape nobody labelled is a guess. Each one is captioned with the accessible
+# name of the control it sits in, or the visible text beside it: what the product
+# already calls it. The ones with neither are honestly captioned "no label".
+ICO_RE = re.compile(r'<svg class="ic(?: ic-sm)?"[^>]*>(.*?)</svg>', re.S)
+inline = {}
+for f in SCREENS:
+    src = open(f, encoding="utf-8").read()
+    for m in ICO_RE.finditer(src):
+        inner = m.group(1)
+        if "<use" in inner:
+            continue
+        key = re.sub(r"\s+", " ", inner).strip()
+        rec = inline.setdefault(key, {"n": 0, "pages": set(), "label": ""})
+        rec["n"] += 1
+        rec["pages"].add(os.path.basename(f))
+        if not rec["label"]:
+            before = src[max(0, m.start() - 260):m.start()]
+            after = src[m.end():m.end() + 160]
+            lab = re.findall(r'aria-label="([^"]{1,40})"', before)
+            txt = re.findall(r"<span[^>]*>([^<]{1,32})</span>", after)
+            rec["label"] = (lab[-1] if lab else (txt[0].strip() if txt else ""))
+drawn = sorted(inline.items(), key=lambda kv: (-len(kv[1]["pages"]), -kv[1]["n"]))
+drawn_tiles = "".join(
+    f'<figure class="ck-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true">{k}</svg>'
+    f'<figcaption>{esc(v["label"] or "no label")}</figcaption>'
+    f'<code>{len(v["pages"])} screens</code></figure>'
+    for k, v in drawn)
+
 size_rows = "".join(
     f"<tr><td class='tk-role'>{esc(sel)}</td><td class='ck-decl'>{esc(decl)}</td></tr>"
     for sel, decl in SIZE_RULES[:14])
@@ -104,7 +141,7 @@ PAGE = f"""<!doctype html>
 {"".join(sym for sym, _ in SYMBOLS)}
 </defs></svg>
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>Icons</h1>
     <p>The one foundation that is not a token. Colour, material, geometry, type and motion are values
@@ -112,6 +149,7 @@ PAGE = f"""<!doctype html>
     own. Everything below is read out of the sprite the product ships.</p>
     <div class="tk-badges">
       <span class="tk-badge">{len(SYMBOLS)} named icons</span>
+      <span class="tk-badge">{len(drawn)} drawn inline</span>
       <span class="tk-badge">{carriers} of {len(SCREENS)} screens carry the sprite</span>
       <span class="tk-badge">inline only</span>
     </div>
@@ -125,8 +163,21 @@ PAGE = f"""<!doctype html>
     <div class="ck-icos">{tiles}</div>
   </section>
 
+  <section class="tk-sec" id="drawn">
+    <h2 data-n="02">Drawn inline, and not named</h2>
+    <p class="tk-note">The product has two icon mechanisms and this page used to show one. Above is
+    the sprite: fifteen marks with an id, referenced by <code>use</code>. Below is what the screens
+    actually draw most of the time, {len(drawn)} distinct shapes over
+    {sum(v["n"] for _, v in drawn)} instances, each written out as raw paths in the markup with no id
+    and no name. The caption is the accessible name of the control the mark sits in, or the label
+    beside it, because that is the only name any of them has. Two mechanisms is a decision, not a
+    defect, but an undocumented second one is: a designer looking for the search glyph could not find
+    out it existed.</p>
+    <div class="ck-icos">{drawn_tiles}</div>
+  </section>
+
   <section class="tk-sec" id="rule">
-    <h2 data-n="02">The sprite has to be in the document</h2>
+    <h2 data-n="03">The sprite has to be in the document</h2>
     <p class="tk-note">A <code>use</code> reference resolves against a symbol in the same document.
     An external reference (<code>href=&quot;sprite.svg#id&quot;</code>) does not load from
     <code>file://</code>, so every page that draws an icon inlines the symbols it needs, and a page
@@ -135,7 +186,7 @@ PAGE = f"""<!doctype html>
   </section>
 
   <section class="tk-sec" id="sizing">
-    <h2 data-n="03">Sizing and stroke</h2>
+    <h2 data-n="04">Sizing and stroke</h2>
     <p class="tk-note">Quoted from <code>components/base.css</code>. A filled sprite icon and an
     outline glyph are drawn differently, which is what the last rule handles.</p>
     <table class="tk-tbl"><thead><tr><th>selector</th><th>declarations</th></tr></thead>
@@ -143,11 +194,11 @@ PAGE = f"""<!doctype html>
   </section>
 
   <section class="tk-sec" id="sets">
-    <h2 data-n="04">The sets, live</h2>
+    <h2 data-n="05">The sets, live</h2>
     <p class="tk-note">The three icon blocks of the frozen kit, each in a frame of its own.</p>
     {frames}
   </section>
-</div>
+</main>
 
 <script src="_frames.js"></script>
 <script src="_nav.js"></script>

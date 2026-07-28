@@ -159,7 +159,7 @@ A tactile graphite-and-brass system for a prediction market that must read as cr
 
 This system is built for Alex, a News Junkie, whose documented fear is "this looks like crypto, so it is a scam." Every choice answers that fear with weight and restraint: contrast and one loud accent supply the energy, never shine or color-drench. The odds bar carries the outcome color so the buttons can stay quiet; the plate emboss supplies depth so nothing needs a glow. It explicitly rejects the trader-terminal look (order books, leverage sliders, PNL ranks, ticker walls, gamified loot), the beige / warm / soft-pastel AI-default palette, the low-contrast Kalshi complaint, and the muddy-navy Hedgehog look. The standing risk to pull back from is the green/red "wall of YES/NO buttons" trader-floor reflex.
 
-Sources of the language: `concept/docs/concept.md` (taste and the five attributes) and `concept/docs/references.md` (Refero research), realized in `concept/concept.html`, and applied to the product as color copies of the grey wireframes in `ui-visual/` via `ui-visual/_theme.css` (which `@import`s `ui-visual/_theme-vault.css`). The theme owns color / type / surface only; structure, copy, and the state set stay owned by `wireframes/`.
+Sources of the language: `concept/docs/concept.md` (taste and the five attributes) and `concept/docs/references.md` (Refero research), realized in `concept/concept.html`, and applied to the product as color copies of the grey wireframes in `ui-visual/`, every one of which links exactly one stylesheet, `components/index.css` (the two theme files that used to carry this were deleted in step 7). The theme owns color / type / surface only; structure, copy, and the state set stay owned by `wireframes/`.
 
 **Key Characteristics:**
 - Graphite canvas, one matte-brass accent, green/red reserved for outcome only.
@@ -217,7 +217,8 @@ The product is dark; its theme is a light one, and it exists as a proof of the s
 `components/tokens.css` is the whole system and it has exactly two levels.
 
 - **Primitive** (section 1): raw values with no opinion about purpose. The graphite ramp, bone, brass, the outcome greens and reds, the series, the alphas, the grain, and daylight's own primitives (chalk, ink, dark brass, the darker outcomes). A primitive is never read by a component.
-- **Semantic** (section 2): 133 roles, colour only. Each one points at a primitive through `var()` and carries the usage it was read from. A component may read a colour ONLY through a role; gate 13 fails the build otherwise.
+- **Semantic** (section 2): 133 roles, colour only, `--focus-ring` among them (same value as `--text-brass` today and split from it on purpose, so a states pass can re-tone focus without moving every link). Each one points at a primitive through `var()` and carries the usage it was read from. A component may read a colour ONLY through a role; gate 13 fails the build otherwise.
+- **Geometry has three scales, not one.** `--space-*` is the distance between things, `--size-*` the side of a thing, `--control-*` and `--icon-*` the box and the mark of an interactive element. They carry the same numbers and answer to different questions, which is why they carry different names.
 - **Geometry, type and motion get no second level.** A radius or a gap has nothing for a theme to override, so components read those primitives directly. That is a decision, not an omission.
 - **Section 3 is the theme**, not a third level: the same roles again with the values daylight needs.
 - **The stacking order is a scale too**, and it is a list of eleven named layers in section 1, not a set of loose numbers: `--z-under` (the thing something else is read against), `--z-content`, `--z-float`, `--z-close`, `--z-dock`, `--z-nav`, `--z-header`, `--z-menu`, then the three course-chrome layers. The number is only the order; the name is the reason. A component may not type a raw `z-index`.
@@ -270,15 +271,35 @@ The last two are graphics, not words: the bar is 3:1. Everything else clears 4.5
 ### Named Rules
 **The Numbers-Are-Mono Rule.** Every figure a spectator weighs (probability, volume, close time, pool size) is set in IBM Plex Mono. Prose and labels are never mono; numbers are never in the prose face.
 
-## 4. Spacing & Grid
+## 4. Spacing, size and the grid
 
-**The 2px grid.** Every gap, padding and margin is a multiple of 2. The primary steps are **4 / 8 / 12 / 16 / 20 / 24** (the 8pt-grid backbone); **2 / 6 / 10 / 14** exist for fine-tuning small elements. The only rule you must never break: **the value is divisible by 2** - 16, never 15; 10, never 11. This removes the "13 or 14px?" decision, keeps elements optically aligned, and makes the layout translate cleanly to code.
+**The 4px grid, and two scales on it, not one.** Every gap, padding and margin is a step of
+`--space-*`: **4 / 8 / 12 / 16 / 20 / 24 / 28 / 32 / 40 / 56**, with `2` as the only half step and
+`--hairline` (1px) kept out of it, because 1px is a line and not a distance. The scale used to have
+25 steps with 1 2 3 4 5 6 7 8 9 10 in a row; step 6 rounded every value to the nearest step, ties
+toward the heavier neighbour, and a number stopped being a step above 64px.
 
-- **Scale:** `2` (hairline nudges, icon gaps) · `4` (tight inner: label to value) · `6` (chip gaps) · `8` (inner group gap, small padding) · `10` (button / pair gaps) · `12` (component padding) · `16` (block gap, card padding) · `20` (outer gap between groups) · `24` (section separation) · `40` (page gutter).
-- **The inner/outer rhythm.** Within a group, gaps stay small (4-10); between groups, they open up (16-24). The bet sheet is the reference: ~20px between the header / YES-NO / amount / breakdown / confirm groups, ~6-12px inside each. Small-inside, bigger-outside is what makes a dense panel read as ordered rather than crammed.
-- **Exceptions are still even.** A one-off `2`, `6` or `10` for optical alignment is fine; an odd value (13, 15, 21) is not. When a legacy component needs a `9px` or `11px` tweak, round to the nearest even step.
-- **Touch targets** are a separate constraint layered on top: interactive controls are ≥44px on the tap surface (mobile), achieved with padding, not by breaking the grid.
-- **Enforcement status.** The Vault theme (`ui-visual/_theme.css` + `_theme-vault.css`, the source of truth for the component skins) is fully snapped to the grid - audited to 0 odd padding / margin / gap and 0 odd radius. The grey-box wireframe shell inherited into the pages still carries structural odd values; those are the structure layer, snapped page-by-page only when a screen is reworked, not swept blind. New Vault CSS must land even.
+**A distance is not a measurement.** The side of a thing has its own scale, `--size-*`: **2 / 4 / 8 /
+12 / 16 / 20 / 24 / 28 / 32 / 40 / 56 / 72**. Same numbers as the spacing scale today, different
+reason, so a different name: a gap is a rhythm and can be retuned as one; the side of an avatar, an
+icon plate, a legend swatch or a track moves when the thing moves. That scale shipped with two steps
+(56 and 72) and fifty-seven declarations therefore borrowed a `--space-*` step for their own width
+and height. Gate 12 fails the build on that now.
+
+**A control and a mark have their own names.** `--control-32 / 36 / 44 / 52` is the height of the box
+a finger or a pointer lands on; `--icon-12 / 16 / 18 / 22` is the drawn mark inside it. `--ring` (2px)
+is the width and the offset of the focus outline.
+
+- **The inner/outer rhythm.** Within a group, gaps stay small (4-12); between groups they open up
+  (16-24). The bet sheet is the reference: ~20px between the header / YES-NO / amount / breakdown /
+  confirm groups, 8-12px inside each. Small-inside, bigger-outside is what makes a dense panel read
+  as ordered rather than crammed.
+- **Touch targets follow the POINTER, not the viewport.** `@media(pointer:coarse)` gives every
+  interactive control 44px; a fine pointer keeps 36, which clears WCAG 2.5.8 (24x24) with room. Binding
+  that to `max-width:640px` is the bug it replaced: a touch tablet at 900px got the mouse target.
+- **Enforcement.** The system is `components/` and nothing else. Gate 12 fails on a raw scale value in
+  a component, on a `--space-*` step used as a measurement, and on a raw `z-index`; gate 9 fails on a
+  `<style>` block or a `style=` attribute on a screen; gate 13 fails on a colour read past its role.
 
 ## 5. Elevation
 

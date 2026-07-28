@@ -46,13 +46,13 @@ push();});})();</script>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>App header</h1>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/header.css</span>
-      <span class="tk-badge">85 rules</span>
+      <span class="tk-badge">83 rules</span>
       <span class="tk-badge">27 classes</span>
       <span class="tk-badge">76 screens</span>
     </div>
@@ -72,7 +72,7 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.hiw-btn:hover</td><td class='ck-decl'>color:var(--text-primary)</td></tr><tr><td class='tk-role'>.icon-btn:hover,.hiw-btn:hover,.notif-menu summary:hover,.avatar-menu summary:hover</td><td class='ck-decl'>background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:var(--color-action)</td></tr><tr><td class='tk-role'>.icon-btn.bal-add:hover</td><td class='ck-decl'>filter:brightness(1.08);box-shadow:0 6px 18px -8px var(--color-action)</td></tr><tr><td class='tk-role'>.avatar-menu .dropdown button:hover,.notif-drop li a:hover</td><td class='ck-decl'>background:color-mix(in oklab,var(--color-action) 10%,transparent)</td></tr><tr><td class='tk-role'>.icon-btn:focus-visible,.notif-menu summary:focus-visible,.avatar-menu summary:focus-visible,.hiw-btn:focus-visible,.logo-btn:focus-visible</td><td class='ck-decl'>outline:2px solid var(--text-brass);outline-offset:2px</td></tr><tr><td class='tk-role'>.app-case .app-header.scrolled .cat-condensed</td><td class='ck-decl'>max-height:54px;opacity:1;border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)</td></tr><tr><td class='tk-role'>.app-case .app-header .cat-condensed button:hover</td><td class='ck-decl'>color:var(--text-chip-hover);background:var(--tint-hover)</td></tr><tr><td class='tk-role'>.app-case .app-header .cat-condensed li[aria-current="page"] button</td><td class='ck-decl'>background:var(--tint-brass-09);border:1px solid var(--tint-brass-45);color:var(--text-brass-chip);box-shadow:0 0 10px -8px var(--glow-brass)</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.hiw-btn:hover</td><td class='ck-decl'>color:var(--text-primary)</td></tr><tr><td class='tk-role'>.icon-btn:hover,.hiw-btn:hover,.notif-menu summary:hover,.avatar-menu summary:hover</td><td class='ck-decl'>background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:var(--color-action)</td></tr><tr><td class='tk-role'>.icon-btn.bal-add:hover</td><td class='ck-decl'>filter:brightness(1.08);box-shadow:0 6px 18px -8px var(--color-action)</td></tr><tr><td class='tk-role'>.avatar-menu .dropdown button:hover,.notif-drop li a:hover</td><td class='ck-decl'>background:color-mix(in oklab,var(--color-action) 10%,transparent)</td></tr><tr><td class='tk-role'>.app-case .app-header.scrolled .cat-condensed</td><td class='ck-decl'>max-height:54px;opacity:1;border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)</td></tr><tr><td class='tk-role'>.app-case .app-header .cat-condensed button:hover</td><td class='ck-decl'>color:var(--text-chip-hover);background:var(--tint-hover)</td></tr><tr><td class='tk-role'>.app-case .app-header .cat-condensed li[aria-current="page"] button</td><td class='ck-decl'>background:var(--tint-brass-09);border:1px solid var(--tint-brass-45);color:var(--text-brass-chip);box-shadow:0 0 10px -8px var(--glow-brass)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
@@ -102,7 +102,7 @@ push();});})();</script>
     <p class="tk-note">To change this component, edit <code>components/header.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/header.css</summary><pre>/* components/header.css
-   Component: header. Classes: .app-header, .auth-btns, .avatar-menu, .badge-dot, .bal-add, .bal-amt, .bal-figure, .bal-label, .bal-swap, .bal-toggle, .bell-wrap, .cat-condensed, .dropdown, .hiw-btn and 9 more.
+   Component: header. Classes: .app-header, .auth-btns, .avatar-menu, .badge-dot, .bal-add, .bal-amt, .bal-figure, .bal-label, .bal-swap, .bal-toggle, .bell-wrap, .cat-condensed, .dropdown, .hiw-btn, .icon-btn, .left, .logo-btn, .notif-all, .notif-menu, .row, .utility.
 
    Reads: --bg-control, --bg-slab-from, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --shadow-ink, --shadow-ink-72, --text-brass, --text-brass-chip, --text-chip-hover, --text-icon-strong, --text-muted, --text-on-brass, --text-primary, --tint-brass-09, --tint-brass-45, --tint-hover
    Stand:  ui-kit/header.html
@@ -171,9 +171,9 @@ push();});})();</script>
 .notif-all{background:var(--bg-control);border-top:1px solid var(--border-hairline);color:var(--text-brass)}
 .notif-menu summary .ic:has(use){color:var(--text-icon-strong)}
 .icon-btn .ic:has(use){color:var(--text-primary)}
-.icon-btn:focus-visible,.notif-menu summary:focus-visible,.avatar-menu summary:focus-visible,.hiw-btn:focus-visible,.logo-btn:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 @media(max-width:640px){
-  .notif-menu summary,.avatar-menu summary,.icon-btn{min-width:var(--control-44);min-height:var(--control-44)}
+  /* the three targets that used to be sized here are in the pointer:coarse block below, with the
+     other four. One rule, one trigger. */
   .app-header .left &gt; .icon-btn{display:none}
   .hiw-btn{display:none}
   .app-header .row{padding-left:var(--space-56)}
@@ -182,7 +182,7 @@ push();});})();</script>
 .logo-btn::first-letter{color:var(--text-primary)}
 .logo-btn::before{content:'';flex:0 0 auto;width:23px;height:var(--icon-16);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='18'%3E%3Cpath d='M2 15 L9 7 L13 10 L24 2' fill='none' stroke='%23c99e3f' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/contain}
 .app-case .app-header{position:sticky;top:0;z-index:var(--z-header);background:var(--bg-slab-from);border-bottom:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light),0 14px 26px -20px var(--shadow-ink-72)}
-.app-case .app-header .cat-condensed{max-height:0;opacity:0;overflow:clip;transition:max-height var(--dur-slower) var(--ease-out),opacity .22s ease}
+.app-case .app-header .cat-condensed{max-height:0;opacity:0;overflow:clip;transition:max-height var(--dur-slower) var(--ease-out),opacity var(--dur-slow) ease}
 .app-case .app-header.scrolled .cat-condensed{max-height:54px;opacity:1;border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 .app-case .app-header .cat-condensed ul{list-style:none;margin:0;display:flex;flex-wrap:nowrap;gap:var(--space-8);padding:var(--space-8) var(--gutter);overflow-x:auto;scrollbar-width:none}
 .app-case .app-header .cat-condensed ul::-webkit-scrollbar{display:none}
@@ -203,7 +203,7 @@ push();});})();</script>
 }
 </pre></details>
   </section>
-</div>
+</main>
 
 <script src="_frames.js"></script>
 <script src="_nav.js"></script>

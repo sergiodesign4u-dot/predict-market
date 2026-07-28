@@ -46,13 +46,13 @@ push();});})();</script>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>Bottom nav</h1>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/bottomnav.css</span>
-      <span class="tk-badge">21 rules</span>
+      <span class="tk-badge">20 rules</span>
       <span class="tk-badge">3 classes</span>
       <span class="tk-badge">76 screens</span>
     </div>
@@ -71,7 +71,7 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] button</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] .ic:has(use)</td><td class='ck-decl'>color:var(--text-brass)</td></tr><tr><td class='tk-role'>.bottom-nav button:focus-visible</td><td class='ck-decl'>outline:2px solid var(--text-brass);outline-offset:2px</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] button</td><td class='ck-decl'>background:transparent;color:var(--text-brass)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] .ic</td><td class='ck-decl'>stroke:var(--text-brass)</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] button</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] .ic:has(use)</td><td class='ck-decl'>color:var(--text-brass)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] button</td><td class='ck-decl'>background:transparent;color:var(--text-brass)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] .ic</td><td class='ck-decl'>stroke:var(--text-brass)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
@@ -113,7 +113,7 @@ push();});})();</script>
 .bottom-nav li{flex:1;text-align:center}
 .bottom-nav li:last-child{border-right:none}
 .bottom-nav button{width:100%;border:none;background:transparent;padding:var(--space-8) var(--space-4);font-size:var(--text-10);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:var(--space-4)}
-.bottom-nav .ic{width:var(--space-20);height:var(--space-20)}
+.bottom-nav .ic{width:var(--size-20);height:var(--size-20)}
 .bottom-nav li[aria-current="page"] button{font-weight:var(--weight-bold)}
 .bn-bal{font-weight:var(--weight-bold);font-size:var(--text-12);padding:0 var(--space-4);line-height:var(--leading-base)}
 @media (min-width: 640px){
@@ -121,7 +121,6 @@ push();});})();</script>
 }
 .bottom-nav .ic:has(use){color:var(--text-muted)}
 .bottom-nav li[aria-current="page"] .ic:has(use){color:var(--text-brass)}
-.bottom-nav button:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 .bottom-nav{background:var(--bg-surface);z-index:var(--z-nav)}
 .bottom-nav li{border-right:1px solid var(--border-hairline)}
 .bottom-nav a{display:block;text-decoration:none;color:inherit}
@@ -132,7 +131,7 @@ push();});})();</script>
 .bottom-nav{border-top:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
 </pre></details>
   </section>
-</div>
+</main>
 
 <script src="_frames.js"></script>
 <script src="_nav.js"></script>

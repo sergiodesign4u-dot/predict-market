@@ -11,7 +11,7 @@
 .bottom-nav li{flex:1;text-align:center}
 .bottom-nav li:last-child{border-right:none}
 .bottom-nav button{width:100%;border:none;background:transparent;padding:var(--space-8) var(--space-4);font-size:var(--text-10);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:var(--space-4)}
-.bottom-nav .ic{width:var(--space-20);height:var(--space-20)}
+.bottom-nav .ic{width:var(--size-20);height:var(--size-20)}
 .bottom-nav li[aria-current="page"] button{font-weight:var(--weight-bold)}
 .bn-bal{font-weight:var(--weight-bold);font-size:var(--text-12);padding:0 var(--space-4);line-height:var(--leading-base)}
 @media (min-width: 640px){
@@ -19,7 +19,6 @@
 }
 .bottom-nav .ic:has(use){color:var(--text-muted)}
 .bottom-nav li[aria-current="page"] .ic:has(use){color:var(--text-brass)}
-.bottom-nav button:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 .bottom-nav{background:var(--bg-surface);z-index:var(--z-nav)}
 .bottom-nav li{border-right:1px solid var(--border-hairline)}
 .bottom-nav a{display:block;text-decoration:none;color:inherit}

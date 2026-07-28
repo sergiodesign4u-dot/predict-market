@@ -32,7 +32,7 @@ Per-stage layout: raw markdown lives in each stage's `docs/`, and the stage's HT
 | [`concept/`](./concept/) | **Concept**: the "Signal" visual language - `docs/references.md` (Refero) + `docs/concept.md` (designer taste, 5 attribute pairs, locked decisions); `directions.html` (3 directions) + `concept.html` (the stand: palette / type / form / contrast) |
 | [`ui-visual/`](./ui-visual/) | **UI + Visual**: 76 color copies of the wireframes in the Vault language. A screen carries no styles of its own: it links `components/index.css` and nothing else. Generated and reconciled by `_apply_theme.py`; the grey wireframes stay grey |
 | [`components/`](./components/) | **The design system**: `tokens.css` (primitive + semantic + the light theme), `base.css`, one file per component, all reached through `index.css` |
-| [`ui-kit/`](./ui-kit/) | **The vitrine and the gates**: a stand page per component, the token page, the icon sheet, `docs/architecture.md` + `docs/inventory.md` + `docs/coverage.md`, and `_check_kit.py` (fourteen checks) |
+| [`ui-kit/`](./ui-kit/) | **The vitrine and the gates**: a stand page per component, the token page, the icon sheet, `docs/architecture.md` + `docs/inventory.md` + `docs/coverage.md`, and `_check_kit.py` (sixteen checks) |
 | [`design-system/`](./design-system/) | Full design system documentation |
 | [`responsive/`](./responsive/) | Responsive design pass |
 | [`animation/`](./animation/) | Motion + animation |
@@ -53,8 +53,8 @@ The old→new folder map is recorded in [`STRUCTURE.md`](./STRUCTURE.md).
 | Wireframes | ✅ Done (104 pages: all screens + states + Favorites + Event Detail tabs + 5 system pages, flow-linked, header / nav wired, critique pass). Stage-04 reconcile: system pages (404/500/503/cookie/toasts), footer trust strip + SEO links, story-led per-card "why" + SEO sections, Related events, Win F5 friction |
 | Voice | ✅ Done (5 principles, lexicon, forbidden list, per-element rules; all 99 pages rewritten) |
 | Concept | ✅ Done - the "Signal" visual language: designer taste captured, 5 attribute pairs traced to data + borrowed technique, 3 contrasting directions (Newsroom / Signal / Arena), Signal chosen and locked; palette / type / form / photography / icons contrast-checked (WCAG AA) on the stand `concept.html` |
-| UI + Visual | 🔄 In progress - Event Feed family colorized (reference `event-feed.html` + 8 states) on `_theme.css`; redesigned How-it-works dialog (glow hero); `/impeccable critique` 33 -> 34 / 40 with P1/P2 hardened (AA contrast, 44px touch targets, focus rings, tinted-not-fill YES/NO, trust bar above the feed, distilled controls). Remaining: apply Signal to the other screen families |
-| Tokens + Components | ✅ Done (two token levels, 38 components, 45 stand pages, 14 gates, a light theme as the proof of the semantic layer) |
+| UI + Visual | ✅ Done - all 76 screens painted in Vault; every one links exactly `components/index.css`. `/impeccable critique` 31 -> 38 / 40 |
+| Tokens + Components | ✅ Done (two token levels, three geometry scales, 38 components, 45 stand pages, 15 gates, a light theme as the proof of the semantic layer) |
 | Design System | ⬜ Not started |
 | Responsive | ⬜ Not started |
 | Animation | ⬜ Not started |

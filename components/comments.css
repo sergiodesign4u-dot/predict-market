@@ -1,5 +1,5 @@
 /* components/comments.css
-   Component: comments. Classes: .cmt, .cmt-actions, .cmt-av, .cmt-badge, .cmt-body, .cmt-compose, .cmt-controls, .cmt-input, .cmt-list, .cmt-meta, .cmt-post, .cmt-signin, .cmt-text, .cmt-user and 1 more.
+   Component: comments. Classes: .cmt, .cmt-actions, .cmt-av, .cmt-badge, .cmt-body, .cmt-compose, .cmt-controls, .cmt-input, .cmt-list, .cmt-meta, .cmt-post, .cmt-signin, .cmt-text, .cmt-user, .reply.
 
    Reads: --bg-control, --bg-prompt-hover, --bg-well, --border-brass, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-09
    Stand:  ui-kit/comments.html
@@ -8,7 +8,7 @@
 
 .cmt-controls{display:flex;align-items:center;gap:var(--space-8);flex-wrap:wrap;margin-bottom:var(--space-8)}
 .cmt-compose{display:flex;gap:var(--space-8);margin-bottom:var(--space-8)}
-.cmt-av{width:var(--space-28);height:var(--space-28);flex:0 0 28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+.cmt-av{width:var(--size-28);height:var(--size-28);flex:0 0 var(--size-28);border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
 .cmt-input{flex:1;padding:var(--space-8);font-size:var(--text-12)}
 .cmt-post{padding:var(--space-8) var(--space-12);font-size:var(--text-12);cursor:pointer}
 .cmt-signin{text-align:center}
@@ -23,8 +23,11 @@
 .cmt-actions{display:flex;gap:var(--space-12);font-size:var(--text-11)}
 .cmt-actions button{border:none;background:transparent;padding:0;font-size:var(--text-11);cursor:pointer;display:inline-flex;gap:var(--space-4);align-items:center}
 .cmt-actions .ic{width:var(--icon-12);height:var(--icon-12)}
-.cmt-list .cmt-av{background-image:url(../ui-visual/assets/avatar-2.jpg);background-size:cover;background-position:center;color:transparent;font-size:0;border:1px solid var(--border-hairline)}
-.cmt-list .cmt:nth-child(even) .cmt-av{background-image:url(../ui-visual/assets/avatar-1.jpg)}
+/* A PLACEHOLDER, and the file says so. Two sample faces alternating down the thread: the product
+   will write the real one on the element, the way the event photograph is written on the card.
+   The two are here rather than there only because there are 198 of them and a stand needs faces. */
+.cmt-list .cmt-av{background-image:url(../assets/avatar-2.jpg);background-size:cover;background-position:center;color:transparent;font-size:0;border:1px solid var(--border-hairline)}
+.cmt-list .cmt:nth-child(even) .cmt-av{background-image:url(../assets/avatar-1.jpg)}
 .app-case .cmt-post{transition:filter var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
 .app-case .cmt-post:hover{filter:brightness(1.08);box-shadow:0 6px 18px -8px var(--color-action)}
 .app-case .cmt-controls{color:var(--text-muted);font-size:var(--text-12);justify-content:space-between}
@@ -32,7 +35,7 @@
 .app-case .cmt-av{border:1px solid var(--border-brass);color:var(--text-brass);font-size:var(--text-10);background:linear-gradient(140deg,color-mix(in oklab,var(--color-action) 20%,var(--bg-control)),var(--bg-control))}
 .app-case .cmt-input{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-muted)}
 .app-case .cmt-post{border:0;border-radius:var(--radius-10);background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);font-weight:var(--weight-bold)}
-.app-case .cmt-signin{display:flex;align-items:center;justify-content:center;width:100%;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-muted);padding:var(--space-16);margin-bottom:var(--space-16);font-family:var(--font-body);font-size:var(--text-13);font-weight:var(--weight-semibold);cursor:pointer;transition:border-color .15s ease,color .15s ease,background .15s ease}
+.app-case .cmt-signin{display:flex;align-items:center;justify-content:center;width:100%;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-muted);padding:var(--space-16);margin-bottom:var(--space-16);font-family:var(--font-body);font-size:var(--text-13);font-weight:var(--weight-semibold);cursor:pointer;transition:border-color var(--dur-quick) ease,color var(--dur-quick) ease,background var(--dur-quick) ease}
 .app-case .cmt-signin:hover{border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-prompt-hover)}
 .app-case .cmt-user{color:var(--text-primary)}
 .app-case .cmt-meta{color:var(--text-muted)}

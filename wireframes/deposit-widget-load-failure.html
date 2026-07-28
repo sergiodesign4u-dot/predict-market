@@ -252,7 +252,7 @@
     .lang-menu .filter-panel { top: auto; bottom: calc(100% + 4px); right: auto; left: 0; min-width: 150px; }
 
     .footer-cols { display: flex; flex-direction: column; gap: 16px; }
-    .footer-col h3 { font-size: 11px; margin: 0 0 7px; text-transform: uppercase; letter-spacing: .04em; }
+    .footer-col h2 { font-size: 11px; margin: 0 0 7px; text-transform: uppercase; letter-spacing: .04em; }
     .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
     .footer-col .sub-label { font-size: 9px; color: #777; margin: 9px 0 4px; text-transform: uppercase; letter-spacing: .03em; }
     .tbd { display: inline-block; font-size: 9px; border: 1px dashed #999; padding: 0 4px; margin-left: 4px; color: #555; background: #ededed; vertical-align: middle; }
@@ -327,7 +327,7 @@
     .sheet { width: 100%; background: #f0f0f0; border: 1px solid #999; border-bottom: none; }
     .grab { width: 36px; height: 4px; background: #bbb; border-radius: 2px; margin: 6px auto 0; }
     .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
-    .sheet-head h2 { font-size: 14px; margin: 0; }
+    .sheet-head :is(h1,h2) { font-size: 14px; margin: 0; }
     .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
     .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     @media (min-width: 640px) { .backdrop { align-items: center; padding: 24px; } .sheet { max-width: 420px; border-bottom: 1px solid #999; } }
@@ -706,7 +706,7 @@
       <section class="sheet" aria-label="Payment didn't load">
         <div class="grab"></div>
         <div class="sheet-head">
-          <h2>Payment didn't load</h2>
+          <h1>Payment didn't load</h1>
           <a href="event-detail.html"><button type="button" class="sheet-close" aria-label="Close">x</button></a>
         </div>
         <div class="sheet-body">

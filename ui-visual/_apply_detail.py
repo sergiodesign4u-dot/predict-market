@@ -406,12 +406,12 @@ def reorder_multi(frag):
 def thumb_for(q):
     ql = q.lower()
     if any(k in ql for k in ("bitcoin", "ethereum", "solana", "xrp", "stablecoin", "crypto", "chain", "etf")):
-        return "assets/event-crypto.jpg"
+        return "../assets/event-crypto.jpg"
     if any(k in ql for k in ("party", "election", "senate", "government", "shutdown", "budget", "eu ", "france", "minister")):
-        return "assets/event-politics.jpg"
+        return "../assets/event-politics.jpg"
     if any(k in ql for k in ("eurovision", "bond", "album", "box office", "console", "game", "film", "genre")):
-        return "assets/spare-reader.jpg"
-    return "assets/spare-markets-dark.jpg"
+        return "../assets/spare-reader.jpg"
+    return "../assets/spare-markets-dark.jpg"
 
 
 def restyle_related(frag):

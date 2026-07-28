@@ -37,9 +37,9 @@ svg.ft-ic:has(use){fill:currentColor;stroke:none}
 .footer-trust .tr-txt b{color:var(--text-primary)}
 .footer-trust .tr-txt i{color:var(--text-muted)}
 .footer-trust .trust-item::after{content:'';position:absolute;top:0;bottom:0;right:0;width:46%;z-index:var(--z-under);pointer-events:none;opacity:.5;background-repeat:no-repeat;background-position:center right;background-size:cover;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 60%,transparent 99%);mask-image:linear-gradient(to left,var(--mask-solid) 60%,transparent 99%)}
-.footer-trust .trust-item:nth-child(1)::after{background-image:url("../ui-visual/assets/trust-column.webp")}
-.footer-trust .trust-item:nth-child(2)::after{background-image:url("../ui-visual/assets/trust-source.webp")}
-.footer-trust .trust-item:nth-child(3)::after{background-image:url("../ui-visual/assets/trust-globe.webp")}
+.footer-trust .trust-item:nth-child(1)::after{background-image:url("../assets/trust-column.webp")}
+.footer-trust .trust-item:nth-child(2)::after{background-image:url("../assets/trust-source.webp")}
+.footer-trust .trust-item:nth-child(3)::after{background-image:url("../assets/trust-globe.webp")}
 @media(max-width:760px){
   .footer-trust .trust-items{grid-template-columns:1fr}
 }

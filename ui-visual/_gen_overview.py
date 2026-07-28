@@ -31,6 +31,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
 from _resync_sidebar import FAMILIES  # noqa: E402
+# The boot has to be emitted HERE, not stamped on afterwards. It was added to this
+# page by a separate run of _theme_switch.py, so the first regeneration of the file
+# quietly dropped it and the index alone stopped following the switch. A generator
+# that does not know about a later pass will undo it every time it runs.
+from _theme_switch import BOOT  # noqa: E402
 
 
 def esc(s):
@@ -85,6 +90,7 @@ PAGE = """<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+{boot}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -98,7 +104,7 @@ PAGE = """<!doctype html>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar"></aside>
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>The painted screens</h1>
     <p>Every screen of the product in the Vault visual system: {families} families, {screens} pages,
@@ -116,7 +122,7 @@ PAGE = """<!doctype html>
   </header>
 
 {sections}
-</div>
+</main>
 
 <script>
 (function () {{
@@ -130,7 +136,7 @@ PAGE = """<!doctype html>
 </script>
 </body>
 </html>
-""".format(sections=SECTIONS, screens=N_SCREENS, families=N_FAMILIES)
+""".format(boot=BOOT, sections=SECTIONS, screens=N_SCREENS, families=N_FAMILIES)
 
 
 def main():

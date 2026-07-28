@@ -1,5 +1,5 @@
 /* components/chart.css
-   Component: chart. Classes: .chart-box, .chart-cap, .chart-svg, .chart-wrap, .ed-chart, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-multi, .ed-chart-now, .ed-legend, .ed-plot, .ed-xaxis, .ed-yaxis and 2 more.
+   Component: chart. Classes: .chart-cap, .chart-svg, .chart-wrap, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-now, .ed-legend, .ed-plot, .ed-xaxis, .ed-yaxis, .ml-line, .nowline.
 
    Reads: --bg-chart-well, --border-brass-hover, --border-hairline, --chart-line, --chart-line-glow, --outcome-yes-text, --text-muted
    Stand:  ui-kit/chart.html
@@ -28,5 +28,5 @@
 @media(min-width:760px){
   .app-case .chart-svg{height:280px}
 }
-.app-case .chart-svg .ml-line{filter:none;fill:none;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:opacity .2s ease,stroke-width .2s ease}
+.app-case .chart-svg .ml-line{filter:none;fill:none;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:opacity var(--dur-base) ease,stroke-width var(--dur-base) ease}
 .app-case .ed-legend{display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-16);margin-top:var(--space-12);padding-left:var(--space-2)}

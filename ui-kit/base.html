@@ -46,14 +46,14 @@ push();});})();</script>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>Base and page frame</h1>
     <p>Not a component: the page frame, the reset, the shared utilities and the neutralisation block that hides the grey-box scaffolding the wireframes left behind.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/base.css</span>
-      <span class="tk-badge">40 rules</span>
-      <span class="tk-badge">27 classes</span>
+      <span class="tk-badge">21 rules</span>
+      <span class="tk-badge">17 classes</span>
       <span class="tk-badge">76 screens</span>
     </div>
   </header>
@@ -72,14 +72,14 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>#ptab-record:checked ~ #p-record,#ptab-wins:checked ~ #p-wins,#ptab-resolved:checked ~ #p-resolved</td><td class='ck-decl'>display:block</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>/* FOCUS, DECLARED ONCE. Fourteen component files carried this exact rule and twenty-four did not, which is the shape reduced-motion had before step 7 gathered it here: a person navigating by keyboard is not asking each component separately. The default is below; a component now only speaks up when it needs something different (the theme switch wants an inset ring, a dialog link wants a radius, the bet amount field has to out-specify its own outline:none). */ :focus-visible</td><td class='ck-decl'>outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
     <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-page)"></i><code>--bg-page</code></span><span class="ck-role"><i style="background:var(--bg-slab)"></i><code>--bg-slab</code></span><span class="ck-role"><i style="background:var(--bg-slab-from)"></i><code>--bg-slab-from</code></span><span class="ck-role"><i style="background:var(--bg-slab-to)"></i><code>--bg-slab-to</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--outcome-no-figure)"></i><code>--outcome-no-figure</code></span><span class="ck-role"><i style="background:var(--outcome-yes-fill)"></i><code>--outcome-yes-fill</code></span><span class="ck-role"><i style="background:var(--outcome-yes-text)"></i><code>--outcome-yes-text</code></span><span class="ck-role"><i style="background:var(--surface-grain-coarse)"></i><code>--surface-grain-coarse</code></span><span class="ck-role"><i style="background:var(--text-icon)"></i><code>--text-icon</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-page)"></i><code>--bg-page</code></span><span class="ck-role"><i style="background:var(--bg-slab)"></i><code>--bg-slab</code></span><span class="ck-role"><i style="background:var(--bg-slab-from)"></i><code>--bg-slab-from</code></span><span class="ck-role"><i style="background:var(--bg-slab-to)"></i><code>--bg-slab-to</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--focus-ring)"></i><code>--focus-ring</code></span><span class="ck-role"><i style="background:var(--surface-grain-coarse)"></i><code>--surface-grain-coarse</code></span><span class="ck-role"><i style="background:var(--text-icon)"></i><code>--text-icon</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
@@ -89,7 +89,7 @@ push();});})();</script>
     shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
     used by nothing. Only the last kind is a deletion candidate, and they are collected in
     <a href="docs/coverage.md">coverage.md</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.bal-toggle</td><td class='tk-hex'>68</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.css</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.desk-only</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.device</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.groove-sep</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-kit" title="shown in the frozen kit, never on a painted screen">kit</span></td></tr><tr><td class='tk-role'>.html</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.ic</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ic-sm</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.icon-btn</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.md-amt</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.md-bar</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.md-get</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.md-price</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.md-row</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.md-row-head</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.md-sub</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.md-table</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.md-title</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ms-label</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ms-no</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ms-up</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ms-val</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ms-yes</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.placeholder-line</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-kit" title="shown in the frozen kit, never on a painted screen">kit</span></td></tr><tr><td class='tk-role'>.py</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.tbd</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-kit" title="shown in the frozen kit, never on a painted screen">kit</span></td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.bal-toggle</td><td class='tk-hex'>68</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.css</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.desk-only</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.device</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.groove-sep</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-kit" title="shown in the frozen kit, never on a painted screen">kit</span></td></tr><tr><td class='tk-role'>.html</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.ic</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ic-sm</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.icon-btn</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.market-depth</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.market-stats</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.md-</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.ms-</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.placeholder-line</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-kit" title="shown in the frozen kit, never on a painted screen">kit</span></td></tr><tr><td class='tk-role'>.py</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.tbd</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-kit" title="shown in the frozen kit, never on a painted screen">kit</span></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
@@ -104,7 +104,7 @@ push();});})();</script>
     <details class="ck-src"><summary>components/base.css</summary><pre>/* components/base.css
    the page frame itself: reset, body type, the device shell and the shared utility classes.
 
-   Reads: --bg-page, --bg-slab, --bg-slab-from, --bg-slab-to, --edge-groove-dark, --edge-groove-light, --outcome-no-figure, --outcome-yes-fill, --outcome-yes-text, --surface-grain-coarse, --text-icon, --text-muted, --text-primary
+   Reads: --bg-page, --bg-slab, --bg-slab-from, --bg-slab-to, --edge-groove-dark, --edge-groove-light, --focus-ring, --surface-grain-coarse, --text-icon, --text-primary
    Stand:  ui-kit/base.html
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
@@ -125,6 +125,13 @@ push();});})();</script>
    generators that share _theme_switch. --font-display, --font-body and
    --font-mono in tokens.css name what has to arrive. */
 
+/* What is NOT here any more. base.css is the page frame: the reset, the body type, the device
+   shell and the shared utilities. It was also carrying three components, because they arrived
+   with the flat kit and nobody moved them: the market stats and the market-depth table (.ms-*
+   and .md-*, now in market.css, which already owned .market-stats and .market-depth), the
+   profile tab switch (#ptab-* in tabs.css) and the bet-sheet keyframe (betpanel.css). A file
+   named for the frame is where a component goes to be invisible. */
+
 *{box-sizing:border-box}
 body{margin:0;line-height:var(--leading-base);color:var(--text-primary);font-family:var(--font-body-root);background:var(--bg-page)}
 button,select,summary{font:inherit}
@@ -132,6 +139,13 @@ button,select,summary{font:inherit}
 .ic-sm{width:var(--icon-12);height:var(--icon-12);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ic,.ic-sm{stroke:var(--text-icon)}
 svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none}
+/* FOCUS, DECLARED ONCE. Fourteen component files carried this exact rule and twenty-four did not,
+   which is the shape reduced-motion had before step 7 gathered it here: a person navigating by
+   keyboard is not asking each component separately. The default is below; a component now only
+   speaks up when it needs something different (the theme switch wants an inset ring, a dialog link
+   wants a radius, the bet amount field has to out-specify its own outline:none). */
+:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
+
 /* Marked important on purpose, and it has to stay that way. This is a
    visibility utility: the element it is on has its own display from its own
    component (.icon-btn and .bal-toggle both say inline-flex), and base.css is
@@ -159,27 +173,6 @@ body.app-case{background:var(--bg-page)}
    an annotation about what is not built yet belongs in wireframes/, which owns it. */
 .tbd,.placeholder-line{display:none}
 .groove-sep{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
-#ptab-record:checked ~ #p-record,#ptab-wins:checked ~ #p-wins,#ptab-resolved:checked ~ #p-resolved{display:block}
-.app-case .ms-label{font-family:var(--font-mono);font-size:var(--text-10);letter-spacing:.03em;text-transform:uppercase;color:var(--text-muted)}
-.app-case .ms-val{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary)}
-.app-case .ms-yes{color:var(--outcome-yes-text)}
-.app-case .ms-no{color:var(--outcome-no-figure)}
-.app-case .ms-up{color:var(--outcome-yes-text)}
-.app-case .md-title{font-family:var(--font-body);font-size:var(--text-13);font-weight:var(--weight-bold);color:var(--text-primary)}
-.app-case .md-sub{display:block;font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted);margin:var(--space-4) 0 var(--space-12)}
-.app-case .md-table{display:flex;flex-direction:column;gap:var(--space-2)}
-.app-case .md-row{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-8);align-items:center;padding:var(--space-8) var(--space-12);border-radius:var(--radius-10);overflow:clip;font-family:var(--font-mono);font-size:var(--text-12);color:var(--text-primary)}
-.app-case .md-row-head{padding:var(--space-2) var(--space-12);color:var(--text-muted);font-size:var(--text-10);text-transform:uppercase;letter-spacing:.03em}
-.app-case .md-bar{position:absolute;left:0;top:0;bottom:0;background:var(--outcome-yes-fill);z-index:var(--z-under)}
-.app-case .md-row &gt; span:not(.md-bar){position:relative;z-index:var(--z-content)}
-.app-case .md-amt{font-weight:var(--weight-semibold)}
-.app-case .md-price{color:var(--outcome-yes-text);text-align:center}
-.app-case .md-row-head &gt; span:nth-child(2){text-align:center}
-.app-case .md-get,.app-case .md-row-head &gt; span:last-child{text-align:right}
-@keyframes betSheetUp{
-  from{transform:translateY(100%)}
-  to{transform:translateY(0)}
-}
 
 /* Reduced motion, declared once for the whole system. Three components carried their own block and
    twenty did not, which is the wrong shape for a promise that has to hold everywhere: a person who
@@ -193,7 +186,7 @@ body.app-case{background:var(--bg-page)}
 }
 </pre></details>
   </section>
-</div>
+</main>
 
 <script src="_frames.js"></script>
 <script src="_nav.js"></script>

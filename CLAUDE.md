@@ -245,7 +245,7 @@ The visual language, decided as **rules traced to data + taste**, not a mood. So
 
 The styling layer became a system. `components/` holds `tokens.css` plus one css file per component,
 all reached through `components/index.css`; `ui-kit/` is the vitrine that shows it and the gates that
-keep it honest (`python3 ui-kit/_check_kit.py`, fourteen checks, exits non-zero on the first failure).
+keep it honest (`python3 ui-kit/_check_kit.py`, sixteen checks, exits non-zero on the first failure).
 Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from: `ui-kit/docs/tokens-audit.md`.
 
 - **Step 5 (done):** every painted screen dropped its inline `<style>` and its `_theme.css` link and
@@ -456,6 +456,82 @@ in both themes and stayed clean; what the gates could not see was where the styl
   six section labels took the system's `.1em` tracking, and four headings went 18.72px to 18px.
   Everything else identical to measure; 0 text pairs below AA in either theme.
 
+### Step 7c (done, 2026-07-28): the third audit, on a build where every gate was green
+
+Run against `components/`, `ui-kit/` and all 77 painted screens, plus `/impeccable audit` (16/20
+Good, no AI tells). **24 findings, 23 closed, 1 recorded as a decision.** Full record with the
+reasoning in `ui-kit/docs/architecture.md`, "What step 7c settled". What changed a rule:
+
+- **A generator that is not idempotent on all of its row kinds is not idempotent.**
+  `_fill_inventory.py` stripped its own columns from data rows and not from headers, so the header
+  grew two cells a run: seven runs later every table in `inventory.md` had a 21-cell header over
+  9-cell rows and none of them rendered.
+- **A class a file mentions is not a class it owns.** `coverage.md` said 76 screens for 34 of 36
+  components, because `market.css` styles `.market-title .ic` and `.ic` is on every screen. Ownership
+  is now the file that styles a class with the fewest ancestors (ties to cascade order) plus a
+  five-word hand-checked SHARED list. The same map writes the `Classes:` and `Stands on:` lines in
+  each css header, which were prose someone typed once and had been telling the truth while
+  coverage.md said 76. **Two artifacts of one system disagreeing is the defect; one computation
+  feeding both is the fix.**
+- **A distance is not a measurement.** The rule was written in step 6 and 57 declarations broke it,
+  because the measurement scale shipped with two steps (56, 72) and the product needs twelve. A rule
+  with no scale behind it cannot be followed. `--size-2 .. --size-72` now, and **gate 12 fails on a
+  `--space-*` step in a width, height or flex basis**, which the raw-value check cannot see.
+- **Removing an `!important` means ending the argument, not deleting the word.** `.grid` carried one,
+  and dropping it let `.cat-main .grid` win: the category pages would have changed their column
+  track. Four rules above it were already dead (three breakpoints losing on source order, the
+  category variant losing to the shout). Deleting the four made the shout removable without moving a
+  card.
+- **A rule applied to two files is not applied.** Step 7 moved touch targets to `pointer:coarse` and
+  reached `catnav` and `header`; six components still bound 44px to `max-width:640px`, so a touch
+  tablet above 640px got the 36px control, the exact device the rule was written for. Measured after:
+  coarse pointer at 380 and at 1280, every control 44px; fine pointer 36, which clears 2.5.8.
+- **Structure is owned by `wireframes/`, so fixing only the paint leaves the owner wrong.** Step 7b
+  reported "heading skips across the painted tree: 0" and the grey tree, which owns structure, still
+  had an h1-to-h3 jump on 46 pages and no `<h1>` on 19. **Gate 15 reads both trees.** Footer columns
+  went h3 to h2 in both; the Event Detail column heads went h4 to h3, which made them match the
+  `.ed-section` label rule, so that rule became a CHILD selector (**a section label is the section's
+  own heading, not any heading inside it**); the 17 dialog-host screens took the `<h1>` from the
+  heading their own dialog already carries, so no copy was invented. The two Event Detail loading
+  skeletons keep none on purpose and gate 15 names them.
+- **A UI string is not a style hook.** `[aria-label="Track record"]` carried seven rules, so the
+  profile reputation grid hung off an English phrase owned by `voice/`. Now `.pos-record`.
+  `[aria-current="page"]` stays: a state attribute is a state.
+- **A promise made component by component is not made.** 14 files carried the identical
+  `:focus-visible` rule, 24 did not, and there was no default. One rule in `base.css`, one new role
+  (`--focus-ring`, split from `--text-brass`), three exceptions that say why.
+- **Where the system layer may reach.** `components/` held 24 `url(../ui-visual/assets/...)`: the
+  system depended on the product's screen folder. Assets are `assets/` at the root now. Sixteen of
+  those were worse than a path: `.grid > .card:nth-of-type(1..12) .thumb` encoded WHICH feed card
+  shows which photograph, and the event photograph belongs on the element by this file's own rule.
+- Also: three stale comments in `tokens.css` (a note that outlived the defect it described, a pointer
+  at a primitive merged away in step 6, a role promising a difference it never had, deleted); 12 of
+  the 27 same-value role groups now say so; motion moved onto the declared duration scale (21 raw
+  timings, none of which was a step); the vitrine's `_page.css` dropped 93 frozen Vault hex values;
+  **`icons.html` gained the 29 icons the product DRAWS inline** beside the 15 it references from the
+  sprite, because a vitrine that documents one of two mechanisms describes the smaller one; every
+  stand page gained a `<main>` landmark; and gate 9's "nothing loads the flat kit" was repointed,
+  since `kit.css` had already been deleted when it was written and it could not fail.
+- **Gate 16 exists because this pass shipped a broken declaration.** A note appended to a token
+  without its comment markers put bare prose inside `:root`; the browser dropped every declaration
+  after it and the NO side of the outcome palette went transparent on 28 screens. Fifteen gates saw
+  nothing; a 380-page snapshot did. Gate 16 walks every block in `components/` and fails on anything
+  inside it that is not a declaration.
+- **Recorded as a decision, not fixed:** 20 declarations build a colour with `color-mix(in oklab,
+  var(--color-action) N%, ...)` at 16 different percentages, an undeclared second alpha ladder beside
+  the declared `--brass-a*` one. Gate 13 is satisfied (all of them read a role). Which steps that
+  ladder should have is a states question, and rounding them now would move hover and selected states
+  for the legibility of the file rather than of the product.
+- **Verified:** both trees, 5 widths, before and after, compared by what the browser reports as
+  visible. 380 product snapshots, **0 with a different visible element count**; what moved was the
+  asset URLs (same files) and two chart polylines caught mid-transition. 175 vitrine pages changed
+  element count, all of them the corrected screen lists and the new icon section. Target size
+  measured, not reasoned about: coarse pointer 44px at 380 and at 1280, fine pointer 36px. Then the
+  whole product in both themes at 380 and 1280: **54774 text pairs, 0 below AA, 0 page errors, 0
+  horizontal overflow.** Two earlier runs of that sweep were wrong (950 failures that were gradient
+  buttons the checker could not read, then 405 that were a theme swap measured mid-transition):
+  **a measurement not checked against a known-good case is a claim, not a proof.** **Gates: 16.**
+
 ### The rule for a change, from here on
 
 Replaces the Stage-07 wording that pointed at `ui-kit/kit.css` and `ui-kit/kit.html`; neither has
@@ -471,10 +547,17 @@ that role any more.
   it fails gate 9. Three things are not styling and may stay: a datum (a bar drawn to a width), the
   event photograph, and a value the page script writes at run time.
 - **A heading level is structure**, so it is decided in `wireframes/` and the colour copy follows.
-  Exactly one `<h1>` per screen, no skipped level.
+  Exactly one `<h1>` per screen, no skipped level, **in both trees** (gate 15 reads both, because a
+  check that reads only the copy can pass while the original is wrong).
+- **Geometry has three scales and they are not interchangeable.** `--space-*` is the distance BETWEEN
+  things, `--size-*` the side OF a thing, `--control-*` and `--icon-*` the box and the mark of an
+  interactive element. Same numbers, different questions (gate 12).
+- **A sample photograph is content**, so it goes on the element as `style="background-image:..."`,
+  which is one of the three things gate 9 lets through. A shared image asset lives in `assets/` at the
+  root, owned by neither layer.
 - **A new component** = css in `components/` + a page in `ui-kit/` + an entry in `ui-kit/_nav.js` +
   a row in `ui-kit/docs/inventory.md` (with its CSS file and Page columns). Then
-  `python3 ui-kit/_check_kit.py` has to pass, all fourteen.
+  `python3 ui-kit/_check_kit.py` has to pass, all sixteen.
 - **`ui-kit/kit.html` is frozen.** It is the flat kit the system was read out of and it is kept as
   provenance; a component is never added to it. **`ui-kit/shell.html` composes** the header and
   bottom-nav specimens and holds no markup of its own.

@@ -51,6 +51,7 @@ The repo was reorganized from a flat, ~9-stage anticipated layout to the layout 
 | `voice/voice.md`, `voice/microcopy.md` | `voice/docs/voice.md`, `voice/docs/microcopy.md` |
 | `voice.html` | `voice/voice.html` |
 | `tokens/`, `components/` | the code lives in `components/`, the vitrine and its docs in `ui-kit/`; the planned `tokens-components/` folder was never used and was deleted in step 7 |
+| `assets/` | every shipped image, at the root and owned by neither layer. It was `ui-visual/assets/` until step 7c, which meant `components/` reached into the product's screen folder to draw a component |
 
 ### New artifacts (did not exist before)
 

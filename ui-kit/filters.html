@@ -46,7 +46,7 @@ push();});})();</script>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
 
-<div class="tk-wrap">
+<main class="tk-wrap">
   <header class="tk-hero">
     <h1>Sort and filters</h1>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
@@ -72,7 +72,7 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.toggle[aria-checked="true"]</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.app-case .filter-menu summary:hover</td><td class='ck-decl'>border-color:var(--border-brass-hover)!important;background:var(--bg-control);color:var(--text-strong)</td></tr><tr><td class='tk-role'>.filter-panel li label:hover</td><td class='ck-decl'>background:var(--bg-control)</td></tr><tr><td class='tk-role'>.filter-panel li label:has(input:checked)</td><td class='ck-decl'>background:color-mix(in oklab,var(--color-action) 20%,transparent);color:var(--text-brass);font-weight:var(--weight-semibold)</td></tr><tr><td class='tk-role'>.toggle[role=switch][aria-checked=true]</td><td class='ck-decl'>background:var(--color-action);border-color:var(--color-action)</td></tr><tr><td class='tk-role'>.toggle[role=switch][aria-checked=true]::after</td><td class='ck-decl'>left:20px;background:var(--control-knob)</td></tr><tr><td class='tk-role'>.filter-menu summary:focus-visible</td><td class='ck-decl'>outline:2px solid var(--text-brass);outline-offset:2px</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.toggle[aria-checked="true"]</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.app-case .filter-menu summary:hover</td><td class='ck-decl'>border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)</td></tr><tr><td class='tk-role'>.filter-panel li label:hover</td><td class='ck-decl'>background:var(--bg-control)</td></tr><tr><td class='tk-role'>.filter-panel li label:has(input:checked)</td><td class='ck-decl'>background:color-mix(in oklab,var(--color-action) 20%,transparent);color:var(--text-brass);font-weight:var(--weight-semibold)</td></tr><tr><td class='tk-role'>.toggle[role=switch][aria-checked=true]</td><td class='ck-decl'>background:var(--color-action);border-color:var(--color-action)</td></tr><tr><td class='tk-role'>.toggle[role=switch][aria-checked=true]::after</td><td class='ck-decl'>left:20px;background:var(--control-knob)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
@@ -121,27 +121,31 @@ push();});})();</script>
 .lang-menu .filter-panel{top:auto;bottom:calc(100% + 4px);right:auto;left:0;min-width:150px}
 .filter-panel{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
 .filter-menu summary{background:var(--bg-surface);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
-.app-case .filter-menu summary{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20)!important;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
-.app-case .filter-menu summary:hover{border-color:var(--border-brass-hover)!important;background:var(--bg-control);color:var(--text-strong)}
+.app-case .filter-menu summary{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+.app-case .filter-menu summary:hover{border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)}
 .filter-panel input[type=radio],.filter-panel input[type=checkbox]{display:none}
 .filter-panel li{padding:0}
 .filter-panel li label{color:var(--text-primary);border-radius:var(--radius-10);margin:var(--space-2) var(--space-4);padding:var(--space-8) var(--space-8);transition:background var(--dur-fast),color var(--dur-fast)}
 .filter-panel li label:hover{background:var(--bg-control)}
 .filter-panel li label:has(input:checked){background:color-mix(in oklab,var(--color-action) 20%,transparent);color:var(--text-brass);font-weight:var(--weight-semibold)}
 .reverse-row{border-top:1px solid var(--border-hairline);color:var(--text-muted)}
-.toggle[role=switch]{position:relative;width:var(--space-40);height:var(--icon-22);border-radius:var(--radius-pill);background:var(--bg-control);border:1px solid var(--border-hairline);padding:0;font-size:0;flex:0 0 auto;cursor:pointer;transition:background var(--dur-quick)}
+.toggle[role=switch]{position:relative;width:var(--size-40);height:var(--icon-22);border-radius:var(--radius-pill);background:var(--bg-control);border:1px solid var(--border-hairline);padding:0;font-size:0;flex:0 0 auto;cursor:pointer;transition:background var(--dur-quick)}
 .toggle[role=switch]::after{content:'';position:absolute;top:2px;left:2px;width:var(--icon-16);height:var(--icon-16);border-radius:50%;background:var(--text-muted);transition:left var(--dur-quick) var(--ease-out),background var(--dur-quick)}
 .toggle[role=switch][aria-checked=true]{background:var(--color-action);border-color:var(--color-action)}
 .toggle[role=switch][aria-checked=true]::after{left:20px;background:var(--control-knob)}
 .toggle[role=switch][aria-disabled=true]{opacity:.42;cursor:not-allowed}
-.filter-menu summary:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
-@media(max-width:640px){
+/* Target size follows the POINTER, not the viewport. Step 7 wrote that rule and moved two
+   files; these stayed bound to a 640px viewport, so a touch tablet or a touch laptop got the
+   36px control. A fine pointer keeps 36, which clears 2.5.8 (24x24) with room. */
+@media(pointer:coarse){
   .app-case .filter-menu summary{min-height:var(--control-44)}
+}
+@media(max-width:640px){
   .filter-menu{position:relative}
 }
 </pre></details>
   </section>
-</div>
+</main>
 
 <script src="_frames.js"></script>
 <script src="_nav.js"></script>

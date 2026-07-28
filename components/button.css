@@ -1,7 +1,7 @@
 /* components/button.css
-   Component: button. Classes: .auth-btn, .btn-block, .btn-lg, .btn-md, .btn-primary, .btn-secondary, .btn-sm, .confirm-btn, .primary, .prov-apple, .prov-google, .prov-x, .provider-btn, .state-btn.
+   Component: button. Classes: .auth-btn, .btn-block, .btn-lg, .btn-md, .btn-primary, .btn-secondary, .btn-sm, .confirm-btn, .primary, .prov-apple, .prov-x, .provider-btn, .state-btn.
 
-   Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --line-brass-soft, --text-brass, --text-on-brass, --text-primary, --text-strong
+   Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --line-brass-soft, --text-on-brass, --text-primary, --text-strong
    Stand:  ui-kit/button.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -16,7 +16,6 @@ dialog.app-dialog .confirm-btn{padding:var(--space-12);font-size:var(--text-14);
 .confirm-btn{border:1px solid var(--border-hairline);padding:var(--space-12);font-size:var(--text-14);font-weight:var(--weight-bold);cursor:pointer;width:100%}
 .provider-btn{display:flex;align-items:center;gap:var(--space-8);border:1px solid var(--border-hairline);padding:var(--space-12);font-size:var(--text-13);cursor:pointer;width:100%;text-align:left}
 .provider-btn .ic{width:var(--icon-18);height:var(--icon-18)}
-.auth-btn:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 dialog.app-dialog .confirm-btn{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);border-radius:var(--radius-10)}
 dialog.app-dialog .provider-btn{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
 .auth-btn{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
@@ -35,7 +34,6 @@ dialog.app-dialog .provider-btn{background:var(--bg-control);border:1px solid va
 .app-case .btn-md{min-height:var(--control-44);padding:0 var(--space-16);font-size:var(--text-14)}
 .app-case .btn-lg{min-height:var(--control-52);padding:0 var(--space-24);font-size:var(--text-16);border-radius:var(--radius-10)}
 .app-case .btn-block{width:100%}
-.app-case .btn-primary:focus-visible,.app-case .btn-secondary:focus-visible{outline:2px solid var(--text-brass);outline-offset:2px}
 .app-case .resolved-panel .state-btn{width:100%}
 .app-case :is(.bet-panel,.bet-sheet) .confirm-btn{border:0;border-radius:var(--radius-10);background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);font-family:var(--font-body);font-weight:var(--weight-bold)}
 .app-case .bet-sheet .confirm-btn{padding:var(--space-16)}

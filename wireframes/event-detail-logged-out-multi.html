@@ -252,7 +252,7 @@
     .lang-menu .filter-panel { top: auto; bottom: calc(100% + 4px); right: auto; left: 0; min-width: 150px; }
 
     .footer-cols { display: flex; flex-direction: column; gap: 16px; }
-    .footer-col h3 { font-size: 11px; margin: 0 0 7px; text-transform: uppercase; letter-spacing: .04em; }
+    .footer-col h2 { font-size: 11px; margin: 0 0 7px; text-transform: uppercase; letter-spacing: .04em; }
     .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
     .footer-col .sub-label { font-size: 9px; color: #777; margin: 9px 0 4px; text-transform: uppercase; letter-spacing: .03em; }
     .tbd { display: inline-block; font-size: 9px; border: 1px dashed #999; padding: 0 4px; margin-left: 4px; color: #555; background: #ededed; vertical-align: middle; }
@@ -312,7 +312,7 @@
     dialog.app-dialog .hiw-sec dd { font-size: 13px; color: #333; line-height: 1.5; margin: 0; }
     dialog.app-dialog .hiw-full { display: block; box-sizing: border-box; border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; text-align: center; text-decoration: none; color: #222; }
     dialog.app-dialog .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
-    dialog.app-dialog .sheet-head h2 { font-size: 14px; margin: 0; }
+    dialog.app-dialog .sheet-head :is(h1,h2) { font-size: 14px; margin: 0; }
     dialog.app-dialog .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
     dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     dialog.app-dialog .fine { font-size: 11px; color: #555; line-height: 1.5; }
@@ -352,11 +352,11 @@
     .ed-prob-big { font-size: 13px; margin: 0; }
     .ed-prob-big .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; font-size: 14px; }
     .ed-section { padding: 10px; border-top: 1px solid #ccc; }
-    .ed-section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 6px; }
+    .ed-section h2, .ed-section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 6px; }
     .chart-box { border: 1px dashed #999; background: #ededed; height: 120px; display: flex; align-items: center;
       justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 6px; }
     .args { display: flex; flex-direction: column; gap: 12px; }
-    .arg-col h4 { margin: 0 0 4px; font-size: 11px; }
+    .arg-col h3 { margin: 0 0 4px; font-size: 11px; }
     .arg-col ul { margin: 0; padding-left: 16px; font-size: 12px; }
     .arg-col li { margin-bottom: 4px; }
     .resolution { font-size: 12px; line-height: 1.5; }
@@ -373,7 +373,7 @@
     .sheet { width: 100%; background: #f0f0f0; border: 1px solid #999; border-bottom: none; }
     .grab { width: 36px; height: 4px; background: #bbb; border-radius: 2px; margin: 6px auto 0; }
     .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
-    .sheet-head h2 { font-size: 14px; margin: 0; }
+    .sheet-head :is(h1,h2) { font-size: 14px; margin: 0; }
     .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
     .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     @media (min-width: 640px) { .backdrop { align-items: center; padding: 24px; } .sheet { max-width: 420px; border-bottom: 1px solid #999; } }
@@ -536,7 +536,7 @@
     .cmt-actions button { border: none; background: transparent; padding: 0; font-size: 11px; color: #555; cursor: pointer; display: inline-flex; gap: 4px; align-items: center; }
     .cmt-actions .ic { width: 13px; height: 13px; }
     .hold-cols { display: flex; flex-direction: column; gap: 12px; }
-    .hold-col h4 { font-size: 12px; margin: 0 0 4px; }
+    .hold-col h3 { font-size: 12px; margin: 0 0 4px; }
     .hold-row { display: flex; align-items: center; gap: 8px; font-size: 12px; padding: 5px 0; border-top: 1px solid #e0e0e0; }
     .hold-row:first-of-type { border-top: none; }
     .hold-rank { width: 14px; color: #777; font-size: 11px; }
@@ -569,7 +569,7 @@
     .footer-trust { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; padding: 10px 12px; border-bottom: 1px solid #ccc; font-size: 12px; color: #444; }
     .footer-trust .trust-item { display: inline-block; }
     .footer-popular { padding: 10px 12px; border-top: 1px solid #ccc; }
-    .footer-popular h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
+    .footer-popular h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
     .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
     .popular-links a { color: #444; }
     /* ---- Event Detail Related events block (WF reconcile, Krok 6) ---- */
@@ -892,7 +892,7 @@
             </div>
           </article>
           <section class="ed-section" id="edOutcomes">
-            <h3>Outcomes</h3>
+            <h2>Outcomes</h2>
             <div class="options opt-list">
               <div class="opt-row sel"><span class="opt-name">JD Vance <span class="opt-sel-tag">selected</span></span><span class="opt-prob">41%</span><span class="yesno compact"><button type="button" class="sel">YES</button><button type="button">NO</button></span></div>
               <div class="opt-row"><span class="opt-name">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
@@ -903,7 +903,7 @@
             <p class="fine">Tap YES or NO on an outcome to load it into the bet panel. The panel stays focused on the one you picked, however long this list gets.</p>
           </section>
           <section class="ed-section">
-            <h3>Price chart</h3>
+            <h2>Price chart</h2>
             <div class="chart-wrap">
               <svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" role="img" aria-label="YES probability over the last 30 days (schematic)">
                 <line class="grid-l" x1="0" y1="25" x2="300" y2="25"/>
@@ -923,18 +923,18 @@
             <span>Save<b>to Favorites</b></span>
           </div>
           <section class="ed-section">
-            <h3>Why this price</h3>
+            <h2>Why this price</h2>
             <p class="resolution">JD Vance leads at 41% as the incumbent-aligned candidate, with Trump-endorsed momentum the main swing factor. What is moving the field:</p>
             <div class="args">
               <div class="arg-col">
-                <h4>For the leader (Vance)</h4>
+                <h3>For the leader (Vance)</h3>
                 <ul>
                   <li>Strong early-state polling and party-establishment backing.</li>
                   <li>Front-runner fundraising lead over the rest of the field.</li>
                 </ul>
               </div>
               <div class="arg-col">
-                <h4>Against / for the field</h4>
+                <h3>Against / for the field</h3>
                 <ul>
                   <li>A late entrant could consolidate the anti-front-runner vote.</li>
                   <li>Early primaries historically reshuffle the order.</li>
@@ -944,7 +944,7 @@
           </section>
 
           <section class="ed-section">
-            <h3>Resolution conditions</h3>
+            <h2>Resolution conditions</h2>
             <p class="resolution"><strong>Resolves to the candidate</strong> who is the Republican Party's official presidential nominee at the 2028 national convention. All other outcomes resolve NO.<br>
             <strong>Source:</strong> official Republican National Committee certification. Resolved by the Predict Market team.</p>
           </section>
@@ -1004,7 +1004,7 @@
             <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Biggest bets">
               <div class="hold-cols">
                 <div class="hold-col">
-                  <h4>Biggest bets by outcome</h4>
+                  <h3>Biggest bets by outcome</h3>
                 <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">wh</span><span class="hold-name">whale_07 <span class="hold-out">JD Vance</span></span><span class="hold-amt">$1,240</span></div>
                 <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">he</span><span class="hold-name">hedge_hannah <span class="hold-out">Donald Trump</span></span><span class="hold-amt">$980</span></div>
                 <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">ma</span><span class="hold-name">marketmaven <span class="hold-out">JD Vance</span></span><span class="hold-amt">$620</span></div>
@@ -1163,7 +1163,7 @@
           <div class="footer-cols">
 
             <nav class="footer-col" aria-label="Markets">
-              <h3>Events</h3>
+              <h2>Events</h2>
               <p class="sub-label">By category</p>
               <ul>
                 <li><a href="politics.html">Politics</a></li>
@@ -1180,7 +1180,7 @@
             </nav>
 
             <nav class="footer-col" aria-label="Product">
-              <h3>Product</h3>
+              <h2>Product</h2>
               <ul>
                 <li><a href="how-it-works.html">How It Works</a></li>
                 <li><a href="#">Leaderboard</a></li>
@@ -1192,7 +1192,7 @@
             </nav>
 
             <nav class="footer-col" aria-label="Support">
-              <h3>Support</h3>
+              <h2>Support</h2>
               <ul>
                 <li><a href="#">Help Center</a> <span class="tbd">TBD</span></li>
                 <li><a href="#">FAQ</a> <span class="tbd">TBD</span></li>
@@ -1202,7 +1202,7 @@
             </nav>
 
             <nav class="footer-col" aria-label="Company">
-              <h3>Company</h3>
+              <h2>Company</h2>
               <ul>
                 <li><a href="#">About</a> <span class="tbd">TBD</span></li>
                 <li><a href="#">Careers</a> <span class="tbd">TBD</span></li>
@@ -1216,7 +1216,7 @@
 
         <!-- SEO popular-links block (second internal-linking plane, WF reconcile) -->
         <div class="footer-popular">
-          <h3>Popular right now</h3>
+          <h2>Popular right now</h2>
           <ul class="popular-links">
             <li><a href="politics.html">Politics events</a></li>
             <li><a href="crypto.html">Crypto events</a></li>

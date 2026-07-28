@@ -1,5 +1,5 @@
 /* components/event-detail.css
-   Component: event-detail. Classes: .arg-col, .args, .dim-note, .ed-act, .ed-actions, .ed-cat, .ed-facts, .ed-head, .ed-layout, .ed-main, .ed-market, .ed-prob-big, .ed-q, .ed-section and 5 more.
+   Component: event-detail. Classes: .arg-col, .args, .ed-actions, .ed-cat, .ed-facts, .ed-head, .ed-layout, .ed-main, .ed-prob-big, .ed-q, .ed-section, .ed-thumb, .resolution, .resolved-panel, .rp-inner, .rules-note.
 
    Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-strong, --bg-control, --bg-page, --bg-plate, --bg-plate-from, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --outcome-no-figure, --outcome-yes-text, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-lit, --text-muted, --text-primary, --tint-brass-09, --tint-brass-45
    Stand:  ui-kit/event-detail.html
@@ -9,7 +9,7 @@
 .ed-head{display:flex;align-items:flex-start}
 .ed-thumb{display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--space-2)}
 .args{display:flex;flex-direction:column}
-.arg-col h4{margin:0 0 var(--space-4)}
+.arg-col h3{margin:0 0 var(--space-4)}
 .arg-col ul{margin:0;padding-left:var(--space-16)}
 @media (min-width: 640px){
   .args{flex-direction:row}
@@ -27,32 +27,43 @@
   .app-case .ed-layout{flex-direction:row;align-items:flex-start}
 }
 .app-case .ed-head{position:relative;padding:var(--space-16) 118px var(--space-12) var(--space-20);gap:var(--space-12)}
-.app-case .ed-thumb{width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72);border:1px solid var(--border-brass);border-radius:var(--radius-10);background:url(../ui-visual/assets/event-politics.jpg) center/cover;color:transparent;font-size:0}
+/* The photograph is a placeholder here, not a rule: one sample event image so the stand has a
+   picture. The shipped page writes its own on the element. */
+.app-case .ed-thumb{width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72);border:1px solid var(--border-brass);border-radius:var(--radius-10);background:url(../assets/event-politics.jpg) center/cover;color:transparent;font-size:0}
 .app-case .ed-cat{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-semibold);letter-spacing:.07em;text-transform:uppercase;color:var(--text-brass-lit)}
 .app-case .ed-q{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-question);line-height:var(--leading-tight);letter-spacing:-.01em;color:var(--text-primary);margin:var(--space-8) 0 0;text-wrap:balance}
 .app-case .ed-prob-big{font-family:var(--font-mono);font-size:var(--text-12);letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin:var(--space-8) 0 0}
 .app-case .ed-section{padding:var(--space-16) var(--space-20);border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+/* A section label is the section's OWN heading, and the column heads nested inside it are not that.
+   The first attempt made this a CHILD selector, which is wrong twice over: the label is a grandchild
+   (it sits in .ed-chart-head) so the label lost its rule, and a section whose label happens to be a
+   direct child would still have caught a nested head. The distinction is not depth, it is which
+   block the heading belongs to, so it is the nested blocks that say so, one specificity step up. */
 .app-case .ed-section :is(h2,h3){font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);letter-spacing:.06em;text-transform:uppercase;color:var(--text-brass-lit);margin:0 0 var(--space-8)}
 .app-case .resolution{font-size:var(--text-13);line-height:var(--leading-loose);color:var(--text-primary)}
 .app-case .resolution strong{color:var(--text-primary)}
 .app-case .rules-note{margin:var(--space-12) 0 0;font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted)}
 .app-case .ed-actions{position:absolute;top:16px;right:18px;display:flex;gap:var(--space-8);z-index:var(--z-float)}
-.app-case .ed-actions button{width:var(--control-36);height:var(--control-36);display:inline-flex;align-items:center;justify-content:center;background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);color:var(--text-muted);cursor:pointer;transition:color .15s ease,border-color .15s ease,background .15s ease}
+.app-case .ed-actions button{width:var(--control-36);height:var(--control-36);display:inline-flex;align-items:center;justify-content:center;background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);color:var(--text-muted);cursor:pointer;transition:color var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease}
 .app-case .ed-actions button:hover{color:var(--text-primary);border-color:var(--bevel-strong)}
 .app-case .ed-actions .ic{width:var(--icon-18);height:var(--icon-18);fill:currentColor;stroke:none}
 .app-case .ed-actions button[data-fav][aria-pressed="true"]{color:var(--text-brass);border-color:var(--tint-brass-45);background:var(--tint-brass-09)}
 @media(max-width:560px){
   .app-case .ed-head{padding-right:100px}
   .app-case .ed-actions{top:12px;right:12px;gap:var(--space-4)}
-  .app-case .ed-actions button{width:var(--space-28);height:var(--space-28)}
+  .app-case .ed-actions button{width:var(--size-28);height:var(--size-28)}
 }
 .app-case .bet-panel.resolved-panel{display:block}
 .app-case .resolved-panel .rp-inner{padding:var(--space-24) var(--space-20)}
 .app-case .ed-facts{gap:var(--space-20);padding:var(--space-12) var(--space-20);border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light);font-family:var(--font-mono);font-size:var(--text-11);letter-spacing:.03em;text-transform:uppercase;color:var(--text-muted)}
 .app-case .ed-facts b{font-family:var(--font-display);font-size:var(--text-14);letter-spacing:0;text-transform:none;color:var(--text-primary);margin-top:var(--space-4)}
 .app-case .args{gap:var(--space-16)}
-.app-case .arg-col h4{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold)}
-.app-case .args .arg-col:first-child h4{color:var(--outcome-yes-text)}
-.app-case .args .arg-col:last-child h4{color:var(--outcome-no-figure)}
+/* Specificity is per PROPERTY, which is the trap here. This rule out-specifies the .ed-section
+   label above, but only for what it declares; the label's uppercase, its tracking and its brass
+   went on applying to a column head that had just been promoted h4 to h3 into its reach. A
+   heading that belongs to a nested block has to say so for every property the outer rule sets. */
+.app-case .args .arg-col h3{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);text-transform:none;letter-spacing:normal;color:var(--text-primary);margin:0 0 var(--space-4)}
+.app-case .args .arg-col:first-child h3{color:var(--outcome-yes-text)}
+.app-case .args .arg-col:last-child h3{color:var(--outcome-no-figure)}
 .app-case .arg-col ul{font-size:var(--text-13);color:var(--text-muted);line-height:var(--leading-base)}
 .app-case .arg-col li{margin-bottom:var(--space-8)}
