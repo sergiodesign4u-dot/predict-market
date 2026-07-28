@@ -758,6 +758,77 @@ closed.** Full record in `ui-kit/docs/architecture.md`, "What step 8 settled".
   116 turned out to be real. **A measurement not checked against a known-good case is a claim, not a
   proof. Gates: 20.**
 
+### Step 8b (done, 2026-07-28): the documents, the skin, and the sheet that could not scroll
+
+One item was on a list and two came from looking at the product. **Nine findings, all closed.** Full
+record in `ui-kit/docs/architecture.md`, "What step 8b settled".
+
+- **A document nobody can open is not documentation.** Every stage renders its reasoning
+  (`ia/docs/sitemap.md` -> `ia/sitemap.html`); Stage 09 was the one that did not, and its four
+  documents are 144 KB. Worse, the vitrine already LINKED one: **39 component pages pointed at
+  `docs/coverage.md`**, a href into a file the browser downloads instead of drawing. They are pages of
+  the vitrine now (`ui-kit/_gen_docs.py`), painted by the system they describe, with a contents rail,
+  a swatch beside every colour literal and a link on every file name the vitrine has a page for.
+  Generated, because these documents change every step and a hand copy is stale by the next one;
+  **gate 21** re-renders in memory and compares, because a file can be newer than its source and still
+  be wrong, and fails on any link into a raw `.md`. Run `_gen_component_pages.py` first: it writes
+  `docs/coverage.md`. The long read also found that **a section label is not a heading** - `.tk-sec>h2`
+  is small brass capitals, right over a specimen and wrong seventeen times down a page.
+- **A gate that compares the body certifies the body.** Gate 19 has guarded the Sign In / Deposit fork
+  since step 7f by comparing the sheet BODY, and the fork left was on the element the body hangs from:
+  all 17 standalone overlay pages carried `outcome-dialog`, which is the RESULT skin (`dialog.css`
+  splits the head on it and only `:not(.outcome-dialog)` gets the brass-lit plate). **The sign-in sheet
+  a person actually opens had the flat result head while the same sheet on the other 75 screens had
+  the lit one.** A skin is named for what the sheet IS: sign-in and deposit take the shared dialog's
+  own class list, win and loss keep theirs. Computed in `_unify_dialogs.py` from the canonical dialog,
+  with the family read from the page NAME, because **a rule that can only recognise its own input
+  before it has run once is not idempotent**. Gate 19 compares the skin now.
+- **A modal is bounded by the viewport, so it has to be able to scroll.** The user agent gives
+  `dialog:modal` both `max-height` and `overflow:auto`; `dialog.app-dialog{overflow:clip}` took the
+  second away. At 1280x620 the deposit sheet was cut with its **Add funds** button 116px past the edge
+  and nothing to scroll; the how-it-works sheet was unreachable below 900px of viewport at any width.
+  This is step 7's finding read backwards: there `overflow:hidden` was wrong for making a decorative
+  box a scroll container, here `overflow:clip` is wrong for stopping a box that has to be one. **Clip
+  decoration, or contain content** - one question, one property. The frame clips and the BODY scrolls,
+  so the head and the close stay put. Verified as the question a person asks: **64 sheet-and-viewport
+  combinations, last control reachable in all 64.**
+- **Three checkers were reading text as markup**, all surfaced by the documents: the renderer left the
+  quote unescaped, so a code block quoting `<link ... href="_theme.css">` failed gates 4 and 9; gate 4
+  also read a `url()` inside a `<pre>` (**text inside `<code>` or `<pre>` is a quotation, not a
+  reference**, which the component pages needed too, since each ends with its own source); and gate 20
+  searched the whole text for a font host, so the page explaining why the host was dropped failed the
+  gate that exists because of it (**a mention is not a call** - ask a `src`/`href` attribute and an
+  `@import`).
+- **A colour follows the surface it stands on.** The course sidebar keeps one dark palette in both
+  grounds, and `.ck-note-link` inside it read `--text-brass`, which in daylight is the dark brass for a
+  pale surface: **2.39:1 in the light theme on every page of the vitrine**. One role, `--chrome-accent`.
+  The vitrine's sub-AA pairs went 434 to 158, all that is left being `kit.html` (frozen) and the value
+  labels drawn ON their own swatches in `tokens.html`.
+- Also: `ui-kit/fonts.html` existed because step 8 taught gate 2 that fonts is not a component with a
+  stand and did not teach the page generator; the `Stands on:` header of 24 component files still said
+  76 screens; and `.outcome-dialog a{text-decoration:none}` had been paying for another skin's markup
+  (**a link that wraps a control is not a text link**, now in `dialog.css` for both trees).
+- **One measure for the page** (reported by eye at a wide window). `--container-max` is 1400 and only
+  the footer obeyed it: at 1920 the content ran 1620 while the footer under it stopped at 1400. Five
+  bands carried `max-width:none` from the colour pass and read the token now, so the band spans the
+  window and what is inside it (header row, category strip, trust bar, content, footer) shares one
+  left edge.
+- **An empty box is invisible to every sweep we run.** The four category pages and two feed states had
+  a 56px photograph box with no photograph, because step 7c moved the picture out of
+  `.grid > .card:nth-of-type(N) .thumb` onto the element and reached the pages that exist as files,
+  not the cards a generator writes. **A missing picture passes a contrast sweep, an overflow sweep and
+  a link check alike**; gate 9 asks for it now. The library has one photograph per category, so what
+  varies on a single-category page is the CROP of it. And **a photograph is not one declaration**: the
+  port stripped `background-image` on the way into grey and let `background-position` through, which
+  is the framing of a picture that is not there.
+- **Half of twelve is six.** The two bars of the close X sat at `calc(50% - 7px)`, one pixel left of
+  the disc, on every close button in the product. The vertical half was right, which is what made it
+  hard to see.
+- **Verified:** painted **420 page loads x 2 themes, 86534 text pairs, 0 below AA, 0 overflow, 0 page
+  errors**; the vitrine 196 loads in both themes, every remaining failure present at HEAD; standalone
+  dialog against shared, matched by class, **0 differences that paint**. Gates 19 and 21 tested by
+  injecting the drift they exist to catch. **Gates: 21.**
+
 ### The rule for a change, from here on
 
 Replaces the Stage-07 wording that pointed at `ui-kit/kit.css` and `ui-kit/kit.html`; neither has
@@ -786,13 +857,27 @@ that role any more.
   root, owned by neither layer.
 - **A new component** = css in `components/` + a page in `ui-kit/` + an entry in `ui-kit/_nav.js` +
   a row in `ui-kit/docs/inventory.md` (with its CSS file and Page columns). Then
-  `python3 ui-kit/_check_kit.py` has to pass, all twenty.
+  `python3 ui-kit/_check_kit.py` has to pass, all twenty-one.
+- **A document in `ui-kit/docs/` is a page of the vitrine.** It is rendered by `ui-kit/_gen_docs.py`
+  and registered in `_gen_docs.PAGES`, which is also where `_gen_component_pages.py` reads the side
+  panel group from; run the component generator first, because it writes `docs/coverage.md`. Nothing
+  in `ui-kit/` or `ui-visual/` may link a raw `.md`: a browser downloads one instead of drawing it
+  (gate 21).
+- **A checker asks the markup, not the text.** A page that quotes markup is normal here (every
+  component page ends with its own css, and the documents quote both), so a scan for a path, a
+  `url()` or a font host has to skip what is inside `<code>` and `<pre>` and look at the attribute
+  that would make the request. Three gates were reading a sentence as a reference.
 - **`ui-kit/kit.html` is frozen.** It is the flat kit the system was read out of and it is kept as
   provenance; a component is never added to it. **`ui-kit/shell.html` composes** the header and
   bottom-nav specimens and holds no markup of its own.
 - **Two token levels, not three.** Primitive + semantic. Colour is the only thing with a second
   level, because a radius or a gap has nothing for a theme to override; a component level is not
   part of this stage.
+- **A dialog is bounded by the viewport and its BODY scrolls**, at every width. The frame keeps
+  `overflow:clip` because it clips its own corners; a box cannot both clip decoration and contain
+  content, and the answer is that the head stays and the body moves. A skin (`outcome-dialog`,
+  `signin-dialog`) is named for what the sheet IS, and a standalone overlay page wears the shared
+  dialog's own class list plus `app-case` (gate 19).
 - **A screen has a twin, and the map is one file.** The two trees do not name every screen the
   same way (`politics.html` in grey, `event-feed-politics.html` in colour). That map is `_twins.py`
   at the root and nowhere else, because gate 18 pairs the trees by filename and an unpaired page is

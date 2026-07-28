@@ -82,7 +82,7 @@ def binary(q, why, p, vol, close, bm=False):
     return f'''          <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
+                <span class="thumb" data-photo>thumbnail placeholder</span>
                 <div class="top-txt"><a class="q" href="{DETAIL}">{q}</a><p class="why">{why}</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">{p}%</span></p>
@@ -107,7 +107,7 @@ def multi(q, why, opts, vol, close):
     return f'''          <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="thumb">thumbnail placeholder</span>
+                <span class="thumb" data-photo>thumbnail placeholder</span>
                 <div class="top-txt"><a class="q" href="{DETAIL_MULTI}">{q}</a><p class="why">{why}</p></div>
               </div>
               <div class="options">
@@ -213,6 +213,41 @@ SEO_TEXT = re.compile(r'(<div class="seo-text">\s*).*?(\s*</div><!-- /seo-text -
 GREY = HERE.parent / "wireframes"
 
 
+# --------------------------------------------------------------------------- photo
+# THE CARD SHOWS ITS EVENT'S PHOTOGRAPH, and the sample library has one per
+# category, so on a category page every card draws the same file. That is not a
+# rendering choice, it is what the library is: a page whose six events are all
+# Politics has one Politics photograph to draw them with. What varies is the
+# CROP. The thumbnail is a 56px strip masked to transparent at 52 per cent, so a
+# different slice of a 1600px photograph reads as a different picture while
+# staying a true picture of the same subject.
+#
+# Until step 7c this came from components/, as .grid > .card:nth-of-type(N)
+# .thumb, which meant a card's photograph was decided by its POSITION in a grid.
+# That step moved it onto the element, where it belongs, on the pages it walked;
+# these cards are written here, so they lost the picture and kept the empty box.
+# Nothing saw it for two steps, because an empty photograph is invisible to a
+# contrast sweep, an overflow sweep and a link check alike.
+CROPS = ["22% center", "62% center", "40% 30%", "80% center", "50% 70%", "12% center"]
+
+
+def photograph(html, key):
+    """Every marked thumbnail gets this category's photograph, cropped by its
+       place in the grid so no two cards on a page show the same slice."""
+    n = [0]
+
+    def fill(m):
+        pos = CROPS[n[0] % len(CROPS)]
+        n[0] += 1
+        return ('<span class="thumb" style="background-image:url(../assets/event-%s.jpg);'
+                'background-position:%s">' % (key, pos))
+
+    out = re.sub(r'<span class="thumb" data-photo>', fill, html)
+    if not n[0]:
+        raise SystemExit("_gen_category: no card to photograph on %s" % key)
+    return out
+
+
 def category_seo(html, key, label):
     """The below-fold SEO body a CATEGORY page owes, not the home page's.
 
@@ -268,6 +303,7 @@ def make_page(key, label, filename):
     cards = "\n\n".join(GRIDS[key])
     html = GRID_RE.sub(lambda m: m.group(1) + "\n\n" + cards + m.group(2), html, count=1)
     # and the SEO body this category owes, in place of the home page's
+    html = photograph(html, key)
     html = category_seo(html, key, label)
     (HERE / filename).write_text(html, encoding="utf-8")
     n = len(GRIDS[key])

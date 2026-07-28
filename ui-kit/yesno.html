@@ -51,7 +51,7 @@ push();});})();</script>
       <span class="tk-badge">components/yesno.css</span>
       <span class="tk-badge">21 rules</span>
       <span class="tk-badge">5 classes</span>
-      <span class="tk-badge">10 screens</span>
+      <span class="tk-badge">14 screens</span>
     </div>
   </header>
 
@@ -68,7 +68,7 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.yesno a,.yesno a:hover</td><td class='ck-decl'>text-decoration:none</td></tr><tr><td class='tk-role'>.yesno &gt; a:first-of-type button:hover</td><td class='ck-decl'>background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-control));border-color:var(--outcome-yes)</td></tr><tr><td class='tk-role'>.yesno &gt; a:last-of-type button:hover</td><td class='ck-decl'>background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-control));border-color:var(--outcome-no)</td></tr><tr><td class='tk-role'>.app-case .opt-list .yesno.compact button.sel:first-child</td><td class='ck-decl'>background:var(--outcome-yes);border-color:var(--outcome-yes);color:var(--text-on-yes)</td></tr><tr><td class='tk-role'>.app-case .opt-list .yesno.compact button.sel:last-child</td><td class='ck-decl'>background:var(--outcome-no);border-color:var(--outcome-no);color:var(--text-on-no)</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.yesno a,.yesno a:hover</td><td class='ck-decl'>text-decoration:none</td></tr><tr><td class='tk-role'>/* A side is a POSITION IN THE PAIR, not a fact about being wrapped in a link. Every colour below hung off `&gt; a`, so a .yesno whose buttons are not inside an anchor got no `color` from anywhere and fell back to the user agent's buttontext: near black on a graphite card, 1.42:1, on four screens. Same shape as the 992 browser-blue links step 7e found. A MISSING COLOUR IS A COLOUR, and a component has to say what it is whatever markup it stands in. */ .yesno &gt; a:first-of-type button:hover,.yesno &gt; button:first-of-type:hover</td><td class='ck-decl'>background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-control));border-color:var(--outcome-yes)</td></tr><tr><td class='tk-role'>.yesno &gt; a:last-of-type button:hover,.yesno &gt; button:last-of-type:hover</td><td class='ck-decl'>background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-control));border-color:var(--outcome-no)</td></tr><tr><td class='tk-role'>.app-case .opt-list .yesno.compact button.sel:first-child</td><td class='ck-decl'>background:var(--outcome-yes);border-color:var(--outcome-yes);color:var(--text-on-yes)</td></tr><tr><td class='tk-role'>.app-case .opt-list .yesno.compact button.sel:last-child</td><td class='ck-decl'>background:var(--outcome-no);border-color:var(--outcome-no);color:var(--text-on-no)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
@@ -80,17 +80,17 @@ push();});})();</script>
 
   <section class="tk-sec" id="classes">
     <h2 data-n="05">Classes</h2>
-    <p class="tk-note">Every class this file styles, and how many of the 76 painted screens carry
+    <p class="tk-note">Every class this file styles, and how many of the 104 painted screens carry
     it. A zero is not automatically dead: the last column says whether the class is built at runtime,
     shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
     used by nothing. Only the last kind is a deletion candidate, and they are collected in
-    <a href="docs/coverage.md">coverage.md</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.compact</td><td class='tk-hex'>10</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.opt-list</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sel</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.yesno</td><td class='tk-hex'>10</td><td class='tk-hex'></td></tr></tbody></table>
+    <a href="coverage.html">coverage</a>.</p>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.compact</td><td class='tk-hex'>14</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.opt-list</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sel</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.yesno</td><td class='tk-hex'>14</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
     <h2 data-n="06">Where it stands</h2>
-    <div class="ck-screens"><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites.html">favorites</a></div>
+    <div class="ck-screens"><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-feed-crypto-logged-out.html">event-feed-crypto-logged-out</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture-logged-out.html">event-feed-culture-logged-out</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-general-logged-out.html">event-feed-general-logged-out</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics-logged-out.html">event-feed-politics-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites.html">favorites</a></div>
   </section>
 
   <section class="tk-sec" id="css">
@@ -102,7 +102,7 @@ push();});})();</script>
 
    Reads: --bg-control, --border-hairline, --outcome-no, --outcome-no-fill, --outcome-no-fill-soft, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-soft, --outcome-yes-line, --outcome-yes-text, --text-on-no, --text-on-yes, --text-primary
    Stand:  ui-kit/yesno.html
-   Stands on: 10 ui-visual screens (event-detail-logged-out-multi.html, event-detail-multi.html, event-feed-crypto.html, event-feed-culture.html, event-feed-general.html, ...)
+   Stands on: 14 ui-visual screens (event-detail-logged-out-multi.html, event-detail-multi.html, event-feed-crypto-logged-out.html, event-feed-crypto.html, event-feed-culture-logged-out.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .yesno{display:flex;gap:var(--space-8);margin:0 0 var(--space-8)}
@@ -113,15 +113,21 @@ push();});})();</script>
 .yesno.compact button{flex:0 0 auto}
 .yesno button{border:1px solid;font-weight:var(--weight-bold);font-family:var(--font-body);text-decoration:none;min-height:var(--control-44);background:var(--bg-control);transition:background var(--dur-quick) ease,border-color var(--dur-quick) ease}
 .yesno a,.yesno a:hover{text-decoration:none}
-.yesno &gt; a:first-of-type button:hover{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-control));border-color:var(--outcome-yes)}
-.yesno &gt; a:last-of-type button:hover{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-control));border-color:var(--outcome-no)}
+/* A side is a POSITION IN THE PAIR, not a fact about being wrapped in a link.
+   Every colour below hung off `&gt; a`, so a .yesno whose buttons are not inside an
+   anchor got no `color` from anywhere and fell back to the user agent's
+   buttontext: near black on a graphite card, 1.42:1, on four screens. Same shape
+   as the 992 browser-blue links step 7e found. A MISSING COLOUR IS A COLOUR, and
+   a component has to say what it is whatever markup it stands in. */
+.yesno &gt; a:first-of-type button:hover,.yesno &gt; button:first-of-type:hover{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-control));border-color:var(--outcome-yes)}
+.yesno &gt; a:last-of-type button:hover,.yesno &gt; button:last-of-type:hover{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-control));border-color:var(--outcome-no)}
 .yesno.compact{gap:var(--space-8);margin:0}
 .yesno.compact button{padding:var(--space-4) var(--space-12);font-size:var(--text-11);line-height:var(--leading-tight)}
 /* No media block for the compact variant: `.yesno button` above sets min-height on every variant,
    compact included, and nothing unsets it. The rule that used to live here re-stated 44px inside a
    640px query, which read as "the target is a mobile concern". It is not. */
-.yesno &gt; a:first-of-type button{background:var(--outcome-yes-fill);color:var(--outcome-yes-text);border-color:var(--outcome-yes-line)}
-.yesno &gt; a:last-of-type button{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
+.yesno &gt; a:first-of-type button,.yesno &gt; button:first-of-type{background:var(--outcome-yes-fill);color:var(--outcome-yes-text);border-color:var(--outcome-yes-line)}
+.yesno &gt; a:last-of-type button,.yesno &gt; button:last-of-type{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
 .yesno button{border-radius:var(--radius-10)}
 .yesno.compact button{border-radius:var(--radius-10)}
 .app-case .opt-list .yesno.compact button{background:var(--bg-control);color:var(--text-primary);border:1px solid var(--border-hairline)}

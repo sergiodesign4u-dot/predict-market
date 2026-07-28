@@ -3,7 +3,7 @@
 
    Reads: --bevel-notice, --bg-chip, --bg-chip-pressed, --bg-control-hover, --edge-groove-light, --line-brass-soft, --text-chip-hover, --text-strong
    Stand:  ui-kit/loadmore.html
-   Stands on: 5 ui-visual screens (event-feed-crypto.html, event-feed-culture.html, event-feed-general.html, event-feed-politics.html, event-feed.html)
+   Stands on: 9 ui-visual screens (event-feed-crypto-logged-out.html, event-feed-crypto.html, event-feed-culture-logged-out.html, event-feed-culture.html, event-feed-general-logged-out.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .load-more-wrap{display:flex;justify-content:center}

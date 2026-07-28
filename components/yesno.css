@@ -3,7 +3,7 @@
 
    Reads: --bg-control, --border-hairline, --outcome-no, --outcome-no-fill, --outcome-no-fill-soft, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-soft, --outcome-yes-line, --outcome-yes-text, --text-on-no, --text-on-yes, --text-primary
    Stand:  ui-kit/yesno.html
-   Stands on: 10 ui-visual screens (event-detail-logged-out-multi.html, event-detail-multi.html, event-feed-crypto.html, event-feed-culture.html, event-feed-general.html, ...)
+   Stands on: 14 ui-visual screens (event-detail-logged-out-multi.html, event-detail-multi.html, event-feed-crypto-logged-out.html, event-feed-crypto.html, event-feed-culture-logged-out.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .yesno{display:flex;gap:var(--space-8);margin:0 0 var(--space-8)}

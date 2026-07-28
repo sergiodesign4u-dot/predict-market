@@ -3,7 +3,7 @@
 
    Reads: no colour role
    Stand:  ui-kit/outcome-dialog.html
-   Stands on: 17 ui-visual screens (deposit-error-card.html, deposit-error-kyc.html, deposit-loading.html, deposit-minimum-not-met.html, deposit-pending.html, ...)
+   Stands on: 6 ui-visual screens (loss-loading.html, loss.html, win-error.html, win-loading.html, win-payout-pending.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 dialog.app-dialog.outcome-dialog{max-width:var(--container-sheet)}

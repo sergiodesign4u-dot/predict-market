@@ -3,7 +3,7 @@
 
    Reads: --bg-surface, --border-hairline, --glow-brass, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/state-block.html
-   Stands on: 24 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Stands on: 40 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .state-block{padding:var(--space-28) var(--space-16);margin:var(--space-4) 0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-8)}

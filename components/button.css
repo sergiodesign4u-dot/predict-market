@@ -3,7 +3,7 @@
 
    Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --line-brass-soft, --text-on-brass, --text-primary, --text-strong
    Stand:  ui-kit/button.html
-   Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .auth-btn{padding:var(--space-8) var(--space-8);font-size:var(--text-12);cursor:pointer}

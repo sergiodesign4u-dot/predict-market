@@ -214,7 +214,13 @@
   --z-chrome-top:10;   /* its toggle, which stays reachable while it is open */
 
   /* ---- page frame ---- */
-  --container-max:1400px;    /* the product grid */
+  /* ONE MEASURE FOR THE PAGE. Every band (header, category strip, trust bar,
+     content, footer) spans the window and what is INSIDE it sits on this
+     width, so the logo, the first card and the first footer column share one
+     left edge. The paint had set max-width:none on five of the six and left
+     the footer capped, so above 1400 the content ran 200px wider than the
+     footer under it and the page had two measures. */
+  --container-max:1400px;    /* the product grid, and every band inside it */
   --container-read:800px;    /* SEO reading column */
   --container-dialog:464px;  /* how-it-works dialog */
   --container-sheet:420px;   /* outcome overlay */

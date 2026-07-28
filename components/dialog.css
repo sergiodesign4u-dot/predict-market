@@ -3,7 +3,7 @@
 
    Reads: --bevel-hair, --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --mask-solid, --result-won, --result-won-stone, --scrim, --scrim-photo, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-45
    Stand:  ui-kit/dialog.html
-   Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 dialog.app-dialog{width:92%;max-width:var(--container-sheet);padding:0}
@@ -47,7 +47,13 @@ dialog.app-dialog.win-dialog .sheet-head::after{content:'';position:absolute;top
 dialog.app-dialog.outcome-dialog .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;max-width:16ch;text-wrap:balance}
 dialog.app-dialog.outcome-dialog .sheet-head a{position:absolute;top:0;right:0;z-index:var(--z-close);line-height:0;text-decoration:none}
 dialog.app-dialog.outcome-dialog .sheet-close{position:absolute;top:13px;right:13px;width:var(--control-32);height:var(--control-32);padding:0;font-size:0;color:transparent;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
-dialog.app-dialog.outcome-dialog .sheet-close::before,dialog.app-dialog.outcome-dialog .sheet-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 7px);width:var(--size-12);height:var(--size-2);background:var(--control-knob);border-radius:var(--radius-2)}
+/* HALF OF TWELVE IS SIX. The two bars of the X are 12px wide and were placed at
+   calc(50% - 7px), which put the cross one pixel left of the disc it sits in,
+   on every close button in the product. The vertical half was right
+   (calc(50% - 1px) for a 2px bar), which is what made it hard to see: the mark
+   was centred in one axis and not the other, so it read as slightly wrong
+   rather than as misplaced. */
+dialog.app-dialog.outcome-dialog .sheet-close::before,dialog.app-dialog.outcome-dialog .sheet-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 6px);width:var(--size-12);height:var(--size-2);background:var(--control-knob);border-radius:var(--radius-2)}
 dialog.app-dialog.outcome-dialog .sheet-close::before{transform:rotate(45deg)}
 dialog.app-dialog.outcome-dialog .sheet-close::after{transform:rotate(-45deg)}
 dialog.app-dialog.outcome-dialog .sheet-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
@@ -66,7 +72,7 @@ dialog.app-dialog:not(.outcome-dialog) .sheet-head :is(h1,h2){position:relative;
 dialog.app-dialog:not(.outcome-dialog) .sheet-sub{position:relative;z-index:var(--z-content);margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-primary);max-width:34ch}
 dialog.app-dialog:not(.outcome-dialog) .sheet-close{position:absolute;top:13px;right:13px;z-index:var(--z-close);width:var(--control-32);height:var(--control-32);padding:0;font-size:0;color:transparent;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
 dialog.app-dialog:not(.outcome-dialog) .sheet-close .ic{display:none}
-dialog.app-dialog:not(.outcome-dialog) .sheet-close::before,dialog.app-dialog:not(.outcome-dialog) .sheet-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 7px);width:var(--size-12);height:var(--size-2);background:var(--control-knob);border-radius:var(--radius-2)}
+dialog.app-dialog:not(.outcome-dialog) .sheet-close::before,dialog.app-dialog:not(.outcome-dialog) .sheet-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 6px);width:var(--size-12);height:var(--size-2);background:var(--control-knob);border-radius:var(--radius-2)}
 dialog.app-dialog:not(.outcome-dialog) .sheet-close::before{transform:rotate(45deg)}
 dialog.app-dialog:not(.outcome-dialog) .sheet-close::after{transform:rotate(-45deg)}
 dialog.app-dialog:not(.outcome-dialog) .sheet-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
@@ -76,6 +82,14 @@ dialog.app-dialog.signin-dialog .fine a:hover{border-bottom-color:var(--text-bra
 /* the ring itself comes from base.css; this only rounds it, because a link inside a dialog is
    a block with a corner and a square ring around it reads as a mistake */
 dialog.app-dialog a:focus-visible{border-radius:var(--radius-6)}
+/* A LINK THAT WRAPS A CONTROL IS NOT A TEXT LINK. On a standalone overlay page
+   the same provider button navigates instead of opening the next sheet, and the
+   wiring is an <a> around the button (see ui-visual/_unify_dialogs.py WIRING).
+   An anchor decorates its text by default, so every provider label on the
+   sign-in page read underlined. It never showed while those pages also wore
+   .outcome-dialog, which carries a blanket a{text-decoration:none}: one skin was
+   quietly paying for another skin's markup. */
+dialog.app-dialog .sheet-body>a{text-decoration:none}
 
 /* ---------------------------------------------------------------- the sheet --
    A MODAL STAYS IN THE VIEWPORT. The user agent gives dialog:modal
@@ -105,14 +119,40 @@ dialog.app-dialog a:focus-visible{border-radius:var(--radius-6)}
    display:flex here would open every dialog on 76 screens at once. */
 dialog.app-dialog:modal{position:fixed}
 
+/* A SHEET TALLER THAN THE SCREEN SCROLLS, AT EVERY WIDTH. The user agent bounds
+   a modal (max-height:calc(100% - 38px)) AND lets it scroll (overflow:auto).
+   Line 61 above sets overflow:clip, which a plate needs to keep a gradient
+   inside its own corners, and it took the scrolling with it: at 1280x620 the
+   deposit sheet was cut at 582px with its "Add funds" button 116px past the
+   edge and no way to reach it. That is step 7's own finding read backwards.
+   There, overflow:hidden was wrong because it made a decorative box a scroll
+   container; here overflow:clip is wrong because it stops a box that has to be
+   one. Both are the same question asked of one property: clip decoration, or
+   contain content.
+
+   So the frame goes on clipping and the BODY scrolls. The head stays put, which
+   a sheet needs, because a sheet that scrolls as one piece takes its own title
+   and its own close button off the screen with it. min-height:0 because a flex
+   item will not shrink below its content without it.
+
+   The how-it-works sheet fills with .hiw-body rather than .sheet-body and takes
+   the same rule in its own file, because a class belongs to the component that
+   owns it: writing it here would move .hiw-body into this file's Classes line
+   and into coverage.md, which are computed and would then disagree with where
+   the block actually lives. It was the worst of the three, 764px tall and
+   unreachable below 900px of viewport at any width.
+
+   Not .bet-sheet: it declares its own position, max-height and overflow-y (see
+   betpanel.css) because it is a dock rather than a centred sheet, and making it
+   a flex column here would re-lay-out a screen this fix has no business
+   touching. */
+dialog.app-dialog:modal:not(.bet-sheet){display:flex;flex-direction:column}
+dialog.app-dialog:modal .sheet-body{overflow:auto;min-height:0}
+
 @media (max-width:640px){
   dialog.app-dialog:modal{width:100%;max-width:none;margin:auto auto 0;
-    display:flex;flex-direction:column;max-height:88dvh;
+    max-height:88dvh;
     border-radius:var(--radius-16) var(--radius-16) 0 0;border-bottom-width:0;
     animation:sheet-rise var(--dur-slow) var(--ease-out) both}
-  /* The head stays and the body scrolls: a sheet taller than the screen that
-     scrolls as one piece takes its own title off screen with it. min-height:0
-     because a flex item will not shrink below its content without it. */
-  dialog.app-dialog:modal .sheet-body{overflow:auto;min-height:0}
   @keyframes sheet-rise{from{translate:0 100%}to{translate:0 0}}
 }

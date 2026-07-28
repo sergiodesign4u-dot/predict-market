@@ -352,7 +352,7 @@
     .cat-nav ul { list-style: none; margin: 0; padding: 8px 8px; display: flex; gap: 8px; overflow-x: auto; flex-wrap: nowrap; }
     .cat-nav button { padding: 4px 8px; font-size: 11px; white-space: nowrap; }
     .cat-nav > ul { max-width: 1400px; margin: 0 auto; padding: 8px 20px; }
-    .cat-nav>ul { max-width: none; padding-left: 14px; padding-right: 14px; }
+    .cat-nav>ul { max-width: 1400px; margin-inline: auto; padding-left: 14px; padding-right: 14px; }
     .cat-nav { padding: 12px 16px; }
     .cat-nav>ul { max-width: none; margin: 0; padding: 2px; gap: 8px; display: flex; flex-wrap: nowrap; overflow-x: auto; }
     .cat-nav li { flex: 0 0 auto; }
@@ -388,6 +388,7 @@
     /* Layout taken from components/, every colour replaced by the
        wireframe palette. See wireframes/_generators/port_chrome.py. */
     .app-dialog.hiw-dialog { max-width: 464px; overflow: clip; }
+    dialog.app-dialog.hiw-dialog:modal .hiw-body { overflow: auto; min-height: 0; }
     .hiw-hero { position: relative; overflow: clip; padding: 32px 24px 28px; }
     .hiw-glow { position: absolute; top: -72px; right: -52px; width: 224px; height: 224px; }
     .hiw-hero-inner { position: relative; }

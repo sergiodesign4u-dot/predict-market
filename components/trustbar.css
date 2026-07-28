@@ -3,7 +3,7 @@
 
    Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-hairline, --color-trust, --edge-groove-dark, --edge-groove-light, --mask-solid, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-lit, --text-muted, --text-primary
    Stand:  ui-kit/trustbar.html
-   Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .footer-trust{flex-wrap:wrap;gap:var(--space-8) var(--space-16);justify-content:center;font-size:var(--text-12)}
@@ -26,7 +26,7 @@ svg.ft-ic:has(use){fill:currentColor;stroke:none}
 .footer-trust .tr-txt i{font-size:var(--text-12);font-style:normal}
 .feed-trustbar{border-bottom:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
 .app-case .feed-trustbar{background:transparent}
-.app-case .feed-trustbar .ft-inner{max-width:none;padding-left:var(--gutter);padding-right:var(--gutter)}
+.app-case .feed-trustbar .ft-inner{max-width:var(--container-max);margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter)}
 .app-footer .footer-trust{border-bottom:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
 .footer-trust .trust-items{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-16)}
 .footer-trust .trust-item{position:relative;overflow:clip;align-items:center;gap:var(--space-12);padding:var(--space-16) var(--space-20);min-height:82px;min-width:0;background-color:var(--bg-card);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-md),inset 1px 0 0 var(--bevel-hair),

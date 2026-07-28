@@ -3,7 +3,7 @@
 
    Reads: --bg-control, --bg-surface, --border-hairline, --color-trust, --outcome-no-text, --outcome-yes-text, --result-won, --text-brass, --text-muted, --text-primary, --tint-brass-06, --tint-brass-09, --tint-brass-30, --tint-brass-45
    Stand:  ui-kit/notice.html
-   Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .push-banner{padding:var(--space-8) var(--space-12);margin:0 0 var(--space-8);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-8)}

@@ -3,7 +3,7 @@
 
     python3 ui-kit/_check_kit.py
 
-Twenty checks, each one a defect that actually happened at least once:
+Twenty-one checks, each one a defect that actually happened at least once:
 
   1. the product did not move        components/ and wireframes/ clean, and a
                                      ui-visual/ page differs only in its sidebar
@@ -138,8 +138,14 @@ GENERATED = [p for p in sorted(list(KIT.glob("*.html")) + list(SPECS.glob("*.htm
 # across into ui-kit/ for the stand stylesheet, and that path is exactly the kind
 # a directory move breaks silently.
 GENERATED.append(ROOT / "ui-visual" / "overview.html")
+# Text inside <code> or <pre> is a QUOTATION, not a reference. The vitrine quotes
+# css by the file (every component page ends with its own source) and, since the
+# documents render here, prose that quotes a stylesheet link or a url(). Scanning
+# it reported a missing path that was a sentence about a path. Strip the quoted
+# text first and ask the rest.
+QUOTED = re.compile(r"<(code|pre)\b[^>]*>.*?</\1>", re.DOTALL)
 for page in GENERATED:
-    src = page.read_text(encoding="utf-8")
+    src = QUOTED.sub("", page.read_text(encoding="utf-8"))
     for url in set(ATTR.findall(src)) | set(re.findall(r"url\(([^)\"']+)\)", src)):
         # %23 is a "#" inside an already encoded data uri: a nested url(#id)
         # filter reference, not a path to a file.
@@ -255,6 +261,23 @@ gone_kit = ["%s -> %s" % (p.relative_to(ROOT), d) for p in
             for d in DEAD_SHEETS
             if ('href="%s"' % d) in p.read_text(encoding="utf-8", errors="ignore")]
 check("9 nothing loads a deleted sheet", not gone_kit, ", ".join(gone_kit))
+
+# An empty photograph box is the other half of the rule above. The event picture
+# is one of the three things allowed on the element, and until step 7c it was not
+# there: components/ carried .grid > .card:nth-of-type(N) .thumb, so a card's
+# photograph was decided by its POSITION in a grid. Moving it onto the element
+# reached the pages that existed as files and missed the ones written by a
+# generator, so the four category pages and two feed states shipped a 56px empty
+# box for two steps. Nothing saw it: an absent picture passes a contrast sweep,
+# an overflow sweep and a link check alike.
+unphotographed = []
+for page in sorted(UV.glob("*.html")):
+    for m in re.finditer(r'<span class="thumb"([^>]*)>', page.read_text(encoding="utf-8")):
+        if "background-image" not in m.group(1):
+            unphotographed.append(page.name)
+            break
+check("9 every card has its photograph", not unphotographed,
+      "%d: %s" % (len(unphotographed), ", ".join(unphotographed[:4])))
 
 # 10 --------------------------------------------------- the product navigates --
 # The colour pass shipped with every product link flattened to "#": the painted
@@ -762,6 +785,35 @@ for did, page in PAIRS.items():
         if shape(UNWRAP_A.sub("", a)) != shape(UNWRAP_A.sub("", b)):
             forked.append("%s/%s body" % (tree, page))
 
+# THE SKIN, which the body comparison above cannot see. All 17 standalone
+# overlay pages were written from one template and all 17 carried
+# `app-case app-dialog outcome-dialog <family>-dialog`, so the sign-in page a
+# person opens wore the RESULT skin: dialog.css splits the head on
+# .outcome-dialog and only :not(.outcome-dialog) gets the brass-lit plate. The
+# shared sheet on the other 75 screens had the lit head and the page did not.
+#
+# A gate that compares the body certifies the body. This compares the class list,
+# and it asks ui-visual/_unify_dialogs.py which family a page belongs to rather
+# than keeping a second list of the same fact.
+sys.path.insert(0, str(UVIS))
+import _unify_dialogs as ud                                          # noqa: E402
+canon = (UVIS / "event-feed.html").read_text(encoding="utf-8")
+skin_of = {}
+for fam, (did, _) in ud.FAMILIES.items():
+    m = re.search(r'<dialog\b[^>]*id="%s"[^>]*>' % did, canon)
+    skin_of[fam] = "app-case " + re.search(r'class="([^"]*)"', m.group(0)).group(1)
+for pagefile in sorted((ROOT / "ui-visual").glob("*.html")):
+    fam = ud.family_of(pagefile.name)
+    if not fam:
+        continue
+    m = re.search(r'<dialog\b[^>]*id="outcomeDialog"[^>]*>',
+                  pagefile.read_text(encoding="utf-8"))
+    if not m:
+        continue
+    got = re.search(r'class="([^"]*)"', m.group(0)).group(1)
+    if got != skin_of[fam]:
+        forked.append("%s skin (%s)" % (pagefile.name, got))
+
 PROVIDERS = [("Google", "prov-google"), ("Apple", "prov-apple"), ("with X", "prov-x")]
 for pagefile in sorted((ROOT / "ui-visual").glob("*.html")):
     html = pagefile.read_text(encoding="utf-8")
@@ -788,7 +840,13 @@ check("19 one dialog, one copy", not forked,
 # Three checks, because the defect can come back three ways: a page can re-add
 # the tag, a GENERATOR can re-add it to every page it writes (five of them had
 # it in a template), and an @font-face can name a file nobody committed.
-FONT_HOST = re.compile(r"fonts\.(?:googleapis|gstatic)\.com")
+# A MENTION IS NOT A CALL. The first cut searched the whole text, which is right
+# for a page and wrong for a document: ui-kit/architecture.html renders the
+# section that explains why the host was dropped, so naming it failed the gate
+# that exists because of it. The question is whether a URL is REQUESTED, so it is
+# asked of the places a request comes from: a src/href attribute and an @import.
+FONT_HOST = re.compile(r'(?:src|href)="[^"]*fonts\.(?:googleapis|gstatic)\.com'
+                       r'|@import[^;]*fonts\.(?:googleapis|gstatic)\.com')
 LIVE = [p for tree in ("ui-visual", "ui-kit", "concept", "components", "wireframes")
         for p in (ROOT / tree).rglob("*")
         if p.suffix in (".html", ".css", ".py") and "old" not in p.parts
@@ -816,6 +874,36 @@ for tree in ("ui-visual", "ui-kit"):
             unfaced.append(str(page.relative_to(ROOT)))
 check("20 every page reaches the faces", not unfaced,
       "%d: %s" % (len(unfaced), ", ".join(unfaced[:3])))
+
+# 21 ------------------------------------------------------- the documents --
+# Stage 09 was the only stage whose reasoning existed as markdown and nothing
+# else, while thirty-nine component pages linked docs/coverage.md: a href into a
+# file the browser downloads rather than draws. ui-kit/_gen_docs.py renders the
+# four, and this is what keeps the render current, because a hand-checked copy of
+# a document that changes every step is stale by the next one.
+#
+# The comparison is a re-render in memory, not a timestamp: a file can be newer
+# than its source and still be wrong.
+sys.path.insert(0, str(KIT))
+import _gen_docs                                                     # noqa: E402
+stale = []
+for slug, _, _ in _gen_docs.PAGES:
+    page = KIT / (slug + ".html")
+    if not page.exists():
+        stale.append(slug + ".html missing")
+    elif page.read_text(encoding="utf-8") != _gen_docs.render(slug):
+        stale.append(slug + ".html stale")
+stale += ["%s.md has no row in _gen_docs.PAGES" % s
+          for s in sorted({p.stem for p in (KIT / "docs").glob("*.md")}
+                          - {slug for slug, _, _ in _gen_docs.PAGES})]
+check("21 every document has a page", not stale, "%d: %s" % (len(stale), ", ".join(stale[:3])))
+
+RAW_MD = re.compile(r'href="[^"]*\.md"')
+raw = [str(p.relative_to(ROOT))
+       for tree in ("ui-kit", "ui-visual")
+       for p in sorted((ROOT / tree).rglob("*.html"))
+       if "old" not in p.parts and RAW_MD.search(p.read_text(encoding="utf-8"))]
+check("21 no link into a raw .md", not raw, "%d: %s" % (len(raw), ", ".join(raw[:3])))
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:

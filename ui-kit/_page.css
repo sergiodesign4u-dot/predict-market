@@ -27,7 +27,14 @@
   outline:2px solid var(--text-brass);outline-offset:2px;border-radius:3px}
 /* the three links in the sidebar note. They carry a stand class of their own so
    this rule never has to reach for the course-chrome class around them. */
-.ck-note-link{color:var(--text-brass);text-decoration:underline;
+/* THE SIDEBAR DOES NOT FOLLOW THE THEME, SO NOTHING IN IT MAY READ A THEMED
+   ROLE. The course chrome keeps one dark palette in both grounds (--chrome-* in
+   tokens.css, deliberately outside the theme block), and this link was reading
+   --text-brass, which in daylight becomes the dark brass meant for a pale
+   surface. Dark brass on the dark panel: 2.39:1, in the light theme, on every
+   page of the vitrine. Same shape as the veil that follows the ink and not the
+   photograph, one level down: a colour follows the surface it stands on. */
+.ck-note-link{color:var(--chrome-accent);text-decoration:underline;
   text-decoration-color:var(--border-brass,rgba(199,162,78,.3));text-underline-offset:2px}
 .ck-note-link:hover{text-decoration-color:currentColor}
 .tk-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
@@ -283,3 +290,85 @@
 .ck-thumb{display:block;position:relative;height:140px;margin:-4px 0 12px;overflow:hidden;
   border-radius:9px;border:1px solid var(--border-hairline);background:var(--bg-page)}
 .ck-thumb iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none}
+
+/* ---- a document ---- */
+/* ui-kit/docs/*.md rendered by _gen_docs.py. A page about the system is painted
+   by the system, so everything below is geometry and role: not one value that a
+   theme would have to be told about twice. */
+/* A SECTION LABEL IS NOT A HEADING. .tk-sec>h2 is set in small brass capitals,
+   which is right for "Live" or "Classes" over a specimen and wrong seventeen
+   times down a document: capitals are read letter by letter, so a sentence set
+   in them is slower, and at that size it stops looking like the thing you
+   navigate by. The number chip stays, because the contents column counts. */
+.tk-doc .tk-sec>h2{text-transform:none;font-size:var(--text-20);
+  letter-spacing:-.01em;line-height:var(--leading-tight)}
+.tk-doc-cols{display:grid;grid-template-columns:minmax(0,1fr) 232px;
+  gap:var(--space-40);align-items:start;margin-top:var(--space-8)}
+.tk-doc-body{min-width:0}
+.tk-doc-body>.tk-sec:first-child{border-top:0;padding-top:var(--space-8)}
+/* The contents rail is a <details> and not a <nav> with a heading, because the
+   same element has to be a fixed column beside the text on a desktop and a thing
+   you can fold away on a phone, and one open attribute does both with no JS. */
+.tk-doc-toc{order:2;position:sticky;top:var(--space-20);
+  max-height:calc(100dvh - var(--space-40));overflow:auto;
+  border:1px solid var(--border-hairline);border-radius:var(--radius-10);
+  background:var(--bg-surface);padding:var(--space-12)}
+.tk-doc-toc summary{font-family:var(--font-body);font-size:var(--text-10);
+  font-weight:var(--weight-bold);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-muted);cursor:pointer;padding-bottom:var(--space-8)}
+.tk-doc-toc nav{display:flex;flex-direction:column;gap:var(--space-2)}
+.tk-doc-toc a{text-decoration:none;font-family:var(--font-body);
+  font-size:var(--text-12);line-height:var(--leading-snug);
+  color:var(--text-muted);padding:var(--space-4) var(--space-8);
+  border-radius:var(--radius-6);border-left:1px solid transparent}
+.tk-doc-toc a:hover{color:var(--text-primary);background:var(--bg-control)}
+.tk-doc-toc-2{color:var(--text-primary);margin-top:var(--space-8)}
+.tk-doc-toc-3{padding-left:var(--space-16);font-size:var(--text-11)}
+.tk-doc-body p{color:var(--text-muted);font-family:var(--font-body);
+  font-size:var(--text-14);line-height:var(--leading-loose);
+  max-width:74ch;margin:0 0 var(--space-16)}
+.tk-doc-body strong{color:var(--text-primary);font-weight:var(--weight-bold)}
+.tk-doc-body code{font-family:var(--font-mono);font-size:var(--text-12);
+  color:var(--text-primary)}
+.tk-doc-h3{font-family:var(--font-display);font-size:var(--text-16);
+  font-weight:var(--weight-semibold);letter-spacing:-.01em;
+  color:var(--text-primary);margin:var(--space-28) 0 var(--space-12);
+  scroll-margin-top:var(--space-20)}
+.tk-doc-h4{font-family:var(--font-body);font-size:var(--text-13);
+  font-weight:var(--weight-bold);color:var(--text-primary);
+  margin:var(--space-20) 0 var(--space-8);scroll-margin-top:var(--space-20)}
+.tk-doc-list{margin:0 0 var(--space-16);padding-left:var(--space-20);
+  max-width:74ch;color:var(--text-muted);font-family:var(--font-body);
+  font-size:var(--text-14);line-height:var(--leading-loose)}
+.tk-doc-list li{margin-bottom:var(--space-8)}
+.tk-doc-list li::marker{color:var(--text-brass)}
+.tk-doc-quote{margin:0 0 var(--space-16);padding:var(--space-12) var(--space-16);
+  border:1px solid var(--border-hairline);border-radius:var(--radius-10);
+  background:var(--bg-well);color:var(--text-primary);
+  font-family:var(--font-body);font-size:var(--text-13);
+  line-height:var(--leading-base);max-width:74ch}
+.tk-doc-pre{margin:0 0 var(--space-16);padding:var(--space-16);
+  border:1px solid var(--border-hairline);border-radius:var(--radius-10);
+  background:var(--bg-page);color:var(--text-muted);
+  font-family:var(--font-mono);font-size:var(--text-11);
+  line-height:var(--leading-base);overflow-x:auto}
+/* A table in a document is wider than the reading column and narrower than the
+   page. It scrolls in its own box rather than making the page scroll sideways. */
+.tk-doc-tbl{overflow-x:auto;margin:0 0 var(--space-20)}
+.tk-doc-tbl .tk-tbl{table-layout:auto;min-width:100%}
+.tk-doc-tbl .tk-tbl td{font-family:var(--font-body);font-size:var(--text-12);
+  line-height:var(--leading-base)}
+.tk-doc-tbl .tk-tbl td code{font-size:var(--text-11)}
+.tk-doc .tk-dot{width:var(--icon-12);height:var(--icon-12);
+  border-radius:var(--radius-2);vertical-align:middle;margin-right:var(--space-4)}
+.tk-doc-ref{text-decoration:none;border-bottom:1px solid var(--line-brass-soft)}
+.tk-doc-ref code{color:var(--text-brass)}
+.tk-doc-ref:hover{border-bottom-color:var(--text-brass)}
+.tk-doc-src{margin:var(--space-40) 0 0;padding-top:var(--space-16);
+  border-top:1px solid var(--border-hairline);color:var(--text-muted);
+  font-family:var(--font-body);font-size:var(--text-12);
+  line-height:var(--leading-base);max-width:74ch}
+@media (max-width:900px){
+  .tk-doc-cols{grid-template-columns:minmax(0,1fr)}
+  .tk-doc-toc{order:0;position:static;max-height:38vh}
+}

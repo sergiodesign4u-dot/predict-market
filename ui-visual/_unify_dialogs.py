@@ -29,6 +29,25 @@ this file does from there is keep one markup, not choose between two.
   every other painted screen gets that dialog, byte for byte
   the standalone page gets its BODY, rewired for a page
 
+SKIN (found later, by looking at the page instead of at the diff). Ending the
+fork inside the body left one outside it: the CLASS LIST on the dialog element.
+All 17 standalone overlay pages were written from one template, so all 17 carried
+`app-case app-dialog outcome-dialog <family>-dialog`, and `.outcome-dialog` is
+not a synonym for "an overlay that is its own page". It is the RESULT skin: in
+dialog.css the head splits on it, and `:not(.outcome-dialog)` is the one that
+gets the brass-lit plate. So the sign-in sheet a person actually opens had the
+flat result head while the same sheet on the other 75 screens had the lit one,
+and the deposit page had a `.protect` line and field labels overridden into
+muted grey that the shared copy does not override. Gate 19 compared the BODY, so
+it saw none of it: a gate that compares the body certifies the body.
+
+A skin is named for what the sheet IS. sign-in and deposit take the shared
+dialog's own class list; win and loss keep `outcome-dialog`, because that is
+what they are. `app-case` stays on all of them and is not a skin: a standalone
+overlay page has no screen behind the sheet, so the sheet IS the app frame, and
+the rules scoped `.app-case .protect`, `.app-case .confirm-btn`,
+`.app-case .provider-btn` reach it only through that class.
+
 TWO THINGS DIFFER BY CONTEXT, AND ARE NOT DRIFT:
 
   the head. A dialog is opened over a page, so it heads with <h2> and closes with
@@ -137,6 +156,43 @@ def set_marks(html, marks):
     return "".join(out), True
 
 
+def family_of(name):
+    """Which shared dialog this standalone page IS, read from the page name.
+
+       sign-in.html and its three states are the sign-in sheet; deposit.html and
+       its six are the deposit sheet. win/loss are not in the table, because they
+       have no shared twin: an outcome is only ever invoked."""
+    stem = name[:-5] if name.endswith(".html") else name
+    for base, fam in (("sign-in", "signin"), ("deposit", "deposit")):
+        if stem == base or stem.startswith(base + "-"):
+            return fam
+    return None
+
+
+def set_skin(html, shared, family=None):
+    """The standalone dialog wears the shared dialog's skin, plus app-case.
+
+       Read the SKIN block at the top of this file for why. The class list is
+       COMPUTED from the canonical dialog rather than typed, so the two cannot
+       drift again, and the family comes from the page name rather than from a
+       class the first run removes: a rule that can only recognise its own input
+       before it has run once is not idempotent."""
+    if family is None:
+        return html, False
+    m = re.search(r'<dialog\b([^>]*)\bid="outcomeDialog"', html)
+    if not m:
+        return html, False
+    cm = re.search(r'class="([^"]*)"', m.group(1))
+    if not cm:
+        return html, False
+    sm = re.search(r'<dialog\b[^>]*class="([^"]*)"', shared[family])
+    want = "app-case " + sm.group(1)
+    if cm.group(1) == want:
+        return html, False
+    a = m.start(1) + cm.start(1)
+    return html[:a] + want + html[a + len(cm.group(1)):], True
+
+
 def rewire(body, family):
     """The dialog's wiring swapped for a page's. Each control keeps its markup
        and gains the link its flow needs."""
@@ -214,7 +270,14 @@ def main():
                     out = out[:oa + ha] + new + out[oa + hb:]
                     why.append("sub")
 
-        # 3. and wherever else a provider button stands, it draws the same mark
+        # 3. the SKIN of the standalone dialog, on the base page and on every
+        #    state of it. See SKIN above: the class list is the shared dialog's
+        #    plus app-case, so a sign-in page cannot wear the result skin.
+        out, reskinned = set_skin(out, shared, family_of(name))
+        if reskinned:
+            why.append("skin")
+
+        # 4. and wherever else a provider button stands, it draws the same mark
         out, swapped = set_marks(out, marks)
         if swapped:
             why.append("marks")

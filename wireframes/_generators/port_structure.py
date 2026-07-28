@@ -176,12 +176,21 @@ def inline_sprite(html, symbols):
     return re.sub(r'<use href="#([\w-]+)"\s*/?>(?:</use>)?', sub, html)
 
 
+# A PHOTOGRAPH IS NOT ONE DECLARATION. This used to drop background-image and
+# nothing else, so when the category cards gained a per-card crop the porter
+# carried background-position into the grey tree: the framing of a picture that
+# is not there, on 24 cards. The whole background family goes, because every part
+# of it describes the same absent photograph.
+PHOTO_DECL = ("background-image", "background-position", "background-size",
+              "background-repeat", "background-blend-mode", "background:")
+
+
 def strip_photo(html):
     """The photograph is content in colour and paint in grey: the wireframe keeps
        the element and loses the picture. A width is a datum and stays."""
     def sub(m):
         keep = [d for d in m.group(1).split(";")
-                if d.strip() and not d.strip().startswith("background-image")]
+                if d.strip() and not d.strip().startswith(PHOTO_DECL)]
         return ' style="%s"' % ";".join(keep) if keep else ""
     html = re.sub(r'\s*style="([^"]*)"', sub, html)
     # An <img> is the other way a photograph travels, and the grey tree had none:

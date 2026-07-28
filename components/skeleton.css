@@ -3,7 +3,7 @@
 
    Reads: --bg-chip, --bg-control, --border-hairline
    Stand:  ui-kit/skeleton.html
-   Stands on: 11 ui-visual screens (active-bets-history-loading.html, active-bets-loading.html, event-detail-loading.html, event-detail-logged-out-loading.html, event-feed-loading.html, ...)
+   Stands on: 19 ui-visual screens (active-bets-history-loading.html, active-bets-loading.html, event-detail-loading.html, event-detail-logged-out-loading.html, event-feed-crypto-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .card.skeleton .sk-thumb{width:var(--size-56);height:var(--size-56);flex:0 0 var(--size-56);border:1px solid var(--border-hairline)}

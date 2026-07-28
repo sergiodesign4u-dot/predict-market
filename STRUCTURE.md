@@ -17,7 +17,7 @@ not `research/html/research.html`).
 | 06 | Voice | `voice/` | `voice/voice.html` | Done |
 | 07 | Concept | `concept/` | `concept.html` (+ `directions.html`) | Done |
 | 08 | UI + Visual | `ui-visual/` | 104 painted screens, every family and every state | Done |
-| 09 | Tokens + Components | `components/` (the system) + `ui-kit/` (the vitrine) | `ui-kit/overview.html` | Done |
+| 09 | Tokens + Components | `components/` (the system) + `ui-kit/` (the vitrine) | `ui-kit/overview.html` (+ the four documents: `architecture.html`, `tokens-audit.html`, `inventory.html`, `coverage.html`) | Done |
 | 10 | Design System | `design-system/` | - | Not started |
 | 11 | Responsive | `responsive/` | - | Not started |
 | 12 | Animation | `animation/` | - | Not started |
@@ -45,6 +45,13 @@ at the root, one copy read by six tools and by gate 18, and the gate now also ch
 screen in either tree HAS a twin, with one declared exception. It did not, for a whole family: 32
 grey category screens against 4 painted ones, skipped in silence for two stages because a gate that
 pairs by filename cannot see an unpaired page.
+
+The stage's reasoning renders like every other stage's. `ui-kit/docs/*.md` is the source and
+`ui-kit/_gen_docs.py` writes one page of the vitrine per document, registered in the kit side panel
+under "The reasoning". **Gate 21** re-renders in memory and fails when a page is not what its markdown
+renders to, and fails on any link into a raw `.md`, because 39 component pages used to point at
+`docs/coverage.md` and a browser downloads that rather than drawing it. Run
+`_gen_component_pages.py` before `_gen_docs.py`: the first writes `docs/coverage.md`.
 
 The chrome is the exception that proves it. Inside `<header>`, the bottom nav and
 `<footer>` the two trees answer different questions, so the reconcile runs in two

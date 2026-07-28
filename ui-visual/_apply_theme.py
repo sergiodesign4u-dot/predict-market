@@ -207,6 +207,34 @@ def plate(main_frag, catnav):
     )
 
 
+# A GRAFTED CARD ARRIVES WITHOUT ITS PHOTOGRAPH. The main of a state page is
+# taken from the GREY twin, and the grey tree draws a grey box where the product
+# shows a picture: that is one of the six declared layer boundaries, and it is
+# right. It also means every card that comes across has an empty .thumb, which is
+# what shipped on the logged-out feed and on the push-permission state. A logged
+# out visitor sees the same twelve events, so they see the same twelve
+# photographs; the shell page is where they are written, so it is where they are
+# read from.
+THUMB = re.compile(r'<span class="thumb"[^>]*>')
+
+
+def photograph(frag, shell):
+    """Give each grafted card the photograph its event carries on the shell."""
+    have = [m.group(0) for m in THUMB.finditer(shell) if "background-image" in m.group(0)]
+    if not have:
+        return frag
+    n = [0]
+
+    def fill(m):
+        if "background-image" in m.group(0) or n[0] >= len(have):
+            return m.group(0)
+        tag = have[n[0]]
+        n[0] += 1
+        return tag
+
+    return THUMB.sub(fill, frag)
+
+
 def build(shell_name, grey_name, out_name, logged_out, title, own_main=True):
     shell = (UIV / shell_name).read_text()
     wf = (WF / grey_name).read_text()
@@ -215,7 +243,8 @@ def build(shell_name, grey_name, out_name, logged_out, title, own_main=True):
 
     if own_main:
         _, _, wf_main = block(wf, "<main", "</main>")
-        out = swap(out, "<main", "</main>", plate(distill(neutralize(wf_main)), catnav))
+        out = swap(out, "<main", "</main>",
+                   photograph(plate(distill(neutralize(wf_main)), catnav), shell))
 
     if logged_out:
         _, _, wf_header = block(wf, '<header class="app-header">', "</header>")
