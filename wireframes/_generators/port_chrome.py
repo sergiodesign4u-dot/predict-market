@@ -249,7 +249,7 @@ def main():
             continue
         gpath = os.path.join(GREY, name)
         grey = open(gpath, encoding="utf-8").read()
-        ppath = os.path.join(PAINT, name)
+        ppath = os.path.join(PAINT, ps._twins.painted_of(name))
         paint = open(ppath, encoding="utf-8").read() if os.path.exists(ppath) else None
         out, moved = grey, []
 

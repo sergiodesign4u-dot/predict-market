@@ -85,17 +85,14 @@ RESTYLE = {"cat-nav", "hiw-sec"}
 # map, or it moves the links too. Not auth-aware on purpose, because the grey
 # tree's own untwinned category pages already point at politics.html from both
 # variants, and changing that is a flows.md decision rather than a port's.
-HREF = {
-    "event-feed-politics.html": "politics.html",
-    "event-feed-crypto.html": "crypto.html",
-    "event-feed-culture.html": "culture.html",
-    "event-feed-general.html": "general.html",
-}
-
-
-def map_href(html):
-    return re.sub(r'href="([^"]+)"',
-                  lambda m: 'href="%s"' % HREF.get(m.group(1), m.group(1)), html)
+# The map is in _twins.py, one copy for every tool that needs it, because the
+# four bases were all any of the five hand-written copies knew about: the family
+# has 32 screens in grey, gate 18 pairs the trees by filename, and 28 pairs went
+# unbuilt and unchecked behind a map that stopped at the base page.
+sys.path.insert(0, ROOT)
+import _twins                                                   # noqa: E402
+HREF = _twins.GREY
+map_href = _twins.map_href_grey
 
 VOID = {"br", "img", "input", "use", "path", "circle", "meta", "link",
         "polyline", "source", "rect", "line", "hr", "ellipse", "stop"}
@@ -525,7 +522,7 @@ def main():
     for name in sorted(os.listdir(GREY)):
         if not name.endswith(".html"):
             continue
-        twin = os.path.join(PAINT, name)
+        twin = os.path.join(PAINT, _twins.painted_of(name))
         if not os.path.exists(twin):
             continue
         gpath = os.path.join(GREY, name)

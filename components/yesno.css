@@ -14,15 +14,21 @@
 .yesno.compact button{flex:0 0 auto}
 .yesno button{border:1px solid;font-weight:var(--weight-bold);font-family:var(--font-body);text-decoration:none;min-height:var(--control-44);background:var(--bg-control);transition:background var(--dur-quick) ease,border-color var(--dur-quick) ease}
 .yesno a,.yesno a:hover{text-decoration:none}
-.yesno > a:first-of-type button:hover{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-control));border-color:var(--outcome-yes)}
-.yesno > a:last-of-type button:hover{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-control));border-color:var(--outcome-no)}
+/* A side is a POSITION IN THE PAIR, not a fact about being wrapped in a link.
+   Every colour below hung off `> a`, so a .yesno whose buttons are not inside an
+   anchor got no `color` from anywhere and fell back to the user agent's
+   buttontext: near black on a graphite card, 1.42:1, on four screens. Same shape
+   as the 992 browser-blue links step 7e found. A MISSING COLOUR IS A COLOUR, and
+   a component has to say what it is whatever markup it stands in. */
+.yesno > a:first-of-type button:hover,.yesno > button:first-of-type:hover{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-control));border-color:var(--outcome-yes)}
+.yesno > a:last-of-type button:hover,.yesno > button:last-of-type:hover{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-control));border-color:var(--outcome-no)}
 .yesno.compact{gap:var(--space-8);margin:0}
 .yesno.compact button{padding:var(--space-4) var(--space-12);font-size:var(--text-11);line-height:var(--leading-tight)}
 /* No media block for the compact variant: `.yesno button` above sets min-height on every variant,
    compact included, and nothing unsets it. The rule that used to live here re-stated 44px inside a
    640px query, which read as "the target is a mobile concern". It is not. */
-.yesno > a:first-of-type button{background:var(--outcome-yes-fill);color:var(--outcome-yes-text);border-color:var(--outcome-yes-line)}
-.yesno > a:last-of-type button{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
+.yesno > a:first-of-type button,.yesno > button:first-of-type{background:var(--outcome-yes-fill);color:var(--outcome-yes-text);border-color:var(--outcome-yes-line)}
+.yesno > a:last-of-type button,.yesno > button:last-of-type{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
 .yesno button{border-radius:var(--radius-10)}
 .yesno.compact button{border-radius:var(--radius-10)}
 .app-case .opt-list .yesno.compact button{background:var(--bg-control);color:var(--text-primary);border:1px solid var(--border-hairline)}

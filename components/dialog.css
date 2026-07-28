@@ -21,6 +21,7 @@ dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)
    tree: it has its own inline grey-box css and never links index.css.
    If the bottom sheet comes back on mobile, the rules get written then, for the
    markup that ships. A rule kept in case is a fossil. */
+
 .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8);border-bottom:1px solid var(--border-hairline)}
 .sheet-head :is(h1,h2){font-size:var(--text-14);margin:0}
 .sheet-close{border:1px solid var(--border-hairline);font-size:var(--text-12);cursor:pointer;padding:var(--space-2) var(--space-8)}
@@ -75,3 +76,43 @@ dialog.app-dialog.signin-dialog .fine a:hover{border-bottom-color:var(--text-bra
 /* the ring itself comes from base.css; this only rounds it, because a link inside a dialog is
    a block with a corner and a square ring around it reads as a mistake */
 dialog.app-dialog a:focus-visible{border-radius:var(--radius-6)}
+
+/* ---------------------------------------------------------------- the sheet --
+   A MODAL STAYS IN THE VIEWPORT. The user agent gives dialog:modal
+   position:fixed, and .app-case{position:relative} in base.css took it back on
+   the 17 standalone overlay pages, because those pages put the app frame class
+   on the DIALOG itself. So the sheet scrolled with the page behind it: on
+   win.html at 380 the page sat 412px down and the sheet's top edge was 313px
+   above the screen. A frame rule reaching a dialog is the same shape as a text
+   role on a filled glyph or a scrim role on a photograph: the class was named
+   for a job it is not doing here.
+
+   STEP 8: THE BOTTOM SHEET CAME BACK, AND IT IS GEOMETRY, NOT MARKUP.
+   Convention 5 has said since the wireframes were built that an invoked screen
+   is a bottom sheet on mobile; the paint shipped a centred modal at both widths
+   and step 7e recorded that as a product decision left open. It is made: the
+   sheet rises from the thumb edge, because that is the edge a phone is held by.
+
+   No grab handle. The grey tree draws one and drag-to-dismiss is not built, so a
+   handle here would be an affordance for a gesture that does nothing. The
+   geometry says bottom sheet; a control that lies does not.
+
+   :modal, not [open]. The standalone overlay page opens its dialog as the page
+   it IS, and a sheet that rises over nothing is a page that jumps on load. Only
+   a dialog invoked over a screen is a sheet. It also keeps the layout rules off
+   a closed dialog: the UA closes one with dialog:not([open]){display:none} and
+   an author declaration beats a UA one whatever the specificity, so a bare
+   display:flex here would open every dialog on 76 screens at once. */
+dialog.app-dialog:modal{position:fixed}
+
+@media (max-width:640px){
+  dialog.app-dialog:modal{width:100%;max-width:none;margin:auto auto 0;
+    display:flex;flex-direction:column;max-height:88dvh;
+    border-radius:var(--radius-16) var(--radius-16) 0 0;border-bottom-width:0;
+    animation:sheet-rise var(--dur-slow) var(--ease-out) both}
+  /* The head stays and the body scrolls: a sheet taller than the screen that
+     scrolls as one piece takes its own title off screen with it. min-height:0
+     because a flex item will not shrink below its content without it. */
+  dialog.app-dialog:modal .sheet-body{overflow:auto;min-height:0}
+  @keyframes sheet-rise{from{translate:0 100%}to{translate:0 0}}
+}

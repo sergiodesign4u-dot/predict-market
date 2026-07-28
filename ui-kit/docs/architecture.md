@@ -976,3 +976,138 @@ regression:
   `--border-hairline`.
 - Everything else is identical: 2223 elements compared property by property and box by box on the
   frozen kit, with only those two changes and the stand's own renamed labels showing up.
+
+---
+
+## What step 8 settled
+
+Run as a readiness pass, not a defect hunt: three things were open at the end of step 7f (an overlay
+that contradicted its own convention, a font host called before consent, and a note that the two
+trees disagreed about how many category screens exist), and closing the third one turned out to open
+the largest hole this stage has found. **Fifteen findings, all closed.**
+
+### A pair that does not exist is not a pair that agrees
+
+Gate 18 pairs the trees by FILENAME. One family does not share filenames: a category page is
+`politics.html` in grey and `event-feed-politics.html` in colour, because the grey tree files it as
+a Category screen and the paint as a variant of the Event Feed. Both names are defensible. The
+consequence was not: the gate skipped every unpaired page **in silence**, so **32 grey category
+screens sat against 4 painted ones** and the family drifted through two stages with every gate
+green. Zero drift out of zero pairs reads exactly like zero drift out of all of them.
+
+- The map is now **`_twins.py`** at the root, one copy read by six tools and by the gate. It had
+  existed in **five hand-written copies**, and the four that only knew the BASE pages are the reason
+  nobody noticed: every one of them could translate `politics.html` and none of them had ever heard
+  of `politics-empty.html`.
+- **Gate 18 gained a second check**, `every screen has a twin`, with one declared exception
+  (`overview.html`, the index OF the painted screens, which is not a screen of the product). The
+  coverage is the check; the shape comparison is what it enables.
+- The 28 missing screens are built by `ui-visual/_apply_theme.py`, which was the Event Feed's state
+  generator with `event-feed.html` hard-coded as its shell. A category page is the same listing with
+  one filter on it, so it is the same machine with a different shell, not a second generator.
+
+### An anchor another tool can remove is not an anchor
+
+`_apply_theme.py` built the stone plate by finding `<div class="feed-inner">` in the GREY fragment
+and inserting around it. Step 7d then ported this file's own output back into the grey tree, and the
+port unwraps plate wrappers on the way (a plate is paint). The anchor stopped matching, the insert
+became a silent no-op, and **the next run of that file would have shipped eight state pages with no
+plate under them**. The wrapper structure is written out from scratch now, every run, whatever shape
+the fragment arrives in.
+
+`_gen_category.py` had the same defect one function away and had already fired: its heading
+substitution read `<h2 id="feedHeading">` and step 7b made that heading an `<h1>`, so a single re-run
+put the shell's **"Trending"** on all four category pages and left the sub-category rail, which picks
+its list by the heading's text, rendering nothing. **A generator whose anchor a later pass has moved
+fails silently and passes every gate.**
+
+### A category page owes its own SEO body, not the home page's
+
+`ia/docs/pages/seo.md` section 3B lists five H2s for the category template, and the fourth is
+**"About {category} events"**. The four painted pages were derived from the painted feed and
+inherited ITS body: the same two generic sections on all five URLs, and the one section that is about
+this category missing from the one page that is about this category, while section E of the same spec
+is explicit that a category must not duplicate its siblings. The copy is now read out of the grey
+twin at generation time rather than typed into the generator, because copy is owned by `wireframes/`
+and `voice/` and a generator that types a sentence is a second source for it.
+
+### A listing does not change its contents when nobody is signed in
+
+The logged-out state of a category page was being built from the grey twin, whose card set was drawn
+in Stage 05, before a card had a story line or an outcome button that navigates. That put Stage-05
+cards on four painted screens: no `.top-txt`, so no story-led "why" the CJM added in Stage 04, and
+YES/NO that a logged-out person could not press, **in a product whose whole inversion is that you
+browse and build a bet before the gate**. Its logged-out success state is the base page with
+logged-out chrome and nothing else now; empty, error and loading still come from grey, because there
+the state IS the content.
+
+And **nobody signed in has saved anything**: the card carried a pressed bookmark into every
+logged-out listing, five screens in both trees, the brass filled mark that means "this is in your
+Favorites", shown to a visitor whose header is offering them Sign up. The attribute is the state, so
+it is set rather than styled away.
+
+### A missing colour is a colour, again, and this time on a control
+
+Chasing that markup found the defect under it. Every colour in `yesno.css` hung off `> a`:
+
+    .yesno > a:first-of-type button { color: var(--outcome-yes-text) ... }
+
+so a `.yesno` whose buttons are not wrapped in an anchor got no `color` from anywhere and fell back to
+the user agent's `buttontext`. Near black on a graphite card: **1.42:1**. Same shape as the 992
+browser-blue links step 7e found in the grey tree, one level down. **A side is a POSITION IN THE
+PAIR, not a fact about being wrapped in a link**, and a component has to say what it is whatever
+markup it stands in.
+
+### A frame rule reached a dialog
+
+`base.css` has `.app-case{position:relative}`, and the 17 standalone overlay pages put the app frame
+class on the `<dialog>` itself. That took back the user agent's `position:fixed` for `dialog:modal`,
+so **the sheet scrolled with the page behind it**: on `win.html` at 380 the page sat 412px down and
+the sheet's top edge was 313px above the screen. Same category as a text role on a filled glyph or an
+emboss shade under a photograph: the class was named for a job it is not doing here.
+
+### The bottom sheet was geometry, not markup
+
+Convention 5 has said since the wireframes were built that an invoked screen is a bottom sheet on
+mobile; the paint shipped a centred modal at both widths and step 7e recorded that as a decision left
+open. Made: under 640px an invoked dialog is full width on the bottom edge with its top two corners
+rounded, rising into place, the head fixed and the body scrolling. Above 640px nothing changed.
+
+- **`:modal`, not `[open]`.** A standalone overlay page opens its dialog as the page it IS, and a
+  sheet that rises over nothing is a page that jumps on load. Only a dialog invoked over a screen is
+  a sheet. It also keeps layout rules off a closed dialog: the UA closes one with
+  `dialog:not([open]){display:none}` and **an author declaration beats a UA one whatever the
+  specificity**, so a bare `display:flex` here would have opened every dialog on 76 screens at once.
+- **No grab handle.** The grey tree draws one and drag-to-dismiss is not built.
+
+### Where a font comes from is a decision
+
+Every screen carried `<link href="https://fonts.googleapis.com/css2?...">`, so a visitor's IP and
+User-Agent reached a third party **before the cookie banner this product ships had asked them
+anything**. Step 7b deleted a second copy of that URL out of `base.css` and wrote down that this was
+a decision and not a default. It is made: 18 woff2 files (latin and latin-ext, `font-display:swap`)
+in `assets/fonts/`, declared once in **`components/fonts.css`**, imported first by `index.css`.
+373 KB committed, 0 external requests measured.
+
+**Gate 20 is three checks**, because the defect can come back three ways: a page can re-add the tag,
+a GENERATOR can re-add it to every page it writes (five of them had it in a template, and removing it
+from 211 documents without removing it from those five would have lasted until the next run), and an
+`@font-face` can name a file nobody committed.
+
+### How it was verified, and the checker that had to be corrected first
+
+- **The painted tree**, 105 screens x 2 themes x {380, 1280}: **420 page loads, 86534 text pairs, 0
+  below AA, 0 horizontal overflow, 0 page errors.**
+- **The grey tree**, 104 screens x {380, 1280}: **0 overflow, 0 page errors, 0 non-neutral text
+  colour.** Its 1212 sub-AA pairs are the screen-tree drawer's own notes at 3.33:1 and the identical
+  count comes off a worktree of the previous commit, so they are the wireframe's chrome and not this
+  pass.
+- **Links: 16770 grey and 15535 painted, 0 broken** either side.
+- **Gates: 20.**
+
+The first cut of the sweep reported **116 sub-AA pairs and 4690 overflowing elements**, and running
+it against three known-good pages returned 0 and 438. The 438 were the notifications dropdown, laid
+out where it will appear and never on screen, so the overflow question is asked of the DOCUMENT now
+(`scrollWidth > innerWidth`) and every element is filtered through `checkVisibility()`. The 116 were
+real, and only the calibration told the two apart. **A measurement not checked against a known-good
+case is a claim, not a proof** was written down in step 7c; this is the pass where it paid.

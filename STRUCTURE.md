@@ -16,7 +16,7 @@ not `research/html/research.html`).
 | 05 | Wireframes | `wireframes/` | 99 pages | Done |
 | 06 | Voice | `voice/` | `voice/voice.html` | Done |
 | 07 | Concept | `concept/` | `concept.html` (+ `directions.html`) | Done |
-| 08 | UI + Visual | `ui-visual/` | 76 painted screens, every family | Done |
+| 08 | UI + Visual | `ui-visual/` | 104 painted screens, every family and every state | Done |
 | 09 | Tokens + Components | `components/` (the system) + `ui-kit/` (the vitrine) | `ui-kit/overview.html` | Done |
 | 10 | Design System | `design-system/` | - | Not started |
 | 11 | Responsive | `responsive/` | - | Not started |
@@ -38,6 +38,13 @@ Structure flows one way between the two screen trees: `wireframes/` decides it a
 when the paint got there first, and **gate 18** in `ui-kit/_check_kit.py` fails the
 build when the trees disagree. The six differences that are the layer boundary are
 declared in `wireframes/_conventions.md`.
+
+The two trees do not name every screen the same way: a category page is
+`politics.html` in grey and `event-feed-politics.html` in colour. That map lives in **`_twins.py`**
+at the root, one copy read by six tools and by gate 18, and the gate now also checks that every
+screen in either tree HAS a twin, with one declared exception. It did not, for a whole family: 32
+grey category screens against 4 painted ones, skipped in silence for two stages because a gate that
+pairs by filename cannot see an unpaired page.
 
 The chrome is the exception that proves it. Inside `<header>`, the bottom nav and
 `<footer>` the two trees answer different questions, so the reconcile runs in two
@@ -71,7 +78,7 @@ The repo was reorganized from a flat, ~9-stage anticipated layout to the layout 
 | `voice/voice.md`, `voice/microcopy.md` | `voice/docs/voice.md`, `voice/docs/microcopy.md` |
 | `voice.html` | `voice/voice.html` |
 | `tokens/`, `components/` | the code lives in `components/`, the vitrine and its docs in `ui-kit/`; the planned `tokens-components/` folder was never used and was deleted in step 7 |
-| `assets/` | every shipped image, at the root and owned by neither layer. It was `ui-visual/assets/` until step 7c, which meant `components/` reached into the product's screen folder to draw a component |
+| `assets/` | every shipped image, at the root and owned by neither layer. It was `ui-visual/assets/` until step 7c, which meant `components/` reached into the product's screen folder to draw a component. `assets/fonts/` joined it in step 8: 18 woff2 faces, so no page calls a font host |
 
 ### New artifacts (did not exist before)
 

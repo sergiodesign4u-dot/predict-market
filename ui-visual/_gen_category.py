@@ -56,7 +56,14 @@ CONDENSED_RE = re.compile(r'<div class="cat-condensed"[^>]*>.*?</div>', re.S)
 HERO_RE      = re.compile(r'\n\s*<!-- Featured hero band.*?</section>', re.S)
 SUBFILTER_RE = re.compile(r'\n\s*<!-- #90:.*?</nav>', re.S)
 GRID_RE      = re.compile(r'(<div class="grid">).*?(\n\s*</div>\s*\n\s*<!-- Load more)', re.S)
-HEADING_RE   = re.compile(r'(<h2 id="feedHeading">)[^<]*(</h2>)')
+# The level is not part of the question. This read <h2 id="feedHeading"> and the
+# heading has been an <h1> since step 7b gave every screen exactly one, so the
+# substitution had been matching nothing: the four category pages kept the
+# shell's "Trending" as their heading the moment anyone re-ran this file, and the
+# sub-category rail, which picks its list by the heading's text, rendered none.
+# A generator whose anchor another pass has moved fails silently and passes every
+# gate, which is the same defect _apply_theme.py had two functions away.
+HEADING_RE   = re.compile(r'(<h([1-6]) id="feedHeading"[^>]*>)[^<]*(</h\2>)')
 TITLE_RE     = re.compile(r'(<title>).*?(</title>)')
 
 # Where a card goes. The painted tree has one event page per market type, so a
@@ -201,6 +208,51 @@ GRIDS = {
 }
 
 
+SEO_SEC = re.compile(r'<section class="feed-seo"[^>]*>.*?</section>', re.S)
+SEO_TEXT = re.compile(r'(<div class="seo-text">\s*).*?(\s*</div><!-- /seo-text -->)', re.S)
+GREY = HERE.parent / "wireframes"
+
+
+def category_seo(html, key, label):
+    """The below-fold SEO body a CATEGORY page owes, not the home page's.
+
+       ia/docs/pages/seo.md section 3B lists five H2s for this template, and the
+       fourth is "About {category} events". The four painted category pages were
+       derived from the painted feed and inherited ITS body instead: the same two
+       generic sections on all five URLs, and the one section that is about this
+       category missing from the one page that is about this category. Section E
+       of the same spec is explicit that a category must not duplicate its
+       siblings.
+
+       The copy is read out of the grey twin rather than typed here, because copy
+       is owned by wireframes/ and voice/, and a generator that types a sentence
+       is a second source for it."""
+    grey = (GREY / ("%s.html" % key)).read_text(encoding="utf-8")
+    about = SEO_SEC.search(grey)
+    if not about:
+        raise SystemExit("_gen_category: no feed-seo section in grey %s.html" % key)
+    # TEXT, not inner html. This read the heading's markup, and the grey twin is
+    # written by port_structure.py out of THIS file's own output, so the second
+    # run read back the icon this file had just put in the heading and wrote it
+    # into an aria-label: a label containing an <svg>, an icon the vitrine could
+    # not account for (gate 17), and a pair of tools rewriting eight pages on
+    # every run of the chain, for ever. A generator that reads its own output
+    # through another tool has to read the part of it that does not change.
+    head = re.sub(r"<[^>]+>", "", re.search(r"<h2[^>]*>(.*?)</h2>", about.group(0), re.S).group(1)).strip()
+    body = re.sub(r"<[^>]+>", "", re.search(r"<p>(.*?)</p>", about.group(0), re.S).group(1)).strip()
+    faq = next((s for s in SEO_SEC.findall(html) if "Common questions" in s), "")
+    new = (
+        '<section class="feed-seo" aria-label="%s">\n'
+        '          <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true">'
+        '<use href="#i-seo-guide"/></svg>%s</h2>\n'
+        '          <p>%s</p>\n'
+        '        </section>' % (head, head, body)
+    )
+    return SEO_TEXT.sub(
+        lambda m: m.group(1) + new + ("\n        " + faq if faq else "") + m.group(2),
+        html, count=1)
+
+
 def make_page(key, label, filename):
     html = SRC.read_text(encoding="utf-8")
     # wire both navs, active on this category
@@ -210,11 +262,13 @@ def make_page(key, label, filename):
     html = HERO_RE.sub("", html, count=1)
     html = SUBFILTER_RE.sub("", html, count=1)
     # heading + title
-    html = HEADING_RE.sub(lambda m: m.group(1) + label + m.group(2), html, count=1)
+    html = HEADING_RE.sub(lambda m: m.group(1) + label + m.group(3), html, count=1)
     html = TITLE_RE.sub(lambda m: m.group(1) + f"UI Visual - {label} Events (Vault 3D)" + m.group(2), html, count=1)
     # swap in the category's own events
     cards = "\n\n".join(GRIDS[key])
     html = GRID_RE.sub(lambda m: m.group(1) + "\n\n" + cards + m.group(2), html, count=1)
+    # and the SEO body this category owes, in place of the home page's
+    html = category_seo(html, key, label)
     (HERE / filename).write_text(html, encoding="utf-8")
     n = len(GRIDS[key])
     print(f"  {filename:34s}  {n} events")

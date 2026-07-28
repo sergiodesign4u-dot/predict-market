@@ -64,6 +64,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 PAINT = HERE
 GREY = os.path.join(ROOT, "wireframes")
+sys.path.insert(0, ROOT)
+import _twins                                                   # noqa: E402
 
 # The auth variant, where the two trees disagreed. Everything not named here
 # takes the variant its grey twin has.
@@ -225,7 +227,7 @@ def main():
         if not name.endswith(".html") or name in SKIP:
             continue
         html = read(PAINT, name)
-        grey = read(GREY, name)
+        grey = read(GREY, _twins.grey_of(name))
         head, ha, hb = region(html, "header")
         nav, na, nb = region(html, "nav", "bottom-nav")
         if not head or not nav:

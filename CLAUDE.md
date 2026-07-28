@@ -245,7 +245,7 @@ The visual language, decided as **rules traced to data + taste**, not a mood. So
 
 The styling layer became a system. `components/` holds `tokens.css` plus one css file per component,
 all reached through `components/index.css`; `ui-kit/` is the vitrine that shows it and the gates that
-keep it honest (`python3 ui-kit/_check_kit.py`, nineteen checks, exits non-zero on the first failure).
+keep it honest (`python3 ui-kit/_check_kit.py`, twenty checks, exits non-zero on the first failure).
 Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from: `ui-kit/docs/tokens-audit.md`.
 
 - **Step 5 (done):** every painted screen dropped its inline `<style>` and its `_theme.css` link and
@@ -694,6 +694,70 @@ was ever checked.** Full record in `ui-kit/docs/architecture.md`, "What step 7f 
   palette, painted 0 below AA in both themes, 0 broken links either side. Gate 19 tested by injecting
   each of its three kinds of drift. **Gates: 19.**
 
+### Step 8 (done, 2026-07-28): the coverage pass, and the family no gate could see
+
+Run against the three things step 7f left open (an overlay contradicting its own convention, a font
+host called before consent, a note that the trees disagreed about how many category screens exist),
+and the third one turned out to be the largest hole this stage has found. **Fifteen findings, all
+closed.** Full record in `ui-kit/docs/architecture.md`, "What step 8 settled".
+
+- **A pair that does not exist is not a pair that agrees.** Gate 18 pairs the trees by FILENAME, and
+  one family does not share filenames: a category page is `politics.html` in grey and
+  `event-feed-politics.html` in colour. The gate skipped every unpaired page in silence, so **32 grey
+  category screens sat against 4 painted ones** and the family drifted through two stages with every
+  gate green. Zero drift out of zero pairs reads exactly like zero drift out of all of them. The map
+  is now **`_twins.py`** at the root, one copy for six tools and the gate; it had existed in FIVE
+  hand-written copies, and the four that only knew the BASE pages are why nobody noticed. Gate 18
+  gained **every screen has a twin**, one declared exception (`overview.html`). The 28 missing
+  screens are built by `ui-visual/_apply_theme.py`, generalized from the Event Feed's state
+  generator: a category page is the same listing with one filter on it, so it is the same machine
+  with a different shell, not a second generator.
+- **An anchor another tool can remove is not an anchor.** `_apply_theme.py` built the stone plate by
+  finding `<div class="feed-inner">` in the grey fragment, and step 7d's port unwraps plate wrappers
+  on the way into grey, so the anchor had stopped matching and the next run would have shipped eight
+  state pages with no plate. `_gen_category.py` had the same defect one function away and it had
+  already fired: its heading substitution read `<h2 id="feedHeading">` and step 7b made that an
+  `<h1>`, so one re-run put the shell's **"Trending"** on all four category pages and silenced the
+  sub-category rail, which picks its list by the heading's text.
+- **A category page owes its own SEO body, not the home page's.** `seo.md` section 3B lists "About
+  {category} events" as the category template's fourth H2; the painted pages had inherited the feed's
+  two generic sections instead, the same text on all five URLs, which section E of the same spec
+  forbids. The copy is read out of the grey twin at generation time, because a generator that types a
+  sentence is a second source for it.
+- **A listing does not change its contents when nobody is signed in.** The logged-out category state
+  was built from a grey card set drawn in Stage 05: no `.top-txt`, so no story-led "why", and YES/NO
+  a logged-out person could not press, in a product whose whole inversion is that you browse and
+  build a bet before the gate. And **nobody signed in has saved anything**: a pressed bookmark shipped
+  on five logged-out screens in both trees, the filled brass mark meaning "this is in your
+  Favorites", to a visitor whose header offers them Sign up.
+- **A missing colour is a colour, on a control this time.** Every colour in `yesno.css` hung off
+  `> a`, so a `.yesno` whose buttons are not wrapped in an anchor fell back to the user agent's
+  `buttontext`: near black on graphite, **1.42:1**. **A side is a POSITION IN THE PAIR, not a fact
+  about being wrapped in a link.**
+- **A frame rule reached a dialog.** `.app-case{position:relative}` in `base.css` took back the user
+  agent's `position:fixed` for `dialog:modal` on the 17 standalone overlay pages, which put the app
+  frame class on the `<dialog>` itself, so the sheet scrolled off the top with the page behind it.
+- **The bottom sheet came back, and it is geometry, not markup.** Under 640px an invoked dialog is
+  full width on the bottom edge, top corners rounded, rising into place, head fixed and body
+  scrolling; above 640px nothing changed. **`:modal`, not `[open]`**, because a standalone overlay
+  page opens its dialog as the page it IS and a sheet that rises over nothing is a page that jumps on
+  load, and because **an author declaration beats a UA one whatever the specificity**, so a bare
+  `display:flex` would have opened every dialog on 76 screens at once. No grab handle: the grey tree
+  draws one and drag-to-dismiss is not built.
+- **Where a font comes from is a decision.** The three families are served from this repo now: 18
+  woff2 files (latin + latin-ext, `font-display:swap`) in `assets/fonts/`, declared once in
+  `components/fonts.css`. **Gate 20 is three checks**, because the defect returns three ways: a page
+  re-adding the tag, a GENERATOR re-adding it to every page it writes (five had it in a template),
+  and an `@font-face` naming a file nobody committed.
+- **Verified:** painted 105 screens x 2 themes x {380, 1280} = **420 page loads, 86534 text pairs, 0
+  below AA, 0 overflow, 0 page errors**; grey 104 x 2 widths, **0 overflow, 0 errors, 0 non-neutral
+  colour** (its 1212 sub-AA pairs are the screen-tree drawer's own notes and the identical count comes
+  off a worktree of the previous commit). **16770 grey + 15535 painted links, 0 broken.** The sweep's
+  first cut reported 116 sub-AA pairs and 4690 overflowing elements; calibrating it on three
+  known-good pages returned 0 and 438, so the overflow question is asked of the DOCUMENT now and the
+  116 turned out to be real. **A measurement not checked against a known-good case is a claim, not a
+  proof. Gates: 20.**
+
 ### The rule for a change, from here on
 
 Replaces the Stage-07 wording that pointed at `ui-kit/kit.css` and `ui-kit/kit.html`; neither has
@@ -722,13 +786,22 @@ that role any more.
   root, owned by neither layer.
 - **A new component** = css in `components/` + a page in `ui-kit/` + an entry in `ui-kit/_nav.js` +
   a row in `ui-kit/docs/inventory.md` (with its CSS file and Page columns). Then
-  `python3 ui-kit/_check_kit.py` has to pass, all nineteen.
+  `python3 ui-kit/_check_kit.py` has to pass, all twenty.
 - **`ui-kit/kit.html` is frozen.** It is the flat kit the system was read out of and it is kept as
   provenance; a component is never added to it. **`ui-kit/shell.html` composes** the header and
   bottom-nav specimens and holds no markup of its own.
 - **Two token levels, not three.** Primitive + semantic. Colour is the only thing with a second
   level, because a radius or a gap has nothing for a theme to override; a component level is not
   part of this stage.
+- **A screen has a twin, and the map is one file.** The two trees do not name every screen the
+  same way (`politics.html` in grey, `event-feed-politics.html` in colour). That map is `_twins.py`
+  at the root and nowhere else, because gate 18 pairs the trees by filename and an unpaired page is
+  skipped in SILENCE: 32 grey category screens sat against 4 painted ones behind five hand-written
+  copies of a map that all stopped at the base page. A new screen is built in both trees, or its
+  absence is a declared exception.
+- **A font is served from this repo.** No page may call a font host: the request carries a visitor's
+  IP to a third party before the consent banner has asked anything (gate 20). Faces are woff2 in
+  `assets/fonts/`, declared once in `components/fonts.css`, imported first by `index.css`.
 - **Never paint `wireframes/`.** Structure and copy are owned there and stay grey; `ui-visual/` owns
   the visual layer only. **And the traffic runs the other way too**: a new block, a new control, a new
   section is decided in `wireframes/` and the colour copy follows. Gate 18 fails the build when the

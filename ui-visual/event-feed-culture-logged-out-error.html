@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   A frame is a document of its own, so it does not inherit the attribute: this
+   block runs in the frames too and they are told by postMessage, the same
+   handshake _frames.js already uses, because from file:// every document has
+   its own opaque origin and reading into a frame is refused.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function set(on){if(on){r.setAttribute('data-theme','light')}else{r.removeAttribute('data-theme')}}
+function push(){var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){try{f[i].contentWindow.postMessage({pmTheme:lit()?'light':'dark'},'*')}catch(e){}}}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}
+push();}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();set(!on);
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+window.addEventListener('message',function(e){var d=e.data;
+if(!d||(d.pmTheme!=='light'&&d.pmTheme!=='dark'))return;
+set(d.pmTheme==='light');paint();});
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);
+/* a frame that arrives late is told as soon as it is ready */
+var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
+push();});})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Visual - Culture Events (Vault 3D, logged, out, error)</title>
+  <link rel="stylesheet" href="../components/index.css">
+</head>
+<body>
+
+  <!-- Solar Bold icon sprite: filled glyphs referenced via <use>; rendered filled by components/base.css svg.ic:has(use) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></symbol>
+    <symbol id="i-bell-b" viewBox="0 0 24 24"><path fill="currentColor" d="M18.75 9.71v-.705C18.75 5.136 15.726 2 12 2S5.25 5.136 5.25 9.005v.705a4.4 4.4 0 0 1-.692 2.375L3.45 13.81c-1.011 1.575.062 3.68 1.966 3.843a51 51 0 0 0 13.167 0c1.904-.163 2.977-2.268 1.966-3.843l-1.108-1.725a4.4 4.4 0 0 1-.692-2.375"/><path fill="currentColor" d="M7.243 18.545a5.002 5.002 0 0 0 9.513 0c-3.145.28-6.367.281-9.513 0"/></symbol>
+    <symbol id="i-shield-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.378 5.082C3 5.62 3 7.22 3 10.417v1.574c0 5.638 4.239 8.375 6.899 9.536c.721.315 1.082.473 2.101.473c1.02 0 1.38-.158 2.101-.473C16.761 20.365 21 17.63 21 11.991v-1.574c0-3.198 0-4.797-.378-5.335c-.377-.537-1.88-1.052-4.887-2.081l-.573-.196C13.595 2.268 12.812 2 12 2s-1.595.268-3.162.805L8.265 3c-3.007 1.03-4.51 1.545-4.887 2.082M15.06 10.5a.75.75 0 0 0-1.12-.999l-3.011 3.374l-.87-.974a.75.75 0 0 0-1.118 1l1.428 1.6a.75.75 0 0 0 1.119 0z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-verified-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9.592 3.2a6 6 0 0 1-.495.399c-.298.2-.633.338-.985.408c-.153.03-.313.043-.632.068c-.801.064-1.202.096-1.536.214a2.71 2.71 0 0 0-1.655 1.655c-.118.334-.15.735-.214 1.536a6 6 0 0 1-.068.632c-.07.352-.208.687-.408.985c-.087.13-.191.252-.399.495c-.521.612-.782.918-.935 1.238c-.353.74-.353 1.6 0 2.34c.153.32.414.626.935 1.238c.208.243.312.365.399.495c.2.298.338.633.408.985c.03.153.043.313.068.632c.064.801.096 1.202.214 1.536a2.71 2.71 0 0 0 1.655 1.655c.334.118.735.15 1.536.214c.319.025.479.038.632.068c.352.07.687.209.985.408c.13.087.252.191.495.399c.612.521.918.782 1.238.935c.74.353 1.6.353 2.34 0c.32-.153.626-.414 1.238-.935c.243-.208.365-.312.495-.399c.298-.2.633-.338.985-.408c.153-.03.313-.043.632-.068c.801-.064 1.202-.096 1.536-.214a2.71 2.71 0 0 0 1.655-1.655c.118-.334.15-.735.214-1.536c.025-.319.038-.479.068-.632c.07-.352.209-.687.408-.985c.087-.13.191-.252.399-.495c.521-.612.782-.918.935-1.238c.353-.74.353-1.6 0-2.34c-.153-.32-.414-.626-.935-1.238a6 6 0 0 1-.399-.495a2.7 2.7 0 0 1-.408-.985a6 6 0 0 1-.068-.632c-.064-.801-.096-1.202-.214-1.536a2.71 2.71 0 0 0-1.655-1.655c-.334-.118-.735-.15-1.536-.214a6 6 0 0 1-.632-.068a2.7 2.7 0 0 1-.985-.408a6 6 0 0 1-.495-.399c-.612-.521-.918-.782-1.238-.935a2.71 2.71 0 0 0-2.34 0c-.32.153-.626.414-1.238.935m6.781 6.663a.814.814 0 0 0-1.15-1.15l-4.85 4.85l-1.596-1.595a.814.814 0 0 0-1.15 1.15l2.17 2.17a.814.814 0 0 0 1.15 0z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-fire" viewBox="0 0 24 24"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></symbol>
+    <symbol id="i-cat-politics" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21.25 8.5c0-1.404 0-2.107-.337-2.611a2 2 0 0 0-.552-.552c-.441-.295-1.034-.332-2.115-.336q.005.438.004.91V7.25h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v6.5h-1.5V6c0-1.886 0-2.828-.586-3.414S14.636 2 12.75 2h-2c-1.886 0-2.828 0-3.414.586S6.75 4.114 6.75 6v15.25h-1.5v-6.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1V5.91q-.001-.47.004-.91c-1.081.005-1.674.042-2.115.337a2 2 0 0 0-.552.552C2.25 6.393 2.25 7.096 2.25 8.5v12.75h-.5a.75.75 0 0 0 0 1.5h20a.75.75 0 0 0 0-1.5h-.5zM9 11.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m2.75 3.5a.75.75 0 0 1 .75.75v2.25H11V19a.75.75 0 0 1 .75-.75M9 6.25a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 6.25m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 9.25" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-crypto" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m.75-16a.75.75 0 0 0-1.5 0v.317c-1.63.292-3 1.517-3 3.183c0 1.917 1.813 3.25 3.75 3.25c1.377 0 2.25.906 2.25 1.75s-.873 1.75-2.25 1.75c-1.376 0-2.25-.906-2.25-1.75a.75.75 0 0 0-1.5 0c0 1.666 1.37 2.891 3 3.183V18a.75.75 0 0 0 1.5 0v-.317c1.63-.292 3-1.517 3-3.183c0-1.917-1.813-3.25-3.75-3.25c-1.376 0-2.25-.906-2.25-1.75s.874-1.75 2.25-1.75c1.377 0 2.25.906 2.25 1.75a.75.75 0 0 0 1.5 0c0-1.666-1.37-2.891-3-3.183z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-culture" viewBox="0 0 24 24"><path fill="currentColor" d="m21.537 9.136l-.846 3.297c-.43 1.676-1.306 2.855-2.336 3.685c.219-1.144.214-2.418-.144-3.814l-.864-3.37l-.15-.584a.9.9 0 0 1 .599-.044c.378.101.608.406.637.702a.75.75 0 1 0 1.493-.145c-.091-.942-.783-1.749-1.742-2.006a2.4 2.4 0 0 0-1.418.05l-.017-.044c-.224-.596-.552-1.229-1.171-1.693a3.5 3.5 0 0 0-1.13-.562c-.759-.215-1.463-.076-2.064.124c-.558.185-1.21.49-1.924.825l-.072.034c-1.185.555-1.659.773-2.144.928q-.22.07-.446.127l.327-1.267c.44-1.719.661-2.578 1.236-3.01c.193-.145.41-.252.638-.317c.684-.194 1.461.17 3.015.897c1.15.54 1.726.809 2.326 1q.314.099.632.176c.612.149 1.239.216 2.493.351c1.694.182 2.54.273 3.04.798c.167.177.303.383.4.609c.292.675.072 1.534-.368 3.253"/><path fill="currentColor" fill-rule="evenodd" d="m16.758 12.677l-.845-3.298c-.44-1.719-.66-2.578-1.236-3.01a2 2 0 0 0-.638-.317c-.684-.194-1.46.17-3.015.897c-1.15.54-1.726.809-2.326 1a10 10 0 0 1-.632.176c-.611.149-1.238.216-2.493.351c-1.694.182-2.54.273-3.04.798a2.1 2.1 0 0 0-.4.609c-.292.675-.072 1.534.369 3.253l.845 3.297c.993 3.876 4.296 5.096 6.516 5.473c.677.115 1.016.172 2.044-.116s1.294-.514 1.825-.968c1.742-1.487 4.02-4.27 3.026-8.145m-10.753.691c.029-.296.26-.6.638-.702c.379-.102.73.047.903.29a.75.75 0 0 0 1.22-.873c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.064-1.743 2.006a.75.75 0 0 0 1.493.145m5.796-1.553c.029-.296.26-.6.638-.702c.379-.102.73.047.903.289a.75.75 0 1 0 1.22-.872c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.063-1.743 2.006a.75.75 0 0 0 1.493.145m1.846 3.814a.75.75 0 0 1-.885 1.211l-.01-.006a2 2 0 0 0-.485-.2c-.36-.098-.929-.163-1.685.04c-.756.202-1.216.543-1.48.808a2 2 0 0 0-.32.416l-.005.01a.75.75 0 0 1-1.372-.607l.688.298c-.688-.298-.687-.3-.687-.3v-.001l.002-.004l.004-.009l.01-.022l.033-.064q.04-.078.115-.196c.1-.156.252-.36.468-.578c.437-.44 1.125-.924 2.156-1.2c1.031-.277 1.87-.2 2.467-.038c.296.08.53.18.694.266a3 3 0 0 1 .258.151l.02.015l.008.005l.003.003h.002z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-general" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M2 6.634a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0m10.732 10.732a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0" clip-rule="evenodd"/><path fill="currentColor" d="M2 17.5c0-2.121 0-3.182.659-3.841S4.379 13 6.5 13s3.182 0 3.841.659S11 15.379 11 17.5s0 3.182-.659 3.841S8.621 22 6.5 22s-3.182 0-3.841-.659S2 19.621 2 17.5m11-11c0-2.121 0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11s-3.182 0-3.841-.659S13 8.621 13 6.5"/></symbol>
+    <!-- SEO section heading icons (Solar-bold style, like the category icons) -->
+    <symbol id="i-seo-guide" viewBox="0 0 24 24"><path fill="currentColor" d="M11 4.2C9.6 3.3 7.9 2.8 6 2.8c-1.1 0-2.1.2-3 .5C2.4 3.5 2 4 2 4.6v12.2c0 .9.9 1.5 1.7 1.2c.7-.2 1.5-.3 2.3-.3c1.8 0 3.4.6 4.6 1.5c.2.2.5.3.8.3V5c-.1-.3-.2-.6-.4-.8m2 0c-.2.2-.3.5-.4.8v14.5c.3 0 .6-.1.8-.3c1.2-.9 2.8-1.5 4.6-1.5c.8 0 1.6.1 2.3.3c.8.3 1.7-.3 1.7-1.2V4.6c0-.6-.4-1.1-1-1.3c-.9-.3-1.9-.5-3-.5c-1.9 0-3.6.5-5 1.4"/></symbol>
+    <symbol id="i-seo-chart" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21a1.5 1.5 0 0 1-1.5-1.5v-3a1.5 1.5 0 0 1 3 0v3A1.5 1.5 0 0 1 5 21m7 0a1.5 1.5 0 0 1-1.5-1.5v-8a1.5 1.5 0 0 1 3 0v8A1.5 1.5 0 0 1 12 21m7 0a1.5 1.5 0 0 1-1.5-1.5V6a1.5 1.5 0 0 1 3 0v13.5A1.5 1.5 0 0 1 19 21"/></symbol>
+    <symbol id="i-seo-qa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a6 6 0 0 0-6 6a1.5 1.5 0 0 0 3 0a3 3 0 1 1 4.3 2.7c-1.1.6-2.8 1.7-2.8 3.8v.5a1.5 1.5 0 0 0 3 0v-.5c0-.3.4-.7 1.1-1.1A6 6 0 0 0 12 2m0 16.5A1.75 1.75 0 1 0 12 22a1.75 1.75 0 0 0 0-3.5"/></symbol>
+  </defs></svg>
+
+  <!-- ===== Roadmap sidebar (course chrome) + color-copy bar ===== -->
+  <button type="button" class="rm-toggle" id="rmToggle" aria-label="Open roadmap"><span></span><span></span><span></span></button>
+  <div class="rm-overlay" id="rmOverlay"></div>
+  <aside class="sidebar" id="rmSidebar">
+    <a href="../research/research.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>
+    <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual - screens</div></div>
+    <button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>
+    <div class="sidebar-nav">
+      <a href="overview.html" class="sidebar-page-link">Overview</a>
+      <a class="sidebar-page-link">Event Feed</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Logged in</div>
+        <a href="event-feed.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-feed-push-permission-missing.html" class="sidebar-sub-link">push-permission-missing</a>
+        <div class="sidebar-sub-head">Logged out</div>
+        <a href="event-feed-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <a class="sidebar-page-link active">Category pages</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Politics</div>
+        <a href="event-feed-politics.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-politics-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-politics-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-politics-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Politics, logged out</div>
+        <a href="event-feed-politics-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-politics-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-politics-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-politics-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Crypto</div>
+        <a href="event-feed-crypto.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-crypto-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-crypto-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-crypto-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Crypto, logged out</div>
+        <a href="event-feed-crypto-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-crypto-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-crypto-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-crypto-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Culture</div>
+        <a href="event-feed-culture.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-culture-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-culture-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-culture-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Culture, logged out</div>
+        <a href="event-feed-culture-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-culture-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-culture-logged-out-error.html" class="sidebar-sub-link active">error</a>
+        <a href="event-feed-culture-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">General</div>
+        <a href="event-feed-general.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-general-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-general-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-general-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">General, logged out</div>
+        <a href="event-feed-general-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-general-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-general-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-general-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <a class="sidebar-page-link">Event Detail</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Logged in</div>
+        <a href="event-detail.html" class="sidebar-sub-link">binary</a>
+        <a href="event-detail-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-resolved.html" class="sidebar-sub-link">resolved</a>
+        <a href="event-detail-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-detail-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-sub-head">Placing a bet</div>
+        <a href="event-detail-bet-reconcile.html" class="sidebar-sub-link">price moved</a>
+        <a href="event-detail-bet-insufficient.html" class="sidebar-sub-link">low balance</a>
+        <a href="event-detail-bet-processing.html" class="sidebar-sub-link">processing</a>
+        <a href="event-detail-bet-error.html" class="sidebar-sub-link">on-chain error</a>
+        <div class="sidebar-sub-head">Logged out</div>
+        <a href="event-detail-logged-out.html" class="sidebar-sub-link">binary</a>
+        <a href="event-detail-logged-out-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-detail-logged-out-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">My Bets</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Active</div>
+        <a href="active-bets.html" class="sidebar-sub-link">success</a>
+        <a href="active-bets-empty-new.html" class="sidebar-sub-link">empty (new)</a>
+        <a href="active-bets-empty-resolved.html" class="sidebar-sub-link">empty (resolved)</a>
+        <a href="active-bets-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="active-bets-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-sub-head">History</div>
+        <a href="active-bets-history.html" class="sidebar-sub-link">success</a>
+        <a href="active-bets-history-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="active-bets-history-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="active-bets-history-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">Win / Loss</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Win</div>
+        <a href="win.html" class="sidebar-sub-link">you were right</a>
+        <a href="win-payout-pending.html" class="sidebar-sub-link">payout pending</a>
+        <a href="win-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="win-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-sub-head">Loss</div>
+        <a href="loss.html" class="sidebar-sub-link">what happened</a>
+        <a href="loss-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <a class="sidebar-page-link">Favorites</a>
+      <div class="sidebar-sub">
+        <a href="favorites.html" class="sidebar-sub-link">success</a>
+        <a href="favorites-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="favorites-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <a class="sidebar-page-link">Notifications</a>
+      <div class="sidebar-sub">
+        <a href="notifications.html" class="sidebar-sub-link">success</a>
+        <a href="notifications-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="notifications-error.html" class="sidebar-sub-link">error</a>
+        <a href="notifications-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="notifications-push.html" class="sidebar-sub-link">push permission</a>
+      </div>
+      <a class="sidebar-page-link">Wallet</a>
+      <div class="sidebar-sub">
+        <a href="wallet.html" class="sidebar-sub-link">success</a>
+        <a href="wallet-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="wallet-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">My Profile</a>
+      <div class="sidebar-sub">
+        <a href="my-profile.html" class="sidebar-sub-link">success</a>
+        <a href="my-profile-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="my-profile-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <a class="sidebar-page-link">Public Profile</a>
+      <div class="sidebar-sub">
+        <a href="public-profile.html" class="sidebar-sub-link">success</a>
+        <a href="public-profile-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="public-profile-error.html" class="sidebar-sub-link">error</a>
+        <a href="public-profile-not-found.html" class="sidebar-sub-link">not found</a>
+      </div>
+      <a class="sidebar-page-link">How It Works</a>
+      <div class="sidebar-sub">
+        <a href="how-it-works.html" class="sidebar-sub-link">success</a>
+      </div>
+      <a class="sidebar-page-link">Sign In</a>
+      <div class="sidebar-sub">
+        <a href="sign-in.html" class="sidebar-sub-link">success</a>
+        <a href="sign-in-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="sign-in-error.html" class="sidebar-sub-link">error</a>
+        <a href="sign-in-provider-conflict.html" class="sidebar-sub-link">provider conflict</a>
+      </div>
+      <a class="sidebar-page-link">Add funds</a>
+      <div class="sidebar-sub">
+        <a href="deposit.html" class="sidebar-sub-link">success</a>
+        <a href="deposit-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="deposit-pending.html" class="sidebar-sub-link">payment pending</a>
+        <a href="deposit-error-card.html" class="sidebar-sub-link">card declined</a>
+        <a href="deposit-error-kyc.html" class="sidebar-sub-link">KYC rejected</a>
+        <a href="deposit-minimum-not-met.html" class="sidebar-sub-link">minimum not met</a>
+        <a href="deposit-widget-load-failure.html" class="sidebar-sub-link">widget failed</a>
+      </div>
+      <a class="sidebar-page-link">System</a>
+      <div class="sidebar-sub">
+        <a href="404.html" class="sidebar-sub-link">404 not found</a>
+        <a href="500.html" class="sidebar-sub-link">500 server error</a>
+        <a href="maintenance.html" class="sidebar-sub-link">maintenance</a>
+        <a href="cookie-consent.html" class="sidebar-sub-link">cookie consent</a>
+        <a href="toasts.html" class="sidebar-sub-link">toasts</a>
+      </div>
+      <div class="sidebar-note">All 14 families are colored. Overview lists them as chips; the system they are painted with is in ui-kit.</div>
+    </div>
+  </aside>
+<!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
+  <div class="device">
+
+    <!-- Header (lean: logo = Events/home, right icon cluster) -->
+    <div class="app-case">
+    <header class="app-header">
+      <div class="row">
+        <div class="left">
+          <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          </button>
+          <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+          <button type="button" class="hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
+        </div>
+
+        <div class="utility">
+          <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
+          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+          </button>
+
+          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
+          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+          </button>
+
+          <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
+          <div class="auth-btns">
+            <button type="button" class="auth-btn" data-open="signin">Sign in</button>
+            <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
+          </div>
+        </div>
+      </div>
+    <div class="cat-condensed" aria-hidden="true">
+        <ul>
+          <li aria-current="page"><a href="event-feed.html"><button type="button">Trending</button></a></li>
+          <li><a href="event-feed-politics.html"><button type="button">Politics</button></a></li>
+          <li><a href="event-feed-crypto.html"><button type="button">Crypto</button></a></li>
+          <li><a href="event-feed-culture.html"><button type="button">Culture</button></a></li>
+          <li><a href="event-feed-general.html"><button type="button">General</button></a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Second-level navigation moved onto the content plate (below) -->
+
+    <!-- Trust cue near the action (critique P2): trust is the persona's #1 driver, surfaced above the feed and on the logged-out first paint, not only in the footer. -->
+    <div class="feed-trustbar">
+      <div class="ft-inner">
+        <span class="ft-item">
+          <svg class="ft-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"/></svg>
+          Your USDC is held 1:1, we never lend it.
+        </span>
+        <span class="ft-sep" aria-hidden="true">·</span>
+        <span class="ft-item">
+          <svg class="ft-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-verified-b"/></svg>
+          <b>1,284</b> events resolved on-chain
+        </span>
+      </div>
+    </div>
+
+    <!-- Feed -->
+    <main class="feed">
+      <div class="feed-inner">
+        <nav class="cat-nav" aria-label="Categories (second level)">
+          <ul>
+            <li><a href="event-feed.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></button></a></li>
+            <li><a href="event-feed-politics.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></button></a></li>
+            <li><a href="event-feed-crypto.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></button></a></li>
+            <li aria-current="page"><a href="event-feed-culture.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></button></a></li>
+            <li><a href="event-feed-general.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></button></a></li>
+          </ul>
+        </nav>
+        <div class="cat-layout">
+        <nav class="subcat" aria-label="Culture sub-categories">
+        <p class="subcat-head">Sub-categories</p>
+        <ul>
+        <li aria-current="page"><button type="button">All <span class="cnt">1.4K</span></button></li>
+        <li><button type="button">Movies <span class="cnt">180</span></button></li>
+        <li><button type="button">Music <span class="cnt">120</span></button></li>
+        <li><button type="button">Awards <span class="cnt">64</span></button></li>
+        <li><button type="button">TV & Streaming <span class="cnt">90</span></button></li>
+        <li><button type="button">Celebrities <span class="cnt">145</span></button></li>
+        <li><button type="button">Internet & Memes <span class="cnt">38</span></button></li>
+        <li><button type="button">Books <span class="cnt">22</span></button></li>
+        <li><button type="button">Gaming <span class="cnt">51</span></button></li>
+        </ul>
+      </nav>
+        <div class="cat-main">
+        <div class="feed-head">
+          <h1 id="feedHeading">Culture</h1>
+          <div class="feed-controls">
+            <details class="filter-menu" id="sortMenu">
+              <summary aria-label="Sort by">
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
+                <span>Sort: <span id="sortCurrent">Trending</span></span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="filter-panel">
+                <ul role="radiogroup" aria-label="Sort by">
+                  <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
+                  <li><label><input type="radio" name="sort" value="New"> New</label></li>
+                  <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
+                  <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
+                  <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
+                </ul>
+              </div>
+            </details>
+            <details class="filter-menu" id="freqMenu">
+              <summary aria-label="Filter by frequency">
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <span>Frequency: <span id="freqCurrent">All</span></span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="filter-panel">
+                <ul role="radiogroup" aria-label="Frequency">
+                  <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
+                  <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
+                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
+                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
+                  <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
+                  <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+          <div class="state-block">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+            <h2 class="state-title">Couldn't load Culture</h2>
+            <p class="state-msg">We couldn't load these events. Check your connection and try again.</p>
+            <div class="state-actions">
+              <a href="event-feed-culture-logged-out.html"><button type="button" class="state-btn primary">Try again</button></a>
+              <a href="event-feed.html"><button type="button" class="state-btn">Browse events</button></a>
+            </div>
+          </div>
+      </div><!-- /cat-main --></div><!-- /cat-layout -->
+      </div>
+    </main>
+    </div><!-- /app-case -->
+
+    <!-- Bottom navigation (mobile only) -->
+    <nav class="bottom-nav" aria-label="Primary (mobile)">
+      <ul>
+        <li aria-current="page"><a href="event-feed-logged-out.html"><button type="button">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
+          <span>Events</span>
+        </button></a></li>
+        <li><button type="button" data-open="signin">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          <span>My Bets</span>
+        </button></li>
+        <li><button type="button" data-open="signin">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+          <span>Favorites</span>
+        </button></li>
+        <li><button type="button" data-open="signin" aria-label="Sign in">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 12h10M16 8l4 4-4 4M14 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/></svg>
+          <span>Sign in</span>
+        </button></li>
+      </ul>
+    </nav>
+
+    <!-- Footer (global element) -->
+    <footer class="app-footer">
+      <div class="footer-inner">
+
+        <!-- Trust strip (persistent funds-safety + resolution signal, WF reconcile) -->
+        <div class="footer-trust">
+          <h2 class="trust-head">Built on trust, not on your balance</h2>
+          <div class="trust-items">
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/></svg>
+              <span class="tr-txt"><b>Your USDC is held 1:1</b><i>We never lend it.</i></span>
+            </span>
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
+              <span class="tr-txt"><b>Every event resolves against a public source</b><i>You can check it.</i></span>
+            </span>
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg>
+              <span class="tr-txt"><b>1,284 events resolved</b><i>On-chain, verifiable.</i></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="footer-top">
+
+          <!-- Brand block: logo, tagline, social, language -->
+          <div class="footer-brand">
+            <span class="footer-logo">Predict Market</span>
+            <p class="footer-tagline">Back the events you follow.</p>
+            <div class="social-row" role="list" aria-label="Social media">
+              <a href="#" role="listitem" aria-label="X (Twitter)" title="X (Twitter)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Discord" title="Discord">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2l-1-2H8l-1 2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/><circle cx="10" cy="12" r="1.1"/><circle cx="14" cy="12" r="1.1"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Telegram" title="Telegram">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l6 2 2 6 3-4 5 4z"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="Instagram" title="Instagram">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="16.6" cy="7.4" r="0.7"/></svg>
+              </a>
+              <a href="#" role="listitem" aria-label="TikTok" title="TikTok">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5v9.5a3 3 0 1 1-2.5-3"/><path d="M11 5c.5 2.5 2.5 4 4.5 4"/></svg>
+              </a>
+            </div>
+            <details class="filter-menu lang-menu" id="langMenu">
+              <summary aria-label="Language (placeholder)">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
+                <span id="langCurrent">English</span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="filter-panel">
+                <ul>
+                  <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
+                  <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
+                  <li><label><input type="radio" name="lang" value="Portuguese"> Portuguese</label></li>
+                  <li><label><input type="radio" name="lang" value="German"> German</label></li>
+                  <li><label><input type="radio" name="lang" value="French"> French</label></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <!-- Link columns -->
+          <div class="footer-cols">
+
+            <nav class="footer-col" aria-label="Markets">
+              <h2>Events</h2>
+              <p class="sub-label">By category</p>
+              <ul>
+                <li><a href="event-feed-politics.html">Politics</a></li>
+                <li><a href="event-feed-crypto.html">Crypto</a></li>
+                <li><a href="event-feed-culture.html">Culture</a></li>
+                <li><a href="event-feed-general.html">General</a></li>
+                <li><a href="#">Sports</a></li>
+              </ul>
+              <p class="sub-label">By topic</p>
+              <ul>
+                <li><a href="#">Trending topics</a></li>
+                <li><a href="event-feed.html">View all events</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Product">
+              <h2>Product</h2>
+              <ul>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="wallet.html">Wallet</a></li>
+                <li><a href="active-bets.html">My Bets</a></li>
+                <li><a href="#">API / Developers</a></li>
+                <li><a href="#">Status</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Support">
+              <h2>Support</h2>
+              <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Company">
+              <h2>Company</h2>
+              <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Brand</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </div>
+
+        <!-- SEO popular-links block (second internal-linking plane, WF reconcile) -->
+        <div class="footer-popular">
+          <h2>Popular right now</h2>
+          <ul class="popular-links">
+            <li><a href="event-feed-politics.html">Politics events</a></li>
+            <li><a href="event-feed-crypto.html">Crypto events</a></li>
+            <li><a href="event-feed-culture.html">Culture events</a></li>
+            <li><a href="event-feed-general.html">General events</a></li>
+            <li><a href="event-feed.html">Trending events</a></li>
+            <li><a href="event-feed.html">Ending soon</a></li>
+            <li><a href="how-it-works.html">How it works</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal strip -->
+        <div class="footer-legal">
+          <nav aria-label="Legal">
+            <ul class="legal-links">
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Responsible play</a></li>
+              <li><a href="#">Geo restrictions</a></li>
+              <li><a href="cookie-consent.html">Cookie preferences</a></li>
+            </ul>
+          </nav>
+          <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
+          <p>Copyright (c) Predict Market. Sample wireframe content.</p>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Minimal interaction: desktop balance swap Portfolio <-> Cash (wireframe behavior, no styling) -->
+  <script>
+    (function () {
+      var states = [
+        { label: 'Portfolio', amount: '$142.00' },
+        { label: 'Cash', amount: '$42.00' }
+      ];
+      var i = 0;
+      var lbl = document.getElementById('balLabel');
+      var amt = document.getElementById('balAmt');
+      var btn = document.getElementById('balSwap');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          i = (i + 1) % states.length;
+          lbl.textContent = states[i].label;
+          amt.textContent = states[i].amount;
+          btn.setAttribute('aria-label', 'Swap balance (showing ' + states[i].label + ')');
+        });
+      }
+    })();
+
+    // Feed filters: each dropdown updates its own label and closes on choose.
+    function wireFilter(menuId, currentId, name, onChange) {
+      var menu = document.getElementById(menuId);
+      if (!menu) return;
+      var cur = document.getElementById(currentId);
+      menu.querySelectorAll('input[name="' + name + '"]').forEach(function (r) {
+        r.addEventListener('change', function () {
+          if (cur) cur.textContent = r.value;
+          menu.open = false;
+          if (onChange) onChange(r.value);
+        });
+      });
+    }
+
+    // Sort + its reverse toggle.
+    wireFilter('sortMenu', 'sortCurrent', 'sort');
+    (function () {
+      var rev = document.querySelector('#sortMenu .toggle');
+      if (!rev) return;
+      rev.addEventListener('click', function () {
+        var on = rev.getAttribute('aria-checked') === 'true';
+        rev.setAttribute('aria-checked', on ? 'false' : 'true');
+        rev.textContent = on ? 'off' : 'on';
+      });
+    })();
+
+    // Frequency.
+    wireFilter('freqMenu', 'freqCurrent', 'freq');
+
+    // Footer language selector (placeholder: updates label, English-only at MVP).
+    wireFilter('langMenu', 'langCurrent', 'lang');
+
+    // Category: the dropdown and the chip nav stay in sync, the heading echoes the
+    // choice, and picking a category reveals its sub-category rail (like the WF category pages).
+    (function () {
+      var heading = document.getElementById('feedHeading');
+      var nav = document.querySelector('.cat-nav');
+      var catCur = document.getElementById('catCurrent');
+      var rail = document.getElementById('subcatRail');
+      // Sub-categories per category (counts mirror the wireframe category pages). Trending has none.
+      var SUBCATS = {
+        Politics: [['All', '2K'], ['Trump', '297'], ['Trump Daily', '3'], ['Midterm Elections', '537'], ['Global Elections', '122'], ['Primaries', '106'], ['Congress', '42'], ['Trump Cabinet', '16'], ['Courts', '30'], ['Epstein', '22'], ['Government Shutdown', '3'], ['LA Mayor', '5']],
+        Crypto: [['All', '2K'], ['Bitcoin', '312'], ['Ethereum', '168'], ['Solana', '74'], ['Price Predictions', '220'], ['ETFs', '33'], ['Stablecoins', '19'], ['Memecoins', '58'], ['Layer 2s', '27'], ['Fed & Macro', '41']],
+        Culture: [['All', '1.4K'], ['Movies', '180'], ['Music', '120'], ['Awards', '64'], ['TV & Streaming', '90'], ['Celebrities', '145'], ['Internet & Memes', '38'], ['Books', '22'], ['Gaming', '51']],
+        General: [['All', '1.1K'], ['Science & Tech', '160'], ['Climate', '88'], ['Space', '54'], ['AI', '132'], ['Health', '70'], ['Business', '96'], ['World', '140']]
+      };
+      function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+      function renderRail(name) {
+        if (!rail) return;
+        var rows = SUBCATS[name];
+        if (!rows) { rail.hidden = true; rail.innerHTML = ''; return; }   // Trending / unknown: no rail
+        var html = '<p class="subcat-head">' + esc(name) + ' sub-categories</p><ul>';
+        for (var i = 0; i < rows.length; i++) {
+          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button">' + esc(rows[i][0]) + ' <span class="cnt">' + esc(rows[i][1]) + '</span></button></li>';
+        }
+        rail.innerHTML = html + '</ul>';
+        rail.hidden = false;
+      }
+      function activate(name) {
+        if (heading) heading.textContent = name;
+        if (catCur) catCur.textContent = name;
+        if (nav) {
+          nav.querySelectorAll('li').forEach(function (li) {
+            var on = li.querySelector('button').textContent.trim() === name;
+            if (on) li.setAttribute('aria-current', 'page'); else li.removeAttribute('aria-current');
+          });
+        }
+        var radio = document.querySelector('#catMenu input[value="' + name + '"]');
+        if (radio) radio.checked = true;
+        renderRail(name);
+      }
+      // Picking a sub-category highlights it (visual selection; the feed filter is product scope).
+      if (rail) {
+        rail.addEventListener('click', function (e) {
+          var b = e.target.closest('button'); if (!b) return;
+          var li = b.closest('li'); if (!li) return;
+          rail.querySelectorAll('li[aria-current]').forEach(function (x) { x.removeAttribute('aria-current'); });
+          li.setAttribute('aria-current', 'page');
+        });
+      }
+      wireFilter('catMenu', 'catCurrent', 'catf', activate);
+      // On a static category page the category is already active, so reveal its
+      // sub-category rail on load (the dropdown-driven activate() never fires here).
+      if (heading) { var _cat = heading.textContent.trim(); if (SUBCATS[_cat]) renderRail(_cat); }
+      // The top category nav navigates to per-category pages (event-feed-*.html),
+      // one page per category; it no longer switches the feed client-side, so the
+      // links are left to navigate natively (no preventDefault, no rail).
+    })();
+  </script>
+
+  <dialog id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
+    <div class="sheet-head">
+      <h2>Sign in or create account</h2>
+      <p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="sheet-body">
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
+        Continue with Google
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>
+        Continue with X
+      </button>
+      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+        <svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"/></svg>
+        Continue with Apple
+      </button>
+      <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>. Adding funds by card requires KYC; crypto-only accounts can connect a wallet instead.</p>
+    </div>
+  </dialog>
+
+  <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
+    <div class="sheet-head">
+      <h2>Add funds</h2>
+      <p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
+    </div>
+    <div class="sheet-body">
+      <div>
+        <span class="field-label">Amount to add</span>
+        <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9.$]*" value="$20.00" aria-label="Amount to add"></div>
+        <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
+      </div>
+      <div><span class="field-label">Pay with</span>
+      <div class="widget-box">Transak payment widget (card to USDC)</div></div>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
+      <button type="button" class="provider-btn" data-open="howitworks">How it works (what happens to my money)</button>
+      <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
+    </div>
+  </dialog>
+
+  <dialog id="howitworksDialog" class="app-dialog hiw-dialog" aria-label="How it works">
+    <button type="button" class="hiw-close" data-close-dialog aria-label="Close">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="hiw-hero">
+      <span class="hiw-glow" aria-hidden="true"></span>
+      <div class="hiw-hero-inner">
+        <h2>How it works</h2>
+        <p class="hiw-tagline">Back the events you follow, in plain language.</p>
+      </div>
+    </div>
+    <div class="hiw-body">
+      <div class="hiw-sec">
+        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span>
+        <div class="hiw-sec-txt">
+          <span class="hiw-label">How betting works here</span>
+          <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+        </div>
+      </div>
+      <div class="hiw-sec">
+        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M4 15l5-5 4 3 6-8"/><path d="M20 5h-4M20 5v4"/></svg></span>
+        <div class="hiw-sec-txt">
+          <span class="hiw-label">Why the odds move</span>
+          <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+        </div>
+      </div>
+      <div class="hiw-sec hiw-faq">
+        <span class="hiw-label">Common questions</span>
+        <dl>
+          <dt>Do I need crypto to start?</dt>
+          <dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd>
+          <dt>What is the smallest bet?</dt>
+          <dd>One dollar. The default is five.</dd>
+          <dt>How does an event resolve?</dt>
+          <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
+        </dl>
+      </div>
+      <a href="how-it-works.html" class="hiw-full">Read the full guide <svg class="ic hiw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </dialog>
+
+  <script>
+    // Shared dialogs: open over the current page. On logged-out pages, completing
+    // sign-in then closing / funding the deposit lands on the logged-in counterpart
+    // (body[data-loggedin-target]); closing sign-in before signing in stays put.
+    (function () {
+      function dlg(id) { return document.getElementById(id); }
+      function open(id) { var d = dlg(id); if (!d) return; if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+      function close(d) { if (!d) return; if (d.close) d.close(); else d.removeAttribute('open'); }
+      var target = document.body.getAttribute('data-loggedin-target');
+      var signedIn = false;
+      document.addEventListener('click', function (e) {
+        var o = e.target.closest('[data-open]');
+        if (o) { e.preventDefault(); var dv = o.getAttribute('data-open'); open(dv === 'deposit' ? 'depositDialog' : dv === 'howitworks' ? 'howitworksDialog' : 'signinDialog'); return; }
+        var f = e.target.closest('[data-flow="signin-to-deposit"]');
+        if (f) { e.preventDefault(); signedIn = true; close(dlg('signinDialog')); open('depositDialog'); return; }
+        var c = e.target.closest('[data-close-dialog]');
+        if (c) { close(c.closest('dialog')); return; }
+      });
+      ['signinDialog', 'depositDialog', 'howitworksDialog'].forEach(function (id) {
+        var d = dlg(id); if (!d) return;
+        d.addEventListener('click', function (e) { if (e.target === d) close(d); });
+      });
+      var dep = dlg('depositDialog');
+      if (dep) dep.addEventListener('close', function () { if (target && signedIn) window.location.href = target; });
+    })();
+  </script>
+  <script>
+    (function () {
+      var sb = document.getElementById('rmSidebar'), ov = document.getElementById('rmOverlay'), tg = document.getElementById('rmToggle');
+      if (!sb || !ov || !tg) return;
+      var open = function () { sb.classList.add('open'); ov.classList.add('open'); };
+      var close = function () { sb.classList.remove('open'); ov.classList.remove('open'); };
+      tg.addEventListener('click', open);
+      ov.addEventListener('click', close);
+    })();
+  </script>
+  <script>
+    (function () {
+      // Odds bar on binary cards: a visual render of the existing prob (treatment B).
+      document.querySelectorAll('.grid > .card').forEach(function (card) {
+        if (card.querySelector('.options')) return;               // skip multi
+        var pl = card.querySelector('.prob-line'), yn = card.querySelector('.yesno');
+        var probEl = pl && pl.querySelector('.prob');
+        if (!pl || !yn || !probEl) return;
+        var yes = parseInt(probEl.textContent, 10);
+        if (isNaN(yes)) return;
+        var bar = document.createElement('div');
+        bar.className = 'oddsbar';
+        bar.innerHTML = '<div class="track"><span class="fill" style="width:' + yes + '%"></span></div>'
+          + '<div class="lbls"><span class="l-yes">YES ' + yes + '%</span><span class="l-no">NO ' + (100 - yes) + '%</span></div>';
+        pl.style.display = 'none';
+        yn.parentNode.insertBefore(bar, yn);
+      });
+      // Reverse-sort switch: flip aria-checked on click.
+      document.querySelectorAll('.toggle[role="switch"]').forEach(function (t) {
+        t.addEventListener('click', function () {
+          t.setAttribute('aria-checked', t.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
+        });
+      });
+      // Dropdowns: opening one closes the others; a click anywhere else closes all.
+      var menus = document.querySelectorAll('details.notif-menu, details.avatar-menu, details.filter-menu');
+      menus.forEach(function (d) {
+        d.addEventListener('toggle', function () {
+          if (d.open) menus.forEach(function (o) { if (o !== d) o.open = false; });
+        });
+      });
+      document.addEventListener('click', function (e) {
+        menus.forEach(function (d) { if (d.open && !d.contains(e.target)) d.open = false; });
+      });
+      // Meta values: dim the label, brighten the number/date so figures stand out.
+      document.querySelectorAll('.card .meta-txt > span').forEach(function (sp) {
+        var t = sp.textContent, i = t.indexOf(': ');
+        if (i < 0) return;
+        var label = document.createElement('span'); label.className = 'm-label'; label.textContent = t.slice(0, i + 2);
+        var val = document.createElement('span'); val.className = 'm-val'; val.textContent = t.slice(i + 2);
+        sp.textContent = ''; sp.append(label, val);
+      });
+      // Reveal the condensed category strip in the sticky header once the full
+      // (icon) category bar scrolls up under it.
+      (function () {
+        var header = document.querySelector('.app-header');
+        var fullNav = document.querySelector('.feed-inner > .cat-nav');
+        if (!header || !fullNav || !('IntersectionObserver' in window)) return;
+        var io = new IntersectionObserver(function (entries) {
+          header.classList.toggle('scrolled', !entries[0].isIntersecting);
+        }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 });
+        io.observe(fullNav);
+      })();
+    })();
+  </script>  <script id="uv-deposit">
+(function(){
+  // Non-bet amount fields (the deposit dialog + the wallet withdraw form). Bet
+  // panels/sheets keep their own richer handlers, so skip .bp-inner contexts.
+  function betCtx(el){return el.closest('.bet-panel,.bet-sheet,.bp-inner');}
+  // amount stays numeric ($ + digits + a single dot; no letters); typing your own
+  // number clears any preset chip in the same group
+  document.querySelectorAll('input.amount-input').forEach(function(inp){
+    if(betCtx(inp))return;
+    inp.addEventListener('input',function(){
+      var dollar=inp.value.trim().charAt(0)==='$';
+      var v=inp.value.replace(/[^0-9.]/g,''); var p=v.split('.'); if(p.length>2)v=p[0]+'.'+p.slice(1).join('');
+      inp.value=(dollar?'$':'')+v;
+      var box=inp.closest('.sheet-body,.app-dialog,form');
+      if(box)box.querySelectorAll('.quick button').forEach(function(b){b.classList.remove('sel');});
+    });
+  });
+  // quick chip: select it and fill the nearest amount input
+  document.querySelectorAll('.quick').forEach(function(q){
+    if(betCtx(q))return;
+    q.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b||!q.contains(b))return;
+      q.querySelectorAll('button').forEach(function(x){x.classList.remove('sel');}); b.classList.add('sel');
+      var box=q.closest('.sheet-body,.app-dialog,form,section')||document;
+      var inp=box.querySelector('input.amount-input');
+      if(inp){var v=b.textContent.replace(/[^0-9.]/g,'');var dollar=inp.value.trim().charAt(0)==='$';inp.value=(dollar?'$':'')+v+(dollar?'.00':'');}
+    });
+  });
+})();
+  </script>
+</body>
+</html>

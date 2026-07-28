@@ -33,9 +33,6 @@ setTimeout(wire,0);
 var f=document.getElementsByTagName('iframe');
 for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
 push();});})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predict Market - UI screens</title>
 <link rel="stylesheet" href="../components/index.css">
@@ -63,11 +60,49 @@ push();});})();</script>
         <a href="event-feed-logged-out-empty.html" class="sidebar-sub-link">empty</a>
         <a href="event-feed-logged-out-error.html" class="sidebar-sub-link">error</a>
         <a href="event-feed-logged-out-loading.html" class="sidebar-sub-link">loading</a>
-        <div class="sidebar-sub-head">Categories</div>
-        <a href="event-feed-politics.html" class="sidebar-sub-link">Politics</a>
-        <a href="event-feed-crypto.html" class="sidebar-sub-link">Crypto</a>
-        <a href="event-feed-culture.html" class="sidebar-sub-link">Culture</a>
-        <a href="event-feed-general.html" class="sidebar-sub-link">General</a>
+      </div>
+      <a class="sidebar-page-link">Category pages</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Politics</div>
+        <a href="event-feed-politics.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-politics-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-politics-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-politics-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Politics, logged out</div>
+        <a href="event-feed-politics-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-politics-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-politics-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-politics-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Crypto</div>
+        <a href="event-feed-crypto.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-crypto-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-crypto-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-crypto-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Crypto, logged out</div>
+        <a href="event-feed-crypto-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-crypto-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-crypto-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-crypto-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Culture</div>
+        <a href="event-feed-culture.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-culture-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-culture-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-culture-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Culture, logged out</div>
+        <a href="event-feed-culture-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-culture-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-culture-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-culture-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">General</div>
+        <a href="event-feed-general.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-general-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-general-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-general-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">General, logged out</div>
+        <a href="event-feed-general-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-general-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-general-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-general-logged-out-loading.html" class="sidebar-sub-link">loading</a>
       </div>
       <a class="sidebar-page-link">Event Detail</a>
       <div class="sidebar-sub">
@@ -175,20 +210,20 @@ push();});})();</script>
         <a href="cookie-consent.html" class="sidebar-sub-link">cookie consent</a>
         <a href="toasts.html" class="sidebar-sub-link">toasts</a>
       </div>
-      <div class="sidebar-note">All 13 families are colored. Overview lists them as chips; the system they are painted with is in ui-kit.</div>
+      <div class="sidebar-note">All 14 families are colored. Overview lists them as chips; the system they are painted with is in ui-kit.</div>
     </div>
   </aside>
 
 <main class="tk-wrap">
   <header class="tk-hero">
     <h1>The painted screens</h1>
-    <p>Every screen of the product in the Vault visual system: 13 families, 76 pages,
+    <p>Every screen of the product in the Vault visual system: 14 families, 104 pages,
     one page per state. Structure, copy and the state set are owned by the grey wireframes in
     <code>wireframes/</code>; this layer owns colour, type and surface only, which is why a screen
     here reads the same as the grey one beside it.</p>
     <div class="tk-badges">
-      <span class="tk-badge">76 screens</span>
-      <span class="tk-badge">13 families</span>
+      <span class="tk-badge">104 screens</span>
+      <span class="tk-badge">14 families</span>
       <span class="tk-badge">one page per state</span>
       <span class="tk-badge">mobile first</span>
     </div>
@@ -198,7 +233,7 @@ push();});})();</script>
 
   <section class="tk-sec" id="event-feed">
     <h2 data-n="01">Event Feed</h2>
-    <p class="tk-note">13 pages, one per state.</p>
+    <p class="tk-note">9 pages, one per state.</p>
     <h3 class="tk-subh">Logged in</h3>
     <div class="tk-jump">
       <a href="event-feed.html" title="event-feed.html">success</a>
@@ -214,16 +249,69 @@ push();});})();</script>
       <a href="event-feed-logged-out-error.html" title="event-feed-logged-out-error.html">error</a>
       <a href="event-feed-logged-out-loading.html" title="event-feed-logged-out-loading.html">loading</a>
     </div>
-    <h3 class="tk-subh">Categories</h3>
+  </section>
+  <section class="tk-sec" id="category">
+    <h2 data-n="02">Category pages</h2>
+    <p class="tk-note">32 pages, one per state.</p>
+    <h3 class="tk-subh">Politics</h3>
     <div class="tk-jump">
-      <a href="event-feed-politics.html" title="event-feed-politics.html">Politics</a>
-      <a href="event-feed-crypto.html" title="event-feed-crypto.html">Crypto</a>
-      <a href="event-feed-culture.html" title="event-feed-culture.html">Culture</a>
-      <a href="event-feed-general.html" title="event-feed-general.html">General</a>
+      <a href="event-feed-politics.html" title="event-feed-politics.html">success</a>
+      <a href="event-feed-politics-empty.html" title="event-feed-politics-empty.html">empty</a>
+      <a href="event-feed-politics-error.html" title="event-feed-politics-error.html">error</a>
+      <a href="event-feed-politics-loading.html" title="event-feed-politics-loading.html">loading</a>
+    </div>
+    <h3 class="tk-subh">Politics, logged out</h3>
+    <div class="tk-jump">
+      <a href="event-feed-politics-logged-out.html" title="event-feed-politics-logged-out.html">success</a>
+      <a href="event-feed-politics-logged-out-empty.html" title="event-feed-politics-logged-out-empty.html">empty</a>
+      <a href="event-feed-politics-logged-out-error.html" title="event-feed-politics-logged-out-error.html">error</a>
+      <a href="event-feed-politics-logged-out-loading.html" title="event-feed-politics-logged-out-loading.html">loading</a>
+    </div>
+    <h3 class="tk-subh">Crypto</h3>
+    <div class="tk-jump">
+      <a href="event-feed-crypto.html" title="event-feed-crypto.html">success</a>
+      <a href="event-feed-crypto-empty.html" title="event-feed-crypto-empty.html">empty</a>
+      <a href="event-feed-crypto-error.html" title="event-feed-crypto-error.html">error</a>
+      <a href="event-feed-crypto-loading.html" title="event-feed-crypto-loading.html">loading</a>
+    </div>
+    <h3 class="tk-subh">Crypto, logged out</h3>
+    <div class="tk-jump">
+      <a href="event-feed-crypto-logged-out.html" title="event-feed-crypto-logged-out.html">success</a>
+      <a href="event-feed-crypto-logged-out-empty.html" title="event-feed-crypto-logged-out-empty.html">empty</a>
+      <a href="event-feed-crypto-logged-out-error.html" title="event-feed-crypto-logged-out-error.html">error</a>
+      <a href="event-feed-crypto-logged-out-loading.html" title="event-feed-crypto-logged-out-loading.html">loading</a>
+    </div>
+    <h3 class="tk-subh">Culture</h3>
+    <div class="tk-jump">
+      <a href="event-feed-culture.html" title="event-feed-culture.html">success</a>
+      <a href="event-feed-culture-empty.html" title="event-feed-culture-empty.html">empty</a>
+      <a href="event-feed-culture-error.html" title="event-feed-culture-error.html">error</a>
+      <a href="event-feed-culture-loading.html" title="event-feed-culture-loading.html">loading</a>
+    </div>
+    <h3 class="tk-subh">Culture, logged out</h3>
+    <div class="tk-jump">
+      <a href="event-feed-culture-logged-out.html" title="event-feed-culture-logged-out.html">success</a>
+      <a href="event-feed-culture-logged-out-empty.html" title="event-feed-culture-logged-out-empty.html">empty</a>
+      <a href="event-feed-culture-logged-out-error.html" title="event-feed-culture-logged-out-error.html">error</a>
+      <a href="event-feed-culture-logged-out-loading.html" title="event-feed-culture-logged-out-loading.html">loading</a>
+    </div>
+    <h3 class="tk-subh">General</h3>
+    <div class="tk-jump">
+      <a href="event-feed-general.html" title="event-feed-general.html">success</a>
+      <a href="event-feed-general-empty.html" title="event-feed-general-empty.html">empty</a>
+      <a href="event-feed-general-error.html" title="event-feed-general-error.html">error</a>
+      <a href="event-feed-general-loading.html" title="event-feed-general-loading.html">loading</a>
+    </div>
+    <h3 class="tk-subh">General, logged out</h3>
+    <div class="tk-jump">
+      <a href="event-feed-general-logged-out.html" title="event-feed-general-logged-out.html">success</a>
+      <a href="event-feed-general-logged-out-empty.html" title="event-feed-general-logged-out-empty.html">empty</a>
+      <a href="event-feed-general-logged-out-error.html" title="event-feed-general-logged-out-error.html">error</a>
+      <a href="event-feed-general-logged-out-loading.html" title="event-feed-general-logged-out-loading.html">loading</a>
     </div>
   </section>
   <section class="tk-sec" id="event-detail">
-    <h2 data-n="02">Event Detail</h2>
+    <h2 data-n="03">Event Detail</h2>
     <p class="tk-note">13 pages, one per state.</p>
     <h3 class="tk-subh">Logged in</h3>
     <div class="tk-jump">
@@ -249,7 +337,7 @@ push();});})();</script>
     </div>
   </section>
   <section class="tk-sec" id="my-bets">
-    <h2 data-n="03">My Bets</h2>
+    <h2 data-n="04">My Bets</h2>
     <p class="tk-note">9 pages, one per state.</p>
     <h3 class="tk-subh">Active</h3>
     <div class="tk-jump">
@@ -268,7 +356,7 @@ push();});})();</script>
     </div>
   </section>
   <section class="tk-sec" id="win-loss">
-    <h2 data-n="04">Win / Loss</h2>
+    <h2 data-n="05">Win / Loss</h2>
     <p class="tk-note">6 pages, one per state.</p>
     <h3 class="tk-subh">Win</h3>
     <div class="tk-jump">
@@ -284,7 +372,7 @@ push();});})();</script>
     </div>
   </section>
   <section class="tk-sec" id="favorites">
-    <h2 data-n="05">Favorites</h2>
+    <h2 data-n="06">Favorites</h2>
     <p class="tk-note">3 pages, one per state.</p>
     <div class="tk-jump">
       <a href="favorites.html" title="favorites.html">success</a>
@@ -293,7 +381,7 @@ push();});})();</script>
     </div>
   </section>
   <section class="tk-sec" id="notifications">
-    <h2 data-n="06">Notifications</h2>
+    <h2 data-n="07">Notifications</h2>
     <p class="tk-note">5 pages, one per state.</p>
     <div class="tk-jump">
       <a href="notifications.html" title="notifications.html">success</a>
@@ -304,7 +392,7 @@ push();});})();</script>
     </div>
   </section>
   <section class="tk-sec" id="wallet">
-    <h2 data-n="07">Wallet</h2>
+    <h2 data-n="08">Wallet</h2>
     <p class="tk-note">3 pages, one per state.</p>
     <div class="tk-jump">
       <a href="wallet.html" title="wallet.html">success</a>
@@ -313,7 +401,7 @@ push();});})();</script>
     </div>
   </section>
   <section class="tk-sec" id="my-profile">
-    <h2 data-n="08">My Profile</h2>
+    <h2 data-n="09">My Profile</h2>
     <p class="tk-note">3 pages, one per state.</p>
     <div class="tk-jump">
       <a href="my-profile.html" title="my-profile.html">success</a>
@@ -322,7 +410,7 @@ push();});})();</script>
     </div>
   </section>
   <section class="tk-sec" id="public-profile">
-    <h2 data-n="09">Public Profile</h2>
+    <h2 data-n="10">Public Profile</h2>
     <p class="tk-note">4 pages, one per state.</p>
     <div class="tk-jump">
       <a href="public-profile.html" title="public-profile.html">success</a>
@@ -332,14 +420,14 @@ push();});})();</script>
     </div>
   </section>
   <section class="tk-sec" id="how-it-works">
-    <h2 data-n="10">How It Works</h2>
+    <h2 data-n="11">How It Works</h2>
     <p class="tk-note">1 page.</p>
     <div class="tk-jump">
       <a href="how-it-works.html" title="how-it-works.html">success</a>
     </div>
   </section>
   <section class="tk-sec" id="sign-in">
-    <h2 data-n="11">Sign In</h2>
+    <h2 data-n="12">Sign In</h2>
     <p class="tk-note">4 pages, one per state.</p>
     <div class="tk-jump">
       <a href="sign-in.html" title="sign-in.html">success</a>
@@ -349,7 +437,7 @@ push();});})();</script>
     </div>
   </section>
   <section class="tk-sec" id="deposit">
-    <h2 data-n="12">Add funds</h2>
+    <h2 data-n="13">Add funds</h2>
     <p class="tk-note">7 pages, one per state.</p>
     <div class="tk-jump">
       <a href="deposit.html" title="deposit.html">success</a>
@@ -362,7 +450,7 @@ push();});})();</script>
     </div>
   </section>
   <section class="tk-sec" id="system">
-    <h2 data-n="13">System</h2>
+    <h2 data-n="14">System</h2>
     <p class="tk-note">5 pages, one per state.</p>
     <div class="tk-jump">
       <a href="404.html" title="404.html">404 not found</a>

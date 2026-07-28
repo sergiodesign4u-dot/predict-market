@@ -3,7 +3,7 @@
 
     python3 ui-kit/_check_kit.py
 
-Seventeen checks, each one a defect that actually happened at least once:
+Twenty checks, each one a defect that actually happened at least once:
 
   1. the product did not move        components/ and wireframes/ clean, and a
                                      ui-visual/ page differs only in its sidebar
@@ -30,6 +30,13 @@ Seventeen checks, each one a defect that actually happened at least once:
  16. every declaration parses        prose inside a block drops every rule after it
  17. every mark is on the sheet      the other direction of gate 3: an icon a screen
                                      draws that the vitrine does not show
+ 18. the two trees agree             structure, in five regions, AND every screen in
+                                     either tree has a twin in the other, because a
+                                     pair that does not exist is not a pair that agrees
+ 19. one dialog, one copy            a dialog that also has a standalone page is one
+                                     markup, not two
+ 20. no external font host           the faces are in this repo, every page reaches
+                                     them, and every file an @font-face names exists
 
 The live half of the verification is ui-kit/selftest.html, which loads every
 specimen in a frame and asks it whether it rendered. No em dash.
@@ -103,7 +110,11 @@ if tooling:
 # 2 ------------------------------------------------------------- specimens --
 manifest = json.loads((SPECS / "index.json").read_text(encoding="utf-8"))
 ids = [s["id"] for s in manifest]
-components = {p.stem for p in COMP.glob("*.css")} - {"index", "tokens"}
+# index is the entry point and tokens are the values, so neither is a
+# component with a stand. fonts joined them in step 8 for the same reason:
+# it declares eighteen faces and styles nothing, and a stand page showing
+# "the font component" would be showing every other page.
+components = {p.stem for p in COMP.glob("*.css")} - {"index", "tokens", "fonts"}
 owned = {s["component"] for s in manifest}
 check("2 every component has one", not (components - owned), ", ".join(sorted(components - owned)))
 check("2 specimen ids unique", len(ids) == len(set(ids)))
@@ -641,9 +652,32 @@ def region(html, tag, cls=None):
             depth += 1
     return None
 
+# STEP 8: A PAIR THAT DOES NOT EXIST IS NOT A PAIR THAT AGREES. This gate pairs
+# the trees by FILENAME and skipped anything unpaired in silence, so a family
+# that does not share filenames was never compared: a category page is
+# politics.html in grey and event-feed-politics.html in colour, and behind that
+# rename sat 32 grey screens against 4 painted ones, drifting for two stages with
+# every gate green. Zero drift out of zero pairs reads exactly like zero drift
+# out of all of them.
+#
+# So the map is read from _twins.py (one copy, all tools), and the coverage is a
+# check of its own: a screen in either tree with no twin has to be a declared
+# exception, not a silent skip.
+sys.path.insert(0, str(ROOT))
+import _twins                                                   # noqa: E402
+# overview.html is the index OF the painted screens, built by _gen_overview.py.
+# It is not a screen of the product, so it has nothing to be a twin of.
+NO_TWIN = {"overview.html"}
+painted = {p.name for p in (ROOT / "ui-visual").glob("*.html")}
+greys = {p.name for p in (ROOT / "wireframes").glob("*.html")}
+lonely = sorted([n for n in painted - NO_TWIN if _twins.grey_of(n) not in greys] +
+                [n for n in greys if _twins.painted_of(n) not in painted])
+check("18 every screen has a twin", not lonely,
+      "%d: %s" % (len(lonely), ", ".join(lonely[:5])))
+
 drift, frame = [], []
 for page in sorted((ROOT / "ui-visual").glob("*.html")):
-    twin = ROOT / "wireframes" / page.name
+    twin = ROOT / "wireframes" / _twins.grey_of(page.name)
     if not twin.exists():
         continue
     paint, grey = page.read_text(encoding="utf-8"), twin.read_text(encoding="utf-8")
@@ -741,6 +775,47 @@ for pagefile in sorted((ROOT / "ui-visual").glob("*.html")):
             forked.append("%s %s" % (pagefile.name, want))
 check("19 one dialog, one copy", not forked,
       "%d: %s" % (len(forked), ", ".join(forked[:4])))
+
+# 20 ------------------------------------------------------------ the fonts --
+# Every screen used to call fonts.googleapis.com from its head, which sends a
+# visitor's IP to a third party before the cookie banner this product ships has
+# asked them anything, and a consent banner over a page that has already made
+# the call is not a consent banner. Step 7b deleted a second copy of the same
+# URL out of base.css and wrote down that where a font comes from is a decision;
+# step 8 made it. The families are in assets/fonts/ and declared once in
+# components/fonts.css.
+#
+# Three checks, because the defect can come back three ways: a page can re-add
+# the tag, a GENERATOR can re-add it to every page it writes (five of them had
+# it in a template), and an @font-face can name a file nobody committed.
+FONT_HOST = re.compile(r"fonts\.(?:googleapis|gstatic)\.com")
+LIVE = [p for tree in ("ui-visual", "ui-kit", "concept", "components", "wireframes")
+        for p in (ROOT / tree).rglob("*")
+        if p.suffix in (".html", ".css", ".py") and "old" not in p.parts
+        and p.name != "fonts.css" and p.name != "_check_kit.py"]
+calls = [str(p.relative_to(ROOT)) for p in LIVE
+         if FONT_HOST.search(p.read_text(encoding="utf-8"))]
+check("20 no external font host", not calls,
+      "%d: %s" % (len(calls), ", ".join(sorted(calls)[:4])))
+
+faces = (COMP / "fonts.css").read_text(encoding="utf-8")
+missing = [u for u in re.findall(r"url\(([^)]+)\)", faces)
+           if not (COMP / u).exists()]
+check("20 every face is committed", not missing,
+      "%d: %s" % (len(missing), ", ".join(missing[:3])))
+
+# A screen renders the product's type, so it has to reach the faces: through the
+# system stylesheet, which imports them first, or by naming fonts.css itself.
+unfaced = []
+for tree in ("ui-visual", "ui-kit"):
+    for page in sorted((ROOT / tree).rglob("*.html")):
+        if "old" in page.parts:
+            continue
+        src = page.read_text(encoding="utf-8")
+        if "components/index.css" not in src and "components/fonts.css" not in src:
+            unfaced.append(str(page.relative_to(ROOT)))
+check("20 every page reaches the faces", not unfaced,
+      "%d: %s" % (len(unfaced), ", ".join(unfaced[:3])))
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:

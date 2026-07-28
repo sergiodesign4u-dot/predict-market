@@ -11,6 +11,10 @@
    A new component is added HERE, once, instead of being wired into every screen.
    No em dash. */
 
+/* The faces first: they are values like the tokens are, and a page that
+   links this file must not also have to link a font host. See fonts.css
+   for why they are served from this repo. */
+@import url("fonts.css");
 @import url("tokens.css");
 @import url("base.css");
 @import url("course-chrome.css");

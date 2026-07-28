@@ -82,13 +82,17 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 UV = ROOT / "ui-visual"
 WF = ROOT / "wireframes"
 
-# The four category feeds are the one place where the two trees disagree on a
-# file name: grey calls the page politics.html, the colour pass named it after
-# the family it belongs to. Both directions are needed, one to find the twin
-# and one to translate the targets read out of it.
-CATS = ("politics", "crypto", "culture", "general")
-TWIN = {"event-feed-%s.html" % c: "%s.html" % c for c in CATS}
-RENAME = {"%s.html" % c: "event-feed-%s.html" % c for c in CATS}
+# The category feeds are the one place where the two trees disagree on a file
+# name: grey calls the page politics.html, the colour pass named it after the
+# family it belongs to. Both directions are needed, one to find the twin and one
+# to translate the targets read out of it. The map itself is in _twins.py, which
+# is also what gate 18 pairs the trees by: it lived in five hand-written copies
+# and the four that only knew the BASE pages were the reason nobody noticed the
+# family had 32 screens in grey and 4 in colour.
+sys.path.insert(0, str(ROOT))
+import _twins                                                   # noqa: E402
+TWIN = _twins.GREY
+RENAME = _twins.PAINTED
 
 A_TAG = re.compile(r"<a\b([^>]*)>(.*?)</a>", re.S)
 HREF = re.compile(r'href="([^"]*)"')

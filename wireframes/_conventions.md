@@ -78,9 +78,22 @@ structure, different content.
   > all three, because a scrim needs something to be a scrim over. What IS
   > compared is the sheet body, where the grey tree had a `<span>` pretending to
   > be the deposit amount field and the paint had a real `<input>`.
-  > Open, and not this pass's to settle: the paint made the overlay a centred
-  > modal at BOTH breakpoints, so the "bottom sheet on mobile" half of this line
-  > ships only here. That is a product decision, not a mechanical fix.
+  > **Settled in step 8.** The paint had made the overlay a centred modal at
+  > BOTH breakpoints, so the "bottom sheet on mobile" half of this line shipped
+  > only here. It ships in colour now: under 640px an invoked dialog is full
+  > width, sits on the bottom edge, rounds its top two corners and rises into
+  > place; at 640px and up the centred modal is unchanged. It is geometry, in
+  > `components/dialog.css`, and no markup moved, so this stays a rendering
+  > difference between the layers and not a structural one.
+  > **No grab handle in colour.** The grey tree draws one (`.grab`, 17 pages)
+  > and drag-to-dismiss is not built. A wireframe may draw the affordance it
+  > expects; a product that ships a handle for a gesture that does nothing is
+  > showing a control that lies. Listed here rather than in the boundary table
+  > because it is one element inside an already-declared boundary.
+  > The same pass found that `.app-case{position:relative}` was reaching the
+  > dialog on those 17 standalone pages (they put the app frame class on the
+  > `<dialog>` itself), which took away the user agent's `position:fixed` and let
+  > the modal scroll off the top of the screen with the page behind it.
 - Every state is a separate page, navigated from the **left screen-tree drawer**
   (which lists each screen family with its auth variants and states). On screens
   with the auth axis (S5) the states span a 2D matrix: Auth (Logged in / Logged

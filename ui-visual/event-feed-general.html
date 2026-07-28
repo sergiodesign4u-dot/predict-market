@@ -34,13 +34,10 @@ var f=document.getElementsByTagName('iframe');
 for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
 push();});})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UI Visual - General Events</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <title>UI Visual - General Events (Vault 3D)</title>
   <link rel="stylesheet" href="../components/index.css">
 </head>
-<body class="cat-general">
+<body>
 
   <!-- Solar Bold icon sprite: filled glyphs referenced via <use>; rendered filled by components/base.css svg.ic:has(use) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -68,7 +65,7 @@ push();});})();</script>
     <button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>
     <div class="sidebar-nav">
       <a href="overview.html" class="sidebar-page-link">Overview</a>
-      <a class="sidebar-page-link active">Event Feed</a>
+      <a class="sidebar-page-link">Event Feed</a>
       <div class="sidebar-sub">
         <div class="sidebar-sub-head">Logged in</div>
         <a href="event-feed.html" class="sidebar-sub-link">success</a>
@@ -81,11 +78,49 @@ push();});})();</script>
         <a href="event-feed-logged-out-empty.html" class="sidebar-sub-link">empty</a>
         <a href="event-feed-logged-out-error.html" class="sidebar-sub-link">error</a>
         <a href="event-feed-logged-out-loading.html" class="sidebar-sub-link">loading</a>
-        <div class="sidebar-sub-head">Categories</div>
-        <a href="event-feed-politics.html" class="sidebar-sub-link">Politics</a>
-        <a href="event-feed-crypto.html" class="sidebar-sub-link">Crypto</a>
-        <a href="event-feed-culture.html" class="sidebar-sub-link">Culture</a>
-        <a href="event-feed-general.html" class="sidebar-sub-link active">General</a>
+      </div>
+      <a class="sidebar-page-link active">Category pages</a>
+      <div class="sidebar-sub">
+        <div class="sidebar-sub-head">Politics</div>
+        <a href="event-feed-politics.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-politics-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-politics-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-politics-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Politics, logged out</div>
+        <a href="event-feed-politics-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-politics-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-politics-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-politics-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Crypto</div>
+        <a href="event-feed-crypto.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-crypto-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-crypto-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-crypto-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Crypto, logged out</div>
+        <a href="event-feed-crypto-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-crypto-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-crypto-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-crypto-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Culture</div>
+        <a href="event-feed-culture.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-culture-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-culture-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-culture-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">Culture, logged out</div>
+        <a href="event-feed-culture-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-culture-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-culture-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-culture-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">General</div>
+        <a href="event-feed-general.html" class="sidebar-sub-link active">success</a>
+        <a href="event-feed-general-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-general-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-general-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-sub-head">General, logged out</div>
+        <a href="event-feed-general-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-general-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-general-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-general-logged-out-loading.html" class="sidebar-sub-link">loading</a>
       </div>
       <a class="sidebar-page-link">Event Detail</a>
       <div class="sidebar-sub">
@@ -193,7 +228,7 @@ push();});})();</script>
         <a href="cookie-consent.html" class="sidebar-sub-link">cookie consent</a>
         <a href="toasts.html" class="sidebar-sub-link">toasts</a>
       </div>
-      <div class="sidebar-note">All 13 families are colored. Overview lists them as chips; the system they are painted with is in ui-kit.</div>
+      <div class="sidebar-note">All 14 families are colored. Overview lists them as chips; the system they are painted with is in ui-kit.</div>
     </div>
   </aside>
 <!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
@@ -362,7 +397,7 @@ push();});})();</script>
           <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="thumb" style="background-image:url(../assets/event-general.jpg)">thumbnail placeholder</span>
+                <span class="thumb">thumbnail placeholder</span>
                 <div class="top-txt"><a class="q" href="event-detail.html">Will 2026 be confirmed as one of the three warmest years on record before April 1, 2027?</a><p class="why">The year is tracking near record heat through the first quarter.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">55%</span></p>
@@ -379,7 +414,7 @@ push();});})();</script>
           <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="thumb" style="background-image:url(../assets/event-general.jpg)">thumbnail placeholder</span>
+                <span class="thumb">thumbnail placeholder</span>
                 <div class="top-txt"><a class="q" href="event-detail.html">Will a new monthly global temperature record be set before September 1, 2026?</a><p class="why">Recent months have run close to prior highs.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">48%</span></p>
@@ -396,7 +431,7 @@ push();});})();</script>
           <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="thumb" style="background-image:url(../assets/event-general.jpg)">thumbnail placeholder</span>
+                <span class="thumb">thumbnail placeholder</span>
                 <div class="top-txt"><a class="q" href="event-detail.html">Will a crewed mission return from lunar orbit before January 1, 2028?</a><p class="why">The flight is on the schedule but the launch date keeps moving.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">39%</span></p>
@@ -413,7 +448,7 @@ push();});})();</script>
           <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="thumb" style="background-image:url(../assets/event-general.jpg)">thumbnail placeholder</span>
+                <span class="thumb">thumbnail placeholder</span>
                 <div class="top-txt"><a class="q" href="event-detail.html">Will a Category 5 hurricane form in the Atlantic during the 2026 season?</a><p class="why">Forecasters are calling for warmer than average ocean temperatures.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">62%</span></p>
@@ -430,7 +465,7 @@ push();});})();</script>
           <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="thumb" style="background-image:url(../assets/event-general.jpg)">thumbnail placeholder</span>
+                <span class="thumb">thumbnail placeholder</span>
                 <div class="top-txt"><a class="q" href="event-detail.html">Will global renewable capacity set a new annual record in 2026?</a><p class="why">Installations are running ahead of last year through the first half.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">74%</span></p>
@@ -447,7 +482,7 @@ push();});})();</script>
           <article class="card">
             <div class="card-body">
               <div class="top">
-                <span class="thumb" style="background-image:url(../assets/event-general.jpg)">thumbnail placeholder</span>
+                <span class="thumb">thumbnail placeholder</span>
                 <div class="top-txt"><a class="q" href="event-detail-multi.html">Which energy source will add the most new capacity in 2026?</a><p class="why">The two leaders are close on projects already under construction.</p></div>
               </div>
               <div class="options">
@@ -476,13 +511,9 @@ push();});})();</script>
              framed like the brand social tile (brass notched edge + brand statement) -->
         <div class="feed-seo-wrap">
         <div class="seo-text">
-        <section class="feed-seo" aria-label="How betting works here">
-          <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-guide"/></svg>How betting works here</h2>
-          <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
-        </section>
-        <section class="feed-seo" aria-label="Why the odds move">
-          <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-chart"/></svg>Why the odds move</h2>
-          <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+        <section class="feed-seo" aria-label="About General events">
+          <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-guide"/></svg>About General events</h2>
+          <p>Follow general events and back your opinion with a real stake. These events cover real-world questions that do not fit the other categories. You see the odds in plain language and how each event resolves before you bet, from one dollar, with no wallet to start.</p>
         </section>
         <section class="feed-seo" aria-label="Common questions">
           <h2><svg class="seo-h-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-seo-qa"/></svg>Common questions</h2>

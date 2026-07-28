@@ -32,7 +32,7 @@ Per-stage layout: raw markdown lives in each stage's `docs/`, and the stage's HT
 | [`concept/`](./concept/) | **Concept**: the **Vault** visual language - `docs/references.md` (Refero) + `docs/concept.md` (designer taste, 5 attribute pairs, locked decisions); `concept.html` (the stand: palette / type / form / contrast); superseded explorations archived in `old/` |
 | [`ui-visual/`](./ui-visual/) | **UI + Visual**: 76 color copies of the wireframes in the Vault language. A screen carries no styles of its own: it links `components/index.css` and nothing else. Generated and reconciled by `_apply_theme.py`; the grey wireframes stay grey |
 | [`components/`](./components/) | **The design system**: `tokens.css` (primitive + semantic + the light theme), `base.css`, one file per component, all reached through `index.css` |
-| [`ui-kit/`](./ui-kit/) | **The vitrine and the gates**: a stand page per component, the token page, the icon sheet, `docs/architecture.md` + `docs/inventory.md` + `docs/coverage.md`, and `_check_kit.py` (nineteen checks) |
+| [`ui-kit/`](./ui-kit/) | **The vitrine and the gates**: a stand page per component, the token page, the icon sheet, `docs/architecture.md` + `docs/inventory.md` + `docs/coverage.md`, and `_check_kit.py` (twenty checks) |
 | [`design-system/`](./design-system/) | Full design system documentation |
 | [`responsive/`](./responsive/) | Responsive design pass |
 | [`animation/`](./animation/) | Motion + animation |
@@ -54,7 +54,7 @@ The old→new folder map is recorded in [`STRUCTURE.md`](./STRUCTURE.md).
 | Voice | ✅ Done (5 principles, lexicon, forbidden list, per-element rules; all 99 pages rewritten) |
 | Concept | ✅ Done - the **Vault** visual language: designer taste captured, 5 attribute pairs traced to data + borrowed technique, contrasting directions explored (Newsroom / Signal / Arena, archived to `concept/old/`), Vault chosen and locked; palette / type / form / photography / icons contrast-checked (WCAG AA) on the stand `concept.html` |
 | UI + Visual | ✅ Done - all 76 screens painted in Vault; every one links exactly `components/index.css`. `/impeccable critique` 31 -> 38 / 40 |
-| Tokens + Components | ✅ Done (two token levels, three geometry scales, 38 components, 45 stand pages, 19 gates, a light theme as the proof of the semantic layer). Step 7e closed the chrome: gate 18 now compares `<main>`, `<header>`, the bottom nav, `<footer>` and the sheet body of an invoked overlay, with six declared layer boundaries |
+| Tokens + Components | ✅ Done (two token levels, three geometry scales, 38 components, 45 stand pages, 20 gates, a light theme as the proof of the semantic layer). Step 7e closed the chrome: gate 18 now compares `<main>`, `<header>`, the bottom nav, `<footer>` and the sheet body of an invoked overlay, with six declared layer boundaries. Step 8 closed the coverage: the 28 category state screens the paint never had, one twin map in `_twins.py`, the bottom sheet on mobile, and the three families served from this repo instead of from Google |
 | Design System | ⬜ Not started |
 | Responsive | ⬜ Not started |
 | Animation | ⬜ Not started |

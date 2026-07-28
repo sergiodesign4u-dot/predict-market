@@ -500,6 +500,45 @@
     @media(max-width:760px) {
       .footer-trust .trust-items { grid-template-columns: 1fr; }
     }
+  /* ---- ported from the painted twin by port_structure.py ---- */
+    /* Layout taken from components/, every colour replaced by the
+       wireframe palette. See wireframes/_generators/port_structure.py. */
+    .cat-nav { margin: 0; }
+    .cat-nav ul { list-style: none; margin: 0; padding: 8px 8px; display: flex; gap: 8px; overflow-x: auto; flex-wrap: nowrap; }
+    .cat-nav button { padding: 4px 8px; font-size: 11px; white-space: nowrap; }
+    .cat-nav > ul { max-width: 1400px; margin: 0 auto; padding: 8px 20px; }
+    .cat-nav>ul { max-width: none; padding-left: 14px; padding-right: 14px; }
+    .cat-nav { padding: 12px 16px; }
+    .cat-nav>ul { max-width: none; margin: 0; padding: 2px; gap: 8px; display: flex; flex-wrap: nowrap; overflow-x: auto; }
+    .cat-nav li { flex: 0 0 auto; }
+    .cat-ic { width: 18px; height: 18px; flex: 0 0 auto; }
+    .cat-nav button { display: inline-flex; align-items: center; gap: 12px; min-height: 0; font-weight: 600; font-size: 14px; padding: 12px 20px; }
+    @media(pointer:coarse) {
+      .cat-nav button { min-height: 44px; }
+    }
+    @media(max-width:640px) {
+      .cat-nav button { position: relative; }
+      .cat-nav { margin-bottom: 16px; }
+    }
+    .ed-oddsbar .track, .md-bar { background: #dcdcdc; }
+    .ed-oddsbar .fill { background: #555; }
+    .ed-act, .rules-tab, .ed-range button { border: 1px solid #999;
+      background: #eee; color: #222; font-size: 10px; }
+    .rules-tab.sel, .ed-range button.sel { background: #dcdcdc; font-weight: bold; }
+    .market-box, .md-table { border: 1px solid #ccc; }
+    .market-head { padding: 6px 8px; background: #eee; cursor: pointer; }
+    .ms-label, .md-sub, .rules-note, .ed-chart-now, .bp-cash { color: #555; }
+    .rel-thumb { width: 40px; height: 40px; border: 1px solid #999;
+      background: #dcdcdc; flex: 0 0 40px; }
+    .ed-yaxis span, .ed-xaxis span { font-size: 9px; color: #555; }
+    .ed-plot { border: 1px solid #ccc; }
+    .rules-panel[hidden] { display: none; }
+    .hf-area { fill: #dcdcdc; stroke: none; }
+    .hf-vol-area { fill: #eee; stroke: none; }
+    .hf-line, .hf-vol-line { fill: none; stroke-width: 1.5; }
+    .hf-line.yes { stroke: #222; }
+    .hf-line.no { stroke: #999; }
+    .hf-vol-line { stroke: #555; }
   </style>
 </head>
 <body data-loggedin-target="culture-loading.html">
@@ -805,18 +844,20 @@
       </div>
     </header>
     <!-- Second-level navigation: categories route to their own pages (links) -->
-    <nav class="cat-nav" aria-label="Categories (second level)">
-      <ul>
-        <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
-        <li><a href="politics.html"><button type="button">Politics</button></a></li>
-        <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
-        <li aria-current="page"><a href="culture.html"><button type="button">Culture</button></a></li>
-        <li><a href="general.html"><button type="button">General</button></a></li>
-      </ul>
-    </nav>
+    
     <main class="feed">
-      <div class="cat-layout">
-      <nav class="subcat" aria-label="Culture sub-categories">
+      
+        <nav class="cat-nav" aria-label="Categories (second level)">
+          <ul>
+            <li><a href="event-feed.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></svg><span>Trending</span></button></a></li>
+            <li><a href="politics.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21.25 8.5c0-1.404 0-2.107-.337-2.611a2 2 0 0 0-.552-.552c-.441-.295-1.034-.332-2.115-.336q.005.438.004.91V7.25h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v6.5h-1.5V6c0-1.886 0-2.828-.586-3.414S14.636 2 12.75 2h-2c-1.886 0-2.828 0-3.414.586S6.75 4.114 6.75 6v15.25h-1.5v-6.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1V5.91q-.001-.47.004-.91c-1.081.005-1.674.042-2.115.337a2 2 0 0 0-.552.552C2.25 6.393 2.25 7.096 2.25 8.5v12.75h-.5a.75.75 0 0 0 0 1.5h20a.75.75 0 0 0 0-1.5h-.5zM9 11.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m2.75 3.5a.75.75 0 0 1 .75.75v2.25H11V19a.75.75 0 0 1 .75-.75M9 6.25a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 6.25m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 9.25" clip-rule="evenodd"/></svg><span>Politics</span></button></a></li>
+            <li><a href="crypto.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m.75-16a.75.75 0 0 0-1.5 0v.317c-1.63.292-3 1.517-3 3.183c0 1.917 1.813 3.25 3.75 3.25c1.377 0 2.25.906 2.25 1.75s-.873 1.75-2.25 1.75c-1.376 0-2.25-.906-2.25-1.75a.75.75 0 0 0-1.5 0c0 1.666 1.37 2.891 3 3.183V18a.75.75 0 0 0 1.5 0v-.317c1.63-.292 3-1.517 3-3.183c0-1.917-1.813-3.25-3.75-3.25c-1.376 0-2.25-.906-2.25-1.75s.874-1.75 2.25-1.75c1.377 0 2.25.906 2.25 1.75a.75.75 0 0 0 1.5 0c0-1.666-1.37-2.891-3-3.183z" clip-rule="evenodd"/></svg><span>Crypto</span></button></a></li>
+            <li aria-current="page"><a href="culture.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m21.537 9.136l-.846 3.297c-.43 1.676-1.306 2.855-2.336 3.685c.219-1.144.214-2.418-.144-3.814l-.864-3.37l-.15-.584a.9.9 0 0 1 .599-.044c.378.101.608.406.637.702a.75.75 0 1 0 1.493-.145c-.091-.942-.783-1.749-1.742-2.006a2.4 2.4 0 0 0-1.418.05l-.017-.044c-.224-.596-.552-1.229-1.171-1.693a3.5 3.5 0 0 0-1.13-.562c-.759-.215-1.463-.076-2.064.124c-.558.185-1.21.49-1.924.825l-.072.034c-1.185.555-1.659.773-2.144.928q-.22.07-.446.127l.327-1.267c.44-1.719.661-2.578 1.236-3.01c.193-.145.41-.252.638-.317c.684-.194 1.461.17 3.015.897c1.15.54 1.726.809 2.326 1q.314.099.632.176c.612.149 1.239.216 2.493.351c1.694.182 2.54.273 3.04.798c.167.177.303.383.4.609c.292.675.072 1.534-.368 3.253"/><path fill="currentColor" fill-rule="evenodd" d="m16.758 12.677l-.845-3.298c-.44-1.719-.66-2.578-1.236-3.01a2 2 0 0 0-.638-.317c-.684-.194-1.46.17-3.015.897c-1.15.54-1.726.809-2.326 1a10 10 0 0 1-.632.176c-.611.149-1.238.216-2.493.351c-1.694.182-2.54.273-3.04.798a2.1 2.1 0 0 0-.4.609c-.292.675-.072 1.534.369 3.253l.845 3.297c.993 3.876 4.296 5.096 6.516 5.473c.677.115 1.016.172 2.044-.116s1.294-.514 1.825-.968c1.742-1.487 4.02-4.27 3.026-8.145m-10.753.691c.029-.296.26-.6.638-.702c.379-.102.73.047.903.29a.75.75 0 0 0 1.22-.873c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.064-1.743 2.006a.75.75 0 0 0 1.493.145m5.796-1.553c.029-.296.26-.6.638-.702c.379-.102.73.047.903.289a.75.75 0 1 0 1.22-.872c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.063-1.743 2.006a.75.75 0 0 0 1.493.145m1.846 3.814a.75.75 0 0 1-.885 1.211l-.01-.006a2 2 0 0 0-.485-.2c-.36-.098-.929-.163-1.685.04c-.756.202-1.216.543-1.48.808a2 2 0 0 0-.32.416l-.005.01a.75.75 0 0 1-1.372-.607l.688.298c-.688-.298-.687-.3-.687-.3v-.001l.002-.004l.004-.009l.01-.022l.033-.064q.04-.078.115-.196c.1-.156.252-.36.468-.578c.437-.44 1.125-.924 2.156-1.2c1.031-.277 1.87-.2 2.467-.038c.296.08.53.18.694.266a3 3 0 0 1 .258.151l.02.015l.008.005l.003.003h.002z" clip-rule="evenodd"/></svg><span>Culture</span></button></a></li>
+            <li><a href="general.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M2 6.634a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0m10.732 10.732a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0" clip-rule="evenodd"/><path fill="currentColor" d="M2 17.5c0-2.121 0-3.182.659-3.841S4.379 13 6.5 13s3.182 0 3.841.659S11 15.379 11 17.5s0 3.182-.659 3.841S8.621 22 6.5 22s-3.182 0-3.841-.659S2 19.621 2 17.5m11-11c0-2.121 0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11s-3.182 0-3.841-.659S13 8.621 13 6.5"/></svg><span>General</span></button></a></li>
+          </ul>
+        </nav>
+        
+        <nav class="subcat" aria-label="Culture sub-categories">
         <p class="subcat-head">Sub-categories</p>
         <ul>
         <li aria-current="page"><button type="button">All <span class="cnt">1.4K</span></button></li>
@@ -830,12 +871,10 @@
         <li><button type="button">Gaming <span class="cnt">51</span></button></li>
         </ul>
       </nav>
-      <div class="cat-main">
-        <div class="feed-inner">
+        
         <div class="feed-head">
           <h1 id="feedHeading">Culture</h1>
           <div class="feed-controls">
-
             <details class="filter-menu" id="sortMenu">
               <summary aria-label="Sort by">
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
@@ -845,19 +884,13 @@
               <div class="filter-panel">
                 <ul role="radiogroup" aria-label="Sort by">
                   <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
-                  <li><label><input type="radio" name="sort" value="Volatile"> Volatile</label></li>
                   <li><label><input type="radio" name="sort" value="New"> New</label></li>
                   <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
                   <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
                   <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
                 </ul>
-                <div class="reverse-row">
-                  <span>Reverse sort</span>
-                  <button type="button" class="toggle" role="switch" aria-checked="false" aria-label="Reverse sort"></button>
-                </div>
               </div>
             </details>
-
             <details class="filter-menu" id="freqMenu">
               <summary aria-label="Filter by frequency">
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
@@ -875,11 +908,9 @@
                 </ul>
               </div>
             </details>
-
           </div>
         </div>
           <div class="grid" aria-busy="true">
-
           <article class="card skeleton" aria-hidden="true">
             <div class="card-body">
               <div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div>
@@ -922,11 +953,9 @@
               <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
             </div>
           </article>
-
           </div>
-        </div>
-      </div>
-      </div>
+      <!-- /cat-main --><!-- /cat-layout -->
+      
     </main>
     <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
