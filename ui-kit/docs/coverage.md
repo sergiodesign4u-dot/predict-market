@@ -62,7 +62,7 @@ says so. No em dash.
 Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
 that actually means. The Classes table on each component page shows the same verdict per row.
 
-### Deletion candidates (24)
+### Deletion candidates (25)
 
 Styled, and carried by no element in the repo: not by a painted screen, not by the kit, not by a wireframe, not by a course page, and not by any script. Nothing is removed yet. The screens still carry their own inline style and only move onto components/index.css in step 5, so the measurement is not final until then; step 7 is the pass that acts on this list.
 
@@ -82,6 +82,7 @@ Styled, and carried by no element in the repo: not by a painted screen, not by t
 | `.css` | tabs.css | styled and carried by no element anywhere |
 | `.hiw-head` | hiw-dialog.css | styled and carried by no element anywhere |
 | `.html` | base.css | styled and carried by no element anywhere |
+| `.html` | catnav.css | styled and carried by no element anywhere |
 | `.html` | course-chrome.css | styled and carried by no element anywhere |
 | `.html` | dialog.css | styled and carried by no element anywhere |
 | `.md` | chart.css | styled and carried by no element anywhere |

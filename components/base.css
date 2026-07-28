@@ -57,6 +57,19 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none}
    itself: transparent, so the slab shows through. */
 .device{width:100%;max-width:none;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative;border:0;background-color:var(--bg-slab);background-image:var(--surface-grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal}
 .app-case{position:relative;background:transparent;border:0}
+/* HIDDEN IS A STATE, NOT A STYLE, so nothing may out-declare it. The user agent
+   hides with display:none from ITS sheet and any author declaration beats that
+   whatever the specificity, so .card{display:flex} put twelve cards back on
+   screen while the attribute said three. Raising the specificity here would only
+   move the argument: the next component to declare its own display would win it
+   again, and every component would have to remember. This is the case the word
+   is for, an invariant of the frame rather than a preference between rules, and
+   it is the one place in components/ that carries it.
+
+   The check that first said the filter worked was counting :not([hidden])
+   instead of asking the browser what it could see. A checker that reads the
+   attribute does not read the page. */
+[hidden]{display:none!important}
 /* .app-case is transparent so the device slab shows through it. On the frozen kit
    the app-case IS the body, and a body with no background lets the canvas fall back
    to white. This is what the !important on body{background} used to be for. */

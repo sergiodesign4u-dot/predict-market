@@ -65,10 +65,10 @@ push();});})();</script>
     <button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>
     <div class="sidebar-nav">
       <a href="overview.html" class="sidebar-page-link">Overview</a>
-      <a class="sidebar-page-link">Event Feed</a>
+      <a class="sidebar-page-link active">Event Feed</a>
       <div class="sidebar-sub">
         <div class="sidebar-sub-head">Logged in</div>
-        <a href="event-feed.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed.html" class="sidebar-sub-link active">success</a>
         <a href="event-feed-empty.html" class="sidebar-sub-link">empty</a>
         <a href="event-feed-error.html" class="sidebar-sub-link">error</a>
         <a href="event-feed-loading.html" class="sidebar-sub-link">loading</a>
@@ -79,7 +79,7 @@ push();});})();</script>
         <a href="event-feed-logged-out-error.html" class="sidebar-sub-link">error</a>
         <a href="event-feed-logged-out-loading.html" class="sidebar-sub-link">loading</a>
       </div>
-      <a class="sidebar-page-link active">Category pages</a>
+      <a class="sidebar-page-link">Category pages</a>
       <div class="sidebar-sub">
         <div class="sidebar-sub-head">Politics</div>
         <a href="event-feed-politics.html" class="sidebar-sub-link">success</a>
@@ -118,7 +118,7 @@ push();});})();</script>
         <a href="event-feed-general-loading.html" class="sidebar-sub-link">loading</a>
         <div class="sidebar-sub-head">General, logged out</div>
         <a href="event-feed-general-logged-out.html" class="sidebar-sub-link">success</a>
-        <a href="event-feed-general-logged-out-empty.html" class="sidebar-sub-link active">empty</a>
+        <a href="event-feed-general-logged-out-empty.html" class="sidebar-sub-link">empty</a>
         <a href="event-feed-general-logged-out-error.html" class="sidebar-sub-link">error</a>
         <a href="event-feed-general-logged-out-loading.html" class="sidebar-sub-link">loading</a>
       </div>
@@ -863,5 +863,35 @@ push();});})();</script>
   });
 })();
   </script>
+<script id="uv-subfilter">
+/* The Trending sub-filter filters Trending. Built by
+   wireframes/_generators/subfilter.py; see that file for why this is not the
+   category nav. A hidden card is hidden by the ATTRIBUTE, so it leaves the
+   accessibility tree with the layout. */
+(function () {
+  var group = document.querySelector('.feed-subfilter');
+  if (!group) return;
+  var grid = document.querySelector('.grid');
+  if (!grid) return;
+  group.addEventListener('click', function (e) {
+    var btn = e.target.closest('button[data-filter]');
+    if (!btn) return;
+    var want = btn.getAttribute('data-filter');
+    var all = group.querySelectorAll('button[data-filter]');
+    for (var i = 0; i < all.length; i++) {
+      var on = all[i] === btn;
+      all[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+      all[i].parentNode.toggleAttribute('aria-current', false);
+      if (on) { all[i].parentNode.setAttribute('aria-current', 'page'); }
+      else { all[i].parentNode.removeAttribute('aria-current'); }
+    }
+    var cards = grid.querySelectorAll('.card');
+    for (var j = 0; j < cards.length; j++) {
+      var cat = cards[j].getAttribute('data-cat');
+      cards[j].toggleAttribute('hidden', want !== 'all' && cat !== want);
+    }
+  });
+})();
+</script>
 </body>
 </html>

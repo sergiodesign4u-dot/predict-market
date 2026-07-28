@@ -1225,7 +1225,7 @@ fix is one role: `--chrome-accent`. The vitrine's sub-AA pairs went 434 to 158, 
 `kit.html` (frozen provenance) and the value labels drawn ON their own swatches in `tokens.html`,
 where the label IS the colour being shown.
 
-### One measure for the page
+### One measure for the page, and an inset that survives it
 
 Reported by eye at a wide window: the content ran edge to edge while the footer under it stopped at
 1400. Measured at 1920, the content was 1620 and the footer 1400, so a page had two measures and the
@@ -1233,6 +1233,15 @@ token that names the wider one, `--container-max`, was obeyed by the footer alon
 bands carried `max-width:none` from the colour pass. They read the token now, so the band still spans
 the window and what is INSIDE it (header row, category strip, trust bar, content, footer) shares one
 left edge: 370..1770 at 1920, all four.
+
+The first cut of that fix broke the other direction. Centring the content band by turning
+`margin:var(--gutter)` into `margin:var(--gutter) auto` spent the horizontal gutter on the centring,
+so under 1400 the plate sat against the window edge. **A container holds its inset at every width**:
+the inset is padding, and above the cap the auto margin does the centring. Measured at eight widths
+from 1920 to 380, the header row, the content, the plate and the footer start on the same x at every
+one of them, and the gutter drops from 40 to 14 below 640 exactly where the token says. The footer's
+own inset moved from 20 to the gutter for the same reason: its first column had been sitting 20px
+left of the first card.
 
 ### An empty box is invisible to every sweep we run
 
@@ -1254,6 +1263,37 @@ its own shell carries: the same twelve events, the same twelve pictures.
 **A photograph is not one declaration.** The port strips it on the way into grey and stripped
 `background-image` only, so the crop crossed the boundary without the picture: the framing of
 something that is not there, on 24 cards. The whole `background-*` family goes now.
+
+### A control is named by what it does
+
+The Event Feed carried two controls that looked different and did the same thing. The band at the top
+navigates, which is right: a category is its own indexed URL with its own H1 and its own SEO body. The
+chip row under the Trending heading is labelled "Filter events by category" and was five more links to
+the same four pages, so **pressing Politics inside Trending left Trending**. It filters now: the twelve
+events stay and the other categories are hidden. Buttons rather than links, `aria-pressed` for which is
+on, and `data-cat` on each card read out of the photograph it already carries, because a second
+hand-typed mapping of the same fact is a fork. Both trees, one script, in
+`wireframes/_generators/subfilter.py`.
+
+Three things it taught, all of them shapes this repo has met before:
+
+- **Hidden is a state, not a style.** The filter set the attribute and nothing moved: the user agent
+  hides with `display:none` from ITS sheet, and `.card{display:flex}` beats that whatever the
+  specificity. Raising the specificity would only move the argument to the next component that
+  declares a display. `[hidden]{display:none!important}` in `base.css` is the one place in
+  `components/` that carries the word, and it is the case the word is for, an invariant of the frame
+  rather than a preference between rules.
+- **A checker that reads the attribute does not read the page.** The first run reported the filter
+  working, counting `:not([hidden])`, while twelve cards were on screen. Counting what the browser
+  reports as visible found it in one run.
+- **Two generators writing into one sheet have to know where each other's work ends**, which step 7e
+  wrote down and this pass paid for again: `port_chrome.py` owns everything from its marker to
+  `</style>` and rewrites that whole span, so a rule appended before `</style>` landed in its
+  territory. The two rewrote the page back and forth forever. The rule goes above the marker now.
+- Also: `_gen_category.py` recognised the sub-filter by `</nav>` and drops it from the four category
+  pages, so the day it stopped being a `<nav>` it would have left a Trending filter on every category
+  page. **A generator that recognises its input by a tag name breaks when the tag changes for a good
+  reason.**
 
 ### Half of twelve is six
 

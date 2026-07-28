@@ -821,6 +821,22 @@ record in `ui-kit/docs/architecture.md`, "What step 8b settled".
   varies on a single-category page is the CROP of it. And **a photograph is not one declaration**: the
   port stripped `background-image` on the way into grey and let `background-position` through, which
   is the framing of a picture that is not there.
+- **A control is named by what it does.** The Event Feed had two controls doing the same thing: the
+  top band navigates (a category is its own indexed URL), and the chip row labelled "Filter events by
+  category" was five more links to the same pages, so pressing Politics inside Trending left Trending.
+  It filters in place now (`wireframes/_generators/subfilter.py`, both trees, `data-cat` read out of
+  the photograph each card already carries). Three shapes came with it: **hidden is a state, not a
+  style** (the attribute was set and nothing moved, because `.card{display:flex}` beats the user
+  agent's `display:none` whatever the specificity, so `base.css` carries the one `!important` in
+  `components/`); **a checker that reads the attribute does not read the page** (the first run
+  reported success while twelve cards were on screen); and **two generators writing into one sheet
+  have to know where each other's work ends**, the step-7e lesson, paid for again when `port_chrome`
+  and `subfilter` rewrote the same page back and forth forever.
+- **A container holds its inset at every width.** Centring the content band by turning
+  `margin:var(--gutter)` into `margin:var(--gutter) auto` spent the horizontal gutter on the centring,
+  so under 1400 the plate sat against the window edge. The inset is padding; above the cap the auto
+  margin centres. Measured at eight widths from 1920 to 380: header, content, plate and footer on one
+  x at every one, gutter 40 above 640 and 14 below.
 - **Half of twelve is six.** The two bars of the close X sat at `calc(50% - 7px)`, one pixel left of
   the disc, on every close button in the product. The vertical half was right, which is what made it
   hard to see.

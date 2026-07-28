@@ -54,7 +54,12 @@ def build_condensed(active):
 CATNAV_RE    = re.compile(r'<nav class="cat-nav".*?</nav>', re.S)
 CONDENSED_RE = re.compile(r'<div class="cat-condensed"[^>]*>.*?</div>', re.S)
 HERO_RE      = re.compile(r'\n\s*<!-- Featured hero band.*?</section>', re.S)
-SUBFILTER_RE = re.compile(r'\n\s*<!-- #90:.*?</nav>', re.S)
+# The sub-filter stopped being a <nav> when it stopped navigating (see
+# wireframes/_generators/subfilter.py), and this regex ended at </nav>, so a
+# re-run would have left the Trending filter on all four category pages. It
+# ends at the marker the control now closes with. A generator that recognises
+# its input by a tag name breaks the day the tag changes for a good reason.
+SUBFILTER_RE = re.compile(r'\n\s*<!-- #90:.*?</div><!-- /feed-subfilter -->', re.S)
 GRID_RE      = re.compile(r'(<div class="grid">).*?(\n\s*</div>\s*\n\s*<!-- Load more)', re.S)
 # The level is not part of the question. This read <h2 id="feedHeading"> and the
 # heading has been an <h1> since step 7b gave every screen exactly one, so the

@@ -488,20 +488,20 @@ push();});})();</script>
 
         <!-- #90: content sub-filter chips for the Trending feed (a quick filter over
              the feed content; the top category nav stays the main category switcher). -->
-        <nav class="feed-subfilter" aria-label="Filter events by category">
+        <div class="feed-subfilter" role="group" aria-label="Filter events by category">
           <ul>
-            <li aria-current="page"><a href="event-feed.html"><button type="button">All</button></a></li>
-            <li><a href="event-feed-politics.html"><button type="button">Politics</button></a></li>
-            <li><a href="event-feed-crypto.html"><button type="button">Crypto</button></a></li>
-            <li><a href="event-feed-culture.html"><button type="button">Culture</button></a></li>
-            <li><a href="event-feed-general.html"><button type="button">General</button></a></li>
+            <li aria-current="page"><button type="button" data-filter="all" aria-pressed="true">All</button></li>
+            <li><button type="button" data-filter="politics" aria-pressed="false">Politics</button></li>
+            <li><button type="button" data-filter="crypto" aria-pressed="false">Crypto</button></li>
+            <li><button type="button" data-filter="culture" aria-pressed="false">Culture</button></li>
+            <li><button type="button" data-filter="general" aria-pressed="false">General</button></li>
           </ul>
-        </nav>
+        </div><!-- /feed-subfilter -->
 
         <div class="grid">
 
           <!-- Binary card 1 -->
-          <article class="card">
+          <article class="card" data-cat="politics">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span>
@@ -519,7 +519,7 @@ push();});})();</script>
           </article>
 
           <!-- Binary card 2 (bookmarked) -->
-          <article class="card">
+          <article class="card" data-cat="crypto">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-crypto.jpg)">thumbnail placeholder</span>
@@ -537,7 +537,7 @@ push();});})();</script>
           </article>
 
           <!-- Multi-outcome card 1 -->
-          <article class="card">
+          <article class="card" data-cat="culture">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-culture.jpg)">thumbnail placeholder</span>
@@ -557,7 +557,7 @@ push();});})();</script>
           </article>
 
           <!-- Binary card 3 -->
-          <article class="card">
+          <article class="card" data-cat="general">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-general.jpg)">thumbnail placeholder</span>
@@ -575,7 +575,7 @@ push();});})();</script>
           </article>
 
           <!-- Binary card 4 -->
-          <article class="card">
+          <article class="card" data-cat="crypto">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-crypto.jpg)">thumbnail placeholder</span>
@@ -593,7 +593,7 @@ push();});})();</script>
           </article>
 
           <!-- Multi-outcome card 2 -->
-          <article class="card">
+          <article class="card" data-cat="politics">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span>
@@ -613,7 +613,7 @@ push();});})();</script>
           </article>
 
           <!-- Binary card 5 -->
-          <article class="card">
+          <article class="card" data-cat="general">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-general.jpg)">thumbnail placeholder</span>
@@ -631,7 +631,7 @@ push();});})();</script>
           </article>
 
           <!-- Binary card 6 -->
-          <article class="card">
+          <article class="card" data-cat="culture">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-culture.jpg)">thumbnail placeholder</span>
@@ -649,7 +649,7 @@ push();});})();</script>
           </article>
 
           <!-- Binary card 7 -->
-          <article class="card">
+          <article class="card" data-cat="crypto">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-crypto.jpg)">thumbnail placeholder</span>
@@ -667,7 +667,7 @@ push();});})();</script>
           </article>
 
           <!-- Binary card 8 -->
-          <article class="card">
+          <article class="card" data-cat="politics">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span>
@@ -685,7 +685,7 @@ push();});})();</script>
           </article>
 
           <!-- Multi-outcome card 3 -->
-          <article class="card">
+          <article class="card" data-cat="culture">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-culture.jpg)">thumbnail placeholder</span>
@@ -705,7 +705,7 @@ push();});})();</script>
           </article>
 
           <!-- Binary card 9 -->
-          <article class="card">
+          <article class="card" data-cat="general">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-general.jpg)">thumbnail placeholder</span>
@@ -1257,5 +1257,35 @@ push();});})();</script>
   });
 })();
   </script>
+<script id="uv-subfilter">
+/* The Trending sub-filter filters Trending. Built by
+   wireframes/_generators/subfilter.py; see that file for why this is not the
+   category nav. A hidden card is hidden by the ATTRIBUTE, so it leaves the
+   accessibility tree with the layout. */
+(function () {
+  var group = document.querySelector('.feed-subfilter');
+  if (!group) return;
+  var grid = document.querySelector('.grid');
+  if (!grid) return;
+  group.addEventListener('click', function (e) {
+    var btn = e.target.closest('button[data-filter]');
+    if (!btn) return;
+    var want = btn.getAttribute('data-filter');
+    var all = group.querySelectorAll('button[data-filter]');
+    for (var i = 0; i < all.length; i++) {
+      var on = all[i] === btn;
+      all[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+      all[i].parentNode.toggleAttribute('aria-current', false);
+      if (on) { all[i].parentNode.setAttribute('aria-current', 'page'); }
+      else { all[i].parentNode.removeAttribute('aria-current'); }
+    }
+    var cards = grid.querySelectorAll('.card');
+    for (var j = 0; j < cards.length; j++) {
+      var cat = cards[j].getAttribute('data-cat');
+      cards[j].toggleAttribute('hidden', want !== 'all' && cat !== want);
+    }
+  });
+})();
+</script>
 </body>
 </html>

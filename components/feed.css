@@ -22,10 +22,16 @@
 .feed-head :is(h1,h2){font-family:var(--font-display);font-size:var(--display-feed);font-weight:var(--weight-bold);letter-spacing:-.03em;line-height:var(--leading-flat);color:var(--text-primary);text-wrap:balance}
 .grid{align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
 .app-case .feed{background:transparent;padding:0}
-.app-case .feed .feed-inner{max-width:var(--container-max);margin:var(--gutter) auto;margin-top:var(--space-12);padding:0;background:none;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;gap:var(--space-16)}
+/* THE INSET IS PADDING, NOT A MARGIN. Turning margin:var(--gutter) into
+   margin:var(--gutter) auto to centre this band spent the horizontal gutter
+   on the centring, so under 1400 the plate sat against the window edge. A
+   container holds its inset at EVERY width; above the cap the auto margin
+   centres and the padding keeps the same edge the header row has had all
+   along. */
+.app-case .feed .feed-inner{max-width:var(--container-max);margin:var(--gutter) auto;margin-top:var(--space-12);padding:0 var(--gutter);box-sizing:border-box;background:none;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;gap:var(--space-16)}
 .grid{gap:var(--space-16)}
 .feed-head :is(h1,h2){margin-bottom:0}
 @media(max-width:640px){
-  .app-case .feed .feed-inner{margin-top:var(--space-16);padding:0}
+  .app-case .feed .feed-inner{margin-top:var(--space-16);padding:0 var(--gutter)}
 }
 .app-case .chart-svg .grid-l{stroke:var(--line-grid);stroke-width:1}

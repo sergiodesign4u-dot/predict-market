@@ -37,7 +37,9 @@
 .footer-popular h2{font-size:var(--text-11);text-transform:uppercase;letter-spacing:.03em;margin:0 0 var(--space-8)}
 .popular-links{display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-12);list-style:none;padding:0;margin:0;font-size:var(--text-12)}
 .app-footer{background:var(--bg-surface);color:var(--text-muted)}
-.app-footer .footer-inner{max-width:var(--container-max);margin:0 auto;padding:var(--space-20) var(--space-20)}
+/* the same inset as every other band, so the first footer column starts on the
+   same x as the logo above it and the first card between them */
+.app-footer .footer-inner{max-width:var(--container-max);margin:0 auto;box-sizing:border-box;padding:var(--space-20) var(--gutter)}
 .app-footer a{color:var(--text-muted);text-decoration:none}
 .app-footer a:hover,.popular-links a:hover,.footer-col a:hover,.legal-links a:hover{color:var(--text-brass);text-decoration:none}
 .footer-popular{border-top:1px solid var(--border-hairline)}

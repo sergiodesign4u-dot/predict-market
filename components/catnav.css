@@ -59,7 +59,10 @@
 .cat-main .feed-subfilter{margin:var(--space-2) 0 var(--space-16)}
 .cat-main .feed-subfilter ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-8)}
 .cat-main .feed-subfilter li{flex:0 0 auto}
-.cat-main .feed-subfilter a{text-decoration:none}
+/* .cat-main .feed-subfilter a was here. The sub-filter has no links any more:
+   it filters the page it is on instead of navigating away from it, so its
+   chips are buttons. The only <a> left inside one is in ui-kit/kit.html, and
+   the frozen kit is provenance, not product. */
 .cat-main .feed-subfilter button{display:inline-flex;align-items:center;min-height:0;cursor:pointer;background:transparent;border:1px solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-4) var(--space-12)}
 .cat-main .feed-subfilter button:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
 @media(pointer:coarse){.cat-main .feed-subfilter button,.feed-inner .cat-nav button{min-height:var(--control-44)}}
