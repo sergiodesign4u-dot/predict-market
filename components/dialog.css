@@ -1,5 +1,5 @@
 /* components/dialog.css
-   Component: dialog. Classes: .app-dialog, .backdrop, .fine, .grab, .sheet, .sheet-body, .sheet-close, .sheet-head, .sheet-sub.
+   Component: dialog. Classes: .app-dialog, .fine, .sheet-body, .sheet-close, .sheet-head, .sheet-sub.
 
    Reads: --bevel-hair, --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --mask-solid, --result-won, --result-won-stone, --scrim, --scrim-photo, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-45
    Stand:  ui-kit/dialog.html
@@ -13,17 +13,18 @@ dialog.app-dialog .sheet-head :is(h1,h2){font-size:var(--text-14);margin:0}
 dialog.app-dialog .sheet-close{font-size:var(--text-12);cursor:pointer;padding:var(--space-2) var(--space-8)}
 dialog.app-dialog .sheet-body{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
 dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)}
-.backdrop{flex:1;position:relative;min-height:70vh;display:flex;align-items:flex-end;justify-content:center}
-.sheet{width:100%;border:1px solid var(--border-hairline);border-bottom:none}
-.grab{width:var(--control-36);height:var(--size-4);border-radius:var(--radius-2);margin:var(--space-8) auto 0}
+/* .backdrop, .sheet and .grab were here and are gone (step 7e). They are the
+   GREY tree's bottom-sheet frame: 17 wireframes carry them and no painted screen
+   and no stand ever has, because the paint expresses an invoked screen as a
+   centred dialog.app-dialog. They survived gate 14 only because that gate was
+   counting wireframes/*.html as markup, and this file cannot reach the grey
+   tree: it has its own inline grey-box css and never links index.css.
+   If the bottom sheet comes back on mobile, the rules get written then, for the
+   markup that ships. A rule kept in case is a fossil. */
 .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8);border-bottom:1px solid var(--border-hairline)}
 .sheet-head :is(h1,h2){font-size:var(--text-14);margin:0}
 .sheet-close{border:1px solid var(--border-hairline);font-size:var(--text-12);cursor:pointer;padding:var(--space-2) var(--space-8)}
 .sheet-body{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
-@media (min-width: 640px){
-  .backdrop{align-items:center;padding:var(--space-24)}
-  .sheet{max-width:var(--container-sheet);border-bottom:1px solid var(--border-hairline)}
-}
 /* Fine print is muted wherever it stands, not only inside the containers named
    further down. Without the colour here it inherits body text and reads as
    loudly as the sentence it qualifies, which is what happened to the .fine

@@ -1449,3 +1449,32 @@ from the attribute, so the word was a second, silent, contradictory copy of the 
 | `off` as the button's text | removed; `aria-label="Reverse sort"` instead | `.reverse-row .toggle[role=switch]`, 19 screens x 2 trees | the visible label `Reverse sort` already sits beside it in the row; the button now takes that as its name and lets `aria-checked` say the state |
 
 Health: 31068 text pairs measured across 77 painted screens in both themes, **0 below AA** (was 3).
+
+### Step 26 - The footer trust block, and the last five strings the paint wrote alone
+
+Step 24 caught the copy the Stage-08 paint wrote inside `<main>`. It could not catch the footer,
+because gate 18 compared `<main>` and nothing else, so the footer was never read against the grey
+twin at all. Step 7e compares all four regions, and the trust strip came back with five strings no
+row here describes and two it replaced.
+
+The paint had turned three bare sentences in a row into a headed block with an icon, a claim and a
+second line under each. That is a better shape for the same promise, and it is structure, so it now
+stands in `wireframes/` too. Logged as written, not edited: the lines were read against `voice.md`
+when they shipped.
+
+| was (grey, since the Stage-04 reconcile) | became (both trees) | rule it answers |
+|---|---|---|
+| (nothing) | `Built on trust, not on your balance` | principle 5: the specific provable thing. It says what the section is about and refuses the obvious pun about money |
+| `Your USDC is held 1:1, we never lend it.` | `Your USDC is held 1:1` + `We never lend it.` | principle 2: one plain sentence of trust. Splitting the claim from its guarantee lets the eye take the claim and the sentence answer it |
+| `Every event resolves against a public source.` | `Every event resolves against a public source` + `You can check it.` | same split. The second line is the one that makes it a promise rather than a policy |
+| `1,284 events resolved` | `1,284 events resolved` + `On-chain, verifiable.` | principle 5 again: the number was already checkable and never said where |
+
+Not new copy, but new to this table for the same reason: `No notifications yet. We will let you know
+when an event you follow moves or resolves.` has stood in three grey wireframes since they were
+built (`active-bets-empty-new`, `favorites-empty`, `notifications-empty`) and in no painted screen,
+because the colour pass grafted one canonical header onto every screen and flattened the state. It
+ships in both trees now. The row it already had stands.
+
+Health: 5 strings added to the grey tree, 2 replaced, 0 invented. Both trees carry identical copy in
+`<main>`, `<header>`, the bottom nav and `<footer>` on all 55 twinned screens, which gate 18 checks.
+0 em-dash.

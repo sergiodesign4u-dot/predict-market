@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wireframe - Win Screen (state: payout-pending)</title>
 <style>
+    /* a link takes the ink around it, never the browser's blue. */
+    a { color: inherit; }
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
        Base = mobile (1 column, bottom nav). Min-width expansions:
@@ -710,10 +712,10 @@
           <a href="active-bets.html"><button type="button" class="sheet-close" aria-label="Close">x</button></a>
         </div>
         <div class="sheet-body">
-          <p class="fine" style="font-weight:bold;font-size:13px;color:#222;margin:0;">Will the US government shut down before March 1, 2027?</p>
-          <div class="reconcile-box" style="align-items:center;text-align:center;">
+          <p class="fine">Will the US government shut down before March 1, 2027?</p>
+          <div class="reconcile-box">
             <span class="field-label">You were right - you won</span>
-            <strong style="font-size:24px;">+$13.20</strong>
+            <strong>+$13.20</strong>
             <span class="fine">You held YES, avg price 38%. Payout is settling on-chain.</span>
           </div>
           <div class="spinner-box">Your payout is on the way<br><span class="fine">It will arrive in your balance in a few minutes (on-chain settlement delay). You can still share now.</span></div>
@@ -726,7 +728,7 @@
             <span class="field-label">Before the next one</span>
             <p class="protect">One right call is not a streak. The next event has its own odds, and this win does not change them. Read the next one on its own terms.</p>
           </div>
-          <a href="event-feed.html"><button type="button" class="provider-btn" style="justify-content:center;width:100%;">Browse events</button></a>
+          <a href="event-feed.html"><button type="button" class="provider-btn">Browse events</button></a>
         </div>
       </section>
     </div>

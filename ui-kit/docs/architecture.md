@@ -563,6 +563,126 @@ them to win an argument about single-sourcing.
 paint replaced" and kept because the grey tree still carried the markup. Porting the rebuild took the
 last element either could match, and gate 14 called them within the same run.
 
+## What step 7e settled
+
+Step 7d put a gate behind the rule that `wireframes/` owns structure, and the gate compared `<main>`.
+That sentence contains the whole of this pass: **a gate that reads one region of a page certifies one
+region of a page.** The header, the bottom nav and the footer were the place two trees could drift
+with every gate green, and they had. Ten findings, all closed; two of them were the tools' own.
+
+### The drift ran both ways, so the fix is two tools in a fixed order
+
+The paint got the SHAPE right and the STATE wrong; the grey tree got the state right and the shape
+wrong. Reading that as "one tree is behind" is what makes a one-directional port write the wrong
+answer into 104 files. So:
+
+> **The paint owns the shape of the chrome. The grey tree owns which state it is in.**
+
+`ui-visual/_reconcile_chrome.py` runs first and gives the paint back three state facts, then
+`wireframes/_generators/port_chrome.py` copies the corrected shape back. Run them the other way and
+the second tool carries `aria-current="page"` on the Events slot into every wireframe.
+
+What the paint had wrong, all of it from `_apply_family.py` grafting one canonical header onto every
+screen: `aria-current="page"` on the Events slot of all 76 painted screens (the grey tree marks 54
+Events, 9 My Bets, 3 Favorites, 6 Portfolio, 15 none, which is what a screen reader reads out, so the
+painted Wallet screen announced "Events, current page"); a logged-in header over a bottom nav whose
+home slot pointed at `event-feed-logged-out.html`, on ten screens, the two halves of one chrome
+disagreeing about whether anybody is signed in; and the notifications dropdown listing three unread
+items on the three screens whose whole subject is that a new user has nothing yet.
+
+What the grey tree had wrong: no `.cat-condensed` on any page, a whole navigation control (the
+category strip that slides into the sticky header once the full bar scrolls away, on 68 painted
+screens); the footer trust block as three bare sentences where the product ships a headed block; and
+a `<span>` pretending to be the deposit amount field, which is the same defect step 7d found in the
+bet panel, one family over.
+
+### An auth variant was not a fact to read, it was a decision to make
+
+Ten screens disagreed about whether they are signed in, and there is no tree to defer to when both
+say something and neither is a copy of the other. Each one is answered by a reason, written once:
+`how-it-works` and the four `public-profile` screens are logged OUT because CLAUDE.md has said since
+Stage 08 that they are reached pre-auth; `cookie-consent` because a consent banner IS a first visit;
+`maintenance` because the app server is down and there is no session to read a balance out of; `404`,
+`500` and `toasts` are logged IN, because showing a signed-in person Sign in / Sign up turns "this
+page is missing" into "you were logged out", which is a worse error than the one they hit.
+
+### A port copies markup, and a href is markup
+
+The two trees do not name the same screen the same way: the category pages are
+`event-feed-politics.html` in colour and `politics.html` in grey. Step 7d ported `<main>` and carried
+the painted hrefs with it, so **110 links in the grey tree pointed at files that do not exist there**,
+and the link check run at the time counted links rather than resolving targets. The map lives in
+`port_structure.HREF` and both ports reach for the same one.
+
+### A missing colour is a colour
+
+Two of these, and they are the same shape as the theme finding in step 6b, from the other side: a
+checker that reads the source cannot see a value the browser supplies.
+
+- `_conventions.md` opens with "neutral greys only, no color" and every check ever run against it read
+  the source: 0 non-neutral hex in 104 files, true, and not the question. The grey sheet styles a link
+  in fourteen scoped places and never as a bare element, so every `<a>` outside them rendered in the
+  user agent's `#0000EE`. Measured in Chrome: **992 computed colour values** across the tree, on links
+  that have been there since the wireframes were built. One rule fixes it, first in the sheet and
+  weaker than every scoped rule already there: `a { color: inherit; }`. Colour only, because in a grey
+  box an underline is how a link says it is one.
+- `fill` and `stroke` are not in the port's `KEEP` list, so every declaration `components/` had for
+  the five shapes of the feed hero chart was dropped, and **an SVG with no fill is black**. Since step
+  7d the wireframe has been drawing that chart as a solid black rectangle, and nothing could see it:
+  the markup is right, the palette scan is right, the page has no error.
+
+### Where a rule may reach, part two
+
+Gate 14 (no selector without markup) was counting `wireframes/*.html` as markup for `components/`.
+It cannot be: the grey tree carries its own inline grey-box css and never links `index.css`, so no
+rule in `components/` has ever applied to it. Four rules were alive on that mistake, `.backdrop`,
+`.sheet` and `.grab` (the grey tree's bottom-sheet frame, where the paint uses a centred
+`dialog.app-dialog`) and `.wf-screen > a.planned::after` (the grey screen drawer, 2392 uses there and
+none here). **A class carried only by the tree a stylesheet cannot see is a class it does not have.**
+
+### Two findings were the tools' own, and both are the same bug
+
+An idempotent generator has to be idempotent about whitespace. `port_chrome.py` inserted a script
+block with its own leading newline and removed it by substituting one, so pages that end
+`</script></body>` with no break kept two spaces on the first run and a newline on the second: 74
+pages changed on a re-run that should have been a no-op. Widening the removal to `\s*` on the front
+then ate a newline the page already had, on the 13 that have one. **The removal has to be the exact
+inverse of the insertion, not an approximation of it.** `grey_links.py` made the same mistake an hour
+later, which is why it carries a blank-line collapse: a generator has to converge from a tree an
+earlier, wrong version of itself already wrote.
+
+The other one is worse and was caught by eye in a screenshot. A painted overlay page carries four
+dialogs, the shared sign-in, deposit and how-it-works plus its own, and the shared ones are emitted
+first, so "the first `.sheet-body` in the document" is the sign-in provider list on every one of the
+17. The port wrote the sign-in buttons into the grey Win, Loss and Deposit wireframes. **A screen's
+own overlay has an id**, and the tool now also checks that both trees give the sheet the same
+`aria-label` before copying anything, which is the check that would have caught it without a
+screenshot.
+
+### Two generators writing into one sheet have to know where each other's work ends
+
+`port_structure.py`'s block regex ran from its marker to `</style>`, which was right while there was
+one generator. With two, this file's block came first and the non-greedy run spanned both, so every
+re-run of `port_structure.py` silently deleted `port_chrome.py`'s block from 72 pages. The only
+symptom was a marker count. Both now use `block_re(marker)`, which stops at `</style>` or at the next
+generated marker, whichever comes first.
+
+### What was not fixed, on purpose
+
+The paint made the invoked overlay a centred modal at both breakpoints, so the "bottom sheet on
+mobile" half of convention 5 ships only in the grey tree. That is a product decision about how an
+overlay presents, not a mechanical difference, and this pass had no mandate to make it. Recorded in
+`wireframes/_conventions.md` beside the convention it contradicts.
+
+### Verified
+
+Both trees, 380 and 1280, in Chrome, before and after. Grey: 208 page loads, **0 horizontal
+overflow, 0 page errors, 992 computed colour leaks -> 0**. Painted: 308 page loads across both
+themes, **61956 text pairs, 0 below AA, 0 overflow**. Links: 16597 internal `.html` links in the grey
+tree, **110 broken -> 0**. Gate 18 was tested by injecting drift into each of the five compared
+regions in turn and confirming it names the right one. All three ports and both post-processors reach
+their fixed point in one run. **Gates: 18.**
+
 ## Naming
 
 Roles are read out of the product, not borrowed. The audit (`tokens-audit.md`) lists, for every role,

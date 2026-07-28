@@ -1,5 +1,5 @@
 /* components/header.css
-   Component: header. Classes: .app-header, .auth-btns, .avatar-menu, .badge-dot, .bal-add, .bal-amt, .bal-figure, .bal-label, .bal-swap, .bal-toggle, .bell-wrap, .cat-condensed, .dropdown, .hiw-btn, .icon-btn, .left, .logo-btn, .notif-all, .notif-menu, .row, .utility.
+   Component: header. Classes: .app-header, .auth-btns, .avatar-menu, .badge-dot, .bal-add, .bal-amt, .bal-figure, .bal-label, .bal-swap, .bal-toggle, .bell-wrap, .cat-condensed, .dropdown, .hiw-btn, .icon-btn, .left, .logo-btn, .notif-all, .notif-empty, .notif-menu, .row, .utility.
 
    Reads: --bg-control, --bg-slab-from, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --shadow-ink, --shadow-ink-72, --text-brass, --text-brass-chip, --text-chip-hover, --text-icon-strong, --text-muted, --text-on-brass, --text-primary, --tint-brass-09, --tint-brass-45, --tint-hover
    Stand:  ui-kit/header.html
@@ -39,6 +39,7 @@
 .notif-drop li a{display:block;padding:var(--space-8) var(--space-8);text-decoration:none}
 .notif-drop li a strong{display:block;font-size:var(--text-12)}
 .notif-drop li a span{display:block;font-size:var(--text-10)}
+.notif-empty{margin:0;padding:var(--space-12);font-size:var(--text-11);line-height:var(--leading-base)}
 .notif-all{display:block;text-align:center;padding:var(--space-8);font-size:var(--text-11);text-decoration:none}
 .bal-add{padding:var(--space-4)}
 .app-header .row{margin:0 auto;padding:var(--space-8) var(--space-20);box-sizing:border-box;min-height:58px}
@@ -65,6 +66,9 @@
 .avatar-menu .dropdown button,.notif-drop li a,.notif-drop li a strong{color:var(--text-primary)}
 .avatar-menu .dropdown button:hover,.notif-drop li a:hover{background:color-mix(in oklab,var(--color-action) 10%,transparent)}
 .notif-drop li a span{color:var(--text-muted)}
+/* The dropdown of a screen whose subject is "you have nothing yet". It had no
+   rule at all, because the state lived only in the grey tree. */
+.notif-empty{color:var(--text-muted)}
 .notif-all{background:var(--bg-control);border-top:1px solid var(--border-hairline);color:var(--text-brass)}
 .notif-menu summary .ic:has(use){color:var(--text-icon-strong)}
 .icon-btn .ic:has(use){color:var(--text-primary)}

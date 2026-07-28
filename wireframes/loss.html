@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wireframe - Loss Screen (state: success (resolution note + amount lost))</title>
 <style>
+    /* a link takes the ink around it, never the browser's blue. */
+    a { color: inherit; }
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
        Base = mobile (1 column, bottom nav). Min-width expansions:
@@ -710,18 +712,18 @@
           <a href="active-bets.html"><button type="button" class="sheet-close" aria-label="Close">x</button></a>
         </div>
         <div class="sheet-body">
-          <p class="fine" style="font-weight:bold;font-size:13px;color:#222;margin:0;">Will the US government shut down before March 1, 2027?</p>
+          <p class="fine">Will the US government shut down before March 1, 2027?</p>
           <div>
             <span class="field-label">What happened</span>
             <p class="protect">Congress passed a stopgap funding bill on Feb 27, 2027, two days before the deadline, so no shutdown occurred. The market resolved NO. You held YES.</p>
           </div>
-          <div class="reconcile-box" style="align-items:center;text-align:center;">
+          <div class="reconcile-box">
             <span class="field-label">Result</span>
-            <strong style="font-size:20px;">-$5.00</strong>
+            <strong>-$5.00</strong>
             <span class="fine">Your $5.00 stake on YES did not return. Avg price 38%.</span>
           </div>
           <a href="active-bets.html"><button type="button" class="confirm-btn">Back to your bets</button></a>
-          <a href="event-feed.html"><button type="button" class="provider-btn" style="justify-content:center;width:100%;">Browse events</button></a>
+          <a href="event-feed.html"><button type="button" class="provider-btn">Browse events</button></a>
         </div>
       </section>
     </div>

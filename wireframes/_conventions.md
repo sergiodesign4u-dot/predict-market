@@ -72,6 +72,15 @@ structure, different content.
   Loss Screen), the base and state pages render as modal or bottom-sheet
   overlay content, not as a full-page layout. Their states are still separate
   pages, exactly as above.
+  > **Enforced since step 7e.** This is the sixth declared boundary in the table
+  > at the end of this file, and gate 18 checks it in both directions: 17 grey
+  > pages carry no header, bottom nav or footer, and their painted twins carry
+  > all three, because a scrim needs something to be a scrim over. What IS
+  > compared is the sheet body, where the grey tree had a `<span>` pretending to
+  > be the deposit amount field and the paint had a real `<input>`.
+  > Open, and not this pass's to settle: the paint made the overlay a centred
+  > modal at BOTH breakpoints, so the "bottom sheet on mobile" half of this line
+  > ships only here. That is a product decision, not a mechanical fix.
 - Every state is a separate page, navigated from the **left screen-tree drawer**
   (which lists each screen family with its auth variants and states). On screens
   with the auth axis (S5) the states span a 2D matrix: Auth (Logged in / Logged
@@ -695,7 +704,7 @@ The structure was ported back by `wireframes/_generators/port_structure.py`
 two trees have to agree, and **gate 18** in `ui-kit/_check_kit.py` fails the build
 when they do not.
 
-**Four differences are the boundary itself, not drift.** They are declared, and
+**Six differences are the boundary itself, not drift.** They are declared, and
 the gate is blind to exactly these and nothing else:
 
 | what | grey | colour | why it is not drift |
@@ -704,9 +713,28 @@ the gate is blind to exactly these and nothing else:
 | icons | raw `<path>` | `<use href="#id">` against an inline sprite | one mechanism per tree. The port resolves every `use` back into the paths it points at |
 | photography | the box, empty | `<img>` and `background-image` | a wireframe draws a box where a picture goes. 104 pages, zero image elements, and it stays that way |
 | chart data | typed into the markup | empty, filled by a script on load | a wireframe DRAWS its data, a product COMPUTES it. The series is read out of the painted script and written in statically, so the wireframe shows a chart without borrowing the product's JS |
+| the `TBD` chip | 14 `span.tbd` and one `p.placeholder-line` per footer | none | a wireframe is obliged to mark a destination nobody has built; a product that shows a user the word TBD is showing them the bookkeeping. Added in step 7e |
+| the page behind an invoked overlay | absent: the sheet on a plain backdrop | header, feed, bottom nav and footer behind the dialog | convention 5, below. A wireframe of an overlay draws the overlay; a scrim has to be a scrim over something. Added in step 7e, and it is the one boundary that is CHECKED rather than skipped: the gate asserts that grey has no chrome on those 17 screens and the paint has all of it, so neither side can drift into the other by accident |
 
-Everything else in `<main>` must match. `<header>`, the bottom nav and `<footer>`
-are **not** compared: they carry differences of their own kind (this tree's
-screen-tree drawer, the `TBD` chips that mark an unbuilt destination, the footer
-trust block the paint rewrote) and closing those is its own pass, not a silent
-extension of this one.
+## All four regions are compared (2026-07-28, Stage 09 step 7e)
+
+Step 7d compared `<main>` and nothing else, which left the header, the bottom nav
+and the footer as the one place where the two trees could drift with every gate
+green. They had:
+
+- `.cat-condensed`, the category strip that slides into the sticky header once
+  the full bar scrolls away: on 68 painted screens and **0** grey ones. A whole
+  navigation control, and the painted logged-out header did not have it either;
+- the footer trust block, rewritten in paint on 55 screens (see Step 26 in
+  `voice/docs/microcopy.md`);
+- `aria-current="page"` on the **Events** slot of all 76 painted screens whatever
+  screen it was, where the grey tree marks the slot the page actually is;
+- the logged-in header over a logged-out bottom nav on ten screens.
+
+Two tools, in this order, because the drift ran both ways:
+`ui-visual/_reconcile_chrome.py` gives the painted chrome back the state the grey
+tree owns, then `wireframes/_generators/port_chrome.py` copies the corrected
+shape back. **The paint owns the shape of the chrome; the grey tree owns which
+state it is in.** The one exception is the auth variant on the ten screens that
+disagreed: there was no fact to read, so it was decided page by page with a
+reason each, written once in `_reconcile_chrome.py`, and both trees follow it.

@@ -1,13 +1,15 @@
 /* components/hiw-dialog.css
-   Component: hiw-dialog. Classes: .hiw-arrow, .hiw-body, .hiw-close, .hiw-dialog, .hiw-faq, .hiw-full, .hiw-glow, .hiw-head, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-sec, .hiw-sec-txt, .hiw-tagline.
+   Component: hiw-dialog. Classes: .hiw-arrow, .hiw-body, .hiw-close, .hiw-dialog, .hiw-faq, .hiw-full, .hiw-glow, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-sec, .hiw-sec-txt, .hiw-tagline.
 
    Reads: --bg-control, --bg-dialog-head-from, --bg-plate-to, --border-hairline, --color-action, --color-action-lit, --line-on-photo, --line-on-photo-hover, --mask-solid, --scrim-photo, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong
    Stand:  ui-kit/hiw-dialog.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-dialog.app-dialog .hiw-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8);border-bottom:1px solid var(--border-hairline)}
-dialog.app-dialog .hiw-head h2{font-size:var(--text-14);margin:0}
+/* .hiw-head was here and is gone (step 7e), the fifth rule alive on the same
+   mistake: 87 wireframes carry it, no painted screen and no stand does, and this
+   sheet cannot reach the grey tree. The painted dialog heads it with .sheet-head
+   like every other one. */
 dialog.app-dialog .hiw-close{border:1px solid var(--border-hairline);font-size:var(--text-12);cursor:pointer;padding:var(--space-2) var(--space-8)}
 dialog.app-dialog .hiw-body{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
 dialog.app-dialog .hiw-label{font-size:var(--text-11);text-transform:uppercase;letter-spacing:.03em}

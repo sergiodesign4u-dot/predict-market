@@ -158,7 +158,7 @@ def where(c):
     if c in kit_used:
         return "kit", "shown in the frozen kit, never on a painted screen"
     if c in wf_used:
-        return "wireframe", "the grey-era version of a block the paint replaced"
+        return "wireframe", "carried only by wireframes/, which never loads this sheet"
     if c in docs_used:
         return "docs", "used by a course page, which does not load the system"
     return "unused", "styled and carried by no element anywhere"
@@ -681,8 +681,13 @@ ORDER = [("unused", "Deletion candidates", "Styled, and carried by no element in
           "script. Nothing is removed yet. The screens still carry their own inline style and only "
           "move onto components/index.css in step 5, so the measurement is not final until then; "
           "step 7 is the pass that acts on this list."),
-         ("wireframe", "Grey-era leftovers", "The wireframe version of a block the paint replaced. "
-          "Removing these needs the markup gone from wireframes/ first, which is a separate job."),
+         ("wireframe", "Carried only by the grey tree", "Dead, and this section used to say the "
+          "opposite: it called them the wireframe version of a block the paint replaced and said "
+          "removing them needed the markup gone from wireframes/ first. It does not. wireframes/ "
+          "carries its own inline grey-box css and never links index.css, so no rule in components/ "
+          "has ever applied to it, and a class carried only there is a class this sheet does not "
+          "have. Step 7e deleted the ones that were left and took wireframes/ out of gate 14's "
+          "markup scan, which had been keeping them alive."),
          ("docs", "Used only by a course page", "Carried by a page in ia/, concept/, research/, "
           "voice/ or user-research/. Those pages have their own inline styles and do not load the "
           "system, so the rule here reaches nothing."),

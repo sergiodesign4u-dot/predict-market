@@ -26,14 +26,14 @@ says so. No em dash.
 | comments | 1 | comments-thread | 1 | 15 | 9 |
 | cookie-consent | 1 | cookie-consent | 0 | 17 | 2 |
 | course-chrome | 1 | course-chrome | 0 | 25 | 76 |
-| dialog | 1 | dialog-shared | 0 | 9 | 76 |
+| dialog | 1 | dialog-shared | 0 | 6 | 76 |
 | event-detail | 2 | event-detail, facts-strip | 0 | 16 | 11 |
 | feed | 1 | feed-grid | 1 | 6 | 76 |
 | filters | 2 | filters-sort, filters-toggle | 2 | 4 | 76 |
 | footer | 1 | footer | 0 | 15 | 76 |
-| header | 2 | header-in, header-out | 1 | 21 | 76 |
+| header | 2 | header-in, header-out | 1 | 22 | 76 |
 | hero | 1 | hero-band | 0 | 51 | 1 |
-| hiw-dialog | 1 | hiw-dialog | 0 | 15 | 76 |
+| hiw-dialog | 1 | hiw-dialog | 0 | 14 | 76 |
 | input | 2 | input-amount, input-states | 1 | 5 | 76 |
 | loadmore | 1 | loadmore | 1 | 2 | 5 |
 | market | 1 | market-depth | 0 | 21 | 9 |
@@ -62,7 +62,7 @@ says so. No em dash.
 Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
 that actually means. The Classes table on each component page shows the same verdict per row.
 
-### Deletion candidates (18)
+### Deletion candidates (20)
 
 Styled, and carried by no element in the repo: not by a painted screen, not by the kit, not by a wireframe, not by a course page, and not by any script. Nothing is removed yet. The screens still carry their own inline style and only move onto components/index.css in step 5, so the measurement is not final until then; step 7 is the pass that acts on this list.
 
@@ -80,6 +80,8 @@ Styled, and carried by no element in the repo: not by a painted screen, not by t
 | `.css` | market.css | styled and carried by no element anywhere |
 | `.css` | tabs.css | styled and carried by no element anywhere |
 | `.html` | base.css | styled and carried by no element anywhere |
+| `.html` | course-chrome.css | styled and carried by no element anywhere |
+| `.html` | dialog.css | styled and carried by no element anywhere |
 | `.md` | chart.css | styled and carried by no element anywhere |
 | `.md-` | base.css | styled and carried by no element anywhere |
 | `.ms-` | base.css | styled and carried by no element anywhere |
@@ -87,17 +89,17 @@ Styled, and carried by no element in the repo: not by a painted screen, not by t
 | `.signin-lead` | signin.css | styled and carried by no element anywhere |
 | `.theme-switch-inline` | course-chrome.css | styled and carried by no element anywhere |
 
-### Grey-era leftovers (5)
+### Carried only by the grey tree (5)
 
-The wireframe version of a block the paint replaced. Removing these needs the markup gone from wireframes/ first, which is a separate job.
+Dead, and this section used to say the opposite: it called them the wireframe version of a block the paint replaced and said removing them needed the markup gone from wireframes/ first. It does not. wireframes/ carries its own inline grey-box css and never links index.css, so no rule in components/ has ever applied to it, and a class carried only there is a class this sheet does not have. Step 7e deleted the ones that were left and took wireframes/ out of gate 14's markup scan, which had been keeping them alive.
 
 | class | file | why |
 |---|---|---|
-| `.backdrop` | dialog.css | the grey-era version of a block the paint replaced |
-| `.grab` | dialog.css | the grey-era version of a block the paint replaced |
-| `.hiw-head` | hiw-dialog.css | the grey-era version of a block the paint replaced |
-| `.sheet` | dialog.css | the grey-era version of a block the paint replaced |
-| `.wf-screen` | course-chrome.css | the grey-era version of a block the paint replaced |
+| `.backdrop` | dialog.css | carried only by wireframes/, which never loads this sheet |
+| `.grab` | dialog.css | carried only by wireframes/, which never loads this sheet |
+| `.hiw-head` | hiw-dialog.css | carried only by wireframes/, which never loads this sheet |
+| `.sheet` | dialog.css | carried only by wireframes/, which never loads this sheet |
+| `.wf-screen` | course-chrome.css | carried only by wireframes/, which never loads this sheet |
 
 ### Used only by a course page (4)
 

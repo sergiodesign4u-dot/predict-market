@@ -1,12 +1,16 @@
 /* components/course-chrome.css
    the course roadmap sidebar every page of this repo carries. Not product.
 
-   Reads: --bevel-hair, --border-hairline, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-text, --scrim, --swatch-dark, --swatch-light
+   Reads: --bevel-hair, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-text, --scrim, --swatch-dark, --swatch-light
    Stand:  ui-kit/course-chrome.html
    Stands on: 76 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.wf-screen > a.planned::after{content:"planned";font-size:var(--text-10);text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--border-hairline);padding:0 var(--space-4);margin-left:var(--space-8)}
+/* .wf-screen > a.planned::after was here and is gone (step 7e). .wf-screen is
+   the grey tree's screen drawer, 2392 uses there and none in the painted tree,
+   the vitrine or a stand: the sidebar this file DOES style marks a planned stage
+   with .sidebar-page-link.planned, a few lines down. It survived gate 14 only
+   because that gate was counting wireframes/*.html as markup. */
 .rm-toggle{position:fixed;top:12px;left:12px;z-index:var(--z-chrome-top);background:var(--chrome-bg);border:1px solid var(--chrome-border);border-radius:var(--radius-6);width:var(--control-36);height:var(--control-36);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-4);cursor:pointer}
 .rm-toggle span{display:block;width:var(--icon-16);height:1.5px;background:var(--chrome-text);border-radius:var(--radius-2)}
 .rm-overlay{display:none;position:fixed;inset:0;background:var(--scrim);z-index:var(--z-chrome-scrim);backdrop-filter:blur(2px)}

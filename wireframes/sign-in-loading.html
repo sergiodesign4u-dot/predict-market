@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wireframe - Sign In / Register (state: loading (OAuth in-progress))</title>
 <style>
+    /* a link takes the ink around it, never the browser's blue. */
+    a { color: inherit; }
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
        Base = mobile (1 column, bottom nav). Min-width expansions:
@@ -711,7 +713,7 @@
         </div>
         <div class="sheet-body">
           <div class="spinner-box">Redirecting to Google to sign in...<br><span class="fine">Waiting for the provider. This window stays open.</span></div>
-          <button type="button" class="provider-btn" style="justify-content:center;">Cancel and choose another provider</button>
+          <button type="button" class="provider-btn">Cancel and choose another provider</button>
         </div>
       </section>
     </div>

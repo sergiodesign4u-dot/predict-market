@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wireframe - Deposit (state: error-KYC (rejected, T1))</title>
 <style>
+    /* a link takes the ink around it, never the browser's blue. */
+    a { color: inherit; }
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
        Base = mobile (1 column, bottom nav). Min-width expansions:
@@ -711,9 +713,9 @@
         </div>
         <div class="sheet-body">
           <div class="inline-error">KYC verification was rejected, so adding funds by card is not available on this account. You can still bet with crypto by connecting a USDC wallet (no KYC), or contact support.</div>
-          <button type="button" class="provider-btn" style="justify-content:center;">Connect a USDC wallet (no KYC)</button>
-          <button type="button" class="provider-btn" style="justify-content:center;">Contact support</button>
-          <a href="event-feed.html"><button type="button" class="provider-btn" style="justify-content:center;width:100%;">Browse events</button></a>
+          <button type="button" class="provider-btn">Connect a USDC wallet (no KYC)</button>
+          <button type="button" class="provider-btn">Contact support</button>
+          <a href="event-feed.html"><button type="button" class="provider-btn">Browse events</button></a>
         </div>
       </section>
     </div>

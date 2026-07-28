@@ -69,10 +69,50 @@ WRAPPERS = {"cat-layout", "cat-main", "feed-inner"}
 # stable too, and would quietly redraw the whole wireframe from the product.
 RESTYLE = {"cat-nav"}
 
+# The two trees do not name the same screen the same way, and until step 7e
+# nobody had to care: the category pages are event-feed-politics.html in colour
+# and politics.html in grey, four screens each side. This port carried the
+# painted hrefs across with the markup, so 110 links in the grey tree pointed at
+# files that do not exist in it, and the link check that was run at the time
+# counted links and not targets.
+#
+# A port copies markup, and a href IS markup: a port between two trees needs the
+# map, or it moves the links too. Not auth-aware on purpose, because the grey
+# tree's own untwinned category pages already point at politics.html from both
+# variants, and changing that is a flows.md decision rather than a port's.
+HREF = {
+    "event-feed-politics.html": "politics.html",
+    "event-feed-crypto.html": "crypto.html",
+    "event-feed-culture.html": "culture.html",
+    "event-feed-general.html": "general.html",
+}
+
+
+def map_href(html):
+    return re.sub(r'href="([^"]+)"',
+                  lambda m: 'href="%s"' % HREF.get(m.group(1), m.group(1)), html)
+
 VOID = {"br", "img", "input", "use", "path", "circle", "meta", "link",
         "polyline", "source", "rect", "line", "hr", "ellipse", "stop"}
 
 MARKER = "/* ---- ported from the painted twin by port_structure.py ---- */"
+CHROME_MARKER = "/* ---- chrome ported from the painted twin by port_chrome.py ---- */"
+GENERATED = (MARKER, CHROME_MARKER)
+
+
+def block_re(marker):
+    """A generated block runs from its marker to the end of the sheet OR to the
+       next generated marker, whichever comes first.
+
+       Only the </style> lookahead existed while there was one generator. A
+       second one put two blocks in the same sheet, this file's first, and a
+       non-greedy run to </style> then spanned BOTH: every re-run of
+       port_structure.py silently deleted port_chrome.py's block from 72 pages,
+       and the only way to see it was to count markers. Two generators writing
+       into one sheet have to know where each other's work ends."""
+    others = "|".join(re.escape(m) for m in GENERATED if m != marker)
+    return re.compile(re.escape(marker) + r".*?(?=\n\s*(?:</style>|" + others + "))",
+                      re.S)
 
 # ---------------------------------------------------------------- markup ----
 
@@ -216,8 +256,8 @@ def port_main(grey_html, paint_html):
     dst, a, b = region(grey_html, "main")
     if not src or not dst:
         return grey_html, False
-    new = seed_chart(strip_photo(inline_sprite(unwrap(src, WRAPPERS), symbols_of(paint_html))),
-                     paint_html)
+    new = map_href(seed_chart(strip_photo(inline_sprite(
+        unwrap(src, WRAPPERS), symbols_of(paint_html))), paint_html))
     out = grey_html[:a] + new + grey_html[b:]
     if 'class="cat-nav"' in new:
         out = drop_outer_catnav(out)
@@ -414,6 +454,18 @@ def grey_block(classes):
         "    .ed-yaxis span, .ed-xaxis span { font-size: 9px; color: %s; }" % SOFT,
         "    .ed-plot { border: 1px solid #ccc; }",
         "    .rules-panel[hidden] { display: none; }",
+        # The feed hero chart, which this port has been drawing as a solid black
+        # rectangle since step 7d and no check could see: fill and stroke are not
+        # in KEEP, so every declaration in components/ for these five shapes was
+        # dropped, and an SVG with no fill is BLACK by default rather than
+        # nothing. A missing colour is a colour. The lines are separated by
+        # value, because a wireframe that shows two lines has to show two.
+        "    .hf-area { fill: %s; stroke: none; }" % FILL,
+        "    .hf-vol-area { fill: #eee; stroke: none; }",
+        "    .hf-line, .hf-vol-line { fill: none; stroke-width: 1.5; }",
+        "    .hf-line.yes { stroke: %s; }" % INK,
+        "    .hf-line.no { stroke: %s; }" % LINE,
+        "    .hf-vol-line { stroke: %s; }" % SOFT,
     ]
     # A generated stylesheet has to be checked by the thing that generates it. One
     # unbalanced paren above cost every rule below it, and the only symptom was an
@@ -425,7 +477,8 @@ def grey_block(classes):
     return "\n".join(lines)
 
 
-BLOCK_RE = re.compile(re.escape(MARKER) + r".*?(?=\n\s*</style>)", re.S)
+BLOCK_RE = block_re(MARKER)
+ANY_BLOCK = [block_re(m) for m in GENERATED]
 
 
 def apply_css(html, classes):
@@ -451,7 +504,13 @@ def styled(html):
     # carry two <style> elements, and splitting the joined text at the marker
     # threw away the whole second element with it. Those four then reported their
     # own already-styled classes as uncovered and grew a longer block every run.
-    css = "\n".join(re.findall(r"<style>(.*?)</style>", BLOCK_RE.sub("", html), re.S))
+    # BOTH generated blocks come out, not just this file's: a class is styled by
+    # the page or it is not, and a rule one generator wrote is not an answer to
+    # the question the other one is asking.
+    doc = html
+    for rx in ANY_BLOCK:
+        doc = rx.sub("", doc)
+    css = "\n".join(re.findall(r"<style>(.*?)</style>", doc, re.S))
     return {c for c in re.findall(r"\.([\w-]+)", css)}
 
 

@@ -212,61 +212,24 @@ push();});})();</script>
         </div>
 
         <div class="utility">
-          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
-          <div class="bal-toggle desk-only">
-            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
-            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
-            </button>
-            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
+          <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
+          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+          </button>
+
+          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
+          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+          </button>
+
+          <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
+          <div class="auth-btns">
+            <button type="button" class="auth-btn" data-open="signin">Sign in</button>
+            <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
           </div>
-
-          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
-          <a href="favorites.html" aria-label="Favorites, see saved events"><button type="button" class="icon-btn desk-only" aria-label="Favorites">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-          </button></a>
-
-          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
-          <details class="notif-menu">
-            <summary aria-label="Notifications, 3 unread">
-              <span class="bell-wrap">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
-                <span class="badge-dot">3</span>
-              </span>
-            </summary>
-            <div class="dropdown notif-drop" role="menu">
-              <ul>
-                <li><a href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
-                <li><a href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
-                <li><a href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
-              </ul>
-              <a class="notif-all" href="notifications.html">See all notifications</a>
-            </div>
-          </details>
-
-          <details class="avatar-menu">
-            <summary aria-label="Account menu">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </summary>
-            <div class="dropdown" role="menu">
-              <ul>
-                <li><a href="my-profile.html"><button type="button" role="menuitem">My Profile</button></a></li>
-                <li><a href="active-bets.html"><button type="button" role="menuitem">My Bets</button></a></li>
-                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet</button></a></li>
-                <li><a href="how-it-works.html"><button type="button" role="menuitem">How It Works</button></a></li>
-                <li><a href="event-feed-logged-out.html"><button type="button" role="menuitem">Logout</button></a></li>
-              </ul>
-            </div>
-          </details>
         </div>
       </div>
-      <!-- Condensed category strip: hidden until you scroll past the full category
-           bar, then it slides into the sticky header so the tabs stay reachable.
-           Small, icon-less chips (the full bar below keeps its icons). -->
-      <div class="cat-condensed" aria-hidden="true">
+    <div class="cat-condensed" aria-hidden="true">
         <ul>
           <li aria-current="page"><a href="event-feed.html"><button type="button">Trending</button></a></li>
           <li><a href="event-feed-politics.html"><button type="button">Politics</button></a></li>
@@ -373,22 +336,22 @@ push();});})();</script>
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
-        <li aria-current="page"><a href="event-feed-logged-out.html"><button type="button">
+        <li><a href="event-feed-logged-out.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
           <span>Events</span>
         </button></a></li>
-        <li><a href="active-bets.html"><button type="button">
+        <li><button type="button" data-open="signin">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
           <span>My Bets</span>
-        </button></a></li>
-        <li><a href="favorites.html"><button type="button">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+        </button></li>
+        <li><button type="button" data-open="signin">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
           <span>Favorites</span>
-        </button></a></li>
-        <li><a href="my-profile.html"><button type="button" aria-label="Portfolio, balance $142">
-          <span class="bn-bal">$142</span>
-          <span>Portfolio</span>
-        </button></a></li>
+        </button></li>
+        <li><button type="button" data-open="signin" aria-label="Sign in">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 12h10M16 8l4 4-4 4M14 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/></svg>
+          <span>Sign in</span>
+        </button></li>
       </ul>
     </nav>
 

@@ -36,8 +36,15 @@ repo root, which rewrites only the lines that disagree so their local entries su
 Structure flows one way between the two screen trees: `wireframes/` decides it and
 `ui-visual/` follows. `wireframes/_generators/port_structure.py` carries a block back
 when the paint got there first, and **gate 18** in `ui-kit/_check_kit.py` fails the
-build when the trees disagree. The four differences that are the layer boundary are
+build when the trees disagree. The six differences that are the layer boundary are
 declared in `wireframes/_conventions.md`.
+
+The chrome is the exception that proves it. Inside `<header>`, the bottom nav and
+`<footer>` the two trees answer different questions, so the reconcile runs in two
+steps: `ui-visual/_reconcile_chrome.py` gives the paint back the state the grey tree
+owns (auth variant, active nav slot, empty notifications), then
+`wireframes/_generators/port_chrome.py` copies the corrected shape back. Gate 18
+compares all four regions plus the sheet body of an invoked overlay.
 
 ## Old -> new map (the restructure)
 

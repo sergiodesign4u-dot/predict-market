@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wireframe - Deposit (state: minimum-not-met (inline))</title>
 <style>
+    /* a link takes the ink around it, never the browser's blue. */
+    a { color: inherit; }
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
        Base = mobile (1 column, bottom nav). Min-width expansions:
@@ -712,7 +714,7 @@
         <div class="sheet-body">
           <div>
             <span class="field-label">Amount to add</span>
-            <div class="amount-row"><span class="amount-input">$4.00</span></div>
+            <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9.$]*" value="$4.00" aria-label="Amount to add"></div>
             <div class="inline-error">The minimum is $10. Enter $10 or more to continue.</div>
             <div class="quick">
               <button type="button">$10</button>

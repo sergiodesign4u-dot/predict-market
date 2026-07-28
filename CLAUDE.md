@@ -582,7 +582,73 @@ Full record in `ui-kit/docs/architecture.md`, "What step 7d settled".
 - **Verified:** 104 grey pages at 380 and 1280, **0 horizontal overflow, 0 page errors, 0 colour
   outside the wireframe palette**, against the same sweep run on a worktree of the previous commit.
   Structural parity 55 of 55. Gate 18 was tested by injecting drift and confirming it fails.
-  **Gates: 18.**
+  **Gates: 18.** (The colour claim was read out of the SOURCE and step 7e re-read it out of the
+  BROWSER, where it was false; see below.)
+
+### Step 7e (done, 2026-07-28): the other three regions, and a gate that certified one
+
+Step 7d put a gate behind "wireframes/ owns structure", and that gate compared `<main>`. **A gate
+that reads one region of a page certifies one region of a page**: the header, the bottom nav and the
+footer stayed the one place two trees could drift with every gate green, and they had. Ten findings,
+all closed, two of them the tools' own. Full record in `ui-kit/docs/architecture.md`, "What step 7e
+settled".
+
+- **The drift ran both ways, so the fix is two tools in a fixed order.** The paint got the SHAPE
+  right and the STATE wrong; the grey tree got the state right and the shape wrong. Reading that as
+  "one tree is behind" is what makes a one-directional port write the wrong answer into 104 files.
+  **The paint owns the shape of the chrome; the grey tree owns which state it is in.**
+  `ui-visual/_reconcile_chrome.py` gives the paint back three state facts, then
+  `wireframes/_generators/port_chrome.py` copies the corrected shape back.
+  The paint had `aria-current="page"` on the **Events** slot of all 76 painted screens whatever
+  screen it was (the grey tree marks 54 Events / 9 My Bets / 3 Favorites / 6 Portfolio / 15 none, and
+  the painted Wallet screen was announcing "Events, current page"); a logged-in header over a bottom
+  nav pointing home at `event-feed-logged-out.html` on ten screens, one chrome disagreeing with
+  itself about whether anybody is signed in; and three unread notifications in the dropdown of the
+  three screens whose whole subject is that a new user has nothing yet. The grey tree had no
+  `.cat-condensed` at all (the category strip that slides into the sticky header, a whole navigation
+  control, on 68 painted screens and 0 grey), the footer trust block as three bare sentences, and a
+  `<span>` pretending to be the deposit amount field.
+- **An auth variant was not a fact to read, it was a decision to make.** Ten screens disagreed and
+  neither tree is a copy of the other, so each is answered by a reason, written once: `how-it-works`
+  + `public-profile` x4 logged OUT (documented as pre-auth since Stage 08), `cookie-consent` because
+  a consent banner IS a first visit, `maintenance` because the app is down and there is no session to
+  read; `404`, `500`, `toasts` logged IN, because showing a signed-in person Sign in / Sign up turns
+  "this page is missing" into "you were logged out".
+- **A port copies markup, and a href IS markup.** The category pages are `event-feed-politics.html`
+  in colour and `politics.html` in grey, and step 7d carried the painted hrefs across with the
+  markup: **110 links in the grey tree pointed at files that do not exist there**, while the link
+  check run at the time counted links instead of resolving targets.
+- **A missing colour is a colour**, twice, and both are the step-6b theme lesson from the other side:
+  a checker that reads the source cannot see a value the browser supplies. The grey sheet styles a
+  link in fourteen scoped places and never as a bare element, so every `<a>` outside them rendered in
+  the user agent's `#0000EE`: **992 computed colour values** in a tree whose contract opens with
+  "neutral greys only" and whose source has 0 non-neutral hex. And `fill`/`stroke` are not in the
+  port's KEEP list, so **the feed hero chart has been a solid black rectangle since step 7d**, since
+  an SVG with no fill is black.
+- **Where a rule may reach, part two.** Gate 14 counted `wireframes/*.html` as markup for
+  `components/`, which cannot apply to it (the grey tree has its own inline css and never links
+  `index.css`). Four rules lived on that mistake and are deleted. **A class carried only by the tree a
+  stylesheet cannot see is a class it does not have.**
+- **Two boundaries added, six now** (`wireframes/_conventions.md`): the `TBD` chip, because a
+  wireframe is obliged to mark an unbuilt destination and a product must not show a user the
+  bookkeeping; and the page behind an invoked overlay, which convention 5 has specified since the
+  wireframes were built. That sixth one is **checked rather than skipped**: grey must carry no chrome
+  on those 17 screens and the paint must carry all of it.
+- **Two tool bugs, one shape.** An idempotent generator has to be idempotent about whitespace: **the
+  removal has to be the exact inverse of the insertion**, and getting it approximately right cost 74
+  pages on one re-run and 13 on the next. And a painted overlay page carries four dialogs with the
+  shared ones first, so "the first `.sheet-body`" is the sign-in provider list on all 17: the port
+  wrote sign-in buttons into the grey Win, Loss and Deposit wireframes, caught by eye in a
+  screenshot. A screen's own overlay has an id, and the tool now checks both trees give the sheet the
+  same `aria-label` before copying. Also: two generators writing into one `<style>` have to know
+  where each other's work ends, or one silently deletes the other (72 pages).
+- **Not fixed, on purpose:** the paint made the invoked overlay a centred modal at BOTH breakpoints,
+  so "bottom sheet on mobile" ships only in grey. A product decision, recorded beside the convention
+  it contradicts.
+- **Verified:** grey 208 page loads at 380 and 1280 (**0 overflow, 0 page errors, 992 colour leaks ->
+  0**); painted 308 page loads across both themes (**61956 text pairs, 0 below AA, 0 overflow**);
+  **16597 grey links, 110 broken -> 0**. Gate 18 tested by injecting drift into each of the five
+  compared regions in turn. All five tools reach their fixed point in one run. **Gates: 18.**
 
 ### The rule for a change, from here on
 
@@ -619,8 +685,19 @@ that role any more.
 - **Never paint `wireframes/`.** Structure and copy are owned there and stay grey; `ui-visual/` owns
   the visual layer only. **And the traffic runs the other way too**: a new block, a new control, a new
   section is decided in `wireframes/` and the colour copy follows. Gate 18 fails the build when the
-  two trees disagree inside `<main>`; the four differences that are the layer boundary (plate
-  wrappers, icon mechanism, photograph, chart data) are declared in `wireframes/_conventions.md`.
+  two trees disagree inside `<main>`, `<header>`, the bottom nav, `<footer>` or the sheet body of an
+  invoked overlay; the six differences that are the layer boundary (plate wrappers, icon mechanism,
+  photograph, chart data, the `TBD` chip, the page behind an overlay) are declared in
+  `wireframes/_conventions.md`.
+- **A state is the grey tree's; a shape is the paint's.** Inside the chrome the two trees answer
+  different questions, so neither is simply the source: the paint owns what the header IS and the
+  wireframe owns which state it is IN (auth variant, bottom-nav active slot, empty notifications).
+  Reconcile in that order, `ui-visual/_reconcile_chrome.py` then
+  `wireframes/_generators/port_chrome.py`, or a port carries the wrong answer into 104 files.
+- **A checker that reads the source does not read the page.** "0 non-neutral hex in the wireframes"
+  was true while 992 links rendered in the browser's blue, and "the chart is ported" was true while
+  it drew as a black rectangle, because an SVG with no `fill` is black. **A missing value is a
+  value.** Measure the computed result, in a browser, at both widths.
 - **A UI string gets a row in `voice/docs/microcopy.md` before it ships**, then goes into both trees.
   That table is the source of truth for copy, and for one stage it was not: 43 shipped lines had no
   row in it.

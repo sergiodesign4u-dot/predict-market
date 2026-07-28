@@ -345,9 +345,17 @@ check("12 every consumer rescaled", rescale.returncode == 0 and " 0 rewrites" in
 # the panel into unstyled text. A class in a template string is markup. So the
 # .js files are read too, and a class toggled by script counts as carried
 # (classList add/remove/toggle).
+#
+# MARKUP THIS FILE CAN REACH, which is not the same set (step 7e). wireframes/
+# was in this list and does not belong: the grey tree carries its own inline
+# grey-box css, it never links index.css, and no rule in components/ has ever
+# applied to it. Counting it as markup kept four rules alive that nothing could
+# match: .backdrop, .sheet and .grab (the grey tree's bottom-sheet frame, where
+# the paint uses a centred dialog.app-dialog) and .wf-screen > a.planned::after
+# (the grey screen drawer, 2392 uses there and none here). A class carried only
+# by the tree a stylesheet cannot see is a class it does not have.
 carried = set()
 for page in (list(UV.glob("*.html")) + list(KIT.glob("*.html")) + list(SPECS.glob("*.html"))
-             + list((ROOT / "wireframes").glob("*.html"))
              + list(UV.glob("*.js")) + list(KIT.glob("*.js"))):
     src = page.read_text(encoding="utf-8", errors="ignore")
     for group in re.findall(r'class=\\?["\']([^"\'\\]*)', src):
@@ -527,10 +535,21 @@ check("17 every mark is on the sheet", not unshown,
 #     stone plate, so they are paint and are unwrapped before comparing
 #   - the icon mechanism: colour draws <use href="#id">, grey draws raw paths
 #   - the photograph: <img> and background-image are paint, the box stays
-# Everything else has to match. header, footer and bottom nav are NOT compared:
-# they carry their own declared differences (the wireframe screen-tree drawer,
-# the TBD chips) and are written up in wireframes/_conventions.md.
+#
+# STEP 7E: THE OTHER THREE REGIONS. This compared <main> and nothing else, so the
+# header, the bottom nav and the footer were the one place two trees could drift
+# with every gate green, and they had: a whole category strip in the sticky
+# header on 68 painted screens and 0 grey ones, a rewritten footer trust block on
+# 55, aria-current="page" on the Events slot of all 76 painted screens whatever
+# screen it was, and a logged-in header over a logged-out bottom nav on ten. All
+# four regions are compared now.
 PLATE = {"cat-layout", "cat-main", "feed-inner"}
+# The FIFTH boundary. A wireframe is obliged to mark a destination nobody has
+# built; a product that shows a user the word TBD is showing them the
+# bookkeeping. 14 span.tbd and one p.placeholder-line stand in every grey footer
+# and in none of the painted ones, and that is the two layers being right rather
+# than one of them being behind.
+GREY_ONLY = {"tbd", "placeholder-line"}
 # A fourth boundary, and the one worth naming: a wireframe DRAWS its data and a
 # product COMPUTES it. The painted chart ships an empty x-axis and fills it from
 # a script on load; the wireframe types the labels in, because a wireframe with a
@@ -565,7 +584,8 @@ def shape(html):
             if not void:
                 blind += 1
             continue
-        drop = tag == "div" and bool(set(classes) & PLATE)
+        drop = (tag == "div" and bool(set(classes) & PLATE)) \
+            or bool(set(classes) & GREY_ONLY)
         if tag in ("use", "path", "circle", "line", "polyline", "rect", "ellipse", "img"):
             continue                       # icon mechanism and photography
         if not void:
@@ -579,20 +599,77 @@ def shape(html):
     return out
 
 
-MAIN = re.compile(r"<main\b.*?</main>", re.S)
-drift = []
+REGIONS = {
+    "main": re.compile(r"<main\b.*?</main>", re.S),
+    "header": re.compile(r"<header\b.*?</header>", re.S),
+    "nav": re.compile(r'<nav[^>]*class="[^"]*bottom-nav[^"]*"[^>]*>.*?</nav>', re.S),
+    "footer": re.compile(r"<footer\b.*?</footer>", re.S),
+}
+# The SIXTH boundary, and the only one that is checked instead of skipped.
+# Convention 5 in wireframes/_conventions.md has said since the wireframes were
+# built that the invoked screens "render as modal or bottom-sheet overlay
+# content, not as a full-page layout". The paint puts a whole feed behind the
+# sheet, because a scrim has to be a scrim over something. Both trees are right
+# for their own layer, so their page frames are not compared. What IS compared is
+# the sheet body, where the grey tree had a <span> pretending to be the amount
+# field, and the rule itself: grey carries no chrome on these and the paint
+# carries all of it, so neither side can drift into the other by accident.
+OVERLAY = re.compile(r"^(deposit|sign-in|win|loss)(-|\.html$)")
+OWN_DIALOG = re.compile(r'<dialog[^>]*id="outcomeDialog".*?</dialog>', re.S)
+
+
+def region(html, tag, cls=None):
+    """The outer html of the first <tag> with that class, by counting depth.
+
+       A regex cannot do this and the first cut of the sheet-body check proved
+       it: `.*?</div>\\s*</section>` anchored on a closing tag only the grey tree
+       has, so it matched there, missed in the paint, and the fallback ran greedy
+       past the end of the sheet. Seventeen screens then reported drift that was
+       the checker's own."""
+    pat = r"<%s\b[^>]*?>" % tag if cls is None else \
+        r'<%s\b[^>]*class="[^"]*\b%s\b[^"]*"[^>]*>' % (tag, cls)
+    m = re.search(pat, html)
+    if not m:
+        return None
+    depth, i = 0, m.start()
+    for t in re.finditer(r"<(/?)(%s)\b[^>]*?(/?)>" % tag, html[i:]):
+        if t.group(1):
+            depth -= 1
+            if depth == 0:
+                return html[i:i + t.end()]
+        elif not t.group(3):
+            depth += 1
+    return None
+
+drift, frame = [], []
 for page in sorted((ROOT / "ui-visual").glob("*.html")):
     twin = ROOT / "wireframes" / page.name
     if not twin.exists():
         continue
-    a = MAIN.search(page.read_text(encoding="utf-8"))
-    b = MAIN.search(twin.read_text(encoding="utf-8"))
-    if not a or not b:
+    paint, grey = page.read_text(encoding="utf-8"), twin.read_text(encoding="utf-8")
+    if OVERLAY.match(page.name):
+        # The rule, not the shape.
+        for name, rx in REGIONS.items():
+            if name == "main":
+                continue
+            if rx.search(grey) or not rx.search(paint):
+                frame.append("%s %s" % (page.name, name))
+        own = OWN_DIALOG.search(paint)
+        a = region(own.group(0), "div", "sheet-body") if own else None
+        b = region(region(grey, "section", "sheet") or "", "div", "sheet-body")
+        if a and b and shape(a) != shape(b):
+            drift.append("%s sheet-body" % page.name)
         continue
-    if shape(a.group(0)) != shape(b.group(0)):
-        drift.append(page.name)
-check("18 the two trees agree", not drift,
-      "%d: %s" % (len(drift), ", ".join(drift[:4])))
+    for name, rx in REGIONS.items():
+        a, b = rx.search(paint), rx.search(grey)
+        if not a or not b:
+            if bool(a) != bool(b):
+                drift.append("%s %s (one side only)" % (page.name, name))
+            continue
+        if shape(a.group(0)) != shape(b.group(0)):
+            drift.append("%s %s" % (page.name, name))
+check("18 the two trees agree", not drift and not frame,
+      "%d: %s" % (len(drift) + len(frame), ", ".join((drift + frame)[:4])))
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:

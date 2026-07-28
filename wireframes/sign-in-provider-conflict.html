@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wireframe - Sign In / Register (state: provider-conflict)</title>
 <style>
+    /* a link takes the ink around it, never the browser's blue. */
+    a { color: inherit; }
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
        Base = mobile (1 column, bottom nav). Min-width expansions:
@@ -715,7 +717,7 @@
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
             Continue with X (your original provider)
           </button>
-          <button type="button" class="provider-btn" style="justify-content:center;">Link Google to this account</button>
+          <button type="button" class="provider-btn">Link Google to this account</button>
           <p class="fine">No crypto wallet required. By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>. Adding funds by card requires KYC; crypto-only accounts can connect a wallet instead.</p>
         </div>
       </section>

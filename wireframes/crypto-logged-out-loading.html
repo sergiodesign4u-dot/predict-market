@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wireframe - Category: Crypto (logged out - state: loading (skeleton))</title>
 <style>
+    /* a link takes the ink around it, never the browser's blue. */
+    a { color: inherit; }
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
        Base = mobile (1 column, bottom nav). Min-width expansions:
@@ -456,6 +458,28 @@
     .footer-popular h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
     .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
     .popular-links a { color: #444; }
+  /* ---- chrome ported from the painted twin by port_chrome.py ---- */
+    /* Layout taken from components/, every colour replaced by the
+       wireframe palette. See wireframes/_generators/port_chrome.py. */
+    .app-header .cat-condensed { max-height: 0; overflow: clip; }
+    .app-header.scrolled .cat-condensed { max-height: 54px; }
+    .app-header .cat-condensed ul { list-style: none; margin: 0; display: flex; flex-wrap: nowrap; gap: 8px; padding: 8px 14px; overflow-x: auto; }
+    .app-header .cat-condensed li { flex: 0 0 auto; }
+    .app-header .cat-condensed button { display: inline-flex; align-items: center; min-height: 0; font-weight: 600; font-size: 13px; padding: 8px 12px; }
+    .trust-head { font-size: 14px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 12px; }
+    .trust-items { display: flex; flex-wrap: wrap; gap: 12px; }
+    .footer-trust .tr-txt { display: flex; flex-direction: column; gap: 2px; }
+    .footer-trust .tr-txt b { font-size: 14px; font-weight: 600; }
+    .footer-trust .tr-txt i { font-size: 12px; font-style: normal; }
+    .footer-trust .trust-items { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .footer-trust .tr-ic { width: 22px; height: 22px; flex: 0 0 22px; padding: 8px; box-sizing: content-box; position: relative; }
+    .footer-trust .tr-txt { position: relative; }
+    @media(pointer:coarse) {
+      .app-header .cat-condensed button { min-height: 44px; }
+    }
+    @media(max-width:760px) {
+      .footer-trust .trust-items { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body data-loggedin-target="crypto-loading.html">
@@ -731,18 +755,33 @@
           <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
           <button type="button" class="hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
+
         <div class="utility">
+          <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
           <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
           </button>
+
+          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
           <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
           </button>
+
+          <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
           <div class="auth-btns">
             <button type="button" class="auth-btn" data-open="signin">Sign in</button>
             <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
           </div>
         </div>
+      </div>
+    <div class="cat-condensed" aria-hidden="true">
+        <ul>
+          <li aria-current="page"><a href="event-feed.html"><button type="button">Trending</button></a></li>
+          <li><a href="politics.html"><button type="button">Politics</button></a></li>
+          <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
+          <li><a href="culture.html"><button type="button">Culture</button></a></li>
+          <li><a href="general.html"><button type="button">General</button></a></li>
+        </ul>
       </div>
     </header>
     <!-- Second-level navigation: categories route to their own pages (links) -->
@@ -882,11 +921,11 @@
           <span>My Bets</span>
         </button></li>
         <li><button type="button" data-open="signin">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
           <span>Favorites</span>
         </button></li>
         <li><button type="button" data-open="signin" aria-label="Sign in">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3M14 4h5v16h-5"/></svg>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 12h10M16 8l4 4-4 4M14 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/></svg>
           <span>Sign in</span>
         </button></li>
       </ul>
@@ -897,9 +936,21 @@
 
         <!-- Trust strip (persistent funds-safety + resolution signal, WF reconcile) -->
         <div class="footer-trust">
-          <span class="trust-item">Your USDC is held 1:1, we never lend it.</span>
-          <span class="trust-item">Every event resolves against a public source.</span>
-          <span class="trust-item">1,284 events resolved</span>
+          <h2 class="trust-head">Built on trust, not on your balance</h2>
+          <div class="trust-items">
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/></svg>
+              <span class="tr-txt"><b>Your USDC is held 1:1</b><i>We never lend it.</i></span>
+            </span>
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
+              <span class="tr-txt"><b>Every event resolves against a public source</b><i>You can check it.</i></span>
+            </span>
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg>
+              <span class="tr-txt"><b>1,284 events resolved</b><i>On-chain, verifiable.</i></span>
+            </span>
+          </div>
         </div>
 
         <div class="footer-top">
@@ -1229,5 +1280,19 @@
       var dep = dlg('depositDialog');
       if (dep) dep.addEventListener('close', function () { if (target && signedIn) window.location.href = target; });
     })();
-  </script></body>
+  </script>
+  <script id="wf-catstrip">
+    // Reveals the condensed category strip in the sticky header once the full
+    // category bar has scrolled up under it. Ported from the painted twin; the
+    // selector drops .feed-inner, which is a plate the wireframe does not draw.
+    (function () {
+      var header = document.querySelector('.app-header');
+      var fullNav = document.querySelector('.cat-nav');
+      if (!header || !fullNav || !('IntersectionObserver' in window)) return;
+      new IntersectionObserver(function (e) {
+        header.classList.toggle('scrolled', !e[0].isIntersecting);
+      }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 }).observe(fullNav);
+    })();
+  </script>
+</body>
 </html>

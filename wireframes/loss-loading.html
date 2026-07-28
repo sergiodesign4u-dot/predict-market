@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wireframe - Loss Screen (state: loading)</title>
 <style>
+    /* a link takes the ink around it, never the browser's blue. */
+    a { color: inherit; }
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
        Base = mobile (1 column, bottom nav). Min-width expansions:
@@ -710,7 +712,7 @@
           <a href="active-bets.html"><button type="button" class="sheet-close" aria-label="Close">x</button></a>
         </div>
         <div class="sheet-body">
-          <p class="fine" style="font-weight:bold;font-size:13px;color:#222;margin:0;">Will the US government shut down before March 1, 2027?</p>
+          <p class="fine">Will the US government shut down before March 1, 2027?</p>
           <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
         </div>
       </section>
