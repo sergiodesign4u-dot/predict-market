@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The panel on a painted screen</title>
+<title>The panel in this vitrine</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
    A frame is a document of its own, so it does not inherit the attribute: this
    block runs in the frames too and they are told by postMessage, the same
@@ -41,26 +41,21 @@ push();});})();</script>
 <body>
 <div class="app-case">
 <aside class="sidebar" id="rmSidebar">
-    <a href="#" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>
-    <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual - screens</div></div>
+    <a href="#" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Painted screens</a>
+    <div class="sidebar-brand"><div class="sidebar-project-name">Design system</div></div>
     <button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>
-    <nav class="sidebar-nav" aria-label="Painted screens">
+    <nav class="sidebar-nav" aria-label="Design system">
       <a href="#" class="sidebar-page-link">Overview</a>
-      <div class="sidebar-divider active">Event Feed</div>
+      <div class="sidebar-divider active">Foundations</div>
+      <a href="#" class="sidebar-page-link">Tokens</a>
       <div class="sidebar-sub">
-        <div class="sidebar-divider sub">Logged in</div>
-        <a href="#" class="sidebar-sub-link active">success</a>
-        <a href="#" class="sidebar-sub-link">empty</a>
-        <a href="#" class="sidebar-sub-link">error</a>
-        <div class="sidebar-divider sub">Logged out</div>
-        <a href="#" class="sidebar-sub-link">success</a>
+        <a href="#" class="sidebar-sub-link">Colour</a>
+        <a href="#" class="sidebar-sub-link">Material</a>
       </div>
-      <div class="sidebar-divider">Event Detail</div>
-      <div class="sidebar-sub">
-        <a href="#" class="sidebar-sub-link">binary</a>
-        <a href="#" class="sidebar-sub-link">multi</a>
-      </div>
-      <div class="sidebar-note">All 14 families are colored. Overview lists them as chips.</div>
+      <a href="#" class="sidebar-page-link active">Course chrome</a>
+      <div class="sidebar-divider">Navigation and chrome</div>
+      <a href="#" class="sidebar-page-link">App header</a>
+      <div class="sidebar-note">The kit itself: <a href="#">kit.html</a>, <a href="#">self test</a></div>
     </nav>
   </aside>
 </div>
@@ -117,7 +112,7 @@ push();});})();</script>
     }
     try {
       parent.postMessage({
-        specimen: "course-chrome",
+        specimen: "course-chrome-system",
         height: height(),
         elements: document.body.getElementsByTagName("*").length,
         overflowX: doc.scrollWidth - doc.clientWidth,

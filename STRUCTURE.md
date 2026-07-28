@@ -33,6 +33,13 @@ their own hand-typed copy of it (the annotation pages, `concept/concept.html`, t
 archived stands under `concept/old/`) are kept honest by `_resync_roadmap.py` at the
 repo root, which rewrites only the lines that disagree so their local entries survive.
 
+The panel's LOOK is not theirs at all. It is one component, `components/course-chrome.css`,
+and the 28 course pages link it (with `fonts.css` and `tokens.css`) as the last nodes of
+`<head>`; `_course_chrome.py` at the repo root puts them there, deletes the copy each page
+used to carry, and holds the markup to the vocabulary the other two panels use. It replaced
+`_unify_sidebar.py`, which injected a violet override on top of five distinct hand-kept
+copies of the same rules. The three panels differ in what they list and in nothing else.
+
 Structure flows one way between the two screen trees: `wireframes/` decides it and
 `ui-visual/` follows. `wireframes/_generators/port_structure.py` carries a block back
 when the paint got there first, and **gate 18** in `ui-kit/_check_kit.py` fails the

@@ -42,6 +42,9 @@ UV = ROOT / "ui-visual"
 # same boot script instead of two copies that can drift.
 sys.path.insert(0, str(UV))
 from _theme_switch import BOOT as THEME_BOOT, BUTTON as THEME_BUTTON, button  # noqa: E402
+# the panel opens showing where you are, and the screens tree does the same
+# thing from the same string: two panels, one behaviour, one source.
+from _panel_reveal import BODY as REVEAL_BODY, CALL as REVEAL_CALL  # noqa: E402
 # the four documents are rows in the same registry as the components, and the
 # table that names them lives with the renderer, not here: two lists of one
 # fact is how coverage.md and the css headers came to disagree.
@@ -124,12 +127,17 @@ RUNTIME = {
 }
 
 
-def classes_in(pattern, strip_style=False):
+def classes_in(pattern, strip_style=False, strip_quoted=False):
     out = {}
     for f in sorted(glob.glob(pattern)):
         text = open(f, encoding="utf-8", errors="ignore").read()
         if strip_style:
             text = re.sub(r"<style[^>]*>.*?</style>", "", text, flags=re.S)
+        if strip_quoted:
+            # A stand page ends with the component's own css and every document
+            # quotes markup, so class="x" inside <pre> or <code> is a QUOTATION,
+            # not an element. Same rule three gates had to learn in step 8b.
+            text = re.sub(r"<(pre|code)\b[^>]*>.*?</\1>", "", text, flags=re.S)
         cs = set()
         for m in re.finditer(r'class="([^"]*)"', text):
             cs.update(m.group(1).split())
@@ -146,8 +154,13 @@ uv_classes = classes_in(str(UV / "*.html"), strip_style=True)
 # them. Counting it would inflate every screen count by one and, worse, would let
 # a class the index happens to use pass as "carried by a painted screen".
 uv_classes.pop("overview.html", None)
+# The specimens, the frozen kit, the composed shell AND the stand pages. The
+# stand pages were missing, so a class carried only by the vitrine's own chrome
+# fell through every bucket and was reported as a deletion candidate:
+# .theme-switch-inline is real markup on overview.html and was on that list.
 kit_used = flat(classes_in(str(KIT / "specimens" / "*.html"))) \
-    | flat(classes_in(str(KIT / "kit.html"))) | flat(classes_in(str(KIT / "shell.html")))
+    | flat(classes_in(str(KIT / "kit.html"))) | flat(classes_in(str(KIT / "shell.html"))) \
+    | flat(classes_in(str(KIT / "*.html"), strip_quoted=True))
 wf_used = flat(classes_in(str(ROOT / "wireframes" / "*.html"), strip_style=True))
 docs_used = flat(classes_in(str(ROOT / "*" / "*.html"), strip_style=True)) \
     - flat(uv_classes) - kit_used
@@ -173,7 +186,13 @@ declared = set()
 for path in COMP.glob("*.css"):
     if path.stem in ("index", "tokens"):
         continue
-    body = re.sub(r"url\([^)]*\)", "", path.read_text(encoding="utf-8"))
+    # A CLASS NAMED IN A COMMENT IS NOT A CLASS THE FILE STYLES. Only the url()
+    # was cut here, so a note explaining which class a rule replaced put that
+    # class straight back into the declared set, and coverage.md listed it as a
+    # deletion candidate that had already been deleted. Both .ck-note-link and
+    # .sidebar-sub-head came back that way in the same pass that removed them.
+    body = re.sub(r"/\*.*?\*/", " ", path.read_text(encoding="utf-8"), flags=re.S)
+    body = re.sub(r"url\([^)]*\)", "", body)
     declared.update(re.findall(r"\.(-?[_a-zA-Z][\w-]*)", body))
 
 
@@ -235,8 +254,9 @@ SUBJECTS = {}
 for _path in sorted(COMP.glob("*.css")):
     if _path.stem in ("index", "tokens"):
         continue
-    _css = _path.read_text(encoding="utf-8")
-    SUBJECTS[_path.stem] = subjects_of(_css[_css.index("*/") + 2:] if "*/" in _css else _css)
+    # subjects_of strips every comment itself, so the header slice this used to
+    # take is not needed and was never enough: it cut only the first block.
+    SUBJECTS[_path.stem] = subjects_of(_path.read_text(encoding="utf-8"))
 OWNER = {}
 for _c in {c for d in SUBJECTS.values() for c in d}:
     if _c in SHARED:
@@ -249,9 +269,18 @@ def parse_component(name):
     css = (COMP / (name + ".css")).read_text(encoding="utf-8")
     head = css[:css.index("*/") + 2] if "*/" in css else ""
     body = css[len(head):].strip()
-    roles = sorted({m for m in re.findall(r"var\((--[\w-]+)\)", body) if m in SEM})
-    classes = sorted({c for c in re.findall(r"\.(-?[_a-zA-Z][\w-]*)", re.sub(r"url\([^)]*\)", "", body))})
-    rules = len(re.findall(r"\{", body))
+    # WHAT THE FILE STYLES IS READ FROM ITS RULES, NOT FROM ITS PROSE. Only the
+    # header comment was cut, so every later comment was scanned as css: that is
+    # where .css and .color came from in the deletion-candidate table, harvested
+    # out of the words "components/index.css" and "Colour goes through a role",
+    # and it is how .ck-note-link and .sidebar-sub-head reappeared in the same
+    # pass that deleted them, listed as candidates for a deletion already done.
+    # body itself keeps its comments: it is also what the stand page prints.
+    prose_free = re.sub(r"/\*.*?\*/", " ", body, flags=re.S)
+    roles = sorted({m for m in re.findall(r"var\((--[\w-]+)\)", prose_free) if m in SEM})
+    classes = sorted({c for c in re.findall(r"\.(-?[_a-zA-Z][\w-]*)",
+                                            re.sub(r"url\([^)]*\)", "", prose_free))})
+    rules = len(re.findall(r"\{", prose_free))
     owned = sorted(c for c in SUBJECTS.get(name, {}) if OWNER.get(c) == name)
     screens = sorted([p for p, cs in uv_classes.items() if cs & set(owned)])
     states = []
@@ -476,6 +505,8 @@ for g, n, f, l in entries:
                % (json.dumps(g), json.dumps(n), json.dumps(f), json.dumps(l)))
 nav.append("""];
 
+%(REVEAL_BODY)s
+
 (function () {
   var host = document.querySelector('[data-kit-nav]');
   var current = document.body.getAttribute('data-kit-page') || '';
@@ -489,11 +520,22 @@ nav.append("""];
              // the switch acts on the page, not on the tree, so it sits above the
              // tree: the panel is 40 rows long and a control at its foot needs scrolling
              '<button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>',
-             '<nav class="sidebar-nav">',
+             '<nav class="sidebar-nav" aria-label="Design system">',
              '<a href="overview.html" class="sidebar-page-link' + (current === 'overview' ? ' active' : '') + '">Overview</a>'];
+    // The group you are IN is marked as well as the page you are ON. The tree is
+    // 45 rows in a panel that shows about 25, so on most pages the brass row is
+    // below the fold and the panel opens saying nothing about where you are. The
+    // screens tree has always marked the family; this is the same answer, and it
+    // is what makes the two panels one vocabulary rather than two.
+    var here = null;
+    window.KIT_NAV.forEach(function (e) { if (e.name === current) here = e.group; });
     var group = null;
     window.KIT_NAV.forEach(function (e) {
-      if (e.group !== group) { group = e.group; h.push('<div class="sidebar-divider">' + group + '</div>'); }
+      if (e.group !== group) {
+        group = e.group;
+        h.push('<div class="sidebar-divider' + (group === here ? ' active' : '') +
+               '">' + group + '</div>');
+      }
       h.push('<a href="' + e.file + '" class="sidebar-page-link' + (e.name === current ? ' active' : '') + '">' + e.label + '</a>');
       if (e.name === 'tokens') {
         h.push('<div class="sidebar-sub">');
@@ -507,13 +549,16 @@ nav.append("""];
     // reasoning and the components are the thing. They are pages of the vitrine
     // like any other, so they are rows in the same tree: a link that leaves for
     // a .md file is a link out of the browser.
-    h.push('<div class="sidebar-divider">The reasoning</div>');
+    var inDocs = window.KIT_DOCS.some(function (d) { return d.name === current; });
+    h.push('<div class="sidebar-divider' + (inDocs ? ' active' : '') + '">The reasoning</div>');
     window.KIT_DOCS.forEach(function (d) {
       h.push('<a href="' + d.file + '" class="sidebar-page-link' + (d.name === current ? ' active' : '') + '">' + d.label + '</a>');
     });
     h.push('</nav>');
-    h.push('<div class="sidebar-note">The kit itself: <a class="ck-note-link" href="kit.html">kit.html</a>, <a class="ck-note-link" href="shell.html">shell.html</a>, <a class="ck-note-link" href="selftest.html">self test</a></div>');
+    h.push('<div class="sidebar-note">The kit itself: <a href="kit.html">kit.html</a>, <a href="shell.html">shell.html</a>, <a href="selftest.html">self test</a></div>');
     host.innerHTML = h.join('');
+    // the tree exists only now, so the reveal happens here and not on load
+    %(REVEAL_CALL)s
   }
   var cards = document.getElementById('kitCards');
   if (cards) {
@@ -551,7 +596,7 @@ nav.append("""];
     tg.addEventListener('click', o); ov.addEventListener('click', c);
   }
 })();
-""")
+""" % {"REVEAL_BODY": REVEAL_BODY, "REVEAL_CALL": REVEAL_CALL})
 (KIT / "_nav.js").write_text("\n".join(nav), encoding="utf-8")
 
 # ------------------------------------------------------------------ frames ---

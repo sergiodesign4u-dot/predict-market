@@ -530,9 +530,28 @@
  {
   "id": "course-chrome",
   "component": "course-chrome",
-  "title": "Roadmap sidebar",
+  "title": "The panel on a painted screen",
   "width": 260,
-  "source": "specimens.extra.html / extra / Roadmap sidebar",
+  "note": "A family opens nothing, so it is a label; a state is the row that navigates. It was the other way round until the vocabulary was made one: the family was an <a> with no href, drawn heavier than the pages under it.",
+  "source": "specimens.extra.html / extra / Side panel: painted screens",
+  "rewrites": 0
+ },
+ {
+  "id": "course-chrome-system",
+  "component": "course-chrome",
+  "title": "The panel in this vitrine",
+  "width": 260,
+  "note": "Same three levels, same classes. A group label takes .active for the group you are in; the brass row is the page you are on.",
+  "source": "specimens.extra.html / extra / Side panel: the system",
+  "rewrites": 0
+ },
+ {
+  "id": "course-chrome-roadmap",
+  "component": "course-chrome",
+  "title": "The panel on a course page, with the planned rows",
+  "width": 260,
+  "note": "The only variant with .planned, and the four rules that draw its Soon and Next badges had no markup in any tree this stylesheet reaches, because the 28 course pages carry their own inline copy of the panel instead.",
+  "source": "specimens.extra.html / extra / Side panel: the course roadmap",
   "rewrites": 0
  },
  {

@@ -845,6 +845,82 @@ record in `ui-kit/docs/architecture.md`, "What step 8b settled".
   dialog against shared, matched by class, **0 differences that paint**. Gates 19 and 21 tested by
   injecting the drift they exist to catch. **Gates: 21.**
 
+### Step 9 (done, 2026-07-28): one panel, and the region no gate could see into
+
+Started as a question about looks, why the two side panels look and work differently, and the answer
+was not in the stylesheet: they are painted by one file and share every class name. **Twenty
+findings, all closed.** Full record in `ui-kit/docs/architecture.md`, "What step 9 settled".
+
+- **A gate that masks a region cannot see into it.** Gate 1 masks the `<aside>` when it asks whether
+  a painted screen moved, correctly, because the panel is chrome and not the screen, and that made
+  the panel the one thing nothing read. **Forty screens marked the wrong page as "you are here":**
+  every category page and every feed state said `Event Feed -> success`. The cause is the shape this
+  repo keeps meeting, `_apply_theme.py` and `_gen_category.py` build a screen from the finished
+  Event Feed and swap the regions that differ, so **a new screen arrives carrying the shell's idea
+  of where it is** and nobody re-ran `_resync_sidebar.py` after step 8. **Gate 22** is four checks:
+  every screen marks its own file, every panel is what its generator would write today, every stand
+  page names itself against the registry, and a page off the tree is still linked.
+- **The thing that navigates was drawn quieter than the thing that does not.** A family name was a
+  `.sidebar-page-link` with no href (13px, hover highlight, pointer cursor, no destination, 14 per
+  screen on 105 screens) and the screen it named was a quiet nested row; in the vitrine those two
+  classes mean the opposite. One vocabulary now: a **label** names a run of rows and opens nothing
+  (`.sidebar-divider`, `.sub` when nested; `.sidebar-sub-head` deleted, and it had been drawn HEAVIER
+  than the label above it, so depth read backwards), a **row** that opens a page is a link, the page
+  you are **on** is `.active` at either level in one colour, and the group you are **in** is marked
+  on its label, which the vitrine did not have at all.
+- **Quiet is a colour, not an opacity.** Both labels, the note and a planned stage were dimmed with
+  `opacity`, and opacity fades text INTO its background: `--chrome-muted` is 5.03:1 on the panel and
+  the same value at `opacity:.55` is **2.37:1**. Five places under AA for as long as the panel has
+  existed, and **no sweep this repo has run could see them, because they all read
+  `getComputedStyle().color`, which does not carry opacity.** The step-6b lesson one level deeper: a
+  checker that reads the computed colour is still not reading the rendered one.
+- **One behaviour, two machines, one string.** Marking the row and never showing it is most of the
+  way to not marking it (4066px of tree in a 900px panel; on `toasts.html` the brass row sat 3813px
+  down). Both panels reveal it on load from one string in `ui-visual/_panel_reveal.py`.
+  **`scrollTop`, not `scrollIntoView`**: the panel is `position:fixed` and asking an element inside a
+  fixed box to scroll itself into view lets the browser scroll THE PAGE. The script lives inside the
+  `<aside>`, which is the span gate 1 masks, so a panel can gain behaviour without 105 screens
+  reading as product changes.
+- **One component, seven descriptions.** The 28 course pages never linked the system file: 41 to 43
+  rules each in **five distinct copies**, plus a sixth block injected by `_unify_sidebar.py` to force
+  a violet palette. That is also why the four `.planned` rules had no markup in any tree
+  `course-chrome.css` reaches: **the only panel with a planned row was the one it did not paint.**
+  `_course_chrome.py` deletes the copies and the override, renames the drawer to the system's classes
+  (its script addresses the elements by id, so only the paint moves) and links `fonts.css`,
+  `tokens.css`, `course-chrome.css` last in `<head>`. `_unify_sidebar.py` deleted. Two things
+  checked and not assumed: the course pages declare 14 variables against tokens.css's 348 and the
+  sets **do not intersect at all**, so linking tokens cannot repaint their content; and the z ladder
+  had to move together, because their 199/200/201 against the system's 8/9/10 would have opened the
+  panel behind its own scrim.
+- **A component that changes with the page it stands on is not a component**, so `.sidebar` names its
+  own font instead of inheriting Inter on a course page.
+- **A comment is not a rule, and a quotation is not an element.** Writing those comments broke the
+  vitrine's own coverage table and exposed two defects in it: `parse_component` cut only the header
+  comment, so `.css` and `.color` sat in the deletion-candidate list harvested out of the words
+  "components/index.css" and "Colour goes through a role", and the kit bucket read the specimens and
+  `kit.html` but not the 46 stand pages, so a class carried only by the vitrine's chrome fell through
+  every bucket. **Deletion candidates: 28 to 2**, on a list step 7 acted on.
+- Also: `.ck-note-link` moved from `ui-kit/_page.css` into `.sidebar-note a`, because a link in the
+  note is the panel's own and it had been rendering in the browser's blue everywhere the vitrine's
+  stylesheet is not loaded; a planned stage is a `<span>`; the tree is a named `<nav>` in all three
+  panels; the note's mention of ui-kit is a link, so the way in exists in both directions, with no
+  new copy written; `resync_sidebar.py` stops writing panel css, which it had been inserting into the
+  page's own sheet reading `var(--accent)`, that page's violet; and `mark_group` lives in one file
+  and is imported by the other, because for one turn the two tools each had their own idea of the
+  mark and undid each other for ever.
+- **One checker's own defect, recorded:** the light-theme sweep reported 105 failures at 1.12:1 and
+  they were the `<script>` the reveal added inside the `<aside>`, counted as text. On graphite a
+  script inherits light ink and passes; the moment the ground inverts it reads dark on dark. **A
+  checker with a missing guard fails in one theme and looks exactly like a finding.**
+- **Verified:** the panel in both trees and both themes, 308 loads, **18028 text pairs, 0 below AA**
+  with opacity composited, 0 browser-blue, 0 overflow, 0 page errors, on a sweep calibrated first
+  against a pair whose answer is known; the reveal on 153 panels at two viewport heights, **0 with
+  the mark out of view, 0 documents scrolled**; the course pages, **795 text pairs, 0 below AA, 0
+  dead anchors, 0 violet left**, one shape on all 28; their own content compared element by element
+  against a worktree of HEAD, **28 of 28 identical**; **348 pages, 35773 internal links, 0 broken**.
+  Gate 22 tested by injecting each of its four kinds of drift; all six generators reach a fixed point
+  together over three rounds. **Gates: 22.**
+
 ### The rule for a change, from here on
 
 Replaces the Stage-07 wording that pointed at `ui-kit/kit.css` and `ui-kit/kit.html`; neither has
@@ -915,6 +991,20 @@ that role any more.
   wireframe owns which state it is IN (auth variant, bottom-nav active slot, empty notifications).
   Reconcile in that order, `ui-visual/_reconcile_chrome.py` then
   `wireframes/_generators/port_chrome.py`, or a port carries the wrong answer into 104 files.
+- **The side panel is one component with one vocabulary, in all three trees.** A **label** names a run
+  of rows and opens nothing (`.sidebar-divider`, `.sub` when nested); a **row** that opens a page is a
+  link (`.sidebar-page-link`, `.sidebar-sub-link` when nested under one); the page you are **on** is
+  `.active` at whichever level it sits and the group you are **in** is `.active` on its label. A row
+  that goes nowhere is not an `<a>`. The tree is a named `<nav>`. No page describes the panel in its
+  own stylesheet: `ui-visual/` and `ui-kit/` reach it through `components/index.css`, the 28 course
+  pages link `fonts.css` + `tokens.css` + `course-chrome.css` last in `<head>` (`_course_chrome.py`),
+  and a panel's behaviour is one string in `ui-visual/_panel_reveal.py` emitted two ways.
+- **Quiet is a colour, not an opacity.** `opacity` fades text into its background and no sweep that
+  reads `getComputedStyle().color` can see it: `--chrome-muted` is 5.03:1 on the panel and 2.37:1 at
+  `opacity:.55`. Depth is a colour role, so the value being chosen is the value being checked.
+- **Gate 1 masks the `<aside>`, so nothing else reads it.** Gate 22 does: every screen's panel marks
+  its own file, and every panel generator is at its fixed point, because a generator that copies a
+  shell copies the shell's idea of where it is.
 - **A checker that reads the source does not read the page.** "0 non-neutral hex in the wireframes"
   was true while 992 links rendered in the browser's blue, and "the chart is ported" was true while
   it drew as a black rectangle, because an SVG with no `fill` is black. **A missing value is a

@@ -112,18 +112,25 @@ PAGES = {
     "voice/voice.html": "voice",
 }
 
+sys.path.insert(0, ROOT)
+from _course_chrome import mark_group  # noqa: E402
+
 ASIDE_RE = re.compile(r'<aside class="sidebar" id="sidebar">.*?</aside>', re.DOTALL)
 SUB_RE = re.compile(r'\s*<div class="sidebar-sub">.*?</div>', re.DOTALL)
-PLANNED_CSS_RE = re.compile(r"\.sidebar-page-link\.planned::after\s*\{.*?\}", re.DOTALL)
-NEXT_CSS = (
-    "\n  .sidebar-page-link.planned.next { opacity: 1; }"
-    "\n  .sidebar-page-link.planned.next::after { content: 'Next'; color: var(--accent); border-color: var(--accent); }"
-)
 
 
 def render_item(key, label, href, planned, active_key, subs_block):
-    """One top-level or in-group link. Active and planned items carry no href
-    (matches the existing convention); the active item gets its subs re-inserted."""
+    """One top-level or in-group row, and its tag says whether it goes anywhere.
+
+    A PLANNED STAGE IS NOT A LINK, so it is not an <a>. It used to be an anchor
+    with no href, which is a link element with nothing to open; the badge said
+    Soon and the markup said link. A row that goes nowhere is a <span>, and the
+    styling never depended on the tag.
+
+    THE ROW YOU ARE ON IS A LINK LIKE EVERY OTHER ROW, which is what the vitrine
+    has always done: an active row with no href is a hole in the tree at exactly
+    the place a person is standing.
+    """
     is_active = key == active_key
     cls = "sidebar-page-link"
     if is_active:
@@ -132,8 +139,8 @@ def render_item(key, label, href, planned, active_key, subs_block):
         cls += " planned"
     if key == NEXT_KEY:
         cls += " next"
-    if planned or is_active:
-        out = ['    <a class="{cls}">{label}</a>'.format(cls=cls, label=label)]
+    if planned:
+        out = ['    <span class="{cls}">{label}</span>'.format(cls=cls, label=label)]
     else:
         out = ['    <a href="{pfx}{href}" class="{cls}">{label}</a>'.format(
             pfx=PREFIX, href=href, cls=cls, label=label)]
@@ -168,7 +175,7 @@ def render_aside(active_key, subs_block):
         '  <div class="sidebar-brand">',
         '    <div class="sidebar-project-name">Prediction Market</div>',
         '  </div>',
-        '  <div class="sidebar-nav">',
+        '  <nav class="sidebar-nav" aria-label="Course roadmap">',
     ]
     for entry in LAYOUT:
         if entry[0] == "divider":
@@ -178,20 +185,25 @@ def render_aside(active_key, subs_block):
         else:
             _, key, label, href, planned = entry
             lines.extend(render_item(key, label, href, planned, active_key, subs_block))
-    lines.append('  </div>')
+    lines.append('  </nav>')
     lines.append('</aside>')
-    return "\n".join(lines)
+    # The group you are in is marked on its label, by the one function that
+    # decides it. _course_chrome.py rewrites the sixteen course pages this
+    # generator does not manage, and a second idea of the same mark would leave
+    # the two tools undoing each other for ever.
+    return mark_group("\n".join(lines))
 
 
 def ensure_next_css(html):
-    """Idempotently add the .next badge CSS right after the .planned::after rule
-    (handles both the single-line and multi-line CSS formats in the root pages)."""
-    if ".sidebar-page-link.planned.next::after" in html:
-        return html, False
-    m = PLANNED_CSS_RE.search(html)
-    if not m:
-        return html, False
-    return html[:m.end()] + NEXT_CSS + html[m.end():], True
+    """Nothing. The panel is painted by components/course-chrome.css, which every
+    course page links since _course_chrome.py ran, so this generator writes
+    markup and no style at all.
+
+    It used to insert the .next badge rule into the page's own stylesheet. Two
+    generators writing into one sheet is the shape this repo has paid for twice,
+    and this one would have written a rule reading var(--accent), which on a
+    course page is that page's own violet."""
+    return html, False
 
 
 def process(rel_path, active_key, write=True):

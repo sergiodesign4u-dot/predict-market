@@ -18,8 +18,17 @@ appears in the tree and on the index; the script is idempotent (like
 resync_sidebar.py / fixpack.py).
 
 The block it rewrites is <aside class="sidebar" id="rmSidebar"> ... </aside>.
-Styling lives in _theme.css (.sidebar-* + .sidebar-back / .sidebar-sub-head /
-.sidebar-note). The rm-toggle / rm-overlay drawer + desktop dock are unchanged.
+Styling lives in components/course-chrome.css, which paints this panel and the
+vitrine's. The rm-toggle / rm-overlay drawer + desktop dock are unchanged.
+
+ONE VOCABULARY WITH THE VITRINE'S PANEL. Both are drawn by that one file, and
+until now they used its classes for different things: here a family name was a
+.sidebar-page-link with no href, which is a row that looks like a link, takes
+the hover highlight and the pointer cursor, and goes nowhere, while the screen
+it names was a quiet nested row. So the thing that navigated was drawn quieter
+than the thing that did not. A family opens nothing, so it is a label now, the
+same class the vitrine puts over a group of components; a state page is the row
+that navigates; and the page you are on is brass at whichever level it sits.
 
 Usage:
     python3 _resync_sidebar.py          # rewrite all ui-visual pages
@@ -30,6 +39,7 @@ import re
 import sys
 
 from _theme_switch import BUTTON                        # the theme switch markup
+from _panel_reveal import SCRIPT as REVEAL              # opens showing where you are
 
 HERE = os.path.dirname(os.path.abspath(__file__))       # ui-visual/
 BACK_HREF = "../research/research.html"
@@ -270,24 +280,35 @@ def render_aside(active_file):
             href=BACK_HREF, label=BACK_LABEL),
         '    <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual - screens</div></div>',
         # the switch acts on the screen, not on the tree, so it sits above the
-        # tree: the tree is 77 rows long and a control at its foot needs scrolling
+        # tree: the tree is 105 rows long and a control at its foot needs scrolling
         '    ' + BUTTON,
-        '    <div class="sidebar-nav">',
+        # A NAVIGATION IS A LANDMARK, and it was a <div> here and a <nav> in the
+        # vitrine, so one of the two panels was a navigation a screen reader
+        # could jump to and the other was a stack of links. Named, because a
+        # painted screen has three navigations on it (this tree, the header, the
+        # bottom nav) and an unnamed one is announced as "navigation".
+        '    <nav class="sidebar-nav" aria-label="Painted screens">',
         '      <a href="{href}" class="sidebar-page-link{active}">{label}</a>'.format(
             href=INDEX_FILE, label=INDEX_LABEL,
             active=" active" if active_file == INDEX_FILE else ""),
     ]
     for fam in FAMILIES:
+        # The "planned" branch that stood here rendered a family as a muted row
+        # with a Soon badge. Every family has been colored since Stage 08, so it
+        # had not run in two stages, and it was the only place left rendering the
+        # old vocabulary. A planned ROW belongs to the course roadmap panel, which
+        # lists stages; a screen family is built or it is not in this tree.
         if not fam.get("built"):
-            L.append('      <a class="sidebar-page-link planned">{}</a>'.format(fam["label"]))
-            continue
+            raise SystemExit("_resync_sidebar: family %r is not built. This tree "
+                             "lists screens that exist; add the pages first, or "
+                             "take the family out of FAMILIES." % fam["label"])
         fam_active = active_file in {r[1] for r in fam["rows"] if r[0] == "state"}
-        cls = "sidebar-page-link active" if fam_active else "sidebar-page-link"
-        L.append('      <a class="{cls}">{label}</a>'.format(cls=cls, label=fam["label"]))
+        cls = "sidebar-divider active" if fam_active else "sidebar-divider"
+        L.append('      <div class="{cls}">{label}</div>'.format(cls=cls, label=fam["label"]))
         L.append('      <div class="sidebar-sub">')
         for row in fam["rows"]:
             if row[0] == "head":
-                L.append('        <div class="sidebar-sub-head">{}</div>'.format(row[1]))
+                L.append('        <div class="sidebar-divider sub">{}</div>'.format(row[1]))
             else:
                 _, fpath, label = row
                 acls = "sidebar-sub-link active" if fpath == active_file else "sidebar-sub-link"
@@ -297,10 +318,18 @@ def render_aside(active_file):
     # The note used to promise that more families would join the tree. They all
     # have, so it now points at the two things this tree cannot show: the same
     # pages laid out as chips, and the system they are painted with.
+    # RECIPROCITY. The vitrine's back arrow leaves for these screens and the
+    # note here named ui-kit in plain text, so the way in existed in one
+    # direction only: a person on a painted screen could read that a design
+    # system paints it and had no way to open it. Same sentence, one live link,
+    # no new copy, and the note's link colour now comes from the component
+    # itself, so it is brass in both trees rather than the browser's blue.
     L.append('      <div class="sidebar-note">All {n} families are colored. '
              'Overview lists them as chips; the system they are painted with is in '
-             'ui-kit.</div>'.format(n=len([f for f in FAMILIES if f.get("built")])))
-    L.append('    </div>')
+             '<a href="../ui-kit/overview.html">ui-kit</a>.</div>'.format(
+                 n=len([f for f in FAMILIES if f.get("built")])))
+    L.append('    </nav>')
+    L.append('    ' + REVEAL)
     L.append('  </aside>')
     return "\n".join(L)
 

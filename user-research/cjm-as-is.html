@@ -35,151 +35,12 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── SIDEBAR ─────────────────────────────────────────── */
-  .sidebar {
-    position: fixed;
-    top: 0; left: 0;
-    width: 220px;
-    height: 100vh;
-    background: var(--surface);
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    scrollbar-width: none;
-    z-index: 200;
-    transform: translateX(-100%);
-    transition: transform .25s cubic-bezier(.4,0,.2,1);
-  }
-  .sidebar.open { transform: translateX(0); }
-  .sidebar::-webkit-scrollbar { display: none; }
-
-  .sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.5);
-    z-index: 199;
-    backdrop-filter: blur(2px);
-  }
-  .sidebar-overlay.open { display: block; }
-
-  .menu-toggle {
-    position: fixed;
-    top: 12px; left: 12px;
-    z-index: 201;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    width: 36px; height: 36px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    cursor: pointer;
-    padding: 0;
-  }
-  .menu-toggle span {
-    display: block;
-    width: 15px; height: 1.5px;
-    background: var(--text);
-    border-radius: 1px;
-  }
-
-  .sidebar-brand {
-    padding: 20px 16px 16px;
-    border-bottom: 1px solid var(--border);
-    flex-shrink: 0;
-  }
-  .sidebar-project-name {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    line-height: 1.4;
-  }
-
-  .sidebar-nav { padding: 12px 0; flex: 1; }
-
-  .sidebar-page-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    text-decoration: none;
-    padding: 7px 16px;
-    transition: background .15s;
-    cursor: pointer;
-    user-select: none;
-  }
-  .sidebar-page-link:hover:not(.planned) { background: rgba(255,255,255,.04); }
-  .sidebar-page-link.active { color: var(--accent); }
-  .sidebar-page-link.planned {
-    color: var(--muted);
-    cursor: default;
-    opacity: .6;
-  }
-  .sidebar-page-link.planned::after {
-    content: 'Soon';
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .07em;
-    text-transform: uppercase;
-    background: rgba(255,255,255,.04);
-    color: var(--muted);
-    padding: 2px 5px;
-    border-radius: 3px;
-    border: 1px solid var(--border);
-  }
-  .sidebar-page-link.planned.next { opacity: 1; }
-  .sidebar-page-link.planned.next::after { content: 'Next'; color: var(--accent); border-color: var(--accent); }
-
-  .sidebar-sub { padding: 2px 0 8px; }
-
-  .sidebar-sub-link {
-    display: block;
-    font-size: 12px;
-    color: var(--muted);
-    text-decoration: none;
-    padding: 5px 16px 5px 28px;
-    transition: color .15s;
-    position: relative;
-  }
-  .sidebar-sub-link:hover { color: var(--text); }
-  .sidebar-sub-link.active { color: var(--text); }
-  .sidebar-sub-link.active::before {
-    content: '';
-    position: absolute;
-    left: 17px;
-    top: 50%; transform: translateY(-50%);
-    width: 3px; height: 3px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-
-  .sidebar-divider {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding: 16px 16px 6px;
-    opacity: .45;
-  }
-
   /* ── LAYOUT ─────────────────────────────────────────── */
   main {
     padding: 60px 20px 80px;
   }
 
   @media (min-width: 860px) {
-    .sidebar { transform: translateX(0); transition: none; }
-    .sidebar-overlay { display: none !important; }
-    .menu-toggle { display: none; }
     main { margin-left: 220px; padding: 48px 48px 120px; }
   }
 
@@ -759,47 +620,28 @@
     border: 1px solid rgba(255,95,95,.25);
   }
 </style>
-<style>
-  /* unified-sidebar (Signal) - injected by _unify_sidebar.py; keep colours in sync with concept/directions.html + components/course-chrome.css --rm-* */
-  .sidebar{background:#14121f;border-right-color:#2a2440}
-  .sidebar-brand{border-bottom-color:#2a2440}
-  .sidebar-project-name{color:#9b7bff}
-  .sidebar-page-link{color:#d7d3e6}
-  .sidebar-page-link:hover:not(.planned){background:rgba(255,255,255,.04)}
-  .sidebar-page-link.active{color:#9b7bff}
-  .sidebar-page-link.planned{color:#8b86a3}
-  .sidebar-page-link.planned::after{color:#8b86a3;border-color:#2a2440;background:rgba(255,255,255,.04)}
-  .sidebar-page-link.planned.next::after{color:#9b7bff;border-color:#8b5cf6}
-  .sidebar-divider{color:#8b86a3}
-  .sidebar-sub-link{color:#8b86a3}
-  .sidebar-sub-link:hover{color:#d7d3e6}
-  .sidebar-sub-link.active{color:#d7d3e6}
-  .sidebar-sub-link.active::before{background:#9b7bff}
-  .sidebar-back{color:#8b86a3;border-bottom-color:#2a2440}
-  .sidebar-back:hover{color:#9b7bff}
-  .sidebar-sub-head{color:#8b86a3}
-  .sidebar-note{color:#8b86a3}
-  .menu-toggle{background:#151322;border-color:#2a2440}
-  .menu-toggle span{background:#e8eaf0}
-</style>
+  <!-- course chrome: the panel is a component, so the page loads it. Built by _course_chrome.py. -->
+  <link rel="stylesheet" href="../components/fonts.css">
+  <link rel="stylesheet" href="../components/tokens.css">
+  <link rel="stylesheet" href="../components/course-chrome.css">
 </head>
 <body>
 
-<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+<button class="rm-toggle" id="menuToggle" aria-label="Open navigation">
   <span></span><span></span><span></span>
 </button>
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="rm-overlay" id="sidebarOverlay"></div>
 
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-brand">
     <div class="sidebar-project-name">Prediction Market</div>
   </div>
-  <div class="sidebar-nav">
+  <nav class="sidebar-nav" aria-label="Course roadmap">
     <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
-    <div class="sidebar-divider">User Research</div>
+    <div class="sidebar-divider active">User Research</div>
     <a href="../user-research/personas.html" class="sidebar-page-link">Personas</a>
     <a href="../user-research/jtbd.html" class="sidebar-page-link">JTBD</a>
-    <a class="sidebar-page-link active">CJM As-Is</a>
+    <a href="../user-research/cjm-as-is.html" class="sidebar-page-link active">CJM As-Is</a>
     <div class="sidebar-sub">
       <a href="#focus" class="sidebar-sub-link">Focus</a>
       <a href="#path" class="sidebar-sub-link">As-Is path</a>
@@ -816,11 +658,11 @@
     <a href="../concept/concept.html" class="sidebar-page-link">Concept</a>
     <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
     <a href="../ui-kit/overview.html" class="sidebar-page-link">Tokens + Components</a>
-    <a class="sidebar-page-link planned next">Design System</a>
-    <a class="sidebar-page-link planned">Responsive</a>
-    <a class="sidebar-page-link planned">Animation</a>
-    <a class="sidebar-page-link planned">Handoff</a>
-  </div>
+    <span class="sidebar-page-link planned next">Design System</span>
+    <span class="sidebar-page-link planned">Responsive</span>
+    <span class="sidebar-page-link planned">Animation</span>
+    <span class="sidebar-page-link planned">Handoff</span>
+  </nav>
 </aside>
 
 <main>

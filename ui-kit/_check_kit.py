@@ -3,7 +3,7 @@
 
     python3 ui-kit/_check_kit.py
 
-Twenty-one checks, each one a defect that actually happened at least once:
+Twenty-two checks, each one a defect that actually happened at least once:
 
   1. the product did not move        components/ and wireframes/ clean, and a
                                      ui-visual/ page differs only in its sidebar
@@ -37,6 +37,12 @@ Twenty-one checks, each one a defect that actually happened at least once:
                                      markup, not two
  20. no external font host           the faces are in this repo, every page reaches
                                      them, and every file an @font-face names exists
+ 21. every document has a page       a .md in ui-kit/docs/ is rendered, and current,
+                                     and nothing links a raw one
+ 22. the panel says where you are    every screen's side panel marks its own file,
+                                     and every panel is at its generator's fixed
+                                     point, because a generator that copies a shell
+                                     copies the shell's idea of where it is
 
 The live half of the verification is ui-kit/selftest.html, which loads every
 specimen in a frame and asks it whether it rendered. No em dash.
@@ -904,6 +910,84 @@ raw = [str(p.relative_to(ROOT))
        for p in sorted((ROOT / tree).rglob("*.html"))
        if "old" not in p.parts and RAW_MD.search(p.read_text(encoding="utf-8"))]
 check("21 no link into a raw .md", not raw, "%d: %s" % (len(raw), ", ".join(raw[:3])))
+
+# 22 ------------------------------------------- the panel says where you are --
+# The side panel is the one piece of chrome gate 1 masks, on the argument that it
+# is not product. So it was the one piece nothing read, and it had been lying on
+# forty screens: every category page and every feed state said "Event Feed ->
+# success", which is a different file.
+#
+# The cause is the shape this repo keeps meeting. _apply_theme.py and
+# _gen_category.py build a screen by starting from the finished Event Feed and
+# swapping the regions that differ, and the panel is not one of those regions, so
+# a new screen arrives carrying the SHELL'S idea of where it is. That is correct
+# right up to the moment nobody re-runs _resync_sidebar.py, and after step 8
+# nobody did.
+#
+# Two checks, because they can fail apart. The first is the claim a person can
+# see: the row marked "you are here" is this page. The second is the claim about
+# the tooling: the panel on disk is what the generator would write today, so a
+# family added to FAMILIES and never re-rendered fails here rather than in a
+# screenshot. It is a re-render in memory, the way gate 21 reads a document.
+sys.path.insert(0, str(UVIS))
+import _resync_sidebar                                               # noqa: E402
+
+ASIDE = re.compile(r'<aside class="sidebar" id="rmSidebar">.*?</aside>', re.DOTALL)
+ACTIVE_LEAF = re.compile(r'<a href="([^"]+)" class="sidebar-sub-link active"')
+
+lost = []
+for page in sorted(UVIS.glob("*.html")):
+    src = page.read_text(encoding="utf-8")
+    m = ASIDE.search(src)
+    if not m:
+        continue
+    marked = ACTIVE_LEAF.findall(m.group(0))
+    if page.name == _resync_sidebar.INDEX_FILE:
+        # the index is its own row above the families, so it marks no leaf
+        want = []
+    else:
+        want = [page.name]
+    if marked != want:
+        lost.append("%s marks %s" % (page.name, ", ".join(marked) or "nothing"))
+check("22 every screen marks its own file", not lost,
+      "%d: %s" % (len(lost), "; ".join(lost[:3])))
+
+drifted = [f for f in sorted(_resync_sidebar.STATE_FILES | {_resync_sidebar.INDEX_FILE})
+           if _resync_sidebar.process(f, write=False) == "updated"]
+check("22 the screen panel is at its fixed point", not drifted,
+      "%d: %s" % (len(drifted), ", ".join(drifted[:3])))
+
+# The vitrine's panel is rendered at run time, so it cannot drift the same way:
+# what it can do is mark a row that is not this page, because the page names
+# itself in data-kit-page and _nav.js matches that against the registry. A page
+# whose attribute is missing, misspelled or left over from the file it was copied
+# from marks nothing, or marks a sibling.
+#
+# A page outside the registry is not a defect by itself: shell.html composes the
+# specimens and kit.html is frozen provenance, and neither is a component. What
+# would be a defect is a page outside the tree that nothing links, so the second
+# half asks the note, which is the only other way in.
+NAVJS = (KIT / "_nav.js").read_text(encoding="utf-8")
+REG = dict(re.findall(r'"?name"?:\s*"([^"]+)",\s*"?file"?:\s*"([^"]+)"', NAVJS))
+REG["overview"] = "overview.html"
+NOTED = set(re.findall(r'href="([^"]+)"', re.search(r'sidebar-note.*', NAVJS).group(0)))
+
+misnamed, unreachable = [], []
+for page in sorted(KIT.glob("*.html")):
+    src = page.read_text(encoding="utf-8")
+    if "data-kit-nav" not in src:
+        continue
+    m = re.search(r'<body[^>]*\bdata-kit-page="([^"]*)"', src)
+    name = m.group(1) if m else ""
+    if name in REG:
+        if REG[name] != page.name:
+            misnamed.append("%s says %s, which is %s" % (page.name, name, REG[name]))
+    elif page.name not in NOTED:
+        unreachable.append("%s (says %s)" % (page.name, name or "nothing"))
+check("22 every stand page names itself", not misnamed,
+      "%d: %s" % (len(misnamed), "; ".join(misnamed[:3])))
+check("22 a page off the tree is still linked", not unreachable,
+      "%d: %s" % (len(unreachable), "; ".join(unreachable[:3])))
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:

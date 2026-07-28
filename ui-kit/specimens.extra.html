@@ -87,22 +87,82 @@
     </div>
   </dialog>
 
-  <div class="kit-subh">Roadmap sidebar</div>
+  <!--
+    THREE PANELS, because this component draws three and the stand used to draw
+    one, badly: a shape neither panel has, with a family row that was an <a> with
+    no href, no .sidebar-divider anywhere, no theme switch, no note, and no
+    .planned. A vitrine that documents one of several mechanisms describes the
+    smallest one, which is what step 7c found about the icons.
+
+    They are three specimens and not one block, because .sidebar is fixed to the
+    left edge: two of them in one document would sit on top of each other, and
+    laying them out side by side would need a stand rule that stops the panel
+    being what it ships as.
+
+    One vocabulary across all three. A label names a run of rows and opens
+    nothing (.sidebar-divider, .sub when it is nested); a row that opens a page
+    is a link (.sidebar-page-link, .sidebar-sub-link when it is nested under
+    one); the page you are on is .active at whichever level it sits; the group
+    you are in is .active on its label.
+  -->
+  <div class="kit-subh">Side panel: painted screens</div>
   <aside class="sidebar" id="rmSidebar">
     <a href="#" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>
     <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual - screens</div></div>
-    <div class="sidebar-nav">
-      <a class="sidebar-page-link active">Event Feed</a>
+    <button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>
+    <nav class="sidebar-nav" aria-label="Painted screens">
+      <a href="#" class="sidebar-page-link">Overview</a>
+      <div class="sidebar-divider active">Event Feed</div>
       <div class="sidebar-sub">
-        <div class="sidebar-sub-head">Logged in</div>
+        <div class="sidebar-divider sub">Logged in</div>
         <a href="#" class="sidebar-sub-link active">success</a>
         <a href="#" class="sidebar-sub-link">empty</a>
         <a href="#" class="sidebar-sub-link">error</a>
-        <a href="#" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-divider sub">Logged out</div>
+        <a href="#" class="sidebar-sub-link">success</a>
       </div>
-      <a href="#" class="sidebar-page-link">Event Detail</a>
-      <a href="#" class="sidebar-page-link">Active Bets</a>
-    </div>
+      <div class="sidebar-divider">Event Detail</div>
+      <div class="sidebar-sub">
+        <a href="#" class="sidebar-sub-link">binary</a>
+        <a href="#" class="sidebar-sub-link">multi</a>
+      </div>
+      <div class="sidebar-note">All 14 families are colored. Overview lists them as chips.</div>
+    </nav>
+  </aside>
+
+  <div class="kit-subh">Side panel: the system</div>
+  <aside class="sidebar" id="rmSidebar">
+    <a href="#" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Painted screens</a>
+    <div class="sidebar-brand"><div class="sidebar-project-name">Design system</div></div>
+    <button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>
+    <nav class="sidebar-nav" aria-label="Design system">
+      <a href="#" class="sidebar-page-link">Overview</a>
+      <div class="sidebar-divider active">Foundations</div>
+      <a href="#" class="sidebar-page-link">Tokens</a>
+      <div class="sidebar-sub">
+        <a href="#" class="sidebar-sub-link">Colour</a>
+        <a href="#" class="sidebar-sub-link">Material</a>
+      </div>
+      <a href="#" class="sidebar-page-link active">Course chrome</a>
+      <div class="sidebar-divider">Navigation and chrome</div>
+      <a href="#" class="sidebar-page-link">App header</a>
+      <div class="sidebar-note">The kit itself: <a href="#">kit.html</a>, <a href="#">self test</a></div>
+    </nav>
+  </aside>
+
+  <div class="kit-subh">Side panel: the course roadmap</div>
+  <aside class="sidebar" id="rmSidebar">
+    <div class="sidebar-brand"><div class="sidebar-project-name">Prediction Market</div></div>
+    <nav class="sidebar-nav" aria-label="Course roadmap">
+      <a href="#" class="sidebar-page-link">Foundation Research</a>
+      <a href="#" class="sidebar-page-link">User Research</a>
+      <div class="sidebar-divider">Design and Delivery</div>
+      <a href="#" class="sidebar-page-link">Concept</a>
+      <a href="#" class="sidebar-page-link active">Tokens + Components</a>
+      <a class="sidebar-page-link planned next">Design System</a>
+      <a class="sidebar-page-link planned">Responsive</a>
+      <a class="sidebar-page-link planned">Handoff</a>
+    </nav>
   </aside>
 
   <div class="kit-subh">Cookie consent banner</div>

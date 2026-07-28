@@ -15,7 +15,12 @@
 .rm-toggle span{display:block;width:var(--icon-16);height:1.5px;background:var(--chrome-text);border-radius:var(--radius-2)}
 .rm-overlay{display:none;position:fixed;inset:0;background:var(--scrim);z-index:var(--z-chrome-scrim);backdrop-filter:blur(2px)}
 .rm-overlay.open{display:block}
-.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--chrome-bg);border-right:1px solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
+/* THE PANEL NAMES ITS OWN TYPE. On a painted screen and in the vitrine it
+   inherited the body font and that was the product's; on the 28 course pages,
+   which have their own stylesheet and their own --font, it would inherit Inter
+   and be a different panel on every second page. A component that changes with
+   the page it stands on is not a component. */
+.sidebar{font-family:var(--font-body);position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--chrome-bg);border-right:1px solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
 .sidebar.open{transform:translateX(0)}
 .sidebar::-webkit-scrollbar{display:none}
 .sidebar-brand{padding:var(--space-20) var(--space-16) var(--space-16);border-bottom:1px solid var(--chrome-border)}
@@ -24,21 +29,58 @@
 .sidebar-page-link{display:flex;align-items:center;justify-content:space-between;font-size:var(--text-13);font-weight:var(--weight-medium);color:var(--chrome-text);text-decoration:none;padding:var(--space-8) var(--space-16);cursor:pointer}
 .sidebar-page-link:hover:not(.planned){background:var(--bevel-hair)}
 .sidebar-page-link.active{color:var(--chrome-accent)}
-.sidebar-page-link.planned{color:var(--chrome-muted);cursor:default;opacity:.6}
+/* Same lesson as the labels below: a planned stage was dimmed to opacity .6,
+   which took --chrome-muted from 5.03:1 to 2.69:1. It is the muted colour, and
+   what separates it from the next stage up is the badge, which is what the badge
+   is for. */
+.sidebar-page-link.planned{color:var(--chrome-muted);cursor:default}
 .sidebar-page-link.planned::after{content:'Soon';font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.07em;text-transform:uppercase;background:var(--bevel-hair);color:var(--chrome-muted);padding:var(--space-2) var(--space-4);border-radius:var(--radius-6);border:1px solid var(--chrome-border)}
-.sidebar-page-link.planned.next{opacity:1}
+.sidebar-page-link.planned.next{color:var(--chrome-text)}
 .sidebar-page-link.planned.next::after{content:'Next';color:var(--chrome-accent);border-color:var(--chrome-accent)}
 .sidebar-sub{padding:var(--space-2) 0 var(--space-8)}
 .sidebar-sub-link{display:block;font-size:var(--text-12);color:var(--chrome-muted);text-decoration:none;padding:var(--space-4) var(--space-16) var(--space-4) var(--space-28);position:relative}
 .sidebar-sub-link:hover{color:var(--chrome-text)}
-.sidebar-sub-link.active{color:var(--chrome-text)}
+/* ONE MARK FOR THE PAGE YOU ARE ON, at either level. It used to be brass on a
+   top-level row and grey-plus-a-dot on a nested one, so the two panels this file
+   paints answered "where am I" two different ways: in the vitrine the page you
+   were on was the brass row, in the screens tree the brass row was the family
+   and the page you were on was grey. The dot stays as the nested-level tick,
+   which is why it is only on the indented row: it has the room. */
+.sidebar-sub-link.active{color:var(--chrome-accent)}
 .sidebar-sub-link.active::before{content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:var(--size-4);height:var(--size-4);border-radius:50%;background:var(--chrome-accent)}
 .sidebar-back{display:flex;align-items:center;gap:var(--space-8);font-size:var(--text-12);font-weight:var(--weight-semibold);color:var(--chrome-muted);text-decoration:none;padding:var(--space-12) var(--space-16);border-bottom:1px solid var(--chrome-border)}
 .sidebar-back:hover{color:var(--chrome-accent);background:var(--bevel-hair)}
 .sidebar-back .bk-arrow{font-size:var(--text-14);line-height:var(--leading-none)}
-.sidebar-sub-head{font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--chrome-muted);padding:var(--space-8) var(--space-16) var(--space-4) var(--space-28);opacity:.7}
-.sidebar-divider{font-size:var(--text-10);font-weight:var(--weight-semibold);letter-spacing:.1em;text-transform:uppercase;color:var(--chrome-muted);padding:var(--space-16) var(--space-16) var(--space-8);opacity:.55}
-.sidebar-note{font-size:var(--text-11);line-height:var(--leading-base);color:var(--chrome-muted);padding:var(--space-8) var(--space-16);opacity:.7}
+/* THE LABEL OVER A RUN OF ROWS, one class for both panels. A group of components
+   in the vitrine and a family of screens in the painted tree are the same thing
+   said twice: rows that belong together, under a name that opens nothing. There
+   were two classes for it, .sidebar-divider here and .sidebar-sub-head in the
+   screens tree, and the nested one was drawn HEAVIER than the one above it
+   (opacity .7 over .55, bold over semibold), so depth read backwards.
+
+   QUIET IS A COLOUR, NOT AN OPACITY, which is what this pass had to learn twice.
+   Both labels used to be dimmed with opacity, and opacity fades the text INTO
+   its background: --chrome-muted is 5.03:1 on the panel and the same value at
+   opacity .55 is 2.37:1. Every contrast sweep this repo has run read
+   getComputedStyle().color, which does not carry opacity, so none of them could
+   see it. Depth is the colour role now, the outer label taking the text colour
+   and the nested one the muted, and both clear AA because the value is the thing
+   being checked. */
+.sidebar-divider{font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.1em;text-transform:uppercase;color:var(--chrome-text);padding:var(--space-16) var(--space-16) var(--space-8)}
+.sidebar-divider.sub{font-weight:var(--weight-semibold);letter-spacing:.08em;color:var(--chrome-muted);padding:var(--space-8) var(--space-16) var(--space-4) var(--space-28)}
+/* the group you are IN, which is not the page you are ON. The label takes the
+   brass, the row takes the brass, and the row is four sizes bigger. */
+.sidebar-divider.active,.sidebar-divider.sub.active{color:var(--chrome-accent)}
+.sidebar-note{font-size:var(--text-11);line-height:var(--leading-base);color:var(--chrome-muted);padding:var(--space-8) var(--space-16)}
+/* A LINK IN THE NOTE IS THE PANEL'S OWN, not the vitrine's. It lived in
+   ui-kit/_page.css as .ck-note-link, so the same note rendered in the browser's
+   blue anywhere the vitrine's stylesheet was not loaded, which is every specimen
+   of this component and every screen in ui-visual. The reason it was written
+   there is still true and now belongs here: the panel keeps one dark palette in
+   both grounds, so nothing inside it may read a themed role. --chrome-accent,
+   never --text-brass, which in daylight is the dark brass for a pale surface. */
+.sidebar-note a{color:var(--chrome-accent);text-decoration:underline;text-decoration-color:var(--chrome-border);text-underline-offset:2px}
+.sidebar-note a:hover{text-decoration-color:currentColor}
 /* the theme switch. It lives in the chrome and is drawn in chrome colour on
    purpose: it is the control that moves the product, so it must not move with
    it. The two swatches are the two grounds, side by side, and the one in play

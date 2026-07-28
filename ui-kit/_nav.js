@@ -50,6 +50,17 @@ window.KIT_NAV = [
   {group: "System", name: "cookie-consent", file: "cookie-consent.html", label: "Cookie consent"},
 ];
 
+function pmRevealPanelRow() {
+  var panel = document.querySelector('.sidebar');
+  if (!panel) return;
+  var row = panel.querySelector('.sidebar-page-link.active, .sidebar-sub-link.active') ||
+            panel.querySelector('.sidebar-divider.active');
+  if (!row) return;
+  var r = row.getBoundingClientRect(), p = panel.getBoundingClientRect();
+  if (r.top >= p.top && r.bottom <= p.bottom) return;   /* already shown: do not jump */
+  panel.scrollTop += (r.top - p.top) - p.height / 3;
+}
+
 (function () {
   var host = document.querySelector('[data-kit-nav]');
   var current = document.body.getAttribute('data-kit-page') || '';
@@ -63,11 +74,22 @@ window.KIT_NAV = [
              // the switch acts on the page, not on the tree, so it sits above the
              // tree: the panel is 40 rows long and a control at its foot needs scrolling
              '<button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>',
-             '<nav class="sidebar-nav">',
+             '<nav class="sidebar-nav" aria-label="Design system">',
              '<a href="overview.html" class="sidebar-page-link' + (current === 'overview' ? ' active' : '') + '">Overview</a>'];
+    // The group you are IN is marked as well as the page you are ON. The tree is
+    // 45 rows in a panel that shows about 25, so on most pages the brass row is
+    // below the fold and the panel opens saying nothing about where you are. The
+    // screens tree has always marked the family; this is the same answer, and it
+    // is what makes the two panels one vocabulary rather than two.
+    var here = null;
+    window.KIT_NAV.forEach(function (e) { if (e.name === current) here = e.group; });
     var group = null;
     window.KIT_NAV.forEach(function (e) {
-      if (e.group !== group) { group = e.group; h.push('<div class="sidebar-divider">' + group + '</div>'); }
+      if (e.group !== group) {
+        group = e.group;
+        h.push('<div class="sidebar-divider' + (group === here ? ' active' : '') +
+               '">' + group + '</div>');
+      }
       h.push('<a href="' + e.file + '" class="sidebar-page-link' + (e.name === current ? ' active' : '') + '">' + e.label + '</a>');
       if (e.name === 'tokens') {
         h.push('<div class="sidebar-sub">');
@@ -81,13 +103,16 @@ window.KIT_NAV = [
     // reasoning and the components are the thing. They are pages of the vitrine
     // like any other, so they are rows in the same tree: a link that leaves for
     // a .md file is a link out of the browser.
-    h.push('<div class="sidebar-divider">The reasoning</div>');
+    var inDocs = window.KIT_DOCS.some(function (d) { return d.name === current; });
+    h.push('<div class="sidebar-divider' + (inDocs ? ' active' : '') + '">The reasoning</div>');
     window.KIT_DOCS.forEach(function (d) {
       h.push('<a href="' + d.file + '" class="sidebar-page-link' + (d.name === current ? ' active' : '') + '">' + d.label + '</a>');
     });
     h.push('</nav>');
-    h.push('<div class="sidebar-note">The kit itself: <a class="ck-note-link" href="kit.html">kit.html</a>, <a class="ck-note-link" href="shell.html">shell.html</a>, <a class="ck-note-link" href="selftest.html">self test</a></div>');
+    h.push('<div class="sidebar-note">The kit itself: <a href="kit.html">kit.html</a>, <a href="shell.html">shell.html</a>, <a href="selftest.html">self test</a></div>');
     host.innerHTML = h.join('');
+    // the tree exists only now, so the reveal happens here and not on load
+    pmRevealPanelRow();
   }
   var cards = document.getElementById('kitCards');
   if (cards) {

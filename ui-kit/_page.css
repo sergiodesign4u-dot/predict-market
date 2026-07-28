@@ -25,18 +25,14 @@
 .tk-note a:hover,.tk-hero p a:hover,.ck-cap a:hover{text-decoration-color:currentColor}
 .tk-note a:focus-visible,.tk-hero p a:focus-visible,.ck-cap a:focus-visible{
   outline:2px solid var(--text-brass);outline-offset:2px;border-radius:3px}
-/* the three links in the sidebar note. They carry a stand class of their own so
-   this rule never has to reach for the course-chrome class around them. */
-/* THE SIDEBAR DOES NOT FOLLOW THE THEME, SO NOTHING IN IT MAY READ A THEMED
-   ROLE. The course chrome keeps one dark palette in both grounds (--chrome-* in
-   tokens.css, deliberately outside the theme block), and this link was reading
-   --text-brass, which in daylight becomes the dark brass meant for a pale
-   surface. Dark brass on the dark panel: 2.39:1, in the light theme, on every
-   page of the vitrine. Same shape as the veil that follows the ink and not the
-   photograph, one level down: a colour follows the surface it stands on. */
-.ck-note-link{color:var(--chrome-accent);text-decoration:underline;
-  text-decoration-color:var(--border-brass,rgba(199,162,78,.3));text-underline-offset:2px}
-.ck-note-link:hover{text-decoration-color:currentColor}
+/* .ck-note-link was here: the links in the panel's note, given a stand class so
+   this file would not have to reach for the course-chrome class around them. The
+   panel is a component and its note is part of it, so a link inside it is styled
+   by components/course-chrome.css now. Keeping it here made the same note render
+   in the browser's blue everywhere the vitrine's stylesheet is not loaded, which
+   is every specimen of the component and all 105 painted screens. The reason the
+   rule exists (nothing in the panel may read a themed role, because the panel
+   does not follow the theme) moved with it. */
 .tk-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .tk-badge{display:inline-block;font-family:var(--font-mono);font-size:11px;
   color:var(--text-brass);border:1px solid var(--border-brass,rgba(199,162,78,.3));

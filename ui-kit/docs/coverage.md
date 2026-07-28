@@ -25,7 +25,7 @@ says so. No em dash.
 | chart | 1 | chart | 1 | 11 | 11 |
 | comments | 1 | comments-thread | 1 | 15 | 9 |
 | cookie-consent | 1 | cookie-consent | 0 | 17 | 2 |
-| course-chrome | 1 | course-chrome | 0 | 25 | 104 |
+| course-chrome | 3 | course-chrome, course-chrome-system, course-chrome-roadmap | 0 | 25 | 104 |
 | dialog | 1 | dialog-shared | 0 | 6 | 104 |
 | event-detail | 2 | event-detail, facts-strip | 0 | 16 | 11 |
 | feed | 1 | feed-grid | 1 | 6 | 104 |
@@ -53,7 +53,7 @@ says so. No em dash.
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 104 |
 | yesno | 1 | yesno | 2 | 2 | 14 |
 
-60 specimens over 38 components.
+62 specimens over 38 components.
 
 ---
 
@@ -62,61 +62,32 @@ says so. No em dash.
 Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
 that actually means. The Classes table on each component page shows the same verdict per row.
 
-### Deletion candidates (25)
+### Deletion candidates (2)
 
 Styled, and carried by no element in the repo: not by a painted screen, not by the kit, not by a wireframe, not by a course page, and not by any script. Nothing is removed yet. The screens still carry their own inline style and only move onto components/index.css in step 5, so the measurement is not final until then; step 7 is the pass that acts on this list.
 
 | class | file | why |
 |---|---|---|
 | `.btn-block` | button.css | styled and carried by no element anywhere |
-| `.chart-cap` | chart.css | styled and carried by no element anywhere |
-| `.chart-wrap` | chart.css | styled and carried by no element anywhere |
-| `.css` | base.css | styled and carried by no element anywhere |
-| `.css` | betpanel.css | styled and carried by no element anywhere |
-| `.css` | bets-table.css | styled and carried by no element anywhere |
-| `.css` | course-chrome.css | styled and carried by no element anywhere |
-| `.css` | dialog.css | styled and carried by no element anywhere |
-| `.css` | hiw-dialog.css | styled and carried by no element anywhere |
-| `.css` | input.css | styled and carried by no element anywhere |
-| `.css` | market.css | styled and carried by no element anywhere |
-| `.css` | tabs.css | styled and carried by no element anywhere |
-| `.hiw-head` | hiw-dialog.css | styled and carried by no element anywhere |
-| `.html` | base.css | styled and carried by no element anywhere |
-| `.html` | catnav.css | styled and carried by no element anywhere |
-| `.html` | course-chrome.css | styled and carried by no element anywhere |
-| `.html` | dialog.css | styled and carried by no element anywhere |
-| `.md` | chart.css | styled and carried by no element anywhere |
-| `.md` | dialog.css | styled and carried by no element anywhere |
-| `.md-` | base.css | styled and carried by no element anywhere |
-| `.ms-` | base.css | styled and carried by no element anywhere |
-| `.py` | base.css | styled and carried by no element anywhere |
-| `.py` | dialog.css | styled and carried by no element anywhere |
 | `.signin-lead` | signin.css | styled and carried by no element anywhere |
-| `.theme-switch-inline` | course-chrome.css | styled and carried by no element anywhere |
 
-### Carried only by the grey tree (4)
+### Carried only by the grey tree (0)
 
 Dead, and this section used to say the opposite: it called them the wireframe version of a block the paint replaced and said removing them needed the markup gone from wireframes/ first. It does not. wireframes/ carries its own inline grey-box css and never links index.css, so no rule in components/ has ever applied to it, and a class carried only there is a class this sheet does not have. Step 7e deleted the ones that were left and took wireframes/ out of gate 14's markup scan, which had been keeping them alive.
 
 | class | file | why |
 |---|---|---|
-| `.backdrop` | dialog.css | carried only by wireframes/, which never loads this sheet |
-| `.grab` | dialog.css | carried only by wireframes/, which never loads this sheet |
-| `.sheet` | dialog.css | carried only by wireframes/, which never loads this sheet |
-| `.wf-screen` | course-chrome.css | carried only by wireframes/, which never loads this sheet |
+| - | - | none |
 
-### Used only by a course page (4)
+### Used only by a course page (1)
 
 Carried by a page in ia/, concept/, research/, voice/ or user-research/. Those pages have their own inline styles and do not load the system, so the rule here reaches nothing.
 
 | class | file | why |
 |---|---|---|
 | `.delta` | header.css | used by a course page, which does not load the system |
-| `.next` | course-chrome.css | used by a course page, which does not load the system |
-| `.planned` | course-chrome.css | used by a course page, which does not load the system |
-| `.sidebar-divider` | course-chrome.css | used by a course page, which does not load the system |
 
-### Shown in the kit, not in the product (8)
+### Shown in the kit, not in the product (11)
 
 A real component the painted screens have not adopted. An offer, not debris. Do not delete without deciding against it first.
 
@@ -128,8 +99,11 @@ A real component the painted screens have not adopted. An offer, not debris. Do 
 | `.btn-secondary` | button.css | shown in the frozen kit, never on a painted screen |
 | `.btn-sm` | button.css | shown in the frozen kit, never on a painted screen |
 | `.groove-sep` | base.css | shown in the frozen kit, never on a painted screen |
+| `.next` | course-chrome.css | shown in the frozen kit, never on a painted screen |
 | `.placeholder-line` | base.css | shown in the frozen kit, never on a painted screen |
+| `.planned` | course-chrome.css | shown in the frozen kit, never on a painted screen |
 | `.tbd` | base.css | shown in the frozen kit, never on a painted screen |
+| `.theme-switch-inline` | course-chrome.css | shown in the frozen kit, never on a painted screen |
 
 ### Built or toggled at runtime (6)
 

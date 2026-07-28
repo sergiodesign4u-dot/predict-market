@@ -49,8 +49,8 @@ push();});})();</script>
     <p>Not product: the roadmap sidebar every page of this repo carries. It ships with the system only because the painted screens render it.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/course-chrome.css</span>
-      <span class="tk-badge">41 rules</span>
-      <span class="tk-badge">28 classes</span>
+      <span class="tk-badge">44 rules</span>
+      <span class="tk-badge">25 classes</span>
       <span class="tk-badge">104 screens</span>
     </div>
   </header>
@@ -61,14 +61,16 @@ push();});})();</script>
     the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
     page of its own, so the width under the title is a real viewport and the media queries answer to
     it.</p>
-    <figure class="ck-scene" id="sp-course-chrome"><figcaption class="ck-scene-lbl"><b>Roadmap sidebar</b><span class="ck-w">260px</span><span class="ck-zoom" hidden></span><a href="specimens/course-chrome.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:260px"><iframe data-specimen="course-chrome" src="specimens/course-chrome.html" width="260" height="320" loading="lazy" title="Roadmap sidebar"></iframe></div></figure>
+    <figure class="ck-scene" id="sp-course-chrome"><figcaption class="ck-scene-lbl"><b>The panel on a painted screen</b><span class="ck-w">260px</span><span class="ck-zoom" hidden></span><a href="specimens/course-chrome.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:260px"><iframe data-specimen="course-chrome" src="specimens/course-chrome.html" width="260" height="320" loading="lazy" title="The panel on a painted screen"></iframe></div><p class="ck-cap">A family opens nothing, so it is a label; a state is the row that navigates. It was the other way round until the vocabulary was made one: the family was an &lt;a&gt; with no href, drawn heavier than the pages under it.</p></figure>
+<figure class="ck-scene" id="sp-course-chrome-system"><figcaption class="ck-scene-lbl"><b>The panel in this vitrine</b><span class="ck-w">260px</span><span class="ck-zoom" hidden></span><a href="specimens/course-chrome-system.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:260px"><iframe data-specimen="course-chrome-system" src="specimens/course-chrome-system.html" width="260" height="320" loading="lazy" title="The panel in this vitrine"></iframe></div><p class="ck-cap">Same three levels, same classes. A group label takes .active for the group you are in; the brass row is the page you are on.</p></figure>
+<figure class="ck-scene" id="sp-course-chrome-roadmap"><figcaption class="ck-scene-lbl"><b>The panel on a course page, with the planned rows</b><span class="ck-w">260px</span><span class="ck-zoom" hidden></span><a href="specimens/course-chrome-roadmap.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:260px"><iframe data-specimen="course-chrome-roadmap" src="specimens/course-chrome-roadmap.html" width="260" height="320" loading="lazy" title="The panel on a course page, with the planned rows"></iframe></div><p class="ck-cap">The only variant with .planned, and the four rules that draw its Soon and Next badges had no markup in any tree this stylesheet reaches, because the 28 course pages carry their own inline copy of the panel instead.</p></figure>
   </section>
 
   <section class="tk-sec" id="states">
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.rm-overlay.open</td><td class='ck-decl'>display:block</td></tr><tr><td class='tk-role'>.sidebar.open</td><td class='ck-decl'>transform:translateX(0)</td></tr><tr><td class='tk-role'>.sidebar-page-link:hover:not(.planned)</td><td class='ck-decl'>background:var(--bevel-hair)</td></tr><tr><td class='tk-role'>.sidebar-page-link.active</td><td class='ck-decl'>color:var(--chrome-accent)</td></tr><tr><td class='tk-role'>.sidebar-sub-link:hover</td><td class='ck-decl'>color:var(--chrome-text)</td></tr><tr><td class='tk-role'>.sidebar-sub-link.active</td><td class='ck-decl'>color:var(--chrome-text)</td></tr><tr><td class='tk-role'>.sidebar-sub-link.active::before</td><td class='ck-decl'>content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:var(--size-4);height:var(--size-4);border-radius:50%;background:var(--chrome-accent)</td></tr><tr><td class='tk-role'>.sidebar-back:hover</td><td class='ck-decl'>color:var(--chrome-accent);background:var(--bevel-hair)</td></tr><tr><td class='tk-role'>.theme-switch:hover</td><td class='ck-decl'>color:var(--chrome-text);background:var(--bevel-hair)</td></tr><tr><td class='tk-role'>/* one of the three exceptions to the default in base.css: an inset ring, because the switch sits flush against the panel edge and an outset one would be clipped */ .theme-switch:focus-visible</td><td class='ck-decl'>outline:var(--ring) solid var(--chrome-accent);outline-offset:calc(var(--ring) * -1)</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.rm-overlay.open</td><td class='ck-decl'>display:block</td></tr><tr><td class='tk-role'>.sidebar.open</td><td class='ck-decl'>transform:translateX(0)</td></tr><tr><td class='tk-role'>.sidebar-page-link:hover:not(.planned)</td><td class='ck-decl'>background:var(--bevel-hair)</td></tr><tr><td class='tk-role'>.sidebar-page-link.active</td><td class='ck-decl'>color:var(--chrome-accent)</td></tr><tr><td class='tk-role'>.sidebar-sub-link:hover</td><td class='ck-decl'>color:var(--chrome-text)</td></tr><tr><td class='tk-role'>/* ONE MARK FOR THE PAGE YOU ARE ON, at either level. It used to be brass on a top-level row and grey-plus-a-dot on a nested one, so the two panels this file paints answered "where am I" two different ways: in the vitrine the page you were on was the brass row, in the screens tree the brass row was the family and the page you were on was grey. The dot stays as the nested-level tick, which is why it is only on the indented row: it has the room. */ .sidebar-sub-link.active</td><td class='ck-decl'>color:var(--chrome-accent)</td></tr><tr><td class='tk-role'>.sidebar-sub-link.active::before</td><td class='ck-decl'>content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:var(--size-4);height:var(--size-4);border-radius:50%;background:var(--chrome-accent)</td></tr><tr><td class='tk-role'>.sidebar-back:hover</td><td class='ck-decl'>color:var(--chrome-accent);background:var(--bevel-hair)</td></tr><tr><td class='tk-role'>/* the group you are IN, which is not the page you are ON. The label takes the brass, the row takes the brass, and the row is four sizes bigger. */ .sidebar-divider.active,.sidebar-divider.sub.active</td><td class='ck-decl'>color:var(--chrome-accent)</td></tr><tr><td class='tk-role'>.sidebar-note a:hover</td><td class='ck-decl'>text-decoration-color:currentColor</td></tr><tr><td class='tk-role'>.theme-switch:hover</td><td class='ck-decl'>color:var(--chrome-text);background:var(--bevel-hair)</td></tr><tr><td class='tk-role'>/* one of the three exceptions to the default in base.css: an inset ring, because the switch sits flush against the panel edge and an outset one would be clipped */ .theme-switch:focus-visible</td><td class='ck-decl'>outline:var(--ring) solid var(--chrome-accent);outline-offset:calc(var(--ring) * -1)</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
@@ -85,7 +87,7 @@ push();});})();</script>
     shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
     used by nothing. Only the last kind is a deletion candidate, and they are collected in
     <a href="coverage.html">coverage</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.active</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.bk-arrow</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.css</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.html</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.next</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-docs" title="used by a course page, which does not load the system">docs</span></td></tr><tr><td class='tk-role'>.open</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-runtime" title="toggled on the drawer and the overlay by script">runtime</span></td></tr><tr><td class='tk-role'>.planned</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-docs" title="used by a course page, which does not load the system">docs</span></td></tr><tr><td class='tk-role'>.rm-overlay</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.rm-toggle</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-back</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-brand</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-divider</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-docs" title="used by a course page, which does not load the system">docs</span></td></tr><tr><td class='tk-role'>.sidebar-nav</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-note</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-page-link</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-project-name</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-sub</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-sub-head</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-sub-link</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.theme-switch</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.theme-switch-inline</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.ts-dark</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-label</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-light</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-sw</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-swatches</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.wf-screen</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-wireframe" title="carried only by wireframes/, which never loads this sheet">wireframe</span></td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.active</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.bk-arrow</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.next</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-kit" title="shown in the frozen kit, never on a painted screen">kit</span></td></tr><tr><td class='tk-role'>.open</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-runtime" title="toggled on the drawer and the overlay by script">runtime</span></td></tr><tr><td class='tk-role'>.planned</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-kit" title="shown in the frozen kit, never on a painted screen">kit</span></td></tr><tr><td class='tk-role'>.rm-overlay</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.rm-toggle</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-back</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-brand</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-divider</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-nav</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-note</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-page-link</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-project-name</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-sub</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sidebar-sub-link</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sub</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.theme-switch</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.theme-switch-inline</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-kit" title="shown in the frozen kit, never on a painted screen">kit</span></td></tr><tr><td class='tk-role'>.ts-dark</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-label</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-light</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-sw</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ts-swatches</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
@@ -114,7 +116,12 @@ push();});})();</script>
 .rm-toggle span{display:block;width:var(--icon-16);height:1.5px;background:var(--chrome-text);border-radius:var(--radius-2)}
 .rm-overlay{display:none;position:fixed;inset:0;background:var(--scrim);z-index:var(--z-chrome-scrim);backdrop-filter:blur(2px)}
 .rm-overlay.open{display:block}
-.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--chrome-bg);border-right:1px solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
+/* THE PANEL NAMES ITS OWN TYPE. On a painted screen and in the vitrine it
+   inherited the body font and that was the product's; on the 28 course pages,
+   which have their own stylesheet and their own --font, it would inherit Inter
+   and be a different panel on every second page. A component that changes with
+   the page it stands on is not a component. */
+.sidebar{font-family:var(--font-body);position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--chrome-bg);border-right:1px solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
 .sidebar.open{transform:translateX(0)}
 .sidebar::-webkit-scrollbar{display:none}
 .sidebar-brand{padding:var(--space-20) var(--space-16) var(--space-16);border-bottom:1px solid var(--chrome-border)}
@@ -123,21 +130,58 @@ push();});})();</script>
 .sidebar-page-link{display:flex;align-items:center;justify-content:space-between;font-size:var(--text-13);font-weight:var(--weight-medium);color:var(--chrome-text);text-decoration:none;padding:var(--space-8) var(--space-16);cursor:pointer}
 .sidebar-page-link:hover:not(.planned){background:var(--bevel-hair)}
 .sidebar-page-link.active{color:var(--chrome-accent)}
-.sidebar-page-link.planned{color:var(--chrome-muted);cursor:default;opacity:.6}
+/* Same lesson as the labels below: a planned stage was dimmed to opacity .6,
+   which took --chrome-muted from 5.03:1 to 2.69:1. It is the muted colour, and
+   what separates it from the next stage up is the badge, which is what the badge
+   is for. */
+.sidebar-page-link.planned{color:var(--chrome-muted);cursor:default}
 .sidebar-page-link.planned::after{content:'Soon';font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.07em;text-transform:uppercase;background:var(--bevel-hair);color:var(--chrome-muted);padding:var(--space-2) var(--space-4);border-radius:var(--radius-6);border:1px solid var(--chrome-border)}
-.sidebar-page-link.planned.next{opacity:1}
+.sidebar-page-link.planned.next{color:var(--chrome-text)}
 .sidebar-page-link.planned.next::after{content:'Next';color:var(--chrome-accent);border-color:var(--chrome-accent)}
 .sidebar-sub{padding:var(--space-2) 0 var(--space-8)}
 .sidebar-sub-link{display:block;font-size:var(--text-12);color:var(--chrome-muted);text-decoration:none;padding:var(--space-4) var(--space-16) var(--space-4) var(--space-28);position:relative}
 .sidebar-sub-link:hover{color:var(--chrome-text)}
-.sidebar-sub-link.active{color:var(--chrome-text)}
+/* ONE MARK FOR THE PAGE YOU ARE ON, at either level. It used to be brass on a
+   top-level row and grey-plus-a-dot on a nested one, so the two panels this file
+   paints answered "where am I" two different ways: in the vitrine the page you
+   were on was the brass row, in the screens tree the brass row was the family
+   and the page you were on was grey. The dot stays as the nested-level tick,
+   which is why it is only on the indented row: it has the room. */
+.sidebar-sub-link.active{color:var(--chrome-accent)}
 .sidebar-sub-link.active::before{content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:var(--size-4);height:var(--size-4);border-radius:50%;background:var(--chrome-accent)}
 .sidebar-back{display:flex;align-items:center;gap:var(--space-8);font-size:var(--text-12);font-weight:var(--weight-semibold);color:var(--chrome-muted);text-decoration:none;padding:var(--space-12) var(--space-16);border-bottom:1px solid var(--chrome-border)}
 .sidebar-back:hover{color:var(--chrome-accent);background:var(--bevel-hair)}
 .sidebar-back .bk-arrow{font-size:var(--text-14);line-height:var(--leading-none)}
-.sidebar-sub-head{font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--chrome-muted);padding:var(--space-8) var(--space-16) var(--space-4) var(--space-28);opacity:.7}
-.sidebar-divider{font-size:var(--text-10);font-weight:var(--weight-semibold);letter-spacing:.1em;text-transform:uppercase;color:var(--chrome-muted);padding:var(--space-16) var(--space-16) var(--space-8);opacity:.55}
-.sidebar-note{font-size:var(--text-11);line-height:var(--leading-base);color:var(--chrome-muted);padding:var(--space-8) var(--space-16);opacity:.7}
+/* THE LABEL OVER A RUN OF ROWS, one class for both panels. A group of components
+   in the vitrine and a family of screens in the painted tree are the same thing
+   said twice: rows that belong together, under a name that opens nothing. There
+   were two classes for it, .sidebar-divider here and .sidebar-sub-head in the
+   screens tree, and the nested one was drawn HEAVIER than the one above it
+   (opacity .7 over .55, bold over semibold), so depth read backwards.
+
+   QUIET IS A COLOUR, NOT AN OPACITY, which is what this pass had to learn twice.
+   Both labels used to be dimmed with opacity, and opacity fades the text INTO
+   its background: --chrome-muted is 5.03:1 on the panel and the same value at
+   opacity .55 is 2.37:1. Every contrast sweep this repo has run read
+   getComputedStyle().color, which does not carry opacity, so none of them could
+   see it. Depth is the colour role now, the outer label taking the text colour
+   and the nested one the muted, and both clear AA because the value is the thing
+   being checked. */
+.sidebar-divider{font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.1em;text-transform:uppercase;color:var(--chrome-text);padding:var(--space-16) var(--space-16) var(--space-8)}
+.sidebar-divider.sub{font-weight:var(--weight-semibold);letter-spacing:.08em;color:var(--chrome-muted);padding:var(--space-8) var(--space-16) var(--space-4) var(--space-28)}
+/* the group you are IN, which is not the page you are ON. The label takes the
+   brass, the row takes the brass, and the row is four sizes bigger. */
+.sidebar-divider.active,.sidebar-divider.sub.active{color:var(--chrome-accent)}
+.sidebar-note{font-size:var(--text-11);line-height:var(--leading-base);color:var(--chrome-muted);padding:var(--space-8) var(--space-16)}
+/* A LINK IN THE NOTE IS THE PANEL'S OWN, not the vitrine's. It lived in
+   ui-kit/_page.css as .ck-note-link, so the same note rendered in the browser's
+   blue anywhere the vitrine's stylesheet was not loaded, which is every specimen
+   of this component and every screen in ui-visual. The reason it was written
+   there is still true and now belongs here: the panel keeps one dark palette in
+   both grounds, so nothing inside it may read a themed role. --chrome-accent,
+   never --text-brass, which in daylight is the dark brass for a pale surface. */
+.sidebar-note a{color:var(--chrome-accent);text-decoration:underline;text-decoration-color:var(--chrome-border);text-underline-offset:2px}
+.sidebar-note a:hover{text-decoration-color:currentColor}
 /* the theme switch. It lives in the chrome and is drawn in chrome colour on
    purpose: it is the control that moves the product, so it must not move with
    it. The two swatches are the two grounds, side by side, and the one in play
