@@ -99,6 +99,10 @@
      "pick": "span.field-label,div.amount-row,div.quick", "component": "input",
      "title": "Amount field, label and quick amounts", "width": 420,
      "note": "Every rule in input.css is scoped under dialog.app-dialog, so the field is shown inside the dialog it lives in."},
+    {"id": "input-states", "from": "specimens.extra.html", "canvas": false, "section": "extra",
+     "label": "Field states", "pick": "dialog.app-dialog", "component": "input",
+     "title": "Field states: rest, disabled, selected, address", "width": 420,
+     "note": "The states a state actually is, an attribute or a class, rendered. Hover and focus stay in the table on the component page: faking them with a stand class would make the specimen describe itself instead of the product."},
     {"id": "hiw-dialog", "canvas": false, "section": "dialogs", "label": "How-it-works dialog",
      "component": "hiw-dialog", "title": "How-it-works dialog", "width": 533},
 

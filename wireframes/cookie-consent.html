@@ -456,6 +456,23 @@
     .footer-popular h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
     .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
     .popular-links a { color: #444; }
+  /* ---- ported from the painted twin by port_structure.py ---- */
+    /* Layout taken from components/, every colour replaced by the
+       wireframe palette. See wireframes/_generators/port_structure.py. */
+    .cc-page { margin-bottom: 16px; }
+    .ed-oddsbar .track, .md-bar { background: #dcdcdc; }
+    .ed-oddsbar .fill { background: #555; }
+    .ed-act, .rules-tab, .ed-range button { border: 1px solid #999;
+      background: #eee; color: #222; font-size: 10px; }
+    .rules-tab.sel, .ed-range button.sel { background: #dcdcdc; font-weight: bold; }
+    .market-box, .md-table { border: 1px solid #ccc; }
+    .market-head { padding: 6px 8px; background: #eee; cursor: pointer; }
+    .ms-label, .md-sub, .rules-note, .ed-chart-now, .bp-cash { color: #555; }
+    .rel-thumb { width: 40px; height: 40px; border: 1px solid #999;
+      background: #dcdcdc; flex: 0 0 40px; }
+    .ed-yaxis span, .ed-xaxis span { font-size: 9px; color: #555; }
+    .ed-plot { border: 1px solid #ccc; }
+    .rules-panel[hidden] { display: none; }
   </style>
   <style>
     .sys-note { font-size: 11px; color: #555; margin: 12px 0 0; line-height: 1.5; }
@@ -766,11 +783,12 @@
       </div>
     </header>
     <main class="feed">
-      <div class="feed-inner">
+      
+        
+        
         <div class="feed-head"><h1>Cookie consent banner</h1></div>
 
         <section class="cc-page" aria-hidden="true">
-          <span class="zone-tag">Page content, dimmed while the consent choice is pending</span>
           <div class="cc-ph">
             <div class="cc-ph-line w90"></div>
             <div class="cc-ph-line w80"></div>
@@ -780,12 +798,11 @@
         </section>
 
         <section class="cc-banner" role="region" aria-label="Cookie consent">
-          <span class="zone-tag">Cookie banner, pinned to the bottom on first visit</span>
           <div class="cc-inner">
             <p class="cc-text">We use cookies to run the site and, only if you allow it, to measure and improve it.</p>
             <p class="cc-policy">
-              <a href="#">Privacy policy</a> <span class="tbd">to be built</span>
-              <a href="#">Cookie policy</a> <span class="tbd">to be built</span>
+              <a href="#">Privacy policy</a>
+              <a href="#">Cookie policy</a>
             </p>
             <div class="cc-actions">
               <button type="button" class="cc-btn">Accept all</button>
@@ -824,7 +841,7 @@
         </section>
 
         <p class="sys-note">Re-entry: a Cookie preferences link in the footer reopens this banner, so the choice can be changed at any time.</p>
-      </div>
+        <!-- /cat-main --><!-- /cat-layout --><!-- /feed-inner -->
     </main>
     <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">

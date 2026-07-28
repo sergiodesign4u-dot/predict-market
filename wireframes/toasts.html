@@ -456,6 +456,23 @@
     .footer-popular h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
     .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
     .popular-links a { color: #444; }
+  /* ---- ported from the painted twin by port_structure.py ---- */
+    /* Layout taken from components/, every colour replaced by the
+       wireframe palette. See wireframes/_generators/port_structure.py. */
+    .tc-page { margin-bottom: 16px; }
+    .ed-oddsbar .track, .md-bar { background: #dcdcdc; }
+    .ed-oddsbar .fill { background: #555; }
+    .ed-act, .rules-tab, .ed-range button { border: 1px solid #999;
+      background: #eee; color: #222; font-size: 10px; }
+    .rules-tab.sel, .ed-range button.sel { background: #dcdcdc; font-weight: bold; }
+    .market-box, .md-table { border: 1px solid #ccc; }
+    .market-head { padding: 6px 8px; background: #eee; cursor: pointer; }
+    .ms-label, .md-sub, .rules-note, .ed-chart-now, .bp-cash { color: #555; }
+    .rel-thumb { width: 40px; height: 40px; border: 1px solid #999;
+      background: #dcdcdc; flex: 0 0 40px; }
+    .ed-yaxis span, .ed-xaxis span { font-size: 9px; color: #555; }
+    .ed-plot { border: 1px solid #ccc; }
+    .rules-panel[hidden] { display: none; }
   </style>
   <style>
     .sys-note { font-size: 11px; color: #555; margin: 12px 0 0; line-height: 1.5; }
@@ -761,11 +778,12 @@
       </div>
     </header>
     <main class="feed">
-      <div class="feed-inner">
+      
+        
+        
         <div class="feed-head"><h1>Toast notifications</h1></div>
 
         <section class="tc-page" aria-hidden="true">
-          <span class="zone-tag">Page content, a toast appears over it and does not block it</span>
           <div class="cc-ph">
             <div class="cc-ph-line w90"></div>
             <div class="cc-ph-line w60"></div>
@@ -774,21 +792,20 @@
         </section>
 
         <section class="toast-wrap" aria-label="Toast variants">
-          <span class="zone-tag">Toasts, stacked in a corner over the page</span>
           <div class="toast-inner">
             <div class="toast-group" role="status" aria-live="polite">
               <div class="toast">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 7"/></svg>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg>
                 <span class="toast-msg">Bet placed</span>
                 <button type="button" class="toast-close" aria-label="Dismiss">x</button>
               </div>
               <div class="toast">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 7"/></svg>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg>
                 <span class="toast-msg">Funds added</span>
                 <button type="button" class="toast-close" aria-label="Dismiss">x</button>
               </div>
               <div class="toast">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 7"/></svg>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg>
                 <span class="toast-msg">Saved into Favorites</span>
                 <button type="button" class="toast-close" aria-label="Dismiss">x</button>
               </div>
@@ -804,7 +821,7 @@
         </section>
 
         <p class="sys-note">Toasts are transient. Confirmations use aria-live polite, errors use aria-live assertive, so screen readers announce them. Each one auto-dismisses after a few seconds and can also be closed by hand. A critical error is never shown only in a toast.</p>
-      </div>
+        <!-- /cat-main --><!-- /cat-layout --><!-- /feed-inner -->
     </main>
     <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">

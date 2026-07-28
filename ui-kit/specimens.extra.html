@@ -55,6 +55,41 @@
     drawn one is stroked. Same class, two shapes of source.</p>
   </div></div></div></main>
 
+  <div class="kit-subh">Field states</div>
+  <!--
+    The field page listed its states as a table of selectors and rendered none of
+    them, which is the one component where that is not good enough: a person
+    comes to this page to see what a field looks like when it is off, and reading
+    "opacity: .45" is not seeing it.
+
+    Rendered here are the states a state ACTUALLY IS: an attribute or a class.
+    Hover and focus stay in the table on input.html and are not faked with a
+    stand class, because the moment a specimen carries .is-hover the page stops
+    describing the product. The frames are live; hover them.
+
+    Markup copied from ui-visual/wallet.html, not invented, and kept inside the
+    dialog it lives in: EVERY rule in input.css is scoped under
+    dialog.app-dialog, so a field shown on the bare canvas is not this system's
+    field at all, it is the browser's. The first cut of this block dropped the
+    ancestor and rendered four white boxes on graphite, which is a specimen
+    disproving itself.
+
+    The bet panel's own amount row is not repeated here: it is scoped under
+    .bet-panel and it stands on ui-kit/betpanel.html.
+  -->
+  <dialog class="app-dialog" open>
+    <div class="sheet-body">
+      <span class="field-label">Amount</span>
+      <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" value="$30.00" aria-label="Amount"></div>
+      <span class="field-label">Amount, disabled</span>
+      <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" value="$30.00" aria-label="Amount, disabled" disabled></div>
+      <span class="field-label">Quick amounts, one selected</span>
+      <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
+      <span class="field-label">Address</span>
+      <div class="amount-row"><input class="amount-input addr" type="text" value="0x7a3f...9c21" aria-label="Wallet address"></div>
+    </div>
+  </dialog>
+
   <div class="kit-subh">Roadmap sidebar</div>
   <aside class="sidebar" id="rmSidebar">
     <a href="#" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>

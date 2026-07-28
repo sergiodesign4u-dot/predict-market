@@ -463,6 +463,106 @@ button has none, so it compared plum ink against the stone three levels up. A se
 graphite and chalk. **A measurement that has not been checked against a known-good case is a claim,
 not a proof.**
 
+## What step 7d settled
+
+A fourth pass, run as a readiness check against the course's own "done when" list rather than as a
+hunt for defects, which is why it found a different kind. Eleven findings. Two of my own measurements
+were wrong and are recorded here as findings against the method, because a false positive costs the
+same attention as a real one.
+
+### A rule with no gate behind it is a preference
+
+`CLAUDE.md` has said since Stage 08 that `wireframes/` owns structure and copy and `ui-visual/` owns
+the visual layer. Nothing checked it. Stage 08 then **redesigned the Event Detail while painting it**:
+an AMM market panel with a price-by-size table, a chart rebuilt as head / plot / axis / range, a
+rules-and-context tab split where the grey tree has two flat sections, a share-and-save cluster, an
+odds bar, and a real `<input>` where the grey tree had a `<span>` pretending to be a field. Measured
+on `<main>`, 55 of 72 twinned screens differed, Event Detail by 222 elements. The copy inventory in
+`voice/docs/microcopy.md`, which is the source of truth for copy, did not carry 43 of the strings the
+product had been shipping for a stage.
+
+The structure was ported back by `wireframes/_generators/port_structure.py`, and **gate 18** now
+fails the build when the two trees disagree. The four differences that ARE the boundary are declared
+in `wireframes/_conventions.md` and the gate is blind to those and nothing else: the plate wrappers,
+the icon mechanism, the photograph, and chart data (a wireframe draws its data, a product computes
+it).
+
+### Four bugs in the porter, and they are the useful part
+
+The generator was written, run, and wrong four times before it was right. Each one is a rule.
+
+- **Splitting a selector list on commas cuts `:is(h2,h3)` in half.** The generated sheet contained
+  `.ed-chart-head :is(h2 { margin: 0; }`, and a browser that cannot parse a rule drops it AND
+  everything after it in the same sheet. The visible symptom was a chart axis rendering as running
+  text, which looks like a missing rule and is not. Gate 16 exists for this shape one tree over; the
+  porter now checks its own output for balance before writing.
+- **Deleting `@media` blocks before reading a file deletes the layout.** The hero stacks at 620px and
+  that instruction lives nowhere else, so the ported feed came out 14px wider than the phone it was
+  drawn for. A breakpoint is layout, and layout is what a wireframe is for.
+- **"Already styled" is the wrong question when the markup moved.** The category bar used to hang off
+  the device beside `<main>` as `li > button`; the painted tree puts it inside as `li > a > button` in
+  a strip that scrolls sideways. The old grey rules still matched something, so nothing looked
+  missing.
+- **A selector naming a scope the target tree does not have can never match.** Nine ported rules named
+  `.feed-inner`, which the port had just unwrapped.
+
+### A photograph travels two ways
+
+`background-image` was stripped and `<img>` was not, so four pictures entered a tree that had zero
+image elements across 104 pages, one of them 1400px wide. Both are the picture; only one of them
+looks like styling.
+
+### Two findings that were my own measurement error
+
+Recorded, because the correction is worth as much as the finding. A scan for undocumented same-value
+token groups reported six; the check was **case-sensitive** and every one of the six is documented,
+starting with a capital. A scan for roles without provenance reported two; both sit under a group
+comment that covers them. All 31 coincidences and all 133 roles are accounted for. **A checker that
+has not been run against a case it should pass is not a checker yet.**
+
+### The vitrine was showing part of one of two icon mechanisms
+
+Step 7c added the inline-drawn icons because the sheet documented only the sprite. It collected them
+with a regex wanting `class="ic"` as the **first** attribute, which is a question about how markup
+happens to be typed. Fourteen marks were missing, including the chevron, which at 176 uses is the
+most drawn icon in the product, and the three sign-in brand marks. The rule is now the question the
+section is asking: an `<svg>` on a screen is either a MARK or a drawing of DATA, there are two
+drawings, name those and take the rest. **Gate 17** checks the other direction of gate 3: a mark on a
+screen that the sheet does not show. One checkmark was drawn two ways for one meaning and is now
+drawn one way.
+
+### The stacking order is the one scale that cannot be a bar
+
+Eleven `--z-*` tokens were declared in step 7b and shown on no foundations page. They are now a
+section of `tokens.html`, drawn as the stack they are, with the plates written into the page
+**highest first**: source order alone would stack them backwards, so the picture is only right while
+every token is. A specimen that would still look correct with the tokens removed proves nothing.
+
+### A specimen without its ancestor is not the product's element
+
+The field page listed its states as a table of selectors and rendered none, which is the one
+component where reading `opacity: .45` is not seeing it. The states that a state actually IS (an
+attribute, a class) now render. The first cut put them on the bare canvas and got four white boxes on
+graphite: every rule in `input.css` is scoped under `dialog.app-dialog`. Hover and focus stay in the
+table and are not faked with a stand class, because the moment a specimen carries `.is-hover` the
+page describes itself instead of the product.
+
+### The roadmap was true in one place and false in twenty-one
+
+`LAYOUT` in `wireframes/_generators/resync_sidebar.py` has had Tokens + Components finished since it
+shipped. Twelve root pages render from it. Sixteen annotation pages and five archived concept pages
+carry a copy typed into their own generator, and every one still showed a finished stage as planned,
+wearing the "Next" badge that belongs to the next thing to build. Fixed by `_resync_roadmap.py`,
+which rewrites the three lines that are wrong rather than re-rendering the whole nav, because several
+of those pages carry local entries `LAYOUT` knows nothing about and a full re-render would delete
+them to win an argument about single-sourcing.
+
+### A fossil is only visible once the thing it was a fossil of is gone
+
+`.chart-wrap` and `.chart-cap` were listed in `coverage.md` as "the grey-era version of a block the
+paint replaced" and kept because the grey tree still carried the markup. Porting the rebuild took the
+last element either could match, and gate 14 called them within the same run.
+
 ## Naming
 
 Roles are read out of the product, not borrowed. The audit (`tokens-audit.md`) lists, for every role,
@@ -637,6 +737,8 @@ no product class at all.
 | a heading LEVEL | `wireframes/` first, then the colour copy | structure is owned by the grey tree, and gate 15 reads both |
 | a sample photograph | on the element, `style="background-image:..."` | it is content, and gate 9 lets exactly this through |
 | a shared image asset | `assets/` at the root | owned by neither layer, reached by both |
+| a BLOCK: a new section, a control, anything with markup | `wireframes/` first, then the colour copy | structure is owned by the grey tree. Gate 18 fails the build when the two disagree, and the four differences that are the layer boundary are declared in `wireframes/_conventions.md` |
+| a UI string | `voice/docs/microcopy.md` gets a row, then both trees | the table is the source of truth for copy. For one stage it was not, and 43 shipped lines were missing from it |
 
 A change made on one screen is a desync by definition. If a screen needs something the component does
 not have, either the component grows a variant class or the screen is wrong.

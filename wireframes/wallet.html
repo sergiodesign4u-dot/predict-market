@@ -470,6 +470,23 @@
     .footer-popular h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
     .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
     .popular-links a { color: #444; }
+  /* ---- ported from the painted twin by port_structure.py ---- */
+    /* Layout taken from components/, every colour replaced by the
+       wireframe palette. See wireframes/_generators/port_structure.py. */
+    .cta-bar.static { position: static; }
+    .ed-oddsbar .track, .md-bar { background: #dcdcdc; }
+    .ed-oddsbar .fill { background: #555; }
+    .ed-act, .rules-tab, .ed-range button { border: 1px solid #999;
+      background: #eee; color: #222; font-size: 10px; }
+    .rules-tab.sel, .ed-range button.sel { background: #dcdcdc; font-weight: bold; }
+    .market-box, .md-table { border: 1px solid #ccc; }
+    .market-head { padding: 6px 8px; background: #eee; cursor: pointer; }
+    .ms-label, .md-sub, .rules-note, .ed-chart-now, .bp-cash { color: #555; }
+    .rel-thumb { width: 40px; height: 40px; border: 1px solid #999;
+      background: #dcdcdc; flex: 0 0 40px; }
+    .ed-yaxis span, .ed-xaxis span { font-size: 9px; color: #555; }
+    .ed-plot { border: 1px solid #ccc; }
+    .rules-panel[hidden] { display: none; }
   </style>
   <style>
   </style>
@@ -795,60 +812,62 @@
       </div>
     </header>
     <main class="feed">
-      <div class="feed-inner">
+      
+        
+        
         <div class="feed-head"><h1>Wallet</h1></div>
         <article class="pos" aria-label="Balance summary">
-          <div class="pos-figures" style="font-size:11px;">
+          <div class="pos-figures">
             <span class="pos-fig">Portfolio total<b>$142.00</b></span>
             <span class="pos-fig">Cash (available)<b>$92.00</b></span>
             <span class="pos-fig">In-play (open bets)<b>$50.00</b></span>
           </div>
           <span class="pos-status">Portfolio = Cash + In-play. In-play is locked in open bets until they resolve.</span>
         </article>
-        <div class="cta-bar" style="position:static;">
+        <div class="cta-bar static">
           <button type="button" data-open="deposit">Add funds</button>
           <button type="button" data-open="withdraw">Withdraw</button>
         </div>
         <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds. Added funds, payouts and withdrawals are recorded below.</p>
-        <p class="pos-status" style="margin:10px 0 2px;text-transform:uppercase;letter-spacing:.04em;">Transaction history</p>
+        <p class="pos-status">Transaction history</p>
         <div class="pos-list">
           <article class="pos">
             <div class="pos-top">
               <span class="pos-q">Withdrawal to USDC address</span>
-              <span class="pos-status" style="white-space:nowrap;">-$30.00</span>
+              <span class="pos-status">-$30.00</span>
             </div>
             <span class="pos-status">Jun 28 &middot; pending (on-chain)</span>
           </article>
           <article class="pos">
             <div class="pos-top">
               <span class="pos-q">Payout: US government shutdown - YES won</span>
-              <span class="pos-status" style="white-space:nowrap;">+$13.20</span>
+              <span class="pos-status">+$13.20</span>
             </div>
             <span class="pos-status">Jun 27 &middot; completed</span>
           </article>
           <article class="pos">
             <div class="pos-top">
               <span class="pos-q">Platform fee (won bet)</span>
-              <span class="pos-status" style="white-space:nowrap;">-$0.40</span>
+              <span class="pos-status">-$0.40</span>
             </div>
             <span class="pos-status">Jun 27 &middot; completed</span>
           </article>
           <article class="pos">
             <div class="pos-top">
               <span class="pos-q">Stake: Bitcoin above $150,000 - YES</span>
-              <span class="pos-status" style="white-space:nowrap;">-$25.00</span>
+              <span class="pos-status">-$25.00</span>
             </div>
             <span class="pos-status">Jun 26 &middot; locked in-play</span>
           </article>
           <article class="pos">
             <div class="pos-top">
               <span class="pos-q">Added funds via card (Transak)</span>
-              <span class="pos-status" style="white-space:nowrap;">+$20.00</span>
+              <span class="pos-status">+$20.00</span>
             </div>
             <span class="pos-status">Jun 26 &middot; completed</span>
           </article>
         </div>
-      </div>
+        <!-- /cat-main --><!-- /cat-layout --><!-- /feed-inner -->
     </main>
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">

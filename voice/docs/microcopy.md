@@ -1392,3 +1392,60 @@ after.
 | `Withdraw funds (USDC)` (summary of a collapse) | `Withdraw funds` (dialog heading) | `.sheet-head h2` | the currency is in the subtitle now, so the heading says the act |
 | (none) | `Withdrawals are in USDC only. A network fee applies.` | `.sheet-sub` | moved up from the body, where it was a fine-print line under the address |
 | `On-chain transfers can't be reversed, so check the address before you confirm. After that, the withdrawal shows as pending, then confirmed once it settles, or failed with the funds returned to your Cash. It's tracked in the history below.` | split: `On-chain transfers can't be reversed, so check the address before you confirm.` above the button, the rest below it | `.protect` + `.fine` | principle 2: one plain sentence of trust before the ask. What cannot be undone belongs before the button; what happens next belongs after it |
+
+### Step 24 - The copy the paint wrote and this table never saw (Event Detail redesign, feed hero, brand tile)
+
+Not a rewrite. This is the inventory catching up with itself, and the way it was found is the point:
+the Stage-09 structure port copied the painted `<main>` back into `wireframes/`, which owns copy, and
+43 strings arrived that no row here describes. All of them have been shipping in `ui-visual/` since
+Stage 08, when the Event Detail was redesigned during the colour pass and the feed hero and brand
+tile were built. **The table is the source of truth for copy, and for one stage it was the copy.**
+
+Sample content is not inventoried by the rules above (event questions, volumes, usernames, dates),
+so what follows is the interface copy only. It is logged as written, not edited: it was already read
+against `voice.md` when it shipped, and the two lines that were not are marked.
+
+| line | where | rule it answers |
+|---|---|---|
+| `Market` | `.market-title`, the AMM panel head | lexicon: the concept is the market, the thing you back is an event |
+| `Yes price` / `No price` / `24h` / `Volume` / `Liquidity` | `.ms-label` | principle 1: name the number before showing it |
+| `Price by bet size` | `.md-title` | says what the table is, not what it is called internally (no "depth chart") |
+| `How the YES price moves as your bet grows. This market runs on an AMM, not an order book.` | `.md-sub` | principle 1 and principle 3: explains the mechanism in a spectator's words, and says what it is NOT, because an order book is what a trader would assume |
+| `Bet` / `Avg YES price` / `You receive if YES` | `.md-row-head` | column heads in the lexicon: bet, not position; receive, not payout |
+| `Rules` / `Market Context` | `.rules-tab` | two tabs, because what decides the outcome and what explains the odds are different promises. See the note below |
+| `Background from the Predict Market team to explain the odds. It plays no role in how this market resolves.` | `.rules-note` | the sharpest line of the redesign: it exists so the context tab can never be mistaken for the resolution rule |
+| `Not just news.` / `Opinions have value.` / `The market decides.` | `.brand-tile` | principle 5: three specific claims, no superlative |
+| `Every outcome is public and verifiable.` / `1,284 events resolved on-chain` | `.hero-trust` | principle 2: one plain sentence of trust, with a number that can be checked |
+| `Back YES` / `Back NO` | `.hf-btn`, the featured hero | the hero is the one place the verb is written out; the cards keep bare `YES` / `NO` |
+| `Hot right now` / `See all hot events` | `.hh-head`, `.hh-all` | a heading and its exit, per the empty-state rule that every block gives a way out |
+| `Live odds &amp; volume &middot; last 30 days` | `.hf-chart-cap` | says what the chart is measuring and over what window |
+| `Load more events` | `.load-more` | lexicon: events, never markets, in a control |
+| `Browse more events` | `.related-more` | same verb as the empty states, so leaving a dead end reads the same everywhere |
+
+**Two lines were opened as defects and both were closed as correct.** Recorded because the reasoning
+is the useful part, and because the first one is a line that looks wrong and must not be changed.
+
+| line | the objection | the answer |
+|---|---|---|
+| `Closes: Sep 1, 2027` | every other label in the product is `label value`, so the colon reads like the one inconsistency | the colon is not punctuation here, it is a **delimiter**: the feed script splits the meta row on it into `.m-label` and `.m-val`, which is why `coverage.md` lists both classes as built at runtime. Take the colon out and the row stops splitting. A style rule that would break a script is a style rule with a missing fact in it |
+| `Trending now &middot; Politics` | reads like the tiny tracked eyebrow above every section, which is a named AI tell | kept: it appears once, on the featured hero, and it says WHERE you are rather than announcing the section below it. One named location is voice; an eyebrow on every block is grammar |
+
+Health: the grey tree and the colour tree now carry identical copy inside `<main>` on all 55 twinned
+screens, which gate 18 checks. 0 em-dash. No line was invented for the wireframe.
+
+### Step 25 - The switch that said its own state (19 screens, both trees)
+
+Found by re-measuring contrast, not by reading: `button.toggle[role=switch]` on the sort panel
+carried the word `off` inside the pill, drawn in the browser's default black on graphite at
+**1.42:1**. It was never meant to be read. The switch is drawn by CSS as a track and a knob, so the
+word sat under the knob, invisible to a person and a WCAG AA failure to a checker.
+
+The defect is not the colour. **The text content of a switch is its NAME, and this one was its
+STATE**, which `aria-checked` already carries and carries better: a screen reader announces on/off
+from the attribute, so the word was a second, silent, contradictory copy of the same fact.
+
+| was | became | where | why |
+|---|---|---|---|
+| `off` as the button's text | removed; `aria-label="Reverse sort"` instead | `.reverse-row .toggle[role=switch]`, 19 screens x 2 trees | the visible label `Reverse sort` already sits beside it in the row; the button now takes that as its name and lets `aria-checked` say the state |
+
+Health: 31068 text pairs measured across 77 painted screens in both themes, **0 below AA** (was 3).

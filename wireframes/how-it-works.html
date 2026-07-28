@@ -456,6 +456,23 @@
     .footer-popular h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
     .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
     .popular-links a { color: #444; }
+  /* ---- ported from the painted twin by port_structure.py ---- */
+    /* Layout taken from components/, every colour replaced by the
+       wireframe palette. See wireframes/_generators/port_structure.py. */
+    .cta-bar.flat { position: static; padding: 8px 0 0; }
+    .ed-oddsbar .track, .md-bar { background: #dcdcdc; }
+    .ed-oddsbar .fill { background: #555; }
+    .ed-act, .rules-tab, .ed-range button { border: 1px solid #999;
+      background: #eee; color: #222; font-size: 10px; }
+    .rules-tab.sel, .ed-range button.sel { background: #dcdcdc; font-weight: bold; }
+    .market-box, .md-table { border: 1px solid #ccc; }
+    .market-head { padding: 6px 8px; background: #eee; cursor: pointer; }
+    .ms-label, .md-sub, .rules-note, .ed-chart-now, .bp-cash { color: #555; }
+    .rel-thumb { width: 40px; height: 40px; border: 1px solid #999;
+      background: #dcdcdc; flex: 0 0 40px; }
+    .ed-yaxis span, .ed-xaxis span { font-size: 9px; color: #555; }
+    .ed-plot { border: 1px solid #ccc; }
+    .rules-panel[hidden] { display: none; }
   </style>
   <style>
     .hiw-sec { padding: 12px 0; border-top: 1px solid #ccc; }
@@ -753,7 +770,9 @@
       </div>
     </header>
     <main class="feed">
-      <div class="feed-inner">
+      
+        
+        
         <div class="feed-head"><h1>How It Works</h1></div>
         <p class="hiw-lead">You always know what you are doing, why, and what happens to your money. This is a promise, not a FAQ.</p>
         <section class="hiw-sec">
@@ -774,18 +793,18 @@
           <h2>Proven, not promised</h2>
         </section>
         <article class="pos" aria-label="Resolved markets">
-          <div class="pos-figures" style="font-size:11px;">
+          <div class="pos-figures">
             <span class="pos-fig">Events resolved<b>1,240</b></span>
             <span class="pos-fig">On-chain proofs<b>100%</b></span>
             <span class="pos-fig">USDC held 1:1<b>always</b></span>
           </div>
           
         </article>
-        <div class="cta-bar" style="position:static;border:none;background:none;padding:10px 0 0;">
-          <a href="event-feed.html" style="flex:1;"><button type="button" style="width:100%;">Browse events</button></a>
-          <button type="button" data-open="deposit" style="flex:1;">Add funds</button>
+        <div class="cta-bar flat">
+          <a href="event-feed.html"><button type="button" style="width:100%">Browse events</button></a>
+          <button type="button" data-open="deposit">Add funds</button>
         </div>
-      </div>
+        <!-- /cat-main --><!-- /cat-layout --><!-- /feed-inner -->
     </main>
     <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">

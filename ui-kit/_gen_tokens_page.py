@@ -371,6 +371,24 @@ for t in sizes["tokens"]:
 size_html.append("</div>")
 size_html = "\n".join(size_html)
 
+# ---- primitive: layers
+# The one scale that cannot be drawn as a bar, because its axis points at the
+# reader. It is drawn as the stack it is, and the plates are written into the
+# DOM HIGHEST FIRST: source order alone would then stack them backwards, so the
+# picture below is only right if every z-index token is right. A specimen that
+# would still look correct with the tokens removed proves nothing.
+layers = find(PRIM, "layers")[0]
+layer_html = ['<div class="tk-layers">']
+for i, t in enumerate(reversed(layers["tokens"])):
+    n = len(layers["tokens"]) - 1 - i
+    layer_html.append(
+        f'<div class="tk-layer" style="z-index:var({t["name"]});'
+        f'top:{n * 26}px;left:{n * 30}px">'
+        f'<b>{esc(t["name"])}</b><i>{esc(resolve(t["value"]))}</i>'
+        f'<span>{esc(t["comment"] or "")}</span></div>')
+layer_html.append("</div>")
+layer_html = "\n".join(layer_html)
+
 # ---- primitive: type
 typ = find(PRIM, "type")[0]
 fonts = [t for t in typ["tokens"] if t["name"].startswith("--font-")]
@@ -544,6 +562,16 @@ HTML = f"""<!doctype html>
     {scale_rows(frame["tokens"])}
     <p class="tk-note">The gutter is the only responsive token: {esc(GUTTER_MOBILE)} below 640px, so the
     inset plate still breathes on a phone.</p>
+    <h3 class="tk-subh">stacking order</h3>
+    <p class="tk-note">The third axis, and the only scale here that points at the reader rather than
+    along the screen. It is a <b>list</b>, not a ramp: the number carries the order and the name
+    carries the reason, and nothing outside the token file may type a raw <code>z-index</code>. What
+    it replaced was 0 1 2 3 4 5 6 10 40 49 50 60 199 200 201 across twelve files, where three values
+    did one job and <code>199</code> beside <code>201</code> is the shape of a number picked to win an
+    argument instead of to sit in an order. The plates below are written into the page highest first,
+    so source order alone would stack them backwards: this picture is only right while every token
+    is.</p>
+    {layer_html}
   </section>
 
   <section class="tk-sec" id="type">

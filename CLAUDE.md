@@ -245,7 +245,7 @@ The visual language, decided as **rules traced to data + taste**, not a mood. So
 
 The styling layer became a system. `components/` holds `tokens.css` plus one css file per component,
 all reached through `components/index.css`; `ui-kit/` is the vitrine that shows it and the gates that
-keep it honest (`python3 ui-kit/_check_kit.py`, sixteen checks, exits non-zero on the first failure).
+keep it honest (`python3 ui-kit/_check_kit.py`, eighteen checks, exits non-zero on the first failure).
 Contract and reasoning: `ui-kit/docs/architecture.md`. The reading it grew from: `ui-kit/docs/tokens-audit.md`.
 
 - **Step 5 (done):** every painted screen dropped its inline `<style>` and its `_theme.css` link and
@@ -532,6 +532,58 @@ reasoning in `ui-kit/docs/architecture.md`, "What step 7c settled". What changed
   buttons the checker could not read, then 405 that were a theme swap measured mid-transition):
   **a measurement not checked against a known-good case is a claim, not a proof.** **Gates: 16.**
 
+### Step 7d (done, 2026-07-28): the readiness pass, and the rule that had no gate
+
+Run against the course's own "done when" list rather than as a defect hunt, which is why it found a
+different kind of defect. **Eleven findings, nine closed, two of them my own measurement error.**
+Full record in `ui-kit/docs/architecture.md`, "What step 7d settled".
+
+- **A rule with no gate behind it is a preference.** `wireframes/` owns structure and copy has been
+  written here since Stage 08 and nothing checked it, so Stage 08 **redesigned the Event Detail while
+  painting it** and the redesign never came back: an AMM market panel with a price-by-size table, a
+  chart rebuilt as head / plot / axis / range, a rules-and-context tab split, a share-and-save
+  cluster, an odds bar, and a real `<input>` where the grey tree had a `<span>` pretending to be a
+  field. 55 of 72 twinned `<main>` elements differed, Event Detail by 222 elements. Ported back by
+  `wireframes/_generators/port_structure.py` (idempotent, reads the painted twin, never writes to
+  `ui-visual/`), which derives the grey-box rules from `components/` by keeping what a rule PLACES
+  and dropping every colour: **a grey box is the painted component with its finish scraped off.**
+  **Gate 18** fails the build when the two trees disagree; the four differences that ARE the
+  boundary are declared in `wireframes/_conventions.md` (plate wrappers, icon mechanism, photograph,
+  and chart data, because a wireframe draws its data and a product computes it).
+- **The copy inventory was not the source of truth for a whole stage.** 43 strings the product had
+  been shipping since Stage 08 had no row in `voice/docs/microcopy.md`, including every label of the
+  market panel and the line that keeps the context tab from being read as the resolution rule. Logged
+  as Step 24. Two lines were opened as defects and closed as correct, and the first is the useful
+  one: `Closes: Sep 1, 2027` looks like the product's only stray colon and the colon is a
+  **delimiter** the feed script splits the meta row on. **A style rule that would break a script is a
+  style rule with a missing fact in it.**
+- **Four bugs in my own generator, each one a rule.** Splitting a selector list on commas cuts
+  `:is(h2,h3)` in half, and a browser drops an unparseable rule AND everything after it in the sheet
+  (the symptom was a chart axis rendering as running text). Deleting `@media` before reading a file
+  deletes the layout, so the feed came out 14px wider than the phone it was drawn for. "Already
+  styled" is the wrong question when the markup moved. A selector naming a scope the target tree does
+  not have can never match.
+- **A photograph travels two ways.** `background-image` was stripped and `<img>` was not, so four
+  pictures entered a tree with zero image elements across 104 pages, one of them 1400px wide.
+- **Two findings were my own measurement error**, recorded because a false positive costs the same
+  attention as a real one: a case-sensitive scan called six documented token coincidences
+  undocumented. **A checker that has not been run against a case it should pass is not a checker.**
+- **Gate 17**, the other direction of gate 3: 14 marks stood on screens and were on no sheet,
+  including the chevron at 176 uses and the three sign-in brand marks, because step 7c collected
+  icons with a regex wanting `class="ic"` as the first attribute. An `<svg>` on a screen is either a
+  MARK or a drawing of DATA; there are two drawings. One checkmark drawn two ways is now drawn one.
+- Also: the eleven `--z-*` tokens are now a section of `tokens.html`, drawn as a stack written
+  **highest first** so only the tokens can produce the right picture; the field gained a rendered
+  state set (`input-states`), and its first cut on the bare canvas rendered four white boxes because
+  every rule in `input.css` is scoped under `dialog.app-dialog`; the roadmap sidebar was true in
+  `LAYOUT` and false on 21 pages that keep their own copy, fixed by `_resync_roadmap.py`; and
+  `.chart-wrap` / `.chart-cap` died the moment the port took the last markup they could match, which
+  is a fossil pair working as intended.
+- **Verified:** 104 grey pages at 380 and 1280, **0 horizontal overflow, 0 page errors, 0 colour
+  outside the wireframe palette**, against the same sweep run on a worktree of the previous commit.
+  Structural parity 55 of 55. Gate 18 was tested by injecting drift and confirming it fails.
+  **Gates: 18.**
+
 ### The rule for a change, from here on
 
 Replaces the Stage-07 wording that pointed at `ui-kit/kit.css` and `ui-kit/kit.html`; neither has
@@ -557,7 +609,7 @@ that role any more.
   root, owned by neither layer.
 - **A new component** = css in `components/` + a page in `ui-kit/` + an entry in `ui-kit/_nav.js` +
   a row in `ui-kit/docs/inventory.md` (with its CSS file and Page columns). Then
-  `python3 ui-kit/_check_kit.py` has to pass, all sixteen.
+  `python3 ui-kit/_check_kit.py` has to pass, all eighteen.
 - **`ui-kit/kit.html` is frozen.** It is the flat kit the system was read out of and it is kept as
   provenance; a component is never added to it. **`ui-kit/shell.html` composes** the header and
   bottom-nav specimens and holds no markup of its own.
@@ -565,4 +617,10 @@ that role any more.
   level, because a radius or a gap has nothing for a theme to override; a component level is not
   part of this stage.
 - **Never paint `wireframes/`.** Structure and copy are owned there and stay grey; `ui-visual/` owns
-  the visual layer only.
+  the visual layer only. **And the traffic runs the other way too**: a new block, a new control, a new
+  section is decided in `wireframes/` and the colour copy follows. Gate 18 fails the build when the
+  two trees disagree inside `<main>`; the four differences that are the layer boundary (plate
+  wrappers, icon mechanism, photograph, chart data) are declared in `wireframes/_conventions.md`.
+- **A UI string gets a row in `voice/docs/microcopy.md` before it ships**, then goes into both trees.
+  That table is the source of truth for copy, and for one stage it was not: 43 shipped lines had no
+  row in it.

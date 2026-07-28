@@ -53,7 +53,7 @@ push();});})();</script>
     <div class="tk-badges">
       <span class="tk-badge">components/bets-table.css</span>
       <span class="tk-badge">38 rules</span>
-      <span class="tk-badge">16 classes</span>
+      <span class="tk-badge">19 classes</span>
       <span class="tk-badge">9 screens</span>
     </div>
   </header>
@@ -90,7 +90,7 @@ push();});})();</script>
     shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
     used by nothing. Only the last kind is a deletion candidate, and they are collected in
     <a href="docs/coverage.md">coverage.md</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.act-list</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.act-row</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.act-time</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.act-txt</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-amt</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-col</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-cols</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-name</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-out</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-rank</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-row</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.lg-item</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-runtime" title="the chart legend, built by the detail script">runtime</span></td></tr><tr><td class='tk-role'>.ptable</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sel</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.you</td><td class='tk-hex'>7</td><td class='tk-hex'></td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.act-list</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.act-row</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.act-time</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.act-txt</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.arg-col</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.css</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.ed-section</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-amt</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-col</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-cols</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-name</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-out</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-rank</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.hold-row</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.lg-item</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-runtime" title="the chart legend, built by the detail script">runtime</span></td></tr><tr><td class='tk-role'>.ptable</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sel</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.you</td><td class='tk-hex'>7</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
@@ -129,7 +129,9 @@ push();});})();</script>
 .hold-cols{flex-direction:row}
 .hold-col{flex:1}
 .hold-col:first-child{border-right:1px solid var(--border-hairline);padding-right:var(--space-12)}
-.app-case .hold-col h3{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold)}
+/* same story as .arg-col h3 in event-detail.css: the .ed-section label sets properties this rule
+   does not, and a nested head has to answer for each of them */
+.app-case .hold-cols .hold-col h3{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);text-transform:none;letter-spacing:normal;margin:0 0 var(--space-4)}
 .app-case .hold-cols .hold-col:first-child h3{color:var(--outcome-yes-text)}
 .app-case .hold-cols .hold-col:last-child h3{color:var(--outcome-no-figure)}
 .app-case .hold-row{border-top:1px solid var(--edge-groove-dark);font-size:var(--text-13);color:var(--text-primary)}

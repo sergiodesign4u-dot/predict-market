@@ -78,9 +78,8 @@ NAV_TMPL = """<button class="rmx-toggle" id="rmxToggle" aria-label="Open navigat
     </div>
     <a href="concept.html" class="sidebar-page-link">Concept</a>
     <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
-    <a href="../ui-kit/kit.html" class="sidebar-page-link">UI Kit</a>
-    <a class="sidebar-page-link planned next">Tokens + Components</a>
-    <a class="sidebar-page-link planned">Design System</a>
+    <a href="../ui-kit/overview.html" class="sidebar-page-link">Tokens + Components</a>
+    <a class="sidebar-page-link planned next">Design System</a>
     <a class="sidebar-page-link planned">Responsive</a>
     <a class="sidebar-page-link planned">Animation</a>
     <a class="sidebar-page-link planned">Handoff</a>

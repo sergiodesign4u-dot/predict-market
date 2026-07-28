@@ -80,13 +80,25 @@ tiles = "".join(
 # a shape nobody labelled is a guess. Each one is captioned with the accessible
 # name of the control it sits in, or the visible text beside it: what the product
 # already calls it. The ones with neither are honestly captioned "no label".
-ICO_RE = re.compile(r'<svg class="ic(?: ic-sm)?"[^>]*>(.*?)</svg>', re.S)
+#
+# The first cut of this section asked for class="ic" or class="ic ic-sm" and asked
+# for it as the FIRST attribute, which is a question about how the markup happens
+# to be typed rather than about what the element is. It missed 14 shapes: every
+# ic-sm on its own (the chevron, at 176 uses the most drawn mark in the product),
+# every icon carrying a second class (ic tr-ic, ic prov-google), and the marks
+# with a class of their own (ft-ic, cat-ic, seo-h-ic, market-chevron, the ticks).
+# So the section built to fix "the vitrine shows one of two mechanisms" was itself
+# showing part of one. The rule is now the question the section is actually
+# asking: an <svg> on a screen is either a MARK or a drawing of DATA, and there
+# are exactly two drawings. Name those, take the rest.
+DATA_SVG = {"chart-svg", "hf-graph"}
+ICO_RE = re.compile(r'<svg\b[^>]*?class="([^"]*)"[^>]*>(.*?)</svg>', re.S)
 inline = {}
 for f in SCREENS:
     src = open(f, encoding="utf-8").read()
     for m in ICO_RE.finditer(src):
-        inner = m.group(1)
-        if "<use" in inner:
+        classes, inner = set(m.group(1).split()), m.group(2)
+        if "<use" in inner or classes & DATA_SVG:
             continue
         key = re.sub(r"\s+", " ", inner).strip()
         rec = inline.setdefault(key, {"n": 0, "pages": set(), "label": ""})

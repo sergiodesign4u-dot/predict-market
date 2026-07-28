@@ -1,15 +1,20 @@
 /* components/chart.css
-   Component: chart. Classes: .chart-cap, .chart-svg, .chart-wrap, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-now, .ed-legend, .ed-plot, .ed-xaxis, .ed-yaxis, .ml-line, .nowline.
+   Component: chart. Classes: .chart-svg, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-now, .ed-legend, .ed-plot, .ed-xaxis, .ed-yaxis, .ml-line, .nowline.
 
    Reads: --bg-chart-well, --border-brass-hover, --border-hairline, --chart-line, --chart-line-glow, --outcome-yes-text, --text-muted
    Stand:  ui-kit/chart.html
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.chart-wrap{padding:0}
+/* .chart-wrap and .chart-cap used to sit here, described in coverage.md as "the
+   grey-era version of a block the paint replaced": the wrapper and the caption of
+   the chart the wireframe drew before Stage 08 rebuilt it as head / plot / axis /
+   range. They were kept because the grey tree still carried the markup. Porting
+   that rebuild back into wireframes/ took the last element either one could match,
+   so gate 14 called them the moment the port landed. That is the pair working as
+   intended: a fossil is only visible once the thing it was a fossil OF is gone. */
 .chart-svg polyline{fill:none}
 .chart-svg text{font-size:7px}
-.chart-cap{font-size:var(--text-10);margin:var(--space-4) 0 0;display:flex;justify-content:space-between}
 .app-case .chart-svg{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-chart-well)}
 .app-case .chart-svg polyline,.app-case .chart-svg line{vector-effect:non-scaling-stroke}
 .app-case .chart-svg polyline{stroke:var(--chart-line);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 1px 4px var(--chart-line-glow))}

@@ -3,7 +3,7 @@
 
     python3 ui-kit/_check_kit.py
 
-Thirteen checks, each one a defect that actually happened at least once:
+Seventeen checks, each one a defect that actually happened at least once:
 
   1. the product did not move        components/ and wireframes/ clean, and a
                                      ui-visual/ page differs only in its sidebar
@@ -25,6 +25,11 @@ Thirteen checks, each one a defect that actually happened at least once:
                                      and every screen and frame can switch theme
  14. no selector without markup      a rule nothing on any page can match is a
                                      fossil, the other half of gate 11
+ 15. one h1, no skipped level        in BOTH trees, because structure is owned by
+                                     wireframes/ and the paint only follows
+ 16. every declaration parses        prose inside a block drops every rule after it
+ 17. every mark is on the sheet      the other direction of gate 3: an icon a screen
+                                     draws that the vitrine does not show
 
 The live half of the verification is ui-kit/selftest.html, which loads every
 specimen in a frame and asks it whether it rendered. No em dash.
@@ -470,6 +475,124 @@ for tree in ("wireframes", "ui-visual"):
             prev = lvl
 check("15 one h1, no skipped level", not head_bad,
       "%d: %s" % (len(head_bad), ", ".join(head_bad[:4])))
+
+# 17 --------------------------------------------------------- icon coverage --
+# Gate 3 asks whether a reference points at a symbol that exists. Nothing asked
+# the other direction: whether a mark standing on a screen is shown anywhere a
+# person could find it. Fourteen were not, including the chevron, which at 176
+# uses is the most drawn icon in the product, and the three sign-in brand marks.
+# The section built in step 7c to end "the vitrine documents one of two icon
+# mechanisms" had collected its shapes with a regex that wanted class="ic" as the
+# first attribute, so it was itself showing part of one mechanism.
+#
+# An <svg> on a screen is either a MARK or a drawing of DATA. There are two
+# drawings; everything else has to be on the sheet.
+DATA_SVG = {"chart-svg", "hf-graph"}
+SVG_RE = re.compile(r'<svg\b[^>]*?class="([^"]*)"[^>]*>(.*?)</svg>', re.S)
+
+
+def marks(text):
+    """every distinct shape drawn by an icon in this document"""
+    out = set()
+    for m in SVG_RE.finditer(text):
+        if set(m.group(1).split()) & DATA_SVG or "<use" in m.group(2):
+            continue
+        for d in re.findall(r'\sd="([^"]+)"', m.group(2)):
+            out.add(" ".join(d.split()))
+        for s in re.findall(r"<(?:circle|rect|line|polyline|ellipse)[^>]*/>", m.group(2)):
+            out.add(" ".join(s.split()))
+    return out
+
+
+sheet = marks((KIT / "icons.html").read_text(encoding="utf-8"))
+unshown = {}
+for page in sorted((ROOT / "ui-visual").glob("*.html")):
+    for shape in marks(page.read_text(encoding="utf-8")) - sheet:
+        unshown.setdefault(shape, page.name)
+check("17 every mark is on the sheet", not unshown,
+      "%d: %s" % (len(unshown), ", ".join("%s (%s)" % (s[:22], p)
+                                          for s, p in list(unshown.items())[:3])))
+
+# 18 ------------------------------------------------------- the two trees ---
+# The rule has been in CLAUDE.md since Stage 08: wireframes/ owns structure and
+# copy, ui-visual/ owns the visual layer. Nothing enforced it, and Stage 08 broke
+# it quietly by REDESIGNING the Event Detail while painting it: an AMM panel, a
+# rebuilt chart, a rules tab split, a real <input> where the grey tree had a span
+# pretending to be a field. 55 of 72 <main> elements differed and the tree that
+# owns structure was the one that was wrong. A rule with no gate behind it is a
+# preference.
+#
+# Three differences are the LAYER BOUNDARY and are declared, not erased:
+#   - the plate wrappers .cat-layout / .cat-main / .feed-inner exist to draw a
+#     stone plate, so they are paint and are unwrapped before comparing
+#   - the icon mechanism: colour draws <use href="#id">, grey draws raw paths
+#   - the photograph: <img> and background-image are paint, the box stays
+# Everything else has to match. header, footer and bottom nav are NOT compared:
+# they carry their own declared differences (the wireframe screen-tree drawer,
+# the TBD chips) and are written up in wireframes/_conventions.md.
+PLATE = {"cat-layout", "cat-main", "feed-inner"}
+# A fourth boundary, and the one worth naming: a wireframe DRAWS its data and a
+# product COMPUTES it. The painted chart ships an empty x-axis and fills it from
+# a script on load; the wireframe types the labels in, because a wireframe with a
+# blank axis shows nothing about the axis. Same element, same place, contents
+# owned by different layers, so the contents are not compared.
+DATA_HELD = {"ed-xaxis", "ed-legend"}
+SELFCLOSE = {"br", "img", "input", "use", "path", "circle", "meta", "link",
+             "polyline", "source", "rect", "line", "hr", "ellipse", "stop"}
+TAG = re.compile(r"<(/?)([a-z0-9]+)([^>]*?)(/?)>")
+
+
+def shape(html):
+    """tag.firstclass for every element, minus the four declared exceptions."""
+    out, stack, blind = [], [], 0
+    for m in TAG.finditer(html):
+        close, tag, attrs, self = m.groups()
+        void = bool(self) or tag in SELFCLOSE
+        cl = re.search(r'class="([^"]*)"', attrs)
+        classes = cl.group(1).split() if cl else []
+        if close:
+            if blind:
+                blind -= 1
+                if not blind:
+                    continue
+            if stack and stack.pop():
+                continue
+            if blind:
+                continue
+            out.append("/" + tag)
+            continue
+        if blind:
+            if not void:
+                blind += 1
+            continue
+        drop = tag == "div" and bool(set(classes) & PLATE)
+        if tag in ("use", "path", "circle", "line", "polyline", "rect", "ellipse", "img"):
+            continue                       # icon mechanism and photography
+        if not void:
+            stack.append(drop)
+        if not drop:
+            out.append(tag + ("." + classes[0] if classes else ""))
+        if set(classes) & DATA_HELD and not void:
+            blind = 1
+            stack.pop()
+            out.append("/" + tag)
+    return out
+
+
+MAIN = re.compile(r"<main\b.*?</main>", re.S)
+drift = []
+for page in sorted((ROOT / "ui-visual").glob("*.html")):
+    twin = ROOT / "wireframes" / page.name
+    if not twin.exists():
+        continue
+    a = MAIN.search(page.read_text(encoding="utf-8"))
+    b = MAIN.search(twin.read_text(encoding="utf-8"))
+    if not a or not b:
+        continue
+    if shape(a.group(0)) != shape(b.group(0)):
+        drift.append(page.name)
+check("18 the two trees agree", not drift,
+      "%d: %s" % (len(drift), ", ".join(drift[:4])))
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:

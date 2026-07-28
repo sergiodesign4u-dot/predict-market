@@ -29,10 +29,10 @@ Per-stage layout: raw markdown lives in each stage's `docs/`, and the stage's HT
 | [`ia/`](./ia/) | **Information Architecture**: `docs/sitemap.md` + `docs/flows.md` + `docs/pages/` (Detailed-layer sources `seo.md`, `system.md`); visualizations `ia.html` / `sitemap.html` / `flows.html` / `concept-map.html` (Basic) and `seo.html` / `system.html` (Detailed); `annotations/` (wireframe annotations, generated) |
 | [`wireframes/`](./wireframes/) | **Grey-box wireframes**: 99 pages, every sitemap screen + all states + Favorites view, flow-linked, header / nav wired, clickable end to end |
 | [`voice/`](./voice/) | **Voice & Microcopy**: `docs/voice.md` + `docs/microcopy.md` + `voice.html` |
-| [`concept/`](./concept/) | **Concept**: the "Signal" visual language - `docs/references.md` (Refero) + `docs/concept.md` (designer taste, 5 attribute pairs, locked decisions); `directions.html` (3 directions) + `concept.html` (the stand: palette / type / form / contrast) |
+| [`concept/`](./concept/) | **Concept**: the **Vault** visual language - `docs/references.md` (Refero) + `docs/concept.md` (designer taste, 5 attribute pairs, locked decisions); `concept.html` (the stand: palette / type / form / contrast); superseded explorations archived in `old/` |
 | [`ui-visual/`](./ui-visual/) | **UI + Visual**: 76 color copies of the wireframes in the Vault language. A screen carries no styles of its own: it links `components/index.css` and nothing else. Generated and reconciled by `_apply_theme.py`; the grey wireframes stay grey |
 | [`components/`](./components/) | **The design system**: `tokens.css` (primitive + semantic + the light theme), `base.css`, one file per component, all reached through `index.css` |
-| [`ui-kit/`](./ui-kit/) | **The vitrine and the gates**: a stand page per component, the token page, the icon sheet, `docs/architecture.md` + `docs/inventory.md` + `docs/coverage.md`, and `_check_kit.py` (sixteen checks) |
+| [`ui-kit/`](./ui-kit/) | **The vitrine and the gates**: a stand page per component, the token page, the icon sheet, `docs/architecture.md` + `docs/inventory.md` + `docs/coverage.md`, and `_check_kit.py` (eighteen checks) |
 | [`design-system/`](./design-system/) | Full design system documentation |
 | [`responsive/`](./responsive/) | Responsive design pass |
 | [`animation/`](./animation/) | Motion + animation |
@@ -52,9 +52,9 @@ The old→new folder map is recorded in [`STRUCTURE.md`](./STRUCTURE.md).
 | Information Architecture (Basic + Detailed) | ✅ Done - Basic (flows + concept-map by intent) + Detailed (overview + sitemap + SEO layer + system nodes); flows color-coded by outcome + traced to CJM, jobs x screens matrix, no orphans. Detailed layer (targeted reconcile, since the wireframes already render pages): A-E SEO for the 5 indexed pages + footer, and 404 / 500 / 503 / cookie / toast grounded in law |
 | Wireframes | ✅ Done (104 pages: all screens + states + Favorites + Event Detail tabs + 5 system pages, flow-linked, header / nav wired, critique pass). Stage-04 reconcile: system pages (404/500/503/cookie/toasts), footer trust strip + SEO links, story-led per-card "why" + SEO sections, Related events, Win F5 friction |
 | Voice | ✅ Done (5 principles, lexicon, forbidden list, per-element rules; all 99 pages rewritten) |
-| Concept | ✅ Done - the "Signal" visual language: designer taste captured, 5 attribute pairs traced to data + borrowed technique, 3 contrasting directions (Newsroom / Signal / Arena), Signal chosen and locked; palette / type / form / photography / icons contrast-checked (WCAG AA) on the stand `concept.html` |
+| Concept | ✅ Done - the **Vault** visual language: designer taste captured, 5 attribute pairs traced to data + borrowed technique, contrasting directions explored (Newsroom / Signal / Arena, archived to `concept/old/`), Vault chosen and locked; palette / type / form / photography / icons contrast-checked (WCAG AA) on the stand `concept.html` |
 | UI + Visual | ✅ Done - all 76 screens painted in Vault; every one links exactly `components/index.css`. `/impeccable critique` 31 -> 38 / 40 |
-| Tokens + Components | ✅ Done (two token levels, three geometry scales, 38 components, 45 stand pages, 15 gates, a light theme as the proof of the semantic layer) |
+| Tokens + Components | ✅ Done (two token levels, three geometry scales, 38 components, 45 stand pages, 18 gates, a light theme as the proof of the semantic layer) |
 | Design System | ⬜ Not started |
 | Responsive | ⬜ Not started |
 | Animation | ⬜ Not started |

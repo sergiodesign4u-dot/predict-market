@@ -52,8 +52,8 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/chart.css</span>
-      <span class="tk-badge">23 rules</span>
-      <span class="tk-badge">14 classes</span>
+      <span class="tk-badge">21 rules</span>
+      <span class="tk-badge">15 classes</span>
       <span class="tk-badge">11 screens</span>
     </div>
   </header>
@@ -88,7 +88,7 @@ push();});})();</script>
     shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
     used by nothing. Only the last kind is a deletion candidate, and they are collected in
     <a href="docs/coverage.md">coverage.md</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.chart-cap</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-wireframe" title="the grey-era version of a block the paint replaced">wireframe</span></td></tr><tr><td class='tk-role'>.chart-svg</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.chart-wrap</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-wireframe" title="the grey-era version of a block the paint replaced">wireframe</span></td></tr><tr><td class='tk-role'>.ed-chart-area</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-chart-foot</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-chart-head</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-chart-now</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-legend</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-plot</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-xaxis</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-yaxis</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ml-line</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.nowline</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>76</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.chart-cap</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.chart-svg</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.chart-wrap</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.ed-chart-area</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-chart-foot</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-chart-head</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-chart-now</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-legend</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-plot</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-xaxis</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-yaxis</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.md</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.ml-line</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.nowline</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
@@ -101,17 +101,22 @@ push();});})();</script>
     <p class="tk-note">To change this component, edit <code>components/chart.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/chart.css</summary><pre>/* components/chart.css
-   Component: chart. Classes: .chart-cap, .chart-svg, .chart-wrap, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-now, .ed-legend, .ed-plot, .ed-xaxis, .ed-yaxis, .ml-line, .nowline.
+   Component: chart. Classes: .chart-svg, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-now, .ed-legend, .ed-plot, .ed-xaxis, .ed-yaxis, .ml-line, .nowline.
 
    Reads: --bg-chart-well, --border-brass-hover, --border-hairline, --chart-line, --chart-line-glow, --outcome-yes-text, --text-muted
    Stand:  ui-kit/chart.html
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.chart-wrap{padding:0}
+/* .chart-wrap and .chart-cap used to sit here, described in coverage.md as "the
+   grey-era version of a block the paint replaced": the wrapper and the caption of
+   the chart the wireframe drew before Stage 08 rebuilt it as head / plot / axis /
+   range. They were kept because the grey tree still carried the markup. Porting
+   that rebuild back into wireframes/ took the last element either one could match,
+   so gate 14 called them the moment the port landed. That is the pair working as
+   intended: a fossil is only visible once the thing it was a fossil OF is gone. */
 .chart-svg polyline{fill:none}
 .chart-svg text{font-size:7px}
-.chart-cap{font-size:var(--text-10);margin:var(--space-4) 0 0;display:flex;justify-content:space-between}
 .app-case .chart-svg{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-chart-well)}
 .app-case .chart-svg polyline,.app-case .chart-svg line{vector-effect:non-scaling-stroke}
 .app-case .chart-svg polyline{stroke:var(--chart-line);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 1px 4px var(--chart-line-glow))}

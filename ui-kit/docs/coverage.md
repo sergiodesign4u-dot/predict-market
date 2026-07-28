@@ -22,7 +22,7 @@ says so. No em dash.
 | button | 3 | button-primary, button-secondary, button-outcome-row | 0 | 13 | 76 |
 | card | 2 | card-binary, card-multi | 2 | 14 | 24 |
 | catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 8 | 76 |
-| chart | 1 | chart | 1 | 13 | 11 |
+| chart | 1 | chart | 1 | 11 | 11 |
 | comments | 1 | comments-thread | 1 | 15 | 9 |
 | cookie-consent | 1 | cookie-consent | 0 | 17 | 2 |
 | course-chrome | 1 | course-chrome | 0 | 25 | 76 |
@@ -34,7 +34,7 @@ says so. No em dash.
 | header | 2 | header-in, header-out | 1 | 21 | 76 |
 | hero | 1 | hero-band | 0 | 51 | 1 |
 | hiw-dialog | 1 | hiw-dialog | 0 | 15 | 76 |
-| input | 1 | input-amount | 1 | 5 | 76 |
+| input | 2 | input-amount, input-states | 1 | 5 | 76 |
 | loadmore | 1 | loadmore | 1 | 2 | 5 |
 | market | 1 | market-depth | 0 | 21 | 9 |
 | notice | 1 | notice-push | 1 | 8 | 76 |
@@ -53,7 +53,7 @@ says so. No em dash.
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 76 |
 | yesno | 1 | yesno | 2 | 2 | 10 |
 
-59 specimens over 38 components.
+60 specimens over 38 components.
 
 ---
 
@@ -62,36 +62,38 @@ says so. No em dash.
 Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
 that actually means. The Classes table on each component page shows the same verdict per row.
 
-### Deletion candidates (14)
+### Deletion candidates (18)
 
 Styled, and carried by no element in the repo: not by a painted screen, not by the kit, not by a wireframe, not by a course page, and not by any script. Nothing is removed yet. The screens still carry their own inline style and only move onto components/index.css in step 5, so the measurement is not final until then; step 7 is the pass that acts on this list.
 
 | class | file | why |
 |---|---|---|
 | `.btn-block` | button.css | styled and carried by no element anywhere |
+| `.chart-cap` | chart.css | styled and carried by no element anywhere |
+| `.chart-wrap` | chart.css | styled and carried by no element anywhere |
 | `.css` | base.css | styled and carried by no element anywhere |
 | `.css` | betpanel.css | styled and carried by no element anywhere |
+| `.css` | bets-table.css | styled and carried by no element anywhere |
 | `.css` | course-chrome.css | styled and carried by no element anywhere |
 | `.css` | dialog.css | styled and carried by no element anywhere |
 | `.css` | input.css | styled and carried by no element anywhere |
 | `.css` | market.css | styled and carried by no element anywhere |
 | `.css` | tabs.css | styled and carried by no element anywhere |
 | `.html` | base.css | styled and carried by no element anywhere |
+| `.md` | chart.css | styled and carried by no element anywhere |
 | `.md-` | base.css | styled and carried by no element anywhere |
 | `.ms-` | base.css | styled and carried by no element anywhere |
 | `.py` | base.css | styled and carried by no element anywhere |
 | `.signin-lead` | signin.css | styled and carried by no element anywhere |
 | `.theme-switch-inline` | course-chrome.css | styled and carried by no element anywhere |
 
-### Grey-era leftovers (7)
+### Grey-era leftovers (5)
 
 The wireframe version of a block the paint replaced. Removing these needs the markup gone from wireframes/ first, which is a separate job.
 
 | class | file | why |
 |---|---|---|
 | `.backdrop` | dialog.css | the grey-era version of a block the paint replaced |
-| `.chart-cap` | chart.css | the grey-era version of a block the paint replaced |
-| `.chart-wrap` | chart.css | the grey-era version of a block the paint replaced |
 | `.grab` | dialog.css | the grey-era version of a block the paint replaced |
 | `.hiw-head` | hiw-dialog.css | the grey-era version of a block the paint replaced |
 | `.sheet` | dialog.css | the grey-era version of a block the paint replaced |

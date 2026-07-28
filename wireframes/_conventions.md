@@ -678,3 +678,35 @@ many outcomes the market has.
 
 The per-screen file list and the screens themselves are produced from Step 03
 onward, with each later step reading this file before building anything.
+
+## The boundary with the colour tree (2026-07-28, Stage 09 step 7d)
+
+`wireframes/` owns structure and copy. `ui-visual/` owns the visual layer. That
+rule had no check behind it for two stages, and Stage 08 broke it quietly: the
+Event Detail was **redesigned** while it was being painted, and the redesign never
+came back here. Measured on `<main>`, 55 of 72 twinned screens differed; Event
+Detail carried 792 elements in colour against 570 in grey, and the extra 222 were
+an AMM market panel, a rebuilt chart, a rules-and-context tab split, a share-and-
+save cluster, an odds bar, and a real `<input>` where this tree had a `<span>`
+pretending to be a field. The tree that owns structure was the one that was wrong.
+
+The structure was ported back by `wireframes/_generators/port_structure.py`
+(idempotent, reads the painted twin, never writes to `ui-visual/`). From here the
+two trees have to agree, and **gate 18** in `ui-kit/_check_kit.py` fails the build
+when they do not.
+
+**Four differences are the boundary itself, not drift.** They are declared, and
+the gate is blind to exactly these and nothing else:
+
+| what | grey | colour | why it is not drift |
+|---|---|---|---|
+| plate wrappers | absent | `.cat-layout`, `.cat-main`, `.feed-inner` | a div whose only job is to draw a stone plate is paint. Porting it would put an empty box in the wireframe to record a shadow |
+| icons | raw `<path>` | `<use href="#id">` against an inline sprite | one mechanism per tree. The port resolves every `use` back into the paths it points at |
+| photography | the box, empty | `<img>` and `background-image` | a wireframe draws a box where a picture goes. 104 pages, zero image elements, and it stays that way |
+| chart data | typed into the markup | empty, filled by a script on load | a wireframe DRAWS its data, a product COMPUTES it. The series is read out of the painted script and written in statically, so the wireframe shows a chart without borrowing the product's JS |
+
+Everything else in `<main>` must match. `<header>`, the bottom nav and `<footer>`
+are **not** compared: they carry differences of their own kind (this tree's
+screen-tree drawer, the `TBD` chips that mark an unbuilt destination, the footer
+trust block the paint rewrote) and closing those is its own pass, not a silent
+extension of this one.

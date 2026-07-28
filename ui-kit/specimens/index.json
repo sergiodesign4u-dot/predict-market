@@ -83,7 +83,7 @@
    "catnav"
   ],
   "source": "kit.html / cards / Event cards",
-  "rewrites": 0
+  "rewrites": 3
  },
  {
   "id": "card-binary",
@@ -96,7 +96,7 @@
   ],
   "note": "The photo is keyed off the card position in the grid, so a card shown alone always gets the politics image.",
   "source": "kit.html / cards / Event cards",
-  "rewrites": 0
+  "rewrites": 1
  },
  {
   "id": "card-multi",
@@ -107,7 +107,7 @@
    "options"
   ],
   "source": "kit.html / cards / Event cards",
-  "rewrites": 0
+  "rewrites": 1
  },
  {
   "id": "oddsbar",
@@ -230,6 +230,15 @@
   "width": 420,
   "note": "Every rule in input.css is scoped under dialog.app-dialog, so the field is shown inside the dialog it lives in.",
   "source": "kit.html / dialogs / Shared dialogs",
+  "rewrites": 0
+ },
+ {
+  "id": "input-states",
+  "component": "input",
+  "title": "Field states: rest, disabled, selected, address",
+  "width": 420,
+  "note": "The states a state actually is, an attribute or a class, rendered. Hover and focus stay in the table on the component page: faking them with a stand class would make the specimen describe itself instead of the product.",
+  "source": "specimens.extra.html / extra / Field states",
   "rewrites": 0
  },
  {

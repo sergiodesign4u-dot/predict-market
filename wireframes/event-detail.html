@@ -579,6 +579,91 @@
     .related-list li { border-bottom: 1px solid #e2e2e2; }
     .related-list a { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; color: #333; font-size: 13px; }
     .rel-odds { color: #555; white-space: nowrap; }
+  /* ---- ported from the painted twin by port_structure.py ---- */
+    /* Layout taken from components/, every colour replaced by the
+       wireframe palette. See wireframes/_generators/port_structure.py. */
+    .oddsbar .track { overflow: hidden; display: flex; }
+    .oddsbar .track { height: 4px; }
+    .ed-oddsbar { margin: 12px 0 4px; }
+    .ed-oddsbar .track { display: block; height: 8px; overflow: hidden; }
+    .ed-oddsbar .fill { display: block; height: 100%; }
+    .market-box { padding: 0; }
+    .market-head { display: flex; align-items: center; justify-content: space-between; list-style: none; }
+    .market-title { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .market-chevron { width: 16px; height: 16px; }
+    .market-body { margin-top: 16px; }
+    .market-stats { display: flex; flex-wrap: wrap; gap: 16px 24px; padding-bottom: 16px; }
+    .market-stats > div { display: flex; flex-direction: column; gap: 4px; }
+    .market-depth { margin-top: 16px; }
+    .ms-label { font-size: 10px; letter-spacing: .03em; text-transform: uppercase; }
+    .ms-val { font-size: 16px; font-weight: 700; }
+    .md-title { font-size: 13px; font-weight: 700; }
+    .md-sub { display: block; font-size: 12px; line-height: 1.5; margin: 4px 0 12px; }
+    .md-table { display: flex; flex-direction: column; gap: 2px; }
+    .md-row { position: relative; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; align-items: center; padding: 8px 12px; overflow: clip; font-size: 12px; }
+    .md-row-head { padding: 2px 12px; font-size: 10px; text-transform: uppercase; letter-spacing: .03em; }
+    .md-bar { position: absolute; left: 0; top: 0; bottom: 0; }
+    .md-row > span:not(.md-bar) { position: relative; }
+    .md-amt { font-weight: 600; }
+    .md-price { text-align: center; }
+    .md-row-head > span:nth-child(2) { text-align: center; }
+    .md-get, .md-row-head > span:last-child { text-align: right; }
+    .rules-note { margin: 12px 0 0; font-size: 12px; line-height: 1.5; }
+    .ed-actions { position: absolute; top: 16px; right: 18px; display: flex; gap: 8px; }
+    .ed-actions button { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
+    .cat-nav { margin: 0; }
+    .cat-nav ul { list-style: none; margin: 0; padding: 8px 8px; display: flex; gap: 8px; overflow-x: auto; flex-wrap: nowrap; }
+    .cat-nav button { padding: 4px 8px; font-size: 11px; white-space: nowrap; }
+    .cat-nav > ul { max-width: 1400px; margin: 0 auto; padding: 8px 20px; }
+    .cat-nav>ul { max-width: none; padding-left: 14px; padding-right: 14px; }
+    .cat-nav { padding: 12px 16px; }
+    .cat-nav>ul { max-width: none; margin: 0; padding: 2px; gap: 8px; display: flex; flex-wrap: nowrap; overflow-x: auto; }
+    .cat-nav li { flex: 0 0 auto; }
+    .cat-ic { width: 18px; height: 18px; flex: 0 0 auto; }
+    .cat-nav button { display: inline-flex; align-items: center; gap: 12px; min-height: 0; font-weight: 600; font-size: 14px; padding: 12px 20px; }
+    .rel-thumb { width: 46px; height: 46px; flex: 0 0 46px; }
+    .rel-q { flex: 1; min-width: 0; font-weight: 600; font-size: 14px; line-height: 1.3; letter-spacing: -.01em; display: -webkit-box; overflow: hidden; }
+    .related-more { display: flex; align-items: center; justify-content: center; margin: 16px auto 2px; width: 100%; max-width: 300px; min-height: 44px; padding: 12px 24px; font-weight: 600; font-size: 14px; letter-spacing: .01em; }
+    .bp-amount-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin: 8px 0 20px; }
+    .bp-amount-lbl { display: flex; flex-direction: column; gap: 4px; }
+    .bp-cash { font-size: 11px; }
+    .bet-sheet .bp-amount-row { margin: 0 0 12px; }
+    .ed-chart-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px 16px; flex-wrap: wrap; margin: 0 0 12px; }
+    .ed-chart-head :is(h2,h3) { margin: 0; }
+    .ed-chart-now { font-size: 13px; font-weight: 600; }
+    .ed-chart-area { display: grid; grid-template-columns: 1fr 34px; gap: 8px; align-items: stretch; }
+    .ed-plot { order: 1; position: relative; min-width: 0; }
+    .ed-yaxis { order: 2; display: flex; flex-direction: column; justify-content: space-between; padding: 2px 0 2px 2px; font-size: 10px; line-height: 1; text-align: left; }
+    .ed-xaxis { display: flex; justify-content: space-between; padding-right: 40px; margin-top: 8px; font-size: 10px; }
+    .ed-chart-foot { display: flex; justify-content: flex-end; margin-top: 12px; }
+    .ed-rules .rules-tabs { display: flex; gap: 20px; margin: 0 0 16px; }
+    .rules-tab { font-weight: 600; font-size: 14px; padding: 0 0 8px; margin-bottom: -2px; }
+    .ed-range { display: inline-flex; gap: 4px; padding: 4px; }
+    .ed-range button { padding: 4px 12px; font-size: 12px; }
+    @media(pointer:coarse) {
+      .cat-nav button { min-height: 44px; }
+    }
+    @media(max-width:640px) {
+      .cat-nav button { position: relative; }
+      .cat-nav { margin-bottom: 16px; }
+    }
+    @media(max-width:560px) {
+      .ed-actions { top: 12px; right: 12px; gap: 4px; }
+      .ed-actions button { width: 28px; height: 28px; }
+    }
+    .ed-oddsbar .track, .md-bar { background: #dcdcdc; }
+    .ed-oddsbar .fill { background: #555; }
+    .ed-act, .rules-tab, .ed-range button { border: 1px solid #999;
+      background: #eee; color: #222; font-size: 10px; }
+    .rules-tab.sel, .ed-range button.sel { background: #dcdcdc; font-weight: bold; }
+    .market-box, .md-table { border: 1px solid #ccc; }
+    .market-head { padding: 6px 8px; background: #eee; cursor: pointer; }
+    .ms-label, .md-sub, .rules-note, .ed-chart-now, .bp-cash { color: #555; }
+    .rel-thumb { width: 40px; height: 40px; border: 1px solid #999;
+      background: #dcdcdc; flex: 0 0 40px; }
+    .ed-yaxis span, .ed-xaxis span { font-size: 9px; color: #555; }
+    .ed-plot { border: 1px solid #ccc; }
+    .rules-panel[hidden] { display: none; }
   </style>
 </head>
 <body>
@@ -902,51 +987,60 @@
       </div>
     </header>
     <!-- Second-level navigation: categories route to their own pages (links) -->
-    <nav class="cat-nav" aria-label="Categories (second level)">
-      <ul>
-        <li><a href="event-feed.html"><button type="button">Trending</button></a></li>
-        <li aria-current="page"><a href="politics.html"><button type="button">Politics</button></a></li>
-        <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
-        <li><a href="culture.html"><button type="button">Culture</button></a></li>
-        <li><a href="general.html"><button type="button">General</button></a></li>
-      </ul>
-    </nav>
+    
     <main class="feed">
+      
+        <nav class="cat-nav" aria-label="Categories (second level)">
+          <ul>
+            <li><a href="event-feed.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></svg><span>Trending</span></button></a></li>
+            <li aria-current="page"><a href="event-feed-politics.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21.25 8.5c0-1.404 0-2.107-.337-2.611a2 2 0 0 0-.552-.552c-.441-.295-1.034-.332-2.115-.336q.005.438.004.91V7.25h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v6.5h-1.5V6c0-1.886 0-2.828-.586-3.414S14.636 2 12.75 2h-2c-1.886 0-2.828 0-3.414.586S6.75 4.114 6.75 6v15.25h-1.5v-6.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1V5.91q-.001-.47.004-.91c-1.081.005-1.674.042-2.115.337a2 2 0 0 0-.552.552C2.25 6.393 2.25 7.096 2.25 8.5v12.75h-.5a.75.75 0 0 0 0 1.5h20a.75.75 0 0 0 0-1.5h-.5zM9 11.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m2.75 3.5a.75.75 0 0 1 .75.75v2.25H11V19a.75.75 0 0 1 .75-.75M9 6.25a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 6.25m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 9.25" clip-rule="evenodd"/></svg><span>Politics</span></button></a></li>
+            <li><a href="event-feed-crypto.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m.75-16a.75.75 0 0 0-1.5 0v.317c-1.63.292-3 1.517-3 3.183c0 1.917 1.813 3.25 3.75 3.25c1.377 0 2.25.906 2.25 1.75s-.873 1.75-2.25 1.75c-1.376 0-2.25-.906-2.25-1.75a.75.75 0 0 0-1.5 0c0 1.666 1.37 2.891 3 3.183V18a.75.75 0 0 0 1.5 0v-.317c1.63-.292 3-1.517 3-3.183c0-1.917-1.813-3.25-3.75-3.25c-1.376 0-2.25-.906-2.25-1.75s.874-1.75 2.25-1.75c1.377 0 2.25.906 2.25 1.75a.75.75 0 0 0 1.5 0c0-1.666-1.37-2.891-3-3.183z" clip-rule="evenodd"/></svg><span>Crypto</span></button></a></li>
+            <li><a href="event-feed-culture.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m21.537 9.136l-.846 3.297c-.43 1.676-1.306 2.855-2.336 3.685c.219-1.144.214-2.418-.144-3.814l-.864-3.37l-.15-.584a.9.9 0 0 1 .599-.044c.378.101.608.406.637.702a.75.75 0 1 0 1.493-.145c-.091-.942-.783-1.749-1.742-2.006a2.4 2.4 0 0 0-1.418.05l-.017-.044c-.224-.596-.552-1.229-1.171-1.693a3.5 3.5 0 0 0-1.13-.562c-.759-.215-1.463-.076-2.064.124c-.558.185-1.21.49-1.924.825l-.072.034c-1.185.555-1.659.773-2.144.928q-.22.07-.446.127l.327-1.267c.44-1.719.661-2.578 1.236-3.01c.193-.145.41-.252.638-.317c.684-.194 1.461.17 3.015.897c1.15.54 1.726.809 2.326 1q.314.099.632.176c.612.149 1.239.216 2.493.351c1.694.182 2.54.273 3.04.798c.167.177.303.383.4.609c.292.675.072 1.534-.368 3.253"/><path fill="currentColor" fill-rule="evenodd" d="m16.758 12.677l-.845-3.298c-.44-1.719-.66-2.578-1.236-3.01a2 2 0 0 0-.638-.317c-.684-.194-1.46.17-3.015.897c-1.15.54-1.726.809-2.326 1a10 10 0 0 1-.632.176c-.611.149-1.238.216-2.493.351c-1.694.182-2.54.273-3.04.798a2.1 2.1 0 0 0-.4.609c-.292.675-.072 1.534.369 3.253l.845 3.297c.993 3.876 4.296 5.096 6.516 5.473c.677.115 1.016.172 2.044-.116s1.294-.514 1.825-.968c1.742-1.487 4.02-4.27 3.026-8.145m-10.753.691c.029-.296.26-.6.638-.702c.379-.102.73.047.903.29a.75.75 0 0 0 1.22-.873c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.064-1.743 2.006a.75.75 0 0 0 1.493.145m5.796-1.553c.029-.296.26-.6.638-.702c.379-.102.73.047.903.289a.75.75 0 1 0 1.22-.872c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.063-1.743 2.006a.75.75 0 0 0 1.493.145m1.846 3.814a.75.75 0 0 1-.885 1.211l-.01-.006a2 2 0 0 0-.485-.2c-.36-.098-.929-.163-1.685.04c-.756.202-1.216.543-1.48.808a2 2 0 0 0-.32.416l-.005.01a.75.75 0 0 1-1.372-.607l.688.298c-.688-.298-.687-.3-.687-.3v-.001l.002-.004l.004-.009l.01-.022l.033-.064q.04-.078.115-.196c.1-.156.252-.36.468-.578c.437-.44 1.125-.924 2.156-1.2c1.031-.277 1.87-.2 2.467-.038c.296.08.53.18.694.266a3 3 0 0 1 .258.151l.02.015l.008.005l.003.003h.002z" clip-rule="evenodd"/></svg><span>Culture</span></button></a></li>
+            <li><a href="event-feed-general.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M2 6.634a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0m10.732 10.732a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0" clip-rule="evenodd"/><path fill="currentColor" d="M2 17.5c0-2.121 0-3.182.659-3.841S4.379 13 6.5 13s3.182 0 3.841.659S11 15.379 11 17.5s0 3.182-.659 3.841S8.621 22 6.5 22s-3.182 0-3.841-.659S2 19.621 2 17.5m11-11c0-2.121 0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11s-3.182 0-3.841-.659S13 8.621 13 6.5"/></svg><span>General</span></button></a></li>
+          </ul>
+        </nav>
       <div class="ed-layout">
         <div class="ed-main">
-          <article class="card" style="border:none;">
-            <div class="ed-head">
+          <article class="card">
+            <div class="ed-head"><div class="ed-actions"><button type="button" class="ed-act" data-comments aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22"/></svg></button><button type="button" class="ed-act" aria-label="Share this event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.803 5.333c0-1.84 1.507-3.333 3.365-3.333c1.86 0 3.366 1.492 3.366 3.333c0 1.841-1.507 3.334-3.366 3.334a3.38 3.38 0 0 1-2.037-.678l-4.67 3.204a3.3 3.3 0 0 1 0 1.62l4.67 3.204a3.38 3.38 0 0 1 2.037-.677c1.86 0 3.366 1.492 3.366 3.333S19.028 22 17.168 22c-1.858 0-3.365-1.492-3.365-3.333q0-.413.098-.804l-4.67-3.204a3.38 3.38 0 0 1-2.037.677C5.507 15.336 4 13.843 4 12.002s1.507-3.333 3.365-3.333c.762 0 1.474.252 2.037.677l4.67-3.204a3.3 3.3 0 0 1-.099-.809"/></svg></button><button type="button" class="ed-act" data-fav aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg></button></div>
               <span class="ed-thumb">thumbnail placeholder</span>
               <div>
                 <span class="ed-cat">Politics &middot; One-time event</span>
                 <h1 class="ed-q">Will the US government shut down before March 1, 2027?</h1>
                 <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+                <div class="ed-oddsbar" aria-hidden="true"><span class="track"><span class="fill" style="width:38%"></span></span></div>
               </div>
             </div>
           </article>
-          <section class="ed-section">
-            <h2>Price chart</h2>
-            <div class="chart-wrap">
-              <svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" role="img" aria-label="YES probability over the last 30 days (schematic)">
-                <line class="grid-l" x1="0" y1="25" x2="300" y2="25"/>
-                <line class="grid-l" x1="0" y1="50" x2="300" y2="50"/>
-                <line class="grid-l" x1="0" y1="75" x2="300" y2="75"/>
-                <polyline points="0,58 25,55 50,63 75,52 100,57 125,49 150,55 175,47 200,52 225,44 250,50 275,43 300,62"/>
-                <line class="nowline" x1="300" y1="0" x2="300" y2="100"/>
-              </svg>
-              <p class="chart-cap"><span>30 days ago</span><span>1d &middot; 1w &middot; 1m &middot; all</span><span>YES 38% now</span></p>
+          <section class="ed-section ed-chart">
+            <div class="ed-chart-head"><h2>Price chart</h2><span class="ed-chart-now">YES 38% now</span></div>
+            <div class="ed-chart-area">
+              <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+              <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline points="0.0,59.0 25.0,56.0 50.0,60.0 75.0,64.0 100.0,53.0 125.0,57.0 150.0,50.0 175.0,55.0 200.0,51.0 225.0,56.0 250.0,47.0 275.0,43.0 300.0,62.0"/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
             </div>
+            <div class="ed-xaxis" aria-hidden="true"><span>Jul</span><span>Sep</span><span>Nov</span><span>Jan</span><span>now</span></div>
+            <div class="ed-chart-foot"><div class="ed-range" role="group" aria-label="Time range"><button type="button">1d</button><button type="button">1w</button><button type="button">1m</button><button type="button" class="sel">all</button></div></div>
           </section>
           <div class="ed-facts">
             <span>Volume<b>$84,200</b></span>
             <span>Open to bet<b>$31,500</b></span>
             <span>Closes<b>Mar 1, 2027</b></span>
             <span>Frequency<b>One-time</b></span>
-            <span>Save<b>to Favorites</b></span>
           </div>
-          <section class="ed-section">
-            <h2>Why this price</h2>
-            <p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
+          <section class="ed-section ed-market">
+            <details class="market-box" open>
+              <summary class="market-head"><span class="market-title">Market <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="market-body">
+                <div class="market-stats"><div><span class="ms-label">Yes price</span><span class="ms-val ms-yes">38%</span></div><div><span class="ms-label">No price</span><span class="ms-val ms-no">62%</span></div><div><span class="ms-label">24h</span><span class="ms-val ms-up">+2 pts</span></div><div><span class="ms-label">Volume</span><span class="ms-val">$84,200</span></div><div><span class="ms-label">Liquidity</span><span class="ms-val">$31,500</span></div></div>
+                <div class="market-depth"><span class="md-title">Price by bet size</span><span class="md-sub">How the YES price moves as your bet grows. This market runs on an AMM, not an order book.</span><div class="md-table"><div class="md-row md-row-head"><span>Bet</span><span>Avg YES price</span><span>You receive if YES</span></div><div class="md-row"><span class="md-bar" style="width:12%"></span><span class="md-amt">$10</span><span class="md-price">38%</span><span class="md-get">$26.32</span></div><div class="md-row"><span class="md-bar" style="width:30%"></span><span class="md-amt">$100</span><span class="md-price">39%</span><span class="md-get">$256.41</span></div><div class="md-row"><span class="md-bar" style="width:58%"></span><span class="md-amt">$1,000</span><span class="md-price">42%</span><span class="md-get">$2,380.95</span></div><div class="md-row"><span class="md-bar" style="width:88%"></span><span class="md-amt">$5,000</span><span class="md-price">49%</span><span class="md-get">$10,204.08</span></div></div></div>
+              </div>
+            </details>
+          </section>
+          <section class="ed-section ed-rules">
+            <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel">Rules</button><button type="button" class="rules-tab">Market Context</button></div>
+            <div class="rules-panel"><p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
+            <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Predict Market team.</p></div>
+            <div class="rules-panel" hidden><p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
             <div class="args">
               <div class="arg-col">
                 <h3>For YES</h3>
@@ -962,13 +1056,7 @@
                   <li>Both parties signalled willingness to extend.</li>
                 </ul>
               </div>
-            </div>
-          </section>
-
-          <section class="ed-section">
-            <h2>Resolution conditions</h2>
-            <p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
-            <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Predict Market team.</p>
+            </div><p class="rules-note">Background from the Predict Market team to explain the odds. It plays no role in how this market resolves.</p></div>
           </section>
           <section class="ed-section ed-tabs">
             <div class="ed-tabwrap">
@@ -998,7 +1086,7 @@
                   <div class="cmt-body">
                     <div class="cmt-meta"><span class="cmt-user">marketmaven</span><span class="cmt-badge">Holds 320 YES</span><span>2h ago</span></div>
                     <p class="cmt-text">These always go to the wire. I am holding my position and adding if it dips.</p>
-                    <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>24</button><button type="button">Reply</button></div>
+                    <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></svg>24</button><button type="button">Reply</button></div>
                   </div>
                 </div>
                 <div class="cmt reply">
@@ -1006,7 +1094,7 @@
                   <div class="cmt-body">
                     <div class="cmt-meta"><span class="cmt-user">deadline_dan</span><span>1h ago</span></div>
                     <p class="cmt-text">The committee bloc looks firmer this time though.</p>
-                    <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>6</button><button type="button">Reply</button></div>
+                    <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></svg>6</button><button type="button">Reply</button></div>
                   </div>
                 </div>
                 <div class="cmt">
@@ -1014,7 +1102,7 @@
                   <div class="cmt-body">
                     <div class="cmt-meta"><span class="cmt-user">polly_predicts</span><span class="cmt-badge">Holds 150 NO</span><span>5h ago</span></div>
                     <p class="cmt-text">Volume jumped right after the headline. Watching how it settles.</p>
-                    <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>11</button><button type="button">Reply</button></div>
+                    <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></svg>11</button><button type="button">Reply</button></div>
                   </div>
                 </div>
                 <div class="cmt">
@@ -1022,7 +1110,7 @@
                   <div class="cmt-body">
                     <div class="cmt-meta"><span class="cmt-user">newhere</span><span>1d ago</span></div>
                     <p class="cmt-text">First bet here. The resolution source being official notices makes this easy to trust.</p>
-                    <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>8</button><button type="button">Reply</button></div>
+                    <div class="cmt-actions"><button type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></svg>8</button><button type="button">Reply</button></div>
                   </div>
                 </div>
               </div>
@@ -1059,7 +1147,7 @@
               <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
             </div>
             <div class="ed-tabpanel ed-panel-activity" role="tabpanel" aria-label="Activity">
-              <p class="pos-note" style="margin:0 0 8px;">Recent bets, largest first. Filter: over $5.</p>
+              <p class="pos-note">Recent bets, largest first. Filter: over $5.</p>
               <div class="act-list">
               <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
               <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$180</b> on NO</span><span class="act-time">14m ago</span></div>
@@ -1079,15 +1167,13 @@
                 <button type="button" class="bp-side">NO <span class="bp-pct">62%</span></button>
               </div>
               <div>
-                <span class="field-label">Amount</span>
-                <div class="amount-row"><span class="amount-input">$5.00</span></div>
+                <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
                 <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
               </div>
               <div>
                 <div class="line"><span>Price now</span><span>38%</span></div>
                 <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
                 <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
-                <div class="line"><span>Your balance</span><span>$42.00</span></div>
               </div>
               <button type="button" class="confirm-btn" data-open="signin">Confirm bet</button>
               <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
@@ -1098,12 +1184,13 @@
       <section class="related-events" aria-label="Related events">
         <h2>Related events</h2>
         <ul class="related-list">
-          <li><a href="event-detail.html">Will Bitcoin close above $150,000 before October 1, 2026?<span class="rel-odds">YES 61%</span></a></li>
-          <li><a href="event-detail.html">Will Ethereum complete its next major network upgrade before November 1, 2026?<span class="rel-odds">YES 72%</span></a></li>
-          <li><a href="event-detail-multi.html">Which party will win the most seats in the next UK general election?<span class="rel-odds">4 options</span></a></li>
-          <li><a href="event-feed.html">Browse more events</a></li>
+          <li><a href="event-detail.html"><span class="rel-thumb"></span><span class="rel-q">Will Bitcoin close above $150,000 before October 1, 2026?</span><span class="rel-odds">YES 61%</span></a></li>
+          <li><a href="event-detail.html"><span class="rel-thumb"></span><span class="rel-q">Will Ethereum complete its next major network upgrade before November 1, 2026?</span><span class="rel-odds">YES 72%</span></a></li>
+          <li><a href="event-detail-multi.html"><span class="rel-thumb"></span><span class="rel-q">Which party will win the most seats in the next UK general election?</span><span class="rel-odds">4 options</span></a></li>
         </ul>
+        <a href="event-feed.html" class="related-more">Browse more events</a>
       </section>
+    <!-- /feed-inner -->
     </main>
       <!-- Mobile sticky bet dock (above the bottom nav; taps expand to a confirm sheet) -->
       <div class="bet-dock" aria-label="Place your bet">

@@ -469,6 +469,23 @@
     .footer-popular h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
     .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
     .popular-links a { color: #444; }
+  /* ---- ported from the painted twin by port_structure.py ---- */
+    /* Layout taken from components/, every colour replaced by the
+       wireframe palette. See wireframes/_generators/port_structure.py. */
+    .pos-record { padding: 0; gap: 0; }
+    .ed-oddsbar .track, .md-bar { background: #dcdcdc; }
+    .ed-oddsbar .fill { background: #555; }
+    .ed-act, .rules-tab, .ed-range button { border: 1px solid #999;
+      background: #eee; color: #222; font-size: 10px; }
+    .rules-tab.sel, .ed-range button.sel { background: #dcdcdc; font-weight: bold; }
+    .market-box, .md-table { border: 1px solid #ccc; }
+    .market-head { padding: 6px 8px; background: #eee; cursor: pointer; }
+    .ms-label, .md-sub, .rules-note, .ed-chart-now, .bp-cash { color: #555; }
+    .rel-thumb { width: 40px; height: 40px; border: 1px solid #999;
+      background: #dcdcdc; flex: 0 0 40px; }
+    .ed-yaxis span, .ed-xaxis span { font-size: 9px; color: #555; }
+    .ed-plot { border: 1px solid #ccc; }
+    .rules-panel[hidden] { display: none; }
   </style>
   <style>
     .idrow { display: flex; align-items: center; gap: 12px; padding: 4px 0 10px; }
@@ -771,7 +788,9 @@
       </div>
     </header>
     <main class="feed">
-      <div class="feed-inner">
+      
+        
+        
         <div class="feed-head"><h1>Profile</h1></div>
         <div class="idrow">
           <span class="av">avatar</span>
@@ -790,7 +809,7 @@
           </div>
           <section class="ptab-panel" id="p-record" aria-label="Track record">
             <article class="pos pos-record" aria-label="Track record">
-              <div class="pos-figures" style="font-size:11px;">
+              <div class="pos-figures">
                 <span class="pos-fig">Total bets<b>23</b></span>
                 <span class="pos-fig">Win rate<b>61%</b></span>
                 <span class="pos-fig">Resolved<b>18</b></span>
@@ -811,35 +830,35 @@
               <article class="pos">
                 <div class="pos-top">
                   <span class="pos-q">US government shutdown before Mar 1, 2027</span>
-                  <span class="pos-side">WON</span>
+                  <span class="pos-side pos-won">WON</span>
                 </div>
                 <span class="pos-status">YES &middot; resolved Jun 27 &middot; +$13.20</span>
               </article>
               <article class="pos">
                 <div class="pos-top">
                   <span class="pos-q">Bitcoin above $150,000 before Oct 1, 2026</span>
-                  <span class="pos-side">WON</span>
+                  <span class="pos-side pos-won">WON</span>
                 </div>
                 <span class="pos-status">YES &middot; resolved Jun 20 &middot; +$6.80</span>
               </article>
               <article class="pos">
                 <div class="pos-top">
                   <span class="pos-q">Spot ETH ETF approved in H1 2027</span>
-                  <span class="pos-side">LOST</span>
+                  <span class="pos-side pos-lost">LOST</span>
                 </div>
                 <span class="pos-status">NO &middot; resolved Jun 12 &middot; -$5.00</span>
               </article>
               <article class="pos">
                 <div class="pos-top">
                   <span class="pos-q">Which party wins the most UK seats</span>
-                  <span class="pos-side">WON</span>
+                  <span class="pos-side pos-won">WON</span>
                 </div>
                 <span class="pos-status">NO &middot; Conservatives &middot; resolved Jun 2 &middot; +$11.10</span>
               </article>
             </div>
           </section>
         </div>
-      </div>
+        <!-- /cat-main --><!-- /cat-layout --><!-- /feed-inner -->
     </main>
     <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">

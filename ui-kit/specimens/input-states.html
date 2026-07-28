@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Toasts</title>
+<title>Field states: rest, disabled, selected, address</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
    A frame is a document of its own, so it does not inherit the attribute: this
    block runs in the frames too and they are told by postMessage, the same
@@ -43,32 +43,18 @@ push();});})();</script>
 </head>
 <body>
 <div class="app-case">
-<div class="toast-inner" style="max-width:440px">
-      <div class="toast-group" role="status" aria-live="polite">
-        <div class="toast">
-          <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg>
-          <span class="toast-msg">Bet placed</span>
-          <button type="button" class="toast-close" aria-label="Dismiss">x</button>
-        </div>
-        <div class="toast">
-          <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg>
-          <span class="toast-msg">Funds added</span>
-          <button type="button" class="toast-close" aria-label="Dismiss">x</button>
-        </div>
-        <div class="toast">
-          <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg>
-          <span class="toast-msg">Saved into Favorites</span>
-          <button type="button" class="toast-close" aria-label="Dismiss">x</button>
-        </div>
-      </div>
-      <div class="toast-group" role="alert" aria-live="assertive">
-        <div class="toast toast-error">
-          <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>
-          <span class="toast-msg">We could not place your bet. Try again.</span>
-          <button type="button" class="toast-close" aria-label="Dismiss">x</button>
-        </div>
-      </div>
+<dialog class="app-dialog" open>
+    <div class="sheet-body">
+      <span class="field-label">Amount</span>
+      <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" value="$30.00" aria-label="Amount"></div>
+      <span class="field-label">Amount, disabled</span>
+      <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" value="$30.00" aria-label="Amount, disabled" disabled></div>
+      <span class="field-label">Quick amounts, one selected</span>
+      <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
+      <span class="field-label">Address</span>
+      <div class="amount-row"><input class="amount-input addr" type="text" value="0x7a3f...9c21" aria-label="Wallet address"></div>
     </div>
+  </dialog>
 </div>
 <script>
 /* Report to the vitrine: how tall this specimen is, and whether it rendered.
@@ -123,7 +109,7 @@ push();});})();</script>
     }
     try {
       parent.postMessage({
-        specimen: "toast",
+        specimen: "input-states",
         height: height(),
         elements: document.body.getElementsByTagName("*").length,
         overflowX: doc.scrollWidth - doc.clientWidth,
