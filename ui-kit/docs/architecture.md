@@ -562,6 +562,43 @@ no product class at all.
 
 ---
 
+## Contributing to the system
+
+**A new thing appears in the SYSTEM first and on a screen second, never the other way round.** A
+thing built on a screen and lifted afterwards arrives carrying that screen's assumptions, and nobody
+finds them again: they were never written down, because on the screen they were not decisions. They
+were just what was there.
+
+Four addresses, and a fifth case that is forbidden.
+
+| What is new | Where it goes, in full |
+|---|---|
+| a **component** | `components/<name>.css`; an `@import` **in its own level group** in `index.css`; a stand page in `ui-kit/`; a row in `inventory.md` with its level. Then **rebuild `_nav.js`** with `python3 ui-kit/_gen_component_pages.py`, never type the line: the registry is derived from the containment map, and a hand-written line is a second answer to a question the map already answers. Its states are declared in BOTH themes in the same commit |
+| a **rule of use** | a row in the Rules of use table below with the "where it is taken from" cell filled, and a Constraints block on the page of every component it names. Both come from that one row: `python3 ui-kit/_gen_component_pages.py` writes the blocks and gate 26 holds the pair in both directions |
+| a **composition** | on three screens or more: `components/patterns/<name>.css` + its `@import` at the end of `index.css` + an entry in `_gen_pattern_pages.SCENES`. The page, the scene, the registry line and the inventory row all follow from that entry. On two screens it is not a pattern: it stays markup and goes on the candidates list at the foot of `patterns.html`, which is where the next reader looks for the third screen |
+| a **value** | the token of its own level in `components/tokens.css`: a colour is a semantic role in section 2, a raw value is a primitive in section 1. **A state token has a value in BOTH themes or it is not a state token**, because a state that exists in one theme is a state the other theme silently does not have |
+| **new on a screen** and none of the four | **forbidden.** A screen that styles itself is the one failure this structure exists to prevent, and it is the failure that looks most like getting the work done |
+
+### The two lines everybody skips, and why they are the two
+
+Both are skipped for the same reason: the system is already assembled, so appending at the end feels
+safe. It is the opposite. These two decide whether the ladder is still standing in six months.
+
+- **The `@import` goes in the group of its LEVEL, never at the end of the file.** The end is where an
+  organism belongs. An atom appended there overrides every component that holds it, and nothing
+  renders wrong on the day it lands, because a collision needs a second rule on the same selector. It
+  presents months later as "my override does not work", three files away from its cause. This already
+  happened at full scale: the flat kit put **twenty five wholes ahead of their parts** and no source
+  sweep could see it. `python3 ui-kit/_levels.py --order` prints the position and gate 23 fails the
+  build when the file stops matching.
+- **`_nav.js` is rebuilt, not edited.** `GROUPS` in `_gen_component_pages.py` reads the same
+  containment map that orders the cascade, so the panel reads in the order `index.css` loads.
+  Reading the panel top to bottom IS reading `index.css`. A component filed by hand into the wrong
+  group makes the panel say one thing and the cascade another, and the panel is the one a person
+  reads.
+
+---
+
 ## Where a change goes
 
 | The change | Where it goes | What it does |
@@ -784,18 +821,21 @@ one of these instead found a region nobody had read at all. 7d found that the tw
 gone structurally apart, 7e found the header and the footer, 8 found a whole family with no twin, 9
 found the `<aside>` gate 1 masks. Yield tracked unread surface, not effort.
 
-So the question at the end of the stage is not "is the product clean enough", which twenty-two gates
-and five browser sweeps now answer on every build. It is **which surfaces still have nothing pointed
-at them**, and that list is short and countable. It is written here rather than acted on, because
-three of the five belong to a later stage by the course and auditing them now means auditing them
-twice.
+So the question at the end of the stage is not "is the product clean enough", which twenty-eight
+gates and six browser sweeps now answer on every build. It is **which surfaces still have nothing
+pointed at them**, and that list is short and countable. It is written here rather than acted on,
+because the two that are still open belong to a later stage by the course and auditing them now
+means auditing them twice.
+
+**This table is closed.** The Design System stage was its reader, and reading it is what closed the
+third row: the count in it was right and the sentence drawn from the count was not.
 
 | Surface | Measured today | Owner |
 |---|---|---|
 | ~~The 28 course pages' own content~~ | 203 KB of inline css; step 9 took the panel out of them and holds it with gate 22 | **CLOSED as never**, 2026-08-02 |
 | ~~`wireframes/` inline css~~ | 34 distinct `<style>` bodies over 104 pages, largest 52 KB; **gate 14 was explicitly narrowed away from it** in step 7e | **CLOSED as never**, 2026-08-02 |
+| ~~What a screen reader is told when something changes~~ | re-measured in BOTH trees: the same 9 live regions in each, and the toast already carries `role="status"` and `role="alert"`. So "a toast announces nothing" was false. What IS missing is the form-error axis - `aria-invalid` on 0 of 105 and `aria-describedby` on 0 of 105, against 8 visible error blocks tied to no field | **CLOSED and re-opened with numbers** as `docs/backlog.md` items 24 and 25, Design System step 2 |
 | The page scripts as code | 15 distinct bodies in 810 blocks across the painted tree; every sweep reads their output, none reads them | Stage 11, Animation |
-| What a screen reader is told when something changes | `aria-live` or `role="status"` on **9 screens of 105**; a toast appears and announces nothing | Stage 09, States |
 | Page weight, font swap, layout shift | never measured once, at any width, in either theme | Stage 12, Handoff |
 
 The Owner column carries the stage numbers as they stand after the 2026-08-02 renumbering, which
@@ -810,8 +850,10 @@ accessibility work is undone. That was checked before the table was written, bec
 there would have changed the answer: across the 105 painted screens there is **no button without an
 accessible name**, every `<img>` carries `alt`, the dialogs are native so the browser supplies
 `aria-modal` and inerts the rest of the page, and the tab strips are radio groups, which arrow keys
-already drive. The one real gap is the announcement, and a toast is a state, so it falls into the
-next stage on its own.
+already drive. The gap that was named here as "the announcement" turned out on re-measurement not to
+be one, which is exactly why the row could close: the toast announces itself in both trees. The gap
+underneath it is the form error, and it is now two backlog items with the eight screens listed by
+name.
 
 **The two rows marked "now, or never" were answered on 2026-08-02, and the answer is never.** The
 reasoning is in `docs/decisions.md` under that date; the short form is that they are two different
