@@ -389,3 +389,28 @@ larger number.
 - **Don't** put a brass outline on a big plate; brass hairline frames belong only to the small notched tiles.
 - **Don't** use gradient text, decorative glassmorphism, `border-left`/`border-right` > 1px colored side-stripes, an identical-card-grid as a crutch, or a tiny uppercase tracked eyebrow above every section.
 - **Don't** nest a card inside a card; a state message rides directly on the shared stone plate, borderless.
+
+## 8. Contributing
+
+- **Do** put the thing into the system before it appears on a screen: a value becomes a token, a component becomes a file and a page, an arrangement that has stood on three screens becomes a pattern. That order is the whole of it, and it only ever runs one way.
+- **Do** give a state a token of its own and a value in both themes. A hover that exists on graphite and not on chalk is not a hover, it is a hover on one theme, and nothing in the file says so.
+- **Don't** style a screen. A screen carrying its own rule is the one thing this spec cannot see, and it is invisible on the day it is written, not on the day it breaks.
+- **Don't** append an `@import` at the end of `components/index.css` to make something work. The end is where an organism belongs; the position is computed by `python3 ui-kit/_levels.py --order`.
+
+The addresses in full, and the gates that hold each one: `ui-kit/docs/architecture.md`, "Contributing to the system".
+
+### The state tokens, and what each one was solved against
+
+Six roles carry every interactive state in the product, and `--opacity-disabled` is the seventh that is not a colour. Each ratio is the text that stands on that state, measured in a browser down the theme's own `var()` chain: the value assigned to an element, the computed string handed back to the browser's own parser, the alpha composited up the ancestor stack. A figure here comes from that path or it does not go in the file.
+
+| state role | the text on it | Vault | Daylight |
+|---|---|---|---|
+| `--bg-control-hover` | `--text-primary` | 12.65:1 | 15.38:1 |
+| `--bg-pressed` | `--text-primary` | 13.99:1 | 14.59:1 |
+| `--color-action-pressed` | `--text-on-brass` | 5.48:1 | 5.48:1 |
+| `--tint-hover`, over `--bg-chip` | `--text-primary` | 11.49:1 | 12.15:1 |
+| `--chrome-pressed` | `--chrome-text` | 11.46:1 | 11.46:1 |
+| `--focus-ring`, on page / card / control | the ground it is drawn against | 8.98 / 8.56 / 6.98:1 | 7.40 / 6.96 / 7.40:1 |
+| `--opacity-disabled` | `.45` in both themes | *not a pair* | *not a pair* |
+
+Three things the table says that a list of values would not. **`--color-action-pressed` is the tightest in the system at 5.48:1**, and it is the only state where the ink is dark on a light ground: a pressed brass CTA is the one state that cannot be made deeper without taking the label with it. **`--chrome-pressed` reads the same in both themes on purpose** - the course chrome is the frame around the work and does not follow the product's theme, so its state does not either. **`--opacity-disabled` is the exception the other six exist to make rare**: opacity is the one state that is not a colour, so no sweep reading `getComputedStyle().color` can see it, and it stays at `.45` on exactly three rules rather than becoming a habit.
