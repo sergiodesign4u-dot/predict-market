@@ -544,9 +544,49 @@ no product class at all.
 | a shared image asset | `assets/` at the root | owned by neither layer, reached by both |
 | a BLOCK: a new section, a control, anything with markup | `wireframes/` first, then the colour copy | structure is owned by the grey tree. Gate 18 fails the build when the two disagree, and the four differences that are the layer boundary are declared in `wireframes/_conventions.md` |
 | a UI string | `voice/docs/microcopy.md` gets a row, then both trees | the table is the source of truth for copy. For one stage it was not, and 43 shipped lines were missing from it |
+| a focus ring that fails on some surface | the role is picked by the SURFACE, in the file of the control that stands there | never `--focus-ring` globally: it is one role measured across 21 kinds of control. See the rule below |
 
 A change made on one screen is a desync by definition. If a screen needs something the component does
 not have, either the component grows a variant class or the screen is wrong.
+
+### A ring answers to what it stands on, not to the component it belongs to
+
+A focus ring is not a property of the control. It is a contrast measurement between two things, and
+only one of them is the control: the other is the surface the ring is drawn on. So the token a ring
+reads is chosen by the GROUND, and the component that owns the control does not get a say.
+
+Two cases proved it, and they point in opposite directions, which is why one rule covers both.
+
+- **A moving role on a fixed ground.** The course sidebar is chrome: it keeps its own graphite
+  surface in both themes, because it is the frame around the product rather than part of it. The
+  product's `--focus-ring` moves with the theme, so on that fixed dark panel the daylight value fell
+  to 2.39:1. The fix was to stop reading the product role there: the sidebar's ring reads
+  `--chrome-accent`, which is fixed like the panel it stands on.
+- **A fixed role on a moving ground.** `.theme-switch-inline` is the same control as the sidebar
+  switch and inherited the same `--chrome-accent` ring, but it stands INSIDE a vitrine page, whose
+  surface follows the theme. Fixed ring, moving ground: 8.98:1 in Vault and 2.03:1 in daylight. The
+  fix is the mirror image, one declaration, and only the colour moves: `outline-color:var(--focus-ring)`.
+
+The trap both cases share is that the ring looks correct in the theme you happen to be working in,
+and the component file gives no hint that the answer depends on anything outside it. So when a
+control is placed on chrome, or a chrome control is placed on a page, the ring is re-measured. It is
+not inherited from the component's other instances.
+
+The consequence for a states pass: `--focus-ring` is one role measured across 21 kinds of control,
+and moving it moves all of them. A control that needs a different ring gets a NAMED role for its
+ground, or a geometry change (offset, a second band), never a one-off hex.
+
+### Contrast is measured in a browser, and never computed from a hex
+
+`getComputedStyle()` returns what the author wrote, and modern CSS lets an author write a colour that
+is not a colour literal: `color-mix(in oklab, ...)` comes back verbatim. Pulling numbers out of that
+string with a regex yields oklab components, and contrast maths reads them as sRGB bytes, so a pale
+brass-tinted banner measures as near black. That is not a rounding error; it invents defects and hides
+real ones, and it did both.
+
+The parser is the browser's own: assign the computed string to a 2D canvas `fillStyle`, fill one pixel
+and read it back. Composite the ancestor stack in order for alpha. A figure written next to a token in
+`tokens.css` comes from that path or it does not go in the file.
 
 ---
 
