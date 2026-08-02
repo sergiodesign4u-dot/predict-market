@@ -4,7 +4,9 @@
 true next time: invariants, who owns what, and the gate that holds each one. Budget: 200 lines.
 
 Everything else has an owner. A fact written here *and* there is a fact that will drift, so when one
-appears twice the copy here is the one to delete.
+appears twice the copy here is the one to delete. **A rule leaves this file when a GATE fails the
+build without it**, never merely because another document mentions it: a document is read on purpose
+and this file is read always, so a gateless rule moved out trades certainty for hope.
 
 | Question | Where it is answered |
 |---|---|
@@ -114,12 +116,25 @@ The visual language is **Vault** and it is specified in `DESIGN.md`. The one rul
 other things: **green and red are outcome semantics (YES / NO), brass is the brand.** An accent never
 borrows the win/lose colour, and a candidate in a multi-outcome chart is not an outcome.
 
+### Contributing to the system
+
+- **New goes into the SYSTEM first and onto a screen second, never the other way round.** The full
+  addresses are in `ui-kit/docs/architecture.md`, "Contributing to the system".
+- **A value** goes to the token of its own level in `components/tokens.css`: a colour is a **semantic
+  role** in section 2, a raw value is a **primitive** in section 1. A component may never read a
+  colour primitive (gate 13) and never write a raw scale value (gate 12). **A state token has a value
+  in both themes or it is not one.**
+- **A component** = css in `components/` + an `@import` **in its own level group** (never at the end
+  of the file) + a page in `ui-kit/` + a row in `ui-kit/docs/inventory.md`. `_nav.js` is rebuilt by
+  `python3 ui-kit/_gen_component_pages.py`, never typed.
+- **A composition** = three screens or more: `components/patterns/` + an entry in
+  `_gen_pattern_pages.SCENES`, and the page, registry and inventory row follow. Two screens is a
+  candidate, not a pattern, and it stays markup.
+- **New on a screen with none of the three is forbidden.** It is not an exception for the screen, it
+  is an order for the system.
+
 ### The rule for a change, from here on
 
-- **A value** goes to the token of its own level and reaches every screen by itself: a colour is a
-  **semantic role** in section 2 of `components/tokens.css`, a raw value is a **primitive** in
-  section 1. A component may never read a colour primitive (gate 13) and may never write a raw scale
-  value (gate 12).
 - **Markup** goes to two places and only two: the component's page in `ui-kit/`, and the screens in
   `ui-visual/` where it stands. Never to a third copy. **A dialog that also has a standalone page is
   one markup, not two** (gate 19): the canonical copy is the one in `ui-visual/event-feed.html`, and
@@ -131,9 +146,6 @@ borrows the win/lose colour, and a candidate in a multi-outcome chart is not an 
 - **A heading level is structure**, so it is decided in `wireframes/` and the colour copy follows.
   Exactly one `<h1>` per screen, no skipped level, **in both trees** (gate 15 reads both, because a
   check that reads only the copy can pass while the original is wrong).
-- **Geometry has three scales and they are not interchangeable.** `--space-*` is the distance BETWEEN
-  things, `--size-*` the side OF a thing, `--control-*` and `--icon-*` the box and the mark of an
-  interactive element. Same numbers, different questions (gate 12).
 - **A sample photograph is content**, so it goes on the element as `style="background-image:..."`,
   which is one of the three things gate 9 lets through. A shared image asset lives in `assets/` at the
   root, owned by neither layer.
@@ -144,14 +156,6 @@ borrows the win/lose colour, and a candidate in a multi-outcome chart is not an 
   `python3 ui-kit/_levels.py --order` prints it and gate 23 fails the build when the file stops
   matching. That map is also the level (atom / molecule / organism) in `ui-kit/docs/inventory.md` and
   the grouping of the vitrine's side panel, all from `ui-kit/_levels.py` and nowhere else.
-- **A new component** = css in `components/` + an `@import` at the position `--order` gives it + a
-  page in `ui-kit/` + a row in `ui-kit/docs/inventory.md`. Its entry in `ui-kit/_nav.js` is derived,
-  not typed. Then `python3 ui-kit/_check_kit.py` has to pass, every gate.
-- **A document in `ui-kit/docs/` is a page of the vitrine.** It is rendered by `ui-kit/_gen_docs.py`
-  and registered in `_gen_docs.PAGES`, which is also where `_gen_component_pages.py` reads the side
-  panel group from; run the component generator first, because it writes `docs/coverage.md`. Nothing
-  in `ui-kit/` or `ui-visual/` may link a raw `.md`: a browser downloads one instead of drawing it
-  (gate 21).
 - **A checker asks the markup, not the text.** A page that quotes markup is normal here (every
   component page ends with its own css, and the documents quote both), so a scan for a path, a
   `url()` or a font host has to skip what is inside `<code>` and `<pre>` and look at the attribute
@@ -162,22 +166,9 @@ borrows the win/lose colour, and a candidate in a multi-outcome chart is not an 
 - **Two token levels, not three.** Primitive + semantic. Colour is the only thing with a second
   level, because a radius or a gap has nothing for a theme to override; a component level is not
   part of this stage.
-- **A dialog is bounded by the viewport and its BODY scrolls**, at every width. The frame keeps
-  `overflow:clip` because it clips its own corners; a box cannot both clip decoration and contain
-  content, and the answer is that the head stays and the body moves. A skin (`outcome-dialog`,
-  `signin-dialog`) is named for what the sheet IS, and a standalone overlay page wears the shared
-  dialog's own class list plus `app-case` (gate 19).
 - **A font is served from this repo.** No page may call a font host: the request carries a visitor's
   IP to a third party before the consent banner has asked anything (gate 20). Faces are woff2 in
   `assets/fonts/`, declared once in `components/fonts.css`, imported first by `index.css`.
-- **The side panel is one component with one vocabulary, in all three trees.** A **label** names a run
-  of rows and opens nothing (`.sidebar-divider`, `.sub` when nested); a **row** that opens a page is a
-  link (`.sidebar-page-link`, `.sidebar-sub-link` when nested under one); the page you are **on** is
-  `.active` at whichever level it sits and the group you are **in** is `.active` on its label. A row
-  that goes nowhere is not an `<a>`. The tree is a named `<nav>`. No page describes the panel in its
-  own stylesheet: `ui-visual/` and `ui-kit/` reach it through `components/index.css`, the 28 course
-  pages link `fonts.css` + `tokens.css` + `course-chrome.css` last in `<head>` (`_course_chrome.py`),
-  and a panel's behaviour is one string in `ui-visual/_panel_reveal.py` emitted two ways.
 - **Quiet is a colour, not an opacity.** `opacity` fades text into its background and no sweep that
   reads `getComputedStyle().color` can see it: `--chrome-muted` is 5.03:1 on the panel and 2.37:1 at
   `opacity:.55`. Depth is a colour role, so the value being chosen is the value being checked.
