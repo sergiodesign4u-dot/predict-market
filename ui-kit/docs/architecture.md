@@ -365,11 +365,11 @@ level and comments stays an organism.
 A rule whose selector list spans several components is split per component, in place, so each file
 keeps the rule at its original position in the cascade.
 
-### Six declarations, and why a reader has to know they exist
+### Seven declarations, and why a reader has to know they exist
 
 Most of what this system says about itself is computed: the level, the cascade order, the class
 owner, the coverage table, the count in `README.md`. **Part of it is not, and the part that is not
-lives in six lists in `ui-kit/_levels.py`, each entry a line with its reason.** They are there
+lives in seven lists in `ui-kit/_levels.py`, each entry a line with its reason.** They are there
 because a class map answers "which file styles this word" and the questions asked of it are
 different ones, and where the map cannot answer, a person does, out loud. Anyone reading a level, an
 `@import` position or a specimen and finding it surprising should look here first: the surprise is
@@ -383,8 +383,9 @@ usually declared.
 | `RAISE` (13) | a level the arithmetic reads too low: a block whose parts are all its own classes, or a screen shell that is an organism because of what it IS | twelve are permanent by that reasoning. One, `hiw-dialog`, is a debt: backlog item 18 |
 | `ORDER_BREAK` (4) | a containment cycle, dropped for ORDERING only and kept for the level, with the direction decided by which file restyles the other's insides | three of the four name a backlog item. A cycle caused by a class in the wrong file closes when the class moves |
 | `SPECIMEN_DEBT` (11) | a stand that is short for a KNOWN reason: a page plate inside a component file, two components on one element, `.pos` used as a plate | **every entry is a debt**. Each names what closes it, and closing means splitting the component, never widening the line |
+| `STATIC` (10) | the components that deliberately get NO interaction states: a bar drawn to a width, a table of read-only figures, a grid whose every control belongs to another file | nine are permanent by that reasoning. One, `options`, records a markup defect it cannot fix: the row is a `<div>` with a click handler and no keyboard path |
 
-The last one is the youngest and the one most likely to be misread. It exists so that **gate 24** can
+`SPECIMEN_DEBT` is the one most likely to be misread. It exists so that **gate 24** can
 be narrow: the gate compares what a component contains in its stand against what it contains on the
 105 painted screens, minus these eleven, and fails the moment a component gains a case nobody stages,
 which is the moment its level stops being computed and starts being a guess. Its second half is the
@@ -392,6 +393,13 @@ one that matters more. An exception list that can be quietly extended is not a g
 that turns one off, so **an entry covering no real difference fails just as loudly as a missing
 stand**. Both halves were proved by breaking them: gutting the loading scene out of the card stand
 turned the first red, and two fictitious entries turned the second red.
+
+`STATIC` is built the same way and for the same reason, and **gate 25** reads it in both directions:
+a component not on the list has to declare `:hover` and `:active`, and a component on it has to
+declare neither. Without the second half the cheapest way past the first would be to add a line to
+the list. Focus is deliberately outside that count, because `base.css` declares `:focus-visible` once
+for the whole system and a component only speaks up when its GROUND needs something different;
+counting it per file would push the system back into the shape that gathering it undid.
 
 ---
 

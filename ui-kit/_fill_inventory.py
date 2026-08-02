@@ -219,6 +219,11 @@ def main():
 # folded in. Gate 2 fails the build when this span stops matching.
 README = os.path.join(ROOT, "README.md")
 SPAN = re.compile(r"(<!-- counts:start -->).*?(<!-- counts:end -->)", re.S)
+# The gate count was typed into README.md in two places and the states pass made
+# both wrong on the same afternoon. Counted here from the one file that has them,
+# by the number each check() announces itself with: the checker prints that number
+# and a reader looks it up, so the label and the total cannot disagree.
+GATES = re.compile(r"(<!-- gates:start -->).*?(<!-- gates:end -->)", re.S)
 
 
 def counts():
@@ -237,6 +242,14 @@ def counts():
                 len(substrate), "`, `".join(substrate)))
 
 
+def gate_counts():
+    """"N gates in M checks", read out of _check_kit.py."""
+    with open(os.path.join(KIT, "_check_kit.py"), encoding="utf-8") as fh:
+        src = fh.read()
+    calls = re.findall(r'check\(\s*"(\d+) ', src)
+    return "**%d gates** in %d checks" % (len(set(calls)), len(calls))
+
+
 def fill_readme(check=False):
     with open(README, encoding="utf-8") as fh:
         src = fh.read()
@@ -244,6 +257,7 @@ def fill_readme(check=False):
         print("README: no counts span, nothing written")
         return
     new = SPAN.sub(lambda m: m.group(1) + counts() + m.group(2), src)
+    new = GATES.sub(lambda m: m.group(1) + gate_counts() + m.group(2), new)
     if new == src:
         print("README counts            unchanged")
         return

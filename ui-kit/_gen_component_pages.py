@@ -207,7 +207,7 @@ for path in COMP.glob("*.css"):
 # between coverage.md and the css headers and step 9 closed again between the two
 # panel generators: one computation feeds both, or they drift and nobody can tell
 # which to believe. The reasoning for the map is written there with it.
-from _levels import SUBJECTS, OWNER  # noqa: E402
+from _levels import SUBJECTS, OWNER, STATIC  # noqa: E402
 
 
 def parse_component(name):
@@ -280,10 +280,24 @@ def elsewhere(name):
             f'<div class="ck-screens">{links}</div></section>')
 
 
-def states_table(states):
+# A page that says nothing where a state should be reads the same whether the
+# absence was decided or forgotten, and the reader has no way to tell which. So
+# an empty States section is not allowed to be silent: it either quotes the
+# declaration in _levels.STATIC, reason and all, or it says out loud that this is
+# a gap. Gate 25 makes the same list load-bearing in both directions, so the two
+# can never drift: a component here without an entry fails the build.
+def states_table(states, name=""):
     if not states:
-        return ('<p class="tk-note">This file declares no state rule: the component looks the same '
-                'at rest, on hover and on focus.</p>')
+        why = STATIC.get(name)
+        if why:
+            return ('<p class="tk-note"><b>No states: not interactive.</b> '
+                    'Declared in <code>ui-kit/_levels.py</code>, and gate 25 holds it: '
+                    '%s. A state belongs to what a person can press or type into, and '
+                    'inventing one here would inflate the system the way an empty '
+                    'semantic role would.</p>' % esc(why))
+        return ('<p class="tk-note"><b>A gap, not a decision.</b> This file declares no state '
+                'rule and is not on the declared static list, so the component looks the same '
+                'at rest, on hover and while it is held down.</p>')
     rows = "".join(
         f"<tr><td class='tk-role'>{esc(sel)}</td><td class='ck-decl'>{esc(decl)}</td></tr>"
         for sel, decl in states[:24])
@@ -466,7 +480,7 @@ for path in sorted(COMP.glob("*.css")):
             "Colour through a role, geometry straight from a primitive."))),
         rules=c["rules"], nclasses=len(c["classes"]), nscreens=len(c["screens"]),
         nuv=len(uv_classes),
-        live=live(name), inside=elsewhere(name), states=states_table(c["states"]) + state_grounds(state_tokens(c["states"], c["roles"])),
+        live=live(name), inside=elsewhere(name), states=states_table(c["states"], name) + state_grounds(state_tokens(c["states"], c["roles"])),
         roles=role_swatches(c["roles"]), classes=class_table(c["classes"]),
         screens=screen_links(c["screens"]), css=esc(c["css"]))
     (KIT / (name + ".html")).write_text(page, encoding="utf-8")

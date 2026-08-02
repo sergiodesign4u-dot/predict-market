@@ -160,12 +160,28 @@ check("2 specimen ids unique", len(ids) == len(set(ids)))
 # _fill_inventory.py now, from _levels.py, and a generated span is only single
 # sourced while something fails when it goes stale.
 sys.path.insert(0, str(KIT))
+import _levels                                                        # noqa: E402
 from _fill_inventory import counts as readme_counts, SPAN as README_SPAN  # noqa: E402
+from _fill_inventory import gate_counts, GATES as README_GATES            # noqa: E402
 
 _readme = (ROOT / "README.md").read_text(encoding="utf-8")
 _span = README_SPAN.search(_readme)
 check("2 the README count is current", bool(_span) and _span.group(0) ==
       "<!-- counts:start -->" + readme_counts() + "<!-- counts:end -->",
+      "run: python3 ui-kit/_fill_inventory.py")
+# The same lesson one line down. "24 gates" was typed into README.md twice and
+# this file grew a twenty-fifth, so both sentences were wrong the moment the gate
+# landed. Counted from the numbers the checks announce themselves with, and both
+# spans have to agree, because a fact written twice is a fact that drifts.
+#
+# The first cut of this check did not fail when it should have, and it is worth
+# the two lines it costs to say why: it asked whether the correct sentence was IN
+# the file, once, which one right span satisfies however wrong the other one is.
+# `in` answers a question about the document; the question here is about each
+# span. So it counts, and both have to be right.
+_want = "<!-- gates:start -->" + gate_counts() + "<!-- gates:end -->"
+check("2 the README gate count is current",
+      len(README_GATES.findall(_readme)) == _readme.count(_want) == 2,
       "run: python3 ui-kit/_fill_inventory.py")
 
 # 3 ------------------------------------------------------------- dead icons --
@@ -455,7 +471,7 @@ for path in sorted(COMP.glob("*.css")):
         block_sel = block_sel.strip()
         if block_sel.startswith("@") or not block_sel:
             continue
-        for sel in block_sel.split(","):
+        for sel in _levels.split_top(block_sel):
             classes = re.findall(r"\.([\w-]+)", sel)
             if classes and not any(c in carried for c in classes):
                 unmatched.append("%s %s" % (path.name, " ".join(sel.split())[:40]))
@@ -1051,6 +1067,7 @@ check("22 a page off the tree is still linked", not unreachable,
 # with the documents: a file can be newer than its source and still be wrong.
 sys.path.insert(0, str(KIT))
 from _levels import ORDER as LEVEL_ORDER, order_problems, SUBJECTS as LEVEL_SUBJECTS  # noqa: E402
+from _levels import STATIC as LEVEL_STATIC                            # noqa: E402
 
 cascade = [ln.split('"')[1][:-4] for ln in
            (COMP / "index.css").read_text(encoding="utf-8").splitlines()
@@ -1095,6 +1112,64 @@ check("24 a stand shows the whole component", not flat,
       "%d: %s" % (len(flat), "; ".join(flat[:3])))
 check("24 no declared exception is idle", not superfluous,
       "%d: %s" % (len(superfluous), ", ".join("%s -> %s" % e for e in superfluous)))
+
+# 25 -------------------------------------------------------- four states, or --
+# The states pass has to answer for all 36 files, and a file with no `:hover`
+# reads identically whether that was decided or forgotten. `_levels.STATIC` is
+# the decision, one line of reason each, and this makes it load-bearing BOTH
+# ways: a component not on the list must declare hover and press, and a
+# component on it must declare neither. Without the second half the cheapest way
+# past the first would be to add a line to STATIC, which is how an exception
+# list stops being a declaration and becomes the switch that turns a gate off.
+#
+# Focus is deliberately NOT in this count. `base.css` declares :focus-visible
+# once for the whole system and a browser sweep of 153 pages in both themes
+# found 0 of 179 ring kinds missing; fourteen component files used to carry
+# their own copy and twenty-four did not, and gathering it was the point. A
+# component only speaks up when its GROUND needs something different, so
+# counting :focus-visible per file would push the system straight back into the
+# shape base.css was written to undo.
+#
+# The third check is the one that keeps a state a TOKEN rather than a style, and
+# it asks about COLOUR only. A colour written into a state rule is a colour no
+# theme can reach, so it fails in the theme nobody was looking at; a length, an
+# angle or a shadow offset has nothing for a theme to override, which is the same
+# reason geometry gets no semantic level in tokens.css. `filter:brightness()` is
+# counted as colour on purpose: it multiplies whatever is underneath, so it is a
+# colour decision wearing a number, and the same 1.08 lightens a dark brass in
+# one theme and washes out a pale one in the other.
+STATE = re.compile(r":(hover|active)\b")
+COLOUR_VALUE = re.compile(r"#[0-9a-f]{3,8}\b|\brgba?\(|\bhsla?\(|"
+                          r"\b(?:brightness|saturate|contrast|invert|sepia)\(", re.I)
+mute, loud, styled = [], [], []
+for f in sorted(COMP.glob("*.css")):
+    if f.stem in ("tokens", "index", "fonts"):
+        continue
+    body = re.sub(r"/\*.*?\*/", "", f.read_text(encoding="utf-8"), flags=re.S)
+    rules = [(s.strip(), d) for s, d in re.findall(r"([^{}]+)\{([^{}]*)\}", body)
+             if not s.strip().startswith("@") and STATE.search(s)]
+    kinds = {k for s, _ in rules for k in STATE.findall(s)}
+    if f.stem in LEVEL_STATIC:
+        if kinds:
+            loud.append("%s (%s)" % (f.stem, ", ".join(sorted(kinds))))
+        continue
+    if {"hover", "active"} - kinds:
+        mute.append("%s (has %s)" % (f.stem, ", ".join(sorted(kinds)) or "none"))
+    for sel, decl in rules:
+        for one in decl.split(";"):
+            if ":" not in one:
+                continue
+            prop, val = [x.strip() for x in one.split(":", 1)]
+            if not prop or prop.startswith("--"):
+                continue
+            if COLOUR_VALUE.search(re.sub(r"var\(--[a-z0-9-]+\)", "", val)):
+                styled.append("%s %s{%s:%s}" % (f.stem, sel[:26], prop, val[:24]))
+check("25 an interactive component has hover and press", not mute,
+      "%d: %s" % (len(mute), ", ".join(mute[:4])))
+check("25 no component declared static has one", not loud,
+      "%d: %s" % (len(loud), ", ".join(loud[:4])))
+check("25 a state is a token, not a value", not styled,
+      "%d: %s" % (len(styled), "; ".join(styled[:3])))
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
