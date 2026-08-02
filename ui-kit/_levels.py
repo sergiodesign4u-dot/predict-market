@@ -25,13 +25,14 @@ reads ANCESTORS as contents, and every component in the product comes out an
 organism (the first cut of this file returned 33 of 38). The question is what
 stands inside the element this component owns, not what the page around it is.
 
-WHAT IS DECLARED HERE RATHER THAN COMPUTED. Six lists, and a reader should know
-they exist before being surprised by a level: SHARED (words no component owns),
-NOT_A_COMPONENT (the substrate), MODIFIER (words that name a state), RAISE (the
-floors below), ORDER_BREAK (containment cycles, dropped for ordering only) and
-SPECIMEN_DEBT (stands that are short for a known reason, and every entry a debt).
+WHAT IS DECLARED HERE RATHER THAN COMPUTED. Seven lists, and a reader should
+know they exist before being surprised by a level: SHARED (words no component
+owns), NOT_A_COMPONENT (the substrate), MODIFIER (words that name a state),
+RAISE (the floors below), ORDER_BREAK (containment cycles, dropped for ordering
+only), SPECIMEN_DEBT (stands that are short for a known reason, and every entry
+a debt) and STATIC (the components that deliberately get no interaction states).
 Each entry is one line with its reason. `ui-kit/docs/architecture.md` has the
-table of all six and who closes each.
+table of all seven and who closes each.
 
 WHAT ARITHMETIC CANNOT SEE. Two things:
 
@@ -102,6 +103,36 @@ COMBINATOR = re.compile(r"\s*[>+~]\s*|\s+")
 PSEUDO = re.compile(r"::?[a-zA-Z-]+(?:\([^)]*\))?")
 
 
+def split_top(sel):
+    """The selector list, split only at commas OUTSIDE brackets.
+
+       A plain .split(",") is right until the day a selector uses :is() with more
+       than two members, and then it is wrong in a way nothing shows. Splitting
+       `.app-case :is(.bet-panel,.bet-sheet,.bet-dock) .confirm-btn` on every comma
+       hands back `.bet-sheet` on its own: a bare class at depth 0, which reads as
+       a component's ROOT. `.bet-sheet` moved from betpanel to button on that
+       fragment alone, and with it the level of two organisms and four rows of the
+       containment map. A two-member :is() hides it, because the middle fragment
+       still carries the tail; the third member is what puts a comma on both sides
+       of one name.
+       Found on 2026-08-02 by gate 24, which is the gate for exactly this: it asks
+       whether a stand still shows what the product contains, and the answer went
+       false because the reader changed its mind about who owns a class."""
+    out, depth, cur = [], 0, []
+    for ch in sel:
+        if ch in "([":
+            depth += 1
+        elif ch in ")]":
+            depth -= 1
+        if ch == "," and depth == 0:
+            out.append("".join(cur))
+            cur = []
+            continue
+        cur.append(ch)
+    out.append("".join(cur))
+    return out
+
+
 def subjects_of(body):
     """class -> the fewest other classes in any selector where it is the subject."""
     found = {}
@@ -110,7 +141,7 @@ def subjects_of(body):
         sel = m.group(1)
         if sel.lstrip().startswith("@"):
             continue
-        for one in sel.split(","):
+        for one in split_top(sel):
             one = one.strip()
             if not one:
                 continue
@@ -183,6 +214,40 @@ NOT_A_COMPONENT = {
 MODIFIER = {
     "skeleton": "the loading state of whatever it sits on, written as a subject "
                 "by position.css and as an ancestor by skeleton.css",
+}
+
+# ---- the components that get no states, and why -----------------------------
+# The states pass has to answer for all 36 files, and "this one has no :hover"
+# reads identically whether it was decided or forgotten. So the decision is
+# written down, one line each, and gate 25 makes the list load-bearing in both
+# directions: nothing here may declare a :hover or an :active, and nothing NOT
+# here may lack them. An exception list that can absorb a component quietly is
+# not a declaration, it is a way of switching the check off.
+#
+# The rule that produced it: a state belongs to what a person can press or type
+# into. A badge, a heading, a bar drawn to a width and a table of figures have no
+# interaction to have a state OF, and inventing one inflates the system exactly
+# the way an empty semantic role did on the previous stage. Where a block LOOKS
+# interactive but the control inside it belongs to another file, the entry says
+# which file, because that is the question the next reader will actually have.
+STATIC = {
+    "base": "the page frame. It owns the one :focus-visible the whole system reads "
+            "and has no control of its own except a visibility utility",
+    "oddsbar": "a datum drawn to a width. It reports the market and answers no pointer",
+    "skeleton": "the loading mark. It stands where a control will be and is replaced by it",
+    "seo-plate": "the reading block at the foot of a feed: prose and a brand column, "
+                 "with no link inside it on any of the 105 screens",
+    "trustbar": "three trust statements. A claim, not a destination",
+    "bets-table": "the holders and activity rows. Read-only figures; a row opens nothing",
+    "chart": "the plot. Its time-range switch is .ed-range and lives in tabs.css, "
+             "which does have states",
+    "feed": "the grid the cards stand in. Every control inside it belongs to card, "
+            "catnav or loadmore",
+    "notice": "the banners and boxes. Their buttons are .state-btn and belong to button",
+    "options": "the multi-outcome list. The row is a <div>; what a person presses is "
+               "the .yesno pair inside it, which has its own states. The row ALSO "
+               "carries a JS click handler and no keyboard path, which is a defect "
+               "of the markup and belongs to the grey tree, not to a state rule",
 }
 
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link",
