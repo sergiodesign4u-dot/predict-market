@@ -1510,9 +1510,15 @@ twice.
 |---|---|---|
 | The 28 course pages' own content | 203 KB of inline css nothing has read; step 9 took only the panel | now, or never |
 | `wireframes/` inline css | 34 distinct `<style>` bodies over 104 pages, largest 52 KB; **gate 14 was explicitly narrowed away from it** in step 7e | now, or never |
-| The page scripts as code | 15 distinct bodies in 810 blocks across the painted tree; every sweep reads their output, none reads them | Stage 12, Animation |
-| What a screen reader is told when something changes | `aria-live` or `role="status"` on **9 screens of 105**; a toast appears and announces nothing | Stage 10, States |
-| Page weight, font swap, layout shift | never measured once, at any width, in either theme | Stage 13, Handoff |
+| The page scripts as code | 15 distinct bodies in 810 blocks across the painted tree; every sweep reads their output, none reads them | Stage 11, Animation |
+| What a screen reader is told when something changes | `aria-live` or `role="status"` on **9 screens of 105**; a toast appears and announces nothing | Stage 09, States |
+| Page weight, font swap, layout shift | never measured once, at any width, in either theme | Stage 12, Handoff |
+
+The Owner column carries the stage numbers as they stand after the 2026-08-02 renumbering, which
+dropped the project from thirteen stages to twelve. Prose elsewhere in this document points
+BACKWARD, at work already done, and keeps the number it was written under; the key is in the header
+of `docs/decisions.md`. A pointer at the past is a citation and a pointer at the future is an
+instruction, and only the second one is worth rewriting.
 
 Two things this table is deliberately not saying. It is not a defect list: no entry here is a known
 bug, each is a place where a bug would currently be invisible. And it is not a claim that the
@@ -1524,6 +1530,6 @@ already drive. The one real gap is the announcement, and a toast is a state, so 
 next stage on its own.
 
 **The two rows marked "now, or never" are the honest ones.** Nothing downstream will re-open the
-course pages or the grey tree's stylesheet, so if they are not read before Stage 10 they will not be
+course pages or the grey tree's stylesheet, so if they are not read before Stage 09 they will not be
 read. They are recorded at their real size rather than promised, so that a later pass can pick them
 up knowing what it is taking on.

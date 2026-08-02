@@ -11,6 +11,11 @@ the entry in `decisions.md` that closed it.
 
 **Open: 17.**
 
+The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
+twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
+number the record was written under, because it cites an entry in [`decisions.md`](./decisions.md)
+whose header holds the old-to-new key.
+
 ---
 
 ## Unread surfaces (5)
@@ -24,15 +29,15 @@ argument that yield tracked unread surface rather than effort. Measurements are 
 |---|---|---|---|
 | 1 | The 28 course pages' own content | 203 KB inline css, unread (step 9 took only the panel) | now, or never |
 | 2 | `wireframes/` inline css | 34 distinct `<style>` bodies over 104 pages, largest 52 KB; gate 14 was narrowed away from it in step 7e | now, or never |
-| 3 | The page scripts as code | 15 distinct bodies in 810 blocks; every sweep reads their output, never the code | Stage 12 (Animation) |
-| 4 | What a screen reader is told on change | `aria-live` / `role="status"` on 9 screens of 105 | Stage 10 (Design System) |
-| 5 | Page weight, font swap, layout shift | never measured, at any width, in either theme | Stage 13 (Handoff) |
+| 3 | The page scripts as code | 15 distinct bodies in 810 blocks; every sweep reads their output, never the code | Stage 11 (Animation) |
+| 4 | What a screen reader is told on change | `aria-live` / `role="status"` on 9 screens of 105 | Stage 09 (Design System) |
+| 5 | Page weight, font swap, layout shift | never measured, at any width, in either theme | Stage 12 (Handoff) |
 
 Accessibility was checked before that table was written, because a large hole there would have
 changed the answer: **0 buttons without an accessible name** across 105 screens, every `<img>` with
 `alt`, native `<dialog>` supplying `aria-modal` and inerting the page, tab strips as radio groups
 that arrow keys already drive. The one real gap is the announcement, and a toast is a state, so
-Stage 10 owns it.
+Stage 09 owns it.
 
 ---
 
@@ -62,9 +67,9 @@ Carried since the project brief; none of it has been answered.
 
 | # | Item | Source | Note |
 |---|---|---|---|
-| 12 | Live odds-delta animation | `/impeccable critique` P3, 2026-07-16 | Deferred at the time as P3; Stage 12 (Animation) is its natural owner |
+| 12 | Live odds-delta animation | `/impeccable critique` P3, 2026-07-16 | Deferred at the time as P3; Stage 11 (Animation) is its natural owner |
 | 13 | Error state vs empty state are not differentiated | `/impeccable critique` P3, 2026-07-16 | Two different situations reading as one block |
-| 14 | The undeclared second alpha ladder | Stage 09 step 7c, 2026-07-28 | 20 declarations build a colour with `color-mix(in oklab, var(--color-action) N%, ...)` at 16 different percentages, beside the declared `--brass-a*` one. Gate 13 is satisfied (all read a role). Recorded as a decision, not fixed: which steps that ladder should have is a **states** question, and rounding them now would move hover and selected states for the legibility of the file rather than of the product. Stage 10 owns it |
+| 14 | The undeclared second alpha ladder | Stage 09 step 7c, 2026-07-28 | 20 declarations build a colour with `color-mix(in oklab, var(--color-action) N%, ...)` at 16 different percentages, beside the declared `--brass-a*` one. Gate 13 is satisfied (all read a role). Recorded as a decision, not fixed: which steps that ladder should have is a **states** question, and rounding them now would move hover and selected states for the legibility of the file rather than of the product. Stage 09 owns it |
 
 ---
 

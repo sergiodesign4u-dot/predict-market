@@ -140,7 +140,7 @@ still open.** A status lives in the table above and nowhere else.
 - [PRODUCT.md](./PRODUCT.md) - **the product**: JTBD, audience, market types, MVP scope, business model, compliance
 - [docs/decisions.md](./docs/decisions.md) - **the record**: every stage and audit pass, with its date and its reasoning
 - [docs/backlog.md](./docs/backlog.md) - **what is open**: 14 items, with the stage that owns each
-- [STRUCTURE.md](./STRUCTURE.md) - the 13-stage layout and the old→new folder map
+- [STRUCTURE.md](./STRUCTURE.md) - the 12-stage layout and the old→new folder map
 - [DESIGN.md](./DESIGN.md) - the shipped visual system (Vault): palette, type, form, tokens, contrast tables
 - [wireframes/_conventions.md](./wireframes/_conventions.md) - **Wireframe contract**: grey-box rules, zones, nav, states, the build passes
 - [wireframes/_critique.md](./wireframes/_critique.md) - **Wireframe critique**: defect tables and resolutions (Krok 9, 2026-06-29 re-audit, flow-wiring / coverage / final passes)

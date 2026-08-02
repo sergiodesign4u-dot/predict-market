@@ -145,7 +145,7 @@ and it must keep shipping: the painted pages render that sidebar.
 | A5 | the graphite ramp is written both as tokens and as literals: `#0f1013` (`--page`) also appears raw x7, `#141619` (`--canvas`) as `#14161a` x5, plus `#191b1f`, `#1c1e22`, `#17191d`, `#121417`, `#111316`, `#15171b`, `#1b1e23`, `#20242a`, `#20242b`, `#0d0f12` | the two-stone layer in `_theme.css` | one graphite ramp of primitives, sorted by lightness; every literal points at it |
 | A6 | `font-weight:bold` x44 and `font-weight:700` x44 for the same weight | throughout | one spelling |
 | A7 | `font-family:'DM Sans',system-ui,sans-serif` (body) vs `'DM Sans',sans-serif` (x35 elsewhere) | `body` vs components | one stack per family |
-| A8 | breakpoints: `520 / 560 / 620 / 640 / 640(min) / 760 / 860 / 900 / 960 / 980 / 1280 / 1440` | throughout | recorded, NOT fixed here. Responsive is stage 11; changing a breakpoint changes pixels |
+| A8 | breakpoints: `520 / 560 / 620 / 640 / 640(min) / 760 / 860 / 900 / 960 / 980 / 1280 / 1440` | throughout | recorded, NOT fixed here. Responsive is stage 10; changing a breakpoint changes pixels |
 
 Half-step type sizes (`9.5 / 10.5 / 11.5 / 12.5 / 13.5px`) are frequent enough to be a real scale,
 not drift: 12.5px alone appears 19 times. They stay.
@@ -381,7 +381,7 @@ Coverage rule for step 7: after the pages exist, every token in `tokens.css` and
 3. **C4 `var(--card)`:** point the five surfaces at `--bg-surface`. This is the single change in the
    whole stage that can move a pixel, and it moves it towards correct. Flag it in the diff, do not
    hide it.
-4. **A8 breakpoints:** recorded, not touched. Fixing them is stage 11.
+4. **A8 breakpoints:** recorded, not touched. Fixing them is stage 10.
 5. **Grey-box scaffolding:** hide (safe) or delete (clean) in step 3. Decision after the first diff.
 
 ---

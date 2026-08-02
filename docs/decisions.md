@@ -10,6 +10,34 @@ so a claim here is true as of its own date and nowhere else.
 
 Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
+## The stage numbers in this file are the old ones
+
+The project used to count thirteen stages and ran one number ahead of the course from Information
+Architecture onward. It was renumbered to twelve on 2026-08-02, and the entries below were
+deliberately **not** rewritten: an entry is true as of its own date, and renumbering it would make
+it disagree with the commit message it describes. Read them through this key.
+
+| Written here | Means, in course numbering | Stage |
+|---|---|---|
+| Stage 01 | 01 | Foundation Research |
+| Stage 02 | 02 | User Research |
+| Stage 03 | 02+ | CJM, inside User Research |
+| Stage 04 | 03a / 03b | Information Architecture |
+| Stage 05 | 04 | Wireframes |
+| Stage 06 | 05 | Voice |
+| Stage 07 | 06 | Concept |
+| Stage 08 | 07 | UI + Visual |
+| Stage 09 | 08 | Tokens + Components |
+| Stage 10 | 09 | Design System |
+| Stage 11 | 10 | Responsive |
+| Stage 12 | 11 | Animation |
+| Stage 13 | 12 | Handoff |
+
+01 and 02 did not move, so a number below 03 means the same thing either way. Everything from
+Information Architecture on is one higher than the course. References that point FORWARD, at work
+not yet done, were renumbered wherever they live, because those are the ones a reader acts on:
+`README.md`, `STRUCTURE.md`, `CLAUDE.md`, `backlog.md` and the two documents in `ui-kit/docs/`.
+
 Per-stage detail lives with its stage: `ui-kit/docs/architecture.md` (the full Stage-09
 record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/microcopy.md`
 (the copy rewrite log).

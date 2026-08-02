@@ -3,7 +3,8 @@
 resync_sidebar.py  -  Single source of truth for the shared left sidebar nav on
 the root visualization pages (research/, user-research/, ia/, voice/).
 
-The 13-stage course taxonomy is defined ONCE below. This script rebuilds the
+The 12-stage course taxonomy is defined ONCE below (thirteen rows: Wireframe
+Annotations is an artifact of two stages, not a stage). This script rebuilds the
 <aside class="sidebar" id="sidebar"> ... </aside> block on each root viz page and
 ensures the sidebar CSS carries the "Next" badge rule.
 

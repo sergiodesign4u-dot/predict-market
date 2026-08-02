@@ -16,7 +16,7 @@ appears twice the copy here is the one to delete.
 | The shipped visual system (Vault) | `DESIGN.md` |
 | Screens, navigation, flows, SEO, system nodes | `ia/docs/sitemap.md`, `ia/docs/flows.md`, `ia/docs/pages/` |
 | Every UI string | `voice/docs/microcopy.md` |
-| The full Stage-09 reasoning, gate by gate | `ui-kit/docs/architecture.md` |
+| The full Stage-08 reasoning, gate by gate | `ui-kit/docs/architecture.md` |
 
 ---
 
