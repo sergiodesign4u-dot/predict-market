@@ -56,7 +56,6 @@
 @import url("related.css");
 @import url("yesno.css");
 @import url("toast.css");
-@import url("notice.css");
 @import url("cookie-consent.css");
 
 /* Organisms: they hold molecules, or they are the shell of a screen.
@@ -66,6 +65,7 @@
 @import url("hero.css");
 @import url("comments.css");
 @import url("catnav.css");
+@import url("notice.css");
 @import url("header.css");
 @import url("footer.css");
 @import url("options.css");
