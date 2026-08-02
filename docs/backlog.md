@@ -9,7 +9,7 @@ holds the record of what was done. This holds what is not.
 Unlike `decisions.md`, this file is edited: a row is struck when the item closes, with the date and
 the entry in `decisions.md` that closed it.
 
-**Open: 22.**
+**Open: 20.**
 
 The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
 twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
@@ -18,7 +18,7 @@ whose header holds the old-to-new key.
 
 ---
 
-## Unread surfaces (5)
+## Unread surfaces (3 open, 2 closed)
 
 Not a defect list. No entry here is a known bug; each is a place where a bug would be invisible,
 because nothing has ever read it. Written 2026-07-28 after nine audit passes over Stage 09, which
@@ -28,8 +28,8 @@ argument that yield tracked unread surface rather than effort. Measurements are 
 | # | Surface | Size | Owner |
 |---|---|---|---|
 | 52 skeleton marks rendering at zero size on 5 loading screens (opened item 20 the same day) | Stage 09 step 13, 2026-08-02 - css only, eight lines of base rules in `skeleton.css`. The markup could not be the fix: a painted screen has a grey twin frozen since stage 04 and gate 18 compares them, so `<span class="sk-line">` stays a span and `display:block` makes it a box. **0 of 482 marks now draw at zero.** Measured on all 19 screens that carry a mark, three widths: 14 of 19 identical to the property, and the 5 that changed are the 5 the item named |
-| 1 | The 28 course pages' own content | 203 KB inline css, unread (step 9 took only the panel) | now, or never |
-| 2 | `wireframes/` inline css | 34 distinct `<style>` bodies over 104 pages, largest 52 KB; gate 14 was narrowed away from it in step 7e | now, or never |
+| ~~1~~ | ~~The 28 course pages' own content~~ | 203 KB inline css | **Closed as NEVER**, 2026-08-02: the course frame, not the product, and the one part a reader touches is already out in `course-chrome.css` |
+| ~~2~~ | ~~`wireframes/` inline css~~ | 34 `<style>` bodies over 104 pages, largest 52 KB | **Closed as NEVER**, 2026-08-02: the grey tree is frozen and the generators that could act on a finding are the ones `CLAUDE.md` forbids running, so every finding would arrive with "not fixed, by rule" attached |
 | 3 | The page scripts as code | 15 distinct bodies in 810 blocks; every sweep reads their output, never the code | Stage 11 (Animation) |
 | 4 | What a screen reader is told on change | `aria-live` / `role="status"` on 9 screens of 105 | Stage 09 (Design System) |
 | 5 | Page weight, font swap, layout shift | never measured, at any width, in either theme | Stage 12 (Handoff) |

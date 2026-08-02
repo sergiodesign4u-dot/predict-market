@@ -44,6 +44,35 @@ record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/mi
 
 ---
 
+## 2026-08-02 - The two "now, or never" surfaces are closed as NEVER, and that is the decision
+
+`architecture.md` has carried a table of five unread surfaces since the close of Tokens and
+Components. Three of them name a later stage as their owner. Two named no owner at all, only "now,
+or never", and a row that says "now, or never" is not a decision, it is a decision postponed in a
+form that never comes back up. Both are closed here, as NEVER, with the reason.
+
+- **The 28 course pages' own content: 203 KB of inline css nothing has read.** Not read, and not
+  going to be. Those pages are the course frame around the work, not the product: the one thing in
+  them that a reader of this repo interacts with is the roadmap panel, and step 9 already took that
+  out into `components/course-chrome.css` and holds the 28 pages to it with a generator and gate 22.
+  What is left is 203 KB describing lesson pages, and a finding in it would be a finding about the
+  frame.
+- **The grey tree's inline css: 34 distinct `<style>` bodies over 104 pages, the largest 52 KB.**
+  This one is closed by a rule we made ourselves and would have to break in order to act. The grey
+  tree is frozen: `wireframes/` owns structure and copy, it is never painted, and the generators
+  that would rewrite it are the ones `CLAUDE.md` forbids running because the voice rewrite was
+  applied to the HTML by hand and never back-ported. **Every finding in those 34 bodies would be a
+  finding we have already forbidden ourselves to act on**, and gate 14 was deliberately narrowed
+  away from that stylesheet in step 7e for exactly this reason. Reading it would produce a list
+  whose only possible next line is "not fixed, by rule".
+
+The distinction worth keeping is between a surface nobody has read and a surface nobody may act on.
+The first is a risk. The second is a boundary, and writing it down as an open item makes the
+boundary look like neglect. Three rows of that table stay open with a stage against each; these two
+stop being rows.
+
+---
+
 ## 2026-08-02 - The audit thread closes with a gate, and the defect it found gets fixed behind it
 
 Two things in one day, in that order on purpose: the gate first, on a clean base, then the product

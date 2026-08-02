@@ -601,8 +601,8 @@ twice.
 
 | Surface | Measured today | Owner |
 |---|---|---|
-| The 28 course pages' own content | 203 KB of inline css nothing has read; step 9 took only the panel | now, or never |
-| `wireframes/` inline css | 34 distinct `<style>` bodies over 104 pages, largest 52 KB; **gate 14 was explicitly narrowed away from it** in step 7e | now, or never |
+| ~~The 28 course pages' own content~~ | 203 KB of inline css; step 9 took the panel out of them and holds it with gate 22 | **CLOSED as never**, 2026-08-02 |
+| ~~`wireframes/` inline css~~ | 34 distinct `<style>` bodies over 104 pages, largest 52 KB; **gate 14 was explicitly narrowed away from it** in step 7e | **CLOSED as never**, 2026-08-02 |
 | The page scripts as code | 15 distinct bodies in 810 blocks across the painted tree; every sweep reads their output, none reads them | Stage 11, Animation |
 | What a screen reader is told when something changes | `aria-live` or `role="status"` on **9 screens of 105**; a toast appears and announces nothing | Stage 09, States |
 | Page weight, font swap, layout shift | never measured once, at any width, in either theme | Stage 12, Handoff |
@@ -622,7 +622,11 @@ accessible name**, every `<img>` carries `alt`, the dialogs are native so the br
 already drive. The one real gap is the announcement, and a toast is a state, so it falls into the
 next stage on its own.
 
-**The two rows marked "now, or never" are the honest ones.** Nothing downstream will re-open the
-course pages or the grey tree's stylesheet, so if they are not read before Stage 09 they will not be
-read. They are recorded at their real size rather than promised, so that a later pass can pick them
-up knowing what it is taking on.
+**The two rows marked "now, or never" were answered on 2026-08-02, and the answer is never.** The
+reasoning is in `docs/decisions.md` under that date; the short form is that they are two different
+things. The course pages are the frame around the work rather than the product, and the one part of
+them a reader touches was already taken out into `course-chrome.css`. The grey tree's stylesheet is
+worse than unread: it is frozen by a rule we wrote, and the generators that could act on a finding
+there are the ones `CLAUDE.md` forbids running, so every finding in those 34 bodies would arrive
+with "not fixed, by rule" already attached. A surface nobody has read is a risk; a surface nobody
+may act on is a boundary, and an open row makes a boundary look like neglect.
