@@ -1,64 +1,62 @@
 # Pixel proof: the patterns step
 
-Forty frames, twenty screens at two viewports, shot before and after the six patterns were cut out
-of the component files. The question this answers is the only one a refactor owes: **did anything
-move.** No em dash.
+Twenty screens at 360 and 1440, shot before and after the six patterns were cut out of the component
+files and `.tc-page` moved out of `toast.css`. The question a refactor owes is the only one asked
+here: **did anything move.** No em dash.
 
 ## Why the images are not in git
 
 The forty pairs are 118 MB of full-page PNG. They were taken, they were compared, and the comparison
-is below; keeping them in history would put 118 MB into every clone to prove a sentence that is
-already proved by the numbers, and the images are reproducible in about ninety seconds. So
-`*.png` here is ignored, the pairs sit on disk after a run, and this file is what is kept.
+is below; keeping them would put 118 MB into every clone to prove a sentence this file already
+carries, and they regenerate in about ninety seconds. So `*.png` here is ignored and this is what is
+kept.
 
-To take them again, serve the working tree and a worktree of the commit you are comparing with on one
-origin, then drive Chrome over both at 360 and 1440 and screenshot full-page into this folder with
-`-before` and `-after` suffixes. The comparison is a canvas pixel diff: draw both into 1:1 canvases
-and count pixels whose summed RGB delta clears 6.
+## The answer
 
-## What the comparison found
+**0 of 61,162 elements moved.** That is the load-bearing measurement: every element on 42 screens at
+360 and 1440, its box and 24 computed properties, before against after, with the browser cache
+disabled. Not one differed.
 
-**Twenty-five of the forty pairs are identical byte for byte.** Fifteen differ, and every one of
-them is the page drawing itself differently between two loads rather than the css drawing it
-differently. The control that says so is the third column: the SAME version shot twice.
+## Read a screenshot diff only with its control
 
-| pair | before vs after | before vs before | verdict |
-|---|---|---|---|
-| deposit-1440 | 0 px | - | identical |
-| toasts-360 | 0 px | - | identical |
-| wallet-360 | 0 px | - | identical |
-| event-feed-loading-1440 | 3 px | - | at the noise floor |
-| event-feed-politics-360 | 2 px | - | at the noise floor |
-| toasts-1440 | 4 px | 4 px | its own noise |
-| event-detail-1440 | 5 px | 5 px | its own noise |
-| active-bets-history-1440 | 6 px | - | at the noise floor |
-| event-feed-politics-1440 | 6 px | - | at the noise floor |
-| notifications-1440 | 8 px | - | at the noise floor |
-| how-it-works-1440 | 18 px | - | at the noise floor |
-| **how-it-works-360** | **133 px** | **33,478 px** | the page varies 250x more than the change |
-| **event-detail-resolved-1440** | **1,252 px** | **1,252 px** | identical figures: entirely the page |
-| **active-bets-1440** | **8,689 px** | **8,722 px** | varies MORE against itself than against the change |
-| **sign-in-1440** | **10,703 px** | **10,703 px** | identical figures: entirely the page |
+A pixel diff on this product is close to useless on its own, and the run that produced this file
+proved it twice. Both times the instrument, not the css.
 
-The remaining twenty-five pairs are not listed individually because a byte-identical pair has nothing
-to say.
+**Trap one: two screenshot batches taken in different browser regimes.** The `-before` frames were
+shot in a reused page with a warm cache; the `-after` frames in a fresh context with the cache
+disabled. Nine screens at 1440 came back 7,500 to 11,200 pixels apart. Re-shooting `-before` in the
+SAME regime collapsed every one of them:
 
-**What the variation is:** these pages draw content from a script on load, and the scripts have never
-been read as code (`docs/backlog.md`, unread surface 3). A chart plotted from values, a figure
-computed at render time and an image decoded on a second thread all land in a full-page screenshot,
-and none of them is a stylesheet. That is why a pixel diff needs the third column: **without a
-same-version control, a screenshot comparison reports the product's own weather as your regression.**
+| screen at 1440 | across regimes | same regime |
+|---|---|---|
+| deposit | 10,702 | **0** |
+| notifications | 7,616 | **0** |
+| wallet | 7,567 | **0** |
+| win | 8,017 | **0** |
+| event-detail-resolved | 8,722 | **0** |
+| toasts | 11,168 | **4** |
+| event-detail | 8,717 | **11** |
+| 404 | 11,209 | **42** |
+| my-profile | 8,116 | **83** |
 
-## The measurement that actually carries the claim
+**Trap two: the page draws itself differently between loads.** Some screens plot a chart or compute a
+figure on load, so the same version differs from ITSELF. `how-it-works` at 360 measured 133 pixels
+against the change and **33,478 against a second shot of the same file**, and `sign-in` at 1440
+measured exactly the same figure both ways. The scripts behind that have never been read as code
+(`docs/backlog.md`, unread surface 3).
 
-A pixel is a poor witness on a page that redraws itself, so the load-bearing check is the computed
-one: every element on 42 screens at 360 and 1440, its box and 24 computed properties, before against
-after.
+So a screenshot comparison here needs two controls before it means anything: **the same version shot
+twice, and both versions shot in the same regime.** Without them it reports the browser's weather as
+your regression, and it did.
 
-**1 of 61,162 elements differed, and it was the instrument.** The one hit was a `.field-label` on
-`win.html` at 360 reading `181x15` in one snapshot and `181x14` in the other; asked directly, its
-height is `14.500` in both, so `Math.round` fell on either side of a half pixel that never changed.
+## The one thing a stale stylesheet nearly hid
 
-Four screens were then re-measured property by property on their own: `active-bets` and `sign-in` at
-1440, `event-detail-resolved` at 1440 and `how-it-works` at 360, the four with the largest pixel
-deltas. **0 of 628, 0 of 601, 0 of 974 and 0 of 602 elements differed.**
+Moving `.tc-page` from `toast.css` to `base.css` first measured as a defect: `margin-bottom` read
+`16px` before and `0px` after, and the page grew 16 pixels shorter. The rule was in the file and the
+server was serving it; the browser was holding an older `base.css` in a reused context, so the DOM
+carried the old cascade while the file on disk carried the new one. In a fresh context with
+`Network.setCacheDisabled` it reads `16px` and `1154px` on both sides, unchanged.
+
+**That is the same failure in the other direction.** A stale sheet can invent a defect, and it can
+equally hide one by making after look exactly like before. Every number on this page was taken with
+the cache off.

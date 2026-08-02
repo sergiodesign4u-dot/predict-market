@@ -468,9 +468,10 @@ SPECIMEN_DEBT = {
     ("tabs", "*"): "the .ptab-panel is a content panel, so a profile tab holds a card "
                    "gallery and a position record. The switcher and the panel are one "
                    "file, item 16; closes when they are two",
-    ("toast", "*"): ".tc-page is the toast catalogue PAGE, declared in toast.css, so "
-                    "whatever else stands on that page reads as inside the toast. "
-                    "Closes when the page leaves the component file, item 16",
+    # ("toast", "*") was here and is PAID, 2026-08-03. .tc-page moved to base.css:
+    # it is the section of the catalogue that stands in for the page underneath,
+    # not a part of a toast, and having it in toast.css is why the toast read as
+    # containing the cookie banner. Backlog item 16c.
     ("hiw-dialog", "*"): "the standalone How It Works PAGE and the narrow shared sheet "
                          "are one file with one vocabulary, so the hero band and the "
                          "position plate on the page read as inside the dialog. This is "

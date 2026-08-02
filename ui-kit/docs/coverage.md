@@ -15,7 +15,7 @@ says so. No em dash.
 | component | own | specimens | inside | classes | screens |
 |---|---|---|---|---|---|
 | account | 1 | account-cta | 1 | 2 | 3 |
-| base | 2 | base-frame, base-groove | 0 | 12 | 104 |
+| base | 2 | base-frame, base-groove | 0 | 13 | 104 |
 | betpanel | 4 | betpanel-states, betpanel-dock, betpanel-sheet, betpanel-more | 2 | 19 | 11 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 13 | 9 |
 | bottomnav | 1 | bottomnav | 0 | 2 | 104 |
@@ -47,7 +47,7 @@ says so. No em dash.
 | skeleton | 1 | skeleton-grid | 3 | 5 | 19 |
 | state-block | 3 | state-empty-filters, state-error, state-empty | 1 | 7 | 40 |
 | tabs | 2 | tabs-detail, tabs-mybets | 1 | 21 | 20 |
-| toast | 1 | toast | 0 | 7 | 1 |
+| toast | 1 | toast | 0 | 6 | 1 |
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 104 |
 | yesno | 1 | yesno | 2 | 2 | 14 |
 

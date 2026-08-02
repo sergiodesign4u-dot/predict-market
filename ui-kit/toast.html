@@ -49,8 +49,8 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/toast.css</span>
-      <span class="tk-badge">12 rules</span>
-      <span class="tk-badge">9 classes</span>
+      <span class="tk-badge">11 rules</span>
+      <span class="tk-badge">8 classes</span>
       <span class="tk-badge">1 screens</span>
     </div>
   </header>
@@ -85,7 +85,7 @@ push();});})();</script>
     shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
     used by nothing. Only the last kind is a deletion candidate, and they are collected in
     <a href="coverage.html">coverage</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ic-sm</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.tc-page</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toast</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toast-close</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toast-error</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toast-group</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toast-inner</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toast-msg</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ic-sm</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toast</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toast-close</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toast-error</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toast-group</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toast-inner</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toast-msg</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
@@ -105,7 +105,10 @@ push();});})();</script>
    Stands on: 1 ui-visual screens (toasts.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.app-case .tc-page{margin-bottom:var(--space-16)}
+/* .tc-page was here and is in base.css. It is not a toast: it is the section
+   of the toast catalogue that stands in for the page underneath, one screen,
+   one margin, and having it here is why the toast read as containing the
+   cookie banner. Backlog item 16c. */
 .app-case .toast-inner{display:flex;flex-direction:column;gap:var(--space-12)}
 .app-case .toast-group{display:flex;flex-direction:column;gap:var(--space-8)}
 .app-case .toast{display:flex;align-items:center;gap:var(--space-12);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);padding:var(--space-12) var(--space-12);box-shadow:0 18px 40px -24px var(--shadow-ink),inset 0 1px 0 var(--edge-groove-light)}

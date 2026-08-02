@@ -1,12 +1,15 @@
 /* components/toast.css
-   Component: toast. Classes: .tc-page, .toast, .toast-close, .toast-error, .toast-group, .toast-inner, .toast-msg.
+   Component: toast. Classes: .toast, .toast-close, .toast-error, .toast-group, .toast-inner, .toast-msg.
 
    Reads: --bevel-notice, --bg-card-quiet, --bg-control, --bg-pressed, --border-hairline, --border-notice, --edge-groove-light, --line-brass-soft, --shadow-ink, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/toast.html
    Stands on: 1 ui-visual screens (toasts.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.app-case .tc-page{margin-bottom:var(--space-16)}
+/* .tc-page was here and is in base.css. It is not a toast: it is the section
+   of the toast catalogue that stands in for the page underneath, one screen,
+   one margin, and having it here is why the toast read as containing the
+   cookie banner. Backlog item 16c. */
 .app-case .toast-inner{display:flex;flex-direction:column;gap:var(--space-12)}
 .app-case .toast-group{display:flex;flex-direction:column;gap:var(--space-8)}
 .app-case .toast{display:flex;align-items:center;gap:var(--space-12);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);padding:var(--space-12) var(--space-12);box-shadow:0 18px 40px -24px var(--shadow-ink),inset 0 1px 0 var(--edge-groove-light)}

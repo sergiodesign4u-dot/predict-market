@@ -82,6 +82,14 @@ body.app-case{background:var(--bg-page)}
    painted screens no longer have the markup at all (ui-visual/_strip_wireframe.py):
    an annotation about what is not built yet belongs in wireframes/, which owns it. */
 .tbd,.placeholder-line{display:none}
+/* THE PAGE A CATALOGUE DEMONSTRATES ON, which is a frame thing and not a
+   component's. .tc-page is the section of ui-visual/toasts.html that stands in
+   for whatever a toast would be covering: one screen, one class, one margin.
+   It lived in toast.css, so the class map read the toast as OWNING the page it
+   is demonstrated on, and therefore as containing the cookie banner that also
+   stands there. Backlog item 16c, and the fix was always the address rather
+   than the rule. */
+.app-case .tc-page{margin-bottom:var(--space-16)}
 .groove-sep{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 
 /* ============================================================================
