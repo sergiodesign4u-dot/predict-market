@@ -81,8 +81,8 @@ question about where one component ends and the next begins, and none of them is
 renders wrong today. They are here because the level arithmetic had to work around each one, and a
 workaround that is not written down is a workaround that gets re-derived.
 
-Item 16 was one row until the Design System stage's entry gate, it counted its members
-on the screens and found three different jobs inside it. It is 16a to 16d now, because a single row
+Item 16 was one row until the Design System stage's entry gate counted its members on the screens
+and found three different jobs inside it. It is 16a to 16d now, because a single row
 would have sent a pattern, a candidate and a misplaced class to the same place.
 
 | # | Item | Source | Note |
