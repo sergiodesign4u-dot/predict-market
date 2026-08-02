@@ -69,6 +69,19 @@ SPECS = KIT / "specimens"
 # declaration. A gate that stops at the folder boundary is a gate that stops.
 SHEETS = sorted(COMP.glob("*.css")) + sorted((COMP / "patterns").glob("*.css"))
 
+# EVERY GENERATED PAGE OF THE VITRINE, and the same lesson one level up. Three
+# gates spelled their corpus as KIT.glob("*.html") + SPECS.glob("*.html"), which
+# was every generated page right up until step 4 added a second folder of them:
+# ui-kit/patterns/ holds the scene each pattern is rendered in, and those are
+# generated documents exactly like a specimen. Proved by planting a dead icon
+# reference, a src at a file that does not exist and an em dash in one scene:
+# gates 3, 4 and 7 all reported clean. A corpus written as a folder goes blind
+# the day a second folder of the same thing appears, and it goes blind SILENTLY,
+# which is the only kind of blindness that matters.
+SCENES = KIT / "patterns"
+GENERATED_PAGES = (sorted(KIT.glob("*.html")) + sorted(SPECS.glob("*.html"))
+                   + sorted(SCENES.glob("*.html")))
+
 fails = []
 notes = []
 
@@ -195,7 +208,7 @@ check("2 the README gate count is current",
 
 # 3 ------------------------------------------------------------- dead icons --
 dead = []
-for page in sorted(list(KIT.glob("*.html")) + list(SPECS.glob("*.html"))):
+for page in GENERATED_PAGES:
     src = page.read_text(encoding="utf-8")
     have = set(re.findall(r'<symbol id="([\w-]+)"', src))
     for ref in set(re.findall(r'href="#(i-[\w-]+)"', src)):
@@ -206,8 +219,7 @@ check("3 no dead icon reference", not dead, "%d: %s" % (len(dead), ", ".join(dea
 # 4 ------------------------------------------------------------ every path --
 missing = []
 ATTR = re.compile(r'(?:src|href)="([^"#][^"]*)"')
-GENERATED = [p for p in sorted(list(KIT.glob("*.html")) + list(SPECS.glob("*.html")))
-             if p.name not in ("kit.html", "shell.html")]
+GENERATED = [p for p in GENERATED_PAGES if p.name not in ("kit.html", "shell.html")]
 # The screens' index is checked here too. It is not a stand page, but it reaches
 # across into ui-kit/ for the stand stylesheet, and that path is exactly the kind
 # a directory move breaks silently.
@@ -263,7 +275,7 @@ check("6 components carry no stand class", not stand_in_comp, ", ".join(stand_in
 
 # 7 --------------------------------------------------------------- em dash --
 dash = [p.name for p in
-        list(KIT.glob("*.html")) + list(SPECS.glob("*.html")) + list(KIT.glob("*.css"))
+        GENERATED_PAGES + list(KIT.glob("*.css"))
         + list(KIT.glob("*.py")) + list(KIT.glob("*.json")) + list((KIT / "docs").glob("*.md"))
         + list((KIT / "_verify").glob("*")) + SHEETS
         if p.is_file() and "\u2014" in p.read_text(encoding="utf-8", errors="ignore")]
