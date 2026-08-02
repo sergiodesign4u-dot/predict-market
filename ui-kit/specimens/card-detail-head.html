@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The panel on a course page, with the planned rows</title>
+<title>Event card, carrying the detail head</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
    A frame is a document of its own, so it does not inherit the attribute: this
    block runs in the frames too and they are told by postMessage, the same
@@ -39,27 +39,22 @@ push();});})();</script>
 <link rel="stylesheet" href="../_specimen.css">
 </head>
 <body>
-<div class="app-case">
-<aside class="sidebar" id="rmSidebar">
-    <div class="sidebar-brand"><div class="sidebar-project-name">Prediction Market</div></div>
-    <nav class="sidebar-nav" aria-label="Course roadmap">
-      <!-- ABRIDGED AND HARDCODED ON PURPOSE. This shows what the panel LOOKS
-           like, not which stages exist, so it does not read _roadmap.py and the
-           hrefs are "#". A specimen rendered from the truth breaks when the
-           truth moves, and then the vitrine reports a defect in the component
-           because the course reached a new stage. Third audit to reach here:
-           the answer is still no. -->
-      <a href="#" class="sidebar-page-link">Foundation Research</a>
-      <a href="#" class="sidebar-page-link">User Research</a>
-      <div class="sidebar-divider">Design and Delivery</div>
-      <a href="#" class="sidebar-page-link">Concept</a>
-      <a href="#" class="sidebar-page-link active">Tokens + Components</a>
-      <a class="sidebar-page-link planned next">Design System</a>
-      <a class="sidebar-page-link planned">Responsive</a>
-      <a class="sidebar-page-link planned">Handoff</a>
-    </nav>
-  </aside>
-</div>
+<div class="device"><div class="app-case">
+<main class="feed"><div class="feed-inner"><div class="ed-layout"><div class="ed-main">
+    <article class="card">
+      <div class="ed-head"><div class="ed-actions"><button type="button" class="ed-act" data-comments aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"/></svg></button><button type="button" class="ed-act" aria-label="Share this event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share-b"/></svg></button><button type="button" class="ed-act" data-fav aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button></div>
+        <span class="ed-thumb">thumbnail placeholder</span>
+        <div>
+          <span class="ed-cat">Politics &middot; One-time event</span>
+          <h1 class="ed-q">Will the US government shut down before March 1, 2027?</h1>
+          <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+          <div class="ed-oddsbar" aria-hidden="true"><span class="track"><span class="fill" style="width:38%"></span></span></div>
+        </div>
+      </div>
+    </article>
+  </div></div></div></main>
+</div></div>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></symbol><symbol id="i-chat-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22"/></symbol><symbol id="i-share-b" viewBox="0 0 24 24"><path fill="currentColor" d="M13.803 5.333c0-1.84 1.507-3.333 3.365-3.333c1.86 0 3.366 1.492 3.366 3.333c0 1.841-1.507 3.334-3.366 3.334a3.38 3.38 0 0 1-2.037-.678l-4.67 3.204a3.3 3.3 0 0 1 0 1.62l4.67 3.204a3.38 3.38 0 0 1 2.037-.677c1.86 0 3.366 1.492 3.366 3.333S19.028 22 17.168 22c-1.858 0-3.365-1.492-3.365-3.333q0-.413.098-.804l-4.67-3.204a3.38 3.38 0 0 1-2.037.677C5.507 15.336 4 13.843 4 12.002s1.507-3.333 3.365-3.333c.762 0 1.474.252 2.037.677l4.67-3.204a3.3 3.3 0 0 1-.099-.809"/></symbol></defs></svg>
 <script>
 /* Report to the vitrine: how tall this specimen is, and whether it rendered.
    postMessage crosses origins, so this works from file:// as well as from a
@@ -113,7 +108,7 @@ push();});})();</script>
     }
     try {
       parent.postMessage({
-        specimen: "course-chrome-roadmap",
+        specimen: "card-detail-head",
         height: height(),
         elements: document.body.getElementsByTagName("*").length,
         overflowX: doc.scrollWidth - doc.clientWidth,

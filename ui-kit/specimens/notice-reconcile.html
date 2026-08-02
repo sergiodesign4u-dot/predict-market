@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The panel on a course page, with the planned rows</title>
+<title>Reconcile box, won</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
    A frame is a document of its own, so it does not inherit the attribute: this
    block runs in the frames too and they are told by postMessage, the same
@@ -40,25 +40,15 @@ push();});})();</script>
 </head>
 <body>
 <div class="app-case">
-<aside class="sidebar" id="rmSidebar">
-    <div class="sidebar-brand"><div class="sidebar-project-name">Prediction Market</div></div>
-    <nav class="sidebar-nav" aria-label="Course roadmap">
-      <!-- ABRIDGED AND HARDCODED ON PURPOSE. This shows what the panel LOOKS
-           like, not which stages exist, so it does not read _roadmap.py and the
-           hrefs are "#". A specimen rendered from the truth breaks when the
-           truth moves, and then the vitrine reports a defect in the component
-           because the course reached a new stage. Third audit to reach here:
-           the answer is still no. -->
-      <a href="#" class="sidebar-page-link">Foundation Research</a>
-      <a href="#" class="sidebar-page-link">User Research</a>
-      <div class="sidebar-divider">Design and Delivery</div>
-      <a href="#" class="sidebar-page-link">Concept</a>
-      <a href="#" class="sidebar-page-link active">Tokens + Components</a>
-      <a class="sidebar-page-link planned next">Design System</a>
-      <a class="sidebar-page-link planned">Responsive</a>
-      <a class="sidebar-page-link planned">Handoff</a>
-    </nav>
-  </aside>
+<dialog class="app-dialog outcome-dialog win-dialog" open aria-label="You were right">
+    <div class="sheet-body">
+      <div class="reconcile-box">
+        <span class="field-label">You were right - you won</span>
+        <strong>+$13.20</strong>
+        <span class="fine">$5.00 stake returned + $8.20 winnings. You held YES, avg price 38%.</span>
+      </div>
+    </div>
+  </dialog>
 </div>
 <script>
 /* Report to the vitrine: how tall this specimen is, and whether it rendered.
@@ -113,7 +103,7 @@ push();});})();</script>
     }
     try {
       parent.postMessage({
-        specimen: "course-chrome-roadmap",
+        specimen: "notice-reconcile",
         height: height(),
         elements: document.body.getElementsByTagName("*").length,
         overflowX: doc.scrollWidth - doc.clientWidth,

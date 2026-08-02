@@ -17,6 +17,21 @@
     cookie banner   ui-visual/cookie-consent.html
     roadmap sidebar ui-visual/event-feed.html, shortened to two groups
     page frame      the elements components/base.css actually resets
+    card loading    ui-visual/event-feed-loading.html
+    card, detail    ui-visual/event-detail.html
+    position load   ui-visual/active-bets-loading.html
+    bet panel x3    ui-visual/event-detail-multi.html, -loading.html, -resolved.html
+    reconcile box   ui-visual/win.html
+
+  The last five were added on 2026-08-02 because the specimen audit
+  (ui-kit/_audit_specimens.py) compared what each component contains in its
+  stand against what it contains on the 105 painted screens and found these
+  stands short. A stand that shows less than the product does makes the
+  containment map short, and the level is arithmetic over that map: what a
+  narrow stand actually produces is a level held up by a declared floor instead
+  of by a reading. Every one of them keeps its real ancestor chain, because a
+  card outside .grid or a reconcile box outside the dialog is a different
+  element as far as the cascade is concerned.
 
   This file is a source for ui-kit/_extract_specimens.py. It is also openable on
   its own, which is why it carries the two stylesheet links. No em dash.
@@ -25,6 +40,9 @@
   <!-- the one sprite symbol this file references, so it also works opened on its own.
        The extractor inlines the symbols each specimen needs, this copy is for the source. -->
   <symbol id="i-shield-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.378 5.082C3 5.62 3 7.22 3 10.417v1.574c0 5.638 4.239 8.375 6.899 9.536c.721.315 1.082.473 2.101.473c1.02 0 1.38-.158 2.101-.473C16.761 20.365 21 17.63 21 11.991v-1.574c0-3.198 0-4.797-.378-5.335c-.377-.537-1.88-1.052-4.887-2.081l-.573-.196C13.595 2.268 12.812 2 12 2s-1.595.268-3.162.805L8.265 3c-3.007 1.03-4.51 1.545-4.887 2.082M15.06 10.5a.75.75 0 0 0-1.12-.999l-3.011 3.374l-.87-.974a.75.75 0 0 0-1.118 1l1.428 1.6a.75.75 0 0 0 1.119 0z" clip-rule="evenodd"/></symbol>
+  <symbol id="i-chat-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22"/></symbol>
+  <symbol id="i-share-b" viewBox="0 0 24 24"><path fill="currentColor" d="M13.803 5.333c0-1.84 1.507-3.333 3.365-3.333c1.86 0 3.366 1.492 3.366 3.333c0 1.841-1.507 3.334-3.366 3.334a3.38 3.38 0 0 1-2.037-.678l-4.67 3.204a3.3 3.3 0 0 1 0 1.62l4.67 3.204a3.38 3.38 0 0 1 2.037-.677c1.86 0 3.366 1.492 3.366 3.333S19.028 22 17.168 22c-1.858 0-3.365-1.492-3.365-3.333q0-.413.098-.804l-4.67-3.204a3.38 3.38 0 0 1-2.037.677C5.507 15.336 4 13.843 4 12.002s1.507-3.333 3.365-3.333c.762 0 1.474.252 2.037.677l4.67-3.204a3.3 3.3 0 0 1-.099-.809"/></symbol>
+  <symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></symbol>
 </defs></svg>
 <section class="kit-sec" id="extra">
   <h2 data-n="00">Extra</h2>
@@ -214,6 +232,163 @@
       </div>
     </div>
   </section>
+
+  <!--
+    THE FIVE BLOCKS BELOW ARE STATES, NOT NEW COMPONENTS. Each one is a case the
+    product renders and the existing stand did not, found by comparing the two
+    readings of containment. Read the rule before editing any of them: the
+    content goes INSIDE the component's own root element and the chain above the
+    root is the chain the screen has. Wrapping a component in something new to
+    make it render is how a stand comes to report that a card contains a page.
+  -->
+
+  <div class="kit-subh">Event card, loading</div>
+  <!--
+    ui-visual/event-feed-loading.html, one card of the four. The skeleton is not
+    a component standing next to the card, it is the card with nothing in it
+    yet: `skeleton` is a MODIFIER on `.card`, which is why the stand has to show
+    it on a card and not on its own. Every rule that draws these lines is
+    written as `.card.skeleton .sk-line`, so a bar shown outside a card is
+    unstyled markup.
+  -->
+  <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main"><div class="grid">
+    <article class="card skeleton" aria-hidden="true">
+      <div class="card-body">
+        <div class="top">
+          <span class="sk-thumb"></span>
+          <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span>
+        </div>
+        <span class="sk-line w40"></span>
+        <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+        <span class="sk-line w60"></span>
+      </div>
+    </article>
+  </div></div></div></div></main>
+
+  <div class="kit-subh">Event card, carrying the detail head</div>
+  <!--
+    ui-visual/event-detail.html. The header of the detail page is not a block of
+    its own: it is a card, and the question, the category, the thumbnail and the
+    three actions stand inside it. That is the one place where the card is the
+    outer plate of a whole screen rather than a row in a grid, and it is the
+    reason the card's stand alone was not the whole card.
+  -->
+  <main class="feed"><div class="feed-inner"><div class="ed-layout"><div class="ed-main">
+    <article class="card">
+      <div class="ed-head"><div class="ed-actions"><button type="button" class="ed-act" data-comments aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"/></svg></button><button type="button" class="ed-act" aria-label="Share this event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share-b"/></svg></button><button type="button" class="ed-act" data-fav aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button></div>
+        <span class="ed-thumb">thumbnail placeholder</span>
+        <div>
+          <span class="ed-cat">Politics &middot; One-time event</span>
+          <h1 class="ed-q">Will the US government shut down before March 1, 2027?</h1>
+          <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+          <div class="ed-oddsbar" aria-hidden="true"><span class="track"><span class="fill" style="width:38%"></span></span></div>
+        </div>
+      </div>
+    </article>
+  </div></div></div></main>
+
+  <div class="kit-subh">Transaction list, loading</div>
+  <!--
+    ui-visual/active-bets-loading.html, all three rows. Same modifier, different
+    host: `.pos.skeleton` gets its own gap and its own line height, written in
+    position.css and skeleton.css respectively, and neither rule reaches a bar
+    that is not inside a position.
+  -->
+  <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
+    <div class="pos-list" aria-busy="true">
+      <article class="pos skeleton" aria-hidden="true">
+        <div class="sk-line w70"></div>
+        <div class="sk-line w40"></div>
+      </article>
+      <article class="pos skeleton" aria-hidden="true">
+        <div class="sk-line w40"></div>
+        <div class="sk-line w40"></div>
+      </article>
+      <article class="pos skeleton" aria-hidden="true">
+        <div class="sk-line w70"></div>
+        <div class="sk-line w40"></div>
+      </article>
+    </div>
+  </div></div></div></main>
+
+  <div class="kit-subh">Bet panel: multi outcome, loading, resolved</div>
+  <!--
+    Three panels the stand did not have, side by side in the real .ed-layout so
+    the media query that shows a bet panel at all (min-width 760) is the
+    product's own:
+
+      multi     ui-visual/event-detail-multi.html    holds an option row summary
+      loading   ui-visual/event-detail-loading.html  holds skeleton lines
+      resolved  ui-visual/event-detail-resolved.html holds a state block
+
+    The resolved one carries `.rp-inner`, which is declared in event-detail.css
+    and belongs to the panel. That is backlog item 17 and not something a stand
+    may quietly fix: the stand shows what ships.
+  -->
+  <main class="feed"><div class="feed-inner"><div class="ed-layout">
+    <aside class="bet-panel">
+      <div class="bp-inner">
+        <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+        <span class="field-label">Your outcome</span>
+        <div class="bp-selected">
+          <span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span>
+          <a href="#edOutcomes" class="bp-change">Change</a>
+        </div>
+        <div class="bp-dir">
+          <button type="button" class="bp-side sel">YES <span class="bp-pct">41%</span></button>
+          <button type="button" class="bp-side">NO <span class="bp-pct">59%</span></button>
+        </div>
+        <div>
+          <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
+          <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
+        </div>
+        <div>
+          <div class="line"><span>Price now</span><span>41%</span></div>
+          <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+          <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
+        </div>
+        <button type="button" class="confirm-btn">Confirm bet</button>
+        <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
+      </div>
+    </aside>
+    <aside class="bet-panel">
+      <div class="bp-inner" aria-busy="true">
+        <div class="sk-line w60"></div>
+        <div class="bp-dir"><span class="bp-side">&nbsp;</span><span class="bp-side">&nbsp;</span></div>
+        <div class="sk-line w80"></div><div class="sk-line w40"></div>
+      </div>
+    </aside>
+    <aside class="bet-panel resolved-panel"><div class="rp-inner"><div class="state-block">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+      <h2 class="state-title">This event just resolved</h2>
+      <p class="state-msg">The event closed while you were reading. Betting is no longer available. You hold a bet, so you can open your result.</p>
+      <div class="state-actions">
+        <a href="#"><button type="button" class="state-btn primary">See your bet</button></a>
+        <a href="#"><button type="button" class="state-btn">Browse events</button></a>
+      </div>
+    </div></div></aside>
+  </div></div></main>
+
+  <div class="kit-subh">Reconcile box</div>
+  <!--
+    ui-visual/win.html, kept inside the overlay it lives in for the same reason
+    the field states are kept inside theirs: `.app-case .reconcile-box` sets the
+    frame, `.outcome-dialog .reconcile-box` centres it and `.win-dialog
+    .reconcile-box` gives it the won colour, so three of the four rules that
+    draw this box need an ancestor. On the bare canvas it is a grey rectangle.
+
+    It is also the notice that holds two other components: the label is the
+    field's and the small print is the dialog's.
+  -->
+  <dialog class="app-dialog outcome-dialog win-dialog" open aria-label="You were right">
+    <div class="sheet-body">
+      <div class="reconcile-box">
+        <span class="field-label">You were right - you won</span>
+        <strong>+$13.20</strong>
+        <span class="fine">$5.00 stake returned + $8.20 winnings. You held YES, avg price 38%.</span>
+      </div>
+    </div>
+  </dialog>
 </section>
 </body>
 </html>

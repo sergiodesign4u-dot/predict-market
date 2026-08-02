@@ -842,7 +842,7 @@ the ancestors it already had.
 | File | Owner | What it is |
 |---|---|---|
 | `ui-kit/kit.html` | frozen | the source. 12 sections, 47 labelled blocks, each already staged in its real context, dialogs already open, the sprite. Read, never written |
-| `ui-kit/specimens.extra.html` | hand | blocks for the three things the kit does not stage: the page frame, the roadmap sidebar, the cookie banner. Same shape as a kit section |
+| `ui-kit/specimens.extra.html` | hand | blocks the kit does not stage: the page frame, the field states, three roadmap sidebars, the cookie banner, and the five loading and variant states added on 2026-08-02 when the specimen audit found the stands shorter than the product. Same shape as a kit section. Each block names the `ui-visual/` screen it was copied from, because `kit.html` is frozen provenance and stages an earlier product |
 | `ui-kit/specimens.map.json` | hand | the curation: which block becomes which specimen, under what title, at what width, on whose page |
 | `ui-kit/specimens/<id>.html` | generated | one standalone page per specimen |
 | `ui-kit/specimens/index.json` | generated | the manifest the page generator reads |

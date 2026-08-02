@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The panel on a course page, with the planned rows</title>
+<title>Bet panel: multi outcome, loading, resolved</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
    A frame is a document of its own, so it does not inherit the attribute: this
    block runs in the frames too and they are told by postMessage, the same
@@ -39,27 +39,51 @@ push();});})();</script>
 <link rel="stylesheet" href="../_specimen.css">
 </head>
 <body>
-<div class="app-case">
-<aside class="sidebar" id="rmSidebar">
-    <div class="sidebar-brand"><div class="sidebar-project-name">Prediction Market</div></div>
-    <nav class="sidebar-nav" aria-label="Course roadmap">
-      <!-- ABRIDGED AND HARDCODED ON PURPOSE. This shows what the panel LOOKS
-           like, not which stages exist, so it does not read _roadmap.py and the
-           hrefs are "#". A specimen rendered from the truth breaks when the
-           truth moves, and then the vitrine reports a defect in the component
-           because the course reached a new stage. Third audit to reach here:
-           the answer is still no. -->
-      <a href="#" class="sidebar-page-link">Foundation Research</a>
-      <a href="#" class="sidebar-page-link">User Research</a>
-      <div class="sidebar-divider">Design and Delivery</div>
-      <a href="#" class="sidebar-page-link">Concept</a>
-      <a href="#" class="sidebar-page-link active">Tokens + Components</a>
-      <a class="sidebar-page-link planned next">Design System</a>
-      <a class="sidebar-page-link planned">Responsive</a>
-      <a class="sidebar-page-link planned">Handoff</a>
-    </nav>
-  </aside>
-</div>
+<div class="device"><div class="app-case">
+<main class="feed"><div class="feed-inner"><div class="ed-layout">
+    <aside class="bet-panel">
+      <div class="bp-inner">
+        <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+        <span class="field-label">Your outcome</span>
+        <div class="bp-selected">
+          <span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span>
+          <a href="#edOutcomes" class="bp-change">Change</a>
+        </div>
+        <div class="bp-dir">
+          <button type="button" class="bp-side sel">YES <span class="bp-pct">41%</span></button>
+          <button type="button" class="bp-side">NO <span class="bp-pct">59%</span></button>
+        </div>
+        <div>
+          <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
+          <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
+        </div>
+        <div>
+          <div class="line"><span>Price now</span><span>41%</span></div>
+          <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+          <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
+        </div>
+        <button type="button" class="confirm-btn">Confirm bet</button>
+        <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
+      </div>
+    </aside>
+    <aside class="bet-panel">
+      <div class="bp-inner" aria-busy="true">
+        <div class="sk-line w60"></div>
+        <div class="bp-dir"><span class="bp-side">&nbsp;</span><span class="bp-side">&nbsp;</span></div>
+        <div class="sk-line w80"></div><div class="sk-line w40"></div>
+      </div>
+    </aside>
+    <aside class="bet-panel resolved-panel"><div class="rp-inner"><div class="state-block">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+      <h2 class="state-title">This event just resolved</h2>
+      <p class="state-msg">The event closed while you were reading. Betting is no longer available. You hold a bet, so you can open your result.</p>
+      <div class="state-actions">
+        <a href="#"><button type="button" class="state-btn primary">See your bet</button></a>
+        <a href="#"><button type="button" class="state-btn">Browse events</button></a>
+      </div>
+    </div></div></aside>
+  </div></div></main>
+</div></div>
 <script>
 /* Report to the vitrine: how tall this specimen is, and whether it rendered.
    postMessage crosses origins, so this works from file:// as well as from a
@@ -113,7 +137,7 @@ push();});})();</script>
     }
     try {
       parent.postMessage({
-        specimen: "course-chrome-roadmap",
+        specimen: "betpanel-more",
         height: height(),
         elements: document.body.getElementsByTagName("*").length,
         overflowX: doc.scrollWidth - doc.clientWidth,

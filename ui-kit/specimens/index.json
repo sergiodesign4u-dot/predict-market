@@ -219,6 +219,7 @@
   "component": "dialog",
   "title": "Sign in dialog",
   "width": 420,
+  "note": "A skin, not a component. signin.css was folded into dialog.css on 2026-08-02, same anatomy zone for zone, and the stand stayed because the skin still ships. The component field was corrected here on the same day: it had been corrected in the GENERATED index.json only, so the first person to re-run the extractor got the deleted component back.",
   "source": "kit.html / dialogs / Shared dialogs",
   "rewrites": 0
  },
@@ -266,7 +267,7 @@
  },
  {
   "id": "outcome-overlays",
-  "component": "dialog",
+  "component": "outcome-dialog",
   "title": "Win and loss overlays",
   "width": 780,
   "source": "kit.html / feedback / Win and loss overlays",
@@ -559,6 +560,68 @@
   "title": "Cookie consent banner",
   "width": 900,
   "source": "specimens.extra.html / extra / Cookie consent banner",
+  "rewrites": 0
+ },
+ {
+  "id": "card-loading",
+  "component": "card",
+  "title": "Event card, loading",
+  "width": 440,
+  "also": [
+   "skeleton"
+  ],
+  "note": "The loading state is the card, not a component beside it: skeleton is a modifier and every rule that draws these bars is written as .card.skeleton .sk-line.",
+  "source": "specimens.extra.html / extra / Event card, loading",
+  "rewrites": 0
+ },
+ {
+  "id": "card-detail-head",
+  "component": "card",
+  "title": "Event card, carrying the detail head",
+  "width": 760,
+  "also": [
+   "event-detail"
+  ],
+  "state": "The one place the card is the outer plate of a screen rather than a row in a grid. Copied from ui-visual/event-detail.html.",
+  "source": "specimens.extra.html / extra / Event card, carrying the detail head",
+  "rewrites": 0
+ },
+ {
+  "id": "position-loading",
+  "component": "position",
+  "title": "Transaction list, loading",
+  "width": 1120,
+  "also": [
+   "skeleton"
+  ],
+  "source": "specimens.extra.html / extra / Transaction list, loading",
+  "rewrites": 0
+ },
+ {
+  "id": "betpanel-more",
+  "component": "betpanel",
+  "title": "Bet panel: multi outcome, loading, resolved",
+  "width": 1120,
+  "also": [
+   "options",
+   "skeleton",
+   "state-block"
+  ],
+  "state": "Three panels in the real .ed-layout, so the min-width 760 rule that shows a bet panel at all is the product's own.",
+  "source": "specimens.extra.html / extra / Bet panel: multi outcome, loading, resolved",
+  "rewrites": 0
+ },
+ {
+  "id": "notice-reconcile",
+  "component": "notice",
+  "title": "Reconcile box, won",
+  "width": 420,
+  "also": [
+   "input",
+   "dialog"
+  ],
+  "state": "Kept inside the overlay: three of the four rules that draw this box are scoped under .app-case, .outcome-dialog and .win-dialog.",
+  "source": "specimens.extra.html / extra / Reconcile box",
   "rewrites": 0
  }
 ]

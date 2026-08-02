@@ -35,6 +35,11 @@ WHAT ARITHMETIC CANNOT SEE, AND THE ONLY HAND-WRITTEN PART. Two things:
     happens to hold. The bottom nav holds no component and is still the tab bar
     of every screen.
 
+WHAT THE MAP CANNOT SEE. It knows components and does not know STATES, so a
+state word written as a subject gets handed to whichever file wrote it with the
+fewest ancestors, and every element in that state then reads as a root of the
+wrong component. MODIFIER below names them; the reasoning is at the declaration.
+
 Those are RAISE below, one line and one reason each, read rather than matched by
 pattern, in the shape SHARED already uses in _gen_component_pages.py. A raise is
 a FLOOR, so it propagates: raising yesno to a molecule makes the option row that
@@ -139,6 +144,39 @@ NOT_A_COMPONENT = {
     "fonts": "no markup: it declares the faces",
 }
 
+# ---- the words that name a state and not a thing ----------------------------
+# The ownership map knows components and does not know STATES, so when a state
+# word is written as a subject anywhere it has to be given to somebody, and the
+# somebody is arbitrary. `.skeleton` is the loading state of whatever it sits on.
+# `position.css` writes `.app-case .pos.skeleton{gap:...}` with it as the subject
+# and `skeleton.css` only ever writes it as an ancestor (`.card.skeleton
+# .sk-thumb`), so "fewest ancestors" handed the word to position. Both rules are
+# correct where they stand: a position in the loading state really does want a
+# different gap. What was wrong is the map, so the map is where this is fixed.
+#
+# The consequence of not declaring it: `<article class="card skeleton">` on
+# nineteen loading screens read as a POSITION root, and position came out
+# containing card, account, event-detail and hiw-dialog. Four phantom edges, one
+# of them enough to move a level.
+#
+# The reader skips these in BOTH directions, and it has to be both. Skipping them
+# only at the root leaves the same phantom one element higher: the feed holds the
+# card, so the feed would then read as containing position. A state is not a part
+# of anything, wherever it is found.
+#
+# Ownership itself is left alone on purpose. `position.css` does style
+# `.pos.skeleton`, so coverage.md is right to list the class under position; the
+# question this map answers is a different one, and only this map was wrong.
+#
+# Stage 09 is the reason it is a declaration and not a special case: hover,
+# focus-visible and disabled are the same species, states written by one file as
+# a modifier on another file's element. Moving css under each of them would be
+# this work six more times.
+MODIFIER = {
+    "skeleton": "the loading state of whatever it sits on, written as a subject "
+                "by position.css and as an ancestor by skeleton.css",
+}
+
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link",
         "meta", "param", "source", "track", "wbr"}
 
@@ -220,6 +258,10 @@ def read_containment(paths, component_of=None, only=None):
     file exists to close. What they may CONTAIN is filtered separately, below,
     and that filter is not optional: the substrate is not a level.
 
+    MODIFIER is skipped on both sides, for the reason written where it is
+    declared: a state word names no thing, so it neither opens a root nor counts
+    as something standing inside one.
+
     Returns {component: {other_component: {the classes that linked them}}}.
     """
     found = {}
@@ -236,7 +278,7 @@ def read_containment(paths, component_of=None, only=None):
                 continue
             comps = [one]
         for comp in comps:
-            mine = OWNED.get(comp, set())
+            mine = OWNED.get(comp, set()) - set(MODIFIER)
             if not mine:
                 continue
             roots = []
@@ -253,7 +295,7 @@ def read_containment(paths, component_of=None, only=None):
                     roots.append(node)
             for root in roots:
                 for kid in _walk(root):
-                    for cls in kid.cls:
+                    for cls in kid.cls - set(MODIFIER):
                         other = OWNER.get(cls)
                         if other and other != comp and other not in NOT_A_COMPONENT:
                             found.setdefault(comp, {}).setdefault(other, set()).add(cls)
@@ -280,10 +322,19 @@ RAISE = {
     "header": (3, "a screen shell: the chrome band every screen carries"),
     "bottomnav": (3, "a screen shell: the mobile tab bar"),
     "catnav": (3, "a screen shell: it owns .cat-layout and .cat-main, the page content plate"),
-    "footer": (3, "a screen shell"),
+    # footer was here and was deleted on 2026-08-02. Every entry was tested by
+    # removing it and asking whether the level moved; footer's did not. It holds
+    # a language menu and a trust bar, so the arithmetic reaches L3 on its own
+    # and the floor was carrying nothing. A declaration that changes no answer is
+    # worse than none: it reads as the reason, and the real reason goes unread.
     "state-block": (3, "the empty and error block, an organism by definition"),
-    "hiw-dialog": (3, "it IS a dialog: .app-dialog and .hiw-dialog sit on one element, "
-                      "so the frame is not a descendant and containment reads zero"),
+    "hiw-dialog": (3, "the arithmetic cannot prove this one while the page and the dialog "
+                      "live in one file. .hiw-hero and .hiw-cols are blocks of the "
+                      "standalone How It Works PAGE, under main.feed, and the narrow "
+                      "shared sheet hangs under body: two components sharing one "
+                      "vocabulary, which is backlog item 16. Until they are split, "
+                      "what the specimen shows is a choice between them and not a "
+                      "reading of either"),
     # parts that are all the component's own classes
     "hero": (3, "four blocks in one band (featured market with its chart, trust cards, "
                 "brand tile, ranked list), 51 classes, every one of them hero's"),
@@ -342,10 +393,28 @@ NAME = {0: "-", 1: "L1", 2: "L2", 3: "L3"}
 # than resolved by whichever name sorts first. It is dropped for ORDERING ONLY:
 # the edge is real, so it still counts toward the level, and comments stays an
 # organism.
+#
+# The three added on 2026-08-02 arrived with the specimen fixes, and every one of
+# them is a cycle both halves of which are readable in the markup. A cycle is not
+# a defect in the reading, it is what a class graph does when two components
+# stand inside each other on different screens; what has to be declared is which
+# way round the CASCADE needs them, and that is decided by which file restyles
+# the other's insides.
 ORDER_BREAK = {
     ("comments", "tabs"): "the .seg sort switcher, which lives in tabs.css because that file "
                           "owns every switcher; the real nesting is the other way, the tab "
                           "strip wraps the thread",
+    ("card", "event-detail"): "the header of the detail page is composed as a card, so the card "
+                              "really does hold .ed-head; event-detail.css restyles what is "
+                              "inside a card and not the other way round, so the card is the "
+                              "part and loads first",
+    ("betpanel", "event-detail"): ".rp-inner is the resolved panel's own wrapper and is declared "
+                                  "in event-detail.css, which is backlog item 17. The nesting "
+                                  "that is real is the other one: the detail layout holds the "
+                                  "panel",
+    ("notice", "dialog"): ".fine is the small print, a typographic role that dialog.css happens "
+                          "to own and that stands in bet panels and spinner boxes too. The "
+                          "dialog holds the notice, so the dialog loads after it",
 }
 FIRST = ["fonts", "tokens", "base", "course-chrome"]
 

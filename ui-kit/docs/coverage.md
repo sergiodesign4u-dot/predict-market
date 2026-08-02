@@ -16,42 +16,42 @@ says so. No em dash.
 |---|---|---|---|---|---|
 | account | 1 | account-cta | 1 | 3 | 3 |
 | base | 2 | base-frame, base-groove | 0 | 8 | 104 |
-| betpanel | 3 | betpanel-states, betpanel-dock, betpanel-sheet | 2 | 19 | 11 |
+| betpanel | 4 | betpanel-states, betpanel-dock, betpanel-sheet, betpanel-more | 2 | 19 | 11 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 13 | 9 |
 | bottomnav | 1 | bottomnav | 0 | 2 | 104 |
 | button | 3 | button-primary, button-secondary, button-outcome-row | 0 | 13 | 104 |
-| card | 2 | card-binary, card-multi | 2 | 14 | 36 |
+| card | 4 | card-binary, card-multi, card-loading, card-detail-head | 2 | 14 | 36 |
 | catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 8 | 104 |
 | chart | 1 | chart | 1 | 11 | 11 |
 | comments | 1 | comments-thread | 1 | 15 | 9 |
 | cookie-consent | 1 | cookie-consent | 0 | 17 | 2 |
 | course-chrome | 3 | course-chrome, course-chrome-system, course-chrome-roadmap | 0 | 25 | 104 |
-| dialog | 3 | dialog-shared, signin, outcome-overlays | 0 | 9 | 104 |
-| event-detail | 2 | event-detail, facts-strip | 0 | 16 | 11 |
+| dialog | 2 | dialog-shared, signin | 1 | 9 | 104 |
+| event-detail | 2 | event-detail, facts-strip | 1 | 16 | 11 |
 | feed | 1 | feed-grid | 1 | 6 | 104 |
 | filters | 2 | filters-sort, filters-toggle | 2 | 4 | 104 |
 | footer | 1 | footer | 0 | 15 | 104 |
 | header | 2 | header-in, header-out | 1 | 22 | 104 |
 | hero | 1 | hero-band | 0 | 51 | 2 |
 | hiw-dialog | 1 | hiw-dialog | 0 | 17 | 104 |
-| input | 2 | input-amount, input-states | 1 | 5 | 104 |
+| input | 2 | input-amount, input-states | 2 | 5 | 104 |
 | loadmore | 1 | loadmore | 1 | 2 | 9 |
 | market | 1 | market-depth | 0 | 21 | 9 |
-| notice | 1 | notice-push | 1 | 8 | 104 |
+| notice | 2 | notice-push, notice-reconcile | 1 | 8 | 104 |
 | oddsbar | 1 | oddsbar | 2 | 7 | 104 |
-| options | 2 | options-rows, options-multi | 1 | 6 | 25 |
-| position | 1 | position-list | 1 | 14 | 36 |
+| options | 2 | options-rows, options-multi | 2 | 6 | 25 |
+| position | 2 | position-list, position-loading | 1 | 14 | 36 |
 | profile | 1 | profile-identity | 0 | 8 | 7 |
 | related | 1 | related | 0 | 6 | 9 |
 | seo-plate | 1 | seo-plate | 0 | 8 | 10 |
-| skeleton | 1 | skeleton-grid | 0 | 5 | 19 |
-| state-block | 3 | state-empty-filters, state-error, state-empty | 0 | 7 | 40 |
+| skeleton | 1 | skeleton-grid | 3 | 5 | 19 |
+| state-block | 3 | state-empty-filters, state-error, state-empty | 1 | 7 | 40 |
 | tabs | 2 | tabs-detail, tabs-mybets | 1 | 21 | 20 |
 | toast | 1 | toast | 0 | 7 | 1 |
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 104 |
 | yesno | 1 | yesno | 2 | 2 | 14 |
 
-62 specimens over 36 components.
+67 specimens over 36 components.
 
 ---
 

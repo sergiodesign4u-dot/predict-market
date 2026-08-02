@@ -110,7 +110,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Bets table (`.ptable`, "you" highlight) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Bets tab | logged-in (your row) / logged-out | 9 | WF | - | + |
 | Activity feed (`.act-row`) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Activity tab | default | 9 | WF | - | + |
 | Segmented switcher (`.seg` / `.rules-tabs` / `.ed-range`) | `tabs.css` | [tabs](../tabs.html) | L3 | event-detail comments + rules + chart | active segment | 9 | WF | - | + |
-| Bet sub-state boxes (`.protect` / `.inline-error` / `.reconcile-box` / `.spinner-box`) | `notice.css` | [notice](../notice.html) | L2 | bet panel + dock inline | funds-safe / insufficient / reconcile / processing | 10+ | WF/UV | - | + |
+| Bet sub-state boxes (`.protect` / `.inline-error` / `.reconcile-box` / `.spinner-box`) | `notice.css` | [notice](../notice.html) | L3 | bet panel + dock inline | funds-safe / insufficient / reconcile / processing | 10+ | WF/UV | - | + |
 
 ## 4. Forms, dialogs and inputs
 
@@ -120,17 +120,17 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Provider buttons (Google / X / Apple, real brand marks) | `button.css` | [button](../button.html) | L1 | Sign In dialog + sign-in pages | rest / hover | 104 | WF/UV | - | + |
 | Amount field + quick-amount chips | `input.css` | [input](../input.html) | L1 | Deposit dialog + deposit pages | rest / selected / focus | 104 | WF | - | + |
 | Field label | `input.css` | [input](../input.html) | L1 | dialogs, forms | default | 104 | WF | - | + |
-| Funds-protection line (`.protect`, "USDC held 1:1") | `notice.css` | [notice](../notice.html) | L2 | Deposit dialog, HIW, wallet, bet panel | default | 104 | WF | - | + |
-| Widget box (`.widget-box` on-ramp placeholder) | `notice.css` | [notice](../notice.html) | L2 | Deposit dialog | default / load-failure | 104 | WF | - | + |
+| Funds-protection line (`.protect`, "USDC held 1:1") | `notice.css` | [notice](../notice.html) | L3 | Deposit dialog, HIW, wallet, bet panel | default | 104 | WF | - | + |
+| Widget box (`.widget-box` on-ramp placeholder) | `notice.css` | [notice](../notice.html) | L3 | Deposit dialog | default / load-failure | 104 | WF | - | + |
 | Primary CTA (brass) - Confirm bet / Add funds | `button.css` | [button](../button.html) | L1 | dialogs, states, HIW | rest / hover / focus | 104 | WF/UV | - | + |
 | Bottom-sheet / modal overlay (grab, backdrop) | `dialog.css` | [dialog](../dialog.html) | L3 | deposit, sign-in, win, loss | modal (desktop) / sheet (mobile) | 17 | WF | - | ~ |
 | Sign-in dialog (`.signin-dialog`) | `dialog.css` | [dialog](../dialog.html) | L3 | sign-in family | default / error / loading / provider-conflict | 4 | WF/UV | - | ~ |
 | How-it-works dialog (`.hiw-dialog`: hero + icon chips + FAQ) | `hiw-dialog.css` | [hiw-dialog](../hiw-dialog.html) | L3 | every header page | open | 87 | WF/UV | art | + |
 | Filter menu (Sort / Frequency) | `filters.css` | [filters](../filters.html) | L1 | feed, category | closed / open | 44 | WF | - | + |
 | Reverse-order toggle switch | `filters.css` | [filters](../filters.html) | L1 | feed controls | on / off | 44 | WF | - | + |
-| Inline error line (`.inline-error`, neutral stone) | `notice.css` | [notice](../notice.html) | L2 | deposit, bet, sign-in, win | error | 8 | WF | - | + |
-| Spinner box (`.spinner-box`) | `notice.css` | [notice](../notice.html) | L2 | deposit, bet, sign-in, win, loss | loading | 6 | WF | - | + |
-| S5 reconcile box (`.reconcile-box`, price moved) | `notice.css` | [notice](../notice.html) | L2 | bet, win, loss | re-confirm / cancel | 6 | WF | - | + |
+| Inline error line (`.inline-error`, neutral stone) | `notice.css` | [notice](../notice.html) | L3 | deposit, bet, sign-in, win | error | 8 | WF | - | + |
+| Spinner box (`.spinner-box`) | `notice.css` | [notice](../notice.html) | L3 | deposit, bet, sign-in, win, loss | loading | 6 | WF | - | + |
+| S5 reconcile box (`.reconcile-box`, price moved) | `notice.css` | [notice](../notice.html) | L3 | bet, win, loss | re-confirm / cancel | 6 | WF | - | + |
 
 ## 5. Feedback and states
 
@@ -139,7 +139,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | State block (`.state-block`: icon + title + message + action) | `state-block.css` | [state-block](../state-block.html) | L3 | feed, category, detail, active-bets, notifications, wallet, profile, 404, 500, maintenance | empty / error | 38 | WF | - | + |
 | Skeleton cards / lines (`.card.skeleton` / `.pos.skeleton` shimmer) | `card.css`, `position.css` | [card](../card.html), [position](../position.html) | L3 | feed, category, detail, active-bets, notifications, wallet, profile | loading | 19 | WF/UV | - | ~ |
 | Empty list (`.pos-list` empty variant) | `position.css` | [position](../position.html) | L3 | active-bets, favorites, notifications | empty | 3 | WF | - | + |
-| Push-permission banner (`.push-banner`) | `notice.css` | [notice](../notice.html) | L2 | event-feed-push, notifications-push | in-app banner | 2 | WF | - | + |
+| Push-permission banner (`.push-banner`) | `notice.css` | [notice](../notice.html) | L3 | event-feed-push, notifications-push | in-app banner | 2 | WF | - | + |
 | Toast (`.toast`: message + close, stacked) | `toast.css` | [toast](../toast.html) | L2 | toasts (spec page) | info / success (brass tick) / error (neutralized, no red) / undo | 4 | WF/UV | - | + |
 | Win overlay (`dialog.outcome-dialog.win-dialog` + auto Share Card + F5 friction) | `dialog.css` | [dialog](../dialog.html) | L3 | win family | win / loading / payout-pending / error | 4 | WF/UV | art | + |
 | Loss overlay (`dialog.outcome-dialog.loss-dialog`, neutral, no celebration) | `dialog.css` | [dialog](../dialog.html) | L3 | loss family | loss / loading | 2 | WF/UV | - | + |
