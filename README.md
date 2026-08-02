@@ -30,9 +30,10 @@ Per-stage layout: raw markdown lives in each stage's `docs/`, and the stage's HT
 | [`wireframes/`](./wireframes/) | **Grey-box wireframes**: 104 pages, every sitemap screen + all states + Favorites view + the 5 system pages, flow-linked, header / nav wired, clickable end to end. Owns structure and copy: gate 18 fails the build when a painted screen disagrees with its grey twin |
 | [`voice/`](./voice/) | **Voice & Microcopy**: `docs/voice.md` + `docs/microcopy.md` + `voice.html` |
 | [`concept/`](./concept/) | **Concept**: the **Vault** visual language - `docs/references.md` (Refero) + `docs/concept.md` (designer taste, 5 attribute pairs, locked decisions); `concept.html` (the stand: palette / type / form / contrast); superseded explorations archived in `old/` |
-| [`ui-visual/`](./ui-visual/) | **UI + Visual**: 76 color copies of the wireframes in the Vault language. A screen carries no styles of its own: it links `components/index.css` and nothing else. Generated and reconciled by `_apply_theme.py`; the grey wireframes stay grey |
+| [`ui-visual/`](./ui-visual/) | **UI + Visual**: 105 color copies of the wireframes in the Vault language. A screen carries no styles of its own: it links `components/index.css` and nothing else. Generated and reconciled by `_apply_theme.py`; the grey wireframes stay grey |
 | [`components/`](./components/) | **The design system**: `tokens.css` (primitive + semantic + the light theme), `base.css`, one file per component, all reached through `index.css` |
-| [`ui-kit/`](./ui-kit/) | **The vitrine and the gates**: a stand page per component, the token page, the icon sheet, `docs/architecture.md` + `docs/inventory.md` + `docs/coverage.md`, and `_check_kit.py` (twenty checks) |
+| [`ui-kit/`](./ui-kit/) | **The vitrine and the gates**: a stand page per component, the token page, the icon sheet, the stage's four documents rendered as pages, and `_check_kit.py` (23 checks) |
+| [`docs/`](./docs/) | **The record**: [`decisions.md`](./docs/decisions.md) (what was done and why, dated, newest first) and [`backlog.md`](./docs/backlog.md) (what is still open) |
 | [`design-system/`](./design-system/) | Full design system documentation |
 | [`responsive/`](./responsive/) | Responsive design pass |
 | [`animation/`](./animation/) | Motion + animation |
@@ -44,6 +45,9 @@ The old→new folder map is recorded in [`STRUCTURE.md`](./STRUCTURE.md).
 
 ## Status
 
+This table is the only place a stage status is recorded. `CLAUDE.md` holds rules and no statuses;
+the dated record of how each stage got here is in [`docs/decisions.md`](./docs/decisions.md).
+
 | Stage | Status |
 |---|---|
 | Foundation Research | ✅ Done (competitors, benchmark, Lean UX Canvas, AARRR, UX patterns, synthesis; screens captured) |
@@ -51,10 +55,10 @@ The old→new folder map is recorded in [`STRUCTURE.md`](./STRUCTURE.md).
 | CJM (As-Is + To-Be) | ✅ Done (Alex x MJ; As-Is emotional curve + 5 growth zones, To-Be map + MVP backlog; 2 pages) |
 | Information Architecture (Basic + Detailed) | ✅ Done - Basic (flows + concept-map by intent) + Detailed (overview + sitemap + SEO layer + system nodes); flows color-coded by outcome + traced to CJM, jobs x screens matrix, no orphans. Detailed layer (targeted reconcile, since the wireframes already render pages): A-E SEO for the 5 indexed pages + footer, and 404 / 500 / 503 / cookie / toast grounded in law |
 | Wireframes | ✅ Done (104 pages: all screens + states + Favorites + Event Detail tabs + 5 system pages, flow-linked, header / nav wired, critique pass). Stage-04 reconcile: system pages (404/500/503/cookie/toasts), footer trust strip + SEO links, story-led per-card "why" + SEO sections, Related events, Win F5 friction |
-| Voice | ✅ Done (5 principles, lexicon, forbidden list, per-element rules; all 99 pages rewritten) |
+| Voice | ✅ Done (5 principles, lexicon, forbidden list, per-element rules; every screen rewritten line-by-line, closing audit clean) |
 | Concept | ✅ Done - the **Vault** visual language: designer taste captured, 5 attribute pairs traced to data + borrowed technique, contrasting directions explored (Newsroom / Signal / Arena, archived to `concept/old/`), Vault chosen and locked; palette / type / form / photography / icons contrast-checked (WCAG AA) on the stand `concept.html` |
-| UI + Visual | ✅ Done - all 76 screens painted in Vault; every one links exactly `components/index.css`. `/impeccable critique` 31 -> 38 / 40 |
-| Tokens + Components | ✅ Done (two token levels, three geometry scales, 38 components, 45 stand pages, 20 gates, a light theme as the proof of the semantic layer). Step 7e closed the chrome: gate 18 now compares `<main>`, `<header>`, the bottom nav, `<footer>` and the sheet body of an invoked overlay, with six declared layer boundaries. Step 8 closed the coverage: the 28 category state screens the paint never had, one twin map in `_twins.py`, the bottom sheet on mobile, and the three families served from this repo instead of from Google. Step 8b rendered the stage's four documents as pages of the vitrine (gate 21), ended the last dialog fork (the standalone sign-in wore the win/loss skin) and made every modal scroll when the screen is short, 21 gates |
+| UI + Visual | ✅ Done - every screen painted in Vault (105 today, 76 at the close of the stage; step 8 added the 28 category states); every one links exactly `components/index.css`. `/impeccable critique` 31 -> 38 / 40 |
+| Tokens + Components | ✅ Done - two token levels, three geometry scales, **38 components** on three levels (6 atoms, 9 molecules, 21 organisms, computed from the markup), 49 pages in the vitrine (38 stands + the token page, the icon sheet and the stage's four documents), **23 gates**, and a light theme as the proof of the semantic layer. Nine audit passes (7 to 9) are recorded in [`docs/decisions.md`](./docs/decisions.md); the surfaces they stopped short of are in [`docs/backlog.md`](./docs/backlog.md) |
 | Design System | ⬜ Not started |
 | Responsive | ⬜ Not started |
 | Animation | ⬜ Not started |
@@ -75,7 +79,7 @@ browser; a left screen-tree panel navigates the whole set.
 main-flow entry (the Event Feed). From there the journey is clickable end to end:
 Event Feed -> Event Detail -> sign-in / deposit gate -> Active Bets.
 
-- **Coverage:** 99 pages - every screen in the IA screen tree, each state its own
+- **Coverage:** 104 pages - every screen in the IA screen tree, each state its own
   page. Event Feed, Event Detail (binary + multi, inline bet panel), 4 Category
   pages, Favorites view (Favorites), Sign In / Deposit (shared in-page dialogs), Win /
   Loss, Notifications, Wallet, My Profile / Public Profile, How It Works, Active
@@ -115,8 +119,8 @@ whoever writes it.
   codes), and per-element **microcopy** rules.
 - **[`voice/docs/microcopy.md`](./voice/docs/microcopy.md)** - the read-only text inventory
   (with same-thing / same-action / cliche flags) and the line-by-line rewrite log.
-  Every screen was rewritten against the voice; the closing audit is clean across
-  all 99 pages. The Event Detail social panel was moved from trader vocabulary
+  Every screen was rewritten against the voice and the closing audit is clean.
+  The Event Detail social panel was moved from trader vocabulary
   (Top Holders / Positions / shares) to spectator language (Biggest bets / Bets).
 - **State tone:** errors say what happened and what to do (no joke, no apology),
   empty states give a way out, and results state the fact without celebrating
@@ -126,8 +130,18 @@ whoever writes it.
 ---
 
 ## Key Docs
-- [CLAUDE.md](./CLAUDE.md) - full project brief, principles, scope, IA summary
+
+Four files at the root, and each answers one question. **`CLAUDE.md` = the rules** that must act next
+time (it is loaded into every session, so it stays short). **`PRODUCT.md` = what the product is.**
+**`docs/decisions.md` = what was done and why**, dated, newest first. **`docs/backlog.md` = what is
+still open.** A status lives in the table above and nowhere else.
+
+- [CLAUDE.md](./CLAUDE.md) - **the rules**: how work is done here, what owns what, which gate holds it
+- [PRODUCT.md](./PRODUCT.md) - **the product**: JTBD, audience, market types, MVP scope, business model, compliance
+- [docs/decisions.md](./docs/decisions.md) - **the record**: every stage and audit pass, with its date and its reasoning
+- [docs/backlog.md](./docs/backlog.md) - **what is open**: 14 items, with the stage that owns each
 - [STRUCTURE.md](./STRUCTURE.md) - the 13-stage layout and the old→new folder map
+- [DESIGN.md](./DESIGN.md) - the shipped visual system (Vault): palette, type, form, tokens, contrast tables
 - [wireframes/_conventions.md](./wireframes/_conventions.md) - **Wireframe contract**: grey-box rules, zones, nav, states, the build passes
 - [wireframes/_critique.md](./wireframes/_critique.md) - **Wireframe critique**: defect tables and resolutions (Krok 9, 2026-06-29 re-audit, flow-wiring / coverage / final passes)
 - [voice/docs/voice.md](./voice/docs/voice.md) - **Product voice**: five principles, lexicon, forbidden list, per-element rules
