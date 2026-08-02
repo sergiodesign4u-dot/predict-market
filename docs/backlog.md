@@ -9,7 +9,7 @@ holds the record of what was done. This holds what is not.
 Unlike `decisions.md`, this file is edited: a row is struck when the item closes, with the date and
 the entry in `decisions.md` that closed it.
 
-**Open: 23.**
+**Open: 24.**
 
 The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
 twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
@@ -55,11 +55,12 @@ Carried since the project brief; none of it has been answered.
 
 ---
 
-## Product decisions deferred (1)
+## Product decisions deferred (2)
 
 | # | Item | Note |
 |---|---|---|
 | 11 | Resolution mechanics for recurring markets | Markets are one-time or recurring (Hourly / Daily / Weekly / Monthly) and the Frequency filter ships on the feed, but how each cadence instance resolves on its own schedule is unwritten. See `ia/docs/sitemap.md`, Event entity |
+| 26 | **The featured hero on the feed is in both trees and in no document.** Owner: Stage 12 (Handoff). Found by the Design System step 3 prohibitions sweep, 2026-08-03 | `.feed-hero` stands on **1 screen of 104** (`event-feed.html`), painted and grey. It entered the paint in `42d1205` (Stage 08, the Vault canonicalisation) and was back-ported into `wireframes/event-feed.html` in `e5d60c0` (Stage 09 step 7d) so that gate 18 would pass. That is the path a block takes when it is **built rather than decided**: `wireframes/_conventions.md` owns block-level structure and its "Shared patterns and axes" section runs S1 to S6 with no hero among them, while `ia/docs/sitemap.md` uses the word only as a metaphor for the feed. Three questions therefore ship unanswered: is a featured slot MVP, on which screens does it appear, and what decides which event fills it. It is deliberately **not** a usage rule - one screen is one occurrence, so there is nothing to count and nothing to forbid - which is why the step sent it here rather than into "Rules of use". Handoff owns it because that is where a question a developer will hit gets delivered with the numbers already taken, the same reasoning that set the owner of item 25 |
 
 ---
 
