@@ -9,7 +9,7 @@ holds the record of what was done. This holds what is not.
 Unlike `decisions.md`, this file is edited: a row is struck when the item closes, with the date and
 the entry in `decisions.md` that closed it.
 
-**Open: 20.**
+**Open: 19.**
 
 The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
 twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
@@ -27,6 +27,7 @@ argument that yield tracked unread surface rather than effort. Measurements are 
 
 | # | Surface | Size | Owner |
 |---|---|---|---|
+| 52 skeleton marks rendering at zero size on 5 loading screens (opened item 20 the same day) | Stage 09 step 13, 2026-08-02 - css only, eight lines of base rules in `skeleton.css`. The markup could not be the fix: a painted screen has a grey twin frozen since stage 04 and gate 18 compares them, so `<span class="sk-line">` stays a span and `display:block` makes it a box. **0 of 482 marks now draw at zero.** Measured on all 19 screens that carry a mark, three widths: 14 of 19 identical to the property, and the 5 that changed are the 5 the item named |
 | 1 | The 28 course pages' own content | 203 KB inline css, unread (step 9 took only the panel) | now, or never |
 | 2 | `wireframes/` inline css | 34 distinct `<style>` bodies over 104 pages, largest 52 KB; gate 14 was narrowed away from it in step 7e | now, or never |
 | 3 | The page scripts as code | 15 distinct bodies in 810 blocks; every sweep reads their output, never the code | Stage 11 (Animation) |
@@ -63,14 +64,13 @@ Carried since the project brief; none of it has been answered.
 
 ---
 
-## Design defects deferred (4)
+## Design defects deferred (3)
 
 | # | Item | Source | Note |
 |---|---|---|---|
 | 12 | Live odds-delta animation | `/impeccable critique` P3, 2026-07-16 | Deferred at the time as P3; Stage 11 (Animation) is its natural owner |
 | 13 | Error state vs empty state are not differentiated | `/impeccable critique` P3, 2026-07-16 | Two different situations reading as one block |
 | 14 | The undeclared second alpha ladder | Stage 09 step 7c, 2026-07-28 | 20 declarations build a colour with `color-mix(in oklab, var(--color-action) N%, ...)` at 16 different percentages, beside the declared `--brass-a*` one. Gate 13 is satisfied (all read a role). Recorded as a decision, not fixed: which steps that ladder should have is a **states** question, and rounding them now would move hover and selected states for the legibility of the file rather than of the product. Stage 09 owns it |
-| 20 | 52 skeleton marks render at zero size, on 5 loading screens | Stage 09 step 12, 2026-08-02 | Found by rendering the new loading stands rather than by reading them. Measured in a browser at 360 and 1280, across all 105 painted screens: **52 of 482 `.sk-line` / `.sk-thumb` / `.sk-btn` elements have a box of zero**, on `event-detail-loading`, `event-detail-logged-out-loading`, `event-feed-loading`, `event-feed-logged-out-loading` and `favorites-loading`. Two separate causes, and neither is the stand's. **(a)** Every rule in `skeleton.css` is scoped under `.card.skeleton` or `.pos.skeleton`, so the eight bars inside `section.ed-section` and `div.bp-inner` on the detail loading screen have no height rule at all and measure 601x0 and 288x0. **(b)** On the feed screens the product writes `<span class="sk-line">` inside `<span class="sk-head">` while every rule assumes a block, so `height` and `width:80%` do not apply and twelve bars measure 0x0 with the fill colour they were given. The loading state of the two busiest screens therefore draws roughly half of what it was drawn to draw. Not fixed here on purpose: it is a product change and this step was the stands. The new `card-loading` stand renders the defect faithfully, which is the first place it is visible without opening a loading screen |
 
 ---
 

@@ -49,8 +49,8 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/skeleton.css</span>
-      <span class="tk-badge">13 rules</span>
-      <span class="tk-badge">13 classes</span>
+      <span class="tk-badge">21 rules</span>
+      <span class="tk-badge">14 classes</span>
       <span class="tk-badge">19 screens</span>
     </div>
   </header>
@@ -68,7 +68,7 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.card.skeleton .sk-thumb</td><td class='ck-decl'>width:var(--size-56);height:var(--size-56);flex:0 0 var(--size-56);border:1px solid var(--border-hairline)</td></tr><tr><td class='tk-role'>.card.skeleton .sk-head</td><td class='ck-decl'>flex:1</td></tr><tr><td class='tk-role'>.card.skeleton .sk-line</td><td class='ck-decl'>height:var(--size-8);margin:var(--space-8) 0</td></tr><tr><td class='tk-role'>.card.skeleton .sk-line.w80</td><td class='ck-decl'>width:80%</td></tr><tr><td class='tk-role'>.card.skeleton .sk-line.w60</td><td class='ck-decl'>width:60%</td></tr><tr><td class='tk-role'>.card.skeleton .sk-line.w40</td><td class='ck-decl'>width:40%</td></tr><tr><td class='tk-role'>.card.skeleton .sk-row</td><td class='ck-decl'>display:flex;gap:var(--space-8);margin-top:var(--space-8)</td></tr><tr><td class='tk-role'>.card.skeleton .sk-btn</td><td class='ck-decl'>height:var(--control-32);flex:1</td></tr><tr><td class='tk-role'>.pos.skeleton .sk-line</td><td class='ck-decl'>height:var(--size-8);margin:var(--space-8) 0</td></tr><tr><td class='tk-role'>.card.skeleton .sk-thumb,.card.skeleton .sk-line,.card.skeleton .sk-btn</td><td class='ck-decl'>background:var(--bg-control);border-color:var(--border-hairline)</td></tr><tr><td class='tk-role'>.app-case .pos.skeleton .sk-line</td><td class='ck-decl'>background:linear-gradient(90deg,var(--bg-chip),var(--bg-control),var(--bg-chip));border-radius:var(--radius-6)</td></tr><tr><td class='tk-role'>.app-case .card.skeleton .ed-head&gt;div</td><td class='ck-decl'>flex:1</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>/* A mark is a SHAPE, so it needs a box before it needs a host. Every rule in this file used to be scoped under .card.skeleton or .pos.skeleton, and the consequence was measured across all 105 painted screens: 52 of 482 marks drew at zero size. Two causes, and one line fixes both. Eight bars inside section.ed-section and div.bp-inner on the detail loading screen had no height rule at all, because neither host matches them: 601x0 and 288x0. And twelve bars on the feed loading screens are written &lt;span class="sk-line"&gt; inside &lt;span class="sk-head"&gt;, where an inline box ignores height and width, so they measured 0x0 while carrying the fill colour they were given. `display` comes first on purpose: it is the property that decides whether the other two mean anything. The markup could not be the fix, because a painted screen has a grey twin frozen since stage 04 and gate 18 compares them. These are BASE rules and they win nothing: every scoped rule below reaches the same element with more classes, so a card mark and a position mark keep the treatment they already had. What changes is only where nothing applied. */ .sk-line,.sk-thumb,.sk-btn</td><td class='ck-decl'>display:block;background:var(--bg-control)</td></tr><tr><td class='tk-role'>.card.skeleton .sk-thumb</td><td class='ck-decl'>width:var(--size-56);height:var(--size-56);flex:0 0 var(--size-56);border:1px solid var(--border-hairline)</td></tr><tr><td class='tk-role'>.card.skeleton .sk-head</td><td class='ck-decl'>flex:1</td></tr><tr><td class='tk-role'>.card.skeleton .sk-line</td><td class='ck-decl'>height:var(--size-8);margin:var(--space-8) 0</td></tr><tr><td class='tk-role'>.card.skeleton .sk-line.w80</td><td class='ck-decl'>width:80%</td></tr><tr><td class='tk-role'>.card.skeleton .sk-line.w60</td><td class='ck-decl'>width:60%</td></tr><tr><td class='tk-role'>.card.skeleton .sk-line.w40</td><td class='ck-decl'>width:40%</td></tr><tr><td class='tk-role'>.card.skeleton .sk-row</td><td class='ck-decl'>display:flex;gap:var(--space-8);margin-top:var(--space-8)</td></tr><tr><td class='tk-role'>.card.skeleton .sk-btn</td><td class='ck-decl'>height:var(--control-32);flex:1</td></tr><tr><td class='tk-role'>.pos.skeleton .sk-line</td><td class='ck-decl'>height:var(--size-8);margin:var(--space-8) 0</td></tr><tr><td class='tk-role'>.card.skeleton .sk-thumb,.card.skeleton .sk-line,.card.skeleton .sk-btn</td><td class='ck-decl'>background:var(--bg-control);border-color:var(--border-hairline)</td></tr><tr><td class='tk-role'>.app-case .pos.skeleton .sk-line</td><td class='ck-decl'>background:linear-gradient(90deg,var(--bg-chip),var(--bg-control),var(--bg-chip));border-radius:var(--radius-6)</td></tr><tr><td class='tk-role'>.app-case .card.skeleton .ed-head&gt;div</td><td class='ck-decl'>flex:1</td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="roles">
@@ -85,7 +85,7 @@ push();});})();</script>
     shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
     used by nothing. Only the last kind is a deletion candidate, and they are collected in
     <a href="coverage.html">coverage</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.card</td><td class='tk-hex'>36</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-head</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos</td><td class='tk-hex'>14</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sk-btn</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sk-head</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sk-line</td><td class='tk-hex'>19</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sk-row</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sk-thumb</td><td class='tk-hex'>13</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.skeleton</td><td class='tk-hex'>19</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.w40</td><td class='tk-hex'>20</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.w60</td><td class='tk-hex'>15</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.w80</td><td class='tk-hex'>15</td><td class='tk-hex'></td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.card</td><td class='tk-hex'>36</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ed-head</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.pos</td><td class='tk-hex'>14</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sk-btn</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sk-head</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sk-line</td><td class='tk-hex'>19</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sk-row</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sk-thumb</td><td class='tk-hex'>13</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.skeleton</td><td class='tk-hex'>19</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.w40</td><td class='tk-hex'>20</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.w60</td><td class='tk-hex'>15</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.w70</td><td class='tk-hex'>6</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.w80</td><td class='tk-hex'>15</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
@@ -104,6 +104,34 @@ push();});})();</script>
    Stand:  ui-kit/skeleton.html
    Stands on: 19 ui-visual screens (active-bets-history-loading.html, active-bets-loading.html, event-detail-loading.html, event-detail-logged-out-loading.html, event-feed-crypto-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+/* A mark is a SHAPE, so it needs a box before it needs a host. Every rule in
+   this file used to be scoped under .card.skeleton or .pos.skeleton, and the
+   consequence was measured across all 105 painted screens: 52 of 482 marks drew
+   at zero size. Two causes, and one line fixes both.
+
+   Eight bars inside section.ed-section and div.bp-inner on the detail loading
+   screen had no height rule at all, because neither host matches them: 601x0 and
+   288x0. And twelve bars on the feed loading screens are written &lt;span
+   class="sk-line"&gt; inside &lt;span class="sk-head"&gt;, where an inline box ignores
+   height and width, so they measured 0x0 while carrying the fill colour they
+   were given.
+
+   `display` comes first on purpose: it is the property that decides whether the
+   other two mean anything. The markup could not be the fix, because a painted
+   screen has a grey twin frozen since stage 04 and gate 18 compares them.
+
+   These are BASE rules and they win nothing: every scoped rule below reaches the
+   same element with more classes, so a card mark and a position mark keep the
+   treatment they already had. What changes is only where nothing applied. */
+.sk-line,.sk-thumb,.sk-btn{display:block;background:var(--bg-control)}
+.sk-line{height:var(--size-8);margin:var(--space-8) 0}
+.sk-line.w80{width:80%}
+.sk-line.w70{width:70%}
+.sk-line.w60{width:60%}
+.sk-line.w40{width:40%}
+.sk-thumb{width:var(--size-56);height:var(--size-56)}
+.sk-btn{height:var(--control-32)}
 
 .card.skeleton .sk-thumb{width:var(--size-56);height:var(--size-56);flex:0 0 var(--size-56);border:1px solid var(--border-hairline)}
 .card.skeleton .sk-head{flex:1}

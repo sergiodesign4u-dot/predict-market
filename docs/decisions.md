@@ -44,6 +44,55 @@ record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/mi
 
 ---
 
+## 2026-08-02 - The audit thread closes with a gate, and the defect it found gets fixed behind it
+
+Two things in one day, in that order on purpose: the gate first, on a clean base, then the product
+change so the new gate is what checks it.
+
+- **Eight components stayed short, and none of the eight is a thin stand.** Four own a page-level
+  plate (`catnav`, `feed`, `event-detail`, `toast`) so on a screen the whole page is their
+  descendant; one owns a tab PANEL (`tabs`), so a profile tab holds a card gallery; two carry two
+  components on one element (`dialog` with `hiw-dialog`, and with the bet sheet); and two are `.pos`
+  used as a generic plate. Eleven entries in `_levels.SPECIMEN_DEBT`, each a line with its reason.
+- **Every entry says it is a DEBT and what closes it.** Without that sentence the list reads as
+  configuration in six months, and a page plate living inside a component file becomes a legitimate
+  arrangement rather than something nine of these eleven lines name a backlog item for. Closing means
+  splitting the component, never widening the line. A part of `*` is used only where the cause is a
+  CONTAINER, because there the contents churn with every screen and today's list is noise; a named
+  part is used where the cause is one element or one class in the wrong file, because there a new
+  name is a new fact.
+- **Gate 24 is the comparison the audit already made, narrowed.** What a component contains in its
+  stand against what it contains on the 105 painted screens, both from one function, minus the
+  eleven. It fails at the moment a component gains a case nobody stages, which is the moment its
+  level stops being computed and becomes a guess held up by a floor. One second, 105 documents.
+- **Its second half is the one that matters, and it is the reason the list can be trusted.** An
+  exception list that can be quietly extended is not part of a gate, it is the switch that turns one
+  off: the cheapest way past the first check would always be one more line. So an entry covering no
+  real difference fails just as loudly. Proved in three directions rather than one: gutting the
+  loading scene out of the card stand turned the first check red and named `card contains skeleton`;
+  restoring it turned it green; two fictitious exceptions, one wildcard on a component with no gap
+  and one named pair that exists nowhere, turned the second red and named both.
+- **Six declarations now, and a reader is told they exist.** `NOT_A_COMPONENT` 3, `SHARED` 5,
+  `MODIFIER` 1, `RAISE` 13, `ORDER_BREAK` 4, `SPECIMEN_DEBT` 11. Most of what this system says about
+  itself is computed, and the part that is not is now in one table in
+  `ui-kit/docs/architecture.md`, with what each is for and who closes it. Someone surprised by a
+  level or an `@import` position should find the surprise declared.
+- **Then item 20, and the fix had to be css.** 52 of 482 skeleton marks drew at zero size on five
+  loading screens. The tempting fix is the markup, and it is closed to us: a painted screen has a
+  grey twin frozen since stage 04, and gate 18 compares the two trees inside `<main>`. So
+  `<span class="sk-line">` stays a span and eight lines of BASE rules give it a box, `display` first
+  because it is the property that decides whether height and width mean anything. They win nothing:
+  every scoped rule below reaches the same element with more classes, so a card mark and a position
+  mark keep the treatment they had.
+- **Measured on the 19 screens that carry a mark, three widths.** Only `.sk-*` selectors were added,
+  so only those 19 could move, and that is an argument rather than a sample. Fourteen came out
+  identical to the property. The five that changed are the five the item named: on the feed screens
+  exactly 12 elements each, changing `display`, `width` and the box and nothing else; on the two
+  detail screens the 8 bars gained height, margin and a fill, and 176 more boxes moved down because
+  a bar that was 601x0 is now 601x8. **0 of 482 marks now render at zero.**
+
+---
+
 ## 2026-08-02 - A state is not a component, and five stands were showing less than the product ships
 
 The specimen audit of the day before compared what each component contains in its stand against what

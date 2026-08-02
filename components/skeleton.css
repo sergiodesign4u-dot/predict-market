@@ -6,6 +6,34 @@
    Stands on: 19 ui-visual screens (active-bets-history-loading.html, active-bets-loading.html, event-detail-loading.html, event-detail-logged-out-loading.html, event-feed-crypto-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
+/* A mark is a SHAPE, so it needs a box before it needs a host. Every rule in
+   this file used to be scoped under .card.skeleton or .pos.skeleton, and the
+   consequence was measured across all 105 painted screens: 52 of 482 marks drew
+   at zero size. Two causes, and one line fixes both.
+
+   Eight bars inside section.ed-section and div.bp-inner on the detail loading
+   screen had no height rule at all, because neither host matches them: 601x0 and
+   288x0. And twelve bars on the feed loading screens are written <span
+   class="sk-line"> inside <span class="sk-head">, where an inline box ignores
+   height and width, so they measured 0x0 while carrying the fill colour they
+   were given.
+
+   `display` comes first on purpose: it is the property that decides whether the
+   other two mean anything. The markup could not be the fix, because a painted
+   screen has a grey twin frozen since stage 04 and gate 18 compares them.
+
+   These are BASE rules and they win nothing: every scoped rule below reaches the
+   same element with more classes, so a card mark and a position mark keep the
+   treatment they already had. What changes is only where nothing applied. */
+.sk-line,.sk-thumb,.sk-btn{display:block;background:var(--bg-control)}
+.sk-line{height:var(--size-8);margin:var(--space-8) 0}
+.sk-line.w80{width:80%}
+.sk-line.w70{width:70%}
+.sk-line.w60{width:60%}
+.sk-line.w40{width:40%}
+.sk-thumb{width:var(--size-56);height:var(--size-56)}
+.sk-btn{height:var(--control-32)}
+
 .card.skeleton .sk-thumb{width:var(--size-56);height:var(--size-56);flex:0 0 var(--size-56);border:1px solid var(--border-hairline)}
 .card.skeleton .sk-head{flex:1}
 .card.skeleton .sk-line{height:var(--size-8);margin:var(--space-8) 0}
