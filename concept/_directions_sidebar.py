@@ -13,6 +13,18 @@ dock via `body{padding-left:220px}`, and a mobile `.wrap` padding bump so the
 toggle never overlaps the masthead. Uniquely-named .rmx-toggle/.rmx-overlay
 avoid any class collision.
 
+The ROWS are not written here. They come from _roadmap.py at the repo root, the
+one list all three panel generators draw from; this file owns only the two rows
+the course does not have (Directions, and the Signal deep-dive under it) and the
+self-contained styling above.
+
+BOTH TARGETS ARE CURRENTLY ARCHIVED. directions.html and directions-signal.html
+moved to concept/old/pre-vault-3d/ when Vault was chosen, so this script has
+nothing live to write and reports "gone" for each rather than raising, which is
+what it used to do. Whether the archived copies should still carry a panel is a
+decision about the archive; the script is kept honest either way, and it is no
+longer a place the roadmap can rot.
+
 Idempotent: skips a file that already carries id="sidebar". Same spirit as
 resync_sidebar.py / the ui-visual _resync_sidebar.py.
 
@@ -24,6 +36,11 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))       # concept/
+ROOT = os.path.dirname(HERE)                            # repo root
+sys.path.insert(0, ROOT)
+# The stage list is one module at the root. This file used to hold its own
+# typed copy of it, which is the pair _roadmap.py exists to close.
+from _roadmap import render_aside  # noqa: E402
 
 CSS_BLOCK = """<style>
   /* course roadmap sidebar - self-contained (Signal dark), injected by _directions_sidebar.py */
@@ -58,33 +75,27 @@ CSS_BLOCK = """<style>
   }
 </style>"""
 
-# Nav body. {DIR} / {SIG} get the per-page active markup swapped in.
-NAV_TMPL = """<button class="rmx-toggle" id="rmxToggle" aria-label="Open navigation"><span></span><span></span><span></span></button>
-<div class="rmx-overlay" id="rmxOverlay"></div>
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-brand"><div class="sidebar-project-name">Prediction Market</div></div>
-  <div class="sidebar-nav">
-    <a href="../research/research.html" class="sidebar-page-link">Foundation Research</a>
-    <a href="../user-research/personas.html" class="sidebar-page-link">User Research</a>
-    <a href="../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
-    <div class="sidebar-divider">Plan</div>
-    <a href="../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
-    <a href="../ia/annotations/index.html" class="sidebar-page-link">Wireframe Annotations</a>
-    <a href="../voice/voice.html" class="sidebar-page-link">Voice</a>
-    <div class="sidebar-divider">Design and Delivery</div>
-    {DIR}
-    <div class="sidebar-sub">
-      {SIG}
-    </div>
-    <a href="concept.html" class="sidebar-page-link">Concept</a>
-    <a href="../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
-    <a href="../ui-kit/overview.html" class="sidebar-page-link">Tokens + Components</a>
-    <a class="sidebar-page-link planned next">Design System</a>
-    <a class="sidebar-page-link planned">Responsive</a>
-    <a class="sidebar-page-link planned">Animation</a>
-    <a class="sidebar-page-link planned">Handoff</a>
-  </div>
-</aside>"""
+# The drawer chrome. The ROWS are not here: they come from _roadmap.py, so this
+# page cannot fall behind the course the way it had.
+CHROME = """<button class="rmx-toggle" id="rmxToggle" aria-label="Open navigation"><span></span><span></span><span></span></button>
+<div class="rmx-overlay" id="rmxOverlay"></div>"""
+
+
+def nav_for(fname):
+    """The panel for one exploration page: the course roadmap, with this page's
+    own two rows spliced in ahead of Concept, where they belong in the story."""
+    local = PAGES[fname]
+    return CHROME + "\n" + render_aside(
+        "../",
+        href_override={"concept": "concept.html"},
+        extra_before={"concept": [
+            "    " + local["DIR"],
+            '    <div class="sidebar-sub">',
+            "      " + local["SIG"],
+            "    </div>",
+        ]},
+    )
+
 
 JS_BLOCK = """<script>
   (function(){
@@ -109,13 +120,18 @@ PAGES = {
 
 def process(fname, write=True):
     path = os.path.join(HERE, fname)
+    if not os.path.exists(path):
+        # Both targets were archived to concept/old/pre-vault-3d/ when Vault was
+        # chosen. Reported, not repaired: whether the archive keeps a live panel
+        # is a decision about the archive, not about this script.
+        return "gone"
     with open(path, "r", encoding="utf-8") as fh:
         html = fh.read()
     if 'id="sidebar"' in html:
         return "already"
     if "</head>" not in html or "<body>" not in html or "</body>" not in html:
         return "no-anchor"
-    nav = NAV_TMPL.replace("{DIR}", PAGES[fname]["DIR"]).replace("{SIG}", PAGES[fname]["SIG"])
+    nav = nav_for(fname)
     html = html.replace("</head>", CSS_BLOCK + "\n</head>", 1)
     html = html.replace("<body>", "<body>\n" + nav + "\n", 1)
     html = html.replace("</body>", JS_BLOCK + "\n</body>", 1)

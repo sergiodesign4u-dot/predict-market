@@ -3,10 +3,11 @@
 _resync_roadmap.py  -  make every hand-authored roadmap sidebar agree with the
 one that is generated.
 
-The roadmap lives in ONE list, `LAYOUT` in wireframes/_generators/resync_sidebar.py,
-and that list has been right since Tokens + Components shipped: the stage is not
-planned, its href is ui-kit/overview.html, and the "Next" badge belongs to Design
-System. Twelve root pages render from it and say so.
+The roadmap lives in ONE list, `LAYOUT` in _roadmap.py beside this file, and that
+list has been right since Tokens + Components shipped: the stage is not planned,
+its href is ui-kit/overview.html, and the "Next" badge belongs to Design System.
+Every page whose panel is GENERATED renders from it and says so: twelve root viz
+pages, fifteen annotation pages, and the two Concept exploration pages.
 
 Twenty-one other pages do not render from it. They carry a copy of the roadmap
 typed into their own generator or into the file itself, and every one of them
@@ -29,8 +30,14 @@ It also repairs the depth of the archived pages under concept/old/, which were
 copied a folder deeper without their ../ being counted again, so every link out
 of them pointed at a path that does not exist.
 
-The generators are fixed at the same time (ia_annotations.py, concept/
-_directions_sidebar.py), so a rebuild agrees with this instead of undoing it.
+The generators can no longer disagree with this, because they no longer hold an
+opinion: ia_annotations.py and concept/_directions_sidebar.py both render from
+_roadmap.py. This docstring used to claim they had been "fixed at the same time",
+and for concept/ that was true while for ia_annotations.py it was not: it still
+offered "UI Kit -> ui-kit/kit.html" and showed Tokens + Components as the next
+thing to build, so running it would have rolled fifteen annotation pages back
+past the stage they document. A docstring that says a thing is safe is worse than
+no docstring, because it is read instead of the code.
 
 Idempotent: every rule is a rewrite of a shape that only exists when it is wrong.
 

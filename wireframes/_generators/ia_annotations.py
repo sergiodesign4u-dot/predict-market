@@ -29,6 +29,19 @@ WF_DIR = os.path.dirname(HERE)                       # wireframes/
 ROOT = os.path.dirname(WF_DIR)                        # repo root
 OUT_DIR = os.path.join(ROOT, "ia", "annotations")     # ia/annotations/
 
+sys.path.insert(0, ROOT)
+# The roadmap is one list and one renderer, at the repo root, because it
+# belongs to no stage and three generators draw it.
+from _roadmap import render_aside  # noqa: E402
+from _course_chrome import head_links  # noqa: E402
+
+# The panel is a component and the page links it, last in <head> so it wins
+# on source order. This used to be 23 lines of inline css describing the
+# panel here, which _course_chrome.py then deleted and replaced with these
+# links every time it ran: the pages were right and the generator was not,
+# the same shape as the roadmap. The block is built by the file that owns it.
+CHROME_LINKS = head_links(os.path.join(OUT_DIR, "index.html"))
+
 # ---------------------------------------------------------------------------
 # Screen families: title -> list of (filename, state-label). Base state first.
 # Category pages (politics/crypto/culture/general) are structurally identical;
@@ -340,49 +353,51 @@ SIDEBAR_LABELS = {
 }
 
 
+# The drawer chrome, in the vocabulary components/course-chrome.css uses. It
+# used to be emitted as .menu-toggle / .sidebar-overlay and renamed afterwards by
+# _course_chrome.py, which is the same shape as the roadmap defect below: a
+# generator writing one thing and a post-processor correcting it, so the pages
+# were right and the generator was not.
+SIDEBAR_CHROME = """<button class="rm-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="rm-overlay" id="sidebarOverlay"></div>"""
+
+
 def render_sidebar(active_slug):
     """The shared dark sidebar. active_slug = a family slug, or '__index__' for
-    the index page. Root links go up two levels (ia/annotations/ -> repo root).
-    Static accordion: annotation pages live under the Wireframe Annotations stage
-    (never inside the User Research or Information Architecture groups), so both of
-    those groups always render collapsed here - each a single link to its first
-    page. Mirrors resync_sidebar.py."""
+    the index page.
+
+    THE ROWS COME FROM _roadmap.py, and that is the whole point of this function
+    being three lines long. It used to hold its own typed copy of the roadmap,
+    and that copy fell two stages behind the pages it writes: it still offered
+    "UI Kit -> ui-kit/kit.html", frozen as provenance since step 4, and showed
+    Tokens + Components as the NEXT thing to build while these pages document a
+    stage after it. _resync_roadmap.py had corrected the fifteen OUTPUT pages and
+    only one of the two generators, so the mistake was armed and waiting for
+    whoever ran this next.
+
+    Three things are local to an annotation page, so three things are passed in:
+    it sits two folders deep, its own row links sideways instead of through the
+    root, and it carries the family list beneath itself. Both groups always
+    render collapsed here, because an annotation page lives under the Wireframe
+    Annotations row and never inside User Research or Information Architecture,
+    and a group expands only around the page you are standing on.
+    """
     subs = []
     for slug, _t, _s in FAMILIES:
         cls = "sidebar-sub-link active" if slug == active_slug else "sidebar-sub-link"
         subs.append('<a href="{slug}.html" class="{cls}">{label}</a>'.format(
             slug=slug, cls=cls, label=_html.escape(SIDEBAR_LABELS[slug])))
-    ann_active = " active" if active_slug else ""  # any annotations page
-    return """<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
-  <span></span><span></span><span></span>
-</button>
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-brand">
-    <div class="sidebar-project-name">Prediction Market</div>
-  </div>
-  <div class="sidebar-nav">
-    <a href="../../research/research.html" class="sidebar-page-link">Foundation Research</a>
-    <a href="../../user-research/personas.html" class="sidebar-page-link">User Research</a>
-    <a href="../../ia/flows.html" class="sidebar-page-link">Information Architecture</a>
-    <div class="sidebar-divider">Plan</div>
-    <a href="../../wireframes/event-feed.html" class="sidebar-page-link">Wireframes</a>
-    <a href="index.html" class="sidebar-page-link@@ANN_ACTIVE@@">Wireframe Annotations</a>
-    <div class="sidebar-sub">
-      @@SUBS@@
-    </div>
-    <a href="../../voice/voice.html" class="sidebar-page-link">Voice</a>
-    <div class="sidebar-divider">Design and Delivery</div>
-    <a href="../../concept/concept.html" class="sidebar-page-link">Concept</a>
-    <a href="../../ui-visual/event-feed.html" class="sidebar-page-link">UI + Visual</a>
-    <a href="../../ui-kit/kit.html" class="sidebar-page-link">UI Kit</a>
-    <a class="sidebar-page-link planned next">Tokens + Components</a>
-    <a class="sidebar-page-link planned">Design System</a>
-    <a class="sidebar-page-link planned">Responsive</a>
-    <a class="sidebar-page-link planned">Animation</a>
-    <a class="sidebar-page-link planned">Handoff</a>
-  </div>
-</aside>""".replace("@@ANN_ACTIVE@@", ann_active).replace("@@SUBS@@", "\n      ".join(subs))
+    family_list = (['    <div class="sidebar-sub">']
+                   + ["      " + row for row in subs]
+                   + ['    </div>'])
+    return SIDEBAR_CHROME + "\n" + render_aside(
+        "../../",
+        active="annotations",
+        href_override={"annotations": "index.html"},
+        extra_after={"annotations": family_list},
+    )
 
 
 SIDEBAR_JS = """<script>
@@ -409,33 +424,9 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
-/* ---- sidebar (shared with research.html) ---- */
-.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:200;transform:translateX(-100%);transition:transform .25s cubic-bezier(.4,0,.2,1)}
-.sidebar.open{transform:translateX(0)}
-.sidebar::-webkit-scrollbar{display:none}
-.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:199;backdrop-filter:blur(2px)}
-.sidebar-overlay.open{display:block}
-.menu-toggle{position:fixed;top:12px;left:12px;z-index:201;background:var(--surface);border:1px solid var(--border);border-radius:6px;width:36px;height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;padding:0}
-.menu-toggle span{display:block;width:15px;height:1.5px;background:var(--text);border-radius:1px}
-.sidebar-brand{padding:20px 16px 16px;border-bottom:1px solid var(--border);flex-shrink:0}
-.sidebar-project-name{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);line-height:1.4}
-.sidebar-nav{padding:12px 0;flex:1}
-.sidebar-page-link{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:500;color:var(--text);text-decoration:none;padding:7px 16px;transition:background .15s;cursor:pointer;user-select:none}
-.sidebar-page-link:hover:not(.planned){background:rgba(255,255,255,.04);text-decoration:none}
-.sidebar-page-link.active{color:var(--accent)}
-.sidebar-page-link.planned{color:var(--muted);cursor:default;opacity:.6}
-.sidebar-page-link.planned::after{content:'Soon';font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:rgba(255,255,255,.04);color:var(--muted);padding:2px 5px;border-radius:3px;border:1px solid var(--border)}
-.sidebar-page-link.planned.next{opacity:1}
-.sidebar-page-link.planned.next::after{content:'Next';color:var(--accent);border-color:var(--accent)}
-.sidebar-sub{padding:2px 0 8px}
-.sidebar-sub-link{display:block;font-size:12px;color:var(--muted);text-decoration:none;padding:5px 16px 5px 28px;transition:color .15s;position:relative}
-.sidebar-sub-link:hover{color:var(--text);text-decoration:none}
-.sidebar-sub-link.active{color:var(--text)}
-.sidebar-sub-link.active::before{content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:3px;height:3px;border-radius:50%;background:var(--accent)}
-.sidebar-divider{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:16px 16px 6px;opacity:.45}
 /* ---- layout ---- */
 main{padding:60px 20px 80px}
-@media(min-width:860px){.sidebar{transform:translateX(0);transition:none}.sidebar-overlay{display:none!important}.menu-toggle{display:none}main{margin-left:220px;padding:48px 48px 100px}}
+@media(min-width:860px){main{margin-left:220px;padding:48px 48px 100px}}
 .wrap{max-width:1040px}
 /* ---- content ---- */
 .crumbs{font-size:11px;letter-spacing:.04em;color:var(--muted);margin-bottom:14px}
@@ -494,6 +485,7 @@ PAGE_TMPL = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>@@TITLE@@ - Wireframe Annotations</title>
 <style>""" + CSS + """</style>
+""" + CHROME_LINKS + """
 </head>
 <body>
 @@SIDEBAR@@
@@ -522,6 +514,7 @@ INDEX_TMPL = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wireframe Annotations - Prediction Market Platform</title>
 <style>""" + CSS + """</style>
+""" + CHROME_LINKS + """
 </head>
 <body>
 @@SIDEBAR@@
