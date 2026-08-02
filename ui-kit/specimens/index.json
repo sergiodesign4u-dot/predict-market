@@ -207,7 +207,6 @@
   "title": "Sign in and Add funds",
   "width": 780,
   "also": [
-   "signin",
    "input",
    "notice"
   ],
@@ -217,7 +216,7 @@
  },
  {
   "id": "signin",
-  "component": "signin",
+  "component": "dialog",
   "title": "Sign in dialog",
   "width": 420,
   "source": "kit.html / dialogs / Shared dialogs",
@@ -267,7 +266,7 @@
  },
  {
   "id": "outcome-overlays",
-  "component": "outcome-dialog",
+  "component": "dialog",
   "title": "Win and loss overlays",
   "width": 780,
   "source": "kit.html / feedback / Win and loss overlays",

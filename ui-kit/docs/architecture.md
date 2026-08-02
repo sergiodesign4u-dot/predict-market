@@ -26,7 +26,7 @@ Each folder has a front page, and each is the other's way out.
 
 | Page | Lists | Its back arrow goes to |
 |---|---|---|
-| `ui-kit/overview.html` | the foundations and all 38 components | `ui-visual/overview.html` |
+| `ui-kit/overview.html` | the foundations and all 36 components | `ui-visual/overview.html` |
 | `ui-visual/overview.html` | all 104 painted screens, as chips, grouped the way the screen tree groups them | the course roadmap |
 
 Both appear as their own row at the top of their sidebar, above the first group, because neither is a

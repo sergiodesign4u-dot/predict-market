@@ -44,6 +44,56 @@ record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/mi
 
 ---
 
+## 2026-08-02 - Two dialog skins were never components, and the merge risk was one line of the cascade
+
+`signin.css` held 2 rules. `outcome-dialog.css` held 2. The outcome dialog is made of 26 rules and
+**24 of them were already inside `dialog.css`**, along with 3 for `.signin-dialog`, 3 for
+`.bet-sheet`, 2 for `.win-dialog` and 1 for `.loss-dialog`: 33 of that file's 59 rules were about a
+variant. The merge had already happened in the css and only the file boundary pretended otherwise.
+
+- **The test was anatomy, and anatomy was read from the DOM.** Zone for zone the shared sheet, the
+  sign-in sheet and the win overlay are the same object: a top band carrying the title, a body, and
+  nothing else. What differs is what stands in a zone (an h1 and a link instead of an h2 and a
+  sub-line) and a width, and a width is a value. **Nobody in the family has an action row**, which
+  was a claim on the record until the markup was read: the confirm button sits inside the body in
+  every one of them, and an earlier reading had scored the how-it-works dialog as different for
+  losing a row that does not exist. A selector says who STYLES a thing; only the DOM says what it is
+  MADE OF, and the first pass had asked the css.
+- **The containment graph said the same thing independently.** `outcome-dialog` CONTAINS `dialog`
+  and so does `signin`. A variant that contains its own base is the signature of a skin.
+- **The whole risk of the move was four lines, and it was real.** `dialog.app-dialog:modal` in the
+  mobile block is (0,2,1) and so is `dialog.app-dialog.signin-dialog`, so between 411px and 640px
+  the two contest `max-width` at EQUAL specificity and **only source order decides**. As separate
+  files these rules loaded after `dialog.css` and won. Appended to the end of `dialog.css` they
+  still win; moved to the top they would lose and the sheet would go full bleed. So they are at the
+  end, and the file says why on the line above them.
+- **Measured, and calibrated against the failure it was looking for.** Seven screens where the family
+  is actually painted, at 360, **500** and 1280, element by element on 35 computed properties plus
+  the box, old tree against new: **0 of 15,585 elements changed**. Then the same four rules were put
+  at the TOP of the file on purpose: the win overlay at 500px went from `[40,159,420,741]` to
+  `[0,176,500,724]`, 420px inset to 500px full bleed. **At 360 and at 1280 that same break measured
+  zero.** The width that could see it was the one added because the specificity tie predicted it,
+  which is the argument for deriving the test from the mechanism rather than from habit. A repeat run
+  on the unchanged tree moved 162 elements on `sign-in`, all of them inside the `<aside>` and none
+  carrying a dialog class: the panel artifact from the cascade pass, still there, still not the
+  product.
+- **What it cost the system.** 41 css files to 39, 38 components to 36, 40 imports to 38, 49 stand
+  pages to 47, 40 rows in `_nav.js` to 38. The two specimens do not disappear, because each variant
+  still has to be shown: they re-point at `dialog` in `specimens/index.json`, and gate 8 caught the
+  cross-reference left behind when only one of the two was repointed. `inventory.md` healed itself,
+  because it derives the file and page cells from the classes named in each row.
+- **Levels and order did not move.** `CONTAINS(dialog)` is unchanged, so `dialog` stays an organism;
+  nothing holds `signin` or `outcome-dialog`, so no other level shifts. `index.css` was rewritten
+  from `_levels.py --order` and gate 23 re-derives it.
+- **Not merged, with the reason on the record.** `bet-sheet` has no top band, no close button and a
+  `.sheet-grab` instead: a different zone set, so a different component, and the 3 rules for it
+  inside `dialog.css` are now a misplacement rather than a variant. `toast` and `notice` do not merge
+  either, and in both directions: the toast has a close and no actions, the push banner has actions
+  and no close. `hiw-dialog` has the same anatomy and is still separate, because folding it moves 52
+  rules across nine files rather than four across none, and that deserves its own measurement.
+
+---
+
 ## 2026-08-02 - The level, the cascade order, and the panel that was grouped by the wrong question
 
 Three artifacts had the same missing input. `components/index.css` was ordered by insertion, the

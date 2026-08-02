@@ -1,5 +1,5 @@
 /* components/dialog.css
-   Component: dialog. Classes: .app-dialog, .fine, .sheet-body, .sheet-close, .sheet-head, .sheet-sub.
+   Component: dialog. Classes: .app-dialog, .fine, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog, .signin-lead.
 
    Reads: --bevel-hair, --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --mask-solid, --result-won, --result-won-stone, --scrim, --scrim-photo, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-45
    Stand:  ui-kit/dialog.html
@@ -156,3 +156,20 @@ dialog.app-dialog:modal .sheet-body{overflow:auto;min-height:0}
     animation:sheet-rise var(--dur-slow) var(--ease-out) both}
   @keyframes sheet-rise{from{translate:0 100%}to{translate:0 0}}
 }
+
+/* The two skins, folded in from signin.css and outcome-dialog.css. Same
+   anatomy as the sheet above, zone for zone: a head carrying the title, a body,
+   and a close button that is out of flow in all three. What differed was the
+   content of a zone and a width, and a width is a value.
+
+   THEY GO AT THE END OF THE FILE, AND THAT IS THE WHOLE OF THE MIGRATION RISK.
+   `dialog.app-dialog:modal` in the mobile block above is (0,2,1) and so is
+   `dialog.app-dialog.signin-dialog`, so between 411px and 640px the two contest
+   `max-width` at EQUAL specificity and nothing but source order decides it.
+   Imported as separate files these rules loaded after dialog.css and won; put
+   at the top of this file they would lose, and the sheet would go full bleed on
+   a 500px screen. Measured at 360, 500 and 1280: 0 elements moved. */
+dialog.app-dialog.signin-dialog{max-width:410px}
+dialog.app-dialog.signin-dialog .signin-lead{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0 0 var(--space-4)}
+dialog.app-dialog.outcome-dialog{max-width:var(--container-sheet)}
+.outcome-dialog a{text-decoration:none}

@@ -299,7 +299,7 @@ the 76 pages carry the leading class.
 | `input.css` | `.amount-row` / `.amount-input` 76, `.quick` 76, `.field-label` 76, `.cmt-input` 7, `.cc-cat input[type=checkbox]` | `ui-kit/input.html` |
 | `dialog.css` | `dialog.app-dialog` 76, `.sheet-head` / `.sheet-body` / `.sheet-close` / `.sheet-sub` 76, `.grab`, `::backdrop`, `.dlg-note`, `.fine` | `ui-kit/dialog.html` |
 | `hiw-dialog.css` | `.hiw-dialog` + `.hiw-hero` / `-hero-inner` / `-glow` / `-tagline` / `-body` / `-sec` / `-sec-txt` / `-ic` / `-label` / `-faq` / `-full` / `-arrow` / `-close` / `-lead` 76 | `ui-kit/hiw-dialog.html` |
-| `signin.css` | `.signin-dialog` 76, `.signin-lead` | `ui-kit/signin.html` |
+| `signin.css` | `.signin-dialog` 76, `.signin-lead` | folded into `dialog.css` on 2026-08-02, same anatomy: `ui-kit/dialog.html` |
 | `notice.css` | `.protect` 76, `.widget-box` 76, `.inline-error` 8, `.spinner-box` 6, `.reconcile-box` 6, `.push-banner` / `.push-msg` / `.push-actions` 2 | `ui-kit/notice.html` |
 
 ### Feedback and states (group 5)
@@ -309,7 +309,7 @@ the 76 pages carry the leading class.
 | `state-block.css` | `.state-block` / `.state-title` / `.state-msg` / `.state-actions` 22, `.sys-links` / `.sys-link-list` / `.sys-note` 1-2 | `ui-kit/state-block.html` |
 | `skeleton.css` | `.skeleton` 11, `.sk-line` 11, `.sk-thumb` 5, `.sk-btn` / `.sk-head` / `.sk-row` 3 | `ui-kit/skeleton.html` |
 | `toast.css` | `.toast` / `.toast-wrap` / `-group` / `-inner` / `-msg` / `-close` / `-error` 1 (the spec page), `.tc-page` | `ui-kit/toast.html` |
-| `outcome-dialog.css` | `.outcome-dialog` 17, `.win-dialog` 4, `.loss-dialog` 2, the share card | `ui-kit/outcome-dialog.html` |
+| `outcome-dialog.css` | `.outcome-dialog` 17, `.win-dialog` 4, `.loss-dialog` 2, the share card | folded into `dialog.css` on 2026-08-02, same anatomy: `ui-kit/dialog.html` |
 | `notifications.css` | `.notif-empty` (from C5), notification list rows | `ui-kit/notifications.html` |
 
 ### Profile and account (group 6)

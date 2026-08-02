@@ -82,9 +82,9 @@ LABEL = {
     "event-detail": "Event Detail layout", "chart": "Price chart", "betpanel": "Bet panel and dock",
     "market": "AMM market panel", "comments": "Comments", "bets-table": "Bets and activity",
     "related": "Related events", "button": "Buttons", "input": "Fields and amounts",
-    "dialog": "Shared dialog", "hiw-dialog": "How-it-works dialog", "signin": "Sign in dialog",
+    "dialog": "Shared dialog", "hiw-dialog": "How-it-works dialog",
     "notice": "Notices and banners", "state-block": "State block", "skeleton": "Skeletons",
-    "toast": "Toasts", "outcome-dialog": "Win and loss overlays",
+    "toast": "Toasts",
     "profile": "Profile identity", "position": "Position rows", "account": "Account bars",
     "cookie-consent": "Cookie consent",
 }

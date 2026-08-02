@@ -26,7 +26,7 @@ says so. No em dash.
 | comments | 1 | comments-thread | 1 | 15 | 9 |
 | cookie-consent | 1 | cookie-consent | 0 | 17 | 2 |
 | course-chrome | 3 | course-chrome, course-chrome-system, course-chrome-roadmap | 0 | 25 | 104 |
-| dialog | 1 | dialog-shared | 0 | 6 | 104 |
+| dialog | 3 | dialog-shared, signin, outcome-overlays | 0 | 9 | 104 |
 | event-detail | 2 | event-detail, facts-strip | 0 | 16 | 11 |
 | feed | 1 | feed-grid | 1 | 6 | 104 |
 | filters | 2 | filters-sort, filters-toggle | 2 | 4 | 104 |
@@ -40,12 +40,10 @@ says so. No em dash.
 | notice | 1 | notice-push | 1 | 8 | 104 |
 | oddsbar | 1 | oddsbar | 2 | 7 | 104 |
 | options | 2 | options-rows, options-multi | 1 | 6 | 25 |
-| outcome-dialog | 1 | outcome-overlays | 0 | 1 | 6 |
 | position | 1 | position-list | 1 | 14 | 36 |
 | profile | 1 | profile-identity | 0 | 8 | 7 |
 | related | 1 | related | 0 | 6 | 9 |
 | seo-plate | 1 | seo-plate | 0 | 8 | 10 |
-| signin | 1 | signin | 1 | 2 | 104 |
 | skeleton | 1 | skeleton-grid | 0 | 5 | 19 |
 | state-block | 3 | state-empty-filters, state-error, state-empty | 0 | 7 | 40 |
 | tabs | 2 | tabs-detail, tabs-mybets | 1 | 21 | 20 |
@@ -53,7 +51,7 @@ says so. No em dash.
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 104 |
 | yesno | 1 | yesno | 2 | 2 | 14 |
 
-62 specimens over 38 components.
+62 specimens over 36 components.
 
 ---
 
@@ -69,7 +67,7 @@ Styled, and carried by no element in the repo: not by a painted screen, not by t
 | class | file | why |
 |---|---|---|
 | `.btn-block` | button.css | styled and carried by no element anywhere |
-| `.signin-lead` | signin.css | styled and carried by no element anywhere |
+| `.signin-lead` | dialog.css | styled and carried by no element anywhere |
 
 ### Carried only by the grey tree (0)
 
