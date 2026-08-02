@@ -1273,6 +1273,67 @@ orphan_rule = sorted({rid for path in KIT.glob("*.html")
 check("26 no page carries a rule the document lacks", not orphan_rule,
       "%d: %s" % (len(orphan_rule), ", ".join(orphan_rule[:4])))
 
+# 27 ------------------------------------------ a pattern, and its only render --
+# A component has two renders outside the product, a specimen and a stand. A
+# pattern has one, because step 3 took patterns out of gate 24's corpus on
+# purpose: that gate asks what a component CONTAINS, and a pattern contains
+# whatever the screen puts in it. So the page is not documentation of the
+# pattern, it is the only test of it, and a pattern whose page is missing is a
+# pattern that exists only inside the product.
+#
+# The second check is the load-bearing one, and it is the threshold itself made
+# executable. A pattern is admitted for standing on THREE OR MORE SCREENS, so
+# that is the one claim its page has to be able to prove: the screens are read
+# from the markup of ui-visual/ here, not from the page, and compared with what
+# the page lists. A page that names two screens is not a thin pattern, it is a
+# composition that stopped qualifying while nobody was counting.
+#
+# The third is the mirror, in the shape every declaration in this system has: a
+# page in the Patterns group with no file behind it. Without it the cheapest way
+# to satisfy the first two would be to write a page and never write a pattern.
+PAT_CSS = sorted((COMP / "patterns").glob("*.css"))
+SCREEN_FILES = [p for p in sorted(UVIS.glob("*.html")) if p.name != "overview.html"]
+SCREEN_CLS = {p.name: {c for m in re.findall(r'class="([^"]*)"',
+                                             p.read_text(encoding="utf-8")) for c in m.split()}
+              for p in SCREEN_FILES}
+sys.path.insert(0, str(KIT))
+import _gen_pattern_pages as _gpp                                     # noqa: E402
+
+pageless, thin = [], []
+declared_scene = {s["name"]: s for s in _gpp.SCENES}
+for css in PAT_CSS:
+    name = css.stem
+    page = KIT / (name + ".html")
+    scene = KIT / "patterns" / (name + ".html")
+    if not page.exists():
+        pageless.append(name + ".html missing")
+        continue
+    if not scene.exists():
+        pageless.append("patterns/%s.html missing, so the page frames nothing" % name)
+        continue
+    spec = declared_scene.get(name)
+    if not spec:
+        pageless.append(name + " has no scene declared")
+        continue
+    src = page.read_text(encoding="utf-8")
+    listed = set(re.findall(r'href="\.\./ui-visual/([\w.-]+\.html)"', src))
+    real = {n for n, cs in SCREEN_CLS.items() if spec["root"] in cs}
+    if len(real) < 3:
+        thin.append("%s stands on %d screens" % (name, len(real)))
+    elif not real <= listed:
+        thin.append("%s lists %d of %d screens" % (name, len(listed & real), len(real)))
+check("27 every pattern has a page and a scene", not pageless,
+      "%d: %s" % (len(pageless), ", ".join(pageless[:3])))
+check("27 a pattern still stands on three screens", not thin,
+      "%d: %s" % (len(thin), ", ".join(thin[:3])))
+
+NAV_PAT = re.compile(r'group: "Patterns", name: "([^"]+)", file: "([^"]+)"')
+_stems = {p.stem for p in PAT_CSS}
+ghost = ["%s (%s)" % (n, f) for n, f in NAV_PAT.findall(NAVJS)
+         if n != "patterns" and n not in _stems]
+check("27 no page in the group without a file", not ghost,
+      "%d: %s" % (len(ghost), ", ".join(ghost[:3])))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

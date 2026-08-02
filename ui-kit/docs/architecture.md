@@ -517,16 +517,40 @@ The build is three commands, in this order, all idempotent, none of which touche
 ```
 python3 ui-kit/_extract_specimens.py     # blocks  -> specimens/ + selftest.html
 python3 ui-kit/_gen_component_pages.py   # css     -> 38 pages + overview + _nav.js + coverage.md
+python3 ui-kit/_gen_pattern_pages.py     # screens -> patterns/ scenes + 6 pages + patterns.html
 python3 ui-kit/_gen_icons_page.py        # sprite  -> icons.html
 python3 ui-kit/_fill_inventory.py        # levels  -> the CSS file / Page / Level columns
 python3 ui-kit/_gen_docs.py              # docs/   -> the five documents as pages
 python3 ui-kit/_check_kit.py             # the gates
 ```
 
-`_gen_component_pages.py` runs before `_gen_docs.py` because it writes `docs/coverage.md`, and both
-run before `_check_kit.py`. `ui-kit/_levels.py` is not in the list: it is a library the other three
-read, and running it on its own only prints what it knows (`--why` for the classes it found inside
-each component, `--order` for the cascade).
+`_gen_component_pages.py` runs before `_gen_pattern_pages.py` because it writes `_nav.js`, which the
+pattern pages read for their side panel, and both run before `_gen_docs.py` because the first writes
+`docs/coverage.md` and the second writes the patterns block of `docs/inventory.md`. Everything runs
+before `_check_kit.py`. `ui-kit/_levels.py` is not in the list: it is a library the others read, and
+running it on its own only prints what it knows (`--why` for the classes it found inside each
+component, `--order` for the cascade).
+
+### How to add a pattern, which is four things and not five
+
+A pattern is not a component, so it does not take the list above. It takes `components/patterns/<name>.css`
+plus its `@import` at the end of `index.css`, an entry in `ui-kit/_gen_pattern_pages.SCENES` naming
+the screen its scene is cut from, and the two rows that follow from those: the registry line and the
+inventory row are both derived. What it does NOT take is a specimen, and that is the decision that
+shapes the whole vitrine.
+
+**A pattern has one render outside the product where a component has two.** A component has a
+specimen and a stand page; a pattern was deliberately taken out of gate 24's corpus in step 3,
+because that gate compares what a component CONTAINS in its stand against what it contains on the
+screens, and a pattern contains whatever the screen puts in it. So `ui-kit/<name>.html` is not
+documentation of the pattern, it is the only test of it, and everything on it is live: the scene in
+`ui-kit/patterns/<name>.html` is a region sliced out of a painted screen byte for byte, with its real
+ancestor chain, so every string on the stand is the shipped microcopy for the reason that none of it
+was retyped.
+
+**Gate 27** holds the three claims that follow. Every pattern has a page and a scene; every page
+still proves the three-screen threshold, counted from `ui-visual/` rather than read off the page; and
+no row in the Patterns group is a page with no file behind it.
 
 `ui-kit/tokens.html` is generated separately by `ui-kit/_gen_tokens_page.py` from
 `components/tokens.css`.
