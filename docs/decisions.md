@@ -44,6 +44,77 @@ record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/mi
 
 ---
 
+## 2026-08-02 - A state is not a component, and five stands were showing less than the product ships
+
+The specimen audit of the day before compared what each component contains in its stand against what
+it contains on the 105 painted screens, using one reading for both. Eleven components came out
+short. This entry is what was done about them.
+
+- **The ownership map knew components and did not know states.** `.skeleton` is a subject in
+  `position.css` (`.app-case .pos.skeleton{gap:...}`) and only ever an ancestor in `skeleton.css`
+  (`.card.skeleton .sk-thumb`), so "fewest ancestors" handed the word to `position`. Both rules are
+  correct where they stand. What was wrong is that a state word had to be given to somebody at all:
+  every `<article class="card skeleton">` on nineteen loading screens then read as a POSITION root,
+  and position came out containing card, account, event-detail and hiw-dialog. Four phantom edges
+  from one misplaced word. Fixed in the map, not in the css: `_levels.MODIFIER`, one entry with its
+  reason, skipped by the reader in **both** directions, because skipping it only at the root leaves
+  the same phantom one element higher (the feed holds the card, so the feed would then contain
+  position). Stage 09 brings hover, focus-visible and disabled, which are the same species.
+- **It was checked for company before it was declared.** A sweep over all three trees asked which
+  classes stand as a second class on another component's element: 20 in the painted screens, 16 in
+  the specimens, 18 in the grey tree, the same list every time. Nineteen of the twenty are something
+  else, and the distinction is what the word NAMES. `.tr-ic` and `.prov-x` are a component's own
+  decoration of a shared atom; `.lang-menu` on `.filter-menu` is the footer skinning the filter
+  dropdown; `.hiw-dialog` beside `.app-dialog` is two components on one element (item 16);
+  `.rp-inner`, `.ed-tabs` and `.bet-sheet` are classes in the wrong file (item 17). The two the
+  guess had named, `.scrolled` and `.resolved`, were neither: `.scrolled` is never a subject in any
+  file, so the map has never held it and the reader has never seen it, and `.resolved` does not
+  exist (the class is `.resolved-panel`, and that is item 17). One entry, and the mechanism is now
+  there for the five that Stage 09 will bring.
+- **The five thin stands were filled from the screens, not from the kit.** `kit.html` is frozen
+  provenance and it stages an earlier product: its skeleton card is missing a line, its detail plate
+  is a `div` where the product ships an `article` and carries three sections the product's card does
+  not. So the blocks were copied out of `ui-visual/event-feed-loading.html`, `event-detail.html`,
+  `active-bets-loading.html`, `event-detail-{multi,loading,resolved}.html` and `win.html`, each
+  named at its block in `specimens.extra.html`. Every one keeps the real ancestor chain above the
+  component's own root and adds nothing around it: a reconcile box outside the dialog is a grey
+  rectangle, because three of the four rules that draw it are scoped under `.app-case`,
+  `.outcome-dialog` and `.win-dialog`.
+- **Three cycles appeared, and a cycle is not a defect in the reading.** `card` holds `.ed-head`
+  because the detail page's header IS a card, and `event-detail` holds the card: both halves are in
+  the markup. `betpanel` holds `event-detail` only through `.rp-inner`, and `notice` holds `dialog`
+  only through `.fine`. All three were declared in `ORDER_BREAK`, which drops an edge for ORDERING
+  and keeps it for the level, with the direction decided by which file restyles the other's insides.
+  Two of the three name a backlog item as their reason, which is the point of writing the reason
+  down: the declaration says how long it should live.
+- **One level moved, and one line of `index.css` moved with it.** `notice` L2 -> L3, because `.fine`
+  is attributed to `dialog`. `notice.css` therefore sorts into the organisms and moves from #17 to
+  #23, behind `cookie-consent`, `bottomnav`, `hiw-dialog`, `hero`, `comments` and `catnav`. None of
+  those six writes a selector `notice.css` also writes, and none of them has a rule that reaches a
+  class `notice` owns, so the move is inert by reading. It was measured anyway, the way the cascade
+  reorder was: 8 screens carrying a notice, three widths, 35 computed properties and the box per
+  element. **0 of 16,662 elements changed.** Whether `.fine` should belong to `dialog` at all is a
+  new question and is backlog item 19.
+- **The floors were revised mechanically, one at a time.** Each of the fourteen `RAISE` entries was
+  removed and the whole level table recomputed: thirteen changed an answer, one did not. `footer`
+  holds a language menu and a trust bar, so the arithmetic reaches L3 without help, and its floor
+  had been carrying nothing. Deleted, with the reason in its place. `hiw-dialog` keeps its floor and
+  gets a new reason: the old one said the frame is not a descendant, and the markup says otherwise.
+  It is backlog item 18 now, and the only one of the thirteen that a split would remove.
+- **A generated file was corrected in the wrong copy, and re-running the generator proved it.** The
+  dialog merge had removed the dangling `signin` reference from `specimens/index.json`, which is
+  OUTPUT. `specimens.map.json`, which is the source, still said `"component": "signin"`, so the
+  first extractor run after the merge brought the deleted component straight back and gate 8 failed.
+  Fixed at the source, with the mistake written into the entry's note.
+- **README said 36 components and broke them down into 34.** Both numbers were right and the
+  sentence was not: 36 is every component file, 34 is how many are COMPOSED, because `base` and
+  `course-chrome` are the substrate a screen stands on and a substrate has no level. It is written
+  by `_fill_inventory.py` from `_levels.py` now, between two markers, and gate 2 fails when the span
+  goes stale. A generated span is only single sourced while something fails when it drifts; the
+  gate was proved by breaking the number and watching it go red.
+
+---
+
 ## 2026-08-02 - Two dialog skins were never components, and the merge risk was one line of the cascade
 
 `signin.css` held 2 rules. `outcome-dialog.css` held 2. The outcome dialog is made of 26 rules and

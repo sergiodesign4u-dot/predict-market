@@ -203,6 +203,56 @@ def main():
         with open(INV, "w", encoding="utf-8") as fh:
             fh.write(text)
     print("rows with a component: %d, rows deliberately dashed: %d" % (filled, dashed))
+    fill_readme(check)
+
+
+# ------------------------------------------------------- the count in README --
+# README carried "36 components (6 atoms, 9 molecules, 19 organisms)" and those
+# three add up to 34. Neither number was wrong: 36 is every component file, and
+# 34 is how many of them are COMPOSED, because base and course-chrome are the
+# substrate and a substrate has no level. The sentence was wrong, because it
+# printed one number and broke it down by the other.
+#
+# It is written from _levels.py here for the same reason the inventory's level
+# column is: a count typed by hand is a second source for something the markup
+# already answers, and it drifts on the first component that is added, split or
+# folded in. Gate 2 fails the build when this span stops matching.
+README = os.path.join(ROOT, "README.md")
+SPAN = re.compile(r"(<!-- counts:start -->).*?(<!-- counts:end -->)", re.S)
+
+
+def counts():
+    """The sentence, from the one place that knows: file count from the same
+    rule gate 2 uses, breakdown from the computed level."""
+    from _levels import LEVEL, NOT_A_COMPONENT
+    files = {f[:-4] for f in os.listdir(COMP) if f.endswith(".css")} - {
+        "index", "tokens", "fonts"}
+    n = {lvl: sum(1 for c in files if LEVEL.get(c) == lvl) for lvl in (1, 2, 3)}
+    substrate = sorted(c for c in files if c in NOT_A_COMPONENT)
+    return ("**%d components**, %d of them composed on three levels "
+            "(%d atoms, %d molecules, %d organisms, computed from the markup) "
+            "and %d that are the substrate a screen stands on rather than a part "
+            "of one (`%s`)" % (
+                len(files), n[1] + n[2] + n[3], n[1], n[2], n[3],
+                len(substrate), "`, `".join(substrate)))
+
+
+def fill_readme(check=False):
+    with open(README, encoding="utf-8") as fh:
+        src = fh.read()
+    if not SPAN.search(src):
+        print("README: no counts span, nothing written")
+        return
+    new = SPAN.sub(lambda m: m.group(1) + counts() + m.group(2), src)
+    if new == src:
+        print("README counts            unchanged")
+        return
+    if check:
+        print("README counts            STALE")
+        return
+    with open(README, "w", encoding="utf-8") as fh:
+        fh.write(new)
+    print("README counts            rewritten")
 
 
 if __name__ == "__main__":

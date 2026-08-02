@@ -153,6 +153,20 @@ components = {p.stem for p in COMP.glob("*.css")} - {"index", "tokens", "fonts"}
 owned = {s["component"] for s in manifest}
 check("2 every component has one", not (components - owned), ", ".join(sorted(components - owned)))
 check("2 specimen ids unique", len(ids) == len(set(ids)))
+# README used to say "36 components (6 atoms, 9 molecules, 19 organisms)", and
+# those three add to 34. Both numbers were right and the sentence was not: 36 is
+# every component file, 34 is how many of them are COMPOSED, because base and
+# course-chrome are the substrate and a substrate has no level. It is written by
+# _fill_inventory.py now, from _levels.py, and a generated span is only single
+# sourced while something fails when it goes stale.
+sys.path.insert(0, str(KIT))
+from _fill_inventory import counts as readme_counts, SPAN as README_SPAN  # noqa: E402
+
+_readme = (ROOT / "README.md").read_text(encoding="utf-8")
+_span = README_SPAN.search(_readme)
+check("2 the README count is current", bool(_span) and _span.group(0) ==
+      "<!-- counts:start -->" + readme_counts() + "<!-- counts:end -->",
+      "run: python3 ui-kit/_fill_inventory.py")
 
 # 3 ------------------------------------------------------------- dead icons --
 dead = []
