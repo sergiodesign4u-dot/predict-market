@@ -21,7 +21,7 @@ nowhere else** - a second copy of a status is a copy that goes stale.
 | 05 | Voice | `voice/` | `voice/voice.html` |
 | 06 | Concept | `concept/` | `concept.html` (+ `directions.html`) |
 | 07 | UI + Visual | `ui-visual/` | 105 painted screens, every family and every state |
-| 08 | Tokens + Components | `components/` (the system) + `ui-kit/` (the vitrine) | `ui-kit/overview.html` (+ the four documents: `architecture.html`, `tokens-audit.html`, `inventory.html`, `coverage.html`) |
+| 08 | Tokens + Components | `components/` (the system) + `ui-kit/` (the vitrine) | `ui-kit/overview.html` (+ the five documents: `architecture.html`, `history.html`, `tokens-audit.html`, `inventory.html`, `coverage.html`) |
 | 09 | Design System | `components/patterns/` (the new shelf) + `ui-kit/` | - |
 | 10 | Responsive | | - |
 | 11 | Animation | | - |

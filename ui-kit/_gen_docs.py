@@ -58,6 +58,8 @@ from _theme_switch import BOOT as THEME_BOOT  # noqa: E402
 PAGES = [
     ("architecture", "Architecture",
      "How the system is put together, what each level may hold, and where a change goes."),
+    ("history", "What each pass settled",
+     "The long form of ten audit passes: what was measured, and which check could see it."),
     ("tokens-audit", "Tokens audit",
      "The reading the system was built from: every value the painted product had, and what it meant."),
     ("inventory", "Inventory",
