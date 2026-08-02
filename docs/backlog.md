@@ -9,7 +9,7 @@ holds the record of what was done. This holds what is not.
 Unlike `decisions.md`, this file is edited: a row is struck when the item closes, with the date and
 the entry in `decisions.md` that closed it.
 
-**Open: 22.**
+**Open: 23.**
 
 The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
 twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
@@ -99,10 +99,10 @@ would have sent a pattern, a candidate and a misplaced class to the same place.
 
 ---
 
-## Accessibility and keyboard, found by the states pass (3)
+## Accessibility and keyboard, found by the states pass (4)
 
-Three findings from Design System step 2. None of them is a state, which is why none of them
-was fixed there: two are markup and the third changes behaviour. They are here rather than in
+Four findings from Design System step 2. None of them is a state, which is why none of them was
+fixed there: three are markup and the fourth changes behaviour. They are here rather than in
 the section above because they are not questions about where a component ends. Each one was
 measured on the shipped screens, not inferred from a rule.
 
@@ -110,6 +110,7 @@ measured on the shipped screens, not inferred from a rule.
 |---|---|---|---|
 | 22 | The filter panel is unreachable from the keyboard | Design System step 2, 2026-08-02 | `components/filters.css` line 27 hides every option with `.filter-panel input[type=radio],.filter-panel input[type=checkbox]{display:none}`. `display:none` takes an element out of the tab order AND out of the accessibility tree, so the sort radiogroup and the category checkboxes on 104 screens can be operated by a mouse and by nothing else, and `label:has(input:focus-visible)` can never match because the input can never be focused. It is CSS-only to fix (a visually-hidden technique that keeps the box in the layout) but it CHANGES BEHAVIOUR: eight or so new tab stops appear per screen, which is a product decision and not a state |
 | 23 | A multi-outcome row is a `<div>` that answers a click | Design System step 2, 2026-08-02 | `.opt-row` in `ui-visual/event-detail-multi.html` carries a JS click handler that loads the outcome into the bet panel, and it is a `<div>` with no `tabindex`, no role and no key handler. A person navigating by keyboard can still reach the YES and NO buttons inside it, so the function is not lost, but the row as a target does not exist for them. It is recorded in `_levels.STATIC` under `options` as the reason that component gets no states. **The fix is markup, so it belongs to the grey tree first** (`wireframes/` decides structure, gate 18 compares the two), which is why a states pass could not close it |
+| 25 | **The eight error blocks are announced to nobody, and the fix is an attribute** | Design System step 2, 2026-08-02; owner set 2026-08-03 | **Owner: Stage 12 (Handoff), and that is a decision rather than a deferral.** CSS cannot reach an attribute, and thawing the grey tree for one would open the twin contract for everything, so this is handed to the developer with the numbers already taken. `.inline-error` stands on **8 screens, in BOTH trees, the same 8**: `deposit-minimum-not-met`, `deposit-error-card`, `deposit-error-kyc`, `event-detail-bet-error`, `event-detail-bet-insufficient`, `sign-in-error`, `sign-in-provider-conflict`, `win-error`. Every one is `<div class="inline-error">` with **no `id`**, so nothing can point at it. Two axes, and they are different work: **(a) FIELD-BOUND, 2 screens.** The message is about a field a person is typing in, so that field needs `aria-invalid="true"` and `aria-describedby` pointing at the block's new id: `deposit-minimum-not-met` -> `input.amount-input[aria-label="Amount to add"]`, `event-detail-bet-insufficient` -> `input.amount-input[aria-label="Bet amount"]`. **(b) STATUS, the other 6.** Nothing is wrong with a field; the block appears as the RESULT of an action (a declined card, a rejected KYC, a bet that did not register, a provider that did not authenticate, a share card that did not build), so the block itself takes `role="alert"`. Repo-wide today: `aria-invalid` **0 of 105**, `aria-describedby` **0 of 105**. `aria-expanded` at 0 is correct and needs nothing, because every disclosure in the product is a native `<details>` |
 | 24 | What a screen reader is told when something changes, re-measured | Design System step 2, 2026-08-02, replacing item 4 | Item 4 read "`aria-live` / `role=status` on 9 screens of 105; a toast appears and announces nothing". Measured this pass in BOTH trees: the 9 screens are identical in grey and in colour, and the toast on `toasts.html` already carries `role="status" aria-live="polite"` and `role="alert" aria-live="assertive"` on its two groups. So the premise as written is closed. What is actually missing is the FORM ERROR axis: `aria-invalid` on 0 of 105 screens and `aria-describedby` on 0 of 105, while `deposit-minimum-not-met`, `event-detail-bet-error` and `sign-in-error` all ship a visible error message that is tied to no field. `aria-expanded` at 0 is correct and not a gap: every disclosure here is a native `<details>` |
 
 ---
