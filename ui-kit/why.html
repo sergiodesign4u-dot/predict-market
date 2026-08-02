@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - Why the system is like this</title>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   A frame is a document of its own, so it does not inherit the attribute: this
+   block runs in the frames too and they are told by postMessage, the same
+   handshake _frames.js already uses, because from file:// every document has
+   its own opaque origin and reading into a frame is refused.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function set(on){if(on){r.setAttribute('data-theme','light')}else{r.removeAttribute('data-theme')}}
+function push(){var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){try{f[i].contentWindow.postMessage({pmTheme:lit()?'light':'dark'},'*')}catch(e){}}}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}
+push();}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();set(!on);
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+window.addEventListener('message',function(e){var d=e.data;
+if(!d||(d.pmTheme!=='light'&&d.pmTheme!=='dark'))return;
+set(d.pmTheme==='light');paint();});
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);
+/* a frame that arrives late is told as soon as it is ready */
+var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
+push();});})();</script>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="why">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<main class="tk-wrap tk-why">
+  <header class="tk-hero">
+    <h1>Why the system is like this</h1>
+    <p>The guide. Not a list of what exists, which is what
+    <a href="overview.html">the system</a> is for, but the four things a person needs before they
+    touch it: why the product looks the way it does, where its values came from, which door to walk
+    through, and what to do when nothing fits.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">5 attributes</span>
+      <span class="tk-badge">5 references</span>
+      <span class="tk-badge">4 doors</span>
+      <span class="tk-badge">read, not invented</span>
+    </div>
+    <div class="tk-jump"><a href="overview.html">The system</a><a href="patterns.html">Patterns</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="architecture.html#rules-of-use">What you may not do</a></div>
+  </header>
+
+  <section class="tk-sec" id="language">
+    <h2 data-n="01">Why the system looks like this</h2>
+    <p class="tk-note">Five attribute pairs, decided at Concept. Each is "this, not that", each
+    traces to a line of research rather than to a mood, and each turned into something you can point
+    at in the system. The left column is the pair as
+    <code>concept/docs/concept.md</code> states it; the middle is what it became here; the right is
+    where you can go and see it.</p>
+    <table class="tk-tbl ck-attrs"><thead><tr><th>the pair, from Concept</th><th>what it means in the system</th><th>where you see it</th></tr></thead><tbody><tr><td class="ck-attr-k"><b>A1</b><span>High-contrast and alive, not muddy and flat</span></td><td class="ck-attr-m">The canvas is graphite `#0f1013` and not white, and there is exactly ONE accent on it: matte brass `#c7a24e`. Contrast does the work colour usually does, so the page can be quiet and still feel live. Every surface is a two-stone emboss (a lit lip on top, a cast shadow under) rather than a flat fill, which is where the aliveness comes from now that the glow and the dot-grid of the earlier direction are gone.</td><td class="ck-attr-w"><div class="ck-screens"><a href="tokens.html#colour">the graphite ramp and the brass</a><a href="tokens.html#material">the two-stone plates and the bevels</a></div></td></tr><tr><td class="ck-attr-k"><b>A2</b><span>Credible and controlled, not hyped or degen</span></td><td class="ck-attr-m">Brass appears on identity, on the active state and on ONE call to action per zone, and nowhere else. That is not restraint for its own sake: an accent used as decoration stops meaning "press this", and a money product that shouts reads as a casino. The rule is executable, not advisory, and R1 in the contract is the counted version of it.</td><td class="ck-attr-w"><div class="ck-screens"><a href="architecture.html#rules-of-use">R1, one primary action per zone</a><a href="button.html">the one brass button</a></div></td></tr><tr><td class="ck-attr-k"><b>A3</b><span>A spectator's clarity, not a trader's terminal</span></td><td class="ck-attr-m">Numbers are always mono, because a proportional figure looks like prose and a mono one looks like a reading. The market state is a pool and a depth curve, never an order book. The odds bar carries the outcome colour so the YES / NO buttons can stay quiet tinted shapes instead of two loud fills.</td><td class="ck-attr-w"><div class="ck-screens"><a href="oddsbar.html">the bar that carries the colour</a><a href="yesno.html">the quiet YES / NO pair</a><a href="market.html">a pool and a curve, not a book</a></div></td></tr><tr><td class="ck-attr-k"><b>A4</b><span>Proof of safety is visible, not buried</span></td><td class="ck-attr-m">The funds line sits NEXT TO the action rather than in a legal wall at the foot of the page, and it is drawn on neutral stone with no accent and no colour: a reassurance that is styled to persuade reads as marketing, and the whole point is that it reads as fact.</td><td class="ck-attr-w"><div class="ck-screens"><a href="trustbar.html">the trust strip and its cards</a><a href="notice.html">the plain line beside the action</a></div></td></tr><tr><td class="ck-attr-k"><b>A5</b><span>The event is a story, not an isolated question</span></td><td class="ck-attr-m">A card leads with a real event photograph, masked so it bleeds into the graphite, and carries a one-line "why" under the question. A grey placeholder is not allowed to ship: the whole attribute is that the market is attached to something happening, and a grey box is the visual form of "this question came from nowhere".</td><td class="ck-attr-w"><div class="ck-screens"><a href="card.html">the event card</a><a href="hero.html">the featured hero</a></div></td></tr></tbody></table>
+
+    <h3 class="tk-subh">The brand plate</h3>
+    <p class="tk-note">Every value below is the shipped one, from <code>DESIGN.md</code>, resolved
+    live by the page you are reading rather than printed as a swatch: if a token moved, this moved
+    with it.</p>
+    <div class="ck-plate"><div class="ck-plate-sw"><i style="background:var(--bg-page)"></i><b>page</b><code>var(--bg-page)</code><span>graphite, and the reason nothing else has to shout</span></div><div class="ck-plate-sw"><i style="background:var(--bg-plate)"></i><b>plate</b><code>var(--bg-plate)</code><span>the inset stone a screen stands on</span></div><div class="ck-plate-sw"><i style="background:var(--bg-card)"></i><b>card</b><code>var(--bg-card)</code><span>the floating stone a card is cut from</span></div><div class="ck-plate-sw"><i style="background:var(--color-action)"></i><b>brass</b><code>var(--color-action)</code><span>the one accent: identity, active state, one action per zone</span></div><div class="ck-plate-sw"><i style="background:var(--outcome-yes)"></i><b>YES</b><code>var(--outcome-yes)</code><span>reserved. Never an accent, never a brand colour</span></div><div class="ck-plate-sw"><i style="background:var(--outcome-no)"></i><b>NO</b><code>var(--outcome-no)</code><span>the other half of the same reservation</span></div><div class="ck-plate-sw"><i style="background:var(--text-primary)"></i><b>ink</b><code>var(--text-primary)</code><span>bone, warm, on a faintly cool stone</span></div></div><p class="tk-note">Three families and nothing else: Space Grotesk for display, DM Sans for body, IBM Plex Mono for every number. The mono is not decoration. A figure set in a proportional face reads as prose, and a person checking what a market says needs it to read as a reading.</p>
+
+    <h3 class="tk-subh">Where the language came from</h3>
+    <p class="tk-note">One base reference, two borrowed techniques, one on watch and one whole
+    family rejected on sight. Read from the Source index of
+    <code>concept/docs/references.md</code>, which after Concept has no other reader in this
+    project: if a row is missing here it is missing everywhere, and gate 28 fails the build when
+    that happens.</p>
+    <table class="tk-tbl ck-refs"><thead><tr><th>source</th><th>what was taken</th><th>the anxiety it answers</th></tr></thead><tbody><tr><td class="tk-role">Revolut</td><td>BASE (method: photo-led, achromatic, calm type)</td><td class="tk-from">FJ2 story-led; EJ2 credible org; "looks like crypto/scam" fear</td></tr><tr><td class="tk-role">N26</td><td>Borrow 1 (ledger disclosure card)</td><td class="tk-from">FJ4 / EJ2 funds safety</td></tr><tr><td class="tk-role">Monzo</td><td>Borrow 2 (approachable, one accent, monoline icons)</td><td class="tk-from">spectator-not-trader; "looks like crypto" fear</td></tr><tr><td class="tk-role">Public</td><td>On watch (editorial data card)</td><td class="tk-from">FJ2 "why this price"</td></tr><tr class="ck-reject"><td class="tk-role">Monarch + cream cluster</td><td>REJECTED (category reflex / AI slop)</td><td class="tk-from">-</td></tr></tbody></table>
+    <p class="tk-note ck-divergence"><b>One divergence, named rather than buried.</b> The taste
+    locked electric violet as the brand accent and acid lime as the highlight, from the MELEE
+    reference. The product ships matte brass on graphite. That was a designer decision taken on the
+    stand on 2026-07-16, not a drift: brass answers the same complaint the violet was chosen for
+    (an accent with no contrast against its ground) while reading as weighty rather than neon, which
+    serves A2 and the documented "this looks like crypto, so it looks like a scam" fear better than
+    lime did. Anyone re-reading the taste table in <code>concept/docs/concept.md</code> should treat
+    brass as final.</p>
+  </section>
+
+  <section class="tk-sec" id="provenance">
+    <h2 data-n="02">Where the values came from</h2>
+    <p class="tk-note">The short answer is that none of them was chosen at this stage. The system
+    was read out of a product that already worked, and every step of that reading is still on
+    disk.</p>
+    <ol class="ck-chain"><li><b>A pixel of the shipped plate</b><p>The system was not designed on a blank page. It was READ OUT of screens that already worked: every colour in it was sampled from the painted product rather than picked, which is why the graphite steps are 11.7 L* apart instead of a round number.</p></li><li><a href="tokens-audit.html">The audit that wrote down what each value was doing</a><p>Twenty four tables of hex, and beside every value the declarations it was read from. This is the step where a colour stopped being a number and became a ROLE: not "#1c1f24" but "the surface a chip sits on".</p></li><li><a href="why.html#language">The direction locked at Concept</a><p>Vault: graphite, one matte brass, reserved green and red. The reference table above is where that came from, and it is the only part of the chain that is a judgement rather than a measurement.</p></li><li><a href="tokens.html#contrast">The theme, which is the proof the roles are real</a><p>A light theme was built over the same roles, and NOT ONE PRIMITIVE was redefined. That is the test a rebrand cannot run: the ground inverts, the ink inverts, and the action still has to read as the action, which is only writable if the reason a colour is in a place is stored somewhere. It found twelve holes, and every one of them was a component reading a raw value.</p></li><li><a href="tokens.html">`components/tokens.css`, in two levels</a><p>A primitive is a value; a role is why that value is in that place. A component may read a role and never a colour primitive, and gate 13 fails the build when one does.</p></li></ol>
+    <p class="tk-note"><b>And the contrast figures are measured, not computed.</b> That belongs
+    here rather than in a footnote, because it is part of where a value comes from.
+    <code>getComputedStyle()</code> returns what the author wrote, and modern css lets an author
+    write a colour that is not a literal: <code>color-mix(in oklab, ...)</code> comes back verbatim,
+    and a regex reading it as sRGB bytes reported a pale brass banner as near black. Every ratio in
+    this system is taken by handing the computed string to a 2D canvas, filling one pixel and
+    reading it back, with the ancestor stack composited for alpha. A figure that did not come from
+    that path does not go in the token file.</p>
+  </section>
+
+  <section class="tk-sec" id="use">
+    <h2 data-n="03">How to use it</h2>
+    <p class="tk-note">Four questions, four doors. They are four and not three on purpose: the last
+    one is the question nobody thinks to ask.</p>
+    <div class="ck-doors"><a class="ck-door" href="overview.html"><b>Which component do I take?</b><span>Every component file, its page and the level it sits at, in the order the cascade loads them. Start here when you know what the thing is.</span><code>overview.html</code></a><a class="ck-door" href="patterns.html"><b>Is the arrangement already built?</b><span>Six compositions that repeated on three or more screens, each framed live. Start here when you know what the SCREEN is, before you know what is in it.</span><code>patterns.html</code></a><a class="ck-door" href="architecture.html"><b>What are the rules?</b><span>The contract: two token levels, what a component may read, where a change goes, and the reasoning behind each. Read once, then read the row you need.</span><code>architecture.html</code></a><a class="ck-door" href="architecture.html#rules-of-use"><b>What am I not allowed to do?</b><span>Nine rules of use: how many of a thing a screen may carry and where it may not stand. This is a door of its own and not a paragraph of the one above it, because nobody looks for a prohibition until after they have broken it.</span><code>architecture.html#rules-of-use</code></a></div>
+    <h3 class="tk-subh">And when you are not sure which</h3>
+    <ol class="ck-order">
+      <li><b>Look for a pattern first.</b> If the screen you are building is doing the job an
+      arrangement already exists for, take the whole arrangement, including the parts you think you
+      do not need.</li>
+      <li><b>No pattern: assemble from components.</b> Two screens sharing a shape is a coincidence
+      until a third one turns up. Building it out of components is the correct answer, not a
+      fallback.</li>
+      <li><b>No component either: that is an order for the SYSTEM, not an exception for the
+      screen.</b> A screen that styles itself is the one failure this whole structure exists to
+      prevent, and it is the failure that looks most like getting the work done. A new component is
+      a css file, an <code>@import</code> at the position the cascade computes, a stand page and a
+      row in the inventory. It is five minutes of work and it is never the wrong call.</li>
+    </ol>
+  </section>
+
+  <section class="tk-sec" id="grow">
+    <h2 data-n="04">How to grow it</h2>
+    <p class="tk-note">One sentence, and the full version is written at the next step: <b>a new
+    thing is built in the system first and used on a screen second, never the other way round.</b>
+    The order is the whole rule, because a thing built on a screen and lifted afterwards arrives
+    carrying that screen's assumptions, and nobody ever finds them again. The mechanics are in
+    <a href="architecture.html#how-to-add-a-component">how to add a component</a> and
+    <a href="architecture.html#how-to-add-a-pattern-which-is-four-things-and-not-five">how to add a
+    pattern</a>.</p>
+  </section>
+
+  <section class="tk-sec" id="backlog">
+    <h2 data-n="05">The system backlog</h2>
+    <p class="tk-note ck-stub"><b>Filled at step 7.</b> This section is here empty on purpose. The
+    open questions of the system live in
+    <code>docs/backlog.md</code>, which is a file nobody opens, and a backlog
+    with no visible address is a list of things that will be rediscovered rather than done. Twenty
+    four items are open today, eight of them about where one component ends and the next begins.</p>
+  </section>
+
+  <section class="tk-sec" id="sources">
+    <h2 data-n="06">What this page was built from</h2>
+    <p class="tk-note">Four documents, and the citation is the point rather than the courtesy. The
+    first of them has had no reader since Concept: nothing in the stages between then and now opens
+    it, so if its contents had not been brought here they would not have been deferred, they would
+    have been lost. Gate 28 checks that every reference it names still appears above.</p>
+    <ul class="ck-sources"><li><code>concept/docs/references.md</code><span>The visual language: which product is the base, which technique was borrowed from where, and what was rejected on sight. This page is its last reader.</span></li><li><code>concept/docs/concept.md</code><span>The designer taste, the five attribute pairs, and the honest divergence where the shipped accent left the one the taste locked.</span></li><li><code>DESIGN.md</code><span>The shipped spec: the graphite ramp, the brass, the type, the material.</span></li><li><code>ui-kit/docs/architecture.md</code><span>The contract: what the system is, and where a change goes.</span></li></ul>
+  </section>
+</main>
+
+<script src="_nav.js"></script>
+</body>
+</html>

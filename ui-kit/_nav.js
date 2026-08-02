@@ -114,7 +114,20 @@ function pmRevealPanelRow() {
       h.push('<a href="' + d.file + '" class="sidebar-page-link' + (d.name === current ? ' active' : '') + '">' + d.label + '</a>');
     });
     h.push('</nav>');
-    h.push('<div class="sidebar-note">The kit itself: <a href="kit.html">kit.html</a>, <a href="shell.html">shell.html</a>, <a href="selftest.html">self test</a></div>');
+    // why.html is here and NOT a row in the tree above, and the difference is
+    // what the tree is: a registry of things the system HAS. The guide is not a
+    // component, a pattern or a document of the reasoning; it is the way in for
+    // someone who has none of that vocabulary yet, so it sits where a person
+    // looks when the tree has not helped. Gate 22 accepts a page off the tree
+    // only when something still links it, and this is that link.
+    // ON ONE LINE, and the comment may not name the class either. Gate 22 finds
+    // this note by searching for its class name and reading to the end of the
+    // LINE, so two things break it and both did: splitting the push across two
+    // JS lines hides every link after the first, and writing the class name in a
+    // comment ABOVE the push makes the search land on the comment, which has no
+    // links at all. The second one turned shell.html and why.html unreachable in
+    // the same run, from a comment that was explaining the first one.
+    h.push('<div class="sidebar-note">New here? <a href="why.html">Why the system is like this</a><br>The kit itself: <a href="kit.html">kit.html</a>, <a href="shell.html">shell.html</a>, <a href="selftest.html">self test</a></div>');
     host.innerHTML = h.join('');
     // the tree exists only now, so the reveal happens here and not on load
     pmRevealPanelRow();
