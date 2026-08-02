@@ -1338,6 +1338,80 @@ ghost = ["%s (%s)" % (n, f) for n, f in NAV_PAT.findall(NAVJS)
 check("27 no page in the group without a file", not ghost,
       "%d: %s" % (len(ghost), ", ".join(ghost[:3])))
 
+# 28 ---------------------------------------------- the guide names its sources --
+# WHY THIS GATE EXISTS, and it is a different argument from every other gate here.
+# The others catch a defect a reader would eventually see. This one catches a
+# LOSS NOBODY CAN SEE, and that is the whole point.
+#
+# concept/docs/references.md was written at Concept and has had no reader since.
+# Nothing between that stage and this one opens it, and nothing after this one
+# has any reason to. So the four references it names arrive on why.html or they
+# leave the project: not deferred, not degraded, gone, and gone silently, because
+# the page still renders and still reads well with a row missing. There is no
+# reader left to notice, by construction.
+#
+# So the page is not trusted to be a copy. The two documents are parsed HERE,
+# independently of the generator that built the page, and every row either
+# document declares has to appear on it. Reading them through _gen_why_page would
+# check the generator against itself.
+# The page escapes what it prints, so the document's text has to be escaped the
+# same way before it is looked for. Comparing raw markdown against escaped html
+# is how a check reports a missing row that is on the page in front of it.
+from html import escape as _esc                                       # noqa: E402
+
+
+def html_escape(s):
+    """quote=False, matching the page. The default turns an apostrophe into
+       &#x27;, and A3 is "A spectator's clarity": the check reported a missing
+       attribute that was on the page in front of it."""
+    return _esc(s, quote=False)
+_why = KIT / "why.html"
+_refs_md = ROOT / "concept" / "docs" / "references.md"
+_concept_md = ROOT / "concept" / "docs" / "concept.md"
+lost = []
+if not _why.exists():
+    lost.append("why.html missing")
+else:
+    _wt = _why.read_text(encoding="utf-8")
+    _rt = _refs_md.read_text(encoding="utf-8")
+    for line in _rt[_rt.index("## Source index"):].split("\n"):
+        if not line.startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) != 4 or cells[0] == "Source" or set(cells[0]) <= set("-: "):
+            continue
+        if html_escape(cells[0]) not in _wt:
+            lost.append("reference %r" % cells[0])
+    for m in re.finditer(r"^### (A\d) - (.+)$", _concept_md.read_text(encoding="utf-8"), re.M):
+        if m.group(1) not in _wt or html_escape(m.group(2).strip()) not in _wt:
+            lost.append("attribute %s" % m.group(1))
+    for path, _ in [(p, n) for p, n in __import__("_gen_why_page").SOURCES]:
+        if not (ROOT / path).exists():
+            lost.append("%s does not exist" % path)
+        elif path not in _wt:
+            lost.append("%s is not cited" % path)
+check("28 the guide names every source it was built from", not lost,
+      "%d: %s" % (len(lost), ", ".join(lost[:4])))
+
+# The mirror, and the same shape the other declarations have: a page that lists a
+# reference the document no longer holds is the copy quietly becoming the
+# original. Read the names off the page and ask the document about each.
+import _gen_why_page                                                  # noqa: E402
+_declared = {r["name"] for r in _gen_why_page.references()}
+_on_page = set(re.findall(r'<td class="tk-role">([^<]+)</td>',
+                          _why.read_text(encoding="utf-8"))) if _why.exists() else set()
+invented = sorted(n for n in _on_page if html_escape(n) not in
+                  {html_escape(d) for d in _declared})
+check("28 the guide invents no source", not invented,
+      "%d: %s" % (len(invented), ", ".join(invented[:3])))
+
+# And the page is what its sources render to today, not what they rendered to
+# when someone last ran the generator. Same argument as gate 21: a file can be
+# newer than its sources and still be wrong.
+check("28 the guide is current", _why.exists() and
+      _why.read_text(encoding="utf-8") == _gen_why_page.render(),
+      "run: python3 ui-kit/_gen_why_page.py")
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)
