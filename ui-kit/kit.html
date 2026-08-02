@@ -66,8 +66,13 @@
   .kit-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;max-width:720px}
   .kit-field-wrap{display:flex;flex-direction:column;gap:7px}
   .kit-field-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted)}
+  /* outline:none was here until 2026-08-02 and took the focus ring off this
+     field in both themes, leaving a 16 per cent brass wash in its place. The
+     freeze on this file forbids GROWTH, a component is never added to it; it
+     does not preserve a control that cannot be seen to be focused. Removing the
+     one declaration lets the default in components/base.css reach it again. */
   .kit-field{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid var(--border-hairline);border-radius:10px;background:#0d0f12;color:var(--text-primary);
-    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;outline:none;transition:border-color .16s ease,box-shadow .16s ease,opacity .16s ease}
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;transition:border-color .16s ease,box-shadow .16s ease,opacity .16s ease}
   .kit-field::placeholder{color:var(--text-muted)}
   .kit-field:hover:not(:disabled),.kit-field.is-hover{border-color:rgba(199,162,78,.55)}
   .kit-field:focus,.kit-field.is-focus{border-color:var(--color-action);box-shadow:0 0 0 3px rgba(199,162,78,.16)}

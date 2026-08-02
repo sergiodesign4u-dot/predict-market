@@ -67,18 +67,15 @@ main.feed{background:transparent}
 .kit-dlgs .sheet-head{padding:12px 16px}
 .kit-dlgs .sheet-body{padding:16px;gap:14px}
 
-/* The amount field at default / hover / focus / disabled. The .is-hover and
-   .is-focus classes mirror the pseudo-classes so all four render at once; they
-   are demo classes and carry the same declarations as the real states. */
-.kit-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;max-width:720px}
-.kit-field-wrap{display:flex;flex-direction:column;gap:7px}
-.kit-field-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted)}
-.kit-field{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid var(--border-hairline);border-radius:10px;background:var(--bg-well);color:var(--text-primary);
-  font-family:var(--font-display);font-weight:var(--weight-bold);font-size:18px;outline:none;transition:border-color .16s ease,box-shadow .16s ease,opacity .16s ease}
-.kit-field::placeholder{color:var(--text-muted)}
-.kit-field:hover:not(:disabled),.kit-field.is-hover{border-color:var(--line-brass-strong)}
-.kit-field:focus,.kit-field.is-focus{border-color:var(--color-action);box-shadow:0 0 0 3px var(--tint-brass-16)}
-.kit-field:disabled,.kit-field.is-disabled{opacity:.45;cursor:not-allowed;background:var(--bg-surface);border-color:var(--border-hairline);box-shadow:none}
+/* The .kit-field family was here and was DELETED on 2026-08-02. It was eight
+   rules for stand markup that no specimen carries: this sheet is linked by the
+   specimen pages, .kit-field lives only in the frozen kit.html, and that file
+   loads its own inline copy. So the block styled nothing, and specimens.map.json
+   already says it never will (skip_blocks: "it demonstrates no product class, so
+   it cannot be the input specimen").
+   Dead code is cheap to leave. Dead code containing outline:none is not: the
+   next reader looking for what kills a focus ring finds a live-looking rule in
+   the vitrine's own stylesheet and has to prove it reaches nothing. */
 
 /* The separator demo: an engraved groove next to the flat line it replaces. */
 .kit-seps{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}

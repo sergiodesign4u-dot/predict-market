@@ -1,7 +1,7 @@
 /* components/course-chrome.css
    the course roadmap sidebar every page of this repo carries. Not product.
 
-   Reads: --bevel-hair, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-text, --scrim, --swatch-dark, --swatch-light
+   Reads: --bevel-hair, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-text, --focus-ring, --scrim, --swatch-dark, --swatch-light
    Stand:  ui-kit/course-chrome.html
    Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -120,6 +120,18 @@
 .theme-switch:focus-visible{outline:var(--ring) solid var(--chrome-accent);outline-offset:calc(var(--ring) * -1)}
 /* the same control laid out in a row rather than as the last item of a panel */
 .theme-switch-inline{width:auto;flex:0 0 auto;border-bottom:0;padding-left:0;padding-right:var(--space-16)}
+/* AND THEREFORE IT ANSWERS TO A DIFFERENT GROUND, which is the whole rule and
+   the only one worth remembering here: A RING ANSWERS TO WHAT IT STANDS ON, NOT
+   TO THE COMPONENT IT BELONGS TO.
+   The panel above takes --chrome-accent because the panel does not flip with the
+   theme. This variant is the same control lifted OUT of the panel and set on a
+   vitrine page, which does flip, so the fixed brass that is right in the panel
+   lands on chalk at 2.03:1 against a 3:1 floor. It takes --focus-ring for the
+   same reason its sibling does not: that role flips with the ground under it.
+   Measured after: 8.98:1 in the Vault, 7.46:1 in daylight, where it was 8.98 and
+   2.03. Only outline-color moves; the inset offset above still applies, because
+   the switch still sits flush against whatever holds it. */
+.theme-switch-inline:focus-visible{outline-color:var(--focus-ring)}
 
 @media(min-width:860px){
   .rm-toggle,.rm-overlay{display:none!important}

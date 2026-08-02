@@ -636,10 +636,16 @@
   --focus-ring:var(--brass-400);        /* same value as --text-brass for now: the ring is not a word,
                                            and the day a states pass gives focus its own colour the
                                            links must not follow it .           From: :focus-visible, declared once in base.css.
-                                           MEASURED in the browser on 21 kinds of control, not computed
-                                           from the hex: 6.98:1 on a control, 7.80:1 on a panel, 8.71:1 on
-                                           the canvas. A ring answers to 3:1, so the worst ground clears
-                                           AA more than twice over */
+                                           MEASURED in the browser, not computed from the hex, and
+                                           RE-measured on 2026-08-02 after the first pass got it wrong:
+                                           every focusable control on 153 pages, 179 kinds, the ring
+                                           composited over the ground it stands on. 6.67:1 at worst,
+                                           9.06:1 at best. A ring answers to 3:1.
+                                           The first numbers here (6.98, 7.80) came from a sweep that
+                                           read the ground with a regex, and a regex reads the components
+                                           of color-mix(in oklab, ...) as sRGB bytes, so a pale banner
+                                           measured as near black. The browser parses the colour now: a
+                                           canvas resolves any css colour string to bytes */
   --line-brass-soft:var(--brass-a45);   /* from: the quieter hover border */
   --tint-hover:var(--white-a06);        /* from: the quiet hover wash on a chip (cat-nav condensed,
                                            feed subfilter). It was reading --bevel-faint, which is
@@ -802,10 +808,11 @@
   --text-icon-strong:var(--ink-700);    /* 10.3:1 */
   --text-chip-hover:var(--ink-900);     /* 13.9:1 */
   --text-brass:var(--brass-700);        /* 5.3:1 over the deepest brass tint, 6.5:1 on bare stone */
-  --focus-ring:var(--brass-700);        /* 6.96:1 to 7.40:1 on the product's own grounds, measured on the
-                                           same 21 controls. The 5.3:1 written here before was computed
-                                           against one reference ground rather than the ones the ring
-                                           actually stands on.
+  --focus-ring:var(--brass-700);        /* 5.71:1 to 7.46:1 across every ground it reaches, on the same
+                                           153 pages. The 5.3:1 written here before this stage was
+                                           computed against one reference ground rather than the ones the
+                                           ring actually stands on, and the 6.96 to 7.40 that briefly
+                                           replaced it came from the regex sweep described above.
                                            ONE GROUND USED TO FAIL AND IT WAS NOT THE PRODUCT'S: the
                                            course roadmap sidebar stays graphite in daylight on purpose, so
                                            a ring that followed the theme landed on it at 2.39:1 against a
