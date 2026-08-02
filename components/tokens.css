@@ -806,13 +806,13 @@
                                            same 21 controls. The 5.3:1 written here before was computed
                                            against one reference ground rather than the ones the ring
                                            actually stands on.
-                                           ONE GROUND FAILS, AND IT IS NOT THE PRODUCT'S: the course
-                                           roadmap sidebar stays graphite in daylight on purpose, and a
-                                           ring that followed the theme lands on it at 2.39:1. The theme
-                                           switch already dodges this with its own --chrome-accent ring in
-                                           course-chrome.css; the other rows in that panel do not. Recorded
-                                           here rather than fixed here: the sidebar is course chrome, not
-                                           product, and the fix belongs in its file */
+                                           ONE GROUND USED TO FAIL AND IT WAS NOT THE PRODUCT'S: the
+                                           course roadmap sidebar stays graphite in daylight on purpose, so
+                                           a ring that followed the theme landed on it at 2.39:1 against a
+                                           3:1 floor. Fixed in course-chrome.css on 2026-08-02, where the
+                                           theme switch had already solved it: the panel now takes
+                                           --chrome-accent, which section 3 does not override, and measures
+                                           8.71:1 in BOTH themes. This role no longer reaches that panel */
   --text-brass-lit:var(--brass-700);    /* 5.3:1 */
   --text-brass-chip:var(--brass-700);   /* 5.3:1 */
   --text-brass-vol:var(--brass-700);    /* 5.3:1 */

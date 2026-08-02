@@ -94,8 +94,29 @@
 .theme-switch[aria-pressed="false"] .ts-sw.ts-dark,
 .theme-switch[aria-pressed="true"] .ts-sw.ts-light{border-color:var(--chrome-accent);box-shadow:0 0 0 1px var(--chrome-accent)}
 .theme-switch .ts-label{flex:1 1 auto;min-width:0}
-/* one of the three exceptions to the default in base.css: an inset ring, because the switch
-   sits flush against the panel edge and an outset one would be clipped */
+/* THE PANEL KEEPS ITS OWN RING, and this is not a preference. --focus-ring is a
+   PRODUCT role, so it flips with the theme: brass-400 on graphite, brass-700 in
+   daylight. This panel does not flip. It is the course frame, section 2 of
+   tokens.css deliberately leaves the chrome out of the light theme, and the
+   sidebar stays graphite whichever theme the page is in. So in daylight the
+   product's ring landed on a ground it was never measured against and came out at
+   2.39:1 against a 3:1 floor, measured on .sidebar-back. Every row of a panel that
+   stands on every page, invisible to anyone arriving by tab, in one theme only,
+   which is the theme nobody checks.
+   --chrome-accent is the fix because it is the role that already answers this
+   question: it is not overridden in section 3, so it is the same brass on the same
+   graphite in both themes. The theme switch has used it since step 9; the rows
+   around it fell through to the default in base.css because nobody asked what the
+   default was standing on.
+   :not(.theme-switch) so the switch keeps its INSET ring, which is one of the
+   three exceptions to base.css: it sits flush against the panel edge and an
+   outset ring would be clipped.
+   MEASURED after, by real Tab rather than by a scripted focus, on a painted
+   screen and on a vitrine page: brass-400 on --chrome-bg is 8.71:1 in the Vault
+   AND 8.71:1 in daylight, because neither the ring nor the ground moves now.
+   Before: 8.71:1 and 2.39:1, and only one of those two numbers had ever been
+   taken. */
+.sidebar :is(a,button,summary,[tabindex]):not(.theme-switch):focus-visible{outline:var(--ring) solid var(--chrome-accent);outline-offset:var(--ring)}
 .theme-switch:focus-visible{outline:var(--ring) solid var(--chrome-accent);outline-offset:calc(var(--ring) * -1)}
 /* the same control laid out in a row rather than as the last item of a panel */
 .theme-switch-inline{width:auto;flex:0 0 auto;border-bottom:0;padding-left:0;padding-right:var(--space-16)}
