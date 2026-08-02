@@ -609,6 +609,48 @@ The consequence for a states pass: `--focus-ring` is one role measured across 21
 and moving it moves all of them. A control that needs a different ring gets a NAMED role for its
 ground, or a geometry change (offset, a second band), never a one-off hex.
 
+### A corpus is what a thing IS, never the folder it happens to sit in
+
+A check that names its corpus by folder is correct until the day a second folder of the same kind
+of thing appears, and then it stops looking without saying so. **It keeps reporting ok**, which is
+worse than failing: a red gate is a task and a green one that cannot see is a belief.
+
+Three times, and the third is the one that made it a rule.
+
+- **Gate 1** decided what counted as "the product" with `zone == "ui-visual"`, so a docstring edited
+  inside a wireframe generator was invisible to the gate that exists to notice product edits.
+- **Step 3, in css.** `components/patterns/` arrived and every gate about how a stylesheet is
+  WRITTEN was spelled `COMP.glob("*.css")`. `SHEETS` is now named once and read by gates 6, 7, 11,
+  12, 13, 14 and 16, while gates 2 and 25 deliberately keep the narrow list, because those two ask
+  what a COMPONENT is and a pattern is not one.
+- **Step 4, in html.** `ui-kit/patterns/` arrived and gates 3, 4 and 7 were spelled
+  `KIT.glob("*.html") + SPECS.glob("*.html")`. Proved by planting a dead icon reference, a `src` at
+  a file that does not exist and an em dash in one scene page: all three gates reported clean.
+  `GENERATED_PAGES` is now named once and read by all three.
+
+So the question a corpus answers is never "which folder" but "which KIND of thing", and the answer
+is written once and imported. When a gate deliberately looks at less than the kind, that narrowing
+is the interesting part and it carries its reason on the line.
+
+### Two classes of defect exist only in the browser, and no source scan finds either
+
+Both have already happened here, and neither is visible in any file.
+
+- **A value a css function hides.** `getComputedStyle()` hands back what the author wrote, and
+  `color-mix(in oklab, ...)` comes back verbatim. Pulled apart with a regex it yields oklab
+  components that contrast maths reads as sRGB bytes, so a pale brass-tinted banner measured as
+  near black. That invented a defect (a focus ring at 2.72:1 that was really 6.95:1) and it can
+  hide one the same way.
+- **A value that is nowhere in the repository at all.** An `<a>` with no rule behind it still has a
+  colour, and it is the User Agent's: browser blue at 1.76:1 on graphite, on seven links of one
+  page. The markup is correct, the stylesheet is correct, and the defect is in neither. **A missing
+  value is a value.**
+
+One conclusion covers both: **colour and contrast are ASKED OF THE BROWSER, never read from a
+file.** The parser is the browser's own, `ctx.fillStyle = css` on a 2D canvas, then read the pixel
+back and composite the ancestor stack for alpha. A figure that did not come from that path does not
+go in this repo.
+
 ### Contrast is measured in a browser, and never computed from a hex
 
 `getComputedStyle()` returns what the author wrote, and modern CSS lets an author write a colour that
