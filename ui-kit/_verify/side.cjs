@@ -3,8 +3,10 @@
    Writes <outName>-old.jpg and <outName>-new.jpg into the scratchpad. */
 const fs = require('fs');
 const { execSync } = require('child_process');
-const { chromium } = require(process.env.PLAYWRIGHT_MODULE
-  || '/Users/sergiyshevchenko/.npm/_npx/9833c18b2d85bc59/node_modules/playwright');
+// Two versions of one element, so the two shots MUST be taken in the same
+// regime. browser.cjs is the only thing here that opens a browser, for exactly
+// that reason.
+const B = require('./browser.cjs');
 
 const ROOT = require('path').resolve(__dirname, '..', '..');
 const SCRATCH = process.env.OUT_DIR || require('os').tmpdir();
@@ -17,9 +19,8 @@ const TMP = `_old-${pageName}`;
   // relative path still resolves
   fs.writeFileSync(`${ROOT}/ui-visual/${TMP}`,
     execSync(`git show HEAD:ui-visual/${pageName}`, { cwd: ROOT, maxBuffer: 1 << 28 }));
-  const browser = await chromium.launch({ channel: 'chrome' });
-  const ctx = await browser.newContext({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
-  const page = await ctx.newPage();
+  const s = await B.open({ width });
+  const page = s.page;
   for (const [file, tag] of [[TMP, 'old'], [pageName, 'new']]) {
     await page.goto(`http://localhost:8901/ui-visual/${file}`, { waitUntil: 'load' });
     await page.evaluate(() => document.fonts.ready);
@@ -29,6 +30,7 @@ const TMP = `_old-${pageName}`;
     await el.screenshot({ path: `${SCRATCH}/${outName}-${tag}.jpg`, type: 'jpeg', quality: 92 });
     console.log(`${SCRATCH}/${outName}-${tag}.jpg`);
   }
-  await browser.close();
+  await s.close();
+  await B.shutdown();
   fs.unlinkSync(`${ROOT}/ui-visual/${TMP}`);
 })();

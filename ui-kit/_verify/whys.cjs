@@ -4,8 +4,11 @@
 */
 const fs = require('fs');
 const { execSync } = require('child_process');
-const { chromium } = require(process.env.PLAYWRIGHT_MODULE
-  || '/Users/sergiyshevchenko/.npm/_npx/9833c18b2d85bc59/node_modules/playwright');
+// One reader of the browser, and this script needs its cache rule as much as
+// the pixel ones: the question it answers is "which rule wins", and a stale
+// stylesheet answers it with yesterday's cascade. That is not hypothetical, it
+// is how a .tc-page move first measured as a defect.
+const B = require('./browser.cjs');
 
 const ROOT = require('path').resolve(__dirname, '..', '..');
 const CASES = [
@@ -52,13 +55,13 @@ const probe = async (page, sel, prop) => page.evaluate(([sel, prop]) => {
 }, [sel, prop]);
 
 (async () => {
-  const browser = await chromium.launch({ channel: 'chrome' });
+
   for (const [name, sel, prop, width] of CASES) {
     const tmp = `_old-${name}`;
     fs.writeFileSync(`${ROOT}/ui-visual/${tmp}`,
       execSync(`git show HEAD:ui-visual/${name}`, { cwd: ROOT, maxBuffer: 1 << 28 }));
-    const ctx = await browser.newContext({ viewport: { width, height: 900 } });
-    const page = await ctx.newPage();
+    const s = await B.open({ width });
+    const page = s.page;
     console.log(`\n===== ${name}  ${sel}  ${prop}  @${width}`);
     for (const [file, tag] of [[tmp, 'OLD'], [name, 'NEW']]) {
       await page.goto(`http://localhost:8901/ui-visual/${file}`, { waitUntil: 'load' });
@@ -66,8 +69,8 @@ const probe = async (page, sel, prop) => page.evaluate(([sel, prop]) => {
       console.log(` ${tag} computed=${r.computed || r.error}`);
       (r.hits || []).forEach((h) => console.log(`      ${h}`));
     }
-    await ctx.close();
+    await s.close();
     fs.unlinkSync(`${ROOT}/ui-visual/${tmp}`);
   }
-  await browser.close();
+  await B.shutdown();
 })();

@@ -11,8 +11,13 @@
 const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
-const { chromium } = require(process.env.PLAYWRIGHT_MODULE
-  || '/Users/sergiyshevchenko/.npm/_npx/9833c18b2d85bc59/node_modules/playwright');
+// The browser is opened by browser.cjs and never here. Every session it hands
+// back is a FRESH CONTEXT WITH THE CACHE OFF, which is the rule this script
+// broke: it reused one context per viewport, so a -before run against a warm
+// cache and an -after run against a cold one measured nine screens 7,500 to
+// 11,200 pixels apart, and every one of them collapsed to 0 when both batches
+// were shot in the same regime.
+const B = require('./browser.cjs');
 
 const ROOT = require('path').resolve(__dirname, '..', '..');
 // Which tree to walk. It used to be ui-visual only, and that is how step 7b
@@ -101,10 +106,9 @@ async function snapshot(page) {
   }
   fs.mkdirSync(outDir, { recursive: true });
 
-  const browser = await chromium.launch({ channel: 'chrome' });
   for (const [vp, w, h] of VIEWPORTS) {
-    const ctx = await browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: 1 });
-    const page = await ctx.newPage();
+    const s = await B.open({ width: w, height: h });
+    const page = s.page;
     for (const name of pages) {
       await page.goto(BASE + TREE + name, { waitUntil: 'load' });
       await page.evaluate(() => document.fonts.ready);
@@ -117,8 +121,8 @@ async function snapshot(page) {
         zlib.gzipSync(JSON.stringify(snap)));
       process.stdout.write('.');
     }
-    await ctx.close();
+    await s.close();
     process.stdout.write(` ${vp} done\n`);
   }
-  await browser.close();
+  await B.shutdown();
 })();
