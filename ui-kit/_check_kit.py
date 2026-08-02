@@ -1208,6 +1208,59 @@ check("25 no component declared static has one", not loud,
 check("25 a state is a token, not a value", not styled,
       "%d: %s" % (len(styled), "; ".join(styled[:3])))
 
+# 26 --------------------------------------------- a rule of use, in two places --
+# A rule of use is the only thing in this system that is about several components
+# at once, so it has no component file to live in and it is authored in prose:
+# the "Rules of use" table in docs/architecture.md. Prose is where a fact goes to
+# be duplicated, and this one is duplicated on purpose, because a person about to
+# place a component is reading that component's page and not a contract. So the
+# extract is generated from the table, and this gate is what stops the copy from
+# becoming a second author.
+#
+# Three checks, and the third is the one that makes the pair honest. Without it
+# the cheapest way to satisfy the second would be to write a rule onto a page and
+# never decide it in the document, which is precisely the failure the table was
+# built to prevent: a preference that learned to sound like a measurement.
+rules = _gen_docs.usage_rules()
+sourceless = ["%s (%s)" % (r["id"], what) for r in rules for what in
+              (["no source"] if not r["source"] else []) +
+              (["no component"] if not r["components"] else []) +
+              (["class %r" % r["cls"]] if r["cls"] not in ("COMPOSITION", "CONTEXT") else []) +
+              (["names %s, which has no file" % c for c in r["components"]
+                if not (COMP / (c + ".css")).exists()])]
+ids = [r["id"] for r in rules]
+if len(ids) != len(set(ids)):
+    sourceless.append("duplicate id")
+check("26 every rule has a source and an owner", rules and not sourceless,
+      "%d rule(s), %d problem(s): %s" % (len(rules), len(sourceless), ", ".join(sourceless[:4])))
+
+RULE_SEC = re.compile(r'<section class="tk-sec" id="rules">(.*?)</section>', re.S)
+want = {}
+for r in rules:
+    for c in r["components"]:
+        want.setdefault(c, set()).add(r["id"])
+unpaired = []
+for path in sorted(COMP.glob("*.css")):
+    name = path.stem
+    if name in ("index", "tokens", "fonts"):
+        continue
+    page = KIT / (name + ".html")
+    if not page.exists():
+        continue
+    sec = RULE_SEC.search(page.read_text(encoding="utf-8"))
+    got = set(re.findall(r">(R\d+)<", sec.group(1))) if sec else set()
+    if got != want.get(name, set()):
+        unpaired.append("%s page %s, table %s" % (
+            name, sorted(got) or "-", sorted(want.get(name, set())) or "-"))
+check("26 every rule is on the pages it names", not unpaired,
+      "%d: %s" % (len(unpaired), "; ".join(unpaired[:3])))
+
+orphan_rule = sorted({rid for path in KIT.glob("*.html")
+                      for sec in RULE_SEC.findall(path.read_text(encoding="utf-8"))
+                      for rid in re.findall(r">(R\d+)<", sec)} - set(ids))
+check("26 no page carries a rule the document lacks", not orphan_rule,
+      "%d: %s" % (len(orphan_rule), ", ".join(orphan_rule[:4])))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

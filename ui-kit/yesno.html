@@ -93,8 +93,20 @@ push();});})();</script>
     <div class="ck-screens"><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-feed-crypto-logged-out.html">event-feed-crypto-logged-out</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture-logged-out.html">event-feed-culture-logged-out</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-general-logged-out.html">event-feed-general-logged-out</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics-logged-out.html">event-feed-politics-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites.html">favorites</a></div>
   </section>
 
+  <section class="tk-sec" id="rules">
+    <h2 data-n="07">Constraints</h2>
+    <p class="tk-note">What this component may do beside the others: how many of it a screen may
+    carry, and where it may not stand. The one rule that names this component, quoted from
+    <a href="architecture.html#rules-of-use">Rules of use</a>, which is where each one was decided
+    and where its numbers and its source are. This is an extract and not a second copy: gate 26
+    fails the build if a rule names a component whose page is silent, and equally if a page carries
+    a rule the document does not have.</p>
+    <table class="tk-tbl ck-rules"><thead><tr><th>rule</th><th>what it says</th><th>class</th>
+    <th>check it at a glance</th></tr></thead><tbody><tr><td class='tk-role'>R7</td><td>A bet control does not stand on a list of events</td><td class='tk-hex'>CONTEXT</td><td>on any screen with a grid of cards there is no amount field and no Confirm</td></tr></tbody></table>
+  </section>
+
   <section class="tk-sec" id="css">
-    <h2 data-n="07">The file</h2>
+    <h2 data-n="08">The file</h2>
     <p class="tk-note">To change this component, edit <code>components/yesno.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/yesno.css</summary><pre>/* components/yesno.css

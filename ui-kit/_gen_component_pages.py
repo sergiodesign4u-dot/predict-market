@@ -10,6 +10,9 @@ For every components/<name>.css it writes ui-kit/<name>.html carrying:
   - the semantic roles the file reads, each with a swatch;
   - the classes it owns and how many painted screens carry each one;
   - the screens in ui-visual/ where the component stands, as links;
+  - the rules of use that name it, extracted from the ONE table that holds them
+    in ui-kit/docs/architecture.md, so the rule is authored once and read where
+    a person is standing;
   - the css itself, so the file and the page never drift apart.
 
 Specimens come from ui-kit/specimens/, built by _extract_specimens.py out of the
@@ -50,6 +53,12 @@ from _panel_reveal import BODY as REVEAL_BODY, CALL as REVEAL_CALL  # noqa: E402
 # fact is how coverage.md and the css headers came to disagree.
 sys.path.insert(0, str(KIT))
 from _gen_docs import PAGES as DOC_PAGES  # noqa: E402
+# The rules of use are authored in ONE table, in ui-kit/docs/architecture.md.
+# This reads that table instead of keeping a second list of the same nine facts,
+# which is the rule the repo has paid to learn twice. Gate 26 checks the pairing
+# in both directions, so a rule cannot name a component whose page is silent and
+# a page cannot carry a rule the document has never heard of.
+from _gen_docs import usage_rules, inline as md_inline  # noqa: E402
 THEME_BUTTON_INLINE = button(inline=True)
 
 SPECIMENS = json.loads((KIT / "specimens" / "index.json").read_text(encoding="utf-8"))
@@ -377,6 +386,49 @@ def class_table(classes):
             "</tr></thead><tbody>" + "".join(rows) + "</tbody></table>")
 
 
+# The one section on this page that is not read out of the css. Everything else
+# here answers "what is this component"; a rule of use answers "what may it do
+# beside the others", and no file in components/ can hold that, because every one
+# of them describes a component alone.
+#
+# It is an EXTRACT and never a paraphrase: the id, the rule as the document
+# states it, its class and its one-glance check, with the link back to where it
+# was decided. The reasoning, the numbers and the source stay in the document,
+# because a rule restated in two voices is a rule with two meanings.
+#
+# A component no rule names gets no section at all. That is the opposite of the
+# States rule above, on purpose: every interactive component is EXPECTED to have
+# states, so silence there is ambiguous, while most components legitimately have
+# no usage rule and a row saying so on 27 pages would be noise pretending to be
+# a decision.
+RULES = usage_rules()
+
+
+def constraints(name):
+    mine = [r for r in RULES if name in r["components"]]
+    if not mine:
+        return ""
+    rows = "".join(
+        "<tr><td class='tk-role'>%s</td><td>%s</td><td class='tk-hex'>%s</td>"
+        "<td>%s</td></tr>"
+        % (esc(r["id"]), md_inline(r["title"]), esc(r["cls"]), md_inline(r["check"]))
+        for r in mine)
+    return """
+  <section class="tk-sec" id="rules">
+    <h2 data-n="07">Constraints</h2>
+    <p class="tk-note">What this component may do beside the others: how many of it a screen may
+    carry, and where it may not stand. %s that %s this component, quoted from
+    <a href="architecture.html#rules-of-use">Rules of use</a>, which is where each one was decided
+    and where its numbers and its source are. This is an extract and not a second copy: gate 26
+    fails the build if a rule names a component whose page is silent, and equally if a page carries
+    a rule the document does not have.</p>
+    <table class="tk-tbl ck-rules"><thead><tr><th>rule</th><th>what it says</th><th>class</th>
+    <th>check it at a glance</th></tr></thead><tbody>%s</tbody></table>
+  </section>
+""" % ("The %d rules" % len(mine) if len(mine) > 1 else "The one rule",
+       "name" if len(mine) > 1 else "names", rows)
+
+
 def screen_links(screens):
     if not screens:
         return '<p class="tk-note">Not on a painted screen yet.</p>'
@@ -448,9 +500,9 @@ PAGE = """<!doctype html>
     <h2 data-n="06">Where it stands</h2>
     {screens}
   </section>
-
+{constraints}
   <section class="tk-sec" id="css">
-    <h2 data-n="07">The file</h2>
+    <h2 data-n="08">The file</h2>
     <p class="tk-note">To change this component, edit <code>components/{name}.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/{name}.css</summary><pre>{css}</pre></details>
@@ -482,7 +534,8 @@ for path in sorted(COMP.glob("*.css")):
         nuv=len(uv_classes),
         live=live(name), inside=elsewhere(name), states=states_table(c["states"], name) + state_grounds(state_tokens(c["states"], c["roles"])),
         roles=role_swatches(c["roles"]), classes=class_table(c["classes"]),
-        screens=screen_links(c["screens"]), css=esc(c["css"]))
+        screens=screen_links(c["screens"]), constraints=constraints(name),
+        css=esc(c["css"]))
     (KIT / (name + ".html")).write_text(page, encoding="utf-8")
     built.append((name, c))
 

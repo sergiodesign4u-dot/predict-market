@@ -74,6 +74,51 @@ FILEREF = re.compile(r"^(?:components/([\w-]+)\.css|ui-kit/([\w-]+)\.html|"
                      r"(?:ui-kit/)?docs/([\w-]+)\.md)$")
 
 
+# ------------------------------------------------------- the usage rules ----
+# A rule of use is authored ONCE, in the "Rules of use" table of
+# architecture.md, and read in two places: there, and on the page of every
+# component the row names. This is the parser for the second reader, and it
+# lives here rather than in _gen_component_pages.py for two reasons. It belongs
+# to the document, which is what it reads; and that generator does its work at
+# import time, so a gate that imported it to ask about the rules would rewrite
+# 36 pages as a side effect of a question.
+#
+# The shape it expects is the shape the table has: five columns, and the first
+# one opening with **R<n>. <the rule>**. A row that does not match is not a rule
+# and is skipped rather than guessed at.
+RULE_ID = re.compile(r"\*\*(R\d+)\.\s*(.+?)\*\*", re.S)
+RULES_SECTION = "## Rules of use"
+
+
+def usage_rules():
+    """The rows of the Rules of use table, parsed. One dict per rule."""
+    out = []
+    lines = (DOCS / "architecture.md").read_text(encoding="utf-8").split("\n")
+    inside = False
+    for line in lines:
+        if line.startswith("## "):
+            inside = line.strip() == RULES_SECTION
+            continue
+        if not inside or not line.startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) != 5:
+            continue
+        m = RULE_ID.match(cells[0])
+        if not m:                       # the head row and the alignment rule
+            continue
+        out.append({
+            "id": m.group(1),
+            "title": m.group(2).rstrip("."),
+            "why": cells[0][m.end():].strip(),
+            "cls": cells[1],
+            "source": cells[2],
+            "components": re.findall(r"components/([\w-]+)\.css", cells[3]),
+            "check": cells[4],
+        })
+    return out
+
+
 def esc(s):
     """Quotes are escaped too, and that is not cosmetic. These documents quote
        markup: tokens-audit.md has a code block containing

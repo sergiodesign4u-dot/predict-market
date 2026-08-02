@@ -96,8 +96,20 @@ push();});})();</script>
     <div class="ck-screens"><a href="../ui-visual/event-detail-bet-error.html">event-detail-bet-error</a><a href="../ui-visual/event-detail-bet-insufficient.html">event-detail-bet-insufficient</a><a href="../ui-visual/event-detail-bet-processing.html">event-detail-bet-processing</a><a href="../ui-visual/event-detail-bet-reconcile.html">event-detail-bet-reconcile</a><a href="../ui-visual/event-detail-loading.html">event-detail-loading</a><a href="../ui-visual/event-detail-logged-out-loading.html">event-detail-logged-out-loading</a><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-logged-out.html">event-detail-logged-out</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-detail-resolved.html">event-detail-resolved</a><a href="../ui-visual/event-detail.html">event-detail</a></div>
   </section>
 
+  <section class="tk-sec" id="rules">
+    <h2 data-n="07">Constraints</h2>
+    <p class="tk-note">What this component may do beside the others: how many of it a screen may
+    carry, and where it may not stand. The 2 rules that name this component, quoted from
+    <a href="architecture.html#rules-of-use">Rules of use</a>, which is where each one was decided
+    and where its numbers and its source are. This is an extract and not a second copy: gate 26
+    fails the build if a rule names a component whose page is silent, and equally if a page carries
+    a rule the document does not have.</p>
+    <table class="tk-tbl ck-rules"><thead><tr><th>rule</th><th>what it says</th><th>class</th>
+    <th>check it at a glance</th></tr></thead><tbody><tr><td class='tk-role'>R3</td><td>One bet control, and the width decides which</td><td class='tk-hex'>COMPOSITION</td><td>at 360 the dock and no panel; at 760 and up the panel and no dock. Never both, never neither</td></tr><tr><td class='tk-role'>R7</td><td>A bet control does not stand on a list of events</td><td class='tk-hex'>CONTEXT</td><td>on any screen with a grid of cards there is no amount field and no Confirm</td></tr></tbody></table>
+  </section>
+
   <section class="tk-sec" id="css">
-    <h2 data-n="07">The file</h2>
+    <h2 data-n="08">The file</h2>
     <p class="tk-note">To change this component, edit <code>components/betpanel.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/betpanel.css</summary><pre>/* components/betpanel.css
