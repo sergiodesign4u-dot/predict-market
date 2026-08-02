@@ -196,40 +196,77 @@ def _walk(node):
         yield from _walk(kid)
 
 
-def _read_containment():
-    index = json.loads((SPEC / "index.json").read_text(encoding="utf-8"))
-    of_specimen = {s["id"]: s["component"] for s in index}
+def read_containment(paths, component_of=None, only=None):
+    """What stands inside each component, read from a set of documents.
+
+    ONE READING, TWO CORPORA, and the difference between them is only the outer
+    loop. A SPECIMEN is one document for one component, so `component_of(path)`
+    names which one; a SCREEN is one document holding every component at once,
+    so `component_of` is None and each component is looked for in turn. The
+    reading itself, and the trap it avoids, must be the same in both or the two
+    answers cannot be compared, which is the entire point of comparing them.
+
+    THE TRAP. Take the TOPMOST elements carrying a class the component owns, and
+    then only what stands UNDER them. Anything above is the context the document
+    needed in order to render: a specimen wraps its subject in a card in a grid
+    in `main.feed`, and a screen wraps everything in `.device`. A flat scan of
+    class attributes reads those ANCESTORS as contents, and returned 33
+    organisms out of 38 the first time it was tried.
+
+    `only` names which components to look FOR, and defaults to the composable
+    ones. It is a parameter rather than a constant because an audit has to be
+    able to ask about `base` and `course-chrome` too: they are declared not to be
+    parts, and a declaration that is never tested is the same silent gap this
+    file exists to close. What they may CONTAIN is filtered separately, below,
+    and that filter is not optional: the substrate is not a level.
+
+    Returns {component: {other_component: {the classes that linked them}}}.
+    """
     found = {}
-    for path in sorted(SPEC.glob("*.html")):
-        comp = of_specimen.get(path.stem)
-        if comp is None:
-            continue
+    for path in paths:
         tree = _Tree()
         tree.feed(path.read_text(encoding="utf-8"))
-        mine = OWNED.get(comp, set())
-        # the TOPMOST elements carrying a class this component owns. Anything
-        # above them is the context the specimen needed in order to render.
-        roots = []
-        for node in _walk(tree.root):
-            if not (node.cls & mine):
+        nodes = list(_walk(tree.root))
+        if component_of is None:
+            comps = list(only) if only is not None else [
+                c for c in SUBJECTS if c not in NOT_A_COMPONENT]
+        else:
+            one = component_of(path)
+            if one is None:
                 continue
-            up, covered = node.parent, False
-            while up is not None:
-                if up in roots:
-                    covered = True
-                    break
-                up = up.parent
-            if not covered:
-                roots.append(node)
-        for root in roots:
-            for kid in _walk(root):
-                for cls in kid.cls:
-                    other = OWNER.get(cls)
-                    if other and other != comp and other not in NOT_A_COMPONENT:
-                        found.setdefault(comp, {}).setdefault(other, set()).add(cls)
+            comps = [one]
+        for comp in comps:
+            mine = OWNED.get(comp, set())
+            if not mine:
+                continue
+            roots = []
+            for node in nodes:
+                if not (node.cls & mine):
+                    continue
+                up, covered = node.parent, False
+                while up is not None:
+                    if up in roots:
+                        covered = True
+                        break
+                    up = up.parent
+                if not covered:
+                    roots.append(node)
+            for root in roots:
+                for kid in _walk(root):
+                    for cls in kid.cls:
+                        other = OWNER.get(cls)
+                        if other and other != comp and other not in NOT_A_COMPONENT:
+                            found.setdefault(comp, {}).setdefault(other, set()).add(cls)
     for name in SUBJECTS:
         found.setdefault(name, {})
     return found
+
+
+def _read_containment():
+    index = json.loads((SPEC / "index.json").read_text(encoding="utf-8"))
+    of_specimen = {s["id"]: s["component"] for s in index}
+    return read_containment(sorted(SPEC.glob("*.html")),
+                            component_of=lambda p: of_specimen.get(p.stem))
 
 
 CONTAINS = _read_containment()
