@@ -9,7 +9,7 @@ holds the record of what was done. This holds what is not.
 Unlike `decisions.md`, this file is edited: a row is struck when the item closes, with the date and
 the entry in `decisions.md` that closed it.
 
-**Open: 21.**
+**Open: 20.**
 
 The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
 twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
@@ -64,14 +64,14 @@ Carried since the project brief; none of it has been answered.
 
 ---
 
-## Design defects deferred (4)
+## Design defects deferred (3)
 
 | # | Item | Source | Note |
 |---|---|---|---|
 | 12 | Live odds-delta animation | `/impeccable critique` P3, 2026-07-16 | Deferred at the time as P3; Stage 11 (Animation) is its natural owner |
 | 13 | Error state vs empty state are not differentiated | `/impeccable critique` P3, 2026-07-16 | Two different situations reading as one block |
 | 14 | The undeclared second alpha ladder | Stage 09 step 7c, 2026-07-28 | 20 declarations build a colour with `color-mix(in oklab, var(--color-action) N%, ...)` at 16 different percentages, beside the declared `--brass-a*` one. Gate 13 is satisfied (all read a role). Recorded as a decision, not fixed: which steps that ladder should have is a **states** question, and rounding them now would move hover and selected states for the legibility of the file rather than of the product. Stage 09 owns it |
-| 21 | Three focus rings that survive the cascade but not the contrast floor | Design System step 1, 2026-08-02 | Found by tabbing every focusable element on 153 pages in both themes and measuring the ring against the ground it stands on, rather than by grepping for `outline:none`. **Nine kinds flagged of 179 measured, and they are three defects.** (a) `.state-btn` and `.state-btn.primary` on the push banner: the ring is `--focus-ring`, which flips to `--brass-700` in daylight, and the banner is a trust-tinted panel, so it lands at **2.72:1** on 3 screens. (b) `.theme-switch-inline` on `ui-kit/overview.html`: the exact mirror of the sidebar defect just fixed. There a flipping role met a fixed ground; here a fixed role (`--chrome-accent`, which section 3 does not override) meets a ground that flips, and it lands at **2.03:1** in daylight. (c) `.kit-field` on `ui-kit/kit.html`, both themes: `outline:none` with a 16 per cent brass wash in its place, which is the same non-indicator the dialog field had. **Not fixed, and (c) is the one that needs a decision rather than a fix:** the rule lives in the inline `<style>` of `kit.html`, which is declared FROZEN provenance, so closing it means breaking a standing rule. The dead copy of the same rule in `ui-kit/_specimen.css` reaches nothing, since no specimen carries the class |
+| ~~21~~ | ~~Three focus rings that survive the cascade but not the contrast floor~~ | Design System step 1, 2026-08-02 | **Closed 2026-08-02, and one of the three never existed.** `.theme-switch-inline` was real (2.03:1 in daylight, a fixed chrome brass on a ground that flips) and is fixed by the rule that a ring answers to what it STANDS ON: 8.98:1 and 7.46:1 now. `.kit-field` in the frozen `kit.html` was real (no ring at all, a 16 per cent wash in its place) and is fixed by deleting one declaration, since the freeze forbids growth and not repair: 8.71:1 and 7.14:1 now, and the dead copy of that rule in `ui-kit/_specimen.css` went with it. **`.state-btn` on the push banner was not a defect.** The 2.72:1 came from a sweep that read the ground with a regex, and a regex reads the components of `color-mix(in oklab, ...)` as sRGB bytes, so a pale brass-tinted banner measured as near black. Measured with the browser parsing the colour: 6.95:1 and 6.73:1. See `decisions.md`, same date. Sweep now: **0 of 179 kinds flagged over 153 pages in both themes** |
 
 ---
 

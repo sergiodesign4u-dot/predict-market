@@ -44,6 +44,49 @@ record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/mi
 
 ---
 
+## 2026-08-02 - A regex cannot read a colour, and one of the three defects it found did not exist
+
+Two measurement bugs in one day, in the same sweep, and the second one invented a defect. Both are
+worth the entry because the conclusion is the same and it is a rule: **the tool that reads the page
+has to be checked as hard as the page.**
+
+- **A closed `<dialog>` is inert, and a scripted `.focus()` on it fails silently.** The element does
+  not become `document.activeElement`, `getComputedStyle` returns its resting style, and a sweep
+  that measures the outline reads NO RING. The dialog amount field was reported broken by that
+  sweep AFTER it had been fixed, and it was pressing Tab by hand that showed the ring was there. The
+  sweep skips inert subtrees now.
+  **What that invalidates:** every earlier "no ring" verdict on an element inside a closed dialog.
+  There were two, both from the first pass over `event-feed.html` on 2026-08-02, `a.notif-all` and
+  one unclassed `<button>`, and both were reported in chat only. Nothing in the repo carries them:
+  the only "no ring" verdict written to a file was `.kit-field` in backlog item 21, and `.kit-field`
+  is not in a dialog, so it stood, and it has since been fixed. No file needed correcting. That is
+  luck rather than process: a verdict from a tool with a known blind spot was one commit away from
+  being written down as a fact.
+- **A regex cannot read a colour, and `color-mix(in oklab, ...)` is the case where it silently
+  lies.** `getComputedStyle().backgroundColor` returns that function verbatim, and pulling numbers
+  out of it with `/[\d.]+/g` yields the oklab components, 0.95 and 0.0005 and 0.016, which the
+  contrast maths then treats as sRGB bytes. **A pale brass-tinted banner measured as near black.**
+  On that reading the focus ring on the push banner's buttons came out at 2.72:1 against a 3:1
+  floor, on three screens, and it was written into the backlog as a defect to fix.
+  It is not a defect. Measured with the browser doing the parsing, the same ring is **6.95:1 in the
+  Vault and 6.73:1 in daylight**. The fix is to stop parsing: a 2D canvas resolves any css colour
+  string to sRGB bytes, so `ctx.fillStyle = <whatever the computed style says>` and read the pixel.
+  The ancestor stack is then composited in order, alpha by alpha, instead of guessed at.
+- **What that invalidates, and it is more than one number.** Every contrast figure this repo has
+  taken with the regex sweep, wherever the ground came through `color-mix`. Two were written into
+  `tokens.css` beside `--focus-ring` and are corrected in the same commit: the true spans are
+  **6.67:1 to 9.06:1** in the Vault and **5.71:1 to 7.46:1** in daylight, measured over every
+  focusable control on 153 pages. The direction of the error is the interesting part: it made
+  things look WORSE, not better, so nothing shipped on a false pass. The next one might not be so
+  kind.
+- **What survives, and it is the useful half.** Two of the three rings were real and both are fixed.
+  The one that was not real would have cost a new token and a new role, invented to solve a number
+  that a canvas could have disproved in ten seconds. **A finding is not a finding until the
+  instrument has been checked**, and the check is cheap: measure something whose answer you already
+  know. A pale banner is pale.
+
+---
+
 ## 2026-08-02 - The two "now, or never" surfaces are closed as NEVER, and that is the decision
 
 `architecture.md` has carried a table of five unread surfaces since the close of Tokens and
