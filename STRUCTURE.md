@@ -22,10 +22,10 @@ nowhere else** - a second copy of a status is a copy that goes stale.
 | 06 | Concept | `concept/` | `concept.html` (+ `directions.html`) |
 | 07 | UI + Visual | `ui-visual/` | 105 painted screens, every family and every state |
 | 08 | Tokens + Components | `components/` (the system) + `ui-kit/` (the vitrine) | `ui-kit/overview.html` (+ the four documents: `architecture.html`, `tokens-audit.html`, `inventory.html`, `coverage.html`) |
-| 09 | Design System | `design-system/` | - |
-| 10 | Responsive | `responsive/` | - |
-| 11 | Animation | `animation/` | - |
-| 12 | Handoff | `handoff/` | - |
+| 09 | Design System | `components/patterns/` (the new shelf) + `ui-kit/` | - |
+| 10 | Responsive | | - |
+| 11 | Animation | | - |
+| 12 | Handoff | | - |
 
 The CJM keeps its own row in the README status table, because it is a deliverable that can be
 done or not done; it does not keep a number, because it is built inside User Research. The two

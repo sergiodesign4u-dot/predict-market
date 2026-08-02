@@ -34,10 +34,10 @@ Per-stage layout: raw markdown lives in each stage's `docs/`, and the stage's HT
 | [`components/`](./components/) | **The design system**: `tokens.css` (primitive + semantic + the light theme), `base.css`, one file per component, all reached through `index.css` |
 | [`ui-kit/`](./ui-kit/) | **The vitrine and the gates**: a stand page per component, the token page, the icon sheet, the stage's four documents rendered as pages, and `_check_kit.py` (23 checks) |
 | [`docs/`](./docs/) | **The record**: [`decisions.md`](./docs/decisions.md) (what was done and why, dated, newest first) and [`backlog.md`](./docs/backlog.md) (what is still open) |
-| [`design-system/`](./design-system/) | Full design system documentation |
-| [`responsive/`](./responsive/) | Responsive design pass |
-| [`animation/`](./animation/) | Motion + animation |
-| [`handoff/`](./handoff/) | Dev-ready specs and assets |
+| `components/patterns/` | **Design System (09)**, not built yet: the second shelf of the system package, for compositions that stand on three screens or more. The system already lives in `components/` and does not move there |
+| Responsive (10) | no folder: the breakpoints go into `components/tokens.css` by the mechanism already there |
+| Animation (11) | no folder: durations and easing become tokens, transitions go on the components that already carry a state |
+| Handoff (12) | no folder: the vitrine is the handoff |
 
 The old→new folder map is recorded in [`STRUCTURE.md`](./STRUCTURE.md).
 
