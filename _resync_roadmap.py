@@ -62,6 +62,7 @@ SKIP_DIRS = ("wireframes", "ui-visual", "ui-kit", ".git", "figmosha2", "visuals"
 DONE_HREF = "ui-kit/overview.html"
 DONE_LABEL = "Tokens + Components"
 NEXT_LABEL = "Design System"
+NEXT_HREF = "ui-kit/why.html"
 
 
 def targets():
@@ -92,12 +93,21 @@ def fix(html, pfx):
                         .format(pfx, DONE_HREF, DONE_LABEL), html)
     n += k
 
-    # 2. the badge moves to the first thing still unbuilt
-    nxt = re.compile(r'<a class="sidebar-page-link planned">' + re.escape(NEXT_LABEL) + r"</a>")
-    if 'planned next">' + NEXT_LABEL not in html:
-        html, k = nxt.subn('<a class="sidebar-page-link planned next">{}</a>'.format(NEXT_LABEL),
-                           html)
-        n += k
+    # 2. the badge moves to the first thing still unbuilt, and that row now goes
+    #    somewhere. Design System is not finished and it HAS a page (the guide,
+    #    ui-kit/why.html), so the two facts had to be told apart here as well as
+    #    in _roadmap.py: the badge is the status, the href is whether there is
+    #    anywhere to stand. Until this line it produced an <a> with no href, which
+    #    is a link element with nothing to open, and every hand-typed panel in the
+    #    project carried one.
+    #    Two shapes, because two eras produced them: an <a> with no href in the
+    #    hand-typed copies, and a <span> from the renderer back when "planned"
+    #    and "has no page" were one flag.
+    nxt = re.compile(r'<(a|span) class="sidebar-page-link planned(?: next)?">'
+                     + re.escape(NEXT_LABEL) + r"</\1>")
+    html, k = nxt.subn('<a href="{}{}" class="sidebar-page-link planned next">{}</a>'
+                       .format(pfx, NEXT_HREF, NEXT_LABEL), html)
+    n += k
 
     # 3. the frozen kit is not a destination
     kit = re.compile(r'\s*<a href="[^"]*ui-kit/kit\.html" class="sidebar-page-link">UI Kit</a>')

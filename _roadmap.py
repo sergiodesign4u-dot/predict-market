@@ -108,7 +108,15 @@ LAYOUT = [
     ("item", "concept", "Concept", "concept/concept.html", False),
     ("item", "ui-visual", "UI + Visual", "ui-visual/event-feed.html", False),
     ("item", "tokens-components", "Tokens + Components", "ui-kit/overview.html", False),
-    ("item", "design-system", "Design System", None, True),
+    # DONE AND REACHABLE ARE TWO FACTS, and this row is the first place they part.
+    # Design System is not finished, so it keeps the badge and the planned class;
+    # it has a page a person can stand on, so it is a link. The tag below is
+    # decided by whether there is somewhere to go, never by the status: the rule
+    # it used to enforce was "a planned stage is not a link", and the reason
+    # behind that rule was that a planned stage had nowhere to send you. Now one
+    # does. The flag flips at step 8, and nothing about this row changes then
+    # except the badge.
+    ("item", "design-system", "Design System", "ui-kit/why.html", True),
     ("item", "responsive", "Responsive", None, True),
     ("item", "animation", "Animation", None, True),
     ("item", "handoff", "Handoff", None, True),
@@ -136,10 +144,16 @@ def _render_item(key, label, href, planned, prefix, active, subs_block,
                  href_override, indent):
     """One top-level or in-group row, and its tag says whether it goes anywhere.
 
-    A PLANNED STAGE IS NOT A LINK, so it is not an <a>. It used to be an anchor
-    with no href, which is a link element with nothing to open; the badge said
-    Soon and the markup said link. A row that goes nowhere is a <span>, and the
-    styling never depended on the tag.
+    A ROW THAT GOES NOWHERE IS NOT A LINK, so it is not an <a>. It used to be an
+    anchor with no href, which is a link element with nothing to open; the badge
+    said Soon and the markup said link. The styling never depended on the tag.
+
+    THE TEST IS THE HREF AND NOT THE STATUS, and that is a correction. This read
+    `if planned` while planned and page-less were the same set, so the two facts
+    were never told apart. Design System is the first row where they differ: it is
+    not finished and it has a page (ui-kit/why.html, the guide). Reading the flag
+    would have hidden a page that exists behind a span, which is the same defect
+    in the other direction.
 
     THE ROW YOU ARE ON IS A LINK LIKE EVERY OTHER ROW, which is what the vitrine
     has always done: an active row with no href is a hole in the tree at exactly
@@ -153,7 +167,7 @@ def _render_item(key, label, href, planned, prefix, active, subs_block,
         cls += " planned"
     if key == NEXT_KEY:
         cls += " next"
-    if planned:
+    if href is None:
         out = ['{i}<span class="{cls}">{label}</span>'.format(i=indent, cls=cls, label=label)]
     else:
         target = href_override.get(key)
