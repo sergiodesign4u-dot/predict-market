@@ -44,6 +44,157 @@ record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/mi
 
 ---
 
+## 2026-08-02 - Four states, three press mechanisms, and the hovers that were only true in one theme
+
+Step 2 of the Design System stage: the states roll-out. The reference component was accepted in the
+browser, and the format went out to the rest of the system through subagents, one round per level,
+bottom up.
+
+### The estimate, in three columns and not two
+
+The pack assumes no component has states yet. This one had them in **24 of 36 files**, all of them
+`:hover`, so the roll-out had to align a format rather than write one. The census, taken by asking
+each file which of its selector SUBJECTS is an interactive element in the shipped markup:
+
+| | count | |
+|---|---|---|
+| already had states | 24 | every one of them `:hover` only. One `:active` in the whole system (`loadmore`), three `:disabled`, four `:focus-visible` |
+| interactive, no state at all | 3 | `market` (a `<summary>`), `bottomnav` (the tab bar, touched more than any other control), `position` (a card-link on 15 rows, which read as static because the anchor is written with `:has()`) |
+| not interactive, gets none | 9 | declared in `_levels.STATIC`, one line of reason each |
+
+The format audit of the first column found exactly three things, and only three: six
+`filter:brightness()` hovers, no `:active` anywhere but one file, and no `:disabled` on the one
+control the product actually disables.
+
+### Rounds by the computed order, and only the css fanned out
+
+Rounds came from `python3 ui-kit/_levels.py --order`, which gate 23 already enforces, not from a list
+written by hand: atoms, molecules, then organisms in two batches, the ones containing another
+organism last. Within a level the subagents ran in parallel; between levels, sequentially, because a
+card that adds a hover before its button has one will draw the button a second answer.
+
+**The fanout is narrower than the pack's and that is a strength.** The pack gives each agent its own
+css AND its own page. Here the pages are generated and the states table is read out of the css, so an
+agent touches exactly `components/<name>.css` and the parent regenerates every page in one pass. The
+conflict disappears by construction and the page stays a projection of the code rather than a second
+copy of it. `tokens.css`, `index.css`, `base.css` and `_nav.js` stayed with the parent, and an agent
+short of a token stopped and said so rather than inventing one. Two did, and both were right.
+
+### Three roles, and no component level
+
+- `--bg-pressed`, the ground a held control settles onto. It existed as `--bg-chip-pressed` with a
+  single consumer; the roll-out gave it twenty. Renamed for the STATE, because the icon button in the
+  header is not a chip and settling it onto a chip's ground is a category error the next reader
+  inherits.
+- `--color-action-pressed`, brass held down, and it is needed by exactly the controls that are FLAT
+  brass: the filter switch that is ON and a ticked cookie checkbox. Everything else brass is a
+  gradient and presses by geometry.
+- `--chrome-pressed`, the same step for the course panel. It cannot borrow the product role: section 3
+  overrides that one and does not touch the chrome, so a shared role would press a graphite row to
+  chalk on a daylight page.
+
+**No component-level tokens.** The stage before this one deferred the decision to here with a
+criterion: a component token is justified only where a state lands on no semantic role. Every state in
+this pass landed on one, so the answer is none, and an empty component level "so it exists" would be a
+third round of renaming with no flexibility bought.
+
+### Three press mechanisms, each forced by a number
+
+A press had to be answered three different ways, and the third one is the interesting one.
+
+1. **A quiet control** settles onto `--bg-pressed`.
+2. **A brass gradient** reverses its own angle, 135deg to 315deg, and drops its glow. The light falls
+   to the bottom right, which is what a plate pushed IN looks like. It reads the two roles the rest
+   state already reads and costs no value at all.
+3. **A filled outcome control presses by DEPTH, not colour.** `--text-on-no` on a flat `--outcome-no`
+   is 4.64:1, the floor with 0.14 to spare, and darkening the ground through the only role available
+   costs 4.48:1 at 92 per cent and 4.29:1 at 82. A mix small enough to pass is a mix nobody notices.
+   So the fill does not move: an inset shade at the top edge does, `--edge-shade-strong`, the same
+   role every lifted stone in this system uses, and the ground the ink was measured on stays exactly
+   where it was. Half a pair was refused on the way: YES has the room and NO does not, and a YES that
+   darkens beside a NO that does not reads as a broken NO.
+
+The same measurement fixed a second surface later: `--bg-pressed` LIGHTENS a `--bg-card-quiet` row in
+the Vault and resolves to the same chalk step in daylight, so a position row also pays for its press
+out of depth.
+
+### Focus is a substrate answer, and this is the deliberate deviation from the pack
+
+The pack asks for `:focus-visible` on every component. `base.css` declares it once for all 36 files,
+and a browser sweep of 153 pages in both themes had already found 0 of 179 ring kinds without a
+visible ring. Fourteen component files used to carry their own copy of that rule and twenty-four did
+not, and gathering it was the whole point of the previous stage; adding twenty more copies would undo
+it. **A component speaks up only when its GROUND needs something different**, which is the rule
+committed earlier the same day.
+
+Four did, and one of them was a real hole nobody had seen: the Event Detail tab strip and the profile
+tab strip are radio groups, so the ring was being painted on the visually hidden `<input>` and a
+person tabbing through either strip saw nothing at all. It moves to the label. The other three are
+clipping: the category strip and both tab bars are scroll containers that cut an outset ring, and the
+sheet grab sits flush at the top of a sheet that clips its own corners. All four take an inset offset
+and keep the ring colour. The fifth is the how-it-works close disc, which sits inside a brass radial
+glow where the brass ring measures 2.52:1 at the brightest point: it reads `--text-strong` instead,
+5.33:1 and 10.13:1.
+
+### Seven defects that only a press could find
+
+Giving a control a state means reading its rest state, and that is where these came from.
+
+| what | measured |
+|---|---|
+| `.bet-dock .confirm-btn` had no `background` anywhere | the rule names the panel and the sheet and not the dock, so Confirm bet rendered in the user agent's own ButtonFace grey on the four screens where a person places money |
+| `confirm-btn[aria-disabled="true"]` on `deposit-minimum-not-met` | styled exactly like an enabled button |
+| `.hh-all:hover` read `--color-action-lit` | 9.57:1 on graphite, **1.71:1 on chalk**. A pale brass meant to sit UNDER dark ink, used as ink: in daylight the link vanished at the moment a person pointed at it |
+| `.hf-title:hover` and `.hh-name:hover` read `--text-strong` | which IS `--text-primary` on chalk: 14.85 over 14.85, a state that existed in one theme only |
+| `.bp-side:hover` read `--bevel-strong` | a lit LIP role that section 3 raises to 70 per cent white: 1.02:1 as a border on a chalk control. A lip is not an edge |
+| `.notif-all` had no hover | it is a sibling of the dropdown list rather than a member, so it fell out of the selector and out of every later reading of the file |
+| `.hiw-full` had no hover | the only brass action in the system without one: the arrow nudged and nothing under it moved |
+
+Six `filter:brightness()` hovers are gone with them. A filter multiplies whatever is beneath it, so no
+theme and no role can reach it, and the same 1.08 is a different decision on each of the two stones.
+
+### What was found and NOT fixed, and why
+
+Three, all in the backlog as items 22 to 24. The filter panel hides every option with `display:none`,
+which takes it out of the tab order and out of the accessibility tree, so the sort radiogroup on 104
+screens works with a mouse and nothing else; the fix is css-only but it changes behaviour, and that is
+a product decision rather than a state. A multi-outcome row is a `<div>` with a click handler and no
+keyboard path, and the fix is markup, which the grey tree owns. And the `aria-live` row turned out to
+rest on a premise that does not hold, below.
+
+### The aria-live row was re-measured, and the count was right while the conclusion was not
+
+The entry gate for this step asked whether gate 18 compares ATTRIBUTES or only structure, because a
+live region is an attribute on a shipped screen. It compares structure only: `shape()` in
+`_check_kit.py` builds `tag.firstclass` per element and reads no other attribute, and gate 19 uses the
+same function. So the edit was clear.
+
+The premise was not. Measured in BOTH trees: the 9 screens with a live region are identical in grey
+and in colour, and the toast on `toasts.html` already carries `role="status" aria-live="polite"` and
+`role="alert" aria-live="assertive"` on its two groups. There is no missing toast announcement to add.
+What IS missing is the form-error axis, `aria-invalid` and `aria-describedby` at 0 of 105 while three
+screens ship a visible error tied to no field, and that is a markup change the grey tree owns.
+`aria-expanded` at 0 is correct rather than a gap, because every disclosure here is a native
+`<details>`. Item 4 is struck and replaced by item 24.
+
+### The gate, and the instrument
+
+**Gate 25**, three checks: a component not on `_levels.STATIC` declares hover and press, a component
+on it declares neither, and no state carries a colour value. The second check is the one that matters,
+for the reason gate 24 already carries: an exception list that can absorb a component quietly is not a
+declaration, it is a way of switching the check off.
+
+**Measured at rest: 14 of 36,150 elements moved** over 25 screens in both themes, against a **noise
+floor of 10** taken by diffing the same version against itself. Four of the fourteen are real and both
+are named in the table above. **Focus: 0 of 128 ring kinds flagged** over 33 pages in both themes.
+
+Two instrument bugs were found and fixed on the way, and both were caused by this pass adding
+transitions. A control mid-transition between themes reports the tween rather than the value, which
+produced 17 false flags in one run. And a ring was being measured against the control's own fill
+rather than the surface it stands on: with `outline-offset` positive the ring is painted OUTSIDE the
+border box, so a brass ring on a selected YES read 1.37:1 against a green it never touches. **A ring
+answers to what it stands on** is not only a design rule; it is how the ring has to be measured.
+
 ## 2026-08-02 - A regex cannot read a colour, and one of the three defects it found did not exist
 
 Two measurement bugs in one day, in the same sweep, and the second one invented a defect. Both are

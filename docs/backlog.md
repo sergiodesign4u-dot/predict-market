@@ -9,7 +9,7 @@ holds the record of what was done. This holds what is not.
 Unlike `decisions.md`, this file is edited: a row is struck when the item closes, with the date and
 the entry in `decisions.md` that closed it.
 
-**Open: 20.**
+**Open: 22.**
 
 The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
 twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
@@ -18,7 +18,7 @@ whose header holds the old-to-new key.
 
 ---
 
-## Unread surfaces (3 open, 2 closed)
+## Unread surfaces (2 open, 3 closed)
 
 Not a defect list. No entry here is a known bug; each is a place where a bug would be invisible,
 because nothing has ever read it. Written 2026-07-28 after nine audit passes over Stage 09, which
@@ -27,11 +27,10 @@ argument that yield tracked unread surface rather than effort. Measurements are 
 
 | # | Surface | Size | Owner |
 |---|---|---|---|
-| 52 skeleton marks rendering at zero size on 5 loading screens (opened item 20 the same day) | Stage 09 step 13, 2026-08-02 - css only, eight lines of base rules in `skeleton.css`. The markup could not be the fix: a painted screen has a grey twin frozen since stage 04 and gate 18 compares them, so `<span class="sk-line">` stays a span and `display:block` makes it a box. **0 of 482 marks now draw at zero.** Measured on all 19 screens that carry a mark, three widths: 14 of 19 identical to the property, and the 5 that changed are the 5 the item named |
 | ~~1~~ | ~~The 28 course pages' own content~~ | 203 KB inline css | **Closed as NEVER**, 2026-08-02: the course frame, not the product, and the one part a reader touches is already out in `course-chrome.css` |
 | ~~2~~ | ~~`wireframes/` inline css~~ | 34 `<style>` bodies over 104 pages, largest 52 KB | **Closed as NEVER**, 2026-08-02: the grey tree is frozen and the generators that could act on a finding are the ones `CLAUDE.md` forbids running, so every finding would arrive with "not fixed, by rule" attached |
 | 3 | The page scripts as code | 15 distinct bodies in 810 blocks; every sweep reads their output, never the code | Stage 11 (Animation) |
-| 4 | What a screen reader is told on change | `aria-live` / `role="status"` on 9 screens of 105 | Stage 09 (Design System) |
+| ~~4~~ | ~~What a screen reader is told on change~~ | ~~`aria-live` / `role="status"` on 9 screens of 105~~ | **Re-measured and replaced by item 24, 2026-08-02.** The count was right and the conclusion drawn from it was not: both trees carry the same 9 live regions and the toast already announces itself. What is missing is the form-error axis |
 | 5 | Page weight, font swap, layout shift | never measured, at any width, in either theme | Stage 12 (Handoff) |
 
 Accessibility was checked before that table was written, because a large hole there would have
@@ -100,6 +99,21 @@ would have sent a pattern, a candidate and a misplaced class to the same place.
 
 ---
 
+## Accessibility and keyboard, found by the states pass (3)
+
+Three findings from Design System step 2. None of them is a state, which is why none of them
+was fixed there: two are markup and the third changes behaviour. They are here rather than in
+the section above because they are not questions about where a component ends. Each one was
+measured on the shipped screens, not inferred from a rule.
+
+| # | Item | Source | Note |
+|---|---|---|---|
+| 22 | The filter panel is unreachable from the keyboard | Design System step 2, 2026-08-02 | `components/filters.css` line 27 hides every option with `.filter-panel input[type=radio],.filter-panel input[type=checkbox]{display:none}`. `display:none` takes an element out of the tab order AND out of the accessibility tree, so the sort radiogroup and the category checkboxes on 104 screens can be operated by a mouse and by nothing else, and `label:has(input:focus-visible)` can never match because the input can never be focused. It is CSS-only to fix (a visually-hidden technique that keeps the box in the layout) but it CHANGES BEHAVIOUR: eight or so new tab stops appear per screen, which is a product decision and not a state |
+| 23 | A multi-outcome row is a `<div>` that answers a click | Design System step 2, 2026-08-02 | `.opt-row` in `ui-visual/event-detail-multi.html` carries a JS click handler that loads the outcome into the bet panel, and it is a `<div>` with no `tabindex`, no role and no key handler. A person navigating by keyboard can still reach the YES and NO buttons inside it, so the function is not lost, but the row as a target does not exist for them. It is recorded in `_levels.STATIC` under `options` as the reason that component gets no states. **The fix is markup, so it belongs to the grey tree first** (`wireframes/` decides structure, gate 18 compares the two), which is why a states pass could not close it |
+| 24 | What a screen reader is told when something changes, re-measured | Design System step 2, 2026-08-02, replacing item 4 | Item 4 read "`aria-live` / `role=status` on 9 screens of 105; a toast appears and announces nothing". Measured this pass in BOTH trees: the 9 screens are identical in grey and in colour, and the toast on `toasts.html` already carries `role="status" aria-live="polite"` and `role="alert" aria-live="assertive"` on its two groups. So the premise as written is closed. What is actually missing is the FORM ERROR axis: `aria-invalid` on 0 of 105 screens and `aria-describedby` on 0 of 105, while `deposit-minimum-not-met`, `event-detail-bet-error` and `sign-in-error` all ship a visible error message that is tied to no field. `aria-expanded` at 0 is correct and not a gap: every disclosure here is a native `<details>` |
+
+---
+
 ## Closed
 
 | Item | Closed by |
@@ -107,4 +121,5 @@ would have sent a pattern, a candidate and a misplaced class to the same place.
 | Self-hosting the three font families (opened step 7b as "an open decision, not a silent default") | Stage 09 step 8, 2026-07-28 - 18 woff2 in `assets/fonts/`, gate 20 |
 | The bottom sheet on mobile shipping only in the grey tree (recorded step 7e as a product decision) | Stage 09 step 8, 2026-07-28 - `:modal` geometry under 640px |
 | The win overlay h2 clipped to "u were right" (found in step 6b, logged for step 7) | Stage 09 step 7, 2026-07-27 - `overflow:clip` on thirteen stones |
+| 52 skeleton marks rendering at zero size on 5 loading screens (opened item 20 the same day) | Stage 09 step 13, 2026-08-02 - css only, eight lines of base rules in `skeleton.css`. The markup could not be the fix: a painted screen has a grey twin frozen since stage 04 and gate 18 compares them, so `<span class="sk-line">` stays a span and `display:block` makes it a box. **0 of 482 marks now draw at zero.** Measured on all 19 screens that carry a mark, three widths: 14 of 19 identical to the property, and the 5 that changed are the 5 the item named |
 | The dialog family, for `signin` and `outcome-dialog` (opened as item 15) | Stage 09 step 11, 2026-08-02 - folded into `dialog.css` as variants. 36 components, and the 4 rules land at the END of the file because two of them tie `dialog.app-dialog:modal` on specificity. 0 of 15,585 measured elements moved |
