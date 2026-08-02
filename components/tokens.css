@@ -414,9 +414,19 @@
    ========================================================================== */
 
 /* ==========================================================================
-   2. SEMANTIC - colour roles only
+   2. SEMANTIC - colour roles, and the two opacities a theme has to answer for
    Each role names WHY the colour is there, so a theme can move it without a
    component knowing. Read out of the usage table in ui-kit/docs/tokens-audit.md.
+
+   It said "colour roles only" until the states pass, and the exception is worth
+   the sentence. The rule in CLAUDE.md is that colour is the only thing with a
+   second level, because a radius or a gap has nothing for a theme to override.
+   An opacity has: it blends an element toward whatever is behind it, and the
+   ground is the one thing a theme changes. The same .45 measures 3.79:1 on
+   graphite and 2.48:1 on chalk, so the value being written is not the value
+   being seen, and a role is the only place that difference can be recorded.
+   Both are written out below rather than left to inherit, which is the point:
+   a token declared once here would silently hand the dark number to daylight.
 
    The selector carries [data-theme="dark"] as well as :root so that a theme is
    not only a page-level state. Any element can be marked with either theme and
@@ -625,7 +635,11 @@
   --glow-focus:var(--brass-a16);        /* from: the focus ring on a field */
   --focus-ring:var(--brass-400);        /* same value as --text-brass for now: the ring is not a word,
                                            and the day a states pass gives focus its own colour the
-                                           links must not follow it .           From: :focus-visible, declared once in base.css */
+                                           links must not follow it .           From: :focus-visible, declared once in base.css.
+                                           MEASURED in the browser on 21 kinds of control, not computed
+                                           from the hex: 6.98:1 on a control, 7.80:1 on a panel, 8.71:1 on
+                                           the canvas. A ring answers to 3:1, so the worst ground clears
+                                           AA more than twice over */
   --line-brass-soft:var(--brass-a45);   /* from: the quieter hover border */
   --tint-hover:var(--white-a06);        /* from: the quiet hover wash on a chip (cat-nav condensed,
                                            feed subfilter). It was reading --bevel-faint, which is
@@ -658,6 +672,24 @@
      the two grounds has to keep showing both, whichever one you are standing on */
   --swatch-dark:var(--graphite-930);    /* from: the two swatches on the theme switch itself */
   --swatch-light:var(--chalk-930);    /* from: the pale half of the theme switch */
+
+  /* ---- states: the two ways a control stops taking input ----
+     They are two roles and not one, and the markup is what decides it. A field
+     you cannot type into is UNAVAILABLE and may go quiet. The Necessary cookie
+     category is <input type="checkbox" checked disabled>: it is not unavailable,
+     it is LOCKED ON, and the whole message is that it is on, so muting it to the
+     point where the tick is hard to read would mute the answer rather than the
+     control. One number for both would have taken the second to .45 and made a
+     consent screen say less. */
+  --opacity-disabled:.45;  /* from: 3 rules, the amount field in the dialog and in the bet panel,
+                              and the toggle switch that cannot be flipped. Those three carried
+                              .45, .45 and .42, which is drift and not two decisions: nothing in
+                              the product distinguishes a field you cannot type in from a switch
+                              you cannot flip. Renders at 3.79:1 against the ground behind it here */
+  --opacity-locked:.7;     /* from: 1 rule, the checkbox of a cookie category that cannot be
+                              turned off. Higher on purpose: its value is the message. A role with
+                              one consumer is normal in this file (--bg-prompt-hover has one too);
+                              a role that means two things is not */
 }
 
 /* ==========================================================================
@@ -770,7 +802,17 @@
   --text-icon-strong:var(--ink-700);    /* 10.3:1 */
   --text-chip-hover:var(--ink-900);     /* 13.9:1 */
   --text-brass:var(--brass-700);        /* 5.3:1 over the deepest brass tint, 6.5:1 on bare stone */
-  --focus-ring:var(--brass-700);        /* 5.3:1, and a ring answers to 3:1 */
+  --focus-ring:var(--brass-700);        /* 6.96:1 to 7.40:1 on the product's own grounds, measured on the
+                                           same 21 controls. The 5.3:1 written here before was computed
+                                           against one reference ground rather than the ones the ring
+                                           actually stands on.
+                                           ONE GROUND FAILS, AND IT IS NOT THE PRODUCT'S: the course
+                                           roadmap sidebar stays graphite in daylight on purpose, and a
+                                           ring that followed the theme lands on it at 2.39:1. The theme
+                                           switch already dodges this with its own --chrome-accent ring in
+                                           course-chrome.css; the other rows in that panel do not. Recorded
+                                           here rather than fixed here: the sidebar is course chrome, not
+                                           product, and the fix belongs in its file */
   --text-brass-lit:var(--brass-700);    /* 5.3:1 */
   --text-brass-chip:var(--brass-700);   /* 5.3:1 */
   --text-brass-vol:var(--brass-700);    /* 5.3:1 */
@@ -865,6 +907,21 @@
   --surface-grain:var(--grain-fine-lit);
   --surface-grain-coarse:var(--grain-coarse-lit);
   --mark-logo:var(--logo-tick-dark);
+
+  /* ---- states ----
+     The numbers are the same as on graphite and they are written out anyway,
+     which is the whole reason this pair is a role. A token declared once in
+     section 2 would be inherited here in silence, and silence is indistinguishable
+     from a decision. This IS the decision, and it was measured before it was
+     made: the same .45 lands at 3.79:1 on graphite and 2.48:1 on chalk, because
+     an opacity blends toward the ground and the ground is what a theme moves.
+     Daylight mutes harder for the same number. It is kept anyway, because a
+     disabled control is exempt from the contrast minimum by WCAG 1.4.3 and the
+     alternative is two numbers that make the same control look like two
+     different states depending on the hour. Recorded rather than tuned: the day
+     this becomes a complaint, the number to change is here and so is its cost. */
+  --opacity-disabled:.45;  /* 2.48:1 on chalk against the field behind it */
+  --opacity-locked:.7;     /* the locked checkbox, same reasoning as above */
 
   /* The course chrome is deliberately absent. It is the frame the stage is shown
      in, not the product, and section 2 already keeps it apart for exactly this

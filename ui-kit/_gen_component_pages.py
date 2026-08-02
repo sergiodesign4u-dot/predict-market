@@ -228,8 +228,11 @@ def parse_component(name):
     rules = len(re.findall(r"\{", prose_free))
     owned = sorted(c for c in SUBJECTS.get(name, {}) if OWNER.get(c) == name)
     screens = sorted([p for p, cs in uv_classes.items() if cs & set(owned)])
+    # prose_free and not body: a comment sitting above a rule is part of the
+    # match, so the selector cell used to print a paragraph of reasoning and then
+    # the selector. Everything else on this page already reads the stripped text.
     states = []
-    for m in re.finditer(r"([^{}\n][^{}]*)\{([^{}]*)\}", body):
+    for m in re.finditer(r"([^{}\n][^{}]*)\{([^{}]*)\}", prose_free):
         sel = " ".join(m.group(1).split())
         if STATE_PAT.search(sel) and not sel.startswith("@"):
             states.append((sel, m.group(2).strip()))
@@ -288,6 +291,56 @@ def states_table(states):
         if len(states) > 24 else ""
     return ('<table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead>'
             f"<tbody>{rows}</tbody></table>{more}")
+
+
+# The tokens a STATE reads, shown on both grounds at once. A state that is a
+# token and not a style is only provable one way: put the token on the page in
+# both themes and let the browser resolve it. The table above says which selector
+# moves what; this says what the value it moves to actually looks like, and it is
+# the only part of the page that can catch a token declared in one theme and not
+# the other, because that failure has no appearance in the file at all. The
+# mechanism is the one section 2 of tokens.css was written for: any element may
+# carry data-theme and its subtree resolves in that theme, which is what lets
+# both grounds stand on one page in whichever theme the reader is in.
+def state_tokens(states, roles):
+    """Roles that only a state rule reads, in the order they appear."""
+    seen, out = set(), []
+    for sel, decl in states:
+        for m in re.findall(r"var\((--[\w-]+)\)", decl):
+            if m in seen:
+                continue
+            seen.add(m)
+            if m in SEM or m.startswith("--opacity-"):
+                out.append(m)
+    return out
+
+
+def state_grounds(tokens):
+    if not tokens:
+        return ""
+    def sample(tok):
+        if tok.startswith("--opacity-"):
+            return ('<span class="ck-st-row"><span class="ck-st-chip" style="opacity:var(%s)">'
+                    'Confirm bet</span><span class="ck-st-chip">Confirm bet</span>'
+                    '<em>muted, and the same control at rest</em></span>' % tok)
+        if "focus" in tok or "ring" in tok:
+            return ('<span class="ck-st-row"><span class="ck-st-chip" '
+                    'style="outline:var(--ring) solid var(%s);outline-offset:var(--ring)">'
+                    'Confirm bet</span><em>the ring, at the width and offset it ships with</em>'
+                    '</span>' % tok)
+        return ('<span class="ck-st-row"><span class="ck-st-chip" style="background:var(%s)">'
+                'Confirm bet</span><em>the value this state moves to</em></span>' % tok)
+    figs = []
+    for ground, label in (("dark", "Vault"), ("light", "Daylight")):
+        rows = "".join('<div class="ck-st-tok"><code>%s</code>%s</div>' % (esc(t), sample(t))
+                       for t in tokens)
+        figs.append('<div class="tk-theme-fig" data-theme="%s"><b>%s</b>%s</div>'
+                    % (ground, label, rows))
+    return ('<h3 class="tk-subh">The tokens these states read, on both grounds</h3>'
+            '<p class="tk-note">Neither panel is a screenshot. Each carries <code>data-theme</code> '
+            'itself, so the token resolves inside it and a role that was given a value in only one '
+            'theme shows up here as a control that does not move.</p>'
+            '<div class="tk-theme-grid">%s</div>' % "".join(figs))
 
 
 def role_swatches(roles):
@@ -413,7 +466,7 @@ for path in sorted(COMP.glob("*.css")):
             "Colour through a role, geometry straight from a primitive."))),
         rules=c["rules"], nclasses=len(c["classes"]), nscreens=len(c["screens"]),
         nuv=len(uv_classes),
-        live=live(name), inside=elsewhere(name), states=states_table(c["states"]),
+        live=live(name), inside=elsewhere(name), states=states_table(c["states"]) + state_grounds(state_tokens(c["states"], c["roles"])),
         roles=role_swatches(c["roles"]), classes=class_table(c["classes"]),
         screens=screen_links(c["screens"]), css=esc(c["css"]))
     (KIT / (name + ".html")).write_text(page, encoding="utf-8")

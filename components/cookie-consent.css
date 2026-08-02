@@ -1,7 +1,7 @@
 /* components/cookie-consent.css
    Component: cookie-consent. Classes: .cc-actions, .cc-banner, .cc-btn, .cc-cat, .cc-cat-desc, .cc-cat-main, .cc-cat-name, .cc-cats, .cc-inner, .cc-manage, .cc-note, .cc-page, .cc-ph, .cc-ph-line, .cc-policy, .cc-text, .w90.
 
-   Reads: --bg-card-quiet, --bg-control, --bg-control-hover, --border-hairline, --color-action, --edge-groove-light, --glow-brass, --line-brass-soft, --shadow-ink, --text-brass, --text-muted, --text-primary
+   Reads: --bg-card-quiet, --bg-control, --bg-control-hover, --border-hairline, --color-action, --edge-groove-light, --glow-brass, --line-brass-soft, --opacity-locked, --shadow-ink, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/cookie-consent.html
    Stands on: 2 ui-visual screens (cookie-consent.html, toasts.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -30,4 +30,4 @@
 .app-case .cc-cat-name{font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);color:var(--text-primary)}
 .app-case .cc-cat-desc{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:var(--space-8) 0 0}
 .app-case .cc-cat input[type="checkbox"]{width:var(--icon-18);height:var(--icon-18);accent-color:var(--color-action);flex:0 0 auto;cursor:pointer}
-.app-case .cc-cat input[type="checkbox"]:disabled{cursor:not-allowed;opacity:.7}
+.app-case .cc-cat input[type="checkbox"]:disabled{cursor:not-allowed;opacity:var(--opacity-locked)}

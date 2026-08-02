@@ -1,7 +1,7 @@
 /* components/input.css
    Component: input. Classes: .addr, .amount-input, .amount-row, .field-label, .quick.
 
-   Reads: --bg-control, --bg-control-hover, --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --focus-ring, --glow-focus, --line-brass-soft, --line-brass-strong, --result-won, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-16
+   Reads: --bg-control, --bg-control-hover, --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --focus-ring, --glow-focus, --line-brass-soft, --line-brass-strong, --opacity-disabled, --result-won, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-16
    Stand:  ui-kit/input.html
    Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -25,7 +25,7 @@ dialog.app-dialog .field-label{color:var(--text-muted)}
 dialog.app-dialog .amount-input{min-height:var(--control-44);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10);font-family:var(--font-display);box-sizing:border-box;transition:border-color var(--dur-quick) ease,box-shadow var(--dur-quick) ease,opacity var(--dur-quick) ease}
 dialog.app-dialog .amount-input:hover:not(:disabled){border-color:var(--line-brass-strong)}
 dialog.app-dialog .amount-input:focus{outline:none;border-color:var(--color-action);box-shadow:0 0 0 3px var(--glow-focus)}
-dialog.app-dialog .amount-input:disabled{opacity:.45;cursor:not-allowed;background:var(--bg-surface)}
+dialog.app-dialog .amount-input:disabled{opacity:var(--opacity-disabled);cursor:not-allowed;background:var(--bg-surface)}
 dialog.app-dialog .quick button{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
 dialog.app-dialog .quick button{cursor:pointer;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 dialog.app-dialog .quick button:hover:not(.sel){border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)}
@@ -41,7 +41,7 @@ dialog.app-dialog .amount-input{background:var(--bg-well)}
 /* this one has to out-specify the outline:none the field above sets, so it cannot come from
    the one-line default in base.css */
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
-.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:disabled{opacity:.45;cursor:not-allowed;border-bottom-color:var(--border-hairline)}
+.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:disabled{opacity:var(--opacity-disabled);cursor:not-allowed;border-bottom-color:var(--border-hairline)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input::placeholder{color:var(--text-muted)}
 .app-case :is(.bet-panel,.bet-sheet) .quick{margin-top:0;justify-content:flex-end;flex-wrap:wrap}
 dialog.app-dialog .sheet-body .quick{margin-top:var(--space-12)}

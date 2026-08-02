@@ -368,3 +368,10 @@
   .tk-doc-cols{grid-template-columns:minmax(0,1fr)}
   .tk-doc-toc{order:0;position:static;max-height:38vh}
 }
+
+/* the state tokens on both grounds (component pages, section States) */
+.ck-st-tok{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-8);margin-top:var(--space-12)}
+.ck-st-tok>code{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-brass);flex:0 0 auto}
+.ck-st-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-8)}
+.ck-st-chip{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);padding:var(--space-8) var(--space-12);border-radius:var(--radius-6);background:var(--color-action);color:var(--text-on-brass)}
+.ck-st-row em{font-style:normal;font-size:var(--text-11);color:var(--text-muted)}

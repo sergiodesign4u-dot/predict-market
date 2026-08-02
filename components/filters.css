@@ -1,7 +1,7 @@
 /* components/filters.css
    Component: filters. Classes: .filter-menu, .filter-panel, .reverse-row, .toggle.
 
-   Reads: --bg-control, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --control-knob, --shadow-ink, --text-brass, --text-muted, --text-primary, --text-strong
+   Reads: --bg-control, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --control-knob, --opacity-disabled, --shadow-ink, --text-brass, --text-muted, --text-primary, --text-strong
    Stand:  ui-kit/filters.html
    Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -30,7 +30,7 @@
 .toggle[role=switch]::after{content:'';position:absolute;top:2px;left:2px;width:var(--icon-16);height:var(--icon-16);border-radius:50%;background:var(--text-muted);transition:left var(--dur-quick) var(--ease-out),background var(--dur-quick)}
 .toggle[role=switch][aria-checked=true]{background:var(--color-action);border-color:var(--color-action)}
 .toggle[role=switch][aria-checked=true]::after{left:20px;background:var(--control-knob)}
-.toggle[role=switch][aria-disabled=true]{opacity:.42;cursor:not-allowed}
+.toggle[role=switch][aria-disabled=true]{opacity:var(--opacity-disabled);cursor:not-allowed}
 /* Target size follows the POINTER, not the viewport. Step 7 wrote that rule and moved two
    files; these stayed bound to a 640px viewport, so a touch tablet or a touch laptop got the
    36px control. A fine pointer keeps 36, which clears 2.5.8 (24x24) with room. */
