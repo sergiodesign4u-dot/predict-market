@@ -70,11 +70,32 @@ def check(name, ok, detail=""):
 
 
 # 1 -------------------------------------------------------------- untouched --
-# components/ and wireframes/ may not move at all. ui-visual/ is allowed exactly
-# one kind of edit: the course sidebar, which is chrome wrapped AROUND the screen
-# and not the screen. So the file is compared with HEAD twice, once as it is and
-# once with the <aside> masked out. If masking makes the difference disappear,
-# only the tree moved and the product did not.
+# The three zones hold different kinds of file, so "untouched" has to mean a
+# different thing in each. What decides it is not the folder, it is whether the
+# file IS a screen or WRITES one.
+#
+#   components/  no exception at all. A .css here is not a description of the
+#                product, it is the thing that paints it, so the file and the
+#                product are one object and there is no second copy to measure
+#                against.
+#   wireframes/  the .html files are the screens and are compared whole, byte
+#                for byte. The .py files under _generators/ are tooling.
+#   ui-visual/   the .html files are the screens, but they are allowed exactly
+#                one kind of edit: the course sidebar, which is chrome wrapped
+#                AROUND the screen and not the screen. So the file is compared
+#                with HEAD twice, once as it is and once with the <aside> masked
+#                out. If masking makes the difference disappear, only the tree
+#                moved and the product did not. Everything else in the zone is
+#                tooling.
+#
+# So two zones have a tooling bucket and one does not, and the argument is the
+# same sentence in both of them: a generator is not a screen, and whatever it
+# did to the screens is already measured on the pages it wrote. The bucket was
+# open to ui-visual/ only, which meant editing a COMMENT in a wireframes
+# generator failed the gate, and that is worth fixing for a reason that has
+# nothing to do with tidiness: a gate that fails on something harmless teaches
+# you to wave it through, and after the third false positive it has stopped
+# meaning anything.
 ASIDE = re.compile(r'<aside class="sidebar" id="rmSidebar">.*?</aside>', re.DOTALL)
 # the theme boot script is chrome by the same argument as the sidebar: it is
 # wrapped around the screen, sets an attribute on <html> and paints nothing.
@@ -85,6 +106,16 @@ BOOT = re.compile(r'\n?<script id="uvTheme">.*?</script>', re.DOTALL)
 def bare(html):
     return BOOT.sub("", ASIDE.sub("", html))
 
+
+def is_tooling(zone, path):
+    """A file in this zone that writes screens rather than being one."""
+    if zone == "ui-visual":
+        return not path.endswith(".html")
+    if zone == "wireframes":
+        return path.startswith("wireframes/_generators/") and path.endswith(".py")
+    return False           # components/ is the product, not a description of it
+
+
 moved, chrome_only, tooling = [], [], []
 for zone in ("components", "wireframes", "ui-visual"):
     # not .strip(): the leading space of " M path" is part of the status field.
@@ -94,13 +125,11 @@ for zone in ("components", "wireframes", "ui-visual"):
         status, path = line[:2].strip(), line[2:].strip()
         if status == "??":
             continue                      # a new file adds nothing to a screen
+        if status == "M" and is_tooling(zone, path):
+            tooling.append(path)
+            continue
         if zone != "ui-visual" or status != "M":
             moved.append(path)
-            continue
-        if not path.endswith(".html"):
-            # a generator in ui-visual/ is tooling. What it did to the screens is
-            # already measured by the mask check on the pages it wrote.
-            tooling.append(path)
             continue
         was = subprocess.run(["git", "show", "HEAD:" + path],
                              cwd=ROOT, capture_output=True, text=True).stdout
