@@ -1,7 +1,7 @@
 /* components/footer.css
    Component: footer. Classes: .app-footer, .footer-brand, .footer-col, .footer-cols, .footer-inner, .footer-legal, .footer-logo, .footer-popular, .footer-tagline, .footer-top, .lang-menu, .legal-links, .popular-links, .social-row, .sub-label.
 
-   Reads: --bg-control, --bg-surface, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --mark-logo, --text-brass, --text-muted, --text-primary
+   Reads: --bg-control, --bg-pressed, --bg-surface, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --mark-logo, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/footer.html
    Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -42,6 +42,15 @@
 .app-footer .footer-inner{max-width:var(--container-max);margin:0 auto;box-sizing:border-box;padding:var(--space-20) var(--gutter)}
 .app-footer a{color:var(--text-muted);text-decoration:none}
 .app-footer a:hover,.popular-links a:hover,.footer-col a:hover,.legal-links a:hover{color:var(--text-brass);text-decoration:none}
+/* Press, the axis this file was missing. Every one of these is a nav row, and the footer is
+   read on a phone as often as on a desktop, where the hover above never fires. It mirrors that
+   hover's selector list exactly, so the two sit at equal specificity and source order decides.
+   The ground alone is not enough HERE and the measurement is why: --bg-pressed is 1.04:1
+   against the footer on graphite and 1.05:1 on chalk, which is the whole system's press step
+   and reads well across a 47px chip, but these links carry no padding, so the same step behind
+   one line of 11px text is a value that renders as nothing. So the press also carries the brass
+   the hover gives, and a thumb gets the answer a pointer already had. Both roles were here. */
+.app-footer a:active,.popular-links a:active,.footer-col a:active,.legal-links a:active{background:var(--bg-pressed);color:var(--text-brass)}
 .footer-popular{border-top:1px solid var(--border-hairline)}
 .footer-popular h2,.footer-col h2{color:var(--text-primary)}
 .footer-tagline{color:var(--text-muted)}
@@ -49,6 +58,24 @@
 .social-row a{background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);transition:background var(--dur-base) ease,border-color var(--dur-base) ease,transform var(--dur-base) ease}
 .social-row a:hover{background:color-mix(in oklab,var(--color-action) 20%,var(--bg-control));border-color:var(--text-brass);transform:translateY(-2px)}
 .social-row a:hover .ic{stroke:var(--text-primary)}
+/* The social link is the one lifted control in this file, and the lift stays: it is the Vault's
+   floating language, it is composited, and it shifts no neighbour. A HELD link settles instead
+   of hovering in mid-air, so the press puts it back on the ground and takes the quiet pressed
+   fill every icon button in the system takes. The transform is restated rather than removed
+   because the hover is still matched while the pointer is down. Equal specificity to the hover
+   above (0,2,1), so this has to stay after it, and after the link rule above it, whose brass
+   text colour it inherits and does not need. The second line is the same answer for the mark
+   inside: it mirrors the icon hover, so a tap brightens the glyph the way a pointer does. */
+.social-row a:active{background:var(--bg-pressed);transform:translateY(0)}
+.social-row a:active .ic{stroke:var(--text-primary)}
+/* The language picker is a <details> summary, so it presses the way every summary presses. It
+   is answered HERE and not in filters.css because the footer stands OUTSIDE .app-case, and both
+   the shared summary hover and the shared summary press are scoped to that wrapper: the footer's
+   copy of the control is reached by neither. footer.css is imported after filters.css and this
+   sits at 0,2,1 against the shared rest state's 0,1,1, so it wins on specificity and on order.
+   The summary is flat at rest, so there is nothing to unlift. It still has no hover, for exactly
+   the same scoping reason, and that answer belongs to filters.css rather than to this file. */
+.lang-menu summary:active{background:var(--bg-pressed)}
 .footer-logo{width:auto;height:auto;padding:0;background:none;border:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:-.02em;color:var(--text-primary)}
 .footer-legal{border-top:1px solid var(--border-hairline)}
 .app-footer{border-top:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}

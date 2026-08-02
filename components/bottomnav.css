@@ -1,7 +1,7 @@
 /* components/bottomnav.css
    Component: bottomnav. Classes: .bn-bal, .bottom-nav.
 
-   Reads: --bg-control, --bg-surface, --border-hairline, --edge-groove-dark, --edge-groove-light, --text-brass, --text-muted, --text-primary
+   Reads: --bg-control, --bg-pressed, --bg-surface, --border-hairline, --edge-groove-dark, --edge-groove-light, --text-brass, --text-muted, --text-primary, --tint-hover
    Stand:  ui-kit/bottomnav.html
    Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -25,5 +25,33 @@
 .bottom-nav button{color:var(--text-muted)}
 .bottom-nav li[aria-current="page"] button{background:transparent;color:var(--text-brass)}
 .bottom-nav li[aria-current="page"] .ic{stroke:var(--text-brass)}
+/* THIS BAR HAD NO STATE ON EITHER AXIS, and it is the one control in the product that is only
+   ever touched: it is display:none from 640px up. So the press is the state that matters here,
+   and the hover is the one nobody will see; a tap used to get no reply at all, on all 104
+   screens, on the only navigation a phone has.
+   THE GROUND ANSWERS AND THE COLOUR DOES NOT. In this bar colour is the current-tab signal and
+   nothing else, muted against brass. If pointing at a tab pulled its label toward the brass,
+   the one thing the bar says at a glance would be said by two different things, and on a phone
+   a hover can stick after a tap, so the wrong tab would keep claiming to be current. The two
+   roles are the ones the chip family already uses: --tint-hover, a translucent wash that
+   lightens on graphite and darkens on chalk by itself, and --bg-pressed, the one press ground
+   in the system. Measured on this bar they are rgba(255,255,255,.06) and #191b1f over #1c1f24
+   in the dark, #211f19 at 10 per cent and #f3f1eb over #f8f6f0 in the light, so on chalk both
+   darken and the wash is the bigger step of the two. That inverts nothing under a finger: a
+   tap fires both states at once and the press, later here at equal specificity, is the one
+   that shows. It would only read backwards as a hover LEFT behind after the finger lifts,
+   which is the platform's sticky-hover behaviour and is every hover's problem, not this one's.
+   Both rules name the <li> to reach (0,2,2), which is what the current-page rule above costs.
+   Written at the button's own (0,2,1) they would die on the tab you are standing on, and that
+   is the tab a person taps most. Source order decides the tie, so they stay here, below it. */
+.bottom-nav li button:hover{background:var(--tint-hover)}
+.bottom-nav li button:active{background:var(--bg-pressed)}
+/* No :focus-visible here, and it was measured rather than assumed, because a fixed bar is where
+   a ring gets cut. Chromium at 360x720, tab bar stuck: the base.css ring computes to 2px solid
+   --focus-ring at 2px offset, no ancestor of the button clips anything (overflow is visible the
+   whole way up to <body>), and the nav's own z-index paints the ring over the feed rather than
+   under it, so the top stroke shows 3px above the bar. Only the bottom stroke falls past the
+   viewport edge, 4px of it, and a ring with three sides on screen is a ring you can see. An
+   inset offset would buy that fourth stroke by moving the other three onto the control. */
 .bn-bal{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
 .bottom-nav{border-top:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}

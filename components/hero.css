@@ -1,7 +1,7 @@
 /* components/hero.css
    Component: hero. Classes: .brand-tile, .bt-by, .bt-photo, .bt-quote, .bt-tick, .bt-veil, .feed-hero, .hero-duo, .hero-feature, .hero-hot, .hero-main, .hero-promo, .hero-side, .hero-trust, .hf-area, .hf-bar, .hf-btn, .hf-chart, .hf-chart-cap, .hf-chart-legend, .hf-cta, .hf-eyebrow, .hf-foot, .hf-graph, .hf-graph-wrap, .hf-info, .hf-line, .hf-no, .hf-odds, .hf-odds-row, .hf-photo, .hf-tag, .hf-title, .hf-veil, .hf-vol-area, .hf-vol-line, .hf-why, .hf-yes, .hh-all, .hh-head, .hh-list, .hh-name, .hh-prob, .hh-rank, .hh-vol, .ht-art, .ht-badge, .ht-body, .no, .vol, .yes.
 
-   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-brass, --border-hairline, --color-action, --color-action-lit, --line-grid, --mask-solid, --outcome-line-no, --outcome-line-yes, --outcome-no, --outcome-no-figure, --outcome-no-fill, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-brass-vol, --text-muted, --text-primary, --text-strong, --tint-brass-60, --veil-brand, --veil-photo-edge, --veil-photo-from, --veil-photo-mid, --veil-photo-to
+   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-pressed, --border-brass, --border-hairline, --color-action, --line-grid, --mask-solid, --outcome-line-no, --outcome-line-yes, --outcome-no, --outcome-no-figure, --outcome-no-fill, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-lit, --text-brass-vol, --text-chip-hover, --text-muted, --text-primary, --tint-brass-60, --veil-brand, --veil-photo-edge, --veil-photo-from, --veil-photo-mid, --veil-photo-to
    Stand:  ui-kit/hero.html
    Stands on: 2 ui-visual screens (event-feed.html, how-it-works.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -15,6 +15,14 @@
     0 24px 48px -30px var(--shadow-ink-85),0 10px 22px -16px var(--shadow-ink-72)}
 .hero-trust,.hero-feature{transition:transform var(--dur-slow) var(--ease-out),box-shadow var(--dur-slow) var(--ease-out)}
 .hero-trust:hover{transform:translateY(-2px)}
+/* The tile is a claim, not a control: there is no link and no button inside it,
+   so no ground may change under a finger, and the only thing a press can
+   honestly say is that the lift above is not stuck. It moves the tile back to
+   where it already rests rather than anywhere new, which is why it is the one
+   transform in this pass. (.load-more carries the same declaration and is not a
+   precedent for it: the lift that one neutralised was deleted in step 7, so it
+   moves a button from where it is to where it is. This lift is live.) */
+.hero-trust:active{transform:translateY(0)}
 .hero-feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr)}
 .hf-info{position:relative;overflow:clip;padding:var(--space-20) var(--space-24);display:flex;flex-direction:column;min-width:0}
 .hf-photo{position:absolute;inset:var(--hairline) 0 0 var(--hairline);object-fit:cover;object-position:center top;opacity:.42;z-index:var(--z-under)}
@@ -24,7 +32,24 @@
 .hf-eyebrow{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-semibold);letter-spacing:.07em;text-transform:uppercase;color:var(--text-brass-lit);margin-bottom:var(--space-12)}
 .hf-eyebrow svg{width:var(--icon-16);height:var(--icon-16);fill:var(--text-brass-lit)}
 .hf-title{font-family:var(--font-display);font-size:var(--display-hero);font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:-.01em;color:var(--text-primary);text-decoration:none;margin:0 0 var(--space-8);text-wrap:balance}
-.hf-title:hover{color:var(--text-strong)}
+/* A STATE THAT ONLY EXISTS IN ONE THEME DOES NOT EXIST. This read --text-strong,
+   which is white on graphite and INK ON CHALK, and the rest colour here is
+   --text-primary, which is ink on chalk too. So in the Vault the headline lit up
+   and in daylight the hover painted 14.85:1 over 14.85:1: nothing, in the theme
+   nobody was checking. Measured, not guessed.
+   The answer is not a brighter ink, because there is none left in daylight; it is
+   the system's own signal for "this is a link", which moves in both grounds. */
+.hf-title:hover{color:var(--text-brass)}
+/* A BARE LINK HAS NO GROUND, so it cannot take the system's --bg-pressed. This
+   headline is a flex item spanning the whole info column over the photograph,
+   and an opaque stone behind three display lines reads as a text selection, not
+   as a control being held. The ink steps down instead: quiet is a colour here,
+   never an opacity, so the thing every other product fades is written as the
+   role that was already measured for being quiet. Same answer for the three
+   text links of this file, and it is the only one that works on a touch screen,
+   where there is no hover state to have left. Measured on the veiled photo it
+   stands on: 6.60:1 in the Vault, 6.41:1 in daylight. */
+.hf-title:active{color:var(--text-muted)}
 .hf-why{font-size:var(--text-14);color:var(--text-muted);line-height:var(--leading-base);margin:0 0 var(--space-16)}
 .hf-odds{margin-top:auto}
 .hf-bar{height:var(--size-4);border-radius:var(--radius-pill);background:var(--outcome-no);overflow:hidden}
@@ -41,6 +66,23 @@
 .hf-btn.no{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
 .hf-btn.yes:hover{background:var(--outcome-yes-fill-strong)}
 .hf-btn.no:hover{background:var(--outcome-no-fill-strong)}
+/* THE FEATURED PAIR IS THIS FILE'S, NOT yesno.css's, which is worth writing
+   down because the two look like one control. Its markup is
+   .hf-cta > a > button.hf-btn.yes, and every selector in yesno.css hangs off
+   .yesno, so not one of them reaches this button: the press settled there had to
+   be brought here or the largest YES on the feed would be the only one with no
+   answer to a finger.
+   The value is that one exactly. A held YES keeps its outcome colour and moves
+   only the stone under it, because settling onto --bg-pressed takes the green
+   away under the thumb and reads as "it let go", the opposite of what holding
+   YES means. The border is not restated the way it is there: this hover leaves
+   the rest edge alone, so there is nothing for a touch screen to miss.
+   Measured on the label each one carries: 5.72:1 YES and 4.91:1 NO in the
+   Vault, 5.38 and 5.13 in daylight, every one of them above the hover it
+   follows, and the press ground is opaque, so the photograph behind the card
+   cannot change those numbers. */
+.hf-btn.yes:active{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-pressed))}
+.hf-btn.no:active{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-pressed))}
 .hf-chart{position:relative;display:flex;flex-direction:column;padding:var(--space-16) var(--space-16) var(--space-12);min-width:0;border-left:1px solid var(--shadow-ink-45);box-shadow:inset 1px 0 0 var(--bevel-hair)}
 .hf-chart-legend{display:flex;gap:var(--space-12);justify-content:flex-end;margin-bottom:var(--space-8)}
 .hf-tag{display:inline-flex;align-items:center;gap:var(--space-8);font-family:var(--font-mono);font-size:var(--text-12)}
@@ -87,11 +129,31 @@
 .hh-list li:first-child{border-top:0;box-shadow:none}
 .hh-rank{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-13);color:var(--text-brass-lit);text-align:center}
 .hh-name{font-size:var(--text-13);color:var(--text-primary);text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.hh-name:hover{color:var(--text-strong)}
+.hh-name:hover{color:var(--text-brass)}   /* same one-theme hover as .hf-title above, same fix */
+/* The row is a grid and only the name is the link, so a stone would paint one
+   cell of five and read as a highlight on the title rather than a press on the
+   row. Ink again, for the reason written above .hf-title:active. 6.40:1 in the
+   Vault, 7.22:1 in daylight, on the hot-list card. */
+.hh-name:active{color:var(--text-muted)}
 .hh-prob{font-family:var(--font-mono);font-size:var(--text-13);color:var(--outcome-yes-text)}
 .hh-vol{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted);min-width:var(--size-40);text-align:right}
 .hh-all{margin-top:var(--space-12);font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-brass-lit);text-decoration:none;align-self:flex-start}
-.hh-all:hover{color:var(--color-action-lit)}
+/* THE WORST NUMBER THIS PASS FOUND, and it was already shipped. --color-action-lit
+   is the LIT stop of an action gradient, a pale brass meant to sit under dark ink.
+   Section 3 does not move it, because a mid-luminance metal reads on both stones.
+   As a hover COLOUR that is fine on graphite (9.57:1) and is 1.71:1 on chalk, so
+   in daylight the link vanished at the moment a person pointed at it, from 6.96:1
+   at rest. A role that does not theme is safe as a ground and not as ink.
+   --text-chip-hover is the role that already answers this: it is the chip family
+   reaching full ink, bone on graphite and ink on chalk. 14.71:1 and 14.85:1. */
+.hh-all:hover{color:var(--text-chip-hover)}
+/* The brass link goes QUIET, not deeper brass, and the reason is that no darker
+   brass says anything in both themes: --text-brass is the same value as this
+   link's rest ink in daylight, so the press would be invisible there, and
+   --color-action lands at 2.23:1 on the pale card, so it would be unreadable.
+   Muted is the one step that reads on both stones: 6.54:1 in the Vault, 7.42:1
+   in daylight. */
+.hh-all:active{color:var(--text-muted)}
 @media(max-width:980px){
   .feed-hero{grid-template-columns:1fr}
   .hero-feature{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}

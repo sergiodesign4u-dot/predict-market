@@ -49,7 +49,7 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/market.css</span>
-      <span class="tk-badge">27 rules</span>
+      <span class="tk-badge">29 rules</span>
       <span class="tk-badge">23 classes</span>
       <span class="tk-badge">9 screens</span>
     </div>
@@ -68,14 +68,14 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.app-case .market-box[open] .market-chevron</td><td class='ck-decl'>transform:rotate(180deg)</td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.app-case .market-head:hover</td><td class='ck-decl'>background:var(--bg-control)</td></tr><tr><td class='tk-role'>.app-case .market-head:active</td><td class='ck-decl'>background:var(--bg-pressed)</td></tr><tr><td class='tk-role'>.app-case .market-box[open] .market-chevron</td><td class='ck-decl'>transform:rotate(180deg)</td></tr></tbody></table><h3 class="tk-subh">The tokens these states read, on both grounds</h3><p class="tk-note">Neither panel is a screenshot. Each carries <code>data-theme</code> itself, so the token resolves inside it and a role that was given a value in only one theme shows up here as a control that does not move.</p><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><div class="ck-st-tok"><code>--bg-control</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-control)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-pressed)">Confirm bet</span><em>the value this state moves to</em></span></div></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><div class="ck-st-tok"><code>--bg-control</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-control)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-pressed)">Confirm bet</span><em>the value this state moves to</em></span></div></div></div>
   </section>
 
   <section class="tk-sec" id="roles">
     <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--outcome-no-figure)"></i><code>--outcome-no-figure</code></span><span class="ck-role"><i style="background:var(--outcome-yes-fill)"></i><code>--outcome-yes-fill</code></span><span class="ck-role"><i style="background:var(--outcome-yes-text)"></i><code>--outcome-yes-text</code></span><span class="ck-role"><i style="background:var(--text-brass-lit)"></i><code>--text-brass-lit</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-pressed)"></i><code>--bg-pressed</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--outcome-no-figure)"></i><code>--outcome-no-figure</code></span><span class="ck-role"><i style="background:var(--outcome-yes-fill)"></i><code>--outcome-yes-fill</code></span><span class="ck-role"><i style="background:var(--outcome-yes-text)"></i><code>--outcome-yes-text</code></span><span class="ck-role"><i style="background:var(--text-brass-lit)"></i><code>--text-brass-lit</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
@@ -100,14 +100,25 @@ push();});})();</script>
     <details class="ck-src"><summary>components/market.css</summary><pre>/* components/market.css
    Component: market. Classes: .market-body, .market-box, .market-chevron, .market-depth, .market-head, .market-stats, .market-title, .md-amt, .md-bar, .md-get, .md-price, .md-row, .md-row-head, .md-sub, .md-table, .md-title, .ms-label, .ms-no, .ms-up, .ms-val, .ms-yes.
 
-   Reads: --edge-groove-dark, --outcome-no-figure, --outcome-yes-fill, --outcome-yes-text, --text-brass-lit, --text-muted, --text-primary
+   Reads: --bg-control, --bg-pressed, --edge-groove-dark, --outcome-no-figure, --outcome-yes-fill, --outcome-yes-text, --text-brass-lit, --text-muted, --text-primary
    Stand:  ui-kit/market.html
    Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .app-case .market-box{border:0;padding:0}
-.app-case .market-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none}
+.app-case .market-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none;transition:background var(--dur-quick) ease}
 .app-case .market-head::-webkit-details-marker{display:none}
+/* The disclosure had no pointer state at all, on nine screens. Its only feedback was the chevron
+   rotating, and that is the RESULT of the click: until the body opens, nothing tells a person the
+   row is a control rather than a label. Hover takes the quiet control fill and press the held
+   ground, the same pair the filters chip carries, so a summary answers the pointer the same way
+   wherever it stands in the product. Both read on the plate this sits on: the fill lifts off it
+   and the press settles back toward it without landing on it, on either stone.
+   Colour only. The row carries no padding of its own, so the band IS the row, and giving it one
+   to sit in would move every screen that has this section. Press is equal specificity to hover,
+   so it has to stay after it. Nothing disables a market you can expand, so no disabled skin. */
+.app-case .market-head:hover{background:var(--bg-control)}
+.app-case .market-head:active{background:var(--bg-pressed)}
 .app-case .market-title{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);letter-spacing:.06em;text-transform:uppercase;color:var(--text-brass-lit)}
 .app-case .market-title .ic{width:13px;height:13px;stroke:var(--text-muted);fill:none;stroke-width:1.7}
 .app-case .market-chevron{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-muted);fill:none;stroke-width:1.8;transition:transform var(--dur-base) ease}

@@ -1,7 +1,7 @@
 /* components/state-block.css
    Component: state-block. Classes: .state-actions, .state-block, .state-msg, .state-title, .sys-link-list, .sys-links, .sys-note.
 
-   Reads: --bg-surface, --border-hairline, --glow-brass, --text-brass, --text-muted, --text-primary
+   Reads: --bg-pressed, --bg-surface, --border-hairline, --glow-brass, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/state-block.html
    Stands on: 40 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -29,3 +29,12 @@
 .app-case .sys-link-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-20)}
 .app-case .sys-link-list a{color:var(--text-brass);text-decoration:none;font-weight:var(--weight-semibold);font-size:var(--text-14);border-bottom:1px solid var(--glow-brass);padding-bottom:var(--space-2)}
 .app-case .sys-link-list a:hover{border-bottom-color:var(--text-brass)}
+/* Press. These links are the one control in this file, and they are the way out of 404 and 500,
+   which is a screen a person reaches on a phone as readily as on a desktop, where the hover
+   above never fires. The link is already brass at rest, so colour cannot carry the press and
+   the ground cannot carry it alone: --bg-pressed measures 1.04:1 against the block on graphite
+   and 1.05:1 on chalk, which reads across a chip and disappears behind one line of 14px text.
+   So the press carries the underline the hover brightens, and a thumb gets the pointer's answer
+   plus the ground. Equal specificity to the hover (0,3,1), so this has to sit after it. Nothing
+   here is lifted, so there is no outer shadow to drop, and nothing here is ever disabled. */
+.app-case .sys-link-list a:active{background:var(--bg-pressed);border-bottom-color:var(--text-brass)}

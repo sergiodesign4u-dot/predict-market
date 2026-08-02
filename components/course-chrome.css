@@ -1,7 +1,7 @@
 /* components/course-chrome.css
    the course roadmap sidebar every page of this repo carries. Not product.
 
-   Reads: --bevel-hair, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-text, --focus-ring, --scrim, --swatch-dark, --swatch-light
+   Reads: --bevel-hair, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-pressed, --chrome-text, --focus-ring, --scrim, --swatch-dark, --swatch-light
    Stand:  ui-kit/course-chrome.html
    Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -132,6 +132,19 @@
    2.03. Only outline-color moves; the inset offset above still applies, because
    the switch still sits flush against whatever holds it. */
 .theme-switch-inline:focus-visible{outline-color:var(--focus-ring)}
+
+/* PRESS, and it reads a chrome role for the same reason the ring above does.
+   Every row of this panel already had a hover and none of them had a press, so a
+   tap on a touch screen left the hover wash stuck on the row a person had just
+   left. --chrome-pressed and not the product's --bg-pressed: section 3 overrides
+   the product role and does not touch the chrome one, so a shared role would
+   press a graphite row to chalk on a daylight page.
+   .rm-toggle had neither state: it is the drawer button, so it is the one control
+   here that only exists below 860px, which is exactly where a stuck hover shows. */
+.sidebar-page-link:active:not(.planned),.sidebar-back:active,.theme-switch:active{background:var(--chrome-pressed)}
+.sidebar-sub-link:active{background:var(--chrome-pressed);color:var(--chrome-text)}
+.rm-toggle:hover{border-color:var(--chrome-accent)}
+.rm-toggle:active{background:var(--chrome-pressed)}
 
 @media(min-width:860px){
   .rm-toggle,.rm-overlay{display:none!important}

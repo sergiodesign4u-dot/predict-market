@@ -1,7 +1,7 @@
 /* components/input.css
    Component: input. Classes: .addr, .amount-input, .amount-row, .field-label, .quick.
 
-   Reads: --bg-control, --bg-control-hover, --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --focus-ring, --glow-focus, --line-brass-soft, --line-brass-strong, --opacity-disabled, --result-won, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-16
+   Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --focus-ring, --glow-focus, --line-brass-soft, --line-brass-strong, --opacity-disabled, --result-won, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-16
    Stand:  ui-kit/input.html
    Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -42,7 +42,17 @@ dialog.app-dialog .quick button{background:var(--bg-control);border:1px solid va
 dialog.app-dialog .quick button{cursor:pointer;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 dialog.app-dialog .quick button:hover:not(.sel){border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)}
 dialog.app-dialog .quick button.sel{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);border-color:var(--color-action)}
-dialog.app-dialog .quick button.sel:hover{filter:brightness(1.06)}
+/* THE THREE-STEP OF A BRASS PLATE, and it needs no value of its own. Rest lights
+   the plate from the top left; hover takes the lit role to both stops so the
+   whole face comes up; press flips the angle so the light falls to the bottom
+   right, which is what a plate pushed IN looks like. Geometry and two roles that
+   were already here.
+   It replaces filter:brightness(1.06), which was a raw number doing a colour job:
+   a filter multiplies whatever is underneath, so no theme can reach it and the
+   same 1.06 means two different things on two grounds. */
+dialog.app-dialog .quick button.sel:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit))}
+dialog.app-dialog .quick button.sel:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit))}
+dialog.app-dialog .quick button:active:not(.sel){background:var(--bg-pressed)}
 dialog.app-dialog .amount-input{background:var(--bg-well)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input{flex:0 1 auto;width:150px;max-width:56%;-webkit-appearance:none;appearance:none;border:0;border-bottom:1.5px solid var(--border-hairline);border-radius:0;background:transparent;outline:none;padding:0 var(--space-2) var(--space-4);line-height:var(--leading-none);font-family:var(--font-display);font-size:var(--text-30);font-weight:var(--weight-bold);color:var(--text-primary);text-align:right}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:hover:not(:disabled){border-bottom-color:var(--border-brass-hover)}

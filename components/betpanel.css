@@ -1,7 +1,7 @@
 /* components/betpanel.css
    Component: betpanel. Classes: .bet-dock, .bet-panel, .bet-sheet, .bp-amount-lbl, .bp-amount-row, .bp-cash, .bp-change, .bp-dir, .bp-head, .bp-hint, .bp-inner, .bp-pct, .bp-sel-name, .bp-selected, .bp-side, .dock-meta, .line, .sheet-grab, .total.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-strong, --bg-card-to, --bg-control, --bg-dock, --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --outcome-no, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text-lit, --outcome-yes, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text-lit, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-no, --text-on-yes, --text-primary
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-card-to, --bg-control, --bg-control-hover, --bg-dock, --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --bg-pressed, --border-brass, --border-brass-hover, --border-hairline, --edge-groove-dark, --edge-groove-light, --edge-shade-strong, --line-brass-soft, --outcome-no, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text-lit, --outcome-yes, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text-lit, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-no, --text-on-yes, --text-primary, --text-strong
    Stand:  ui-kit/betpanel.html
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -37,9 +37,34 @@
 .app-case .bp-dir{display:flex;gap:var(--space-8);padding:0;background:transparent;border:0}
 .app-case .bp-dir .bp-side{flex:1;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);font-size:var(--text-16);padding:var(--space-12) var(--space-8);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease,border-color var(--dur-quick) ease}
 .app-case .bp-dir .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-11);font-weight:var(--weight-medium);color:inherit;opacity:.78;margin-top:var(--space-4)}
-.app-case .bp-dir .bp-side:hover{border-color:var(--bevel-strong);color:var(--text-primary)}
+/* THE SECOND HOVER THIS PASS FOUND ALIVE IN ONE THEME ONLY. --bevel-strong is
+   the LIT LIP of an emboss, and section 3 takes it to --white-a70 because a lip
+   needs far more light on pale stone. As a hover BORDER on a chalk control that
+   is a 70 per cent white line on a near-white ground: 1.02:1, so in daylight the
+   only feedback left was the ink. A lip role is not an edge role, and the system
+   already has the edge one: --border-brass-hover is written down as the hover
+   border of the quiet button family, which is what this is. The dock's hover a
+   few lines down reaches for the same ladder. */
+.app-case .bp-dir .bp-side:hover{border-color:var(--border-brass-hover);color:var(--text-primary)}
+/* PRESS, AND THE UNSELECTED SIDE IS NOT AN OUTCOME CONTROL. yesno.css presses its pair in
+   green and red because its pair is green and red AT REST; this one rests on --bg-control
+   with --text-muted and does not carry an outcome colour anywhere, not even on hover, which
+   only lifts the border and the label. Pressing it in green would be inventing a colour the
+   control does not have and telling the user the side is chosen before it is. So it takes
+   the system's quiet ground step, which is what --bg-pressed is for, and it reads across a
+   button padded 12 by 8 with a 16px label: the size the footer's note says the step works
+   at. :not(.sel) keeps it off the filled side, answered below. 0,5,0. */
+.app-case .bp-dir .bp-side:active:not(.sel){background:var(--bg-pressed)}
 .app-case .bp-dir .bp-side.sel:first-child{background:var(--outcome-yes);border-color:var(--outcome-yes);color:var(--text-on-yes)}
 .app-case .bp-dir .bp-side.sel:last-child{background:var(--outcome-no);border-color:var(--outcome-no);color:var(--text-on-no)}
+/* AND THE SELECTED SIDE PRESSES BY DEPTH, for the reason yesno.css measured rather than for
+   a new one: --text-on-no on a flat --outcome-no is 4.64:1, which clears the 4.5 floor with
+   0.14 to spend, so any press that moves the fill spends contrast the label does not have.
+   Vault is an embossed material and owns the alternative: the plate pushed IN, drawn as an
+   inset shade at the top edge, with the ground the ink was measured on left exactly where it
+   was. Same role every lifted stone in this system uses. 0,5,0 against the two rest rules
+   above, so it has to sit after them for the shade to land over the fill. */
+.app-case .bp-dir .bp-side.sel:active{box-shadow:inset 0 2px 5px var(--edge-shade-strong)}
 .app-case .bp-amount-row{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-12);margin:var(--space-8) 0 var(--space-20)}
 .app-case .bp-amount-lbl{display:flex;flex-direction:column;gap:var(--space-4)}
 .app-case .bp-cash{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
@@ -53,11 +78,47 @@
 .app-case .bet-dock .bp-side.sel:first-child{background:var(--outcome-yes-fill-strong);color:var(--outcome-yes-text-lit);border-color:var(--outcome-yes-line)}
 .app-case .bet-dock .bp-side.sel:last-child{background:var(--outcome-no-fill-strong);color:var(--outcome-no-text-lit);border-color:var(--outcome-no-line)}
 .app-case .bet-dock .bp-side{position:relative}
+/* THE DOCK HAD NO POINTER STATE OF ANY KIND, and it is the control a bet is actually placed
+   with: it is the panel's YES/NO pair below 760px, where the panel is display:none. So on
+   the width the product is designed for first, choosing a side answered with nothing at all.
+   The hover is the panel's answer one container over, EXCEPT the border, and that exception
+   is a measurement. The panel's hover reads --bevel-strong, which is a lit LIP role:
+   --white-a20 in the Vault and --white-a70 in daylight, and white at 70 per cent over a
+   chalk-930 control composites to 254,254,252 against 252,250,244, which is 1.02:1. It is
+   invisible in the light theme. That hover is not mine to change and is left exactly as it
+   stands, but a new rule must not copy a value that does nothing, so the border takes
+   --line-brass-soft, which is what button.css already gives the quiet controls of this same
+   dock. 0,4,0, under the two .sel rules above, so a selected side keeps its lit ink.
+   Then the two presses, one per kind of surface, the same pair the panel takes: the
+   unselected side is quiet and settles onto the ground, the selected side is a filled
+   outcome control (--outcome-yes-fill-strong under --outcome-yes-text-lit, 5.3:1 in
+   daylight) whose ink has nothing to spend, so it goes down by depth instead. */
+.app-case .bet-dock .bp-side:hover{border-color:var(--line-brass-soft);background:var(--bg-control-hover);color:var(--text-strong)}
+.app-case .bet-dock .bp-side:active:not(.sel){background:var(--bg-pressed)}
+.app-case .bet-dock .bp-side.sel:active{box-shadow:inset 0 2px 5px var(--edge-shade-strong)}
 dialog.app-dialog.bet-sheet{position:fixed;left:0;right:0;bottom:0;top:auto;margin:0 auto;width:100%;max-width:560px;max-height:92vh;border:0;border-radius:var(--radius-16) var(--radius-16) 0 0;overflow-y:auto;overflow-x:hidden}
 dialog.app-dialog.bet-sheet::backdrop{background:var(--shadow-ink-60);backdrop-filter:blur(2px)}
 .app-case .bet-sheet .sheet-grab{display:block;width:100%;border:0;background:transparent;padding:var(--space-12) 0 var(--space-2);cursor:pointer}
 .app-case .bet-sheet .sheet-grab::before{content:'';display:block;width:var(--size-40);height:var(--size-4);border-radius:var(--radius-pill);background:var(--bg-control);margin:0 auto;transition:background var(--dur-quick) ease}
 .app-case .bet-sheet .sheet-grab:hover::before{background:var(--border-hairline)}
+/* The button is a full-width strip and the pill is the only part of it a person can see or
+   aim at, so the pill is what answers. Rest --bg-control, hover one step toward the edge,
+   press one step toward the ground, and --bg-pressed moves the right way in BOTH themes
+   here: graphite-780 down to 860, chalk-930 down to 880. A press written as "undo the
+   hover" would not, because the hover goes lighter on graphite and darker on chalk. */
+.app-case .bet-sheet .sheet-grab:active::before{background:var(--bg-pressed)}
+/* THE ONE RING THIS PASS ADDS, and it is a clipping case rather than a colour one. The grab
+   spans the full width of the sheet AND sits flush with its top edge, and the sheet is a
+   scroll container (overflow:hidden auto, because a sheet taller than the screen has to
+   scroll), so the default 2px OUTSET ring paints outside the scrollport on three sides.
+   Measured on event-detail at 380: with the grab focused, the only part of the ring left on
+   screen was its bottom edge, a brass line under the pill that reads as a rule and not as
+   focus. Same exception and the same fix as .theme-switch in course-chrome.css, which sits
+   flush against the panel edge for the same reason.
+   ONLY THE OFFSET MOVES. The colour stays --focus-ring: the ground here is the sheet's own
+   plate, which themes with the product, so this is not the course panel's problem where a
+   fixed ground needed a fixed ring. */
+.app-case .bet-sheet .sheet-grab:focus-visible{outline-offset:calc(var(--ring) * -1)}
 .app-case .bet-sheet .bp-head h3{font-family:var(--font-display);font-size:var(--text-18);font-weight:var(--weight-bold);color:var(--text-primary);margin:0}
 .app-case .bet-sheet .bp-inner{display:flex;flex-direction:column;padding:var(--space-12) var(--space-20) var(--space-24);gap:var(--space-20)}
 .app-case .bet-sheet .bp-dir{gap:var(--space-8)}
@@ -70,6 +131,18 @@ dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slower) var(--e
 .app-case .bp-selected{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);padding:var(--space-8)}
 .app-case .bp-sel-name{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-bold);color:var(--text-primary)}
 .app-case .bp-change{font-size:var(--text-10);color:var(--text-brass);text-decoration:underline;white-space:nowrap}
+/* Change is an <a> and it is the way back out of a chosen outcome on a multi market, and it
+   had neither state. Both axes the system usually uses are already spent on it: it carries
+   no padding, so the ground alone is the 1.04:1 the footer measured behind one line of small
+   text and this line is 10px, and it is ALREADY --text-brass, which is the colour every
+   other link in the product moves TO on hover. So it moves the other way, to --text-strong,
+   the role that already means "the label of a quiet control under the pointer", and which is
+   the one text role that carries the step in both themes: white on graphite, ink-900 on
+   chalk at 13.9:1. The underline follows the colour, so the whole mark answers.
+   The press adds the ground beneath that, and restates the colour because the dock and the
+   sheet this link stands in are mobile and a thumb never hovers. */
+.app-case .bp-change:hover{color:var(--text-strong)}
+.app-case .bp-change:active{background:var(--bg-pressed);color:var(--text-strong)}
 .app-case .bet-panel a:has(button),.app-case .bet-dock a:has(button){text-decoration:none;color:inherit;display:block}
 
 /* The keyframe the bet sheet animates with, moved out of base.css next to its only consumer. */

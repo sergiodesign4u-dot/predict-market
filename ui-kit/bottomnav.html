@@ -49,7 +49,7 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/bottomnav.css</span>
-      <span class="tk-badge">20 rules</span>
+      <span class="tk-badge">22 rules</span>
       <span class="tk-badge">3 classes</span>
       <span class="tk-badge">104 screens</span>
     </div>
@@ -68,14 +68,14 @@ push();});})();</script>
     <h2 data-n="03">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
     live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] button</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] .ic:has(use)</td><td class='ck-decl'>color:var(--text-brass)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] button</td><td class='ck-decl'>background:transparent;color:var(--text-brass)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] .ic</td><td class='ck-decl'>stroke:var(--text-brass)</td></tr></tbody></table><h3 class="tk-subh">The tokens these states read, on both grounds</h3><p class="tk-note">Neither panel is a screenshot. Each carries <code>data-theme</code> itself, so the token resolves inside it and a role that was given a value in only one theme shows up here as a control that does not move.</p><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><div class="ck-st-tok"><code>--text-brass</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--text-brass)">Confirm bet</span><em>the value this state moves to</em></span></div></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><div class="ck-st-tok"><code>--text-brass</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--text-brass)">Confirm bet</span><em>the value this state moves to</em></span></div></div></div>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] button</td><td class='ck-decl'>font-weight:var(--weight-bold)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] .ic:has(use)</td><td class='ck-decl'>color:var(--text-brass)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] button</td><td class='ck-decl'>background:transparent;color:var(--text-brass)</td></tr><tr><td class='tk-role'>.bottom-nav li[aria-current="page"] .ic</td><td class='ck-decl'>stroke:var(--text-brass)</td></tr><tr><td class='tk-role'>.bottom-nav li button:hover</td><td class='ck-decl'>background:var(--tint-hover)</td></tr><tr><td class='tk-role'>.bottom-nav li button:active</td><td class='ck-decl'>background:var(--bg-pressed)</td></tr></tbody></table><h3 class="tk-subh">The tokens these states read, on both grounds</h3><p class="tk-note">Neither panel is a screenshot. Each carries <code>data-theme</code> itself, so the token resolves inside it and a role that was given a value in only one theme shows up here as a control that does not move.</p><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><div class="ck-st-tok"><code>--text-brass</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--text-brass)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--tint-hover</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--tint-hover)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-pressed)">Confirm bet</span><em>the value this state moves to</em></span></div></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><div class="ck-st-tok"><code>--text-brass</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--text-brass)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--tint-hover</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--tint-hover)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-pressed)">Confirm bet</span><em>the value this state moves to</em></span></div></div></div>
   </section>
 
   <section class="tk-sec" id="roles">
     <h2 data-n="04">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on
     <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-surface)"></i><code>--bg-surface</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-pressed)"></i><code>--bg-pressed</code></span><span class="ck-role"><i style="background:var(--bg-surface)"></i><code>--bg-surface</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--edge-groove-dark)"></i><code>--edge-groove-dark</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--tint-hover)"></i><code>--tint-hover</code></span></div>
   </section>
 
   <section class="tk-sec" id="classes">
@@ -100,7 +100,7 @@ push();});})();</script>
     <details class="ck-src"><summary>components/bottomnav.css</summary><pre>/* components/bottomnav.css
    Component: bottomnav. Classes: .bn-bal, .bottom-nav.
 
-   Reads: --bg-control, --bg-surface, --border-hairline, --edge-groove-dark, --edge-groove-light, --text-brass, --text-muted, --text-primary
+   Reads: --bg-control, --bg-pressed, --bg-surface, --border-hairline, --edge-groove-dark, --edge-groove-light, --text-brass, --text-muted, --text-primary, --tint-hover
    Stand:  ui-kit/bottomnav.html
    Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -124,6 +124,34 @@ push();});})();</script>
 .bottom-nav button{color:var(--text-muted)}
 .bottom-nav li[aria-current="page"] button{background:transparent;color:var(--text-brass)}
 .bottom-nav li[aria-current="page"] .ic{stroke:var(--text-brass)}
+/* THIS BAR HAD NO STATE ON EITHER AXIS, and it is the one control in the product that is only
+   ever touched: it is display:none from 640px up. So the press is the state that matters here,
+   and the hover is the one nobody will see; a tap used to get no reply at all, on all 104
+   screens, on the only navigation a phone has.
+   THE GROUND ANSWERS AND THE COLOUR DOES NOT. In this bar colour is the current-tab signal and
+   nothing else, muted against brass. If pointing at a tab pulled its label toward the brass,
+   the one thing the bar says at a glance would be said by two different things, and on a phone
+   a hover can stick after a tap, so the wrong tab would keep claiming to be current. The two
+   roles are the ones the chip family already uses: --tint-hover, a translucent wash that
+   lightens on graphite and darkens on chalk by itself, and --bg-pressed, the one press ground
+   in the system. Measured on this bar they are rgba(255,255,255,.06) and #191b1f over #1c1f24
+   in the dark, #211f19 at 10 per cent and #f3f1eb over #f8f6f0 in the light, so on chalk both
+   darken and the wash is the bigger step of the two. That inverts nothing under a finger: a
+   tap fires both states at once and the press, later here at equal specificity, is the one
+   that shows. It would only read backwards as a hover LEFT behind after the finger lifts,
+   which is the platform's sticky-hover behaviour and is every hover's problem, not this one's.
+   Both rules name the &lt;li&gt; to reach (0,2,2), which is what the current-page rule above costs.
+   Written at the button's own (0,2,1) they would die on the tab you are standing on, and that
+   is the tab a person taps most. Source order decides the tie, so they stay here, below it. */
+.bottom-nav li button:hover{background:var(--tint-hover)}
+.bottom-nav li button:active{background:var(--bg-pressed)}
+/* No :focus-visible here, and it was measured rather than assumed, because a fixed bar is where
+   a ring gets cut. Chromium at 360x720, tab bar stuck: the base.css ring computes to 2px solid
+   --focus-ring at 2px offset, no ancestor of the button clips anything (overflow is visible the
+   whole way up to &lt;body&gt;), and the nav's own z-index paints the ring over the feed rather than
+   under it, so the top stroke shows 3px above the bar. Only the bottom stroke falls past the
+   viewport edge, 4px of it, and a ring with three sides on screen is a ring you can see. An
+   inset offset would buy that fourth stroke by moving the other three onto the control. */
 .bn-bal{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
 .bottom-nav{border-top:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
 </pre></details>

@@ -1,7 +1,7 @@
 /* components/toast.css
    Component: toast. Classes: .tc-page, .toast, .toast-close, .toast-error, .toast-group, .toast-inner, .toast-msg.
 
-   Reads: --bevel-notice, --bg-card-quiet, --bg-control, --border-hairline, --border-notice, --edge-groove-light, --line-brass-soft, --shadow-ink, --text-brass, --text-muted, --text-primary
+   Reads: --bevel-notice, --bg-card-quiet, --bg-control, --bg-pressed, --border-hairline, --border-notice, --edge-groove-light, --line-brass-soft, --shadow-ink, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/toast.html
    Stands on: 1 ui-visual screens (toasts.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -12,8 +12,17 @@
 .app-case .toast{display:flex;align-items:center;gap:var(--space-12);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);padding:var(--space-12) var(--space-12);box-shadow:0 18px 40px -24px var(--shadow-ink),inset 0 1px 0 var(--edge-groove-light)}
 .app-case .toast .ic-sm{width:var(--icon-18);height:var(--icon-18);flex:0 0 var(--icon-18);stroke:var(--text-brass);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .app-case .toast-msg{flex:1;color:var(--text-primary);font-size:var(--text-14);font-weight:var(--weight-medium)}
-.app-case .toast-close{flex:0 0 auto;width:var(--size-24);height:var(--size-24);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:transparent;color:var(--text-muted);font-size:var(--text-12);cursor:pointer;line-height:var(--leading-none)}
+.app-case .toast-close{flex:0 0 auto;width:var(--size-24);height:var(--size-24);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:transparent;color:var(--text-muted);font-size:var(--text-12);cursor:pointer;line-height:var(--leading-none);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 .app-case .toast-close:hover{border-color:var(--line-brass-soft);color:var(--text-primary)}
+/* Dismiss is an icon button on a transparent ground, so it presses the way every quiet control
+   in the system presses and has no private idea of its own. It stays --bg-pressed on the error
+   toast too: a toast here carries no green or red by decision, and a close button that reddened
+   under the thumb would put the feedback colour on the one part of the toast that is not the
+   feedback. Equal specificity to the hover above (0,3,0 both), so source order decides and this
+   has to stay after it. The toast is lifted, the button inside it is not, so there is no outer
+   shadow to drop. Nothing disables it: a toast you cannot dismiss is not a state this product
+   has, so there is no disabled skin and no guard pretending there is one. */
+.app-case .toast-close:active{background:var(--bg-pressed)}
 .app-case .toast.toast-error{border-color:var(--border-notice);background:var(--bg-control);box-shadow:0 22px 46px -22px var(--shadow-ink),inset 0 1px 0 var(--bevel-notice)}
 .app-case .toast.toast-error .ic-sm{width:var(--icon-22);height:var(--icon-22);flex:0 0 var(--icon-22);stroke:var(--text-primary);stroke-width:2.4}
 .app-case .toast.toast-error .toast-msg{color:var(--text-primary);font-weight:var(--weight-semibold)}

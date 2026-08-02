@@ -1,7 +1,7 @@
 /* components/position.css
    Component: position. Classes: .pos, .pos-fig, .pos-figures, .pos-list, .pos-lost, .pos-no, .pos-note, .pos-q, .pos-record, .pos-side, .pos-top, .pos-won, .pos-yes, .skeleton.
 
-   Reads: --bg-card-quiet, --bg-control, --border-hairline, --color-action, --edge-groove-light, --outcome-no-fill, --outcome-no-line, --outcome-no-text, --outcome-yes-fill, --outcome-yes-line, --outcome-yes-text, --result-lost-fill, --result-lost-line, --result-lost-text, --result-won-fill, --result-won-line, --result-won-text, --shadow-ink, --text-brass, --text-muted, --text-primary
+   Reads: --bg-card-quiet, --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --color-action, --edge-groove-light, --outcome-no-fill, --outcome-no-line, --outcome-no-text, --outcome-yes-fill, --outcome-yes-line, --outcome-yes-text, --result-lost-fill, --result-lost-line, --result-lost-text, --result-won-fill, --result-won-line, --result-won-text, --shadow-ink, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/position.html
    Stands on: 36 ui-visual screens (active-bets-history-loading.html, active-bets-history.html, active-bets-loading.html, active-bets.html, event-detail-bet-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -44,4 +44,26 @@
 .app-case .ed-panel-activity .pos-note{margin:0 0 var(--space-8)}
 .app-case .cat-main>.pos .pos-figures,.app-case .ptab-panel>.pos .pos-figures{font-size:var(--text-11)}
 .app-case a:has(>.pos){text-decoration:none;color:inherit;display:block}
+/* THE ROW IS THE CONTROL, and this file never said so. On 14 screens a position or a notification
+   is an <a> wrapped straight round the card, and the whole tap target of My Bets and Notifications
+   answered neither the pointer nor the finger. The anchor is the subject and the .pos inside it is
+   the surface that changes, which is the shape .related-list already uses. The row comes up to
+   meet the pointer: --bg-control-hover is lighter than --bg-card-quiet in BOTH themes, so the
+   direction of the state is one decision and not two. The question takes the brass a linked
+   question takes everywhere else. */
+.app-case a:has(>.pos):hover>.pos{background:var(--bg-control-hover);border-color:var(--border-brass-hover)}
+.app-case a:has(>.pos):hover .pos-q{color:var(--text-brass)}
+/* PRESS, AND THE GROUND ALONE WOULD BE A LIE HERE. --bg-pressed is the system's held-down stone,
+   and it was measured against a control that rests on --bg-control. This row does not: it rests on
+   --bg-card-quiet, which is one step DEEPER, so the press lightens it by four bytes per channel in
+   the Vault (#15171b to #191b1f) and in daylight the two roles resolve to the same chalk-880 and
+   the press renders as nothing at all. So it is paid for out of depth, which is what this row is
+   made of: the outer drop goes and the lit lip stays, and a lifted stone lies down flat under the
+   finger in both themes. The brass edge and the brass question are restated rather than left to
+   the hover above, because a touch screen never hovers and this row is read on a phone. Equal
+   specificity to the hover (0,4,1), so this has to sit after it.
+   What the system does not have is a quiet card's own held-down ground, --bg-card-quiet-pressed:
+   one shared role cannot serve both a control and a surface that already rests below it. */
+.app-case a:has(>.pos):active>.pos{background:var(--bg-pressed);border-color:var(--border-brass-hover);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+.app-case a:has(>.pos):active .pos-q{color:var(--text-brass)}
 .app-case .pos[aria-label="Portfolio summary"] .pos-fig:first-child b{color:var(--text-brass)}

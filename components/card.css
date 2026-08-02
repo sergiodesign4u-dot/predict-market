@@ -1,7 +1,7 @@
 /* components/card.css
    Component: card. Classes: .bookmark-btn, .card, .card-body, .m-label, .m-val, .meta, .meta-txt, .prob, .prob-line, .q, .thumb, .top, .top-txt, .why.
 
-   Reads: --bevel-faint, --bevel-hair, --bevel-lo, --bevel-xs, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-surface, --border-brass, --border-hairline, --color-action, --edge-groove-light, --edge-shade, --edge-shade-strong, --icon-brass, --icon-quiet, --mask-mid, --mask-solid, --outcome-no-figure, --outcome-yes-text, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grid, --text-brass, --text-muted, --text-primary
+   Reads: --bevel-faint, --bevel-hair, --bevel-lo, --bevel-xs, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-pressed, --bg-surface, --border-brass, --border-hairline, --color-action, --edge-groove-light, --edge-shade, --edge-shade-strong, --icon-brass, --icon-quiet, --mask-mid, --mask-solid, --outcome-no-figure, --outcome-yes-text, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grid, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/card.html
    Stands on: 36 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -27,6 +27,14 @@
    the element. So it is there now, and this file describes the frame the photograph sits in. */
 .card .q,.card a.q{font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-13);line-height:var(--leading-tight);letter-spacing:-.02em;color:var(--text-primary)}
 .card a.q:hover{color:var(--text-brass);text-decoration:none}
+/* A BARE LINK HAS NO GROUND, so it cannot take the system's --bg-pressed. This question wraps to
+   two lines inside the card's text column, and an opaque stone behind it reads as a text
+   selection rather than as a control being held. The ink steps down instead, which is the answer
+   .hf-title and .hh-name already give in hero.css, and it is the only one that works on a touch
+   screen, where there is no hover to have left. --text-muted is not a new value on this surface:
+   .why, .prob-line and .meta all carry it on the same card body. Equal specificity to the hover
+   above (0,3,1), so this has to sit after it. */
+.card a.q:active{color:var(--text-muted)}
 .why{color:var(--text-muted);font-size:var(--text-13);min-height:35px;margin-bottom:var(--space-12)}
 .card .prob-line{color:var(--text-muted);font-size:var(--text-11);letter-spacing:.03em;text-transform:uppercase}
 .card .prob{font-family:var(--font-display);background:transparent;border:0;color:var(--text-primary);font-size:var(--text-16);padding:0 var(--space-2)}
@@ -40,6 +48,16 @@
 .card .bookmark-btn .ic:has(use){color:var(--icon-quiet)}
 .card .bookmark-btn:hover .ic:has(use){color:var(--icon-brass)}
 .card .bookmark-btn[aria-pressed="true"] .ic:has(use){color:var(--icon-brass)}
+/* Save is this card's own control and it said nothing on the way down. It is flat at rest, a
+   transparent 44px box with no border, so it presses the one way every icon button in the system
+   presses: it settles onto --bg-pressed, square cornered, because a radius is geometry and a
+   state may not move the element it is on. That is .logo-btn's answer in header.css, written for
+   the same reason. The two mark rules mirror the two hovers above rather than leaning on them: a
+   card is the tap target of the feed, a finger never hovers, and without them a thumb would get a
+   grey square where a pointer gets brass. */
+.card .bookmark-btn:active{background:var(--bg-pressed)}
+.card .bookmark-btn:active .ic{stroke:var(--icon-brass)}
+.card .bookmark-btn:active .ic:has(use){color:var(--icon-brass)}
 /* The 44px box is unconditional above, so this block is not a touch-target rule any more: what is
    left is a narrow-screen layout fact, the enlarged button pulled tighter into the meta row. It
    stays on a width query for that reason, and its raw -8px went onto the grid. */
@@ -50,6 +68,15 @@
 .thumb{border-color:var(--border-brass)}
 .card{background-color:var(--bg-card);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-xs),inset 1px 0 0 var(--bevel-hair),inset -1px 0 0 var(--edge-shade),inset 0 -1px 0 var(--edge-shade-strong),0 16px 30px -18px var(--shadow-ink-85),0 5px 12px -6px var(--shadow-ink-60);transition:transform var(--dur-slower) var(--ease-out),box-shadow var(--dur-slower) var(--ease-out)}
 .card:hover{transform:translateY(-3px);box-shadow:inset 0 1px 0 var(--bevel-lo),inset 0 -1px 0 var(--edge-shade-strong),0 26px 44px -20px var(--shadow-ink-85),0 10px 18px -8px var(--shadow-ink-72)}
+/* The lift STAYS on hover: it is the Vault's floating language, it is composited and it shifts no
+   neighbour. A HELD card settles instead of hanging in mid air, so the press puts it back where it
+   already rests and restates the rest stack, which is the same answer .hero-trust and .social-row
+   give. Nothing here is a new value: both lines are the rest rule above, repeated so they win
+   while the pointer is down. Equal specificity to the hover (0,2,0), so this has to sit after it,
+   because with a mouse both states are true at once and only source order separates them. The
+   stripped event-detail card is untouched by either property: its own rest and hover rules stand
+   at 0,3,1 and out-specify this one. */
+.card:active{transform:translateY(0);box-shadow:inset 0 1px 0 var(--bevel-xs),inset 1px 0 0 var(--bevel-hair),inset -1px 0 0 var(--edge-shade),inset 0 -1px 0 var(--edge-shade-strong),0 16px 30px -18px var(--shadow-ink-85),0 5px 12px -6px var(--shadow-ink-60)}
 .card::after{content:'';display:block;position:absolute;left:-52px;bottom:0;width:168px;height:78%;z-index:var(--z-under);pointer-events:none;opacity:.20;background:url("../assets/trust-column-full.webp") no-repeat center bottom;background-size:contain;-webkit-mask-image:linear-gradient(to right,var(--mask-solid) 44%,transparent 94%);mask-image:linear-gradient(to right,var(--mask-solid) 44%,transparent 94%)}
 .card .card-body{position:relative;z-index:var(--z-content)}
 .card::before{background-position:0 -10px;-webkit-mask-image:linear-gradient(to bottom left,var(--mask-solid) 0%,var(--mask-mid) 24%,transparent 56%);mask-image:linear-gradient(to bottom left,var(--mask-solid) 0%,var(--mask-mid) 24%,transparent 56%)}

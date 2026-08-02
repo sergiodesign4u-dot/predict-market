@@ -1,7 +1,7 @@
 /* components/tabs.css
    Component: tabs. Classes: .ed-panel-activity, .ed-panel-comments, .ed-panel-holders, .ed-panel-positions, .ed-range, .ed-tab-count, .ed-tabbar, .ed-tablabel, .ed-tabpanel, .ed-tabradio, .ed-tabs, .ed-tabwrap, .ptab-bar, .ptab-in, .ptab-lbl, .ptab-panel, .ptabs, .rules-tab, .rules-tabs, .seg, .tabs.
 
-   Reads: --bg-chip, --bg-well, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --text-brass, --text-muted, --text-primary, --tint-brass-16
+   Reads: --bg-chip, --bg-pressed, --bg-well, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --focus-ring, --text-brass, --text-muted, --text-primary, --tint-brass-16
    Stand:  ui-kit/tabs.html
    Stands on: 20 ui-visual screens (active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, active-bets-history-empty.html, active-bets-history-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -24,30 +24,78 @@
 .app-case .ed-rules .rules-tabs{display:flex;gap:var(--space-20);border-bottom:1px solid var(--edge-groove-dark);box-shadow:inset 0 -1px 0 var(--edge-groove-light);margin:0 0 var(--space-16)}
 .app-case .rules-tab{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:0 0 var(--space-8);margin-bottom:-2px;cursor:pointer;transition:color var(--dur-quick) ease,border-color var(--dur-quick) ease}
 .app-case .rules-tab:hover{color:var(--text-primary)}
+/* PRESS, the axis every tab in this file was missing. A tab is a quiet control, so it settles onto
+   --bg-pressed, the one held-down role in the system, declared in both themes. Each press mirrors
+   the hover it answers, so the two sit at equal specificity and source order hands the pointer to
+   the press. It is worth most on a phone, where there is no hover at all: until now a tap on a tab
+   said nothing until the panel underneath it swapped.
+   Each of these also sits BEFORE the rule that marks the chosen tab, which is equal specificity or
+   higher, so the tab you are already on keeps its own ground under the finger. That is the order
+   the hover has always been in, and pressing the tab you are on is a no-op anyway. */
+.app-case .rules-tab:active{background:var(--bg-pressed)}
 .app-case .rules-tab.sel{color:var(--text-primary);border-bottom-color:var(--color-action)}
 .app-case .ed-tabwrap{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 .app-case .ed-tabbar{background:transparent;border-bottom:1px solid var(--edge-groove-dark)}
 .app-case .ed-tablabel{border-right:0;font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);color:var(--text-muted)}
 .app-case .ed-tablabel:hover{color:var(--text-primary)}
+.app-case .ed-tablabel:active{background:var(--bg-pressed)}
 .app-case .ed-tab-count{color:var(--text-muted)}
 .app-case #edtab-comments:checked ~ .ed-tabbar label[for="edtab-comments"],.app-case #edtab-holders:checked ~ .ed-tabbar label[for="edtab-holders"],.app-case #edtab-positions:checked ~ .ed-tabbar label[for="edtab-positions"],.app-case #edtab-activity:checked ~ .ed-tabbar label[for="edtab-activity"]{background:transparent;color:var(--text-brass);font-weight:var(--weight-bold);box-shadow:inset 0 -2px 0 var(--color-action)}
+/* FOCUS, AND THE ONE PLACE THE SYSTEM'S SINGLE RING CANNOT LAND. base.css draws the ring once, on
+   the element that has focus, and the element that has focus here is the RADIO, which line 12 of
+   this file parks at left:-9999px. So the indicator was painted off the left edge of the document
+   and a person tabbing into the tab strip saw nothing at all. The radio is still focusable, which
+   is the part that matters: it is offscreen, not display:none, so the strip is reachable and only
+   the indicator was missing.
+   The ring therefore moves to the thing that is visible, the label, and only to the label of the
+   radio that actually has focus, so the mapping is written out per tab exactly the way :checked is
+   written out above. A clicked radio does not match :focus-visible, so this is the keyboard's.
+   The offset turns INWARD for the reason catnav.css turns it inward: .ed-tabbar is overflow-x:auto,
+   so it clips on both axes, and the labels fill its content box top to bottom. A ring 2px outside
+   the label would be painted entirely inside the clipped band and would come back as two vertical
+   bars with no top or bottom edge. Inward puts the whole ring on the label's own ground, which is
+   the plate. Same width and same role as base.css, one sign flipped, so the ring stays one
+   decision. Read off the painted page at 1280 and again at 380, in both themes: the ring lands on
+   the label at 8.71:1 on graphite and 7.14:1 on chalk, and its whole box sits inside the bar. */
+.app-case #edtab-comments:focus-visible ~ .ed-tabbar label[for="edtab-comments"],
+.app-case #edtab-holders:focus-visible ~ .ed-tabbar label[for="edtab-holders"],
+.app-case #edtab-positions:focus-visible ~ .ed-tabbar label[for="edtab-positions"],
+.app-case #edtab-activity:focus-visible ~ .ed-tabbar label[for="edtab-activity"]{outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
 .app-case .cmt-controls .seg{order:-1;display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:1px solid var(--border-hairline);border-radius:var(--radius-10)}
 .app-case .cmt-controls .seg button{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
 .app-case .cmt-controls .seg button:hover{color:var(--text-primary)}
+/* The comment sort switcher. Its markup stands in comments and its styling has always stood here,
+   so the press stands here too, next to the hover it answers rather than in the other file. */
+.app-case .cmt-controls .seg button:active{background:var(--bg-pressed)}
 .app-case .cmt-controls .seg button.sel{background:var(--tint-brass-16);color:var(--text-brass);font-weight:var(--weight-bold)}
 .app-case .tabs{gap:var(--space-8);margin:0 0 var(--space-16)}
 .app-case .tabs button{border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer}
 .app-case .tabs button:hover{color:var(--text-primary)}
+.app-case .tabs button:active{background:var(--bg-pressed)}
 .app-case .tabs button[aria-selected="true"]{background:color-mix(in oklab,var(--color-action) 16%,transparent);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
 .app-case .ptabs{margin-top:var(--space-20)}
 .app-case .ptab-bar{display:flex;gap:var(--space-8);border:0;margin:0 0 var(--space-16);overflow-x:auto;scrollbar-width:none;padding-bottom:var(--space-2)}
 .app-case .ptab-bar::-webkit-scrollbar{display:none}
 .app-case .ptab-lbl{border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);display:inline-flex;align-items:center;cursor:pointer;white-space:nowrap;transition:color var(--dur-base) ease,border-color var(--dur-base) ease,background var(--dur-base) ease}
 .app-case .ptab-lbl:hover{color:var(--text-primary)}
+.app-case .ptab-lbl:active{background:var(--bg-pressed)}
 .app-case #ptab-record:checked ~ .ptab-bar label[for="ptab-record"],.app-case #ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],.app-case #ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"]{background:color-mix(in oklab,var(--color-action) 16%,transparent);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
+/* The profile strip is the same radio-and-label shape as the event tabs and needs the same answer,
+   with the input hidden a different way: .ptab-in is a 1px box at opacity 0, so the ring is drawn
+   at the right place and then painted at zero alpha, which is the same nothing. It is focusable
+   too, so again only the indicator was missing. .ptab-bar is a scroller as well, and the pill fills
+   its content box, so the offset turns inward here for the same reason. The ground the ring stands
+   on is --bg-chip at rest and the 16 per cent brass wash when the tab is current, and --focus-ring
+   reads on both: 7.89:1 and 8.94:1 on graphite, 6.96:1 and 4.94:1 on chalk, measured on the page. */
+.app-case #ptab-record:focus-visible ~ .ptab-bar label[for="ptab-record"],
+.app-case #ptab-wins:focus-visible ~ .ptab-bar label[for="ptab-wins"],
+.app-case #ptab-resolved:focus-visible ~ .ptab-bar label[for="ptab-resolved"]{outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
 .app-case .ed-range{display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:1px solid var(--border-hairline);border-radius:var(--radius-10)}
 .app-case .ed-range button{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-mono);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
 .app-case .ed-range button:hover{color:var(--text-primary)}
+/* the chart time range is a tab in everything but name: one of four, and the click redraws the
+   chart, so a held-down ground is the only thing that says the switch took the tap */
+.app-case .ed-range button:active{background:var(--bg-pressed)}
 .app-case .ed-range button.sel{background:var(--tint-brass-16);color:var(--text-brass);font-weight:var(--weight-semibold)}
 /* Target size follows the POINTER, not the viewport. Step 7 wrote that rule and moved two
    files; these stayed bound to a 640px viewport, so a touch tablet or a touch laptop got the

@@ -1,7 +1,7 @@
 /* components/catnav.css
    Component: catnav. Classes: .cat-ic, .cat-layout, .cat-main, .cat-nav, .cnt, .feed-subfilter, .subcat, .subcat-head.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-chip, --bg-control-hover, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --line-brass-soft, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-chip, --bg-control-hover, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --line-brass-soft, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
    Stand:  ui-kit/catnav.html
    Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -28,6 +28,12 @@
 .subcat li{flex:0 0 auto}
 .subcat button{display:inline-flex;align-items:center;gap:var(--space-8);white-space:nowrap;background:transparent;border:1px solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);font-family:inherit;font-size:var(--text-13);font-weight:var(--weight-medium);padding:var(--space-8) var(--space-12);min-height:var(--control-36);cursor:pointer}
 .subcat button:hover{border-color:var(--color-action);background:color-mix(in oklab,var(--color-action) 10%,transparent)}
+/* Press, the axis this file was missing entirely. The rail chip is quiet and flat at rest, so
+   it takes the system's one quiet pressed ground and has no lift to drop. Equal specificity to
+   the hover above (0,2,1 both), so it has to sit after it. It reaches exactly as far as that
+   hover does and no further: the current sub-category below is 0,3,1 and keeps its brass wash
+   under the finger, which is the honest answer for a chip that points at the page you are on. */
+.subcat button:active{background:var(--bg-pressed)}
 .subcat li[aria-current="page"] button{background:color-mix(in oklab,var(--color-action) 18%,transparent);border-color:var(--color-action);font-weight:var(--weight-semibold)}
 .subcat .cnt{font-size:var(--text-11);color:var(--text-muted);font-family:var(--font-mono);background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-6);padding:var(--space-2) var(--space-8)}
 .subcat li[aria-current="page"] .cnt{color:var(--text-brass);background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:color-mix(in oklab,var(--color-action) 45%,transparent)}
@@ -65,6 +71,11 @@
    the frozen kit is provenance, not product. */
 .cat-main .feed-subfilter button{display:inline-flex;align-items:center;min-height:0;cursor:pointer;background:transparent;border:1px solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-4) var(--space-12)}
 .cat-main .feed-subfilter button:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
+/* The sub-filter chip is transparent at rest and its hover is a white wash, so the press has
+   to travel the other way: --bg-pressed is opaque and sits below the plate the chip stands on,
+   which is what pushed IN looks like on this ground. Equal specificity to the hover (0,3,1),
+   so source order decides. The current chip below is 0,4,1 and keeps its brass, same as above. */
+.cat-main .feed-subfilter button:active{background:var(--bg-pressed)}
 @media(pointer:coarse){.cat-main .feed-subfilter button,.feed-inner .cat-nav button{min-height:var(--control-44)}}
 .cat-main .feed-subfilter li[aria-current="page"] button{background:var(--tint-brass-09);border:1px solid var(--tint-brass-45);color:var(--text-brass-chip);box-shadow:0 0 10px -8px var(--glow-brass)}
 .feed-inner .cat-nav{margin:0}
@@ -74,6 +85,23 @@
 .cat-ic{width:var(--icon-18);height:var(--icon-18);flex:0 0 auto;fill:currentColor;stroke:none;opacity:.9}
 .feed-inner .cat-nav button{display:inline-flex;align-items:center;gap:var(--space-12);min-height:0;background:var(--bg-chip);border:1px solid var(--bevel-notice);border-radius:var(--radius-10);color:var(--text-chip-hover);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12) var(--space-20);box-shadow:none}
 .feed-inner .cat-nav button:hover{border-color:var(--line-brass-soft);color:var(--text-strong);background:var(--bg-control-hover)}
+/* This strip is the top of every feed screen, and on mobile it is the only way to change
+   category: there is no hover there to answer a tap with, so a tap had no reply at all. The
+   chip carries box-shadow:none at rest, so there is nothing lifted to flatten, and the hover
+   lightens while the press settles back past rest, which is the right pair of directions.
+   Equal specificity to the hover above (0,3,1), so this has to stay after it. */
+.feed-inner .cat-nav button:active{background:var(--bg-pressed)}
+/* THE ONE RING THIS PASS ADDS, and it is a measured defect rather than a preference. The strip
+   scrolls sideways, so its <ul> is a scroll container and clips at its own padding box; that
+   padding is --space-2 and the chip fills the content box exactly, top and bottom. The default
+   ring in base.css sits --ring OUTSIDE the chip and is --ring wide, so it is painted in the
+   band 2px to 4px out, and every pixel of its top and bottom run falls outside the clip. Read
+   off the painted page at 1440 and again at 380: the ring rendered as two vertical bars with
+   no top or bottom edge, on the one control a keyboard user tabs through first. Turning the
+   offset inward puts the whole ring on the chip's own ground, which is graphite at rest and a
+   brass wash when the chip is current, and --focus-ring reads on both. Same values as base.css
+   with one sign flipped, so the ring stays one decision. */
+.feed-inner .cat-nav button:focus-visible{outline-offset:calc(var(--ring) * -1)}
 .feed-inner .cat-nav button:hover .cat-ic{opacity:1}
 .feed-inner .cat-nav li[aria-current="page"] button{background:var(--tint-brass-09);border:1px solid var(--tint-brass-45);color:var(--text-brass-chip);box-shadow:0 0 10px -8px var(--glow-brass)}
 .feed-inner .cat-nav li[aria-current="page"] .cat-ic{opacity:1}

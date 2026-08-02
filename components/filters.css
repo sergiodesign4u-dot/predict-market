@@ -1,7 +1,7 @@
 /* components/filters.css
    Component: filters. Classes: .filter-menu, .filter-panel, .reverse-row, .toggle.
 
-   Reads: --bg-control, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --control-knob, --opacity-disabled, --shadow-ink, --text-brass, --text-muted, --text-primary, --text-strong
+   Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --color-action-pressed, --control-knob, --opacity-disabled, --shadow-ink, --text-brass, --text-muted, --text-primary, --text-strong
    Stand:  ui-kit/filters.html
    Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -20,17 +20,37 @@
 .filter-menu summary{background:var(--bg-surface);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
 .app-case .filter-menu summary{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 .app-case .filter-menu summary:hover{border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)}
+/* Press is the axis a disclosure needs most: the panel opens on the same click, so without a
+   held-down ground the chip looks like it did nothing until the panel arrives. Equal specificity
+   to the hover above, so it has to sit after it. The summary is flat at rest, nothing to unlift. */
+.app-case .filter-menu summary:active{background:var(--bg-pressed)}
 .filter-panel input[type=radio],.filter-panel input[type=checkbox]{display:none}
 .filter-panel li{padding:0}
 .filter-panel li label{color:var(--text-primary);border-radius:var(--radius-10);margin:var(--space-2) var(--space-4);padding:var(--space-8) var(--space-8);transition:background var(--dur-fast),color var(--dur-fast)}
 .filter-panel li label:hover{background:var(--bg-control)}
+/* the row a person is choosing. 0,2,2, so it wins over the hover above by source order and over the
+   checked row's brass wash below (0,1,3) outright: the press reads on a chosen row too */
+.filter-panel li label:active{background:var(--bg-pressed)}
 .filter-panel li label:has(input:checked){background:color-mix(in oklab,var(--color-action) 20%,transparent);color:var(--text-brass);font-weight:var(--weight-semibold)}
 .reverse-row{border-top:1px solid var(--border-hairline);color:var(--text-muted)}
 .toggle[role=switch]{position:relative;width:var(--size-40);height:var(--icon-22);border-radius:var(--radius-pill);background:var(--bg-control);border:1px solid var(--border-hairline);padding:0;font-size:0;flex:0 0 auto;cursor:pointer;transition:background var(--dur-quick)}
 .toggle[role=switch]::after{content:'';position:absolute;top:2px;left:2px;width:var(--icon-16);height:var(--icon-16);border-radius:50%;background:var(--text-muted);transition:left var(--dur-quick) var(--ease-out),background var(--dur-quick)}
 .toggle[role=switch][aria-checked=true]{background:var(--color-action);border-color:var(--color-action)}
 .toggle[role=switch][aria-checked=true]::after{left:20px;background:var(--control-knob)}
+/* The switch had no pointer state at all: its only feedback was the knob sliding, which is the
+   RESULT of the click and not a sign the control is live. Both states exclude [aria-disabled=true]
+   so the dead switch below cannot light up, and exclude [aria-checked=true] so neither swaps the
+   brass ground out from under a switch that is ON. A checked switch is still pressless: see the
+   note under the disabled rule. */
+.toggle[role=switch]:not([aria-checked=true]):not([aria-disabled=true]):hover{background:var(--bg-control-hover)}
+.toggle[role=switch]:not([aria-checked=true]):not([aria-disabled=true]):active{background:var(--bg-pressed)}
 .toggle[role=switch][aria-disabled=true]{opacity:var(--opacity-disabled);cursor:not-allowed}
+/* An ON switch is a flat --color-action ground, not the two-stop action gradient, so neither of the
+   two press mechanisms fits it: --bg-pressed would read as "it turned itself off" and there is no
+   gradient angle to reverse. It is the one control that asked for a role of its own, so it got one:
+   --color-action-pressed, brass held down. Nothing else in the system needs it, because everything
+   else brass is a gradient. */
+.toggle[role=switch][aria-checked=true]:not([aria-disabled=true]):active{background:var(--color-action-pressed);border-color:var(--color-action-pressed)}
 /* Target size follows the POINTER, not the viewport. Step 7 wrote that rule and moved two
    files; these stayed bound to a 640px viewport, so a touch tablet or a touch laptop got the
    36px control. A fine pointer keeps 36, which clears 2.5.8 (24x24) with room. */

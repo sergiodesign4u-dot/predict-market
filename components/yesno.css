@@ -1,7 +1,7 @@
 /* components/yesno.css
    Component: yesno. Classes: .compact, .yesno.
 
-   Reads: --bg-control, --border-hairline, --outcome-no, --outcome-no-fill, --outcome-no-fill-soft, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-soft, --outcome-yes-line, --outcome-yes-text, --text-on-no, --text-on-yes, --text-primary
+   Reads: --bg-control, --bg-pressed, --border-hairline, --edge-shade-strong, --outcome-no, --outcome-no-fill, --outcome-no-fill-soft, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-soft, --outcome-yes-line, --outcome-yes-text, --text-on-no, --text-on-yes, --text-primary
    Stand:  ui-kit/yesno.html
    Stands on: 14 ui-visual screens (event-detail-logged-out-multi.html, event-detail-multi.html, event-feed-crypto-logged-out.html, event-feed-crypto.html, event-feed-culture-logged-out.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -36,3 +36,46 @@
 .app-case .opt-list .yesno.compact button:last-child{color:var(--outcome-no-text);border-color:var(--outcome-no-line);background:var(--outcome-no-fill-soft)}
 .app-case .opt-list .yesno.compact button.sel:first-child{background:var(--outcome-yes);border-color:var(--outcome-yes);color:var(--text-on-yes)}
 .app-case .opt-list .yesno.compact button.sel:last-child{background:var(--outcome-no);border-color:var(--outcome-no);color:var(--text-on-no)}
+/* PRESS. This is the one control in the product where the system's neutral press would lie: settle
+   a held YES onto --bg-pressed and the outcome colour leaves under the finger, which reads as "it
+   let go", the opposite of what holding YES means. So the press keeps the hover's exact green (or
+   red) share and moves only the stone beneath it, --bg-control one step down to --bg-pressed, which
+   is deeper in BOTH themes (graphite-780 to 860, chalk-930 to 880). Equal specificity to the hover,
+   0,3,1, so it has to sit after it. The border is restated rather than left to the hover: a touch
+   screen never hovers, so on a phone the pressed side would otherwise keep its rest edge.
+   Measured on the label it carries: the press runs 5.72:1 YES / 4.91:1 NO on graphite and
+   5.38 / 5.13 on chalk, all above the hover it follows. */
+.yesno > a:first-of-type button:active,.yesno > button:first-of-type:active{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-pressed));border-color:var(--outcome-yes)}
+.yesno > a:last-of-type button:active,.yesno > button:last-of-type:active{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-pressed));border-color:var(--outcome-no)}
+/* The outcome list rests at 0,4,1, so neither the pair's press above nor the hover above ever
+   reached a candidate row: these two are the only pointer feedback it has. Same values, because a
+   YES held down is one answer wherever the pair stands. :not(.sel) is why they are written out
+   separately and not folded into the rules above, and the reason is under the next comment. */
+.app-case .opt-list .yesno.compact button:first-child:not(.sel):active{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-pressed));border-color:var(--outcome-yes)}
+.app-case .opt-list .yesno.compact button:last-child:not(.sel):active{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-pressed));border-color:var(--outcome-no)}
+/* THE SELECTED SIDE GOT NO PRESS, AND THE REASON IS A NUMBER. A flat --outcome-no ground carries
+   --text-on-no at 4.64:1, which is the 4.5 floor with 0.14 to spare. Pressing it the way the flat
+   brass switch presses, a step down through its own darker role (--outcome-no-line), spends more
+   than that at every strength a person could see: 92 per cent is already 4.48:1 and 82 per cent is
+   4.29:1, and a mix small enough to pass is a mix nobody notices. The YES side has the room
+   (6.42:1 at rest, 5.87:1 at 82 per cent) and was deliberately NOT shipped alone: half a pair is
+   worse than none, because a YES that darkens beside a NO that does not reads as a broken NO.
+   What is missing is the outcome twin of --color-action-pressed, and it cannot be a ground on its
+   own: --outcome-no-pressed has to be declared together with the ink that stands on it, since
+   red-500 under red-950 is already at the floor before anything is held down. */
+/* AND THE ANSWER WAS NOT A COLOUR. The measurement above is the finding; what it points at is that
+   a filled outcome control has no contrast left to spend, so its press has to be paid for out of
+   something other than the fill. Vault is an embossed material and it already owns that vocabulary:
+   the press is the plate pushed IN, drawn as an inset shade at the top edge, and the ink keeps the
+   exact ground it was measured on. So THREE press mechanisms, one per kind of surface, and this is
+   the third: a quiet control settles onto --bg-pressed, a brass gradient reverses its own angle, a
+   filled colour goes down by depth. --edge-shade-strong is the role for that edge in both themes,
+   and it is the same one every lifted stone in this system uses.
+   0,4,2 and 0,3,2: above the rest rules they follow, so the shade lands over the fill. */
+.app-case .opt-list .yesno.compact button.sel:first-child:active,.app-case .opt-list .yesno.compact button.sel:last-child:active,.yesno > a button.sel:active,.yesno > button.sel:active{box-shadow:inset 0 2px 5px var(--edge-shade-strong)}
+/* No :disabled, [disabled] or [aria-disabled] rule: 241 yesno blocks across ui-visual, ui-kit and
+   wireframes and not one of them is disabled. There is no closed-market state that greys the pair,
+   so a rule for it would be a guess about a screen that does not exist.
+   No :focus-visible either. base.css draws the ring once and outline-offset puts it 2px OUTSIDE
+   the button, so even on the filled green and the filled red the ring stands on the row behind the
+   control and not on the fill; the ground it has to survive is the card, which it already does. */

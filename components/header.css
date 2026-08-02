@@ -1,7 +1,7 @@
 /* components/header.css
    Component: header. Classes: .app-header, .auth-btns, .avatar-menu, .badge-dot, .bal-add, .bal-amt, .bal-figure, .bal-label, .bal-swap, .bal-toggle, .bell-wrap, .cat-condensed, .dropdown, .hiw-btn, .icon-btn, .left, .logo-btn, .notif-all, .notif-empty, .notif-menu, .row, .utility.
 
-   Reads: --bg-control, --bg-slab-from, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --shadow-ink, --shadow-ink-72, --text-brass, --text-brass-chip, --text-chip-hover, --text-icon-strong, --text-muted, --text-on-brass, --text-primary, --tint-brass-09, --tint-brass-45, --tint-hover
+   Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-slab-from, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --shadow-ink, --shadow-ink-72, --text-brass, --text-brass-chip, --text-chip-hover, --text-icon-strong, --text-muted, --text-on-brass, --text-primary, --tint-brass-09, --tint-brass-45, --tint-hover
    Stand:  ui-kit/header.html
    Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -50,6 +50,19 @@
 .hiw-btn{background:transparent;border:1px solid var(--border-hairline);color:var(--text-muted);border-radius:var(--radius-pill);white-space:nowrap}
 .hiw-btn:hover{color:var(--text-primary)}
 .icon-btn:hover,.hiw-btn:hover,.notif-menu summary:hover,.avatar-menu summary:hover{background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:var(--color-action)}
+/* Press, the axis this file never had: nine hovers answered the pointer on the way in and
+   nothing answered the click. Every quiet control in the header is flat at rest, a transparent
+   ground inside a hairline, so it presses the one way the whole system presses: it settles onto
+   --bg-pressed, one role declared in both themes. Nothing to unlift, because nothing here is
+   lifted. Equal specificity to the hover above (0,2,0 both), so this has to stay AFTER it: with
+   a mouse both states are true at once and only source order separates them. The border stays
+   on the hover's brass, because a control being pushed in is not a control changing its mind. */
+.icon-btn:active,.hiw-btn:active,.notif-menu summary:active,.avatar-menu summary:active{background:var(--bg-pressed)}
+/* The wordmark is a button that goes home, and under 640px it is the ONLY target left on the
+   left of the header: the menu icon and How it works are both display:none there. It had no
+   state at all, on either axis. It takes the quiet ground square-cornered, because a radius is
+   geometry and a state may not move the element it is on. */
+.logo-btn:active{background:var(--bg-pressed)}
 .bal-toggle{background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);padding:var(--space-4) var(--space-8) var(--space-4) var(--space-12);gap:var(--space-8)}
 .bal-figure{display:flex;flex-direction:column-reverse;align-items:flex-end;text-align:right;line-height:var(--leading-flat);gap:var(--space-2)}
 .bal-figure .bal-amt{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-14);color:var(--text-primary)}
@@ -57,19 +70,45 @@
 .icon-btn.bal-swap,.icon-btn.bal-add{width:var(--control-32);height:var(--control-32)}
 .icon-btn.bal-add{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border-color:var(--color-action)}
 .icon-btn.bal-add .ic{stroke:var(--text-on-brass)}
-.icon-btn.bal-add{transition:filter var(--dur-quick) ease,box-shadow var(--dur-quick) ease,border-color var(--dur-quick) ease}
-.icon-btn.bal-add:hover{filter:brightness(1.08);box-shadow:0 6px 18px -8px var(--color-action)}
+.icon-btn.bal-add{transition:background var(--dur-quick) ease,box-shadow var(--dur-quick) ease,border-color var(--dur-quick) ease}
+/* THE THREE-STEP OF A BRASS PLATE, the one input.css and button.css already use, and it costs
+   no value at all. Rest lights the plate from the top left; hover takes the lit role to both
+   stops so the whole face comes up; press flips the angle to 315deg so the light falls to the
+   bottom right, which is what a plate pushed IN looks like, and drops the glow, because a plate
+   that is down is not lifted.
+   The hover replaces filter:brightness(1.08), which was a raw number doing a colour job: a
+   filter multiplies whatever happens to be underneath, so no theme and no role can reach it,
+   and the same 1.08 is a different decision on each of the two grounds. Same glow line,
+   unchanged. The transition above now names background instead of filter, because filter is
+   what left; without that the ground would snap while the shadow faded. */
+.icon-btn.bal-add:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
+.icon-btn.bal-add:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
 .badge-dot{background:var(--color-action);border:0;color:var(--text-on-brass);font-weight:var(--weight-bold)}
 .notif-menu summary,.avatar-menu summary{height:var(--control-36);display:inline-flex;align-items:center;gap:var(--space-4);padding:0 var(--space-8);border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:transparent}
 .avatar-menu .dropdown,.notif-menu .dropdown{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
 .avatar-menu li,.notif-drop li{border-top:1px solid var(--border-hairline)}
 .avatar-menu .dropdown button,.notif-drop li a,.notif-drop li a strong{color:var(--text-primary)}
 .avatar-menu .dropdown button:hover,.notif-drop li a:hover{background:color-mix(in oklab,var(--color-action) 10%,transparent)}
+/* A menu row is a nav row: the ground answers and the label holds still. Each selector mirrors
+   the hover it answers, so the two sit at equal specificity (0,3,1 and 0,2,2) and the later one
+   wins while the finger is down. Both rows are the whole target: the <button> and the <a> each
+   fill the <li>, so there is no dead strip to press on. */
+.avatar-menu .dropdown button:active,.notif-drop li a:active{background:var(--bg-pressed)}
 .notif-drop li a span{color:var(--text-muted)}
 /* The dropdown of a screen whose subject is "you have nothing yet". It had no
    rule at all, because the state lived only in the grey tree. */
 .notif-empty{color:var(--text-muted)}
 .notif-all{background:var(--bg-control);border-top:1px solid var(--border-hairline);color:var(--text-brass)}
+/* See all notifications is not in the group above because it is not in an <li>: it is the
+   dropdown's own footer link, and it is the only row in either menu that carries a ground at
+   rest, so it needs its own pair rather than the group's.
+   It was the one row in either dropdown with NO hover, which is not a decision anybody made:
+   the rows above it are `.notif-drop li a` and this one is a sibling of that list, so it fell
+   out of the selector and out of every later reading of the file. Its hover is the same role
+   its neighbours' hover computes from, one step up because it starts from a ground instead of
+   from nothing. */
+.notif-all:hover{background:var(--bg-control-hover)}
+.notif-all:active{background:var(--bg-pressed)}
 .notif-menu summary .ic:has(use){color:var(--text-icon-strong)}
 .icon-btn .ic:has(use){color:var(--text-primary)}
 @media(max-width:640px){
@@ -92,6 +131,16 @@
 .app-case .app-header .cat-condensed button{display:inline-flex;align-items:center;min-height:0;background:transparent;border:1px solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-12);cursor:pointer}
 .app-case .app-header .cat-condensed button:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
 .app-case .app-header .cat-condensed li[aria-current="page"] button{background:var(--tint-brass-09);border:1px solid var(--tint-brass-45);color:var(--text-brass-chip);box-shadow:0 0 10px -8px var(--glow-brass)}
+/* The condensed chip presses like every other chip in the system, and to do it at all it has
+   to out-reach the rule directly above. That one is (0,4,2); a press written at its own hover's
+   (0,4,1) would be invisible on exactly the tab you are standing on, which on this strip is the
+   tab most likely to be tapped, because tapping it is how you get back to the top of it. Naming
+   the <li> brings this to (0,4,2) and source order decides the tie, so it has to stay here and
+   not next to its hover. filters.css settled the same question the same way: the press reads on
+   a chosen row too. Only the ground moves, so the current chip keeps its brass border, its brass
+   label and its halo. That halo is 0 0 10px -8px, a glow with negative spread, not a lift, so
+   there is nothing here to flatten. */
+.app-case .app-header .cat-condensed li button:active{background:var(--bg-pressed)}
 .app-case .app-header .row{max-width:var(--container-max);margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter)}
 
 /* WCAG 2.5.5 is about a finger, not about a narrow window: a touch laptop at 1280 needs the same

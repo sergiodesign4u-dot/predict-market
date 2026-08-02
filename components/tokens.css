@@ -474,7 +474,16 @@
   --bg-dialog-head-from:var(--graphite-800); /* same value as --bg-control-hover for now .    From: the dialog head gradient over the brass glow */
   --bg-chart-well:var(--graphite-940);  /* same value as --bg-well for now: a chart is a well with a plot in it .     From: the plotted chart and the range switcher */
   --bg-dock:var(--graphite-880);        /* same value as --bg-card-quiet for now: two quiet blocks at one depth .           From: the mobile bet dock */
-  --bg-chip-pressed:var(--graphite-860);/* from: a chip while it is held down */
+  --bg-pressed:var(--graphite-860);     /* from: any control while it is held down. It was
+                                           --bg-chip-pressed with one consumer, the Load more chip,
+                                           and the states pass gave it twenty: a press is one answer
+                                           for the whole system, not a chip's private idea. Named for
+                                           the STATE and not for the chip, because the icon button in
+                                           the header is not a chip and settling it onto a chip's
+                                           ground is a category error the next reader would inherit.
+                                           A brass action does not use it: it is already lit, so it
+                                           presses by reversing its own gradient, which is geometry
+                                           and needs no value at all */
   --bg-prompt-hover:var(--graphite-900);/* from: the logged-out comment prompt on hover */
   --bg-brand-mark:var(--bone-080);      /* from: the plate under the X and Apple marks */
 
@@ -522,6 +531,13 @@
   --color-action:var(--brass-500);      /* from: Confirm bet, Add funds, balance +, .btn-primary,
                                            the active category tab, the unread badge */
   --color-action-lit:var(--brass-300);  /* from: the second stop of every action gradient */
+  --color-action-pressed:var(--brass-600); /* from: a brass ground held down. Only FLAT brass needs
+                                           it: a two-stop action gradient presses by reversing its
+                                           own angle, which reads the two roles above and adds no
+                                           value at all, but the switch that is ON is one colour and
+                                           has no angle to flip. Declared once for the same reason
+                                           --color-action is: a mid-luminance metal reads on both
+                                           stones, so section 3 does not move either of them */
   --color-trust:var(--brass-500);       /* from: the trust bar, the USDC 1:1 line, the push banner,
                                            the footer trust cards, the shield icon.
                                            Same value as --color-action today, different role */
@@ -673,6 +689,12 @@
   --chrome-text:var(--bone-250);
   --chrome-muted:var(--bone-600);
   --chrome-accent:var(--brass-400);
+  --chrome-pressed:var(--graphite-860); /* from: 5 rows of the panel while they are held down. The
+                                           product's --bg-pressed is the same step and cannot be
+                                           borrowed here: it is overridden in section 3 and the panel
+                                           is not, so on a daylight page a shared role would press a
+                                           graphite row to chalk. A chrome role is one that section 3
+                                           deliberately does not reach, and this is one */
   /* the two swatches on the theme switch. They are roles, not primitives read
      raw, and section 3 deliberately does not move them: a control that shows you
      the two grounds has to keep showing both, whichever one you are standing on */
@@ -768,7 +790,7 @@
   --bg-control:var(--chalk-930);
   --bg-control-hover:var(--chalk-920);
   --bg-chip:var(--chalk-900);
-  --bg-chip-pressed:var(--chalk-880);
+  --bg-pressed:var(--chalk-880);
   --bg-dialog-head-from:var(--chalk-920);
 
   --bg-well:var(--chalk-940);
