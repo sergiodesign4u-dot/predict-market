@@ -25,6 +25,10 @@ reads ANCESTORS as contents, and every component in the product comes out an
 organism (the first cut of this file returned 33 of 38). The question is what
 stands inside the element this component owns, not what the page around it is.
 
+PATTERNS is read from the folder rather than typed, because a file in
+components/patterns/ IS the declaration; what this file adds is the consequence,
+which is that it loads last and is counted as nothing else.
+
 WHAT IS DECLARED HERE RATHER THAN COMPUTED. Seven lists, and a reader should
 know they exist before being surprised by a level: SHARED (words no component
 owns), NOT_A_COMPONENT (the substrate), MODIFIER (words that name a state),
@@ -551,6 +555,24 @@ ORDER_BREAK = {
                           "dialog holds the notice, so the dialog loads after it",
 }
 FIRST = ["fonts", "tokens", "base", "course-chrome"]
+# ---- and the other end of the cascade ---------------------------------------
+# A PATTERN IS NOT A COMPONENT, and every list in this file has to keep meaning
+# one thing. components/patterns/ holds stable compositions of components, so a
+# pattern has no level (it stands ABOVE the three), no owner (it owns no class
+# another file could want), no specimen and no states. It is not in SUBJECTS
+# because this file globs components/*.css without recursing, which is luck
+# rather than design, so it is named here and the naming is the design.
+#
+# What it DOES have is a position: last. A pattern is assembled out of components,
+# so it must be able to restyle what it holds, and in a cascade that means loading
+# after all of them. FIRST pins the head for the same reason and by the same
+# argument.
+#
+# It is NOT in STATIC either, and that is the distinction worth keeping: STATIC
+# says "a component that gets no states". A pattern is not a component, so an
+# entry there would be a category error, and six declarations that each mean one
+# thing are worth more than seven that overlap.
+PATTERNS = sorted("patterns/" + p.stem for p in (COMP / "patterns").glob("*.css"))
 
 
 def _order_depth(name, seen=()):
@@ -570,7 +592,10 @@ _CURRENT = {f: i for i, f in enumerate(_CASCADE)}
 _BODY = [f for f in _CASCADE if f not in FIRST]
 for _f in _BODY:
     _order_depth(_f)
-ORDER = FIRST + sorted(_BODY, key=lambda f: (LEVEL.get(f, 0), _DEPTH[f], _CURRENT[f]))
+_BODY = [f for f in _BODY if f not in PATTERNS]
+ORDER = (FIRST
+         + sorted(_BODY, key=lambda f: (LEVEL.get(f, 0), _DEPTH[f], _CURRENT[f]))
+         + PATTERNS)
 
 
 def order_problems(cascade):

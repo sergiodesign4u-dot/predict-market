@@ -59,6 +59,15 @@ KIT = ROOT / "ui-kit"
 COMP = ROOT / "components"
 UVIS = ROOT / "ui-visual"
 SPECS = KIT / "specimens"
+# EVERY STYLESHEET OF THE SYSTEM, which after the patterns step is not the same
+# set as "every component". components/patterns/ holds compositions rather than
+# components: they get no level, no specimen, no stand page and no states, so
+# gate 2 and gate 25 must NOT see them. But they are css in this system, they
+# read the same roles and they ship on the same screens, so every gate about how
+# a stylesheet is WRITTEN has to: no em dash, no dangling var, no colour
+# primitive, no raw scale value, no selector without markup, no unparsable
+# declaration. A gate that stops at the folder boundary is a gate that stops.
+SHEETS = sorted(COMP.glob("*.css")) + sorted((COMP / "patterns").glob("*.css"))
 
 fails = []
 notes = []
@@ -246,7 +255,7 @@ impure = [s.strip() for s in sels
 check("6 _page.css styles no product", not impure, "; ".join(impure[:3]))
 
 stand_in_comp = []
-for path in COMP.glob("*.css"):
+for path in SHEETS:
     body = re.sub(r"/\*.*?\*/", "", path.read_text(encoding="utf-8"), flags=re.S)
     if re.search(r"\.(tk|ck)-[\w-]+", body):
         stand_in_comp.append(path.name)
@@ -256,7 +265,7 @@ check("6 components carry no stand class", not stand_in_comp, ", ".join(stand_in
 dash = [p.name for p in
         list(KIT.glob("*.html")) + list(SPECS.glob("*.html")) + list(KIT.glob("*.css"))
         + list(KIT.glob("*.py")) + list(KIT.glob("*.json")) + list((KIT / "docs").glob("*.md"))
-        + list((KIT / "_verify").glob("*")) + list(COMP.glob("*.css"))
+        + list((KIT / "_verify").glob("*")) + SHEETS
         if p.is_file() and "\u2014" in p.read_text(encoding="utf-8", errors="ignore")]
 check("7 no em dash", not dash, ", ".join(dash))
 
@@ -365,7 +374,7 @@ check("10 painted product navigates", relink.returncode == 0 and " 0 links" in f
 TOK = (COMP / "tokens.css").read_text(encoding="utf-8")
 TOK_BODY = re.sub(r"/\*.*?\*/", "", TOK, flags=re.S)
 declared = set(re.findall(r"(--[\w-]+)\s*:", TOK_BODY))
-readers = [p for p in COMP.glob("*.css") if p.name not in ("tokens.css", "index.css")]
+readers = [p for p in SHEETS if p.name not in ("tokens.css", "index.css")]
 readers += [KIT / "_page.css", KIT / "_specimen.css"] + list(SPECS.glob("*.html"))
 # A screen is a reader too. Most of them consume the system through a class, but
 # a value can also be written straight into markup, and the multi-outcome chart
@@ -397,7 +406,7 @@ SCALE_PROPS = {"padding", "padding-top", "padding-right", "padding-bottom", "pad
 # named, with the reason, the same way the orphan gate names its one exception
 RAW_OK = {("chart.css", "font-size")}   # svg text inside a scaled viewBox: not a screen px
 raw = []
-for path in sorted(COMP.glob("*.css")):
+for path in SHEETS:
     if path.name in ("tokens.css", "index.css"):
         continue
     body = re.sub(r'url\("[^"]*"\)', "URL", re.sub(r"/\*.*?\*/", "", path.read_text(encoding="utf-8"),
@@ -420,7 +429,7 @@ check("12 no raw scale value", not raw, "%d: %s" % (len(raw), "; ".join(raw[:3])
 # 0 1 2 3 4 5 6 10 40 49 50 60 199 200 201 across twelve files, three of them
 # doing one job. The order lives in tokens.css under --z-*, and nowhere else.
 zraw = ["%s %s" % (path.name, m.group(0))
-        for path in sorted(COMP.glob("*.css")) if path.name != "tokens.css"
+        for path in SHEETS if path.name != "tokens.css"
         for m in re.finditer(r"z-index:\s*-?\d+", path.read_text(encoding="utf-8"))]
 check("12 the stacking order is named", not zraw, "%d: %s" % (len(zraw), "; ".join(zraw[:3])))
 
@@ -463,7 +472,7 @@ for page in (list(UV.glob("*.html")) + list(KIT.glob("*.html")) + list(SPECS.glo
         carried.update(re.findall(r"['\"]([\w-]+)['\"]", call))
 
 unmatched = []
-for path in sorted(COMP.glob("*.css")):
+for path in SHEETS:
     if path.name in ("tokens.css", "index.css"):
         continue
     body = re.sub(r"/\*.*?\*/", "", path.read_text(encoding="utf-8"), flags=re.S)
@@ -490,7 +499,7 @@ COLOURISH = re.compile(r"#[0-9a-fA-F]{3,8}|rgba?\(|url\(|gradient\(")
 colour_prims = {m.group(1) for m in re.finditer(r"(--[\w-]+)\s*:\s*([^;]+);", prim_src)
                 if COLOURISH.search(m.group(2))}
 leaks = []
-for path in sorted(COMP.glob("*.css")):
+for path in SHEETS:
     if path.name == "tokens.css":
         continue
     body = path.read_text(encoding="utf-8")
@@ -531,7 +540,7 @@ check("13 every frame follows", not frame_missing,
 MEASURE = re.compile(r"(?<![\w-])(width|height|min-width|min-height|max-width|max-height"
                      r"|flex|flex-basis)\s*:[^;{}]*?var\(--space-\d+\)")
 space_as_size = []
-for path in sorted(COMP.glob("*.css")):
+for path in SHEETS:
     if path.stem == "tokens":
         continue
     for i, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
@@ -549,7 +558,7 @@ check("12 a distance is not a size", not space_as_size,
 # the wrong first one, because it costs two browser runs and this costs nothing.
 DECL = re.compile(r"^\s*(?:--)?[-a-zA-Z*][\w-]*\s*:")
 parse_bad = []
-for path in sorted(COMP.glob("*.css")):
+for path in SHEETS:
     body = re.sub(r"/\*.*?\*/", "", path.read_text(encoding="utf-8"), flags=re.S)
     for block in re.finditer(r"\{([^{}]*)\}", body):
         for part in block.group(1).split(";"):
@@ -1068,17 +1077,45 @@ check("22 a page off the tree is still linked", not unreachable,
 sys.path.insert(0, str(KIT))
 from _levels import ORDER as LEVEL_ORDER, order_problems, SUBJECTS as LEVEL_SUBJECTS  # noqa: E402
 from _levels import STATIC as LEVEL_STATIC                            # noqa: E402
+from _levels import PATTERNS as LEVEL_PATTERNS                        # noqa: E402
 
 cascade = [ln.split('"')[1][:-4] for ln in
            (COMP / "index.css").read_text(encoding="utf-8").splitlines()
            if ln.startswith("@import")]
-missing = sorted((set(LEVEL_SUBJECTS) | {"tokens"}) - set(cascade))
+# A PATTERN IS IMPORTED OR IT IS NOT IN THE SYSTEM. It has no specimen, no stand
+# page and no level, so gate 2 and gate 24 cannot notice it going missing, and a
+# file in components/patterns/ that index.css never loads would be exactly the
+# artifact without a reader this whole stage is written against. The one place it
+# CAN be caught is here, where the cascade is read.
+missing = sorted((set(LEVEL_SUBJECTS) | {"tokens"} | set(LEVEL_PATTERNS)) - set(cascade))
 check("23 index.css imports them all", not missing, "%d: %s" % (len(missing), ", ".join(missing)))
 wrong = order_problems(cascade)
 check("23 a part is imported first", not wrong, "%d: %s" % (
     len(wrong), "; ".join("%s before %s" % (w, p) for w, p in wrong[:3])))
 check("23 the order is the computed one", cascade == LEVEL_ORDER,
       "run: python3 ui-kit/_levels.py --order")
+# AND A PATTERN CARRIES NO COLOUR, which is the rule that keeps it a pattern.
+# A composition says where things go: grid, order, gap, width, sticky. The moment
+# it says what something LOOKS like it has become a component with no page, no
+# specimen and no states, and the next screen that needs the same arrangement in
+# a different skin has to fork it. So the paint stays with whatever owns the
+# surface, and the arrangement comes here. Written as a property list rather than
+# a value scan because `border:1px solid var(--x)` hides a colour inside a
+# shorthand, and because a pattern has no business drawing an edge either.
+PAINT_PROP = re.compile(r"^(background|color|border(?!-radius)|box-shadow|fill|stroke|"
+                        r"opacity|filter|backdrop-filter|text-shadow|outline)")
+painted = []
+for f in sorted((COMP / "patterns").glob("*.css")):
+    body = re.sub(r"/\*.*?\*/", "", f.read_text(encoding="utf-8"), flags=re.S)
+    for sel, decl in re.findall(r"([^{}]+)\{([^{}]*)\}", body):
+        if sel.strip().startswith("@"):
+            continue
+        for one in decl.split(";"):
+            prop = one.split(":")[0].strip()
+            if prop and PAINT_PROP.match(prop):
+                painted.append("%s %s{%s}" % (f.name, sel.strip()[:24], one.strip()[:28]))
+check("23 a pattern carries no colour", not painted,
+      "%d: %s" % (len(painted), "; ".join(painted[:3])))
 
 # 24 ------------------------------------------------- a stand shows the whole --
 # The level is arithmetic over what a component CONTAINS, and containment is read

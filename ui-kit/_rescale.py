@@ -32,8 +32,13 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+# components/patterns/ is in the list on purpose. A pattern is not a component,
+# but it is a stylesheet of this system and it reads the same roles, so the
+# Reads: header belongs on it for the same reason it belongs on the others: the
+# file says what it depends on and a script keeps that true.
 TARGETS = ([p for p in sorted((ROOT / "components").glob("*.css"))
             if p.name not in ("tokens.css", "index.css")]
+           + sorted((ROOT / "components" / "patterns").glob("*.css"))
            + [ROOT / "ui-kit" / "_page.css", ROOT / "ui-kit" / "_specimen.css"])
 
 # Properties that take a distance. A token landing on one of these is spacing;
