@@ -789,13 +789,40 @@ turns every highlight into a shadow, so these cannot stay literal inside the com
 `components/index.css` imports `tokens.css`, then `base.css`, then every component. A screen links
 that one file. A new component is added there once, instead of being wired into 104 screens.
 
-**The component order is not alphabetical, and that is deliberate.** These files came out of one flat
-kit where the cascade was a straight line: the grey structural layer first, the Vault skin on top.
-Several components carry rules of equal specificity that touch the same element (an `h3` inside a
-chart head and an `h3` inside a section; a dropdown and a filter panel), and there the file imported
-last wins. The import list therefore repeats the order in which those rules were layered in the kit.
-Alphabetical order would have changed four outcomes silently. If a future component has no such
-overlap, put it anywhere; if it does, put it where its cascade needs it and say so in a comment.
+**The component order is not alphabetical, and that is deliberate.** Several components carry rules
+of equal specificity that touch the same element (an `h3` inside a chart head and an `h3` inside a
+section; a dropdown and a filter panel), and there the file imported last wins. Alphabetical order
+would change those outcomes silently, and so would adding a component at the end of the list.
+
+**The rule is: a part is imported before the whole that holds it.** The file that describes the
+smaller thing has to be the one that can be overridden, not the one that overrides. A card may
+restyle the odds bar it contains; an odds bar may not quietly restyle every card that contains it.
+
+Until this pass the list was something else: it repeated the order in which the rules had been
+layered inside the flat kit the system was read out of, and **that put twenty five wholes ahead of
+their parts** - header before button, feed before card, card before both of the controls it holds.
+Nothing rendered wrong, because step 7b deleted every pair of files that write the same selector,
+which is exactly why no sweep could see it. **A cascade defect is invisible until the day someone
+adds the rule that collides**, and then it presents as "my override does not work" three files away
+from its cause.
+
+The order is now computed, not chosen. `ui-kit/_levels.py` reads what each component CONTAINS out of
+the specimen DOM, sorts by level (atom, then molecule, then organism) and inside a level by how deep
+the nesting goes, and among files that no constraint separates it keeps the order the file already
+had, because the smallest reordering that satisfies the rule is the one least likely to move a pixel.
+`python3 ui-kit/_levels.py --order` prints the list and **gate 23** fails the build when `index.css`
+stops matching it. Measured across the change: 503 of 520 product snapshots and 305 of 310 specimen
+snapshots identical to the property, and the handful that differ are the mobile sheet caught
+mid-rise, which differs by the same amount between two snapshots of an unchanged tree.
+
+**One cycle had to be declared rather than resolved.** The tab strip holds the comments panel, and
+the comments panel holds a segmented switcher, and every switcher in the product is written in
+`tabs.css`. A cycle has no topological order, so `ORDER_BREAK` in `_levels.py` drops that one edge
+with its reason. It is dropped for ordering only: the edge is real, so it still counts toward the
+level and comments stays an organism.
+
+A rule whose selector list spans several components is split per component, in place, so each file
+keeps the rule at its original position in the cascade.
 
 A rule whose selector list spans several components is split per component, in place, so each file
 keeps the rule at its original position in the cascade.
@@ -896,14 +923,19 @@ Five things, or it does not exist:
 
 1. `components/<name>.css` - the file, with the header comment: the roles it reads, its stand page,
    the screens it stands on.
-2. a block to show it: either a labelled block already in `ui-kit/kit.html`, or a new one in
+2. an `@import` in `components/index.css`, at the position `python3 ui-kit/_levels.py --order` gives
+   it. Not at the end: the end is where an organism belongs, and putting an atom there lets it
+   override every component that holds it.
+3. a block to show it: either a labelled block already in `ui-kit/kit.html`, or a new one in
    `ui-kit/specimens.extra.html`.
-3. an entry in `ui-kit/specimens.map.json` pointing at that block.
-4. a line in `ui-kit/_nav.js` - the registry that renders both the hub cards and the side panel.
+4. an entry in `ui-kit/specimens.map.json` pointing at that block.
 5. a row in `ui-kit/docs/inventory.md`.
 
 `ui-kit/<name>.html` is not on the list because it is generated. So is `docs/coverage.md`, which
-reports what each component actually renders.
+reports what each component actually renders, the **Level** column of the inventory, and the line in
+`ui-kit/_nav.js`: the registry that renders the hub cards and the side panel is derived from the same
+containment map that orders the cascade, so the panel reads in the order `index.css` loads and there
+is no second list to keep in step.
 
 The build is three commands, in this order, all idempotent, none of which touches `components/` or
 `ui-visual/`:
@@ -912,8 +944,15 @@ The build is three commands, in this order, all idempotent, none of which touche
 python3 ui-kit/_extract_specimens.py     # blocks  -> specimens/ + selftest.html
 python3 ui-kit/_gen_component_pages.py   # css     -> 38 pages + overview + _nav.js + coverage.md
 python3 ui-kit/_gen_icons_page.py        # sprite  -> icons.html
+python3 ui-kit/_fill_inventory.py        # levels  -> the CSS file / Page / Level columns
+python3 ui-kit/_gen_docs.py              # docs/   -> the four documents as pages
 python3 ui-kit/_check_kit.py             # the gates
 ```
+
+`_gen_component_pages.py` runs before `_gen_docs.py` because it writes `docs/coverage.md`, and both
+run before `_check_kit.py`. `ui-kit/_levels.py` is not in the list: it is a library the other three
+read, and running it on its own only prints what it knows (`--why` for the classes it found inside
+each component, `--order` for the cascade).
 
 `ui-kit/tokens.html` is generated separately by `ui-kit/_gen_tokens_page.py` from
 `components/tokens.css`.

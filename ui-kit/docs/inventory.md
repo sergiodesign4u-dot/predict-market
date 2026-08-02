@@ -4,9 +4,9 @@ Read out of the whole product, not invented. Source: all `wireframes/*.html` (10
 screen and state) read together with `ia/docs/sitemap.md` and `wireframes/_conventions.md` (the
 S1-S6 shared patterns), then re-read against the **shipped color layer** (`ui-visual/`, 76 pages +
 the shipped color layer). It was the build-list for `components/`; now that the system exists it is
-the index into it, which is what the **CSS file** and **Page** columns are for: the thing you are
-looking at, the file that paints it, and the page that shows it alone. The color language it is
-dressed in is root `DESIGN.md`.
+the index into it, which is what the **CSS file**, **Page** and **Level** columns are for: the thing
+you are looking at, the file that paints it, the page that shows it alone, and where it sits in the
+composition. The color language it is dressed in is root `DESIGN.md`.
 
 **Deep pass (2026-07-23).** Re-audited after the whole product shipped in color (Stage 08). Two
 things were added: a **Kit** column (is the component actually rendered as a live sample in
@@ -29,6 +29,20 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
   brand/trust art (shipped as webp/jpg in `assets/`). Feeds Step 04 (visuals).
 - **Kit** column: `+` a live sample renders in `ui-kit/kit.html`; `~` a base/related sample renders
   but this variant or state is not shown; `-` no sample yet (a Step-2 gap).
+- **Level** column: `L1` atom, `L2` molecule, `L3` organism. **Computed, not typed**
+  (`ui-kit/_levels.py`, which also owns the class-ownership map `_gen_component_pages.py` reads).
+  The rule is arithmetic: **level = 1 + the highest level of what the component CONTAINS**, with 3 as
+  the ceiling, so a dialog holding a form stays an organism rather than inventing a fourth level. A
+  row that maps to several files takes the highest of them. Containment is read from the specimen
+  DOM, and only from the DESCENDANTS of the component's own root: a specimen wraps its subject in the
+  context it needs in order to render (the YES/NO pair sits inside a card inside the grid inside
+  `main.feed`), so a flat scan of class attributes reads ancestors as contents and returns 33
+  organisms out of 38. Two things the arithmetic cannot see are declared as floors in `RAISE`, one
+  reason each: a block whose parts are all its own classes (the hero band is four blocks and 51
+  classes, none of them another component's) and a screen shell, which is an organism because of what
+  it is (the bottom nav holds nothing and is still the tab bar of every screen). A floor propagates,
+  and it only ever goes up, because an error downward breaks the cascade while an error upward only
+  makes a group less homogeneous.
 
 `#f` = number of distinct wireframe files the component appears on (UV rows have no WF count).
 
@@ -36,125 +50,125 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 ## 1. Navigation and chrome
 
-| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| App header (lean) | `header.css` | [header](../header.html) | all header screens (feed, category, detail, active-bets, notifications, wallet, profile, how-it-works) | logged-in / logged-out; rest / `.scrolled` (condensed) | 87 | WF | - | + |
-| Logo (Events home) | `header.css` | [header](../header.html) | every header screen | default | 87 | WF | - | + |
-| Balance / Portfolio-Cash swap | `header.css` | [header](../header.html) | logged-in header | swap Portfolio <-> Cash; "+" opens Deposit | 53 | WF | - | + |
-| Notifications bell + mini-dropdown | `header.css` | [header](../header.html) | logged-in header | populated / empty / badge on-off | 53 | WF | - | + |
-| Avatar menu (dropdown) | `header.css` | [header](../header.html) | logged-in header | closed / open | 53 | WF | portrait | + |
-| How-it-works button | `header.css` | [header](../header.html) | header (next to logo) | default; opens HIW dialog (dialog itself = group 4) | 87 | WF | - | + |
-| Icon button (ghost) | `header.css` | [header](../header.html) | header utility, event actions | rest / hover / focus | 87 | WF | - | + |
-| Auth entries (Log in / Sign up) | `button.css` | [button](../button.html) | logged-out header + gate | default; open Sign In dialog | 34 | WF | - | + |
-| Category nav band | `catnav.css` | [catnav](../catnav.html) | feed + category pages | per-category active; `.cat-condensed` strip on scroll | 57 | WF/UV | - | + |
-| Sub-category rail (`.subcat`) | `catnav.css` | [catnav](../catnav.html) | category pages (politics/crypto/culture/general) | active row + sample count | 32 | WF | - | + |
-| Trending sub-filter chips (`.feed-subfilter`) | `catnav.css` | [catnav](../catnav.html) | Trending feed | active | 5 | UV | - | + |
-| Bottom nav (mobile, 4 slots) | `bottomnav.css` | [bottomnav](../bottomnav.html) | all header screens | per-slot current; logged-out (Sign in slot) | 87 | WF | - | + |
-| Active / History tabs (`.tabs`) | `tabs.css` | [tabs](../tabs.html) | My Bets (active-bets, history) | active tab | 9 | WF | - | + |
-| Footer language menu | `footer.css` | [footer](../footer.html) | every footer screen | closed / open (TBD) | 87 | WF | - | + |
-| Screen-tree drawer / roadmap sidebar | `course-chrome.css` | [course-chrome](../course-chrome.html) | every page (course chrome) | - | 104 | WF | - | n/a (course chrome, not product) |
+| Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| App header (lean) | `header.css` | [header](../header.html) | L3 | all header screens (feed, category, detail, active-bets, notifications, wallet, profile, how-it-works) | logged-in / logged-out; rest / `.scrolled` (condensed) | 87 | WF | - | + |
+| Logo (Events home) | `header.css` | [header](../header.html) | L3 | every header screen | default | 87 | WF | - | + |
+| Balance / Portfolio-Cash swap | `header.css` | [header](../header.html) | L3 | logged-in header | swap Portfolio <-> Cash; "+" opens Deposit | 53 | WF | - | + |
+| Notifications bell + mini-dropdown | `header.css` | [header](../header.html) | L3 | logged-in header | populated / empty / badge on-off | 53 | WF | - | + |
+| Avatar menu (dropdown) | `header.css` | [header](../header.html) | L3 | logged-in header | closed / open | 53 | WF | portrait | + |
+| How-it-works button | `header.css` | [header](../header.html) | L3 | header (next to logo) | default; opens HIW dialog (dialog itself = group 4) | 87 | WF | - | + |
+| Icon button (ghost) | `header.css` | [header](../header.html) | L3 | header utility, event actions | rest / hover / focus | 87 | WF | - | + |
+| Auth entries (Log in / Sign up) | `button.css` | [button](../button.html) | L1 | logged-out header + gate | default; open Sign In dialog | 34 | WF | - | + |
+| Category nav band | `catnav.css` | [catnav](../catnav.html) | L3 | feed + category pages | per-category active; `.cat-condensed` strip on scroll | 57 | WF/UV | - | + |
+| Sub-category rail (`.subcat`) | `catnav.css` | [catnav](../catnav.html) | L3 | category pages (politics/crypto/culture/general) | active row + sample count | 32 | WF | - | + |
+| Trending sub-filter chips (`.feed-subfilter`) | `catnav.css` | [catnav](../catnav.html) | L3 | Trending feed | active | 5 | UV | - | + |
+| Bottom nav (mobile, 4 slots) | `bottomnav.css` | [bottomnav](../bottomnav.html) | L3 | all header screens | per-slot current; logged-out (Sign in slot) | 87 | WF | - | + |
+| Active / History tabs (`.tabs`) | `tabs.css` | [tabs](../tabs.html) | L3 | My Bets (active-bets, history) | active tab | 9 | WF | - | + |
+| Footer language menu | `footer.css` | [footer](../footer.html) | L3 | every footer screen | closed / open (TBD) | 87 | WF | - | + |
+| Screen-tree drawer / roadmap sidebar | `course-chrome.css` | [course-chrome](../course-chrome.html) | - | every page (course chrome) | - | 104 | WF | - | n/a (course chrome, not product) |
 
 ## 2. Browse: feed and cards
 
-| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Two-stone plate / surface system (`.cat-layout`, `.feed-inner` inset plates, notched brass frames, groove edges, trust-column watermark `card::after`) | `catnav.css`, `feed.css`, `card.css` | [catnav](../catnav.html), [feed](../feed.html), [card](../card.html) | every color page (the substrate) | - | - | UV | art | + |
-| Event card, binary (treatment B) | `card.css` | [card](../card.html) | feed, category, favorites, event-feed-push | rest / hover | 36 | WF | event | + |
-| Event card, multi (treatment D) | `card.css` | [card](../card.html) | feed, category, event-detail, favorites | rest; 2 leading options | 20 | WF | event | + |
-| Odds bar (thin, green YES on red track) | `oddsbar.css` | [oddsbar](../oddsbar.html) | feed / category / detail cards | injected from prob | - | UV | - | + |
-| Tinted YES / NO buttons | `yesno.css` | [yesno](../yesno.html) | every event card + bet panel | rest / hover / compact | 14 | WF | - | + |
-| Probability figure | `card.css` | [card](../card.html) | cards, detail | value | 21 | WF | - | + |
-| Card meta row (Volume / Closes + bookmark) | `card.css` | [card](../card.html) | every event card | bookmarked on / off | 23 | WF | - | + |
-| Responsive card grid | `feed.css` | [feed](../feed.html) | feed, category, favorites | populated / skeleton | 23 | WF | - | + |
-| Featured hero band (`.feed-hero`) | `hero.css` | [hero](../hero.html) | Trending feed | default | - | UV | event, art | + |
-| - featured market (`.hero-feature` + `.hf-chart` SVG area/volume graph) | `hero.css` | [hero](../hero.html) | Trending feed | default | - | UV | event | + |
-| - hero trust cards (`.hero-trust`, gold art bleed) | `hero.css` | [hero](../hero.html) | Trending feed | default | - | UV | art | + |
-| - brand tile (`.hero-promo.brand-tile`, notched frame) | `hero.css` | [hero](../hero.html) | Trending feed | default | - | UV | art | + |
-| - hot-right-now ranked list (`.hero-hot`) | `hero.css` | [hero](../hero.html) | Trending feed | default | - | UV | - | + |
-| Feed SEO plate (below fold, `.feed-seo-wrap` brand statement) | `seo-plate.css` | [seo-plate](../seo-plate.html) | feed + category pages | default | 14 | WF/UV | art | + |
-| Related events plate (`.related-events`) | `related.css` | [related](../related.html) | event-detail | list | 9 | WF | event | + |
-| Load-more control | `loadmore.css` | [loadmore](../loadmore.html) | feed, category | rest / hover | 20+ | WF/UV | - | + |
+| Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Two-stone plate / surface system (`.cat-layout`, `.feed-inner` inset plates, notched brass frames, groove edges, trust-column watermark `card::after`) | `catnav.css`, `feed.css`, `card.css` | [catnav](../catnav.html), [feed](../feed.html), [card](../card.html) | L3 | every color page (the substrate) | - | - | UV | art | + |
+| Event card, binary (treatment B) | `card.css` | [card](../card.html) | L3 | feed, category, favorites, event-feed-push | rest / hover | 36 | WF | event | + |
+| Event card, multi (treatment D) | `card.css` | [card](../card.html) | L3 | feed, category, event-detail, favorites | rest; 2 leading options | 20 | WF | event | + |
+| Odds bar (thin, green YES on red track) | `oddsbar.css` | [oddsbar](../oddsbar.html) | L1 | feed / category / detail cards | injected from prob | - | UV | - | + |
+| Tinted YES / NO buttons | `yesno.css` | [yesno](../yesno.html) | L2 | every event card + bet panel | rest / hover / compact | 14 | WF | - | + |
+| Probability figure | `card.css` | [card](../card.html) | L3 | cards, detail | value | 21 | WF | - | + |
+| Card meta row (Volume / Closes + bookmark) | `card.css` | [card](../card.html) | L3 | every event card | bookmarked on / off | 23 | WF | - | + |
+| Responsive card grid | `feed.css` | [feed](../feed.html) | L3 | feed, category, favorites | populated / skeleton | 23 | WF | - | + |
+| Featured hero band (`.feed-hero`) | `hero.css` | [hero](../hero.html) | L3 | Trending feed | default | - | UV | event, art | + |
+| - featured market (`.hero-feature` + `.hf-chart` SVG area/volume graph) | `hero.css` | [hero](../hero.html) | L3 | Trending feed | default | - | UV | event | + |
+| - hero trust cards (`.hero-trust`, gold art bleed) | `hero.css` | [hero](../hero.html) | L3 | Trending feed | default | - | UV | art | + |
+| - brand tile (`.hero-promo.brand-tile`, notched frame) | `hero.css` | [hero](../hero.html) | L3 | Trending feed | default | - | UV | art | + |
+| - hot-right-now ranked list (`.hero-hot`) | `hero.css` | [hero](../hero.html) | L3 | Trending feed | default | - | UV | - | + |
+| Feed SEO plate (below fold, `.feed-seo-wrap` brand statement) | `seo-plate.css` | [seo-plate](../seo-plate.html) | L2 | feed + category pages | default | 14 | WF/UV | art | + |
+| Related events plate (`.related-events`) | `related.css` | [related](../related.html) | L2 | event-detail | list | 9 | WF | event | + |
+| Load-more control | `loadmore.css` | [loadmore](../loadmore.html) | L1 | feed, category | rest / hover | 20+ | WF/UV | - | + |
 
 ## 3. Event Detail
 
-| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Two-plate layout (`.ed-layout`: content + sticky bet panel) | `event-detail.css` | [event-detail](../event-detail.html) | event-detail, event-detail-bet | binary / multi | 10 | WF | - | + |
-| Event head (`.ed-head`: thumb, category, question, big prob, thin `.ed-oddsbar`, actions) | `event-detail.css`, `oddsbar.css` | [event-detail](../event-detail.html), [oddsbar](../oddsbar.html) | event-detail (+ bet variants) | binary / multi | 11 | WF | event | + |
-| Bet panel (`.bet-panel`: `.bp-dir` filled-selected side, amount, quick chips, payout line, Confirm) | `betpanel.css` | [betpanel](../betpanel.html) | event-detail (+ bet variants) | intent / insufficient / reconcile / processing / error / resolved | 10-36 | WF | - | + |
-| Bet dock (mobile sticky, `.bet-dock`) | `betpanel.css` | [betpanel](../betpanel.html) | event-detail | collapsed -> expand to confirm | 8 | WF | - | + |
-| Multi outcome list (`.opt-list` + "pick an outcome") | `options.css` | [options](../options.html) | event-detail-multi | selected marked (`.sel`), Change link | 2 | WF | - | + |
-| Price chart (`.ed-chart` SVG plot + y/x axis + `.ed-range` switcher; multi adds `.ml-line` legend) | `tabs.css`, `chart.css` | [tabs](../tabs.html), [chart](../chart.html) | event-detail (+ bet variants) | binary / multi / range | 11 | WF/UV | - | + |
-| Facts strip (`.ed-facts`) | `event-detail.css` | [event-detail](../event-detail.html) | event-detail | default | 9 | WF | - | + |
-| Why-this-price arguments (`.args`: YES col / NO col) | `event-detail.css` | [event-detail](../event-detail.html) | event-detail | default | 18 | WF | - | + |
-| Resolution block (`.resolution`, `.ed-rules` tabs) | `event-detail.css` | [event-detail](../event-detail.html) | event-detail | default / resolved | 18 | WF | - | + |
-| AMM market panel (`.market-box` collapsible + `.market-depth` "price by bet size" table) | `market.css` | [market](../market.html) | event-detail | collapsed / open | - | UV | - | + |
-| Content tab strip (Comments / Biggest bets / Bets / Activity, CSS radio) | `tabs.css` | [tabs](../tabs.html) | event-detail (+ bet variants) | per-tab active | 9-36 | WF | - | + |
-| Comment (`.cmt`: user, text, actions, badge, reply) | `comments.css` | [comments](../comments.html) | event-detail Comments tab | logged-in / logged-out (`.cmt-signin` prompt) | 36 | WF | portrait | + |
-| Comment composer (`.cmt-compose`) | `comments.css` | [comments](../comments.html) | event-detail Comments tab | logged-in / logged-out | 7 | WF | - | + |
-| Biggest bets columns (`.hold-col` / `.hold-row`) | `bets-table.css` | [bets-table](../bets-table.html) | event-detail Bets tab | binary / multi (outcome-tagged) | 16 | WF | - | + |
-| Bets table (`.ptable`, "you" highlight) | `bets-table.css` | [bets-table](../bets-table.html) | event-detail Bets tab | logged-in (your row) / logged-out | 9 | WF | - | + |
-| Activity feed (`.act-row`) | `bets-table.css` | [bets-table](../bets-table.html) | event-detail Activity tab | default | 9 | WF | - | + |
-| Segmented switcher (`.seg` / `.rules-tabs` / `.ed-range`) | `tabs.css` | [tabs](../tabs.html) | event-detail comments + rules + chart | active segment | 9 | WF | - | + |
-| Bet sub-state boxes (`.protect` / `.inline-error` / `.reconcile-box` / `.spinner-box`) | `notice.css` | [notice](../notice.html) | bet panel + dock inline | funds-safe / insufficient / reconcile / processing | 10+ | WF/UV | - | + |
+| Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Two-plate layout (`.ed-layout`: content + sticky bet panel) | `event-detail.css` | [event-detail](../event-detail.html) | L3 | event-detail, event-detail-bet | binary / multi | 10 | WF | - | + |
+| Event head (`.ed-head`: thumb, category, question, big prob, thin `.ed-oddsbar`, actions) | `event-detail.css`, `oddsbar.css` | [event-detail](../event-detail.html), [oddsbar](../oddsbar.html) | L3 | event-detail (+ bet variants) | binary / multi | 11 | WF | event | + |
+| Bet panel (`.bet-panel`: `.bp-dir` filled-selected side, amount, quick chips, payout line, Confirm) | `betpanel.css` | [betpanel](../betpanel.html) | L3 | event-detail (+ bet variants) | intent / insufficient / reconcile / processing / error / resolved | 10-36 | WF | - | + |
+| Bet dock (mobile sticky, `.bet-dock`) | `betpanel.css` | [betpanel](../betpanel.html) | L3 | event-detail | collapsed -> expand to confirm | 8 | WF | - | + |
+| Multi outcome list (`.opt-list` + "pick an outcome") | `options.css` | [options](../options.html) | L3 | event-detail-multi | selected marked (`.sel`), Change link | 2 | WF | - | + |
+| Price chart (`.ed-chart` SVG plot + y/x axis + `.ed-range` switcher; multi adds `.ml-line` legend) | `tabs.css`, `chart.css` | [tabs](../tabs.html), [chart](../chart.html) | L3 | event-detail (+ bet variants) | binary / multi / range | 11 | WF/UV | - | + |
+| Facts strip (`.ed-facts`) | `event-detail.css` | [event-detail](../event-detail.html) | L3 | event-detail | default | 9 | WF | - | + |
+| Why-this-price arguments (`.args`: YES col / NO col) | `event-detail.css` | [event-detail](../event-detail.html) | L3 | event-detail | default | 18 | WF | - | + |
+| Resolution block (`.resolution`, `.ed-rules` tabs) | `event-detail.css` | [event-detail](../event-detail.html) | L3 | event-detail | default / resolved | 18 | WF | - | + |
+| AMM market panel (`.market-box` collapsible + `.market-depth` "price by bet size" table) | `market.css` | [market](../market.html) | L2 | event-detail | collapsed / open | - | UV | - | + |
+| Content tab strip (Comments / Biggest bets / Bets / Activity, CSS radio) | `tabs.css` | [tabs](../tabs.html) | L3 | event-detail (+ bet variants) | per-tab active | 9-36 | WF | - | + |
+| Comment (`.cmt`: user, text, actions, badge, reply) | `comments.css` | [comments](../comments.html) | L3 | event-detail Comments tab | logged-in / logged-out (`.cmt-signin` prompt) | 36 | WF | portrait | + |
+| Comment composer (`.cmt-compose`) | `comments.css` | [comments](../comments.html) | L3 | event-detail Comments tab | logged-in / logged-out | 7 | WF | - | + |
+| Biggest bets columns (`.hold-col` / `.hold-row`) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Bets tab | binary / multi (outcome-tagged) | 16 | WF | - | + |
+| Bets table (`.ptable`, "you" highlight) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Bets tab | logged-in (your row) / logged-out | 9 | WF | - | + |
+| Activity feed (`.act-row`) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Activity tab | default | 9 | WF | - | + |
+| Segmented switcher (`.seg` / `.rules-tabs` / `.ed-range`) | `tabs.css` | [tabs](../tabs.html) | L3 | event-detail comments + rules + chart | active segment | 9 | WF | - | + |
+| Bet sub-state boxes (`.protect` / `.inline-error` / `.reconcile-box` / `.spinner-box`) | `notice.css` | [notice](../notice.html) | L2 | bet panel + dock inline | funds-safe / insufficient / reconcile / processing | 10+ | WF/UV | - | + |
 
 ## 4. Forms, dialogs and inputs
 
-| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Shared dialog shell (`dialog.app-dialog`, stone-plate material) | `dialog.css` | [dialog](../dialog.html), [outcome-dialog](../outcome-dialog.html), [signin](../signin.html) | every page (emitted in shell) | open / close (backdrop, Esc); modal (desktop) / sheet (mobile) | 104 | WF/UV | - | ~ |
-| Provider buttons (Google / X / Apple, real brand marks) | `button.css` | [button](../button.html) | Sign In dialog + sign-in pages | rest / hover | 104 | WF/UV | - | + |
-| Amount field + quick-amount chips | `input.css` | [input](../input.html) | Deposit dialog + deposit pages | rest / selected / focus | 104 | WF | - | + |
-| Field label | `input.css` | [input](../input.html) | dialogs, forms | default | 104 | WF | - | + |
-| Funds-protection line (`.protect`, "USDC held 1:1") | `notice.css` | [notice](../notice.html) | Deposit dialog, HIW, wallet, bet panel | default | 104 | WF | - | + |
-| Widget box (`.widget-box` on-ramp placeholder) | `notice.css` | [notice](../notice.html) | Deposit dialog | default / load-failure | 104 | WF | - | + |
-| Primary CTA (brass) - Confirm bet / Add funds | `button.css` | [button](../button.html) | dialogs, states, HIW | rest / hover / focus | 104 | WF/UV | - | + |
-| Bottom-sheet / modal overlay (grab, backdrop) | `dialog.css` | [dialog](../dialog.html), [outcome-dialog](../outcome-dialog.html), [signin](../signin.html) | deposit, sign-in, win, loss | modal (desktop) / sheet (mobile) | 17 | WF | - | ~ |
-| Sign-in dialog (`.signin-dialog`) | `signin.css` | [signin](../signin.html) | sign-in family | default / error / loading / provider-conflict | 4 | WF/UV | - | ~ |
-| How-it-works dialog (`.hiw-dialog`: hero + icon chips + FAQ) | `hiw-dialog.css` | [hiw-dialog](../hiw-dialog.html) | every header page | open | 87 | WF/UV | art | + |
-| Filter menu (Sort / Frequency) | `filters.css` | [filters](../filters.html) | feed, category | closed / open | 44 | WF | - | + |
-| Reverse-order toggle switch | `filters.css` | [filters](../filters.html) | feed controls | on / off | 44 | WF | - | + |
-| Inline error line (`.inline-error`, neutral stone) | `notice.css` | [notice](../notice.html) | deposit, bet, sign-in, win | error | 8 | WF | - | + |
-| Spinner box (`.spinner-box`) | `notice.css` | [notice](../notice.html) | deposit, bet, sign-in, win, loss | loading | 6 | WF | - | + |
-| S5 reconcile box (`.reconcile-box`, price moved) | `notice.css` | [notice](../notice.html) | bet, win, loss | re-confirm / cancel | 6 | WF | - | + |
+| Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Shared dialog shell (`dialog.app-dialog`, stone-plate material) | `dialog.css` | [dialog](../dialog.html), [outcome-dialog](../outcome-dialog.html), [signin](../signin.html) | L3 | every page (emitted in shell) | open / close (backdrop, Esc); modal (desktop) / sheet (mobile) | 104 | WF/UV | - | ~ |
+| Provider buttons (Google / X / Apple, real brand marks) | `button.css` | [button](../button.html) | L1 | Sign In dialog + sign-in pages | rest / hover | 104 | WF/UV | - | + |
+| Amount field + quick-amount chips | `input.css` | [input](../input.html) | L1 | Deposit dialog + deposit pages | rest / selected / focus | 104 | WF | - | + |
+| Field label | `input.css` | [input](../input.html) | L1 | dialogs, forms | default | 104 | WF | - | + |
+| Funds-protection line (`.protect`, "USDC held 1:1") | `notice.css` | [notice](../notice.html) | L2 | Deposit dialog, HIW, wallet, bet panel | default | 104 | WF | - | + |
+| Widget box (`.widget-box` on-ramp placeholder) | `notice.css` | [notice](../notice.html) | L2 | Deposit dialog | default / load-failure | 104 | WF | - | + |
+| Primary CTA (brass) - Confirm bet / Add funds | `button.css` | [button](../button.html) | L1 | dialogs, states, HIW | rest / hover / focus | 104 | WF/UV | - | + |
+| Bottom-sheet / modal overlay (grab, backdrop) | `dialog.css` | [dialog](../dialog.html), [outcome-dialog](../outcome-dialog.html), [signin](../signin.html) | L3 | deposit, sign-in, win, loss | modal (desktop) / sheet (mobile) | 17 | WF | - | ~ |
+| Sign-in dialog (`.signin-dialog`) | `signin.css` | [signin](../signin.html) | L3 | sign-in family | default / error / loading / provider-conflict | 4 | WF/UV | - | ~ |
+| How-it-works dialog (`.hiw-dialog`: hero + icon chips + FAQ) | `hiw-dialog.css` | [hiw-dialog](../hiw-dialog.html) | L3 | every header page | open | 87 | WF/UV | art | + |
+| Filter menu (Sort / Frequency) | `filters.css` | [filters](../filters.html) | L1 | feed, category | closed / open | 44 | WF | - | + |
+| Reverse-order toggle switch | `filters.css` | [filters](../filters.html) | L1 | feed controls | on / off | 44 | WF | - | + |
+| Inline error line (`.inline-error`, neutral stone) | `notice.css` | [notice](../notice.html) | L2 | deposit, bet, sign-in, win | error | 8 | WF | - | + |
+| Spinner box (`.spinner-box`) | `notice.css` | [notice](../notice.html) | L2 | deposit, bet, sign-in, win, loss | loading | 6 | WF | - | + |
+| S5 reconcile box (`.reconcile-box`, price moved) | `notice.css` | [notice](../notice.html) | L2 | bet, win, loss | re-confirm / cancel | 6 | WF | - | + |
 
 ## 5. Feedback and states
 
-| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| State block (`.state-block`: icon + title + message + action) | `state-block.css` | [state-block](../state-block.html) | feed, category, detail, active-bets, notifications, wallet, profile, 404, 500, maintenance | empty / error | 38 | WF | - | + |
-| Skeleton cards / lines (`.card.skeleton` / `.pos.skeleton` shimmer) | `card.css`, `position.css` | [card](../card.html), [position](../position.html) | feed, category, detail, active-bets, notifications, wallet, profile | loading | 19 | WF/UV | - | ~ |
-| Empty list (`.pos-list` empty variant) | `position.css` | [position](../position.html) | active-bets, favorites, notifications | empty | 3 | WF | - | + |
-| Push-permission banner (`.push-banner`) | `notice.css` | [notice](../notice.html) | event-feed-push, notifications-push | in-app banner | 2 | WF | - | + |
-| Toast (`.toast`: message + close, stacked) | `toast.css` | [toast](../toast.html) | toasts (spec page) | info / success (brass tick) / error (neutralized, no red) / undo | 4 | WF/UV | - | + |
-| Win overlay (`dialog.outcome-dialog.win-dialog` + auto Share Card + F5 friction) | `dialog.css` | [dialog](../dialog.html), [outcome-dialog](../outcome-dialog.html), [signin](../signin.html) | win family | win / loading / payout-pending / error | 4 | WF/UV | art | + |
-| Loss overlay (`dialog.outcome-dialog.loss-dialog`, neutral, no celebration) | `dialog.css` | [dialog](../dialog.html), [outcome-dialog](../outcome-dialog.html), [signin](../signin.html) | loss family | loss / loading | 2 | WF/UV | - | + |
-| Share Card (auto-generated win visual, reused in profile gallery) | `dialog.css` | [dialog](../dialog.html), [outcome-dialog](../outcome-dialog.html), [signin](../signin.html) | win overlay, my/public profile | populated | 5+ | UV | art / generated | + |
-| Trust bar / trust cards (`.footer-trust`) | `trustbar.css` | [trustbar](../trustbar.html) | feed, footer (all) | default | 87 | WF/UV | art | + |
+| Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| State block (`.state-block`: icon + title + message + action) | `state-block.css` | [state-block](../state-block.html) | L3 | feed, category, detail, active-bets, notifications, wallet, profile, 404, 500, maintenance | empty / error | 38 | WF | - | + |
+| Skeleton cards / lines (`.card.skeleton` / `.pos.skeleton` shimmer) | `card.css`, `position.css` | [card](../card.html), [position](../position.html) | L3 | feed, category, detail, active-bets, notifications, wallet, profile | loading | 19 | WF/UV | - | ~ |
+| Empty list (`.pos-list` empty variant) | `position.css` | [position](../position.html) | L3 | active-bets, favorites, notifications | empty | 3 | WF | - | + |
+| Push-permission banner (`.push-banner`) | `notice.css` | [notice](../notice.html) | L2 | event-feed-push, notifications-push | in-app banner | 2 | WF | - | + |
+| Toast (`.toast`: message + close, stacked) | `toast.css` | [toast](../toast.html) | L2 | toasts (spec page) | info / success (brass tick) / error (neutralized, no red) / undo | 4 | WF/UV | - | + |
+| Win overlay (`dialog.outcome-dialog.win-dialog` + auto Share Card + F5 friction) | `dialog.css` | [dialog](../dialog.html), [outcome-dialog](../outcome-dialog.html), [signin](../signin.html) | L3 | win family | win / loading / payout-pending / error | 4 | WF/UV | art | + |
+| Loss overlay (`dialog.outcome-dialog.loss-dialog`, neutral, no celebration) | `dialog.css` | [dialog](../dialog.html), [outcome-dialog](../outcome-dialog.html), [signin](../signin.html) | L3 | loss family | loss / loading | 2 | WF/UV | - | + |
+| Share Card (auto-generated win visual, reused in profile gallery) | `dialog.css` | [dialog](../dialog.html), [outcome-dialog](../outcome-dialog.html), [signin](../signin.html) | L3 | win overlay, my/public profile | populated | 5+ | UV | art / generated | + |
+| Trust bar / trust cards (`.footer-trust`) | `trustbar.css` | [trustbar](../trustbar.html) | L2 | feed, footer (all) | default | 87 | WF/UV | art | + |
 
 ## 6. Profile and account (REDESIGNED in color - the whole cluster)
 
-| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Identity row (`.idrow`: ringed 72px avatar `.av`, name, handle, Edit pill) | `profile.css` | [profile](../profile.html) | my-profile, public-profile | own (Edit) / read-only | 2 | WF/UV | portrait | + |
-| Section divider (`p.pos-status`, brass tick) | `position.css` | [position](../position.html) | my-profile, public-profile | default | 2 | UV | - | + |
-| Reputation stat-grid (Track record: tiles, brass win-rate hero tile) | `profile.css` | [profile](../profile.html) | my-profile, public-profile | default | 2 | WF/UV | - | + |
-| Profile tabs (`.ptabs` CSS-only radio: Track record / Past wins / Resolved) | `tabs.css` | [tabs](../tabs.html) | my-profile, public-profile | per-tab active, focus ring | 2 | WF/UV | - | + |
-| Share-card gallery (`.gallery` horizontal rail of win cards) | `profile.css` | [profile](../profile.html) | my-profile, public-profile | populated | 7 | WF/UV | art / generated | + |
-| Resolved-predictions history (`.pos-side.pos-won` green / `.pos-lost` red) | `position.css` | [position](../position.html) | my-profile, public-profile, active-bets-history | list / empty | 4+ | WF/UV | - | + |
-| Portfolio summary (`.pos` 3-figure grid: total / cash / in-play + inline CTA) | `position.css` | [position](../position.html) | my-profile, wallet | default | 3 | WF/UV | - | + |
-| CTA bar (`.cta-bar`: Add funds + Open Wallet / Withdraw) | `account.css` | [account](../account.html) | how-it-works, my-profile, wallet | default | 3 | WF | - | + |
-| Position row (`.pos`: question, figures, status) | `position.css` | [position](../position.html) | active-bets, notifications, wallet, profile | active / resolved / skeleton | 9+ | WF/UV | - | ~ |
-| Transaction list (deposits/payouts/fees/stakes) | `account.css` | [account](../account.html) | wallet | list / loading / error | 3 | WF | - | + |
+| Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Identity row (`.idrow`: ringed 72px avatar `.av`, name, handle, Edit pill) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | own (Edit) / read-only | 2 | WF/UV | portrait | + |
+| Section divider (`p.pos-status`, brass tick) | `position.css` | [position](../position.html) | L3 | my-profile, public-profile | default | 2 | UV | - | + |
+| Reputation stat-grid (Track record: tiles, brass win-rate hero tile) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | default | 2 | WF/UV | - | + |
+| Profile tabs (`.ptabs` CSS-only radio: Track record / Past wins / Resolved) | `tabs.css` | [tabs](../tabs.html) | L3 | my-profile, public-profile | per-tab active, focus ring | 2 | WF/UV | - | + |
+| Share-card gallery (`.gallery` horizontal rail of win cards) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | populated | 7 | WF/UV | art / generated | + |
+| Resolved-predictions history (`.pos-side.pos-won` green / `.pos-lost` red) | `position.css` | [position](../position.html) | L3 | my-profile, public-profile, active-bets-history | list / empty | 4+ | WF/UV | - | + |
+| Portfolio summary (`.pos` 3-figure grid: total / cash / in-play + inline CTA) | `position.css` | [position](../position.html) | L3 | my-profile, wallet | default | 3 | WF/UV | - | + |
+| CTA bar (`.cta-bar`: Add funds + Open Wallet / Withdraw) | `account.css` | [account](../account.html) | L2 | how-it-works, my-profile, wallet | default | 3 | WF | - | + |
+| Position row (`.pos`: question, figures, status) | `position.css` | [position](../position.html) | L3 | active-bets, notifications, wallet, profile | active / resolved / skeleton | 9+ | WF/UV | - | ~ |
+| Transaction list (deposits/payouts/fees/stakes) | `account.css` | [account](../account.html) | L2 | wallet | list / loading / error | 3 | WF | - | + |
 
 ## 7. Footer
 
-| Component | CSS file | Page | Screens / families | States | #f | Origin | Photo | Kit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Product footer (brand, markets, product, support, company, legal) | `footer.css` | [footer](../footer.html) | every footer screen | default | 87 | WF | - | + |
-| Footer trust strip ("Built on trust" cards, gold art bleed) | `trustbar.css` | [trustbar](../trustbar.html) | every footer screen | default | 87 | WF/UV | art | + |
-| Social icon row (`.social-row`) | `footer.css` | [footer](../footer.html) | footer | rest / hover | 87 | WF | - | + |
-| Popular / legal link lists (`.footer-popular`, `.footer-legal`) | `footer.css` | [footer](../footer.html) | footer | default | 87 | WF | - | + |
+| Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Product footer (brand, markets, product, support, company, legal) | `footer.css` | [footer](../footer.html) | L3 | every footer screen | default | 87 | WF | - | + |
+| Footer trust strip ("Built on trust" cards, gold art bleed) | `trustbar.css` | [trustbar](../trustbar.html) | L2 | every footer screen | default | 87 | WF/UV | art | + |
+| Social icon row (`.social-row`) | `footer.css` | [footer](../footer.html) | L3 | footer | rest / hover | 87 | WF | - | + |
+| Popular / legal link lists (`.footer-popular`, `.footer-legal`) | `footer.css` | [footer](../footer.html) | L3 | footer | default | 87 | WF | - | + |
 
 ---
 

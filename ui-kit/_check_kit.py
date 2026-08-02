@@ -989,6 +989,37 @@ check("22 every stand page names itself", not misnamed,
 check("22 a page off the tree is still linked", not unreachable,
       "%d: %s" % (len(unreachable), "; ".join(unreachable[:3])))
 
+# 23 ------------------------------------------------------ a part comes first --
+# The cascade decides which of two rules of equal specificity wins, so the order
+# of the @imports is a rule and not a formatting choice. A part is imported
+# BEFORE the whole that holds it, or the smaller thing silently overrides the
+# bigger one: an odds bar would restyle every card that contains it, and a card
+# could not restyle its own odds bar.
+#
+# It had never been asked. The order was the order the rules had been layered in
+# inside the flat kit the system was read out of, and it put TWENTY FIVE wholes
+# ahead of their parts, header before button and card before both of the controls
+# it holds. Nothing rendered wrong, because no two files write the same selector
+# any more (step 7b deleted those), which is exactly why no sweep could see it: a
+# cascade defect is invisible until the day someone adds the rule that collides.
+#
+# The order is computed in _levels.py from what each component CONTAINS, read out
+# of the specimen DOM. This gate re-derives it and compares, the way gate 21 does
+# with the documents: a file can be newer than its source and still be wrong.
+sys.path.insert(0, str(KIT))
+from _levels import ORDER as LEVEL_ORDER, order_problems, SUBJECTS as LEVEL_SUBJECTS  # noqa: E402
+
+cascade = [ln.split('"')[1][:-4] for ln in
+           (COMP / "index.css").read_text(encoding="utf-8").splitlines()
+           if ln.startswith("@import")]
+missing = sorted((set(LEVEL_SUBJECTS) | {"tokens"}) - set(cascade))
+check("23 index.css imports them all", not missing, "%d: %s" % (len(missing), ", ".join(missing)))
+wrong = order_problems(cascade)
+check("23 a part is imported first", not wrong, "%d: %s" % (
+    len(wrong), "; ".join("%s before %s" % (w, p) for w, p in wrong[:3])))
+check("23 the order is the computed one", cascade == LEVEL_ORDER,
+      "run: python3 ui-kit/_levels.py --order")
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

@@ -56,16 +56,21 @@ SPECIMENS = json.loads((KIT / "specimens" / "index.json").read_text(encoding="ut
 TOKENS = (COMP / "tokens.css").read_text(encoding="utf-8")
 SEM = set(re.findall(r"(--[\w-]+)\s*:", TOKENS[TOKENS.index("2. SEMANTIC"):]))
 
-GROUPS = [
-    ("Foundations", ["tokens", "icons", "base", "course-chrome"]),
-    ("Navigation and chrome", ["header", "catnav", "bottomnav", "tabs", "footer", "trustbar"]),
-    ("Browse: feed and cards", ["feed", "card", "oddsbar", "yesno", "options", "hero", "seo-plate",
-                                "loadmore", "filters"]),
-    ("Event Detail", ["event-detail", "chart", "betpanel", "market", "comments", "bets-table", "related"]),
-    ("Forms, dialogs and inputs", ["button", "input", "dialog", "hiw-dialog", "signin", "notice"]),
-    ("Feedback and states", ["state-block", "skeleton", "toast", "outcome-dialog"]),
-    ("Profile and account", ["profile", "position", "account"]),
-    ("System", ["cookie-consent"]),
+# The panel is grouped by LEVEL, and inside a group it reads in the order the
+# cascade loads. It used to be grouped by PURPOSE, which is the right way to
+# group a product and the wrong way to group a system: a group named for where a
+# thing is used answers a question the screens already answer, and it puts a
+# button next to a sign-in dialog because both appear in a form. Grouped by
+# level, the panel answers the question a system has instead, which is what may
+# be built out of what, and reading it top to bottom is reading index.css.
+#
+# Derived, not typed, from the same map that orders the cascade: two lists of one
+# fact is how coverage.md and the css headers came to disagree.
+from _levels import LEVEL as _LEVEL, ORDER as _ORDER, NOT_A_COMPONENT as _NOT_COMP  # noqa: E402
+
+GROUPS = [("Foundations", ["tokens", "icons", "base", "course-chrome"])] + [
+    (name, [f for f in _ORDER if _LEVEL.get(f) == n and f not in _NOT_COMP])
+    for n, name in ((1, "Atoms"), (2, "Molecules"), (3, "Organisms"))
 ]
 LABEL = {
     "tokens": "Tokens", "icons": "Icons", "base": "Base and page frame",
@@ -197,72 +202,12 @@ for path in COMP.glob("*.css"):
 
 
 # ---- which file OWNS a class, and therefore where a component STANDS --------
-# `classes` below is every class a file mentions, which is the right answer to
-# "what does this file style" and the WRONG one to "where does this component
-# stand". market.css styles `.market-title .ic`: the icon is the subject of that
-# rule, so `.ic` landed in market's class list, `.ic` is on all 76 screens, and
-# coverage.md reported that a market-depth panel stands on every screen in the
-# product, 404 included. Thirty-four of thirty-six rows read 76 for that reason,
-# while the "Stands on:" line hand-written in each css header read the truth. Two
-# artifacts of one system disagreeing is the defect; one computation feeding both
-# is the fix, so this block now writes that header line as well.
-#
-# A class is OWNED by the file that styles it with the FEWEST ancestors. base.css
-# says `.ic{}` with none, card.css reaches it as `.card .ic`, and the file that
-# describes a thing in its own right owns it. A tie goes to the earlier file in
-# the cascade, which is an order index.css already fixes on purpose.
-#
-# SHARED is the short hand-checked list of words no component owns: a state and
-# three widths that six and three files respectively write as a modifier on their
-# own class. Attributing `.sel` to whichever file happens to mention it most is
-# how a bet panel came to stand on 76 screens. Like RUNTIME above, every entry was
-# read, not matched by pattern.
-SHARED = {
-    "sel": "the selected state, written by six components on their own class",
-    "w40": "a skeleton width, written by three components on their own line",
-    "w60": "a skeleton width, written by three components on their own line",
-    "w70": "a skeleton width, written by three components on their own line",
-    "w80": "a skeleton width, written by three components on their own line",
-}
-COMBINATOR = re.compile(r"\s*[>+~]\s*|\s+")
-PSEUDO = re.compile(r"::?[a-zA-Z-]+(?:\([^)]*\))?")
-
-
-def subjects_of(body):
-    """class -> the fewest other classes in any selector where it is the subject."""
-    found = {}
-    text = re.sub(r"/\*.*?\*/", "", re.sub(r"url\([^)]*\)", "", body), flags=re.S)
-    for m in re.finditer(r"([^{}]+)\{", text):
-        sel = m.group(1)
-        if sel.lstrip().startswith("@"):
-            continue
-        for one in sel.split(","):
-            one = one.strip()
-            if not one:
-                continue
-            depth = len(re.findall(r"\.(-?[_a-zA-Z][\w-]*)", PSEUDO.sub("", one))) - 1
-            last = PSEUDO.sub("", COMBINATOR.split(one)[-1])
-            for c in re.findall(r"\.(-?[_a-zA-Z][\w-]*)", last):
-                found[c] = min(found.get(c, 99), depth)
-    return found
-
-
-_CASCADE = [ln.split('"')[1][:-4] for ln in
-            (COMP / "index.css").read_text(encoding="utf-8").splitlines()
-            if ln.startswith("@import")]
-SUBJECTS = {}
-for _path in sorted(COMP.glob("*.css")):
-    if _path.stem in ("index", "tokens"):
-        continue
-    # subjects_of strips every comment itself, so the header slice this used to
-    # take is not needed and was never enough: it cut only the first block.
-    SUBJECTS[_path.stem] = subjects_of(_path.read_text(encoding="utf-8"))
-OWNER = {}
-for _c in {c for d in SUBJECTS.values() for c in d}:
-    if _c in SHARED:
-        continue
-    OWNER[_c] = sorted(((d[_c], _CASCADE.index(f) if f in _CASCADE else 99, f)
-                        for f, d in SUBJECTS.items() if _c in d))[0][2]
+# The map moved to _levels.py, which needs the same answer to work out what
+# stands INSIDE a component. Two copies of one map is the defect step 7c closed
+# between coverage.md and the css headers and step 9 closed again between the two
+# panel generators: one computation feeds both, or they drift and nobody can tell
+# which to believe. The reasoning for the map is written there with it.
+from _levels import SUBJECTS, OWNER  # noqa: E402
 
 
 def parse_component(name):

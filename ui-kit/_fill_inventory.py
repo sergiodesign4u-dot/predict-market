@@ -1,13 +1,25 @@
 #!/usr/bin/env python3
 """
-_fill_inventory.py  -  give ui-kit/docs/inventory.md the two columns it was
-missing: which css file owns the component, and which stand page shows it.
+_fill_inventory.py  -  give ui-kit/docs/inventory.md the three columns it was
+missing: which css file owns the component, which stand page shows it, and what
+level it sits at.
 
 WHY IT MATTERS. The inventory was read out of the product before the system
 existed, so it was a list of things a screen contains. Once the system exists,
 the same table has to answer the question a person actually arrives with: I am
 looking at this thing, where do I edit it, and where do I see it on its own.
-Without those two columns the table is a census; with them it is an index.
+Without those columns the table is a census; with them it is an index.
+
+WHY LEVEL IS HERE AND NOT TYPED IN. Atom, molecule, organism is the input to two
+decisions the table cannot make on its own: the @import order in
+components/index.css (a whole must not be imported before its parts, and today
+header comes before button and card before both) and the grouping in
+ui-kit/_nav.js (named by purpose, so a button and a sign-in dialog sit together).
+The level is arithmetic over containment, not an opinion, so it is computed in
+_levels.py and read here. Typing it into the markdown would make this table a
+second source for a fact the markup already answers, and it would be wrong the
+first time a component gained a part. That pair, one system described twice, is
+the defect step 7c closed between coverage.md and the css headers.
 
 HOW THE MAPPING IS MADE. A row that quotes a class (`.card`, `.opt-row`) is
 matched against the `Classes:` header every component file carries, so most of
@@ -19,7 +31,12 @@ A row with no component is not a gap: some rows are layout facts (a responsive
 grid) or one-off screen furniture. Those get a dash, and the dash is a claim in
 its own right, so it is written here rather than left blank.
 
-Idempotent: rebuilds both columns from scratch on every run.
+Idempotent: rebuilds all three columns from scratch on every run. The strip is
+written by SHAPE, not by counting cells, because the table shipped for one stage
+with two generated columns and a run that assumes three would eat the first real
+cell of every row. The header is stripped the same way the data rows are: a
+generator that is not idempotent on ALL of its row kinds is not idempotent, and
+this one grew a header by two cells a run for seven runs.
 
     python3 ui-kit/_fill_inventory.py [--check]
 No em dash.
@@ -27,6 +44,9 @@ No em dash.
 import os
 import re
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _levels import label as level_label  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INV = os.path.join(ROOT, "ui-kit", "docs", "inventory.md")
@@ -85,6 +105,13 @@ PAGE = {
     "tabs": ["tabs"],
 }
 
+# What a generated cell looks like. The strip asks these instead of counting,
+# so the same run works on a table that carries two of the three columns.
+CSS_CELL = re.compile(r"^-$|^`[\w.-]+\.css`(, `[\w.-]+\.css`)*$")
+PAGE_CELL = re.compile(r"^-$|^\[[\w.-]+\]\(\.\./[\w.-]+\.html\)"
+                       r"(, \[[\w.-]+\]\(\.\./[\w.-]+\.html\))*$")
+LEVEL_CELL = re.compile(r"^L[123]$|^-$")
+
 
 def class_owner():
     owner = {}
@@ -129,7 +156,7 @@ def main():
             continue
         cells = [c.strip() for c in line.strip("|").split("|")]
         if cells[0] == "Component":
-            # Strip every pair a previous run added, then add one back. Without this
+            # Strip every group a previous run added, then add one back. Without this
             # the header grew by two cells per run while the data rows below it did
             # not (they have their own strip), so after seven runs every table in the
             # document had a 21-cell header over 9-cell rows and none of them
@@ -137,7 +164,9 @@ def main():
             # not idempotent.
             while len(cells) >= 3 and cells[1] == "CSS file" and cells[2] == "Page":
                 cells = cells[:1] + cells[3:]
-            cells = cells[:1] + ["CSS file", "Page"] + cells[1:]
+            if len(cells) >= 2 and cells[1] == "Level":
+                cells = cells[:1] + cells[2:]
+            cells = cells[:1] + ["CSS file", "Page", "Level"] + cells[1:]
             header_width = len(cells)
             out.append("| " + " | ".join(cells) + " |")
             continue
@@ -145,14 +174,15 @@ def main():
             # rebuilt from the header just written, never grown from its own last state
             out.append("| " + " | ".join(["---"] * header_width) + " |")
             continue
-        # drop every pair a previous run added, then add one back. It loops because a
-        # run that failed to recognise its own output once left two pairs behind.
-        while len(cells) >= 3:
-            prev = cells[1].strip("`")
-            if prev.endswith(".css") or prev == "-":
-                cells = cells[:1] + cells[3:]
-            else:
-                break
+        # Drop every group a previous run added, then add one back. It loops because
+        # a run that failed to recognise its own output once left two groups behind.
+        # Each cell is recognised by its SHAPE: asking "does cell 1 end in .css" and
+        # then removing a fixed number of cells is how a dashed row (three dashes in
+        # a row) would have eaten the first real cell of the table.
+        while len(cells) >= 3 and CSS_CELL.match(cells[1]) and PAGE_CELL.match(cells[2]):
+            cells = cells[:1] + cells[3:]
+        if len(cells) >= 2 and LEVEL_CELL.match(cells[1]):
+            cells = cells[:1] + cells[2:]
         stems = stems_for(cells[0], owner)
         if stems:
             css = ", ".join("`%s.css`" % s for s in stems)
@@ -162,11 +192,12 @@ def main():
                     if cand in pages and cand not in pg:
                         pg.append(cand)
             page = ", ".join("[%s](../%s.html)" % (p, p) for p in pg) or "-"
+            lvl = level_label(stems)
             filled += 1
         else:
-            css, page = "-", "-"
+            css, page, lvl = "-", "-", "-"
             dashed += 1
-        out.append("| " + " | ".join(cells[:1] + [css, page] + cells[1:]) + " |")
+        out.append("| " + " | ".join(cells[:1] + [css, page, lvl] + cells[1:]) + " |")
     text = "\n".join(out) + "\n"
     if not check:
         with open(INV, "w", encoding="utf-8") as fh:
