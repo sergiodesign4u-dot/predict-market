@@ -553,6 +553,7 @@ no product class at all.
 | a BLOCK: a new section, a control, anything with markup | `wireframes/` first, then the colour copy | structure is owned by the grey tree. Gate 18 fails the build when the two disagree, and the four differences that are the layer boundary are declared in `wireframes/_conventions.md` |
 | a UI string | `voice/docs/microcopy.md` gets a row, then both trees | the table is the source of truth for copy. For one stage it was not, and 43 shipped lines were missing from it |
 | a focus ring that fails on some surface | the role is picked by the SURFACE, in the file of the control that stands there | never `--focus-ring` globally: it is one role measured across 21 kinds of control. See the rule below |
+| how many of a thing a screen may carry, or where it may not stand | the Rules of use table below | one author, two places it is read: the row here, and the Constraints block on the page of every component it names |
 
 A change made on one screen is a desync by definition. If a screen needs something the component does
 not have, either the component grows a variant class or the screen is wrong.
@@ -595,6 +596,82 @@ real ones, and it did both.
 The parser is the browser's own: assign the computed string to a 2D canvas `fillStyle`, fill one pixel
 and read it back. Composite the ancestor stack in order for alpha. A figure written next to a token in
 `tokens.css` comes from that path or it does not go in the file.
+
+---
+
+## Rules of use
+
+What the components above are ALLOWED to do together. A component page says what a thing is; this
+says how many of it a screen may carry and where it may not stand, which is the one question neither
+the css nor the class map can answer, because both of them describe a component in isolation.
+
+**Every row is read off the assembled product, and none of it is taste.** A pattern is what repeated
+three times or more; a rule of use is what never happened once although it easily could have. The
+instrument for both is the same counter over the 104 painted screens, which is why this section could
+not have been written before the paint was complete: while five screens existed, "a primary action
+appears once per screen" was an observation about five screens.
+
+Two classes, and the class is not decoration. **COMPOSITION** is a rule about HOW MANY, and it is
+checked by counting. **CONTEXT** is a rule about WHERE, and it is checked by naming screens. A rule
+filed under the wrong one gets checked with the wrong instrument.
+
+There is a third class the pack this stage follows calls SUBSTITUTION ("here you need a tag and not a
+badge"), and it is deliberately absent: a rule of that kind is about one component's own vocabulary,
+so it belongs on that component's page as its anti-rule, not in a table about compositions.
+
+**The "where it is taken from" column may never be empty.** A rule with no source is a preference
+that learned to sound like a measurement, and it is exactly what this table exists to keep out. Three
+sources feed it, and they are cited by name and never summarised:
+
+- the **counter** over all `ui-visual/*.html`, maximum occurrences per screen and per zone;
+- **`wireframes/_conventions.md`**, section "Shared patterns and axes" (S1 to S6), which is the grey
+  tree's own contract and had lain four stages without a reader. It is quoted rather than trusted:
+  it predates the paint, and where the shipped product has moved on the measurement wins. S3's "no
+  context snippet" is the clearest case, superseded by the story-led `.why` line the Stage 04
+  reconcile added, so it is not cited here while the two-option rule from the same paragraph is,
+  because that one is still true on 21 of 21 cards;
+- the **critique logs** (`wireframes/_critique.md` and the step records). A defect that was caught on
+  two or more screens is a rule and not an accident.
+
+| Rule | Class | Where it is taken from | Components | Check it at a glance |
+|---|---|---|---|---|
+| **R1. One primary action per ZONE, not per screen.** At most one filled `.primary` inside the header, at most one inside `<main>`. Written per zone on purpose: the counter alone says "one per screen", and on 14 of the 104 screens that is false. All 14 carry `.auth-btn primary` in the header and `.state-btn primary` in the body, and both are correct. Anyone who recounts will find 14 exceptions; they are not exceptions, they are this rule stated at the wrong grain | COMPOSITION | the counter over 104 screens: 47 carry none, 43 carry one, 14 carry two, and the two are the same pair every time, with 0 misplaced (31 `.auth-btn` all inside the header, 40 `.state-btn` all inside `<main>`). `wireframes/_conventions.md` S2 and S5, which give the header and the body different jobs | `components/button.css`, `components/header.css`, `components/state-block.css` | count the filled brass buttons: one in the header bar, one in the page body, never two in either |
+| **R2. One state block per screen.** `.state-block` stands at most once, with at most one `.state-actions` in it. It is not a notice that may repeat: it is the screen's whole answer when there is nothing else to show | COMPOSITION | the counter: 38 of 104 screens, maximum 1 each. `wireframes/_critique.md` is what makes the count load-bearing rather than decorative, because the single block is then the screen's ONLY exit, and it shipped without a working one twice: row 1 of the step-4 pass (8 category empty states whose CTAs were bare `<button>`s) and row 1 of the flow pass (`Try again` bare on the feed error and all 8 category error screens, while every other error screen already linked it) | `components/state-block.css` | if a screen shows two blocks that each have a title, a message and a pair of actions, one of them is a notice |
+| **R3. One bet control, and the width decides which.** At most one `.bet-panel` and at most one `.bet-dock`. Both may be in the markup at once, and 8 screens are; they are never both on screen | COMPOSITION | the counter: 11 screens with a panel, 8 with a dock, 8 with both, every one at maximum 1. The invariant is in the code and not only in the screens: `components/betpanel.css` ships `.app-case .bet-panel{display:none}` beside `.app-case .bet-dock{display:flex}` and swaps the pair at `@media(min-width:760px)` | `components/betpanel.css` | at 360 the dock and no panel; at 760 and up the panel and no dock. Never both, never neither |
+| **R4. One category band, one level of sub-categories.** `.cat-nav` at most once, `.subcat` at most once, and a rail never nests inside a rail. The sort control is not part of the band | COMPOSITION | the counter: `.cat-nav` on 57 screens, `.subcat` on 33, maximum 1 each. `wireframes/_conventions.md` S2: "Categories are navigation; the feed sort control is a feed control on the feed heading row, not in this band" | `components/catnav.css`, `components/filters.css` | one band under the header, one rail beside the content, and the sort control in the list head above the list |
+| **R5. The full outcome list does not stand inside a card.** `.opt-list` never appears inside `.card`. A multi-outcome card carries `.options` with exactly two `.opt-row` and no "+N more" line; the full list is the same block with `.opt-list` added and it stands only in the detail column. This is a rule about PLACE and not about count: the two-row display is the card's own anatomy, not a smaller component | CONTEXT | the counter: 161 cards across the 104 screens, 21 of them multi-outcome, every one with exactly two rows; `.opt-list` on 2 screens with 5 rows, 0 of them inside a card; no "+N more" string anywhere in the painted tree. `wireframes/_conventions.md` S3: "the feed card shows at most the two leading positions ... and no '+N more' line. The full option list is shown only after the user opens the event" | `components/card.css`, `components/options.css` | count the option rows in a card. Three is already wrong |
+| **R6. The logged-out header carries no account.** A screen with `.auth-btns` has no `.bal-toggle`, no `.avatar-menu` and no `.notif-menu`. The bell and the heart stay, as affordances that route to sign-in; what goes is the balance figure and the two dropdowns | CONTEXT | the counter, and it partitions the tree exactly: 31 screens carry `.auth-btns`, 73 carry `.bal-toggle`, 0 carry both and 0 carry neither. `wireframes/_conventions.md` S5: "the balance figure and the avatar dropdown are removed and replaced by Log in + Sign up entries ... Favorites (heart) and Notifications (bell) are kept as affordances" | `components/header.css` | a balance and a Sign up button on one screen means one of the two is wrong |
+| **R7. A bet control does not stand on a list of events.** `.bet-panel` and `.bet-dock` never appear on a screen that carries `.grid`. A card's YES / NO routes to the detail with the side pre-selected; it does not place a bet. The auth axis does not move this: the panel stands on the logged-out detail as well, 3 of the 11, because the account is asked for at submit and not at the door | CONTEXT | the counter: 23 screens carry `.grid` and 0 of them a panel or a dock; 11 screens carry a panel and 3 of those are logged out. `wireframes/_conventions.md` S3: "a tap routes to Event Detail with the side ... pre-selected. It does NOT place a bet on the card and does not bypass Event Detail" | `components/betpanel.css`, `components/yesno.css`, `components/card.css` | on any screen with a grid of cards there is no amount field and no Confirm |
+| **R8. A system screen carries the frame and not the navigation.** 404, 500, maintenance, the cookie screen and the toast catalogue carry the header, the footer, the bottom nav and the browse shell, and none of `.cat-nav`, `.subcat`, `.grid` or `.card`. **The denominator is five screens**, and that is said out loud rather than hidden behind a percentage: this is read off five cases, and the sixth system screen is the one that tests it | CONTEXT | the counter over the 5 system screens: `.cat-nav` 0, `.subcat` 0, `.grid` 0, `.card` 0, against `.app-header`, `.app-footer`, `.bottom-nav` and `.cat-layout` at 5 of 5 | `components/catnav.css`, `components/card.css` | a system screen offers a way out through the chrome and a way out through its state block, and nothing to browse |
+| **R9. The bottom nav stands on every screen, overlays included.** `.bottom-nav` is on 104 of 104, once each, including all 17 screens whose content IS an invoked overlay (deposit x7, sign-in x4, win x4, loss x2). **The textbook rule "a tab bar is hidden on the sign-in screen" is FALSE here**, and this row exists so that nobody later fixes the product into the textbook. These overlays are pages in this product, not modal traps, and a person who opened Deposit and changed their mind leaves by the same four slots as everywhere else | CONTEXT | the counter: 104 of 104, maximum 1, and the 17 overlay screens named individually. `wireframes/_conventions.md` S2, which makes the mobile bottom nav four fixed slots of the shared header component | `components/bottomnav.css` | at 360, four slots at the foot of every screen. A screen without them is wrong, not special |
+
+### What was measured and deliberately not written down
+
+Four more candidates cleared the counter and were left out, and the reason is the same each time:
+**one occurrence is not "never two", it is "not twice yet".**
+
+- `.toast-group` and `.cc-banner` stand on exactly one screen each, so "one per screen" is a
+  description of that screen.
+- `.cta-bar` stands on three screens and on none of the 17 overlays, which is a true sentence about
+  a bar that only three screens have. Three is the pattern threshold, not the prohibition threshold.
+- The logged-out detail carrying a bet panel on 3 of its screens is the same fact as R7 seen from the
+  other axis, so it is a sentence inside R7 rather than a tenth row.
+
+`.feed-hero` came out of the same sweep and went to [`docs/backlog.md`](../../docs/backlog.md) item
+26 instead: it is on one screen, in both trees, and in no document at all, which is a missing product
+decision rather than a rule.
+
+### The same rule, in the two places it is read
+
+A rule is authored once, in the table above. Every component page named in a row carries a
+**Constraints** section quoting the rule, its class and its check, with a link back here. That is an
+extract and never a paraphrase, and it is generated from this table by
+`ui-kit/_gen_component_pages.py` rather than typed, so the two cannot drift.
+
+**Gate 26** holds it in both directions, which is the shape every declaration in this system has: a
+rule that names a component whose page does not carry it fails, and a page carrying a rule this
+document does not have fails too. Without the second half the cheapest way to satisfy the first would
+be to write the rule on the page and never decide it here.
 
 ---
 
