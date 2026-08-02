@@ -1063,6 +1063,39 @@ check("23 a part is imported first", not wrong, "%d: %s" % (
 check("23 the order is the computed one", cascade == LEVEL_ORDER,
       "run: python3 ui-kit/_levels.py --order")
 
+# 24 ------------------------------------------------- a stand shows the whole --
+# The level is arithmetic over what a component CONTAINS, and containment is read
+# out of the specimen DOM. So a stand that shows a narrower case than the product
+# does makes the map short, the arithmetic comes out low, and a RAISE floor
+# covers the difference: the level is then declared and nothing on the page says
+# it was. That is not a hypothesis. It is how `hiw-dialog` came to be an organism
+# by assertion, and how five more stands were found short on 2026-08-02.
+#
+# The check is a containment comparison, not a picture comparison: what the
+# component contains in `ui-kit/specimens/` against what it contains on the 105
+# painted screens, both read by the SAME function, minus what
+# `_levels.SPECIMEN_DEBT` declares. It fails at the moment a component gains a
+# case that nobody stages, which is the moment its level stops being computed.
+#
+# THE SECOND CHECK IS THE IMPORTANT ONE. A list of declared exceptions that can
+# be quietly extended is not a gate, it is the switch that turns one off: the
+# cheapest way past the first check would be to add a line to SPECIMEN_DEBT. So
+# an entry that covers no real difference fails just as loudly, and a debt that
+# gets paid has to be deleted rather than left lying.
+#
+# It costs a second: 105 documents parsed once. That is the price of asking the
+# rendered tree instead of the source, which is the rule this repo learned the
+# expensive way.
+from _audit_specimens import gap as specimen_gap  # noqa: E402
+
+undeclared, superfluous, _real = specimen_gap()
+flat = ["%s contains %s (.%s)" % (c, p, ", .".join(cls))
+        for c, parts in sorted(undeclared.items()) for p, cls in sorted(parts.items())]
+check("24 a stand shows the whole component", not flat,
+      "%d: %s" % (len(flat), "; ".join(flat[:3])))
+check("24 no declared exception is idle", not superfluous,
+      "%d: %s" % (len(superfluous), ", ".join("%s -> %s" % e for e in superfluous)))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

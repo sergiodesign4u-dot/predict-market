@@ -824,8 +824,33 @@ level and comments stays an organism.
 A rule whose selector list spans several components is split per component, in place, so each file
 keeps the rule at its original position in the cascade.
 
-A rule whose selector list spans several components is split per component, in place, so each file
-keeps the rule at its original position in the cascade.
+### Six declarations, and why a reader has to know they exist
+
+Most of what this system says about itself is computed: the level, the cascade order, the class
+owner, the coverage table, the count in `README.md`. **Part of it is not, and the part that is not
+lives in six lists in `ui-kit/_levels.py`, each entry a line with its reason.** They are there
+because a class map answers "which file styles this word" and the questions asked of it are
+different ones, and where the map cannot answer, a person does, out loud. Anyone reading a level, an
+`@import` position or a specimen and finding it surprising should look here first: the surprise is
+usually declared.
+
+| Declaration | What it says | What closes it |
+|---|---|---|
+| `NOT_A_COMPONENT` (3) | `base` and `course-chrome` are the substrate a screen stands on, `fonts` has no markup. A substrate has no level | nothing. This one is a fact, not a debt |
+| `SHARED` (5) | `.sel` and three skeleton widths are words no component owns: several files write them as a modifier on their own class | nothing, unless the words move |
+| `MODIFIER` (1) | `.skeleton` names a STATE, not a thing, so it neither opens a root nor counts as standing inside one | nothing. The map cannot know states, so this list will grow with hover, focus-visible and disabled |
+| `RAISE` (13) | a level the arithmetic reads too low: a block whose parts are all its own classes, or a screen shell that is an organism because of what it IS | twelve are permanent by that reasoning. One, `hiw-dialog`, is a debt: backlog item 18 |
+| `ORDER_BREAK` (4) | a containment cycle, dropped for ORDERING only and kept for the level, with the direction decided by which file restyles the other's insides | three of the four name a backlog item. A cycle caused by a class in the wrong file closes when the class moves |
+| `SPECIMEN_DEBT` (11) | a stand that is short for a KNOWN reason: a page plate inside a component file, two components on one element, `.pos` used as a plate | **every entry is a debt**. Each names what closes it, and closing means splitting the component, never widening the line |
+
+The last one is the youngest and the one most likely to be misread. It exists so that **gate 24** can
+be narrow: the gate compares what a component contains in its stand against what it contains on the
+105 painted screens, minus these eleven, and fails the moment a component gains a case nobody stages,
+which is the moment its level stops being computed and starts being a guess. Its second half is the
+one that matters more. An exception list that can be quietly extended is not a gate but the switch
+that turns one off, so **an entry covering no real difference fails just as loudly as a missing
+stand**. Both halves were proved by breaking them: gutting the loading scene out of the card stand
+turned the first red, and two fictitious entries turned the second red.
 
 ---
 

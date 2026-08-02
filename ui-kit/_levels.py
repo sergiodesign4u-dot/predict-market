@@ -25,7 +25,15 @@ reads ANCESTORS as contents, and every component in the product comes out an
 organism (the first cut of this file returned 33 of 38). The question is what
 stands inside the element this component owns, not what the page around it is.
 
-WHAT ARITHMETIC CANNOT SEE, AND THE ONLY HAND-WRITTEN PART. Two things:
+WHAT IS DECLARED HERE RATHER THAN COMPUTED. Six lists, and a reader should know
+they exist before being surprised by a level: SHARED (words no component owns),
+NOT_A_COMPONENT (the substrate), MODIFIER (words that name a state), RAISE (the
+floors below), ORDER_BREAK (containment cycles, dropped for ordering only) and
+SPECIMEN_DEBT (stands that are short for a known reason, and every entry a debt).
+Each entry is one line with its reason. `ui-kit/docs/architecture.md` has the
+table of all six and who closes each.
+
+WHAT ARITHMETIC CANNOT SEE. Two things:
 
   - a component whose parts are all its OWN classes contains nothing a class map
     can name, so containment reads zero. The featured hero band is four blocks
@@ -346,6 +354,67 @@ RAISE = {
     "toast": (2, "a message and a close, stacked"),
     "yesno": (2, "a pair of controls in a container"),
 }
+
+# ---- the stands that are short, and are short for a KNOWN reason -------------
+# `_audit_specimens.py` compares what a component contains in its stand against
+# what it contains on the 105 painted screens. A stand that is short makes the
+# containment map short, the level comes out low, and a RAISE floor covers the
+# difference: the level is then DECLARED and nothing says it was. That comparison
+# only becomes a gate once the base is clean, so every difference that is NOT a
+# thin stand is written out here, with what closes it.
+#
+# EVERY ENTRY IS A DEBT AND NOT A DESIGN. Read one of these in six months and the
+# temptation is to read it as configuration, which would make the page plate
+# inside a component file a legitimate arrangement. It is not one. Each line says
+# what closes it, and closing means SPLITTING the component, never extending the
+# exception.
+#
+# A part of "*" means the difference is unbounded by cause: the component owns a
+# CONTAINER (a page plate, a tab panel, a page of its own), so whatever the page
+# happens to hold reads as standing inside it, and listing today's contents would
+# be a list that churns with every screen. A NAMED part is used where the cause is
+# one specific element or one class in the wrong file, because there a new name is
+# a new fact and the gate should say so.
+_PLATE = ("owns a page-level plate, so on a screen the whole page is its "
+          "descendant. True, and useless. Closes when the plate leaves the "
+          "component file, see item 16, not by widening this line")
+SPECIMEN_DEBT = {
+    ("catnav", "*"): "the .cat-layout and .cat-main content plate: " + _PLATE,
+    ("feed", "*"): "main.feed and .feed-inner, the screen itself: " + _PLATE,
+    ("event-detail", "*"): ".ed-layout and .ed-main, the detail page's plate: " + _PLATE,
+    ("tabs", "*"): "the .ptab-panel is a content panel, so a profile tab holds a card "
+                   "gallery and a position record. The switcher and the panel are one "
+                   "file, item 16; closes when they are two",
+    ("toast", "*"): ".tc-page is the toast catalogue PAGE, declared in toast.css, so "
+                    "whatever else stands on that page reads as inside the toast. "
+                    "Closes when the page leaves the component file, item 16",
+    ("hiw-dialog", "*"): "the standalone How It Works PAGE and the narrow shared sheet "
+                         "are one file with one vocabulary, so the hero band and the "
+                         "position plate on the page read as inside the dialog. This is "
+                         "the debt that keeps the last guessed level alive: item 18, and "
+                         "it closes by splitting the page from the dialog",
+    ("dialog", "hiw-dialog"): ".app-dialog and .hiw-dialog sit on ONE element, so each "
+                              "reads as containing the other. Item 15: fold it in, or "
+                              "split it, but not a third copy of the sheet",
+    ("dialog", "betpanel"): ".app-dialog and .bet-sheet sit on one element, and the three "
+                            ".bet-sheet rules are inside dialog.css. Item 17: they belong "
+                            "in betpanel.css",
+    ("dialog", "options"): "the same element again: the option summary stands inside the "
+                           "bet sheet, which the dialog only appears to hold because "
+                           "the two classes share a root. Closes with the line above",
+    ("position", "account"): "`.pos` is used as a generic plate on my-profile.html and "
+                             "holds an account CTA bar. position is four things in one "
+                             "file (row, list, summary, resolved history), item 16",
+    ("position", "hiw-dialog"): "`.pos` used as a plate again, this time in the How It "
+                                "Works side column. Closes with item 16, and the hiw "
+                                "half of it with item 18",
+}
+
+
+def debt_covers(comp, part):
+    """Is this (component contains part) difference already declared?"""
+    return (comp, "*") in SPECIMEN_DEBT or (comp, part) in SPECIMEN_DEBT
+
 
 LEVEL = {}
 

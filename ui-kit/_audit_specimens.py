@@ -43,6 +43,14 @@ apart:
 Only kind 1 is a specimen defect. Telling them apart is a judgement and is NOT
 automated here: this prints the evidence and a person reads it.
 
+WHAT BECAME A GATE, AND WHAT DID NOT. The judgement above is still a person's.
+What is mechanical is the comparison itself, once every difference of kinds 2 to
+4 has been written down: `_levels.SPECIMEN_DEBT` holds those, `gap()` subtracts
+them, and **gate 24** in `_check_kit.py` fails on what is left. The gate is
+therefore only as honest as that list, which is why its second half fails on an
+entry that covers nothing: an exception list that can be quietly extended is the
+off switch for the gate rather than part of it.
+
 Usage:
     python3 ui-kit/_audit_specimens.py           # the audit
     python3 ui-kit/_audit_specimens.py --all     # include base and course-chrome
@@ -89,6 +97,36 @@ def levels_from(contains, use_raise):
     for n in components():
         lvl(n)
     return out
+
+
+def gap():
+    """The two answers the gate is made of, in one reading of the tree.
+
+    UNDECLARED is every (component, part) the product renders and the stand does
+    not, minus what `_levels.SPECIMEN_DEBT` declares. It is what a THIN STAND
+    looks like from outside: the component gains a case, nobody stages it, the
+    containment map goes short and the level quietly becomes a guess held up by a
+    RAISE floor. Non-empty means exactly that happened.
+
+    SUPERFLUOUS is the other direction, and it is the more important of the two.
+    A list of exceptions that can be quietly extended is not a gate, it is the
+    off switch for one: an entry that covers no real difference has to be as loud
+    as a missing stand, or the cheapest way past this check is to add a line.
+
+    Returns (undeclared, superfluous, real) so a caller can print the evidence.
+    """
+    comps = components()
+    real = L.read_containment(SCREENS, only=comps)
+    spec = L.CONTAINS
+    undeclared, covered = {}, set()
+    for c in comps:
+        for part in sorted(set(real.get(c, {})) - set(spec.get(c, {}))):
+            if L.debt_covers(c, part):
+                covered.add((c, "*") if (c, "*") in L.SPECIMEN_DEBT else (c, part))
+            else:
+                undeclared.setdefault(c, {})[part] = sorted(real[c][part])
+    superfluous = sorted(set(L.SPECIMEN_DEBT) - covered)
+    return undeclared, superfluous, real
 
 
 def per_screen_counts():
@@ -170,6 +208,19 @@ def main():
     print("\n=== levels that change: %d ===" % len(moved))
     for c, a, b in moved:
         print("   %-16s L%d -> L%d" % (c, a, b))
+
+    undeclared, superfluous, _ = gap()
+    print("\n=== what gate 24 asks: differences that are NOT declared ===")
+    if undeclared:
+        for c, parts in sorted(undeclared.items()):
+            for part, classes in sorted(parts.items()):
+                print("   %-16s contains %-16s via .%s" % (c, part, ", .".join(classes)))
+    else:
+        print("   none. Every remaining difference is in _levels.SPECIMEN_DEBT, "
+              "which is %d entries of debt." % len(L.SPECIMEN_DEBT))
+    print("\n=== declared exceptions that cover nothing ===")
+    print("   " + (", ".join("%s -> %s" % e for e in superfluous) if superfluous
+                   else "none. Every entry is holding a real difference down."))
 
     print("\n=== the known positive ===")
     ok = any(c == "hiw-dialog" for c, _ in short)
