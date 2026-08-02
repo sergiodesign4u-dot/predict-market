@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - Card grid</title>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   A frame is a document of its own, so it does not inherit the attribute: this
+   block runs in the frames too and they are told by postMessage, the same
+   handshake _frames.js already uses, because from file:// every document has
+   its own opaque origin and reading into a frame is refused.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function set(on){if(on){r.setAttribute('data-theme','light')}else{r.removeAttribute('data-theme')}}
+function push(){var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){try{f[i].contentWindow.postMessage({pmTheme:lit()?'light':'dark'},'*')}catch(e){}}}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}
+push();}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();set(!on);
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+window.addEventListener('message',function(e){var d=e.data;
+if(!d||(d.pmTheme!=='light'&&d.pmTheme!=='dark'))return;
+set(d.pmTheme==='light');paint();});
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);
+/* a frame that arrives late is told as soon as it is ready */
+var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
+push();});})();</script>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="card-grid">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<main class="tk-wrap">
+  <header class="tk-hero">
+    <h1>Card grid</h1>
+    <p>A fluid track of event cards, one column to four, with no media query at all.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">components/patterns/card-grid.css</span>
+      <span class="tk-badge">23 screens</span>
+      <span class="tk-badge">3 components</span>
+      <span class="tk-badge">no specimen, by decision</span>
+    </div>
+    <div class="tk-jump"><a href="patterns.html">All patterns</a><a href="card.html">card</a><a href="yesno.html">yesno</a><a href="options.html">options</a></div>
+  </header>
+
+  <section class="tk-sec" id="live">
+    <h2 data-n="01">Live</h2>
+    <p class="tk-note">Cut out of <a href="../ui-visual/event-feed.html">event-feed.html</a> byte for byte, with
+    the ancestor chain it has there, and painted by <code>components/index.css</code> alone. Every
+    string is the shipped microcopy, because none of it was retyped. The feed, which is where the track was read from. Trimmed to the first four cards of twelve so the frame stays readable; nothing else is changed, and four is enough to show the track step from one column to two to three.</p>
+    <p class="tk-note"><b>This is the only place the pattern exists outside the product.</b> A
+    component has a specimen as well as a stand; a pattern has neither, because step 3 took patterns
+    out of gate 24's corpus deliberately: that gate compares what a component contains against what
+    it contains on the screens, and a pattern contains whatever the screen puts in it. So this frame
+    is not an illustration of the pattern, it is the test of it.</p>
+    <figure class="ck-scene" id="sc-card-grid-360"><figcaption class="ck-scene-lbl"><b>Card grid</b><span class="ck-w">360px</span><span class="ck-zoom" hidden></span><a href="patterns/card-grid.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:360px"><iframe data-specimen="card-grid-360" src="patterns/card-grid.html" width="360" height="420" loading="lazy" title="Card grid at 360px"></iframe></div></figure>
+<figure class="ck-scene" id="sc-card-grid-1040"><figcaption class="ck-scene-lbl"><b>Card grid</b><span class="ck-w">1040px</span><span class="ck-zoom" hidden></span><a href="patterns/card-grid.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:1040px"><iframe data-specimen="card-grid-1040" src="patterns/card-grid.html" width="1040" height="420" loading="lazy" title="Card grid at 1040px"></iframe></div></figure>
+  </section>
+
+  <section class="tk-sec" id="anatomy">
+    <h2 data-n="02">Anatomy</h2>
+    <p class="tk-note">What each part is and whose it is. A part that belongs to a component links
+    to that component's page, because the answer to "how does this look" is there and not here: this
+    file decides placement and nothing else.</p>
+    <table class="tk-tbl ck-anat"><thead><tr><th>part</th><th>whose it is</th><th>what it does here</th></tr></thead><tbody><tr><td class='tk-role'>.grid</td><td class='tk-hex'><span class="ck-kind ck-kit">this pattern</span></td><td>The track. Three declarations: it is a grid, it stretches its items to equal height, and the columns are computed.</td></tr><tr><td class='tk-role'>.card</td><td class='tk-hex'><a href="card.html">card</a></td><td>What stands in it. The card decides nothing about where it stands, and the track decides nothing about what a card looks like.</td></tr></tbody></table>
+    <p class="tk-note"><b>Everything inside, read from the markup:</b> card (.card), yesno (.yesno), options (.options). The class in
+    brackets is what put each component in the list, through the same ownership map that computes
+    the level and orders the cascade. A name here that surprises you is worth following: a class
+    declared in the wrong file makes a pattern read as holding a component it has never seen.</p>
+  </section>
+
+  <section class="tk-sec" id="variants">
+    <h2 data-n="03">Variants</h2>
+    <p class="tk-note">No variants. The pattern has one arrangement, and a screen that needs a different one needs a different pattern.</p>
+  </section>
+
+  <section class="tk-sec" id="use">
+    <h2 data-n="04">When to use it</h2>
+    <ul class="ck-when"><li>A screen lists things of one kind and the number of them is decided by the data.</li><li>The items are the same shape, so a track that reflows beats a layout that is authored per width.</li></ul>
+    <h3 class="tk-subh">The rule</h3>
+    <p class="ck-rule">One grid per screen. It is <code>auto-fit</code> over <code>minmax(min(100%, 300px), 1fr)</code>, so the column count is arithmetic on the available width and there is nothing to keep in step with a breakpoint.</p>
+    <h3 class="tk-subh">The anti-rule</h3>
+    <p class="ck-antirule">Do not add breakpoints to it. Three of them used to sit beside this rule, stepping 2 - 3 - 4 columns, plus a category variant at auto-fill 240px. All four were dead: they lost to the auto-fit rule on source order, and the variant was only ever held up by an <code>!important</code> that is now gone. A fluid track needs no breakpoints, which is why this file has none.</p>
+  </section>
+
+  <section class="tk-sec" id="screens">
+    <h2 data-n="05">Where it stands</h2>
+    <p class="tk-note">The existence proof. A composition is a pattern here because it stands on three or more screens, so this list is not a footnote: it is the reason the file exists. Counted from the markup of all 104 painted screens, not from a list.</p><div class="ck-screens"><a href="../ui-visual/event-feed-crypto-loading.html">event-feed-crypto-loading</a><a href="../ui-visual/event-feed-crypto-logged-out-loading.html">event-feed-crypto-logged-out-loading</a><a href="../ui-visual/event-feed-crypto-logged-out.html">event-feed-crypto-logged-out</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture-loading.html">event-feed-culture-loading</a><a href="../ui-visual/event-feed-culture-logged-out-loading.html">event-feed-culture-logged-out-loading</a><a href="../ui-visual/event-feed-culture-logged-out.html">event-feed-culture-logged-out</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-general-loading.html">event-feed-general-loading</a><a href="../ui-visual/event-feed-general-logged-out-loading.html">event-feed-general-logged-out-loading</a><a href="../ui-visual/event-feed-general-logged-out.html">event-feed-general-logged-out</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics-loading.html">event-feed-politics-loading</a><a href="../ui-visual/event-feed-politics-logged-out-loading.html">event-feed-politics-logged-out-loading</a><a href="../ui-visual/event-feed-politics-logged-out.html">event-feed-politics-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a></div>
+  </section>
+
+  <section class="tk-sec" id="markup">
+    <h2 data-n="06">The markup</h2>
+    <p class="tk-note">The scene above, to a depth of 1, with everything below it replaced by
+    a comment naming what was elided. Copy the shape; the content is the screen's.</p>
+    <details class="ck-src" open><summary>the shape, from event-feed.html</summary><pre>&lt;div class="grid"&gt;
+  &lt;article class="card" data-cat="politics"&gt;
+    &lt;!-- .card-body --&gt;
+  &lt;/article&gt;
+  &lt;article class="card" data-cat="crypto"&gt;
+    &lt;!-- .card-body --&gt;
+  &lt;/article&gt;
+  &lt;article class="card" data-cat="culture"&gt;
+    &lt;!-- .card-body --&gt;
+  &lt;/article&gt;
+  &lt;article class="card" data-cat="general"&gt;
+    &lt;!-- .card-body --&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</pre></details>
+  </section>
+
+  <section class="tk-sec" id="css">
+    <h2 data-n="07">The file</h2>
+    <p class="tk-note">A pattern loads LAST in <code>components/index.css</code>, after every
+    component, because it has to be able to place what it holds. It carries no colour at all, and
+    gate 23 fails the build if one appears.</p>
+    <details class="ck-src"><summary>components/patterns/card-grid.css</summary><pre>/* components/patterns/card-grid.css
+   Pattern: the card grid. A fluid track of event cards, one column to four.
+
+   Assembled from: card. One brick, many of it, which is still a composition:
+     what the pattern decides is the track, and the card decides nothing about
+     where it stands.
+   Stands on: 23 ui-visual screens, exactly the ones that list events
+     (event-feed x21 across the four categories and their states, favorites x2).
+     Counted from the markup and not by grep: `grid` also matches .grid-l, the
+     chart's grid line, on 9 more screens, and .hf-grid on one. Those are not
+     this. 23 elements on 23 screens, one grid per screen.
+   Moved here from: components/feed.css, three rules, cut and not copied.
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.grid{display:grid}
+/* WHAT THE !important WAS ARGUING WITH. Four rules used to sit beside this one:
+   three breakpoints stepping the grid 2 - 3 - 4 columns, and a category variant
+   at auto-fill 240px. All four were already dead. The three breakpoints lose to
+   the auto-fit rule below on source order alone, and the category variant was
+   outranked only by the !important that rule carried. So the shipped grid has
+   always been the one rule, and the shout was holding a cascade nobody had
+   cleaned up. Deleting the four is what made the !important removable without
+   moving a card: a fluid auto-fit track needs no breakpoints, which is also why
+   this pattern has no media query of its own. */
+.grid{align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.grid{gap:var(--space-16)}
+</pre></details>
+  </section>
+</main>
+
+<script src="_frames.js"></script>
+<script src="_nav.js"></script>
+</body>
+</html>

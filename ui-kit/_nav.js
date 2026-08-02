@@ -8,44 +8,51 @@
 window.KIT_DOORS = [{"label": "Colour", "file": "tokens.html#colour", "blurb": "Every graphite step and every brass, and the roles that read them."}, {"label": "Material", "file": "tokens.html#material", "blurb": "The two-stone plates, the grain, the bevels and the grooves."}, {"label": "Geometry", "file": "tokens.html#geometry", "blurb": "Spacing, radius, control sizes, the container and the gutter."}, {"label": "Type", "file": "tokens.html#type", "blurb": "Three families, the size ramp, weight and leading."}, {"label": "Motion", "file": "tokens.html#motion", "blurb": "Durations and easings, shown moving."}];
 window.KIT_DOCS = [{"name": "doc-architecture", "file": "architecture.html", "label": "Architecture", "blurb": "How the system is put together, what each level may hold, and where a change goes."}, {"name": "doc-history", "file": "history.html", "label": "What each pass settled", "blurb": "The long form of ten audit passes: what was measured, and which check could see it."}, {"name": "doc-tokens-audit", "file": "tokens-audit.html", "label": "Tokens audit", "blurb": "The reading the system was built from: every value the painted product had, and what it meant."}, {"name": "doc-inventory", "file": "inventory.html", "label": "Inventory", "blurb": "Every component, its css file, its page and the screens it stands on."}, {"name": "doc-coverage", "file": "coverage.html", "label": "Coverage", "blurb": "Every class, and how many painted screens carry it. A zero is not a verdict."}];
 window.KIT_NAV = [
-  {group: "Foundations", name: "tokens", file: "tokens.html", label: "Tokens"},
-  {group: "Foundations", name: "icons", file: "icons.html", label: "Icons"},
-  {group: "Foundations", name: "base", file: "base.html", label: "Base and page frame"},
-  {group: "Foundations", name: "course-chrome", file: "course-chrome.html", label: "Course chrome"},
-  {group: "Atoms", name: "filters", file: "filters.html", label: "Sort and filters"},
-  {group: "Atoms", name: "loadmore", file: "loadmore.html", label: "Load more"},
-  {group: "Atoms", name: "oddsbar", file: "oddsbar.html", label: "Odds bar"},
-  {group: "Atoms", name: "skeleton", file: "skeleton.html", label: "Skeletons"},
-  {group: "Atoms", name: "button", file: "button.html", label: "Buttons"},
-  {group: "Atoms", name: "input", file: "input.html", label: "Fields and amounts"},
-  {group: "Molecules", name: "seo-plate", file: "seo-plate.html", label: "SEO plate"},
-  {group: "Molecules", name: "trustbar", file: "trustbar.html", label: "Trust bar and cards"},
-  {group: "Molecules", name: "market", file: "market.html", label: "AMM market panel"},
-  {group: "Molecules", name: "account", file: "account.html", label: "Account bars"},
-  {group: "Molecules", name: "related", file: "related.html", label: "Related events"},
-  {group: "Molecules", name: "yesno", file: "yesno.html", label: "YES / NO buttons"},
-  {group: "Molecules", name: "toast", file: "toast.html", label: "Toasts"},
-  {group: "Molecules", name: "cookie-consent", file: "cookie-consent.html", label: "Cookie consent"},
-  {group: "Organisms", name: "bottomnav", file: "bottomnav.html", label: "Bottom nav"},
-  {group: "Organisms", name: "hiw-dialog", file: "hiw-dialog.html", label: "How-it-works dialog"},
-  {group: "Organisms", name: "hero", file: "hero.html", label: "Featured hero"},
-  {group: "Organisms", name: "comments", file: "comments.html", label: "Comments"},
-  {group: "Organisms", name: "catnav", file: "catnav.html", label: "Category nav"},
-  {group: "Organisms", name: "notice", file: "notice.html", label: "Notices and banners"},
-  {group: "Organisms", name: "header", file: "header.html", label: "App header"},
-  {group: "Organisms", name: "footer", file: "footer.html", label: "Footer"},
-  {group: "Organisms", name: "options", file: "options.html", label: "Outcome rows"},
-  {group: "Organisms", name: "state-block", file: "state-block.html", label: "State block"},
-  {group: "Organisms", name: "card", file: "card.html", label: "Event card"},
-  {group: "Organisms", name: "dialog", file: "dialog.html", label: "Shared dialog"},
-  {group: "Organisms", name: "feed", file: "feed.html", label: "Feed layout"},
-  {group: "Organisms", name: "betpanel", file: "betpanel.html", label: "Bet panel and dock"},
-  {group: "Organisms", name: "profile", file: "profile.html", label: "Profile identity"},
-  {group: "Organisms", name: "event-detail", file: "event-detail.html", label: "Event Detail layout"},
-  {group: "Organisms", name: "position", file: "position.html", label: "Position rows"},
-  {group: "Organisms", name: "bets-table", file: "bets-table.html", label: "Bets and activity"},
-  {group: "Organisms", name: "tabs", file: "tabs.html", label: "Tabs"},
-  {group: "Organisms", name: "chart", file: "chart.html", label: "Price chart"},
+  {group: "Foundations", name: "tokens", file: "tokens.html", label: "Tokens", path: "components/tokens.css"},
+  {group: "Foundations", name: "icons", file: "icons.html", label: "Icons", path: "ui-kit/icons.html"},
+  {group: "Foundations", name: "base", file: "base.html", label: "Base and page frame", path: "components/base.css"},
+  {group: "Foundations", name: "course-chrome", file: "course-chrome.html", label: "Course chrome", path: "components/course-chrome.css"},
+  {group: "Atoms", name: "filters", file: "filters.html", label: "Sort and filters", path: "components/filters.css"},
+  {group: "Atoms", name: "loadmore", file: "loadmore.html", label: "Load more", path: "components/loadmore.css"},
+  {group: "Atoms", name: "oddsbar", file: "oddsbar.html", label: "Odds bar", path: "components/oddsbar.css"},
+  {group: "Atoms", name: "skeleton", file: "skeleton.html", label: "Skeletons", path: "components/skeleton.css"},
+  {group: "Atoms", name: "button", file: "button.html", label: "Buttons", path: "components/button.css"},
+  {group: "Atoms", name: "input", file: "input.html", label: "Fields and amounts", path: "components/input.css"},
+  {group: "Molecules", name: "seo-plate", file: "seo-plate.html", label: "SEO plate", path: "components/seo-plate.css"},
+  {group: "Molecules", name: "trustbar", file: "trustbar.html", label: "Trust bar and cards", path: "components/trustbar.css"},
+  {group: "Molecules", name: "market", file: "market.html", label: "AMM market panel", path: "components/market.css"},
+  {group: "Molecules", name: "account", file: "account.html", label: "Account bars", path: "components/account.css"},
+  {group: "Molecules", name: "related", file: "related.html", label: "Related events", path: "components/related.css"},
+  {group: "Molecules", name: "yesno", file: "yesno.html", label: "YES / NO buttons", path: "components/yesno.css"},
+  {group: "Molecules", name: "toast", file: "toast.html", label: "Toasts", path: "components/toast.css"},
+  {group: "Molecules", name: "cookie-consent", file: "cookie-consent.html", label: "Cookie consent", path: "components/cookie-consent.css"},
+  {group: "Organisms", name: "bottomnav", file: "bottomnav.html", label: "Bottom nav", path: "components/bottomnav.css"},
+  {group: "Organisms", name: "hiw-dialog", file: "hiw-dialog.html", label: "How-it-works dialog", path: "components/hiw-dialog.css"},
+  {group: "Organisms", name: "hero", file: "hero.html", label: "Featured hero", path: "components/hero.css"},
+  {group: "Organisms", name: "comments", file: "comments.html", label: "Comments", path: "components/comments.css"},
+  {group: "Organisms", name: "catnav", file: "catnav.html", label: "Category nav", path: "components/catnav.css"},
+  {group: "Organisms", name: "notice", file: "notice.html", label: "Notices and banners", path: "components/notice.css"},
+  {group: "Organisms", name: "header", file: "header.html", label: "App header", path: "components/header.css"},
+  {group: "Organisms", name: "footer", file: "footer.html", label: "Footer", path: "components/footer.css"},
+  {group: "Organisms", name: "options", file: "options.html", label: "Outcome rows", path: "components/options.css"},
+  {group: "Organisms", name: "state-block", file: "state-block.html", label: "State block", path: "components/state-block.css"},
+  {group: "Organisms", name: "card", file: "card.html", label: "Event card", path: "components/card.css"},
+  {group: "Organisms", name: "dialog", file: "dialog.html", label: "Shared dialog", path: "components/dialog.css"},
+  {group: "Organisms", name: "feed", file: "feed.html", label: "Feed layout", path: "components/feed.css"},
+  {group: "Organisms", name: "betpanel", file: "betpanel.html", label: "Bet panel and dock", path: "components/betpanel.css"},
+  {group: "Organisms", name: "profile", file: "profile.html", label: "Profile identity", path: "components/profile.css"},
+  {group: "Organisms", name: "event-detail", file: "event-detail.html", label: "Event Detail layout", path: "components/event-detail.css"},
+  {group: "Organisms", name: "position", file: "position.html", label: "Position rows", path: "components/position.css"},
+  {group: "Organisms", name: "bets-table", file: "bets-table.html", label: "Bets and activity", path: "components/bets-table.css"},
+  {group: "Organisms", name: "tabs", file: "tabs.html", label: "Tabs", path: "components/tabs.css"},
+  {group: "Organisms", name: "chart", file: "chart.html", label: "Price chart", path: "components/chart.css"},
+  {group: "Patterns", name: "patterns", file: "patterns.html", label: "Patterns", path: "components/patterns/"},
+  {group: "Patterns", name: "action-bar", file: "action-bar.html", label: "Action bar", path: "components/patterns/action-bar.css"},
+  {group: "Patterns", name: "browse-shell", file: "browse-shell.html", label: "Browse shell", path: "components/patterns/browse-shell.css"},
+  {group: "Patterns", name: "card-grid", file: "card-grid.html", label: "Card grid", path: "components/patterns/card-grid.css"},
+  {group: "Patterns", name: "detail-shell", file: "detail-shell.html", label: "Detail shell", path: "components/patterns/detail-shell.css"},
+  {group: "Patterns", name: "list-head", file: "list-head.html", label: "List head", path: "components/patterns/list-head.css"},
+  {group: "Patterns", name: "position-list", file: "position-list.html", label: "Position list", path: "components/patterns/position-list.css"},
 ];
 
 function pmRevealPanelRow() {
@@ -119,13 +126,10 @@ function pmRevealPanelRow() {
       if (e.group !== g) { g = e.group; out.push('</div><h3 class="tk-subh">' + g + '</h3><div class="ck-cards">'); }
       var thumb = window.KIT_THUMBS && window.KIT_THUMBS[e.name];
       out.push('<a class="ck-card" href="' + e.file + '">' +
-               (thumb ? '<span class="ck-thumb"><iframe src="specimens/' + thumb.id +
-                        '.html" width="' + thumb.w + '" height="' + thumb.h +
+               (thumb ? '<span class="ck-thumb"><iframe src="' + thumb.src +
+                        '" width="' + thumb.w + '" height="' + thumb.h +
                         '" style="transform:scale(' + thumb.s + ')" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe></span>' : '') +
-               '<b>' + e.label + '</b><code>' +
-               (e.name === 'tokens' ? 'components/tokens.css'
-                : e.name === 'icons' ? 'ui-kit/icons.html' : 'components/' + e.name + '.css') +
-               '</code></a>');
+               '<b>' + e.label + '</b><code>' + e.path + '</code></a>');
     });
     cards.innerHTML = (out.join('') + '</div>').replace(/^<\/div>/, '');
   }

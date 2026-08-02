@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - Action bar</title>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   A frame is a document of its own, so it does not inherit the attribute: this
+   block runs in the frames too and they are told by postMessage, the same
+   handshake _frames.js already uses, because from file:// every document has
+   its own opaque origin and reading into a frame is refused.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function set(on){if(on){r.setAttribute('data-theme','light')}else{r.removeAttribute('data-theme')}}
+function push(){var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){try{f[i].contentWindow.postMessage({pmTheme:lit()?'light':'dark'},'*')}catch(e){}}}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}
+push();}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();set(!on);
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+window.addEventListener('message',function(e){var d=e.data;
+if(!d||(d.pmTheme!=='light'&&d.pmTheme!=='dark'))return;
+set(d.pmTheme==='light');paint();});
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);
+/* a frame that arrives late is told as soon as it is ready */
+var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
+push();});})();</script>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="action-bar">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<main class="tk-wrap">
+  <header class="tk-hero">
+    <h1>Action bar</h1>
+    <p>One or two actions held at the foot of a column, sticky by default and flat where the page has no scroll to hold them against.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">components/patterns/action-bar.css</span>
+      <span class="tk-badge">3 screens</span>
+      <span class="tk-badge">1 components</span>
+      <span class="tk-badge">no specimen, by decision</span>
+    </div>
+    <div class="tk-jump"><a href="patterns.html">All patterns</a><a href="account.html">account</a></div>
+  </header>
+
+  <section class="tk-sec" id="live">
+    <h2 data-n="01">Live</h2>
+    <p class="tk-note">Cut out of <a href="../ui-visual/wallet.html">wallet.html</a> byte for byte, with
+    the ancestor chain it has there, and painted by <code>components/index.css</code> alone. Every
+    string is the shipped microcopy, because none of it was retyped. The wallet, which carries the <code>.static</code> variant. The other two screens carry <code>.flat</code>, so between them the three screens show two of the three positions this bar has.</p>
+    <p class="tk-note"><b>This is the only place the pattern exists outside the product.</b> A
+    component has a specimen as well as a stand; a pattern has neither, because step 3 took patterns
+    out of gate 24's corpus deliberately: that gate compares what a component contains against what
+    it contains on the screens, and a pattern contains whatever the screen puts in it. So this frame
+    is not an illustration of the pattern, it is the test of it.</p>
+    <figure class="ck-scene" id="sc-action-bar-360"><figcaption class="ck-scene-lbl"><b>Action bar</b><span class="ck-w">360px</span><span class="ck-zoom" hidden></span><a href="patterns/action-bar.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:360px"><iframe data-specimen="action-bar-360" src="patterns/action-bar.html" width="360" height="420" loading="lazy" title="Action bar at 360px"></iframe></div></figure>
+<figure class="ck-scene" id="sc-action-bar-900"><figcaption class="ck-scene-lbl"><b>Action bar</b><span class="ck-w">900px</span><span class="ck-zoom" hidden></span><a href="patterns/action-bar.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:900px"><iframe data-specimen="action-bar-900" src="patterns/action-bar.html" width="900" height="420" loading="lazy" title="Action bar at 900px"></iframe></div></figure>
+  </section>
+
+  <section class="tk-sec" id="anatomy">
+    <h2 data-n="02">Anatomy</h2>
+    <p class="tk-note">What each part is and whose it is. A part that belongs to a component links
+    to that component's page, because the answer to "how does this look" is there and not here: this
+    file decides placement and nothing else.</p>
+    <table class="tk-tbl ck-anat"><thead><tr><th>part</th><th>whose it is</th><th>what it does here</th></tr></thead><tbody><tr><td class='tk-role'>.cta-bar</td><td class='tk-hex'><span class="ck-kind ck-kit">this pattern</span></td><td>The bar. Sticky to the foot of the column, above the bottom nav on the stacking order.</td></tr><tr><td class='tk-role'>&amp;lt;button&amp;gt;</td><td class='tk-hex'><a href="account.html">account</a></td><td>The action, and the one part of this folder a class map cannot see: it is a bare <code>&lt;button&gt;</code> with no class at all, and it is NOT painted by <code>components/button.css</code>. Nine rules in <code>components/account.css</code> style it by descent (<code>.app-case .cta-bar button</code>), including the brass on the first child, its hover and its press. So the bar and its buttons are one component's paint, which is half of backlog item 16d: <code>account</code> is a CTA bar and a transaction list in one file.</td></tr></tbody></table>
+    <p class="tk-note"><b>Everything inside, read from the markup:</b> account (declared). The class in
+    brackets is what put each component in the list, through the same ownership map that computes
+    the level and orders the cascade. A name here that surprises you is worth following: a class
+    declared in the wrong file makes a pattern read as holding a component it has never seen.</p>
+  </section>
+
+  <section class="tk-sec" id="variants">
+    <h2 data-n="03">Variants</h2>
+    <div class="ck-var"><code>.cta-bar.static</code><p>Position only, for a page whose column does not scroll under it.</p></div><div class="ck-var"><code>.cta-bar.flat</code><p>Position and surface: the stone, the hairline and the two rounded corners come off, and it reads as a row at the end of the content. The three declarations that take the surface away are in <code>components/account.css</code> and not here, which is the one declared paint exception of the patterns step.</p></div>
+  </section>
+
+  <section class="tk-sec" id="use">
+    <h2 data-n="04">When to use it</h2>
+    <ul class="ck-when"><li>A screen has one action that is the reason a person came to it, and the content above it is long enough that the action would otherwise scroll away.</li><li>THREE SCREENS, WHICH IS THE THRESHOLD EXACTLY. This pattern clears the bar by one screen and that is said here rather than rounded up: it is a pattern by a margin of one, and if any of the three loses its bar it stops being one.</li></ul>
+    <h3 class="tk-subh">The rule</h3>
+    <p class="ck-rule">The bar holds the actions; the buttons stay themselves. Each action is an <code>&lt;a&gt;</code> at <code>flex:1</code> holding a button at <code>width:100%</code>, so two actions split the row evenly and one fills it, without either button learning a width of its own.</p>
+    <h3 class="tk-subh">The anti-rule</h3>
+    <p class="ck-antirule">Do not put a second one on a screen, and do not use it for a link that is not the reason the screen exists. A sticky bar is the loudest thing on a phone and a screen with two of them has told a person nothing about which to press.</p>
+  </section>
+
+  <section class="tk-sec" id="screens">
+    <h2 data-n="05">Where it stands</h2>
+    <p class="tk-note">The existence proof. A composition is a pattern here because it stands on three or more screens, so this list is not a footnote: it is the reason the file exists. Counted from the markup of all 104 painted screens, not from a list.</p><p class="tk-note"><b>Three, which is the threshold exactly.</b> This is the thinnest proof in the folder and it is not hidden behind a phrase: one of these three losing its bar takes the pattern below the line that admitted it.</p><div class="ck-screens"><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/wallet.html">wallet</a></div>
+  </section>
+
+  <section class="tk-sec" id="markup">
+    <h2 data-n="06">The markup</h2>
+    <p class="tk-note">The scene above, to a depth of 2, with everything below it replaced by
+    a comment naming what was elided. Copy the shape; the content is the screen's.</p>
+    <details class="ck-src" open><summary>the shape, from wallet.html</summary><pre>&lt;div class="cta-bar static"&gt;
+  &lt;button type="button" data-open="deposit"&gt;Add funds&lt;/button&gt;&lt;/button&gt;
+  &lt;button type="button" data-open="withdraw"&gt;Withdraw&lt;/button&gt;&lt;/button&gt;
+&lt;/div&gt;</pre></details>
+  </section>
+
+  <section class="tk-sec" id="css">
+    <h2 data-n="07">The file</h2>
+    <p class="tk-note">A pattern loads LAST in <code>components/index.css</code>, after every
+    component, because it has to be able to place what it holds. It carries no colour at all, and
+    gate 23 fails the build if one appears.</p>
+    <details class="ck-src"><summary>components/patterns/action-bar.css</summary><pre>/* components/patterns/action-bar.css
+   Pattern: the action bar. One or two actions held at the foot of a column,
+   sticky by default and flat where the page has no scroll to hold them against.
+
+   Assembled from: button.
+   Stands on: 3 ui-visual screens (my-profile, wallet, how-it-works). Three is
+     the threshold and this clears it exactly, which is worth saying out loud
+     rather than rounding up: it is a pattern by one screen.
+   Moved here from: components/account.css, five rules and half of a sixth, cut
+     and not copied.
+   THE HALF, AND THE EXCEPTION IT MAKES. The bar's own surface stays in
+     account.css: a stone, a hairline along the top edge and two rounded top
+     corners. That is NOT the page plate, so it does not follow .feed-inner into
+     base.css, and it is not composition, so it does not come here. It is the
+     paint of a component, and this is the one place in this step where the rule
+     "composition out, plate to the frame" needed an exception rather than being
+     forced. The same split runs through .flat: the position is here and the
+     three declarations that take the surface away are there.
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.cta-bar{display:flex}
+.app-case .cta-bar{position:sticky;bottom:0;padding:var(--space-12);gap:var(--space-8);margin-top:var(--space-12);z-index:var(--z-dock)}
+.app-case .cta-bar&gt;a{flex:1}
+.app-case .cta-bar&gt;a&gt;button{width:100%}
+.app-case .cta-bar.static{position:static}
+.app-case .cta-bar.flat{position:static;padding:var(--space-8) 0 0}
+</pre></details>
+  </section>
+</main>
+
+<script src="_frames.js"></script>
+<script src="_nav.js"></script>
+</body>
+</html>

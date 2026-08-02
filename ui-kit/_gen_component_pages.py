@@ -76,12 +76,40 @@ SEM = set(re.findall(r"(--[\w-]+)\s*:", TOKENS[TOKENS.index("2. SEMANTIC"):]))
 # Derived, not typed, from the same map that orders the cascade: two lists of one
 # fact is how coverage.md and the css headers came to disagree.
 from _levels import LEVEL as _LEVEL, ORDER as _ORDER, NOT_A_COMPONENT as _NOT_COMP  # noqa: E402
+from _levels import PATTERNS as _PATTERNS                             # noqa: E402
 
+# The panel reads top to bottom the way index.css loads: Foundations, then the
+# three levels in cascade order, then Patterns. Patterns come last for the same
+# reason their @imports do, and it is not tidiness: a pattern has to be able to
+# place what it holds, so it loads after everything it holds. The panel showing a
+# different order to the one the cascade uses would be a second answer to a
+# question the file already answers.
+#
+# A pattern has no level, so it cannot be sorted into the three groups above, and
+# the group page leads its own group because it is the door: the choice rule
+# between taking a pattern whole and assembling from components is on it.
+_PAT_STEMS = [f.split("/", 1)[1] for f in _PATTERNS]
 GROUPS = [("Foundations", ["tokens", "icons", "base", "course-chrome"])] + [
     (name, [f for f in _ORDER if _LEVEL.get(f) == n and f not in _NOT_COMP])
     for n, name in ((1, "Atoms"), (2, "Molecules"), (3, "Organisms"))
-]
+] + [("Patterns", ["patterns"] + _PAT_STEMS)]
+
+# What each row points at in the code. Derived where it can be and declared where
+# it cannot: three rows are not a components/<name>.css and each says why.
+def code_path(name):
+    if name == "tokens":
+        return "components/tokens.css"
+    if name == "icons":
+        return "ui-kit/icons.html"          # a sprite, not a stylesheet
+    if name == "patterns":
+        return "components/patterns/"       # the folder, because the row is the group
+    if name in _PAT_STEMS:
+        return "components/patterns/%s.css" % name
+    return "components/%s.css" % name
 LABEL = {
+    "patterns": "Patterns", "browse-shell": "Browse shell", "detail-shell": "Detail shell",
+    "card-grid": "Card grid", "list-head": "List head", "position-list": "Position list",
+    "action-bar": "Action bar",
     "tokens": "Tokens", "icons": "Icons", "base": "Base and page frame",
     "course-chrome": "Course chrome",
     "header": "App header", "catnav": "Category nav", "bottomnav": "Bottom nav", "tabs": "Tabs",
@@ -543,13 +571,12 @@ for path in sorted(COMP.glob("*.css")):
 entries = []
 for group, names in GROUPS:
     for n in names:
-        if n in ("tokens", "icons"):
-            entries.append((group, n, n + ".html", LABEL[n]))
-        elif (COMP / (n + ".css")).exists():
-            entries.append((group, n, n + ".html", LABEL.get(n, n)))
+        if n in ("tokens", "icons", "patterns") or n in _PAT_STEMS \
+                or (COMP / (n + ".css")).exists():
+            entries.append((group, n, n + ".html", LABEL.get(n, n), code_path(n)))
 extra = [n for n, _ in built if n not in [e[1] for e in entries]]
 for n in sorted(extra):
-    entries.append(("Unfiled", n, n + ".html", LABEL.get(n, n)))
+    entries.append(("Unfiled", n, n + ".html", LABEL.get(n, n), code_path(n)))
 
 nav = ["""/* ui-kit/_nav.js - the ONE registry of stand pages.
 
@@ -565,9 +592,9 @@ window.KIT_NAV = [""" % (json.dumps([{"label": a, "file": b, "blurb": d}
                          json.dumps([{"name": "doc-" + s, "file": s + ".html",
                                       "label": lab, "blurb": blurb}
                                      for s, lab, blurb in DOC_PAGES]))]
-for g, n, f, l in entries:
-    nav.append('  {group: %s, name: %s, file: %s, label: %s},'
-               % (json.dumps(g), json.dumps(n), json.dumps(f), json.dumps(l)))
+for g, n, f, l, path in entries:
+    nav.append('  {group: %s, name: %s, file: %s, label: %s, path: %s},'
+               % (json.dumps(g), json.dumps(n), json.dumps(f), json.dumps(l), json.dumps(path)))
 nav.append("""];
 
 %(REVEAL_BODY)s
@@ -632,13 +659,10 @@ nav.append("""];
       if (e.group !== g) { g = e.group; out.push('</div><h3 class="tk-subh">' + g + '</h3><div class="ck-cards">'); }
       var thumb = window.KIT_THUMBS && window.KIT_THUMBS[e.name];
       out.push('<a class="ck-card" href="' + e.file + '">' +
-               (thumb ? '<span class="ck-thumb"><iframe src="specimens/' + thumb.id +
-                        '.html" width="' + thumb.w + '" height="' + thumb.h +
+               (thumb ? '<span class="ck-thumb"><iframe src="' + thumb.src +
+                        '" width="' + thumb.w + '" height="' + thumb.h +
                         '" style="transform:scale(' + thumb.s + ')" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe></span>' : '') +
-               '<b>' + e.label + '</b><code>' +
-               (e.name === 'tokens' ? 'components/tokens.css'
-                : e.name === 'icons' ? 'ui-kit/icons.html' : 'components/' + e.name + '.css') +
-               '</code></a>');
+               '<b>' + e.label + '</b><code>' + e.path + '</code></a>');
     });
     cards.innerHTML = (out.join('') + '</div>').replace(/^<\\/div>/, '');
   }
@@ -733,7 +757,16 @@ for s in SPECIMENS:
         continue
     w = s.get("width", 900)
     scale = round(THUMB_W / w, 4)
-    thumbs[s["component"]] = {"id": s["id"], "w": w, "h": int(140 / scale), "s": scale}
+    thumbs[s["component"]] = {"src": "specimens/%s.html" % s["id"], "w": w,
+                              "h": int(140 / scale), "s": scale}
+# A pattern has no specimen, so its card frames the scene page directly. That is
+# the whole reason the src is a field now instead of a specimen id: two kinds of
+# page feed the same card, and a hard-coded specimens/ prefix could only ever
+# show one of them.
+for _p in _PAT_STEMS:
+    _scale = round(THUMB_W / 360, 4)
+    thumbs[_p] = {"src": "patterns/%s.html" % _p, "w": 360,
+                  "h": int(140 / _scale), "s": _scale}
 
 total_rules = sum(c["rules"] for _, c in built)
 hub = f"""<!doctype html>
@@ -754,12 +787,13 @@ hub = f"""<!doctype html>
 <main class="tk-wrap">
   <header class="tk-hero">
     <h1>The system</h1>
-    <p>Two levels of tokens and {len(built)} component files. The code lives in
-    <code>components/</code> and is what a screen links; these pages are the vitrine, and they link
-    the same <code>components/index.css</code> the product does, so nothing here can drift from what
-    ships.</p>
+    <p>Two levels of tokens, {len(built)} component files and {len(_PAT_STEMS)} patterns. The code
+    lives in <code>components/</code> and is what a screen links; these pages are the vitrine, and
+    they link the same <code>components/index.css</code> the product does, so nothing here can drift
+    from what ships.</p>
     <div class="tk-badges">
       <span class="tk-badge">{len(built)} components</span>
+      <span class="tk-badge">{len(_PAT_STEMS)} patterns</span>
       <span class="tk-badge">{total_rules} rules</span>
       <span class="tk-badge">{len(SPECIMENS)} specimens</span>
       <span class="tk-badge">one entry point</span>
@@ -768,7 +802,7 @@ hub = f"""<!doctype html>
       other ground. Only roles move; not one primitive is redefined. Section 3 of
       <code>components/tokens.css</code> is the entire theme.</span></div>
     <div class="tk-jump"><a href="tokens.html">Tokens</a><a href="icons.html">Icons</a>
-      <a href="kit.html">Frozen kit</a><a href="selftest.html">Self test</a>
+      <a href="patterns.html">Patterns</a><a href="kit.html">Frozen kit</a><a href="selftest.html">Self test</a>
       <a href="../ui-visual/overview.html">Painted screens</a></div>
   </header>
 
@@ -790,7 +824,11 @@ hub = f"""<!doctype html>
   <section class="tk-sec" id="cards">
     <h2 data-n="03">Every file, every page</h2>
     <p class="tk-note">One component is one css file, one page here and one line in the registry.
-    Missing any of the three means the component does not exist yet.</p>
+    Missing any of the three means the component does not exist yet. The last group is the second
+    level of the system: a <a href="patterns.html">pattern</a> is an arrangement that repeated on
+    three or more screens, and it has a file and a page but no level, no specimen and no states.
+    Its card frames the pattern itself, because that page is the only place a pattern exists
+    outside the product.</p>
     <div id="kitCards"></div>
   </section>
 </main>

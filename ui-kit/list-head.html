@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - List head</title>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   A frame is a document of its own, so it does not inherit the attribute: this
+   block runs in the frames too and they are told by postMessage, the same
+   handshake _frames.js already uses, because from file:// every document has
+   its own opaque origin and reading into a frame is refused.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function set(on){if(on){r.setAttribute('data-theme','light')}else{r.removeAttribute('data-theme')}}
+function push(){var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){try{f[i].contentWindow.postMessage({pmTheme:lit()?'light':'dark'},'*')}catch(e){}}}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}
+push();}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();set(!on);
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+window.addEventListener('message',function(e){var d=e.data;
+if(!d||(d.pmTheme!=='light'&&d.pmTheme!=='dark'))return;
+set(d.pmTheme==='light');paint();});
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);
+/* a frame that arrives late is told as soon as it is ready */
+var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
+push();});})();</script>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="list-head">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<main class="tk-wrap">
+  <header class="tk-hero">
+    <h1>List head</h1>
+    <p>A title on one side, the controls that act on the list on the other, wrapping to two rows when there is no room for one.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">components/patterns/list-head.css</span>
+      <span class="tk-badge">70 screens</span>
+      <span class="tk-badge">1 components</span>
+      <span class="tk-badge">no specimen, by decision</span>
+    </div>
+    <div class="tk-jump"><a href="patterns.html">All patterns</a><a href="filters.html">filters</a></div>
+  </header>
+
+  <section class="tk-sec" id="live">
+    <h2 data-n="01">Live</h2>
+    <p class="tk-note">Cut out of <a href="../ui-visual/event-feed.html">event-feed.html</a> byte for byte, with
+    the ancestor chain it has there, and painted by <code>components/index.css</code> alone. Every
+    string is the shipped microcopy, because none of it was retyped. The feed's own head, which is the widest case: a title, a live count and the full control row. Sixty nine other screens carry a thinner version of the same row.</p>
+    <p class="tk-note"><b>This is the only place the pattern exists outside the product.</b> A
+    component has a specimen as well as a stand; a pattern has neither, because step 3 took patterns
+    out of gate 24's corpus deliberately: that gate compares what a component contains against what
+    it contains on the screens, and a pattern contains whatever the screen puts in it. So this frame
+    is not an illustration of the pattern, it is the test of it.</p>
+    <figure class="ck-scene" id="sc-list-head-360"><figcaption class="ck-scene-lbl"><b>List head</b><span class="ck-w">360px</span><span class="ck-zoom" hidden></span><a href="patterns/list-head.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:360px"><iframe data-specimen="list-head-360" src="patterns/list-head.html" width="360" height="420" loading="lazy" title="List head at 360px"></iframe></div></figure>
+<figure class="ck-scene" id="sc-list-head-900"><figcaption class="ck-scene-lbl"><b>List head</b><span class="ck-w">900px</span><span class="ck-zoom" hidden></span><a href="patterns/list-head.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:900px"><iframe data-specimen="list-head-900" src="patterns/list-head.html" width="900" height="420" loading="lazy" title="List head at 900px"></iframe></div></figure>
+  </section>
+
+  <section class="tk-sec" id="anatomy">
+    <h2 data-n="02">Anatomy</h2>
+    <p class="tk-note">What each part is and whose it is. A part that belongs to a component links
+    to that component's page, because the answer to "how does this look" is there and not here: this
+    file decides placement and nothing else.</p>
+    <table class="tk-tbl ck-anat"><thead><tr><th>part</th><th>whose it is</th><th>what it does here</th></tr></thead><tbody><tr><td class='tk-role'>.feed-head</td><td class='tk-hex'><span class="ck-kind ck-kit">this pattern</span></td><td>The row. <code>flex-wrap</code> with <code>space-between</code>, so the controls drop under the title instead of squeezing it.</td></tr><tr><td class='tk-role'>.feed-controls</td><td class='tk-hex'><span class="ck-kind ck-kit">this pattern</span></td><td>The control side. A wrapping row of its own, because two controls that do not fit should sit under each other and not shrink.</td></tr><tr><td class='tk-role'>.filter-menu</td><td class='tk-hex'><a href="filters.html">filters</a></td><td>What usually stands in the control side.</td></tr></tbody></table>
+    <p class="tk-note"><b>Everything inside, read from the markup:</b> filters (.filter-menu). The class in
+    brackets is what put each component in the list, through the same ownership map that computes
+    the level and orders the cascade. A name here that surprises you is worth following: a class
+    declared in the wrong file makes a pattern read as holding a component it has never seen.</p>
+  </section>
+
+  <section class="tk-sec" id="variants">
+    <h2 data-n="03">Variants</h2>
+    <p class="tk-note">No variants. The pattern has one arrangement, and a screen that needs a different one needs a different pattern.</p>
+  </section>
+
+  <section class="tk-sec" id="use">
+    <h2 data-n="04">When to use it</h2>
+    <ul class="ck-when"><li>A list needs a name and the list needs controls, and both belong to the list rather than to the page.</li><li>Twenty six of the seventy screens that carry the head have a title and nothing to sort, and the row is correct with the control side empty.</li></ul>
+    <h3 class="tk-subh">The rule</h3>
+    <p class="ck-rule">The sort control lives here and not in the category band. Categories are navigation; a sort is a control over THIS list, and putting it in the band makes it look like a place you can go.</p>
+    <h3 class="tk-subh">The anti-rule</h3>
+    <p class="ck-antirule">The heading's type is not here. A display face and its colour are what the block LOOKS like, so they stay in <code>components/feed.css</code>; this file is the row and nothing else.</p>
+  </section>
+
+  <section class="tk-sec" id="screens">
+    <h2 data-n="05">Where it stands</h2>
+    <p class="tk-note">The existence proof. A composition is a pattern here because it stands on three or more screens, so this list is not a footnote: it is the reason the file exists. Counted from the markup of all 104 painted screens, not from a list.</p><div class="ck-screens"><a href="../ui-visual/active-bets-empty-new.html">active-bets-empty-new</a><a href="../ui-visual/active-bets-empty-resolved.html">active-bets-empty-resolved</a><a href="../ui-visual/active-bets-error.html">active-bets-error</a><a href="../ui-visual/active-bets-history-empty.html">active-bets-history-empty</a><a href="../ui-visual/active-bets-history-error.html">active-bets-history-error</a><a href="../ui-visual/active-bets-history-loading.html">active-bets-history-loading</a><a href="../ui-visual/active-bets-history.html">active-bets-history</a><a href="../ui-visual/active-bets-loading.html">active-bets-loading</a><a href="../ui-visual/active-bets.html">active-bets</a><a href="../ui-visual/cookie-consent.html">cookie-consent</a><a href="../ui-visual/event-feed-crypto-empty.html">event-feed-crypto-empty</a><a href="../ui-visual/event-feed-crypto-error.html">event-feed-crypto-error</a><a href="../ui-visual/event-feed-crypto-loading.html">event-feed-crypto-loading</a><a href="../ui-visual/event-feed-crypto-logged-out-empty.html">event-feed-crypto-logged-out-empty</a><a href="../ui-visual/event-feed-crypto-logged-out-error.html">event-feed-crypto-logged-out-error</a><a href="../ui-visual/event-feed-crypto-logged-out-loading.html">event-feed-crypto-logged-out-loading</a><a href="../ui-visual/event-feed-crypto-logged-out.html">event-feed-crypto-logged-out</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture-empty.html">event-feed-culture-empty</a><a href="../ui-visual/event-feed-culture-error.html">event-feed-culture-error</a><a href="../ui-visual/event-feed-culture-loading.html">event-feed-culture-loading</a><a href="../ui-visual/event-feed-culture-logged-out-empty.html">event-feed-culture-logged-out-empty</a><a href="../ui-visual/event-feed-culture-logged-out-error.html">event-feed-culture-logged-out-error</a><a href="../ui-visual/event-feed-culture-logged-out-loading.html">event-feed-culture-logged-out-loading</a><a href="../ui-visual/event-feed-culture-logged-out.html">event-feed-culture-logged-out</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-empty.html">event-feed-empty</a><a href="../ui-visual/event-feed-error.html">event-feed-error</a><a href="../ui-visual/event-feed-general-empty.html">event-feed-general-empty</a><a href="../ui-visual/event-feed-general-error.html">event-feed-general-error</a><a href="../ui-visual/event-feed-general-loading.html">event-feed-general-loading</a><a href="../ui-visual/event-feed-general-logged-out-empty.html">event-feed-general-logged-out-empty</a><a href="../ui-visual/event-feed-general-logged-out-error.html">event-feed-general-logged-out-error</a><a href="../ui-visual/event-feed-general-logged-out-loading.html">event-feed-general-logged-out-loading</a><a href="../ui-visual/event-feed-general-logged-out.html">event-feed-general-logged-out</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-empty.html">event-feed-logged-out-empty</a><a href="../ui-visual/event-feed-logged-out-error.html">event-feed-logged-out-error</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics-empty.html">event-feed-politics-empty</a><a href="../ui-visual/event-feed-politics-error.html">event-feed-politics-error</a><a href="../ui-visual/event-feed-politics-loading.html">event-feed-politics-loading</a><a href="../ui-visual/event-feed-politics-logged-out-empty.html">event-feed-politics-logged-out-empty</a><a href="../ui-visual/event-feed-politics-logged-out-error.html">event-feed-politics-logged-out-error</a><a href="../ui-visual/event-feed-politics-logged-out-loading.html">event-feed-politics-logged-out-loading</a><a href="../ui-visual/event-feed-politics-logged-out.html">event-feed-politics-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-empty.html">favorites-empty</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a><a href="../ui-visual/my-profile-error.html">my-profile-error</a><a href="../ui-visual/my-profile-loading.html">my-profile-loading</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/notifications-empty.html">notifications-empty</a><a href="../ui-visual/notifications-error.html">notifications-error</a><a href="../ui-visual/notifications-loading.html">notifications-loading</a><a href="../ui-visual/notifications-push.html">notifications-push</a><a href="../ui-visual/notifications.html">notifications</a><a href="../ui-visual/public-profile-error.html">public-profile-error</a><a href="../ui-visual/public-profile-loading.html">public-profile-loading</a><a href="../ui-visual/public-profile-not-found.html">public-profile-not-found</a><a href="../ui-visual/public-profile.html">public-profile</a><a href="../ui-visual/toasts.html">toasts</a><a href="../ui-visual/wallet-error.html">wallet-error</a><a href="../ui-visual/wallet-loading.html">wallet-loading</a><a href="../ui-visual/wallet.html">wallet</a></div>
+  </section>
+
+  <section class="tk-sec" id="markup">
+    <h2 data-n="06">The markup</h2>
+    <p class="tk-note">The scene above, to a depth of 3, with everything below it replaced by
+    a comment naming what was elided. Copy the shape; the content is the screen's.</p>
+    <details class="ck-src" open><summary>the shape, from event-feed.html</summary><pre>&lt;div class="feed-head"&gt;
+  &lt;h1 id="feedHeading"&gt;Trending&lt;/h1&gt;&lt;/h1&gt;
+  &lt;div class="feed-controls"&gt;
+    &lt;details class="filter-menu" id="sortMenu"&gt;
+      &lt;summary aria-label="Sort by"&gt;
+        &lt;!-- 2 x .ic-sm, &lt;span&gt; --&gt;
+      &lt;/summary&gt;
+      &lt;div class="filter-panel"&gt;
+        &lt;!-- &lt;ul&gt; --&gt;
+      &lt;/div&gt;
+    &lt;/details&gt;
+    &lt;details class="filter-menu" id="freqMenu"&gt;
+      &lt;summary aria-label="Filter by frequency"&gt;
+        &lt;!-- 2 x .ic-sm, &lt;span&gt; --&gt;
+      &lt;/summary&gt;
+      &lt;div class="filter-panel"&gt;
+        &lt;!-- &lt;ul&gt; --&gt;
+      &lt;/div&gt;
+    &lt;/details&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></details>
+  </section>
+
+  <section class="tk-sec" id="css">
+    <h2 data-n="07">The file</h2>
+    <p class="tk-note">A pattern loads LAST in <code>components/index.css</code>, after every
+    component, because it has to be able to place what it holds. It carries no colour at all, and
+    gate 23 fails the build if one appears.</p>
+    <details class="ck-src"><summary>components/patterns/list-head.css</summary><pre>/* components/patterns/list-head.css
+   Pattern: the list head. A title on one side, the controls that act on the list
+   on the other, wrapping to two rows when there is no room for one.
+
+   Assembled from: a heading and filters. The heading's TYPE is not here: a
+     display face and its colour are what the block looks like, so they stay in
+     components/feed.css. This file is the row.
+   Stands on: 70 ui-visual screens carry .feed-head (event-feed x41,
+     active-bets x9, notifications x5, public-profile x4, my-profile x3,
+     wallet x3, favorites x3, cookie-consent, toasts); 44 of them also carry
+     .feed-controls, the rest have a title with nothing to sort.
+   Moved here from: components/feed.css, four rules, cut and not copied.
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.feed-head{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-8) var(--space-16);justify-content:space-between;margin-bottom:var(--space-8)}
+.feed-head :is(h1,h2){margin:0}
+.feed-controls{display:flex;flex-wrap:wrap;gap:var(--space-8)}
+/* The painted layer takes the head's own bottom inset off, because on a plate
+   the distance to the list is the plate's padding and not the head's margin.
+   The border-bottom that used to be reset with it went to base.css with the
+   plate: a rule that removes an edge is about the edge. */
+.feed-head{padding-bottom:0}
+.feed-head :is(h1,h2){margin-bottom:0}
+</pre></details>
+  </section>
+</main>
+
+<script src="_frames.js"></script>
+<script src="_nav.js"></script>
+</body>
+</html>

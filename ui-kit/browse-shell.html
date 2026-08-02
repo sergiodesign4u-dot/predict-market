@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - Browse shell</title>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   A frame is a document of its own, so it does not inherit the attribute: this
+   block runs in the frames too and they are told by postMessage, the same
+   handshake _frames.js already uses, because from file:// every document has
+   its own opaque origin and reading into a frame is refused.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function set(on){if(on){r.setAttribute('data-theme','light')}else{r.removeAttribute('data-theme')}}
+function push(){var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){try{f[i].contentWindow.postMessage({pmTheme:lit()?'light':'dark'},'*')}catch(e){}}}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}
+push();}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();set(!on);
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+window.addEventListener('message',function(e){var d=e.data;
+if(!d||(d.pmTheme!=='light'&&d.pmTheme!=='dark'))return;
+set(d.pmTheme==='light');paint();});
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);
+/* a frame that arrives late is told as soon as it is ready */
+var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
+push();});})();</script>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="browse-shell">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<main class="tk-wrap">
+  <header class="tk-hero">
+    <h1>Browse shell</h1>
+    <p>A sub-category rail beside a content column, stacked under 900px and side by side above it. It owns none of what it holds and paints none of it; it says where the two columns are.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">components/patterns/browse-shell.css</span>
+      <span class="tk-badge">76 screens</span>
+      <span class="tk-badge">4 components</span>
+      <span class="tk-badge">no specimen, by decision</span>
+    </div>
+    <div class="tk-jump"><a href="patterns.html">All patterns</a><a href="catnav.html">catnav</a><a href="filters.html">filters</a><a href="state-block.html">state-block</a><a href="button.html">button</a></div>
+  </header>
+
+  <section class="tk-sec" id="live">
+    <h2 data-n="01">Live</h2>
+    <p class="tk-note">Cut out of <a href="../ui-visual/event-feed-crypto-empty.html">event-feed-crypto-empty.html</a> byte for byte, with
+    the ancestor chain it has there, and painted by <code>components/index.css</code> alone. Every
+    string is the shipped microcopy, because none of it was retyped. The rail is the point of this pattern and the base category pages do not show it: on those nine the markup ships <code>&lt;nav class="subcat" hidden&gt;</code> and a page script fills it. Twenty four screens carry it filled and visible, and every one of them is a STATE screen, so the scene is cut from one. Nothing here is set or unset by the generator: this is that screen's markup.</p>
+    <p class="tk-note"><b>This is the only place the pattern exists outside the product.</b> A
+    component has a specimen as well as a stand; a pattern has neither, because step 3 took patterns
+    out of gate 24's corpus deliberately: that gate compares what a component contains against what
+    it contains on the screens, and a pattern contains whatever the screen puts in it. So this frame
+    is not an illustration of the pattern, it is the test of it.</p>
+    <figure class="ck-scene" id="sc-browse-shell-360"><figcaption class="ck-scene-lbl"><b>Browse shell</b><span class="ck-w">360px</span><span class="ck-zoom" hidden></span><a href="patterns/browse-shell.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:360px"><iframe data-specimen="browse-shell-360" src="patterns/browse-shell.html" width="360" height="420" loading="lazy" title="Browse shell at 360px"></iframe></div></figure>
+<figure class="ck-scene" id="sc-browse-shell-1040"><figcaption class="ck-scene-lbl"><b>Browse shell</b><span class="ck-w">1040px</span><span class="ck-zoom" hidden></span><a href="patterns/browse-shell.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:1040px"><iframe data-specimen="browse-shell-1040" src="patterns/browse-shell.html" width="1040" height="420" loading="lazy" title="Browse shell at 1040px"></iframe></div></figure>
+  </section>
+
+  <section class="tk-sec" id="anatomy">
+    <h2 data-n="02">Anatomy</h2>
+    <p class="tk-note">What each part is and whose it is. A part that belongs to a component links
+    to that component's page, because the answer to "how does this look" is there and not here: this
+    file decides placement and nothing else.</p>
+    <table class="tk-tbl ck-anat"><thead><tr><th>part</th><th>whose it is</th><th>what it does here</th></tr></thead><tbody><tr><td class='tk-role'>.cat-layout</td><td class='tk-hex'><span class="ck-kind ck-kit">this pattern</span></td><td>The shell. Column at 360, row at 900 and up, and the gap changes with the direction because the distance between two columns is not the distance between two stacked blocks.</td></tr><tr><td class='tk-role'>.subcat</td><td class='tk-hex'><a href="catnav.html">catnav</a></td><td>The rail. Its own component: this pattern decides that it stands here, not what it looks like.</td></tr><tr><td class='tk-role'>.cat-main</td><td class='tk-hex'><span class="ck-kind ck-kit">this pattern</span></td><td>The content column. <code>flex:1;min-width:0</code>, and the min-width is what stops a long word inside a card from pushing the rail off screen.</td></tr></tbody></table>
+    <p class="tk-note"><b>Everything inside, read from the markup:</b> catnav (.subcat-head), filters (.filter-menu), state-block (.state-block), button (.state-btn). The class in
+    brackets is what put each component in the list, through the same ownership map that computes
+    the level and orders the cascade. A name here that surprises you is worth following: a class
+    declared in the wrong file makes a pattern read as holding a component it has never seen.</p>
+  </section>
+
+  <section class="tk-sec" id="variants">
+    <h2 data-n="03">Variants</h2>
+    <div class="ck-var"><code>.cat-layout:not(:has(.subcat))</code><p>No rail, so nothing to align to: the column takes the full height instead of hanging at the top of a row it is the only member of. Specificity 0,3,0 against 0,1,0, so this is decided by the selector and not by the order of the files.</p></div>
+  </section>
+
+  <section class="tk-sec" id="use">
+    <h2 data-n="04">When to use it</h2>
+    <ul class="ck-when"><li>The screen browses a set: a category, a list of bets, a wallet ledger, a profile.</li><li>There is a second, narrower axis of navigation that belongs BESIDE the content rather than above it.</li><li>Fourteen different sets of content stand in the column across the 76 screens, which is the argument for a pattern rather than a component: the arrangement is stable and what it holds is not.</li></ul>
+    <h3 class="tk-subh">The rule</h3>
+    <p class="ck-rule">The rail goes first in the markup and the column second, at every width. The stacked order under 900px is the source order, so a rail written after the column would land under it on a phone and beside it on a desktop.</p>
+    <h3 class="tk-subh">The anti-rule</h3>
+    <p class="ck-antirule">Do not put the page's own surface on it. The two-stone plate under this shell is in <code>components/base.css</code> with the rest of the frame, because it is what the PAGE is made of and not what this arrangement is. A pattern that carries a background is a component with the label filed off.</p>
+  </section>
+
+  <section class="tk-sec" id="screens">
+    <h2 data-n="05">Where it stands</h2>
+    <p class="tk-note">The existence proof. A composition is a pattern here because it stands on three or more screens, so this list is not a footnote: it is the reason the file exists. Counted from the markup of all 104 painted screens, not from a list.</p><div class="ck-screens"><a href="../ui-visual/404.html">404</a><a href="../ui-visual/500.html">500</a><a href="../ui-visual/active-bets-empty-new.html">active-bets-empty-new</a><a href="../ui-visual/active-bets-empty-resolved.html">active-bets-empty-resolved</a><a href="../ui-visual/active-bets-error.html">active-bets-error</a><a href="../ui-visual/active-bets-history-empty.html">active-bets-history-empty</a><a href="../ui-visual/active-bets-history-error.html">active-bets-history-error</a><a href="../ui-visual/active-bets-history-loading.html">active-bets-history-loading</a><a href="../ui-visual/active-bets-history.html">active-bets-history</a><a href="../ui-visual/active-bets-loading.html">active-bets-loading</a><a href="../ui-visual/active-bets.html">active-bets</a><a href="../ui-visual/cookie-consent.html">cookie-consent</a><a href="../ui-visual/event-detail-error.html">event-detail-error</a><a href="../ui-visual/event-detail-logged-out-error.html">event-detail-logged-out-error</a><a href="../ui-visual/event-feed-crypto-empty.html">event-feed-crypto-empty</a><a href="../ui-visual/event-feed-crypto-error.html">event-feed-crypto-error</a><a href="../ui-visual/event-feed-crypto-loading.html">event-feed-crypto-loading</a><a href="../ui-visual/event-feed-crypto-logged-out-empty.html">event-feed-crypto-logged-out-empty</a><a href="../ui-visual/event-feed-crypto-logged-out-error.html">event-feed-crypto-logged-out-error</a><a href="../ui-visual/event-feed-crypto-logged-out-loading.html">event-feed-crypto-logged-out-loading</a><a href="../ui-visual/event-feed-crypto-logged-out.html">event-feed-crypto-logged-out</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture-empty.html">event-feed-culture-empty</a><a href="../ui-visual/event-feed-culture-error.html">event-feed-culture-error</a><a href="../ui-visual/event-feed-culture-loading.html">event-feed-culture-loading</a><a href="../ui-visual/event-feed-culture-logged-out-empty.html">event-feed-culture-logged-out-empty</a><a href="../ui-visual/event-feed-culture-logged-out-error.html">event-feed-culture-logged-out-error</a><a href="../ui-visual/event-feed-culture-logged-out-loading.html">event-feed-culture-logged-out-loading</a><a href="../ui-visual/event-feed-culture-logged-out.html">event-feed-culture-logged-out</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-empty.html">event-feed-empty</a><a href="../ui-visual/event-feed-error.html">event-feed-error</a><a href="../ui-visual/event-feed-general-empty.html">event-feed-general-empty</a><a href="../ui-visual/event-feed-general-error.html">event-feed-general-error</a><a href="../ui-visual/event-feed-general-loading.html">event-feed-general-loading</a><a href="../ui-visual/event-feed-general-logged-out-empty.html">event-feed-general-logged-out-empty</a><a href="../ui-visual/event-feed-general-logged-out-error.html">event-feed-general-logged-out-error</a><a href="../ui-visual/event-feed-general-logged-out-loading.html">event-feed-general-logged-out-loading</a><a href="../ui-visual/event-feed-general-logged-out.html">event-feed-general-logged-out</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-empty.html">event-feed-logged-out-empty</a><a href="../ui-visual/event-feed-logged-out-error.html">event-feed-logged-out-error</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics-empty.html">event-feed-politics-empty</a><a href="../ui-visual/event-feed-politics-error.html">event-feed-politics-error</a><a href="../ui-visual/event-feed-politics-loading.html">event-feed-politics-loading</a><a href="../ui-visual/event-feed-politics-logged-out-empty.html">event-feed-politics-logged-out-empty</a><a href="../ui-visual/event-feed-politics-logged-out-error.html">event-feed-politics-logged-out-error</a><a href="../ui-visual/event-feed-politics-logged-out-loading.html">event-feed-politics-logged-out-loading</a><a href="../ui-visual/event-feed-politics-logged-out.html">event-feed-politics-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-empty.html">favorites-empty</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/maintenance.html">maintenance</a><a href="../ui-visual/my-profile-error.html">my-profile-error</a><a href="../ui-visual/my-profile-loading.html">my-profile-loading</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/notifications-empty.html">notifications-empty</a><a href="../ui-visual/notifications-error.html">notifications-error</a><a href="../ui-visual/notifications-loading.html">notifications-loading</a><a href="../ui-visual/notifications-push.html">notifications-push</a><a href="../ui-visual/notifications.html">notifications</a><a href="../ui-visual/public-profile-error.html">public-profile-error</a><a href="../ui-visual/public-profile-loading.html">public-profile-loading</a><a href="../ui-visual/public-profile-not-found.html">public-profile-not-found</a><a href="../ui-visual/public-profile.html">public-profile</a><a href="../ui-visual/toasts.html">toasts</a><a href="../ui-visual/wallet-error.html">wallet-error</a><a href="../ui-visual/wallet-loading.html">wallet-loading</a><a href="../ui-visual/wallet.html">wallet</a></div>
+  </section>
+
+  <section class="tk-sec" id="markup">
+    <h2 data-n="06">The markup</h2>
+    <p class="tk-note">The scene above, to a depth of 2, with everything below it replaced by
+    a comment naming what was elided. Copy the shape; the content is the screen's.</p>
+    <details class="ck-src" open><summary>the shape, from event-feed-crypto-empty.html</summary><pre>&lt;div class="cat-layout"&gt;
+  &lt;nav class="subcat" aria-label="Crypto sub-categories"&gt;
+    &lt;p class="subcat-head"&gt;Sub-categories&lt;/p&gt;&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;!-- 10 x &lt;li&gt; --&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+  &lt;div class="cat-main"&gt;
+    &lt;div class="feed-head"&gt;
+      &lt;!-- &lt;h1&gt;, .feed-controls --&gt;
+    &lt;/div&gt;
+    &lt;div class="state-block"&gt;
+      &lt;!-- .ic, .state-title, .state-msg, .state-actions --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></details>
+  </section>
+
+  <section class="tk-sec" id="css">
+    <h2 data-n="07">The file</h2>
+    <p class="tk-note">A pattern loads LAST in <code>components/index.css</code>, after every
+    component, because it has to be able to place what it holds. It carries no colour at all, and
+    gate 23 fails the build if one appears.</p>
+    <details class="ck-src"><summary>components/patterns/browse-shell.css</summary><pre>/* components/patterns/browse-shell.css
+   Pattern: the browse shell. A sub-category rail beside a content column.
+
+   Assembled from: catnav (the .subcat rail), feed, state-block, loadmore, tabs.
+   It owns none of them and paints none of them; it says where they stand.
+   Stands on: 76 ui-visual screens (event-feed x41, active-bets x9,
+     notifications x5, public-profile x4, my-profile x3, wallet x3, favorites x3,
+     event-detail x2, maintenance, how-it-works). Fourteen different sets of
+     content across those 76, which is the argument for a pattern rather than a
+     component: the arrangement is stable and what it holds is not.
+   Moved here from: components/catnav.css, five rules, cut and not copied.
+     .cat-layout and .cat-main were catnav's only because catnav was the first
+     file that needed them; nothing in either rule is about a category.
+   The SURFACE those two stand on did not come with them. The two-stone plate is
+     the page's material, not this arrangement's, and it is in base.css with the
+     rest of the frame.
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.cat-layout{display:flex;flex-direction:column;gap:var(--space-12)}
+.cat-main{flex:1;min-width:0}
+@media(min-width:900px){
+  .cat-layout{flex-direction:row;align-items:flex-start}
+}
+/* The gap belongs to the wide arrangement, and it is written apart from the
+   direction above because at 900px the rail arrives and the distance between
+   two columns is not the distance between two stacked blocks. */
+@media(min-width:900px){
+  .cat-layout{gap:var(--space-20)}
+}
+/* WITH NO RAIL THERE IS NOTHING TO ALIGN TO, so the column takes the full height
+   instead of hanging at the top of a row it is the only member of. 0,3,0 against
+   the 0,1,0 above, so specificity decides this and not the order of the files. */
+.app-case .cat-layout:not(:has(.subcat)){align-items:stretch}
+</pre></details>
+  </section>
+</main>
+
+<script src="_frames.js"></script>
+<script src="_nav.js"></script>
+</body>
+</html>
