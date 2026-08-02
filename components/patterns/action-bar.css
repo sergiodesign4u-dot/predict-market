@@ -1,0 +1,26 @@
+/* components/patterns/action-bar.css
+   Pattern: the action bar. One or two actions held at the foot of a column,
+   sticky by default and flat where the page has no scroll to hold them against.
+
+   Assembled from: button.
+   Stands on: 3 ui-visual screens (my-profile, wallet, how-it-works). Three is
+     the threshold and this clears it exactly, which is worth saying out loud
+     rather than rounding up: it is a pattern by one screen.
+   Moved here from: components/account.css, five rules and half of a sixth, cut
+     and not copied.
+   THE HALF, AND THE EXCEPTION IT MAKES. The bar's own surface stays in
+     account.css: a stone, a hairline along the top edge and two rounded top
+     corners. That is NOT the page plate, so it does not follow .feed-inner into
+     base.css, and it is not composition, so it does not come here. It is the
+     paint of a component, and this is the one place in this step where the rule
+     "composition out, plate to the frame" needed an exception rather than being
+     forced. The same split runs through .flat: the position is here and the
+     three declarations that take the surface away are there.
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.cta-bar{display:flex}
+.app-case .cta-bar{position:sticky;bottom:0;padding:var(--space-12);gap:var(--space-8);margin-top:var(--space-12);z-index:var(--z-dock)}
+.app-case .cta-bar>a{flex:1}
+.app-case .cta-bar>a>button{width:100%}
+.app-case .cta-bar.static{position:static}
+.app-case .cta-bar.flat{position:static;padding:var(--space-8) 0 0}

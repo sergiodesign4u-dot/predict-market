@@ -72,7 +72,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 | Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Two-stone plate / surface system (`.cat-layout`, `.feed-inner` inset plates, notched brass frames, groove edges, trust-column watermark `card::after`) | `catnav.css`, `feed.css`, `card.css` | [catnav](../catnav.html), [feed](../feed.html), [card](../card.html) | L3 | every color page (the substrate) | - | - | UV | art | + |
+| Two-stone plate / surface system (`.cat-layout`, `.feed-inner` inset plates, notched brass frames, groove edges, trust-column watermark `card::after`) | `card.css` | [card](../card.html) | L3 | every color page (the substrate) | - | - | UV | art | + |
 | Event card, binary (treatment B) | `card.css` | [card](../card.html) | L3 | feed, category, favorites, event-feed-push | rest / hover | 36 | WF | event | + |
 | Event card, multi (treatment D) | `card.css` | [card](../card.html) | L3 | feed, category, event-detail, favorites | rest; 2 leading options | 20 | WF | event | + |
 | Odds bar (thin, green YES on red track) | `oddsbar.css` | [oddsbar](../oddsbar.html) | L1 | feed / category / detail cards | injected from prob | - | UV | - | + |
@@ -93,7 +93,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 | Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Two-plate layout (`.ed-layout`: content + sticky bet panel) | `event-detail.css` | [event-detail](../event-detail.html) | L3 | event-detail, event-detail-bet | binary / multi | 10 | WF | - | + |
+| Two-plate layout (`.ed-layout`: content + sticky bet panel) | - | - | - | event-detail, event-detail-bet | binary / multi | 10 | WF | - | + |
 | Event head (`.ed-head`: thumb, category, question, big prob, thin `.ed-oddsbar`, actions) | `event-detail.css`, `oddsbar.css` | [event-detail](../event-detail.html), [oddsbar](../oddsbar.html) | L3 | event-detail (+ bet variants) | binary / multi | 11 | WF | event | + |
 | Bet panel (`.bet-panel`: `.bp-dir` filled-selected side, amount, quick chips, payout line, Confirm) | `betpanel.css` | [betpanel](../betpanel.html) | L3 | event-detail (+ bet variants) | intent / insufficient / reconcile / processing / error / resolved | 10-36 | WF | - | + |
 | Bet dock (mobile sticky, `.bet-dock`) | `betpanel.css` | [betpanel](../betpanel.html) | L3 | event-detail | collapsed -> expand to confirm | 8 | WF | - | + |
@@ -138,7 +138,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | State block (`.state-block`: icon + title + message + action) | `state-block.css` | [state-block](../state-block.html) | L3 | feed, category, detail, active-bets, notifications, wallet, profile, 404, 500, maintenance | empty / error | 38 | WF | - | + |
 | Skeleton cards / lines (`.card.skeleton` / `.pos.skeleton` shimmer) | `card.css`, `position.css` | [card](../card.html), [position](../position.html) | L3 | feed, category, detail, active-bets, notifications, wallet, profile | loading | 19 | WF/UV | - | ~ |
-| Empty list (`.pos-list` empty variant) | `position.css` | [position](../position.html) | L3 | active-bets, favorites, notifications | empty | 3 | WF | - | + |
+| Empty list (`.pos-list` empty variant) | - | - | - | active-bets, favorites, notifications | empty | 3 | WF | - | + |
 | Push-permission banner (`.push-banner`) | `notice.css` | [notice](../notice.html) | L3 | event-feed-push, notifications-push | in-app banner | 2 | WF | - | + |
 | Toast (`.toast`: message + close, stacked) | `toast.css` | [toast](../toast.html) | L2 | toasts (spec page) | info / success (brass tick) / error (neutralized, no red) / undo | 4 | WF/UV | - | + |
 | Win overlay (`dialog.outcome-dialog.win-dialog` + auto Share Card + F5 friction) | `dialog.css` | [dialog](../dialog.html) | L3 | win family | win / loading / payout-pending / error | 4 | WF/UV | art | + |

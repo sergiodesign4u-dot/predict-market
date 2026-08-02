@@ -1,0 +1,26 @@
+/* components/patterns/card-grid.css
+   Pattern: the card grid. A fluid track of event cards, one column to four.
+
+   Assembled from: card. One brick, many of it, which is still a composition:
+     what the pattern decides is the track, and the card decides nothing about
+     where it stands.
+   Stands on: 23 ui-visual screens, exactly the ones that list events
+     (event-feed x21 across the four categories and their states, favorites x2).
+     Counted from the markup and not by grep: `grid` also matches .grid-l, the
+     chart's grid line, on 9 more screens, and .hf-grid on one. Those are not
+     this. 23 elements on 23 screens, one grid per screen.
+   Moved here from: components/feed.css, three rules, cut and not copied.
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.grid{display:grid}
+/* WHAT THE !important WAS ARGUING WITH. Four rules used to sit beside this one:
+   three breakpoints stepping the grid 2 - 3 - 4 columns, and a category variant
+   at auto-fill 240px. All four were already dead. The three breakpoints lose to
+   the auto-fit rule below on source order alone, and the category variant was
+   outranked only by the !important that rule carried. So the shipped grid has
+   always been the one rule, and the shout was holding a cascade nobody had
+   cleaned up. Deleting the four is what made the !important removable without
+   moving a card: a fluid auto-fit track needs no breakpoints, which is also why
+   this pattern has no media query of its own. */
+.grid{align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.grid{gap:var(--space-16)}

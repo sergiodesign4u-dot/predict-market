@@ -80,3 +80,15 @@
 @import url("bets-table.css");
 @import url("tabs.css");
 @import url("chart.css");
+
+/* ---- patterns: stable compositions of the components above ----
+   They load LAST because that is what "assembled from" means in a cascade:
+   a pattern has to be able to place what it holds, and a rule that places
+   something has to be read after the rule that draws it. FIRST pins the head
+   of this file for the mirror reason, and _levels.py computes both ends. */
+@import url("patterns/action-bar.css");
+@import url("patterns/browse-shell.css");
+@import url("patterns/card-grid.css");
+@import url("patterns/detail-shell.css");
+@import url("patterns/list-head.css");
+@import url("patterns/position-list.css");

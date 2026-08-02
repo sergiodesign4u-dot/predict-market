@@ -1,14 +1,18 @@
 /* components/account.css
 
-   Component: account. Classes: .cta-bar, .flat, .static.
+   Component: account. Classes: .cta-bar, .flat.
 
    Reads: --bg-card-quiet, --bg-control, --bg-control-hover, --bg-pressed, --border-hairline, --color-action, --color-action-lit, --line-brass-soft, --text-on-brass, --text-primary
    Stand:  ui-kit/account.html
    Stands on: 3 ui-visual screens (how-it-works.html, my-profile.html, wallet.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.cta-bar{display:flex}
-.app-case .cta-bar{position:sticky;bottom:0;background:var(--bg-card-quiet);border:0;border-top:1px solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0;padding:var(--space-12);gap:var(--space-8);margin-top:var(--space-12);z-index:var(--z-dock)}
+/* THE BAR'S OWN SURFACE, and it is the one exception this step declared. The
+   arrangement is in components/patterns/action-bar.css; a stone, a hairline
+   along the top edge and two rounded top corners are not composition, and
+   they are not the page plate either, so they stay with the component that
+   draws them. */
+.app-case .cta-bar{background:var(--bg-card-quiet);border:0;border-top:1px solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0}
 .app-case .cta-bar button{flex:1;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-12);min-height:var(--control-44);cursor:pointer}
 .app-case .cta-bar button:hover{border-color:var(--line-brass-soft);background:var(--bg-control-hover)}
 .app-case .cta-bar>button:first-child,.app-case .cta-bar>a:first-child button{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);font-weight:var(--weight-bold);transition:box-shadow var(--dur-quick) ease}
@@ -27,7 +31,4 @@
    shadow at rest, so there is nothing else to flatten. */
 .app-case .cta-bar button:active{background:var(--bg-pressed)}
 .app-case .cta-bar>button:first-child:active,.app-case .cta-bar>a:first-child button:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
-.app-case .cta-bar>a{flex:1}
-.app-case .cta-bar>a>button{width:100%}
-.app-case .cta-bar.static{position:static}
-.app-case .cta-bar.flat{position:static;border:0;background:none;border-radius:0;padding:var(--space-8) 0 0}
+.app-case .cta-bar.flat{border:0;background:none;border-radius:0}

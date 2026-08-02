@@ -1,7 +1,7 @@
 /* components/base.css
    the page frame itself: reset, body type, the device shell and the shared utility classes.
 
-   Reads: --bg-page, --bg-slab, --bg-slab-from, --bg-slab-to, --edge-groove-dark, --edge-groove-light, --focus-ring, --surface-grain-coarse, --text-icon, --text-primary
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-page, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-slab, --bg-slab-from, --bg-slab-to, --edge-groove-dark, --edge-groove-light, --focus-ring, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grain-coarse, --text-icon, --text-primary
    Stand:  ui-kit/base.html
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
@@ -83,6 +83,52 @@ body.app-case{background:var(--bg-page)}
    an annotation about what is not built yet belongs in wireframes/, which owns it. */
 .tbd,.placeholder-line{display:none}
 .groove-sep{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+
+/* ============================================================================
+   THE PAGE FRAME, which arrived here in the patterns step and is not a pattern.
+
+   .feed-inner stands on 104 screens of 104. A pattern is a CHOICE made on some
+   screens and not others; a thing every screen is is the frame, and the frame is
+   this file. Extracting it to patterns/ would have produced a file whose answer
+   to "which screens use it" is "all of them", which is another way of saying the
+   question does not apply.
+
+   The two-stone plate came with it for the same reason, out of catnav.css and
+   event-detail.css. It only ever applied under .feed-inner, so it was never the
+   category strip's own skin or the detail column's: it is the surface a page
+   stands on, and it was living in two component files because those were the two
+   files that first needed a page to stand on. A pattern may carry no colour, so
+   the arrangement went to patterns/ and the material came here, and the pair now
+   sits at one address instead of two.
+   ============================================================================ */
+.feed-inner{max-width:var(--container-max);margin:0 auto;padding:var(--space-16) var(--space-20)}
+/* THE INSET IS PADDING, NOT A MARGIN. Turning margin:var(--gutter) into
+   margin:var(--gutter) auto to centre this band spent the horizontal gutter
+   on the centring, so under 1400 the plate sat against the window edge. A
+   container holds its inset at EVERY width; above the cap the auto margin
+   centres and the padding keeps the same edge the header row has had all
+   along. */
+.app-case .feed .feed-inner{max-width:var(--container-max);margin:var(--gutter) auto;margin-top:var(--space-12);padding:0 var(--gutter);box-sizing:border-box;background:none;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;gap:var(--space-16)}
+@media(max-width:640px){
+  .app-case .feed .feed-inner{margin-top:var(--space-16);padding:0 var(--gutter)}
+}
+/* The two-stone plate: one declaration, three places it lands. The category
+   strip and the browse shell take the plate-to-plate gradient, the detail column
+   takes the plate-to-page one, which is the only difference between them and the
+   reason they are two rules rather than one. */
+.app-case .feed-inner>.cat-nav,.app-case .feed-inner>.cat-layout{background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-plate-to));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
+    inset 1px 0 0 var(--bevel-faint),
+    inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
+    0 30px 58px -34px var(--shadow-ink-85),0 12px 26px -18px var(--shadow-ink-72)}
+.app-case .feed-inner>.cat-nav{padding:var(--space-12) var(--space-16)}
+.app-case .feed-inner>.cat-layout{padding:var(--space-24) var(--space-28) var(--space-28)}
+.app-case .ed-main{position:relative;overflow:clip;background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
+    inset 1px 0 0 var(--bevel-faint),
+    inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
+    0 30px 58px -34px var(--shadow-ink-85),0 12px 26px -18px var(--shadow-ink-72);border-right:0}
+/* The head's bottom edge is the plate's business, not the head's, so the rule
+   that takes it away came here with the plate rather than to patterns/. */
+.feed-head{border-bottom:0}
 
 /* Reduced motion, declared once for the whole system. Three components carried their own block and
    twenty did not, which is the wrong shape for a promise that has to hold everywhere: a person who

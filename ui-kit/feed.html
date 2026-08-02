@@ -49,8 +49,8 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/feed.css</span>
-      <span class="tk-badge">16 rules</span>
-      <span class="tk-badge">8 classes</span>
+      <span class="tk-badge">4 rules</span>
+      <span class="tk-badge">5 classes</span>
       <span class="tk-badge">104 screens</span>
     </div>
   </header>
@@ -85,7 +85,7 @@ push();});})();</script>
     shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
     used by nothing. Only the last kind is a deletion candidate, and they are collected in
     <a href="coverage.html">coverage</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.chart-svg</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.feed</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.feed-controls</td><td class='tk-hex'>44</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.feed-head</td><td class='tk-hex'>70</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.feed-inner</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.grid</td><td class='tk-hex'>23</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.grid-l</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.chart-svg</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.feed</td><td class='tk-hex'>104</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.feed-head</td><td class='tk-hex'>70</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.grid-l</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
@@ -106,33 +106,8 @@ push();});})();</script>
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .feed{margin:0;flex:1}
-.feed-head{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-8) var(--space-16);justify-content:space-between;margin-bottom:var(--space-8)}
-.feed-head :is(h1,h2){margin:0}
-.feed-controls{display:flex;flex-wrap:wrap;gap:var(--space-8)}
-.grid{display:grid}
-/* WHAT THE !important WAS ARGUING WITH. Four rules used to sit here: three breakpoints stepping the
-   grid 2 - 3 - 4 columns, and a category variant at auto-fill 240px. All four were already dead. The
-   three breakpoints lose to the auto-fit rule below on source order alone, and the category variant
-   was outranked only by the !important that rule carried. So the shipped grid has always been the
-   one rule, and the shout was holding a cascade nobody had cleaned up. Deleting the four is what
-   made the !important removable without moving a card: a fluid auto-fit track needs no breakpoints. */
-.feed-inner{max-width:var(--container-max);margin:0 auto;padding:var(--space-16) var(--space-20)}
-.feed-head{border-bottom:0;padding-bottom:0}
 .feed-head :is(h1,h2){font-family:var(--font-display);font-size:var(--display-feed);font-weight:var(--weight-bold);letter-spacing:-.03em;line-height:var(--leading-flat);color:var(--text-primary);text-wrap:balance}
-.grid{align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
 .app-case .feed{background:transparent;padding:0}
-/* THE INSET IS PADDING, NOT A MARGIN. Turning margin:var(--gutter) into
-   margin:var(--gutter) auto to centre this band spent the horizontal gutter
-   on the centring, so under 1400 the plate sat against the window edge. A
-   container holds its inset at EVERY width; above the cap the auto margin
-   centres and the padding keeps the same edge the header row has had all
-   along. */
-.app-case .feed .feed-inner{max-width:var(--container-max);margin:var(--gutter) auto;margin-top:var(--space-12);padding:0 var(--gutter);box-sizing:border-box;background:none;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;gap:var(--space-16)}
-.grid{gap:var(--space-16)}
-.feed-head :is(h1,h2){margin-bottom:0}
-@media(max-width:640px){
-  .app-case .feed .feed-inner{margin-top:var(--space-16);padding:0 var(--gutter)}
-}
 .app-case .chart-svg .grid-l{stroke:var(--line-grid);stroke-width:1}
 </pre></details>
   </section>

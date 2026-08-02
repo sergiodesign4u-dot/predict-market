@@ -14,21 +14,21 @@ says so. No em dash.
 
 | component | own | specimens | inside | classes | screens |
 |---|---|---|---|---|---|
-| account | 1 | account-cta | 1 | 3 | 3 |
-| base | 2 | base-frame, base-groove | 0 | 8 | 104 |
+| account | 1 | account-cta | 1 | 2 | 3 |
+| base | 2 | base-frame, base-groove | 0 | 12 | 104 |
 | betpanel | 4 | betpanel-states, betpanel-dock, betpanel-sheet, betpanel-more | 2 | 19 | 11 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 13 | 9 |
 | bottomnav | 1 | bottomnav | 0 | 2 | 104 |
 | button | 3 | button-primary, button-secondary, button-outcome-row | 0 | 13 | 104 |
 | card | 4 | card-binary, card-multi, card-loading, card-detail-head | 2 | 14 | 36 |
-| catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 8 | 104 |
+| catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 6 | 104 |
 | chart | 1 | chart | 1 | 11 | 11 |
 | comments | 1 | comments-thread | 1 | 15 | 9 |
 | cookie-consent | 1 | cookie-consent | 0 | 17 | 2 |
 | course-chrome | 3 | course-chrome, course-chrome-system, course-chrome-roadmap | 0 | 25 | 104 |
 | dialog | 2 | dialog-shared, signin | 1 | 9 | 104 |
-| event-detail | 2 | event-detail, facts-strip | 1 | 16 | 11 |
-| feed | 1 | feed-grid | 1 | 6 | 104 |
+| event-detail | 2 | event-detail, facts-strip | 1 | 14 | 11 |
+| feed | 1 | feed-grid | 1 | 2 | 104 |
 | filters | 2 | filters-sort, filters-toggle | 2 | 4 | 104 |
 | footer | 1 | footer | 0 | 15 | 104 |
 | header | 2 | header-in, header-out | 1 | 22 | 104 |
@@ -40,7 +40,7 @@ says so. No em dash.
 | notice | 2 | notice-push, notice-reconcile | 1 | 8 | 104 |
 | oddsbar | 1 | oddsbar | 2 | 7 | 104 |
 | options | 2 | options-rows, options-multi | 2 | 6 | 25 |
-| position | 2 | position-list, position-loading | 1 | 14 | 36 |
+| position | 2 | position-list, position-loading | 1 | 13 | 36 |
 | profile | 1 | profile-identity | 0 | 8 | 7 |
 | related | 1 | related | 0 | 6 | 9 |
 | seo-plate | 1 | seo-plate | 0 | 8 | 10 |

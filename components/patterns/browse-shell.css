@@ -1,0 +1,33 @@
+/* components/patterns/browse-shell.css
+   Pattern: the browse shell. A sub-category rail beside a content column.
+
+   Assembled from: catnav (the .subcat rail), feed, state-block, loadmore, tabs.
+   It owns none of them and paints none of them; it says where they stand.
+   Stands on: 76 ui-visual screens (event-feed x41, active-bets x9,
+     notifications x5, public-profile x4, my-profile x3, wallet x3, favorites x3,
+     event-detail x2, maintenance, how-it-works). Fourteen different sets of
+     content across those 76, which is the argument for a pattern rather than a
+     component: the arrangement is stable and what it holds is not.
+   Moved here from: components/catnav.css, five rules, cut and not copied.
+     .cat-layout and .cat-main were catnav's only because catnav was the first
+     file that needed them; nothing in either rule is about a category.
+   The SURFACE those two stand on did not come with them. The two-stone plate is
+     the page's material, not this arrangement's, and it is in base.css with the
+     rest of the frame.
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.cat-layout{display:flex;flex-direction:column;gap:var(--space-12)}
+.cat-main{flex:1;min-width:0}
+@media(min-width:900px){
+  .cat-layout{flex-direction:row;align-items:flex-start}
+}
+/* The gap belongs to the wide arrangement, and it is written apart from the
+   direction above because at 900px the rail arrives and the distance between
+   two columns is not the distance between two stacked blocks. */
+@media(min-width:900px){
+  .cat-layout{gap:var(--space-20)}
+}
+/* WITH NO RAIL THERE IS NOTHING TO ALIGN TO, so the column takes the full height
+   instead of hanging at the top of a row it is the only member of. 0,3,0 against
+   the 0,1,0 above, so specificity decides this and not the order of the files. */
+.app-case .cat-layout:not(:has(.subcat)){align-items:stretch}

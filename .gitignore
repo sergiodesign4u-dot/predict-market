@@ -8,3 +8,8 @@ figmosha2/
 __pycache__/
 *.pyc
 .playwright-mcp/
+
+# The pixel-proof frames of the patterns step: 118 MB of full-page PNG that
+# prove a sentence ui-kit/screens/README.md already carries, and that regenerate
+# in ninety seconds. The manifest is kept, the images are not.
+ui-kit/screens/*.png

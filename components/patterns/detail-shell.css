@@ -1,0 +1,17 @@
+/* components/patterns/detail-shell.css
+   Pattern: the detail shell. A content column beside a sticky side panel.
+
+   Assembled from: card, chart, market, tabs, betpanel. It owns none of them.
+   Stands on: 11 ui-visual screens, every event-detail state (base, multi,
+     resolved, loading, error, logged-out, and the five bet states).
+   Moved here from: components/event-detail.css, three rules, cut and not copied.
+   What did NOT come with them: the plate .ed-main stands on, and the border-right
+     it drops. Those are the page's surface and they are in base.css. This file
+     answers where the two columns are, and nothing about what they look like.
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.app-case .ed-layout{display:flex;flex-direction:column;gap:var(--space-16);align-items:stretch}
+.app-case .ed-main{flex:1;min-width:0}
+@media(min-width:760px){
+  .app-case .ed-layout{flex-direction:row;align-items:flex-start}
+}

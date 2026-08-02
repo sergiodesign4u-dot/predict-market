@@ -1,0 +1,15 @@
+/* components/patterns/position-list.css
+   Pattern: the position list. A vertical stack of bet rows at one distance.
+
+   Assembled from: position, and in two of its cases skeleton (the loading rows)
+     and profile (the record block that stands in the same stack).
+   Stands on: 13 ui-visual screens (active-bets x4, notifications x3,
+     my-profile x2, wallet x2, public-profile x2). One list per screen.
+   Moved here from: components/position.css, two rules, cut and not copied.
+   The row itself is untouched. A .pos carries its own stone, its own edge and
+     its own ink; what this file decides is that the rows stack and how far
+     apart, which is the one thing a row cannot know about itself.
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.pos-list{display:flex;flex-direction:column}
+.app-case .pos-list{gap:var(--space-8)}

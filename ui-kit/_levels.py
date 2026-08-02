@@ -448,9 +448,23 @@ _PLATE = ("owns a page-level plate, so on a screen the whole page is its "
           "descendant. True, and useless. Closes when the plate leaves the "
           "component file, see item 16, not by widening this line")
 SPECIMEN_DEBT = {
-    ("catnav", "*"): "the .cat-layout and .cat-main content plate: " + _PLATE,
-    ("feed", "*"): "main.feed and .feed-inner, the screen itself: " + _PLATE,
-    ("event-detail", "*"): ".ed-layout and .ed-main, the detail page's plate: " + _PLATE,
+    # ("catnav", "*") was here and is PAID, 2026-08-03. .cat-layout and .cat-main
+    # went to components/patterns/browse-shell.css and their plate to base.css, so
+    # catnav owns no page-level anything and its stand shows the whole of it. This
+    # is what a debt looks like when it closes: the line is deleted, not widened.
+    ("feed", "*"): "main.feed, the screen's own <main>, so on a screen everything is "
+                   "its descendant. HALF PAID on 2026-08-03: .feed-inner and the "
+                   "plate left for base.css with the rest of the frame, and .grid, "
+                   ".feed-head and .feed-controls left for patterns/. What is left is "
+                   "the element itself, and that closes when main.feed is read as the "
+                   "page rather than as a component, not by moving another rule",
+    ("event-detail", "*"): ".ed-section, a content panel that holds a chart, a market "
+                           "box or a tab set, so the first one on a screen reads as "
+                           "containing them. HALF PAID on 2026-08-03: .ed-layout went "
+                           "to patterns/detail-shell.css and the .ed-main plate to "
+                           "base.css, which is the half this entry used to name. The "
+                           "rest is item 16d, the detail page being several things in "
+                           "one file",
     ("tabs", "*"): "the .ptab-panel is a content panel, so a profile tab holds a card "
                    "gallery and a position record. The switcher and the panel are one "
                    "file, item 16; closes when they are two",
