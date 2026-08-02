@@ -12,7 +12,7 @@
    consumers. Nothing here measures a product decision. It only knows how to ask
    correctly, and every rule below is a scar.
 
-   THE SIX THINGS IT KNOWS, and the case that taught each one:
+   THE SEVEN THINGS IT KNOWS, and the case that taught each one:
 
    1. A COLOUR IS PARSED BY A CANVAS, NEVER BY A REGEX.
       getComputedStyle returns what the AUTHOR wrote, and color-mix(in oklab, ...)
@@ -50,13 +50,22 @@
       once the transition ends. This one was learned twice, which is the whole
       argument for this file.
 
-   6. A CONSOLE ERROR IS ATTRIBUTED BY URL, NEVER BY ITS TEXT.
+   6. A COLOUR PAINTED THROUGH A BLEND OR A FILTER CANNOT BE READ FROM `color`.
+      mix-blend-mode and filter change the pixel AFTER the cascade, so
+      getComputedStyle reports a colour the screen never shows. The very first
+      full sweep of the vitrine reported 24 defects on the ramp labels of
+      tokens.html, which are mix-blend-mode:difference and are legible. Those
+      elements are returned marked `blended` and counted apart: a measurement
+      that cannot be taken is reported as not taken, never as a pass and never
+      as a failure.
+
+   7. A CONSOLE ERROR IS ATTRIBUTED BY URL, NEVER BY ITS TEXT.
       "Failed to load resource: 404" does not say which file, and page.url() at
       message time is whatever page the loop has reached. Step 4 spent a pass
       chasing a 404 on patterns.html that was /favicon.ico, which the browser
       asks for on its own and a dev server does not have.
 
-   None of the six is defensive coding. Each is a wrong answer this project has
+   None of the seven is defensive coding. Each is a wrong answer this project has
    already published, and anyone who removes one as excessive caution should read
    the line above it first.
 
@@ -126,6 +135,19 @@ window.__ask = (function () {
     }
     return false;
   }
+  /* 6. the pixel is decided after the cascade, so the computed colour is not
+        what the screen shows. Note the wording: no backtick, because this
+        comment lives inside the template literal that carries the probe and a
+        backtick here ends the string. */
+  function blended(el) {
+    for (var n = el; n; n = n.parentElement) {
+      var s = getComputedStyle(n);
+      if (s.mixBlendMode && s.mixBlendMode !== 'normal') return true;
+      if (s.filter && s.filter !== 'none') return true;
+      if (s.backdropFilter && s.backdropFilter !== 'none') return true;
+    }
+    return false;
+  }
   function paintsText(el) {
     for (var i = 0; i < el.childNodes.length; i++) {
       var n = el.childNodes[i];
@@ -155,7 +177,7 @@ window.__ask = (function () {
         var bg = ground(el, false);
         var fg = over(px(getComputedStyle(el).color), bg);
         out.push({ el: label(el), text: el.textContent.trim().slice(0, 40),
-                   ratio: +ratio(fg, bg).toFixed(2),
+                   ratio: +ratio(fg, bg).toFixed(2), blended: blended(el),
                    size: parseFloat(getComputedStyle(el).fontSize),
                    weight: getComputedStyle(el).fontWeight });
       }

@@ -40,8 +40,13 @@ function pages() {
   if (named.length) return named;
   const out = [];
   if (has('kit')) {
+    // kit.html and specimens.extra.html are SOURCES, not pages: the first is
+    // frozen provenance and the second is a bag of blocks the extractor cuts
+    // specimens out of, which renders as fragments with no .app-case around
+    // them. Auditing either measures a file nobody visits.
+    const SOURCE = new Set(['kit.html', 'specimens.extra.html']);
     for (const f of fs.readdirSync(path.join(ROOT, 'ui-kit')).sort()) {
-      if (f.endsWith('.html') && f !== 'kit.html') out.push('ui-kit/' + f);
+      if (f.endsWith('.html') && !SOURCE.has(f)) out.push('ui-kit/' + f);
     }
   }
   if (has('screens')) {
@@ -59,7 +64,7 @@ function pages() {
 (async () => {
   const targets = pages();
   const findings = [];
-  let measured = 0, tabs = 0;
+  let measured = 0, tabs = 0, blind = 0;
 
   for (const theme of THEMES) {
     for (const width of WIDTHS) {
@@ -68,8 +73,12 @@ function pages() {
         await s.go(`http://127.0.0.1:${PORT}/${rel}`, theme);
         const where = `${rel} ${theme}@${width}`;
 
-        const low = (await s.ask('contrast()')).filter(
-          (e) => e.ratio < B.floorFor(e.size, e.weight));
+        const all = await s.ask('contrast()');
+        // A blended or filtered element is UNMEASURABLE from `color`, not
+        // failing: the pixel is decided after the cascade. Counted apart so the
+        // number of things nobody measured is visible instead of implied.
+        blind += all.filter((e) => e.blended).length;
+        const low = all.filter((e) => !e.blended && e.ratio < B.floorFor(e.size, e.weight));
         measured += 1;
         for (const e of low.slice(0, 6)) {
           findings.push(`${where}: ${e.ratio}:1 on ${e.el} "${e.text}"`);
@@ -103,7 +112,8 @@ function pages() {
   await B.shutdown();
 
   const head = `${targets.length} page(s), ${THEMES.length} theme(s), ${WIDTHS.length} width(s)` +
-    ` = ${measured} render(s)` + (has('focus') ? `, ${tabs} tab stop(s)` : '');
+    ` = ${measured} render(s)` + (has('focus') ? `, ${tabs} tab stop(s)` : '') +
+    (blind ? `, ${blind} element(s) unmeasurable (blend or filter)` : '');
   if (has('json')) {
     console.log(JSON.stringify({ head, findings }, null, 1));
   } else {
