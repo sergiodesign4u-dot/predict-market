@@ -1251,12 +1251,16 @@ want = {}
 for r in rules:
     for c in r["components"]:
         want.setdefault(c, set()).add(r["id"])
+# Patterns are in this loop and NOT in gate 25's or gate 2's, and the difference
+# is the whole distinction: those two ask what a component IS, and a pattern is
+# not one. This asks whether a rule written about a thing reaches the page of
+# that thing, and a pattern has a page.
 unpaired = []
-for path in sorted(COMP.glob("*.css")):
-    name = path.stem
+for path in sorted(COMP.glob("*.css")) + sorted((COMP / "patterns").glob("*.css")):
+    name = path.stem if path.parent == COMP else "patterns/" + path.stem
     if name in ("index", "tokens", "fonts"):
         continue
-    page = KIT / (name + ".html")
+    page = KIT / (path.stem + ".html")
     if not page.exists():
         continue
     sec = RULE_SEC.search(page.read_text(encoding="utf-8"))

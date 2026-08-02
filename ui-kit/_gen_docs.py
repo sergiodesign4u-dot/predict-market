@@ -113,7 +113,12 @@ def usage_rules():
             "why": cells[0][m.end():].strip(),
             "cls": cells[1],
             "source": cells[2],
-            "components": re.findall(r"components/([\w-]+)\.css", cells[3]),
+            # A rule may name a pattern as well as a component. The first cut of this
+            # regex could not match components/patterns/<x>.css, because a slash is
+            # not in [\w-], so such a reference was DROPPED IN SILENCE and gate 26
+            # had nothing to pair. A reference the parser cannot see is worse than
+            # one it rejects.
+            "components": re.findall(r"components/((?:patterns/)?[\w-]+)\.css", cells[3]),
             "check": cells[4],
         })
     return out
