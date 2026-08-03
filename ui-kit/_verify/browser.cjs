@@ -12,7 +12,7 @@
    consumers. Nothing here measures a product decision. It only knows how to ask
    correctly, and every rule below is a scar.
 
-   THE NINE THINGS IT KNOWS, and the case that taught each one:
+   THE TWELVE THINGS IT KNOWS, and the case that taught each one:
 
    1. A COLOUR IS PARSED BY A CANVAS, NEVER BY A REGEX.
       getComputedStyle returns what the AUTHOR wrote, and color-mix(in oklab, ...)
@@ -95,9 +95,39 @@
       never failed, so a span that goes transparent by accident is still visible
       in the number rather than swallowed by it.
 
-   None of the ten is defensive coding. Each is a wrong answer this project has
-   already published, and anyone who removes one as excessive caution should read
-   the line above it first.
+  11. A HOVER IS A POINTER, AND NOTHING ELSE RAISES IT.
+      The sibling of 3, and it arrived the same way: a pass that merged the
+      button family had its whole intended change inside :hover, and snap.cjs
+      measures the rest state, so the diff that proves nothing moved is also
+      blind to the one thing that did. There is no class to add and no property
+      to set: :hover is the browser's answer to a real mouse position, so the
+      mouse is moved to the middle of the box and the value is read after the
+      transition the rule declares. Reading it any earlier reads the tween,
+      which is lesson 5 in a second place.
+
+  12. THE CODE THAT IMPLEMENTS LESSON 5 WAS MEASURING NOTHING, for two reasons
+      at once, and it had been since the day it was written. settleMs() returns
+      the longest transition the document declares, and it returned 0.
+      First: it read the declaration TEXT, and every transition in this system
+      is written with a token, so the scan matched no number anywhere.
+      Second, and worse: two of its three regexes reached the browser without
+      their backslashes. Everything below is a TEMPLATE LITERAL, and a lone
+      backslash-d in one is an escape sequence node swallows, so /^[\\d.]+m?s$/
+      arrived as /^[d.]+m?s$/ and matched nothing that could exist.
+      Third, found while fixing the first two: the walk recursed on
+      rule.cssRules, which only @media and @supports used to have. Chrome ships
+      CSS Nesting, so every style rule now carries an EMPTY list, an empty list
+      is truthy, and 1263 of 1285 rules were skipped before their declarations
+      were read.
+      Consequence: every theme switch in this repo has waited 120ms where the
+      document asks for 300, and every measurement taken after one was taken
+      while the colour was still moving. Nothing published was wrong by it,
+      because the values that were read had already arrived, but the guard was
+      not there. A checker with a broken instrument reports clean.
+
+   None of the twelve is defensive coding. Each is a wrong answer this project
+   has already published, and anyone who removes one as excessive caution should
+   read the line above it first.
 
    Usage from another script in this folder:
 
@@ -263,6 +293,40 @@ window.__ask = (function () {
                offset: cs.outlineOffset, ratio: +ratio(ring, bg).toFixed(2),
                visible: cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) > 0 };
     },
+    /* 11. the two halves of a hover measurement. paint() marks every visible
+       match with an index and hands back the box centre for the pointer and the
+       five values a control's rest state is made of; paintAt() reads the same
+       five back once the mouse is on it. Marking rather than re-querying,
+       because a selector that matched twelve elements before the pointer moved
+       has to mean the same twelve after. */
+    paint: function (sel) {
+      var out = [], all = document.querySelectorAll(sel);
+      for (var i = 0; i < all.length; i++) {
+        var el = all[i], b = el.getBoundingClientRect();
+        if (!b.width || !b.height || inert(el)) continue;
+        el.setAttribute('data-paint', String(i));
+        var cs = getComputedStyle(el);
+        var scope = ['dialog', '.bet-dock', '.bet-panel', '.bet-sheet', '.cta-bar',
+                     '.app-header', '.state-block'];
+        var where = 'plain';
+        for (var s = 0; s < scope.length; s++) {
+          var up = el.closest(scope[s]);
+          if (up) { where = scope[s] + (up.className ? '.' + String(up.className).split(' ')[1] || '' : ''); break; }
+        }
+        out.push({ i: i, el: label(el), scope: where,
+                   x: Math.round(b.left + b.width / 2), y: Math.round(b.top + b.height / 2),
+                   rest: [cs.backgroundColor, cs.backgroundImage.slice(0, 50), cs.borderTopColor,
+                          cs.borderTopWidth, cs.color].join(' | ') });
+      }
+      return out;
+    },
+    paintAt: function (i) {
+      var el = document.querySelector('[data-paint="' + i + '"]');
+      if (!el) return null;
+      var cs = getComputedStyle(el);
+      return [cs.backgroundColor, cs.backgroundImage.slice(0, 50), cs.borderTopColor,
+              cs.borderTopWidth, cs.color].join(' | ');
+    },
     deadIcons: function () {
       var out = [], u = document.querySelectorAll('use');
       for (var i = 0; i < u.length; i++) {
@@ -338,18 +402,57 @@ window.__ask = (function () {
         for (var i = 0; i < rules.length; i++) {
           var r = rules[i];
           if (r.styleSheet) { walk(r.styleSheet); continue; }   // @import
-          if (r.cssRules) { walk(r); continue; }                // @media, @supports
+          /* A STYLE RULE HAS cssRules TOO, and that is why this function
+             returned 0 for the whole of this project. The line here used to
+             recurse on cssRules alone and then continue, written when only
+             @media and @supports had children. Chrome ships CSS Nesting now, so every
+             CSSStyleRule carries an EMPTY CSSRuleList, an empty list is truthy,
+             and every ordinary rule took the grouping branch and was skipped
+             before its declarations were ever read. 46 stylesheets walked, 1285
+             rules with declarations, 22 of them reached.
+             Measured, not deduced: the hover pass read a border at
+             rgba(199,162,78,0.467) where the only value in the system is 0.45,
+             which is a tween, which is what a measurement is not allowed to
+             read. So the length is asked as well as the existence, and the
+             recursion no longer eats the rule it was meant to pass through. */
+          if (r.cssRules && r.cssRules.length) walk(r);         // @media, @supports, nesting
           if (!r.style) continue;
           ['transition-duration', 'transition-delay', 'animation-duration',
            'transition', 'animation'].forEach(function (p) {
             var v = r.style.getPropertyValue(p);
             if (!v) return;
+            /* THE BACKSLASHES ARE DOUBLED AND THEY HAVE TO BE. This whole probe
+               is a TEMPLATE LITERAL, so a single backslash-s written once is
+               parsed by node as an escape sequence, which it is not, and the
+               page receives the bare letter: this pattern arrived in the browser
+               as /^[d.]+m?s$/ and matched no duration ever written. Two of the
+               three regexes in this function were wrong that way from the day it
+               was written, which is the other half of why it returned 0. A regex
+               inside this string is code twice, and the first reader is node. */
             v.split(',').forEach(function (one) {
-              one.split(/\s+/).forEach(function (tok) {
-                if (/^[\d.]+m?s$/.test(tok)) { var n = num(tok); if (n > ms) ms = n; }
+              one.split(/\\s+/).forEach(function (tok) {
+                if (/^[\\d.]+m?s$/.test(tok)) { var n = num(tok); if (n > ms) ms = n; }
               });
             });
           });
+          /* A DURATION WRITTEN AS A TOKEN IS INVISIBLE TO A SCAN OF THE RULE.
+             The loop above reads the declaration TEXT, and every transition in
+             this system is written "transition:background var(--dur-quick)
+             ease", so the token is the token and never a number: the scan
+             matched nothing and this function returned the largest literal
+             anyone happened to leave behind. Found on 2026-08-03 by the hover
+             pass, which read border-colour at rgba(...,0.467) where the only
+             value in the system is 0.45 - the tween, which is exactly what
+             lesson 5 says a measurement must not read, taken by the code that
+             implements lesson 5. So the custom properties are read too, from
+             the same rules, and the longest duration the sheet declares under
+             ANY name is what a measurement waits for. */
+          for (var d = 0; d < r.style.length; d++) {
+            var prop = r.style[d];
+            if (prop.slice(0, 2) !== '--') continue;
+            var raw = r.style.getPropertyValue(prop).trim();
+            if (/^[\\d.]+m?s$/.test(raw)) { var t = num(raw); if (t > ms) ms = t; }
+          }
         }
       }
       for (var s = 0; s < document.styleSheets.length; s++) walk(document.styleSheets[s]);
@@ -421,6 +524,24 @@ async function open(opts) {
       for (let i = 0; i < (n || 1); i++) await page.keyboard.press('Tab');
       return page.evaluate('__ask.ring()');
     },
+    /* 11. and a real pointer, for the same reason. Takes the index paint() put
+       on the element rather than a coordinate, because A POINTER ONLY REACHES
+       WHAT IS IN THE WINDOW: the first cut moved the mouse to the box centre
+       paint() reported, which is viewport-relative, so every control below the
+       fold was pointed at from outside the window and reported its rest state
+       as its hover. Two buttons on how-it-works.html read that way and it looks
+       exactly like a missing rule. The element is scrolled into view first.
+       The wait is the document's own declared transition and not a guess. */
+    async hoverAt(i) {
+      const el = await page.$('[data-paint="' + i + '"]');
+      if (!el) return null;
+      try { await el.hover({ timeout: 2000 }); } catch (e) { return null; }
+      const ms = await page.evaluate('__ask.settleMs()');
+      await page.waitForTimeout(Math.max(ms, 60) + 60);
+      return page.evaluate('__ask.paintAt(' + i + ')');
+    },
+    /* the mouse off everything, so the next measurement starts from rest */
+    async unpoint() { await page.mouse.move(1, 1); return session; },
     ask(expr) { return page.evaluate('__ask.' + expr); },
     async close() { await context.close(); }
   };

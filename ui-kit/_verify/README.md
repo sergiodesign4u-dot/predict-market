@@ -18,23 +18,44 @@ SAME bug found twice, because the file that had learned the lesson no longer exi
 next check was written. This is the move `_levels.py` made for containment: one computation, many
 consumers.
 
-Ten things it knows out of the box, each with the case that taught it written beside it in the file:
-the colour is parsed by a canvas and never a regex; alpha is composited up the ancestor stack; inert
-subtrees are skipped and focus is a real Tab; both batches of a comparison run in the same regime,
-fresh context with the cache off; a measurement waits for the theme transition the document itself
-declares; a colour painted through a blend or a filter cannot be read from `color`; a console error
-is attributed by URL rather than by its text; a gradient is not a `background-color`; a pinned box
-taller than the window hides its own tail; and text with transparent ink or a 0px face paints no
-glyph, so it has no contrast to measure. **None of the ten is defensive coding.** Each is a wrong
-answer this project has already published, so anyone who reads one as excessive caution should read
-the line above it first.
+Twelve things it knows out of the box, each with the case that taught it written beside it in the
+file: the colour is parsed by a canvas and never a regex; alpha is composited up the ancestor stack;
+inert subtrees are skipped and focus is a real Tab; both batches of a comparison run in the same
+regime, fresh context with the cache off; a measurement waits for the theme transition the document
+itself declares; a colour painted through a blend or a filter cannot be read from `color`; a console
+error is attributed by URL rather than by its text; a gradient is not a `background-color`; a pinned
+box taller than the window hides its own tail; text with transparent ink or a 0px face paints no
+glyph, so it has no contrast to measure; a hover is a real pointer and reaches only what is in the
+window; and the code that implements lesson 5 was measuring nothing at all. **None of the twelve is
+defensive coding.** Each is a wrong answer this project has already published, so anyone who reads
+one as excessive caution should read the line above it first.
 
-The last three arrived together, on the day `ui-visual/terms.html` was accepted. Nine is the one
-worth reading twice: every other question in this folder is about a PIXEL, so a page whose contents
-rail was pinned 81px below the bottom of a 640px window passed all of them, twice. A check that
-asks whether a person can reach the pixel is a different question from any of the colour ones, and
-it needs its own window: it is measured at `SHORTEST_VIEWPORT`, because a capped dialog and a
-stranded rail are indistinguishable in a tall one.
+Nine is the one worth reading twice: every other question in this folder is about a PIXEL, so a page
+whose contents rail was pinned 81px below the bottom of a 640px window passed all of them, twice. A
+check that asks whether a person can reach the pixel is a different question from any of the colour
+ones, and it needs its own window: it is measured at `SHORTEST_VIEWPORT`, because a capped dialog and
+a stranded rail are indistinguishable in a tall one.
+
+**Twelve is the one worth acting on.** `settleMs()` is the whole of lesson 5 - it returns the longest
+transition the document declares, and everything that measures after a state change waits on it - and
+it returned **0** from the day it was written, for three reasons stacked on each other. It read the
+declaration TEXT, and every transition in this system is written `var(--dur-quick)`, so no number was
+ever there to match. Two of its three regexes reached the browser with their backslashes eaten,
+because the probe is a template literal and `\d` in one is an escape node swallows: the pattern
+arrived as `/^[d.]+m?s$/`. And its walk recursed on `rule.cssRules`, which only `@media` and
+`@supports` used to have - Chrome ships CSS Nesting now, every style rule carries an empty list, an
+empty list is truthy, and **1263 of 1285 rules were skipped before their declarations were read**. It
+now returns 300. Nothing already published was wrong because of it, since the values that were read
+had arrived; what was missing was the guarantee, which is the whole point of an instrument. A checker
+with a broken instrument reports clean.
+
+Eleven arrived the same afternoon and is the reason twelve was found. `snap.cjs` measures the REST
+state, so a pass whose entire intended change lives inside `:hover` cannot be verified by the diff
+that proves nothing else moved. There is no class to set: `:hover` is the browser's answer to a real
+mouse, so `paint()` marks every visible match and `hoverAt()` scrolls it into view and puts the
+pointer on it. The scroll is not a nicety - the first cut moved the mouse to the box centre `paint()`
+reported, which is viewport-relative, so every control below the fold reported its rest state as its
+hover, and that looks exactly like a missing rule.
 
 ## What they do
 

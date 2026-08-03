@@ -70,7 +70,7 @@ function pages() {
 (async () => {
   const targets = pages();
   const findings = [];
-  let measured = 0, tabs = 0, blind = 0, pins = 0, unpainted = 0;
+  let measured = 0, tabs = 0, blind = 0, pins = 0, unpainted = 0, lowTotal = 0;
 
   for (const theme of THEMES) {
     for (const width of WIDTHS) {
@@ -90,8 +90,19 @@ function pages() {
         const low = all.filter((e) => !e.blended && !e.unpainted &&
                                       e.ratio < B.floorFor(e.size, e.weight));
         measured += 1;
+        /* SIX PER RENDER IS A CAP AND IT USED TO BE A SILENT ONE. 32 of the 48
+           renders that had anything to say hit it exactly, which is what a cap
+           looks like from the outside and what "clean enough" looks like from
+           the inside: the same three ratios repeated on every card of a feed,
+           truncated to six, and the number a person reads was the cap rather
+           than the count. Every finding is still counted, the first six are
+           still the ones printed, and what was dropped now says so. */
+        lowTotal += low.length;
         for (const e of low.slice(0, 6)) {
           findings.push(`${where}: ${e.ratio}:1 on ${e.el} "${e.text}"`);
+        }
+        if (low.length > 6) {
+          findings.push(`${where}: and ${low.length - 6} more below the floor, not listed`);
         }
         for (const a of await s.ask('uaLinks()')) {
           findings.push(`${where}: link with no rule, "${a.text}" (${a.el})`);
@@ -146,6 +157,7 @@ function pages() {
   const head = `${targets.length} page(s), ${THEMES.length} theme(s), ${WIDTHS.length} width(s)` +
     ` = ${measured} render(s)` + (has('focus') ? `, ${tabs} tab stop(s)` : '') +
     `, ${pins} pinned box(es) at ${B.SHORTEST_VIEWPORT}px of window` +
+    (lowTotal ? `, ${lowTotal} below the contrast floor` : '') +
     (blind ? `, ${blind} unmeasurable (blend or filter)` : '') +
     (unpainted ? `, ${unpainted} painting no glyph (transparent ink or 0px face)` : '');
   if (has('json')) {
