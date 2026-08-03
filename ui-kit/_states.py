@@ -128,6 +128,50 @@ def by_component():
     return out
 
 
+# ---- the components with no photograph, and why -----------------------------
+# FRESHNESS IS HALF THE QUESTION. A stamp says a picture is what its sources
+# would produce today; it says nothing about a picture that was never taken, and
+# a picture never taken is fresh forever. An empty gallery reads as "this
+# component has no states", and on two pages that is FALSE: `position.css` and
+# `state-block.css` each declare a hover and each photographed nothing.
+#
+# So the second half of gate 31 asks the reverse, and the answer is a declared
+# list with the control every declared list in this repo carries: an entry that
+# DOES have pictures fails as loudly as a component that has none and is not
+# here.
+#
+# Two kinds, and the second is a debt rather than a decision:
+#
+#   STATIC     the component was decided to have no interaction at all, one line
+#              and one reason each in `_levels.STATIC`. Read from there rather
+#              than repeated, because gate 25 already holds that list in both
+#              directions and a second copy would drift.
+#   NOT_SHOT   the component HAS a state and the instrument could not take it.
+#              Each line names the selector and the reason, and neither of the
+#              two is a fact about the component.
+NOT_SHOT = {
+    "position": "`.app-case a:has(>.pos):hover>.pos`. The element that CHANGES is the row and "
+                "the element that is HOVERED is the anchor around it, and states.cjs points at "
+                "the subject of the rule, so the pass hovered a row that answers no pointer and "
+                "recorded no difference. In the product 36 screens of lists do answer. A reader "
+                "gap: closing it means teaching states.cjs to hover an ancestor, which changes "
+                "what every gallery measures",
+    "state-block": "`.app-case .sys-link-list a:hover`. The three specimens are the empty and "
+                   "error blocks of a browse screen and none carries a system screen's link "
+                   "list, so there was nothing to open. A stand debt, not a reader bug",
+}
+
+
+def unphotographed():
+    """(components that should have a picture and have none and are not
+    declared; declared entries that DO have pictures)."""
+    import _levels
+    shot = set(by_component())
+    live = {p.stem for p in COMP.glob("*.css")
+            if p.stem not in ("index", "tokens", "fonts")} - set(_levels.STATIC)
+    return sorted(live - shot - set(NOT_SHOT)), sorted(set(NOT_SHOT) & shot)
+
+
 if __name__ == "__main__":
     rows = load()
     if "--stamp" in sys.argv:

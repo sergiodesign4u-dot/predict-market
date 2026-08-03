@@ -325,6 +325,28 @@ def check(component, groups=None, rules_text="", registry=None, rule_ids=None, s
 # an authored file fails, and a component with neither fails. A line here is a
 # DECISION that was made and can be argued with; silence would be a decision
 # nobody took.
+#
+# ---- IT IS EMPTY AFTER ALL FORTY THREE, AND THAT IS A FINDING -------------
+#
+# A list of exceptions that never fills is normally a list nobody applied. This
+# one was applied, five times, and each time the answer came back the other way.
+# The near misses, in order: `account` (two rules, three screens), `skeleton` (no
+# inventory row, no rule of use), `seo-plate` (nine screens, no rule of use),
+# `feed` (two classes) and `bottomnav` (two classes, 105 screens). Every one of
+# them is a component whose computed page has almost nothing on it.
+#
+# THE CONCLUSION IS ABOUT THE FORMAT AND NOT ABOUT THE LIST. The list is empty
+# not because nobody ever said "there is nothing to say here", but because the
+# components with the thinnest metrics carry the most unwritten decision:
+# `account` is two rules, and the emptiness in it IS the content, because a
+# person who does not know why it is empty puts the button's paint back, which
+# is what happened for three stages. **The authored file pays off MOST where the
+# computed page has LEAST to show.** That is the opposite of what a person would
+# guess when they decide which components deserve one, and it is why this list
+# stayed empty rather than filling with the small files.
+#
+# A line here is still possible and still correct for a component that is
+# genuinely only its metrics. Forty three did not produce one.
 COMPUTED_ONLY = {}
 
 

@@ -1562,6 +1562,44 @@ check("30 no declared exception is idle", not _idle,
 notes.append("%-34s %s" % ("30 declared, and not worn",
                            "%d class(es), each with its reason" % len(NOT_WORN)))
 
+# ---- 31. a photograph of a state is only as true as the day it was taken -----
+# A picture is the one artefact on a stand page that goes stale WITHOUT ANYTHING
+# CHANGING ON THE PAGE. Edit a token, edit the component, edit the specimen it
+# was shot in, and the gallery still shows what the system used to look like,
+# confidently, in both themes.
+#
+# THE FRESHNESS TEST IS A HASH OF THE SOURCES AND NOT A COMPARISON OF PIXELS.
+# Re-shooting to compare would need a browser in the build, would cost ninety
+# seconds, and would answer a slightly different question: whether this machine
+# renders it the same today. What is actually being asked is whether anything
+# the picture was MADE FROM has moved, and that is a byte hash over a declared
+# list - tokens, base, fonts, every owning css file, the specimen html, the
+# specimen sheet and states.cjs itself. `_states.sources()` is that list.
+#
+# THE SECOND HALF ASKS THE REVERSE, and it is the half a freshness check cannot
+# reach: a picture that was never taken is fresh forever. An empty gallery reads
+# as "this component has no states", and on two pages that is false. So every
+# component that is not declared STATIC must have pictures or be named in
+# `_states.NOT_SHOT` with the selector and the reason - and, as everywhere here,
+# a declared entry that DOES have pictures fails just as loudly.
+import _states                                                        # noqa: E402
+
+_st_moved, _st_missing = _states.stale()
+_st_undeclared, _st_idle = _states.unphotographed()
+check("31 every picture is what its sources would make today", not _st_moved,
+      "%d: %s" % (len(_st_moved), "; ".join(_st_moved[:4])))
+check("31 no picture file is gone", not _st_missing,
+      "%d: %s" % (len(_st_missing), "; ".join(_st_missing[:4])))
+check("31 a component with states has pictures", not _st_undeclared,
+      "%d: %s" % (len(_st_undeclared), ", ".join(_st_undeclared)))
+check("31 no declared gap is idle", not _st_idle,
+      "%d: %s" % (len(_st_idle), ", ".join(_st_idle)))
+notes.append("%-34s %s" % ("31 photographed",
+                           "%d group(s), %d picture(s), %d not shot with a reason"
+                           % (len(_states.load()),
+                              sum(len(r.get("shots", {})) for r in _states.load()),
+                              len(_states.NOT_SHOT))))
+
 # ---- 32. the authored half is checked, and it is checked BEFORE it is written -
 # THE ONE ARTEFACT NO GATE COULD READ, until this one. Everything else in this
 # vitrine is held against something: a class against the css, a rule against the
