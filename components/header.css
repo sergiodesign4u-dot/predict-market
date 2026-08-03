@@ -51,7 +51,24 @@
 .logo-btn{background:transparent;border:0;color:var(--text-primary);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:-.02em;padding:var(--space-8) var(--space-4);white-space:nowrap}
 .utility{align-items:center;gap:var(--space-8)}
 .utility > *{align-self:center}
-.icon-btn{width:var(--control-36);height:var(--control-36);border-radius:var(--radius-pill);background:transparent;border:1px solid var(--border-hairline);color:var(--text-primary)}
+/* ONE CIRCLE, TWO AUTH STATES, AND IT WAS WRITTEN TWICE (ui-kit backlog S17).
+   The bell and the heart are the same shape in both header states - measured
+   across all 105 screens at 360 and 1440: 36px, a 1px --border-hairline, a
+   transparent ground and --radius-pill, in the logged-in header and the logged
+   out one alike. What differs is the ELEMENT. Logged out they are
+   <button class="icon-btn">; logged in the bell and the avatar are <summary>,
+   because each opens a dropdown, and a summary was given its own rest rule
+   ninety lines further down. The two agreed only because somebody kept them in
+   step, and their hover and their press had already been gathered onto one line
+   each. So the rest is gathered too: the three declarations that ARE the circle
+   here, and each element keeps the geometry that is its own below.
+   The two states are NOT a decision to compact the header for a logged-out
+   visitor, which is what the difference looked like from a screenshot. The
+   neighbours differ - a balance pill and an avatar on one side, two auth
+   buttons on the other - and the same two circles read differently between
+   them. */
+.icon-btn,.notif-menu summary,.avatar-menu summary{background:transparent;border:1px solid var(--border-hairline);border-radius:var(--radius-pill)}
+.icon-btn{width:var(--control-36);height:var(--control-36);color:var(--text-primary)}
 .hiw-btn{background:transparent;border:1px solid var(--border-hairline);color:var(--text-muted);border-radius:var(--radius-pill);white-space:nowrap}
 .hiw-btn:hover{color:var(--text-primary)}
 .icon-btn:hover,.hiw-btn:hover,.notif-menu summary:hover,.avatar-menu summary:hover{background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:var(--color-action)}
@@ -89,7 +106,7 @@
 .icon-btn.bal-add:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
 .icon-btn.bal-add:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
 .badge-dot{background:var(--color-action);border:0;color:var(--text-on-brass);font-weight:var(--weight-bold)}
-.notif-menu summary,.avatar-menu summary{height:var(--control-36);display:inline-flex;align-items:center;gap:var(--space-4);padding:0 var(--space-8);border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:transparent}
+.notif-menu summary,.avatar-menu summary{height:var(--control-36);display:inline-flex;align-items:center;gap:var(--space-4);padding:0 var(--space-8)}
 .avatar-menu .dropdown,.notif-menu .dropdown{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
 .avatar-menu li,.notif-drop li{border-top:1px solid var(--border-hairline)}
 .avatar-menu .dropdown button,.notif-drop li a,.notif-drop li a strong{color:var(--text-primary)}

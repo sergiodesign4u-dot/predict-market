@@ -2,7 +2,7 @@
 
    Component: account. Classes: .cta-bar, .flat.
 
-   Reads: --bg-card-quiet, --bg-control, --bg-control-hover, --bg-pressed, --border-hairline, --color-action, --color-action-lit, --line-brass-soft, --text-on-brass, --text-primary
+   Reads: --bg-card-quiet, --border-hairline
    Stand:  ui-kit/account.html
    Stands on: 3 ui-visual screens (how-it-works.html, my-profile.html, wallet.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -13,22 +13,19 @@
    they are not the page plate either, so they stay with the component that
    draws them. */
 .app-case .cta-bar{background:var(--bg-card-quiet);border:0;border-top:1px solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0}
-.app-case .cta-bar button{flex:1;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-12);min-height:var(--control-44);cursor:pointer}
-.app-case .cta-bar button:hover{border-color:var(--line-brass-soft);background:var(--bg-control-hover)}
-.app-case .cta-bar>button:first-child,.app-case .cta-bar>a:first-child button{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);font-weight:var(--weight-bold);transition:box-shadow var(--dur-quick) ease}
-/* Hover takes the LIT role to both stops, so the whole face of the plate comes up. It replaces
-   filter:brightness(1.08), which was a raw number doing a colour job: a filter multiplies whatever
-   is underneath it, so no theme can reach the value and the same 1.08 means two different things on
-   the two grounds. Same three-step as the quick-amount chip in input.css. The glow is unchanged, and
-   with the filter gone the rest rule above transitions the one property that still moves. */
-.app-case .cta-bar>button:first-child:hover,.app-case .cta-bar>a:first-child button:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));border:0;color:var(--text-on-brass);box-shadow:0 6px 18px -8px var(--color-action)}
-/* Press, the axis this bar never had: two of its three screens put the bar under a thumb, where
-   there is no hover to answer with. The system's two mechanisms and no third. A quiet button settles
-   onto --bg-pressed. The brass action turns its own gradient over, 135deg to 315deg, so the light
-   falls to the bottom right the way a plate pushed IN does, and the hover glow goes, because the
-   glow is the lift. Both rules mirror the hover selector they answer, so each sits at equal
-   specificity to it and wins by source order while the pointer is down. Nothing carries a drop
-   shadow at rest, so there is nothing else to flatten. */
-.app-case .cta-bar button:active{background:var(--bg-pressed)}
-.app-case .cta-bar>button:first-child:active,.app-case .cta-bar>a:first-child button:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
+/* THE BUTTON LEFT THIS FILE ON 2026-08-03, and the whole of it: the quiet rest,
+   the brass first child, both hovers and both presses, eight rules. They are in
+   components/button.css with the rest of the family, because they were the
+   family - the same --bg-control, the same 1px --border-hairline, the same
+   --text-primary and --radius-10 that .auth-btn, .state-btn and .provider-btn
+   each declared separately, plus the one hover the majority already had right.
+   That is ui-kit backlog S11: a person assembling an action bar was hitting a
+   button rule the button page had never heard of, and the class map could not
+   see it either, because the markup here is a bare <button> with no class.
+   The arrangement went one step further, to patterns/action-bar.css, which
+   already said how an anchor child shares the row.
+   What is left is the bar, and only the bar: its stone, the hairline along its
+   top edge, its two rounded corners, and the three declarations .flat takes
+   them away with. That is the exception this component declared when the
+   pattern was cut, and it still holds. */
 .app-case .cta-bar.flat{border:0;background:none;border-radius:0}

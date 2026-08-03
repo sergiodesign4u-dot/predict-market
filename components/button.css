@@ -1,28 +1,62 @@
 /* components/button.css
    Component: button. Classes: .auth-btn, .confirm-btn, .primary, .prov-apple, .prov-x, .provider-btn, .state-btn.
 
-   Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --line-brass-soft, --opacity-disabled, --text-on-brass, --text-primary, --text-strong
+   Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --opacity-disabled, --text-on-brass, --text-primary, --text-strong
    Stand:  ui-kit/button.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.auth-btn{padding:var(--space-8) var(--space-8);font-size:var(--text-12);cursor:pointer}
-.auth-btn.primary{font-weight:var(--weight-bold)}
-.state-btn{padding:var(--space-8) var(--space-12);font-size:var(--text-12);cursor:pointer}
-.state-btn.primary{font-weight:var(--weight-bold)}
-dialog.app-dialog .provider-btn{display:flex;align-items:center;gap:var(--space-8);padding:var(--space-12);font-size:var(--text-13);cursor:pointer;width:100%;text-align:left}
-dialog.app-dialog .provider-btn .ic{width:var(--icon-18);height:var(--icon-18)}
-dialog.app-dialog .confirm-btn{padding:var(--space-12);font-size:var(--text-14);font-weight:var(--weight-bold);cursor:pointer;width:100%}
-.confirm-btn{border:1px solid var(--border-hairline);padding:var(--space-12);font-size:var(--text-14);font-weight:var(--weight-bold);cursor:pointer;width:100%}
-.provider-btn{display:flex;align-items:center;gap:var(--space-8);border:1px solid var(--border-hairline);padding:var(--space-12);font-size:var(--text-13);cursor:pointer;width:100%;text-align:left}
+/* ONE ANATOMY, FOUR NAMES, AND THE ANATOMY IS WRITTEN ONCE. --bg-control, a
+   1px --border-hairline, --text-primary and --radius-10 were declared four
+   times over: once for .auth-btn, once for .state-btn, once for the provider
+   button inside a dialog, and once in account.css for the button of the action
+   bar. Four identical rest states under four names is not four components, it
+   is one component nobody merged, and the proof of that is what the four did
+   NOT agree on: the hover, below.
+   .provider-btn joins the same block rather than keeping a rule that set a
+   border and no ground. It had one everywhere it stands, because every scope it
+   ships in supplied one; on the bare canvas it rendered in the user agent's
+   grey, which is the trap .bet-dock fell into two steps ago. Measured before
+   the merge: 2220 provider buttons across the tree, every one on --bg-control
+   already, so the ground here is a value that was already true being written
+   in the one place it belongs. */
+.auth-btn,.state-btn,.provider-btn,.app-case .cta-bar button{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10);cursor:pointer}
+.auth-btn{padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
+.state-btn{padding:var(--space-8) var(--space-12);font-size:var(--text-12)}
+.provider-btn{display:flex;align-items:center;gap:var(--space-8);padding:var(--space-12);font-size:var(--text-13);width:100%;text-align:left}
 .provider-btn .ic{width:var(--icon-18);height:var(--icon-18)}
-dialog.app-dialog .confirm-btn{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);border-radius:var(--radius-10)}
-dialog.app-dialog .provider-btn{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
-.auth-btn{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
-.auth-btn.primary{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);border-color:var(--color-action)}
-.state-btn{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
-.state-btn.primary{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);border-color:var(--color-action)}
-.app-case .state-btn,.app-case .confirm-btn,.app-case .auth-btn,.app-case .provider-btn,dialog.app-dialog .confirm-btn,dialog.app-dialog .provider-btn{transition:filter var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
+/* THE ACTION BAR'S BUTTON IS A BUTTON, and it came here from account.css on
+   2026-08-03 (ui-kit backlog S11). It was styled by the component that draws
+   the BAR, so a person assembling one hit a rule the button page had never
+   heard of, and the class map could not see it either, because the markup is a
+   bare <button> with no class of its own. What stayed behind is the bar: its
+   stone, its top hairline, its two rounded corners. What is arrangement went
+   one step further, to patterns/action-bar.css, which already said how the
+   anchor children share the row and now says it for the bare ones too. This
+   does not close backlog item 16d: account.css is still a CTA bar and a
+   transaction list in one file, and that is a boundary question, not a paint
+   one. */
+.app-case .cta-bar button{font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-12);min-height:var(--control-44)}
+
+/* THE BRASS ACTION, AND IT IS TWO ANSWERS RATHER THAN ONE. A primary quiet
+   button keeps the 1px edge it already had and turns it brass; a confirm
+   button has no edge at all, because it is the whole width of a sheet and an
+   edge on a lit plate that wide reads as a seam. Both are written once here
+   instead of six times, but they are NOT forced into one rule: 1px and 0 are
+   different geometry and merging them would have moved a pixel on every screen
+   in the product to make a paragraph tidier. */
+.auth-btn.primary,.state-btn.primary{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);border-color:var(--color-action);font-weight:var(--weight-bold)}
+/* NO font-family ON THIS LINE, and the snapshot is why. Writing the family into
+   the merged block moved 40 confirm buttons from "DM Sans", system-ui,
+   sans-serif to "DM Sans", sans-serif: the bare .confirm-btn had never declared
+   one and was inheriting --font-body-root off the body, while the three scoped
+   copies below declare --font-body. Same face either way, a different fallback
+   if it ever fails to load, and a difference nobody asked this pass to make.
+   A merge is allowed to delete a duplicate; it is not allowed to add a
+   declaration to an element that did not have one. */
+.confirm-btn,.app-case .cta-bar>button:first-child,.app-case .cta-bar>a:first-child button{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);border-radius:var(--radius-10);font-weight:var(--weight-bold);cursor:pointer}
+.confirm-btn{padding:var(--space-12);font-size:var(--text-14);width:100%}
+.app-case .state-btn,.app-case .confirm-btn,.app-case .auth-btn,.app-case .provider-btn,.app-case .cta-bar button,dialog.app-dialog .confirm-btn,dialog.app-dialog .provider-btn{transition:filter var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
 /* Two changes to this line, no change to its values. The confirm button is the one
    control the product actually disables (Add funds below the minimum), so its hover is
    narrowed the way input.css narrows the amount field: a dead control does not light up.
@@ -36,8 +70,36 @@ dialog.app-dialog .provider-btn{background:var(--bg-control);border:1px solid va
    A filter multiplies whatever is underneath, so no theme and no role can reach
    it, and the same 1.08 is a different decision on each of the two grounds. The
    glow keeps its own line because it is depth, not colour. */
-.app-case .state-btn.primary:hover,.app-case .confirm-btn:hover:not(:disabled):not([aria-disabled="true"]),.app-case .auth-btn.primary:hover,dialog.app-dialog .confirm-btn:hover:not(:disabled):not([aria-disabled="true"]){background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
-.app-case .state-btn:not(.primary):hover,.app-case .auth-btn:not(.primary):hover,.app-case .provider-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)}
+/* THE INK IS RESTATED HERE, and the hover measurement is why. The quiet hover
+   below sets color:--text-strong and reaches the action bar's button through
+   `.app-case .cta-bar button:hover`, which does not know that the FIRST child of
+   that bar is brass. Before this pass the quiet hover set no colour at all and
+   the rest state survived it; now it does, so the brass button read white ink on
+   a lit brass plate the moment a pointer touched it, on all three action-bar
+   screens and in both themes. The other five selectors here already have this
+   value at rest and it costs them nothing. Caught by the pointer pass, which is
+   the only instrument in this repo that can see a hover at all. */
+.app-case .state-btn.primary:hover,.app-case .confirm-btn:hover:not(:disabled):not([aria-disabled="true"]),.app-case .auth-btn.primary:hover,.app-case .cta-bar>button:first-child:hover,.app-case .cta-bar>a:first-child button:hover,dialog.app-dialog .confirm-btn:hover:not(:disabled):not([aria-disabled="true"]){background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));color:var(--text-on-brass);box-shadow:0 6px 18px -8px var(--color-action)}
+/* THE QUIET HOVER, AND THIS IS THE ONE PIXEL THE MERGE MOVES ON PURPOSE.
+   The family disagreed here and only here. .provider-btn and the action bar's
+   button went to --bg-control-hover, which tokens.css declares in exactly those
+   words ("8 hover fills on those same controls"); .auth-btn and .state-btn
+   RESTATED --bg-control, so the ground under the pointer did not move at all
+   and the only answer to a hover was the edge going brass. That is not a
+   quieter version of the same decision, it is the decision not being taken:
+   the two names the majority of the family does not use were the two that
+   answered differently.
+   So the ground moves, on 58 screens and 130 elements. Measured before and
+   after with a real pointer (ui-kit/_verify/browser.cjs lesson 11), because a
+   change that lives entirely inside :hover is invisible to every snapshot in
+   this repo.
+   The dialog scope is in the same block and not in a rule of its own: a dialog
+   is NOT inside .app-case in this product (measured, the markup puts it after
+   the case closes), so .app-case .provider-btn:hover cannot reach one and the
+   two selectors are the same decision written for the two places it has to
+   land. The :not() pair keeps it off the two dialogs that skin their own
+   provider button and answer below. */
+.app-case .state-btn:not(.primary):hover,.app-case .auth-btn:not(.primary):hover,.app-case .provider-btn:hover,.app-case .cta-bar button:hover,.app-case :is(.bet-panel,.bet-sheet) .provider-btn:hover,.app-case .bet-dock .provider-btn:hover,dialog.app-dialog:not(.outcome-dialog):not(.signin-dialog) .provider-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover);color:var(--text-strong)}
 /* SIX CLASSES LEFT HERE ON 2026-08-03, and what they were is the reason the
    check that found them exists. `.btn-primary`, `.btn-secondary`, `.btn-sm`,
    `.btn-md`, `.btn-lg` and `.btn-block` were half of what this component
@@ -64,21 +126,20 @@ dialog.app-dialog .provider-btn{background:var(--bg-control);border:1px solid va
 .app-case :is(.bet-panel,.bet-sheet,.bet-dock) .confirm-btn{border:0;border-radius:var(--radius-10);background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);font-family:var(--font-body);font-weight:var(--weight-bold)}
 .app-case .bet-sheet .confirm-btn{padding:var(--space-16)}
 dialog.app-dialog.outcome-dialog .provider-btn{display:flex;width:100%;box-sizing:border-box;justify-content:center;align-items:center;gap:var(--space-8);padding:var(--space-12);background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);color:var(--text-primary);font-family:var(--font-body);font-weight:var(--weight-bold);font-size:var(--text-14);cursor:pointer;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
-dialog.app-dialog.outcome-dialog .provider-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-surface);color:var(--text-strong)}
-.app-case :is(.bet-panel,.bet-sheet) .provider-btn,.app-case .bet-dock .provider-btn{justify-content:center;background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10);font-family:var(--font-body);font-weight:var(--weight-semibold)}
-.app-case :is(.bet-panel,.bet-sheet) .provider-btn:hover,.app-case .bet-dock .provider-btn:hover{border-color:var(--line-brass-soft);background:var(--bg-control-hover);color:var(--text-strong)}
+/* THE WIN AND LOSS OVERLAYS KEEP A HOVER RULE OF THEIR OWN, and only because
+   of specificity: their rest state is written at (0,4,1) above, so the family's
+   hover at (0,3,1) would lose to it and the button would answer nothing. The
+   VALUE is the family's now. It was --bg-surface, which is the role of a
+   header, a dialog and a dropdown - a surface a thing stands ON, not a state a
+   control goes INTO - and it was the same wrong reach .btn-secondary made, on
+   the two screens where a person has just won or lost money. */
+dialog.app-dialog.outcome-dialog .provider-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover);color:var(--text-strong)}
+.app-case :is(.bet-panel,.bet-sheet) .provider-btn,.app-case .bet-dock .provider-btn{justify-content:center;font-family:var(--font-body);font-weight:var(--weight-semibold)}
 dialog.app-dialog.signin-dialog .provider-btn{justify-content:center;gap:var(--space-12);padding:var(--space-12);font-family:var(--font-body);font-size:var(--text-14);font-weight:var(--weight-semibold);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,transform var(--dur-fast) ease}
 dialog.app-dialog.signin-dialog .provider-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover);transform:translateY(-1px)}
 dialog.app-dialog.signin-dialog .provider-btn .ic{width:var(--icon-18);height:var(--icon-18);flex:0 0 var(--icon-18);stroke:none}
 dialog.app-dialog.signin-dialog .provider-btn .prov-x,dialog.app-dialog.signin-dialog .provider-btn .prov-apple{color:var(--bg-brand-mark);fill:currentColor}
 .app-case .bet-dock .confirm-btn{width:auto;padding:var(--space-12)}
-
-/* The provider button in the plain deposit dialog stands on all 104 screens and had no
-   hover at all: the two skinned sheets below were each given one and the unskinned dialog
-   was never given the same answer. The values are the quiet provider family's, not a new
-   idea, and the :not() pair keeps this rule off the two dialogs that already answer, so
-   nothing that works today moves. */
-dialog.app-dialog:not(.outcome-dialog):not(.signin-dialog) .provider-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover);color:var(--text-strong)}
 
 /* Press, the axis the file was missing. A control answered the pointer on the way in and
    said nothing when it was pushed, and the dock and the bet sheet are mobile only, where
@@ -90,9 +151,9 @@ dialog.app-dialog:not(.outcome-dialog):not(.signin-dialog) .provider-btn:hover{b
    the same two roles the rest state does.
    Each rule mirrors the hover selector it answers, so the two sit at equal specificity and
    the press, being later in the file, wins while the pointer is down. */
-.app-case .state-btn.primary:active,.app-case .auth-btn.primary:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
+.app-case .state-btn.primary:active,.app-case .auth-btn.primary:active,.app-case .cta-bar>button:first-child:active,.app-case .cta-bar>a:first-child button:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
 .app-case .confirm-btn:active:not(:disabled):not([aria-disabled="true"]),dialog.app-dialog .confirm-btn:active:not(:disabled):not([aria-disabled="true"]){background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
-.app-case .state-btn:not(.primary):active,.app-case .auth-btn:not(.primary):active,.app-case .provider-btn:active{background:var(--bg-pressed)}
+.app-case .state-btn:not(.primary):active,.app-case .auth-btn:not(.primary):active,.app-case .provider-btn:active,.app-case .cta-bar button:active{background:var(--bg-pressed)}
 dialog.app-dialog:not(.outcome-dialog):not(.signin-dialog) .provider-btn:active{background:var(--bg-pressed)}
 /* the sheet skins and the bet panel each set their own hover background one class higher, so
    the press has to answer at their level or the hover would still be showing under the finger */

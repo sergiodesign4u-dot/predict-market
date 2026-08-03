@@ -248,6 +248,12 @@ STATIC = {
     "feed": "the grid the cards stand in. Every control inside it belongs to card, "
             "catnav or loadmore",
     "notice": "the banners and boxes. Their buttons are .state-btn and belong to button",
+    "account": "the action bar's own surface, and nothing else since 2026-08-03: a stone, "
+               "a hairline along the top edge, two rounded corners, and the three "
+               "declarations .flat takes them away with. The button it used to paint went "
+               "to button.css where the rest of that family already was (backlog S11), so "
+               "the bar answers no pointer because a bar is not a control. This entry is "
+               "the same shape as notice above and for the same reason",
     "options": "the multi-outcome list. The row is a <div>; what a person presses is "
                "the .yesno pair inside it, which has its own states. The row ALSO "
                "carries a JS click handler and no keyboard path, which is a defect "
