@@ -54,6 +54,45 @@ SRC = KIT / "authored"
 
 SECTIONS = ["Sources", "Purpose", "Anatomy", "When to use", "Rule", "Anti-rule", "States"]
 
+# THE SECOND FORMAT, AND WHY IT IS A SECOND FORMAT AND NOT A BENT FIRST ONE.
+#
+# A pattern is not a component and the difference is in the contract, not in the
+# size. It owns no paint (gate 23 fails the build on a pattern that carries a
+# colour) and it owns no interaction, because everything a person touches inside
+# one belongs to a part. So two of the seven sections above would have to be
+# answered by changing the question, and that is the symptom this repo uses to
+# recognise a format that has stopped being one. Two sections change, the other
+# five do not, and the shape is decided HERE, once, before the first pattern was
+# written rather than discovered while writing the sixth.
+#
+#   Anatomy  ->  Parts        Naming the classes of a pattern would describe its
+#                             own scaffolding and hide what the thing IS. Parts
+#                             names COMPONENTS, from the registry, and what each
+#                             one contributes to the arrangement.
+#   States   ->  Arrangement  A pattern has no states. What it does decide is
+#                             order, breakpoint, stickiness, and what it refuses
+#                             to reach into. The states belong to the parts and
+#                             the section says which part carries them.
+#
+# Two floors are added rather than changed, and both are cross-checks rather
+# than shapes:
+#
+#   Sources     must state the screen count in the form "N painted screens", and
+#               N must be at least 3 and must EQUAL what the pattern manifest
+#               counted. Three screens is what makes a pattern a pattern:
+#               _gen_pattern_pages.build() refuses below three and gate 27
+#               counts the same number. A sentence and a counter disagreeing
+#               about that number is a finding, so the two are compared.
+#   When to use must answer in BOTH directions. A pattern's whole question is
+#               when to take it and when to assemble the same thing from
+#               components by hand, and half an answer reads as a complete one.
+#               So the section carries a line that starts `By hand:` and the
+#               check looks for it.
+PATTERN_SECTIONS = ["Sources", "Purpose", "Parts", "When to use", "Rule",
+                    "Anti-rule", "Arrangement"]
+BY_HAND = re.compile(r"^By hand:\s*(.+)$", re.M)
+SCREEN_COUNT = re.compile(r"\b(\d+)\s+painted screens\b")
+
 # THE ONE ARTEFACT IN THIS SYSTEM NO GATE CAN READ. Everything else here is
 # checked against something: a class against the css, a rule against the
 # document, a picture against the bytes it was taken from. A SENTENCE cannot be
@@ -159,9 +198,25 @@ def refs(text, rule_ids):
     return found, missing
 
 
-def check(component, groups=None, rules_text="", registry=None, rule_ids=None):
+def is_pattern(component):
+    return (COMP / "patterns" / (component + ".css")).exists()
+
+
+def named_parts(section):
+    """The `component` - what it contributes lines of a pattern's Parts."""
+    out = []
+    for line in section.splitlines():
+        m = re.match(r"^-\s+`([\w-]+)`\s*[-–]\s*(.+?)\s*$", line)
+        if m:
+            out.append((m.group(1), m.group(2)))
+    return out
+
+
+def check(component, groups=None, rules_text="", registry=None, rule_ids=None, screens=None):
     """Every problem with one authored file, as a list of sentences."""
     bad = []
+    pattern = is_pattern(component)
+    wanted = PATTERN_SECTIONS if pattern else SECTIONS
     path = SRC / (component + ".md")
     if not path.exists():
         if component in COMPUTED_ONLY:
@@ -171,21 +226,54 @@ def check(component, groups=None, rules_text="", registry=None, rule_ids=None):
     if component in COMPUTED_ONLY:
         return ["declared in COMPUTED_ONLY and yet authored: delete one of the two"]
     doc = parse(path)
-    for name in SECTIONS:
+    for name in wanted:
         if not doc.get(name):
             bad.append("section '%s' is missing or empty" % name)
     if bad:
         return bad
 
     mine = styled(component)
-    # every class the author names in Anatomy has to be one this file styles
-    parts = anatomy_parts(doc["Anatomy"])
-    if not parts:
-        bad.append("Anatomy names no class: one line per part, `- `.class` - what it is`")
-    for cls, _ in parts:
-        if cls not in mine:
-            bad.append("Anatomy names .%s, which components/%s.css does not style"
-                       % (cls, component))
+    if pattern:
+        # Parts names COMPONENTS, and a pattern with one part is not a composition
+        parts = named_parts(doc["Parts"])
+        known = registry or set()
+        if len(parts) < 2:
+            bad.append("Parts names fewer than two things: a pattern is a composition, "
+                       "and one part is a component with an arrangement typed on it")
+        for name, _ in parts:
+            if known and name not in known and name != component:
+                bad.append("Parts names `%s`, which is not a component or a pattern" % name)
+        # the screen count is stated and is the same one the manifest counted
+        found = SCREEN_COUNT.findall(doc["Sources"])
+        if not found:
+            bad.append("Sources does not state the screen count: write \"N painted screens\", "
+                       "because three screens is what makes this a pattern")
+        else:
+            said = int(found[0])
+            if said < 3:
+                bad.append("Sources says %d painted screens, which is not a pattern" % said)
+            if screens is not None and said != screens:
+                bad.append("Sources says %d painted screens and the manifest counted %d"
+                           % (said, screens))
+        # and the judgement answers in both directions
+        if not BY_HAND.search(doc["When to use"]):
+            bad.append("When to use has no `By hand:` line: a pattern's question is when to "
+                       "take it AND when to assemble the same thing from components, and "
+                       "half an answer reads as a whole one")
+        # the states are the parts', and the section has to say whose
+        arranged = doc["Arrangement"]
+        if known and not [p for p, _ in parts if re.search(r"\b%s\b" % re.escape(p), arranged)]:
+            bad.append("Arrangement names none of the parts: a pattern has no states of its "
+                       "own, so this section has to say which part carries them")
+    else:
+        # every class the author names in Anatomy has to be one this file styles
+        parts = anatomy_parts(doc["Anatomy"])
+        if not parts:
+            bad.append("Anatomy names no class: one line per part, `- `.class` - what it is`")
+        for cls, _ in parts:
+            if cls not in mine:
+                bad.append("Anatomy names .%s, which components/%s.css does not style"
+                           % (cls, component))
 
     # THE SOURCES ARE FOLLOWED, not just present. A source list that names a file
     # which is not there is the same defect as a picture whose bytes moved, one
@@ -221,7 +309,7 @@ def check(component, groups=None, rules_text="", registry=None, rule_ids=None):
         for g in gone:
             bad.append("'Seen:' names %s, which does not exist" % g)
 
-    if groups is not None:
+    if groups is not None and not pattern:
         caps = state_captions(doc["States"])
         keys = {g["key"] for g in groups}
         for k in sorted(keys - set(caps)):
@@ -245,6 +333,18 @@ def registry_names():
         | {p.stem for p in (COMP / "patterns").glob("*.css")}
 
 
+def pattern_screens():
+    """How many painted screens each pattern was counted on, from the manifest
+    the pattern generator writes. Read rather than recomputed, because the
+    generator is what refuses a pattern below three and gate 27 reads the same
+    file: a third counter would be a third answer."""
+    path = KIT / "patterns" / "index.json"
+    if not path.exists():
+        return {}
+    import json
+    return {p["name"]: len(p["screens"]) for p in json.loads(path.read_text(encoding="utf-8"))}
+
+
 if __name__ == "__main__":
     sys.path.insert(0, str(KIT))
     import _states
@@ -254,13 +354,14 @@ if __name__ == "__main__":
     rules = usage_rules()
     rule_ids = {r["id"] for r in rules}
     names = registry_names()
+    counted = pattern_screens()
     want = [a for a in sys.argv[1:] if not a.startswith("--")]
     have = sorted(p.stem for p in SRC.glob("*.md")) if SRC.exists() else []
     todo = want or have
     fails = 0
     for c in todo:
         text = " ".join(r["title"] + " " + r["check"] for r in rules if c in r["components"])
-        bad = check(c, groups.get(c), text, names, rule_ids)
+        bad = check(c, groups.get(c), text, names, rule_ids, counted.get(c))
         print("%-16s %s" % (c, "ok" if not bad else "FAIL"))
         for b in bad:
             print("   " + b)

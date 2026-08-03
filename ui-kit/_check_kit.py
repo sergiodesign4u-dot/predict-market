@@ -1562,6 +1562,51 @@ check("30 no declared exception is idle", not _idle,
 notes.append("%-34s %s" % ("30 declared, and not worn",
                            "%d class(es), each with its reason" % len(NOT_WORN)))
 
+# ---- 32. the authored half is checked, and it is checked BEFORE it is written -
+# THE ONE ARTEFACT NO GATE COULD READ, until this one. Everything else in this
+# vitrine is held against something: a class against the css, a rule against the
+# document, a picture against the bytes it was taken from. A SENTENCE cannot be
+# checked for being true, and that was taken to mean it could not be checked at
+# all. It can be checked for the four things that make the difference between a
+# written page and a fluent one: that it exists or is declared absent with a
+# reason, that its sections are all answered, that every class and every source
+# it names is real, and that its anti-rule sends the reader to a named component
+# with an honest provenance.
+#
+# WHY IT IS HERE AND NOT AT THE END OF THE FAN-OUT. It was going to be, and the
+# ordering was wrong. `ui-kit/authored/account.md` was committed on 2026-08-03
+# with two source paths written without their folder; it failed its own checker
+# from the first minute and nothing said so, because the checker was a script a
+# person had to remember to run and the round it belonged to had already been
+# reported green. A gate that arrives after the last author has not paid for a
+# single line of writing. So it goes in first, and the six pattern files are
+# written under it: this gate is RED while they are missing, by name, one line
+# each, and each file that lands turns one line green.
+#
+# The reading is in `_authored.py` with the reasoning, and this gate is the
+# place it becomes load-bearing. `--check` and a gate are not the same promise.
+from _authored import check as _authored_check, COMPUTED_ONLY as _computed_only  # noqa: E402
+from _authored import registry_names as _authored_names, pattern_screens as _pat_screens  # noqa: E402
+
+_a_names = _authored_names()
+_a_groups = _states.by_component() if "_states" in dir() else __import__("_states").by_component()
+_a_rules = usage_rules() if "usage_rules" in dir() else __import__("_gen_docs").usage_rules()
+_a_rule_ids = {r["id"] for r in _a_rules}
+_a_counted = _pat_screens()
+_a_bad = []
+for _c in sorted(_a_names):
+    _text = " ".join(r["title"] + " " + r["check"] for r in _a_rules if _c in r["components"])
+    for _b in _authored_check(_c, _a_groups.get(_c), _text, _a_names, _a_rule_ids,
+                              _a_counted.get(_c)):
+        _a_bad.append("%s: %s" % (_c, _b))
+_a_idle = sorted(set(_computed_only) & {p.stem for p in (KIT / "authored").glob("*.md")})
+check("32 every component has an author", not _a_bad,
+      "%d: %s" % (len(_a_bad), "; ".join(_a_bad[:4])))
+check("32 no computed-only claim is idle", not _a_idle,
+      "%d: %s" % (len(_a_idle), ", ".join(_a_idle)))
+notes.append("%-34s %s" % ("32 declared computed-only",
+                           "%d component(s), each with its reason" % len(_computed_only)))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

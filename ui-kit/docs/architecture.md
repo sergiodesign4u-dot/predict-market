@@ -607,6 +607,57 @@ element in any tree, and `.delta .row`, course-page vocabulary living in the app
 14 missed both for the same reason - each selector has a real ancestor, so it could match the gate's
 question without being able to match an element.
 
+### Gate 32, and the artefact that had no gate at all
+
+Every other thing on a stand page is held against something. A class is held against the css, a rule
+against the document that authored it, a picture against the bytes it was taken from. The **authored
+half** was held against nothing: `ui-kit/authored/<name>.md` is where a person says what a component
+is FOR, and a sentence cannot be checked for being true. That was taken to mean it could not be
+checked at all, and it is the wrong conclusion. Four things about it are mechanical, and they are
+exactly the four that separate a written page from a fluent one:
+
+- **it exists, or its absence is declared with a reason.** `_authored.COMPUTED_ONLY` is the
+  exception list and it carries the same control every declared list here carries: an entry that
+  ALSO has a file fails, and a component with neither fails.
+- **every section is answered.** A missing section is missing visibly rather than inheriting the one
+  above it, because the parser closes a section at the next heading.
+- **every class and every source it names is real.** A path in `Sources` is opened; a class in
+  `Anatomy` is checked against what the file styles; a rule of use is checked against the table.
+- **the anti-rule sends the reader somewhere, honestly.** It has to name another component, and it
+  has to end in `Seen:` with a place the confusion happened or `Predicted:` with the admission that
+  it has not. Both are allowed; passing one off as the other is not.
+
+**Why it was enabled before the last authored file was written, and not after.** It was going to be
+after, and that ordering was wrong. `ui-kit/authored/account.md` was committed on 2026-08-03 with
+two source paths written without their folder. It failed its own checker from the first minute and
+nothing said so, because the checker was a script somebody had to remember to run and the round it
+belonged to had already been reported green. **A gate that arrives after the last author has not
+paid for a single line of writing.** So gate 32 went in with six pattern files still unwritten, was
+red on six named lines for the length of one commit, and each file that landed turned one line
+green. The historical audit it made possible: 37 authored files re-checked at the three commits they
+shipped in, **one failing, and it is the one already found**.
+
+### The second format, for a pattern, decided once
+
+A pattern is not a component and the difference is contractual rather than a matter of size. It owns
+no paint (gate 23 fails the build on a pattern that carries a colour) and it owns no interaction,
+because everything a person touches inside one belongs to a part. Two of the seven sections would
+therefore have to be answered by changing the question, which is this repo's own symptom for a
+format that has stopped being one. So there are two formats, and the second was fixed **before** the
+first pattern was written:
+
+| component | pattern | why |
+|---|---|---|
+| `Anatomy`, naming classes | **`Parts`**, naming COMPONENTS | naming a pattern's own classes describes its scaffolding and hides what it IS. At least two, or it is a component with an arrangement typed on it |
+| `States`, one caption per photographed group | **`Arrangement`** | a pattern has no states. What it decides is order, breakpoint, stickiness and what it refuses to reach into, and the section has to name the part that carries the states instead |
+
+The other five sections are identical, and two floors are added as cross-checks rather than shapes.
+`Sources` must state the count as **"N painted screens"**, N at least 3, and N must EQUAL what
+`ui-kit/patterns/index.json` counted, because three screens is what makes a pattern a pattern and a
+sentence disagreeing with the counter is a finding rather than a rounding. `When to use` must carry
+a **`By hand:`** line, because a pattern's whole question is when to take it AND when to assemble the
+same thing from components, and half an answer reads as a complete one.
+
 ### How to add a pattern, which is four things and not five
 
 A pattern is not a component, so it does not take the list above. It takes `components/patterns/<name>.css`
