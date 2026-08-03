@@ -139,12 +139,35 @@ window.__ask = (function () {
         what the screen shows. Note the wording: no backtick, because this
         comment lives inside the template literal that carries the probe and a
         backtick here ends the string. */
+  /* 8. AND A GRADIENT IS NOT A BACKGROUND-COLOUR. ground() composites
+        backgroundColor up the stack, and an element painted with
+        background-image:linear-gradient() computes backgroundColor to
+        transparent, so the walk goes straight past it and measures the label
+        against whatever is BEHIND the button. Found on 2026-08-03 accepting
+        ui-visual/terms.html: .auth-btn.primary reported 1.18:1 and the flat
+        .cta-bar button 1.05:1, on a brass gradient with dark ink that actually
+        measures about 5.5:1. Both were false. Same family as 7 and the same
+        answer: the painted pixel is not the computed value, so the element is
+        UNMEASURABLE from the cascade rather than failing. A gradient ground
+        needs a sampled pixel, and that is a different instrument. */
+  function gradient(s) {
+    var b = s.backgroundImage;
+    return !!b && b !== 'none' && /gradient\\(/.test(b);
+  }
   function blended(el) {
     for (var n = el; n; n = n.parentElement) {
       var s = getComputedStyle(n);
       if (s.mixBlendMode && s.mixBlendMode !== 'normal') return true;
       if (s.filter && s.filter !== 'none') return true;
       if (s.backdropFilter && s.backdropFilter !== 'none') return true;
+      /* only where it would be READ as the ground: an opaque colour below the
+         gradient ends the walk anyway, so a gradient on a page-level plate does
+         not blind every label inside it. */
+      if (gradient(s)) {
+        var c = px(s.backgroundColor);
+        if (c[3] < 0.999) return true;
+      }
+      if (px(getComputedStyle(n).backgroundColor)[3] >= 0.999) return false;
     }
     return false;
   }
