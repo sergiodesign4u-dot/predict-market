@@ -54,50 +54,34 @@ push();});})();</script>
       <span class="tk-badge">1 screens</span>
     </div>
   </header>
-
   <section class="tk-sec" id="live">
     <h2 data-n="01">Live</h2>
-    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside
-    the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
-    page of its own, so the width under the title is a real viewport and the media queries answer to
-    it.</p>
-    <figure class="ck-scene" id="sp-toc-rail"><figcaption class="ck-scene-lbl"><b>Contents rail, and the reading column beside it</b><span class="ck-w">900px</span><span class="ck-zoom" hidden></span><a href="specimens/toc-rail.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:900px"><iframe data-specimen="toc-rail" src="specimens/toc-rail.html" width="900" height="320" loading="lazy" title="Contents rail, and the reading column beside it"></iframe></div><p class="ck-cap">Shown at 900 because that is where the rail arrives: below it the contents is an in-flow list above the body. Same slot and same 214px as the sub-category rail, a different component in it, because a contents navigates inside one page and its rows have to be anchors.</p></figure>
+    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a page of its own, so the width under the title is a real viewport and the media queries answer to it.</p>
+<figure class="ck-scene" id="sp-toc-rail"><figcaption class="ck-scene-lbl"><b>Contents rail, and the reading column beside it</b><span class="ck-w">900px</span><span class="ck-zoom" hidden></span><a href="specimens/toc-rail.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:900px"><iframe data-specimen="toc-rail" src="specimens/toc-rail.html" width="900" height="320" loading="lazy" title="Contents rail, and the reading column beside it"></iframe></div><p class="ck-cap">Shown at 900 because that is where the rail arrives: below it the contents is an in-flow list above the body. Same slot and same 214px as the sub-category rail, a different component in it, because a contents navigates inside one page and its rows have to be anchors.</p></figure>
   </section>
-
   <section class="tk-sec" id="states">
-    <h2 data-n="03">States</h2>
-    <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
-    live, so hover them; what follows is what the file says will move.</p>
-    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.toc-d[open] .toc-head::after</td><td class='ck-decl'>transform:rotate(225deg)</td></tr><tr><td class='tk-role'>.toc-head:hover</td><td class='ck-decl'>color:var(--text-brass)</td></tr><tr><td class='tk-role'>.toc-link:hover</td><td class='ck-decl'>background:var(--bg-control-hover);border-color:var(--color-action);color:var(--text-brass)</td></tr><tr><td class='tk-role'>.toc-link:active</td><td class='ck-decl'>background:var(--bg-pressed)</td></tr><tr><td class='tk-role'>.toc-link[aria-current="true"]</td><td class='ck-decl'>border-color:var(--color-action);color:var(--text-brass)</td></tr><tr><td class='tk-role'>.toc-link[aria-current="true"] .toc-n</td><td class='ck-decl'>color:var(--text-brass)</td></tr></tbody></table><h3 class="tk-subh">The tokens these states read, on both grounds</h3><p class="tk-note">Neither panel is a screenshot. Each carries <code>data-theme</code> itself, so the token resolves inside it and a role that was given a value in only one theme shows up here as a control that does not move.</p><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><div class="ck-st-tok"><code>--text-brass</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--text-brass)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--bg-control-hover</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-control-hover)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--color-action</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--color-action)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-pressed)">Confirm bet</span><em>the value this state moves to</em></span></div></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><div class="ck-st-tok"><code>--text-brass</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--text-brass)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--bg-control-hover</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-control-hover)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--color-action</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--color-action)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-pressed)">Confirm bet</span><em>the value this state moves to</em></span></div></div></div>
+    <h2 data-n="02">States</h2>
+    <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are live, so hover them; what follows is what the file says will move.</p>
+<table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.toc-d[open] .toc-head::after</td><td class='ck-decl'>transform:rotate(225deg)</td></tr><tr><td class='tk-role'>.toc-head:hover</td><td class='ck-decl'>color:var(--text-brass)</td></tr><tr><td class='tk-role'>.toc-link:hover</td><td class='ck-decl'>background:var(--bg-control-hover);border-color:var(--color-action);color:var(--text-brass)</td></tr><tr><td class='tk-role'>.toc-link:active</td><td class='ck-decl'>background:var(--bg-pressed)</td></tr><tr><td class='tk-role'>.toc-link[aria-current="true"]</td><td class='ck-decl'>border-color:var(--color-action);color:var(--text-brass)</td></tr><tr><td class='tk-role'>.toc-link[aria-current="true"] .toc-n</td><td class='ck-decl'>color:var(--text-brass)</td></tr></tbody></table><h3 class="tk-subh">The tokens these states read, on both grounds</h3><p class="tk-note">Neither panel is a screenshot. Each carries <code>data-theme</code> itself, so the token resolves inside it and a role that was given a value in only one theme shows up here as a control that does not move.</p><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><div class="ck-st-tok"><code>--text-brass</code><span class="ck-st-row"><span class="ck-st-chip ck-ink" style="color:var(--text-brass)">Confirm bet</span><em>the label, on the ground this state puts it on</em></span></div><div class="ck-st-tok"><code>--bg-control-hover</code><span class="ck-st-row"><span class="ck-st-chip ck-ground" style="background:var(--bg-control-hover)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--color-action</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--color-action)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip ck-ground" style="background:var(--bg-pressed)">Confirm bet</span><em>the ground the control settles onto</em></span></div></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><div class="ck-st-tok"><code>--text-brass</code><span class="ck-st-row"><span class="ck-st-chip ck-ink" style="color:var(--text-brass)">Confirm bet</span><em>the label, on the ground this state puts it on</em></span></div><div class="ck-st-tok"><code>--bg-control-hover</code><span class="ck-st-row"><span class="ck-st-chip ck-ground" style="background:var(--bg-control-hover)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--color-action</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--color-action)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip ck-ground" style="background:var(--bg-pressed)">Confirm bet</span><em>the ground the control settles onto</em></span></div></div></div>
   </section>
-
   <section class="tk-sec" id="roles">
-    <h2 data-n="04">Roles it reads</h2>
-    <p class="tk-note">Colour comes in only through these. Change one on
-    <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-control-hover)"></i><code>--bg-control-hover</code></span><span class="ck-role"><i style="background:var(--bg-pressed)"></i><code>--bg-pressed</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
+    <h2 data-n="03">Roles it reads</h2>
+    <p class="tk-note">Colour comes in only through these. Change one on <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
+<div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-control-hover)"></i><code>--bg-control-hover</code></span><span class="ck-role"><i style="background:var(--bg-pressed)"></i><code>--bg-pressed</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
   </section>
-
   <section class="tk-sec" id="classes">
-    <h2 data-n="05">Classes</h2>
-    <p class="tk-note">Every class this file styles, and how many of the 105 painted screens carry
-    it. A zero is not automatically dead: the last column says whether the class is built at runtime,
-    shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
-    used by nothing. Only the last kind is a deletion candidate, and they are collected in
-    <a href="coverage.html">coverage</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.toc</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-d</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-head</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-link</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-list</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-n</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr></tbody></table>
+    <h2 data-n="04">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 105 painted screens carry it. A zero is not automatically dead: the last column says whether the class is built at runtime, shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely used by nothing. Gate 30 fails the build on the last kind.</p>
+<table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.toc</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-d</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-head</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-link</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-list</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-n</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
-
   <section class="tk-sec" id="screens">
-    <h2 data-n="06">Where it stands</h2>
-    <div class="ck-screens"><a href="../ui-visual/terms.html">terms</a></div>
+    <h2 data-n="05">Where it stands</h2>
+<div class="ck-screens"><a href="../ui-visual/terms.html">terms</a></div>
   </section>
-
   <section class="tk-sec" id="css">
-    <h2 data-n="08">The file</h2>
-    <p class="tk-note">To change this component, edit <code>components/toc.css</code>. To change a
-    value it reads, edit the role in <code>components/tokens.css</code>.</p>
-    <details class="ck-src"><summary>components/toc.css</summary><pre>/* components/toc.css
+    <h2 data-n="06">What the file says</h2>
+    <p class="tk-note">The selectors and the css, for a person about to edit them. To change this component, edit <code>components/toc.css</code>; to change a value it reads, edit the role in <code>components/tokens.css</code>.</p>
+<details class="ck-src"><summary>components/toc.css</summary><pre>/* components/toc.css
    Component: toc. Classes: .toc, .toc-d, .toc-head, .toc-link, .toc-list, .toc-n.
 
    The page's own contents: a rail of anchors into the document beside it.
@@ -186,6 +170,7 @@ push();});})();</script>
 }
 </pre></details>
   </section>
+
 </main>
 
 <script src="_frames.js"></script>

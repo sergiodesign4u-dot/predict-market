@@ -54,50 +54,34 @@ push();});})();</script>
       <span class="tk-badge">3 screens</span>
     </div>
   </header>
-
   <section class="tk-sec" id="live">
     <h2 data-n="01">Live</h2>
-    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside
-    the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
-    page of its own, so the width under the title is a real viewport and the media queries answer to
-    it.</p>
-    <figure class="ck-scene" id="sp-account-cta"><figcaption class="ck-scene-lbl"><b>Sticky action bar</b><span class="ck-w">900px</span><span class="ck-zoom" hidden></span><a href="specimens/account-cta.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:900px"><iframe data-specimen="account-cta" src="specimens/account-cta.html" width="900" height="320" loading="lazy" title="Sticky action bar"></iframe></div><p class="ck-cap"><span class="ck-cap-k">state</span> Sticky on a screen, static here so it sits in the frame.</p></figure>
+    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a page of its own, so the width under the title is a real viewport and the media queries answer to it.</p>
+<figure class="ck-scene" id="sp-account-cta"><figcaption class="ck-scene-lbl"><b>Sticky action bar</b><span class="ck-w">900px</span><span class="ck-zoom" hidden></span><a href="specimens/account-cta.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:900px"><iframe data-specimen="account-cta" src="specimens/account-cta.html" width="900" height="320" loading="lazy" title="Sticky action bar"></iframe></div><p class="ck-cap"><span class="ck-cap-k">state</span> Sticky on a screen, static here so it sits in the frame.</p></figure>
   </section>
-<section class="tk-sec" id="inside"><h2 data-n="02">Also rendered inside</h2><p class="tk-note">The same markup, shown once on the page of the component that owns it. Nothing here is a second copy.</p><div class="ck-screens"><a href="profile.html#sp-profile-identity">Identity, reputation and the profile tabs</a></div></section>
-  <section class="tk-sec" id="states">
+<section class="tk-sec" id="inside"><h2 data-n="02">Also rendered inside</h2><p class="tk-note">The same markup, shown once on the page of the component that owns it. Nothing here is a second copy.</p><div class="ck-screens"><a href="profile.html#sp-profile-identity">Identity, reputation and the profile tabs</a></div></section>  <section class="tk-sec" id="states">
     <h2 data-n="03">States</h2>
-    <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
-    live, so hover them; what follows is what the file says will move.</p>
-    <p class="tk-note"><b>No states: not interactive.</b> Declared in <code>ui-kit/_levels.py</code>, and gate 25 holds it: the action bar's own surface, and nothing else since 2026-08-03: a stone, a hairline along the top edge, two rounded corners, and the three declarations .flat takes them away with. The button it used to paint went to button.css where the rest of that family already was (backlog S11), so the bar answers no pointer because a bar is not a control. This entry is the same shape as notice above and for the same reason. A state belongs to what a person can press or type into, and inventing one here would inflate the system the way an empty semantic role would.</p>
+    <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are live, so hover them; what follows is what the file says will move.</p>
+<p class="tk-note"><b>No states: not interactive.</b> Declared in <code>ui-kit/_levels.py</code>, and gate 25 holds it: the action bar's own surface, and nothing else since 2026-08-03: a stone, a hairline along the top edge, two rounded corners, and the three declarations .flat takes them away with. The button it used to paint went to button.css where the rest of that family already was (backlog S11), so the bar answers no pointer because a bar is not a control. This entry is the same shape as notice above and for the same reason. A state belongs to what a person can press or type into, and inventing one here would inflate the system the way an empty semantic role would.</p>
   </section>
-
   <section class="tk-sec" id="roles">
     <h2 data-n="04">Roles it reads</h2>
-    <p class="tk-note">Colour comes in only through these. Change one on
-    <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-card-quiet)"></i><code>--bg-card-quiet</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span></div>
+    <p class="tk-note">Colour comes in only through these. Change one on <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
+<div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-card-quiet)"></i><code>--bg-card-quiet</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span></div>
   </section>
-
   <section class="tk-sec" id="classes">
     <h2 data-n="05">Classes</h2>
-    <p class="tk-note">Every class this file styles, and how many of the 105 painted screens carry
-    it. A zero is not automatically dead: the last column says whether the class is built at runtime,
-    shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
-    used by nothing. Only the last kind is a deletion candidate, and they are collected in
-    <a href="coverage.html">coverage</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.cta-bar</td><td class='tk-hex'>3</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.flat</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr></tbody></table>
+    <p class="tk-note">Every class this file styles, and how many of the 105 painted screens carry it. A zero is not automatically dead: the last column says whether the class is built at runtime, shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely used by nothing. Gate 30 fails the build on the last kind.</p>
+<table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.cta-bar</td><td class='tk-hex'>3</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.flat</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
-
   <section class="tk-sec" id="screens">
     <h2 data-n="06">Where it stands</h2>
-    <div class="ck-screens"><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/wallet.html">wallet</a></div>
+<div class="ck-screens"><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/wallet.html">wallet</a></div>
   </section>
-
   <section class="tk-sec" id="css">
-    <h2 data-n="08">The file</h2>
-    <p class="tk-note">To change this component, edit <code>components/account.css</code>. To change a
-    value it reads, edit the role in <code>components/tokens.css</code>.</p>
-    <details class="ck-src"><summary>components/account.css</summary><pre>/* components/account.css
+    <h2 data-n="07">What the file says</h2>
+    <p class="tk-note">The selectors and the css, for a person about to edit them. To change this component, edit <code>components/account.css</code>; to change a value it reads, edit the role in <code>components/tokens.css</code>.</p>
+<details class="ck-src"><summary>components/account.css</summary><pre>/* components/account.css
 
    Component: account. Classes: .cta-bar, .flat.
 
@@ -130,6 +114,7 @@ push();});})();</script>
 .app-case .cta-bar.flat{border:0;background:none;border-radius:0}
 </pre></details>
   </section>
+
 </main>
 
 <script src="_frames.js"></script>

@@ -179,6 +179,12 @@ def inline(text):
     text = re.sub(r"`([^`]+)`", keep, text)
     text = esc(text)
     text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text, flags=re.S)
+    # SINGLE ASTERISKS TOO, and they had never been handled: a document that
+    # wrote *Deposit* to mark a UI label as a term rendered the asterisks. Bold
+    # is emphasis of a sentence, italic is naming a thing, and the authored
+    # component sources need the second. After the double form, so **x** is not
+    # eaten one asterisk at a time.
+    text = re.sub(r"(?<![\w*])\*([^*\n]+)\*(?!\w)", r"<em>\1</em>", text)
     return re.sub(r"\0(\d+)\0", lambda m: code_html(spans[int(m.group(1))]), text)
 
 

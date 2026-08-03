@@ -312,18 +312,37 @@ def state_tokens(states, roles):
 def state_grounds(tokens):
     if not tokens:
         return ""
+    # A ROLE IS SHOWN DOING ITS OWN JOB, and the caption says which job that is.
+    # Every row used to read "the value this state moves to", eight times per
+    # panel, which is a sentence about the section rather than about the token;
+    # and every row painted the value as a BACKGROUND, so --text-on-brass drew
+    # black on black and the two ink roles were unreadable rectangles. The kind
+    # is read from the role's own name, which is the one place in this system
+    # where a name is load-bearing: tokens.css is written --bg-*, --text-*,
+    # --border-*/--line-*, --opacity-*, --focus-*.
     def sample(tok):
         if tok.startswith("--opacity-"):
             return ('<span class="ck-st-row"><span class="ck-st-chip" style="opacity:var(%s)">'
                     'Confirm bet</span><span class="ck-st-chip">Confirm bet</span>'
-                    '<em>muted, and the same control at rest</em></span>' % tok)
+                    '<em>how far the control fades, beside the same control at rest</em></span>'
+                    % tok)
         if "focus" in tok or "ring" in tok:
             return ('<span class="ck-st-row"><span class="ck-st-chip" '
                     'style="outline:var(--ring) solid var(%s);outline-offset:var(--ring)">'
                     'Confirm bet</span><em>the ring, at the width and offset it ships with</em>'
                     '</span>' % tok)
-        return ('<span class="ck-st-row"><span class="ck-st-chip" style="background:var(%s)">'
-                'Confirm bet</span><em>the value this state moves to</em></span>' % tok)
+        if tok.startswith("--text-"):
+            return ('<span class="ck-st-row"><span class="ck-st-chip ck-ink" style="color:var(%s)">'
+                    'Confirm bet</span><em>the label, on the ground this state puts it on</em>'
+                    '</span>' % tok)
+        if tok.startswith("--border-") or tok.startswith("--line-"):
+            return ('<span class="ck-st-row"><span class="ck-st-chip ck-line" '
+                    'style="border-color:var(%s)">Confirm bet</span>'
+                    '<em>the edge this state draws</em></span>' % tok)
+        klass = "ck-st-chip ck-ground" if tok.startswith("--bg-") else "ck-st-chip"
+        return ('<span class="ck-st-row"><span class="%s" style="background:var(%s)">'
+                'Confirm bet</span><em>the ground the control settles onto</em></span>'
+                % (klass, tok))
     figs = []
     for ground, label in (("dark", "Vault"), ("light", "Daylight")):
         rows = "".join('<div class="ck-st-tok"><code>%s</code>%s</div>' % (esc(t), sample(t))
@@ -407,6 +426,215 @@ def screen_links(screens):
         f'<a href="../ui-visual/{s}">{esc(s[:-5])}</a>' for s in screens) + "</div>"
 
 
+# ---- the half a generator cannot compute, and the half it photographs -------
+# _authored.py holds the reasoning: a program can read how many rules a file has
+# and never what the component is FOR, so the three blocks that carry judgement
+# were missing from every page. _states.py holds the pictures: a hover shown as
+# `background:var(--bg-control-hover)` is a fact about the file and tells nobody
+# what a hover looks like.
+import _authored                                                      # noqa: E402
+import _states                                                        # noqa: E402
+
+AUTHORED = {p.stem: _authored.parse(p)
+            for p in sorted((KIT / "authored").glob("*.md"))} if (KIT / "authored").exists() else {}
+CAPTURED = _states.by_component()
+
+
+def png_size(path):
+    """Width and height out of the IHDR, so the page can reserve the box. The
+    captures are taken at deviceScaleFactor 2, so the css size is half."""
+    b = path.read_bytes()[16:24]
+    return (int.from_bytes(b[:4], "big") // 2, int.from_bytes(b[4:], "big") // 2)
+
+
+STATE_ORDER = ["rest", "hover", "active", "focus", "disabled"]
+STATE_WHAT = {"rest": "rest", "hover": "hover", "active": "held down",
+              "focus": "focused by keyboard", "disabled": "disabled"}
+
+
+def state_gallery(name):
+    """Every state of every distinct face, in both themes, photographed.
+
+    Not a rendering of the state here: each picture was taken in a specimen with
+    a real pointer, a real Tab and a real press (ui-kit/_verify/states.cjs), so
+    what is on the page is what a browser did, not what this generator thinks the
+    rule means. The value each picture was taken at is printed under it, which is
+    what makes the image checkable rather than decorative."""
+    groups = CAPTURED.get(name)
+    if not groups:
+        return ""
+    doc = AUTHORED.get(name, {})
+    caps = _authored.state_captions(doc.get("States", ""))
+    figs = []
+    for g in groups:
+        shots = g.get("shots", {})
+        panels = []
+        for theme, label in (("dark", "Vault"), ("light", "Daylight")):
+            cells = []
+            for st in STATE_ORDER:
+                shot = shots.get("%s-%s" % (st, theme))
+                if not shot:
+                    continue
+                path = KIT / "_states" / shot["file"]
+                if not path.exists():
+                    continue
+                w, h = png_size(path)
+                cells.append(
+                    '<figure class="ck-shot"><img src="_states/%s" width="%d" height="%d" '
+                    'alt="%s, %s, %s theme" loading="lazy">'
+                    '<figcaption>%s</figcaption></figure>'
+                    % (shot["file"], w, h, esc(g["el"]), esc(STATE_WHAT[st]), theme,
+                       esc(STATE_WHAT[st])))
+            if cells:
+                panels.append('<div class="ck-shot-row" data-theme="%s"><b>%s</b>'
+                              '<div class="ck-shot-strip">%s</div></div>'
+                              % (theme, label, "".join(cells)))
+        missing = [s for s in ("hover", "active", "focus")
+                   if not shots.get("%s-dark" % s)]
+        note = ('<p class="tk-note ck-shot-gap">Not staged: %s. No specimen puts this one '
+                'where the state can be raised, which is a specimen debt and not a missing '
+                'rule.</p>' % ", ".join(missing)) if missing else ""
+        figs.append(
+            '<figure class="ck-gal">'
+            '<figcaption class="ck-gal-head"><b>%s</b>'
+            '<span class="ck-w">%s</span>'
+            '<a href="specimens/%s.html" target="_blank" rel="noopener">the specimen</a>'
+            '</figcaption>%s%s%s</figure>'
+            % (esc(g["el"]), esc(g.get("scope") or "on the bare canvas"), g["specimen"],
+               ('<p class="ck-gal-cap">%s</p>' % md_inline(caps[g["key"]]))
+               if g["key"] in caps else "",
+               "".join(panels), note))
+    return "".join(figs)
+
+
+def authored_block(name, section, tag="p"):
+    doc = AUTHORED.get(name, {})
+    body = doc.get(section, "").strip()
+    if not body:
+        return ""
+    out = []
+    for para in re.split(r"\n\s*\n", body):
+        if para.lstrip().startswith("- "):
+            items = "".join("<li>%s</li>" % md_inline(l.strip()[2:])
+                            for l in para.splitlines() if l.strip().startswith("- "))
+            out.append('<ul class="tk-doc-list">%s</ul>' % items)
+        else:
+            out.append("<%s>%s</%s>" % (tag, md_inline(" ".join(para.split())), tag))
+    return "".join(out)
+
+
+def sections_for(name, c):
+    """The page, as an ordered list of sections, numbered where they land.
+
+    THE ORDER IS THE ARGUMENT. A stand page exists to answer "what is this and
+    how do I use it", and until 2026-08-03 it opened with a live frame and then
+    went straight to a table of selectors: everything that carried judgement was
+    absent and everything that carried facts was first. So the authored blocks
+    come first where they exist, the STATES ARE PICTURES rather than a column of
+    declarations, and the selector table keeps its place at the foot with the
+    css, under a heading that says what it is: what the file says, for a person
+    who is about to edit it.
+
+    A component with no authored source keeps the old order rather than losing
+    its states section: the fan-out writes those files one at a time, and a page
+    that is thin is better than a page that is empty."""
+    doc = AUTHORED.get(name, {})
+    gallery = state_gallery(name)
+    table = states_table(c["states"], name) + state_grounds(state_tokens(c["states"], c["roles"]))
+    out = []
+
+    def sec(sid, title, note, body):
+        if not body:
+            return
+        out.append((sid, title, note, body))
+
+    sec("purpose", "What it is", "", authored_block(name, "Purpose"))
+    sec("anatomy", "Anatomy",
+        "Which part is which, in the product's own words. Every class named here is one this "
+        "file styles, and the build fails if it is not.",
+        authored_block(name, "Anatomy"))
+    sec("live", "Live",
+        "The component in the markup it ships with, quoted from the frozen kit, inside the "
+        "product's own wrapper and painted by <code>components/index.css</code> alone. Each frame "
+        "is a page of its own, so the width under the title is a real viewport and the media "
+        "queries answer to it.", live(name))
+    # the inside-of block writes its own <section>, so it goes in as a passthrough
+    # rather than through sec(); it belongs directly under Live, because it is the
+    # rest of the answer to "where can I see this thing"
+    ins = elsewhere(name)
+    if ins:
+        out.append(("__passthrough__", "", "", ins))
+    if gallery:
+        sec("states", "States, as they look",
+            "Photographs, not renderings. Each was taken in the specimen linked beside it with a "
+            "REAL pointer, a real Tab and the mouse button really held down "
+            "(<code>ui-kit/_verify/states.cjs</code>); nothing here is a state faked with a stand "
+            "class, which is the rule this section used to be missing because of. One row per "
+            "distinct FACE: two elements that measure the same at rest are one picture, however "
+            "many screens carry them, and that grouping is computed rather than chosen. The "
+            "pictures go stale the moment a rule changes, so each one records the files it was "
+            "taken from and <code>python3 ui-kit/_states.py</code> fails when their bytes move.",
+            gallery)
+    else:
+        sec("states", "States",
+            "Hover and focus are not faked here with a stand class. The frames above are live, so "
+            "hover them; what follows is what the file says will move.", table)
+    sec("when", "When to use",
+        "The judgement a generator cannot read out of css, and the reason "
+        "<code>ui-kit/authored/%s.md</code> exists." % name,
+        authored_block(name, "When to use"))
+    rule = authored_block(name, "Rule")
+    anti = authored_block(name, "Anti-rule")
+    if rule or anti:
+        sec("rule", "The rule, and the anti-rule",
+            "One sentence to follow and one mistake worth naming. An anti-rule has to name the "
+            "component that should have been used instead, or it is a complaint rather than an "
+            "address, and the build checks that it does.",
+            ('<div class="ck-rule"><b>Do</b>%s</div>' % rule if rule else "") +
+            ('<div class="ck-rule ck-anti"><b>Never</b>%s</div>' % anti if anti else ""))
+    out.append(("__constraints__", "", "", constraints(name)))
+    sec("roles", "Roles it reads",
+        "Colour comes in only through these. Change one on <a href=\"tokens.html\">the token "
+        "page</a> and it changes here and on every screen at once.", role_swatches(c["roles"]))
+    sec("classes", "Classes",
+        "Every class this file styles, and how many of the %d painted screens carry it. A zero is "
+        "not automatically dead: the last column says whether the class is built at runtime, shown "
+        "only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely "
+        "used by nothing. Gate 30 fails the build on the last kind." % len(uv_classes),
+        class_table(c["classes"]))
+    sec("screens", "Where it stands", "", screen_links(c["screens"]))
+    sec("css", "What the file says",
+        "The selectors and the css, for a person about to edit them. To change this component, "
+        "edit <code>components/%s.css</code>; to change a value it reads, edit the role in "
+        "<code>components/tokens.css</code>." % name,
+        (('<h3 class="tk-subh">Every state rule, and what it moves</h3>' + table)
+         if gallery else "") +
+        '<details class="ck-src"><summary>components/%s.css</summary><pre>%s</pre></details>'
+        % (name, esc(c["css"])))
+
+    html = []
+    for sid, title, note, body in out:
+        if sid in ("__constraints__", "__passthrough__"):
+            html.append(body)          # writes its own <section> and its own number
+            continue
+        html.append('  <section class="tk-sec" id="%s">\n    <h2 data-n="00">%s</h2>\n%s%s\n'
+                    '  </section>\n' % (sid, esc(title),
+                                        ('    <p class="tk-note">%s</p>\n' % note) if note else "",
+                                        body))
+    # THE NUMBERS ARE THE READING ORDER, so they are stamped last and over
+    # everything. Two of these sections bring their own markup and their own
+    # hard-coded number (the constraints block, the inside-of block), and a page
+    # whose numbers run 05, 06, 07, 07, 08 is a page that was assembled rather
+    # than written. Counting here is the only place that can see all of them.
+    page, n = [], 0
+    for chunk in re.split(r'(data-n="\d+")', "".join(html)):
+        if re.fullmatch(r'data-n="\d+"', chunk):
+            n += 1
+            chunk = 'data-n="%02d"' % n
+        page.append(chunk)
+    return "".join(page)
+
+
 PAGE = """<!doctype html>
 <html lang="en">
 <head>
@@ -433,51 +661,7 @@ PAGE = """<!doctype html>
       <span class="tk-badge">{nscreens} screens</span>
     </div>
   </header>
-
-  <section class="tk-sec" id="live">
-    <h2 data-n="01">Live</h2>
-    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside
-    the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
-    page of its own, so the width under the title is a real viewport and the media queries answer to
-    it.</p>
-    {live}
-  </section>
-{inside}
-  <section class="tk-sec" id="states">
-    <h2 data-n="03">States</h2>
-    <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
-    live, so hover them; what follows is what the file says will move.</p>
-    {states}
-  </section>
-
-  <section class="tk-sec" id="roles">
-    <h2 data-n="04">Roles it reads</h2>
-    <p class="tk-note">Colour comes in only through these. Change one on
-    <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-    {roles}
-  </section>
-
-  <section class="tk-sec" id="classes">
-    <h2 data-n="05">Classes</h2>
-    <p class="tk-note">Every class this file styles, and how many of the {nuv} painted screens carry
-    it. A zero is not automatically dead: the last column says whether the class is built at runtime,
-    shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
-    used by nothing. Only the last kind is a deletion candidate, and they are collected in
-    <a href="coverage.html">coverage</a>.</p>
-    {classes}
-  </section>
-
-  <section class="tk-sec" id="screens">
-    <h2 data-n="06">Where it stands</h2>
-    {screens}
-  </section>
-{constraints}
-  <section class="tk-sec" id="css">
-    <h2 data-n="08">The file</h2>
-    <p class="tk-note">To change this component, edit <code>components/{name}.css</code>. To change a
-    value it reads, edit the role in <code>components/tokens.css</code>.</p>
-    <details class="ck-src"><summary>components/{name}.css</summary><pre>{css}</pre></details>
-  </section>
+{sections}
 </main>
 
 <script src="_frames.js"></script>
@@ -502,11 +686,7 @@ for path in sorted(COMP.glob("*.css")):
             "Every rule that paints this component, in one file. "
             "Colour through a role, geometry straight from a primitive."))),
         rules=c["rules"], nclasses=len(c["classes"]), nscreens=len(c["screens"]),
-        nuv=len(uv_classes),
-        live=live(name), inside=elsewhere(name), states=states_table(c["states"], name) + state_grounds(state_tokens(c["states"], c["roles"])),
-        roles=role_swatches(c["roles"]), classes=class_table(c["classes"]),
-        screens=screen_links(c["screens"]), constraints=constraints(name),
-        css=esc(c["css"]))
+        sections=sections_for(name, c))
     (KIT / (name + ".html")).write_text(page, encoding="utf-8")
     built.append((name, c))
 
