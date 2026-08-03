@@ -3,7 +3,7 @@
 ## Sources
 
 - `ui-kit/docs/inventory.md` L161 - "CTA bar (`.cta-bar`: Add funds + Open Wallet / Withdraw)", filed L2, on how-it-works, my-profile and wallet, 3 screens. That row is true.
-- `ui-kit/docs/inventory.md` L163 - "Transaction list (deposits/payouts/fees/stakes) | `account.css` | L2 | wallet | list / loading / error". **That row is false as of 2026-08-03**: this file has two rules and neither of them is a transaction list. What draws that list is `position.css`, whose `.pos` rows carry it, and the inventory has not been told.
+- `ui-kit/docs/inventory.md` L163 - "Transaction list (deposits/payouts/fees/stakes)", filed under `components/account.css`, L2, wallet, states list / loading / error. **That row is false as of 2026-08-03**: this file has two rules and neither of them is a transaction list. What draws that list is `components/position.css`, whose `.pos` rows carry it, and the inventory has not been told.
 - The 3 painted screens, and `components/patterns/action-bar.css`, which holds the arrangement of the same bar.
 - `ui-kit/docs/backlog.md` S11, closed on 2026-08-03: eight rules that painted this bar's BUTTON moved to `components/button.css`, and one line of arrangement moved to the pattern.
 - `ui-kit/_levels.py` STATIC, where the entry written that day says what is left: a stone, a hairline, two corners, and the three declarations `.flat` takes them away with.
