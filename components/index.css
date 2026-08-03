@@ -57,14 +57,15 @@
 @import url("related.css");
 @import url("yesno.css");
 @import url("toast.css");
+@import url("comments.css");
 @import url("cookie-consent.css");
+@import url("position.css");
 
 /* Organisms: they hold molecules, or they are the shell of a screen.
    Inside the group, the shallower nesting comes first. */
 @import url("bottomnav.css");
 @import url("hiw-dialog.css");
 @import url("hero.css");
-@import url("comments.css");
 @import url("catnav.css");
 @import url("notice.css");
 @import url("header.css");
@@ -73,12 +74,11 @@
 @import url("state-block.css");
 @import url("card.css");
 @import url("dialog.css");
+@import url("bets-table.css");
 @import url("feed.css");
 @import url("betpanel.css");
 @import url("profile.css");
 @import url("event-detail.css");
-@import url("position.css");
-@import url("bets-table.css");
 @import url("tabs.css");
 @import url("chart.css");
 

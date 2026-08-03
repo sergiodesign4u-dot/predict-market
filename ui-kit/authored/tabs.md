@@ -25,9 +25,10 @@ They are one component because they are one mechanism, and the mechanism is the 
 - `.ed-tabpanel` - one panel, and `.ed-panel-comments`, `.ed-panel-holders`, `.ed-panel-positions` and `.ed-panel-activity` the four of them.
 - `.tabs` - the My Bets pair, Active and History. Two tabs, a different mechanism, because these are two screens with two URLs rather than two panels.
 - `.ptabs`, `.ptab-bar`, `.ptab-in`, `.ptab-lbl`, `.ptab-panel` - the profile's three, on the same radio mechanism as the event's.
-- `.seg` - the small segmented switcher: comment sort, and the same shape wherever a strip has to choose between two or three views of one list.
 - `.rules-tabs`, `.rules-tab` - *Rules* and *Market Context*, the one pair in this product where the two segments make different promises.
 - `.ed-range` - the chart's time range. It is here rather than in `components/chart.css` on purpose, and the STATIC entry on the chart names it.
+
+**One class left this file on 2026-08-03** and it is named here rather than quietly dropped. The small segmented switcher went to `components/comments.css` (`docs/backlog.md` 17). It lived here because this file "owns every switcher", and that sentence was the defect: all seven rules are scoped `.cmt-controls`, so the ownership was a CATEGORY and not a containment, and it cost `_levels.ORDER_BREAK` a hand-written cycle - the tab strip holds the thread, and the thread held a piece of the tab strip. The cycle went with the rules.
 
 ## When to use
 
@@ -54,8 +55,8 @@ Seen: `voice/docs/microcopy.md` Step 25, where exactly this confusion had alread
 - `input.ed-tabradio @tabs-detail` - The input that holds the state. It is off-screen rather than `display:none`, which is why it can be focused at all, and the focus it takes is what draws the ring on the label beside it.
 - `label.ed-tablabel @tabs-detail` - The open tab: brass ink and a lit edge under it. All four faces, and the label is what receives the pointer because the input is not where a person is looking.
 - `label.ed-tablabel @tabs-detail (2)` - A tab that is not open, at rest, hovered, held and focused. Quiet ink, ground answers, and the strip does not reflow: four tabs that change width as a thumb crosses them are four moving targets.
-- `button.sel @tabs-detail` - The chosen segment of a `.seg` switcher. Smaller than a tab and the same idea, so a person who has met one has met both.
-- `button @tabs-detail (2)` - An unchosen segment, all four faces.
+- `button.sel @chart` - The chosen window of the `.ed-range` strip (1d / 1w / 1m / all), all four faces. It is the switcher this file still owns after `.seg` left for `components/comments.css` on 2026-08-03, and it is the better specimen of the pair: the range strip changes what the CHART shows, so the chosen face has to read at a glance from across the plot.
+- `button @chart` - An unchosen window, all four faces. Same quiet ground as every other unchosen segment in the product, which is the point of there being one switcher shape rather than three.
 - `input.ptab-in @profile-identity` - The profile's radio, the same mechanism on a different screen.
 - `label.ptab-lbl @profile-identity` - The profile's open tab.
 - `label.ptab-lbl @profile-identity (2)` - A profile tab that is not open. It is worth comparing this face with the event's: same mechanism, different ground, and the difference between them is the plate underneath rather than the control.

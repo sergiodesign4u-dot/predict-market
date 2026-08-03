@@ -1,7 +1,7 @@
 /* components/catnav.css
    Component: catnav. Classes: .cat-ic, .cat-nav, .cnt, .feed-subfilter, .subcat, .subcat-head.
 
-   Reads: --bevel-notice, --bg-chip, --bg-control-hover, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --line-brass-soft, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
+   Reads: --bevel-notice, --bg-chip, --bg-control-hover, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
    Stand:  ui-kit/catnav.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -91,7 +91,7 @@
 .feed-inner .cat-nav li{flex:0 0 auto}
 .cat-ic{width:var(--icon-18);height:var(--icon-18);flex:0 0 auto;fill:currentColor;stroke:none;opacity:.9}
 .feed-inner .cat-nav button{display:inline-flex;align-items:center;gap:var(--space-12);min-height:0;background:var(--bg-chip);border:1px solid var(--bevel-notice);border-radius:var(--radius-10);color:var(--text-chip-hover);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12) var(--space-20);box-shadow:none}
-.feed-inner .cat-nav button:hover{border-color:var(--line-brass-soft);color:var(--text-strong);background:var(--bg-control-hover)}
+.feed-inner .cat-nav button:hover{border-color:var(--border-brass-hover);color:var(--text-strong);background:var(--bg-control-hover)}
 /* This strip is the top of every feed screen, and on mobile it is the only way to change
    category: there is no hover there to answer a tap with, so a tap had no reply at all. The
    chip carries box-shadow:none at rest, so there is nothing lifted to flatten, and the hover

@@ -694,7 +694,6 @@
                                            of color-mix(in oklab, ...) as sRGB bytes, so a pale banner
                                            measured as near black. The browser parses the colour now: a
                                            canvas resolves any css colour string to bytes */
-  --line-brass-soft:var(--brass-a45);   /* from: the quieter hover border */
   --tint-hover:var(--white-a06);        /* from: the quiet hover wash on a chip (cat-nav condensed,
                                            feed subfilter). It was reading --bevel-faint, which is
                                            the LIT LIP of an emboss: the same value on graphite and
@@ -901,7 +900,6 @@
   --tint-brass-45:var(--brass-a60);
   --glow-brass:var(--brass-a45);
   --glow-focus:var(--brass-a45);
-  --line-brass-soft:var(--brass-a60);
   --tint-hover:var(--ink-a10);          /* on chalk a hover reaches for the ink, not for the light */
   --line-grid:var(--ink-a10);
 

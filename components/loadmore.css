@@ -1,7 +1,7 @@
 /* components/loadmore.css
    Component: loadmore. Classes: .load-more, .load-more-wrap.
 
-   Reads: --bevel-notice, --bg-chip, --bg-control-hover, --bg-pressed, --edge-groove-light, --line-brass-soft, --text-chip-hover, --text-strong
+   Reads: --bevel-notice, --bg-chip, --bg-control-hover, --bg-pressed, --border-brass-hover, --edge-groove-light, --text-chip-hover, --text-strong
    Stand:  ui-kit/loadmore.html
    Stands on: 9 ui-visual screens (event-feed-crypto-logged-out.html, event-feed-crypto.html, event-feed-culture-logged-out.html, event-feed-culture.html, event-feed-general-logged-out.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -26,5 +26,5 @@
    No :focus-visible either, for the same reason 24 other files no longer have one:
    base.css declares the ring once and this button sits on --bg-chip, which the default
    ring is visible against on both grounds. */
-.app-case .load-more:hover:not(:disabled){border-color:var(--line-brass-soft);background:var(--bg-control-hover);color:var(--text-strong);transform:none}
+.app-case .load-more:hover:not(:disabled){border-color:var(--border-brass-hover);background:var(--bg-control-hover);color:var(--text-strong);transform:none}
 .app-case .load-more:active:not(:disabled){background:var(--bg-pressed)}

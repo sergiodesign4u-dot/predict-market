@@ -56,8 +56,8 @@ push();});})();</script>
     <code>ui-kit/docs/tokens-audit.md</code>.</p>
     <div class="tk-badges">
       <span class="tk-badge">216 primitives</span>
-      <span class="tk-badge">138 roles</span>
-      <span class="tk-badge">96 moved by daylight</span>
+      <span class="tk-badge">137 roles</span>
+      <span class="tk-badge">95 moved by daylight</span>
       <span class="tk-badge">two themes</span>
     </div>
     <div class="tk-jump">
@@ -466,7 +466,6 @@ push();});})();</script>
 <tr><td class="tk-pair"><span class="tk-dot" data-theme="dark" style="background:var(--glow-brass)"></span><span class="tk-dot" data-theme="light" style="background:var(--glow-brass)"></span></td><td class="tk-role">--glow-brass</td><td class="tk-points">--brass-a30</td><td class="tk-hex">rgba(199,162,78,.30)</td><td><span class="tk-points">--brass-a45</span></td><td class="tk-hex">rgba(199,162,78,.45)</td><td class="tk-from">the card and chip glow</td></tr>
 <tr><td class="tk-pair"><span class="tk-dot" data-theme="dark" style="background:var(--glow-focus)"></span><span class="tk-dot" data-theme="light" style="background:var(--glow-focus)"></span></td><td class="tk-role">--glow-focus</td><td class="tk-points">--brass-a16</td><td class="tk-hex">rgba(199,162,78,.16)</td><td><span class="tk-points">--brass-a45</span></td><td class="tk-hex">rgba(199,162,78,.45)</td><td class="tk-from">the focus ring on a field</td></tr>
 <tr><td class="tk-pair"><span class="tk-dot" data-theme="dark" style="background:var(--focus-ring)"></span><span class="tk-dot" data-theme="light" style="background:var(--focus-ring)"></span></td><td class="tk-role">--focus-ring</td><td class="tk-points">--brass-400</td><td class="tk-hex">#d7ac53</td><td><span class="tk-points">--brass-700</span></td><td class="tk-hex">#684f18</td><td class="tk-from">same value as --text-brass for now: the ring is not a word, and the day a states pass gives focus its own colour the links must not follow it . From: :focus-visible, declared once in base.css. MEASURED in the browser, not computed from the hex, and RE-measured on 2026-08-02 after the first pass got it wrong: every focusable control on 153 pages, 179 kinds, the ring composited over the ground it stands on. 6.67:1 at worst, 9.06:1 at best. A ring answers to 3:1. The first numbers here (6.98, 7.80) came from a sweep that read the ground with a regex, and a regex reads the components of color-mix(in oklab, ...) as sRGB bytes, so a pale banner measured as near black. The browser parses the colour now: a canvas resolves any css colour string to bytes</td></tr>
-<tr><td class="tk-pair"><span class="tk-dot" data-theme="dark" style="background:var(--line-brass-soft)"></span><span class="tk-dot" data-theme="light" style="background:var(--line-brass-soft)"></span></td><td class="tk-role">--line-brass-soft</td><td class="tk-points">--brass-a45</td><td class="tk-hex">rgba(199,162,78,.45)</td><td><span class="tk-points">--brass-a60</span></td><td class="tk-hex">rgba(199,162,78,.6)</td><td class="tk-from">the quieter hover border</td></tr>
 <tr><td class="tk-pair"><span class="tk-dot" data-theme="dark" style="background:var(--tint-hover)"></span><span class="tk-dot" data-theme="light" style="background:var(--tint-hover)"></span></td><td class="tk-role">--tint-hover</td><td class="tk-points">--white-a06</td><td class="tk-hex">rgba(255,255,255,.06)</td><td><span class="tk-points">--ink-a10</span></td><td class="tk-hex">rgba(33,31,25,.1)</td><td class="tk-from">the quiet hover wash on a chip (cat-nav condensed, feed subfilter). It was reading --bevel-faint, which is the LIT LIP of an emboss: the same value on graphite and nothing at all on chalk, where more light is not available</td></tr>
 <tr><td class="tk-pair"><span class="tk-dot" data-theme="dark" style="background:var(--line-grid)"></span><span class="tk-dot" data-theme="light" style="background:var(--line-grid)"></span></td><td class="tk-role">--line-grid</td><td class="tk-points">--white-a06</td><td class="tk-hex">rgba(255,255,255,.06)</td><td><span class="tk-points">--ink-a10</span></td><td class="tk-hex">rgba(33,31,25,.1)</td><td class="tk-from">same value as --tint-hover for now: a line on a chart and a wash under a cursor, which move apart the moment either needs to . From: the chart grid, same story: a line, not a lip</td></tr>
 <tr><td class="tk-pair"><span class="tk-dot" data-theme="dark" style="background:var(--line-brass-strong)"></span><span class="tk-dot" data-theme="light" style="background:var(--line-brass-strong)"></span></td><td class="tk-role">--line-brass-strong</td><td class="tk-points">--brass-a60</td><td class="tk-hex">rgba(199,162,78,.6)</td><td><span class="tk-same">not moved</span></td><td class="tk-hex"></td><td class="tk-from">the input hover border</td></tr>
@@ -514,7 +513,7 @@ push();});})();</script>
     reading it in. Nothing is screenshotted: each one carries <code>data-theme</code> itself and the
     roles resolve inside it, which is what section 2's selector buys.</p>
     <h3 class="tk-subh">What it is allowed to touch</h3>
-    <p class="tk-note">96 of the 138 roles are overridden and <b>not one primitive is
+    <p class="tk-note">95 of the 137 roles are overridden and <b>not one primitive is
     redefined</b>, so the Vault palette above still says exactly what it said. The values daylight
     needs are their own primitives at the end of section 1: a chalk ramp, a warm ink ramp and its
     alphas, one dark brass, a darker green and red, a weaker grain and a second logo mark. The other

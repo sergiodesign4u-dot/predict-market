@@ -29,6 +29,8 @@ It is the product's memory. Everything else here is about an event that might ha
 - `.pos-note` - the line a row adds when the figure needs explaining, which is principle 1 at row size.
 - `.skeleton` - the loading face. It is a state word rather than a part, and `ui-kit/_levels.py` declares it as one.
 
+- `.pos-status` - two things under one name, and both arrived here from `components/profile.css` on 2026-08-03 (`docs/backlog.md` 17). As a `<p>` it is the brass-ticked heading between groups of rows; as a `<span>` inside `.pos-top` it is a single row's own status word. While the six rules stood in `profile.css` the level arithmetic read `position` as an organism THROUGH `profile`, which is a list of bets reading as a part of a profile page.
+
 ## When to use
 
 Wherever a person's own bets are listed: My Bets in both its tabs, the wallet, the profile's public record, and any screen that references a stake a person holds.

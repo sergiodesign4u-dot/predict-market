@@ -14,15 +14,16 @@ been edited by it.
 Every row says what was missing, what the screen did instead, and what the substitute cost, measured
 where a measurement was possible.
 
-**Standing today: twenty three rows opened, eight closed, fifteen open.** Three closed the same
+**Standing today: twenty three rows opened, nine closed, fourteen open.** Three closed the same
 afternoon they were written, and by the same fix, because they were one gap seen from three sides:
 the system had no reading layout. Three more closed on 2026-08-03 by the merge - S16, S17 and the
 carried S11 - and all three were the same defect in different files: one shape declared more than
 once and kept in step by hand. **S14 closed the same day and by a different kind of fix**: not a
 merge and not a new part, but a role read at the wrong level of its own family, repaired by changing
 two words. S21 closed the same day and became gate 34, and opened S23 in doing so, because a
-column nothing computes is a different gap from a cell somebody typed wrong. Of the fifteen that
-remain, S9, S12 and S15 are answers rather than gaps, so the real count is **twelve**, and most of them belong to stages 10 to 12 rather than to this one.
+column nothing computes is a different gap from a cell somebody typed wrong. S18 closed the same day and by the same
+kind of fix as S16 and S17, which is the fourth instance of one shape under two names. Of the fourteen
+that remain, S9, S12 and S15 are answers rather than gaps, so the real count is **eleven**, and most of them belong to stages 10 to 12 rather than to this one.
 
 ---
 
@@ -115,7 +116,7 @@ scroll of its own. The three rails are fixed; these are what the fix left behind
 
 | # | What is missing | Where it stands |
 |---|---|---|
-| S18 | **Two roles, one value, one job**: `--border-brass-hover` and `--line-brass-soft` | Both are `--brass-a45` on graphite and `--brass-a60` in daylight, in every theme, and both are described in `tokens.css` as the hover border of a quiet control ("the hover border of the quiet button family" and "the quieter hover border"). `--line-brass-soft` has 9 readers and `--border-brass-hover` 3. The button family stopped reading the second name today, because a merged rule can only carry one; the other 8 readers were left alone, because renaming a role across 9 files is a token decision and not a button one. It costs nothing to look at and it is exactly the shape S16 was: one thing under two names, kept in step by hand |
+| ~~S18~~ | ~~**Two roles, one value, one job**: `--border-brass-hover` and `--line-brass-soft`~~ **CLOSED 2026-08-03.** Merged through `ui-kit/_rescale.py` `ROLE_RENAME`, which renames the declaration and every reader and then drops the duplicate per block: **9 rewrites across 8 component files**, one token gone, no value edited. **The name that survives is the one that names its STATE**, because `--border-brass` is the same border at rest and a state is a token in this system; `soft` named an intensity in a family whose `strong` member is also a hover, and that confusion is what let one job carry two names. The original row: | Both are `--brass-a45` on graphite and `--brass-a60` in daylight, in every theme, and both are described in `tokens.css` as the hover border of a quiet control ("the hover border of the quiet button family" and "the quieter hover border"). `--line-brass-soft` has 9 readers and `--border-brass-hover` 3. The button family stopped reading the second name today, because a merged rule can only carry one; the other 8 readers were left alone, because renaming a role across 9 files is a token decision and not a button one. It costs nothing to look at and it is exactly the shape S16 was: one thing under two names, kept in step by hand |
 | S19 | **A quiet control's hover ink is not in the family's contract** | `.auth-btn`, `.state-btn`, `.provider-btn` and now the action bar's button all take `--text-strong` on hover; the brass ones keep `--text-on-brass`, and that had to be RESTATED in the brass hover rule once the quiet rule started setting a colour, or the first child of an action bar read white ink on lit brass. It works, and it works because two rules agree about a third thing. Whether the ink belongs in the state at all is a DESIGN.md question: nothing else in this product brightens its label under a pointer |
 
 ---

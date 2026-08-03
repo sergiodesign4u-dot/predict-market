@@ -37,8 +37,6 @@ dialog.app-dialog .sheet-head{border-bottom:1px solid var(--border-hairline)}
 dialog.app-dialog .sheet-close{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
 dialog.app-dialog .fine{color:var(--text-muted)}
 .outcome-dialog .sheet-body>.fine:first-child{font-weight:var(--weight-bold);font-size:var(--text-13);margin:0}
-.app-case :is(.bet-panel,.bet-sheet) .fine{color:var(--text-muted)}
-.app-case .bet-sheet .fine{margin-top:-8px}
 dialog.app-dialog.outcome-dialog .sheet-head{position:relative;overflow:clip;display:block;padding:var(--space-24) var(--space-20) var(--space-20);border-bottom:0}
 dialog.app-dialog.win-dialog .sheet-head{background:radial-gradient(120% 96% at 100% 0%,color-mix(in oklab,var(--result-won) 42%,transparent),transparent 60%),linear-gradient(158deg,var(--result-won-stone),var(--bg-plate-to))}
 dialog.app-dialog.loss-dialog .sheet-head{background:linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}

@@ -19,7 +19,6 @@ The emptiness has a specific history. The arrangement of a grid went to `compone
 
 - `.feed` - the column. It is a flex child that takes the remaining space and carries no ground of its own inside `.app-case`, because the plate under it is the frame's.
 - `.feed-head` - the heading row above the list. The rule here is on the `h1` or `h2` inside it, in the display face, and it is why the feed's title reads as the page's title rather than as a section label.
-- `.grid-l` - and this one is not a feed class at all. It styles the grid LINES of the price chart, and it is in this file.
 
 ## When to use
 
@@ -43,4 +42,4 @@ Seen: `components/feed.css` itself carries the counter-declaration `.app-case .f
 
 None, and it is declared in `ui-kit/_levels.py` STATIC: this is the region cards stand in, and every control inside it belongs to `card`, `catnav` or `loadmore`, each photographed on its own page.
 
-**One thing in this file should not be here, and it is named rather than moved.** `.grid-l` is the grid line of the price chart: the rule is `.app-case .chart-svg .grid-l`, it draws nothing on any feed, and it is in `components/feed.css`. The ownership map is not wrong about it - this is the file that styles it with the fewest ancestors, so the map hands it here correctly - which means `coverage.md` reports the feed as owning a chart class, and the level arithmetic reads a chart part inside the feed. It belongs in `components/chart.css`. Moving it is a cascade change, since `chart` loads at the end of level 3 and `feed` in the middle, so it is a decision rather than a tidy-up, and this line is the record that it is open.
+**One thing in this file should not have been here, and on 2026-08-03 it left.** `.grid-l` is the grid line of the price chart: the rule is `.app-case .chart-svg .grid-l`, it drew nothing on any feed, and it was in `components/feed.css`. The ownership map was not wrong about it - that was the file styling it with the fewest ancestors, so the map handed it here correctly - which is exactly why no check could see it, and why `coverage.md` reported the feed as owning a chart class while the level arithmetic read a chart part inside the feed. It is now in `components/chart.css`. The move was a cascade change and was proved as one, not assumed: `chart` loads at the end of level 3 and `feed` in the middle, so the rule now resolves later, and the full snapshot sweep is what says nothing moved.

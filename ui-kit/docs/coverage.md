@@ -16,19 +16,19 @@ says so. No em dash.
 |---|---|---|---|---|---|
 | account | 1 | account-cta | 1 | 2 | 3 |
 | base | 2 | base-frame, base-groove | 0 | 13 | 105 |
-| betpanel | 4 | betpanel-states, betpanel-dock, betpanel-sheet, betpanel-more | 2 | 19 | 11 |
+| betpanel | 4 | betpanel-states, betpanel-dock, betpanel-sheet, betpanel-more | 2 | 20 | 11 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 13 | 9 |
 | bottomnav | 1 | bottomnav | 0 | 2 | 105 |
 | button | 2 | button-family, button-outcome-row | 0 | 7 | 105 |
 | card | 4 | card-binary, card-multi, card-loading, card-detail-head | 2 | 14 | 36 |
 | catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 6 | 105 |
-| chart | 1 | chart | 1 | 11 | 11 |
-| comments | 1 | comments-thread | 1 | 15 | 9 |
+| chart | 1 | chart | 1 | 12 | 11 |
+| comments | 1 | comments-thread | 1 | 16 | 9 |
 | cookie-consent | 1 | cookie-consent | 0 | 17 | 2 |
 | course-chrome | 3 | course-chrome, course-chrome-system, course-chrome-roadmap | 0 | 25 | 105 |
 | dialog | 2 | dialog-shared, signin | 1 | 8 | 105 |
-| event-detail | 2 | event-detail, facts-strip | 1 | 14 | 11 |
-| feed | 1 | feed-grid | 1 | 2 | 105 |
+| event-detail | 2 | event-detail, facts-strip | 1 | 13 | 11 |
+| feed | 1 | feed-grid | 1 | 1 | 105 |
 | filters | 2 | filters-sort, filters-toggle | 2 | 4 | 105 |
 | footer | 1 | footer | 0 | 15 | 105 |
 | header | 2 | header-in, header-out | 1 | 22 | 105 |
@@ -40,13 +40,13 @@ says so. No em dash.
 | notice | 2 | notice-push, notice-reconcile | 1 | 8 | 105 |
 | oddsbar | 1 | oddsbar | 2 | 7 | 105 |
 | options | 2 | options-rows, options-multi | 2 | 6 | 25 |
-| position | 2 | position-list, position-loading | 1 | 13 | 36 |
-| profile | 1 | profile-identity | 0 | 8 | 7 |
+| position | 2 | position-list, position-loading | 1 | 14 | 36 |
+| profile | 1 | profile-identity | 0 | 7 | 2 |
 | related | 1 | related | 0 | 6 | 10 |
 | seo-plate | 1 | seo-plate | 1 | 8 | 11 |
 | skeleton | 1 | skeleton-grid | 3 | 5 | 19 |
 | state-block | 3 | state-empty-filters, state-error, state-empty | 1 | 7 | 40 |
-| tabs | 2 | tabs-detail, tabs-mybets | 1 | 21 | 20 |
+| tabs | 2 | tabs-detail, tabs-mybets | 1 | 20 | 20 |
 | toast | 1 | toast | 0 | 6 | 1 |
 | toc | 1 | toc-rail | 0 | 6 | 1 |
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 105 |

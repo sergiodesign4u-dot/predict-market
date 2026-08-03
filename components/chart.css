@@ -1,7 +1,7 @@
 /* components/chart.css
-   Component: chart. Classes: .chart-svg, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-now, .ed-legend, .ed-plot, .ed-xaxis, .ed-yaxis, .ml-line, .nowline.
+   Component: chart. Classes: .chart-svg, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-now, .ed-legend, .ed-plot, .ed-xaxis, .ed-yaxis, .grid-l, .ml-line, .nowline.
 
-   Reads: --bg-chart-well, --border-brass-hover, --border-hairline, --chart-line, --chart-line-glow, --outcome-yes-text, --text-muted
+   Reads: --bg-chart-well, --border-brass-hover, --border-hairline, --chart-line, --chart-line-glow, --line-grid, --outcome-yes-text, --text-muted
    Stand:  ui-kit/chart.html
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -35,3 +35,8 @@
 }
 .app-case .chart-svg .ml-line{filter:none;fill:none;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:opacity var(--dur-base) ease,stroke-width var(--dur-base) ease}
 .app-case .ed-legend{display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-16);margin-top:var(--space-12);padding-left:var(--space-2)}
+/* THE CHART'S OWN GRID LINE, moved here from feed.css on 2026-08-03 (docs/backlog.md 17).
+   The class map hands a class to the file that writes it with the fewest ancestors, and
+   `.grid-l` was written in feed.css, which made the arithmetic read `chart` as containing
+   `feed`. Nothing about the rule is a feed decision: the subject is `.chart-svg`. */
+.app-case .chart-svg .grid-l{stroke:var(--line-grid);stroke-width:1}

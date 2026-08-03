@@ -26,6 +26,8 @@ It is the only block in this product whose content the product does not write an
 - `.cmt-compose`, `.cmt-controls`, `.cmt-input`, `.cmt-post` - the composer: the field, its row of controls and the post button.
 - `.cmt-signin` - what stands in the composer's place when nobody is signed in. It is a prompt with a way in, not a disabled field.
 
+- `.seg` - the sort switcher over the thread (Newest / Top / Bettors), arrived from `components/tabs.css` on 2026-08-03 (`docs/backlog.md` 17). It is the reason this component's LEVEL moved twice in one afternoon: with the class in tabs.css the arithmetic read comments as containing tabs and called it an organism, and with the class here it contains nothing a class map can name and the arithmetic called it an atom. Neither is what it is, so `_levels.RAISE` now declares it a molecule, next to `market`, for the same stated reason: a section with a head, a control strip, a list and a compose box, every class its own.
+
 ## When to use
 
 On an event, under the analysis, inside the Comments tab. There is one thread per event and it is the fourth thing a person meets on that screen, after the odds, the argument and the chart.
@@ -47,4 +49,5 @@ Seen: `ui-kit/docs/backlog.md` S16 and S17, both closed on 2026-08-03 and both t
 ## States
 
 - `button.cmt-post @tabs-detail` - The post button, at rest, hovered, held and focused. It is the composer's one commitment and it takes the quiet control face rather than the brass one: posting an opinion is not the screen's primary action, backing it is.
+- `button.sel @tabs-detail` - The chosen segment of the `.seg` sort switcher (Newest / Top / Bettors), all four faces. It arrived in this file's gallery on 2026-08-03 with the class itself, from `components/tabs.css`: while the rules stood there the picture stood there too, on the page of a component that does not draw it.
 - `button @tabs-detail` - A comment's own action, all four faces. Quiet at rest, ground answers, and the row does not shift: a thread where every hover nudges the text is a thread that is hard to read while pointing.

@@ -1,7 +1,7 @@
 /* components/input.css
    Component: input. Classes: .addr, .amount-input, .amount-row, .field-label, .quick.
 
-   Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --focus-ring, --glow-focus, --line-brass-soft, --line-brass-strong, --opacity-disabled, --result-won, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-16
+   Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --focus-ring, --glow-focus, --line-brass-strong, --opacity-disabled, --result-won, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-16
    Stand:  ui-kit/input.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -74,7 +74,7 @@ dialog.app-dialog .sheet-body .quick{margin-top:var(--space-12)}
 .app-case :is(.bet-panel,.bet-sheet) .field-label{color:var(--text-muted)}
 .app-case :is(.bet-panel,.bet-sheet) .amount-input{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-primary);font-family:var(--font-display)}
 .app-case :is(.bet-panel,.bet-sheet) .quick button{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary)}
-.app-case :is(.bet-panel,.bet-sheet) .quick button.sel{background:var(--tint-brass-16);border-color:var(--line-brass-soft);color:var(--text-brass);font-weight:var(--weight-bold)}
+.app-case :is(.bet-panel,.bet-sheet) .quick button.sel{background:var(--tint-brass-16);border-color:var(--border-brass-hover);color:var(--text-brass);font-weight:var(--weight-bold)}
 .app-case .bet-sheet .quick{gap:var(--space-8)}
 .outcome-dialog .field-label{color:var(--text-muted)}
 .win-dialog .reconcile-box .field-label{color:color-mix(in oklab,var(--result-won) 45%,var(--text-primary))}

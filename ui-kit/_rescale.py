@@ -228,6 +228,15 @@ ROLE_RENAME = {
     "--shadow-ink-80": "--shadow-ink-85",
     "--shadow-ink-90": "--shadow-ink-85",
     "--shadow-ink-deep": "--shadow-ink-85",
+    # S18, closed 2026-08-03. `--line-brass-soft` and `--border-brass-hover` were
+    # --brass-a45 on graphite and --brass-a60 in daylight, in every theme, and
+    # tokens.css described both as the hover border of a quiet control ("the
+    # hover border of the quiet button family" and "the quieter hover border").
+    # The name that survives is the one that names its STATE, because
+    # --border-brass is the same border at rest and a state is a token in this
+    # system; `soft` named an intensity in a family whose `strong` member is also
+    # a hover, which is the confusion that let one job carry two names.
+    "--line-brass-soft": "--border-brass-hover",
 }
 
 TOKENS = {}

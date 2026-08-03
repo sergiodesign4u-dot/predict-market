@@ -1,7 +1,7 @@
 /* components/position.css
-   Component: position. Classes: .pos, .pos-fig, .pos-figures, .pos-lost, .pos-no, .pos-note, .pos-q, .pos-record, .pos-side, .pos-top, .pos-won, .pos-yes, .skeleton.
+   Component: position. Classes: .pos, .pos-fig, .pos-figures, .pos-lost, .pos-no, .pos-note, .pos-q, .pos-record, .pos-side, .pos-status, .pos-top, .pos-won, .pos-yes, .skeleton.
 
-   Reads: --bg-card-quiet, --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --color-action, --edge-groove-light, --outcome-no-fill, --outcome-no-line, --outcome-no-text, --outcome-yes-fill, --outcome-yes-line, --outcome-yes-text, --result-lost-fill, --result-lost-line, --result-lost-text, --result-won-fill, --result-won-line, --result-won-text, --shadow-ink, --text-brass, --text-muted, --text-primary
+   Reads: --bg-card-quiet, --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --edge-groove-light, --outcome-no-fill, --outcome-no-line, --outcome-no-text, --outcome-yes-fill, --outcome-yes-line, --outcome-yes-text, --result-lost-fill, --result-lost-line, --result-lost-text, --result-won-fill, --result-won-line, --result-won-text, --shadow-ink, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/position.html
    Stands on: 36 ui-visual screens (active-bets-history-loading.html, active-bets-history.html, active-bets-loading.html, active-bets.html, event-detail-bet-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -65,3 +65,14 @@
 .app-case a:has(>.pos):active>.pos{background:var(--bg-pressed);border-color:var(--border-brass-hover);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 .app-case a:has(>.pos):active .pos-q{color:var(--text-brass)}
 .app-case .pos[aria-label="Portfolio summary"] .pos-fig:first-child b{color:var(--text-brass)}
+/* THE POSITION LIST'S OWN DIVIDER, moved here from profile.css on 2026-08-03
+   (docs/backlog.md 17). `p.pos-status` is the brass-ticked heading between groups of
+   positions and `span.pos-status` is a row's own status word; both were declared in
+   profile.css, which made the arithmetic read `position` as an organism THROUGH
+   `profile`. The subject in every one of the six is a `.pos*` element. */
+.pos-status{text-transform:uppercase}
+.app-case .pos-status{color:var(--text-muted);font-size:var(--text-10);letter-spacing:.04em}
+.app-case p.pos-status{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-display);font-size:var(--text-11);font-weight:var(--weight-semibold);text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin:var(--space-24) 0 var(--space-12)}
+.app-case p.pos-status::before{content:"";width:var(--icon-16);height:var(--size-2);border-radius:var(--radius-2);background:linear-gradient(90deg,var(--color-action),var(--color-action-lit));flex:0 0 auto}
+.app-case .pos-top .pos-status{white-space:nowrap}
+.app-case .pos-record span.pos-status{display:block;margin-top:var(--space-12);font-size:var(--text-11);line-height:var(--leading-base);color:var(--text-muted)}

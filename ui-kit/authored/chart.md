@@ -25,6 +25,7 @@ The reason it is small and quiet is that it answers one question - has this move
 - `.ed-yaxis`, `.ed-xaxis` - the two axes. They are labelled, because an unlabelled axis makes a 3-point move and a 30-point move look the same.
 - `.ed-chart-now`, `.nowline` - the mark on the present moment, which is what makes the rest of the curve read as history.
 - `.ml-line` - one option's line on a multi-outcome event, and `.ed-legend` the key to them.
+- `.grid-l` - the horizontal rules the line is read against. It arrived here from `components/feed.css` on 2026-08-03 (`docs/backlog.md` 17), where it had been since before this file existed and where nothing could see it, because the file that styles a class with the fewest ancestors is the file the ownership map hands it to, correctly, whatever the class is about.
 
 ## When to use
 

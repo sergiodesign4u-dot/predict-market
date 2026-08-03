@@ -1,7 +1,7 @@
 /* components/feed.css
-   Component: feed. Classes: .feed, .grid-l.
+   Component: feed. Classes: .feed.
 
-   Reads: --line-grid, --text-primary
+   Reads: --text-primary
    Stand:  ui-kit/feed.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -9,4 +9,3 @@
 .feed{margin:0;flex:1}
 .feed-head :is(h1,h2){font-family:var(--font-display);font-size:var(--display-feed);font-weight:var(--weight-bold);letter-spacing:-.03em;line-height:var(--leading-flat);color:var(--text-primary);text-wrap:balance}
 .app-case .feed{background:transparent;padding:0}
-.app-case .chart-svg .grid-l{stroke:var(--line-grid);stroke-width:1}

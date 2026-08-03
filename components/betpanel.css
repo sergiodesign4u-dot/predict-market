@@ -1,7 +1,7 @@
 /* components/betpanel.css
-   Component: betpanel. Classes: .bet-dock, .bet-panel, .bet-sheet, .bp-amount-lbl, .bp-amount-row, .bp-cash, .bp-change, .bp-dir, .bp-head, .bp-hint, .bp-inner, .bp-pct, .bp-sel-name, .bp-selected, .bp-side, .dock-meta, .line, .sheet-grab, .total.
+   Component: betpanel. Classes: .bet-dock, .bet-panel, .bet-sheet, .bp-amount-lbl, .bp-amount-row, .bp-cash, .bp-change, .bp-dir, .bp-head, .bp-hint, .bp-inner, .bp-pct, .bp-sel-name, .bp-selected, .bp-side, .dock-meta, .line, .rp-inner, .sheet-grab, .total.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-card-to, --bg-control, --bg-control-hover, --bg-dock, --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --bg-pressed, --border-brass, --border-brass-hover, --border-hairline, --edge-groove-dark, --edge-groove-light, --edge-shade-strong, --line-brass-soft, --outcome-no, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text-lit, --outcome-yes, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text-lit, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-no, --text-on-yes, --text-primary, --text-strong
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-card-to, --bg-control, --bg-control-hover, --bg-dock, --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --bg-pressed, --border-brass, --border-brass-hover, --border-hairline, --edge-groove-dark, --edge-groove-light, --edge-shade-strong, --outcome-no, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text-lit, --outcome-yes, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text-lit, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-no, --text-on-yes, --text-primary, --text-strong
    Stand:  ui-kit/betpanel.html
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -102,7 +102,7 @@
    unselected side is quiet and settles onto the ground, the selected side is a filled
    outcome control (--outcome-yes-fill-strong under --outcome-yes-text-lit, 5.3:1 in
    daylight) whose ink has nothing to spend, so it goes down by depth instead. */
-.app-case .bet-dock .bp-side:hover{border-color:var(--line-brass-soft);background:var(--bg-control-hover);color:var(--text-strong)}
+.app-case .bet-dock .bp-side:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover);color:var(--text-strong)}
 .app-case .bet-dock .bp-side:active:not(.sel){background:var(--bg-pressed)}
 .app-case .bet-dock .bp-side.sel:active{box-shadow:inset 0 2px 5px var(--edge-shade-strong)}
 dialog.app-dialog.bet-sheet{position:fixed;left:0;right:0;bottom:0;top:auto;margin:0 auto;width:100%;max-width:560px;max-height:92vh;border:0;border-radius:var(--radius-16) var(--radius-16) 0 0;overflow-y:auto;overflow-x:hidden}
@@ -159,3 +159,18 @@ dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slower) var(--e
   from{transform:translateY(100%)}
   to{transform:translateY(0)}
 }
+/* THE PANEL'S OWN FINE PRINT, moved here from dialog.css on 2026-08-03 (docs/backlog.md
+   17). `.fine` is a typographic role dialog.css owns, and these two rules are not about a
+   dialog: the subject scope is the bet panel and the bet sheet, which is a component
+   restyling what it CONTAINS, exactly the case CLAUDE.md allows ("a card may restyle the
+   odds bar it contains"). The third `.bet-sheet` rule in dialog.css stays there and this
+   is why: `dialog.app-dialog:modal:not(.bet-sheet)` has `dialog.app-dialog` as its
+   subject, and a rule that EXCLUDES a class is not a rule about that class. */
+.app-case :is(.bet-panel,.bet-sheet) .fine{color:var(--text-muted)}
+.app-case .bet-sheet .fine{margin-top:-8px}
+/* THE RESOLVED PANEL'S OWN WRAPPER, moved here from event-detail.css on 2026-08-03
+   (docs/backlog.md 17). `.rp-inner` stands inside `<aside class="bet-panel
+   resolved-panel">`, so it is the panel's, and declaring it in event-detail.css made
+   `betpanel` read as containing `event-detail`. That was the second hand-written
+   `ORDER_BREAK` this item cost, and it goes with the rule. */
+.app-case .resolved-panel .rp-inner{padding:var(--space-24) var(--space-20)}

@@ -128,7 +128,6 @@
    "event-detail",
    "oddsbar",
    "chart",
-   "feed",
    "tabs",
    "market",
    "comments",
@@ -144,7 +143,6 @@
    "event-detail": ".ed-head",
    "oddsbar": ".ed-oddsbar",
    "chart": ".ed-chart-head",
-   "feed": ".grid-l",
    "tabs": ".ed-range",
    "market": ".market-box",
    "comments": ".cmt-controls",
@@ -321,12 +319,10 @@
    "wallet.html"
   ],
   "made": [
-   "position",
-   "profile"
+   "position"
   ],
   "via": {
-   "position": ".pos",
-   "profile": ".pos-status"
+   "position": ".pos"
   },
   "own": [
    "app-case",

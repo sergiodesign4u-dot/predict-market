@@ -105,12 +105,12 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Resolution block (`.resolution`, `.ed-rules` tabs) | `event-detail.css` | [event-detail](../event-detail.html) | L3 | event-detail | default / resolved | 18 | WF | - | + |
 | AMM market panel (`.market-box` collapsible + `.market-depth` "price by bet size" table) | `market.css` | [market](../market.html) | L2 | event-detail | collapsed / open | - | UV | - | + |
 | Content tab strip (Comments / Biggest bets / Bets / Activity, CSS radio) | `tabs.css` | [tabs](../tabs.html) | L3 | event-detail (+ bet variants) | per-tab active | 9-36 | WF | - | + |
-| Comment (`.cmt`: user, text, actions, badge, reply) | `comments.css` | [comments](../comments.html) | L3 | event-detail Comments tab | logged-in / logged-out (`.cmt-signin` prompt) | 36 | WF | portrait | + |
-| Comment composer (`.cmt-compose`) | `comments.css` | [comments](../comments.html) | L3 | event-detail Comments tab | logged-in / logged-out | 7 | WF | - | + |
+| Comment (`.cmt`: user, text, actions, badge, reply) | `comments.css` | [comments](../comments.html) | L2 | event-detail Comments tab | logged-in / logged-out (`.cmt-signin` prompt) | 36 | WF | portrait | + |
+| Comment composer (`.cmt-compose`) | `comments.css` | [comments](../comments.html) | L2 | event-detail Comments tab | logged-in / logged-out | 7 | WF | - | + |
 | Biggest bets columns (`.hold-col` / `.hold-row`) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Bets tab | binary / multi (outcome-tagged) | 16 | WF | - | + |
 | Bets table (`.ptable`, "you" highlight) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Bets tab | logged-in (your row) / logged-out | 9 | WF | - | + |
 | Activity feed (`.act-row`) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Activity tab | default | 9 | WF | - | + |
-| Segmented switcher (`.seg` / `.rules-tabs` / `.ed-range`) | `tabs.css` | [tabs](../tabs.html) | L3 | event-detail comments + rules + chart | active segment | 9 | WF | - | + |
+| Segmented switcher (`.seg` / `.rules-tabs` / `.ed-range`) | `comments.css`, `tabs.css` | [comments](../comments.html), [tabs](../tabs.html) | L3 | event-detail comments + rules + chart | active segment | 9 | WF | - | + |
 | Bet sub-state boxes (`.protect` / `.inline-error` / `.reconcile-box` / `.spinner-box`) | `notice.css` | [notice](../notice.html) | L3 | bet panel + dock inline | funds-safe / insufficient / reconcile / processing | 10+ | WF/UV | - | + |
 
 ## 4. Forms, dialogs and inputs
@@ -152,15 +152,15 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Identity row (`.idrow`: ringed 72px avatar `.av`, name, handle, Edit pill) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | own (Edit) / read-only | 2 | WF/UV | portrait | + |
-| Section divider (`p.pos-status`, brass tick) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | default | 2 | UV | - | + |
+| Section divider (`p.pos-status`, brass tick) | `position.css` | [position](../position.html) | L2 | my-profile, public-profile | default | 2 | UV | - | + |
 | Reputation stat-grid (Track record: tiles, brass win-rate hero tile) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | default | 2 | WF/UV | - | + |
 | Profile tabs (`.ptabs` CSS-only radio: Track record / Past wins / Resolved) | `tabs.css` | [tabs](../tabs.html) | L3 | my-profile, public-profile | per-tab active, focus ring | 2 | WF/UV | - | + |
 | Share-card gallery (`.gallery` horizontal rail of win cards) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | populated | 7 | WF/UV | art / generated | + |
-| Resolved-predictions history (`.pos-side.pos-won` green / `.pos-lost` red) | `position.css` | [position](../position.html) | L3 | my-profile, public-profile, active-bets-history | list / empty | 4+ | WF/UV | - | + |
-| Portfolio summary (`.pos` 3-figure grid: total / cash / in-play + inline CTA) | `position.css` | [position](../position.html) | L3 | my-profile, wallet | default | 3 | WF/UV | - | + |
+| Resolved-predictions history (`.pos-side.pos-won` green / `.pos-lost` red) | `position.css` | [position](../position.html) | L2 | my-profile, public-profile, active-bets-history | list / empty | 4+ | WF/UV | - | + |
+| Portfolio summary (`.pos` 3-figure grid: total / cash / in-play + inline CTA) | `position.css` | [position](../position.html) | L2 | my-profile, wallet | default | 3 | WF/UV | - | + |
 | CTA bar (`.cta-bar`: Add funds + Open Wallet / Withdraw) | `account.css` | [account](../account.html) | L2 | how-it-works, my-profile, wallet | default | 3 | WF | - | + |
-| Position row (`.pos`: question, figures, status) | `position.css` | [position](../position.html) | L3 | active-bets, notifications, wallet, profile | active / resolved / skeleton | 9+ | WF/UV | - | ~ |
-| Transaction list (deposits/payouts/fees/stakes) | `position.css` | [position](../position.html) | L3 | wallet | list / loading / error | 3 | WF | - | + |
+| Position row (`.pos`: question, figures, status) | `position.css` | [position](../position.html) | L2 | active-bets, notifications, wallet, profile | active / resolved / skeleton | 9+ | WF/UV | - | ~ |
+| Transaction list (deposits/payouts/fees/stakes) | `position.css` | [position](../position.html) | L2 | wallet | list / loading / error | 3 | WF | - | + |
 
 ## 7. Footer
 
@@ -289,10 +289,10 @@ screens.
 | Pattern | CSS file | Page | Screens | Assembled from |
 |---|---|---|---|---|
 | **Browse shell** | `patterns/browse-shell.css` | [browse-shell](../browse-shell.html) | 77 | `catnav`, `filters`, `state-block`, `button` |
-| **Detail shell** | `patterns/detail-shell.css` | [detail-shell](../detail-shell.html) | 11 | `card`, `event-detail`, `oddsbar`, `chart`, `feed`, `tabs`, `market`, `comments`, `bets-table`, `position`, `betpanel`, `input`, `button`, `dialog` |
+| **Detail shell** | `patterns/detail-shell.css` | [detail-shell](../detail-shell.html) | 11 | `card`, `event-detail`, `oddsbar`, `chart`, `tabs`, `market`, `comments`, `bets-table`, `position`, `betpanel`, `input`, `button`, `dialog` |
 | **Card grid** | `patterns/card-grid.css` | [card-grid](../card-grid.html) | 23 | `card`, `yesno`, `options` |
 | **List head** | `patterns/list-head.css` | [list-head](../list-head.html) | 71 | `filters` |
-| **Position list** | `patterns/position-list.css` | [position-list](../position-list.html) | 13 | `position`, `profile` |
+| **Position list** | `patterns/position-list.css` | [position-list](../position-list.html) | 13 | `position` |
 | **Action bar** | `patterns/action-bar.css` | [action-bar](../action-bar.html) | 3 | `account` |
 
 Two compositions repeat on exactly two screens and are therefore NOT patterns: `.ptabs` / `.ptab-bar`

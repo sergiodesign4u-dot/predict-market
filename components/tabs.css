@@ -1,5 +1,5 @@
 /* components/tabs.css
-   Component: tabs. Classes: .ed-panel-activity, .ed-panel-comments, .ed-panel-holders, .ed-panel-positions, .ed-range, .ed-tab-count, .ed-tabbar, .ed-tablabel, .ed-tabpanel, .ed-tabradio, .ed-tabs, .ed-tabwrap, .ptab-bar, .ptab-in, .ptab-lbl, .ptab-panel, .ptabs, .rules-tab, .rules-tabs, .seg, .tabs.
+   Component: tabs. Classes: .ed-panel-activity, .ed-panel-comments, .ed-panel-holders, .ed-panel-positions, .ed-range, .ed-tab-count, .ed-tabbar, .ed-tablabel, .ed-tabpanel, .ed-tabradio, .ed-tabs, .ed-tabwrap, .ptab-bar, .ptab-in, .ptab-lbl, .ptab-panel, .ptabs, .rules-tab, .rules-tabs, .tabs.
 
    Reads: --bg-chip, --bg-pressed, --bg-well, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --focus-ring, --text-brass, --text-muted, --text-primary, --tint-brass-16
    Stand:  ui-kit/tabs.html
@@ -15,8 +15,6 @@
 .ed-tab-count{font-size:var(--text-10)}
 .ed-tabpanel{display:none;padding:var(--space-8)}
 #edtab-comments:checked ~ .ed-panel-comments,#edtab-holders:checked ~ .ed-panel-holders,#edtab-positions:checked ~ .ed-panel-positions,#edtab-activity:checked ~ .ed-panel-activity{display:block}
-.cmt-controls .seg button{border-right:1px solid var(--border-hairline)}
-.cmt-controls .seg button:last-child{border-right:none}
 .ptab-in{position:absolute;width:var(--hairline);height:var(--hairline);opacity:0;pointer-events:none}
 .ptab-bar{border-bottom:1px solid var(--border-hairline);margin-bottom:var(--space-12)}
 .ptab-lbl{border-bottom:none}
@@ -61,13 +59,8 @@
 .app-case #edtab-holders:focus-visible ~ .ed-tabbar label[for="edtab-holders"],
 .app-case #edtab-positions:focus-visible ~ .ed-tabbar label[for="edtab-positions"],
 .app-case #edtab-activity:focus-visible ~ .ed-tabbar label[for="edtab-activity"]{outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
-.app-case .cmt-controls .seg{order:-1;display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:1px solid var(--border-hairline);border-radius:var(--radius-10)}
-.app-case .cmt-controls .seg button{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
-.app-case .cmt-controls .seg button:hover{color:var(--text-primary)}
 /* The comment sort switcher. Its markup stands in comments and its styling has always stood here,
    so the press stands here too, next to the hover it answers rather than in the other file. */
-.app-case .cmt-controls .seg button:active{background:var(--bg-pressed)}
-.app-case .cmt-controls .seg button.sel{background:var(--tint-brass-16);color:var(--text-brass);font-weight:var(--weight-bold)}
 .app-case .tabs{gap:var(--space-8);margin:0 0 var(--space-16)}
 .app-case .tabs button{border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer}
 .app-case .tabs button:hover{color:var(--text-primary)}

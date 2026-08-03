@@ -422,6 +422,15 @@ RAISE = {
     "hero": (3, "four blocks in one band (featured market with its chart, trust cards, "
                 "brand tile, ranked list), 51 classes, every one of them hero's"),
     "market": (2, "a collapsible with a head, a body and a price table, all its own classes"),
+    # Added 2026-08-03, and it is the SECOND half of moving `.seg` into this file
+    # (docs/backlog.md 17). While the sort switcher was declared in tabs.css the
+    # arithmetic read comments as containing tabs and called it an organism; with
+    # the class in its own file it contains nothing a class map can name and the
+    # arithmetic calls it an ATOM, next to button. Both readings are the map being
+    # right about the wrong question. Structurally it is `market`: a section with a
+    # head, a control strip, a list and a compose box, every class its own.
+    "comments": (2, "a thread with a sort switcher, a compose box and per-comment "
+                    "actions, all its own classes"),
     "related": (2, "a list of rows"),
     "seo-plate": (2, "two columns of sections"),
     "trustbar": (2, "a strip of trust items"),
@@ -559,18 +568,18 @@ NAME = {0: "-", 1: "L1", 2: "L2", 3: "L3"}
 # stand inside each other on different screens; what has to be declared is which
 # way round the CASCADE needs them, and that is decided by which file restyles
 # the other's insides.
+# TWO OF THE FOUR WENT AWAY ON 2026-08-03, and not by a better tie-break: the CYCLES went
+# away, because both were made of a class declared in the wrong file (docs/backlog.md 17).
+# `.seg` moved from tabs.css to comments.css and `.rp-inner` from event-detail.css to
+# betpanel.css, and with them the edges that had to be declared by hand. That is the
+# argument for reading the order out of the markup rather than typing it: a hand-written
+# tie-break is a place where the map stopped agreeing with the files, so an entry here is
+# a finding waiting to be closed, not a setting.
 ORDER_BREAK = {
-    ("comments", "tabs"): "the .seg sort switcher, which lives in tabs.css because that file "
-                          "owns every switcher; the real nesting is the other way, the tab "
-                          "strip wraps the thread",
     ("card", "event-detail"): "the header of the detail page is composed as a card, so the card "
                               "really does hold .ed-head; event-detail.css restyles what is "
                               "inside a card and not the other way round, so the card is the "
                               "part and loads first",
-    ("betpanel", "event-detail"): ".rp-inner is the resolved panel's own wrapper and is declared "
-                                  "in event-detail.css, which is backlog item 17. The nesting "
-                                  "that is real is the other one: the detail layout holds the "
-                                  "panel",
     ("notice", "dialog"): ".fine is the small print, a typographic role that dialog.css happens "
                           "to own and that stands in bet panels and spinner boxes too. The "
                           "dialog holds the notice, so the dialog loads after it",

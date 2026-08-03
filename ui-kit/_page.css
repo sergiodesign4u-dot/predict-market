@@ -385,7 +385,7 @@
 .tk-doc-tbl .tk-tbl td code{font-size:var(--text-11)}
 .tk-doc .tk-dot{width:var(--icon-12);height:var(--icon-12);
   border-radius:var(--radius-2);vertical-align:middle;margin-right:var(--space-4)}
-.tk-doc-ref{text-decoration:none;border-bottom:1px solid var(--line-brass-soft)}
+.tk-doc-ref{text-decoration:none;border-bottom:1px solid var(--border-brass-hover)}
 .tk-doc-ref code{color:var(--text-brass)}
 .tk-doc-ref:hover{border-bottom-color:var(--text-brass)}
 .tk-doc-src{margin:var(--space-40) 0 0;padding-top:var(--space-16);
