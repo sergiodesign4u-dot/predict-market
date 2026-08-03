@@ -44,6 +44,101 @@ record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/mi
 
 ---
 
+## 2026-08-04 - 104 marks of markdown on four pages, and every gate green
+
+**What was there.** `ui-kit/_gen_docs.py` renders the stage's seven documents as pages of the
+vitrine. It does not implement links. Markdown links were therefore printed rather than rendered:
+**102 of them**, in 97 rows of `inventory.html` where `](../header.html)` sat in the open beside
+the word it was meant to be a link on, and in three paragraphs of `architecture.html`,
+`history.html` and `backlog.html`. Two more marks were `**` from a bold span that never fired. 104
+literal marks on four shipped pages, and the build was green on all 34 gates.
+
+**Why nothing saw them, and this is the part that generalises.** Gate 21 re-renders each document
+in memory and compares the result with the page. That certifies the page is what the generator
+makes and nothing else, which is the right question about drift and the wrong question about
+correctness: **a defect in the renderer is reproduced identically on both sides and reads as
+agreement.** A generator compared with itself is a tautology. It is the same shape as row 42 in
+`ui-kit/docs/defects.md` - a check reporting clean about the wrong object - and the same answer as
+gate 22, which asks the panel where it is rather than asking the shell.
+
+**Three defects, not one, and the second is the one worth the entry.**
+
+**1. Links were not implemented.** Now they are, and the order inside `inline()` is the whole of it:
+after the code-span lift-out, so the label of ``[`history.md`](./history.md)`` is already a
+placeholder and the backtick cannot be read as anything else; after `esc()`, so the address arrives
+attribute-safe and is not escaped a second time. Inside a link label, FILEREF linking is
+**suppressed**, and that is named in the code because the markup it prevents is invalid rather than
+merely ugly: the label of ``[`history.md`](./history.md)`` is a code span whose text FILEREF
+matches, so left alone it would have produced `<a>` inside `<a>`. It also settles a subtler one the
+same way. In ``[`docs/backlog.md`](../../docs/backlog.md)`` the label's TEXT resolves through the
+mirror map to this stage's backlog page while the ADDRESS means the root document, so linking the
+label sent the reader somewhere the author did not write. The address is the link; the label is
+what it is called.
+
+**2. Every address was one directory off, and that is where the real defect was hiding.** The
+sources are in `ui-kit/docs/` and the pages are written in `ui-kit/`, one level up, so an address
+carried across unchanged points somewhere else: `../position.html` in the markdown means
+`ui-kit/position.html` and from the page has to be `position.html`, and `../../docs/decisions.md`
+has to become `../docs/decisions.md`. `rebase()` moves each address from the document's directory
+to the page's and **fails the build** on one that does not resolve from the directory the page is
+in. That is deliberate and it is gate 4's idiom moved one step earlier: a generator that can prove
+an href before writing it should not leave a dead link for a gate to find afterwards. Proved by
+changing one address to `../history.md`: the generator exits 1 naming the document, the address and
+what it resolved to, and `_check_kit.py` exits 1 with it.
+
+**3. A number that ends a sentence is not a list.** These documents wrap at 100 columns, so
+`history.md` has lines beginning `17. The port wrote...` and `1400. Measured at 1920...` - the tail
+of "on every one of the 17." and of "stopped at 1400." The paragraph ended at the digits, the next
+block was read as an ordered list, and a `**bold span**` that straddled the break was opened in a
+`<li>` and closed in a `<p>`, so neither half fired and the asterisks printed. The rule that
+settles it is CommonMark's, and it is the rule because it exists for exactly this: **an ordered
+marker may interrupt a paragraph only when its number is 1.** At the top of a block any number
+still starts a list. That one-character change rewrote nothing but the two pages that carried the
+defect, which is the evidence that it is a rule and not a patch.
+
+**A link to a `.md` with no mirror stays a `.md`, and it is a named exception.** A document this
+stage renders is linked at its PAGE - that map already exists and gate 21 keeps it current. The
+root `docs/decisions.md` and `docs/backlog.md` have no page to be linked at: they belong to the
+project rather than to the stage, nothing renders them, and the documents genuinely cite them, so
+the choice is an honest `.md` href or a sentence that names a file and cannot reach it. Gate 21's
+"no link into a raw `.md`" now exempts those **two addresses** rather than any page, because
+whether a mirror exists is a property of the target and of nothing else, and it carries the control
+every declared list in this repo carries.
+
+**Gate 35, proved in both directions.** Forward: disabling the link substitution and re-rendering
+turns gate 35 red on all 102 marks **while gate 21 stays green**, which is the tautology
+demonstrated rather than argued; reverting the ordered-marker rule alone turns it red on the 2
+remaining `**`, again with gate 21 green. Backward: a declared exception that covers nothing fails
+as loudly as an undeclared defect - a `MD_LITERAL` entry for a page with no literal markdown and a
+`MIRRORLESS` address nobody links both failed on the first run. The corpus is **every generated
+page**, 132 of them, not the seven documents, for the same reason the SCENES comment gives at the
+top of `_check_kit.py`: `inline()` is imported by the component and pattern generators too, so a
+link authored into a rule or an authored section is rendered by the same code and belongs to the
+same question. Measured before and after: **104 marks -> 0.**
+
+**And it went red on the document that describes it**, which is how it learned the last rule it was
+missing. The `defects.md` row written for this gate quotes both marks inside `code` spans, so the
+first green build after the row was added was not green. A quotation is not a survival: the scan now
+strips `<code>` and `<pre>` first, using the same `QUOTED` that gate 4 has used since prose about a
+path was reported as a path. That is the **fourth** checker in this file to have to learn to stop
+reading a sentence as the thing the sentence is about, and it costs the gate nothing here, because
+all 104 marks were in running text - a table cell and a paragraph break - and not one of them was
+inside a quotation. The two-way proof was re-run with the strip in place before it was kept.
+
+**Asked of a browser as well, because a checker that reads the source does not read the page.**
+Seven document pages at 360 and at 1440, Chrome, and the question asked of `innerText` with every
+`<code>` and `<pre>` removed first, so the instrument asks what the gate asks: **0 visible markdown,
+0 nested anchors, 0 dead hrefs resolved from the page's own directory, 0 horizontal overflow, 0
+console errors** over all 14 renders. **225 `a.tk-doc-ref` anchors** per width, 102 of them the
+links this entry is about and the rest the file references the vitrine already drew, and every one
+of the 225 carries its border in the computed style, which is the difference between an `<a>` and a
+word that used to be sitting next to a bracket.
+
+**Two stale counts corrected while the row was added**, both hand-written and neither gated:
+`ui-kit/docs/defects.md` said "34 gates over 80 checks" when the file held 82, and its PROVEN table
+said 25 classes over 26 rows. They are 35 gates, 85 checks and 27 rows now. The README's two spans
+are computed by `_fill_inventory.py` and were right, which is the difference the computed span buys.
+
 ## 2026-08-04 - Step 8, and the six things a taxonomy could not have told us
 
 The inherited plan for this step was eighteen classes of defect, hunted by hand, over 105 screens in

@@ -15,11 +15,29 @@ and false in twenty-one, coverage.md disagreeing with the css headers). One
 computation feeds both, and gate 21 fails the build when the page is not what the
 markdown renders to.
 
-WHAT IT IS NOT. Not a markdown library: it reads the subset these four documents
-use, which is headings, paragraphs, GFM tables, bullet and numbered lists, block
-quotes, fenced code, `code`, **bold**, and nothing else. A construct that is not
-in the documents is not implemented, because an implementation nothing exercises
-is a guess. If a document grows one, this is where it goes.
+WHAT IT IS NOT. Not a markdown library: it reads the subset these documents use,
+which is headings, paragraphs, GFM tables, bullet and numbered lists, block
+quotes, fenced code, `code`, **bold**, *italic*, and [a link](to a file). A
+construct that is not in the documents is not implemented, because an
+implementation nothing exercises is a guess. If a document grows one, this is
+where it goes.
+
+AND A CONSTRUCT THAT IS NOT IMPLEMENTED DOES NOT FAIL, it prints. That is the
+whole reason gate 35 exists: links were the missing construct and 102 of them
+shipped as literal text, `](../header.html)` sitting beside the word it was
+supposed to be a link on, in 97 inventory rows and three paragraphs. Gate 21
+re-renders the document and compares, so a defect in THIS FILE is reproduced
+identically on both sides and reads as agreement. A generator compared with
+itself certifies the generator, not the page.
+
+ADDRESSES ARE REBASED, and that is the second half of the link work. The sources
+live in ui-kit/docs/ and the pages are written one level up in ui-kit/, so every
+relative address in a document means one thing in the markdown and a different
+one on the page: ../position.html in the md is ui-kit/position.html, which from
+the page is position.html. rebase() moves each address from the document's
+directory to the page's, sends a .md that has an html mirror to the mirror, and
+FAILS THE BUILD on an address that does not resolve, because a silent dead href
+is the thing gate 4 exists to make impossible.
 
 THE LOOK IS THE VITRINE'S OWN. A page about the system is painted by the system:
 components/index.css plus _page.css, the kit side panel, the theme switch. It
@@ -40,6 +58,7 @@ Usage:
     python3 ui-kit/_gen_docs.py --check    # report which would change
 """
 import html as _html
+import os
 import pathlib
 import re
 import sys
@@ -77,6 +96,17 @@ LABEL = {slug: label for slug, label, _ in PAGES}
 COLOUR = re.compile(r"^(#[0-9a-fA-F]{3,8}|rgba?\([^)]*\)|hsla?\([^)]*\))$")
 FILEREF = re.compile(r"^(?:components/([\w-]+)\.css|ui-kit/([\w-]+)\.html|"
                      r"(?:ui-kit/)?docs/([\w-]+)\.md)$")
+# [label](address). The label stops at the first ] and never crosses a line, and
+# the address holds no whitespace, which is every link these documents write and
+# is deliberately narrower than markdown allows: a title in quotes, a reference
+# link and an image are not in the corpus, so they are not implemented.
+LINK = re.compile(r"\[([^\]\n]+)\]\(([^)\s]+)\)")
+
+# The document being rendered. One module-level name, read by exactly one thing:
+# the message rebase() dies with, so a bad address names the file it is in rather
+# than sending the reader to grep seven documents. render() sets it, nothing else
+# touches it, and this script is one pass over seven files in one thread.
+SOURCE = "?"
 
 
 # ------------------------------------------------------- the usage rules ----
@@ -147,15 +177,74 @@ def slugify(text):
     return s or "section"
 
 
-def code_html(raw):
+def rebase(target):
+    """A markdown address, moved from the document's directory to the page's.
+
+       THIS IS WHERE THE SECOND DEFECT WAS. The sources are in ui-kit/docs/ and
+       the pages are written in ui-kit/, one level up, so an address copied
+       across unchanged points one directory too deep. Three shapes, all three in
+       the corpus:
+
+           ../position.html      means ui-kit/position.html      -> position.html
+           ./history.md          means ui-kit/docs/history.md    -> history.html
+           ../../docs/backlog.md means the root docs/backlog.md  -> ../docs/backlog.md
+
+       THE MIRROR RULE. A .md the vitrine renders is linked at its page, never at
+       the file the browser would download: LABEL already holds that map and it
+       is the same map gate 21 keeps current. The two that stay .md are the two
+       with no mirror to send them to, the root docs/decisions.md and
+       docs/backlog.md, and that is a NAMED EXCEPTION rather than an oversight:
+       they belong to the project rather than to this stage, nothing renders
+       them, and gate 21 carries the matching exemption with its own idle check.
+
+       AND AN ADDRESS THAT DOES NOT RESOLVE FAILS THE BUILD. Resolution is asked
+       from the directory the PAGE is in, which is the only place a browser will
+       ask it from; a dead href that merely looks plausible is the defect gate 4
+       exists for, and a generator that can prove it before writing should not
+       leave it for a gate to find afterwards."""
+    if target.startswith(("http://", "https://", "mailto:", "#")):
+        return target
+    frag = ""
+    if "#" in target:
+        target, _, rest = target.partition("#")
+        frag = "#" + rest
+    # lexical, not resolve(): the question is what the address SAYS, and a
+    # normpath answers it without asking the filesystem about symlinks first.
+    absolute = pathlib.Path(os.path.normpath(str(DOCS / target)))
+    if absolute.parent == DOCS and absolute.suffix == ".md" and absolute.stem in LABEL:
+        absolute = KIT / (absolute.stem + ".html")
+    rel = os.path.relpath(str(absolute), str(KIT)).replace(os.sep, "/")
+    if not (KIT / rel).exists():
+        raise SystemExit("_gen_docs: %s.md links %s, which is %s from the page and "
+                         "does not exist. An address that does not resolve from the "
+                         "directory the PAGE is in is a dead href, not a typo to "
+                         "carry." % (SOURCE, target, rel))
+    return rel + frag
+
+
+def code_html(raw, linkify=True):
     """One `code` span. A colour gets its colour shown; a file the vitrine has a
-       page for gets a link to it. Everything else is a code span and no more."""
+       page for gets a link to it. Everything else is a code span and no more.
+
+       linkify=False IS THE NESTED ANCHOR TRAP, and it is worth naming out loud
+       because the markup it produces is invalid rather than merely ugly. A
+       document writes [`history.md`](./history.md): the label is a code span
+       whose text FILEREF matches, so left alone this function would wrap it in
+       its own <a> and the link around it would wrap that in a second, giving
+       <a> inside <a>. Inside a link label a code span stays a code span. The
+       outer construct is the link, and there is only ever one of them.
+
+       It also settles a subtler thing the same way. In the label of
+       [`docs/backlog.md`](../../docs/backlog.md) the TEXT resolves through
+       LABEL to this stage's backlog page while the ADDRESS means the root
+       document, so linking the label sent the reader somewhere the author did
+       not write. The address is the link; the label is what it is called."""
     body = "<code>%s</code>" % esc(raw)
     if COLOUR.match(raw.strip()):
         # the value IS the datum, so it goes on the element (the same idiom
         # tokens.html uses for a role swatch)
         return '<i class="tk-dot" style="background:%s"></i>%s' % (esc(raw.strip()), body)
-    m = FILEREF.match(raw.strip())
+    m = FILEREF.match(raw.strip()) if linkify else None
     if m:
         stand, page, doc = m.groups()
         target = None
@@ -188,6 +277,21 @@ def inline(text):
     # component sources need the second. After the double form, so **x** is not
     # eaten one asterisk at a time.
     text = re.sub(r"(?<![\w*])\*([^*\n]+)\*(?!\w)", r"<em>\1</em>", text)
+
+    # LINKS, AND THE ORDER IS THE POINT. After the lift-out, so the label of
+    # [`history.md`](./history.md) is a placeholder by the time this runs and the
+    # backtick cannot be read as anything else. After esc(), so a label carrying
+    # a < is already a &lt; and the address is already attribute-safe: it is NOT
+    # escaped a second time here, and an address that needed escaping is one that
+    # will not resolve, which rebase() fails the build on rather than writing.
+    # After the emphasis rules, so a bold or italic label arrives as markup.
+    def anchor(m):
+        label = re.sub(r"\0(\d+)\0",
+                       lambda k: code_html(spans[int(k.group(1))], linkify=False),
+                       m.group(1))
+        return '<a class="tk-doc-ref" href="%s">%s</a>' % (rebase(m.group(2)), label)
+
+    text = LINK.sub(anchor, text)
     return re.sub(r"\0(\d+)\0", lambda m: code_html(spans[int(m.group(1))]), text)
 
 
@@ -292,9 +396,20 @@ def blocks(lines):
             i = j
             continue
 
+        # A NUMBER THAT ENDS A SENTENCE IS NOT A LIST, and reading it as one is
+        # what put the other two surviving marks on a page. These documents wrap
+        # at 100 columns, so "...on every one of the / 17. The port wrote..." and
+        # "...stopped at / 1400. Measured at 1920..." each begin a line with
+        # digits and a full stop. The paragraph ended there, the next block was
+        # read as an ordered list, and the **bold span** that straddled the break
+        # was opened in a <li> and closed in a <p>, so neither half fired and the
+        # asterisks printed. The rule that settles it is CommonMark's, and it is
+        # the rule because it exists for exactly this: an ordered marker may
+        # interrupt a paragraph only when its number is 1. At the top of a block,
+        # where the list branch above runs, any number still starts a list.
         para, j = [], i
         while j < len(lines) and lines[j].strip() and not re.match(
-                r"^\s*(#{2,4}\s|[-*]\s|\d+\.\s|\||>|```|---\s*$)", lines[j]):
+                r"^\s*(#{2,4}\s|[-*]\s|1\.\s|\||>|```|---\s*$)", lines[j]):
             para.append(lines[j].strip())
             j += 1
         if not para:                       # a line no rule claimed; keep the text
@@ -358,6 +473,8 @@ PAGE = """<!doctype html>
 
 def render(slug):
     """One markdown file, one page. Pure: takes a slug, returns the html."""
+    global SOURCE
+    SOURCE = slug
     text = (DOCS / (slug + ".md")).read_text(encoding="utf-8")
     lines = text.split("\n")
     title = re.sub(r"^#\s+", "", lines[0]).strip()

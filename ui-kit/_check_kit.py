@@ -1000,12 +1000,38 @@ stale += ["%s.md has no row in _gen_docs.PAGES" % s
                           - {slug for slug, _, _ in _gen_docs.PAGES})]
 check("21 every document has a page", not stale, "%d: %s" % (len(stale), ", ".join(stale[:3])))
 
-RAW_MD = re.compile(r'href="[^"]*\.md"')
-raw = [str(p.relative_to(ROOT))
-       for tree in ("ui-kit", "ui-visual")
-       for p in sorted((ROOT / tree).rglob("*.html"))
-       if "old" not in p.parts and RAW_MD.search(p.read_text(encoding="utf-8"))]
+RAW_MD = re.compile(r'href="([^"]*\.md)"')
+# THE TWO ADDRESSES THAT STAY .md, EACH WITH ITS REASON. This check was written
+# against thirty-nine pages linking `docs/coverage.md`, a href into a file the
+# browser downloads rather than draws, and the repair for that is the mirror: a
+# document this stage renders is linked at its PAGE. These two are the ones with
+# no page to be linked at. They belong to the project rather than to the stage,
+# nothing renders them, and the documents genuinely cite them, so the choice is
+# an honest .md href or a sentence that names a file and does not reach it.
+#
+# It is an exemption by ADDRESS and not by page, because the question is whether
+# a mirror exists, which is a property of the target and of nothing else. And it
+# carries the control every declared list in this file carries: an address nobody
+# links is a line somebody left behind, and it fails as loudly as an undeclared
+# one. `_gen_docs.rebase()` is the other half, and it names the same exception.
+MIRRORLESS = {
+    "../docs/decisions.md": "the project's dated decision log, rendered nowhere",
+    "../docs/backlog.md": "the project's open questions, rendered nowhere",
+}
+raw, md_used = [], set()
+for _tree in ("ui-kit", "ui-visual"):
+    for _p in sorted((ROOT / _tree).rglob("*.html")):
+        if "old" in _p.parts:
+            continue
+        for _href in sorted(set(RAW_MD.findall(_p.read_text(encoding="utf-8")))):
+            if _href in MIRRORLESS:
+                md_used.add(_href)
+            else:
+                raw.append("%s -> %s" % (_p.relative_to(ROOT), _href))
 check("21 no link into a raw .md", not raw, "%d: %s" % (len(raw), ", ".join(raw[:3])))
+_md_idle = sorted(set(MIRRORLESS) - md_used)
+check("21 no idle .md exception", not _md_idle,
+      "%d: %s" % (len(_md_idle), ", ".join(_md_idle)))
 
 # 22 ------------------------------------------- the panel says where you are --
 # The side panel is the one piece of chrome gate 1 masks, on the argument that it
@@ -1718,6 +1744,65 @@ check("34 every inventory cell is what the markup says", _inv_ok,
       "run: python3 ui-kit/_fill_inventory.py")
 check("34 no idle row in the hand map", not _inv_idle,
       "%d: %s" % (len(_inv_idle), "; ".join(_inv_idle)))
+
+# ---- 35. markdown that survived the render ----------------------------------
+# A CONSTRUCT THE RENDERER DOES NOT IMPLEMENT DOES NOT FAIL, IT PRINTS. 104 marks
+# of markdown shipped on four pages of this vitrine with every gate green: 102
+# link brackets, `](../header.html)` sitting in the open beside the word it was
+# meant to be a link on in 97 inventory rows and three paragraphs, plus one
+# `**bold**` that a wrapped line beginning "17." split across a false list
+# boundary so that neither half of it fired.
+#
+# WHY NOTHING SAW THEM, and this is the part worth gating rather than the marks.
+# Gate 21 re-renders each document and compares it with the page, which certifies
+# that the page is what `_gen_docs.py` makes and nothing more: a defect in the
+# renderer is reproduced identically on both sides and reads as agreement. A
+# generator compared with itself is a tautology. So this gate asks the OUTPUT a
+# question the generator cannot answer for it, which is the same shape as gate 22
+# asking the panel where it is rather than asking the shell.
+#
+# THE TWO MARKS, and they are two because these two cannot be anything else in a
+# page that has been rendered: `](` only ever comes out of a link, and `**` only
+# ever comes out of an emphasis that did not fire. The corpus is every generated
+# page and not the seven documents, for the reason the SCENES comment at the top
+# of this file gives: `inline()` is imported by the component and pattern
+# generators too, so a link authored into a rule or an authored section is
+# rendered by the same code and belongs to the same question.
+MD_MARKS = (("](", "a link"), ("**", "a bold span"))
+# AND IT ASKS THE MARKUP, NOT THE TEXT, which is the house rule and it earned its
+# place here on the first run: the defects.md row that documents this gate quotes
+# both marks, inside `code` spans, and the gate went red on the document that
+# describes it. A quotation is not a survival. Same `QUOTED` gate 4 uses, so the
+# rule has one definition, and this is the fourth checker in this file that had to
+# learn to stop reading a sentence as the thing the sentence is about.
+#
+# It does NOT weaken the gate on what shipped: all 104 marks were in running text,
+# `](../header.html)` in a table cell and `**` across a paragraph break, and none
+# of them was inside a `<code>` or a `<pre>`. Proved by re-running the two-way
+# proof with this strip in place.
+#
+# A page that shows markdown on purpose OUTSIDE a quotation is something else, and
+# it is named here with the reason rather than met by loosening the gate. There
+# are none today, and the control below is what keeps that a fact rather than a
+# habit: a page declared here that carries no literal markdown fails exactly as
+# loudly as an undeclared page that does.
+MD_LITERAL = {}
+survived, md_lit_idle = [], []
+for page in GENERATED_PAGES:
+    src = QUOTED.sub("", page.read_text(encoding="utf-8"))
+    hits = [(mark, src.count(mark), what) for mark, what in MD_MARKS if mark in src]
+    if page.name in MD_LITERAL:
+        if not hits:
+            md_lit_idle.append(page.name)
+        continue
+    survived += ["%s: %d x %s (%s)" % (page.name, n, mark, what) for mark, n, what in hits]
+check("35 no markdown survived the render", not survived,
+      "%d: %s" % (len(survived), "; ".join(survived[:4])))
+check("35 no idle literal-markdown page", not md_lit_idle,
+      "%d: %s" % (len(md_lit_idle), ", ".join(md_lit_idle)))
+notes.append("%-34s %s" % ("35 pages read for literal markdown",
+                           "%d page(s), %d mark(s), %d declared exception(s)"
+                           % (len(GENERATED_PAGES), len(MD_MARKS), len(MD_LITERAL))))
 
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:

@@ -6,7 +6,7 @@ where this table says nothing is holding.
 
 **Why the first column is a gate and not a category.** The taxonomy this step inherits was written
 for a project with no build check: eighteen classes of defect, each to be looked for by hand, on
-every screen. This project has **34 gates over 80 checks**, and a green gate is not an audit result,
+every screen. This project has **35 gates over 85 checks**, and a green gate is not an audit result,
 it is a **proof**. A class of defect covered by a gate does not need a person to go and look: it
 needs a person to confirm the gate asks the right question, once, and then the answer holds on every
 commit rather than on the day somebody checked. Running a manual pass over a gated class is not
@@ -63,8 +63,9 @@ No em dash.
 | 23 | A product edit that never got committed | **1** | `components/`, `wireframes/` and `ui-visual/` against HEAD, so a green build is a green build of what is actually in the tree |
 | 23a | **A trader term where a person acts** | **33** | 13 terms crossed with 19 kinds of acting place, over both trees. Prose is not read at all, which is the invariant: the ban is about PLACE. Two declared exemptions, each a phrase rather than a location, and an idle one fails |
 | 23b | **A document row that does not match the product** | **34** | the inventory's three computed columns are rebuilt and compared, and the hand-written half of the map fails on a row that matches nothing |
+| 23c | **Markdown that survived the render** | **35** | every generated page, not the seven documents, because `inline()` is imported by the component and pattern generators too. Two marks that cannot be anything else on a rendered page: `](`, which only comes out of a link, and `**`, which only comes out of an emphasis that did not fire. It is here rather than under gate 21 because gate 21 re-renders the document and compares, so a defect in the RENDERER is reproduced on both sides and reads as agreement. It asks the markup and not the text - `<code>` and `<pre>` are stripped first, because this row quotes both marks and turned the gate red on the page describing it - and all 104 marks that shipped were in running text, so the strip costs nothing. Declared exceptions are pages that show markdown outside a quotation, and there are none; an idle one fails |
 
-**25 classes, and none of them needs a person to go and look.** What step 8 owes each of these is one
+**27 classes, and none of them needs a person to go and look.** What step 8 owes each of these is one
 question: does the gate ask the right thing. Two of the 23 have a known answer to that already, and
 both are recorded rather than assumed: gate 14 missed `.signin-lead` and `.delta .row` because each
 selector has a real ancestor, and gate 1 masks the `<aside>`, which is why gate 22 exists.
@@ -158,7 +159,7 @@ are not open findings, they are work with a date on it.
 ## What this table changes about the run
 
 The inherited plan was eighteen classes, hunted by hand, over 105 screens in two themes at two
-widths. The count that matters is different: **26 classes are proven, 7 are measured and 11 are open** -
+widths. The count that matters is different: **27 classes are proven, 7 are measured and 11 are open** -
 and of the eleven, five are the ones that actually need eyes. Two of the eighteen inherited classes
 became gates in this step rather than a hunt, and both of the new gates found a defect the class
 description had not known about, which is the argument for the column restated: a gate is not a
