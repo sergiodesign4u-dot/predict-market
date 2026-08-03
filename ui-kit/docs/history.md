@@ -1030,3 +1030,85 @@ each of them today:
 - **30 were measured by a browser and are gated by nothing**: true as of the run that printed them,
   and unknown today. They are `ui-kit/docs/defects.md` rows 24 to 30, and what they owe is a re-run
   and a date, not a search.
+
+---
+
+## 2026-08-03 - The two words that were the whole argument for a semantic level
+
+The entry above corrects a zero. This one records what the defect behind that zero turned out to be
+when somebody finally went to look, because the fix is the best evidence this repo has produced for
+a decision taken a stage earlier and never yet tested by an emergency.
+
+### The defect
+
+`components/oddsbar.css:13-14`:
+
+```css
+.oddsbar .l-yes{color:var(--outcome-yes)}
+.oddsbar .l-no{color:var(--outcome-no)}
+```
+
+`--outcome-yes` and `--outcome-no` are the FILL roles. They are the green of the bar and the red of
+the track behind it: a 4px band, a surface, and a surface answers to 3:1, which it takes
+comfortably. Those two lines put the same two roles on 12px bold **text**, which answers to 4.5:1,
+and neither carries it on either ground. 266 elements on 105 painted screens, two label spans per
+odds bar, 133 bars.
+
+### The fix, in full
+
+```css
+.oddsbar .l-yes{color:var(--outcome-yes-text)}
+.oddsbar .l-no{color:var(--outcome-no-text)}
+```
+
+Two words. No token moved, no value was edited, no theme was re-balanced, and the bar above the
+labels did not change by a pixel.
+
+Measured in a real browser at 390px, both themes, `ui-visual/event-feed.html`:
+
+| element | theme | before | after | floor |
+|---|---|---|---|---|
+| `span.l-yes` | daylight | **2.62:1** | **7.23:1** | 4.5 |
+| `span.l-no` | daylight | **3.76:1** | **7.57:1** | 4.5 |
+| `span.l-no` | graphite | **4.35:1** | **7.54:1** | 4.5 |
+| `span.l-yes` | graphite | 6.23:1 | **9.82:1** | 4.5 |
+
+Four rows, not three. The last one already passed, and it changed anyway, because leaving it on the
+fill role would mean one component reading a different token per theme for the same word: the same
+drift the roles exist to prevent, arriving through the door marked "it passes today".
+
+### Why this is the justification for the whole token level
+
+Stage 08 introduced the second token level and paid for it in discipline: **two jobs are two roles,
+even when the two roles hold the same value today.** `--outcome-yes-text` was added at that time
+with the note "the quiet YES text on 15 selectors", and it was, on the face of it, redundant - green
+is green.
+
+This is what it bought.
+
+**Had the text role not existed, the only place to fix a 2.62:1 label would have been the VALUE.**
+`--outcome-yes` would have had to be lightened until the 12px bold text cleared 4.5:1 - and
+`--outcome-yes` is also the fill of the bar, the selected YES side, the win figure's neighbour and
+the brand's own green. The bar would have moved with the text. Every screen carrying an odds bar
+would have been re-balanced to fix a caption, and the re-balance would have been argued as a taste
+decision, because from inside the file there is nothing to distinguish "the text is too dark" from
+"the green is wrong".
+
+Instead the accident was already sorted at the level above: a role for the surface, a role for the
+ink, the same colour family, different obligations. Repairing 266 elements across 105 screens cost
+**one word in each of two declarations**, and the diff is small enough to read in a sentence.
+
+> **The value of a semantic role is not visible while everything is fine. It is visible on the day
+> something has to change, and it is measured in what does NOT have to change with it.**
+
+A component-level token would not have helped here and is still not part of this stage: the problem
+was never that the odds bar needed its own green, it was that the odds bar was asking a surface role
+to be ink. Two levels was the right count. The second one is what turned a repaint into a rename.
+
+### The gate that would have caught it, and the fact that there isn't one
+
+There is no gate on this and there is not one at the end of this entry either. Gate 13 forbids a
+component reading a colour PRIMITIVE and this file read a semantic role, correctly, at the wrong
+level of the same family. The check that catches it is a contrast sweep in a browser, which is
+`audit.cjs` and is not in the 1.5-second build - and the reason the sweep did not catch it for five
+stages is the entry above. `ui-kit/docs/defects.md` row 42 owns that.

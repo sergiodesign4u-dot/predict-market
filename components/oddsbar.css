@@ -1,7 +1,7 @@
 /* components/oddsbar.css
    Component: oddsbar. Classes: .ed-oddsbar, .fill, .l-no, .l-yes, .lbls, .oddsbar, .track.
 
-   Reads: --edge-shade-strong, --outcome-no, --outcome-yes
+   Reads: --edge-shade-strong, --outcome-no, --outcome-no-text, --outcome-yes, --outcome-yes-text
    Stand:  ui-kit/oddsbar.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -10,8 +10,13 @@
 .oddsbar .track{border-radius:var(--radius-pill);overflow:hidden;display:flex;background:var(--outcome-no)}
 .oddsbar .fill{background:var(--outcome-yes);box-shadow:0 0 14px color-mix(in oklab,var(--outcome-yes) 55%,transparent)}
 .oddsbar .lbls{display:flex;justify-content:space-between;margin-top:var(--space-8);padding:0 var(--space-8);font-size:var(--text-12);font-weight:var(--weight-bold)}
-.oddsbar .l-yes{color:var(--outcome-yes)}
-.oddsbar .l-no{color:var(--outcome-no)}
+/* The label is TEXT, so it takes the text role, not the fill role. The bar above
+   it is a 4px surface and answers to 3:1; these two are 12px bold and answer to
+   4.5:1, and the fill role does not carry that on either ground. Both change,
+   including the one that passes on graphite today: one job, one role, or the
+   component reads a different token per theme for the same word. */
+.oddsbar .l-yes{color:var(--outcome-yes-text)}
+.oddsbar .l-no{color:var(--outcome-no-text)}
 .card .oddsbar{margin-top:auto}
 .oddsbar .track{height:var(--size-4)}
 .app-case .ed-oddsbar{margin:var(--space-12) 0 var(--space-4)}
