@@ -61,6 +61,19 @@ async function snapshot(page) {
     // them and make the whole page read as different. They are not measured.
     const SKIP = {HEAD: 1, TITLE: 1, META: 1, LINK: 1, STYLE: 1, SCRIPT: 1, BASE: 1};
     const all = [...document.querySelectorAll('*')].filter((e) => !SKIP[e.tagName]);
+    // A SCROLL POSITION IS NOT A STYLESHEET PROPERTY, so it is normalised away
+    // before anything is measured. Both side panels in this repo scroll their
+    // current entry into view on load, and where that lands is a race with the
+    // webfont: the same page under the SAME stylesheet put the course rail at
+    // scrollTop 2246 and 2247 on consecutive loads, and the vitrine's panel at
+    // 1585 in one run of this script and 1601 in the next. Every element inside
+    // a rail then reads as moved, which is 990 phantom differences in the
+    // painted tree and 9,773 in the vitrine, all of them noise with a real
+    // regression free to hide inside. The boxes below are recorded relative to
+    // the document, so zeroing every scroller costs nothing and buys a diff
+    // whose floor is zero.
+    window.scrollTo(0, 0);
+    for (const el of all) if (el.scrollTop || el.scrollLeft) { el.scrollTop = 0; el.scrollLeft = 0; }
     const out = [];
     for (let i = 0; i < all.length; i++) {
       const el = all[i];
@@ -114,6 +127,24 @@ async function snapshot(page) {
       await page.evaluate(() => document.fonts.ready);
       // Freeze anything that moves, in both runs alike, so a shimmer never
       // reads as a difference.
+      //
+      // PAUSED IS NOT FROZEN, and that took a whole sweep to see. This line used
+      // to only pause, and a pause happens wherever the animation has got to:
+      // ui-visual/win.html slides its dialog in, and four identical loads put it
+      // at y=120.9, 133.1, 149.2 and 159.6. Every element inside a sliding box
+      // then reads as moved, so a diff of two runs of the SAME stylesheet
+      // reported 25 differing snapshots and 1,745 changed boxes, which is a
+      // noise floor high enough to hide a real regression inside it.
+      // finish() is the fixed point: every animation and transition is put at
+      // its END state, which is the state the screen settles into and the only
+      // one two runs can agree on. An infinite animation cannot finish, so it
+      // keeps the pause, and the style tag below still catches anything that
+      // starts after this line.
+      await page.evaluate(() => {
+        document.getAnimations().forEach((a) => {
+          try { a.finish(); } catch (e) { a.pause(); }
+        });
+      });
       await page.addStyleTag({ content: '*,*::before,*::after{animation-play-state:paused!important}' });
       await page.waitForTimeout(120);
       const snap = await snapshot(page);
