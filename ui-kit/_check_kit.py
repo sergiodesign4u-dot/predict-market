@@ -774,15 +774,31 @@ def region(html, tag, cls=None):
 # exception, not a silent skip.
 sys.path.insert(0, str(ROOT))
 import _twins                                                   # noqa: E402
-# overview.html is the index OF the painted screens, built by _gen_overview.py.
-# It is not a screen of the product, so it has nothing to be a twin of.
-NO_TWIN = {"overview.html"}
+# TWO KINDS OF EXCEPTION, AND THEY ARE NOT ONE LIST. A painted page with no grey
+# twin is either NOT A SCREEN (overview.html, the index of the tree) or a screen
+# the SYSTEM BUILT, which is the opposite fact: it is a product page and the grey
+# original is missing because the blocks, the copy and the components were all
+# decided before it was drawn. Both are declared in _twins.py with their own
+# reason, and they are reported apart so that a shared bucket never turns the
+# second into "another service file". The set below is only the union used to
+# find pages that are in NEITHER.
+NO_TWIN = set(_twins.NOT_A_SCREEN) | set(_twins.SYSTEM_BUILT)
 painted = {p.name for p in (ROOT / "ui-visual").glob("*.html")}
 greys = {p.name for p in (ROOT / "wireframes").glob("*.html")}
 lonely = sorted([n for n in painted - NO_TWIN if _twins.grey_of(n) not in greys] +
                 [n for n in greys if _twins.painted_of(n) not in painted])
 check("18 every screen has a twin", not lonely,
       "%d: %s" % (len(lonely), ", ".join(lonely[:5])))
+# The other direction, the same shape every declaration here has: an entry that
+# names a file which does not exist is a stale exemption, and a stale exemption
+# is a hole that reads as a decision.
+ghost = sorted(n for n in NO_TWIN if n not in painted)
+check("18 no exemption without a page", not ghost,
+      "%d: %s" % (len(ghost), ", ".join(ghost[:4])))
+check("18 built from the system, declared", True,
+      "%d not a screen, %d system-built: %s" % (
+          len(_twins.NOT_A_SCREEN), len(_twins.SYSTEM_BUILT),
+          ", ".join(sorted(_twins.SYSTEM_BUILT))))
 
 drift, frame = [], []
 for page in sorted((ROOT / "ui-visual").glob("*.html")):
