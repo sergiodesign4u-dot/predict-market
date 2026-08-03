@@ -320,7 +320,28 @@ document.addEventListener('click', function (e) {
     <main class="feed">
       <div class="feed-inner">
         <div class="cat-layout">
-        <div class="cat-main">
+        <nav class="toc" aria-label="On this page">
+          <details class="toc-d">
+            <summary class="toc-head">On this page</summary>
+            <ul class="toc-list">
+              <li><a class="toc-link" href="#what">What this document is<span class="toc-n">01</span></a></li>
+              <li><a class="toc-link" href="#who">Who we are, and who this covers<span class="toc-n">02</span></a></li>
+              <li><a class="toc-link" href="#account">Your account<span class="toc-n">03</span></a></li>
+              <li><a class="toc-link" href="#betting">Backing an event<span class="toc-n">04</span></a></li>
+              <li><a class="toc-link" href="#resolution">How an event resolves<span class="toc-n">05</span></a></li>
+              <li><a class="toc-link" href="#money">Your money<span class="toc-n">06</span></a></li>
+              <li><a class="toc-link" href="#fees">Fees<span class="toc-n">07</span></a></li>
+              <li><a class="toc-link" href="#where">Where the service is available<span class="toc-n">08</span></a></li>
+              <li><a class="toc-link" href="#content">Content you post<span class="toc-n">09</span></a></li>
+              <li><a class="toc-link" href="#suspension">When an account can be suspended or closed<span class="toc-n">10</span></a></li>
+              <li><a class="toc-link" href="#wrong">If something goes wrong<span class="toc-n">11</span></a></li>
+              <li><a class="toc-link" href="#changes">Changes to this document<span class="toc-n">12</span></a></li>
+              <li><a class="toc-link" href="#law">Law and disputes<span class="toc-n">13</span></a></li>
+              <li><a class="toc-link" href="#reach">How to reach us about this document<span class="toc-n">14</span></a></li>
+            </ul>
+          </details>
+        </nav>
+        <div class="cat-main read-col">
         <div class="feed-head"><h1>Terms of Service</h1></div>
 
         <div class="spinner-box">Prototype page. The section headings, the structure and the dates are real; the body text describes what each section would decide and is not an operative legal term. Nothing on this page is in force.</div>
@@ -335,27 +356,6 @@ document.addEventListener('click', function (e) {
              ui-kit/docs/backlog.md. -->
         <a class="related-more" href="how-it-works.html">How resolution works</a>
 
-        <section class="related-events" aria-labelledby="toc-h">
-          <h2 id="toc-h">On this page</h2>
-          <ul class="related-list">
-            <li><a href="#what"><span class="rel-q">What this document is</span><span class="rel-odds">01</span></a></li>
-            <li><a href="#who"><span class="rel-q">Who we are, and who this covers</span><span class="rel-odds">02</span></a></li>
-            <li><a href="#account"><span class="rel-q">Your account</span><span class="rel-odds">03</span></a></li>
-            <li><a href="#betting"><span class="rel-q">Backing an event</span><span class="rel-odds">04</span></a></li>
-            <li><a href="#resolution"><span class="rel-q">How an event resolves</span><span class="rel-odds">05</span></a></li>
-            <li><a href="#money"><span class="rel-q">Your money</span><span class="rel-odds">06</span></a></li>
-            <li><a href="#fees"><span class="rel-q">Fees</span><span class="rel-odds">07</span></a></li>
-            <li><a href="#where"><span class="rel-q">Where the service is available</span><span class="rel-odds">08</span></a></li>
-            <li><a href="#content"><span class="rel-q">Content you post</span><span class="rel-odds">09</span></a></li>
-            <li><a href="#suspension"><span class="rel-q">When an account can be suspended or closed</span><span class="rel-odds">10</span></a></li>
-            <li><a href="#wrong"><span class="rel-q">If something goes wrong</span><span class="rel-odds">11</span></a></li>
-            <li><a href="#changes"><span class="rel-q">Changes to this document</span><span class="rel-odds">12</span></a></li>
-            <li><a href="#law"><span class="rel-q">Law and disputes</span><span class="rel-odds">13</span></a></li>
-            <li><a href="#reach"><span class="rel-q">How to reach us about this document</span><span class="rel-odds">14</span></a></li>
-          </ul>
-        </section>
-
-        <article>
         <div class="feed-seo" id="what"><h2>1. What this document is</h2><p>This section sets out what the agreement covers and what it does not. It explains that using Predict Market means accepting a set of rules about the account, the funds inside it, and the events a person backs, and that the rules are written to be readable before they are written to be exhaustive.</p><p>It would also name the other documents that sit beside this one and say which of them wins if two disagree. In the shipped version that ordering is the first thing a reader is told, because a person who does not know which document governs cannot know what they have agreed to.</p></div>
         <div class="feed-seo" id="who"><h2>2. Who we are, and who this covers</h2><p>This section identifies the operator of the service, the jurisdiction it is registered in, and the contact address for a legal notice. It states the minimum age and says that an account is personal: one person, one account, no acting on behalf of anyone else.</p><p>It would also describe what happens to an account opened by someone the rules do not cover, and it would say so before the deposit section rather than after it, because the answer changes whether the deposit should have been made at all.</p></div>
         <div class="feed-seo" id="account"><h2>3. Your account</h2><p>This section describes registration, the information asked for at sign-up, and what a person is responsible for keeping safe. It explains that Predict Market asks for an account only when a bet is confirmed and not when the site is opened, which is a product decision as much as a legal one and is written here so the two do not drift apart.</p><p>It would set out how identity is verified when a fiat deposit requires it, which is the only point at which more than an email is asked for, and it would say what an unverified account can and cannot do rather than leaving the reader to discover the limit at the moment it stops them.</p><p>It would also cover closing an account: how a person asks, how long it takes, and what happens to open positions and to a remaining balance.</p></div>
@@ -370,7 +370,6 @@ document.addEventListener('click', function (e) {
         <div class="feed-seo" id="changes"><h2>12. Changes to this document</h2><p>This section explains how the terms change and when a change takes effect. A change is effective immediately for a person opening an account after it is published, and after a stated notice period for a person who already has one. Both dates are shown at the top of this page, and the previous version stays available.</p><p>It would also say what a person may do if they do not accept a change, and confirm that closing an account and withdrawing a balance is always one of the options.</p></div>
         <div class="feed-seo" id="law"><h2>13. Law and disputes</h2><p>This section names the law that governs the agreement and the forum in which a dispute is heard. It would say whether arbitration is required, whether a class action is waived, and what a person may do before either becomes necessary.</p><p>It would also give the informal route first: an address, a person, and a period in which a reply is due, because most disputes end there and a document that opens with arbitration reads as one that expects to be argued with.</p></div>
         <div class="feed-seo" id="reach"><h2>14. How to reach us about this document</h2><p>This section gives the single address for a question about these terms, separate from product support, and states the period within which a reply is sent.</p><p>It would also give the postal address for a formal notice, because some notices are only valid on paper and a person should not have to look for that.</p></div>
-        </article>
 
         <div class="protect"><b>A question about this document</b> goes to legal@predictmarket.example, which is not product support. A reply is sent within five working days.</div>
 
