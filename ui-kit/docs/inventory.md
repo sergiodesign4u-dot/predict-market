@@ -86,6 +86,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | - brand tile (`.hero-promo.brand-tile`, notched frame) | `hero.css` | [hero](../hero.html) | L3 | Trending feed | default | - | UV | art | + |
 | - hot-right-now ranked list (`.hero-hot`) | `hero.css` | [hero](../hero.html) | L3 | Trending feed | default | - | UV | - | + |
 | Feed SEO plate (below fold, `.feed-seo-wrap` brand statement) | `seo-plate.css` | [seo-plate](../seo-plate.html) | L2 | feed + category pages | default | 14 | WF/UV | art | + |
+| Contents rail (`.toc`, a document's own sections) | `toc.css` | [toc](../toc.html) | L1 | terms | rest / hover / press / current | 1 | UV | - | + |
 | Related events plate (`.related-events`) | `related.css` | [related](../related.html) | L2 | event-detail | list | 9 | WF | event | + |
 | Load-more control | `loadmore.css` | [loadmore](../loadmore.html) | L1 | feed, category | rest / hover | 20+ | WF/UV | - | + |
 

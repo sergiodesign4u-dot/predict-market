@@ -519,6 +519,18 @@
   "rewrites": 0
  },
  {
+  "id": "toc-rail",
+  "component": "toc",
+  "title": "Contents rail, and the reading column beside it",
+  "width": 900,
+  "also": [
+   "seo-plate"
+  ],
+  "note": "Shown at 900 because that is where the rail arrives: below it the contents is an in-flow list above the body. Same slot and same 214px as the sub-category rail, a different component in it, because a contents navigates inside one page and its rows have to be anchors.",
+  "source": "specimens.extra.html / extra / Contents rail (a long document)",
+  "rewrites": 0
+ },
+ {
   "id": "base-groove",
   "component": "base",
   "title": "The engraved separator",

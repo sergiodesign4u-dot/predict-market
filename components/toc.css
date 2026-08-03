@@ -1,0 +1,65 @@
+/* components/toc.css
+   Component: toc. Classes: .toc, .toc-d, .toc-head, .toc-link, .toc-list, .toc-n.
+
+   The page's own contents: a rail of anchors into the document beside it.
+
+   WHY IT IS A COMPONENT AND NOT A VARIANT OF catnav. The two rails have the same
+   geometry and opposite jobs. A category rail navigates BETWEEN pages and its
+   rows are buttons; a contents rail navigates INSIDE one page and its rows must
+   be anchors, because a contents built out of buttons is not crawlable and this
+   product's own SEO layer (ia/docs/pages/seo.md section 6) requires every H2
+   anchor to be a real link. Putting the sections of a legal document into a
+   component called catnav would also have been the third naming lie on one
+   screen, and ui-kit/docs/backlog.md item S6 already counts the first three.
+
+   THE RAIL SLOT IS A CONTRACT, and this file honours it: a rail declares its own
+   flex-basis and its own sticky, exactly as .subcat does in catnav.css, and the
+   shell (components/patterns/browse-shell.css) declares only that there are two
+   columns. So a third rail can arrive later without either file learning about
+   it.
+
+   MOBILE IS A DISCLOSURE, AND THE REASON IS MEASURED. ia/docs/blocks.md block B5
+   says the contents is collapsed above the body on mobile. Built open first, to
+   check whether the bank was being cautious: at 360 the fourteen rows pushed the
+   H1 of the document entirely below the fold, so the first screen of a legal page
+   was a list of links to a title the reader had not seen. The bank was right.
+   Desktop does not need the control, so the summary goes and the content is
+   forced open through ::details-content, which is the only way an author can
+   override the closed state a UA owns.
+
+   Reads: --bg-control-hover, --bg-pressed, --border-hairline, --color-action, --text-brass, --text-muted, --text-primary
+     --text-brass, --text-muted, --text-primary
+   Stand:  ui-kit/toc.html
+   Stands on: 1 ui-visual screens (terms.html)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.toc{margin:0}
+.toc-d{margin:0}
+.toc-head{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);cursor:pointer;list-style:none;font-size:var(--text-11);font-weight:var(--weight-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);padding:var(--space-12) var(--space-8);min-height:var(--control-44);margin:0;border-bottom:1px solid var(--border-hairline)}
+.toc-head::-webkit-details-marker{display:none}
+.toc-head::after{content:'';width:var(--size-8);height:var(--size-8);border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin-right:var(--space-4)}
+.toc-d[open] .toc-head::after{transform:rotate(225deg)}
+.toc-list{list-style:none;margin:0;padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2)}
+.toc-list li{margin:0}
+.toc-link{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);text-decoration:none;color:var(--text-primary);font-family:inherit;font-size:var(--text-13);font-weight:var(--weight-medium);line-height:var(--leading-snug);padding:var(--space-8);min-height:var(--control-36);border:1px solid transparent;border-radius:var(--radius-10)}
+.toc-n{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted);flex:0 0 auto}
+
+/* States. A row is a link, so it takes both, and neither is a colour written by
+   hand: hover reaches for the ground role every quiet control uses and the press
+   for the pressed one. */
+.toc-head:hover{color:var(--text-brass)}
+.toc-link:hover{background:var(--bg-control-hover);border-color:var(--color-action);color:var(--text-brass)}
+.toc-link:active{background:var(--bg-pressed)}
+.toc-link[aria-current="true"]{border-color:var(--color-action);color:var(--text-brass)}
+.toc-link[aria-current="true"] .toc-n{color:var(--text-brass)}
+
+/* THE RAIL, at the width the shell hands it. Same breakpoint and the same 214px
+   as the category rail, because the slot is one slot: a document that put its
+   contents at a different width would make the two rails disagree about what a
+   rail is. The sticky top clears the app header and the condensed strip, which
+   is the number catnav.css already solved for the same chrome. */
+@media(min-width:900px){
+  .toc{flex:0 0 214px;position:sticky;top:120px;align-self:flex-start}
+  .toc-head{display:none}
+  .toc-d::details-content{display:block;content-visibility:visible}
+}

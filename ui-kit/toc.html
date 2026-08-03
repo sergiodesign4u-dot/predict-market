@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - toc</title>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   A frame is a document of its own, so it does not inherit the attribute: this
+   block runs in the frames too and they are told by postMessage, the same
+   handshake _frames.js already uses, because from file:// every document has
+   its own opaque origin and reading into a frame is refused.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function set(on){if(on){r.setAttribute('data-theme','light')}else{r.removeAttribute('data-theme')}}
+function push(){var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){try{f[i].contentWindow.postMessage({pmTheme:lit()?'light':'dark'},'*')}catch(e){}}}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}
+push();}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();set(!on);
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+window.addEventListener('message',function(e){var d=e.data;
+if(!d||(d.pmTheme!=='light'&&d.pmTheme!=='dark'))return;
+set(d.pmTheme==='light');paint();});
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);
+/* a frame that arrives late is told as soon as it is ready */
+var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
+push();});})();</script>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="toc">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<main class="tk-wrap">
+  <header class="tk-hero">
+    <h1>toc</h1>
+    <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">components/toc.css</span>
+      <span class="tk-badge">19 rules</span>
+      <span class="tk-badge">6 classes</span>
+      <span class="tk-badge">1 screens</span>
+    </div>
+  </header>
+
+  <section class="tk-sec" id="live">
+    <h2 data-n="01">Live</h2>
+    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside
+    the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a
+    page of its own, so the width under the title is a real viewport and the media queries answer to
+    it.</p>
+    <figure class="ck-scene" id="sp-toc-rail"><figcaption class="ck-scene-lbl"><b>Contents rail, and the reading column beside it</b><span class="ck-w">900px</span><span class="ck-zoom" hidden></span><a href="specimens/toc-rail.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:900px"><iframe data-specimen="toc-rail" src="specimens/toc-rail.html" width="900" height="320" loading="lazy" title="Contents rail, and the reading column beside it"></iframe></div><p class="ck-cap">Shown at 900 because that is where the rail arrives: below it the contents is an in-flow list above the body. Same slot and same 214px as the sub-category rail, a different component in it, because a contents navigates inside one page and its rows have to be anchors.</p></figure>
+  </section>
+
+  <section class="tk-sec" id="states">
+    <h2 data-n="03">States</h2>
+    <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are
+    live, so hover them; what follows is what the file says will move.</p>
+    <table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.toc-d[open] .toc-head::after</td><td class='ck-decl'>transform:rotate(225deg)</td></tr><tr><td class='tk-role'>.toc-head:hover</td><td class='ck-decl'>color:var(--text-brass)</td></tr><tr><td class='tk-role'>.toc-link:hover</td><td class='ck-decl'>background:var(--bg-control-hover);border-color:var(--color-action);color:var(--text-brass)</td></tr><tr><td class='tk-role'>.toc-link:active</td><td class='ck-decl'>background:var(--bg-pressed)</td></tr><tr><td class='tk-role'>.toc-link[aria-current="true"]</td><td class='ck-decl'>border-color:var(--color-action);color:var(--text-brass)</td></tr><tr><td class='tk-role'>.toc-link[aria-current="true"] .toc-n</td><td class='ck-decl'>color:var(--text-brass)</td></tr></tbody></table><h3 class="tk-subh">The tokens these states read, on both grounds</h3><p class="tk-note">Neither panel is a screenshot. Each carries <code>data-theme</code> itself, so the token resolves inside it and a role that was given a value in only one theme shows up here as a control that does not move.</p><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><div class="ck-st-tok"><code>--text-brass</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--text-brass)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--bg-control-hover</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-control-hover)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--color-action</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--color-action)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-pressed)">Confirm bet</span><em>the value this state moves to</em></span></div></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><div class="ck-st-tok"><code>--text-brass</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--text-brass)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--bg-control-hover</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-control-hover)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--color-action</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--color-action)">Confirm bet</span><em>the value this state moves to</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--bg-pressed)">Confirm bet</span><em>the value this state moves to</em></span></div></div></div>
+  </section>
+
+  <section class="tk-sec" id="roles">
+    <h2 data-n="04">Roles it reads</h2>
+    <p class="tk-note">Colour comes in only through these. Change one on
+    <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
+    <div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-control-hover)"></i><code>--bg-control-hover</code></span><span class="ck-role"><i style="background:var(--bg-pressed)"></i><code>--bg-pressed</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
+  </section>
+
+  <section class="tk-sec" id="classes">
+    <h2 data-n="05">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 105 painted screens carry
+    it. A zero is not automatically dead: the last column says whether the class is built at runtime,
+    shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
+    used by nothing. Only the last kind is a deletion candidate, and they are collected in
+    <a href="coverage.html">coverage</a>.</p>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.toc</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-d</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-head</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-link</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-list</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.toc-n</td><td class='tk-hex'>1</td><td class='tk-hex'></td></tr></tbody></table>
+  </section>
+
+  <section class="tk-sec" id="screens">
+    <h2 data-n="06">Where it stands</h2>
+    <div class="ck-screens"><a href="../ui-visual/terms.html">terms</a></div>
+  </section>
+
+  <section class="tk-sec" id="css">
+    <h2 data-n="08">The file</h2>
+    <p class="tk-note">To change this component, edit <code>components/toc.css</code>. To change a
+    value it reads, edit the role in <code>components/tokens.css</code>.</p>
+    <details class="ck-src"><summary>components/toc.css</summary><pre>/* components/toc.css
+   Component: toc. Classes: .toc, .toc-d, .toc-head, .toc-link, .toc-list, .toc-n.
+
+   The page's own contents: a rail of anchors into the document beside it.
+
+   WHY IT IS A COMPONENT AND NOT A VARIANT OF catnav. The two rails have the same
+   geometry and opposite jobs. A category rail navigates BETWEEN pages and its
+   rows are buttons; a contents rail navigates INSIDE one page and its rows must
+   be anchors, because a contents built out of buttons is not crawlable and this
+   product's own SEO layer (ia/docs/pages/seo.md section 6) requires every H2
+   anchor to be a real link. Putting the sections of a legal document into a
+   component called catnav would also have been the third naming lie on one
+   screen, and ui-kit/docs/backlog.md item S6 already counts the first three.
+
+   THE RAIL SLOT IS A CONTRACT, and this file honours it: a rail declares its own
+   flex-basis and its own sticky, exactly as .subcat does in catnav.css, and the
+   shell (components/patterns/browse-shell.css) declares only that there are two
+   columns. So a third rail can arrive later without either file learning about
+   it.
+
+   MOBILE IS A DISCLOSURE, AND THE REASON IS MEASURED. ia/docs/blocks.md block B5
+   says the contents is collapsed above the body on mobile. Built open first, to
+   check whether the bank was being cautious: at 360 the fourteen rows pushed the
+   H1 of the document entirely below the fold, so the first screen of a legal page
+   was a list of links to a title the reader had not seen. The bank was right.
+   Desktop does not need the control, so the summary goes and the content is
+   forced open through ::details-content, which is the only way an author can
+   override the closed state a UA owns.
+
+   Reads: --bg-control-hover, --bg-pressed, --border-hairline, --color-action, --text-brass, --text-muted, --text-primary
+     --text-brass, --text-muted, --text-primary
+   Stand:  ui-kit/toc.html
+   Stands on: 1 ui-visual screens (terms.html)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+.toc{margin:0}
+.toc-d{margin:0}
+.toc-head{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);cursor:pointer;list-style:none;font-size:var(--text-11);font-weight:var(--weight-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);padding:var(--space-12) var(--space-8);min-height:var(--control-44);margin:0;border-bottom:1px solid var(--border-hairline)}
+.toc-head::-webkit-details-marker{display:none}
+.toc-head::after{content:'';width:var(--size-8);height:var(--size-8);border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin-right:var(--space-4)}
+.toc-d[open] .toc-head::after{transform:rotate(225deg)}
+.toc-list{list-style:none;margin:0;padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2)}
+.toc-list li{margin:0}
+.toc-link{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);text-decoration:none;color:var(--text-primary);font-family:inherit;font-size:var(--text-13);font-weight:var(--weight-medium);line-height:var(--leading-snug);padding:var(--space-8);min-height:var(--control-36);border:1px solid transparent;border-radius:var(--radius-10)}
+.toc-n{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted);flex:0 0 auto}
+
+/* States. A row is a link, so it takes both, and neither is a colour written by
+   hand: hover reaches for the ground role every quiet control uses and the press
+   for the pressed one. */
+.toc-head:hover{color:var(--text-brass)}
+.toc-link:hover{background:var(--bg-control-hover);border-color:var(--color-action);color:var(--text-brass)}
+.toc-link:active{background:var(--bg-pressed)}
+.toc-link[aria-current="true"]{border-color:var(--color-action);color:var(--text-brass)}
+.toc-link[aria-current="true"] .toc-n{color:var(--text-brass)}
+
+/* THE RAIL, at the width the shell hands it. Same breakpoint and the same 214px
+   as the category rail, because the slot is one slot: a document that put its
+   contents at a different width would make the two rails disagree about what a
+   rail is. The sticky top clears the app header and the condensed strip, which
+   is the number catnav.css already solved for the same chrome. */
+@media(min-width:900px){
+  .toc{flex:0 0 214px;position:sticky;top:120px;align-self:flex-start}
+  .toc-head{display:none}
+  .toc-d::details-content{display:block;content-visibility:visible}
+}
+</pre></details>
+  </section>
+</main>
+
+<script src="_frames.js"></script>
+<script src="_nav.js"></script>
+</body>
+</html>

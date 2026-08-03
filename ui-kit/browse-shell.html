@@ -159,8 +159,42 @@ push();});})();</script>
 }
 /* WITH NO RAIL THERE IS NOTHING TO ALIGN TO, so the column takes the full height
    instead of hanging at the top of a row it is the only member of. 0,3,0 against
-   the 0,1,0 above, so specificity decides this and not the order of the files. */
-.app-case .cat-layout:not(:has(.subcat)){align-items:stretch}
+   the 0,1,0 above, so specificity decides this and not the order of the files.
+   THE SELECTOR NAMES BOTH RAILS because the slot takes more than one: a page
+   with a .toc and no .subcat is still a page with a rail. Widening it is a
+   no-op on every screen that has no .toc, which is 76 of the 77, and that was
+   measured rather than reasoned. */
+.app-case .cat-layout:not(:has(.subcat,.toc)){align-items:stretch}
+
+/* ---------------------------------------------------------- the reading column
+   THE SECOND THING THE MAIN COLUMN CAN BE. Until now it held a grid or a list,
+   and both of those bring their own distance: a grid has gap, a .pos-list has
+   gap. A stack of PROSE blocks has neither, and the page that first needed one
+   showed exactly what that costs. ui-visual/terms.html put fourteen blocks in
+   .cat-main and every one of them touched the next, because the only vertical
+   rhythm this chain declares is .feed-inner's gap in base.css, and .feed-inner
+   had one child.
+
+   THE CONTAINER OWNS THE DISTANCE, NOT THE BLOCK. That is the whole rule and the
+   reason it is written here rather than as a margin on .feed-seo: a margin on a
+   block is a fact about that block, so the next block dropped into the stack
+   arrives with no distance again and the defect returns one screen later. The
+   reset on the children is deliberate and is the same sentence from the other
+   side: a block in this stack may not carry its own vertical margin.
+
+   THE MEASURE IS THE OTHER HALF. --container-read is 800px and belongs to the
+   feed's SEO plate; on 13px prose that is 89ch measured, against the 60 to 75
+   DESIGN.md decided. A long document is where a reader sees the difference, so
+   the column takes --container-doc and centres itself in whatever the rail
+   leaves. */
+.read-col{display:flex;flex-direction:column;gap:var(--space-16);max-width:var(--container-doc);margin-inline:auto}
+.read-col&gt;*{margin-block:0}
+/* A prose block is a stack too, one level down, and it is the same argument:
+   .feed-seo p carries margin:0 because the block was designed as one paragraph
+   under one heading. Fourteen sections of two to five paragraphs is the first
+   time it held more. */
+.read-col .feed-seo{display:flex;flex-direction:column;gap:var(--space-8)}
+.read-col .feed-seo h2{margin-bottom:0}
 </pre></details>
   </section>
 </main>

@@ -1,246 +1,758 @@
 {
-  "_": [
-    "The curation. One entry = one specimen page under ui-kit/specimens/.",
-    "",
-    "from     which source file the block comes from (kit.html by default).",
-    "section  the kit section id; label  the block heading, verbatim.",
-    "pick     optional: show only this element (or these comma-separated siblings)",
-    "         out of the block, keeping its real ancestor chain. Without it the",
-    "         whole block is the specimen.",
-    "unwrap   drop these wrappers from that chain. Used only for a tab panel,",
-    "         which is display:none until a radio outside the component is checked.",
-    "wrap     false when the block already carries .device .app-case itself.",
-    "width    the viewport the specimen is shown at. Mobile-only pieces get 360,",
-    "         so the media query shows them instead of being overridden. For a",
-    "         control that sits on the bare canvas the width is the measured width",
-    "         of the control itself, so the frame hugs it and no strip of empty",
-    "         stone is left over. For anything on a plate the width keeps the",
-    "         plate's own 20px padding, because that padding is the product.",
-    "component  the page it is canonical for; also  the pages that link to it.",
-    "",
-    "Sections f-color and f-type are the token foundations and are shown on",
-    "tokens.html, so they are skipped here. No em dash."
-  ],
-  "skip_sections": ["f-color", "f-type"],
-
-  "skip_blocks": [
-    {"block": ["buttons", "Text input - default / hover / focus / disabled"],
-     "why": "That block is stand markup: .kit-field, .kit-field-wrap, .kit-field-lbl, plus .is-hover and .is-focus classes hand-written to fake the pseudo-classes. It demonstrates no product class, so it cannot be the input specimen. The field the product ships is input-amount, sliced out of the Add funds dialog."}
-  ],
-
-  "specimens": [
-    {"id": "button-primary", "canvas": false, "section": "buttons", "label": "Primary - small / medium / large",
-     "component": "button", "title": "Primary button, three sizes", "width": 374},
-    {"id": "button-secondary", "canvas": false, "section": "buttons", "label": "Secondary - small / medium / large",
-     "component": "button", "title": "Secondary button, three sizes", "width": 459},
-    {"id": "button-outcome-row", "canvas": false, "section": "buttons", "label": "Outcome pair, icon, and Load more",
-     "component": "button", "also": ["yesno", "loadmore", "header"],
-     "title": "Outcome pair, icon button and Load more", "width": 465},
-    {"id": "loadmore", "canvas": false, "section": "buttons", "label": "Outcome pair, icon, and Load more",
-     "pick": "button.load-more", "component": "loadmore", "title": "Load more", "width": 173},
-
-    {"id": "catnav-chips", "section": "chips", "label": "Chips and filters",
-     "component": "catnav", "also": ["filters", "feed"],
-     "title": "Category chips and the sort menu", "width": 900},
-    {"id": "filters-sort", "canvas": false, "section": "chips", "label": "Chips and filters",
-     "pick": "details.filter-menu", "component": "filters",
-     "title": "Sort menu", "width": 196,
-     "state": "Shown closed, the way it ships. It opens on click, no script involved."},
-    {"id": "filters-toggle", "canvas": false, "section": "chips", "label": "Toggle (on / off / disabled)",
-     "component": "filters", "title": "Toggle: on, off, disabled", "width": 278},
-
-    {"id": "hero-band", "section": "cards", "label": "Featured hero band",
-     "component": "hero", "title": "Featured hero band", "width": 1120},
-    {"id": "feed-grid", "section": "cards", "label": "Event cards",
-     "component": "feed", "also": ["card", "catnav"],
-     "title": "The card grid on the content plate", "width": 1120},
-    {"id": "card-binary", "section": "cards", "label": "Event cards",
-     "pick": "article.card", "component": "card", "also": ["oddsbar", "yesno"],
-     "title": "Event card, binary (treatment B)", "width": 440,
-     "note": "The photo is keyed off the card position in the grid, so a card shown alone always gets the politics image."},
-    {"id": "card-multi", "section": "cards", "label": "Event cards",
-     "pick": "article.card", "nth": 3, "component": "card", "also": ["options"],
-     "title": "Event card, multi outcome (treatment D)", "width": 440},
-    {"id": "oddsbar", "section": "cards", "label": "Event cards",
-     "pick": "div.oddsbar", "component": "oddsbar", "title": "Odds bar", "width": 440,
-     "note": "On a painted screen this markup is built by the feed script from the probability text; here it ships as markup."},
-    {"id": "yesno", "section": "cards", "label": "Event cards",
-     "pick": "div.yesno", "component": "yesno", "title": "Tinted YES / NO pair", "width": 440},
-    {"id": "options-rows", "section": "cards", "label": "Event cards",
-     "pick": "div.options", "component": "options", "title": "Outcome rows", "width": 440},
-    {"id": "catnav-subfilter", "section": "cards", "label": "Trending sub-filter",
-     "component": "catnav", "title": "Trending sub-filter", "width": 900},
-    {"id": "catnav-subcat", "section": "cards", "label": "Sub-category rail (category pages)",
-     "component": "catnav", "title": "Sub-category rail", "width": 900},
-    {"id": "seo-plate", "section": "cards", "label": "Below-fold SEO plate",
-     "component": "seo-plate", "title": "Below-fold SEO plate", "width": 1120},
-
-    {"id": "state-empty-filters", "section": "states", "label": "States",
-     "component": "state-block", "title": "Nothing matches the filters", "width": 900},
-    {"id": "state-error", "section": "states", "label": "Error",
-     "component": "state-block", "title": "Error", "width": 900},
-    {"id": "state-empty", "section": "states", "label": "Empty list",
-     "component": "state-block", "title": "Empty list", "width": 900},
-    {"id": "skeleton-grid", "section": "states", "label": "Loading and push",
-     "pick": "div.grid", "component": "skeleton", "also": ["card"],
-     "title": "Skeleton cards while the feed loads", "width": 900},
-    {"id": "notice-push", "section": "states", "label": "Loading and push",
-     "pick": "div.push-banner", "component": "notice",
-     "title": "Push permission banner", "width": 900},
-
-    {"id": "dialog-shared", "canvas": false, "section": "dialogs", "label": "Shared dialogs",
-     "component": "dialog", "also": ["input", "notice"],
-     "title": "Sign in and Add funds", "width": 780,
-     "state": "Both carry the open attribute. In the product they are opened with showModal(), which is why the staging sheet puts them back in the flow."},
-    {"id": "signin", "canvas": false, "section": "dialogs", "label": "Shared dialogs",
-     "pick": "dialog.signin-dialog", "component": "dialog",
-     "title": "Sign in dialog", "width": 420,
-     "note": "A skin, not a component. signin.css was folded into dialog.css on 2026-08-02, same anatomy zone for zone, and the stand stayed because the skin still ships. The component field was corrected here on the same day: it had been corrected in the GENERATED index.json only, so the first person to re-run the extractor got the deleted component back."},
-    {"id": "input-amount", "canvas": false, "section": "dialogs", "label": "Shared dialogs",
-     "pick": "span.field-label,div.amount-row,div.quick", "component": "input",
-     "title": "Amount field, label and quick amounts", "width": 420,
-     "note": "Every rule in input.css is scoped under dialog.app-dialog, so the field is shown inside the dialog it lives in."},
-    {"id": "input-states", "from": "specimens.extra.html", "canvas": false, "section": "extra",
-     "label": "Field states", "pick": "dialog.app-dialog", "component": "input",
-     "title": "Field states: rest, disabled, selected, address", "width": 420,
-     "note": "The states a state actually is, an attribute or a class, rendered. Hover and focus stay in the table on the component page: faking them with a stand class would make the specimen describe itself instead of the product."},
-    {"id": "hiw-dialog", "canvas": false, "section": "dialogs", "label": "How-it-works dialog",
-     "component": "hiw-dialog", "title": "How-it-works dialog", "width": 533},
-
-    {"id": "toast", "canvas": false, "section": "feedback", "label": "Toasts",
-     "component": "toast", "title": "Toasts", "width": 440},
-    {"id": "trustbar-feed", "canvas": false, "section": "feedback", "label": "Trust bar (near the action)",
-     "component": "trustbar", "title": "Trust bar, near the action", "width": 477},
-    {"id": "outcome-overlays", "canvas": false, "section": "feedback", "label": "Win and loss overlays",
-     "component": "outcome-dialog", "title": "Win and loss overlays", "width": 780},
-
-    {"id": "event-detail", "section": "detail", "label": "Event Detail",
-     "component": "event-detail", "also": ["betpanel", "oddsbar", "chart"],
-     "title": "Content plate and bet panel", "width": 1120},
-    {"id": "chart", "section": "detail", "label": "Price chart",
-     "component": "chart", "title": "Price chart", "width": 1120},
-    {"id": "facts-strip", "section": "detail", "label": "Facts strip",
-     "component": "event-detail", "title": "Facts strip", "width": 1120},
-    {"id": "market-depth", "section": "detail", "label": "Market depth (AMM)",
-     "component": "market", "title": "Market depth (AMM)", "width": 1120,
-     "state": "Shown with the details element open."},
-    {"id": "tabs-detail", "section": "detail",
-     "label": "Content tabs (Comments / Biggest bets / Bets / Activity)",
-     "component": "tabs", "also": ["comments", "bets-table"],
-     "title": "Event Detail content tabs", "width": 1120,
-     "state": "The tabs are a CSS-only radio switch, so the strip works here exactly as it does on a screen."},
-    {"id": "comments-thread", "section": "detail",
-     "label": "Content tabs (Comments / Biggest bets / Bets / Activity)",
-     "pick": "div.cmt-controls,div.cmt-compose,div.cmt-list", "unwrap": ["ed-tabpanel"],
-     "component": "comments", "title": "Sort, composer and thread", "width": 900,
-     "note": "Lifted out of the tab panel, which is display:none until its radio is checked."},
-    {"id": "bets-biggest", "section": "detail",
-     "label": "Content tabs (Comments / Biggest bets / Bets / Activity)",
-     "pick": "div.hold-cols", "unwrap": ["ed-tabpanel"],
-     "component": "bets-table", "title": "Biggest bets", "width": 900},
-    {"id": "bets-table", "section": "detail",
-     "label": "Content tabs (Comments / Biggest bets / Bets / Activity)",
-     "pick": "table.ptable", "unwrap": ["ed-tabpanel"],
-     "component": "bets-table", "title": "Bets table, your row highlighted", "width": 900},
-    {"id": "bets-activity", "section": "detail",
-     "label": "Content tabs (Comments / Biggest bets / Bets / Activity)",
-     "pick": "div.act-list", "unwrap": ["ed-tabpanel"],
-     "component": "bets-table", "title": "Activity", "width": 900},
-    {"id": "betpanel-states", "section": "detail",
-     "label": "Bet panel states (funds line / insufficient / price moved / processing)",
-     "component": "betpanel", "title": "Bet panel, four states", "width": 1120},
-    {"id": "betpanel-dock", "section": "detail",
-     "label": "Mobile bet dock + bottom sheet (mobile only)",
-     "pick": "div.bet-dock", "component": "betpanel", "title": "Mobile bet dock", "width": 360,
-     "state": "Shown at 360 because the dock is mobile only. On a wider frame the media query hides it, which is exactly what the product does."},
-    {"id": "betpanel-sheet", "section": "detail",
-     "label": "Mobile bet dock + bottom sheet (mobile only)",
-     "pick": "dialog.bet-sheet", "component": "betpanel",
-     "set": [{"pick": "dialog.bet-sheet", "attrs": {"open": ""}}],
-     "inflow": true, "title": "Mobile bet sheet", "width": 360,
-     "state": "Open, the way showModal opens it on a phone. It ships as a fixed bottom drawer and is put in the flow here so the frame can show all of it."},
-    {"id": "options-multi", "section": "detail",
-     "label": "Multi outcome (selector + bet panel summary)",
-     "component": "options", "also": ["betpanel"],
-     "title": "Multi outcome: selector and bet summary", "width": 1120},
-    {"id": "related", "section": "detail", "label": "Related events",
-     "component": "related", "title": "Related events", "width": 900},
-
-    {"id": "profile-identity", "section": "profile", "label": "Profile and account",
-     "component": "profile", "also": ["position", "tabs", "account"],
-     "title": "Identity, reputation and the profile tabs", "width": 1120},
-    {"id": "account-cta", "section": "profile", "label": "Profile and account",
-     "pick": "div.cta-bar", "component": "account",
-     "title": "Sticky action bar", "width": 900,
-     "state": "Sticky on a screen, static here so it sits in the frame."},
-    {"id": "position-list", "section": "profile", "label": "Transaction list (wallet)",
-     "component": "position", "title": "Transaction list", "width": 1120},
-
-    {"id": "header-in", "section": "chrome", "label": "Sticky app header (logged in)",
-     "wrap": false, "component": "header", "title": "App header, logged in", "width": 1120,
-     "state": "The condensed category strip below the row is collapsed until the header gets .scrolled, which a scroll observer adds on a real screen."},
-    {"id": "header-out", "section": "chrome", "label": "Header, logged out (Sign in / Sign up)",
-     "wrap": false, "component": "header", "title": "App header, logged out", "width": 1120},
-    {"id": "tabs-mybets", "section": "chrome", "label": "My Bets tabs (Active / History)",
-     "component": "tabs", "title": "My Bets tabs", "width": 900},
-    {"id": "bottomnav", "section": "chrome", "label": "Mobile bottom nav",
-     "wrap": false, "component": "bottomnav", "title": "Mobile bottom nav", "width": 360,
-     "state": "Shown at 360. Above 640 the media query hides it, and that is the product behaviour, not a defect of the stand."},
-    {"id": "footer", "section": "chrome", "label": "Footer (full)",
-     "wrap": false, "component": "footer", "also": ["trustbar", "filters"],
-     "title": "Footer", "width": 1120},
-    {"id": "trustbar-footer", "section": "chrome", "label": "Footer (full)",
-     "pick": "div.footer-trust", "wrap": false, "component": "trustbar",
-     "title": "Footer trust strip", "width": 1120},
-
-    {"id": "icons-sprite", "canvas": false, "section": "icons", "label": "Named icons (sprite)",
-     "component": "icons", "title": "Named icons (sprite)", "width": 1120},
-    {"id": "icons-interface", "canvas": false, "section": "icons", "label": "Interface icons",
-     "component": "icons", "title": "Interface icons", "width": 1120},
-    {"id": "icons-brand", "canvas": false, "section": "icons", "label": "Brand and auth",
-     "component": "icons", "title": "Brand and auth", "width": 418},
-
-    {"id": "base-frame", "from": "specimens.extra.html", "section": "extra",
-     "label": "Page frame and text reset",
-     "component": "base", "title": "The page frame and the text reset", "width": 760},
-    {"id": "base-groove", "canvas": false, "section": "f-color", "label": "Separators (the engraved groove)",
-     "component": "base", "title": "The engraved separator", "width": 638,
-     "note": "The .groove-sep utility next to the flat line it replaces. It is used on three elements in the frozen kit and on no painted screen, while its two declarations are hand-inlined in thirteen other component files. That is a finding, not dead weight."},
-    {"id": "course-chrome", "canvas": false, "from": "specimens.extra.html", "section": "extra",
-     "label": "Side panel: painted screens", "component": "course-chrome",
-     "title": "The panel on a painted screen", "width": 260,
-     "note": "A family opens nothing, so it is a label; a state is the row that navigates. It was the other way round until the vocabulary was made one: the family was an <a> with no href, drawn heavier than the pages under it."},
-    {"id": "course-chrome-system", "canvas": false, "from": "specimens.extra.html", "section": "extra",
-     "label": "Side panel: the system", "component": "course-chrome",
-     "title": "The panel in this vitrine", "width": 260,
-     "note": "Same three levels, same classes. A group label takes .active for the group you are in; the brass row is the page you are on."},
-    {"id": "course-chrome-roadmap", "canvas": false, "from": "specimens.extra.html", "section": "extra",
-     "label": "Side panel: the course roadmap", "component": "course-chrome",
-     "title": "The panel on a course page, with the planned rows", "width": 260,
-     "note": "The only variant with .planned, and the four rules that draw its Soon and Next badges had no markup in any tree this stylesheet reaches, because the 28 course pages carry their own inline copy of the panel instead."},
-    {"id": "cookie-consent", "canvas": false, "from": "specimens.extra.html", "section": "extra",
-     "label": "Cookie consent banner", "component": "cookie-consent",
-     "title": "Cookie consent banner", "width": 900},
-
-    {"id": "card-loading", "from": "specimens.extra.html", "section": "extra",
-     "label": "Event card, loading", "component": "card", "also": ["skeleton"],
-     "title": "Event card, loading", "width": 440,
-     "note": "The loading state is the card, not a component beside it: skeleton is a modifier and every rule that draws these bars is written as .card.skeleton .sk-line."},
-    {"id": "card-detail-head", "from": "specimens.extra.html", "section": "extra",
-     "label": "Event card, carrying the detail head", "component": "card", "also": ["event-detail"],
-     "title": "Event card, carrying the detail head", "width": 760,
-     "state": "The one place the card is the outer plate of a screen rather than a row in a grid. Copied from ui-visual/event-detail.html."},
-    {"id": "position-loading", "from": "specimens.extra.html", "section": "extra",
-     "label": "Transaction list, loading", "component": "position", "also": ["skeleton"],
-     "title": "Transaction list, loading", "width": 1120},
-    {"id": "betpanel-more", "from": "specimens.extra.html", "section": "extra",
-     "label": "Bet panel: multi outcome, loading, resolved", "component": "betpanel",
-     "also": ["options", "skeleton", "state-block"],
-     "title": "Bet panel: multi outcome, loading, resolved", "width": 1120,
-     "state": "Three panels in the real .ed-layout, so the min-width 760 rule that shows a bet panel at all is the product's own."},
-    {"id": "notice-reconcile", "canvas": false, "from": "specimens.extra.html", "section": "extra",
-     "label": "Reconcile box", "component": "notice", "also": ["input", "dialog"],
-     "title": "Reconcile box, won", "width": 420,
-     "state": "Kept inside the overlay: three of the four rules that draw this box are scoped under .app-case, .outcome-dialog and .win-dialog."}
-  ]
+ "_": [
+  "The curation. One entry = one specimen page under ui-kit/specimens/.",
+  "",
+  "from     which source file the block comes from (kit.html by default).",
+  "section  the kit section id; label  the block heading, verbatim.",
+  "pick     optional: show only this element (or these comma-separated siblings)",
+  "         out of the block, keeping its real ancestor chain. Without it the",
+  "         whole block is the specimen.",
+  "unwrap   drop these wrappers from that chain. Used only for a tab panel,",
+  "         which is display:none until a radio outside the component is checked.",
+  "wrap     false when the block already carries .device .app-case itself.",
+  "width    the viewport the specimen is shown at. Mobile-only pieces get 360,",
+  "         so the media query shows them instead of being overridden. For a",
+  "         control that sits on the bare canvas the width is the measured width",
+  "         of the control itself, so the frame hugs it and no strip of empty",
+  "         stone is left over. For anything on a plate the width keeps the",
+  "         plate's own 20px padding, because that padding is the product.",
+  "component  the page it is canonical for; also  the pages that link to it.",
+  "",
+  "Sections f-color and f-type are the token foundations and are shown on",
+  "tokens.html, so they are skipped here. No em dash."
+ ],
+ "skip_sections": [
+  "f-color",
+  "f-type"
+ ],
+ "skip_blocks": [
+  {
+   "block": [
+    "buttons",
+    "Text input - default / hover / focus / disabled"
+   ],
+   "why": "That block is stand markup: .kit-field, .kit-field-wrap, .kit-field-lbl, plus .is-hover and .is-focus classes hand-written to fake the pseudo-classes. It demonstrates no product class, so it cannot be the input specimen. The field the product ships is input-amount, sliced out of the Add funds dialog."
+  }
+ ],
+ "specimens": [
+  {
+   "id": "button-primary",
+   "canvas": false,
+   "section": "buttons",
+   "label": "Primary - small / medium / large",
+   "component": "button",
+   "title": "Primary button, three sizes",
+   "width": 374
+  },
+  {
+   "id": "button-secondary",
+   "canvas": false,
+   "section": "buttons",
+   "label": "Secondary - small / medium / large",
+   "component": "button",
+   "title": "Secondary button, three sizes",
+   "width": 459
+  },
+  {
+   "id": "button-outcome-row",
+   "canvas": false,
+   "section": "buttons",
+   "label": "Outcome pair, icon, and Load more",
+   "component": "button",
+   "also": [
+    "yesno",
+    "loadmore",
+    "header"
+   ],
+   "title": "Outcome pair, icon button and Load more",
+   "width": 465
+  },
+  {
+   "id": "loadmore",
+   "canvas": false,
+   "section": "buttons",
+   "label": "Outcome pair, icon, and Load more",
+   "pick": "button.load-more",
+   "component": "loadmore",
+   "title": "Load more",
+   "width": 173
+  },
+  {
+   "id": "catnav-chips",
+   "section": "chips",
+   "label": "Chips and filters",
+   "component": "catnav",
+   "also": [
+    "filters",
+    "feed"
+   ],
+   "title": "Category chips and the sort menu",
+   "width": 900
+  },
+  {
+   "id": "filters-sort",
+   "canvas": false,
+   "section": "chips",
+   "label": "Chips and filters",
+   "pick": "details.filter-menu",
+   "component": "filters",
+   "title": "Sort menu",
+   "width": 196,
+   "state": "Shown closed, the way it ships. It opens on click, no script involved."
+  },
+  {
+   "id": "filters-toggle",
+   "canvas": false,
+   "section": "chips",
+   "label": "Toggle (on / off / disabled)",
+   "component": "filters",
+   "title": "Toggle: on, off, disabled",
+   "width": 278
+  },
+  {
+   "id": "hero-band",
+   "section": "cards",
+   "label": "Featured hero band",
+   "component": "hero",
+   "title": "Featured hero band",
+   "width": 1120
+  },
+  {
+   "id": "feed-grid",
+   "section": "cards",
+   "label": "Event cards",
+   "component": "feed",
+   "also": [
+    "card",
+    "catnav"
+   ],
+   "title": "The card grid on the content plate",
+   "width": 1120
+  },
+  {
+   "id": "card-binary",
+   "section": "cards",
+   "label": "Event cards",
+   "pick": "article.card",
+   "component": "card",
+   "also": [
+    "oddsbar",
+    "yesno"
+   ],
+   "title": "Event card, binary (treatment B)",
+   "width": 440,
+   "note": "The photo is keyed off the card position in the grid, so a card shown alone always gets the politics image."
+  },
+  {
+   "id": "card-multi",
+   "section": "cards",
+   "label": "Event cards",
+   "pick": "article.card",
+   "nth": 3,
+   "component": "card",
+   "also": [
+    "options"
+   ],
+   "title": "Event card, multi outcome (treatment D)",
+   "width": 440
+  },
+  {
+   "id": "oddsbar",
+   "section": "cards",
+   "label": "Event cards",
+   "pick": "div.oddsbar",
+   "component": "oddsbar",
+   "title": "Odds bar",
+   "width": 440,
+   "note": "On a painted screen this markup is built by the feed script from the probability text; here it ships as markup."
+  },
+  {
+   "id": "yesno",
+   "section": "cards",
+   "label": "Event cards",
+   "pick": "div.yesno",
+   "component": "yesno",
+   "title": "Tinted YES / NO pair",
+   "width": 440
+  },
+  {
+   "id": "options-rows",
+   "section": "cards",
+   "label": "Event cards",
+   "pick": "div.options",
+   "component": "options",
+   "title": "Outcome rows",
+   "width": 440
+  },
+  {
+   "id": "catnav-subfilter",
+   "section": "cards",
+   "label": "Trending sub-filter",
+   "component": "catnav",
+   "title": "Trending sub-filter",
+   "width": 900
+  },
+  {
+   "id": "catnav-subcat",
+   "section": "cards",
+   "label": "Sub-category rail (category pages)",
+   "component": "catnav",
+   "title": "Sub-category rail",
+   "width": 900
+  },
+  {
+   "id": "seo-plate",
+   "section": "cards",
+   "label": "Below-fold SEO plate",
+   "component": "seo-plate",
+   "title": "Below-fold SEO plate",
+   "width": 1120
+  },
+  {
+   "id": "state-empty-filters",
+   "section": "states",
+   "label": "States",
+   "component": "state-block",
+   "title": "Nothing matches the filters",
+   "width": 900
+  },
+  {
+   "id": "state-error",
+   "section": "states",
+   "label": "Error",
+   "component": "state-block",
+   "title": "Error",
+   "width": 900
+  },
+  {
+   "id": "state-empty",
+   "section": "states",
+   "label": "Empty list",
+   "component": "state-block",
+   "title": "Empty list",
+   "width": 900
+  },
+  {
+   "id": "skeleton-grid",
+   "section": "states",
+   "label": "Loading and push",
+   "pick": "div.grid",
+   "component": "skeleton",
+   "also": [
+    "card"
+   ],
+   "title": "Skeleton cards while the feed loads",
+   "width": 900
+  },
+  {
+   "id": "notice-push",
+   "section": "states",
+   "label": "Loading and push",
+   "pick": "div.push-banner",
+   "component": "notice",
+   "title": "Push permission banner",
+   "width": 900
+  },
+  {
+   "id": "dialog-shared",
+   "canvas": false,
+   "section": "dialogs",
+   "label": "Shared dialogs",
+   "component": "dialog",
+   "also": [
+    "input",
+    "notice"
+   ],
+   "title": "Sign in and Add funds",
+   "width": 780,
+   "state": "Both carry the open attribute. In the product they are opened with showModal(), which is why the staging sheet puts them back in the flow."
+  },
+  {
+   "id": "signin",
+   "canvas": false,
+   "section": "dialogs",
+   "label": "Shared dialogs",
+   "pick": "dialog.signin-dialog",
+   "component": "dialog",
+   "title": "Sign in dialog",
+   "width": 420,
+   "note": "A skin, not a component. signin.css was folded into dialog.css on 2026-08-02, same anatomy zone for zone, and the stand stayed because the skin still ships. The component field was corrected here on the same day: it had been corrected in the GENERATED index.json only, so the first person to re-run the extractor got the deleted component back."
+  },
+  {
+   "id": "input-amount",
+   "canvas": false,
+   "section": "dialogs",
+   "label": "Shared dialogs",
+   "pick": "span.field-label,div.amount-row,div.quick",
+   "component": "input",
+   "title": "Amount field, label and quick amounts",
+   "width": 420,
+   "note": "Every rule in input.css is scoped under dialog.app-dialog, so the field is shown inside the dialog it lives in."
+  },
+  {
+   "id": "input-states",
+   "from": "specimens.extra.html",
+   "canvas": false,
+   "section": "extra",
+   "label": "Field states",
+   "pick": "dialog.app-dialog",
+   "component": "input",
+   "title": "Field states: rest, disabled, selected, address",
+   "width": 420,
+   "note": "The states a state actually is, an attribute or a class, rendered. Hover and focus stay in the table on the component page: faking them with a stand class would make the specimen describe itself instead of the product."
+  },
+  {
+   "id": "hiw-dialog",
+   "canvas": false,
+   "section": "dialogs",
+   "label": "How-it-works dialog",
+   "component": "hiw-dialog",
+   "title": "How-it-works dialog",
+   "width": 533
+  },
+  {
+   "id": "toast",
+   "canvas": false,
+   "section": "feedback",
+   "label": "Toasts",
+   "component": "toast",
+   "title": "Toasts",
+   "width": 440
+  },
+  {
+   "id": "trustbar-feed",
+   "canvas": false,
+   "section": "feedback",
+   "label": "Trust bar (near the action)",
+   "component": "trustbar",
+   "title": "Trust bar, near the action",
+   "width": 477
+  },
+  {
+   "id": "outcome-overlays",
+   "canvas": false,
+   "section": "feedback",
+   "label": "Win and loss overlays",
+   "component": "outcome-dialog",
+   "title": "Win and loss overlays",
+   "width": 780
+  },
+  {
+   "id": "event-detail",
+   "section": "detail",
+   "label": "Event Detail",
+   "component": "event-detail",
+   "also": [
+    "betpanel",
+    "oddsbar",
+    "chart"
+   ],
+   "title": "Content plate and bet panel",
+   "width": 1120
+  },
+  {
+   "id": "chart",
+   "section": "detail",
+   "label": "Price chart",
+   "component": "chart",
+   "title": "Price chart",
+   "width": 1120
+  },
+  {
+   "id": "facts-strip",
+   "section": "detail",
+   "label": "Facts strip",
+   "component": "event-detail",
+   "title": "Facts strip",
+   "width": 1120
+  },
+  {
+   "id": "market-depth",
+   "section": "detail",
+   "label": "Market depth (AMM)",
+   "component": "market",
+   "title": "Market depth (AMM)",
+   "width": 1120,
+   "state": "Shown with the details element open."
+  },
+  {
+   "id": "tabs-detail",
+   "section": "detail",
+   "label": "Content tabs (Comments / Biggest bets / Bets / Activity)",
+   "component": "tabs",
+   "also": [
+    "comments",
+    "bets-table"
+   ],
+   "title": "Event Detail content tabs",
+   "width": 1120,
+   "state": "The tabs are a CSS-only radio switch, so the strip works here exactly as it does on a screen."
+  },
+  {
+   "id": "comments-thread",
+   "section": "detail",
+   "label": "Content tabs (Comments / Biggest bets / Bets / Activity)",
+   "pick": "div.cmt-controls,div.cmt-compose,div.cmt-list",
+   "unwrap": [
+    "ed-tabpanel"
+   ],
+   "component": "comments",
+   "title": "Sort, composer and thread",
+   "width": 900,
+   "note": "Lifted out of the tab panel, which is display:none until its radio is checked."
+  },
+  {
+   "id": "bets-biggest",
+   "section": "detail",
+   "label": "Content tabs (Comments / Biggest bets / Bets / Activity)",
+   "pick": "div.hold-cols",
+   "unwrap": [
+    "ed-tabpanel"
+   ],
+   "component": "bets-table",
+   "title": "Biggest bets",
+   "width": 900
+  },
+  {
+   "id": "bets-table",
+   "section": "detail",
+   "label": "Content tabs (Comments / Biggest bets / Bets / Activity)",
+   "pick": "table.ptable",
+   "unwrap": [
+    "ed-tabpanel"
+   ],
+   "component": "bets-table",
+   "title": "Bets table, your row highlighted",
+   "width": 900
+  },
+  {
+   "id": "bets-activity",
+   "section": "detail",
+   "label": "Content tabs (Comments / Biggest bets / Bets / Activity)",
+   "pick": "div.act-list",
+   "unwrap": [
+    "ed-tabpanel"
+   ],
+   "component": "bets-table",
+   "title": "Activity",
+   "width": 900
+  },
+  {
+   "id": "betpanel-states",
+   "section": "detail",
+   "label": "Bet panel states (funds line / insufficient / price moved / processing)",
+   "component": "betpanel",
+   "title": "Bet panel, four states",
+   "width": 1120
+  },
+  {
+   "id": "betpanel-dock",
+   "section": "detail",
+   "label": "Mobile bet dock + bottom sheet (mobile only)",
+   "pick": "div.bet-dock",
+   "component": "betpanel",
+   "title": "Mobile bet dock",
+   "width": 360,
+   "state": "Shown at 360 because the dock is mobile only. On a wider frame the media query hides it, which is exactly what the product does."
+  },
+  {
+   "id": "betpanel-sheet",
+   "section": "detail",
+   "label": "Mobile bet dock + bottom sheet (mobile only)",
+   "pick": "dialog.bet-sheet",
+   "component": "betpanel",
+   "set": [
+    {
+     "pick": "dialog.bet-sheet",
+     "attrs": {
+      "open": ""
+     }
+    }
+   ],
+   "inflow": true,
+   "title": "Mobile bet sheet",
+   "width": 360,
+   "state": "Open, the way showModal opens it on a phone. It ships as a fixed bottom drawer and is put in the flow here so the frame can show all of it."
+  },
+  {
+   "id": "options-multi",
+   "section": "detail",
+   "label": "Multi outcome (selector + bet panel summary)",
+   "component": "options",
+   "also": [
+    "betpanel"
+   ],
+   "title": "Multi outcome: selector and bet summary",
+   "width": 1120
+  },
+  {
+   "id": "related",
+   "section": "detail",
+   "label": "Related events",
+   "component": "related",
+   "title": "Related events",
+   "width": 900
+  },
+  {
+   "id": "profile-identity",
+   "section": "profile",
+   "label": "Profile and account",
+   "component": "profile",
+   "also": [
+    "position",
+    "tabs",
+    "account"
+   ],
+   "title": "Identity, reputation and the profile tabs",
+   "width": 1120
+  },
+  {
+   "id": "account-cta",
+   "section": "profile",
+   "label": "Profile and account",
+   "pick": "div.cta-bar",
+   "component": "account",
+   "title": "Sticky action bar",
+   "width": 900,
+   "state": "Sticky on a screen, static here so it sits in the frame."
+  },
+  {
+   "id": "position-list",
+   "section": "profile",
+   "label": "Transaction list (wallet)",
+   "component": "position",
+   "title": "Transaction list",
+   "width": 1120
+  },
+  {
+   "id": "header-in",
+   "section": "chrome",
+   "label": "Sticky app header (logged in)",
+   "wrap": false,
+   "component": "header",
+   "title": "App header, logged in",
+   "width": 1120,
+   "state": "The condensed category strip below the row is collapsed until the header gets .scrolled, which a scroll observer adds on a real screen."
+  },
+  {
+   "id": "header-out",
+   "section": "chrome",
+   "label": "Header, logged out (Sign in / Sign up)",
+   "wrap": false,
+   "component": "header",
+   "title": "App header, logged out",
+   "width": 1120
+  },
+  {
+   "id": "tabs-mybets",
+   "section": "chrome",
+   "label": "My Bets tabs (Active / History)",
+   "component": "tabs",
+   "title": "My Bets tabs",
+   "width": 900
+  },
+  {
+   "id": "bottomnav",
+   "section": "chrome",
+   "label": "Mobile bottom nav",
+   "wrap": false,
+   "component": "bottomnav",
+   "title": "Mobile bottom nav",
+   "width": 360,
+   "state": "Shown at 360. Above 640 the media query hides it, and that is the product behaviour, not a defect of the stand."
+  },
+  {
+   "id": "footer",
+   "section": "chrome",
+   "label": "Footer (full)",
+   "wrap": false,
+   "component": "footer",
+   "also": [
+    "trustbar",
+    "filters"
+   ],
+   "title": "Footer",
+   "width": 1120
+  },
+  {
+   "id": "trustbar-footer",
+   "section": "chrome",
+   "label": "Footer (full)",
+   "pick": "div.footer-trust",
+   "wrap": false,
+   "component": "trustbar",
+   "title": "Footer trust strip",
+   "width": 1120
+  },
+  {
+   "id": "icons-sprite",
+   "canvas": false,
+   "section": "icons",
+   "label": "Named icons (sprite)",
+   "component": "icons",
+   "title": "Named icons (sprite)",
+   "width": 1120
+  },
+  {
+   "id": "icons-interface",
+   "canvas": false,
+   "section": "icons",
+   "label": "Interface icons",
+   "component": "icons",
+   "title": "Interface icons",
+   "width": 1120
+  },
+  {
+   "id": "icons-brand",
+   "canvas": false,
+   "section": "icons",
+   "label": "Brand and auth",
+   "component": "icons",
+   "title": "Brand and auth",
+   "width": 418
+  },
+  {
+   "id": "base-frame",
+   "from": "specimens.extra.html",
+   "section": "extra",
+   "label": "Page frame and text reset",
+   "component": "base",
+   "title": "The page frame and the text reset",
+   "width": 760
+  },
+  {
+   "id": "toc-rail",
+   "from": "specimens.extra.html",
+   "section": "extra",
+   "label": "Contents rail (a long document)",
+   "component": "toc",
+   "also": [
+    "seo-plate"
+   ],
+   "title": "Contents rail, and the reading column beside it",
+   "width": 900,
+   "note": "Shown at 900 because that is where the rail arrives: below it the contents is an in-flow list above the body. Same slot and same 214px as the sub-category rail, a different component in it, because a contents navigates inside one page and its rows have to be anchors."
+  },
+  {
+   "id": "base-groove",
+   "canvas": false,
+   "section": "f-color",
+   "label": "Separators (the engraved groove)",
+   "component": "base",
+   "title": "The engraved separator",
+   "width": 638,
+   "note": "The .groove-sep utility next to the flat line it replaces. It is used on three elements in the frozen kit and on no painted screen, while its two declarations are hand-inlined in thirteen other component files. That is a finding, not dead weight."
+  },
+  {
+   "id": "course-chrome",
+   "canvas": false,
+   "from": "specimens.extra.html",
+   "section": "extra",
+   "label": "Side panel: painted screens",
+   "component": "course-chrome",
+   "title": "The panel on a painted screen",
+   "width": 260,
+   "note": "A family opens nothing, so it is a label; a state is the row that navigates. It was the other way round until the vocabulary was made one: the family was an <a> with no href, drawn heavier than the pages under it."
+  },
+  {
+   "id": "course-chrome-system",
+   "canvas": false,
+   "from": "specimens.extra.html",
+   "section": "extra",
+   "label": "Side panel: the system",
+   "component": "course-chrome",
+   "title": "The panel in this vitrine",
+   "width": 260,
+   "note": "Same three levels, same classes. A group label takes .active for the group you are in; the brass row is the page you are on."
+  },
+  {
+   "id": "course-chrome-roadmap",
+   "canvas": false,
+   "from": "specimens.extra.html",
+   "section": "extra",
+   "label": "Side panel: the course roadmap",
+   "component": "course-chrome",
+   "title": "The panel on a course page, with the planned rows",
+   "width": 260,
+   "note": "The only variant with .planned, and the four rules that draw its Soon and Next badges had no markup in any tree this stylesheet reaches, because the 28 course pages carry their own inline copy of the panel instead."
+  },
+  {
+   "id": "cookie-consent",
+   "canvas": false,
+   "from": "specimens.extra.html",
+   "section": "extra",
+   "label": "Cookie consent banner",
+   "component": "cookie-consent",
+   "title": "Cookie consent banner",
+   "width": 900
+  },
+  {
+   "id": "card-loading",
+   "from": "specimens.extra.html",
+   "section": "extra",
+   "label": "Event card, loading",
+   "component": "card",
+   "also": [
+    "skeleton"
+   ],
+   "title": "Event card, loading",
+   "width": 440,
+   "note": "The loading state is the card, not a component beside it: skeleton is a modifier and every rule that draws these bars is written as .card.skeleton .sk-line."
+  },
+  {
+   "id": "card-detail-head",
+   "from": "specimens.extra.html",
+   "section": "extra",
+   "label": "Event card, carrying the detail head",
+   "component": "card",
+   "also": [
+    "event-detail"
+   ],
+   "title": "Event card, carrying the detail head",
+   "width": 760,
+   "state": "The one place the card is the outer plate of a screen rather than a row in a grid. Copied from ui-visual/event-detail.html."
+  },
+  {
+   "id": "position-loading",
+   "from": "specimens.extra.html",
+   "section": "extra",
+   "label": "Transaction list, loading",
+   "component": "position",
+   "also": [
+    "skeleton"
+   ],
+   "title": "Transaction list, loading",
+   "width": 1120
+  },
+  {
+   "id": "betpanel-more",
+   "from": "specimens.extra.html",
+   "section": "extra",
+   "label": "Bet panel: multi outcome, loading, resolved",
+   "component": "betpanel",
+   "also": [
+    "options",
+    "skeleton",
+    "state-block"
+   ],
+   "title": "Bet panel: multi outcome, loading, resolved",
+   "width": 1120,
+   "state": "Three panels in the real .ed-layout, so the min-width 760 rule that shows a bet panel at all is the product's own."
+  },
+  {
+   "id": "notice-reconcile",
+   "canvas": false,
+   "from": "specimens.extra.html",
+   "section": "extra",
+   "label": "Reconcile box",
+   "component": "notice",
+   "also": [
+    "input",
+    "dialog"
+   ],
+   "title": "Reconcile box, won",
+   "width": 420,
+   "state": "Kept inside the overlay: three of the four rules that draw this box are scoped under .app-case, .outcome-dialog and .win-dialog."
+  }
+ ]
 }

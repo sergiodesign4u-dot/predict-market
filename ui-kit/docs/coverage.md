@@ -43,15 +43,16 @@ says so. No em dash.
 | position | 2 | position-list, position-loading | 1 | 13 | 36 |
 | profile | 1 | profile-identity | 0 | 8 | 7 |
 | related | 1 | related | 0 | 6 | 10 |
-| seo-plate | 1 | seo-plate | 0 | 8 | 11 |
+| seo-plate | 1 | seo-plate | 1 | 8 | 11 |
 | skeleton | 1 | skeleton-grid | 3 | 5 | 19 |
 | state-block | 3 | state-empty-filters, state-error, state-empty | 1 | 7 | 40 |
 | tabs | 2 | tabs-detail, tabs-mybets | 1 | 21 | 20 |
 | toast | 1 | toast | 0 | 6 | 1 |
+| toc | 1 | toc-rail | 0 | 6 | 1 |
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 105 |
 | yesno | 1 | yesno | 2 | 2 | 14 |
 
-67 specimens over 36 components.
+68 specimens over 37 components.
 
 ---
 

@@ -16,6 +16,7 @@ window.KIT_NAV = [
   {group: "Atoms", name: "loadmore", file: "loadmore.html", label: "Load more", path: "components/loadmore.css"},
   {group: "Atoms", name: "oddsbar", file: "oddsbar.html", label: "Odds bar", path: "components/oddsbar.css"},
   {group: "Atoms", name: "skeleton", file: "skeleton.html", label: "Skeletons", path: "components/skeleton.css"},
+  {group: "Atoms", name: "toc", file: "toc.html", label: "toc", path: "components/toc.css"},
   {group: "Atoms", name: "button", file: "button.html", label: "Buttons", path: "components/button.css"},
   {group: "Atoms", name: "input", file: "input.html", label: "Fields and amounts", path: "components/input.css"},
   {group: "Molecules", name: "seo-plate", file: "seo-plate.html", label: "SEO plate", path: "components/seo-plate.css"},

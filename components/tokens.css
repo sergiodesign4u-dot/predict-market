@@ -221,7 +221,16 @@
      the footer capped, so above 1400 the content ran 200px wider than the
      footer under it and the page had two measures. */
   --container-max:1400px;    /* the product grid, and every band inside it */
-  --container-read:800px;    /* SEO reading column */
+  --container-read:800px;    /* SEO reading column: the plate at the foot of the feed.
+                                MEASURED, 2026-08-03: 792px of it holds 89 characters of the
+                                13px prose face (1ch = 8.89px), against the 60 to 75 DESIGN.md
+                                section 3 decided. It is left alone because it is a two-column
+                                plate on ten feed screens and not a document, and the 60ch cap
+                                that block does have lives one selector deeper. */
+  --container-doc:600px;     /* the reading column of a long document: 67ch of the same face,
+                                measured the same way. A separate value and not a correction of
+                                the one above, because the two answer different questions and a
+                                single number would move ten shipped screens to fix one. */
   --container-dialog:464px;  /* how-it-works dialog */
   --container-sheet:420px;   /* outcome overlay */
   --container-sidebar:220px; /* course sidebar, and the body inset that clears it */
