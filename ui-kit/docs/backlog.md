@@ -14,11 +14,13 @@ been edited by it.
 Every row says what was missing, what the screen did instead, and what the substitute cost, measured
 where a measurement was possible.
 
-**Standing today: fourteen rows opened, three closed, eleven open.** The three closed the same
+**Standing today: seventeen rows opened, three closed, fourteen open.** The three closed the same
 afternoon they were written, and by the same fix, because they were one gap seen from three sides:
-the system had no reading layout. Of the eleven that remain, S9 and S12 are answers rather than
-gaps and S14 is a carried finding, so the real count is **eight**, and they belong to stages 10 to
-12 rather than to this one.
+the system had no reading layout. Of the fourteen that remain, S9, S12 and S15 are answers rather
+than gaps and S14 is a carried finding, so the real count is **ten**, and they belong to stages 10
+to 12 rather than to this one. Two of the ten, S16 and S17, are waiting on a decision rather than
+on an answer: both are one shape declared more than once, and both were measured before anything
+was touched.
 
 ---
 
@@ -86,6 +88,16 @@ scroll of its own. The three rails are fixed; these are what the fix left behind
 | S12 | **One place that says how far a rail clears the chrome.** `top:120px` is typed into three components: `catnav.css` `.subcat`, `betpanel.css` `.bet-panel` and, until today, `toc.css` `.toc` | **It cannot be derived, and the system has already decided that.** The number is the app header (59px) plus the condensed category strip (54px, `header.css:126`) plus 7px of air, and neither of the first two is a token: the strip is a literal in `header.css`, and the header's 59px is CONTENT height, so no token could hold it. `ui-kit/docs/architecture.md` line 121 already rules this case out of the scale in words: "a number is a step only up to 64px; above that it is a layout position and it stays literal". So it stays literal, and this row is the reason rather than a comment beside each copy. What the row is FOR: the three copies can drift, and today they were already meant to differ. `.toc` is now 66px because a document page has no category bar for the strip to condense, which was measured and not assumed |
 | S13 | **A specimen frame is a window, so a component capped to the window caps inside it.** | The vitrine sizes each `.ck-frame` to its content and the content now sizes itself to the frame, which settles (four identical loads agree) but settles SHORT: the `catnav` rail specimen went 499px to 430px and the `betpanel` one 554px to 516px, so the vitrine shows those two components with their feet behind an internal scroll. It is truthful, since a frame that size IS a short window, and it is a worse showcase. The answer belongs to the vitrine (a declared height for a rail specimen), not to the component, which is why nothing was changed in `components/` for it. 25 snapshots across 5 pages, no product screen among them |
 | S14 | **`--outcome-no` on a card is 4.35:1**, against a 4.5 floor | Found by the same product-wide run, on every feed card that carries a NO percentage: `span.l-no` in `oddsbar.css:14`. Pre-existing and nothing to do with this pass, recorded here because a finding that is seen and not written down is a finding that gets found again. It is 0.15 under, so it is a token value question and not a layout one, and `DESIGN.md` owns the answer |
+
+---
+
+## Opened by the scrollbar pass (2026-08-03)
+
+| # | What is missing | Where it stands |
+|---|---|---|
+| S15 | **A painted scrollbar cannot be measured on this machine**, so `--scroll-thumb` is verified by its declared value and not by its pixel | The platform draws an overlay bar the compositor owns, and it is outside what a screenshot captures. Proved rather than assumed: the thumb was forced to `#ff00ff` and five frames taken during an active scroll of the rail contain **0 magenta pixels**, so no colour would have shown, not just this one. Chrome's classic-scrollbar flag does not help, because on this OS the choice is the system's and not the browser's, and no second engine is installed to cross-check. What IS measured: `scrollbar-width` computes to `thin` on all eight vertical scrollers, `scrollbar-color` computes to the role in both themes, and the role measures 3.43:1 and 3.39:1 against the ground every one of them sits on. A machine that shows classic bars would close this in one screenshot |
+| S16 | **One quiet button, five names**, and the pair the vitrine shows is the pair the product never uses | `.provider-btn` 444 uses on 105 screens, `.confirm-btn` 130 on 105, `.state-btn` 66 on 40, `.auth-btn` 64 on 32, `.cta-bar button` (backlog item 16d, styled from `account.css`) and `.btn-primary` / `.btn-secondary` at **0 uses on 0 screens in both trees**. Rest is identical across the family: `--bg-control`, `1px --border-hairline`, `--text-primary`, `--radius-10`. Hover is not: `.auth-btn` and `.state-btn` restate `--bg-control` so the ground does not move at all, `.btn-secondary` goes to `--bg-surface`, and `.provider-btn` and `.cta-bar button` go to `--bg-control-hover`, which is the role the system declares FOR this ("8 hover fills on those same controls"). So the majority of the family is already right and the merge target is not in doubt. **Waiting on a decision, not on an answer** |
+| S17 | **The header's icon circle is declared twice**, once per auth state | No chrome difference: measured across 105 screens at 360 and 1440, the bell and the heart are `36px`, `1px solid --border-hairline`, transparent, `--radius-pill` in BOTH states. But the logged-in bell is a `<summary>` reached by `header.css:87` and the logged-out one is a `<button class="icon-btn">` reached by `header.css:49`, and the two rules agree only because somebody kept them in step. Their hover and press are already shared (lines 52 and 60 name all four selectors together), so it is only the REST state that is written twice |
 
 ---
 
