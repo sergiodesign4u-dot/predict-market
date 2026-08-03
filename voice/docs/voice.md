@@ -222,6 +222,20 @@ crypto vocabulary; the rule is spectator-legible, not trader-fluent (P3).
   liquidity as a headline number, order book, position (for the user's own bet),
   buy / sell, long / short, AMM / CLOB, "market" for the event. These are "the
   language of a trader, not a spectator" (`ux-patterns.md`).
+- **THE INVARIANT: the ban is about PLACE, not about the word.** A trader term is
+  forbidden wherever a person meets it while ACTING - a control label, a heading,
+  a figure read to decide - and allowed inside a block whose whole job is to
+  explain the mechanism, where it is glossed in plain words. Same word, two
+  places, two answers: *AMM* in the How It Works explanation is the mechanism
+  being named; *AMM* trailing the fine print under Confirm is a word met while
+  deciding. **And the head of an exempt block is NOT inside the exemption**,
+  because a summary, a tab and a title are read by everyone who never opens
+  them. The lexicon already carried this shape in two places without stating it
+  - "we keep it only in mechanics docs, never in the UI", and "allowed once,
+  with a plain gloss the first time" - so the rule is written down here rather
+  than re-derived case by case. It is written because it was re-derived, once,
+  by `voice/docs/microcopy.md` Step 24, which applied it correctly to four lines
+  and logged the result instead of adding the rule.
 
 ---
 

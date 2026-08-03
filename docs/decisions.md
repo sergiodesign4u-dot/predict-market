@@ -44,6 +44,43 @@ record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/mi
 
 ---
 
+## 2026-08-03 - The rail is a slot, and it took a real screen to find out
+
+**What happened.** Step 7 of the Design System stage set out to test whether the system is
+self-sufficient: build `ui-visual/terms.html`, a page of a TYPE the system had never drawn, out of
+`components/` alone and count what was missing. It did that, and it also did something that was not
+on the plan. It changed what `browse-shell` IS.
+
+**The pattern stands on 77 screens** and had been read, correctly, as "a sub-category rail beside a
+content column". Every one of the 76 screens that existed before Terms put the SAME component in the
+rail: `catnav`'s `.subcat`. So the rail and the category rail were one idea, and nothing in the
+product could tell them apart, because nothing in the product had ever put anything else there.
+
+Terms put a table of contents there. After that the pattern reads differently: **the rail is a SLOT,
+and the shell does not know which component is standing in it.** `components/toc.css` is a new
+component that stands in the same place at a different sticky offset (66px against 120px, measured
+rather than assumed, because a document page has no category bar for the header strip to condense
+into), and `browse-shell` needed no change at all to hold it.
+
+**Why this is recorded on its own, apart from the four backlog rows Terms opened.** The rows (S1,
+S2, S5 closed the same day; S3, S4, S6, S7, S8 left open) are what the step promised: a list of what
+the system does not have. This is not that. It is a correction to what the system already had, on
+its most-used arrangement, and **it was not derivable from the 76 screens** - not because anybody
+read them carelessly, but because a set of 76 identical answers cannot show you which part of the
+answer was the question.
+
+**The decision this settles for the stages after.** A demo screen tests whether the parts exist. A
+real screen of an unseen type tests whether the parts mean what their names say. The two are not
+the same exercise, and only the second one can rewrite a definition. Step 7 was scoped as the first
+and delivered the second, so the next stage that wants to test the system should be scoped as the
+second on purpose: **one real page nobody has drawn, not five variations of one that exists.**
+
+**What it cost to get there:** no new class, no new token, no new state and no new rule on the page
+itself, and 104 screens at two widths with 84,836 element boxes compared before and after, 0 moved.
+The definition changed; the product did not.
+
+---
+
 ## 2026-08-02 - Four states, three press mechanisms, and the hovers that were only true in one theme
 
 Step 2 of the Design System stage: the states roll-out. The reference component was accepted in the
