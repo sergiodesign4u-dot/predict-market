@@ -44,6 +44,89 @@ record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/mi
 
 ---
 
+## 2026-08-04 - Step 8, and the six things a taxonomy could not have told us
+
+The inherited plan for this step was eighteen classes of defect, hunted by hand, over 105 screens in
+two themes at two widths. What it became is `ui-kit/docs/defects.md`, whose first column is not a
+category but **which gate catches it**, because a green gate is a proof and a manual pass over a
+gated class is a second, worse instrument reporting on the same thing. The table opened at 23
+proven, 7 measured and 15 open; it closes this step at **26 proven, 7 measured, 11 open**.
+
+Four gates were added or grown, and every one of them was proved in both directions and given the
+control this repo puts on every declared list: an entry that covers nothing fails as loudly as an
+undeclared item.
+
+### The five things that were found by fixing, not by looking
+
+**1. The contrast defect was never a token value question.** `oddsbar.css` put `--outcome-yes` and
+`--outcome-no`, the FILL roles of a 4px band, onto 12px bold TEXT. Surfaces answer to 3:1 and take
+it; text answers to 4.5:1 and did not, on 266 elements across 105 painted screens. The text roles
+already existed. **The fix is one word in each of two declarations**, no token moved and no value
+edited, and all four measurements changed including the one that already passed, because leaving it
+on the fill role would mean one component reading a different token per theme for the same word.
+`ui-kit/docs/history.md` records this as the run's best evidence for having a semantic token level
+at all: without a separate text role the only repair available would have been the VALUE, and the
+bar would have moved with the label.
+
+**2. Two of the three keyboard findings were not defects, and the real one was already written
+down.** The test that settles it is the RESULT, not the handler. `.rules-panel` is not a control at
+all - the control is `.rules-tab`, a real `<button>` on all 18 instances - and the four
+`<span class="bp-side">` are skeleton placeholders on two loading screens, which must not be
+focusable. `.opt-row` has a working keyboard route: Enter and Space on the inner button produce a
+state identical to a mouse click in every field measured. **The one real blocker was
+`docs/backlog.md` 22**, which had been sitting there since step 2: 16 filter inputs at
+`display:none`, so three radiogroups on 104 screens could be operated by a mouse and by nothing
+else. Closed with the idiom the system had already chosen twice, and the "eight or so new tab stops
+per screen" objection in the original row is answered with a number: **zero when the menu is closed,
+one when it is open**, because a radiogroup is one tab stop by construction.
+
+**3. Both new gates failed on the defect they were written for, and that is why they are gates.**
+Gate 33's two-way proof reverted each of the five trader-term placements one at a time and demanded
+a red for each. Two came back GREEN: `holder` was not in the lexicon at all, because the list held
+`position` and not the person who has one; and the scanner could not see inside an element whose
+parent it had already consumed, because `finditer` does not overlap. Gate 34's idle control found
+**eight dead rows of forty one** in the hand-written half of the inventory map, which is the same
+half both false file cells had come from.
+
+**4. Two hand-written cascade cycles were made of misfiled classes.** Moving 17 rules to the files
+that own them took `_levels.ORDER_BREAK` from four entries to two, because `(comments, tabs)` and
+`(betpanel, event-detail)` were not real nestings - they were `.seg` living in `tabs.css` and
+`.rp-inner` living in `event-detail.css`. **A hand-written tie-break is a place where the map
+stopped agreeing with the files**, so an entry there is now readable as a finding waiting to be
+closed rather than as a setting. 525 snapshots at three widths, 0 differ, 0 elements changed.
+
+**5. The instrument was cropping the subject of its own photograph**, and fixing it found two more
+instrument defects underneath. 36 of 790 state pictures were short, every one a FOCUS picture -
+the single state whose whole subject is a ring drawn outside the box. The pad is now DERIVED from
+the element being photographed, in the state it is in. Underneath: a frame past the last pixel of
+the document took the whole run down (a bet sheet is `position:fixed` and is not in the document's
+scroll extent), and the clip and `boxAt()` had never agreed on a coordinate system - which was
+invisible for as long as every specimen was too short to scroll.
+
+### The two things that were measured and deliberately not paid
+
+**The button family is not consolidated.** 5 names, 3 axes, 30 rules of which 13 are reconciliation.
+The measurement is the decision: the axes do not fit inside `components/button.css` (the position
+mechanism belongs to a pattern and the width to a `state-block` context), and the right answer for
+emphasis is `.primary` in markup that is frozen. What is paid instead is the PAGE, which now opens
+with the axis matrix. `ui-kit/docs/backlog.md` **S24**, closing condition written in: with the
+markup thaw, not before.
+
+**The inventory's `#f` column is not computed and cannot be yet.** 38 of the 54 rows whose classes
+are findable disagree with a count of the files carrying them, and the disagreement is not all
+error: some cells mean "files that carry the markup" and some mean "screens where a person sees it",
+and a dialog emitted into 105 screens and opened on 4 is both. **S23**: a definition first, a column
+second.
+
+### The taxonomy re-run, with the caveat it has to carry
+
+`node ui-kit/_verify/audit.cjs --screens` after every edit above: **106 pages, 2 themes, 2 widths =
+424 renders, 0 findings**, 720 pinned boxes measured at 640px of window, 660 unmeasurable through a
+blend or a filter and 380 painting no glyph, both counted apart. That instrument's zero is the one
+that stood in three documents fifteen times while 378 elements measured under the floor, so it is
+written here with its date and its corpus and not as a claim: it is not gated, and it is only as
+good as its next audit.
+
 ## 2026-08-03 - The rail is a slot, and it took a real screen to find out
 
 **What happened.** Step 7 of the Design System stage set out to test whether the system is

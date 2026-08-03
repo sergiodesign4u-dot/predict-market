@@ -74,16 +74,27 @@ selector has a real ancestor, and gate 1 masks the `<aside>`, which is why gate 
 | # | Class of defect | Instrument | Standing |
 |---|---|---|---|
 | 24 | Contrast under the floor | `audit.cjs` | **FIXED 2026-08-03.** The 378 were one defect: `oddsbar.css` put the FILL roles on 12px bold text. `--outcome-yes-text` / `--outcome-no-text` already existed, so the repair is two words and no token moved. Re-measured in a browser, both themes: `span.l-yes` daylight 2.62 -> **7.23**, `span.l-no` daylight 3.76 -> **7.57**, `span.l-no` graphite 4.35 -> **7.54**, `span.l-yes` graphite 6.23 -> **9.82**. `ui-kit/docs/backlog.md` S14 is closed and `ui-kit/docs/history.md` records why it is the run's best evidence for the semantic token level. **The row stays MEASURED and does not become PROVEN**: nothing gates it, and the reason the same defect stood through five stages is finding 42 below |
-| 25 | A link with no rule behind it | `audit.cjs` | 992 links, every one inside a component that styles it; the one exception became S3 |
-| 26 | Horizontal overflow | `audit.cjs` | 0, last full run |
-| 27 | A request that 404s | `audit.cjs` | 0, last full run |
-| 28 | A pinned box taller than the window it is pinned to | `audit.cjs`, second pass at 640px | three rails found and fixed; what the fix left behind is S12 and S13 |
+| 25 | A link with no rule behind it | `audit.cjs` | 992 links, every one inside a component that styles it; the one exception became S3. **Re-run 2026-08-03 after this step's edits: 0 findings** |
+| 26 | Horizontal overflow | `audit.cjs` | **Re-run 2026-08-03: 0 findings over 424 renders.** Not gated, so this sentence is true of that run and of nothing later |
+| 27 | A request that 404s | `audit.cjs` | **Re-run 2026-08-03: 0 findings over 424 renders**, same caveat |
+| 28 | A pinned box taller than the window it is pinned to | `audit.cjs`, second pass at 640px | three rails found and fixed; what the fix left behind is S12 and S13. **Re-run 2026-08-03: 720 pinned boxes measured at 640px of window, 0 findings** |
 | 29 | The focus ring at every tab stop | `audit.cjs --focus` | 18 tab stops on the document page, all measured |
 | 30 | A painted screen that moved when the system changed | `snap.cjs` | 525 of 525 identical across the button merge; 84,836 boxes unmoved across the pattern extraction |
 
-**Seven classes that are true as of the last run and not on any commit.** Step 8 owes these a re-run
-and a number, not a search. Nothing here has to be found; it has to be re-measured and the date
-written next to it.
+**Seven classes that are true as of the last run and not on any commit.** Step 8 owed these a re-run
+and a number, not a search, and the re-run happened on 2026-08-03 after every edit this step made:
+
+> `node ui-kit/_verify/audit.cjs --screens` - **106 pages, 2 themes, 2 widths = 424 renders. 0
+> findings.** 720 pinned boxes measured at 640px of window; 660 elements unmeasurable through a blend
+> or a filter and 380 painting no glyph at all, both counted apart rather than passed.
+
+**And that sentence is written with the caveat row 42 exists for.** A zero from this instrument is
+what stood in three documents fifteen times while 378 elements measured under the floor. What is
+different now is not the instrument's word, it is that the one thing it used to be wrong about was
+found by hand, fixed at the role, and re-measured element by element in the browser - `span.l-yes`
+2.62 to 7.23 and `span.l-no` 3.76 to 7.57 in daylight, 4.35 to 7.54 and 6.23 to 9.82 on graphite.
+The zero above is only as good as its next audit, and it is not gated, which is why it carries a
+date and a corpus instead of a claim.
 
 ### OPEN: nothing asks these, and this is the hunt
 
