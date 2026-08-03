@@ -18,7 +18,7 @@ SAME bug found twice, because the file that had learned the lesson no longer exi
 next check was written. This is the move `_levels.py` made for containment: one computation, many
 consumers.
 
-Twelve things it knows out of the box, each with the case that taught it written beside it in the
+Thirteen things it knows out of the box, each with the case that taught it written beside it in the
 file: the colour is parsed by a canvas and never a regex; alpha is composited up the ancestor stack;
 inert subtrees are skipped and focus is a real Tab; both batches of a comparison run in the same
 regime, fresh context with the cache off; a measurement waits for the theme transition the document
@@ -26,7 +26,7 @@ itself declares; a colour painted through a blend or a filter cannot be read fro
 error is attributed by URL rather than by its text; a gradient is not a `background-color`; a pinned
 box taller than the window hides its own tail; text with transparent ink or a 0px face paints no
 glyph, so it has no contrast to measure; a hover is a real pointer and reaches only what is in the
-window; and the code that implements lesson 5 was measuring nothing at all. **None of the twelve is
+window; and the code that implements lesson 5 was measuring nothing at all. **None of the thirteen is
 defensive coding.** Each is a wrong answer this project has already published, so anyone who reads
 one as excessive caution should read the line above it first.
 
@@ -48,6 +48,27 @@ empty list is truthy, and **1263 of 1285 rules were skipped before their declara
 now returns 300. Nothing already published was wrong because of it, since the values that were read
 had arrived; what was missing was the guarantee, which is the whole point of an instrument. A checker
 with a broken instrument reports clean.
+
+**Thirteen is the rule the other twelve are instances of, and it is about which way a broken
+instrument fails.** Every one of the twelve above was caught the same way: it reported something
+wrong, somebody went to look, and the instrument was the thing that turned out to be lying. The
+`color-mix` regex reported a 2.72:1 ring that did not exist. `settleMs()` returning 0 was found while
+chasing a hover that would not settle. Lesson 8's gradient reported 1.18:1 on a button that measures
+about 5.5:1.
+
+**A broken instrument that reports a DEFECT gets caught, because somebody goes to look and finds the
+instrument lying. A broken instrument that reports ALL CLEAR is caught by nobody, because there is
+nothing to go and look at.** The most dangerous output of a broken check is not a false alarm, it is
+a clean bill of health, and this repo has paid for that once at full price: fifteen printings of
+"0 below AA" across three documents, over corpora up to 86,534 text pairs, while 378 elements stood
+below 4.5:1 the whole time. The correction is at the end of `ui-kit/docs/history.md`; the finding is
+row 42 of `ui-kit/docs/defects.md`.
+
+What follows from it, operationally: **a check that has never failed has not proved anything, it has
+only never been audited.** So every declared list in this repo carries the control that an entry
+covering nothing fails as loudly as an undeclared item (gates 24, 25, 30, 31 and 32), and every gate
+added since is proved in both directions before it is believed - green on the real tree, red on a
+deliberate break. A gate that has only ever been seen green is in exactly the position the zero was.
 
 Eleven arrived the same afternoon and is the reason twelve was found. `snap.cjs` measures the REST
 state, so a pass whose entire intended change lives inside `:hover` cannot be verified by the diff

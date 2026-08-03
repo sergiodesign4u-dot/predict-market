@@ -964,3 +964,69 @@ The light-theme sweep reported 105 failures at 1.12:1 and they were the `<script
 inside the `<aside>`: the checker counted a script's source as text. In the dark theme a script
 inherits light ink on the dark panel and passes; the moment the ground inverts it reads dark on dark.
 **A checker with a missing guard fails in one theme and looks exactly like a finding.**
+
+---
+
+## 2026-08-03 - The correction this file cannot make by editing
+
+**This section exists because nothing above it may be changed.** The rule at the top of this file is
+that an entry is true as of its own date and is never edited afterwards, so a measurement recorded
+here that turns out to have been WRONG stays readable forever. The only correction available is a
+later entry that names the earlier lines. This is it.
+
+### The lines
+
+Six Verified blocks above record a contrast result that was not true when it was printed:
+
+| line | what it says |
+|---|---|
+| L192 | "54774 text pairs measured, **0 below AA**, 0 page errors, 0 horizontal overflow" |
+| L414 | "Painted: 308 page loads across both themes, 61956 text pairs, **0 below AA**, 0 overflow" |
+| L493 | "Painted: 308 page loads across both themes, **0 below AA**, 0 overflow" |
+| L615 | "... **0 below AA**, 0 horizontal overflow, 0 page errors" |
+| L946 | "The panel, both trees, both themes: 154 pages x 2 = 308 loads, 18028 text pairs, **0 below AA**" |
+| L952 | "The course pages: 28 pages, 795 text pairs, **0 below AA**" |
+
+**What is true instead.** `ui-kit/docs/backlog.md` **S14**, re-measured 2026-08-03: **378 elements
+below 4.5:1**, in three equal groups of 126 - `span.l-no` at 4.35:1 on graphite, `span.l-no` at
+3.76:1 in daylight, and `span.l-yes` at **2.62:1** in daylight. Twelve screens, both widths,
+`components/oddsbar.css:14`. S14 states the part that makes this a correction and not a regression:
+**"Pre-existing: measured identical at HEAD before this pass and after it."** The 378 were on the
+screens on every one of the dates above.
+
+The same claim stands in two more documents and is corrected here for all three: `docs/decisions.md`
+carries it eight times and `voice/docs/microcopy.md` once. **Fifteen printings of one zero.**
+
+### Why it survived fifteen printings, which is the part worth keeping
+
+Nobody lied and nobody was careless. The zero came out of an instrument carrying three defects this
+repo had already found and written down: a regex that read the components of `color-mix(in oklab,
+...)` as sRGB bytes, so a brass-tinted ground measured as near black; a print limit that stopped at
+six findings per render, which **32 of 48 renders hit exactly**, so the number a person read was the
+cap; and `mix-blend-mode`, which no computed style can resolve at all.
+
+Each of those was found the same way: it reported something wrong, somebody went to look, and the
+instrument was caught. **That is the asymmetry.**
+
+> **A broken instrument that reports a DEFECT gets caught, because somebody goes to look and finds
+> the instrument lying. A broken instrument that reports ALL CLEAR is caught by nobody, because
+> there is nothing to go and look at. The most dangerous output of a broken check is not a false
+> alarm, it is a clean bill of health.**
+
+It is a rule about where verification effort belongs, not an episode about one sweep. A check that
+has never failed is not a check that has proved anything; it is a check nobody has had a reason to
+audit. The practical form of it in this repo is the control every declared list carries: an entry
+that covers nothing fails as loudly as an undeclared item, so a list cannot go quiet by being empty.
+Gates 24, 25, 30, 31 and 32 all carry that control, and they carry it for this reason.
+
+### What the sweep found beyond the contrast claims
+
+79 claims of the "nothing was found" form across the repo's markdown, sorted by what stands behind
+each of them today:
+
+- **29 are gated**, so they are still true by construction rather than by memory: 0 em dash is gate
+  7, 0 broken internal links is gates 4, 8 and 21, "all gates pass" is the build itself.
+- **18 are about contrast**, which is the class corrected above.
+- **30 were measured by a browser and are gated by nothing**: true as of the run that printed them,
+  and unknown today. They are `ui-kit/docs/defects.md` rows 24 to 30, and what they owe is a re-run
+  and a date, not a search.
