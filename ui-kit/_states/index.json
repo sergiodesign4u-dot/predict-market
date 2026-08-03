@@ -1,0 +1,632 @@
+[
+ {
+  "component": "button",
+  "id": "g1",
+  "el": "button.auth-btn",
+  "scope": "",
+  "specimen": "button-family",
+  "classes": [
+   "a-start",
+   "app-case",
+   "auth-btn",
+   "kit-row",
+   "primary",
+   "state-btn"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "button/g1-rest-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)"
+   },
+   "hover-dark": {
+    "file": "button/g1-hover-dark.png",
+    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)"
+   },
+   "active-dark": {
+    "file": "button/g1-active-dark.png",
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)"
+   },
+   "focus-dark": {
+    "file": "button/g1-focus-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)"
+   },
+   "rest-light": {
+    "file": "button/g1-rest-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)"
+   },
+   "hover-light": {
+    "file": "button/g1-hover-light.png",
+    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)"
+   },
+   "active-light": {
+    "file": "button/g1-active-light.png",
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)"
+   },
+   "focus-light": {
+    "file": "button/g1-focus-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)"
+   }
+  },
+  "also": [
+   "header-out"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/button.css",
+   "components/fonts.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/button-family.html",
+   "ui-kit/specimens/header-out.html"
+  ],
+  "sha": "319f90de1da59128"
+ },
+ {
+  "component": "button",
+  "id": "g2",
+  "el": "button.state-btn",
+  "scope": "",
+  "specimen": "button-family",
+  "classes": [
+   "a-start",
+   "app-case",
+   "auth-btn",
+   "kit-row",
+   "primary",
+   "state-btn"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "button/g2-rest-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)"
+   },
+   "hover-dark": {
+    "file": "button/g2-hover-dark.png",
+    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)"
+   },
+   "active-dark": {
+    "file": "button/g2-active-dark.png",
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)"
+   },
+   "focus-dark": {
+    "file": "button/g2-focus-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)"
+   },
+   "rest-light": {
+    "file": "button/g2-rest-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)"
+   },
+   "hover-light": {
+    "file": "button/g2-hover-light.png",
+    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)"
+   },
+   "active-light": {
+    "file": "button/g2-active-light.png",
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)"
+   },
+   "focus-light": {
+    "file": "button/g2-focus-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)"
+   }
+  },
+  "also": [
+   "state-empty-filters",
+   "notice-push",
+   "base-frame",
+   "betpanel-more"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/button.css",
+   "components/fonts.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/base-frame.html",
+   "ui-kit/specimens/betpanel-more.html",
+   "ui-kit/specimens/button-family.html",
+   "ui-kit/specimens/notice-push.html",
+   "ui-kit/specimens/state-empty-filters.html"
+  ],
+  "sha": "5d1151f49657c8f0"
+ },
+ {
+  "component": "button",
+  "id": "g3",
+  "el": "button.auth-btn.primary",
+  "scope": "",
+  "specimen": "button-family",
+  "classes": [
+   "a-start",
+   "app-case",
+   "auth-btn",
+   "kit-row",
+   "primary",
+   "state-btn"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "button/g3-rest-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "hover-dark": {
+    "file": "button/g3-hover-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "active-dark": {
+    "file": "button/g3-active-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "focus-dark": {
+    "file": "button/g3-focus-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "rest-light": {
+    "file": "button/g3-rest-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "hover-light": {
+    "file": "button/g3-hover-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "active-light": {
+    "file": "button/g3-active-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "focus-light": {
+    "file": "button/g3-focus-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   }
+  },
+  "also": [
+   "header-out"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/button.css",
+   "components/fonts.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/button-family.html",
+   "ui-kit/specimens/header-out.html"
+  ],
+  "sha": "319f90de1da59128"
+ },
+ {
+  "component": "button",
+  "id": "g4",
+  "el": "button.state-btn.primary",
+  "scope": "",
+  "specimen": "button-family",
+  "classes": [
+   "a-start",
+   "app-case",
+   "auth-btn",
+   "kit-row",
+   "primary",
+   "state-btn"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "button/g4-rest-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "hover-dark": {
+    "file": "button/g4-hover-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "active-dark": {
+    "file": "button/g4-active-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "focus-dark": {
+    "file": "button/g4-focus-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "rest-light": {
+    "file": "button/g4-rest-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "hover-light": {
+    "file": "button/g4-hover-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "active-light": {
+    "file": "button/g4-active-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   },
+   "focus-light": {
+    "file": "button/g4-focus-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)"
+   }
+  },
+  "also": [
+   "state-empty-filters",
+   "state-error",
+   "state-empty",
+   "notice-push",
+   "betpanel-more"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/button.css",
+   "components/fonts.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/betpanel-more.html",
+   "ui-kit/specimens/button-family.html",
+   "ui-kit/specimens/notice-push.html",
+   "ui-kit/specimens/state-empty-filters.html",
+   "ui-kit/specimens/state-empty.html",
+   "ui-kit/specimens/state-error.html"
+  ],
+  "sha": "094d09ebfbae3b53"
+ },
+ {
+  "component": "button",
+  "id": "g5",
+  "el": "button.provider-btn",
+  "scope": "dialog.signin-dialog",
+  "specimen": "dialog-shared",
+  "classes": [
+   "amount-input",
+   "amount-row",
+   "app-case",
+   "app-dialog",
+   "confirm-btn",
+   "field-label",
+   "fine",
+   "ic",
+   "kit-dlgs",
+   "protect",
+   "prov-apple",
+   "prov-google",
+   "prov-x",
+   "provider-btn",
+   "quick",
+   "sel",
+   "sheet-body",
+   "sheet-close",
+   "sheet-head",
+   "sheet-sub",
+   "signin-dialog",
+   "widget-box"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "button/g5-rest-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)"
+   },
+   "hover-dark": {
+    "file": "button/g5-hover-dark.png",
+    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)"
+   },
+   "active-dark": {
+    "file": "button/g5-active-dark.png",
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)"
+   },
+   "focus-dark": {
+    "file": "button/g5-focus-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)"
+   },
+   "rest-light": {
+    "file": "button/g5-rest-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)"
+   },
+   "hover-light": {
+    "file": "button/g5-hover-light.png",
+    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)"
+   },
+   "active-light": {
+    "file": "button/g5-active-light.png",
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)"
+   },
+   "focus-light": {
+    "file": "button/g5-focus-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)"
+   }
+  },
+  "also": [
+   "signin",
+   "outcome-overlays",
+   "betpanel-states"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/button.css",
+   "components/dialog.css",
+   "components/fonts.css",
+   "components/input.css",
+   "components/notice.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/betpanel-states.html",
+   "ui-kit/specimens/dialog-shared.html",
+   "ui-kit/specimens/outcome-overlays.html",
+   "ui-kit/specimens/signin.html"
+  ],
+  "sha": "1439d801381b5a0d"
+ },
+ {
+  "component": "button",
+  "id": "g6",
+  "el": "button.confirm-btn",
+  "scope": "dialog.app-dialog",
+  "specimen": "dialog-shared",
+  "classes": [
+   "amount-input",
+   "amount-row",
+   "app-case",
+   "app-dialog",
+   "confirm-btn",
+   "field-label",
+   "fine",
+   "ic",
+   "kit-dlgs",
+   "protect",
+   "prov-apple",
+   "prov-google",
+   "prov-x",
+   "provider-btn",
+   "quick",
+   "sel",
+   "sheet-body",
+   "sheet-close",
+   "sheet-head",
+   "sheet-sub",
+   "signin-dialog",
+   "widget-box"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "button/g6-rest-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)"
+   },
+   "hover-dark": {
+    "file": "button/g6-hover-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)"
+   },
+   "active-dark": {
+    "file": "button/g6-active-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)"
+   },
+   "focus-dark": {
+    "file": "button/g6-focus-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)"
+   },
+   "rest-light": {
+    "file": "button/g6-rest-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)"
+   },
+   "hover-light": {
+    "file": "button/g6-hover-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)"
+   },
+   "active-light": {
+    "file": "button/g6-active-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)"
+   },
+   "focus-light": {
+    "file": "button/g6-focus-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)"
+   }
+  },
+  "also": [
+   "outcome-overlays",
+   "event-detail",
+   "betpanel-states",
+   "betpanel-sheet",
+   "options-multi",
+   "betpanel-more"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/button.css",
+   "components/dialog.css",
+   "components/fonts.css",
+   "components/input.css",
+   "components/notice.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/betpanel-more.html",
+   "ui-kit/specimens/betpanel-sheet.html",
+   "ui-kit/specimens/betpanel-states.html",
+   "ui-kit/specimens/dialog-shared.html",
+   "ui-kit/specimens/event-detail.html",
+   "ui-kit/specimens/options-multi.html",
+   "ui-kit/specimens/outcome-overlays.html"
+  ],
+  "sha": "5edc9334add2247e"
+ },
+ {
+  "component": "button",
+  "id": "g7",
+  "el": "button",
+  "scope": ".cta-bar",
+  "specimen": "profile-identity",
+  "classes": [
+   "app-case",
+   "av",
+   "card",
+   "cat-layout",
+   "cat-main",
+   "cta-bar",
+   "device",
+   "edit",
+   "feed",
+   "feed-inner",
+   "gallery",
+   "handle",
+   "idrow",
+   "name",
+   "pos",
+   "pos-fig",
+   "pos-figures",
+   "pos-list",
+   "pos-lost",
+   "pos-q",
+   "pos-record",
+   "pos-side",
+   "pos-status",
+   "pos-top",
+   "pos-won",
+   "ptab-bar",
+   "ptab-in",
+   "ptab-lbl",
+   "ptab-panel",
+   "ptabs",
+   "who"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "button/g7-rest-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)"
+   },
+   "hover-dark": {
+    "file": "button/g7-hover-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgba(199, 162, 78, 0.45) | 0px | rgb(24, 8, 16)"
+   },
+   "active-dark": {
+    "file": "button/g7-active-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgba(199, 162, 78, 0.45) | 0px | rgb(24, 8, 16)"
+   },
+   "focus-dark": {
+    "file": "button/g7-focus-dark.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)"
+   },
+   "rest-light": {
+    "file": "button/g7-rest-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)"
+   },
+   "hover-light": {
+    "file": "button/g7-hover-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgba(199, 162, 78, 0.6) | 0px | rgb(24, 8, 16)"
+   },
+   "active-light": {
+    "file": "button/g7-active-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgba(199, 162, 78, 0.6) | 0px | rgb(24, 8, 16)"
+   },
+   "focus-light": {
+    "file": "button/g7-focus-light.png",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)"
+   }
+  },
+  "also": [
+   "account-cta"
+  ],
+  "sources": [
+   "components/account.css",
+   "components/base.css",
+   "components/card.css",
+   "components/feed.css",
+   "components/fonts.css",
+   "components/position.css",
+   "components/profile.css",
+   "components/tabs.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/account-cta.html",
+   "ui-kit/specimens/profile-identity.html"
+  ],
+  "sha": "027a44aad7cf7055"
+ },
+ {
+  "component": "button",
+  "id": "g8",
+  "el": "button",
+  "scope": ".cta-bar",
+  "specimen": "profile-identity",
+  "classes": [
+   "app-case",
+   "av",
+   "card",
+   "cat-layout",
+   "cat-main",
+   "cta-bar",
+   "device",
+   "edit",
+   "feed",
+   "feed-inner",
+   "gallery",
+   "handle",
+   "idrow",
+   "name",
+   "pos",
+   "pos-fig",
+   "pos-figures",
+   "pos-list",
+   "pos-lost",
+   "pos-q",
+   "pos-record",
+   "pos-side",
+   "pos-status",
+   "pos-top",
+   "pos-won",
+   "ptab-bar",
+   "ptab-in",
+   "ptab-lbl",
+   "ptab-panel",
+   "ptabs",
+   "who"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "button/g8-rest-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)"
+   },
+   "hover-dark": {
+    "file": "button/g8-hover-dark.png",
+    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)"
+   },
+   "active-dark": {
+    "file": "button/g8-active-dark.png",
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)"
+   },
+   "focus-dark": {
+    "file": "button/g8-focus-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)"
+   },
+   "rest-light": {
+    "file": "button/g8-rest-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)"
+   },
+   "hover-light": {
+    "file": "button/g8-hover-light.png",
+    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)"
+   },
+   "active-light": {
+    "file": "button/g8-active-light.png",
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)"
+   },
+   "focus-light": {
+    "file": "button/g8-focus-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)"
+   }
+  },
+  "also": [
+   "account-cta"
+  ],
+  "sources": [
+   "components/account.css",
+   "components/base.css",
+   "components/card.css",
+   "components/feed.css",
+   "components/fonts.css",
+   "components/position.css",
+   "components/profile.css",
+   "components/tabs.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/account-cta.html",
+   "ui-kit/specimens/profile-identity.html"
+  ],
+  "sha": "027a44aad7cf7055"
+ }
+]

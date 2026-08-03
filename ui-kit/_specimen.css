@@ -55,6 +55,14 @@ main.feed{background:transparent}
 
 .kit-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .kit-row.a-start{align-items:flex-start}
+/* A SECOND ROW IS A SECOND ROW. .kit-row set the distance BETWEEN its own
+   children and nothing at all between two of itself, so a specimen that stages
+   a quiet row above a brass one rendered the two touching: the buttons read as
+   one four-button block, and the state capture, which crops a control with 12px
+   of air around it, pulled the button below into every picture. One declaration,
+   and it is the same 14px the row uses across, because the distance between two
+   rows of one thing is not a different decision from the distance inside one. */
+.kit-row + .kit-row{margin-top:14px}
 .kit-box{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:10px;padding:16px}
 .kit-plate{margin:0}
 .kit-surf-lbl{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);display:block}

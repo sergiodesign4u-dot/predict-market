@@ -306,12 +306,24 @@ window.__ask = (function () {
         if (!b.width || !b.height || inert(el)) continue;
         el.setAttribute('data-paint', String(i));
         var cs = getComputedStyle(el);
+        /* WHICH SCOPE THIS ONE STANDS IN, and named the way the stylesheet names
+           it, because the scope is what decides the skin. The first cut built
+           the name from the SECOND word of el.className, which is undefined
+           on an element with a single class and the literal string
+           "[object SVGAnimatedString]" on an svg, so half the scopes came out as
+           "dialog.undefined". Empty when nothing matches, so a caller can fall
+           back to something that means more than the word "plain". */
         var scope = ['dialog', '.bet-dock', '.bet-panel', '.bet-sheet', '.cta-bar',
                      '.app-header', '.state-block'];
-        var where = 'plain';
+        var where = '';
         for (var s = 0; s < scope.length; s++) {
           var up = el.closest(scope[s]);
-          if (up) { where = scope[s] + (up.className ? '.' + String(up.className).split(' ')[1] || '' : ''); break; }
+          if (!up) continue;
+          var base = scope[s].replace('.', '');
+          var extra = (up.getAttribute('class') || '').split(/\\s+/)
+            .filter(function (c) { return c && c !== base; });
+          where = scope[s] + (extra.length ? '.' + extra[extra.length - 1] : '');
+          break;
         }
         out.push({ i: i, el: label(el), scope: where,
                    x: Math.round(b.left + b.width / 2), y: Math.round(b.top + b.height / 2),
@@ -326,6 +338,73 @@ window.__ask = (function () {
       var cs = getComputedStyle(el);
       return [cs.backgroundColor, cs.backgroundImage.slice(0, 50), cs.borderTopColor,
               cs.borderTopWidth, cs.color].join(' | ');
+    },
+    /* The box in DOCUMENT coordinates, which is what a page screenshot clips
+       against: getBoundingClientRect is viewport-relative and the two only agree
+       while the page has not scrolled.
+       THE AIR AROUND IT IS MEASURED, NOT CHOSEN. A fixed 12px pad is right for a
+       button in a row 14px from its neighbour and wrong for one in a sheet body
+       whose gap is 8, and the picture then shows half of the control below as if
+       it were part of this one. So each side is padded to at most HALF the
+       distance to the nearest thing that is not this element's own ancestor or
+       descendant: the picture keeps the ground it stands on and never borrows a
+       neighbour. */
+    boxAt: function (i, pad) {
+      var el = document.querySelector('[data-paint="' + i + '"]');
+      if (!el) return null;
+      var r = el.getBoundingClientRect();
+      pad = pad || 0;
+      var gap = { top: pad, right: pad, bottom: pad, left: pad };
+      var all = document.body.getElementsByTagName('*');
+      for (var n = 0; n < all.length; n++) {
+        var o = all[n];
+        if (o === el || el.contains(o) || o.contains(el)) continue;
+        var b = o.getBoundingClientRect();
+        if (!b.width || !b.height) continue;
+        var overV = b.bottom > r.top && b.top < r.bottom;
+        var overH = b.right > r.left && b.left < r.right;
+        if (overV && b.right <= r.left) gap.left = Math.min(gap.left, (r.left - b.right) / 2);
+        if (overV && b.left >= r.right) gap.right = Math.min(gap.right, (b.left - r.right) / 2);
+        if (overH && b.bottom <= r.top) gap.top = Math.min(gap.top, (r.top - b.bottom) / 2);
+        if (overH && b.top >= r.bottom) gap.bottom = Math.min(gap.bottom, (b.top - r.bottom) / 2);
+      }
+      var l = Math.max(0, Math.floor(gap.left)), t = Math.max(0, Math.floor(gap.top));
+      var x = r.left + window.scrollX - l, y = r.top + window.scrollY - t;
+      /* CLAMPING THE ORIGIN WITHOUT CLAMPING THE SIZE MOVES THE PICTURE. An
+         element 12px from the top of the document takes x/y = 0 and kept its
+         full padded height, so the frame slid DOWN by the amount it was clamped
+         and took a slice of the row below with it. Measured on the quiet
+         .auth-btn, whose picture carried the top of the brass one under it. */
+      if (x < 0) { l += x; x = 0; }
+      if (y < 0) { t += y; y = 0; }
+      return { x: x, y: y,
+               width: Math.ceil(r.width + Math.max(0, l) + Math.max(0, Math.floor(gap.right))),
+               height: Math.ceil(r.height + Math.max(0, t) + Math.max(0, Math.floor(gap.bottom))) };
+    },
+    /* DISABLED IS READ AND NEVER SET. Setting the attribute to take the picture
+       would be the stand class this whole section exists to avoid: it would
+       prove the rule renders, not that any screen ships it. All three spellings,
+       because button.css answers all three. */
+    disabledAt: function (i) {
+      var el = document.querySelector('[data-paint="' + i + '"]');
+      if (!el) return false;
+      return el.disabled === true || el.hasAttribute('disabled') ||
+             el.getAttribute('aria-disabled') === 'true';
+    },
+    focusedIs: function (i) {
+      return document.activeElement === document.querySelector('[data-paint="' + i + '"]');
+    },
+    /* every class in the document, so a caller can work out which component
+       files decide what this document looks like. getAttribute and not
+       className: on an SVG element className is an SVGAnimatedString and
+       stringifies to [object SVGAnimatedString]. */
+    allClasses: function () {
+      var out = {}, all = document.querySelectorAll('[class]');
+      for (var i = 0; i < all.length; i++) {
+        var v = all[i].getAttribute('class') || '';
+        v.split(/\\s+/).forEach(function (c) { if (c) out[c] = 1; });
+      }
+      return Object.keys(out).sort();
     },
     deadIcons: function () {
       var out = [], u = document.querySelectorAll('use');
@@ -542,6 +621,47 @@ async function open(opts) {
     },
     /* the mouse off everything, so the next measurement starts from rest */
     async unpoint() { await page.mouse.move(1, 1); return session; },
+    /* 11, and the reason it exists at all: a PICTURE of a state, raised the way
+       a person raises it. rest is no interaction, hover is the pointer, active
+       is the pointer with the button held, focus is a real Tab walk until the
+       element is the active one. Nothing sets a class and nothing sets an
+       attribute; a state this document cannot reach comes back null and is
+       reported as not staged rather than staged by the instrument.
+       Returns the five values the picture was taken at, so the manifest can say
+       what the image shows and a reader is never asked to trust a png. */
+    async shoot(i, state, file) {
+      const el = await page.$('[data-paint="' + i + '"]');
+      if (!el) return null;
+      await page.mouse.move(1, 1);
+      try { await el.scrollIntoViewIfNeeded({ timeout: 2000 }); } catch (e) { return null; }
+      if (state === 'hover' || state === 'active') {
+        try { await el.hover({ timeout: 2000 }); } catch (e) { return null; }
+        if (state === 'active') await page.mouse.down();
+      } else if (state === 'focus') {
+        await page.evaluate(() => {
+          document.body.setAttribute('tabindex', '-1');
+          document.body.focus();
+        });
+        let on = false;
+        for (let n = 0; n < 80 && !on; n++) {
+          await page.keyboard.press('Tab');
+          on = await page.evaluate('__ask.focusedIs(' + i + ')');
+        }
+        if (!on) return null;
+      }
+      const ms = await page.evaluate('__ask.settleMs()');
+      await page.waitForTimeout(Math.max(ms, 60) + 60);
+      const clip = await page.evaluate('__ask.boxAt(' + i + ', 12)');
+      let value = null;
+      if (clip && clip.width && clip.height) {
+        await page.screenshot({ path: file, clip });
+        value = await page.evaluate('__ask.paintAt(' + i + ')');
+      }
+      if (state === 'active') await page.mouse.up();
+      if (state === 'focus') await page.evaluate(() => document.activeElement.blur());
+      await page.mouse.move(1, 1);
+      return value;
+    },
     ask(expr) { return page.evaluate('__ask.' + expr); },
     async close() { await context.close(); }
   };
