@@ -66,6 +66,8 @@ PAGES = [
      "Every component, its css file, its page and the screens it stands on."),
     ("coverage", "Coverage",
      "Every class, and how many painted screens carry it. A zero is not a verdict."),
+    ("backlog", "System backlog",
+     "What the system is missing, found by assembling a screen out of it and adding nothing."),
 ]
 LABEL = {slug: label for slug, label, _ in PAGES}
 
