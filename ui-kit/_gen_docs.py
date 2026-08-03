@@ -68,6 +68,9 @@ PAGES = [
      "Every class, and how many painted screens carry it. A zero is not a verdict."),
     ("backlog", "System backlog",
      "What the system is missing, found by assembling a screen out of it and adding nothing."),
+    ("defects", "The defect table",
+     "Every class of defect this stage can have, which gate proves it, and what is left to look "
+     "for by hand."),
 ]
 LABEL = {slug: label for slug, label, _ in PAGES}
 
