@@ -119,6 +119,36 @@
   @media (max-width:560px){
     .kit-type-row{grid-template-columns:1fr;gap:6px}
   }
+  /* THE BUTTON SCHEME THIS PAGE PROPOSED AND THE PRODUCT NEVER TOOK, moved here
+     out of components/button.css on 2026-08-03. .btn-primary, .btn-secondary and
+     the three-step size ramp were declared by the system and carried by ZERO of
+     the 105 painted screens and zero of the 104 grey ones; the product wrote
+     .auth-btn, .state-btn, .provider-btn and .confirm-btn instead. A stand that
+     teaches a vocabulary nobody uses is worse than a missing one, so gate 30
+     found them and the system dropped them.
+     They land HERE and not in the bin because this page is provenance: it is the
+     flat kit the system was read out of, and it has to go on rendering exactly
+     as it did on the day it was read, or the record of what was proposed is
+     gone. The markup above is untouched. Nothing else in the repo carries these
+     six classes, and nothing may: a component is never added to this page, and
+     that now cuts both ways. */
+  .app-case .btn-primary,.app-case .btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-8);font-family:var(--font-body);font-weight:var(--weight-bold);cursor:pointer;border-radius:var(--radius-10);letter-spacing:.01em;transition:filter var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
+  .app-case .btn-primary{border:1px solid var(--color-action);background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass)}
+  .app-case .btn-primary:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
+  .app-case .btn-primary:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
+  .app-case .btn-secondary{border:1px solid var(--border-hairline);background:var(--bg-control);color:var(--text-primary)}
+  .app-case .btn-secondary:hover{border-color:var(--border-brass-hover);background:var(--bg-surface);color:var(--text-strong)}
+  .app-case .btn-secondary:active{background:var(--bg-pressed)}
+  .app-case .btn-sm{min-height:var(--control-32);padding:0 var(--space-12);font-size:var(--text-12);border-radius:var(--radius-10)}
+  .app-case .btn-md{min-height:var(--control-44);padding:0 var(--space-16);font-size:var(--text-14)}
+  /* 52px is a literal here and a var everywhere else in this block on purpose.
+     --control-52 was the large step of the ramp these three classes were the
+     only readers of, so it left tokens.css with them: a value nobody reads is a
+     transcript. Colour still comes through the live roles, because this page has
+     a theme switch and provenance that cannot follow the theme is a screenshot.
+     Geometry that no longer exists cannot. */
+  .app-case .btn-lg{min-height:52px;padding:0 var(--space-24);font-size:var(--text-16);border-radius:var(--radius-10)}
+  .app-case .btn-block{width:100%}
 </style>
 </head>
 <body class="app-case">

@@ -1,5 +1,5 @@
 /* components/button.css
-   Component: button. Classes: .auth-btn, .btn-block, .btn-lg, .btn-md, .btn-primary, .btn-secondary, .btn-sm, .confirm-btn, .primary, .prov-apple, .prov-x, .provider-btn, .state-btn.
+   Component: button. Classes: .auth-btn, .confirm-btn, .primary, .prov-apple, .prov-x, .provider-btn, .state-btn.
 
    Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --line-brass-soft, --opacity-disabled, --text-on-brass, --text-primary, --text-strong
    Stand:  ui-kit/button.html
@@ -38,15 +38,19 @@ dialog.app-dialog .provider-btn{background:var(--bg-control);border:1px solid va
    glow keeps its own line because it is depth, not colour. */
 .app-case .state-btn.primary:hover,.app-case .confirm-btn:hover:not(:disabled):not([aria-disabled="true"]),.app-case .auth-btn.primary:hover,dialog.app-dialog .confirm-btn:hover:not(:disabled):not([aria-disabled="true"]){background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
 .app-case .state-btn:not(.primary):hover,.app-case .auth-btn:not(.primary):hover,.app-case .provider-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)}
-.app-case .btn-primary,.app-case .btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-8);font-family:var(--font-body);font-weight:var(--weight-bold);cursor:pointer;border-radius:var(--radius-10);letter-spacing:.01em;transition:filter var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
-.app-case .btn-primary{border:1px solid var(--color-action);background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass)}
-.app-case .btn-primary:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
-.app-case .btn-secondary{border:1px solid var(--border-hairline);background:var(--bg-control);color:var(--text-primary)}
-.app-case .btn-secondary:hover{border-color:var(--border-brass-hover);background:var(--bg-surface);color:var(--text-strong)}
-.app-case .btn-sm{min-height:var(--control-32);padding:0 var(--space-12);font-size:var(--text-12);border-radius:var(--radius-10)}
-.app-case .btn-md{min-height:var(--control-44);padding:0 var(--space-16);font-size:var(--text-14)}
-.app-case .btn-lg{min-height:var(--control-52);padding:0 var(--space-24);font-size:var(--text-16);border-radius:var(--radius-10)}
-.app-case .btn-block{width:100%}
+/* SIX CLASSES LEFT HERE ON 2026-08-03, and what they were is the reason the
+   check that found them exists. `.btn-primary`, `.btn-secondary`, `.btn-sm`,
+   `.btn-md`, `.btn-lg` and `.btn-block` were half of what this component
+   declared, they had two specimens and a size ramp of their own, and they stood
+   on ZERO of the 105 painted screens and zero of the 104 grey ones. Not one
+   screen ever adopted the vocabulary; the product wrote `.auth-btn`,
+   `.state-btn`, `.provider-btn` and `.confirm-btn` instead, 704 times.
+   That is not dead weight, it is a stand teaching a scheme nobody uses: the next
+   person to build a screen reads the button page, takes `.btn-secondary`, and
+   adds a seventh class no rule of the product has ever painted. Gate 30 asks the
+   question now, `ui-kit/_adoption.py` answers it, and the frozen kit keeps its
+   own copy of these nine declarations in its own <style>, because provenance has
+   to go on rendering the way it did. */
 .app-case .resolved-panel .state-btn{width:100%}
 /* .bet-dock JOINED THIS GROUP, and it is the one pixel this pass moves on purpose.
    Four screens (event-detail-bet-error, -insufficient, -processing, -reconcile) ship
@@ -86,9 +90,9 @@ dialog.app-dialog:not(.outcome-dialog):not(.signin-dialog) .provider-btn:hover{b
    the same two roles the rest state does.
    Each rule mirrors the hover selector it answers, so the two sit at equal specificity and
    the press, being later in the file, wins while the pointer is down. */
-.app-case .state-btn.primary:active,.app-case .auth-btn.primary:active,.app-case .btn-primary:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
+.app-case .state-btn.primary:active,.app-case .auth-btn.primary:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
 .app-case .confirm-btn:active:not(:disabled):not([aria-disabled="true"]),dialog.app-dialog .confirm-btn:active:not(:disabled):not([aria-disabled="true"]){background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
-.app-case .state-btn:not(.primary):active,.app-case .auth-btn:not(.primary):active,.app-case .provider-btn:active,.app-case .btn-secondary:active{background:var(--bg-pressed)}
+.app-case .state-btn:not(.primary):active,.app-case .auth-btn:not(.primary):active,.app-case .provider-btn:active{background:var(--bg-pressed)}
 dialog.app-dialog:not(.outcome-dialog):not(.signin-dialog) .provider-btn:active{background:var(--bg-pressed)}
 /* the sheet skins and the bet panel each set their own hover background one class higher, so
    the press has to answer at their level or the hover would still be showing under the finger */

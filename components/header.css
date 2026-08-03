@@ -27,7 +27,12 @@
 .avatar-menu li:first-child{border-top:none}
 .avatar-menu .dropdown button{width:100%;text-align:left;border:none;background:transparent;padding:var(--space-8) var(--space-8);font-size:var(--text-11);cursor:pointer}
 .bottom-nav .badge-dot{position:static;margin-left:var(--space-2)}
-.delta .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-8);padding:var(--space-8)}
+/* `.delta .row` stood here and is gone, 2026-08-03. `.delta` is course-page
+   vocabulary: it is carried by ia/seo.html, ia/system.html and
+   user-research/cjm-to-be.html, and not one of the 28 course pages loads
+   components/index.css. So the rule could never fire, in any tree, and it was
+   sitting inside the app header's own file describing a layout the app header
+   has nothing to do with. Found by gate 30 on its first run. */
 .hiw-btn{padding:var(--space-4) var(--space-8);font-size:var(--text-12);cursor:pointer}
 .notif-menu{position:relative}
 .notif-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center}

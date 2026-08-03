@@ -19,14 +19,14 @@ says so. No em dash.
 | betpanel | 4 | betpanel-states, betpanel-dock, betpanel-sheet, betpanel-more | 2 | 19 | 11 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 13 | 9 |
 | bottomnav | 1 | bottomnav | 0 | 2 | 105 |
-| button | 3 | button-primary, button-secondary, button-outcome-row | 0 | 13 | 105 |
+| button | 2 | button-family, button-outcome-row | 0 | 7 | 105 |
 | card | 4 | card-binary, card-multi, card-loading, card-detail-head | 2 | 14 | 36 |
 | catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 6 | 105 |
 | chart | 1 | chart | 1 | 11 | 11 |
 | comments | 1 | comments-thread | 1 | 15 | 9 |
 | cookie-consent | 1 | cookie-consent | 0 | 17 | 2 |
 | course-chrome | 3 | course-chrome, course-chrome-system, course-chrome-roadmap | 0 | 25 | 105 |
-| dialog | 2 | dialog-shared, signin | 1 | 9 | 105 |
+| dialog | 2 | dialog-shared, signin | 1 | 8 | 105 |
 | event-detail | 2 | event-detail, facts-strip | 1 | 14 | 11 |
 | feed | 1 | feed-grid | 1 | 2 | 105 |
 | filters | 2 | filters-sort, filters-toggle | 2 | 4 | 105 |
@@ -52,7 +52,7 @@ says so. No em dash.
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 105 |
 | yesno | 1 | yesno | 2 | 2 | 14 |
 
-68 specimens over 37 components.
+67 specimens over 37 components.
 
 ---
 
@@ -61,14 +61,13 @@ says so. No em dash.
 Every class styled in `components/` that no `ui-visual` screen puts on an element, sorted by what
 that actually means. The Classes table on each component page shows the same verdict per row.
 
-### Deletion candidates (2)
+### Deletion candidates (0)
 
 Styled, and carried by no element in the repo: not by a painted screen, not by the kit, not by a wireframe, not by a course page, and not by any script. Nothing is removed yet. The screens still carry their own inline style and only move onto components/index.css in step 5, so the measurement is not final until then; step 7 is the pass that acts on this list.
 
 | class | file | why |
 |---|---|---|
-| `.btn-block` | button.css | styled and carried by no element anywhere |
-| `.signin-lead` | dialog.css | styled and carried by no element anywhere |
+| - | - | none |
 
 ### Carried only by the grey tree (0)
 
@@ -78,25 +77,20 @@ Dead, and this section used to say the opposite: it called them the wireframe ve
 |---|---|---|
 | - | - | none |
 
-### Used only by a course page (1)
+### Used only by a course page (0)
 
 Carried by a page in ia/, concept/, research/, voice/ or user-research/. Those pages have their own inline styles and do not load the system, so the rule here reaches nothing.
 
 | class | file | why |
 |---|---|---|
-| `.delta` | header.css | used by a course page, which does not load the system |
+| - | - | none |
 
-### Shown in the kit, not in the product (11)
+### Shown in the kit, not in the product (6)
 
 A real component the painted screens have not adopted. An offer, not debris. Do not delete without deciding against it first.
 
 | class | file | why |
 |---|---|---|
-| `.btn-lg` | button.css | shown in the frozen kit, never on a painted screen |
-| `.btn-md` | button.css | shown in the frozen kit, never on a painted screen |
-| `.btn-primary` | button.css | shown in the frozen kit, never on a painted screen |
-| `.btn-secondary` | button.css | shown in the frozen kit, never on a painted screen |
-| `.btn-sm` | button.css | shown in the frozen kit, never on a painted screen |
 | `.groove-sep` | base.css | shown in the frozen kit, never on a painted screen |
 | `.next` | course-chrome.css | shown in the frozen kit, never on a painted screen |
 | `.placeholder-line` | base.css | shown in the frozen kit, never on a painted screen |

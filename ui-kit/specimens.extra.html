@@ -394,6 +394,38 @@
     </div></div></aside>
   </div></div></main>
 
+  <div class="kit-subh">The button family, quiet and brass</div>
+  <!--
+    Replaces the two specimens the button page used to open with, 2026-08-03.
+    Those rendered .btn-primary and .btn-secondary at three sizes each, and the
+    product carried neither on a single screen: the stand was teaching a scheme
+    nobody had adopted. Gate 30 is the check that says so, and this is what it
+    left behind.
+
+    The four names the product DOES wear are .auth-btn (64 uses on 32 screens),
+    .state-btn (66 on 40), .provider-btn (444 on 105) and .confirm-btn (130 on
+    105), and only the first two can be shown on the bare canvas: the other two
+    carry a border and no ground of their own, because every ground they have is
+    written under dialog.app-dialog, .bet-panel, .bet-sheet or .bet-dock. Staged
+    here they would render in the user agent's ButtonFace grey, which is the
+    defect button.css already carries a paragraph about. So they stay in the
+    seven specimens that hold them in their real scopes, and the button page
+    links every one of them under "stands inside".
+
+    Two names on each row because that is the split the system actually makes:
+    a quiet control, and the same control carrying .primary. The labels are the
+    product's own, from ui-visual/event-feed-logged-out.html (the header pair)
+    and ui-visual/active-bets-empty-resolved.html (the state block pair).
+  -->
+  <div class="kit-row a-start">
+    <button type="button" class="auth-btn">Sign in</button>
+    <button type="button" class="state-btn">Browse events</button>
+  </div>
+  <div class="kit-row a-start">
+    <button type="button" class="auth-btn primary">Sign up</button>
+    <button type="button" class="state-btn primary">Browse events</button>
+  </div>
+
   <div class="kit-subh">Reconcile box</div>
   <!--
     ui-visual/win.html, kept inside the overlay it lives in for the same reason

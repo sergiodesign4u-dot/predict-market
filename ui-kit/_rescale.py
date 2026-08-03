@@ -110,7 +110,13 @@ CONTROL = {
     "--control-md": "--control-36",
     "--control-38": "--control-36",
     "--control-lg": "--control-44",
-    "--control-xl": "--control-52",
+    # "--control-xl": "--control-52" stood here and went with the token on
+    # 2026-08-03. A rename map is a map to something that EXISTS: the target left
+    # tokens.css when .btn-lg, its only reader, left components/, and the dry run
+    # said so in the same minute. It is deleted rather than pointed at
+    # --control-44, because 52 and 44 are different heights and a migration that
+    # quietly resizes a control is worse than one that does not run. If the old
+    # name ever comes back, gate 11's dangling-var check is what catches it.
     "--icon-15": "--icon-16",
     "--icon-16": "--icon-16",
     "--icon-17": "--icon-18",

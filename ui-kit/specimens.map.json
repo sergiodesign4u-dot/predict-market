@@ -32,26 +32,33 @@
     "Text input - default / hover / focus / disabled"
    ],
    "why": "That block is stand markup: .kit-field, .kit-field-wrap, .kit-field-lbl, plus .is-hover and .is-focus classes hand-written to fake the pseudo-classes. It demonstrates no product class, so it cannot be the input specimen. The field the product ships is input-amount, sliced out of the Add funds dialog."
+  },
+  {
+   "block": [
+    "buttons",
+    "Primary - small / medium / large"
+   ],
+   "why": "It was the button-primary specimen until 2026-08-03, and it demonstrates .btn-primary with .btn-sm, .btn-md and .btn-lg: four classes the system declared and no painted screen ever carried. Gate 30 found them, components/button.css dropped them, and the frozen kit keeps its own copy of the nine declarations in its own <style> so this page goes on rendering as it did. A block whose whole subject has left the system cannot be a specimen of it. What the product wears is in the extra section, block 'The button family, quiet and brass'."
+  },
+  {
+   "block": [
+    "buttons",
+    "Secondary - small / medium / large"
+   ],
+   "why": "The same block for .btn-secondary, and it was the more expensive of the two: its rest state was identical to .auth-btn and .state-btn and its hover was not, so the one specimen a person would copy from taught a hover the product does not have. Same date, same reason, same replacement."
   }
  ],
  "specimens": [
   {
-   "id": "button-primary",
+   "id": "button-family",
    "canvas": false,
-   "section": "buttons",
-   "label": "Primary - small / medium / large",
+   "from": "specimens.extra.html",
+   "section": "extra",
+   "label": "The button family, quiet and brass",
    "component": "button",
-   "title": "Primary button, three sizes",
-   "width": 374
-  },
-  {
-   "id": "button-secondary",
-   "canvas": false,
-   "section": "buttons",
-   "label": "Secondary - small / medium / large",
-   "component": "button",
-   "title": "Secondary button, three sizes",
-   "width": 459
+   "title": "The button family: quiet, and the same control carrying .primary",
+   "width": 420,
+   "note": "Two of the four names the product wears. .provider-btn and .confirm-btn are not here because neither has a ground outside dialog.app-dialog, .bet-panel, .bet-sheet or .bet-dock: on the bare canvas they would render in the user agent's grey. They stand in the seven specimens listed below instead."
   },
   {
    "id": "button-outcome-row",

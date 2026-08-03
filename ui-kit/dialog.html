@@ -49,8 +49,8 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/dialog.css</span>
-      <span class="tk-badge">68 rules</span>
-      <span class="tk-badge">16 classes</span>
+      <span class="tk-badge">67 rules</span>
+      <span class="tk-badge">15 classes</span>
       <span class="tk-badge">105 screens</span>
     </div>
   </header>
@@ -86,7 +86,7 @@ push();});})();</script>
     shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely
     used by nothing. Only the last kind is a deletion candidate, and they are collected in
     <a href="coverage.html">coverage</a>.</p>
-    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.app-dialog</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.bet-panel</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.bet-sheet</td><td class='tk-hex'>4</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.fine</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ic</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.loss-dialog</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.outcome-dialog</td><td class='tk-hex'>6</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sheet-body</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sheet-close</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sheet-head</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sheet-sub</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.signin-dialog</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.signin-lead</td><td class='tk-hex'>0</td><td class='tk-hex'><span class="ck-kind ck-unused" title="styled and carried by no element anywhere">unused</span></td></tr><tr><td class='tk-role'>.spinner-box</td><td class='tk-hex'>7</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.win-dialog</td><td class='tk-hex'>4</td><td class='tk-hex'></td></tr></tbody></table>
+    <table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.app-dialog</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.bet-panel</td><td class='tk-hex'>11</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.bet-sheet</td><td class='tk-hex'>4</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.fine</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.ic</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.loss-dialog</td><td class='tk-hex'>2</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.outcome-dialog</td><td class='tk-hex'>6</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sheet-body</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sheet-close</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sheet-head</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sheet-sub</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.signin-dialog</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.spinner-box</td><td class='tk-hex'>7</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.win-dialog</td><td class='tk-hex'>4</td><td class='tk-hex'></td></tr></tbody></table>
   </section>
 
   <section class="tk-sec" id="screens">
@@ -99,7 +99,7 @@ push();});})();</script>
     <p class="tk-note">To change this component, edit <code>components/dialog.css</code>. To change a
     value it reads, edit the role in <code>components/tokens.css</code>.</p>
     <details class="ck-src"><summary>components/dialog.css</summary><pre>/* components/dialog.css
-   Component: dialog. Classes: .app-dialog, .fine, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog, .signin-lead.
+   Component: dialog. Classes: .app-dialog, .fine, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog.
 
    Reads: --bevel-hair, --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --mask-solid, --result-won, --result-won-stone, --scrim, --scrim-photo, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-45
    Stand:  ui-kit/dialog.html
@@ -318,7 +318,12 @@ dialog.app-dialog:modal .sheet-body{overflow:auto;min-height:0}
    at the top of this file they would lose, and the sheet would go full bleed on
    a 500px screen. Measured at 360, 500 and 1280: 0 elements moved. */
 dialog.app-dialog.signin-dialog{max-width:410px}
-dialog.app-dialog.signin-dialog .signin-lead{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0 0 var(--space-4)}
+/* `.signin-lead` stood here and is gone, 2026-08-03. A lead paragraph for the
+   sign-in sheet, carried by no element in ANY tree: not a screen, not a
+   specimen, not the frozen kit, not a wireframe. Gate 14 never saw it because
+   it is not the whole selector: `.signin-dialog` is real, so the rule matched
+   the gate's question without being able to match an element. The first thing
+   gate 30 found outside the button family. */
 dialog.app-dialog.outcome-dialog{max-width:var(--container-sheet)}
 .outcome-dialog a{text-decoration:none}
 </pre></details>

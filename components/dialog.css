@@ -1,5 +1,5 @@
 /* components/dialog.css
-   Component: dialog. Classes: .app-dialog, .fine, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog, .signin-lead.
+   Component: dialog. Classes: .app-dialog, .fine, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog.
 
    Reads: --bevel-hair, --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --mask-solid, --result-won, --result-won-stone, --scrim, --scrim-photo, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-45
    Stand:  ui-kit/dialog.html
@@ -218,6 +218,11 @@ dialog.app-dialog:modal .sheet-body{overflow:auto;min-height:0}
    at the top of this file they would lose, and the sheet would go full bleed on
    a 500px screen. Measured at 360, 500 and 1280: 0 elements moved. */
 dialog.app-dialog.signin-dialog{max-width:410px}
-dialog.app-dialog.signin-dialog .signin-lead{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0 0 var(--space-4)}
+/* `.signin-lead` stood here and is gone, 2026-08-03. A lead paragraph for the
+   sign-in sheet, carried by no element in ANY tree: not a screen, not a
+   specimen, not the frozen kit, not a wireframe. Gate 14 never saw it because
+   it is not the whole selector: `.signin-dialog` is real, so the rule matched
+   the gate's question without being able to match an element. The first thing
+   gate 30 found outside the button family. */
 dialog.app-dialog.outcome-dialog{max-width:var(--container-sheet)}
 .outcome-dialog a{text-decoration:none}

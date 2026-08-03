@@ -172,7 +172,14 @@
   --control-32:32px;   /* dense icon button, desktop chrome */
   --control-36:36px;   /* the standard control height */
   --control-44:44px;   /* the mobile touch target (WCAG 2.5.5) */
-  --control-52:52px;   /* the primary action on a sheet */
+  /* --control-52 stood here and went with .btn-lg on 2026-08-03. It was the
+     large step of a size ramp only the deleted button scheme ever read, so the
+     day that class left the system this became a value nobody reads, which gate
+     11 calls a transcript rather than a system. A ramp is not a reason to keep a
+     step: three heights are what the product's controls are, and the fourth was
+     an offer nobody took. The frozen kit keeps 52px as a literal in its own
+     <style>, because a page kept as provenance must not follow a scale that has
+     moved on without it. */
   --icon-12:12px;      /* a mark inside a control that already has a label */
   --icon-16:16px;      /* the default mark */
   --icon-18:18px;      /* a mark that carries a control on its own */
@@ -542,8 +549,11 @@
      brass now and have no reason to stay tied: an action can be re-toned without
      touching the trust language, and a trust tint can warm up without repainting
      every CTA. Split now, before a component reads the wrong one. */
-  --color-action:var(--brass-500);      /* from: Confirm bet, Add funds, balance +, .btn-primary,
-                                           the active category tab, the unread badge */
+  --color-action:var(--brass-500);      /* from: Confirm bet, Add funds, balance +, .auth-btn.primary,
+                                           the active category tab, the unread badge.
+                                           It read .btn-primary until 2026-08-03, a class no screen
+                                           carried: even the provenance of a role can name a thing
+                                           that is not in the product */
   --color-action-lit:var(--brass-300);  /* from: the second stop of every action gradient */
   --color-action-pressed:var(--brass-600); /* from: a brass ground held down. Only FLAT brass needs
                                            it: a two-stop action gradient presses by reversing its

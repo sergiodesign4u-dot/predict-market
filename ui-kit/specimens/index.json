@@ -1,18 +1,11 @@
 [
  {
-  "id": "button-primary",
+  "id": "button-family",
   "component": "button",
-  "title": "Primary button, three sizes",
-  "width": 374,
-  "source": "kit.html / buttons / Primary - small / medium / large",
-  "rewrites": 0
- },
- {
-  "id": "button-secondary",
-  "component": "button",
-  "title": "Secondary button, three sizes",
-  "width": 459,
-  "source": "kit.html / buttons / Secondary - small / medium / large",
+  "title": "The button family: quiet, and the same control carrying .primary",
+  "width": 420,
+  "note": "Two of the four names the product wears. .provider-btn and .confirm-btn are not here because neither has a ground outside dialog.app-dialog, .bet-panel, .bet-sheet or .bet-dock: on the bare canvas they would render in the user agent's grey. They stand in the seven specimens listed below instead.",
+  "source": "specimens.extra.html / extra / The button family, quiet and brass",
   "rewrites": 0
  },
  {
