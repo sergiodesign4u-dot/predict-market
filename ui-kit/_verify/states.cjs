@@ -97,6 +97,24 @@ function specimensFor(component, manifest, classes) {
    The subject is the whole head of the selector. It is handed to the browser as
    written, so the scope that decides the paint comes with it, and the grouping
    by rest face collapses the ones that overlap. */
+/* A STATE INSIDE :not() IS NOT THIS RULE'S STATE, and splitting on the bare
+   token cut a selector in half mid-parenthesis: cookie-consent writes
+   `input[type="checkbox"]:not(:disabled)`, the split produced
+   `input[type="checkbox"]:not(` and the browser threw on an invalid selector,
+   which killed the whole run seven components in. Depth is tracked, and only a
+   token at depth zero ends the head. */
+function headOf(sel) {
+  const STATE = /^(:hover|:active|:focus-visible|:focus|:disabled|\[aria-disabled)/;
+  let depth = 0;
+  for (let i = 0; i < sel.length; i++) {
+    const ch = sel[i];
+    if (ch === '(' || ch === '[') depth++;
+    else if (ch === ')' || ch === ']') depth--;
+    if (depth === 0 && STATE.test(sel.slice(i))) return sel.slice(0, i).trim();
+  }
+  return null;
+}
+
 function stateSubjects(component) {
   const css = fs.readFileSync(path.join(ROOT, 'components', component + '.css'), 'utf8')
     .replace(/\/\*[\s\S]*?\*\//g, ' ');
@@ -105,8 +123,17 @@ function stateSubjects(component) {
   for (const m of css.matchAll(/([^{}]+)\{/g)) {
     const sel = m[1].trim();
     if (sel.startsWith('@') || !STATE.test(sel)) continue;
-    for (const one of sel.split(/,(?![^(]*\))/)) {
-      const head = one.split(STATE)[0].trim();
+    // a comma inside :is(...) or :not(...) does not separate two selectors
+    let depth = 0, part = '';
+    const parts = [];
+    for (const ch of sel) {
+      if (ch === '(' || ch === '[') depth++;
+      else if (ch === ')' || ch === ']') depth--;
+      if (ch === ',' && depth === 0) { parts.push(part); part = ''; } else part += ch;
+    }
+    parts.push(part);
+    for (const one of parts) {
+      const head = headOf(one.trim());
       if (head) out.add(head);
     }
   }
@@ -134,6 +161,15 @@ function classesIn(subjects) {
   const rows = [];
 
   for (const component of components) {
+    /* A SPECIMEN'S `component` IS NOT ALWAYS A STYLESHEET. The registry files
+       one specimen under `icons`, which is a sprite sheet and has no
+       components/icons.css to read state rules out of, and the run died on it
+       after twenty-nine components with every picture taken and no manifest
+       written. A corpus taken from one registry has to be filtered by the other.*/
+    if (!fs.existsSync(path.join(ROOT, 'components', component + '.css'))) {
+      console.log(`${component}: no stylesheet of its own, skipped`);
+      continue;
+    }
     const subjects = stateSubjects(component);
     if (!subjects.length) { console.log(`${component}: no state rule, nothing to photograph`); continue; }
     const classes = classesIn(subjects);
@@ -188,14 +224,14 @@ function classesIn(subjects) {
             const file = `${group.id}-${state}-${theme}.png`;
             const shot = await s.shoot(el.i, state, path.join(dir, file));
             if (!shot) continue;
-            group.shots[`${state}-${theme}`] = { file: `${component}/${file}`, value: shot };
+            group.shots[`${state}-${theme}`] = { file: `${component}/${file}`, ...shot };
           }
           // disabled is read and never set
           const dis = await s.ask(`disabledAt(${el.i})`);
           if (dis) {
             const file = `${group.id}-disabled-${theme}.png`;
             const shot = await s.shoot(el.i, 'rest', path.join(dir, file));
-            if (shot) group.shots[`disabled-${theme}`] = { file: `${component}/${file}`, value: shot };
+            if (shot) group.shots[`disabled-${theme}`] = { file: `${component}/${file}`, ...shot };
           }
         }
         await s.close();

@@ -440,11 +440,15 @@ AUTHORED = {p.stem: _authored.parse(p)
 CAPTURED = _states.by_component()
 
 
-def png_size(path):
-    """Width and height out of the IHDR, so the page can reserve the box. The
-    captures are taken at deviceScaleFactor 2, so the css size is half."""
+def png_size(path, shot):
+    """The CSS size the picture should be laid out at, so the box is reserved
+    before the image arrives. Recorded at capture time rather than derived from
+    the file, because the capture scale is now per element: a control is shot at
+    two device pixels per css pixel and a panel at one."""
+    if shot.get("w"):
+        return shot["w"], shot["h"]
     b = path.read_bytes()[16:24]
-    return (int.from_bytes(b[:4], "big") // 2, int.from_bytes(b[4:], "big") // 2)
+    return (int.from_bytes(b[:4], "big"), int.from_bytes(b[4:], "big"))
 
 
 STATE_ORDER = ["rest", "hover", "active", "focus", "disabled"]
@@ -478,7 +482,7 @@ def state_gallery(name):
                 path = KIT / "_states" / shot["file"]
                 if not path.exists():
                     continue
-                w, h = png_size(path)
+                w, h = png_size(path, shot)
                 cells.append(
                     '<figure class="ck-shot"><img src="_states/%s" width="%d" height="%d" '
                     'alt="%s, %s, %s theme" loading="lazy">'
@@ -603,6 +607,11 @@ def sections_for(name, c):
         "used by nothing. Gate 30 fails the build on the last kind." % len(uv_classes),
         class_table(c["classes"]))
     sec("screens", "Where it stands", "", screen_links(c["screens"]))
+    sec("sources", "Written from",
+        "The authored half of this page is the one artefact here no gate can read: a sentence "
+        "cannot be checked for being true. So it names its sources before it says anything, and "
+        "the build fails when one of them does not exist. Read this first if you doubt a claim "
+        "above it.", authored_block(name, "Sources"))
     sec("css", "What the file says",
         "The selectors and the css, for a person about to edit them. To change this component, "
         "edit <code>components/%s.css</code>; to change a value it reads, edit the role in "

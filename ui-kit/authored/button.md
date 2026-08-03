@@ -1,5 +1,14 @@
 # button
 
+## Sources
+
+- `ui-kit/docs/inventory.md` - three rows file this component: Auth entries (L1), Provider buttons (L1), Primary CTA brass (L1). Two of the three claim 104 screens and the third 34.
+- The 105 painted screens, counted: `.provider-btn` 444 uses on 105, `.confirm-btn` 130 on 105, `.state-btn` 66 on 40, `.auth-btn` 64 on 32. Six further classes were deleted on 2026-08-03 for standing on none.
+- Rules of use R1, the only rule that names this component.
+- `voice/docs/microcopy.md` - the same-thing rows: Deposit against Add funds, Log in against Sign in. Both still open.
+- `ui-kit/docs/backlog.md` S16 and S11, which is where the four names being one anatomy was measured rather than asserted.
+- `components/button.css`, read for what each scope actually paints.
+
 ## Purpose
 
 The control a person presses to do the thing the screen is for. It stands on all 105 painted
@@ -54,6 +63,10 @@ Never dress an outcome as an action: a YES or a NO is `yesno`, tinted green and 
 two colours mean an outcome in this product and nothing else, and a quiet chip that filters, sorts
 or loads more is `filters`, `catnav` or `loadmore`, which are one graphite chip family with a
 lighter press than this one.
+
+Seen: `ui-kit/docs/backlog.md` S16, where five names of one control were measured, and
+`components/account.css`, which painted a button of this family for three stages because the
+component that owned the BAR was the one holding the pen.
 
 ## States
 

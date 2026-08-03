@@ -654,8 +654,16 @@ async function open(opts) {
       const clip = await page.evaluate('__ask.boxAt(' + i + ', 12)');
       let value = null;
       if (clip && clip.width && clip.height) {
-        await page.screenshot({ path: file, clip });
+        /* TWO PIXELS PER CSS PIXEL FOR A CONTROL, ONE FOR A PANEL. A hover on a
+           36px button is a 1px edge and a 4-step colour move, and at 1x that is
+           a smudge; a card is 440px wide and its state reads perfectly at 1x.
+           Shooting everything at 2x made the card component alone 15.5MB of a
+           19MB folder, for pictures nobody would look closer at. The threshold
+           is the width at which a thing stops being a control. */
+        await page.screenshot({ path: file, clip,
+                                scale: clip.width > 360 ? 'css' : 'device' });
         value = await page.evaluate('__ask.paintAt(' + i + ')');
+        value = { value: value, w: Math.round(clip.width), h: Math.round(clip.height) };
       }
       if (state === 'active') await page.mouse.up();
       if (state === 'focus') await page.evaluate(() => document.activeElement.blur());
