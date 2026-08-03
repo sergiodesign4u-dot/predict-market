@@ -95,25 +95,6 @@ SCENES = [
             "page script fills it. Twenty four screens carry it filled and visible, and every one "
             "of them is a STATE screen, so the scene is cut from one. Nothing here is set or "
             "unset by the generator: this is that screen's markup.",
-        "lead":
-            "A sub-category rail beside a content column, stacked under 900px and side by side "
-            "above it. It owns none of what it holds and paints none of it; it says where the two "
-            "columns are.",
-        "when": [
-            "The screen browses a set: a category, a list of bets, a wallet ledger, a profile.",
-            "There is a second, narrower axis of navigation that belongs BESIDE the content "
-            "rather than above it.",
-            "Fourteen different sets of content stand in the column across the 76 screens, which "
-            "is the argument for a pattern rather than a component: the arrangement is stable and "
-            "what it holds is not.",
-        ],
-        "rule": "The rail goes first in the markup and the column second, at every width. The "
-                "stacked order under 900px is the source order, so a rail written after the "
-                "column would land under it on a phone and beside it on a desktop.",
-        "antirule": "Do not put the page's own surface on it. The two-stone plate under this "
-                    "shell is in <code>components/base.css</code> with the rest of the frame, "
-                    "because it is what the PAGE is made of and not what this arrangement is. A "
-                    "pattern that carries a background is a component with the label filed off.",
         "anatomy": [
             (".cat-layout", None, "The shell. Column at 360, row at 900 and up, and the gap "
                                  "changes with the direction because the distance between two "
@@ -142,21 +123,6 @@ SCENES = [
         "why_screen":
             "The canonical detail screen, in its ordinary state. The other ten are the same "
             "arrangement holding a different content set, which is exactly what the pattern claims.",
-        "lead":
-            "A content column beside a sticky side panel, stacked under 760px and side by side "
-            "above it. The panel is the bet panel today and the pattern does not know that.",
-        "when": [
-            "One subject fills the screen and one persistent action must stay reachable while a "
-            "person reads about it.",
-            "The action needs its own column on a desktop and its own dock at the foot of a phone.",
-        ],
-        "rule": "The breakpoint is 760 and not 900, and it is the panel's own: at 760 the bet "
-                "panel appears and the dock disappears, which is one swap in "
-                "<code>components/betpanel.css</code>. Two arrangements changing at two different "
-                "widths would leave a band where the page has both or neither.",
-        "antirule": "Do not reach into the column from here. <code>.ed-main</code> gets "
-                    "<code>flex:1;min-width:0</code> and nothing else; its plate, its clip and its "
-                    "dropped right edge are in <code>components/base.css</code>.",
         "anatomy": [
             (".ed-layout", None, "The shell. Column at 360, row at 760 and up."),
             (".ed-main", None, "The content column, and the only one of the two this pattern "
@@ -179,21 +145,6 @@ SCENES = [
             "The feed, which is where the track was read from. Trimmed to the first four cards of "
             "twelve so the frame stays readable; nothing else is changed, and four is enough to "
             "show the track step from one column to two to three.",
-        "lead":
-            "A fluid track of event cards, one column to four, with no media query at all.",
-        "when": [
-            "A screen lists things of one kind and the number of them is decided by the data.",
-            "The items are the same shape, so a track that reflows beats a layout that is "
-            "authored per width.",
-        ],
-        "rule": "One grid per screen. It is <code>auto-fit</code> over "
-                "<code>minmax(min(100%, 300px), 1fr)</code>, so the column count is arithmetic on "
-                "the available width and there is nothing to keep in step with a breakpoint.",
-        "antirule": "Do not add breakpoints to it. Three of them used to sit beside this rule, "
-                    "stepping 2 - 3 - 4 columns, plus a category variant at auto-fill 240px. All "
-                    "four were dead: they lost to the auto-fit rule on source order, and the "
-                    "variant was only ever held up by an <code>!important</code> that is now gone. "
-                    "A fluid track needs no breakpoints, which is why this file has none.",
         "anatomy": [
             (".grid", None, "The track. Three declarations: it is a grid, it stretches its items to "
                            "equal height, and the columns are computed."),
@@ -213,21 +164,6 @@ SCENES = [
         "why_screen":
             "The feed's own head, which is the widest case: a title, a live count and the full "
             "control row. Sixty nine other screens carry a thinner version of the same row.",
-        "lead":
-            "A title on one side, the controls that act on the list on the other, wrapping to two "
-            "rows when there is no room for one.",
-        "when": [
-            "A list needs a name and the list needs controls, and both belong to the list rather "
-            "than to the page.",
-            "Twenty six of the seventy screens that carry the head have a title and nothing to "
-            "sort, and the row is correct with the control side empty.",
-        ],
-        "rule": "The sort control lives here and not in the category band. Categories are "
-                "navigation; a sort is a control over THIS list, and putting it in the band makes "
-                "it look like a place you can go.",
-        "antirule": "The heading's type is not here. A display face and its colour are what the "
-                    "block LOOKS like, so they stay in <code>components/feed.css</code>; this file "
-                    "is the row and nothing else.",
         "anatomy": [
             (".feed-head", None, "The row. <code>flex-wrap</code> with "
                                 "<code>space-between</code>, so the controls drop under the title "
@@ -250,19 +186,6 @@ SCENES = [
         "why_screen":
             "My Bets, where the list is longest and the rows are the real thing rather than a "
             "loading stand-in.",
-        "lead":
-            "A vertical stack of bet rows at one distance. Two declarations and one gap.",
-        "when": [
-            "Rows of one kind stack and the distance between them is the only thing to decide.",
-            "The stack also holds the loading skeletons and the resolved record block, so what "
-            "stacks is not always a position row.",
-        ],
-        "rule": "The gap is the list's, never the row's. A row that carried its own bottom margin "
-                "would double the distance the moment two lists sat one under the other, and the "
-                "last row would push the plate's padding out by a step.",
-        "antirule": "Do not use it as a plate. A <code>.pos</code> carries its own stone, its own "
-                    "edge and its own ink; what this file decides is that the rows stack and how "
-                    "far apart, which is the one thing a row cannot know about itself.",
         "anatomy": [
             (".pos-list", None, "The stack. A column flex box with one gap."),
             (".pos", "position", "The row. Its own component, whole."),
@@ -281,23 +204,6 @@ SCENES = [
             "The wallet, which carries the <code>.static</code> variant. The other two screens "
             "carry <code>.flat</code>, so between them the three screens show two of the three "
             "positions this bar has.",
-        "lead":
-            "One or two actions held at the foot of a column, sticky by default and flat where the "
-            "page has no scroll to hold them against.",
-        "when": [
-            "A screen has one action that is the reason a person came to it, and the content above "
-            "it is long enough that the action would otherwise scroll away.",
-            "THREE SCREENS, WHICH IS THE THRESHOLD EXACTLY. This pattern clears the bar by one "
-            "screen and that is said here rather than rounded up: it is a pattern by a margin of "
-            "one, and if any of the three loses its bar it stops being one.",
-        ],
-        "rule": "The bar holds the actions; the buttons stay themselves. Each action is an "
-                "<code>&lt;a&gt;</code> at <code>flex:1</code> holding a button at "
-                "<code>width:100%</code>, so two actions split the row evenly and one fills it, "
-                "without either button learning a width of its own.",
-        "antirule": "Do not put a second one on a screen, and do not use it for a link that is not "
-                    "the reason the screen exists. A sticky bar is the loudest thing on a phone "
-                    "and a screen with two of them has told a person nothing about which to press.",
         "anatomy": [
             (".cta-bar", None, "The bar. Sticky to the foot of the column, above the bottom nav "
                                "on the stacking order."),
@@ -576,6 +482,49 @@ def screens_block(p, screens):
             "%s<div class=\"ck-screens\">%s</div>" % (len(SCREENS), thin, links))
 
 
+
+# ---- the authored half, and why the fields it replaced were deleted --------
+# A pattern page used to carry its lead, its "when to use", its rule and its
+# anti-rule as four hand-typed strings inside SCENES above. Those four are the
+# judgement, and the judgement now lives in ui-kit/authored/<name>.md with every
+# other component's, under gate 32, which checks that the sources are real, that
+# the parts are components and that the anti-rule names somewhere to go. Keeping
+# both would have been the defect this repo has paid for twice already: two
+# copies of one fact, and the second is always the one that goes stale. So the
+# four keys were DELETED from SCENES rather than left as a fallback, because a
+# fallback is a second copy that nobody reads until it is wrong.
+#
+# What stays in SCENES is what is about this GENERATOR rather than about the
+# pattern: which screen to cut the scene from and why, the widths, the depth of
+# the outline, the per-class annotation of the markup, and the variants. Those
+# answer "how is this page built", not "when do I use this thing".
+import _authored                                                      # noqa: E402
+from _gen_docs import inline as _md                                   # noqa: E402
+
+AUTHORED = {q.stem: _authored.parse(q)
+            for q in sorted((KIT / "authored").glob("*.md"))} if (KIT / "authored").exists() else {}
+
+
+def authored(name, section, tag="p"):
+    body = AUTHORED.get(name, {}).get(section, "").strip()
+    if not body:
+        return ""
+    out = []
+    for para in re.split(r"\n\s*\n", body):
+        if para.lstrip().startswith("- "):
+            out.append('<ul class="tk-doc-list">%s</ul>' % "".join(
+                "<li>%s</li>" % _md(l.strip()[2:])
+                for l in para.splitlines() if l.strip().startswith("- ")))
+        else:
+            out.append("<%s>%s</%s>" % (tag, _md(" ".join(para.split())), tag))
+    return "".join(out)
+
+
+def first_para(name, section):
+    body = AUTHORED.get(name, {}).get(section, "").strip()
+    return _md(" ".join(re.split(r"\n\s*\n", body)[0].split())) if body else ""
+
+
 PAGE = """<!doctype html>
 <html lang="en">
 <head>
@@ -634,29 +583,51 @@ PAGE = """<!doctype html>
     {variants}
   </section>
 
+  <section class="tk-sec" id="parts">
+    <h2 data-n="04">What it composes</h2>
+    <p class="tk-note">The COMPONENTS in it, named by a person. The Anatomy above answers which
+    class is which; this answers what each part contributes, which is the question a class list
+    cannot reach.</p>
+    {parts}
+  </section>
+
   <section class="tk-sec" id="use">
-    <h2 data-n="04">When to use it</h2>
-    <ul class="ck-when">{when}</ul>
+    <h2 data-n="05">When to use it</h2>
+    {when}
     <h3 class="tk-subh">The rule</h3>
-    <p class="ck-rule">{rule}</p>
+    <div class="ck-rule">{rule}</div>
     <h3 class="tk-subh">The anti-rule</h3>
-    <p class="ck-antirule">{antirule}</p>
+    <div class="ck-antirule">{antirule}</div>
+  </section>
+
+  <section class="tk-sec" id="arrangement">
+    <h2 data-n="06">What it arranges, and whose the states are</h2>
+    {arrangement}
   </section>
 
   <section class="tk-sec" id="screens">
-    <h2 data-n="05">Where it stands</h2>
+    <h2 data-n="07">Where it stands</h2>
     {screens}
   </section>
 {constraints}
+  <section class="tk-sec" id="written">
+    <h2 data-n="08">Written from</h2>
+    <p class="tk-note">The authored half of this page is held by gate 32: every path here is
+    opened, the parts above are checked against the registry, the screen count is compared with
+    what the manifest counted, and the anti-rule has to name somewhere to go and say whether the
+    confusion has been seen or is predicted.</p>
+    {sources}
+  </section>
+
   <section class="tk-sec" id="markup">
-    <h2 data-n="06">The markup</h2>
+    <h2 data-n="09">The markup</h2>
     <p class="tk-note">The scene above, to a depth of {depth}, with everything below it replaced by
     a comment naming what was elided. Copy the shape; the content is the screen's.</p>
     <details class="ck-src" open><summary>the shape, from {screen}</summary><pre>{markup}</pre></details>
   </section>
 
   <section class="tk-sec" id="css">
-    <h2 data-n="07">The file</h2>
+    <h2 data-n="10">The file</h2>
     <p class="tk-note">A pattern loads LAST in <code>components/index.css</code>, after every
     component, because it has to be able to place what it holds. It carries no colour at all, and
     gate 23 fails the build if one appears.</p>
@@ -820,13 +791,17 @@ def build():
         # name would have read as a mistake in this generator.
         made_note = ", ".join("%s (%s)" % (m, via) for m, via in made)
         page = PAGE.format(
-            boot=THEME_BOOT, name=p["name"], label=esc(p["label"]), lead=p["lead"],
+            boot=THEME_BOOT, name=p["name"], label=esc(p["label"]), lead=first_para(p["name"], "Purpose"),
             nscreens=len(screens), nmade=len(made), made_links=made_links,
             made_note=made_note,
             screen=esc(p["screen"]), why_screen=p["why_screen"], frames=frames(p),
             anatomy=anatomy_table(p, set(own)), variants=variants_block(p),
-            when="".join("<li>%s</li>" % w for w in p["when"]),
-            rule=p["rule"], antirule=p["antirule"],
+            when=authored(p["name"], "When to use"),
+            rule=authored(p["name"], "Rule"),
+            antirule=authored(p["name"], "Anti-rule"),
+            parts=authored(p["name"], "Parts"),
+            arrangement=authored(p["name"], "Arrangement"),
+            sources=authored(p["name"], "Sources"),
             screens=screens_block(p, screens),
             constraints=constraints_block(p["name"]),
             depth=p["depth"], markup=esc(outline(inner, p["depth"])), css=esc(css))

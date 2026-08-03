@@ -46,7 +46,7 @@ push();});})();</script>
 <main class="tk-wrap">
   <header class="tk-hero">
     <h1>Card grid</h1>
-    <p>A fluid track of event cards, one column to four, with no media query at all.</p>
+    <p>A fluid track of event cards, one column to four, with no media query at all. <code>auto-fit</code> over <code>minmax(min(100%, 300px), 1fr)</code>, so the column count is arithmetic on the available width rather than a set of breakpoints somebody has to keep in step with the card.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/patterns/card-grid.css</span>
       <span class="tk-badge">23 screens</span>
@@ -87,22 +87,44 @@ push();});})();</script>
     <p class="tk-note">No variants. The pattern has one arrangement, and a screen that needs a different one needs a different pattern.</p>
   </section>
 
+  <section class="tk-sec" id="parts">
+    <h2 data-n="04">What it composes</h2>
+    <p class="tk-note">The COMPONENTS in it, named by a person. The Anatomy above answers which
+    class is which; this answers what each part contributes, which is the question a class list
+    cannot reach.</p>
+    <ul class="tk-doc-list"><li><code>card</code> - the item. Its photograph, its question, its probability and its why are all its own; this pattern decides only how many of them fit across.</li><li><code>yesno</code> - the pair inside a binary card, which is the control the track has to leave room for at the narrowest column.</li><li><code>options</code> - the two option rows inside a multi-outcome card, capped at two so a multi card stays close to a binary card&#x27;s height and the meta rows line up across the track.</li></ul>
+  </section>
+
   <section class="tk-sec" id="use">
-    <h2 data-n="04">When to use it</h2>
-    <ul class="ck-when"><li>A screen lists things of one kind and the number of them is decided by the data.</li><li>The items are the same shape, so a track that reflows beats a layout that is authored per width.</li></ul>
+    <h2 data-n="05">When to use it</h2>
+    <p>When a screen lists things of one kind and the number of them is decided by the data, and the items are the same shape, so a track that reflows beats a layout authored per width.</p><p>Once per screen. Two grids on one page means two different sets of one kind, which is a question about the screen rather than about the track.</p><p>By hand: when the items are not the same shape. A row of three blocks that happen to sit side by side - a summary, a chart and a note - is a flex row with its own sizes, and putting it in this track would let a narrow window stack them in an order nobody chose. The test is whether an item could be the first, the last or the only one without looking wrong.</p>
     <h3 class="tk-subh">The rule</h3>
-    <p class="ck-rule">One grid per screen. It is <code>auto-fit</code> over <code>minmax(min(100%, 300px), 1fr)</code>, so the column count is arithmetic on the available width and there is nothing to keep in step with a breakpoint.</p>
+    <div class="ck-rule"><p>One grid per screen, and the column count is arithmetic: no breakpoint in this file, so a card that changes its minimum width changes the track by itself and nothing has to be edited in two places.</p></div>
     <h3 class="tk-subh">The anti-rule</h3>
-    <p class="ck-antirule">Do not add breakpoints to it. Three of them used to sit beside this rule, stepping 2 - 3 - 4 columns, plus a category variant at auto-fill 240px. All four were dead: they lost to the auto-fit rule on source order, and the variant was only ever held up by an <code>!important</code> that is now gone. A fluid track needs no breakpoints, which is why this file has none.</p>
+    <div class="ck-antirule"><p>Never let a bet control into it. A screen that carries this track has no amount field and no Confirm on it: a card&#x27;s YES / NO belongs to <code>yesno</code> and routes to the detail with the side pre-selected, while the thing that commits money is <code>betpanel</code>, which R3 keeps to one per screen and R7 keeps off every screen with a grid.</p><p>Seen: <code>wireframes/_conventions.md</code> S3 states it as a decision that had to be written into the grey tree&#x27;s contract - &quot;a tap routes to Event Detail with the side ... pre-selected. It does NOT place a bet on the card and does not bypass Event Detail&quot; - which is a sentence written because the alternative was on the table. R7&#x27;s counter is what confirms it held: 23 screens with a grid, 0 with a panel or a dock.</p></div>
+  </section>
+
+  <section class="tk-sec" id="arrangement">
+    <h2 data-n="06">What it arranges, and whose the states are</h2>
+    <p><code>auto-fit</code> over <code>minmax(min(100%, 300px), 1fr)</code> with one gap, at every width. The <code>min(100%, 300px)</code> is what stops a 300px minimum from overflowing a 360px phone, and it is the reason there is no media query: below one column&#x27;s worth of room the track takes the full width instead of scrolling sideways.</p><p>No states of its own. Everything in the track that answers a pointer is a <code>card</code>, and the whole-card hover, the question link and the save control are photographed on that component&#x27;s page.</p>
   </section>
 
   <section class="tk-sec" id="screens">
-    <h2 data-n="05">Where it stands</h2>
+    <h2 data-n="07">Where it stands</h2>
     <p class="tk-note">The existence proof. A composition is a pattern here because it stands on three or more screens, so this list is not a footnote: it is the reason the file exists. Counted from the markup of all 105 painted screens, not from a list.</p><div class="ck-screens"><a href="../ui-visual/event-feed-crypto-loading.html">event-feed-crypto-loading</a><a href="../ui-visual/event-feed-crypto-logged-out-loading.html">event-feed-crypto-logged-out-loading</a><a href="../ui-visual/event-feed-crypto-logged-out.html">event-feed-crypto-logged-out</a><a href="../ui-visual/event-feed-crypto.html">event-feed-crypto</a><a href="../ui-visual/event-feed-culture-loading.html">event-feed-culture-loading</a><a href="../ui-visual/event-feed-culture-logged-out-loading.html">event-feed-culture-logged-out-loading</a><a href="../ui-visual/event-feed-culture-logged-out.html">event-feed-culture-logged-out</a><a href="../ui-visual/event-feed-culture.html">event-feed-culture</a><a href="../ui-visual/event-feed-general-loading.html">event-feed-general-loading</a><a href="../ui-visual/event-feed-general-logged-out-loading.html">event-feed-general-logged-out-loading</a><a href="../ui-visual/event-feed-general-logged-out.html">event-feed-general-logged-out</a><a href="../ui-visual/event-feed-general.html">event-feed-general</a><a href="../ui-visual/event-feed-loading.html">event-feed-loading</a><a href="../ui-visual/event-feed-logged-out-loading.html">event-feed-logged-out-loading</a><a href="../ui-visual/event-feed-logged-out.html">event-feed-logged-out</a><a href="../ui-visual/event-feed-politics-loading.html">event-feed-politics-loading</a><a href="../ui-visual/event-feed-politics-logged-out-loading.html">event-feed-politics-logged-out-loading</a><a href="../ui-visual/event-feed-politics-logged-out.html">event-feed-politics-logged-out</a><a href="../ui-visual/event-feed-politics.html">event-feed-politics</a><a href="../ui-visual/event-feed-push-permission-missing.html">event-feed-push-permission-missing</a><a href="../ui-visual/event-feed.html">event-feed</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a></div>
   </section>
 
+  <section class="tk-sec" id="written">
+    <h2 data-n="08">Written from</h2>
+    <p class="tk-note">The authored half of this page is held by gate 32: every path here is
+    opened, the parts above are checked against the registry, the screen count is compared with
+    what the manifest counted, and the anti-rule has to name somewhere to go and say whether the
+    confusion has been seen or is predicted.</p>
+    <ul class="tk-doc-list"><li><a class="tk-doc-ref" href="backlog.html"><code>docs/backlog.md</code></a> item 16a - <code>.grid</code>, declared in <a class="tk-doc-ref" href="feed.html"><code>components/feed.css</code></a>, counted on <strong>23</strong> screens by the containment reader, which cleared the threshold and moved it to <code>components/patterns/</code>.</li><li><strong>23 painted screens</strong>: the feed, the eight category pages, Favorites, and the states of each.</li><li><a class="tk-doc-ref" href="inventory.html"><code>ui-kit/docs/inventory.md</code></a> L82 - &quot;Responsive card grid&quot;, states &quot;populated / skeleton&quot;.</li><li>R5 in <a class="tk-doc-ref" href="architecture.html"><code>ui-kit/docs/architecture.md</code></a> - the full outcome list never inside a card. Counted: 161 cards across the painted tree, 21 of them multi-outcome, every one with exactly two option rows, and no &quot;+N more&quot; string anywhere.</li><li>R7 in <a class="tk-doc-ref" href="architecture.html"><code>ui-kit/docs/architecture.md</code></a> - no bet control on a screen that carries this grid: 23 screens with it, 0 with a panel or a dock.</li><li>R8 in <a class="tk-doc-ref" href="architecture.html"><code>ui-kit/docs/architecture.md</code></a> - 0 grids on the five system screens, which is what makes the grid content rather than frame.</li></ul>
+  </section>
+
   <section class="tk-sec" id="markup">
-    <h2 data-n="06">The markup</h2>
+    <h2 data-n="09">The markup</h2>
     <p class="tk-note">The scene above, to a depth of 1, with everything below it replaced by
     a comment naming what was elided. Copy the shape; the content is the screen's.</p>
     <details class="ck-src" open><summary>the shape, from event-feed.html</summary><pre>&lt;div class="grid"&gt;
@@ -122,7 +144,7 @@ push();});})();</script>
   </section>
 
   <section class="tk-sec" id="css">
-    <h2 data-n="07">The file</h2>
+    <h2 data-n="10">The file</h2>
     <p class="tk-note">A pattern loads LAST in <code>components/index.css</code>, after every
     component, because it has to be able to place what it holds. It carries no colour at all, and
     gate 23 fails the build if one appears.</p>

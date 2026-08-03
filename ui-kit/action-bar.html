@@ -46,7 +46,7 @@ push();});})();</script>
 <main class="tk-wrap">
   <header class="tk-hero">
     <h1>Action bar</h1>
-    <p>One or two actions held at the foot of a column, sticky by default and flat where the page has no scroll to hold them against.</p>
+    <p>One or two actions held at the foot of a column, sticky by default and flat where the page has no scroll to hold them against. It is the arrangement and nothing else: how the actions share the row, where the row sits, and what happens when there is only one of them.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/patterns/action-bar.css</span>
       <span class="tk-badge">3 screens</span>
@@ -87,22 +87,44 @@ push();});})();</script>
     <div class="ck-var"><code>.cta-bar.static</code><p>Position only, for a page whose column does not scroll under it.</p></div><div class="ck-var"><code>.cta-bar.flat</code><p>Position and surface: the stone, the hairline and the two rounded corners come off, and it reads as a row at the end of the content. The three declarations that take the surface away are in <code>components/account.css</code> and not here, which is the one declared paint exception of the patterns step.</p></div>
   </section>
 
+  <section class="tk-sec" id="parts">
+    <h2 data-n="04">What it composes</h2>
+    <p class="tk-note">The COMPONENTS in it, named by a person. The Anatomy above answers which
+    class is which; this answers what each part contributes, which is the question a class list
+    cannot reach.</p>
+    <ul class="tk-doc-list"><li><code>account</code> - the bar&#x27;s surface: the stone, the hairline along the top edge and the two rounded corners, plus the <code>.flat</code> variant that takes all three away. It is what the bar is MADE of; this file is where it stands.</li><li><code>button</code> - the actions. Each is an <code>&lt;a&gt;</code> at <code>flex:1</code> holding a button at <code>width:100%</code>, so two actions split the row evenly and one fills it without either button learning a width of its own.</li></ul>
+  </section>
+
   <section class="tk-sec" id="use">
-    <h2 data-n="04">When to use it</h2>
-    <ul class="ck-when"><li>A screen has one action that is the reason a person came to it, and the content above it is long enough that the action would otherwise scroll away.</li><li>THREE SCREENS, WHICH IS THE THRESHOLD EXACTLY. This pattern clears the bar by one screen and that is said here rather than rounded up: it is a pattern by a margin of one, and if any of the three loses its bar it stops being one.</li></ul>
+    <h2 data-n="05">When to use it</h2>
+    <p>When a screen has one action that is the reason a person came to it, and the content above is long enough that the action would otherwise scroll away. The wallet, the profile and How It Works are the three, and each has exactly one such action.</p><p>Never twice on a screen. A sticky bar is the loudest thing on a phone, and a screen with two has told a person nothing about which one to press.</p><p>By hand: when the action is not the reason the screen exists. Two actions in a row at the foot of a card, a pair of links under a form, an inline confirm inside a panel - all of those are a flex row and two buttons, written where they stand. Reaching for this pattern makes them sticky, which is a claim about their importance that the screen has not earned. The test is whether the action should follow a person down the page; if the answer needs thought, it should not.</p>
     <h3 class="tk-subh">The rule</h3>
-    <p class="ck-rule">The bar holds the actions; the buttons stay themselves. Each action is an <code>&lt;a&gt;</code> at <code>flex:1</code> holding a button at <code>width:100%</code>, so two actions split the row evenly and one fills it, without either button learning a width of its own.</p>
+    <div class="ck-rule"><p>The bar holds the actions and the buttons stay themselves: the row decides the split, and no button in it gains a width, a radius or a colour it would not have anywhere else.</p></div>
     <h3 class="tk-subh">The anti-rule</h3>
-    <p class="ck-antirule">Do not put a second one on a screen, and do not use it for a link that is not the reason the screen exists. A sticky bar is the loudest thing on a phone and a screen with two of them has told a person nothing about which to press.</p>
+    <div class="ck-antirule"><p>Never use it as the bet control. A sticky bar at the foot of a phone that commits money is <code>betpanel</code>&#x27;s dock, which the width swaps against a panel at 760 and which R3 counts at most one of; this bar is a way ONWARD from a screen, not a way to spend on it. They look identical at 360 and the difference is whether pressing costs anything.</p><p>Predicted: it has not happened. The two have never met on a screen, and R3 and R7 are why - a bet control does not stand on a list, and this bar&#x27;s three screens are a wallet, a profile and a document. Recorded because the shapes are the same and the screens are one product decision apart.</p></div>
+  </section>
+
+  <section class="tk-sec" id="arrangement">
+    <h2 data-n="06">What it arranges, and whose the states are</h2>
+    <p>Sticky to the foot of the column, above the bottom nav, with the actions in source order and no reordering at any width. The <code>.flat</code> variant is the same bar where the page does not scroll, and choosing between them is the one decision this pattern leaves to a person: a column that scrolls under the bar keeps the stone, a page that ends where the bar is takes it away.</p><p>Nothing here has a state. What answers a pointer is the <code>button</code> inside it, photographed on that component&#x27;s page, and the <code>account</code> surface behind it is declared static because a bar is not a control.</p>
   </section>
 
   <section class="tk-sec" id="screens">
-    <h2 data-n="05">Where it stands</h2>
+    <h2 data-n="07">Where it stands</h2>
     <p class="tk-note">The existence proof. A composition is a pattern here because it stands on three or more screens, so this list is not a footnote: it is the reason the file exists. Counted from the markup of all 105 painted screens, not from a list.</p><p class="tk-note"><b>Three, which is the threshold exactly.</b> This is the thinnest proof in the folder and it is not hidden behind a phrase: one of these three losing its bar takes the pattern below the line that admitted it.</p><div class="ck-screens"><a href="../ui-visual/how-it-works.html">how-it-works</a><a href="../ui-visual/my-profile.html">my-profile</a><a href="../ui-visual/wallet.html">wallet</a></div>
   </section>
 
+  <section class="tk-sec" id="written">
+    <h2 data-n="08">Written from</h2>
+    <p class="tk-note">The authored half of this page is held by gate 32: every path here is
+    opened, the parts above are checked against the registry, the screen count is compared with
+    what the manifest counted, and the anti-rule has to name somewhere to go and say whether the
+    confusion has been seen or is predicted.</p>
+    <ul class="tk-doc-list"><li><a class="tk-doc-ref" href="inventory.html"><code>ui-kit/docs/inventory.md</code></a> L161 - &quot;CTA bar (<code>.cta-bar</code>: Add funds + Open Wallet / Withdraw)&quot;, filed L2, on how-it-works, my-profile and wallet.</li><li><strong>3 painted screens</strong>, which is the pattern threshold exactly and not one more. This is the only pattern in the system that clears the bar by a margin of one, and it is said rather than rounded up: if any of the three loses its bar, this stops being a pattern.</li><li><a class="tk-doc-ref" href="architecture.html"><code>ui-kit/docs/architecture.md</code></a>, &quot;What was measured and deliberately not written down&quot; - <code>.cta-bar</code> stands on three screens and on none of the 17 overlays, and that was deliberately NOT made a rule of use: &quot;Three is the pattern threshold, not the prohibition threshold.&quot;</li><li><a class="tk-doc-ref" href="backlog.html"><code>ui-kit/docs/backlog.md</code></a> S11, closed 2026-08-03 - eight rules that painted this bar&#x27;s BUTTON moved to <a class="tk-doc-ref" href="button.html"><code>components/button.css</code></a>, and the one line that was arrangement rather than paint came here.</li><li><code>ui-kit/_levels.py</code> STATIC, the <code>account</code> entry - &quot;the bar answers no pointer because a bar is not a control&quot;, written the day the button left.</li></ul>
+  </section>
+
   <section class="tk-sec" id="markup">
-    <h2 data-n="06">The markup</h2>
+    <h2 data-n="09">The markup</h2>
     <p class="tk-note">The scene above, to a depth of 2, with everything below it replaced by
     a comment naming what was elided. Copy the shape; the content is the screen's.</p>
     <details class="ck-src" open><summary>the shape, from wallet.html</summary><pre>&lt;div class="cta-bar static"&gt;
@@ -112,7 +134,7 @@ push();});})();</script>
   </section>
 
   <section class="tk-sec" id="css">
-    <h2 data-n="07">The file</h2>
+    <h2 data-n="10">The file</h2>
     <p class="tk-note">A pattern loads LAST in <code>components/index.css</code>, after every
     component, because it has to be able to place what it holds. It carries no colour at all, and
     gate 23 fails the build if one appears.</p>
