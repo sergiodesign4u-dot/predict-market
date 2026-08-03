@@ -14,10 +14,11 @@ been edited by it.
 Every row says what was missing, what the screen did instead, and what the substitute cost, measured
 where a measurement was possible.
 
-**Standing today: nine rows opened, three closed, six open.** The three closed the same afternoon
-they were written, and by the same fix, because they were one gap seen from three sides: the system
-had no reading layout. The six that remain belong to stages 10 to 12 and are not being worked here.
-Of them S9 is a note rather than a gap, so the real count is **five**.
+**Standing today: fourteen rows opened, three closed, eleven open.** The three closed the same
+afternoon they were written, and by the same fix, because they were one gap seen from three sides:
+the system had no reading layout. Of the eleven that remain, S9 and S12 are answers rather than
+gaps and S14 is a carried finding, so the real count is **eight**, and they belong to stages 10 to
+12 rather than to this one.
 
 ---
 
@@ -70,6 +71,21 @@ plan and not a gap. B13 and B20 were refused by the bank's own rule 1 and are re
 | # | What was wrong | Where it is now |
 |---|---|---|
 | S10 | **A gradient is not a background-colour.** `ground()` composites `backgroundColor` up the ancestor stack, and an element painted with `background-image:linear-gradient()` computes `backgroundColor` to transparent, so the walk went straight past it and measured the label against what was BEHIND the button | Fixed in `ui-kit/_verify/browser.cjs` as lesson 8, with the case that produced it. `.auth-btn.primary` reported **1.18:1** and the flat `.cta-bar` button **1.05:1** against a brass gradient that actually measures about 5.5:1. Both false, both on a page that has shipped for two stages. Marked UNMEASURABLE rather than failing, the same answer lesson 7 gave for `mix-blend-mode`. Checked against a known real defect afterwards: `ui-kit/overview.html` still reports its 3.51:1 |
+
+---
+
+## Opened by the pinned-box check (2026-08-03)
+
+Lesson 9 of `ui-kit/_verify/browser.cjs` was written for one rail and found three, then two more
+things worth writing down. What it looks for: a `sticky` or `fixed` box that needs more window
+height than `SHORTEST_VIEWPORT` (640px, the 1366x768 laptop less its browser chrome) and has no
+scroll of its own. The three rails are fixed; these are what the fix left behind.
+
+| # | What the system does not have | Where it stands |
+|---|---|---|
+| S12 | **One place that says how far a rail clears the chrome.** `top:120px` is typed into three components: `catnav.css` `.subcat`, `betpanel.css` `.bet-panel` and, until today, `toc.css` `.toc` | **It cannot be derived, and the system has already decided that.** The number is the app header (59px) plus the condensed category strip (54px, `header.css:126`) plus 7px of air, and neither of the first two is a token: the strip is a literal in `header.css`, and the header's 59px is CONTENT height, so no token could hold it. `ui-kit/docs/architecture.md` line 121 already rules this case out of the scale in words: "a number is a step only up to 64px; above that it is a layout position and it stays literal". So it stays literal, and this row is the reason rather than a comment beside each copy. What the row is FOR: the three copies can drift, and today they were already meant to differ. `.toc` is now 66px because a document page has no category bar for the strip to condense, which was measured and not assumed |
+| S13 | **A specimen frame is a window, so a component capped to the window caps inside it.** | The vitrine sizes each `.ck-frame` to its content and the content now sizes itself to the frame, which settles (four identical loads agree) but settles SHORT: the `catnav` rail specimen went 499px to 430px and the `betpanel` one 554px to 516px, so the vitrine shows those two components with their feet behind an internal scroll. It is truthful, since a frame that size IS a short window, and it is a worse showcase. The answer belongs to the vitrine (a declared height for a rail specimen), not to the component, which is why nothing was changed in `components/` for it. 25 snapshots across 5 pages, no product screen among them |
+| S14 | **`--outcome-no` on a card is 4.35:1**, against a 4.5 floor | Found by the same product-wide run, on every feed card that carries a NO percentage: `span.l-no` in `oddsbar.css:14`. Pre-existing and nothing to do with this pass, recorded here because a finding that is seen and not written down is a finding that gets found again. It is 0.15 under, so it is a token value question and not a layout one, and `DESIGN.md` owns the answer |
 
 ---
 
