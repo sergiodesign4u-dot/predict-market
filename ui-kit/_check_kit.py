@@ -1518,6 +1518,50 @@ check("29 every generated page is current", not _stale,
 check("29 a second author is declared", len(SECOND_AUTHOR) == 3,
       "%d generator(s) whose page they do not solely own" % len(SECOND_AUTHOR))
 
+# 30 ------------------------------------------- the product wears it, or not --
+# THE OTHER HALF OF GATE 14, and the half that had never been asked. Gate 14
+# fails on a selector no markup ANYWHERE can match, so its corpus is the union of
+# every tree this stylesheet reaches: the painted screens, the specimens, the
+# frozen kit, the vitrine's own pages and the scripts. A class carried only by
+# the kit passes it, which is correct for the question it asks and useless for
+# this one.
+#
+# The question here is narrower and it is the one that costs: does the PRODUCT
+# wear what the system declares? A class styled in components/ and carried by
+# none of the 105 painted screens is either dead code or a naming convention
+# nobody adopted, and the second is the expensive kind, because the stand goes on
+# teaching it. On 2026-08-03 that was six classes of button.css - .btn-primary,
+# .btn-secondary, .btn-sm, .btn-md, .btn-lg, .btn-block - half of what the
+# component declared, with two specimens of their own and a size ramp, against
+# 704 uses of the four names the product actually writes. The next person to
+# build a screen would have read the page, taken .btn-secondary, and added a
+# seventh class no product rule paints. Two more fell out with them on the first
+# run: .signin-lead, carried by no element in any tree, and .delta .row, which
+# lived in header.css and describes a course page.
+#
+# THE SECOND CHECK IS THE ONE THAT KEEPS IT HONEST, exactly as in gate 24. A
+# zero is right for four reasons and only a person can tell them apart, so
+# _adoption.NOT_WORN declares each one with its reason; and the cheapest way past
+# the first check would then be a new line there. So a declared class that is NOT
+# a zero fails just as loudly. That half earned its keep immediately: .track and
+# .fill were declared as run-time classes on the first draft, copied from a note
+# the stand pages carried, and the painted screens ship both in the markup.
+#
+# The reading is in _adoption.py and not here because _gen_component_pages.py
+# needs the same answer for docs/coverage.md and for the Classes table on every
+# stand page. Two readings of one truth is the defect this repo has already paid
+# for twice, between coverage.md and the css headers and between the two panel
+# generators.
+from _adoption import unadopted, NOT_WORN                             # noqa: E402
+
+_unworn, _idle = unadopted()
+check("30 the product wears what is declared", not _unworn,
+      "%d: %s" % (len(_unworn), "; ".join(_unworn[:4])))
+check("30 no declared exception is idle", not _idle,
+      "%d: %s" % (len(_idle), ", ".join(_idle)))
+notes.append("%-34s %s" % ("30 declared, and not worn",
+                           "%d class(es), each with its reason" % len(NOT_WORN)))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

@@ -154,74 +154,17 @@ def esc(s):
 # of five things, and the Classes table says which, because "0" on its own reads
 # as "delete me" and four times out of five that would be wrong.
 #
-# The runtime list is short and each entry was checked by hand against the
-# script that creates it. It is not derived by pattern, because a pattern
-# matches "brand" inside "sidebar-brand".
-RUNTIME = {
-    "oddsbar": "built by the feed script from the probability text",
-    "track": "part of the odds bar the feed script builds",
-    "fill": "part of the odds bar the feed script builds",
-    "m-label": "the card meta row, split by the feed script",
-    "m-val": "the card meta row, split by the feed script",
-    "lg-item": "the chart legend, built by the detail script",
-    "scrolled": "added to the header by a scroll observer",
-    "open": "toggled on the drawer and the overlay by script",
-}
-
-
-def classes_in(pattern, strip_style=False, strip_quoted=False):
-    out = {}
-    for f in sorted(glob.glob(pattern)):
-        text = open(f, encoding="utf-8", errors="ignore").read()
-        if strip_style:
-            text = re.sub(r"<style[^>]*>.*?</style>", "", text, flags=re.S)
-        if strip_quoted:
-            # A stand page ends with the component's own css and every document
-            # quotes markup, so class="x" inside <pre> or <code> is a QUOTATION,
-            # not an element. Same rule three gates had to learn in step 8b.
-            text = re.sub(r"<(pre|code)\b[^>]*>.*?</\1>", "", text, flags=re.S)
-        cs = set()
-        for m in re.finditer(r'class="([^"]*)"', text):
-            cs.update(m.group(1).split())
-        out[os.path.basename(f)] = cs
-    return out
-
-
-def flat(d):
-    return set().union(*d.values()) if d else set()
-
-
-uv_classes = classes_in(str(UV / "*.html"), strip_style=True)
-# overview.html lives in ui-visual/ but is the index OF the screens, not one of
-# them. Counting it would inflate every screen count by one and, worse, would let
-# a class the index happens to use pass as "carried by a painted screen".
-uv_classes.pop("overview.html", None)
-# The specimens, the frozen kit, the composed shell AND the stand pages. The
-# stand pages were missing, so a class carried only by the vitrine's own chrome
-# fell through every bucket and was reported as a deletion candidate:
-# .theme-switch-inline is real markup on overview.html and was on that list.
-kit_used = flat(classes_in(str(KIT / "specimens" / "*.html"))) \
-    | flat(classes_in(str(KIT / "kit.html"))) | flat(classes_in(str(KIT / "shell.html"))) \
-    | flat(classes_in(str(KIT / "*.html"), strip_quoted=True))
-wf_used = flat(classes_in(str(ROOT / "wireframes" / "*.html"), strip_style=True))
-docs_used = flat(classes_in(str(ROOT / "*" / "*.html"), strip_style=True)) \
-    - flat(uv_classes) - kit_used
-uv_used = flat(uv_classes)
-
-
-def where(c):
-    """Why this class shows the count it shows."""
-    if c in uv_used:
-        return "", ""
-    if c in RUNTIME:
-        return "runtime", RUNTIME[c]
-    if c in kit_used:
-        return "kit", "shown in the frozen kit, never on a painted screen"
-    if c in wf_used:
-        return "wireframe", "carried only by wireframes/, which never loads this sheet"
-    if c in docs_used:
-        return "docs", "used by a course page, which does not load the system"
-    return "unused", "styled and carried by no element anywhere"
+# THE READING MOVED TO _adoption.py ON 2026-08-03, and it moved because it grew
+# a second consumer: gate 30 fails the build on a class the system declares and
+# the product does not wear, which is this same question with the answer made
+# load-bearing. It was computed here, and a truth computed in the place that
+# PRINTS it is a truth the checker has to compute again; two readings of one
+# thing is what drifted between coverage.md and the css headers, and again
+# between the two panel generators. So the reading is there, the reasons are
+# declared there beside it, and this file reads them.
+sys.path.insert(0, str(KIT))
+from _adoption import classes_in, flat, uv_classes, where     # noqa: E402,F401
+from _adoption import kit_used, wf_used, docs_used, uv_used   # noqa: E402,F401
 
 # ---- every class any component file declares, for the orphan check ----------
 declared = set()

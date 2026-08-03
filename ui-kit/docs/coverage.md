@@ -77,26 +77,25 @@ Dead, and this section used to say the opposite: it called them the wireframe ve
 |---|---|---|
 | - | - | none |
 
-### Used only by a course page (0)
+### Used only by a course page (3)
 
 Carried by a page in ia/, concept/, research/, voice/ or user-research/. Those pages have their own inline styles and do not load the system, so the rule here reaches nothing.
 
 | class | file | why |
 |---|---|---|
-| - | - | none |
+| `.next` | course-chrome.css | not the product: a roadmap state on a course page, and the 28 course pages carry their own inline copy of the panel and never load this sheet |
+| `.planned` | course-chrome.css | not the product: the same roadmap state, four rows per course page |
+| `.theme-switch-inline` | course-chrome.css | not the product: the theme control of this vitrine, on ui-kit/overview.html |
 
-### Shown in the kit, not in the product (6)
+### Shown in the kit, not in the product (3)
 
 A real component the painted screens have not adopted. An offer, not debris. Do not delete without deciding against it first.
 
 | class | file | why |
 |---|---|---|
-| `.groove-sep` | base.css | shown in the frozen kit, never on a painted screen |
-| `.next` | course-chrome.css | shown in the frozen kit, never on a painted screen |
-| `.placeholder-line` | base.css | shown in the frozen kit, never on a painted screen |
-| `.planned` | course-chrome.css | shown in the frozen kit, never on a painted screen |
-| `.tbd` | base.css | shown in the frozen kit, never on a painted screen |
-| `.theme-switch-inline` | course-chrome.css | shown in the frozen kit, never on a painted screen |
+| `.groove-sep` | base.css | an offer: the frame's groove separator, staged on base.html and carried by the frozen kit. Every separator the product ships today is a border on the thing it separates. It closes when a screen takes it or when it is deleted, not by widening this line |
+| `.placeholder-line` | base.css | provenance: the same chip family in the same frozen page |
+| `.tbd` | base.css | provenance: ui-kit/kit.html still carries the grey tree's [TBD] chips and must keep rendering as it did. The painted screens have no such markup, because ui-visual/_strip_wireframe.py removed it |
 
 ### Built or toggled at runtime (6)
 
@@ -104,10 +103,10 @@ Never written into a file. Deleting any of these breaks a screen silently, becau
 
 | class | file | why |
 |---|---|---|
-| `.lg-item` | bets-table.css | the chart legend, built by the detail script |
-| `.m-label` | card.css | the card meta row, split by the feed script |
-| `.m-val` | card.css | the card meta row, split by the feed script |
-| `.oddsbar` | oddsbar.css | built by the feed script from the probability text |
-| `.open` | course-chrome.css | toggled on the drawer and the overlay by script |
-| `.scrolled` | header.css | added to the header by a scroll observer |
+| `.lg-item` | bets-table.css | run time: the chart legend, built by the detail script |
+| `.m-label` | card.css | run time: the card meta row, split by the feed script |
+| `.m-val` | card.css | run time: the card meta row, split by the feed script |
+| `.oddsbar` | oddsbar.css | run time: the feed script builds the whole bar out of the probability text, so no screen file contains the element |
+| `.open` | course-chrome.css | run time: toggled on the roadmap drawer and its overlay by script |
+| `.scrolled` | header.css | run time: added to .app-header by the scroll observer that 192 painted screens carry, and the condensed strip is drawn from it |
 

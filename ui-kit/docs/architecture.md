@@ -565,6 +565,48 @@ gates 2, 3 and 4 all still report ok, which is the class stated exactly. A new r
 `tokens.css` with no rebuild turns it red on `tokens.html`, which is the class that actually
 happened.
 
+### The other half of gate 14: does the product WEAR what the system declares?
+
+**Gate 14** fails on a selector no markup anywhere can match, so its corpus is the union of every
+tree this stylesheet reaches: the painted screens, the specimens, the frozen kit, the vitrine's own
+pages and the scripts. That is the right corpus for the question it asks, and it is why a class
+carried only by `ui-kit/` passes it.
+
+Nobody was asking the narrower question, and the narrower question is the one that costs. A class
+styled in `components/` and carried by **none of the 105 painted screens** is either dead code or a
+naming convention nobody adopted, and the second kind is expensive in a way dead code is not,
+because the stand goes on teaching it. On 2026-08-03 that was **six classes of `button.css`**:
+`.btn-primary`, `.btn-secondary`, `.btn-sm`, `.btn-md`, `.btn-lg` and `.btn-block`, half of what the
+component declared, with two specimens and a size ramp of their own, against **704 uses** of the four
+names the product actually writes. The next person to build a screen would have read the button page,
+taken `.btn-secondary`, and added a seventh class no rule of the product paints.
+
+**Gate 30** asks it, `ui-kit/_adoption.py` answers it, and the answer is shared: the same reading
+writes `docs/coverage.md` and the Classes table on every stand page, because a truth computed in the
+place that prints it is a truth the checker has to compute a second time, and this repo has already
+paid for that twice.
+
+**The second check is the one that keeps it honest**, exactly as in gate 24. A zero is right for
+four reasons and only a person can tell them apart, so `_adoption.NOT_WORN` declares each with its
+reason, and a declared class that is NOT a zero fails just as loudly, because otherwise the cheapest
+way past the gate would be a new line in the list. That half earned its keep on the first run:
+`.track` and `.fill` were declared as run-time classes, copied from a note the stand pages carried,
+and the painted screens ship both in the markup.
+
+The four reasons, and **12 classes** hold them today. *Run time*: the class is never written into a
+file, the product wears it, and a scan of the markup cannot see it (`.oddsbar`, `.m-label`,
+`.m-val`, `.lg-item`, `.scrolled`, `.open`). *Not the product*: `course-chrome.css` draws the roadmap
+panel this repo wraps around every page, and its states belong to the 28 course pages, which carry
+their own inline copy and never load this sheet (`.next`, `.planned`, `.theme-switch-inline`).
+*Provenance*: `base.css` keeps two rules alive for the frozen `kit.html` (`.tbd`,
+`.placeholder-line`). *An offer*: a real utility with a stand and no taker yet (`.groove-sep`), and
+this is the only reason with a shelf life, because it is the exact shape the six button classes had.
+
+Two more classes fell out on the first run and neither was a button: `.signin-lead`, carried by no
+element in any tree, and `.delta .row`, course-page vocabulary living in the app header's file. Gate
+14 missed both for the same reason - each selector has a real ancestor, so it could match the gate's
+question without being able to match an element.
+
 ### How to add a pattern, which is four things and not five
 
 A pattern is not a component, so it does not take the list above. It takes `components/patterns/<name>.css`
@@ -591,8 +633,10 @@ no row in the Patterns group is a page with no file behind it.
 
 A block in the kit with no map entry is a **build failure**, not a silent omission, and so is a map
 entry pointing at a block that no longer exists. A block we deliberately do not show is listed in
-`skip_blocks` with the reason: there is one, the input-states row, which is stand markup demonstrating
-no product class at all.
+`skip_blocks` with the reason. There are three. The input-states row is stand markup demonstrating no
+product class at all; the two button rows are the `.btn-primary` and `.btn-secondary` blocks, whose
+whole subject left the system on 2026-08-03 when gate 30 found that no screen had ever carried it.
+The frozen page still renders them, out of its own `<style>`, because it is provenance.
 
 ---
 
