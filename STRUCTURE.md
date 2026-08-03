@@ -117,6 +117,7 @@ The repo was reorganized from a flat, ~9-stage anticipated layout to the layout 
 |---|---|
 | `research/docs/lean-ux-canvas.md` | Lean UX Canvas v2 (Jeff Gothelf), compiled from the existing strategy + synthesis + JTBD |
 | CJM As-Is + To-Be (under `user-research/`) | New stage, built in the CJM pass (2 md + 2 pages); lives inside User Research per the course layout |
+| `ia/docs/blocks.md` | The block bank: what a page of a given TYPE is made of, before one is drawn. Created 2026-08-03, when the Design System stage walked its four sources for the next screen and found that the IA map could name a node while nothing could say what the node was made of. Banked by TYPE, so one pass covers every node of that type |
 
 ### Retired (content folded, then removed)
 

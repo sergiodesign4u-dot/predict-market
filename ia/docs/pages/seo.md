@@ -31,6 +31,7 @@ kept out of the index but its links are still followed; private and transactiona
 | Category | `/c/{category}` | `index,follow` | Intent landing per category (Politics, Crypto, Culture, General). §3 |
 | How It Works | `/how-it-works` | `index,follow` | Trust and explainer page; ranks for "how do prediction markets work" intent. §4 |
 | Public Profile | `/u/{handle}` | `index,follow` `[?]` | Public reputation / track record. Indexed by default; per-user opt-out to `noindex` is a `[?]` for the privacy pass. §5 |
+| Static content | `/legal/{slug}`, `/about` | `index,follow` | Terms, Privacy, Cookie Policy, Responsible betting, About. Registered as page nodes in `sitemap.md` and promised by the footer on all 104 screens; this file had no row for them until 2026-08-03. §6 |
 | Favorites view | `/favorites` | `noindex,follow` | Personal watchlist, requires auth, no unique public content |
 | Sign In / Register | `/signin` | `noindex,follow` | Thin transactional gate; links followed |
 | Deposit / Add funds | `/deposit` | `noindex` | Transactional, auth-gated, no schema |
@@ -414,6 +415,66 @@ stake. The remaining content (record, current bets, activity) is the user's own 
 - The handle in the URL is stable; a rename sets a `301` from the old handle `[?]`.
 - **Thin profile:** a profile with no resolved bets is thin; consider `noindex` until it has public content `[?]`.
 - Canonical self-referential; text not in images; Core Web Vitals budget as §1.
+
+---
+
+## 6. Static content (Terms, Privacy, Cookie Policy, Responsible betting, About)
+
+- Nodes: the five page nodes registered under SYSTEM AND GLOBAL in `sitemap.md` - Type: page - `index,follow`
+- URLs: `/legal/terms`, `/legal/privacy`, `/legal/cookies`, `/legal/responsible-betting`, `/about`
+- Blocks: `ia/docs/blocks.md`, Type 1. Two body profiles, DOCUMENT for the four legal pages and STATEMENT for About; the A-E below is written per profile where they differ.
+
+**One A-E for five nodes, because the SEO layer is decided by page TYPE.** These five share a
+template and differ only in the slug, the H1 and the body copy, which is exactly the reason the
+block bank is banked by type. Contact / Support is not here: it carries a form, so it is a different
+type in both files.
+
+### A. Meta tags (ready copy)
+
+- `title`: `{Document name} | Predict Market` for the four legal pages (`Terms of Service | Predict Market`, 33 chars); `About Predict Market` for About (20). All under 60.
+- `meta description`: written per node, under 155, and it states what the document DECIDES rather than that it exists. Terms: `The rules you agree to when you back an event on Predict Market: your account, your funds, how a market resolves, and how disputes are handled.` (144). About: `Who builds Predict Market, how an event resolves, where your USDC sits, and how many events we have settled.` (107).
+- `canonical`: self-referential, one per node. **No `?print` or `?v=` parameter is ever canonical**, which matters because block B12 (download / print view) is banked as LATER.
+- `hreflang`: `en` only at MVP, with `pt-BR` reserved for the Brazil Phase 2 already named in `sitemap.md`. A jurisdiction variant of a legal page is a different document, not a translation, so a future geo split gets its own URL rather than an `hreflang` alternate.
+- `robots`: `index,follow`. These pages are a ranking surface for brand-plus-trust queries and the destination of every footer link on 104 screens.
+- Open Graph: `og:type` = `website` for About, `article` for the four legal pages, because a legal document has an `article:modified_time` and that is the field block B4 already carries on the page.
+- `og:image`: the shared brand card, not a screenshot. A legal page has no image of its own and inventing one is the one place this type would grow decoration.
+
+### B. Heading structure
+
+DOCUMENT profile, in the mobile-first block order from `blocks.md`:
+
+- `H1` - the document name, exactly once (B3).
+- `H2` - one per document section (B6), numbered, written as the reader's own question. The H2 list IS the table of contents (B5); the anchors are generated from it, so a section added to the body and not to the contents is impossible by construction.
+- `H3` - only where a section has genuinely subordinate parts. No skipped levels, in both trees, which gate 15 already reads.
+- The effective-date block (B4) and the money answer (B7) are **not** headings. They stand between the H1 and the first H2 as content, so the outline stays the document's own.
+
+STATEMENT profile: `H1` = `About Predict Market`; `H2` in block order - what we are, how an event resolves, where your money sits, the numbers, people (LATER), then the closing action.
+
+### C. Ready SEO body text
+
+The one paragraph that must ship in the text, on Terms and on Privacy, is block B7 - the money answer, lifted above the contents:
+
+> **Your USDC is held 1:1 and we never lend it.** It sits in a segregated on-chain balance you can verify at any time; it is not lent, staked or used as working capital. Every event resolves against a named public source, and the resolution is recorded on-chain. [How resolution works](/how-it-works)
+
+On About, the equivalent is the resolution paragraph (B16), which names who resolves, against which public source, and the resolved count. Both are the site-wide trust line from the footer strip, said once at length in the one place a person came looking for it.
+
+### D. Structured data
+
+- `WebPage` for all five, with `dateModified` bound to the same value block B4 renders. One date, two consumers: if the page shows a date the schema does not, the schema is wrong, and it is the schema a search result quotes.
+- `BreadcrumbList` for the four legal pages: `Home > Legal > {document}` (block B2). About sits at `Home > About`.
+- `Organization` on About only, with `name`, `url`, `logo`, `sameAs` (the social profiles the footer already lists) and `contactPoint` pointing at the Contact node.
+- **No `FAQPage`**, even though block B6 writes section titles as questions. The question form is a voice decision for a human reader; marking it up as an FAQ would claim a rich result for text that is not a FAQ, and a trust product does not open with a schema it cannot defend.
+
+### E. Optimization checklist
+
+- Exactly one `H1`; no skipped heading level; the H2 list and the on-page contents are the same list.
+- Every H2 carries a stable `id`, and the anchors are part of the internal-linking plane: the cookie banner links straight to the Cookie Policy section it is about.
+- The sibling block (B9) gives all five pages a crawlable path to each other. Today they are reachable only from the footer, which is the second linking plane and not the first.
+- Crawlable `<a>` throughout; the contents on mobile collapses but stays in the DOM, the same rule the footer columns already follow.
+- Text is never in an image. **Named explicitly for this type**: the live crawl found the largest competitor serving its entire Terms of Use inside a `docs.google.com` iframe, which is the same defect in a different costume - the content is not in the page, so it is not indexed, not themeable and not searchable.
+- `dateModified` in the schema equals the date rendered on the page.
+- LCP is the H1 block; there is no hero image on the DOCUMENT profile to compete with it.
+- Core Web Vitals budget as §1. This type is the lightest page in the product and should measure as such.
 
 ---
 

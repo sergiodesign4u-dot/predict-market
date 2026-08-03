@@ -17,6 +17,7 @@ and this file is read always, so a gateless rule moved out trades certainty for 
 | Where a file lives | `STRUCTURE.md` |
 | The shipped visual system (Vault) | `DESIGN.md` |
 | Screens, navigation, flows, SEO, system nodes | `ia/docs/sitemap.md`, `ia/docs/flows.md`, `ia/docs/pages/` |
+| What a page of a given TYPE is made of, before one is drawn | `ia/docs/blocks.md` - banked by type, never by node |
 | Every UI string | `voice/docs/microcopy.md` |
 | What the system IS, and where a change goes | `ui-kit/docs/architecture.md` |
 | How each audit pass found what it found | `ui-kit/docs/history.md` |
