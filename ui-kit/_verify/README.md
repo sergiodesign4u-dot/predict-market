@@ -18,21 +18,31 @@ SAME bug found twice, because the file that had learned the lesson no longer exi
 next check was written. This is the move `_levels.py` made for containment: one computation, many
 consumers.
 
-Six things it knows out of the box, each with the case that taught it written beside it in the file:
+Ten things it knows out of the box, each with the case that taught it written beside it in the file:
 the colour is parsed by a canvas and never a regex; alpha is composited up the ancestor stack; inert
 subtrees are skipped and focus is a real Tab; both batches of a comparison run in the same regime,
 fresh context with the cache off; a measurement waits for the theme transition the document itself
-declares; and a console error is attributed by URL rather than by its text. **None of the six is
-defensive coding.** Each is a wrong answer this project has already published, so anyone who reads
-one as excessive caution should read the line above it first.
+declares; a colour painted through a blend or a filter cannot be read from `color`; a console error
+is attributed by URL rather than by its text; a gradient is not a `background-color`; a pinned box
+taller than the window hides its own tail; and text with transparent ink or a 0px face paints no
+glyph, so it has no contrast to measure. **None of the ten is defensive coding.** Each is a wrong
+answer this project has already published, so anyone who reads one as excessive caution should read
+the line above it first.
+
+The last three arrived together, on the day `ui-visual/terms.html` was accepted. Nine is the one
+worth reading twice: every other question in this folder is about a PIXEL, so a page whose contents
+rail was pinned 81px below the bottom of a 640px window passed all of them, twice. A check that
+asks whether a person can reach the pixel is a different question from any of the colour ones, and
+it needs its own window: it is measured at `SHORTEST_VIEWPORT`, because a capped dialog and a
+stranded rail are indistinguishable in a tall one.
 
 ## What they do
 
 | Script | Opens a browser through | What it answers |
 |---|---|---|
 | `browser.cjs` | it IS the reader | How to ask: the colour of a thing, the ground behind it, the ring at a tab stop, what is inert, how long a theme takes to settle. Measures no product decision of its own. |
-| `audit.cjs` | `browser.cjs` | The four questions on any set of pages: contrast against the real ground, links with no rule behind them, horizontal overflow, dead icon references, failed requests, and optionally the ring at every tab stop. Exits 1 on any finding. |
-| `snap.cjs` | `browser.cjs` | For every screen at five widths: for every element, is it painted, where is its box, and what are its 55 computed properties. Writes one gzipped json per page per width. |
+| `audit.cjs` | `browser.cjs` | The questions on any set of pages: contrast against the real ground, links with no rule behind them, horizontal overflow, dead icon references, failed requests, a pinned box taller than the window it is pinned to, and optionally the ring at every tab stop. Exits 1 on any finding. |
+| `snap.cjs` | `browser.cjs` | For every screen at five widths: for every element, is it painted, where is its box, and what are its 55 computed properties. Writes one gzipped json per page per width. Every animation is FINISHED and every scroller zeroed first, because neither is a stylesheet property and both were putting a floor of 1,745 changed boxes under the diff. |
 | `diff.cjs` | no browser | Compares two snapshot folders, element by element and property by property, and names what moved. |
 | `causes.cjs` | no browser | The same comparison grouped by root cause instead of by page, so 20000 shifted boxes read as the six rules that shifted them. |
 | `whys.cjs` | `browser.cjs` | For a list of (page, selector, property), which css rule wins before the change and which wins after. This is what turns a difference into a fix. |

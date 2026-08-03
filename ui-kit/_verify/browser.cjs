@@ -12,7 +12,7 @@
    consumers. Nothing here measures a product decision. It only knows how to ask
    correctly, and every rule below is a scar.
 
-   THE SEVEN THINGS IT KNOWS, and the case that taught each one:
+   THE NINE THINGS IT KNOWS, and the case that taught each one:
 
    1. A COLOUR IS PARSED BY A CANVAS, NEVER BY A REGEX.
       getComputedStyle returns what the AUTHOR wrote, and color-mix(in oklab, ...)
@@ -65,7 +65,37 @@
       chasing a 404 on patterns.html that was /favicon.ico, which the browser
       asks for on its own and a dev server does not have.
 
-   None of the seven is defensive coding. Each is a wrong answer this project has
+   8. A GRADIENT IS NOT A BACKGROUND-COLOUR. Written in full beside the code that
+      does it, because that is where a person deleting it will be standing.
+
+   9. A CONTRAST SWEEP CANNOT SEE A THING THAT IS PINNED OUT OF REACH.
+      Every check this file had was about the pixel: the colour of it, the ring
+      round it, the request behind it. All three pass on an element nobody can
+      scroll to. ui-visual/terms.html shipped a contents rail 601px tall, pinned
+      at top:120px with no cap and no inner scroll, and audit.cjs called the page
+      clean twice: the rail needs 721px of window height, so on a 1366x768 laptop
+      rows 12, 13 and 14 of a fourteen-row contents are off the bottom of the
+      screen for the first 3,500px of a 4,884px document. Nothing was miscoloured
+      and nothing overflowed sideways. The defect is GEOMETRY, and it is
+      mechanical: a sticky or fixed box needs offset + height pixels of window,
+      and if it has no auto/scroll of its own it can never give the rest back.
+      Reported as `needs`, so one measurement answers it at any window size, and
+      the floor it is compared against is a product decision that lives at the
+      foot of this file with the contrast floor.
+
+  10. TEXT THAT PAINTS NOTHING HAS NO CONTRAST.
+      Found by running check 9 across the product, which is the argument for
+      running a new check everywhere rather than on the page that prompted it.
+      components/card.css:23 sets the event thumbnail to color:transparent and
+      font-size:0, because the span carries the words "thumbnail placeholder" for
+      a reader who cannot see the photograph and the photograph is a background
+      image. The sweep read a text node, measured transparent ink on the photo
+      and reported 1:1, on every card on every feed screen. Same answer as 6 and
+      8: a measurement that cannot be taken is reported as not taken. Counted,
+      never failed, so a span that goes transparent by accident is still visible
+      in the number rather than swallowed by it.
+
+   None of the ten is defensive coding. Each is a wrong answer this project has
    already published, and anyone who removes one as excessive caution should read
    the line above it first.
 
@@ -197,12 +227,15 @@ window.__ask = (function () {
         if (!paintsText(el) || inert(el)) continue;
         var box = el.getBoundingClientRect();
         if (!box.height) continue;
+        var cs = getComputedStyle(el);
         var bg = ground(el, false);
-        var fg = over(px(getComputedStyle(el).color), bg);
+        var ink = px(cs.color);
+        var fg = over(ink, bg);
         out.push({ el: label(el), text: el.textContent.trim().slice(0, 40),
                    ratio: +ratio(fg, bg).toFixed(2), blended: blended(el),
-                   size: parseFloat(getComputedStyle(el).fontSize),
-                   weight: getComputedStyle(el).fontWeight });
+                   /* 10. transparent ink or a zero face draws no glyph */
+                   unpainted: ink[3] === 0 || parseFloat(cs.fontSize) === 0,
+                   size: parseFloat(cs.fontSize), weight: cs.fontWeight });
       }
       return out;
     },
@@ -241,6 +274,42 @@ window.__ask = (function () {
     overflowX: function () {
       var d = document.documentElement;
       return d.scrollWidth - d.clientWidth;
+    },
+    /* 9. every pinned box, with the window height it needs and the window it was
+          measured in. ASK IT IN THE SHORT WINDOW: the first version of this
+          computed needs = offset + height in a 900px pass and compared the
+          number against a 640px floor, which reported both modal dialogs as
+          stranded. They are not. Both are capped in viewport-relative units
+          (max-height:calc(100% - 38px)) and hand their overflow to .sheet-body,
+          so they shrink with the window and always fit; the 752px they measured
+          was 752px of a window that was 900px tall. Reading the cap back out of
+          getComputedStyle does not separate the two cases either, because a
+          plain 92vh resolves to px and only a calc() survives as itself. The
+          window is the instrument: render at the floor and the capped box fits
+          while the pinned rail hangs out the bottom, no unit sniffing anywhere.
+          scrollHeight and not just the border box, because a box capped with
+          overflow:hidden measures short and hides its tail anyway.
+          A box with no top and no bottom is not pinned vertically and is not
+          this check's business. */
+    pinned: function () {
+      var out = [], all = document.querySelectorAll('*');
+      for (var i = 0; i < all.length; i++) {
+        var el = all[i], s = getComputedStyle(el);
+        if (s.position !== 'sticky' && s.position !== 'fixed') continue;
+        if (inert(el)) continue;
+        var b = el.getBoundingClientRect();
+        if (!b.height) continue;
+        var anchor = null, off = 0;
+        if (s.top !== 'auto' && !isNaN(parseFloat(s.top))) { anchor = 'top'; off = parseFloat(s.top); }
+        else if (s.bottom !== 'auto' && !isNaN(parseFloat(s.bottom))) { anchor = 'bottom'; off = parseFloat(s.bottom); }
+        if (anchor === null) continue;
+        var h = Math.max(b.height, el.scrollHeight);
+        out.push({ el: label(el), position: s.position, anchor: anchor,
+                   offset: +off.toFixed(1), height: +h.toFixed(1),
+                   needs: Math.ceil(off + h), vh: window.innerHeight,
+                   scrolls: /auto|scroll/.test(s.overflowY) || /auto|scroll/.test(s.overflow) });
+      }
+      return out;
     },
     /* The longest transition the document DECLARES, so the caller waits a
        measured time instead of a guessed one.
@@ -369,4 +438,13 @@ function floorFor(size, weight) {
   return (size >= 24 || (size >= 18.66 && bold)) ? 3 : 4.5;
 }
 
-module.exports = { PROBE, open, browser, shutdown, floorFor };
+/* The shortest window a pinned box has to fit inside, for lesson 9. Same reason
+   as floorFor: one number, not one per script.
+   640 is the 1366x768 laptop, still the commonest small desktop screen, with
+   about 120px of browser chrome taken off it. Chosen as a floor and not as a
+   target: everything in this product that is pinned to the top of a window
+   should fit a screen that ordinary, and anything that does not has to say so
+   out loud. */
+const SHORTEST_VIEWPORT = 640;
+
+module.exports = { PROBE, open, browser, shutdown, floorFor, SHORTEST_VIEWPORT };
