@@ -34,11 +34,28 @@ a sheet has one column.
 
 ## When to use
 
-Ask where the control stands, not what you want it to look like. The place decides the name, and the
-name brings its own geometry: `.auth-btn` in the header, `.state-btn` in a state block,
-`.provider-btn` and `.confirm-btn` inside a sheet, a panel or the action bar. A control that is
-none of those is probably not a button of this family, and the anti-rule below is the commonest way
-that goes wrong.
+**There is one button here and it has three axes. Pick the three, then read off the name.** The
+five names are five PLACES, and a place is not a design decision: `.auth-btn` in the header,
+`.state-btn` in a state block, `.provider-btn` and `.confirm-btn` inside a sheet or a panel, and an
+unnamed `button` inside `.cta-bar`. Asking "which of the five components do I want" is the wrong
+question and it is the question the names invite, so the matrix answers the right one:
+
+| | **size** | **width** | **emphasis** |
+|---|---|---|---|
+| | 12 / 13 / 14px over four paddings | shrink-to-fit, or the full width of what holds it | brass, or quiet |
+| `.auth-btn` | 12, padding 8-8 | fit | `.primary` for brass |
+| `.state-btn` | 12, padding 8-12 | fit, and **full inside `.resolved-panel`** | `.primary` for brass |
+| `.provider-btn` | 13, padding 12 | **full** | quiet only |
+| `.cta-bar button` | 13, padding 12 | shared, `flex:1` from the pattern | **POSITION: the first child is brass** |
+| `.confirm-btn` | 14, padding 12 (16 in `.bet-sheet`) | full, and **fit on `.bet-dock`** | **the name itself is the emphasis** |
+
+**Read the bold cells as the debt they are, not as the design.** Emphasis is expressed three
+different ways in one family - a modifier, a position, and a name - and the width and size of two of
+the five are decided by the scope they stand in rather than by the control. `ui-kit/docs/backlog.md`
+**S24** carries the whole measurement and the condition for closing it. Until then: **take the row
+whose three cells match, and use the class in the left column.** A control that fits none of the
+rows is probably not a button of this family, and the anti-rule below is the commonest way that
+goes wrong.
 
 Then decide brass or quiet, and that decision is not free: **one brass action per zone**, which is
 the constraint quoted below this section. In practice the brass one is the thing the sheet was
