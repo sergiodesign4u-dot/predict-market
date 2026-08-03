@@ -48,7 +48,7 @@ Every state of it says what happened to the money: no funds were taken, the pric
 
 Never draw the side chooser from `yesno`: that pair is a routing control that opens an event with a side pre-selected, and `.bp-side` is a chooser inside the thing that commits. They look nearly identical and mean opposite things, and the difference is whether pressing it costs anything.
 
-Seen: R7 in `ui-kit/docs/architecture.md` exists to keep exactly these two apart, and `wireframes/_conventions.md` S3 states it from the markup side: "a tap routes to Event Detail with the side ... pre-selected. It does NOT place a bet on the card and does not bypass Event Detail". The rule was written because the two controls are the same shape in the same product.
+Predicted: and the downgrade from Seen is deliberate. R7 in `ui-kit/docs/architecture.md` exists to keep exactly these two apart and `wireframes/_conventions.md` S3 states it from the markup side, but a rule of use in this repo is defined as "what never happened once although it easily could have", so citing one as evidence would be reading a prohibition as an incident. It has not happened; both documents say it is the thing most likely to.
 
 ## States
 

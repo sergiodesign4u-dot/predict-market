@@ -41,7 +41,7 @@ Every claim in it is checkable and every number is the product's own: a trust ca
 
 Never let the featured block become a `card` with more paint on it: a card is a repeatable unit in a grid and its YES / NO routes to the detail with a side pre-selected, while this feature is a one-off argument with a written-out verb and a chart of its own. Copying the hero's treatment onto cards would put a thirty-day plot and a persuading verb on every row of the feed.
 
-Seen: R5 in `ui-kit/docs/architecture.md`, which is the same boundary measured from the other side - `.opt-list` never appears inside `.card`, because the card's anatomy is its own and not a smaller copy of the detail. The counter behind that row is 161 cards across the painted tree with exactly two option rows each, against a hero that appears twice.
+Predicted: R5 in `ui-kit/docs/architecture.md` is the same boundary measured from the other side, and its counter is clean - 161 cards across the painted tree with exactly two option rows each, and `.opt-list` never once inside a card. A clean counter is what a rule of use IS in this repo: the thing that never happened although it easily could have. So this line has no incident behind it and says so.
 
 ## States
 

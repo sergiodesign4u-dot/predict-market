@@ -46,7 +46,7 @@ The rule that resolves the event and the story that explains the odds never shar
 
 Never let the mechanics migrate up into this column: how the price is made, what a stake of a given size returns and where the money sits are `market`, collapsed, at the foot, and a spectator must never have to read them. Pulling a depth figure into `.ed-facts` would make the trader's view the default on the screen the product's own description says is not a trader's terminal.
 
-Seen: `ui-kit/docs/inventory.md` L106 files the AMM panel as a separate component with a collapsed state, and `voice/docs/microcopy.md` Step 24 records `.market-title` as *Market* against `.ed-q`, the event's own question, on the same screen. The two vocabularies stand one above the other in one column, and the collapse is what keeps them apart.
+Seen: it has already happened once, in one word. The `.fine` line in this column reads "No minimum or maximum. Payout depends on when you bet **(AMM)**" on the shipped screens, and `voice/docs/voice.md` puts AMM on the "Not allowed in the UI" list beside order book and CLOB. `voice/docs/microcopy.md` Step 14 edited that exact line, trimming a leaked spec-note from its tail, and left the AMM standing. The mechanics vocabulary is out of the collapsed panel and in the detail column now, in the smallest possible piece.
 
 ## States
 
