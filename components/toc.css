@@ -56,10 +56,32 @@
 /* THE RAIL, at the width the shell hands it. Same breakpoint and the same 214px
    as the category rail, because the slot is one slot: a document that put its
    contents at a different width would make the two rails disagree about what a
-   rail is. The sticky top clears the app header and the condensed strip, which
-   is the number catnav.css already solved for the same chrome. */
+   rail is.
+
+   THE STICKY TOP IS NOT THE 120px THE OTHER TWO RAILS USE, and the difference is
+   measured. 120px is the header (59px) plus the condensed category strip (54px,
+   header.css) plus 7px of air, and the strip is revealed by an observer watching
+   .feed-inner > .cat-nav. A document page has no category bar, so the observer
+   returns before it starts and the strip is never once shown: measured at scroll
+   1200 on this screen, .cat-condensed is 0px tall and .app-header never takes
+   .scrolled. The rail was therefore clearing 61px of chrome that does not exist,
+   and the visible cost was at the other end: this layout puts the rail's natural
+   top at 96px, ABOVE the 120px threshold, so sticky clamped it on the first
+   frame and the contents began 24px below the H1 beside it. 66px is 59px of
+   header and the same 7px of air the feed rail already uses.
+
+   AND IT IS CAPPED, because a pinned box taller than the window hides its own
+   tail forever. At 601px and pinned at 120px this rail needed 721px of window:
+   on a 1366x768 laptop rows 12, 13 and 14 were off the bottom and stayed there
+   for the first 3,500px of a 4,884px document. svh and not vh, because vh is the
+   TALL viewport and a browser that hides its chrome on scroll would put the foot
+   of the rail back under the fold. The vh line above it is the fallback for a
+   browser that has not learned svh, not a second opinion. */
 @media(min-width:900px){
-  .toc{flex:0 0 214px;position:sticky;top:120px;align-self:flex-start}
+  .toc{flex:0 0 214px;position:sticky;top:66px;align-self:flex-start;
+       max-height:calc(100vh - 66px - 16px);
+       max-height:calc(100svh - 66px - 16px);
+       overflow-y:auto;overscroll-behavior:contain}
   .toc-head{display:none}
   .toc-d::details-content{display:block;content-visibility:visible}
 }

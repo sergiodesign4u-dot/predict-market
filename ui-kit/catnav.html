@@ -151,8 +151,17 @@ push();});})();</script>
 .subcat li[aria-current="page"] button{background:color-mix(in oklab,var(--color-action) 18%,transparent);border-color:var(--color-action);font-weight:var(--weight-semibold)}
 .subcat .cnt{font-size:var(--text-11);color:var(--text-muted);font-family:var(--font-mono);background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-6);padding:var(--space-2) var(--space-8)}
 .subcat li[aria-current="page"] .cnt{color:var(--text-brass);background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:color-mix(in oklab,var(--color-action) 45%,transparent)}
+/* THE RAIL IS CAPPED TO THE WINDOW. Found by lesson 9 of ui-kit/_verify, the
+   same defect and the same afternoon as the contents rail in toc.css: pinned at
+   120px and 563px tall, this rail needs 683px of window, so on a 1366x768 laptop
+   the last two sub-categories were off the bottom of the screen and no amount of
+   scrolling brought them back, because the page scrolls and a pinned rail does
+   not. 8 category screens. svh and not vh for the reason written in toc.css. */
 @media(min-width:900px){
-  .subcat{flex:0 0 214px;position:sticky;top:120px}
+  .subcat{flex:0 0 214px;position:sticky;top:120px;
+          max-height:calc(100vh - 120px - 16px);
+          max-height:calc(100svh - 120px - 16px);
+          overflow-y:auto;overscroll-behavior:contain}
   .subcat ul{flex-direction:column;overflow:visible;flex-wrap:nowrap;gap:var(--space-2);padding:var(--space-4)}
   .subcat button{width:100%;justify-content:space-between;border-color:transparent;border-radius:var(--radius-10);padding:var(--space-8) var(--space-8)}
   .subcat button:hover{border-color:var(--color-action)}

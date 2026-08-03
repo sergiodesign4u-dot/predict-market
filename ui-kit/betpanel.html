@@ -141,8 +141,17 @@ push();});})();</script>
     0 30px 58px -34px var(--shadow-ink-85),0 12px 26px -18px var(--shadow-ink-72)}
 .app-case .bet-panel{display:none}
 .app-case .bet-dock{display:flex}
+/* THE PANEL IS CAPPED TO THE WINDOW, for the reason written out in toc.css and
+   found by the same check: pinned at 120px and 555px tall on a multi-outcome
+   event, it needs 676px of window, and below that the Confirm button at the foot
+   of the panel is off the bottom of the screen with nothing able to bring it
+   back. That is the worst instance of the three, because the part left out of
+   reach is the action. svh and not vh for the same reason. */
 @media(min-width:760px){
-  .app-case .bet-panel{display:block;flex:0 0 322px;position:sticky;top:120px}
+  .app-case .bet-panel{display:block;flex:0 0 322px;position:sticky;top:120px;
+    max-height:calc(100vh - 120px - 16px);
+    max-height:calc(100svh - 120px - 16px);
+    overflow-y:auto;overscroll-behavior:contain}
   .app-case .bet-dock{display:none}
 }
 .app-case :is(.bet-panel,.bet-sheet) .bp-inner{padding:var(--space-16);gap:var(--space-12)}
