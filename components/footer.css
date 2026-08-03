@@ -3,7 +3,7 @@
 
    Reads: --bg-control, --bg-pressed, --bg-surface, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --mark-logo, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/footer.html
-   Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .app-footer{margin:0;font-size:var(--text-11)}

@@ -525,17 +525,35 @@ Cookie consent           component  banner, prior opt-in         reject as easy 
 Toast / notification     component  aria-live, transient         action result, auto-dismiss + manual close
 ```
 
-Footer and legal destinations, promised by the footer node (`seo.md`); page content is post-MVP
-`[?]` where marked, but the destination is registered now so map and footer stay in sync:
+Footer and legal destinations, promised by the footer node (`seo.md`); the destination is
+registered here so map and footer stay in sync. **What each is MADE of is no longer an open
+question:** `ia/docs/blocks.md` banks them as Type 1, the static content page, with two body
+profiles - DOCUMENT for the four legal pages and STATEMENT for About - and `ia/docs/pages/seo.md`
+section 6 carries their A-E. The bank is by TYPE, so one pass covered five nodes.
 
 ```
-Terms of Service         page       index,follow                legal
+Terms of Service         page       index,follow                legal; BUILT 2026-08-03, ui-visual/terms.html
 Privacy Policy           page       index,follow                legal; linked from the cookie banner
 Cookie Policy            page       index,follow                legal; linked from the cookie banner
 Responsible betting      page       index,follow                trust and legal
 About                    page       index,follow                company
-Contact / Support        page       [?]                         support entry; Help / FAQ stays [ORPHAN]
+Contact / Support        page       [?]                         support entry; NOT type 1 (it carries a form); Help / FAQ stays [ORPHAN]
 ```
+
+**Terms of Service is the first screen in this product with no grey twin**, and that is a result
+rather than an omission: IA gave the node, the block bank gave the composition, `voice/` gave the
+register and `components/` gave every class, so a grey pass would have transcribed decisions
+already made. The exception is declared in `_twins.SYSTEM_BUILT` in its own category, apart from
+`NOT_A_SCREEN`, so the two facts never share a bucket.
+
+The URL in `seo.md` is `/legal/terms`; the file is `ui-visual/terms.html` because the painted tree
+is flat by convention (`STRUCTURE.md`). The slug is the production answer and the filename is the
+prototype's.
+
+**Still open for IA, and named here rather than assumed:** which of the six ship at MVP. This block
+says "post-MVP where marked" and marks only Contact, which leaves the other five undecided rather
+than decided. See `docs/backlog.md` item 27 for the eight footer destinations that are on no map at
+all.
 
 ---
 

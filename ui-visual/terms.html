@@ -34,7 +34,7 @@ var f=document.getElementsByTagName('iframe');
 for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
 push();});})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Concept - Event Feed (logged out, empty)</title>
+  <title>UI Visual - Terms of Service</title>
   <link rel="stylesheet" href="../components/index.css">
 </head>
 <body>
@@ -65,7 +65,7 @@ push();});})();</script>
     <button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>
     <nav class="sidebar-nav" aria-label="Painted screens">
       <a href="overview.html" class="sidebar-page-link">Overview</a>
-      <div class="sidebar-divider active">Event Feed</div>
+      <div class="sidebar-divider">Event Feed</div>
       <div class="sidebar-sub">
         <div class="sidebar-divider sub">Logged in</div>
         <a href="event-feed.html" class="sidebar-sub-link">success</a>
@@ -75,7 +75,7 @@ push();});})();</script>
         <a href="event-feed-push-permission-missing.html" class="sidebar-sub-link">push-permission-missing</a>
         <div class="sidebar-divider sub">Logged out</div>
         <a href="event-feed-logged-out.html" class="sidebar-sub-link">success</a>
-        <a href="event-feed-logged-out-empty.html" class="sidebar-sub-link active">empty</a>
+        <a href="event-feed-logged-out-empty.html" class="sidebar-sub-link">empty</a>
         <a href="event-feed-logged-out-error.html" class="sidebar-sub-link">error</a>
         <a href="event-feed-logged-out-loading.html" class="sidebar-sub-link">loading</a>
       </div>
@@ -203,9 +203,9 @@ push();});})();</script>
       <div class="sidebar-sub">
         <a href="how-it-works.html" class="sidebar-sub-link">success</a>
       </div>
-      <div class="sidebar-divider">Legal</div>
+      <div class="sidebar-divider active">Legal</div>
       <div class="sidebar-sub">
-        <a href="terms.html" class="sidebar-sub-link">Terms of Service</a>
+        <a href="terms.html" class="sidebar-sub-link active">Terms of Service</a>
       </div>
       <div class="sidebar-divider">Sign In</div>
       <div class="sidebar-sub">
@@ -319,75 +319,78 @@ document.addEventListener('click', function (e) {
     <!-- Feed -->
     <main class="feed">
       <div class="feed-inner">
-        <nav class="cat-nav" aria-label="Categories (second level)">
-          <ul>
-            <li aria-current="page"><a href="event-feed.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></button></a></li>
-            <li><a href="event-feed-politics.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></button></a></li>
-            <li><a href="event-feed-crypto.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></button></a></li>
-            <li><a href="event-feed-culture.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></button></a></li>
-            <li><a href="event-feed-general.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></button></a></li>
-          </ul>
-        </nav>
         <div class="cat-layout">
         <div class="cat-main">
-        <div class="feed-head">
-          <!-- Heading echoes the active category (here: Trending), not a generic "Live events". -->
-          <h1 id="feedHeading">Trending</h1>
-          <!-- Kalshi-style filter row: Sort, Frequency, Category. Each label shows the current value. -->
-          <div class="feed-controls">
-            <details class="filter-menu" id="sortMenu">
-              <summary aria-label="Sort by">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
-                <span>Sort: <span id="sortCurrent">Trending</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <ul role="radiogroup" aria-label="Sort by">
-                  <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
-                  <li><label><input type="radio" name="sort" value="New"> New</label></li>
-                  <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
-                  <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
-                  <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
-                </ul>
-              </div>
-            </details>
-            <details class="filter-menu" id="freqMenu">
-              <summary aria-label="Filter by frequency">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                <span>Frequency: <span id="freqCurrent">All</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <ul role="radiogroup" aria-label="Frequency">
-                  <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
-                  <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
-                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
-                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
-                  <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
-                  <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
-                </ul>
-              </div>
-            </details>
-          </div>
-        </div>
-        <div class="state-block" role="status" aria-live="polite">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-          <p class="state-title">No events match your filters</p>
-          <p class="state-msg">There are no events for this category and filters right now. Clear the filters, or get notified when a new event shows up here.</p>
-          <div class="state-actions">
-            <button type="button" class="state-btn primary">Clear filters</button>
-            <button type="button" class="state-btn">Notify me of new events in this category</button>
-          </div>
-        </div>
-      </div><!-- /cat-main --></div><!-- /cat-layout -->
-      </div>
+        <div class="feed-head"><h1>Terms of Service</h1></div>
+
+        <div class="spinner-box">Prototype page. The section headings, the structure and the dates are real; the body text describes what each section would decide and is not an operative legal term. Nothing on this page is in force.</div>
+
+        <div class="reconcile-box"><strong>Last updated 3 August 2026</strong><span>Effective immediately for accounts opened from this date. Effective 3 October 2026 for accounts opened before it.</span><span>What changed: the resolution section now names the fallback source, and the dispute window moved from 24 to 72 hours.</span><span>The previous version stays available.</span></div>
+
+        <div class="protect"><b>Your USDC is held 1:1 and we never lend it.</b> It sits in a segregated balance you can check on-chain at any time. It is not lent, staked, or used as working capital. Every event resolves against a named public source and the resolution is recorded where anyone can read it.</div>
+
+        <!-- The link stands outside the box, not inside the sentence: the system has
+             no inline link style for body prose, so an <a> in a paragraph renders in
+             the browser's own blue. Measured at 1.8:1 before this was moved. See
+             ui-kit/docs/backlog.md. -->
+        <a class="related-more" href="how-it-works.html">How resolution works</a>
+
+        <section class="related-events" aria-labelledby="toc-h">
+          <h2 id="toc-h">On this page</h2>
+          <ul class="related-list">
+            <li><a href="#what"><span class="rel-q">What this document is</span><span class="rel-odds">01</span></a></li>
+            <li><a href="#who"><span class="rel-q">Who we are, and who this covers</span><span class="rel-odds">02</span></a></li>
+            <li><a href="#account"><span class="rel-q">Your account</span><span class="rel-odds">03</span></a></li>
+            <li><a href="#betting"><span class="rel-q">Backing an event</span><span class="rel-odds">04</span></a></li>
+            <li><a href="#resolution"><span class="rel-q">How an event resolves</span><span class="rel-odds">05</span></a></li>
+            <li><a href="#money"><span class="rel-q">Your money</span><span class="rel-odds">06</span></a></li>
+            <li><a href="#fees"><span class="rel-q">Fees</span><span class="rel-odds">07</span></a></li>
+            <li><a href="#where"><span class="rel-q">Where the service is available</span><span class="rel-odds">08</span></a></li>
+            <li><a href="#content"><span class="rel-q">Content you post</span><span class="rel-odds">09</span></a></li>
+            <li><a href="#suspension"><span class="rel-q">When an account can be suspended or closed</span><span class="rel-odds">10</span></a></li>
+            <li><a href="#wrong"><span class="rel-q">If something goes wrong</span><span class="rel-odds">11</span></a></li>
+            <li><a href="#changes"><span class="rel-q">Changes to this document</span><span class="rel-odds">12</span></a></li>
+            <li><a href="#law"><span class="rel-q">Law and disputes</span><span class="rel-odds">13</span></a></li>
+            <li><a href="#reach"><span class="rel-q">How to reach us about this document</span><span class="rel-odds">14</span></a></li>
+          </ul>
+        </section>
+
+        <article>
+        <div class="feed-seo" id="what"><h2>1. What this document is</h2><p>This section sets out what the agreement covers and what it does not. It explains that using Predict Market means accepting a set of rules about the account, the funds inside it, and the events a person backs, and that the rules are written to be readable before they are written to be exhaustive.</p><p>It would also name the other documents that sit beside this one and say which of them wins if two disagree. In the shipped version that ordering is the first thing a reader is told, because a person who does not know which document governs cannot know what they have agreed to.</p></div>
+        <div class="feed-seo" id="who"><h2>2. Who we are, and who this covers</h2><p>This section identifies the operator of the service, the jurisdiction it is registered in, and the contact address for a legal notice. It states the minimum age and says that an account is personal: one person, one account, no acting on behalf of anyone else.</p><p>It would also describe what happens to an account opened by someone the rules do not cover, and it would say so before the deposit section rather than after it, because the answer changes whether the deposit should have been made at all.</p></div>
+        <div class="feed-seo" id="account"><h2>3. Your account</h2><p>This section describes registration, the information asked for at sign-up, and what a person is responsible for keeping safe. It explains that Predict Market asks for an account only when a bet is confirmed and not when the site is opened, which is a product decision as much as a legal one and is written here so the two do not drift apart.</p><p>It would set out how identity is verified when a fiat deposit requires it, which is the only point at which more than an email is asked for, and it would say what an unverified account can and cannot do rather than leaving the reader to discover the limit at the moment it stops them.</p><p>It would also cover closing an account: how a person asks, how long it takes, and what happens to open positions and to a remaining balance.</p></div>
+        <div class="feed-seo" id="betting"><h2>4. Backing an event</h2><p>This section describes what a bet is in this product. A person backs YES or NO on a stated question at the odds shown at the moment of confirmation, and the stake is taken from the account balance at that moment.</p><p>It explains that odds move because other people are backing the same event, so the price seen when an event is opened is not a promise about the price at confirmation. Where the two differ by more than a stated amount, the confirmation is shown again with the new number before anything is taken.</p><p>It would name the minimum and any maximum stake, say whether a bet can be cancelled and within what window, and state plainly that a bet placed on a mistaken reading of the question is still a bet.</p></div>
+        <div class="feed-seo" id="resolution"><h2>5. How an event resolves</h2><p>This section describes the resolution rule, which is the single most important thing this document decides. Every event names its source before it opens: the public record, feed or authority that will be read to settle it, and the moment at which that reading is taken.</p><p>It explains what happens when the named source is unavailable, contradicts itself, or has not reported by the stated time, and it would give the fallback in the same words on every event rather than case by case.</p><p>It would set out the dispute window: how long after settlement a person may challenge a resolution, what evidence is considered, who decides, and where the decision is recorded. The record is public, because a resolution nobody can check is a resolution nobody can trust.</p><p>It would describe the two cases that are not a simple reading of a source: an event whose question turns out to be ambiguous once the world has moved, and an event that becomes impossible to settle at all. For the first it would say who decides the reading and against what the decision is measured. For the second it would say that every stake is returned in full, and it would say it in the same sentence, because a rule about returning money is the one a person will look for under stress and should not have to assemble from two places.</p><p>It would also cover a recurring event, where each cadence instance settles on its own schedule against the same named source, and state that a later instance is a separate bet rather than a continuation of an earlier one.</p></div>
+        <div class="feed-seo" id="money"><h2>6. Your money</h2><p>This section describes custody. Funds are held as USDC in a segregated balance, one to one, and are not lent, staked, invested or used as working capital at any point.</p><p>It explains the difference between an available balance and a balance held against an open position, and it says which of the two can be withdrawn at any moment.</p><p>It would describe deposits and withdrawals: the routes available, the confirmations required, the time each normally takes, and what happens when a transfer fails or arrives at the wrong address. It would also state what happens to funds if the service stops operating, which is the question a reader of this page most often arrives with and the one most commonly left unanswered.</p><p>It would name the chain the balance is held on, the address at which the pooled balance can be read, and how a person matches their own figure against it. A custody claim that cannot be checked is a marketing line, and the difference between the two is a paragraph of instructions.</p></div>
+        <div class="feed-seo" id="fees"><h2>7. Fees</h2><p>This section states every charge the service makes and when it is applied. A fee is shown before a bet is confirmed and never after, which is a rule about the interface as much as about the pricing.</p><p>It would set out the commission on a settled position, any deposit or withdrawal cost passed through from a payment route, and whether a fee can change without notice. A fee schedule that can move silently is not a schedule, so the notice period would be named here rather than implied.</p></div>
+        <div class="feed-seo" id="where"><h2>8. Where the service is available</h2><p>This section lists the places the service is not offered and the reason each is excluded. A person opening an account from an excluded place is told at sign-up rather than at withdrawal.</p><p>It would describe what happens to an existing account when a person moves, and what happens to positions that are open at that moment. It would also state that using a proxy or a VPN to reach the service from an excluded place is a breach, and what the consequence is.</p></div>
+        <div class="feed-seo" id="content"><h2>9. Content you post</h2><p>This section covers comments, display names and anything else a person publishes on the service. It sets out what may not be posted and what happens to content that breaks the rule.</p><p>It would state who owns what a person writes, what licence the service needs in order to show it, and how long content survives the account that wrote it.</p></div>
+        <div class="feed-seo" id="suspension"><h2>10. When an account can be suspended or closed</h2><p>This section lists the grounds on which the service may restrict, suspend or close an account, and it lists them exhaustively rather than ending with a general clause that swallows the list.</p><p>It would describe what a person is told and when, what happens to an open position and to a balance during a restriction, and how a decision is appealed. It would also say what the service may not do: a suspension is not a way to avoid settling a position that has already resolved.</p></div>
+        <div class="feed-seo" id="wrong"><h2>11. If something goes wrong</h2><p>This section describes the limits of what the service is responsible for, including outages, delayed settlement, and errors in the odds shown. It explains what is corrected and what is not.</p><p>It would state how a pricing error is handled once bets have been placed against it, which is the case where the interests of the service and of a person are furthest apart and therefore the case that most needs to be written down in advance.</p></div>
+        <div class="feed-seo" id="changes"><h2>12. Changes to this document</h2><p>This section explains how the terms change and when a change takes effect. A change is effective immediately for a person opening an account after it is published, and after a stated notice period for a person who already has one. Both dates are shown at the top of this page, and the previous version stays available.</p><p>It would also say what a person may do if they do not accept a change, and confirm that closing an account and withdrawing a balance is always one of the options.</p></div>
+        <div class="feed-seo" id="law"><h2>13. Law and disputes</h2><p>This section names the law that governs the agreement and the forum in which a dispute is heard. It would say whether arbitration is required, whether a class action is waived, and what a person may do before either becomes necessary.</p><p>It would also give the informal route first: an address, a person, and a period in which a reply is due, because most disputes end there and a document that opens with arbitration reads as one that expects to be argued with.</p></div>
+        <div class="feed-seo" id="reach"><h2>14. How to reach us about this document</h2><p>This section gives the single address for a question about these terms, separate from product support, and states the period within which a reply is sent.</p><p>It would also give the postal address for a formal notice, because some notices are only valid on paper and a person should not have to look for that.</p></div>
+        </article>
+
+        <div class="protect"><b>A question about this document</b> goes to legal@predictmarket.example, which is not product support. A reply is sent within five working days.</div>
+
+        <section class="related-events" aria-labelledby="sib-h">
+          <h2 id="sib-h">The other documents</h2>
+          <ul class="related-list">
+            <li><a href="#"><span class="rel-q">Privacy Policy</span><span class="rel-odds">not built</span></a></li>
+            <li><a href="#"><span class="rel-q">Cookie Policy</span><span class="rel-odds">not built</span></a></li>
+            <li><a href="#"><span class="rel-q">Responsible betting</span><span class="rel-odds">not built</span></a></li>
+            <li><a href="#"><span class="rel-q">About Predict Market</span><span class="rel-odds">not built</span></a></li>
+          </ul>
+        </section>
+        </div><!-- /cat-main --></div><!-- /cat-layout --></div><!-- /feed-inner -->
     </main>
     </div><!-- /app-case -->
 
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
-        <li aria-current="page"><a href="event-feed-logged-out.html"><button type="button">
+        <li><a href="event-feed-logged-out.html"><button type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
           <span>Events</span>
         </button></a></li>
@@ -661,9 +664,6 @@ document.addEventListener('click', function (e) {
         });
       }
       wireFilter('catMenu', 'catCurrent', 'catf', activate);
-      // On a static category page the category is already active, so reveal its
-      // sub-category rail on load (the dropdown-driven activate() never fires here).
-      if (heading) { var _cat = heading.textContent.trim(); if (SUBCATS[_cat]) renderRail(_cat); }
       // The top category nav navigates to per-category pages (event-feed-*.html),
       // one page per category; it no longer switches the feed client-side, so the
       // links are left to navigate natively (no preventDefault, no rail).
@@ -876,35 +876,5 @@ document.addEventListener('click', function (e) {
   });
 })();
   </script>
-<script id="uv-subfilter">
-/* The Trending sub-filter filters Trending. Built by
-   wireframes/_generators/subfilter.py; see that file for why this is not the
-   category nav. A hidden card is hidden by the ATTRIBUTE, so it leaves the
-   accessibility tree with the layout. */
-(function () {
-  var group = document.querySelector('.feed-subfilter');
-  if (!group) return;
-  var grid = document.querySelector('.grid');
-  if (!grid) return;
-  group.addEventListener('click', function (e) {
-    var btn = e.target.closest('button[data-filter]');
-    if (!btn) return;
-    var want = btn.getAttribute('data-filter');
-    var all = group.querySelectorAll('button[data-filter]');
-    for (var i = 0; i < all.length; i++) {
-      var on = all[i] === btn;
-      all[i].setAttribute('aria-pressed', on ? 'true' : 'false');
-      all[i].parentNode.toggleAttribute('aria-current', false);
-      if (on) { all[i].parentNode.setAttribute('aria-current', 'page'); }
-      else { all[i].parentNode.removeAttribute('aria-current'); }
-    }
-    var cards = grid.querySelectorAll('.card');
-    for (var j = 0; j < cards.length; j++) {
-      var cat = cards[j].getAttribute('data-cat');
-      cards[j].toggleAttribute('hidden', want !== 'all' && cat !== want);
-    }
-  });
-})();
-</script>
 </body>
 </html>

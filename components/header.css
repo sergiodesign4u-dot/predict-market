@@ -3,7 +3,7 @@
 
    Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-slab-from, --bg-surface, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --shadow-ink, --shadow-ink-72, --text-brass, --text-brass-chip, --text-chip-hover, --text-icon-strong, --text-muted, --text-on-brass, --text-primary, --tint-brass-09, --tint-brass-45, --tint-hover
    Stand:  ui-kit/header.html
-   Stands on: 104 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .auth-btns{display:flex;gap:var(--space-8)}

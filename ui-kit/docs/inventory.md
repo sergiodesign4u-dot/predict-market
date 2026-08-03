@@ -282,15 +282,15 @@ live specimen, and the build fails if that stops being true.
 The second level of the system, and the reason this table now describes both. A pattern is an
 arrangement that repeated on three or more screens. It has no level, no specimen and no states: it
 owns placement and nothing else, and it loads last in `components/index.css` so that it can place
-what it holds. The screens column is the existence proof, counted from the markup of all 104 painted
+what it holds. The screens column is the existence proof, counted from the markup of all 105 painted
 screens.
 
 | Pattern | CSS file | Page | Screens | Assembled from |
 |---|---|---|---|---|
-| **Browse shell** | `patterns/browse-shell.css` | [browse-shell](../browse-shell.html) | 76 | `catnav`, `filters`, `state-block`, `button` |
+| **Browse shell** | `patterns/browse-shell.css` | [browse-shell](../browse-shell.html) | 77 | `catnav`, `filters`, `state-block`, `button` |
 | **Detail shell** | `patterns/detail-shell.css` | [detail-shell](../detail-shell.html) | 11 | `card`, `event-detail`, `oddsbar`, `chart`, `feed`, `tabs`, `market`, `comments`, `bets-table`, `position`, `betpanel`, `input`, `button`, `dialog` |
 | **Card grid** | `patterns/card-grid.css` | [card-grid](../card-grid.html) | 23 | `card`, `yesno`, `options` |
-| **List head** | `patterns/list-head.css` | [list-head](../list-head.html) | 70 | `filters` |
+| **List head** | `patterns/list-head.css` | [list-head](../list-head.html) | 71 | `filters` |
 | **Position list** | `patterns/position-list.css` | [position-list](../position-list.html) | 13 | `position`, `profile` |
 | **Action bar** | `patterns/action-bar.css` | [action-bar](../action-bar.html) | 3 | `account` |
 

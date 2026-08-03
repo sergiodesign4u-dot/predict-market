@@ -35,7 +35,7 @@ screen in either tree:
 
 | Node | Robots | Body profile |
 |---|---|---|
-| Terms of Service | `index,follow` | DOCUMENT |
+| Terms of Service | `index,follow` | DOCUMENT - **built 2026-08-03**, `ui-visual/terms.html`, the first use of this bank |
 | Privacy Policy | `index,follow` | DOCUMENT |
 | Cookie Policy | `index,follow` | DOCUMENT |
 | Responsible betting | `index,follow` | DOCUMENT |

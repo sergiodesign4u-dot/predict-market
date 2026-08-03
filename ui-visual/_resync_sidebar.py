@@ -224,6 +224,18 @@ FAMILIES = [
             ("state", "how-it-works.html", "success"),
         ],
     },
+    # The static content family. One node of five is built (ia/docs/blocks.md,
+    # type 1, DOCUMENT profile); the other four are registered in
+    # ia/docs/sitemap.md and have no screen, so they are not listed here. This is
+    # the first family with no grey twin: see _twins.SYSTEM_BUILT.
+    {
+        "key": "legal",
+        "label": "Legal",
+        "built": True,
+        "rows": [
+            ("state", "terms.html", "Terms of Service"),
+        ],
+    },
     {
         "key": "sign-in",
         "label": "Sign In",
