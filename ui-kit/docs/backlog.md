@@ -14,7 +14,7 @@ been edited by it.
 Every row says what was missing, what the screen did instead, and what the substitute cost, measured
 where a measurement was possible.
 
-**Standing today: nineteen rows opened, six closed, thirteen open.** Three closed the same afternoon
+**Standing today: twenty rows opened, six closed, fourteen open.** Three closed the same afternoon
 they were written, and by the same fix, because they were one gap seen from three sides: the system
 had no reading layout. Three more closed on 2026-08-03 by the merge - S16, S17 and the carried S11 -
 and all three were the same defect in different files: one shape declared more than once and kept in
@@ -115,3 +115,11 @@ scroll of its own. The three rails are fixed; these are what the fix left behind
 |---|---|---|
 | S18 | **Two roles, one value, one job**: `--border-brass-hover` and `--line-brass-soft` | Both are `--brass-a45` on graphite and `--brass-a60` in daylight, in every theme, and both are described in `tokens.css` as the hover border of a quiet control ("the hover border of the quiet button family" and "the quieter hover border"). `--line-brass-soft` has 9 readers and `--border-brass-hover` 3. The button family stopped reading the second name today, because a merged rule can only carry one; the other 8 readers were left alone, because renaming a role across 9 files is a token decision and not a button one. It costs nothing to look at and it is exactly the shape S16 was: one thing under two names, kept in step by hand |
 | S19 | **A quiet control's hover ink is not in the family's contract** | `.auth-btn`, `.state-btn`, `.provider-btn` and now the action bar's button all take `--text-strong` on hover; the brass ones keep `--text-on-brass`, and that had to be RESTATED in the brass hover rule once the quiet rule started setting a colour, or the first child of an action bar read white ink on lit brass. It works, and it works because two rules agree about a third thing. Whether the ink belongs in the state at all is a DESIGN.md question: nothing else in this product brightens its label under a pointer |
+
+---
+
+## Opened by the name pass (2026-08-03), and closed as a decision rather than a task
+
+| # | What is missing | Where it stands |
+|---|---|---|
+| S20 | **Five component and class names carry the word the product's own dictionary bans.** Measured across all 37 component names against `voice/docs/voice.md`, `voice/docs/microcopy.md`, `ia/docs/sitemap.md` and `DESIGN.md` | **MEASURED, AND DELIBERATELY NOT PAID.** The names: `components/position.css` and `components/patterns/position-list.css`, named for a word the Lexicon lists under *Not allowed in the UI (trader jargon): position (for the user's own bet)*, drawing exactly that on 36 screens; and `.hold-row` / `.hold-name` / `.hold-amt` / `.hold-out`, `.ptable`, `.ed-panel-holders` and `.ed-panel-positions`, which are the vocabulary `voice/docs/microcopy.md` Step 14 took out of the COPY and left in the classes. **The size, so nobody has to guess later:** the `.pos*` and `.ptable` classes are **1,930 uses in 129 files** (`position.css` 68, `active-bets-history.html` 52, `my-profile.html` 51); the component NAME is **149 mentions in 26 files** of registries and documents; the `hold*` / `ed-panel-*` set is **935 uses in 23 files**. **Two reasons, and the second decides it.** First, `voice.md` forbids these words **in the UI**, and a class name is not UI: the screens say *bet* and *Biggest bets* everywhere a person can read, which is what the ban is for. Second, gate 18 pairs the two trees on `tag.firstclass`, so renaming a class is an edit to `wireframes/` as well, and the grey tree is frozen against regeneration - the generators that would carry it are the ones `CLAUDE.md` forbids running, so the rename would be 1,930 hand edits across two trees to fix a word no user sees. The cost is real and the benefit is a grep. **What this row buys:** the next person to grep `holder` and find the system, or `bet` and find the product, has this line instead of a mystery |
