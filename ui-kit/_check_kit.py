@@ -1412,6 +1412,96 @@ check("28 the guide is current", _why.exists() and
       _why.read_text(encoding="utf-8") == _gen_why_page.render(),
       "run: python3 ui-kit/_gen_why_page.py")
 
+# 29 ------------------------------------------------------------- current ---
+# THE CLASS GATE 28 SAW IN ONE PAGE, FOR EVERY PAGE A GENERATOR OWNS. A
+# generated page nobody rebuilds stays TRUE about a product that no longer
+# exists, and every other gate reads what the page says, so the page passes
+# while being wrong about the world. Two of them were found by hand on the same
+# afternoon: icons.html said "76 of 76 screens carry the sprite" for a
+# 104-screen tree and counted 39 inline shapes against 37, and tokens.html
+# counted 133 roles against the 137 the states pass left behind. Neither was
+# edited by anyone. Both were simply not re-run.
+#
+# Gate 28 answered it for why.html by comparing the file to what its generator
+# renders today. That shape does not generalise by import: three of the eight
+# generators do their work at module level, so importing them to ask would
+# WRITE, and a checker that writes is not a checker. So the same question is
+# asked the only other way it can be: copy what the generators read into a
+# scratch tree, run them there, and compare. The working tree is never touched.
+#
+# The comparison is a gate and not a coin flip because the generators are
+# deterministic: the whole chain was run twice in a row against a clean tree and
+# the second run changed nothing.
+#
+# WHAT IS DECLARED OUT, and why it is a declaration rather than an omission.
+# Three generators are not the sole author of the page they write, so comparing
+# a page to its generator would fail forever, and a permanently red gate is
+# worse than no gate at all: it teaches the next person that red is the normal
+# colour. Each one is named with the second author.
+GENERATOR_CHAIN = (
+    "_extract_specimens", "_gen_component_pages", "_gen_pattern_pages",
+    "_gen_icons_page", "_gen_tokens_page", "_fill_inventory", "_gen_docs",
+    "_gen_why_page",
+)
+SECOND_AUTHOR = {
+    "ui-visual/_gen_overview.py":
+        "the painted tree's index. _resync_sidebar.py writes the course panel "
+        "into it afterwards, so the generator alone drops 193 lines of it",
+    "ui-visual/_gen_category.py":
+        "the four category screens. _apply_family.py, _panel_reveal.py and "
+        "_resync_sidebar.py all run after it, and re-running it regresses all four",
+    "wireframes/_generators/gen_*.py":
+        "CLAUDE.md forbids running them at all: the voice rewrite went into the "
+        "grey HTML by hand and was never back-ported, so a rebuild reverts it",
+}
+# What the chain writes, and therefore what is compared. A hand-kept page in
+# ui-kit/ is copied and never written, so it matches by construction and costs
+# nothing; the number reported is the number a generator owns.
+GENERATED_GLOBS = ("ui-kit/*.html", "ui-kit/_nav.js", "ui-kit/_frames.js",
+                   "ui-kit/specimens/*", "ui-kit/patterns/*",
+                   "ui-kit/docs/*.md", "README.md")
+HAND_KEPT = {"kit.html", "shell.html", "specimens.extra.html"}
+_COPY = ("components", "ui-kit", "ui-visual", "wireframes", "concept", "docs",
+         "voice", "ia", "assets", "user-research", "research")
+_SKIP = {"screens", "old", "__pycache__", ".git", "node_modules"}
+
+import shutil                                                         # noqa: E402
+import tempfile                                                       # noqa: E402
+
+_stale, _broke, _owned = [], [], 0
+_scratch = pathlib.Path(tempfile.mkdtemp(prefix="kit-current-"))
+try:
+    for _d in _COPY:
+        if (ROOT / _d).exists():
+            shutil.copytree(ROOT / _d, _scratch / _d, symlinks=True,
+                            ignore=lambda d, names: [n for n in names if n in _SKIP])
+    for _f in list(ROOT.glob("*.py")) + list(ROOT.glob("*.md")):
+        shutil.copy2(_f, _scratch / _f.name)
+    for _g in GENERATOR_CHAIN:
+        _r = subprocess.run([sys.executable, str(_scratch / "ui-kit" / (_g + ".py"))],
+                            capture_output=True, cwd=str(_scratch))
+        if _r.returncode:
+            _broke.append("%s: %s" % (_g, _r.stderr.decode("utf-8", "replace")
+                                      .strip().splitlines()[-1][:90]))
+    for _pat in GENERATED_GLOBS:
+        for _new in sorted(_scratch.glob(_pat)):
+            _rel = _new.relative_to(_scratch)
+            if _new.name in HAND_KEPT or not _new.is_file():
+                continue
+            _owned += 1
+            _old = ROOT / _rel
+            if not _old.exists() or _old.read_bytes() != _new.read_bytes():
+                _stale.append(str(_rel))
+finally:
+    shutil.rmtree(_scratch, ignore_errors=True)
+
+check("29 every generator still runs", not _broke,
+      "%d: %s" % (len(_broke), "; ".join(_broke[:2])))
+check("29 every generated page is current", not _stale,
+      "%d of %d: %s" % (len(_stale), _owned, ", ".join(_stale[:4])))
+check("29 a second author is declared", len(SECOND_AUTHOR) == 3,
+      "%d generator(s) whose page they do not solely own" % len(SECOND_AUTHOR))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

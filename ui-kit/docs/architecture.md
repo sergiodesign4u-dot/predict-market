@@ -531,6 +531,40 @@ before `_check_kit.py`. `ui-kit/_levels.py` is not in the list: it is a library 
 running it on its own only prints what it knows (`--why` for the classes it found inside each
 component, `--order` for the cascade).
 
+### A generated page nobody re-runs stays true about a product that no longer exists
+
+That is a whole class of defect and it was invisible here until three pages were caught by hand on
+one afternoon. `icons.html` said **"76 of 76 screens carry the sprite"** for a 104-screen tree and
+counted 39 inline shapes against 37. `tokens.html` counted **133 roles against 137**. `README.md`
+carried a gate count from before the last two gates. Nobody edited any of them; nobody re-ran them
+either. Every other gate reads what the page SAYS, and each said it consistently, so twenty-eight
+gates passed over a page that was describing a product two stages old.
+
+**Gate 29** is gate 28's question asked of all of them: *is this page what its generator renders
+today?* It cannot be asked by importing, because three of the eight generators do their work at
+module level and importing them would WRITE, and a checker that writes is not a checker. So it is
+asked the only other way: the gate copies what the generators read into a scratch tree, runs the
+whole chain there, and compares byte for byte. **136 files** are covered, the working tree is never
+touched, and the whole check costs about a second and a half.
+
+The comparison is a gate rather than a coin flip only because the generators are **deterministic**,
+and that was measured before the gate was written: the chain was run twice against a clean tree and
+the second run changed nothing.
+
+**Three generators are declared out, and the reason is the same each time: the page has a second
+author.** Comparing such a page to its generator would fail forever, and a permanently red gate is
+worse than no gate, because it teaches the next reader that red is the normal colour. They are named
+in `SECOND_AUTHOR` with the author that follows them: `ui-visual/_gen_overview.py` (the painted
+tree's index, whose course panel `_resync_sidebar.py` writes afterwards - running the generator
+alone drops 193 lines of it), `ui-visual/_gen_category.py` (the four category screens, which
+`_apply_family.py` and `_panel_reveal.py` finish - re-running it regresses all four, measured), and
+`wireframes/_generators/gen_*.py`, which `CLAUDE.md` forbids running at all.
+
+Both halves were proved by planting. A hand-edited number in `icons.html` turns gate 29 red while
+gates 2, 3 and 4 all still report ok, which is the class stated exactly. A new role added to
+`tokens.css` with no rebuild turns it red on `tokens.html`, which is the class that actually
+happened.
+
 ### How to add a pattern, which is four things and not five
 
 A pattern is not a component, so it does not take the list above. It takes `components/patterns/<name>.css`
