@@ -53,7 +53,32 @@ main.feed{background:transparent}
 
 /* ---- 2. kit presentation helpers ------------------------------------------ */
 
-.kit-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+/* THE PAGE HAS TO HAVE AN EDGE FOR THE CAMERA TO STAND IN, and until 2026-08-03
+   it did not. `boxAt` clamps the frame origin at the document edge, so a control
+   that begins at x=0 or y=0 loses whatever pad it asked for on that side and the
+   picture starts exactly at the first pixel of the control: 36 of 790 state
+   pictures were short by 4px on the top or the left, every one of them a FOCUS
+   picture, which is to say the one state whose whole subject is a ring drawn
+   OUTSIDE the box. 12 is the pad `shoot()` asks for, so 12 is the least the page
+   can hold. */
+body{padding:12px}
+
+/* 24 IS DERIVED AND NOT CHOSEN, and this is the derivation. The gap is halved by
+   `boxAt` before it becomes the frame's pad, because a picture may never borrow
+   more than half the air between two neighbours or it shows part of the one next
+   door. So the gap has to be TWICE whatever the picture needs:
+     what a subject paints outside its own box   4px, measured, not assumed:
+       `extentAt()` reads the computed outline and every non-inset shadow of the
+       element in the state being shot, over all 790 pictures, and the widest
+       answer in the whole tree is the focus ring, `--ring` 2px at 2px offset.
+       No shadow on any photographed element reaches outside it at all.
+     what `shoot()` asks for                     12px, the air a control is shown
+       in, which is a presentation decision and the larger of the two.
+   2 x 12 = 24. At the old 14 the pad was capped at 7 on every facing side, which
+   is 5px less than the picture asked for and 3 more than the ring needs: the
+   worst case had three pixels of margin and nothing said so. The cap is gone,
+   not widened, and `short` in the manifest is what says it stayed gone. */
+.kit-row{display:flex;flex-wrap:wrap;gap:24px;align-items:center}
 .kit-row.a-start{align-items:flex-start}
 /* A SECOND ROW IS A SECOND ROW. .kit-row set the distance BETWEEN its own
    children and nothing at all between two of itself, so a specimen that stages
@@ -62,7 +87,7 @@ main.feed{background:transparent}
    of air around it, pulled the button below into every picture. One declaration,
    and it is the same 14px the row uses across, because the distance between two
    rows of one thing is not a different decision from the distance inside one. */
-.kit-row + .kit-row{margin-top:14px}
+.kit-row + .kit-row{margin-top:24px}
 .kit-box{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:10px;padding:16px}
 .kit-plate{margin:0}
 .kit-surf-lbl{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);display:block}

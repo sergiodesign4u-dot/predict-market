@@ -1592,6 +1592,13 @@ check("31 no picture file is gone", not _st_missing,
       "%d: %s" % (len(_st_missing), "; ".join(_st_missing[:4])))
 check("31 a component with states has pictures", not _st_undeclared,
       "%d: %s" % (len(_st_undeclared), ", ".join(_st_undeclared)))
+_st_crop, _st_crop_idle = _states.cropped()
+check("31 no picture crops its subject", not _st_crop,
+      "%d of %d: %s" % (len(_st_crop),
+                        sum(len(r.get("shots", {})) for r in _states.load()),
+                        "; ".join(_st_crop[:2])))
+check("31 no declared tight frame is idle", not _st_crop_idle,
+      "%d: %s" % (len(_st_crop_idle), ", ".join(_st_crop_idle)))
 check("31 no declared gap is idle", not _st_idle,
       "%d: %s" % (len(_st_idle), ", ".join(_st_idle)))
 notes.append("%-34s %s" % ("31 photographed",

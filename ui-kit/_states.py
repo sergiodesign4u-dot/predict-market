@@ -162,6 +162,67 @@ NOT_SHOT = {
 }
 
 
+# ---- the third question, and it is about the INSTRUMENT rather than the tree --
+# FRESHNESS AND COVERAGE BOTH ASSUME THE PICTURE SHOWS THE SUBJECT. Neither asks
+# whether the frame was big enough to hold it, and for 36 of 790 pictures it was
+# not: `boxAt` padded each side to at most HALF the distance to the nearest
+# neighbour, which is right, and then let that halving win against the subject's
+# own paint, which is not. The specimen row set a 14px gap, so every facing side
+# was capped at 7px whatever the caller asked for; the page had no padding, so a
+# control at x=0 got nothing at all. Both bit hardest on the FOCUS pictures,
+# which is the one state whose entire subject is a ring drawn OUTSIDE the box.
+#
+# THE CROP WAS IN THE PNG, so nothing on the page that displays it could have put
+# a pixel back, and nothing on the page could have reported it either: a
+# confidently rendered photograph of a cropped thing looks exactly like a
+# photograph. That is `ui-kit/docs/defects.md` row 43, and it is row 42's shape -
+# an instrument reporting a clean result about a subject it was not fully
+# looking at.
+#
+# So the capture now DERIVES the pad from the element it is photographing, in the
+# state it is in, and records both what it needed and what it got. This reads the
+# difference back out of the manifest. It is the cheap half of the check and it
+# is the half that can be a gate: no browser, no served tree, just the number the
+# capture wrote down.
+# The frames that are short and are short for a reason ABOUT THE PRODUCT rather
+# than about the stand, one line and one reason each, and the same control every
+# declared list here carries: an entry that is no longer short fails as loudly as
+# an undeclared crop. The fix took 36 crops to 6 and these are the 6.
+TIGHT = {
+    ("tabs", "g1"): "`input.ed-tabradio` is parked at `left:-9999px` and the ring the "
+                    "system draws on :focus-visible is therefore painted off the left "
+                    "edge of the document. That is not a crop, it is the reason "
+                    "`tabs.css` moves the visible indicator onto the LABEL and says so "
+                    "at the declaration. A frame that held this ring would be a picture "
+                    "of a thing no person can see",
+    ("header", "g8"): "a link inside the notifications dropdown, 2px from its neighbour, "
+                      "so the halving leaves 1 of the 4 the ring needs. The stand is not "
+                      "padded to flatter the camera: the density is the product's, the "
+                      "ring is drawn, and 3px of it are shared with the row above",
+    ("header", "g9"): "`a.notif-all`, the same dropdown and the same 2px, for the same "
+                      "reason",
+}
+
+
+def cropped():
+    """(pictures whose frame did not hold what the subject paints outside its box
+    and are not declared, declared entries that are no longer short)."""
+    out, seen = [], set()
+    for row in load():
+        for key, shot in row.get("shots", {}).items():
+            if not shot.get("short"):
+                continue
+            k = (row["component"], row["id"])
+            if k in TIGHT:
+                seen.add(k)
+                continue
+            out.append("%s %s %s short %dpx (needed %s, got %s)"
+                       % (row["component"], row["id"], key, shot["short"],
+                          shot.get("needed"), shot.get("pad")))
+    idle = ["%s %s" % k for k in sorted(set(TIGHT) - seen)]
+    return out, idle
+
+
 def unphotographed():
     """(components that should have a picture and have none and are not
     declared; declared entries that DO have pictures)."""
@@ -181,6 +242,16 @@ if __name__ == "__main__":
         INDEX.write_text(json.dumps(rows, indent=1) + "\n", encoding="utf-8")
         print("stamped %d group(s), %d picture(s)"
               % (len(rows), sum(len(r.get("shots", {})) for r in rows)))
+    elif "--crop" in sys.argv:
+        short, idle = cropped()
+        print("%d undeclared crop(s) of %d picture(s), %d declared, %d idle"
+              % (len(short), sum(len(r.get("shots", {})) for r in rows),
+                 len(TIGHT), len(idle)))
+        for c in short:
+            print("   " + c)
+        for c in idle:
+            print("   IDLE: " + c)
+        sys.exit(1 if (short or idle) else 0)
     else:
         moved, missing = stale()
         print("%d group(s), %d picture(s), %d component(s)"

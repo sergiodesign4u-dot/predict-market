@@ -12,7 +12,7 @@
    consumers. Nothing here measures a product decision. It only knows how to ask
    correctly, and every rule below is a scar.
 
-   THE TWELVE THINGS IT KNOWS, and the case that taught each one:
+   THE FOURTEEN THINGS IT KNOWS, and the case that taught each one:
 
    1. A COLOUR IS PARSED BY A CANVAS, NEVER BY A REGEX.
       getComputedStyle returns what the AUTHOR wrote, and color-mix(in oklab, ...)
@@ -125,7 +125,35 @@
       because the values that were read had already arrived, but the guard was
       not there. A checker with a broken instrument reports clean.
 
-   None of the twelve is defensive coding. Each is a wrong answer this project
+  13. A BROKEN INSTRUMENT THAT REPORTS A DEFECT GETS CAUGHT. ONE THAT REPORTS ALL
+      CLEAR IS CAUGHT BY NOBODY. Lessons 1, 6 and 12 were each found because
+      somebody went to look at a finding and found the instrument lying instead.
+      Nothing sends anybody to look at a zero. Fifteen printings of "0 below AA"
+      stood across three documents while 378 elements measured under the floor,
+      and the three bugs behind that zero were bugs THIS FILE had already
+      recorded. The most dangerous output of a broken check is not a false
+      alarm, it is a clean bill of health, and that is where verification effort
+      belongs: not on what the checks report, but on what they are looking at.
+
+  14. A PHOTOGRAPH OF A CROPPED SUBJECT LOOKS EXACTLY LIKE A PHOTOGRAPH, which
+      is 13 arriving in pixels. boxAt() pads each side to at most HALF the
+      distance to the nearest neighbour, which is right, and then let that
+      halving win against the subject's own paint, which is not: the specimen
+      row set a 14px gap, so every facing side was capped at 7px whatever the
+      caller asked for, and the specimen page had no padding at all, so a
+      control at x=0 got nothing. 36 of 790 state pictures were short, and every
+      one of them was a FOCUS picture - the single state whose entire subject is
+      a ring drawn OUTSIDE the box. The crop was in the png, so no change to the
+      page displaying it could put back a pixel that was never captured, and
+      nothing on that page could report it either.
+      The pad is therefore DERIVED from the element being photographed, in the
+      state it is in: extentAt() reads the computed outline and every non-inset
+      shadow and returns the four sides. That is a FLOOR the neighbour rule may
+      not go under, and what the frame actually managed is written into the
+      manifest beside what it needed, so gate 31 can fail on a crop without a
+      browser.
+
+   None of the fourteen is defensive coding. Each is a wrong answer this project
    has already published, and anyone who removes one as excessive caution should
    read the line above it first.
 
@@ -339,6 +367,65 @@ window.__ask = (function () {
       return [cs.backgroundColor, cs.backgroundImage.slice(0, 50), cs.borderTopColor,
               cs.borderTopWidth, cs.color].join(' | ');
     },
+    /* HOW FAR THIS ELEMENT PAINTS OUTSIDE ITS OWN BOX, per side, in the state it
+       is in right now. Derived and never assigned, and derived from the SUBJECT
+       rather than from a survey of the stylesheet, because the two answers are
+       nothing like each other: a quiet button's brass hover glow reaches 7px
+       below it and a dialog's plate shadow reaches 50, and a single number large
+       enough for both would frame every control in a field of ground.
+       Two sources, and they are the two things in this system that leave the box:
+         the focus ring   outline-width + outline-offset, every side
+         a drop shadow    offset + spread + blur/2 on the side it falls,
+                          blur/2 being where a Gaussian of that radius has
+                          faded out, which is what the spec makes the painting
+                          area. An inset shadow paints INSIDE and is skipped.
+       Returns four sides so a shadow that falls only downwards does not pad the
+       top by the same amount and re-centre the subject in its own picture. */
+    extentAt: function (i) {
+      var el = document.querySelector('[data-paint="' + i + '"]');
+      if (!el) return null;
+      var cs = getComputedStyle(el);
+      var need = { top: 0, right: 0, bottom: 0, left: 0 };
+      var ow = parseFloat(cs.outlineWidth) || 0;
+      if (ow && cs.outlineStyle !== 'none') {
+        var ring = ow + (parseFloat(cs.outlineOffset) || 0);
+        if (ring > 0) {
+          need.top = need.right = need.bottom = need.left = ring;
+        }
+      }
+      var sh = cs.boxShadow;
+      if (sh && sh !== 'none') {
+        /* split on commas that are not inside a colour function */
+        var parts = [], depth = 0, cur = '';
+        for (var c = 0; c < sh.length; c++) {
+          var ch = sh[c];
+          if (ch === '(') depth++;
+          if (ch === ')') depth--;
+          if (ch === ',' && depth === 0) { parts.push(cur); cur = ''; continue; }
+          cur += ch;
+        }
+        parts.push(cur);
+        for (var q = 0; q < parts.length; q++) {
+          var part = parts[q];
+          if (/\binset\b/.test(part)) continue;
+          var nums = (part.match(/-?[\d.]+px/g) || []).map(parseFloat);
+          if (nums.length < 2) continue;
+          var ox = nums[0], oy = nums[1];
+          var blur = nums.length > 2 ? nums[2] : 0;
+          var spread = nums.length > 3 ? nums[3] : 0;
+          var reach = blur / 2 + spread;
+          need.right = Math.max(need.right, ox + reach);
+          need.left = Math.max(need.left, -ox + reach);
+          need.bottom = Math.max(need.bottom, oy + reach);
+          need.top = Math.max(need.top, -oy + reach);
+        }
+      }
+      need.top = Math.max(0, Math.ceil(need.top));
+      need.right = Math.max(0, Math.ceil(need.right));
+      need.bottom = Math.max(0, Math.ceil(need.bottom));
+      need.left = Math.max(0, Math.ceil(need.left));
+      return need;
+    },
     /* The box in DOCUMENT coordinates, which is what a page screenshot clips
        against: getBoundingClientRect is viewport-relative and the two only agree
        while the page has not scrolled.
@@ -348,12 +435,24 @@ window.__ask = (function () {
        it were part of this one. So each side is padded to at most HALF the
        distance to the nearest thing that is not this element's own ancestor or
        descendant: the picture keeps the ground it stands on and never borrows a
-       neighbour. */
-    boxAt: function (i, pad) {
+       neighbour.
+       AND THAT HALVING USED TO WIN AGAINST THE SUBJECT ITSELF, which is the
+       defect this second argument closes. the specimen row set a 14px gap, so every
+       facing side of every control in a specimen row was capped at 7px whatever
+       the caller asked for, and 7px is EXACTLY the reach of the brass hover glow
+       and 3px more than a focus ring needs: the worst case had zero margin and
+       anything larger was cut. The crop was in the png, so no change to the page
+       that displays it could put back a pixel that was never captured. want is
+       what extentAt() says the element paints outside its box, and it is a
+       FLOOR the neighbour rule may not go under. What is returned says whether
+       that floor was met, so a frame that is still short is recorded rather than
+       shipped as a confident picture of a cropped thing. */
+    boxAt: function (i, pad, want) {
       var el = document.querySelector('[data-paint="' + i + '"]');
       if (!el) return null;
       var r = el.getBoundingClientRect();
       pad = pad || 0;
+      want = want || { top: 0, right: 0, bottom: 0, left: 0 };
       var gap = { top: pad, right: pad, bottom: pad, left: pad };
       var all = document.body.getElementsByTagName('*');
       for (var n = 0; n < all.length; n++) {
@@ -368,6 +467,11 @@ window.__ask = (function () {
         if (overH && b.bottom <= r.top) gap.top = Math.min(gap.top, (r.top - b.bottom) / 2);
         if (overH && b.top >= r.bottom) gap.bottom = Math.min(gap.bottom, (b.top - r.bottom) / 2);
       }
+      /* the subject's own reach is a floor the neighbour rule may not go under */
+      gap.top = Math.max(gap.top, want.top);
+      gap.right = Math.max(gap.right, want.right);
+      gap.bottom = Math.max(gap.bottom, want.bottom);
+      gap.left = Math.max(gap.left, want.left);
       var l = Math.max(0, Math.floor(gap.left)), t = Math.max(0, Math.floor(gap.top));
       var x = r.left + window.scrollX - l, y = r.top + window.scrollY - t;
       /* CLAMPING THE ORIGIN WITHOUT CLAMPING THE SIZE MOVES THE PICTURE. An
@@ -377,9 +481,42 @@ window.__ask = (function () {
          .auth-btn, whose picture carried the top of the brass one under it. */
       if (x < 0) { l += x; x = 0; }
       if (y < 0) { t += y; y = 0; }
-      return { x: x, y: y,
-               width: Math.ceil(r.width + Math.max(0, l) + Math.max(0, Math.floor(gap.right))),
-               height: Math.ceil(r.height + Math.max(0, t) + Math.max(0, Math.floor(gap.bottom))) };
+      var rgt = Math.max(0, Math.floor(gap.right));
+      var bot = Math.max(0, Math.floor(gap.bottom));
+      /* THE FAR EDGES CLAMP FOR THE SAME REASON THE NEAR ONES DO. A frame that
+         runs past the last pixel of the document is not a small picture, it is
+         an error out of the screenshot API and it takes the whole run with it,
+         which is how this was found: a bet sheet is position:fixed, so it is
+         painted in the VIEWPORT and is not part of the document's scroll extent
+         at all, and the moment the pad stopped being a flat 12 the frame reached
+         past the end of the image. The clip is intersected with the document, in
+         both origin and size, and got is written from what survived, so a
+         short side is reported rather than crashed on. */
+      var docW = document.documentElement.scrollWidth;
+      var docH = document.documentElement.scrollHeight;
+      var over = (r.left + window.scrollX + r.width + rgt) - docW;
+      if (over > 0) rgt = Math.max(0, rgt - over);
+      over = (r.top + window.scrollY + r.height + bot) - docH;
+      if (over > 0) bot = Math.max(0, bot - over);
+      var got = { top: Math.max(0, t), right: rgt,
+                  bottom: bot, left: Math.max(0, l) };
+      /* WHAT THE FRAME DID NOT MANAGE TO HOLD. Zero on every picture in a healthy
+         tree; non-zero says the document itself has the subject nearer an edge
+         than its own paint reaches, which is a fact about the specimen and has to
+         be visible rather than absorbed. */
+      var short = Math.max(0, want.top - got.top, want.right - got.right,
+                           want.bottom - got.bottom, want.left - got.left);
+      var w = Math.ceil(r.width + got.left + got.right);
+      var h = Math.ceil(r.height + got.top + got.bottom);
+      /* the subject itself may be outside the image: a fixed element on a short
+         page. A frame that cannot be taken is reported as not taken, never as a
+         picture of something else, which is lesson 6 in a third place. */
+      if (x >= docW || y >= docH) return null;
+      w = Math.min(w, docW - x);
+      h = Math.min(h, docH - y);
+      if (w <= 0 || h <= 0) return null;
+      return { x: x, y: y, width: w, height: h,
+               want: want, got: got, short: short };
     },
     /* DISABLED IS READ AND NEVER SET. Setting the attribute to take the picture
        would be the stand class this whole section exists to avoid: it would
@@ -634,6 +771,23 @@ async function open(opts) {
       if (!el) return null;
       await page.mouse.move(1, 1);
       try { await el.scrollIntoViewIfNeeded({ timeout: 2000 }); } catch (e) { return null; }
+      /* A FIXED ELEMENT IS PAINTED IN THE VIEWPORT AND NOT IN THE DOCUMENT, so
+         `getBoundingClientRect().top + scrollY` is its document coordinate only
+         while the page is AT the top. The bet sheet is a real bottom drawer and
+         the specimen keeps it fixed on purpose; the moment the specimen page
+         gained enough padding to scroll at all, that sum ran past the end of the
+         page image and the screenshot API took the whole run down with it. The
+         page is put back to the top for those, which is where the drawer's own
+         coordinates are true. */
+      const fixed = await page.evaluate((n) => {
+        var e = document.querySelector('[data-paint="' + n + '"]');
+        while (e && e !== document.body) {
+          if (getComputedStyle(e).position === 'fixed') return true;
+          e = e.parentElement;
+        }
+        return false;
+      }, i);
+      if (fixed) await page.evaluate(() => window.scrollTo(0, 0));
       if (state === 'hover' || state === 'active') {
         try { await el.hover({ timeout: 2000 }); } catch (e) { return null; }
         if (state === 'active') await page.mouse.down();
@@ -651,7 +805,14 @@ async function open(opts) {
       }
       const ms = await page.evaluate('__ask.settleMs()');
       await page.waitForTimeout(Math.max(ms, 60) + 60);
-      const clip = await page.evaluate('__ask.boxAt(' + i + ', 12)');
+      /* THE PAD IS DERIVED FROM THE SUBJECT, IN THE STATE IT IS IN. Asked after
+         the state is raised and not before, because the thing that leaves the box
+         is usually the state itself: at rest a quiet button paints nothing outside
+         its edge, and on hover it carries a brass glow. 12 stays as a minimum so a
+         control with no reach at all still gets air around it. */
+      const want = await page.evaluate('__ask.extentAt(' + i + ')');
+      const clip = await page.evaluate(
+        '__ask.boxAt(' + i + ', 12, ' + JSON.stringify(want || {}) + ')');
       let value = null;
       if (clip && clip.width && clip.height) {
         /* TWO PIXELS PER CSS PIXEL FOR A CONTROL, ONE FOR A PANEL. A hover on a
@@ -660,10 +821,24 @@ async function open(opts) {
            Shooting everything at 2x made the card component alone 15.5MB of a
            19MB folder, for pictures nobody would look closer at. The threshold
            is the width at which a thing stops being a control. */
-        await page.screenshot({ path: file, clip,
-                                scale: clip.width > 360 ? 'css' : 'device' });
+        /* fullPage IS WHAT MAKES THE CLIP DOCUMENT-RELATIVE, and without it the
+           two coordinate systems agreed only by luck. boxAt() has always
+           returned DOCUMENT coordinates; a clip without fullPage is measured
+           against the VIEWPORT image, and every specimen page used to be short
+           enough never to scroll, so document and viewport were the same
+           numbers. The first specimen tall enough to scroll - which is what
+           giving the page a 12px edge to be photographed in did - put an element
+           at document y 962 on a 900px viewport and the API refused the whole
+           run. Proved both ways before it was changed: the same clip fails
+           without fullPage at scroll 0 and at scroll 138, and succeeds with it
+           at both. */
+        await page.screenshot({
+          path: file, fullPage: true,
+          clip: { x: clip.x, y: clip.y, width: clip.width, height: clip.height },
+          scale: clip.width > 360 ? 'css' : 'device' });
         value = await page.evaluate('__ask.paintAt(' + i + ')');
-        value = { value: value, w: Math.round(clip.width), h: Math.round(clip.height) };
+        value = { value: value, w: Math.round(clip.width), h: Math.round(clip.height),
+                  pad: clip.got, needed: clip.want, short: clip.short };
       }
       if (state === 'active') await page.mouse.up();
       if (state === 'focus') await page.evaluate(() => document.activeElement.blur());

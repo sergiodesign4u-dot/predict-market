@@ -18,7 +18,7 @@ SAME bug found twice, because the file that had learned the lesson no longer exi
 next check was written. This is the move `_levels.py` made for containment: one computation, many
 consumers.
 
-Thirteen things it knows out of the box, each with the case that taught it written beside it in the
+Fourteen things it knows out of the box, each with the case that taught it written beside it in the
 file: the colour is parsed by a canvas and never a regex; alpha is composited up the ancestor stack;
 inert subtrees are skipped and focus is a real Tab; both batches of a comparison run in the same
 regime, fresh context with the cache off; a measurement waits for the theme transition the document
@@ -26,7 +26,9 @@ itself declares; a colour painted through a blend or a filter cannot be read fro
 error is attributed by URL rather than by its text; a gradient is not a `background-color`; a pinned
 box taller than the window hides its own tail; text with transparent ink or a 0px face paints no
 glyph, so it has no contrast to measure; a hover is a real pointer and reaches only what is in the
-window; and the code that implements lesson 5 was measuring nothing at all. **None of the thirteen is
+window; the code that implements lesson 5 was measuring nothing at all; a broken instrument that
+reports all clear is caught by nobody; and a photograph of a cropped subject looks exactly like a
+photograph. **None of the fourteen is
 defensive coding.** Each is a wrong answer this project has already published, so anyone who reads
 one as excessive caution should read the line above it first.
 
@@ -77,6 +79,28 @@ mouse, so `paint()` marks every visible match and `hoverAt()` scrolls it into vi
 pointer on it. The scroll is not a nicety - the first cut moved the mouse to the box centre `paint()`
 reported, which is viewport-relative, so every control below the fold reported its rest state as its
 hover, and that looks exactly like a missing rule.
+
+**Fourteen is thirteen arriving in pixels, and it is the reason gate 31 grew a third question.**
+`boxAt()` pads each side of a state picture to at most HALF the distance to the nearest neighbour,
+which is correct and is what keeps a control's picture from showing the one below it. It then let
+that halving win against the SUBJECT's own paint. `ui-kit/_specimen.css` set `.kit-row{gap:14px}`, so
+every facing side was capped at **7px** whatever the caller asked for, and the specimen page had no
+padding at all, so a control beginning at x=0 kept nothing on that side. **36 of 790 state pictures
+were short, and every one of them was a FOCUS picture** - the single state whose entire subject is a
+ring drawn OUTSIDE the box, `--ring` 2px at 2px offset, 4px on every side.
+
+The crop was in the png. No change to the page that displays the picture could put back a pixel that
+was never captured, and nothing on that page could report it either, because a confidently rendered
+photograph of a cropped thing looks exactly like a photograph.
+
+So the pad is now DERIVED, from the element being photographed, in the state it is in: `extentAt()`
+reads the computed outline and every non-inset shadow and returns the four sides, blur/2 + spread +
+offset being where the paint actually stops. Over all 790 pictures **the widest answer in the whole
+tree is 4px** and no shadow on any photographed element reaches outside it, which is a fact worth
+having written down rather than assumed. That number is a FLOOR the neighbour rule may not go under;
+the row gap is twice the 12px `shoot()` asks for, so the halving no longer caps anything; and what
+the frame actually managed is written into the manifest next to what it needed, so
+`python3 ui-kit/_states.py --crop` and gate 31 can fail on a crop **without a browser**.
 
 ## What they do
 
