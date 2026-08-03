@@ -50,6 +50,11 @@
   --bone-300:#cbc3b2;       /* default icon stroke */
   --bone-500:#a49d8f;       /* secondary text */
   --bone-600:#8b8579;       /* course sidebar muted */
+  --bone-650:#6f6a60;       /* the scrollbar thumb on graphite. A new step, and the reason is a
+                               measurement: the two neighbours in this ramp are 5.03:1 and 2.46:1
+                               on the plate, so one is louder than a scrollbar should be and the
+                               other misses the 3:1 a non-text control has to clear. This lands
+                               at 3.43:1 */
   --bone-700:#5a544a;       /* neutralised error border (toast) */
   --bone-a06:rgba(237,231,218,.055);  /* lit half of the engraved groove */
 
@@ -611,6 +616,14 @@
   /* ---- feedback ---- */
   --border-notice:var(--bone-700);      /* from: the neutralised error toast, warm grey, never red */
   --bevel-notice:var(--white-a06);      /* from: the same toast, its inset lip */
+  /* The scrollbar thumb, and it is a ROLE because one value cannot serve both
+     themes: every scroller in this product sits on the plate, which is
+     rgb(18,20,23) on graphite and rgb(248,246,240) on chalk, and a colour that
+     is quiet on one is invisible on the other. Measured against the plate:
+     3.43:1 here, 3.39:1 in daylight, both over the 3:1 a non-text control owes.
+     The track is transparent on purpose, so the thumb is the only thing drawn
+     and the ground behind it is what it is measured against. */
+  --scroll-thumb:var(--bone-650);       /* from: every scroll container, base.css */
 
   /* ---- depth and material ----
      The embossed two-stone system is built from light and shade, and light is a
@@ -908,6 +921,9 @@
   /* ---- feedback ---- */
   --border-notice:var(--chalk-750);
   --bevel-notice:var(--white-a70);
+  /* One step lighter than the graphite thumb, not darker, which is the whole
+     argument for the role: chalk needs LESS ink than graphite needs light. */
+  --scroll-thumb:var(--bone-600);
 
   /* ---- depth. Light and shade swap weight. On graphite the emboss is carried
      by the lit lip and the shade only steadies it; on chalk the lip has to be

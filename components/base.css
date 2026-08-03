@@ -1,7 +1,7 @@
 /* components/base.css
    the page frame itself: reset, body type, the device shell and the shared utility classes.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-page, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-slab, --bg-slab-from, --bg-slab-to, --edge-groove-dark, --edge-groove-light, --focus-ring, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grain-coarse, --text-icon, --text-primary
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-page, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-slab, --bg-slab-from, --bg-slab-to, --edge-groove-dark, --edge-groove-light, --focus-ring, --scrim, --scroll-thumb, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grain-coarse, --text-icon, --text-primary
    Stand:  ui-kit/base.html
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
@@ -30,6 +30,29 @@
    named for the frame is where a component goes to be invisible. */
 
 *{box-sizing:border-box}
+
+/* THE SCROLLBAR, DECLARED ONCE, BECAUSE HIDING IT IS THE SAME DEFECT AS PINNING
+   THE CONTENT OUT OF REACH. Three rails and a sheet body were given a cap and an
+   inner scroll so their tails stop being unreachable; a bar nobody can see takes
+   the tail back, because the bar is the only hint that there is more. So it is
+   made thin and quiet rather than removed: scrollbar-width:thin, the thumb from
+   a role that has a value in both themes, and a TRANSPARENT track, so the thing
+   drawn is the position and never the channel.
+   The ::-webkit- block is the fallback and not a second opinion: a browser that
+   understands scrollbar-width ignores it, and one that does not gets the same
+   8px thumb in the same colour.
+   SEVEN SELECTORS STILL HIDE THEIRS, and they are left alone rather than
+   overruled, because each is a class and this is `*`. Six scroll HORIZONTALLY,
+   where the affordance is a half-visible chip and a bar under it would be a
+   second one saying the same thing: the condensed header strip, the category
+   strip in both its scopes, the sub-category rail's own list, the profile tab
+   bar and the profile gallery. The seventh is the course sidebar, which is
+   chrome around the product rather than part of it. Nothing that scrolls
+   VERTICALLY inside the product hides its bar any more. */
+*{scrollbar-width:thin;scrollbar-color:var(--scroll-thumb) transparent}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--scroll-thumb);border-radius:var(--radius-pill)}
 body{margin:0;line-height:var(--leading-base);color:var(--text-primary);font-family:var(--font-body-root);background:var(--bg-page)}
 button,select,summary{font:inherit}
 .ic{width:var(--icon-22);height:var(--icon-22);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;display:block}
