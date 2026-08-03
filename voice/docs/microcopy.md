@@ -1508,3 +1508,44 @@ first thing a page with that title owes a reader.
 
 Health: 1 line written, 4 moved onto 76 screens, 4 moved onto one page, 0 rewritten. Gate 19 now
 fails the build when a screen and its family's shared dialog disagree, in either tree. 0 em-dash.
+
+---
+
+### Step 28 - Five trader terms in the five places a person meets them while ACTING
+
+The rule this pass applies was written the same day it was applied, and that is the finding. The
+lexicon has carried the ban since step 01 (`shares`, `spread`, `liquidity as a headline number`,
+`order book`, `position`, `AMM`, `market` for the event), and the ban was a LIST OF WORDS. A list of
+words cannot answer the question the product actually asks, which is why `AMM` on the How It Works
+page is right and `(AMM)` under the Confirm button is wrong. `voice/docs/voice.md` now states the
+invariant instead: **the ban is about PLACE, not about the word.** A trader term is forbidden
+wherever a person meets it while ACTING - a control label, a heading, a figure read to decide - and
+allowed inside a block whose whole job is to explain the mechanism, glossed in plain words. **And the
+head of an exempt block is not inside the exemption**, because a summary, a tab and a title are read
+by everyone who never opens them.
+
+Sorted by that invariant, eight placements. **Five fail and are rewritten here:**
+
+| was | is | where | which half of the invariant |
+|---|---|---|---|
+| `Holders` | `Bettors` | a `.seg` button in the Comments tab, 9 screens per tree | a control label. The lexicon's word for a person's stake is **bet**, and `position` is the trader's word for the same thing |
+| `Liquidity` | `Available to bet` | `.ms-label` beside its figure, 9 per tree | a figure read to decide. The panel it stands in IS exempt, for EXPLANATION, and a naked number explains nothing, so it also fails principle 1 |
+| `Market` | `How the odds are set` | the `<summary>` of the collapsed panel, `.market-title`, 9 per tree | the head of the exempt block. It is read by everyone who never opens the panel, and it now says what is inside instead of naming the mechanism |
+| `Market Context` | `Background` | a `.rules-tab` beside `Rules`, 9 per tree | a tab label is an invitation, not an explanation. This was the worst spot in the product for the product's most-confused word: it sat next to the one panel that exists to keep `market` unconfused |
+| `Payout depends on when you bet (AMM).` | `Payout depends on when you bet.` | `.fine` under Confirm, 4 screens, 8 painted occurrences and 4 grey | fine print read while deciding. The mechanism is still named where it is explained, one screen away |
+
+**Three pass and are untouched**, which is the half of the invariant that keeps it from being a
+find-and-replace: `order book` and `AMM` inside `.md-sub`, which is the mechanism being explained and
+which says what it is NOT ("This market runs on an AMM, not an order book"), 9 per tree each; and
+`AMM` on How It Works, 1 per tree.
+
+**Route.** `wireframes/_generators/voice_reconcile.py`, idempotent and in place, both trees in one
+run, because `CLAUDE.md` forbids regenerating the grey tree and a text edit is not a regeneration.
+97 replacements on 22 files, second run 0. Both trees carry every string at the same count, so gate
+18 is quiet and correct.
+
+Health: 0 lines written from nothing, 5 rewritten, 3 deliberately kept, 0 em-dash. **And the class
+this belongs to is the third instance in this repo: an invariant kept as a list of instances.** The
+screen map was five hand copies before `_twins.py`; step 24 found 43 shipped strings with no row
+here; step 14 declared itself "clean on cents / spread / liquidity / order book" while leaving every
+instance outside its own list, including the `.fine` line it edited in that same pass.

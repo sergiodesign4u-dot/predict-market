@@ -1645,6 +1645,73 @@ check("32 no computed-only claim is idle", not _a_idle,
 notes.append("%-34s %s" % ("32 declared computed-only",
                            "%d component(s), each with its reason" % len(_computed_only)))
 
+# ---- 33. a trader term in a place a person meets while ACTING ---------------
+# THE RULE THAT WAS A LIST OF WORDS. `voice/docs/voice.md` has banned the trader
+# lexicon from the UI since step 01, and five placements shipped in both trees
+# anyway - `Holders` on a control, `Liquidity` as a bare figure, `Market` as the
+# head of a panel, `Market Context` as a tab, `(AMM)` in the fine print under
+# Confirm - because the ban was written as a list of INSTANCES and a list of
+# instances cannot answer the question the product asks. `AMM` on How It Works
+# is right and `(AMM)` under Confirm is wrong, and no list of words distinguishes
+# them. The invariant does: the ban is about PLACE. That is mechanisable, and
+# this is the mechanism.
+#
+# The two lists it crosses are in `ui-kit/_voice.py`: the terms, straight out of
+# the lexicon, and the places a person acts - a control, a heading, a field
+# label, a figure read to decide. Prose is not read at all, which is the point.
+# The exemption list carries the same control every declared list here carries,
+# and it earned it on the first run: six rows copied out of the sorted decision
+# named blocks the scan never visits, and all six failed as idle.
+import _voice                                                          # noqa: E402
+
+_v_bad, _v_idle = _voice.findings()
+check("33 no trader term where a person acts", not _v_bad,
+      "%d: %s" % (len(_v_bad), "; ".join(_v_bad[:3])))
+check("33 no idle voice exemption", not _v_idle,
+      "%d: %s" % (len(_v_idle), "; ".join(_v_idle)))
+notes.append("%-34s %s" % ("33 acting places read",
+                           "%d term(s) x %d place kind(s), %d declared exemption(s)"
+                           % (len(_voice.TERMS),
+                              len(_voice.ACTING_TAGS) + len(_voice.ACTING_CLASSES),
+                              len(_voice.EXEMPT_PHRASES) + len(_voice.EXEMPT_PLACES))))
+
+# ---- 34. a document row that does not match the product ---------------------
+# THREE FALSE ROWS, FOUND ONE PER ROUND BY SOMEBODY WRITING ABOUT SOMETHING ELSE,
+# which is the part worth gating. `ui-kit/docs/backlog.md` S21: the wallet's
+# transaction list filed under `account.css`, which has two rules and no list;
+# the section divider `p.pos-status` filed under `position.css`, which does not
+# mention it; and `.ed-layout` claiming 10 screens where it stands on 11. Nobody
+# was looking for any of them.
+#
+# WHAT MAKES IT GATEABLE. Most of the inventory maps itself from the `Classes:`
+# header every component file carries, and a self-mapping cell cannot go stale.
+# Both false FILE cells were in the HAND-WRITTEN half, and one of them did not
+# have to be: `stems_for()` took the first dot-separated part of a selector, so
+# `p.pos-status` resolved to the TAG, nothing owned it, and the row fell
+# silently through to the hand map. That is fixed, so the gate is now "rebuild
+# the three computed columns and compare", and it fails on any cell a person has
+# edited away from what the markup says.
+#
+# AND THE ARROW REVERSED. A hand-map row that matches no inventory row is the
+# same defect pointed the other way: a document sentence about something the
+# product no longer has. It carries the control every declared list here carries,
+# and it earned it immediately - eight of forty one matched nothing, all eight in
+# the one place both false cells came from.
+#
+# WHAT IS NOT GATED, and it is named rather than implied: the `#f` column. It is
+# not computed by anything, and it cannot be until it has ONE definition:
+# measured today, 38 of the 54 rows whose classes are findable disagree with a
+# count of the painted files carrying them, because some cells mean "files that
+# carry the markup" and some mean "screens that show it" - a dialog embedded in
+# every page and opened on four is both 105 and 4. `ui-kit/docs/backlog.md` S23.
+from _fill_inventory import current as _inv_current                    # noqa: E402
+
+_inv_ok, _inv_idle = _inv_current()
+check("34 every inventory cell is what the markup says", _inv_ok,
+      "run: python3 ui-kit/_fill_inventory.py")
+check("34 no idle row in the hand map", not _inv_idle,
+      "%d: %s" % (len(_inv_idle), "; ".join(_inv_idle)))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

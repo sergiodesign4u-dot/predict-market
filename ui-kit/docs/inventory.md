@@ -94,7 +94,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 
 | Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Two-plate layout (`.ed-layout`: content + sticky bet panel) | - | - | - | event-detail, event-detail-bet | binary / multi | 10 | WF | - | + |
+| Two-plate layout (`.ed-layout`: content + sticky bet panel) | - | - | - | event-detail, event-detail-bet | binary / multi | 11 | WF | - | + |
 | Event head (`.ed-head`: thumb, category, question, big prob, thin `.ed-oddsbar`, actions) | `event-detail.css`, `oddsbar.css` | [event-detail](../event-detail.html), [oddsbar](../oddsbar.html) | L3 | event-detail (+ bet variants) | binary / multi | 11 | WF | event | + |
 | Bet panel (`.bet-panel`: `.bp-dir` filled-selected side, amount, quick chips, payout line, Confirm) | `betpanel.css` | [betpanel](../betpanel.html) | L3 | event-detail (+ bet variants) | intent / insufficient / reconcile / processing / error / resolved | 10-36 | WF | - | + |
 | Bet dock (mobile sticky, `.bet-dock`) | `betpanel.css` | [betpanel](../betpanel.html) | L3 | event-detail | collapsed -> expand to confirm | 8 | WF | - | + |
@@ -152,7 +152,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Identity row (`.idrow`: ringed 72px avatar `.av`, name, handle, Edit pill) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | own (Edit) / read-only | 2 | WF/UV | portrait | + |
-| Section divider (`p.pos-status`, brass tick) | `position.css` | [position](../position.html) | L3 | my-profile, public-profile | default | 2 | UV | - | + |
+| Section divider (`p.pos-status`, brass tick) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | default | 2 | UV | - | + |
 | Reputation stat-grid (Track record: tiles, brass win-rate hero tile) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | default | 2 | WF/UV | - | + |
 | Profile tabs (`.ptabs` CSS-only radio: Track record / Past wins / Resolved) | `tabs.css` | [tabs](../tabs.html) | L3 | my-profile, public-profile | per-tab active, focus ring | 2 | WF/UV | - | + |
 | Share-card gallery (`.gallery` horizontal rail of win cards) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | populated | 7 | WF/UV | art / generated | + |
@@ -160,7 +160,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Portfolio summary (`.pos` 3-figure grid: total / cash / in-play + inline CTA) | `position.css` | [position](../position.html) | L3 | my-profile, wallet | default | 3 | WF/UV | - | + |
 | CTA bar (`.cta-bar`: Add funds + Open Wallet / Withdraw) | `account.css` | [account](../account.html) | L2 | how-it-works, my-profile, wallet | default | 3 | WF | - | + |
 | Position row (`.pos`: question, figures, status) | `position.css` | [position](../position.html) | L3 | active-bets, notifications, wallet, profile | active / resolved / skeleton | 9+ | WF/UV | - | ~ |
-| Transaction list (deposits/payouts/fees/stakes) | `account.css` | [account](../account.html) | L2 | wallet | list / loading / error | 3 | WF | - | + |
+| Transaction list (deposits/payouts/fees/stakes) | `position.css` | [position](../position.html) | L3 | wallet | list / loading / error | 3 | WF | - | + |
 
 ## 7. Footer
 

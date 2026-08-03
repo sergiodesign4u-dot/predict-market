@@ -6,7 +6,7 @@ where this table says nothing is holding.
 
 **Why the first column is a gate and not a category.** The taxonomy this step inherits was written
 for a project with no build check: eighteen classes of defect, each to be looked for by hand, on
-every screen. This project has **32 gates over 76 checks**, and a green gate is not an audit result,
+every screen. This project has **34 gates over 80 checks**, and a green gate is not an audit result,
 it is a **proof**. A class of defect covered by a gate does not need a person to go and look: it
 needs a person to confirm the gate asks the right question, once, and then the answer holds on every
 commit rather than on the day somebody checked. Running a manual pass over a gated class is not
@@ -60,8 +60,10 @@ No em dash.
 | 21 | A guide that invents its own sources | **28** | names every source, invents none, and is current |
 | 22 | An em dash | **7** | the whole repo |
 | 23 | A product edit that never got committed | **1** | `components/`, `wireframes/` and `ui-visual/` against HEAD, so a green build is a green build of what is actually in the tree |
+| 23a | **A trader term where a person acts** | **33** | 13 terms crossed with 19 kinds of acting place, over both trees. Prose is not read at all, which is the invariant: the ban is about PLACE. Two declared exemptions, each a phrase rather than a location, and an idle one fails |
+| 23b | **A document row that does not match the product** | **34** | the inventory's three computed columns are rebuilt and compared, and the hand-written half of the map fails on a row that matches nothing |
 
-**23 classes, and none of them needs a person to go and look.** What step 8 owes each of these is one
+**25 classes, and none of them needs a person to go and look.** What step 8 owes each of these is one
 question: does the gate ask the right thing. Two of the 23 have a known answer to that already, and
 both are recorded rather than assumed: gate 14 missed `.signin-lead` and `.delta .row` because each
 selector has a real ancestor, and gate 1 masks the `<aside>`, which is why gate 22 exists.
@@ -86,8 +88,8 @@ written next to it.
 
 | # | Class of defect | Where it is already known to bite | Why no gate |
 |---|---|---|---|
-| 31 | **Copy against the voice contract** | `docs/backlog.md` 29: five placements of a trader term, 9 screens per tree each, plus `(AMM)` on 4 | The invariant was only written down on 2026-08-03. Now that the rule is about PLACE, it is mechanisable: a term list crossed with an element list. **The strongest candidate for gate 33** |
-| 32 | **A document row that does not match the product** | `ui-kit/docs/backlog.md` S21: inventory L163, L155 and L97, and the mechanism behind two of them | Three of the inventory's columns are computed and correct; the false cells are in the hand map and in a column nothing computes |
+| ~~31~~ | ~~**Copy against the voice contract**~~ **CLOSED: it is gate 33.** | ~~`docs/backlog.md` 29: five placements of a trader term~~ - all five rewritten by `wireframes/_generators/voice_reconcile.py`, 97 replacements on 22 files across both trees, second run 0. `voice/docs/microcopy.md` Step 28 | **The gate's own two-way proof found what the rule could not.** Reverting each of the five one at a time demanded a red for each, and two came back GREEN: `Holders` was not in the lexicon at all, because the list held `position` and not the person who has one, and `Liquidity` and `(AMM)` were invisible to the scanner because `finditer` does not overlap and an enclosing `<div>` had swallowed its own children. Both are fixed, all five now go red one at a time, and `voice.md` gained `holder`. **A checker that cannot fail on the defect it was written for is row 42 in a new costume** |
+| ~~32~~ | ~~**A document row that does not match the product**~~ **CLOSED: it is gate 34.** | ~~S21: inventory L163, L155 and L97~~ - all three corrected, and the MECHANISM closed rather than the instances: `stems_for()` took the first dot-separated part of a selector, so `p.pos-status` resolved to the tag and fell through to the hand map | **And the idle control found eight more the moment it was switched on.** Eight of forty one hand-map rows matched nothing, every one in the same hand-written half both false cells came from, and the rebuilt table is byte-identical without them. What is deliberately NOT gated is named in the code: the `#f` column, where 38 of 54 findable rows disagree with a count, because the cells carry two different definitions. `ui-kit/docs/backlog.md` S23 |
 | 33 | **A class declared in the wrong file** | `docs/backlog.md` 17: five classes, each distorting the level it feeds | The ownership map is not wrong, so no check can see it: `.grid-l` in `feed.css` IS the file with the fewest ancestors. It needs a human to say the chart's grid line belongs to the chart |
 | 34 | **A component boundary nobody has drawn** | `docs/backlog.md` 16b, 16d, 18, 19 | `card` is a molecule and an organism, `notice` is six blocks, `position` is four things, `hiw-dialog` is two components on one vocabulary. Arithmetic can count them; only a person can split them |
 | 35 | **Keyboard reachability** | `docs/backlog.md` 22 (the filter panel) and 23 (a multi-outcome row is a `<div>` that answers a click) | `audit.cjs --focus` walks the tab order and measures the RING; it does not ask whether everything operable is IN the order |
@@ -106,12 +108,13 @@ written next to it.
 | 46 | **A link wrapped around a button, 2,448 times** | Found while measuring row 35's reachability. `<a href="..."><button type="button">YES</button></a>` is the shipped shape of every YES/NO on a feed card, and of the header's portfolio and favourites controls: **2,448 occurrences on 133 painted screens and 1,629 on 104 grey ones**, both trees agreeing. `<button>` is interactive content and the HTML content model forbids interactive content inside `<a>`; the two elements also carry different roles, so what a screen reader announces for the pair is not defined by anything. The largest single shape is the bare `<a href="..."><button type="button">` at 1,712, and the loudest is `<a href="..." aria-label="Favorites, see saved events"><button type="button" class="icon-btn" aria-label="Favorites">` - **two accessible names on one target**, 89 times | **None, and no gate can be written for it here.** Gate 4 resolves the href, gate 18 pairs the trees and they agree, and nothing in the build parses the HTML content model. It is markup, so under the twin contract it belongs to the grey tree first and is a Stage 12 handoff item rather than a Design System edit. Named here because it was measured here |
 | 47 | **The ring reader measures the element that has focus, not the element the ring was moved to** | `ui-kit/_verify/browser.cjs` `ring()` reads `document.activeElement`, its `outlineColor`, and the ground under it. Two components in this system deliberately put the ring somewhere else, because the focused element is a hidden input: `tabs.css` maps `#edtab-*:focus-visible ~ .ed-tabbar label[for=...]` and `filters.css` now uses `label:has(input:focus-visible)`. In both, `base.css`'s universal `:focus-visible` still draws an outline on the hidden input itself - offscreen in one case, on a 1x1 transparent box in the other - so `ring()` returns `visible:true` and a ratio for a ring **no person can see**, and would return exactly that even if the label rule were deleted | **None, and it is the third instance of 42's shape in this run.** The instrument reports a clean result about the wrong object. Both ring placements in this repo were measured by hand instead, with the composite ground computed through the translucent brass wash: the tab labels at 8.71 and 7.14, the filter labels at 8.31/7.80 on graphite and 4.48/7.14 in daylight. A gate would have to ask "if this element's outline is invisible, is there another element that gained one" |
 
-**Seventeen open classes**, two of them found while fixing the others. Two (31 and 32) are mechanisable
-now and should become gates rather than a pass; nine (33, 34, 38, 39, 42, 43, 44, 45 and 47) need a
-person, because each is a JUDGEMENT about where a thing belongs or about a record nobody can edit,
-not a fact a checker can read; four (35, 36, 37, 46) belong to owners outside this stage, three of
-them already assigned in `docs/backlog.md` and the fourth a markup question the twin contract sends
-to the grey tree first; two (40, 41) are hygiene with a measured size and a decision still to take.
+**Fifteen open classes**, two of them found while fixing the others, and two struck: **31 and 32 are
+now gates 33 and 34**, so they are proofs rather than a pass. Nine (33, 34, 38, 39, 42, 43, 44, 45
+and 47) need a person, because each is a JUDGEMENT about where a thing belongs or about a record
+nobody can edit, not a fact a checker can read; four (35, 36, 37, 46) belong to owners outside this
+stage, three of them already assigned in `docs/backlog.md` and the fourth a markup question the twin
+contract sends to the grey tree first; two (40, 41) are hygiene with a measured size and a decision
+still to take.
 **42, 43 and 47 are one shape seen three times** - a broken instrument reporting a clean result, once
 in a document, once in a photograph and once about a focus ring nobody can see. That is the argument
 for where the next pass looks: not at what the checks report, but at what they are looking at.
@@ -136,9 +139,11 @@ are not open findings, they are work with a date on it.
 ## What this table changes about the run
 
 The inherited plan was eighteen classes, hunted by hand, over 105 screens in two themes at two
-widths. The count that matters is different: **23 classes are proven, 7 are measured and need a
-re-run rather than a search, and 15 are open** - and of the fifteen, eight are the ones that actually
-need eyes.
+widths. The count that matters is different: **25 classes are proven, 7 are measured and 15 are open** -
+and of the fifteen, nine are the ones that actually need eyes. Two of the eighteen inherited classes
+became gates in this step rather than a hunt, and both of the new gates found a defect the class
+description had not known about, which is the argument for the column restated: a gate is not a
+tidier way of looking, it is a different instrument.
 
 That is the whole argument for putting the gate in the first column. A pass that re-hunts a gated
 class is not more thorough than the gate; it is a person doing by hand, once, on the screens they

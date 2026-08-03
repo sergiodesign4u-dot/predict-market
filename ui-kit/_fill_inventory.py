@@ -53,7 +53,17 @@ INV = os.path.join(ROOT, "ui-kit", "docs", "inventory.md")
 COMP = os.path.join(ROOT, "components")
 KIT = os.path.join(ROOT, "ui-kit")
 
-# rows that name their component in prose rather than by class
+# ROWS THAT NAME THEIR COMPONENT IN PROSE RATHER THAN BY CLASS, and this is the
+# hand-written half of the map. Both false file cells in `ui-kit/docs/backlog.md`
+# S21 came from here, which is what a hand-written half is for. It now carries
+# the control every declared list in this repo carries: an entry that matches no
+# row fails the build. On the run that added the control, EIGHT of forty one
+# matched nothing - `Win overlay`, `Loss overlay`, `Shared dialog shell`,
+# `Profile tabs`, `Active / History tabs`, `Resolution block`, `Section divider`
+# and `hero trust cards` - because every one of those rows had since gained a
+# quoted class and was already resolving without the hand map. Eight dead rows
+# in the one place two defects came from, and nothing had said so. They are
+# deleted, and the rebuilt table is byte-identical without them.
 TITLE = {
     "App header (lean)": "header",
     "Logo (Events home)": "header",
@@ -65,7 +75,6 @@ TITLE = {
     "Auth entries (Log in / Sign up)": "button",
     "Category nav band": "catnav",
     "Bottom nav (mobile, 4 slots)": "bottomnav",
-    "Active / History tabs": "tabs",
     "Footer language menu": "footer",
     "Screen-tree drawer / roadmap sidebar": "course-chrome",
     "Event card, binary (treatment B)": "card",
@@ -75,11 +84,8 @@ TITLE = {
     "Probability figure": "card",
     "Card meta row (Volume / Closes + bookmark)": "card",
     "Responsive card grid": "feed",
-    "hero trust cards": "hero",
     "Load-more control": "loadmore",
-    "Resolution block": "event-detail",
     "Content tab strip": "tabs",
-    "Shared dialog shell": "dialog",
     "Provider buttons (Google / X / Apple, real brand marks)": "button",
     "Amount field + quick-amount chips": "input",
     "Field label": "input",
@@ -87,13 +93,9 @@ TITLE = {
     "Bottom-sheet / modal overlay (grab, backdrop)": "dialog",
     "Filter menu (Sort / Frequency)": "filters",
     "Reverse-order toggle switch": "filters",
-    "Win overlay": "dialog",
-    "Loss overlay": "dialog",
     "Share Card (auto-generated win visual, reused in profile gallery)": "dialog",
-    "Section divider": "position",
     "Reputation stat-grid": "profile",
-    "Profile tabs": "profile",
-    "Transaction list (deposits/payouts/fees/stakes)": "account",
+    "Transaction list (deposits/payouts/fees/stakes)": "position",
     "Product footer (brand, markets, product, support, company, legal)": "footer",
     "Footer trust strip": "trustbar",
 }
@@ -128,28 +130,50 @@ def class_owner():
     return owner
 
 
-def stems_for(title, owner):
+def stems_for(title, owner, used=None):
+    """Which component file(s) a row belongs to, from the classes it quotes and
+    only then from the hand map.
+
+    A TAG-QUALIFIED SELECTOR IS STILL A CLASS. This used to read
+    `c.lstrip(".").split(".")[0]`, which takes the FIRST dot-separated part, so
+    `p.pos-status` resolved to `p`, nothing owns `p`, and the row fell silently
+    through to the hand map and was filed under the wrong file for a whole stage
+    (`ui-kit/docs/backlog.md` S21, L155). Four rows in the table are written
+    that way and three were right by coincidence, because `dialog.app-dialog`
+    and `dialog.outcome-dialog` happen to have a tag that is also a component
+    name. Every part is tried now, LEFT TO RIGHT, and the first one an owner
+    claims wins. Left to right and not longest first, which was the second cut
+    and broke a row while fixing one: `.card.skeleton` is a card in a state, and
+    the longest part is the STATE, so the row lost `card.css` and kept only the
+    file that happens to declare the modifier. The tag is always leftmost and is
+    almost never a component, so trying it first costs nothing and keeps a
+    compound selector reading as "the thing, then what is done to it"."""
     classes = re.findall(r"`\.?([\w.-]+)", title)
     stems = []
     for c in classes:
-        c = c.lstrip(".").split(".")[0]
-        if c in owner and owner[c] not in stems:
-            stems.append(owner[c])
+        for part in c.lstrip(".").split("."):
+            if part in owner:
+                if owner[part] not in stems:
+                    stems.append(owner[part])
+                break
     if stems:
         return stems
     for key, stem in TITLE.items():
         if key.lower() in title.lower():
+            if used is not None:
+                used.add(key)
             return [stem]
     return []
 
 
-def main():
-    check = "--check" in sys.argv
+def main(check=None):
+    check = ("--check" in sys.argv) if check is None else check
     with open(INV, encoding="utf-8") as fh:
         lines = fh.read().splitlines()
     owner = class_owner()
     pages = {f[:-5] for f in os.listdir(KIT) if f.endswith(".html")}
     out, filled, dashed, header_width = [], 0, 0, 0
+    used = set()
     for line in lines:
         if not (line.startswith("|") and line.count("|") >= 7):
             out.append(line)
@@ -183,7 +207,7 @@ def main():
             cells = cells[:1] + cells[3:]
         if len(cells) >= 2 and LEVEL_CELL.match(cells[1]):
             cells = cells[:1] + cells[2:]
-        stems = stems_for(cells[0], owner)
+        stems = stems_for(cells[0], owner, used)
         if stems:
             css = ", ".join("`%s.css`" % s for s in stems)
             pg = []
@@ -202,8 +226,13 @@ def main():
     if not check:
         with open(INV, "w", encoding="utf-8") as fh:
             fh.write(text)
-    print("rows with a component: %d, rows deliberately dashed: %d" % (filled, dashed))
+    idle = sorted(set(TITLE) - used)
+    print("rows with a component: %d, rows deliberately dashed: %d, hand map %d of %d used"
+          % (filled, dashed, len(used), len(TITLE)))
+    if idle:
+        print("hand-map rows that match nothing: " + "; ".join(idle))
     fill_readme(check)
+    return text, idle
 
 
 # ------------------------------------------------------- the count in README --
@@ -267,6 +296,21 @@ def fill_readme(check=False):
     with open(README, "w", encoding="utf-8") as fh:
         fh.write(new)
     print("README counts            rewritten")
+
+
+def current():
+    """(the inventory as it would be rebuilt, the hand-map rows that match
+    nothing). Used by gate 34, which is why main() returns them: a cell that a
+    generator would write differently is a document row that does not match the
+    product, and a hand-map row that matches nothing is the same defect with the
+    arrow reversed."""
+    import io
+    import contextlib
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf):
+        text, idle = main(check=True)
+    with open(INV, encoding="utf-8") as fh:
+        return text == fh.read(), idle
 
 
 if __name__ == "__main__":

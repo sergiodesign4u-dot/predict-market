@@ -220,7 +220,10 @@ crypto vocabulary; the rule is spectator-legible, not trader-fluent (P3).
   on-chain ("anyone can verify it on the blockchain").
 - **Not allowed in the UI (trader jargon):** shares, cents / ¢ pricing, spread,
   liquidity as a headline number, order book, position (for the user's own bet),
-  buy / sell, long / short, AMM / CLOB, "market" for the event. These are "the
+  **holder** (the person form of the same word, added 2026-08-03 when gate 33's
+  own two-way proof went green on `Holders` and proved the list held the thing
+  and not the person), buy / sell, long / short, AMM / CLOB, "market" for the
+  event. These are "the
   language of a trader, not a spectator" (`ux-patterns.md`).
 - **THE INVARIANT: the ban is about PLACE, not about the word.** A trader term is
   forbidden wherever a person meets it while ACTING - a control label, a heading,

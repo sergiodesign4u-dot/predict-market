@@ -395,15 +395,15 @@ document.addEventListener('click', function (e) {
           </div>
           <section class="ed-section ed-market">
             <details class="market-box" open>
-              <summary class="market-head"><span class="market-title">Market <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <summary class="market-head"><span class="market-title">How the odds are set <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
               <div class="market-body">
-                <div class="market-stats"><div><span class="ms-label">Yes price</span><span class="ms-val ms-yes">38%</span></div><div><span class="ms-label">No price</span><span class="ms-val ms-no">62%</span></div><div><span class="ms-label">24h</span><span class="ms-val ms-up">+2 pts</span></div><div><span class="ms-label">Volume</span><span class="ms-val">$84,200</span></div><div><span class="ms-label">Liquidity</span><span class="ms-val">$31,500</span></div></div>
+                <div class="market-stats"><div><span class="ms-label">Yes price</span><span class="ms-val ms-yes">38%</span></div><div><span class="ms-label">No price</span><span class="ms-val ms-no">62%</span></div><div><span class="ms-label">24h</span><span class="ms-val ms-up">+2 pts</span></div><div><span class="ms-label">Volume</span><span class="ms-val">$84,200</span></div><div><span class="ms-label">Available to bet</span><span class="ms-val">$31,500</span></div></div>
                 <div class="market-depth"><span class="md-title">Price by bet size</span><span class="md-sub">How the YES price moves as your bet grows. This market runs on an AMM, not an order book.</span><div class="md-table"><div class="md-row md-row-head"><span>Bet</span><span>Avg YES price</span><span>You receive if YES</span></div><div class="md-row"><span class="md-bar" style="width:12%"></span><span class="md-amt">$10</span><span class="md-price">38%</span><span class="md-get">$26.32</span></div><div class="md-row"><span class="md-bar" style="width:30%"></span><span class="md-amt">$100</span><span class="md-price">39%</span><span class="md-get">$256.41</span></div><div class="md-row"><span class="md-bar" style="width:58%"></span><span class="md-amt">$1,000</span><span class="md-price">42%</span><span class="md-get">$2,380.95</span></div><div class="md-row"><span class="md-bar" style="width:88%"></span><span class="md-amt">$5,000</span><span class="md-price">49%</span><span class="md-get">$10,204.08</span></div></div></div>
               </div>
             </details>
           </section>
           <section class="ed-section ed-rules">
-            <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel">Rules</button><button type="button" class="rules-tab">Market Context</button></div>
+            <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel">Rules</button><button type="button" class="rules-tab">Background</button></div>
             <div class="rules-panel"><p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
             <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Predict Market team.</p></div>
             <div class="rules-panel" hidden><p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
@@ -439,7 +439,7 @@ document.addEventListener('click', function (e) {
             <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
               <div class="cmt-controls">
                 <span>128 comments</span>
-                <span class="seg"><button type="button" class="sel">Newest</button><button type="button">Top</button><button type="button">Holders</button></span>
+                <span class="seg"><button type="button" class="sel">Newest</button><button type="button">Top</button><button type="button">Bettors</button></span>
               </div>
               <div class="cmt-compose">
                 <span class="cmt-av">you</span>
@@ -1164,7 +1164,7 @@ document.addEventListener('click', function (e) {
       });
     });
   });
-  /* Rules / Market Context tabs */
+  /* Rules / Background tabs */
   document.querySelectorAll('.ed-rules').forEach(function(box){
     var tabs = box.querySelectorAll('.rules-tab'), panels = box.querySelectorAll('.rules-panel');
     tabs.forEach(function(tab, i){
