@@ -1804,6 +1804,65 @@ notes.append("%-34s %s" % ("35 pages read for literal markdown",
                            "%d page(s), %d mark(s), %d declared exception(s)"
                            % (len(GENERATED_PAGES), len(MD_MARKS), len(MD_LITERAL))))
 
+# ---- 36. a gallery is a difference, not an occurrence ------------------------
+# THE PAGE THAT GREW WITH THE MARKUP INSTEAD OF WITH THE SYSTEM. `ui-kit/
+# button.html` carried EIGHT state galleries for a component that makes FIVE
+# decisions. The three extra were `.state-btn` beside `.auth-btn`, `.state-btn
+# .primary` beside `.auth-btn.primary`, and the second child of `.cta-bar`, and
+# the authored source names all three as the same answer in its own prose. 24 of
+# this component's 64 pictures existed to show that two things look the same.
+#
+# WHY IT HAPPENED, because the mechanism is the lesson. The capture keyed a group
+# on `element selector | rest face`, so the class name was part of the identity
+# and one control under two names was two groups by construction. The element
+# selector is out of the key now and the merge happens after the shooting rather
+# than before it, because a difference is free to live in any of the four states:
+# key on rest and one of a pair is never shot at all, which does not merge the
+# difference away, it stops it being measured.
+#
+# AND THE INSTRUMENT COULD NOT SEE THE DIFFERENCE IT WAS ASKED ABOUT. A face was
+# five values, and the two things that make this family's members differ are a
+# one-pixel lift and a glow: `transform` and `box-shadow`, neither of them in the
+# five. So `.provider-btn` read as identical to `.auth-btn` while both the
+# stylesheet and the authored page said it is not. The list is now in one place
+# in `browser.cjs` (it had been written in three, already drifted by a property)
+# and carries transform, box-shadow and opacity. Merging on the old reading would
+# have deleted the picture of a real difference, which is the same shape as row
+# 42: a check reporting a clean result about a property it never looked at.
+#
+# WHAT IS GATED AND WHAT IS ONLY LISTED. Five other components still hold the
+# same defect, and they hold it in the OLD recording, so their duplicate count is
+# an upper bound that only a re-capture can settle. Re-capturing them is not this
+# step's work. They are declared below with what they carry, which makes the debt
+# a register rather than a silence, and the entry clears itself: a component that
+# no longer holds a duplicate fails here as idle.
+NOT_RECAPTURED = {
+    "card": "2 duplicate groups (g1/g4, g5/g6), 16 pictures",
+    "event-detail": "1 duplicate group (g1/g2), 8 pictures",
+    "header": "1 duplicate group of four (g1/g4/g6/g7), 24 pictures",
+    "hero": "1 duplicate group (g1/g5), 8 pictures",
+    "tabs": "1 duplicate group (g1/g4), 8 pictures",
+}
+_dup = _states.duplicated()
+_dup_bad = ["%s: %s" % (c, " ".join("=".join(ids) for ids in same))
+            for c, same in sorted(_dup.items()) if c not in NOT_RECAPTURED]
+_dup_idle = sorted(set(NOT_RECAPTURED) - set(_dup))
+check("36 every gallery is a difference", not _dup_bad,
+      "%d: %s" % (len(_dup_bad), "; ".join(_dup_bad[:4])))
+check("36 no idle not-recaptured entry", not _dup_idle,
+      "%d: %s" % (len(_dup_idle), ", ".join(_dup_idle)))
+# The other direction of gate 31's "no picture file is gone": a picture nobody
+# points at. It is what a merge leaves behind if it forgets to sweep, and it was
+# already true of two `tabs` focus pictures before any merge ran.
+_orphan = _states.orphans()
+check("36 no picture belongs to nothing", not _orphan,
+      "%d: %s" % (len(_orphan), ", ".join(_orphan[:4])))
+notes.append("%-34s %s"
+             % ("36 galleries read",
+                "%d group(s) over %d component(s), %d declared not re-captured"
+                % (sum(len(g) for g in _states.by_component().values()),
+                   len(_states.by_component()), len(NOT_RECAPTURED))))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

@@ -498,13 +498,24 @@ def state_gallery(name):
         note = ('<p class="tk-note ck-shot-gap">Not staged: %s. No specimen puts this one '
                 'where the state can be raised, which is a specimen debt and not a missing '
                 'rule.</p>' % ", ".join(missing)) if missing else ""
+        # WHAT ELSE THIS ONE PICTURE ANSWERS FOR. A gallery is a DIFFERENCE and
+        # not an occurrence, so a group that covers three placements has to say
+        # the other two out loud: otherwise the page looks like it forgot them,
+        # which is exactly the reading that put eight galleries on the button
+        # page where there are five. Silent when a group covers only itself.
+        covers = [c for c in g.get("covers", []) if c != (
+            g["el"] + (" @" + g["scope"] if g.get("scope") else ""))]
+        also_line = ('<p class="tk-note ck-gal-covers">Same answer, measured across all four '
+                     'states in both themes: <code>%s</code>.</p>'
+                     % "</code>, <code>".join(esc(c) for c in covers)) if covers else ""
         figs.append(
             '<figure class="ck-gal">'
             '<figcaption class="ck-gal-head"><b>%s</b>'
             '<span class="ck-w">%s</span>'
             '<a href="specimens/%s.html" target="_blank" rel="noopener">the specimen</a>'
-            '</figcaption>%s%s%s</figure>'
+            '</figcaption>%s%s%s%s</figure>'
             % (esc(g["el"]), esc(g.get("scope") or "on the bare canvas"), g["specimen"],
+               also_line,
                ('<p class="ck-gal-cap">%s</p>' % md_inline(caps[g["key"]]))
                if g["key"] in caps else "",
                "".join(panels), note))

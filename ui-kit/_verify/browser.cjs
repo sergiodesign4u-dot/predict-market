@@ -271,6 +271,31 @@ window.__ask = (function () {
       ? '.' + String(el.className).trim().split(/\\s+/).join('.') : '')).slice(0, 60);
   }
 
+  /* WHAT A CONTROL'S FACE IS MADE OF, in ONE place. It was written in three:
+     five values here in paint(), the same five again in paintAt(), and six in
+     states.cjs FACE(). Three copies of one idea, and they had already drifted by
+     one property.
+
+     AND THE FIVE WERE NOT ENOUGH, which is the defect this list grew for.
+     components/button.css says the sign-in provider row lifts one pixel on hover
+     and that the brass ones carry a glow, and ui-kit/authored/button.md names
+     both as the thing that makes those members different. Neither transform nor
+     boxShadow was in the five, so the instrument read four controls as ONE face
+     while the document said they were four, and a merge on that reading would
+     have deleted the pictures of a difference nobody could then see. Same shape
+     as the false zero: a check reporting "identical" about a property it never
+     looked at.
+
+     opacity is here for the disabled fade, which is the only state this family
+     expresses that way. Geometry that is only SIZE stays out on purpose: a
+     different padding is the same face at a different size, and splitting on it
+     would put one picture on the page twice. */
+  function face(cs) {
+    return [cs.backgroundColor, cs.backgroundImage.slice(0, 50), cs.borderTopColor,
+            cs.borderTopWidth, cs.color, cs.borderTopLeftRadius,
+            cs.transform, cs.boxShadow.slice(0, 60), cs.opacity].join(' | ');
+  }
+
   var UA_LINK = { 'rgb(0, 0, 238)': 1, 'rgb(85, 26, 139)': 1, 'rgb(0, 0, 255)': 1 };
 
   return {
@@ -355,17 +380,14 @@ window.__ask = (function () {
         }
         out.push({ i: i, el: label(el), scope: where,
                    x: Math.round(b.left + b.width / 2), y: Math.round(b.top + b.height / 2),
-                   rest: [cs.backgroundColor, cs.backgroundImage.slice(0, 50), cs.borderTopColor,
-                          cs.borderTopWidth, cs.color].join(' | ') });
+                   rest: face(cs) });
       }
       return out;
     },
     paintAt: function (i) {
       var el = document.querySelector('[data-paint="' + i + '"]');
       if (!el) return null;
-      var cs = getComputedStyle(el);
-      return [cs.backgroundColor, cs.backgroundImage.slice(0, 50), cs.borderTopColor,
-              cs.borderTopWidth, cs.color].join(' | ');
+      return face(getComputedStyle(el));
     },
     /* HOW FAR THIS ELEMENT PAINTS OUTSIDE ITS OWN BOX, per side, in the state it
        is in right now. Derived and never assigned, and derived from the SUBJECT

@@ -55,12 +55,30 @@ const PORT = process.env.SNAP_PORT || '8901';
      disabled  read, never set: the markup carries the attribute or it does not */
 const STATES = ['rest', 'hover', 'active', 'focus'];
 
-/* The five values that make a control's FACE. Two elements that agree on all
-   five are one picture. Chosen rather than "every property" on purpose: a
-   different padding is the same face at a different size, and splitting on it
-   would put the same picture on the page twice. */
-const FACE = (cs) => [cs.backgroundColor, cs.backgroundImage, cs.borderTopColor,
-                      cs.borderTopWidth, cs.color, cs.borderTopLeftRadius].join('|');
+/* THE FACE IS DEFINED ONCE, IN browser.cjs, and this file no longer keeps its
+   own copy. It kept one for as long as this script existed and the two lists had
+   already drifted apart by a property, which is how a third reader of the same
+   idea always ends. `__ask.paintAt()` is the reader; what it returns is what a
+   picture was taken at and what a group is keyed on, so there is exactly one
+   answer to "are these two the same control".
+
+   THE UNIT OF A PICTURE IS A DIFFERENCE, NOT AN OCCURRENCE, and that is the
+   change of 2026-08-04. The key used to be `element selector | rest face`, so
+   two controls with the same answer under two class names came out as two
+   groups: `.auth-btn` and `.state-btn` are one anatomy in one padding, and
+   ui-kit/authored/button.md says so three times in its own words ("Identical
+   answers, which is the point", "Same three-step", "the answer is the
+   family's"). The vitrine photographed them anyway, 8 groups where there are 5,
+   24 pictures proving that two things look the same. A page that grows one
+   gallery per PLACE grows with the product's markup instead of with the
+   system's decisions, which is backwards.
+
+   So the element selector is out of the key, and the merge happens after the
+   shooting rather than before it: a difference can live in any of the four
+   states, and only the shooting pass raises a hover or a press. Groups whose
+   four states agree in BOTH themes become one, the survivor records everything
+   it covers, and the pictures of the duplicates are deleted rather than left on
+   disk to be found by a later reader who cannot tell why they are there. */
 
 /* EVERY SPECIMEN THAT CARRIES THE CLASS, not the ones registered to the
    component. The first cut asked the manifest - `component === x` or x in
@@ -237,9 +255,43 @@ function classesIn(subjects) {
         await s.close();
       }
     }
-    for (const g of seen.values()) rows.push({ component, ...g });
-    console.log(`${component}: ${seen.size} distinct face(s), ` +
-                `${[...seen.values()].reduce((n, g) => n + Object.keys(g.shots).length, 0)} picture(s)`);
+    /* THE MERGE, AND WHY IT IS HERE AND NOT IN THE KEY ABOVE. The obvious move
+       is to drop the element selector out of the grouping key, and it is wrong:
+       the key is decided at REST, before a pointer has touched anything, and a
+       difference is free to live in any of the four states. `.provider-btn` and
+       `.auth-btn` rest identically and part company on hover, by one pixel. Key
+       on rest and only one of them is ever shot, so the difference is not
+       merged away, it is never measured. Everything is shot, then what agrees in
+       all four states in both themes becomes one picture. */
+    const bySig = new Map();
+    const kept = [];
+    let dropped = 0;
+    for (const g of seen.values()) {
+      const sig = Object.keys(g.shots).sort()
+        .map((k) => `${k}=${g.shots[k].value}`).join('\n');
+      const first = bySig.get(sig);
+      const who = g.el + (g.scope ? ` @${g.scope}` : '');
+      if (!first) {
+        g.covers = [who];
+        bySig.set(sig, g);
+        kept.push(g);
+        continue;
+      }
+      first.covers.push(who);
+      if (g.specimen !== first.specimen) {
+        first.also = [...new Set([...(first.also || []), g.specimen])];
+      }
+      // an orphan png is a picture nobody can explain, so it goes with its group
+      for (const shot of Object.values(g.shots)) {
+        const p = path.join(OUT, shot.file);
+        if (fs.existsSync(p)) fs.unlinkSync(p);
+        dropped++;
+      }
+    }
+    for (const g of kept) rows.push({ component, ...g });
+    console.log(`${component}: ${kept.length} distinct face(s) from ${seen.size} occurrence(s), `
+                + `${kept.reduce((n, g) => n + Object.keys(g.shots).length, 0)} picture(s)`
+                + (dropped ? `, ${dropped} duplicate picture(s) deleted` : ''));
   }
   await B.shutdown();
 

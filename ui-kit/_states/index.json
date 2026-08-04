@@ -228,7 +228,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "7ea106353c8efc1a"
+  "sha": "e8187bf415f85c2d"
  },
  {
   "component": "betpanel",
@@ -461,7 +461,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "e2a677af537ec921"
+  "sha": "d6edbe8fd4ed4b51"
  },
  {
   "component": "betpanel",
@@ -643,7 +643,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-dock.html"
   ],
-  "sha": "599afd86755a992a"
+  "sha": "8e336eded7ca07d8"
  },
  {
   "component": "betpanel",
@@ -842,7 +842,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "99fc12b01a1b5802"
+  "sha": "967f28746f9663bd"
  },
  {
   "component": "betpanel",
@@ -1063,7 +1063,7 @@
    "ui-kit/specimens/betpanel-more.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "9febb218385be813"
+  "sha": "0454ebd7ee429eb2"
  },
  {
   "component": "betpanel",
@@ -1246,7 +1246,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-more.html"
   ],
-  "sha": "a29c0f7c444696c1"
+  "sha": "147d5b96a9cab41b"
  },
  {
   "component": "bottomnav",
@@ -1425,7 +1425,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/bottomnav.html"
   ],
-  "sha": "3e0c9a31ded31659"
+  "sha": "4b5860a73d734642"
  },
  {
   "component": "bottomnav",
@@ -1604,7 +1604,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/bottomnav.html"
   ],
-  "sha": "3e0c9a31ded31659"
+  "sha": "4b5860a73d734642"
  },
  {
   "component": "button",
@@ -1623,7 +1623,7 @@
   "shots": {
    "rest-dark": {
     "file": "button/g1-rest-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
     "w": 79,
     "h": 60,
     "pad": {
@@ -1642,7 +1642,7 @@
    },
    "hover-dark": {
     "file": "button/g1-hover-dark.png",
-    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)",
+    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | none | 1",
     "w": 79,
     "h": 60,
     "pad": {
@@ -1661,7 +1661,7 @@
    },
    "active-dark": {
     "file": "button/g1-active-dark.png",
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)",
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | none | 1",
     "w": 79,
     "h": 60,
     "pad": {
@@ -1680,7 +1680,7 @@
    },
    "focus-dark": {
     "file": "button/g1-focus-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
     "w": 79,
     "h": 60,
     "pad": {
@@ -1699,7 +1699,7 @@
    },
    "rest-light": {
     "file": "button/g1-rest-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
     "w": 79,
     "h": 60,
     "pad": {
@@ -1718,7 +1718,7 @@
    },
    "hover-light": {
     "file": "button/g1-hover-light.png",
-    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
     "w": 79,
     "h": 60,
     "pad": {
@@ -1737,7 +1737,7 @@
    },
    "active-light": {
     "file": "button/g1-active-light.png",
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
     "w": 79,
     "h": 60,
     "pad": {
@@ -1756,7 +1756,7 @@
    },
    "focus-light": {
     "file": "button/g1-focus-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
     "w": 79,
     "h": 60,
     "pad": {
@@ -1775,7 +1775,13 @@
    }
   },
   "also": [
-   "header-out"
+   "header-out",
+   "profile-identity"
+  ],
+  "covers": [
+   "button.auth-btn",
+   "button.state-btn",
+   "button @.cta-bar"
   ],
   "sources": [
    "components/base.css",
@@ -1785,198 +1791,10 @@
    "ui-kit/_specimen.css",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/button-family.html",
-   "ui-kit/specimens/header-out.html"
+   "ui-kit/specimens/header-out.html",
+   "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "1837fb490bf47f14"
- },
- {
-  "component": "button",
-  "id": "g2",
-  "el": "button.state-btn",
-  "scope": "",
-  "specimen": "button-family",
-  "classes": [
-   "a-start",
-   "app-case",
-   "auth-btn",
-   "kit-row",
-   "primary",
-   "state-btn"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "button/g2-rest-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)",
-    "w": 131,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "button/g2-hover-dark.png",
-    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)",
-    "w": 131,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "button/g2-active-dark.png",
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)",
-    "w": 131,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "file": "button/g2-focus-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)",
-    "w": 131,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "button/g2-rest-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)",
-    "w": 131,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "button/g2-hover-light.png",
-    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)",
-    "w": 131,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "button/g2-active-light.png",
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)",
-    "w": 131,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "file": "button/g2-focus-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)",
-    "w": 131,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "state-empty-filters",
-   "notice-push",
-   "base-frame",
-   "betpanel-more"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/button.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/base-frame.html",
-   "ui-kit/specimens/betpanel-more.html",
-   "ui-kit/specimens/button-family.html",
-   "ui-kit/specimens/notice-push.html",
-   "ui-kit/specimens/state-empty-filters.html"
-  ],
-  "sha": "1f419135dc408551"
+  "sha": "7bf8b935fa83592d"
  },
  {
   "component": "button",
@@ -1995,7 +1813,7 @@
   "shots": {
    "rest-dark": {
     "file": "button/g3-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 86,
     "h": 60,
     "pad": {
@@ -2014,7 +1832,7 @@
    },
    "hover-dark": {
     "file": "button/g3-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
     "w": 86,
     "h": 60,
     "pad": {
@@ -2033,7 +1851,7 @@
    },
    "active-dark": {
     "file": "button/g3-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 86,
     "h": 60,
     "pad": {
@@ -2052,7 +1870,7 @@
    },
    "focus-dark": {
     "file": "button/g3-focus-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 86,
     "h": 60,
     "pad": {
@@ -2071,7 +1889,7 @@
    },
    "rest-light": {
     "file": "button/g3-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 86,
     "h": 60,
     "pad": {
@@ -2090,7 +1908,7 @@
    },
    "hover-light": {
     "file": "button/g3-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
     "w": 86,
     "h": 60,
     "pad": {
@@ -2109,7 +1927,7 @@
    },
    "active-light": {
     "file": "button/g3-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 86,
     "h": 60,
     "pad": {
@@ -2128,7 +1946,7 @@
    },
    "focus-light": {
     "file": "button/g3-focus-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 86,
     "h": 60,
     "pad": {
@@ -2149,6 +1967,10 @@
   "also": [
    "header-out"
   ],
+  "covers": [
+   "button.auth-btn.primary",
+   "button.state-btn.primary"
+  ],
   "sources": [
    "components/base.css",
    "components/button.css",
@@ -2159,198 +1981,7 @@
    "ui-kit/specimens/button-family.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "1837fb490bf47f14"
- },
- {
-  "component": "button",
-  "id": "g4",
-  "el": "button.state-btn.primary",
-  "scope": "",
-  "specimen": "button-family",
-  "classes": [
-   "a-start",
-   "app-case",
-   "auth-btn",
-   "kit-row",
-   "primary",
-   "state-btn"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "button/g4-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
-    "w": 136,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "button/g4-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
-    "w": 136,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "button/g4-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
-    "w": 136,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "file": "button/g4-focus-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
-    "w": 136,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "button/g4-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
-    "w": 136,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "button/g4-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
-    "w": 136,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "button/g4-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
-    "w": 136,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "file": "button/g4-focus-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16)",
-    "w": 136,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "state-empty-filters",
-   "state-error",
-   "state-empty",
-   "notice-push",
-   "betpanel-more"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/button.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/betpanel-more.html",
-   "ui-kit/specimens/button-family.html",
-   "ui-kit/specimens/notice-push.html",
-   "ui-kit/specimens/state-empty-filters.html",
-   "ui-kit/specimens/state-empty.html",
-   "ui-kit/specimens/state-error.html"
-  ],
-  "sha": "f635401642561d93"
+  "sha": "1b64ddd3a302de85"
  },
  {
   "component": "button",
@@ -2385,7 +2016,7 @@
   "shots": {
    "rest-dark": {
     "file": "button/g5-rest-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
     "w": 370,
     "h": 61,
     "pad": {
@@ -2404,7 +2035,7 @@
    },
    "hover-dark": {
     "file": "button/g5-hover-dark.png",
-    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)",
+    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | matrix(1, 0, 0, 1, 0, -1) | none | 1",
     "w": 370,
     "h": 60,
     "pad": {
@@ -2423,7 +2054,7 @@
    },
    "active-dark": {
     "file": "button/g5-active-dark.png",
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)",
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | matrix(1, 0, 0, 1, 0, -1) | none | 1",
     "w": 370,
     "h": 60,
     "pad": {
@@ -2442,7 +2073,7 @@
    },
    "focus-dark": {
     "file": "button/g5-focus-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
     "w": 370,
     "h": 61,
     "pad": {
@@ -2461,7 +2092,7 @@
    },
    "rest-light": {
     "file": "button/g5-rest-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
     "w": 370,
     "h": 61,
     "pad": {
@@ -2480,7 +2111,7 @@
    },
    "hover-light": {
     "file": "button/g5-hover-light.png",
-    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | matrix(1, 0, 0, 1, 0, -1) | none | 1",
     "w": 370,
     "h": 60,
     "pad": {
@@ -2499,7 +2130,7 @@
    },
    "active-light": {
     "file": "button/g5-active-light.png",
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | matrix(1, 0, 0, 1, 0, -1) | none | 1",
     "w": 370,
     "h": 60,
     "pad": {
@@ -2518,7 +2149,7 @@
    },
    "focus-light": {
     "file": "button/g5-focus-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
     "w": 370,
     "h": 61,
     "pad": {
@@ -2541,6 +2172,9 @@
    "outcome-overlays",
    "betpanel-states"
   ],
+  "covers": [
+   "button.provider-btn @dialog.signin-dialog"
+  ],
   "sources": [
    "components/base.css",
    "components/button.css",
@@ -2556,7 +2190,7 @@
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "74cdff0865310449"
+  "sha": "f079141112754fd3"
  },
  {
   "component": "button",
@@ -2591,7 +2225,7 @@
   "shots": {
    "rest-dark": {
     "file": "button/g6-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 386,
     "h": 66,
     "pad": {
@@ -2610,7 +2244,7 @@
    },
    "hover-dark": {
     "file": "button/g6-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
     "w": 386,
     "h": 66,
     "pad": {
@@ -2629,7 +2263,7 @@
    },
    "active-dark": {
     "file": "button/g6-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 386,
     "h": 66,
     "pad": {
@@ -2648,7 +2282,7 @@
    },
    "focus-dark": {
     "file": "button/g6-focus-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 386,
     "h": 66,
     "pad": {
@@ -2667,7 +2301,7 @@
    },
    "rest-light": {
     "file": "button/g6-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 386,
     "h": 66,
     "pad": {
@@ -2686,7 +2320,7 @@
    },
    "hover-light": {
     "file": "button/g6-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
     "w": 386,
     "h": 66,
     "pad": {
@@ -2705,7 +2339,7 @@
    },
    "active-light": {
     "file": "button/g6-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 386,
     "h": 66,
     "pad": {
@@ -2724,7 +2358,7 @@
    },
    "focus-light": {
     "file": "button/g6-focus-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 386,
     "h": 66,
     "pad": {
@@ -2750,6 +2384,9 @@
    "options-multi",
    "betpanel-more"
   ],
+  "covers": [
+   "button.confirm-btn @dialog.app-dialog"
+  ],
   "sources": [
    "components/base.css",
    "components/button.css",
@@ -2768,7 +2405,7 @@
    "ui-kit/specimens/options-multi.html",
    "ui-kit/specimens/outcome-overlays.html"
   ],
-  "sha": "37bd9e8df069a695"
+  "sha": "57279404d0bf128b"
  },
  {
   "component": "button",
@@ -2812,7 +2449,7 @@
   "shots": {
    "rest-dark": {
     "file": "button/g7-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 486,
     "h": 70,
     "pad": {
@@ -2831,7 +2468,7 @@
    },
    "hover-dark": {
     "file": "button/g7-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgba(199, 162, 78, 0.45) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgba(199, 162, 78, 0.45) | 0px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
     "w": 486,
     "h": 70,
     "pad": {
@@ -2850,7 +2487,7 @@
    },
    "active-dark": {
     "file": "button/g7-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgba(199, 162, 78, 0.45) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgba(199, 162, 78, 0.45) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 486,
     "h": 70,
     "pad": {
@@ -2869,7 +2506,7 @@
    },
    "focus-dark": {
     "file": "button/g7-focus-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 486,
     "h": 70,
     "pad": {
@@ -2888,7 +2525,7 @@
    },
    "rest-light": {
     "file": "button/g7-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 486,
     "h": 70,
     "pad": {
@@ -2907,7 +2544,7 @@
    },
    "hover-light": {
     "file": "button/g7-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgba(199, 162, 78, 0.6) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgba(199, 162, 78, 0.6) | 0px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
     "w": 486,
     "h": 70,
     "pad": {
@@ -2926,7 +2563,7 @@
    },
    "active-light": {
     "file": "button/g7-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgba(199, 162, 78, 0.6) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgba(199, 162, 78, 0.6) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 486,
     "h": 70,
     "pad": {
@@ -2945,7 +2582,7 @@
    },
    "focus-light": {
     "file": "button/g7-focus-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16)",
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 486,
     "h": 70,
     "pad": {
@@ -2966,218 +2603,8 @@
   "also": [
    "account-cta"
   ],
-  "sources": [
-   "components/account.css",
-   "components/base.css",
-   "components/card.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/position.css",
-   "components/profile.css",
-   "components/tabs.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/account-cta.html",
-   "ui-kit/specimens/profile-identity.html"
-  ],
-  "sha": "85dd1d88a35ca41b"
- },
- {
-  "component": "button",
-  "id": "g8",
-  "el": "button",
-  "scope": ".cta-bar",
-  "specimen": "profile-identity",
-  "classes": [
-   "app-case",
-   "av",
-   "card",
-   "cat-layout",
-   "cat-main",
-   "cta-bar",
-   "device",
-   "edit",
-   "feed",
-   "feed-inner",
-   "gallery",
-   "handle",
-   "idrow",
-   "name",
-   "pos",
-   "pos-fig",
-   "pos-figures",
-   "pos-list",
-   "pos-lost",
-   "pos-q",
-   "pos-record",
-   "pos-side",
-   "pos-status",
-   "pos-top",
-   "pos-won",
-   "ptab-bar",
-   "ptab-in",
-   "ptab-lbl",
-   "ptab-panel",
-   "ptabs",
-   "who"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "button/g8-rest-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)",
-    "w": 462,
-    "h": 70,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "button/g8-hover-dark.png",
-    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)",
-    "w": 462,
-    "h": 70,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "button/g8-active-dark.png",
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255)",
-    "w": 462,
-    "h": 70,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "file": "button/g8-focus-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218)",
-    "w": 462,
-    "h": 70,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "button/g8-rest-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)",
-    "w": 462,
-    "h": 70,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "button/g8-hover-light.png",
-    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)",
-    "w": 462,
-    "h": 70,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "button/g8-active-light.png",
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25)",
-    "w": 462,
-    "h": 70,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "file": "button/g8-focus-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25)",
-    "w": 462,
-    "h": 70,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "account-cta"
+  "covers": [
+   "button @.cta-bar"
   ],
   "sources": [
    "components/account.css",
@@ -3194,7 +2621,7 @@
    "ui-kit/specimens/account-cta.html",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "85dd1d88a35ca41b"
+  "sha": "eb81c63da7934543"
  },
  {
   "component": "card",
@@ -3377,7 +2804,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "fdacd9a4185abf16"
+  "sha": "4e1b918089373642"
  },
  {
   "component": "card",
@@ -3592,7 +3019,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "1bdbb1b0457e35ee"
+  "sha": "560ea1a0b0d914e7"
  },
  {
   "component": "card",
@@ -3807,7 +3234,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "1bdbb1b0457e35ee"
+  "sha": "560ea1a0b0d914e7"
  },
  {
   "component": "card",
@@ -3964,7 +3391,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/skeleton-grid.html"
   ],
-  "sha": "45d842c05d875ced"
+  "sha": "feddf2362f4f07d5"
  },
  {
   "component": "card",
@@ -4121,7 +3548,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/card-detail-head.html"
   ],
-  "sha": "fe8ef34516443d17"
+  "sha": "ca6e15f2a3d82586"
  },
  {
   "component": "card",
@@ -4324,7 +3751,7 @@
    "ui-kit/specimens/options-multi.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "c86163d8938a293d"
+  "sha": "61ce141cdfc72843"
  },
  {
   "component": "catnav",
@@ -4512,7 +3939,7 @@
    "ui-kit/specimens/catnav-chips.html",
    "ui-kit/specimens/catnav-subfilter.html"
   ],
-  "sha": "a66824281eab4f6e"
+  "sha": "90b3863a39b79ef8"
  },
  {
   "component": "catnav",
@@ -4696,7 +4123,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-chips.html"
   ],
-  "sha": "66a3c149c65086b5"
+  "sha": "50f65446d4614772"
  },
  {
   "component": "catnav",
@@ -4877,7 +4304,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subfilter.html"
   ],
-  "sha": "82f2fb12d126c4a9"
+  "sha": "aa2c73c17a1b4696"
  },
  {
   "component": "catnav",
@@ -5060,7 +4487,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subcat.html"
   ],
-  "sha": "956ef38e534e265a"
+  "sha": "88918ee09a9b8dc3"
  },
  {
   "component": "catnav",
@@ -5243,7 +4670,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subcat.html"
   ],
-  "sha": "956ef38e534e265a"
+  "sha": "88918ee09a9b8dc3"
  },
  {
   "component": "comments",
@@ -5473,7 +4900,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "22436b59a33848b7"
+  "sha": "3945dad28aa71476"
  },
  {
   "component": "comments",
@@ -5703,7 +5130,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "22436b59a33848b7"
+  "sha": "3945dad28aa71476"
  },
  {
   "component": "comments",
@@ -5933,7 +5360,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "22436b59a33848b7"
+  "sha": "3945dad28aa71476"
  },
  {
   "component": "cookie-consent",
@@ -6122,7 +5549,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "1c24ab159483c5dc"
+  "sha": "993c31e871b3b8f9"
  },
  {
   "component": "cookie-consent",
@@ -6311,7 +5738,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "1c24ab159483c5dc"
+  "sha": "993c31e871b3b8f9"
  },
  {
   "component": "cookie-consent",
@@ -6500,7 +5927,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "1c24ab159483c5dc"
+  "sha": "993c31e871b3b8f9"
  },
  {
   "component": "cookie-consent",
@@ -6689,7 +6116,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "1c24ab159483c5dc"
+  "sha": "993c31e871b3b8f9"
  },
  {
   "component": "course-chrome",
@@ -6886,7 +6313,7 @@
    "ui-kit/specimens/course-chrome-system.html",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "2ab15b0e2641151f"
+  "sha": "d821a2c2f135625a"
  },
  {
   "component": "course-chrome",
@@ -7083,7 +6510,7 @@
    "ui-kit/specimens/course-chrome-system.html",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "2ab15b0e2641151f"
+  "sha": "d821a2c2f135625a"
  },
  {
   "component": "course-chrome",
@@ -7282,7 +6709,7 @@
    "ui-kit/specimens/course-chrome-system.html",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "a9a227cb12c41839"
+  "sha": "baa617057d747749"
  },
  {
   "component": "course-chrome",
@@ -7475,7 +6902,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "7ff161c19388fe9f"
+  "sha": "a533c857c7ec105b"
  },
  {
   "component": "course-chrome",
@@ -7672,7 +7099,7 @@
    "ui-kit/specimens/course-chrome-system.html",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "2ab15b0e2641151f"
+  "sha": "d821a2c2f135625a"
  },
  {
   "component": "course-chrome",
@@ -7868,7 +7295,7 @@
    "ui-kit/specimens/course-chrome-roadmap.html",
    "ui-kit/specimens/course-chrome-system.html"
   ],
-  "sha": "2892e34f87ea0fe5"
+  "sha": "349a9529d752de00"
  },
  {
   "component": "course-chrome",
@@ -8060,7 +7487,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/course-chrome-system.html"
   ],
-  "sha": "bc83fa5205365925"
+  "sha": "ff2f3eab27494492"
  },
  {
   "component": "course-chrome",
@@ -8205,7 +7632,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/course-chrome-roadmap.html"
   ],
-  "sha": "117464ace145bb9d"
+  "sha": "76d4397e43718db8"
  },
  {
   "component": "course-chrome",
@@ -8350,7 +7777,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/course-chrome-roadmap.html"
   ],
-  "sha": "117464ace145bb9d"
+  "sha": "76d4397e43718db8"
  },
  {
   "component": "dialog",
@@ -8554,7 +7981,7 @@
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "9e13cc496b7cfc3f"
+  "sha": "a8e551fc109ff124"
  },
  {
   "component": "dialog",
@@ -8756,7 +8183,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "72e9d557e571beb2"
+  "sha": "ee79b433336696cc"
  },
  {
   "component": "dialog",
@@ -8948,7 +8375,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "91a49c486b07c906"
+  "sha": "9e5a6996a3913e5d"
  },
  {
   "component": "dialog",
@@ -9140,7 +8567,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/outcome-overlays.html"
   ],
-  "sha": "c45ce502687d941b"
+  "sha": "26179cbc384f865d"
  },
  {
   "component": "event-detail",
@@ -9361,7 +8788,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "4fcdc3d048b410f4"
+  "sha": "927ecb7606139fb2"
  },
  {
   "component": "event-detail",
@@ -9556,7 +8983,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/card-detail-head.html"
   ],
-  "sha": "fe8ef34516443d17"
+  "sha": "ca6e15f2a3d82586"
  },
  {
   "component": "filters",
@@ -9746,7 +9173,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "dd9d9129b01db04e"
+  "sha": "2e38bdc8a1f8018a"
  },
  {
   "component": "filters",
@@ -9898,7 +9325,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "dd9d9129b01db04e"
+  "sha": "2e38bdc8a1f8018a"
  },
  {
   "component": "filters",
@@ -10050,7 +9477,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "dd9d9129b01db04e"
+  "sha": "2e38bdc8a1f8018a"
  },
  {
   "component": "filters",
@@ -10227,7 +9654,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/filters-toggle.html"
   ],
-  "sha": "6de2fccca5d1054f"
+  "sha": "42d392149e28833a"
  },
  {
   "component": "filters",
@@ -10404,7 +9831,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/filters-toggle.html"
   ],
-  "sha": "6de2fccca5d1054f"
+  "sha": "42d392149e28833a"
  },
  {
   "component": "footer",
@@ -10609,7 +10036,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "8625ece99468f732"
+  "sha": "c2dd866fb999d3f4"
  },
  {
   "component": "footer",
@@ -10814,7 +10241,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "8625ece99468f732"
+  "sha": "c2dd866fb999d3f4"
  },
  {
   "component": "footer",
@@ -11019,7 +10446,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "8625ece99468f732"
+  "sha": "c2dd866fb999d3f4"
  },
  {
   "component": "header",
@@ -11206,7 +10633,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "4d256bf3425e0057"
+  "sha": "f9fd9e1b26833faf"
  },
  {
   "component": "header",
@@ -11292,7 +10719,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "1d307326f6574bc0"
+  "sha": "3a786696fbb1db17"
  },
  {
   "component": "header",
@@ -11496,7 +10923,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "0039cf0a60b46642"
+  "sha": "3458616b55788027"
  },
  {
   "component": "header",
@@ -11700,7 +11127,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "0039cf0a60b46642"
+  "sha": "3458616b55788027"
  },
  {
   "component": "header",
@@ -11900,7 +11327,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "1d307326f6574bc0"
+  "sha": "3a786696fbb1db17"
  },
  {
   "component": "header",
@@ -12100,7 +11527,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "1d307326f6574bc0"
+  "sha": "3a786696fbb1db17"
  },
  {
   "component": "header",
@@ -12304,7 +11731,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "0039cf0a60b46642"
+  "sha": "3458616b55788027"
  },
  {
   "component": "header",
@@ -12504,7 +11931,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "1d307326f6574bc0"
+  "sha": "3a786696fbb1db17"
  },
  {
   "component": "header",
@@ -12704,7 +12131,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "1d307326f6574bc0"
+  "sha": "3a786696fbb1db17"
  },
  {
   "component": "header",
@@ -12904,7 +12331,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "1d307326f6574bc0"
+  "sha": "3a786696fbb1db17"
  },
  {
   "component": "hero",
@@ -13134,7 +12561,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "fc6a3541650b1db3"
+  "sha": "2f42f2472cc3bcfc"
  },
  {
   "component": "hero",
@@ -13364,7 +12791,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "fc6a3541650b1db3"
+  "sha": "2f42f2472cc3bcfc"
  },
  {
   "component": "hero",
@@ -13594,7 +13021,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "fc6a3541650b1db3"
+  "sha": "2f42f2472cc3bcfc"
  },
  {
   "component": "hero",
@@ -13786,7 +13213,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "fc6a3541650b1db3"
+  "sha": "2f42f2472cc3bcfc"
  },
  {
   "component": "hero",
@@ -14016,7 +13443,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "fc6a3541650b1db3"
+  "sha": "2f42f2472cc3bcfc"
  },
  {
   "component": "hero",
@@ -14246,7 +13673,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "fc6a3541650b1db3"
+  "sha": "2f42f2472cc3bcfc"
  },
  {
   "component": "hiw-dialog",
@@ -14438,7 +13865,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "91a49c486b07c906"
+  "sha": "9e5a6996a3913e5d"
  },
  {
   "component": "hiw-dialog",
@@ -14630,7 +14057,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "91a49c486b07c906"
+  "sha": "9e5a6996a3913e5d"
  },
  {
   "component": "input",
@@ -14834,7 +14261,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "3233f3ee4e724a96"
+  "sha": "74e32d7dbb05aed9"
  },
  {
   "component": "input",
@@ -15040,7 +14467,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "574289a9125a470f"
+  "sha": "bbd1e431fd0a7827"
  },
  {
   "component": "input",
@@ -15244,7 +14671,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "3233f3ee4e724a96"
+  "sha": "74e32d7dbb05aed9"
  },
  {
   "component": "input",
@@ -15427,7 +14854,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "918c4031a101f2d4"
+  "sha": "60c464b808e36fc0"
  },
  {
   "component": "input",
@@ -15610,7 +15037,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "918c4031a101f2d4"
+  "sha": "60c464b808e36fc0"
  },
  {
   "component": "input",
@@ -15841,7 +15268,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "7ea106353c8efc1a"
+  "sha": "e8187bf415f85c2d"
  },
  {
   "component": "input",
@@ -16040,7 +15467,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "99fc12b01a1b5802"
+  "sha": "967f28746f9663bd"
  },
  {
   "component": "loadmore",
@@ -16225,7 +15652,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/loadmore.html"
   ],
-  "sha": "3e804ccb2f2c25e4"
+  "sha": "968c5ee01b8153cb"
  },
  {
   "component": "market",
@@ -16429,7 +15856,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/market-depth.html"
   ],
-  "sha": "82c3c13ba17578e2"
+  "sha": "45e6525449f6c03b"
  },
  {
   "component": "profile",
@@ -16638,7 +16065,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "3d5aff933952103a"
+  "sha": "9577eb83aa70b64b"
  },
  {
   "component": "related",
@@ -16822,7 +16249,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/related.html"
   ],
-  "sha": "6a267e056c59d2a5"
+  "sha": "7f8e746278b4a320"
  },
  {
   "component": "related",
@@ -17006,7 +16433,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/related.html"
   ],
-  "sha": "6a267e056c59d2a5"
+  "sha": "7f8e746278b4a320"
  },
  {
   "component": "tabs",
@@ -17156,7 +16583,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "7cb8e2a213167104"
+  "sha": "b40591d9f6f7da94"
  },
  {
   "component": "tabs",
@@ -17354,7 +16781,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/chart.html"
   ],
-  "sha": "a094c718ac3e0870"
+  "sha": "4be7cdd95db55da4"
  },
  {
   "component": "tabs",
@@ -17542,7 +16969,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "7cb8e2a213167104"
+  "sha": "b40591d9f6f7da94"
  },
  {
   "component": "tabs",
@@ -17730,7 +17157,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "7cb8e2a213167104"
+  "sha": "b40591d9f6f7da94"
  },
  {
   "component": "tabs",
@@ -17863,7 +17290,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "3d5aff933952103a"
+  "sha": "9577eb83aa70b64b"
  },
  {
   "component": "tabs",
@@ -18034,7 +17461,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "3d5aff933952103a"
+  "sha": "9577eb83aa70b64b"
  },
  {
   "component": "tabs",
@@ -18205,7 +17632,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "3d5aff933952103a"
+  "sha": "9577eb83aa70b64b"
  },
  {
   "component": "tabs",
@@ -18386,7 +17813,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-mybets.html"
   ],
-  "sha": "458f1c1019437644"
+  "sha": "3dbae11488181084"
  },
  {
   "component": "tabs",
@@ -18567,7 +17994,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-mybets.html"
   ],
-  "sha": "458f1c1019437644"
+  "sha": "3dbae11488181084"
  },
  {
   "component": "tabs",
@@ -18765,7 +18192,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/chart.html"
   ],
-  "sha": "a094c718ac3e0870"
+  "sha": "4be7cdd95db55da4"
  },
  {
   "component": "toast",
@@ -18946,7 +18373,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/toast.html"
   ],
-  "sha": "c786533134fd1335"
+  "sha": "a74c8397c383e58b"
  },
  {
   "component": "toc",
@@ -19135,7 +18562,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/toc-rail.html"
   ],
-  "sha": "3b53bf4241dd067c"
+  "sha": "6b65de129e56b622"
  },
  {
   "component": "toc",
@@ -19324,7 +18751,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/toc-rail.html"
   ],
-  "sha": "3b53bf4241dd067c"
+  "sha": "6b65de129e56b622"
  },
  {
   "component": "yesno",
@@ -19517,7 +18944,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "9e46762f1cd7485f"
+  "sha": "426319e494d2d979"
  },
  {
   "component": "yesno",
@@ -19712,7 +19139,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "0465cd4003604942"
+  "sha": "98be36829bd7e8f3"
  },
  {
   "component": "yesno",
@@ -19907,7 +19334,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "0465cd4003604942"
+  "sha": "98be36829bd7e8f3"
  },
  {
   "component": "yesno",
@@ -20124,6 +19551,6 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "21bebc9aa57541b7"
+  "sha": "4d4ca5ede5dcc5e6"
  }
 ]

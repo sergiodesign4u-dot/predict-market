@@ -44,6 +44,94 @@ record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/mi
 
 ---
 
+## 2026-08-04 - The unit of a picture is a difference, not an occurrence
+
+**What was on the page.** `ui-kit/button.html` carried **eight state galleries** for a component
+that makes **five decisions**. The three extra were `.state-btn` beside `.auth-btn`,
+`.state-btn.primary` beside `.auth-btn.primary`, and the second child of `.cta-bar`, and the
+authored source names all three as the same answer in its own prose: "Identical answers, which is
+the point", "Same three-step", "the answer is the family's". **24 of that component's 64 pictures
+existed to show that two things look the same.** Every gate was green.
+
+**Why a page like that gets worse as the product grows, which is the actual reason to fix it.** A
+gallery per PLACE tracks the markup: add a sixth place for the same control and the page grows a
+sixth gallery and says nothing new. A gallery per DIFFERENCE tracks the system: add a sixth place
+and the page does not move, because no decision was taken. The same inversion runs through the whole
+page, which is why the axis matrix was rebuilt at the same time and in the same direction: **the
+page specifies the axes and the five names are a column**, not five sections.
+
+**THE MECHANISM, and it is the part worth carrying forward.** The capture keyed a group on
+`element selector | rest face`, so the class name was part of the identity and one control under two
+names was two groups by construction. The selector is out of the key now. The merge deliberately
+happens AFTER the shooting rather than before it, and that is not an implementation detail: a
+difference is free to live in any of the four states, so keying at rest means one of a pair is never
+shot at all. That does not merge a difference away, it stops it being measured.
+
+**And the instrument could not see the difference it was being asked about.** A face was five
+values. The two things that make this family's members differ are a one-pixel lift and a glow -
+`transform` and `box-shadow` - and neither was among the five. So `.provider-btn` read as identical
+to `.auth-btn` while both `components/button.css` and the authored page said it is not, and a merge
+on that reading would have deleted the picture of a real difference. **The list was also written in
+three places** (twice in `browser.cjs`, once in `states.cjs`) and had already drifted by a property.
+It is one function now, in `browser.cjs`, and it carries transform, box-shadow and opacity. Size
+stays out on purpose: a different padding is the same face at a different size. This is the fourth
+time this run that the finding was "the check was clean about something it never looked at".
+
+**Result, measured.** button: **8 groups to 5, 64 pictures to 40, 24 deleted**, which is exactly the
+three groups the source itself called identical. The system: **792 pictures to 766**, the other two
+being `tabs` focus pictures that belonged to no group at all and had been sitting in the tree behind
+a check that only ever asked whether a NAMED file was still there. The five that remain are one base
+set plus one named difference each: the modifier, the one-pixel lift, the missing edge, and the dark
+ink on the first child of an action bar.
+
+**Gate 36, proved in three directions.** Forward: putting one occurrence back as its own group turns
+it red, and gate 32 goes red beside it, which is the pair working as intended - 32 asks whether every
+group is described, 36 asks whether the group should exist. Backward: a declared not-re-captured
+entry that holds no duplicate fails as idle, and a picture copied into the tree with nothing pointing
+at it fails as an orphan. **Five components still hold the same defect** - `card`, `header`,
+`event-detail`, `hero`, `tabs`, 64 pictures - and they are declared rather than fixed, because they
+were shot under the old five-value face and their count is an upper bound that only a re-capture can
+settle. `ui-kit/docs/backlog.md` **S27**, and the list clears itself.
+
+**The size axis has no rule, and the page says so in those words.** This is the one place the work
+was asked to derive a rule from the product and the product refused. Measured in Chrome at 1440 and
+360: container height does not predict the font step (the state block is 245 tall and takes the
+smallest, the action bar is 70 and takes the middle one), and the share of the container looks
+monotone until two placements break it in both directions - `.resolved-panel .state-btn` is full
+width at 12 and `.bet-dock .confirm-btn` is fit width at 14. **The step follows the NAME.** Worse,
+one class carries two steps: `.provider-btn` is 13 in its own rule and **14 inside the sign-in and
+outcome sheets, which is 322 of its 444 uses**, so the size a person meets is not the size the
+stylesheet declares first. The page prints "a fact without a rule" rather than a plausible sentence,
+because an invented rule is worse than a missing one: a missing rule sends the next person to look,
+an invented one sends them away satisfied. `ui-kit/docs/backlog.md` **S25**.
+
+**The other three axes do have rules, and each was tested rather than asserted.** WIDTH: full when
+the control owns its row, shared when the row is split evenly, fit otherwise - **0 exceptions in 710
+placements**, and the two that look like exceptions are the rule being applied by the container.
+EMPHASIS: one brass action per zone - **zones carrying more than one, 0**, counted over every dialog
+and action bar in the painted tree. ICON, which is the fourth axis and did not exist on the page
+before: a mark only where the label names a third party - **322 of 710 carry one and every one is a
+brand mark on a Continue with row**, the other 388 carry none. The mark had been written up as a
+private detail of one place, so "a button with an icon" was not something the system had declared.
+
+**Every empty cell carries a verdict and a source.** Three are FORBIDDEN with a product counter
+behind them - icon with brass (0 of 710), icon at fit width (0), full width in the header (0, and it
+is the width rule applied rather than a separate ban) - and two are UNCLOSED ZONE with a backlog
+number: a disabled control anywhere but `.confirm-btn`, which the product has simply never had, and a
+marked control at fit width inside a sheet, which two rules each half-forbid and neither settles.
+`ui-kit/docs/backlog.md` **S26**. A blank cell is neither, and there are none.
+
+**S24 is not closed and was not touched.** It is the CSS consolidation and its closing condition is
+still the markup thaw: the stylesheet is unchanged, the 13 reconciliation rules are still 13. What
+its row gained is one sentence saying the page now answers with axes instead of a list of places.
+
+**Asked of a browser: 360 and 1440, both themes.** 5 galleries, 2 covers notes, 40 pictures, 0 broken
+images, 0 horizontal overflow on the page and 0 inside the live frame, and the specimen driven with a
+real pointer and a real focus: the quiet ground moves on hover, the brass one takes its glow, the
+ring is solid 2px. **0 console errors** on three of the four combinations; the fourth is Chrome asking
+the static server for `/favicon.ico`, which this repo does not ship and which appears on the first
+context of any launch. Watched at the network layer instead, the page makes **0 failed requests**.
+
 ## 2026-08-04 - 104 marks of markdown on four pages, and every gate green
 
 **What was there.** `ui-kit/_gen_docs.py` renders the stage's seven documents as pages of the

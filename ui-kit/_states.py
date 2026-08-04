@@ -223,6 +223,61 @@ def cropped():
     return out, idle
 
 
+# ---- the fourth question: is this group a DIFFERENCE or an OCCURRENCE? -------
+# WHAT A GALLERY IS FOR. The button page carried eight of them and the product
+# has five decisions, because the capture keyed a group on the element's class
+# name plus its REST face, so one control under two names came out as two
+# pictures. `ui-kit/authored/button.md` said so itself, three times, in its own
+# prose - "Identical answers, which is the point", "Same three-step", "the answer
+# is the family's" - and the vitrine photographed all three anyway: 24 pictures
+# whose content was that two things look the same. A page built that way grows
+# one gallery per PLACE, so it tracks the product's markup instead of the
+# system's decisions, which is backwards for a page whose whole job is to say
+# what the decisions are.
+#
+# THE FORMULA, AND WHY THIS IS IT. "The number of galleries equals the number of
+# named differences plus one base set" is the same sentence as "no two groups are
+# the same answer": the group that differs from nothing is the base, and every
+# other one is a difference or it should not be a gallery. This is the second
+# form because it is the one that can be computed. Gate 32 already binds one
+# authored caption to one group in both directions, so counting captions and
+# counting groups is the same count, and a count compared with itself proves
+# nothing.
+#
+# WHAT COUNTS AS THE SAME ANSWER: the face in all four states in both themes,
+# read out of the manifest, which records what each picture was TAKEN at. Not the
+# rest face alone. `.provider-btn` and `.auth-btn` rest identically and part
+# company on hover by one pixel, and the instrument could not see even that until
+# `transform` and `box-shadow` were added to what a face is made of.
+def signature(row):
+    """What this group answers, in every state and both themes."""
+    shots = row.get("shots", {})
+    return "\n".join("%s=%s" % (k, shots[k].get("value")) for k in sorted(shots))
+
+
+def duplicated():
+    """component -> [[group ids that are one answer], ...]. Empty is the goal."""
+    out = {}
+    for name, groups in by_component().items():
+        seen = {}
+        for row in groups:
+            seen.setdefault(signature(row), []).append(row["id"])
+        same = [ids for ids in seen.values() if len(ids) > 1]
+        if same:
+            out[name] = sorted(same)
+    return out
+
+
+def orphans():
+    """Pictures on disk that belong to no group. The other direction of the
+       missing-file check, and it was not free: two `tabs` focus pictures had
+       been sitting in the tree with nothing pointing at them, kept alive by a
+       check that only ever asked whether a named file was still there."""
+    known = {shot["file"] for row in load() for shot in row.get("shots", {}).values()}
+    return sorted(str(p.relative_to(OUT)) for p in OUT.rglob("*.png")
+                  if str(p.relative_to(OUT)) not in known)
+
+
 def unphotographed():
     """(components that should have a picture and have none and are not
     declared; declared entries that DO have pictures)."""
