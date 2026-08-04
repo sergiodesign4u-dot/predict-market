@@ -218,7 +218,24 @@ function classesIn(subjects) {
           const at = `${spec.id}|${el.i}`;
           let group;
           if (theme === 'dark') {
-            const key = `${el.el}|${el.rest}`;
+            /* THE SCOPE IS PART OF THE KEY, and leaving it out only stopped
+               being invisible when a specimen started staging several scopes of
+               one class in ONE document. The key was `element | rest face`, and
+               a rest face is nine values that do NOT include the font: every
+               .provider-btn in the tree rests identically, so the first one
+               found in a document was shot and every other one was skipped as
+               "a second copy of a face already shot here". While each scope had
+               a document of its own that was survivable, because the first match
+               in each document WAS a different scope. `button-matrix` puts the
+               deposit sheet, the sign-in sheet, the outcome sheet and the bet
+               panel side by side, and the sign-in row's one pixel of hover lift
+               vanished: not merged, never measured. That is the false-zero shape
+               this folder's README opens with, an instrument reporting agreement
+               about something it did not look at.
+               It cannot create a duplicate. The signature merge below still runs
+               and still collapses any two groups that agree in all four states
+               in both themes, so a scope that changes nothing costs nothing. */
+            const key = `${el.el}|${el.scope}|${el.rest}`;
             group = seen.get(key);
             if (!group) {
               group = { id: `g${seen.size + 1}`, el: el.el, scope: el.scope,

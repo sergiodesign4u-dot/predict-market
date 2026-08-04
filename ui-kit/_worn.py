@@ -1,0 +1,545 @@
+#!/usr/bin/env python3
+"""
+_worn.py  -  does the vitrine stage every form the product wears, and only those?
+
+THE RULE THIS ANSWERS, in the words it was given in: everything that is on the
+project has to be in the design system, and everything in the design system has
+to be on the project. Both directions, and the second one is the half a vitrine
+usually skips: a stand that shows a control nobody ships is teaching a scheme
+that was never adopted, which is what `.btn-primary` with `.btn-sm` / `.btn-md` /
+`.btn-lg` was until gate 30 counted it.
+
+WHAT A FORM IS, AND WHY IT IS NOT A CLASS. `.provider-btn` is one class and four
+different controls: 13px left-aligned in a deposit sheet, 14px centred with a
+brand mark in the sign-in sheet, 14px bold centred in an outcome sheet, 13px
+semibold centred in the bet panel. The stylesheet decides that by SCOPE, so a
+form is the pair
+
+    (the family class it carries, plus .primary or not)
+  x (the scoping classes above it that components/button.css actually reads)
+
+and both halves are read out of the repo rather than typed here. The family is
+the four names the component's own header declares; the scopes are every other
+class that appears in a selector of `components/button.css`, minus the parts
+(`.ic`, `.prov-*`) and minus `.app-case`, which is on every screen and every
+specimen and so separates nothing.
+
+WHAT IT CANNOT SEE, and it says so rather than passing quietly: a control whose
+container ships closed. `dialog.app-dialog.bet-sheet` has no `open` attribute in
+`ui-visual/`, and `.app-case .bet-sheet .confirm-btn` sets the only padding of 16
+in the family. A pass that measured the rendered tree would score that control at
+zero width and never reach it. This one reads MARKUP, so it finds it, and that is
+the reason it reads markup.
+
+    python3 ui-kit/_worn.py            the two lists and the difference
+    python3 ui-kit/_worn.py --check    exits 1 on a form in one list and not the other
+
+No em dash.
+"""
+import pathlib
+import re
+import sys
+from html.parser import HTMLParser
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+KIT = ROOT / "ui-kit"
+UV = ROOT / "ui-visual"
+CSS = ROOT / "components" / "button.css"
+
+# The parts of the component rather than scopes of it, and `.app-case`, which is
+# the product's own wrapper and stands above every button in both trees.
+NOT_A_SCOPE = {"app-case", "ic", "prov-x", "prov-apple", "prov-google", "primary"}
+
+# The specimens that are the answer. Two and not one because components/
+# betpanel.css hides `.bet-dock` at min-width:760 and `.bet-panel` below it, so
+# one document cannot hold both halves of that pair.
+STANDS = ["button-matrix", "button-matrix-dock"]
+
+# ---- a scope that changes nothing is not a second form ----------------------
+# THE FIRST CUT OF THIS CHECK STAGED SIXTEEN CONTROLS AND THE PRODUCT HAS EIGHT.
+# A form here is (class, scope), which is what the markup can be asked for
+# without a browser, and it OVER-COUNTS: `.confirm-btn` is written under
+# `dialog.app-dialog`, under `.outcome-dialog` and under `.bet-panel`, and in
+# all three the stylesheet gives it exactly the same control. Staging three of
+# them put three identical brass rows on the page inside three different plates,
+# which is what made the matrix read as a scatter instead of as a system.
+#
+# THE COMPARISON THAT DECIDES THIS IS A MEASUREMENT AND IT CANNOT LIVE IN A
+# PYTHON GATE. Whether a scope changes a control is the cascade resolved, and
+# resolving the cascade needs a browser. So it is a DECLARED list, in the shape
+# every declared list in this repo has: each entry names the worn combination,
+# the staged control that renders identically, and what was compared. The
+# control on it is the usual one in both directions - an entry whose source
+# nothing wears, or whose target nothing stages, fails as loudly as a missing
+# form.
+#
+# Measured 2026-08-04 in a browser, each worn control against the same markup
+# with no scope above it, in a container of the same width, over thirteen
+# properties: background, gradient, edge, edge width, ink, radius, padding, font
+# size, weight, justification, text alignment, gap, min-height. The four
+# combinations NOT here are the four where that comparison came back different,
+# and each of them is staged in its own scope.
+SAME = {
+    ("provider-btn", "app-dialog"): (
+        ("provider-btn", "bare"),
+        "the sheet gives it a width and nothing else; every one of the thirteen matches"),
+    ("confirm-btn", "app-dialog"): (
+        ("confirm-btn", "bare"),
+        "the same: a width from the container, no declaration of its own"),
+    ("confirm-btn", "app-dialog outcome-dialog"): (
+        ("confirm-btn", "bare"),
+        "nothing differs at all, not even the width, because both are the sheet's"),
+    ("confirm-btn", "bet-panel"): (
+        ("confirm-btn", "bare"),
+        "the panel gives it a width; `:is(.bet-panel,.bet-sheet,.bet-dock) .confirm-btn` "
+        "re-states the brass and the zero edge the bare rule already sets"),
+    ("state-btn", "bet-panel resolved-panel"): (
+        ("state-btn", "bare"),
+        "`.resolved-panel .state-btn{width:100%}` is a width and the width is the "
+        "container's question; the control is the bare one"),
+    ("state-btn.primary", "bet-panel resolved-panel"): (
+        ("state-btn.primary", "bare"),
+        "the same width override on the brass one"),
+}
+
+
+
+# ---- where each kind can be SEEN, without a second copy of its markup --------
+# THE TABLE ANSWERED "WHERE IS IT" AND NOT "WHAT DOES IT LOOK LIKE", which is
+# half of what a person opening a page called Buttons wants. The obvious fix is
+# to stage one example of each kind here, and it is the wrong one: `.sheet-close`
+# already stands in `dialog-shared`, `.icon-btn` in `header-in`, and a third copy
+# of each is a third thing to keep in step.
+#
+# THREE ANSWERS WERE TRIED AND THE THIRD IS THE ONE THAT STANDS. First a
+# screenshot per control, which is a photograph and goes stale silently. Then a
+# live window: an iframe onto the specimen, cropped to a measured box. That was
+# the same photograph with extra machinery, and it needed a crop instrument, a
+# freshness contract and a gate of its own to hold numbers nobody could read.
+# All of it is deleted.
+#
+# What is left is the answer that was available the whole time. `pick()` slices
+# one element out of a document with its TRUE ancestor chain and drops its
+# siblings, so the control on the page is the same single markup it already was,
+# carrying the current stylesheet, both themes and every state, because it IS the
+# specimen. The chain is kept for the cascade and marked `kit-nude`, which takes
+# the host's surface and leaves its arrangement. Nothing is re-staged and nothing
+# is photographed.
+
+def _css():
+    return re.sub(r"/\*.*?\*/", " ", CSS.read_text(encoding="utf-8"), flags=re.S)
+
+
+def family():
+    """The four names, from the component header the build already checks.
+
+    Read from the RAW file and not from `_css()`, which strips comments: the
+    header IS a comment, so the first cut of this function looked for the one
+    declaration list in the file inside the text with that list removed and
+    found nothing. It failed to an EMPTY family, which matched every bare
+    button and no named one, and the check went green on one row.
+    """
+    raw = CSS.read_text(encoding="utf-8")
+    head = re.search(r"Classes:\s*(.+?)\.\s*$", raw[:1200], re.M)
+    names = {c.strip().lstrip(".") for c in head.group(1).split(",")} if head else set()
+    fam = {n for n in names if n.endswith("-btn")}
+    if not fam:
+        raise SystemExit("_worn: components/button.css declares no *-btn class in its header")
+    return fam
+
+
+def scopes():
+    """Every class components/button.css reads that is not the subject."""
+    body = _css()
+    sel = " ".join(m.group(1) for m in re.finditer(r"([^{}]+)\{", body))
+    return {c for c in re.findall(r"\.([\w-]+)", sel)} - family() - NOT_A_SCOPE
+
+
+class Forms(HTMLParser):
+    """Every button of the family, keyed by what the stylesheet decides."""
+
+    def __init__(self, fam, scope):
+        super().__init__(convert_charrefs=True)
+        self.fam, self.scope = fam, scope
+        self.stack, self.found, self.depth = [], [], 0
+        self.label = None
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        cls = set((a.get("class") or "").split())
+        if tag not in ("img", "br", "input", "meta", "link", "hr", "source", "use", "path"):
+            self.stack.append((tag, cls))
+        if tag != "button":
+            return
+        mine = cls & self.fam
+        above = set()
+        for _t, c in self.stack[:-1]:
+            above |= c & self.scope
+        # a bare <button> is only this component's where the bar says so
+        if not mine and "cta-bar" not in above:
+            return
+        name = ".".join(sorted(mine)) or "button"
+        if "primary" in cls:
+            name += ".primary"
+        self.found.append((name, " ".join(sorted(above)) or "bare", []))
+
+    def handle_endtag(self, tag):
+        for i in range(len(self.stack) - 1, -1, -1):
+            if self.stack[i][0] == tag:
+                del self.stack[i:]
+                return
+
+    def handle_data(self, data):
+        if self.found and not self.found[-1][2] and data.strip():
+            self.found[-1][2].append(data.strip()[:34])
+
+
+def read(paths, fam, scope):
+    """form -> {"uses": n, "files": {name}, "label": str}"""
+    out = {}
+    for f in paths:
+        p = Forms(fam, scope)
+        p.feed(f.read_text(encoding="utf-8"))
+        for name, above, label in p.found:
+            row = out.setdefault((name, above), {"uses": 0, "files": set(), "label": ""})
+            row["uses"] += 1
+            row["files"].add(f.name)
+            if not row["label"] and label:
+                row["label"] = label[0]
+    return out
+
+
+def compare():
+    """(worn, staged, worn-and-not-staged, staged-and-not-worn, idle SAME rows).
+
+    A worn combination is covered when it is staged itself OR when `SAME` says it
+    renders as one that is. A staged control is justified when the product wears
+    it OR when it is the target of a `SAME` row. Both directions, and the map
+    itself is held in both too.
+    """
+    fam, scope = family(), scopes()
+    worn = read(sorted(UV.glob("*.html")), fam, scope)
+    stood = read([KIT / "specimens" / (s + ".html") for s in STANDS], fam, scope)
+    targets = {t for t, _why in SAME.values()}
+    missing = sorted(k for k in worn
+                     if k not in stood and SAME.get(k, (None,))[0] not in stood)
+    idle = sorted(k for k in stood if k not in worn and k not in targets)
+    # a row of the map that no longer describes anything: the source is not worn,
+    # or the target is not staged. Either way the sentence beside it is now a
+    # claim about nothing, which is the state every declared list in this repo
+    # is checked against.
+    stale = sorted("%s @ %s -> %s @ %s" % (k[0], k[1], v[0][0], v[0][1])
+                   for k, v in SAME.items() if k not in worn or v[0] not in stood)
+    return worn, stood, missing, idle, stale
+
+
+# ---- the second question: every OTHER control that is a button ---------------
+# WHY THE PAGE CALLED BUTTONS SHOWED ONE CONTROL IN TWENTY THREE. This vitrine is
+# grouped by which stylesheet owns the paint, because that is the address for a
+# CHANGE: `.icon-btn` is drawn by components/header.css, and a person who found
+# it on the button page would go and edit the wrong file. The grouping is right
+# and its side effect is not: `components/button.css` owns four class names, so
+# the page named Buttons answers for 710 of the product's 5,000-odd button
+# placements and says nothing at all about the other twenty two kinds.
+#
+# A person opening Buttons wants every button. That is a navigation question and
+# it gets a navigation answer: this census names every kind, counts it, and sends
+# the reader to the frame that draws it. **Nothing is re-staged here.** A third
+# copy of `.sheet-close` would be a third thing to keep in step, and the rule
+# this repo has paid for twice is that a fact written twice drifts.
+#
+# WHY NOT SIMPLY MOVE THE CSS INTO button.css. For some of these it is a cost and
+# for three of them it would be wrong. `yesno` is outcome semantics, and DESIGN.md
+# decides that green and red mean YES and NO and nothing else, so an action
+# component owning them would carry the outcome colour. The three closes are the
+# chrome of their own overlay. The chip family is named in this component's own
+# anti-rule as the thing a button is NOT. And the @import order in index.css is
+# computed from what contains what, so moving classes between files reorders the
+# cascade.
+#
+# ---- the role, which is the column the first cut of this census did not have --
+# A `<button>` IS A TAG AND NOT A ROLE, and reading the tag as the answer is what
+# put a tab strip, a category chip, a row of the account menu and five social
+# marks on the page called Buttons. The reader who opened it asked for buttons and
+# was handed 5,281 controls, of which 1,856 are buttons.
+#
+# Three roles, and the test for each is a question about the CONTROL rather than
+# about its markup:
+#
+#   action    press it and something happens, and it has no state of its own to
+#             carry. Confirm bet, close the sheet, load more, post a comment.
+#   selector  it carries a VALUE and the selected one is a state, not a press.
+#             Every chip, every tab, the toggle, the YES / NO pair, the outcome
+#             side of a bet. Pressing it does not do a thing, it CHOOSES a thing,
+#             and the reason the choice is visible is that the control stays lit.
+#   nav       it goes somewhere. A row of the account menu, a slot of the bottom
+#             nav, the logo, a social mark. It is a link wearing a button's tag
+#             (or, for the logo and the menu rows, a button doing a link's job).
+#   stand     not product at all: the furniture of this vitrine.
+#
+# The page called Buttons keeps the actions and lists the rest with the door to
+# their own page. That is not a filing preference: a selector's whole subject is
+# its selected state and its group, so a page that stages one of them alone shows
+# the half that does not matter. Gate 38 holds the split in both directions.
+#
+# THE LOGO LEFT `icon only, in the header` FOR THIS REASON. It was in that row
+# because it is a mark-sized button in the header band, which is a description of
+# how it LOOKS. It navigates home, so it is nav, and the row it was in is now
+# honestly all-action.
+#
+# Every row is (kind, own classes, ancestor classes, owning component, role, the
+# reason it is drawn there). A button that matches no row fails the build, and a
+# row that matches nothing fails just as loudly.
+ROLES = ("action", "selector", "nav", "stand")
+ROLE_WHY = {
+    "action": "a press, and nothing is carried between presses. These are staged here.",
+    "selector": "it carries a value, and the selected one is a state rather than a press. "
+                "A selector is its group and its selected state, so it is staged on the page "
+                "of the component that owns the group.",
+    "nav": "it goes somewhere. It wears a button's tag and does a link's job.",
+    "stand": "furniture of this vitrine, not product.",
+}
+KINDS = [
+    ("the button family", {"auth-btn", "state-btn", "provider-btn", "confirm-btn"}, set(),
+     "button", "action", "this page, staged in full above"),
+    ("action bar, no class of its own", set(), {"cta-bar"},
+     "button", "action", "this page, in the matrix above; the bar itself is patterns/action-bar.css"),
+    ("icon only, in the header", {"icon-btn", "bal-add", "bal-swap", "hiw-btn"}, set(),
+     "header", "action", "the header owns its own row of marks, and their size is the header's rhythm"),
+    ("the logo, home", {"logo-btn"}, set(),
+     "header", "nav", "it is the mark and the way back to the feed, and both belong to the header"),
+    ("a row of the account dropdown", set(), {"dropdown"},
+     "header", "nav", "the dropdown is the header's, and a row of it is not a control of its own"),
+    ("YES / NO, the outcome pair", set(), {"yesno"},
+     "yesno", "selector", "green and red are outcome semantics in this product and nowhere else"),
+    ("the outcome side of a bet", {"bp-side"}, set(),
+     "betpanel", "selector", "it carries the odds and the selection, which is panel state rather than an action"),
+    ("the sheet grab", {"sheet-grab"}, set(),
+     "betpanel", "action", "a real control that is also the drawer's own handle"),
+    ("close, a sheet", {"sheet-close"}, set(),
+     "dialog", "action", "chrome of the overlay it closes"),
+    ("close, how it works", {"hiw-close"}, set(),
+     "hiw-dialog", "action", "chrome of the overlay it closes"),
+    ("close, a toast", {"toast-close"}, set(),
+     "toast", "action", "chrome of the overlay it closes"),
+    ("bookmark, on a card", {"bookmark-btn"}, set(),
+     "card", "action", "it is part of the card's own furniture and sized to it"),
+    # matched on the PARENT and not on `.ed-act`, which is the class the buttons
+    # carry and which no stylesheet reads: the rule that paints them is
+    # `.ed-actions button`, and the class is dead markup on 27 placements in each
+    # tree. `ui-kit/docs/backlog.md` S28. Matching the parent means this census
+    # goes on naming them the day that class is deleted.
+    ("an event's action row", set(), {"ed-actions"},
+     "event-detail", "action", "favourite, comments and share sit under the question and belong to it"),
+    ("chip, a category", set(), {"cat-nav", "subcat", "cat-condensed", "feed-subfilter"},
+     "catnav", "selector", "one graphite chip family, with a lighter press than this one"),
+    ("chip, a quick amount", set(), {"quick"},
+     "input", "selector", "it sets the value of the field beside it, so it belongs to the field"),
+    ("chip, a sort segment", set(), {"seg"},
+     "comments", "selector", "the same chip family, in the thread's own switcher"),
+    ("chip, a chart range", set(), {"ed-range"},
+     "tabs", "selector", "the range rail is a tab strip that happens to select a period"),
+    ("tab", {"rules-tab"}, {"tabs"},
+     "tabs", "selector", "a tab is a selector, and the selected one is a state and not a press"),
+    ("bottom nav slot", set(), {"bottom-nav"},
+     "bottomnav", "nav", "the nav owns the slot, the icon and the active state together"),
+    ("post a comment", {"cmt-post", "cmt-signin"}, set(),
+     "comments", "action", "the composer's own commitment, sized to the thread"),
+    ("a comment's own action", set(), {"cmt-actions"},
+     "comments", "action", "reply and like sit in the comment row and answer with it"),
+    ("load more", {"load-more"}, set(),
+     "loadmore", "action", "the same graphite chip, at the foot of a list"),
+    ("cookie consent", {"cc-btn"}, set(),
+     "cookie-consent", "action", "the banner is one block and its two answers are part of it"),
+    ("toggle", {"toggle"}, set(),
+     "filters", "selector", "a switch is not a button: it carries a value, not an action"),
+    ("hero, the featured pair", {"hf-btn"}, set(),
+     "hero", "selector", "the hero band's own YES / NO, at the band's size"),
+    ("edit, on the profile", {"edit"}, set(),
+     "profile", "action", "identity chrome, and it sits inside the profile head"),
+    ("the vitrine's own chrome", {"rm-toggle", "theme-switch"}, set(),
+     "course-chrome", "stand", "stand furniture, not product: it is how you read these pages"),
+]
+# Not a <button>, and declared rather than quietly skipped: the social row is
+# five anchors carrying a mark and no text, which is a button in every way a
+# reader can tell and an anchor because each one navigates away.
+ANCHOR_KINDS = [
+    ("social", "social-row", "footer", "nav",
+     "five marks in the footer brand block, and each one leaves the site"),
+]
+
+
+class Census(HTMLParser):
+    """Every <button> in a document, with the kind it belongs to."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.stack, self.found = [], []
+
+    def handle_starttag(self, tag, attrs):
+        cls = set((dict(attrs).get("class") or "").split())
+        if tag not in ("img", "br", "input", "meta", "link", "hr", "source", "use", "path"):
+            self.stack.append((tag, cls))
+        if tag != "button":
+            return
+        above = set()
+        for _t, c in self.stack[:-1]:
+            above |= c
+        for kind, own, anc, owner, role, why in KINDS:
+            if (own & cls) or (anc & above):
+                self.found.append((kind, ""))
+                return
+        self.found.append((None, " ".join(sorted(cls)) or "(no class)"))
+
+    def handle_endtag(self, tag):
+        for i in range(len(self.stack) - 1, -1, -1):
+            if self.stack[i][0] == tag:
+                del self.stack[i:]
+                return
+
+
+def census():
+    """(kind -> {"uses", "files"}, [unnamed controls], [idle kinds])."""
+    seen = {}
+    unnamed = {}
+    for f in sorted(UV.glob("*.html")):
+        p = Census()
+        p.feed(f.read_text(encoding="utf-8"))
+        for kind, raw in p.found:
+            if kind is None:
+                unnamed.setdefault(raw, set()).add(f.name)
+                continue
+            row = seen.setdefault(kind, {"uses": 0, "files": set()})
+            row["uses"] += 1
+            row["files"].add(f.name)
+    # the anchor kinds, counted by their row rather than by the tag
+    for kind, cls, owner, role, why in ANCHOR_KINDS:
+        row = seen.setdefault(kind, {"uses": 0, "files": set()})
+        for f in sorted(UV.glob("*.html")):
+            src = f.read_text(encoding="utf-8")
+            for m in re.finditer(r'class="[^"]*\b%s\b[^"]*"(.*?)</div>' % cls, src, re.S):
+                n = len(re.findall(r"<a\b", m.group(1)))
+                if n:
+                    row["uses"] += n
+                    row["files"].add(f.name)
+    idle = [k[0] for k in KINDS + [(a[0],) for a in ANCHOR_KINDS] if k[0] not in seen]
+    return seen, sorted("%s on %d screen(s)" % (k, len(v)) for k, v in unnamed.items()), sorted(idle)
+
+
+def kind_rows():
+    """The census as the page generator wants it: one row per kind, ordered by
+       how much of the product it is."""
+    seen, _unnamed, _idle = census()
+    rows = []
+    for kind, own, anc, owner, role, why in KINDS:
+        r = seen.get(kind, {"uses": 0, "files": set()})
+        # A SELECTOR AND NOT A BARE NAME, because the two halves of a row mean
+        # different things and the old notation spelled them the same. `own` is a
+        # class the control CARRIES; `anc` is a class ABOVE it, and the rule that
+        # paints the control is `.cmt-actions button`. Printing both as
+        # `sheet-close` and `.cmt-actions` said "here are some class names" when
+        # the honest answer is "here is what the stylesheet matches", and a reader
+        # who copied the second one onto a button would have painted nothing.
+        # A row that has both prints both: `tab` is `.rules-tab` on the profile
+        # and `.tabs button` in My Bets, and it is one kind either way.
+        rows.append({"kind": kind,
+                     "classes": sorted("." + c for c in own)
+                                + sorted("." + a + " button" for a in anc),
+                     "owner": owner, "role": role, "why": why,
+                     "uses": r["uses"], "screens": len(r["files"])})
+    for kind, cls, owner, role, why in ANCHOR_KINDS:
+        r = seen.get(kind, {"uses": 0, "files": set()})
+        rows.append({"kind": kind, "classes": ["." + cls + " a"], "owner": owner, "role": role,
+                     "why": why, "uses": r["uses"], "screens": len(r["files"])})
+    return sorted(rows, key=lambda r: -r["uses"])
+
+
+# ---- which action stands where, and the answer is read out of the map ---------
+# THE ROLE SPLIT ONLY MEANS SOMETHING IF THE ACTIONS ACTUALLY STAND. A page that
+# says "these fourteen are the buttons" and stages nine of them has moved the
+# defect rather than fixed it, so the staging is checked the way everything else
+# here is: from both ends.
+#
+# Two of the fourteen are not in the census specimen and must not be, because
+# they are already the subject of the page: `the button family` and `action bar`
+# are the matrix at the top. Naming them here is what keeps the gate from
+# demanding a second copy of the thing the page is about.
+IN_MATRIX = {"the button family", "action bar, no class of its own"}
+CENSUS_SPECIMENS = ("button-census",)
+
+
+def staged_kinds():
+    """The kinds the census specimen stages, read from specimens.map.json."""
+    import json
+    spec = json.loads((KIT / "specimens.map.json").read_text(encoding="utf-8"))
+    out = {}
+    for entry in spec["specimens"]:
+        if entry["id"] not in CENSUS_SPECIMENS:
+            continue
+        for part in entry.get("compose", []):
+            if "kind" not in part:
+                raise SystemExit("_worn: %s has a part with no `kind`: %s"
+                                 % (entry["id"], part.get("pick")))
+            out.setdefault(part["kind"], []).append(entry["id"])
+    return out
+
+
+def roles():
+    """(rows by role, actions not staged, staged things that are not actions)."""
+    rows = kind_rows()
+    by_role = {r: [x for x in rows if x["role"] == r] for r in ROLES}
+    staged = staged_kinds()
+    named = {r["kind"] for r in rows}
+    unstaged = sorted(r["kind"] for r in by_role["action"]
+                      if r["kind"] not in staged and r["kind"] not in IN_MATRIX)
+    wrong = sorted(k for k in staged
+                   if k not in named
+                   or next(r for r in rows if r["kind"] == k)["role"] != "action")
+    return by_role, unstaged, wrong
+
+
+if __name__ == "__main__":
+    worn, stood, missing, idle, stale = compare()
+    print("%d form(s) worn by %d placement(s) in ui-visual, %d staged in %s, "
+          "%d covered by a scope that changes nothing"
+          % (len(worn), sum(r["uses"] for r in worn.values()), len(stood),
+             ", ".join(STANDS), len(SAME)))
+    if "--check" not in sys.argv:
+        for (name, above), row in sorted(worn.items(), key=lambda kv: -kv[1]["uses"]):
+            how = ("staged" if (name, above) in stood
+                   else "as %s" % SAME[(name, above)][0][0] if (name, above) in SAME
+                   else "NOT STAGED")
+            print("   %-22s %-34s %4d uses  %3d screens  %-10s %s"
+                  % (name, above, row["uses"], len(row["files"]), how, row["label"]))
+    for k in missing:
+        print("   WORN AND NOT STAGED: %s @ %s (%d uses, e.g. %s)"
+              % (k[0], k[1], worn[k]["uses"], worn[k]["label"]))
+    for k in idle:
+        print("   STAGED AND NOT WORN: %s @ %s" % (k[0], k[1]))
+    for s in stale:
+        print("   IDLE ROW IN THE SAME MAP: %s" % s)
+
+    seen, unnamed, idle_kinds = census()
+    rows = kind_rows()
+    print("\n%d kind(s) of button-shaped control, %d placement(s), %d component(s) draw them"
+          % (len(rows), sum(r["uses"] for r in rows), len({r["owner"] for r in rows})))
+    by_role, unstaged, wrong = roles()
+    print("   by role: " + ", ".join(
+        "%s %d kind(s) / %d placement(s)"
+        % (r, len(by_role[r]), sum(x["uses"] for x in by_role[r])) for r in ROLES))
+    if "--check" not in sys.argv:
+        for role in ROLES:
+            print("  -- %s" % role)
+            for r in by_role[role]:
+                print("   %-34s %-16s %5d uses %4d screens  %s"
+                      % (r["kind"], r["owner"], r["uses"], r["screens"],
+                         ", ".join(r["classes"])[:40]))
+    for u in unnamed:
+        print("   NOT NAMED BY THE CENSUS: %s" % u)
+    for k in idle_kinds:
+        print("   NAMED AND NOT WORN: %s" % k)
+    for k in unstaged:
+        print("   AN ACTION THAT STANDS NOWHERE: %s" % k)
+    for k in wrong:
+        print("   STAGED ON THE BUTTON PAGE AND NOT AN ACTION: %s" % k)
+    sys.exit(1 if (missing or idle or stale or unnamed or idle_kinds or unstaged or wrong) else 0)

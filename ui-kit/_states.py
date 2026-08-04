@@ -9,6 +9,18 @@ out of date the moment somebody edits a rule, and it goes out of date SILENTLY:
 a stale png renders exactly as confidently as a fresh one. That is the class of
 defect gate 29 exists for, one level up.
 
+WHAT THE STAND PAGES ACTUALLY SHOW, SINCE 2026-08-04, AND IT IS NO LONGER THE
+PICTURE. The capture writes two things per state per theme, a png and the nine
+values the face was read at, and the pages now render the values: what the face
+IS at rest, and what each state MOVES. A photograph of a control is a photograph
+of something the reader can hover three sections up the same page, and the crop
+around it was derived per side from the distance to the nearest neighbour, so
+the subject sat off centre in its own frame. The picture survives on `disabled`,
+which is the one state nobody can raise by hand. Everything below is unchanged
+and now guards the numbers as well as the four remaining images, which is the
+same question either way: is this what the browser would produce today. The 710
+pictures the pages stopped linking are `ui-kit/docs/backlog.md` S30.
+
 WHY IT IS NOT A PIXEL COMPARISON. The obvious check is "take the picture again
 and compare". It cannot be a build gate: it needs a browser, a served tree and
 about a minute, and `_check_kit.py` is Python that runs anywhere in a second and
@@ -53,7 +65,16 @@ from _levels import OWNER                                             # noqa: E4
 
 # Read by every document, so a change to any of them can change any picture.
 ALWAYS = ["components/tokens.css", "components/base.css", "components/fonts.css",
-          "ui-kit/_specimen.css", "ui-kit/_verify/states.cjs"]
+          "ui-kit/_specimen.css", "ui-kit/_verify/states.cjs",
+          # browser.cjs decides a picture as much as states.cjs does and was not
+          # in this list. It holds what a face IS, how long a state is allowed to
+          # settle before it is read, and how the frame is derived from the
+          # subject: changing any of the three changes every picture and every
+          # value in the manifest, and the hash said nothing had moved. Added
+          # 2026-08-04, when a settle fix in that file would otherwise have left
+          # 95 groups stamped as current against an instrument that no longer
+          # produces them.
+          "ui-kit/_verify/browser.cjs"]
 
 
 def sources(row):
@@ -195,12 +216,18 @@ TIGHT = {
                     "`tabs.css` moves the visible indicator onto the LABEL and says so "
                     "at the declaration. A frame that held this ring would be a picture "
                     "of a thing no person can see",
-    ("header", "g8"): "a link inside the notifications dropdown, 2px from its neighbour, "
+    # g8 and g9 until 2026-08-04. A group id is a counter, and adding the scope
+    # to the capture key renumbered every group after the first change: this list
+    # is keyed on the id, so both entries pointed one row to the left. The idle
+    # control is what said so, which is the whole reason a declared list carries
+    # one. The subjects are unchanged and are named here so the next renumbering
+    # is a lookup rather than a puzzle.
+    ("header", "g9"): "a link inside the notifications dropdown, 2px from its neighbour, "
                       "so the halving leaves 1 of the 4 the ring needs. The stand is not "
                       "padded to flatter the camera: the density is the product's, the "
                       "ring is drawn, and 3px of it are shared with the row above",
-    ("header", "g9"): "`a.notif-all`, the same dropdown and the same 2px, for the same "
-                      "reason",
+    ("header", "g10"): "`a.notif-all`, the same dropdown and the same 2px, for the same "
+                       "reason",
 }
 
 

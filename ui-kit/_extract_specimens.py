@@ -43,6 +43,11 @@ KIT = ROOT / "ui-kit"
 # vitrine around it. It carries the same boot block and is told by postMessage.
 import sys; sys.path.insert(0, str(ROOT / "ui-visual"))
 from _theme_switch import BOOT as THEME_BOOT  # noqa: E402
+# the census of button-shaped controls: a composed specimen labels each row with
+# the kind it stages, and the kind's name, classes, counts, owner and reason are
+# all read from there rather than typed into the map twice.
+sys.path.insert(0, str(KIT))
+import _worn                                  # noqa: E402
 OUT = KIT / "specimens"
 
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link",
@@ -157,7 +162,7 @@ def _match(nodes, selector, nth):
     return hits[nth - 1]
 
 
-def pick(html, selector, nth=1, unwrap=()):
+def pick(html, selector, nth=1, unwrap=(), mark=None, open_details=False):
     """Return the picked element(s) together with their true ancestor chain,
     siblings dropped. The chain is the one the element actually has in the kit,
     so every descendant selector that painted it there still paints it here.
@@ -180,9 +185,37 @@ def pick(html, selector, nth=1, unwrap=()):
             chain.append(cur)
         cur = nodes[cur]["parent"]
     chain.reverse()
-    opens = "".join(html[nodes[i]["start"]:nodes[i]["tag_end"]] for i in chain)
+    # MARK THE CHAIN, NEVER THE SUBJECT. The composed census needs the ancestors
+    # for the cascade and not for their own surface: a close button has to be
+    # inside `dialog.app-dialog` to be painted at all, and the sheet's plate,
+    # padding and 92 per cent width are the sheet's, not the button's. `mark`
+    # puts a stand class on every element of the CHAIN, so `_specimen.css` can
+    # take the plate off the host and leave everything the control declares
+    # alone. `open_details` is the same idea for a <details>, which is closed in
+    # the source and whose content therefore has no box at all.
+    def _open_tag(i):
+        raw = html[nodes[i]["start"]:nodes[i]["tag_end"]]
+        # a <details> and a <dialog> are both closed by default and both hide
+        # everything inside them, so a control picked out of one has no box at
+        # all. The census opens the container it is showing a control from; the
+        # product opens it with a click and with showModal(), and neither is
+        # available to a specimen.
+        if open_details and nodes[i]["tag"] in ("details", "dialog") and " open" not in raw:
+            raw = re.sub(r"^<(details|dialog)", r"<\1 open", raw)
+        if not mark:
+            return raw
+        if 'class="' in raw:
+            return raw.replace('class="', 'class="%s ' % mark, 1)
+        return re.sub(r"^<(\w+)", r"<\1 " + 'class="%s"' % mark, raw)
+
+    opens = "".join(_open_tag(i) for i in chain)
     closes = "".join("</%s>" % nodes[i]["tag"] for i in reversed(chain))
     body = "\n".join(html[nodes[i]["start"]:nodes[i]["end"]] for i in picked)
+    if mark:
+        # the subject gets a class of its own, so the stand can put an absolutely
+        # positioned control back in the flow without touching anything else
+        body = re.sub(r"^<(\w+)", r'<\1 class="kit-here"', body) if 'class="' not in body[:body.find(">")] \
+            else body.replace('class="', 'class="kit-here ', 1)
     return opens + body + closes
 
 
@@ -429,8 +462,118 @@ def build():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
 
+    # ---- a specimen composed out of other specimens ------------------------
+    # WHY THIS EXISTS. The census on ui-kit/button.html shows 27 kinds of control
+    # and every one of them already stands in some specimen. Showing them meant
+    # one of three bad things: a second copy of each markup, a photograph, or a
+    # window onto a region of somebody else's document, which is what shipped
+    # first and read as a scatter of dark rectangles with a stray "YES 38%" in
+    # one of them.
+    #
+    # `pick()` already does the right thing and has since the day it was written:
+    # it slices ONE element out of a document WITH its true ancestor chain and
+    # drops the siblings. A close button picked out of the sign-in sheet arrives
+    # inside `dialog.app-dialog > .sheet-head` and inside nothing else, so the
+    # sheet is as small as the button and reads as the ground the button stands
+    # on rather than as a card. No markup is authored here: every fragment is
+    # sliced from the source it already lives in, so there is still exactly one
+    # copy and it is the one the component's own page shows.
+    #
+    # A composed entry names its parts by the id of the specimen each comes from,
+    # so the map says "the icon button, as it stands in header-in" rather than
+    # repeating a section and a label that entry already carries.
+    by_id = {e["id"]: e for e in spec_map["specimens"]}
+
+    # THE ANATOMY OF ONE CONTROL, AND WHY THE THREE LINES ARE THE THREE LINES.
+    # A person opening a page called Buttons wants to know, for each one: what is
+    # it called, what does it look like, and where does it belong. The first cut
+    # of this section answered the first and the third in a table and the second
+    # in a picture somewhere else on the page, so a reader had to hold a row and
+    # an image together in their head and nobody did. The three go in one block:
+    #
+    #    the name, and the class the markup carries
+    #    the control itself, live, on the page ground
+    #    what it is for, how much of the product it is, and who paints it
+    #
+    # Only the middle line is markup from the product. The other two are read out
+    # of `_worn.KINDS` at build time, which is the same list gate 38 holds against
+    # ui-visual in both directions, so a sentence here cannot describe a control
+    # that is no longer shipped and a shipped control cannot go undescribed.
+    kinds = {r["kind"]: r for r in _worn.kind_rows()}
+
+    def anatomy(part, frag):
+        k = kinds.get(part["kind"])
+        if not k:
+            raise SystemExit("compose: no census kind %r" % part["kind"])
+        cls = " ".join('<code>%s</code>' % c for c in k["classes"])
+        ctl = frag if not part.get("col") else '<div class="kit-col">%s</div>' % frag
+        return ('<div class="kit-anat">\n'
+                '<p class="kit-anat-head"><b>%s</b>%s</p>\n'
+                '<div class="kit-anat-ctl">%s</div>\n'
+                '<p class="kit-anat-why">%s. <span class="kit-anat-meta">'
+                '%d placements on %d screens, painted by components/%s.css</span></p>\n'
+                '</div>' % (k["kind"], cls, ctl, k["why"], k["uses"], k["screens"], k["owner"]))
+
+    def compose(entry):
+        parts = entry["compose"]
+        # ordered by how much of the product each one is, computed rather than
+        # authored, so the page cannot drift out of order as the tree changes
+        if all("kind" in p for p in parts):
+            parts = sorted(parts, key=lambda p: -kinds.get(p["kind"], {"uses": 0})["uses"])
+        rows = []
+        for part in parts:
+            src = by_id.get(part["of"])
+            if not src:
+                raise SystemExit("compose %s: no specimen %r" % (entry["id"], part["of"]))
+            skey = (src.get("from", "kit.html"), src["section"], src["label"])
+            if skey not in blocks:
+                raise SystemExit("compose %s: no block for %s" % (entry["id"], part["of"]))
+            used_labels.add(skey)
+            frag = blocks[skey]
+            if src.get("pick"):
+                frag = pick(frag, src["pick"], src.get("nth", 1), src.get("unwrap", ()))
+            # EVERY HOST GIVES UP ITS SURFACE, with no exception left. The first
+            # cut let five parts keep their plate, on the argument that a close
+            # button does not exist away from the sheet it closes. That argument
+            # was about three DIFFERENT controls: the dock's outcome pair, the
+            # bottom-nav slot and the toggle are selectors and navigation, and
+            # they have left this page for the component that owns their group.
+            # What is left is actions, and an action stands on its own or the
+            # claim that it is one control is not true.
+            frag = pick(frag, part["pick"], part.get("nth", 1),
+                        mark="kit-nude" if part.get("nude", True) else None,
+                        open_details=True)
+            rows.append(anatomy(part, frag) if "kind" in part
+                        else '<div>\n<span class="kit-surf-lbl">%s</span>\n%s\n</div>'
+                             % (part["label"], frag))
+        return '<div class="kit-stack">\n%s\n</div>' % "\n".join(rows)
+
     manifest = []
     for entry in spec_map["specimens"]:
+        if entry.get("compose"):
+            html = compose(entry)
+            if entry.get("wrap") is not False:
+                html = '<div class="app-case">\n%s\n</div>' % html
+            html, _rw = relocate(html)
+            used = {m for m in re.findall(r'href="#(i-[\w-]+)"', html)}
+            missing = sorted(used - set(symbols))
+            if missing:
+                raise SystemExit("%s uses undefined symbols: %s" % (entry["id"], missing))
+            sprite = ""
+            if used:
+                sprite = ('<svg width="0" height="0" aria-hidden="true" style="position:absolute">'
+                          "<defs>" + "".join(symbols[u] for u in sorted(used)) + "</defs></svg>\n")
+            (OUT / (entry["id"] + ".html")).write_text(
+                HEAD.format(title=entry["title"], theme_boot=THEME_BOOT,
+                            cls=' class="spec-inflow"' if entry.get("inflow") else "") + html + "\n" +
+                TAIL.format(sprite=sprite, id=entry["id"]),
+                encoding="utf-8")
+            manifest.append({k: entry[k] for k in
+                             ("id", "component", "title", "width") if k in entry}
+                            | {k: entry[k] for k in ("also", "note", "state", "height")
+                               if k in entry}
+                            | {"source": "composed", "rewrites": 0})
+            continue
         key = (entry.get("from", "kit.html"), entry["section"], entry["label"])
         if key not in blocks:
             raise SystemExit("no block %s in %s" % (key[1:], key[0]))

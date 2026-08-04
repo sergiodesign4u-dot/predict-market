@@ -23,7 +23,28 @@
 .auth-btn,.state-btn,.provider-btn,.app-case .cta-bar button{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10);cursor:pointer}
 .auth-btn{padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
 .state-btn{padding:var(--space-8) var(--space-12);font-size:var(--text-12)}
-.provider-btn{display:flex;align-items:center;gap:var(--space-8);padding:var(--space-12);font-size:var(--text-13);width:100%;text-align:left}
+/* ONE FACE FOR THE FULL-WIDTH ROW, and it is 2026-08-04's one deliberate change.
+   `.provider-btn` measured SEVEN faces in the painted tree, and the four scopes
+   agreed on padding, radius, ground and edge while disagreeing on exactly four
+   values: 14/600/centred with a 12 gap in the sign-in sheet, 13/400/left with an
+   8 gap in a plain dialog, 14/700/centred in an outcome sheet, 13/600/centred in
+   the bet panel. That is not four decisions, it is one decision taken four times
+   by four people, and nothing in the product predicts which one a place gets.
+   The four values move here, once, and the scopes below keep only what is
+   genuinely theirs.
+   THE FACE THAT WON IS THE ONE 324 OF THE 444 PLACEMENTS ALREADY WEAR: the
+   sign-in sheet's. So 120 controls change and 324 do not, which is the smallest
+   move that ends the disagreement rather than a fifth opinion added to four.
+   font-family IS DECLARED HERE ON PURPOSE, and it is the one thing the merge of
+   2026-08-03 refused to do for `.confirm-btn` twelve lines up. The reason it was
+   refused there was that adding a declaration to an element that did not have
+   one is not a de-duplication; here it IS the point, because three of the four
+   scopes declared --font-body and the fourth inherited --font-body-root, and two
+   controls with different fallback chains are not one control. Same face today,
+   different answer on the day the face fails to load. */
+.provider-btn{display:flex;align-items:center;justify-content:center;gap:var(--space-12);
+  padding:var(--space-12);font-family:var(--font-body);font-size:var(--text-14);
+  font-weight:var(--weight-semibold);width:100%;text-align:left}
 .provider-btn .ic{width:var(--icon-18);height:var(--icon-18)}
 /* THE ACTION BAR'S BUTTON IS A BUTTON, and it came here from account.css on
    2026-08-03 (ui-kit backlog S11). It was styled by the component that draws
@@ -125,7 +146,15 @@
    states pass, because giving it a press made the rest state impossible to overlook. */
 .app-case :is(.bet-panel,.bet-sheet,.bet-dock) .confirm-btn{border:0;border-radius:var(--radius-10);background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);font-family:var(--font-body);font-weight:var(--weight-bold)}
 .app-case .bet-sheet .confirm-btn{padding:var(--space-16)}
-dialog.app-dialog.outcome-dialog .provider-btn{display:flex;width:100%;box-sizing:border-box;justify-content:center;align-items:center;gap:var(--space-8);padding:var(--space-12);background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);color:var(--text-primary);font-family:var(--font-body);font-weight:var(--weight-bold);font-size:var(--text-14);cursor:pointer;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+/* SIXTEEN DECLARATIONS BECAME THREE. This rule re-declared the entire anatomy from
+   nothing - ground, edge, radius, ink, family, size, cursor, display, width, box
+   sizing, both alignments, gap and padding - and thirteen of the sixteen said
+   exactly what the family rule already says. Two of the three that did NOT were
+   the disagreement itself, a 700 weight and an 8 gap, and both are gone with it.
+   What stays is what is genuinely this scope's: the specificity that lets its own
+   hover below win, and the box-sizing, which the outcome sheet needs because it
+   gives this row a width. */
+dialog.app-dialog.outcome-dialog .provider-btn{box-sizing:border-box;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 /* THE WIN AND LOSS OVERLAYS KEEP A HOVER RULE OF THEIR OWN, and only because
    of specificity: their rest state is written at (0,4,1) above, so the family's
    hover at (0,3,1) would lose to it and the button would answer nothing. The
@@ -134,8 +163,15 @@ dialog.app-dialog.outcome-dialog .provider-btn{display:flex;width:100%;box-sizin
    control goes INTO - and it was the same wrong reach .btn-secondary made, on
    the two screens where a person has just won or lost money. */
 dialog.app-dialog.outcome-dialog .provider-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover);color:var(--text-strong)}
-.app-case :is(.bet-panel,.bet-sheet) .provider-btn,.app-case .bet-dock .provider-btn{justify-content:center;font-family:var(--font-body);font-weight:var(--weight-semibold)}
-dialog.app-dialog.signin-dialog .provider-btn{justify-content:center;gap:var(--space-12);padding:var(--space-12);font-family:var(--font-body);font-size:var(--text-14);font-weight:var(--weight-semibold);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,transform var(--dur-fast) ease}
+/* The bet panel, the sheet and the dock had a rule here that set justify-content,
+   font-family and font-weight, and the family rule now sets all three to the same
+   values. A rule that says nothing is deleted rather than left to be read. */
+/* THE SIGN-IN SHEET IS NOW THE FAMILY, which is what the merge above means: its six
+   face declarations were the values every provider row got, so they are written once
+   in the family rule and not here. What is left is the transition, and it is not
+   redundant: this is the only provider row in the product that answers with a
+   transform, so it is the only one that has to be told to ease one. */
+dialog.app-dialog.signin-dialog .provider-btn{transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,transform var(--dur-fast) ease}
 dialog.app-dialog.signin-dialog .provider-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover);transform:translateY(-1px)}
 dialog.app-dialog.signin-dialog .provider-btn .ic{width:var(--icon-18);height:var(--icon-18);flex:0 0 var(--icon-18);stroke:none}
 dialog.app-dialog.signin-dialog .provider-btn .prov-x,dialog.app-dialog.signin-dialog .provider-btn .prov-apple{color:var(--bg-brand-mark);fill:currentColor}

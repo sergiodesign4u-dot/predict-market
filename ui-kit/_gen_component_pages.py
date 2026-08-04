@@ -16,9 +16,22 @@ For every components/<name>.css it writes ui-kit/<name>.html carrying:
   - the css itself, so the file and the page never drift apart.
 
 Specimens come from ui-kit/specimens/, built by _extract_specimens.py out of the
-labelled blocks of the frozen kit. A component page renders only the specimens
-it OWNS; where it merely appears inside a bigger one, it links instead, so no
-markup is shown twice.
+labelled blocks of the frozen kit. A component page frames every specimen one of
+its measured faces stands in, and not only the ones the registry files under its
+name. The old rule was "render what you OWN, link the rest", and on the biggest
+component in the system it showed two controls out of five: `.provider-btn` and
+`.confirm-btn` are 574 of the button family's 704 placements and neither stands
+in a specimen registered to `button`, so a page whose whole subject is the
+family rendered the two smallest members and sent the reader to a list of links
+for the rest. `ui-kit/_verify/states.cjs` already had to solve this to find
+anything to photograph, and its comment says why in the same words.
+
+THAT IS NOT A SECOND COPY OF THE MARKUP. A specimen is one file. Framing it from
+two pages is one document read through two doors, and the rule it appears to
+bend - never show markup twice - is about never AUTHORING it twice, which still
+holds: nothing here writes markup, and the frame carries the specimen's own url.
+What is still linked rather than framed is every OTHER document the component
+merely appears inside, which is the part that would have been repetition.
 
 Also writes ui-kit/_nav.js (the one registry), ui-kit/overview.html (the hub)
 and ui-kit/_frames.js (the parent half of the frame height handshake).
@@ -59,6 +72,16 @@ from _gen_docs import PAGES as DOC_PAGES  # noqa: E402
 # in both directions, so a rule cannot name a component whose page is silent and
 # a page cannot carry a rule the document has never heard of.
 from _gen_docs import usage_rules, inline as md_inline  # noqa: E402
+# ONE MARKDOWN READER, NOT TWO. The authored half of a stand page used to go
+# through a reader written here that knew a paragraph and a `- ` list and nothing
+# else. `ui-kit/authored/button.md` answers "when to use" with an eleven-row
+# table of four axes and two `###` headings, because a decision made of four
+# values IS a table, and every pipe of it printed on the page as running text.
+# Gate 35 could not see it: it asks for `](` and `**`, the two marks that can
+# only ever be a failed render, and a pipe is a character a sentence may contain.
+# The documents already have a reader that handles GFM tables, headings, quotes
+# and code blocks, so the fix is to stop having a second one.
+from _gen_docs import blocks as md_blocks  # noqa: E402
 THEME_BUTTON_INLINE = button(inline=True)
 
 SPECIMENS = json.loads((KIT / "specimens" / "index.json").read_text(encoding="utf-8"))
@@ -221,8 +244,39 @@ def parse_component(name):
 
 
 # ---------------------------------------------------------------- sections ---
+def live_specimens(name):
+    """The specimens this page frames: the ones it OWNS, and only those.
+
+    A DETOUR WORTH RECORDING, BECAUSE THE PROBLEM IT SOLVED IS REAL AND THE
+    SOLUTION WAS NOT. The button page framed two controls out of five, because
+    `.provider-btn` and `.confirm-btn` have no ground outside the dialog, panel
+    or bar they ship in and no specimen registered to `button` holds one. On
+    2026-08-04 this function was widened to frame every document a measured face
+    stood in, and the button page grew a whole sign-in dialog and a whole profile
+    header: three hundred lines of other components, to show one row.
+
+    THAT IS SHOWING THE HOST INSTEAD OF THE CONTROL. The scope is needed for the
+    paint, and the scope is `<dialog class="app-dialog">`, not the dialog with
+    its heading, its amount field, its chips and its fine print. So the fix went
+    where it belonged, into the specimen: `button-matrix` stages every variant
+    the product wears inside the smallest wrapper that paints it, and this
+    function went back to the one line it was.
+
+    AND IT EXCLUDES WHAT ANOTHER SECTION OWNS. `button-census` is registered to
+    `button` like every other specimen of this page, so this function framed it,
+    and `census_table()` framed it again under the role tables that explain it.
+    The page shipped the same twelve controls twice and, worse, two elements
+    carrying `id="sp-button-census"`, so the jump link and every `#sp-` anchor
+    resolved to whichever came first. The list is read from `_worn` rather than
+    typed here, because the section that owns those specimens is the one that
+    already names them.
+    """
+    owned = set(_worn.CENSUS_SPECIMENS)
+    return [s for s in SPECIMENS if s["component"] == name and s["id"] not in owned]
+
+
 def live(name):
-    mine = [s for s in SPECIMENS if s["component"] == name]
+    mine = live_specimens(name)
     if not mine:
         return ('<p class="tk-note">No specimen of its own yet. It is rendered inside the specimens '
                 'linked below.</p>')
@@ -246,6 +300,83 @@ def live(name):
             f'width="{w}" height="{s.get("height", 320)}" loading="lazy" '
             f'title="{esc(s["title"])}"></iframe></div>{caption}</figure>')
     return "\n".join(out)
+
+
+ROLE_TITLE = {
+    "action": "Actions, and every one of them stands above",
+    "selector": "Selectors, which are not buttons",
+    "nav": "Navigation, wearing a button's tag",
+    "stand": "Not product",
+}
+
+
+def census_table(name):
+    """Every button-shaped control in the product, split by what it actually IS.
+
+    A `<button>` IS A TAG AND NOT A ROLE, and the first cut of this section read
+    the tag as the answer. So the page called Buttons listed 5,281 controls, of
+    which 1,856 are buttons: the other 3,425 are chips, tabs, a toggle, the
+    YES / NO pair, rows of the account menu, slots of the bottom nav and five
+    social marks. Two of them were staged live on this page, which is worse than
+    listing them, because a selector's whole subject is its group and its selected
+    state and one of them standing alone shows the half that does not matter.
+
+    Three roles and one non-product, defined in `_worn.KINDS` and held by gate 38
+    in both directions. The actions stand live above, sliced out of the specimens
+    they already ship in. The rest is an index: what it is, how much of the
+    product it is, and the door to the page that draws it.
+    """
+    if name != "button":
+        return ""
+    by_role, _unstaged, _wrong = _worn.roles()
+
+    def rows_for(role):
+        out = []
+        for r in by_role[role]:
+            owner = r["owner"]
+            page = KIT / (owner + ".html")
+            first = next((s["id"] for s in SPECIMENS if s["component"] == owner), None)
+            where = esc(LABEL.get(owner, owner))
+            if page.exists():
+                href = "%s.html%s" % (owner, "#sp-" + first if first else "")
+                where = '<a href="%s">%s</a>' % (href, where)
+            classes = " ".join("<code>%s</code>" % esc(c) for c in r["classes"])
+            out.append("<tr><td>%s</td><td class='tk-role'>%s</td><td class='tk-hex'>%d</td>"
+                       "<td class='tk-hex'>%d</td><td>%s</td><td class='tk-from'>%s</td></tr>"
+                       % (esc(r["kind"]), classes, r["uses"], r["screens"], where, esc(r["why"])))
+        return "".join(out)
+
+    # in the same scrolling box a document's table gets: seven columns do not
+    # fold into 360 and a page that scrolls sideways is worse than a table that
+    # does. Measured after: button.html was +21px at 360 with the table bare, 0
+    # with it in the box.
+    def table(role):
+        n = sum(r["uses"] for r in by_role[role])
+        # `.tk-subh` and not a class of its own: this is the sub-heading style the
+        # vitrine already has, and a second one would be a second decision about
+        # the same thing.
+        return ('<h3 class="tk-subh">%s</h3><p class="tk-note">%s '
+                '<b>%d kind(s), %d placement(s).</b></p>'
+                '<div class="tk-doc-tbl"><table class="tk-tbl ck-census"><thead><tr>'
+                '<th>what it is</th><th>class</th><th>uses</th><th>screens</th>'
+                '<th>drawn on</th><th>why there and not here</th>'
+                "</tr></thead><tbody>%s</tbody></table></div>"
+                % (ROLE_TITLE[role], esc(_worn.ROLE_WHY[role]), len(by_role[role]), n,
+                   rows_for(role)))
+
+    frames = "".join(
+        '<figure class="ck-scene" id="sp-%s"><figcaption class="ck-scene-lbl"><b>%s</b>'
+        '<span class="ck-w">%dpx</span><span class="ck-zoom" hidden></span>'
+        '<a href="specimens/%s.html" target="_blank" rel="noopener">open on its own</a>'
+        '</figcaption><div class="ck-frame" style="width:%dpx">'
+        '<iframe data-specimen="%s" src="specimens/%s.html" width="%d" height="320" '
+        'loading="lazy" title="%s"></iframe></div></figure>'
+        % (s["id"], esc(s["title"]), s.get("width", 900), s["id"], s.get("width", 900),
+           s["id"], s["id"], s.get("width", 900), esc(s["title"]))
+        for s in SPECIMENS if s["id"] == "button-census")
+    return frames + "".join(table(r) for r in _worn.ROLES)
+
+
 
 
 def elsewhere(name):
@@ -434,6 +565,10 @@ def screen_links(screens):
 # what a hover looks like.
 import _authored                                                      # noqa: E402
 import _states                                                        # noqa: E402
+# the census of every control in the product that is a button, and who draws it.
+# Read here rather than re-counted, for the reason every list in this repo is
+# read from one place: two counts of one fact are two facts.
+import _worn                                                          # noqa: E402
 
 AUTHORED = {p.stem: _authored.parse(p)
             for p in sorted((KIT / "authored").glob("*.md"))} if (KIT / "authored").exists() else {}
@@ -456,14 +591,111 @@ STATE_WHAT = {"rest": "rest", "hover": "hover", "active": "held down",
               "focus": "focused by keyboard", "disabled": "disabled"}
 
 
-def state_gallery(name):
-    """Every state of every distinct face, in both themes, photographed.
+# WHAT A FACE IS MADE OF, in the order `browser.cjs face()` writes it. Nine
+# values, and each one is named here for a reader rather than for a stylesheet:
+# the second column is how it should be shown, because a colour that is printed
+# as six characters of hex is a fact nobody checks and a colour shown as itself
+# is one anybody can.
+#
+# TWO OF THE NINE ARRIVE CLIPPED. `face()` takes 50 characters of
+# background-image and 60 of box-shadow, which is enough to tell a gradient from
+# no gradient and a glow from no glow and not enough to rebuild either. So they
+# are printed as what was recorded, with the clip marked, and nothing on this
+# page pretends to redraw them: the thing that draws them is the live frame
+# above, painted by components/index.css like every other screen in the repo.
+FACE = [("ground", "colour"), ("gradient", "text"), ("edge", "colour"),
+        ("edge width", "len"), ("ink", "colour"), ("corner", "len"),
+        ("lift", "text"), ("shadow", "text"), ("fade", "text")]
+FACE_CLIP = {1: 50, 7: 60}
+QUIET = {"none", "1", "0px", "normal"}
 
-    Not a rendering of the state here: each picture was taken in a specimen with
-    a real pointer, a real Tab and a real press (ui-kit/_verify/states.cjs), so
-    what is on the page is what a browser did, not what this generator thinks the
-    rule means. The value each picture was taken at is printed under it, which is
-    what makes the image checkable rather than decorative."""
+
+def face_bits(value):
+    """The nine measured values, split and paired with their names."""
+    return list(zip(FACE, (value or "").split(" | ")))
+
+
+# A TRANSFORM IS RECORDED AS A MATRIX, because that is what getComputedStyle
+# returns and the capture writes down what it read. `matrix(1, 0, 0, 1, 0, -1)`
+# is the one pixel of lift components/button.css declares as translateY(-1px),
+# and nobody reads it as that. The rewrite is lossless and only for the identity
+# with a translation in it: any other matrix is a rotation, a scale or a skew and
+# is printed as recorded, because a name for it would be a guess.
+LIFT = re.compile(r"^matrix\(1,\s*0,\s*0,\s*1,\s*(-?[\d.]+),\s*(-?[\d.]+)\)$")
+
+
+def face_cell(kind, val, i):
+    """One measured value, shown as the kind of thing it is."""
+    mark = "" if len(val) < FACE_CLIP.get(i, 10 ** 6) else '<abbr title="recorded clipped">...</abbr>'
+    if kind == "colour":
+        return ('<i class="ck-sw" style="background:%s"></i><code>%s</code>'
+                % (esc(val), esc(val)))
+    m = LIFT.match(val)
+    if m:
+        return ('<code><abbr title="%s">translate(%spx, %spx)</abbr></code>'
+                % (esc(val), m.group(1), m.group(2)))
+    return "<code>%s</code>%s" % (esc(val), mark)
+
+
+def face_row(bits, base=None):
+    """A state, as the values that make it. With `base`, only what MOVED.
+
+    A state read as a difference is the thing a person actually asks about: the
+    rest face answers "what is it" once, and every row under it answers "what
+    does this state change", which is one or two values rather than nine. The
+    photographs this section used to carry could not say that at all. Four
+    pictures of a control that moves by one pixel are four pictures of the same
+    control, and the reader is left to spot the difference, which is the job the
+    instrument had already done and thrown away.
+    """
+    out = []
+    for i, ((label, kind), val) in enumerate(bits):
+        # a gradient and a shadow are sentences, not swatches, so they take a
+        # line of their own rather than being squeezed into a column beside a
+        # colour and broken mid-token
+        cls = "ck-fx ck-fx-wide" if kind == "text" else "ck-fx"
+        if base is not None:
+            if val == base[i][1]:
+                continue
+            was = base[i][1]
+            out.append('<span class="%s"><em>%s</em>%s <span class="ck-fx-to">from</span> %s</span>'
+                       % (cls, esc(label), face_cell(kind, val, i), face_cell(kind, was, i)))
+            continue
+        if val in QUIET:
+            continue
+        out.append('<span class="%s"><em>%s</em>%s</span>' % (cls, esc(label), face_cell(kind, val, i)))
+    if not out:
+        return '<span class="ck-fx ck-fx-same">nothing in the nine values moves</span>'
+    return "".join(out)
+
+
+def state_gallery(name):
+    """Every distinct face, live, and what the browser measured it at.
+
+    IT USED TO BE FORTY PHOTOGRAPHS PER PAGE and that was the wrong answer to a
+    right question. The question was "a table of `background:var(--bg-control
+    -hover)` tells nobody what a hover looks like", and the answer taken was to
+    photograph one, with a real pointer, in both themes, for every state of every
+    face. What that produces is a page of small pictures whose entire content is
+    a control the reader can already see three sections up, cropped by an
+    instrument whose padding is derived per side from the distance to the nearest
+    neighbour: 12px on the left of an action-bar button and 4px on its right, 9
+    above a confirm button and 12 below. Gate 31 called none of that a crop
+    because it asks one question, whether the ring and the glow fitted, and never
+    whether the subject is centred in its own frame. A photograph also cannot be
+    hovered, which is the one thing the subject of the section is for.
+
+    So the frames in Live are the rendering, and this section is the reading of
+    them: what each face IS at rest, and what each state MOVES, in the values the
+    capture recorded. The capture still runs and still needs a browser, a real
+    pointer and a real Tab, because those numbers cannot be read out of css: a
+    hover value is the cascade resolved, not a declaration. What changed is that
+    the page shows the measurement instead of a picture of it.
+
+    The ring is not in the nine. `outline` is drawn outside the box and is not
+    part of a face, so a focus row that says nothing moved is saying the face
+    does not move, which is true, and the ring is on the live frame.
+    """
     groups = CAPTURED.get(name)
     if not groups:
         return ""
@@ -474,25 +706,23 @@ def state_gallery(name):
         shots = g.get("shots", {})
         panels = []
         for theme, label in (("dark", "Vault"), ("light", "Daylight")):
-            cells = []
+            rest = shots.get("rest-%s" % theme)
+            if not rest:
+                continue
+            base = face_bits(rest["value"])
+            rows = ['<tr><td class="tk-role">rest</td><td class="ck-fx-cell">%s</td></tr>'
+                    % face_row(base)]
             for st in STATE_ORDER:
                 shot = shots.get("%s-%s" % (st, theme))
-                if not shot:
+                if not shot or st == "rest":
                     continue
-                path = KIT / "_states" / shot["file"]
-                if not path.exists():
-                    continue
-                w, h = png_size(path, shot)
-                cells.append(
-                    '<figure class="ck-shot"><img src="_states/%s" width="%d" height="%d" '
-                    'alt="%s, %s, %s theme" loading="lazy">'
-                    '<figcaption>%s</figcaption></figure>'
-                    % (shot["file"], w, h, esc(g["el"]), esc(STATE_WHAT[st]), theme,
-                       esc(STATE_WHAT[st])))
-            if cells:
-                panels.append('<div class="ck-shot-row" data-theme="%s"><b>%s</b>'
-                              '<div class="ck-shot-strip">%s</div></div>'
-                              % (theme, label, "".join(cells)))
+                rows.append('<tr><td class="tk-role">%s</td><td class="ck-fx-cell">%s</td></tr>'
+                            % (esc(STATE_WHAT[st]), face_row(face_bits(shot["value"]), base)))
+            panels.append('<div class="tk-theme-fig" data-theme="%s"><b>%s</b>'
+                          '<table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th>'
+                          '<th>what the browser measured</th></tr></thead><tbody>%s</tbody>'
+                          "</table></div>" % (theme, label, "".join(rows)))
+        panels = ('<div class="tk-theme-grid">%s</div>' % "".join(panels)) if panels else ""
         missing = [s for s in ("hover", "active", "focus")
                    if not shots.get("%s-dark" % s)]
         note = ('<p class="tk-note ck-shot-gap">Not staged: %s. No specimen puts this one '
@@ -508,34 +738,64 @@ def state_gallery(name):
         also_line = ('<p class="tk-note ck-gal-covers">Same answer, measured across all four '
                      'states in both themes: <code>%s</code>.</p>'
                      % "</code>, <code>".join(esc(c) for c in covers)) if covers else ""
+        # DISABLED IS THE ONE STATE A READER CANNOT RAISE. Every other row in the
+        # table above is a thing a person does to a live control that is three
+        # sections up this page; a disabled one answers no pointer by
+        # definition, so the picture of it stays. Four in the whole vitrine, on
+        # cookie-consent and input.
+        dis = []
+        for theme, label in (("dark", "Vault"), ("light", "Daylight")):
+            shot = shots.get("disabled-%s" % theme)
+            if not shot or not (KIT / "_states" / shot["file"]).exists():
+                continue
+            w, h = png_size(KIT / "_states" / shot["file"], shot)
+            dis.append('<figure class="ck-shot"><img src="_states/%s" width="%d" height="%d" '
+                       'alt="%s, disabled, %s theme" loading="lazy">'
+                       '<figcaption>%s</figcaption></figure>'
+                       % (shot["file"], w, h, esc(g["el"]), theme, esc(label)))
+        dis = ('<div class="ck-shot-row"><b>disabled, and it is the one state a pointer cannot '
+               'raise</b><div class="ck-shot-strip">%s</div></div>' % "".join(dis)) if dis else ""
+        # the in-page anchor only where the frame is actually on this page: the
+        # capture files a face under the document it was found in, and that
+        # document is not always one this component owns
+        framed = {s["id"] for s in live_specimens(name)}
+        here = ('<a href="#sp-%s">hover it in the frame above</a>' % g["specimen"]
+                if g["specimen"] in framed else "")
         figs.append(
             '<figure class="ck-gal">'
             '<figcaption class="ck-gal-head"><b>%s</b>'
-            '<span class="ck-w">%s</span>'
+            '<span class="ck-w">%s</span>%s'
             '<a href="specimens/%s.html" target="_blank" rel="noopener">the specimen</a>'
-            '</figcaption>%s%s%s%s</figure>'
-            % (esc(g["el"]), esc(g.get("scope") or "on the bare canvas"), g["specimen"],
+            '</figcaption>%s%s%s%s%s</figure>'
+            % (esc(g["el"]), esc(g.get("scope") or "on the bare canvas"),
+               here, g["specimen"],
                also_line,
                ('<p class="ck-gal-cap">%s</p>' % md_inline(caps[g["key"]]))
                if g["key"] in caps else "",
-               "".join(panels), note))
+               panels, dis, note))
     return "".join(figs)
 
 
-def authored_block(name, section, tag="p"):
+def authored_block(name, section):
+    """An authored section, through the reader the documents already use.
+
+    It had a reader of its own here, eight lines long, that knew a paragraph and
+    a `- ` list. Everything else an author wrote went out as running text with
+    its marks still in it, and the only file that used anything else was the one
+    with the most to say: `ui-kit/authored/button.md` decides the component on
+    four axes, which is a table, and printed eleven rows of pipes into a
+    paragraph. A generator that silently degrades what it cannot parse is the
+    same defect shape as a checker that reports clean about what it did not
+    read.
+    """
     doc = AUTHORED.get(name, {})
     body = doc.get(section, "").strip()
     if not body:
         return ""
-    out = []
-    for para in re.split(r"\n\s*\n", body):
-        if para.lstrip().startswith("- "):
-            items = "".join("<li>%s</li>" % md_inline(l.strip()[2:])
-                            for l in para.splitlines() if l.strip().startswith("- "))
-            out.append('<ul class="tk-doc-list">%s</ul>' % items)
-        else:
-            out.append("<%s>%s</%s>" % (tag, md_inline(" ".join(para.split())), tag))
-    return "".join(out)
+    # the section body carries no `## `, so nothing here opens a <section>: the
+    # caller owns that, and a `###` inside an authored answer stays a subheading
+    html_out, _toc = md_blocks(body.splitlines())
+    return html_out
 
 
 def sections_for(name, c):
@@ -572,23 +832,48 @@ def sections_for(name, c):
         "The component in the markup it ships with, quoted from the frozen kit, inside the "
         "product's own wrapper and painted by <code>components/index.css</code> alone. Each frame "
         "is a page of its own, so the width under the title is a real viewport and the media "
-        "queries answer to it.", live(name))
+        "queries answer to it. One row per CONTROL, in one column, and a scope is present only "
+        "where the scope is what the row is about: twelve of the sixteen combinations the product "
+        "wears were measured against the same markup with no scope above them and came out "
+        "identical over thirteen properties, so a plate around those would be showing the reader a "
+        "dialog to prove something about a button. The numbers for every row are in the axis table "
+        "one section down, written once. These are live pages and not pictures. Hover them, press "
+        "them, Tab into them.", live(name))
     # the inside-of block writes its own <section>, so it goes in as a passthrough
     # rather than through sec(); it belongs directly under Live, because it is the
     # rest of the answer to "where can I see this thing"
     ins = elsewhere(name)
     if ins:
         out.append(("__passthrough__", "", "", ins))
+    sec("census", "Every other action in the product, and what is not one",
+        "A <code>&lt;button&gt;</code> is a tag, not a role. Reading the tag as the answer put a "
+        "tab strip, a category chip, a row of the account menu and five social marks on the page "
+        "called Buttons, and staged two of them live. So every button-shaped control in the "
+        "product is sorted by what it actually IS: an <b>action</b> is a press with nothing "
+        "carried between presses, a <b>selector</b> carries a value and its selected state is the "
+        "whole point, <b>navigation</b> goes somewhere. The actions stand live below, each one "
+        "sliced out of the specimen it already ships in, on the page ground with no plate under "
+        "it. The other two roles are an index to the page that owns them, because a chip shown "
+        "alone is a chip with its subject removed. Counted by <code>ui-kit/_worn.py</code> and "
+        "held by gate 38 in both directions: a control the census cannot name fails the build, a "
+        "kind named here that nothing wears fails just as loudly, an action that stands nowhere "
+        "fails, and so does anything staged here that is not an action.",
+        census_table(name))
     if gallery:
-        sec("states", "States, as they look",
-            "Photographs, not renderings. Each was taken in the specimen linked beside it with a "
-            "REAL pointer, a real Tab and the mouse button really held down "
-            "(<code>ui-kit/_verify/states.cjs</code>); nothing here is a state faked with a stand "
-            "class, which is the rule this section used to be missing because of. One row per "
-            "distinct FACE: two elements that measure the same at rest are one picture, however "
-            "many screens carry them, and that grouping is computed rather than chosen. The "
-            "pictures go stale the moment a rule changes, so each one records the files it was "
-            "taken from and <code>python3 ui-kit/_states.py</code> fails when their bytes move.",
+        sec("states", "States, as they measure",
+            "The frames above are the rendering; this is the reading of them. Every number here "
+            "was taken in a browser with a REAL pointer, a real Tab and the mouse button really "
+            "held down (<code>ui-kit/_verify/states.cjs</code>), because a hover value is the "
+            "cascade resolved and cannot be read out of a declaration. Nothing here is a state "
+            "faked with a stand class. One block per distinct FACE: two elements that measure the "
+            "same in all four states in both themes are one answer, however many screens carry "
+            "them, and that grouping is computed rather than chosen. Rest says what the face IS; "
+            "every row under it says only what that state MOVES, which is the question a reader "
+            "actually has. The ring is not among the nine values, because <code>outline</code> is "
+            "drawn outside the box: a focus row that reports no movement is saying the face does "
+            "not move, and the ring is on the live frame. The numbers go stale the moment a rule "
+            "changes, so each block records the files it was measured from and "
+            "<code>python3 ui-kit/_states.py</code> fails when their bytes move.",
             gallery)
     else:
         sec("states", "States",

@@ -1,7 +1,7 @@
 /* components/input.css
    Component: input. Classes: .addr, .amount-input, .amount-row, .field-label, .quick.
 
-   Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --focus-ring, --glow-focus, --line-brass-strong, --opacity-disabled, --result-won, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-16
+   Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --focus-ring, --glow-focus, --line-brass-strong, --opacity-disabled, --result-won, --text-brass, --text-muted, --text-primary, --tint-brass-16
    Stand:  ui-kit/input.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -41,17 +41,27 @@ dialog.app-dialog .amount-input:disabled{opacity:var(--opacity-disabled);cursor:
 dialog.app-dialog .quick button{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
 dialog.app-dialog .quick button{cursor:pointer;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 dialog.app-dialog .quick button:hover:not(.sel){border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)}
-dialog.app-dialog .quick button.sel{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);border-color:var(--color-action)}
-/* THE THREE-STEP OF A BRASS PLATE, and it needs no value of its own. Rest lights
-   the plate from the top left; hover takes the lit role to both stops so the
-   whole face comes up; press flips the angle so the light falls to the bottom
-   right, which is what a plate pushed IN looks like. Geometry and two roles that
-   were already here.
-   It replaces filter:brightness(1.06), which was a raw number doing a colour job:
-   a filter multiplies whatever is underneath, so no theme can reach it and the
-   same 1.06 means two different things on two grounds. */
-dialog.app-dialog .quick button.sel:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit))}
-dialog.app-dialog .quick button.sel:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit))}
+/* A SELECTED CHIP IS A TINT, AND A SOLID BRASS FILL IS THE PRIMARY ACTION'S OWN
+   FACE. This rule painted the chosen quick amount as a full brass gradient on 107
+   placements, and DESIGN.md decides it twice over: "active is a brass tint
+   (rgba(199,162,78,.08) fill)" under Chips, and the One-Accent Rule, "brass
+   carries identity, the active state, and primary CTAs only ... if a screen has
+   brass on more than the logo, the active chip, and the primary action, it is
+   overspent". A deposit sheet had a lit brass $20 sitting directly above a lit
+   brass Add funds, and the chip was as loud as the commitment.
+   THE PRODUCT ALREADY HELD THE ANSWER IN TWO PLACES. The same class in the bet
+   panel and the bet sheet is `--tint-brass-16` (line below in this file), and
+   tokens.css names that token, in its own words, "from: a selected quick amount".
+   The token was cut from this control and this control disagreed with it. 107
+   placements move to the tint, 11 already wear it, and the chip family loses the
+   one member that was shouting.
+   THE HOVER AND THE PRESS GO WITH THE GRADIENT, and that is a consequence rather
+   than a decision: they were the three-step of a brass PLATE, and there is no
+   plate now. What is left is what every other selected chip in this product does,
+   which is nothing, on `.seg`, on `.ed-range` and on the panel's own quick row.
+   That gap is real and it is uniform; `ui-kit/docs/backlog.md` S38 owns it rather
+   than this file inventing a fourth answer. */
+dialog.app-dialog .quick button.sel{background:var(--tint-brass-16);color:var(--text-brass);border-color:var(--border-brass-hover)}
 dialog.app-dialog .quick button:active:not(.sel){background:var(--bg-pressed)}
 dialog.app-dialog .amount-input{background:var(--bg-well)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input{flex:0 1 auto;width:150px;max-width:56%;-webkit-appearance:none;appearance:none;border:0;border-bottom:1.5px solid var(--border-hairline);border-radius:0;background:transparent;outline:none;padding:0 var(--space-2) var(--space-4);line-height:var(--leading-none);font-family:var(--font-display);font-size:var(--text-30);font-weight:var(--weight-bold);color:var(--text-primary);text-align:right}

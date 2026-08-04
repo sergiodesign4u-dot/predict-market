@@ -1946,6 +1946,115 @@ notes.append("%-34s %s" % ("37 table rows read",
                            "%d row(s) over %d markdown file(s), %d declared ragged"
                            % (_rows_read, len(_md_all), len(RAGGED))))
 
+# ---- 38. the vitrine stages every form the product wears, and only those ----
+# THE RULE, IN THE WORDS IT WAS GIVEN IN: everything that is on the project has
+# to be in the design system, and everything in the system has to be on the
+# project. Both halves, and this file already had the second one: gate 30 asks
+# whether a declared class is worn, and it is what deleted `.btn-primary` with
+# its three sizes, four classes the system declared and no screen ever carried.
+#
+# WHAT THIS ADDS IS THE FIRST HALF, AT THE RESOLUTION A PERSON ACTUALLY WORKS AT.
+# Gate 30 asks about a CLASS. `.provider-btn` is one class and four different
+# controls, because the scope decides the paint: 13px and left-aligned in a
+# deposit sheet, 14px centred with a brand mark in the sign-in sheet, 14px bold
+# in an outcome sheet, 13px semibold in the bet panel. A page that showed the
+# class showed one of the four and passed every gate in this file. So the unit
+# here is the FORM, which is the class plus the scoping classes above it that
+# `components/button.css` actually reads, and both sides of the comparison are
+# read out of the repo: the painted screens, and the two matrix specimens.
+#
+# IT READS MARKUP AND NOT A RENDER, ON PURPOSE. The browser pass that measured
+# these forms could not see one of them: `dialog.app-dialog.bet-sheet` ships with
+# no `open` attribute, so it has zero width and every control inside it is
+# skipped, and `.app-case .bet-sheet .confirm-btn` is the only padding of 16 in
+# the family. A check that can only see what is currently painted cannot ask
+# whether the system covers the product.
+#
+# It found two on its first run: the two `.resolved-panel` rows, the only place
+# in the product where a state button is full width, standing on one screen, and
+# absent from a matrix that had been assembled by reading the stylesheet.
+#
+# ONE COMPONENT SO FAR, and that is a scope statement rather than a limit. The
+# same question belongs to every component in the kit and the reader is written
+# so the family and the scopes come out of the stylesheet rather than a list
+# here. `ui-kit/docs/backlog.md` S31.
+from _worn import compare as _worn_compare, census as _worn_census   # noqa: E402
+from _worn import kind_rows as _worn_kinds                           # noqa: E402
+
+_w_worn, _w_stood, _w_missing, _w_idle, _w_stale = _worn_compare()
+check("38 every form the product wears is staged", not _w_missing,
+      "%d: %s" % (len(_w_missing),
+                  "; ".join("%s @ %s" % k for k in _w_missing[:4])))
+check("38 no form is staged that nothing wears", not _w_idle,
+      "%d: %s" % (len(_w_idle), "; ".join("%s @ %s" % k for k in _w_idle[:4])))
+# and the map that lets a worn combination be covered by a staged one is held in
+# both directions too: a row whose source nothing wears, or whose target nothing
+# stages, is a sentence about nothing
+check("38 no idle row in the same-form map", not _w_stale,
+      "%d: %s" % (len(_w_stale), "; ".join(_w_stale[:3])))
+from _worn import SAME as _w_same                                    # noqa: E402
+notes.append("%-34s %s" % ("38 button forms",
+                           "%d form(s), %d placement(s) in ui-visual, %d staged, "
+                           "%d covered by a scope that changes nothing"
+                           % (len(_w_worn), sum(r["uses"] for r in _w_worn.values()),
+                              len(_w_stood), len(_w_same))))
+
+# ---- and the same question one level up: every control that IS a button ------
+# THE FIRST HALF OF THIS GATE ASKS ABOUT ONE COMPONENT. `components/button.css`
+# owns four class names and the product has 27 kinds of control shaped like a
+# button, so a page that answered perfectly for the family still answered for
+# 710 placements out of 5,281. The other 22 kinds are drawn by 20 other
+# components and every one of them has a stand page; what was missing was any
+# way to get there from the page called Buttons.
+#
+# So the census names every kind, and it is held in the three directions a
+# declared list can be wrong in: a control it cannot name (a new kind shipped
+# and nobody wrote it down), a kind it names that nothing wears (a control
+# deleted and the row left behind), and a kind whose owner has no page at all
+# (an index pointing at a door that is not there).
+_c_seen, _c_unnamed, _c_idle = _worn_census()
+_c_rows = _worn_kinds()
+_c_pageless = sorted({r["owner"] for r in _c_rows if not (KIT / (r["owner"] + ".html")).exists()})
+check("38 every button-shaped control is named", not _c_unnamed,
+      "%d: %s" % (len(_c_unnamed), "; ".join(_c_unnamed[:4])))
+check("38 no named kind is idle", not _c_idle,
+      "%d: %s" % (len(_c_idle), ", ".join(_c_idle[:4])))
+check("38 every kind names a page that exists", not _c_pageless,
+      "%d: %s" % (len(_c_pageless), ", ".join(_c_pageless)))
+
+# ---- and the third question: is the thing on this page a BUTTON ---------------
+# A `<button>` IS A TAG AND NOT A ROLE. The two checks above are satisfied by a
+# page that names every control correctly and then stages the wrong ones, and
+# that is exactly what the first cut did: a category chip, a tab strip, a row of
+# the account menu, the toggle and five social marks stood live on the page
+# called Buttons, because each of them is spelled `<button>`.
+#
+# A selector is the case that makes the distinction load-bearing rather than
+# tidy. Its subject is the GROUP and the SELECTED one; a single chip lifted out
+# of its rail is the half of it that carries no information, and the reader who
+# sees it learns a padding and nothing else. So the role decides where a control
+# is staged, and the two directions are the usual pair: an action that stands
+# nowhere is a claim this page does not honour, and anything staged here that is
+# not an action is a control on the wrong page.
+#
+# `IN_MATRIX` names the two kinds that are not in the census specimen and must
+# not be: the family and the action bar ARE the subject of the page and stand in
+# the matrix at the top. Without that list this check would demand a second copy
+# of them, which is the defect it exists to prevent.
+from _worn import roles as _worn_roles, ROLES as _worn_role_names   # noqa: E402
+_r_by_role, _r_unstaged, _r_wrong = _worn_roles()
+check("38 every action stands on the button page", not _r_unstaged,
+      "%d: %s" % (len(_r_unstaged), "; ".join(_r_unstaged[:4])))
+check("38 nothing but an action is staged there", not _r_wrong,
+      "%d: %s" % (len(_r_wrong), "; ".join(_r_wrong[:4])))
+notes.append("%-34s %s" % ("38 the button census",
+                           "%d kind(s), %d placement(s), %d component(s) draw them"
+                           % (len(_c_rows), sum(r["uses"] for r in _c_rows),
+                              len({r["owner"] for r in _c_rows}))))
+notes.append("%-34s %s" % ("38 by role", ", ".join(
+    "%s %d/%d" % (r, len(_r_by_role[r]), sum(x["uses"] for x in _r_by_role[r]))
+    for r in _worn_role_names)))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

@@ -19,7 +19,7 @@ says so. No em dash.
 | betpanel | 4 | betpanel-states, betpanel-dock, betpanel-sheet, betpanel-more | 2 | 20 | 11 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 13 | 9 |
 | bottomnav | 1 | bottomnav | 0 | 2 | 105 |
-| button | 2 | button-family, button-outcome-row | 0 | 7 | 105 |
+| button | 4 | button-matrix, button-matrix-dock, button-census, button-outcome-row | 0 | 7 | 105 |
 | card | 4 | card-binary, card-multi, card-loading, card-detail-head | 2 | 14 | 36 |
 | catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 6 | 105 |
 | chart | 1 | chart | 1 | 12 | 11 |
@@ -52,7 +52,7 @@ says so. No em dash.
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 105 |
 | yesno | 1 | yesno | 2 | 2 | 14 |
 
-67 specimens over 37 components.
+69 specimens over 37 components.
 
 ---
 

@@ -90,12 +90,63 @@ body{padding:12px}
 .kit-row + .kit-row{margin-top:24px}
 .kit-box{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:10px;padding:16px}
 .kit-plate{margin:0}
-.kit-surf-lbl{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);display:block}
+/* A LABEL IS A HEADING FOR WHAT IS UNDER IT, so the air above it has to beat the
+   air below it or a reader ties it to the block before. It had none of either:
+   `.kit-surf-lbl` was a bare block, so on the button matrix every scope name sat
+   on the bottom edge of the group above it and the four dialogs read as one
+   run-on column. 8 under, and the 32 above comes from .kit-stack. */
+.kit-surf-lbl{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);display:block;
+  margin-bottom:8px;line-height:var(--leading-base)}
+/* One rhythm down a specimen that stages several groups. 32 rather than the row's
+   own 24, because these groups are labelled and 24 is the distance the capture
+   needs INSIDE a row: a group boundary has to be larger than the largest distance
+   within a group or it is not a boundary. */
+.kit-stack > * + *{margin-top:32px}
+.kit-stack .kit-row + .kit-row{margin-top:24px}
+/* A COLUMN, AND ITS WIDTH IS THE ARGUMENT. The button matrix stands in one
+   because a control declaring `width:100%` has to be shown at a width it
+   actually gets, and 380 is about what a sheet is in this product. The viewport
+   around it stays wide, because betpanel.css hides `.bet-panel` below 760 and a
+   hidden panel demonstrates nothing: the column is the container, the viewport
+   is the media query, and they are two different decisions. */
+.kit-col{width:380px;max-width:100%}
 .kit-tgl{display:inline-flex;align-items:center;gap:8px;color:var(--text-muted);font-family:var(--font-body);font-size:12px}
+
+/* THE ANATOMY BLOCK: a name and a class, the live control, then what it is for.
+   Three lines and no plate. The block that came before this one framed each
+   control in a surface of its own, and the reading it produced was the opposite
+   of the one intended: eight controls in eight boxes look like eight components,
+   and the boxes were different sizes, so a set of things that mostly agree read
+   as a scatter. The ground is the page's, the same for every row, which is what
+   makes two controls comparable at a glance. The only separation is air.
+
+   The name is 12px and the reason it is not 10px like `.kit-surf-lbl` is that it
+   is the row's heading rather than its caption: a caption sits under the thing it
+   names and can be quiet, a heading is read first. */
+.kit-anat{max-width:760px}
+.kit-anat-head{margin:0 0 12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;
+  font-family:var(--font-body);font-size:12px;color:var(--text-primary);line-height:var(--leading-base)}
+.kit-anat-head b{font-weight:600}
+.kit-anat-head code{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);
+  background:none;padding:0;white-space:nowrap}
+/* 14 under the control and 12 over it. The control is the subject of the block,
+   so the sentence about it sits a little further away than the name does: the
+   name introduces, the sentence follows. */
+.kit-anat-ctl{margin:0 0 14px}
+.kit-anat-why{margin:0;font-family:var(--font-body);font-size:12px;color:var(--text-muted);
+  line-height:var(--leading-loose);max-width:64ch}
+.kit-anat-meta{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);opacity:.8}
+/* 40 between two anatomy blocks and 32 between two of anything else in a stack.
+   A block here is three lines tall, so the boundary has to beat the 14 inside it
+   by more than the 8 a labelled group needs. */
+.kit-stack > .kit-anat + .kit-anat{margin-top:40px}
 
 /* Several dialogs side by side, each framed with a little more air than the
    mobile bottom sheet ships with. The shipped sheet is untouched. */
-.kit-dlgs{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+/* 32 down the page and 20 across: a wrapped row of labelled dialogs needs the
+   vertical gap to clear the label of the row below, and the horizontal one is
+   just air between two plates. Same rhythm as .kit-stack, for the same reason. */
+.kit-dlgs{display:flex;flex-wrap:wrap;gap:32px 20px;align-items:flex-start}
 .kit-dlgs > *{flex:0 1 380px}
 .kit-dlgs .sheet-head{padding:12px 16px}
 .kit-dlgs .sheet-body{padding:16px;gap:14px}
@@ -131,3 +182,57 @@ body{padding:12px}
 .kit-ico .kit-brandic{color:var(--text-primary)}
 .kit-ico figcaption{font-family:var(--font-body);font-size:11px;color:var(--text-muted);line-height:var(--leading-snug)}
 .kit-ico code{font-family:var(--font-mono);font-size:10px;color:var(--text-brass);white-space:nowrap;line-height:var(--leading-tight)}
+
+/* ---- the composed census (specimen button-census) -------------------------- */
+/* THE HOST IS THERE FOR THE CASCADE AND FOR NOTHING ELSE. A `.sheet-close` has
+   to be inside `dialog.app-dialog` to be painted at all, and a `.bookmark-btn`
+   inside `.card`: the rule that draws them is written that way. What the reader
+   came for is the CONTROL, and the sheet's plate, its 92 per cent width and its
+   padding are the sheet's own, not the button's. So every element of the picked
+   ancestor chain carries `.kit-nude` and gives up its surface here.
+
+   WHAT IT TAKES AND WHAT IT LEAVES, because that line is the whole argument.
+   It takes the plate: background, border, shadow, padding, margin, width and
+   min-height. It leaves everything that decides the SHAPE of what is inside:
+   display, flex, gap and alignment stay, because `.bp-side` is `flex:1` of the
+   dock and a dock turned into a block would show a control the product does not
+   have. Nothing on the control itself is touched by any rule in this file.
+
+   The specificity is `.app-case .kit-nude` and not `.kit-nude`, because the
+   rules being neutralised are themselves scoped under `.app-case` and a bare
+   class would lose to every one of them. */
+/* `!important`, and it is not laziness. The rules being neutralised are written
+   as `dialog.app-dialog.signin-dialog .sheet-head` and `.app-case .cat-main`,
+   which are three and two classes deep; a stand class can only beat those by
+   being deeper than every one of them, which means guessing how deep the
+   deepest is and re-guessing on every product change. The declaration is one
+   sentence: on this specimen, a HOST has no surface. */
+.app-case .kit-nude{background:none!important;background-image:none!important;
+  border:0!important;box-shadow:none!important;padding:0!important;margin:0!important;
+  width:auto!important;max-width:none!important;min-width:0!important;
+  min-height:0!important;height:auto!important;position:static!important;
+  inset:auto!important;transform:none!important;overflow:visible!important;
+  backdrop-filter:none!important;filter:none!important;border-radius:0!important}
+.app-case .kit-nude::before,.app-case .kit-nude::after{content:none!important}
+/* A summary is the <details> handle and is not part of any control here. */
+.app-case .kit-nude>summary{display:none!important}
+/* AND THE CONTROL ITSELF, for one property only. A close button is
+   `position:absolute` in the sheet it belongs to; picked out of that sheet it
+   flies to the corner of the page and the row is empty. Where it SITS is the
+   host's arrangement and not the control's face, so it is put back in the flow
+   and nothing else about it is touched.
+
+   `relative` AND NOT `static`, AND THE SHEET CLOSE IS WHY. Its X is not a glyph
+   and not the `<svg>` in the markup - `dialog.app-dialog .sheet-close .ic` is
+   `display:none`, the font is 0px and the ink is transparent. The X is two
+   absolutely positioned bars on `::before` and `::after`, and an absolutely
+   positioned pseudo resolves against the nearest POSITIONED ancestor. Setting
+   the button to `static` took that ancestor away, so both bars left the button
+   and landed 700px down the page, in the middle of an unrelated row: the census
+   showed an empty circle and a stray X floating over nothing. `relative` with
+   `inset:auto` lays out identically to `static` and keeps the containing block,
+   which is the whole of the difference. Found by looking at the page, which is
+   the only instrument that could have found it: every element involved measures
+   correct and the two that were wrong are pseudo-elements, which no query in
+   this repo can select. */
+.app-case .kit-here{position:relative!important;inset:auto!important;margin:0!important}

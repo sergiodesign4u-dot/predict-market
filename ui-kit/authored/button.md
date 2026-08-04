@@ -3,8 +3,9 @@
 ## Sources
 
 - `ui-kit/docs/inventory.md` - three rows file this component: Auth entries (L1), Provider buttons (L1), Primary CTA brass (L1). Two of the three claim 104 screens and the third 34.
-- The 106 painted screens, every button of this family classified by all four axes and counted: **710 placements**, 704 under four names and 6 with no class of their own inside `.cta-bar`.
-- The browser, at 360 and at 1440: the font step, the box, the border and the share of its container that each of the five placements actually takes. The size axis has no rule because of what those numbers say, not because nobody looked.
+- The 106 painted screens, every button of this family read and grouped by what the stylesheet decides about it: **710 placements in 16 forms**, 704 under four names and 6 with no class of their own inside `.cta-bar`. Counted by `ui-kit/_worn.py`, which is also the gate: a form worn and not staged fails the build, and so does a form staged and not worn.
+- `ui-kit/specimens/button-matrix.html` and `ui-kit/specimens/button-matrix-dock.html`, where all 16 stand live, each in the smallest wrapper that paints it. Two documents because `components/betpanel.css` hides `.bet-dock` at min-width:760 and `.bet-panel` below it, so no single width can show both.
+- The browser, at 360 and at 1440, on those two specimens: the padding, the font step, the weight and the border of every form. The size axis has no rule because of what those numbers say, not because nobody looked.
 - Rules of use R1, the only rule that names this component.
 - `voice/docs/microcopy.md` - the same-thing rows: Deposit against Add funds, Log in against Sign in. Both still open.
 - `ui-kit/docs/backlog.md` S16, S11 and S24, which is where the four names being one anatomy was measured rather than asserted, and S25, which is the size axis this page could not give a rule.
@@ -18,11 +19,12 @@ hairline edge, a 10px corner, and the label in the body face. Two skins and no t
 is every action that is not the point of its zone; the brass one is the action the zone exists for,
 and there is exactly one of those per zone.
 
-**This page specifies the four axes, not the five places.** The names are places, and a place is
-not a design decision: asking "which of the five components do I want" is the wrong question and it
-is the question the names invite. Pick four values, read the class off the row. Each axis carries
-the rule for choosing its value, and where the product does not support a rule the page says so
-rather than inventing one.
+**This page shows every form and not every name.** The names are places, and a place is not a design
+decision: asking "which of the four components do I want" is the wrong question and it is the
+question the names invite. What a person actually chooses is a size, a padding, a width, an
+emphasis and whether there is a mark, and the same name answers differently in four different
+scopes. So the page opens with all sixteen forms standing live, reads the class off the row, and
+where the product does not support a rule it says so rather than inventing one.
 
 ## Anatomy
 
@@ -36,85 +38,109 @@ rather than inventing one.
 
 ## When to use
 
-**Four axes. Pick the four values, then read the class off the row.** The five names are five
-PLACES and they are a COLUMN here, not five sections: a place is where a combination happens to
-stand, and it is the combination that is the decision.
+**Sixteen forms, and the list is counted rather than argued.** A form is what the stylesheet decides
+about one control: the family class it carries, plus `.primary` or not, times the scoping classes
+above it that `components/button.css` actually reads. Two controls that resolve to the same pair are
+one form however many screens carry them. `ui-kit/_worn.py` reads that pair out of every button in
+`ui-visual/` and out of the two matrix specimens and fails the build when either side has a row the
+other does not, so this table cannot drift from the product in either direction.
 
-| size | width | emphasis | icon | where it stands | uses | screens |
-|---|---|---|---|---|---|---|
-| 14 | full | quiet | **leading mark** | `.provider-btn` in the sign-in and outcome sheets | 322 | 105 |
-| 14 | full | **brass** | none | `.confirm-btn` in a dialog, panel or sheet | 126 | 105 |
-| 13 | full | quiet | none | `.provider-btn` everywhere else | 116 | 105 |
-| 12 | fit | **brass** | none | `.auth-btn.primary` (32), `.state-btn.primary` (39) | 71 | 58 |
-| 12 | fit | quiet | none | `.auth-btn` (32), `.state-btn` (25) | 57 | 47 |
-| 14 | full | quiet | none | `.provider-btn` in a sheet, unmarked | 6 | 6 |
-| 14 | **fit** | **brass** | none | `.confirm-btn` on `.bet-dock` | 4 | 4 |
-| 13 | **shared** | **brass** | none | first child of `.cta-bar` | 3 | 3 |
-| 13 | **shared** | quiet | none | second child of `.cta-bar` | 3 | 3 |
-| 12 | **full** | **brass** | none | `.state-btn.primary` in `.resolved-panel` | 1 | 1 |
-| 12 | **full** | quiet | none | `.state-btn` in `.resolved-panel` | 1 | 1 |
+Every one of these is staged, live, in `ui-kit/specimens/button-matrix.html` and its dock companion.
+Padding, size and weight were measured in a browser on those specimens; width is what the
+declaration says, because a control's rendered width is half its container's decision and the
+declaration is not.
 
-### The rule for each axis
+**Sixteen combinations, twelve controls, and the gap between those two numbers is worth the
+paragraph.** Every form was compared field for field against the same markup with no scope above it,
+in a container of the same width, over thirteen properties: background, gradient, edge, edge width,
+ink, radius, padding, size, weight, justification, alignment, gap and min-height. **Twelve of the
+sixteen came out identical**, which is to say the scope they ship in decides nothing about them.
+`.confirm-btn` inside `dialog.app-dialog.outcome-dialog` differs from the bare one in nothing at all,
+not even the width. So the matrix stages the CONTROL and not the combination: six rows stand on the
+bare canvas, four keep their scope because the scope is what that row is about, and the six
+combinations that collapse are listed with what was compared in `ui-kit/_worn.py` `SAME`, held by
+gate 38 in both directions.
 
-**WIDTH: the container decides, and the rule holds with no exception in 710 placements.** Full when
-the control is the only thing in its row; shared when the row is split evenly between peers; fit
-when it stands in a row it does not own. That is measurable and it was measured: `.cta-bar` is
-`display:flex` with `flex:1` on each child, so both children are shared; `.bet-dock` is a row that
-also carries the odds meta and two side buttons, so `.confirm-btn` there is `width:auto` and fit;
-`.resolved-panel` is one column, so the `.state-btn` inside it is `width:100%` and full, at the same
-12px step it has everywhere else. **The two apparent exceptions are the proof**: both are a control
-whose usual width is overridden by the shape of the container, and in both the container is what the
-rule already asks about.
+**A sentence outlived its fact by a day, and it cost this page its rhythm.** The first matrix put six
+of these inside plates because `ui-kit/specimens.map.json` said `.provider-btn` and `.confirm-btn`
+have no ground outside a sheet and would render in the user agent's grey. True until 2026-08-03, when
+the merge in `components/button.css` put `background:var(--bg-control)` into the rule the whole
+family shares. The note was not re-read after the merge that falsified it.
+
+| form | scope | padding | size | weight | width | uses | screens |
+|---|---|---|---|---|---|---|---|
+| `.provider-btn` | `dialog.app-dialog.signin-dialog` | 12 | **14** | 600 | 100% | 324 | 105 |
+| `.provider-btn` | `dialog.app-dialog` | 12 | 13 | 400 | 100% | 113 | 105 |
+| `.confirm-btn` | `dialog.app-dialog` | 12 | 14 | 700 | 100% | 110 | 105 |
+| `.state-btn.primary` | none | **8 12** | 12 | 700 | content | 39 | 39 |
+| `.auth-btn` | none | **8** | 12 | 400 | content | 32 | 32 |
+| `.auth-btn.primary` | none | **8** | 12 | 700 | content | 32 | 32 |
+| `.state-btn` | none | **8 12** | 12 | 400 | content | 25 | 25 |
+| `.confirm-btn` | `.bet-panel` | 12 | 14 | 700 | 100% | 8 | 8 |
+| bare `button` | `.cta-bar` | 12 | 13 | 700 first, 600 second | `flex:1`, min-height 44 | 6 | 3 |
+| `.confirm-btn` | `.bet-dock` | 12 | 14 | 700 | **auto** | 4 | 4 |
+| `.confirm-btn` | `dialog.app-dialog.bet-sheet` | **16** | 14 | 700 | 100% | 4 | 4 |
+| `.confirm-btn` | `dialog.app-dialog.outcome-dialog` | 12 | 14 | 700 | 100% | 4 | 4 |
+| `.provider-btn` | `dialog.app-dialog.outcome-dialog` | 12 | 14 | **700** | 100% | 4 | 4 |
+| `.provider-btn` | `.bet-panel` | 12 | 13 | 600 | 100% | 3 | 3 |
+| `.state-btn.primary` | `.bet-panel.resolved-panel` | 8 12 | 12 | 700 | **100%** | 1 | 1 |
+| `.state-btn` | `.bet-panel.resolved-panel` | 8 12 | 12 | 400 | **100%** | 1 | 1 |
+
+710 placements, and the four smallest rows are the ones worth reading. **The `.bet-sheet` row is the
+only padding of 16 in the family**, and no measurement of the rendered tree can reach it: the sheet
+ships as a `<dialog>` with no `open` attribute, so a browser scores it at zero width and walks past.
+It is staged open in the dock specimen and it is in this table because `_worn.py` reads markup.
+**The two `.resolved-panel` rows are the only place a state button is full width**, they stand on one
+screen, and a matrix assembled by reading the stylesheet and the screens by eye had missed both:
+`_worn.py` found them on its first run.
+
+### What the axes say, and where one of them has nothing to say
+
+**WIDTH: the container decides, and the declaration says which way.** `.provider-btn` and
+`.confirm-btn` declare `width:100%`, `.auth-btn` and `.state-btn` declare nothing and are as wide as
+their label, and the three exceptions are all a container overriding one of those:
+`.resolved-panel .state-btn` takes 100%, `.bet-dock .confirm-btn` takes `auto`, and
+`.cta-bar > button` takes `flex:1` and shares the row with its neighbour. Each exception is a
+container asserting the shape of its own row, which is the rule rather than a break in it.
 
 **EMPHASIS: one brass action per zone.** Counted over every dialog and every action bar in the
-painted tree: **zones carrying more than one brass control, 0.** The brass one is the thing the
-sheet was opened to do, and everything beside it is quiet, including the actions a person is more
-likely to press. Cancel is quiet. Not now is quiet. The axis is expressed three different ways in
-one family, and that is debt rather than design: a modifier on `.auth-btn` and `.state-btn`, the
-NAME on `.confirm-btn`, and POSITION on the first child of `.cta-bar`. `ui-kit/docs/backlog.md`
-**S24** carries the whole measurement and the condition for closing it.
+painted tree: **zones carrying more than one brass control, 0.** The brass one is the thing the sheet
+was opened to do, and everything beside it is quiet, including the actions a person is more likely to
+press. Cancel is quiet. Not now is quiet. The axis is expressed three different ways in one family,
+and that is debt rather than design: a modifier on `.auth-btn` and `.state-btn`, the NAME on
+`.confirm-btn`, and POSITION on the first child of `.cta-bar`. `ui-kit/docs/backlog.md` **S24**
+carries the whole measurement and the condition for closing it.
 
-**ICON: a mark only when the label names a third party.** 322 of the 710 carry one and every single
-one is a brand mark on a row that reads Continue with Google, Continue with Apple or Continue with
-X. The other 388 carry none, and that includes every other provider row in the same sheet: Connect a
-USDC wallet, How it works, Contact support. **A mark here is identification, not decoration**, which
-is why the box is 18px and the mark is filled rather than stroked. A button that wants an icon to
-explain what it does is a button with the wrong label.
+**MARK: only where the label names a third party.** Three controls in the family carry one and all
+three are in the sign-in sheet: Continue with Google, Continue with Apple, Continue with X. Every
+other provider row in the same sheet carries none, including Connect a USDC wallet, How it works and
+Contact support. **A mark here is identification, not decoration**, which is why the box is 18px and
+the mark is filled rather than stroked. A button that wants an icon to explain what it does is a
+button with the wrong label.
 
-**SIZE: a fact without a rule, and it is written as one rather than dressed up.** The three steps
-are 12, 13 and 14, and nothing in the product predicts which one a place gets. Measured in a
-browser, at 1440 and at 360:
-
-| place | font | container | the container's height | the share the button takes |
-|---|---|---|---|---|
-| `.auth-btn` | 12 | header row | 59 | 4 to 17 per cent |
-| `.state-btn` | 12 | state block | 245 | 10 to 41 per cent |
-| `.cta-bar button` | 13 | action bar | 70.5 | 44 to 49 per cent |
-| `.provider-btn` | 13 or 14 | sheet body | 264 | 90 to 92 per cent |
-| `.confirm-btn` | 14 | sheet body | 574 | 95 to 96 per cent |
-
-Container height does not predict it: the state block is 245 tall and takes the smallest step while
-the action bar is 70 and takes the middle one. The share of the container looks monotone in that
-table and **two measured placements break it in both directions**: `.resolved-panel .state-btn` is
-full width and stays at 12, and `.bet-dock .confirm-btn` is fit width and stays at 14. So the step
-does not follow the container, the density or the width. It follows the NAME. The same class also
-carries two steps at once: `.provider-btn` is 13 in its own rule and **14 inside the sign-in and
-outcome sheets**, which is 322 of its 444 uses, so the size a person actually meets is not the size
-the stylesheet declares first. `ui-kit/docs/backlog.md` **S25**. Until it is closed, take the step
-from the row above and do not reason about it, because there is nothing there to reason with.
+**SIZE: a fact without a rule, and it is written as one rather than dressed up.** Three steps, 12, 13
+and 14, and nothing in the product predicts which one a form gets. Measured in a browser at 1440 and
+at 360: container height does not predict it, the state block is 245 tall and takes the smallest step
+while the action bar is 70 and takes the middle one; the share of the container does not predict it
+either, because `.resolved-panel .state-btn` is full width at 12 and `.bet-dock .confirm-btn` is
+content width at 14. The step follows the NAME, and one name carries two steps at once:
+`.provider-btn` is 13 in its own rule and **14 inside the sign-in and outcome sheets**, which is 328
+of its 444 uses, so the size a person actually meets is not the size the stylesheet declares first.
+`ui-kit/docs/backlog.md` **S25**. Until it is closed, take the step from the row above and do not
+reason about it, because there is nothing there to reason with.
 
 ### The combinations the product does not have
 
-Every cell not in the table above is one of two things, and a blank is neither. The last column is
+Every pair not in the table above is one of two things, and a blank is neither. The last column is
 where the verdict comes from, because a prohibition with no source is an opinion.
 
 | combination | in the product | verdict | where the verdict comes from |
 |---|---|---|---|
-| icon + brass | 0 of 710 | **FORBIDDEN** | product counter. A brass control is the one action of its zone and its label already says what it is; a mark on it is a second claim on the same attention, and the one thing the mark means here (this is your Google account) is never the thing a zone was opened to do |
-| icon + fit width | 0 of 710 | **FORBIDDEN** | product counter, plus the width rule. A marked row is an identity to be picked out of a list, a list is one column, and one column means full width. A marked control at fit width would be a brand mark used as decoration, which the icon rule already refuses |
-| full width in the header | 0 of 710 | **FORBIDDEN** | the width rule. The header row is shared with the logo, the balance and the utility icons, so nothing in it owns its row. This is the width rule applied, not a separate ban |
+| a mark on a brass control | 0 of 710 | **FORBIDDEN** | product counter. A brass control is the one action of its zone and its label already says what it is; a mark on it is a second claim on the same attention, and the one thing the mark means here (this is your Google account) is never the thing a zone was opened to do |
+| a mark on a content-width control | 0 of 710 | **FORBIDDEN** | product counter, plus the width rule. A marked row is an identity to be picked out of a list, a list is one column, and one column means 100%. A marked control at content width would be a brand mark used as decoration, which the mark rule already refuses |
+| a full-width control in the header | 0 of 710 | **FORBIDDEN** | the width rule. The header row is shared with the logo, the balance and the utility icons, so nothing in it owns its row. This is the width rule applied, not a separate ban |
 | disabled anywhere but `.confirm-btn` | 1 disabled control in each tree, and it is a `.confirm-btn` | **UNCLOSED ZONE** | `ui-kit/docs/backlog.md` **S26**. Not forbidden and not decided: the product simply has never disabled anything else, so there is no answer to what a disabled quiet button looks like. `--opacity-disabled` would apply and nobody has looked at it on a 1px edge |
-| icon + quiet + fit, in a sheet | 0 of 710 | **UNCLOSED ZONE** | `ui-kit/docs/backlog.md` **S26**. The two rules above each rule out half of it and neither rules out the whole, so it is left named rather than settled |
+| a mark on a quiet content-width control in a sheet | 0 of 710 | **UNCLOSED ZONE** | `ui-kit/docs/backlog.md` **S26**. The two rules above each rule out half of it and neither rules out the whole, so it is left named rather than settled |
 
 ## Rule
 
@@ -135,19 +161,32 @@ two colours mean an outcome in this product and nothing else, and a quiet chip t
 or loads more is `filters`, `catnav` or `loadmore`, which are one graphite chip family with a
 lighter press than this one.
 
+**A `<button>` is a tag and not a role, and reading the tag as the answer is how this page came to
+show a tab strip.** The census below sorts every button-shaped control in the product by what it
+actually IS: an **action** is a press with nothing carried between presses, a **selector** carries a
+value and its selected state is the whole point, **navigation** goes somewhere. Only the actions
+stand here. The split is not a filing preference and the selector is what makes it load-bearing: a
+chip's subject is its GROUP and its SELECTED one, so a single chip lifted out of its rail is the
+half that carries no information, and a reader learns a padding and nothing about the only thing the
+control does. Two of them stood live on this page before this pass, which was worse than listing
+them. The counts are in the census and not repeated here, because a number written twice drifts.
+
 Seen: `ui-kit/docs/backlog.md` S16, where five names of one control were measured, and
 `components/account.css`, which painted a button of this family for three stages because the
 component that owned the BAR was the one holding the pen.
 
 ## States
 
-Five galleries, and the count is not a coincidence: **one base set plus one named difference each**.
-The eight that were here before were eight PLACES, and three of them were photographed only to show
-that they look the same as another three. What decides a gallery now is a difference measured across
-all four states in both themes, so a picture on this page is a picture of a decision.
+**Five faces over sixteen forms, and the gap between those two numbers is the point of this page.**
+Sixteen is how many different controls the product paints; five is how many different ways they
+ANSWER a pointer. A form is a size, a padding and a width, and a face is what moves when you touch
+it, so a page that had one gallery per form would be saying eleven times that nothing new happens.
+What decides a gallery is a difference measured across all four states in both themes, and the
+grouping is computed rather than chosen: 25 occurrences were read and 20 of them are somebody else's
+answer.
 
-- `button.auth-btn @button-family` - **The family's answer, and it covers three placements.** `.state-btn` is the most used of them, 66 uses on 40 screens against `.auth-btn`'s 64 on 32 and 3 in an action bar; the camera points at `.auth-btn` because the specimen puts the header pair first, and the merge is the proof that which one it points at does not matter. The ground steps one stone darker under the pointer, the edge goes brass at 45 per cent, and the label lifts to the strong ink; held down it settles onto the pressed stone. The focus ring is the system's one ring, brass, 2px, offset 2px.
-- `button.auth-btn.primary @button-family` - **The difference is the modifier**, and it covers `.state-btn.primary` too. Hover takes the lit brass to both stops so the whole face comes up and adds a soft glow under it; the press turns the gradient over to 315 degrees so the light falls to the bottom right, which is what a plate pushed in looks like. The glow goes with it, because the glow is the lift. The 1px edge stays and turns brass, which is what separates this from the brass below it.
-- `button.provider-btn @dialog.signin-dialog` - **The difference is one pixel of lift.** Everything else about it is the family's answer, which is why the instrument used to merge it away: `transform` was not one of the five values a face was made of, so a control that moves was read as a control that does not. A row that wide needs a second signal that it is a target at all.
-- `button.confirm-btn @dialog.app-dialog` - **The difference is that there is no edge**, and an edge on a lit plate the width of a sheet reads as a seam. This is also the one control the product ever disables, once in each tree, and a disabled one neither lights up nor presses.
+- `button.auth-btn @button-matrix` - **The family's answer, and it covers eleven of the sixteen forms.** Everything quiet answers this way whatever its size: `.state-btn` at 12, `.provider-btn` at 13 in a deposit sheet and at 14 in an outcome one, the second child of an action bar at 13, the full-width pair in the resolved panel. The ground steps one stone darker under the pointer, the edge goes brass at 45 per cent, and the label lifts to the strong ink; held down it settles onto the pressed stone. The focus ring is the system's one ring, brass, 2px, offset 2px. That eleven forms share one answer is the argument for the matrix above: the SIZES are the decision a person makes and the STATE is not.
+- `button.auth-btn.primary @button-matrix` - **The difference is the modifier**, and it covers `.state-btn.primary` in all three of its places. Hover takes the lit brass to both stops so the whole face comes up and adds a soft glow under it; the press turns the gradient over to 315 degrees so the light falls to the bottom right, which is what a plate pushed in looks like. The glow goes with it, because the glow is the lift. The 1px edge stays and turns brass, which is what separates this from the brass below it.
+- `button.provider-btn @dialog.signin-dialog` - **The difference is one pixel of lift**, and it is the only form in the family that moves. Everything else about it is the family's answer, which is why the instrument merged it away twice: first because `transform` was not one of the values a face is made of, and then again on 2026-08-04 because the face was keyed without its SCOPE, so the first provider row in a document was measured and the other three were skipped as copies of it. Staging four scopes in one specimen is what made that visible. A row that wide needs a second signal that it is a target at all.
+- `button.confirm-btn @button-matrix` - **The difference is that there is no edge**, and an edge on a lit plate the width of a sheet reads as a seam. It covers every brass sheet action in the product, seven combinations including the two the wide matrix cannot show, and it is measured on the BARE canvas because none of those scopes changes it: `dialog.app-dialog`, `.outcome-dialog` and `.bet-panel` each give it a width and not one declaration more. This is also the one control the product ever disables, once in each tree, and a disabled one neither lights up nor presses.
 - `button @.cta-bar` - **The difference is the ink.** The first child of an action bar is brass by position rather than by class, and its label stays dark on the lit plate under the pointer, which the family's quiet hover would otherwise take to white. The second child of the same bar carries no difference and is in the base set above.

@@ -365,7 +365,16 @@ window.__ask = (function () {
            on an element with a single class and the literal string
            "[object SVGAnimatedString]" on an svg, so half the scopes came out as
            "dialog.undefined". Empty when nothing matches, so a caller can fall
-           back to something that means more than the word "plain". */
+           back to something that means more than the word "plain".
+
+           A STAND CLASS NEVER NAMES A PRODUCT GROUP. Every kit- class is this
+           vitrine's own furniture: kit-nude is how a picked host gives up its
+           surface, and it goes on the scope element itself. Without this filter
+           the action bar's group came back as ".cta-bar.kit-nude" and the
+           caption in the authored source had to spell a class the product does
+           not have, on a group whose whole subject is a product control. It is
+           filtered here rather than in states.cjs because the name is made here,
+           and because the same treatment is about to reach 36 more pages. */
         var scope = ['dialog', '.bet-dock', '.bet-panel', '.bet-sheet', '.cta-bar',
                      '.app-header', '.state-block'];
         var where = '';
@@ -374,7 +383,7 @@ window.__ask = (function () {
           if (!up) continue;
           var base = scope[s].replace('.', '');
           var extra = (up.getAttribute('class') || '').split(/\\s+/)
-            .filter(function (c) { return c && c !== base; });
+            .filter(function (c) { return c && c !== base && c.indexOf('kit-') !== 0; });
           where = scope[s] + (extra.length ? '.' + extra[extra.length - 1] : '');
           break;
         }
@@ -469,6 +478,48 @@ window.__ask = (function () {
        FLOOR the neighbour rule may not go under. What is returned says whether
        that floor was met, so a frame that is still short is recorded rather than
        shipped as a confident picture of a cropped thing. */
+    /* THE BOX OF THE FIRST VISIBLE MATCH OF A SELECTOR, in document coordinates
+       and with a flat pad. Not boxAt, and the difference is the whole point:
+       boxAt derives its pad from the distance to the nearest neighbour, because
+       it frames a PHOTOGRAPH and a photograph may not show part of the control
+       next door. This frames a WINDOW onto the live specimen, where the
+       neighbours are not a leak, they are context: a close button with the
+       corner of its own sheet behind it reads better than a close button in a
+       void. So the pad is a flat number and the neighbours stay.
+       No backtick in this block on purpose: everything here is injected into
+       the page as a template literal, and one backtick ends it. That is what
+       took the first cut of this function down before it ran once.
+       Used by crops.cjs for the census on ui-kit/button.html. */
+    boxOf: function (sel, pad) {
+      var all;
+      try { all = document.querySelectorAll(sel); } catch (e) { return null; }
+      pad = pad == null ? 10 : pad;
+      for (var i = 0; i < all.length; i++) {
+        var el = all[i], r = el.getBoundingClientRect();
+        if (!r.width || !r.height || inert(el)) continue;
+        /* A WINDOW MAY NOT ASK FOR PIXELS THE DOCUMENT DOES NOT HAVE. The
+           account dropdown in the header specimen is 196 wide and starts at
+           x=1012 in a document 1120 wide, so 88px of it are painted past the
+           viewport and are simply not there: the census window asked for
+           1002..1218 and the reader got a box that was half menu and half
+           nothing. Clamped, the window is the part that exists, which for a
+           left-aligned menu is the labels. The clipped field records how much
+           was asked for and not given, so a window showing less than the whole
+           control is a number rather than a surprise. (No backtick anywhere in
+           this block: it is injected as a template literal, and one backtick
+           ends it.) */
+        var docW = document.documentElement.clientWidth;
+        var docH = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+        var x = Math.max(0, Math.round(r.left + (window.scrollX || 0) - pad));
+        var y = Math.max(0, Math.round(r.top + (window.scrollY || 0) - pad));
+        var w = Math.round(r.width + pad * 2), h = Math.round(r.height + pad * 2);
+        var clipped = Math.max(0, (x + w) - docW) + Math.max(0, (y + h) - docH);
+        return { x: x, y: y, w: Math.min(w, Math.max(1, docW - x)),
+                 h: Math.min(h, Math.max(1, docH - y)),
+                 clipped: clipped, matches: all.length };
+      }
+      return null;
+    },
     boxAt: function (i, pad, want) {
       var el = document.querySelector('[data-paint="' + i + '"]');
       if (!el) return null;
@@ -827,6 +878,42 @@ async function open(opts) {
       }
       const ms = await page.evaluate('__ask.settleMs()');
       await page.waitForTimeout(Math.max(ms, 60) + 60);
+      /* AND THEN ASK THE ELEMENT WHETHER IT HAS ACTUALLY STOPPED. settleMs()
+         reads the longest transition DECLARED in the stylesheets, which is the
+         right number for a document and not always for an element: it does not
+         know about a delay on this rule, an animation on an ancestor, or a
+         compositor that started late. Measured: the confirm button of the win
+         overlay came back at
+             rgba(199, 162, 78, 0.98) 0px 5.88701px 17.661px -7.84935px
+         where the settled value is
+             rgb(199, 162, 78) 0px 6px 18px -8px
+         and 98 per cent of a glow is a DIFFERENT FACE as far as a signature
+         comparison is concerned. It became a sixth gallery on the button page
+         whose entire content was that a shadow had not finished arriving.
+         So the wait above is a floor and this is the check: read the face, read
+         it again, and stop when two consecutive reads agree. A face that is
+         still moving is not a face. 12 x 50ms is the ceiling, and reaching it
+         means the element genuinely never settles, which is worth knowing and
+         is not silently waited out.
+
+         AND THE READING IS KEPT, rather than the face being read again at the
+         end. It used to be taken after the screenshot, and a `fullPage`
+         screenshot is not a passive observer: Chromium scrolls the page to
+         assemble it, the element travels out from under the pointer and back,
+         `:hover` drops and re-applies, and the read that followed caught a
+         160ms transition about 3ms from its start. That is where
+         `rgba(199, 162, 78, 0.98)` came from, and no amount of waiting BEFORE
+         the screenshot could have fixed it, because the thing that disturbed
+         the element happened after the wait. The picture and the value are now
+         taken of the same settled state, which is the only order in which the
+         value can be said to describe the picture. */
+      let last = await page.evaluate('__ask.paintAt(' + i + ')');
+      for (let n = 0; n < 12; n++) {
+        await page.waitForTimeout(50);
+        const now = await page.evaluate('__ask.paintAt(' + i + ')');
+        if (now === last) break;
+        last = now;
+      }
       /* THE PAD IS DERIVED FROM THE SUBJECT, IN THE STATE IT IS IN. Asked after
          the state is raised and not before, because the thing that leaves the box
          is usually the state itself: at rest a quiet button paints nothing outside
@@ -858,8 +945,7 @@ async function open(opts) {
           path: file, fullPage: true,
           clip: { x: clip.x, y: clip.y, width: clip.width, height: clip.height },
           scale: clip.width > 360 ? 'css' : 'device' });
-        value = await page.evaluate('__ask.paintAt(' + i + ')');
-        value = { value: value, w: Math.round(clip.width), h: Math.round(clip.height),
+        value = { value: last, w: Math.round(clip.width), h: Math.round(clip.height),
                   pad: clip.got, needed: clip.want, short: clip.short };
       }
       if (state === 'active') await page.mouse.up();

@@ -26,16 +26,22 @@
    out in the browser's blue at 1.76:1 on graphite, because a link with no rule
    has one anyway and it is the User Agent's. No source scan can see that: the
    markup is correct and the value is a default. It was found by asking the
-   browser for the computed colour of every anchor that paints text of its own. */
+   browser for the computed colour of every anchor that paints text of its own.
+   AND IT GREW A SECOND TIME, on 2026-08-04, for the same reason and by the same
+   method: the census on button.html sends the reader to twenty other pages, and
+   all 27 of those links came out at rgb(0, 0, 238). A table cell was not on this
+   list because until that section existed no table cell held a link. `.ck-anat
+   td a` was already here, which is the shape of the miss: one table was named
+   instead of the cell. `.tk-tbl td a` covers both and every table cell after. */
 .tk-note a,.tk-hero p a,.ck-cap a,
-.ck-choice-col a,.ck-cand a,.ck-anat td a,.ck-when a,.ck-rule a,.ck-antirule a,
+.ck-choice-col a,.ck-cand a,.tk-tbl td a,.ck-when a,.ck-rule a,.ck-antirule a,
 .ck-var a{color:var(--text-brass);text-decoration:underline;
   text-decoration-color:var(--border-brass,rgba(199,162,78,.3));text-underline-offset:2px}
 .tk-note a:hover,.tk-hero p a:hover,.ck-cap a:hover,
-.ck-choice-col a:hover,.ck-cand a:hover,.ck-anat td a:hover,.ck-when a:hover,
+.ck-choice-col a:hover,.ck-cand a:hover,.tk-tbl td a:hover,.ck-when a:hover,
 .ck-rule a:hover,.ck-antirule a:hover,.ck-var a:hover{text-decoration-color:currentColor}
 .tk-note a:focus-visible,.tk-hero p a:focus-visible,.ck-cap a:focus-visible,
-.ck-choice-col a:focus-visible,.ck-cand a:focus-visible,.ck-anat td a:focus-visible,
+.ck-choice-col a:focus-visible,.ck-cand a:focus-visible,.tk-tbl td a:focus-visible,
 .ck-when a:focus-visible,.ck-rule a:focus-visible,.ck-antirule a:focus-visible,
 .ck-var a:focus-visible{
   outline:2px solid var(--text-brass);outline-offset:2px;border-radius:3px}
@@ -272,6 +278,12 @@
   color:var(--text-muted)}
 .ck-cap{font-family:var(--font-body);font-size:12px;line-height:1.5;
   color:var(--text-muted);margin:9px 2px 0;max-width:76ch}
+/* The subject of a frame that is mostly somebody else's document. Its own line
+   under the title, because it is the one thing on that line a reader needs
+   before they look at the frame rather than after. */
+.ck-look{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;
+  font-family:var(--font-mono);font-size:11px;color:var(--text-primary)}
+.ck-look code{color:var(--text-brass)}
 .ck-cap-k{font-family:var(--font-mono);font-size:10px;
   color:var(--text-brass);letter-spacing:.06em;text-transform:uppercase}
 .ck-decl{font-family:var(--font-mono);font-size:11px;
@@ -402,7 +414,16 @@ p code,li code,td code{overflow-wrap:anywhere}
 .tk-doc-tbl .tk-tbl td code{font-size:var(--text-11)}
 .tk-doc .tk-dot{width:var(--icon-12);height:var(--icon-12);
   border-radius:var(--radius-2);vertical-align:middle;margin-right:var(--space-4)}
-.tk-doc-ref{text-decoration:none;border-bottom:1px solid var(--border-brass-hover)}
+/* THE COLOUR IS ON THE ANCHOR AND NOT ONLY ON ITS CODE. This class coloured its
+   `code` child and left itself at the UA default, which worked for as long as
+   every reference in the documents was a path in a code span. `inventory.html`
+   has one that is a word - `<a class="tk-doc-ref" href="patterns.html">patterns
+   </a>` - and it shipped in rgb(0, 0, 238) on graphite. Found 2026-08-04 by
+   sweeping 55 stand pages for an anchor that paints its OWN text in a User Agent
+   blue, which is the only way to find it: the markup is correct and the value is
+   a default. */
+.tk-doc-ref{text-decoration:none;border-bottom:1px solid var(--border-brass-hover);
+  color:var(--text-brass)}
 .tk-doc-ref code{color:var(--text-brass)}
 .tk-doc-ref:hover{border-bottom-color:var(--text-brass)}
 .tk-doc-src{margin:var(--space-40) 0 0;padding-top:var(--space-16);
@@ -434,11 +455,11 @@ p code,li code,td code{overflow-wrap:anywhere}
 .ck-st-chip.ck-line{background:var(--bg-control);color:var(--text-primary);border:2px solid}
 
 /* ---- the state gallery (component pages, section States) ------------------ */
-/* Photographs of the real thing, so the page furniture around them stays out of
-   the way: a plate per face, one strip per theme, and the picture at its own
-   size. Every png is captured at deviceScaleFactor 2 and carries width and
-   height at half that, so the box is reserved before the image arrives and
-   nothing on the page jumps. */
+/* A plate per face. Inside it the two themes stand side by side above 720 as a
+   pair of grounds (.tk-theme-grid, further up this file), each holding what the
+   browser measured on THAT ground, so a value is read on the surface it was
+   taken from. What is left of the photograph strip is the disabled row, which is
+   the one state a reader cannot raise on the live frame. */
 .ck-gal{margin:0 0 var(--space-24);padding:var(--space-16);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-plate);overflow:hidden}
 .ck-gal-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-8);margin-bottom:var(--space-8)}
 .ck-gal-head>b{font-family:var(--font-mono);font-size:var(--text-12);color:var(--text-brass)}
@@ -462,6 +483,81 @@ p code,li code,td code{overflow-wrap:anywhere}
 .ck-shot img{display:block;max-width:100%;height:auto;border-radius:var(--radius-6)}
 .ck-shot figcaption{font-family:var(--font-mono);font-size:var(--text-10);color:var(--text-muted)}
 .ck-shot-gap{margin:0}
+/* The measured face. The state column is narrow because it holds one word and
+   the value column holds nine, and .tk-tbl is table-layout:fixed, which would
+   otherwise give a word half the plate. */
+.ck-gal .tk-theme-grid{margin:0}
+.ck-gal .tk-theme-fig{padding:var(--space-12)}
+.ck-face-tbl{margin:0}
+.ck-face-tbl th:first-child,.ck-face-tbl td:first-child{width:104px}
+.ck-face-tbl td{vertical-align:middle}
+.ck-fx-cell{display:flex;flex-wrap:wrap;gap:var(--space-4) var(--space-12);min-width:0}
+/* A measured value is a name, the thing itself, and the number it is. The name
+   is the quiet part: a reader scanning for what moved is scanning the swatches
+   and the numbers, not the labels. */
+.ck-fx{display:inline-flex;align-items:center;gap:var(--space-4);min-width:0;
+  font-family:var(--font-mono);font-size:var(--text-10);color:var(--text-primary)}
+/* A gradient is 50 characters of one token and a colour is 18. Sharing a row
+   puts the long one in a 90px column and breaks it eight times; it gets the
+   width of the plate instead, which is what it needs and what it costs. And it
+   FLOWS rather than sitting in flex cells: a difference between two long values
+   is two long values, and side by side each gets half a column and breaks in
+   the middle of a colour stop. */
+.ck-fx-wide{flex:1 1 100%;display:block;line-height:1.7}
+.ck-fx-wide em{margin-right:var(--space-4)}
+.ck-fx-wide code{margin-right:var(--space-2)}
+.ck-fx em{font-style:normal;font-family:var(--font-body);color:var(--text-muted);flex:0 0 auto}
+.ck-fx code{font-size:var(--text-10);min-width:0}
+.ck-fx-to{color:var(--text-muted)}
+.ck-fx-same{color:var(--text-muted);font-family:var(--font-body);font-size:var(--text-11)}
+/* A colour shown as itself. It carries a hairline of its own because a swatch
+   the colour of the ground it stands on is an empty box otherwise, and two of
+   these values ARE the ground: --bg-control on the plate, and every rest ground
+   in Daylight. */
+.ck-sw{display:inline-block;width:var(--icon-12);height:var(--icon-12);flex:0 0 auto;
+  border-radius:var(--radius-2);border:1px solid var(--border-hairline)}
+.ck-fx abbr{text-decoration:none;color:var(--text-muted)}
+/* A TABLE OF TWO COLUMNS IS NOT A TABLE ON A PHONE. At 360 the state column
+   takes 104 of about 250 usable pixels and the values get the rest, so
+   `rgb(36, 40, 47)` breaks over four lines and a diff of two of them over eight.
+   The row becomes a block with its state as a heading, which is the same
+   information in the order a narrow screen reads it: what state, then what it
+   measured. Mobile-first is the house rule and this is the one place on the page
+   where the wide layout genuinely cannot fold. */
+@media (max-width:640px){
+  .ck-face-tbl,.ck-face-tbl tbody,.ck-face-tbl tr,.ck-face-tbl td{display:block;width:auto}
+  .ck-face-tbl thead{display:none}
+  .ck-face-tbl tr{border-bottom:1px solid var(--border-hairline);padding:var(--space-8) 0}
+  .ck-face-tbl tr:last-child{border-bottom:0}
+  .ck-face-tbl td{border-bottom:0;padding:0}
+  .ck-face-tbl td:first-child{width:auto;margin-bottom:var(--space-4);color:var(--text-brass)}
+  /* the cell is a td and `display:block` above outranks .ck-fx-cell, which put
+     three measured values back on one line with no gap between them: one column,
+     one value a line, said at the specificity the rule above forced */
+  .ck-face-tbl td.ck-fx-cell{display:flex;flex-direction:column;align-items:flex-start;
+    gap:var(--space-4)}
+  .ck-fx{flex:0 0 auto;max-width:100%}
+}
+/* The census of every button-shaped control (button.html, section Every other
+   control that is a button). Six columns is one more than .tk-tbl's fixed layout
+   handles well, so the two numeric ones are pinned narrow and the rest share what
+   is left. The last column is a sentence and is the one that folds away first
+   under 640, which .tk-tbl already does for .tk-from. */
+.ck-census{table-layout:auto}
+.ck-census td:nth-child(4),.ck-census td:nth-child(5),
+.ck-census th:nth-child(4),.ck-census th:nth-child(5){width:58px;text-align:right}
+.ck-census td:first-child{font-family:var(--font-body);font-size:var(--text-12);min-width:11ch}
+/* A CLASS NAME MAY WRAP BETWEEN NAMES AND NEVER INSIDE ONE. `p code,li code,td
+   code{overflow-wrap:anywhere}` further up this file exists for a file path in
+   running prose, and in a narrow table cell it turned `.cat-condensed` into six
+   lines of two characters. The cell is given room and the token is made
+   unbreakable, so the wrap happens at the space between two classes, which is
+   the only place a reader can follow it. */
+.ck-census .tk-role{min-width:16ch}
+.ck-census .tk-role code{font-size:var(--text-10);overflow-wrap:normal;
+  word-break:normal;white-space:nowrap}
+.ck-census td.tk-from{font-family:var(--font-body);font-size:var(--text-12);
+  line-height:var(--leading-base);color:var(--text-muted)}
 .ck-rule{display:flex;gap:var(--space-12);padding:var(--space-12) var(--space-16);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);margin-bottom:var(--space-8)}
 .ck-rule>b{flex:0 0 auto;font-family:var(--font-body);font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.1em;text-transform:uppercase;color:var(--text-brass);padding-top:var(--space-2)}
 .ck-rule p{margin:0;font-size:var(--text-13);line-height:var(--leading-base)}
@@ -627,3 +723,18 @@ p code,li code,td code{overflow-wrap:anywhere}
 .ck-sources code{font-family:var(--font-mono);font-size:12px;color:var(--text-brass)}
 .ck-sources span{display:block;font-family:var(--font-body);font-size:13px;line-height:1.6;
   color:var(--text-muted);margin-top:5px;max-width:76ch}
+
+/* ---- the census windows (button.html, section Every other control) --------- */
+/* A HOLE IN THE PAGE ONTO ANOTHER PAGE. The iframe is the real specimen at its
+   own width, shifted so the measured box lands at the hole's origin and scaled
+   down where the control is wider than the cell allows. transform-origin is 0 0
+   because the offset is measured from the document's top left and any other
+   origin would move the target by half the scale error.
+   The frame is inert (no pointer, no tab stop): a window is for recognising a
+   control, and the page that owns it is one column to the right. */
+.ck-win{position:relative;display:block;overflow:hidden;border-radius:var(--radius-6);
+  border:1px solid var(--border-hairline);background:var(--bg-page)}
+.ck-win iframe{position:absolute;top:0;left:0;border:0;transform-origin:0 0;
+  pointer-events:none;background:transparent;color-scheme:normal}
+.ck-win-none{font-family:var(--font-mono);font-size:var(--text-10);color:var(--text-muted)}
+.ck-census td:nth-child(2){width:248px}

@@ -1,11 +1,30 @@
 [
  {
-  "id": "button-family",
+  "id": "button-matrix",
   "component": "button",
-  "title": "The button family: quiet, and the same control carrying .primary",
-  "width": 420,
-  "note": "Two of the four names the product wears. .provider-btn and .confirm-btn are not here because neither has a ground outside dialog.app-dialog, .bet-panel, .bet-sheet or .bet-dock: on the bare canvas they would render in the user agent's grey. They stand in the seven specimens listed below instead.",
-  "source": "specimens.extra.html / extra / The button family, quiet and brass",
+  "title": "Every button the product wears, one row per rendered form",
+  "width": 900,
+  "note": "Twelve rows, one per rendered control, in one column 380 wide, which is about what a sheet is in the product so a control declaring width:100% is shown at a width it actually gets. NO CONTROL HAS A PLATE UNDER IT. Six stand on the bare canvas because the scope they ship in changes nothing about them; the other six keep their scope in the DOM, because the scope is what those rows are about, and every element of it gives up its own surface. Measured before and after over seventeen properties: not one face value moved on any of the fourteen controls, and the only difference is width, which grew by exactly the padding the host is no longer drawing.",
+  "source": "specimens.extra.html / extra / Every button the product wears",
+  "rewrites": 0
+ },
+ {
+  "id": "button-matrix-dock",
+  "component": "button",
+  "title": "The two forms that exist only below 760px",
+  "width": 360,
+  "note": "The two forms that exist only below 760px: components/betpanel.css hides .bet-dock at min-width:760 and .bet-panel under it, so one document cannot hold both halves of that pair. Both keep their scope in the DOM and neither keeps its plate: the dock is the one control in the family at content width, and the sheet is the only padding of 16. The dock's odds readout is gone with the plate; it was context and not cause, and the proof is that the button measured 106px wide with it and 106px without, because width:auto is its own declaration in components/button.css.",
+  "state": "The bet sheet is staged open. In the product it is a dialog with no open attribute, which is why no measurement of the painted tree ever reached the one padding-16 control in the family.",
+  "source": "specimens.extra.html / extra / Every button the phone wears, and only the phone",
+  "rewrites": 0
+ },
+ {
+  "id": "button-census",
+  "component": "button",
+  "title": "Every other control in the product that is an action",
+  "width": 900,
+  "note": "Twelve actions, none of them re-staged: each is sliced out of the specimen it already stands in, with its true ancestor chain and its siblings dropped, and every element of that chain gives up its own surface so what is left standing on the page ground is the control. The order is by how much of the product each one is, and the counts beside them are read from ui-visual at build time. Selectors and navigation are not here: a chip, a tab and a nav slot carry a value rather than a press, so their subject is the group and the selected state, and they are staged on the page of the component that owns the group.",
+  "source": "composed",
   "rewrites": 0
  },
  {

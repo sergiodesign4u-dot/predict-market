@@ -1112,3 +1112,96 @@ component reading a colour PRIMITIVE and this file read a semantic role, correct
 level of the same family. The check that catches it is a contrast sweep in a browser, which is
 `audit.cjs` and is not in the 1.5-second build - and the reason the sweep did not catch it for five
 stages is the entry above. `ui-kit/docs/defects.md` row 42 owns that.
+
+---
+
+## 2026-08-04 - A `<button>` is a tag, and the page called Buttons believed it was a role
+
+The question that started it was not about roles. It was: why does this page show two controls when
+the product has dozens, why are the states screenshots, and why is there a plate under everything.
+Three answers were tried before the right one, and the record is worth more than the result.
+
+### The three answers, in order
+
+**A photograph per control.** Cropped screenshots of each kind. Rejected on sight, and correctly: a
+picture of a control goes stale the moment its stylesheet moves and nothing in the build can tell.
+
+**A live window per control.** An iframe onto the specimen the control already stands in, cropped to
+a measured box, with a crop instrument, a freshness contract and a gate to hold the numbers. This
+was the same photograph with more machinery. It was built, gated, shipped and deleted, and the
+reason it was wrong is that the box is a number nobody can read: `_crops.json` said `x:452 y:118`
+and no reader of this vitrine could ever check it.
+
+**A slice.** `pick()` has been in `ui-kit/_extract_specimens.py` since the specimens were built. It
+takes one element out of a document with its true ancestor chain and drops its siblings, which is
+exactly the operation both of the first two answers were approximating with pixels. The chain is
+kept for the cascade and marked `kit-nude`, which takes the host's surface and leaves its
+arrangement. One markup, no photograph, no crop.
+
+**The lesson is not "use pick".** It is that a rule held tightly enough stops being a constraint and
+starts being a wall. The rule was NEVER A THIRD COPY OF MARKUP, and it is right; three passes were
+spent working around it with images because the mechanism that satisfies it was never looked for.
+
+### The measurement that reframed the page
+
+Every button-shaped control on all 105 painted screens, read in a browser at 1440 and 360:
+**9,648 readings, 4,811 controls on the wide pass**. Two numbers came out of it.
+
+**5,281 placements, and 1,751 of them are buttons.** The census was already naming all 27 kinds
+correctly and gate 38 was already holding it in both directions, and the page was still wrong,
+because a `<button>` is a tag. Sorted by what a control IS rather than by how it is spelled: 14
+kinds of **action** (a press, nothing carried between presses), 9 of **selector** (it carries a
+value, and the selected one is a state), 4 of **navigation**, 1 of this vitrine's own chrome. The
+actions stand live; the rest is an index to the page that owns them.
+
+The selector is what makes the split load-bearing rather than tidy. A chip's subject is its GROUP
+and its SELECTED state. One lifted out of its rail teaches a padding and nothing about the only
+thing the control does, so staging it here was worse than listing it.
+
+**66 distinct faces, 17 paddings, 22 heights.** The second number is not about this page and is not
+closed by it: `ui-kit/docs/backlog.md` S34 and S35 hold it. One class is not one control -
+`.provider-btn` measures seven faces, and its four scopes agree on padding, radius, ground and edge
+while disagreeing on font size and weight only. That is one decision taken four times by four
+people, not four decisions.
+
+### The defect no measurement in this repo could have found
+
+`.kit-here` puts a picked control back in the flow by setting `position:static`, because a close
+button is `position:absolute` in the sheet it belongs to. `.sheet-close` has no glyph: its `<svg>`
+is `display:none`, its font is 0px, its ink is transparent, and its X is two absolutely positioned
+bars on `::before` and `::after`. Taking the positioning away took away the containing block those
+bars resolve against, so both left the button and landed 700px down the page over an unrelated row.
+The census showed an empty circle and a stray X floating over nothing.
+
+Every element involved measures correct. The two that were wrong are pseudo-elements, which no query
+in this repo can select. It was found by looking at the rendered page, and `ui-kit/docs/defects.md`
+row 54 records it as row 42's shape seen from the other side: not a broken instrument reporting
+clean, but a correct instrument with no question that reaches the object.
+
+### The same page, one correction later
+
+Two things survived the pass above and were found by looking at the result rather than at the gates.
+
+**The matrix still had plates.** The census lost every one of them and the matrix directly above it
+kept six: four scoped rows of `.provider-btn` and `.cta-bar`, and both halves of the mobile pair.
+The argument for keeping them was sound and applied to the wrong thing. The SCOPE is what those rows
+are about, and the scope is a class in the cascade; the PLATE is the dialog's stone, the panel's
+padding and the bar's hairline, and none of that is the control. Both are now true at once: the
+scope stays in the DOM, marked `kit-nude`, and the surface goes.
+
+Measured before and after, all fourteen controls of the two matrix specimens, over seventeen
+properties. **Not one face value moved.** The only difference is width, and it grew by exactly the
+padding the host stopped drawing, which is the container's decision and never was the control's.
+The dock's `YES 38%` went with the plate: it looked like the reason that button is narrow, and it is
+not, because `width:auto` is its own declaration. The button measures 106px with the readout and
+106px without it.
+
+**One specimen was framed twice.** `live_specimens()` frames everything registered to the component
+and `census_table()` frames the census, and the census is registered to `button`. Two identical
+blocks about 900px apart, and two elements carrying `id="sp-button-census"`, so every `#sp-` anchor
+on the page resolved to whichever the parser met first. Defects rows 55 and 56.
+
+The second of those two is the one to carry forward: **a page section that frames a specimen by name
+has to say so where the catch-all can see it**, or the catch-all frames it again. That is a rule for
+the other 36 pages, not a fix for this one.
+
