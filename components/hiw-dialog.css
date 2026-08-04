@@ -27,7 +27,12 @@ dialog.app-dialog .hiw-full{background:linear-gradient(135deg,var(--color-action
    close disc is positioned against the dialog, not against the hero, so it stays
    put while the body moves. */
 dialog.app-dialog.hiw-dialog:modal .hiw-body{overflow:auto;min-height:0}
-.app-dialog.hiw-dialog .hiw-close{position:absolute;top:12px;right:12px;z-index:var(--z-close);width:var(--control-32);height:var(--control-32);display:flex;align-items:center;justify-content:center;padding:0;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+/* The other half of the note in components/dialog.css: this control and `.sheet-close`
+   are one control declared twice, they now agree on every value, and 12 was already
+   the right number here. It becomes --space-12 for the same reason the other one
+   did, so a change to the corner is one edit in two places rather than two numbers
+   that look unrelated. */
+.app-dialog.hiw-dialog .hiw-close{position:absolute;top:var(--space-12);right:var(--space-12);z-index:var(--z-close);width:var(--control-32);height:var(--control-32);display:flex;align-items:center;justify-content:center;padding:0;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
 .app-dialog.hiw-dialog .hiw-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
 /* The disc goes one step deeper into the black it is already made of, and NOT
    onto --bg-pressed: that role is a stone which flips with the theme, and this

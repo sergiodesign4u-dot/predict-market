@@ -21,7 +21,19 @@
 .cmt-badge{padding:0 var(--space-4)}
 .cmt-text{margin:var(--space-4) 0}
 .cmt-actions{display:flex;gap:var(--space-12);font-size:var(--text-11)}
-.cmt-actions button{border:none;background:transparent;padding:0;font-size:var(--text-11);cursor:pointer;display:inline-flex;gap:var(--space-4);align-items:center}
+/* PADDING WHERE THERE WAS NONE, AND IT IS A TARGET SIZE AND NOT A LOOK.
+   Measured 2026-08-05 under a real coarse pointer at 390px on all 105 painted
+   screens: these render at 23x17 to 29x17, which is the smallest control in the
+   product and the only one that fails WCAG 2.5.8 on BOTH axes. 72 placements, the
+   largest of the three failures found by that sweep. 4 all round takes them to at
+   least 31x25, which clears the 24x24 minimum with the label and the count both
+   still reading as text rather than as chips: nothing else about them moves, no
+   ground, no edge, no radius. The row's own 12 gap sits outside the padding, so
+   the two controls gain 8 of width each and the row grows by 16.
+   44 was NOT taken here and that is deliberate: it is a text control in a meta
+   line and 44 would make the comment row taller than the comment. That question is
+   the whole product's, and ui-kit/docs/backlog.md S39 holds it. */
+.cmt-actions button{border:none;background:transparent;padding:var(--space-4);font-size:var(--text-11);cursor:pointer;display:inline-flex;gap:var(--space-4);align-items:center}
 .cmt-actions .ic{width:var(--icon-12);height:var(--icon-12)}
 /* A PLACEHOLDER, and the file says so. Two sample faces alternating down the thread: the product
    will write the real one on the element, the way the event photograph is written on the card.

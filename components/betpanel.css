@@ -107,7 +107,13 @@
 .app-case .bet-dock .bp-side.sel:active{box-shadow:inset 0 2px 5px var(--edge-shade-strong)}
 dialog.app-dialog.bet-sheet{position:fixed;left:0;right:0;bottom:0;top:auto;margin:0 auto;width:100%;max-width:560px;max-height:92vh;border:0;border-radius:var(--radius-16) var(--radius-16) 0 0;overflow-y:auto;overflow-x:hidden}
 dialog.app-dialog.bet-sheet::backdrop{background:var(--shadow-ink-60);backdrop-filter:blur(2px)}
-.app-case .bet-sheet .sheet-grab{display:block;width:100%;border:0;background:transparent;padding:var(--space-12) 0 var(--space-2);cursor:pointer}
+/* 2 UNDER THE BAR BECAME 8, and the bar itself did not move. The grab measured
+   390x18 under a coarse pointer, and it is the one control in this product a
+   person is meant to DRAG, on the one surface that has no other way to close.
+   18 fails WCAG 2.5.8 by six pixels. 12 above, 4 of bar, 8 below is 24, and the
+   visible handle is at the same place on the same 4px track: what grew is the
+   distance to the first row of the sheet, by six pixels, on four screens. */
+.app-case .bet-sheet .sheet-grab{display:block;width:100%;border:0;background:transparent;padding:var(--space-12) 0 var(--space-8);cursor:pointer}
 .app-case .bet-sheet .sheet-grab::before{content:'';display:block;width:var(--size-40);height:var(--size-4);border-radius:var(--radius-pill);background:var(--bg-control);margin:0 auto;transition:background var(--dur-quick) ease}
 .app-case .bet-sheet .sheet-grab:hover::before{background:var(--border-hairline)}
 /* The button is a full-width strip and the pill is the only part of it a person can see or

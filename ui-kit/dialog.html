@@ -152,7 +152,7 @@ dialog.app-dialog.outcome-dialog .sheet-head::before{content:'';position:absolut
 dialog.app-dialog.win-dialog .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--result-won) 70%,var(--control-knob) 6%) 0%,var(--result-won) 42%,transparent 70%);filter:blur(44px);opacity:.34;pointer-events:none}
 dialog.app-dialog.outcome-dialog .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;max-width:16ch;text-wrap:balance}
 dialog.app-dialog.outcome-dialog .sheet-head a{position:absolute;top:0;right:0;z-index:var(--z-close);line-height:0;text-decoration:none}
-dialog.app-dialog.outcome-dialog .sheet-close{position:absolute;top:13px;right:13px;width:var(--control-32);height:var(--control-32);padding:0;font-size:0;color:transparent;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+dialog.app-dialog.outcome-dialog .sheet-close{position:absolute;top:var(--space-12);right:var(--space-12);width:var(--control-32);height:var(--control-32);padding:0;font-size:0;color:transparent;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
 /* HALF OF TWELVE IS SIX. The two bars of the X are 12px wide and were placed at
    calc(50% - 7px), which put the cross one pixel left of the disc it sits in,
    on every close button in the product. The vertical half was right
@@ -189,7 +189,28 @@ dialog.app-dialog:not(.outcome-dialog) .sheet-head::before{content:'';position:a
 dialog.app-dialog:not(.outcome-dialog) .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--color-action-lit) 60%,var(--color-action)) 0%,var(--color-action) 42%,transparent 70%);filter:blur(42px);opacity:.42;pointer-events:none}
 dialog.app-dialog:not(.outcome-dialog) .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;max-width:15ch;text-wrap:balance}
 dialog.app-dialog:not(.outcome-dialog) .sheet-sub{position:relative;z-index:var(--z-content);margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-primary);max-width:34ch}
-dialog.app-dialog:not(.outcome-dialog) .sheet-close{position:absolute;top:13px;right:13px;z-index:var(--z-close);width:var(--control-32);height:var(--control-32);padding:0;font-size:0;color:transparent;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+/* 12 AND NOT 13, AND THE POINT IS THAT IT WAS BOTH. This product has two controls
+   that close a sheet from its top right corner, and they are the same control:
+   `.sheet-close` here and `.hiw-close` in components/hiw-dialog.css agree on the
+   32px box, the pill, the 34 per cent scrim ground, the --line-on-photo edge, the
+   55 per cent hover, the 72 per cent press and the transition, all declared twice.
+   They disagreed on where the corner is: 13 here, 12 there, and nobody chose
+   either. 12 wins because it is --space-12 and 13 was a raw number with no token
+   behind it, which is the only argument available when neither value was decided.
+   WHY THIS IS NOT A MERGE, and it is worth writing down because a merge is what
+   was promised. One selector across both would put `.hiw-close` in this file, and
+   the class belongs to hiw-dialog.css by its own header; a component declaring
+   another component's class is a coupling this repo has paid to avoid. The
+   contract's own answer is in CLAUDE.md: a shared thing starts at THREE screens,
+   two is a candidate and stays markup. There is a third close in the product and
+   it deliberately does not share this ground, because it stands on a quiet card
+   rather than on a lit header. So the duplication is named, the values are made
+   to agree, and it becomes a pattern on the day a third control wants this face.
+   The mark cannot be merged at all yet, and that is ui-kit/docs/defects.md row 45:
+   123 of these 228 buttons ship the LETTER x and 105 ship an svg, so this one
+   draws its cross with two pseudo bars and the other one uses its icon. One of
+   the two mechanisms is right and the markup decides which. */
+dialog.app-dialog:not(.outcome-dialog) .sheet-close{position:absolute;top:var(--space-12);right:var(--space-12);z-index:var(--z-close);width:var(--control-32);height:var(--control-32);padding:0;font-size:0;color:transparent;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
 dialog.app-dialog:not(.outcome-dialog) .sheet-close .ic{display:none}
 dialog.app-dialog:not(.outcome-dialog) .sheet-close::before,dialog.app-dialog:not(.outcome-dialog) .sheet-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 6px);width:var(--size-12);height:var(--size-2);background:var(--control-knob);border-radius:var(--radius-2)}
 dialog.app-dialog:not(.outcome-dialog) .sheet-close::before{transform:rotate(45deg)}
