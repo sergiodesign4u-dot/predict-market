@@ -8281,7 +8281,7 @@
   "shots": {
    "rest-dark": {
     "file": "event-detail/g1-rest-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143)",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1",
     "w": 52,
     "h": 60,
     "pad": {
@@ -8300,7 +8300,7 @@
    },
    "hover-dark": {
     "file": "event-detail/g1-hover-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgba(255, 255, 255, 0.2) | 1px | rgb(237, 231, 218)",
+    "value": "rgb(36, 40, 47) | none | rgba(255, 255, 255, 0.2) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
     "w": 52,
     "h": 60,
     "pad": {
@@ -8319,7 +8319,7 @@
    },
    "active-dark": {
     "file": "event-detail/g1-active-dark.png",
-    "value": "rgb(25, 27, 31) | none | rgba(255, 255, 255, 0.2) | 1px | rgb(237, 231, 218)",
+    "value": "rgb(25, 27, 31) | none | rgba(255, 255, 255, 0.2) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
     "w": 52,
     "h": 60,
     "pad": {
@@ -8338,7 +8338,7 @@
    },
    "focus-dark": {
     "file": "event-detail/g1-focus-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143)",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1",
     "w": 52,
     "h": 60,
     "pad": {
@@ -8357,7 +8357,7 @@
    },
    "rest-light": {
     "file": "event-detail/g1-rest-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66)",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1",
     "w": 52,
     "h": 60,
     "pad": {
@@ -8376,7 +8376,7 @@
    },
    "hover-light": {
     "file": "event-detail/g1-hover-light.png",
-    "value": "rgb(252, 250, 244) | none | rgba(255, 255, 255, 0.7) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(252, 250, 244) | none | rgba(255, 255, 255, 0.7) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
     "w": 52,
     "h": 60,
     "pad": {
@@ -8395,7 +8395,7 @@
    },
    "active-light": {
     "file": "event-detail/g1-active-light.png",
-    "value": "rgb(243, 241, 235) | none | rgba(255, 255, 255, 0.7) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(243, 241, 235) | none | rgba(255, 255, 255, 0.7) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
     "w": 52,
     "h": 60,
     "pad": {
@@ -8414,7 +8414,7 @@
    },
    "focus-light": {
     "file": "event-detail/g1-focus-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66)",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1",
     "w": 52,
     "h": 60,
     "pad": {
@@ -8432,6 +8432,13 @@
     "short": 0
    }
   },
+  "covers": [
+   "button",
+   "button.ed-act"
+  ],
+  "also": [
+   "card-detail-head"
+  ],
   "sources": [
    "components/base.css",
    "components/betpanel.css",
@@ -8446,204 +8453,10 @@
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "927ecb7606139fb2"
- },
- {
-  "component": "event-detail",
-  "id": "g2",
-  "el": "button.ed-act",
-  "scope": "",
-  "specimen": "card-detail-head",
-  "classes": [
-   "app-case",
-   "card",
-   "device",
-   "ed-act",
-   "ed-actions",
-   "ed-cat",
-   "ed-head",
-   "ed-layout",
-   "ed-main",
-   "ed-oddsbar",
-   "ed-prob-big",
-   "ed-q",
-   "ed-thumb",
-   "feed",
-   "feed-inner",
-   "fill",
-   "ic",
-   "prob",
-   "track"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "event-detail/g2-rest-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143)",
-    "w": 52,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "event-detail/g2-hover-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgba(255, 255, 255, 0.2) | 1px | rgb(237, 231, 218)",
-    "w": 52,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "event-detail/g2-active-dark.png",
-    "value": "rgb(25, 27, 31) | none | rgba(255, 255, 255, 0.2) | 1px | rgb(237, 231, 218)",
-    "w": 52,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "file": "event-detail/g2-focus-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143)",
-    "w": 52,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "event-detail/g2-rest-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66)",
-    "w": 52,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "event-detail/g2-hover-light.png",
-    "value": "rgb(252, 250, 244) | none | rgba(255, 255, 255, 0.7) | 1px | rgb(33, 31, 25)",
-    "w": 52,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "event-detail/g2-active-light.png",
-    "value": "rgb(243, 241, 235) | none | rgba(255, 255, 255, 0.7) | 1px | rgb(33, 31, 25)",
-    "w": 52,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "file": "event-detail/g2-focus-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66)",
-    "w": 52,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "sources": [
-   "components/base.css",
-   "components/card.css",
-   "components/event-detail.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/oddsbar.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/card-detail-head.html"
-  ],
-  "sha": "ca6e15f2a3d82586"
+  "sha": "a21d87e08a652afa"
  },
  {
   "component": "filters",
