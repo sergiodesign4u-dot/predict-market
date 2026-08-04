@@ -2666,7 +2666,7 @@
   "shots": {
    "rest-dark": {
     "file": "card/g1-rest-dark.png",
-    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218)",
+    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218) | 10px | none | rgba(255, 255, 255, 0.1) 0px 1px 0px 0px inset, rgba(255, 25 | 1",
     "w": 329,
     "h": 295,
     "pad": {
@@ -2685,7 +2685,7 @@
    },
    "hover-dark": {
     "file": "card/g1-hover-dark.png",
-    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218)",
+    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218) | 10px | matrix(1, 0, 0, 1, 0, -3) | rgba(255, 255, 255, 0.1) 0px 1px 0px 0px inset, rgba(0, 0, 0 | 1",
     "w": 329,
     "h": 295,
     "pad": {
@@ -2704,7 +2704,7 @@
    },
    "active-dark": {
     "file": "card/g1-active-dark.png",
-    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218)",
+    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218) | 10px | matrix(1, 0, 0, 1, 0, 0) | rgba(255, 255, 255, 0.1) 0px 1px 0px 0px inset, rgba(255, 25 | 1",
     "w": 329,
     "h": 295,
     "pad": {
@@ -2723,7 +2723,7 @@
    },
    "rest-light": {
     "file": "card/g1-rest-light.png",
-    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25) | 10px | none | rgba(255, 255, 255, 0.32) 0px 1px 0px 0px inset, rgba(255, 2 | 1",
     "w": 329,
     "h": 295,
     "pad": {
@@ -2742,7 +2742,7 @@
    },
    "hover-light": {
     "file": "card/g1-hover-light.png",
-    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25) | 10px | matrix(1, 0, 0, 1, 0, -3) | rgba(255, 255, 255, 0.32) 0px 1px 0px 0px inset, rgba(33, 31 | 1",
     "w": 329,
     "h": 295,
     "pad": {
@@ -2761,7 +2761,7 @@
    },
    "active-light": {
     "file": "card/g1-active-light.png",
-    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25) | 10px | matrix(1, 0, 0, 1, 0, 0) | rgba(255, 255, 255, 0.32) 0px 1px 0px 0px inset, rgba(255, 2 | 1",
     "w": 329,
     "h": 295,
     "pad": {
@@ -2784,7 +2784,12 @@
    "card-multi",
    "oddsbar",
    "yesno",
-   "options-rows"
+   "options-rows",
+   "skeleton-grid"
+  ],
+  "covers": [
+   "article.card",
+   "article.card.skeleton"
   ],
   "sources": [
    "components/base.css",
@@ -2802,9 +2807,10 @@
    "ui-kit/specimens/feed-grid.html",
    "ui-kit/specimens/oddsbar.html",
    "ui-kit/specimens/options-rows.html",
+   "ui-kit/specimens/skeleton-grid.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "4e1b918089373642"
+  "sha": "442da656cf964058"
  },
  {
   "component": "card",
@@ -2849,7 +2855,7 @@
   "shots": {
    "rest-dark": {
     "file": "card/g2-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 233,
     "h": 46,
     "pad": {
@@ -2868,7 +2874,7 @@
    },
    "hover-dark": {
     "file": "card/g2-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 0px | none | none | 1",
     "w": 233,
     "h": 46,
     "pad": {
@@ -2887,7 +2893,7 @@
    },
    "active-dark": {
     "file": "card/g2-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 0px | none | none | 1",
     "w": 233,
     "h": 46,
     "pad": {
@@ -2906,7 +2912,7 @@
    },
    "focus-dark": {
     "file": "card/g2-focus-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 233,
     "h": 46,
     "pad": {
@@ -2925,7 +2931,7 @@
    },
    "rest-light": {
     "file": "card/g2-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 233,
     "h": 46,
     "pad": {
@@ -2944,7 +2950,7 @@
    },
    "hover-light": {
     "file": "card/g2-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 0px | none | none | 1",
     "w": 233,
     "h": 46,
     "pad": {
@@ -2963,7 +2969,7 @@
    },
    "active-light": {
     "file": "card/g2-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 0px | none | none | 1",
     "w": 233,
     "h": 46,
     "pad": {
@@ -2982,7 +2988,7 @@
    },
    "focus-light": {
     "file": "card/g2-focus-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 233,
     "h": 46,
     "pad": {
@@ -3003,6 +3009,9 @@
   "also": [
    "card-binary",
    "card-multi"
+  ],
+  "covers": [
+   "a.q"
   ],
   "sources": [
    "components/base.css",
@@ -3064,7 +3073,7 @@
   "shots": {
    "rest-dark": {
     "file": "card/g3-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0) | 0px | none | none | 1",
     "w": 63,
     "h": 65,
     "pad": {
@@ -3083,7 +3092,7 @@
    },
    "hover-dark": {
     "file": "card/g3-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0) | 0px | none | none | 1",
     "w": 63,
     "h": 65,
     "pad": {
@@ -3102,7 +3111,7 @@
    },
    "active-dark": {
     "file": "card/g3-active-dark.png",
-    "value": "rgb(25, 27, 31) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0)",
+    "value": "rgb(25, 27, 31) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0) | 0px | none | none | 1",
     "w": 63,
     "h": 65,
     "pad": {
@@ -3121,7 +3130,7 @@
    },
    "focus-dark": {
     "file": "card/g3-focus-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0) | 0px | none | none | 1",
     "w": 63,
     "h": 65,
     "pad": {
@@ -3140,7 +3149,7 @@
    },
    "rest-light": {
     "file": "card/g3-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0) | 0px | none | none | 1",
     "w": 63,
     "h": 65,
     "pad": {
@@ -3159,7 +3168,7 @@
    },
    "hover-light": {
     "file": "card/g3-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0) | 0px | none | none | 1",
     "w": 63,
     "h": 65,
     "pad": {
@@ -3178,7 +3187,7 @@
    },
    "active-light": {
     "file": "card/g3-active-light.png",
-    "value": "rgb(243, 241, 235) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0)",
+    "value": "rgb(243, 241, 235) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0) | 0px | none | none | 1",
     "w": 63,
     "h": 65,
     "pad": {
@@ -3197,7 +3206,7 @@
    },
    "focus-light": {
     "file": "card/g3-focus-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | 0px | rgb(0, 0, 0) | 0px | none | none | 1",
     "w": 63,
     "h": 65,
     "pad": {
@@ -3219,6 +3228,9 @@
    "card-binary",
    "card-multi"
   ],
+  "covers": [
+   "button.bookmark-btn"
+  ],
   "sources": [
    "components/base.css",
    "components/card.css",
@@ -3235,163 +3247,6 @@
    "ui-kit/specimens/feed-grid.html"
   ],
   "sha": "560ea1a0b0d914e7"
- },
- {
-  "component": "card",
-  "id": "g4",
-  "el": "article.card.skeleton",
-  "scope": "",
-  "specimen": "skeleton-grid",
-  "classes": [
-   "app-case",
-   "card",
-   "card-body",
-   "cat-layout",
-   "cat-main",
-   "device",
-   "feed",
-   "feed-inner",
-   "grid",
-   "sk-btn",
-   "sk-head",
-   "sk-line",
-   "sk-row",
-   "sk-thumb",
-   "skeleton",
-   "top",
-   "w40",
-   "w60",
-   "w80"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "card/g4-rest-dark.png",
-    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218)",
-    "w": 381,
-    "h": 210,
-    "pad": {
-     "top": 12,
-     "right": 8,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "card/g4-hover-dark.png",
-    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218)",
-    "w": 381,
-    "h": 210,
-    "pad": {
-     "top": 12,
-     "right": 8,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "card/g4-active-dark.png",
-    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218)",
-    "w": 381,
-    "h": 210,
-    "pad": {
-     "top": 12,
-     "right": 8,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "card/g4-rest-light.png",
-    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25)",
-    "w": 381,
-    "h": 210,
-    "pad": {
-     "top": 12,
-     "right": 8,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "card/g4-hover-light.png",
-    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25)",
-    "w": 381,
-    "h": 210,
-    "pad": {
-     "top": 12,
-     "right": 8,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "card/g4-active-light.png",
-    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25)",
-    "w": 381,
-    "h": 210,
-    "pad": {
-     "top": 12,
-     "right": 8,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   }
-  },
-  "sources": [
-   "components/base.css",
-   "components/card.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/position.css",
-   "components/skeleton.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/skeleton-grid.html"
-  ],
-  "sha": "feddf2362f4f07d5"
  },
  {
   "component": "card",
@@ -3423,7 +3278,7 @@
   "shots": {
    "rest-dark": {
     "file": "card/g5-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 679,
     "h": 190,
     "pad": {
@@ -3442,7 +3297,7 @@
    },
    "hover-dark": {
     "file": "card/g5-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 679,
     "h": 190,
     "pad": {
@@ -3461,7 +3316,7 @@
    },
    "active-dark": {
     "file": "card/g5-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 679,
     "h": 190,
     "pad": {
@@ -3480,7 +3335,7 @@
    },
    "rest-light": {
     "file": "card/g5-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 679,
     "h": 190,
     "pad": {
@@ -3499,7 +3354,7 @@
    },
    "hover-light": {
     "file": "card/g5-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 679,
     "h": 190,
     "pad": {
@@ -3518,7 +3373,7 @@
    },
    "active-light": {
     "file": "card/g5-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 679,
     "h": 190,
     "pad": {
@@ -3536,222 +3391,27 @@
     "short": 0
    }
   },
-  "sources": [
-   "components/base.css",
-   "components/card.css",
-   "components/event-detail.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/oddsbar.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/card-detail-head.html"
+  "covers": [
+   "article.card",
+   "div.card"
   ],
-  "sha": "ca6e15f2a3d82586"
- },
- {
-  "component": "card",
-  "id": "g6",
-  "el": "div.card",
-  "scope": "",
-  "specimen": "event-detail",
-  "classes": [
-   "amount-input",
-   "app-case",
-   "arg-col",
-   "args",
-   "bet-panel",
-   "bp-amount-lbl",
-   "bp-amount-row",
-   "bp-cash",
-   "bp-dir",
-   "bp-head",
-   "bp-hint",
-   "bp-inner",
-   "bp-pct",
-   "bp-side",
-   "card",
-   "card-body",
-   "confirm-btn",
-   "device",
-   "ed-actions",
-   "ed-cat",
-   "ed-head",
-   "ed-layout",
-   "ed-main",
-   "ed-oddsbar",
-   "ed-prob-big",
-   "ed-q",
-   "ed-section",
-   "ed-thumb",
-   "feed",
-   "feed-inner",
-   "field-label",
-   "fill",
-   "fine",
-   "ic",
-   "line",
-   "prob",
-   "quick",
-   "resolution",
-   "sel",
-   "total",
-   "track"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "card/g6-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
-    "w": 697,
-    "h": 452,
-    "pad": {
-     "top": 12,
-     "right": 8,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "card/g6-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
-    "w": 697,
-    "h": 452,
-    "pad": {
-     "top": 12,
-     "right": 8,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "card/g6-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
-    "w": 697,
-    "h": 452,
-    "pad": {
-     "top": 12,
-     "right": 8,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "card/g6-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
-    "w": 697,
-    "h": 452,
-    "pad": {
-     "top": 12,
-     "right": 8,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "card/g6-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
-    "w": 697,
-    "h": 452,
-    "pad": {
-     "top": 12,
-     "right": 8,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "card/g6-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
-    "w": 697,
-    "h": 452,
-    "pad": {
-     "top": 12,
-     "right": 8,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   }
-  },
   "also": [
-   "chart",
-   "facts-strip",
-   "market-depth",
-   "tabs-detail",
-   "comments-thread",
-   "bets-biggest",
-   "bets-table",
-   "bets-activity",
-   "options-multi"
+   "event-detail"
   ],
   "sources": [
    "components/base.css",
-   "components/betpanel.css",
-   "components/button.css",
    "components/card.css",
-   "components/dialog.css",
    "components/event-detail.css",
    "components/feed.css",
    "components/fonts.css",
-   "components/input.css",
    "components/oddsbar.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/bets-activity.html",
-   "ui-kit/specimens/bets-biggest.html",
-   "ui-kit/specimens/bets-table.html",
-   "ui-kit/specimens/chart.html",
-   "ui-kit/specimens/comments-thread.html",
-   "ui-kit/specimens/event-detail.html",
-   "ui-kit/specimens/facts-strip.html",
-   "ui-kit/specimens/market-depth.html",
-   "ui-kit/specimens/options-multi.html",
-   "ui-kit/specimens/tabs-detail.html"
+   "ui-kit/specimens/card-detail-head.html",
+   "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "61ce141cdfc72843"
+  "sha": "e18b2bcbcba812ba"
  },
  {
   "component": "catnav",

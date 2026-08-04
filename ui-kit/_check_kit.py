@@ -1837,7 +1837,6 @@ notes.append("%-34s %s" % ("35 pages read for literal markdown",
 # a register rather than a silence, and the entry clears itself: a component that
 # no longer holds a duplicate fails here as idle.
 NOT_RECAPTURED = {
-    "card": "2 duplicate groups (g1/g4, g5/g6), 16 pictures",
     "event-detail": "1 duplicate group (g1/g2), 8 pictures",
     "header": "1 duplicate group of four (g1/g4/g6/g7), 24 pictures",
     "hero": "1 duplicate group (g1/g5), 8 pictures",
