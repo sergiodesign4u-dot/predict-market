@@ -1830,14 +1830,17 @@ notes.append("%-34s %s" % ("35 pages read for literal markdown",
 # have deleted the picture of a real difference, which is the same shape as row
 # 42: a check reporting a clean result about a property it never looked at.
 #
-# WHAT IS GATED AND WHAT IS ONLY LISTED. Five other components still hold the
-# same defect, and they hold it in the OLD recording, so their duplicate count is
-# an upper bound that only a re-capture can settle. Re-capturing them is not this
-# step's work. They are declared below with what they carry, which makes the debt
-# a register rather than a silence, and the entry clears itself: a component that
-# no longer holds a duplicate fails here as idle.
+# THE REGISTER IS EMPTY, AND IT IS KEPT. Five components were declared here on
+# 2026-08-04 because they still held the defect in the OLD recording, and all
+# five were re-captured the same day: `card` and `hero` merged, `event-detail`
+# merged and opened S28, `tabs` merged NOTHING and opened defects row 48
+# instead, and `header` merged four into one after the thing its own stylesheet
+# had already measured. So every component in this repository is now gated
+# unconditionally, which is what an empty declared list MEANS here and why it is
+# worth leaving in place rather than deleting: the next component captured under
+# an older instrument has somewhere to be declared, and the idle control makes
+# the declaration expire on its own.
 NOT_RECAPTURED = {
-    "header": "1 duplicate group of four (g1/g4/g6/g7), 24 pictures",
 }
 _dup = _states.duplicated()
 _dup_bad = ["%s: %s" % (c, " ".join("=".join(ids) for ids in same))
