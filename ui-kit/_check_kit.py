@@ -1840,7 +1840,6 @@ NOT_RECAPTURED = {
     "event-detail": "1 duplicate group (g1/g2), 8 pictures",
     "header": "1 duplicate group of four (g1/g4/g6/g7), 24 pictures",
     "hero": "1 duplicate group (g1/g5), 8 pictures",
-    "tabs": "1 duplicate group (g1/g4), 8 pictures",
 }
 _dup = _states.duplicated()
 _dup_bad = ["%s: %s" % (c, " ".join("=".join(ids) for ids in same))
