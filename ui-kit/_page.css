@@ -376,6 +376,23 @@
   background:var(--bg-page);color:var(--text-muted);
   font-family:var(--font-mono);font-size:var(--text-11);
   line-height:var(--leading-base);overflow-x:auto}
+/* AN INLINE `code` IS A WORD, AND A WORD THAT WILL NOT BREAK MAKES THE PAGE
+   SCROLL. Found 2026-08-04 by measuring the stand pages at 360: three of them
+   pushed the document sideways and all three for the same reason, a file path
+   or a selector inside running prose. `wireframes/_generators/footer_reconcile
+   .py` is 353px on a 360px window and there is no space in it for the browser
+   to break at, so the paragraph reaches past the edge and the whole page goes
+   with it. Measured: feed +46, footer +27, tabs +22.
+   It is `anywhere` rather than `break-word` because these are paths and
+   selectors, which have no syllables: the break has to be allowed mid-token or
+   it is not allowed at all. A `pre` is deliberately NOT included, above and at
+   `.ck-src pre`: a block of source scrolls in its own box, because breaking a
+   line of css moves the meaning. */
+/* Three selectors and not five: `dd code` and `figcaption code` were in the
+   first cut and match NOTHING in this vitrine, counted over all 56 pages.
+   A rule nothing can match is the defect gate 14 exists for, one folder
+   over. Measured: p 1402, li 1225, td 1622. */
+p code,li code,td code{overflow-wrap:anywhere}
 /* A table in a document is wider than the reading column and narrower than the
    page. It scrolls in its own box rather than making the page scroll sideways. */
 .tk-doc-tbl{overflow-x:auto;margin:0 0 var(--space-20)}
