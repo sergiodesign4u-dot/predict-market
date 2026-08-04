@@ -1024,10 +1024,10 @@ Structurally the Event Feed filtered to one category; same rules. Cards use the 
 |---|---|---|---|---|
 | Empty - body | No {Category} **markets** match the current sub-category and filters. Clear the filters, or get notified when new ones open. | No {Category} **events** match the current sub-category and filters. Clear the filters, or get notified when new ones open. | Lexicon: market -> event | 8 |
 | Error - body | **Something went wrong** while loading these **markets**. Check your connection and try again. | We couldn't load these **events**. Check your connection and try again. | Forbidden: drop "Something went wrong"; Lexicon: market -> event | 8 |
-| Empty - title | No events match these filters | *(unchanged)* | already compliant |
-| Error - title | Couldn't load {Category} | *(unchanged)* | already compliant |
-| Empty / error - buttons | Clear filters · Notify me of new {Category} events · Try again · Back to Trending | *(unchanged)* | already compliant (verb + object, event) |
-| Loading | *(silent skeleton)* | *(unchanged)* | Microcopy/loading: silent is correct |
+| Empty - title | No events match these filters | *(unchanged)* | already compliant |  |
+| Error - title | Couldn't load {Category} | *(unchanged)* | already compliant |  |
+| Empty / error - buttons | Clear filters · Notify me of new {Category} events · Try again · Back to Trending | *(unchanged)* | already compliant (verb + object, event) |  |
+| Loading | *(silent skeleton)* | *(unchanged)* | Microcopy/loading: silent is correct |  |
 
 Sub-category rail ("Sub-categories" + counts) and category headings: already clean. No other "market" in category product copy (the remaining ones are event-question titles = user content).
 

@@ -1862,6 +1862,90 @@ notes.append("%-34s %s"
                 % (sum(len(g) for g in _states.by_component().values()),
                    len(_states.by_component()), len(NOT_RECAPTURED))))
 
+# ---- 37. a row of a table is a row -------------------------------------------
+# A DEFECT OF FORM, WHICH IS THE CLASS NOTHING HERE WAS ASKING ABOUT. Two entries
+# of `ui-kit/docs/backlog.md` were written on one line: `...scrolls sideways** ||
+# S28 | ...`, one missing newline, and the render is the proof rather than the
+# reading. That table's head has 3 columns and the row came out with SEVEN cells,
+# S28 sitting in it as trailing `<td>`s instead of being a row. So S28 was not an
+# item of the backlog at all, and `docs/decisions.md` already pointed at it by
+# number: a reference that resolves as text and not as structure. Measuring the
+# same table found the neighbour too, `~~S27~~` at 2 cells where the head has 3,
+# which is the same defect pointing the other way.
+#
+# WHY NOTHING SAW IT. Every check in this file asks about MEANING: does the path
+# resolve, does the class exist, is the count current, does the caption match a
+# group. A row that is not a row breaks none of those. `_gen_docs.table()` does
+# not either, and it should not: it renders what the markdown says, and the
+# markdown said one row. A generator is not the place to decide that its input is
+# malformed.
+#
+# THE CORPUS IS EVERY MARKDOWN IN THE REPOSITORY, on the same argument gate 7
+# uses for the em dash, and it earned that on the first run. Scanning only the
+# documents that have a page found the defect it was written for and nothing
+# else; scanning everything found SEVEN more, in two files nobody would have
+# opened: `docs/backlog.md` (a row with an extra separator, two CLOSED rows that
+# had each dropped their Source cell, and a blank line splitting one table into
+# two so that a data row was rendering as a second head) and
+# `voice/docs/microcopy.md` (four rows of the Step 07 table stopping one column
+# short). Searching where the defect was reported would have closed one of eight.
+#
+# The two Source cells were recovered from git rather than written: an entry's
+# provenance is a record, and a record nobody can find is not repaired by filling
+# it in plausibly. The four `Pages` cells could not be recovered, were never in
+# the file's history, and are therefore EMPTY: a datum nobody wrote is not a
+# datum to infer from the two rows above it.
+#
+# A table where rows are legally ragged would be declared below with its reason,
+# and would carry the same idle control every declared list here carries. There
+# are none: 2208 body rows over 98 files, and every one of them now matches its
+# own head.
+RAGGED = {}                      # "path:line" -> why this row is legally short
+ALIGN = set("-: ")
+
+
+def md_rows(path):
+    """(line, cells, head) for every body row of every table in one document.
+       A blank line ends a table, which is what markdown does and is how the
+       blank line inside `docs/backlog.md` turned a data row into a second head."""
+    out, head = [], None
+    for n, line in enumerate(path.read_text(encoding="utf-8", errors="replace").split("\n"), 1):
+        s = line.strip()
+        if not s.startswith("|"):
+            head = None
+            continue
+        cells = [c.strip() for c in s.strip("|").split("|")]
+        if head is None:
+            head = len(cells)
+            continue
+        if set("".join(cells)) <= ALIGN:        # the alignment rule under the head
+            continue
+        out.append((n, len(cells), head))
+    return out
+
+
+_md_all = [p for p in sorted(ROOT.rglob("*.md"))
+           if not {".git", "old", "node_modules"} & set(p.parts)]
+_ragged, _rows_read, _ragged_seen = [], 0, set()
+for _p in _md_all:
+    for _n, _got, _want in md_rows(_p):
+        _rows_read += 1
+        if _got == _want:
+            continue
+        _where = "%s:%d" % (_p.relative_to(ROOT), _n)
+        if _where in RAGGED:
+            _ragged_seen.add(_where)
+        else:
+            _ragged.append("%s has %d cells, head %d" % (_where, _got, _want))
+check("37 every table row is a row", not _ragged,
+      "%d: %s" % (len(_ragged), "; ".join(_ragged[:4])))
+_ragged_idle = sorted(set(RAGGED) - _ragged_seen)
+check("37 no idle ragged-row exception", not _ragged_idle,
+      "%d: %s" % (len(_ragged_idle), ", ".join(_ragged_idle)))
+notes.append("%-34s %s" % ("37 table rows read",
+                           "%d row(s) over %d markdown file(s), %d declared ragged"
+                           % (_rows_read, len(_md_all), len(RAGGED))))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)
