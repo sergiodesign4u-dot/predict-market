@@ -44,6 +44,104 @@ record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/mi
 
 ---
 
+## 2026-08-04 - How much the instrument was missing, measured, and why the merge comes after the shot
+
+**S27 closed, and the useful number is not the one it opened on.** It opened at 64 duplicate
+pictures across five components. That was an arithmetic assumption, not a count: it multiplied the
+redundant groups by 8, and three of them do not hold 8 pictures. A `card` group holds 6, because a
+card is not focusable; a `tabs` group holds 4, because a hidden radio raises no hover and no press.
+**The real upper bound was 56**, and the pair list was right in every case. The correction was
+reported before anything was deleted, which is the only reason it mattered: the number was in four
+documents and none of them was load-bearing, but a count nobody re-derives is how the false zero got
+printed fifteen times.
+
+**The result per component, because the verdict is the deliverable and not the total.** `card`:
+two pairs, both duplicates, 12 pictures. `hero`: one pair, duplicate, 8. `event-detail`: one pair,
+duplicate, 8. `header`: one group of four, duplicate, 24. `tabs`: **nothing merged**, and the pair
+became a defect instead. **44 of the 56 were duplicates, 4 were a defect, and 8 were a real
+difference the old instrument could not see.** System 766 pictures to 714, 94 groups over 24
+components, `NOT_RECAPTURED` empty, gate 36 now unconditional.
+
+**HOW MUCH THE OLD FACE WAS MISSING, which is the measurement worth keeping.** A face was five
+values and it is nine now. What the five could not see, found by re-capturing:
+
+- **`card`'s entire hover.** `.card:hover` is `translateY(-3px)` plus a shadow, and neither
+  `transform` nor `box-shadow` was among the five, so the recorded value under the hover picture was
+  **the same string** as the value under the rest picture. The pictures were right; the number
+  printed under them, which is the thing that makes a picture checkable rather than decorative, said
+  nothing had moved. On a component that stands on every browse screen.
+- **`header`'s `.bal-add`.** It merged into the group of four under the old reading and does not
+  under the new one: the plus that opens Add funds gives a different answer from the three ghost
+  circles beside it. **8 pictures that would have been deleted as duplicates are evidence.**
+- **`tabs`'s two hidden radios.** They differ by `opacity`, 1 against 0, which the old five could
+  not see either.
+
+That is the answer to "how much was the instrument missing": one component's whole interaction
+layer, one real difference that a merge would have destroyed, and one defect that could not have
+been found at all.
+
+**AND THIS IS WHY THE MERGE HAPPENS AFTER THE SHOT AND NEVER IN THE KEY.** The cheap implementation
+is to drop the element selector out of the grouping key, which is decided at rest, before a pointer
+has touched anything. `card` is the proof that it is wrong: at rest a loaded card and a skeleton
+card and, under the old face, a hovered card are all one string. Key on rest and one of a pair is
+never photographed, so the difference is not merged away, **it is never measured**, and the page
+then shows a single gallery with nothing to say it is missing anything. Everything is shot, and only
+then does what agrees in all four states in both themes become one picture. It costs pictures that
+are immediately deleted and it is the only order that can be checked afterwards.
+
+**`tabs` is the pass's third verdict, and the pass is worth more for having one.** Its pair is not a
+duplicate and not a real difference: `components/tabs.css` hides a CSS-only tab's radio twice,
+differently. Line 12 parks `.ed-tabradio` at `left:-9999px`, measured as a 13x13 box at x = -9941;
+line 18 gives `.ptab-in` a 1x1 box at `opacity:0`. The file's own comment says the first painted the
+focus indicator off the left edge of the document, and that the second was written so the ring lands
+in the right place and is then painted at zero alpha, "which is the same nothing". **The second
+mechanism exists because the first one failed, and the first one is still there.** Nothing merged,
+the pictures stay, and it is `ui-kit/docs/defects.md` row 48 with a closing condition written as
+something a check could ask: one hiding idiom per repository, declared once, and any second one
+fails.
+
+**The warning about `header` was checked directly and the answer was the opposite.** A group of
+four, three of them a button holding one mark and the fourth a `<summary>` holding a wrapper with a
+mark AND a count badge, which is an extra zone and a different element. It merged anyway, and the
+evidence is in the stylesheet rather than in a reading: `components/header.css` gathers `.icon-btn`,
+`.notif-menu summary` and `.avatar-menu summary` into one rest declaration, one hover and one press,
+after measuring the shape across all 105 screens at 360 and 1440. What differs is the ELEMENT,
+because a summary opens a dropdown and a button does not. The same comment records that the
+logged-in against logged-out reading was investigated from a screenshot and rejected. The badge is
+content inside the circle, carries no state rule of its own, and is live on the page in the
+logged-in specimen.
+
+**Nothing was merged without asking what evidence it deletes**, and in three cases the answer was
+the same: the thing that would be lost is live on a page. The skeleton card's own look is
+`skeleton.html` with `skeleton-grid` in a frame; the bell with its badge is `header.html` with
+`header-in` in a frame; `.hh-name`'s size is `hero.html`. Where the answer would have been "nothing
+shows this", the pair stays.
+
+**One finding that was not a merge at all.** `event-detail`'s two groups were split by `.ed-act`, a
+class written 27 times in each tree and read by **no stylesheet and no script**: the rule that paints
+the row is `.ed-actions button`, which matches with the class and without it. So the two faces were
+identical by construction and dead markup was the only thing telling them apart. `ui-kit/docs/backlog.md`
+S28. Checked and deliberately not filed with it: `.prov-google` is read by no rule either and
+correctly so, because that mark carries its own brand colours while `.prov-x` and `.prov-apple` are
+filled with the current colour and need one.
+
+**Browser, 360 and 1440, both themes, over the five touched pages: 0 findings after one repair.**
+20 combinations, every state picture forced eager and waited for, 188 pictures loaded, 0 broken, 0
+console errors, every live specimen driven with a real pointer. The repair is its own commit and was
+not this pass's doing: `tabs.html` pushed the document 22px sideways at 360, and measuring the rest
+of the vitrine found feed +46 and footer +27 with the same cause, a path or a selector inside prose
+with nothing in it to break at. One element rule, three selectors after the two that matched nothing
+were removed, `pre` deliberately excluded. **4 of 56 stand pages overflowed at 360, now 1**, and the
+one left is a different cause with a number and a closing condition rather than a guess: S29.
+
+**One false negative caught in the instrument rather than reported as a defect.** The first browser
+pass said `tabs.html`'s live specimens do not answer a pointer. They do: the script had hovered the
+tab that was already current, whose ink is already at the strong value. Driven on a non-current tab,
+both specimens move from `rgb(164, 157, 143)` to `rgb(237, 231, 218)`. A clean result about the
+wrong object is the shape this repository keeps finding, and it is worth noting that this time it
+was found in the checking script within the same hour rather than in a document fifteen printings
+later.
+
 ## 2026-08-04 - The unit of a picture is a difference, not an occurrence
 
 **What was on the page.** `ui-kit/button.html` carried **eight state galleries** for a component
