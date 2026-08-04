@@ -12060,7 +12060,7 @@
   "shots": {
    "rest-dark": {
     "file": "hero/g1-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 289,
     "h": 54,
     "pad": {
@@ -12079,7 +12079,7 @@
    },
    "hover-dark": {
     "file": "hero/g1-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 0px | none | none | 1",
     "w": 289,
     "h": 54,
     "pad": {
@@ -12098,7 +12098,7 @@
    },
    "active-dark": {
     "file": "hero/g1-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 0px | none | none | 1",
     "w": 289,
     "h": 54,
     "pad": {
@@ -12117,7 +12117,7 @@
    },
    "focus-dark": {
     "file": "hero/g1-focus-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 289,
     "h": 54,
     "pad": {
@@ -12136,7 +12136,7 @@
    },
    "rest-light": {
     "file": "hero/g1-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 289,
     "h": 54,
     "pad": {
@@ -12155,7 +12155,7 @@
    },
    "hover-light": {
     "file": "hero/g1-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 0px | none | none | 1",
     "w": 289,
     "h": 54,
     "pad": {
@@ -12174,7 +12174,7 @@
    },
    "active-light": {
     "file": "hero/g1-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 0px | none | none | 1",
     "w": 289,
     "h": 54,
     "pad": {
@@ -12193,7 +12193,7 @@
    },
    "focus-light": {
     "file": "hero/g1-focus-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 289,
     "h": 54,
     "pad": {
@@ -12211,6 +12211,10 @@
     "short": 0
    }
   },
+  "covers": [
+   "a.hf-title",
+   "a.hh-name"
+  ],
   "sources": [
    "components/base.css",
    "components/feed.css",
@@ -12290,7 +12294,7 @@
   "shots": {
    "rest-dark": {
     "file": "hero/g2-rest-dark.png",
-    "value": "rgba(79, 169, 107, 0.12) | none | rgb(63, 125, 85) | 1px | rgb(119, 209, 155)",
+    "value": "rgba(79, 169, 107, 0.12) | none | rgb(63, 125, 85) | 1px | rgb(119, 209, 155) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12309,7 +12313,7 @@
    },
    "hover-dark": {
     "file": "hero/g2-hover-dark.png",
-    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(119, 209, 155)",
+    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(119, 209, 155) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12328,7 +12332,7 @@
    },
    "active-dark": {
     "file": "hero/g2-active-dark.png",
-    "value": "oklab(0.363031 -0.0361971 0.013583) | none | rgb(63, 125, 85) | 1px | rgb(119, 209, 155)",
+    "value": "oklab(0.363031 -0.0361971 0.013583) | none | rgb(63, 125, 85) | 1px | rgb(119, 209, 155) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12347,7 +12351,7 @@
    },
    "focus-dark": {
     "file": "hero/g2-focus-dark.png",
-    "value": "rgba(79, 169, 107, 0.12) | none | rgb(63, 125, 85) | 1px | rgb(119, 209, 155)",
+    "value": "rgba(79, 169, 107, 0.12) | none | rgb(63, 125, 85) | 1px | rgb(119, 209, 155) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12366,7 +12370,7 @@
    },
    "rest-light": {
     "file": "hero/g2-rest-light.png",
-    "value": "rgba(79, 169, 107, 0.12) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53)",
+    "value": "rgba(79, 169, 107, 0.12) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12385,7 +12389,7 @@
    },
    "hover-light": {
     "file": "hero/g2-hover-light.png",
-    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53)",
+    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12404,7 +12408,7 @@
    },
    "active-light": {
     "file": "hero/g2-active-light.png",
-    "value": "oklab(0.863713 -0.0357629 0.0248723) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53)",
+    "value": "oklab(0.863713 -0.0357629 0.0248723) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12423,7 +12427,7 @@
    },
    "focus-light": {
     "file": "hero/g2-focus-light.png",
-    "value": "rgba(79, 169, 107, 0.12) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53)",
+    "value": "rgba(79, 169, 107, 0.12) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12441,6 +12445,9 @@
     "short": 0
    }
   },
+  "covers": [
+   "button.hf-btn.yes"
+  ],
   "sources": [
    "components/base.css",
    "components/feed.css",
@@ -12520,7 +12527,7 @@
   "shots": {
    "rest-dark": {
     "file": "hero/g3-rest-dark.png",
-    "value": "rgba(200, 90, 80, 0.12) | none | rgb(143, 72, 65) | 1px | rgb(231, 144, 135)",
+    "value": "rgba(200, 90, 80, 0.12) | none | rgb(143, 72, 65) | 1px | rgb(231, 144, 135) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12539,7 +12546,7 @@
    },
    "hover-dark": {
     "file": "hero/g3-hover-dark.png",
-    "value": "rgba(200, 90, 80, 0.2) | none | rgb(143, 72, 65) | 1px | rgb(231, 144, 135)",
+    "value": "rgba(200, 90, 80, 0.2) | none | rgb(143, 72, 65) | 1px | rgb(231, 144, 135) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12558,7 +12565,7 @@
    },
    "active-dark": {
     "file": "hero/g3-active-dark.png",
-    "value": "oklab(0.343712 0.0399616 0.0152984) | none | rgb(143, 72, 65) | 1px | rgb(231, 144, 135)",
+    "value": "oklab(0.343712 0.0399616 0.0152984) | none | rgb(143, 72, 65) | 1px | rgb(231, 144, 135) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12577,7 +12584,7 @@
    },
    "focus-dark": {
     "file": "hero/g3-focus-dark.png",
-    "value": "rgba(200, 90, 80, 0.12) | none | rgb(143, 72, 65) | 1px | rgb(231, 144, 135)",
+    "value": "rgba(200, 90, 80, 0.12) | none | rgb(143, 72, 65) | 1px | rgb(231, 144, 135) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12596,7 +12603,7 @@
    },
    "rest-light": {
     "file": "hero/g3-rest-light.png",
-    "value": "rgba(200, 90, 80, 0.12) | none | rgb(143, 72, 65) | 1px | rgb(134, 50, 40)",
+    "value": "rgba(200, 90, 80, 0.12) | none | rgb(143, 72, 65) | 1px | rgb(134, 50, 40) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12615,7 +12622,7 @@
    },
    "hover-light": {
     "file": "hero/g3-hover-light.png",
-    "value": "rgba(200, 90, 80, 0.2) | none | rgb(143, 72, 65) | 1px | rgb(134, 50, 40)",
+    "value": "rgba(200, 90, 80, 0.2) | none | rgb(143, 72, 65) | 1px | rgb(134, 50, 40) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12634,7 +12641,7 @@
    },
    "active-light": {
     "file": "hero/g3-active-light.png",
-    "value": "oklab(0.844395 0.0403958 0.0265878) | none | rgb(143, 72, 65) | 1px | rgb(134, 50, 40)",
+    "value": "oklab(0.844395 0.0403958 0.0265878) | none | rgb(143, 72, 65) | 1px | rgb(134, 50, 40) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12653,7 +12660,7 @@
    },
    "focus-light": {
     "file": "hero/g3-focus-light.png",
-    "value": "rgba(200, 90, 80, 0.12) | none | rgb(143, 72, 65) | 1px | rgb(134, 50, 40)",
+    "value": "rgba(200, 90, 80, 0.12) | none | rgb(143, 72, 65) | 1px | rgb(134, 50, 40) | 10px | none | none | 1",
     "w": 145,
     "h": 60,
     "pad": {
@@ -12671,6 +12678,9 @@
     "short": 0
    }
   },
+  "covers": [
+   "button.hf-btn.no"
+  ],
   "sources": [
    "components/base.css",
    "components/feed.css",
@@ -12750,7 +12760,7 @@
   "shots": {
    "rest-dark": {
     "file": "hero/g4-rest-dark.png",
-    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218)",
+    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218) | 10px | none | rgba(255, 255, 255, 0.16) 0px 1px 0px 0px inset, rgba(255, 2 | 1",
     "w": 329,
     "h": 118,
     "pad": {
@@ -12769,7 +12779,7 @@
    },
    "hover-dark": {
     "file": "hero/g4-hover-dark.png",
-    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218)",
+    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218) | 10px | matrix(1, 0, 0, 1, 0, -2) | rgba(255, 255, 255, 0.16) 0px 1px 0px 0px inset, rgba(255, 2 | 1",
     "w": 329,
     "h": 117,
     "pad": {
@@ -12788,7 +12798,7 @@
    },
    "active-dark": {
     "file": "hero/g4-active-dark.png",
-    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218)",
+    "value": "rgb(20, 22, 25) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(0, 0, 0, 0.45) | 1px | rgb(237, 231, 218) | 10px | matrix(1, 0, 0, 1, 0, 0) | rgba(255, 255, 255, 0.16) 0px 1px 0px 0px inset, rgba(255, 2 | 1",
     "w": 329,
     "h": 118,
     "pad": {
@@ -12807,7 +12817,7 @@
    },
    "rest-light": {
     "file": "hero/g4-rest-light.png",
-    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25) | 10px | none | rgba(255, 255, 255, 0.7) 0px 1px 0px 0px inset, rgba(255, 25 | 1",
     "w": 329,
     "h": 118,
     "pad": {
@@ -12826,7 +12836,7 @@
    },
    "hover-light": {
     "file": "hero/g4-hover-light.png",
-    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25) | 10px | matrix(1, 0, 0, 1, 0, -2) | rgba(255, 255, 255, 0.7) 0px 1px 0px 0px inset, rgba(255, 25 | 1",
     "w": 329,
     "h": 117,
     "pad": {
@@ -12845,7 +12855,7 @@
    },
    "active-light": {
     "file": "hero/g4-active-light.png",
-    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25)",
+    "value": "rgb(245, 243, 237) | url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w | rgba(33, 31, 25, 0.16) | 1px | rgb(33, 31, 25) | 10px | matrix(1, 0, 0, 1, 0, 0) | rgba(255, 255, 255, 0.7) 0px 1px 0px 0px inset, rgba(255, 25 | 1",
     "w": 329,
     "h": 118,
     "pad": {
@@ -12863,236 +12873,9 @@
     "short": 0
    }
   },
-  "sources": [
-   "components/base.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/hero.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/hero-band.html"
+  "covers": [
+   "article.hero-trust"
   ],
-  "sha": "2f42f2472cc3bcfc"
- },
- {
-  "component": "hero",
-  "id": "g5",
-  "el": "a.hh-name",
-  "scope": "",
-  "specimen": "hero-band",
-  "classes": [
-   "app-case",
-   "brand-tile",
-   "bt-by",
-   "bt-photo",
-   "bt-quote",
-   "bt-tick",
-   "bt-veil",
-   "device",
-   "feed",
-   "feed-hero",
-   "feed-inner",
-   "hero-duo",
-   "hero-feature",
-   "hero-hot",
-   "hero-main",
-   "hero-promo",
-   "hero-side",
-   "hero-trust",
-   "hf-area",
-   "hf-bar",
-   "hf-btn",
-   "hf-chart",
-   "hf-chart-cap",
-   "hf-chart-legend",
-   "hf-cta",
-   "hf-eyebrow",
-   "hf-foot",
-   "hf-graph",
-   "hf-graph-wrap",
-   "hf-grid",
-   "hf-info",
-   "hf-line",
-   "hf-no",
-   "hf-odds",
-   "hf-odds-row",
-   "hf-photo",
-   "hf-tag",
-   "hf-title",
-   "hf-veil",
-   "hf-vol-area",
-   "hf-vol-line",
-   "hf-why",
-   "hf-yes",
-   "hh-all",
-   "hh-head",
-   "hh-list",
-   "hh-name",
-   "hh-prob",
-   "hh-rank",
-   "hh-vol",
-   "ht-art",
-   "ht-badge",
-   "ht-body",
-   "no",
-   "vol",
-   "yes"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "hero/g5-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
-    "w": 227,
-    "h": 32,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "hero/g5-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83)",
-    "w": 227,
-    "h": 32,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "hero/g5-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143)",
-    "w": 227,
-    "h": 32,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "file": "hero/g5-focus-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
-    "w": 227,
-    "h": 32,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "hero/g5-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
-    "w": 227,
-    "h": 32,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "hero/g5-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24)",
-    "w": 227,
-    "h": 32,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "hero/g5-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66)",
-    "w": 227,
-    "h": 32,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "file": "hero/g5-focus-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
-    "w": 227,
-    "h": 32,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
   "sources": [
    "components/base.css",
    "components/feed.css",
@@ -13172,7 +12955,7 @@
   "shots": {
    "rest-dark": {
     "file": "hero/g6-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(230, 200, 119) | 0px | rgb(230, 200, 119)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(230, 200, 119) | 0px | rgb(230, 200, 119) | 0px | none | none | 1",
     "w": 134,
     "h": 38,
     "pad": {
@@ -13191,7 +12974,7 @@
    },
    "hover-dark": {
     "file": "hero/g6-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 134,
     "h": 38,
     "pad": {
@@ -13210,7 +12993,7 @@
    },
    "active-dark": {
     "file": "hero/g6-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 0px | none | none | 1",
     "w": 134,
     "h": 38,
     "pad": {
@@ -13229,7 +13012,7 @@
    },
    "focus-dark": {
     "file": "hero/g6-focus-dark.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(230, 200, 119) | 0px | rgb(230, 200, 119)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(230, 200, 119) | 0px | rgb(230, 200, 119) | 0px | none | none | 1",
     "w": 134,
     "h": 38,
     "pad": {
@@ -13248,7 +13031,7 @@
    },
    "rest-light": {
     "file": "hero/g6-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 0px | none | none | 1",
     "w": 134,
     "h": 38,
     "pad": {
@@ -13267,7 +13050,7 @@
    },
    "hover-light": {
     "file": "hero/g6-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 134,
     "h": 38,
     "pad": {
@@ -13286,7 +13069,7 @@
    },
    "active-light": {
     "file": "hero/g6-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 0px | none | none | 1",
     "w": 134,
     "h": 38,
     "pad": {
@@ -13305,7 +13088,7 @@
    },
    "focus-light": {
     "file": "hero/g6-focus-light.png",
-    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24)",
+    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 0px | none | none | 1",
     "w": 134,
     "h": 38,
     "pad": {
@@ -13323,6 +13106,9 @@
     "short": 0
    }
   },
+  "covers": [
+   "a.hh-all"
+  ],
   "sources": [
    "components/base.css",
    "components/feed.css",

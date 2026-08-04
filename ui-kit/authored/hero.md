@@ -45,9 +45,8 @@ Predicted: R5 in `ui-kit/docs/architecture.md` is the same boundary measured fro
 
 ## States
 
-- `a.hf-title @hero-band` - The featured question, at rest, hovered, held and focused. The type does not move and the photograph behind it does not brighten: the whole block is already the loudest thing on the screen, so the pointer is answered by ink and nothing else.
+- `a.hf-title @hero-band` - The featured question, at rest, hovered, held and focused. The type does not move and the photograph behind it does not brighten: the whole block is already the loudest thing on the screen, so the pointer is answered by ink and nothing else. **The answer is the same on `a.hh-name`**, a row of the hot list, and the file already said so twice in its own margin: brass on hover, muted ink held down, at 13px instead of the display step. Size is the one thing a face is deliberately not made of, because splitting on it would put one answer on the page twice. The row moves nothing but its own ink either, so a list of eight does not ripple.
 - `button.hf-btn.yes @hero-band` - **Back YES**, all four faces. This and its pair are the only outcome-coloured controls in the component, and the colour is the outcome's, never the brand's.
 - `button.hf-btn.no @hero-band` - **Back NO**, the same four, in the other outcome colour and at the same weight. Neither side is the recommended one.
 - `article.hero-trust @hero-band` - A trust card under the pointer. It answers because the whole card is a link, and it answers quietly, because a claim about trust that lights up under a finger is asking to be clicked rather than believed.
-- `a.hh-name @hero-band` - A row of the hot list: rank, question, odds, volume. The row moves nothing but its own ink, so a list of eight does not ripple.
 - `a.hh-all @hero-band` - *See all hot events*, the list's exit, in the graphite chip family every other way-out in this product uses.
