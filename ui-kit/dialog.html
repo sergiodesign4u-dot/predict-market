@@ -197,15 +197,32 @@ dialog.app-dialog:not(.outcome-dialog) .sheet-sub{position:relative;z-index:var(
    They disagreed on where the corner is: 13 here, 12 there, and nobody chose
    either. 12 wins because it is --space-12 and 13 was a raw number with no token
    behind it, which is the only argument available when neither value was decided.
-   WHY THIS IS NOT A MERGE, and it is worth writing down because a merge is what
-   was promised. One selector across both would put `.hiw-close` in this file, and
-   the class belongs to hiw-dialog.css by its own header; a component declaring
-   another component's class is a coupling this repo has paid to avoid. The
-   contract's own answer is in CLAUDE.md: a shared thing starts at THREE screens,
-   two is a candidate and stays markup. There is a third close in the product and
-   it deliberately does not share this ground, because it stands on a quiet card
-   rather than on a lit header. So the duplication is named, the values are made
-   to agree, and it becomes a pattern on the day a third control wants this face.
+   THIS IS NOT A MERGE AND IT SHOULD BE. Corrected 2026-08-05, on the day after the
+   sentence below it was written, because the argument that stood here was wrong
+   twice over and a wrong reason recorded in a file is worse than no reason.
+   IT QUOTED THE WRONG RULE. CLAUDE.md's "three screens or more, two is a
+   candidate" governs a COMPOSITION - a pattern in components/patterns/, which is
+   an arrangement of parts. A close button is a COMPONENT, and the rule for one
+   has no screen threshold in it at all: css in components/, an @import in its own
+   level group, a page in ui-kit/ and a row in the inventory.
+   AND ITS NUMBERS WERE WRONG EVEN FOR THE RULE IT QUOTED. `.sheet-close` stands
+   on 105 painted screens and 104 grey ones; `.hiw-close` on 105 and 87. Neither
+   is near two.
+   THE REPO HAS ALREADY DONE THIS MOVE THREE TIMES IN THIS STAGE, and the backlog
+   names the class of defect in one line: one shape declared more than once and
+   kept in step by hand. S11 is the closest - `.cta-bar button` was painted by
+   account.css, and eight rules MOVED to button.css because the control is a
+   button, while the one line that was arrangement went to patterns/action-bar.css.
+   A class moving out of the file that happened to draw it is the precedent, not
+   the exception.
+   SO WHY IS IT STILL TWO RULES. Because homing it here would be homing it twice.
+   All three closes are ACTIONS by the census in ui-kit/_worn.py, the button
+   reclassification is the step that gives every action its name and its level,
+   and moving this control into a file now and into the vocabulary a step later
+   moves the same thing twice - which is the same argument that deferred the
+   padding ramp. It is scheduled, not refused: ui-kit/docs/defects.md row 58.
+   What was done here and now is the half that cannot wait, which is the drift:
+   every value the two share is identical and the corner is one token.
    The mark cannot be merged at all yet, and that is ui-kit/docs/defects.md row 45:
    123 of these 228 buttons ship the LETTER x and 105 ship an svg, so this one
    draws its cross with two pseudo bars and the other one uses its icon. One of
