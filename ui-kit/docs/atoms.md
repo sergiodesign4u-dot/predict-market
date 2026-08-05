@@ -112,13 +112,35 @@ quietly redraws an atom - and that is what gate 40's shape can be turned into.
 
 ## The distance, and how it is closed
 
-**25 kinds today, 12 atoms at the end**, and the number in between is what the work has
-left. Each step is one atom:
+**The distance is 17, and the build prints it.** It is file-slots minus atoms: each
+atom should be drawn in exactly one file, the six control atoms are drawn in twenty-three
+today, and seventeen of those slots are somewhere an atom does not belong.
 
-1. **Declare the map in code.** `ui-kit/_worn.py` already names every kind; each kind
-   gains the atom it belongs to. A gate then fails in both directions: a kind that names
-   no atom, and an atom that no kind names. The distance becomes a number the build
-   prints, the way `_levels.py` prints the atom shelf.
+    41 the atom map    6 control atom(s) in 23 file-slot(s): distance 17, and it goes to 0
+                       chip        1628 use(s), 4 kind(s), 5 file(s): catnav chip header quick tabs
+                       navitem     1310 use(s), 3 kind(s), 3 file(s): bottomnav footer header
+                       iconbutton  1013 use(s), 6 kind(s), 6 file(s): card comments dialog
+                                                                      event-detail header toast
+                       button       734 use(s), 5 kind(s), 5 file(s): button comments
+                                                                      cookie-consent loadmore profile
+                       outcome      272 use(s), 3 kind(s), 3 file(s): betpanel hero yesno
+                       switch         3 use(s), 1 kind(s), 1 file(s): toggle
+
+**A file counts when it DRAWS the control, not when it places the container**, and the
+first cut of the metric got that wrong: asking which files mention the class put
+`base.css` and `patterns/browse-shell.css` on the chip's list, because both style
+`.cat-nav`, the plate the rail stands on. That is a region doing exactly what a region is
+allowed to do. The test is on the selector's last simple-selector, and the number went 19
+to 17 the moment it was fixed. That is the argument for computing the distance rather than
+counting it by eye.
+
+Each step is one atom:
+
+1. **Declare the map in code.** Done 2026-08-05: `_worn.ATOM` names the atom of every
+   kind, and **gate 41** holds it in three directions, each tested against a wrong state
+   before being trusted - a kind that names no atom, an atom no kind names, and a row
+   naming a kind the census no longer has. Nothing fails on the distance itself: a target
+   you can fail is a target that gets widened, so it is a NOTE, and it goes down.
 2. **One atom per pass**, largest first, because the largest are the ones a person sees:
    `chip` 1628, `navitem` 1310, `iconbutton` 1013, `button` 734, `outcome` 272.
 3. **Each pass is proved the same way**: `snap.cjs` before and after, both trees, five

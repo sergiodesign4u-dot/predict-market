@@ -2170,6 +2170,48 @@ notes.append("%-34s %d of %d worn class(es) have no rule: %d hook, %d excluded, 
               len([v for v in _ad_bare.values() if v.startswith("excluded:")]),
               len(_bare_debt)))
 
+# 41 ------------------------------------------------- and the distance to the map --
+# THE ONLY GATE HERE THAT MEASURES A TARGET RATHER THAN A RULE. The other forty
+# ask whether something is wrong. This one asks how far the system is from the
+# shape it is supposed to have, and prints the number.
+#
+# It exists because four passes in a row each fixed a real defect and none of
+# them moved the system toward a stated shape: there was no stated shape.
+# `ui-kit/docs/atoms.md` is the shape, decided from the census of 5281 controls
+# rather than from the 40 css files that happened to be cut out of already
+# painted screens, and `_worn.ATOM` is that decision written where the build can
+# read it.
+#
+# BOTH DIRECTIONS, as in 24, 30, 38, 39 and 40: a kind that names no atom fails,
+# an atom that no kind names fails, and a row naming a kind the census does not
+# have fails too, so the map cannot rot while the product moves under it.
+#
+# THE DISTANCE IS FILE-SLOTS MINUS ATOMS and it goes to zero. Each atom should be
+# drawn in exactly one file. Six control atoms are drawn in twenty-three slots
+# today, so seventeen of them are somewhere an atom does not belong, and that is
+# the whole of the migration in one number. Nothing fails on it: a target you can
+# fail is a target that gets widened. It is a NOTE, and it goes down.
+from _worn import (atom_gap as _atom_gap, ATOMS as _ATOMS,          # noqa: E402
+                   NOT_AN_ATOM as _NOT_ATOM)
+_at_homeless, _at_idle, _at_stale, _at_table, _at_distance = _atom_gap()
+check("41 every control names its atom", not _at_homeless,
+      "%d: %s" % (len(_at_homeless), ", ".join(_at_homeless[:4])))
+check("41 no atom is idle", not _at_idle,
+      "%d: %s" % (len(_at_idle), ", ".join(_at_idle)))
+check("41 no row names a kind the census lost", not _at_stale,
+      "%d: %s" % (len(_at_stale), ", ".join(_at_stale[:4])))
+_at_noreason = sorted(k for k, v in list(_ATOMS.items()) + list(_NOT_ATOM.items())
+                      if len(v.split()) < 8)
+check("41 every atom says what it is", not _at_noreason,
+      "%d: %s" % (len(_at_noreason), ", ".join(_at_noreason)))
+notes.append("%-34s %d control atom(s) in %d file-slot(s): distance %d, and it goes to 0" %
+             ("41 the atom map", len(_at_table),
+              sum(len(e["files"]) for e in _at_table.values()), _at_distance))
+for _a, _e in sorted(_at_table.items(), key=lambda kv: -kv[1]["uses"]):
+    notes.append("%-34s %-11s %5d use(s), %d kind(s), drawn in %d file(s): %s" %
+                 ("", _a, _e["uses"], len(_e["kinds"]), len(_e["files"]),
+                  ", ".join(sorted(_e["files"]))))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

@@ -45,6 +45,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 KIT = ROOT / "ui-kit"
 UV = ROOT / "ui-visual"
 CSS = ROOT / "components" / "button.css"
+COMP = ROOT / "components"
 
 # The parts of the component rather than scopes of it, and `.app-case`, which is
 # the product's own wrapper and stands above every button in both trees.
@@ -443,6 +444,145 @@ def census():
                     row["files"].add(f.name)
     idle = [k[0] for k in KINDS + [(a[0],) for a in ANCHOR_KINDS] if k[0] not in seen]
     return seen, sorted("%s on %d screen(s)" % (k, len(v)) for k, v in unnamed.items()), sorted(idle)
+
+
+# ---- the atom each kind belongs to, and the distance to it ------------------
+# THE TARGET, IN CODE. `ui-kit/docs/atoms.md` decides what the atoms ARE, from
+# this census rather than from the files, and this is the same decision written
+# where the build can read it. Without it every pass fixes a real defect and
+# none of them moves the system toward a stated shape, which is what four passes
+# in a row did before 2026-08-05.
+#
+# The kind list is the product as it is. This is the product as it should be
+# partitioned, and gate 41 measures the gap between the two, in both directions:
+# a kind naming no atom fails, and an atom no kind names fails just as loudly.
+ATOMS = {
+    "button": "a press with a LABEL, that does a thing. Emphasis, size and block are "
+              "modifiers of it; nothing else in it is",
+    "iconbutton": "a press whose whole content is a MARK. Not a modifier of `button`: it "
+                  "has no label to size, and its own box is the whole target",
+    "chip": "a label a person PICKS BETWEEN, carrying a value. The chosen one is a brass "
+            "tint, which DESIGN.md decides twice",
+    "outcome": "the YES / NO pair, where the COLOUR states a result. It never folds into "
+               "`chip`, because green and red are outcome semantics and an accent may not "
+               "borrow the win or lose colour",
+    "switch": "one setting, on or off, answered on the spot. It says yes or no to one "
+              "thing rather than choosing among several, which is what keeps it out of "
+              "`chip`",
+    "navitem": "a thing a person taps that GOES somewhere. A slot with a mark over a "
+               "label, a row with a label and a bare mark are one control at three sizes",
+}
+NOT_AN_ATOM = {
+    "the logo, home": "one brand mark. There is exactly one, it never varies, and giving "
+                      "it a modifier vocabulary would be inventing a system for a single "
+                      "element",
+    "the sheet grab": "a handle and not a press: it answers a drag, and the four of them "
+                      "are the drawer's own furniture",
+    "the vitrine's own chrome": "not the product. course-chrome.css draws the panel this "
+                                "repo wraps around every page",
+}
+ATOM = {
+    "the button family": "button",
+    "post a comment": "button",
+    "load more": "button",
+    "cookie consent": "button",
+    "edit, on the profile": "button",
+    "icon only, in the header": "iconbutton",
+    "close, a sheet": "iconbutton",
+    "bookmark, on a card": "iconbutton",
+    "a comment's own action": "iconbutton",
+    "an event's action row": "iconbutton",
+    "close, a toast": "iconbutton",
+    "chip, a category": "chip",
+    "chip, a quick amount": "chip",
+    "chip, quiet, in a rail": "chip",
+    # THE ONE ROW THIS MAP IS NOT SURE OF, and it is written down rather than
+    # assumed. A tab and a chip are both selectors and the product draws them
+    # alike; what differs is that a chip carries a VALUE and a tab swaps a
+    # PANEL, and the accessible role differs with it. Placed here on the
+    # strength of the drawing. atoms.md carries the counter-argument.
+    "tab": "chip",
+    "YES / NO, the outcome pair": "outcome",
+    "the outcome side of a bet": "outcome",
+    "hero, the featured pair": "outcome",
+    "toggle": "switch",
+    # THE SECOND OPEN ONE. A social mark is an <a> with an icon and no label, so
+    # it DRAWS like an icon button and BEHAVES like navigation. Rule 1 of the map
+    # is the role, and rule 1 has not been wrong here yet.
+    "social": "navitem",
+    "bottom nav slot": "navitem",
+    "a row of the account dropdown": "navitem",
+}
+
+
+def atom_gap():
+    """(kinds with no atom, atoms no kind names, the table, the distance).
+
+    THE DISTANCE IS FILE-SLOTS MINUS ATOMS, and it goes to zero. Each atom
+    should be drawn in exactly one file; today `chip` is drawn in four files and
+    `iconbutton` in six.
+
+    A FILE COUNTS WHEN IT DRAWS THE CONTROL, NOT WHEN IT PLACES THE CONTAINER,
+    and the first cut of this got that wrong. Asking `_adoption.styled()` which
+    files mention the class put `base.css` and `patterns/browse-shell.css` on
+    the chip's list, because both style `.cat-nav` - the PLATE the rail stands
+    on, its padding and its ground. That is a region doing exactly what a region
+    is allowed to do. So the test is on the selector's last simple-selector: the
+    file draws the control when a rule ENDS at the control itself, and merely
+    holds it when the rule ends at something above it. The distance went 19 to
+    the honest number the moment that was fixed, which is the whole reason the
+    metric is computed rather than counted by eye.
+    """
+    rows = kind_rows()
+    named = {r["kind"] for r in rows}
+    homeless = sorted(k for k in named if k not in ATOM and k not in NOT_AN_ATOM)
+    idle_atom = sorted(a for a in ATOMS if a not in set(ATOM.values()))
+    stale = sorted(k for k in list(ATOM) + list(NOT_AN_ATOM) if k not in named)
+    rules = []
+    for path in sorted(COMP.glob("*.css")) + sorted((COMP / "patterns").glob("*.css")):
+        if path.name in ("index.css", "tokens.css", "fonts.css"):
+            continue
+        body = re.sub(r"/\*.*?\*/", " ", path.read_text(encoding="utf-8"), flags=re.S)
+        for m in re.finditer(r"([^{}]+)\{", body):
+            for sel in m.group(1).split(","):
+                sel = " ".join(sel.split())
+                if sel and not sel.startswith("@"):
+                    rules.append((path.stem, sel))
+
+    def draws(sel, own, anc):
+        """Does this selector END at the control, rather than above it?"""
+        last = re.split(r"[ >+~]", sel)[-1]
+        last = re.sub(r"(:{1,2}[\w-]+(\([^)]*\))?|\[[^\]]*\])+$", "", last)
+        if any(re.search(r"\.%s(?![\w-])" % re.escape(c), last) for c in own):
+            return True
+        return last in ("button", "a") and any(
+            re.search(r"\.%s(?![\w-])" % re.escape(c), sel) for c in anc)
+
+    table = {}
+    for kind, own, anc, _owner, _role, _why in KINDS:
+        a = ATOM.get(kind)
+        if not a:
+            continue
+        e = table.setdefault(a, {"uses": 0, "kinds": [], "files": set()})
+        e["kinds"].append(kind)
+        for stem, sel in rules:
+            if draws(sel, own, anc):
+                e["files"].add(stem)
+    for kind, cls, _owner, _role, _why in ANCHOR_KINDS:
+        a = ATOM.get(kind)
+        if not a:
+            continue
+        e = table.setdefault(a, {"uses": 0, "kinds": [], "files": set()})
+        e["kinds"].append(kind)
+        for stem, sel in rules:
+            if draws(sel, set(), {cls}):
+                e["files"].add(stem)
+    for r in rows:
+        a = ATOM.get(r["kind"])
+        if a:
+            table[a]["uses"] += r["uses"]
+    slots = sum(len(e["files"]) for e in table.values())
+    return homeless, idle_atom, stale, table, slots - len(table)
 
 
 def kind_rows():
