@@ -76,7 +76,7 @@ push();});})();</script>
     to that component's page, because the answer to "how does this look" is there and not here: this
     file decides placement and nothing else.</p>
     <table class="tk-tbl ck-anat"><thead><tr><th>part</th><th>whose it is</th><th>what it does here</th></tr></thead><tbody><tr><td class='tk-role'>.ed-layout</td><td class='tk-hex'><span class="ck-kind ck-kit">this pattern</span></td><td>The shell. Column at 360, row at 760 and up.</td></tr><tr><td class='tk-role'>.ed-main</td><td class='tk-hex'><span class="ck-kind ck-kit">this pattern</span></td><td>The content column, and the only one of the two this pattern sizes.</td></tr><tr><td class='tk-role'>.bet-panel</td><td class='tk-hex'><a href="betpanel.html">betpanel</a></td><td>The side panel. Sticky at 120px from the top, and that belongs to the panel, not here.</td></tr></tbody></table>
-    <p class="tk-note"><b>Everything inside, read from the markup:</b> card (.card), event-detail (.ed-head), oddsbar (.ed-oddsbar), chart (.ed-chart-head), tabs (.ed-range), market (.market-box), comments (.cmt-controls), bets-table (.hold-cols), position (.pos-side), betpanel (.bet-panel), input (.field-label), button (.confirm-btn), dialog (.fine). The class in
+    <p class="tk-note"><b>Everything inside, read from the markup:</b> card (.card), event-detail (.ed-head), oddsbar (.ed-oddsbar), chart (.ed-chart-head), tabs (.ed-range), market (.market-box), comments (.cmt-controls), bets-table (.hold-cols), position (.pos-side), betpanel (.bet-panel), input (.field-label), button (.btn), dialog (.fine). The class in
     brackets is what put each component in the list, through the same ownership map that computes
     the level and orders the cascade. A name here that surprises you is worth following: a class
     declared in the wrong file makes a pattern read as holding a component it has never seen.</p>
@@ -150,7 +150,7 @@ push();});})();</script>
   &lt;/div&gt;
   &lt;aside class="bet-panel"&gt;
     &lt;div class="bp-inner"&gt;
-      &lt;!-- .bp-head, .bp-dir, 2 x &lt;div&gt;, .confirm-btn, .fine --&gt;
+      &lt;!-- .bp-head, .bp-dir, 2 x &lt;div&gt;, .btn, .fine --&gt;
     &lt;/div&gt;
   &lt;/aside&gt;
 &lt;/div&gt;</pre></details>

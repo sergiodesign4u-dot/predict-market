@@ -76,7 +76,7 @@ push();});})();</script>
     to that component's page, because the answer to "how does this look" is there and not here: this
     file decides placement and nothing else.</p>
     <table class="tk-tbl ck-anat"><thead><tr><th>part</th><th>whose it is</th><th>what it does here</th></tr></thead><tbody><tr><td class='tk-role'>.cat-layout</td><td class='tk-hex'><span class="ck-kind ck-kit">this pattern</span></td><td>The shell. Column at 360, row at 900 and up, and the gap changes with the direction because the distance between two columns is not the distance between two stacked blocks.</td></tr><tr><td class='tk-role'>.subcat</td><td class='tk-hex'><a href="catnav.html">catnav</a></td><td>The rail. Its own component: this pattern decides that it stands here, not what it looks like.</td></tr><tr><td class='tk-role'>.cat-main</td><td class='tk-hex'><span class="ck-kind ck-kit">this pattern</span></td><td>The content column. <code>flex:1;min-width:0</code>, and the min-width is what stops a long word inside a card from pushing the rail off screen.</td></tr></tbody></table>
-    <p class="tk-note"><b>Everything inside, read from the markup:</b> catnav (.subcat-head), filters (.filter-menu), state-block (.state-block), button (.state-btn). The class in
+    <p class="tk-note"><b>Everything inside, read from the markup:</b> catnav (.subcat-head), filters (.filter-menu), state-block (.state-block), button (.btn). The class in
     brackets is what put each component in the list, through the same ownership map that computes
     the level and orders the cascade. A name here that surprises you is worth following: a class
     declared in the wrong file makes a pattern read as holding a component it has never seen.</p>

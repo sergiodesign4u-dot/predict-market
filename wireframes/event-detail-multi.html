@@ -66,8 +66,14 @@
     .state-switch a:hover { background: #cccccc; }
     .state-switch a[aria-current="page"] { background: #bdbdbd; font-weight: bold; }
     .auth-btns { display: flex; gap: 6px; }
-    .auth-btn { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
-    .auth-btn.primary { background: #c4c4c4; font-weight: bold; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-sizing: border-box; border: 1px solid #888; cursor: pointer; }
+    .btn.btn-secondary { background: #d6d6d6; }
+    .btn.btn-primary { background: #c4c4c4; font-weight: bold; }
+    .btn.btn-sm { padding: 8px 12px; font-size: 12px; }
+    .btn.btn-md { padding: 12px; font-size: 14px; }
+    .btn.btn-lg { padding: 16px; font-size: 14px; }
+    .btn.btn-block { display: flex; width: 100%; }
+    .btn .ic { width: 18px; height: 18px; }
     .wf-states .wf-substate { padding: 7px 12px 2px 20px; color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: .05em; font-weight: bold; }
     .wf-states .wf-substate::before { display: none; }
 
@@ -77,8 +83,6 @@
     .state-title { font-size: 14px; font-weight: bold; margin: 0; }
     .state-msg { font-size: 12px; color: #444; margin: 0; max-width: 380px; line-height: 1.5; }
     .state-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 4px; }
-    .state-btn { border: 1px solid #888; background: #d6d6d6; padding: 8px 12px; font-size: 12px; cursor: pointer; }
-    .state-btn.primary { background: #c4c4c4; font-weight: bold; }
 
     /* loading skeletons */
     .card.skeleton .sk-thumb { width: 56px; height: 56px; flex: 0 0 56px; background: #d2d2d2; border: 1px solid #cccccc; }
@@ -324,11 +328,8 @@
     dialog.app-dialog .quick { display: flex; gap: 6px; flex-wrap: wrap; }
     dialog.app-dialog .quick button { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
     dialog.app-dialog .quick button.sel { background: #b8b8b8; font-weight: bold; }
-    dialog.app-dialog .provider-btn { display: flex; align-items: center; gap: 10px; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; cursor: pointer; width: 100%; text-align: left; }
-    dialog.app-dialog .provider-btn .ic { width: 18px; height: 18px; }
     dialog.app-dialog .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
     dialog.app-dialog .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
-    dialog.app-dialog .confirm-btn { border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; cursor: pointer; width: 100%; }
     .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
     /* notifications dropdown (header bell -> mini-list, no chevron) */
     .notif-menu { position: relative; }
@@ -391,9 +392,6 @@
     .line.total { font-weight: bold; border-top: 1px solid #999; }
     .inline-error { border: 1px solid #999; background: #e0e0e0; padding: 8px; font-size: 12px; }
     .reconcile-box { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
-    .confirm-btn { border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; cursor: pointer; width: 100%; }
-    .provider-btn { display: flex; align-items: center; gap: 10px; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; cursor: pointer; width: 100%; text-align: left; }
-    .provider-btn .ic { width: 18px; height: 18px; }
     .spinner-box { border: 1px dashed #999; background: #ededed; padding: 24px; text-align: center; font-size: 12px; color: #555; }
     .fine { font-size: 11px; color: #555; line-height: 1.5; }
     .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center;
@@ -1258,7 +1256,7 @@
                 <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
                 <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
               </div>
-              <button type="button" class="confirm-btn" data-open="signin">Confirm bet</button>
+              <button type="button" class="btn btn-primary btn-md btn-block" data-open="signin">Confirm bet</button>
               <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
             </div>
           </aside>
@@ -1280,7 +1278,7 @@
         <button type="button" class="bp-side sel">JD Vance YES <span class="bp-pct">41%</span></button>
         <button type="button" class="bp-side">NO <span class="bp-pct">59%</span></button>
         <span class="dock-meta">$5 to win<b>$12.20</b></span>
-        <button type="button" class="confirm-btn" data-open="signin" style="width:auto;padding:11px 14px;">Confirm bet</button>
+        <button type="button" class="btn btn-primary btn-md" data-open="signin">Confirm bet</button>
       </div>
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
@@ -1567,15 +1565,15 @@
       </button>
     </div>
     <div class="sheet-body">
-      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+      <button type="button" class="btn btn-secondary btn-md btn-block" data-flow="signin-to-deposit">
         <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
         Continue with Google
       </button>
-      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+      <button type="button" class="btn btn-secondary btn-md btn-block" data-flow="signin-to-deposit">
         <svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>
         Continue with X
       </button>
-      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+      <button type="button" class="btn btn-secondary btn-md btn-block" data-flow="signin-to-deposit">
         <svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"/></svg>
         Continue with Apple
       </button>
@@ -1599,8 +1597,8 @@
       <div class="widget-box">Transak payment widget (card to USDC)</div></div>
       <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
       <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
-      <button type="button" class="provider-btn" data-open="howitworks">How it works (what happens to my money)</button>
-      <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
+      <button type="button" class="btn btn-secondary btn-md btn-block" data-open="howitworks">How it works (what happens to my money)</button>
+      <button type="button" class="btn btn-primary btn-md btn-block" data-close-dialog>Add funds</button>
     </div>
   </dialog>
 

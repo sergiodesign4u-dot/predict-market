@@ -50,10 +50,10 @@ push();});})();</script>
     <div class="tk-badges">
       <span class="tk-badge">components/patterns/action-bar.css</span>
       <span class="tk-badge">3 screens</span>
-      <span class="tk-badge">1 components</span>
+      <span class="tk-badge">2 components</span>
       <span class="tk-badge">no specimen, by decision</span>
     </div>
-    <div class="tk-jump"><a href="patterns.html">All patterns</a><a href="account.html">account</a></div>
+    <div class="tk-jump"><a href="patterns.html">All patterns</a><a href="button.html">button</a><a href="account.html">account</a></div>
   </header>
 
   <section class="tk-sec" id="live">
@@ -76,7 +76,7 @@ push();});})();</script>
     to that component's page, because the answer to "how does this look" is there and not here: this
     file decides placement and nothing else.</p>
     <table class="tk-tbl ck-anat"><thead><tr><th>part</th><th>whose it is</th><th>what it does here</th></tr></thead><tbody><tr><td class='tk-role'>.cta-bar</td><td class='tk-hex'><span class="ck-kind ck-kit">this pattern</span></td><td>The bar. Sticky to the foot of the column, above the bottom nav on the stacking order.</td></tr><tr><td class='tk-role'>&amp;lt;button&amp;gt;</td><td class='tk-hex'><a href="account.html">account</a></td><td>The action, and the one part of this folder a class map cannot see: it is a bare <code>&lt;button&gt;</code> with no class at all, and it is NOT painted by <code>components/button.css</code>. Nine rules in <code>components/account.css</code> style it by descent (<code>.app-case .cta-bar button</code>), including the brass on the first child, its hover and its press. So the bar and its buttons are one component's paint, which is half of backlog item 16d: <code>account</code> is a CTA bar and a transaction list in one file.</td></tr></tbody></table>
-    <p class="tk-note"><b>Everything inside, read from the markup:</b> account (declared). The class in
+    <p class="tk-note"><b>Everything inside, read from the markup:</b> button (.btn), account (declared). The class in
     brackets is what put each component in the list, through the same ownership map that computes
     the level and orders the cascade. A name here that surprises you is worth following: a class
     declared in the wrong file makes a pattern read as holding a component it has never seen.</p>
@@ -128,8 +128,8 @@ push();});})();</script>
     <p class="tk-note">The scene above, to a depth of 2, with everything below it replaced by
     a comment naming what was elided. Copy the shape; the content is the screen's.</p>
     <details class="ck-src" open><summary>the shape, from wallet.html</summary><pre>&lt;div class="cta-bar static"&gt;
-  &lt;button type="button" data-open="deposit"&gt;Add funds&lt;/button&gt;&lt;/button&gt;
-  &lt;button type="button" data-open="withdraw"&gt;Withdraw&lt;/button&gt;&lt;/button&gt;
+  &lt;button class="btn btn-primary btn-md" type="button" data-open="deposit"&gt;Add funds&lt;/button&gt;&lt;/button&gt;
+  &lt;button class="btn btn-secondary btn-md" type="button" data-open="withdraw"&gt;Withdraw&lt;/button&gt;&lt;/button&gt;
 &lt;/div&gt;</pre></details>
   </section>
 

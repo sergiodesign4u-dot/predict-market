@@ -56,21 +56,9 @@
       "section": "extra",
       "label": "Every button the product wears",
       "component": "button",
-      "title": "Every button the product wears, one row per rendered form",
+      "title": "Every button the product wears, one row per form",
       "width": 900,
-      "note": "Twelve rows, one per rendered control, in one column 380 wide, which is about what a sheet is in the product so a control declaring width:100% is shown at a width it actually gets. NO CONTROL HAS A PLATE UNDER IT. Six stand on the bare canvas because the scope they ship in changes nothing about them; the other six keep their scope in the DOM, because the scope is what those rows are about, and every element of it gives up its own surface. Measured before and after over seventeen properties: not one face value moved on any of the fourteen controls, and the only difference is width, which grew by exactly the padding the host is no longer drawing."
-    },
-    {
-      "id": "button-matrix-dock",
-      "canvas": false,
-      "from": "specimens.extra.html",
-      "section": "extra",
-      "label": "Every button the phone wears, and only the phone",
-      "component": "button",
-      "title": "The two forms that exist only below 760px",
-      "width": 360,
-      "state": "The bet sheet is staged open. In the product it is a dialog with no open attribute, which is why no measurement of the painted tree ever reached the one padding-16 control in the family.",
-      "note": "The two forms that exist only below 760px: components/betpanel.css hides .bet-dock at min-width:760 and .bet-panel under it, so one document cannot hold both halves of that pair. Both keep their scope in the DOM and neither keeps its plate: the dock is the one control in the family at content width, and the sheet is the only padding of 16. The dock's odds readout is gone with the plate; it was context and not cause, and the proof is that the button measured 106px wide with it and 106px without, because width:auto is its own declaration in components/button.css."
+      "note": "Ten rows, one per form, and a form is a set of classes rather than a place. Two emphases times three sizes times block or not is twelve on paper; the product wears nine, and the three it does not are named with a verdict in the authored source rather than left as blank cells. The tenth row is the sign-in sheet, the only scope left in components/button.css, because it is the one row in the product that answers a pointer with a transform. No control has a plate under it: the one host that is here for the cascade gives up its surface. The column is 380, about what a sheet is in this product, so a control declaring width:100% is shown at a width it actually gets."
     },
     {
       "id": "button-census",

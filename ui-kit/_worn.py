@@ -48,12 +48,27 @@ CSS = ROOT / "components" / "button.css"
 
 # The parts of the component rather than scopes of it, and `.app-case`, which is
 # the product's own wrapper and stands above every button in both trees.
-NOT_A_SCOPE = {"app-case", "ic", "prov-x", "prov-apple", "prov-google", "primary"}
+#
+# `.app-dialog` JOINED THEM ON 2026-08-05, and it is a declared exception with a
+# check anyone can run: `grep app-dialog components/button.css` returns one
+# selector and it is `dialog.app-dialog.signin-dialog .btn`, a compound in which
+# the deciding class is the second one. The scope reader takes every class it
+# finds in a selector, so it was reporting `app-dialog` as a scope of its own and
+# splitting four forms into eight - the same control counted twice because a
+# class that decides nothing stood above it. A scope is a class the stylesheet
+# reads ALONE, and this one never is. If a rule is ever written for
+# `dialog.app-dialog .btn`, this entry has to come out, and the grep is how you
+# would know.
+NOT_A_SCOPE = {"app-case", "app-dialog", "ic", "prov-x", "prov-apple", "prov-google", "primary"}
 
-# The specimens that are the answer. Two and not one because components/
-# betpanel.css hides `.bet-dock` at min-width:760 and `.bet-panel` below it, so
-# one document cannot hold both halves of that pair.
-STANDS = ["button-matrix", "button-matrix-dock"]
+# The specimen that is the answer, and it is ONE since 2026-08-05. It was two,
+# because `components/betpanel.css` hides `.bet-dock` above 760 and `.bet-panel`
+# below it, and the two forms that only the phone wore could not stand in the
+# same document as the rest. A form is a set of classes now and not a place, so
+# the dock's content-width brass button is `btn btn-primary btn-md` and stands
+# anywhere. The vocabulary untied the forms from their scopes, and one specimen
+# holds all ten.
+STANDS = ["button-matrix"]
 
 # ---- a scope that changes nothing is not a second form ----------------------
 # THE FIRST CUT OF THIS CHECK STAGED SIXTEEN CONTROLS AND THE PRODUCT HAS EIGHT.
@@ -79,28 +94,19 @@ STANDS = ["button-matrix", "button-matrix-dock"]
 # size, weight, justification, text alignment, gap, min-height. The four
 # combinations NOT here are the four where that comparison came back different,
 # and each of them is staged in its own scope.
-SAME = {
-    ("provider-btn", "app-dialog"): (
-        ("provider-btn", "bare"),
-        "the sheet gives it a width and nothing else; every one of the thirteen matches"),
-    ("confirm-btn", "app-dialog"): (
-        ("confirm-btn", "bare"),
-        "the same: a width from the container, no declaration of its own"),
-    ("confirm-btn", "app-dialog outcome-dialog"): (
-        ("confirm-btn", "bare"),
-        "nothing differs at all, not even the width, because both are the sheet's"),
-    ("confirm-btn", "bet-panel"): (
-        ("confirm-btn", "bare"),
-        "the panel gives it a width; `:is(.bet-panel,.bet-sheet,.bet-dock) .confirm-btn` "
-        "re-states the brass and the zero edge the bare rule already sets"),
-    ("state-btn", "bet-panel resolved-panel"): (
-        ("state-btn", "bare"),
-        "`.resolved-panel .state-btn{width:100%}` is a width and the width is the "
-        "container's question; the control is the bare one"),
-    ("state-btn.primary", "bet-panel resolved-panel"): (
-        ("state-btn.primary", "bare"),
-        "the same width override on the brass one"),
-}
+# EMPTY SINCE 2026-08-05, AND THAT IS THE MIGRATION'S RECEIPT. Every entry here
+# named a place-name whose scope changed nothing about it: `.provider-btn` under
+# `dialog.app-dialog` rendering as the bare one, `.confirm-btn` under three
+# different scopes rendering as one control, `.state-btn` in a resolved panel
+# differing only by a width. Six rows, each carrying the sentence "the scope gives
+# it a width and nothing else".
+# A vocabulary has nowhere for that to hide. Width is `.btn-block`, padding is
+# `.btn-lg`, and a form is now the classes the element carries, so two controls
+# that render the same ARE the same name. The map stays as a mechanism because
+# the next component to be migrated will need it before it needs to be empty, and
+# the control on it is unchanged: an entry whose source nothing wears, or whose
+# target nothing stages, fails as loudly as a missing form.
+SAME = {}
 
 
 
@@ -131,20 +137,26 @@ def _css():
 
 
 def family():
-    """The four names, from the component header the build already checks.
+    """The vocabulary, from the component header the build already checks.
 
     Read from the RAW file and not from `_css()`, which strips comments: the
     header IS a comment, so the first cut of this function looked for the one
     declaration list in the file inside the text with that list removed and
     found nothing. It failed to an EMPTY family, which matched every bare
     button and no named one, and the check went green on one row.
+
+    IT USED TO ASK FOR NAMES ENDING IN `-btn` and that is the shape of the
+    question the migration of 2026-08-05 answered. Five place-names
+    (`.auth-btn`, `.state-btn`, `.provider-btn`, `.confirm-btn` and the bare
+    button of an action bar) became one marker plus modifiers, so the test is
+    now the prefix and not the suffix: `.btn` and every `.btn-*` it takes.
     """
     raw = CSS.read_text(encoding="utf-8")
     head = re.search(r"Classes:\s*(.+?)\.\s*$", raw[:1200], re.M)
     names = {c.strip().lstrip(".") for c in head.group(1).split(",")} if head else set()
-    fam = {n for n in names if n.endswith("-btn")}
-    if not fam:
-        raise SystemExit("_worn: components/button.css declares no *-btn class in its header")
+    fam = {n for n in names if n == "btn" or n.startswith("btn-")}
+    if "btn" not in fam:
+        raise SystemExit("_worn: components/button.css declares no .btn in its header")
     return fam
 
 
@@ -171,16 +183,17 @@ class Forms(HTMLParser):
             self.stack.append((tag, cls))
         if tag != "button":
             return
+        # THE MARKER DECIDES MEMBERSHIP AND THE MODIFIERS ARE THE NAME. Before the
+        # migration this had to special-case a bare <button> inside `.cta-bar`,
+        # because that control was this component's and carried no class of its
+        # own; it carries one now, so the exception is gone with the names.
+        if "btn" not in cls:
+            return
         mine = cls & self.fam
         above = set()
         for _t, c in self.stack[:-1]:
             above |= c & self.scope
-        # a bare <button> is only this component's where the bar says so
-        if not mine and "cta-bar" not in above:
-            return
-        name = ".".join(sorted(mine)) or "button"
-        if "primary" in cls:
-            name += ".primary"
+        name = ".".join(sorted(mine))
         self.found.append((name, " ".join(sorted(above)) or "bare", []))
 
     def handle_endtag(self, tag):
@@ -300,10 +313,8 @@ ROLE_WHY = {
     "stand": "furniture of this vitrine, not product.",
 }
 KINDS = [
-    ("the button family", {"auth-btn", "state-btn", "provider-btn", "confirm-btn"}, set(),
+    ("the button family", {"btn"}, set(),
      "button", "action", "this page, staged in full above"),
-    ("action bar, no class of its own", set(), {"cta-bar"},
-     "button", "action", "this page, in the matrix above; the bar itself is patterns/action-bar.css"),
     ("icon only, in the header", {"icon-btn", "bal-add", "bal-swap", "hiw-btn"}, set(),
      "header", "action", "the header owns its own row of marks, and their size is the header's rhythm"),
     ("the logo, home", {"logo-btn"}, set(),
@@ -464,7 +475,7 @@ def kind_rows():
 # they are already the subject of the page: `the button family` and `action bar`
 # are the matrix at the top. Naming them here is what keeps the gate from
 # demanding a second copy of the thing the page is about.
-IN_MATRIX = {"the button family", "action bar, no class of its own"}
+IN_MATRIX = {"the button family"}
 CENSUS_SPECIMENS = ("button-census",)
 
 

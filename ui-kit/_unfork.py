@@ -45,19 +45,27 @@ SKIP = {"index.css", "tokens.css"}
 
 RULE = re.compile(r"^([^{}@/][^{}]*)\{([^{}]*)\}\s*$")
 
-# Five selectors that look dominated and are not, because they match elements
-# that live OUTSIDE the device case. Measured, not guessed: every candidate was
-# run through document.querySelectorAll on all 77 painted screens and all 45
-# stands, asking whether any match has no .app-case ancestor.
+# Selectors that look dominated and are not, because they match elements that
+# live OUTSIDE the device case. Measured, not guessed: every candidate was run
+# through document.querySelectorAll on all 77 painted screens and all 45 stands,
+# asking whether any match has no .app-case ancestor.
 #
 #   .filter-menu summary   the footer language menu sits under the device
-#   .confirm-btn           the shared <dialog>s are appended at the end of the
-#   .field-label           body, so a dialog is a sibling of .app-case and not
-#   .protect               a descendant. For those four the unprefixed rule IS
-#   .provider-btn          the shipped one, and the .app-case twin is what is
-#                          dead there. Left alone on purpose.
+#   .field-label           the shared <dialog>s are appended at the end of the
+#   .protect               body, so a dialog is a sibling of .app-case and not
+#                          a descendant. For those the unprefixed rule IS the
+#                          shipped one, and the .app-case twin is what is dead
+#                          there. Left alone on purpose.
+#
+# IT WAS FIVE AND IS THREE SINCE 2026-08-05. `.confirm-btn` and `.provider-btn`
+# were on this list for the same reason, and the vocabulary migration ended the
+# reason rather than the entries: components/button.css no longer writes
+# `.app-case` at ALL, so a button selector can never become a candidate here and
+# an entry for one protects nothing. An exception that cannot fire is not a
+# safeguard, it is a claim about the stylesheet that has stopped being true, so
+# it comes out with the names it was written for.
 OUTSIDE_THE_CASE = {
-    ".filter-menu summary", ".confirm-btn", ".field-label", ".protect", ".provider-btn",
+    ".filter-menu summary", ".field-label", ".protect",
 }
 
 

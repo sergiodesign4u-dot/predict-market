@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Every button the product wears, one row per rendered form</title>
+<title>Every button the product wears, one row per form</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
    A frame is a document of its own, so it does not inherit the attribute: this
    block runs in the frames too and they are told by postMessage, the same
@@ -41,70 +41,54 @@ push();});})();</script>
 <body>
 <div class="app-case">
 <div class="kit-stack">
-    <!-- The four that are as wide as their own label share one row, because the
-         thing they have in common IS that width and four rows of one small
-         control each would say the opposite. Everything below owns its row,
-         because everything below declares width:100%. -->
     <div class="kit-row a-start">
       <div>
-        <span class="kit-surf-lbl">.auth-btn</span>
-        <button type="button" class="auth-btn">Sign in</button>
+        <span class="kit-surf-lbl">.btn.btn-secondary.btn-sm</span>
+        <button type="button" class="btn btn-secondary btn-sm">Sign in</button>
       </div>
       <div>
-        <span class="kit-surf-lbl">.auth-btn.primary</span>
-        <button type="button" class="auth-btn primary">Sign up</button>
+        <span class="kit-surf-lbl">.btn.btn-primary.btn-sm</span>
+        <button type="button" class="btn btn-primary btn-sm">Sign up</button>
       </div>
       <div>
-        <span class="kit-surf-lbl">.state-btn</span>
-        <button type="button" class="state-btn">Not now</button>
+        <span class="kit-surf-lbl">.btn.btn-secondary.btn-md</span>
+        <button type="button" class="btn btn-secondary btn-md">Open Wallet</button>
       </div>
       <div>
-        <span class="kit-surf-lbl">.state-btn.primary</span>
-        <button type="button" class="state-btn primary">Enable notifications</button>
+        <span class="kit-surf-lbl">.btn.btn-primary.btn-md</span>
+        <button type="button" class="btn btn-primary btn-md">Confirm bet</button>
       </div>
     </div>
     <div class="kit-col">
-      <span class="kit-surf-lbl">.provider-btn</span>
-      <button type="button" class="provider-btn">Connect a USDC wallet instead</button>
+      <span class="kit-surf-lbl">.btn.btn-secondary.btn-sm.btn-block</span>
+      <button type="button" class="btn btn-secondary btn-sm btn-block">Browse events</button>
     </div>
     <div class="kit-col">
-      <span class="kit-surf-lbl">.confirm-btn</span>
-      <button type="button" class="confirm-btn">Add funds</button>
+      <span class="kit-surf-lbl">.btn.btn-primary.btn-sm.btn-block</span>
+      <button type="button" class="btn btn-primary btn-sm btn-block">See your bet</button>
     </div>
     <div class="kit-col">
-      <span class="kit-surf-lbl">.provider-btn in dialog.app-dialog.signin-dialog</span>
+      <span class="kit-surf-lbl">.btn.btn-secondary.btn-md.btn-block</span>
+      <button type="button" class="btn btn-secondary btn-md btn-block">Connect a USDC wallet instead</button>
+    </div>
+    <div class="kit-col">
+      <span class="kit-surf-lbl">.btn.btn-primary.btn-md.btn-block</span>
+      <button type="button" class="btn btn-primary btn-md btn-block">Add funds</button>
+    </div>
+    <div class="kit-col">
+      <span class="kit-surf-lbl">.btn.btn-primary.btn-lg.btn-block</span>
+      <button type="button" class="btn btn-primary btn-lg btn-block">Confirm bet</button>
+    </div>
+    <div class="kit-col">
+      <span class="kit-surf-lbl">.btn.btn-secondary.btn-md.btn-block in dialog.app-dialog.signin-dialog</span>
       <dialog class="kit-nude app-dialog signin-dialog" open aria-label="Sign in or create account">
         <div class="kit-nude sheet-body">
-          <button type="button" class="provider-btn">
+          <button type="button" class="btn btn-secondary btn-md btn-block">
             <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
             Continue with Google
           </button>
-          <button type="button" class="provider-btn">Cancel and choose another provider</button>
         </div>
       </dialog>
-    </div>
-    <div class="kit-col">
-      <span class="kit-surf-lbl">.provider-btn in dialog.app-dialog.outcome-dialog</span>
-      <dialog class="kit-nude app-dialog outcome-dialog" open aria-label="You won">
-        <div class="kit-nude sheet-body">
-          <button type="button" class="provider-btn">Browse events</button>
-        </div>
-      </dialog>
-    </div>
-    <div class="kit-col">
-      <span class="kit-surf-lbl">.provider-btn in .bet-panel</span>
-      <aside class="kit-nude bet-panel">
-        <div class="kit-nude bp-inner">
-          <button type="button" class="provider-btn">Check wallet</button>
-        </div>
-      </aside>
-    </div>
-    <div class="kit-col">
-      <span class="kit-surf-lbl">.cta-bar, first child brass and second quiet</span>
-      <div class="kit-nude cta-bar">
-        <button type="button">Add funds</button>
-        <button type="button">Open Wallet</button>
-      </div>
     </div>
   </div>
 </div>

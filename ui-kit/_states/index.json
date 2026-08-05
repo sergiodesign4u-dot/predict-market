@@ -215,7 +215,6 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
-   "components/button.css",
    "components/card.css",
    "components/dialog.css",
    "components/event-detail.css",
@@ -233,7 +232,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "0640b9d2eb01b10a"
+  "sha": "b055260c01e35106"
  },
  {
   "component": "betpanel",
@@ -451,7 +450,6 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
-   "components/button.css",
    "components/card.css",
    "components/dialog.css",
    "components/event-detail.css",
@@ -469,7 +467,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "0640b9d2eb01b10a"
+  "sha": "b055260c01e35106"
  },
  {
   "component": "betpanel",
@@ -1038,7 +1036,6 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
-   "components/button.css",
    "components/dialog.css",
    "components/fonts.css",
    "components/input.css",
@@ -1049,7 +1046,7 @@
    "ui-kit/specimens/betpanel-sheet.html",
    "ui-kit/specimens/button-census.html"
   ],
-  "sha": "b784558496056f1f"
+  "sha": "c25dca530e6ce894"
  },
  {
   "component": "betpanel",
@@ -1259,7 +1256,6 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
-   "components/button.css",
    "components/card.css",
    "components/dialog.css",
    "components/feed.css",
@@ -1274,7 +1270,7 @@
    "ui-kit/specimens/betpanel-more.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "b848eb67221fd8c8"
+  "sha": "c1a62c0a69ba2140"
  },
  {
   "component": "betpanel",
@@ -1446,7 +1442,6 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
-   "components/button.css",
    "components/dialog.css",
    "components/event-detail.css",
    "components/feed.css",
@@ -1461,7 +1456,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-more.html"
   ],
-  "sha": "74f80284ba40869e"
+  "sha": "0eafdeca082bfd53"
  },
  {
   "component": "bottomnav",
@@ -1832,37 +1827,35 @@
  {
   "component": "button",
   "id": "g1",
-  "el": "button.auth-btn",
+  "el": "button.btn.btn-secondary.btn-sm",
   "scope": "",
   "specimen": "button-matrix",
   "classes": [
    "a-start",
    "app-case",
    "app-dialog",
-   "auth-btn",
-   "bet-panel",
-   "bp-inner",
-   "confirm-btn",
-   "cta-bar",
+   "btn",
+   "btn-block",
+   "btn-lg",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
+   "btn-sm",
    "ic",
    "kit-col",
    "kit-nude",
    "kit-row",
    "kit-stack",
    "kit-surf-lbl",
-   "outcome-dialog",
-   "primary",
    "prov-google",
-   "provider-btn",
    "sheet-body",
-   "signin-dialog",
-   "state-btn"
+   "signin-dialog"
   ],
   "shots": {
    "rest-dark": {
     "file": "button/g1-rest-dark.png",
     "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
-    "w": 79,
+    "w": 88,
     "h": 52,
     "pad": {
      "top": 4,
@@ -1881,7 +1874,7 @@
    "hover-dark": {
     "file": "button/g1-hover-dark.png",
     "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | none | 1",
-    "w": 79,
+    "w": 88,
     "h": 52,
     "pad": {
      "top": 4,
@@ -1900,7 +1893,7 @@
    "active-dark": {
     "file": "button/g1-active-dark.png",
     "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | none | 1",
-    "w": 79,
+    "w": 88,
     "h": 52,
     "pad": {
      "top": 4,
@@ -1919,7 +1912,7 @@
    "focus-dark": {
     "file": "button/g1-focus-dark.png",
     "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
-    "w": 79,
+    "w": 88,
     "h": 52,
     "pad": {
      "top": 4,
@@ -1938,7 +1931,7 @@
    "rest-light": {
     "file": "button/g1-rest-light.png",
     "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
-    "w": 79,
+    "w": 88,
     "h": 52,
     "pad": {
      "top": 4,
@@ -1957,7 +1950,7 @@
    "hover-light": {
     "file": "button/g1-hover-light.png",
     "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
-    "w": 79,
+    "w": 88,
     "h": 52,
     "pad": {
      "top": 4,
@@ -1976,7 +1969,7 @@
    "active-light": {
     "file": "button/g1-active-light.png",
     "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
-    "w": 79,
+    "w": 88,
     "h": 52,
     "pad": {
      "top": 4,
@@ -1995,7 +1988,7 @@
    "focus-light": {
     "file": "button/g1-focus-light.png",
     "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
-    "w": 79,
+    "w": 88,
     "h": 52,
     "pad": {
      "top": 4,
@@ -2012,29 +2005,31 @@
     "short": 0
    }
   },
-  "covers": [
-   "button.auth-btn",
-   "button.state-btn",
-   "button.provider-btn",
-   "button.provider-btn @dialog.outcome-dialog",
-   "button.provider-btn @.bet-panel",
-   "button @.cta-bar",
-   "button.state-btn @.state-block",
-   "button.provider-btn @dialog.win-dialog",
-   "button.provider-btn @dialog.loss-dialog",
-   "button.auth-btn @.app-header",
-   "button.state-btn @.bet-panel.resolved-panel"
-  ],
   "also": [
+   "notice-push",
+   "base-frame",
    "state-empty-filters",
    "outcome-overlays",
+   "betpanel-states",
+   "profile-identity",
    "header-out",
    "betpanel-more"
   ],
+  "covers": [
+   "button.btn.btn-secondary.btn-sm",
+   "button.btn.btn-secondary.btn-md",
+   "button.btn.btn-secondary.btn-sm.btn-block",
+   "button.btn.btn-secondary.btn-md.btn-block",
+   "button.btn.btn-secondary.btn-sm @.state-block",
+   "button.btn.btn-secondary.btn-md.btn-block @dialog.win-dialog",
+   "button.btn.btn-secondary.btn-md.btn-block @dialog.loss-dialog",
+   "button.btn.btn-secondary.btn-md.btn-block @.bet-panel",
+   "button.btn.btn-secondary.btn-md @.cta-bar",
+   "button.btn.btn-secondary.btn-sm @.app-header",
+   "button.btn.btn-secondary.btn-sm.btn-block @.bet-panel.resolved-panel"
+  ],
   "sources": [
-   "components/account.css",
    "components/base.css",
-   "components/betpanel.css",
    "components/button.css",
    "components/dialog.css",
    "components/fonts.css",
@@ -2042,52 +2037,54 @@
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/base-frame.html",
    "ui-kit/specimens/betpanel-more.html",
+   "ui-kit/specimens/betpanel-states.html",
    "ui-kit/specimens/button-matrix.html",
    "ui-kit/specimens/header-out.html",
+   "ui-kit/specimens/notice-push.html",
    "ui-kit/specimens/outcome-overlays.html",
+   "ui-kit/specimens/profile-identity.html",
    "ui-kit/specimens/state-empty-filters.html"
   ],
-  "sha": "15983394416079b4"
+  "sha": "549f2b60943e2535"
  },
  {
   "component": "button",
   "id": "g10",
-  "el": "button",
-  "scope": ".cta-bar",
+  "el": "button.btn.btn-secondary.btn-md.btn-block",
+  "scope": "dialog.signin-dialog",
   "specimen": "button-matrix",
   "classes": [
    "a-start",
    "app-case",
    "app-dialog",
-   "auth-btn",
-   "bet-panel",
-   "bp-inner",
-   "confirm-btn",
-   "cta-bar",
+   "btn",
+   "btn-block",
+   "btn-lg",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
+   "btn-sm",
    "ic",
    "kit-col",
    "kit-nude",
    "kit-row",
    "kit-stack",
    "kit-surf-lbl",
-   "outcome-dialog",
-   "primary",
    "prov-google",
-   "provider-btn",
    "sheet-body",
-   "signin-dialog",
-   "state-btn"
+   "signin-dialog"
   ],
   "shots": {
    "rest-dark": {
     "file": "button/g10-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 201,
-    "h": 62,
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
+    "w": 404,
+    "h": 63,
     "pad": {
      "top": 4,
-     "right": 4,
+     "right": 12,
      "bottom": 12,
      "left": 12
     },
@@ -2101,12 +2098,12 @@
    },
    "hover-dark": {
     "file": "button/g10-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgba(199, 162, 78, 0.45) | 0px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
-    "w": 201,
+    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | matrix(1, 0, 0, 1, 0, -1) | none | 1",
+    "w": 404,
     "h": 62,
     "pad": {
-     "top": 4,
-     "right": 4,
+     "top": 3,
+     "right": 12,
      "bottom": 12,
      "left": 12
     },
@@ -2120,12 +2117,12 @@
    },
    "active-dark": {
     "file": "button/g10-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgba(199, 162, 78, 0.45) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 201,
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | matrix(1, 0, 0, 1, 0, -1) | none | 1",
+    "w": 404,
     "h": 62,
     "pad": {
-     "top": 4,
-     "right": 4,
+     "top": 3,
+     "right": 12,
      "bottom": 12,
      "left": 12
     },
@@ -2139,12 +2136,12 @@
    },
    "focus-dark": {
     "file": "button/g10-focus-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 201,
-    "h": 62,
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
+    "w": 404,
+    "h": 63,
     "pad": {
      "top": 4,
-     "right": 4,
+     "right": 12,
      "bottom": 12,
      "left": 12
     },
@@ -2158,12 +2155,12 @@
    },
    "rest-light": {
     "file": "button/g10-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 201,
-    "h": 62,
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
+    "w": 404,
+    "h": 63,
     "pad": {
      "top": 4,
-     "right": 4,
+     "right": 12,
      "bottom": 12,
      "left": 12
     },
@@ -2177,12 +2174,12 @@
    },
    "hover-light": {
     "file": "button/g10-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgba(199, 162, 78, 0.6) | 0px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
-    "w": 201,
+    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | matrix(1, 0, 0, 1, 0, -1) | none | 1",
+    "w": 404,
     "h": 62,
     "pad": {
-     "top": 4,
-     "right": 4,
+     "top": 3,
+     "right": 12,
      "bottom": 12,
      "left": 12
     },
@@ -2196,12 +2193,12 @@
    },
    "active-light": {
     "file": "button/g10-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgba(199, 162, 78, 0.6) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 201,
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | matrix(1, 0, 0, 1, 0, -1) | none | 1",
+    "w": 404,
     "h": 62,
     "pad": {
-     "top": 4,
-     "right": 4,
+     "top": 3,
+     "right": 12,
      "bottom": 12,
      "left": 12
     },
@@ -2215,12 +2212,12 @@
    },
    "focus-light": {
     "file": "button/g10-focus-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 201,
-    "h": 62,
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
+    "w": 404,
+    "h": 63,
     "pad": {
      "top": 4,
-     "right": 4,
+     "right": 12,
      "bottom": 12,
      "left": 12
     },
@@ -2234,16 +2231,14 @@
    }
   },
   "also": [
-   "profile-identity",
-   "account-cta"
+   "dialog-shared",
+   "signin"
   ],
   "covers": [
-   "button @.cta-bar"
+   "button.btn.btn-secondary.btn-md.btn-block @dialog.signin-dialog"
   ],
   "sources": [
-   "components/account.css",
    "components/base.css",
-   "components/betpanel.css",
    "components/button.css",
    "components/dialog.css",
    "components/fonts.css",
@@ -2251,46 +2246,44 @@
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/account-cta.html",
    "ui-kit/specimens/button-matrix.html",
-   "ui-kit/specimens/profile-identity.html"
+   "ui-kit/specimens/dialog-shared.html",
+   "ui-kit/specimens/signin.html"
   ],
-  "sha": "6d97b72351c376ec"
+  "sha": "846998452b48d312"
  },
  {
   "component": "button",
   "id": "g2",
-  "el": "button.auth-btn.primary",
+  "el": "button.btn.btn-primary.btn-sm",
   "scope": "",
   "specimen": "button-matrix",
   "classes": [
    "a-start",
    "app-case",
    "app-dialog",
-   "auth-btn",
-   "bet-panel",
-   "bp-inner",
-   "confirm-btn",
-   "cta-bar",
+   "btn",
+   "btn-block",
+   "btn-lg",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
+   "btn-sm",
    "ic",
    "kit-col",
    "kit-nude",
    "kit-row",
    "kit-stack",
    "kit-surf-lbl",
-   "outcome-dialog",
-   "primary",
    "prov-google",
-   "provider-btn",
    "sheet-body",
-   "signin-dialog",
-   "state-btn"
+   "signin-dialog"
   ],
   "shots": {
    "rest-dark": {
     "file": "button/g2-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 86,
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgba(0, 0, 0, 0) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
+    "w": 94,
     "h": 52,
     "pad": {
      "top": 4,
@@ -2308,8 +2301,8 @@
    },
    "hover-dark": {
     "file": "button/g2-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
-    "w": 86,
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgba(0, 0, 0, 0) | 1px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
+    "w": 94,
     "h": 52,
     "pad": {
      "top": 4,
@@ -2327,8 +2320,8 @@
    },
    "active-dark": {
     "file": "button/g2-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 86,
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgba(0, 0, 0, 0) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
+    "w": 94,
     "h": 52,
     "pad": {
      "top": 4,
@@ -2346,8 +2339,8 @@
    },
    "focus-dark": {
     "file": "button/g2-focus-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 86,
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgba(0, 0, 0, 0) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
+    "w": 94,
     "h": 52,
     "pad": {
      "top": 4,
@@ -2365,8 +2358,8 @@
    },
    "rest-light": {
     "file": "button/g2-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 86,
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgba(0, 0, 0, 0) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
+    "w": 94,
     "h": 52,
     "pad": {
      "top": 4,
@@ -2384,8 +2377,8 @@
    },
    "hover-light": {
     "file": "button/g2-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
-    "w": 86,
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgba(0, 0, 0, 0) | 1px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
+    "w": 94,
     "h": 52,
     "pad": {
      "top": 4,
@@ -2403,8 +2396,8 @@
    },
    "active-light": {
     "file": "button/g2-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 86,
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgba(0, 0, 0, 0) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
+    "w": 94,
     "h": 52,
     "pad": {
      "top": 4,
@@ -2422,8 +2415,8 @@
    },
    "focus-light": {
     "file": "button/g2-focus-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(199, 162, 78) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 86,
+    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgba(0, 0, 0, 0) | 1px | rgb(24, 8, 16) | 10px | none | none | 1",
+    "w": 94,
     "h": 52,
     "pad": {
      "top": 4,
@@ -2440,22 +2433,35 @@
     "short": 0
    }
   },
-  "covers": [
-   "button.auth-btn.primary",
-   "button.state-btn.primary",
-   "button.state-btn.primary @.state-block",
-   "button.auth-btn.primary @.app-header",
-   "button.state-btn.primary @.bet-panel.resolved-panel"
-  ],
   "also": [
+   "notice-push",
    "state-empty-filters",
+   "dialog-shared",
+   "outcome-overlays",
+   "event-detail",
+   "betpanel-sheet",
+   "profile-identity",
    "header-out",
    "betpanel-more"
   ],
+  "covers": [
+   "button.btn.btn-primary.btn-sm",
+   "button.btn.btn-primary.btn-md",
+   "button.btn.btn-primary.btn-sm.btn-block",
+   "button.btn.btn-primary.btn-md.btn-block",
+   "button.btn.btn-primary.btn-lg.btn-block",
+   "button.btn.btn-primary.btn-sm @.state-block",
+   "button.btn.btn-primary.btn-md.btn-block @dialog.app-dialog",
+   "button.btn.btn-primary.btn-md.btn-block @dialog.win-dialog",
+   "button.btn.btn-primary.btn-md.btn-block @dialog.loss-dialog",
+   "button.btn.btn-primary.btn-md.btn-block @.bet-panel",
+   "button.btn.btn-primary.btn-lg.btn-block @dialog.bet-sheet",
+   "button.btn.btn-primary.btn-md @.cta-bar",
+   "button.btn.btn-primary.btn-sm @.app-header",
+   "button.btn.btn-primary.btn-sm.btn-block @.bet-panel.resolved-panel"
+  ],
   "sources": [
-   "components/account.css",
    "components/base.css",
-   "components/betpanel.css",
    "components/button.css",
    "components/dialog.css",
    "components/fonts.css",
@@ -2464,435 +2470,17 @@
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-more.html",
-   "ui-kit/specimens/button-matrix.html",
-   "ui-kit/specimens/header-out.html",
-   "ui-kit/specimens/state-empty-filters.html"
-  ],
-  "sha": "832099a3f8e774d2"
- },
- {
-  "component": "button",
-  "id": "g6",
-  "el": "button.confirm-btn",
-  "scope": "",
-  "specimen": "button-matrix",
-  "classes": [
-   "a-start",
-   "app-case",
-   "app-dialog",
-   "auth-btn",
-   "bet-panel",
-   "bp-inner",
-   "confirm-btn",
-   "cta-bar",
-   "ic",
-   "kit-col",
-   "kit-nude",
-   "kit-row",
-   "kit-stack",
-   "kit-surf-lbl",
-   "outcome-dialog",
-   "primary",
-   "prov-google",
-   "provider-btn",
-   "sheet-body",
-   "signin-dialog",
-   "state-btn"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "button/g6-rest-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 404,
-    "h": 61,
-    "pad": {
-     "top": 4,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "button/g6-hover-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
-    "w": 404,
-    "h": 61,
-    "pad": {
-     "top": 4,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "button/g6-active-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 404,
-    "h": 61,
-    "pad": {
-     "top": 4,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "file": "button/g6-focus-dark.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 404,
-    "h": 61,
-    "pad": {
-     "top": 4,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "button/g6-rest-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 404,
-    "h": 61,
-    "pad": {
-     "top": 4,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "button/g6-hover-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | rgb(199, 162, 78) 0px 6px 18px -8px | 1",
-    "w": 404,
-    "h": 61,
-    "pad": {
-     "top": 4,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "button/g6-active-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 404,
-    "h": 61,
-    "pad": {
-     "top": 4,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "file": "button/g6-focus-light.png",
-    "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
-    "w": 404,
-    "h": 61,
-    "pad": {
-     "top": 4,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button.confirm-btn",
-   "button.confirm-btn @.bet-dock",
-   "button.confirm-btn @dialog.bet-sheet",
-   "button.confirm-btn @dialog.app-dialog",
-   "button.confirm-btn @dialog.win-dialog",
-   "button.confirm-btn @dialog.loss-dialog",
-   "button.confirm-btn @.bet-panel"
-  ],
-  "also": [
-   "button-matrix-dock",
-   "dialog-shared",
-   "outcome-overlays",
-   "event-detail"
-  ],
-  "sources": [
-   "components/account.css",
-   "components/base.css",
-   "components/betpanel.css",
-   "components/button.css",
-   "components/dialog.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/button-matrix-dock.html",
+   "ui-kit/specimens/betpanel-sheet.html",
    "ui-kit/specimens/button-matrix.html",
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/event-detail.html",
-   "ui-kit/specimens/outcome-overlays.html"
+   "ui-kit/specimens/header-out.html",
+   "ui-kit/specimens/notice-push.html",
+   "ui-kit/specimens/outcome-overlays.html",
+   "ui-kit/specimens/profile-identity.html",
+   "ui-kit/specimens/state-empty-filters.html"
   ],
-  "sha": "c6bc4565f18a61e8"
- },
- {
-  "component": "button",
-  "id": "g7",
-  "el": "button.provider-btn",
-  "scope": "dialog.signin-dialog",
-  "specimen": "button-matrix",
-  "classes": [
-   "a-start",
-   "app-case",
-   "app-dialog",
-   "auth-btn",
-   "bet-panel",
-   "bp-inner",
-   "confirm-btn",
-   "cta-bar",
-   "ic",
-   "kit-col",
-   "kit-nude",
-   "kit-row",
-   "kit-stack",
-   "kit-surf-lbl",
-   "outcome-dialog",
-   "primary",
-   "prov-google",
-   "provider-btn",
-   "sheet-body",
-   "signin-dialog",
-   "state-btn"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "button/g7-rest-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
-    "w": 404,
-    "h": 57,
-    "pad": {
-     "top": 4,
-     "right": 12,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "button/g7-hover-dark.png",
-    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | matrix(1, 0, 0, 1, 0, -1) | none | 1",
-    "w": 404,
-    "h": 56,
-    "pad": {
-     "top": 3,
-     "right": 12,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "button/g7-active-dark.png",
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | matrix(1, 0, 0, 1, 0, -1) | none | 1",
-    "w": 404,
-    "h": 56,
-    "pad": {
-     "top": 3,
-     "right": 12,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "file": "button/g7-focus-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
-    "w": 404,
-    "h": 57,
-    "pad": {
-     "top": 4,
-     "right": 12,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "button/g7-rest-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
-    "w": 404,
-    "h": 57,
-    "pad": {
-     "top": 4,
-     "right": 12,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "button/g7-hover-light.png",
-    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | matrix(1, 0, 0, 1, 0, -1) | none | 1",
-    "w": 404,
-    "h": 56,
-    "pad": {
-     "top": 3,
-     "right": 12,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "button/g7-active-light.png",
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | matrix(1, 0, 0, 1, 0, -1) | none | 1",
-    "w": 404,
-    "h": 56,
-    "pad": {
-     "top": 3,
-     "right": 12,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "file": "button/g7-focus-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
-    "w": 404,
-    "h": 57,
-    "pad": {
-     "top": 4,
-     "right": 12,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "dialog-shared",
-   "signin"
-  ],
-  "covers": [
-   "button.provider-btn @dialog.signin-dialog"
-  ],
-  "sources": [
-   "components/account.css",
-   "components/base.css",
-   "components/betpanel.css",
-   "components/button.css",
-   "components/dialog.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/button-matrix.html",
-   "ui-kit/specimens/dialog-shared.html",
-   "ui-kit/specimens/signin.html"
-  ],
-  "sha": "02e615c505613d9f"
+  "sha": "9da6bdf6295d2a11"
  },
  {
   "component": "card",
@@ -3693,7 +3281,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "53d8f8bb4582f2ad"
+  "sha": "caefd3c21465bc1b"
  },
  {
   "component": "catnav",
@@ -8241,7 +7829,11 @@
    "amount-row",
    "app-case",
    "app-dialog",
-   "confirm-btn",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
    "field-label",
    "fine",
    "ic",
@@ -8250,7 +7842,6 @@
    "prov-apple",
    "prov-google",
    "prov-x",
-   "provider-btn",
    "quick",
    "sel",
    "sheet-body",
@@ -8442,7 +8033,7 @@
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "256ed4fde45886e9"
+  "sha": "cc6b6e7d44612841"
  },
  {
   "component": "dialog",
@@ -8455,7 +8046,11 @@
    "amount-row",
    "app-case",
    "app-dialog",
-   "confirm-btn",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
    "field-label",
    "fine",
    "ic",
@@ -8464,7 +8059,6 @@
    "prov-apple",
    "prov-google",
    "prov-x",
-   "provider-btn",
    "quick",
    "sel",
    "sheet-body",
@@ -8648,7 +8242,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "658d498dde7ecd67"
+  "sha": "6b5fa97984631300"
  },
  {
   "component": "dialog",
@@ -8855,14 +8449,17 @@
   "classes": [
    "app-case",
    "app-dialog",
-   "confirm-btn",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
    "field-label",
    "fine",
    "kit-dlgs",
    "loss-dialog",
    "outcome-dialog",
    "protect",
-   "provider-btn",
    "reconcile-box",
    "sheet-body",
    "sheet-close",
@@ -9041,7 +8638,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/outcome-overlays.html"
   ],
-  "sha": "cfa56bcc85d53440"
+  "sha": "771a7f536be18909"
  },
  {
   "component": "event-detail",
@@ -9257,7 +8854,6 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
-   "components/button.css",
    "components/card.css",
    "components/dialog.css",
    "components/event-detail.css",
@@ -9273,7 +8869,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "b597a852f9c2997f"
+  "sha": "a3d28734c5bd9033"
  },
  {
   "component": "filters",
@@ -11463,7 +11059,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "30dd6b12f93a02d6"
+  "sha": "f7b47c9dae259aab"
  },
  {
   "component": "header",
@@ -11671,7 +11267,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "30dd6b12f93a02d6"
+  "sha": "f7b47c9dae259aab"
  },
  {
   "component": "header",
@@ -13627,7 +13223,11 @@
    "amount-row",
    "app-case",
    "app-dialog",
-   "confirm-btn",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
    "field-label",
    "fine",
    "ic",
@@ -13636,7 +13236,6 @@
    "prov-apple",
    "prov-google",
    "prov-x",
-   "provider-btn",
    "quick",
    "sel",
    "sheet-body",
@@ -13822,7 +13421,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "f1cd93f803690c07"
+  "sha": "839bb1837b6272c9"
  },
  {
   "component": "input",
@@ -13835,7 +13434,11 @@
    "amount-row",
    "app-case",
    "app-dialog",
-   "confirm-btn",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
    "field-label",
    "fine",
    "ic",
@@ -13844,7 +13447,6 @@
    "prov-apple",
    "prov-google",
    "prov-x",
-   "provider-btn",
    "quick",
    "sel",
    "sheet-body",
@@ -14033,7 +13635,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "d274e551d0161129"
+  "sha": "c0c95dcc01d983b6"
  },
  {
   "component": "input",
@@ -14046,7 +13648,11 @@
    "amount-row",
    "app-case",
    "app-dialog",
-   "confirm-btn",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
    "field-label",
    "fine",
    "ic",
@@ -14055,7 +13661,6 @@
    "prov-apple",
    "prov-google",
    "prov-x",
-   "provider-btn",
    "quick",
    "sel",
    "sheet-body",
@@ -14244,7 +13849,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "d274e551d0161129"
+  "sha": "c0c95dcc01d983b6"
  },
  {
   "component": "input",
@@ -14641,9 +14246,12 @@
    "bp-inner",
    "bp-pct",
    "bp-side",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
    "card",
    "card-body",
-   "confirm-btn",
    "device",
    "ed-actions",
    "ed-cat",
@@ -14851,7 +14459,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "7309e4e80af5a888"
+  "sha": "c05e62a3e43595f8"
  },
  {
   "component": "input",
@@ -14873,7 +14481,10 @@
    "bp-inner",
    "bp-pct",
    "bp-side",
-   "confirm-btn",
+   "btn",
+   "btn-block",
+   "btn-lg",
+   "btn-primary",
    "device",
    "field-label",
    "fine",
@@ -15054,7 +14665,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "940356403bd94960"
+  "sha": "a7529442ab2861f9"
  },
  {
   "component": "loadmore",
@@ -15672,7 +15283,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "7334fdc100b50494"
+  "sha": "b0eae0a95ea2c857"
  },
  {
   "component": "related",
@@ -16925,7 +16536,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "74f63a372fa61709"
+  "sha": "b3ef9fc8d3891922"
  },
  {
   "component": "tabs",
@@ -17100,7 +16711,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "74f63a372fa61709"
+  "sha": "b3ef9fc8d3891922"
  },
  {
   "component": "tabs",
@@ -17275,7 +16886,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "74f63a372fa61709"
+  "sha": "b3ef9fc8d3891922"
  },
  {
   "component": "tabs",
@@ -18819,7 +18430,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "0a55b40d4ab1ffec"
+  "sha": "ad50bf705b8d6ff0"
  },
  {
   "component": "yesno",
@@ -19018,7 +18629,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "0a55b40d4ab1ffec"
+  "sha": "ad50bf705b8d6ff0"
  },
  {
   "component": "yesno",
@@ -19225,7 +18836,6 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
-   "components/button.css",
    "components/card.css",
    "components/dialog.css",
    "components/feed.css",
@@ -19239,6 +18849,6 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "ed7f0db1b5fbd88a"
+  "sha": "4ccf803a68d741c7"
  }
 ]

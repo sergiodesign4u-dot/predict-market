@@ -91,7 +91,7 @@
    "catnav": ".subcat-head",
    "filters": ".filter-menu",
    "state-block": ".state-block",
-   "button": ".state-btn"
+   "button": ".btn"
   },
   "own": [
    "app-case",
@@ -150,7 +150,7 @@
    "position": ".pos-side",
    "betpanel": ".bet-panel",
    "input": ".field-label",
-   "button": ".confirm-btn",
+   "button": ".btn",
    "dialog": ".fine"
   },
   "own": [
@@ -342,9 +342,11 @@
    "wallet.html"
   ],
   "made": [
+   "button",
    "account"
   ],
   "via": {
+   "button": ".btn",
    "account": "declared"
   },
   "own": [

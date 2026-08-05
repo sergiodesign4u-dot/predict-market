@@ -293,7 +293,7 @@ screens.
 | **Card grid** | `patterns/card-grid.css` | [card-grid](../card-grid.html) | 23 | `card`, `yesno`, `options` |
 | **List head** | `patterns/list-head.css` | [list-head](../list-head.html) | 71 | `filters` |
 | **Position list** | `patterns/position-list.css` | [position-list](../position-list.html) | 13 | `position` |
-| **Action bar** | `patterns/action-bar.css` | [action-bar](../action-bar.html) | 3 | `account` |
+| **Action bar** | `patterns/action-bar.css` | [action-bar](../action-bar.html) | 3 | `button`, `account` |
 
 Two compositions repeat on exactly two screens and are therefore NOT patterns: `.ptabs` / `.ptab-bar`
 / `.ptab-panel` (`tabs`, on `my-profile` and `public-profile`) and `.opt-list` (`options`, on the two

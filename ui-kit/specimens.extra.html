@@ -62,7 +62,7 @@
     inherited by everything, and one rule that makes a control inherit the body font instead of the
     system one.</p>
     <div class="kit-row">
-      <button type="button" class="state-btn">button, select and summary inherit the body font</button>
+      <button type="button" class="btn btn-secondary btn-sm">button, select and summary inherit the body font</button>
       <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"></use></svg>
       <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </div>
@@ -372,7 +372,7 @@
           <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
           <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
         </div>
-        <button type="button" class="confirm-btn">Confirm bet</button>
+        <button type="button" class="btn btn-primary btn-md btn-block">Confirm bet</button>
         <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
       </div>
     </aside>
@@ -388,169 +388,82 @@
       <h2 class="state-title">This event just resolved</h2>
       <p class="state-msg">The event closed while you were reading. Betting is no longer available. You hold a bet, so you can open your result.</p>
       <div class="state-actions">
-        <a href="#"><button type="button" class="state-btn primary">See your bet</button></a>
-        <a href="#"><button type="button" class="state-btn">Browse events</button></a>
+        <a href="#"><button type="button" class="btn btn-primary btn-sm btn-block">See your bet</button></a>
+        <a href="#"><button type="button" class="btn btn-secondary btn-sm btn-block">Browse events</button></a>
       </div>
     </div></div></aside>
   </div></div></main>
 
   <div class="kit-subh">Every button the product wears</div>
   <!--
-    ONE COLUMN, ONE ROW PER FORM, AND MOST OF THEM STAND ON THE BARE CANVAS.
-    Rebuilt 2026-08-04 after the first cut put six of these inside a dialog, a
-    panel or a bar and read as a scatter of cards rather than as a system.
+    TEN ROWS, ONE PER FORM, AND A FORM IS NOW A SET OF CLASSES.
+    Rebuilt 2026-08-05 with the vocabulary. Before it, a form was a place-name
+    times the scopes above it, and this file held TWO blocks because two of the
+    forms only existed below 760px: components/betpanel.css hides .bet-dock above
+    it and .bet-panel under it, so one document could not show both halves of that
+    pair. That is gone. The dock's content-width brass button is
+    `btn btn-primary btn-md`, which stands anywhere, and the bet sheet's is
+    `btn btn-primary btn-lg btn-block`. Untying a form from its place is most of
+    what the vocabulary bought.
 
-    THE PLATES WERE MOSTLY DECORATION, and that is measured rather than felt.
-    Every form was compared field for field against the same markup with no scope
-    above it, in a container of the same width: background, gradient, edge, edge
-    width, ink, radius, padding, size, weight, justification, alignment, gap.
-    TWELVE OF THE SIXTEEN COME OUT IDENTICAL. `.confirm-btn` inside
-    `dialog.app-dialog.outcome-dialog` differs from the bare one in nothing at
-    all; `.provider-btn` and `.confirm-btn` in a plain sheet differ only in the
-    width their container gives them.
+    NINE COMBINATIONS AND ONE SCOPE. Two emphases x three sizes x block or not is
+    twelve on paper; the product wears nine, and the three it does not are named
+    with a verdict in ui-kit/authored/button.md rather than left as blank cells.
+    The tenth row is the sign-in sheet, which is the ONLY scope left in
+    components/button.css: it is the one provider row that answers a pointer with
+    a transform, and a row that wide needs a second signal that it is a target.
 
-    WHY THE PLATES WERE THERE. This file used to say, and `specimens.map.json`
-    repeated it, that `.provider-btn` and `.confirm-btn` have no ground outside a
-    sheet and would render in the user agent's grey. That was true until
-    2026-08-03, when the merge in `components/button.css` put
-    `background:var(--bg-control)` into the rule the whole family shares. The
-    sentence outlived the fact by a day and cost this page its rhythm.
-
-    THE FOUR THAT KEEP THEIR SCOPE keep it because the scope is what the row is
-    about: the sign-in sheet moves the size, the weight, the alignment and the
-    gap; the outcome sheet moves the size, the weight and the alignment; the bet
-    panel moves the weight and the alignment; and a bare <button> outside a
-    `.cta-bar` carries no class at all, so there is nothing to show without one.
-
-    AND KEEPING THE SCOPE IS NOT KEEPING THE PLATE, which is the correction of
-    2026-08-04. Those four rows shipped a whole dialog, a whole panel and a whole
-    bar under the control, and four controls that mostly agree, each in a
-    different sized box, read as four components rather than as one taken four
-    ways. The scope stays in the DOM because the cascade needs it; every element
-    of it carries `kit-nude` and gives up its own surface, which is the same
-    mechanism the census below uses and was available the whole time. MEASURED
-    BEFORE AND AFTER, all fourteen controls of this pair of specimens, over
-    seventeen properties: padding, radius, size, weight, family, ground,
-    gradient, edge width, edge colour, ink, display, justification, alignment,
-    gap, min-height and rendered height. NOT ONE VALUE MOVED. The only difference
-    is width, and width grew by exactly the padding the host stopped drawing,
-    which is the container's decision and never was the control's.
-
-    The column is 380 because that is about what a sheet is in the product, so a
-    control declaring `width:100%` is shown at the width it actually gets. The
-    viewport is 900 because `components/betpanel.css` hides `.bet-panel` below
-    760, and a hidden panel cannot demonstrate anything.
-
-    Labels carry the class and the scope and no numbers. The numbers are in the
-    axis table one section down the page, written once.
+    NO PLATES, and every host that is here for the cascade gives up its surface
+    with `kit-nude`. The column is 380 because that is about what a sheet is in
+    this product, so a control declaring width:100% is shown at a width it gets.
   -->
   <div class="kit-stack">
-    <!-- The four that are as wide as their own label share one row, because the
-         thing they have in common IS that width and four rows of one small
-         control each would say the opposite. Everything below owns its row,
-         because everything below declares width:100%. -->
     <div class="kit-row a-start">
       <div>
-        <span class="kit-surf-lbl">.auth-btn</span>
-        <button type="button" class="auth-btn">Sign in</button>
+        <span class="kit-surf-lbl">.btn.btn-secondary.btn-sm</span>
+        <button type="button" class="btn btn-secondary btn-sm">Sign in</button>
       </div>
       <div>
-        <span class="kit-surf-lbl">.auth-btn.primary</span>
-        <button type="button" class="auth-btn primary">Sign up</button>
+        <span class="kit-surf-lbl">.btn.btn-primary.btn-sm</span>
+        <button type="button" class="btn btn-primary btn-sm">Sign up</button>
       </div>
       <div>
-        <span class="kit-surf-lbl">.state-btn</span>
-        <button type="button" class="state-btn">Not now</button>
+        <span class="kit-surf-lbl">.btn.btn-secondary.btn-md</span>
+        <button type="button" class="btn btn-secondary btn-md">Open Wallet</button>
       </div>
       <div>
-        <span class="kit-surf-lbl">.state-btn.primary</span>
-        <button type="button" class="state-btn primary">Enable notifications</button>
+        <span class="kit-surf-lbl">.btn.btn-primary.btn-md</span>
+        <button type="button" class="btn btn-primary btn-md">Confirm bet</button>
       </div>
     </div>
     <div class="kit-col">
-      <span class="kit-surf-lbl">.provider-btn</span>
-      <button type="button" class="provider-btn">Connect a USDC wallet instead</button>
+      <span class="kit-surf-lbl">.btn.btn-secondary.btn-sm.btn-block</span>
+      <button type="button" class="btn btn-secondary btn-sm btn-block">Browse events</button>
     </div>
     <div class="kit-col">
-      <span class="kit-surf-lbl">.confirm-btn</span>
-      <button type="button" class="confirm-btn">Add funds</button>
+      <span class="kit-surf-lbl">.btn.btn-primary.btn-sm.btn-block</span>
+      <button type="button" class="btn btn-primary btn-sm btn-block">See your bet</button>
     </div>
     <div class="kit-col">
-      <span class="kit-surf-lbl">.provider-btn in dialog.app-dialog.signin-dialog</span>
+      <span class="kit-surf-lbl">.btn.btn-secondary.btn-md.btn-block</span>
+      <button type="button" class="btn btn-secondary btn-md btn-block">Connect a USDC wallet instead</button>
+    </div>
+    <div class="kit-col">
+      <span class="kit-surf-lbl">.btn.btn-primary.btn-md.btn-block</span>
+      <button type="button" class="btn btn-primary btn-md btn-block">Add funds</button>
+    </div>
+    <div class="kit-col">
+      <span class="kit-surf-lbl">.btn.btn-primary.btn-lg.btn-block</span>
+      <button type="button" class="btn btn-primary btn-lg btn-block">Confirm bet</button>
+    </div>
+    <div class="kit-col">
+      <span class="kit-surf-lbl">.btn.btn-secondary.btn-md.btn-block in dialog.app-dialog.signin-dialog</span>
       <dialog class="kit-nude app-dialog signin-dialog" open aria-label="Sign in or create account">
         <div class="kit-nude sheet-body">
-          <button type="button" class="provider-btn">
+          <button type="button" class="btn btn-secondary btn-md btn-block">
             <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
             Continue with Google
           </button>
-          <button type="button" class="provider-btn">Cancel and choose another provider</button>
-        </div>
-      </dialog>
-    </div>
-    <div class="kit-col">
-      <span class="kit-surf-lbl">.provider-btn in dialog.app-dialog.outcome-dialog</span>
-      <dialog class="kit-nude app-dialog outcome-dialog" open aria-label="You won">
-        <div class="kit-nude sheet-body">
-          <button type="button" class="provider-btn">Browse events</button>
-        </div>
-      </dialog>
-    </div>
-    <div class="kit-col">
-      <span class="kit-surf-lbl">.provider-btn in .bet-panel</span>
-      <aside class="kit-nude bet-panel">
-        <div class="kit-nude bp-inner">
-          <button type="button" class="provider-btn">Check wallet</button>
-        </div>
-      </aside>
-    </div>
-    <div class="kit-col">
-      <span class="kit-surf-lbl">.cta-bar, first child brass and second quiet</span>
-      <div class="kit-nude cta-bar">
-        <button type="button">Add funds</button>
-        <button type="button">Open Wallet</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="kit-subh">Every button the phone wears, and only the phone</div>
-  <!--
-    The two forms that exist BELOW 760px and nowhere above it, which is why they
-    are a second block rather than two more rows: components/betpanel.css hides
-    .bet-dock at min-width:760 and hides .bet-panel under it, so one document
-    cannot hold both halves of that pair and a matrix that tried would be showing
-    a state of the product that never happens.
-
-    Both keep their scope because in both the scope is the whole point:
-    `.bet-dock .confirm-btn` is the one control in the family at content width,
-    and `.bet-sheet .confirm-btn` is the only padding of 16. Neither keeps its
-    plate, for the reason written in the block above.
-
-    THE DOCK'S ODDS READOUT WENT WITH THE PLATE. `<div class="dock-meta">YES
-    38%</div>` was a sibling of the button and looked like the reason the button
-    is narrow, which it is not: `width:auto` is declared on
-    `.app-case .bet-dock .confirm-btn` in components/button.css. Measured with it
-    and without it, the button is 106px either way. A reader of a page called
-    Buttons was being shown an odds percentage and left to work out what it had
-    to do with the control.
-
-    The sheet is staged OPEN. In ui-visual it is a <dialog> with no open
-    attribute, so a browser measuring the rendered tree scores it at zero width
-    and never reaches it. A variant the stylesheet declares, the product ships
-    and no measurement can see is exactly what this page has to carry, or the
-    system is smaller than the product.
-  -->
-  <div class="kit-stack spec-inflow">
-    <div>
-      <span class="kit-surf-lbl">.confirm-btn in .bet-dock</span>
-      <div class="kit-nude bet-dock" aria-label="Place your bet">
-        <button type="button" class="confirm-btn">Confirm bet</button>
-      </div>
-    </div>
-    <div>
-      <span class="kit-surf-lbl">.confirm-btn in dialog.app-dialog.bet-sheet</span>
-      <dialog class="kit-nude app-dialog bet-sheet" open aria-label="Place your bet">
-        <div class="kit-nude bp-inner">
-          <button type="button" class="confirm-btn">Confirm bet</button>
         </div>
       </dialog>
     </div>

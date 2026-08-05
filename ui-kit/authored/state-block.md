@@ -21,7 +21,7 @@ Its shape follows from one thing being true at once: this block is the screen. T
 - `.state-block` - the block itself, centred in the content column.
 - `.state-title` - the title. It names what happened in the product's own words: "No events match your filters", not "Nothing here".
 - `.state-msg` - one sentence saying what to do about it.
-- `.state-actions` - the exit, at most one per block, and its buttons are `.state-btn` from `components/button.css`.
+- `.state-actions` - the exit. Its buttons are the small size of `components/button.css`: `.btn .btn-primary .btn-sm` for the way out, and `.btn .btn-secondary .btn-sm` for the second answer where there is one. It said `.state-btn` until the vocabulary migration of 2026-08-05, and it said "at most one exit per block", which was never true: 38 blocks in the painted tree, 24 of them with two buttons. What IS true is the thing the emphases can now say, and it holds on all 38 without exception - **exactly one brass exit per block**, with at most one quiet button beside it.
 - `.sys-links`, `.sys-link-list` - the extra destinations a system screen offers, because a 404 has no filter to relax and no request to retry.
 - `.sys-note` - the small line under those, where a system screen says the thing that is true but not actionable.
 
@@ -39,12 +39,12 @@ Every block leaves by a real destination: the action is a link or a route that w
 
 ## Anti-rule
 
-Never let its action ship as a bare `<button>`: the exit is a `.state-btn` from `button` wrapped in something that actually navigates, and a bare element here looks identical, passes every visual check, and strands a person on the one screen in the product that has nothing else on it.
+Never let its action ship as a bare `<button>`: the exit is a `.btn` from `button` wrapped in something that actually navigates, and a bare element here looks identical, passes every visual check, and strands a person on the one screen in the product that has nothing else on it.
 
 Seen: `wireframes/_critique.md`, twice. Row 1 of the step-4 pass found eight category empty states whose CTAs were bare `<button>`s, and row 1 of the flow pass found `Try again` bare on the feed error and all eight category error pages, while every other error screen in the product already linked it. It shipped twice, in two different passes, on sixteen screens, which is why R2 quotes the critique rather than the counter.
 
 ## States
 
-None of its own, and it is not a STATIC declaration but an ownership one: everything a person can press in this block is a `.state-btn` or a link inside `.sys-link-list`, and both are photographed where they are declared. The block is a mark, a title and a sentence, and none of the three has a face to change.
+None of its own, and it is not a STATIC declaration but an ownership one: everything a person can press in this block is a `.btn` or a link inside `.sys-link-list`, and both are photographed where they are declared. The block is a mark, a title and a sentence, and none of the three has a face to change.
 
 One state IS declared here and produced no photograph: `.sys-link-list a:hover`. The specimens this component stands in are the empty and error blocks of a browse screen, and none of them carries a system screen's link list, so the states pass had nothing to open. That is a gap in the stand rather than in the component, and it is named here because a gallery with no pictures reads as "this has no states" when the file says otherwise.

@@ -129,25 +129,36 @@
      They land HERE and not in the bin because this page is provenance: it is the
      flat kit the system was read out of, and it has to go on rendering exactly
      as it did on the day it was read, or the record of what was proposed is
-     gone. The markup above is untouched. Nothing else in the repo carries these
-     six classes, and nothing may: a component is never added to this page, and
-     that now cuts both ways. */
-  .app-case .btn-primary,.app-case .btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-8);font-family:var(--font-body);font-weight:var(--weight-bold);cursor:pointer;border-radius:var(--radius-10);letter-spacing:.01em;transition:filter var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
-  .app-case .btn-primary{border:1px solid var(--color-action);background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass)}
-  .app-case .btn-primary:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
-  .app-case .btn-primary:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
-  .app-case .btn-secondary{border:1px solid var(--border-hairline);background:var(--bg-control);color:var(--text-primary)}
-  .app-case .btn-secondary:hover{border-color:var(--border-brass-hover);background:var(--bg-surface);color:var(--text-strong)}
-  .app-case .btn-secondary:active{background:var(--bg-pressed)}
-  .app-case .btn-sm{min-height:var(--control-32);padding:0 var(--space-12);font-size:var(--text-12);border-radius:var(--radius-10)}
-  .app-case .btn-md{min-height:var(--control-44);padding:0 var(--space-16);font-size:var(--text-14)}
+     gone. The markup above is untouched.
+     THE PRODUCT TOOK THE NAMES ON 2026-08-05, two days after this block was
+     written to record that it never had. `.btn-primary`, `.btn-secondary` and
+     the size ramp are the product's vocabulary now, worn by 710 buttons in each
+     tree, and the sentence that used to stand here - nothing else in the repo
+     carries these six classes - stopped being true on that day.
+     ONE TOKEN PER SELECTOR CHANGED AND NOTHING ELSE. Every rule below gained
+     `:not(.btn)`. The markup on this page carries the six classes WITHOUT a
+     `.btn`, exactly as it was read; the product's carries `.btn` as its marker.
+     So this block goes on painting its own elements and cannot reach a migrated
+     one, and components/button.css requires `.btn` for the mirror reason and
+     cannot reach these. Provenance intact, no collision, and neither file had to
+     give up a name. The page is still frozen in the sense the contract means: a
+     component is never added to it. */
+  .app-case .btn-primary:not(.btn),.app-case .btn-secondary:not(.btn){display:inline-flex;align-items:center;justify-content:center;gap:var(--space-8);font-family:var(--font-body);font-weight:var(--weight-bold);cursor:pointer;border-radius:var(--radius-10);letter-spacing:.01em;transition:filter var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
+  .app-case .btn-primary:not(.btn){border:1px solid var(--color-action);background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass)}
+  .app-case .btn-primary:not(.btn):hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
+  .app-case .btn-primary:not(.btn):active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
+  .app-case .btn-secondary:not(.btn){border:1px solid var(--border-hairline);background:var(--bg-control);color:var(--text-primary)}
+  .app-case .btn-secondary:not(.btn):hover{border-color:var(--border-brass-hover);background:var(--bg-surface);color:var(--text-strong)}
+  .app-case .btn-secondary:not(.btn):active{background:var(--bg-pressed)}
+  .app-case .btn-sm:not(.btn){min-height:var(--control-32);padding:0 var(--space-12);font-size:var(--text-12);border-radius:var(--radius-10)}
+  .app-case .btn-md:not(.btn){min-height:var(--control-44);padding:0 var(--space-16);font-size:var(--text-14)}
   /* 52px is a literal here and a var everywhere else in this block on purpose.
      --control-52 was the large step of the ramp these three classes were the
      only readers of, so it left tokens.css with them: a value nobody reads is a
      transcript. Colour still comes through the live roles, because this page has
      a theme switch and provenance that cannot follow the theme is a screenshot.
      Geometry that no longer exists cannot. */
-  .app-case .btn-lg{min-height:52px;padding:0 var(--space-24);font-size:var(--text-16);border-radius:var(--radius-10)}
+  .app-case .btn-lg:not(.btn){min-height:52px;padding:0 var(--space-24);font-size:var(--text-16);border-radius:var(--radius-10)}
   .app-case .btn-block{width:100%}
 </style>
 </head>
@@ -553,7 +564,7 @@
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
         <h2 class="state-title">No events match these filters</h2>
         <p class="state-msg">Clear the filters to see everything, or get a note when a new event opens in this category.</p>
-        <div class="state-actions"><button class="state-btn primary">Clear filters</button><button class="state-btn">Notify me of new events</button></div>
+        <div class="state-actions"><button class="btn btn-primary btn-sm">Clear filters</button><button class="btn btn-secondary btn-sm">Notify me of new events</button></div>
       </div>
     </div></div></div></main>
     <div class="kit-subh">Error</div>
@@ -562,13 +573,13 @@
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17v.5"/></svg>
         <h2 class="state-title">We could not load events</h2>
         <p class="state-msg">The feed did not respond. Check your connection and try again.</p>
-        <div class="state-actions"><button class="state-btn primary">Try again</button></div>
+        <div class="state-actions"><button class="btn btn-primary btn-sm">Try again</button></div>
       </div>
     </div></div></div></main>
     <div class="kit-subh">Loading and push</div>
     <main class="feed"><div class="feed-inner"><div class="cat-layout"><div class="cat-main">
       <div class="push-banner"><span class="push-msg"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg> Turn on notifications to hear when your events resolve.</span>
-        <span class="push-actions"><button class="state-btn primary">Enable</button><button class="state-btn">Not now</button></span></div>
+        <span class="push-actions"><button class="btn btn-primary btn-sm">Enable</button><button class="btn btn-secondary btn-sm">Not now</button></span></div>
       <div class="grid" style="margin-top:14px">
         <article class="card skeleton"><div class="card-body"><div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div><div class="sk-line w40"></div><div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div></div></article>
         <article class="card skeleton"><div class="card-body"><div class="top"><span class="sk-thumb"></span><div class="sk-head"><div class="sk-line w80"></div><div class="sk-line w60"></div></div></div><div class="sk-line w40"></div><div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div></div></article>
@@ -581,7 +592,7 @@
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l3-8h12l3 8M3 13v6h18v-6M3 13h5l2 3h4l2-3h5"/></svg>
         <h2 class="state-title">No active bets yet</h2>
         <p class="state-msg">You haven't placed any bets. Find an event you have an opinion on and put a real stake on the outcome.</p>
-        <div class="state-actions"><a href="#"><button type="button" class="state-btn primary">Browse events</button></a></div>
+        <div class="state-actions"><a href="#"><button type="button" class="btn btn-primary btn-sm">Browse events</button></a></div>
       </div>
     </div></div></div></main>
 
@@ -600,15 +611,15 @@
       </button>
     </div>
     <div class="sheet-body">
-      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+      <button type="button" class="btn btn-secondary btn-md btn-block" data-flow="signin-to-deposit">
         <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
         Continue with Google
       </button>
-      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+      <button type="button" class="btn btn-secondary btn-md btn-block" data-flow="signin-to-deposit">
         <svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>
         Continue with X
       </button>
-      <button type="button" class="provider-btn" data-flow="signin-to-deposit">
+      <button type="button" class="btn btn-secondary btn-md btn-block" data-flow="signin-to-deposit">
         <svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"/></svg>
         Continue with Apple
       </button>
@@ -630,7 +641,7 @@
       <div class="widget-box">Transak payment widget (card to USDC)</div>
       <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
       <p class="fine">Minimum $10. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
-      <button type="button" class="confirm-btn" data-close-dialog>Add funds</button>
+      <button type="button" class="btn btn-primary btn-md btn-block" data-close-dialog>Add funds</button>
     </div>
   </dialog>
     </div>
@@ -739,12 +750,12 @@
           <span class="field-label">Share Card (auto-generated)</span>
           <div class="widget-box">Share Card: "Called it - US shutdown, YES from 38%. +$13.20 on Predict Market." (image placeholder)</div>
         </div>
-        <button type="button" class="confirm-btn">Share</button>
+        <button type="button" class="btn btn-primary btn-md btn-block">Share</button>
         <div>
           <span class="field-label">Before the next one</span>
           <p class="protect">One right call is not a streak. The next event has its own odds, and this win does not change them. Read the next one on its own terms.</p>
         </div>
-        <a href="#"><button type="button" class="provider-btn" style="justify-content:center;width:100%;">Browse events</button></a>
+        <a href="#"><button type="button" class="btn btn-secondary btn-md btn-block" style="justify-content:center;width:100%;">Browse events</button></a>
       </div></dialog>
       <dialog class="app-case app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="sheet-head"><h2>Here's what happened</h2><a href="#"><button type="button" class="sheet-close" aria-label="Close">x</button></a></div><div class="sheet-body">
         <p class="fine" style="font-weight:bold;font-size:13px;margin:0;">Will the US government shut down before March 1, 2027?</p>
@@ -757,8 +768,8 @@
           <strong style="font-size:20px;">-$5.00</strong>
           <span class="fine">Your $5.00 stake on YES did not return. Avg price 38%.</span>
         </div>
-        <a href="#"><button type="button" class="confirm-btn">Back to your bets</button></a>
-        <a href="#"><button type="button" class="provider-btn" style="justify-content:center;width:100%;">Browse events</button></a>
+        <a href="#"><button type="button" class="btn btn-primary btn-md btn-block">Back to your bets</button></a>
+        <a href="#"><button type="button" class="btn btn-secondary btn-md btn-block" style="justify-content:center;width:100%;">Browse events</button></a>
       </div></dialog>
     </div>
   </section>
@@ -804,7 +815,7 @@
             <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
             <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
           </div>
-          <button type="button" class="confirm-btn">Confirm bet</button>
+          <button type="button" class="btn btn-primary btn-md btn-block">Confirm bet</button>
           <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
         </div>
       </aside>
@@ -947,13 +958,13 @@
           <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
           <p class="bp-hint">If YES wins you get $13.20. Fee $0.20, only on a win.</p>
           <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
-          <button type="button" class="confirm-btn" style="width:100%">Confirm bet</button>
+          <button type="button" class="btn btn-primary btn-md btn-block" style="width:100%">Confirm bet</button>
         </div></aside>
         <aside class="bet-panel" style="display:block;position:static;flex:0 1 262px"><div class="bp-inner">
           <div class="bp-head">Your bet</div>
           <div class="inline-error">You have $3.00. You can bet up to $3.00, or add funds to bet more.</div>
-          <button type="button" class="confirm-btn" data-open="deposit">Add funds</button>
-          <button type="button" class="provider-btn" style="justify-content:center;">Bet $3.00 instead</button>
+          <button type="button" class="btn btn-primary btn-md btn-block" data-open="deposit">Add funds</button>
+          <button type="button" class="btn btn-secondary btn-md btn-block" style="justify-content:center;">Bet $3.00 instead</button>
         </div></aside>
         <aside class="bet-panel" style="display:block;position:static;flex:0 1 262px"><div class="bp-inner">
           <div class="bp-head">Your bet</div>
@@ -961,13 +972,13 @@
             <strong>The price moved while you signed in</strong>
             <span>Was 38% &nbsp;-&gt;&nbsp; Now 41%. Payout $13.20 &nbsp;-&gt;&nbsp; $12.20 for $5.</span>
           </div>
-          <button type="button" class="confirm-btn" style="width:100%;">Confirm at new price (41%)</button>
-          <button type="button" class="provider-btn" style="justify-content:center;width:100%;">Cancel and re-evaluate</button>
+          <button type="button" class="btn btn-primary btn-md btn-block" style="width:100%;">Confirm at new price (41%)</button>
+          <button type="button" class="btn btn-secondary btn-md btn-block" style="justify-content:center;width:100%;">Cancel and re-evaluate</button>
         </div></aside>
         <aside class="bet-panel" style="display:block;position:static;flex:0 1 262px"><div class="bp-inner">
           <div class="bp-head">Your bet</div>
           <div class="spinner-box">Registering your bet on-chain...<br><span class="fine">A few seconds. Keep this open.</span></div>
-          <button type="button" class="confirm-btn" style="width:100%;">View your bet</button>
+          <button type="button" class="btn btn-primary btn-md btn-block" style="width:100%;">View your bet</button>
         </div></aside>
       </div>
     </div></main>
@@ -994,7 +1005,7 @@
           <div class="line"><span>Fee (only if you win)</span><span>$0.20</span></div>
           <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
         </div>
-        <button type="button" class="confirm-btn" data-close-dialog style="width:100%">Confirm bet</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" data-close-dialog style="width:100%">Confirm bet</button>
         <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
       </div>
     </dialog>
@@ -1024,7 +1035,7 @@
           <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
           <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
         </div>
-        <button type="button" class="confirm-btn" style="width:100%">Confirm bet</button>
+        <button type="button" class="btn btn-primary btn-md btn-block" style="width:100%">Confirm bet</button>
         <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
       </div></aside>
     </div></div></main>
@@ -1060,8 +1071,8 @@
           <span class="pos-fig">In-play<b>$50.00</b></span>
         </div>
         <div class="cta-bar" style="position:static;padding:8px 0 0;border:none;background:none;">
-          <button type="button">Add funds</button>
-          <a href="#" style="flex:1;"><button type="button" style="width:100%;">Open Wallet</button></a>
+          <button class="btn btn-primary btn-md" type="button">Add funds</button>
+          <a href="#" style="flex:1;"><button class="btn btn-secondary btn-md" type="button" style="width:100%;">Open Wallet</button></a>
         </div>
       </article>
       <div class="ptabs">
@@ -1239,8 +1250,8 @@
 
           <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
           <div class="auth-btns">
-            <button type="button" class="auth-btn" data-open="signin">Sign in</button>
-            <button type="button" class="auth-btn primary" data-open="signin">Sign up</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-open="signin">Sign in</button>
+            <button type="button" class="btn btn-primary btn-sm" data-open="signin">Sign up</button>
           </div>
         </div>
       </div>

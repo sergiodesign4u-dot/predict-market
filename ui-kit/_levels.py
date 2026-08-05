@@ -480,6 +480,19 @@ SPECIMEN_DEBT = {
                            "base.css, which is the half this entry used to name. The "
                            "rest is item 16d, the detail page being several things in "
                            "one file",
+    # OPENED BY THE VOCABULARY, 2026-08-05, and it is a defect the class map could
+    # not see before. The action bar's two buttons carried NO class of their own
+    # until the migration, so no containment reader could name them; they carry
+    # `.btn` now, and the moment they did, `position` read as containing a button.
+    # It does, on exactly one screen: `ui-visual/my-profile.html` puts the CTA bar
+    # INSIDE `<article class="pos">`, and `ui-visual/wallet.html` puts the same bar
+    # beside it as a sibling. Two screens disagree about whose child that bar is,
+    # which is backlog item 16d seen from the containment side rather than from the
+    # file side. Declared rather than staged, because staging it would teach the
+    # arrangement that is probably the wrong one of the two.
+    ("position", "button"): "the CTA bar is a child of article.pos on my-profile and a "
+                            "sibling of it on wallet, so one of the two screens is wrong "
+                            "about the bar's owner. Item 16d; closes when the two agree",
     ("tabs", "*"): "the .ptab-panel is a content panel, so a profile tab holds a card "
                    "gallery and a position record. The switcher and the panel are one "
                    "file, item 16; closes when they are two",

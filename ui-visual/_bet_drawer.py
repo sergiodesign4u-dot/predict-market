@@ -61,7 +61,7 @@ BINARY_SHEET = '''
             <div class="line"><span>Fee (only if you win)</span><span>$0.20</span></div>
             <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
           </div>
-          <button type="button" class="confirm-btn" data-sheet-confirm style="width:100%">Confirm bet</button>
+          <button type="button" class="btn btn-primary btn-lg btn-block" data-sheet-confirm>Confirm bet</button>
           <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
         </div>
       </dialog>
@@ -84,7 +84,7 @@ MULTI_SHEET = '''
             <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
             <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
           </div>
-          <button type="button" class="confirm-btn" data-sheet-confirm style="width:100%">Confirm bet</button>
+          <button type="button" class="btn btn-primary btn-lg btn-block" data-sheet-confirm>Confirm bet</button>
           <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
         </div>
       </dialog>
@@ -244,8 +244,12 @@ def rewrite_dock(html):
         dock = dock.replace('class="bp-side sel">', 'class="bp-side sel" data-open-sheet="yes">', 1)
         dock = dock.replace('class="bp-side">', 'class="bp-side" data-open-sheet="no">', 1)
     # drop the '$X to win' meta and the dock Confirm button (the drawer has them)
+    # The Confirm is matched by its EMPHASIS and not by a place-name: it was
+    # `.confirm-btn` until the vocabulary migration of 2026-08-05, and the dock's
+    # other two buttons are `.bp-side`, which carry no `.btn` at all. One brass
+    # action per zone is the rule, so `btn-primary` names exactly one control here.
     dock = re.sub(r'\s*<span class="dock-meta">.*?</span>', '', dock, flags=re.S)
-    dock = re.sub(r'\s*<button[^>]*class="confirm-btn"[^>]*>.*?</button>', '', dock, flags=re.S)
+    dock = re.sub(r'\s*<button[^>]*class="btn btn-primary[^"]*"[^>]*>.*?</button>', '', dock, flags=re.S)
     if dock == orig:
         return html, False
     return html[:start] + dock + html[end:], True
