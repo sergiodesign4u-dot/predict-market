@@ -116,8 +116,14 @@ def stale():
         want = digest(sources(row))
         if row.get("sha") != want:
             moved.append("%s %s" % (row["component"], row["id"]))
+        # A SHOT WITH NO `file` IS A MEASUREMENT AND NOT A MISSING PICTURE.
+        # Since 2026-08-05 the capture photographs `disabled` and measures the
+        # other four states without writing a png, because the component page
+        # renders a picture for `disabled` and for nothing else. A reading with
+        # no file is the normal case now; a reading that NAMES a file and cannot
+        # find it is still a defect, and that is what this asks.
         for key, shot in row.get("shots", {}).items():
-            if not (OUT / shot["file"]).exists():
+            if shot.get("file") and not (OUT / shot["file"]).exists():
                 missing.append("%s %s %s" % (row["component"], row["id"], key))
     return moved, missing
 
@@ -300,14 +306,20 @@ def orphans():
        missing-file check, and it was not free: two `tabs` focus pictures had
        been sitting in the tree with nothing pointing at them, kept alive by a
        check that only ever asked whether a named file was still there."""
-    known = {shot["file"] for row in load() for shot in row.get("shots", {}).values()}
+    known = {shot["file"] for row in load() for shot in row.get("shots", {}).values()
+             if shot.get("file")}
     return sorted(str(p.relative_to(OUT)) for p in OUT.rglob("*.png")
                   if str(p.relative_to(OUT)) not in known)
 
 
 def unphotographed():
-    """(components that should have a picture and have none and are not
-    declared; declared entries that DO have pictures)."""
+    """(components that should have a state reading and have none and are not
+    declared; declared entries that DO have one).
+
+    It asks the MANIFEST and not the folder, which is why it kept working when
+    the capture stopped writing a png for every state on 2026-08-05: a component
+    is covered when its faces have been measured, and a picture is one thing that
+    may come out of a measurement rather than the measurement itself."""
     import _levels
     shot = set(by_component())
     live = {p.stem for p in COMP.glob("*.css")

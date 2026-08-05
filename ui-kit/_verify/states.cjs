@@ -255,11 +255,20 @@ function classesIn(subjects) {
             if (!group || group.specimen !== spec.id) continue;
           }
 
+          /* MEASURED AND NOT PHOTOGRAPHED, since 2026-08-05. Every one of the
+             four states is still raised with a real pointer, a real Tab and the
+             mouse really held down, and every value the tables and the face
+             grouping read comes from here exactly as it did. What is gone is the
+             png: the component page renders a picture for `disabled` and for
+             nothing else, on purpose and with the reason written in
+             _gen_component_pages.py, and this loop had been writing 718 files
+             that no page, no specimen and no script ever referenced. 14.6 MB in
+             git, re-shot on every css edit, and the toll that made a one-line
+             change to a component expensive. ui-kit/docs/backlog.md S42. */
           for (const state of STATES) {
-            const file = `${group.id}-${state}-${theme}.png`;
-            const shot = await s.shoot(el.i, state, path.join(dir, file));
+            const shot = await s.shoot(el.i, state, null);
             if (!shot) continue;
-            group.shots[`${state}-${theme}`] = { file: `${component}/${file}`, ...shot };
+            group.shots[`${state}-${theme}`] = shot;
           }
           // disabled is read and never set
           const dis = await s.ask(`disabledAt(${el.i})`);
@@ -298,17 +307,23 @@ function classesIn(subjects) {
       if (g.specimen !== first.specimen) {
         first.also = [...new Set([...(first.also || []), g.specimen])];
       }
-      // an orphan png is a picture nobody can explain, so it goes with its group
+      // an orphan png is a picture nobody can explain, so it goes with its
+      // group. Most readings carry no file since 2026-08-05: the four raised
+      // states are measured and not photographed, so there is nothing on disk to
+      // delete and the count below is of readings merged rather than files
+      // removed.
       for (const shot of Object.values(g.shots)) {
-        const p = path.join(OUT, shot.file);
-        if (fs.existsSync(p)) fs.unlinkSync(p);
+        if (shot.file) {
+          const p = path.join(OUT, shot.file);
+          if (fs.existsSync(p)) fs.unlinkSync(p);
+        }
         dropped++;
       }
     }
     for (const g of kept) rows.push({ component, ...g });
     console.log(`${component}: ${kept.length} distinct face(s) from ${seen.size} occurrence(s), `
-                + `${kept.reduce((n, g) => n + Object.keys(g.shots).length, 0)} picture(s)`
-                + (dropped ? `, ${dropped} duplicate picture(s) deleted` : ''));
+                + `${kept.reduce((n, g) => n + Object.keys(g.shots).length, 0)} reading(s)`
+                + (dropped ? `, ${dropped} duplicate reading(s) merged` : ''));
   }
   await B.shutdown();
 

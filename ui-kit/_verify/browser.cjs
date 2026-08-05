@@ -941,10 +941,21 @@ async function open(opts) {
            run. Proved both ways before it was changed: the same clip fails
            without fullPage at scroll 0 and at scroll 138, and succeeds with it
            at both. */
-        await page.screenshot({
-          path: file, fullPage: true,
-          clip: { x: clip.x, y: clip.y, width: clip.width, height: clip.height },
-          scale: clip.width > 360 ? 'css' : 'device' });
+        /* A NULL PATH MEASURES AND DOES NOT WRITE, AND THAT IS THE COMMON CASE.
+           The clip is computed either way, so every value below - the settled
+           face, the box, the pad that was wanted against the pad that was got -
+           is the same whether or not a png comes out of it, and the gates that
+           read them do not change. What changes is that this pass stopped
+           writing 718 files nothing renders: `_gen_component_pages.py` puts a
+           picture on a page only for `disabled`, the one state a reader cannot
+           raise on the live specimen three sections up, and the capture had
+           never followed that decision. ui-kit/docs/backlog.md S42. */
+        if (file) {
+          await page.screenshot({
+            path: file, fullPage: true,
+            clip: { x: clip.x, y: clip.y, width: clip.width, height: clip.height },
+            scale: clip.width > 360 ? 'css' : 'device' });
+        }
         value = { value: last, w: Math.round(clip.width), h: Math.round(clip.height),
                   pad: clip.got, needed: clip.want, short: clip.short };
       }
