@@ -10,7 +10,7 @@ a stale png renders exactly as confidently as a fresh one. That is the class of
 defect gate 29 exists for, one level up.
 
 WHAT THE STAND PAGES ACTUALLY SHOW, SINCE 2026-08-04, AND IT IS NO LONGER THE
-PICTURE. The capture writes two things per state per theme, a png and the nine
+PICTURE. The capture writes two things per state per theme, a png and the ten
 values the face was read at, and the pages now render the values: what the face
 IS at rest, and what each state MOVES. A photograph of a control is a photograph
 of something the reader can hover three sections up the same page, and the crop

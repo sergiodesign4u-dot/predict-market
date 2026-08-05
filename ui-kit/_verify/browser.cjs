@@ -114,6 +114,13 @@
       their backslashes. Everything below is a TEMPLATE LITERAL, and a lone
       backslash-d in one is an escape sequence node swallows, so /^[\\d.]+m?s$/
       arrived as /^[d.]+m?s$/ and matched nothing that could exist.
+       AND THE SAME FACT BITES A SECOND WAY, found 2026-08-05 while adding the
+       ring to face(): a BACKTICK inside a comment down here closes the literal.
+       This project writes a class name in backticks everywhere else, so writing
+       one in a comment in this file is the natural thing to do, and it turns the
+       reader into a syntax error at load rather than a wrong measurement. No
+       backtick below this line, and no dollar-brace either: the whole block is
+       one string being built.
       Third, found while fixing the first two: the walk recursed on
       rule.cssRules, which only @media and @supports used to have. Chrome ships
       CSS Nesting, so every style rule now carries an EMPTY list, an empty list
@@ -289,11 +296,43 @@ window.__ask = (function () {
      opacity is here for the disabled fade, which is the only state this family
      expresses that way. Geometry that is only SIZE stays out on purpose: a
      different padding is the same face at a different size, and splitting on it
-     would put one picture on the page twice. */
+     would put one picture on the page twice.
+
+     THE RING JOINED ON 2026-08-05, AND IT IS THE TENTH FOR THE SAME REASON THE
+     SEVENTH AND EIGHTH JOINED. outline is drawn outside the border box, so it
+     is not the face in the strict sense, and the gallery said exactly that for
+     a stage: "a focus row that reports no movement is saying the face does not
+     move, and the ring is on the live frame." That sentence is a rationalisation
+     of a gap. The FOCUS row of every component page reported that nothing moves,
+     on 93 groups, because the one thing focus does was the one thing not read,
+     and 2026-08-05's digest made the gap a plain sentence on the plate instead
+     of a cell nobody scans.
+
+     It also merged two controls that answer the keyboard differently. Measured
+     on how-it-works.html with the element actually focused: the close disc rings
+     rgb(215,172,83) on every dialog head in the product and rgb(255,255,255) on
+     the how-it-works head, brass against white, and in daylight rgb(104,79,24)
+     against rgb(33,31,25). The states pass reported 4 faces from 10 occurrences
+     before that merge and 4 from 9 after, which is an instrument saying nothing
+     changed while a whole state moved.
+
+     ui-kit/docs/backlog.md S40 said this could not be one property, because the
+     grouping key is taken at REST where :focus-visible does not match. That is
+     true of the FIRST key, which only decides what gets shot together, and the
+     row was written from it. states.cjs then merges on a signature of all four
+     states in BOTH themes, and that is where a ring difference lands. Rest reads
+     no ring for anybody, so no group is lost; focus reads the real one, so a
+     group that should split now splits.
+
+     Four values and not one: a colour with no width is a ring that may not be
+     drawn, and an offset is what decides whether it lands on the control or on
+     the plate. The style is what tells none from a real ring in one word. */
   function face(cs) {
     return [cs.backgroundColor, cs.backgroundImage.slice(0, 50), cs.borderTopColor,
             cs.borderTopWidth, cs.color, cs.borderTopLeftRadius,
-            cs.transform, cs.boxShadow.slice(0, 60), cs.opacity].join(' | ');
+            cs.transform, cs.boxShadow.slice(0, 60), cs.opacity,
+            [cs.outlineStyle, cs.outlineWidth, cs.outlineColor, cs.outlineOffset].join(' ')
+    ].join(' | ');
   }
 
   var UA_LINK = { 'rgb(0, 0, 238)': 1, 'rgb(85, 26, 139)': 1, 'rgb(0, 0, 255)': 1 };

@@ -605,9 +605,27 @@ STATE_WHAT = {"rest": "rest", "hover": "hover", "active": "held down",
 # above, painted by components/index.css like every other screen in the repo.
 FACE = [("ground", "colour"), ("gradient", "text"), ("edge", "colour"),
         ("edge width", "len"), ("ink", "colour"), ("corner", "len"),
-        ("lift", "text"), ("shadow", "text"), ("fade", "text")]
+        ("lift", "text"), ("shadow", "text"), ("fade", "text"),
+        # THE TENTH, ADDED 2026-08-05, and it is the one focus actually moves.
+        # It is a sentence rather than a swatch because it is four values -
+        # style, width, colour, offset - and a colour with no width is a ring
+        # that may not be drawn at all. `none 0px rgb(...) 0px` is a control
+        # with no ring, and QUIET below is what keeps that out of the rest row.
+        ("ring", "text")]
 FACE_CLIP = {1: 50, 7: 60}
 QUIET = {"none", "1", "0px", "normal"}
+
+
+def no_ring(val):
+    """A ring that is not drawn, whatever colour the browser reports for it.
+
+    `outlineColor` always has a value: with no rule at all it comes back as the
+    element's own `color`, so a rest row would print "ring: none 0px rgb(237,
+    231, 218) 0px" on every control in the product and the one row that matters
+    would be lost in it. The ring exists when the style is not `none` and the
+    width is not zero, which is two words of the four."""
+    bits = (val or "").split()
+    return len(bits) < 2 or bits[0] == "none" or bits[1] in ("0px", "0")
 
 
 def face_bits(value):
@@ -658,14 +676,34 @@ def face_row(bits, base=None):
             if val == base[i][1]:
                 continue
             was = base[i][1]
+            # A RING THAT IS NOT DRAWN CANNOT MOVE, and it changes value all the
+            # time. `outline-color` defaults to `currentColor`, so a control that
+            # takes brighter ink on hover reports a different ring in the same
+            # breath, while `outline-style` stays `none` and nothing is painted.
+            # The first run said "hover and press move ground, edge, ink and
+            # ring" on 12 groups for exactly that reason: a value read where no
+            # rule was ever written.
+            if label == "ring" and no_ring(val) and no_ring(was):
+                continue
+            # THE RING ARRIVES, it does not move from something. Printing
+            # "ring: 2px solid brass from none 0px rgb(237,231,218) 0px" is a
+            # true sentence in which the half a reader needs is second and the
+            # half that is a browser default is first.
+            if label == "ring" and no_ring(was):
+                out.append('<span class="%s"><em>%s arrives</em>%s</span>'
+                           % (cls, esc(label), face_cell(kind, val, i)))
+                continue
+            if label == "ring" and no_ring(val):
+                out.append('<span class="%s"><em>%s goes</em></span>' % (cls, esc(label)))
+                continue
             out.append('<span class="%s"><em>%s</em>%s <span class="ck-fx-to">from</span> %s</span>'
                        % (cls, esc(label), face_cell(kind, val, i), face_cell(kind, was, i)))
             continue
-        if val in QUIET:
+        if val in QUIET or (label == "ring" and no_ring(val)):
             continue
         out.append('<span class="%s"><em>%s</em>%s</span>' % (cls, esc(label), face_cell(kind, val, i)))
     if not out:
-        return '<span class="ck-fx ck-fx-same">nothing in the nine values moves</span>'
+        return '<span class="ck-fx ck-fx-same">nothing in the ten values moves</span>'
     return "".join(out)
 
 
@@ -685,10 +723,10 @@ def human_list(items, join="and"):
 
 
 def face_digest(moved):
-    """What actually moves, in one line, so the nine values can stay folded.
+    """What actually moves, in one line, so the ten values can stay folded.
 
     THE TABLE UNDER THIS WAS A QUARTER OF THE PAGE and most of its cells said
-    "nothing in the nine values moves". Measured on 2026-08-05: the states
+    "nothing in the ten values moves". Measured on 2026-08-05: the states
     section is 24.3 per cent of the switch's page, 20.6 of the card's and 15.4
     of the button's, and it is a grid of rgb triples in two themes for every
     face. Those numbers are the evidence and they have to stay reachable; they
@@ -754,9 +792,12 @@ def state_gallery(name):
     hover value is the cascade resolved, not a declaration. What changed is that
     the page shows the measurement instead of a picture of it.
 
-    The ring is not in the nine. `outline` is drawn outside the box and is not
-    part of a face, so a focus row that says nothing moved is saying the face
-    does not move, which is true, and the ring is on the live frame.
+    THE RING IS THE TENTH AND IT WAS NOT THERE UNTIL 2026-08-05. The argument
+    for leaving it out was that `outline` is drawn outside the border box, so a
+    focus row saying nothing moved was saying the FACE does not move, which is
+    true and is not what a reader of a focus row is asking. The consequence was
+    93 groups reporting that focus does nothing, and two close buttons that ring
+    brass and white being merged into one answer. See `browser.cjs face()`.
     """
     groups = CAPTURED.get(name)
     if not groups:
@@ -779,9 +820,13 @@ def state_gallery(name):
                 if not shot or st == "rest":
                     continue
                 bits = face_bits(shot["value"])
+                # the same guard face_row() applies, and for the same reason: a
+                # ring nobody draws still changes value, because outline-color
+                # defaults to currentColor
                 moved.setdefault(st, set()).update(
                     fname for i, ((fname, _kind), val) in enumerate(bits)
-                    if val != base[i][1])
+                    if val != base[i][1]
+                    and not (fname == "ring" and no_ring(val) and no_ring(base[i][1])))
                 rows.append('<tr><td class="tk-role">%s</td><td class="ck-fx-cell">%s</td></tr>'
                             % (esc(STATE_WHAT[st]), face_row(bits, base)))
             panels.append('<div class="tk-theme-fig" data-theme="%s"><b>%s</b>'
@@ -793,7 +838,7 @@ def state_gallery(name):
         # is the sentence the grid of rgb triples was being read FOR. See
         # face_digest() for the measurement that asked for this.
         panels = ('<details class="ck-nums"><summary><span class="ck-nums-say">%s</span>'
-                  '<span class="ck-nums-open">the nine values, both themes</span></summary>'
+                  '<span class="ck-nums-open">the ten values, both themes</span></summary>'
                   '<div class="tk-theme-grid">%s</div></details>'
                   % (esc(face_digest(moved)) or "measured", "".join(panels))) if panels else ""
         missing = [s for s in ("hover", "active", "focus")
@@ -959,9 +1004,11 @@ def sections_for(name, c):
              "resolved and cannot be read out of a declaration. Nothing here is a state faked with "
              "a stand class. Two elements that measure the same in all four states in both themes "
              "are one answer, however many screens carry them, and that grouping is computed "
-             "rather than chosen. The ring is not among the nine values, because "
-             "<code>outline</code> is drawn outside the box: a focus row that reports no movement "
-             "is saying the face does not move, and the ring is on the live frame. The numbers go "
+             "rather than chosen. The ring is the tenth value and it joined on 2026-08-05: "
+             "<code>outline</code> is drawn outside the border box, so it is not the face in the "
+             "strict sense, and for a stage this page said so and reported that focus moves "
+             "nothing on 93 groups, which is the one state whose whole content it was not "
+             "reading. The numbers go "
              "stale the moment a rule changes, so each block records the files it was measured "
              "from and <code>python3 ui-kit/_states.py</code> fails when their bytes move."),
             gallery)
