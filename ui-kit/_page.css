@@ -15,6 +15,8 @@
   font-size:clamp(30px,5vw,44px);font-weight:700;letter-spacing:-.03em;margin:0;text-wrap:balance}
 .tk-hero p{color:var(--text-muted);font-family:var(--font-body);
   margin:10px 0 0;max-width:66ch;line-height:1.55;font-size:14px}
+/* 66 and not the measure: this is the lead under a display title, and a lead
+   reads as a lead by being shorter than the body under it. */
 .tk-hero code,.tk-note code,.tk-tbl code{font-family:var(--font-mono);
   font-size:.9em;color:var(--text-brass)}
 /* A link in running text. Without this it falls back to the browser blue, which
@@ -71,8 +73,35 @@
 .tk-sec>h2::before{content:attr(data-n);font-family:var(--font-mono);font-size:10px;
   color:var(--text-muted);border:1px solid var(--border-hairline);border-radius:6px;
   padding:1px 6px;letter-spacing:0}
+/* ============================================================================
+   ONE MEASURE, DECLARED ONCE, AND IT WAS SIX NUMBERS AND ONE BLOCK WITH NONE.
+   Measured on 2026-08-05 with the real `ch` unit, over four component pages:
+   a bare `<p>` inside a section ran at 99 characters per line, `.tk-note` at 76,
+   a `.tk-doc-list` item at 72, a gallery caption at 76 and a rule paragraph at
+   63. Five measures on one page, and the widest of them was the one with NO
+   max-width at all - which is the block that carries what the page is actually
+   saying, the prose under WHAT IT IS and ANATOMY.
+   The sheet declared the same intent with 60, 66, 72, 74, 76 and 80, none of
+   them reading from the others, so nothing could be changed without changing it
+   six times. It is one custom property now, and the entries that keep their own
+   value keep a reason with it.
+   74 is the value because it is what the body-prose rules already used most, so
+   the change moves the fewest blocks that were already right, and because 99 is
+   past every measure this system or anybody else has settled on. `ui-kit/docs/
+   backlog.md` S1 closed the same question for the DOCUMENT pages and never
+   reached these ones. */
+:root{--measure:74ch}
+
+/* THE BLOCK THE PAGE IS ACTUALLY SAYING SOMETHING WITH, and it is the one that
+   had no measure. `md_to_html` emits a bare `<p>` for body prose inside a
+   section, and every OTHER paragraph on the page carries a class that had a
+   max-width: notes, captions, list items, rule blocks. So the sentence a reader
+   came for ran the full 1080px of the column while the footnote beside it was
+   held to 675. */
+.tk-sec>p{max-width:var(--measure)}
+
 .tk-note{color:var(--text-muted);font-family:var(--font-body);font-size:13px;
-  margin:0 0 18px;max-width:76ch;line-height:1.55}
+  margin:0 0 18px;max-width:var(--measure);line-height:1.55}
 .tk-subh{color:var(--text-muted);font-family:var(--font-body);font-size:11px;
   font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:26px 0 10px}
 
@@ -277,7 +306,7 @@
 .ck-ico code{font-family:var(--font-mono);font-size:10px;
   color:var(--text-muted)}
 .ck-cap{font-family:var(--font-body);font-size:12px;line-height:1.5;
-  color:var(--text-muted);margin:9px 2px 0;max-width:76ch}
+  color:var(--text-muted);margin:9px 2px 0;max-width:var(--measure)}
 /* The subject of a frame that is mostly somebody else's document. Its own line
    under the title, because it is the one thing on that line a reader needs
    before they look at the frame rather than after. */
@@ -362,7 +391,7 @@
 .tk-doc-toc-3{padding-left:var(--space-16);font-size:var(--text-11)}
 .tk-doc-body p{color:var(--text-muted);font-family:var(--font-body);
   font-size:var(--text-14);line-height:var(--leading-loose);
-  max-width:74ch;margin:0 0 var(--space-16)}
+  max-width:var(--measure);margin:0 0 var(--space-16)}
 .tk-doc-body strong{color:var(--text-primary);font-weight:var(--weight-bold)}
 .tk-doc-body code{font-family:var(--font-mono);font-size:var(--text-12);
   color:var(--text-primary)}
@@ -374,7 +403,7 @@
   font-weight:var(--weight-bold);color:var(--text-primary);
   margin:var(--space-20) 0 var(--space-8);scroll-margin-top:var(--space-20)}
 .tk-doc-list{margin:0 0 var(--space-16);padding-left:var(--space-20);
-  max-width:74ch;color:var(--text-muted);font-family:var(--font-body);
+  max-width:var(--measure);color:var(--text-muted);font-family:var(--font-body);
   font-size:var(--text-14);line-height:var(--leading-loose)}
 .tk-doc-list li{margin-bottom:var(--space-8)}
 .tk-doc-list li::marker{color:var(--text-brass)}
@@ -382,7 +411,7 @@
   border:1px solid var(--border-hairline);border-radius:var(--radius-10);
   background:var(--bg-well);color:var(--text-primary);
   font-family:var(--font-body);font-size:var(--text-13);
-  line-height:var(--leading-base);max-width:74ch}
+  line-height:var(--leading-base);max-width:var(--measure)}
 .tk-doc-pre{margin:0 0 var(--space-16);padding:var(--space-16);
   border:1px solid var(--border-hairline);border-radius:var(--radius-10);
   background:var(--bg-page);color:var(--text-muted);
@@ -429,7 +458,7 @@ p code,li code,td code{overflow-wrap:anywhere}
 .tk-doc-src{margin:var(--space-40) 0 0;padding-top:var(--space-16);
   border-top:1px solid var(--border-hairline);color:var(--text-muted);
   font-family:var(--font-body);font-size:var(--text-12);
-  line-height:var(--leading-base);max-width:74ch}
+  line-height:var(--leading-base);max-width:var(--measure)}
 @media (max-width:900px){
   .tk-doc-cols{grid-template-columns:minmax(0,1fr)}
   .tk-doc-toc{order:0;position:static;max-height:38vh}
@@ -465,7 +494,7 @@ p code,li code,td code{overflow-wrap:anywhere}
 .ck-gal-head>b{font-family:var(--font-mono);font-size:var(--text-12);color:var(--text-brass)}
 .ck-gal-head .ck-w{font-family:var(--font-mono);font-size:var(--text-10);color:var(--text-muted)}
 .ck-gal-head>a{font-size:var(--text-11);color:var(--text-muted)}
-.ck-gal-cap{margin:0 0 var(--space-12);font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-primary);max-width:76ch}
+.ck-gal-cap{margin:0 0 var(--space-12);font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-primary);max-width:var(--measure)}
 /* TWO BANDS, NOT TWO BOXES, and the reason is that a state picture is already a
    frame. A rounded card of one ground holding photographs of another ground put
    three edges between a reader and the thing being shown: the gallery plate, the
@@ -598,6 +627,8 @@ p code,li code,td code{overflow-wrap:anywhere}
 .ck-choice-col .tk-subh{margin-top:0}
 .ck-choice-col p{font-family:var(--font-body);font-size:13px;line-height:1.65;
   color:var(--text-muted);margin:0 0 10px;max-width:60ch}
+/* 60 and not the measure: this paragraph stands in a column of a choice grid,
+   which is narrower than the page. A measure wider than its column is not one. */
 .ck-choice-col p:last-child{margin-bottom:0}
 .ck-threshold{border-left:2px solid var(--color-action);padding-left:14px}
 
@@ -631,16 +662,16 @@ p code,li code,td code{overflow-wrap:anywhere}
   margin:0 0 10px;background:var(--bg-surface)}
 .ck-var code{font-family:var(--font-mono);font-size:11px;color:var(--text-brass)}
 .ck-var p{font-family:var(--font-body);font-size:13px;line-height:1.6;
-  color:var(--text-muted);margin:6px 0 0;max-width:72ch}
+  color:var(--text-muted);margin:6px 0 0;max-width:var(--measure)}
 
 .ck-when{margin:0 0 var(--space-16);padding-left:18px}
 .ck-when li{font-family:var(--font-body);font-size:13px;line-height:1.65;
-  color:var(--text-muted);margin:0 0 7px;max-width:72ch}
+  color:var(--text-muted);margin:0 0 7px;max-width:var(--measure)}
 /* The rule and the anti-rule are the two halves of one decision, so they are
    marked apart by the edge rather than by colour: green and red are outcome
    semantics in this product and a piece of guidance is not an outcome. */
 .ck-rule,.ck-antirule{font-family:var(--font-body);font-size:13px;line-height:1.65;
-  color:var(--text-primary);margin:0 0 var(--space-16);max-width:72ch;
+  color:var(--text-primary);margin:0 0 var(--space-16);max-width:var(--measure);
   border-left:2px solid var(--color-action);padding-left:14px}
 .ck-antirule{border-left-style:dashed;color:var(--text-muted)}
 .ck-rule code,.ck-antirule code,.ck-when code,.ck-var code,.ck-choice-col code{
@@ -650,14 +681,14 @@ p code,li code,td code{overflow-wrap:anywhere}
   margin:0 0 10px;background:var(--bg-surface)}
 .ck-cand>code{font-family:var(--font-mono);font-size:12px;color:var(--text-brass)}
 .ck-cand p{font-family:var(--font-body);font-size:13px;line-height:1.65;
-  color:var(--text-muted);margin:8px 0 0;max-width:76ch}
+  color:var(--text-muted);margin:8px 0 0;max-width:var(--measure)}
 .ck-cand-where{font-family:var(--font-mono);font-size:11px}
 
 /* ---- the guide (generated by _gen_why_page.py) ----------------------------- */
 /* The one page in the vitrine written for someone who has not met the system.
    Everything here is stand furniture; the brand plate below reads product ROLES
    so it cannot print a colour the system does not have. */
-.tk-why .tk-note{max-width:80ch}
+.tk-why .tk-note{max-width:var(--measure)}
 
 /* attribute -> what it means -> where you see it */
 .ck-attrs th:first-child,.ck-attrs td:first-child{width:210px}
@@ -709,7 +740,7 @@ p code,li code,td code{overflow-wrap:anywhere}
 .ck-chain li>a{color:var(--text-brass);text-decoration:underline;
   text-decoration-color:var(--border-brass,rgba(199,162,78,.3));text-underline-offset:2px}
 .ck-chain li p{font-family:var(--font-body);font-size:13px;line-height:1.65;
-  color:var(--text-muted);margin:6px 0 0;max-width:74ch}
+  color:var(--text-muted);margin:6px 0 0;max-width:var(--measure)}
 
 /* the four doors */
 .ck-doors{display:grid;grid-template-columns:1fr;gap:10px;margin:0 0 var(--space-16)}
@@ -730,7 +761,7 @@ p code,li code,td code{overflow-wrap:anywhere}
 .ck-order{counter-reset:ord;list-style:none;margin:0;padding:0}
 .ck-order li{counter-increment:ord;position:relative;padding-left:32px;margin:0 0 12px;
   font-family:var(--font-body);font-size:13px;line-height:1.65;color:var(--text-muted);
-  max-width:76ch}
+  max-width:var(--measure)}
 .ck-order li::before{content:counter(ord);position:absolute;left:0;top:0;
   font-family:var(--font-mono);font-size:11px;color:var(--text-brass)}
 .ck-order li b{color:var(--text-primary)}
@@ -742,7 +773,7 @@ p code,li code,td code{overflow-wrap:anywhere}
   margin:0 0 8px;background:var(--bg-surface)}
 .ck-sources code{font-family:var(--font-mono);font-size:12px;color:var(--text-brass)}
 .ck-sources span{display:block;font-family:var(--font-body);font-size:13px;line-height:1.6;
-  color:var(--text-muted);margin-top:5px;max-width:76ch}
+  color:var(--text-muted);margin-top:5px;max-width:var(--measure)}
 
 /* ---- the census windows (button.html, section Every other control) --------- */
 /* A HOLE IN THE PAGE ONTO ANOTHER PAGE. The iframe is the real specimen at its

@@ -388,6 +388,21 @@ TOK_BODY = re.sub(r"/\*.*?\*/", "", TOK, flags=re.S)
 declared = set(re.findall(r"(--[\w-]+)\s*:", TOK_BODY))
 readers = [p for p in SHEETS if p.name not in ("tokens.css", "index.css")]
 readers += [KIT / "_page.css", KIT / "_specimen.css"] + list(SPECS.glob("*.html"))
+# THE VITRINE MAY DECLARE A VITRINE VALUE, AND THE PRODUCT MAY NOT. Every var a
+# component reads has to come from components/tokens.css, which is what this gate
+# is for. The two sheets that dress this vitrine are not product - gate 6 fails
+# the build if either styles a product class - and a value that describes the
+# DOCUMENT rather than the thing it documents has nowhere in the product's token
+# file to live. `--measure`, the reading measure of a component page, is the first
+# one: it was six different numbers written into fifteen rules until 2026-08-05
+# (ui-kit/docs/defects.md row 67), and the fix is a value declared once, which is
+# the same answer tokens.css is. So a var declared by one of these two sheets
+# counts as declared FOR THAT SHEET, and for nothing else: a component doing the
+# same is still a dangling var, because a component's values belong to the system.
+VITRINE_OWN = {}
+for _v in (KIT / "_page.css", KIT / "_specimen.css"):
+    _body = re.sub(r"/\*.*?\*/", "", _v.read_text(encoding="utf-8"), flags=re.S)
+    VITRINE_OWN[_v] = set(re.findall(r"(--[\w-]+)\s*:", _body))
 # A screen is a reader too. Most of them consume the system through a class, but
 # a value can also be written straight into markup, and the multi-outcome chart
 # does exactly that: its page script hands the five --series-* roles to the SVG
@@ -400,11 +415,14 @@ for p in readers:
 # The one exception, with its reason: DESIGN.md names bronze as part of the brand
 # metal, so it is documented rather than dead. Anything else has to go or be wired.
 RESERVED = set()   # --brass-800 (bronze) was the one exception; step 7 deleted it instead
+# A vitrine value is not an orphan when the sheet that declares it reads it, and
+# it would be counted as one here because `declared` is tokens.css only. Nothing
+# to subtract: it was never added.
 orphan = sorted(declared - read - RESERVED)
 check("11 no orphan token", not orphan, "%d: %s" % (len(orphan), ", ".join(orphan[:5])))
 dangling = sorted({m for p in readers
                    for m in re.findall(r"var\((--[\w-]+)", p.read_text(encoding="utf-8", errors="ignore"))
-                   if m not in declared})
+                   if m not in declared and m not in VITRINE_OWN.get(p, ())})
 check("11 no dangling var()", not dangling, "%d: %s" % (len(dangling), ", ".join(dangling[:5])))
 
 # 12 ------------------------------------------------------ no raw scale value --
