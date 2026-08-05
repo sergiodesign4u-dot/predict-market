@@ -381,11 +381,18 @@ usually declared.
 | `SHARED` (5) | `.sel` and three skeleton widths are words no component owns: several files write them as a modifier on their own class | nothing, unless the words move |
 | `MODIFIER` (1) | `.skeleton` names a STATE, not a thing, so it neither opens a root nor counts as standing inside one | nothing. The map cannot know states, so this list will grow with hover, focus-visible and disabled |
 | `RAISE` (18) | a level the arithmetic reads too low: a block whose parts are all its own classes, or a screen shell that is an organism because of what it IS | thirteen are permanent by that reasoning. `hiw-dialog` is a debt (backlog item 18) and the four added on 2026-08-05 - `input`, `filters`, `skeleton`, `toc` - are findings that close by SPLITTING the component, backlog S41 |
-| `TRUE_ATOM` (3) | the other answer to an empty containment: the map saw nothing because there is nothing, so this component really is one control. `button`, `oddsbar`, `loadmore` | two are permanent. `loadmore` is a debt of a different kind: the level is right and the COMPONENT should not exist, because it duplicates the catnav chip. Backlog S41 |
-| `ORDER_BREAK` (4) | a containment cycle, dropped for ORDERING only and kept for the level, with the direction decided by which file restyles the other's insides | three of the four name a backlog item. A cycle caused by a class in the wrong file closes when the class moves |
-| `SPECIMEN_DEBT` (11) | a stand that is short for a KNOWN reason: a page plate inside a component file, two components on one element, `.pos` used as a plate | **every entry is a debt**. Each names what closes it, and closing means splitting the component, never widening the line |
-| `STATIC` (10) | the components that deliberately get NO interaction states: a bar drawn to a width, a table of read-only figures, a grid whose every control belongs to another file | nine are permanent by that reasoning. One, `options`, records a markup defect it cannot fix: the row is a `<div>` with a click handler and no keyboard path |
+| `TRUE_ATOM` (5) | the other answer to an empty containment: the map saw nothing because there is nothing, so this component really is one control. `button`, `oddsbar`, `loadmore`, `input`, `toggle` | four are permanent. `loadmore` is a debt of a different kind: the level is right and the COMPONENT should not exist, because it duplicates the catnav chip. Backlog S41 |
+| `ORDER_BREAK` (2) | a containment cycle, dropped for ORDERING only and kept for the level, with the direction decided by which file restyles the other's insides | both name a backlog item. A cycle caused by a class in the wrong file closes when the class moves |
+| `SPECIMEN_DEBT` (10) | a stand that is short for a KNOWN reason: a page plate inside a component file, two components on one element, `.pos` used as a plate | **every entry is a debt**. Each names what closes it, and closing means splitting the component, never widening the line |
+| `STATIC` (11) | the components that deliberately get NO interaction states: a bar drawn to a width, a table of read-only figures, a grid whose every control belongs to another file | ten are permanent by that reasoning. One, `options`, records a markup defect it cannot fix: the row is a `<div>` with a click handler and no keyboard path |
 | `NO_PRESS` (1) | the third answer to gate 25, which knew two: a control that has a hover and genuinely cannot have a press. `input` is a text field, and the pointer going down on one moves the caret rather than pressing anything | nothing. It is a fact about the control, and the gate still requires the hover, so the row cannot be used to skip a state |
+
+**The counts in that table are typed, and four of them had drifted** by the time gate 40 was
+written: `TRUE_ATOM` said 3 and holds 5, `ORDER_BREAK` said 4 and holds 2, `SPECIMEN_DEBT` said 11
+and holds 10, `STATIC` said 10 and holds 11. Nothing reads them, so nothing caught them. They are
+corrected above and the shape of the fix is the one this document argues for everywhere else:
+`python3 ui-kit/_levels.py` already knows every one of these numbers, and a count printed from the
+list cannot disagree with it. Backlog S43.
 
 `TRUE_ATOM` is the newest and it exists to close a hole the other seven did not cover. **An empty containment is not evidence of being an atom**: `_level()` returns 1 when the map found nothing inside a component, and it finds nothing in two unrelated situations - the component is one control, or the component is built entirely out of its own class names and a map that knows only component names can see nothing at all. Seventeen components have an empty containment. Ten carried a `RAISE`; the other seven were the entire atom shelf and not one had ever been examined, so `filters` (a switch AND a disclosure over a radio panel), `input` (which holds a chip GROUP) and `skeleton` (which declares `.sk-btn`) were printed as atoms by a function with no information. **Gate 39** asks the question once per component and takes an answer in one of the two lists, in both directions: a component in neither fails, and a `TRUE_ATOM` row for a component the arithmetic CAN read fails too, because there the map has an answer and the row is a second one.
 
@@ -610,6 +617,35 @@ Two more classes fell out on the first run and neither was a button: `.signin-le
 element in any tree, and `.delta .row`, course-page vocabulary living in the app header's file. Gate
 14 missed both for the same reason - each selector has a real ancestor, so it could match the gate's
 question without being able to match an element.
+
+### Gate 40, the same question walked backwards
+
+Gate 30 walks system to product. **Gate 40 walks product to system**, and until 2026-08-05 that
+direction had never been asked: for every class a painted screen WEARS, is there a rule in
+`components/` that reads it? A name with no rule is not nothing. It is indistinguishable from a
+component, so the next person reads `class="ed-chart"` off a screen, goes looking for
+`components/ed-chart.css`, finds nothing, and either invents the file or takes the name for
+something else. It is gate 14's dead selector from the other end: there a rule had no element, here
+an element has no rule.
+
+**Seven of the 431 worn classes have no rule**, and `_adoption.UNSTYLED` declares each with one of
+three reasons. *A hook*: a script in the page queries it, so it is markup a machine reads and must
+not be deleted (`.ed-act`, `.ed-chart`, `.ed-chart-multi`, `.rules-panel`). *Excluded*:
+`button.css` recolours `.prov-x` and `.prov-apple` to the brand mark and deliberately leaves
+`.prov-google` out, because the Google logotype is full-colour and a recoloured logotype is the
+wrong mark; the class is how a reader knows the omission was a decision. *Debt*: worn, styled by
+nothing, read by nothing (`.ed-market`, `.toast-wrap`), and it closes by a rule or by deletion,
+never by widening the line. Both checks run in both directions, as in 24, 30 and 39.
+
+**Building it found the reader.** The class tokenizer read `class="..."` inside `<script>`, so it
+reported `lg-item'+(i===sel?'` and `sel':'')+'` as class names. Stripping scripts took three classes
+out of the FORWARD reading too: `.l-yes`, `.l-no` and `.lbls` are on an element of **0** painted
+screens and named in the script of all **105**, because the feed script writes the odds bar's labels
+at run time, so gate 30 had been passing all three on the strength of a string literal. Three css
+headers were wrong by the same amount and now say what they measure: `oddsbar` stands on **9**
+screens rather than 105, `catnav` on **57** rather than 105, `options` on **14** rather than 25. It
+is the rule this repo already states, a checker asks the markup and not the text, arriving from a
+third direction.
 
 ### Gate 32, and the artefact that had no gate at all
 

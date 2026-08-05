@@ -3,7 +3,7 @@
 
    Reads: --edge-shade-strong, --outcome-no, --outcome-no-text, --outcome-yes, --outcome-yes-text
    Stand:  ui-kit/oddsbar.html
-   Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .oddsbar{margin-top:auto;margin-bottom:var(--space-12)}

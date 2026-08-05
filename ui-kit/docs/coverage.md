@@ -21,7 +21,7 @@ says so. No em dash.
 | bottomnav | 1 | bottomnav | 0 | 2 | 105 |
 | button | 3 | button-matrix, button-census, button-outcome-row | 0 | 9 | 105 |
 | card | 4 | card-binary, card-multi, card-loading, card-detail-head | 2 | 14 | 36 |
-| catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 6 | 105 |
+| catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 6 | 57 |
 | chart | 1 | chart | 1 | 12 | 11 |
 | comments | 1 | comments-thread | 1 | 16 | 9 |
 | cookie-consent | 1 | cookie-consent | 0 | 17 | 2 |
@@ -38,8 +38,8 @@ says so. No em dash.
 | loadmore | 1 | loadmore | 1 | 2 | 9 |
 | market | 1 | market-depth | 0 | 21 | 9 |
 | notice | 2 | notice-push, notice-reconcile | 1 | 8 | 105 |
-| oddsbar | 1 | oddsbar | 2 | 7 | 105 |
-| options | 2 | options-rows, options-multi | 2 | 6 | 25 |
+| oddsbar | 1 | oddsbar | 2 | 7 | 9 |
+| options | 2 | options-rows, options-multi | 2 | 6 | 14 |
 | position | 2 | position-list, position-loading | 1 | 14 | 36 |
 | profile | 1 | profile-identity | 0 | 7 | 2 |
 | quick | 1 | quick-amounts | 0 | 1 | 105 |
@@ -99,12 +99,15 @@ A real component the painted screens have not adopted. An offer, not debris. Do 
 | `.placeholder-line` | base.css | provenance: the same chip family in the same frozen page |
 | `.tbd` | base.css | provenance: ui-kit/kit.html still carries the grey tree's [TBD] chips and must keep rendering as it did. The painted screens have no such markup, because ui-visual/_strip_wireframe.py removed it |
 
-### Built or toggled at runtime (6)
+### Built or toggled at runtime (9)
 
 Never written into a file. Deleting any of these breaks a screen silently, because the grep that says they are unused is wrong.
 
 | class | file | why |
 |---|---|---|
+| `.l-no` | oddsbar.css | run time: the NO label of the same bar, same script |
+| `.l-yes` | oddsbar.css | run time: the YES label of the odds bar, written by the feed script out of the probability text |
+| `.lbls` | oddsbar.css | run time: the row that holds those two labels, same script |
 | `.lg-item` | bets-table.css | run time: the chart legend, built by the detail script |
 | `.m-label` | card.css | run time: the card meta row, split by the feed script |
 | `.m-val` | card.css | run time: the card meta row, split by the feed script |

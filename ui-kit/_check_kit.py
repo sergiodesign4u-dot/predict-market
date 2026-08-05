@@ -2122,6 +2122,54 @@ notes.append("%-34s %d empty containment(s): %d declared one control, %d raised"
              ("39 the atom shelf", _lv_empty, len(_lv_true_atom),
               _lv_empty - len(_lv_true_atom)))
 
+# 40 --------------------------------- and the system knows what the product wears --
+# THE REVERSE OF 30, AND THE DIRECTION NOBODY HAD ASKED. Gate 30 walks from the
+# system outward: every class components/ styles is worn by a painted screen or
+# declared. This walks back: every class a painted screen WEARS is read by a rule
+# in components/ or declared. Between them the two names have to meet, and until
+# 2026-08-05 only one of the two walks existed.
+#
+# A NAME WITH NO RULE IS NOT NOTHING. It is indistinguishable from a component:
+# the next person reads `class="ed-chart"` off a screen, looks for
+# components/ed-chart.css, finds nothing, and either invents the file or takes
+# the name for something else. It is gate 14's dead selector from the other end -
+# there a rule had no element, here an element has no rule - and it costs what
+# the six dead button classes cost, a vocabulary the product teaches and the
+# system does not have.
+#
+# THE FIRST RUN FOUND SEVEN, and four of them turned out to be right: a script in
+# the page queries .ed-act, .ed-chart, .ed-chart-multi and .rules-panel, so they
+# are markup a machine reads and must not be deleted. .prov-google is an
+# exclusion a rule makes on purpose. Two are debt, .ed-market and .toast-wrap,
+# and they are written down as debt rather than as a reason.
+#
+# IT ALSO FOUND THE READER. Building this made the class tokenizer report
+# `lg-item'+(i===sel?'` and `sel':'')+'` as class names, because it read
+# `class="..."` inside <script>. Fixing that took three classes OUT of the
+# forward reading as well: .l-yes, .l-no and .lbls are on an element of 0 painted
+# screens and named in the script of all 105, so gate 30 had been passing them on
+# the strength of a string literal. A checker asks the markup, not the text.
+#
+# Both directions, and the second check keeps the list honest the way 24 and 30
+# do: a declared class that gains a rule fails just as loudly as an undeclared
+# one, so the cheapest way past this gate can never be a new line in it.
+from _adoption import (unstyled as _ad_unstyled, UNSTYLED as _ad_bare,   # noqa: E402
+                       uv_used as _ad_uv_used)
+_bare_undeclared, _bare_idle, _bare_all = _ad_unstyled()
+check("40 the system knows what the product wears", not _bare_undeclared,
+      "%d: %s" % (len(_bare_undeclared), ", ".join(_bare_undeclared[:6])))
+check("40 no declared bare class is idle", not _bare_idle,
+      "%d: %s" % (len(_bare_idle), ", ".join(_bare_idle)))
+_bare_noreason = sorted(k for k, v in _ad_bare.items() if len(v.split()) < 8)
+check("40 every bare class says why it is bare", not _bare_noreason,
+      "%d: %s" % (len(_bare_noreason), ", ".join(_bare_noreason)))
+_bare_debt = sorted(k for k, v in _ad_bare.items() if v.startswith("debt:"))
+notes.append("%-34s %d of %d worn class(es) have no rule: %d hook, %d excluded, %d debt" %
+             ("40 worn, and unstyled", len(_bare_all), len(_ad_uv_used),
+              len([v for v in _ad_bare.values() if v.startswith("a hook:")]),
+              len([v for v in _ad_bare.values() if v.startswith("excluded:")]),
+              len(_bare_debt)))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

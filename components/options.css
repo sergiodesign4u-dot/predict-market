@@ -3,7 +3,7 @@
 
    Reads: --bevel-notice, --bg-chip, --bg-control, --border-hairline, --text-brass, --text-primary, --tint-brass-09, --tint-brass-16, --tint-brass-60
    Stand:  ui-kit/options.html
-   Stands on: 25 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, ...)
+   Stands on: 14 ui-visual screens (event-detail-logged-out-multi.html, event-detail-multi.html, event-feed-crypto-logged-out.html, event-feed-crypto.html, event-feed-culture-logged-out.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .opt-row{display:flex;align-items:center;gap:var(--space-8);border-top:1px solid var(--border-hairline);padding:var(--space-8) 0;font-size:var(--text-12)}

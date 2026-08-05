@@ -60,13 +60,25 @@ KIT = ROOT / "ui-kit"
 
 
 # ---- the two readings -------------------------------------------------------
-def classes_in(pattern, strip_style=False, strip_quoted=False):
+def classes_in(pattern, strip_style=False, strip_quoted=False, strip_script=False):
     """Which classes each file puts on an element, by file."""
     out = {}
     for f in sorted(glob.glob(pattern)):
         text = open(f, encoding="utf-8", errors="ignore").read()
         if strip_style:
             text = re.sub(r"<style[^>]*>.*?</style>", "", text, flags=re.S)
+        if strip_script:
+            # A CLASS INSIDE A JS STRING IS NOT A CLASS ON AN ELEMENT, and this
+            # reader was counting one as the other. `.l-yes`, `.l-no` and `.lbls`
+            # are on **0** of the 105 painted screens and named in the script of
+            # all 105, because the feed script writes the odds bar's labels at
+            # run time; gate 30 had been passing all three on the strength of a
+            # string literal. It is the rule CLAUDE.md already states - a checker
+            # asks the markup, not the text - arriving from a third direction.
+            # The tokenizer also picked up `lg-item'+(i===sel?'` and `sel':'')+'`
+            # as CLASS NAMES, which is what a reverse gate would have reported as
+            # a name the system does not know.
+            text = re.sub(r"<script\b[^>]*>.*?</script>", "", text, flags=re.S)
         if strip_quoted:
             # A stand page ends with the component's own css and every document
             # quotes markup, so class="x" inside <pre> or <code> is a QUOTATION,
@@ -83,7 +95,7 @@ def flat(d):
     return set().union(*d.values()) if d else set()
 
 
-uv_classes = classes_in(str(UV / "*.html"), strip_style=True)
+uv_classes = classes_in(str(UV / "*.html"), strip_style=True, strip_script=True)
 # overview.html lives in ui-visual/ but is the index OF the screens, not one of
 # them. Counting it would inflate every screen count by one and, worse, would let
 # a class the index happens to use pass as "carried by a painted screen".
@@ -93,7 +105,8 @@ uv_used = flat(uv_classes)
 kit_used = flat(classes_in(str(KIT / "specimens" / "*.html"))) \
     | flat(classes_in(str(KIT / "kit.html"))) | flat(classes_in(str(KIT / "shell.html"))) \
     | flat(classes_in(str(KIT / "*.html"), strip_quoted=True))
-wf_used = flat(classes_in(str(ROOT / "wireframes" / "*.html"), strip_style=True))
+wf_used = flat(classes_in(str(ROOT / "wireframes" / "*.html"), strip_style=True,
+                          strip_script=True))
 docs_used = flat(classes_in(str(ROOT / "*" / "*.html"), strip_style=True)) - uv_used - kit_used
 
 
@@ -144,6 +157,16 @@ NOT_WORN = {
     # screens ALSO ship one in the markup, so neither is a zero and neither
     # needed declaring. They were copied from the note the stand pages used to
     # carry, which had no gate under it to notice.
+    # THE THREE THE READER USED TO SEE THROUGH A JS STRING. Measured 2026-08-05:
+    # each is on an element of 0 painted screens and named in the script of all
+    # 105, and the reader was counting the string literal as a placement. Same
+    # component and same reason as the entry above; three lines rather than one
+    # because this list is keyed by class and a merged line cannot be checked
+    # idle.
+    "l-yes": "run time: the YES label of the odds bar, written by the feed "
+             "script out of the probability text",
+    "l-no": "run time: the NO label of the same bar, same script",
+    "lbls": "run time: the row that holds those two labels, same script",
     "m-label": "run time: the card meta row, split by the feed script",
     "m-val": "run time: the card meta row, split by the feed script",
     "lg-item": "run time: the chart legend, built by the detail script",
@@ -180,6 +203,70 @@ def unadopted():
     return undeclared, idle
 
 
+# ---- the other half: what the product wears that the system does not know ---
+# Gate 30 asks system -> product. This asks PRODUCT -> SYSTEM, and it is the
+# question nobody in this repo had ever put: for every class a painted screen
+# carries, is there a rule in `components/` that reads it?
+#
+# A NAME WITH NO RULE IS NOT HARMLESS. It looks exactly like a component: the
+# next person reads `class="ed-chart"` off a screen, goes looking for
+# `components/ed-chart.css`, finds nothing, and either invents it or copies the
+# name onto something else. It is gate 14's dead selector seen from the other
+# end - there the rule had no element, here the element has no rule - and the
+# cost is the same one the six dead button classes cost, a vocabulary the
+# product teaches and the system does not have.
+#
+# THREE REASONS A BARE CLASS CAN BE RIGHT, and the wording of each entry says
+# which:
+#
+#   a hook      a script in the page queries it. It is markup a machine reads,
+#               so it has no rule and must not be deleted.
+#   excluded    a rule names its siblings and leaves this one out ON PURPOSE.
+#               The class is how a person knows which one that is.
+#   debt        worn, styled by nothing, read by nothing. It closes by a rule
+#               or by deletion, never by widening this line.
+#
+# Checked one at a time on 2026-08-05, against the inline scripts of the screens
+# that carry it and against every rule in components/.
+UNSTYLED = {
+    "ed-act": "a hook: the detail script queries it. Every one of them also "
+              "stands inside .ed-actions, which styles `button`, so the class "
+              "carries no paint and the control is not bare",
+    "ed-chart": "a hook: the detail script queries the chart section to draw "
+                "into it. Its parts are styled - .ed-chart-head, -area, -foot, "
+                "-now in components/chart.css - and the section itself is an "
+                ".ed-section",
+    "ed-chart-multi": "a hook: the same script, telling a multi-outcome chart "
+                      "from a binary one",
+    "rules-panel": "a hook: the detail script shows and hides it, which is why "
+                   "one of the two ships with `hidden` on it",
+    "prov-google": "excluded: components/button.css recolours .prov-x and "
+                   ".prov-apple to the brand mark and deliberately does NOT "
+                   "name this one, because the Google logotype is full-colour "
+                   "and a recoloured logotype is the wrong mark. The class is "
+                   "how a reader knows the omission was a decision",
+    "ed-market": "debt: a second name on a section that is already an "
+                 ".ed-section, read by no script and matched by no rule. 9 "
+                 "screens. It closes by a rule or by deletion",
+    "toast-wrap": "debt: the wrapper around the toast specimens on one screen, "
+                  "read by no script and matched by no rule. 1 screen",
+}
+
+
+def unstyled():
+    """(worn with no rule and nobody declared, declared idle, every bare class).
+
+    The reading is `ui-visual/` only. wireframes/ carries its own inline
+    grey-box css and never links components/index.css, so a class there is not a
+    class this system was ever asked about.
+    """
+    known = set(styled())
+    bare = sorted(c for c in uv_used if c not in known)
+    undeclared = [c for c in bare if c not in UNSTYLED]
+    idle = [c for c in sorted(UNSTYLED) if c not in bare]
+    return undeclared, idle, bare
+
+
 def where(c):
     """Why this class shows the count it shows. Used by the stand pages."""
     if c in uv_used:
@@ -214,4 +301,23 @@ if __name__ == "__main__":
         print("\n%d declared:" % len(NOT_WORN))
         for c in sorted(NOT_WORN):
             print("   .%-20s %s" % (c, NOT_WORN[c]))
-    sys.exit(1 if (undeclared or idle) else 0)
+
+    # the other direction, printed by the same command because it is the same
+    # two readings and a person asking one question wants both answers
+    bare_undeclared, bare_idle, bare = unstyled()
+    print("\n%d of the %d classes the painted screens wear have no rule in "
+          "components/" % (len(bare), len(uv_used)))
+    if bare_undeclared:
+        print("\n%d not declared:" % len(bare_undeclared))
+        for u in bare_undeclared:
+            print("   ." + u)
+    if bare_idle:
+        print("\n%d declared and idle (the class is styled now, delete the line):"
+              % len(bare_idle))
+        for i in bare_idle:
+            print("   ." + i)
+    if "--all" in sys.argv:
+        print("\n%d declared bare:" % len(UNSTYLED))
+        for c in sorted(UNSTYLED):
+            print("   .%-20s %s" % (c, UNSTYLED[c]))
+    sys.exit(1 if (undeclared or idle or bare_undeclared or bare_idle) else 0)
