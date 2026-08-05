@@ -437,6 +437,66 @@ RAISE = {
     "account": (2, "a bar of two actions whose buttons carry no class of their own"),
     "toast": (2, "a message and a close, stacked"),
     "yesno": (2, "a pair of controls in a container"),
+    # ---- 2026-08-05, and these four are the whole of the atom shelf being read
+    # rather than assumed. See TRUE_ATOM below for why they had no line until now.
+    "input": (2, "a label, a field in a row, and `.quick`, which is a GROUP of chips. "
+                 "The atom under this file is the FIELD; the group is a molecule and "
+                 "the chips in it belong to the chip family. Closes by splitting, "
+                 "backlog S41"),
+    "filters": (2, "two unrelated controls in one file, and the stand says so by "
+                   "needing two specimens: `.toggle` is a switch, which really is an "
+                   "atom, and `.filter-menu` is a disclosure holding `.filter-panel` "
+                   "holding a list of labelled radios, which is a molecule. A file "
+                   "takes the level of the largest thing in it, so this one is L2 and "
+                   "the entry is a finding. Closes by splitting, backlog S41"),
+    "skeleton": (2, "`.sk-line` and `.sk-thumb` are the atoms; `.sk-head` and `.sk-row` "
+                    "ARRANGE them, and `.sk-btn` is a placeholder named after another "
+                    "component's control. A loading state is also not a control family, "
+                    "which is the larger question in backlog S41"),
+    "toc": (2, "a disclosure over a list of numbered links, the same shape `related` "
+               "is declared at: `.toc-d` is a `<details>`, `.toc-head` its summary, "
+               "`.toc-list` the list, `.toc-link` the row. It also stands on 1 painted "
+               "screen of 105, so whether it is product at all is backlog S41"),
+}
+
+# ---- the answer the arithmetic gives when it has NOTHING to read -------------
+# AN EMPTY CONTAINMENT IS NOT EVIDENCE OF BEING AN ATOM, and until 2026-08-05
+# this file could not tell the two apart. `_level()` returns 1 when `CONTAINS` is
+# empty, and `CONTAINS` is empty in two completely different situations: the
+# component really is ONE control with nothing inside it, or the component is
+# built entirely out of its OWN classes and the map, which only knows component
+# names, can see nothing at all. The docstring above says as much in the section
+# headed "WHAT ARITHMETIC CANNOT SEE" and RAISE exists to answer it.
+#
+# What was missing is the check that anyone LOOKED. Seventeen components have an
+# empty containment. Ten carried a RAISE with a reason. The other seven were the
+# entire atom shelf - button, filters, input, loadmore, oddsbar, skeleton, toc -
+# and not one of them had ever been examined: they were called atoms by a
+# function that had no information, and `ui-kit/docs/inventory.md` and the
+# vitrine's side panel then printed that as a design decision.
+#
+# So an empty containment is now a QUESTION the build asks. A component with one
+# has to be in RAISE (the map cannot see inside it, here is what is in there) or
+# in this list (the map saw nothing because there is nothing: it is one control).
+# Gate 39 fails when a component is in neither, and when a row here names a
+# component whose containment is NOT empty, because then the arithmetic has an
+# answer of its own and a declaration is a second one.
+TRUE_ATOM = {
+    "button": "one control and three modifiers. It was five names and a size encoded in "
+              "a place until 2026-08-05, and the migration is what makes this line "
+              "sayable: `.btn` plus an emphasis, a size and an optional `.btn-block`, "
+              "and nothing else in the file",
+    "oddsbar": "a bar. `.track`, `.fill` and the two labels are its own anatomy and not "
+               "controls of their own: nothing in it can be pressed, and no other "
+               "component may stand inside it",
+    "loadmore": "one control, and the level is right while the COMPONENT is not. Read in "
+                "a browser over 105 painted screens, `.load-more` and `.cat-nav button` "
+                "are the same graphite chip: same ground `--bg-chip`, same 6 per cent "
+                "edge, same corner, same 14px semibold, same hover and press. They "
+                "disagree on side padding (24 against 20), on letter-spacing and on "
+                "min-height, and nothing predicts which a place gets. An atom that "
+                "duplicates another component's control is still an atom; it is also a "
+                "component that should not exist. Backlog S41",
 }
 
 # ---- the stands that are short, and are short for a KNOWN reason -------------
@@ -526,6 +586,26 @@ SPECIMEN_DEBT = {
 def debt_covers(comp, part):
     """Is this (component contains part) difference already declared?"""
     return (comp, "*") in SPECIMEN_DEBT or (comp, part) in SPECIMEN_DEBT
+
+
+def examined():
+    """Gate 39: every empty containment is a decision somebody took.
+
+    Returns (unexamined, idle, count), where `unexamined` is every component the
+    map could see nothing inside and that neither RAISE nor TRUE_ATOM speaks
+    about, `idle` is every TRUE_ATOM row for a component whose containment is NOT
+    empty (the arithmetic has its own answer there, so the row is a second one),
+    and `count` is how many empty containments were read.
+
+    The check runs in both directions on purpose, which is the shape every
+    declared list in this repo carries: a missing row is a component nobody
+    looked at, and an idle row is a claim that stopped being about anything.
+    """
+    empty = [n for n in sorted(SUBJECTS)
+             if n not in NOT_A_COMPONENT and not CONTAINS.get(n)]
+    unexamined = [n for n in empty if n not in RAISE and n not in TRUE_ATOM]
+    idle = [n for n in sorted(TRUE_ATOM) if n not in empty]
+    return unexamined, idle, len(empty)
 
 
 LEVEL = {}

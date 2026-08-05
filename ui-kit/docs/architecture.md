@@ -369,7 +369,7 @@ keeps the rule at its original position in the cascade.
 
 Most of what this system says about itself is computed: the level, the cascade order, the class
 owner, the coverage table, the count in `README.md`. **Part of it is not, and the part that is not
-lives in seven lists in `ui-kit/_levels.py`, each entry a line with its reason.** They are there
+lives in eight lists in `ui-kit/_levels.py`, each entry a line with its reason.** They are there
 because a class map answers "which file styles this word" and the questions asked of it are
 different ones, and where the map cannot answer, a person does, out loud. Anyone reading a level, an
 `@import` position or a specimen and finding it surprising should look here first: the surprise is
@@ -380,10 +380,13 @@ usually declared.
 | `NOT_A_COMPONENT` (3) | `base` and `course-chrome` are the substrate a screen stands on, `fonts` has no markup. A substrate has no level | nothing. This one is a fact, not a debt |
 | `SHARED` (5) | `.sel` and three skeleton widths are words no component owns: several files write them as a modifier on their own class | nothing, unless the words move |
 | `MODIFIER` (1) | `.skeleton` names a STATE, not a thing, so it neither opens a root nor counts as standing inside one | nothing. The map cannot know states, so this list will grow with hover, focus-visible and disabled |
-| `RAISE` (13) | a level the arithmetic reads too low: a block whose parts are all its own classes, or a screen shell that is an organism because of what it IS | twelve are permanent by that reasoning. One, `hiw-dialog`, is a debt: backlog item 18 |
+| `RAISE` (18) | a level the arithmetic reads too low: a block whose parts are all its own classes, or a screen shell that is an organism because of what it IS | thirteen are permanent by that reasoning. `hiw-dialog` is a debt (backlog item 18) and the four added on 2026-08-05 - `input`, `filters`, `skeleton`, `toc` - are findings that close by SPLITTING the component, backlog S41 |
+| `TRUE_ATOM` (3) | the other answer to an empty containment: the map saw nothing because there is nothing, so this component really is one control. `button`, `oddsbar`, `loadmore` | two are permanent. `loadmore` is a debt of a different kind: the level is right and the COMPONENT should not exist, because it duplicates the catnav chip. Backlog S41 |
 | `ORDER_BREAK` (4) | a containment cycle, dropped for ORDERING only and kept for the level, with the direction decided by which file restyles the other's insides | three of the four name a backlog item. A cycle caused by a class in the wrong file closes when the class moves |
 | `SPECIMEN_DEBT` (11) | a stand that is short for a KNOWN reason: a page plate inside a component file, two components on one element, `.pos` used as a plate | **every entry is a debt**. Each names what closes it, and closing means splitting the component, never widening the line |
 | `STATIC` (10) | the components that deliberately get NO interaction states: a bar drawn to a width, a table of read-only figures, a grid whose every control belongs to another file | nine are permanent by that reasoning. One, `options`, records a markup defect it cannot fix: the row is a `<div>` with a click handler and no keyboard path |
+
+`TRUE_ATOM` is the newest and it exists to close a hole the other seven did not cover. **An empty containment is not evidence of being an atom**: `_level()` returns 1 when the map found nothing inside a component, and it finds nothing in two unrelated situations - the component is one control, or the component is built entirely out of its own class names and a map that knows only component names can see nothing at all. Seventeen components have an empty containment. Ten carried a `RAISE`; the other seven were the entire atom shelf and not one had ever been examined, so `filters` (a switch AND a disclosure over a radio panel), `input` (which holds a chip GROUP) and `skeleton` (which declares `.sk-btn`) were printed as atoms by a function with no information. **Gate 39** asks the question once per component and takes an answer in one of the two lists, in both directions: a component in neither fails, and a `TRUE_ATOM` row for a component the arithmetic CAN read fails too, because there the map has an answer and the row is a second one.
 
 `SPECIMEN_DEBT` is the one most likely to be misread. It exists so that **gate 24** can
 be narrow: the gate compares what a component contains in its stand against what it contains on the

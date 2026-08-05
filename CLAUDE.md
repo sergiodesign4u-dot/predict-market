@@ -157,6 +157,13 @@ borrows the win/lose colour, and a candidate in a multi-outcome chart is not an 
   `python3 ui-kit/_levels.py --order` prints it and gate 23 fails the build when the file stops
   matching. That map is also the level (atom / molecule / organism) in `ui-kit/docs/inventory.md` and
   the grouping of the vitrine's side panel, all from `ui-kit/_levels.py` and nowhere else.
+- **An empty containment is not evidence of being an atom, and the level is a decision the cascade
+  cannot take for you.** The map knows component names, so it reads nothing inside a component built
+  out of its own class names, and `_level()` answers 1 either way. Seven of seventeen empty readings
+  had never been examined and were the whole atom shelf. So the level is DECLARED where the map is
+  blind: `RAISE` (here is what is inside me) or `TRUE_ATOM` (there is nothing inside me, this is one
+  control), one line and one reason each, and **gate 39** fails the build on a component in neither
+  and on a row that names a component the map can read.
 - **A checker asks the markup, not the text.** A page that quotes markup is normal here (every
   component page ends with its own css, and the documents quote both), so a scan for a path, a
   `url()` or a font host has to skip what is inside `<code>` and `<pre>` and look at the attribute

@@ -2055,6 +2055,44 @@ notes.append("%-34s %s" % ("38 by role", ", ".join(
     "%s %d/%d" % (r, len(_r_by_role[r]), sum(x["uses"] for x in _r_by_role[r]))
     for r in _worn_role_names)))
 
+# ---------------------------------------------------------------- gate 39 ---
+# AN EMPTY CONTAINMENT IS NOT EVIDENCE OF BEING AN ATOM, and for nine passes this
+# repo printed one as if it were. `ui-kit/_levels.py` computes a level from what
+# a component CONTAINS, read out of the specimen DOM, and that arithmetic is the
+# right answer to the question the cascade asks: a part is imported before the
+# whole. It is not the answer to "is this an atom", and the two were the same
+# number.
+#
+# The failure mode is specific rather than general. `_level()` returns 1 when the
+# containment map is empty, and the map is empty in two unrelated situations:
+# the component really is ONE control, or the component is built entirely out of
+# its own class names and the map, which only knows component names, can see
+# nothing at all. Seventeen components have an empty containment. Ten of them
+# carried a RAISE, which is the mechanism for saying "the map cannot see inside
+# me, here is what is in there". The other seven were the whole atom shelf, and
+# none of them had ever been examined: `filters` holds a switch AND a disclosure
+# with a radio panel, `input` holds a chip GROUP, `skeleton` declares `.sk-btn`.
+# They were called atoms by a function with no information, and inventory.md and
+# the vitrine's side panel printed that as a decision somebody took.
+#
+# So the empty containment is now a QUESTION the build asks, once per component,
+# and it is answered in one of two declared lists with a reason attached. Both
+# directions, because a list with only one is a list that rots: a component in
+# neither fails, and a TRUE_ATOM row for a component the arithmetic CAN read
+# fails too, since there the map has an answer and the row is a second one.
+from _levels import examined as _lv_examined, TRUE_ATOM as _lv_true_atom   # noqa: E402
+_lv_unexamined, _lv_idle, _lv_empty = _lv_examined()
+check("39 every atom was examined, not assumed", not _lv_unexamined,
+      "%d: %s" % (len(_lv_unexamined), ", ".join(_lv_unexamined)))
+check("39 no idle row in the atom map", not _lv_idle,
+      "%d: %s" % (len(_lv_idle), ", ".join(_lv_idle)))
+_lv_noreason = sorted(k for k, v in _lv_true_atom.items() if len(v.split()) < 8)
+check("39 every atom says why it is one", not _lv_noreason,
+      "%d: %s" % (len(_lv_noreason), ", ".join(_lv_noreason)))
+notes.append("%-34s %d empty containment(s): %d declared one control, %d raised" %
+             ("39 the atom shelf", _lv_empty, len(_lv_true_atom),
+              _lv_empty - len(_lv_true_atom)))
+
 # ---------------------------------------------------------------- verdict ---
 for line in notes + fails:
     print(line)

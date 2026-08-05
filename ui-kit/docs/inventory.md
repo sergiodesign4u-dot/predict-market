@@ -86,7 +86,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | - brand tile (`.hero-promo.brand-tile`, notched frame) | `hero.css` | [hero](../hero.html) | L3 | Trending feed | default | - | UV | art | + |
 | - hot-right-now ranked list (`.hero-hot`) | `hero.css` | [hero](../hero.html) | L3 | Trending feed | default | - | UV | - | + |
 | Feed SEO plate (below fold, `.feed-seo-wrap` brand statement) | `seo-plate.css` | [seo-plate](../seo-plate.html) | L2 | feed + category pages | default | 14 | WF/UV | art | + |
-| Contents rail (`.toc`, a document's own sections) | `toc.css` | [toc](../toc.html) | L1 | terms | rest / hover / press / current | 1 | UV | - | + |
+| Contents rail (`.toc`, a document's own sections) | `toc.css` | [toc](../toc.html) | L2 | terms | rest / hover / press / current | 1 | UV | - | + |
 | Related events plate (`.related-events`) | `related.css` | [related](../related.html) | L2 | event-detail | list | 9 | WF | event | + |
 | Load-more control | `loadmore.css` | [loadmore](../loadmore.html) | L1 | feed, category | rest / hover | 20+ | WF/UV | - | + |
 
@@ -119,16 +119,16 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Shared dialog shell (`dialog.app-dialog`, stone-plate material) | `dialog.css` | [dialog](../dialog.html) | L3 | every page (emitted in shell) | open / close (backdrop, Esc); modal (desktop) / sheet (mobile) | 104 | WF/UV | - | ~ |
 | Provider buttons (Google / X / Apple, real brand marks) | `button.css` | [button](../button.html) | L1 | Sign In dialog + sign-in pages | rest / hover | 104 | WF/UV | - | + |
-| Amount field + quick-amount chips | `input.css` | [input](../input.html) | L1 | Deposit dialog + deposit pages | rest / selected / focus | 104 | WF | - | + |
-| Field label | `input.css` | [input](../input.html) | L1 | dialogs, forms | default | 104 | WF | - | + |
+| Amount field + quick-amount chips | `input.css` | [input](../input.html) | L2 | Deposit dialog + deposit pages | rest / selected / focus | 104 | WF | - | + |
+| Field label | `input.css` | [input](../input.html) | L2 | dialogs, forms | default | 104 | WF | - | + |
 | Funds-protection line (`.protect`, "USDC held 1:1") | `notice.css` | [notice](../notice.html) | L3 | Deposit dialog, HIW, wallet, bet panel | default | 104 | WF | - | + |
 | Widget box (`.widget-box` on-ramp placeholder) | `notice.css` | [notice](../notice.html) | L3 | Deposit dialog | default / load-failure | 104 | WF | - | + |
 | Primary CTA (brass) - Confirm bet / Add funds | `button.css` | [button](../button.html) | L1 | dialogs, states, HIW | rest / hover / focus | 104 | WF/UV | - | + |
 | Bottom-sheet / modal overlay (grab, backdrop) | `dialog.css` | [dialog](../dialog.html) | L3 | deposit, sign-in, win, loss | modal (desktop) / sheet (mobile) | 17 | WF | - | ~ |
 | Sign-in dialog (`.signin-dialog`) | `dialog.css` | [dialog](../dialog.html) | L3 | sign-in family | default / error / loading / provider-conflict | 4 | WF/UV | - | ~ |
 | How-it-works dialog (`.hiw-dialog`: hero + icon chips + FAQ) | `hiw-dialog.css` | [hiw-dialog](../hiw-dialog.html) | L3 | every header page | open | 87 | WF/UV | art | + |
-| Filter menu (Sort / Frequency) | `filters.css` | [filters](../filters.html) | L1 | feed, category | closed / open | 44 | WF | - | + |
-| Reverse-order toggle switch | `filters.css` | [filters](../filters.html) | L1 | feed controls | on / off | 44 | WF | - | + |
+| Filter menu (Sort / Frequency) | `filters.css` | [filters](../filters.html) | L2 | feed, category | closed / open | 44 | WF | - | + |
+| Reverse-order toggle switch | `filters.css` | [filters](../filters.html) | L2 | feed controls | on / off | 44 | WF | - | + |
 | Inline error line (`.inline-error`, neutral stone) | `notice.css` | [notice](../notice.html) | L3 | deposit, bet, sign-in, win | error | 8 | WF | - | + |
 | Spinner box (`.spinner-box`) | `notice.css` | [notice](../notice.html) | L3 | deposit, bet, sign-in, win, loss | loading | 6 | WF | - | + |
 | S5 reconcile box (`.reconcile-box`, price moved) | `notice.css` | [notice](../notice.html) | L3 | bet, win, loss | re-confirm / cancel | 6 | WF | - | + |
@@ -152,15 +152,15 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Identity row (`.idrow`: ringed 72px avatar `.av`, name, handle, Edit pill) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | own (Edit) / read-only | 2 | WF/UV | portrait | + |
-| Section divider (`p.pos-status`, brass tick) | `position.css` | [position](../position.html) | L2 | my-profile, public-profile | default | 2 | UV | - | + |
+| Section divider (`p.pos-status`, brass tick) | `position.css` | [position](../position.html) | L3 | my-profile, public-profile | default | 2 | UV | - | + |
 | Reputation stat-grid (Track record: tiles, brass win-rate hero tile) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | default | 2 | WF/UV | - | + |
 | Profile tabs (`.ptabs` CSS-only radio: Track record / Past wins / Resolved) | `tabs.css` | [tabs](../tabs.html) | L3 | my-profile, public-profile | per-tab active, focus ring | 2 | WF/UV | - | + |
 | Share-card gallery (`.gallery` horizontal rail of win cards) | `profile.css` | [profile](../profile.html) | L3 | my-profile, public-profile | populated | 7 | WF/UV | art / generated | + |
-| Resolved-predictions history (`.pos-side.pos-won` green / `.pos-lost` red) | `position.css` | [position](../position.html) | L2 | my-profile, public-profile, active-bets-history | list / empty | 4+ | WF/UV | - | + |
-| Portfolio summary (`.pos` 3-figure grid: total / cash / in-play + inline CTA) | `position.css` | [position](../position.html) | L2 | my-profile, wallet | default | 3 | WF/UV | - | + |
+| Resolved-predictions history (`.pos-side.pos-won` green / `.pos-lost` red) | `position.css` | [position](../position.html) | L3 | my-profile, public-profile, active-bets-history | list / empty | 4+ | WF/UV | - | + |
+| Portfolio summary (`.pos` 3-figure grid: total / cash / in-play + inline CTA) | `position.css` | [position](../position.html) | L3 | my-profile, wallet | default | 3 | WF/UV | - | + |
 | CTA bar (`.cta-bar`: Add funds + Open Wallet / Withdraw) | `account.css` | [account](../account.html) | L2 | how-it-works, my-profile, wallet | default | 3 | WF | - | + |
-| Position row (`.pos`: question, figures, status) | `position.css` | [position](../position.html) | L2 | active-bets, notifications, wallet, profile | active / resolved / skeleton | 9+ | WF/UV | - | ~ |
-| Transaction list (deposits/payouts/fees/stakes) | `position.css` | [position](../position.html) | L2 | wallet | list / loading / error | 3 | WF | - | + |
+| Position row (`.pos`: question, figures, status) | `position.css` | [position](../position.html) | L3 | active-bets, notifications, wallet, profile | active / resolved / skeleton | 9+ | WF/UV | - | ~ |
+| Transaction list (deposits/payouts/fees/stakes) | `position.css` | [position](../position.html) | L3 | wallet | list / loading / error | 3 | WF | - | + |
 
 ## 7. Footer
 
