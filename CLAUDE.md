@@ -20,6 +20,7 @@ and this file is read always, so a gateless rule moved out trades certainty for 
 | What a page of a given TYPE is made of, before one is drawn | `ia/docs/blocks.md` - banked by type, never by node |
 | Every UI string | `voice/docs/microcopy.md` |
 | What the system IS, and where a change goes | `ui-kit/docs/architecture.md` |
+| What the atoms ARE, and how far the system is from them | `ui-kit/docs/atoms.md` - the target, decided from the census |
 | How each audit pass found what it found | `ui-kit/docs/history.md` |
 
 ---

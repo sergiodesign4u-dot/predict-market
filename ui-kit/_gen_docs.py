@@ -77,6 +77,14 @@ from _theme_switch import BOOT as THEME_BOOT  # noqa: E402
 PAGES = [
     ("architecture", "Architecture",
      "How the system is put together, what each level may hold, and where a change goes."),
+    # FIRST, BECAUSE IT IS THE TARGET AND EVERYTHING ELSE HERE IS A STATE.
+    # inventory says what the system HAS, coverage says who carries it, backlog
+    # says what it is missing; none of the three says what it is supposed to BE,
+    # and four passes in a row each fixed a real defect without moving toward a
+    # stated shape. Added 2026-08-05.
+    ("atoms", "The atom map",
+     "What the atoms ARE, decided from the 5281 controls the product wears rather than from the "
+     "files, and the distance from here to there."),
     ("history", "What each pass settled",
      "The long form of ten audit passes: what was measured, and which check could see it."),
     ("tokens-audit", "Tokens audit",
