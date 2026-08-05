@@ -1199,7 +1199,13 @@ nav.append("""];
     window.KIT_NAV.forEach(function (e) {
       if (e.group !== g) { g = e.group; out.push('</div><h3 class="tk-subh">' + g + '</h3><div class="ck-cards">'); }
       var thumb = window.KIT_THUMBS && window.KIT_THUMBS[e.name];
-      out.push('<a class="ck-card" href="' + e.file + '">' +
+      // A CARD WITH NO SPECIMEN IS A DOOR, and it has to say so. Two of the
+      // sixty have none - the token page and the pattern index, which are pages
+      // OF the system rather than components IN it - and in a grid row that
+      // stretches to the tallest card they stood as a 224px plate with a label
+      // at the bottom and nothing above it, which reads exactly like a
+      // thumbnail that failed to load.
+      out.push('<a class="ck-card' + (thumb ? '' : ' ck-card-door') + '" href="' + e.file + '">' +
                (thumb ? '<span class="ck-thumb"><iframe src="' + thumb.src +
                         '" width="' + thumb.w + '" height="' + thumb.h +
                         '" style="transform:scale(' + thumb.s + ')" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe></span>' : '') +
@@ -1347,30 +1353,43 @@ hub = f"""<!doctype html>
       <a href="../ui-visual/overview.html">Painted screens</a></div>
   </header>
 
+  <!-- THE SYSTEM FIRST, and it is the same correction the component pages took
+       on 2026-08-05. This door opened with twelve TEXT cards over two sections -
+       five doors into the token page and seven into the documents - and the
+       first rendered component stood 1,250px down. A front door whose first
+       screen is a table of contents is a contents page, and every one of those
+       twelve links is already a row in the tree on the left, which is on screen
+       the whole time. So the grid of live components opens the page, and the
+       two card sections stand under it as what they are: ways in, for a reader
+       who wants the reasoning rather than the thing. -->
+  <section class="tk-sec" id="cards">
+    <h2 data-n="01">Every file, every page</h2>
+    <p class="tk-note">Every component in the system, live. One component is one css file, one page
+    here and one line in the registry, and missing any of the three means it does not exist yet.</p>
+    <details class="tk-how"><summary>How this is read</summary><p class="tk-note">Each card frames
+    the component's own specimen, scaled down and made inert, so it cannot go stale the way a
+    screenshot does. The groups are the levels, computed from what each component contains by
+    <code>python3 ui-kit/_levels.py</code> and declared where the map is blind. The last group is
+    the second level of the system: a <a href="patterns.html">pattern</a> is an arrangement that
+    repeated on three or more screens, and it has a file and a page but no level, no specimen and
+    no states. Its card frames the pattern itself, because that page is the only place a pattern
+    exists outside the product.</p></details>
+    <div id="kitCards"></div>
+  </section>
+
   <section class="tk-sec" id="foundations">
-    <h2 data-n="01">Foundations</h2>
+    <h2 data-n="02">Foundations</h2>
     <p class="tk-note">Colour, material, geometry, type and motion are one page, because they are one
     file: <code>components/tokens.css</code> generates all of it. These are the doors into it.</p>
     <div class="ck-cards" id="kitDoors"></div>
   </section>
 
   <section class="tk-sec" id="docs">
-    <h2 data-n="02">The reasoning</h2>
+    <h2 data-n="03">The reasoning</h2>
     <p class="tk-note">Why the system is shaped like this, what it was read out of, and what each
     part reaches. Rendered from <code>ui-kit/docs/</code> by <code>ui-kit/_gen_docs.py</code>; the
     markdown stays the source.</p>
     <div class="ck-cards" id="kitDocs"></div>
-  </section>
-
-  <section class="tk-sec" id="cards">
-    <h2 data-n="03">Every file, every page</h2>
-    <p class="tk-note">One component is one css file, one page here and one line in the registry.
-    Missing any of the three means the component does not exist yet. The last group is the second
-    level of the system: a <a href="patterns.html">pattern</a> is an arrangement that repeated on
-    three or more screens, and it has a file and a page but no level, no specimen and no states.
-    Its card frames the pattern itself, because that page is the only place a pattern exists
-    outside the product.</p>
-    <div id="kitCards"></div>
   </section>
 </main>
 

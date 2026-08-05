@@ -141,7 +141,13 @@ function pmRevealPanelRow() {
     window.KIT_NAV.forEach(function (e) {
       if (e.group !== g) { g = e.group; out.push('</div><h3 class="tk-subh">' + g + '</h3><div class="ck-cards">'); }
       var thumb = window.KIT_THUMBS && window.KIT_THUMBS[e.name];
-      out.push('<a class="ck-card" href="' + e.file + '">' +
+      // A CARD WITH NO SPECIMEN IS A DOOR, and it has to say so. Two of the
+      // sixty have none - the token page and the pattern index, which are pages
+      // OF the system rather than components IN it - and in a grid row that
+      // stretches to the tallest card they stood as a 224px plate with a label
+      // at the bottom and nothing above it, which reads exactly like a
+      // thumbnail that failed to load.
+      out.push('<a class="ck-card' + (thumb ? '' : ' ck-card-door') + '" href="' + e.file + '">' +
                (thumb ? '<span class="ck-thumb"><iframe src="' + thumb.src +
                         '" width="' + thumb.w + '" height="' + thumb.h +
                         '" style="transform:scale(' + thumb.s + ')" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe></span>' : '') +

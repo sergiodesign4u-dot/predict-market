@@ -382,6 +382,11 @@
 .ck-thumb{display:block;position:relative;height:140px;margin:-4px 0 12px;overflow:hidden;
   border-radius:9px;border:1px solid var(--border-hairline);background:var(--bg-page)}
 .ck-thumb iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none}
+/* A DOOR, not a component whose picture failed. Two cards in the grid have no
+   specimen because they are pages OF the system rather than components in it,
+   and the row stretches every card to the tallest one, so the label sat at the
+   bottom of an empty plate. Centred, it reads as what it is. */
+.ck-card-door{display:flex;flex-direction:column;justify-content:center}
 
 /* ---- a document ---- */
 /* ui-kit/docs/*.md rendered by _gen_docs.py. A page about the system is painted
