@@ -369,7 +369,7 @@ keeps the rule at its original position in the cascade.
 
 Most of what this system says about itself is computed: the level, the cascade order, the class
 owner, the coverage table, the count in `README.md`. **Part of it is not, and the part that is not
-lives in eight lists in `ui-kit/_levels.py`, each entry a line with its reason.** They are there
+lives in nine lists in `ui-kit/_levels.py`, each entry a line with its reason.** They are there
 because a class map answers "which file styles this word" and the questions asked of it are
 different ones, and where the map cannot answer, a person does, out loud. Anyone reading a level, an
 `@import` position or a specimen and finding it surprising should look here first: the surprise is
@@ -385,6 +385,7 @@ usually declared.
 | `ORDER_BREAK` (4) | a containment cycle, dropped for ORDERING only and kept for the level, with the direction decided by which file restyles the other's insides | three of the four name a backlog item. A cycle caused by a class in the wrong file closes when the class moves |
 | `SPECIMEN_DEBT` (11) | a stand that is short for a KNOWN reason: a page plate inside a component file, two components on one element, `.pos` used as a plate | **every entry is a debt**. Each names what closes it, and closing means splitting the component, never widening the line |
 | `STATIC` (10) | the components that deliberately get NO interaction states: a bar drawn to a width, a table of read-only figures, a grid whose every control belongs to another file | nine are permanent by that reasoning. One, `options`, records a markup defect it cannot fix: the row is a `<div>` with a click handler and no keyboard path |
+| `NO_PRESS` (1) | the third answer to gate 25, which knew two: a control that has a hover and genuinely cannot have a press. `input` is a text field, and the pointer going down on one moves the caret rather than pressing anything | nothing. It is a fact about the control, and the gate still requires the hover, so the row cannot be used to skip a state |
 
 `TRUE_ATOM` is the newest and it exists to close a hole the other seven did not cover. **An empty containment is not evidence of being an atom**: `_level()` returns 1 when the map found nothing inside a component, and it finds nothing in two unrelated situations - the component is one control, or the component is built entirely out of its own class names and a map that knows only component names can see nothing at all. Seventeen components have an empty containment. Ten carried a `RAISE`; the other seven were the entire atom shelf and not one had ever been examined, so `filters` (a switch AND a disclosure over a radio panel), `input` (which holds a chip GROUP) and `skeleton` (which declares `.sk-btn`) were printed as atoms by a function with no information. **Gate 39** asks the question once per component and takes an answer in one of the two lists, in both directions: a component in neither fails, and a `TRUE_ATOM` row for a component the arithmetic CAN read fails too, because there the map has an answer and the row is a second one.
 

@@ -1131,6 +1131,7 @@ check("22 a page off the tree is still linked", not unreachable,
 sys.path.insert(0, str(KIT))
 from _levels import ORDER as LEVEL_ORDER, order_problems, SUBJECTS as LEVEL_SUBJECTS  # noqa: E402
 from _levels import STATIC as LEVEL_STATIC                            # noqa: E402
+from _levels import NO_PRESS as LEVEL_NO_PRESS                       # noqa: E402
 from _levels import PATTERNS as LEVEL_PATTERNS                        # noqa: E402
 
 cascade = [ln.split('"')[1][:-4] for ln in
@@ -1244,7 +1245,8 @@ for f in sorted(COMP.glob("*.css")):
         if kinds:
             loud.append("%s (%s)" % (f.stem, ", ".join(sorted(kinds))))
         continue
-    if {"hover", "active"} - kinds:
+    want = {"hover", "active"} - ({"active"} if f.stem in LEVEL_NO_PRESS else set())
+    if want - kinds:
         mute.append("%s (has %s)" % (f.stem, ", ".join(sorted(kinds)) or "none"))
     for sel, decl in rules:
         for one in decl.split(";"):
@@ -1257,6 +1259,15 @@ for f in sorted(COMP.glob("*.css")):
                 styled.append("%s %s{%s:%s}" % (f.stem, sel[:26], prop, val[:24]))
 check("25 an interactive component has hover and press", not mute,
       "%d: %s" % (len(mute), ", ".join(mute[:4])))
+# The list runs in both directions like every other one here: a component that
+# declares it has no press and then grows one is a claim that stopped being true.
+_np_idle = sorted(k for k in LEVEL_NO_PRESS
+                  if re.search(r":active\b",
+                               re.sub(r"/\*.*?\*/", "",
+                                      (COMP / (k + ".css")).read_text(encoding="utf-8"),
+                                      flags=re.S)))
+check("25 no idle row in the no-press map", not _np_idle,
+      "%d: %s" % (len(_np_idle), ", ".join(_np_idle)))
 check("25 no component declared static has one", not loud,
       "%d: %s" % (len(loud), ", ".join(loud[:4])))
 check("25 a state is a token, not a value", not styled,

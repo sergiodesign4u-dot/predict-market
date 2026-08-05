@@ -234,6 +234,29 @@ MODIFIER = {
 # the way an empty semantic role did on the previous stage. Where a block LOOKS
 # interactive but the control inside it belongs to another file, the entry says
 # which file, because that is the question the next reader will actually have.
+# ---- the third answer to "does this control have a press" --------------------
+# GATE 25 ASKS FOR HOVER AND ACTIVE AND KNEW TWO ANSWERS: a component has both,
+# or it is in STATIC and has neither. `input` is the case that is neither, and it
+# only became visible on 2026-08-05, when `.quick` left that file for
+# components/quick.css and took the press with it.
+#
+# A TEXT FIELD HAS NO PRESS, and that is a fact about the control rather than a
+# gap in it. The pointer going down on a field moves the caret; what follows is
+# FOCUS, which this component declares twice on purpose (`:focus` for "the field
+# is active, however you got here" and `:focus-visible` for the keyboard ring),
+# with the reasoning written at the rules. Inventing an `:active` to satisfy a
+# gate would put a state on the screen that answers nothing, which is the exact
+# defect gate 25 exists to prevent, arrived at from the other side.
+#
+# The list is deliberately not "components that may skip a state". Every entry
+# names the state it does not have and why the control cannot have it, and the
+# gate still requires the OTHER one: a row here with no hover would fail.
+NO_PRESS = {
+    "input": "a text field. The pointer going down on it moves the caret, and the "
+             "state that follows is focus, not press. It declares hover, :focus and "
+             ":focus-visible; an :active would be a face that answers nothing",
+}
+
 STATIC = {
     "base": "the page frame. It owns the one :focus-visible the whole system reads "
             "and has no control of its own except a visibility utility",
@@ -439,24 +462,33 @@ RAISE = {
     "yesno": (2, "a pair of controls in a container"),
     # ---- 2026-08-05, and these four are the whole of the atom shelf being read
     # rather than assumed. See TRUE_ATOM below for why they had no line until now.
-    "input": (2, "a label, a field in a row, and `.quick`, which is a GROUP of chips. "
-                 "The atom under this file is the FIELD; the group is a molecule and "
-                 "the chips in it belong to the chip family. Closes by splitting, "
-                 "backlog S41"),
-    "filters": (2, "two unrelated controls in one file, and the stand says so by "
-                   "needing two specimens: `.toggle` is a switch, which really is an "
-                   "atom, and `.filter-menu` is a disclosure holding `.filter-panel` "
-                   "holding a list of labelled radios, which is a molecule. A file "
-                   "takes the level of the largest thing in it, so this one is L2 and "
-                   "the entry is a finding. Closes by splitting, backlog S41"),
-    "skeleton": (2, "`.sk-line` and `.sk-thumb` are the atoms; `.sk-head` and `.sk-row` "
-                    "ARRANGE them, and `.sk-btn` is a placeholder named after another "
-                    "component's control. A loading state is also not a control family, "
-                    "which is the larger question in backlog S41"),
+    # PAID 2026-08-05, and the line stays because the level is still declared.
+    # `input` and `filters` were raised as FINDINGS on the morning of the same day,
+    # each with "closes by splitting" in it, and the split is what happened: `.quick`
+    # went to components/quick.css and `.toggle` to components/toggle.css. What is
+    # left in each file is one thing, and each is still a molecule for a reason the
+    # containment map cannot see, which is what a RAISE is for.
+    "filters": (2, "a disclosure over a panel over a list of labelled radios, all its "
+                   "own classes. It held a switch as well until 2026-08-05 and that is "
+                   "the part that was wrong, not the level"),
+    "quick": (2, "a ROW of chips a person chooses between. The chip is the atom and the "
+                 "row is this; the chip is also drawn in four other files, which is the "
+                 "merge backlog S41 still owes"),
+    # EXAMINED 2026-08-05 AND FOUND CORRECT AS FILES, WRONG ONLY AS LEVELS. Both
+    # were on the unexamined atom shelf; neither owes a cut. Named here so the next
+    # reader does not go looking for one.
+    "skeleton": (2, "`.sk-line` and `.sk-thumb` are the atoms and `.sk-head` and "
+                    "`.sk-row` ARRANGE them, which is the whole of why this is L2. "
+                    "`.sk-btn` reads at first like a placeholder named after another "
+                    "component's control and it is not a defect: standing where a "
+                    "specific thing will be is the entire job of a skeleton, and the "
+                    "name says which thing"),
     "toc": (2, "a disclosure over a list of numbered links, the same shape `related` "
                "is declared at: `.toc-d` is a `<details>`, `.toc-head` its summary, "
-               "`.toc-list` the list, `.toc-link` the row. It also stands on 1 painted "
-               "screen of 105, so whether it is product at all is backlog S41"),
+               "`.toc-list` the list, `.toc-link` the row. It stands on ONE painted "
+               "screen, terms.html, and that was checked rather than assumed: one "
+               "screen is a small component, not a wrong one, and `toast` stands on "
+               "one too"),
 }
 
 # ---- the answer the arithmetic gives when it has NOTHING to read -------------
@@ -489,6 +521,14 @@ TRUE_ATOM = {
     "oddsbar": "a bar. `.track`, `.fill` and the two labels are its own anatomy and not "
                "controls of their own: nothing in it can be pressed, and no other "
                "component may stand inside it",
+    "input": "a label, a field and the row that holds them. It held `.quick`, a GROUP "
+             "of chips, until 2026-08-05, and that is what made the empty containment "
+             "a lie rather than an answer; the group is components/quick.css now and "
+             "what is left really is one control",
+    "toggle": "a track and a knob. It stood inside components/filters.css until "
+              "2026-08-05, beside a sort menu it shares nothing with but a file name, "
+              "and the stand had been saying so since it was built by needing two "
+              "specimens for one component",
     "loadmore": "one control, and the level is right while the COMPONENT is not. Read in "
                 "a browser over 105 painted screens, `.load-more` and `.cat-nav button` "
                 "are the same graphite chip: same ground `--bg-chip`, same 6 per cent "

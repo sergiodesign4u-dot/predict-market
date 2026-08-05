@@ -28,7 +28,18 @@ const ROOT = require('path').resolve(__dirname, '..', '..');
 //     node snap.cjs <outDir>                 the painted product
 //     node snap.cjs <outDir> --kit           the vitrine and its specimens
 const KIT_MODE = process.argv.includes('--kit');
-const BASE = 'http://localhost:' + (process.env.SNAP_PORT || '8901') + '/';
+/* 127.0.0.1 AND NOT localhost, AND THE DIFFERENCE COST THREE FALSE PROOFS.
+   `localhost` resolves to ::1 before 127.0.0.1 on macOS, so it answers whichever
+   server got the IPv6 socket. On 2026-08-05 two python http.servers held port
+   8901: one bound to 127.0.0.1 serving the repo, one bound to *:8901 serving the
+   PARENT directory. Every snapshot taken through `localhost` fetched a 404 from
+   the second one, and a 404 page snapshots perfectly well: 6 elements, an html
+   box of 380x200, Times at 16px. Two of those diff to ZERO, and zero is what this
+   tool reports as "nothing moved". Three passes were signed off on it, one of
+   them in a commit message.
+   The address is now the one the audit already used, and the guard below is the
+   half that matters more: an address can be right and the server still wrong. */
+const BASE = 'http://127.0.0.1:' + (process.env.SNAP_PORT || '8901') + '/';
 const TREE = KIT_MODE ? 'ui-kit/' : 'ui-visual/';
 // One width inside every band the system has a breakpoint for (640, 860, 900,
 // 1440), so a rule that escaped its media query cannot hide between two of them.
@@ -123,7 +134,19 @@ async function snapshot(page) {
     const s = await B.open({ width: w, height: h });
     const page = s.page;
     for (const name of pages) {
-      await page.goto(BASE + TREE + name, { waitUntil: 'load' });
+      /* A SNAPSHOT OF AN ERROR PAGE IS A SNAPSHOT. The tool has no way to tell
+         one from a screen unless it asks, so it asks twice: the HTTP status,
+         which catches a wrong root or a moved file, and the element count,
+         because a 200 that renders six elements is a server's own index or
+         error document rather than a page of this product. The smallest real
+         page in either tree renders in the hundreds. Failing here is the whole
+         point: a run that cannot measure has to stop, not return zero. */
+      const resp = await page.goto(BASE + TREE + name, { waitUntil: 'load' });
+      if (!resp || resp.status() !== 200) {
+        throw new Error('snap: ' + BASE + TREE + name + ' answered ' +
+                        (resp ? resp.status() : 'nothing') +
+                        '. A snapshot of an error page diffs to zero against another one.');
+      }
       await page.evaluate(() => document.fonts.ready);
       // Freeze anything that moves, in both runs alike, so a shimmer never
       // reads as a difference.
@@ -148,6 +171,13 @@ async function snapshot(page) {
       await page.addStyleTag({ content: '*,*::before,*::after{animation-play-state:paused!important}' });
       await page.waitForTimeout(120);
       const snap = await snapshot(page);
+      // The second half of the guard above: a 200 can still be a directory index
+      // or a server's own error document. Both snapshot cleanly and both diff to
+      // zero against another one of the same kind.
+      if (snap.length < 40) {
+        throw new Error('snap: ' + name + ' at ' + vp + ' rendered only ' + snap.length +
+                        ' elements. That is a server index or an error page, not a screen.');
+      }
       fs.writeFileSync(path.join(outDir, `${name.replace('/', '-')}.${vp}.json.gz`),
         zlib.gzipSync(JSON.stringify(snap)));
       process.stdout.write('.');

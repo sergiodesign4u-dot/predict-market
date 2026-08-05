@@ -1,0 +1,74 @@
+/* components/quick.css
+   Component: quick. Classes: .quick.
+
+   Reads:
+   Stand:  ui-kit/quick.html
+   Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+/* ============================================================================
+   IT LEFT components/input.css ON 2026-08-05, BECAUSE A FIELD AND A GROUP OF
+   CHIPS ARE NOT ONE THING. `input` is a label, a field and the row that holds
+   them, which is an atom; this is a ROW OF CHIPS a person chooses between, which
+   is a molecule, and the census in `ui-kit/_worn.py` had already filed the chips
+   in it under a different ROLE from everything else in that file: they are
+   selectors, and a field is not.
+
+   Gate 39 is what surfaced it. `input` had an empty containment, so `_levels.py`
+   called it an atom with no information to go on, and the inventory printed that
+   as a decision. See `ui-kit/docs/defects.md` row 63 and backlog S41.
+
+   THE CHIP ITSELF IS STILL NOT ONE CONTROL ACROSS THE PRODUCT, and this file
+   does not pretend otherwise. `.seg`, `.ed-range button`, `.cat-nav button` and
+   `.load-more` are the same graphite chip drawn in four files, and giving one of
+   them a file of its own does not merge them. What it does is make the shape of
+   the merge visible: four files, one control, and the same measurement that
+   ended five button names is what would end these. Backlog S41.
+   ============================================================================ */
+
+/* The grey-box layer, which is what a screen drew before the paint arrived. It
+   is kept for the reason the rest of the system keeps its first layer: the
+   painted rules below are all scoped, and an unscoped element still has to be a
+   chip rather than a browser button. */
+.quick{display:flex;gap:var(--space-8);flex-wrap:wrap}
+.quick button{border:1px solid var(--border-hairline);padding:var(--space-8) var(--space-8);font-size:var(--text-12);cursor:pointer}
+.quick button.sel{font-weight:var(--weight-bold)}
+
+/* ----------------------------------------------------- inside a dialog -----*/
+dialog.app-dialog .quick{display:flex;gap:var(--space-8);flex-wrap:wrap}
+dialog.app-dialog .quick button{padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
+dialog.app-dialog .quick button{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
+dialog.app-dialog .quick button{cursor:pointer;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+dialog.app-dialog .quick button:hover:not(.sel){border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)}
+/* A SELECTED CHIP IS A TINT, AND A SOLID BRASS FILL IS THE PRIMARY ACTION'S OWN
+   FACE. This rule painted the chosen quick amount as a full brass gradient on 107
+   placements, and DESIGN.md decides it twice over: "active is a brass tint
+   (rgba(199,162,78,.08) fill)" under Chips, and the One-Accent Rule, "brass
+   carries identity, the active state, and primary CTAs only ... if a screen has
+   brass on more than the logo, the active chip, and the primary action, it is
+   overspent". A deposit sheet had a lit brass $20 sitting directly above a lit
+   brass Add funds, and the chip was as loud as the commitment.
+   THE PRODUCT ALREADY HELD THE ANSWER IN TWO PLACES. The same class in the bet
+   panel and the bet sheet is `--tint-brass-16` (line below in this file), and
+   tokens.css names that token, in its own words, "from: a selected quick amount".
+   The token was cut from this control and this control disagreed with it. 107
+   placements move to the tint, 11 already wear it, and the chip family loses the
+   one member that was shouting.
+   THE HOVER AND THE PRESS GO WITH THE GRADIENT, and that is a consequence rather
+   than a decision: they were the three-step of a brass PLATE, and there is no
+   plate now. What is left is what every other selected chip in this product does,
+   which is nothing, on `.seg`, on `.ed-range` and on the panel's own quick row.
+   That gap is real and it is uniform; `ui-kit/docs/backlog.md` S38 owns it rather
+   than this file inventing a fourth answer. */
+dialog.app-dialog .quick button.sel{background:var(--tint-brass-16);color:var(--text-brass);border-color:var(--border-brass-hover)}
+dialog.app-dialog .quick button.sel{font-weight:var(--weight-bold)}
+dialog.app-dialog .quick button:active:not(.sel){background:var(--bg-pressed)}
+dialog.app-dialog .sheet-body .quick{margin-top:var(--space-12)}
+
+/* ------------------------------------------ inside a bet panel or sheet -----
+   The same chips at the foot of the amount row, pushed to the right because the
+   field they fill is right-aligned. */
+.app-case :is(.bet-panel,.bet-sheet) .quick{margin-top:0;justify-content:flex-end;flex-wrap:wrap}
+.app-case :is(.bet-panel,.bet-sheet) .quick button{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary)}
+.app-case :is(.bet-panel,.bet-sheet) .quick button.sel{background:var(--tint-brass-16);border-color:var(--border-brass-hover);color:var(--text-brass);font-weight:var(--weight-bold)}
+.app-case .bet-sheet .quick{gap:var(--space-8)}

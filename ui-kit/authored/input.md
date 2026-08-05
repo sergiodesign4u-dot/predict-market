@@ -19,7 +19,6 @@ Everything about it is built for a thumb and a hurry. The figure is 18px, larger
 - `.field-label` - the small caps label above a field. On its own it is the only part of this component that appears outside a money context.
 - `.amount-row` - the row that holds the currency mark and the field, so the mark reads as part of the field rather than as a word before it.
 - `.amount-input` - the field. 18px figure, hairline edge, and the one control in this system whose focus ring has to out-specify its own `outline:none`.
-- `.quick` - the chip row: the common amounts, and the reason most deposits need no typing.
 - `.addr` - the same field carrying a wallet address instead of a figure: mono face, smaller, because an address is read character by character and a proportional face makes that harder.
 
 ## When to use
@@ -36,7 +35,7 @@ The chips and the field write the same value, so whatever a chip sets, the field
 
 ## Anti-rule
 
-Never build a quick-amount chip out of the button family: those chips are this component's, and a `.state-btn` or an `.auth-btn` in that row would answer a pointer with the brass edge of an action rather than with a selection.
+Never build a quick-amount chip out of the button family: those chips are `quick`'s, which left this file on 2026-08-05, and a `.btn` in that row would answer a pointer with the brass edge of an ACTION rather than with a selection. The two names in the sentence that used to stand here, `.state-btn` and `.auth-btn`, were retired the same day.
 
 Predicted: no screen has made this mistake. It is named because the chip row LOOKS like a row of small buttons and is the nearest thing in the system to one, and because the button family's own page now says the opposite thing about chips.
 
@@ -47,5 +46,3 @@ Predicted: no screen has made this mistake. It is named because the chip row LOO
 - `input.amount-input.addr @dialog.app-dialog` - The address variant. Same well, mono face, and the figure size drops because an address is not a figure.
 - `input.amount-input @.bet-panel` - The stake field in the bet panel. Same anatomy on a different plate, which is why it measures as its own face.
 - `input.amount-input @dialog.bet-sheet` - The stake field inside the mobile bet sheet, and it is not the well the other three are: no ground, no edge and a square corner, with the focus signal carried entirely by a 3px brass ring drawn outside the box. The sheet is 360 wide and a boxed field inside a boxed sheet is two frames deep, which is the reading this measurement supports and does not prove.
-- `button @dialog.app-dialog` - A quick-amount chip, unselected: the graphite chip, hover on the ground and press on the pressed stone.
-- `button.sel @dialog.app-dialog` - **The same chip SELECTED, and it is now ONE group where it was two.** This is a state carried by a class rather than by a pseudo, because the selection survives the pointer leaving: brass tint, brass edge, brass label, bold. Until 2026-08-04 the deposit sheet's copy was a solid brass GRADIENT and the bet sheet's was the tint, so the capture photographed two, and this caption described the tint on the group that was not wearing it. The gradient is gone (`components/input.css`, and `DESIGN.md` decides it twice: a selected chip is a tint, and brass is spent on identity, the active state and the primary action only), so the two faces measure identical and the grouping merged them without being asked. **A caption that had been quietly wrong for a stage is the sentence the merge made true.**

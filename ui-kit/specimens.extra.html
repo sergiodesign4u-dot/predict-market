@@ -95,6 +95,36 @@
     </div>
   </div></div></main>
 
+  <div class="kit-subh">Filter panel, open, with its reverse row</div>
+  <!--
+    The sort menu as it actually SHIPS, which is with a switch at the foot of the
+    panel. `filters-sort`, cut from the frozen kit, shows the menu closed and the
+    panel without that row, so gate 24 read the stand as short: on the three
+    screens that carry it, `.filter-panel` holds a `.reverse-row` holding a
+    `.toggle`, and no stand in the system showed the two together.
+
+    That mattered more once the switch moved to components/toggle.css on
+    2026-08-05, because a stand that never puts the two in one document is the
+    reason nobody had noticed they were one component for nine passes.
+
+    Markup copied from ui-visual/favorites.html, shortened to three sort rows,
+    and open because a panel is what this block is for.
+  -->
+  <details class="filter-menu" open>
+    <summary>Sort: Trending</summary>
+    <div class="filter-panel">
+      <ul>
+        <li><label><input type="radio" name="xsort" checked> Trending</label></li>
+        <li><label><input type="radio" name="xsort"> Newest</label></li>
+        <li><label><input type="radio" name="xsort"> Closing soon</label></li>
+      </ul>
+      <div class="reverse-row">
+        <span>Reverse sort</span>
+        <button type="button" class="toggle" role="switch" aria-checked="false" aria-label="Reverse sort"></button>
+      </div>
+    </div>
+  </details>
+
   <div class="kit-subh">Field states</div>
   <!--
     The field page listed its states as a table of selectors and rendered none of

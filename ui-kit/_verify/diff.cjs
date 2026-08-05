@@ -35,6 +35,15 @@ function paints(prop, a, b) {
   return true;
 }
 
+/* A HOST AND A PORT ARE NOT A DIFFERENCE. Two trees can only be compared by
+   serving them at once, which means two ports, and every `url()` a page resolves
+   then carries the port it was served from: 700 background images reported as
+   changed on a pass that changed no image. Normalised here rather than at the
+   call site, because a caller that has to remember to normalise is a caller that
+   will one day forget and read 700 as a finding. */
+const SAME_ORIGIN = /https?:\/\/(?:localhost|127\.0\.0\.1|\[::1\]):\d+/g;
+const unport = (v) => typeof v === 'string' && v.indexOf('://') > -1
+  ? v.replace(SAME_ORIGIN, 'http://SERVED') : v;
 const read = (f) => JSON.parse(zlib.gunzipSync(fs.readFileSync(f)));
 const before = process.argv[2], after = process.argv[3];
 const full = process.argv.includes('--full');
@@ -68,7 +77,8 @@ for (const f of files) {
       byProp.set('box', (byProp.get('box') || 0) + 1);
     }
     for (let k = 0; k < PROPS.length; k++) {
-      if (a[8][k] !== b[8][k] && paints(PROPS[k], a, b)) {
+      const av = unport(a[8][k]), bv = unport(b[8][k]);
+      if (av !== bv && paints(PROPS[k], a, b)) {
         parts.push(`${PROPS[k]}: ${String(a[8][k]).slice(0, 60)} -> ${String(b[8][k]).slice(0, 60)}`);
         byProp.set(PROPS[k], (byProp.get(PROPS[k]) || 0) + 1);
       }

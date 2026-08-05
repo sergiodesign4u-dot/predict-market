@@ -135,6 +135,7 @@
    "position",
    "betpanel",
    "input",
+   "quick",
    "button",
    "dialog"
   ],
@@ -150,6 +151,7 @@
    "position": ".pos-side",
    "betpanel": ".bet-panel",
    "input": ".field-label",
+   "quick": ".quick",
    "button": ".btn",
    "dialog": ".fine"
   },

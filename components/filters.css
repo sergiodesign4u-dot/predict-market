@@ -1,7 +1,7 @@
 /* components/filters.css
-   Component: filters. Classes: .filter-menu, .filter-panel, .reverse-row, .toggle.
+   Component: filters. Classes: .filter-menu, .filter-panel, .reverse-row.
 
-   Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --color-action-pressed, --control-knob, --focus-ring, --opacity-disabled, --shadow-ink, --text-brass, --text-muted, --text-primary, --text-strong
+   Reads: --bg-control, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --focus-ring, --shadow-ink, --text-brass, --text-muted, --text-primary, --text-strong
    Stand:  ui-kit/filters.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -13,8 +13,14 @@
 .filter-panel ul{list-style:none;margin:0;padding:var(--space-4) 0}
 .filter-panel li label{display:flex;align-items:center;gap:var(--space-8);font-size:var(--text-11);cursor:pointer}
 .reverse-row{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8);font-size:var(--text-11)}
-.toggle{border:1px solid var(--border-hairline);font-size:var(--text-10);padding:var(--space-2) var(--space-8);cursor:pointer}
-.toggle[aria-checked="true"]{font-weight:var(--weight-bold)}
+/* THE SWITCH LEFT THIS FILE ON 2026-08-05, and it took `.toggle` with it to
+   components/toggle.css. A switch and a sort menu are two control families and
+   the only thing they shared was a file name: this one is a `<details>` holding a
+   panel holding a list of labelled radios, which is a molecule; that one is a
+   track with a knob, which is an atom. The stand had been saying so since it was
+   built, by needing two specimens for one component. Found by gate 39, because
+   this file's containment is EMPTY and the level was therefore being answered by
+   arithmetic with no information in it. See ui-kit/docs/defects.md row 63. */
 .lang-menu .filter-panel{top:auto;bottom:calc(100% + 4px);right:auto;left:0;min-width:150px}
 .filter-panel{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
 .filter-menu summary{background:var(--bg-surface);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
@@ -49,34 +55,6 @@
    sign flipped, so the ring stays one decision. */
 .filter-panel li label:has(input:focus-visible){outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
 .reverse-row{border-top:1px solid var(--border-hairline);color:var(--text-muted)}
-/* THE TRACK IS 24 TALL AND IT WAS 22, WHICH IS TWO PIXELS UNDER THE FLOOR. Measured
-   under a coarse pointer: 40x22, one of three controls in the product that fail
-   WCAG 2.5.8. A switch is a target you hit, not a target you aim at, so the fix is
-   the control's own box rather than an invisible pseudo stretched over it: a hit
-   area no measurement in this repo can see is a fix nobody can check.
-   AND THE TOKEN WAS WRONG BEFORE IT WAS SHORT. --icon-22 is the size of a MARK,
-   and it was being asked for the height of a control; --size-24 is a size
-   primitive and is what the other end of this declaration (--size-40) already
-   reads. The knob is unchanged at 16 and re-centred: inner height 22, so 3 rather
-   than 2. Three screens. */
-.toggle[role=switch]{position:relative;width:var(--size-40);height:var(--size-24);border-radius:var(--radius-pill);background:var(--bg-control);border:1px solid var(--border-hairline);padding:0;font-size:0;flex:0 0 auto;cursor:pointer;transition:background var(--dur-quick)}
-.toggle[role=switch]::after{content:'';position:absolute;top:3px;left:3px;width:var(--icon-16);height:var(--icon-16);border-radius:50%;background:var(--text-muted);transition:left var(--dur-quick) var(--ease-out),background var(--dur-quick)}
-.toggle[role=switch][aria-checked=true]{background:var(--color-action);border-color:var(--color-action)}
-.toggle[role=switch][aria-checked=true]::after{left:19px;background:var(--control-knob)}
-/* The switch had no pointer state at all: its only feedback was the knob sliding, which is the
-   RESULT of the click and not a sign the control is live. Both states exclude [aria-disabled=true]
-   so the dead switch below cannot light up, and exclude [aria-checked=true] so neither swaps the
-   brass ground out from under a switch that is ON. A checked switch is still pressless: see the
-   note under the disabled rule. */
-.toggle[role=switch]:not([aria-checked=true]):not([aria-disabled=true]):hover{background:var(--bg-control-hover)}
-.toggle[role=switch]:not([aria-checked=true]):not([aria-disabled=true]):active{background:var(--bg-pressed)}
-.toggle[role=switch][aria-disabled=true]{opacity:var(--opacity-disabled);cursor:not-allowed}
-/* An ON switch is a flat --color-action ground, not the two-stop action gradient, so neither of the
-   two press mechanisms fits it: --bg-pressed would read as "it turned itself off" and there is no
-   gradient angle to reverse. It is the one control that asked for a role of its own, so it got one:
-   --color-action-pressed, brass held down. Nothing else in the system needs it, because everything
-   else brass is a gradient. */
-.toggle[role=switch][aria-checked=true]:not([aria-disabled=true]):active{background:var(--color-action-pressed);border-color:var(--color-action-pressed)}
 /* Target size follows the POINTER, not the viewport. Step 7 wrote that rule and moved two
    files; these stayed bound to a 640px viewport, so a touch tablet or a touch laptop got the
    36px control. A fine pointer keeps 36, which clears 2.5.8 (24x24) with room. */

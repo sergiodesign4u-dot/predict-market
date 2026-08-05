@@ -558,8 +558,28 @@ p code,li code,td code{overflow-wrap:anywhere}
   word-break:normal;white-space:nowrap}
 .ck-census td.tk-from{font-family:var(--font-body);font-size:var(--text-12);
   line-height:var(--leading-base);color:var(--text-muted)}
-.ck-rule{display:flex;gap:var(--space-12);padding:var(--space-12) var(--space-16);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);margin-bottom:var(--space-8)}
-.ck-rule>b{flex:0 0 auto;font-family:var(--font-body);font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.1em;text-transform:uppercase;color:var(--text-brass);padding-top:var(--space-2)}
+/* A LABEL BESIDE A COLUMN, AND IT WAS A LABEL BESIDE A ROW. This block was
+   `display:flex` with no direction and no wrap, so its `<b>` and every `<p>` in
+   it became items of ONE row: a rule with two paragraphs put them side by side at
+   half width each, and a rule with three at a third each. Sequential prose read as
+   parallel columns, and that is not a style, it is the paragraphs having been laid
+   out as if they were alternatives.
+   Counted across the vitrine on 2026-08-05: 43 blocks hold one paragraph and
+   worked by accident, 36 hold two, 4 hold three, 1 holds four. **41 of 84 blocks
+   over 39 pages**, which is nearly every component page in the system.
+   Found by the browser and not by eye, and only because the toggle page pushed
+   11px sideways at 360 in both themes: its third paragraph was squeezed to 60px
+   and a code span in it could not fit. The overflow is the symptom; the 41 is the
+   defect, and the other 40 were not overflowing because their text happened to be
+   breakable.
+   THE FIX IS A GRID AND NOT A WRAP. `flex-wrap` would let the row break where the
+   items no longer fit, which is a width question, and this is not one: two
+   paragraphs of prose are sequential at every width, including 1440. Two columns,
+   the label pinned to the first cell of the first row, every paragraph auto-placed
+   down the second. A block with one paragraph renders exactly as it did. */
+.ck-rule{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--space-8) var(--space-12);padding:var(--space-12) var(--space-16);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);margin-bottom:var(--space-8)}
+.ck-rule>b{grid-column:1;grid-row:1;font-family:var(--font-body);font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.1em;text-transform:uppercase;color:var(--text-brass);padding-top:var(--space-2)}
+.ck-rule>p{grid-column:2}
 .ck-rule p{margin:0;font-size:var(--text-13);line-height:var(--leading-base)}
 .ck-anti>b{color:var(--outcome-no)}
 

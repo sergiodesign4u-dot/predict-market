@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - toggle</title>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   A frame is a document of its own, so it does not inherit the attribute: this
+   block runs in the frames too and they are told by postMessage, the same
+   handshake _frames.js already uses, because from file:// every document has
+   its own opaque origin and reading into a frame is refused.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function set(on){if(on){r.setAttribute('data-theme','light')}else{r.removeAttribute('data-theme')}}
+function push(){var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){try{f[i].contentWindow.postMessage({pmTheme:lit()?'light':'dark'},'*')}catch(e){}}}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}
+push();}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();set(!on);
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+window.addEventListener('message',function(e){var d=e.data;
+if(!d||(d.pmTheme!=='light'&&d.pmTheme!=='dark'))return;
+set(d.pmTheme==='light');paint();});
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);
+/* a frame that arrives late is told as soon as it is ready */
+var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
+push();});})();</script>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="toggle">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<main class="tk-wrap">
+  <header class="tk-hero">
+    <h1>toggle</h1>
+    <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">components/toggle.css</span>
+      <span class="tk-badge">8 rules</span>
+      <span class="tk-badge">1 classes</span>
+      <span class="tk-badge">3 screens</span>
+    </div>
+  </header>
+  <section class="tk-sec" id="purpose">
+    <h2 data-n="01">What it is</h2>
+<p>One setting a person turns on or off, answered on the spot. A 40x24 track, a 16px knob, and nothing between the two states but the knob&#x27;s travel and the ground&#x27;s colour.</p><p>It is a <strong>selector</strong> and not an action: <code>ui-kit/_worn.py</code> files it that way because pressing it does not DO a thing, it chooses one, and the reason the choice is visible afterwards is that the control stays lit.</p>
+  </section>
+  <section class="tk-sec" id="anatomy">
+    <h2 data-n="02">Anatomy</h2>
+    <p class="tk-note">Which part is which, in the product's own words. Every class named here is one this file styles, and the build fails if it is not.</p>
+<ul class="tk-doc-list"><li><code>.toggle</code> - the track, and it is only ever written with <code>role=&quot;switch&quot;</code> on it: 40x24, a pill, a graphite ground and a hairline edge. The state is the ARIA attribute and not a class, because a switch that is on has to say so to something other than a stylesheet, and its knob is a <code>::after</code> at 16px, <code>--text-muted</code> when off and <code>--control-knob</code> when on, travelling by <code>left</code> rather than by <code>transform</code> so the 3px inset stays readable in the rule.</li></ul>
+  </section>
+  <section class="tk-sec" id="live">
+    <h2 data-n="03">Live</h2>
+    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a page of its own, so the width under the title is a real viewport and the media queries answer to it. One row per CONTROL, in one column, and a scope is present only where the scope is what the row is about: twelve of the sixteen combinations the product wears were measured against the same markup with no scope above them and came out identical over thirteen properties, so a plate around those would be showing the reader a dialog to prove something about a button. The numbers for every row are in the axis table one section down, written once. These are live pages and not pictures. Hover them, press them, Tab into them.</p>
+<figure class="ck-scene" id="sp-filters-toggle"><figcaption class="ck-scene-lbl"><b>Toggle: on, off, disabled</b><span class="ck-w">278px</span><span class="ck-zoom" hidden></span><a href="specimens/filters-toggle.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:278px"><iframe data-specimen="filters-toggle" src="specimens/filters-toggle.html" width="278" height="320" loading="lazy" title="Toggle: on, off, disabled"></iframe></div></figure>
+  </section>
+<section class="tk-sec" id="inside"><h2 data-n="04">Also rendered inside</h2><p class="tk-note">The same markup, shown once on the page of the component that owns it. Nothing here is a second copy.</p><div class="ck-screens"><a href="filters.html#sp-filters-panel">Filter panel, open, and the switch at its foot</a></div></section>  <section class="tk-sec" id="states">
+    <h2 data-n="05">States, as they measure</h2>
+    <p class="tk-note">The frames above are the rendering; this is the reading of them. Every number here was taken in a browser with a REAL pointer, a real Tab and the mouse button really held down (<code>ui-kit/_verify/states.cjs</code>), because a hover value is the cascade resolved and cannot be read out of a declaration. Nothing here is a state faked with a stand class. One block per distinct FACE: two elements that measure the same in all four states in both themes are one answer, however many screens carry them, and that grouping is computed rather than chosen. Rest says what the face IS; every row under it says only what that state MOVES, which is the question a reader actually has. The ring is not among the nine values, because <code>outline</code> is drawn outside the box: a focus row that reports no movement is saying the face does not move, and the ring is on the live frame. The numbers go stale the moment a rule changes, so each block records the files it was measured from and <code>python3 ui-kit/_states.py</code> fails when their bytes move.</p>
+<figure class="ck-gal"><figcaption class="ck-gal-head"><b>span.toggle</b><span class="ck-w">on the bare canvas</span><a href="#sp-filters-toggle">hover it in the frame above</a><a href="specimens/filters-toggle.html" target="_blank" rel="noopener">the specimen</a></figcaption><p class="ck-gal-cap">The switch, off: a graphite track and a pale knob at the left.</p><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th><th>what the browser measured</th></tr></thead><tbody><tr><td class="tk-role">rest</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(199, 162, 78)"></i><code>rgb(199, 162, 78)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(199, 162, 78)"></i><code>rgb(199, 162, 78)</code></span><span class="ck-fx"><em>edge width</em><code>1px</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(164, 157, 143)"></i><code>rgb(164, 157, 143)</code></span><span class="ck-fx"><em>corner</em><code>100px</code></span></td></tr><tr><td class="tk-role">hover</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr><tr><td class="tk-role">held down</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(169, 130, 47)"></i><code>rgb(169, 130, 47)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(199, 162, 78)"></i><code>rgb(199, 162, 78)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(169, 130, 47)"></i><code>rgb(169, 130, 47)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(199, 162, 78)"></i><code>rgb(199, 162, 78)</code></span></td></tr><tr><td class="tk-role">focused by keyboard</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr></tbody></table></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th><th>what the browser measured</th></tr></thead><tbody><tr><td class="tk-role">rest</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(199, 162, 78)"></i><code>rgb(199, 162, 78)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(199, 162, 78)"></i><code>rgb(199, 162, 78)</code></span><span class="ck-fx"><em>edge width</em><code>1px</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(86, 80, 66)"></i><code>rgb(86, 80, 66)</code></span><span class="ck-fx"><em>corner</em><code>100px</code></span></td></tr><tr><td class="tk-role">hover</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr><tr><td class="tk-role">held down</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(169, 130, 47)"></i><code>rgb(169, 130, 47)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(199, 162, 78)"></i><code>rgb(199, 162, 78)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(169, 130, 47)"></i><code>rgb(169, 130, 47)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(199, 162, 78)"></i><code>rgb(199, 162, 78)</code></span></td></tr><tr><td class="tk-role">focused by keyboard</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr></tbody></table></div></div></figure><figure class="ck-gal"><figcaption class="ck-gal-head"><b>span.toggle</b><span class="ck-w">on the bare canvas</span><a href="#sp-filters-toggle">hover it in the frame above</a><a href="specimens/filters-toggle.html" target="_blank" rel="noopener">the specimen</a></figcaption><p class="ck-gal-cap">The switch, on: the track takes the brand brass and the knob travels. Brass rather than green on purpose, because green is an OUTCOME colour in this product and a switch is not an outcome.</p><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th><th>what the browser measured</th></tr></thead><tbody><tr><td class="tk-role">rest</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(36, 40, 47)"></i><code>rgb(36, 40, 47)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(43, 47, 56)"></i><code>rgb(43, 47, 56)</code></span><span class="ck-fx"><em>edge width</em><code>1px</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(164, 157, 143)"></i><code>rgb(164, 157, 143)</code></span><span class="ck-fx"><em>corner</em><code>100px</code></span></td></tr><tr><td class="tk-role">hover</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(32, 36, 42)"></i><code>rgb(32, 36, 42)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(36, 40, 47)"></i><code>rgb(36, 40, 47)</code></span></td></tr><tr><td class="tk-role">held down</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(25, 27, 31)"></i><code>rgb(25, 27, 31)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(36, 40, 47)"></i><code>rgb(36, 40, 47)</code></span></td></tr><tr><td class="tk-role">focused by keyboard</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr></tbody></table></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th><th>what the browser measured</th></tr></thead><tbody><tr><td class="tk-role">rest</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(252, 250, 244)"></i><code>rgb(252, 250, 244)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(172, 170, 164)"></i><code>rgb(172, 170, 164)</code></span><span class="ck-fx"><em>edge width</em><code>1px</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(86, 80, 66)"></i><code>rgb(86, 80, 66)</code></span><span class="ck-fx"><em>corner</em><code>100px</code></span></td></tr><tr><td class="tk-role">hover</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(249, 247, 241)"></i><code>rgb(249, 247, 241)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(252, 250, 244)"></i><code>rgb(252, 250, 244)</code></span></td></tr><tr><td class="tk-role">held down</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(243, 241, 235)"></i><code>rgb(243, 241, 235)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(252, 250, 244)"></i><code>rgb(252, 250, 244)</code></span></td></tr><tr><td class="tk-role">focused by keyboard</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr></tbody></table></div></div></figure><figure class="ck-gal"><figcaption class="ck-gal-head"><b>button.toggle</b><span class="ck-w">on the bare canvas</span><a href="specimens/filters-panel.html" target="_blank" rel="noopener">the specimen</a></figcaption><p class="ck-gal-cap"><strong>The same switch in the panel it actually ships in</strong>, which no stand held until 2026-08-05. Gate 24 is what asked for it: on the three screens that carry this control it stands inside <code>.filter-panel &gt; .reverse-row</code>, and every specimen showed it on its own. It measures as its own face because the ground under it is the panel&#x27;s surface rather than the page&#x27;s, and that is the whole reason a stand that never puts two things in one document is how nine passes went by without anyone noticing this was not part of <code>filters</code>.</p><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th><th>what the browser measured</th></tr></thead><tbody><tr><td class="tk-role">rest</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(36, 40, 47)"></i><code>rgb(36, 40, 47)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(43, 47, 56)"></i><code>rgb(43, 47, 56)</code></span><span class="ck-fx"><em>edge width</em><code>1px</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(0, 0, 0)"></i><code>rgb(0, 0, 0)</code></span><span class="ck-fx"><em>corner</em><code>100px</code></span></td></tr><tr><td class="tk-role">hover</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(32, 36, 42)"></i><code>rgb(32, 36, 42)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(36, 40, 47)"></i><code>rgb(36, 40, 47)</code></span></td></tr><tr><td class="tk-role">held down</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(25, 27, 31)"></i><code>rgb(25, 27, 31)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(36, 40, 47)"></i><code>rgb(36, 40, 47)</code></span></td></tr><tr><td class="tk-role">focused by keyboard</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr></tbody></table></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th><th>what the browser measured</th></tr></thead><tbody><tr><td class="tk-role">rest</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(252, 250, 244)"></i><code>rgb(252, 250, 244)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(172, 170, 164)"></i><code>rgb(172, 170, 164)</code></span><span class="ck-fx"><em>edge width</em><code>1px</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(0, 0, 0)"></i><code>rgb(0, 0, 0)</code></span><span class="ck-fx"><em>corner</em><code>100px</code></span></td></tr><tr><td class="tk-role">hover</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(249, 247, 241)"></i><code>rgb(249, 247, 241)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(252, 250, 244)"></i><code>rgb(252, 250, 244)</code></span></td></tr><tr><td class="tk-role">held down</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(243, 241, 235)"></i><code>rgb(243, 241, 235)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(252, 250, 244)"></i><code>rgb(252, 250, 244)</code></span></td></tr><tr><td class="tk-role">focused by keyboard</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr></tbody></table></div></div></figure>
+  </section>
+  <section class="tk-sec" id="when">
+    <h2 data-n="06">When to use</h2>
+    <p class="tk-note">The judgement a generator cannot read out of css, and the reason <code>ui-kit/authored/toggle.md</code> exists.</p>
+<p>For a setting that takes effect immediately and has exactly two states. Three placements today, all of them in a filter panel.</p><p>Never for a choice that needs confirming, and never as a way of asking a question: a switch whose label is a question (&quot;Show closed events?&quot;) makes the OFF state read as &quot;no&quot;, which is an answer a person did not give. Label the thing being switched, not the question about it.</p><p>For a choice between more than two values it is <code>filters</code>, the disclosure it stands inside: a list of labelled radios says what the options ARE, and a switch can only say yes or no to one of them. For a value a person picks off a rail rather than out of a menu it is <code>quick</code> or <code>catnav</code>, which are chips.</p>
+  </section>
+  <section class="tk-sec" id="rule">
+    <h2 data-n="07">The rule, and the anti-rule</h2>
+    <p class="tk-note">One sentence to follow and one mistake worth naming. An anti-rule has to name the component that should have been used instead, or it is a complaint rather than an address, and the build checks that it does.</p>
+<div class="ck-rule"><b>Do</b><p>The track takes the brand brass when it is on, never green. Green and red are outcome semantics in this product, and a switch is not an outcome.</p><p>The size is a floor and not a preference: 40x24 under any pointer, because a switch is a target you hit rather than one you aim at.</p></div><div class="ck-rule ck-anti"><b>Never</b><p>Never use it for a choice with more than two values. That is <code>filters</code>, the disclosure this control stands inside: a list of labelled radios says what the options ARE, where a switch can only say yes or no to one of them. A value picked off a rail rather than out of a menu is a chip, which is <code>quick</code> or <code>catnav</code>.</p><p>Never fake the knob with a hit area no measurement can see. The control&#x27;s own box is 40x24, and an invisible pseudo stretched over a smaller track is a fix nobody in this repo can check, which is the reason S39 was fixed in the boxes rather than around them.</p><p>Never give the ON state <code>--bg-pressed</code> for its press. A switch that is on is a flat <code>--color-action</code> ground, so the quiet system press would read as &quot;it turned itself off&quot; and there is no gradient angle to reverse. It is the one control in the product that asked for a role of its own and got one, <code>--color-action-pressed</code>.</p><p>Seen: <a class="tk-doc-ref" href="backlog.html"><code>ui-kit/docs/backlog.md</code></a> S39, where this control measured 40x22 under a coarse pointer, one of exactly three in the product below the WCAG 2.5.8 floor.</p></div>
+  </section>
+  <section class="tk-sec" id="roles">
+    <h2 data-n="08">Roles it reads</h2>
+    <p class="tk-note">Colour comes in only through these. Change one on <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
+<div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-control-hover)"></i><code>--bg-control-hover</code></span><span class="ck-role"><i style="background:var(--bg-pressed)"></i><code>--bg-pressed</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--color-action)"></i><code>--color-action</code></span><span class="ck-role"><i style="background:var(--color-action-pressed)"></i><code>--color-action-pressed</code></span><span class="ck-role"><i style="background:var(--control-knob)"></i><code>--control-knob</code></span><span class="ck-role"><i style="background:var(--opacity-disabled)"></i><code>--opacity-disabled</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span></div>
+  </section>
+  <section class="tk-sec" id="classes">
+    <h2 data-n="09">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 105 painted screens carry it. A zero is not automatically dead: the last column says whether the class is built at runtime, shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely used by nothing. Gate 30 fails the build on the last kind.</p>
+<table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.toggle</td><td class='tk-hex'>3</td><td class='tk-hex'></td></tr></tbody></table>
+  </section>
+  <section class="tk-sec" id="screens">
+    <h2 data-n="10">Where it stands</h2>
+<div class="ck-screens"><a href="../ui-visual/favorites-empty.html">favorites-empty</a><a href="../ui-visual/favorites-loading.html">favorites-loading</a><a href="../ui-visual/favorites.html">favorites</a></div>
+  </section>
+  <section class="tk-sec" id="sources">
+    <h2 data-n="11">Written from</h2>
+    <p class="tk-note">The authored half of this page is the one artefact here no gate can read: a sentence cannot be checked for being true. So it names its sources before it says anything, and the build fails when one of them does not exist. Read this first if you doubt a claim above it.</p>
+<ul class="tk-doc-list"><li><a class="tk-doc-ref" href="filters.html"><code>components/filters.css</code></a>, where this control lived until 2026-08-05 and where it did not belong: a switch and a sort menu are two control families, and the only thing they shared was a file name.</li><li><a class="tk-doc-ref" href="defects.html"><code>ui-kit/docs/defects.md</code></a> row 63 and <a class="tk-doc-ref" href="backlog.html"><code>ui-kit/docs/backlog.md</code></a> S41 - the pass that found it. <code>filters</code> had an EMPTY containment, so <code>ui-kit/_levels.py</code> called it an atom by arithmetic with no information in it, and the inventory and the vitrine&#x27;s side panel printed that as a decision somebody had taken. Nobody had. <strong>Gate 39</strong> now asks the question once per component.</li><li><a class="tk-doc-ref" href="backlog.html"><code>ui-kit/docs/backlog.md</code></a> S39, the target-size pass: this control was 40x22 under a coarse pointer, one of three in the product that failed WCAG 2.5.8.</li><li>The painted screens, counted: 3 placements on 3 screens. Every one of them carries <code>role=&quot;switch&quot;</code>, measured, with no exceptions, which is why the file has no rule for a <code>.toggle</code> that is not one.</li></ul>
+  </section>
+  <section class="tk-sec" id="css">
+    <h2 data-n="12">What the file says</h2>
+    <p class="tk-note">The selectors and the css, for a person about to edit them. To change this component, edit <code>components/toggle.css</code>; to change a value it reads, edit the role in <code>components/tokens.css</code>.</p>
+<h3 class="tk-subh">Every state rule, and what it moves</h3><table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.toggle[role=switch][aria-checked=true]</td><td class='ck-decl'>background:var(--color-action);border-color:var(--color-action)</td></tr><tr><td class='tk-role'>.toggle[role=switch][aria-checked=true]::after</td><td class='ck-decl'>left:19px;background:var(--control-knob)</td></tr><tr><td class='tk-role'>.toggle[role=switch]:not([aria-checked=true]):not([aria-disabled=true]):hover</td><td class='ck-decl'>background:var(--bg-control-hover)</td></tr><tr><td class='tk-role'>.toggle[role=switch]:not([aria-checked=true]):not([aria-disabled=true]):active</td><td class='ck-decl'>background:var(--bg-pressed)</td></tr><tr><td class='tk-role'>.toggle[role=switch][aria-checked=true]:not([aria-disabled=true]):active</td><td class='ck-decl'>background:var(--color-action-pressed);border-color:var(--color-action-pressed)</td></tr></tbody></table><h3 class="tk-subh">The tokens these states read, on both grounds</h3><p class="tk-note">Neither panel is a screenshot. Each carries <code>data-theme</code> itself, so the token resolves inside it and a role that was given a value in only one theme shows up here as a control that does not move.</p><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><div class="ck-st-tok"><code>--color-action</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--color-action)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--control-knob</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--control-knob)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--bg-control-hover</code><span class="ck-st-row"><span class="ck-st-chip ck-ground" style="background:var(--bg-control-hover)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip ck-ground" style="background:var(--bg-pressed)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--color-action-pressed</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--color-action-pressed)">Confirm bet</span><em>the ground the control settles onto</em></span></div></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><div class="ck-st-tok"><code>--color-action</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--color-action)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--control-knob</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--control-knob)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--bg-control-hover</code><span class="ck-st-row"><span class="ck-st-chip ck-ground" style="background:var(--bg-control-hover)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip ck-ground" style="background:var(--bg-pressed)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--color-action-pressed</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--color-action-pressed)">Confirm bet</span><em>the ground the control settles onto</em></span></div></div></div><details class="ck-src"><summary>components/toggle.css</summary><pre>/* components/toggle.css
+   Component: toggle. Classes: .toggle.
+
+   Reads:
+   Stand:  ui-kit/toggle.html
+   Stands on: 3 ui-visual screens (favorites-empty.html, favorites-loading.html, favorites.html)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+/* ============================================================================
+   IT LEFT components/filters.css ON 2026-08-05, AND THE REASON IS THAT IT WAS
+   NEVER PART OF IT. A switch and a sort menu are two control families, and the
+   only thing they shared was a file name: the menu is a `&lt;details&gt;` holding a
+   panel holding a list of labelled radios, which is a molecule, and this is one
+   control with a knob, which is an atom. The stand was already saying so out
+   loud by needing two specimens for one component.
+
+   It is also what gate 39 was written to catch. `filters` had an EMPTY
+   containment, so `_levels.py` called it an atom by arithmetic that had no
+   information, and `ui-kit/docs/inventory.md` and the vitrine's side panel
+   printed that as a decision somebody had taken. Nobody had. See
+   `ui-kit/docs/defects.md` row 63 and backlog S41.
+
+   TWO RULES DID NOT COME WITH IT, AND THEY ARE THE GREY-BOX FOSSIL. The old file
+   opened with `.toggle{border:1px solid --border-hairline;font-size:--text-10;
+   padding:--space-2 --space-8;cursor:pointer}` and a bold weight for the checked
+   state. Every `.toggle` in both trees carries `role="switch"` - measured, zero
+   exceptions - and the `[role=switch]` rule below re-declares the border, the
+   padding and the cursor and sets `font-size:0`, so the fossil painted nothing
+   and the bold weight was a weight on a 0px face. Deleted rather than carried.
+   ============================================================================ */
+
+/* THE TRACK IS 24 TALL AND IT WAS 22, WHICH IS TWO PIXELS UNDER THE FLOOR. Measured
+   under a coarse pointer: 40x22, one of three controls in the product that fail
+   WCAG 2.5.8. A switch is a target you hit, not a target you aim at, so the fix is
+   the control's own box rather than an invisible pseudo stretched over it: a hit
+   area no measurement in this repo can see is a fix nobody can check.
+   AND THE TOKEN WAS WRONG BEFORE IT WAS SHORT. --icon-22 is the size of a MARK,
+   and it was being asked for the height of a control; --size-24 is a size
+   primitive and is what the other end of this declaration (--size-40) already
+   reads. The knob is unchanged at 16 and re-centred: inner height 22, so 3 rather
+   than 2. Three screens. */
+.toggle[role=switch]{position:relative;width:var(--size-40);height:var(--size-24);border-radius:var(--radius-pill);background:var(--bg-control);border:1px solid var(--border-hairline);padding:0;font-size:0;flex:0 0 auto;cursor:pointer;transition:background var(--dur-quick)}
+.toggle[role=switch]::after{content:'';position:absolute;top:3px;left:3px;width:var(--icon-16);height:var(--icon-16);border-radius:50%;background:var(--text-muted);transition:left var(--dur-quick) var(--ease-out),background var(--dur-quick)}
+.toggle[role=switch][aria-checked=true]{background:var(--color-action);border-color:var(--color-action)}
+.toggle[role=switch][aria-checked=true]::after{left:19px;background:var(--control-knob)}
+/* The switch had no pointer state at all: its only feedback was the knob sliding, which is the
+   RESULT of the click and not a sign the control is live. Both states exclude [aria-disabled=true]
+   so the dead switch below cannot light up, and exclude [aria-checked=true] so neither swaps the
+   brass ground out from under a switch that is ON. A checked switch is still pressless: see the
+   note under the disabled rule. */
+.toggle[role=switch]:not([aria-checked=true]):not([aria-disabled=true]):hover{background:var(--bg-control-hover)}
+.toggle[role=switch]:not([aria-checked=true]):not([aria-disabled=true]):active{background:var(--bg-pressed)}
+.toggle[role=switch][aria-disabled=true]{opacity:var(--opacity-disabled);cursor:not-allowed}
+/* An ON switch is a flat --color-action ground, not the two-stop action gradient, so neither of the
+   two press mechanisms fits it: --bg-pressed would read as "it turned itself off" and there is no
+   gradient angle to reverse. It is the one control that asked for a role of its own, so it got one:
+   --color-action-pressed, brass held down. Nothing else in the system needs it, because everything
+   else brass is a gradient. */
+.toggle[role=switch][aria-checked=true]:not([aria-disabled=true]):active{background:var(--color-action-pressed);border-color:var(--color-action-pressed)}
+</pre></details>
+  </section>
+
+</main>
+
+<script src="_frames.js"></script>
+<script src="_nav.js"></script>
+</body>
+</html>

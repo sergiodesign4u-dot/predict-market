@@ -226,6 +226,7 @@
    "components/fonts.css",
    "components/input.css",
    "components/oddsbar.css",
+   "components/quick.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
@@ -236,7 +237,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "7f3cbafa44dd3f6f"
+  "sha": "85567213f8edd552"
  },
  {
   "component": "betpanel",
@@ -465,6 +466,7 @@
    "components/fonts.css",
    "components/input.css",
    "components/oddsbar.css",
+   "components/quick.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
@@ -475,7 +477,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "7f3cbafa44dd3f6f"
+  "sha": "85567213f8edd552"
  },
  {
   "component": "betpanel",
@@ -1051,6 +1053,7 @@
    "components/dialog.css",
    "components/fonts.css",
    "components/input.css",
+   "components/quick.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
@@ -1058,7 +1061,7 @@
    "ui-kit/specimens/betpanel-sheet.html",
    "ui-kit/specimens/button-census.html"
   ],
-  "sha": "78888760687794a6"
+  "sha": "112a157b36e75000"
  },
  {
   "component": "betpanel",
@@ -1278,6 +1281,7 @@
    "components/fonts.css",
    "components/input.css",
    "components/options.css",
+   "components/quick.css",
    "components/tokens.css",
    "components/yesno.css",
    "ui-kit/_specimen.css",
@@ -1286,7 +1290,7 @@
    "ui-kit/specimens/betpanel-more.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "347f2a0e3a6f08e8"
+  "sha": "b2e4e6f0ea22ec2b"
  },
  {
   "component": "betpanel",
@@ -1468,6 +1472,7 @@
    "components/fonts.css",
    "components/input.css",
    "components/options.css",
+   "components/quick.css",
    "components/skeleton.css",
    "components/state-block.css",
    "components/tokens.css",
@@ -1476,7 +1481,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-more.html"
   ],
-  "sha": "09f4fb3f4f4663cd"
+  "sha": "3a6c56e874e64a54"
  },
  {
   "component": "bottomnav",
@@ -3489,7 +3494,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-chips.html"
   ],
-  "sha": "3a5fce9aa85f79f3"
+  "sha": "5c20fc88c262a39b"
  },
  {
   "component": "catnav",
@@ -3677,7 +3682,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-chips.html"
   ],
-  "sha": "3a5fce9aa85f79f3"
+  "sha": "5c20fc88c262a39b"
  },
  {
   "component": "catnav",
@@ -5555,7 +5560,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "514398682f79d779"
+  "sha": "42e6b11cc01eedf5"
  },
  {
   "component": "cookie-consent",
@@ -5753,7 +5758,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "bc494a496e19d5a9"
+  "sha": "33dfb497d8694b05"
  },
  {
   "component": "cookie-consent",
@@ -5946,7 +5951,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "514398682f79d779"
+  "sha": "42e6b11cc01eedf5"
  },
  {
   "component": "cookie-consent",
@@ -6139,7 +6144,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "514398682f79d779"
+  "sha": "42e6b11cc01eedf5"
  },
  {
   "component": "course-chrome",
@@ -8046,6 +8051,7 @@
    "components/fonts.css",
    "components/input.css",
    "components/notice.css",
+   "components/quick.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
@@ -8056,7 +8062,7 @@
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "183fd9817a0db796"
+  "sha": "64fbd4b296153ae2"
  },
  {
   "component": "dialog",
@@ -8258,6 +8264,7 @@
    "components/fonts.css",
    "components/input.css",
    "components/notice.css",
+   "components/quick.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
@@ -8265,7 +8272,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "dfc6cbd9b4306ae3"
+  "sha": "41b9a564b07780f5"
  },
  {
   "component": "dialog",
@@ -8661,7 +8668,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/outcome-overlays.html"
   ],
-  "sha": "96b853dd600b3a16"
+  "sha": "0661f2e1b25e1dd6"
  },
  {
   "component": "event-detail",
@@ -8888,6 +8895,7 @@
    "components/fonts.css",
    "components/input.css",
    "components/oddsbar.css",
+   "components/quick.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
@@ -8896,7 +8904,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "34d99988bc112123"
+  "sha": "d12a7405f1336d01"
  },
  {
   "component": "filters",
@@ -9071,6 +9079,7 @@
   },
   "also": [
    "filters-sort",
+   "filters-panel",
    "footer"
   ],
   "covers": [
@@ -9087,10 +9096,11 @@
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-chips.html",
+   "ui-kit/specimens/filters-panel.html",
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "4d4962d568dbe317"
+  "sha": "a556c1768f86c395"
  },
  {
   "component": "filters",
@@ -9227,6 +9237,7 @@
   },
   "also": [
    "filters-sort",
+   "filters-panel",
    "footer"
   ],
   "covers": [
@@ -9243,10 +9254,11 @@
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-chips.html",
+   "ui-kit/specimens/filters-panel.html",
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "4d4962d568dbe317"
+  "sha": "a556c1768f86c395"
  },
  {
   "component": "filters",
@@ -9383,6 +9395,7 @@
   },
   "also": [
    "filters-sort",
+   "filters-panel",
    "footer"
   ],
   "covers": [
@@ -9399,372 +9412,11 @@
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-chips.html",
+   "ui-kit/specimens/filters-panel.html",
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "4d4962d568dbe317"
- },
- {
-  "component": "filters",
-  "id": "g4",
-  "el": "span.toggle",
-  "scope": "",
-  "specimen": "filters-toggle",
-  "classes": [
-   "app-case",
-   "kit-row",
-   "kit-tgl",
-   "toggle"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "filters/g4-rest-dark.png",
-    "value": "rgb(199, 162, 78) | none | rgb(199, 162, 78) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "filters/g4-hover-dark.png",
-    "value": "rgb(199, 162, 78) | none | rgb(199, 162, 78) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "filters/g4-active-dark.png",
-    "value": "rgb(169, 130, 47) | none | rgb(169, 130, 47) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "file": "filters/g4-focus-dark.png",
-    "value": "rgb(199, 162, 78) | none | rgb(199, 162, 78) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "filters/g4-rest-light.png",
-    "value": "rgb(199, 162, 78) | none | rgb(199, 162, 78) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "filters/g4-hover-light.png",
-    "value": "rgb(199, 162, 78) | none | rgb(199, 162, 78) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "filters/g4-active-light.png",
-    "value": "rgb(169, 130, 47) | none | rgb(169, 130, 47) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "file": "filters/g4-focus-light.png",
-    "value": "rgb(199, 162, 78) | none | rgb(199, 162, 78) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "span.toggle"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/filters.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/filters-toggle.html"
-  ],
-  "sha": "48e7dd2a03abbebb"
- },
- {
-  "component": "filters",
-  "id": "g5",
-  "el": "span.toggle",
-  "scope": "",
-  "specimen": "filters-toggle",
-  "classes": [
-   "app-case",
-   "kit-row",
-   "kit-tgl",
-   "toggle"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "filters/g5-rest-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "filters/g5-hover-dark.png",
-    "value": "rgb(32, 36, 42) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "filters/g5-active-dark.png",
-    "value": "rgb(25, 27, 31) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "file": "filters/g5-focus-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "filters/g5-rest-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "filters/g5-hover-light.png",
-    "value": "rgb(249, 247, 241) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "filters/g5-active-light.png",
-    "value": "rgb(243, 241, 235) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "file": "filters/g5-focus-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
-    "w": 64,
-    "h": 48,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "span.toggle"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/filters.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/filters-toggle.html"
-  ],
-  "sha": "48e7dd2a03abbebb"
+  "sha": "a556c1768f86c395"
  },
  {
   "component": "footer",
@@ -9973,7 +9625,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "bd578aeab4fdc154"
+  "sha": "01210944107e6d61"
  },
  {
   "component": "footer",
@@ -10182,7 +9834,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "bd578aeab4fdc154"
+  "sha": "01210944107e6d61"
  },
  {
   "component": "footer",
@@ -10391,7 +10043,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "bd578aeab4fdc154"
+  "sha": "01210944107e6d61"
  },
  {
   "component": "header",
@@ -13239,6 +12891,7 @@
    "components/fonts.css",
    "components/input.css",
    "components/notice.css",
+   "components/quick.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
@@ -13247,439 +12900,11 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "7510ca46db570763"
+  "sha": "603598d62795d799"
  },
  {
   "component": "input",
   "id": "g2",
-  "el": "button",
-  "scope": "dialog.app-dialog",
-  "specimen": "dialog-shared",
-  "classes": [
-   "amount-input",
-   "amount-row",
-   "app-case",
-   "app-dialog",
-   "btn",
-   "btn-block",
-   "btn-md",
-   "btn-primary",
-   "btn-secondary",
-   "field-label",
-   "fine",
-   "ic",
-   "kit-dlgs",
-   "protect",
-   "prov-apple",
-   "prov-google",
-   "prov-x",
-   "quick",
-   "sel",
-   "sheet-body",
-   "sheet-close",
-   "sheet-head",
-   "sheet-sub",
-   "signin-dialog",
-   "widget-box"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "input/g2-rest-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
-    "w": 53,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "input/g2-hover-dark.png",
-    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1",
-    "w": 53,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "input/g2-active-dark.png",
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1",
-    "w": 53,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "file": "input/g2-focus-dark.png",
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
-    "w": 53,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "input/g2-rest-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
-    "w": 53,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "input/g2-hover-light.png",
-    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1",
-    "w": 53,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "input/g2-active-light.png",
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1",
-    "w": 53,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "file": "input/g2-focus-light.png",
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
-    "w": 53,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "input-amount",
-   "input-states",
-   "betpanel-sheet"
-  ],
-  "covers": [
-   "button @dialog.app-dialog",
-   "button @dialog.bet-sheet"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/button.css",
-   "components/dialog.css",
-   "components/fonts.css",
-   "components/input.css",
-   "components/notice.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/betpanel-sheet.html",
-   "ui-kit/specimens/dialog-shared.html",
-   "ui-kit/specimens/input-amount.html",
-   "ui-kit/specimens/input-states.html"
-  ],
-  "sha": "e8e607b0614cd66f"
- },
- {
-  "component": "input",
-  "id": "g3",
-  "el": "button.sel",
-  "scope": "dialog.app-dialog",
-  "specimen": "dialog-shared",
-  "classes": [
-   "amount-input",
-   "amount-row",
-   "app-case",
-   "app-dialog",
-   "btn",
-   "btn-block",
-   "btn-md",
-   "btn-primary",
-   "btn-secondary",
-   "field-label",
-   "fine",
-   "ic",
-   "kit-dlgs",
-   "protect",
-   "prov-apple",
-   "prov-google",
-   "prov-x",
-   "quick",
-   "sel",
-   "sheet-body",
-   "sheet-close",
-   "sheet-head",
-   "sheet-sub",
-   "signin-dialog",
-   "widget-box"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "input/g3-rest-dark.png",
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "input/g3-hover-dark.png",
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "input/g3-active-dark.png",
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "file": "input/g3-focus-dark.png",
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "input/g3-rest-light.png",
-    "value": "rgba(199, 162, 78, 0.3) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "input/g3-hover-light.png",
-    "value": "rgba(199, 162, 78, 0.3) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "input/g3-active-light.png",
-    "value": "rgba(199, 162, 78, 0.3) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "file": "input/g3-focus-light.png",
-    "value": "rgba(199, 162, 78, 0.3) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "input-amount",
-   "input-states",
-   "betpanel-sheet"
-  ],
-  "covers": [
-   "button.sel @dialog.app-dialog",
-   "button.sel @dialog.bet-sheet"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/button.css",
-   "components/dialog.css",
-   "components/fonts.css",
-   "components/input.css",
-   "components/notice.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/betpanel-sheet.html",
-   "ui-kit/specimens/dialog-shared.html",
-   "ui-kit/specimens/input-amount.html",
-   "ui-kit/specimens/input-states.html"
-  ],
-  "sha": "e8e607b0614cd66f"
- },
- {
-  "component": "input",
-  "id": "g4",
   "el": "input.amount-input",
   "scope": "dialog.app-dialog",
   "specimen": "input-states",
@@ -13696,7 +12921,7 @@
   ],
   "shots": {
    "rest-dark": {
-    "file": "input/g4-rest-dark.png",
+    "file": "input/g2-rest-dark.png",
     "value": "rgb(28, 31, 36) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 0.45",
     "w": 402,
     "h": 52,
@@ -13715,7 +12940,7 @@
     "short": 0
    },
    "hover-dark": {
-    "file": "input/g4-hover-dark.png",
+    "file": "input/g2-hover-dark.png",
     "value": "rgb(28, 31, 36) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 0.45",
     "w": 402,
     "h": 52,
@@ -13734,7 +12959,7 @@
     "short": 0
    },
    "active-dark": {
-    "file": "input/g4-active-dark.png",
+    "file": "input/g2-active-dark.png",
     "value": "rgb(28, 31, 36) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 0.45",
     "w": 402,
     "h": 52,
@@ -13753,7 +12978,7 @@
     "short": 0
    },
    "disabled-dark": {
-    "file": "input/g4-disabled-dark.png",
+    "file": "input/g2-disabled-dark.png",
     "value": "rgb(28, 31, 36) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 0.45",
     "w": 402,
     "h": 52,
@@ -13772,7 +12997,7 @@
     "short": 0
    },
    "rest-light": {
-    "file": "input/g4-rest-light.png",
+    "file": "input/g2-rest-light.png",
     "value": "rgb(248, 246, 240) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 0.45",
     "w": 402,
     "h": 52,
@@ -13791,7 +13016,7 @@
     "short": 0
    },
    "hover-light": {
-    "file": "input/g4-hover-light.png",
+    "file": "input/g2-hover-light.png",
     "value": "rgb(248, 246, 240) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 0.45",
     "w": 402,
     "h": 52,
@@ -13810,7 +13035,7 @@
     "short": 0
    },
    "active-light": {
-    "file": "input/g4-active-light.png",
+    "file": "input/g2-active-light.png",
     "value": "rgb(248, 246, 240) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 0.45",
     "w": 402,
     "h": 52,
@@ -13829,7 +13054,7 @@
     "short": 0
    },
    "disabled-light": {
-    "file": "input/g4-disabled-light.png",
+    "file": "input/g2-disabled-light.png",
     "value": "rgb(248, 246, 240) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 0.45",
     "w": 402,
     "h": 52,
@@ -13856,17 +13081,18 @@
    "components/dialog.css",
    "components/fonts.css",
    "components/input.css",
+   "components/quick.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "213137a1642050cf"
+  "sha": "47114619139e3689"
  },
  {
   "component": "input",
-  "id": "g5",
+  "id": "g3",
   "el": "input.amount-input.addr",
   "scope": "dialog.app-dialog",
   "specimen": "input-states",
@@ -13883,7 +13109,7 @@
   ],
   "shots": {
    "rest-dark": {
-    "file": "input/g5-rest-dark.png",
+    "file": "input/g3-rest-dark.png",
     "value": "rgb(13, 15, 18) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1",
     "w": 402,
     "h": 60,
@@ -13902,7 +13128,7 @@
     "short": 0
    },
    "hover-dark": {
-    "file": "input/g5-hover-dark.png",
+    "file": "input/g3-hover-dark.png",
     "value": "rgb(13, 15, 18) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(164, 157, 143) | 10px | none | none | 1",
     "w": 402,
     "h": 60,
@@ -13921,7 +13147,7 @@
     "short": 0
    },
    "active-dark": {
-    "file": "input/g5-active-dark.png",
+    "file": "input/g3-active-dark.png",
     "value": "rgb(13, 15, 18) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(164, 157, 143) | 10px | none | rgba(199, 162, 78, 0.16) 0px 0px 0px 3px | 1",
     "w": 402,
     "h": 60,
@@ -13940,7 +13166,7 @@
     "short": 0
    },
    "focus-dark": {
-    "file": "input/g5-focus-dark.png",
+    "file": "input/g3-focus-dark.png",
     "value": "rgb(13, 15, 18) | none | rgb(199, 162, 78) | 1px | rgb(164, 157, 143) | 10px | none | rgba(199, 162, 78, 0.16) 0px 0px 0px 3px | 1",
     "w": 402,
     "h": 60,
@@ -13959,7 +13185,7 @@
     "short": 0
    },
    "rest-light": {
-    "file": "input/g5-rest-light.png",
+    "file": "input/g3-rest-light.png",
     "value": "rgb(253, 251, 245) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1",
     "w": 402,
     "h": 60,
@@ -13978,7 +13204,7 @@
     "short": 0
    },
    "hover-light": {
-    "file": "input/g5-hover-light.png",
+    "file": "input/g3-hover-light.png",
     "value": "rgb(253, 251, 245) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(86, 80, 66) | 10px | none | none | 1",
     "w": 402,
     "h": 60,
@@ -13997,7 +13223,7 @@
     "short": 0
    },
    "active-light": {
-    "file": "input/g5-active-light.png",
+    "file": "input/g3-active-light.png",
     "value": "rgb(253, 251, 245) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(86, 80, 66) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 0px 3px | 1",
     "w": 402,
     "h": 60,
@@ -14016,7 +13242,7 @@
     "short": 0
    },
    "focus-light": {
-    "file": "input/g5-focus-light.png",
+    "file": "input/g3-focus-light.png",
     "value": "rgb(253, 251, 245) | none | rgb(199, 162, 78) | 1px | rgb(86, 80, 66) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 0px 3px | 1",
     "w": 402,
     "h": 60,
@@ -14043,17 +13269,18 @@
    "components/dialog.css",
    "components/fonts.css",
    "components/input.css",
+   "components/quick.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "213137a1642050cf"
+  "sha": "47114619139e3689"
  },
  {
   "component": "input",
-  "id": "g6",
+  "id": "g4",
   "el": "input.amount-input",
   "scope": ".bet-panel",
   "specimen": "event-detail",
@@ -14105,7 +13332,7 @@
   ],
   "shots": {
    "rest-dark": {
-    "file": "input/g6-rest-dark.png",
+    "file": "input/g4-rest-dark.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 174,
     "h": 64,
@@ -14124,7 +13351,7 @@
     "short": 0
    },
    "hover-dark": {
-    "file": "input/g6-hover-dark.png",
+    "file": "input/g4-hover-dark.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 174,
     "h": 64,
@@ -14143,7 +13370,7 @@
     "short": 0
    },
    "active-dark": {
-    "file": "input/g6-active-dark.png",
+    "file": "input/g4-active-dark.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 174,
     "h": 64,
@@ -14162,7 +13389,7 @@
     "short": 0
    },
    "focus-dark": {
-    "file": "input/g6-focus-dark.png",
+    "file": "input/g4-focus-dark.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 174,
     "h": 64,
@@ -14181,7 +13408,7 @@
     "short": 0
    },
    "rest-light": {
-    "file": "input/g6-rest-light.png",
+    "file": "input/g4-rest-light.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 174,
     "h": 64,
@@ -14200,7 +13427,7 @@
     "short": 0
    },
    "hover-light": {
-    "file": "input/g6-hover-light.png",
+    "file": "input/g4-hover-light.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 174,
     "h": 64,
@@ -14219,7 +13446,7 @@
     "short": 0
    },
    "active-light": {
-    "file": "input/g6-active-light.png",
+    "file": "input/g4-active-light.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 174,
     "h": 64,
@@ -14238,7 +13465,7 @@
     "short": 0
    },
    "focus-light": {
-    "file": "input/g6-focus-light.png",
+    "file": "input/g4-focus-light.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 174,
     "h": 64,
@@ -14276,6 +13503,7 @@
    "components/fonts.css",
    "components/input.css",
    "components/oddsbar.css",
+   "components/quick.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
@@ -14285,11 +13513,11 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "f5c37b213f736036"
+  "sha": "2361547466173d43"
  },
  {
   "component": "input",
-  "id": "g7",
+  "id": "g5",
   "el": "input.amount-input",
   "scope": "dialog.bet-sheet",
   "specimen": "betpanel-sheet",
@@ -14323,7 +13551,7 @@
   ],
   "shots": {
    "rest-dark": {
-    "file": "input/g7-rest-dark.png",
+    "file": "input/g5-rest-dark.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 174,
     "h": 60,
@@ -14342,7 +13570,7 @@
     "short": 0
    },
    "hover-dark": {
-    "file": "input/g7-hover-dark.png",
+    "file": "input/g5-hover-dark.png",
     "value": "rgba(0, 0, 0, 0) | none | rgba(199, 162, 78, 0.6) | 0px | rgb(237, 231, 218) | 0px | none | none | 1",
     "w": 174,
     "h": 60,
@@ -14361,7 +13589,7 @@
     "short": 0
    },
    "active-dark": {
-    "file": "input/g7-active-dark.png",
+    "file": "input/g5-active-dark.png",
     "value": "rgba(0, 0, 0, 0) | none | rgba(199, 162, 78, 0.6) | 0px | rgb(237, 231, 218) | 0px | none | rgba(199, 162, 78, 0.16) 0px 0px 0px 3px | 1",
     "w": 174,
     "h": 60,
@@ -14380,7 +13608,7 @@
     "short": 0
    },
    "focus-dark": {
-    "file": "input/g7-focus-dark.png",
+    "file": "input/g5-focus-dark.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | rgba(199, 162, 78, 0.16) 0px 0px 0px 3px | 1",
     "w": 174,
     "h": 60,
@@ -14399,7 +13627,7 @@
     "short": 0
    },
    "rest-light": {
-    "file": "input/g7-rest-light.png",
+    "file": "input/g5-rest-light.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 174,
     "h": 60,
@@ -14418,7 +13646,7 @@
     "short": 0
    },
    "hover-light": {
-    "file": "input/g7-hover-light.png",
+    "file": "input/g5-hover-light.png",
     "value": "rgba(0, 0, 0, 0) | none | rgba(199, 162, 78, 0.6) | 0px | rgb(33, 31, 25) | 0px | none | none | 1",
     "w": 174,
     "h": 60,
@@ -14437,7 +13665,7 @@
     "short": 0
    },
    "active-light": {
-    "file": "input/g7-active-light.png",
+    "file": "input/g5-active-light.png",
     "value": "rgba(0, 0, 0, 0) | none | rgba(199, 162, 78, 0.6) | 0px | rgb(33, 31, 25) | 0px | none | rgba(199, 162, 78, 0.45) 0px 0px 0px 3px | 1",
     "w": 174,
     "h": 60,
@@ -14456,7 +13684,7 @@
     "short": 0
    },
    "focus-light": {
-    "file": "input/g7-focus-light.png",
+    "file": "input/g5-focus-light.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | rgba(199, 162, 78, 0.45) 0px 0px 0px 3px | 1",
     "w": 174,
     "h": 60,
@@ -14485,13 +13713,14 @@
    "components/dialog.css",
    "components/fonts.css",
    "components/input.css",
+   "components/quick.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "164d5ae88b5f5543"
+  "sha": "b557ee7abc69514d"
  },
  {
   "component": "loadmore",
@@ -15115,6 +14344,392 @@
    "ui-kit/specimens/profile-identity.html"
   ],
   "sha": "31446d69c28eea2b"
+ },
+ {
+  "component": "quick",
+  "id": "g1",
+  "el": "button",
+  "scope": "dialog.app-dialog",
+  "specimen": "quick-amounts",
+  "classes": [
+   "app-case",
+   "app-dialog",
+   "kit-dlgs",
+   "quick",
+   "sel",
+   "sheet-body"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "quick/g1-rest-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
+    "w": 53,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "file": "quick/g1-hover-dark.png",
+    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1",
+    "w": 53,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "file": "quick/g1-active-dark.png",
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1",
+    "w": 53,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "file": "quick/g1-focus-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1",
+    "w": 53,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "file": "quick/g1-rest-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
+    "w": 53,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "file": "quick/g1-hover-light.png",
+    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1",
+    "w": 53,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "file": "quick/g1-active-light.png",
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1",
+    "w": 53,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "file": "quick/g1-focus-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1",
+    "w": 53,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "also": [
+   "dialog-shared",
+   "input-states",
+   "betpanel-sheet"
+  ],
+  "covers": [
+   "button @dialog.app-dialog",
+   "button @dialog.bet-sheet"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/dialog.css",
+   "components/fonts.css",
+   "components/quick.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/betpanel-sheet.html",
+   "ui-kit/specimens/dialog-shared.html",
+   "ui-kit/specimens/input-states.html",
+   "ui-kit/specimens/quick-amounts.html"
+  ],
+  "sha": "30fa11ea8e83d234"
+ },
+ {
+  "component": "quick",
+  "id": "g2",
+  "el": "button.sel",
+  "scope": "dialog.app-dialog",
+  "specimen": "quick-amounts",
+  "classes": [
+   "app-case",
+   "app-dialog",
+   "kit-dlgs",
+   "quick",
+   "sel",
+   "sheet-body"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "quick/g2-rest-dark.png",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1",
+    "w": 49,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "file": "quick/g2-hover-dark.png",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1",
+    "w": 49,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "file": "quick/g2-active-dark.png",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1",
+    "w": 49,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "file": "quick/g2-focus-dark.png",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1",
+    "w": 49,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "file": "quick/g2-rest-light.png",
+    "value": "rgba(199, 162, 78, 0.3) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1",
+    "w": 49,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "file": "quick/g2-hover-light.png",
+    "value": "rgba(199, 162, 78, 0.3) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1",
+    "w": 49,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "file": "quick/g2-active-light.png",
+    "value": "rgba(199, 162, 78, 0.3) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1",
+    "w": 49,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "file": "quick/g2-focus-light.png",
+    "value": "rgba(199, 162, 78, 0.3) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1",
+    "w": 49,
+    "h": 60,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "also": [
+   "dialog-shared",
+   "input-states",
+   "betpanel-sheet"
+  ],
+  "covers": [
+   "button.sel @dialog.app-dialog",
+   "button.sel @dialog.bet-sheet"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/dialog.css",
+   "components/fonts.css",
+   "components/quick.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/betpanel-sheet.html",
+   "ui-kit/specimens/dialog-shared.html",
+   "ui-kit/specimens/input-states.html",
+   "ui-kit/specimens/quick-amounts.html"
+  ],
+  "sha": "30fa11ea8e83d234"
  },
  {
   "component": "related",
@@ -17868,6 +17483,551 @@
   "sha": "9a9488cddcbe8be7"
  },
  {
+  "component": "toggle",
+  "id": "g1",
+  "el": "span.toggle",
+  "scope": "",
+  "specimen": "filters-toggle",
+  "classes": [
+   "app-case",
+   "kit-row",
+   "kit-tgl",
+   "toggle"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "toggle/g1-rest-dark.png",
+    "value": "rgb(199, 162, 78) | none | rgb(199, 162, 78) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "file": "toggle/g1-hover-dark.png",
+    "value": "rgb(199, 162, 78) | none | rgb(199, 162, 78) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "file": "toggle/g1-active-dark.png",
+    "value": "rgb(169, 130, 47) | none | rgb(169, 130, 47) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "file": "toggle/g1-focus-dark.png",
+    "value": "rgb(199, 162, 78) | none | rgb(199, 162, 78) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "file": "toggle/g1-rest-light.png",
+    "value": "rgb(199, 162, 78) | none | rgb(199, 162, 78) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "file": "toggle/g1-hover-light.png",
+    "value": "rgb(199, 162, 78) | none | rgb(199, 162, 78) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "file": "toggle/g1-active-light.png",
+    "value": "rgb(169, 130, 47) | none | rgb(169, 130, 47) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "file": "toggle/g1-focus-light.png",
+    "value": "rgb(199, 162, 78) | none | rgb(199, 162, 78) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "span.toggle"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/fonts.css",
+   "components/toggle.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/filters-toggle.html"
+  ],
+  "sha": "4c0e1c252188efea"
+ },
+ {
+  "component": "toggle",
+  "id": "g2",
+  "el": "span.toggle",
+  "scope": "",
+  "specimen": "filters-toggle",
+  "classes": [
+   "app-case",
+   "kit-row",
+   "kit-tgl",
+   "toggle"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "toggle/g2-rest-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "file": "toggle/g2-hover-dark.png",
+    "value": "rgb(32, 36, 42) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "file": "toggle/g2-active-dark.png",
+    "value": "rgb(25, 27, 31) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "file": "toggle/g2-focus-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "file": "toggle/g2-rest-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "file": "toggle/g2-hover-light.png",
+    "value": "rgb(249, 247, 241) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "file": "toggle/g2-active-light.png",
+    "value": "rgb(243, 241, 235) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "file": "toggle/g2-focus-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 100px | none | none | 1",
+    "w": 64,
+    "h": 48,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "span.toggle"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/fonts.css",
+   "components/toggle.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/filters-toggle.html"
+  ],
+  "sha": "4c0e1c252188efea"
+ },
+ {
+  "component": "toggle",
+  "id": "g3",
+  "el": "button.toggle",
+  "scope": "",
+  "specimen": "filters-panel",
+  "classes": [
+   "app-case",
+   "filter-menu",
+   "filter-panel",
+   "reverse-row",
+   "toggle"
+  ],
+  "shots": {
+   "rest-dark": {
+    "file": "toggle/g3-rest-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
+    "w": 64,
+    "h": 40,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "file": "toggle/g3-hover-dark.png",
+    "value": "rgb(32, 36, 42) | none | rgb(43, 47, 56) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
+    "w": 64,
+    "h": 40,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "file": "toggle/g3-active-dark.png",
+    "value": "rgb(25, 27, 31) | none | rgb(43, 47, 56) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
+    "w": 64,
+    "h": 40,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "file": "toggle/g3-focus-dark.png",
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
+    "w": 64,
+    "h": 40,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "file": "toggle/g3-rest-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
+    "w": 64,
+    "h": 40,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "file": "toggle/g3-hover-light.png",
+    "value": "rgb(249, 247, 241) | none | rgb(172, 170, 164) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
+    "w": 64,
+    "h": 40,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "file": "toggle/g3-active-light.png",
+    "value": "rgb(243, 241, 235) | none | rgb(172, 170, 164) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
+    "w": 64,
+    "h": 40,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "file": "toggle/g3-focus-light.png",
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
+    "w": 64,
+    "h": 40,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "button.toggle"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/filters.css",
+   "components/fonts.css",
+   "components/toggle.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/filters-panel.html"
+  ],
+  "sha": "fc2172edba0128c2"
+ },
+ {
   "component": "yesno",
   "id": "g1",
   "el": "a",
@@ -18677,6 +18837,7 @@
    "components/fonts.css",
    "components/input.css",
    "components/options.css",
+   "components/quick.css",
    "components/tokens.css",
    "components/yesno.css",
    "ui-kit/_specimen.css",
@@ -18684,6 +18845,6 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "14db5bf5cdbc8649"
+  "sha": "b7d3c7550188e7f9"
  }
 ]

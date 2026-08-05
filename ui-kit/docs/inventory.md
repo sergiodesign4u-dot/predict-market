@@ -119,8 +119,9 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Shared dialog shell (`dialog.app-dialog`, stone-plate material) | `dialog.css` | [dialog](../dialog.html) | L3 | every page (emitted in shell) | open / close (backdrop, Esc); modal (desktop) / sheet (mobile) | 104 | WF/UV | - | ~ |
 | Provider buttons (Google / X / Apple, real brand marks) | `button.css` | [button](../button.html) | L1 | Sign In dialog + sign-in pages | rest / hover | 104 | WF/UV | - | + |
-| Amount field + quick-amount chips | `input.css` | [input](../input.html) | L2 | Deposit dialog + deposit pages | rest / selected / focus | 104 | WF | - | + |
-| Field label | `input.css` | [input](../input.html) | L2 | dialogs, forms | default | 104 | WF | - | + |
+| Amount field | `input.css` | [input](../input.html) | L1 | Deposit dialog + deposit pages | rest / focus / disabled | 104 | WF | - | + |
+| Quick-amount chips | `quick.css` | [quick](../quick.html) | L2 | Deposit dialog + bet panel | rest / selected | 104 | WF | - | + |
+| Field label | `input.css` | [input](../input.html) | L1 | dialogs, forms | default | 104 | WF | - | + |
 | Funds-protection line (`.protect`, "USDC held 1:1") | `notice.css` | [notice](../notice.html) | L3 | Deposit dialog, HIW, wallet, bet panel | default | 104 | WF | - | + |
 | Widget box (`.widget-box` on-ramp placeholder) | `notice.css` | [notice](../notice.html) | L3 | Deposit dialog | default / load-failure | 104 | WF | - | + |
 | Primary CTA (brass) - Confirm bet / Add funds | `button.css` | [button](../button.html) | L1 | dialogs, states, HIW | rest / hover / focus | 104 | WF/UV | - | + |
@@ -128,7 +129,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Sign-in dialog (`.signin-dialog`) | `dialog.css` | [dialog](../dialog.html) | L3 | sign-in family | default / error / loading / provider-conflict | 4 | WF/UV | - | ~ |
 | How-it-works dialog (`.hiw-dialog`: hero + icon chips + FAQ) | `hiw-dialog.css` | [hiw-dialog](../hiw-dialog.html) | L3 | every header page | open | 87 | WF/UV | art | + |
 | Filter menu (Sort / Frequency) | `filters.css` | [filters](../filters.html) | L2 | feed, category | closed / open | 44 | WF | - | + |
-| Reverse-order toggle switch | `filters.css` | [filters](../filters.html) | L2 | feed controls | on / off | 44 | WF | - | + |
+| Reverse-order toggle switch | `toggle.css` | [toggle](../toggle.html) | L1 | feed controls | on / off | 44 | WF | - | + |
 | Inline error line (`.inline-error`, neutral stone) | `notice.css` | [notice](../notice.html) | L3 | deposit, bet, sign-in, win | error | 8 | WF | - | + |
 | Spinner box (`.spinner-box`) | `notice.css` | [notice](../notice.html) | L3 | deposit, bet, sign-in, win, loss | loading | 6 | WF | - | + |
 | S5 reconcile box (`.reconcile-box`, price moved) | `notice.css` | [notice](../notice.html) | L3 | bet, win, loss | re-confirm / cancel | 6 | WF | - | + |
@@ -289,7 +290,7 @@ screens.
 | Pattern | CSS file | Page | Screens | Assembled from |
 |---|---|---|---|---|
 | **Browse shell** | `patterns/browse-shell.css` | [browse-shell](../browse-shell.html) | 77 | `catnav`, `filters`, `state-block`, `button` |
-| **Detail shell** | `patterns/detail-shell.css` | [detail-shell](../detail-shell.html) | 11 | `card`, `event-detail`, `oddsbar`, `chart`, `tabs`, `market`, `comments`, `bets-table`, `position`, `betpanel`, `input`, `button`, `dialog` |
+| **Detail shell** | `patterns/detail-shell.css` | [detail-shell](../detail-shell.html) | 11 | `card`, `event-detail`, `oddsbar`, `chart`, `tabs`, `market`, `comments`, `bets-table`, `position`, `betpanel`, `input`, `quick`, `button`, `dialog` |
 | **Card grid** | `patterns/card-grid.css` | [card-grid](../card-grid.html) | 23 | `card`, `yesno`, `options` |
 | **List head** | `patterns/list-head.css` | [list-head](../list-head.html) | 71 | `filters` |
 | **Position list** | `patterns/position-list.css` | [position-list](../position-list.html) | 13 | `position` |

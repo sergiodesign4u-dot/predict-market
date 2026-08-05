@@ -1,7 +1,7 @@
 /* components/input.css
-   Component: input. Classes: .addr, .amount-input, .amount-row, .field-label, .quick.
+   Component: input. Classes: .addr, .amount-input, .amount-row, .field-label.
 
-   Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --focus-ring, --glow-focus, --line-brass-strong, --opacity-disabled, --result-won, --text-brass, --text-muted, --text-primary, --tint-brass-16
+   Reads: --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --focus-ring, --glow-focus, --line-brass-strong, --opacity-disabled, --result-won, --text-muted, --text-primary
    Stand:  ui-kit/input.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -9,15 +9,18 @@
 dialog.app-dialog .field-label{font-size:var(--text-11);text-transform:uppercase;letter-spacing:.03em}
 dialog.app-dialog .amount-row{display:flex;align-items:center;gap:var(--space-8)}
 dialog.app-dialog .amount-input{flex:1;padding:var(--space-8);font-size:var(--text-18)}
-dialog.app-dialog .quick{display:flex;gap:var(--space-8);flex-wrap:wrap}
-dialog.app-dialog .quick button{padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
-dialog.app-dialog .quick button.sel{font-weight:var(--weight-bold)}
 .field-label{font-size:var(--text-11);text-transform:uppercase;letter-spacing:.03em}
 .amount-row{display:flex;align-items:center;gap:var(--space-8)}
 .amount-input{flex:1;border:1px solid var(--border-hairline);padding:var(--space-8);font-size:var(--text-18)}
-.quick{display:flex;gap:var(--space-8);flex-wrap:wrap}
-.quick button{border:1px solid var(--border-hairline);padding:var(--space-8) var(--space-8);font-size:var(--text-12);cursor:pointer}
-.quick button.sel{font-weight:var(--weight-bold)}
+/* THE QUICK AMOUNTS LEFT THIS FILE ON 2026-08-05, and `.quick` went with them to
+   components/quick.css. A field and a group of chips are not one thing: what is
+   left here is a label, a field and the row that holds them, which is an atom,
+   and what left is a ROW a person chooses between, which is a molecule. The
+   census in ui-kit/_worn.py had already filed the two under different ROLES, a
+   selector against a field, so the split is the file catching up with a fact the
+   build was already computing. Found by gate 39: this file's containment is EMPTY
+   and the level was being answered by arithmetic with no information in it. See
+   ui-kit/docs/defects.md row 63. */
 dialog.app-dialog .field-label{color:var(--text-muted)}
 /* min-height, not padding. The field used to reach 45px because its padding
    happened to add up to it; on the 4px grid the same padding lands at 41 and the
@@ -38,31 +41,6 @@ dialog.app-dialog .amount-input:hover:not(:disabled){border-color:var(--line-bra
 dialog.app-dialog .amount-input:focus{outline:none;border-color:var(--color-action);box-shadow:0 0 0 3px var(--glow-focus)}
 dialog.app-dialog .amount-input:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
 dialog.app-dialog .amount-input:disabled{opacity:var(--opacity-disabled);cursor:not-allowed;background:var(--bg-surface)}
-dialog.app-dialog .quick button{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
-dialog.app-dialog .quick button{cursor:pointer;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
-dialog.app-dialog .quick button:hover:not(.sel){border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)}
-/* A SELECTED CHIP IS A TINT, AND A SOLID BRASS FILL IS THE PRIMARY ACTION'S OWN
-   FACE. This rule painted the chosen quick amount as a full brass gradient on 107
-   placements, and DESIGN.md decides it twice over: "active is a brass tint
-   (rgba(199,162,78,.08) fill)" under Chips, and the One-Accent Rule, "brass
-   carries identity, the active state, and primary CTAs only ... if a screen has
-   brass on more than the logo, the active chip, and the primary action, it is
-   overspent". A deposit sheet had a lit brass $20 sitting directly above a lit
-   brass Add funds, and the chip was as loud as the commitment.
-   THE PRODUCT ALREADY HELD THE ANSWER IN TWO PLACES. The same class in the bet
-   panel and the bet sheet is `--tint-brass-16` (line below in this file), and
-   tokens.css names that token, in its own words, "from: a selected quick amount".
-   The token was cut from this control and this control disagreed with it. 107
-   placements move to the tint, 11 already wear it, and the chip family loses the
-   one member that was shouting.
-   THE HOVER AND THE PRESS GO WITH THE GRADIENT, and that is a consequence rather
-   than a decision: they were the three-step of a brass PLATE, and there is no
-   plate now. What is left is what every other selected chip in this product does,
-   which is nothing, on `.seg`, on `.ed-range` and on the panel's own quick row.
-   That gap is real and it is uniform; `ui-kit/docs/backlog.md` S38 owns it rather
-   than this file inventing a fourth answer. */
-dialog.app-dialog .quick button.sel{background:var(--tint-brass-16);color:var(--text-brass);border-color:var(--border-brass-hover)}
-dialog.app-dialog .quick button:active:not(.sel){background:var(--bg-pressed)}
 dialog.app-dialog .amount-input{background:var(--bg-well)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input{flex:0 1 auto;width:150px;max-width:56%;-webkit-appearance:none;appearance:none;border:0;border-bottom:1.5px solid var(--border-hairline);border-radius:0;background:transparent;outline:none;padding:0 var(--space-2) var(--space-4);line-height:var(--leading-none);font-family:var(--font-display);font-size:var(--text-30);font-weight:var(--weight-bold);color:var(--text-primary);text-align:right}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:hover:not(:disabled){border-bottom-color:var(--border-brass-hover)}
@@ -79,13 +57,8 @@ dialog.app-dialog .amount-input{background:var(--bg-well)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:disabled{opacity:var(--opacity-disabled);cursor:not-allowed;border-bottom-color:var(--border-hairline)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input::placeholder{color:var(--text-muted)}
-.app-case :is(.bet-panel,.bet-sheet) .quick{margin-top:0;justify-content:flex-end;flex-wrap:wrap}
-dialog.app-dialog .sheet-body .quick{margin-top:var(--space-12)}
 .app-case :is(.bet-panel,.bet-sheet) .field-label{color:var(--text-muted)}
 .app-case :is(.bet-panel,.bet-sheet) .amount-input{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-primary);font-family:var(--font-display)}
-.app-case :is(.bet-panel,.bet-sheet) .quick button{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary)}
-.app-case :is(.bet-panel,.bet-sheet) .quick button.sel{background:var(--tint-brass-16);border-color:var(--border-brass-hover);color:var(--text-brass);font-weight:var(--weight-bold)}
-.app-case .bet-sheet .quick{gap:var(--space-8)}
 .outcome-dialog .field-label{color:var(--text-muted)}
 .win-dialog .reconcile-box .field-label{color:color-mix(in oklab,var(--result-won) 45%,var(--text-primary))}
 .app-case .field-label{color:var(--text-muted)}

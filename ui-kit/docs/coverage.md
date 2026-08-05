@@ -29,12 +29,12 @@ says so. No em dash.
 | dialog | 2 | dialog-shared, signin | 1 | 8 | 105 |
 | event-detail | 2 | event-detail, facts-strip | 1 | 13 | 11 |
 | feed | 1 | feed-grid | 1 | 1 | 105 |
-| filters | 2 | filters-sort, filters-toggle | 2 | 4 | 105 |
+| filters | 2 | filters-sort, filters-panel | 2 | 3 | 105 |
 | footer | 1 | footer | 0 | 15 | 105 |
 | header | 2 | header-in, header-out | 1 | 22 | 105 |
 | hero | 1 | hero-band | 0 | 51 | 2 |
 | hiw-dialog | 1 | hiw-dialog | 0 | 16 | 105 |
-| input | 2 | input-amount, input-states | 2 | 5 | 105 |
+| input | 2 | input-amount, input-states | 2 | 4 | 105 |
 | loadmore | 1 | loadmore | 1 | 2 | 9 |
 | market | 1 | market-depth | 0 | 21 | 9 |
 | notice | 2 | notice-push, notice-reconcile | 1 | 8 | 105 |
@@ -42,6 +42,7 @@ says so. No em dash.
 | options | 2 | options-rows, options-multi | 2 | 6 | 25 |
 | position | 2 | position-list, position-loading | 1 | 14 | 36 |
 | profile | 1 | profile-identity | 0 | 7 | 2 |
+| quick | 1 | quick-amounts | 0 | 1 | 105 |
 | related | 1 | related | 0 | 6 | 10 |
 | seo-plate | 1 | seo-plate | 1 | 8 | 11 |
 | skeleton | 1 | skeleton-grid | 3 | 5 | 19 |
@@ -49,10 +50,11 @@ says so. No em dash.
 | tabs | 2 | tabs-detail, tabs-mybets | 1 | 20 | 20 |
 | toast | 1 | toast | 0 | 6 | 1 |
 | toc | 1 | toc-rail | 0 | 6 | 1 |
+| toggle | 1 | filters-toggle | 1 | 1 | 3 |
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 105 |
 | yesno | 1 | yesno | 2 | 2 | 14 |
 
-68 specimens over 37 components.
+70 specimens over 39 components.
 
 ---
 

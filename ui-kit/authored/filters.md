@@ -19,7 +19,6 @@ Both are native. The menu is a `<details>` and the switch is a checkbox, so both
 - `.filter-menu` - the `<details>` that holds the sort choices. Its summary is the closed control and its panel is the open one.
 - `.filter-panel` - the dropdown, aligned to the right edge of its summary so it never leaves the plate.
 - `.reverse-row` - the row that holds the switch and its label together, so the label is part of the target.
-- `.toggle` - the switch itself: a track and a knob, drawn from a checkbox that is visually hidden and still the thing a keyboard reaches.
 
 ## When to use
 
@@ -44,5 +43,3 @@ Predicted: no screen does this today. It is named because the menu is the only d
 - `summary @catnav-chips` - The closed menu: the quiet chip family, hover on the ground and a brass edge, and the current sort printed inside it. Open is the same element with the panel below it, which is why the open state is the browser's attribute and not a class.
 - `label @catnav-chips` - A choice inside the panel. The row is the target, ground answers the pointer, ink holds still.
 - `label @catnav-chips (2)` - The choice that is currently in force, marked in brass, the same mark the rail uses for the page you are on.
-- `span.toggle @filters-toggle` - The switch, off: a graphite track and a pale knob at the left.
-- `span.toggle @filters-toggle (2)` - The switch, on: the track takes the brand brass and the knob travels. Brass rather than green on purpose, because green is an OUTCOME colour in this product and a switch is not an outcome.

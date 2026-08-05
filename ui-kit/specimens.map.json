@@ -191,7 +191,7 @@
       "canvas": false,
       "section": "chips",
       "label": "Toggle (on / off / disabled)",
-      "component": "filters",
+      "component": "toggle",
       "title": "Toggle: on, off, disabled",
       "width": 278
     },
@@ -369,11 +369,34 @@
       "canvas": false,
       "section": "dialogs",
       "label": "Shared dialogs",
-      "pick": "span.field-label,div.amount-row,div.quick",
+      "pick": "span.field-label,div.amount-row",
       "component": "input",
       "title": "Amount field, label and quick amounts",
       "width": 420,
       "note": "Every rule in input.css is scoped under dialog.app-dialog, so the field is shown inside the dialog it lives in."
+    },
+    {
+      "id": "quick-amounts",
+      "canvas": false,
+      "section": "dialogs",
+      "label": "Shared dialogs",
+      "pick": "div.quick",
+      "component": "quick",
+      "title": "Quick amounts, one chosen",
+      "width": 420,
+      "note": "Every rule in quick.css is scoped, under a dialog or under a bet panel, so the row is shown inside the sheet it fills. The chosen chip is a brass TINT and not a fill: DESIGN.md decides that twice, under Chips and under the One-Accent Rule."
+    },
+    {
+      "id": "filters-panel",
+      "from": "specimens.extra.html",
+      "canvas": false,
+      "section": "extra",
+      "label": "Filter panel, open, with its reverse row",
+      "component": "filters",
+      "also": ["toggle"],
+      "title": "Filter panel, open, and the switch at its foot",
+      "width": 260,
+      "note": "The menu as it ships: a disclosure, a list of labelled radios, and a reverse-sort switch at the foot. `filters-sort` shows it closed, cut from the frozen kit, which is why no stand held the panel and the switch in one document until 2026-08-05."
     },
     {
       "id": "input-states",
