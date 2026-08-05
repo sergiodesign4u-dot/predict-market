@@ -80,12 +80,6 @@
           "kind": "close, a sheet"
         },
         {
-          "of": "hiw-dialog",
-          "pick": ".hiw-close",
-          "nth": 1,
-          "kind": "close, how it works"
-        },
-        {
           "of": "toast",
           "pick": ".toast-close",
           "nth": 1,

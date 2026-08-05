@@ -1,7 +1,7 @@
 /* components/dialog.css
    Component: dialog. Classes: .app-dialog, .fine, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog.
 
-   Reads: --bevel-hair, --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --mask-solid, --result-won, --result-won-stone, --scrim, --scrim-photo, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-45
+   Reads: --bevel-hair, --bevel-lit, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --mask-solid, --result-won, --result-won-stone, --scrim, --scrim-photo, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-photo, --text-primary, --text-strong, --tint-brass-45
    Stand:  ui-kit/dialog.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -10,7 +10,6 @@ dialog.app-dialog{width:92%;max-width:var(--container-sheet);padding:0}
 dialog.app-dialog::backdrop{background:var(--shadow-ink-45)}
 dialog.app-dialog .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8)}
 dialog.app-dialog .sheet-head :is(h1,h2){font-size:var(--text-14);margin:0}
-dialog.app-dialog .sheet-close{font-size:var(--text-12);cursor:pointer;padding:var(--space-2) var(--space-8)}
 dialog.app-dialog .sheet-body{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
 dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)}
 /* .backdrop, .sheet and .grab were here and are gone (step 7e). They are the
@@ -24,7 +23,6 @@ dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)
 
 .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8);border-bottom:1px solid var(--border-hairline)}
 .sheet-head :is(h1,h2){font-size:var(--text-14);margin:0}
-.sheet-close{border:1px solid var(--border-hairline);font-size:var(--text-12);cursor:pointer;padding:var(--space-2) var(--space-8)}
 .sheet-body{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
 /* Fine print is muted wherever it stands, not only inside the containers named
    further down. Without the colour here it inherits body text and reads as
@@ -34,7 +32,6 @@ dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)
 .fine{font-size:var(--text-11);line-height:var(--leading-base);color:var(--text-muted)}
 dialog.app-dialog{background:var(--bg-surface);border-radius:var(--radius-16);color:var(--text-primary)}
 dialog.app-dialog .sheet-head{border-bottom:1px solid var(--border-hairline)}
-dialog.app-dialog .sheet-close{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
 dialog.app-dialog .fine{color:var(--text-muted)}
 .outcome-dialog .sheet-body>.fine:first-child{font-weight:var(--weight-bold);font-size:var(--text-13);margin:0}
 dialog.app-dialog.outcome-dialog .sheet-head{position:relative;overflow:clip;display:block;padding:var(--space-24) var(--space-20) var(--space-20);border-bottom:0}
@@ -44,30 +41,6 @@ dialog.app-dialog.outcome-dialog .sheet-head::before{content:'';position:absolut
 dialog.app-dialog.win-dialog .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--result-won) 70%,var(--control-knob) 6%) 0%,var(--result-won) 42%,transparent 70%);filter:blur(44px);opacity:.34;pointer-events:none}
 dialog.app-dialog.outcome-dialog .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;max-width:16ch;text-wrap:balance}
 dialog.app-dialog.outcome-dialog .sheet-head a{position:absolute;top:0;right:0;z-index:var(--z-close);line-height:0;text-decoration:none}
-dialog.app-dialog.outcome-dialog .sheet-close{position:absolute;top:var(--space-12);right:var(--space-12);width:var(--control-32);height:var(--control-32);padding:0;font-size:0;color:transparent;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
-/* HALF OF TWELVE IS SIX. The two bars of the X are 12px wide and were placed at
-   calc(50% - 7px), which put the cross one pixel left of the disc it sits in,
-   on every close button in the product. The vertical half was right
-   (calc(50% - 1px) for a 2px bar), which is what made it hard to see: the mark
-   was centred in one axis and not the other, so it read as slightly wrong
-   rather than as misplaced. */
-dialog.app-dialog.outcome-dialog .sheet-close::before,dialog.app-dialog.outcome-dialog .sheet-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 6px);width:var(--size-12);height:var(--size-2);background:var(--control-knob);border-radius:var(--radius-2)}
-dialog.app-dialog.outcome-dialog .sheet-close::before{transform:rotate(45deg)}
-dialog.app-dialog.outcome-dialog .sheet-close::after{transform:rotate(-45deg)}
-dialog.app-dialog.outcome-dialog .sheet-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
-/* PRESS, AND IT DOES NOT TAKE --bg-pressed. This is the icon button the system's quiet
-   press would break, and course-chrome.css already wrote the reason down: a state
-   answers to the GROUND it stands on, not to the family it belongs to. The disc is a
-   fixed dark scrim (--scrim-photo is black in both themes, deliberately) carrying a
-   white --control-knob mark. The product's --bg-pressed is graphite-860 in the Vault
-   and chalk-880 in daylight, so borrowing it would swap a black ground for a pale one
-   under a white cross and take the mark with it, in exactly the theme nobody checks.
-   So the press is simply MORE SCRIM: 34 per cent at rest, 55 hovered, 72 held. It is
-   the same axis the hover already moves, it cannot leave the theme, and the mark can
-   only gain against it. The border stays the hover's, restated because a touch screen
-   never hovers and this button is a mobile sheet's only way out.
-   Mirrors the hover selector above at 0,4,1, so source order decides. */
-dialog.app-dialog.outcome-dialog .sheet-close:active{background:color-mix(in oklab,var(--scrim-photo) 72%,transparent);border-color:var(--line-on-photo-hover)}
 dialog.app-dialog.outcome-dialog .sheet-body{gap:var(--space-12);padding:var(--space-20) var(--space-20) var(--space-20)}
 .outcome-dialog .fine{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:0}
 .outcome-dialog .sheet-body>.fine{color:var(--text-primary);font-weight:var(--weight-bold);font-size:var(--text-13)}
@@ -81,55 +54,83 @@ dialog.app-dialog:not(.outcome-dialog) .sheet-head::before{content:'';position:a
 dialog.app-dialog:not(.outcome-dialog) .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--color-action-lit) 60%,var(--color-action)) 0%,var(--color-action) 42%,transparent 70%);filter:blur(42px);opacity:.42;pointer-events:none}
 dialog.app-dialog:not(.outcome-dialog) .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;max-width:15ch;text-wrap:balance}
 dialog.app-dialog:not(.outcome-dialog) .sheet-sub{position:relative;z-index:var(--z-content);margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-primary);max-width:34ch}
-/* 12 AND NOT 13, AND THE POINT IS THAT IT WAS BOTH. This product has two controls
-   that close a sheet from its top right corner, and they are the same control:
-   `.sheet-close` here and `.hiw-close` in components/hiw-dialog.css agree on the
+/* --------------------------------------------------------- the close disc --
+   ONE CONTROL, ONE NAME, ONE MARK, AND IT WAS THREE RULES IN TWO FILES.
+   `.sheet-close` here and `.hiw-close` in components/hiw-dialog.css were the same
+   button written twice, and this file's own copy was written twice again, once
+   for `.outcome-dialog` and once for everything else. All three agreed on the
    32px box, the pill, the 34 per cent scrim ground, the --line-on-photo edge, the
-   55 per cent hover, the 72 per cent press and the transition, all declared twice.
-   They disagreed on where the corner is: 13 here, 12 there, and nobody chose
-   either. 12 wins because it is --space-12 and 13 was a raw number with no token
-   behind it, which is the only argument available when neither value was decided.
-   THIS IS NOT A MERGE AND IT SHOULD BE. Corrected 2026-08-05, on the day after the
-   sentence below it was written, because the argument that stood here was wrong
-   twice over and a wrong reason recorded in a file is worse than no reason.
-   IT QUOTED THE WRONG RULE. CLAUDE.md's "three screens or more, two is a
-   candidate" governs a COMPOSITION - a pattern in components/patterns/, which is
-   an arrangement of parts. A close button is a COMPONENT, and the rule for one
-   has no screen threshold in it at all: css in components/, an @import in its own
-   level group, a page in ui-kit/ and a row in the inventory.
-   AND ITS NUMBERS WERE WRONG EVEN FOR THE RULE IT QUOTED. `.sheet-close` stands
-   on 105 painted screens and 104 grey ones; `.hiw-close` on 105 and 87. Neither
-   is near two.
-   THE REPO HAS ALREADY DONE THIS MOVE THREE TIMES IN THIS STAGE, and the backlog
-   names the class of defect in one line: one shape declared more than once and
-   kept in step by hand. S11 is the closest - `.cta-bar button` was painted by
-   account.css, and eight rules MOVED to button.css because the control is a
-   button, while the one line that was arrangement went to patterns/action-bar.css.
-   A class moving out of the file that happened to draw it is the precedent, not
-   the exception.
-   SO WHY IS IT STILL TWO RULES. Because homing it here would be homing it twice.
-   All three closes are ACTIONS by the census in ui-kit/_worn.py, the button
-   reclassification is the step that gives every action its name and its level,
-   and moving this control into a file now and into the vocabulary a step later
-   moves the same thing twice - which is the same argument that deferred the
-   padding ramp. It is scheduled, not refused: ui-kit/docs/defects.md row 58.
-   What was done here and now is the half that cannot wait, which is the drift:
-   every value the two share is identical and the corner is one token.
-   The mark cannot be merged at all yet, and that is ui-kit/docs/defects.md row 45:
-   123 of these 228 buttons ship the LETTER x and 105 ship an svg, so this one
-   draws its cross with two pseudo bars and the other one uses its icon. One of
-   the two mechanisms is right and the markup decides which. */
-dialog.app-dialog:not(.outcome-dialog) .sheet-close{position:absolute;top:var(--space-12);right:var(--space-12);z-index:var(--z-close);width:var(--control-32);height:var(--control-32);padding:0;font-size:0;color:transparent;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
-dialog.app-dialog:not(.outcome-dialog) .sheet-close .ic{display:none}
-dialog.app-dialog:not(.outcome-dialog) .sheet-close::before,dialog.app-dialog:not(.outcome-dialog) .sheet-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 6px);width:var(--size-12);height:var(--size-2);background:var(--control-knob);border-radius:var(--radius-2)}
-dialog.app-dialog:not(.outcome-dialog) .sheet-close::before{transform:rotate(45deg)}
-dialog.app-dialog:not(.outcome-dialog) .sheet-close::after{transform:rotate(-45deg)}
-dialog.app-dialog:not(.outcome-dialog) .sheet-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
-/* The same close button on the unskinned head, and therefore the same answer: one
-   control, one decision. Sign-in, Add funds and How it works all land here. Written as
-   its own rule rather than folded into the one above because each press has to mirror
-   the hover it answers, and these two hovers are two selectors at 0,4,1. */
-dialog.app-dialog:not(.outcome-dialog) .sheet-close:active{background:color-mix(in oklab,var(--scrim-photo) 72%,transparent);border-color:var(--line-on-photo-hover)}
+   55 per cent hover, the 72 per cent press and the transition; they disagreed on
+   the corner (13 against 12), on the z-index (the outcome copy had none and
+   leaned on an anchor above it for one) and on how the cross is DRAWN.
+   THE PRECEDENT IS S11 AND NOT THE THREE-SCREEN RULE. CLAUDE.md's "three screens
+   or more, two is a candidate" governs a COMPOSITION, an arrangement in
+   components/patterns/. A close button is a COMPONENT and that rule has no screen
+   threshold in it at all. What applies is the move this repo has already made:
+   `.cta-bar button` was painted by account.css and eight rules went to button.css
+   because the control is a button. Here the control is a dialog's way out, so it
+   is dialog.css's, and hiw-dialog.css keeps what is genuinely about being that
+   sheet - its width, its body, its hero.
+   THE MARK IS THE ICON, AND THE MARKUP HAD TO MOVE FIRST. This file used to hide
+   the `<svg class="ic">` and paint the cross with two absolutely positioned
+   pseudo bars, because 245 of these buttons across the two trees shipped the
+   LETTER x as their whole content and one mechanism had to cover both. Both are
+   the same svg now, byte for byte, in the grey tree and the painted one. The bars
+   are gone, and with them `font-size:0`, `color:transparent` and `.ic{display:none}`,
+   which existed only to hide markup this component could not fix from here.
+   That is worth more than four rules: a pseudo bar is the one thing in this
+   product no query can select, and ui-kit/docs/defects.md row 54 is what that
+   cost - a cross that left its button and landed 700px down the page, invisible
+   to every measurement in the repo and found by a person looking at a picture.
+   The mark is an element now. Measured before and after: the bars drew an X of
+   8.49px across a 2px stroke, the icon draws 8px across a 1.6px stroke, both
+   white on the same disc, both centred.
+   WHERE THE TWO REALLY DIFFERED IS THE RING, and that one is kept, three lines
+   below, because it is a fact about a GROUND rather than about a control.
+   THE INK IS DECLARED THOUGH NOTHING READS IT TODAY. Dropping `color:transparent`
+   with the letter x left this button on the user agent's `buttontext`, which is
+   BLACK, on a disc that is black by design. Nothing paints with it: the mark sets
+   its own stroke a line below. That is exactly the shape the button pass was
+   caught by - a value nobody declared is a value somebody else chose - and the
+   somebody here is a browser default that would swallow the first `currentColor`
+   mark or label anyone puts in this control. */
+dialog.app-dialog .sheet-close{position:absolute;top:var(--space-12);right:var(--space-12);z-index:var(--z-close);width:var(--control-32);height:var(--control-32);display:flex;align-items:center;justify-content:center;padding:0;color:var(--text-on-photo);border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+dialog.app-dialog .sheet-close .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo)}
+dialog.app-dialog .sheet-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
+/* PRESS, AND IT DOES NOT TAKE --bg-pressed. This is the icon button the system's quiet
+   press would break, and course-chrome.css already wrote the reason down: a state
+   answers to the GROUND it stands on, not to the family it belongs to. The disc is a
+   fixed dark scrim (--scrim-photo is black in both themes, deliberately) carrying a
+   white mark. The product's --bg-pressed is graphite-860 in the Vault and chalk-880 in
+   daylight, so borrowing it would swap a black ground for a pale one under a white
+   cross and take the mark with it, in exactly the theme nobody checks.
+   So the press is simply MORE SCRIM: 34 per cent at rest, 55 hovered, 72 held. It is
+   the same axis the hover already moves, it cannot leave the theme, and the mark can
+   only gain against it. Measured on the how-it-works head: the disc goes 75,63,37 to
+   32,27,16 in the Vault and 148,136,106 to 63,58,45 in daylight, and the white mark on
+   it reads 17.1:1 and 11.3:1, up from 10.3 and 3.5 at rest. The border repeats the
+   hover's rather than being left out, because a touch screen never hovers and this
+   button is a mobile sheet's only way out. */
+dialog.app-dialog .sheet-close:active{background:color-mix(in oklab,var(--scrim-photo) 72%,transparent);border-color:var(--line-on-photo-hover)}
+/* THE ONE PLACE THE MERGED CONTROL STILL ANSWERS DIFFERENTLY, AND THE GROUND IS
+   THE WHOLE ARGUMENT. Everywhere else this disc stands on a dialog head that
+   THEMES, and the product's brass ring reads on it: measured at the button's own
+   corner where the win head's green hotspot is strongest, 3.76:1 in the Vault and
+   4.58:1 in daylight, against a 3:1 floor for an indicator. The how-it-works head
+   is the exception, because `.hiw-glow` puts a brass radial in exactly that
+   corner, so a brass ring lands on a brass ground: 2.88:1 on average and 2.52:1
+   where the glow is brightest, under the floor, in the Vault only. Daylight passes
+   at 4.75:1, which is why a one-theme check would have missed it.
+   --text-strong is the answer for the reason course-chrome.css writes over its own
+   ring: A RING ANSWERS TO WHAT IT STANDS ON. That role flips with the head under
+   it, so it reads on the lit plate in both themes, 5.33:1 in the Vault and 10.13:1
+   in daylight, where white would have been 6.09 and 1.48. Only the colour moves;
+   the width and the offset stay the ones base.css declares once.
+   It is written HERE and not in hiw-dialog.css, which is where it lived until the
+   merge, because every rule about this control now lives in one file and the scope
+   names the place. `.win-dialog` and `.loss-dialog` are already scoped from here
+   on the same footing. */
+dialog.app-dialog.hiw-dialog .sheet-close:focus-visible{outline-color:var(--text-strong)}
 dialog.app-dialog.signin-dialog .sheet-body{padding:var(--space-16) var(--space-16) var(--space-16);gap:var(--space-12)}
 dialog.app-dialog.signin-dialog .fine a{color:var(--text-brass);text-decoration:none;border-bottom:1px solid var(--tint-brass-45);padding-bottom:.4px}
 dialog.app-dialog.signin-dialog .fine a:hover{border-bottom-color:var(--text-brass)}
@@ -145,7 +146,9 @@ dialog.app-dialog.signin-dialog .fine a:active{background:var(--bg-pressed);bord
 /* the ring itself comes from base.css; this only rounds it, because a link inside a dialog is
    a block with a corner and a square ring around it reads as a mistake */
 dialog.app-dialog a:focus-visible{border-radius:var(--radius-6)}
-/* AND NO RING OF ITS OWN FOR .sheet-close, WHICH IS NOT WHAT THE ROLE NAMES SAY. The disc
+/* AND NO RING OF ITS OWN FOR .sheet-close ON ANY HEAD BUT ONE, WHICH IS NOT WHAT THE ROLE
+   NAMES SAY. (The one is the how-it-works head, and its rule and its measurement are up
+   with the disc.) The disc
    reads --scrim-photo and --line-on-photo, so the close button is described everywhere as
    standing on a PHOTOGRAPH, and a photograph is the one ground the product's ring was never
    measured against. It does not. Nothing in the shipped markup puts an image behind a

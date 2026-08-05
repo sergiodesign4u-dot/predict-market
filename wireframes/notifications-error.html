@@ -442,7 +442,6 @@
     .hiw-btn { border: 1px solid #999; background: #e0e0e0; padding: 5px 10px; font-size: 12px; cursor: pointer; }
     dialog.app-dialog .hiw-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
     dialog.app-dialog .hiw-head h2 { font-size: 14px; margin: 0; }
-    dialog.app-dialog .hiw-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
     dialog.app-dialog .hiw-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     dialog.app-dialog .hiw-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
     dialog.app-dialog .hiw-sec p { font-size: 13px; color: #333; line-height: 1.5; margin: 4px 0 0; }
@@ -1175,7 +1174,7 @@
     <div class="sheet-head">
       <h2>Add funds</h2>
       <p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p>
-      <button type="button" class="sheet-close" data-close-dialog aria-label="Close">x</button>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <div class="sheet-body">
       <div>
@@ -1193,7 +1192,7 @@
   </dialog>
 
   <dialog id="howitworksDialog" class="app-dialog hiw-dialog" aria-label="How it works">
-    <button type="button" class="hiw-close" data-close-dialog aria-label="Close">
+    <button type="button" class="sheet-close" data-close-dialog aria-label="Close">
       <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
     <div class="hiw-hero">

@@ -21,6 +21,13 @@ feed below-fold SEO sections (already voice-approved), so nothing new to log.
 Usage:
     python3 howitworks.py            # apply to all header pages
     python3 howitworks.py --check    # report which pages would change, no write
+
+THE CLOSE IS `.sheet-close` AND ITS MARK IS THE ICON, SINCE 2026-08-05. It was
+`.hiw-close` with the letter x, and both went when the product's two closes were
+merged into one control in components/dialog.css. This generator must never be
+run (see CLAUDE.md), and it is corrected anyway: a script that writes a class no
+stylesheet declares is a trap set for whoever forgets that rule, and the rule is
+about the VOICE rewrite rather than about the markup being right.
 """
 import glob
 import os
@@ -35,7 +42,6 @@ CSS_BLOCK = """
     .hiw-btn { border: 1px solid #999; background: #e0e0e0; padding: 5px 10px; font-size: 12px; cursor: pointer; }
     dialog.app-dialog .hiw-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
     dialog.app-dialog .hiw-head h2 { font-size: 14px; margin: 0; }
-    dialog.app-dialog .hiw-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
     dialog.app-dialog .hiw-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     dialog.app-dialog .hiw-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
     dialog.app-dialog .hiw-sec p { font-size: 13px; color: #333; line-height: 1.5; margin: 4px 0 0; }
@@ -50,7 +56,7 @@ BTN = '\n          <button type="button" class="hiw-btn" data-open="howitworks" 
 DIALOG = """  <dialog id="howitworksDialog" class="app-dialog" aria-label="How it works">
     <div class="hiw-head">
       <h2>How it works</h2>
-      <button type="button" class="hiw-close" data-close-dialog aria-label="Close">x</button>
+      <button type="button" class="sheet-close" data-close-dialog aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <div class="hiw-body">
       <div class="hiw-sec">

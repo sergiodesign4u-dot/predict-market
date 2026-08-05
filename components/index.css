@@ -64,7 +64,6 @@
 /* Organisms: they hold molecules, or they are the shell of a screen.
    Inside the group, the shallower nesting comes first. */
 @import url("bottomnav.css");
-@import url("hiw-dialog.css");
 @import url("hero.css");
 @import url("catnav.css");
 @import url("notice.css");
@@ -75,6 +74,7 @@
 @import url("card.css");
 @import url("dialog.css");
 @import url("bets-table.css");
+@import url("hiw-dialog.css");
 @import url("feed.css");
 @import url("betpanel.css");
 @import url("profile.css");

@@ -1,7 +1,7 @@
 /* components/hiw-dialog.css
-   Component: hiw-dialog. Classes: .hiw-arrow, .hiw-body, .hiw-close, .hiw-col-main, .hiw-col-side, .hiw-cols, .hiw-dialog, .hiw-faq, .hiw-full, .hiw-glow, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-sec, .hiw-sec-txt, .hiw-tagline.
+   Component: hiw-dialog. Classes: .hiw-arrow, .hiw-body, .hiw-col-main, .hiw-col-side, .hiw-cols, .hiw-dialog, .hiw-faq, .hiw-full, .hiw-glow, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-sec, .hiw-sec-txt, .hiw-tagline.
 
-   Reads: --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate-to, --border-hairline, --color-action, --color-action-lit, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --mask-solid, --scrim-photo, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong
+   Reads: --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate-to, --border-hairline, --color-action, --color-action-lit, --edge-shade-strong, --mask-solid, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong
    Stand:  ui-kit/hiw-dialog.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -10,7 +10,6 @@
    mistake: 87 wireframes carry it, no painted screen and no stand does, and this
    sheet cannot reach the grey tree. The painted dialog heads it with .sheet-head
    like every other one. */
-dialog.app-dialog .hiw-close{border:1px solid var(--border-hairline);font-size:var(--text-12);cursor:pointer;padding:var(--space-2) var(--space-8)}
 dialog.app-dialog .hiw-body{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
 dialog.app-dialog .hiw-label{font-size:var(--text-11);text-transform:uppercase;letter-spacing:.03em}
 dialog.app-dialog .hiw-sec p{font-size:var(--text-13);line-height:var(--leading-base);margin:var(--space-4) 0 0}
@@ -27,38 +26,16 @@ dialog.app-dialog .hiw-full{background:linear-gradient(135deg,var(--color-action
    close disc is positioned against the dialog, not against the hero, so it stays
    put while the body moves. */
 dialog.app-dialog.hiw-dialog:modal .hiw-body{overflow:auto;min-height:0}
-/* The other half of the note in components/dialog.css: this control and `.sheet-close`
-   are one control declared twice, they now agree on every value, and 12 was already
-   the right number here. It becomes --space-12 for the same reason the other one
-   did, so a change to the corner is one edit in two places rather than two numbers
-   that look unrelated. */
-.app-dialog.hiw-dialog .hiw-close{position:absolute;top:var(--space-12);right:var(--space-12);z-index:var(--z-close);width:var(--control-32);height:var(--control-32);display:flex;align-items:center;justify-content:center;padding:0;border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
-.app-dialog.hiw-dialog .hiw-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
-/* The disc goes one step deeper into the black it is already made of, and NOT
-   onto --bg-pressed: that role is a stone which flips with the theme, and this
-   control does not stand on a stone. 34 / 55 / 72 is the ladder of black the
-   depth stack already counts in, so the press costs no value of its own. The
-   border repeats the hover's rather than being left out, because a touch screen
-   never hovers: without it a tap would deepen the disc and leave the rest edge
-   drawn round it. Measured: the disc goes 75,63,37 to 32,27,16 in the Vault and
-   148,136,106 to 63,58,45 in daylight, and the white mark on it reads 17.1:1
-   and 11.3:1, up from 10.3 and 3.5 at rest. */
-.app-dialog.hiw-dialog .hiw-close:active{background:color-mix(in oklab,var(--scrim-photo) 72%,transparent);border-color:var(--line-on-photo-hover)}
-/* THE ONE RING THIS PASS ADDS, and the ground is the whole argument. This disc
-   is not on a photograph, whatever the roles it reads are called: it sits in the
-   top right corner of the dialog head, which is exactly where .hiw-glow puts its
-   brass radial, so the product's brass ring is a brass mark on a brass ground
-   there. Measured by Tab, sampling the unfocused pixels in the 2..4px band the
-   outline lands in: --focus-ring is 2.88:1 on average and 2.52:1 where the glow
-   is brightest, under the 3:1 floor a mark has to clear, in the Vault. Daylight
-   passes at 4.75:1, which is why a one-theme check would have missed it.
-   --text-strong is the answer for the reason course-chrome.css writes over its
-   own ring: A RING ANSWERS TO WHAT IT STANDS ON. That role flips with the head
-   under it, so it reads on the lit plate in both themes, 5.33:1 in the Vault and
-   10.13:1 in daylight, where white would have been 6.09 and 1.48. Only the
-   colour moves; the width and the offset stay the ones base.css declares once. */
-.app-dialog.hiw-dialog .hiw-close:focus-visible{outline-color:var(--text-strong)}
-.app-dialog.hiw-dialog .hiw-close .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo)}
+/* THE CLOSE DISC LEFT THIS FILE ON 2026-08-05, and it took `.hiw-close` with it.
+   It was `.sheet-close` in components/dialog.css written a second time under a
+   second name: same box, same pill, same scrim ladder, same edge, same transition.
+   One control belongs in one file, and the file is the one named for what the
+   control does, which is close a dialog. Its ring is the one thing about it that
+   this sheet decides, because `.hiw-glow` puts brass in the corner the ring lands
+   in, and that rule went with the rest so that every line about this control can
+   be read in one place: `dialog.app-dialog.hiw-dialog .sheet-close:focus-visible`.
+   What stays here is what is genuinely this sheet's - its width, its body, its
+   hero, its sections. */
 /* THE BLOCK, NOT THE DIALOG (step 7f). Every rule below used to begin
    .app-dialog.hiw-dialog, which meant the hero, the icon chips, the section
    rhythm and the FAQ list could only ever exist inside a dialog. The page this

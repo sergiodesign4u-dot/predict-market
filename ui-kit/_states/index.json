@@ -20,9 +20,12 @@
    "bp-inner",
    "bp-pct",
    "bp-side",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
    "card",
    "card-body",
-   "confirm-btn",
    "device",
    "ed-actions",
    "ed-cat",
@@ -215,6 +218,7 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
+   "components/button.css",
    "components/card.css",
    "components/dialog.css",
    "components/event-detail.css",
@@ -232,7 +236,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "b055260c01e35106"
+  "sha": "7f3cbafa44dd3f6f"
  },
  {
   "component": "betpanel",
@@ -255,9 +259,12 @@
    "bp-inner",
    "bp-pct",
    "bp-side",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
    "card",
    "card-body",
-   "confirm-btn",
    "device",
    "ed-actions",
    "ed-cat",
@@ -450,6 +457,7 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
+   "components/button.css",
    "components/card.css",
    "components/dialog.css",
    "components/event-detail.css",
@@ -467,7 +475,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "b055260c01e35106"
+  "sha": "7f3cbafa44dd3f6f"
  },
  {
   "component": "betpanel",
@@ -861,7 +869,10 @@
    "bp-inner",
    "bp-pct",
    "bp-side",
-   "confirm-btn",
+   "btn",
+   "btn-block",
+   "btn-lg",
+   "btn-primary",
    "device",
    "field-label",
    "fine",
@@ -1036,6 +1047,7 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
+   "components/button.css",
    "components/dialog.css",
    "components/fonts.css",
    "components/input.css",
@@ -1046,7 +1058,7 @@
    "ui-kit/specimens/betpanel-sheet.html",
    "ui-kit/specimens/button-census.html"
   ],
-  "sha": "c25dca530e6ce894"
+  "sha": "78888760687794a6"
  },
  {
   "component": "betpanel",
@@ -1070,10 +1082,13 @@
    "bp-sel-name",
    "bp-selected",
    "bp-side",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
    "card",
    "card-body",
    "compact",
-   "confirm-btn",
    "device",
    "ed-layout",
    "ed-main",
@@ -1256,6 +1271,7 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
+   "components/button.css",
    "components/card.css",
    "components/dialog.css",
    "components/feed.css",
@@ -1270,7 +1286,7 @@
    "ui-kit/specimens/betpanel-more.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "c1a62c0a69ba2140"
+  "sha": "347f2a0e3a6f08e8"
  },
  {
   "component": "betpanel",
@@ -1294,7 +1310,12 @@
    "bp-sel-name",
    "bp-selected",
    "bp-side",
-   "confirm-btn",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
+   "btn-sm",
    "device",
    "ed-layout",
    "feed",
@@ -1304,7 +1325,6 @@
    "ic",
    "line",
    "opt-prob",
-   "primary",
    "quick",
    "resolved-panel",
    "rp-inner",
@@ -1312,7 +1332,6 @@
    "sk-line",
    "state-actions",
    "state-block",
-   "state-btn",
    "state-msg",
    "state-title",
    "total",
@@ -1442,6 +1461,7 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
+   "components/button.css",
    "components/dialog.css",
    "components/event-detail.css",
    "components/feed.css",
@@ -1456,7 +1476,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-more.html"
   ],
-  "sha": "0eafdeca082bfd53"
+  "sha": "09f4fb3f4f4663cd"
  },
  {
   "component": "bottomnav",
@@ -2047,7 +2067,7 @@
    "ui-kit/specimens/profile-identity.html",
    "ui-kit/specimens/state-empty-filters.html"
   ],
-  "sha": "549f2b60943e2535"
+  "sha": "0201de4b92ee6868"
  },
  {
   "component": "button",
@@ -2250,7 +2270,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "846998452b48d312"
+  "sha": "955fce7bd52fb230"
  },
  {
   "component": "button",
@@ -2480,7 +2500,7 @@
    "ui-kit/specimens/profile-identity.html",
    "ui-kit/specimens/state-empty-filters.html"
   ],
-  "sha": "9da6bdf6295d2a11"
+  "sha": "4571c91e9a9e9855"
  },
  {
   "component": "card",
@@ -3111,7 +3131,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "aa787f612347e963"
+  "sha": "f3e60ee5de437f00"
  },
  {
   "component": "card",
@@ -3281,7 +3301,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "caefd3c21465bc1b"
+  "sha": "32a26890bce26734"
  },
  {
   "component": "catnav",
@@ -5106,7 +5126,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "6047e73e4999321d"
+  "sha": "45dfa4203ac19e27"
  },
  {
   "component": "comments",
@@ -5342,7 +5362,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "6047e73e4999321d"
+  "sha": "45dfa4203ac19e27"
  },
  {
   "component": "cookie-consent",
@@ -5733,7 +5753,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "882e6e9f9bf019fc"
+  "sha": "bc494a496e19d5a9"
  },
  {
   "component": "cookie-consent",
@@ -7854,7 +7874,7 @@
   "shots": {
    "rest-dark": {
     "file": "dialog/g1-rest-dark.png",
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgba(0, 0, 0, 0) | 100px | none | none | 1",
+    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1",
     "w": 55,
     "h": 56,
     "pad": {
@@ -7873,7 +7893,7 @@
    },
    "hover-dark": {
     "file": "dialog/g1-hover-dark.png",
-    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgba(0, 0, 0, 0) | 100px | none | none | 1",
+    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1",
     "w": 55,
     "h": 56,
     "pad": {
@@ -7892,7 +7912,7 @@
    },
    "active-dark": {
     "file": "dialog/g1-active-dark.png",
-    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgba(0, 0, 0, 0) | 100px | none | none | 1",
+    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1",
     "w": 55,
     "h": 56,
     "pad": {
@@ -7911,7 +7931,7 @@
    },
    "focus-dark": {
     "file": "dialog/g1-focus-dark.png",
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgba(0, 0, 0, 0) | 100px | none | none | 1",
+    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1",
     "w": 55,
     "h": 56,
     "pad": {
@@ -7930,7 +7950,7 @@
    },
    "rest-light": {
     "file": "dialog/g1-rest-light.png",
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgba(0, 0, 0, 0) | 100px | none | none | 1",
+    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1",
     "w": 55,
     "h": 56,
     "pad": {
@@ -7949,7 +7969,7 @@
    },
    "hover-light": {
     "file": "dialog/g1-hover-light.png",
-    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgba(0, 0, 0, 0) | 100px | none | none | 1",
+    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1",
     "w": 55,
     "h": 56,
     "pad": {
@@ -7968,7 +7988,7 @@
    },
    "active-light": {
     "file": "dialog/g1-active-light.png",
-    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgba(0, 0, 0, 0) | 100px | none | none | 1",
+    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1",
     "w": 55,
     "h": 56,
     "pad": {
@@ -7987,7 +8007,7 @@
    },
    "focus-light": {
     "file": "dialog/g1-focus-light.png",
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgba(0, 0, 0, 0) | 100px | none | none | 1",
+    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1",
     "w": 55,
     "h": 56,
     "pad": {
@@ -8008,12 +8028,14 @@
   "also": [
    "signin",
    "button-census",
+   "hiw-dialog",
    "outcome-overlays"
   ],
   "covers": [
    "button.sheet-close @dialog.signin-dialog",
    "button.sheet-close @dialog.app-dialog",
    "button.kit-here.sheet-close @dialog.signin-dialog",
+   "button.sheet-close @dialog.hiw-dialog",
    "button.sheet-close @dialog.win-dialog",
    "button.sheet-close @dialog.loss-dialog"
   ],
@@ -8030,10 +8052,11 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/dialog-shared.html",
+   "ui-kit/specimens/hiw-dialog.html",
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "cc6b6e7d44612841"
+  "sha": "183fd9817a0db796"
  },
  {
   "component": "dialog",
@@ -8242,11 +8265,11 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "6b5fa97984631300"
+  "sha": "dfc6cbd9b4306ae3"
  },
  {
   "component": "dialog",
-  "id": "g5",
+  "id": "g6",
   "el": "a.hiw-full",
   "scope": "dialog.hiw-dialog",
   "specimen": "hiw-dialog",
@@ -8255,7 +8278,6 @@
    "app-dialog",
    "hiw-arrow",
    "hiw-body",
-   "hiw-close",
    "hiw-dialog",
    "hiw-faq",
    "hiw-full",
@@ -8268,11 +8290,12 @@
    "hiw-sec-txt",
    "hiw-tagline",
    "ic",
-   "kit-dlgs"
+   "kit-dlgs",
+   "sheet-close"
   ],
   "shots": {
    "rest-dark": {
-    "file": "dialog/g5-rest-dark.png",
+    "file": "dialog/g6-rest-dark.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -8291,7 +8314,7 @@
     "short": 0
    },
    "hover-dark": {
-    "file": "dialog/g5-hover-dark.png",
+    "file": "dialog/g6-hover-dark.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -8310,7 +8333,7 @@
     "short": 0
    },
    "active-dark": {
-    "file": "dialog/g5-active-dark.png",
+    "file": "dialog/g6-active-dark.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -8329,7 +8352,7 @@
     "short": 0
    },
    "focus-dark": {
-    "file": "dialog/g5-focus-dark.png",
+    "file": "dialog/g6-focus-dark.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 6px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -8348,7 +8371,7 @@
     "short": 0
    },
    "rest-light": {
-    "file": "dialog/g5-rest-light.png",
+    "file": "dialog/g6-rest-light.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -8367,7 +8390,7 @@
     "short": 0
    },
    "hover-light": {
-    "file": "dialog/g5-hover-light.png",
+    "file": "dialog/g6-hover-light.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -8386,7 +8409,7 @@
     "short": 0
    },
    "active-light": {
-    "file": "dialog/g5-active-light.png",
+    "file": "dialog/g6-active-light.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -8405,7 +8428,7 @@
     "short": 0
    },
    "focus-light": {
-    "file": "dialog/g5-focus-light.png",
+    "file": "dialog/g6-focus-light.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 6px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -8438,11 +8461,11 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "56b94e0aa8a7131d"
+  "sha": "da8eb1bde4f0d760"
  },
  {
   "component": "dialog",
-  "id": "g7",
+  "id": "g8",
   "el": "a",
   "scope": "dialog.win-dialog",
   "specimen": "outcome-overlays",
@@ -8469,7 +8492,7 @@
   ],
   "shots": {
    "rest-dark": {
-    "file": "dialog/g7-rest-dark.png",
+    "file": "dialog/g8-rest-dark.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 238) | 0px | rgb(0, 0, 238) | 0px | none | none | 1",
     "w": 362,
     "h": 65,
@@ -8488,7 +8511,7 @@
     "short": 0
    },
    "hover-dark": {
-    "file": "dialog/g7-hover-dark.png",
+    "file": "dialog/g8-hover-dark.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 238) | 0px | rgb(0, 0, 238) | 0px | none | none | 1",
     "w": 362,
     "h": 65,
@@ -8507,7 +8530,7 @@
     "short": 0
    },
    "active-dark": {
-    "file": "dialog/g7-active-dark.png",
+    "file": "dialog/g8-active-dark.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(255, 0, 0) | 0px | rgb(255, 0, 0) | 0px | none | none | 1",
     "w": 362,
     "h": 65,
@@ -8526,7 +8549,7 @@
     "short": 0
    },
    "focus-dark": {
-    "file": "dialog/g7-focus-dark.png",
+    "file": "dialog/g8-focus-dark.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 238) | 0px | rgb(0, 0, 238) | 6px | none | none | 1",
     "w": 362,
     "h": 65,
@@ -8545,7 +8568,7 @@
     "short": 0
    },
    "rest-light": {
-    "file": "dialog/g7-rest-light.png",
+    "file": "dialog/g8-rest-light.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 238) | 0px | rgb(0, 0, 238) | 0px | none | none | 1",
     "w": 362,
     "h": 65,
@@ -8564,7 +8587,7 @@
     "short": 0
    },
    "hover-light": {
-    "file": "dialog/g7-hover-light.png",
+    "file": "dialog/g8-hover-light.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 238) | 0px | rgb(0, 0, 238) | 0px | none | none | 1",
     "w": 362,
     "h": 65,
@@ -8583,7 +8606,7 @@
     "short": 0
    },
    "active-light": {
-    "file": "dialog/g7-active-light.png",
+    "file": "dialog/g8-active-light.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(255, 0, 0) | 0px | rgb(255, 0, 0) | 0px | none | none | 1",
     "w": 362,
     "h": 65,
@@ -8602,7 +8625,7 @@
     "short": 0
    },
    "focus-light": {
-    "file": "dialog/g7-focus-light.png",
+    "file": "dialog/g8-focus-light.png",
     "value": "rgba(0, 0, 0, 0) | none | rgb(0, 0, 238) | 0px | rgb(0, 0, 238) | 6px | none | none | 1",
     "w": 362,
     "h": 65,
@@ -8638,7 +8661,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/outcome-overlays.html"
   ],
-  "sha": "771a7f536be18909"
+  "sha": "96b853dd600b3a16"
  },
  {
   "component": "event-detail",
@@ -8661,9 +8684,12 @@
    "bp-inner",
    "bp-pct",
    "bp-side",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
    "card",
    "card-body",
-   "confirm-btn",
    "device",
    "ed-actions",
    "ed-cat",
@@ -8854,6 +8880,7 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
+   "components/button.css",
    "components/card.css",
    "components/dialog.css",
    "components/event-detail.css",
@@ -8869,7 +8896,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "a3d28734c5bd9033"
+  "sha": "34d99988bc112123"
  },
  {
   "component": "filters",
@@ -11476,7 +11503,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "57b293d3e738a096"
+  "sha": "cb6766fc5654ffd1"
  },
  {
   "component": "header",
@@ -12818,207 +12845,6 @@
  {
   "component": "hiw-dialog",
   "id": "g1",
-  "el": "button.hiw-close",
-  "scope": "dialog.hiw-dialog",
-  "specimen": "hiw-dialog",
-  "classes": [
-   "app-case",
-   "app-dialog",
-   "hiw-arrow",
-   "hiw-body",
-   "hiw-close",
-   "hiw-dialog",
-   "hiw-faq",
-   "hiw-full",
-   "hiw-glow",
-   "hiw-hero",
-   "hiw-hero-inner",
-   "hiw-ic",
-   "hiw-label",
-   "hiw-sec",
-   "hiw-sec-txt",
-   "hiw-tagline",
-   "ic",
-   "kit-dlgs"
-  ],
-  "shots": {
-   "rest-dark": {
-    "file": "hiw-dialog/g1-rest-dark.png",
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
-    "w": 45,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 1
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "file": "hiw-dialog/g1-hover-dark.png",
-    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
-    "w": 45,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 1
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "file": "hiw-dialog/g1-active-dark.png",
-    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
-    "w": 45,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 1
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "file": "hiw-dialog/g1-focus-dark.png",
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
-    "w": 48,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "file": "hiw-dialog/g1-rest-light.png",
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
-    "w": 45,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 1
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "file": "hiw-dialog/g1-hover-light.png",
-    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
-    "w": 45,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 1
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "file": "hiw-dialog/g1-active-light.png",
-    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
-    "w": 45,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 1
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "file": "hiw-dialog/g1-focus-light.png",
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(0, 0, 0) | 100px | none | none | 1",
-    "w": 48,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button.hiw-close @dialog.hiw-dialog",
-   "button.kit-here.hiw-close @dialog.hiw-dialog"
-  ],
-  "also": [
-   "button-census"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/dialog.css",
-   "components/fonts.css",
-   "components/hiw-dialog.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/button-census.html",
-   "ui-kit/specimens/hiw-dialog.html"
-  ],
-  "sha": "ea664ef82768bd6a"
- },
- {
-  "component": "hiw-dialog",
-  "id": "g2",
   "el": "a.hiw-full",
   "scope": "dialog.hiw-dialog",
   "specimen": "hiw-dialog",
@@ -13027,7 +12853,6 @@
    "app-dialog",
    "hiw-arrow",
    "hiw-body",
-   "hiw-close",
    "hiw-dialog",
    "hiw-faq",
    "hiw-full",
@@ -13040,11 +12865,12 @@
    "hiw-sec-txt",
    "hiw-tagline",
    "ic",
-   "kit-dlgs"
+   "kit-dlgs",
+   "sheet-close"
   ],
   "shots": {
    "rest-dark": {
-    "file": "hiw-dialog/g2-rest-dark.png",
+    "file": "hiw-dialog/g1-rest-dark.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -13063,7 +12889,7 @@
     "short": 0
    },
    "hover-dark": {
-    "file": "hiw-dialog/g2-hover-dark.png",
+    "file": "hiw-dialog/g1-hover-dark.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -13082,7 +12908,7 @@
     "short": 0
    },
    "active-dark": {
-    "file": "hiw-dialog/g2-active-dark.png",
+    "file": "hiw-dialog/g1-active-dark.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -13101,7 +12927,7 @@
     "short": 0
    },
    "focus-dark": {
-    "file": "hiw-dialog/g2-focus-dark.png",
+    "file": "hiw-dialog/g1-focus-dark.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 6px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -13120,7 +12946,7 @@
     "short": 0
    },
    "rest-light": {
-    "file": "hiw-dialog/g2-rest-light.png",
+    "file": "hiw-dialog/g1-rest-light.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -13139,7 +12965,7 @@
     "short": 0
    },
    "hover-light": {
-    "file": "hiw-dialog/g2-hover-light.png",
+    "file": "hiw-dialog/g1-hover-light.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(217, 185, 104), rgb(21 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -13158,7 +12984,7 @@
     "short": 0
    },
    "active-light": {
-    "file": "hiw-dialog/g2-active-light.png",
+    "file": "hiw-dialog/g1-active-light.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(315deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 10px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -13177,7 +13003,7 @@
     "short": 0
    },
    "focus-light": {
-    "file": "hiw-dialog/g2-focus-light.png",
+    "file": "hiw-dialog/g1-focus-light.png",
     "value": "rgba(0, 0, 0, 0) | linear-gradient(135deg, rgb(199, 162, 78), rgb(217 | rgb(24, 8, 16) | 0px | rgb(24, 8, 16) | 6px | none | none | 1",
     "w": 446,
     "h": 66,
@@ -13210,7 +13036,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "56b94e0aa8a7131d"
+  "sha": "da8eb1bde4f0d760"
  },
  {
   "component": "input",
@@ -13421,7 +13247,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "839bb1837b6272c9"
+  "sha": "7510ca46db570763"
  },
  {
   "component": "input",
@@ -13635,7 +13461,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "c0c95dcc01d983b6"
+  "sha": "e8e607b0614cd66f"
  },
  {
   "component": "input",
@@ -13849,7 +13675,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "c0c95dcc01d983b6"
+  "sha": "e8e607b0614cd66f"
  },
  {
   "component": "input",
@@ -14036,7 +13862,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "8bd7b0eb71392a42"
+  "sha": "213137a1642050cf"
  },
  {
   "component": "input",
@@ -14223,7 +14049,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "8bd7b0eb71392a42"
+  "sha": "213137a1642050cf"
  },
  {
   "component": "input",
@@ -14459,7 +14285,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "c05e62a3e43595f8"
+  "sha": "f5c37b213f736036"
  },
  {
   "component": "input",
@@ -14665,7 +14491,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "a7529442ab2861f9"
+  "sha": "164d5ae88b5f5543"
  },
  {
   "component": "loadmore",
@@ -14857,7 +14683,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/loadmore.html"
   ],
-  "sha": "3ee4d4a39270ab5d"
+  "sha": "62ba9fbb165497a4"
  },
  {
   "component": "market",
@@ -15076,6 +14902,10 @@
   "classes": [
    "app-case",
    "av",
+   "btn",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
    "card",
    "cat-layout",
    "cat-main",
@@ -15270,6 +15100,7 @@
   "sources": [
    "components/account.css",
    "components/base.css",
+   "components/button.css",
    "components/card.css",
    "components/feed.css",
    "components/fonts.css",
@@ -15283,7 +15114,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "b0eae0a95ea2c857"
+  "sha": "31446d69c28eea2b"
  },
  {
   "component": "related",
@@ -17648,7 +17479,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/toast.html"
   ],
-  "sha": "a8b656e71369147a"
+  "sha": "001d38690d9eba21"
  },
  {
   "component": "toc",
@@ -18653,10 +18484,13 @@
    "bp-sel-name",
    "bp-selected",
    "bp-side",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
    "card",
    "card-body",
    "compact",
-   "confirm-btn",
    "device",
    "ed-layout",
    "ed-main",
@@ -18836,6 +18670,7 @@
   "sources": [
    "components/base.css",
    "components/betpanel.css",
+   "components/button.css",
    "components/card.css",
    "components/dialog.css",
    "components/feed.css",
@@ -18849,6 +18684,6 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "4ccf803a68d741c7"
+  "sha": "14db5bf5cdbc8649"
  }
 ]

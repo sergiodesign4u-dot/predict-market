@@ -327,10 +327,11 @@ KINDS = [
      "betpanel", "selector", "it carries the odds and the selection, which is panel state rather than an action"),
     ("the sheet grab", {"sheet-grab"}, set(),
      "betpanel", "action", "a real control that is also the drawer's own handle"),
+    # ONE ROW SINCE 2026-08-05, AND IT WAS TWO. `.hiw-close` was this same control
+    # under a second name in a second file; the merge gave it this name, and the
+    # census stopped reporting one control as two kinds on two pages.
     ("close, a sheet", {"sheet-close"}, set(),
      "dialog", "action", "chrome of the overlay it closes"),
-    ("close, how it works", {"hiw-close"}, set(),
-     "hiw-dialog", "action", "chrome of the overlay it closes"),
     ("close, a toast", {"toast-close"}, set(),
      "toast", "action", "chrome of the overlay it closes"),
     ("bookmark, on a card", {"bookmark-btn"}, set(),

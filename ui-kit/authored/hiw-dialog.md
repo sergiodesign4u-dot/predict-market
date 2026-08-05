@@ -23,7 +23,7 @@ It exists because the product's first design principle is that a new user is nev
 - `.hiw-sec`, `.hiw-sec-txt`, `.hiw-ic` - a mechanic: an icon chip, a heading and a plain sentence. The icon is a mark, not an illustration.
 - `.hiw-faq` - the questions, as `<details>`, so the sheet opens short.
 - `.hiw-full`, `.hiw-arrow` - the way out to the full page.
-- `.hiw-close` - the dismiss.
+- The dismiss is NOT here, and that is the change of 2026-08-05. It is `.sheet-close` from `dialog`, the same disc every overlay in the product closes with. It used to be `.hiw-close` in `components/hiw-dialog.css`, which was this file writing a second answer to a question `dialog` had already answered. One line about it stays in that file and only one: this head puts a brass wash exactly where the focus ring lands, so the ring takes `--text-strong` here, and the rule lives beside the disc it modifies.
 
 ## When to use
 
@@ -41,9 +41,10 @@ It opens over the screen a person was reading and returns them to it unchanged: 
 
 Never build it as a second `dialog` shell: the sheet material, the head, the close and the mobile-versus-modal behaviour all belong to `dialog`, and this component owns only what is inside the body. A copy of the shell here would be a second answer to how an overlay looks, and this product has one.
 
+**That sentence was false about one word of itself until 2026-08-05**, and the word was *the close*. This file declared its own, `.hiw-close`, agreeing with `.sheet-close` on the box, the pill, the scrim ladder, the edge and the transition, and disagreeing on the corner and on how the cross is drawn. A rule that names the right principle while the file beside it breaks the principle is worth less than no rule, because it reads as compliance. The disc is gone from here and the anti-rule is now a description.
+
 Seen: `voice/docs/microcopy.md` Step 27, "One dialog, one copy, and the page that was left as a document", which closed exactly that split elsewhere, and gate 19 in `ui-kit/_check_kit.py`, which now fails the build when a dialog that also has a standalone page carries two markups. This component is the one where the split is still OPEN: `ui-kit/_levels.py` RAISE says so, and `docs/backlog.md` item 16 is the row.
 
 ## States
 
-- `button.hiw-close @dialog.hiw-dialog` - The dismiss, at rest, hovered, held and focused. It sits on the brass wash rather than on the sheet stone, so its quiet face is measured against the head and not against the body.
 - `a.hiw-full @dialog.hiw-dialog (2)` - The link to the full page: the last thing in the sheet, with its arrow. Underlined at rest rather than on hover, because it is the only exit and a person should see it without pointing.

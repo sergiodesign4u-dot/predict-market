@@ -33,7 +33,7 @@ says so. No em dash.
 | footer | 1 | footer | 0 | 15 | 105 |
 | header | 2 | header-in, header-out | 1 | 22 | 105 |
 | hero | 1 | hero-band | 0 | 51 | 2 |
-| hiw-dialog | 1 | hiw-dialog | 0 | 17 | 105 |
+| hiw-dialog | 1 | hiw-dialog | 0 | 16 | 105 |
 | input | 2 | input-amount, input-states | 2 | 5 | 105 |
 | loadmore | 1 | loadmore | 1 | 2 | 9 |
 | market | 1 | market-depth | 0 | 21 | 9 |
