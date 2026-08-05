@@ -819,61 +819,78 @@ def sections_for(name, c):
     out = []
 
     def sec(sid, title, note, body):
+        """A note may be a string, or (what a reader needs, what the machinery is).
+
+        THE SECOND HALF WAS THE PAGE'S BIGGEST BLOCK OF TEXT AND NOBODY CAME FOR
+        IT. The note above Live ran ten lines about frames, viewports and why a
+        scope is present, above a control 196px tall; the note above States ran
+        eleven about pointers and settling; the census note ran fourteen. All of
+        it is true and worth keeping, and none of it is what a person opening the
+        page of a switch is looking for. So a note is a sentence, and everything
+        that explains how the sentence was arrived at folds into a disclosure the
+        reader opens on purpose."""
         if not body:
             return
         out.append((sid, title, note, body))
 
-    sec("purpose", "What it is", "", authored_block(name, "Purpose"))
-    sec("anatomy", "Anatomy",
-        "Which part is which, in the product's own words. Every class named here is one this "
-        "file styles, and the build fails if it is not.",
-        authored_block(name, "Anatomy"))
+    # THE THING FIRST. Until 2026-08-05 this page opened with two blocks of prose
+    # and put the component third, 750px down, after 1,900 characters about it.
+    # Measured on the switch: the page was 5,618px tall and 13,040 characters, and
+    # the live control was 196px of it - three and a half per cent. A stand whose
+    # subject is the smallest thing on it is a document about a design system
+    # rather than one. So Live opens the page, and every sentence that used to
+    # stand between a reader and the control now stands under it.
     sec("live", "Live",
-        "The component in the markup it ships with, quoted from the frozen kit, inside the "
-        "product's own wrapper and painted by <code>components/index.css</code> alone. Each frame "
-        "is a page of its own, so the width under the title is a real viewport and the media "
-        "queries answer to it. One row per CONTROL, in one column, and a scope is present only "
-        "where the scope is what the row is about: twelve of the sixteen combinations the product "
-        "wears were measured against the same markup with no scope above them and came out "
-        "identical over thirteen properties, so a plate around those would be showing the reader a "
-        "dialog to prove something about a button. The numbers for every row are in the axis table "
-        "one section down, written once. These are live pages and not pictures. Hover them, press "
-        "them, Tab into them.", live(name))
+        ("These are live pages and not pictures. Hover them, press them, Tab into them.",
+         "The component in the markup it ships with, quoted from the frozen kit, inside the "
+         "product's own wrapper and painted by <code>components/index.css</code> alone. Each frame "
+         "is a page of its own, so the width under the title is a real viewport and the media "
+         "queries answer to it. One row per CONTROL, in one column, and a scope is present only "
+         "where the scope is what the row is about: twelve of the sixteen combinations the product "
+         "wears were measured against the same markup with no scope above them and came out "
+         "identical over thirteen properties, so a plate around those would be showing the reader "
+         "a dialog to prove something about a button. The numbers for every row are in the axis "
+         "table further down, written once."), live(name))
     # the inside-of block writes its own <section>, so it goes in as a passthrough
     # rather than through sec(); it belongs directly under Live, because it is the
     # rest of the answer to "where can I see this thing"
     ins = elsewhere(name)
     if ins:
         out.append(("__passthrough__", "", "", ins))
+    sec("purpose", "What it is", "", authored_block(name, "Purpose"))
+    sec("anatomy", "Anatomy",
+        "Which part is which, in the product's own words. Every class named here is one this "
+        "file styles, and the build fails if it is not.",
+        authored_block(name, "Anatomy"))
     sec("census", "Every other action in the product, and what is not one",
-        "A <code>&lt;button&gt;</code> is a tag, not a role. Reading the tag as the answer put a "
-        "tab strip, a category chip, a row of the account menu and five social marks on the page "
-        "called Buttons, and staged two of them live. So every button-shaped control in the "
-        "product is sorted by what it actually IS: an <b>action</b> is a press with nothing "
-        "carried between presses, a <b>selector</b> carries a value and its selected state is the "
-        "whole point, <b>navigation</b> goes somewhere. The actions stand live below, each one "
-        "sliced out of the specimen it already ships in, on the page ground with no plate under "
-        "it. The other two roles are an index to the page that owns them, because a chip shown "
-        "alone is a chip with its subject removed. Counted by <code>ui-kit/_worn.py</code> and "
-        "held by gate 38 in both directions: a control the census cannot name fails the build, a "
-        "kind named here that nothing wears fails just as loudly, an action that stands nowhere "
-        "fails, and so does anything staged here that is not an action.",
+        ("A <code>&lt;button&gt;</code> is a tag, not a role: an <b>action</b> is a press, a "
+         "<b>selector</b> carries a value, <b>navigation</b> goes somewhere. Only the actions "
+         "stand live here.",
+         "Reading the tag as the answer put a tab strip, a category chip, a row of the account "
+         "menu and five social marks on the page called Buttons, and staged two of them live. The "
+         "actions below are each sliced out of the specimen they already ship in, on the page "
+         "ground with no plate under them. The other two roles are an index to the page that owns "
+         "them, because a chip shown alone is a chip with its subject removed. Counted by "
+         "<code>ui-kit/_worn.py</code> and held by gate 38 in both directions: a control the "
+         "census cannot name fails the build, a kind named here that nothing wears fails just as "
+         "loudly, an action that stands nowhere fails, and so does anything staged here that is "
+         "not an action."),
         census_table(name))
     if gallery:
         sec("states", "States, as they measure",
-            "The frames above are the rendering; this is the reading of them. Every number here "
-            "was taken in a browser with a REAL pointer, a real Tab and the mouse button really "
-            "held down (<code>ui-kit/_verify/states.cjs</code>), because a hover value is the "
-            "cascade resolved and cannot be read out of a declaration. Nothing here is a state "
-            "faked with a stand class. One block per distinct FACE: two elements that measure the "
-            "same in all four states in both themes are one answer, however many screens carry "
-            "them, and that grouping is computed rather than chosen. Rest says what the face IS; "
-            "every row under it says only what that state MOVES, which is the question a reader "
-            "actually has. The ring is not among the nine values, because <code>outline</code> is "
-            "drawn outside the box: a focus row that reports no movement is saying the face does "
-            "not move, and the ring is on the live frame. The numbers go stale the moment a rule "
-            "changes, so each block records the files it was measured from and "
-            "<code>python3 ui-kit/_states.py</code> fails when their bytes move.",
+            ("One block per distinct face. Rest says what the face IS; every row under it says "
+             "only what that state MOVES.",
+             "The frames above are the rendering; this is the reading of them. Every number was "
+             "taken in a browser with a REAL pointer, a real Tab and the mouse button really held "
+             "down (<code>ui-kit/_verify/states.cjs</code>), because a hover value is the cascade "
+             "resolved and cannot be read out of a declaration. Nothing here is a state faked with "
+             "a stand class. Two elements that measure the same in all four states in both themes "
+             "are one answer, however many screens carry them, and that grouping is computed "
+             "rather than chosen. The ring is not among the nine values, because "
+             "<code>outline</code> is drawn outside the box: a focus row that reports no movement "
+             "is saying the face does not move, and the ring is on the live frame. The numbers go "
+             "stale the moment a rule changes, so each block records the files it was measured "
+             "from and <code>python3 ui-kit/_states.py</code> fails when their bytes move."),
             gallery)
     else:
         sec("states", "States",
@@ -904,10 +921,10 @@ def sections_for(name, c):
         class_table(c["classes"]))
     sec("screens", "Where it stands", "", screen_links(c["screens"]))
     sec("sources", "Written from",
-        "The authored half of this page is the one artefact here no gate can read: a sentence "
-        "cannot be checked for being true. So it names its sources before it says anything, and "
-        "the build fails when one of them does not exist. Read this first if you doubt a claim "
-        "above it.", authored_block(name, "Sources"))
+        ("The one artefact here no gate can read, because a sentence cannot be checked for being "
+         "true. Read it if you doubt a claim above.",
+         "So the authored half names its sources before it says anything, and the build fails "
+         "when one of them does not exist."), authored_block(name, "Sources"))
     sec("css", "What the file says",
         "The selectors and the css, for a person about to edit them. To change this component, "
         "edit <code>components/%s.css</code>; to change a value it reads, edit the role in "
@@ -922,10 +939,13 @@ def sections_for(name, c):
         if sid in ("__constraints__", "__passthrough__"):
             html.append(body)          # writes its own <section> and its own number
             continue
+        lead, folded = (note if isinstance(note, tuple) else (note, ""))
+        head = ('    <p class="tk-note">%s</p>\n' % lead) if lead else ""
+        if folded:
+            head += ('    <details class="tk-how"><summary>How this is read</summary>'
+                     '<p class="tk-note">%s</p></details>\n' % folded)
         html.append('  <section class="tk-sec" id="%s">\n    <h2 data-n="00">%s</h2>\n%s%s\n'
-                    '  </section>\n' % (sid, esc(title),
-                                        ('    <p class="tk-note">%s</p>\n' % note) if note else "",
-                                        body))
+                    '  </section>\n' % (sid, esc(title), head, body))
     # THE NUMBERS ARE THE READING ORDER, so they are stamped last and over
     # everything. Two of these sections bring their own markup and their own
     # hard-coded number (the constraints block, the inside-of block), and a page

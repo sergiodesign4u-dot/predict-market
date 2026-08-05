@@ -54,21 +54,22 @@ push();});})();</script>
       <span class="tk-badge">11 screens</span>
     </div>
   </header>
-  <section class="tk-sec" id="purpose">
-    <h2 data-n="01">What it is</h2>
+  <section class="tk-sec" id="live">
+    <h2 data-n="01">Live</h2>
+    <p class="tk-note">These are live pages and not pictures. Hover them, press them, Tab into them.</p>
+    <details class="tk-how"><summary>How this is read</summary><p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a page of its own, so the width under the title is a real viewport and the media queries answer to it. One row per CONTROL, in one column, and a scope is present only where the scope is what the row is about: twelve of the sixteen combinations the product wears were measured against the same markup with no scope above them and came out identical over thirteen properties, so a plate around those would be showing the reader a dialog to prove something about a button. The numbers for every row are in the axis table further down, written once.</p></details>
+<figure class="ck-scene" id="sp-seo-plate"><figcaption class="ck-scene-lbl"><b>Below-fold SEO plate</b><span class="ck-w">1120px</span><span class="ck-zoom" hidden></span><a href="specimens/seo-plate.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:1120px"><iframe data-specimen="seo-plate" src="specimens/seo-plate.html" width="1120" height="320" loading="lazy" title="Below-fold SEO plate"></iframe></div></figure>
+  </section>
+<section class="tk-sec" id="inside"><h2 data-n="02">Also rendered inside</h2><p class="tk-note">The same markup, shown once on the page of the component that owns it. Nothing here is a second copy.</p><div class="ck-screens"><a href="toc.html#sp-toc-rail">Contents rail, and the reading column beside it</a></div></section>  <section class="tk-sec" id="purpose">
+    <h2 data-n="03">What it is</h2>
 <p>The block a feed carries for the reader who arrived from a search engine. Below the fold, after the cards, in prose: what this category is, what a person can do here, and who is saying it. It is the only place on a browse screen where the product speaks in full sentences.</p><p>Two audiences, one block. A search engine needs an H2 and body text on the same URL as the cards, or the page is a list of questions with nothing to index. A person who scrolled past forty cards is at the bottom for a reason, and the reason is usually &quot;what is this&quot;. Both get the same answer, which is why the block is prose and not a marketing panel.</p>
   </section>
   <section class="tk-sec" id="anatomy">
-    <h2 data-n="02">Anatomy</h2>
+    <h2 data-n="04">Anatomy</h2>
     <p class="tk-note">Which part is which, in the product's own words. Every class named here is one this file styles, and the build fails if it is not.</p>
 <ul class="tk-doc-list"><li><code>.feed-seo-wrap</code> - the plate, below the last card and above the footer.</li><li><code>.seo-text</code> - the body. Two or three paragraphs, and the H2 above them is structural: <code>ia/docs/pages/seo.md</code> decides it, not this file.</li><li><code>.seo-brand</code> - the brand column beside the prose.</li><li><code>.seo-tagline</code> - the one line under the mark.</li><li><code>.seo-tick</code> and <code>.seo-h-ic</code> - the marks in the brand column and in the heading.</li><li><code>.seo-by</code> - the attribution line, which is what makes the block a statement by somebody rather than an anonymous paragraph.</li></ul>
   </section>
-  <section class="tk-sec" id="live">
-    <h2 data-n="03">Live</h2>
-    <p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a page of its own, so the width under the title is a real viewport and the media queries answer to it. One row per CONTROL, in one column, and a scope is present only where the scope is what the row is about: twelve of the sixteen combinations the product wears were measured against the same markup with no scope above them and came out identical over thirteen properties, so a plate around those would be showing the reader a dialog to prove something about a button. The numbers for every row are in the axis table one section down, written once. These are live pages and not pictures. Hover them, press them, Tab into them.</p>
-<figure class="ck-scene" id="sp-seo-plate"><figcaption class="ck-scene-lbl"><b>Below-fold SEO plate</b><span class="ck-w">1120px</span><span class="ck-zoom" hidden></span><a href="specimens/seo-plate.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:1120px"><iframe data-specimen="seo-plate" src="specimens/seo-plate.html" width="1120" height="320" loading="lazy" title="Below-fold SEO plate"></iframe></div></figure>
-  </section>
-<section class="tk-sec" id="inside"><h2 data-n="04">Also rendered inside</h2><p class="tk-note">The same markup, shown once on the page of the component that owns it. Nothing here is a second copy.</p><div class="ck-screens"><a href="toc.html#sp-toc-rail">Contents rail, and the reading column beside it</a></div></section>  <section class="tk-sec" id="states">
+  <section class="tk-sec" id="states">
     <h2 data-n="05">States</h2>
     <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are live, so hover them; what follows is what the file says will move.</p>
 <p class="tk-note"><b>No states: not interactive.</b> Declared in <code>ui-kit/_levels.py</code>, and gate 25 holds it: the reading block at the foot of a feed: prose and a brand column, with no link inside it on any of the 105 screens. A state belongs to what a person can press or type into, and inventing one here would inflate the system the way an empty semantic role would.</p>
@@ -99,7 +100,8 @@ push();});})();</script>
   </section>
   <section class="tk-sec" id="sources">
     <h2 data-n="11">Written from</h2>
-    <p class="tk-note">The authored half of this page is the one artefact here no gate can read: a sentence cannot be checked for being true. So it names its sources before it says anything, and the build fails when one of them does not exist. Read this first if you doubt a claim above it.</p>
+    <p class="tk-note">The one artefact here no gate can read, because a sentence cannot be checked for being true. Read it if you doubt a claim above.</p>
+    <details class="tk-how"><summary>How this is read</summary><p class="tk-note">So the authored half names its sources before it says anything, and the build fails when one of them does not exist.</p></details>
 <ul class="tk-doc-list"><li><a class="tk-doc-ref" href="inventory.html"><code>ui-kit/docs/inventory.md</code></a> L88 - &quot;Feed SEO plate (below fold, <code>.feed-seo-wrap</code> brand statement)&quot;, filed L2, on feed and category pages.</li><li>The 9 painted screens that carry it: the general feed and the four categories, each logged in and logged out. It is absent from every empty, error and loading state of the same screens.</li><li><code>CLAUDE.md</code>, the SEO-ahead decision: the structural layer (URL, H1/H2, breadcrumbs, schema.org, indexation, internal linking) is decided in IA, and the wireframe validates layout only.</li><li><code>ia/docs/pages/seo.md</code>, which owns the H2 this block carries and the query it answers.</li><li><a class="tk-doc-ref" href="backlog.html"><code>ui-kit/docs/backlog.md</code></a> S3, the row that says no component styles an <code>a</code> inside a paragraph, and that the link was moved OUT of the sentence rather than a link style being invented.</li><li><code>ui-kit/_levels.py</code> STATIC, where it is declared &quot;the reading block at the foot of a feed: prose and a brand column, with no link inside it on any of the 105 screens&quot;.</li></ul>
   </section>
   <section class="tk-sec" id="css">

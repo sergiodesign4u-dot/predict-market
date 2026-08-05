@@ -100,6 +100,22 @@
    held to 675. */
 .tk-sec>p{max-width:var(--measure)}
 
+/* THE MACHINERY, FOLDED. A section note is a sentence; how the sentence was
+   arrived at goes in here, and a reader opens it on purpose. It reads as a
+   footnote and not as a control, because it is the least important thing in the
+   section it stands in. */
+.tk-how{margin:0 0 var(--space-16)}
+.tk-how>summary{display:inline-flex;align-items:center;gap:var(--space-4);
+  font-family:var(--font-body);font-size:var(--text-11);letter-spacing:.06em;
+  text-transform:uppercase;color:var(--text-muted);cursor:pointer;list-style:none;
+  padding:var(--space-2) 0;transition:color var(--dur-quick) ease}
+.tk-how>summary::-webkit-details-marker{display:none}
+.tk-how>summary::before{content:'+';font-family:var(--font-mono);font-size:var(--text-12)}
+.tk-how[open]>summary::before{content:'-'}
+.tk-how>summary:hover{color:var(--text-brass)}
+.tk-how>summary:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
+.tk-how>p{margin:var(--space-8) 0 0}
+
 .tk-note{color:var(--text-muted);font-family:var(--font-body);font-size:13px;
   margin:0 0 18px;max-width:var(--measure);line-height:1.55}
 .tk-subh{color:var(--text-muted);font-family:var(--font-body);font-size:11px;
@@ -272,7 +288,18 @@
   .ck-rules th:nth-child(3),.ck-rules td:nth-child(3){display:none}
   .ck-rules th:last-child{display:table-cell}
 }
-.ck-scene{margin:0 0 30px}
+/* A SPECIMEN NEEDS A STAGE, AND THE FRAME IS NOT ALLOWED TO BE ONE. The rule
+   below `.ck-frame` says why that frame carries no border, no corner and no
+   ground: a 14px radius clips a control that sits flush to the edge of its own
+   viewport and a hairline draws a line across it. All true, and the consequence
+   was that a 40x24 switch floated in 1,150px of column with nothing under it.
+   So the stage goes on the FIGURE, one box out, where it can have an edge
+   without touching the specimen. Measured on the switch page before this: the
+   live control was 196px of a 5,618px page. */
+.ck-scene{width:fit-content;max-width:100%;margin:0 0 var(--space-24);
+  padding:var(--space-16);border:1px solid var(--border-hairline);
+  border-radius:var(--radius-10);background:var(--bg-card-quiet)}
+.ck-scene>.ck-frame{border-radius:var(--radius-6);overflow:hidden}
 .ck-scene-lbl{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:0 0 9px}
 .ck-scene-lbl b{font-family:var(--font-body);font-size:13px;font-weight:600;
   color:var(--text-primary)}
