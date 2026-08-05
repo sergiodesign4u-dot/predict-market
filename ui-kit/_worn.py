@@ -344,8 +344,18 @@ KINDS = [
     # goes on naming them the day that class is deleted.
     ("an event's action row", set(), {"ed-actions"},
      "event-detail", "action", "favourite, comments and share sit under the question and belong to it"),
-    ("chip, a category", set(), {"cat-nav", "subcat", "cat-condensed", "feed-subfilter"},
+    # `.subcat` LEFT THIS ROW ON 2026-08-06, and the measurement that was
+    # supposed to start the chip migration is what took it out. A sub-category
+    # control is `<nav aria-label="Sub-categories">` holding buttons that
+    # components/catnav.css draws `width:100%` with `justify-content:
+    # space-between`: a full-width row with a label on the left and a count on
+    # the right, which is a list row and not a chip. Reading it as a chip was
+    # reading the FAMILY NAME, which is the same mistake as reading the tag.
+    ("chip, a category", set(), {"cat-nav", "cat-condensed", "feed-subfilter"},
      "catnav", "selector", "one graphite chip family, with a lighter press than this one"),
+    ("a sub-category row", set(), {"subcat"},
+     "catnav", "nav", "a full-width row with a label and a count that opens a category page, "
+                      "and it belongs to the rail the rest of that file draws"),
     ("chip, a quick amount", set(), {"quick"},
      "input", "selector", "it sets the value of the field beside it, so it belongs to the field"),
     # TWO ROWS BECAME ONE ON 2026-08-05, and this census is the instrument that
@@ -466,6 +476,14 @@ ATOMS = {
     "outcome": "the YES / NO pair, where the COLOUR states a result. It never folds into "
                "`chip`, because green and red are outcome semantics and an accent may not "
                "borrow the win or lose colour",
+    "tab": "a selector whose selection swaps a PANEL rather than carrying a value, which "
+           "is the distinction its accessible role already makes. Added 2026-08-06: the "
+           "map put its 36 placements in `chip` on the strength of the drawing, and the "
+           "measurement that was to start the chip migration refused it. `.rules-tab` is "
+           "transparent with no corner and a 2px underline; `.tabs button` is a pill on "
+           "`--bg-chip`. An underline against a pill is a FACE and not a modifier, so "
+           "they were never one chip, and `.ed-tablabel` and `.ptab-lbl` are the same "
+           "control again as labels",
     "switch": "one setting, on or off, answered on the spot. It says yes or no to one "
               "thing rather than choosing among several, which is what keeps it out of "
               "`chip`",
@@ -496,12 +514,16 @@ ATOM = {
     "chip, a category": "chip",
     "chip, a quick amount": "chip",
     "chip, quiet, in a rail": "chip",
-    # THE ONE ROW THIS MAP IS NOT SURE OF, and it is written down rather than
-    # assumed. A tab and a chip are both selectors and the product draws them
-    # alike; what differs is that a chip carries a VALUE and a tab swaps a
-    # PANEL, and the accessible role differs with it. Placed here on the
-    # strength of the drawing. atoms.md carries the counter-argument.
-    "tab": "chip",
+    # THE ROW THE MAP WAS NOT SURE OF, AND THE MEASUREMENT SETTLED IT ON
+    # 2026-08-06. It was `chip` for one day, on the strength of the drawing.
+    # Then the chip family was read out file by file to start the migration and
+    # the drawing turned out not to agree with itself: `.rules-tab` is
+    # transparent, has no corner and carries a 2px underline, while `.tabs
+    # button` is a pill on --bg-chip at 13px. An underline against a pill is a
+    # face and not a modifier, so the counter-argument atoms.md had written down
+    # is the one that holds. The atom is what the control DOES.
+    "tab": "tab",
+    "a sub-category row": "navitem",
     "YES / NO, the outcome pair": "outcome",
     "the outcome side of a bet": "outcome",
     "hero, the featured pair": "outcome",

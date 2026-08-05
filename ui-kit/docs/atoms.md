@@ -61,7 +61,7 @@ block byte for byte.
 
 ## The atoms
 
-Six control atoms and six that are not controls. Every placement the census counts is
+Seven control atoms and six that are not controls. Every placement the census counts is
 covered exactly once; the numbers add to its 5281.
 
 ### Controls
@@ -70,10 +70,11 @@ covered exactly once; the numbers add to its 5281.
 |---|---|---|---|
 | `button` | a press with a LABEL, that does a thing | the button family **710**, post a comment **11**, load more **9**, cookie consent **3**, edit on the profile **1** = **734** | `.btn` already holds 710 of them, with emphasis, size and block. The other four are the same control redrawn in four files: same radius-10 or pill, same semibold label, same 44 floor |
 | `iconbutton` | a press whose whole content is a MARK | header icons **493**, sheet close **333**, bookmark on a card **84**, a comment's action **72**, an event's action row **27**, toast close **4** = **1013** | six files, six names, one idea: a square or a disc sized to the finger with an icon in it. It is a separate atom from `button` and not a modifier of it, because it has no label to size and its whole box is a target |
-| `chip` | a label you PICK BETWEEN, that carries a value | category chip **1049**, quick amount **480**, quiet chip in a rail **63**, tab **36** = **1628** | the largest family and the most divided. `components/chip.css` exists and holds 63. The differences are pill against radius-10, 13px against 12px, and the ground at rest, which are modifiers |
+| `chip` | a label you PICK BETWEEN, that carries a value | category chip **815**, quick amount **480**, quiet chip in a rail **63** = **1358** | the largest family and the most divided. `components/chip.css` exists and holds 63. The differences are pill against radius-10, 13px against 12px, and the ground at rest, which are modifiers |
+| `tab` | a selector whose selection swaps a PANEL rather than carrying a value | the tab row **36** | its own atom since 2026-08-06, and the measurement recorded below is what made it one. `.ed-tablabel` and `.ptab-lbl` are the same control again as labels, so they join it when the non-button controls are counted |
 | `outcome` | the YES / NO pair, where the COLOUR states a result | YES/NO buttons **230**, the outcome side of a bet **40**, the hero's featured pair **2** = **272** | genuinely its own atom and must never fold into `chip`. `DESIGN.md` decides it: green and red are outcome semantics, brass is the brand, and an accent never borrows the win or lose colour |
 | `switch` | one setting, on or off, answered on the spot | toggle **3** | already `components/toggle.css`, already correct, and it stays one because a switch is not a chip with two states: it says yes or no to one thing rather than choosing among several |
-| `navitem` | a thing you tap that GOES somewhere | social marks **525**, bottom nav slot **420**, account dropdown row **365** = **1310** | three files. A slot with an icon over a label, a row with a label, and a bare mark are one control at three sizes. The active state is a state of the item, not a fourth control |
+| `navitem` | a thing you tap that GOES somewhere | social marks **525**, bottom nav slot **420**, account dropdown row **365**, a sub-category row **234** = **1544** | four files. A slot with a mark over a label, a row with a label, a bare mark and a full-width row with a count are one control at four sizes. The active state is a state of the item, not a fifth control |
 
 ### Not controls, and still atoms
 
@@ -152,16 +153,44 @@ Each step is one atom:
 
 ---
 
-## The two decisions this document does not settle
+## What the first migration refused, and the map was corrected instead
 
-Written down rather than assumed, because both change what gets merged:
+**2026-08-06. The chip migration was the next step and it did not run.** Before moving
+about 1,565 buttons per tree, the family was read out file by file, and the reading refused
+the target twice. Both corrections are in the table above, and neither would have been
+found by executing the plan.
 
-- **Is a `tab` a `chip`?** Both are selectors, both are a label with a chosen state, and
-  the product draws them alike: `--bg-chip` ground, pill, semibold, brass when chosen.
-  What differs is what the selection does - a chip carries a VALUE, a tab swaps a PANEL -
-  and the accessible role differs with it. The map above puts the 36 tabs in `chip` on the
-  strength of the drawing. The counter-argument is that a tab strip is a molecule
-  (`tablist` + `tab` + `tabpanel`) and only its `tab` is the atom.
+**`.subcat` is not a chip.** It sat in the category kind because of the family name.
+`components/catnav.css` draws it `width:100%` with `justify-content:space-between`, which is
+a full-width row with a label on the left and a count on the right, and its container is
+`<nav aria-label="Sub-categories">`. **234 placements moved to `navitem`.** Reading it as a
+chip was reading the family name, which is the same mistake as reading the tag.
+
+**A `tab` is not a chip either, and the counter-argument written below is the one that
+held.** The map placed 36 tabs in `chip` on the strength of the drawing, and the drawing
+turned out not to agree with itself: `.rules-tab` is transparent, has no corner and carries
+a 2px underline; `.tabs button` is a pill on `--bg-chip` at 13px. **An underline against a
+pill is a face, not a modifier**, so they were never one chip. What the two share is what
+they DO, and that is the atom.
+
+**The distance did not move, and that is correct.** 17 before and 17 after: seven atoms in
+twenty-four slots where there were six in twenty-three. No rule moved, so no progress was
+made toward the target, and the number does not pretend otherwise.
+
+**And the chip family carries a product decision the partition cannot take.** Its selected
+state is spelled five ways: `--tint-brass-09` with a `--tint-brass-45` edge and a glow on
+the category chips, `--tint-brass-16` on the quick amounts and the quiet chip,
+`color-mix(--color-action 18%)` with an action edge on the sub-category row,
+`color-mix(--color-action 16%)` on the tab row, and a full brass GRADIENT in the grey layer.
+`DESIGN.md` says one thing: active is a brass tint. Migrating at zero difference means
+carrying all five as named modifiers, which at least puts them in one file where the
+question can be asked; unifying them is a visible change on about 1,100 placements and
+belongs to `ui-kit/docs/backlog.md` S35, not to the partition.
+
+---
+
+## The decision this document still does not settle
+
 - **Is a social mark a `navitem` or an `iconbutton`?** It is an `<a>` with an icon and no
   label, so it draws like an icon button and behaves like navigation. The map follows the
   ROLE, which is rule 1, and puts all 525 in `navitem`. Rule 1 is the one that has never
