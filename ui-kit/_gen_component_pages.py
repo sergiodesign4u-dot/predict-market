@@ -669,6 +669,68 @@ def face_row(bits, base=None):
     return "".join(out)
 
 
+# THE SHORT NAME OF A STATE, for the one line that stands where the table used to.
+# STATE_WHAT above is written for a table cell, where "focused by keyboard" has a
+# column of its own and all the room it needs; a digest is a sentence, and
+# "hover and focused by keyboard move nothing" is a sentence nobody finishes.
+STATE_SHORT = {"hover": "hover", "active": "press", "focus": "focus",
+               "disabled": "disabled"}
+
+
+def human_list(items, join="and"):
+    items = list(items)
+    if len(items) < 3:
+        return (" %s " % join).join(items)
+    return ", ".join(items[:-1]) + " %s %s" % (join, items[-1])
+
+
+def face_digest(moved):
+    """What actually moves, in one line, so the nine values can stay folded.
+
+    THE TABLE UNDER THIS WAS A QUARTER OF THE PAGE and most of its cells said
+    "nothing in the nine values moves". Measured on 2026-08-05: the states
+    section is 24.3 per cent of the switch's page, 20.6 of the card's and 15.4
+    of the button's, and it is a grid of rgb triples in two themes for every
+    face. Those numbers are the evidence and they have to stay reachable; they
+    are not what a person opening the page of a switch came to read.
+
+    So the section keeps saying what a reader needs and stops saying it in a
+    table: which faces exist, what each one IS in the authored caption, and one
+    computed line naming what each state MOVES. The values are one click under
+    it, unchanged, still measured, still stale-checked by `_states.py`.
+
+    The move set is the UNION of the two themes, not the Vault reading. A rule
+    that fires in one theme and not the other is exactly the defect this section
+    exists to catch, and a digest taken from one ground would hide it under a
+    summary that reads correct.
+    """
+    # TWO STATES THAT MOVE THE SAME VALUE ARE ONE FACT, and saying it twice is
+    # how a digest becomes the thing it replaced: "hover moves ground; press
+    # moves ground; nothing moves on focus" is three clauses for two. The values
+    # are named in the order the table prints them, never alphabetically, so a
+    # reader who opens the fold finds them where the line said they would be.
+    order = {label: i for i, (label, _k) in enumerate(FACE)}
+    groups, quiet = [], []
+    for st in STATE_ORDER:
+        if st == "rest" or st not in moved:
+            continue
+        key = tuple(sorted(moved[st], key=lambda n: order.get(n, len(FACE))))
+        if not key:
+            quiet.append(STATE_SHORT[st])
+            continue
+        for k, sts in groups:
+            if k == key:
+                sts.append(STATE_SHORT[st])
+                break
+        else:
+            groups.append((key, [STATE_SHORT[st]]))
+    parts = ["%s move%s %s" % (human_list(sts), "" if len(sts) > 1 else "s", human_list(key))
+             for key, sts in groups]
+    if quiet:
+        parts.append("nothing moves on " + human_list(quiet, "or"))
+    return "; ".join(parts)
+
+
 def state_gallery(name):
     """Every distinct face, live, and what the browser measured it at.
 
@@ -704,7 +766,7 @@ def state_gallery(name):
     figs = []
     for g in groups:
         shots = g.get("shots", {})
-        panels = []
+        panels, moved = [], {}
         for theme, label in (("dark", "Vault"), ("light", "Daylight")):
             rest = shots.get("rest-%s" % theme)
             if not rest:
@@ -716,13 +778,24 @@ def state_gallery(name):
                 shot = shots.get("%s-%s" % (st, theme))
                 if not shot or st == "rest":
                     continue
+                bits = face_bits(shot["value"])
+                moved.setdefault(st, set()).update(
+                    fname for i, ((fname, _kind), val) in enumerate(bits)
+                    if val != base[i][1])
                 rows.append('<tr><td class="tk-role">%s</td><td class="ck-fx-cell">%s</td></tr>'
-                            % (esc(STATE_WHAT[st]), face_row(face_bits(shot["value"]), base)))
+                            % (esc(STATE_WHAT[st]), face_row(bits, base)))
             panels.append('<div class="tk-theme-fig" data-theme="%s"><b>%s</b>'
                           '<table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th>'
                           '<th>what the browser measured</th></tr></thead><tbody>%s</tbody>'
                           "</table></div>" % (theme, label, "".join(rows)))
-        panels = ('<div class="tk-theme-grid">%s</div>' % "".join(panels)) if panels else ""
+        # THE NUMBERS FOLD, THE READING DOES NOT. What is left standing is the
+        # digest: one computed line saying which state moves which value, which
+        # is the sentence the grid of rgb triples was being read FOR. See
+        # face_digest() for the measurement that asked for this.
+        panels = ('<details class="ck-nums"><summary><span class="ck-nums-say">%s</span>'
+                  '<span class="ck-nums-open">the nine values, both themes</span></summary>'
+                  '<div class="tk-theme-grid">%s</div></details>'
+                  % (esc(face_digest(moved)) or "measured", "".join(panels))) if panels else ""
         missing = [s for s in ("hover", "active", "focus")
                    if not shots.get("%s-dark" % s)]
         note = ('<p class="tk-note ck-shot-gap">Not staged: %s. No specimen puts this one '
@@ -929,8 +1002,15 @@ def sections_for(name, c):
         "The selectors and the css, for a person about to edit them. To change this component, "
         "edit <code>components/%s.css</code>; to change a value it reads, edit the role in "
         "<code>components/tokens.css</code>." % name,
-        (('<h3 class="tk-subh">Every state rule, and what it moves</h3>' + table)
-         if gallery else "") +
+        # BOTH HALVES OF THIS SECTION ARE FOR THE SAME PERSON, so both are
+        # folded the same way. The source already was; the state-rule table was
+        # not, and it is the visible half of a section that measures 15.3 per
+        # cent of the switch's page and 13.5 of the card's, standing open under
+        # a heading that says it is for somebody about to edit the file. A
+        # reader who is not about to edit it scrolls past a table of selectors;
+        # a reader who is opens the file anyway.
+        (('<details class="ck-src"><summary>every state rule, and what it moves'
+          '</summary>%s</details>' % table) if gallery else "") +
         '<details class="ck-src"><summary>components/%s.css</summary><pre>%s</pre></details>'
         % (name, esc(c["css"])))
 

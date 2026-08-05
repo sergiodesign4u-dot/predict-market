@@ -539,6 +539,23 @@ p code,li code,td code{overflow-wrap:anywhere}
 .ck-shot img{display:block;max-width:100%;height:auto;border-radius:var(--radius-6)}
 .ck-shot figcaption{font-family:var(--font-mono);font-size:var(--text-10);color:var(--text-muted)}
 .ck-shot-gap{margin:0}
+/* THE DIGEST IS THE SUMMARY, which is why this disclosure does not look like
+   one. What stands closed is a sentence a reader wants ("press moves ground and
+   edge; nothing moves on hover or focus"), and the invitation to open it is the
+   quiet half at the end. The row is the whole width of the plate so the two
+   halves sit at opposite ends, and it wraps rather than truncating, because a
+   face that moves five values is exactly the face whose line must not be cut. */
+.ck-nums{margin:0}
+.ck-nums>summary{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+  gap:var(--space-4) var(--space-12);padding:var(--space-8) 0;cursor:pointer;list-style:none}
+.ck-nums>summary::-webkit-details-marker{display:none}
+.ck-nums-say{font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-primary)}
+.ck-nums-open{display:inline-flex;align-items:center;gap:var(--space-4);flex:0 0 auto;
+  font-family:var(--font-mono);font-size:var(--text-10);color:var(--text-muted)}
+.ck-nums-open::before{content:'+'}
+.ck-nums[open] .ck-nums-open::before{content:'-'}
+.ck-nums>summary:hover .ck-nums-open{color:var(--text-brass)}
+.ck-nums>summary:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
 /* The measured face. The state column is narrow because it holds one word and
    the value column holds nine, and .tk-tbl is table-layout:fixed, which would
    otherwise give a word half the plate. */
