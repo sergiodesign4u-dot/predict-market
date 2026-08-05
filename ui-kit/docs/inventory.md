@@ -110,7 +110,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Biggest bets columns (`.hold-col` / `.hold-row`) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Bets tab | binary / multi (outcome-tagged) | 16 | WF | - | + |
 | Bets table (`.ptable`, "you" highlight) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Bets tab | logged-in (your row) / logged-out | 9 | WF | - | + |
 | Activity feed (`.act-row`) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Activity tab | default | 9 | WF | - | + |
-| Segmented switcher (`.seg` / `.rules-tabs` / `.ed-range`) | `comments.css`, `tabs.css` | [comments](../comments.html), [tabs](../tabs.html) | L3 | event-detail comments + rules + chart | active segment | 9 | WF | - | + |
+| Segmented switcher: the TROUGH and the rail (`.seg` / `.rules-tabs` / `.ed-range`) | `comments.css`, `tabs.css` | [comments](../comments.html), [tabs](../tabs.html) | L3 | event-detail comments + rules + chart | active segment | 9 | WF | - | + |
+| Quiet chip (`.chip`, the control inside `.seg` and `.ed-range`) | `chip.css`, `comments.css`, `tabs.css` | [chip](../chip.html), [comments](../comments.html), [tabs](../tabs.html) | L3 | event-detail comments + chart | rest / hover / press / selected | 9 | WF/UV | - | + |
 | Bet sub-state boxes (`.protect` / `.inline-error` / `.reconcile-box` / `.spinner-box`) | `notice.css` | [notice](../notice.html) | L3 | bet panel + dock inline | funds-safe / insufficient / reconcile / processing | 10+ | WF/UV | - | + |
 
 ## 4. Forms, dialogs and inputs
@@ -290,7 +291,7 @@ screens.
 | Pattern | CSS file | Page | Screens | Assembled from |
 |---|---|---|---|---|
 | **Browse shell** | `patterns/browse-shell.css` | [browse-shell](../browse-shell.html) | 77 | `catnav`, `filters`, `state-block`, `button` |
-| **Detail shell** | `patterns/detail-shell.css` | [detail-shell](../detail-shell.html) | 11 | `card`, `event-detail`, `oddsbar`, `chart`, `tabs`, `market`, `comments`, `bets-table`, `position`, `betpanel`, `input`, `quick`, `button`, `dialog` |
+| **Detail shell** | `patterns/detail-shell.css` | [detail-shell](../detail-shell.html) | 11 | `card`, `event-detail`, `oddsbar`, `chart`, `tabs`, `chip`, `market`, `comments`, `bets-table`, `position`, `betpanel`, `input`, `quick`, `button`, `dialog` |
 | **Card grid** | `patterns/card-grid.css` | [card-grid](../card-grid.html) | 23 | `card`, `yesno`, `options` |
 | **List head** | `patterns/list-head.css` | [list-head](../list-head.html) | 71 | `filters` |
 | **Position list** | `patterns/position-list.css` | [position-list](../position-list.html) | 13 | `position` |

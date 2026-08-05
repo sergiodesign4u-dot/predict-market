@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict Market - chip</title>
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   A frame is a document of its own, so it does not inherit the attribute: this
+   block runs in the frames too and they are told by postMessage, the same
+   handshake _frames.js already uses, because from file:// every document has
+   its own opaque origin and reading into a frame is refused.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function set(on){if(on){r.setAttribute('data-theme','light')}else{r.removeAttribute('data-theme')}}
+function push(){var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){try{f[i].contentWindow.postMessage({pmTheme:lit()?'light':'dark'},'*')}catch(e){}}}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}
+push();}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();set(!on);
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+window.addEventListener('message',function(e){var d=e.data;
+if(!d||(d.pmTheme!=='light'&&d.pmTheme!=='dark'))return;
+set(d.pmTheme==='light');paint();});
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+setTimeout(wire,0);
+/* a frame that arrives late is told as soon as it is ready */
+var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
+push();});})();</script>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body data-kit-page="chip">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the system"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar" data-kit-nav></aside>
+
+<main class="tk-wrap">
+  <header class="tk-hero">
+    <h1>chip</h1>
+    <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">components/chip.css</span>
+      <span class="tk-badge">4 rules</span>
+      <span class="tk-badge">3 classes</span>
+      <span class="tk-badge">9 screens</span>
+    </div>
+  </header>
+  <section class="tk-sec" id="live">
+    <h2 data-n="01">Live</h2>
+    <p class="tk-note">These are live pages and not pictures. Hover them, press them, Tab into them.</p>
+    <details class="tk-how"><summary>How this is read</summary><p class="tk-note">The component in the markup it ships with, quoted from the frozen kit, inside the product's own wrapper and painted by <code>components/index.css</code> alone. Each frame is a page of its own, so the width under the title is a real viewport and the media queries answer to it. One row per CONTROL, in one column, and a scope is present only where the scope is what the row is about: twelve of the sixteen combinations the product wears were measured against the same markup with no scope above them and came out identical over thirteen properties, so a plate around those would be showing the reader a dialog to prove something about a button. The numbers for every row are in the axis table further down, written once.</p></details>
+<figure class="ck-scene" id="sp-chip-rails"><figcaption class="ck-scene-lbl"><b>The quiet chip, in both rails it ships in</b><span class="ck-w">620px</span><span class="ck-zoom" hidden></span><a href="specimens/chip-rails.html" target="_blank" rel="noopener">open on its own</a></figcaption><div class="ck-frame" style="width:620px"><iframe data-specimen="chip-rails" src="specimens/chip-rails.html" width="620" height="320" loading="lazy" title="The quiet chip, in both rails it ships in"></iframe></div><p class="ck-cap">One control, two containers, which is the whole point of the block. Until 2026-08-05 this chip was drawn twice, by `.cmt-controls .seg button` in comments.css and by `.ed-range button` in tabs.css, and the four painted rules were the same declaration block byte for byte. Every rule in chip.css is scoped to `.app-case` and neither ground is the chip's own, so both rails are shown whole: the sort segment stands in a --bg-well trough with a hairline, the chart range on the section.</p></figure>
+  </section>
+  <section class="tk-sec" id="purpose">
+    <h2 data-n="02">What it is</h2>
+<p>A label a person picks between, when the choice is small, immediate and does not leave the screen. Four time ranges under a chart, three sort orders over a comment thread. It carries a value rather than doing a thing, so what it looks like afterwards matters more than what it looks like while it is pressed.</p>
+  </section>
+  <section class="tk-sec" id="anatomy">
+    <h2 data-n="03">Anatomy</h2>
+    <p class="tk-note">Which part is which, in the product's own words. Every class named here is one this file styles, and the build fails if it is not.</p>
+<ul class="tk-doc-list"><li><code>.chip</code> - the control: no edge, no ground, <code>--text-muted</code> ink, a 10px corner, 12px semibold, 4 by 12 of padding. It is quiet on purpose, because a rail of five chips with five grounds is five buttons.</li><li><code>.chip.sel</code> - the chosen one. A brass TINT, brass ink, bold, and the state is a class rather than a pseudo because the selection survives the pointer leaving. <code>.sel</code> is the shared modifier declared in <code>ui-kit/_levels.py</code>, so the same word means the same thing on every chip in the product.</li></ul>
+  </section>
+  <section class="tk-sec" id="states">
+    <h2 data-n="04">States, as they measure</h2>
+    <p class="tk-note">One block per distinct face. Rest says what the face IS; every row under it says only what that state MOVES.</p>
+    <details class="tk-how"><summary>How this is read</summary><p class="tk-note">The frames above are the rendering; this is the reading of them. Every number was taken in a browser with a REAL pointer, a real Tab and the mouse button really held down (<code>ui-kit/_verify/states.cjs</code>), because a hover value is the cascade resolved and cannot be read out of a declaration. Nothing here is a state faked with a stand class. Two elements that measure the same in all four states in both themes are one answer, however many screens carry them, and that grouping is computed rather than chosen. The ring is not among the nine values, because <code>outline</code> is drawn outside the box: a focus row that reports no movement is saying the face does not move, and the ring is on the live frame. The numbers go stale the moment a rule changes, so each block records the files it was measured from and <code>python3 ui-kit/_states.py</code> fails when their bytes move.</p></details>
+<figure class="ck-gal"><figcaption class="ck-gal-head"><b>button.chip.sel</b><span class="ck-w">on the bare canvas</span><a href="#sp-chip-rails">hover it in the frame above</a><a href="specimens/chip-rails.html" target="_blank" rel="noopener">the specimen</a></figcaption><p class="ck-gal-cap"><strong>The same chip chosen</strong>, and again one block for both rails: a brass tint, brass ink, bold. A tint and not a fill, for the reason under Rule.</p><details class="ck-nums"><summary><span class="ck-nums-say">nothing moves on hover, press or focus</span><span class="ck-nums-open">the nine values, both themes</span></summary><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th><th>what the browser measured</th></tr></thead><tbody><tr><td class="tk-role">rest</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgba(199, 162, 78, 0.16)"></i><code>rgba(199, 162, 78, 0.16)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(215, 172, 83)"></i><code>rgb(215, 172, 83)</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(215, 172, 83)"></i><code>rgb(215, 172, 83)</code></span><span class="ck-fx"><em>corner</em><code>10px</code></span></td></tr><tr><td class="tk-role">hover</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr><tr><td class="tk-role">held down</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr><tr><td class="tk-role">focused by keyboard</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr></tbody></table></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th><th>what the browser measured</th></tr></thead><tbody><tr><td class="tk-role">rest</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgba(199, 162, 78, 0.3)"></i><code>rgba(199, 162, 78, 0.3)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(104, 79, 24)"></i><code>rgb(104, 79, 24)</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(104, 79, 24)"></i><code>rgb(104, 79, 24)</code></span><span class="ck-fx"><em>corner</em><code>10px</code></span></td></tr><tr><td class="tk-role">hover</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr><tr><td class="tk-role">held down</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr><tr><td class="tk-role">focused by keyboard</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr></tbody></table></div></div></details></figure><figure class="ck-gal"><figcaption class="ck-gal-head"><b>button.chip</b><span class="ck-w">on the bare canvas</span><a href="#sp-chip-rails">hover it in the frame above</a><a href="specimens/chip-rails.html" target="_blank" rel="noopener">the specimen</a></figcaption><p class="ck-gal-cap">The chip at rest: no ground, no edge, muted ink. Hover brings the ink up to <code>--text-primary</code> and nothing else moves, which is the whole idea of a quiet control. <strong>This one block is five buttons in two different rails</strong>, three in the comment sorter&#x27;s trough and two in the chart range, and the capture merged them without being asked: they measure identical in all four states in both themes. That merge is the proof the two files were drawing one control, taken by an instrument rather than by a person reading two stylesheets.</p><details class="ck-nums"><summary><span class="ck-nums-say">hover moves edge and ink; press moves ground, edge and ink; nothing moves on focus</span><span class="ck-nums-open">the nine values, both themes</span></summary><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th><th>what the browser measured</th></tr></thead><tbody><tr><td class="tk-role">rest</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgba(0, 0, 0, 0)"></i><code>rgba(0, 0, 0, 0)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(164, 157, 143)"></i><code>rgb(164, 157, 143)</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(164, 157, 143)"></i><code>rgb(164, 157, 143)</code></span><span class="ck-fx"><em>corner</em><code>10px</code></span></td></tr><tr><td class="tk-role">hover</td><td class="ck-fx-cell"><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(237, 231, 218)"></i><code>rgb(237, 231, 218)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(164, 157, 143)"></i><code>rgb(164, 157, 143)</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(237, 231, 218)"></i><code>rgb(237, 231, 218)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(164, 157, 143)"></i><code>rgb(164, 157, 143)</code></span></td></tr><tr><td class="tk-role">held down</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(25, 27, 31)"></i><code>rgb(25, 27, 31)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgba(0, 0, 0, 0)"></i><code>rgba(0, 0, 0, 0)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(237, 231, 218)"></i><code>rgb(237, 231, 218)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(164, 157, 143)"></i><code>rgb(164, 157, 143)</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(237, 231, 218)"></i><code>rgb(237, 231, 218)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(164, 157, 143)"></i><code>rgb(164, 157, 143)</code></span></td></tr><tr><td class="tk-role">focused by keyboard</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr></tbody></table></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th><th>what the browser measured</th></tr></thead><tbody><tr><td class="tk-role">rest</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgba(0, 0, 0, 0)"></i><code>rgba(0, 0, 0, 0)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(86, 80, 66)"></i><code>rgb(86, 80, 66)</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(86, 80, 66)"></i><code>rgb(86, 80, 66)</code></span><span class="ck-fx"><em>corner</em><code>10px</code></span></td></tr><tr><td class="tk-role">hover</td><td class="ck-fx-cell"><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(33, 31, 25)"></i><code>rgb(33, 31, 25)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(86, 80, 66)"></i><code>rgb(86, 80, 66)</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(33, 31, 25)"></i><code>rgb(33, 31, 25)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(86, 80, 66)"></i><code>rgb(86, 80, 66)</code></span></td></tr><tr><td class="tk-role">held down</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(243, 241, 235)"></i><code>rgb(243, 241, 235)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgba(0, 0, 0, 0)"></i><code>rgba(0, 0, 0, 0)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(33, 31, 25)"></i><code>rgb(33, 31, 25)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(86, 80, 66)"></i><code>rgb(86, 80, 66)</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(33, 31, 25)"></i><code>rgb(33, 31, 25)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(86, 80, 66)"></i><code>rgb(86, 80, 66)</code></span></td></tr><tr><td class="tk-role">focused by keyboard</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-same">nothing in the nine values moves</span></td></tr></tbody></table></div></div></details></figure>
+  </section>
+  <section class="tk-sec" id="when">
+    <h2 data-n="05">When to use</h2>
+    <p class="tk-note">The judgement a generator cannot read out of css, and the reason <code>ui-kit/authored/chip.md</code> exists.</p>
+<p>For a set of two to five values a person switches between on the spot, inside a container that gives them their ground: a trough, a rail, a segment. Both of today&#x27;s placements are exactly that.</p><p>Not as a way of navigating. A chip that takes you somewhere is a link wearing a control&#x27;s clothes, and the product already has a tab for a switch that changes a panel and a category chip for a rail that changes a page.</p><p>Not for a set that has to be scrolled. Five is a rail, twelve is a menu that has forgotten it has one.</p>
+  </section>
+  <section class="tk-sec" id="rule">
+    <h2 data-n="06">The rule, and the anti-rule</h2>
+    <p class="tk-note">One sentence to follow and one mistake worth naming. An anti-rule has to name the component that should have been used instead, or it is a complaint rather than an address, and the build checks that it does.</p>
+<div class="ck-rule"><b>Do</b><p><strong>A selected chip is a tint, never a fill.</strong> A solid brass ground is the primary action&#x27;s own face, and a rail of chips is not asking anybody to commit to anything. <code>DESIGN.md</code> decides it twice, under Chips and under the One-Accent Rule, and <a class="tk-doc-ref" href="quick.html"><code>components/quick.css</code></a> records what it cost the one time a chip took the fill: a lit brass $20 sitting directly above a lit brass Add funds.</p><p><strong>The container gives the ground, not the chip.</strong> Every rule in <a class="tk-doc-ref" href="chip.html"><code>components/chip.css</code></a> is scoped to <code>.app-case</code>, and none of them paints a ground at rest. That is what lets one control stand in a <code>--bg-well</code> trough and on a bare section without either looking wrong, and it is why the stand shows both rails rather than the chip on the canvas.</p></div><div class="ck-rule ck-anti"><b>Never</b><p>Never draw it again in the file of whatever holds it. That is exactly how it came to exist twice: <code>comments.css</code> owned the sort segment because the segment stands in the comment controls, <code>tabs.css</code> owned the chart range because the range stands under the chart, and each file was right about its container and wrong about the control. If a third rail needs this chip, it takes <code>.chip</code>; if the third rail needs a chip that is genuinely different, the difference goes here as a modifier, next to <code>.sel</code>.</p><p>Never confuse it with the raised chip. <code>.load-more</code> and <code>.feed-inner .cat-nav button</code> are the other one: <code>--bg-chip</code> ground, a bevel edge, 14px semibold, and they are four declarations apart from each other rather than zero. That family is not merged yet and this file does not pretend it is.</p><p>Seen: <a class="tk-doc-ref" href="backlog.html"><code>ui-kit/docs/backlog.md</code></a> S41, and <a class="tk-doc-ref" href="defects.html"><code>ui-kit/docs/defects.md</code></a>, which records the measurement that ended the duplicate.</p></div>
+  </section>
+  <section class="tk-sec" id="roles">
+    <h2 data-n="07">Roles it reads</h2>
+    <p class="tk-note">Colour comes in only through these. Change one on <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
+<div class="ck-roles"><span class="ck-role"><i style="background:var(--bg-pressed)"></i><code>--bg-pressed</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span><span class="ck-role"><i style="background:var(--tint-brass-16)"></i><code>--tint-brass-16</code></span></div>
+  </section>
+  <section class="tk-sec" id="classes">
+    <h2 data-n="08">Classes</h2>
+    <p class="tk-note">Every class this file styles, and how many of the 105 painted screens carry it. A zero is not automatically dead: the last column says whether the class is built at runtime, shown only in the kit, a leftover of the grey wireframes, used by a course page, or genuinely used by nothing. Gate 30 fails the build on the last kind.</p>
+<table class="tk-tbl"><thead><tr><th>class</th><th>screens</th><th>if zero</th></tr></thead><tbody><tr><td class='tk-role'>.app-case</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.chip</td><td class='tk-hex'>9</td><td class='tk-hex'></td></tr><tr><td class='tk-role'>.sel</td><td class='tk-hex'>105</td><td class='tk-hex'></td></tr></tbody></table>
+  </section>
+  <section class="tk-sec" id="screens">
+    <h2 data-n="09">Where it stands</h2>
+<div class="ck-screens"><a href="../ui-visual/event-detail-bet-error.html">event-detail-bet-error</a><a href="../ui-visual/event-detail-bet-insufficient.html">event-detail-bet-insufficient</a><a href="../ui-visual/event-detail-bet-processing.html">event-detail-bet-processing</a><a href="../ui-visual/event-detail-bet-reconcile.html">event-detail-bet-reconcile</a><a href="../ui-visual/event-detail-logged-out-multi.html">event-detail-logged-out-multi</a><a href="../ui-visual/event-detail-logged-out.html">event-detail-logged-out</a><a href="../ui-visual/event-detail-multi.html">event-detail-multi</a><a href="../ui-visual/event-detail-resolved.html">event-detail-resolved</a><a href="../ui-visual/event-detail.html">event-detail</a></div>
+  </section>
+  <section class="tk-sec" id="sources">
+    <h2 data-n="10">Written from</h2>
+    <p class="tk-note">The one artefact here no gate can read, because a sentence cannot be checked for being true. Read it if you doubt a claim above.</p>
+    <details class="tk-how"><summary>How this is read</summary><p class="tk-note">So the authored half names its sources before it says anything, and the build fails when one of them does not exist.</p></details>
+<ul class="tk-doc-list"><li><a class="tk-doc-ref" href="comments.html"><code>components/comments.css</code></a> and <a class="tk-doc-ref" href="tabs.html"><code>components/tabs.css</code></a>, where this control lived until 2026-08-05 and where it lived TWICE. <code>.cmt-controls .seg button</code> and <code>.ed-range button</code> were the same declaration block byte for byte, property order and all, plus the same hover, the same press and the same <code>.sel</code>.</li><li><code>ui-kit/_states/index.json</code>, which had measured both and printed the answer on two different pages without anyone putting the two readings side by side: <i class="tk-dot" style="background:rgba(0, 0, 0, 0)"></i><code>rgba(0, 0, 0, 0)</code> ground, <i class="tk-dot" style="background:rgb(164, 157, 143)"></i><code>rgb(164, 157, 143)</code> edge and ink, 10px corner, and both selected states at <i class="tk-dot" style="background:rgba(199, 162, 78, .16)"></i><code>rgba(199, 162, 78, .16)</code> on <i class="tk-dot" style="background:rgb(215, 172, 83)"></i><code>rgb(215, 172, 83)</code>.</li><li><code>ui-kit/_worn.py</code>, which filed them as two kinds of one role: <strong>chip, a sort segment</strong> at 27 placements and <strong>chip, a chart range</strong> at 36. Same role, same face, two names.</li><li><a class="tk-doc-ref" href="backlog.html"><code>ui-kit/docs/backlog.md</code></a> S41, which owns the chip family and says this merge needs the shape the buttons got rather than a file move.</li><li><code>DESIGN.md</code>, twice: &quot;active is a brass tint&quot; under Chips, and the One-Accent Rule. Both decide the selected state below.</li></ul>
+  </section>
+  <section class="tk-sec" id="css">
+    <h2 data-n="11">What the file says</h2>
+    <p class="tk-note">The selectors and the css, for a person about to edit them. To change this component, edit <code>components/chip.css</code>; to change a value it reads, edit the role in <code>components/tokens.css</code>.</p>
+<details class="ck-src"><summary>every state rule, and what it moves</summary><table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.app-case .chip:hover</td><td class='ck-decl'>color:var(--text-primary)</td></tr><tr><td class='tk-role'>.app-case .chip:active</td><td class='ck-decl'>background:var(--bg-pressed)</td></tr><tr><td class='tk-role'>.app-case .chip.sel</td><td class='ck-decl'>background:var(--tint-brass-16);color:var(--text-brass);font-weight:var(--weight-bold)</td></tr></tbody></table><h3 class="tk-subh">The tokens these states read, on both grounds</h3><p class="tk-note">Neither panel is a screenshot. Each carries <code>data-theme</code> itself, so the token resolves inside it and a role that was given a value in only one theme shows up here as a control that does not move.</p><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><div class="ck-st-tok"><code>--text-primary</code><span class="ck-st-row"><span class="ck-st-chip ck-ink" style="color:var(--text-primary)">Confirm bet</span><em>the label, on the ground this state puts it on</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip ck-ground" style="background:var(--bg-pressed)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--tint-brass-16</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--tint-brass-16)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--text-brass</code><span class="ck-st-row"><span class="ck-st-chip ck-ink" style="color:var(--text-brass)">Confirm bet</span><em>the label, on the ground this state puts it on</em></span></div></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><div class="ck-st-tok"><code>--text-primary</code><span class="ck-st-row"><span class="ck-st-chip ck-ink" style="color:var(--text-primary)">Confirm bet</span><em>the label, on the ground this state puts it on</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip ck-ground" style="background:var(--bg-pressed)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--tint-brass-16</code><span class="ck-st-row"><span class="ck-st-chip" style="background:var(--tint-brass-16)">Confirm bet</span><em>the ground the control settles onto</em></span></div><div class="ck-st-tok"><code>--text-brass</code><span class="ck-st-row"><span class="ck-st-chip ck-ink" style="color:var(--text-brass)">Confirm bet</span><em>the label, on the ground this state puts it on</em></span></div></div></div></details><details class="ck-src"><summary>components/chip.css</summary><pre>/* components/chip.css
+   Component: chip. Classes: .chip.
+
+   Reads:
+   Stand:  ui-kit/chip.html
+   Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+/* ============================================================================
+   TWO FILES WERE DRAWING ONE CONTROL, AND NOT NEARLY: IDENTICALLY. On
+   2026-08-05 `components/comments.css` styled `.cmt-controls .seg button` and
+   `components/tabs.css` styled `.ed-range button`, and the four painted rules
+   were the same declaration block twice, byte for byte, down to the order of
+   the properties:
+
+       border:0; background:transparent; color:var(--text-muted);
+       border-radius:var(--radius-10); padding:var(--space-4) var(--space-12);
+       font-family:var(--font-body); font-weight:var(--weight-semibold);
+       font-size:var(--text-12); cursor:pointer;
+       transition:background var(--dur-quick) ease, color var(--dur-quick) ease
+
+   plus the same hover, the same press and the same `.sel`. The browser agreed
+   before the files were read: `ui-kit/_states/index.json` had already measured
+   both at `rgba(0,0,0,0)` ground, `rgb(164,157,143)` edge and ink, 10px corner,
+   and both selected states at `rgba(199,162,78,.16)` on `rgb(215,172,83)`.
+
+   NEITHER FILE COULD TAKE THE OTHER. A file that styles another component's
+   classes is what S11 forbids, and `.seg` belongs to the comment controls while
+   `.ed-range` belongs to the chart head. So the control gets the shape the
+   buttons got in `447d1fb`: ONE MARKER CLASS on the element, and the markup of
+   both trees moved in the same change as the stylesheet. 63 buttons per tree,
+   9 screens each family.
+
+   WHAT DID NOT COME WITH IT. `.cmt-controls .seg button{border-right:...}` and
+   its `:last-child` are the GREY layer: unscoped, outranked by `.app-case` in
+   the paint, and drawing the divided segment the wireframes still show. They
+   stay in `comments.css`, with the container, because that is what they are
+   about.
+
+   AND THIS IS ONE OF FOUR, NOT THE FOUR. `.load-more` and
+   `.feed-inner .cat-nav button` are the OTHER chip, a raised one on `--bg-chip`
+   with a bevel edge at 14px, and they are four declarations apart rather than
+   zero (padding 24 against 20, min-height 44 against 0, a letter-spacing, an
+   inset groove). `.quick button` is a third face and the pill `.cat-nav button`
+   outside `.feed-inner` a fourth. This file is where they come when each is
+   measured and moved on its own evidence, and backlog S41 owns the rest.
+   ============================================================================ */
+
+/* NO GREY LAYER HERE, AND THAT IS A DECISION THIS PASS PAID FOR. The draft of
+   this file opened with `.chip{cursor:pointer}`, copied from the note
+   components/quick.css carries about keeping an unscoped first layer. It would
+   have applied to nothing: the only documents that carry `.chip` and load this
+   stylesheet are the painted screens, the specimen and the frozen kit, and all
+   three put it inside `.app-case`. The nine grey screens that carry it link
+   nothing from components/ at all.
+   The reason for leaving it out is written in components/comments.css, where
+   two rules of exactly that kind had been sitting since the file was cut. They
+   never reached the wireframes either, and the day the chip's painted rule
+   dropped from (0,3,1) to (0,2,0) they stopped losing and started painting: 45
+   screens and 180 elements, found by snap.cjs and by nothing else. */
+.app-case .chip{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
+.app-case .chip:hover{color:var(--text-primary)}
+.app-case .chip:active{background:var(--bg-pressed)}
+/* A SELECTED CHIP IS A TINT, NOT A FILL, which is the rule DESIGN.md states
+   under Chips and the One-Accent Rule states again: brass carries identity, the
+   active state and primary CTAs only. `.sel` is the shared modifier
+   `ui-kit/_levels.py` declares, so the state is a class rather than a pseudo,
+   because the selection survives the pointer leaving. */
+.app-case .chip.sel{background:var(--tint-brass-16);color:var(--text-brass);font-weight:var(--weight-bold)}
+</pre></details>
+  </section>
+
+</main>
+
+<script src="_frames.js"></script>
+<script src="_nav.js"></script>
+</body>
+</html>

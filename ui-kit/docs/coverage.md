@@ -23,7 +23,8 @@ says so. No em dash.
 | card | 4 | card-binary, card-multi, card-loading, card-detail-head | 2 | 14 | 36 |
 | catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 6 | 57 |
 | chart | 1 | chart | 1 | 12 | 11 |
-| comments | 1 | comments-thread | 1 | 16 | 9 |
+| chip | 1 | chip-rails | 0 | 1 | 9 |
+| comments | 1 | comments-thread | 2 | 16 | 9 |
 | cookie-consent | 1 | cookie-consent | 0 | 17 | 2 |
 | course-chrome | 3 | course-chrome, course-chrome-system, course-chrome-roadmap | 0 | 25 | 105 |
 | dialog | 2 | dialog-shared, signin | 1 | 8 | 105 |
@@ -47,14 +48,14 @@ says so. No em dash.
 | seo-plate | 1 | seo-plate | 1 | 8 | 11 |
 | skeleton | 1 | skeleton-grid | 3 | 5 | 19 |
 | state-block | 3 | state-empty-filters, state-error, state-empty | 1 | 7 | 40 |
-| tabs | 2 | tabs-detail, tabs-mybets | 1 | 20 | 20 |
+| tabs | 2 | tabs-detail, tabs-mybets | 2 | 20 | 20 |
 | toast | 1 | toast | 0 | 6 | 1 |
 | toc | 1 | toc-rail | 0 | 6 | 1 |
 | toggle | 1 | filters-toggle | 1 | 1 | 3 |
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 105 |
 | yesno | 1 | yesno | 2 | 2 | 14 |
 
-70 specimens over 39 components.
+71 specimens over 40 components.
 
 ---
 

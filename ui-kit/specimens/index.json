@@ -658,5 +658,18 @@
   "state": "Kept inside the overlay: three of the four rules that draw this box are scoped under .app-case, .outcome-dialog and .win-dialog.",
   "source": "specimens.extra.html / extra / Reconcile box",
   "rewrites": 0
+ },
+ {
+  "id": "chip-rails",
+  "component": "chip",
+  "title": "The quiet chip, in both rails it ships in",
+  "width": 620,
+  "also": [
+   "comments",
+   "tabs"
+  ],
+  "note": "One control, two containers, which is the whole point of the block. Until 2026-08-05 this chip was drawn twice, by `.cmt-controls .seg button` in comments.css and by `.ed-range button` in tabs.css, and the four painted rules were the same declaration block byte for byte. Every rule in chip.css is scoped to `.app-case` and neither ground is the chip's own, so both rails are shown whole: the sort segment stands in a --bg-well trough with a hairline, the chart range on the section.",
+  "source": "specimens.extra.html / extra / The quiet chip, in both rails it ships in",
+  "rewrites": 0
  }
 ]

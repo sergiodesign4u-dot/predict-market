@@ -1,7 +1,7 @@
 /* components/tabs.css
    Component: tabs. Classes: .ed-panel-activity, .ed-panel-comments, .ed-panel-holders, .ed-panel-positions, .ed-range, .ed-tab-count, .ed-tabbar, .ed-tablabel, .ed-tabpanel, .ed-tabradio, .ed-tabs, .ed-tabwrap, .ptab-bar, .ptab-in, .ptab-lbl, .ptab-panel, .ptabs, .rules-tab, .rules-tabs, .tabs.
 
-   Reads: --bg-chip, --bg-pressed, --bg-well, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --focus-ring, --text-brass, --text-muted, --text-primary, --tint-brass-16
+   Reads: --bg-chip, --bg-pressed, --bg-well, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --focus-ring, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/tabs.html
    Stands on: 20 ui-visual screens (active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, active-bets-history-empty.html, active-bets-history-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -94,12 +94,18 @@
    The mono was not defended anywhere: the comment in this file argues for the PRESS,
    and the labels are 1d / 1w / 1m / all, which are words and not figures. Mono in
    this system is what a number is set in. */
-.app-case .ed-range button{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
-.app-case .ed-range button:hover{color:var(--text-primary)}
-/* the chart time range is a tab in everything but name: one of four, and the click redraws the
-   chart, so a held-down ground is the only thing that says the switch took the tap */
-.app-case .ed-range button:active{background:var(--bg-pressed)}
-.app-case .ed-range button.sel{background:var(--tint-brass-16);color:var(--text-brass);font-weight:var(--weight-bold)}
+/* AND ON 2026-08-05 IT WENT ONE STEP FURTHER: the four rules that stood here
+   were not merely the same chip as the comment sorter, they were the same
+   DECLARATION BLOCK, byte for byte, property order and all, written twice in
+   two files. The browser had already said so - ui-kit/_states/index.json
+   measured both at rgba(0,0,0,0) ground, rgb(164,157,143) edge and ink, 10px
+   corner, and both selected states at rgba(199,162,78,.16) on rgb(215,172,83) -
+   and nobody had put the two readings side by side. Neither file could take the
+   other, so the control is `.chip` in components/chip.css and the 36 buttons
+   here carry the class in both trees. The note above stands: the argument for
+   joining the family was made in this file and the merge is what it asked for.
+   What that file keeps of the argument below: the click redraws the chart, so a
+   held-down ground is the only thing that says the switch took the tap. */
 /* Target size follows the POINTER, not the viewport. Step 7 wrote that rule and moved two
    files; these stayed bound to a 640px viewport, so a touch tablet or a touch laptop got the
    36px control. A fine pointer keeps 36, which clears 2.5.8 (24x24) with room. */

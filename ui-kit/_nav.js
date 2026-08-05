@@ -17,6 +17,7 @@ window.KIT_NAV = [
   {group: "Atoms", name: "button", file: "button.html", label: "Buttons", path: "components/button.css"},
   {group: "Atoms", name: "input", file: "input.html", label: "Fields and amounts", path: "components/input.css"},
   {group: "Atoms", name: "toggle", file: "toggle.html", label: "toggle", path: "components/toggle.css"},
+  {group: "Atoms", name: "chip", file: "chip.html", label: "chip", path: "components/chip.css"},
   {group: "Molecules", name: "skeleton", file: "skeleton.html", label: "Skeletons", path: "components/skeleton.css"},
   {group: "Molecules", name: "toc", file: "toc.html", label: "toc", path: "components/toc.css"},
   {group: "Molecules", name: "quick", file: "quick.html", label: "quick", path: "components/quick.css"},

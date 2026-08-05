@@ -519,6 +519,30 @@
       </div>
     </div>
   </dialog>
+
+  <div class="kit-subh">The quiet chip, in both rails it ships in</div>
+  <!--
+    ONE CONTROL, TWO CONTAINERS, AND THAT IS THE WHOLE POINT OF THE BLOCK.
+    Until 2026-08-05 this chip was drawn twice, by `.cmt-controls .seg button` in
+    components/comments.css and by `.ed-range button` in components/tabs.css, and
+    the four painted rules were the same declaration block byte for byte. Neither
+    file could take the other, so the control became `.chip` and both rails carry
+    the class.
+
+    A stand that showed one rail would be the same mistake `filters-toggle` made:
+    it is the document that puts two things side by side that lets a person see
+    they are one thing. So both are here, each inside the container that owns it,
+    because every rule in chip.css is scoped to `.app-case` and neither ground is
+    the chip's own: the sort segment stands in a `--bg-well` trough with a
+    hairline, the chart range stands on the section.
+
+    Markup copied verbatim from ui-visual/event-detail.html, container and all.
+  -->
+  <div class="cmt-controls">
+    <span>128 comments</span>
+    <span class="seg"><button type="button" class="chip sel">Newest</button><button class="chip" type="button">Top</button><button class="chip" type="button">Bettors</button></span>
+  </div>
+  <div class="ed-chart-foot"><div class="ed-range" role="group" aria-label="Time range"><button class="chip" type="button">1d</button><button class="chip" type="button">1w</button><button class="chip" type="button">1m</button><button type="button" class="chip sel">all</button></div></div>
 </section>
 </body>
 </html>

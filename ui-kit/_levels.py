@@ -514,6 +514,12 @@ RAISE = {
 # component whose containment is NOT empty, because then the arithmetic has an
 # answer of its own and a declaration is a second one.
 TRUE_ATOM = {
+    "chip": "one control and one shared modifier. `.chip` is a label a person picks "
+            "between, and `.sel` says which one is picked; there is nothing inside it and "
+            "nothing may be put inside it. The containers it stands in are somebody "
+            "else's - the `.seg` trough belongs to the comment controls, the `.ed-range` "
+            "rail to the chart head - which is the whole reason it needed a file rather "
+            "than a home in one of them",
     "button": "one control and three modifiers. It was five names and a size encoded in "
               "a place until 2026-08-05, and the migration is what makes this line "
               "sayable: `.btn` plus an emphasis, a size and an optional `.btn-block`, "

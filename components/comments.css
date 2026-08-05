@@ -1,7 +1,7 @@
 /* components/comments.css
    Component: comments. Classes: .cmt, .cmt-actions, .cmt-av, .cmt-badge, .cmt-body, .cmt-compose, .cmt-controls, .cmt-input, .cmt-list, .cmt-meta, .cmt-post, .cmt-signin, .cmt-text, .cmt-user, .reply, .seg.
 
-   Reads: --bg-control, --bg-pressed, --bg-prompt-hover, --bg-well, --border-brass, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-09, --tint-brass-16
+   Reads: --bg-control, --bg-pressed, --bg-prompt-hover, --bg-well, --border-brass, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-09
    Stand:  ui-kit/comments.html
    Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -81,10 +81,26 @@
    (the tab strip holds the thread, and the thread held a piece of the tab strip). The
    cycle is gone with the rules. `.seg` stands on 9 elements, every one inside
    `.cmt-controls`. */
-.cmt-controls .seg button{border-right:1px solid var(--border-hairline)}
-.cmt-controls .seg button:last-child{border-right:none}
+/* THE TWO GREY-LAYER RULES THAT STOOD HERE WERE DELETED, AND THE PROOF
+   INSTRUMENT IS WHAT FOUND THEM. They were
+   `.cmt-controls .seg button{border-right:1px solid var(--border-hairline)}`
+   and its `:last-child`, kept as the wireframe's divided segment. They never
+   reached the wireframes: `wireframes/` links no stylesheet from `components/`
+   and carries its own `.seg button{border-right:1px solid #999}` inline. The
+   only thing they ever did here was lose to the painted rule below them, at
+   (0,3,1) against (0,2,1).
+   When the chip left for components/chip.css the painted rule became
+   `.app-case .chip`, which is (0,2,0), and these WON. `snap.cjs` reported 45
+   screens and 180 elements changed: a 1px right border arrived on 90 chips and
+   every segment grew a pixel. A rule kept for a tree that cannot see it is a
+   rule waiting for the day something stops outranking it. */
 .app-case .cmt-controls .seg{order:-1;display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:1px solid var(--border-hairline);border-radius:var(--radius-10)}
-.app-case .cmt-controls .seg button{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
-.app-case .cmt-controls .seg button:hover{color:var(--text-primary)}
-.app-case .cmt-controls .seg button:active{background:var(--bg-pressed)}
-.app-case .cmt-controls .seg button.sel{background:var(--tint-brass-16);color:var(--text-brass);font-weight:var(--weight-bold)}
+/* THE CHIP INSIDE IT LEFT ON 2026-08-05 and this file keeps only the WELL that
+   holds it. The four painted rules that stood here were the same declaration
+   block, byte for byte, as `.ed-range button` in components/tabs.css: one
+   control drawn twice in two files, and neither file could take the other,
+   because a file that styles another component's classes is what S11 forbids.
+   The control is `.chip` now, in components/chip.css, and the 27 buttons here
+   carry the class in both trees. The two rules above it are the GREY layer,
+   unscoped and outranked in the paint, and they stay because the divided
+   segment is what the container looks like in the wireframes. */

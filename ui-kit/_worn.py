@@ -347,10 +347,17 @@ KINDS = [
      "catnav", "selector", "one graphite chip family, with a lighter press than this one"),
     ("chip, a quick amount", set(), {"quick"},
      "input", "selector", "it sets the value of the field beside it, so it belongs to the field"),
-    ("chip, a sort segment", set(), {"seg"},
-     "comments", "selector", "the same chip family, in the thread's own switcher"),
-    ("chip, a chart range", set(), {"ed-range"},
-     "tabs", "selector", "the range rail is a tab strip that happens to select a period"),
+    # TWO ROWS BECAME ONE ON 2026-08-05, and this census is the instrument that
+    # said they should. It had already filed the sort segment and the chart range
+    # as one ROLE with one face and two names, 27 placements and 36; the css
+    # said the rest, because `.cmt-controls .seg button` in comments.css and
+    # `.ed-range button` in tabs.css were the same declaration block byte for
+    # byte. Matched on the CLASS the buttons now carry rather than on either
+    # parent, because the control is the class and the two troughs belong to the
+    # components that hold them.
+    ("chip, quiet, in a rail", {"chip"}, set(),
+     "chip", "selector", "one control the product picks a value with, in the two rails "
+                         "that hold it: the comment sorter and the chart range"),
     ("tab", {"rules-tab"}, {"tabs"},
      "tabs", "selector", "a tab is a selector, and the selected one is a state and not a press"),
     ("bottom nav slot", set(), {"bottom-nav"},

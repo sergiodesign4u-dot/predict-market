@@ -1,0 +1,69 @@
+/* components/chip.css
+   Component: chip. Classes: .chip.
+
+   Reads:
+   Stand:  ui-kit/chip.html
+   Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+/* ============================================================================
+   TWO FILES WERE DRAWING ONE CONTROL, AND NOT NEARLY: IDENTICALLY. On
+   2026-08-05 `components/comments.css` styled `.cmt-controls .seg button` and
+   `components/tabs.css` styled `.ed-range button`, and the four painted rules
+   were the same declaration block twice, byte for byte, down to the order of
+   the properties:
+
+       border:0; background:transparent; color:var(--text-muted);
+       border-radius:var(--radius-10); padding:var(--space-4) var(--space-12);
+       font-family:var(--font-body); font-weight:var(--weight-semibold);
+       font-size:var(--text-12); cursor:pointer;
+       transition:background var(--dur-quick) ease, color var(--dur-quick) ease
+
+   plus the same hover, the same press and the same `.sel`. The browser agreed
+   before the files were read: `ui-kit/_states/index.json` had already measured
+   both at `rgba(0,0,0,0)` ground, `rgb(164,157,143)` edge and ink, 10px corner,
+   and both selected states at `rgba(199,162,78,.16)` on `rgb(215,172,83)`.
+
+   NEITHER FILE COULD TAKE THE OTHER. A file that styles another component's
+   classes is what S11 forbids, and `.seg` belongs to the comment controls while
+   `.ed-range` belongs to the chart head. So the control gets the shape the
+   buttons got in `447d1fb`: ONE MARKER CLASS on the element, and the markup of
+   both trees moved in the same change as the stylesheet. 63 buttons per tree,
+   9 screens each family.
+
+   WHAT DID NOT COME WITH IT. `.cmt-controls .seg button{border-right:...}` and
+   its `:last-child` are the GREY layer: unscoped, outranked by `.app-case` in
+   the paint, and drawing the divided segment the wireframes still show. They
+   stay in `comments.css`, with the container, because that is what they are
+   about.
+
+   AND THIS IS ONE OF FOUR, NOT THE FOUR. `.load-more` and
+   `.feed-inner .cat-nav button` are the OTHER chip, a raised one on `--bg-chip`
+   with a bevel edge at 14px, and they are four declarations apart rather than
+   zero (padding 24 against 20, min-height 44 against 0, a letter-spacing, an
+   inset groove). `.quick button` is a third face and the pill `.cat-nav button`
+   outside `.feed-inner` a fourth. This file is where they come when each is
+   measured and moved on its own evidence, and backlog S41 owns the rest.
+   ============================================================================ */
+
+/* NO GREY LAYER HERE, AND THAT IS A DECISION THIS PASS PAID FOR. The draft of
+   this file opened with `.chip{cursor:pointer}`, copied from the note
+   components/quick.css carries about keeping an unscoped first layer. It would
+   have applied to nothing: the only documents that carry `.chip` and load this
+   stylesheet are the painted screens, the specimen and the frozen kit, and all
+   three put it inside `.app-case`. The nine grey screens that carry it link
+   nothing from components/ at all.
+   The reason for leaving it out is written in components/comments.css, where
+   two rules of exactly that kind had been sitting since the file was cut. They
+   never reached the wireframes either, and the day the chip's painted rule
+   dropped from (0,3,1) to (0,2,0) they stopped losing and started painting: 45
+   screens and 180 elements, found by snap.cjs and by nothing else. */
+.app-case .chip{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
+.app-case .chip:hover{color:var(--text-primary)}
+.app-case .chip:active{background:var(--bg-pressed)}
+/* A SELECTED CHIP IS A TINT, NOT A FILL, which is the rule DESIGN.md states
+   under Chips and the One-Accent Rule states again: brass carries identity, the
+   active state and primary CTAs only. `.sel` is the shared modifier
+   `ui-kit/_levels.py` declares, so the state is a class rather than a pseudo,
+   because the selection survives the pointer leaving. */
+.app-case .chip.sel{background:var(--tint-brass-16);color:var(--text-brass);font-weight:var(--weight-bold)}

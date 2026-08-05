@@ -393,7 +393,9 @@
       "section": "extra",
       "label": "Filter panel, open, with its reverse row",
       "component": "filters",
-      "also": ["toggle"],
+      "also": [
+        "toggle"
+      ],
       "title": "Filter panel, open, and the switch at its foot",
       "width": 260,
       "note": "The menu as it ships: a disclosure, a list of labelled radios, and a reverse-sort switch at the foot. `filters-sort` shows it closed, cut from the frozen kit, which is why no stand held the panel and the switch in one document until 2026-08-05."
@@ -862,6 +864,21 @@
       "title": "Reconcile box, won",
       "width": 420,
       "state": "Kept inside the overlay: three of the four rules that draw this box are scoped under .app-case, .outcome-dialog and .win-dialog."
+    },
+    {
+      "id": "chip-rails",
+      "canvas": false,
+      "from": "specimens.extra.html",
+      "section": "extra",
+      "label": "The quiet chip, in both rails it ships in",
+      "component": "chip",
+      "also": [
+        "comments",
+        "tabs"
+      ],
+      "title": "The quiet chip, in both rails it ships in",
+      "width": 620,
+      "note": "One control, two containers, which is the whole point of the block. Until 2026-08-05 this chip was drawn twice, by `.cmt-controls .seg button` in comments.css and by `.ed-range button` in tabs.css, and the four painted rules were the same declaration block byte for byte. Every rule in chip.css is scoped to `.app-case` and neither ground is the chip's own, so both rails are shown whole: the sort segment stands in a --bg-well trough with a hairline, the chart range on the section."
     }
   ]
 }
