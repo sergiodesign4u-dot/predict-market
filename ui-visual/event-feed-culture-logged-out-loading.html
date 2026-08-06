@@ -290,11 +290,11 @@ document.addEventListener('click', function (e) {
       </div>
     <div class="cat-condensed" aria-hidden="true">
         <ul>
-          <li aria-current="page"><a href="event-feed.html"><button type="button">Trending</button></a></li>
-          <li><a href="event-feed-politics.html"><button type="button">Politics</button></a></li>
-          <li><a href="event-feed-crypto.html"><button type="button">Crypto</button></a></li>
-          <li><a href="event-feed-culture.html"><button type="button">Culture</button></a></li>
-          <li><a href="event-feed-general.html"><button type="button">General</button></a></li>
+          <li aria-current="page"><a href="event-feed.html"><button class="chip chip-quiet" type="button">Trending</button></a></li>
+          <li><a href="event-feed-politics.html"><button class="chip chip-quiet" type="button">Politics</button></a></li>
+          <li><a href="event-feed-crypto.html"><button class="chip chip-quiet" type="button">Crypto</button></a></li>
+          <li><a href="event-feed-culture.html"><button class="chip chip-quiet" type="button">Culture</button></a></li>
+          <li><a href="event-feed-general.html"><button class="chip chip-quiet" type="button">General</button></a></li>
         </ul>
       </div>
     </header>
@@ -752,7 +752,7 @@ document.addEventListener('click', function (e) {
       <div>
         <span class="field-label">Amount to add</span>
         <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9.$]*" value="$20.00" aria-label="Amount to add"></div>
-        <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
+        <div class="quick"><button class="chip chip-amount" type="button">$10</button><button type="button" class="chip chip-amount sel">$20</button><button class="chip chip-amount" type="button">$50</button><button class="chip chip-amount" type="button">$100</button></div>
       </div>
       <div><span class="field-label">Pay with</span>
       <div class="widget-box">Transak payment widget (card to USDC)</div></div>

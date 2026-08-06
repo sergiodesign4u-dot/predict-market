@@ -23,6 +23,8 @@
    "btn-block",
    "btn-lg",
    "btn-primary",
+   "chip",
+   "chip-amount",
    "device",
    "field-label",
    "fine",
@@ -191,6 +193,7 @@
    "components/base.css",
    "components/betpanel.css",
    "components/button.css",
+   "components/chip.css",
    "components/dialog.css",
    "components/fonts.css",
    "components/input.css",
@@ -203,7 +206,7 @@
    "ui-kit/specimens/betpanel-sheet.html",
    "ui-kit/specimens/button-census.html"
   ],
-  "sha": "87aea97df0e05386"
+  "sha": "d047f0369fd6be7e"
  },
  {
   "component": "betpanel",
@@ -233,6 +236,8 @@
    "btn-primary",
    "card",
    "card-body",
+   "chip",
+   "chip-amount",
    "compact",
    "device",
    "ed-layout",
@@ -411,6 +416,7 @@
    "components/betpanel.css",
    "components/button.css",
    "components/card.css",
+   "components/chip.css",
    "components/dialog.css",
    "components/feed.css",
    "components/fonts.css",
@@ -425,7 +431,7 @@
    "ui-kit/specimens/betpanel-more.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "ccd0cc37b3ba856e"
+  "sha": "79b0e95d7855241f"
  },
  {
   "component": "button",
@@ -625,7 +631,7 @@
    "ui-kit/specimens/button-matrix.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "2ad118fe63903658"
+  "sha": "f1c1599d657896c0"
  },
  {
   "component": "button",
@@ -823,7 +829,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "5cb5646c1bd1856f"
+  "sha": "4b1386d4c865b221"
  },
  {
   "component": "button",
@@ -1023,7 +1029,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "2c41db10b9dde076"
+  "sha": "b7c1bc5614a62776"
  },
  {
   "component": "button",
@@ -1251,7 +1257,7 @@
    "ui-kit/specimens/profile-identity.html",
    "ui-kit/specimens/state-empty-filters.html"
   ],
-  "sha": "929bae0b7d0722d8"
+  "sha": "9a08d06bd2e14ec0"
  },
  {
   "component": "button",
@@ -1482,7 +1488,7 @@
    "ui-kit/specimens/state-empty-filters.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "e84e11edf3d690f1"
+  "sha": "202efff371d50b80"
  },
  {
   "component": "card",
@@ -2050,7 +2056,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "3eca3e053f2e5014"
+  "sha": "3a4877cafb990820"
  },
  {
   "component": "catnav",
@@ -3127,12 +3133,13 @@
  {
   "component": "chip",
   "id": "g1",
-  "el": "button.chip.sel",
+  "el": "button.chip.chip-rail.sel",
   "scope": "",
   "specimen": "chip-rails",
   "classes": [
    "app-case",
    "chip",
+   "chip-rail",
    "cmt-controls",
    "ed-chart-foot",
    "ed-range",
@@ -3291,7 +3298,7 @@
    "comments-thread"
   ],
   "covers": [
-   "button.chip.sel"
+   "button.chip.chip-rail.sel"
   ],
   "sources": [
    "components/base.css",
@@ -3309,17 +3316,18 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "7523ddef6f31ecd8"
+  "sha": "ad4915d06d1b8b51"
  },
  {
   "component": "chip",
   "id": "g2",
-  "el": "button.chip",
+  "el": "button.chip.chip-rail",
   "scope": "",
   "specimen": "chip-rails",
   "classes": [
    "app-case",
    "chip",
+   "chip-rail",
    "cmt-controls",
    "ed-chart-foot",
    "ed-range",
@@ -3478,7 +3486,7 @@
    "comments-thread"
   ],
   "covers": [
-   "button.chip"
+   "button.chip.chip-rail"
   ],
   "sources": [
    "components/base.css",
@@ -3496,7 +3504,439 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "7523ddef6f31ecd8"
+  "sha": "ad4915d06d1b8b51"
+ },
+ {
+  "component": "chip",
+  "id": "g3",
+  "el": "button.chip.chip-amount",
+  "scope": "dialog.app-dialog",
+  "specimen": "dialog-shared",
+  "classes": [
+   "amount-input",
+   "amount-row",
+   "app-case",
+   "app-dialog",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
+   "chip",
+   "chip-amount",
+   "field-label",
+   "fine",
+   "ic",
+   "icon-btn",
+   "icon-btn-photo",
+   "kit-dlgs",
+   "protect",
+   "prov-apple",
+   "prov-google",
+   "prov-x",
+   "quick",
+   "sel",
+   "sheet-body",
+   "sheet-close",
+   "sheet-head",
+   "sheet-sub",
+   "signin-dialog",
+   "widget-box"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "w": 53,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "w": 53,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "w": 53,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 53,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 53,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 53,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 53,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 53,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "also": [
+   "quick-amounts",
+   "input-states",
+   "event-detail",
+   "betpanel-sheet"
+  ],
+  "covers": [
+   "button.chip.chip-amount @dialog.app-dialog",
+   "button.chip.chip-amount @.bet-panel",
+   "button.chip.chip-amount @dialog.bet-sheet"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/button.css",
+   "components/chip.css",
+   "components/dialog.css",
+   "components/fonts.css",
+   "components/iconbtn.css",
+   "components/input.css",
+   "components/notice.css",
+   "components/quick.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/betpanel-sheet.html",
+   "ui-kit/specimens/dialog-shared.html",
+   "ui-kit/specimens/event-detail.html",
+   "ui-kit/specimens/input-states.html",
+   "ui-kit/specimens/quick-amounts.html"
+  ],
+  "sha": "a74c15796ae1a5e2"
+ },
+ {
+  "component": "chip",
+  "id": "g4",
+  "el": "button.chip.chip-amount.sel",
+  "scope": "dialog.app-dialog",
+  "specimen": "dialog-shared",
+  "classes": [
+   "amount-input",
+   "amount-row",
+   "app-case",
+   "app-dialog",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
+   "chip",
+   "chip-amount",
+   "field-label",
+   "fine",
+   "ic",
+   "icon-btn",
+   "icon-btn-photo",
+   "kit-dlgs",
+   "protect",
+   "prov-apple",
+   "prov-google",
+   "prov-x",
+   "quick",
+   "sel",
+   "sheet-body",
+   "sheet-close",
+   "sheet-head",
+   "sheet-sub",
+   "signin-dialog",
+   "widget-box"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "also": [
+   "quick-amounts",
+   "input-states",
+   "event-detail",
+   "betpanel-sheet"
+  ],
+  "covers": [
+   "button.chip.chip-amount.sel @dialog.app-dialog",
+   "button.chip.chip-amount.sel @.bet-panel",
+   "button.chip.chip-amount.sel @dialog.bet-sheet"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/button.css",
+   "components/chip.css",
+   "components/dialog.css",
+   "components/fonts.css",
+   "components/iconbtn.css",
+   "components/input.css",
+   "components/notice.css",
+   "components/quick.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/betpanel-sheet.html",
+   "ui-kit/specimens/dialog-shared.html",
+   "ui-kit/specimens/event-detail.html",
+   "ui-kit/specimens/input-states.html",
+   "ui-kit/specimens/quick-amounts.html"
+  ],
+  "sha": "a74c15796ae1a5e2"
  },
  {
   "component": "cookie-consent",
@@ -5712,6 +6152,8 @@
    "btn-md",
    "btn-primary",
    "btn-secondary",
+   "chip",
+   "chip-amount",
    "field-label",
    "fine",
    "ic",
@@ -5886,6 +6328,7 @@
   "sources": [
    "components/base.css",
    "components/button.css",
+   "components/chip.css",
    "components/dialog.css",
    "components/fonts.css",
    "components/iconbtn.css",
@@ -5899,7 +6342,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "85148197dce93696"
+  "sha": "32561eeda205d8bc"
  },
  {
   "component": "dialog",
@@ -7414,6 +7857,8 @@
    "btn-ghost",
    "btn-xs",
    "cat-condensed",
+   "chip",
+   "chip-quiet",
    "desk-only",
    "device",
    "dropdown",
@@ -7588,6 +8033,7 @@
   "sources": [
    "components/base.css",
    "components/button.css",
+   "components/chip.css",
    "components/fonts.css",
    "components/header.css",
    "components/iconbtn.css",
@@ -7599,7 +8045,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "bbf6275acc83d91b"
+  "sha": "637692917606d06d"
  },
  {
   "component": "header",
@@ -7623,6 +8069,8 @@
    "btn-ghost",
    "btn-xs",
    "cat-condensed",
+   "chip",
+   "chip-quiet",
    "desk-only",
    "device",
    "dropdown",
@@ -7794,6 +8242,7 @@
   "sources": [
    "components/base.css",
    "components/button.css",
+   "components/chip.css",
    "components/fonts.css",
    "components/header.css",
    "components/iconbtn.css",
@@ -7804,7 +8253,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "ca3f3b0cf6a61244"
+  "sha": "65bc5fbcbe23692a"
  },
  {
   "component": "header",
@@ -7828,6 +8277,8 @@
    "btn-ghost",
    "btn-xs",
    "cat-condensed",
+   "chip",
+   "chip-quiet",
    "desk-only",
    "device",
    "dropdown",
@@ -7999,6 +8450,7 @@
   "sources": [
    "components/base.css",
    "components/button.css",
+   "components/chip.css",
    "components/fonts.css",
    "components/header.css",
    "components/iconbtn.css",
@@ -8009,7 +8461,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "ca3f3b0cf6a61244"
+  "sha": "65bc5fbcbe23692a"
  },
  {
   "component": "hero",
@@ -9242,7 +9694,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "f64c300970bf17a7"
+  "sha": "927555bd4af95340"
  },
  {
   "component": "iconbtn",
@@ -9452,6 +9904,8 @@
    "btn-md",
    "btn-primary",
    "btn-secondary",
+   "chip",
+   "chip-amount",
    "field-label",
    "fine",
    "ic",
@@ -9632,6 +10086,7 @@
   "sources": [
    "components/base.css",
    "components/button.css",
+   "components/chip.css",
    "components/dialog.css",
    "components/fonts.css",
    "components/iconbtn.css",
@@ -9647,7 +10102,7 @@
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "9013de41c06db7df"
+  "sha": "7ba80f2b4a63b91d"
  },
  {
   "component": "iconbtn",
@@ -9861,6 +10316,8 @@
    "btn-primary",
    "card",
    "card-body",
+   "chip",
+   "chip-amount",
    "device",
    "ed-actions",
    "ed-cat",
@@ -10048,6 +10505,7 @@
    "components/betpanel.css",
    "components/button.css",
    "components/card.css",
+   "components/chip.css",
    "components/dialog.css",
    "components/event-detail.css",
    "components/feed.css",
@@ -10065,7 +10523,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "e10cf5f79bdb504f"
+  "sha": "c05ce213522e9316"
  },
  {
   "component": "iconbtn",
@@ -10529,7 +10987,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "802c21f9b1c48e57"
+  "sha": "dfe06b8cad62cdff"
  },
  {
   "component": "input",
@@ -10547,6 +11005,8 @@
    "btn-md",
    "btn-primary",
    "btn-secondary",
+   "chip",
+   "chip-amount",
    "field-label",
    "fine",
    "ic",
@@ -10722,6 +11182,7 @@
   "sources": [
    "components/base.css",
    "components/button.css",
+   "components/chip.css",
    "components/dialog.css",
    "components/fonts.css",
    "components/iconbtn.css",
@@ -10736,7 +11197,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "df171aaa2b00cc55"
+  "sha": "099ac8be75e3e57a"
  },
  {
   "component": "input",
@@ -10750,6 +11211,8 @@
    "amount-row",
    "app-case",
    "app-dialog",
+   "chip",
+   "chip-amount",
    "field-label",
    "quick",
    "sel",
@@ -10908,6 +11371,7 @@
   ],
   "sources": [
    "components/base.css",
+   "components/chip.css",
    "components/dialog.css",
    "components/fonts.css",
    "components/input.css",
@@ -10918,7 +11382,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "d4779d10d44ae66c"
+  "sha": "50172114dce58b95"
  },
  {
   "component": "input",
@@ -10932,6 +11396,8 @@
    "amount-row",
    "app-case",
    "app-dialog",
+   "chip",
+   "chip-amount",
    "field-label",
    "quick",
    "sel",
@@ -11088,6 +11554,7 @@
   ],
   "sources": [
    "components/base.css",
+   "components/chip.css",
    "components/dialog.css",
    "components/fonts.css",
    "components/input.css",
@@ -11098,7 +11565,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "d4779d10d44ae66c"
+  "sha": "50172114dce58b95"
  },
  {
   "component": "input",
@@ -11127,6 +11594,8 @@
    "btn-primary",
    "card",
    "card-body",
+   "chip",
+   "chip-amount",
    "device",
    "ed-actions",
    "ed-cat",
@@ -11314,6 +11783,7 @@
    "components/betpanel.css",
    "components/button.css",
    "components/card.css",
+   "components/chip.css",
    "components/dialog.css",
    "components/event-detail.css",
    "components/feed.css",
@@ -11332,7 +11802,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "0e8fa1083644d9dc"
+  "sha": "ac522777dca23672"
  },
  {
   "component": "input",
@@ -11358,6 +11828,8 @@
    "btn-block",
    "btn-lg",
    "btn-primary",
+   "chip",
+   "chip-amount",
    "device",
    "field-label",
    "fine",
@@ -11522,6 +11994,7 @@
    "components/base.css",
    "components/betpanel.css",
    "components/button.css",
+   "components/chip.css",
    "components/dialog.css",
    "components/fonts.css",
    "components/input.css",
@@ -11533,7 +12006,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "6740de559c797bdf"
+  "sha": "d09e63ea37493cf2"
  },
  {
   "component": "loadmore",
@@ -11941,6 +12414,8 @@
    "btn-ghost",
    "btn-xs",
    "cat-condensed",
+   "chip",
+   "chip-quiet",
    "desk-only",
    "device",
    "dropdown",
@@ -12005,6 +12480,7 @@
   "sources": [
    "components/base.css",
    "components/button.css",
+   "components/chip.css",
    "components/fonts.css",
    "components/header.css",
    "components/iconbtn.css",
@@ -12015,7 +12491,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "ca3f3b0cf6a61244"
+  "sha": "65bc5fbcbe23692a"
  },
  {
   "component": "navitem",
@@ -12380,376 +12856,6 @@
    "ui-kit/specimens/navitem-slots.html"
   ],
   "sha": "963acf825e38fcba"
- },
- {
-  "component": "quick",
-  "id": "g1",
-  "el": "button",
-  "scope": "dialog.app-dialog",
-  "specimen": "quick-amounts",
-  "classes": [
-   "app-case",
-   "app-dialog",
-   "kit-dlgs",
-   "quick",
-   "sel",
-   "sheet-body"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 53,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
-    "w": 53,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
-    "w": 53,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 53,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 53,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 53,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 53,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 53,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "dialog-shared",
-   "input-states",
-   "betpanel-sheet"
-  ],
-  "covers": [
-   "button @dialog.app-dialog",
-   "button @dialog.bet-sheet"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/dialog.css",
-   "components/fonts.css",
-   "components/quick.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/betpanel-sheet.html",
-   "ui-kit/specimens/dialog-shared.html",
-   "ui-kit/specimens/input-states.html",
-   "ui-kit/specimens/quick-amounts.html"
-  ],
-  "sha": "368473bea497ea60"
- },
- {
-  "component": "quick",
-  "id": "g2",
-  "el": "button.sel",
-  "scope": "dialog.app-dialog",
-  "specimen": "quick-amounts",
-  "classes": [
-   "app-case",
-   "app-dialog",
-   "kit-dlgs",
-   "quick",
-   "sel",
-   "sheet-body"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 49,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 49,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 49,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 49,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 49,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 49,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 49,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 49,
-    "h": 60,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "dialog-shared",
-   "input-states",
-   "betpanel-sheet"
-  ],
-  "covers": [
-   "button.sel @dialog.app-dialog",
-   "button.sel @dialog.bet-sheet"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/dialog.css",
-   "components/fonts.css",
-   "components/quick.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/betpanel-sheet.html",
-   "ui-kit/specimens/dialog-shared.html",
-   "ui-kit/specimens/input-states.html",
-   "ui-kit/specimens/quick-amounts.html"
-  ],
-  "sha": "368473bea497ea60"
  },
  {
   "component": "related",
@@ -13130,6 +13236,7 @@
    "card",
    "card-body",
    "chip",
+   "chip-rail",
    "cmt",
    "cmt-actions",
    "cmt-av",
@@ -13266,7 +13373,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "944459d7f534cc4b"
+  "sha": "d915ff3c3c3f3839"
  },
  {
   "component": "tabs",
@@ -13287,6 +13394,7 @@
    "card",
    "card-body",
    "chip",
+   "chip-rail",
    "cmt",
    "cmt-actions",
    "cmt-av",
@@ -13459,7 +13567,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "944459d7f534cc4b"
+  "sha": "d915ff3c3c3f3839"
  },
  {
   "component": "tabs",
@@ -13480,6 +13588,7 @@
    "card",
    "card-body",
    "chip",
+   "chip-rail",
    "cmt",
    "cmt-actions",
    "cmt-av",
@@ -13652,7 +13761,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "944459d7f534cc4b"
+  "sha": "d915ff3c3c3f3839"
  },
  {
   "component": "tabs",
@@ -15764,7 +15873,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-more.html"
   ],
-  "sha": "ca9a221662c33b1c"
+  "sha": "fcac3f67aa345690"
  },
  {
   "component": "yesno",
@@ -15957,7 +16066,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "816383780fbd2908"
+  "sha": "7c78797d05e2b541"
  },
  {
   "component": "yesno",
@@ -16150,7 +16259,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "816383780fbd2908"
+  "sha": "7c78797d05e2b541"
  },
  {
   "component": "yesno",
@@ -16351,7 +16460,7 @@
    "ui-kit/specimens/options-multi.html",
    "ui-kit/specimens/yesno-pick.html"
   ],
-  "sha": "5e18cc60280d0ffd"
+  "sha": "26944007eaacea52"
  },
  {
   "component": "yesno",
@@ -16548,7 +16657,7 @@
    "ui-kit/specimens/options-multi.html",
    "ui-kit/specimens/yesno-pick.html"
   ],
-  "sha": "a929409dfd0034bc"
+  "sha": "1bed83a8ef8b6a10"
  },
  {
   "component": "yesno",

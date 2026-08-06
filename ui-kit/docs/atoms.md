@@ -781,6 +781,57 @@ to one - is the next pass, and it is now a move at zero.**
 
 ---
 
+## The chip partition, two files of three: 8 to 7
+
+With S35 answered the chip family could finally move, and two of its three region files gave up
+their chips. `components/chip.css` held ONE face and the atom has four; it now holds three of
+them and the one rule they all have to agree on.
+
+    rail     transparent, no edge, a 10 corner - a segmented control on a plate
+    quiet    transparent on a TRANSPARENT 1px band, a pill - a scrolling strip in
+             the header, where a ground would make a row of eight read as eight buttons
+    amount   --bg-control on a hairline, a 10 corner - a form control in a sheet
+    nav      --bg-chip on --bevel-notice - still in components/catnav.css, next pass
+
+**Selected is one declaration now, for every face and for both ways the product says it.** A rail
+chip and an amount carry `.sel`; a category chip sits inside `li[aria-current="page"]`, which is
+the correct thing for navigation and is not going to be replaced by a class. Two selectors, one
+rule, where there were four rules and six spellings a week ago.
+
+**525 snapshots, 39 differ, 156 elements, and ONE property: `font-family`** - the `--font-body`
+role narrowing a fallback chain from `"DM Sans", system-ui, sans-serif` to `"DM Sans", sans-serif`,
+which decides only what would happen if a font served from this repo failed to load.
+
+**The first cut of it was wrong and the proof said so in one line.** `.chip` was both the atom
+and the rail face, so the moment every chip in the product carried `.chip`, the rail's border-0,
+its transparent ground, its 4/12 padding and its semibold all landed on 480 amounts and 525
+condensed chips: **722 elements, and the quick row changed height on 39 screens.** The fix is the
+one this map keeps arriving at - **a base class is the atom or it is a face, never both** - so the
+rail became `.chip-rail` and `.chip` kept two declarations that every chip shares.
+
+    41 the atom map   7 control atom(s) in 14 file-slot(s): distance 7, and it goes to 0
+                      chip        1358  3 kind(s), 3 file(s)   <- was 4
+                      navitem     1019  3 kind(s), 2 file(s)
+                      button       911  7 kind(s), 5 file(s)
+                      iconbutton  1361  6 kind(s), 1 file(s)
+                      outcome      272  2 kind(s), 1 file(s)
+
+**`components/quick.css` is now a row and nothing else**: a flex line that wraps, and a bet panel
+pushing it to the right. That is the shape S41 describes about `loadmore`, and this file has
+joined it - a component that is one layout rule for one row is not a component.
+
+**And `header` did not drop out, for the reason `bottomnav` did not.** Every rule that draws a
+chip has left it; what still counts is `.cat-condensed a{text-decoration:none}`, the link wrapper
+around each chip. It is `<a><button>` again - `ui-kit/docs/defects.md` row 78, now on a second
+control - and the metric is right to count it until somebody decides what that element is.
+
+**One thing was decided rather than carried and no snapshot can see it.** The deposit sheet's
+amounts answered a pointer and the bet panel's, the same face on the same control, answered
+nothing. The face took the hover. It lives entirely inside `:hover`, so the state gallery is the
+only instrument in this repo that can check it.
+
+---
+
 ## The decision this document no longer has open
 
 - ~~**Is a social mark a `navitem` or an `iconbutton`?**~~ **Answered 2026-08-06 and the

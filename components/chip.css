@@ -1,9 +1,9 @@
 /* components/chip.css
-   Component: chip. Classes: .chip.
+   Component: chip. Classes: .chip, .chip-amount, .chip-quiet, .chip-rail.
 
    Reads:
    Stand:  ui-kit/chip.html
-   Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
+   Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 /* ============================================================================
@@ -58,9 +58,9 @@
    never reached the wireframes either, and the day the chip's painted rule
    dropped from (0,3,1) to (0,2,0) they stopped losing and started painting: 45
    screens and 180 elements, found by snap.cjs and by nothing else. */
-.app-case .chip{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
-.app-case .chip:hover{color:var(--text-primary)}
-.app-case .chip:active{background:var(--bg-pressed)}
+.app-case .chip-rail{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
+.app-case .chip-rail:hover{color:var(--text-primary)}
+.app-case .chip-rail:active{background:var(--bg-pressed)}
 /* A SELECTED CHIP IS A TINT, NOT A FILL, which is the rule DESIGN.md states
    under Chips and the One-Accent Rule states again: brass carries identity, the
    active state and primary CTAs only. `.sel` is the shared modifier
@@ -70,4 +70,57 @@
    category chips wear. No edge, because this chip has none at rest and the recipe colours what
    a chip already has rather than adding a part - giving it a 1px band here would move 63 boxes
    by 2px to say something the ground is already saying. */
-.app-case .chip.sel{background:var(--tint-brass-09);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
+
+/* ================================ the atom gets its faces, 2026-08-06 (S35) ==
+   THIS FILE HELD ONE FACE AND THE ATOM HAS FOUR. `ui-kit/docs/atoms.md` counts
+   1,358 placements of a control that carries a value and is picked between, in
+   four files, and S35 has just settled the one thing they all have to agree on:
+   what CHOSEN looks like. That agreement is the reason to move them, and it is
+   written once below instead of four times.
+
+   THE FACES ARE ANSWERS TO A SURFACE, which is what every atom on this map has
+   turned out to be:
+
+     rail      transparent, no edge, a 10 corner - a segmented control on a plate
+     quiet     transparent on a transparent 1px band, a pill - a scrolling strip
+               in the header, where a ground would make a row of eight read as
+               eight buttons
+     amount    --bg-control on a hairline, a 10 corner - a form control in a
+               sheet, where a chip is one of the things you fill in
+
+   THE 1px TRANSPARENT BAND ON `quiet` IS NOT DECORATION and is the same trick
+   components/button.css uses: the box is the SIZE's answer, so a chip does not
+   grow by 2px at the moment it is chosen and given a brass edge.
+
+   AND SELECTED IS ONE DECLARATION NOW, for every face and for both ways the
+   product says it. A rail chip and an amount carry `.sel`; a category chip is
+   inside `li[aria-current="page"]`, which is the correct thing for navigation
+   and is not going to be replaced by a class. Two selectors, one rule. */
+.app-case .chip{cursor:pointer;font-family:var(--font-body)}
+.app-case .chip-quiet{display:inline-flex;align-items:center;min-height:0;background:transparent;border:1px solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-12)}
+.app-case .chip-quiet:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
+.app-case .chip-amount{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
+.app-case .chip-amount{transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+/* The amount answers a pointer, and both places it stands do now. The deposit
+   sheet had this hover and the bet panel had none - the same face on the same
+   control, one scope answering and the other silent, which is not a decision
+   anybody took. `:not(.sel)` on both, because a chosen chip still answers
+   nothing anywhere in this product and that is backlog S38. */
+.app-case .chip-amount:hover:not(.sel){border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)}
+/* THE CHOSEN CHIP, ONE RULE FOR THE WHOLE FAMILY. --tint-brass-09 inside a
+   --tint-brass-45 edge with --text-brass-chip, bold, and a halo that is a glow
+   with negative spread rather than a lift, so there is nothing here to flatten
+   on a press. The edge is written where the face HAS one: the rail chip is
+   borderless at rest and stays borderless, because the recipe colours what a
+   chip already has and adds no parts. */
+.app-case .chip.sel,.app-case [aria-current="page"] .chip-quiet{background:var(--tint-brass-09);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
+.app-case .chip-amount.sel,.app-case [aria-current="page"] .chip-quiet{border-color:var(--tint-brass-45)}
+/* The press, and each of these has to out-reach the chosen rule above it or it
+   would be invisible on exactly the chip a person is standing on - which on a
+   category strip is the one most likely to be tapped, because tapping it is how
+   you get back to the top of it. Only the ground moves, so a chosen chip keeps
+   its brass edge, its brass label and its halo. */
+.app-case .chip-amount:active:not(.sel),.app-case [aria-current="page"] .chip-quiet:active,.app-case .chip-quiet:active{background:var(--bg-pressed)}
+@media(pointer:coarse){
+  .app-case .chip-quiet{min-height:var(--control-44)}
+}

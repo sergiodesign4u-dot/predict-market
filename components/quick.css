@@ -30,16 +30,27 @@
    is kept for the reason the rest of the system keeps its first layer: the
    painted rules below are all scoped, and an unscoped element still has to be a
    chip rather than a browser button. */
+/* THE AMOUNTS LEFT THIS FILE ON 2026-08-06 for components/chip.css, where they are
+   `.chip.chip-amount`: --bg-control on a hairline inside a 10 corner, which is the face a
+   chip wears when it is one of the things you fill in on a sheet. The deposit dialog's copy
+   and the bet panel's measured identical at rest and are one face; what had separated them
+   was the CHOSEN state, and S35 settled that the day before.
+   WHAT IS LEFT IN THIS FILE IS A ROW, and that is now the whole of it: a flex line that
+   wraps, and a bet panel pushing it to the right. A file holding one layout rule for one
+   row is the shape ui-kit/docs/backlog.md S41 describes about loadmore, and this file has
+   just joined that row.
+   ONE THING WAS DECIDED RATHER THAN CARRIED, and it lives entirely inside :hover, so no
+   before-and-after in this repo can see it. The deposit sheet's amounts answered a
+   pointer - a brass edge, a brass label, --bg-control-hover - and the bet panel's, the
+   same face on the same control, answered nothing at all. One scope having a hover and
+   the other not is not a decision anybody took, so the face takes the hover and both
+   scopes now answer. It stays `:not(.sel)`: a chosen chip still answers nothing, which
+   is S38 and is not this pass's to fix. The state gallery is what checks this, because
+   it photographs all four faces and a snapshot photographs one. */
 .quick{display:flex;gap:var(--space-8);flex-wrap:wrap}
-.quick button{border:1px solid var(--border-hairline);padding:var(--space-8) var(--space-8);font-size:var(--text-12);cursor:pointer}
-.quick button.sel{font-weight:var(--weight-bold)}
 
 /* ----------------------------------------------------- inside a dialog -----*/
 dialog.app-dialog .quick{display:flex;gap:var(--space-8);flex-wrap:wrap}
-dialog.app-dialog .quick button{padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
-dialog.app-dialog .quick button{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
-dialog.app-dialog .quick button{cursor:pointer;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
-dialog.app-dialog .quick button:hover:not(.sel){border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)}
 /* A SELECTED CHIP IS A TINT, AND A SOLID BRASS FILL IS THE PRIMARY ACTION'S OWN
    FACE. This rule painted the chosen quick amount as a full brass gradient on 107
    placements, and DESIGN.md decides it twice over: "active is a brass tint
@@ -66,16 +77,12 @@ dialog.app-dialog .quick button:hover:not(.sel){border-color:var(--border-brass-
    the same --tint-brass-09 the 815 category chips wear, with the same ink and the same halo.
    It is the last of the spellings and the only one that needed two passes to land, because the
    first pass was measuring one control against one neighbour and this one measured all five. */
-dialog.app-dialog .quick button.sel{background:var(--tint-brass-09);color:var(--text-brass-chip);border-color:var(--tint-brass-45);box-shadow:0 0 10px -8px var(--glow-brass)}
-dialog.app-dialog .quick button.sel{font-weight:var(--weight-bold)}
-dialog.app-dialog .quick button:active:not(.sel){background:var(--bg-pressed)}
 dialog.app-dialog .sheet-body .quick{margin-top:var(--space-12)}
 
 /* ------------------------------------------ inside a bet panel or sheet -----
    The same chips at the foot of the amount row, pushed to the right because the
    field they fill is right-aligned. */
 .app-case :is(.bet-panel,.bet-sheet) .quick{margin-top:0;justify-content:flex-end;flex-wrap:wrap}
-.app-case :is(.bet-panel,.bet-sheet) .quick button{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary)}
 /* ONE SELECTED CHIP, 2026-08-06, and this is the half of backlog S35 that moved. The product
    had two live spellings of "this one is chosen": a --tint-brass-09 ground inside a
    --tint-brass-45 edge with --text-brass-chip and a faint brass halo, worn by 815 category
@@ -88,5 +95,4 @@ dialog.app-dialog .sheet-body .quick{margin-top:var(--space-12)}
    THE RECIPE COLOURS WHAT THE CHIP ALREADY HAS AND ADDS NO PARTS. This one has an edge at rest,
    so the edge goes brass; the rail chip in components/chip.css has none, so it gets none, and
    its box does not move. */
-.app-case :is(.bet-panel,.bet-sheet) .quick button.sel{background:var(--tint-brass-09);border-color:var(--tint-brass-45);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
 .app-case .bet-sheet .quick{gap:var(--space-8)}

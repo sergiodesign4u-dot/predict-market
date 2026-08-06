@@ -287,6 +287,7 @@ STATIC = {
                  "and the balance figure one of them carries. The slot went to navitem with its "
                  "hover, its press and its current-page state, and a BAND is not pressed. Same "
                  "reason as notice and account below, one migration later",
+    "quick": "a ROW, and since 2026-08-06 that is the whole of it: a flex line that wraps, and a bet panel pushing it to the right. The amounts went to chip.css as `.chip-amount`, the face a chip wears when it is one of the things you fill in on a sheet, and they took the hover and the press with them. A file holding one layout rule for one row is the shape backlog S41 describes about loadmore, and this file has joined it",
     "profile": "the identity row, the reputation grid and the gallery. Its one control, Edit, went to button on 2026-08-06 and took its hover and its press with it: one placement is the wrong size for an exception, so the element takes the family's small step. What is left is a head and a rail, and neither is pressed",
     "event-detail": "the head, the facts strip and the sections of one event. The three "
                     "marks in the corner of the head went to iconbtn on 2026-08-06 and "

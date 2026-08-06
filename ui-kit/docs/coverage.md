@@ -23,7 +23,7 @@ says so. No em dash.
 | card | 4 | card-binary, card-multi, card-loading, card-detail-head | 2 | 14 | 36 |
 | catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 6 | 57 |
 | chart | 1 | chart | 1 | 12 | 11 |
-| chip | 1 | chip-rails | 0 | 1 | 9 |
+| chip | 1 | chip-rails | 0 | 4 | 105 |
 | comments | 1 | comments-thread | 2 | 15 | 9 |
 | cookie-consent | 1 | cookie-consent | 0 | 17 | 2 |
 | course-chrome | 3 | course-chrome, course-chrome-system, course-chrome-roadmap | 0 | 25 | 105 |

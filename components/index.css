@@ -50,13 +50,13 @@
 @import url("chip.css");
 @import url("skeleton.css");
 @import url("toc.css");
-@import url("quick.css");
 @import url("seo-plate.css");
 @import url("trustbar.css");
+@import url("market.css");
 
 /* Molecules: they hold atoms, or their own parts and nothing else. */
-@import url("market.css");
 @import url("related.css");
+@import url("quick.css");
 @import url("toast.css");
 @import url("comments.css");
 @import url("filters.css");

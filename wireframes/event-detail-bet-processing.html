@@ -1045,11 +1045,11 @@
            Small, icon-less chips (the full bar below keeps its icons). -->
       <div class="cat-condensed" aria-hidden="true">
         <ul>
-          <li aria-current="page"><a href="event-feed.html"><button type="button">Trending</button></a></li>
-          <li><a href="politics.html"><button type="button">Politics</button></a></li>
-          <li><a href="crypto.html"><button type="button">Crypto</button></a></li>
-          <li><a href="culture.html"><button type="button">Culture</button></a></li>
-          <li><a href="general.html"><button type="button">General</button></a></li>
+          <li aria-current="page"><a href="event-feed.html"><button class="chip chip-quiet" type="button">Trending</button></a></li>
+          <li><a href="politics.html"><button class="chip chip-quiet" type="button">Politics</button></a></li>
+          <li><a href="crypto.html"><button class="chip chip-quiet" type="button">Crypto</button></a></li>
+          <li><a href="culture.html"><button class="chip chip-quiet" type="button">Culture</button></a></li>
+          <li><a href="general.html"><button class="chip chip-quiet" type="button">General</button></a></li>
         </ul>
       </div>
     </header>
@@ -1086,7 +1086,7 @@
               <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline points="0.0,59.0 25.0,56.0 50.0,60.0 75.0,64.0 100.0,53.0 125.0,57.0 150.0,50.0 175.0,55.0 200.0,51.0 225.0,56.0 250.0,47.0 275.0,43.0 300.0,62.0"/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
             </div>
             <div class="ed-xaxis" aria-hidden="true"><span>Jul</span><span>Sep</span><span>Nov</span><span>Jan</span><span>now</span></div>
-            <div class="ed-chart-foot"><div class="ed-range" role="group" aria-label="Time range"><button class="chip" type="button">1d</button><button class="chip" type="button">1w</button><button class="chip" type="button">1m</button><button type="button" class="chip sel">all</button></div></div>
+            <div class="ed-chart-foot"><div class="ed-range" role="group" aria-label="Time range"><button class="chip chip-rail" type="button">1d</button><button class="chip chip-rail" type="button">1w</button><button class="chip chip-rail" type="button">1m</button><button type="button" class="chip chip-rail sel">all</button></div></div>
           </section>
           <div class="ed-facts">
             <span>Volume<b>$84,200</b></span>
@@ -1140,7 +1140,7 @@
             <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
               <div class="cmt-controls">
                 <span>128 comments</span>
-                <span class="seg"><button type="button" class="chip sel">Newest</button><button class="chip" type="button">Top</button><button class="chip" type="button">Bettors</button></span>
+                <span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span>
               </div>
               <div class="cmt-compose">
                 <span class="cmt-av">you</span>
@@ -1235,7 +1235,7 @@
               </div>
               <div>
                 <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
-                <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
+                <div class="quick"><button type="button" class="chip chip-amount sel">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button><button class="chip chip-amount" type="button">$50</button></div>
               </div>
               <div class="spinner-box">Registering your bet on-chain...<br><span class="fine">A few seconds. Keep this open.</span></div>
               <a href="active-bets.html"><button type="button" class="btn btn-primary btn-md btn-block">View your bet</button></a>
@@ -1572,7 +1572,7 @@
       <div>
         <span class="field-label">Amount to add</span>
         <div class="amount-row"><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9.$]*" value="$20.00" aria-label="Amount to add"></div>
-        <div class="quick"><button type="button">$10</button><button type="button" class="sel">$20</button><button type="button">$50</button><button type="button">$100</button></div>
+        <div class="quick"><button class="chip chip-amount" type="button">$10</button><button type="button" class="chip chip-amount sel">$20</button><button class="chip chip-amount" type="button">$50</button><button class="chip chip-amount" type="button">$100</button></div>
       </div>
       <div><span class="field-label">Pay with</span>
       <div class="widget-box">Transak payment widget (card to USDC)</div></div>
