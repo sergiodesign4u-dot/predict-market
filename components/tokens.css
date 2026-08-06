@@ -78,7 +78,6 @@
   --plum-950:#180810;
 
   /* ---- outcome green ---- */
-  --green-150:#8fe0ad;      /* YES text on the filled mobile dock */
   --green-200:#4fd694;      /* YES line drawn over photography (hero chart) */
   --green-250:#42d18a;      /* the price line on the event chart */
   --green-300:#77d19b;      /* quiet YES text on graphite */
@@ -87,18 +86,19 @@
   --green-950:#0d1410;      /* ink on a filled YES */
   --green-975:#15211a;      /* win sheet head stone */
   --green-a12:rgba(79,169,107,.12);   /* quiet YES fill */
-  --green-a20:rgba(79,169,107,.2);
+  /* --green-150, --green-a20, --red-250 and --red-a20 went with the four semantic roles
+     they were the whole reason for: S49, 2026-08-06. A primitive exists because a role
+     needs it, so when the role is retired the primitive is not kept in case, and gate 11
+     asked the question a second time one level down. */
   --green-a42:rgba(66,209,138,.42);   /* the glow under the price line */
 
   /* ---- outcome red ---- */
-  --red-250:#ef9a92;        /* NO text on the filled mobile dock */
   --red-300:#e79087;        /* quiet NO: on a control, and as a figure */
   --red-400:#e26d6d;        /* NO line drawn over photography (hero chart) */
   --red-500:#c85a50;        /* NO */
   --red-700:#8f4841;        /* quiet NO line */
   --red-950:#160b09;        /* ink on a filled NO */
   --red-a12:rgba(200,90,80,.12);      /* quiet NO fill */
-  --red-a20:rgba(200,90,80,.2);
 
   /* ---- the categorical series (the multi-outcome chart draws one line per
      candidate). Not outcome colour: these say "a different thing", not "yes" or
@@ -579,11 +579,12 @@
   --outcome-no-fill:var(--red-a12);          /* same value as --outcome-no-fill-soft and --result-lost-fill for now .             From: the tinted NO button */
   --outcome-no-line:var(--red-700);          /* same value as --result-lost-line for now .             From: the tinted NO border */
   --outcome-yes-fill-soft:var(--green-a12);  /* from: the compact YES in an outcome list */
-  --outcome-yes-fill-strong:var(--green-a20);/* from: the selected YES on the mobile dock */
   --outcome-no-fill-soft:var(--red-a12);     /* from: the compact NO in an outcome list */
-  --outcome-no-fill-strong:var(--red-a20);  /* from: the selected NO on the mobile dock */
-  --outcome-yes-text-lit:var(--green-150);   /* from: YES on the filled dock, brighter than the tint */
-  --outcome-no-text-lit:var(--red-250);   /* from: NO on the filled dock */
+  /* --outcome-*-fill-strong and --outcome-*-text-lit were retired on 2026-08-06 when
+     backlog S49 was answered: the chosen side in the mobile dock is the solid
+     --outcome-yes / --outcome-no the panel and the option list already used, so the
+     lighter fill and its brighter ink had nothing left to paint. Four tokens, four
+     values, and gate 11 is what said they were orphans. */
   --outcome-line-yes:var(--green-200);       /* from: the YES line drawn over the hero photo, where
                                                 the quiet green loses against the image */
   --outcome-line-no:var(--red-400);          /* from: the NO line on the same photo */
@@ -908,8 +909,6 @@
   --outcome-yes-text:var(--green-800);      /* 6.1:1 over the YES fill, 5.7 over the strong one */
   --outcome-no-text:var(--red-800);         /* 6.2:1 over the NO fill, 5.6 over the strong one */
   --outcome-no-figure:var(--red-800);       /* 5.3:1 */
-  --outcome-yes-text-lit:var(--green-800);  /* 5.3:1 */
-  --outcome-no-text-lit:var(--red-800);     /* 5.3:1 */
   --chart-line:var(--green-700);            /* the bright chart green disappears on chalk */
   /* the series is text as well as line: the reading under the chart is drawn in
      the selected series colour, so all five clear 4.5 on the chart well */

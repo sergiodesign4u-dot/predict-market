@@ -2,832 +2,6 @@
  {
   "component": "betpanel",
   "id": "g1",
-  "el": "button.bp-side.sel",
-  "scope": ".bet-panel",
-  "specimen": "event-detail",
-  "classes": [
-   "amount-input",
-   "app-case",
-   "arg-col",
-   "args",
-   "bet-panel",
-   "bp-amount-lbl",
-   "bp-amount-row",
-   "bp-cash",
-   "bp-dir",
-   "bp-head",
-   "bp-hint",
-   "bp-inner",
-   "bp-pct",
-   "bp-side",
-   "btn",
-   "btn-block",
-   "btn-md",
-   "btn-primary",
-   "card",
-   "card-body",
-   "device",
-   "ed-actions",
-   "ed-cat",
-   "ed-head",
-   "ed-layout",
-   "ed-main",
-   "ed-oddsbar",
-   "ed-prob-big",
-   "ed-q",
-   "ed-section",
-   "ed-thumb",
-   "feed",
-   "feed-inner",
-   "field-label",
-   "fill",
-   "fine",
-   "ic",
-   "icon-btn",
-   "icon-btn-tile",
-   "line",
-   "prob",
-   "quick",
-   "resolution",
-   "sel",
-   "total",
-   "track"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | none 3px rgb(13, 20, 16) 0px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | none 3px rgb(13, 20, 16) 0px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | rgba(0, 0, 0, 0.45) 0px 2px 5px 0px inset | 1 | none 3px rgb(13, 20, 16) 0px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | none 3px rgb(13, 20, 16) 0px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | none 3px rgb(13, 20, 16) 0px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | rgba(33, 31, 25, 0.16) 0px 2px 5px 0px inset | 1 | none 3px rgb(13, 20, 16) 0px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 6,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "betpanel-states",
-   "options-multi",
-   "betpanel-more",
-   "betpanel-sheet"
-  ],
-  "covers": [
-   "button.bp-side.sel @.bet-panel",
-   "button.bp-side.sel @dialog.bet-sheet"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/betpanel.css",
-   "components/button.css",
-   "components/card.css",
-   "components/dialog.css",
-   "components/event-detail.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/iconbtn.css",
-   "components/input.css",
-   "components/oddsbar.css",
-   "components/quick.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/betpanel-more.html",
-   "ui-kit/specimens/betpanel-sheet.html",
-   "ui-kit/specimens/betpanel-states.html",
-   "ui-kit/specimens/event-detail.html",
-   "ui-kit/specimens/options-multi.html"
-  ],
-  "sha": "f3b3621d4d6469d5"
- },
- {
-  "component": "betpanel",
-  "id": "g2",
-  "el": "button.bp-side",
-  "scope": ".bet-panel",
-  "specimen": "event-detail",
-  "classes": [
-   "amount-input",
-   "app-case",
-   "arg-col",
-   "args",
-   "bet-panel",
-   "bp-amount-lbl",
-   "bp-amount-row",
-   "bp-cash",
-   "bp-dir",
-   "bp-head",
-   "bp-hint",
-   "bp-inner",
-   "bp-pct",
-   "bp-side",
-   "btn",
-   "btn-block",
-   "btn-md",
-   "btn-primary",
-   "card",
-   "card-body",
-   "device",
-   "ed-actions",
-   "ed-cat",
-   "ed-head",
-   "ed-layout",
-   "ed-main",
-   "ed-oddsbar",
-   "ed-prob-big",
-   "ed-q",
-   "ed-section",
-   "ed-thumb",
-   "feed",
-   "feed-inner",
-   "field-label",
-   "fill",
-   "fine",
-   "ic",
-   "icon-btn",
-   "icon-btn-tile",
-   "line",
-   "prob",
-   "quick",
-   "resolution",
-   "sel",
-   "total",
-   "track"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 12,
-     "bottom": 6,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgb(36, 40, 47) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 12,
-     "bottom": 6,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 12,
-     "bottom": 6,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 12,
-     "bottom": 6,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 12,
-     "bottom": 6,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgb(252, 250, 244) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 12,
-     "bottom": 6,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 12,
-     "bottom": 6,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 156,
-    "h": 83,
-    "pad": {
-     "top": 6,
-     "right": 12,
-     "bottom": 6,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "betpanel-states",
-   "options-multi",
-   "betpanel-more",
-   "betpanel-sheet"
-  ],
-  "covers": [
-   "button.bp-side @.bet-panel",
-   "button.bp-side @dialog.bet-sheet"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/betpanel.css",
-   "components/button.css",
-   "components/card.css",
-   "components/dialog.css",
-   "components/event-detail.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/iconbtn.css",
-   "components/input.css",
-   "components/oddsbar.css",
-   "components/quick.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/betpanel-more.html",
-   "ui-kit/specimens/betpanel-sheet.html",
-   "ui-kit/specimens/betpanel-states.html",
-   "ui-kit/specimens/event-detail.html",
-   "ui-kit/specimens/options-multi.html"
-  ],
-  "sha": "f3b3621d4d6469d5"
- },
- {
-  "component": "betpanel",
-  "id": "g3",
-  "el": "button.bp-side.sel",
-  "scope": ".bet-dock",
-  "specimen": "betpanel-dock",
-  "classes": [
-   "app-case",
-   "bet-dock",
-   "bp-pct",
-   "bp-side",
-   "device",
-   "feed",
-   "feed-inner",
-   "sel"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(143, 224, 173) | 10px | none | none | 1 | none 3px rgb(143, 224, 173) 0px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(143, 224, 173) | 10px | none | none | 1 | none 3px rgb(143, 224, 173) 0px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(143, 224, 173) | 10px | none | rgba(0, 0, 0, 0.45) 0px 2px 5px 0px inset | 1 | none 3px rgb(143, 224, 173) 0px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(143, 224, 173) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53) | 10px | none | none | 1 | none 3px rgb(34, 91, 53) 0px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53) | 10px | none | none | 1 | none 3px rgb(34, 91, 53) 0px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53) | 10px | none | rgba(33, 31, 25, 0.16) 0px 2px 5px 0px inset | 1 | none 3px rgb(34, 91, 53) 0px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button.bp-side.sel @.bet-dock"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/betpanel.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/betpanel-dock.html"
-  ],
-  "sha": "e30e6eb234c48bc7"
- },
- {
-  "component": "betpanel",
-  "id": "g4",
-  "el": "button.bp-side",
-  "scope": ".bet-dock",
-  "specimen": "betpanel-dock",
-  "classes": [
-   "app-case",
-   "bet-dock",
-   "bp-pct",
-   "bp-side",
-   "device",
-   "feed",
-   "feed-inner",
-   "sel"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 184,
-    "h": 75,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button.bp-side @.bet-dock"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/betpanel.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/betpanel-dock.html"
-  ],
-  "sha": "e30e6eb234c48bc7"
- },
- {
-  "component": "betpanel",
-  "id": "g5",
   "el": "button.sheet-grab",
   "scope": "dialog.bet-sheet",
   "specimen": "betpanel-sheet",
@@ -857,7 +31,8 @@
    "sel",
    "sheet-grab",
    "spec-inflow",
-   "total"
+   "total",
+   "yesno-pick"
   ],
   "shots": {
    "rest-dark": {
@@ -1021,17 +196,18 @@
    "components/input.css",
    "components/quick.css",
    "components/tokens.css",
+   "components/yesno.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html",
    "ui-kit/specimens/button-census.html"
   ],
-  "sha": "d77edccacc7c2a11"
+  "sha": "47525629854cd2e0"
  },
  {
   "component": "betpanel",
-  "id": "g8",
+  "id": "g2",
   "el": "a.bp-change",
   "scope": ".bet-panel",
   "specimen": "options-multi",
@@ -1075,7 +251,8 @@
    "quick",
    "sel",
    "total",
-   "yesno"
+   "yesno",
+   "yesno-pick"
   ],
   "shots": {
    "rest-dark": {
@@ -1248,192 +425,7 @@
    "ui-kit/specimens/betpanel-more.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "2b48d357fa36b0df"
- },
- {
-  "component": "betpanel",
-  "id": "g9",
-  "el": "span.bp-side",
-  "scope": ".bet-panel",
-  "specimen": "betpanel-more",
-  "classes": [
-   "amount-input",
-   "app-case",
-   "bet-panel",
-   "bp-amount-lbl",
-   "bp-amount-row",
-   "bp-cash",
-   "bp-change",
-   "bp-dir",
-   "bp-head",
-   "bp-hint",
-   "bp-inner",
-   "bp-pct",
-   "bp-sel-name",
-   "bp-selected",
-   "bp-side",
-   "btn",
-   "btn-block",
-   "btn-md",
-   "btn-primary",
-   "btn-secondary",
-   "btn-sm",
-   "device",
-   "ed-layout",
-   "feed",
-   "feed-inner",
-   "field-label",
-   "fine",
-   "ic",
-   "line",
-   "opt-prob",
-   "quick",
-   "resolved-panel",
-   "rp-inner",
-   "sel",
-   "sk-line",
-   "state-actions",
-   "state-block",
-   "state-msg",
-   "state-title",
-   "total",
-   "w40",
-   "w60",
-   "w80"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
-    "w": 156,
-    "h": 70,
-    "pad": {
-     "top": 10,
-     "right": 4,
-     "bottom": 10,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgb(36, 40, 47) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 156,
-    "h": 70,
-    "pad": {
-     "top": 10,
-     "right": 4,
-     "bottom": 10,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 156,
-    "h": 70,
-    "pad": {
-     "top": 10,
-     "right": 4,
-     "bottom": 10,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
-    "w": 156,
-    "h": 70,
-    "pad": {
-     "top": 10,
-     "right": 4,
-     "bottom": 10,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgb(252, 250, 244) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 156,
-    "h": 70,
-    "pad": {
-     "top": 10,
-     "right": 4,
-     "bottom": 10,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 156,
-    "h": 70,
-    "pad": {
-     "top": 10,
-     "right": 4,
-     "bottom": 10,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "span.bp-side @.bet-panel"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/betpanel.css",
-   "components/button.css",
-   "components/dialog.css",
-   "components/event-detail.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/input.css",
-   "components/options.css",
-   "components/quick.css",
-   "components/skeleton.css",
-   "components/state-block.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/betpanel-more.html"
-  ],
-  "sha": "ee8358f018a3d487"
+  "sha": "95eebc788565ba27"
  },
  {
   "component": "button",
@@ -1633,7 +625,7 @@
    "ui-kit/specimens/button-matrix.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "5056099e723a69e1"
+  "sha": "2ad118fe63903658"
  },
  {
   "component": "button",
@@ -1831,7 +823,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "d0a356d9ed037618"
+  "sha": "5cb5646c1bd1856f"
  },
  {
   "component": "button",
@@ -2031,7 +1023,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "1842bae727696da8"
+  "sha": "2c41db10b9dde076"
  },
  {
   "component": "button",
@@ -2259,7 +1251,7 @@
    "ui-kit/specimens/profile-identity.html",
    "ui-kit/specimens/state-empty-filters.html"
   ],
-  "sha": "82bd1933e83e9bd7"
+  "sha": "929bae0b7d0722d8"
  },
  {
   "component": "button",
@@ -2490,7 +1482,7 @@
    "ui-kit/specimens/state-empty-filters.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "6d072bbdcf66b757"
+  "sha": "e84e11edf3d690f1"
  },
  {
   "component": "card",
@@ -2677,7 +1669,7 @@
    "ui-kit/specimens/skeleton-grid.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "a85fc5d63ef96c69"
+  "sha": "b54ba203c935d448"
  },
  {
   "component": "card",
@@ -2891,7 +1883,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "8f69d261609f2299"
+  "sha": "70c4c8ac0b6e319d"
  },
  {
   "component": "card",
@@ -3058,7 +2050,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "31ab92122bbad750"
+  "sha": "3eca3e053f2e5014"
  },
  {
   "component": "catnav",
@@ -3238,7 +2230,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-chips.html"
   ],
-  "sha": "e5ab98506fca67f9"
+  "sha": "bcde509c48ddadbf"
  },
  {
   "component": "catnav",
@@ -3418,7 +2410,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-chips.html"
   ],
-  "sha": "e5ab98506fca67f9"
+  "sha": "bcde509c48ddadbf"
  },
  {
   "component": "catnav",
@@ -3595,7 +2587,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subfilter.html"
   ],
-  "sha": "6ed361a1245d44d5"
+  "sha": "6976ca71528b0bb7"
  },
  {
   "component": "catnav",
@@ -3772,7 +2764,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subfilter.html"
   ],
-  "sha": "6ed361a1245d44d5"
+  "sha": "6976ca71528b0bb7"
  },
  {
   "component": "catnav",
@@ -3951,7 +2943,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subcat.html"
   ],
-  "sha": "27c744afc154e4c7"
+  "sha": "99e75fce2ace9873"
  },
  {
   "component": "catnav",
@@ -4130,7 +3122,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subcat.html"
   ],
-  "sha": "27c744afc154e4c7"
+  "sha": "99e75fce2ace9873"
  },
  {
   "component": "chip",
@@ -4317,7 +3309,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "235861e087458088"
+  "sha": "fbaed38072ffef56"
  },
  {
   "component": "chip",
@@ -4504,7 +3496,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "235861e087458088"
+  "sha": "fbaed38072ffef56"
  },
  {
   "component": "cookie-consent",
@@ -4693,7 +3685,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "665a8237cbbd3f85"
+  "sha": "ad5299d95441294d"
  },
  {
   "component": "cookie-consent",
@@ -4884,7 +3876,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "665a8237cbbd3f85"
+  "sha": "ad5299d95441294d"
  },
  {
   "component": "cookie-consent",
@@ -5073,7 +4065,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "665a8237cbbd3f85"
+  "sha": "ad5299d95441294d"
  },
  {
   "component": "course-chrome",
@@ -5266,7 +4258,7 @@
    "ui-kit/specimens/course-chrome-system.html",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "c7658e7281c5760e"
+  "sha": "6313dae1a13f1835"
  },
  {
   "component": "course-chrome",
@@ -5459,7 +4451,7 @@
    "ui-kit/specimens/course-chrome-system.html",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "c7658e7281c5760e"
+  "sha": "6313dae1a13f1835"
  },
  {
   "component": "course-chrome",
@@ -5654,7 +4646,7 @@
    "ui-kit/specimens/course-chrome-system.html",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "98f734224663ecd6"
+  "sha": "b0600b48d03bfa0a"
  },
  {
   "component": "course-chrome",
@@ -5843,7 +4835,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "d0d61aabc5d44346"
+  "sha": "a312dbe22ba88f9e"
  },
  {
   "component": "course-chrome",
@@ -6036,7 +5028,7 @@
    "ui-kit/specimens/course-chrome-system.html",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "c7658e7281c5760e"
+  "sha": "6313dae1a13f1835"
  },
  {
   "component": "course-chrome",
@@ -6228,7 +5220,7 @@
    "ui-kit/specimens/course-chrome-roadmap.html",
    "ui-kit/specimens/course-chrome-system.html"
   ],
-  "sha": "12b4c8d9d1d4a4c1"
+  "sha": "c48039873f9f4ddb"
  },
  {
   "component": "course-chrome",
@@ -6416,7 +5408,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/course-chrome-system.html"
   ],
-  "sha": "cbfe14a5b5579881"
+  "sha": "85c206a799844e76"
  },
  {
   "component": "course-chrome",
@@ -6559,7 +5551,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/course-chrome-roadmap.html"
   ],
-  "sha": "2986ab0c40fbc2c9"
+  "sha": "9c39d17f4d633fa8"
  },
  {
   "component": "course-chrome",
@@ -6702,7 +5694,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/course-chrome-roadmap.html"
   ],
-  "sha": "2986ab0c40fbc2c9"
+  "sha": "9c39d17f4d633fa8"
  },
  {
   "component": "dialog",
@@ -6907,7 +5899,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "7f7dfa3f6a876d8e"
+  "sha": "b4179d040956f822"
  },
  {
   "component": "dialog",
@@ -7099,7 +6091,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "ec037b7d07a25490"
+  "sha": "ad12f471cb58367d"
  },
  {
   "component": "dialog",
@@ -7294,7 +6286,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/outcome-overlays.html"
   ],
-  "sha": "b40d317a66741cb0"
+  "sha": "6fb2c2195053f5c7"
  },
  {
   "component": "filters",
@@ -7482,7 +6474,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "3923ac982ac6eed4"
+  "sha": "d8fafd37c07fc8e3"
  },
  {
   "component": "filters",
@@ -7634,7 +6626,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "3923ac982ac6eed4"
+  "sha": "d8fafd37c07fc8e3"
  },
  {
   "component": "filters",
@@ -7786,7 +6778,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "3923ac982ac6eed4"
+  "sha": "d8fafd37c07fc8e3"
  },
  {
   "component": "footer",
@@ -7990,7 +6982,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "dbeffb8defa48510"
+  "sha": "fe8b9370a4f66416"
  },
  {
   "component": "footer",
@@ -8194,7 +7186,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "dbeffb8defa48510"
+  "sha": "fe8b9370a4f66416"
  },
  {
   "component": "footer",
@@ -8398,7 +7390,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "dbeffb8defa48510"
+  "sha": "fe8b9370a4f66416"
  },
  {
   "component": "header",
@@ -8607,7 +7599,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "f1bc68321009de58"
+  "sha": "bbf6275acc83d91b"
  },
  {
   "component": "header",
@@ -8812,7 +7804,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "8e8504bb48c0be82"
+  "sha": "ca3f3b0cf6a61244"
  },
  {
   "component": "header",
@@ -9017,7 +8009,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "8e8504bb48c0be82"
+  "sha": "ca3f3b0cf6a61244"
  },
  {
   "component": "hero",
@@ -9245,7 +8237,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "e6ab0f0ac6ed945b"
+  "sha": "5571fd8a432448db"
  },
  {
   "component": "hero",
@@ -9436,7 +8428,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "e6ab0f0ac6ed945b"
+  "sha": "5571fd8a432448db"
  },
  {
   "component": "hero",
@@ -9663,7 +8655,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "e6ab0f0ac6ed945b"
+  "sha": "5571fd8a432448db"
  },
  {
   "component": "hiw-dialog",
@@ -9855,7 +8847,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "ec037b7d07a25490"
+  "sha": "ad12f471cb58367d"
  },
  {
   "component": "iconbtn",
@@ -10066,7 +9058,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "fa441a376b104eb5"
+  "sha": "fd1e6d8214f1ea5f"
  },
  {
   "component": "iconbtn",
@@ -10250,7 +9242,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "970581e4696465bb"
+  "sha": "f64c300970bf17a7"
  },
  {
   "component": "iconbtn",
@@ -10442,7 +9434,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "ec037b7d07a25490"
+  "sha": "ad12f471cb58367d"
  },
  {
   "component": "iconbtn",
@@ -10655,7 +9647,7 @@
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "77d4c8d788d045c9"
+  "sha": "ded9a379d3143965"
  },
  {
   "component": "iconbtn",
@@ -10840,7 +9832,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/toast.html"
   ],
-  "sha": "d5d1a8ba3d040764"
+  "sha": "f060f7d3586df354"
  },
  {
   "component": "iconbtn",
@@ -11071,7 +10063,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "01fa709d8d21c1aa"
+  "sha": "2e814aa2e7807a88"
  },
  {
   "component": "iconbtn",
@@ -11275,7 +10267,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "dbeffb8defa48510"
+  "sha": "fe8b9370a4f66416"
  },
  {
   "component": "iconbtn",
@@ -11535,7 +10527,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "6f5a3216b0a81541"
+  "sha": "802c21f9b1c48e57"
  },
  {
   "component": "input",
@@ -11742,7 +10734,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "2b401e3a29dd6f2f"
+  "sha": "b7914a67534a9463"
  },
  {
   "component": "input",
@@ -11924,7 +10916,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "659cbfbbfdab952b"
+  "sha": "2b709cb720ef59b6"
  },
  {
   "component": "input",
@@ -12104,7 +11096,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "659cbfbbfdab952b"
+  "sha": "2b709cb720ef59b6"
  },
  {
   "component": "input",
@@ -12336,7 +11328,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "05353856162dba79"
+  "sha": "6908c20cdd051145"
  },
  {
   "component": "input",
@@ -12535,7 +11527,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "8c26c4b05ed6ef40"
+  "sha": "71ec7e2c885243e8"
  },
  {
   "component": "loadmore",
@@ -12719,7 +11711,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/loadmore.html"
   ],
-  "sha": "b725fe61f4db67f9"
+  "sha": "352e4496c93259e5"
  },
  {
   "component": "market",
@@ -12919,7 +11911,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/market-depth.html"
   ],
-  "sha": "c5828810239c262a"
+  "sha": "1e8b792720d26516"
  },
  {
   "component": "navitem",
@@ -13017,7 +12009,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "8e8504bb48c0be82"
+  "sha": "ca3f3b0cf6a61244"
  },
  {
   "component": "navitem",
@@ -13199,7 +12191,7 @@
    "ui-kit/specimens/bottomnav.html",
    "ui-kit/specimens/navitem-slots.html"
   ],
-  "sha": "a2491bd5f102ae67"
+  "sha": "963acf825e38fcba"
  },
  {
   "component": "navitem",
@@ -13381,7 +12373,7 @@
    "ui-kit/specimens/bottomnav.html",
    "ui-kit/specimens/navitem-slots.html"
   ],
-  "sha": "a2491bd5f102ae67"
+  "sha": "963acf825e38fcba"
  },
  {
   "component": "quick",
@@ -13566,7 +12558,7 @@
    "ui-kit/specimens/input-states.html",
    "ui-kit/specimens/quick-amounts.html"
   ],
-  "sha": "b9cbe85f12dd6d79"
+  "sha": "91b7ca23f286fdde"
  },
  {
   "component": "quick",
@@ -13751,7 +12743,7 @@
    "ui-kit/specimens/input-states.html",
    "ui-kit/specimens/quick-amounts.html"
   ],
-  "sha": "b9cbe85f12dd6d79"
+  "sha": "91b7ca23f286fdde"
  },
  {
   "component": "related",
@@ -13931,7 +12923,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/related.html"
   ],
-  "sha": "eb86e3770adfff3d"
+  "sha": "18394ec152012482"
  },
  {
   "component": "related",
@@ -14111,7 +13103,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/related.html"
   ],
-  "sha": "eb86e3770adfff3d"
+  "sha": "18394ec152012482"
  },
  {
   "component": "tabs",
@@ -14268,7 +13260,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "2f1d00a2589f1681"
+  "sha": "a2bfbf3984273dc8"
  },
  {
   "component": "tabs",
@@ -14461,7 +13453,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "2f1d00a2589f1681"
+  "sha": "a2bfbf3984273dc8"
  },
  {
   "component": "tabs",
@@ -14654,7 +13646,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "2f1d00a2589f1681"
+  "sha": "a2bfbf3984273dc8"
  },
  {
   "component": "tabs",
@@ -14793,7 +13785,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "21c20d2d6e55367d"
+  "sha": "4b4dd071965561bf"
  },
  {
   "component": "tabs",
@@ -14968,7 +13960,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "21c20d2d6e55367d"
+  "sha": "4b4dd071965561bf"
  },
  {
   "component": "tabs",
@@ -15143,7 +14135,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "21c20d2d6e55367d"
+  "sha": "4b4dd071965561bf"
  },
  {
   "component": "tabs",
@@ -15320,7 +14312,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-mybets.html"
   ],
-  "sha": "d29db84d7b4948d7"
+  "sha": "b68abacabc868125"
  },
  {
   "component": "tabs",
@@ -15497,7 +14489,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-mybets.html"
   ],
-  "sha": "d29db84d7b4948d7"
+  "sha": "b68abacabc868125"
  },
  {
   "component": "toc",
@@ -15682,7 +14674,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/toc-rail.html"
   ],
-  "sha": "9132fecf68dca840"
+  "sha": "51f8c08528f299c0"
  },
  {
   "component": "toc",
@@ -15867,7 +14859,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/toc-rail.html"
   ],
-  "sha": "9132fecf68dca840"
+  "sha": "51f8c08528f299c0"
  },
  {
   "component": "toggle",
@@ -16040,7 +15032,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/filters-toggle.html"
   ],
-  "sha": "1fca704a567cb966"
+  "sha": "3c331c46d1a002d6"
  },
  {
   "component": "toggle",
@@ -16213,7 +15205,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/filters-toggle.html"
   ],
-  "sha": "1fca704a567cb966"
+  "sha": "3c331c46d1a002d6"
  },
  {
   "component": "toggle",
@@ -16388,7 +15380,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/filters-panel.html"
   ],
-  "sha": "fb1512104a1a8911"
+  "sha": "f1a2868a5931ede0"
  },
  {
   "component": "yesno",
@@ -16579,7 +15571,194 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "9060724cacaa406a"
+  "sha": "8ef131dcc04194c0"
+ },
+ {
+  "component": "yesno",
+  "id": "g11",
+  "el": "span.yesno-pick.bp-side",
+  "scope": ".bet-panel",
+  "specimen": "betpanel-more",
+  "classes": [
+   "amount-input",
+   "app-case",
+   "bet-panel",
+   "bp-amount-lbl",
+   "bp-amount-row",
+   "bp-cash",
+   "bp-change",
+   "bp-dir",
+   "bp-head",
+   "bp-hint",
+   "bp-inner",
+   "bp-pct",
+   "bp-sel-name",
+   "bp-selected",
+   "bp-side",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
+   "btn-sm",
+   "device",
+   "ed-layout",
+   "feed",
+   "feed-inner",
+   "field-label",
+   "fine",
+   "ic",
+   "line",
+   "opt-prob",
+   "quick",
+   "resolved-panel",
+   "rp-inner",
+   "sel",
+   "sk-line",
+   "state-actions",
+   "state-block",
+   "state-msg",
+   "state-title",
+   "total",
+   "w40",
+   "w60",
+   "w80",
+   "yesno-pick"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
+    "w": 156,
+    "h": 70,
+    "pad": {
+     "top": 10,
+     "right": 4,
+     "bottom": 10,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgb(36, 40, 47) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "w": 156,
+    "h": 70,
+    "pad": {
+     "top": 10,
+     "right": 4,
+     "bottom": 10,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "w": 156,
+    "h": 70,
+    "pad": {
+     "top": 10,
+     "right": 4,
+     "bottom": 10,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
+    "w": 156,
+    "h": 70,
+    "pad": {
+     "top": 10,
+     "right": 4,
+     "bottom": 10,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgb(252, 250, 244) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 156,
+    "h": 70,
+    "pad": {
+     "top": 10,
+     "right": 4,
+     "bottom": 10,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 156,
+    "h": 70,
+    "pad": {
+     "top": 10,
+     "right": 4,
+     "bottom": 10,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "span.yesno-pick.bp-side @.bet-panel"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/betpanel.css",
+   "components/button.css",
+   "components/dialog.css",
+   "components/event-detail.css",
+   "components/feed.css",
+   "components/fonts.css",
+   "components/input.css",
+   "components/options.css",
+   "components/quick.css",
+   "components/skeleton.css",
+   "components/state-block.css",
+   "components/tokens.css",
+   "components/yesno.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/betpanel-more.html"
+  ],
+  "sha": "68a25a15eb5109ed"
  },
  {
   "component": "yesno",
@@ -16772,7 +15951,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "3f65f585f5829a82"
+  "sha": "816383780fbd2908"
  },
  {
   "component": "yesno",
@@ -16965,64 +16144,238 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "3f65f585f5829a82"
+  "sha": "816383780fbd2908"
  },
  {
   "component": "yesno",
   "id": "g4",
-  "el": "button.sel",
-  "scope": "",
-  "specimen": "options-multi",
+  "el": "button.yesno-pick.bp-side.sel",
+  "scope": ".bet-panel",
+  "specimen": "yesno-pick",
   "classes": [
-   "amount-input",
+   "a-start",
    "app-case",
    "bet-panel",
-   "bp-amount-lbl",
-   "bp-amount-row",
-   "bp-cash",
-   "bp-change",
    "bp-dir",
-   "bp-head",
-   "bp-hint",
    "bp-inner",
    "bp-pct",
-   "bp-sel-name",
-   "bp-selected",
    "bp-side",
-   "btn",
-   "btn-block",
-   "btn-md",
-   "btn-primary",
-   "card",
-   "card-body",
-   "compact",
    "device",
-   "ed-layout",
-   "ed-main",
    "feed",
    "feed-inner",
-   "field-label",
-   "fine",
-   "line",
-   "opt-list",
-   "opt-name",
-   "opt-prob",
-   "opt-row",
-   "opt-sel-tag",
-   "options",
-   "quick",
+   "kit-row",
    "sel",
-   "total",
-   "yesno"
+   "yesno-pick"
   ],
   "shots": {
    "rest-dark": {
     "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | none 3px rgb(13, 20, 16) 0px",
-    "w": 55,
-    "h": 68,
+    "w": 126,
+    "h": 95,
     "pad": {
      "top": 12,
      "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | none 3px rgb(13, 20, 16) 0px",
+    "w": 126,
+    "h": 95,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | rgba(0, 0, 0, 0.45) 0px 2px 5px 0px inset | 1 | none 3px rgb(13, 20, 16) 0px",
+    "w": 126,
+    "h": 95,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 126,
+    "h": 95,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | none 3px rgb(13, 20, 16) 0px",
+    "w": 126,
+    "h": 95,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | none 3px rgb(13, 20, 16) 0px",
+    "w": 126,
+    "h": 95,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | rgba(33, 31, 25, 0.16) 0px 2px 5px 0px inset | 1 | none 3px rgb(13, 20, 16) 0px",
+    "w": 126,
+    "h": 95,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 126,
+    "h": 95,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "also": [
+   "betpanel-states",
+   "event-detail",
+   "options-multi",
+   "betpanel-more",
+   "betpanel-dock",
+   "betpanel-sheet"
+  ],
+  "covers": [
+   "button.yesno-pick.bp-side.sel @.bet-panel",
+   "button.yesno-pick.yesno-pick-bar.bp-side.sel @.bet-dock",
+   "button.yesno-pick.bp-side.sel @dialog.bet-sheet",
+   "button.sel"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/betpanel.css",
+   "components/feed.css",
+   "components/fonts.css",
+   "components/tokens.css",
+   "components/yesno.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/betpanel-dock.html",
+   "ui-kit/specimens/betpanel-more.html",
+   "ui-kit/specimens/betpanel-sheet.html",
+   "ui-kit/specimens/betpanel-states.html",
+   "ui-kit/specimens/event-detail.html",
+   "ui-kit/specimens/options-multi.html",
+   "ui-kit/specimens/yesno-pick.html"
+  ],
+  "sha": "5e18cc60280d0ffd"
+ },
+ {
+  "component": "yesno",
+  "id": "g5",
+  "el": "button.yesno-pick.bp-side",
+  "scope": ".bet-panel",
+  "specimen": "yesno-pick",
+  "classes": [
+   "a-start",
+   "app-case",
+   "bet-panel",
+   "bp-dir",
+   "bp-inner",
+   "bp-pct",
+   "bp-side",
+   "device",
+   "feed",
+   "feed-inner",
+   "kit-row",
+   "sel",
+   "yesno-pick"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
+    "w": 126,
+    "h": 95,
+    "pad": {
+     "top": 12,
+     "right": 12,
      "bottom": 12,
      "left": 4
     },
@@ -17035,12 +16388,12 @@
     "short": 0
    },
    "hover-dark": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | none 3px rgb(13, 20, 16) 0px",
-    "w": 55,
-    "h": 68,
+    "value": "rgb(36, 40, 47) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "w": 126,
+    "h": 95,
     "pad": {
      "top": 12,
-     "right": 4,
+     "right": 12,
      "bottom": 12,
      "left": 4
     },
@@ -17053,12 +16406,12 @@
     "short": 0
    },
    "active-dark": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | rgba(0, 0, 0, 0.45) 0px 2px 5px 0px inset | 1 | none 3px rgb(13, 20, 16) 0px",
-    "w": 55,
-    "h": 68,
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "w": 126,
+    "h": 95,
     "pad": {
      "top": 12,
-     "right": 4,
+     "right": 12,
      "bottom": 12,
      "left": 4
     },
@@ -17071,12 +16424,12 @@
     "short": 0
    },
    "focus-dark": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 55,
-    "h": 68,
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 126,
+    "h": 95,
     "pad": {
      "top": 12,
-     "right": 4,
+     "right": 12,
      "bottom": 12,
      "left": 4
     },
@@ -17089,12 +16442,12 @@
     "short": 0
    },
    "rest-light": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | none 3px rgb(13, 20, 16) 0px",
-    "w": 55,
-    "h": 68,
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
+    "w": 126,
+    "h": 95,
     "pad": {
      "top": 12,
-     "right": 4,
+     "right": 12,
      "bottom": 12,
      "left": 4
     },
@@ -17107,12 +16460,12 @@
     "short": 0
    },
    "hover-light": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | none 3px rgb(13, 20, 16) 0px",
-    "w": 55,
-    "h": 68,
+    "value": "rgb(252, 250, 244) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 126,
+    "h": 95,
     "pad": {
      "top": 12,
-     "right": 4,
+     "right": 12,
      "bottom": 12,
      "left": 4
     },
@@ -17125,12 +16478,12 @@
     "short": 0
    },
    "active-light": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | rgba(33, 31, 25, 0.16) 0px 2px 5px 0px inset | 1 | none 3px rgb(13, 20, 16) 0px",
-    "w": 55,
-    "h": 68,
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 126,
+    "h": 95,
     "pad": {
      "top": 12,
-     "right": 4,
+     "right": 12,
      "bottom": 12,
      "left": 4
     },
@@ -17143,12 +16496,206 @@
     "short": 0
    },
    "focus-light": {
-    "value": "rgb(79, 169, 107) | none | rgb(79, 169, 107) | 1px | rgb(13, 20, 16) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 55,
-    "h": 68,
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 126,
+    "h": 95,
     "pad": {
      "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
      "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "also": [
+   "betpanel-states",
+   "event-detail",
+   "options-multi",
+   "betpanel-more",
+   "betpanel-sheet"
+  ],
+  "covers": [
+   "button.yesno-pick.bp-side @.bet-panel",
+   "button.yesno-pick.bp-side @dialog.bet-sheet"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/betpanel.css",
+   "components/feed.css",
+   "components/fonts.css",
+   "components/tokens.css",
+   "components/yesno.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/betpanel-more.html",
+   "ui-kit/specimens/betpanel-sheet.html",
+   "ui-kit/specimens/betpanel-states.html",
+   "ui-kit/specimens/event-detail.html",
+   "ui-kit/specimens/options-multi.html",
+   "ui-kit/specimens/yesno-pick.html"
+  ],
+  "sha": "a929409dfd0034bc"
+ },
+ {
+  "component": "yesno",
+  "id": "g7",
+  "el": "button.yesno-pick.yesno-pick-bar.bp-side",
+  "scope": ".bet-dock",
+  "specimen": "betpanel-dock",
+  "classes": [
+   "app-case",
+   "bet-dock",
+   "bp-pct",
+   "bp-side",
+   "device",
+   "feed",
+   "feed-inner",
+   "sel",
+   "yesno-pick",
+   "yesno-pick-bar"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
+    "w": 184,
+    "h": 75,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 184,
+    "h": 75,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 184,
+    "h": 75,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 184,
+    "h": 75,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
+    "w": 184,
+    "h": 75,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 184,
+    "h": 75,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 184,
+    "h": 75,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 184,
+    "h": 75,
+    "pad": {
+     "top": 12,
+     "right": 12,
      "bottom": 12,
      "left": 4
     },
@@ -17162,26 +16709,20 @@
    }
   },
   "covers": [
-   "button.sel"
+   "button.yesno-pick.yesno-pick-bar.bp-side @.bet-dock"
   ],
   "sources": [
    "components/base.css",
    "components/betpanel.css",
-   "components/button.css",
-   "components/card.css",
-   "components/dialog.css",
    "components/feed.css",
    "components/fonts.css",
-   "components/input.css",
-   "components/options.css",
-   "components/quick.css",
    "components/tokens.css",
    "components/yesno.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/options-multi.html"
+   "ui-kit/specimens/betpanel-dock.html"
   ],
-  "sha": "bbb01b04818a353d"
+  "sha": "3e1220b4d4f3d7f4"
  }
 ]

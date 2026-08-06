@@ -76,7 +76,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Event card, binary (treatment B) | `card.css` | [card](../card.html) | L3 | feed, category, favorites, event-feed-push | rest / hover | 36 | WF | event | + |
 | Event card, multi (treatment D) | `card.css` | [card](../card.html) | L3 | feed, category, event-detail, favorites | rest; 2 leading options | 20 | WF | event | + |
 | Odds bar (thin, green YES on red track) | `oddsbar.css` | [oddsbar](../oddsbar.html) | L1 | feed / category / detail cards | injected from prob | - | UV | - | + |
-| Tinted YES / NO buttons | `yesno.css` | [yesno](../yesno.html) | L2 | every event card + bet panel | rest / hover / compact | 14 | WF | - | + |
+| Tinted YES / NO buttons | `yesno.css` | [yesno](../yesno.html) | L3 | every event card + bet panel | rest / hover / compact | 14 | WF | - | + |
 | Probability figure | `card.css` | [card](../card.html) | L3 | cards, detail | value | 21 | WF | - | + |
 | Card meta row (Volume / Closes + bookmark) | `card.css` | [card](../card.html) | L3 | every event card | bookmarked on / off | 23 | WF | - | + |
 | Responsive card grid | `feed.css` | [feed](../feed.html) | L3 | feed, category, favorites | populated / skeleton | 23 | WF | - | + |
@@ -292,7 +292,7 @@ screens.
 | Pattern | CSS file | Page | Screens | Assembled from |
 |---|---|---|---|---|
 | **Browse shell** | `patterns/browse-shell.css` | [browse-shell](../browse-shell.html) | 77 | `catnav`, `filters`, `state-block`, `button` |
-| **Detail shell** | `patterns/detail-shell.css` | [detail-shell](../detail-shell.html) | 11 | `card`, `event-detail`, `iconbtn`, `oddsbar`, `chart`, `tabs`, `chip`, `market`, `comments`, `button`, `bets-table`, `position`, `betpanel`, `input`, `quick`, `dialog` |
+| **Detail shell** | `patterns/detail-shell.css` | [detail-shell](../detail-shell.html) | 11 | `card`, `event-detail`, `iconbtn`, `oddsbar`, `chart`, `tabs`, `chip`, `market`, `comments`, `button`, `bets-table`, `position`, `betpanel`, `yesno`, `input`, `quick`, `dialog` |
 | **Card grid** | `patterns/card-grid.css` | [card-grid](../card-grid.html) | 23 | `card`, `yesno`, `iconbtn`, `options` |
 | **List head** | `patterns/list-head.css` | [list-head](../list-head.html) | 71 | `filters` |
 | **Position list** | `patterns/position-list.css` | [position-list](../position-list.html) | 13 | `position` |

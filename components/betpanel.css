@@ -1,7 +1,7 @@
 /* components/betpanel.css
    Component: betpanel. Classes: .bet-dock, .bet-panel, .bet-sheet, .bp-amount-lbl, .bp-amount-row, .bp-cash, .bp-change, .bp-dir, .bp-head, .bp-hint, .bp-inner, .bp-pct, .bp-sel-name, .bp-selected, .bp-side, .dock-meta, .line, .rp-inner, .sheet-grab, .total.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-card-to, --bg-control, --bg-control-hover, --bg-dock, --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --bg-pressed, --border-brass, --border-brass-hover, --border-hairline, --edge-groove-dark, --edge-groove-light, --edge-shade-strong, --outcome-no, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text-lit, --outcome-yes, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text-lit, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-no, --text-on-yes, --text-primary, --text-strong
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-card-to, --bg-control, --bg-dock, --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --bg-pressed, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --text-strong
    Stand:  ui-kit/betpanel.html
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -11,8 +11,18 @@
 .bet-panel .bp-inner{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
 .bp-head{display:flex;align-items:center;justify-content:space-between}
 .bp-head h3{margin:0}
-.bp-side{flex:1;border:1px solid var(--border-hairline);padding:var(--space-8) var(--space-8);font-size:var(--text-12);font-weight:var(--weight-bold);cursor:pointer}
-.bp-side.sel{border-width:2px}
+/* THE TWO SIDES LEFT THIS FILE ON 2026-08-06 for components/yesno.css, where they are
+   `.yesno-pick` in the panel and `.yesno-pick-bar` in the dock: the trader's face of the
+   outcome atom, neutral at rest because a chooser states the CHOICE and not the market.
+   That argument was this file's and it travelled with the rules rather than staying here
+   as a second copy. S49 moved one value on the way out: the chosen side in the dock was
+   --outcome-yes-fill-strong under --outcome-yes-text-lit and is now the solid
+   --outcome-yes under --text-on-yes the panel and the option list already used, because
+   the dock IS this panel below 760px and no file said why the same control should differ.
+   WHAT STAYS is `flex:1`, which is how two sides divide a row, and the odds figure inside
+   each one: a percentage is this panel's DATUM, the way an event photograph is a card's
+   content, so whoever owns the odds owns how they are set. */
+.bp-side{flex:1}
 .bp-side .bp-pct{display:block;font-size:var(--text-11);font-weight:normal}
 .bet-dock{border-bottom:none;align-items:center}
 /* Label muted, figure bright: the same ranking the card meta row uses. The
@@ -44,7 +54,6 @@
 .app-case .bp-head h3{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary)}
 .app-case .bp-hint{color:var(--text-muted);font-size:var(--text-11)}
 .app-case .bp-dir{display:flex;gap:var(--space-8);padding:0;background:transparent;border:0}
-.app-case .bp-dir .bp-side{flex:1;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);font-size:var(--text-16);padding:var(--space-12) var(--space-8);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease,border-color var(--dur-quick) ease}
 .app-case .bp-dir .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-11);font-weight:var(--weight-medium);color:inherit;opacity:.78;margin-top:var(--space-4)}
 /* THE SECOND HOVER THIS PASS FOUND ALIVE IN ONE THEME ONLY. --bevel-strong is
    the LIT LIP of an emboss, and section 3 takes it to --white-a70 because a lip
@@ -54,7 +63,6 @@
    already has the edge one: --border-brass-hover is written down as the hover
    border of the quiet button family, which is what this is. The dock's hover a
    few lines down reaches for the same ladder. */
-.app-case .bp-dir .bp-side:hover{border-color:var(--border-brass-hover);color:var(--text-primary)}
 /* PRESS, AND THE UNSELECTED SIDE IS NOT AN OUTCOME CONTROL. yesno.css presses its pair in
    green and red because its pair is green and red AT REST; this one rests on --bg-control
    with --text-muted and does not carry an outcome colour anywhere, not even on hover, which
@@ -63,9 +71,6 @@
    the system's quiet ground step, which is what --bg-pressed is for, and it reads across a
    button padded 12 by 8 with a 16px label: the size the footer's note says the step works
    at. :not(.sel) keeps it off the filled side, answered below. 0,5,0. */
-.app-case .bp-dir .bp-side:active:not(.sel){background:var(--bg-pressed)}
-.app-case .bp-dir .bp-side.sel:first-child{background:var(--outcome-yes);border-color:var(--outcome-yes);color:var(--text-on-yes)}
-.app-case .bp-dir .bp-side.sel:last-child{background:var(--outcome-no);border-color:var(--outcome-no);color:var(--text-on-no)}
 /* AND THE SELECTED SIDE PRESSES BY DEPTH, for the reason yesno.css measured rather than for
    a new one: --text-on-no on a flat --outcome-no is 4.64:1, which clears the 4.5 floor with
    0.14 to spend, so any press that moves the fill spends contrast the label does not have.
@@ -73,7 +78,6 @@
    inset shade at the top edge, with the ground the ink was measured on left exactly where it
    was. Same role every lifted stone in this system uses. 0,5,0 against the two rest rules
    above, so it has to sit after them for the shade to land over the fill. */
-.app-case .bp-dir .bp-side.sel:active{box-shadow:inset 0 2px 5px var(--edge-shade-strong)}
 .app-case .bp-amount-row{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-12);margin:var(--space-8) 0 var(--space-20)}
 .app-case .bp-amount-lbl{display:flex;flex-direction:column;gap:var(--space-4)}
 .app-case .bp-cash{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
@@ -82,11 +86,7 @@
 .app-case :is(.bet-panel,.bet-sheet) .line.total{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 .app-case :is(.bet-panel,.bet-sheet) .line.total span:last-child{color:var(--text-brass)}
 .app-case .bet-dock{position:sticky;bottom:52px;z-index:var(--z-dock);gap:var(--space-8);padding:var(--space-8) var(--space-12);border:0;border-top:1px solid var(--border-brass);background-color:var(--bg-dock);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-dock-from),var(--bg-card-to));background-blend-mode:overlay,normal;box-shadow:0 -14px 26px -18px var(--shadow-ink-85)}
-.app-case .bet-dock .bp-side{flex:1;border-radius:var(--radius-10);border:1px solid var(--border-hairline);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);padding:var(--space-8) var(--space-8);cursor:pointer}
 .app-case .bet-dock .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-10);font-weight:var(--weight-medium);color:inherit;opacity:.85}
-.app-case .bet-dock .bp-side.sel:first-child{background:var(--outcome-yes-fill-strong);color:var(--outcome-yes-text-lit);border-color:var(--outcome-yes-line)}
-.app-case .bet-dock .bp-side.sel:last-child{background:var(--outcome-no-fill-strong);color:var(--outcome-no-text-lit);border-color:var(--outcome-no-line)}
-.app-case .bet-dock .bp-side{position:relative}
 /* THE DOCK HAD NO POINTER STATE OF ANY KIND, and it is the control a bet is actually placed
    with: it is the panel's YES/NO pair below 760px, where the panel is display:none. So on
    the width the product is designed for first, choosing a side answered with nothing at all.
@@ -102,9 +102,6 @@
    unselected side is quiet and settles onto the ground, the selected side is a filled
    outcome control (--outcome-yes-fill-strong under --outcome-yes-text-lit, 5.3:1 in
    daylight) whose ink has nothing to spend, so it goes down by depth instead. */
-.app-case .bet-dock .bp-side:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover);color:var(--text-strong)}
-.app-case .bet-dock .bp-side:active:not(.sel){background:var(--bg-pressed)}
-.app-case .bet-dock .bp-side.sel:active{box-shadow:inset 0 2px 5px var(--edge-shade-strong)}
 dialog.app-dialog.bet-sheet{position:fixed;left:0;right:0;bottom:0;top:auto;margin:0 auto;width:100%;max-width:560px;max-height:92vh;border:0;border-radius:var(--radius-16) var(--radius-16) 0 0;overflow-y:auto;overflow-x:hidden}
 dialog.app-dialog.bet-sheet::backdrop{background:var(--shadow-ink-60);backdrop-filter:blur(2px)}
 /* 2 UNDER THE BAR BECAME 8, and the bar itself did not move. The grab measured

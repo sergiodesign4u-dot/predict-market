@@ -561,12 +561,30 @@
       "width": 900
     },
     {
+      "id": "yesno-pick",
+      "section": "detail",
+      "label": "Bet panel states (funds line / insufficient / price moved / processing)",
+      "pick": "div.bp-dir",
+      "component": "yesno",
+      "also": [
+        "betpanel"
+      ],
+      "title": "The trader's face, and the chosen side",
+      "width": 380,
+      "note": "The direction row out of the bet panel, which is this atom's second face. A spectator's pair states the market's two sides in green and red at rest; a trader's chooser rests on the system's quiet ground and states the CHOICE, which components/tokens.css decided when it wrote 'the tinted YES button (spectator, not trader)'. The odds figure under each label is the panel's datum and stays components/betpanel.css's, the way an event photograph is a card's content.",
+      "source": "kit.html",
+      "rewrites": 0
+    },
+    {
       "id": "betpanel-states",
       "section": "detail",
       "label": "Bet panel states (funds line / insufficient / price moved / processing)",
       "component": "betpanel",
       "title": "Bet panel, four states",
-      "width": 1120
+      "width": 1120,
+      "also": [
+        "yesno"
+      ]
     },
     {
       "id": "betpanel-dock",
@@ -576,7 +594,10 @@
       "component": "betpanel",
       "title": "Mobile bet dock",
       "width": 360,
-      "state": "Shown at 360 because the dock is mobile only. On a wider frame the media query hides it, which is exactly what the product does."
+      "state": "Shown at 360 because the dock is mobile only. On a wider frame the media query hides it, which is exactly what the product does.",
+      "also": [
+        "yesno"
+      ]
     },
     {
       "id": "betpanel-sheet",
@@ -595,7 +616,10 @@
       "inflow": true,
       "title": "Mobile bet sheet",
       "width": 360,
-      "state": "Open, the way showModal opens it on a phone. It ships as a fixed bottom drawer and is put in the flow here so the frame can show all of it."
+      "state": "Open, the way showModal opens it on a phone. It ships as a fixed bottom drawer and is put in the flow here so the frame can show all of it.",
+      "also": [
+        "yesno"
+      ]
     },
     {
       "id": "options-multi",

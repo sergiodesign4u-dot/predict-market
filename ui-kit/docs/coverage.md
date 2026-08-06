@@ -16,7 +16,7 @@ says so. No em dash.
 |---|---|---|---|---|---|
 | account | 1 | account-cta | 1 | 2 | 3 |
 | base | 2 | base-frame, base-groove | 0 | 13 | 105 |
-| betpanel | 4 | betpanel-states, betpanel-dock, betpanel-sheet, betpanel-more | 2 | 20 | 11 |
+| betpanel | 4 | betpanel-states, betpanel-dock, betpanel-sheet, betpanel-more | 3 | 20 | 11 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 13 | 9 |
 | bottomnav | 1 | bottomnav | 1 | 2 | 105 |
 | button | 3 | button-matrix, button-census, button-outcome-row | 0 | 12 | 105 |
@@ -55,9 +55,9 @@ says so. No em dash.
 | toc | 1 | toc-rail | 0 | 6 | 1 |
 | toggle | 1 | filters-toggle | 1 | 1 | 3 |
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 105 |
-| yesno | 1 | yesno | 2 | 2 | 14 |
+| yesno | 2 | yesno, yesno-pick | 5 | 4 | 22 |
 
-73 specimens over 42 components.
+74 specimens over 42 components.
 
 ---
 

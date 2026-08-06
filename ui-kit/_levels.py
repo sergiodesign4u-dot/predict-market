@@ -622,6 +622,16 @@ SPECIMEN_DEBT = {
     ("position", "button"): "the CTA bar is a child of article.pos on my-profile and a "
                             "sibling of it on wallet, so one of the two screens is wrong "
                             "about the bar's owner. Item 16d; closes when the two agree",
+    # OPENED BY S49, 2026-08-06, and it is the "one element, two components" shape again.
+    # The bet SHEET is a <dialog> and it holds the trader's YES / NO pair, so on the
+    # product a dialog contains a yesno. It is staged - `betpanel-sheet` picks that exact
+    # block - but under `betpanel`, because the sheet IS the bet panel below 760px, and
+    # containment is read from a specimen's own component rather than from `also`.
+    ("dialog", "yesno"): "the bet sheet is a dialog and holds the trader's pair, and it is "
+                         "staged as betpanel-sheet because that block is the bet panel on a "
+                         "phone. Closes when the sheet is read as a dialog that HOLDS a panel "
+                         "rather than as a panel that happens to be a dialog, which is item 16d "
+                         "seen from a third side",
     ("tabs", "*"): "the .ptab-panel is a content panel, so a profile tab holds a card "
                    "gallery and a position record. The switcher and the panel are one "
                    "file, item 16; closes when they are two",
@@ -745,6 +755,13 @@ ORDER_BREAK = {
     ("notice", "dialog"): ".fine is the small print, a typographic role that dialog.css happens "
                           "to own and that stands in bet panels and spinner boxes too. The "
                           "dialog holds the notice, so the dialog loads after it",
+    ("yesno", "betpanel"): "the same cycle as navitem and bottomnav below, one migration "
+                           "later and for the same reason: the panel holds the two sides, "
+                           "and each side holds .bp-pct, the panel's own odds figure. The "
+                           "panel is the whole - it is a plate on a detail page and the pair "
+                           "is a control that also stands on a card - so the pair is the part "
+                           "and loads first, and the percentage is one <span> of content a "
+                           "region puts inside its own control. Added 2026-08-06 with S49",
     ("navitem", "bottomnav"): "the map reads this one BOTH ways and it is right both times: the "
                               "bar holds five slots, and the Portfolio slot holds .bn-bal, the "
                               "bar's own balance figure. A real cycle, not a misreading. The bar "

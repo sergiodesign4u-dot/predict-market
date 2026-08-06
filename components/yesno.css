@@ -1,9 +1,9 @@
 /* components/yesno.css
-   Component: yesno. Classes: .compact, .yesno.
+   Component: yesno. Classes: .compact, .yesno, .yesno-pick, .yesno-pick-bar.
 
-   Reads: --bg-control, --bg-pressed, --border-hairline, --edge-shade-strong, --outcome-no, --outcome-no-fill, --outcome-no-fill-soft, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-soft, --outcome-yes-line, --outcome-yes-text, --text-on-no, --text-on-yes, --text-primary
+   Reads: --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --edge-shade-strong, --outcome-no, --outcome-no-fill, --outcome-no-fill-soft, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-soft, --outcome-yes-line, --outcome-yes-text, --text-muted, --text-on-no, --text-on-yes, --text-primary, --text-strong
    Stand:  ui-kit/yesno.html
-   Stands on: 14 ui-visual screens (event-detail-logged-out-multi.html, event-detail-multi.html, event-feed-crypto-logged-out.html, event-feed-crypto.html, event-feed-culture-logged-out.html, ...)
+   Stands on: 22 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .yesno{display:flex;gap:var(--space-8);margin:0 0 var(--space-8)}
@@ -79,3 +79,57 @@
    No :focus-visible either. base.css draws the ring once and outline-offset puts it 2px OUTSIDE
    the button, so even on the filled green and the filled red the ring stands on the row behind the
    control and not on the fill; the ground it has to survive is the card, which it already does. */
+
+/* ============================ the trader's face, 2026-08-06, and S49 answered ==
+   THE SECOND FACE OF THIS ATOM, and it is not a divergence: it is a decision
+   written twice before this migration touched it. `components/tokens.css`
+   declares --outcome-yes-fill with the words "the tinted YES button (spectator,
+   not trader)", and `components/betpanel.css` argued the same thing out - a side
+   pressed in green would be inventing a colour the control does not have and
+   telling a person the side is chosen before it is. So a SPECTATOR's pair states
+   the market's two sides in green and red at rest, and a TRADER's chooser rests
+   on the system's quiet ground and states the CHOICE.
+
+   Both live here now because they are one atom: the same two sides, the same
+   selected language, the same press by depth, and DESIGN.md decides their colour
+   once for both.
+
+   TWO FACES AND NOT ONE, because they stand on two surfaces and never coexist:
+   the panel is a plate on a detail page above 760px, the bar is sticky over
+   scrolling content below it. They differ in a size and in what a hover moves,
+   and each difference has a surface behind it. What they no longer differ in is
+   the one thing S49 asked about.
+
+   S49, AND THIS IS THE VALUE THAT MOVED. The chosen side was solid
+   --outcome-yes under --text-on-yes at 4.64:1 in the panel and in the option
+   list, and --outcome-yes-fill-strong under --outcome-yes-text-lit at 5.3:1 in
+   the bar. Both pairs were measured and both cleared the floor, and no file said
+   why the same control should differ at two widths when the bar IS the panel
+   below 760px. Two of the three placements were solid; the third is now. A
+   person choosing a side on a phone and a person choosing it on a desktop are
+   choosing the same thing and should see the same answer.
+
+   WHAT STAYS IN components/betpanel.css is `flex:1`, which is how two sides
+   divide a row, and the odds figure inside each one. The percentage is the
+   panel's DATUM rather than the control's face, the way an event photograph is
+   the card's content: whoever owns the odds owns how they are set. */
+.yesno-pick,.yesno-pick-bar{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);cursor:pointer}
+.yesno-pick{font-size:var(--text-16);padding:var(--space-12) var(--space-8);transition:background var(--dur-quick) ease,color var(--dur-quick) ease,border-color var(--dur-quick) ease}
+.yesno-pick-bar{font-size:var(--text-12);padding:var(--space-8) var(--space-8);position:relative}
+/* THE PANEL MOVES THE EDGE AND THE INK, THE BAR ALSO MOVES THE GROUND, and that
+   difference is left exactly as it stands because S49 did not ask about it. The
+   bar's hover was added long after the panel's and took --bg-control-hover on the
+   argument that a sticky bar is the control a bet is actually placed with below
+   760px, where there is no hover at all to answer with on the primary device. */
+.yesno-pick:hover{border-color:var(--border-brass-hover);color:var(--text-primary)}
+.yesno-pick-bar:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover);color:var(--text-strong)}
+/* The chosen side, ONE ANSWER AT BOTH WIDTHS since S49. */
+.yesno-pick.sel:first-child,.yesno-pick-bar.sel:first-child{background:var(--outcome-yes);border-color:var(--outcome-yes);color:var(--text-on-yes)}
+.yesno-pick.sel:last-child,.yesno-pick-bar.sel:last-child{background:var(--outcome-no);border-color:var(--outcome-no);color:var(--text-on-no)}
+/* An unchosen side is a quiet control and settles onto the one pressed ground the
+   system has. A chosen one is a filled outcome control whose ink has nothing to
+   spend - --text-on-no over --outcome-no is 4.64:1, 0.14 above the floor - so it
+   goes down by DEPTH instead, drawn as the inset shade every pushed stone in this
+   material uses, with the ground the ink was measured on left where it was. */
+.yesno-pick:active:not(.sel),.yesno-pick-bar:active:not(.sel){background:var(--bg-pressed)}
+.yesno-pick.sel:active,.yesno-pick-bar.sel:active{box-shadow:inset 0 2px 5px var(--edge-shade-strong)}

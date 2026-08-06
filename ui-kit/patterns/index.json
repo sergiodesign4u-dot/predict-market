@@ -137,6 +137,7 @@
    "bets-table",
    "position",
    "betpanel",
+   "yesno",
    "input",
    "quick",
    "dialog"
@@ -155,6 +156,7 @@
    "bets-table": ".hold-cols",
    "position": ".pos-side",
    "betpanel": ".bet-panel",
+   "yesno": ".yesno-pick",
    "input": ".field-label",
    "quick": ".quick",
    "dialog": ".fine"

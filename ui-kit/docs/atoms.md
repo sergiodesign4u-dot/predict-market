@@ -691,6 +691,49 @@ actually placed with.
 
 ---
 
+## S49 answered, and the outcome atom closes at one file: 9 to 8
+
+**Solid, at both widths.** The chosen side in the mobile dock was `--outcome-yes-fill-strong`
+under `--outcome-yes-text-lit`; it is now the solid `--outcome-yes` under `--text-on-yes` that
+the panel and the option list already used. A person choosing a side on a phone and a person
+choosing it on a desktop are choosing the same thing.
+
+**525 snapshots, 16 differ, 32 elements, and all 32 are that decision**: 16 chosen sides and the
+16 odds figures inside them taking the new ink. Nothing else in the product moved.
+
+**The state gallery is the better proof, and it is the first time it has been one.** It groups a
+face by what it MEASURES, and it carried three entries for a chosen side - the panel's, the
+dock's, and a multi-outcome row's. It now carries **one**. Two groups did not disappear because
+a caption was deleted; **they merged because the controls became the same control.** A gallery
+that is computed can say that; a table of names cannot.
+
+**Four semantic roles and four primitives went with the answer.** `--outcome-yes-fill-strong`,
+`--outcome-no-fill-strong`, `--outcome-yes-text-lit` and `--outcome-no-text-lit` had nothing left
+to paint and gate 11 said so; `--green-a20`, `--red-a20`, `--green-150` and `--red-250` went one
+level down for the same reason. **A primitive exists because a role needs it**, so when the role
+is retired the primitive is not kept in case.
+
+Then `.bp-side` moved at zero, as the atom's **trader face**: `.yesno-pick` on the panel's plate
+and `.yesno-pick-bar` in the sticky bar. Two faces and not one, because they stand on two
+surfaces and never coexist - which is the same answer this map has now given six times.
+
+    41 the atom map   7 control atom(s) in 15 file-slot(s): distance 8, and it goes to 0
+                      iconbutton  1361  6 kind(s), 1 file(s)
+                      chip        1358  3 kind(s), 4 file(s)
+                      navitem     1019  3 kind(s), 2 file(s)
+                      button       911  7 kind(s), 5 file(s)
+                      outcome      272  2 kind(s), 1 file(s)   <- closed
+
+**The proof caught one real regression on the way**, and it is defect 76's family again. The
+markup helper matched `<button>`, and the panel renders its two sides as `<span class="bp-side">`
+in the loading, processing and resolved states - the side as a STATEMENT rather than a control.
+Twelve of them lost their box the moment the paint left `betpanel.css`: 140x50 to 140x24, no
+ground, no edge. The before-and-after named them in one line. **A control is not always a
+`<button>`, and the third helper this migration has needed is the one that reads the element the
+rule ends at rather than the tag it usually wears.**
+
+---
+
 ## The decision this document no longer has open
 
 - ~~**Is a social mark a `navitem` or an `iconbutton`?**~~ **Answered 2026-08-06 and the

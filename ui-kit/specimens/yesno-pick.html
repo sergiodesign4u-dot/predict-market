@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mobile bet sheet</title>
+<title>The trader's face, and the chosen side</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
    A frame is a document of its own, so it does not inherit the attribute: this
    block runs in the frames too and they are told by postMessage, the same
@@ -38,26 +38,9 @@ push();});})();</script>
 <link rel="stylesheet" href="../../components/index.css">
 <link rel="stylesheet" href="../_specimen.css">
 </head>
-<body class="spec-inflow">
+<body>
 <div class="device"><div class="app-case">
-<dialog open="" class="app-case app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
-      <button type="button" class="sheet-grab" data-close-dialog aria-label="Close"></button>
-      <div class="bp-inner">
-        <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
-        <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">62%</span></button></div>
-        <div>
-          <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
-          <div class="quick"><button type="button" class="sel">$5</button><button type="button">$10</button><button type="button">$25</button><button type="button">$50</button></div>
-        </div>
-        <div>
-          <div class="line"><span>Price now</span><span>38%</span></div>
-          <div class="line"><span>Fee (only if you win)</span><span>$0.20</span></div>
-          <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
-        </div>
-        <button type="button" class="btn btn-primary btn-lg btn-block" data-close-dialog style="width:100%">Confirm bet</button>
-        <p class="fine">No minimum or maximum. Payout depends on when you bet (AMM).</p>
-      </div>
-    </dialog>
+<main class="feed"><div class="feed-inner"><div class="kit-row a-start"><aside class="bet-panel" style="display:block;position:static;flex:0 1 262px"><div class="bp-inner"><div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">62%</span></button></div></div></aside></div></div></main>
 </div></div>
 <script>
 /* Report to the vitrine: how tall this specimen is, and whether it rendered.
@@ -112,7 +95,7 @@ push();});})();</script>
     }
     try {
       parent.postMessage({
-        specimen: "betpanel-sheet",
+        specimen: "yesno-pick",
         height: height(),
         elements: document.body.getElementsByTagName("*").length,
         overflowX: doc.scrollWidth - doc.clientWidth,
