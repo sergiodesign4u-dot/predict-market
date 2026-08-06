@@ -321,6 +321,21 @@ KINDS = [
     # one has a LABEL. `<button class="hiw-btn">How it works</button>`, 105
     # placements, reading "icon only" on every screen in the product. Found the
     # same way `.subcat` was, by reading the family out before migrating it.
+    # ORDER MATTERS FROM HERE DOWN, AND IT STARTED MATTERING ON 2026-08-06. The
+    # reader returns on the FIRST row whose classes match, which was harmless
+    # while every kind owned a name nothing else used. It stopped being harmless
+    # the moment a control adopted an ATOM: `.sheet-close` now reads
+    # `class="icon-btn icon-btn-photo sheet-close"`, so the generic row below
+    # would claim all 333 of them and `close, a sheet` would go idle, which is
+    # exactly what gate 38 said. A row that names a FACE is more specific than
+    # one that names the atom, so it comes first. Every kind that adopts an atom
+    # from here on joins this block.
+    # ONE ROW SINCE 2026-08-05, AND IT WAS TWO. `.hiw-close` was this same control
+    # under a second name in a second file; the merge gave it this name, and the
+    # census stopped reporting one control as two kinds on two pages.
+    ("close, a sheet", {"sheet-close"}, set(),
+     "dialog", "action", "chrome of the overlay it closes"),
+
     ("icon only, in the header", {"icon-btn", "bal-add", "bal-swap"}, set(),
      "header", "action", "the header owns its own row of marks, and their size is the header's rhythm"),
     ("how it works, in the header", {"hiw-btn"}, set(),
@@ -336,11 +351,6 @@ KINDS = [
      "betpanel", "selector", "it carries the odds and the selection, which is panel state rather than an action"),
     ("the sheet grab", {"sheet-grab"}, set(),
      "betpanel", "action", "a real control that is also the drawer's own handle"),
-    # ONE ROW SINCE 2026-08-05, AND IT WAS TWO. `.hiw-close` was this same control
-    # under a second name in a second file; the merge gave it this name, and the
-    # census stopped reporting one control as two kinds on two pages.
-    ("close, a sheet", {"sheet-close"}, set(),
-     "dialog", "action", "chrome of the overlay it closes"),
     ("close, a toast", {"toast-close"}, set(),
      "toast", "action", "chrome of the overlay it closes"),
     ("bookmark, on a card", {"bookmark-btn"}, set(),

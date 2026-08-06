@@ -1,5 +1,5 @@
 /* components/iconbtn.css
-   Component: iconbtn. Classes: .bal-add, .bal-swap, .icon-btn.
+   Component: iconbtn. Classes: .bal-add, .bal-swap, .icon-btn, .icon-btn-photo, .icon-btn-ring-strong.
 
    Reads:
    Stand:  ui-kit/iconbtn.html
@@ -59,9 +59,60 @@
 /* A sprite mark is filled with the CURRENT colour, so the button has to hand it
    one. Without this the mark takes the ink the browser gives it. */
 .icon-btn .ic:has(use){color:var(--text-primary)}
+/* ---------------------------------------------- the face for a photograph ---
+   THE SECOND OF THE SIX KINDS ADOPTED THE ATOM ON 2026-08-06, and it is the
+   third face rather than a second control. `.sheet-close` is the dismiss on
+   every overlay in the product, 333 placements, and everything that separates
+   it from the circle above is the SURFACE it stands on: an event photograph
+   under a scrim. So its ground is the scrim rather than nothing, its edge and
+   its ink are the on-photo roles, and its two states deepen the scrim instead
+   of tinting brass, because a brass tint on a photograph is a colour nobody
+   chose competing with one nobody controls. `components/tokens.css` had already
+   named all three roles --scrim-photo, --line-on-photo, --text-on-photo.
+
+   IT KEEPS ITS OWN NAME AND components/dialog.css KEEPS THE PLACEMENT. The
+   element reads `class="icon-btn icon-btn-photo sheet-close"`: what it is, what
+   face it wears, and the hook the overlay positions it by. Absolute, 12 in from
+   the corner, above the head - that is the dialog's decision and stays in the
+   dialog's file, which is the line the whole atom migration is written on.
+
+   THE 44 FLOOR DELIBERATELY DOES NOT REACH IT, and that is preserved rather
+   than decided here. This control is 32 under a coarse pointer today, which
+   clears WCAG 2.5.8 (24) and not 2.5.5 (44), and the rule below excludes the
+   photo face from the atom's floor so that adopting the atom changes no pixel.
+   Whether the dismiss on an overlay should be 44 is `ui-kit/docs/backlog.md`
+   S39's question, and a migration is not the place to answer it quietly. */
+/* `line-height:inherit` IS THE ONE THING THE PROOF ASKED FOR, and it is here
+   rather than argued away. The atom's base carries `line-height:0`, which a
+   button holding nothing but an svg wants; this control never had it, and the
+   first before-and-after came back 55 screens and 165 elements changed on that
+   property alone. Nothing moved on screen - the mark is centred by flex inside
+   a fixed 32 box either way - and a diff of 165 is still a diff. So the face
+   takes back what it inherited, which measured 24px in every one of the 333
+   places it stands, and the migration stays at zero. A partition that changes a
+   computed value is a partition that made a decision it did not declare. */
+.icon-btn.icon-btn-photo{width:var(--control-32);height:var(--control-32);padding:0;line-height:inherit;color:var(--text-on-photo);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+.icon-btn.icon-btn-photo .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo)}
+.icon-btn.icon-btn-photo:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
+.icon-btn.icon-btn-photo:active{background:color-mix(in oklab,var(--scrim-photo) 72%,transparent);border-color:var(--line-on-photo-hover)}
+/* THE RING THE OVERLAY ASKS FOR, and the last declaration this control had left
+   in somebody else's file. `components/dialog.css` carried
+   `dialog.app-dialog.hiw-dialog .sheet-close:focus-visible{outline-color:...}`,
+   which is the system's brass ring replaced by a light one on exactly one head:
+   `.hiw-glow` puts a brass radial in the corner the ring lands in, so a brass
+   ring measures 2.52:1 there. Measured focused: rgb(255,255,255) here against
+   rgb(215,172,83) on every other head in the Vault, and rgb(33,31,25) against
+   rgb(104,79,24) in daylight.
+   THE FACT IS THE OVERLAY'S AND THE VOCABULARY IS THE ATOM'S, so the overlay
+   says WEAR IT by putting the class on the element, and this file says what it
+   is. That is the same split as the placement rule, one axis further in, and it
+   is what let `dialog.css` stop drawing this control at all: an outline-colour
+   is what a thing looks like, and the map says a region may not say that. */
+.icon-btn.icon-btn-ring-strong:focus-visible{outline-color:var(--text-strong)}
+
 /* WCAG 2.5.5 is about a finger and not about a narrow window: a touch laptop at
    1280 needs the same 44 a phone does, so the floor is bound to the POINTER. A
    fine pointer keeps 36, which clears 2.5.8 with room. */
 @media(pointer:coarse){
-  .icon-btn{min-width:var(--control-44);min-height:var(--control-44)}
+  .icon-btn:not(.icon-btn-photo){min-width:var(--control-44);min-height:var(--control-44)}
 }

@@ -1,7 +1,7 @@
 /* components/dialog.css
    Component: dialog. Classes: .app-dialog, .fine, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog.
 
-   Reads: --bevel-hair, --bevel-lit, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --line-on-photo, --line-on-photo-hover, --mask-solid, --result-won, --result-won-stone, --scrim, --scrim-photo, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-photo, --text-primary, --text-strong, --tint-brass-45
+   Reads: --bevel-hair, --bevel-lit, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --mask-solid, --result-won, --result-won-stone, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-45
    Stand:  ui-kit/dialog.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -94,9 +94,13 @@ dialog.app-dialog:not(.outcome-dialog) .sheet-sub{position:relative;z-index:var(
    caught by - a value nobody declared is a value somebody else chose - and the
    somebody here is a browser default that would swallow the first `currentColor`
    mark or label anyone puts in this control. */
-dialog.app-dialog .sheet-close{position:absolute;top:var(--space-12);right:var(--space-12);z-index:var(--z-close);width:var(--control-32);height:var(--control-32);display:flex;align-items:center;justify-content:center;padding:0;color:var(--text-on-photo);border-radius:var(--radius-pill);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);cursor:pointer;transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
-dialog.app-dialog .sheet-close .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo)}
-dialog.app-dialog .sheet-close:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
+/* WHERE IT SITS, AND SINCE 2026-08-06 THAT IS ALL THIS FILE SAYS ABOUT IT.
+   The disc itself is `.icon-btn.icon-btn-photo` in components/iconbtn.css: it
+   is the atom every icon-only press in the product is, wearing the face for a
+   photograph. What is left here is the overlay's own decision, which is that
+   the dismiss floats 12 in from the top right corner above the head. A region
+   may say where an icon button sits and may not say what one looks like. */
+dialog.app-dialog .sheet-close{position:absolute;top:var(--space-12);right:var(--space-12);z-index:var(--z-close)}
 /* PRESS, AND IT DOES NOT TAKE --bg-pressed. This is the icon button the system's quiet
    press would break, and course-chrome.css already wrote the reason down: a state
    answers to the GROUND it stands on, not to the family it belongs to. The disc is a
@@ -111,7 +115,6 @@ dialog.app-dialog .sheet-close:hover{background:color-mix(in oklab,var(--scrim-p
    it reads 17.1:1 and 11.3:1, up from 10.3 and 3.5 at rest. The border repeats the
    hover's rather than being left out, because a touch screen never hovers and this
    button is a mobile sheet's only way out. */
-dialog.app-dialog .sheet-close:active{background:color-mix(in oklab,var(--scrim-photo) 72%,transparent);border-color:var(--line-on-photo-hover)}
 /* THE ONE PLACE THE MERGED CONTROL STILL ANSWERS DIFFERENTLY, AND THE GROUND IS
    THE WHOLE ARGUMENT. Everywhere else this disc stands on a dialog head that
    THEMES, and the product's brass ring reads on it: measured at the button's own
@@ -130,7 +133,12 @@ dialog.app-dialog .sheet-close:active{background:color-mix(in oklab,var(--scrim-
    merge, because every rule about this control now lives in one file and the scope
    names the place. `.win-dialog` and `.loss-dialog` are already scoped from here
    on the same footing. */
-dialog.app-dialog.hiw-dialog .sheet-close:focus-visible{outline-color:var(--text-strong)}
+/* The ring this head needs is `.icon-btn-ring-strong` in components/iconbtn.css
+   since 2026-08-06, and the overlay asks for it by putting the class on the
+   element. The REASON is still this file's - .hiw-glow is what makes a brass
+   ring unreadable in that corner - and the reason is written where the rule
+   used to be. An outline-colour is what a control looks like, so it could not
+   stay here: a region may say where an icon button sits and not what it is. */
 dialog.app-dialog.signin-dialog .sheet-body{padding:var(--space-16) var(--space-16) var(--space-16);gap:var(--space-12)}
 dialog.app-dialog.signin-dialog .fine a{color:var(--text-brass);text-decoration:none;border-bottom:1px solid var(--tint-brass-45);padding-bottom:.4px}
 dialog.app-dialog.signin-dialog .fine a:hover{border-bottom-color:var(--text-brass)}

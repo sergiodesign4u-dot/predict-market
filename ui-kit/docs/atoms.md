@@ -218,6 +218,53 @@ moved the wrong way.
 
 ---
 
+## The first adoption, and the distance falls: 18 to 17
+
+**`.sheet-close` is `.icon-btn.icon-btn-photo` since 2026-08-06.** 333 dismissals on 105
+screens, the second of the six icon-button kinds, and the first migration in this run that
+moved markup: every one of them now reads `class="icon-btn icon-btn-photo sheet-close"` in
+both trees. What it is, what face it wears, and the hook the overlay positions it by.
+
+**The face is a face and not a second control.** Everything separating the close disc from
+the ghost circle is the SURFACE it stands on: an event photograph under a scrim. So the
+ground is the scrim, the edge and the ink are the on-photo roles, and its two states deepen
+the scrim rather than tinting brass, because a brass tint on a photograph is a colour nobody
+chose competing with one nobody controls. `components/tokens.css` had already named all
+three roles.
+
+**`components/dialog.css` keeps where it sits and nothing else**: absolute, 12 in from the
+corner, above the head. That is the line the whole migration is written on.
+
+**One declaration nearly stayed behind, and moving it is what made the number fall.** The
+overlay carried `dialog.app-dialog.hiw-dialog .sheet-close:focus-visible{outline-color:...}`
+- the ring goes light on exactly one head, because `.hiw-glow` puts a brass radial in the
+corner the ring lands in and a brass ring measures 2.52:1 there. **An outline-colour is what
+a control looks like**, so by this document's own rule it could not stay in a region. The
+fact is the overlay's and the vocabulary is the atom's: `.icon-btn-ring-strong` says what a
+light ring IS, and the overlay asks for it by putting the class on the element, 192 of them
+across both trees. Only then did `dialog` leave the icon button's column: **18 to 17**.
+
+**And the proof asked for one line.** The first before-and-after came back 55 screens and
+165 elements changed, all of them `lineHeight: 24px -> 0px`: the atom's base carries
+`line-height:0`, which a button holding nothing but an svg wants, and this control never had
+it. Nothing moved on screen, and a diff of 165 is still a diff, so the face takes back what
+it inherited. **A partition that changes a computed value is a partition that made a
+decision it did not declare.** Re-measured: 525 snapshots, five widths, both trees, 0 differ.
+
+**The 44 floor deliberately does not reach this face**, and that is preserved rather than
+decided. The dismiss is 32 under a coarse pointer today, which clears WCAG 2.5.8 and not
+2.5.5, and the atom's floor excludes the photo face so that adopting it changes no pixel.
+Whether it should be 44 is S39's question; a migration is not the place to answer it quietly.
+
+**The census learned that order matters.** Its reader returns on the first row whose classes
+match, which was harmless while every kind owned a name nothing else used. It stopped being
+harmless the moment a control adopted an atom: the generic `.icon-btn` row would have
+claimed all 333 closes and `close, a sheet` would have gone idle, which is what gate 38 said
+out loud. A row naming a FACE is more specific than one naming the atom, so it comes first,
+and every kind that adopts an atom from here on joins that block.
+
+---
+
 ## The decision this document still does not settle
 
 - **Is a social mark a `navitem` or an `iconbutton`?** It is an `<a>` with an icon and no

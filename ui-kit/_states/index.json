@@ -229,7 +229,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "334039d4552f11c5"
+  "sha": "dc8f08c3e207253e"
  },
  {
   "component": "betpanel",
@@ -461,7 +461,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "334039d4552f11c5"
+  "sha": "dc8f08c3e207253e"
  },
  {
   "component": "betpanel",
@@ -1021,7 +1021,7 @@
    "ui-kit/specimens/betpanel-sheet.html",
    "ui-kit/specimens/button-census.html"
   ],
-  "sha": "a1d6d53717b2e246"
+  "sha": "0342e437fe3d1bd6"
  },
  {
   "component": "betpanel",
@@ -1242,7 +1242,7 @@
    "ui-kit/specimens/betpanel-more.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "e5d6c792c21db5a3"
+  "sha": "da96a7d6b0ce72fb"
  },
  {
   "component": "betpanel",
@@ -1427,7 +1427,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-more.html"
   ],
-  "sha": "d4cfa37ba8ba40fe"
+  "sha": "561ea2e91610bed9"
  },
  {
   "component": "bottomnav",
@@ -1994,7 +1994,7 @@
    "ui-kit/specimens/profile-identity.html",
    "ui-kit/specimens/state-empty-filters.html"
   ],
-  "sha": "4b7aae0a8fc0feca"
+  "sha": "9781909d8b80b282"
  },
  {
   "component": "button",
@@ -2189,7 +2189,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "547bd148b1aac8b5"
+  "sha": "57b4b2999b97ab0c"
  },
  {
   "component": "button",
@@ -2411,7 +2411,7 @@
    "ui-kit/specimens/profile-identity.html",
    "ui-kit/specimens/state-empty-filters.html"
   ],
-  "sha": "2720e2d9264cf684"
+  "sha": "eb99e786f174496e"
  },
  {
   "component": "card",
@@ -3020,7 +3020,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "bd51db26e2effd05"
+  "sha": "3e833d3a55351c20"
  },
  {
   "component": "card",
@@ -3184,7 +3184,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "604a7aa658ee7e27"
+  "sha": "3c1d8e8836f9b6ee"
  },
  {
   "component": "catnav",
@@ -4861,7 +4861,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "8bd03d0e35e84042"
+  "sha": "8748b41d2580df89"
  },
  {
   "component": "comments",
@@ -5091,7 +5091,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "8bd03d0e35e84042"
+  "sha": "8748b41d2580df89"
  },
  {
   "component": "cookie-consent",
@@ -5466,7 +5466,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "15b4714a50ad880a"
+  "sha": "4c4c5204a76d503b"
  },
  {
   "component": "cookie-consent",
@@ -7472,216 +7472,6 @@
  {
   "component": "dialog",
   "id": "g1",
-  "el": "button.sheet-close",
-  "scope": "dialog.signin-dialog",
-  "specimen": "dialog-shared",
-  "classes": [
-   "amount-input",
-   "amount-row",
-   "app-case",
-   "app-dialog",
-   "btn",
-   "btn-block",
-   "btn-md",
-   "btn-primary",
-   "btn-secondary",
-   "field-label",
-   "fine",
-   "ic",
-   "kit-dlgs",
-   "protect",
-   "prov-apple",
-   "prov-google",
-   "prov-x",
-   "quick",
-   "sel",
-   "sheet-body",
-   "sheet-close",
-   "sheet-head",
-   "sheet-sub",
-   "signin-dialog",
-   "widget-box"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 55,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 11
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 55,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 11
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 55,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 11
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 55,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 11
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 55,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 11
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 55,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 11
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 55,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 11
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 55,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 11
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "signin",
-   "button-census",
-   "outcome-overlays"
-  ],
-  "covers": [
-   "button.sheet-close @dialog.signin-dialog",
-   "button.sheet-close @dialog.app-dialog",
-   "button.kit-here.sheet-close @dialog.signin-dialog",
-   "button.sheet-close @dialog.win-dialog",
-   "button.sheet-close @dialog.loss-dialog"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/button.css",
-   "components/dialog.css",
-   "components/fonts.css",
-   "components/input.css",
-   "components/notice.css",
-   "components/quick.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/button-census.html",
-   "ui-kit/specimens/dialog-shared.html",
-   "ui-kit/specimens/outcome-overlays.html",
-   "ui-kit/specimens/signin.html"
-  ],
-  "sha": "bc68263342705a46"
- },
- {
-  "component": "dialog",
-  "id": "g2",
   "el": "a",
   "scope": "dialog.signin-dialog",
   "specimen": "dialog-shared",
@@ -7698,6 +7488,8 @@
    "field-label",
    "fine",
    "ic",
+   "icon-btn",
+   "icon-btn-photo",
    "kit-dlgs",
    "protect",
    "prov-apple",
@@ -7869,6 +7661,7 @@
    "components/button.css",
    "components/dialog.css",
    "components/fonts.css",
+   "components/iconbtn.css",
    "components/input.css",
    "components/notice.css",
    "components/quick.css",
@@ -7879,199 +7672,11 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "d0d7c6813300e801"
+  "sha": "9e39e2b6e507bed4"
  },
  {
   "component": "dialog",
-  "id": "g5",
-  "el": "button.sheet-close",
-  "scope": "dialog.hiw-dialog",
-  "specimen": "hiw-dialog",
-  "classes": [
-   "app-case",
-   "app-dialog",
-   "hiw-arrow",
-   "hiw-body",
-   "hiw-dialog",
-   "hiw-faq",
-   "hiw-full",
-   "hiw-glow",
-   "hiw-hero",
-   "hiw-hero-inner",
-   "hiw-ic",
-   "hiw-label",
-   "hiw-sec",
-   "hiw-sec-txt",
-   "hiw-tagline",
-   "ic",
-   "kit-dlgs",
-   "sheet-close"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 45,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 1
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 45,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 1
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 45,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 1
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | solid 2px rgb(255, 255, 255) 2px",
-    "w": 48,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 45,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 1
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 45,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 1
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 45,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 1
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | solid 2px rgb(33, 31, 25) 2px",
-    "w": 48,
-    "h": 56,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button.sheet-close @dialog.hiw-dialog"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/dialog.css",
-   "components/fonts.css",
-   "components/hiw-dialog.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/hiw-dialog.html"
-  ],
-  "sha": "ad5bb690c857b6c3"
- },
- {
-  "component": "dialog",
-  "id": "g6",
+  "id": "g2",
   "el": "a.hiw-full",
   "scope": "dialog.hiw-dialog",
   "specimen": "hiw-dialog",
@@ -8092,6 +7697,9 @@
    "hiw-sec-txt",
    "hiw-tagline",
    "ic",
+   "icon-btn",
+   "icon-btn-photo",
+   "icon-btn-ring-strong",
    "kit-dlgs",
    "sheet-close"
   ],
@@ -8249,17 +7857,18 @@
    "components/dialog.css",
    "components/fonts.css",
    "components/hiw-dialog.css",
+   "components/iconbtn.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "ad5bb690c857b6c3"
+  "sha": "d4a4272b6949ac24"
  },
  {
   "component": "dialog",
-  "id": "g8",
+  "id": "g3",
   "el": "a",
   "scope": "dialog.win-dialog",
   "specimen": "outcome-overlays",
@@ -8273,6 +7882,8 @@
    "btn-secondary",
    "field-label",
    "fine",
+   "icon-btn",
+   "icon-btn-photo",
    "kit-dlgs",
    "loss-dialog",
    "outcome-dialog",
@@ -8439,6 +8050,7 @@
    "components/button.css",
    "components/dialog.css",
    "components/fonts.css",
+   "components/iconbtn.css",
    "components/input.css",
    "components/notice.css",
    "components/tokens.css",
@@ -8447,7 +8059,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/outcome-overlays.html"
   ],
-  "sha": "a3444501233dbf46"
+  "sha": "6cf5c327e602bfb9"
  },
  {
   "component": "event-detail",
@@ -8675,7 +8287,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "e48233b003d4f223"
+  "sha": "8607a10ee590f44d"
  },
  {
   "component": "filters",
@@ -9971,7 +9583,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "1875d0636d6bebd3"
+  "sha": "db42f1edb801a4b7"
  },
  {
   "component": "header",
@@ -10175,7 +9787,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "221788efaba8194e"
+  "sha": "a41200dad7a64b81"
  },
  {
   "component": "header",
@@ -10372,7 +9984,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "f6070b68f0b2e2e6"
+  "sha": "2051399b6a5ecb17"
  },
  {
   "component": "header",
@@ -10569,7 +10181,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "f6070b68f0b2e2e6"
+  "sha": "2051399b6a5ecb17"
  },
  {
   "component": "header",
@@ -10766,7 +10378,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "f6070b68f0b2e2e6"
+  "sha": "2051399b6a5ecb17"
  },
  {
   "component": "header",
@@ -10855,7 +10467,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "f6070b68f0b2e2e6"
+  "sha": "2051399b6a5ecb17"
  },
  {
   "component": "hero",
@@ -11975,6 +11587,9 @@
    "hiw-sec-txt",
    "hiw-tagline",
    "ic",
+   "icon-btn",
+   "icon-btn-photo",
+   "icon-btn-ring-strong",
    "kit-dlgs",
    "sheet-close"
   ],
@@ -12132,13 +11747,14 @@
    "components/dialog.css",
    "components/fonts.css",
    "components/hiw-dialog.css",
+   "components/iconbtn.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "ad5bb690c857b6c3"
+  "sha": "d4a4272b6949ac24"
  },
  {
   "component": "iconbtn",
@@ -12182,6 +11798,7 @@
    "hiw-btn",
    "ic",
    "icon-btn",
+   "icon-btn-photo",
    "idrow",
    "kit-anat",
    "kit-anat-ctl",
@@ -12385,11 +12002,264 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "a279fda97cd2b2dd"
+  "sha": "6bea19b706dd70b8"
  },
  {
   "component": "iconbtn",
   "id": "g2",
+  "el": "button.kit-here.icon-btn.icon-btn-photo.sheet-close",
+  "scope": "dialog.signin-dialog",
+  "specimen": "button-census",
+  "classes": [
+   "app-case",
+   "app-dialog",
+   "app-header",
+   "bal-add",
+   "bal-toggle",
+   "bet-sheet",
+   "bookmark-btn",
+   "card",
+   "card-body",
+   "cat-layout",
+   "cat-main",
+   "cc-actions",
+   "cc-banner",
+   "cc-btn",
+   "cc-inner",
+   "cmt",
+   "cmt-actions",
+   "cmt-body",
+   "cmt-compose",
+   "cmt-list",
+   "cmt-post",
+   "desk-only",
+   "device",
+   "ed-actions",
+   "ed-head",
+   "ed-layout",
+   "ed-main",
+   "ed-tabwrap",
+   "edit",
+   "feed",
+   "feed-inner",
+   "grid",
+   "hiw-btn",
+   "ic",
+   "icon-btn",
+   "icon-btn-photo",
+   "idrow",
+   "kit-anat",
+   "kit-anat-ctl",
+   "kit-anat-head",
+   "kit-anat-meta",
+   "kit-anat-why",
+   "kit-chrome-demo",
+   "kit-col",
+   "kit-dlgs",
+   "kit-here",
+   "kit-nude",
+   "kit-row",
+   "kit-stack",
+   "left",
+   "load-more",
+   "meta",
+   "row",
+   "sheet-close",
+   "sheet-grab",
+   "sheet-head",
+   "signin-dialog",
+   "toast",
+   "toast-close",
+   "toast-group",
+   "toast-inner",
+   "utility"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 56,
+    "h": 45,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 56,
+    "h": 45,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 56,
+    "h": 45,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 56,
+    "h": 45,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 56,
+    "h": 45,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 56,
+    "h": 45,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 56,
+    "h": 45,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 56,
+    "h": 45,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "button.kit-here.icon-btn.icon-btn-photo.sheet-close @dialog.signin-dialog",
+   "button.icon-btn.icon-btn-photo.sheet-close @dialog.signin-dialog",
+   "button.icon-btn.icon-btn-photo.sheet-close @dialog.app-dialog",
+   "button.icon-btn.icon-btn-photo.sheet-close @dialog.win-dialog",
+   "button.icon-btn.icon-btn-photo.sheet-close @dialog.loss-dialog"
+  ],
+  "also": [
+   "dialog-shared",
+   "outcome-overlays"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/betpanel.css",
+   "components/card.css",
+   "components/comments.css",
+   "components/cookie-consent.css",
+   "components/dialog.css",
+   "components/event-detail.css",
+   "components/feed.css",
+   "components/fonts.css",
+   "components/header.css",
+   "components/iconbtn.css",
+   "components/loadmore.css",
+   "components/profile.css",
+   "components/tabs.css",
+   "components/toast.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/button-census.html",
+   "ui-kit/specimens/dialog-shared.html",
+   "ui-kit/specimens/outcome-overlays.html"
+  ],
+  "sha": "bcf0ff2b15bac53e"
+ },
+ {
+  "component": "iconbtn",
+  "id": "g3",
   "el": "button.icon-btn",
   "scope": "",
   "specimen": "button-outcome-row",
@@ -12569,7 +12439,199 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "bd6c025b3def7729"
+  "sha": "a7cae321c67201ac"
+ },
+ {
+  "component": "iconbtn",
+  "id": "g6",
+  "el": "button.icon-btn.icon-btn-photo.icon-btn-ring-strong.sheet-cl",
+  "scope": "dialog.hiw-dialog",
+  "specimen": "hiw-dialog",
+  "classes": [
+   "app-case",
+   "app-dialog",
+   "hiw-arrow",
+   "hiw-body",
+   "hiw-dialog",
+   "hiw-faq",
+   "hiw-full",
+   "hiw-glow",
+   "hiw-hero",
+   "hiw-hero-inner",
+   "hiw-ic",
+   "hiw-label",
+   "hiw-sec",
+   "hiw-sec-txt",
+   "hiw-tagline",
+   "ic",
+   "icon-btn",
+   "icon-btn-photo",
+   "icon-btn-ring-strong",
+   "kit-dlgs",
+   "sheet-close"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 45,
+    "h": 56,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 1
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 45,
+    "h": 56,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 1
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 45,
+    "h": 56,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 1
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | solid 2px rgb(255, 255, 255) 2px",
+    "w": 48,
+    "h": 56,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 45,
+    "h": 56,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 1
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "oklab(0 0 0 / 0.55) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 45,
+    "h": 56,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 1
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "oklab(0 0 0 / 0.72) | none | rgba(255, 255, 255, 0.32) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 45,
+    "h": 56,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 1
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "oklab(0 0 0 / 0.34) | none | rgba(255, 255, 255, 0.16) | 1px | rgb(255, 255, 255) | 100px | none | none | 1 | solid 2px rgb(33, 31, 25) 2px",
+    "w": 48,
+    "h": 56,
+    "pad": {
+     "top": 12,
+     "right": 12,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "button.icon-btn.icon-btn-photo.icon-btn-ring-strong.sheet-cl @dialog.hiw-dialog"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/dialog.css",
+   "components/fonts.css",
+   "components/hiw-dialog.css",
+   "components/iconbtn.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/hiw-dialog.html"
+  ],
+  "sha": "d4a4272b6949ac24"
  },
  {
   "component": "input",
@@ -12590,6 +12652,8 @@
    "field-label",
    "fine",
    "ic",
+   "icon-btn",
+   "icon-btn-photo",
    "kit-dlgs",
    "protect",
    "prov-apple",
@@ -12762,6 +12826,7 @@
    "components/button.css",
    "components/dialog.css",
    "components/fonts.css",
+   "components/iconbtn.css",
    "components/input.css",
    "components/notice.css",
    "components/quick.css",
@@ -12773,7 +12838,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "5e9503df2f09c40a"
+  "sha": "27dad577288f3b0b"
  },
  {
   "component": "input",
@@ -12955,7 +13020,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "adfea7546d4ff099"
+  "sha": "659cbfbbfdab952b"
  },
  {
   "component": "input",
@@ -13135,7 +13200,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "adfea7546d4ff099"
+  "sha": "659cbfbbfdab952b"
  },
  {
   "component": "input",
@@ -13364,7 +13429,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "9c67cedf0b178137"
+  "sha": "a8d115dcd8702605"
  },
  {
   "component": "input",
@@ -13563,7 +13628,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "99bc7475c685a733"
+  "sha": "78d3bd6e99fad7c5"
  },
  {
   "component": "loadmore",
@@ -13747,7 +13812,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/loadmore.html"
   ],
-  "sha": "e8e015cab7b72911"
+  "sha": "3edac2d848259171"
  },
  {
   "component": "market",
@@ -14162,7 +14227,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "1448d059f7b9301c"
+  "sha": "2b1aa2052f576b54"
  },
  {
   "component": "quick",
@@ -14347,7 +14412,7 @@
    "ui-kit/specimens/input-states.html",
    "ui-kit/specimens/quick-amounts.html"
   ],
-  "sha": "51f6baa32c7e83c5"
+  "sha": "b9cbe85f12dd6d79"
  },
  {
   "component": "quick",
@@ -14532,7 +14597,7 @@
    "ui-kit/specimens/input-states.html",
    "ui-kit/specimens/quick-amounts.html"
   ],
-  "sha": "51f6baa32c7e83c5"
+  "sha": "b9cbe85f12dd6d79"
  },
  {
   "component": "related",
@@ -16442,7 +16507,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/toast.html"
   ],
-  "sha": "3bef82ba06139aaf"
+  "sha": "53ece691338ef888"
  },
  {
   "component": "toc",
@@ -17522,7 +17587,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "af79659f373fdcd9"
+  "sha": "6d13aeff980482e4"
  },
  {
   "component": "yesno",
@@ -17713,7 +17778,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "1a108ed129417c93"
+  "sha": "af35bc410408f92b"
  },
  {
   "component": "yesno",
@@ -17904,7 +17969,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "1a108ed129417c93"
+  "sha": "af35bc410408f92b"
  },
  {
   "component": "yesno",
@@ -18121,6 +18186,6 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "05b2967a78085bb8"
+  "sha": "671a0007fc78c23b"
  }
 ]
