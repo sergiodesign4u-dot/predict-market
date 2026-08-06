@@ -1,7 +1,7 @@
 /* components/chip.css
-   Component: chip. Classes: .chip, .chip-amount, .chip-quiet, .chip-rail.
+   Component: chip. Classes: .chip, .chip-amount, .chip-cnt, .chip-ic, .chip-lane, .chip-nav, .chip-quiet, .chip-rail.
 
-   Reads:
+   Reads: --bevel-notice, --bg-chip, --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --glow-brass, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
    Stand:  ui-kit/chip.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -113,14 +113,140 @@
    on a press. The edge is written where the face HAS one: the rail chip is
    borderless at rest and stays borderless, because the recipe colours what a
    chip already has and adds no parts. */
-.app-case .chip.sel,.app-case [aria-current="page"] .chip-quiet{background:var(--tint-brass-09);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
-.app-case .chip-amount.sel,.app-case [aria-current="page"] .chip-quiet{border-color:var(--tint-brass-45)}
+
+/* ============================== the last two faces, 2026-08-07 (S46, S41) ===
+   THE FILE THAT DREW THE OTHER TWO WAS components/catnav.css, and it drew a
+   third that is not this atom at all until it was measured. Both widths, both
+   themes, on the screens each one actually stands on:
+
+     nav    285 placements, 57 screens - the category strip at the top of every
+            feed. --bg-chip on a --bevel-notice edge, a 10 corner, 14px
+            semibold, 12/20. It is the loudest chip in the product because it
+            is the one thing on a phone that changes what the page is ABOUT,
+            and it stands on the feed plate with nothing else competing.
+     lane   234 placements, 24 screens - the sub-category rail, and it is the
+            first control in this system whose SURFACE changes with the window.
+
+   THE LANE IS THE FINDING. Every face on this map so far has been an answer to
+   the surface a control stands on, and each of them has had ONE surface. This
+   one has two. At 380 it is a hairline pill in a horizontal scroller, 114x41,
+   `--border-hairline` and a 100px corner, which is `quiet` with an edge. Above
+   900 the rail becomes a sticky 214px COLUMN and the same control is a
+   full-width row, 206x41, a transparent edge, a 10px corner and the count
+   pushed to the far side by `space-between`. Neither reading is the whole
+   control, and reading only the desktop one is what filed it under `navitem`
+   for a day: a nav item is transparent with NO edge and NO corner, and this
+   thing carries a 1px band and a corner at both widths. It is a chip, it is its
+   own face, and THE FACE CARRIES THE MEDIA QUERY, because what changes with the
+   window is the surface and not the placement. `components/catnav.css` keeps
+   the rail - sticky, 214px, capped to the window, scrolling - and says nothing
+   about the control in it any more.
+
+   AND THE SUB-FILTER WAS NOT A FACE, IT WAS FOUR PIXELS. `.feed-subfilter
+   button`, 5 placements on one screen, measured against the 525 `quiet` chips
+   in the header: same transparent ground, same transparent 1px band, same 100px
+   corner, same 13px, same 600, same `--text-muted`, same 12px of side padding,
+   the same width to three decimals. It differs by FOUR PIXELS of vertical
+   padding, 4 against 8, and by nothing else, so it is `quiet` and it adopts:
+   30px tall to 38, and its current chip 600 to 700, which is the recipe below.
+   Five elements on one screen against 525 is not a face, it is an exception
+   with no argument, and S35 settled the same question the same way.
+
+   AND THE TWO PARTS CAME WITH THEM, WHICH IS NOT WHAT THIS PASS FIRST DECIDED.
+   `.cat-ic` and `.cnt` were left in components/catnav.css on the `.bn-bal`
+   precedent - a figure inside a nav slot stayed with the bottom nav - and gate
+   24 answered within the minute: `chip contains catnav (.cat-ic, .cnt)`, a true
+   reading, because a `.cat-ic` really does stand inside a `.chip-nav`. With
+   `catnav contains chip` already true that is a CYCLE, and AN ATOM THAT CONTAINS
+   A COMPONENT IS NOT AN ATOM: `chip` computed L1 from its own stand and L3 from
+   the product. The edge could have been declared away. It was not, because the
+   reading was right and the NAMES were wrong: both parts are sized by the
+   control, take their colour from `currentColor`, and change when the control is
+   hovered or current. That is what a part of a FACE does. `.chip-ic` and
+   `.chip-cnt`, 580 and 589 spellings across four trees, and the cycle is gone
+   instead of excused.
+   `.bn-bal` stays exactly where it is and the difference is measurable rather
+   than a matter of taste: nothing anywhere changes it when its slot is hovered
+   or current. It is a figure the region puts inside a control. These two are
+   not. */
+.app-case .chip-nav{display:inline-flex;align-items:center;gap:var(--space-12);min-height:0;background:var(--bg-chip);border:1px solid var(--bevel-notice);border-radius:var(--radius-10);color:var(--text-chip-hover);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12) var(--space-20);box-shadow:none;white-space:nowrap}
+.app-case .chip-nav:hover{border-color:var(--border-brass-hover);color:var(--text-strong);background:var(--bg-control-hover)}
+/* THE ONE RING IN THIS FILE, and it is a measured defect rather than a taste.
+   The strip scrolls sideways, so its <ul> is a scroll container and clips at its
+   own padding box; that padding is --space-2 and the chip fills the content box
+   exactly, top and bottom. The default ring in base.css sits --ring OUTSIDE the
+   chip, so every pixel of its top and bottom run falls outside the clip, and it
+   rendered as two vertical bars with no top or bottom edge on the one control a
+   keyboard user reaches first. Turning the offset inward puts the whole ring on
+   the chip's own ground, graphite at rest and a brass wash when it is current,
+   and --focus-ring reads on both. */
+.app-case .chip-nav:focus-visible{outline-offset:calc(var(--ring) * -1)}
+/* Carried over verbatim rather than dropped, because a rule that draws nothing
+   today is not the same as a rule that was measured and found dead. This one
+   only opens a containing block and nothing in the chip is positioned against
+   it; it came from components/catnav.css with the face and it is written here so
+   that whoever deletes it deletes it on purpose. */
+@media(max-width:640px){
+  .app-case .chip-nav{position:relative}
+}
+.app-case .chip-lane{display:inline-flex;align-items:center;gap:var(--space-8);white-space:nowrap;background:transparent;border:1px solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);font-size:var(--text-13);font-weight:var(--weight-medium);padding:var(--space-8) var(--space-12);min-height:var(--control-36)}
+.app-case .chip-lane:hover{border-color:var(--color-action);background:color-mix(in oklab,var(--color-action) 10%,transparent)}
+/* THE SECOND SURFACE. Two of the four rules the old file wrote inside this
+   query were restatements of the hover and the current state, and both were
+   dead by specificity before they were dead by the cascade: a media query adds
+   no weight, so `.subcat button:hover` at (0,1,2) already beat the block's own
+   (0,1,1) from outside it. The same holds here at (0,3,0) against (0,2,0), and
+   the chosen chip is settled by the one rule below, so the query says only what
+   the column changes. */
+@media(min-width:900px){
+  .app-case .chip-lane{width:100%;justify-content:space-between;border-color:transparent;border-radius:var(--radius-10);padding:var(--space-8) var(--space-8)}
+}
+/* THE CHOSEN CHIP, ONE RULE FOR THE WHOLE FAMILY, and since 2026-08-07 it names
+   the ATOM rather than a face. --tint-brass-09 inside a --tint-brass-45 edge
+   with --text-brass-chip, bold, and a halo that is a glow with negative spread
+   rather than a lift, so there is nothing here to flatten on a press. The edge
+   is written where the face HAS one: the rail chip is borderless at rest and
+   stays borderless, because the recipe colours what a chip already has and adds
+   no parts.
+   THE LANE IS THE LAST SPELLING S35 COUNTED AND THE ONLY ONE THAT WAS STILL
+   LIVE. It said chosen with 18 per cent of --color-action in oklab, a solid
+   --color-action edge and semibold, because it was filed under a different atom
+   on the day the other four were unified. Adopting the recipe is the whole
+   point of adopting the atom: one tint, one edge, one weight, one halo, and the
+   ink goes from --text-primary to --text-brass-chip. */
+.app-case .chip.sel,.app-case [aria-current="page"] .chip{background:var(--tint-brass-09);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
+.app-case .chip-amount.sel,.app-case [aria-current="page"] .chip{border-color:var(--tint-brass-45)}
 /* The press, and each of these has to out-reach the chosen rule above it or it
    would be invisible on exactly the chip a person is standing on - which on a
    category strip is the one most likely to be tapped, because tapping it is how
    you get back to the top of it. Only the ground moves, so a chosen chip keeps
-   its brass edge, its brass label and its halo. */
-.app-case .chip-amount:active:not(.sel),.app-case [aria-current="page"] .chip-quiet:active,.app-case .chip-quiet:active{background:var(--bg-pressed)}
+   its brass edge, its brass label and its halo. `.sel` is excluded and
+   `[aria-current]` is not, which is the state the product is actually in and is
+   backlog S38: a chip chosen by a class answers nothing under the finger
+   anywhere, and a chip chosen by navigation answers everywhere. */
+.app-case .chip:active:not(.sel),.app-case [aria-current="page"] .chip:active{background:var(--bg-pressed)}
 @media(pointer:coarse){
-  .app-case .chip-quiet{min-height:var(--control-44)}
+  .app-case .chip-quiet,.app-case .chip-nav{min-height:var(--control-44)}
 }
+
+/* ------------------------------------------------------- the two parts ------
+   A CATEGORY'S MARK. Outline, monochrome, and never the category's own colour,
+   because a category is not an outcome. It is drawn in `currentColor`, so the
+   chip's ink is its ink and the chosen chip's brass reaches it without a rule;
+   what it keeps for itself is one step of weight, .9 at rest against 1 when the
+   control is pointed at or is the one you are standing on.
+   THE OPACITY IS DELIBERATE HERE AND IS NOT THE THING `--chrome-muted` FORBIDS.
+   That rule is about TEXT: a label faded with opacity is a colour no contrast
+   sweep can read, so quiet has to be a colour. This is a monochrome glyph with
+   no contrast floor to clear, and the two steps are a weight rather than a
+   quiet. */
+.chip-ic{width:var(--icon-18);height:var(--icon-18);flex:0 0 auto;fill:currentColor;stroke:none;opacity:.9}
+.app-case .chip-nav:hover .chip-ic,.app-case [aria-current="page"] .chip-nav .chip-ic{opacity:1}
+/* THE COUNT, and it is the sub-category rail's whole argument: a number tells a
+   person which branch is worth opening before they open it. Mono, because it is
+   a figure and figures line up; its own ground and hairline, because it has to
+   read as a second thing inside the label rather than as part of it. It follows
+   the chip it sits in into the chosen state, which is the reason it is here and
+   not with the rail. */
+.app-case .chip-cnt{font-size:var(--text-11);color:var(--text-muted);font-family:var(--font-mono);background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-6);padding:var(--space-2) var(--space-8)}
+.app-case [aria-current="page"] .chip-cnt{color:var(--text-brass);background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:color-mix(in oklab,var(--color-action) 45%,transparent)}

@@ -83,12 +83,14 @@
   ],
   "made": [
    "catnav",
+   "chip",
    "filters",
    "state-block",
    "button"
   ],
   "via": {
    "catnav": ".subcat-head",
+   "chip": ".chip",
    "filters": ".filter-menu",
    "state-block": ".state-block",
    "button": ".btn"

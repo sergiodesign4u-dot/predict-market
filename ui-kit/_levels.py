@@ -287,6 +287,20 @@ STATIC = {
                  "and the balance figure one of them carries. The slot went to navitem with its "
                  "hover, its press and its current-page state, and a BAND is not pressed. Same "
                  "reason as notice and account below, one migration later",
+    # AND A THIRD ON 2026-08-07, BY THE SAME KIND OF MOVE AND A LARGER ONE. This
+    # file drew THREE controls - the category strip's chip, the sub-category
+    # rail's and the Trending sub-filter's - and all three were one atom with two
+    # faces. They went to chip.css with their hovers, their presses, their
+    # current-page state and, after gate 24 refused the first cut, their two
+    # parts as well.
+    "catnav": "a band and a rail, and since 2026-08-07 nothing else: the strip under the "
+              "header, the sticky 214px column on a category page, four scrollers with "
+              "their bars hidden, a groove along the strip's bottom edge and the page "
+              "gutters. Every chip in it went to chip.css as `.chip-nav`, `.chip-quiet` "
+              "and `.chip-lane`, and the mark and the count went with them as `.chip-ic` "
+              "and `.chip-cnt`, because gate 24 read `chip contains catnav` and an atom "
+              "that contains a component is not an atom. What is left answers no pointer, "
+              "which is the same shape as notice, account and bottomnav above",
     "quick": "a ROW, and since 2026-08-06 that is the whole of it: a flex line that wraps, and a bet panel pushing it to the right. The amounts went to chip.css as `.chip-amount`, the face a chip wears when it is one of the things you fill in on a sheet, and they took the hover and the press with them. A file holding one layout rule for one row is the shape backlog S41 describes about loadmore, and this file has joined it",
     "profile": "the identity row, the reputation grid and the gallery. Its one control, Edit, went to button on 2026-08-06 and took its hover and its press with it: one placement is the wrong size for an exception, so the element takes the family's small step. What is left is a head and a rail, and neither is pressed",
     "event-detail": "the head, the facts strip and the sections of one event. The three "

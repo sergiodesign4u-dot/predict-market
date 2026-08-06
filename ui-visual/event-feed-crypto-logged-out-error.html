@@ -321,27 +321,27 @@ document.addEventListener('click', function (e) {
       <div class="feed-inner">
         <nav class="cat-nav" aria-label="Categories (second level)">
           <ul>
-            <li><a href="event-feed.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></button></a></li>
-            <li><a href="event-feed-politics.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></button></a></li>
-            <li aria-current="page"><a href="event-feed-crypto.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></button></a></li>
-            <li><a href="event-feed-culture.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></button></a></li>
-            <li><a href="event-feed-general.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></button></a></li>
+            <li><a href="event-feed.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></button></a></li>
+            <li><a href="event-feed-politics.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></button></a></li>
+            <li aria-current="page"><a href="event-feed-crypto.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></button></a></li>
+            <li><a href="event-feed-culture.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></button></a></li>
+            <li><a href="event-feed-general.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></button></a></li>
           </ul>
         </nav>
         <div class="cat-layout">
         <nav class="subcat" aria-label="Crypto sub-categories">
         <p class="subcat-head">Sub-categories</p>
         <ul>
-        <li aria-current="page"><button type="button">All <span class="cnt">2K</span></button></li>
-        <li><button type="button">Bitcoin <span class="cnt">312</span></button></li>
-        <li><button type="button">Ethereum <span class="cnt">168</span></button></li>
-        <li><button type="button">Solana <span class="cnt">74</span></button></li>
-        <li><button type="button">Price Predictions <span class="cnt">220</span></button></li>
-        <li><button type="button">ETFs <span class="cnt">33</span></button></li>
-        <li><button type="button">Stablecoins <span class="cnt">19</span></button></li>
-        <li><button type="button">Memecoins <span class="cnt">58</span></button></li>
-        <li><button type="button">Layer 2s <span class="cnt">27</span></button></li>
-        <li><button type="button">Fed & Macro <span class="cnt">41</span></button></li>
+        <li aria-current="page"><button type="button" class="chip chip-lane">All <span class="chip-cnt">2K</span></button></li>
+        <li><button type="button" class="chip chip-lane">Bitcoin <span class="chip-cnt">312</span></button></li>
+        <li><button type="button" class="chip chip-lane">Ethereum <span class="chip-cnt">168</span></button></li>
+        <li><button type="button" class="chip chip-lane">Solana <span class="chip-cnt">74</span></button></li>
+        <li><button type="button" class="chip chip-lane">Price Predictions <span class="chip-cnt">220</span></button></li>
+        <li><button type="button" class="chip chip-lane">ETFs <span class="chip-cnt">33</span></button></li>
+        <li><button type="button" class="chip chip-lane">Stablecoins <span class="chip-cnt">19</span></button></li>
+        <li><button type="button" class="chip chip-lane">Memecoins <span class="chip-cnt">58</span></button></li>
+        <li><button type="button" class="chip chip-lane">Layer 2s <span class="chip-cnt">27</span></button></li>
+        <li><button type="button" class="chip chip-lane">Fed & Macro <span class="chip-cnt">41</span></button></li>
         </ul>
       </nav>
         <div class="cat-main">
@@ -646,7 +646,7 @@ document.addEventListener('click', function (e) {
         if (!rows) { rail.hidden = true; rail.innerHTML = ''; return; }   // Trending / unknown: no rail
         var html = '<p class="subcat-head">' + esc(name) + ' sub-categories</p><ul>';
         for (var i = 0; i < rows.length; i++) {
-          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button">' + esc(rows[i][0]) + ' <span class="cnt">' + esc(rows[i][1]) + '</span></button></li>';
+          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button" class="chip chip-lane">' + esc(rows[i][0]) + ' <span class="chip-cnt">' + esc(rows[i][1]) + '</span></button></li>';
         }
         rail.innerHTML = html + '</ul>';
         rail.hidden = false;

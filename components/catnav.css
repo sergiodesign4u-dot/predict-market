@@ -1,26 +1,55 @@
 /* components/catnav.css
-   Component: catnav. Classes: .cat-ic, .cat-nav, .cnt, .feed-subfilter, .subcat, .subcat-head.
+   Component: catnav. Classes: .cat-nav, .feed-subfilter, .subcat, .subcat-head.
 
-   Reads: --bevel-notice, --bg-chip, --bg-control-hover, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --glow-brass, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
+   Reads: --edge-groove-dark, --edge-groove-light, --text-muted
    Stand:  ui-kit/catnav.html
    Stands on: 57 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
+/* ============================================================================
+   THIS FILE DREW THREE CONTROLS UNTIL 2026-08-07 AND NOW DRAWS NONE. The
+   category strip's chip (285 placements), the sub-category rail's chip (234)
+   and the Trending sub-filter's (5) are one atom with two faces, and both faces
+   are in components/chip.css with the other three. What is left here is what a
+   region is allowed to keep: the band, the rail, four scrollers and two plate
+   edges.
+
+   SIX DECLARATIONS AND ONE WHOLE RULE WENT OUT DEAD IN THE SAME PASS, which is
+   the second time this file has been read that way and the same finding as S35.
+   `.cat-nav button` was written twice unscoped - `padding:4px 8px` with
+   `font-size:11px`, and a `--bg-surface` ground on a hairline edge with a
+   `--radius-pill` corner - and every one of those eight values lost to
+   `.feed-inner .cat-nav button` at (0,2,1). Measured on the painted page at
+   1440 and 380 in both themes before deleting: the chip renders --bg-chip on
+   --bevel-notice at a 10px corner with 12/20 padding at 14px, which is the
+   scoped rule in every value. Only `cursor` and `white-space` were live, and
+   both went with the face. `.cat-nav li[aria-current="page"] button
+   {font-weight:bold}` was live and is now said once for the whole atom.
+
+   THE MARK AND THE COUNT WENT WITH THE CONTROL, and the map is what decided it
+   rather than an opinion. The first cut of this pass kept both here on the
+   `.bn-bal` precedent - a figure inside a nav slot stayed with the bottom nav -
+   and gate 24 answered within the minute: `chip contains catnav (.cat-ic,
+   .cnt)`. It is a true reading of the DOM, a `.cat-ic` really does stand inside
+   a `.chip-nav`, and with `catnav contains chip` already true it is a CYCLE. An
+   ATOM THAT CONTAINS A COMPONENT IS NOT AN ATOM: `chip` computed L1 from its own
+   stand and L3 from the product, and the only ways out were to declare the edge
+   away or to admit the classes were named after the wrong thing. They were named
+   after the wrong thing. `.cat-ic` is `.chip-ic` and `.cnt` is `.chip-cnt`, both
+   in components/chip.css with the face that holds them, and the cycle is gone
+   rather than declared.
+   `.bn-bal` is still right where it is, and the difference is measurable: it
+   answers nothing. No rule anywhere changes it when the slot is hovered or
+   current, so it is a figure the region puts inside a control. Both of these
+   brighten and recolour with the control's own state, which is what a PART of a
+   face does.
+   WHAT IS LEFT HERE HAS NO :hover AND NO :active AT ALL, so this file is
+   declared in `_levels.STATIC`, which is the honest name for what it now is: a
+   band, a rail, four scrollers and two plate edges.
+   ============================================================================ */
+
 .cat-nav{margin:0}
 .cat-nav ul{list-style:none;margin:0;padding:var(--space-8) var(--space-8);display:flex;gap:var(--space-8);overflow-x:auto;flex-wrap:nowrap}
-.cat-nav button{padding:var(--space-4) var(--space-8);font-size:var(--text-11);cursor:pointer;white-space:nowrap}
-/* `border-width:2px` was here with the weight and was dead for the same reason: the scoped rule
-   sets `border:1px solid`, which is (0,4,2) against this (0,2,2), and the current chip measures
-   1px. The weight is live and stays. */
-.cat-nav li[aria-current="page"] button{font-weight:var(--weight-bold)}
-/* Five rules used to sit here: the sub-category rail as a sticky 210px column,
-   its list stacked, its buttons full width. They are the DESKTOP layout, and
-   they belong to the min-width:900px block at the bottom of this file, which
-   states all five again with the Vault values. They reached the base scope
-   because the flat kit this file was split from had lost their @media header,
-   so at 380px the rail rendered as a vertical list instead of the row of chips
-   the screens actually show. Removed, not re-wrapped: the block below covers
-   them. */
 /* .cat-layout and .cat-main are in components/patterns/browse-shell.css.
    They were here because catnav was the first file that needed them, and
    nothing in either rule was about a category. */
@@ -30,45 +59,25 @@
 .subcat ul{list-style:none;margin:0;padding:var(--space-4);display:flex;gap:var(--space-8);overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
 .subcat ul::-webkit-scrollbar{display:none}
 .subcat li{flex:0 0 auto}
-.subcat button{display:inline-flex;align-items:center;gap:var(--space-8);white-space:nowrap;background:transparent;border:1px solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);font-family:inherit;font-size:var(--text-13);font-weight:var(--weight-medium);padding:var(--space-8) var(--space-12);min-height:var(--control-36);cursor:pointer}
-.subcat button:hover{border-color:var(--color-action);background:color-mix(in oklab,var(--color-action) 10%,transparent)}
-/* Press, the axis this file was missing entirely. The rail chip is quiet and flat at rest, so
-   it takes the system's one quiet pressed ground and has no lift to drop. Equal specificity to
-   the hover above (0,2,1 both), so it has to sit after it. It reaches exactly as far as that
-   hover does and no further: the current sub-category below is 0,3,1 and keeps its brass wash
-   under the finger, which is the honest answer for a chip that points at the page you are on. */
-.subcat button:active{background:var(--bg-pressed)}
-.subcat li[aria-current="page"] button{background:color-mix(in oklab,var(--color-action) 18%,transparent);border-color:var(--color-action);font-weight:var(--weight-semibold)}
-.subcat .cnt{font-size:var(--text-11);color:var(--text-muted);font-family:var(--font-mono);background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-6);padding:var(--space-2) var(--space-8)}
-.subcat li[aria-current="page"] .cnt{color:var(--text-brass);background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:color-mix(in oklab,var(--color-action) 45%,transparent)}
 /* THE RAIL IS CAPPED TO THE WINDOW. Found by lesson 9 of ui-kit/_verify, the
    same defect and the same afternoon as the contents rail in toc.css: pinned at
    120px and 563px tall, this rail needs 683px of window, so on a 1366x768 laptop
    the last two sub-categories were off the bottom of the screen and no amount of
    scrolling brought them back, because the page scrolls and a pinned rail does
-   not. 8 category screens. svh and not vh for the reason written in toc.css. */
+   not. 8 category screens. svh and not vh for the reason written in toc.css.
+   THE THIRD RULE OF THIS BLOCK WENT TO components/chip.css WITH THE CONTROL. It
+   turned the row of pills into a column of rows, which is the control answering
+   a new SURFACE and not the rail placing it, and the lane face carries the query
+   itself. What is left here is the rail: how wide it is, where it pins and how
+   far it may run. */
 @media(min-width:900px){
   .subcat{flex:0 0 214px;position:sticky;top:120px;
           max-height:calc(100vh - 120px - 16px);
           max-height:calc(100svh - 120px - 16px);
           overflow-y:auto;overscroll-behavior:contain}
   .subcat ul{flex-direction:column;overflow:visible;flex-wrap:nowrap;gap:var(--space-2);padding:var(--space-4)}
-  .subcat button{width:100%;justify-content:space-between;border-color:transparent;border-radius:var(--radius-10);padding:var(--space-8) var(--space-8)}
-  .subcat button:hover{border-color:var(--color-action)}
-  .subcat li[aria-current="page"] button{border-color:var(--color-action)}
 }
 .cat-nav > ul{max-width:var(--container-max);margin:0 auto;padding:var(--space-8) var(--space-20)}
-.cat-nav button{background:var(--bg-surface);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
-/* THE FIFTH SPELLING OF "SELECTED" WAS HERE AND HAS NEVER RENDERED. It was a full brass
-   GRADIENT - the primary button's plate on a category chip - and `DESIGN.md` says the active
-   chip is a brass TINT. It was dead because every `.cat-nav` in the product and in the vitrine
-   sits inside `.feed-inner`, and `.feed-inner .cat-nav li[aria-current] button` below is (0,4,2)
-   against this rule's (0,2,2). Measured in the browser before deleting it: `background-image:
-   none` on the current chip, at 1440 and at 380, in both themes. Backlog S35 counted five
-   spellings and the loudest of the five was never one. 2026-08-06. */
-@media(max-width:640px){
-  .cat-nav button{position:relative}
-}
 .cat-nav{border-bottom:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
 .app-case .cat-nav{background:transparent}
 .app-case .cat-nav>ul{max-width:var(--container-max);margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter)}
@@ -85,42 +94,10 @@
    it filters the page it is on instead of navigating away from it, so its
    chips are buttons. The only <a> left inside one is in ui-kit/kit.html, and
    the frozen kit is provenance, not product. */
-.cat-main .feed-subfilter button{display:inline-flex;align-items:center;min-height:0;cursor:pointer;background:transparent;border:1px solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-4) var(--space-12)}
-.cat-main .feed-subfilter button:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
-/* The sub-filter chip is transparent at rest and its hover is a white wash, so the press has
-   to travel the other way: --bg-pressed is opaque and sits below the plate the chip stands on,
-   which is what pushed IN looks like on this ground. Equal specificity to the hover (0,3,1),
-   so source order decides. The current chip below is 0,4,1 and keeps its brass, same as above. */
-.cat-main .feed-subfilter button:active{background:var(--bg-pressed)}
-@media(pointer:coarse){.cat-main .feed-subfilter button,.feed-inner .cat-nav button{min-height:var(--control-44)}}
-.cat-main .feed-subfilter li[aria-current="page"] button{background:var(--tint-brass-09);border:1px solid var(--tint-brass-45);color:var(--text-brass-chip);box-shadow:0 0 10px -8px var(--glow-brass)}
 .feed-inner .cat-nav{margin:0}
 .feed-inner .cat-nav>ul{max-width:none;margin:0;padding:var(--space-2);gap:var(--space-8);display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 .feed-inner .cat-nav>ul::-webkit-scrollbar{display:none}
 .feed-inner .cat-nav li{flex:0 0 auto}
-.cat-ic{width:var(--icon-18);height:var(--icon-18);flex:0 0 auto;fill:currentColor;stroke:none;opacity:.9}
-.feed-inner .cat-nav button{display:inline-flex;align-items:center;gap:var(--space-12);min-height:0;background:var(--bg-chip);border:1px solid var(--bevel-notice);border-radius:var(--radius-10);color:var(--text-chip-hover);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12) var(--space-20);box-shadow:none}
-.feed-inner .cat-nav button:hover{border-color:var(--border-brass-hover);color:var(--text-strong);background:var(--bg-control-hover)}
-/* This strip is the top of every feed screen, and on mobile it is the only way to change
-   category: there is no hover there to answer a tap with, so a tap had no reply at all. The
-   chip carries box-shadow:none at rest, so there is nothing lifted to flatten, and the hover
-   lightens while the press settles back past rest, which is the right pair of directions.
-   Equal specificity to the hover above (0,3,1), so this has to stay after it. */
-.feed-inner .cat-nav button:active{background:var(--bg-pressed)}
-/* THE ONE RING THIS PASS ADDS, and it is a measured defect rather than a preference. The strip
-   scrolls sideways, so its <ul> is a scroll container and clips at its own padding box; that
-   padding is --space-2 and the chip fills the content box exactly, top and bottom. The default
-   ring in base.css sits --ring OUTSIDE the chip and is --ring wide, so it is painted in the
-   band 2px to 4px out, and every pixel of its top and bottom run falls outside the clip. Read
-   off the painted page at 1440 and again at 380: the ring rendered as two vertical bars with
-   no top or bottom edge, on the one control a keyboard user tabs through first. Turning the
-   offset inward puts the whole ring on the chip's own ground, which is graphite at rest and a
-   brass wash when the chip is current, and --focus-ring reads on both. Same values as base.css
-   with one sign flipped, so the ring stays one decision. */
-.feed-inner .cat-nav button:focus-visible{outline-offset:calc(var(--ring) * -1)}
-.feed-inner .cat-nav button:hover .cat-ic{opacity:1}
-.feed-inner .cat-nav li[aria-current="page"] button{background:var(--tint-brass-09);border:1px solid var(--tint-brass-45);color:var(--text-brass-chip);box-shadow:0 0 10px -8px var(--glow-brass)}
-.feed-inner .cat-nav li[aria-current="page"] .cat-ic{opacity:1}
 @media(max-width:640px){
   .feed-inner .cat-nav{margin-bottom:var(--space-16)}
 }

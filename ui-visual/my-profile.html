@@ -690,7 +690,7 @@ document.addEventListener('click', function (e) {
         if (!rows) { rail.hidden = true; rail.innerHTML = ''; return; }   // Trending / unknown: no rail
         var html = '<p class="subcat-head">' + esc(name) + ' sub-categories</p><ul>';
         for (var i = 0; i < rows.length; i++) {
-          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button">' + esc(rows[i][0]) + ' <span class="cnt">' + esc(rows[i][1]) + '</span></button></li>';
+          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button" class="chip chip-lane">' + esc(rows[i][0]) + ' <span class="chip-cnt">' + esc(rows[i][1]) + '</span></button></li>';
         }
         rail.innerHTML = html + '</ul>';
         rail.hidden = false;

@@ -61,8 +61,8 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Icon button (ghost) | `header.css` | [header](../header.html) | L3 | header utility, event actions | rest / hover / focus | 87 | WF | - | + |
 | Auth entries (Log in / Sign up) | `button.css` | [button](../button.html) | L1 | logged-out header + gate | default; open Sign In dialog | 34 | WF | - | + |
 | Category nav band | `catnav.css` | [catnav](../catnav.html) | L3 | feed + category pages | per-category active; `.cat-condensed` strip on scroll | 57 | WF/UV | - | + |
-| Sub-category rail (`.subcat`) | `catnav.css` | [catnav](../catnav.html) | L3 | category pages (politics/crypto/culture/general) | active row + sample count | 32 | WF | - | + |
-| Trending sub-filter chips (`.feed-subfilter`) | `catnav.css` | [catnav](../catnav.html) | L3 | Trending feed | active | 5 | UV | - | + |
+| Sub-category rail (`.subcat`, the sticky column and the scrolling row it becomes) | `catnav.css` | [catnav](../catnav.html) | L3 | category pages (politics/crypto/culture/general) | active row + sample count | 32 | WF | - | + |
+| Trending sub-filter row (`.feed-subfilter`, the wrapping line the chips stand in) | `catnav.css` | [catnav](../catnav.html) | L3 | Trending feed | active | 5 | UV | - | + |
 | Bottom nav (mobile, 4 slots) | `bottomnav.css` | [bottomnav](../bottomnav.html) | L3 | all header screens | per-slot current; logged-out (Sign in slot) | 87 | WF | - | + |
 | Active / History tabs (`.tabs`) | `tabs.css` | [tabs](../tabs.html) | L3 | My Bets (active-bets, history) | active tab | 9 | WF | - | + |
 | Footer language menu | `footer.css` | [footer](../footer.html) | L3 | every footer screen | closed / open (TBD) | 87 | WF | - | + |
@@ -111,7 +111,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Bets table (`.ptable`, "you" highlight) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Bets tab | logged-in (your row) / logged-out | 9 | WF | - | + |
 | Activity feed (`.act-row`) | `bets-table.css` | [bets-table](../bets-table.html) | L3 | event-detail Activity tab | default | 9 | WF | - | + |
 | Segmented switcher: the TROUGH and the rail (`.seg` / `.rules-tabs` / `.ed-range`) | `comments.css`, `tabs.css` | [comments](../comments.html), [tabs](../tabs.html) | L3 | event-detail comments + rules + chart | active segment | 9 | WF | - | + |
-| Quiet chip (`.chip`, the control inside `.seg` and `.ed-range`) | `chip.css`, `comments.css`, `tabs.css` | [chip](../chip.html), [comments](../comments.html), [tabs](../tabs.html) | L3 | event-detail comments + chart | rest / hover / press / selected | 9 | WF/UV | - | + |
+| Chip (`.chip`, one atom in five faces: `-rail` in a trough, `-quiet` in a scrolling strip, `-nav` on the category band, `-lane` in the sub-category rail, `-amount` on a sheet; parts `.chip-ic` and `.chip-cnt`) | `chip.css` | [chip](../chip.html) | L1 | comment sorter, chart range, header strip, category band, sub-category rail, Trending sub-filter, bet panel, deposit sheet | rest / hover / press / selected | 105 | WF/UV | - | + |
 | Bet sub-state boxes (`.protect` / `.inline-error` / `.reconcile-box` / `.spinner-box`) | `notice.css` | [notice](../notice.html) | L3 | bet panel + dock inline | funds-safe / insufficient / reconcile / processing | 10+ | WF/UV | - | + |
 
 ## 4. Forms, dialogs and inputs
@@ -291,7 +291,7 @@ screens.
 
 | Pattern | CSS file | Page | Screens | Assembled from |
 |---|---|---|---|---|
-| **Browse shell** | `patterns/browse-shell.css` | [browse-shell](../browse-shell.html) | 77 | `catnav`, `filters`, `state-block`, `button` |
+| **Browse shell** | `patterns/browse-shell.css` | [browse-shell](../browse-shell.html) | 77 | `catnav`, `chip`, `filters`, `state-block`, `button` |
 | **Detail shell** | `patterns/detail-shell.css` | [detail-shell](../detail-shell.html) | 11 | `card`, `event-detail`, `iconbtn`, `oddsbar`, `chart`, `tabs`, `chip`, `market`, `comments`, `button`, `bets-table`, `position`, `betpanel`, `yesno`, `input`, `quick`, `dialog` |
 | **Card grid** | `patterns/card-grid.css` | [card-grid](../card-grid.html) | 23 | `card`, `yesno`, `iconbtn`, `options` |
 | **List head** | `patterns/list-head.css` | [list-head](../list-head.html) | 71 | `filters` |

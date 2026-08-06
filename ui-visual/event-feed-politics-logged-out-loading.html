@@ -321,29 +321,29 @@ document.addEventListener('click', function (e) {
       <div class="feed-inner">
         <nav class="cat-nav" aria-label="Categories (second level)">
           <ul>
-            <li><a href="event-feed.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></button></a></li>
-            <li aria-current="page"><a href="event-feed-politics.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></button></a></li>
-            <li><a href="event-feed-crypto.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></button></a></li>
-            <li><a href="event-feed-culture.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></button></a></li>
-            <li><a href="event-feed-general.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></button></a></li>
+            <li><a href="event-feed.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></button></a></li>
+            <li aria-current="page"><a href="event-feed-politics.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></button></a></li>
+            <li><a href="event-feed-crypto.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></button></a></li>
+            <li><a href="event-feed-culture.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></button></a></li>
+            <li><a href="event-feed-general.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></button></a></li>
           </ul>
         </nav>
         <div class="cat-layout">
         <nav class="subcat" aria-label="Politics sub-categories">
         <p class="subcat-head">Sub-categories</p>
         <ul>
-        <li aria-current="page"><button type="button">All <span class="cnt">2K</span></button></li>
-        <li><button type="button">Trump <span class="cnt">297</span></button></li>
-        <li><button type="button">Trump Daily <span class="cnt">3</span></button></li>
-        <li><button type="button">Midterm Elections <span class="cnt">537</span></button></li>
-        <li><button type="button">Global Elections <span class="cnt">122</span></button></li>
-        <li><button type="button">Primaries <span class="cnt">106</span></button></li>
-        <li><button type="button">Congress <span class="cnt">42</span></button></li>
-        <li><button type="button">Trump Cabinet <span class="cnt">16</span></button></li>
-        <li><button type="button">Courts <span class="cnt">30</span></button></li>
-        <li><button type="button">Epstein <span class="cnt">22</span></button></li>
-        <li><button type="button">Government Shutdown <span class="cnt">3</span></button></li>
-        <li><button type="button">LA Mayor <span class="cnt">5</span></button></li>
+        <li aria-current="page"><button type="button" class="chip chip-lane">All <span class="chip-cnt">2K</span></button></li>
+        <li><button type="button" class="chip chip-lane">Trump <span class="chip-cnt">297</span></button></li>
+        <li><button type="button" class="chip chip-lane">Trump Daily <span class="chip-cnt">3</span></button></li>
+        <li><button type="button" class="chip chip-lane">Midterm Elections <span class="chip-cnt">537</span></button></li>
+        <li><button type="button" class="chip chip-lane">Global Elections <span class="chip-cnt">122</span></button></li>
+        <li><button type="button" class="chip chip-lane">Primaries <span class="chip-cnt">106</span></button></li>
+        <li><button type="button" class="chip chip-lane">Congress <span class="chip-cnt">42</span></button></li>
+        <li><button type="button" class="chip chip-lane">Trump Cabinet <span class="chip-cnt">16</span></button></li>
+        <li><button type="button" class="chip chip-lane">Courts <span class="chip-cnt">30</span></button></li>
+        <li><button type="button" class="chip chip-lane">Epstein <span class="chip-cnt">22</span></button></li>
+        <li><button type="button" class="chip chip-lane">Government Shutdown <span class="chip-cnt">3</span></button></li>
+        <li><button type="button" class="chip chip-lane">LA Mayor <span class="chip-cnt">5</span></button></li>
         </ul>
       </nav>
         <div class="cat-main">
@@ -683,7 +683,7 @@ document.addEventListener('click', function (e) {
         if (!rows) { rail.hidden = true; rail.innerHTML = ''; return; }   // Trending / unknown: no rail
         var html = '<p class="subcat-head">' + esc(name) + ' sub-categories</p><ul>';
         for (var i = 0; i < rows.length; i++) {
-          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button">' + esc(rows[i][0]) + ' <span class="cnt">' + esc(rows[i][1]) + '</span></button></li>';
+          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button" class="chip chip-lane">' + esc(rows[i][0]) + ' <span class="chip-cnt">' + esc(rows[i][1]) + '</span></button></li>';
         }
         rail.innerHTML = html + '</ul>';
         rail.hidden = false;

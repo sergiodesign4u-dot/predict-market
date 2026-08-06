@@ -8,6 +8,7 @@
 - `ia/docs/sitemap.md` L318 and L327 - the wireframe pass made categories second-level NAVIGATION in a band under the header, routing to their own pages, and moved the feed's sort and frequency controls onto the heading row instead.
 - `ui-kit/docs/backlog.md` S12 and S13 - the rail is a pinned box: its `top:120px` is one of three hand-typed clearances, and the vitrine shows this specimen 69px short because a frame that size IS a short window.
 - `ui-kit/_levels.py` RAISE - this component owns `.cat-layout` and `.cat-main`, the page content plate, which is why it is a screen shell rather than a strip of chips.
+- `ui-kit/docs/atoms.md` and backlog S46, which took every control out of it on 2026-08-07. Three of them, 524 placements, one atom.
 
 ## Purpose
 
@@ -15,13 +16,13 @@ Where you are in the product's own taxonomy, at two depths. A horizontal band of
 
 The decision inside it is that these are LINKS. A category in this product is a page with its own URL, its own About text and its own empty state, not a filter toggled in place, and the band is what makes that visible: you click a category and you arrive somewhere, with a back button that works.
 
+Since 2026-08-07 this component draws none of them. What a person presses in all three places is a `chip`, and what is left here is where those chips stand.
+
 ## Anatomy
 
 - `.cat-nav` - the band under the header. One per screen, and it condenses rather than disappearing when the page scrolls.
-- `.cat-ic` - a category's mark. Outline, monochrome, and never the category's own colour, because a category is not an outcome.
-- `.subcat`, `.subcat-head` - the rail on a category page: a heading and the sub-categories under it, sticky on desktop and a scrolling row of chips at 360.
-- `.cnt` - the per-sub-category count. It is the rail's whole argument: a number tells a person which branch is worth opening before they open it.
-- `.feed-subfilter` - the same chip family used as a filter on Trending, where there is no sub-category to navigate to.
+- `.subcat`, `.subcat-head` - the rail on a category page: a heading and the sub-categories under it, sticky and capped to the window on desktop, a scrolling row at 360.
+- `.feed-subfilter` - the row on Trending, where there is no sub-category to navigate to and the same chip narrows the feed in place.
 
 ## When to use
 
@@ -37,17 +38,16 @@ The sort control is not this component. It looks like the band, it sits near the
 
 One band, one rail, and both of them navigate: a chip in this component that changes the current page instead of leaving it is a filter wearing the navigation's clothes.
 
+**This file says where a chip stands and never what it looks like.** It held three faces of one atom until 2026-08-07 and every one of them is in `components/chip.css` now, with the mark and the count that stand inside them. The test it failed is the one worth remembering: gate 24 read `chip contains catnav` the moment the parts were left behind, and an atom that contains a component is not an atom.
+
 ## Anti-rule
 
 Never build the feed's sort or frequency control out of these chips: those belong to `filters`, which draws a dropdown whose label shows its current value, and a chip that looks like a category but silently re-sorts the list teaches a person that the band is unreliable.
+
+Never draw a control here again. It is declared in `ui-kit/_levels.py` STATIC, which is a claim in both directions: this file has no `:hover` and no `:active` and may not grow one. A band is not pressed.
 
 Seen: `ia/docs/sitemap.md` L318, where the wireframe pass moved exactly these controls OFF the band and onto the heading row - "categories are second-level navigation in a sub-nav band directly under the header ... The heading row carries a Kalshi-style filter cluster (feed controls, not navigation)". The separation is in R4's own sentence too, and it is there because the two had been in one strip.
 
 ## States
 
-- `button @catnav-chips` - The category you are in: brass ink, a lit mark, and the chip's ground answering. All four faces.
-- `button @catnav-chips (2)` - A category you are not in, at rest, hovered, held and focused. One graphite chip family runs through this product, and this is its first member: the same face `loadmore` and the Load-more control wear.
-- `button @catnav-subfilter` - A Trending sub-filter chip. Identical to the category chip on purpose, because it is the same control doing a narrower job on a screen that has no second level to navigate to.
-- `button @catnav-subfilter (2)` - The sub-filter chip that is NOT the one you are on, and the only 100px corner in a family whose every other member is 10. It also refuses the brass press: held down it goes to the plate stone and draws no edge at all, where a category chip takes the brass tint, the brass hairline and a 10px glow. Two shapes and two presses inside one rail, which is either a second control that wants its own name or a chip that drifted, and this page can only say which one the measurement found. It appeared here on 2026-08-04 with the scoped capture key.
-- `button @catnav-subcat` - The active row of the sub-category rail, with its count. The count keeps its own quiet ink even when the row is active, so the number is read as data rather than as part of the label.
-- `button @catnav-subcat (2)` - An inactive rail row, all four faces. The rail scrolls, so a row must answer a pointer without changing its height: a rail that reflows under the thumb loses the reader's place.
+None, and it is declared in `ui-kit/_levels.py` STATIC. This file drew three controls until 2026-08-07 and now draws none: the category strip's chip, the sub-category rail's and the Trending sub-filter's are one atom with two faces, and both are in `components/chip.css` as `.chip-nav`, `.chip-quiet` and `.chip-lane`. The mark and the count went with them as `.chip-ic` and `.chip-cnt`, because gate 24 read `chip contains catnav` the moment they were left behind and an atom that contains a component is not an atom. What is left here is a band, a rail, four scrollers and two plate edges, and none of it is pressed. The gallery is on the chip page, where six of its ten groups are the controls this file used to hold.

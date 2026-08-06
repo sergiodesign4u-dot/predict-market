@@ -358,26 +358,26 @@ document.addEventListener('click', function (e) {
       <div class="feed-inner">
         <nav class="cat-nav" aria-label="Categories (second level)">
           <ul>
-            <li><a href="event-feed.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></button></a></li>
-            <li><a href="event-feed-politics.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></button></a></li>
-            <li><a href="event-feed-crypto.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></button></a></li>
-            <li aria-current="page"><a href="event-feed-culture.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></button></a></li>
-            <li><a href="event-feed-general.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></button></a></li>
+            <li><a href="event-feed.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></button></a></li>
+            <li><a href="event-feed-politics.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></button></a></li>
+            <li><a href="event-feed-crypto.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></button></a></li>
+            <li aria-current="page"><a href="event-feed-culture.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></button></a></li>
+            <li><a href="event-feed-general.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></button></a></li>
           </ul>
         </nav>
         <div class="cat-layout">
         <nav class="subcat" aria-label="Culture sub-categories">
         <p class="subcat-head">Sub-categories</p>
         <ul>
-        <li aria-current="page"><button type="button">All <span class="cnt">1.4K</span></button></li>
-        <li><button type="button">Movies <span class="cnt">180</span></button></li>
-        <li><button type="button">Music <span class="cnt">120</span></button></li>
-        <li><button type="button">Awards <span class="cnt">64</span></button></li>
-        <li><button type="button">TV & Streaming <span class="cnt">90</span></button></li>
-        <li><button type="button">Celebrities <span class="cnt">145</span></button></li>
-        <li><button type="button">Internet & Memes <span class="cnt">38</span></button></li>
-        <li><button type="button">Books <span class="cnt">22</span></button></li>
-        <li><button type="button">Gaming <span class="cnt">51</span></button></li>
+        <li aria-current="page"><button type="button" class="chip chip-lane">All <span class="chip-cnt">1.4K</span></button></li>
+        <li><button type="button" class="chip chip-lane">Movies <span class="chip-cnt">180</span></button></li>
+        <li><button type="button" class="chip chip-lane">Music <span class="chip-cnt">120</span></button></li>
+        <li><button type="button" class="chip chip-lane">Awards <span class="chip-cnt">64</span></button></li>
+        <li><button type="button" class="chip chip-lane">TV & Streaming <span class="chip-cnt">90</span></button></li>
+        <li><button type="button" class="chip chip-lane">Celebrities <span class="chip-cnt">145</span></button></li>
+        <li><button type="button" class="chip chip-lane">Internet & Memes <span class="chip-cnt">38</span></button></li>
+        <li><button type="button" class="chip chip-lane">Books <span class="chip-cnt">22</span></button></li>
+        <li><button type="button" class="chip chip-lane">Gaming <span class="chip-cnt">51</span></button></li>
         </ul>
       </nav>
         <div class="cat-main">
@@ -682,7 +682,7 @@ document.addEventListener('click', function (e) {
         if (!rows) { rail.hidden = true; rail.innerHTML = ''; return; }   // Trending / unknown: no rail
         var html = '<p class="subcat-head">' + esc(name) + ' sub-categories</p><ul>';
         for (var i = 0; i < rows.length; i++) {
-          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button">' + esc(rows[i][0]) + ' <span class="cnt">' + esc(rows[i][1]) + '</span></button></li>';
+          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button" class="chip chip-lane">' + esc(rows[i][0]) + ' <span class="chip-cnt">' + esc(rows[i][1]) + '</span></button></li>';
         }
         rail.innerHTML = html + '</ul>';
         rail.hidden = false;

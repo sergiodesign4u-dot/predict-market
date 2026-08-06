@@ -830,6 +830,90 @@ amounts answered a pointer and the bet panel's, the same face on the same contro
 nothing. The face took the hover. It lives entirely inside `:hover`, so the state gallery is the
 only instrument in this repo that can check it.
 
+## S46 answered, catnav gives up its last three controls, and the chip closes on defect 78: 7 to 6
+
+`components/catnav.css` drew three controls and every one of them is a `chip`. They are gone, the
+file is declared STATIC, and what is left of the distance on the two biggest atoms is **one defect
+with one name**.
+
+**The three, measured at 1440 and 380 in both themes before anything moved:**
+
+    .cat-nav button       285 on 57 screens   --bg-chip on --bevel-notice, 10 corner, 14px 600,
+                                              12/20, identical at both widths
+    .feed-subfilter       5 on 1 screen       transparent on a transparent 1px band, 100px pill,
+                                              13px 600, --text-muted, 4/12
+    .subcat button        234 on 24 screens   380: 114x41 hairline PILL, 100px corner
+                                              1440: 206x41 full-width ROW, 10px corner,
+                                              transparent edge, space-between
+
+**The sub-filter was not a face, it was four pixels.** Read against the 525 `quiet` chips in the
+header it agrees on the ground, the transparent band, the corner, the size, the weight, the ink and
+the side padding, to the same width in three decimals. It differs by **4px of vertical padding**
+and nothing else. Five elements on one screen against 525 is an exception with no argument, so it
+adopted: **30px tall to 38, and its chosen chip 600 to 700**, which is the family's recipe.
+
+**The sub-category row is the finding, and S46 had it right that one width is not a measurement.**
+It was filed under `navitem` on the strength of the desktop reading alone. A nav item is
+transparent with **no edge and no corner**; this control carries a 1px band and a corner at BOTH
+widths, so it was never that atom. It is a chip, and it is **the first control in this system whose
+SURFACE changes with the window**: a horizontal scroller on a phone, a sticky 214px column above
+900. Every face on this map so far has been an answer to a surface and each has had one surface.
+This one has two, so **the face carries the media query** and `catnav.css` keeps only the rail.
+
+**And it was the last of S35's five spellings of "selected".** It said chosen with 18 per cent of
+`--color-action` in oklab, a solid brass edge and semibold, because on the day the other four were
+unified it was filed under a different atom. It wears the one recipe now, and the recipe is now
+written against the ATOM rather than a face: `.chip.sel, [aria-current="page"] .chip`, two
+selectors for five faces and both ways the product says chosen.
+
+    525 snapshots, 165 differ, and every property is named
+      1560  fontFamily     the lane, --font-body narrowing "DM Sans", system-ui to "DM Sans"
+       160  colour, ground, four border colours, boxShadow, weight   32 chosen lanes x 5 widths
+       160  fontWeight on .chip-cnt   the count following its own label, 600 to 700
+        25  paddingTop + 25 paddingBottom + 5 fontWeight   the 5 sub-filter chips
+    ONE box resized that was not those: a chosen lane, 94px wide to 95, because bold is wider
+    than semibold. Everything else that moved is reflow under those two.
+
+**Gate 24 refused the first cut, and it was right.** `.cat-ic` and `.cnt` were left in
+`catnav.css` on the `.bn-bal` precedent - a figure inside a nav slot stayed with the bottom nav -
+and the map answered within the minute: `chip contains catnav`. It is a true reading of the DOM,
+and with `catnav contains chip` already true it is a **cycle**: `chip` computed L1 from its own
+stand and L3 from the product. **An atom that contains a component is not an atom.** The edge
+could have been declared away; it was not, because the reading was right and the NAMES were wrong.
+Both parts are sized by the control, take their colour from `currentColor` and change when the
+control is hovered or current, which is what a part of a FACE does. `.chip-ic` and `.chip-cnt`,
+580 and 589 spellings across four trees. `.bn-bal` stays where it is and the difference is
+measurable rather than a matter of taste: **nothing anywhere changes it when its slot is hovered
+or current.**
+
+**The metric had a blind spot and this pass walked into it.** `atom_gap()` recognises a control by
+the classes its census row NAMES, so a row that names only ANCESTORS is visible only while the
+control is reached by its tag - `.cat-nav button` - which is exactly the spelling a migration
+deletes. Four rows would have gone silent the moment they adopted, and the distance would have
+fallen by two for a move that closed one. The rows name their faces now, which is the fix in the
+direction of more truth: a row says both what a control is and where it stands. `navitem`'s two
+rows got the same treatment and its own file became visible for the first time.
+
+    41 the atom map   7 control atom(s) in 13 file-slot(s): distance 6, and it goes to 0
+                      chip        1592  4 kind(s), 2 file(s): chip, header
+                      iconbutton  1361  6 kind(s), 1 file(s): iconbtn
+                      button       911  7 kind(s), 5 file(s)
+                      navitem      785  2 kind(s), 2 file(s): bottomnav, navitem
+                      outcome      272  2 kind(s), 1 file(s): yesno
+
+**What is left on the two nav atoms is one defect with one name.** `chip` counts `header` because
+of `.cat-condensed a{text-decoration:none}`; `navitem` counts `bottomnav` because of
+`.bottom-nav a{display:block;text-decoration:none;color:inherit}`. Both are the wrapper around an
+`<a><button>`, both exist only to undo the anchor's own look so the control inside shows through,
+and both are `ui-kit/docs/defects.md` row 78. **Two of the six remaining file-slots are the same
+markup question**, and it is a question for the grey tree rather than for a stylesheet.
+
+**The chip's stand is the whole atom now.** Ten groups where there were four, and the five chosen
+faces measure the same eight values with the corner as the only difference. The gallery also shows
+what the stand cannot: `catnav-subcat` is framed at 900px, so the lane is photographed as a
+desktop row and its phone pill has no picture. A specimen has one width; the two readings are
+above.
+
 ---
 
 ## The decision this document no longer has open

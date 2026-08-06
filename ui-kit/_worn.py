@@ -386,8 +386,9 @@ KINDS = [
      "header", "action", "the header owns its own row of marks, and their size is the header's rhythm"),
     ("the logo, home", {"logo-btn"}, set(),
      "header", "nav", "it is the mark and the way back to the feed, and both belong to the header"),
-    ("a row of the account dropdown", set(), {"dropdown"},
-     "header", "nav", "the dropdown is the header's, and a row of it is not a control of its own"),
+    ("a row of the account dropdown", {"nav-row"}, {"dropdown"},
+     "navitem", "nav", "a line of a menu and a notification's title over its detail: one "
+                       "control with two contents, and the display is the only thing between them"),
     ("YES / NO, the outcome pair", set(), {"yesno"},
      "yesno", "selector", "green and red are outcome semantics in this product and nowhere else"),
     ("the outcome side of a bet", {"bp-side"}, set(),
@@ -401,13 +402,23 @@ KINDS = [
     # space-between`: a full-width row with a label on the left and a count on
     # the right, which is a list row and not a chip. Reading it as a chip was
     # reading the FAMILY NAME, which is the same mistake as reading the tag.
-    ("chip, a category", set(), {"cat-nav", "cat-condensed", "feed-subfilter"},
-     "catnav", "selector", "one graphite chip family, with a lighter press than this one"),
-    ("a sub-category row", set(), {"subcat"},
-     "catnav", "nav", "a full-width row with a label and a count that opens a category page, "
-                      "and it belongs to the rail the rest of that file draws"),
-    ("chip, a quick amount", set(), {"quick"},
-     "input", "selector", "it sets the value of the field beside it, so it belongs to the field"),
+    # THE FOUR ROWS BELOW GAINED A CLASS SET ON 2026-08-07, AND THE REASON IS AN
+    # INSTRUMENT DEFECT THIS PASS WALKED INTO. `atom_gap()` asks which FILE draws
+    # a kind by testing whether a rule ENDS at the control, and it recognises the
+    # control by the classes the row names. A row that names only ANCESTORS is
+    # recognised only while the control is reached by its tag - `.cat-nav button`
+    # - which is exactly the spelling a migration deletes. So the moment these
+    # kinds adopted `.chip`, the file that draws them became invisible to the
+    # metric and the distance would have fallen by two for a move that closed
+    # one. Naming the face fixes it in the direction of MORE truth: the row says
+    # both what the control is and where it stands.
+    ("chip, a category", {"chip-nav", "chip-quiet"}, {"cat-nav", "cat-condensed", "feed-subfilter"},
+     "chip", "selector", "one graphite chip family, with a lighter press than this one"),
+    ("a sub-category row", {"chip-lane"}, {"subcat"},
+     "chip", "nav", "a chip whose surface changes with the window: a pill in a scroller at "
+                    "380, a full-width row with a count in a sticky rail above 900"),
+    ("chip, a quick amount", {"chip-amount"}, {"quick"},
+     "chip", "selector", "it sets the value of the field beside it, so it belongs to the field"),
     # TWO ROWS BECAME ONE ON 2026-08-05, and this census is the instrument that
     # said they should. It had already filed the sort segment and the chart range
     # as one ROLE with one face and two names, 27 placements and 36; the css
@@ -416,13 +427,14 @@ KINDS = [
     # byte. Matched on the CLASS the buttons now carry rather than on either
     # parent, because the control is the class and the two troughs belong to the
     # components that hold them.
-    ("chip, quiet, in a rail", {"chip"}, set(),
+    ("chip, quiet, in a rail", {"chip-rail"}, set(),
      "chip", "selector", "one control the product picks a value with, in the two rails "
                          "that hold it: the comment sorter and the chart range"),
     ("tab", {"rules-tab"}, {"tabs"},
      "tabs", "selector", "a tab is a selector, and the selected one is a state and not a press"),
-    ("bottom nav slot", set(), {"bottom-nav"},
-     "bottomnav", "nav", "the nav owns the slot, the icon and the active state together"),
+    ("bottom nav slot", {"nav-slot"}, {"bottom-nav"},
+     "navitem", "nav", "the quietest control in the product: no ground, no edge, no corner, "
+                       "and the one thing the bar says at a glance is which slot is current"),
     ("load more", {"load-more"}, set(),
      "loadmore", "action", "the same graphite chip, at the foot of a list"),
     ("toggle", {"toggle"}, set(),
@@ -585,7 +597,16 @@ ATOM = {
     # face and not a modifier, so the counter-argument atoms.md had written down
     # is the one that holds. The atom is what the control DOES.
     "tab": "tab",
-    "a sub-category row": "navitem",
+    # AND IT WAS WRONG AGAIN, IN THE SAME DIRECTION, AND THE SAME KIND OF
+    # MEASUREMENT SETTLED IT ON 2026-08-07. `navitem` was read off the DESKTOP
+    # rule alone: a full-width row with a label left and a count right, which is
+    # a list row. At 380 the same control is a 114x41 hairline PILL in a
+    # horizontal scroller, `--border-hairline` on a 100px corner. A nav item is
+    # transparent with NO edge and NO corner, and this thing carries a 1px band
+    # and a corner at both widths, so it was never that atom. It is a chip whose
+    # SURFACE changes with the window, which is the first one in the product, and
+    # the face carries the query. `ui-kit/docs/atoms.md`, and backlog S46.
+    "a sub-category row": "chip",
     "YES / NO, the outcome pair": "outcome",
     "the outcome side of a bet": "outcome",
     "toggle": "switch",

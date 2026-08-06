@@ -360,11 +360,11 @@ document.addEventListener('click', function (e) {
         <!-- Categories, on the content plate, reference-styled with icons -->
         <nav class="cat-nav" aria-label="Categories (second level)">
           <ul>
-            <li aria-current="page"><a href="event-feed.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></button></a></li>
-            <li><a href="event-feed-politics.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></button></a></li>
-            <li><a href="event-feed-crypto.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></button></a></li>
-            <li><a href="event-feed-culture.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></button></a></li>
-            <li><a href="event-feed-general.html"><button type="button"><svg class="cat-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></button></a></li>
+            <li aria-current="page"><a href="event-feed.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></button></a></li>
+            <li><a href="event-feed-politics.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></button></a></li>
+            <li><a href="event-feed-crypto.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></button></a></li>
+            <li><a href="event-feed-culture.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></button></a></li>
+            <li><a href="event-feed-general.html"><button type="button" class="chip chip-nav"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></button></a></li>
           </ul>
         </nav>
 
@@ -514,11 +514,11 @@ document.addEventListener('click', function (e) {
              the feed content; the top category nav stays the main category switcher). -->
         <div class="feed-subfilter" role="group" aria-label="Filter events by category">
           <ul>
-            <li aria-current="page"><button type="button" data-filter="all" aria-pressed="true">All</button></li>
-            <li><button type="button" data-filter="politics" aria-pressed="false">Politics</button></li>
-            <li><button type="button" data-filter="crypto" aria-pressed="false">Crypto</button></li>
-            <li><button type="button" data-filter="culture" aria-pressed="false">Culture</button></li>
-            <li><button type="button" data-filter="general" aria-pressed="false">General</button></li>
+            <li aria-current="page"><button type="button" data-filter="all" aria-pressed="true" class="chip chip-quiet">All</button></li>
+            <li><button type="button" data-filter="politics" aria-pressed="false" class="chip chip-quiet">Politics</button></li>
+            <li><button type="button" data-filter="crypto" aria-pressed="false" class="chip chip-quiet">Crypto</button></li>
+            <li><button type="button" data-filter="culture" aria-pressed="false" class="chip chip-quiet">Culture</button></li>
+            <li><button type="button" data-filter="general" aria-pressed="false" class="chip chip-quiet">General</button></li>
           </ul>
         </div><!-- /feed-subfilter -->
 
@@ -1038,7 +1038,7 @@ document.addEventListener('click', function (e) {
         if (!rows) { rail.hidden = true; rail.innerHTML = ''; return; }   // Trending / unknown: no rail
         var html = '<p class="subcat-head">' + esc(name) + ' sub-categories</p><ul>';
         for (var i = 0; i < rows.length; i++) {
-          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button">' + esc(rows[i][0]) + ' <span class="cnt">' + esc(rows[i][1]) + '</span></button></li>';
+          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button" class="chip chip-lane">' + esc(rows[i][0]) + ' <span class="chip-cnt">' + esc(rows[i][1]) + '</span></button></li>';
         }
         rail.innerHTML = html + '</ul>';
         rail.hidden = false;
