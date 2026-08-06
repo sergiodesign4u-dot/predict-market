@@ -37,7 +37,6 @@
 .notif-drop ul{list-style:none;margin:0;padding:0}
 .notif-drop li{border-top:1px solid var(--border-hairline)}
 .notif-drop li:first-child{border-top:none}
-.notif-drop li a{display:block;padding:var(--space-8) var(--space-8);text-decoration:none}
 .notif-drop li a strong{display:block;font-size:var(--text-12)}
 .notif-drop li a span{display:block;font-size:var(--text-10)}
 .notif-empty{margin:0;padding:var(--space-12);font-size:var(--text-11);line-height:var(--leading-base)}
@@ -120,13 +119,11 @@
    the account row is the button default, and its font-size is the browser's 16 where
    the account row is 11 - and neither is this pass's to decide. ui-kit/docs/backlog.md
    S46. */
-.notif-drop li a,.notif-drop li a strong{color:var(--text-primary)}
-.notif-drop li a:hover{background:color-mix(in oklab,var(--color-action) 10%,transparent)}
+.notif-drop li a strong{color:var(--text-primary)}
 /* A menu row is a nav row: the ground answers and the label holds still. Each selector mirrors
    the hover it answers, so the two sit at equal specificity (0,3,1 and 0,2,2) and the later one
    wins while the finger is down. Both rows are the whole target: the <button> and the <a> each
    fill the <li>, so there is no dead strip to press on. */
-.notif-drop li a:active{background:var(--bg-pressed)}
 .notif-drop li a span{color:var(--text-muted)}
 /* The dropdown of a screen whose subject is "you have nothing yet". It had no
    rule at all, because the state lived only in the grey tree. */

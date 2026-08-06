@@ -39,7 +39,7 @@ says so. No em dash.
 | input | 2 | input-amount, input-states | 2 | 4 | 105 |
 | loadmore | 1 | loadmore | 1 | 2 | 9 |
 | market | 1 | market-depth | 0 | 21 | 9 |
-| navitem | 1 | navitem-slots | 1 | 3 | 105 |
+| navitem | 1 | navitem-slots | 1 | 4 | 105 |
 | notice | 2 | notice-push, notice-reconcile | 1 | 8 | 105 |
 | oddsbar | 1 | oddsbar | 2 | 7 | 9 |
 | options | 2 | options-rows, options-multi | 2 | 6 | 14 |

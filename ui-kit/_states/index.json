@@ -1633,7 +1633,7 @@
    "ui-kit/specimens/button-matrix.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "efbd45841da2a3c6"
+  "sha": "5056099e723a69e1"
  },
  {
   "component": "button",
@@ -8434,6 +8434,7 @@
    "logo-btn",
    "nav-item",
    "nav-row",
+   "nav-row-stack",
    "notif-all",
    "notif-drop",
    "notif-menu",
@@ -8606,7 +8607,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "c545aa5edc62fbe1"
+  "sha": "f1bc68321009de58"
  },
  {
   "component": "header",
@@ -8642,6 +8643,7 @@
    "logo-btn",
    "nav-item",
    "nav-row",
+   "nav-row-stack",
    "notif-all",
    "notif-drop",
    "notif-menu",
@@ -8810,215 +8812,11 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "4184f2f09c02fbc1"
+  "sha": "8e8504bb48c0be82"
  },
  {
   "component": "header",
   "id": "g3",
-  "el": "a",
-  "scope": ".app-header",
-  "specimen": "header-in",
-  "classes": [
-   "app-case",
-   "app-header",
-   "avatar-menu",
-   "badge-dot",
-   "bal-add",
-   "bal-amt",
-   "bal-figure",
-   "bal-label",
-   "bal-swap",
-   "bal-toggle",
-   "bell-wrap",
-   "btn",
-   "btn-ghost",
-   "btn-xs",
-   "cat-condensed",
-   "desk-only",
-   "device",
-   "dropdown",
-   "hiw-btn",
-   "ic",
-   "ic-sm",
-   "icon-btn",
-   "kit-chrome-demo",
-   "left",
-   "logo-btn",
-   "nav-item",
-   "nav-row",
-   "notif-all",
-   "notif-drop",
-   "notif-menu",
-   "row",
-   "utility"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 271,
-    "h": 52,
-    "pad": {
-     "top": 3,
-     "right": 1,
-     "bottom": 0,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "oklab(0.729223 0.00866619 0.111074 / 0.1) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 271,
-    "h": 52,
-    "pad": {
-     "top": 3,
-     "right": 1,
-     "bottom": 0,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 271,
-    "h": 52,
-    "pad": {
-     "top": 3,
-     "right": 1,
-     "bottom": 0,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 271,
-    "h": 57,
-    "pad": {
-     "top": 4,
-     "right": 1,
-     "bottom": 4,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 3
-   },
-   "rest-light": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 271,
-    "h": 52,
-    "pad": {
-     "top": 3,
-     "right": 1,
-     "bottom": 0,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "oklab(0.729223 0.00866619 0.111074 / 0.1) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 271,
-    "h": 52,
-    "pad": {
-     "top": 3,
-     "right": 1,
-     "bottom": 0,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 271,
-    "h": 52,
-    "pad": {
-     "top": 3,
-     "right": 1,
-     "bottom": 0,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 271,
-    "h": 57,
-    "pad": {
-     "top": 4,
-     "right": 1,
-     "bottom": 4,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 3
-   }
-  },
-  "covers": [
-   "a @.app-header"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/button.css",
-   "components/fonts.css",
-   "components/header.css",
-   "components/iconbtn.css",
-   "components/navitem.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/header-in.html"
-  ],
-  "sha": "4184f2f09c02fbc1"
- },
- {
-  "component": "header",
-  "id": "g4",
   "el": "a.notif-all",
   "scope": ".app-header",
   "specimen": "header-in",
@@ -9050,6 +8848,7 @@
    "logo-btn",
    "nav-item",
    "nav-row",
+   "nav-row-stack",
    "notif-all",
    "notif-drop",
    "notif-menu",
@@ -9218,7 +9017,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "4184f2f09c02fbc1"
+  "sha": "8e8504bb48c0be82"
  },
  {
   "component": "hero",
@@ -10451,7 +10250,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "a621b457a0d383b5"
+  "sha": "970581e4696465bb"
  },
  {
   "component": "iconbtn",
@@ -11736,7 +11535,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "b5f42c81b41f0d8b"
+  "sha": "6f5a3216b0a81541"
  },
  {
   "component": "input",
@@ -13125,7 +12924,7 @@
  {
   "component": "navitem",
   "id": "g1",
-  "el": "button.nav-item.nav-row",
+  "el": "a.nav-item.nav-row.nav-row-stack",
   "scope": ".app-header",
   "specimen": "header-in",
   "classes": [
@@ -13156,6 +12955,7 @@
    "logo-btn",
    "nav-item",
    "nav-row",
+   "nav-row-stack",
    "notif-all",
    "notif-drop",
    "notif-menu",
@@ -13165,8 +12965,8 @@
   "shots": {
    "rest-dark": {
     "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 119,
-    "h": 36,
+    "w": 167,
+    "h": 52,
     "pad": {
      "top": 3,
      "right": 0,
@@ -13183,8 +12983,8 @@
    },
    "rest-light": {
     "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 119,
-    "h": 36,
+    "w": 167,
+    "h": 52,
     "pad": {
      "top": 3,
      "right": 0,
@@ -13201,6 +13001,7 @@
    }
   },
   "covers": [
+   "a.nav-item.nav-row.nav-row-stack @.app-header",
    "button.nav-item.nav-row @.app-header"
   ],
   "sources": [
@@ -13216,11 +13017,11 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "4184f2f09c02fbc1"
+  "sha": "8e8504bb48c0be82"
  },
  {
   "component": "navitem",
-  "id": "g2",
+  "id": "g3",
   "el": "button.nav-item.nav-slot",
   "scope": "",
   "specimen": "navitem-slots",
@@ -13398,11 +13199,11 @@
    "ui-kit/specimens/bottomnav.html",
    "ui-kit/specimens/navitem-slots.html"
   ],
-  "sha": "cc4b8b23a55feea6"
+  "sha": "a2491bd5f102ae67"
  },
  {
   "component": "navitem",
-  "id": "g3",
+  "id": "g4",
   "el": "button.nav-item.nav-slot",
   "scope": "",
   "specimen": "navitem-slots",
@@ -13580,7 +13381,7 @@
    "ui-kit/specimens/bottomnav.html",
    "ui-kit/specimens/navitem-slots.html"
   ],
-  "sha": "cc4b8b23a55feea6"
+  "sha": "a2491bd5f102ae67"
  },
  {
   "component": "quick",

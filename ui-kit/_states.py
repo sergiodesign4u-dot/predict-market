@@ -237,10 +237,13 @@ TIGHT = {
     # control is what said so, which is the whole reason a declared list carries
     # one. The subjects are unchanged and are named here so the next renumbering
     # is a lookup rather than a puzzle.
-    ("header", "a", ".app-header"): "a link inside the notifications dropdown, 2px from its neighbour, "
-                      "so the halving leaves 1 of the 4 the ring needs. The stand is not "
-                      "padded to flatter the camera: the density is the product's, the "
-                      "ring is drawn, and 3px of it are shared with the row above",
+    # THE NOTIFICATION ROW'S ENTRY WAS PAID OFF ON 2026-08-06 rather than moved. It said
+    # the row sat 2px from its neighbour, so halving the gap left 1px of the 4 a ring
+    # needs. When the row joined `components/navitem.css` it merged with the account
+    # menu's row - the two measured identical, which is why they were one selector
+    # each before the split - and the merged group is photographed in the menu, where
+    # there is room. The frame is not tight any more, so the exception is deleted
+    # rather than carried, which is what the second half of gate 31 is for.
     ("header", "a.notif-all", ".app-header"): "`a.notif-all`, the same dropdown and the same 2px, for the same "
                        "reason",
 }

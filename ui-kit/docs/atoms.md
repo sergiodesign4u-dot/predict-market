@@ -628,14 +628,66 @@ sideways.** No colour, no ground and no border moved anywhere in the product. Th
                       button       911  7 kind(s), 5 file(s)
                       outcome      272  2 kind(s), 2 file(s)   <- was 3 kinds in 3
 
-**What is left of this atom is one control and one real question.** `.bp-side`, 40 placements,
-rests NEUTRAL - `--bg-control` on a hairline with muted ink - and takes an outcome colour only
-when selected, where the card and the hero state both sides before anybody presses anything.
-Both readings are defensible, nobody has decided, and the same product does both. The panel also
-disagrees with itself: the selected side is solid `--outcome-yes` in the panel and
-`--outcome-yes-fill-strong` in the dock, one breakpoint apart. `ui-kit/docs/backlog.md` S49, and
-it is not a partition's to answer, because a partition that changes an outcome colour is
-changing the one thing `DESIGN.md` decides twice.
+**What is left of this atom is one control, and reading the files corrected the question the
+same day it was asked.** `.bp-side`, 40 placements, rests NEUTRAL - `--bg-control` on a hairline
+with muted ink - where the card and the hero state both sides before anybody presses anything,
+and the first version of this paragraph called that a divergence. **It is a decision, written
+twice.** `components/tokens.css` declares `--outcome-yes-fill` with the words *"the tinted YES
+button (spectator, not trader)"*, and `components/betpanel.css` argues it out: *pressing it in
+green would be inventing a colour the control does not have and telling the user the side is
+chosen before it is.* A spectator's pair states the market's two sides; a trader's chooser
+states the CHOICE. So `.bp-side` is a second FACE of this atom, and the measurement that found
+it was not enough on its own.
+
+**That is the mistake this document has now made in both directions.** The social mark was filed
+by an argument nobody had measured; `.bp-side` was nearly refiled by a measurement whose reasons
+nobody had read. The rule that survives both: **measure, then read what the files say about the
+measurement, and only then decide.**
+
+**One value is genuinely open.** The selected side is solid `--outcome-yes` under `--text-on-yes`
+in the panel and the option list at 4.64:1, and `--outcome-yes-fill-strong` under
+`--outcome-yes-text-lit` in the dock at 5.3:1. Both are measured, both clear the floor, and no
+file says why the same control should differ at two widths when the dock IS the panel below
+760px. `ui-kit/docs/backlog.md` S49 holds that one line, and `.bp-side` waits for it rather than
+carrying the disagreement into the atom's own file.
+
+---
+
+## Two corrections and one adoption at zero, and the distance holds at 9
+
+**The outcome question was corrected the same day it was asked, by reading instead of measuring
+again.** The record above called `.bp-side`'s neutral rest a divergence. It is a decision,
+written twice: `components/tokens.css` declares `--outcome-yes-fill` with the words *"the tinted
+YES button (spectator, not trader)"*, and `components/betpanel.css` argues it out. A spectator's
+pair states the market's two sides; a trader's chooser states the CHOICE. `.bp-side` is a second
+FACE of the outcome atom, not a control that drifted, and the third rest spelling is not one
+either - `--outcome-yes-fill-soft` and `--outcome-yes-fill` are both `var(--green-a12)`, two
+names for one value, which `tokens.css` says itself with the words "for now".
+
+**So this document has now made the same mistake in both directions**, and that is the finding
+worth keeping:
+
+    the social mark   filed by an argument nobody had measured
+    .bp-side          nearly refiled by a measurement whose reasons nobody had read
+
+**Measure, then read what the files say about the measurement, and only then decide.** One value
+in that family is genuinely open and S49 now holds one line rather than three.
+
+**The notification row adopted `navitem` at zero**, which closes half of S46. Its two blockers
+were a `font-size` that nothing in the row reads - a `<strong>` and a `<span>`, both block, both
+sized, no bare text node - and a `display` that does draw, so the first was taken and the second
+got a modifier. 375 anchors in three trees. **525 snapshots, 0 differ, 0 elements changed.**
+
+The state capture then did something better than the diff: it **merged the account row and the
+notification row into one group**, because they measure identical in all four states and both
+themes. Three selectors that had been one each before this migration split them are one again,
+and a `_states.TIGHT` exception was paid off on the way, because the merged group is photographed
+where there is room.
+
+**The distance does not move for either**, and both are worth the pass anyway. One removed a
+duplicate the census cannot see, because a `<a>` in a dropdown is not a button-shaped control;
+the other stopped a wrong decision from being made on 40 placements of the control a bet is
+actually placed with.
 
 ---
 

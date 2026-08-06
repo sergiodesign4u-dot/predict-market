@@ -1,5 +1,5 @@
 /* components/navitem.css
-   Component: navitem. Classes: .nav-item, .nav-row, .nav-slot.
+   Component: navitem. Classes: .nav-item, .nav-row, .nav-row-stack, .nav-slot.
 
    Reads: --bg-pressed, --color-action, --text-brass, --text-muted, --text-primary, --tint-hover
    Stand:  ui-kit/navitem.html
@@ -77,6 +77,23 @@
    strong ink because a menu is read rather than glanced at, and a brass wash
    under the pointer rather than the neutral one the bar uses. */
 .nav-row{padding:var(--space-8) var(--space-8);font-size:var(--text-11);color:var(--text-primary);text-align:left}
+/* AND THE NOTIFICATION ROW JOINED IT ON 2026-08-06, which is what S46 asked for.
+   It is the account row with a different content: same transparent ground, same
+   8/8, same --text-primary, same brass wash, same press, and the three of those
+   were literally one selector each in components/header.css - written once for
+   both controls and split when the account row left. Two values had held it back
+   and both were measured to draw nothing. Its font-size was the browser's 16
+   where the account row is 11, and NOTHING in it reads a font size: the row holds
+   a <strong> and a <span>, both display:block with sizes of their own, and no
+   bare text node between them. So it takes the row's 11 and no glyph moves.
+   THE ONE VALUE THAT DOES DRAW IS THE DISPLAY, and it gets a modifier rather than
+   an argument. A menu row is one line and is the button default, inline-block; a
+   notification is a title and a detail under it, so it is a block. Changing the
+   account row to block would drop the line box its inline-block sits on, which is
+   real pixels on 365 placements for no reason anybody asked for.
+   The title and the detail stay in components/header.css: they are the row's
+   CONTENT and not the control's face, the same way a card keeps its own title. */
+.nav-row.nav-row-stack{display:block}
 
 /* ------------------------------------------------- and here is the finding ---
    THE TWO FACES ANSWER THE POINTER DIFFERENTLY AND AGREE ON THE PRESS, which is
