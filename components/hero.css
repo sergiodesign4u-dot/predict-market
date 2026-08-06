@@ -1,7 +1,7 @@
 /* components/hero.css
-   Component: hero. Classes: .brand-tile, .bt-by, .bt-photo, .bt-quote, .bt-tick, .bt-veil, .feed-hero, .hero-duo, .hero-feature, .hero-hot, .hero-main, .hero-promo, .hero-side, .hero-trust, .hf-area, .hf-bar, .hf-btn, .hf-chart, .hf-chart-cap, .hf-chart-legend, .hf-cta, .hf-eyebrow, .hf-foot, .hf-graph, .hf-graph-wrap, .hf-info, .hf-line, .hf-no, .hf-odds, .hf-odds-row, .hf-photo, .hf-tag, .hf-title, .hf-veil, .hf-vol-area, .hf-vol-line, .hf-why, .hf-yes, .hh-all, .hh-head, .hh-list, .hh-name, .hh-prob, .hh-rank, .hh-vol, .ht-art, .ht-badge, .ht-body, .no, .vol, .yes.
+   Component: hero. Classes: .brand-tile, .bt-by, .bt-photo, .bt-quote, .bt-tick, .bt-veil, .feed-hero, .hero-duo, .hero-feature, .hero-hot, .hero-main, .hero-promo, .hero-side, .hero-trust, .hf-area, .hf-bar, .hf-chart, .hf-chart-cap, .hf-chart-legend, .hf-cta, .hf-eyebrow, .hf-foot, .hf-graph, .hf-graph-wrap, .hf-info, .hf-line, .hf-no, .hf-odds, .hf-odds-row, .hf-photo, .hf-tag, .hf-title, .hf-veil, .hf-vol-area, .hf-vol-line, .hf-why, .hf-yes, .hh-all, .hh-head, .hh-list, .hh-name, .hh-prob, .hh-rank, .hh-vol, .ht-art, .ht-badge, .ht-body, .no, .vol, .yes.
 
-   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-pressed, --border-brass, --border-hairline, --color-action, --line-grid, --mask-solid, --outcome-line-no, --outcome-line-yes, --outcome-no, --outcome-no-figure, --outcome-no-fill, --outcome-no-fill-strong, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-strong, --outcome-yes-line, --outcome-yes-text, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-lit, --text-brass-vol, --text-chip-hover, --text-muted, --text-primary, --tint-brass-60, --veil-brand, --veil-photo-edge, --veil-photo-from, --veil-photo-mid, --veil-photo-to
+   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-brass, --border-hairline, --color-action, --line-grid, --mask-solid, --outcome-line-no, --outcome-line-yes, --outcome-no, --outcome-no-figure, --outcome-yes, --outcome-yes-text, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-lit, --text-brass-vol, --text-chip-hover, --text-muted, --text-primary, --tint-brass-60, --veil-brand, --veil-photo-edge, --veil-photo-from, --veil-photo-mid, --veil-photo-to
    Stand:  ui-kit/hero.html
    Stands on: 2 ui-visual screens (event-feed.html, how-it-works.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -59,30 +59,29 @@
 .hf-no{color:var(--outcome-no-figure)}
 .hf-foot{display:flex;gap:var(--space-16);margin-top:var(--space-12);font-family:var(--font-mono);font-size:var(--text-12);color:var(--text-muted)}
 .hf-foot b{color:var(--text-primary);font-weight:var(--weight-semibold)}
-.hf-cta{display:flex;gap:var(--space-8);margin-top:var(--space-16)}
-.hf-cta a{flex:1;display:flex;text-decoration:none}
-.hf-btn{flex:1;width:100%;min-height:var(--size-40);border-radius:var(--radius-10);font-family:var(--font-body);font-weight:var(--weight-bold);font-size:var(--text-14);border:1px solid;cursor:pointer}
-.hf-btn.yes{background:var(--outcome-yes-fill);color:var(--outcome-yes-text);border-color:var(--outcome-yes-line)}
-.hf-btn.no{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
-.hf-btn.yes:hover{background:var(--outcome-yes-fill-strong)}
-.hf-btn.no:hover{background:var(--outcome-no-fill-strong)}
-/* THE FEATURED PAIR IS THIS FILE'S, NOT yesno.css's, which is worth writing
-   down because the two look like one control. Its markup is
-   .hf-cta > a > button.hf-btn.yes, and every selector in yesno.css hangs off
-   .yesno, so not one of them reaches this button: the press settled there had to
-   be brought here or the largest YES on the feed would be the only one with no
-   answer to a finger.
-   The value is that one exactly. A held YES keeps its outcome colour and moves
-   only the stone under it, because settling onto --bg-pressed takes the green
-   away under the thumb and reads as "it let go", the opposite of what holding
-   YES means. The border is not restated the way it is there: this hover leaves
-   the rest edge alone, so there is nothing for a touch screen to miss.
-   Measured on the label each one carries: 5.72:1 YES and 4.91:1 NO in the
-   Vault, 5.38 and 5.13 in daylight, every one of them above the hover it
-   follows, and the press ground is opaque, so the photograph behind the card
-   cannot change those numbers. */
-.hf-btn.yes:active{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-pressed))}
-.hf-btn.no:active{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-pressed))}
+/* THE FEATURED PAIR IS yesno.css's NOW, and this file said the opposite until
+   2026-08-06. What was written here was true and was the wrong conclusion: `every
+   selector in yesno.css hangs off .yesno, so not one of them reaches this button`.
+   The answer to a control being out of a family's reach is to put it in reach, not
+   to draw it again. Measured before it was moved, the two are the SAME CONTROL:
+   `rgba(79,169,107,.12)` on `rgb(63,125,85)` with `rgb(119,209,155)` ink at 10px and
+   700, here and on a card, and the markup was identical too - a flex row, a link per
+   side, a button inside it. This file was drawing a second copy of the product's
+   most semantically loaded control, and DESIGN.md decides that control twice.
+   WHAT IT COST IS TWO PLACEMENTS taking the family's values: 14px to 12, a 40 floor
+   to 44, the browser's 1/6 padding to a chosen 8, and the hover from
+   --outcome-yes-fill-strong to the 32 per cent mix over --bg-control that the other
+   230 answer with. Two against 230 is not a divergence worth keeping, and one
+   placement was already the wrong size for an exception when `.edit` moved.
+   THE PRESS NEEDED NO ARGUMENT because both files had already reached it: a held YES
+   keeps its outcome colour and moves only the stone under it, since settling onto
+   --bg-pressed would take the green away under the thumb and read as letting go. It
+   is `color-mix(outcome 32%, --bg-pressed)` in both, byte for byte, which is the
+   clearest sign the two were one control all along.
+   WHAT STAYS HERE is where the pair sits under the chart: 16 above it and nothing
+   below, against the .yesno margin, which is a band's decision about its own bottom
+   edge. */
+.hf-cta{margin:var(--space-16) 0 0}
 .hf-chart{position:relative;display:flex;flex-direction:column;padding:var(--space-16) var(--space-16) var(--space-12);min-width:0;border-left:1px solid var(--shadow-ink-45);box-shadow:inset 1px 0 0 var(--bevel-hair)}
 .hf-chart-legend{display:flex;gap:var(--space-12);justify-content:flex-end;margin-bottom:var(--space-8)}
 .hf-tag{display:inline-flex;align-items:center;gap:var(--space-8);font-family:var(--font-mono);font-size:var(--text-12)}

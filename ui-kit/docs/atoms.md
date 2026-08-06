@@ -590,6 +590,55 @@ disclosures are the test, because no atom can hold their half. `ui-kit/docs/back
 
 ---
 
+## `outcome` had three kinds and has two: 10 to 9
+
+The hero band was drawing its own copy of the product's most semantically loaded control, and
+`components/hero.css` said so in its own comment: *every selector in yesno.css hangs off
+`.yesno`, so not one of them reaches this button.* True, and the wrong conclusion. **The answer
+to a control being out of a family's reach is to put it in reach, not to draw it again.**
+
+Measured at 1440, dark, before anything moved:
+
+| | ground | edge | ink | corner | weight |
+|---|---|---|---|---|---|
+| `.yesno button`, the card's pair, **230** | `rgba(79,169,107,.12)` | `rgb(63,125,85)` | `rgb(119,209,155)` | 10 | 700 |
+| `.hf-btn`, the hero's pair, **2** | `rgba(79,169,107,.12)` | `rgb(63,125,85)` | `rgb(119,209,155)` | 10 | 700 |
+
+Identical in every value a face has, and **the markup was identical too**: a flex row, a link
+per side, a button inside it. So the container took the class it should always have carried and
+the two buttons dropped theirs. `components/hero.css` went from thirteen declarations about that
+pair to one about where the row sits.
+
+**Two placements took the family's size on the way**, which is the `.edit` argument one step up:
+14px to 12, a 40 floor to 44, the browser's 1/6 padding to a chosen 8, and the hover from
+`--outcome-yes-fill-strong` to the 32 per cent mix over `--bg-control` that the other 230 answer
+with. Two against 230. **The press needed no argument at all** - both files had already written
+`color-mix(outcome 32%, --bg-pressed)`, byte for byte, which is the clearest sign the two were
+one control all along.
+
+**525 snapshots, 5 differ, and all five are `event-feed.html` at its five widths.** 74 heights
+changed and 1,995 elements moved down the page; **zero widths changed and nothing moved
+sideways.** No colour, no ground and no border moved anywhere in the product. The hero pair is
+4px taller and everything under it on that one screen sits 4px lower.
+
+    41 the atom map   7 control atom(s) in 16 file-slot(s): distance 9, and it goes to 0
+                      iconbutton  1361  6 kind(s), 1 file(s)
+                      chip        1358  3 kind(s), 4 file(s)
+                      navitem     1019  3 kind(s), 2 file(s)
+                      button       911  7 kind(s), 5 file(s)
+                      outcome      272  2 kind(s), 2 file(s)   <- was 3 kinds in 3
+
+**What is left of this atom is one control and one real question.** `.bp-side`, 40 placements,
+rests NEUTRAL - `--bg-control` on a hairline with muted ink - and takes an outcome colour only
+when selected, where the card and the hero state both sides before anybody presses anything.
+Both readings are defensible, nobody has decided, and the same product does both. The panel also
+disagrees with itself: the selected side is solid `--outcome-yes` in the panel and
+`--outcome-yes-fill-strong` in the dock, one breakpoint apart. `ui-kit/docs/backlog.md` S49, and
+it is not a partition's to answer, because a partition that changes an outcome colour is
+changing the one thing `DESIGN.md` decides twice.
+
+---
+
 ## The decision this document no longer has open
 
 - ~~**Is a social mark a `navitem` or an `iconbutton`?**~~ **Answered 2026-08-06 and the

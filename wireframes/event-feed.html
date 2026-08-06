@@ -394,9 +394,10 @@
     .hf-odds-row { display: flex; justify-content: space-between; margin-top: 8px; font-size: 13px; }
     .hf-foot { display: flex; gap: 16px; margin-top: 12px; font-size: 12px; }
     .hf-foot b { font-weight: 600; }
-    .hf-cta { display: flex; gap: 8px; margin-top: 16px; }
-    .hf-cta a { flex: 1; display: flex; }
-    .hf-btn { flex: 1; width: 100%; min-height: 40px; font-weight: 700; font-size: 14px; }
+    /* The featured pair is .yesno now, and the three rules that drew it here are gone with
+       the class: the grey tree already styles .yesno and the markup carries it. What is left
+       is where the pair sits under the chart. 2026-08-06, with components/hero.css. */
+    .hf-cta { margin: 16px 0 0; }
     .hf-chart { position: relative; display: flex; flex-direction: column; padding: 16px 16px 12px; min-width: 0; }
     .hf-chart-legend { display: flex; gap: 12px; justify-content: flex-end; margin-bottom: 8px; }
     .hf-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; }
@@ -913,9 +914,9 @@
                   <div class="hf-odds-row"><span class="hf-yes">YES 38%</span><span class="hf-no">NO 62%</span></div>
                 </div>
                 <div class="hf-foot"><span>Volume <b>$84,200</b></span><span>Closes <b>Mar 1, 2027</b></span></div>
-                <div class="hf-cta">
-                  <a href="event-detail.html"><button type="button" class="hf-btn yes">Back YES</button></a>
-                  <a href="event-detail.html"><button type="button" class="hf-btn no">Back NO</button></a>
+                <div class="hf-cta yesno">
+                  <a href="event-detail.html"><button type="button">Back YES</button></a>
+                  <a href="event-detail.html"><button type="button">Back NO</button></a>
                 </div>
               </div>
               <div class="hf-chart">

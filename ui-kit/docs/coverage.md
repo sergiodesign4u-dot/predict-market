@@ -33,7 +33,7 @@ says so. No em dash.
 | filters | 2 | filters-sort, filters-panel | 2 | 3 | 105 |
 | footer | 1 | footer | 0 | 15 | 105 |
 | header | 2 | header-in, header-out | 2 | 19 | 105 |
-| hero | 1 | hero-band | 0 | 51 | 2 |
+| hero | 1 | hero-band | 0 | 50 | 2 |
 | hiw-dialog | 1 | hiw-dialog | 0 | 16 | 105 |
 | iconbtn | 1 | iconbtn-utility | 5 | 9 | 105 |
 | input | 2 | input-amount, input-states | 2 | 4 | 105 |

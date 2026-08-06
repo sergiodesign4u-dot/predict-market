@@ -9247,7 +9247,6 @@
    "hero-trust",
    "hf-area",
    "hf-bar",
-   "hf-btn",
    "hf-chart",
    "hf-chart-cap",
    "hf-chart-legend",
@@ -9282,7 +9281,8 @@
    "ht-body",
    "no",
    "vol",
-   "yes"
+   "yes",
+   "yesno"
   ],
   "shots": {
    "rest-dark": {
@@ -9440,468 +9440,17 @@
    "components/fonts.css",
    "components/hero.css",
    "components/tokens.css",
+   "components/yesno.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "34f0ff893b9fa992"
+  "sha": "e6ab0f0ac6ed945b"
  },
  {
   "component": "hero",
   "id": "g2",
-  "el": "button.hf-btn.yes",
-  "scope": "",
-  "specimen": "hero-band",
-  "classes": [
-   "app-case",
-   "brand-tile",
-   "bt-by",
-   "bt-photo",
-   "bt-quote",
-   "bt-tick",
-   "bt-veil",
-   "device",
-   "feed",
-   "feed-hero",
-   "feed-inner",
-   "hero-duo",
-   "hero-feature",
-   "hero-hot",
-   "hero-main",
-   "hero-promo",
-   "hero-side",
-   "hero-trust",
-   "hf-area",
-   "hf-bar",
-   "hf-btn",
-   "hf-chart",
-   "hf-chart-cap",
-   "hf-chart-legend",
-   "hf-cta",
-   "hf-eyebrow",
-   "hf-foot",
-   "hf-graph",
-   "hf-graph-wrap",
-   "hf-grid",
-   "hf-info",
-   "hf-line",
-   "hf-no",
-   "hf-odds",
-   "hf-odds-row",
-   "hf-photo",
-   "hf-tag",
-   "hf-title",
-   "hf-veil",
-   "hf-vol-area",
-   "hf-vol-line",
-   "hf-why",
-   "hf-yes",
-   "hh-all",
-   "hh-head",
-   "hh-list",
-   "hh-name",
-   "hh-prob",
-   "hh-rank",
-   "hh-vol",
-   "ht-art",
-   "ht-badge",
-   "ht-body",
-   "no",
-   "vol",
-   "yes"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(79, 169, 107, 0.12) | none | rgb(63, 125, 85) | 1px | rgb(119, 209, 155) | 10px | none | none | 1 | none 3px rgb(119, 209, 155) 0px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(119, 209, 155) | 10px | none | none | 1 | none 3px rgb(119, 209, 155) 0px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "oklab(0.363031 -0.0361971 0.013583) | none | rgb(63, 125, 85) | 1px | rgb(119, 209, 155) | 10px | none | none | 1 | none 3px rgb(119, 209, 155) 0px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(79, 169, 107, 0.12) | none | rgb(63, 125, 85) | 1px | rgb(119, 209, 155) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(79, 169, 107, 0.12) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53) | 10px | none | none | 1 | none 3px rgb(34, 91, 53) 0px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(79, 169, 107, 0.2) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53) | 10px | none | none | 1 | none 3px rgb(34, 91, 53) 0px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "oklab(0.863713 -0.0357629 0.0248723) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53) | 10px | none | none | 1 | none 3px rgb(34, 91, 53) 0px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(79, 169, 107, 0.12) | none | rgb(63, 125, 85) | 1px | rgb(34, 91, 53) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button.hf-btn.yes"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/hero.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/hero-band.html"
-  ],
-  "sha": "34f0ff893b9fa992"
- },
- {
-  "component": "hero",
-  "id": "g3",
-  "el": "button.hf-btn.no",
-  "scope": "",
-  "specimen": "hero-band",
-  "classes": [
-   "app-case",
-   "brand-tile",
-   "bt-by",
-   "bt-photo",
-   "bt-quote",
-   "bt-tick",
-   "bt-veil",
-   "device",
-   "feed",
-   "feed-hero",
-   "feed-inner",
-   "hero-duo",
-   "hero-feature",
-   "hero-hot",
-   "hero-main",
-   "hero-promo",
-   "hero-side",
-   "hero-trust",
-   "hf-area",
-   "hf-bar",
-   "hf-btn",
-   "hf-chart",
-   "hf-chart-cap",
-   "hf-chart-legend",
-   "hf-cta",
-   "hf-eyebrow",
-   "hf-foot",
-   "hf-graph",
-   "hf-graph-wrap",
-   "hf-grid",
-   "hf-info",
-   "hf-line",
-   "hf-no",
-   "hf-odds",
-   "hf-odds-row",
-   "hf-photo",
-   "hf-tag",
-   "hf-title",
-   "hf-veil",
-   "hf-vol-area",
-   "hf-vol-line",
-   "hf-why",
-   "hf-yes",
-   "hh-all",
-   "hh-head",
-   "hh-list",
-   "hh-name",
-   "hh-prob",
-   "hh-rank",
-   "hh-vol",
-   "ht-art",
-   "ht-badge",
-   "ht-body",
-   "no",
-   "vol",
-   "yes"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(200, 90, 80, 0.12) | none | rgb(143, 72, 65) | 1px | rgb(231, 144, 135) | 10px | none | none | 1 | none 3px rgb(231, 144, 135) 0px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(200, 90, 80, 0.2) | none | rgb(143, 72, 65) | 1px | rgb(231, 144, 135) | 10px | none | none | 1 | none 3px rgb(231, 144, 135) 0px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "oklab(0.343712 0.0399616 0.0152984) | none | rgb(143, 72, 65) | 1px | rgb(231, 144, 135) | 10px | none | none | 1 | none 3px rgb(231, 144, 135) 0px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(200, 90, 80, 0.12) | none | rgb(143, 72, 65) | 1px | rgb(231, 144, 135) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(200, 90, 80, 0.12) | none | rgb(143, 72, 65) | 1px | rgb(134, 50, 40) | 10px | none | none | 1 | none 3px rgb(134, 50, 40) 0px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(200, 90, 80, 0.2) | none | rgb(143, 72, 65) | 1px | rgb(134, 50, 40) | 10px | none | none | 1 | none 3px rgb(134, 50, 40) 0px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "oklab(0.844395 0.0403958 0.0265878) | none | rgb(143, 72, 65) | 1px | rgb(134, 50, 40) | 10px | none | none | 1 | none 3px rgb(134, 50, 40) 0px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(200, 90, 80, 0.12) | none | rgb(143, 72, 65) | 1px | rgb(134, 50, 40) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 145,
-    "h": 60,
-    "pad": {
-     "top": 8,
-     "right": 12,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button.hf-btn.no"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/hero.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/hero-band.html"
-  ],
-  "sha": "34f0ff893b9fa992"
- },
- {
-  "component": "hero",
-  "id": "g4",
   "el": "article.hero-trust",
   "scope": "",
   "specimen": "hero-band",
@@ -9926,7 +9475,6 @@
    "hero-trust",
    "hf-area",
    "hf-bar",
-   "hf-btn",
    "hf-chart",
    "hf-chart-cap",
    "hf-chart-legend",
@@ -9961,7 +9509,8 @@
    "ht-body",
    "no",
    "vol",
-   "yes"
+   "yes",
+   "yesno"
   ],
   "shots": {
    "rest-dark": {
@@ -10082,16 +9631,17 @@
    "components/fonts.css",
    "components/hero.css",
    "components/tokens.css",
+   "components/yesno.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "34f0ff893b9fa992"
+  "sha": "e6ab0f0ac6ed945b"
  },
  {
   "component": "hero",
-  "id": "g6",
+  "id": "g4",
   "el": "a.hh-all",
   "scope": "",
   "specimen": "hero-band",
@@ -10116,7 +9666,6 @@
    "hero-trust",
    "hf-area",
    "hf-bar",
-   "hf-btn",
    "hf-chart",
    "hf-chart-cap",
    "hf-chart-legend",
@@ -10151,7 +9700,8 @@
    "ht-body",
    "no",
    "vol",
-   "yes"
+   "yes",
+   "yesno"
   ],
   "shots": {
    "rest-dark": {
@@ -10308,12 +9858,13 @@
    "components/fonts.css",
    "components/hero.css",
    "components/tokens.css",
+   "components/yesno.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "34f0ff893b9fa992"
+  "sha": "e6ab0f0ac6ed945b"
  },
  {
   "component": "hiw-dialog",
@@ -17201,6 +16752,7 @@
   "also": [
    "card-binary",
    "yesno",
+   "hero-band",
    "feed-grid",
    "card-multi",
    "options-rows"
@@ -17222,10 +16774,11 @@
    "ui-kit/specimens/card-binary.html",
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html",
+   "ui-kit/specimens/hero-band.html",
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "601cb2c43c8e825a"
+  "sha": "9060724cacaa406a"
  },
  {
   "component": "yesno",
@@ -17390,6 +16943,7 @@
   "also": [
    "card-binary",
    "yesno",
+   "hero-band",
    "feed-grid",
    "card-multi",
    "options-rows",
@@ -17412,11 +16966,12 @@
    "ui-kit/specimens/card-binary.html",
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html",
+   "ui-kit/specimens/hero-band.html",
    "ui-kit/specimens/options-multi.html",
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "c314969d1b0032c8"
+  "sha": "3f65f585f5829a82"
  },
  {
   "component": "yesno",
@@ -17581,6 +17136,7 @@
   "also": [
    "card-binary",
    "yesno",
+   "hero-band",
    "feed-grid",
    "card-multi",
    "options-rows",
@@ -17603,11 +17159,12 @@
    "ui-kit/specimens/card-binary.html",
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html",
+   "ui-kit/specimens/hero-band.html",
    "ui-kit/specimens/options-multi.html",
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "c314969d1b0032c8"
+  "sha": "3f65f585f5829a82"
  },
  {
   "component": "yesno",

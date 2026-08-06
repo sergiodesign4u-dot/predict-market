@@ -427,8 +427,6 @@ KINDS = [
      "loadmore", "action", "the same graphite chip, at the foot of a list"),
     ("toggle", {"toggle"}, set(),
      "filters", "selector", "a switch is not a button: it carries a value, not an action"),
-    ("hero, the featured pair", {"hf-btn"}, set(),
-     "hero", "selector", "the hero band's own YES / NO, at the band's size"),
     ("the vitrine's own chrome", {"rm-toggle", "theme-switch"}, set(),
      "course-chrome", "stand", "stand furniture, not product: it is how you read these pages"),
 ]
@@ -521,7 +519,11 @@ ATOMS = {
                   "has no label to size, and its own box is the whole target",
     "chip": "a label a person PICKS BETWEEN, carrying a value. The chosen one is a brass "
             "tint, which DESIGN.md decides twice",
-    "outcome": "the YES / NO pair, where the COLOUR states a result. It never folds into "
+    "outcome": "the YES / NO pair, where the COLOUR states a result. It had three kinds until "
+               "2026-08-06 and has two: the hero band was drawing its own copy of the card's "
+               "pair, same three roles, same markup shape, because every selector in yesno.css "
+               "hangs off `.yesno` and the hero did not carry it. It carries it now. It never "
+               "folds into "
                "`chip`, because green and red are outcome semantics and an accent may not "
                "borrow the win or lose colour",
     "tab": "a selector whose selection swaps a PANEL rather than carrying a value, which "
@@ -586,7 +588,6 @@ ATOM = {
     "a sub-category row": "navitem",
     "YES / NO, the outcome pair": "outcome",
     "the outcome side of a bet": "outcome",
-    "hero, the featured pair": "outcome",
     "toggle": "switch",
     # AND IT WAS ANSWERED ON 2026-08-06, BY MEASURING IT. The row above used to
     # read "rule 1 is the role, and rule 1 has not been wrong here yet". It was
