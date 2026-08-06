@@ -203,7 +203,7 @@
    "ui-kit/specimens/betpanel-sheet.html",
    "ui-kit/specimens/button-census.html"
   ],
-  "sha": "47525629854cd2e0"
+  "sha": "87aea97df0e05386"
  },
  {
   "component": "betpanel",
@@ -425,7 +425,7 @@
    "ui-kit/specimens/betpanel-more.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "95eebc788565ba27"
+  "sha": "ccd0cc37b3ba856e"
  },
  {
   "component": "button",
@@ -2230,7 +2230,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-chips.html"
   ],
-  "sha": "bcde509c48ddadbf"
+  "sha": "ae505300cc8016e2"
  },
  {
   "component": "catnav",
@@ -2410,7 +2410,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-chips.html"
   ],
-  "sha": "bcde509c48ddadbf"
+  "sha": "ae505300cc8016e2"
  },
  {
   "component": "catnav",
@@ -2587,7 +2587,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subfilter.html"
   ],
-  "sha": "6976ca71528b0bb7"
+  "sha": "1f17e758a32c3a11"
  },
  {
   "component": "catnav",
@@ -2764,7 +2764,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subfilter.html"
   ],
-  "sha": "6976ca71528b0bb7"
+  "sha": "1f17e758a32c3a11"
  },
  {
   "component": "catnav",
@@ -2943,7 +2943,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subcat.html"
   ],
-  "sha": "99e75fce2ace9873"
+  "sha": "5b462fe75330e782"
  },
  {
   "component": "catnav",
@@ -3122,7 +3122,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subcat.html"
   ],
-  "sha": "99e75fce2ace9873"
+  "sha": "5b462fe75330e782"
  },
  {
   "component": "chip",
@@ -3141,7 +3141,7 @@
   ],
   "shots": {
    "rest-dark": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "value": "rgba(199, 162, 78, 0.09) | none | rgb(231, 214, 166) | 0px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
     "w": 83,
     "h": 46,
     "pad": {
@@ -3159,7 +3159,7 @@
     "short": 0
    },
    "hover-dark": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "value": "rgba(199, 162, 78, 0.09) | none | rgb(231, 214, 166) | 0px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
     "w": 83,
     "h": 46,
     "pad": {
@@ -3177,7 +3177,7 @@
     "short": 0
    },
    "active-dark": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "value": "rgba(199, 162, 78, 0.09) | none | rgb(231, 214, 166) | 0px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
     "w": 83,
     "h": 46,
     "pad": {
@@ -3195,7 +3195,7 @@
     "short": 0
    },
    "focus-dark": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "value": "rgba(199, 162, 78, 0.09) | none | rgb(231, 214, 166) | 0px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) 2px",
     "w": 85,
     "h": 46,
     "pad": {
@@ -3213,7 +3213,7 @@
     "short": 0
    },
    "rest-light": {
-    "value": "rgba(199, 162, 78, 0.3) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
     "w": 83,
     "h": 46,
     "pad": {
@@ -3231,7 +3231,7 @@
     "short": 0
    },
    "hover-light": {
-    "value": "rgba(199, 162, 78, 0.3) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
     "w": 83,
     "h": 46,
     "pad": {
@@ -3249,7 +3249,7 @@
     "short": 0
    },
    "active-light": {
-    "value": "rgba(199, 162, 78, 0.3) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
     "w": 83,
     "h": 46,
     "pad": {
@@ -3267,7 +3267,7 @@
     "short": 0
    },
    "focus-light": {
-    "value": "rgba(199, 162, 78, 0.3) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) 2px",
     "w": 85,
     "h": 46,
     "pad": {
@@ -3309,7 +3309,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "fbaed38072ffef56"
+  "sha": "7523ddef6f31ecd8"
  },
  {
   "component": "chip",
@@ -3496,7 +3496,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "fbaed38072ffef56"
+  "sha": "7523ddef6f31ecd8"
  },
  {
   "component": "cookie-consent",
@@ -5899,7 +5899,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "b4179d040956f822"
+  "sha": "85148197dce93696"
  },
  {
   "component": "dialog",
@@ -6474,7 +6474,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "d8fafd37c07fc8e3"
+  "sha": "279ef16dd9dea89d"
  },
  {
   "component": "filters",
@@ -6626,7 +6626,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "d8fafd37c07fc8e3"
+  "sha": "279ef16dd9dea89d"
  },
  {
   "component": "filters",
@@ -6778,7 +6778,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "d8fafd37c07fc8e3"
+  "sha": "279ef16dd9dea89d"
  },
  {
   "component": "footer",
@@ -9647,7 +9647,7 @@
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "ded9a379d3143965"
+  "sha": "9013de41c06db7df"
  },
  {
   "component": "iconbtn",
@@ -9886,7 +9886,8 @@
    "resolution",
    "sel",
    "total",
-   "track"
+   "track",
+   "yesno-pick"
   ],
   "shots": {
    "rest-dark": {
@@ -10056,6 +10057,7 @@
    "components/oddsbar.css",
    "components/quick.css",
    "components/tokens.css",
+   "components/yesno.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
@@ -10063,7 +10065,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "2e814aa2e7807a88"
+  "sha": "e10cf5f79bdb504f"
  },
  {
   "component": "iconbtn",
@@ -10734,7 +10736,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "b7914a67534a9463"
+  "sha": "df171aaa2b00cc55"
  },
  {
   "component": "input",
@@ -10916,7 +10918,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "2b709cb720ef59b6"
+  "sha": "d4779d10d44ae66c"
  },
  {
   "component": "input",
@@ -11096,7 +11098,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "2b709cb720ef59b6"
+  "sha": "d4779d10d44ae66c"
  },
  {
   "component": "input",
@@ -11150,7 +11152,8 @@
    "resolution",
    "sel",
    "total",
-   "track"
+   "track",
+   "yesno-pick"
   ],
   "shots": {
    "rest-dark": {
@@ -11320,6 +11323,7 @@
    "components/oddsbar.css",
    "components/quick.css",
    "components/tokens.css",
+   "components/yesno.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
@@ -11328,7 +11332,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "6908c20cdd051145"
+  "sha": "0e8fa1083644d9dc"
  },
  {
   "component": "input",
@@ -11362,7 +11366,8 @@
    "sel",
    "sheet-grab",
    "spec-inflow",
-   "total"
+   "total",
+   "yesno-pick"
   ],
   "shots": {
    "rest-dark": {
@@ -11522,12 +11527,13 @@
    "components/input.css",
    "components/quick.css",
    "components/tokens.css",
+   "components/yesno.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "71ec7e2c885243e8"
+  "sha": "6740de559c797bdf"
  },
  {
   "component": "loadmore",
@@ -12558,7 +12564,7 @@
    "ui-kit/specimens/input-states.html",
    "ui-kit/specimens/quick-amounts.html"
   ],
-  "sha": "91b7ca23f286fdde"
+  "sha": "368473bea497ea60"
  },
  {
   "component": "quick",
@@ -12576,7 +12582,7 @@
   ],
   "shots": {
    "rest-dark": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
     "w": 49,
     "h": 60,
     "pad": {
@@ -12594,7 +12600,7 @@
     "short": 0
    },
    "hover-dark": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
     "w": 49,
     "h": 60,
     "pad": {
@@ -12612,7 +12618,7 @@
     "short": 0
    },
    "active-dark": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
     "w": 49,
     "h": 60,
     "pad": {
@@ -12630,7 +12636,7 @@
     "short": 0
    },
    "focus-dark": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) 2px",
     "w": 49,
     "h": 60,
     "pad": {
@@ -12648,7 +12654,7 @@
     "short": 0
    },
    "rest-light": {
-    "value": "rgba(199, 162, 78, 0.3) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
     "w": 49,
     "h": 60,
     "pad": {
@@ -12666,7 +12672,7 @@
     "short": 0
    },
    "hover-light": {
-    "value": "rgba(199, 162, 78, 0.3) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
     "w": 49,
     "h": 60,
     "pad": {
@@ -12684,7 +12690,7 @@
     "short": 0
    },
    "active-light": {
-    "value": "rgba(199, 162, 78, 0.3) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
     "w": 49,
     "h": 60,
     "pad": {
@@ -12702,7 +12708,7 @@
     "short": 0
    },
    "focus-light": {
-    "value": "rgba(199, 162, 78, 0.3) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) 2px",
     "w": 49,
     "h": 60,
     "pad": {
@@ -12743,7 +12749,7 @@
    "ui-kit/specimens/input-states.html",
    "ui-kit/specimens/quick-amounts.html"
   ],
-  "sha": "91b7ca23f286fdde"
+  "sha": "368473bea497ea60"
  },
  {
   "component": "related",
@@ -13260,7 +13266,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "a2bfbf3984273dc8"
+  "sha": "944459d7f534cc4b"
  },
  {
   "component": "tabs",
@@ -13453,7 +13459,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "a2bfbf3984273dc8"
+  "sha": "944459d7f534cc4b"
  },
  {
   "component": "tabs",
@@ -13646,7 +13652,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "a2bfbf3984273dc8"
+  "sha": "944459d7f534cc4b"
  },
  {
   "component": "tabs",
@@ -15758,7 +15764,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-more.html"
   ],
-  "sha": "68a25a15eb5109ed"
+  "sha": "ca9a221662c33b1c"
  },
  {
   "component": "yesno",

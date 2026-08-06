@@ -60,7 +60,13 @@ dialog.app-dialog .quick button:hover:not(.sel){border-color:var(--border-brass-
    which is nothing, on `.seg`, on `.ed-range` and on the panel's own quick row.
    That gap is real and it is uniform; `ui-kit/docs/backlog.md` S38 owns it rather
    than this file inventing a fourth answer. */
-dialog.app-dialog .quick button.sel{background:var(--tint-brass-16);color:var(--text-brass);border-color:var(--border-brass-hover)}
+/* AND ONE MORE STEP OF THE SAME WALK, 2026-08-06. The paragraph above took this control off a
+   brass gradient and onto the tint the bet panel wore; S35 then measured the whole chip family
+   and found the panel itself was one of TWO live tints. So this rule moves a second time, to
+   the same --tint-brass-09 the 815 category chips wear, with the same ink and the same halo.
+   It is the last of the spellings and the only one that needed two passes to land, because the
+   first pass was measuring one control against one neighbour and this one measured all five. */
+dialog.app-dialog .quick button.sel{background:var(--tint-brass-09);color:var(--text-brass-chip);border-color:var(--tint-brass-45);box-shadow:0 0 10px -8px var(--glow-brass)}
 dialog.app-dialog .quick button.sel{font-weight:var(--weight-bold)}
 dialog.app-dialog .quick button:active:not(.sel){background:var(--bg-pressed)}
 dialog.app-dialog .sheet-body .quick{margin-top:var(--space-12)}
@@ -70,5 +76,17 @@ dialog.app-dialog .sheet-body .quick{margin-top:var(--space-12)}
    field they fill is right-aligned. */
 .app-case :is(.bet-panel,.bet-sheet) .quick{margin-top:0;justify-content:flex-end;flex-wrap:wrap}
 .app-case :is(.bet-panel,.bet-sheet) .quick button{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary)}
-.app-case :is(.bet-panel,.bet-sheet) .quick button.sel{background:var(--tint-brass-16);border-color:var(--border-brass-hover);color:var(--text-brass);font-weight:var(--weight-bold)}
+/* ONE SELECTED CHIP, 2026-08-06, and this is the half of backlog S35 that moved. The product
+   had two live spellings of "this one is chosen": a --tint-brass-09 ground inside a
+   --tint-brass-45 edge with --text-brass-chip and a faint brass halo, worn by 815 category
+   chips, and a --tint-brass-16 ground with --text-brass and no halo, worn by 543 here and in
+   components/chip.css. Neither file gave a REASON for the difference; both tokens carry only a
+   provenance - "the condensed category chip when active", "a selected quick amount" - which is
+   what a value read off a painted screen looks like. So the majority wins, and it is also the
+   safer pair in daylight, where the two inks collapse to one --brass-700 and the other ground
+   is the deeper of the two.
+   THE RECIPE COLOURS WHAT THE CHIP ALREADY HAS AND ADDS NO PARTS. This one has an edge at rest,
+   so the edge goes brass; the rail chip in components/chip.css has none, so it gets none, and
+   its box does not move. */
+.app-case :is(.bet-panel,.bet-sheet) .quick button.sel{background:var(--tint-brass-09);border-color:var(--tint-brass-45);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
 .app-case .bet-sheet .quick{gap:var(--space-8)}

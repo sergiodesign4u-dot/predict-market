@@ -1,7 +1,7 @@
 /* components/catnav.css
    Component: catnav. Classes: .cat-ic, .cat-nav, .cnt, .feed-subfilter, .subcat, .subcat-head.
 
-   Reads: --bevel-notice, --bg-chip, --bg-control-hover, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --edge-groove-dark, --edge-groove-light, --glow-brass, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
+   Reads: --bevel-notice, --bg-chip, --bg-control-hover, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --glow-brass, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
    Stand:  ui-kit/catnav.html
    Stands on: 57 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -9,7 +9,10 @@
 .cat-nav{margin:0}
 .cat-nav ul{list-style:none;margin:0;padding:var(--space-8) var(--space-8);display:flex;gap:var(--space-8);overflow-x:auto;flex-wrap:nowrap}
 .cat-nav button{padding:var(--space-4) var(--space-8);font-size:var(--text-11);cursor:pointer;white-space:nowrap}
-.cat-nav li[aria-current="page"] button{border-width:2px;font-weight:var(--weight-bold)}
+/* `border-width:2px` was here with the weight and was dead for the same reason: the scoped rule
+   sets `border:1px solid`, which is (0,4,2) against this (0,2,2), and the current chip measures
+   1px. The weight is live and stays. */
+.cat-nav li[aria-current="page"] button{font-weight:var(--weight-bold)}
 /* Five rules used to sit here: the sub-category rail as a sticky 210px column,
    its list stacked, its buttons full width. They are the DESKTOP layout, and
    they belong to the min-width:900px block at the bottom of this file, which
@@ -56,7 +59,13 @@
 }
 .cat-nav > ul{max-width:var(--container-max);margin:0 auto;padding:var(--space-8) var(--space-20)}
 .cat-nav button{background:var(--bg-surface);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
-.cat-nav li[aria-current="page"] button{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border-color:var(--color-action);color:var(--text-on-brass)}
+/* THE FIFTH SPELLING OF "SELECTED" WAS HERE AND HAS NEVER RENDERED. It was a full brass
+   GRADIENT - the primary button's plate on a category chip - and `DESIGN.md` says the active
+   chip is a brass TINT. It was dead because every `.cat-nav` in the product and in the vitrine
+   sits inside `.feed-inner`, and `.feed-inner .cat-nav li[aria-current] button` below is (0,4,2)
+   against this rule's (0,2,2). Measured in the browser before deleting it: `background-image:
+   none` on the current chip, at 1440 and at 380, in both themes. Backlog S35 counted five
+   spellings and the loudest of the five was never one. 2026-08-06. */
 @media(max-width:640px){
   .cat-nav button{position:relative}
 }

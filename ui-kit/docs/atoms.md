@@ -734,6 +734,53 @@ rule ends at rather than the tag it usually wears.**
 
 ---
 
+## S35: five spellings of "selected", and the loudest had never rendered
+
+The chip family's selected state was the largest open value on the map: 1,358 placements in four
+files, and `ui-kit/docs/backlog.md` counted five ways of saying *this one is chosen*. Measured in
+the browser at 1440 in both themes, and then read for reasons, which is the order this document
+settled on one pass earlier:
+
+| what it says | placements | ground | edge | ink | halo |
+|---|---|---|---|---|---|
+| the category chips | **815** | `--tint-brass-09` | `--tint-brass-45` | `--text-brass-chip` | yes |
+| the rail chip, the panel's amounts, the deposit sheet's | **543** | `--tint-brass-16` | `--tint-brass-45` or none | `--text-brass` | no |
+| a full brass **gradient** | 0 | | | | |
+
+**The loudest of the five had never rendered.** `.cat-nav li[aria-current] button` set a brass
+gradient at (0,2,2), and every `.cat-nav` in the product AND in the vitrine sits inside
+`.feed-inner`, whose rule is (0,4,2). The current chip measures `background-image: none`. A
+`border-width:2px` beside it was dead the same way. **A spelling that cannot win is not a
+divergence, it is dead code**, and the only way to tell the two apart is to open the page.
+
+**Neither of the two live spellings had a reason written for it.** `tokens.css` gives each token a
+provenance and not an argument - *the condensed category chip when active*, *a selected quick
+amount* - which is what a value read off an already-painted screen looks like. That is exactly
+the test `.bp-side` passed a pass earlier, where `--outcome-yes-fill` said **spectator, not
+trader** and settled it. Here nothing said anything, so the majority won.
+
+**One selected chip: `--tint-brass-09`, `--text-brass-chip`, bold, the halo, and a
+`--tint-brass-45` edge WHERE THE CHIP HAS ONE.** It is also the safer pair in daylight, where the
+two inks collapse to a single `--brass-700` and the losing ground is the deeper of the two. And
+the recipe **colours what a chip already has rather than adding a part**: the rail chip is
+borderless at rest and stays borderless when chosen, so no box moves.
+
+**525 snapshots, 55 differ, 121 elements, and exactly three properties**: `color`,
+`backgroundColor`, `boxShadow`. No box, no border width, no padding, no font, nothing outside a
+chosen chip.
+
+**A sixth spelling was found by the proof rather than by the reading.** `dialog.app-dialog .quick
+button.sel` is a rule the first sweep missed because the selector starts with a tag, and the state
+gallery split the deposit sheet's chip away from the bet sheet's the moment the other half of the
+edit landed. It merged again when the sixth was fixed. **That is twice now that the gallery has
+checked a caption a person wrote**, and the reason it can is that it groups a face by what the
+face MEASURES.
+
+The distance does not move: this was a value, not a partition. **The chip partition - four files
+to one - is the next pass, and it is now a move at zero.**
+
+---
+
 ## The decision this document no longer has open
 
 - ~~**Is a social mark a `navitem` or an `iconbutton`?**~~ **Answered 2026-08-06 and the

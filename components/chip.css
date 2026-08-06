@@ -66,4 +66,8 @@
    active state and primary CTAs only. `.sel` is the shared modifier
    `ui-kit/_levels.py` declares, so the state is a class rather than a pseudo,
    because the selection survives the pointer leaving. */
-.app-case .chip.sel{background:var(--tint-brass-16);color:var(--text-brass);font-weight:var(--weight-bold)}
+/* The one selected chip, S35, 2026-08-06: the same tint, the same ink and the same halo the 815
+   category chips wear. No edge, because this chip has none at rest and the recipe colours what
+   a chip already has rather than adding a part - giving it a 1px band here would move 63 boxes
+   by 2px to say something the ground is already saying. */
+.app-case .chip.sel{background:var(--tint-brass-09);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
