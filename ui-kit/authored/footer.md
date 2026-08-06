@@ -47,4 +47,4 @@ Seen: `voice/docs/microcopy.md` Step 26, "The footer trust block, and the last f
 
 - `a @footer` - A link in a column, at rest, hovered, held and focused. Quiet ink that lifts to the strong role under a pointer, no underline until then: a footer with 30 underlined links reads as a wall.
 - `summary @footer` - The language menu's opener, all four faces. It is the one control here that opens rather than navigates, and its contents are the declared TBD.
-- `a @footer (2)` - A social link: an icon with a real accessible name and no text beside it. Its four faces answer in the ground rather than the mark, because the marks are brand shapes and must not be tinted.
+- `a.icon-btn.icon-btn-lift @footer` - **A social link, and since 2026-08-06 it is not this file's control.** It measured as an icon button in every value a face has, so its rules went to `components/iconbtn.css` and its picture is captured here because here is where it STANDS. The four faces answer in the GROUND rather than the mark, because the marks are brand shapes and must not be recoloured; what is left in this file is `.social-row`, one flex line with an 8 gap.

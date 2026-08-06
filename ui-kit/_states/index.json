@@ -232,7 +232,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "ec40df29e406c1c8"
+  "sha": "de041e05466f0fce"
  },
  {
   "component": "betpanel",
@@ -467,7 +467,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "ec40df29e406c1c8"
+  "sha": "de041e05466f0fce"
  },
  {
   "component": "betpanel",
@@ -2604,7 +2604,7 @@
    "ui-kit/specimens/skeleton-grid.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "1fcd01783ec1fe4c"
+  "sha": "a85fc5d63ef96c69"
  },
  {
   "component": "card",
@@ -2818,7 +2818,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "cc9f4bb2d5d2ec76"
+  "sha": "8f69d261609f2299"
  },
  {
   "component": "card",
@@ -2985,7 +2985,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "6147f551132d42d2"
+  "sha": "a8bed76403216b53"
  },
  {
   "component": "catnav",
@@ -7473,7 +7473,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "8ec8fcee8ef1706b"
+  "sha": "b8066021b84c0204"
  },
  {
   "component": "dialog",
@@ -7665,7 +7665,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "c329c43edcb28550"
+  "sha": "ec037b7d07a25490"
  },
  {
   "component": "dialog",
@@ -7860,7 +7860,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/outcome-overlays.html"
   ],
-  "sha": "0625628809ad52a0"
+  "sha": "22401f13d8065b2b"
  },
  {
   "component": "filters",
@@ -8048,7 +8048,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "a43f6fe997f5aca1"
+  "sha": "3923ac982ac6eed4"
  },
  {
   "component": "filters",
@@ -8200,7 +8200,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "a43f6fe997f5aca1"
+  "sha": "3923ac982ac6eed4"
  },
  {
   "component": "filters",
@@ -8352,12 +8352,12 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "a43f6fe997f5aca1"
+  "sha": "3923ac982ac6eed4"
  },
  {
   "component": "footer",
   "id": "g1",
-  "el": "a",
+  "el": "a.icon-btn.icon-btn-lift",
   "scope": "",
   "specimen": "footer",
   "classes": [
@@ -8378,6 +8378,8 @@
    "footer-trust",
    "ic",
    "ic-sm",
+   "icon-btn",
+   "icon-btn-lift",
    "kit-chrome-demo",
    "lang-menu",
    "legal-links",
@@ -8539,13 +8541,14 @@
    }
   },
   "covers": [
-   "a"
+   "a.icon-btn.icon-btn-lift"
   ],
   "sources": [
    "components/base.css",
    "components/filters.css",
    "components/fonts.css",
    "components/footer.css",
+   "components/iconbtn.css",
    "components/tokens.css",
    "components/trustbar.css",
    "ui-kit/_specimen.css",
@@ -8553,7 +8556,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "08c802faed6b34ad"
+  "sha": "dbeffb8defa48510"
  },
  {
   "component": "footer",
@@ -8579,6 +8582,8 @@
    "footer-trust",
    "ic",
    "ic-sm",
+   "icon-btn",
+   "icon-btn-lift",
    "kit-chrome-demo",
    "lang-menu",
    "legal-links",
@@ -8747,6 +8752,7 @@
    "components/filters.css",
    "components/fonts.css",
    "components/footer.css",
+   "components/iconbtn.css",
    "components/tokens.css",
    "components/trustbar.css",
    "ui-kit/_specimen.css",
@@ -8754,7 +8760,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "08c802faed6b34ad"
+  "sha": "dbeffb8defa48510"
  },
  {
   "component": "footer",
@@ -8780,6 +8786,8 @@
    "footer-trust",
    "ic",
    "ic-sm",
+   "icon-btn",
+   "icon-btn-lift",
    "kit-chrome-demo",
    "lang-menu",
    "legal-links",
@@ -8948,6 +8956,7 @@
    "components/filters.css",
    "components/fonts.css",
    "components/footer.css",
+   "components/iconbtn.css",
    "components/tokens.css",
    "components/trustbar.css",
    "ui-kit/_specimen.css",
@@ -8955,7 +8964,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "08c802faed6b34ad"
+  "sha": "dbeffb8defa48510"
  },
  {
   "component": "header",
@@ -9156,7 +9165,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "834dfa776a62fdab"
+  "sha": "9a76fe27268dd838"
  },
  {
   "component": "header",
@@ -9360,7 +9369,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "eabd4586236709b0"
+  "sha": "a1d9cea788393275"
  },
  {
   "component": "header",
@@ -9557,7 +9566,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "46bcf98d608f4e41"
+  "sha": "c52f11545da33dc7"
  },
  {
   "component": "header",
@@ -9754,7 +9763,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "46bcf98d608f4e41"
+  "sha": "c52f11545da33dc7"
  },
  {
   "component": "header",
@@ -9951,7 +9960,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "46bcf98d608f4e41"
+  "sha": "c52f11545da33dc7"
  },
  {
   "component": "header",
@@ -10040,7 +10049,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "46bcf98d608f4e41"
+  "sha": "c52f11545da33dc7"
  },
  {
   "component": "hero",
@@ -11327,7 +11336,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "c329c43edcb28550"
+  "sha": "ec037b7d07a25490"
  },
  {
   "component": "iconbtn",
@@ -11538,7 +11547,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "c8cc51068f1a60ed"
+  "sha": "c007d23d7598a0a2"
  },
  {
   "component": "iconbtn",
@@ -11722,7 +11731,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "bdaa246c81d4d8dc"
+  "sha": "8aad1713aa91e8d1"
  },
  {
   "component": "iconbtn",
@@ -11914,7 +11923,211 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "c329c43edcb28550"
+  "sha": "ec037b7d07a25490"
+ },
+ {
+  "component": "iconbtn",
+  "id": "g18",
+  "el": "a.icon-btn.icon-btn-lift",
+  "scope": "",
+  "specimen": "footer",
+  "classes": [
+   "app-case",
+   "app-footer",
+   "device",
+   "filter-menu",
+   "filter-panel",
+   "footer-brand",
+   "footer-col",
+   "footer-cols",
+   "footer-inner",
+   "footer-legal",
+   "footer-logo",
+   "footer-popular",
+   "footer-tagline",
+   "footer-top",
+   "footer-trust",
+   "ic",
+   "ic-sm",
+   "icon-btn",
+   "icon-btn-lift",
+   "kit-chrome-demo",
+   "lang-menu",
+   "legal-links",
+   "placeholder-line",
+   "popular-links",
+   "social-row",
+   "sub-label",
+   "tbd",
+   "tr-ic",
+   "tr-txt",
+   "trust-head",
+   "trust-item",
+   "trust-items"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
+    "w": 44,
+    "h": 31,
+    "pad": {
+     "top": 2,
+     "right": 4,
+     "bottom": 1,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "oklab(0.366486 0.000102299 0.0109878) | none | rgb(215, 172, 83) | 1px | rgb(215, 172, 83) | 10px | matrix(1, 0, 0, 1, 0, -2) | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "w": 44,
+    "h": 31,
+    "pad": {
+     "top": 1,
+     "right": 4,
+     "bottom": 2,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgb(215, 172, 83) | 1px | rgb(215, 172, 83) | 10px | matrix(1, 0, 0, 1, 0, 0) | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "w": 44,
+    "h": 31,
+    "pad": {
+     "top": 2,
+     "right": 4,
+     "bottom": 1,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgb(36, 40, 47) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 44,
+    "h": 36,
+    "pad": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
+    "w": 44,
+    "h": 31,
+    "pad": {
+     "top": 2,
+     "right": 4,
+     "bottom": 1,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "oklab(0.933827 0.00159979 0.0287888) | none | rgb(104, 79, 24) | 1px | rgb(104, 79, 24) | 10px | matrix(1, 0, 0, 1, 0, -2) | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 44,
+    "h": 31,
+    "pad": {
+     "top": 1,
+     "right": 4,
+     "bottom": 2,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgb(104, 79, 24) | 1px | rgb(104, 79, 24) | 10px | matrix(1, 0, 0, 1, 0, 0) | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 44,
+    "h": 31,
+    "pad": {
+     "top": 2,
+     "right": 4,
+     "bottom": 1,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgb(252, 250, 244) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 44,
+    "h": 36,
+    "pad": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "a.icon-btn.icon-btn-lift"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/filters.css",
+   "components/fonts.css",
+   "components/footer.css",
+   "components/iconbtn.css",
+   "components/tokens.css",
+   "components/trustbar.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/footer.html"
+  ],
+  "sha": "dbeffb8defa48510"
  },
  {
   "component": "iconbtn",
@@ -12127,7 +12340,7 @@
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "3336f9b9cc387184"
+  "sha": "26a2d6d0b37ce750"
  },
  {
   "component": "iconbtn",
@@ -12312,7 +12525,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/toast.html"
   ],
-  "sha": "0b485d1bac2d731a"
+  "sha": "5882a013bc97b5f5"
  },
  {
   "component": "iconbtn",
@@ -12543,7 +12756,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "abb2c7df516a225a"
+  "sha": "4d863d0e225cf7b6"
  },
  {
   "component": "iconbtn",
@@ -12794,7 +13007,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "f6f222ac95e06f1e"
+  "sha": "d49ade775394e30f"
  },
  {
   "component": "input",
@@ -13001,7 +13214,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "cb67733302929e34"
+  "sha": "07a51ea11ae94bb3"
  },
  {
   "component": "input",
@@ -13595,7 +13808,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "27be743d53250310"
+  "sha": "8b99da5255b986bf"
  },
  {
   "component": "input",
@@ -13978,7 +14191,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/loadmore.html"
   ],
-  "sha": "e0af01e38a0e1125"
+  "sha": "bfdfb3cb37cf3239"
  },
  {
   "component": "market",
@@ -17571,7 +17784,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "1edb7913a074909c"
+  "sha": "601cb2c43c8e825a"
  },
  {
   "component": "yesno",
@@ -17762,7 +17975,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "1b017eea8d3519a0"
+  "sha": "c314969d1b0032c8"
  },
  {
   "component": "yesno",
@@ -17953,7 +18166,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "1b017eea8d3519a0"
+  "sha": "c314969d1b0032c8"
  },
  {
   "component": "yesno",

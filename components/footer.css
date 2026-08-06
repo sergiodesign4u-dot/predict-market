@@ -1,7 +1,7 @@
 /* components/footer.css
    Component: footer. Classes: .app-footer, .footer-brand, .footer-col, .footer-cols, .footer-inner, .footer-legal, .footer-logo, .footer-popular, .footer-tagline, .footer-top, .lang-menu, .legal-links, .popular-links, .social-row, .sub-label.
 
-   Reads: --bg-control, --bg-pressed, --bg-surface, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --mark-logo, --text-brass, --text-muted, --text-primary
+   Reads: --bg-pressed, --bg-surface, --border-hairline, --edge-groove-dark, --edge-groove-light, --mark-logo, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/footer.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -15,8 +15,6 @@
 .footer-logo{justify-content:center}
 .footer-tagline{margin:0;max-width:280px}
 .social-row{display:flex;gap:var(--space-8)}
-.social-row a{width:var(--size-28);height:var(--size-28);display:inline-flex;align-items:center;justify-content:center}
-.social-row .ic{width:var(--icon-18);height:var(--icon-18)}
 .lang-menu{width:max-content}
 .lang-menu summary .ic{width:var(--icon-16);height:var(--icon-16)}
 .lang-menu summary .ic-sm{width:var(--icon-12);height:var(--icon-12)}
@@ -55,19 +53,15 @@
 .footer-popular h2,.footer-col h2{color:var(--text-primary)}
 .footer-tagline{color:var(--text-muted)}
 .footer-col .sub-label{color:var(--text-muted)}
-.social-row a{background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);transition:background var(--dur-base) ease,border-color var(--dur-base) ease,transform var(--dur-base) ease}
-.social-row a:hover{background:color-mix(in oklab,var(--color-action) 20%,var(--bg-control));border-color:var(--text-brass);transform:translateY(-2px)}
-.social-row a:hover .ic{stroke:var(--text-primary)}
-/* The social link is the one lifted control in this file, and the lift stays: it is the Vault's
-   floating language, it is composited, and it shifts no neighbour. A HELD link settles instead
-   of hovering in mid-air, so the press puts it back on the ground and takes the quiet pressed
-   fill every icon button in the system takes. The transform is restated rather than removed
-   because the hover is still matched while the pointer is down. Equal specificity to the hover
-   above (0,2,1), so this has to stay after it, and after the link rule above it, whose brass
-   text colour it inherits and does not need. The second line is the same answer for the mark
-   inside: it mirrors the icon hover, so a tap brightens the glyph the way a pointer does. */
-.social-row a:active{background:var(--bg-pressed);transform:translateY(0)}
-.social-row a:active .ic{stroke:var(--text-primary)}
+/* THE FIVE MARKS LEFT THIS FILE ON 2026-08-06, for components/iconbtn.css, and the line
+   above is all this file may still say about them: the row is a flex line with an 8 gap.
+   They were filed as `navitem` because they GO somewhere, and measured in the browser they
+   are an icon button in every value a face has: --bg-control, a hairline, a 10px corner, a
+   centred flex box at 28 and an 18px mark, which is what `.icon-btn-tile` measures and is
+   nothing the bottom-nav slot or the account-dropdown row measure. The lift, the brass edge
+   and the settle on press moved WITH the rules rather than staying here as a second copy.
+   `ui-kit/docs/atoms.md`, and `ui-kit/docs/backlog.md` S45 for the one thing the move did
+   not settle: this face and the tile agree at rest and answer the pointer differently. */
 /* The language picker is a <details> summary, so it presses the way every summary presses. It
    is answered HERE and not in filters.css because the footer stands OUTSIDE .app-case, and both
    the shared summary hover and the shared summary press are scoped to that wrapper: the footer's

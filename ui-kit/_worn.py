@@ -509,8 +509,14 @@ ATOMS = {
     "switch": "one setting, on or off, answered on the spot. It says yes or no to one "
               "thing rather than choosing among several, which is what keeps it out of "
               "`chip`",
-    "navitem": "a thing a person taps that GOES somewhere. A slot with a mark over a "
-               "label, a row with a label and a bare mark are one control at three sizes",
+    "navitem": "a thing a person taps that GOES somewhere and draws NOTHING until it is "
+               "pointed at: transparent, no edge, no corner, a label the row is as wide "
+               "as. A slot with a mark over a label and a row with a label are one "
+               "control at two sizes. It said three until 2026-08-06, and the third was "
+               "the social mark, which measured as an icon button in every value a face "
+               "has and was moved. An atom is what a set of RULES is shared by, so it is "
+               "settled by the face; the role is what catches two faces that agree and "
+               "MEAN different things, which is `tab` against `chip`",
 }
 NOT_AN_ATOM = {
     "the logo, home": "one brand mark. There is exactly one, it never varies, and giving "
@@ -556,10 +562,22 @@ ATOM = {
     "the outcome side of a bet": "outcome",
     "hero, the featured pair": "outcome",
     "toggle": "switch",
-    # THE SECOND OPEN ONE. A social mark is an <a> with an icon and no label, so
-    # it DRAWS like an icon button and BEHAVES like navigation. Rule 1 of the map
-    # is the role, and rule 1 has not been wrong here yet.
-    "social": "navitem",
+    # AND IT WAS ANSWERED ON 2026-08-06, BY MEASURING IT. The row above used to
+    # read "rule 1 is the role, and rule 1 has not been wrong here yet". It was
+    # wrong here. `navitem` claimed a slot with a mark over a label, a row with a
+    # label and a bare mark were "one control at three sizes"; read in the
+    # browser at 1440 and 380 they are not one control at all.
+    #     bottom nav slot   transparent   0px border   0px radius   column, 10px
+    #     dropdown row      transparent   0px border   0px radius   inline-block
+    #     social            --bg-control  1px hairline 10px radius  centred flex
+    # The first two agree with each other on every one of those and share nothing
+    # with the third. The third agrees with `.icon-btn-tile` at 28 on ALL of it:
+    # same ground rgb(36,40,47), same edge rgb(43,47,56), same 10px corner, same
+    # centred flex, same 18px mark. A ground, an edge and a corner against
+    # transparent, none and none is a FACE, which is rule 2, and rule 2 says these
+    # were never one atom. The role stays `nav` - it is what this control MEANS -
+    # and the atom is where its RULES live. `ui-kit/docs/atoms.md`.
+    "social": "iconbutton",
     "bottom nav slot": "navitem",
     "a row of the account dropdown": "navitem",
 }

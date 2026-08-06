@@ -43,9 +43,16 @@ decision.
 
 Two rules, and both are already the house's:
 
-1. **Same ROLE.** `ui-kit/_worn.py` files every control as action, selector, nav or
-   stand, because a `<button>` is a tag and not a role. Two controls in different roles
-   are never one atom, however alike they look.
+1. **Same MEANING, which the role is how you check.** `ui-kit/_worn.py` files every
+   control as action, selector, nav or stand, because a `<button>` is a tag and not a
+   role. Two controls that LOOK the same and MEAN different things are not one atom:
+   that is `tab` against `chip`, and `outcome` against `chip`.
+   **This rule said something stronger until 2026-08-06** - *two controls in different
+   roles are never one atom, however alike they look* - and the `navitem` migration
+   measured a case where that is false. The social mark is nav by role and an icon
+   button in every value a face has. An atom is what a set of RULES is shared by,
+   because a set of rules is what a css file holds, so the FACE settles it and the role
+   is the check that stops two identical faces meaning two different things.
 2. **The difference is a MODIFIER, not a face.** If what separates them can be named as
    emphasis, size, or ground without inventing vocabulary, it is one atom with a
    modifier. If the difference carries MEANING, it is two atoms. Green and red are
@@ -69,12 +76,12 @@ covered exactly once; the numbers add to its 5281.
 | Atom | What it is | It absorbs, and the count | Today |
 |---|---|---|---|
 | `button` | a press with a LABEL, that does a thing | the button family **710**, how it works **105**, a comment's own action **72**, post a comment **11**, load more **9**, cookie consent **3**, edit on the profile **1** = **911** | `.btn` already holds 710 of them, with emphasis, size and block. The other four are the same control redrawn in four files: same radius-10 or pill, same semibold label, same 44 floor |
-| `iconbutton` | a press whose whole content is a MARK | header icons **388**, sheet close **333**, bookmark on a card **84**, an event's action row **27**, toast close **4** = **836** | six files, six names, one idea: a square or a disc sized to the finger with an icon in it. It is a separate atom from `button` and not a modifier of it, because it has no label to size and its whole box is a target |
+| `iconbutton` | a press whose whole content is a MARK | header icons **388**, sheet close **333**, social marks **525**, bookmark on a card **84**, an event's action row **27**, toast close **4** = **1361** | **one file since 2026-08-06**, and it was six. Six names, one idea: a square or a disc sized to the finger with an icon in it. It is a separate atom from `button` and not a modifier of it, because it has no label to size and its whole box is a target |
 | `chip` | a label you PICK BETWEEN, that carries a value | category chip **815**, quick amount **480**, quiet chip in a rail **63** = **1358** | the largest family and the most divided. `components/chip.css` exists and holds 63. The differences are pill against radius-10, 13px against 12px, and the ground at rest, which are modifiers |
 | `tab` | a selector whose selection swaps a PANEL rather than carrying a value | the tab row **36** | its own atom since 2026-08-06, and the measurement recorded below is what made it one. `.ed-tablabel` and `.ptab-lbl` are the same control again as labels, so they join it when the non-button controls are counted |
 | `outcome` | the YES / NO pair, where the COLOUR states a result | YES/NO buttons **230**, the outcome side of a bet **40**, the hero's featured pair **2** = **272** | genuinely its own atom and must never fold into `chip`. `DESIGN.md` decides it: green and red are outcome semantics, brass is the brand, and an accent never borrows the win or lose colour |
 | `switch` | one setting, on or off, answered on the spot | toggle **3** | already `components/toggle.css`, already correct, and it stays one because a switch is not a chip with two states: it says yes or no to one thing rather than choosing among several |
-| `navitem` | a thing you tap that GOES somewhere | social marks **525**, bottom nav slot **420**, account dropdown row **365**, a sub-category row **234** = **1544** | four files. A slot with a mark over a label, a row with a label, a bare mark and a full-width row with a count are one control at four sizes. The active state is a state of the item, not a fifth control |
+| `navitem` | a thing you tap that GOES somewhere and that draws NOTHING until it is pointed at | bottom nav slot **420**, account dropdown row **365**, a sub-category row **234** = **1019** | three files, and it was four: the social mark left on 2026-08-06 for `iconbutton`, measured rather than argued. What is left agrees at rest - transparent, no edge, no corner, as wide as its label - so a slot with a mark over a label and a row with a label are one control at two sizes. The active state is a state of the item, not a fourth control |
 
 ### Not controls, and still atoms
 
@@ -366,9 +373,66 @@ and the atom is still an atom.
 
 ---
 
-## The decision this document still does not settle
+## The open question was answered by measuring it: 13 to 12
 
-- **Is a social mark a `navitem` or an `iconbutton`?** It is an `<a>` with an icon and no
-  label, so it draws like an icon button and behaves like navigation. The map follows the
-  ROLE, which is rule 1, and puts all 525 in `navitem`. Rule 1 is the one that has never
-  been wrong here.
+The `navitem` migration began the way the `chip` one did, by reading the family out before
+moving anything, and it stopped on the first kind. **The map had one of the four in the
+wrong atom**, and this document is where it said so: *"Is a social mark a `navitem` or an
+`iconbutton`? The map follows the ROLE, which is rule 1, and rule 1 has never been wrong
+here."* Rule 1 was wrong here.
+
+`navitem` claimed that a slot with a mark over a label, a row with a label, and a bare mark
+are **one control at three sizes**. Nobody had measured that sentence. Read in the browser
+at 1440 and at 380:
+
+| the four kinds | ground | edge | corner | shape |
+|---|---|---|---|---|
+| bottom nav slot, 420 | transparent | 0px | 0px | column, 10px bold, mark over label |
+| account dropdown row, 365 | transparent | 0px | 0px | inline-block, 11px, label left |
+| sub-category row, 234 | brass tint 18% | 1px brass | 10px / pill under 860 | label left, count right |
+| **social mark, 525** | **`--bg-control`** | **1px hairline** | **10px** | **centred flex, 18px mark, no label** |
+| `.icon-btn-tile`, for comparison | `--bg-control` | 1px hairline | 10px | centred flex, 18px mark, no label |
+
+The first two agree with each other on every value a face has. The fourth agrees with
+**none** of them and with the tile face on **all** of it: `rgb(36,40,47)` against
+`rgb(36,40,47)`, `rgb(43,47,56)` against `rgb(43,47,56)`, 10px against 10px, 28 against 28
+at mobile. A ground, an edge and a corner against transparent, none and none is a FACE, and
+rule 2 says a face is not a modifier.
+
+**So rule 1 is stated correctly now, and it is a smaller rule than it looked.** An atom is
+what a set of RULES is shared by, because a set of rules is what a css file holds, and that
+is settled by the face. The role is what catches the other case: two controls whose faces
+agree and whose MEANINGS differ, which is `tab` against `chip` and `outcome` against `chip`.
+Role had never actually partitioned anything here until it tried to, and when it did it was
+wrong. The social mark stays filed `nav` in the census, because that is what it means; its
+rules live with the atom it looks like.
+
+    41 the atom map   7 control atom(s) in 19 file-slot(s): distance 12, and it goes to 0
+                      navitem     1019  3 kind(s), 3 file(s)   <- was 1544 in 4
+                      chip        1358  3 kind(s), 4 file(s)
+                      button       911  7 kind(s), 6 file(s)
+                      iconbutton  1361  6 kind(s), 1 file(s)   <- still one file
+                      outcome      272  3 kind(s), 3 file(s)
+
+**And it cost the markup this time, which is defect 76 arriving on schedule.** `.social-row a`
+reached its 525 controls by TAG, so not one of them carried a class, so the helper that
+adopts an atom by class could not see them. A second helper walks the CONTAINER and marks
+the children of a given tag inside it; it is what `outcome` will need too.
+
+**What the move did not settle is written down rather than decided.** This face and the tile
+are the same picture at rest and answer the pointer differently: the tile brightens its ink,
+the social mark lifts two pixels and tints its ground. 27 against 525. `ui-kit/docs/backlog.md`
+S45, and the interesting answer there is probably not "pick one" but "a face answers the
+pointer by its SURFACE", which is what all six faces of this atom have turned out to be.
+
+---
+
+## The decision this document no longer has open
+
+- ~~**Is a social mark a `navitem` or an `iconbutton`?**~~ **Answered 2026-08-06 and the
+  answer is `iconbutton`,** by measuring both instead of arguing from the role. The
+  reasoning it replaces is kept here because it is the shape of the mistake: *it is an
+  `<a>` with an icon and no label, so it draws like an icon button and behaves like
+  navigation; the map follows the ROLE, which is rule 1, and rule 1 has never been wrong
+  here.* Every clause of that is true and the conclusion is not. The section above has the
+  five values that settled it.

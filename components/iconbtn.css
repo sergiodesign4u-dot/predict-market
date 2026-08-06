@@ -1,5 +1,5 @@
 /* components/iconbtn.css
-   Component: iconbtn. Classes: .bal-add, .bal-swap, .icon-btn, .icon-btn-bare, .icon-btn-photo, .icon-btn-ring-strong, .icon-btn-small, .icon-btn-tile.
+   Component: iconbtn. Classes: .bal-add, .bal-swap, .icon-btn, .icon-btn-bare, .icon-btn-lift, .icon-btn-photo, .icon-btn-ring-strong, .icon-btn-small, .icon-btn-tile.
 
    Reads: --bevel-strong, --bg-control, --bg-pressed, --border-hairline, --color-action, --color-action-lit, --icon-brass, --icon-quiet, --line-on-photo, --line-on-photo-hover, --scrim-photo, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45
    Stand:  ui-kit/iconbtn.html
@@ -213,6 +213,51 @@
   .icon-btn.icon-btn-tile{width:var(--size-28);height:var(--size-28)}
 }
 
+/* --------------------------------------- the sixth face, and the fifth kind ---
+   THE ONE THE MAP HAD IN THE WRONG ATOM, and it took a measurement rather than an
+   argument to find out. `.social-row a` is 525 placements, five marks in the
+   footer of all 105 screens, and `ui-kit/docs/atoms.md` filed them as `navitem`
+   because they GO somewhere: an <a> with an icon and no label, nav by role.
+
+   READ IN THE BROWSER AT 1440 AND AT 380 IT IS THIS CONTROL, exactly. Ground
+   rgb(36,40,47), edge rgb(43,47,56) at 1px, corner 10px, centred flex, an 18px
+   mark: every one of those is what `.icon-btn-tile` measures at 28, and not one
+   of them is what the other two navitems measure. The bottom-nav slot and the
+   account-dropdown row are transparent, borderless, cornerless and as wide as
+   their label. So the shared rest is written ONCE, in the selector below, rather
+   than asserted in a comment in two files.
+
+   WHERE THEY PART IS THE POINTER, and that is left as it stands rather than
+   settled here. The tile brightens its ink and firms its edge; this lifts two
+   pixels, tints its ground with 20 per cent of the action role and takes a brass
+   edge. 27 placements against 525. Which of the two an ordinary surface should
+   answer with is one line and it is visible, so it is `ui-kit/docs/backlog.md`
+   S45 and not a side effect of moving a rule between files.
+
+   THE LIFT IS THE FOOTER'S OWN ARGUMENT AND IT SURVIVES THE MOVE: it is the
+   Vault's floating language, it is composited, and it shifts no neighbour. A HELD
+   link settles rather than hovering in mid air, so the press puts it back on the
+   ground and takes the pressed fill every quiet control in the system takes. The
+   transform is restated in the press because the hover is still matched while the
+   pointer is down. */
+.icon-btn.icon-btn-tile,.icon-btn.icon-btn-lift{background:var(--bg-control);border-radius:var(--radius-10)}
+/* `padding:0` and `line-height:inherit` for the reason the photo face takes them:
+   the box is a fixed 28 and the mark is centred in it by flex, so 0 and 4 draw
+   the same picture, and a partition that moves a computed value has made a
+   decision it did not declare.
+   AND THIS FACE DECLARES NO INK, deliberately. The mark is a <path> stroked from
+   --text-icon rather than a sprite filled with currentColor, so nothing in this
+   control reads a colour; and `.app-footer a` is (0,1,1) against the atom's
+   (0,1,0), so the footer's own anchor rule goes on deciding a value nothing
+   draws with. Writing `color:inherit` here would out-specify that rule and
+   change a computed value to prove a point no pixel is asking. */
+.icon-btn.icon-btn-lift{width:var(--size-28);height:var(--size-28);padding:0;line-height:inherit;transition:background var(--dur-base) ease,border-color var(--dur-base) ease,transform var(--dur-base) ease}
+.icon-btn.icon-btn-lift .ic{width:var(--icon-18);height:var(--icon-18)}
+.icon-btn.icon-btn-lift:hover{background:color-mix(in oklab,var(--color-action) 20%,var(--bg-control));border-color:var(--text-brass);transform:translateY(-2px)}
+.icon-btn.icon-btn-lift:hover .ic{stroke:var(--text-primary)}
+.icon-btn.icon-btn-lift:active{background:var(--bg-pressed);transform:translateY(0)}
+.icon-btn.icon-btn-lift:active .ic{stroke:var(--text-primary)}
+
 /* The X is drawn rather than fetched: two bars in currentColor, so the mark
    moves with the ink and the two cannot drift apart. The bar is --size-8 and
    not the 12 the sheet close uses, because that circle is 32 and this one is
@@ -232,13 +277,16 @@
 /* WCAG 2.5.5 is about a finger and not about a narrow window: a touch laptop at
    1280 needs the same 44 a phone does, so the floor is bound to the POINTER. A
    fine pointer keeps 36, which clears 2.5.8 with room.
-   THREE FACES ARE EXCLUDED AND NONE OF THEM IS EXCUSED. The photo dismiss is
-   32, the tile is 28 under 560 and the toast dismiss is 24, so a floor of 44
-   would resize all three, and whether a dismiss or a corner toolbar should be
-   44 is `ui-kit/docs/backlog.md` S39's question. It is asked there, in daylight,
-   rather than answered here as a side effect of moving a rule between files.
-   `.icon-btn-bare` needs no exclusion: it sets the floor itself and pulls it
-   back out of the flow. */
+   FOUR FACES ARE EXCLUDED AND NONE OF THEM IS EXCUSED, which means the floor
+   now reaches exactly ONE of the six: the plain circle in the header. The photo
+   dismiss is 32, the tile is 28 under 560, the toast dismiss is 24 and the
+   social mark is 28, so the floor would resize all four. `.icon-btn-bare` needs
+   no exclusion because it sets the floor itself and pulls it back out of the
+   flow, which is the only face here that answers 2.5.5 outright.
+   ONE OF SIX IS NOT A SELECTOR PROBLEM, IT IS THE FINDING. Whether a dismiss, a
+   corner toolbar or a footer mark should be 44 is `ui-kit/docs/backlog.md` S39's
+   question, and the chain is left long and literal so that the count is legible
+   here rather than hidden behind something clever. */
 @media(pointer:coarse){
-  .icon-btn:not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small){min-width:var(--control-44);min-height:var(--control-44)}
+  .icon-btn:not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-width:var(--control-44);min-height:var(--control-44)}
 }
