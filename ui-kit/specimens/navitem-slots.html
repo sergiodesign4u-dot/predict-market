@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mobile bottom nav</title>
+<title>The slot face, five of them, one current</title>
 <script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
    A frame is a document of its own, so it does not inherit the attribute: this
    block runs in the frames too and they are told by postMessage, the same
@@ -39,6 +39,7 @@ push();});})();</script>
 <link rel="stylesheet" href="../_specimen.css">
 </head>
 <body>
+<div class="device"><div class="app-case">
 <div class="device app-case kit-chrome-demo"><nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
         <li aria-current="page"><a href="#"><button class="nav-item nav-slot" type="button">
@@ -59,6 +60,7 @@ push();});})();</script>
         </button></a></li>
       </ul>
     </nav></div>
+</div></div>
 <svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></symbol></defs></svg>
 <script>
 /* Report to the vitrine: how tall this specimen is, and whether it rendered.
@@ -113,7 +115,7 @@ push();});})();</script>
     }
     try {
       parent.postMessage({
-        specimen: "bottomnav",
+        specimen: "navitem-slots",
         height: height(),
         elements: document.body.getElementsByTagName("*").length,
         overflowX: doc.scrollWidth - doc.clientWidth,

@@ -18,7 +18,7 @@ says so. No em dash.
 | base | 2 | base-frame, base-groove | 0 | 13 | 105 |
 | betpanel | 4 | betpanel-states, betpanel-dock, betpanel-sheet, betpanel-more | 2 | 20 | 11 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 13 | 9 |
-| bottomnav | 1 | bottomnav | 0 | 2 | 105 |
+| bottomnav | 1 | bottomnav | 1 | 2 | 105 |
 | button | 3 | button-matrix, button-census, button-outcome-row | 0 | 9 | 105 |
 | card | 4 | card-binary, card-multi, card-loading, card-detail-head | 2 | 14 | 36 |
 | catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 6 | 57 |
@@ -39,6 +39,7 @@ says so. No em dash.
 | input | 2 | input-amount, input-states | 2 | 4 | 105 |
 | loadmore | 1 | loadmore | 1 | 2 | 9 |
 | market | 1 | market-depth | 0 | 21 | 9 |
+| navitem | 1 | navitem-slots | 1 | 3 | 105 |
 | notice | 2 | notice-push, notice-reconcile | 1 | 8 | 105 |
 | oddsbar | 1 | oddsbar | 2 | 7 | 9 |
 | options | 2 | options-rows, options-multi | 2 | 6 | 14 |
@@ -56,7 +57,7 @@ says so. No em dash.
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 105 |
 | yesno | 1 | yesno | 2 | 2 | 14 |
 
-72 specimens over 41 components.
+73 specimens over 42 components.
 
 ---
 

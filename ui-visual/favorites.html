@@ -312,11 +312,11 @@ document.addEventListener('click', function (e) {
             </summary>
             <div class="dropdown" role="menu">
               <ul>
-                <li><a href="my-profile.html"><button type="button" role="menuitem">My Profile</button></a></li>
-                <li><a href="active-bets.html"><button type="button" role="menuitem">My Bets</button></a></li>
-                <li><a href="wallet.html"><button type="button" role="menuitem">Wallet</button></a></li>
-                <li><a href="how-it-works.html"><button type="button" role="menuitem">How It Works</button></a></li>
-                <li><a href="event-feed-logged-out.html"><button type="button" role="menuitem">Logout</button></a></li>
+                <li><a href="my-profile.html"><button class="nav-item nav-row" type="button" role="menuitem">My Profile</button></a></li>
+                <li><a href="active-bets.html"><button class="nav-item nav-row" type="button" role="menuitem">My Bets</button></a></li>
+                <li><a href="wallet.html"><button class="nav-item nav-row" type="button" role="menuitem">Wallet</button></a></li>
+                <li><a href="how-it-works.html"><button class="nav-item nav-row" type="button" role="menuitem">How It Works</button></a></li>
+                <li><a href="event-feed-logged-out.html"><button class="nav-item nav-row" type="button" role="menuitem">Logout</button></a></li>
               </ul>
             </div>
           </details>
@@ -578,19 +578,19 @@ document.addEventListener('click', function (e) {
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
-        <li><a href="event-feed.html"><button type="button">
+        <li><a href="event-feed.html"><button class="nav-item nav-slot" type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
           <span>Events</span>
         </button></a></li>
-        <li><a href="active-bets.html"><button type="button">
+        <li><a href="active-bets.html"><button class="nav-item nav-slot" type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
           <span>My Bets</span>
         </button></a></li>
-        <li aria-current="page"><a href="favorites.html"><button type="button">
+        <li aria-current="page"><a href="favorites.html"><button class="nav-item nav-slot" type="button">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
           <span>Favorites</span>
         </button></a></li>
-        <li><a href="my-profile.html"><button type="button" aria-label="Portfolio, balance $142">
+        <li><a href="my-profile.html"><button class="nav-item nav-slot" type="button" aria-label="Portfolio, balance $142">
           <span class="bn-bal">$142</span>
           <span>Portfolio</span>
         </button></a></li>

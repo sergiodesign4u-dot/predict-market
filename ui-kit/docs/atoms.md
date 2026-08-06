@@ -427,6 +427,60 @@ pointer by its SURFACE", which is what all six faces of this atom have turned ou
 
 ---
 
+## The second atom gets a file, and it is the first that never had one: 12 to 11
+
+`navitem` was the only control atom on this map with no `components/*.css` of its own. Two of
+its kinds measure exactly what the map says the atom is - **draws NOTHING until it is pointed
+at** - and they came from two regions.
+
+    the bottom nav slot         420 placements   components/bottomnav.css
+    a row of the account menu   365 placements   components/header.css
+
+Read at rest, at 1440 and 380, both themes: **transparent ground, 0px border, 0px corner, full
+width, a press on `--bg-pressed`.** Every one of those agrees. What differs is a direction, a
+size, an ink and an alignment, which are modifiers. So the shared line is written once and each
+face keeps its own answer to the pointer: a neutral `--tint-hover` wash on the bar, the brass
+wash the rest of the header uses in the menu. **525 snapshots, 0 differ, 0 elements changed.**
+
+**That makes it three atoms in a row whose faces agree at rest and part on the pointer** - the
+icon button's six, the tile against the social mark, and these two. S45 asks whether that is a
+rule rather than a coincidence, and the evidence is now three for three.
+
+**One rule in the new file is load-bearing and it is a specificity fact.** Each hover is written
+`.nav-item.nav-slot:hover`, at the face's own two-class weight, because the current-page state is
+`[aria-current="page"] .nav-item.nav-slot` at (0,3,0) and a hover at (0,2,0) would die on exactly
+the slot a person taps most. `components/bottomnav.css` had bought the same weight by naming the
+`<li>`, and its note said so; the note travelled with the rule.
+
+**The cascade found a real cycle, and it is declared rather than broken.** The bar holds the
+slots, and the Portfolio slot holds `.bn-bal`, the bar's own balance figure. `_levels.ORDER_BREAK`
+now carries `("navitem", "bottomnav")`: the bar is the whole, so the slot loads first, and
+`.bn-bal` is one `<span>` of content a region puts inside its own control.
+
+    41 the atom map   7 control atom(s) in 18 file-slot(s): distance 11, and it goes to 0
+                      iconbutton  1361  6 kind(s), 1 file(s)
+                      chip        1358  3 kind(s), 4 file(s)
+                      navitem     1019  3 kind(s), 2 file(s)   <- was 3 files
+                      button       911  7 kind(s), 6 file(s)
+                      outcome      272  3 kind(s), 3 file(s)
+
+**Two kinds were left and each was left for a measured reason, not for time.** A sub-category row
+measures as a hairline PILL at 380 and a 10px full-width row above 860, so it is neither this
+atom's rest face nor a `chip`; it was filed here on the strength of the desktop rule alone, which
+is the same half-measurement that put the social mark in the wrong atom. A notification row is the
+account row with a different content and shares three declarations with it in one file under two
+names, held back by a `display` and a `font-size` that nobody chose. Both are `ui-kit/docs/backlog.md`
+S46, and together they take the distance to 9.
+
+**And the leftover in `bottomnav` is not a rule at all, it is a markup defect.** Gate 41 still
+counts that file because `.bottom-nav a{...color:inherit}` ends at an anchor inside the bar. Going
+to look found that a slot is `<a><button>` on 73 screens and a bare `<button>` on 32 - interactive
+content inside a link, twice in the tab order, and a third of the screens where the same slot
+navigates nowhere. `ui-kit/docs/defects.md` row 78. A partition may not change what an element IS,
+so it is written down and the count stays honest.
+
+---
+
 ## The decision this document no longer has open
 
 - ~~**Is a social mark a `navitem` or an `iconbutton`?**~~ **Answered 2026-08-06 and the

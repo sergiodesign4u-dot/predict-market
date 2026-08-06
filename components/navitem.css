@@ -1,0 +1,98 @@
+/* components/navitem.css
+   Component: navitem. Classes: .nav-item, .nav-row, .nav-slot.
+
+   Reads: --bg-pressed, --color-action, --text-brass, --text-muted, --text-primary, --tint-hover
+   Stand:  ui-kit/navitem.html
+   Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+/* ============================================================================
+   THE SECOND ATOM TO GET A FILE, 2026-08-06, and the first one that did not
+   have one at all. `ui-kit/docs/atoms.md` defines this atom as **a thing a
+   person taps that GOES somewhere and that draws NOTHING until it is pointed
+   at**: transparent, no edge, no corner, as wide as the row it sits in. Two
+   kinds measure exactly that and they came here from two files.
+
+     the bottom nav slot          420 placements, components/bottomnav.css
+     a row of the account menu    365 placements, components/header.css
+
+   MEASURED AT REST, AT 1440 AND AT 380, BOTH THEMES: transparent ground, 0px
+   border, 0px corner, full width, and a press on --bg-pressed. Every one of
+   those agrees. What differs is a direction, a size, an ink and an alignment,
+   which are modifiers, so this is one atom with two faces and the shared line
+   is written once at the top instead of twice in two regions.
+
+   THE THIRD KIND OF THIS ATOM IS NOT HERE AND THAT IS DELIBERATE. A
+   sub-category row, `.subcat button`, 234 placements, measures as a hairline
+   PILL at 380 and a 10px full-width row above 860: a 1px edge and a corner at
+   both widths, which is neither this atom's rest face nor one modifier away
+   from it. It was moved out of `chip` on the strength of the desktop rule
+   alone, which is the same half-measurement that put the social mark in the
+   wrong atom. `ui-kit/docs/backlog.md` S46 holds it, with both widths written
+   down.
+
+   AND SO IS A NOTIFICATION ROW. `.notif-drop li a` shares three declarations
+   with the account row today, in the same file, under a different name: the
+   ink, the hover and the press are one selector each. It is the same control
+   with a different content, and it stays in components/header.css this pass
+   for two measured reasons rather than an opinion: it is `display:block` where
+   the account row is the button default `inline-block`, and its own font-size
+   is the browser's 16 where the account row is 11. Neither draws anything, and
+   neither is a value this pass is entitled to choose. S46 again.
+
+   WHAT THE TWO REGIONS KEEP is what a region is allowed to keep: where the
+   control sits. `components/bottomnav.css` keeps the bar, its sticky position,
+   the groove along its top edge, the list, the dividing rules between slots and
+   `text-align:center` on the <li>. `components/header.css` keeps the dropdown
+   panel, its shadow, its corner and where it opens. Neither says what the
+   control inside it looks like any more.
+   ============================================================================ */
+
+/* The whole atom, and it really is this short: it is the ABSENCE of a control
+   until a pointer arrives. `border:0` rather than `border:none` because that is
+   what both files said; both compute to a 0px none border either way. */
+.nav-item{width:100%;background:transparent;border:0;border-radius:0;cursor:pointer;text-decoration:none}
+
+/* --------------------------------------------------------- the slot face ---
+   A mark over a label, in a bar that is the only navigation a phone has. Its
+   ink is the current-tab signal and NOTHING else, muted against brass, which is
+   why the ground answers the pointer here and the colour does not: if pointing
+   at a slot pulled its label toward brass, the one thing the bar says at a
+   glance would be said by two different things, and a hover can stick after a
+   tap on a phone, so the wrong slot would go on claiming to be current. */
+.nav-slot{display:flex;flex-direction:column;align-items:center;gap:var(--space-4);padding:var(--space-8) var(--space-4);font-size:var(--text-10);color:var(--text-muted)}
+.nav-slot .ic{width:var(--size-20);height:var(--size-20)}
+.nav-slot .ic:has(use){color:var(--text-muted)}
+/* `aria-current` sits on the <li>, not on the control, so the state is reached
+   from an ancestor. It is written with the attribute alone rather than with the
+   bar's class, because being the current item is the ATOM's state wherever the
+   atom stands, and naming `.bottom-nav` here would be this file holding a
+   region's name. */
+[aria-current="page"] .nav-item.nav-slot{background:transparent;color:var(--text-brass);font-weight:var(--weight-bold)}
+[aria-current="page"] .nav-slot .ic{stroke:var(--text-brass)}
+[aria-current="page"] .nav-slot .ic:has(use){color:var(--text-brass)}
+
+/* ---------------------------------------------------------- the row face ---
+   A line of a menu that drops out of the header. Full width, left aligned, the
+   strong ink because a menu is read rather than glanced at, and a brass wash
+   under the pointer rather than the neutral one the bar uses. */
+.nav-row{padding:var(--space-8) var(--space-8);font-size:var(--text-11);color:var(--text-primary);text-align:left}
+
+/* ------------------------------------------------- and here is the finding ---
+   THE TWO FACES ANSWER THE POINTER DIFFERENTLY AND AGREE ON THE PRESS, which is
+   now the third time an atom has come out that shape: the icon button's six
+   faces, the tile against the social mark, and these two. A quiet neutral wash
+   on the bar, 420 placements; the brass wash the rest of the header uses, 365.
+   Neither is a majority and both have an argument, so both are kept and
+   `ui-kit/docs/backlog.md` S45 is where the question lives.
+   THE ORDER OF THESE FOUR RULES IS LOAD BEARING. Each hover is written at the
+   face's own two-class weight so that it can reach the slot a person is
+   standing on: at `.nav-slot:hover` it would be (0,2,0) and would die under the
+   current-page rule above, which is (0,3,0), on exactly the tab that gets
+   tapped most. That was true in components/bottomnav.css too, where the rule
+   named the <li> to buy the same weight, and the note there explains it. The
+   press is last and at the same weight as the hovers, so a tie is broken by
+   source order and a held control shows the press rather than the hover. */
+.nav-item.nav-slot:hover{background:var(--tint-hover)}
+.nav-item.nav-row:hover{background:color-mix(in oklab,var(--color-action) 10%,transparent)}
+.nav-item.nav-slot:active,.nav-item.nav-row:active{background:var(--bg-pressed)}

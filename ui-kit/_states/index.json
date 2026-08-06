@@ -1436,356 +1436,6 @@
   "sha": "ca60b2c49501a567"
  },
  {
-  "component": "bottomnav",
-  "id": "g1",
-  "el": "button",
-  "scope": "",
-  "specimen": "bottomnav",
-  "classes": [
-   "app-case",
-   "bn-bal",
-   "bottom-nav",
-   "device",
-   "ic",
-   "kit-chrome-demo"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 0px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
-    "w": 111,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 0,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(255, 255, 255, 0.06) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 0px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
-    "w": 111,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 0,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 0px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
-    "w": 111,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 0,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 0px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 115,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 0px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 111,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 0,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(33, 31, 25, 0.1) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 0px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 111,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 0,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 0px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 111,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 0,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 0px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 115,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/bottomnav.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/bottomnav.html"
-  ],
-  "sha": "adfc3f6e537de52d"
- },
- {
-  "component": "bottomnav",
-  "id": "g2",
-  "el": "button",
-  "scope": "",
-  "specimen": "bottomnav",
-  "classes": [
-   "app-case",
-   "bn-bal",
-   "bottom-nav",
-   "device",
-   "ic",
-   "kit-chrome-demo"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 0px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
-    "w": 99,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 0,
-     "bottom": 12,
-     "left": 0
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(255, 255, 255, 0.06) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 0px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
-    "w": 99,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 0,
-     "bottom": 12,
-     "left": 0
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 0px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
-    "w": 99,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 0,
-     "bottom": 12,
-     "left": 0
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 0px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 107,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 0px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
-    "w": 99,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 0,
-     "bottom": 12,
-     "left": 0
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(33, 31, 25, 0.1) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 0px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
-    "w": 99,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 0,
-     "bottom": 12,
-     "left": 0
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 0px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
-    "w": 99,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 0,
-     "bottom": 12,
-     "left": 0
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 0px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 107,
-    "h": 79,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/bottomnav.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/bottomnav.html"
-  ],
-  "sha": "adfc3f6e537de52d"
- },
- {
   "component": "button",
   "id": "g1",
   "el": "button.btn.btn-secondary.btn-sm",
@@ -8995,6 +8645,8 @@
    "kit-chrome-demo",
    "left",
    "logo-btn",
+   "nav-item",
+   "nav-row",
    "notif-all",
    "notif-drop",
    "notif-menu",
@@ -9158,6 +8810,7 @@
    "components/fonts.css",
    "components/header.css",
    "components/iconbtn.css",
+   "components/navitem.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
@@ -9165,7 +8818,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "9a76fe27268dd838"
+  "sha": "5697d1235d9b2615"
  },
  {
   "component": "header",
@@ -9196,6 +8849,8 @@
    "kit-chrome-demo",
    "left",
    "logo-btn",
+   "nav-item",
+   "nav-row",
    "notif-all",
    "notif-drop",
    "notif-menu",
@@ -9361,6 +9016,7 @@
    "components/fonts.css",
    "components/header.css",
    "components/iconbtn.css",
+   "components/navitem.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
@@ -9369,7 +9025,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "a1d9cea788393275"
+  "sha": "3d64aa5534b526bd"
  },
  {
   "component": "header",
@@ -9400,6 +9056,8 @@
    "kit-chrome-demo",
    "left",
    "logo-btn",
+   "nav-item",
+   "nav-row",
    "notif-all",
    "notif-drop",
    "notif-menu",
@@ -9560,13 +9218,14 @@
    "components/fonts.css",
    "components/header.css",
    "components/iconbtn.css",
+   "components/navitem.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "c52f11545da33dc7"
+  "sha": "688e2a4d0dcd959b"
  },
  {
   "component": "header",
@@ -9597,6 +9256,8 @@
    "kit-chrome-demo",
    "left",
    "logo-btn",
+   "nav-item",
+   "nav-row",
    "notif-all",
    "notif-drop",
    "notif-menu",
@@ -9757,13 +9418,14 @@
    "components/fonts.css",
    "components/header.css",
    "components/iconbtn.css",
+   "components/navitem.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "c52f11545da33dc7"
+  "sha": "688e2a4d0dcd959b"
  },
  {
   "component": "header",
@@ -9794,6 +9456,8 @@
    "kit-chrome-demo",
    "left",
    "logo-btn",
+   "nav-item",
+   "nav-row",
    "notif-all",
    "notif-drop",
    "notif-menu",
@@ -9954,102 +9618,14 @@
    "components/fonts.css",
    "components/header.css",
    "components/iconbtn.css",
+   "components/navitem.css",
    "components/tokens.css",
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "c52f11545da33dc7"
- },
- {
-  "component": "header",
-  "id": "g6",
-  "el": "button",
-  "scope": ".app-header",
-  "specimen": "header-in",
-  "classes": [
-   "app-case",
-   "app-header",
-   "avatar-menu",
-   "badge-dot",
-   "bal-add",
-   "bal-amt",
-   "bal-figure",
-   "bal-label",
-   "bal-swap",
-   "bal-toggle",
-   "bell-wrap",
-   "cat-condensed",
-   "desk-only",
-   "device",
-   "dropdown",
-   "hiw-btn",
-   "ic",
-   "ic-sm",
-   "icon-btn",
-   "kit-chrome-demo",
-   "left",
-   "logo-btn",
-   "notif-all",
-   "notif-drop",
-   "notif-menu",
-   "row",
-   "utility"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 218,
-    "h": 36,
-    "pad": {
-     "top": 3,
-     "right": 12,
-     "bottom": 0,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 218,
-    "h": 36,
-    "pad": {
-     "top": 3,
-     "right": 12,
-     "bottom": 0,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button @.app-header"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/fonts.css",
-   "components/header.css",
-   "components/iconbtn.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/header-in.html"
-  ],
-  "sha": "c52f11545da33dc7"
+  "sha": "688e2a4d0dcd959b"
  },
  {
   "component": "hero",
@@ -11731,7 +11307,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "8aad1713aa91e8d1"
+  "sha": "d4bfcccd406713a6"
  },
  {
   "component": "iconbtn",
@@ -13007,7 +12583,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "d49ade775394e30f"
+  "sha": "cc3d15d8af186dbb"
  },
  {
   "component": "input",
@@ -14392,6 +13968,462 @@
    "ui-kit/specimens/market-depth.html"
   ],
   "sha": "c5828810239c262a"
+ },
+ {
+  "component": "navitem",
+  "id": "g1",
+  "el": "button.nav-item.nav-row",
+  "scope": ".app-header",
+  "specimen": "header-in",
+  "classes": [
+   "app-case",
+   "app-header",
+   "avatar-menu",
+   "badge-dot",
+   "bal-add",
+   "bal-amt",
+   "bal-figure",
+   "bal-label",
+   "bal-swap",
+   "bal-toggle",
+   "bell-wrap",
+   "cat-condensed",
+   "desk-only",
+   "device",
+   "dropdown",
+   "hiw-btn",
+   "ic",
+   "ic-sm",
+   "icon-btn",
+   "kit-chrome-demo",
+   "left",
+   "logo-btn",
+   "nav-item",
+   "nav-row",
+   "notif-all",
+   "notif-drop",
+   "notif-menu",
+   "row",
+   "utility"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 0px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "w": 119,
+    "h": 36,
+    "pad": {
+     "top": 3,
+     "right": 0,
+     "bottom": 0,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 0px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 119,
+    "h": 36,
+    "pad": {
+     "top": 3,
+     "right": 0,
+     "bottom": 0,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "button.nav-item.nav-row @.app-header"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/fonts.css",
+   "components/header.css",
+   "components/iconbtn.css",
+   "components/navitem.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/header-in.html"
+  ],
+  "sha": "688e2a4d0dcd959b"
+ },
+ {
+  "component": "navitem",
+  "id": "g2",
+  "el": "button.nav-item.nav-slot",
+  "scope": "",
+  "specimen": "navitem-slots",
+  "classes": [
+   "app-case",
+   "bn-bal",
+   "bottom-nav",
+   "device",
+   "ic",
+   "kit-chrome-demo",
+   "nav-item",
+   "nav-slot"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 0px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "w": 111,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 0,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgba(255, 255, 255, 0.06) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 0px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "w": 111,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 0,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 0px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "w": 111,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 0,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(215, 172, 83) | 0px | rgb(215, 172, 83) | 0px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 115,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 0px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 111,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 0,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgba(33, 31, 25, 0.1) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 0px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 111,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 0,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 0px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 111,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 0,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 0px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 115,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "also": [
+   "bottomnav"
+  ],
+  "covers": [
+   "button.nav-item.nav-slot"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/bottomnav.css",
+   "components/fonts.css",
+   "components/navitem.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/bottomnav.html",
+   "ui-kit/specimens/navitem-slots.html"
+  ],
+  "sha": "cc4b8b23a55feea6"
+ },
+ {
+  "component": "navitem",
+  "id": "g3",
+  "el": "button.nav-item.nav-slot",
+  "scope": "",
+  "specimen": "navitem-slots",
+  "classes": [
+   "app-case",
+   "bn-bal",
+   "bottom-nav",
+   "device",
+   "ic",
+   "kit-chrome-demo",
+   "nav-item",
+   "nav-slot"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 0px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
+    "w": 99,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 0,
+     "bottom": 12,
+     "left": 0
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgba(255, 255, 255, 0.06) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 0px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
+    "w": 99,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 0,
+     "bottom": 12,
+     "left": 0
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 0px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
+    "w": 99,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 0,
+     "bottom": 12,
+     "left": 0
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 0px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 107,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 0px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
+    "w": 99,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 0,
+     "bottom": 12,
+     "left": 0
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgba(33, 31, 25, 0.1) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 0px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
+    "w": 99,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 0,
+     "bottom": 12,
+     "left": 0
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 0px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
+    "w": 99,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 0,
+     "bottom": 12,
+     "left": 0
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 0px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 107,
+    "h": 79,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "also": [
+   "bottomnav"
+  ],
+  "covers": [
+   "button.nav-item.nav-slot"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/bottomnav.css",
+   "components/fonts.css",
+   "components/navitem.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/bottomnav.html",
+   "ui-kit/specimens/navitem-slots.html"
+  ],
+  "sha": "cc4b8b23a55feea6"
  },
  {
   "component": "profile",

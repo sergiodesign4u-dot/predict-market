@@ -669,7 +669,10 @@
       "component": "header",
       "title": "App header, logged in",
       "width": 1120,
-      "state": "The condensed category strip below the row is collapsed until the header gets .scrolled, which a scroll observer adds on a real screen."
+      "state": "The condensed category strip below the row is collapsed until the header gets .scrolled, which a scroll observer adds on a real screen.",
+      "also": [
+        "navitem"
+      ]
     },
     {
       "id": "header-out",
@@ -687,6 +690,21 @@
       "component": "tabs",
       "title": "My Bets tabs",
       "width": 900
+    },
+    {
+      "id": "navitem-slots",
+      "section": "chrome",
+      "label": "Mobile bottom nav",
+      "pick": "nav.bottom-nav",
+      "component": "navitem",
+      "also": [
+        "bottomnav"
+      ],
+      "title": "The slot face, five of them, one current",
+      "width": 360,
+      "note": "The bottom bar, cut where the atom stands: five slots, one of them carrying aria-current, which is the state that says where you are. What belongs to the atom is what it draws - nothing at rest but a mark, a label and an ink - and the sticky position, the ground, the groove along the top edge and the rules between the slots are the bar's and stay in components/bottomnav.css. The row face of the same atom stands on the header page, inside the account menu it drops out of.",
+      "source": "kit.html / chrome / Mobile bottom nav",
+      "rewrites": 0
     },
     {
       "id": "bottomnav",

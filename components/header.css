@@ -23,7 +23,6 @@
 .avatar-menu ul{list-style:none;margin:0;padding:0}
 .avatar-menu li{border-top:1px solid var(--border-hairline)}
 .avatar-menu li:first-child{border-top:none}
-.avatar-menu .dropdown button{width:100%;text-align:left;border:none;background:transparent;padding:var(--space-8) var(--space-8);font-size:var(--text-11);cursor:pointer}
 .bottom-nav .badge-dot{position:static;margin-left:var(--space-2)}
 /* `.delta .row` stood here and is gone, 2026-08-03. `.delta` is course-page
    vocabulary: it is carried by ia/seo.html, ia/system.html and
@@ -99,13 +98,26 @@
 .notif-menu summary,.avatar-menu summary{height:var(--control-36);display:inline-flex;align-items:center;gap:var(--space-4);padding:0 var(--space-8)}
 .avatar-menu .dropdown,.notif-menu .dropdown{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
 .avatar-menu li,.notif-drop li{border-top:1px solid var(--border-hairline)}
-.avatar-menu .dropdown button,.notif-drop li a,.notif-drop li a strong{color:var(--text-primary)}
-.avatar-menu .dropdown button:hover,.notif-drop li a:hover{background:color-mix(in oklab,var(--color-action) 10%,transparent)}
+/* THE ACCOUNT MENU'S ROWS LEFT THIS FILE ON 2026-08-06 for components/navitem.css, and
+   the three selectors above were SPLIT rather than moved, for the reason the <summary>
+   pair was split when the icon button left: each also styled `.notif-drop li a`, which
+   is the notification row and is still this file's. A file that styles another
+   component's classes is what backlog S11 forbids, so moving a whole selector would
+   have been exactly that. The two halves now say what each file owns.
+   THAT THE HALVES SAY THE SAME THING IS THE FINDING, not the tidy-up. A notification
+   row and an account row are one control with two contents: same transparent ground,
+   same 8/8 padding, same --text-primary, same brass wash, same press. What keeps the
+   notification row here for now is two values nobody chose - it is display:block where
+   the account row is the button default, and its font-size is the browser's 16 where
+   the account row is 11 - and neither is this pass's to decide. ui-kit/docs/backlog.md
+   S46. */
+.notif-drop li a,.notif-drop li a strong{color:var(--text-primary)}
+.notif-drop li a:hover{background:color-mix(in oklab,var(--color-action) 10%,transparent)}
 /* A menu row is a nav row: the ground answers and the label holds still. Each selector mirrors
    the hover it answers, so the two sit at equal specificity (0,3,1 and 0,2,2) and the later one
    wins while the finger is down. Both rows are the whole target: the <button> and the <a> each
    fill the <li>, so there is no dead strip to press on. */
-.avatar-menu .dropdown button:active,.notif-drop li a:active{background:var(--bg-pressed)}
+.notif-drop li a:active{background:var(--bg-pressed)}
 .notif-drop li a span{color:var(--text-muted)}
 /* The dropdown of a screen whose subject is "you have nothing yet". It had no
    rule at all, because the state lived only in the grey tree. */

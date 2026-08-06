@@ -282,6 +282,11 @@ STATIC = {
     # CONTROL to components/iconbtn.css, and what is left in both is a surface
     # and a placement. That is the shape this list already had: `notice` and
     # `account` are here for exactly the same reason, one migration earlier.
+    "bottomnav": "the bar the slots stand in, and nothing else since 2026-08-06: sticky to the "
+                 "bottom, one ground, a groove along its top edge, a list, a rule between slots "
+                 "and the balance figure one of them carries. The slot went to navitem with its "
+                 "hover, its press and its current-page state, and a BAND is not pressed. Same "
+                 "reason as notice and account below, one migration later",
     "event-detail": "the head, the facts strip and the sections of one event. The three "
                     "marks in the corner of the head went to iconbtn on 2026-08-06 and "
                     "took their hover, their press and their favourited state with them; "
@@ -739,6 +744,14 @@ ORDER_BREAK = {
     ("notice", "dialog"): ".fine is the small print, a typographic role that dialog.css happens "
                           "to own and that stands in bet panels and spinner boxes too. The "
                           "dialog holds the notice, so the dialog loads after it",
+    ("navitem", "bottomnav"): "the map reads this one BOTH ways and it is right both times: the "
+                              "bar holds five slots, and the Portfolio slot holds .bn-bal, the "
+                              "bar's own balance figure. A real cycle, not a misreading. The bar "
+                              "is the whole - it is a band of one screen and the slot is a "
+                              "control that also stands in an account menu - so the slot is the "
+                              "part and loads first, and .bn-bal is one <span> of content the "
+                              "bar puts inside its own control. Added 2026-08-06 with "
+                              "components/navitem.css",
 }
 FIRST = ["fonts", "tokens", "base", "course-chrome"]
 # ---- and the other end of the cascade ---------------------------------------
