@@ -245,6 +245,13 @@ UNSTYLED = {
                    "name this one, because the Google logotype is full-colour "
                    "and a recoloured logotype is the wrong mark. The class is "
                    "how a reader knows the omission was a decision",
+    "cmt-post": "a name the CENSUS reads, and the first class this repo has kept for "
+                "that reason alone. The Post button adopted `btn btn-primary btn-sm` on "
+                "2026-08-06 and is the family in every value, so nothing paints it and "
+                "no script queries it; what the name still does is tell the composer's "
+                "one commitment from 78 other small brass presses in `_worn.KINDS`, "
+                "which is what keeps `.cmt-signin` staged beside it. Deleting it was "
+                "tried and reverted, and the reason is written on that row",
     "ed-market": "debt: a second name on a section that is already an "
                  ".ed-section, read by no script and matched by no rule. 9 "
                  "screens. It closes by a rule or by deletion",

@@ -1,7 +1,7 @@
 /* components/button.css
-   Component: button. Classes: .btn, .btn-block, .btn-lg, .btn-md, .btn-primary, .btn-secondary, .btn-sm, .prov-apple, .prov-x.
+   Component: button. Classes: .btn, .btn-bare, .btn-block, .btn-ghost, .btn-lg, .btn-md, .btn-primary, .btn-secondary, .btn-sm, .btn-xs, .prov-apple, .prov-x.
 
-   Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --opacity-disabled, --text-on-brass, --text-primary, --text-strong
+   Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --opacity-disabled, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong
    Stand:  ui-kit/button.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -106,6 +106,32 @@
 .btn.btn-primary{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));
   color:var(--text-on-brass);font-weight:var(--weight-bold)}
 
+/* THE THIRD AND FOURTH EMPHASES, 2026-08-06, and both were read off the product
+   rather than invented. `ui-kit/docs/atoms.md` said for a year that this family
+   had two, and the census then measured 177 placements wearing a TRANSPARENT
+   ground, which is neither of them. Two grounds, not one, because they are two
+   different absences.
+
+   GHOST keeps the box and gives up the fill: transparent on a hairline pill, the
+   quiet ink, and the same 14 per cent action wash under a pointer that every
+   outlined control in the header band answers with. `.hiw-btn` is 105 of these,
+   one per screen, standing beside three other controls wearing the same skin -
+   the two <summary> disclosures and the icon button - which is why that one
+   hover declaration is currently written in two files. It is the header's
+   quietest labelled press and it is a real step below secondary: secondary has a
+   ground and says "you may"; this has none and says "if you want".
+
+   BARE gives up the box as well: no ground, no edge, no corner, and its padding
+   is a hit area rather than a size, which is why the size axis does not apply to
+   it and it carries its own. `.cmt-actions button` is 72 of these, the like and
+   reply pair under every comment. It is the same rest face a `navitem` wears,
+   and it is not one: what separates them is the MEANING, which is the check rule
+   1 exists for. A comment's Reply does a thing; it does not go anywhere. */
+.btn.btn-ghost{background:transparent;border-color:var(--border-hairline);border-radius:var(--radius-pill);
+  color:var(--text-muted);white-space:nowrap}
+.btn.btn-bare{background:transparent;border-width:0;border-radius:0;color:var(--text-muted);
+  padding:var(--space-4);font-size:var(--text-11);gap:var(--space-4)}
+
 /* THE THREE SIZES, and the ramp is read off the product rather than invented.
    sm is the 12px step, and its horizontal padding is 12 because `.state-btn`
    wore that and `.auth-btn` wore 8: 66 placements against 64, and 8 across on a
@@ -117,6 +143,13 @@
 .btn.btn-sm{padding:var(--space-8) var(--space-12);font-size:var(--text-12)}
 .btn.btn-md{padding:var(--space-12);font-size:var(--text-14)}
 .btn.btn-lg{padding:var(--space-16);font-size:var(--text-14)}
+/* xs is the step the ramp was missing, and it was missing because the control
+   that wears it was not in the family when the ramp was read: 4/8 at 12px, the
+   header band's own rhythm, 105 placements. It is added at the value the product
+   already draws rather than by squeezing that control onto `sm`, which is 8/12
+   and would have made the band's one labelled press a third taller. A ramp read
+   off the product has to be re-read when the product's set of controls changes. */
+.btn.btn-xs{padding:var(--space-4) var(--space-8);font-size:var(--text-12)}
 /* Width is the fourth axis and the only one that is not a look. It replaces
    three scope overrides that each put a width back: `.resolved-panel .state-btn`,
    the sheet's own rule, and the dock's `width:auto`. A control that owns its row
@@ -160,6 +193,19 @@
 .btn.btn-secondary:active{background:var(--bg-pressed)}
 .btn.btn-primary:active:not(:disabled):not([aria-disabled="true"]){
   background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
+/* GHOST ANSWERS WITH THE BAND'S WASH and not with the quiet hover above, because
+   it has no ground to move: --bg-control-hover on a transparent control is a fill
+   appearing out of nothing. The 14 per cent action wash and the action edge are
+   what the header's icon buttons and its two disclosures already do, so pointing
+   at any of the four gives one answer. The ink lifts to primary because ghost
+   rests at muted and has somewhere to go.
+   BARE HAS ONLY THE MARK AND THE WORD to answer with, so the ink goes brass and
+   nothing else moves; the press is the one pressed ground the system has, which
+   is the only time this control draws a shape at all. */
+.btn.btn-ghost:hover{background:color-mix(in oklab,var(--color-action) 14%,transparent);
+  border-color:var(--color-action);color:var(--text-primary)}
+.btn.btn-bare:hover{color:var(--text-brass)}
+.btn.btn-ghost:active,.btn.btn-bare:active{background:var(--bg-pressed)}
 /* Disabled. The product disables exactly one control, Add funds in the deposit
    dialog when the amount is under the minimum, and it says so with aria-disabled
    because a native disabled button is not focusable and the reason for it has to

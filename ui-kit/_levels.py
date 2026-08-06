@@ -287,6 +287,7 @@ STATIC = {
                  "and the balance figure one of them carries. The slot went to navitem with its "
                  "hover, its press and its current-page state, and a BAND is not pressed. Same "
                  "reason as notice and account below, one migration later",
+    "profile": "the identity row, the reputation grid and the gallery. Its one control, Edit, went to button on 2026-08-06 and took its hover and its press with it: one placement is the wrong size for an exception, so the element takes the family's small step. What is left is a head and a rail, and neither is pressed",
     "event-detail": "the head, the facts strip and the sections of one event. The three "
                     "marks in the corner of the head went to iconbtn on 2026-08-06 and "
                     "took their hover, their press and their favourited state with them; "

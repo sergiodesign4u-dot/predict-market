@@ -314,6 +314,37 @@ ROLE_WHY = {
     "stand": "furniture of this vitrine, not product.",
 }
 KINDS = [
+    # THE FIVE THAT ADOPTED `.btn` ON 2026-08-06 SIT ABOVE THE FAMILY ROW, and the
+    # reason is the one gate 38 has now taught three times: the reader returns on the
+    # FIRST row whose classes match, so a kind that adopts an atom and keeps its own
+    # name has to be read before the generic row that would swallow it. Each of these
+    # is `.btn` plus an emphasis and a size on the element now, and each still owns a
+    # name because a region still says where it sits.
+    ("how it works, in the header", {"hiw-btn"}, set(),
+     "button", "action", "the header's quietest labelled press: a transparent pill, and the "
+                         "third emphasis this family turned out to have"),
+    # `.cmt-post` NOW STYLES NOTHING AND IS KEPT ANYWAY, which is a first for this
+    # migration and is declared in `_adoption.UNSTYLED` rather than assumed. Once the
+    # Post button wore `btn btn-primary btn-sm` it became the family in every value,
+    # so the name is what tells the composer's commitment from 78 other small brass
+    # presses, and this census is the only reader it has left. Deleting it was TRIED
+    # and reverted the same hour: the specimen corpus stages `.cmt-post` and stages
+    # `.cmt-signin` nowhere, so retiring the name would have left the signed-out
+    # composer, a control on two real screens, with no stand at all. S47.
+    ("post a comment", {"cmt-post", "cmt-signin"}, set(),
+     "comments", "action", "the composer's own commitment, and the signed-out prompt "
+                           "beside it, whose --bg-well ground is not an emphasis this "
+                           "family has"),
+    ("a comment's own action", set(), {"cmt-actions"},
+     "button", "action", "reply and like sit in the comment row: no ground, no edge, no "
+                         "corner, which is the fourth emphasis"),
+    ("cookie consent", {"cc-btn"}, set(),
+     "button", "action", "the banner is one block and its answers are quiet controls of "
+                         "the family, at the family's middle step"),
+    ("edit, on the profile", {"edit"}, set(),
+     "button", "action", "one placement, and one placement is the wrong size for an "
+                         "exception: it takes the family's small step"),
+
     ("the button family", {"btn"}, set(),
      "button", "action", "this page, staged in full above"),
     # `.hiw-btn` LEFT THIS ROW ON 2026-08-06, and it left for the reason the logo
@@ -353,9 +384,6 @@ KINDS = [
 
     ("icon only, in the header", {"icon-btn", "bal-add", "bal-swap"}, set(),
      "header", "action", "the header owns its own row of marks, and their size is the header's rhythm"),
-    ("how it works, in the header", {"hiw-btn"}, set(),
-     "header", "action", "a labelled press that opens the sheet, sized to the header band it "
-                         "stands in rather than to the button ramp"),
     ("the logo, home", {"logo-btn"}, set(),
      "header", "nav", "it is the mark and the way back to the feed, and both belong to the header"),
     ("a row of the account dropdown", set(), {"dropdown"},
@@ -395,20 +423,12 @@ KINDS = [
      "tabs", "selector", "a tab is a selector, and the selected one is a state and not a press"),
     ("bottom nav slot", set(), {"bottom-nav"},
      "bottomnav", "nav", "the nav owns the slot, the icon and the active state together"),
-    ("post a comment", {"cmt-post", "cmt-signin"}, set(),
-     "comments", "action", "the composer's own commitment, sized to the thread"),
-    ("a comment's own action", set(), {"cmt-actions"},
-     "comments", "action", "reply and like sit in the comment row and answer with it"),
     ("load more", {"load-more"}, set(),
      "loadmore", "action", "the same graphite chip, at the foot of a list"),
-    ("cookie consent", {"cc-btn"}, set(),
-     "cookie-consent", "action", "the banner is one block and its two answers are part of it"),
     ("toggle", {"toggle"}, set(),
      "filters", "selector", "a switch is not a button: it carries a value, not an action"),
     ("hero, the featured pair", {"hf-btn"}, set(),
      "hero", "selector", "the hero band's own YES / NO, at the band's size"),
-    ("edit, on the profile", {"edit"}, set(),
-     "profile", "action", "identity chrome, and it sits inside the profile head"),
     ("the vitrine's own chrome", {"rm-toggle", "theme-switch"}, set(),
      "course-chrome", "stand", "stand furniture, not product: it is how you read these pages"),
 ]

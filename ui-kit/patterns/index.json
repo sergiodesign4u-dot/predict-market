@@ -133,12 +133,12 @@
    "chip",
    "market",
    "comments",
+   "button",
    "bets-table",
    "position",
    "betpanel",
    "input",
    "quick",
-   "button",
    "dialog"
   ],
   "via": {
@@ -151,12 +151,12 @@
    "chip": ".chip",
    "market": ".market-box",
    "comments": ".cmt-controls",
+   "button": ".btn",
    "bets-table": ".hold-cols",
    "position": ".pos-side",
    "betpanel": ".bet-panel",
    "input": ".field-label",
    "quick": ".quick",
-   "button": ".btn",
    "dialog": ".fine"
   },
   "own": [

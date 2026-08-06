@@ -183,6 +183,7 @@ NOT_SHOT = {
                 "recorded no difference. In the product 36 screens of lists do answer. A reader "
                 "gap: closing it means teaching states.cjs to hover an ancestor, which changes "
                 "what every gallery measures",
+    "comments": "`.app-case .cmt-signin:hover` and its press, and they are the LAST state rules left in the file. Every other control in a comment thread went to components/button.css on 2026-08-06: the composer's Post is `btn btn-primary btn-sm` and the reply and like pair is `btn btn-bare`, and both are photographed on the button page. What is left answers a pointer only on the SIGNED-OUT composer, which stands on two real screens and in no specimen, so the capture found nothing to hover. A stand debt of exactly the shape state-block has below, and `ui-kit/docs/backlog.md` S47 is where it is written down: it is also why `.cmt-post` was kept as a name rather than deleted",
     "state-block": "`.app-case .sys-link-list a:hover`. The three specimens are the empty and "
                    "error blocks of a browse screen and none carries a system screen's link "
                    "list, so there was nothing to open. A stand debt, not a reader bug",

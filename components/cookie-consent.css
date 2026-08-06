@@ -1,7 +1,7 @@
 /* components/cookie-consent.css
    Component: cookie-consent. Classes: .cc-actions, .cc-banner, .cc-btn, .cc-cat, .cc-cat-desc, .cc-cat-main, .cc-cat-name, .cc-cats, .cc-inner, .cc-manage, .cc-note, .cc-page, .cc-ph, .cc-ph-line, .cc-policy, .cc-text, .w90.
 
-   Reads: --bg-card-quiet, --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --color-action, --color-action-pressed, --edge-groove-light, --glow-brass, --opacity-locked, --shadow-ink, --text-brass, --text-muted, --text-primary
+   Reads: --bg-card-quiet, --bg-control, --border-hairline, --color-action, --color-action-pressed, --edge-groove-light, --glow-brass, --opacity-locked, --shadow-ink, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/cookie-consent.html
    Stands on: 2 ui-visual screens (cookie-consent.html, toasts.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -20,15 +20,21 @@
 .app-case .cc-policy a{color:var(--text-brass);text-decoration:none;border-bottom:1px solid var(--glow-brass);padding-bottom:var(--space-2)}
 .app-case .cc-policy a:hover{border-bottom-color:var(--text-brass)}
 .app-case .cc-actions{display:flex;flex-wrap:wrap;gap:var(--space-8)}
-.app-case .cc-btn{flex:1 1 auto;min-width:96px;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-12) var(--space-12);min-height:var(--control-44);cursor:pointer;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease}
-.app-case .cc-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover)}
+/* THE THREE CONSENT BUTTONS LEFT THIS FILE ON 2026-08-06 for components/button.css, where
+   they are `.btn.btn-secondary.btn-md`: --bg-control on a hairline at 10, semibold, 12/12,
+   which is what they already were in every value but ONE. Their font was 13 against a ramp
+   of 12 and 14, so the family's md takes it to 14 and that is the single visible change the
+   adoption makes. ui-kit/docs/backlog.md S47 asked it before it was made.
+   WHAT STAYS IS HOW THEY SHARE THE ROW: `flex:1 1 auto` and a 96 floor, so three of them
+   divide the banner and none collapses under its own label. That is the banner's decision
+   about its own row, which is exactly what a region is still allowed to say. */
+.app-case .cc-btn{flex:1 1 auto;min-width:96px}
 /* Accept all / Reject all / Manage are quiet controls on a flat ground, so the press is the one
    system ground and not a banner's own idea. Equal specificity to the hover above, so it has to
    sit after it; the hover border stays lit underneath, which is what makes the darker fill read
    as held rather than as a second hover. Flat at rest, so nothing to unlift. None of the three
    is ever disabled and none gets a disabled skin: consent is always available, and a Reject that
    could go dead is the dark pattern this banner exists to answer. */
-.app-case .cc-btn:active{background:var(--bg-pressed)}
 .app-case .cc-note{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:0}
 .app-case .cc-manage{border-top:1px solid var(--border-hairline);padding-top:var(--space-12);display:flex;flex-direction:column;gap:var(--space-8)}
 .app-case .cc-cats{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-8)}

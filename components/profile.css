@@ -1,7 +1,7 @@
 /* components/profile.css
    Component: profile. Classes: .av, .edit, .gallery, .handle, .idrow, .name, .who.
 
-   Reads: --bg-canvas, --bg-control, --bg-pressed, --border-hairline, --color-action, --line-brass-strong, --text-muted, --text-primary, --text-strong
+   Reads: --bg-canvas, --bg-control, --border-hairline, --color-action, --text-muted, --text-primary
    Stand:  ui-kit/profile.html
    Stands on: 2 ui-visual screens (my-profile.html, public-profile.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -14,15 +14,21 @@
 .app-case .idrow .who br{display:none}
 .app-case .idrow .name{font-family:var(--font-display);font-size:var(--text-20);font-weight:var(--weight-bold);letter-spacing:-.02em;color:var(--text-primary);line-height:var(--leading-flat)}
 .app-case .idrow .handle{font-size:var(--text-12);color:var(--text-muted);letter-spacing:.01em}
-.app-case .idrow .edit{align-self:center;flex:0 0 auto;margin-left:auto;border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-control);color:var(--text-primary);font-size:var(--text-11);font-weight:var(--weight-semibold);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer;transition:border-color var(--dur-base) ease,color var(--dur-base) ease}
-.app-case .idrow .edit:hover{border-color:var(--line-brass-strong);color:var(--text-strong)}
+/* EDIT LEFT THIS FILE ON 2026-08-06 for components/button.css, where it is
+   `.btn.btn-secondary.btn-sm`. It is one placement in the whole product, and one placement
+   is the wrong size for an exception: it wore a pill where the family wears 10, 11px where
+   the family's small step is 12, and 8/16 where that step is 8/12. Naming a face for a
+   single element is what ui-kit/docs/atoms.md forbids about the logo, so the element takes
+   the family's values instead. Three visible changes on one control, asked in S47 first.
+   WHAT STAYS is where it sits in the identity row: centred against the name block, no
+   growing, pushed to the far end. */
+.app-case .idrow .edit{align-self:center;flex:0 0 auto;margin-left:auto}
 /* The one control this file owns, and it answered the pointer on the way in and nothing on the way
    down. It is flat at rest, a --bg-control ground inside a hairline, so it presses the one way
    every quiet control in the system presses: it settles onto --bg-pressed. Nothing to unlift,
    because nothing here is lifted. The hover's edge and label are restated rather than left to the
    rule above, because a phone never hovers and this is the only target in the identity row. Equal
    specificity to that hover (0,3,0), so source order decides while the pointer is down. */
-.app-case .idrow .edit:active{background:var(--bg-pressed);border-color:var(--line-brass-strong);color:var(--text-strong)}
 .app-case .gallery{display:flex;gap:var(--space-12);overflow-x:auto;padding:var(--space-2) 0 var(--space-8);scrollbar-width:none;width:0;min-width:100%}
 .app-case .gallery::-webkit-scrollbar{display:none}
 /* Target size follows the POINTER, not the viewport. Step 7 wrote that rule and moved two

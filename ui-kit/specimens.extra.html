@@ -253,9 +253,9 @@
         <a href="#">Cookie policy</a>
       </p>
       <div class="cc-actions">
-        <button type="button" class="cc-btn">Accept all</button>
-        <button type="button" class="cc-btn">Reject all</button>
-        <button type="button" class="cc-btn">Manage</button>
+        <button type="button" class="btn btn-secondary btn-md cc-btn">Accept all</button>
+        <button type="button" class="btn btn-secondary btn-md cc-btn">Reject all</button>
+        <button type="button" class="btn btn-secondary btn-md cc-btn">Manage</button>
       </div>
       <p class="cc-note">Reject is one tap, the same as Accept. Nothing here is pre-ticked.</p>
 
@@ -448,6 +448,24 @@
     this product, so a control declaring width:100% is shown at a width it gets.
   -->
   <div class="kit-stack">
+    <!--
+      TWO ROWS ADDED 2026-08-06 with the third and fourth emphases. The family was
+      read out of the product before the button migration and 177 placements came
+      back wearing a TRANSPARENT ground, which is neither of the two this matrix
+      had. Ghost keeps the box and gives up the fill; bare gives up the box too,
+      so its padding is a hit area and the size axis does not reach it, which is
+      why its row carries no size class.
+    -->
+    <div class="kit-row a-start">
+      <div>
+        <span class="kit-surf-lbl">.btn.btn-ghost.btn-xs</span>
+        <button type="button" class="btn btn-ghost btn-xs">How it works</button>
+      </div>
+      <div>
+        <span class="kit-surf-lbl">.btn.btn-bare</span>
+        <button type="button" class="btn btn-bare">Reply</button>
+      </div>
+    </div>
     <div class="kit-row a-start">
       <div>
         <span class="kit-surf-lbl">.btn.btn-secondary.btn-sm</span>

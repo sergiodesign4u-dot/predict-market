@@ -292,7 +292,7 @@ screens.
 | Pattern | CSS file | Page | Screens | Assembled from |
 |---|---|---|---|---|
 | **Browse shell** | `patterns/browse-shell.css` | [browse-shell](../browse-shell.html) | 77 | `catnav`, `filters`, `state-block`, `button` |
-| **Detail shell** | `patterns/detail-shell.css` | [detail-shell](../detail-shell.html) | 11 | `card`, `event-detail`, `iconbtn`, `oddsbar`, `chart`, `tabs`, `chip`, `market`, `comments`, `bets-table`, `position`, `betpanel`, `input`, `quick`, `button`, `dialog` |
+| **Detail shell** | `patterns/detail-shell.css` | [detail-shell](../detail-shell.html) | 11 | `card`, `event-detail`, `iconbtn`, `oddsbar`, `chart`, `tabs`, `chip`, `market`, `comments`, `button`, `bets-table`, `position`, `betpanel`, `input`, `quick`, `dialog` |
 | **Card grid** | `patterns/card-grid.css` | [card-grid](../card-grid.html) | 23 | `card`, `yesno`, `iconbtn`, `options` |
 | **List head** | `patterns/list-head.css` | [list-head](../list-head.html) | 71 | `filters` |
 | **Position list** | `patterns/position-list.css` | [position-list](../position-list.html) | 13 | `position` |

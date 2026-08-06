@@ -30,7 +30,6 @@
    components/index.css. So the rule could never fire, in any tree, and it was
    sitting inside the app header's own file describing a layout the app header
    has nothing to do with. Found by gate 30 on its first run. */
-.hiw-btn{padding:var(--space-4) var(--space-8);font-size:var(--text-12);cursor:pointer}
 .notif-menu{position:relative}
 .notif-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center}
 .notif-menu summary::-webkit-details-marker{display:none}
@@ -64,9 +63,19 @@
    buttons on the other - and the same two circles read differently between
    them. */
 .notif-menu summary,.avatar-menu summary{background:transparent;border:1px solid var(--border-hairline);border-radius:var(--radius-pill)}
-.hiw-btn{background:transparent;border:1px solid var(--border-hairline);color:var(--text-muted);border-radius:var(--radius-pill);white-space:nowrap}
-.hiw-btn:hover{color:var(--text-primary)}
-.hiw-btn:hover,.notif-menu summary:hover,.avatar-menu summary:hover{background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:var(--color-action)}
+/* HOW IT WORKS LEFT THIS FILE ON 2026-08-06 for components/button.css, where it is
+   `.btn.btn-ghost.btn-xs`: a labelled press with a transparent ground, which the family
+   had no name for until the census measured 177 placements wearing one. Two selectors
+   were SPLIT rather than moved, because each also styled the two <summary> disclosures
+   that open the notification and account menus, and those are still this file's.
+   THE SPLIT IS THE FINDING AGAIN. Four controls in this band wear one skin - the icon
+   button, the two disclosures and this pill - and after two migrations that skin is now
+   written in three files. It is the same 14 per cent action wash each time. What the
+   band actually has is a quiet-control SKIN shared across three atoms, which the map has
+   no vocabulary for. ui-kit/docs/backlog.md S48.
+   `display:none` under the breakpoint stays here: hiding a control in a band is the
+   band's decision, which is the line every one of these migrations is drawn on. */
+.notif-menu summary:hover,.avatar-menu summary:hover{background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:var(--color-action)}
 /* Press, the axis this file never had: nine hovers answered the pointer on the way in and
    nothing answered the click. Every quiet control in the header is flat at rest, a transparent
    ground inside a hairline, so it presses the one way the whole system presses: it settles onto
@@ -74,7 +83,7 @@
    lifted. Equal specificity to the hover above (0,2,0 both), so this has to stay AFTER it: with
    a mouse both states are true at once and only source order separates them. The border stays
    on the hover's brass, because a control being pushed in is not a control changing its mind. */
-.hiw-btn:active,.notif-menu summary:active,.avatar-menu summary:active{background:var(--bg-pressed)}
+.notif-menu summary:active,.avatar-menu summary:active{background:var(--bg-pressed)}
 /* The wordmark is a button that goes home, and under 640px it is the ONLY target left on the
    left of the header: the menu icon and How it works are both display:none there. It had no
    state at all, on either axis. It takes the quiet ground square-cornered, because a radius is
@@ -170,7 +179,7 @@
    44px a phone does. So the target size is bound to the POINTER. A fine pointer keeps 36px, which
    clears 2.5.8 (24x24) with room; a coarse one gets 44. */
 @media(pointer:coarse){
-  .notif-menu summary,.avatar-menu summary,.hiw-btn,.logo-btn,.notif-all{
+  .notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all{
     min-width:var(--control-44);min-height:var(--control-44)}
   .app-case .app-header .cat-condensed button{min-height:var(--control-44)}
 }

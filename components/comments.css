@@ -1,7 +1,7 @@
 /* components/comments.css
-   Component: comments. Classes: .cmt, .cmt-actions, .cmt-av, .cmt-badge, .cmt-body, .cmt-compose, .cmt-controls, .cmt-input, .cmt-list, .cmt-meta, .cmt-post, .cmt-signin, .cmt-text, .cmt-user, .reply, .seg.
+   Component: comments. Classes: .cmt, .cmt-actions, .cmt-av, .cmt-badge, .cmt-body, .cmt-compose, .cmt-controls, .cmt-input, .cmt-list, .cmt-meta, .cmt-signin, .cmt-text, .cmt-user, .reply, .seg.
 
-   Reads: --bg-control, --bg-pressed, --bg-prompt-hover, --bg-well, --border-brass, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --text-brass, --text-muted, --text-on-brass, --text-primary, --tint-brass-09
+   Reads: --bg-control, --bg-pressed, --bg-prompt-hover, --bg-well, --border-brass, --border-brass-hover, --border-hairline, --color-action, --text-brass, --text-muted, --text-primary, --tint-brass-09
    Stand:  ui-kit/comments.html
    Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -10,7 +10,6 @@
 .cmt-compose{display:flex;gap:var(--space-8);margin-bottom:var(--space-8)}
 .cmt-av{width:var(--size-28);height:var(--size-28);flex:0 0 var(--size-28);border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
 .cmt-input{flex:1;padding:var(--space-8);font-size:var(--text-12)}
-.cmt-post{padding:var(--space-8) var(--space-12);font-size:var(--text-12);cursor:pointer}
 .cmt-signin{text-align:center}
 .cmt-list{display:flex;flex-direction:column;gap:var(--space-12)}
 .cmt{display:flex;gap:var(--space-8)}
@@ -33,14 +32,12 @@
    44 was NOT taken here and that is deliberate: it is a text control in a meta
    line and 44 would make the comment row taller than the comment. That question is
    the whole product's, and ui-kit/docs/backlog.md S39 holds it. */
-.cmt-actions button{border:none;background:transparent;padding:var(--space-4);font-size:var(--text-11);cursor:pointer;display:inline-flex;gap:var(--space-4);align-items:center}
 .cmt-actions .ic{width:var(--icon-12);height:var(--icon-12)}
 /* A PLACEHOLDER, and the file says so. Two sample faces alternating down the thread: the product
    will write the real one on the element, the way the event photograph is written on the card.
    The two are here rather than there only because there are 198 of them and a stand needs faces. */
 .cmt-list .cmt-av{background-image:url(../assets/avatar-2.jpg);background-size:cover;background-position:center;color:transparent;font-size:0;border:1px solid var(--border-hairline)}
 .cmt-list .cmt:nth-child(even) .cmt-av{background-image:url(../assets/avatar-1.jpg)}
-.app-case .cmt-post{transition:filter var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
 /* THE THREE-STEP OF A BRASS PLATE, the one button.css and input.css already use, and it costs no
    value at all. Rest lights the plate from the top left; hover takes the lit role to both stops so
    the whole face comes up; press flips the angle so the light falls to the bottom right, which is
@@ -49,13 +46,10 @@
    multiplies whatever is underneath, so no theme and no role can reach it, and the same 1.08 is a
    different decision on graphite and on chalk. The glow line is kept exactly as it was, because
    that is depth and not colour, and the press drops it: a plate pushed in does not throw light. */
-.app-case .cmt-post:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
-.app-case .cmt-post:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
 .app-case .cmt-controls{color:var(--text-muted);font-size:var(--text-12);justify-content:space-between}
 .app-case .cmt-compose{border:0;background:transparent;padding:0;align-items:center}
 .app-case .cmt-av{border:1px solid var(--border-brass);color:var(--text-brass);font-size:var(--text-10);background:linear-gradient(140deg,color-mix(in oklab,var(--color-action) 20%,var(--bg-control)),var(--bg-control))}
 .app-case .cmt-input{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-muted)}
-.app-case .cmt-post{border:0;border-radius:var(--radius-10);background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));color:var(--text-on-brass);font-weight:var(--weight-bold)}
 .app-case .cmt-signin{display:flex;align-items:center;justify-content:center;width:100%;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-muted);padding:var(--space-16);margin-bottom:var(--space-16);font-family:var(--font-body);font-size:var(--text-13);font-weight:var(--weight-semibold);cursor:pointer;transition:border-color var(--dur-quick) ease,color var(--dur-quick) ease,background var(--dur-quick) ease}
 .app-case .cmt-signin:hover{border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-prompt-hover)}
 /* The prompt is a quiet control, so it settles onto --bg-pressed, and it is flat at rest with
@@ -67,12 +61,10 @@
 .app-case .cmt-meta{color:var(--text-muted)}
 .app-case .cmt-badge{border:1px solid var(--border-brass);border-radius:var(--radius-6);background:var(--tint-brass-09);color:var(--text-brass);font-size:var(--text-10)}
 .app-case .cmt-text{color:var(--text-primary);font-size:var(--text-13);line-height:var(--leading-base)}
-.app-case .cmt-actions,.app-case .cmt-actions button{color:var(--text-muted)}
-.app-case .cmt-actions button:hover{color:var(--text-brass)}
+.app-case .cmt-actions{color:var(--text-muted)}
 /* Reply and like carry no ground of their own, so the press is the ground arriving: the same
    --bg-pressed, drawn tight around the label because the button's padding is 0 and a state may not
    move the control. footer.css presses a bare text link the same way, for the same reason. */
-.app-case .cmt-actions button:active{background:var(--bg-pressed)}
 .app-case .cmt-actions .ic{fill:currentColor;stroke:none}
 /* THE COMMENT SORT SWITCHER, moved here from tabs.css on 2026-08-03 (docs/backlog.md 17).
    tabs.css held it because "that file owns every switcher", and that sentence was the

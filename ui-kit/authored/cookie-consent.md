@@ -45,7 +45,7 @@ Seen: `voice/docs/microcopy.md` L1227, where the equal weight of the three actio
 
 ## States
 
-- `button.cc-btn @cookie-consent` - One of the three actions, at rest, hovered, held and focused. The quiet chip: ground answers, edge takes the soft brass. All three look identical in every state, which is the component's whole argument.
+- The three answers are no longer captured here. They went to `components/button.css` on 2026-08-06 as `.btn.btn-secondary.btn-md`, which is what they already were in every value but one: their font was 13 against a ramp of 12 and 14. What this file still owns about them is how they share the row, `flex:1 1 auto` and a 96 floor, so three of them divide the banner and none collapses under its own label.
 - `input @cookie-consent` - A category switch, off. The necessary category ships disabled and on, which is a fact about what the switch can do rather than a style.
 - `input @cookie-consent (2)` - The same switch on, in brass rather than green, because green means an outcome in this product and consent is not one.
 - `a @cookie-consent` - The policy link, the one link in the component, underlined at rest rather than on hover: a person deciding what to allow should be able to see where the full text is without pointing at it.

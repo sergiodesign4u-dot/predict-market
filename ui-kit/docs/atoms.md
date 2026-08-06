@@ -524,6 +524,72 @@ defect 77 was written about.
 
 ---
 
+## `button` answered, and the family turned out to have four emphases: 11 to 10
+
+S47's five questions were answered and applied the same day, which is the loop S44 established:
+measure, refuse to choose, ask, apply. What the answers bought:
+
+| kind | became | and it cost |
+|---|---|---|
+| `.hiw-btn` **105** | `.btn.btn-ghost.btn-xs` | **nothing at all** |
+| `.cmt-actions button` **72** | `.btn.btn-bare` | **nothing at all** |
+| `.cmt-post` **7** | `.btn.btn-primary.btn-sm` | 2px in each dimension, the family's band |
+| `.cc-btn` **3** | `.btn.btn-secondary.btn-md` | the font, 13 to 14 |
+| `.edit` **1** | `.btn.btn-secondary.btn-sm` | four values on one element |
+
+**The two biggest moved no pixel, and that is the whole argument for naming a thing rather than
+squeezing it.** `.hiw-btn` fitted nowhere on a two-emphasis, three-size family, so the family
+grew a third emphasis and a fourth ramp step **at the values the product already drew**. A ramp
+read off the product has to be re-read when the product's set of controls changes, and this one
+had been read before `.hiw-btn` was in the family at all.
+
+    ghost   keeps the box, gives up the fill: transparent on a hairline pill, quiet ink
+    bare    gives up the box too: no ground, no edge, no corner, its padding a hit area
+    xs      4 / 8 at 12px, the header band's own rhythm, 105 placements
+
+**`bare` is the same rest face a `navitem` wears and it is not one.** What separates them is the
+MEANING, which is exactly the check rule 1 was reduced to when the social mark moved. Reply does
+a thing; it does not go anywhere. The rule earns its keep for the first time.
+
+**525 snapshots, 431 differ, 2137 elements, and every property is named.** No `color`, no
+`backgroundColor`, no `backgroundImage` moved anywhere in the product. The only boxes that moved
+are the 55 readings of the three controls above plus the reflow around them. Everything else is
+`display` block to flex, `gap` normal to 12 on single-child flex boxes, `justify-content` normal
+to center, `border-style` none to solid under a 0px width, and `font-family` narrowing from
+`"DM Sans", system-ui, sans-serif` to the `--font-body` role's `"DM Sans", sans-serif` - which
+decides only which fallback would be used if a font served from this repo failed to load.
+
+    41 the atom map   7 control atom(s) in 17 file-slot(s): distance 10, and it goes to 0
+                      iconbutton  1361  6 kind(s), 1 file(s)
+                      chip        1358  3 kind(s), 4 file(s)
+                      navitem     1019  3 kind(s), 2 file(s)
+                      button       911  7 kind(s), 5 file(s)   <- was 6, and the header is out
+                      outcome      272  3 kind(s), 3 file(s)
+
+**Five files still draw a button and each is a different kind of leftover**, which is worth
+listing because the number alone reads as failure:
+
+- `button` - its home.
+- `comments` - `.cmt-signin`, a `--bg-well` ground with muted ink, which is not an emphasis this
+  family has. The specimen corpus stages it nowhere, so it is also the reason `.cmt-post` was
+  KEPT as a name after adoption: deleting it was tried and reverted within the hour.
+- `loadmore` - S41 says that component should not exist and the chip family is blocked on S35.
+- `cookie-consent` - one declaration, `min-width:96px`, so three answers divide a banner.
+- `profile` - one declaration, `min-height:44` under a coarse pointer, which is S39's question
+  and not a partition's.
+
+The last two are the same shape and worth naming: **a floor is a size, and a size is the
+control's, but the family has no coarse-pointer floor at all.** Giving it one would move 911
+placements on touch, which is S39.
+
+**And the migration made a new finding by splitting a selector.** Four controls in the header
+band wear one skin - the icon button, the two `<summary>` disclosures and this pill - and after
+two migrations that one declaration is written in three files, byte for byte, each copy
+deliberate and each documented. The map has no word for a SKIN shared across atoms, and the two
+disclosures are the test, because no atom can hold their half. `ui-kit/docs/backlog.md` S48.
+
+---
+
 ## The decision this document no longer has open
 
 - ~~**Is a social mark a `navitem` or an `iconbutton`?**~~ **Answered 2026-08-06 and the
