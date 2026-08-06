@@ -1,7 +1,7 @@
 /* components/toast.css
    Component: toast. Classes: .toast, .toast-close, .toast-error, .toast-group, .toast-inner, .toast-msg.
 
-   Reads: --bevel-notice, --bg-card-quiet, --bg-control, --bg-pressed, --border-brass-hover, --border-hairline, --border-notice, --edge-groove-light, --shadow-ink, --text-brass, --text-muted, --text-primary
+   Reads: --bevel-notice, --bg-card-quiet, --bg-control, --border-hairline, --border-notice, --edge-groove-light, --shadow-ink, --text-brass, --text-primary
    Stand:  ui-kit/toast.html
    Stands on: 1 ui-visual screens (toasts.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -15,44 +15,29 @@
 .app-case .toast{display:flex;align-items:center;gap:var(--space-12);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);padding:var(--space-12) var(--space-12);box-shadow:0 18px 40px -24px var(--shadow-ink),inset 0 1px 0 var(--edge-groove-light)}
 .app-case .toast .ic-sm{width:var(--icon-18);height:var(--icon-18);flex:0 0 var(--icon-18);stroke:var(--text-brass);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .app-case .toast-msg{flex:1;color:var(--text-primary);font-size:var(--text-14);font-weight:var(--weight-medium)}
-/* THE THIRD CLOSE JOINS THE OTHER TWO, and what it joins is the SHAPE and not the
-   ground. Measured 2026-08-04 over the whole painted tree: the product has three
-   controls that close an overlay, and two of them are the same 32px pill with a
-   drawn X. This one was a 24px box at 10px radius carrying the LETTER x at 12px,
-   which is `ui-kit/docs/defects.md` row 45 in its smallest instance: a glyph with
-   its own baseline standing where a mark should.
-   WHAT MOVES IS THE RADIUS AND THE MARK. The pill is the shape a close has in this
-   product. The X is two bars, the same geometry dialog.css draws, so the control
-   stops depending on a character that sits off centre by its own descender.
-   WHAT DOES NOT MOVE IS THE GROUND, and that is the point of measuring rather than
-   copying. The other two closes stand on a lit sheet header and take a 34 per cent
-   scrim, which is a ground for a control on a photograph; this one stands on a
-   quiet card and keeps its hairline on transparent. Same shape, same mark, the
-   ground each one's surface actually needs.
-   The size stays 24 here and it is not right yet: three of these clear 24x24 and
-   none clears 44. That is one question for the whole system, not a toast one, and
-   `ui-kit/docs/backlog.md` S39 holds it.
-   currentColor AND NOT --control-knob, which is what dialog.css uses: the hover
-   below already moves `color`, so the mark moves with it for free and the two
-   values cannot drift apart.
-   THE BAR IS --size-8 AND NOT --size-12, which is what dialog.css draws, because
-   the circle here is 24 and there it is 32: 12 in 32 is a 37 per cent mark and 12
-   in 24 would be 50, an X pressed against its own edge. 8 in 24 is 33. No new
-   primitive was minted for the exact ratio - one control is not a level. */
-.app-case .toast-close{flex:0 0 auto;position:relative;width:var(--size-24);height:var(--size-24);border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:transparent;color:var(--text-muted);font-size:0;cursor:pointer;line-height:var(--leading-none);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
-.app-case .toast-close::before,.app-case .toast-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 4px);width:var(--size-8);height:var(--size-2);background:currentColor;border-radius:var(--radius-2)}
-.app-case .toast-close::before{transform:rotate(45deg)}
-.app-case .toast-close::after{transform:rotate(-45deg)}
-.app-case .toast-close:hover{border-color:var(--border-brass-hover);color:var(--text-primary)}
-/* Dismiss is an icon button on a transparent ground, so it presses the way every quiet control
-   in the system presses and has no private idea of its own. It stays --bg-pressed on the error
-   toast too: a toast here carries no green or red by decision, and a close button that reddened
-   under the thumb would put the feedback colour on the one part of the toast that is not the
-   feedback. Equal specificity to the hover above (0,3,0 both), so source order decides and this
-   has to stay after it. The toast is lifted, the button inside it is not, so there is no outer
-   shadow to drop. Nothing disables it: a toast you cannot dismiss is not a state this product
-   has, so there is no disabled skin and no guard pretending there is one. */
-.app-case .toast-close:active{background:var(--bg-pressed)}
+/* THE DISMISS LEFT THIS FILE ON 2026-08-06 and there is nothing left here to say
+   about it, which is the test the migration is passing: a toast is a message and
+   a lift and a place for one control, and the control is not the toast's to draw.
+   It is `class="icon-btn icon-btn-small toast-close"` on the element, its face is
+   the atom's fifth, and everything that was written here about the pill, the two
+   drawn bars, the transparent ground and the 24 that clears 2.5.8 and not 2.5.5
+   moved WITH the rules rather than staying behind as a second copy that could
+   drift. components/iconbtn.css.
+   ONE THING CHANGED ON THE WAY and it was decided rather than carried:
+   the hover. This control used to brighten its own edge to --border-brass-hover,
+   where the 388 outlined circles in the product tint their ground and take a
+   --color-action edge. Four against 388, so the four were the divergence.
+   `ui-kit/docs/backlog.md` S44 asked, and it is answered.
+   NOTHING ABOUT THE 24 WAS DECIDED HERE. Three closes in the product clear
+   24x24 and none clears 44; that is one question for the system rather than a
+   toast one, and S39 still holds it.
+   ONE DECLARATION STAYS, and it is the same one dialog.css kept: how the control
+   sits in the row this file lays out. `flex:0 0 auto` says the message takes the
+   slack and the dismiss does not, which is a fact about a two-item flex row and
+   not about what an icon button looks like. That is the whole line the atom
+   migration is drawn on, and it is why `.toast-close` is still a name a
+   stylesheet reads. */
+.app-case .toast-close{flex:0 0 auto}
 .app-case .toast.toast-error{border-color:var(--border-notice);background:var(--bg-control);box-shadow:0 22px 46px -22px var(--shadow-ink),inset 0 1px 0 var(--bevel-notice)}
 .app-case .toast.toast-error .ic-sm{width:var(--icon-22);height:var(--icon-22);flex:0 0 var(--icon-22);stroke:var(--text-primary);stroke-width:2.4}
 .app-case .toast.toast-error .toast-msg{color:var(--text-primary);font-weight:var(--weight-semibold)}

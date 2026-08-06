@@ -309,6 +309,63 @@ moves into the specific block above the generic one, and gate 38 is what says so
 
 ---
 
+## The first atom closes: 15 to 13, and it cost three decisions
+
+The last two icon-only kinds adopted on 2026-08-06, and they are the two that had been
+refused the day before. Nothing about them had changed. What changed is that somebody
+answered the three questions `ui-kit/docs/backlog.md` S44 was holding, and the whole of
+this step is the re-apply.
+
+**The refusal was the useful part.** `.ed-actions button` and `.toast-close` had never set
+`padding` or `display`, so both were wearing the user agent's `1px 6px` and `display:block`
+and neither value had ever been chosen by a person. Adopting the atom replaces them, and on
+the event action row it shows: an 18px mark that a 28px tile was flex-shrinking to **14**.
+A migration is allowed to move a rule between files. It is not allowed to answer a design
+question on the way, and the difference between the two is exactly whether anybody was asked.
+
+    the mark on the action row     18, because that is what the file has said all along
+    its ink                        --text-muted, because it is a quiet toolbar on a photograph
+    the toast dismiss's hover      the same as the other 388: tint the ground, brass the edge
+
+**Measured after: 525 snapshots, 50 pages, 209 elements, and every one of them named.** 54
+are the 27 marks and their `<use>` children growing 14 to 18 at 380px, which is the decision
+being visible. 155 are `padding`, `display` and the two flex alignments, on boxes of fixed
+size holding one centred child or nothing at all. No box moved. No colour changed.
+
+    41 the atom map   7 control atom(s) in 20 file-slot(s): distance 13, and it goes to 0
+                      navitem     1544  4 kind(s), 4 file(s)
+                      chip        1358  3 kind(s), 4 file(s)
+                      button       911  7 kind(s), 6 file(s)
+                      iconbutton   836  5 kind(s), 1 file(s)   <- closed
+                      outcome      272  3 kind(s), 3 file(s)
+                      tab           36  1 kind(s), 1 file(s)
+                      switch         3  1 kind(s), 1 file(s)
+
+**One atom, 836 placements, five faces, one file** - and the five faces are the answer to the
+question this document opened with. They are not five variations on a circle. Each one is an
+answer to the GROUND it stands on: nothing (the header), a photograph under a scrim (an
+overlay head), a caption row beside a picture (no ground at all, the mark alone answers), an
+ordinary surface in a corner (a tile, so three of them read as a toolbar rather than a
+control group), and a lifted card at 24 (the same circle, smaller). A face is a surface, and
+that is worth carrying into the four migrations left.
+
+**What the vitrine cost, and it was not free.** The three tiles in `ui-kit/kit.html` carry no
+class, because `.ed-actions button` had reached them by tag. The helper that adopts an atom
+matches a class, so it adopted 27 controls in the product and none of the three in the stand
+that exists to show what the component is, and no gate noticed. `ui-kit/docs/defects.md` row
+76. `outcome` will ask this again.
+
+**And the stand was showing one face out of five.** Found while checking the above: the
+iconbtn page staged the balance pill and nothing else, so four of the five faces this atom
+now owns had no picture on the page that is supposed to BE the picture. Each of them already
+stands in a specimen somebody else owns, so the fix is four words in the curation:
+`dialog-shared`, `card-binary`, `toast` and `event-detail` are now `also` iconbtn, and each
+face is shown in the surface it was designed against, which is the only place it means
+anything. Containment is read from `component` and not from `also`, so the level is unmoved
+and the atom is still an atom.
+
+---
+
 ## The decision this document still does not settle
 
 - **Is a social mark a `navitem` or an `iconbutton`?** It is an `<a>` with an icon and no

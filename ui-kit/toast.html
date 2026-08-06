@@ -49,7 +49,7 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/toast.css</span>
-      <span class="tk-badge">14 rules</span>
+      <span class="tk-badge">9 rules</span>
       <span class="tk-badge">8 classes</span>
       <span class="tk-badge">1 screens</span>
     </div>
@@ -70,10 +70,9 @@ push();});})();</script>
 <ul class="tk-doc-list"><li><code>.toast-group</code> - the stack. It exists so the second message has a defined place, which is the part a person only notices when it is missing.</li><li><code>.toast</code> - one message: the quiet card, its mark and its text.</li><li><code>.toast-inner</code> - the row inside it.</li><li><code>.toast-msg</code> - the sentence. One sentence, because a toast that needs two is a <code>notice</code>.</li><li><code>.toast-close</code> - the dismiss, and the only control in the component.</li><li><code>.toast-error</code> - the error kind, which takes the outcome red on its mark and its edge and nowhere else.</li></ul>
   </section>
   <section class="tk-sec" id="states">
-    <h2 data-n="04">States, as they measure</h2>
-    <p class="tk-note">One block per distinct face. Rest says what the face IS; every row under it says only what that state MOVES.</p>
-    <details class="tk-how"><summary>How this is read</summary><p class="tk-note">The frames above are the rendering; this is the reading of them. Every number was taken in a browser with a REAL pointer, a real Tab and the mouse button really held down (<code>ui-kit/_verify/states.cjs</code>), because a hover value is the cascade resolved and cannot be read out of a declaration. Nothing here is a state faked with a stand class. Two elements that measure the same in all four states in both themes are one answer, however many screens carry them, and that grouping is computed rather than chosen. The ring is the tenth value and it joined on 2026-08-05: <code>outline</code> is drawn outside the border box, so it is not the face in the strict sense, and for a stage this page said so and reported that focus moves nothing on 93 groups, which is the one state whose whole content it was not reading. The numbers go stale the moment a rule changes, so each block records the files it was measured from and <code>python3 ui-kit/_states.py</code> fails when their bytes move.</p></details>
-<figure class="ck-gal"><figcaption class="ck-gal-head"><b>button.toast-close</b><span class="ck-w">on the bare canvas</span><a href="#sp-toast">hover it in the frame above</a><a href="specimens/toast.html" target="_blank" rel="noopener">the specimen</a></figcaption><p class="tk-note ck-gal-covers">Same answer, measured across all four states in both themes: <code>button.kit-here.toast-close</code>.</p><p class="ck-gal-cap">The dismiss, at rest, hovered, held and focused. Quiet at rest so the message reads first; the ground answers the pointer and the mark does not move. It is the only interactive thing in the component, which is the point: a toast has one control and it is the way out.</p><details class="ck-nums"><summary><span class="ck-nums-say">hover moves edge and ink; press moves ground, edge and ink; focus moves ring</span><span class="ck-nums-open">the ten values, both themes</span></summary><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th><th>what the browser measured</th></tr></thead><tbody><tr><td class="tk-role">rest</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgba(0, 0, 0, 0)"></i><code>rgba(0, 0, 0, 0)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(43, 47, 56)"></i><code>rgb(43, 47, 56)</code></span><span class="ck-fx"><em>edge width</em><code>1px</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(164, 157, 143)"></i><code>rgb(164, 157, 143)</code></span><span class="ck-fx"><em>corner</em><code>100px</code></span></td></tr><tr><td class="tk-role">hover</td><td class="ck-fx-cell"><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgba(199, 162, 78, 0.45)"></i><code>rgba(199, 162, 78, 0.45)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(43, 47, 56)"></i><code>rgb(43, 47, 56)</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(237, 231, 218)"></i><code>rgb(237, 231, 218)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(164, 157, 143)"></i><code>rgb(164, 157, 143)</code></span></td></tr><tr><td class="tk-role">held down</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(25, 27, 31)"></i><code>rgb(25, 27, 31)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgba(0, 0, 0, 0)"></i><code>rgba(0, 0, 0, 0)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgba(199, 162, 78, 0.45)"></i><code>rgba(199, 162, 78, 0.45)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(43, 47, 56)"></i><code>rgb(43, 47, 56)</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(237, 231, 218)"></i><code>rgb(237, 231, 218)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(164, 157, 143)"></i><code>rgb(164, 157, 143)</code></span></td></tr><tr><td class="tk-role">focused by keyboard</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-wide"><em>ring arrives</em><code>solid 2px rgb(215, 172, 83) 2px</code></span></td></tr></tbody></table></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><table class="tk-tbl ck-face-tbl"><thead><tr><th>state</th><th>what the browser measured</th></tr></thead><tbody><tr><td class="tk-role">rest</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgba(0, 0, 0, 0)"></i><code>rgba(0, 0, 0, 0)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgb(172, 170, 164)"></i><code>rgb(172, 170, 164)</code></span><span class="ck-fx"><em>edge width</em><code>1px</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(86, 80, 66)"></i><code>rgb(86, 80, 66)</code></span><span class="ck-fx"><em>corner</em><code>100px</code></span></td></tr><tr><td class="tk-role">hover</td><td class="ck-fx-cell"><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgba(199, 162, 78, 0.6)"></i><code>rgba(199, 162, 78, 0.6)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(172, 170, 164)"></i><code>rgb(172, 170, 164)</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(33, 31, 25)"></i><code>rgb(33, 31, 25)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(86, 80, 66)"></i><code>rgb(86, 80, 66)</code></span></td></tr><tr><td class="tk-role">held down</td><td class="ck-fx-cell"><span class="ck-fx"><em>ground</em><i class="ck-sw" style="background:rgb(243, 241, 235)"></i><code>rgb(243, 241, 235)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgba(0, 0, 0, 0)"></i><code>rgba(0, 0, 0, 0)</code></span><span class="ck-fx"><em>edge</em><i class="ck-sw" style="background:rgba(199, 162, 78, 0.6)"></i><code>rgba(199, 162, 78, 0.6)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(172, 170, 164)"></i><code>rgb(172, 170, 164)</code></span><span class="ck-fx"><em>ink</em><i class="ck-sw" style="background:rgb(33, 31, 25)"></i><code>rgb(33, 31, 25)</code> <span class="ck-fx-to">from</span> <i class="ck-sw" style="background:rgb(86, 80, 66)"></i><code>rgb(86, 80, 66)</code></span></td></tr><tr><td class="tk-role">focused by keyboard</td><td class="ck-fx-cell"><span class="ck-fx ck-fx-wide"><em>ring arrives</em><code>solid 2px rgb(104, 79, 24) 2px</code></span></td></tr></tbody></table></div></div></details></figure>
+    <h2 data-n="04">States</h2>
+    <p class="tk-note">Hover and focus are not faked here with a stand class. The frames above are live, so hover them; what follows is what the file says will move.</p>
+<p class="tk-note"><b>No states: not interactive.</b> Declared in <code>ui-kit/_levels.py</code>, and gate 25 holds it: a message, a lift and a place for one control. The dismiss went to iconbtn on 2026-08-06 with everything that answered a pointer, and the one declaration left here is `flex:0 0 auto`, which says the message takes the slack. A toast itself is not pressed: it is read and it leaves. A state belongs to what a person can press or type into, and inventing one here would inflate the system the way an empty semantic role would.</p>
   </section>
   <section class="tk-sec" id="when">
     <h2 data-n="05">When to use</h2>
@@ -88,7 +87,7 @@ push();});})();</script>
   <section class="tk-sec" id="roles">
     <h2 data-n="07">Roles it reads</h2>
     <p class="tk-note">Colour comes in only through these. Change one on <a href="tokens.html">the token page</a> and it changes here and on every screen at once.</p>
-<div class="ck-roles"><span class="ck-role"><i style="background:var(--bevel-notice)"></i><code>--bevel-notice</code></span><span class="ck-role"><i style="background:var(--bg-card-quiet)"></i><code>--bg-card-quiet</code></span><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--bg-pressed)"></i><code>--bg-pressed</code></span><span class="ck-role"><i style="background:var(--border-brass-hover)"></i><code>--border-brass-hover</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--border-notice)"></i><code>--border-notice</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--shadow-ink)"></i><code>--shadow-ink</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-muted)"></i><code>--text-muted</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
+<div class="ck-roles"><span class="ck-role"><i style="background:var(--bevel-notice)"></i><code>--bevel-notice</code></span><span class="ck-role"><i style="background:var(--bg-card-quiet)"></i><code>--bg-card-quiet</code></span><span class="ck-role"><i style="background:var(--bg-control)"></i><code>--bg-control</code></span><span class="ck-role"><i style="background:var(--border-hairline)"></i><code>--border-hairline</code></span><span class="ck-role"><i style="background:var(--border-notice)"></i><code>--border-notice</code></span><span class="ck-role"><i style="background:var(--edge-groove-light)"></i><code>--edge-groove-light</code></span><span class="ck-role"><i style="background:var(--shadow-ink)"></i><code>--shadow-ink</code></span><span class="ck-role"><i style="background:var(--text-brass)"></i><code>--text-brass</code></span><span class="ck-role"><i style="background:var(--text-primary)"></i><code>--text-primary</code></span></div>
   </section>
   <section class="tk-sec" id="classes">
     <h2 data-n="08">Classes</h2>
@@ -108,10 +107,10 @@ push();});})();</script>
   <section class="tk-sec" id="css">
     <h2 data-n="11">What the file says</h2>
     <p class="tk-note">The selectors and the css, for a person about to edit them. To change this component, edit <code>components/toast.css</code>; to change a value it reads, edit the role in <code>components/tokens.css</code>.</p>
-<details class="ck-src"><summary>every state rule, and what it moves</summary><table class="tk-tbl"><thead><tr><th>selector</th><th>what moves</th></tr></thead><tbody><tr><td class='tk-role'>.app-case .toast-close:hover</td><td class='ck-decl'>border-color:var(--border-brass-hover);color:var(--text-primary)</td></tr><tr><td class='tk-role'>.app-case .toast-close:active</td><td class='ck-decl'>background:var(--bg-pressed)</td></tr></tbody></table><h3 class="tk-subh">The tokens these states read, on both grounds</h3><p class="tk-note">Neither panel is a screenshot. Each carries <code>data-theme</code> itself, so the token resolves inside it and a role that was given a value in only one theme shows up here as a control that does not move.</p><div class="tk-theme-grid"><div class="tk-theme-fig" data-theme="dark"><b>Vault</b><div class="ck-st-tok"><code>--border-brass-hover</code><span class="ck-st-row"><span class="ck-st-chip ck-line" style="border-color:var(--border-brass-hover)">Confirm bet</span><em>the edge this state draws</em></span></div><div class="ck-st-tok"><code>--text-primary</code><span class="ck-st-row"><span class="ck-st-chip ck-ink" style="color:var(--text-primary)">Confirm bet</span><em>the label, on the ground this state puts it on</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip ck-ground" style="background:var(--bg-pressed)">Confirm bet</span><em>the ground the control settles onto</em></span></div></div><div class="tk-theme-fig" data-theme="light"><b>Daylight</b><div class="ck-st-tok"><code>--border-brass-hover</code><span class="ck-st-row"><span class="ck-st-chip ck-line" style="border-color:var(--border-brass-hover)">Confirm bet</span><em>the edge this state draws</em></span></div><div class="ck-st-tok"><code>--text-primary</code><span class="ck-st-row"><span class="ck-st-chip ck-ink" style="color:var(--text-primary)">Confirm bet</span><em>the label, on the ground this state puts it on</em></span></div><div class="ck-st-tok"><code>--bg-pressed</code><span class="ck-st-row"><span class="ck-st-chip ck-ground" style="background:var(--bg-pressed)">Confirm bet</span><em>the ground the control settles onto</em></span></div></div></div></details><details class="ck-src"><summary>components/toast.css</summary><pre>/* components/toast.css
+<details class="ck-src"><summary>components/toast.css</summary><pre>/* components/toast.css
    Component: toast. Classes: .toast, .toast-close, .toast-error, .toast-group, .toast-inner, .toast-msg.
 
-   Reads: --bevel-notice, --bg-card-quiet, --bg-control, --bg-pressed, --border-brass-hover, --border-hairline, --border-notice, --edge-groove-light, --shadow-ink, --text-brass, --text-muted, --text-primary
+   Reads: --bevel-notice, --bg-card-quiet, --bg-control, --border-hairline, --border-notice, --edge-groove-light, --shadow-ink, --text-brass, --text-primary
    Stand:  ui-kit/toast.html
    Stands on: 1 ui-visual screens (toasts.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -125,44 +124,29 @@ push();});})();</script>
 .app-case .toast{display:flex;align-items:center;gap:var(--space-12);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);padding:var(--space-12) var(--space-12);box-shadow:0 18px 40px -24px var(--shadow-ink),inset 0 1px 0 var(--edge-groove-light)}
 .app-case .toast .ic-sm{width:var(--icon-18);height:var(--icon-18);flex:0 0 var(--icon-18);stroke:var(--text-brass);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .app-case .toast-msg{flex:1;color:var(--text-primary);font-size:var(--text-14);font-weight:var(--weight-medium)}
-/* THE THIRD CLOSE JOINS THE OTHER TWO, and what it joins is the SHAPE and not the
-   ground. Measured 2026-08-04 over the whole painted tree: the product has three
-   controls that close an overlay, and two of them are the same 32px pill with a
-   drawn X. This one was a 24px box at 10px radius carrying the LETTER x at 12px,
-   which is `ui-kit/docs/defects.md` row 45 in its smallest instance: a glyph with
-   its own baseline standing where a mark should.
-   WHAT MOVES IS THE RADIUS AND THE MARK. The pill is the shape a close has in this
-   product. The X is two bars, the same geometry dialog.css draws, so the control
-   stops depending on a character that sits off centre by its own descender.
-   WHAT DOES NOT MOVE IS THE GROUND, and that is the point of measuring rather than
-   copying. The other two closes stand on a lit sheet header and take a 34 per cent
-   scrim, which is a ground for a control on a photograph; this one stands on a
-   quiet card and keeps its hairline on transparent. Same shape, same mark, the
-   ground each one's surface actually needs.
-   The size stays 24 here and it is not right yet: three of these clear 24x24 and
-   none clears 44. That is one question for the whole system, not a toast one, and
-   `ui-kit/docs/backlog.md` S39 holds it.
-   currentColor AND NOT --control-knob, which is what dialog.css uses: the hover
-   below already moves `color`, so the mark moves with it for free and the two
-   values cannot drift apart.
-   THE BAR IS --size-8 AND NOT --size-12, which is what dialog.css draws, because
-   the circle here is 24 and there it is 32: 12 in 32 is a 37 per cent mark and 12
-   in 24 would be 50, an X pressed against its own edge. 8 in 24 is 33. No new
-   primitive was minted for the exact ratio - one control is not a level. */
-.app-case .toast-close{flex:0 0 auto;position:relative;width:var(--size-24);height:var(--size-24);border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:transparent;color:var(--text-muted);font-size:0;cursor:pointer;line-height:var(--leading-none);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
-.app-case .toast-close::before,.app-case .toast-close::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 4px);width:var(--size-8);height:var(--size-2);background:currentColor;border-radius:var(--radius-2)}
-.app-case .toast-close::before{transform:rotate(45deg)}
-.app-case .toast-close::after{transform:rotate(-45deg)}
-.app-case .toast-close:hover{border-color:var(--border-brass-hover);color:var(--text-primary)}
-/* Dismiss is an icon button on a transparent ground, so it presses the way every quiet control
-   in the system presses and has no private idea of its own. It stays --bg-pressed on the error
-   toast too: a toast here carries no green or red by decision, and a close button that reddened
-   under the thumb would put the feedback colour on the one part of the toast that is not the
-   feedback. Equal specificity to the hover above (0,3,0 both), so source order decides and this
-   has to stay after it. The toast is lifted, the button inside it is not, so there is no outer
-   shadow to drop. Nothing disables it: a toast you cannot dismiss is not a state this product
-   has, so there is no disabled skin and no guard pretending there is one. */
-.app-case .toast-close:active{background:var(--bg-pressed)}
+/* THE DISMISS LEFT THIS FILE ON 2026-08-06 and there is nothing left here to say
+   about it, which is the test the migration is passing: a toast is a message and
+   a lift and a place for one control, and the control is not the toast's to draw.
+   It is `class="icon-btn icon-btn-small toast-close"` on the element, its face is
+   the atom's fifth, and everything that was written here about the pill, the two
+   drawn bars, the transparent ground and the 24 that clears 2.5.8 and not 2.5.5
+   moved WITH the rules rather than staying behind as a second copy that could
+   drift. components/iconbtn.css.
+   ONE THING CHANGED ON THE WAY and it was decided rather than carried:
+   the hover. This control used to brighten its own edge to --border-brass-hover,
+   where the 388 outlined circles in the product tint their ground and take a
+   --color-action edge. Four against 388, so the four were the divergence.
+   `ui-kit/docs/backlog.md` S44 asked, and it is answered.
+   NOTHING ABOUT THE 24 WAS DECIDED HERE. Three closes in the product clear
+   24x24 and none clears 44; that is one question for the system rather than a
+   toast one, and S39 still holds it.
+   ONE DECLARATION STAYS, and it is the same one dialog.css kept: how the control
+   sits in the row this file lays out. `flex:0 0 auto` says the message takes the
+   slack and the dismiss does not, which is a fact about a two-item flex row and
+   not about what an icon button looks like. That is the whole line the atom
+   migration is drawn on, and it is why `.toast-close` is still a name a
+   stylesheet reads. */
+.app-case .toast-close{flex:0 0 auto}
 .app-case .toast.toast-error{border-color:var(--border-notice);background:var(--bg-control);box-shadow:0 22px 46px -22px var(--shadow-ink),inset 0 1px 0 var(--bevel-notice)}
 .app-case .toast.toast-error .ic-sm{width:var(--icon-22);height:var(--icon-22);flex:0 0 var(--icon-22);stroke:var(--text-primary);stroke-width:2.4}
 .app-case .toast.toast-error .toast-msg{color:var(--text-primary);font-weight:var(--weight-semibold)}

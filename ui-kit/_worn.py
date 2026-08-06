@@ -337,6 +337,19 @@ KINDS = [
      "dialog", "action", "chrome of the overlay it closes"),
     ("bookmark, on a card", {"bookmark-btn"}, set(),
      "card", "action", "it is part of the card's own furniture and sized to it"),
+    # THE LAST TWO JOINED THIS BLOCK ON 2026-08-06, which is the day the last two
+    # icon-only kinds adopted the atom and `iconbutton` reached one file. The row
+    # below is the last one that has to be read for what it is rather than where
+    # it sits, and it is here for the same reason as the four above it.
+    ("close, a toast", {"toast-close"}, set(),
+     "toast", "action", "chrome of the overlay it closes"),
+    # matched on the PARENT and not on `.ed-act`, which is the class the buttons
+    # carry as the detail script's hook. Matching the parent means this census
+    # goes on naming them the day that class is deleted. It has to sit above the
+    # generic row all the same: the buttons now carry `.icon-btn` themselves, and
+    # a reader that returns on the first match would hand all 27 to the header.
+    ("an event's action row", set(), {"ed-actions"},
+     "event-detail", "action", "favourite, comments and share sit under the question and belong to it"),
 
     ("icon only, in the header", {"icon-btn", "bal-add", "bal-swap"}, set(),
      "header", "action", "the header owns its own row of marks, and their size is the header's rhythm"),
@@ -353,15 +366,6 @@ KINDS = [
      "betpanel", "selector", "it carries the odds and the selection, which is panel state rather than an action"),
     ("the sheet grab", {"sheet-grab"}, set(),
      "betpanel", "action", "a real control that is also the drawer's own handle"),
-    ("close, a toast", {"toast-close"}, set(),
-     "toast", "action", "chrome of the overlay it closes"),
-    # matched on the PARENT and not on `.ed-act`, which is the class the buttons
-    # carry and which no stylesheet reads: the rule that paints them is
-    # `.ed-actions button`, and the class is dead markup on 27 placements in each
-    # tree. `ui-kit/docs/backlog.md` S28. Matching the parent means this census
-    # goes on naming them the day that class is deleted.
-    ("an event's action row", set(), {"ed-actions"},
-     "event-detail", "action", "favourite, comments and share sit under the question and belong to it"),
     # `.subcat` LEFT THIS ROW ON 2026-08-06, and the measurement that was
     # supposed to start the chip migration is what took it out. A sub-category
     # control is `<nav aria-label="Sub-categories">` holding buttons that

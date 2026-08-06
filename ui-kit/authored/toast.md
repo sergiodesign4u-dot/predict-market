@@ -43,4 +43,6 @@ Seen: `voice/docs/microcopy.md` Step 15, where the toast copy was drafted alongs
 
 ## States
 
-- `button.toast-close @toast` - The dismiss, at rest, hovered, held and focused. Quiet at rest so the message reads first; the ground answers the pointer and the mark does not move. It is the only interactive thing in the component, which is the point: a toast has one control and it is the way out.
+None, and it is declared in `ui-kit/_levels.py` STATIC. A toast is read and then it leaves; the one thing in it a person can press is the dismiss, and on 2026-08-06 the dismiss went to `components/iconbtn.css` as the atom's fifth face. This file keeps `flex:0 0 auto` on it, which says the message takes the slack and the control does not, and that is a fact about a two-item flex row rather than about what an icon button looks like.
+
+One thing changed on the way out and it was decided rather than carried: the hover. This control used to brighten its own edge where the other 388 outlined circles in the product tint their ground and take a brass edge. Four against 388, so the four were the divergence. `ui-kit/docs/backlog.md` S44 asked it and it is answered; the picture is on the iconbtn page.

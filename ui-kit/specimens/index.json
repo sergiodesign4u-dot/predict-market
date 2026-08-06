@@ -94,7 +94,8 @@
   "width": 440,
   "also": [
    "oddsbar",
-   "yesno"
+   "yesno",
+   "iconbtn"
   ],
   "note": "The photo is keyed off the card position in the grid, so a card shown alone always gets the politics image.",
   "source": "kit.html / cards / Event cards",
@@ -210,7 +211,8 @@
   "width": 780,
   "also": [
    "input",
-   "notice"
+   "notice",
+   "iconbtn"
   ],
   "state": "Both carry the open attribute. In the product they are opened with showModal(), which is why the staging sheet puts them back in the flow.",
   "source": "kit.html / dialogs / Shared dialogs",
@@ -277,6 +279,9 @@
   "component": "toast",
   "title": "Toasts",
   "width": 440,
+  "also": [
+   "iconbtn"
+  ],
   "source": "kit.html / feedback / Toasts",
   "rewrites": 0
  },
@@ -304,7 +309,8 @@
   "also": [
    "betpanel",
    "oddsbar",
-   "chart"
+   "chart",
+   "iconbtn"
   ],
   "source": "kit.html / detail / Event Detail",
   "rewrites": 0

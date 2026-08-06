@@ -277,6 +277,19 @@ STATIC = {
                "to button.css where the rest of that family already was (backlog S11), so "
                "the bar answers no pointer because a bar is not a control. This entry is "
                "the same shape as notice above and for the same reason",
+    # TWO ENTRIES ADDED 2026-08-06, AND BOTH WERE EARNED RATHER THAN CLAIMED.
+    # Neither file went quiet by losing a state; each went quiet by losing a
+    # CONTROL to components/iconbtn.css, and what is left in both is a surface
+    # and a placement. That is the shape this list already had: `notice` and
+    # `account` are here for exactly the same reason, one migration earlier.
+    "event-detail": "the head, the facts strip and the sections of one event. The three "
+                    "marks in the corner of the head went to iconbtn on 2026-08-06 and "
+                    "took their hover, their press and their favourited state with them; "
+                    "what is left is where that row sits, and a row is not a control",
+    "toast": "a message, a lift and a place for one control. The dismiss went to "
+             "iconbtn on 2026-08-06 with everything that answered a pointer, and the "
+             "one declaration left here is `flex:0 0 auto`, which says the message "
+             "takes the slack. A toast itself is not pressed: it is read and it leaves",
     "options": "the multi-outcome list. The row is a <div>; what a person presses is "
                "the .yesno pair inside it, which has its own states. The row ALSO "
                "carries a JS click handler and no keyboard path, which is a defect "

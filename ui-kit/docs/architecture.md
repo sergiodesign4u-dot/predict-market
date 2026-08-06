@@ -384,7 +384,7 @@ usually declared.
 | `TRUE_ATOM` (5) | the other answer to an empty containment: the map saw nothing because there is nothing, so this component really is one control. `button`, `oddsbar`, `loadmore`, `input`, `toggle` | four are permanent. `loadmore` is a debt of a different kind: the level is right and the COMPONENT should not exist, because it duplicates the catnav chip. Backlog S41 |
 | `ORDER_BREAK` (2) | a containment cycle, dropped for ORDERING only and kept for the level, with the direction decided by which file restyles the other's insides | both name a backlog item. A cycle caused by a class in the wrong file closes when the class moves |
 | `SPECIMEN_DEBT` (10) | a stand that is short for a KNOWN reason: a page plate inside a component file, two components on one element, `.pos` used as a plate | **every entry is a debt**. Each names what closes it, and closing means splitting the component, never widening the line |
-| `STATIC` (11) | the components that deliberately get NO interaction states: a bar drawn to a width, a table of read-only figures, a grid whose every control belongs to another file | ten are permanent by that reasoning. One, `options`, records a markup defect it cannot fix: the row is a `<div>` with a click handler and no keyboard path |
+| `STATIC` (13) | the components that deliberately get NO interaction states: a bar drawn to a width, a table of read-only figures, a grid whose every control belongs to another file | twelve are permanent by that reasoning, and two of the twelve were EARNED on 2026-08-06: `event-detail` and `toast` went quiet by losing a control to `iconbtn`, not by losing a state. One, `options`, records a markup defect it cannot fix: the row is a `<div>` with a click handler and no keyboard path |
 | `NO_PRESS` (1) | the third answer to gate 25, which knew two: a control that has a hover and genuinely cannot have a press. `input` is a text field, and the pointer going down on one moves the caret rather than pressing anything | nothing. It is a fact about the control, and the gate still requires the hover, so the row cannot be used to skip a state |
 
 **The counts in that table are typed, and four of them had drifted** by the time gate 40 was
@@ -628,7 +628,7 @@ component, so the next person reads `class="ed-chart"` off a screen, goes lookin
 something else. It is gate 14's dead selector from the other end: there a rule had no element, here
 an element has no rule.
 
-**Seven of the 431 worn classes have no rule**, and `_adoption.UNSTYLED` declares each with one of
+**Seven of the 437 worn classes have no rule**, and `_adoption.UNSTYLED` declares each with one of
 three reasons. *A hook*: a script in the page queries it, so it is markup a machine reads and must
 not be deleted (`.ed-act`, `.ed-chart`, `.ed-chart-multi`, `.rules-panel`). *Excluded*:
 `button.css` recolours `.prov-x` and `.prov-apple` to the brand mark and deliberately leaves

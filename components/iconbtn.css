@@ -1,7 +1,7 @@
 /* components/iconbtn.css
-   Component: iconbtn. Classes: .bal-add, .bal-swap, .icon-btn, .icon-btn-bare, .icon-btn-photo, .icon-btn-ring-strong.
+   Component: iconbtn. Classes: .bal-add, .bal-swap, .icon-btn, .icon-btn-bare, .icon-btn-photo, .icon-btn-ring-strong, .icon-btn-small, .icon-btn-tile.
 
-   Reads:
+   Reads: --bevel-strong, --bg-control, --bg-pressed, --border-hairline, --color-action, --color-action-lit, --icon-brass, --icon-quiet, --line-on-photo, --line-on-photo-hover, --scrim-photo, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45
    Stand:  ui-kit/iconbtn.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -32,6 +32,14 @@
    only, in the header" carrying the words "How it works" on 105 screens. It is a
    labelled press, so it is `button`, and it left the row on the same day for the
    reason the logo left it before: the row described WHERE a control sits.
+
+   AND IT CLOSED THE SAME DAY. All five kinds adopted, 836 placements, five faces,
+   ONE FILE: the first atom on the map to reach zero, and the distance fell from
+   18 to 13. Each face turned out to be an answer to the GROUND it stands on and
+   not a variation on a circle, which is the thing worth carrying into the four
+   atoms still to migrate. Each adoption was measured on its own before it was
+   kept, and two of them were REFUSED for a day because they could not be made
+   without answering a design question. The record is `ui-kit/docs/atoms.md`.
    ============================================================================ */
 
 .icon-btn{padding:var(--space-4);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;line-height:0}
@@ -131,12 +139,40 @@
    photograph and a transparent tile would vanish into it.
 
    SMALL, in a toast. `.toast-close` is the circle at 24 and NOT a fourth face:
-   transparent, hairline, pill, exactly like the header's. It disagrees on one
-   thing, its hover, which brightens the EDGE where the header's tints the
-   GROUND. Four placements against 388, so the header's is the system's and this
-   is the divergence; it is carried here rather than corrected, because
-   correcting it changes four elements on a screen and that is a decision rather
-   than a partition. ui-kit/docs/backlog.md S44. */
+   transparent, hairline, pill, exactly like the header's. It disagreed on one
+   thing, its hover, which brightened the EDGE where the header's tints the
+   GROUND. Four placements against 388, so the header's was the system's and this
+   was the divergence, and it is CORRECTED here rather than carried.
+
+   THE THREE VALUES S44 HELD BACK WERE ANSWERED ON 2026-08-06, and the two faces
+   below are the re-apply. The two controls could not adopt the atom at zero
+   because neither had ever set `padding` or `display`, so both were wearing the
+   user agent's `1px 6px` and `display:block`, and NOBODY HAD CHOSEN EITHER. That
+   is why they were reverted once and why they are here now: a value the browser
+   picked is not a value a partition may quietly keep, and it is not a value a
+   partition may quietly change either. Someone decided, and this is what was
+   decided.
+
+     THE MARK ON THE ACTION ROW IS 18. `.ed-actions .ic` has said `--icon-18`
+     since it was written, and under 560 the tile is 28: 28 less the 12 of UA
+     padding and the 2 of border leaves a 14px content box, so an 18px mark was
+     being flex-shrunk to 14 by a value nobody typed. The atom's `--space-4`
+     leaves exactly 18. The file's own number is now the number on screen, and
+     this is the ONE thing in this pass that a person can see moving.
+
+     ITS INK STAYS `--text-muted`. The atom hands a sprite `--text-primary`,
+     which is right for the header's row, and this is a quiet toolbar in the
+     corner of a photograph, so the face takes the ink back. `color:inherit` on
+     the sprite rather than a repeat of the value, so the mark follows the
+     button through hover and through the favourited state without a third copy
+     of either colour.
+
+     THE TOAST DISMISS HOVERS LIKE EVERY OTHER OUTLINED CIRCLE. 388 placements
+     tint the ground and take a brass edge; 4 brightened the edge alone. The 4
+     now do what the 388 do, which is the whole reason the atom exists. It keeps
+     its own ink lift, because that was never the question: it rests at
+     `--text-muted` where the header rests at `--text-primary`, so it has
+     somewhere to go and the header does not. */
 .icon-btn.icon-btn-bare{width:auto;height:auto;padding:0;background:transparent;border:0;border-radius:0;min-width:var(--control-44);min-height:var(--control-44);flex:0 0 auto;margin:calc((var(--control-44) - var(--icon-16)) / -2)}
 .icon-btn.icon-btn-bare .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--icon-quiet)}
 .icon-btn.icon-btn-bare .ic:has(use){color:var(--icon-quiet)}
@@ -149,9 +185,60 @@
 .icon-btn.icon-btn-bare[aria-pressed="true"] .ic{fill:var(--icon-brass);stroke:var(--icon-brass)}
 .icon-btn.icon-btn-bare[aria-pressed="true"] .ic:has(use){color:var(--icon-brass)}
 
+/* `line-height:inherit` for the same reason the photo face takes it back: a
+   flex box holding one svg and no text node renders identically at 0 and at
+   normal, and a computed value that moves for no drawn reason is a diff that
+   buries the one drawn reason this pass has. */
+.icon-btn.icon-btn-tile{border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);line-height:inherit;transition:color var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease}
+.icon-btn.icon-btn-tile .ic{width:var(--icon-18);height:var(--icon-18);fill:currentColor;stroke:none}
+.icon-btn.icon-btn-tile .ic:has(use){color:inherit}
+/* The tile keeps its own hover and therefore has to say so twice: the atom's
+   brass tint has to be put back to this face's ground, or the specificity of a
+   two-class selector would leave it standing. And the press has to be repeated
+   at the face's own weight, because the atom's `:active` is (0,2,0) and this
+   hover is (0,3,0), so a control held down under the pointer would have shown
+   the hover rather than the press. */
+.icon-btn.icon-btn-tile:hover{background:var(--bg-control);border-color:var(--bevel-strong);color:var(--text-primary)}
+.icon-btn.icon-btn-tile:active{background:var(--bg-pressed)}
+/* The favourited star, and it deliberately outranks both. Its brass leaving
+   under the finger would read as the favourite coming off before the click had
+   said so. */
+.icon-btn.icon-btn-tile[data-fav][aria-pressed="true"]{color:var(--text-brass);border-color:var(--tint-brass-45);background:var(--tint-brass-09)}
+/* A SIZE IS THE CONTROL'S AND THE GAP BETWEEN THEM IS THE ROW'S, so this half
+   of the old media query came here and the other half stayed in
+   components/event-detail.css. 560 rather than the 640 the rest of the system
+   turns at, because what runs out on this row is the width of the event
+   question beside it, not a breakpoint. */
+@media(max-width:560px){
+  .icon-btn.icon-btn-tile{width:var(--size-28);height:var(--size-28)}
+}
+
+/* The X is drawn rather than fetched: two bars in currentColor, so the mark
+   moves with the ink and the two cannot drift apart. The bar is --size-8 and
+   not the 12 the sheet close uses, because that circle is 32 and this one is
+   24: 12 in 24 would be an X pressed against its own edge, 8 in 24 is a third.
+   Both bars are positioned against the PADDING box, which is the border box
+   less the border and has nothing to do with the atom's padding, so the atom's
+   4 moves neither of them. */
+.icon-btn.icon-btn-small{position:relative;width:var(--size-24);height:var(--size-24);font-size:0;color:var(--text-muted);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+.icon-btn.icon-btn-small::before,.icon-btn.icon-btn-small::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 4px);width:var(--size-8);height:var(--size-2);background:currentColor;border-radius:var(--radius-2)}
+.icon-btn.icon-btn-small::before{transform:rotate(45deg)}
+.icon-btn.icon-btn-small::after{transform:rotate(-45deg)}
+/* Ground and edge on hover are the atom's now, which is the S44 answer. This is
+   the ink lift alone, and it sets nothing else, so the atom's press still wins
+   the ground by source order the way it does for the circle upstairs. */
+.icon-btn.icon-btn-small:hover{color:var(--text-primary)}
+
 /* WCAG 2.5.5 is about a finger and not about a narrow window: a touch laptop at
    1280 needs the same 44 a phone does, so the floor is bound to the POINTER. A
-   fine pointer keeps 36, which clears 2.5.8 with room. */
+   fine pointer keeps 36, which clears 2.5.8 with room.
+   THREE FACES ARE EXCLUDED AND NONE OF THEM IS EXCUSED. The photo dismiss is
+   32, the tile is 28 under 560 and the toast dismiss is 24, so a floor of 44
+   would resize all three, and whether a dismiss or a corner toolbar should be
+   44 is `ui-kit/docs/backlog.md` S39's question. It is asked there, in daylight,
+   rather than answered here as a side effect of moving a rule between files.
+   `.icon-btn-bare` needs no exclusion: it sets the floor itself and pulls it
+   back out of the flow. */
 @media(pointer:coarse){
-  .icon-btn:not(.icon-btn-photo){min-width:var(--control-44);min-height:var(--control-44)}
+  .icon-btn:not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small){min-width:var(--control-44);min-height:var(--control-44)}
 }

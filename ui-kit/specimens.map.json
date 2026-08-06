@@ -229,7 +229,8 @@
       "component": "card",
       "also": [
         "oddsbar",
-        "yesno"
+        "yesno",
+        "iconbtn"
       ],
       "title": "Event card, binary (treatment B)",
       "width": 440,
@@ -353,7 +354,8 @@
       "component": "dialog",
       "also": [
         "input",
-        "notice"
+        "notice",
+        "iconbtn"
       ],
       "title": "Sign in and Add funds",
       "width": 780,
@@ -434,7 +436,10 @@
       "label": "Toasts",
       "component": "toast",
       "title": "Toasts",
-      "width": 440
+      "width": 440,
+      "also": [
+        "iconbtn"
+      ]
     },
     {
       "id": "trustbar-feed",
@@ -462,7 +467,8 @@
       "also": [
         "betpanel",
         "oddsbar",
-        "chart"
+        "chart",
+        "iconbtn"
       ],
       "title": "Content plate and bet panel",
       "width": 1120

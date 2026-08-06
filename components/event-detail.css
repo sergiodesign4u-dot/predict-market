@@ -1,7 +1,7 @@
 /* components/event-detail.css
    Component: event-detail. Classes: .arg-col, .args, .ed-actions, .ed-cat, .ed-facts, .ed-head, .ed-prob-big, .ed-q, .ed-section, .ed-thumb, .resolution, .resolved-panel, .rules-note.
 
-   Reads: --bevel-strong, --bg-control, --bg-pressed, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --outcome-no-figure, --outcome-yes-text, --text-brass, --text-brass-lit, --text-muted, --text-primary, --tint-brass-09, --tint-brass-45
+   Reads: --border-brass, --edge-groove-dark, --edge-groove-light, --outcome-no-figure, --outcome-yes-text, --text-brass-lit, --text-muted, --text-primary
    Stand:  ui-kit/event-detail.html
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -39,22 +39,17 @@
 .app-case .resolution strong{color:var(--text-primary)}
 .app-case .rules-note{margin:var(--space-12) 0 0;font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted)}
 .app-case .ed-actions{position:absolute;top:16px;right:18px;display:flex;gap:var(--space-8);z-index:var(--z-float)}
-.app-case .ed-actions button{width:var(--control-36);height:var(--control-36);display:inline-flex;align-items:center;justify-content:center;background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);color:var(--text-muted);cursor:pointer;transition:color var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease}
-.app-case .ed-actions button:hover{color:var(--text-primary);border-color:var(--bevel-strong)}
-/* The one hover in this file, and it is on the favourite and share pair in the corner of the head.
-   The file owns them outright: it gives them their ground, their edge and their ink, so it owes
-   them the press too. Icon buttons are quiet controls, flat at rest on --bg-control, so they settle
-   onto --bg-pressed with nothing to unlift. Equal specificity to the hover, so it sits after it.
-   The favourited star is not covered, on purpose: its [data-fav][aria-pressed="true"] ground below
-   out-specifies this the same way it already out-specifies the hover, and the brass tint leaving
-   under the finger would read as the favourite coming off before the click had said so. */
-.app-case .ed-actions button:active{background:var(--bg-pressed)}
-.app-case .ed-actions .ic{width:var(--icon-18);height:var(--icon-18);fill:currentColor;stroke:none}
-.app-case .ed-actions button[data-fav][aria-pressed="true"]{color:var(--text-brass);border-color:var(--tint-brass-45);background:var(--tint-brass-09)}
+/* THE THREE CONTROLS IN THAT ROW LEFT THIS FILE ON 2026-08-06, for
+   components/iconbtn.css, and what is above is everything this file may still
+   say about them: WHERE the row sits over the head. The tile face they wear is
+   the atom's fourth, they are `class="icon-btn icon-btn-tile ed-act"` on the
+   element, and the ground, the corner, the ink, the mark, the hover, the press
+   and the favourited state are all one file away now. `ui-kit/docs/atoms.md`
+   is why: a region may say where an icon button sits and may not say what one
+   looks like, and this file used to say both. */
 @media(max-width:560px){
   .app-case .ed-head{padding-right:100px}
   .app-case .ed-actions{top:12px;right:12px;gap:var(--space-4)}
-  .app-case .ed-actions button{width:var(--size-28);height:var(--size-28)}
 }
 .app-case .bet-panel.resolved-panel{display:block}
 .app-case .ed-facts{gap:var(--space-20);padding:var(--space-12) var(--space-20);border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light);font-family:var(--font-mono);font-size:var(--text-11);letter-spacing:.03em;text-transform:uppercase;color:var(--text-muted)}
