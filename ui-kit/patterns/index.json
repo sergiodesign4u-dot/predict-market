@@ -198,11 +198,13 @@
   "made": [
    "card",
    "yesno",
+   "iconbtn",
    "options"
   ],
   "via": {
    "card": ".card",
    "yesno": ".yesno",
+   "iconbtn": ".icon-btn",
    "options": ".options"
   },
   "own": [

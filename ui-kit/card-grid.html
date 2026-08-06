@@ -50,10 +50,10 @@ push();});})();</script>
     <div class="tk-badges">
       <span class="tk-badge">components/patterns/card-grid.css</span>
       <span class="tk-badge">23 screens</span>
-      <span class="tk-badge">3 components</span>
+      <span class="tk-badge">4 components</span>
       <span class="tk-badge">no specimen, by decision</span>
     </div>
-    <div class="tk-jump"><a href="patterns.html">All patterns</a><a href="card.html">card</a><a href="yesno.html">yesno</a><a href="options.html">options</a></div>
+    <div class="tk-jump"><a href="patterns.html">All patterns</a><a href="card.html">card</a><a href="yesno.html">yesno</a><a href="iconbtn.html">iconbtn</a><a href="options.html">options</a></div>
   </header>
 
   <section class="tk-sec" id="live">
@@ -76,7 +76,7 @@ push();});})();</script>
     to that component's page, because the answer to "how does this look" is there and not here: this
     file decides placement and nothing else.</p>
     <table class="tk-tbl ck-anat"><thead><tr><th>part</th><th>whose it is</th><th>what it does here</th></tr></thead><tbody><tr><td class='tk-role'>.grid</td><td class='tk-hex'><span class="ck-kind ck-kit">this pattern</span></td><td>The track. Three declarations: it is a grid, it stretches its items to equal height, and the columns are computed.</td></tr><tr><td class='tk-role'>.card</td><td class='tk-hex'><a href="card.html">card</a></td><td>What stands in it. The card decides nothing about where it stands, and the track decides nothing about what a card looks like.</td></tr></tbody></table>
-    <p class="tk-note"><b>Everything inside, read from the markup:</b> card (.card), yesno (.yesno), options (.options). The class in
+    <p class="tk-note"><b>Everything inside, read from the markup:</b> card (.card), yesno (.yesno), iconbtn (.icon-btn), options (.options). The class in
     brackets is what put each component in the list, through the same ownership map that computes
     the level and orders the cascade. A name here that surprises you is worth following: a class
     declared in the wrong file makes a pattern read as holding a component it has never seen.</p>

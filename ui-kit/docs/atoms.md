@@ -68,8 +68,8 @@ covered exactly once; the numbers add to its 5281.
 
 | Atom | What it is | It absorbs, and the count | Today |
 |---|---|---|---|
-| `button` | a press with a LABEL, that does a thing | the button family **710**, how it works **105**, post a comment **11**, load more **9**, cookie consent **3**, edit on the profile **1** = **839** | `.btn` already holds 710 of them, with emphasis, size and block. The other four are the same control redrawn in four files: same radius-10 or pill, same semibold label, same 44 floor |
-| `iconbutton` | a press whose whole content is a MARK | header icons **388**, sheet close **333**, bookmark on a card **84**, a comment's action **72**, an event's action row **27**, toast close **4** = **908** | six files, six names, one idea: a square or a disc sized to the finger with an icon in it. It is a separate atom from `button` and not a modifier of it, because it has no label to size and its whole box is a target |
+| `button` | a press with a LABEL, that does a thing | the button family **710**, how it works **105**, a comment's own action **72**, post a comment **11**, load more **9**, cookie consent **3**, edit on the profile **1** = **911** | `.btn` already holds 710 of them, with emphasis, size and block. The other four are the same control redrawn in four files: same radius-10 or pill, same semibold label, same 44 floor |
+| `iconbutton` | a press whose whole content is a MARK | header icons **388**, sheet close **333**, bookmark on a card **84**, an event's action row **27**, toast close **4** = **836** | six files, six names, one idea: a square or a disc sized to the finger with an icon in it. It is a separate atom from `button` and not a modifier of it, because it has no label to size and its whole box is a target |
 | `chip` | a label you PICK BETWEEN, that carries a value | category chip **815**, quick amount **480**, quiet chip in a rail **63** = **1358** | the largest family and the most divided. `components/chip.css` exists and holds 63. The differences are pill against radius-10, 13px against 12px, and the ground at rest, which are modifiers |
 | `tab` | a selector whose selection swaps a PANEL rather than carrying a value | the tab row **36** | its own atom since 2026-08-06, and the measurement recorded below is what made it one. `.ed-tablabel` and `.ptab-lbl` are the same control again as labels, so they join it when the non-button controls are counted |
 | `outcome` | the YES / NO pair, where the COLOUR states a result | YES/NO buttons **230**, the outcome side of a bet **40**, the hero's featured pair **2** = **272** | genuinely its own atom and must never fold into `chip`. `DESIGN.md` decides it: green and red are outcome semantics, brass is the brand, and an accent never borrows the win or lose colour |
@@ -262,6 +262,50 @@ harmless the moment a control adopted an atom: the generic `.icon-btn` row would
 claimed all 333 closes and `close, a sheet` would have gone idle, which is what gate 38 said
 out loud. A row naming a FACE is more specific than one naming the atom, so it comes first,
 and every kind that adopts an atom from here on joins that block.
+
+---
+
+## Three more adopted, one refused, and the distance falls 17 to 15
+
+**`.bookmark-btn` is `.icon-btn.icon-btn-bare`**, 84 placements, and it proved at **525
+snapshots, 0 differ** on the first try. The bare face is the one with no ground and no edge
+at all: it sits on a card's caption row beside a photograph, where a circle would be a
+second object competing with the picture, so what answers the pointer is the MARK. Its whole
+44 target is invisible and pulls itself back out of the flow, because an untouchable box
+that spreads the row it sits in is the atom's problem wherever it stands, not the card's.
+
+**`.cmt-actions button` is not an icon button, which is the fourth correction the map has
+taken from a reading.** The two controls in a comment's meta row are
+`<button><svg/>24</button>` and `<button>Reply</button>`: a mark beside a COUNT, and a word.
+Neither is icon-only. 72 placements moved to `button`.
+
+**`.ed-actions button` and `.toast-close` REFUSED, and the refusal is the useful part.**
+Both set no `padding` and no `display`, so both took the user agent's: **1px 6px, and
+`display:block`**. Adopting the atom hands them `padding:var(--space-4)` and
+`display:inline-flex`, and on the event action row that is visible: **the 18px mark was
+being squeezed to 14px wide by the 6px of UA padding**, so the atom un-squeezes it. 17,478
+boxes changed, and 270 marks changed colour as well, because the atom hands a sprite
+`--text-primary` where `.ed-actions` had handed it `--text-muted`.
+
+**None of those values was decided by a person**, and the bookmark is the control for the
+experiment: a face that WAS decided adopted the same atom at zero the same afternoon. Both
+faces are written and reverted, so the adoption is a re-apply once three questions have
+answers: is the event action mark 18 or 14, is it muted or primary, and is the toast
+dismiss the same hover as every other outlined icon button. `ui-kit/docs/backlog.md` S44.
+
+    41 the atom map   7 control atom(s) in 22 file-slot(s): distance 15, and it goes to 0
+                      navitem     1544  4 kind(s), 4 file(s)
+                      chip        1358  3 kind(s), 4 file(s)
+                      button       911  7 kind(s), 6 file(s)
+                      iconbutton   836  5 kind(s), 3 file(s)   <- was 6 files this morning
+                      outcome      272  3 kind(s), 3 file(s)
+                      tab           36  1 kind(s), 1 file(s)
+                      switch         3  1 kind(s), 1 file(s)
+
+**And the census learned the same lesson twice in one day.** Its reader returns on the first
+matching row, so `bookmark, on a card` went idle the moment its elements also carried
+`.icon-btn`, exactly as `close, a sheet` had that morning. Every kind that adopts an atom
+moves into the specific block above the generic one, and gate 38 is what says so.
 
 ---
 

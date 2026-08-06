@@ -335,6 +335,8 @@ KINDS = [
     # census stopped reporting one control as two kinds on two pages.
     ("close, a sheet", {"sheet-close"}, set(),
      "dialog", "action", "chrome of the overlay it closes"),
+    ("bookmark, on a card", {"bookmark-btn"}, set(),
+     "card", "action", "it is part of the card's own furniture and sized to it"),
 
     ("icon only, in the header", {"icon-btn", "bal-add", "bal-swap"}, set(),
      "header", "action", "the header owns its own row of marks, and their size is the header's rhythm"),
@@ -353,8 +355,6 @@ KINDS = [
      "betpanel", "action", "a real control that is also the drawer's own handle"),
     ("close, a toast", {"toast-close"}, set(),
      "toast", "action", "chrome of the overlay it closes"),
-    ("bookmark, on a card", {"bookmark-btn"}, set(),
-     "card", "action", "it is part of the card's own furniture and sized to it"),
     # matched on the PARENT and not on `.ed-act`, which is the class the buttons
     # carry and which no stylesheet reads: the rule that paints them is
     # `.ed-actions button`, and the class is dead markup on 27 placements in each
@@ -527,7 +527,12 @@ ATOM = {
     "how it works, in the header": "button",
     "close, a sheet": "iconbutton",
     "bookmark, on a card": "iconbutton",
-    "a comment's own action": "iconbutton",
+    # NOT AN ICON BUTTON, and the reading found it the same way it found
+    # `.hiw-btn` and `.subcat`. The two controls in a comment's meta row are
+    # `<button><svg/>24</button>` and `<button>Reply</button>`: one is a mark
+    # beside a COUNT and the other is a word. Neither is icon-only, and the row
+    # they sit in is text. A press with a label is `button`.
+    "a comment's own action": "button",
     "an event's action row": "iconbutton",
     "close, a toast": "iconbutton",
     "chip, a category": "chip",
