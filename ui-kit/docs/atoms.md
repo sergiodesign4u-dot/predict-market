@@ -481,6 +481,49 @@ so it is written down and the count stays honest.
 
 ---
 
+## `button` read out, and nothing in it adopts at zero: the distance holds at 11
+
+The third migration was measured before it was written, and the measurement stopped it. Seven
+kinds, 911 placements, six files. 710 are already `.btn`. Here is what the other 201 measure,
+in the browser at 1440, dark, against `.btn` itself:
+
+| kind, and where | ground | border | corner | ink | font | padding |
+|---|---|---|---|---|---|---|
+| `.btn` md primary, the reference | brass gradient | 1px transparent | 10 | on-brass 700 | 14 | 12 / 12 |
+| `.cc-btn` **3**, cookie-consent | `--bg-control` | 1px hairline | 10 | primary 600 | **13** | 12 / 12 |
+| `.cmt-post` **11**, comments | brass gradient | **0px** | 10 | on-brass 700 | 12 | 8 / 12 |
+| `.edit` **1**, profile | `--bg-control` | 1px hairline | **pill** | primary 600 | **11** | 8 / 16 |
+| `.load-more` **9**, loadmore | **`--bg-chip`** | 1px **`--bevel-notice`** | 10 | primary 600 | 14 | 12 / **24** |
+| `.hiw-btn` **105**, header | **transparent** | 1px hairline | **pill** | **muted 400** | 12 | 4 / 8 |
+| `.cmt-actions button` **72**, comments | **transparent** | **0px** | **0** | **muted 400** | 11 | 4 / 4 |
+
+**The map's sentence about this atom was wrong and it is corrected.** It said *emphasis, size
+and block are modifiers of it; nothing else in it is.* The last two rows are 177 placements
+wearing an emphasis the family does not have: a transparent ground. That is a THIRD emphasis,
+and `.hiw-btn` is a fourth thing again, because its transparent pill with a `--color-action` 14
+per cent hover is the icon button's skin with a word inside it - the same declaration, written
+in two files.
+
+**And every one of the seven differs by a VALUE, not by a modifier.** That is the difference
+between this family and the two migrated before it, and it is worth stating plainly:
+
+    iconbutton   5 kinds   4 adopted at zero, 2 refused for a day, then answered
+    navitem      2 kinds   both adopted at zero
+    button       6 kinds   ZERO adopt at zero
+
+`.cc-btn` is 13px against a ramp of 12 / 14 / 14. `.cmt-post` is `.btn.btn-primary.btn-sm`
+except that it has no border at all, so the family's transparent 1px band would grow it **2px
+in each dimension**. `.edit` is quiet emphasis at 11px in a pill. None of those is a rule in the
+wrong file; each is a number somebody chose, or failed to choose, and a partition may not pick
+one. `ui-kit/docs/backlog.md` S47 asks them the way S44 asked its three, and S44 took one
+afternoon once it had answers.
+
+**So the distance does not move this pass, and that is the honest outcome.** The alternative was
+to adopt anyway and call 201 placements "no visible change", which is exactly the sentence
+defect 77 was written about.
+
+---
+
 ## The decision this document no longer has open
 
 - ~~**Is a social mark a `navitem` or an `iconbutton`?**~~ **Answered 2026-08-06 and the

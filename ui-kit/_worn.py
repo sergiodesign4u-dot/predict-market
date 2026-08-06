@@ -489,8 +489,14 @@ def census():
 # partitioned, and gate 41 measures the gap between the two, in both directions:
 # a kind naming no atom fails, and an atom no kind names fails just as loudly.
 ATOMS = {
-    "button": "a press with a LABEL, that does a thing. Emphasis, size and block are "
-              "modifiers of it; nothing else in it is",
+    "button": "a press with a LABEL, that does a thing. Emphasis, size and block are its "
+              "modifiers, and it said 'nothing else in it is' until 2026-08-06, when the "
+              "family was read out in the browser. There are THREE emphases and not two: "
+              "brass, quiet on --bg-control, and a transparent pill the header band wears "
+              "on 105 placements. 710 of the 911 are already `.btn`; every one of the 201 "
+              "that is not differs from it by a VALUE rather than by a modifier - a 13px "
+              "font off a 12/14 ramp, a border nobody gave it, an 11px pill - which makes "
+              "this the first atom on the map where nothing adopts at zero",
     "iconbutton": "a press whose whole content is a MARK. Not a modifier of `button`: it "
                   "has no label to size, and its own box is the whole target",
     "chip": "a label a person PICKS BETWEEN, carrying a value. The chosen one is a brass "
