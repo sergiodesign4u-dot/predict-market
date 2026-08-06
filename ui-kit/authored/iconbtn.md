@@ -1,0 +1,43 @@
+# iconbtn
+
+## Sources
+
+- `components/header.css`, where this control lived until 2026-08-06. It was never wrong there in the way `.toggle` was wrong inside `components/filters.css`: it was already one class with two modifiers, gathered onto one rest declaration, one hover and one press by backlog S17. What it did not have was a file, so the five other icon buttons in the product had nowhere to arrive.
+- `ui-kit/docs/atoms.md`, which is why it has one now. The map counts **908 placements of a press whose whole content is a mark**, drawn in six files under six names, and this is the atom they come to.
+- `ui-kit/_worn.py`, the census, which files it as an **action**: pressing it does a thing, and nothing is carried between presses.
+- `ui-kit/docs/backlog.md` S17, closed 2026-08-03, which is the pass that made the circle one declaration instead of two.
+
+## Purpose
+
+A press whose whole content is a mark. Where a label would say the same thing in a word, use `button`; this exists for the places a band has no room for a word and the mark is unambiguous on its own: add funds, swap the balance, open the menu, dismiss a sheet, bookmark an event.
+
+## Anatomy
+
+- `.icon-btn` - the ghost circle: 36 by 36, a transparent ground, a hairline edge, a pill radius, and the mark handed the current ink. It is deliberately the absence of a control: a band of eight filled chips is a band nobody can read.
+- `.icon-btn.bal-swap` - the same circle at 32, for the pair that sits inside the balance pill where 36 would not fit.
+- `.icon-btn.bal-add` - the one icon button in the product that carries the primary action's brass plate, at 32. It opens Add funds, which is the header's own commitment.
+
+## When to use
+
+In a band, a bar or a corner, for an action a mark states completely. The mark must carry an `aria-label`, because a control with no text has no accessible name and the mark is not one.
+
+Never for an action a person has to think about. A brass plate on a 32px circle is as much emphasis as this control can carry, and there is exactly one of those.
+
+## Rule
+
+**The box is the target, not the padding around it.** 36 under a fine pointer, 44 under a coarse one, written on the control itself, because target size follows the POINTER and not the viewport: a touch laptop at 1280 needs the same 44 a phone does. An invisible hit area stretched over a smaller circle is a fix nobody in this repo can measure, which is the argument `ui-kit/authored/toggle.md` makes about the switch.
+
+**A region says where it sits, never what it looks like.** `components/header.css` keeps `.app-header .left > .icon-btn{display:none}`, because hiding a control in a band is the band's decision, and it keeps nothing else about this control. That sentence is the whole of the atom migration, and it is written in `ui-kit/docs/atoms.md`.
+
+## Anti-rule
+
+Never draw one from the `button` family. `button` gives a quiet control `--bg-control` and a 10px radius; this is a transparent ground, a hairline and a pill. Painting one from the other puts a filled chip in a band whose entire material is the absence of one.
+
+Never add a third face here without the measurement. Five more kinds of icon button are still drawn in five other files - the sheet close, the bookmark, a comment's action, an event's action row, the toast close - and each arrives on its own evidence, with its own before-and-after at zero difference. Guessing which of them is "the same" is the mistake this atom exists to stop.
+
+Seen: `ui-kit/docs/atoms.md`, and `ui-kit/docs/defects.md`, which records what the first reading of the family refused.
+
+## States
+
+- `button.icon-btn @button-outcome-row` - **The ghost circle, and one block here is four controls.** Measured across all four states in both themes, the same answer is given by `.bal-swap` (the Portfolio / Cash swap), by `.desk-only` (the control that exists only above the breakpoint) and by the plain circle of the utility row. That is not an accident anybody keeps in step: the rest, the hover and the press are one declaration each, written after measuring the shape across 105 screens at 360 and 1440. Photographed outside the header, where nothing else in the band is around it.
+- `button.kit-here.icon-btn.bal-add @.app-header` - **The plus that opens Add funds, and it does NOT merge with the block above, which is the useful half of the measurement.** It is the one icon button in the product carrying the primary action's brass plate, and it carries the same three-step `components/button.css` uses: rest lights the plate from the top left, hover takes the lit role to both stops, press flips the angle so the light falls to the bottom right.

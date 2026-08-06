@@ -316,8 +316,16 @@ ROLE_WHY = {
 KINDS = [
     ("the button family", {"btn"}, set(),
      "button", "action", "this page, staged in full above"),
-    ("icon only, in the header", {"icon-btn", "bal-add", "bal-swap", "hiw-btn"}, set(),
+    # `.hiw-btn` LEFT THIS ROW ON 2026-08-06, and it left for the reason the logo
+    # left it before: the row was a description of WHERE a control sits, and this
+    # one has a LABEL. `<button class="hiw-btn">How it works</button>`, 105
+    # placements, reading "icon only" on every screen in the product. Found the
+    # same way `.subcat` was, by reading the family out before migrating it.
+    ("icon only, in the header", {"icon-btn", "bal-add", "bal-swap"}, set(),
      "header", "action", "the header owns its own row of marks, and their size is the header's rhythm"),
+    ("how it works, in the header", {"hiw-btn"}, set(),
+     "header", "action", "a labelled press that opens the sheet, sized to the header band it "
+                         "stands in rather than to the button ramp"),
     ("the logo, home", {"logo-btn"}, set(),
      "header", "nav", "it is the mark and the way back to the feed, and both belong to the header"),
     ("a row of the account dropdown", set(), {"dropdown"},
@@ -506,6 +514,7 @@ ATOM = {
     "cookie consent": "button",
     "edit, on the profile": "button",
     "icon only, in the header": "iconbutton",
+    "how it works, in the header": "button",
     "close, a sheet": "iconbutton",
     "bookmark, on a card": "iconbutton",
     "a comment's own action": "iconbutton",
@@ -560,12 +569,27 @@ def atom_gap():
     homeless = sorted(k for k in named if k not in ATOM and k not in NOT_AN_ATOM)
     idle_atom = sorted(a for a in ATOMS if a not in set(ATOM.values()))
     stale = sorted(k for k in list(ATOM) + list(NOT_AN_ATOM) if k not in named)
+    # A RULE THAT ONLY PLACES A CONTROL IS NOT A RULE THAT DRAWS ONE, and this is
+    # the second correction the metric needed. `components/header.css` keeps
+    # `.app-header .left > .icon-btn{display:none}` on purpose - hiding a control
+    # in a band is the band's decision, and the map says so in as many words -
+    # but the selector ENDS at the control, so the first version of this test
+    # counted header as still drawing the icon button and the distance went UP
+    # after a move that took every face rule out of it. Placement is where and
+    # whether; a face is what it looks like, and a rule has to set at least one
+    # face property to count.
+    PLACEMENT = ("display", "position", "top", "right", "bottom", "left", "z-index",
+                 "margin", "flex", "order", "align-self", "justify-self", "grid",
+                 "visibility", "float", "overflow", "inset", "place-self")
     rules = []
     for path in sorted(COMP.glob("*.css")) + sorted((COMP / "patterns").glob("*.css")):
         if path.name in ("index.css", "tokens.css", "fonts.css"):
             continue
         body = re.sub(r"/\*.*?\*/", " ", path.read_text(encoding="utf-8"), flags=re.S)
-        for m in re.finditer(r"([^{}]+)\{", body):
+        for m in re.finditer(r"([^{}]+)\{([^{}]*)\}", body):
+            props = [d.split(":")[0].strip() for d in m.group(2).split(";") if ":" in d]
+            if not props or all(p.startswith(PLACEMENT) for p in props):
+                continue
             for sel in m.group(1).split(","):
                 sel = " ".join(sel.split())
                 if sel and not sel.startswith("@"):

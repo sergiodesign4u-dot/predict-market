@@ -74,6 +74,12 @@
           "kind": "icon only, in the header"
         },
         {
+          "of": "header-in",
+          "pick": ".hiw-btn",
+          "nth": 1,
+          "kind": "how it works, in the header"
+        },
+        {
           "of": "dialog-shared",
           "pick": ".sheet-close",
           "nth": 1,
@@ -634,6 +640,20 @@
       "component": "position",
       "title": "Transaction list",
       "width": 1120
+    },
+    {
+      "id": "iconbtn-utility",
+      "canvas": false,
+      "section": "chrome",
+      "label": "Sticky app header (logged in)",
+      "pick": "div.bal-toggle",
+      "component": "iconbtn",
+      "also": [
+        "header"
+      ],
+      "title": "The ghost circle, and its two modifiers",
+      "width": 260,
+      "note": "The balance pill, cut out of the header it stands in, because it is the one place in the product where all three faces of this control sit side by side: the plain circle at 32 that swaps Portfolio for Cash, the brass plate at 32 that opens Add funds, and the figure between them that gives both their ground. The 36px circles of the utility row are the same control one size up, and they are on the header's own page."
     },
     {
       "id": "header-in",

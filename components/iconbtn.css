@@ -1,0 +1,67 @@
+/* components/iconbtn.css
+   Component: iconbtn. Classes: .bal-add, .bal-swap, .icon-btn.
+
+   Reads:
+   Stand:  ui-kit/iconbtn.html
+   Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+/* ============================================================================
+   THE FIRST ATOM CUT AGAINST THE MAP, 2026-08-06. `ui-kit/docs/atoms.md` says
+   the product wears one control whose whole content is a MARK, 908 placements,
+   drawn today in six files under six names. This is that atom's file, and it
+   opens with the largest of the six: the header's own row of circles, which was
+   already one class with two modifiers and only ever needed a home of its own.
+
+   NOT ONE BYTE OF MARKUP MOVED FOR THIS. `.icon-btn`, `.bal-swap` and `.bal-add`
+   are already on 388, 73 and 73 elements, so the whole of this step is where the
+   rules live. That is the cheapest true progress the map allows and it is the
+   right first move: it makes the file exist, and the five smaller kinds adopt it
+   one at a time, each with its own measurement.
+
+   WHAT STAYED BEHIND IN components/header.css, and the line is the map's own:
+   a region may say WHERE an icon button sits and may not say what one looks
+   like. So `.app-header .left > .icon-btn{display:none}` stays there, because
+   hiding a control in a band is the band's decision. Three shared selectors were
+   SPLIT rather than moved, because each also styled `.notif-menu summary` and
+   `.avatar-menu summary`, which are the header's own disclosures: a file that
+   styles another component's classes is what S11 forbids, and moving the whole
+   selector would have been exactly that.
+
+   AND `.hiw-btn` WAS NEVER ONE OF THESE. It sat in the census row called "icon
+   only, in the header" carrying the words "How it works" on 105 screens. It is a
+   labelled press, so it is `button`, and it left the row on the same day for the
+   reason the logo left it before: the row described WHERE a control sits.
+   ============================================================================ */
+
+.icon-btn{padding:var(--space-4);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;line-height:0}
+.bal-swap{padding:var(--space-4)}
+.bal-add{padding:var(--space-4)}
+/* The circle. It was one line with the header's two <summary> disclosures, which
+   open dropdowns and are not this control; the shared declaration is duplicated
+   rather than moved, and the two halves now say the same thing in the two files
+   that own them. */
+.icon-btn{background:transparent;border:1px solid var(--border-hairline);border-radius:var(--radius-pill)}
+.icon-btn{width:var(--control-36);height:var(--control-36);color:var(--text-primary)}
+.icon-btn:hover{background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:var(--color-action)}
+.icon-btn:active{background:var(--bg-pressed)}
+/* The two modifiers, and they are a SIZE and a FACE. Add funds is the one icon
+   button in the product that carries the primary action's brass plate, and it
+   carries the same three-step components/button.css uses: rest lights the plate
+   from the top left, hover takes the lit role to both stops, press flips the
+   angle so the light falls to the bottom right. */
+.icon-btn.bal-swap,.icon-btn.bal-add{width:var(--control-32);height:var(--control-32)}
+.icon-btn.bal-add{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border-color:var(--color-action)}
+.icon-btn.bal-add .ic{stroke:var(--text-on-brass)}
+.icon-btn.bal-add{transition:background var(--dur-quick) ease,box-shadow var(--dur-quick) ease,border-color var(--dur-quick) ease}
+.icon-btn.bal-add:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
+.icon-btn.bal-add:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
+/* A sprite mark is filled with the CURRENT colour, so the button has to hand it
+   one. Without this the mark takes the ink the browser gives it. */
+.icon-btn .ic:has(use){color:var(--text-primary)}
+/* WCAG 2.5.5 is about a finger and not about a narrow window: a touch laptop at
+   1280 needs the same 44 a phone does, so the floor is bound to the POINTER. A
+   fine pointer keeps 36, which clears 2.5.8 with room. */
+@media(pointer:coarse){
+  .icon-btn{min-width:var(--control-44);min-height:var(--control-44)}
+}

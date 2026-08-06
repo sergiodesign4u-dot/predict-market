@@ -32,9 +32,10 @@ says so. No em dash.
 | feed | 1 | feed-grid | 1 | 1 | 105 |
 | filters | 2 | filters-sort, filters-panel | 2 | 3 | 105 |
 | footer | 1 | footer | 0 | 15 | 105 |
-| header | 2 | header-in, header-out | 1 | 22 | 105 |
+| header | 2 | header-in, header-out | 2 | 19 | 105 |
 | hero | 1 | hero-band | 0 | 51 | 2 |
 | hiw-dialog | 1 | hiw-dialog | 0 | 16 | 105 |
+| iconbtn | 1 | iconbtn-utility | 0 | 3 | 105 |
 | input | 2 | input-amount, input-states | 2 | 4 | 105 |
 | loadmore | 1 | loadmore | 1 | 2 | 9 |
 | market | 1 | market-depth | 0 | 21 | 9 |
@@ -55,7 +56,7 @@ says so. No em dash.
 | trustbar | 2 | trustbar-feed, trustbar-footer | 1 | 11 | 105 |
 | yesno | 1 | yesno | 2 | 2 | 14 |
 
-71 specimens over 40 components.
+72 specimens over 41 components.
 
 ---
 

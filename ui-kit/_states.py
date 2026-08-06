@@ -215,8 +215,16 @@ NOT_SHOT = {
 # than about the stand, one line and one reason each, and the same control every
 # declared list here carries: an entry that is no longer short fails as loudly as
 # an undeclared crop. The fix took 36 crops to 6 and these are the 6.
+# KEYED ON THE SUBJECT, NOT ON THE COUNTER, SINCE 2026-08-06. A group id is a
+# position in a list, and this list has now been pointed one row to the left
+# TWICE by a renumbering it had nothing to do with: once when the scope joined
+# the capture key, and again when `.icon-btn` left components/header.css for an
+# atom file of its own and the header's groups closed up behind it. The comment
+# below predicted the second one and asked for a lookup; the lookup is the fix.
+# An entry is (component, element selector, scope), which is what the subject IS,
+# and it survives every renumbering because it does not know about numbers.
 TIGHT = {
-    ("tabs", "g1"): "`input.ed-tabradio` is parked at `left:-9999px` and the ring the "
+    ("tabs", "input.ed-tabradio", ""): "`input.ed-tabradio` is parked at `left:-9999px` and the ring the "
                     "system draws on :focus-visible is therefore painted off the left "
                     "edge of the document. That is not a crop, it is the reason "
                     "`tabs.css` moves the visible indicator onto the LABEL and says so "
@@ -228,11 +236,11 @@ TIGHT = {
     # control is what said so, which is the whole reason a declared list carries
     # one. The subjects are unchanged and are named here so the next renumbering
     # is a lookup rather than a puzzle.
-    ("header", "g9"): "a link inside the notifications dropdown, 2px from its neighbour, "
+    ("header", "a", ".app-header"): "a link inside the notifications dropdown, 2px from its neighbour, "
                       "so the halving leaves 1 of the 4 the ring needs. The stand is not "
                       "padded to flatter the camera: the density is the product's, the "
                       "ring is drawn, and 3px of it are shared with the row above",
-    ("header", "g10"): "`a.notif-all`, the same dropdown and the same 2px, for the same "
+    ("header", "a.notif-all", ".app-header"): "`a.notif-all`, the same dropdown and the same 2px, for the same "
                        "reason",
 }
 
@@ -245,14 +253,15 @@ def cropped():
         for key, shot in row.get("shots", {}).items():
             if not shot.get("short"):
                 continue
-            k = (row["component"], row["id"])
+            k = (row["component"], row["el"], row.get("scope") or "")
             if k in TIGHT:
                 seen.add(k)
                 continue
             out.append("%s %s %s short %dpx (needed %s, got %s)"
                        % (row["component"], row["id"], key, shot["short"],
                           shot.get("needed"), shot.get("pad")))
-    idle = ["%s %s" % k for k in sorted(set(TIGHT) - seen)]
+    idle = ["%s %s%s" % (c, el, " @" + sc if sc else "")
+            for c, el, sc in sorted(set(TIGHT) - seen)]
     return out, idle
 
 

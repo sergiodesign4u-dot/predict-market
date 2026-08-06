@@ -119,6 +119,7 @@ Step-2 backlog at the bottom: the vitrine is a slice of the product, and this pa
 | Component | CSS file | Page | Level | Screens / families | States | #f | Origin | Photo | Kit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Shared dialog shell (`dialog.app-dialog`, stone-plate material) | `dialog.css` | [dialog](../dialog.html) | L3 | every page (emitted in shell) | open / close (backdrop, Esc); modal (desktop) / sheet (mobile) | 104 | WF/UV | - | ~ |
+| Icon button (`.icon-btn`, the ghost circle; `.bal-swap` at 32, `.bal-add` the brass plate) | `iconbtn.css` | [iconbtn](../iconbtn.html) | L1 | every screen: header band, balance pill | rest / hover / press | 105 | WF/UV | - | + |
 | Provider buttons (Google / X / Apple, real brand marks) | `button.css` | [button](../button.html) | L1 | Sign In dialog + sign-in pages | rest / hover | 104 | WF/UV | - | + |
 | Amount field | `input.css` | [input](../input.html) | L1 | Deposit dialog + deposit pages | rest / focus / disabled | 104 | WF | - | + |
 | Quick-amount chips | `quick.css` | [quick](../quick.html) | L2 | Deposit dialog + bet panel | rest / selected | 104 | WF | - | + |

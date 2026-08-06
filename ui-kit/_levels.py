@@ -514,6 +514,10 @@ RAISE = {
 # component whose containment is NOT empty, because then the arithmetic has an
 # answer of its own and a declaration is a second one.
 TRUE_ATOM = {
+    "iconbtn": "one control and two modifiers, and nothing may be put inside it but the "
+               "mark it exists to hold. It is not a modifier of `button` either: it has no "
+               "label to size, and its own box IS the target, which is why the 44 floor is "
+               "written on the box rather than around it",
     "chip": "one control and one shared modifier. `.chip` is a label a person picks "
             "between, and `.sel` says which one is picked; there is nothing inside it and "
             "nothing may be put inside it. The containers it stands in are somebody "

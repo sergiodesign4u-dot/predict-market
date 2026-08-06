@@ -68,8 +68,8 @@ covered exactly once; the numbers add to its 5281.
 
 | Atom | What it is | It absorbs, and the count | Today |
 |---|---|---|---|
-| `button` | a press with a LABEL, that does a thing | the button family **710**, post a comment **11**, load more **9**, cookie consent **3**, edit on the profile **1** = **734** | `.btn` already holds 710 of them, with emphasis, size and block. The other four are the same control redrawn in four files: same radius-10 or pill, same semibold label, same 44 floor |
-| `iconbutton` | a press whose whole content is a MARK | header icons **493**, sheet close **333**, bookmark on a card **84**, a comment's action **72**, an event's action row **27**, toast close **4** = **1013** | six files, six names, one idea: a square or a disc sized to the finger with an icon in it. It is a separate atom from `button` and not a modifier of it, because it has no label to size and its whole box is a target |
+| `button` | a press with a LABEL, that does a thing | the button family **710**, how it works **105**, post a comment **11**, load more **9**, cookie consent **3**, edit on the profile **1** = **839** | `.btn` already holds 710 of them, with emphasis, size and block. The other four are the same control redrawn in four files: same radius-10 or pill, same semibold label, same 44 floor |
+| `iconbutton` | a press whose whole content is a MARK | header icons **388**, sheet close **333**, bookmark on a card **84**, a comment's action **72**, an event's action row **27**, toast close **4** = **908** | six files, six names, one idea: a square or a disc sized to the finger with an icon in it. It is a separate atom from `button` and not a modifier of it, because it has no label to size and its whole box is a target |
 | `chip` | a label you PICK BETWEEN, that carries a value | category chip **815**, quick amount **480**, quiet chip in a rail **63** = **1358** | the largest family and the most divided. `components/chip.css` exists and holds 63. The differences are pill against radius-10, 13px against 12px, and the ground at rest, which are modifiers |
 | `tab` | a selector whose selection swaps a PANEL rather than carrying a value | the tab row **36** | its own atom since 2026-08-06, and the measurement recorded below is what made it one. `.ed-tablabel` and `.ptab-lbl` are the same control again as labels, so they join it when the non-button controls are counted |
 | `outcome` | the YES / NO pair, where the COLOUR states a result | YES/NO buttons **230**, the outcome side of a bet **40**, the hero's featured pair **2** = **272** | genuinely its own atom and must never fold into `chip`. `DESIGN.md` decides it: green and red are outcome semantics, brass is the brand, and an accent never borrows the win or lose colour |
@@ -186,6 +186,35 @@ the category chips, `--tint-brass-16` on the quick amounts and the quiet chip,
 carrying all five as named modifiers, which at least puts them in one file where the
 question can be asked; unifying them is a visible change on about 1,100 placements and
 belongs to `ui-kit/docs/backlog.md` S35, not to the partition.
+
+---
+
+## The first atom moved, 2026-08-06, and the distance did not fall
+
+`components/iconbtn.css` exists. The largest of the six icon-button kinds, the header's own
+row of circles, is in it: **`.icon-btn` with `.bal-swap` and `.bal-add`, 534 placements, and
+not one byte of markup moved**, because those elements already carried the class. What
+stayed in `components/header.css` is `.app-header .left > .icon-btn{display:none}`, since
+hiding a control in a band is the band's decision. Three shared selectors were SPLIT rather
+than moved, because each also styled the header's own `<summary>` disclosures. Proved:
+**525 snapshots, five widths, both trees, 0 differ, 0 elements changed.**
+
+**The distance went 17 to 18, and both halves of that are honest.** The move itself changed
+it by nothing: `iconbutton` was drawn in six files before and is drawn in six after, because
+the atom moved house rather than gaining a tenant. It falls when the other five kinds adopt
+it, and that is the next five passes. The rise is the map getting more accurate again:
+**`.hiw-btn` is not an icon button.** It sat in the census row called "icon only, in the
+header" carrying the words *How it works* on 105 screens, so it is a labelled press and
+belongs to `button`, and pulling it out put `header.css` into `button`'s column where it had
+been hidden. That is the third correction the map has taken from a reading, after `.subcat`
+and the tab, and all three were found by reading the family out before migrating it.
+
+**A file counts when it DRAWS the control, and a rule that only PLACES one does not.** The
+metric said 19 for a moment, because `.app-header .left > .icon-btn{display:none}` ends at
+the control and the test was on the selector alone. Placement is where and whether; a face
+is what it looks like; a rule now has to set at least one face property to count. That is
+the second correction to the number in two days, and both were caught because the number
+moved the wrong way.
 
 ---
 

@@ -456,6 +456,18 @@
   "rewrites": 0
  },
  {
+  "id": "iconbtn-utility",
+  "component": "iconbtn",
+  "title": "The ghost circle, and its two modifiers",
+  "width": 260,
+  "also": [
+   "header"
+  ],
+  "note": "The balance pill, cut out of the header it stands in, because it is the one place in the product where all three faces of this control sit side by side: the plain circle at 32 that swaps Portfolio for Cash, the brass plate at 32 that opens Add funds, and the figure between them that gives both their ground. The 36px circles of the utility row are the same control one size up, and they are on the header's own page.",
+  "source": "kit.html / chrome / Sticky app header (logged in)",
+  "rewrites": 0
+ },
+ {
   "id": "header-in",
   "component": "header",
   "title": "App header, logged in",
