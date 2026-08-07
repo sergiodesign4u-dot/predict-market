@@ -206,7 +206,7 @@
    "ui-kit/specimens/betpanel-sheet.html",
    "ui-kit/specimens/button-census.html"
   ],
-  "sha": "683c6c966272fd61"
+  "sha": "f8daf6c40c232d7e"
  },
  {
   "component": "betpanel",
@@ -431,7 +431,7 @@
    "ui-kit/specimens/betpanel-more.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "a5bfb33249eea2ba"
+  "sha": "5b11147d02aaae60"
  },
  {
   "component": "button",
@@ -484,7 +484,7 @@
     "short": 0
    },
    "hover-dark": {
-    "value": "oklab(0.729223 0.00866619 0.111074 / 0.14) | none | rgb(199, 162, 78) | 1px | rgb(237, 231, 218) | 100px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgb(199, 162, 78) | 1px | rgb(237, 231, 218) | 100px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
     "w": 113,
     "h": 44,
     "pad": {
@@ -556,7 +556,7 @@
     "short": 0
    },
    "hover-light": {
-    "value": "oklab(0.729223 0.00866619 0.111074 / 0.14) | none | rgb(199, 162, 78) | 1px | rgb(33, 31, 25) | 100px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "value": "rgba(199, 162, 78, 0.3) | none | rgb(199, 162, 78) | 1px | rgb(33, 31, 25) | 100px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
     "w": 113,
     "h": 44,
     "pad": {
@@ -632,7 +632,7 @@
    "ui-kit/specimens/button-matrix.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "c104bc8616fe08e1"
+  "sha": "e2122f55701c47d1"
  },
  {
   "component": "button",
@@ -831,7 +831,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "216a46ded88a0151"
+  "sha": "f2ab16ff2c091aef"
  },
  {
   "component": "button",
@@ -1032,7 +1032,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "3bfeef3756729659"
+  "sha": "85a13eb660f3432f"
  },
  {
   "component": "button",
@@ -1225,7 +1225,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/button-matrix.html"
   ],
-  "sha": "c2a6f8800aad782a"
+  "sha": "86c5192045a590ce"
  },
  {
   "component": "button",
@@ -1454,7 +1454,7 @@
    "ui-kit/specimens/profile-identity.html",
    "ui-kit/specimens/state-empty-filters.html"
   ],
-  "sha": "e0e3b592ce1db7e3"
+  "sha": "c1e6987e73d9c638"
  },
  {
   "component": "button",
@@ -1686,7 +1686,7 @@
    "ui-kit/specimens/state-empty-filters.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "afda5420926e1549"
+  "sha": "95e575b3e585c0f0"
  },
  {
   "component": "card",
@@ -1873,7 +1873,7 @@
    "ui-kit/specimens/skeleton-grid.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "b54ba203c935d448"
+  "sha": "bbb70ae9a6d7be09"
  },
  {
   "component": "card",
@@ -2087,7 +2087,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "70c4c8ac0b6e319d"
+  "sha": "0a1abac116ffdf3a"
  },
  {
   "component": "card",
@@ -2254,7 +2254,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "1609b3f233ac8ef4"
+  "sha": "b4e49c2f65edca95"
  },
  {
   "component": "chip",
@@ -2442,7 +2442,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "d3d79d9b744b0112"
+  "sha": "e7c37c155b1a53fb"
  },
  {
   "component": "chip",
@@ -2624,7 +2624,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subcat.html"
   ],
-  "sha": "eaa166f68c2692b0"
+  "sha": "7685e09ce537bab6"
  },
  {
   "component": "chip",
@@ -2840,7 +2840,7 @@
    "ui-kit/specimens/input-states.html",
    "ui-kit/specimens/quick-amounts.html"
   ],
-  "sha": "cfd1377611d14ca3"
+  "sha": "0530993f5f60a688"
  },
  {
   "component": "chip",
@@ -3056,7 +3056,7 @@
    "ui-kit/specimens/input-states.html",
    "ui-kit/specimens/quick-amounts.html"
   ],
-  "sha": "cfd1377611d14ca3"
+  "sha": "0530993f5f60a688"
  },
  {
   "component": "chip",
@@ -3244,7 +3244,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "d3d79d9b744b0112"
+  "sha": "e7c37c155b1a53fb"
  },
  {
   "component": "chip",
@@ -3511,7 +3511,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/catnav-chips.html"
   ],
-  "sha": "9fd516ca9eb61cca"
+  "sha": "8de22ec4389006c1"
  },
  {
   "component": "chip",
@@ -3694,7 +3694,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-chips.html"
   ],
-  "sha": "096f9ac1b5723f5d"
+  "sha": "83bfed6ff1caab81"
  },
  {
   "component": "chip",
@@ -3874,7 +3874,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subfilter.html"
   ],
-  "sha": "fefedc78163b4af9"
+  "sha": "e5101d005e80922a"
  },
  {
   "component": "chip",
@@ -4054,7 +4054,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subfilter.html"
   ],
-  "sha": "fefedc78163b4af9"
+  "sha": "e5101d005e80922a"
  },
  {
   "component": "chip",
@@ -4236,7 +4236,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subcat.html"
   ],
-  "sha": "eaa166f68c2692b0"
+  "sha": "7685e09ce537bab6"
  },
  {
   "component": "cookie-consent",
@@ -4425,7 +4425,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "b3bb4e46f87d92c0"
+  "sha": "de667a9c035f66d8"
  },
  {
   "component": "cookie-consent",
@@ -4616,7 +4616,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "b3bb4e46f87d92c0"
+  "sha": "de667a9c035f66d8"
  },
  {
   "component": "cookie-consent",
@@ -4805,7 +4805,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "b3bb4e46f87d92c0"
+  "sha": "de667a9c035f66d8"
  },
  {
   "component": "course-chrome",
@@ -4998,7 +4998,7 @@
    "ui-kit/specimens/course-chrome-system.html",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "6313dae1a13f1835"
+  "sha": "c3b72077f7528db5"
  },
  {
   "component": "course-chrome",
@@ -5191,7 +5191,7 @@
    "ui-kit/specimens/course-chrome-system.html",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "6313dae1a13f1835"
+  "sha": "c3b72077f7528db5"
  },
  {
   "component": "course-chrome",
@@ -5386,7 +5386,7 @@
    "ui-kit/specimens/course-chrome-system.html",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "b0600b48d03bfa0a"
+  "sha": "f32c005c58979fee"
  },
  {
   "component": "course-chrome",
@@ -5575,7 +5575,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "a312dbe22ba88f9e"
+  "sha": "04e66f5e95aa59aa"
  },
  {
   "component": "course-chrome",
@@ -5768,7 +5768,7 @@
    "ui-kit/specimens/course-chrome-system.html",
    "ui-kit/specimens/course-chrome.html"
   ],
-  "sha": "6313dae1a13f1835"
+  "sha": "c3b72077f7528db5"
  },
  {
   "component": "course-chrome",
@@ -5960,7 +5960,7 @@
    "ui-kit/specimens/course-chrome-roadmap.html",
    "ui-kit/specimens/course-chrome-system.html"
   ],
-  "sha": "c48039873f9f4ddb"
+  "sha": "bdd9588359b07f42"
  },
  {
   "component": "course-chrome",
@@ -6148,7 +6148,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/course-chrome-system.html"
   ],
-  "sha": "85c206a799844e76"
+  "sha": "40b1763a4df6f5aa"
  },
  {
   "component": "course-chrome",
@@ -6291,7 +6291,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/course-chrome-roadmap.html"
   ],
-  "sha": "9c39d17f4d633fa8"
+  "sha": "27123fbdf2cbcd29"
  },
  {
   "component": "course-chrome",
@@ -6434,7 +6434,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/course-chrome-roadmap.html"
   ],
-  "sha": "9c39d17f4d633fa8"
+  "sha": "27123fbdf2cbcd29"
  },
  {
   "component": "dialog",
@@ -6642,7 +6642,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "34e41a1cb1ac0c82"
+  "sha": "09d1c30ccd4d0955"
  },
  {
   "component": "dialog",
@@ -6834,7 +6834,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "ad12f471cb58367d"
+  "sha": "c092a3df4e83ee55"
  },
  {
   "component": "dialog",
@@ -7029,7 +7029,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/outcome-overlays.html"
   ],
-  "sha": "2fbbb35d9beb8ad0"
+  "sha": "0f94814d3c9109c8"
  },
  {
   "component": "filters",
@@ -7220,7 +7220,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "1c4634cf691f6a41"
+  "sha": "3e8849db2b20044b"
  },
  {
   "component": "filters",
@@ -7375,7 +7375,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "1c4634cf691f6a41"
+  "sha": "3e8849db2b20044b"
  },
  {
   "component": "filters",
@@ -7530,7 +7530,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "1c4634cf691f6a41"
+  "sha": "3e8849db2b20044b"
  },
  {
   "component": "footer",
@@ -7734,7 +7734,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "fe8b9370a4f66416"
+  "sha": "d29e8069990e5fe8"
  },
  {
   "component": "footer",
@@ -7938,7 +7938,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "fe8b9370a4f66416"
+  "sha": "d29e8069990e5fe8"
  },
  {
   "component": "footer",
@@ -8142,7 +8142,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "fe8b9370a4f66416"
+  "sha": "d29e8069990e5fe8"
  },
  {
   "component": "header",
@@ -8354,7 +8354,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "41a21d96e1f96f1a"
+  "sha": "5477b656172472f7"
  },
  {
   "component": "header",
@@ -8419,7 +8419,7 @@
     "short": 0
    },
    "hover-dark": {
-    "value": "oklab(0.729223 0.00866619 0.111074 / 0.14) | none | rgb(199, 162, 78) | 1px | rgb(237, 231, 218) | 100px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgb(199, 162, 78) | 1px | rgb(237, 231, 218) | 100px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
     "w": 48,
     "h": 51,
     "pad": {
@@ -8491,7 +8491,7 @@
     "short": 0
    },
    "hover-light": {
-    "value": "oklab(0.729223 0.00866619 0.111074 / 0.14) | none | rgb(199, 162, 78) | 1px | rgb(33, 31, 25) | 100px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "value": "rgba(199, 162, 78, 0.3) | none | rgb(199, 162, 78) | 1px | rgb(33, 31, 25) | 100px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
     "w": 48,
     "h": 51,
     "pad": {
@@ -8562,7 +8562,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "3f0df3f32b8ca5a9"
+  "sha": "b5a33f39b960a2c8"
  },
  {
   "component": "header",
@@ -8770,7 +8770,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "3f0df3f32b8ca5a9"
+  "sha": "b5a33f39b960a2c8"
  },
  {
   "component": "hero",
@@ -8998,7 +8998,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "5571fd8a432448db"
+  "sha": "de66e34781e2c39f"
  },
  {
   "component": "hero",
@@ -9189,7 +9189,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "5571fd8a432448db"
+  "sha": "de66e34781e2c39f"
  },
  {
   "component": "hero",
@@ -9416,7 +9416,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hero-band.html"
   ],
-  "sha": "5571fd8a432448db"
+  "sha": "de66e34781e2c39f"
  },
  {
   "component": "hiw-dialog",
@@ -9608,7 +9608,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "ad12f471cb58367d"
+  "sha": "c092a3df4e83ee55"
  },
  {
   "component": "iconbtn",
@@ -9819,7 +9819,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "8c5b76475e4b3219"
+  "sha": "3a111a8121d80db9"
  },
  {
   "component": "iconbtn",
@@ -9858,7 +9858,7 @@
     "short": 0
    },
    "hover-dark": {
-    "value": "oklab(0.729223 0.00866619 0.111074 / 0.14) | none | rgb(199, 162, 78) | 1px | rgb(237, 231, 218) | 100px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgb(199, 162, 78) | 1px | rgb(237, 231, 218) | 100px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
     "w": 60,
     "h": 60,
     "pad": {
@@ -9930,7 +9930,7 @@
     "short": 0
    },
    "hover-light": {
-    "value": "oklab(0.729223 0.00866619 0.111074 / 0.14) | none | rgb(199, 162, 78) | 1px | rgb(33, 31, 25) | 100px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "value": "rgba(199, 162, 78, 0.3) | none | rgb(199, 162, 78) | 1px | rgb(33, 31, 25) | 100px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
     "w": 60,
     "h": 60,
     "pad": {
@@ -10007,7 +10007,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "bdcf13713277cb98"
+  "sha": "c02e5d809a3ccb55"
  },
  {
   "component": "iconbtn",
@@ -10199,7 +10199,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "ad12f471cb58367d"
+  "sha": "c092a3df4e83ee55"
  },
  {
   "component": "iconbtn",
@@ -10415,7 +10415,7 @@
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "7bf591adb6df6981"
+  "sha": "4d6f637b5cdd4a24"
  },
  {
   "component": "iconbtn",
@@ -10455,7 +10455,7 @@
     "short": 0
    },
    "hover-dark": {
-    "value": "oklab(0.729223 0.00866619 0.111074 / 0.14) | none | rgb(199, 162, 78) | 1px | rgb(237, 231, 218) | 100px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "value": "rgba(199, 162, 78, 0.16) | none | rgb(199, 162, 78) | 1px | rgb(237, 231, 218) | 100px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
     "w": 42,
     "h": 46,
     "pad": {
@@ -10527,7 +10527,7 @@
     "short": 0
    },
    "hover-light": {
-    "value": "oklab(0.729223 0.00866619 0.111074 / 0.14) | none | rgb(199, 162, 78) | 1px | rgb(33, 31, 25) | 100px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "value": "rgba(199, 162, 78, 0.3) | none | rgb(199, 162, 78) | 1px | rgb(33, 31, 25) | 100px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
     "w": 42,
     "h": 46,
     "pad": {
@@ -10600,7 +10600,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/toast.html"
   ],
-  "sha": "98e6deaccd60d8f2"
+  "sha": "c27e03721d8d5b9d"
  },
  {
   "component": "iconbtn",
@@ -10836,7 +10836,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "4105d409db495356"
+  "sha": "dd69e5508fc68e2b"
  },
  {
   "component": "iconbtn",
@@ -11040,7 +11040,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "fe8b9370a4f66416"
+  "sha": "d29e8069990e5fe8"
  },
  {
   "component": "iconbtn",
@@ -11304,7 +11304,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "6e6ddbdc3277617f"
+  "sha": "ccac9235b53508c8"
  },
  {
   "component": "input",
@@ -11514,7 +11514,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "dd93cea22d1b337f"
+  "sha": "1b23aa77c3349e58"
  },
  {
   "component": "input",
@@ -11699,7 +11699,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "0c662fe7df157f5c"
+  "sha": "517ad32f6c9614df"
  },
  {
   "component": "input",
@@ -11882,7 +11882,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "0c662fe7df157f5c"
+  "sha": "517ad32f6c9614df"
  },
  {
   "component": "input",
@@ -12119,7 +12119,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "d76c8f16f1e198b2"
+  "sha": "3a86daafeb357fd9"
  },
  {
   "component": "input",
@@ -12323,7 +12323,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "15c06ad97d6e5071"
+  "sha": "41fda65b809278a6"
  },
  {
   "component": "market",
@@ -12523,7 +12523,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/market-depth.html"
   ],
-  "sha": "1e8b792720d26516"
+  "sha": "ad47a7e2f6ade3ac"
  },
  {
   "component": "navitem",
@@ -12624,7 +12624,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "3f0df3f32b8ca5a9"
+  "sha": "b5a33f39b960a2c8"
  },
  {
   "component": "navitem",
@@ -12806,7 +12806,7 @@
    "ui-kit/specimens/bottomnav.html",
    "ui-kit/specimens/navitem-slots.html"
   ],
-  "sha": "7307e6e87f39e86e"
+  "sha": "ef338aea7a64c4ff"
  },
  {
   "component": "navitem",
@@ -12988,7 +12988,7 @@
    "ui-kit/specimens/bottomnav.html",
    "ui-kit/specimens/navitem-slots.html"
   ],
-  "sha": "7307e6e87f39e86e"
+  "sha": "ef338aea7a64c4ff"
  },
  {
   "component": "related",
@@ -13168,7 +13168,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/related.html"
   ],
-  "sha": "18394ec152012482"
+  "sha": "6f4c9c7d99c639d6"
  },
  {
   "component": "related",
@@ -13348,7 +13348,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/related.html"
   ],
-  "sha": "18394ec152012482"
+  "sha": "6f4c9c7d99c639d6"
  },
  {
   "component": "tabs",
@@ -13506,7 +13506,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "855173767926eb64"
+  "sha": "5d462c79eaa84a2e"
  },
  {
   "component": "tabs",
@@ -13700,7 +13700,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "855173767926eb64"
+  "sha": "5d462c79eaa84a2e"
  },
  {
   "component": "tabs",
@@ -13894,7 +13894,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "855173767926eb64"
+  "sha": "5d462c79eaa84a2e"
  },
  {
   "component": "tabs",
@@ -14033,7 +14033,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "1b6abf2bc4f5a972"
+  "sha": "66b37c878c4089a9"
  },
  {
   "component": "tabs",
@@ -14208,7 +14208,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "1b6abf2bc4f5a972"
+  "sha": "66b37c878c4089a9"
  },
  {
   "component": "tabs",
@@ -14383,7 +14383,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "1b6abf2bc4f5a972"
+  "sha": "66b37c878c4089a9"
  },
  {
   "component": "tabs",
@@ -14560,7 +14560,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-mybets.html"
   ],
-  "sha": "b68abacabc868125"
+  "sha": "03726e8e4d357687"
  },
  {
   "component": "tabs",
@@ -14737,7 +14737,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-mybets.html"
   ],
-  "sha": "b68abacabc868125"
+  "sha": "03726e8e4d357687"
  },
  {
   "component": "toc",
@@ -14922,7 +14922,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/toc-rail.html"
   ],
-  "sha": "51f8c08528f299c0"
+  "sha": "cc4c35bfb89cecf5"
  },
  {
   "component": "toc",
@@ -15107,7 +15107,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/toc-rail.html"
   ],
-  "sha": "51f8c08528f299c0"
+  "sha": "cc4c35bfb89cecf5"
  },
  {
   "component": "toggle",
@@ -15280,7 +15280,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/filters-toggle.html"
   ],
-  "sha": "3c331c46d1a002d6"
+  "sha": "49c3f9282a06bde1"
  },
  {
   "component": "toggle",
@@ -15453,7 +15453,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/filters-toggle.html"
   ],
-  "sha": "3c331c46d1a002d6"
+  "sha": "49c3f9282a06bde1"
  },
  {
   "component": "toggle",
@@ -15628,7 +15628,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/filters-panel.html"
   ],
-  "sha": "f1a2868a5931ede0"
+  "sha": "0e6470b01b3c8d90"
  },
  {
   "component": "yesno",
@@ -15823,7 +15823,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "64970454a50b04bf"
+  "sha": "770a54bc27a6a8e5"
  },
  {
   "component": "yesno",
@@ -16013,7 +16013,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-more.html"
   ],
-  "sha": "38ddc48869e4ce47"
+  "sha": "9bfd1ce5213f709d"
  },
  {
   "component": "yesno",
@@ -16210,7 +16210,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "939c862848b504b1"
+  "sha": "39376ee973546a2c"
  },
  {
   "component": "yesno",
@@ -16407,7 +16407,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "939c862848b504b1"
+  "sha": "39376ee973546a2c"
  },
  {
   "component": "yesno",
@@ -16608,7 +16608,7 @@
    "ui-kit/specimens/options-multi.html",
    "ui-kit/specimens/yesno-pick.html"
   ],
-  "sha": "26944007eaacea52"
+  "sha": "464e216fbd74ade9"
  },
  {
   "component": "yesno",
@@ -16805,7 +16805,7 @@
    "ui-kit/specimens/options-multi.html",
    "ui-kit/specimens/yesno-pick.html"
   ],
-  "sha": "1bed83a8ef8b6a10"
+  "sha": "2ff5fd239ad25cf8"
  },
  {
   "component": "yesno",
@@ -16986,6 +16986,6 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-dock.html"
   ],
-  "sha": "3e1220b4d4f3d7f4"
+  "sha": "15ea8006f0ddbd46"
  }
 ]

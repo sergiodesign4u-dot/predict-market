@@ -536,7 +536,28 @@
   --border-brass-hover:var(--brass-a45);   /* from: the hover border of the quiet button family */
   --tint-brass-06:var(--brass-a06);        /* from: the quietest brass wash (funds-safety line) */
   --tint-brass-09:var(--brass-a09);        /* from: the condensed category chip when active */
-  --tint-brass-16:var(--brass-a16);        /* from: a selected quick amount */
+  /* AND, SINCE 2026-08-07, THE HEADER BAND'S SKIN. Four controls stand in that
+     band - the icon button (242 uses, all of them there), the notification and
+     account <summary> disclosures and the How-it-works pill (105, likewise all
+     there) - and measured at 1440 and 380 in both themes they are one skin to
+     the byte: nothing at rest inside a --border-hairline pill, this tint on a
+     --color-action edge under a pointer, --bg-pressed under a finger. Nowhere
+     else in the product wears it; every other icon button carries a face.
+     WHY A SKIN IS A TOKEN AND NOT A FILE. A fourth file drawing .icon-btn,
+     summary and .btn would be three more file-slots on two atoms, which is what
+     gate 41 counts, and a shared CLASS is that file with a name on it: a face's
+     rules live in its atom's file. So components/iconbtn.css, header.css and
+     button.css each keep their own rule saying their control stands on the band,
+     and the band says HERE, once, what it does to whatever stands on it.
+     IT WAS OFF THE LADDER FOR AS LONG AS IT EXISTED, and the reason is the whole
+     lesson. The wash was typed as color-mix(in oklab,var(--color-action) 14%,
+     transparent) in all three files, and ui-kit/_rescale.py has mapped
+     --brass-a14 to --brass-a16 since the scale was declared - but it matches
+     TOKEN NAMES, and a value written longhand as a colour function is invisible
+     to it. Three copies of a rung that is not on the ladder, hidden by their own
+     spelling. Naming it is what made the tool able to see it, and the tool
+     answered within the minute. */
+  --tint-brass-16:var(--brass-a16);        /* from: a selected quick amount, and the header band hovered */
   --tint-brass-30:var(--brass-a30);        /* same value as --border-brass and --glow-brass for now:
                                               a fill, an edge and a glow at one depth of the metal .           From: the funds-safety border */
   --tint-brass-45:var(--brass-a45);        /* from: the price-moved border */
@@ -896,6 +917,15 @@
   --border-brass-hover:var(--brass-a60);
   --tint-brass-06:var(--brass-a09);
   --tint-brass-09:var(--brass-a16);
+  /* THIS RUNG IS WHERE THE HEADER BAND'S HOVER ARRIVED ON 2026-08-07, and the
+     step it takes here is the point of the whole ladder. The band wash used to
+     be a flat 14 per cent in both themes because it was typed as a colour
+     function rather than named, and a flat alpha does not read the same on two
+     stones: measured against its own band it separated at 1.27:1 on graphite and
+     1.11:1 on chalk. On this rung it is 1.33 and 1.25, so the two themes answer
+     a pointer with the same strength for the first time. The dark band moves 3
+     units of sRGB to get there, which is under this ladder's own declared
+     resolution; the light band moves visibly, and that is the correction. */
   --tint-brass-16:var(--brass-a30);
   --tint-brass-30:var(--brass-a45);
   --tint-brass-45:var(--brass-a60);

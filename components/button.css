@@ -1,7 +1,7 @@
 /* components/button.css
    Component: button. Classes: .btn, .btn-bare, .btn-block, .btn-ghost, .btn-lg, .btn-md, .btn-primary, .btn-prompt, .btn-secondary, .btn-sm, .btn-xs, .prov-apple, .prov-x.
 
-   Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-pressed, --bg-prompt-hover, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --opacity-disabled, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong
+   Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-pressed, --bg-prompt-hover, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --opacity-disabled, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-16
    Stand:  ui-kit/button.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -245,14 +245,22 @@
   background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
 /* GHOST ANSWERS WITH THE BAND'S WASH and not with the quiet hover above, because
    it has no ground to move: --bg-control-hover on a transparent control is a fill
-   appearing out of nothing. The 14 per cent action wash and the action edge are
-   what the header's icon buttons and its two disclosures already do, so pointing
-   at any of the four gives one answer. The ink lifts to primary because ghost
-   rests at muted and has somewhere to go.
+   appearing out of nothing. --tint-brass-16 and the action edge are what the
+   header's icon buttons and its two disclosures already do, so pointing at any of
+   the four gives one answer. The ink lifts to primary because ghost rests at
+   muted and has somewhere to go.
+   THIS EMPHASIS IS THE BAND'S, and counting says so: all 105 `.btn-ghost` in the
+   painted tree are the How-it-works pill in `<header>` and there is no ghost
+   anywhere else in the product. So the wash it reads is a token rather than a
+   value, written once in components/tokens.css because the SURFACE decided it,
+   and this file, components/iconbtn.css and components/header.css each say only
+   that their control stands there. Naming it also MOVED it: the wash was a 14 per
+   cent colour-mix, a rung that is not on the brass ladder, and the rescale map
+   has said 14 goes to 16 since the scale was declared. ui-kit/docs/backlog.md S48.
    BARE HAS ONLY THE MARK AND THE WORD to answer with, so the ink goes brass and
    nothing else moves; the press is the one pressed ground the system has, which
    is the only time this control draws a shape at all. */
-.btn.btn-ghost:hover{background:color-mix(in oklab,var(--color-action) 14%,transparent);
+.btn.btn-ghost:hover{background:var(--tint-brass-16);
   border-color:var(--color-action);color:var(--text-primary)}
 .btn.btn-bare:hover{color:var(--text-brass)}
 .btn.btn-ghost:active,.btn.btn-bare:active{background:var(--bg-pressed)}

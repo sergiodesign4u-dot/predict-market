@@ -1125,6 +1125,126 @@ screens that carry the class link nothing from `components/` at all.
 
 ---
 
+## A surface owns a skin, and a skin is a token: S48 and S45, 2026-08-07
+
+Neither of these moves the distance, which is already 0. Both are the same
+question the migration kept meeting from the other side. If a face is an answer
+to the SURFACE a control stands on - and it was, six times, on every atom that
+closed - **then what happens when the surface has an answer for controls that
+are not the same atom?**
+
+### S48: four controls, one skin, three files
+
+    at 1440 and 380, dark and light, rest / hover / press
+
+    .icon-btn            36x36   transparent, 1px --border-hairline, --radius-pill
+    .notif-menu summary  40x36   the same three
+    .avatar-menu summary 56x36   the same three
+    .btn.btn-ghost       88x28   the same three
+
+    hover, all four      the wash + a --color-action edge
+    press, all four      --bg-pressed
+
+**Counting is what turned this from a resemblance into a fact.** All 242 plain
+`.icon-btn` in the painted tree stand in `<header>`, 105 in `.left` and 137 in
+`.utility`; every icon button anywhere else carries a face modifier. All 105
+`.btn-ghost` are the How-it-works pill, also in `<header>`; there is no ghost
+anywhere else in the product. **The skin exists in one band and nowhere else.**
+
+The one thing that parts the four is the rest INK. Three of them are a mark and
+sit at `--text-primary`; the fourth is a word and sits at `--text-muted`, rising
+to primary under the pointer, because a label at full ink beside the wordmark
+competes with it and a mark at muted disappears.
+
+**A SKIN IS A SET OF TOKENS, NOT A FILE AND NOT A CLASS, and gate 41 is what
+decides it.** A fourth file drawing `.icon-btn`, `summary` and `.btn` is three
+more file-slots on two atoms - the exact thing the last seven days took from 18
+to 0. A shared class is that file with a name on it: a face's rules live in its
+atom's file, and the day `.band-quiet` were named in a census row the metric
+would start counting it in three places, correctly. **The two `<summary>`
+disclosures are the proof it had to be a token.** A summary is neither `button`
+nor `iconbutton`, so no atom could ever have held their half of the skin, and
+any answer that only works for two of the four is not an answer.
+
+So each of the three files keeps its own rule, saying that its control stands on
+the band, and the band says once what it does to whatever stands on it.
+
+### Naming the value is what let the ladder see it
+
+The wash was `color-mix(in oklab,var(--color-action) 14%,transparent)`, typed out
+in all three files. `ui-kit/_rescale.py` has mapped `--brass-a14` to
+`--brass-a16` since the brass scale was declared, because **14 is not a rung**;
+the ladder is 06, 09, 16, 30, 45, 60 and its own note says a step of .05 is below
+what a screen shows. The map matches token NAMES. **A value spelled as a colour
+function is invisible to the tool that exists to keep values on the ladder**, and
+these three had been invisible for as long as they existed.
+
+The rewrite came back within the minute of the token being named, unasked:
+
+    --tint-brass-14  ->  --tint-brass-16   x4
+    --brass-a14      ->  --brass-a16       x1
+
+**So the hover moved a rung, and the light theme is where that matters.**
+`--tint-brass-16` is `--brass-a16` on graphite and `--brass-a30` on chalk,
+because every tint steps up one rung in daylight. Measured against its own band:
+
+    dark    52,49,41 -> 55,52,43      1.27:1 -> 1.33:1
+    light   241,234,217 -> 233,221,191  1.11:1 -> 1.25:1
+
+A flat alpha does not read the same on two stones, which is the whole reason the
+ladder shifts, and this wash had been flat in both. **The two themes answer a
+pointer with the same strength now, for the first time.** The dark band moves
+three units of sRGB to get there, under the ladder's own declared resolution; the
+light band moves visibly, and that is the correction rather than the cost.
+
+    16 readings changed, all of them backgroundColor, all of them :hover, on the
+    four band controls and nothing else
+    525 snapshots: 0 differ, 0 elements changed - the whole change lives inside
+    a state no before-and-after in this repo can photograph
+
+**Nine more longhand brass tints are still out there** at rungs 10, 14, 20, 34
+and 55, in eight files, each invisible to the rescale map for the same reason.
+One of them is this exact 14 per cent, on `.chip-cnt` under a current lane. They
+are `ui-kit/docs/backlog.md` S50 and not a side effect of closing S48.
+
+### S45: not one hover per atom, and not one per surface
+
+`.icon-btn-tile` (27) and `.icon-btn-lift` (525) rest as the same picture and
+part on the pointer. The tile firms its edge and brightens its ink; the lift
+tints its ground with 20 per cent of the action role, takes a brass edge and
+rises two pixels. 27 against 525, so the quiet one looks like the exception that
+should give way.
+
+**It is not, and the reason is a collision nobody had priced.** Raised the way a
+person raises it - by clicking the bookmark on `ui-visual/event-detail.html`,
+which carries the script that flips `aria-pressed` - a SAVED tile reads
+`rgb(215, 172, 83)` for its mark. The lift's hover reads `rgb(215, 172, 83)` for
+its mark. **The same value.** Give the tile the loud hover and pointing at an
+unsaved bookmark paints it the exact ink that means saved, on the one control in
+the product where those two answers sit a pixel apart.
+
+**So the rule is neither "one hover per atom" nor "one hover per surface".** A
+face answers the pointer with the accent unless the accent is already carrying a
+state of its own, and then it answers with what is left: an edge and an ink. Two
+of this atom's six faces spend brass on a state. The social row spends none, so
+it may.
+
+### The second finding, which nobody asked for
+
+    saved rest    rgba(199,162,78,.09) / rgba(199,162,78,.45) / rgb(215,172,83)
+    saved hover   rgba(199,162,78,.09) / rgba(199,162,78,.45) / rgb(215,172,83)
+
+Byte for byte, in both themes. `.icon-btn-tile[data-fav][aria-pressed="true"]` is
+(0,4,0) against the hover's (0,3,0), so it wins the pointer as well as the
+finger. Winning the finger is deliberate and written down - brass leaving under a
+press would read as the favourite coming off before the click had said so - and
+winning the pointer was never decided at all. **A saved bookmark is a control
+that has stopped saying it is one.** It is the same shape as a selected chip
+answering no press, so it is filed with it: `ui-kit/docs/backlog.md` S38 owns
+both now rather than one file inventing half an answer.
+
+---
+
 ## The decision this document no longer has open
 
 - ~~**Is a social mark a `navitem` or an `iconbutton`?**~~ **Answered 2026-08-06 and the

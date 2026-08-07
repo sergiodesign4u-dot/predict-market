@@ -1,7 +1,7 @@
 /* components/iconbtn.css
    Component: iconbtn. Classes: .bal-add, .bal-swap, .icon-btn, .icon-btn-bare, .icon-btn-lift, .icon-btn-photo, .icon-btn-ring-strong, .icon-btn-small, .icon-btn-tile.
 
-   Reads: --bevel-strong, --bg-control, --bg-pressed, --border-hairline, --color-action, --color-action-lit, --icon-brass, --icon-quiet, --line-on-photo, --line-on-photo-hover, --scrim-photo, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45
+   Reads: --bevel-strong, --bg-control, --bg-pressed, --border-hairline, --color-action, --color-action-lit, --icon-brass, --icon-quiet, --line-on-photo, --line-on-photo-hover, --scrim-photo, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong, --tint-brass-09, --tint-brass-16, --tint-brass-45
    Stand:  ui-kit/iconbtn.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -45,13 +45,28 @@
 .icon-btn{padding:var(--space-4);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;line-height:0}
 .bal-swap{padding:var(--space-4)}
 .bal-add{padding:var(--space-4)}
-/* The circle. It was one line with the header's two <summary> disclosures, which
-   open dropdowns and are not this control; the shared declaration is duplicated
-   rather than moved, and the two halves now say the same thing in the two files
-   that own them. */
+/* The circle, and it is THE HEADER BAND'S SKIN rather than this atom's own idea.
+   Counted over the painted tree, every one of the 242 plain `.icon-btn` in the
+   product stands in `<header>` - 105 in `.left`, 137 in `.utility` - and every
+   icon button anywhere else carries a face modifier. Three other controls stand
+   in the same band wearing the same thing to the byte: the notification and
+   account `<summary>` disclosures in components/header.css and the How-it-works
+   pill in components/button.css as `.btn.btn-ghost`. Measured at 1440 and 380 in
+   both themes, all four rest transparent inside a `--border-hairline` pill, all
+   four take `--tint-brass-16` on a `--color-action` edge under a pointer and
+   `--bg-pressed` under a finger. The only thing that parts them is the rest INK,
+   because three of them are a mark and the fourth is a word.
+   THE RULE IS HERE THREE TIMES AND THE DECISION IS IN ONE PLACE. A fourth file
+   drawing all three atoms is three more file-slots (gate 41) and a shared class
+   is the same file wearing a name, so what moved out is the VALUE: the wash was
+   `color-mix(in oklab,var(--color-action) 14%,transparent)` typed in three
+   stylesheets, and naming it is what let the ladder see it. It was not on the
+   ladder - `ui-kit/_rescale.py` has mapped 14 to 16 since the scale was declared
+   and could not read a colour function - so this hover moved one rung the moment
+   it was given a name. ui-kit/docs/backlog.md S48. */
 .icon-btn{background:transparent;border:1px solid var(--border-hairline);border-radius:var(--radius-pill)}
 .icon-btn{width:var(--control-36);height:var(--control-36);color:var(--text-primary)}
-.icon-btn:hover{background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:var(--color-action)}
+.icon-btn:hover{background:var(--tint-brass-16);border-color:var(--color-action)}
 .icon-btn:active{background:var(--bg-pressed)}
 /* The two modifiers, and they are a SIZE and a FACE. Add funds is the one icon
    button in the product that carries the primary action's brass plate, and it
@@ -202,7 +217,15 @@
 .icon-btn.icon-btn-tile:active{background:var(--bg-pressed)}
 /* The favourited star, and it deliberately outranks both. Its brass leaving
    under the finger would read as the favourite coming off before the click had
-   said so. */
+   said so.
+   AND OUTRANKING BOTH COSTS SOMETHING NOBODY HAD PRICED. This selector is (0,4,0)
+   against the hover's (0,3,0), so it wins the pointer as well as the finger: a
+   saved bookmark and a saved bookmark under a mouse are the same picture, read
+   byte for byte in both themes on 2026-08-07. The press half of that is the
+   sentence above and it is right; the hover half is a control that stops saying
+   it is a control. It is the same shape as a selected chip answering no press,
+   so it is filed with it rather than answered here alone:
+   ui-kit/docs/backlog.md S38. */
 .icon-btn.icon-btn-tile[data-fav][aria-pressed="true"]{color:var(--text-brass);border-color:var(--tint-brass-45);background:var(--tint-brass-09)}
 /* A SIZE IS THE CONTROL'S AND THE GAP BETWEEN THEM IS THE ROW'S, so this half
    of the old media query came here and the other half stayed in
@@ -227,12 +250,25 @@
    their label. So the shared rest is written ONCE, in the selector below, rather
    than asserted in a comment in two files.
 
-   WHERE THEY PART IS THE POINTER, and that is left as it stands rather than
-   settled here. The tile brightens its ink and firms its edge; this lifts two
-   pixels, tints its ground with 20 per cent of the action role and takes a brass
-   edge. 27 placements against 525. Which of the two an ordinary surface should
-   answer with is one line and it is visible, so it is `ui-kit/docs/backlog.md`
-   S45 and not a side effect of moving a rule between files.
+   WHERE THEY PART IS THE POINTER, AND S45 CLOSED ON 2026-08-07 BY MEASURING WHY.
+   The tile brightens its ink and firms its edge; this lifts two pixels, tints its
+   ground with 20 per cent of the action role and takes a brass edge. 27
+   placements against 525, so the loud one is the majority and the quiet one looks
+   like the exception that should give way. It is not.
+
+   THE TILE MAY NOT SPEND BRASS ON A POINTER BECAUSE IT ALREADY SPENDS IT ON A
+   STATE. Raised by clicking the bookmark on `ui-visual/event-detail.html`, which
+   is how a person raises it, a SAVED tile reads `rgb(215, 172, 83)` for its mark;
+   the hover below reads `rgb(215, 172, 83)` for its mark. The same value. Give
+   the tile this face's hover and pointing at an unsaved bookmark paints it the
+   exact ink that means saved, on the one control in the product where those two
+   answers sit a pixel apart.
+
+   SO THE RULE IS NOT "ONE HOVER PER ATOM" AND IT IS NOT "ONE HOVER PER SURFACE".
+   A face answers the pointer with the accent unless the accent is already
+   carrying a state of its own, and then it answers with what is left: an edge and
+   an ink. Two of this atom's six faces spend brass on a state - this row spends
+   none, so it may - and that is the whole of the difference between them.
 
    THE LIFT IS THE FOOTER'S OWN ARGUMENT AND IT SURVIVES THE MOVE: it is the
    Vault's floating language, it is composited, and it shifts no neighbour. A HELD

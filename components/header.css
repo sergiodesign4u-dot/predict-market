@@ -1,7 +1,7 @@
 /* components/header.css
    Component: header. Classes: .app-header, .auth-btns, .avatar-menu, .badge-dot, .bal-amt, .bal-figure, .bal-label, .bal-toggle, .bell-wrap, .cat-condensed, .dropdown, .hiw-btn, .left, .logo-btn, .notif-all, .notif-empty, .notif-menu, .row, .utility.
 
-   Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-slab-from, --bg-surface, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --shadow-ink, --shadow-ink-72, --text-brass, --text-icon-strong, --text-muted, --text-on-brass, --text-primary
+   Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-slab-from, --bg-surface, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --shadow-ink, --shadow-ink-72, --text-brass, --text-icon-strong, --text-muted, --text-on-brass, --text-primary, --tint-brass-16
    Stand:  ui-kit/header.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -67,14 +67,26 @@
    had no name for until the census measured 177 placements wearing one. Two selectors
    were SPLIT rather than moved, because each also styled the two <summary> disclosures
    that open the notification and account menus, and those are still this file's.
-   THE SPLIT IS THE FINDING AGAIN. Four controls in this band wear one skin - the icon
-   button, the two disclosures and this pill - and after two migrations that skin is now
-   written in three files. It is the same 14 per cent action wash each time. What the
-   band actually has is a quiet-control SKIN shared across three atoms, which the map has
-   no vocabulary for. ui-kit/docs/backlog.md S48.
+   S48 CLOSED HERE ON 2026-08-07, AND A SURFACE MAY OWN A SKIN. Four controls in this
+   band wear one - the icon button (242), these two disclosures and the How-it-works pill
+   (105) - and the measurement is what settled it: at 1440 and 380, in both themes, all
+   four rest transparent inside a hairline pill and all four answer a pointer with the
+   same wash on a --color-action edge and a finger with --bg-pressed. THE SKIN IS A SET
+   OF TOKENS, NOT A FILE AND NOT A CLASS. A file that drew all three atoms would be three
+   more file-slots on the atom map, which is precisely what gate 41 counts, and a shared
+   class is that file with a name on it: a face's rules live in its atom's file. So the
+   rule stays here, in components/iconbtn.css and in components/button.css, three times,
+   each saying that its control stands on this band - and the band says once, as
+   --tint-brass-16 in components/tokens.css, what it does to whatever stands on it.
+   THESE TWO ARE THE PROOF THAT IT HAD TO BE A TOKEN. A <summary> is neither `button`
+   nor `iconbutton`, so no atom could ever have held their half of the skin.
+   AND NAMING IT MOVED IT. The wash was written longhand as a 14 per cent colour-mix,
+   a rung that is not on the brass ladder, and ui-kit/_rescale.py has mapped 14 to 16
+   since the scale was declared - it matches token NAMES, so three copies spelled as a
+   colour function stayed invisible to it for as long as they existed.
    `display:none` under the breakpoint stays here: hiding a control in a band is the
    band's decision, which is the line every one of these migrations is drawn on. */
-.notif-menu summary:hover,.avatar-menu summary:hover{background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:var(--color-action)}
+.notif-menu summary:hover,.avatar-menu summary:hover{background:var(--tint-brass-16);border-color:var(--color-action)}
 /* Press, the axis this file never had: nine hovers answered the pointer on the way in and
    nothing answered the click. Every quiet control in the header is flat at rest, a transparent
    ground inside a hairline, so it presses the one way the whole system presses: it settles onto
