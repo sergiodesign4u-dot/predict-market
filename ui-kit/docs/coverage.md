@@ -19,7 +19,7 @@ says so. No em dash.
 | betpanel | 4 | betpanel-states, betpanel-dock, betpanel-sheet, betpanel-more | 3 | 20 | 11 |
 | bets-table | 3 | bets-biggest, bets-table, bets-activity | 1 | 13 | 9 |
 | bottomnav | 1 | bottomnav | 1 | 2 | 105 |
-| button | 3 | button-matrix, button-census, button-outcome-row | 0 | 12 | 105 |
+| button | 3 | button-matrix, button-census, button-outcome-row | 0 | 13 | 105 |
 | card | 4 | card-binary, card-multi, card-loading, card-detail-head | 2 | 14 | 36 |
 | catnav | 3 | catnav-chips, catnav-subfilter, catnav-subcat | 1 | 4 | 57 |
 | chart | 1 | chart | 1 | 12 | 11 |

@@ -1,7 +1,7 @@
 /* components/comments.css
    Component: comments. Classes: .cmt, .cmt-actions, .cmt-av, .cmt-badge, .cmt-body, .cmt-compose, .cmt-controls, .cmt-input, .cmt-list, .cmt-meta, .cmt-signin, .cmt-text, .cmt-user, .reply, .seg.
 
-   Reads: --bg-control, --bg-pressed, --bg-prompt-hover, --bg-well, --border-brass, --border-brass-hover, --border-hairline, --color-action, --text-brass, --text-muted, --text-primary, --tint-brass-09
+   Reads: --bg-control, --bg-well, --border-brass, --border-hairline, --color-action, --text-brass, --text-muted, --text-primary, --tint-brass-09
    Stand:  ui-kit/comments.html
    Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -10,7 +10,15 @@
 .cmt-compose{display:flex;gap:var(--space-8);margin-bottom:var(--space-8)}
 .cmt-av{width:var(--size-28);height:var(--size-28);flex:0 0 var(--size-28);border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
 .cmt-input{flex:1;padding:var(--space-8);font-size:var(--text-12)}
-.cmt-signin{text-align:center}
+/* `.cmt-signin{text-align:center}` was here and it went out with the control on
+   2026-08-07. It was the grey layer - unscoped, so it would have applied to the
+   wireframes - and it never reached them, because the nine grey screens that
+   carry this class link nothing from components/ at all. components/chip.css
+   carries the note about the two rules of exactly this kind that had been
+   sitting in this file since it was cut; this is the last of them. `.btn`
+   declares the same value for the same reason, and it does it where the
+   control is now. It was also the last thing gate 41 read as this file drawing
+   a button: the atom map reached 0. */
 .cmt-list{display:flex;flex-direction:column;gap:var(--space-12)}
 .cmt{display:flex;gap:var(--space-8)}
 .cmt.reply{margin-left:var(--space-32)}
@@ -50,13 +58,25 @@
 .app-case .cmt-compose{border:0;background:transparent;padding:0;align-items:center}
 .app-case .cmt-av{border:1px solid var(--border-brass);color:var(--text-brass);font-size:var(--text-10);background:linear-gradient(140deg,color-mix(in oklab,var(--color-action) 20%,var(--bg-control)),var(--bg-control))}
 .app-case .cmt-input{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-muted)}
-.app-case .cmt-signin{display:flex;align-items:center;justify-content:center;width:100%;border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-muted);padding:var(--space-16);margin-bottom:var(--space-16);font-family:var(--font-body);font-size:var(--text-13);font-weight:var(--weight-semibold);cursor:pointer;transition:border-color var(--dur-quick) ease,color var(--dur-quick) ease,background var(--dur-quick) ease}
-.app-case .cmt-signin:hover{border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-prompt-hover)}
+/* THE SIGNED-OUT PROMPT ADOPTED THE FAMILY ON 2026-08-07 and this file keeps one
+   declaration of it: the gap under it. Everything else it was - a full-width box
+   on `--bg-well` with a hairline, a 10 corner, 16 of padding, muted semibold, a
+   brass-edged hover on `--bg-prompt-hover` and a `--bg-pressed` press - is
+   `components/button.css` now, as `.btn.btn-prompt.btn-lg.btn-block`. It is the
+   family's FIFTH emphasis and the only one that is an invitation rather than an
+   action, which is why it is the only one on a well and the only one muted at
+   rest. `ui-kit/docs/backlog.md` S47 was right that the ground and the ink were
+   not an emphasis this family had, and wrong that the answer was to leave it
+   here: four placements on two screens, two of them on the SAME screen saying
+   different things, is a kind and not an element. Its font moved 13 to 14, which
+   is the ramp's `lg` step and the single visible change the adoption makes -
+   exactly what `.cc-btn` cost a day earlier, answered the same way.
+   It was the last file-slot on the atom map: gate 41 went 1 to 0. */
+.app-case .cmt-signin{margin-bottom:var(--space-16)}
 /* The prompt is a quiet control, so it settles onto --bg-pressed, and it is flat at rest with
    nothing to unlift. It opens a dialog on the same click, so without a held-down ground the whole
    width of it looks inert until the sheet arrives. Equal specificity to the hover above, so it has
    to sit after it. */
-.app-case .cmt-signin:active{background:var(--bg-pressed)}
 .app-case .cmt-user{color:var(--text-primary)}
 .app-case .cmt-meta{color:var(--text-muted)}
 .app-case .cmt-badge{border:1px solid var(--border-brass);border-radius:var(--radius-6);background:var(--tint-brass-09);color:var(--text-brass);font-size:var(--text-10)}

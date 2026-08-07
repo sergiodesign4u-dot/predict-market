@@ -206,7 +206,7 @@
    "ui-kit/specimens/betpanel-sheet.html",
    "ui-kit/specimens/button-census.html"
   ],
-  "sha": "e841ba15f745ba2e"
+  "sha": "683c6c966272fd61"
  },
  {
   "component": "betpanel",
@@ -431,7 +431,7 @@
    "ui-kit/specimens/betpanel-more.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "264bff3188c540b3"
+  "sha": "a5bfb33249eea2ba"
  },
  {
   "component": "button",
@@ -450,6 +450,7 @@
    "btn-lg",
    "btn-md",
    "btn-primary",
+   "btn-prompt",
    "btn-secondary",
    "btn-sm",
    "btn-xs",
@@ -631,11 +632,11 @@
    "ui-kit/specimens/button-matrix.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "1f239e43536cfa1c"
+  "sha": "c104bc8616fe08e1"
  },
  {
   "component": "button",
-  "id": "g12",
+  "id": "g13",
   "el": "button.btn.btn-secondary.btn-md.btn-block",
   "scope": "dialog.signin-dialog",
   "specimen": "button-matrix",
@@ -650,6 +651,7 @@
    "btn-lg",
    "btn-md",
    "btn-primary",
+   "btn-prompt",
    "btn-secondary",
    "btn-sm",
    "btn-xs",
@@ -829,7 +831,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "e9f3017b727faef0"
+  "sha": "216a46ded88a0151"
  },
  {
   "component": "button",
@@ -848,6 +850,7 @@
    "btn-lg",
    "btn-md",
    "btn-primary",
+   "btn-prompt",
    "btn-secondary",
    "btn-sm",
    "btn-xs",
@@ -1029,11 +1032,204 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "3fbbf5f12a39b4b3"
+  "sha": "3bfeef3756729659"
  },
  {
   "component": "button",
   "id": "g3",
+  "el": "button.btn.btn-prompt.btn-lg.btn-block",
+  "scope": "",
+  "specimen": "button-matrix",
+  "classes": [
+   "a-start",
+   "app-case",
+   "app-dialog",
+   "btn",
+   "btn-bare",
+   "btn-block",
+   "btn-ghost",
+   "btn-lg",
+   "btn-md",
+   "btn-primary",
+   "btn-prompt",
+   "btn-secondary",
+   "btn-sm",
+   "btn-xs",
+   "ic",
+   "kit-col",
+   "kit-nude",
+   "kit-row",
+   "kit-stack",
+   "kit-surf-lbl",
+   "prov-google",
+   "sheet-body",
+   "signin-dialog"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgb(13, 15, 18) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
+    "w": 900,
+    "h": 71,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgb(20, 22, 25) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "w": 900,
+    "h": 71,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "w": 900,
+    "h": 71,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgb(13, 15, 18) | none | rgb(43, 47, 56) | 1px | rgb(164, 157, 143) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 900,
+    "h": 71,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgb(253, 251, 245) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
+    "w": 900,
+    "h": 71,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgb(245, 243, 237) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 900,
+    "h": 71,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 900,
+    "h": 71,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgb(253, 251, 245) | none | rgb(172, 170, 164) | 1px | rgb(86, 80, 66) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 900,
+    "h": 71,
+    "pad": {
+     "top": 4,
+     "right": 12,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "button.btn.btn-prompt.btn-lg.btn-block"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/button.css",
+   "components/dialog.css",
+   "components/fonts.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/button-matrix.html"
+  ],
+  "sha": "c2a6f8800aad782a"
+ },
+ {
+  "component": "button",
+  "id": "g4",
   "el": "button.btn.btn-secondary.btn-sm",
   "scope": "",
   "specimen": "button-matrix",
@@ -1048,6 +1244,7 @@
    "btn-lg",
    "btn-md",
    "btn-primary",
+   "btn-prompt",
    "btn-secondary",
    "btn-sm",
    "btn-xs",
@@ -1257,11 +1454,11 @@
    "ui-kit/specimens/profile-identity.html",
    "ui-kit/specimens/state-empty-filters.html"
   ],
-  "sha": "64f94de21d89665b"
+  "sha": "e0e3b592ce1db7e3"
  },
  {
   "component": "button",
-  "id": "g4",
+  "id": "g5",
   "el": "button.btn.btn-primary.btn-sm",
   "scope": "",
   "specimen": "button-matrix",
@@ -1276,6 +1473,7 @@
    "btn-lg",
    "btn-md",
    "btn-primary",
+   "btn-prompt",
    "btn-secondary",
    "btn-sm",
    "btn-xs",
@@ -1488,7 +1686,7 @@
    "ui-kit/specimens/state-empty-filters.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "5ac8fdfb9f40e3cb"
+  "sha": "afda5420926e1549"
  },
  {
   "component": "card",
@@ -2244,7 +2442,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "c0ddc378be2df759"
+  "sha": "d3d79d9b744b0112"
  },
  {
   "component": "chip",
@@ -2642,7 +2840,7 @@
    "ui-kit/specimens/input-states.html",
    "ui-kit/specimens/quick-amounts.html"
   ],
-  "sha": "f1ce25affbae3172"
+  "sha": "cfd1377611d14ca3"
  },
  {
   "component": "chip",
@@ -2858,7 +3056,7 @@
    "ui-kit/specimens/input-states.html",
    "ui-kit/specimens/quick-amounts.html"
   ],
-  "sha": "f1ce25affbae3172"
+  "sha": "cfd1377611d14ca3"
  },
  {
   "component": "chip",
@@ -3046,7 +3244,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "c0ddc378be2df759"
+  "sha": "d3d79d9b744b0112"
  },
  {
   "component": "chip",
@@ -3313,7 +3511,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/catnav-chips.html"
   ],
-  "sha": "f8f155150a2bc5f9"
+  "sha": "9fd516ca9eb61cca"
  },
  {
   "component": "chip",
@@ -4227,7 +4425,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "328c222f8f040e04"
+  "sha": "b3bb4e46f87d92c0"
  },
  {
   "component": "cookie-consent",
@@ -4418,7 +4616,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "328c222f8f040e04"
+  "sha": "b3bb4e46f87d92c0"
  },
  {
   "component": "cookie-consent",
@@ -4607,7 +4805,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "328c222f8f040e04"
+  "sha": "b3bb4e46f87d92c0"
  },
  {
   "component": "course-chrome",
@@ -6444,7 +6642,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "4cb10d6f69d8c431"
+  "sha": "34e41a1cb1ac0c82"
  },
  {
   "component": "dialog",
@@ -6831,7 +7029,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/outcome-overlays.html"
   ],
-  "sha": "ef4284c646594c83"
+  "sha": "2fbbb35d9beb8ad0"
  },
  {
   "component": "filters",
@@ -8156,7 +8354,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "4d7988c4dcc4c9d3"
+  "sha": "41a21d96e1f96f1a"
  },
  {
   "component": "header",
@@ -8364,7 +8562,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "2f7d826ea6cc0d38"
+  "sha": "3f0df3f32b8ca5a9"
  },
  {
   "component": "header",
@@ -8572,7 +8770,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "2f7d826ea6cc0d38"
+  "sha": "3f0df3f32b8ca5a9"
  },
  {
   "component": "hero",
@@ -10217,7 +10415,7 @@
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "e1f089e35a9c31bb"
+  "sha": "7bf591adb6df6981"
  },
  {
   "component": "iconbtn",
@@ -10638,7 +10836,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "ab2846d05ffa492f"
+  "sha": "4105d409db495356"
  },
  {
   "component": "iconbtn",
@@ -11106,7 +11304,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "edb7463ee106c907"
+  "sha": "6e6ddbdc3277617f"
  },
  {
   "component": "input",
@@ -11316,7 +11514,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "b1d722a41e134a3c"
+  "sha": "dd93cea22d1b337f"
  },
  {
   "component": "input",
@@ -11921,7 +12119,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "ecfa4a8764359af3"
+  "sha": "d76c8f16f1e198b2"
  },
  {
   "component": "input",
@@ -12125,7 +12323,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "697f4137bd16d740"
+  "sha": "15c06ad97d6e5071"
  },
  {
   "component": "market",
@@ -12426,7 +12624,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "2f7d826ea6cc0d38"
+  "sha": "3f0df3f32b8ca5a9"
  },
  {
   "component": "navitem",
@@ -13308,7 +13506,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "5b2253bac3db962c"
+  "sha": "855173767926eb64"
  },
  {
   "component": "tabs",
@@ -13502,7 +13700,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "5b2253bac3db962c"
+  "sha": "855173767926eb64"
  },
  {
   "component": "tabs",
@@ -13696,7 +13894,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "5b2253bac3db962c"
+  "sha": "855173767926eb64"
  },
  {
   "component": "tabs",
@@ -13835,7 +14033,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "9c04ee0d82c55db4"
+  "sha": "1b6abf2bc4f5a972"
  },
  {
   "component": "tabs",
@@ -14010,7 +14208,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "9c04ee0d82c55db4"
+  "sha": "1b6abf2bc4f5a972"
  },
  {
   "component": "tabs",
@@ -14185,7 +14383,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "9c04ee0d82c55db4"
+  "sha": "1b6abf2bc4f5a972"
  },
  {
   "component": "tabs",
@@ -15815,7 +16013,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-more.html"
   ],
-  "sha": "cc15ec5527b722f2"
+  "sha": "38ddc48869e4ce47"
  },
  {
   "component": "yesno",

@@ -1,7 +1,7 @@
 /* components/button.css
-   Component: button. Classes: .btn, .btn-bare, .btn-block, .btn-ghost, .btn-lg, .btn-md, .btn-primary, .btn-secondary, .btn-sm, .btn-xs, .prov-apple, .prov-x.
+   Component: button. Classes: .btn, .btn-bare, .btn-block, .btn-ghost, .btn-lg, .btn-md, .btn-primary, .btn-prompt, .btn-secondary, .btn-sm, .btn-xs, .prov-apple, .prov-x.
 
-   Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --opacity-disabled, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong
+   Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-pressed, --bg-prompt-hover, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --opacity-disabled, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong
    Stand:  ui-kit/button.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -131,6 +131,36 @@
   color:var(--text-muted);white-space:nowrap}
 .btn.btn-bare{background:transparent;border-width:0;border-radius:0;color:var(--text-muted);
   padding:var(--space-4);font-size:var(--text-11);gap:var(--space-4)}
+/* THE FIFTH EMPHASIS, 2026-08-07, AND IT IS THE LAST FILE-SLOT ON THE ATOM MAP.
+   `.cmt-signin` is a full-width invitation on `--bg-well`: "Sign in to join the
+   discussion" over a comment thread, "Sign in to place and track your bet" over
+   the bets table, both opening the sign-in sheet. `ui-kit/docs/backlog.md` S47
+   looked at it in the button migration and kept it out, and the reason it gave
+   was right - that ground and that ink are not an emphasis this family has - but
+   the conclusion was to leave it in `components/comments.css`, which made the
+   composer's own file the only place the shape was written down.
+   IT IS AN EMPHASIS AND NOT AN EXCEPTION, and the count is what says so. Four
+   placements, on two screens, and TWO OF THEM ARE ON THE SAME SCREEN saying
+   different things: this is a kind, not an element. The map forbids naming a
+   face for a SINGLE element, which is what it says about the logo, and this is
+   the opposite case.
+   WHAT MAKES IT ITS OWN STEP RATHER THAN A QUIET SECONDARY. Every other
+   emphasis in this family is an ACTION a person has decided to take; this one is
+   an INVITATION to somebody who has not decided anything yet, and it stands
+   where the thing they came for should have been. So it is the only one drawn on
+   a WELL - a recessed ground rather than a raised one - and the only one whose
+   label is muted at rest. It is quieter than `secondary` on both axes on
+   purpose: a prompt that shouts is a wall.
+   Its hover is the one place `--bg-prompt-hover` is read, which is the token's
+   whole provenance, and the press is the system's one quiet pressed ground.
+   THE WEIGHT IS DECLARED AND THE FIRST DRAFT OF THIS RULE FORGOT IT, which the
+   before-and-after caught in one line: `.btn` sets no weight, `secondary` sets
+   600 and `primary` 700, so a fifth emphasis that says nothing inherits the
+   body's 400. Twenty readings went 600 to 400 and the diff named it. An
+   emphasis is a ground, an edge, an ink AND a weight in this family, and three
+   of four is a bug. */
+.btn.btn-prompt{background:var(--bg-well);border-color:var(--border-hairline);color:var(--text-muted);
+  font-weight:var(--weight-semibold)}
 
 /* THE THREE SIZES, and the ramp is read off the product rather than invented.
    sm is the 12px step, and its horizontal padding is 12 because `.state-btn`
@@ -226,6 +256,13 @@
   border-color:var(--color-action);color:var(--text-primary)}
 .btn.btn-bare:hover{color:var(--text-brass)}
 .btn.btn-ghost:active,.btn.btn-bare:active{background:var(--bg-pressed)}
+/* The prompt lights all three at once - edge, ink and ground - which no other
+   emphasis in this family does, and it is the right answer for the one control
+   that is muted at rest: a single step would leave it looking almost as quiet as
+   it was. `--bg-prompt-hover` is one shade up from the well rather than a tint,
+   because the invitation is to sign in and not to spend brass on it. */
+.btn.btn-prompt:hover{border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-prompt-hover)}
+.btn.btn-prompt:active{background:var(--bg-pressed)}
 /* Disabled. The product disables exactly one control, Add funds in the deposit
    dialog when the amount is under the minimum, and it says so with aria-disabled
    because a native disabled button is not focusable and the reason for it has to

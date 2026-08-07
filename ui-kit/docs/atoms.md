@@ -1065,6 +1065,64 @@ family has**, and the specimen corpus stages it nowhere. It is the last file-slo
 and it is a question rather than a migration - whether a signed-out PROMPT is a
 button at all, or a `notice` a person can press. Nothing else is in the way.
 
+## The last file-slot: the distance is 0
+
+`.cmt-signin` is `.btn.btn-prompt.btn-lg.btn-block`, and **every control atom in
+this product is now drawn in exactly one file.**
+
+    41 the atom map   7 control atom(s) in 7 file-slot(s): distance 0
+                      chip        1601  5 kind(s), 1 file(s): chip
+                      iconbutton  1361  6 kind(s), 1 file(s): iconbtn
+                      navitem      995  2 kind(s), 1 file(s): navitem
+                      button       902  6 kind(s), 1 file(s): button
+                      outcome      272  2 kind(s), 1 file(s): yesno
+                      tab           36  1 kind(s), 1 file(s): tabs
+                      switch         3  1 kind(s), 1 file(s): toggle
+
+**S47 was right about the reading and wrong about the conclusion.** It measured
+this control in the button migration and kept it out with a sentence that still
+holds - that ground and that ink are not an emphasis this family has - and then
+left it in `components/comments.css`, which made the composer's own file the only
+place the shape was written down. **The reading was the argument for naming it,
+not for leaving it.**
+
+**IT IS AN EMPHASIS AND NOT AN EXCEPTION, and the count says so.** The map forbids
+naming a face for a SINGLE element, which is what it says about the logo. This is
+four placements on two screens, and **two of them are on the same screen saying
+different things**: "Sign in to join the discussion" over a comment thread, "Sign
+in to place and track your bet" over a bets table. That is a kind.
+
+**WHAT MAKES IT ITS OWN STEP RATHER THAN A QUIET SECONDARY.** Every other
+emphasis in this family is an ACTION somebody has decided to take. This one is an
+INVITATION to somebody who has decided nothing yet, and it stands exactly where
+the thing they came for should have been. So it is the only one drawn on a WELL,
+a recessed ground rather than a raised one, and the only one whose label is muted
+at rest. It lights all three under a pointer - edge, ink and ground - which no
+other emphasis does, because a control that starts quiet needs more than one step
+to answer at all.
+
+    20 readings of the control
+      54 tall to 55, and 73 to 76 where the label wraps to two lines: the ramp's
+      `lg` step taking the font 13 to 14, which is the single value this
+      adoption changes and the same one `.cc-btn` cost a day earlier
+    everything else on 525 snapshots: 0 properties, and 110 boxes of reflow
+    under those two comment panels on 10 screens
+
+**THE DIFF CAUGHT A BUG IN THE FIRST DRAFT, IN ONE LINE.** `.btn` sets no weight,
+`secondary` sets 600 and `primary` 700, so a fifth emphasis that said nothing
+inherited the body's 400: twenty readings went 600 to 400 and the before-and-after
+named the property. **An emphasis in this family is a ground, an edge, an ink AND
+a weight, and three of four is a bug.** No sweep of the source would have found
+it, because nothing was missing from anything - the value simply was not there.
+
+**AND `comments` WENT QUIET.** Its three controls all left for
+`components/button.css` - Post on 2026-08-06, Reply and Like the same day as
+`.btn-bare`, the prompt a day later - and each took its hover and its press with
+it. The file is declared STATIC now: a thread is read, not pressed. The last
+thing gate 41 read in it was `.cmt-signin{text-align:center}`, the unscoped grey
+layer, which had never reached the wireframes either, because the nine grey
+screens that carry the class link nothing from `components/` at all.
+
 ---
 
 ## The decision this document no longer has open

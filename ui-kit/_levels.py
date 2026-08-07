@@ -293,6 +293,9 @@ STATIC = {
     # faces. They went to chip.css with their hovers, their presses, their
     # current-page state and, after gate 24 refused the first cut, their two
     # parts as well.
+    # AND A FOURTH ON 2026-08-07, by the same kind of move: this file lost its
+    # last control rather than its states.
+    "comments": "a thread and a composer, and since 2026-08-07 that is the whole of it: the controls row, the avatar, the input, the list, a reply's indent, a comment's meta line and the divided segment the wireframes still show. Its three controls all left for components/button.css - Post on 2026-08-06, Reply and Like the same day as `.btn.btn-bare`, and the signed-out prompt a day later as the family's fifth emphasis - and each took its hover and its press with it. A thread is read, not pressed",
     "catnav": "a band and a rail, and since 2026-08-07 nothing else: the strip under the "
               "header, the sticky 214px column on a category page, four scrollers with "
               "their bars hidden, a groove along the strip's bottom edge and the page "
