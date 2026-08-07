@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Foundations: typography</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body class="app-case">
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Typography</h1>
+    <p>Three families, a ten step ramp with eight fluid sizes above it, three named weights and six
+    leadings. Every specimen below wears the token by name. The weights are measured
+    <b>by ink</b> rather than by the number in the declaration, because a weight that has no face
+    behind it renders as the nearest one that does and says nothing about it.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">3 families</span>
+      <span class="tk-badge">18 faces</span>
+      <span class="tk-badge">10 + 8 sizes</span>
+      <span class="tk-badge">1 literal size in 128</span>
+    </div>
+    <div class="tk-jump">
+      <a href="colour.html">Foundations: colour</a>
+      <a href="icons.html">Foundations: icons</a>
+      <a href="vitrine.html">The vitrine</a>
+      <a href="overview.html">Why the kit is being rebuilt</a>
+    </div>
+  </div>
+
+  <!-- ============================= families =========================== -->
+  <section class="tk-sec" id="families">
+    <h2 data-n="01">Three families, and a job each</h2>
+    <p class="tk-note">Three is the ceiling. A fourth family would have to name a job the other
+    three cannot do, and there is not one.</p>
+    <div class="tk-cards">
+      <div class="tk-card">
+        <h3>Space Grotesk, display</h3>
+        <p class="tk-big f-display w-bold s-30 l-flat">Will it happen?</p>
+        <p>The question, the heading, the number a person came for. Never a paragraph: its
+        tighter fit and its wider counters are read as voice at 24px and as noise at 13.</p>
+      </div>
+      <div class="tk-card">
+        <h3>DM Sans, body</h3>
+        <p class="tk-big f-body w-bold s-30 l-flat">Will it happen?</p>
+        <p>Everything a person reads rather than scans: prose, labels, buttons, rows. It is the
+        root family, so anything that does not say otherwise is this.</p>
+      </div>
+      <div class="tk-card">
+        <h3>IBM Plex Mono, data</h3>
+        <p class="tk-big f-mono w-semibold s-30 l-flat">38% $84,200</p>
+        <p>A number that has to line up with the number under it: odds, volume, an amount, a
+        wallet address, a timestamp. <b>Mono is a promise that the figure is exact</b>, so it is
+        never used for a word that is not a value.</p>
+      </div>
+    </div>
+    <p class="tk-note"><b>The families do not overlap and that is what makes them readable as
+    roles.</b> A display face on a paragraph reads as a typo; a mono face on a sentence reads as
+    code. Every crossing of that line in this product is a bug, and there are none.</p>
+  </section>
+
+  <!-- ============================== served =========================== -->
+  <section class="tk-sec" id="served">
+    <h2 data-n="02">Served from this repo, and 242 KB of it is the same file</h2>
+    <p class="tk-note">Every face is a <code>woff2</code> in <code>assets/fonts/</code>, declared
+    once in <code>fonts.css</code>. <b>No page may call a font host</b>: the request carries a
+    visitor's IP and User-Agent to a third party before the consent banner this product ships has
+    asked them anything, which the Munich district court ruling of 20 January 2022 treats as a
+    transfer of personal data. It is also three round trips on the critical path, two of them DNS
+    and TLS to a host that serves nothing else. Latin and latin-ext only,
+    <code>font-display:swap</code> on every face.</p>
+    <p class="tk-note"><b>18 files, 373 KB, and 131 KB of unique typeface.</b> Checksums say why:</p>
+    <dl class="tk-type">
+      <dt>DM Sans</dt>
+      <dd>4 declared weights, <b>2 distinct files</b>. <code>400</code>, <code>500</code>,
+      <code>600</code> and <code>700</code> latin are byte for byte the same 36,980 bytes, and the
+      four latin-ext the same 18,192.<small>147,920 shipped for 36,980 of data</small></dd>
+      <dt>Space Grotesk</dt>
+      <dd>3 declared weights, <b>2 distinct files</b>. The three latin faces are one 22,320 byte
+      file, the three latin-ext one 18,924 byte file.<small>66,960 shipped for 22,320 of data</small></dd>
+      <dt>IBM Plex Mono</dt>
+      <dd>2 declared weights, <b>4 distinct files</b>, all different. This family is the one that
+      was fetched as static faces, and it is the only one with no duplication.<small>correct</small></dd>
+    </dl>
+    <p class="tk-note"><b>DM Sans and Space Grotesk were fetched as variable fonts and then copied
+    once per weight.</b> One file carries the whole weight axis; the repository holds four and three
+    copies of it and declares each copy at a single weight. It works, because a browser given a
+    variable font with a single <code>font-weight</code> descriptor pins the axis to that value, and
+    the ink measurements in the next section prove it works. What it costs is <b>242 KB of
+    duplication, 65 per cent of the font payload</b>, and a cache that has to hold seven copies of
+    two typefaces.</p>
+    <p class="tk-note">The repair is one <code>@font-face</code> per family with
+    <code>font-weight:400 700</code> as a range and one file behind it. That is a value change, so
+    it belongs to the consolidation and not to this page.</p>
+  </section>
+
+  <!-- ============================== weights ========================== -->
+  <section class="tk-sec" id="weights">
+    <h2 data-n="03">The weights, measured by ink</h2>
+    <p class="tk-note">A declared weight with no face behind it does not fail. It renders as the
+    nearest face that exists, silently. So the reading below is not the number in the CSS: it is the
+    <b>count of dark pixels</b> the browser actually paints for one string at 48px, which is the only
+    thing that can tell a real weight from a fallback.</p>
+    <dl class="tk-type">
+      <dt>Space Grotesk</dt>
+      <dd><span class="f-display w-regular s-24">Hand</span>
+        <span class="f-display w-medium s-24">Hand</span>
+        <span class="f-display w-semibold s-24">Hand</span>
+        <span class="f-display w-bold s-24">Hand</span>
+        <small>ink 5188 / 5188 / 5627 / 6072 at 400, 500, 600, 700. <b>400 and 500 are the same
+        face</b>, because only 500, 600 and 700 are declared and 400 falls to the nearest. Nothing
+        asks this family for 400, so it is correct rather than lucky</small></dd>
+      <dt>DM Sans</dt>
+      <dd><span class="f-body w-regular s-24">Hand</span>
+        <span class="f-body w-medium s-24">Hand</span>
+        <span class="f-body w-semibold s-24">Hand</span>
+        <span class="f-body w-bold s-24">Hand</span>
+        <small>ink 4333 / 4886 / 5554 / 6005. <b>Four distinct weights from one variable file.</b>
+        This is the proof that the duplication in section 02 is waste and not function</small></dd>
+      <dt>IBM Plex Mono</dt>
+      <dd><span class="f-mono w-regular s-24">1234</span>
+        <span class="f-mono w-medium s-24">1234</span>
+        <span class="f-mono w-semibold s-24">1234</span>
+        <span class="f-mono w-bold s-24">1234</span>
+        <small>ink 5380 / 5380 / 5993 / 5993. <b>Two faces, not four.</b> Asking this family for 700
+        renders 600, and asking for 400 renders 500</small></dd>
+    </dl>
+    <p class="tk-note"><b><code>--weight-bold</code> is 700 and IBM Plex Mono has no 700.</b> Every
+    mono element that reached for bold would render semibold and never say so. Today none does: all
+    five mono declarations in <code>components/</code> use <code>--weight-medium</code> or
+    <code>--weight-semibold</code>, so this is <b>a trap rather than a defect</b>, and it is the kind
+    that is only found by measuring the paint.</p>
+    <p class="tk-subh">And the most used weight in the product has no name</p>
+    <p class="tk-note">The ramp is <code>--weight-medium:500</code>,
+    <code>--weight-semibold:600</code>, <code>--weight-bold:700</code>. <b>400 is not a token</b>,
+    and 400 is what <b>192 of 260</b> text elements on the feed render at, because it is the root
+    default and nothing overrides it. One component already needs it and had to type it:
+    <code>betpanel.css</code> writes <code>font-weight:normal</code>, the single weight literal in
+    the whole system. A step of a scale that the scale does not name is a step somebody will type.</p>
+    <dl class="tk-type">
+      <dt>400, unnamed</dt><dd class="f-body w-regular s-16">The odds moved twice this week.<small>192 elements. No token</small></dd>
+      <dt>--weight-medium</dt><dd class="f-body w-medium s-16">The odds moved twice this week.<small>500. 6 declarations</small></dd>
+      <dt>--weight-semibold</dt><dd class="f-body w-semibold s-16">The odds moved twice this week.<small>600. 41 declarations</small></dd>
+      <dt>--weight-bold</dt><dd class="f-body w-bold s-16">The odds moved twice this week.<small>700. 61 declarations</small></dd>
+    </dl>
+  </section>
+
+  <!-- =============================== ramp ============================ -->
+  <section class="tk-sec" id="ramp">
+    <h2 data-n="04">The ramp: ten fixed steps, eight fluid ones</h2>
+    <p class="tk-note">The ramp steps by 1 up to 14, then by 2 and by 4. <b>10px is the floor</b> a
+    mobile product should set. The half pixels it used to carry, 9.5 and 10.5 and 11.5, were rem
+    arithmetic inherited from the grey wireframe rather than sizes anyone chose; they were rounded
+    up, so no line got smaller.</p>
+    <dl class="tk-type">
+      <dt>--text-10</dt><dd class="f-body s-10">Will the US government shut down before March 1?<small>27 declarations</small></dd>
+      <dt>--text-11</dt><dd class="f-body s-11">Will the US government shut down before March 1?<small>48, the most used size in the system</small></dd>
+      <dt>--text-12</dt><dd class="f-body s-12">Will the US government shut down before March 1?<small>46</small></dd>
+      <dt>--text-13</dt><dd class="f-body s-13">Will the US government shut down before March 1?<small>47</small></dd>
+      <dt>--text-14</dt><dd class="f-body s-14">Will the US government shut down before March 1?<small>32</small></dd>
+      <dt>--text-16</dt><dd class="f-body s-16">Will the US government shut down?<small>10</small></dd>
+      <dt>--text-18</dt><dd class="f-body s-18">Will the US government shut down?<small>4</small></dd>
+      <dt>--text-20</dt><dd class="f-body s-20">Will the government shut down?<small>4</small></dd>
+      <dt>--text-24</dt><dd class="f-display s-24">Will it shut down?<small>2</small></dd>
+      <dt>--text-30</dt><dd class="f-display s-30">Will it shut down?<small>1</small></dd>
+    </dl>
+    <p class="tk-note"><b>The ramp is bottom heavy and that is the product.</b> 200 of the 218 size
+    declarations are 10 to 14. This is a dense screen of odds, volumes and dates, not an article,
+    and the four steps above 16 exist for one heading each.</p>
+
+    <p class="tk-subh">Eight fluid sizes, and each is one token rather than a size plus a rule</p>
+    <p class="tk-note">A display size is fluid, so it is declared as a <code>clamp</code> and not as
+    a size with a media query beside it. Resize this window and the eight below move; the ten above
+    do not.</p>
+    <dl class="tk-type">
+      <dt>--display-hiw</dt><dd class="f-display w-bold d-hiw l-flat">How it works<small>clamp(30px, 7vw, 38px)</small></dd>
+      <dt>--display-feed</dt><dd class="f-display w-bold d-feed l-flat">Live markets<small>clamp(28px, 4vw, 38px)</small></dd>
+      <dt>--display-sheet</dt><dd class="f-display w-bold d-sheet l-flat">Place your bet<small>clamp(24px, 5.6vw, 30px)</small></dd>
+      <dt>--display-tagline</dt><dd class="f-display w-bold d-tagline l-flat">Odds you can check<small>clamp(23px, 2.3vw, 31px)</small></dd>
+      <dt>--display-quote</dt><dd class="f-display d-quote l-flat">A market is a question<small>clamp(20px, 1.85vw, 26px)</small></dd>
+      <dt>--display-seo</dt><dd class="f-display w-bold d-seo l-flat">How resolution works<small>clamp(20px, 2.6vw, 24px)</small></dd>
+      <dt>--display-question</dt><dd class="f-display w-bold d-question l-tight">Will the US government shut down before March 1, 2027?<small>clamp(19px, 2vw, 24px)</small></dd>
+      <dt>--display-hero</dt><dd class="f-display w-bold d-hero l-tight">Will the US government shut down before March 1, 2027?<small>clamp(19px, 1.5vw, 23px), the same question one rank down</small></dd>
+    </dl>
+
+    <p class="tk-subh">A correction to the census, and it retires a finding</p>
+    <p class="tk-note"><code>census.md</code> lists seven font sizes on the anchor screens and calls
+    <b>19.2px</b> "the only value on the list that no one typed", the cheapest fix in the pass.
+    <b>Nobody typed it and it is not a defect.</b> It is
+    <code>--display-hero: clamp(19px, 1.5vw, 23px)</code> on the featured hero question, and 1.5vw of
+    a 1280 viewport is exactly 19.2. There are two more of them at that width, <b>23.68</b> and
+    <b>29.44</b>, from <code>--display-quote</code> and <code>--display-tagline</code>, and the census
+    did not report those only because no control wore them. <b>A fluid size lands where the viewport
+    puts it; that is the whole point of declaring it fluid.</b> The item is closed here rather than
+    carried into the consolidation.</p>
+  </section>
+
+  <!-- ============================= leading =========================== -->
+  <section class="tk-sec" id="leading">
+    <h2 data-n="05">Leading, six steps, and every one of them is used</h2>
+    <p class="tk-note">Unitless, so a line box scales with its own size and not with the root.
+    Fifty nine declarations, all six tokens live, and <b>not one raw value in a component</b>.</p>
+    <dl class="tk-type">
+      <dt>--leading-none</dt><dd class="f-body s-13 l-none">An icon or a badge: the box is the line.<br>An icon or a badge: the box is the line.<small>1, 4 declarations</small></dd>
+      <dt>--leading-flat</dt><dd class="f-display s-20 l-flat">A display heading holds its lines close.<br>A display heading holds its lines close.<small>1.05, 11 declarations</small></dd>
+      <dt>--leading-tight</dt><dd class="f-display s-18 l-tight">A card question, a headline.<br>A card question, a headline.<small>1.15, 4 declarations</small></dd>
+      <dt>--leading-snug</dt><dd class="f-body s-13 l-snug">A compact row, where two lines share one target.<br>A compact row, where two lines share one target.<small>1.3, 5 declarations</small></dd>
+      <dt>--leading-base</dt><dd class="f-body s-13 l-base">Body, and every long line. The default for anything a person reads rather than scans.<small>1.5, 32 declarations, the workhorse</small></dd>
+      <dt>--leading-loose</dt><dd class="f-body s-13 l-loose">A reading column: the SEO plate and the how-it-works prose, where a line is long and the eye needs the return.<small>1.6, 3 declarations</small></dd>
+    </dl>
+  </section>
+
+  <!-- ========================== letter-spacing ======================= -->
+  <section class="tk-sec" id="tracking">
+    <h2 data-n="06">Tracking is the axis with no scale</h2>
+    <p class="tk-note">Family, size, weight and leading are all tokens and all are held. <b>Letter
+    spacing is not.</b> 59 declarations across <code>components/</code>, <b>13 distinct values</b>,
+    and <b>zero tokens</b>:</p>
+    <dl class="tk-type">
+      <dt>tightening</dt><dd><code>-.03em</code> 4 &nbsp; <code>-.02em</code> 9 &nbsp; <code>-.01em</code> 5<small>display headings, where a large size closes up</small></dd>
+      <dt>neutral</dt><dd><code>normal</code> 3 &nbsp; <code>0</code> 3<small>two spellings of the same thing</small></dd>
+      <dt>opening</dt><dd><code>.01em</code> 4 &nbsp; <code>.03em</code> 12 &nbsp; <code>.04em</code> 3 &nbsp; <code>.05em</code> 3 &nbsp; <code>.06em</code> 5 &nbsp; <code>.07em</code> 3 &nbsp; <code>.08em</code> 5 &nbsp; <code>.1em</code> 2<small>small uppercase labels, where a small size needs the air</small></dd>
+    </dl>
+    <p class="tk-note"><b>Eight opening values between .01 and .1 is not a scale, it is a series of
+    separate afternoons.</b> The three groups above are real and a set of three or four tokens would
+    hold all 59 declarations: a tightening for display, a neutral, and two or three opens keyed to
+    size. It is the same finding the census made about padding and height, on the axis nobody
+    thought to count.</p>
+    <p class="tk-note">Tracking is also the axis where <code>0</code> and <code>normal</code> both
+    appear. They compute the same and they are two ways of saying it, which is how an axis with no
+    token ends up with two spellings of nothing.</p>
+    <p class="tk-subh">And one size literal</p>
+    <p class="tk-note">Of 218 <code>font-size</code> declarations in the system, <b>217 read a
+    token</b>. The exception is <code>chart.css</code>: <code>.chart-svg text{font-size:7px}</code>,
+    three pixels under the declared floor. It is an axis label inside an SVG that is scaled by its
+    viewBox, so 7 user units is not 7 screen pixels, and the ramp has no unit for a thing measured
+    in a different coordinate space. <b>It is defensible and it is undocumented</b>, which is the
+    part to fix.</p>
+  </section>
+
+  <!-- ============================= measure =========================== -->
+  <section class="tk-sec" id="measure">
+    <h2 data-n="07">Measure</h2>
+    <p class="tk-note">The column a person reads. Measured on the feed at 1280: the card's
+    <b>why</b> line runs <b>40 characters</b> at 13px with 19.5px of leading, and a card paragraph
+    runs <b>26</b>. Both are short, and deliberately: a card is scanned in a grid, not read in a
+    column, and 40 characters is what a three-across grid at 1120 leaves.</p>
+    <p class="tk-note"><b>The reading columns are the ones to hold to a measure</b>, and they are the
+    SEO plate and the how-it-works prose, not the cards. This page holds itself to
+    <code>74ch</code>, which is the value the deleted kit arrived at after finding a bare paragraph
+    running at <b>99 characters</b> while the footnote beside it was held to 76: the block a reader
+    came for was the one with no <code>max-width</code> at all.</p>
+    <div class="tk-cards">
+      <div class="tk-card">
+        <h3>40ch, the card</h3>
+        <p class="f-body s-13 l-base">Funding talks have stalled twice this quarter, but past deadlines settled late.</p>
+      </div>
+      <div class="tk-card">
+        <h3>74ch, the column</h3>
+        <p class="f-body s-13 l-loose">A market resolves against a source named on the page before the first bet is taken, and the source cannot be changed after that. If the source does not publish by the close date, the market voids and every stake is returned.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= decides =========================== -->
+  <section class="tk-sec" id="decides">
+    <h2 data-n="08">What this decides</h2>
+    <p class="tk-note"><b>A method note, and this page tripped over its own subject.</b> The three
+    family cards in section 01 rendered in DM Sans at 12px on the first build: all three of them,
+    one typeface shown three times. <code>_page.css</code> carried <code>.tk-card p</code>,
+    specificity 0-1-1, and the <code>.f-display</code> and <code>.s-30</code> utilities beside it
+    are 0-1-0, so the descendant selector won every specimen in the same stylesheet. <b>It is the
+    exact failure the <code>@import</code> order in <code>components/index.css</code> exists to
+    prevent</b>, met inside the stand file, and looking at the page would not have caught it: a
+    heading in the wrong sans at the wrong size still looks like a heading. It was found by asking
+    the browser which family each specimen had actually resolved to.</p>
+    <ol class="tk-steps">
+      <li><b>1</b><span><b>One file per family, declared over a weight range.</b> DM Sans and Space
+      Grotesk are variable fonts copied once per weight: 242 KB of the 373 KB payload is the same
+      bytes seven times. <code>font-weight:400 700</code> on one <code>@font-face</code> removes it
+      without changing a single rendered glyph.</span></li>
+      <li><b>2</b><span><b>400 gets a token.</b> It is the weight 192 of 260 text elements render
+      at and the only step of the ramp with no name, and one component has already had to type
+      <code>normal</code> for it.</span></li>
+      <li><b>3</b><span><b><code>--weight-bold</code> is documented as unavailable in mono</b>, or
+      the mono 700 face is added. Nothing asks for it today; the next thing that does will get
+      semibold and no warning.</span></li>
+      <li><b>4</b><span><b>Tracking becomes three or four tokens.</b> 13 values, 59 declarations,
+      no scale, and two spellings of zero. Same shape as the padding and height findings, on the
+      axis the census did not count.</span></li>
+      <li><b>5</b><span><b>The <code>19.2px</code> item is closed, not carried.</b> It is a
+      <code>clamp</code> resolving at 1280, and two more fluid tokens do the same thing at that
+      width. A fluid size lands where the viewport puts it.</span></li>
+      <li><b>6</b><span><b>Nothing here changes a value.</b> That is step 3e.</span></li>
+    </ol>
+  </section>
+
+</div>
+</body>
+</html>

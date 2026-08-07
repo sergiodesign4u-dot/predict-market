@@ -1,9 +1,10 @@
 # ui-kit/ - the vitrine, being rebuilt from 2026-08-07
 
-The kit shows the system to a person and it holds no product code. Right now it holds four pages
+The kit shows the system to a person and it holds no product code. Right now it holds five pages
 plus its stylesheet: `overview.html`, which says what is happening, `vitrine.html`, the ten atoms in
-every face they wear with both themes side by side, `icons.html` and `colour.html`, the first two
-foundation pages, and `_page.css`, the stand furniture they all share.
+every face they wear with both themes side by side, `icons.html`, `colour.html` and
+`typography.html`, three of the four foundation pages, and `_page.css`, the stand furniture they all
+share.
 
 **A swatch never carries a value.** `_page.css` holds one class per role and per primitive,
 `.c-bg-plate{--sw:var(--bg-plate)}`, and the page wears the class. That is why there is not a single
@@ -67,8 +68,16 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
    has four rungs in the Vault and one in daylight**, so three roles do nothing there; `icon-quiet`
    is identical to `text-muted` in the Vault and separate in daylight, which is the two-level system
    earning its cost; and **40 roles are declared once**, of which 37 correctly so and two,
-   `control-knob` and `line-brass-strong`, stand on a ground that inverts. Still open: **3c
-   typography, 3d geometry, 3e the values** (import order,
+   `control-knob` and `line-brass-strong`, stand on a ground that inverts. **3c typography is DONE,
+   2026-08-07, `typography.html`**: three families, 18 faces, ten fixed sizes and eight fluid ones,
+   three named weights, six leadings. What it found: **DM Sans and Space Grotesk are variable fonts
+   copied once per weight**, so 242 KB of the 373 KB payload is the same bytes seven times;
+   **`--weight-bold` is 700 and IBM Plex Mono has no 700 face**, a trap rather than a live defect
+   because nothing asks for it yet; **400 is the weight 192 of 260 elements render at and it has no
+   token**, so one component had to type `normal`; **tracking is 13 values, 59 declarations and zero
+   tokens**, including two spellings of nothing; and the census's `19.2px` **is not a leak**, it is
+   `clamp(19px,1.5vw,23px)` resolving at a 1280 viewport, with two more fluid values doing the same
+   there. Still open: **3d geometry, 3e the values** (import order,
    17 paddings, 29 heights, 17 borders, the `19.2px` leak, 20 files citing gates that no longer
    exist, and the four decisions `inventory.md` forced). Output: `docs/consolidation.md`.
 4. **The pages.** One per component: a live specimen, its states in both themes, its classes, its

@@ -74,6 +74,11 @@ layer doing its job and is worth having measured rather than assumed.
 **The radius is already a scale** and that is the one axis nobody has to argue about: three steps,
 and each of them means something (a plate, a control, a pill). **The font size is nearly one**, with
 a single leak: `19.2px` is `1.2em` of something and is the only value on the list that no one typed.
+
+> **Corrected 2026-08-07 by step 3c, `../typography.html`.** It is not `1.2em` and it is not a leak.
+> `--display-hero` is `clamp(19px,1.5vw,23px)`, and 1.5vw of a 1280 viewport is exactly 19.2. Two
+> more fluid tokens land on non-integers at that width, `23.68` and `29.44`, and the census did not
+> report them only because no control wore them. **A fluid size lands where the viewport puts it.**
 **Padding and height are not scales at all**, and 29 heights for controls whose job is "be pressed"
 is the same finding the deleted backlog carried as S34, taken again on a fifth of the screens and
 coming out the same way.
@@ -164,4 +169,6 @@ At 390, **2,783 of 3,447 controls stand under 44px**. 1,621 of them are text wit
    `<button>` painted by an ancestor.
 4. **The consolidation has three real axes and one free one.** Padding (17), height (29) and border
    (17) are the work; radius is already decided at three steps and needs only to be written down.
-5. **`19.2px` is a leak** and is the cheapest fix in the whole pass.
+5. ~~**`19.2px` is a leak** and is the cheapest fix in the whole pass.~~ **Withdrawn 2026-08-07**:
+   it is a `clamp` resolving at 1280 and there is nothing to fix. See the note in the vocabulary
+   section above.

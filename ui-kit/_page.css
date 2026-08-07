@@ -419,3 +419,69 @@
    `min-width` is what does it, so it is dropped on narrow: the tint still shows,
    which is the whole job of the swatch, and the box stops overhanging. */
 @media(max-width:640px){.tk-fillbox{min-width:0;padding:5px 4px;max-width:100%}}
+
+/* ==========================================================================
+   FOUNDATIONS: TYPOGRAPHY. Added 2026-08-07 for typography.html.
+   Same rule as the colour page: a class names the token and never carries a
+   value, so a specimen cannot drift from the system. */
+.f-display{font-family:var(--font-display)}
+.f-body{font-family:var(--font-body)}
+.f-mono{font-family:var(--font-mono)}
+.w-medium{font-weight:var(--weight-medium)}
+.w-semibold{font-weight:var(--weight-semibold)}
+.w-bold{font-weight:var(--weight-bold)}
+/* THE ONLY LITERAL IN THIS BLOCK, AND IT IS THE FINDING. 400 is the weight 192
+   of 260 text elements on the feed render at, and it is the one step of the ramp
+   tokens.css never named. There is nothing to reference, so the page has to type
+   the number, which is exactly what a component would have to do. */
+.w-regular{font-weight:400}
+.s-10{font-size:var(--text-10)}
+.s-11{font-size:var(--text-11)}
+.s-12{font-size:var(--text-12)}
+.s-13{font-size:var(--text-13)}
+.s-14{font-size:var(--text-14)}
+.s-16{font-size:var(--text-16)}
+.s-18{font-size:var(--text-18)}
+.s-20{font-size:var(--text-20)}
+.s-24{font-size:var(--text-24)}
+.s-30{font-size:var(--text-30)}
+.d-feed{font-size:var(--display-feed)}
+.d-hiw{font-size:var(--display-hiw)}
+.d-sheet{font-size:var(--display-sheet)}
+.d-seo{font-size:var(--display-seo)}
+.d-question{font-size:var(--display-question)}
+.d-hero{font-size:var(--display-hero)}
+.d-quote{font-size:var(--display-quote)}
+.d-tagline{font-size:var(--display-tagline)}
+.l-none{line-height:var(--leading-none)}
+.l-flat{line-height:var(--leading-flat)}
+.l-tight{line-height:var(--leading-tight)}
+.l-snug{line-height:var(--leading-snug)}
+.l-base{line-height:var(--leading-base)}
+.l-loose{line-height:var(--leading-loose)}
+
+.tk-type{display:grid;grid-template-columns:minmax(84px,120px) minmax(0,1fr);gap:10px 18px;
+  align-items:baseline;margin:0 0 10px}
+.tk-type dt{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);
+  padding-top:.35em;border-top:1px solid var(--border-hairline);grid-column:1}
+.tk-type dd{margin:0;color:var(--text-primary);border-top:1px solid var(--border-hairline);
+  padding-top:.35em;grid-column:2;min-width:0;overflow-wrap:anywhere}
+.tk-type dd small{display:block;font-family:var(--font-mono);font-size:10px;
+  color:var(--text-muted);margin-top:3px}
+.tk-big{margin:0 0 2px;color:var(--text-primary);letter-spacing:-.03em}
+.tk-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 10px}
+.tk-card{border:1px solid var(--border-hairline);border-radius:10px;padding:16px 18px;
+  background:var(--bg-plate);min-width:0}
+.tk-card h3{margin:0 0 2px;font-family:var(--font-body);font-size:12px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--text-brass)}
+/* `:not([class])` and not `p`. The first version of this rule was `.tk-card p`,
+   specificity 0-1-1, and it beat every `.f-display` and `.s-30` utility in this
+   same file at 0-1-0: the three family specimens rendered in DM Sans at 12px and
+   the page silently showed one typeface three times. It is the same failure the
+   `@import` order in components/index.css exists to prevent, met inside the stand
+   stylesheet, and it was found by asking the browser which family each specimen
+   had actually resolved to rather than by looking at the page. */
+.tk-card p:not([class]){margin:8px 0 0;font-size:12px;line-height:1.55;
+  color:var(--text-muted)}
+.tk-card p{margin:8px 0 0}
+.tk-ink-bar{height:8px;border-radius:100px;background:var(--color-action);margin-top:4px}
