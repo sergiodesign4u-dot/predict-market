@@ -37,7 +37,7 @@ says so. No em dash.
 | hiw-dialog | 1 | hiw-dialog | 0 | 16 | 105 |
 | iconbtn | 1 | iconbtn-utility | 5 | 9 | 105 |
 | input | 2 | input-amount, input-states | 2 | 4 | 105 |
-| loadmore | 1 | loadmore | 1 | 2 | 9 |
+| loadmore | 1 | loadmore | 1 | 1 | 9 |
 | market | 1 | market-depth | 0 | 21 | 9 |
 | navitem | 1 | navitem-slots | 1 | 4 | 105 |
 | notice | 2 | notice-push, notice-reconcile | 1 | 8 | 105 |

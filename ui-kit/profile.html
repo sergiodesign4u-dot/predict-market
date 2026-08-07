@@ -49,7 +49,7 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/profile.css</span>
-      <span class="tk-badge">11 rules</span>
+      <span class="tk-badge">9 rules</span>
       <span class="tk-badge">8 classes</span>
       <span class="tk-badge">2 screens</span>
     </div>
@@ -142,10 +142,12 @@ push();});})();</script>
 .app-case .gallery::-webkit-scrollbar{display:none}
 /* Target size follows the POINTER, not the viewport. Step 7 wrote that rule and moved two
    files; these stayed bound to a 640px viewport, so a touch tablet or a touch laptop got the
-   36px control. A fine pointer keeps 36, which clears 2.5.8 (24x24) with room. */
-@media(pointer:coarse){
-  .app-case .idrow .edit{min-height:var(--control-44)}
-}
+   36px control. A fine pointer keeps 36, which clears 2.5.8 (24x24) with room.
+   THE RULE IS STILL TRUE AND IT IS NO LONGER WRITTEN HERE, 2026-08-07. Edit adopted
+   `.btn` on 2026-08-06 and `components/button.css` gave the whole family the floor a day
+   later, so this was one control keeping a copy of a rule the family now states once. It
+   was also the last declaration gate 41 read as this file drawing a button: a region that
+   has to restate a floor is a family that did not have one. Backlog S39. */
 </pre></details>
   </section>
 

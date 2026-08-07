@@ -983,6 +983,88 @@ MEANS place a bet and merely routes to the detail page in a prototype, so turnin
 it into a link would bake the prototype's routing into the structure. Each needs
 a product answer, and a migration is not allowed to supply one.
 
+## The 44 floor and the chip drawn twice: 4 to 1, and six atoms are done
+
+Two of the four slots left were one missing declaration, and the third was a
+component backlog S41 said should not exist on the day it was opened.
+
+**THE FLOOR THE LARGEST FAMILY DID NOT HAVE.** `components/tabs.css` has stated
+the rule since step 7 - target size follows the POINTER and not the viewport, 44
+under a coarse one and 36 under a fine one - and six files carried it while
+`components/button.css` did not. So two regions carried a copy for one control
+each, and both copies were the last thing gate 41 read as drawing a button in
+those files. Measured first, on 105 painted screens in a real touch context at
+390px with `matchMedia('(pointer: coarse)')` asserted true before every read:
+
+    before                                    after
+    btn-primary/secondary sm   137 at 36      0 under 44
+    btn-bare                    72 at 25      0 under 44 in HEIGHT
+    md 47, lg 55                             unchanged
+                               209 boxes, and that is the whole effect
+
+`components/profile.css` gave its copy up. `components/cookie-consent.css` was
+never carrying the floor at all: what it keeps is `.cc-btn{flex:1 1 auto;
+min-width:96px}`, three answers dividing a banner row, and it counted only
+because the metric read a WIDTH as a face. **A width is what a container decides,
+the same as a flex basis; a height is not, because under a coarse pointer a
+height is a target size.** That asymmetry is the point and it is why `min-height`
+is deliberately absent from the placement list.
+
+**THE CHIP THAT WAS DRAWN TWICE.** S41 said on the day it was opened that
+`.load-more` measures as `.cat-nav button`, and named the four declarations in
+the way. Three of them were nothing:
+
+    min-height:44px       INERT. 12/24 at 14px is a 47px content box, so the
+                          floor never bound, at any width, in either theme
+    letter-spacing:.01em  the BUTTON family's tracking, worn because the control
+                          was filed as a button. 0.14px on a 14px label
+    padding 12/24         against the chip's 12/20, four pixels a side
+    box-shadow inset      a lit top edge, and the only real one. The chip family
+                          decided against a groove on purpose so that nothing is
+                          lifted to flatten under a finger
+
+Its STATES needed no decision at all, which is the strongest evidence the two
+were one control: the hover was `--border-brass-hover` on `--bg-control-hover`
+with `--text-strong`, in that order, in two files, and both pressed to
+`--bg-pressed`. Byte for byte, the way `.seg` and `.ed-range` were.
+
+    45 readings of the control, 9 screens x 5 widths
+      173x47 -> 162x47   eleven pixels of width, and the height did not move,
+                         which is the inert floor proving itself
+      the groove, the tracking and 4px of side padding, and nothing else
+    everything else on 525 snapshots: 0 resized, 0 moved, 0 properties
+
+**AND THE STATE GALLERY MERGED THEM WITHOUT BEING ASKED.** The capture that used
+to be `a.chip.chip-nav @catnav-chips (2)` is now one group spanning three
+specimens - the button census, the load-more stand and the category strip -
+because the two measure identical in all four states in both themes. That is the
+third time this instrument has checked a person's caption, and it is the only
+kind of proof a merge can have.
+
+**THE ROLE DID NOT MOVE AND THE ATOM DID.** Load more FETCHES, so
+`ui-kit/_worn.py` goes on calling it an `action`; its rules live in
+`components/chip.css`. That is the social mark's split in the other direction -
+`nav` by role, `iconbutton` by atom - and it is now the second instance, which
+makes it a rule rather than an exception: **a role is what a control MEANS and an
+atom is where its RULES live.**
+
+    41 the atom map   7 control atom(s) in 8 file-slot(s): distance 1, and it goes to 0
+                      chip        1601  5 kind(s), 1 file(s): chip
+                      iconbutton  1361  6 kind(s), 1 file(s): iconbtn
+                      navitem      995  2 kind(s), 1 file(s): navitem
+                      button       902  6 kind(s), 2 file(s): button, comments
+                      outcome      272  2 kind(s), 1 file(s): yesno
+                      tab           36  1 kind(s), 1 file(s): tabs
+                      switch         3  1 kind(s), 1 file(s): toggle
+
+**SIX OF SEVEN ATOMS ARE DONE. THE WHOLE REMAINING DISTANCE IS ONE CONTROL**:
+`.cmt-signin`, 4 placements on two screens, a full-width well on `--bg-well` with
+muted centred text that says Sign in to comment. S47 looked at it and kept it,
+and the reason still holds: **that ground and that ink are not an emphasis this
+family has**, and the specimen corpus stages it nowhere. It is the last file-slot
+and it is a question rather than a migration - whether a signed-out PROMPT is a
+button at all, or a `notice` a person can press. Nothing else is in the way.
+
 ---
 
 ## The decision this document no longer has open

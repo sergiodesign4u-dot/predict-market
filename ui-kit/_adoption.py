@@ -229,6 +229,12 @@ def unadopted():
 # Checked one at a time on 2026-08-05, against the inline scripts of the screens
 # that carry it and against every rule in components/.
 UNSTYLED = {
+    "load-more": "a hook and a name, and it stopped carrying paint on 2026-08-07. "
+                 "The feed's script reaches for it, and the census names the kind by "
+                 "it; what it LOOKS like is `.chip.chip-nav`, which the element now "
+                 "carries, because the two were the same graphite chip drawn in two "
+                 "files. Same shape as .cmt-post, one migration later: the name tells "
+                 "the foot of a list from a category in a strip, and nothing else",
     "ed-act": "a hook: the detail script queries it. Every one of them also "
               "stands inside .ed-actions, which styles `button`, so the class "
               "carries no paint and the control is not bare",

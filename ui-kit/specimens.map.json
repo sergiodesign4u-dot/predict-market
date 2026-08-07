@@ -164,7 +164,7 @@
       "canvas": false,
       "section": "buttons",
       "label": "Outcome pair, icon, and Load more",
-      "pick": "button.load-more",
+      "pick": ".load-more-wrap",
       "component": "loadmore",
       "title": "Load more",
       "width": 173

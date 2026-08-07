@@ -206,7 +206,7 @@
    "ui-kit/specimens/betpanel-sheet.html",
    "ui-kit/specimens/button-census.html"
   ],
-  "sha": "06ad834935f56f6f"
+  "sha": "e841ba15f745ba2e"
  },
  {
   "component": "betpanel",
@@ -431,7 +431,7 @@
    "ui-kit/specimens/betpanel-more.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "f03b9980a528b0fe"
+  "sha": "264bff3188c540b3"
  },
  {
   "component": "button",
@@ -631,7 +631,7 @@
    "ui-kit/specimens/button-matrix.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "7856e005ee7845cd"
+  "sha": "1f239e43536cfa1c"
  },
  {
   "component": "button",
@@ -829,7 +829,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "4b1386d4c865b221"
+  "sha": "e9f3017b727faef0"
  },
  {
   "component": "button",
@@ -1029,7 +1029,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "b7c1bc5614a62776"
+  "sha": "3fbbf5f12a39b4b3"
  },
  {
   "component": "button",
@@ -1257,7 +1257,7 @@
    "ui-kit/specimens/profile-identity.html",
    "ui-kit/specimens/state-empty-filters.html"
   ],
-  "sha": "9a08d06bd2e14ec0"
+  "sha": "64f94de21d89665b"
  },
  {
   "component": "button",
@@ -1488,7 +1488,7 @@
    "ui-kit/specimens/state-empty-filters.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "202efff371d50b80"
+  "sha": "5ac8fdfb9f40e3cb"
  },
  {
   "component": "card",
@@ -2056,7 +2056,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "3a4877cafb990820"
+  "sha": "1609b3f233ac8ef4"
  },
  {
   "component": "chip",
@@ -2249,1318 +2249,6 @@
  {
   "component": "chip",
   "id": "g10",
-  "el": "button.chip.chip-amount.sel",
-  "scope": "dialog.app-dialog",
-  "specimen": "dialog-shared",
-  "classes": [
-   "amount-input",
-   "amount-row",
-   "app-case",
-   "app-dialog",
-   "btn",
-   "btn-block",
-   "btn-md",
-   "btn-primary",
-   "btn-secondary",
-   "chip",
-   "chip-amount",
-   "field-label",
-   "fine",
-   "ic",
-   "icon-btn",
-   "icon-btn-photo",
-   "kit-dlgs",
-   "protect",
-   "prov-apple",
-   "prov-google",
-   "prov-x",
-   "quick",
-   "sel",
-   "sheet-body",
-   "sheet-close",
-   "sheet-head",
-   "sheet-sub",
-   "signin-dialog",
-   "widget-box"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "quick-amounts",
-   "input-states",
-   "event-detail",
-   "betpanel-sheet"
-  ],
-  "covers": [
-   "button.chip.chip-amount.sel @dialog.app-dialog",
-   "button.chip.chip-amount.sel @.bet-panel",
-   "button.chip.chip-amount.sel @dialog.bet-sheet"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/button.css",
-   "components/chip.css",
-   "components/dialog.css",
-   "components/fonts.css",
-   "components/iconbtn.css",
-   "components/input.css",
-   "components/notice.css",
-   "components/quick.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/betpanel-sheet.html",
-   "ui-kit/specimens/dialog-shared.html",
-   "ui-kit/specimens/event-detail.html",
-   "ui-kit/specimens/input-states.html",
-   "ui-kit/specimens/quick-amounts.html"
-  ],
-  "sha": "5e996588806fc3b9"
- },
- {
-  "component": "chip",
-  "id": "g2",
-  "el": "button.chip.chip-rail",
-  "scope": "",
-  "specimen": "chip-rails",
-  "classes": [
-   "app-case",
-   "chip",
-   "chip-rail",
-   "cmt-controls",
-   "ed-chart-foot",
-   "ed-range",
-   "seg",
-   "sel"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 10px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 12,
-     "right": 2,
-     "bottom": 8,
-     "left": 2
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 12,
-     "right": 2,
-     "bottom": 8,
-     "left": 2
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 12,
-     "right": 2,
-     "bottom": 8,
-     "left": 2
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 53,
-    "h": 46,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 8,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 10px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 12,
-     "right": 2,
-     "bottom": 8,
-     "left": 2
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 12,
-     "right": 2,
-     "bottom": 8,
-     "left": 2
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 12,
-     "right": 2,
-     "bottom": 8,
-     "left": 2
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 53,
-    "h": 46,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 8,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "chart",
-   "tabs-detail",
-   "comments-thread"
-  ],
-  "covers": [
-   "button.chip.chip-rail"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/chart.css",
-   "components/chip.css",
-   "components/comments.css",
-   "components/fonts.css",
-   "components/tabs.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/chart.html",
-   "ui-kit/specimens/chip-rails.html",
-   "ui-kit/specimens/comments-thread.html",
-   "ui-kit/specimens/tabs-detail.html"
-  ],
-  "sha": "c0ddc378be2df759"
- },
- {
-  "component": "chip",
-  "id": "g3",
-  "el": "a.chip.chip-nav",
-  "scope": "",
-  "specimen": "catnav-chips",
-  "classes": [
-   "app-case",
-   "cat-nav",
-   "chip",
-   "chip-ic",
-   "chip-nav",
-   "device",
-   "feed",
-   "feed-inner",
-   "filter-menu",
-   "filter-panel",
-   "kit-row"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 149,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 149,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 149,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) -2px",
-    "w": 149,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 149,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 149,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 149,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) -2px",
-    "w": 149,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "a.chip.chip-nav"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/catnav.css",
-   "components/chip.css",
-   "components/feed.css",
-   "components/filters.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/catnav-chips.html"
-  ],
-  "sha": "096f9ac1b5723f5d"
- },
- {
-  "component": "chip",
-  "id": "g4",
-  "el": "a.chip.chip-nav",
-  "scope": "",
-  "specimen": "catnav-chips",
-  "classes": [
-   "app-case",
-   "cat-nav",
-   "chip",
-   "chip-ic",
-   "chip-nav",
-   "device",
-   "feed",
-   "feed-inner",
-   "filter-menu",
-   "filter-panel",
-   "kit-row"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgb(27, 30, 35) | none | rgba(255, 255, 255, 0.06) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 130,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 130,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 130,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgb(27, 30, 35) | none | rgba(255, 255, 255, 0.06) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) -2px",
-    "w": 130,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgb(245, 243, 237) | none | rgba(255, 255, 255, 0.7) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 130,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 130,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 130,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgb(245, 243, 237) | none | rgba(255, 255, 255, 0.7) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) -2px",
-    "w": 130,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "a.chip.chip-nav"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/catnav.css",
-   "components/chip.css",
-   "components/feed.css",
-   "components/filters.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/catnav-chips.html"
-  ],
-  "sha": "096f9ac1b5723f5d"
- },
- {
-  "component": "chip",
-  "id": "g5",
-  "el": "button.chip.chip-quiet",
-  "scope": "",
-  "specimen": "catnav-subfilter",
-  "classes": [
-   "app-case",
-   "cat-layout",
-   "cat-main",
-   "chip",
-   "chip-quiet",
-   "device",
-   "feed",
-   "feed-inner",
-   "feed-subfilter"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 100px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 59,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 100px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 59,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 100px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 59,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 100px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 59,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 100px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 59,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 100px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 59,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 100px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 59,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 100px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 59,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button.chip.chip-quiet"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/catnav.css",
-   "components/chip.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/catnav-subfilter.html"
-  ],
-  "sha": "fefedc78163b4af9"
- },
- {
-  "component": "chip",
-  "id": "g6",
-  "el": "button.chip.chip-quiet",
-  "scope": "",
-  "specimen": "catnav-subfilter",
-  "classes": [
-   "app-case",
-   "cat-layout",
-   "cat-main",
-   "chip",
-   "chip-quiet",
-   "device",
-   "feed",
-   "feed-inner",
-   "feed-subfilter"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) | 1px | rgb(164, 157, 143) | 100px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
-    "w": 80,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(255, 255, 255, 0.06) | none | rgba(0, 0, 0, 0) | 1px | rgb(237, 231, 218) | 100px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 80,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgba(0, 0, 0, 0) | 1px | rgb(237, 231, 218) | 100px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 80,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) | 1px | rgb(164, 157, 143) | 100px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 80,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) | 1px | rgb(86, 80, 66) | 100px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
-    "w": 80,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(33, 31, 25, 0.1) | none | rgba(0, 0, 0, 0) | 1px | rgb(33, 31, 25) | 100px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 80,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgba(0, 0, 0, 0) | 1px | rgb(33, 31, 25) | 100px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 80,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) | 1px | rgb(86, 80, 66) | 100px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 80,
-    "h": 62,
-    "pad": {
-     "top": 12,
-     "right": 4,
-     "bottom": 12,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button.chip.chip-quiet"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/catnav.css",
-   "components/chip.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/catnav-subfilter.html"
-  ],
-  "sha": "fefedc78163b4af9"
- },
- {
-  "component": "chip",
-  "id": "g7",
-  "el": "button.chip.chip-lane",
-  "scope": "",
-  "specimen": "catnav-subcat",
-  "classes": [
-   "app-case",
-   "cat-layout",
-   "cat-main",
-   "chip",
-   "chip-cnt",
-   "chip-lane",
-   "device",
-   "feed",
-   "feed-inner",
-   "subcat",
-   "subcat-head"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 230,
-    "h": 49,
-    "pad": {
-     "top": 7,
-     "right": 12,
-     "bottom": 1,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 230,
-    "h": 49,
-    "pad": {
-     "top": 7,
-     "right": 12,
-     "bottom": 1,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 230,
-    "h": 49,
-    "pad": {
-     "top": 7,
-     "right": 12,
-     "bottom": 1,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 230,
-    "h": 52,
-    "pad": {
-     "top": 7,
-     "right": 12,
-     "bottom": 4,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 230,
-    "h": 49,
-    "pad": {
-     "top": 7,
-     "right": 12,
-     "bottom": 1,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 230,
-    "h": 49,
-    "pad": {
-     "top": 7,
-     "right": 12,
-     "bottom": 1,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 230,
-    "h": 49,
-    "pad": {
-     "top": 7,
-     "right": 12,
-     "bottom": 1,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 230,
-    "h": 52,
-    "pad": {
-     "top": 7,
-     "right": 12,
-     "bottom": 4,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "covers": [
-   "button.chip.chip-lane"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/catnav.css",
-   "components/chip.css",
-   "components/feed.css",
-   "components/fonts.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/catnav-subcat.html"
-  ],
-  "sha": "eaa166f68c2692b0"
- },
- {
-  "component": "chip",
-  "id": "g8",
   "el": "button.chip.chip-lane",
   "scope": "",
   "specimen": "catnav-subcat",
@@ -3742,7 +2430,7 @@
  },
  {
   "component": "chip",
-  "id": "g9",
+  "id": "g11",
   "el": "button.chip.chip-amount",
   "scope": "dialog.app-dialog",
   "specimen": "dialog-shared",
@@ -3954,7 +2642,1403 @@
    "ui-kit/specimens/input-states.html",
    "ui-kit/specimens/quick-amounts.html"
   ],
-  "sha": "5e996588806fc3b9"
+  "sha": "f1ce25affbae3172"
+ },
+ {
+  "component": "chip",
+  "id": "g12",
+  "el": "button.chip.chip-amount.sel",
+  "scope": "dialog.app-dialog",
+  "specimen": "dialog-shared",
+  "classes": [
+   "amount-input",
+   "amount-row",
+   "app-case",
+   "app-dialog",
+   "btn",
+   "btn-block",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
+   "chip",
+   "chip-amount",
+   "field-label",
+   "fine",
+   "ic",
+   "icon-btn",
+   "icon-btn-photo",
+   "kit-dlgs",
+   "protect",
+   "prov-apple",
+   "prov-google",
+   "prov-x",
+   "quick",
+   "sel",
+   "sheet-body",
+   "sheet-close",
+   "sheet-head",
+   "sheet-sub",
+   "signin-dialog",
+   "widget-box"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 6,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "also": [
+   "quick-amounts",
+   "input-states",
+   "event-detail",
+   "betpanel-sheet"
+  ],
+  "covers": [
+   "button.chip.chip-amount.sel @dialog.app-dialog",
+   "button.chip.chip-amount.sel @.bet-panel",
+   "button.chip.chip-amount.sel @dialog.bet-sheet"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/button.css",
+   "components/chip.css",
+   "components/dialog.css",
+   "components/fonts.css",
+   "components/iconbtn.css",
+   "components/input.css",
+   "components/notice.css",
+   "components/quick.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/betpanel-sheet.html",
+   "ui-kit/specimens/dialog-shared.html",
+   "ui-kit/specimens/event-detail.html",
+   "ui-kit/specimens/input-states.html",
+   "ui-kit/specimens/quick-amounts.html"
+  ],
+  "sha": "f1ce25affbae3172"
+ },
+ {
+  "component": "chip",
+  "id": "g2",
+  "el": "button.chip.chip-rail",
+  "scope": "",
+  "specimen": "chip-rails",
+  "classes": [
+   "app-case",
+   "chip",
+   "chip-rail",
+   "cmt-controls",
+   "ed-chart-foot",
+   "ed-range",
+   "seg",
+   "sel"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 10px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 12,
+     "right": 2,
+     "bottom": 8,
+     "left": 2
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 12,
+     "right": 2,
+     "bottom": 8,
+     "left": 2
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgb(237, 231, 218) | 0px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 12,
+     "right": 2,
+     "bottom": 8,
+     "left": 2
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(164, 157, 143) | 0px | rgb(164, 157, 143) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 53,
+    "h": 46,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 8,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 10px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 12,
+     "right": 2,
+     "bottom": 8,
+     "left": 2
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 12,
+     "right": 2,
+     "bottom": 8,
+     "left": 2
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgb(33, 31, 25) | 0px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 49,
+    "h": 46,
+    "pad": {
+     "top": 12,
+     "right": 2,
+     "bottom": 8,
+     "left": 2
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgba(0, 0, 0, 0) | none | rgb(86, 80, 66) | 0px | rgb(86, 80, 66) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 53,
+    "h": 46,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 8,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "also": [
+   "chart",
+   "tabs-detail",
+   "comments-thread"
+  ],
+  "covers": [
+   "button.chip.chip-rail"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/chart.css",
+   "components/chip.css",
+   "components/comments.css",
+   "components/fonts.css",
+   "components/tabs.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/chart.html",
+   "ui-kit/specimens/chip-rails.html",
+   "ui-kit/specimens/comments-thread.html",
+   "ui-kit/specimens/tabs-detail.html"
+  ],
+  "sha": "c0ddc378be2df759"
+ },
+ {
+  "component": "chip",
+  "id": "g3",
+  "el": "button.kit-here.chip.chip-nav.load-more",
+  "scope": "",
+  "specimen": "button-census",
+  "classes": [
+   "app-case",
+   "app-dialog",
+   "app-header",
+   "bal-add",
+   "bal-toggle",
+   "bet-sheet",
+   "bookmark-btn",
+   "btn",
+   "btn-bare",
+   "btn-ghost",
+   "btn-md",
+   "btn-primary",
+   "btn-secondary",
+   "btn-sm",
+   "btn-xs",
+   "card",
+   "card-body",
+   "cat-layout",
+   "cat-main",
+   "cc-actions",
+   "cc-banner",
+   "cc-btn",
+   "cc-inner",
+   "chip",
+   "chip-nav",
+   "cmt",
+   "cmt-actions",
+   "cmt-body",
+   "cmt-compose",
+   "cmt-list",
+   "cmt-post",
+   "desk-only",
+   "device",
+   "ed-actions",
+   "ed-head",
+   "ed-layout",
+   "ed-main",
+   "ed-tabwrap",
+   "edit",
+   "feed",
+   "feed-inner",
+   "grid",
+   "hiw-btn",
+   "ic",
+   "icon-btn",
+   "icon-btn-bare",
+   "icon-btn-photo",
+   "icon-btn-small",
+   "icon-btn-tile",
+   "idrow",
+   "kit-anat",
+   "kit-anat-ctl",
+   "kit-anat-head",
+   "kit-anat-meta",
+   "kit-anat-why",
+   "kit-chrome-demo",
+   "kit-col",
+   "kit-dlgs",
+   "kit-here",
+   "kit-nude",
+   "kit-row",
+   "kit-stack",
+   "left",
+   "load-more",
+   "load-more-wrap",
+   "meta",
+   "row",
+   "sheet-close",
+   "sheet-grab",
+   "sheet-head",
+   "signin-dialog",
+   "toast",
+   "toast-close",
+   "toast-group",
+   "toast-inner",
+   "utility"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgb(27, 30, 35) | none | rgba(255, 255, 255, 0.06) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "w": 187,
+    "h": 60,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 187,
+    "h": 60,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | none | 1 | none 3px rgb(255, 255, 255) 0px",
+    "w": 187,
+    "h": 60,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgb(27, 30, 35) | none | rgba(255, 255, 255, 0.06) | 1px | rgb(237, 231, 218) | 10px | none | none | 1 | solid 2px rgb(215, 172, 83) -2px",
+    "w": 187,
+    "h": 60,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgb(245, 243, 237) | none | rgba(255, 255, 255, 0.7) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 187,
+    "h": 60,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 187,
+    "h": 60,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 187,
+    "h": 60,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgb(245, 243, 237) | none | rgba(255, 255, 255, 0.7) | 1px | rgb(33, 31, 25) | 10px | none | none | 1 | solid 2px rgb(104, 79, 24) -2px",
+    "w": 187,
+    "h": 60,
+    "pad": {
+     "top": 6,
+     "right": 12,
+     "bottom": 7,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "button.kit-here.chip.chip-nav.load-more",
+   "button.chip.chip-nav.load-more",
+   "a.chip.chip-nav"
+  ],
+  "also": [
+   "button-outcome-row",
+   "catnav-chips"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/betpanel.css",
+   "components/button.css",
+   "components/card.css",
+   "components/chip.css",
+   "components/comments.css",
+   "components/cookie-consent.css",
+   "components/dialog.css",
+   "components/event-detail.css",
+   "components/feed.css",
+   "components/fonts.css",
+   "components/header.css",
+   "components/iconbtn.css",
+   "components/loadmore.css",
+   "components/profile.css",
+   "components/tabs.css",
+   "components/toast.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/button-census.html",
+   "ui-kit/specimens/button-outcome-row.html",
+   "ui-kit/specimens/catnav-chips.html"
+  ],
+  "sha": "f8f155150a2bc5f9"
+ },
+ {
+  "component": "chip",
+  "id": "g5",
+  "el": "a.chip.chip-nav",
+  "scope": "",
+  "specimen": "catnav-chips",
+  "classes": [
+   "app-case",
+   "cat-nav",
+   "chip",
+   "chip-ic",
+   "chip-nav",
+   "device",
+   "feed",
+   "feed-inner",
+   "filter-menu",
+   "filter-panel",
+   "kit-row"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 149,
+    "h": 71,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 149,
+    "h": 71,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 149,
+    "h": 71,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) -2px",
+    "w": 149,
+    "h": 71,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 149,
+    "h": 71,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 149,
+    "h": 71,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 149,
+    "h": 71,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) -2px",
+    "w": 149,
+    "h": 71,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "a.chip.chip-nav"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/catnav.css",
+   "components/chip.css",
+   "components/feed.css",
+   "components/filters.css",
+   "components/fonts.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/catnav-chips.html"
+  ],
+  "sha": "096f9ac1b5723f5d"
+ },
+ {
+  "component": "chip",
+  "id": "g7",
+  "el": "button.chip.chip-quiet",
+  "scope": "",
+  "specimen": "catnav-subfilter",
+  "classes": [
+   "app-case",
+   "cat-layout",
+   "cat-main",
+   "chip",
+   "chip-quiet",
+   "device",
+   "feed",
+   "feed-inner",
+   "feed-subfilter"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 100px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 59,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 100px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 59,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 100px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 59,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 100px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 59,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 100px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 59,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 100px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 59,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 100px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 59,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 100px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 59,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "button.chip.chip-quiet"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/catnav.css",
+   "components/chip.css",
+   "components/feed.css",
+   "components/fonts.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/catnav-subfilter.html"
+  ],
+  "sha": "fefedc78163b4af9"
+ },
+ {
+  "component": "chip",
+  "id": "g8",
+  "el": "button.chip.chip-quiet",
+  "scope": "",
+  "specimen": "catnav-subfilter",
+  "classes": [
+   "app-case",
+   "cat-layout",
+   "cat-main",
+   "chip",
+   "chip-quiet",
+   "device",
+   "feed",
+   "feed-inner",
+   "feed-subfilter"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) | 1px | rgb(164, 157, 143) | 100px | none | none | 1 | none 3px rgb(164, 157, 143) 0px",
+    "w": 80,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgba(255, 255, 255, 0.06) | none | rgba(0, 0, 0, 0) | 1px | rgb(237, 231, 218) | 100px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "w": 80,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgba(0, 0, 0, 0) | 1px | rgb(237, 231, 218) | 100px | none | none | 1 | none 3px rgb(237, 231, 218) 0px",
+    "w": 80,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) | 1px | rgb(164, 157, 143) | 100px | none | none | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 80,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) | 1px | rgb(86, 80, 66) | 100px | none | none | 1 | none 3px rgb(86, 80, 66) 0px",
+    "w": 80,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgba(33, 31, 25, 0.1) | none | rgba(0, 0, 0, 0) | 1px | rgb(33, 31, 25) | 100px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 80,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgba(0, 0, 0, 0) | 1px | rgb(33, 31, 25) | 100px | none | none | 1 | none 3px rgb(33, 31, 25) 0px",
+    "w": 80,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) | 1px | rgb(86, 80, 66) | 100px | none | none | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 80,
+    "h": 62,
+    "pad": {
+     "top": 12,
+     "right": 4,
+     "bottom": 12,
+     "left": 4
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "button.chip.chip-quiet"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/catnav.css",
+   "components/chip.css",
+   "components/feed.css",
+   "components/fonts.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/catnav-subfilter.html"
+  ],
+  "sha": "fefedc78163b4af9"
+ },
+ {
+  "component": "chip",
+  "id": "g9",
+  "el": "button.chip.chip-lane",
+  "scope": "",
+  "specimen": "catnav-subcat",
+  "classes": [
+   "app-case",
+   "cat-layout",
+   "cat-main",
+   "chip",
+   "chip-cnt",
+   "chip-lane",
+   "device",
+   "feed",
+   "feed-inner",
+   "subcat",
+   "subcat-head"
+  ],
+  "shots": {
+   "rest-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 230,
+    "h": 49,
+    "pad": {
+     "top": 7,
+     "right": 12,
+     "bottom": 1,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 230,
+    "h": 49,
+    "pad": {
+     "top": 7,
+     "right": 12,
+     "bottom": 1,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-dark": {
+    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "w": 230,
+    "h": 49,
+    "pad": {
+     "top": 7,
+     "right": 12,
+     "bottom": 1,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-dark": {
+    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) 2px",
+    "w": 230,
+    "h": 52,
+    "pad": {
+     "top": 7,
+     "right": 12,
+     "bottom": 4,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   },
+   "rest-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 230,
+    "h": 49,
+    "pad": {
+     "top": 7,
+     "right": 12,
+     "bottom": 1,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "hover-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 230,
+    "h": 49,
+    "pad": {
+     "top": 7,
+     "right": 12,
+     "bottom": 1,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "active-light": {
+    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "w": 230,
+    "h": 49,
+    "pad": {
+     "top": 7,
+     "right": 12,
+     "bottom": 1,
+     "left": 12
+    },
+    "needed": {
+     "top": 0,
+     "right": 0,
+     "bottom": 0,
+     "left": 0
+    },
+    "short": 0
+   },
+   "focus-light": {
+    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) 2px",
+    "w": 230,
+    "h": 52,
+    "pad": {
+     "top": 7,
+     "right": 12,
+     "bottom": 4,
+     "left": 12
+    },
+    "needed": {
+     "top": 4,
+     "right": 4,
+     "bottom": 4,
+     "left": 4
+    },
+    "short": 0
+   }
+  },
+  "covers": [
+   "button.chip.chip-lane"
+  ],
+  "sources": [
+   "components/base.css",
+   "components/catnav.css",
+   "components/chip.css",
+   "components/feed.css",
+   "components/fonts.css",
+   "components/tokens.css",
+   "ui-kit/_specimen.css",
+   "ui-kit/_verify/browser.cjs",
+   "ui-kit/_verify/states.cjs",
+   "ui-kit/specimens/catnav-subcat.html"
+  ],
+  "sha": "eaa166f68c2692b0"
  },
  {
   "component": "cookie-consent",
@@ -4143,7 +4227,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "ad5299d95441294d"
+  "sha": "328c222f8f040e04"
  },
  {
   "component": "cookie-consent",
@@ -4334,7 +4418,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "ad5299d95441294d"
+  "sha": "328c222f8f040e04"
  },
  {
   "component": "cookie-consent",
@@ -4523,7 +4607,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/cookie-consent.html"
   ],
-  "sha": "ad5299d95441294d"
+  "sha": "328c222f8f040e04"
  },
  {
   "component": "course-chrome",
@@ -6360,7 +6444,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "61147746f3c93a7d"
+  "sha": "4cb10d6f69d8c431"
  },
  {
   "component": "dialog",
@@ -6747,7 +6831,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/outcome-overlays.html"
   ],
-  "sha": "6fb2c2195053f5c7"
+  "sha": "ef4284c646594c83"
  },
  {
   "component": "filters",
@@ -8072,7 +8156,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "445c509401054552"
+  "sha": "4d7988c4dcc4c9d3"
  },
  {
   "component": "header",
@@ -8280,7 +8364,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "1500680fcbbe1b93"
+  "sha": "2f7d826ea6cc0d38"
  },
  {
   "component": "header",
@@ -8488,7 +8572,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "1500680fcbbe1b93"
+  "sha": "2f7d826ea6cc0d38"
  },
  {
   "component": "hero",
@@ -9537,7 +9621,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "fd1e6d8214f1ea5f"
+  "sha": "8c5b76475e4b3219"
  },
  {
   "component": "iconbtn",
@@ -9547,10 +9631,13 @@
   "specimen": "button-outcome-row",
   "classes": [
    "app-case",
+   "chip",
+   "chip-nav",
    "ic",
    "icon-btn",
    "kit-row",
    "load-more",
+   "load-more-wrap",
    "yesno"
   ],
   "shots": {
@@ -9710,6 +9797,7 @@
   ],
   "sources": [
    "components/base.css",
+   "components/chip.css",
    "components/fonts.css",
    "components/iconbtn.css",
    "components/loadmore.css",
@@ -9721,7 +9809,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "aa23ee3fe77f0df9"
+  "sha": "bdcf13713277cb98"
  },
  {
   "component": "iconbtn",
@@ -10129,7 +10217,7 @@
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "d7a5487ec0bf1e0a"
+  "sha": "e1f089e35a9c31bb"
  },
  {
   "component": "iconbtn",
@@ -10314,7 +10402,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/toast.html"
   ],
-  "sha": "f060f7d3586df354"
+  "sha": "98e6deaccd60d8f2"
  },
  {
   "component": "iconbtn",
@@ -10550,7 +10638,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "8517b2109f228748"
+  "sha": "ab2846d05ffa492f"
  },
  {
   "component": "iconbtn",
@@ -10786,6 +10874,8 @@
    "cc-banner",
    "cc-btn",
    "cc-inner",
+   "chip",
+   "chip-nav",
    "cmt",
    "cmt-actions",
    "cmt-body",
@@ -10825,6 +10915,7 @@
    "kit-stack",
    "left",
    "load-more",
+   "load-more-wrap",
    "meta",
    "row",
    "sheet-close",
@@ -10995,6 +11086,7 @@
    "components/betpanel.css",
    "components/button.css",
    "components/card.css",
+   "components/chip.css",
    "components/comments.css",
    "components/cookie-consent.css",
    "components/dialog.css",
@@ -11014,7 +11106,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "0e0fe1e02e79c442"
+  "sha": "edb7463ee106c907"
  },
  {
   "component": "input",
@@ -11224,7 +11316,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "a6d2a4eb536c0ccb"
+  "sha": "b1d722a41e134a3c"
  },
  {
   "component": "input",
@@ -11829,7 +11921,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "61eb6dc8adb32b5e"
+  "sha": "ecfa4a8764359af3"
  },
  {
   "component": "input",
@@ -12033,191 +12125,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "70e84190cfd38878"
- },
- {
-  "component": "loadmore",
-  "id": "g1",
-  "el": "button.load-more",
-  "scope": "",
-  "specimen": "button-outcome-row",
-  "classes": [
-   "app-case",
-   "ic",
-   "icon-btn",
-   "kit-row",
-   "load-more",
-   "yesno"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgb(27, 30, 35) | none | rgba(255, 255, 255, 0.06) | 1px | rgb(237, 231, 218) | 10px | none | rgba(237, 231, 218, 0.055) 0px 1px 0px 0px inset | 1 | none 3px rgb(237, 231, 218) 0px",
-    "w": 197,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | rgba(237, 231, 218, 0.055) 0px 1px 0px 0px inset | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 197,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(255, 255, 255) | 10px | none | rgba(237, 231, 218, 0.055) 0px 1px 0px 0px inset | 1 | none 3px rgb(255, 255, 255) 0px",
-    "w": 197,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgb(27, 30, 35) | none | rgba(255, 255, 255, 0.06) | 1px | rgb(237, 231, 218) | 10px | none | rgba(237, 231, 218, 0.055) 0px 1px 0px 0px inset | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 197,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgb(245, 243, 237) | none | rgba(255, 255, 255, 0.7) | 1px | rgb(33, 31, 25) | 10px | none | rgba(255, 255, 255, 0.7) 0px 1px 0px 0px inset | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 197,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | rgba(255, 255, 255, 0.7) 0px 1px 0px 0px inset | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 197,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(33, 31, 25) | 10px | none | rgba(255, 255, 255, 0.7) 0px 1px 0px 0px inset | 1 | none 3px rgb(33, 31, 25) 0px",
-    "w": 197,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgb(245, 243, 237) | none | rgba(255, 255, 255, 0.7) | 1px | rgb(33, 31, 25) | 10px | none | rgba(255, 255, 255, 0.7) 0px 1px 0px 0px inset | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 197,
-    "h": 71,
-    "pad": {
-     "top": 12,
-     "right": 12,
-     "bottom": 12,
-     "left": 12
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "loadmore",
-   "button-census"
-  ],
-  "covers": [
-   "button.load-more",
-   "button.kit-here.load-more"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/fonts.css",
-   "components/iconbtn.css",
-   "components/loadmore.css",
-   "components/tokens.css",
-   "components/yesno.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/button-census.html",
-   "ui-kit/specimens/button-outcome-row.html",
-   "ui-kit/specimens/loadmore.html"
-  ],
-  "sha": "352e4496c93259e5"
+  "sha": "697f4137bd16d740"
  },
  {
   "component": "market",
@@ -12518,7 +12426,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "1500680fcbbe1b93"
+  "sha": "2f7d826ea6cc0d38"
  },
  {
   "component": "navitem",
@@ -13400,7 +13308,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "9e2be76d7fa89345"
+  "sha": "5b2253bac3db962c"
  },
  {
   "component": "tabs",
@@ -13594,7 +13502,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "9e2be76d7fa89345"
+  "sha": "5b2253bac3db962c"
  },
  {
   "component": "tabs",
@@ -13788,7 +13696,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "9e2be76d7fa89345"
+  "sha": "5b2253bac3db962c"
  },
  {
   "component": "tabs",
@@ -13927,7 +13835,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "4b4dd071965561bf"
+  "sha": "9c04ee0d82c55db4"
  },
  {
   "component": "tabs",
@@ -14102,7 +14010,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "4b4dd071965561bf"
+  "sha": "9c04ee0d82c55db4"
  },
  {
   "component": "tabs",
@@ -14277,7 +14185,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/profile-identity.html"
   ],
-  "sha": "4b4dd071965561bf"
+  "sha": "9c04ee0d82c55db4"
  },
  {
   "component": "tabs",
@@ -15532,10 +15440,13 @@
   "specimen": "button-outcome-row",
   "classes": [
    "app-case",
+   "chip",
+   "chip-nav",
    "ic",
    "icon-btn",
    "kit-row",
    "load-more",
+   "load-more-wrap",
    "yesno"
   ],
   "shots": {
@@ -15697,6 +15608,7 @@
   ],
   "sources": [
    "components/base.css",
+   "components/chip.css",
    "components/fonts.css",
    "components/iconbtn.css",
    "components/loadmore.css",
@@ -15713,7 +15625,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "8ef131dcc04194c0"
+  "sha": "64970454a50b04bf"
  },
  {
   "component": "yesno",
@@ -15743,6 +15655,8 @@
    "btn-primary",
    "btn-secondary",
    "btn-sm",
+   "chip",
+   "chip-amount",
    "device",
    "ed-layout",
    "feed",
@@ -15884,6 +15798,7 @@
    "components/base.css",
    "components/betpanel.css",
    "components/button.css",
+   "components/chip.css",
    "components/dialog.css",
    "components/event-detail.css",
    "components/feed.css",
@@ -15900,7 +15815,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-more.html"
   ],
-  "sha": "fcac3f67aa345690"
+  "sha": "cc15ec5527b722f2"
  },
  {
   "component": "yesno",
@@ -15910,10 +15825,13 @@
   "specimen": "button-outcome-row",
   "classes": [
    "app-case",
+   "chip",
+   "chip-nav",
    "ic",
    "icon-btn",
    "kit-row",
    "load-more",
+   "load-more-wrap",
    "yesno"
   ],
   "shots": {
@@ -16076,6 +15994,7 @@
   ],
   "sources": [
    "components/base.css",
+   "components/chip.css",
    "components/fonts.css",
    "components/iconbtn.css",
    "components/loadmore.css",
@@ -16093,7 +16012,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "7c78797d05e2b541"
+  "sha": "939c862848b504b1"
  },
  {
   "component": "yesno",
@@ -16103,10 +16022,13 @@
   "specimen": "button-outcome-row",
   "classes": [
    "app-case",
+   "chip",
+   "chip-nav",
    "ic",
    "icon-btn",
    "kit-row",
    "load-more",
+   "load-more-wrap",
    "yesno"
   ],
   "shots": {
@@ -16269,6 +16191,7 @@
   ],
   "sources": [
    "components/base.css",
+   "components/chip.css",
    "components/fonts.css",
    "components/iconbtn.css",
    "components/loadmore.css",
@@ -16286,7 +16209,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "7c78797d05e2b541"
+  "sha": "939c862848b504b1"
  },
  {
   "component": "yesno",

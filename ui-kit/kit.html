@@ -343,7 +343,13 @@
     <div class="kit-row">
       <div class="yesno" style="width:220px"><a href="#"><button>Yes</button></a><a href="#"><button>No</button></a></div>
       <button class="icon-btn" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg></button>
-      <button class="load-more">Load more events</button>
+      <!-- The row came with the control on 2026-08-07. `.load-more-wrap` is what is left
+           of components/loadmore.css once the chip it holds became `.chip.chip-nav`, and a
+           stand that shows the control without it shows a component that no longer exists
+           (gate 24). This is not a component added to the frozen kit, it is a class this
+           one has always had and that the flat kit happened never to stage. Same reason
+           `ui-kit/docs/defects.md` row 76 was fixed by hand here. -->
+      <div class="load-more-wrap"><button class="chip chip-nav load-more">Load more events</button></div>
     </div>
     <div class="kit-subh">Text input - default / hover / focus / disabled</div>
     <div class="kit-fields">

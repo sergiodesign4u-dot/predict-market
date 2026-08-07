@@ -301,6 +301,7 @@ STATIC = {
               "and `.chip-cnt`, because gate 24 read `chip contains catnav` and an atom "
               "that contains a component is not an atom. What is left answers no pointer, "
               "which is the same shape as notice, account and bottomnav above",
+    "loadmore": "a centred row at the foot of a feed, and since 2026-08-07 that is the whole of it. The control in it was the category chip drawn in a second file - same --bg-chip ground, same --bevel-notice edge, same 10 corner, same 14px semibold, and a hover and a press that were `.chip-nav`'s byte for byte - so it carries `.chip.chip-nav` and this file carries where it stands. Backlog S41 named this outcome on the day it was opened",
     "quick": "a ROW, and since 2026-08-06 that is the whole of it: a flex line that wraps, and a bet panel pushing it to the right. The amounts went to chip.css as `.chip-amount`, the face a chip wears when it is one of the things you fill in on a sheet, and they took the hover and the press with them. A file holding one layout rule for one row is the shape backlog S41 describes about loadmore, and this file has joined it",
     "profile": "the identity row, the reputation grid and the gallery. Its one control, Edit, went to button on 2026-08-06 and took its hover and its press with it: one placement is the wrong size for an exception, so the element takes the family's small step. What is left is a head and a rail, and neither is pressed",
     "event-detail": "the head, the facts strip and the sections of one event. The three "
@@ -573,14 +574,14 @@ TRUE_ATOM = {
               "2026-08-05, beside a sort menu it shares nothing with but a file name, "
               "and the stand had been saying so since it was built by needing two "
               "specimens for one component",
-    "loadmore": "one control, and the level is right while the COMPONENT is not. Read in "
-                "a browser over 105 painted screens, `.load-more` and `.cat-nav button` "
-                "are the same graphite chip: same ground `--bg-chip`, same 6 per cent "
-                "edge, same corner, same 14px semibold, same hover and press. They "
-                "disagree on side padding (24 against 20), on letter-spacing and on "
-                "min-height, and nothing predicts which a place gets. An atom that "
-                "duplicates another component's control is still an atom; it is also a "
-                "component that should not exist. Backlog S41",
+    # `loadmore` LEFT THIS LIST ON 2026-08-07, and it left by being right. The
+    # entry below is kept as the record of what it said, because it said the
+    # answer a year before anybody acted on it: "an atom that duplicates another
+    # component's control is still an atom; it is also a component that should
+    # not exist". `.load-more` carries `.chip.chip-nav` now, the four
+    # declarations that separated them are gone, and what is left in the file is
+    # a centred row. A row is not an atom and the map can read what stands in it,
+    # so this component has no need of a declaration at all.
 }
 
 # ---- the stands that are short, and are short for a KNOWN reason -------------

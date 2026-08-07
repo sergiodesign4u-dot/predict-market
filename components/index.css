@@ -41,7 +41,6 @@
 @import url("course-chrome.css");
 
 /* Atoms: a control or a mark that holds no other component. */
-@import url("loadmore.css");
 @import url("oddsbar.css");
 @import url("button.css");
 @import url("iconbtn.css");
@@ -56,6 +55,12 @@
 
 /* Molecules: they hold atoms, or their own parts and nothing else. */
 @import url("related.css");
+/* loadmore moved out of the atom group on 2026-08-07, and it moved for the same
+   reason catnav did the day before: what stands in it is a `.chip` now, so it is
+   a whole that holds a part and it has to load after the part. Its control was
+   the category chip drawn in a second file; what is left of the component is the
+   centred row at the foot of a feed. Backlog S41. */
+@import url("loadmore.css");
 @import url("quick.css");
 @import url("toast.css");
 @import url("comments.css");

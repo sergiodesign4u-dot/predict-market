@@ -421,6 +421,15 @@ KINDS = [
     # metric and the distance would have fallen by two for a move that closed
     # one. Naming the face fixes it in the direction of MORE truth: the row says
     # both what the control is and where it stands.
+    # IT ADOPTED THE CHIP ON 2026-08-07 AND ITS ROLE DID NOT MOVE. Load more
+    # fetches, so it is an `action`; its face is `--bg-chip` on `--bevel-notice`
+    # at a 10 corner in 14px semibold, which is `.chip-nav` in every value, and
+    # its hover and press were that chip's byte for byte in a second file. A role
+    # is what a control MEANS and an atom is where its RULES live, which is the
+    # correction the social mark forced a day earlier.
+    ("load more", {"load-more"}, set(),
+     "loadmore", "action", "the category chip at the foot of a list: same ground, same "
+                           "edge, same corner, same hover and same press, in a second file"),
     ("chip, a category", {"chip-nav", "chip-quiet"}, {"cat-nav", "cat-condensed", "feed-subfilter"},
      "chip", "selector", "one graphite chip family, with a lighter press than this one"),
     ("a sub-category row", {"chip-lane"}, {"subcat"},
@@ -444,8 +453,6 @@ KINDS = [
     ("bottom nav slot", {"nav-slot"}, {"bottom-nav"},
      "navitem", "nav", "the quietest control in the product: no ground, no edge, no corner, "
                        "and the one thing the bar says at a glance is which slot is current"),
-    ("load more", {"load-more"}, set(),
-     "loadmore", "action", "the same graphite chip, at the foot of a list"),
     ("toggle", {"toggle"}, set(),
      "filters", "selector", "a switch is not a button: it carries a value, not an action"),
     ("the vitrine's own chrome", {"rm-toggle", "theme-switch"}, set(),
@@ -598,7 +605,6 @@ NOT_AN_ATOM = {
 ATOM = {
     "the button family": "button",
     "post a comment": "button",
-    "load more": "button",
     "cookie consent": "button",
     "edit, on the profile": "button",
     "icon only, in the header": "iconbutton",
@@ -616,6 +622,7 @@ ATOM = {
     "chip, a category": "chip",
     "chip, a quick amount": "chip",
     "chip, quiet, in a rail": "chip",
+    "load more": "chip",
     # THE ROW THE MAP WAS NOT SURE OF, AND THE MEASUREMENT SETTLED IT ON
     # 2026-08-06. It was `chip` for one day, on the strength of the drawing.
     # Then the chip family was read out file by file to start the migration and
@@ -691,9 +698,19 @@ def atom_gap():
     # after a move that took every face rule out of it. Placement is where and
     # whether; a face is what it looks like, and a rule has to set at least one
     # face property to count.
+    # WIDTH JOINED THEM ON 2026-08-07, AND IT IS THE THIRD CORRECTION THIS TEST
+    # HAS NEEDED. `components/cookie-consent.css` keeps `.cc-btn{flex:1 1 auto;
+    # min-width:96px}` so that three answers divide the banner and none collapses
+    # under its own label, and it is one sentence: `flex` was already read as
+    # placement and `min-width` was read as a face. A WIDTH IS WHAT A CONTAINER
+    # DECIDES, the same as a flex basis or an order; a HEIGHT is not, because
+    # under a coarse pointer a height is a target size and belongs to the
+    # control. That asymmetry is the point rather than an inconsistency, and it
+    # is why `min-height` is deliberately absent from this list.
     PLACEMENT = ("display", "position", "top", "right", "bottom", "left", "z-index",
                  "margin", "flex", "order", "align-self", "justify-self", "grid",
-                 "visibility", "float", "overflow", "inset", "place-self")
+                 "visibility", "float", "overflow", "inset", "place-self",
+                 "width", "min-width", "max-width")
     rules = []
     for path in sorted(COMP.glob("*.css")) + sorted((COMP / "patterns").glob("*.css")):
         if path.name in ("index.css", "tokens.css", "fonts.css"):

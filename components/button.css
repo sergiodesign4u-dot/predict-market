@@ -155,6 +155,26 @@
    the sheet's own rule, and the dock's `width:auto`. A control that owns its row
    says so in its class, where the person placing it can read it. */
 .btn.btn-block{display:flex;width:100%}
+/* THE FLOOR THE RAMP DID NOT HAVE, 2026-08-07, and it closes the older half of
+   `ui-kit/docs/backlog.md` S39. The rule is `components/tabs.css`'s and it has
+   been in this system since step 7: TARGET SIZE FOLLOWS THE POINTER AND NOT THE
+   VIEWPORT - 44px under a coarse one, 36 under a fine one, which clears WCAG
+   2.5.8's 24x24 with room and 2.5.5's 44 exactly. Six files carried it and this
+   one, the largest control family in the product, did not.
+   MEASURED FIRST, on all 105 painted screens in a real touch context at 390px
+   with `matchMedia('(pointer: coarse)')` asserted true before every read: md
+   renders 47 and lg 55, so THE WHOLE FAMILY ALREADY CLEARS 44 EXCEPT sm AND xs.
+   sm is 36 on 137 placements and xs is 25 on 72, and those 209 boxes are the
+   entire effect of this rule. It is written on `.btn` rather than on the two
+   steps because a floor is the family's, not a size's: a seventh step added
+   later gets it without anybody remembering.
+   IT ALSO DELETED A COPY OF ITSELF. `components/profile.css` carried this same
+   declaration for one control, which is what a family with no floor forces a
+   region to do, and it was the last thing gate 41 read as drawing a button in
+   that file. */
+@media(pointer:coarse){
+  .btn{min-height:var(--control-44)}
+}
 
 /* ---------------------------------------------------------------- states ---
    THE QUIET HOVER MOVES THE GROUND, and that was the family's one real
