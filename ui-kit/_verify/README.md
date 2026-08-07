@@ -102,6 +102,14 @@ the row gap is twice the 12px `shoot()` asks for, so the halving no longer caps 
 the frame actually managed is written into the manifest next to what it needed, so
 `python3 ui-kit/_states.py --crop` and gate 31 can fail on a crop **without a browser**.
 
+**And since 2026-08-07 the word for what it reads is a READING.** The capture stopped writing a png
+for every state on 2026-08-05 and writes four, for `disabled` (`ui-kit/docs/backlog.md` S42).
+Nothing above changed and nothing above needed to: `shoot()` computes the clip whether or not it
+writes one, so the pad wanted against the pad got is recorded for all **658 readings**, **4 are
+still short**, and both subjects are still declared in `_states.TIGHT`. The check was never about
+the png. It asks whether the SPECIMEN gives a control the room its own paint needs outside its box,
+which is why both survivors are focus rings.
+
 ## What they do
 
 | Script | Opens a browser through | What it answers |

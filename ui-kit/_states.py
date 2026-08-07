@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-_states.py  -  are the state pictures still true?
+_states.py  -  are the state readings still true?
 
 THE PROBLEM A PICTURE HAS. `ui-kit/_verify/states.cjs` photographs every state of
 every component with a real pointer, a real Tab and a real press, which is the
@@ -19,7 +19,18 @@ the subject sat off centre in its own frame. The picture survives on `disabled`,
 which is the one state nobody can raise by hand. Everything below is unchanged
 and now guards the numbers as well as the four remaining images, which is the
 same question either way: is this what the browser would produce today. The 710
-pictures the pages stopped linking are `ui-kit/docs/backlog.md` S30.
+pictures the pages stopped linking were deleted on 2026-08-05, and
+`ui-kit/docs/backlog.md` S30 and S42 closed on 2026-08-07.
+
+AND THE WORD IS `READING`, SINCE 2026-08-07, WHICH IS THE REST OF THAT CLOSE.
+This file counts 87 groups, 658 readings and 4 pictures, and every count in it
+printed the word `picture` for all three: "658 picture(s)" was the headline of a
+tool whose subject had shrunk by a factor of 164 two days earlier. The check was
+right and its vocabulary was two days stale, which is the smaller half of the
+defect this repo keeps writing rows about - an instrument reporting confidently
+about a subject it is not looking at. A reading is what the capture takes: the
+face in nine values, the box, the pad it wanted against the pad it got. A
+picture is one thing that may come out of a reading, and there are four.
 
 WHY IT IS NOT A PIXEL COMPARISON. The obvious check is "take the picture again
 and compare". It cannot be a build gate: it needs a browser, a served tree and
@@ -110,7 +121,7 @@ def load():
 
 
 def stale():
-    """(rows whose sources moved, rows whose picture file is gone)."""
+    """(rows whose sources moved, readings that name a picture file that is gone)."""
     moved, missing = [], []
     for row in load():
         want = digest(sources(row))
@@ -224,6 +235,19 @@ NOT_SHOT = {
 # below predicted the second one and asked for a lookup; the lookup is the fix.
 # An entry is (component, element selector, scope), which is what the subject IS,
 # and it survives every renumbering because it does not know about numbers.
+# AND IT DID NOT RETIRE WITH THE PICTURES, WHICH IS THE FINDING OF 2026-08-07.
+# `ui-kit/docs/backlog.md` S30 predicted that this list and the crop half of gate
+# 31 would both be deleted the day the capture stopped writing a png for every
+# state, and gave a reason that sounds like an argument: a frame that holds
+# nothing cannot be short. It is wrong, and one line of states.cjs says why.
+# `shoot()` COMPUTES the clip whether or not it writes one, because the pad a
+# subject needs is the same question with or without a file at the end of it. So
+# 4 of 658 readings are still short, both entries below are still live, and the
+# gate has been green on a measurement whose artefact stopped existing.
+# WHAT THIS CHECK IS ABOUT IS THE STAND, not the png: whether the specimen gives
+# a control the room its own paint needs OUTSIDE its box, which is why both
+# survivors are focus rings. The artefact went and the measurement stayed, and
+# what retired was the word `picture` in the name of it.
 TIGHT = {
     ("tabs", "input.ed-tabradio", ""): "`input.ed-tabradio` is parked at `left:-9999px` and the ring the "
                     "system draws on :focus-visible is therefore painted off the left "
@@ -250,7 +274,7 @@ TIGHT = {
 
 
 def cropped():
-    """(pictures whose frame did not hold what the subject paints outside its box
+    """(readings whose frame did not hold what the subject paints outside its box
     and are not declared, declared entries that are no longer short)."""
     out, seen = [], set()
     for row in load():
@@ -347,11 +371,13 @@ if __name__ == "__main__":
             row["sources"] = sources(row)
             row["sha"] = digest(row["sources"])
         INDEX.write_text(json.dumps(rows, indent=1) + "\n", encoding="utf-8")
-        print("stamped %d group(s), %d picture(s)"
-              % (len(rows), sum(len(r.get("shots", {})) for r in rows)))
+        print("stamped %d group(s), %d reading(s), %d picture(s)"
+              % (len(rows), sum(len(r.get("shots", {})) for r in rows),
+                 sum(1 for r in rows for s in r.get("shots", {}).values()
+                     if s.get("file"))))
     elif "--crop" in sys.argv:
         short, idle = cropped()
-        print("%d undeclared crop(s) of %d picture(s), %d declared, %d idle"
+        print("%d undeclared crop(s) of %d reading(s), %d declared, %d idle"
               % (len(short), sum(len(r.get("shots", {})) for r in rows),
                  len(TIGHT), len(idle)))
         for c in short:
@@ -361,8 +387,10 @@ if __name__ == "__main__":
         sys.exit(1 if (short or idle) else 0)
     else:
         moved, missing = stale()
-        print("%d group(s), %d picture(s), %d component(s)"
+        print("%d group(s), %d reading(s), %d picture(s), %d component(s)"
               % (len(rows), sum(len(r.get("shots", {})) for r in rows),
+                 sum(1 for r in rows for s in r.get("shots", {}).values()
+                     if s.get("file")),
                  len({r["component"] for r in rows})))
         if moved:
             print("stale, a source moved (re-run ui-kit/_verify/states.cjs):")
@@ -373,5 +401,5 @@ if __name__ == "__main__":
             for m in missing:
                 print("   " + m)
         if not moved and not missing:
-            print("every picture is what its sources would produce today")
+            print("every reading is what its sources would produce today")
         sys.exit(1 if (moved or missing) else 0)

@@ -1617,7 +1617,15 @@ check("30 no declared exception is idle", not _idle,
 notes.append("%-34s %s" % ("30 declared, and not worn",
                            "%d class(es), each with its reason" % len(NOT_WORN)))
 
-# ---- 31. a photograph of a state is only as true as the day it was taken -----
+# ---- 31. a reading of a state is only as true as the day it was taken --------
+# WHAT THIS GATE IS ABOUT, IN THE WORD IT USES SINCE 2026-08-07. The capture
+# takes 658 readings and writes 4 pictures, and every label below said `picture`
+# for both, two days after `ui-kit/docs/backlog.md` S42 cut 722 png to 4. The
+# checks did not change and did not need to: a reading is stamped, hashed and
+# held exactly as a photograph was, because the question is the same one either
+# way. Only the noun was stale, and a gate that reports "0 of 658 picture(s)"
+# when the tree holds four is the small version of the thing this file exists to
+# catch. S30 and S42 close on that correction.
 # A picture is the one artefact on a stand page that goes stale WITHOUT ANYTHING
 # CHANGING ON THE PAGE. Edit a token, edit the component, edit the specimen it
 # was shot in, and the gallery still shows what the system used to look like,
@@ -1641,25 +1649,31 @@ import _states                                                        # noqa: E4
 
 _st_moved, _st_missing = _states.stale()
 _st_undeclared, _st_idle = _states.unphotographed()
-check("31 every picture is what its sources would make today", not _st_moved,
+check("31 every reading is what its sources would make today", not _st_moved,
       "%d: %s" % (len(_st_moved), "; ".join(_st_moved[:4])))
 check("31 no picture file is gone", not _st_missing,
       "%d: %s" % (len(_st_missing), "; ".join(_st_missing[:4])))
-check("31 a component with states has pictures", not _st_undeclared,
+check("31 a component with states is measured", not _st_undeclared,
       "%d: %s" % (len(_st_undeclared), ", ".join(_st_undeclared)))
 _st_crop, _st_crop_idle = _states.cropped()
-check("31 no picture crops its subject", not _st_crop,
-      "%d of %d: %s" % (len(_st_crop),
-                        sum(len(r.get("shots", {})) for r in _states.load()),
-                        "; ".join(_st_crop[:2])))
+# The subject of this half is the STAND and not the png. `shoot()` computes the
+# clip whether or not it writes one, so the check outlived the artefact it was
+# named after: it asks whether the specimen gives a control the room its own
+# paint needs outside its box, which is why both survivors are focus rings.
+check("31 no frame is short of what its subject paints", not _st_crop,
+      "%d of %d reading(s): %s" % (len(_st_crop),
+                                   sum(len(r.get("shots", {})) for r in _states.load()),
+                                   "; ".join(_st_crop[:2])))
 check("31 no declared tight frame is idle", not _st_crop_idle,
       "%d: %s" % (len(_st_crop_idle), ", ".join(_st_crop_idle)))
 check("31 no declared gap is idle", not _st_idle,
       "%d: %s" % (len(_st_idle), ", ".join(_st_idle)))
-notes.append("%-34s %s" % ("31 photographed",
-                           "%d group(s), %d picture(s), %d not shot with a reason"
+notes.append("%-34s %s" % ("31 measured",
+                           "%d group(s), %d reading(s), %d picture(s), %d not shot with a reason"
                            % (len(_states.load()),
                               sum(len(r.get("shots", {})) for r in _states.load()),
+                              sum(1 for r in _states.load()
+                                  for s in r.get("shots", {}).values() if s.get("file")),
                               len(_states.NOT_SHOT))))
 
 # ---- 32. the authored half is checked, and it is checked BEFORE it is written -
