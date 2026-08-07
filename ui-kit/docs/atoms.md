@@ -1245,6 +1245,93 @@ both now rather than one file inventing half an answer.
 
 ---
 
+## Defect 78, the rest of the navigation: what a metric at zero stops seeing
+
+    .nav-item.nav-row     365 painted, 280 grey   the account dropdown, five rows to five pages
+    .icon-btn.desk-only    73 painted,  56 grey   Favorites in the header, one page
+                          438 painted, 336 grey, both trees in one change
+
+**These were not weighed and left. They were not looked at.** The pass on
+2026-08-07 that unwrapped the bottom-nav slot, the header strip and the category
+band stopped where gate 41 stopped, and its own commit says "none of those is
+navigation by construction" about a list that did not contain either of these.
+Neither cost a file-slot - `.nav-item` and `.icon-btn` already reached one file
+each - so the metric never mentioned them and the sweep took the metric's word
+for what was left. **A number that has reached zero is not a map any more, and
+this is what that costs.**
+
+Both are navigation by construction. A dropdown row that goes to
+`my-profile.html` is a link; a heart that goes to `favorites.html` is a link. The
+logged-out heart is a bare `<button data-open="signin">` and stayed one, which is
+the same answer the bottom-nav slot gave: a control that navigates is a link, a
+control that opens a sheet is a button, and the product had that right both
+times.
+
+### Three values the `<button>` tag had been supplying for free
+
+    .nav-item     display:block       194x33 -> 66x30, and back
+    .icon-btn     text-align:center   365 readings, plus 730 on the mark and its <use>
+    .icon-btn     text-decoration:none  365 readings
+
+**The first one is the interesting one, and it broke a layout.** `width:100%` is
+the whole reason `.nav-item` exists as a row, and width does nothing to an inline
+box. A `<button>` is `inline-block` by default, so the declaration worked for as
+long as every one of these was a button and stopped the moment 365 became links:
+the row collapsed to the width of its own text. **What hid it is that the two
+faces which had already crossed over each declared a display of their own** -
+`.nav-slot` is flex and `.nav-row-stack` is block - so the atom's silence was
+covered by its faces until a face that declared nothing crossed too.
+
+The other two are the same discovery `.chip` made a day earlier and are the same
+four words. Neither draws anything: the content of an icon button is an svg
+centred by flex, and an underline has no glyph to sit under. That is the argument
+for declaring them rather than against it, and this file already says so about
+`line-height` two paragraphs up: a computed value that moves for no drawn reason
+is the diff that buries the one drawn reason a pass has.
+
+### The grey tree needed a selector, not a declaration
+
+    .avatar-menu .dropdown button  ->  .avatar-menu .dropdown a { display: block; ... }
+    104 files, one rule, identical in every one of them
+
+`wireframes/` has no `.nav-item` and no `.nav-row` at all: the account row is
+styled entirely by that one selector, on the TAG. **A rule that names a tag is a
+rule that stops when the tag changes**, and this one took the row's width, its
+alignment, its padding and its font size with it. It also carried `width:100%`,
+so it needed `display:block` for the same reason the painted atom did. No
+`<button>` is left inside that dropdown in any of the 104 files, so the selector
+is `a` alone rather than a pair.
+
+### The one box that moved, and it is a fix
+
+    .utility   112x36 -> 104x36   at mobile, on 73 screens
+
+Below the breakpoint the Favorites heart is `display:none`, but its WRAPPER was
+not: an `<a>` with a hidden child is still a flex item of `.utility`, still worth
+one 8px gap. **The header had been reserving a gap for a control that was not
+there**, on every logged-in screen, at every width where that control is hidden.
+Deleting the wrapper gave the 8px back.
+
+### What it measured
+
+    2190 wrapper anchors removed (438 x 5 widths), 0 added
+      73 boxes resized, 73 moved, and all 146 are the .utility gap above
+
+    12617 computed properties, and every one of them is named:
+      textAlign  10500  the footer's 525 social marks and the two elements inside
+                        each, which crossed over to <a> in an earlier pass and had
+                        never had the atom's value. All 1361 icon buttons agree now
+      display     2117  1825 nav rows inline-block to the declared block, and 292
+                        readings of the heart inline-flex to flex, which is a flex
+                        item being blockified and not a rule anyone wrote
+
+**What is still row 78, and it is unchanged**: the YES / NO pair (230, not the
+212 the row had counted), the sheet close inside `<a href="#">` (17) and the
+`.btn` family inside an anchor (71, not 73). None of those is navigation by
+construction, so each needs a product answer.
+
+---
+
 ## The decision this document no longer has open
 
 - ~~**Is a social mark a `navitem` or an `iconbutton`?**~~ **Answered 2026-08-06 and the

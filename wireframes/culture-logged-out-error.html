@@ -162,7 +162,11 @@
     .avatar-menu ul { list-style: none; margin: 0; padding: 0; }
     .avatar-menu li { border-top: 1px solid #ccc; }
     .avatar-menu li:first-child { border-top: none; }
-    .avatar-menu .dropdown button { width: 100%; text-align: left; border: none; background: transparent; padding: 8px 10px; font-size: 11px; cursor: pointer; }
+    .avatar-menu .dropdown a { display: block; width: 100%; text-align: left; border: none; background: transparent; padding: 8px 10px; font-size: 11px; cursor: pointer; }
+    /* `a` rather than `button`, and `display:block` rather than the element's own
+       inline-block: defect 78, 2026-08-07. Five rows that go to five pages are links
+       now, so a selector on the tag stopped reaching them, and `width:100%` does
+       nothing to an inline box. No button is left inside this dropdown. */
 
     /* ---- Second-level navigation: categories ---- */
     .cat-nav { background: #ededed; margin: 0; }

@@ -42,7 +42,17 @@
    without answering a design question. The record is `ui-kit/docs/atoms.md`.
    ============================================================================ */
 
-.icon-btn{padding:var(--space-4);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;line-height:0}
+/* `text-align` and `text-decoration` arrived on 2026-08-07 with the ELEMENT, and
+   both were the <button> tag's own defaults that this atom had worn for its whole
+   life with nobody writing them down. Favorites in the header is an <a> now rather
+   than a <button> wrapped in one, so it inherited `start` from the band and picked
+   up the anchor's underline: 365 readings of the control and 730 of the mark and
+   its <use> inside it. Neither draws anything today - the content is an svg centred
+   by flex, and an underline has no glyph to sit under - which is precisely the
+   argument for declaring them. A computed value that moves for no drawn reason is
+   the diff that buries the one drawn reason a pass has, and the same four words
+   were written on `.chip` a day earlier for the same discovery. */
+.icon-btn{padding:var(--space-4);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;line-height:0;text-align:center;text-decoration:none}
 .bal-swap{padding:var(--space-4)}
 .bal-add{padding:var(--space-4)}
 /* The circle, and it is THE HEADER BAND'S SKIN rather than this atom's own idea.

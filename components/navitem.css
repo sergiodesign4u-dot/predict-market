@@ -51,7 +51,16 @@
 /* The whole atom, and it really is this short: it is the ABSENCE of a control
    until a pointer arrives. `border:0` rather than `border:none` because that is
    what both files said; both compute to a 0px none border either way. */
-.nav-item{width:100%;background:transparent;border:0;border-radius:0;cursor:pointer;text-decoration:none}
+/* `display:block` arrived on 2026-08-07 and it is the fourth value this atom had
+   been WEARING without writing down. `width:100%` is the whole reason this class
+   exists as a row, and width does nothing to an inline box: the <button> element
+   was supplying `inline-block` for free, so the declaration worked for as long as
+   every one of these was a button and stopped the moment the account dropdown's
+   365 became links. Measured: 194x33 to 66x30, the row collapsing to its own text.
+   The two faces that had already become anchors each declared a display of their
+   own - `.nav-slot` flex, `.nav-row-stack` block - which is exactly why the gap
+   stayed invisible until a face that declared none crossed over. */
+.nav-item{display:block;width:100%;background:transparent;border:0;border-radius:0;cursor:pointer;text-decoration:none}
 
 /* --------------------------------------------------------- the slot face ---
    A mark over a label, in a bar that is the only navigation a phone has. Its

@@ -162,7 +162,11 @@
     .avatar-menu ul { list-style: none; margin: 0; padding: 0; }
     .avatar-menu li { border-top: 1px solid #ccc; }
     .avatar-menu li:first-child { border-top: none; }
-    .avatar-menu .dropdown button { width: 100%; text-align: left; border: none; background: transparent; padding: 8px 10px; font-size: 11px; cursor: pointer; }
+    .avatar-menu .dropdown a { display: block; width: 100%; text-align: left; border: none; background: transparent; padding: 8px 10px; font-size: 11px; cursor: pointer; }
+    /* `a` rather than `button`, and `display:block` rather than the element's own
+       inline-block: defect 78, 2026-08-07. Five rows that go to five pages are links
+       now, so a selector on the tag stopped reaching them, and `width:100%` does
+       nothing to an inline box. No button is left inside this dropdown. */
 
     /* ---- Second-level navigation: categories ---- */
     .cat-nav { background: #ededed; margin: 0; }
@@ -805,9 +809,9 @@
           </div>
 
           <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
-          <a href="favorites.html" aria-label="Favorites, see saved events"><button type="button" class="icon-btn desk-only" aria-label="Favorites">
+          <a class="icon-btn desk-only" href="favorites.html" aria-label="Favorites, see saved events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg>
-          </button></a>
+          </a>
 
           <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
           <details class="notif-menu">
@@ -834,11 +838,11 @@
             </summary>
             <div class="dropdown" role="menu">
               <ul>
-                <li><a href="my-profile.html"><button class="nav-item nav-row" type="button" role="menuitem">My Profile</button></a></li>
-                <li><a href="active-bets.html"><button class="nav-item nav-row" type="button" role="menuitem">My Bets</button></a></li>
-                <li><a href="wallet.html"><button class="nav-item nav-row" type="button" role="menuitem">Wallet</button></a></li>
-                <li><a href="how-it-works.html"><button class="nav-item nav-row" type="button" role="menuitem">How It Works</button></a></li>
-                <li><a href="event-feed-logged-out.html"><button class="nav-item nav-row" type="button" role="menuitem">Logout</button></a></li>
+                <li><a class="nav-item nav-row" href="my-profile.html" role="menuitem">My Profile</a></li>
+                <li><a class="nav-item nav-row" href="active-bets.html" role="menuitem">My Bets</a></li>
+                <li><a class="nav-item nav-row" href="wallet.html" role="menuitem">Wallet</a></li>
+                <li><a class="nav-item nav-row" href="how-it-works.html" role="menuitem">How It Works</a></li>
+                <li><a class="nav-item nav-row" href="event-feed-logged-out.html" role="menuitem">Logout</a></li>
               </ul>
             </div>
           </details>
