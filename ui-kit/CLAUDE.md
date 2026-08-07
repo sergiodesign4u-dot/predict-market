@@ -1,8 +1,8 @@
 # ui-kit/ - the vitrine, being rebuilt from 2026-08-07
 
-The kit shows the system to a person and it holds no product code. Right now it holds two files:
-`overview.html`, which says what is happening, and `_page.css`, 70 lines of stand furniture that
-`overview.html` and `../ui-visual/overview.html` both use.
+The kit shows the system to a person and it holds no product code. Right now it holds three pages:
+`overview.html`, which says what is happening, `vitrine.html`, the ten atoms in every face they wear
+with both themes side by side, and `_page.css`, the stand furniture the three index pages use.
 
 ## What was here and why it is not
 
@@ -35,6 +35,13 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
 1. **Census.** Five anchor screens with their states, walked in a browser at 390 and 1280 in both
    themes, computed values rather than written rules. Output: `docs/census.md`.
 2. **Levels.** Atom, molecule, organism declared once with a reason each. Output: `docs/inventory.md`.
+2.5 **The vitrine, atoms.** DONE 2026-08-07, `vitrine.html`. Built BEFORE the consolidation on
+   purpose: it is the picture of the system to compare the next pass against, and a change to a
+   value that nobody can look at is a diff rather than a decision. It found two things the census
+   and the inventory both missed, because both read markup and this one renders it: **the unscoped
+   `.amount-input` takes its ground and its ink from the User Agent and shows as a white box in the
+   dark theme**, and **the card odds bar exists in no screen's markup at all**, being written by a
+   page script at run time, which is where its 213 uses came from.
 3. **Consolidation.** One pass where a value may change: the radius scale, the hairline, the icon
    stroke, the size ramp. Every change measured before and after. Output: `docs/consolidation.md`.
 4. **The pages.** One per component: a live specimen, its states in both themes, its classes, its

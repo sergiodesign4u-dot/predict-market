@@ -67,3 +67,91 @@
   margin:0 0 18px;max-width:var(--measure);line-height:1.55}
 .tk-subh{color:var(--text-muted);font-family:var(--font-body);font-size:11px;
   font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:26px 0 10px}
+
+/* ==========================================================================
+   THE VITRINE - one component per block, its faces down the page, both themes
+   across it. Added 2026-08-07 for vitrine.html.
+
+   BOTH THEMES IN ONE DOCUMENT, and that is the point of the whole layout. The
+   roles in tokens.css are declared on `:root,[data-theme="dark"]` and on
+   `[data-theme="light"]`, and the light selector carries no `:root`, so ANY
+   element can be marked and its subtree gets that theme. So the two columns are
+   not screenshots and not a toggle: they are the same markup resolving twice, in
+   one page, at the same instant. A role with a value in only one theme renders
+   anyway, and the only way to see that is to have the other one next to it.
+
+   Nothing in this block styles a product class. It draws the table the specimens
+   sit in, and every specimen inside a cell is painted by components/ alone. */
+
+.tk-comp{margin-top:40px;border-top:1px solid var(--border-hairline);padding-top:22px;
+  scroll-margin-top:20px}
+.tk-comp>h2{font-family:var(--font-display);color:var(--text-primary);
+  font-size:20px;font-weight:700;letter-spacing:-.02em;margin:0 0 8px}
+.tk-meta{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px;padding:0;list-style:none}
+.tk-meta li{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);
+  border:1px solid var(--border-hairline);border-radius:6px;padding:2px 8px}
+.tk-meta li.tk-decl{color:var(--text-brass);border-color:var(--border-brass,rgba(199,162,78,.3))}
+
+/* The 1px gap IS the rule line: the grid's own background shows through it, so a
+   cell needs no border of its own and no border collapses against its neighbour. */
+.tk-faces{display:grid;grid-template-columns:190px 1fr 1fr;gap:1px;
+  background:var(--border-hairline);border:1px solid var(--border-hairline);
+  border-radius:10px;overflow:hidden;margin:0 0 8px}
+.tk-colh{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--text-muted);background:var(--bg-surface);
+  padding:8px 12px}
+.tk-lab{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);
+  background:var(--bg-surface);padding:14px 12px;display:flex;flex-direction:column;
+  justify-content:center;gap:4px;word-break:break-word}
+.tk-lab b{color:var(--text-primary);font-weight:400}
+.tk-lab i{font-style:normal;font-family:var(--font-body);font-size:10px;opacity:.8}
+
+/* THE GROUND IS THE PLATE, not the page. In the product a control almost never
+   stands on the page: it stands on the plate the feed and the detail shell draw.
+   A specimen on the page ground is a specimen measured against a surface it is
+   never seen on. */
+.tk-theme-fig{background:var(--bg-plate);color:var(--text-primary);
+  padding:16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;min-width:0;
+  overflow-x:auto}
+.tk-theme-fig.tk-stack{flex-direction:column;align-items:stretch}
+.tk-theme-fig>*{max-width:100%}
+
+/* A CELL SCROLLS, IT DOES NOT CLIP. `.chip-nav` is `white-space:nowrap` with 20px
+   of side padding, and in the product it stands in a rail that scrolls sideways.
+   In a fixed cell at 390 it ran 5px past the edge. Clipping there would have shown
+   a chip that is not the chip, so the cell carries the rail's own behaviour. */
+
+/* A SPECIMEN THAT IS ABSENT ON PURPOSE SAYS SO. `.bet-panel` is display:none below
+   900px, which is right, and an empty cell with no explanation reads as broken. */
+.tk-absent{display:none;margin:0;font-family:var(--font-mono);font-size:11px;
+  color:var(--text-muted)}
+@media(max-width:899px){.tk-absent{display:block}}
+
+/* Layout the specimens need and the product does not provide. These exist so that
+   no `style=` attribute has to carry a layout value: the only inline styles left
+   on this page are the two the rules allow, a datum (the odds fill width) and the
+   event photograph. */
+.tk-pair{display:flex;gap:8px}
+.tk-photo{display:inline-flex;align-items:center;justify-content:center;
+  width:72px;height:72px;background-size:cover;background-position:center;
+  border-radius:10px}
+.tk-wide{width:120px}
+/* A BLOCK HOLDER, and it is load bearing. `.bet-panel` is `flex:0 0 322px`, sized
+   to be an item in the detail screen's ROW. Dropped straight into a specimen cell
+   that is a flex COLUMN, that basis is read as a height and the panel rendered
+   322px tall and mostly empty. A component carried out of its layout brings the
+   layout's assumptions with it, and this is what that looks like. */
+.tk-hold{display:block;width:100%;max-width:322px;min-width:0}
+
+/* A defect shown on purpose is labelled on purpose, or the next reader copies it.
+   The class sits ON the label, so this is a compound and not a descendant: written
+   as `.tk-bad .tk-lab` it matched nothing and the warning rendered as an ordinary
+   caption, which is the exact failure the row is there to warn about. */
+.tk-lab.tk-bad,.tk-lab.tk-bad b{color:var(--outcome-no-text)}
+
+@media(max-width:760px){
+  .tk-faces{grid-template-columns:1fr 1fr}
+  .tk-lab{grid-column:1/-1;flex-direction:row;align-items:baseline;gap:8px;
+    padding:10px 12px;flex-wrap:wrap}
+  .tk-colh:first-of-type{display:none}
+}

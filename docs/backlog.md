@@ -9,7 +9,7 @@ holds the record of what was done. This holds what is not.
 Unlike `decisions.md`, this file is edited: a row is struck when the item closes, with the date and
 the entry in `decisions.md` that closed it.
 
-**Open: 24.**
+**Open: 26.**
 
 The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
 twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
@@ -67,10 +67,12 @@ Carried since the project brief; none of it has been answered.
 
 ---
 
-## Design defects deferred (3)
+## Design defects deferred (5)
 
 | # | Item | Source | Note |
 |---|---|---|---|
+| 25 | `.amount-input` has no ground and no ink of its own | Design System step 2.5, the vitrine, 2026-08-07 | **Found by rendering the atom outside its scope for the first time.** Every rule in `input.css` is scoped to `dialog.app-dialog` or to `.bet-panel` / `.bet-sheet`. Unscoped, the field gets a hairline, 8px of padding and an 18px size, and takes its background and its colour from the User Agent: **a white box with black text, in the dark theme**. Invisible on all 41 anchor screens, because on every one of them the field stands inside a dialog or a panel. It is `a missing value is a value`, the same trap that cost the 992 blue links. Owner: consolidation, step 3 |
+| 26 | The outcome pair's halves are told apart by DOM ORDER | Design System step 2, the inventory, 2026-08-07 | `.yesno > a:first-of-type button` and `:last-of-type`. Move the two buttons and green becomes red, on 81 readings of the control this product is named after. The vitrine carries the reversed pair as a labelled specimen so it can be seen rather than argued about. Owner: consolidation, step 3 |
 | 12 | Live odds-delta animation | `/impeccable critique` P3, 2026-07-16 | Deferred at the time as P3; Stage 11 (Animation) is its natural owner |
 | 13 | Error state vs empty state are not differentiated | `/impeccable critique` P3, 2026-07-16 | Two different situations reading as one block |
 | 14 | The undeclared second alpha ladder | Stage 09 step 7c, 2026-07-28 | 20 declarations build a colour with `color-mix(in oklab, var(--color-action) N%, ...)` at 16 different percentages, beside the declared `--brass-a*` one. Gate 13 is satisfied (all read a role). Recorded as a decision, not fixed: which steps that ladder should have is a **states** question, and rounding them now would move hover and selected states for the legibility of the file rather than of the product. Stage 09 owns it |
