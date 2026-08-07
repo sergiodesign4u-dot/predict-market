@@ -27,12 +27,12 @@ Per-stage layout: raw markdown lives in each stage's `docs/`, and the stage's HT
 | [`research/`](./research/) | **Foundation Research**: `docs/` (competitors, benchmark, lean-ux-canvas, aarrr, ux-patterns, and the `research.md` synthesis), `screens/` (competitor screenshots), and `research.html` |
 | [`user-research/`](./user-research/) | **User Research + CJM**: personas + JTBD + the Customer Journey Maps (`docs/` incl. `cjm-as-is.md` / `cjm-to-be.md`; pages `personas.html`, `jtbd.html`, `cjm-as-is.html`, `cjm-to-be.html`) |
 | [`ia/`](./ia/) | **Information Architecture**: `docs/sitemap.md` + `docs/flows.md` + `docs/pages/` (Detailed-layer sources `seo.md`, `system.md`); visualizations `ia.html` / `sitemap.html` / `flows.html` / `concept-map.html` (Basic) and `seo.html` / `system.html` (Detailed); `annotations/` (wireframe annotations, generated) |
-| [`wireframes/`](./wireframes/) | **Grey-box wireframes**: 104 pages, every sitemap screen + all states + Favorites view + the 5 system pages, flow-linked, header / nav wired, clickable end to end. Owns structure and copy: gate 18 fails the build when a painted screen disagrees with its grey twin |
+| [`wireframes/`](./wireframes/) | **Grey-box wireframes**: 104 pages, every sitemap screen + all states + Favorites view + the 5 system pages, flow-linked, header / nav wired, clickable end to end. Owns structure and copy: a painted screen must not disagree with its grey twin |
 | [`voice/`](./voice/) | **Voice & Microcopy**: `docs/voice.md` + `docs/microcopy.md` + `voice.html` |
 | [`concept/`](./concept/) | **Concept**: the **Vault** visual language - `docs/references.md` (Refero) + `docs/concept.md` (designer taste, 5 attribute pairs, locked decisions); `concept.html` (the stand: palette / type / form / contrast); superseded explorations archived in `old/` |
-| [`ui-visual/`](./ui-visual/) | **UI + Visual**: 105 color copies of the wireframes in the Vault language. A screen carries no styles of its own: it links `components/index.css` and nothing else. Generated and reconciled by `_apply_theme.py`; the grey wireframes stay grey |
+| [`ui-visual/`](./ui-visual/) | **UI + Visual**: 105 color copies of the wireframes in the Vault language. A screen carries no styles of its own: it links `components/index.css` and nothing else. The grey wireframes stay grey |
 | [`components/`](./components/) | **The design system**: `tokens.css` (primitive + semantic + the light theme), `base.css`, one file per component, all reached through `index.css` |
-| [`ui-kit/`](./ui-kit/) | **The vitrine and the gates**: a stand page per component, the token page, the icon sheet, the stage's five documents rendered as pages, and `_check_kit.py` (<!-- gates:start -->**41 gates** in 109 checks<!-- gates:end -->) |
+| [`ui-kit/`](./ui-kit/) | **Being rebuilt from 2026-08-07.** The vitrine that stood here (65 generated pages, 54 Python scripts, 41 gates, 145 MB of screenshots) was deleted in one commit; the product did not move a pixel. Its writing is kept in [`docs/kit-archive/`](./docs/kit-archive/) |
 | [`docs/`](./docs/) | **The record**: [`decisions.md`](./docs/decisions.md) (what was done and why, dated, newest first) and [`backlog.md`](./docs/backlog.md) (what is still open) |
 | `components/patterns/` | **Design System (09)**, not built yet: the second shelf of the system package, for compositions that stand on three screens or more. The system already lives in `components/` and does not move there |
 | Responsive (10) | no folder: the breakpoints go into `components/tokens.css` by the mechanism already there |
@@ -58,7 +58,7 @@ the dated record of how each stage got here is in [`docs/decisions.md`](./docs/d
 | Voice | ✅ Done (5 principles, lexicon, forbidden list, per-element rules; every screen rewritten line-by-line, closing audit clean) |
 | Concept | ✅ Done - the **Vault** visual language: designer taste captured, 5 attribute pairs traced to data + borrowed technique, contrasting directions explored (Newsroom / Signal / Arena, archived to `concept/old/`), Vault chosen and locked; palette / type / form / photography / icons contrast-checked (WCAG AA) on the stand `concept.html` |
 | UI + Visual | ✅ Done - every screen painted in Vault (105 today, 76 at the close of the stage; step 8 added the 28 category states); every one links exactly `components/index.css`. `/impeccable critique` 31 -> 38 / 40 |
-| Tokens + Components | ✅ Done - two token levels, three geometry scales, <!-- counts:start -->**42 components**, 40 of them composed on three levels (6 atoms, 13 molecules, 21 organisms, computed from the markup) and 2 that are the substrate a screen stands on rather than a part of one (`base`, `course-chrome`)<!-- counts:end -->, 48 pages in the vitrine (36 stands + the token page, the icon sheet and the stage's five documents), <!-- gates:start -->**41 gates** in 109 checks<!-- gates:end -->, and a light theme as the proof of the semantic layer. Nine audit passes (7 to 9) are recorded in [`docs/decisions.md`](./docs/decisions.md); the surfaces they stopped short of are in [`docs/backlog.md`](./docs/backlog.md) |
+| Tokens + Components | ✅ Done - two token levels, three geometry scales, <!-- counts:start -->**42 components**, 40 of them composed on three levels (6 atoms, 13 molecules, 21 organisms, computed from the markup) and 2 that are the substrate a screen stands on rather than a part of one (`base`, `course-chrome`)<!-- counts:end -->, and a light theme as the proof of the semantic layer. The vitrine and its 41 gates were deleted on 2026-08-07 and are being rebuilt by hand from five anchor screens. Nine audit passes (7 to 9) are recorded in [`docs/decisions.md`](./docs/decisions.md); the surfaces they stopped short of are in [`docs/backlog.md`](./docs/backlog.md) |
 | Design System | ⬜ Not started |
 | Responsive | ⬜ Not started |
 | Animation | ⬜ Not started |
@@ -136,7 +136,7 @@ time (it is loaded into every session, so it stays short). **`PRODUCT.md` = what
 **`docs/decisions.md` = what was done and why**, dated, newest first. **`docs/backlog.md` = what is
 still open.** A status lives in the table above and nowhere else.
 
-- [CLAUDE.md](./CLAUDE.md) - **the rules**: how work is done here, what owns what, which gate holds it
+- [CLAUDE.md](./CLAUDE.md) - **the rules**: how work is done here, what owns what, and the reason each rule exists now that no gate holds it
 - [PRODUCT.md](./PRODUCT.md) - **the product**: JTBD, audience, market types, MVP scope, business model, compliance
 - [docs/decisions.md](./docs/decisions.md) - **the record**: every stage and audit pass, with its date and its reasoning
 - [docs/backlog.md](./docs/backlog.md) - **what is open**: 14 items, with the stage that owns each

@@ -1,27 +1,32 @@
 # CLAUDE.md - Prediction Market Platform
 
 **This file is the rules.** It is loaded in full into every session, so it carries only what has to be
-true next time: invariants, who owns what, and the gate that holds each one. Budget: 200 lines.
+true next time: invariants, who owns what, and the reason each one exists. Budget: 200 lines.
+
+**There are no build gates any more, and that changes what this file is for.** Until 2026-08-07 the
+repository held 54 Python scripts, 9 browser scripts and 41 gates that failed the build, and a rule
+was allowed to leave this file the moment a gate held it. The gates were deleted, with the vitrine
+that fed them, because the measurement had become a machine that was re-paid on every edit: a
+one-line change to a stylesheet cost a regeneration, a re-capture, 41 gates, 525 snapshots and an
+audit. **So every rule below is now kept by being READ, and each one carries the reason it exists**,
+because a rule with no reason is a rule that gets argued away by whoever meets it next. The full
+account is in `docs/decisions.md` and `docs/kit-archive/README.md`.
 
 Everything else has an owner. A fact written here *and* there is a fact that will drift, so when one
-appears twice the copy here is the one to delete. **A rule leaves this file when a GATE fails the
-build without it**, never merely because another document mentions it: a document is read on purpose
-and this file is read always, so a gateless rule moved out trades certainty for hope.
+appears twice the copy here is the one to delete.
 
 | Question | Where it is answered |
 |---|---|
 | What the product is - JTBD, audience, market types, MVP scope, business model, compliance | `PRODUCT.md` |
 | What was done and why | `docs/decisions.md` - dated, newest first, never edited |
-| What is still open (14 items) | `docs/backlog.md` |
+| What is still open | `docs/backlog.md` |
 | Which stage is done | the status table in `README.md`, and nowhere else |
 | Where a file lives | `STRUCTURE.md` |
 | The shipped visual system (Vault) | `DESIGN.md` |
 | Screens, navigation, flows, SEO, system nodes | `ia/docs/sitemap.md`, `ia/docs/flows.md`, `ia/docs/pages/` |
 | What a page of a given TYPE is made of, before one is drawn | `ia/docs/blocks.md` - banked by type, never by node |
 | Every UI string | `voice/docs/microcopy.md` |
-| What the system IS, and where a change goes | `ui-kit/docs/architecture.md` |
-| What the atoms ARE, and how far the system is from them | `ui-kit/docs/atoms.md` - the target, decided from the census |
-| How each audit pass found what it found | `ui-kit/docs/history.md` |
+| What the deleted kit had already worked out | `docs/kit-archive/` - prose, read by nothing |
 
 ---
 
@@ -62,34 +67,32 @@ Three decisions govern every page-level node:
 
 ## The two screen trees
 
-`wireframes/` is grey and owns **structure and copy**. `ui-visual/` is painted and owns **the visual
-layer only** (colour, type, radius, photography, texture). The build contract is
-`wireframes/_conventions.md`; the defect log is `wireframes/_critique.md`.
+`wireframes/` is grey (104 screens) and owns **structure and copy**. `ui-visual/` is painted (106
+screens) and owns **the visual layer only** (colour, type, radius, photography, texture). The build
+contract is `wireframes/_conventions.md`; the defect log is `wireframes/_critique.md`.
 
 - **Never paint `wireframes/`**, and never invent a block in `ui-visual/`: a new block, control or
-  section is decided in grey and the colour copy follows. **Gate 18** fails the build when the trees
-  disagree inside `<main>`, `<header>`, the bottom nav, `<footer>` or the sheet body of an invoked
-  overlay. The six differences that ARE the layer boundary (plate wrappers, icon mechanism,
-  photograph, chart data, the `TBD` chip, the page behind an overlay) are declared in
-  `_conventions.md`.
+  section is decided in grey and the colour copy follows. The trees must say the same thing inside
+  `<main>`, `<header>`, the bottom nav, `<footer>` and the sheet body of an invoked overlay. The six
+  differences that ARE the layer boundary (plate wrappers, icon mechanism, photograph, chart data,
+  the `TBD` chip, the page behind an overlay) are declared in `_conventions.md`. **A check used to
+  fail the build on this and no longer does**, so it is now read before the edit rather than after.
 - **A state is the grey tree's; a shape is the paint's.** Inside the chrome neither tree is simply the
   source: the paint owns what the header IS, the wireframe owns which state it is IN (auth variant,
-  active bottom-nav slot, empty notifications). Reconcile in that order -
-  `ui-visual/_reconcile_chrome.py`, then `wireframes/_generators/port_chrome.py` - or a port carries
-  the wrong answer into 104 files.
-- **A screen has a twin, and the map is one file:** `_twins.py` at the root and nowhere else. The trees
-  do not name every screen the same way (`politics.html` in grey, `event-feed-politics.html` in
-  colour), and gate 18 pairs by filename, so an unpaired page is skipped in SILENCE - 32 grey category
-  screens once sat against 4 painted ones behind five hand-written copies of that map. A new screen is
-  built in both trees, or its absence is a declared exception.
+  active bottom-nav slot, empty notifications). Reconcile in that order, or the wrong answer travels
+  into 104 files at once.
+- **A screen has a twin, and the two trees do not name it the same way** (`politics.html` in grey,
+  `event-feed-politics.html` in colour). That map used to live in `_twins.py`; the script is gone and
+  the pairing is now done by reading. An unpaired page is silent, which is why five hand-written
+  copies of that map once left 32 grey category screens standing against 4 painted ones.
 - **Every screen carries its full state set** (loading / empty / error / success, plus whatever is
   particular to it), and the browse screens carry logged-in and logged-out variants. A state is a page.
 - **Grey means grey:** neutral greys only, monochrome outline icons, no colour, type, shadow or
   finished UI.
-- **Never run `wireframes/_generators/gen_*.py`.** The voice rewrite was applied to the HTML by hand
-  and never back-ported, so regenerating silently reverts it. Shared changes go through the idempotent
-  post-processors (`fixpack.py`, `port_structure.py`, `port_chrome.py`, ...), which are written to be
-  run again.
+- **A change to many screens is made by hand or with a throwaway script, and the script is not kept.**
+  36 generators lived in `wireframes/_generators/` and every one of them was a standing hazard: the
+  voice rewrite was applied to the HTML by hand and never back-ported, so regenerating any screen
+  silently reverted it. A tool that must never be run is a tool that should not exist.
 
 ---
 
@@ -109,82 +112,70 @@ rewritten.
 
 ## The design system
 
-`components/` holds `tokens.css` plus one css file per component, all reached through
-`components/index.css`. `ui-kit/` is the vitrine that shows it and the gates that keep it honest:
-`python3 ui-kit/_check_kit.py`, which exits non-zero on the first failure. Contract and full
-reasoning: `ui-kit/docs/architecture.md`.
+`components/` holds `tokens.css` plus one css file per component (51 files, 5,651 lines), all reached
+through `components/index.css`. **That is the whole system.** It is what the 210 screens read and it
+was not touched when the vitrine was deleted.
 
 The visual language is **Vault** and it is specified in `DESIGN.md`. The one rule from it that decides
 other things: **green and red are outcome semantics (YES / NO), brass is the brand.** An accent never
 borrows the win/lose colour, and a candidate in a multi-outcome chart is not an outcome.
 
+**`ui-kit/` is being rebuilt** and holds one page saying so. The plan, in order: a census of five
+anchor screens with their states, read in a browser at two widths in both themes; atomic levels
+declared once in an inventory; one consolidation pass where a value is allowed to change; one
+hand-written page per component with its states in both themes; one audit run as a report. The five
+anchors are event feed, event detail, active bets, deposit and sign in, with their loading, empty,
+error and logged-out variants: 41 screens.
+
 ### Contributing to the system
 
-- **New goes into the SYSTEM first and onto a screen second, never the other way round.** The full
-  addresses are in `ui-kit/docs/architecture.md`, "Contributing to the system".
+- **New goes into the SYSTEM first and onto a screen second, never the other way round.** A screen
+  that grows a part every time it meets a new page has not been tested by that page, it has been
+  edited by it.
 - **A value** goes to the token of its own level in `components/tokens.css`: a colour is a **semantic
-  role** in section 2, a raw value is a **primitive** in section 1. A component may never read a
-  colour primitive (gate 13) and never write a raw scale value (gate 12). **A state token has a value
-  in both themes or it is not one.**
-- **A component** = css in `components/` + an `@import` **in its own level group** (never at the end
-  of the file) + a page in `ui-kit/` + a row in `ui-kit/docs/inventory.md`. `_nav.js` is rebuilt by
-  `python3 ui-kit/_gen_component_pages.py`, never typed.
-- **A composition** = three screens or more: `components/patterns/` + an entry in
-  `_gen_pattern_pages.SCENES`, and the page, registry and inventory row follow. Two screens is a
-  candidate, not a pattern, and it stays markup.
+  role** in section 2, a raw value is a **primitive** in section 1. A component reads a role and never
+  a colour primitive, and never writes a raw scale value. **A state token has a value in both themes
+  or it is not one**, because a theme with a hole in it rots quietly and is handed over broken.
+- **Two token levels, not three.** Primitive + semantic. Colour is the only thing with a second level,
+  because a radius or a gap has nothing for a theme to override.
+- **A component** = css in `components/` + an `@import` in its own level group + a page in `ui-kit/`
+  + a row in the inventory. **A composition** = three screens or more, in `components/patterns/`. Two
+  screens is a candidate, not a pattern, and it stays markup.
 - **New on a screen with none of the three is forbidden.** It is not an exception for the screen, it
   is an order for the system.
 
-### The rule for a change, from here on
+### The rule for a change
 
 - **Markup** goes to two places and only two: the component's page in `ui-kit/`, and the screens in
   `ui-visual/` where it stands. Never to a third copy. **A dialog that also has a standalone page is
-  one markup, not two** (gate 19): the canonical copy is the one in `ui-visual/event-feed.html`, and
-  only the head, the wiring and the state screens may differ, for the reasons written in
-  `wireframes/_conventions.md`.
-- **Never on the element.** A `style=` attribute is a rule in the one place the system cannot see, so
-  it fails gate 9. Three things are not styling and may stay: a datum (a bar drawn to a width), the
-  event photograph, and a value the page script writes at run time.
+  one markup, not two**: the canonical copy is the one in `ui-visual/event-feed.html`, and only the
+  head, the wiring and the state screens may differ.
+- **Never on the element.** A `style=` attribute is a rule in the one place the system cannot see.
+  Three things are not styling and may stay: a datum (a bar drawn to a width), the event photograph,
+  and a value the page script writes at run time.
 - **A heading level is structure**, so it is decided in `wireframes/` and the colour copy follows.
-  Exactly one `<h1>` per screen, no skipped level, **in both trees** (gate 15 reads both, because a
-  check that reads only the copy can pass while the original is wrong).
-- **A sample photograph is content**, so it goes on the element as `style="background-image:..."`,
-  which is one of the three things gate 9 lets through. A shared image asset lives in `assets/` at the
-  root, owned by neither layer.
+  Exactly one `<h1>` per screen, no skipped level, in both trees: reading only the copy can pass
+  while the original is wrong.
+- **A sample photograph is content**, so it goes on the element as `style="background-image:..."`. A
+  shared image asset lives in `assets/` at the root, owned by neither layer.
 - **A part is imported before the whole that holds it.** The cascade decides which of two rules of
   equal specificity wins, so the order of the `@import`s in `components/index.css` is a rule, not
   formatting: a card may restyle the odds bar it contains, an odds bar may not quietly restyle every
-  card. The order is **computed** from what each component contains, read out of the specimen DOM:
-  `python3 ui-kit/_levels.py --order` prints it and gate 23 fails the build when the file stops
-  matching. That map is also the level (atom / molecule / organism) in `ui-kit/docs/inventory.md` and
-  the grouping of the vitrine's side panel, all from `ui-kit/_levels.py` and nowhere else.
-- **An empty containment is not evidence of being an atom, and the level is a decision the cascade
-  cannot take for you.** The map knows component names, so it reads nothing inside a component built
-  out of its own class names, and `_level()` answers 1 either way. Seven of seventeen empty readings
-  had never been examined and were the whole atom shelf. So the level is DECLARED where the map is
-  blind: `RAISE` (here is what is inside me) or `TRUE_ATOM` (there is nothing inside me, this is one
-  control), one line and one reason each, and **gate 39** fails the build on a component in neither
-  and on a row that names a component the map can read.
-- **A checker asks the markup, not the text.** A page that quotes markup is normal here (every
-  component page ends with its own css, and the documents quote both), so a scan for a path, a
-  `url()` or a font host has to skip what is inside `<code>` and `<pre>` and look at the attribute
-  that would make the request. Three gates were reading a sentence as a reference.
-- **`ui-kit/kit.html` is frozen.** It is the flat kit the system was read out of and it is kept as
-  provenance; a component is never added to it. **`ui-kit/shell.html` composes** the header and
-  bottom-nav specimens and holds no markup of its own.
-- **Two token levels, not three.** Primitive + semantic. Colour is the only thing with a second
-  level, because a radius or a gap has nothing for a theme to override; a component level is not
-  part of this stage.
+  card.
+- **A level is a decision and not a reading.** Level 1 contains nothing from the system, level 2
+  contains atoms, level 3 contains molecules or is a shell. A component built out of its own class
+  names reads as containing nothing, and seven of seventeen such readings were once the whole atom
+  shelf and none of them was an atom. So a level is DECLARED, with a reason, in the inventory.
 - **A font is served from this repo.** No page may call a font host: the request carries a visitor's
-  IP to a third party before the consent banner has asked anything (gate 20). Faces are woff2 in
+  IP to a third party before the consent banner has asked anything. Faces are woff2 in
   `assets/fonts/`, declared once in `components/fonts.css`, imported first by `index.css`.
 - **Quiet is a colour, not an opacity.** `opacity` fades text into its background and no sweep that
   reads `getComputedStyle().color` can see it: `--chrome-muted` is 5.03:1 on the panel and 2.37:1 at
   `opacity:.55`. Depth is a colour role, so the value being chosen is the value being checked.
-- **Gate 1 masks the `<aside>`, so nothing else reads it.** Gate 22 does: every screen's panel marks
-  its own file, and every panel generator is at its fixed point, because a generator that copies a
-  shell copies the shell's idea of where it is.
-- **A checker that reads the source does not read the page.** "0 non-neutral hex in the wireframes"
-  was true while 992 links rendered in the browser's blue, and "the chart is ported" was true while
-  it drew as a black rectangle, because an SVG with no `fill` is black. **A missing value is a
-  value.** Measure the computed result, in a browser, at both widths.
+- **Reading the source is not reading the page.** "0 non-neutral hex in the wireframes" was true while
+  992 links rendered in the browser's blue, and "the chart is ported" was true while it drew as a
+  black rectangle, because an SVG with no `fill` is black. **A missing value is a value.** Measure the
+  computed result, in a browser, at both widths and in both themes.
+- **A measurement is an act, not a machine.** Walk the screens, write down what was found, decide, and
+  keep the report. The moment a measurement becomes a permanent check, every later edit pays for it
+  again, and that is what cost this repository seven days and 145 MB.

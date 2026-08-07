@@ -38,9 +38,58 @@ Information Architecture on is one higher than the course. References that point
 not yet done, were renumbered wherever they live, because those are the ones a reader acts on:
 `README.md`, `STRUCTURE.md`, `CLAUDE.md`, `backlog.md` and the two documents in `ui-kit/docs/`.
 
-Per-stage detail lives with its stage: `ui-kit/docs/architecture.md` (the full Stage-09
-record), `wireframes/_critique.md` (the wireframe defect tables), `voice/docs/microcopy.md`
-(the copy rewrite log).
+Per-stage detail lives with its stage: `docs/kit-archive/docs/architecture.md` (the full Stage-09
+record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe defect tables),
+`voice/docs/microcopy.md` (the copy rewrite log).
+
+---
+
+## 2026-08-07 - The instrument was deleted, and the product was not touched
+
+**What was deleted.** `ui-kit/` in full: 65 generated pages, 18 Python scripts, 9 browser scripts,
+41 build gates in 109 checks, a state-capture instrument, 288 tracked files and 145 MB of
+screenshots. With it, `wireframes/_generators/` (36 scripts), `ui-visual/*.py` (18), five scripts at
+the repository root and four elsewhere. **The repository now contains zero Python** outside
+`figmosha2/`, which is a Figma bridge and has nothing to do with the design system.
+
+**What was not touched.** `components/` (51 stylesheets, 5,651 lines), `ui-visual/` (106 painted
+screens), `wireframes/` (104 grey screens), `ia/`, `voice/`, `research/`, `concept/`, `DESIGN.md`,
+`PRODUCT.md`. Not one pixel of the product moved, because the product reads
+`components/index.css` and nothing in that path was edited. The single reference the screens had
+into the deleted tree was one sidebar line per file pointing at `ui-kit/overview.html`, and that
+page still exists.
+
+**Why.** The measurement had become a machine. A one-line change to a stylesheet cost a
+regeneration of 42 pages, a re-capture of the state readings in a browser, 41 gates, 525 snapshots
+and an audit run: minutes of compute and an hour of care, for an edit that moved one value. Seven
+days of work in the last stage produced 14 closed backlog rows and an atom-map distance of 0, and
+every one of those closes was real - and the same seven days produced no new screen, no new
+component and no answer to the product's own open questions. **An instrument that costs more than
+what it measures is not rigour, it is overhead wearing rigour's clothes.**
+
+**What the comparison said.** `Stack sportpit`, the same author's project one stage behind, holds
+71 components in 5,349 lines of CSS and 35 hand-written kit pages, with **zero scripts and zero
+gates**. Project One held 51 components in 5,651 lines - the same system, to within five per cent -
+behind 63 scripts and 41 gates. The census in that project is a one-off report in `census.md` and
+`consolidation.md`: walked once, written down, decided, done. Here the same census became a
+permanent check that every later edit re-paid.
+
+**What was kept, and where.** `docs/kit-archive/` holds the eight documents and the 48 authored
+component pages, read by nothing. The four things worth taking forward are named in its README: the
+level formula, the S34 size measurement (9,648 readings, 66 distinct faces of one control kind), the
+rule and anti-rule per component, and the defect log. **What was rejected** is keeping any of it
+running: a gate that is kept "just in case" is the whole cost with none of the decision.
+
+**What replaces it**, in order: a census of five anchor screens with their states, read in a browser
+at two widths in both themes; atomic levels declared once in an inventory; one consolidation pass
+where a value is allowed to change and every change is measured; one hand-written page per component
+carrying its states in both themes; one audit run as a report. The five anchors are event feed,
+event detail, active bets, deposit and sign in, with their loading, empty, error and logged-out
+variants: 41 screens of the 106.
+
+**And `CLAUDE.md` inverted its own rule.** It used to say a rule may leave that file once a gate
+holds it. With no gates, nothing holds anything except reading, so every rule in it now carries the
+reason it exists rather than the number of the check that enforced it.
 
 ---
 
