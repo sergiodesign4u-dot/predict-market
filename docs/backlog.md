@@ -9,7 +9,7 @@ holds the record of what was done. This holds what is not.
 Unlike `decisions.md`, this file is edited: a row is struck when the item closes, with the date and
 the entry in `decisions.md` that closed it.
 
-**Open: 36.**
+**Open: 39.**
 
 The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
 twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
@@ -67,10 +67,13 @@ Carried since the project brief; none of it has been answered.
 
 ---
 
-## Design defects deferred (15)
+## Design defects deferred (18)
 
 | # | Item | Source | Note |
 |---|---|---|---|
+| 39 | **`--hairline` exists, is used 10 times, and `1px` is typed 145 times** | Design System step 3d, `ui-kit/geometry.html`, 2026-08-07 | Always inside a `border` shorthand: `border:1px solid var(--border-hairline)` tokenises the colour and leaves the width as a number, and nobody notices because the colour looks done. 1,144 border readings across 10 screens and **every one renders 1px**, so this is one value in 145 places. Owner: step 3e |
+| 40 | **Three control heights are declared and twelve render** | Design System step 3d, 2026-08-07 | `--control-32/36/44` account for 125 of 317 boxed controls; the other 192 get their height from padding plus font size plus a border. Twelve rendered heights: 26, 27, 28, 32, 33, 34, 35, 36, 38, 44, 47, 71. **33, 34 and 35 inside two pixels of each other** is what that costs, and 38 has 60 readings with no token behind it. **239 of 317 stand under 44px.** A control height should be a token the control reads with the padding computed from it. This is the one geometry axis with no scale, and the census was right about it. Owner: step 3e |
+| 41 | `50%` is a sixth corner shape the ladder does not name, and 14 ladder-step literals | Design System step 3d, 2026-08-07 | `border-radius` is the most disciplined axis in the system, 100 per cent tokenised, and then `50%` appears **28 times**. On a square it is the same circle as `--radius-pill`; on a rectangle one is an ellipse and the other a stadium, and nothing says which is wanted. Separately: of 240 raw px in geometry properties, **81 are genuine layout dimensions** that should not be on a 4px ladder (a 120px column, a 560px sheet, the negative photo-bleed offsets) and **14 are ladder steps typed by hand**: 12px, 8px, 13px, 23px. One declaration writes `border-radius` with four identical corners. Owner: step 3e, except the 81, which belong to Responsive |
 | 35 | **242 KB of the 373 KB font payload is the same file seven times** | Design System step 3c, `ui-kit/typography.html`, 2026-08-07 | Checksums: the four DM Sans latin faces are byte for byte one 36,980 byte file, the four latin-ext one 18,192 byte file, the three Space Grotesk latin faces one 22,320 byte file, the three latin-ext one 18,924 byte file. Both families were fetched as **variable fonts** and then copied once per declared weight. It renders correctly, and ink measurement proves it: DM Sans gives four distinct weights from the one file. **131 KB of unique typeface, 373 KB shipped.** The repair is one `@font-face` per family with `font-weight:400 700` as a range. Only IBM Plex Mono is right, because it was fetched as static faces. Owner: step 3e |
 | 36 | `--weight-bold` is 700 and IBM Plex Mono has no 700 face | Design System step 3c, 2026-08-07 | Measured by counting painted pixels, because advance width cannot see a monospace weight: Plex renders **5380 / 5380 / 5993 / 5993** at 400, 500, 600, 700. Two faces, not four. Asking for bold renders semibold and says nothing. **A trap, not a live defect**: all five mono declarations in `components/` use `--weight-medium` or `--weight-semibold`. Either the 700 face is added or the limit is written down. Owner: step 3e |
 | 37 | **400 has no token, and it is the most used weight in the product** | Design System step 3c, 2026-08-07 | The ramp names 500, 600 and 700. **192 of 260 text elements on the feed render at 400**, because it is the root default and nothing overrides it. `betpanel.css` already needed it and wrote `font-weight:normal`, the single weight literal in the system. A step a scale does not name is a step somebody types. Owner: step 3e |

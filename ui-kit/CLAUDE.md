@@ -1,9 +1,9 @@
 # ui-kit/ - the vitrine, being rebuilt from 2026-08-07
 
-The kit shows the system to a person and it holds no product code. Right now it holds five pages
-plus its stylesheet: `overview.html`, which says what is happening, `vitrine.html`, the ten atoms in
-every face they wear with both themes side by side, `icons.html`, `colour.html` and
-`typography.html`, three of the four foundation pages, and `_page.css`, the stand furniture they all
+The kit shows the system to a person and it holds no product code. Right now it holds six pages plus
+its stylesheet: `overview.html`, which says what is happening, `vitrine.html`, the ten atoms in every
+face they wear with both themes side by side, **all four foundation pages** (`icons.html`,
+`colour.html`, `typography.html`, `geometry.html`), and `_page.css`, the stand furniture they all
 share.
 
 **A swatch never carries a value.** `_page.css` holds one class per role and per primitive,
@@ -77,7 +77,17 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
    token**, so one component had to type `normal`; **tracking is 13 values, 59 declarations and zero
    tokens**, including two spellings of nothing; and the census's `19.2px` **is not a leak**, it is
    `clamp(19px,1.5vw,23px)` resolving at a 1280 viewport, with two more fluid values doing the same
-   there. Still open: **3d geometry, 3e the values** (import order,
+   there. **3d geometry is DONE, 2026-08-07, `geometry.html`**: measured over 10 screens at 1280,
+   2,905 padding readings, 1,454 gaps, 1,144 borders, 1,264 corners, and **2 readings in 4,359 off
+   the 4px grid**. What it found: **`--hairline:1px` is used 10 times and `1px` is typed 145 times**,
+   always inside a `border` shorthand; **three control heights are declared and twelve render**, with
+   33, 34 and 35 inside two pixels of each other and 192 of 317 controls taking their height from
+   arithmetic; `50%` is a sixth corner shape the ladder does not name, 28 readings; and the two
+   ladders with identical values, `--space-*` and `--size-*`, are **correct**, because every step of
+   both has a job written beside it. It also **half corrects the census**: the height finding stands,
+   the padding one does not (a `padding` shorthand was counted as one value and it is four), border
+   is one width and 16 colours, and radius has five declared steps in use rather than three. Still
+   open: **3e the values** (import order,
    17 paddings, 29 heights, 17 borders, the `19.2px` leak, 20 files citing gates that no longer
    exist, and the four decisions `inventory.md` forced). Output: `docs/consolidation.md`.
 4. **The pages.** One per component: a live specimen, its states in both themes, its classes, its

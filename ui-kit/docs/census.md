@@ -83,6 +83,15 @@ a single leak: `19.2px` is `1.2em` of something and is the only value on the lis
 is the same finding the deleted backlog carried as S34, taken again on a fifth of the screens and
 coming out the same way.
 
+> **Half corrected 2026-08-07 by step 3d, `../geometry.html`.** The height half stands and is worse
+> than it reads: three declared control tokens against twelve rendered heights, with 33, 34 and 35
+> inside two pixels of each other. **The padding half does not.** Measured per SIDE over 10 screens,
+> padding is 13 values of which eleven are ladder steps, and **2 readings in 4,359 are off the 4px
+> grid**. This census counted the `padding` shorthand as one value, so `8px 12px` and `8px 8px` read
+> as two paddings although every side of both is on the grid. **A shorthand is not a value, it is
+> four values.** Border is the same shape: 17 is a count of width / style / colour triples, and the
+> width is 1px on all 1,144 readings.
+
 ## The finding: 58 per cent of the controls have no class
 
 **2,035 of 3,518.** Not unstyled: they render correctly, in **23 distinct faces**, through element
@@ -167,8 +176,11 @@ At 390, **2,783 of 3,447 controls stand under 44px**. 1,621 of them are text wit
 2. **The text link is a component and it does not exist.** It is half the controls on every screen.
 3. **The outcome pair must carry a class.** 81 readings of the product's defining control are a bare
    `<button>` painted by an ancestor.
-4. **The consolidation has three real axes and one free one.** Padding (17), height (29) and border
-   (17) are the work; radius is already decided at three steps and needs only to be written down.
+4. ~~**The consolidation has three real axes and one free one.** Padding (17), height (29) and
+   border (17) are the work; radius is already decided at three steps and needs only to be written
+   down.~~ **Reduced to one axis, 2026-08-07**: height. Padding and border were artefacts of
+   counting a shorthand and a triple as single values, and radius has five declared steps rather
+   than three, all five in use. See `../geometry.html`.
 5. ~~**`19.2px` is a leak** and is the cheapest fix in the whole pass.~~ **Withdrawn 2026-08-07**:
    it is a `clamp` resolving at 1280 and there is nothing to fix. See the note in the vocabulary
    section above.

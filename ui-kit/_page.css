@@ -485,3 +485,64 @@
   color:var(--text-muted)}
 .tk-card p{margin:8px 0 0}
 .tk-ink-bar{height:8px;border-radius:100px;background:var(--color-action);margin-top:4px}
+
+/* ==========================================================================
+   FOUNDATIONS: GEOMETRY. Added 2026-08-07 for geometry.html.
+   Same rule again: a class names the token, the token holds the value. */
+.sp-2{width:var(--space-2);height:var(--space-2)}
+.sp-4{width:var(--space-4);height:var(--space-4)}
+.sp-8{width:var(--space-8);height:var(--space-8)}
+.sp-12{width:var(--space-12);height:var(--space-12)}
+.sp-16{width:var(--space-16);height:var(--space-16)}
+.sp-20{width:var(--space-20);height:var(--space-20)}
+.sp-24{width:var(--space-24);height:var(--space-24)}
+.sp-28{width:var(--space-28);height:var(--space-28)}
+.sp-32{width:var(--space-32);height:var(--space-32)}
+.sp-40{width:var(--space-40);height:var(--space-40)}
+.sp-56{width:var(--space-56);height:var(--space-56)}
+.sz-2{width:var(--size-2);height:var(--size-2)}
+.sz-4{width:var(--size-4);height:var(--size-4)}
+.sz-8{width:var(--size-8);height:var(--size-8)}
+.sz-12{width:var(--size-12);height:var(--size-12)}
+.sz-16{width:var(--size-16);height:var(--size-16)}
+.sz-20{width:var(--size-20);height:var(--size-20)}
+.sz-24{width:var(--size-24);height:var(--size-24)}
+.sz-28{width:var(--size-28);height:var(--size-28)}
+.sz-32{width:var(--size-32);height:var(--size-32)}
+.sz-40{width:var(--size-40);height:var(--size-40)}
+.sz-56{width:var(--size-56);height:var(--size-56)}
+.sz-72{width:var(--size-72);height:var(--size-72)}
+.ct-32{height:var(--control-32)}
+.ct-36{height:var(--control-36)}
+.ct-44{height:var(--control-44)}
+.ic-12{width:var(--icon-12);height:var(--icon-12)}
+.ic-16{width:var(--icon-16);height:var(--icon-16)}
+.ic-18{width:var(--icon-18);height:var(--icon-18)}
+.ic-22{width:var(--icon-22);height:var(--icon-22)}
+.r-2{border-radius:var(--radius-2)}
+.r-6{border-radius:var(--radius-6)}
+.r-10{border-radius:var(--radius-10)}
+.r-16{border-radius:var(--radius-16)}
+.r-pill{border-radius:var(--radius-pill)}
+.r-half{border-radius:50%}
+.tk-hair{border:var(--hairline) solid var(--border-hairline)}
+.tk-ring{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
+
+.tk-blocks{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;margin:0 0 10px}
+.tk-blk{display:flex;flex-direction:column;gap:6px;align-items:center;
+  font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}
+.tk-blk>span:first-child{background:var(--color-action);flex:0 0 auto;display:block}
+.tk-blk.tk-blk-out>span:first-child{background:var(--bg-control);
+  border:1px solid var(--border-brass-hover)}
+.tk-blk b{color:var(--text-primary);font-weight:400}
+.tk-rulers{display:flex;flex-direction:column;gap:5px;margin:0 0 10px}
+.tk-rul{display:grid;grid-template-columns:64px minmax(0,1fr) 68px;gap:12px;align-items:center;
+  font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}
+.tk-rul>i{font-style:normal;text-align:right}
+.tk-rul>span{height:14px;background:var(--color-action);border-radius:2px;display:block}
+.tk-bars{display:flex;flex-direction:column;gap:3px;margin:0 0 10px;font-family:var(--font-mono);font-size:10px}
+.tk-bar{display:grid;grid-template-columns:58px minmax(0,1fr) 54px;gap:10px;align-items:center;
+  color:var(--text-muted)}
+.tk-bar>u{text-decoration:none;height:11px;background:var(--color-action);border-radius:2px;display:block}
+.tk-bar.tk-bar-off>u{background:var(--outcome-no)}
+.tk-bar>i{font-style:normal;text-align:right}

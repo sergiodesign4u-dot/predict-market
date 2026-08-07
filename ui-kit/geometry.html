@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Foundations: geometry</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body class="app-case">
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Geometry</h1>
+    <p>The grid is <b>4px</b> and 2 is the only half step. Two ladders carry the same eleven numbers
+    for two different reasons, five radii carry one corner per job, and the border has exactly one
+    width. Measured across <b>10 screens at 1280</b>: 2,905 padding readings, 1,454 gaps, 1,144
+    borders, 1,264 corners. <b>Two readings in 4,359 are off the grid.</b></p>
+    <div class="tk-badges">
+      <span class="tk-badge">4px grid</span>
+      <span class="tk-badge">5 radii</span>
+      <span class="tk-badge">1 border width</span>
+      <span class="tk-badge">12 control heights</span>
+    </div>
+    <div class="tk-jump">
+      <a href="typography.html">Foundations: typography</a>
+      <a href="colour.html">Foundations: colour</a>
+      <a href="icons.html">Foundations: icons</a>
+      <a href="vitrine.html">The vitrine</a>
+    </div>
+  </div>
+
+  <!-- ============================== the grid ========================== -->
+  <section class="tk-sec" id="grid">
+    <h2 data-n="01">The grid is 4, and 2 is the only half step</h2>
+    <p class="tk-note"><b>A value off the grid is not a distance.</b> 1px is a line, so it is
+    <code>--hairline</code> and not a space; the measurement of a thing is <code>--size-*</code> or
+    <code>--control-*</code> and not a space either. What is left is eleven steps, and they are what
+    every gap and every padding in the product is made of.</p>
+    <div class="tk-blocks">
+      <span class="tk-blk"><span class="sp-2"></span><b>2</b>half</span>
+      <span class="tk-blk"><span class="sp-4"></span><b>4</b>37</span>
+      <span class="tk-blk"><span class="sp-8"></span><b>8</b>225</span>
+      <span class="tk-blk"><span class="sp-12"></span><b>12</b>106</span>
+      <span class="tk-blk"><span class="sp-16"></span><b>16</b>78</span>
+      <span class="tk-blk"><span class="sp-20"></span><b>20</b>51</span>
+      <span class="tk-blk"><span class="sp-24"></span><b>24</b>19</span>
+      <span class="tk-blk"><span class="sp-28"></span><b>28</b>11</span>
+      <span class="tk-blk"><span class="sp-32"></span><b>32</b>5</span>
+      <span class="tk-blk"><span class="sp-40"></span><b>40</b>7</span>
+      <span class="tk-blk"><span class="sp-56"></span><b>56</b>1</span>
+    </div>
+    <p class="tk-note">617 declarations. <b><code>--space-8</code> alone is 225 of them</b>, and 8,
+    12 and 4 together are 408. The ladder is real at the bottom and thin at the top, which is what a
+    dense screen of odds and dates looks like when it is measured rather than designed on paper.</p>
+  </section>
+
+  <!-- ========================== two ladders =========================== -->
+  <section class="tk-sec" id="ladders">
+    <h2 data-n="02">Two ladders with the same eleven numbers, and it is not a duplicate</h2>
+    <p class="tk-note"><code>--space-*</code> and <code>--size-*</code> hold <b>identical values</b>,
+    2 through 56, with <code>--size-72</code> as the one step space does not have. That reads as an
+    accident and it is not one. <b>A gap is a distance between things and can be retuned as a
+    rhythm; the side of an avatar, an icon plate or a legend swatch is the size of a thing and moves
+    when the thing does.</b> Same numbers today, different reasons, so different names, and the day
+    the rhythm is retuned only one of the two ladders moves.</p>
+    <div class="tk-blocks">
+      <span class="tk-blk tk-blk-out"><span class="sz-2"></span><b>2</b>a drawn bar</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-4"></span><b>4</b>a thin track</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-8"></span><b>8</b>a thick track</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-12"></span><b>12</b>a rank column</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-16"></span><b>16</b>a small block</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-20"></span><b>20</b>a nav glyph</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-24"></span><b>24</b>a toast mark</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-28"></span><b>28</b>an avatar</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-32"></span><b>32</b>an icon plate</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-40"></span><b>40</b>a badge</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-56"></span><b>56</b>a thumbnail</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-72"></span><b>72</b>a profile avatar</span>
+    </div>
+    <p class="tk-note"><b>The test of the split is whether each step has a job written beside it, and
+    every one of these twelve does.</b> Two ladders with the same numbers and no reasons would be a
+    duplicate; two with reasons are two ladders. 73 declarations against space's 617, which is also
+    the right proportion: a product has far more distances than it has things with a fixed
+    side.</p>
+  </section>
+
+  <!-- ============================== radius =========================== -->
+  <section class="tk-sec" id="radius">
+    <h2 data-n="03">Five radii, one corner per job</h2>
+    <p class="tk-note">Every one of the five renders somewhere in the product, and
+    <b><code>border-radius</code> is the most disciplined axis in the system</b>: 100 per cent of the
+    declarations read a token, and the only non-token values are <code>0</code>, which is no corner,
+    and <code>50%</code>, which is dealt with below.</p>
+    <div class="tk-blocks">
+      <span class="tk-blk tk-blk-out"><span class="sz-56 r-2"></span><b>--radius-2</b>the near-square card corner. 10 readings</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-56 r-6"></span><b>--radius-6</b>a chip, a tag, a small well. 38</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-56 r-10"></span><b>--radius-10</b>the default control corner. 856</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-56 r-16"></span><b>--radius-16</b>a sheet, a dialog head, a plate. 6</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-56 r-pill"></span><b>--radius-pill</b>round ends. 326</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-56 r-half"></span><b>50%</b>not a token. 28</span>
+    </div>
+    <p class="tk-note"><b>The sixth shape is the finding.</b> <code>50%</code> appears 28 times and
+    is not a token. On a square it draws the same circle <code>--radius-pill</code> does, so the two
+    are interchangeable there and they are not the same thing anywhere else: on a rectangle
+    <code>50%</code> makes an ellipse and <code>100px</code> makes a stadium. Both are in use, both
+    look right today, and <b>nothing says which to reach for</b>. That is a decision the ladder never
+    took, not a value to sweep.</p>
+    <p class="tk-note">One declaration writes <code>border-radius</code> with four identical corners
+    where one value would do. It renders correctly and it is the only redundant geometry declaration
+    in the system.</p>
+  </section>
+
+  <!-- ============================== border =========================== -->
+  <section class="tk-sec" id="border">
+    <h2 data-n="04">The border has one width</h2>
+    <p class="tk-note">Measured on 10 screens: <b>1,144 border readings and every one of them is
+    1px</b>. The file declares two more, a 1.5px in <code>course-chrome.css</code> and a 2px, and
+    neither reaches a product screen at 1280.</p>
+    <p class="tk-note"><b>This corrects the census.</b> <code>census.md</code> reports "border 17"
+    among the axes that are not scales. Seventeen is right and it is not a count of widths: it is a
+    count of distinct <code>width / style / colour</code> triples, and the width in all of them is
+    the same. <b>The border axis has one value and sixteen colours</b>, which is the colour page's
+    subject and not this one's.</p>
+    <div class="tk-blocks">
+      <span class="tk-blk tk-blk-out"><span class="sz-56 r-10 tk-hair"></span><b>--hairline</b>1px, the only width</span>
+      <span class="tk-blk tk-blk-out"><span class="sz-56 r-10 tk-ring"></span><b>--ring</b>2px, and it is an outline, not a border</span>
+    </div>
+    <p class="tk-note"><code>--ring</code> is 2px and is the focus outline, which is the one edge in
+    the system that is deliberately heavier than a hairline, because it has to be seen at a glance
+    from across a keyboard rather than read up close.</p>
+  </section>
+
+  <!-- ========================= padding and gap ======================== -->
+  <section class="tk-sec" id="spacing">
+    <h2 data-n="05">Padding and gap, measured, and the census was wrong about padding</h2>
+    <p class="tk-note">Every padding side and every gap on 10 screens at 1280. Bars are to scale;
+    <b>a bar in red is off the 4px grid</b>.</p>
+    <p class="tk-subh">Padding, 2,905 readings, 13 values</p>
+    <div class="tk-bars">
+      <div class="tk-bar"><span>2px</span><u class="sp-2"></u><i>118</i></div>
+      <div class="tk-bar"><span>4px</span><u class="sp-4"></u><i>528</i></div>
+      <div class="tk-bar"><span>8px</span><u class="sp-8"></u><i>1263</i></div>
+      <div class="tk-bar"><span>12px</span><u class="sp-12"></u><i>501</i></div>
+      <div class="tk-bar"><span>16px</span><u class="sp-16"></u><i>171</i></div>
+      <div class="tk-bar"><span>20px</span><u class="sp-20"></u><i>172</i></div>
+      <div class="tk-bar"><span>24px</span><u class="sp-24"></u><i>44</i></div>
+      <div class="tk-bar"><span>28px</span><u class="sp-28"></u><i>18</i></div>
+      <div class="tk-bar"><span>32px</span><u class="sp-32"></u><i>3</i></div>
+      <div class="tk-bar"><span>40px</span><u class="sp-40"></u><i>82</i></div>
+    </div>
+    <p class="tk-note">Three readings are drawn as numbers rather than as bars, because no token has
+    their width and a bar this page drew itself would be a value invented to illustrate one:
+    <b>44px</b> once, which is on the 4px grid but is <code>--control-44</code> standing in as a
+    padding rather than a <code>--space-*</code> step; <b>118px</b> twice on <code>.ed-head</code>;
+    and <b>0.4px</b> twice, a sub-pixel rounding artefact on an anchor.</p>
+    <p class="tk-subh">Gap, 1,454 readings, 9 values, all on the grid</p>
+    <div class="tk-bars">
+      <div class="tk-bar"><span>2px</span><u class="sp-2"></u><i>82</i></div>
+      <div class="tk-bar"><span>4px</span><u class="sp-4"></u><i>226</i></div>
+      <div class="tk-bar"><span>8px</span><u class="sp-8"></u><i>710</i></div>
+      <div class="tk-bar"><span>12px</span><u class="sp-12"></u><i>272</i></div>
+      <div class="tk-bar"><span>16px</span><u class="sp-16"></u><i>86</i></div>
+      <div class="tk-bar"><span>20px</span><u class="sp-20"></u><i>32</i></div>
+      <div class="tk-bar"><span>24px</span><u class="sp-24"></u><i>2</i></div>
+      <div class="tk-bar"><span>28px</span><u class="sp-28"></u><i>42</i></div>
+      <div class="tk-bar"><span>40px</span><u class="sp-40"></u><i>2</i></div>
+    </div>
+    <p class="tk-note"><b><code>census.md</code> says padding is "not a scale at all", 17 values.
+    Measured per side, it is 13 values and eleven of them are ladder steps</b>, with two readings off
+    the grid in 4,359: a 118px on <code>.ed-head</code> and a 0.4px that is a rounding artefact on an
+    anchor. The census counted the <code>padding</code> shorthand as one value, so
+    <code>8px 12px</code> and <code>8px 8px</code> read as two different paddings even though every
+    side of both is on the grid. <b>A shorthand is not a value, it is four values</b>, and the axis
+    it hid is in the shape the file always claimed.</p>
+    <p class="tk-note">The <b>height</b> half of the same census sentence stands, and it is the next
+    section.</p>
+  </section>
+
+  <!-- ============================= heights =========================== -->
+  <section class="tk-sec" id="heights">
+    <h2 data-n="06">Three control heights are declared. Twelve render</h2>
+    <p class="tk-note">The system names three: 32 for a dense icon button, 36 for the standard
+    control, 44 for the mobile touch target. Boxed controls on 10 screens render twelve heights, and
+    <b>nine of the twelve are not a token</b>. They are what padding plus font size plus a border
+    added up to.</p>
+    <dl class="tk-type">
+      <dt>26, 27, 28</dt><dd>74 controls. The dense end: a chart range chip, a lift button, a bare button<small>none is a token</small></dd>
+      <dt>32</dt><dd>20 controls<small><b>--control-32</b>, declared</small></dd>
+      <dt>33, 34, 35</dt><dd>23 controls, three heights inside two pixels<small>none is a token, and this is the sharpest case on the page</small></dd>
+      <dt>36</dt><dd>62 controls<small><b>--control-36</b>, declared, the standard</small></dd>
+      <dt>38</dt><dd>60 controls. The quiet chip and the segmented tab<small>not a token, and 60 readings of it</small></dd>
+      <dt>44</dt><dd>43 controls<small><b>--control-44</b>, declared, the touch floor</small></dd>
+      <dt>47, 71</dt><dd>35 controls. A block button in a sheet, a trust tile<small>not a token</small></dd>
+    </dl>    <p class="tk-note"><b>239 of 317 boxed controls stand under 44px.</b> The three token heights
+    account for 125 of the 317; the other 192 are arithmetic. 33, 34 and 35 are the sharpest case:
+    three heights within two pixels of each other, none of them a decision, all three the residue of
+    a different padding meeting a different font size.</p>
+    <p class="tk-note"><b>This is the one axis in the geometry that has no scale</b>, and it is the
+    same finding the census made, correctly, and the same one the inventory made about the filter
+    option at 33px. A control height should be a token the control reads, with the padding computed
+    from it, rather than a number that falls out of the padding.</p>
+  </section>
+
+  <!-- ============================= literals ========================== -->
+  <section class="tk-sec" id="literals">
+    <h2 data-n="07">1,027 tokens, 240 literals, and 145 of the literals have a token</h2>
+    <p class="tk-note">Across every geometry property in <code>components/</code>: padding, margin,
+    gap, width, height, inset, radius and border. <b>81 per cent read a token.</b> The 240 that do
+    not split cleanly in two.</p>
+    <dl class="tk-type">
+      <dt>145 x <code>1px</code></dt>
+      <dd><b>The token exists and is bypassed.</b> <code>--hairline:1px</code> is declared and used
+      <b>ten times</b>; <code>1px</code> is typed 145 times, always inside a <code>border</code>
+      shorthand. The shorthand is why: <code>border:1px solid var(--border-hairline)</code> tokenises
+      the colour and leaves the width as a number, and nobody notices because the colour looks
+      done.<small>the largest single finding on this page</small></dd>
+      <dt>95 dimensions</dt>
+      <dd><b>Genuinely off the ladder, and they should be.</b> A 120px panel column, a 210px dialog
+      width, a 160px chart height, a 280px footer column, a 560px sheet, and the negative offsets a
+      photograph bleed needs: -52, -72, -12, -8, -5, -4. A layout dimension is not a rhythm step and
+      forcing it onto the 4px ladder would be the ladder pretending to decide something it cannot.
+      <b>Fourteen of the 95 are the exception</b>: 12px, 8px, 13px and 23px are typed where a ladder
+      step exists.<small>81 correct, 14 to fix</small></dd>
+    </dl>
+    <p class="tk-note">So the honest number is not 240 literals. <b>It is 159 that have a token and
+    81 that do not</b>, and the 81 are a different question entirely: whether a layout dimension
+    scale should exist at all, which is the responsive stage's to answer and not this one's.</p>
+  </section>
+
+  <!-- ============================= decides =========================== -->
+  <section class="tk-sec" id="decides">
+    <h2 data-n="08">What this decides</h2>
+    <ol class="tk-steps">
+      <li><b>1</b><span><b>145 borders read <code>--hairline</code>.</b> The token was written for
+      exactly this and is used ten times against 145 literals. One value, one place, and the day the
+      hairline changes it changes once.</span></li>
+      <li><b>2</b><span><b>Control height becomes a token the control reads.</b> Three are declared
+      and twelve render; 192 of 317 controls get their height from arithmetic. 33, 34 and 35 within
+      two pixels is what that costs.</span></li>
+      <li><b>3</b><span><b>Fourteen ladder-step literals become tokens</b>: the 12px, 8px, 13px and
+      23px typed where <code>--space-*</code> already has the number.</span></li>
+      <li><b>4</b><span><b><code>50%</code> against <code>--radius-pill</code> gets a rule.</b>
+      Twenty eight readings use a shape the ladder does not name. On a square they are the same
+      circle; on a rectangle they are an ellipse and a stadium, and nothing says which is
+      wanted.</span></li>
+      <li><b>5</b><span><b>The census's padding finding is withdrawn and its height finding
+      stands.</b> Padding is 13 values with 2 off the grid in 4,359 readings; the shorthand was
+      counted as one value and it is four.</span></li>
+      <li><b>6</b><span><b>The 81 layout dimensions are left alone</b>, and the question of whether
+      they need a scale is handed to the responsive stage, which is the only one that can see
+      them.</span></li>
+    </ol>
+  </section>
+
+</div>
+</body>
+</html>
