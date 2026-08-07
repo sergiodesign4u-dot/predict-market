@@ -473,7 +473,7 @@
 
       <span class="tk-lab"><b>The remaining 3</b></span>
       <div class="tk-td"><code>chart-line-glow</code> <code>mask-solid</code> <code>mask-mid</code> <code>control-knob</code> <code>line-brass-strong</code> <code>tint-brass-60</code></div>
-      <div class="tk-td"><b>The ones worth a second look.</b> A mask and a glow are geometry as much as colour, but <code>control-knob</code> is the dot inside the switch and <code>line-brass-strong</code> is an edge, and both stand on a ground that DOES invert. Those two are the only candidates for a real hole on this page</div>
+      <div class="tk-td"><b>Named as candidates here on 2026-08-07 and settled on 2026-08-08 by reading where they are used. Neither is a hole.</b> <code>control-knob</code> is the dot inside the switch when it is ON, and the switch's ON ground is <code>--color-action</code>, which does not theme: white on brass is right in both. <code>line-brass-strong</code> is <code>--brass-a60</code>, an alpha, and an alpha over a theming ground is theme-aware by construction. A mask and a glow are geometry as much as colour. <b>All forty are correct, and the way to know was to read the usage rather than the declaration</b></div>
     </div>
     <p class="tk-note"><b>The rule in <code>components/CLAUDE.md</code> is right and its wording is
     not.</b> "A state token has a value in both themes or it is not one" was written against holes
@@ -490,11 +490,12 @@
       <li><b>1</b><span><b>The ink roles clear the floor</b>, and the page says so with numbers
       rather than with a claim. See the summary under section 04 for the exceptions and what they
       are.</span></li>
-      <li><b>2</b><span><b>Two roles are candidates for a real theme hole</b>,
-      <code>control-knob</code> and <code>line-brass-strong</code>: both stand on a ground that
-      inverts and neither is declared for daylight. Verified on the page and carried to
-      <code>backlog.md</code> rather than fixed here, because a value may only change in the
-      consolidation.</span></li>
+      <li><b>2</b><span><b>There is no theme hole, and the two candidates named here were
+      wrong.</b> Settled in the consolidation by reading where each is used:
+      <code>control-knob</code> sits on brass, which does not theme, and
+      <code>line-brass-strong</code> is an alpha, which is theme-aware by construction. <b>Forty
+      roles are declared once and all forty are right.</b> A declaration cannot tell you this; only
+      the usage can.</span></li>
       <li><b>3</b><span><b>The rule about both themes gets its real wording.</b> "A role whose
       ground inverts must be declared for both", not "every role", which is what the current
       sentence reads as and what the file's own header claims.</span></li>

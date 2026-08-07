@@ -6,8 +6,8 @@
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.line{display:flex;justify-content:space-between;font-size:var(--text-12);padding:var(--space-4) 0;border-top:1px solid var(--border-hairline)}
-.line.total{font-weight:var(--weight-bold);border-top:1px solid var(--border-hairline)}
+.line{display:flex;justify-content:space-between;font-size:var(--text-12);padding:var(--space-4) 0;border-top:var(--hairline) solid var(--border-hairline)}
+.line.total{font-weight:var(--weight-bold);border-top:var(--hairline) solid var(--border-hairline)}
 .bet-panel .bp-inner{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
 .bp-head{display:flex;align-items:center;justify-content:space-between}
 .bp-head h3{margin:0}
@@ -23,15 +23,15 @@
    each one: a percentage is this panel's DATUM, the way an event photograph is a card's
    content, so whoever owns the odds owns how they are set. */
 .bp-side{flex:1}
-.bp-side .bp-pct{display:block;font-size:var(--text-11);font-weight:normal}
+.bp-side .bp-pct{display:block;font-size:var(--text-11);font-weight:var(--weight-regular)}
 .bet-dock{border-bottom:none;align-items:center}
 /* Label muted, figure bright: the same ranking the card meta row uses. The
    colours are stated here because nothing else states them, and without them
    the dock inherited body text for both halves. */
 .bet-dock .dock-meta{font-size:var(--text-10);flex:0 0 auto;text-align:center;color:var(--text-muted)}
 .bet-dock .dock-meta b{display:block;font-size:var(--text-12);color:var(--text-primary)}
-.bet-panel{flex:0 0 300px;top:8px;align-self:flex-start}
-.app-case .bet-panel{position:relative;overflow:clip;background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
+.bet-panel{flex:0 0 300px;top:var(--space-8);align-self:flex-start}
+.app-case .bet-panel{position:relative;overflow:clip;background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
     inset 1px 0 0 var(--bevel-faint),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 30px 58px -34px var(--shadow-ink-85),0 12px 26px -18px var(--shadow-ink-72)}
@@ -81,11 +81,11 @@
 .app-case .bp-amount-row{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-12);margin:var(--space-8) 0 var(--space-20)}
 .app-case .bp-amount-lbl{display:flex;flex-direction:column;gap:var(--space-4)}
 .app-case .bp-cash{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
-.app-case :is(.bet-panel,.bet-sheet) .line{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light);color:var(--text-muted)}
+.app-case :is(.bet-panel,.bet-sheet) .line{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light);color:var(--text-muted)}
 .app-case :is(.bet-panel,.bet-sheet) .line span:last-child{color:var(--text-primary)}
-.app-case :is(.bet-panel,.bet-sheet) .line.total{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+.app-case :is(.bet-panel,.bet-sheet) .line.total{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 .app-case :is(.bet-panel,.bet-sheet) .line.total span:last-child{color:var(--text-brass)}
-.app-case .bet-dock{position:sticky;bottom:52px;z-index:var(--z-dock);gap:var(--space-8);padding:var(--space-8) var(--space-12);border:0;border-top:1px solid var(--border-brass);background-color:var(--bg-dock);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-dock-from),var(--bg-card-to));background-blend-mode:overlay,normal;box-shadow:0 -14px 26px -18px var(--shadow-ink-85)}
+.app-case .bet-dock{position:sticky;bottom:52px;z-index:var(--z-dock);gap:var(--space-8);padding:var(--space-8) var(--space-12);border:0;border-top:var(--hairline) solid var(--border-brass);background-color:var(--bg-dock);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-dock-from),var(--bg-card-to));background-blend-mode:overlay,normal;box-shadow:0 -14px 26px -18px var(--shadow-ink-85)}
 .app-case .bet-dock .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-10);font-weight:var(--weight-medium);color:inherit;opacity:.85}
 /* THE DOCK HAD NO POINTER STATE OF ANY KIND, and it is the control a bet is actually placed
    with: it is the panel's YES/NO pair below 760px, where the panel is display:none. So on
@@ -140,7 +140,7 @@ dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slower) var(--e
 @media(prefers-reduced-motion:reduce){
   dialog.app-dialog.bet-sheet[open]{animation:none}
 }
-.app-case .bp-selected{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);padding:var(--space-8)}
+.app-case .bp-selected{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);padding:var(--space-8)}
 .app-case .bp-sel-name{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-bold);color:var(--text-primary)}
 .app-case .bp-change{font-size:var(--text-10);color:var(--text-brass);text-decoration:underline;white-space:nowrap}
 /* Change is an <a> and it is the way back out of a chosen outcome on a multi market, and it

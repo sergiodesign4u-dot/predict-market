@@ -15,7 +15,7 @@
 .pos.skeleton .w40{width:40%}
 .pos-side{padding:0 var(--space-4)}
 .pos-note{font-size:var(--text-11);margin:var(--space-8) 0 0}
-.app-case .pos-side{border:1px solid var(--border-hairline);border-radius:var(--radius-6);background:var(--bg-control);color:var(--text-muted);font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.03em;white-space:nowrap}
+.app-case .pos-side{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-6);background:var(--bg-control);color:var(--text-muted);font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:var(--track-label);white-space:nowrap}
 .app-case .pos-side.pos-yes{color:var(--outcome-yes-text);border-color:var(--outcome-yes-line);background:var(--outcome-yes-fill)}
 .app-case .pos-side.pos-no{color:var(--outcome-no-text);border-color:var(--outcome-no-line);background:var(--outcome-no-fill)}
 /* the settled pair is written apart from the live pair on purpose: a bet side and
@@ -24,15 +24,15 @@
 .app-case .pos-side.pos-won{color:var(--result-won-text);border-color:var(--result-won-line);background:var(--result-won-fill)}
 .app-case .pos-side.pos-lost{color:var(--result-lost-text);border-color:var(--result-lost-line);background:var(--result-lost-fill)}
 .app-case .pos-note{color:var(--text-muted)}
-.app-case .pos{background:var(--bg-card-quiet);border:1px solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-12) var(--space-16);gap:var(--space-8);box-shadow:inset 0 1px 0 var(--edge-groove-light),0 12px 26px -22px var(--shadow-ink)}
-.app-case .pos-q{font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);letter-spacing:-.01em;color:var(--text-primary);line-height:var(--leading-snug)}
-.app-case .pos-figures{gap:var(--space-20);color:var(--text-muted);font-size:var(--text-10);text-transform:uppercase;letter-spacing:.05em}
-.app-case .pos-fig b{font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-primary);font-weight:var(--weight-semibold);letter-spacing:0;text-transform:none;margin-top:var(--space-4)}
+.app-case .pos{background:var(--bg-card-quiet);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-12) var(--space-16);gap:var(--space-8);box-shadow:inset 0 1px 0 var(--edge-groove-light),0 12px 26px -22px var(--shadow-ink)}
+.app-case .pos-q{font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);letter-spacing:var(--track-question);color:var(--text-primary);line-height:var(--leading-snug)}
+.app-case .pos-figures{gap:var(--space-20);color:var(--text-muted);font-size:var(--text-10);text-transform:uppercase;letter-spacing:var(--track-caps)}
+.app-case .pos-fig b{font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-primary);font-weight:var(--weight-semibold);letter-spacing:var(--track-none);text-transform:none;margin-top:var(--space-4)}
 .app-case .pos.skeleton{gap:var(--space-8)}
 .app-case .pos-record{background:none;border:0;box-shadow:none;padding:0;gap:0}
-.app-case .pos-record .pos-figures{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-8);margin:0;font-size:var(--text-10);letter-spacing:.06em}
-.app-case .pos-record .pos-fig{background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-12) var(--space-12);gap:var(--space-4);color:var(--text-muted)}
-.app-case .pos-record .pos-fig b{font-family:var(--font-mono);font-size:var(--text-20);color:var(--text-primary);font-weight:var(--weight-semibold);margin-top:var(--space-2);letter-spacing:0;text-transform:none}
+.app-case .pos-record .pos-figures{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-8);margin:0;font-size:var(--text-10);letter-spacing:var(--track-caps)}
+.app-case .pos-record .pos-fig{background:var(--bg-control);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-12) var(--space-12);gap:var(--space-4);color:var(--text-muted)}
+.app-case .pos-record .pos-fig b{font-family:var(--font-mono);font-size:var(--text-20);color:var(--text-primary);font-weight:var(--weight-semibold);margin-top:var(--space-2);letter-spacing:var(--track-none);text-transform:none}
 .app-case .pos-record .pos-fig:nth-child(2){border-color:color-mix(in oklab,var(--color-action) 42%,var(--border-hairline));background:linear-gradient(150deg,color-mix(in oklab,var(--color-action) 15%,var(--bg-control)),var(--bg-control) 74%)}
 .app-case .pos-record .pos-fig:nth-child(2) b{color:var(--text-brass);font-size:var(--text-24)}
 @media(min-width:520px){
@@ -71,8 +71,8 @@
    profile.css, which made the arithmetic read `position` as an organism THROUGH
    `profile`. The subject in every one of the six is a `.pos*` element. */
 .pos-status{text-transform:uppercase}
-.app-case .pos-status{color:var(--text-muted);font-size:var(--text-10);letter-spacing:.04em}
-.app-case p.pos-status{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-display);font-size:var(--text-11);font-weight:var(--weight-semibold);text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin:var(--space-24) 0 var(--space-12)}
+.app-case .pos-status{color:var(--text-muted);font-size:var(--text-10);letter-spacing:var(--track-caps)}
+.app-case p.pos-status{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-display);font-size:var(--text-11);font-weight:var(--weight-semibold);text-transform:uppercase;letter-spacing:var(--track-caps-loud);color:var(--text-muted);margin:var(--space-24) 0 var(--space-12)}
 .app-case p.pos-status::before{content:"";width:var(--icon-16);height:var(--size-2);border-radius:var(--radius-2);background:linear-gradient(90deg,var(--color-action),var(--color-action-lit));flex:0 0 auto}
 .app-case .pos-top .pos-status{white-space:nowrap}
 .app-case .pos-record span.pos-status{display:block;margin-top:var(--space-12);font-size:var(--text-11);line-height:var(--leading-base);color:var(--text-muted)}

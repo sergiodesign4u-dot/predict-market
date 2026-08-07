@@ -12,7 +12,7 @@
    cookie banner. Backlog item 16c. */
 .app-case .toast-inner{display:flex;flex-direction:column;gap:var(--space-12)}
 .app-case .toast-group{display:flex;flex-direction:column;gap:var(--space-8)}
-.app-case .toast{display:flex;align-items:center;gap:var(--space-12);border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);padding:var(--space-12) var(--space-12);box-shadow:0 18px 40px -24px var(--shadow-ink),inset 0 1px 0 var(--edge-groove-light)}
+.app-case .toast{display:flex;align-items:center;gap:var(--space-12);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);padding:var(--space-12) var(--space-12);box-shadow:0 18px 40px -24px var(--shadow-ink),inset 0 1px 0 var(--edge-groove-light)}
 .app-case .toast .ic-sm{width:var(--icon-18);height:var(--icon-18);flex:0 0 var(--icon-18);stroke:var(--text-brass);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .app-case .toast-msg{flex:1;color:var(--text-primary);font-size:var(--text-14);font-weight:var(--weight-medium)}
 /* THE DISMISS LEFT THIS FILE ON 2026-08-06 and there is nothing left here to say

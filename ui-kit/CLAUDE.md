@@ -53,43 +53,28 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
    `.amount-input` takes its ground and its ink from the User Agent and shows as a white box in the
    dark theme**, and **the card odds bar exists in no screen's markup at all**, being written by a
    page script at run time, which is where its 213 uses came from.
-3. **Consolidation, and it carries the foundations.** One pass where a value may change, in four
-   pages plus the value work. **3a icons is DONE, 2026-08-07, `icons.html`**: 52 glyphs audited
-   against the paint, and the axis had never been measured at all because the census counts controls
-   and an icon is not a control. What it found: **two families**, 33 hand-drawn stroked and 15
-   bought filled, with **four jobs drawn in both**; the stroke declared once at 1.6 in user units so
-   it renders **0.90px to 2.67px** across six sizes, which is no optical weight at all; **four
-   different safe fields** in the stroked family, 2.2 to 5.2, against the filled family's 2.0 on 13
-   of 15; **seven jobs, eight to fourteen drawings**; three glyphs whose centre is 1.7 to 2.0
-   modules out. **3b colour is DONE, 2026-08-07, `colour.html`**: 212 primitives, 133 roles, and
-   **134 contrast readings against the composited ground with 0 below floor**, at two floors,
-   4.5:1 for a word and 3:1 for a glyph. What it found: `icon-brass` in daylight is **3.20:1**, two
-   hundredths of headroom and the only role in the system with nowhere to go; **the brass ink ladder
-   has four rungs in the Vault and one in daylight**, so three roles do nothing there; `icon-quiet`
-   is identical to `text-muted` in the Vault and separate in daylight, which is the two-level system
-   earning its cost; and **40 roles are declared once**, of which 37 correctly so and two,
-   `control-knob` and `line-brass-strong`, stand on a ground that inverts. **3c typography is DONE,
-   2026-08-07, `typography.html`**: three families, 18 faces, ten fixed sizes and eight fluid ones,
-   three named weights, six leadings. What it found: **DM Sans and Space Grotesk are variable fonts
-   copied once per weight**, so 242 KB of the 373 KB payload is the same bytes seven times;
-   **`--weight-bold` is 700 and IBM Plex Mono has no 700 face**, a trap rather than a live defect
-   because nothing asks for it yet; **400 is the weight 192 of 260 elements render at and it has no
-   token**, so one component had to type `normal`; **tracking is 13 values, 59 declarations and zero
-   tokens**, including two spellings of nothing; and the census's `19.2px` **is not a leak**, it is
-   `clamp(19px,1.5vw,23px)` resolving at a 1280 viewport, with two more fluid values doing the same
-   there. **3d geometry is DONE, 2026-08-07, `geometry.html`**: measured over 10 screens at 1280,
-   2,905 padding readings, 1,454 gaps, 1,144 borders, 1,264 corners, and **2 readings in 4,359 off
-   the 4px grid**. What it found: **`--hairline:1px` is used 10 times and `1px` is typed 145 times**,
-   always inside a `border` shorthand; **three control heights are declared and twelve render**, with
-   33, 34 and 35 inside two pixels of each other and 192 of 317 controls taking their height from
-   arithmetic; `50%` is a sixth corner shape the ladder does not name, 28 readings; and the two
-   ladders with identical values, `--space-*` and `--size-*`, are **correct**, because every step of
-   both has a job written beside it. It also **half corrects the census**: the height finding stands,
-   the padding one does not (a `padding` shorthand was counted as one value and it is four), border
-   is one width and 16 colours, and radius has five declared steps in use rather than three. Still
-   open: **3e the values** (import order,
-   17 paddings, 29 heights, 17 borders, the `19.2px` leak, 20 files citing gates that no longer
-   exist, and the four decisions `inventory.md` forced). Output: `docs/consolidation.md`.
+3. **Consolidation. DONE 2026-08-08, `docs/consolidation.md`.** The four foundation pages are
+   `icons.html`, `colour.html`, `typography.html` and `geometry.html`, all done, and 3e is the one
+   pass where a value was allowed to change. What changed: the **import order**, nine files, proved
+   inert rather than compared (59 file pairs flipped, 2,131 same-property same-specificity
+   candidates, **0 elements matched by both halves of any of them** over 26 screens); **148 borders**
+   now read `--hairline`, which was declared and used ten times against 148 literals; ten
+   ladder-step literals; **`--weight-regular:400`**, the weight 192 of 260 elements render at and the
+   only step the ramp never named; **eight tracking tokens** over 61 declarations, 14 values moved,
+   none by more than .02em, 0 text clipped; **fonts 18 files and 373 KB to 8 and 131 KB**, verified
+   by painted-pixel counts identical on all twelve weights; and **37 dead gate and script references
+   in 20 files**, each now naming what was found rather than what found it.
+
+   **The first instrument was useless and that is written down.** A whole-page computed-style hash
+   over 68 renders reported **45 of 68 different when run twice with no change at all**, because the
+   screens carry scripts that write at run time. A before-and-after needs an instrument that returns
+   the same answer twice; that one did not, and it was replaced by a static proof for the reorder
+   and by narrow per-axis measurements for the values.
+
+   **What was left alone, with the reason**: the icon set (a redrawing, not a value), control height
+   (a change to how every control is written), the brass ladder in daylight (a design decision), and
+   the 81 layout dimensions (Responsive's question). The two theme-hole candidates `colour.html`
+   named turned out **not** to be holes, and the page is corrected rather than the file.
 4. **The pages.** One per component: a live specimen, its states in both themes, its classes, its
    rule and anti-rule, and the screens it stands on.
 5. **One audit run**, as a report.

@@ -88,7 +88,7 @@
   --green-a12:rgba(79,169,107,.12);   /* quiet YES fill */
   /* --green-150, --green-a20, --red-250 and --red-a20 went with the four semantic roles
      they were the whole reason for: S49, 2026-08-06. A primitive exists because a role
-     needs it, so when the role is retired the primitive is not kept in case, and gate 11
+     needs it, so when the role is retired the primitive is not kept in case, and the orphan-token pass
      asked the question a second time one level down. */
   --green-a42:rgba(66,209,138,.42);   /* the glow under the price line */
 
@@ -271,9 +271,36 @@
   --display-quote:clamp(20px,1.85vw,26px);    /* the brand tile quote */
   --display-tagline:clamp(23px,2.3vw,31px);   /* the SEO brand tagline */
 
+  /* 400 is the root default and the weight 192 of 260 text elements on the feed
+     render at, and until 2026-08-07 it was the one step of this ramp with no
+     name. betpanel.css had already needed it and written `font-weight:normal`,
+     the single weight literal in the system. A step a scale does not name is a
+     step somebody types. Found by step 3c, ui-kit/typography.html. */
+  --weight-regular:400;
   --weight-medium:500;
   --weight-semibold:600;
   --weight-bold:700;        /* merged: font-weight bold, written as 700 everywhere now */
+
+  /* ---- tracking ----
+     The last axis in the type system to get one, added 2026-08-07. It shipped
+     with 59 declarations, 13 distinct values and no tokens at all, including two
+     spellings of nothing (`0` and `normal`). Read on the screens rather than
+     sorted by number, the 59 fall into three jobs and every value is one of them
+     at one size band, which is what makes a scale possible here and not a
+     rounding exercise. Found by step 3c, ui-kit/typography.html.
+
+     The tighten half was ALREADY a scale and only needed names: three steps, each
+     on its own size band. The open half was seven values doing one job at 10 to
+     13px, and it collapses to three. Nineteen declarations move, none by more
+     than .02em, and the widest label on the screens grew 1px. */
+  --track-display:-.03em;   /* 24px and up: a display heading closes at size */
+  --track-head:-.02em;      /* 13 to 20px: a card question, a logo, a name */
+  --track-question:-.01em;  /* a question set as a heading, 14 to 24px */
+  --track-none:0;           /* undo an inherited tracking. The one spelling */
+  --track-caps-lg:.01em;    /* uppercase at display size, which needs almost none */
+  --track-label:.03em;      /* the 10 to 11px micro-label. 12 declarations, the base */
+  --track-caps:.06em;       /* a 12 to 13px small-caps heading, category or eyebrow */
+  --track-caps-loud:.1em;   /* the widest, and it is a divider rather than a word */
 
   --leading-none:1;         /* an icon or a badge: the box is the line */
   --leading-flat:1.05;      /* display headings */
@@ -545,13 +572,13 @@
      else in the product wears it; every other icon button carries a face.
      WHY A SKIN IS A TOKEN AND NOT A FILE. A fourth file drawing .icon-btn,
      summary and .btn would be three more file-slots on two atoms, which is what
-     gate 41 counts, and a shared CLASS is that file with a name on it: a face's
+     the atom map counts, and a shared CLASS is that file with a name on it: a face's
      rules live in its atom's file. So components/iconbtn.css, header.css and
      button.css each keep their own rule saying their control stands on the band,
      and the band says HERE, once, what it does to whatever stands on it.
      IT WAS OFF THE LADDER FOR AS LONG AS IT EXISTED, and the reason is the whole
      lesson. The wash was typed as color-mix(in oklab,var(--color-action) 14%,
-     transparent) in all three files, and ui-kit/_rescale.py has mapped
+     transparent) in all three files, and the ladder has mapped
      --brass-a14 to --brass-a16 since the scale was declared - but it matches
      TOKEN NAMES, and a value written longhand as a colour function is invisible
      to it. Three copies of a rung that is not on the ladder, hidden by their own
@@ -605,7 +632,7 @@
      backlog S49 was answered: the chosen side in the mobile dock is the solid
      --outcome-yes / --outcome-no the panel and the option list already used, so the
      lighter fill and its brighter ink had nothing left to paint. Four tokens, four
-     values, and gate 11 is what said they were orphans. */
+     values, and the orphan-token pass is what said they were orphans. */
   --outcome-line-yes:var(--green-200);       /* from: the YES line drawn over the hero photo, where
                                                 the quiet green loses against the image */
   --outcome-line-no:var(--red-400);          /* from: the NO line on the same photo */

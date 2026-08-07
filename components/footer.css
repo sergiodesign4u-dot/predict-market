@@ -19,9 +19,9 @@
 .lang-menu summary .ic{width:var(--icon-16);height:var(--icon-16)}
 .lang-menu summary .ic-sm{width:var(--icon-12);height:var(--icon-12)}
 .footer-cols{display:flex;flex-direction:column;gap:var(--space-16)}
-.footer-col h2{font-size:var(--text-11);margin:0 0 var(--space-8);text-transform:uppercase;letter-spacing:.04em}
+.footer-col h2{font-size:var(--text-11);margin:0 0 var(--space-8);text-transform:uppercase;letter-spacing:var(--track-caps)}
 .footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-4)}
-.footer-col .sub-label{font-size:var(--text-10);margin:var(--space-8) 0 var(--space-4);text-transform:uppercase;letter-spacing:.03em}
+.footer-col .sub-label{font-size:var(--text-10);margin:var(--space-8) 0 var(--space-4);text-transform:uppercase;letter-spacing:var(--track-label)}
 .footer-legal{padding-top:var(--space-12);display:flex;flex-direction:column;gap:var(--space-8)}
 .footer-legal .legal-links{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-8)}
 .footer-legal p{margin:0}
@@ -32,7 +32,7 @@
   .footer-col{min-width:120px}
 }
 .footer-popular{padding:var(--space-8) var(--space-12)}
-.footer-popular h2{font-size:var(--text-11);text-transform:uppercase;letter-spacing:.03em;margin:0 0 var(--space-8)}
+.footer-popular h2{font-size:var(--text-11);text-transform:uppercase;letter-spacing:var(--track-label);margin:0 0 var(--space-8)}
 .popular-links{display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-12);list-style:none;padding:0;margin:0;font-size:var(--text-12)}
 .app-footer{background:var(--bg-surface);color:var(--text-muted)}
 /* the same inset as every other band, so the first footer column starts on the
@@ -49,7 +49,7 @@
    one line of 11px text is a value that renders as nothing. So the press also carries the brass
    the hover gives, and a thumb gets the answer a pointer already had. Both roles were here. */
 .app-footer a:active,.popular-links a:active,.footer-col a:active,.legal-links a:active{background:var(--bg-pressed);color:var(--text-brass)}
-.footer-popular{border-top:1px solid var(--border-hairline)}
+.footer-popular{border-top:var(--hairline) solid var(--border-hairline)}
 .footer-popular h2,.footer-col h2{color:var(--text-primary)}
 .footer-tagline{color:var(--text-muted)}
 .footer-col .sub-label{color:var(--text-muted)}
@@ -70,10 +70,10 @@
    The summary is flat at rest, so there is nothing to unlift. It still has no hover, for exactly
    the same scoping reason, and that answer belongs to filters.css rather than to this file. */
 .lang-menu summary:active{background:var(--bg-pressed)}
-.footer-logo{width:auto;height:auto;padding:0;background:none;border:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:-.02em;color:var(--text-primary)}
-.footer-legal{border-top:1px solid var(--border-hairline)}
-.app-footer{border-top:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
+.footer-logo{width:auto;height:auto;padding:0;background:none;border:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:var(--track-head);color:var(--text-primary)}
+.footer-legal{border-top:var(--hairline) solid var(--border-hairline)}
+.app-footer{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
 .footer-logo{display:inline-flex;align-items:center;gap:var(--space-8)}
 .footer-logo::first-letter{color:var(--text-primary)}
 .footer-logo::before{content:'';flex:0 0 auto;width:21px;height:var(--icon-16);background:var(--mark-logo) no-repeat center/contain}
-.app-footer .footer-popular,.app-footer .footer-legal{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+.app-footer .footer-popular,.app-footer .footer-legal{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}

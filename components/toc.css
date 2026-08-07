@@ -35,13 +35,13 @@
 
 .toc{margin:0}
 .toc-d{margin:0}
-.toc-head{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);cursor:pointer;list-style:none;font-size:var(--text-11);font-weight:var(--weight-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);padding:var(--space-12) var(--space-8);min-height:var(--control-44);margin:0;border-bottom:1px solid var(--border-hairline)}
+.toc-head{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);cursor:pointer;list-style:none;font-size:var(--text-11);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-muted);padding:var(--space-12) var(--space-8);min-height:var(--control-44);margin:0;border-bottom:var(--hairline) solid var(--border-hairline)}
 .toc-head::-webkit-details-marker{display:none}
-.toc-head::after{content:'';width:var(--size-8);height:var(--size-8);border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin-right:var(--space-4)}
+.toc-head::after{content:'';width:var(--size-8);height:var(--size-8);border-right:var(--hairline) solid currentColor;border-bottom:var(--hairline) solid currentColor;transform:rotate(45deg);margin-right:var(--space-4)}
 .toc-d[open] .toc-head::after{transform:rotate(225deg)}
 .toc-list{list-style:none;margin:0;padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2)}
 .toc-list li{margin:0}
-.toc-link{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);text-decoration:none;color:var(--text-primary);font-family:inherit;font-size:var(--text-13);font-weight:var(--weight-medium);line-height:var(--leading-snug);padding:var(--space-8);min-height:var(--control-36);border:1px solid transparent;border-radius:var(--radius-10)}
+.toc-link{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);text-decoration:none;color:var(--text-primary);font-family:inherit;font-size:var(--text-13);font-weight:var(--weight-medium);line-height:var(--leading-snug);padding:var(--space-8);min-height:var(--control-36);border:var(--hairline) solid transparent;border-radius:var(--radius-10)}
 .toc-n{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted);flex:0 0 auto}
 
 /* States. A row is a link, so it takes both, and neither is a colour written by

@@ -17,11 +17,11 @@
 .bell-wrap{position:relative;display:inline-flex}
 .badge-dot{position:absolute;top:-5px;right:-5px;border-radius:var(--radius-10);font-size:var(--text-10);line-height:var(--leading-none);padding:var(--space-2) var(--space-4)}
 .avatar-menu{position:relative}
-.avatar-menu summary{list-style:none;border:1px solid var(--border-hairline);padding:var(--space-4) var(--space-8);cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-4)}
+.avatar-menu summary{list-style:none;border:var(--hairline) solid var(--border-hairline);padding:var(--space-4) var(--space-8);cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-4)}
 .avatar-menu summary::-webkit-details-marker{display:none}
-.avatar-menu .dropdown{position:absolute;right:0;top:calc(100% + 4px);min-width:170px;border:1px solid var(--border-hairline);z-index:var(--z-menu)}
+.avatar-menu .dropdown{position:absolute;right:0;top:calc(100% + 4px);min-width:170px;border:var(--hairline) solid var(--border-hairline);z-index:var(--z-menu)}
 .avatar-menu ul{list-style:none;margin:0;padding:0}
-.avatar-menu li{border-top:1px solid var(--border-hairline)}
+.avatar-menu li{border-top:var(--hairline) solid var(--border-hairline)}
 .avatar-menu li:first-child{border-top:none}
 .bottom-nav .badge-dot{position:static;margin-left:var(--space-2)}
 /* `.delta .row` stood here and is gone, 2026-08-03. `.delta` is course-page
@@ -29,20 +29,20 @@
    user-research/cjm-to-be.html, and not one of the 28 course pages loads
    components/index.css. So the rule could never fire, in any tree, and it was
    sitting inside the app header's own file describing a layout the app header
-   has nothing to do with. Found by gate 30 on its first run. */
+   has nothing to do with. Found the first time the worn names were counted. */
 .notif-menu{position:relative}
 .notif-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center}
 .notif-menu summary::-webkit-details-marker{display:none}
-.notif-menu .dropdown{position:absolute;right:0;top:calc(100% + 4px);width:260px;max-width:80vw;border:1px solid var(--border-hairline);z-index:var(--z-menu)}
+.notif-menu .dropdown{position:absolute;right:0;top:calc(100% + 4px);width:260px;max-width:80vw;border:var(--hairline) solid var(--border-hairline);z-index:var(--z-menu)}
 .notif-drop ul{list-style:none;margin:0;padding:0}
-.notif-drop li{border-top:1px solid var(--border-hairline)}
+.notif-drop li{border-top:var(--hairline) solid var(--border-hairline)}
 .notif-drop li:first-child{border-top:none}
 .notif-drop li a strong{display:block;font-size:var(--text-12)}
 .notif-drop li a span{display:block;font-size:var(--text-10)}
 .notif-empty{margin:0;padding:var(--space-12);font-size:var(--text-11);line-height:var(--leading-base)}
 .notif-all{display:block;text-align:center;padding:var(--space-8);font-size:var(--text-11);text-decoration:none}
 .app-header .row{margin:0 auto;padding:var(--space-8) var(--space-20);box-sizing:border-box;min-height:58px}
-.logo-btn{background:transparent;border:0;color:var(--text-primary);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:-.02em;padding:var(--space-8) var(--space-4);white-space:nowrap}
+.logo-btn{background:transparent;border:0;color:var(--text-primary);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:var(--track-head);padding:var(--space-8) var(--space-4);white-space:nowrap}
 .utility{align-items:center;gap:var(--space-8)}
 .utility > *{align-self:center}
 /* ONE CIRCLE, TWO AUTH STATES, AND IT WAS WRITTEN TWICE (ui-kit backlog S17).
@@ -61,7 +61,7 @@
    neighbours differ - a balance pill and an avatar on one side, two auth
    buttons on the other - and the same two circles read differently between
    them. */
-.notif-menu summary,.avatar-menu summary{background:transparent;border:1px solid var(--border-hairline);border-radius:var(--radius-pill)}
+.notif-menu summary,.avatar-menu summary{background:transparent;border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill)}
 /* HOW IT WORKS LEFT THIS FILE ON 2026-08-06 for components/button.css, where it is
    `.btn.btn-ghost.btn-xs`: a labelled press with a transparent ground, which the family
    had no name for until the census measured 177 placements wearing one. Two selectors
@@ -73,7 +73,7 @@
    four rest transparent inside a hairline pill and all four answer a pointer with the
    same wash on a --color-action edge and a finger with --bg-pressed. THE SKIN IS A SET
    OF TOKENS, NOT A FILE AND NOT A CLASS. A file that drew all three atoms would be three
-   more file-slots on the atom map, which is precisely what gate 41 counts, and a shared
+   more file-slots on the atom map, which is precisely what the atom map counts, and a shared
    class is that file with a name on it: a face's rules live in its atom's file. So the
    rule stays here, in components/iconbtn.css and in components/button.css, three times,
    each saying that its control stands on this band - and the band says once, as
@@ -81,7 +81,7 @@
    THESE TWO ARE THE PROOF THAT IT HAD TO BE A TOKEN. A <summary> is neither `button`
    nor `iconbutton`, so no atom could ever have held their half of the skin.
    AND NAMING IT MOVED IT. The wash was written longhand as a 14 per cent colour-mix,
-   a rung that is not on the brass ladder, and ui-kit/_rescale.py has mapped 14 to 16
+   a rung that is not on the brass ladder, and the ladder has mapped 14 to 16
    since the scale was declared - it matches token NAMES, so three copies spelled as a
    colour function stayed invisible to it for as long as they existed.
    `display:none` under the breakpoint stays here: hiding a control in a band is the
@@ -100,10 +100,10 @@
    state at all, on either axis. It takes the quiet ground square-cornered, because a radius is
    geometry and a state may not move the element it is on. */
 .logo-btn:active{background:var(--bg-pressed)}
-.bal-toggle{background:var(--bg-control);border:1px solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);padding:var(--space-4) var(--space-8) var(--space-4) var(--space-12);gap:var(--space-8)}
+.bal-toggle{background:var(--bg-control);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);padding:var(--space-4) var(--space-8) var(--space-4) var(--space-12);gap:var(--space-8)}
 .bal-figure{display:flex;flex-direction:column-reverse;align-items:flex-end;text-align:right;line-height:var(--leading-flat);gap:var(--space-2)}
 .bal-figure .bal-amt{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-14);color:var(--text-primary)}
-.bal-figure .bal-label{font-size:var(--text-10);text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted)}
+.bal-figure .bal-label{font-size:var(--text-10);text-transform:uppercase;letter-spacing:var(--track-caps);color:var(--text-muted)}
 /* THE THREE-STEP OF A BRASS PLATE, the one input.css and button.css already use, and it costs
    no value at all. Rest lights the plate from the top left; hover takes the lit role to both
    stops so the whole face comes up; press flips the angle to 315deg so the light falls to the
@@ -116,8 +116,8 @@
    what left; without that the ground would snap while the shadow faded. */
 .badge-dot{background:var(--color-action);border:0;color:var(--text-on-brass);font-weight:var(--weight-bold)}
 .notif-menu summary,.avatar-menu summary{height:var(--control-36);display:inline-flex;align-items:center;gap:var(--space-4);padding:0 var(--space-8)}
-.avatar-menu .dropdown,.notif-menu .dropdown{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
-.avatar-menu li,.notif-drop li{border-top:1px solid var(--border-hairline)}
+.avatar-menu .dropdown,.notif-menu .dropdown{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
+.avatar-menu li,.notif-drop li{border-top:var(--hairline) solid var(--border-hairline)}
 /* THE ACCOUNT MENU'S ROWS LEFT THIS FILE ON 2026-08-06 for components/navitem.css, and
    the three selectors above were SPLIT rather than moved, for the reason the <summary>
    pair was split when the icon button left: each also styled `.notif-drop li a`, which
@@ -140,7 +140,7 @@
 /* The dropdown of a screen whose subject is "you have nothing yet". It had no
    rule at all, because the state lived only in the grey tree. */
 .notif-empty{color:var(--text-muted)}
-.notif-all{background:var(--bg-control);border-top:1px solid var(--border-hairline);color:var(--text-brass)}
+.notif-all{background:var(--bg-control);border-top:var(--hairline) solid var(--border-hairline);color:var(--text-brass)}
 /* See all notifications is not in the group above because it is not in an <li>: it is the
    dropdown's own footer link, and it is the only row in either menu that carries a ground at
    rest, so it needs its own pair rather than the group's.
@@ -162,9 +162,9 @@
 .logo-btn{display:inline-flex;align-items:center;gap:var(--space-8)}
 .logo-btn::first-letter{color:var(--text-primary)}
 .logo-btn::before{content:'';flex:0 0 auto;width:23px;height:var(--icon-16);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='18'%3E%3Cpath d='M2 15 L9 7 L13 10 L24 2' fill='none' stroke='%23c99e3f' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/contain}
-.app-case .app-header{position:sticky;top:0;z-index:var(--z-header);background:var(--bg-slab-from);border-bottom:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light),0 14px 26px -20px var(--shadow-ink-72)}
+.app-case .app-header{position:sticky;top:0;z-index:var(--z-header);background:var(--bg-slab-from);border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light),0 14px 26px -20px var(--shadow-ink-72)}
 .app-case .app-header .cat-condensed{max-height:0;opacity:0;overflow:clip;transition:max-height var(--dur-slower) var(--ease-out),opacity var(--dur-slow) ease}
-.app-case .app-header.scrolled .cat-condensed{max-height:54px;opacity:1;border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+.app-case .app-header.scrolled .cat-condensed{max-height:54px;opacity:1;border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 /* THE CONDENSED STRIP'S CHIPS LEFT THIS FILE ON 2026-08-06 for components/chip.css, where
    they are `.chip.chip-quiet`: transparent on a transparent 1px band inside a pill, which
    is the face a chip wears on a scrolling strip where a ground would make a row of eight
@@ -177,7 +177,7 @@
 .app-case .app-header .cat-condensed ul::-webkit-scrollbar{display:none}
 .app-case .app-header .cat-condensed li{flex:0 0 auto}
 /* `.app-case .app-header .cat-condensed a{text-decoration:none}` was here until
-   2026-08-07 and it was the last thing in this file that gate 41 read as drawing
+   2026-08-07 and it was the last thing in this file that the atom map read as drawing
    a chip. It undid an anchor's underline so the <button> inside it could show
    through - `ui-kit/docs/defects.md` row 78 - and the chip is that anchor now,
    so the declaration belongs to the atom and is in components/chip.css with the

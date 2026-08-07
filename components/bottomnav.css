@@ -15,7 +15,7 @@
   .bottom-nav{display:none}
 }
 .bottom-nav{background:var(--bg-surface);z-index:var(--z-nav)}
-.bottom-nav li{border-right:1px solid var(--border-hairline)}
+.bottom-nav li{border-right:var(--hairline) solid var(--border-hairline)}
 /* `.bottom-nav a{display:block;text-decoration:none;color:inherit}` was here and
    it went out with the wrapper on 2026-08-07. It existed to undo an anchor's own
    look so that the <button> INSIDE it could show through, which is
@@ -24,7 +24,7 @@
    announced a link containing a button. The slot is one element now - an <a>
    where it navigates, a <button> where it opens the sign-in dialog - and every
    one of those three declarations is `.nav-item`'s already. It was also the last
-   rule in this file that gate 41 read as drawing a control, so `navitem` reached
+   rule in this file that the atom map read as drawing a control, so `navitem` reached
    one file the moment it left. */
 /* THIS BAR HAD NO STATE ON EITHER AXIS, and it is the one control in the product that is only
    ever touched: it is display:none from 640px up. So the press is the state that matters here,
@@ -52,5 +52,5 @@
    under it, so the top stroke shows 3px above the bar. Only the bottom stroke falls past the
    viewport edge, 4px of it, and a ring with three sides on screen is a ring you can see. An
    inset offset would buy that fourth stroke by moving the other three onto the control. */
-.bn-bal{background:var(--bg-control);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
-.bottom-nav{border-top:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
+.bn-bal{background:var(--bg-control);border:var(--hairline) solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10)}
+.bottom-nav{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}

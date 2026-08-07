@@ -10,7 +10,7 @@
    IT LEFT components/input.css ON 2026-08-05, BECAUSE A FIELD AND A GROUP OF
    CHIPS ARE NOT ONE THING. `input` is a label, a field and the row that holds
    them, which is an atom; this is a ROW OF CHIPS a person chooses between, which
-   is a molecule, and the census in `ui-kit/_worn.py` had already filed the chips
+   is a molecule, and the census of what each class is worn by had already filed the chips
    in it under a different ROLE from everything else in that file: they are
    selectors, and a field is not.
 

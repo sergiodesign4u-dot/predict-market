@@ -20,7 +20,7 @@
 
    `display` comes first on purpose: it is the property that decides whether the
    other two mean anything. The markup could not be the fix, because a painted
-   screen has a grey twin frozen since stage 04 and gate 18 compares them.
+   screen has a grey twin frozen since stage 04 and and the two are compared by hand.
 
    These are BASE rules and they win nothing: every scoped rule below reaches the
    same element with more classes, so a card mark and a position mark keep the
@@ -34,7 +34,7 @@
 .sk-thumb{width:var(--size-56);height:var(--size-56)}
 .sk-btn{height:var(--control-32)}
 
-.card.skeleton .sk-thumb{width:var(--size-56);height:var(--size-56);flex:0 0 var(--size-56);border:1px solid var(--border-hairline)}
+.card.skeleton .sk-thumb{width:var(--size-56);height:var(--size-56);flex:0 0 var(--size-56);border:var(--hairline) solid var(--border-hairline)}
 .card.skeleton .sk-head{flex:1}
 .card.skeleton .sk-line{height:var(--size-8);margin:var(--space-8) 0}
 .card.skeleton .sk-line.w80{width:80%}

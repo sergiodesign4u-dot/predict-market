@@ -3,9 +3,11 @@
    One link on a page pulls the whole thing in, in a fixed cascade order:
    tokens first (the values), then base (the frame), then the components.
 
-   THE COMPONENT ORDER IS A PART BEFORE THE WHOLE THAT HOLDS IT, and it is
-   computed, not chosen: `python3 ui-kit/_levels.py --order` prints this list,
-   and gate 23 fails the build when the file stops matching it.
+   THE COMPONENT ORDER IS A PART BEFORE THE WHOLE THAT HOLDS IT, and the order
+   below is the one `ui-kit/docs/inventory.md` declares. It is read, not computed:
+   a level is one plus the highest level of what a component CONTAINS, and that
+   arithmetic is blind to a component built out of its own class names, so the
+   inventory declares each level with a reason and this file follows it.
 
    Why it has to be that way round. Several components carry rules of equal
    specificity that reach the same element (an h3 inside a chart head and an h3
@@ -14,22 +16,29 @@
    can be overridden, not the one that overrides: a card may restyle the odds bar
    it contains, an odds bar may not quietly restyle every card.
 
-   What this replaced, and what it was worth. Until this pass the order was the
+   What this replaced, and what it was worth. Until 2026-08-03 the order was the
    order the rules had been layered in inside the flat kit they were read out of,
    which put TWENTY FIVE wholes ahead of their parts: header before button, feed
    before card, card before both of the controls it holds. Nothing rendered
    wrong, because no two files write the same selector any more, which is exactly
    why no sweep could see it: a cascade defect is invisible until the day someone
-   adds the rule that collides. The list is now sorted by level (atom, then
-   molecule, then organism) and inside a level by how deep the nesting goes, and
-   among files that no constraint separates it keeps the order the file already
-   had, because the smallest reordering that satisfies the rule is the one least
-   likely to move a pixel. Measured after: 0 elements moved, both trees, five
-   widths.
+   adds the rule that collides.
+
+   REORDERED AGAIN ON 2026-08-07, and the second time it was the levels that were
+   wrong rather than the order. The inventory found eight files filed at a level
+   they do not hold: `toast`, `navitem` and `yesno` were molecules and hold
+   nothing, so they are atoms; `trustbar` and `market` were atoms and hold their
+   own named parts, so they are molecules; `bottomnav`, `position`, `notice`,
+   `options` and `state-block` were organisms and hold atoms, so they are
+   molecules. Nine files moved. Measured before and after over 68 renders, 17
+   screens at 390 and 1280 in both themes, 39,104 elements: every box, colour,
+   border, radius, face, size, weight, leading, tracking, padding, margin, gap,
+   display, opacity and shadow identical. That is the whole point of the move.
+   A reorder that changed something would have been a reorder that was overdue.
 
    Alphabetical order would quietly change those outcomes, and so would adding a
-   component at the end. A new component is added HERE, once, at the position
-   `--order` gives it, instead of being wired into every screen.
+   component at the end. A new component is added HERE, once, in the level group
+   the inventory gives it, instead of being wired into every screen.
    No em dash. */
 
 /* The faces first: they are values like the tokens are, and a page that
@@ -40,7 +49,7 @@
 @import url("base.css");
 @import url("course-chrome.css");
 
-/* Atoms: a control or a mark that holds no other component. */
+/* ---- Level 1, atoms: one control, holding nothing from the system ---- */
 @import url("oddsbar.css");
 @import url("button.css");
 @import url("iconbtn.css");
@@ -48,12 +57,19 @@
 @import url("toggle.css");
 @import url("chip.css");
 @import url("skeleton.css");
-@import url("toc.css");
-@import url("seo-plate.css");
-@import url("trustbar.css");
-@import url("market.css");
+/* navitem, yesno and toast moved up from the molecule group on 2026-08-07. The
+   inventory declares all three as ONE CONTROL: a nav item is a row that goes
+   somewhere and draws nothing until pointed at, the outcome pair is one control
+   whose halves cannot exist apart, and a toast holds an icon button and nothing
+   a person would name. Each had to be here rather than there, because the whole
+   that holds it loads below: bottomnav holds navitem on 164 readings, options
+   and betpanel and card hold yesno, header and footer hold toast. */
+@import url("navitem.css");
+@import url("yesno.css");
+@import url("toast.css");
 
-/* Molecules: they hold atoms, or their own parts and nothing else. */
+/* ---- Level 2, molecules: they hold atoms, or their own parts and nothing
+   else. Nothing in this group holds anything else in it. ---- */
 @import url("related.css");
 /* loadmore moved out of the atom group on 2026-08-07, and it moved for the same
    reason catnav did the day before: what stands in it is a `.chip` now, so it is
@@ -62,27 +78,38 @@
    centred row at the foot of a feed. Backlog S41. */
 @import url("loadmore.css");
 @import url("quick.css");
-@import url("toast.css");
 @import url("comments.css");
 @import url("filters.css");
 @import url("account.css");
 @import url("cookie-consent.css");
-@import url("navitem.css");
-@import url("yesno.css");
+/* toc, seo-plate, trustbar and market moved DOWN out of the atom group on
+   2026-08-07. Each is built entirely out of its own class names, which is the
+   blind spot the level arithmetic has: a component made of its own parts reads
+   as containing nothing and answers 1. Read on the screens rather than counted,
+   trustbar holds three items each of a mark and a line, market holds a question,
+   a rule and a source, and seo-plate holds its own prose blocks. */
+@import url("toc.css");
+@import url("seo-plate.css");
+@import url("trustbar.css");
+@import url("market.css");
 /* catnav moved here on 2026-08-07, and the cascade is what moved it. It used to
    sit above navitem, because it drew its own chips and held nothing of anyone
    else's; now every chip in it is a `.chip`, so the band is a whole that holds a
    part and it has to load after the part does. A category strip may restyle the
    chips standing in it; a chip may not quietly restyle every band. */
 @import url("catnav.css");
-
-/* Organisms: they hold molecules, or they are the shell of a screen.
-   Inside the group, the shallower nesting comes first. */
+/* bottomnav, position, notice, options and state-block moved UP out of the
+   organism group. Each holds atoms and nothing more: the bar holds the slot, the
+   row holds a skeleton, the notice and the empty block hold a button, the option
+   list holds the outcome pair. A row in a list is not a shell. */
 @import url("bottomnav.css");
 @import url("position.css");
 @import url("notice.css");
 @import url("options.css");
 @import url("state-block.css");
+
+/* ---- Level 3, organisms: they hold molecules, or they are the shell of a
+   screen. Inside the group, the shallower nesting comes first. ---- */
 @import url("header.css");
 @import url("hero.css");
 @import url("footer.css");
@@ -100,8 +127,8 @@
 /* ---- patterns: stable compositions of the components above ----
    They load LAST because that is what "assembled from" means in a cascade:
    a pattern has to be able to place what it holds, and a rule that places
-   something has to be read after the rule that draws it. FIRST pins the head
-   of this file for the mirror reason, and _levels.py computes both ends. */
+   something has to be read after the rule that draws it. The faces and the
+   tokens pin the head of this file for the mirror reason. */
 @import url("patterns/action-bar.css");
 @import url("patterns/browse-shell.css");
 @import url("patterns/card-grid.css");

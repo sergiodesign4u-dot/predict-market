@@ -18,12 +18,12 @@
    the only thing they shared was a file name: this one is a `<details>` holding a
    panel holding a list of labelled radios, which is a molecule; that one is a
    track with a knob, which is an atom. The stand had been saying so since it was
-   built, by needing two specimens for one component. Found by gate 39, because
+   built, by needing two specimens for one component. Found by reading the containment map, because
    this file's containment is EMPTY and the level was therefore being answered by
    arithmetic with no information in it. See ui-kit/docs/defects.md row 63. */
 .lang-menu .filter-panel{top:auto;bottom:calc(100% + 4px);right:auto;left:0;min-width:150px}
-.filter-panel{background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
-.filter-menu summary{background:var(--bg-surface);border:1px solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
+.filter-panel{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
+.filter-menu summary{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
 .app-case .filter-menu summary{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 .app-case .filter-menu summary:hover{border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)}
 /* Press is the axis a disclosure needs most: the panel opens on the same click, so without a
@@ -49,7 +49,7 @@
 .filter-panel li label:active{background:var(--bg-pressed)}
 /* S50, 2026-08-07: this ground was `color-mix(in oklab,var(--color-action) 20%,
    transparent)`, a rung the brass ladder does not have, and a value typed as a
-   colour function is invisible to ui-kit/_rescale.py because that tool matches
+   colour function is invisible to any sweep that matches
    token NAMES. It is the nearest rung now, which on graphite is 4 per cent
    quieter and improves the label to 5.87:1, and on chalk steps up the way every
    other brass tint does rather than staying flat. */
@@ -60,7 +60,7 @@
    a ring 2px outside it would be clipped on both edges. Same width and same role as base.css, one
    sign flipped, so the ring stays one decision. */
 .filter-panel li label:has(input:focus-visible){outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
-.reverse-row{border-top:1px solid var(--border-hairline);color:var(--text-muted)}
+.reverse-row{border-top:var(--hairline) solid var(--border-hairline);color:var(--text-muted)}
 /* Target size follows the POINTER, not the viewport. Step 7 wrote that rule and moved two
    files; these stayed bound to a 640px viewport, so a touch tablet or a touch laptop got the
    36px control. A fine pointer keeps 36, which clears 2.5.8 (24x24) with room. */

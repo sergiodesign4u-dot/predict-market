@@ -67,14 +67,14 @@
    `--bg-pressed` under a finger. The only thing that parts them is the rest INK,
    because three of them are a mark and the fourth is a word.
    THE RULE IS HERE THREE TIMES AND THE DECISION IS IN ONE PLACE. A fourth file
-   drawing all three atoms is three more file-slots (gate 41) and a shared class
+   drawing all three atoms is three more file-slots on the atom map and a shared class
    is the same file wearing a name, so what moved out is the VALUE: the wash was
    `color-mix(in oklab,var(--color-action) 14%,transparent)` typed in three
    stylesheets, and naming it is what let the ladder see it. It was not on the
-   ladder - `ui-kit/_rescale.py` has mapped 14 to 16 since the scale was declared
+   ladder - the ladder has mapped 14 to 16 since the scale was declared
    and could not read a colour function - so this hover moved one rung the moment
    it was given a name. ui-kit/docs/backlog.md S48. */
-.icon-btn{background:transparent;border:1px solid var(--border-hairline);border-radius:var(--radius-pill)}
+.icon-btn{background:transparent;border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill)}
 .icon-btn{width:var(--control-36);height:var(--control-36);color:var(--text-primary)}
 .icon-btn:hover{background:var(--tint-brass-16);border-color:var(--color-action)}
 .icon-btn:active{background:var(--bg-pressed)}
@@ -124,7 +124,7 @@
    takes back what it inherited, which measured 24px in every one of the 333
    places it stands, and the migration stays at zero. A partition that changes a
    computed value is a partition that made a decision it did not declare. */
-.icon-btn.icon-btn-photo{width:var(--control-32);height:var(--control-32);padding:0;line-height:inherit;color:var(--text-on-photo);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:1px solid var(--line-on-photo);transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+.icon-btn.icon-btn-photo{width:var(--control-32);height:var(--control-32);padding:0;line-height:inherit;color:var(--text-on-photo);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:var(--hairline) solid var(--line-on-photo);transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
 .icon-btn.icon-btn-photo .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo)}
 .icon-btn.icon-btn-photo:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
 .icon-btn.icon-btn-photo:active{background:color-mix(in oklab,var(--scrim-photo) 72%,transparent);border-color:var(--line-on-photo-hover)}

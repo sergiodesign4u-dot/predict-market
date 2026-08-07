@@ -7,7 +7,7 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .tabs{display:flex}
-.tabs button{border-bottom:1px solid var(--border-hairline)}
+.tabs button{border-bottom:var(--hairline) solid var(--border-hairline)}
 .ed-tabs{padding:0}
 .ed-tabradio{position:absolute;left:-9999px}
 .ed-tabbar{display:flex;gap:0;overflow-x:auto}
@@ -16,10 +16,10 @@
 .ed-tabpanel{display:none;padding:var(--space-8)}
 #edtab-comments:checked ~ .ed-panel-comments,#edtab-holders:checked ~ .ed-panel-holders,#edtab-positions:checked ~ .ed-panel-positions,#edtab-activity:checked ~ .ed-panel-activity{display:block}
 .ptab-in{position:absolute;width:var(--hairline);height:var(--hairline);opacity:0;pointer-events:none}
-.ptab-bar{border-bottom:1px solid var(--border-hairline);margin-bottom:var(--space-12)}
+.ptab-bar{border-bottom:var(--hairline) solid var(--border-hairline);margin-bottom:var(--space-12)}
 .ptab-lbl{border-bottom:none}
 .ptab-panel{display:none}
-.app-case .ed-rules .rules-tabs{display:flex;gap:var(--space-20);border-bottom:1px solid var(--edge-groove-dark);box-shadow:inset 0 -1px 0 var(--edge-groove-light);margin:0 0 var(--space-16)}
+.app-case .ed-rules .rules-tabs{display:flex;gap:var(--space-20);border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 -1px 0 var(--edge-groove-light);margin:0 0 var(--space-16)}
 .app-case .rules-tab{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:0 0 var(--space-8);margin-bottom:-2px;cursor:pointer;transition:color var(--dur-quick) ease,border-color var(--dur-quick) ease}
 .app-case .rules-tab:hover{color:var(--text-primary)}
 /* PRESS, the axis every tab in this file was missing. A tab is a quiet control, so it settles onto
@@ -32,8 +32,8 @@
    the hover has always been in, and pressing the tab you are on is a no-op anyway. */
 .app-case .rules-tab:active{background:var(--bg-pressed)}
 .app-case .rules-tab.sel{color:var(--text-primary);border-bottom-color:var(--color-action)}
-.app-case .ed-tabwrap{border-top:1px solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
-.app-case .ed-tabbar{background:transparent;border-bottom:1px solid var(--edge-groove-dark)}
+.app-case .ed-tabwrap{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+.app-case .ed-tabbar{background:transparent;border-bottom:var(--hairline) solid var(--edge-groove-dark)}
 .app-case .ed-tablabel{border-right:0;font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);color:var(--text-muted)}
 .app-case .ed-tablabel:hover{color:var(--text-primary)}
 .app-case .ed-tablabel:active{background:var(--bg-pressed)}
@@ -62,7 +62,7 @@
 /* The comment sort switcher. Its markup stands in comments and its styling has always stood here,
    so the press stands here too, next to the hover it answers rather than in the other file. */
 .app-case .tabs{gap:var(--space-8);margin:0 0 var(--space-16)}
-.app-case .tabs button{border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer}
+.app-case .tabs button{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer}
 .app-case .tabs button:hover{color:var(--text-primary)}
 .app-case .tabs button:active{background:var(--bg-pressed)}
 /* Both selected grounds in this file were `color-mix(in oklab,var(--color-action)
@@ -74,7 +74,7 @@
 .app-case .ptabs{margin-top:var(--space-20)}
 .app-case .ptab-bar{display:flex;gap:var(--space-8);border:0;margin:0 0 var(--space-16);overflow-x:auto;scrollbar-width:none;padding-bottom:var(--space-2)}
 .app-case .ptab-bar::-webkit-scrollbar{display:none}
-.app-case .ptab-lbl{border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);display:inline-flex;align-items:center;cursor:pointer;white-space:nowrap;transition:color var(--dur-base) ease,border-color var(--dur-base) ease,background var(--dur-base) ease}
+.app-case .ptab-lbl{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);display:inline-flex;align-items:center;cursor:pointer;white-space:nowrap;transition:color var(--dur-base) ease,border-color var(--dur-base) ease,background var(--dur-base) ease}
 .app-case .ptab-lbl:hover{color:var(--text-primary)}
 .app-case .ptab-lbl:active{background:var(--bg-pressed)}
 .app-case #ptab-record:checked ~ .ptab-bar label[for="ptab-record"],.app-case #ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],.app-case #ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"]{background:var(--tint-brass-16);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
@@ -88,7 +88,7 @@
 .app-case #ptab-record:focus-visible ~ .ptab-bar label[for="ptab-record"],
 .app-case #ptab-wins:focus-visible ~ .ptab-bar label[for="ptab-wins"],
 .app-case #ptab-resolved:focus-visible ~ .ptab-bar label[for="ptab-resolved"]{outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
-.app-case .ed-range{display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:1px solid var(--border-hairline);border-radius:var(--radius-10)}
+.app-case .ed-range{display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10)}
 /* THE RANGE RAIL AND THE COMMENT SORTER ARE ONE CHIP, and until now they were one
    chip written twice with two different answers. Measured 2026-08-04: `.ed-range` and
    `.seg` (components/comments.css) agree on padding, radius, size, height, ground and
@@ -102,7 +102,7 @@
 /* AND ON 2026-08-05 IT WENT ONE STEP FURTHER: the four rules that stood here
    were not merely the same chip as the comment sorter, they were the same
    DECLARATION BLOCK, byte for byte, property order and all, written twice in
-   two files. The browser had already said so - ui-kit/_states/index.json
+   two files. The browser had already said so - the state capture
    measured both at rgba(0,0,0,0) ground, rgb(164,157,143) edge and ink, 10px
    corner, and both selected states at rgba(199,162,78,.16) on rgb(215,172,83) -
    and nobody had put the two readings side by side. Neither file could take the

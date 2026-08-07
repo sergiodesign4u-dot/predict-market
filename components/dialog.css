@@ -15,13 +15,13 @@ dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)
 /* .backdrop, .sheet and .grab were here and are gone (step 7e). They are the
    GREY tree's bottom-sheet frame: 17 wireframes carry them and no painted screen
    and no stand ever has, because the paint expresses an invoked screen as a
-   centred dialog.app-dialog. They survived gate 14 only because that gate was
+   centred dialog.app-dialog. They survived the colour sweep only because it was
    counting wireframes/*.html as markup, and this file cannot reach the grey
    tree: it has its own inline grey-box css and never links index.css.
    If the bottom sheet comes back on mobile, the rules get written then, for the
    markup that ships. A rule kept in case is a fossil. */
 
-.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8);border-bottom:1px solid var(--border-hairline)}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8);border-bottom:var(--hairline) solid var(--border-hairline)}
 .sheet-head :is(h1,h2){font-size:var(--text-14);margin:0}
 .sheet-body{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
 /* Fine print is muted wherever it stands, not only inside the containers named
@@ -31,7 +31,7 @@ dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)
    of the cascade. */
 .fine{font-size:var(--text-11);line-height:var(--leading-base);color:var(--text-muted)}
 dialog.app-dialog{background:var(--bg-surface);border-radius:var(--radius-16);color:var(--text-primary)}
-dialog.app-dialog .sheet-head{border-bottom:1px solid var(--border-hairline)}
+dialog.app-dialog .sheet-head{border-bottom:var(--hairline) solid var(--border-hairline)}
 dialog.app-dialog .fine{color:var(--text-muted)}
 .outcome-dialog .sheet-body>.fine:first-child{font-weight:var(--weight-bold);font-size:var(--text-13);margin:0}
 dialog.app-dialog.outcome-dialog .sheet-head{position:relative;overflow:clip;display:block;padding:var(--space-24) var(--space-20) var(--space-20);border-bottom:0}
@@ -39,13 +39,13 @@ dialog.app-dialog.win-dialog .sheet-head{background:radial-gradient(120% 96% at 
 dialog.app-dialog.loss-dialog .sheet-head{background:linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
 dialog.app-dialog.outcome-dialog .sheet-head::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);opacity:.16;pointer-events:none}
 dialog.app-dialog.win-dialog .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--result-won) 70%,var(--control-knob) 6%) 0%,var(--result-won) 42%,transparent 70%);filter:blur(44px);opacity:.34;pointer-events:none}
-dialog.app-dialog.outcome-dialog .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;max-width:16ch;text-wrap:balance}
+dialog.app-dialog.outcome-dialog .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:var(--track-display);color:var(--text-strong);margin:0;max-width:16ch;text-wrap:balance}
 dialog.app-dialog.outcome-dialog .sheet-head a{position:absolute;top:0;right:0;z-index:var(--z-close);line-height:0;text-decoration:none}
 dialog.app-dialog.outcome-dialog .sheet-body{gap:var(--space-12);padding:var(--space-20) var(--space-20) var(--space-20)}
 .outcome-dialog .fine{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:0}
 .outcome-dialog .sheet-body>.fine{color:var(--text-primary);font-weight:var(--weight-bold);font-size:var(--text-13)}
 .app-case .spinner-box .fine{color:var(--text-muted)}
-dialog.app-dialog{background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-plate-to));background-blend-mode:overlay,normal;border:1px solid var(--edge-shade-strong);box-shadow:inset 0 1px 0 var(--bevel-lit),inset 1px 0 0 var(--bevel-hair),
+dialog.app-dialog{background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-plate-to));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--edge-shade-strong);box-shadow:inset 0 1px 0 var(--bevel-lit),inset 1px 0 0 var(--bevel-hair),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 40px 80px -30px var(--shadow-ink-85),0 16px 40px -20px var(--shadow-ink-72)}
 dialog.app-dialog{overflow:clip}
@@ -56,7 +56,7 @@ dialog.app-dialog:not(.outcome-dialog) .sheet-head{position:relative;overflow:cl
 background:radial-gradient(120% 96% at 100% 0%,var(--tint-brass-30),transparent 58%),linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
 dialog.app-dialog:not(.outcome-dialog) .sheet-head::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);opacity:.2;pointer-events:none}
 dialog.app-dialog:not(.outcome-dialog) .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--color-action-lit) 60%,var(--color-action)) 0%,var(--color-action) 42%,transparent 70%);filter:blur(42px);opacity:.42;pointer-events:none}
-dialog.app-dialog:not(.outcome-dialog) .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:-.03em;color:var(--text-strong);margin:0;max-width:15ch;text-wrap:balance}
+dialog.app-dialog:not(.outcome-dialog) .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:var(--track-display);color:var(--text-strong);margin:0;max-width:15ch;text-wrap:balance}
 dialog.app-dialog:not(.outcome-dialog) .sheet-sub{position:relative;z-index:var(--z-content);margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-primary);max-width:34ch}
 /* --------------------------------------------------------- the close disc --
    ONE CONTROL, ONE NAME, ONE MARK, AND IT WAS THREE RULES IN TWO FILES.
@@ -144,7 +144,7 @@ dialog.app-dialog .sheet-close{position:absolute;top:var(--space-12);right:var(-
    used to be. An outline-colour is what a control looks like, so it could not
    stay here: a region may say where an icon button sits and not what it is. */
 dialog.app-dialog.signin-dialog .sheet-body{padding:var(--space-16) var(--space-16) var(--space-16);gap:var(--space-12)}
-dialog.app-dialog.signin-dialog .fine a{color:var(--text-brass);text-decoration:none;border-bottom:1px solid var(--tint-brass-45);padding-bottom:.4px}
+dialog.app-dialog.signin-dialog .fine a{color:var(--text-brass);text-decoration:none;border-bottom:var(--hairline) solid var(--tint-brass-45);padding-bottom:.4px}
 dialog.app-dialog.signin-dialog .fine a:hover{border-bottom-color:var(--text-brass)}
 /* The Terms and Privacy links, and they are the file's only text links. Already brass at
    rest, so colour cannot carry the press, and the ground cannot carry it alone: the
@@ -274,6 +274,6 @@ dialog.app-dialog.signin-dialog{max-width:410px}
    specimen, not the frozen kit, not a wireframe. Gate 14 never saw it because
    it is not the whole selector: `.signin-dialog` is real, so the rule matched
    the gate's question without being able to match an element. The first thing
-   gate 30 found outside the button family. */
+   was found outside the button family. */
 dialog.app-dialog.outcome-dialog{max-width:var(--container-sheet)}
 .outcome-dialog a{text-decoration:none}

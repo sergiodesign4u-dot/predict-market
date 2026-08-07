@@ -17,22 +17,22 @@
 }
 svg.ft-ic:has(use){fill:currentColor;stroke:none}
 .feed-trustbar .ft-ic:has(use){color:var(--text-brass)}
-.footer-trust{display:block;text-align:left;padding:var(--space-16) var(--space-24);border-bottom:1px solid var(--border-hairline)}
-.trust-head{font-family:var(--font-display);font-size:var(--text-14);font-weight:var(--weight-bold);letter-spacing:-.02em;color:var(--text-primary);margin:0 0 var(--space-12)}
+.footer-trust{display:block;text-align:left;padding:var(--space-16) var(--space-24);border-bottom:var(--hairline) solid var(--border-hairline)}
+.trust-head{font-family:var(--font-display);font-size:var(--text-14);font-weight:var(--weight-bold);letter-spacing:var(--track-head);color:var(--text-primary);margin:0 0 var(--space-12)}
 .trust-items{display:flex;flex-wrap:wrap;gap:var(--space-12)}
 .footer-trust .trust-item{display:flex;flex:1 1 220px;background:linear-gradient(140deg,color-mix(in oklab,var(--color-trust) 12%,var(--bg-control)),var(--bg-control) 72%)}
 .footer-trust .tr-txt{display:flex;flex-direction:column;gap:var(--space-2)}
 .footer-trust .tr-txt b{font-size:var(--text-14);font-weight:var(--weight-semibold)}
 .footer-trust .tr-txt i{font-size:var(--text-12);font-style:normal}
-.feed-trustbar{border-bottom:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
+.feed-trustbar{border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
 .app-case .feed-trustbar{background:transparent}
 .app-case .feed-trustbar .ft-inner{max-width:var(--container-max);margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter)}
-.app-footer .footer-trust{border-bottom:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
+.app-footer .footer-trust{border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
 .footer-trust .trust-items{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-16)}
-.footer-trust .trust-item{position:relative;overflow:clip;align-items:center;gap:var(--space-12);padding:var(--space-16) var(--space-20);min-height:82px;min-width:0;background-color:var(--bg-card);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:1px solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-md),inset 1px 0 0 var(--bevel-hair),
+.footer-trust .trust-item{position:relative;overflow:clip;align-items:center;gap:var(--space-12);padding:var(--space-16) var(--space-20);min-height:82px;min-width:0;background-color:var(--bg-card);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-md),inset 1px 0 0 var(--bevel-hair),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 24px 48px -30px var(--shadow-ink-85),0 10px 22px -16px var(--shadow-ink-72)}
-.footer-trust .tr-ic{width:var(--icon-22);height:var(--icon-22);flex:0 0 22px;padding:var(--space-8);box-sizing:content-box;border-radius:var(--radius-10);position:relative;z-index:var(--z-content);fill:none;stroke:var(--text-brass-lit);box-shadow:none;background:linear-gradient(140deg,color-mix(in oklab,var(--color-trust) 24%,var(--bg-control)),var(--bg-control) 74%);border:1px solid color-mix(in oklab,var(--color-trust) 32%,var(--border-hairline))}
+.footer-trust .tr-ic{width:var(--icon-22);height:var(--icon-22);flex:0 0 22px;padding:var(--space-8);box-sizing:content-box;border-radius:var(--radius-10);position:relative;z-index:var(--z-content);fill:none;stroke:var(--text-brass-lit);box-shadow:none;background:linear-gradient(140deg,color-mix(in oklab,var(--color-trust) 24%,var(--bg-control)),var(--bg-control) 74%);border:var(--hairline) solid color-mix(in oklab,var(--color-trust) 32%,var(--border-hairline))}
 .footer-trust .tr-txt{position:relative;z-index:var(--z-content)}
 .footer-trust .tr-txt b{color:var(--text-primary)}
 .footer-trust .tr-txt i{color:var(--text-muted)}

@@ -19,7 +19,7 @@
     <div class="tk-badges">
       <span class="tk-badge">4px grid</span>
       <span class="tk-badge">5 radii</span>
-      <span class="tk-badge">1 border width</span>
+      <span class="tk-badge">1 border width, 2 underlines</span>
       <span class="tk-badge">12 control heights</span>
     </div>
     <div class="tk-jump">
@@ -114,14 +114,21 @@
   <!-- ============================== border =========================== -->
   <section class="tk-sec" id="border">
     <h2 data-n="04">The border has one width</h2>
-    <p class="tk-note">Measured on 10 screens: <b>1,144 border readings and every one of them is
-    1px</b>. The file declares two more, a 1.5px in <code>course-chrome.css</code> and a 2px, and
-    neither reaches a product screen at 1280.</p>
+    <p class="tk-note">Re-measured on <b>104 renders</b>, 26 screens at 390 and 1280 in both themes,
+    rendered elements only: <b>19,762 edges at 1px, 32 at 2px, 6 at 1.5px</b>. 99.8 per cent
+    hairline, and the two exceptions are not box borders at all. Both are <b>underlines</b>: the 2px
+    is the selected rules tab and the 1.5px is the rule under the trader amount field. A line that
+    marks a thing and a line that encloses one are different jobs, and only the enclosing job is the
+    hairline's.</p>
+    <p class="tk-note"><b>An earlier pass here read only the top and left edges of 10 screens and
+    reported one width.</b> Both exceptions are on the BOTTOM edge, so the reading was true about
+    what it measured and wrong about the axis. Corrected 2026-08-08 by the consolidation's
+    verification.</p>
     <p class="tk-note"><b>This corrects the census.</b> <code>census.md</code> reports "border 17"
     among the axes that are not scales. Seventeen is right and it is not a count of widths: it is a
-    count of distinct <code>width / style / colour</code> triples, and the width in all of them is
-    the same. <b>The border axis has one value and sixteen colours</b>, which is the colour page's
-    subject and not this one's.</p>
+    count of distinct <code>width / style / colour</code> triples, and 99.8 per cent of them are the
+    same width. <b>The border axis has one enclosing width and sixteen colours</b>, which is the
+    colour page's subject and not this one's.</p>
     <div class="tk-blocks">
       <span class="tk-blk tk-blk-out"><span class="sz-56 r-10 tk-hair"></span><b>--hairline</b>1px, the only width</span>
       <span class="tk-blk tk-blk-out"><span class="sz-56 r-10 tk-ring"></span><b>--ring</b>2px, and it is an outline, not a border</span>

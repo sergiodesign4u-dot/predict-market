@@ -29,7 +29,7 @@
    THE MARK AND THE COUNT WENT WITH THE CONTROL, and the map is what decided it
    rather than an opinion. The first cut of this pass kept both here on the
    `.bn-bal` precedent - a figure inside a nav slot stayed with the bottom nav -
-   and gate 24 answered within the minute: `chip contains catnav (.cat-ic,
+   and the containment map answered within the minute: `chip contains catnav (.cat-ic,
    .cnt)`. It is a true reading of the DOM, a `.cat-ic` really does stand inside
    a `.chip-nav`, and with `catnav contains chip` already true it is a CYCLE. An
    ATOM THAT CONTAINS A COMPONENT IS NOT AN ATOM: `chip` computed L1 from its own
@@ -55,11 +55,11 @@
    nothing in either rule was about a category. */
 .subcat{background:transparent;border:0;border-radius:0;padding:0}
 .subcat[hidden]{display:none}
-.subcat-head{font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);padding:var(--space-8) var(--space-8) var(--space-4)}
+.subcat-head{font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-muted);padding:var(--space-8) var(--space-8) var(--space-4)}
 .subcat ul{list-style:none;margin:0;padding:var(--space-4);display:flex;gap:var(--space-8);overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
 .subcat ul::-webkit-scrollbar{display:none}
 .subcat li{flex:0 0 auto}
-/* THE RAIL IS CAPPED TO THE WINDOW. Found by lesson 9 of ui-kit/_verify, the
+/* THE RAIL IS CAPPED TO THE WINDOW. Found by lesson 9 of the browser notes, the
    same defect and the same afternoon as the contents rail in toc.css: pinned at
    120px and 563px tall, this rail needs 683px of window, so on a 1366x768 laptop
    the last two sub-categories were off the bottom of the screen and no amount of
@@ -78,7 +78,7 @@
   .subcat ul{flex-direction:column;overflow:visible;flex-wrap:nowrap;gap:var(--space-2);padding:var(--space-4)}
 }
 .cat-nav > ul{max-width:var(--container-max);margin:0 auto;padding:var(--space-8) var(--space-20)}
-.cat-nav{border-bottom:1px solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
+.cat-nav{border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
 .app-case .cat-nav{background:transparent}
 .app-case .cat-nav>ul{max-width:var(--container-max);margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter)}
 .app-case .cat-nav>ul{scrollbar-width:none;-ms-overflow-style:none}

@@ -16,14 +16,15 @@
    on ZERO of the 105 painted screens and zero of the 104 grey ones. The product
    wrote `.auth-btn`, `.state-btn`, `.provider-btn` and `.confirm-btn` instead,
    704 times. A stand teaching a scheme nobody uses is worse than no stand, so
-   gate 30 counted them and the system dropped them.
+   a count of the names actually worn found them unworn, and the system dropped them.
 
    THE FAILURE WAS NOT THE VOCABULARY. It was that a vocabulary was written in
    the SYSTEM and never carried to the PRODUCT, so it lived in a vitrine as a
    proposal while five names went on being written on screens. This time the two
    move together: the classes below and the 704 placements that wear them are one
-   change, and gate 30 is the check that says so. A name declared here and worn
-   nowhere fails the build on the same run that declares it.
+   change, and a name that nothing wears is the check that says so. A name
+   declared here and worn nowhere is a proposal, and it is caught by counting the
+   placements rather than by reading this file.
 
    WHY IT WAS MEASURED RATHER THAN DESIGNED. The four names were not four
    components; they were one component under four names, and the proof is what
@@ -75,7 +76,7 @@
    that is not declared is not a value that is absent, it is a value somebody
    else chooses; centre is what the justification already says. */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-12);
-  box-sizing:border-box;border:1px solid transparent;border-radius:var(--radius-10);text-align:center;
+  box-sizing:border-box;border:var(--hairline) solid transparent;border-radius:var(--radius-10);text-align:center;
   font-family:var(--font-body);cursor:pointer;
   transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,
     color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
@@ -200,7 +201,7 @@
    later gets it without anybody remembering.
    IT ALSO DELETED A COPY OF ITSELF. `components/profile.css` carried this same
    declaration for one control, which is what a family with no floor forces a
-   region to do, and it was the last thing gate 41 read as drawing a button in
+   region to do, and it was the last thing the atom map read as drawing a button in
    that file. */
 @media(pointer:coarse){
   .btn{min-height:var(--control-44)}
@@ -213,7 +214,7 @@
    those words; `.auth-btn` and `.state-btn` RESTATED --bg-control, so the ground
    under the pointer did not move at all and the only answer was the edge going
    brass. That is not a quieter version of the decision, it is the decision not
-   being taken. Measured with a real pointer (ui-kit/_verify/browser.cjs lesson
+   being taken. Measured with a real pointer (a real pointer in a browser, lesson
    11), because a change that lives entirely inside :hover is invisible to every
    snapshot in this repo. */
 .btn.btn-secondary:hover{border-color:var(--border-brass-hover);

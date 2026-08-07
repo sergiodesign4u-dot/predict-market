@@ -9,9 +9,9 @@
 /* .wf-screen > a.planned::after was here and is gone (step 7e). .wf-screen is
    the grey tree's screen drawer, 2392 uses there and none in the painted tree,
    the vitrine or a stand: the sidebar this file DOES style marks a planned stage
-   with .sidebar-page-link.planned, a few lines down. It survived gate 14 only
+   with .sidebar-page-link.planned, a few lines down. It survived the colour sweep only
    because that gate was counting wireframes/*.html as markup. */
-.rm-toggle{position:fixed;top:12px;left:12px;z-index:var(--z-chrome-top);background:var(--chrome-bg);border:1px solid var(--chrome-border);border-radius:var(--radius-6);width:var(--control-36);height:var(--control-36);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-4);cursor:pointer}
+.rm-toggle{position:fixed;top:var(--space-12);left:var(--space-12);z-index:var(--z-chrome-top);background:var(--chrome-bg);border:var(--hairline) solid var(--chrome-border);border-radius:var(--radius-6);width:var(--control-36);height:var(--control-36);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-4);cursor:pointer}
 .rm-toggle span{display:block;width:var(--icon-16);height:1.5px;background:var(--chrome-text);border-radius:var(--radius-2)}
 .rm-overlay{display:none;position:fixed;inset:0;background:var(--scrim);z-index:var(--z-chrome-scrim);backdrop-filter:blur(2px)}
 .rm-overlay.open{display:block}
@@ -20,11 +20,11 @@
    which have their own stylesheet and their own --font, it would inherit Inter
    and be a different panel on every second page. A component that changes with
    the page it stands on is not a component. */
-.sidebar{font-family:var(--font-body);position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--chrome-bg);border-right:1px solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
+.sidebar{font-family:var(--font-body);position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--chrome-bg);border-right:var(--hairline) solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
 .sidebar.open{transform:translateX(0)}
 .sidebar::-webkit-scrollbar{display:none}
-.sidebar-brand{padding:var(--space-20) var(--space-16) var(--space-16);border-bottom:1px solid var(--chrome-border)}
-.sidebar-project-name{font-size:var(--text-11);font-weight:var(--weight-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--chrome-accent);line-height:var(--leading-base)}
+.sidebar-brand{padding:var(--space-20) var(--space-16) var(--space-16);border-bottom:var(--hairline) solid var(--chrome-border)}
+.sidebar-project-name{font-size:var(--text-11);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--chrome-accent);line-height:var(--leading-base)}
 .sidebar-nav{padding:var(--space-12) 0;flex:1}
 .sidebar-page-link{display:flex;align-items:center;justify-content:space-between;font-size:var(--text-13);font-weight:var(--weight-medium);color:var(--chrome-text);text-decoration:none;padding:var(--space-8) var(--space-16);cursor:pointer}
 .sidebar-page-link:hover:not(.planned){background:var(--bevel-hair)}
@@ -34,7 +34,7 @@
    what separates it from the next stage up is the badge, which is what the badge
    is for. */
 .sidebar-page-link.planned{color:var(--chrome-muted);cursor:default}
-.sidebar-page-link.planned::after{content:'Soon';font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.07em;text-transform:uppercase;background:var(--bevel-hair);color:var(--chrome-muted);padding:var(--space-2) var(--space-4);border-radius:var(--radius-6);border:1px solid var(--chrome-border)}
+.sidebar-page-link.planned::after{content:'Soon';font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;background:var(--bevel-hair);color:var(--chrome-muted);padding:var(--space-2) var(--space-4);border-radius:var(--radius-6);border:var(--hairline) solid var(--chrome-border)}
 .sidebar-page-link.planned.next{color:var(--chrome-text)}
 .sidebar-page-link.planned.next::after{content:'Next';color:var(--chrome-accent);border-color:var(--chrome-accent)}
 .sidebar-sub{padding:var(--space-2) 0 var(--space-8)}
@@ -48,7 +48,7 @@
    which is why it is only on the indented row: it has the room. */
 .sidebar-sub-link.active{color:var(--chrome-accent)}
 .sidebar-sub-link.active::before{content:'';position:absolute;left:17px;top:50%;transform:translateY(-50%);width:var(--size-4);height:var(--size-4);border-radius:50%;background:var(--chrome-accent)}
-.sidebar-back{display:flex;align-items:center;gap:var(--space-8);font-size:var(--text-12);font-weight:var(--weight-semibold);color:var(--chrome-muted);text-decoration:none;padding:var(--space-12) var(--space-16);border-bottom:1px solid var(--chrome-border)}
+.sidebar-back{display:flex;align-items:center;gap:var(--space-8);font-size:var(--text-12);font-weight:var(--weight-semibold);color:var(--chrome-muted);text-decoration:none;padding:var(--space-12) var(--space-16);border-bottom:var(--hairline) solid var(--chrome-border)}
 .sidebar-back:hover{color:var(--chrome-accent);background:var(--bevel-hair)}
 .sidebar-back .bk-arrow{font-size:var(--text-14);line-height:var(--leading-none)}
 /* THE LABEL OVER A RUN OF ROWS, one class for both panels. A group of components
@@ -66,14 +66,14 @@
    see it. Depth is the colour role now, the outer label taking the text colour
    and the nested one the muted, and both clear AA because the value is the thing
    being checked. */
-.sidebar-divider{font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:.1em;text-transform:uppercase;color:var(--chrome-text);padding:var(--space-16) var(--space-16) var(--space-8)}
-.sidebar-divider.sub{font-weight:var(--weight-semibold);letter-spacing:.08em;color:var(--chrome-muted);padding:var(--space-8) var(--space-16) var(--space-4) var(--space-28)}
+.sidebar-divider{font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:var(--track-caps-loud);text-transform:uppercase;color:var(--chrome-text);padding:var(--space-16) var(--space-16) var(--space-8)}
+.sidebar-divider.sub{font-weight:var(--weight-semibold);letter-spacing:var(--track-caps);color:var(--chrome-muted);padding:var(--space-8) var(--space-16) var(--space-4) var(--space-28)}
 /* the group you are IN, which is not the page you are ON. The label takes the
    brass, the row takes the brass, and the row is four sizes bigger. */
 .sidebar-divider.active,.sidebar-divider.sub.active{color:var(--chrome-accent)}
 .sidebar-note{font-size:var(--text-11);line-height:var(--leading-base);color:var(--chrome-muted);padding:var(--space-8) var(--space-16)}
 /* A LINK IN THE NOTE IS THE PANEL'S OWN, not the vitrine's. It lived in
-   ui-kit/_page.css as .ck-note-link, so the same note rendered in the browser's
+   the kit's own stylesheet as .ck-note-link, so the same note rendered in the browser's
    blue anywhere the vitrine's stylesheet was not loaded, which is every specimen
    of this component and every screen in ui-visual. The reason it was written
    there is still true and now belongs here: the panel keeps one dark palette in
@@ -85,10 +85,10 @@
    purpose: it is the control that moves the product, so it must not move with
    it. The two swatches are the two grounds, side by side, and the one in play
    is ringed, so the button says what it will do without a word of label. */
-.theme-switch{display:flex;align-items:center;gap:var(--space-8);width:100%;box-sizing:border-box;margin:0;padding:var(--space-12) var(--space-16);background:none;border:0;border-bottom:1px solid var(--chrome-border);font-family:inherit;font-size:var(--text-12);font-weight:var(--weight-semibold);letter-spacing:.04em;color:var(--chrome-muted);text-align:left;cursor:pointer;min-height:var(--control-44)}
+.theme-switch{display:flex;align-items:center;gap:var(--space-8);width:100%;box-sizing:border-box;margin:0;padding:var(--space-12) var(--space-16);background:none;border:0;border-bottom:var(--hairline) solid var(--chrome-border);font-family:inherit;font-size:var(--text-12);font-weight:var(--weight-semibold);letter-spacing:var(--track-caps);color:var(--chrome-muted);text-align:left;cursor:pointer;min-height:var(--control-44)}
 .theme-switch:hover{color:var(--chrome-text);background:var(--bevel-hair)}
 .theme-switch .ts-swatches{display:flex;flex:0 0 auto;gap:var(--space-4)}
-.theme-switch .ts-sw{width:var(--size-16);height:var(--size-16);border-radius:var(--radius-6);border:1px solid var(--chrome-border);box-shadow:none}
+.theme-switch .ts-sw{width:var(--size-16);height:var(--size-16);border-radius:var(--radius-6);border:var(--hairline) solid var(--chrome-border);box-shadow:none}
 .theme-switch .ts-sw.ts-dark{background:var(--swatch-dark)}
 .theme-switch .ts-sw.ts-light{background:var(--swatch-light)}
 .theme-switch[aria-pressed="false"] .ts-sw.ts-dark,

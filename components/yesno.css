@@ -12,7 +12,7 @@
 .yesno button{flex:1;padding:var(--space-8);font-size:var(--text-12);cursor:pointer}
 .yesno.compact > a{flex:0 0 auto}
 .yesno.compact button{flex:0 0 auto}
-.yesno button{border:1px solid;font-weight:var(--weight-bold);font-family:var(--font-body);text-decoration:none;min-height:var(--control-44);background:var(--bg-control);transition:background var(--dur-quick) ease,border-color var(--dur-quick) ease}
+.yesno button{border:var(--hairline) solid;font-weight:var(--weight-bold);font-family:var(--font-body);text-decoration:none;min-height:var(--control-44);background:var(--bg-control);transition:background var(--dur-quick) ease,border-color var(--dur-quick) ease}
 .yesno a,.yesno a:hover{text-decoration:none}
 /* A side is a POSITION IN THE PAIR, not a fact about being wrapped in a link.
    Every colour below hung off `> a`, so a .yesno whose buttons are not inside an
@@ -31,7 +31,7 @@
 .yesno > a:last-of-type button,.yesno > button:last-of-type{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
 .yesno button{border-radius:var(--radius-10)}
 .yesno.compact button{border-radius:var(--radius-10)}
-.app-case .opt-list .yesno.compact button{background:var(--bg-control);color:var(--text-primary);border:1px solid var(--border-hairline)}
+.app-case .opt-list .yesno.compact button{background:var(--bg-control);color:var(--text-primary);border:var(--hairline) solid var(--border-hairline)}
 .app-case .opt-list .yesno.compact button:first-child{color:var(--outcome-yes-text);border-color:var(--outcome-yes-line);background:var(--outcome-yes-fill-soft)}
 .app-case .opt-list .yesno.compact button:last-child{color:var(--outcome-no-text);border-color:var(--outcome-no-line);background:var(--outcome-no-fill-soft)}
 .app-case .opt-list .yesno.compact button.sel:first-child{background:var(--outcome-yes);border-color:var(--outcome-yes);color:var(--text-on-yes)}
@@ -113,7 +113,7 @@
    divide a row, and the odds figure inside each one. The percentage is the
    panel's DATUM rather than the control's face, the way an event photograph is
    the card's content: whoever owns the odds owns how they are set. */
-.yesno-pick,.yesno-pick-bar{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);cursor:pointer}
+.yesno-pick,.yesno-pick-bar{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);cursor:pointer}
 .yesno-pick{font-size:var(--text-16);padding:var(--space-12) var(--space-8);transition:background var(--dur-quick) ease,color var(--dur-quick) ease,border-color var(--dur-quick) ease}
 .yesno-pick-bar{font-size:var(--text-12);padding:var(--space-8) var(--space-8);position:relative}
 /* THE PANEL MOVES THE EDGE AND THE INK, THE BAR ALSO MOVES THE GROUND, and that

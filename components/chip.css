@@ -20,7 +20,7 @@
        transition:background var(--dur-quick) ease, color var(--dur-quick) ease
 
    plus the same hover, the same press and the same `.sel`. The browser agreed
-   before the files were read: `ui-kit/_states/index.json` had already measured
+   before the files were read: the state capture had already measured
    both at `rgba(0,0,0,0)` ground, `rgb(164,157,143)` edge and ink, 10px corner,
    and both selected states at `rgba(199,162,78,.16)` on `rgb(215,172,83)`.
 
@@ -64,7 +64,7 @@
 /* A SELECTED CHIP IS A TINT, NOT A FILL, which is the rule DESIGN.md states
    under Chips and the One-Accent Rule states again: brass carries identity, the
    active state and primary CTAs only. `.sel` is the shared modifier
-   `ui-kit/_levels.py` declares, so the state is a class rather than a pseudo,
+   the inventory declares, so the state is a class rather than a pseudo,
    because the selection survives the pointer leaving. */
 /* The one selected chip, S35, 2026-08-06: the same tint, the same ink and the same halo the 815
    category chips wear. No edge, because this chip has none at rest and the recipe colours what
@@ -114,9 +114,9 @@
    day a chip is given a width is the day this would have been found the other
    way. */
 .app-case .chip{cursor:pointer;font-family:var(--font-body);text-decoration:none;text-align:center}
-.app-case .chip-quiet{display:inline-flex;align-items:center;min-height:0;background:transparent;border:1px solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-12)}
+.app-case .chip-quiet{display:inline-flex;align-items:center;min-height:0;background:transparent;border:var(--hairline) solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-12)}
 .app-case .chip-quiet:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
-.app-case .chip-amount{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
+.app-case .chip-amount{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
 .app-case .chip-amount{transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 /* The amount answers a pointer, and both places it stands do now. The deposit
    sheet had this hover and the bet panel had none - the same face on the same
@@ -189,7 +189,7 @@
    than a matter of taste: nothing anywhere changes it when its slot is hovered
    or current. It is a figure the region puts inside a control. These two are
    not. */
-.app-case .chip-nav{display:inline-flex;align-items:center;gap:var(--space-12);min-height:0;background:var(--bg-chip);border:1px solid var(--bevel-notice);border-radius:var(--radius-10);color:var(--text-chip-hover);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12) var(--space-20);box-shadow:none;white-space:nowrap}
+.app-case .chip-nav{display:inline-flex;align-items:center;gap:var(--space-12);min-height:0;background:var(--bg-chip);border:var(--hairline) solid var(--bevel-notice);border-radius:var(--radius-10);color:var(--text-chip-hover);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12) var(--space-20);box-shadow:none;white-space:nowrap}
 .app-case .chip-nav:hover{border-color:var(--border-brass-hover);color:var(--text-strong);background:var(--bg-control-hover)}
 /* THE ONE RING IN THIS FILE, and it is a measured defect rather than a taste.
    The strip scrolls sideways, so its <ul> is a scroll container and clips at its
@@ -209,7 +209,7 @@
 @media(max-width:640px){
   .app-case .chip-nav{position:relative}
 }
-.app-case .chip-lane{display:inline-flex;align-items:center;gap:var(--space-8);white-space:nowrap;background:transparent;border:1px solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);font-size:var(--text-13);font-weight:var(--weight-medium);padding:var(--space-8) var(--space-12);min-height:var(--control-36)}
+.app-case .chip-lane{display:inline-flex;align-items:center;gap:var(--space-8);white-space:nowrap;background:transparent;border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);font-size:var(--text-13);font-weight:var(--weight-medium);padding:var(--space-8) var(--space-12);min-height:var(--control-36)}
 /* The hover ground was 10 per cent longhand until S50, 2026-08-07, and it is the
    ladder's nearest rung now: one hundredth apart on graphite, and on chalk it
    steps up instead of staying flat. IT IS ALSO THE CHOSEN CHIP'S GROUND, which is
@@ -287,10 +287,10 @@
    read as a second thing inside the label rather than as part of it. It follows
    the chip it sits in into the chosen state, which is the reason it is here and
    not with the rail. */
-.app-case .chip-cnt{font-size:var(--text-11);color:var(--text-muted);font-family:var(--font-mono);background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-6);padding:var(--space-2) var(--space-8)}
+.app-case .chip-cnt{font-size:var(--text-11);color:var(--text-muted);font-family:var(--font-mono);background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-6);padding:var(--space-2) var(--space-8)}
 /* THE TWIN OF THE WASH S48 MOVED BY HAND, and it took a day and a tool to catch.
    Both of these were colour functions - 14 per cent and 45 - so both were invisible
-   to ui-kit/_rescale.py, which matches token names. The 45 is a rung and only its
+   to a sweep that matches token names. The 45 is a rung and only its
    spelling changed; the 14 is not one and it went to 16, the same rung and for the
    same reason as the header band's. S50. */
 .app-case [aria-current="page"] .chip-cnt{color:var(--text-brass);background:var(--tint-brass-16);border-color:var(--tint-brass-45)}
