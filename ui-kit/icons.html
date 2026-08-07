@@ -6,8 +6,15 @@
 <title>Foundations: icons</title>
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
 </head>
 <body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<!-- The panel declares NOTHING, not even the name of this page. Its rows,
+     its groups, its counts and the row it lights are all in _nav.js, which
+     is the only copy of that list in the repository. -->
+<aside class="sidebar" id="rmSidebar"></aside>
 
   <!-- Solar Bold icon sprite, all 15 symbols the product ships. Same markup as the screens. -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -42,16 +49,10 @@
       <span class="tk-badge">1 viewBox</span>
       <span class="tk-badge">6 rendered sizes</span>
     </div>
-    <div class="tk-jump">
-      <a href="colour.html">Foundations: colour</a>
-      <a href="typography.html">Foundations: typography</a>
-      <a href="geometry.html">Foundations: geometry</a>
-      <a href="vitrine.html">The atoms</a>
-      <a href="molecules.html">The molecules</a>
-      <a href="overview.html">Why the kit is being rebuilt</a>
-      <a href="docs/census.md">The census</a>
-      <a href="docs/consolidation.md">The consolidation</a>
-    </div>
+    <!-- Filled by _nav.js from the one registry. Below 860px the side panel
+         is a drawer, so this row is the navigation that is actually on
+         screen; above it, it is the shortcut. -->
+    <div class="tk-jump" id="kitJump"></div>
   </div>
 
   <!-- ============================= anatomy ============================= -->

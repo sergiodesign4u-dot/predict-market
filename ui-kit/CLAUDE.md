@@ -1,14 +1,31 @@
 # ui-kit/ - the vitrine, being rebuilt from 2026-08-07
 
 The kit shows the system to a person and it holds no product code. Right now it holds seven pages
-plus its stylesheet: `overview.html`, which says what is happening, **all four foundation pages**
-(`icons.html`, `colour.html`, `typography.html`, `geometry.html`), and the component pages by level,
-`vitrine.html` for the ten atoms and `molecules.html` for the fourteen at level 2. `_page.css` is the
-stand furniture they all share.
+plus its stylesheet and its registry: `overview.html`, which says what is happening, **all four
+foundation pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`), and the
+component pages by level, `vitrine.html` for the ten atoms and `molecules.html` for the fourteen at
+level 2. `_page.css` is the stand furniture they all share and `_nav.js` is the route.
 
 **A page per LEVEL, not a page per component.** Forty pages of one component each would be forty
 navigations to compare two chips. A level is the unit a person actually reads, and the level is where
 the shared rule lives: what an atom is, what a molecule holds, why the declaration exists.
+
+**The route is written once, in `_nav.js`, and a page declares no part of it**, not even its own
+name. A page carries an empty `<aside class="sidebar" id="rmSidebar">` and loads the file; the rows,
+the groups, the counts, the row that lights and the hub row on `overview.html` are all computed from
+the one list. **This is not the generated `_nav.js` that was deleted on 2026-08-07.** That one was
+written BY `_gen_component_pages.py`, which is why the archive states the rule it lived under out
+loud, "`_nav.js` is rebuilt, not edited": a generated file cannot be corrected by hand, because the
+next run puts it back. This one writes nothing and nothing writes it, which is the whole difference
+between a machine and a piece of furniture. **The active row is computed from the file name and
+never declared**, because a declared name is a copy and a copy drifts; **a row with no page is
+visible**, as a `<span>` with the `.planned` badge, because a route that lists only what is finished
+looks finished.
+
+**It costs no CSS.** Every class it writes is `components/course-chrome.css`, which `index.css`
+already imports and every kit page already loaded and used nothing of, and the 220px inset is
+`base.css` insetting any body that contains `#rmSidebar`. One rule was added to the chrome for the
+count on the right of a row, and one `.tk-jump span` to `_page.css` for the dashed unclickable chip.
 
 **A swatch never carries a value.** `_page.css` holds one class per role and per primitive,
 `.c-bg-plate{--sw:var(--bg-plate)}`, and the page wears the class. That is why there is not a single

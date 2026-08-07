@@ -27,7 +27,11 @@ window.addEventListener('message',function(e){var d=e.data;
 if(!d||(d.pmTheme!=='light'&&d.pmTheme!=='dark'))return;
 set(d.pmTheme==='light');paint();});
 document.addEventListener('DOMContentLoaded',function(){wire();
-/* the kit side panel is rendered by _nav.js after this fires, so wire once more */
+/* Wired once more on the next tick, for a .theme-switch that is not in the
+   markup when this fires. All 106 painted screens carry one in static
+   markup, and the panel that used to arrive late was the kit's, which now
+   builds itself in ui-kit/_nav.js and never loads beside this script. So
+   this line is a guard today and not a fix, and wire() is idempotent. */
 setTimeout(wire,0);
 /* a frame that arrives late is told as soon as it is ready */
 var f=document.getElementsByTagName('iframe');

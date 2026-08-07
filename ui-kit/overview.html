@@ -6,8 +6,15 @@
 <title>The kit is being rebuilt</title>
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
 </head>
 <body>
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<!-- The panel declares NOTHING, not even the name of this page. Its rows,
+     its groups, its counts and the row it lights are all in _nav.js, which
+     is the only copy of that list in the repository. -->
+<aside class="sidebar" id="rmSidebar"></aside>
 <div class="tk-wrap">
 
   <div class="tk-hero">
@@ -19,16 +26,17 @@
     <div class="tk-badges">
       <span class="tk-badge">51 stylesheets</span>
       <span class="tk-badge">5,651 lines</span>
-      <span class="tk-badge">0 scripts</span>
+      <span class="tk-badge">0 generators</span>
       <span class="tk-badge">0 gates</span>
     </div>
+    <!-- THE SAME REGISTRY AS THE SIDE PANEL, rendered twice and typed once. This
+         row used to be nine hand-written links and the panel would have been a
+         second copy of six of them, which is the thing the root rule names: a
+         fact written here AND there is a fact that will drift. `_nav.js` fills
+         it. What stays hand-written below is what is NOT in the registry, and
+         nothing in that row is a stand page. -->
+    <div class="tk-jump" id="kitJump"></div>
     <div class="tk-jump">
-      <a href="vitrine.html">The atoms</a>
-      <a href="molecules.html">The molecules</a>
-      <a href="icons.html">Foundations: icons</a>
-      <a href="colour.html">Foundations: colour</a>
-      <a href="typography.html">Foundations: typography</a>
-      <a href="geometry.html">Foundations: geometry</a>
       <a href="../ui-visual/overview.html">The screens</a>
       <a href="../docs/kit-archive/README.md">What the old kit worked out</a>
       <a href="../DESIGN.md">Vault, the visual language</a>

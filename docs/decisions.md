@@ -44,6 +44,61 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - The kit got a route back, and the deleted `_nav.js` was not what was wrong
+
+**A registry was rebuilt under a name that had just been deleted, and the distinction is the whole
+entry.** `ui-kit/_nav.js` went out with the instrument on 2026-08-07 and it deserved to: it was the
+OUTPUT of `_gen_component_pages.py`, which wrote 38 pages and then wrote the route, and the rule it
+lived under is stated out loud in the archive, "`_nav.js` is rebuilt, not edited". **A generated file
+cannot be corrected by hand, because the next run puts it back**, which is how a hand-applied voice
+rewrite was reverted here. The new file writes nothing and nothing writes it. **What the kit's rule
+forbids ("a page is written by hand, no generator, ever") is a script that WRITES the tree**, and a
+list read by a browser at load is furniture, not a machine.
+
+**The measurement that decided it.** Both screen trees already carry their route hand-copied into
+every page: **106 copies in `ui-visual`, 1,339 KB**, and **104 in `wireframes`, 1,247 KB**. Neither
+has drifted (one distinct shape each, 107 and 127 rows, 0 dead targets, and all 106 painted screens
+light exactly themselves), and neither could have stayed in step by hand: `_resync_sidebar.py` held
+them and was deleted too. **The kit is seven pages and the drift was already there**, at that size,
+with no script involved: six pages carried a hand-written jump row and the six had diverged into
+five different sets, `vitrine.html` naming ten links including the three reports and `colour.html`
+naming six and no report at all. All six now carry one empty `<div id="kitJump">`.
+
+**It cost no CSS.** `components/course-chrome.css` was already imported by `index.css`, already
+loaded by every kit page and used by none of them, and `base.css` already insets any body containing
+`#rmSidebar` by 220px. The panel is the same chrome the 106 painted screens wear, drawer below 860px
+and rail above. Two rules were added, both with their reason at the rule: the count slot on the right
+of a row, and the dashed unclickable chip for a jump-row entry with no page.
+
+**Two things taken from the same panel in the Stack repository, because both were paid for there.**
+The active row is **computed from the file name and never declared**: every page there hand-wrote a
+`KIT_ACTIVE` constant, one page was built from another and inherited its value, and the panel lit one
+component while showing a different one. A file name cannot be a stale copy, because it IS the page.
+And **a row with no page is visible**, as a `<span>` with the `.planned` badge, because a route that
+lists only what is finished looks finished. **One thing not taken**: that panel writes
+`style="opacity:.45"` on the rows it dims, and never on the element, and it is not needed, because
+`.sidebar-page-link.planned` is the muted ROLE plus a badge and the reason is at the rule.
+
+**A dead reference the consolidation could not see.** All **106** painted screens carried
+`/* the kit side panel is rendered by _nav.js after this fires */` in their theme boot, naming a file
+that had not existed for a day. Step 3e swept 37 such references and every one of them was in
+`components/`. The line stays, because `wire()` is idempotent and the guard is free, but it now says
+what it is: a guard and not a fix, since all 106 carry a `.theme-switch` in static markup.
+
+**What it cost, stated rather than hidden.** The kit now loads one script, so the "0 scripts" badge
+on three pages became **"0 generators"**, which is what was true all along. The route is not in
+`view-source` without running JS; the repository already answers that one, "reading the source is not
+reading the page".
+
+**And one thing the switch found on its way past.** The categorical series was the only ramp on
+`colour.html` drawn in a single theme, and its five roles DO theme (`cyan-400` to `cyan-700` and so
+on, the light values carrying measured ratios of 6.1 to 7.3 in `tokens.css`). A ramp that themes and
+is drawn once shows whichever theme the reader is in and says nothing about it. It is a pair now.
+Verified after: **162 theme figures across the seven pages, 0 without an explicit `data-theme`**, so
+the page switch moves the stand around the specimens and never a specimen.
+
+---
+
 ## 2026-08-07 - The instrument was deleted, and the product was not touched
 
 **What was deleted.** `ui-kit/` in full: 65 generated pages, 18 Python scripts, 9 browser scripts,

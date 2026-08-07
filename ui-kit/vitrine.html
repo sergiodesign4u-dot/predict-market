@@ -6,8 +6,15 @@
 <title>The vitrine: the atoms, both themes, side by side</title>
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
 </head>
 <body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<!-- The panel declares NOTHING, not even the name of this page. Its rows,
+     its groups, its counts and the row it lights are all in _nav.js, which
+     is the only copy of that list in the repository. -->
+<aside class="sidebar" id="rmSidebar"></aside>
 
   <!-- Solar Bold icon sprite, the same one every screen ships: filled glyphs
        referenced via <use>, rendered filled by components/base.css svg.ic:has(use) -->
@@ -40,21 +47,13 @@
     <div class="tk-badges">
       <span class="tk-badge">10 atoms</span>
       <span class="tk-badge">2 themes, one document</span>
-      <span class="tk-badge">0 scripts</span>
+      <span class="tk-badge">0 generators</span>
       <span class="tk-badge">0 screenshots</span>
     </div>
-    <div class="tk-jump">
-      <a href="molecules.html">The molecules</a>
-      <a href="icons.html">Foundations: icons</a>
-      <a href="colour.html">Foundations: colour</a>
-      <a href="typography.html">Foundations: typography</a>
-      <a href="geometry.html">Foundations: geometry</a>
-      <a href="overview.html">Why the kit is being rebuilt</a>
-      <a href="docs/census.md">The census</a>
-      <a href="docs/inventory.md">The inventory</a>
-      <a href="docs/consolidation.md">The consolidation</a>
-      <a href="../ui-visual/overview.html">The screens</a>
-    </div>
+    <!-- Filled by _nav.js from the one registry. Below 860px the side panel
+         is a drawer, so this row is the navigation that is actually on
+         screen; above it, it is the shortcut. -->
+    <div class="tk-jump" id="kitJump"></div>
   </div>
 
   <section class="tk-sec" id="how">

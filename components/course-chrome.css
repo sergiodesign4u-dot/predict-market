@@ -28,6 +28,13 @@
 .sidebar-nav{padding:var(--space-12) 0;flex:1}
 .sidebar-page-link{display:flex;align-items:center;justify-content:space-between;font-size:var(--text-13);font-weight:var(--weight-medium);color:var(--chrome-text);text-decoration:none;padding:var(--space-8) var(--space-16);cursor:pointer}
 .sidebar-page-link:hover:not(.planned){background:var(--bevel-hair)}
+/* The right-hand slot of the row, which is what the space-between above is for.
+   It says what is BEHIND the row before it is clicked (52 glyphs, 14 molecules),
+   and that is the one thing a list of links cannot say on its own. Normal rather
+   than italic because <i> is the shortest element that survives an innerHTML
+   round trip, not a claim about the text; muted because it is the second thing
+   read, and muted is the ROLE, never an opacity, for the reason above. */
+.sidebar-page-link i{font-style:normal;font-size:var(--text-10);font-weight:var(--weight-regular);letter-spacing:var(--track-label);color:var(--chrome-muted);flex:0 0 auto;padding-left:var(--space-8)}
 .sidebar-page-link.active{color:var(--chrome-accent)}
 /* Same lesson as the labels below: a planned stage was dimmed to opacity .6,
    which took --chrome-muted from 5.03:1 to 2.69:1. It is the muted colour, and

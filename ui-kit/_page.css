@@ -49,6 +49,13 @@
   color:var(--text-muted);border:1px solid var(--border-hairline);border-radius:100px;
   padding:5px 12px;text-decoration:none;transition:color .15s,border-color .15s}
 .tk-jump a:hover{color:var(--text-brass);border-color:var(--border-brass,rgba(199,162,78,.3))}
+/* A ROW THAT HAS NO PAGE YET IS STILL IN THE ROW, dashed and unclickable, for
+   the same reason the side panel keeps it: a jump row that lists only what is
+   finished looks finished. Same box as the link so the gap in the row is a
+   border style and not a hole. */
+.tk-jump span{font-family:var(--font-mono);font-size:11px;
+  color:var(--text-icon);border:1px dashed var(--border-hairline);border-radius:100px;
+  padding:5px 12px;cursor:default}
 
 /* ---- section ---- */
 .tk-sec{margin-top:44px;border-top:1px solid var(--border-hairline);padding-top:24px;
