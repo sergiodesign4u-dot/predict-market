@@ -125,8 +125,14 @@ other half of what `organisms.html` found: the coupling exists and has never fir
 
 **And one it re-measured upward.** The dead footer promises are **23 distinct labels over 1,902
 anchors**, 17 of them on 105 screens each, against the 16 labels and 1,664 links item 27 records.
-Two of the 23 are the same destination under two names, and one is `Privacy Policynot built`, a
-string that lost a space and a tag rather than a label. Backlog 48.
+Two of the 23 are the same destination under three spellings, `Privacy`, `Privacy Policy` and
+`Privacy policy`. Backlog 48.
+
+> **Corrected the same day.** This entry first named a fourth, `Privacy Policynot built`, and called
+> it a broken string. It is not: `terms.html` writes `<span class="rel-q">Privacy Policy</span>` and
+> `<span class="rel-odds">not built</span>` inside one anchor, four times, and the label extractor
+> joined the siblings. **That is the audit's seventh instrument defect and the only one that reached a
+> document**, which is the report's own argument arriving one step late.
 
 **With this the rebuild is done**: five steps, nine hand-written pages, four foundation pages and a
 page per level for all four rungs, no generator, no gate, and a report at the end of each step.

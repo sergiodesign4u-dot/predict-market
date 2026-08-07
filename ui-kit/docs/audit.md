@@ -214,9 +214,18 @@ stand on 105 screens each**: Sports, Trending topics, Leaderboard, API / Develop
 Center, FAQ, Contact, About, Careers, Press, Brand, Terms, Privacy, Privacy Policy, Responsible play,
 Geo restrictions.
 
-Two of those are the same destination under two names, **Privacy** and **Privacy Policy**, and there
-are two one-off strays, `Privacy policy` and `Privacy Policynot built`. That last one is a broken
-string rather than a label. **Backlog 48.**
+Two of those are the same destination under three spellings: **Privacy** and **Privacy Policy** in
+the footer, and **Privacy policy** on `cookie-consent.html`. **Backlog 48.**
+
+> **Corrected 2026-08-08, and it is the seventh instrument defect and the only one that reached a
+> document.** This section first reported a fourth label, `Privacy Policynot built`, and called it a
+> broken string. It is not. The markup on `terms.html` is
+> `<a href="#"><span class="rel-q">Privacy Policy</span><span class="rel-odds">not built</span></a>`,
+> a Related card whose odds slot says "not built" on purpose, and the tag-stripper that extracts a
+> label joined the two spans. Four cards there do the same. **A label extractor that concatenates
+> siblings invents strings that are not in the page**, which is the same species as everything in the
+> six above, and it is written here rather than quietly deleted because the report's whole argument is
+> that an instrument has to be disbelieved first.
 
 ### Touch targets: the one product finding
 
