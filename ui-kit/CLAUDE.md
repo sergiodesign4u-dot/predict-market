@@ -1,10 +1,14 @@
 # ui-kit/ - the vitrine, being rebuilt from 2026-08-07
 
-The kit shows the system to a person and it holds no product code. Right now it holds six pages plus
-its stylesheet: `overview.html`, which says what is happening, `vitrine.html`, the ten atoms in every
-face they wear with both themes side by side, **all four foundation pages** (`icons.html`,
-`colour.html`, `typography.html`, `geometry.html`), and `_page.css`, the stand furniture they all
-share.
+The kit shows the system to a person and it holds no product code. Right now it holds seven pages
+plus its stylesheet: `overview.html`, which says what is happening, **all four foundation pages**
+(`icons.html`, `colour.html`, `typography.html`, `geometry.html`), and the component pages by level,
+`vitrine.html` for the ten atoms and `molecules.html` for the fourteen at level 2. `_page.css` is the
+stand furniture they all share.
+
+**A page per LEVEL, not a page per component.** Forty pages of one component each would be forty
+navigations to compare two chips. A level is the unit a person actually reads, and the level is where
+the shared rule lives: what an atom is, what a molecule holds, why the declaration exists.
 
 **A swatch never carries a value.** `_page.css` holds one class per role and per primitive,
 `.c-bg-plate{--sw:var(--bg-plate)}`, and the page wears the class. That is why there is not a single
@@ -75,8 +79,14 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
    (a change to how every control is written), the brass ladder in daylight (a design decision), and
    the 81 layout dimensions (Responsive's question). The two theme-hole candidates `colour.html`
    named turned out **not** to be holes, and the page is corrected rather than the file.
-4. **The pages.** One per component: a live specimen, its states in both themes, its classes, its
-   rule and anti-rule, and the screens it stands on.
+4. **The pages, by level.** A live specimen, its states in both themes, its classes, its rule and
+   its anti-rule. **4a atoms is `vitrine.html`** (done as step 2.5, ten atoms, 50 faces). **4b
+   molecules is DONE 2026-08-08, `molecules.html`**: fourteen at level 2, 36 theme pairs, the real
+   markup the screens ship. Two of the fourteen were filed as atoms and hold their own named parts,
+   which is the case the declaration exists for. Three more (`account`, `cookie-consent`, `toc`)
+   stand on no anchor screen and are marked **unmeasured** rather than given a level. **4c organisms
+   is open**: header, footer, dialog, hiw-dialog, betpanel, tabs, bets-table, card, hero, chart,
+   feed, event-detail, profile.
 5. **One audit run**, as a report.
 
 The five anchors: event feed, event detail, active bets, deposit, sign in, with their loading, empty,

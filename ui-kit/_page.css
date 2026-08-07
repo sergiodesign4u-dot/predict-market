@@ -546,3 +546,42 @@
 .tk-bar>u{text-decoration:none;height:11px;background:var(--color-action);border-radius:2px;display:block}
 .tk-bar.tk-bar-off>u{background:var(--outcome-no)}
 .tk-bar>i{font-style:normal;text-align:right}
+
+/* ==========================================================================
+   THE KIT PAGES, level 2 and up. Added 2026-08-08 for molecules.html.
+
+   A molecule is a row or a block, not a control, so it does not fit the
+   vitrine's three-column table: at 1120 a label column leaves 400px a side and a
+   trust strip needs more than that. The label moves above and the two themes get
+   half the width each, which is the same idea in the shape the subject needs. */
+.tk-mol{margin-top:38px;border-top:1px solid var(--border-hairline);padding-top:20px;
+  scroll-margin-top:20px}
+.tk-mol>h2{font-family:var(--font-display);color:var(--text-primary);
+  font-size:20px;font-weight:700;letter-spacing:-.02em;margin:0 0 8px}
+.tk-pair2{display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--border-hairline);border:1px solid var(--border-hairline);
+  border-radius:10px;overflow:hidden;margin:0 0 10px}
+.tk-pair2>.tk-theme-fig{border-radius:0}
+.tk-ph{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--border-hairline)}
+.tk-ph>span{background:var(--bg-surface);color:var(--text-muted);padding:7px 12px;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.tk-state{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);
+  margin:14px 0 6px;display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+.tk-state b{color:var(--text-primary);font-weight:400}
+.tk-state i{font-style:normal;font-size:10px;opacity:.85}
+.tk-holds{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px;padding:0;list-style:none}
+.tk-holds li{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);
+  border:1px solid var(--border-hairline);border-radius:6px;padding:2px 8px}
+.tk-holds li.tk-decl{color:var(--text-brass);border-color:var(--border-brass,rgba(199,162,78,.3))}
+.tk-holds li.tk-on{color:var(--text-primary)}
+@media(max-width:760px){
+  .tk-pair2,.tk-ph{grid-template-columns:1fr}
+  .tk-ph>span:last-child{display:none}
+}
+/* The mirror of .tk-absent: a specimen that is absent because the window is WIDE.
+   The bottom bar is mobile only, so at 1280 its cell is empty and an empty cell
+   with no explanation reads as broken. */
+.tk-wide-only{display:none;margin:0;font-family:var(--font-mono);font-size:11px;
+  color:var(--text-muted)}
+@media(min-width:900px){.tk-wide-only{display:block}}
