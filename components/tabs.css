@@ -1,7 +1,7 @@
 /* components/tabs.css
    Component: tabs. Classes: .ed-panel-activity, .ed-panel-comments, .ed-panel-holders, .ed-panel-positions, .ed-range, .ed-tab-count, .ed-tabbar, .ed-tablabel, .ed-tabpanel, .ed-tabradio, .ed-tabs, .ed-tabwrap, .ptab-bar, .ptab-in, .ptab-lbl, .ptab-panel, .ptabs, .rules-tab, .rules-tabs, .tabs.
 
-   Reads: --bg-chip, --bg-pressed, --bg-well, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --focus-ring, --text-brass, --text-muted, --text-primary
+   Reads: --bg-chip, --bg-pressed, --bg-well, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --focus-ring, --text-brass, --text-muted, --text-primary, --tint-brass-16
    Stand:  ui-kit/tabs.html
    Stands on: 20 ui-visual screens (active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, active-bets-history-empty.html, active-bets-history-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -65,14 +65,19 @@
 .app-case .tabs button{border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer}
 .app-case .tabs button:hover{color:var(--text-primary)}
 .app-case .tabs button:active{background:var(--bg-pressed)}
-.app-case .tabs button[aria-selected="true"]{background:color-mix(in oklab,var(--color-action) 16%,transparent);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
+/* Both selected grounds in this file were `color-mix(in oklab,var(--color-action)
+   16%,transparent)`, which IS a rung and was still off the ladder, because a value
+   spelled as a colour function is not a token and does not get the theme. On
+   graphite nothing moved; on chalk they step up to 30 per cent like every other
+   brass tint, and the label reads 5.72:1 there. S50, 2026-08-07. */
+.app-case .tabs button[aria-selected="true"]{background:var(--tint-brass-16);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
 .app-case .ptabs{margin-top:var(--space-20)}
 .app-case .ptab-bar{display:flex;gap:var(--space-8);border:0;margin:0 0 var(--space-16);overflow-x:auto;scrollbar-width:none;padding-bottom:var(--space-2)}
 .app-case .ptab-bar::-webkit-scrollbar{display:none}
 .app-case .ptab-lbl{border:1px solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);display:inline-flex;align-items:center;cursor:pointer;white-space:nowrap;transition:color var(--dur-base) ease,border-color var(--dur-base) ease,background var(--dur-base) ease}
 .app-case .ptab-lbl:hover{color:var(--text-primary)}
 .app-case .ptab-lbl:active{background:var(--bg-pressed)}
-.app-case #ptab-record:checked ~ .ptab-bar label[for="ptab-record"],.app-case #ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],.app-case #ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"]{background:color-mix(in oklab,var(--color-action) 16%,transparent);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
+.app-case #ptab-record:checked ~ .ptab-bar label[for="ptab-record"],.app-case #ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],.app-case #ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"]{background:var(--tint-brass-16);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
 /* The profile strip is the same radio-and-label shape as the event tabs and needs the same answer,
    with the input hidden a different way: .ptab-in is a 1px box at opacity 0, so the ring is drawn
    at the right place and then painted at zero alpha, which is the same nothing. It is focusable

@@ -1,7 +1,7 @@
 /* components/navitem.css
    Component: navitem. Classes: .nav-item, .nav-row, .nav-row-stack, .nav-slot.
 
-   Reads: --bg-pressed, --color-action, --text-brass, --text-muted, --text-primary, --tint-hover
+   Reads: --bg-pressed, --text-brass, --text-muted, --text-primary, --tint-brass-09, --tint-hover
    Stand:  ui-kit/navitem.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -36,9 +36,14 @@
    ink, the hover and the press are one selector each. It is the same control
    with a different content, and it stays in components/header.css this pass
    for two measured reasons rather than an opinion: it is `display:block` where
-   the account row is the button default `inline-block`, and its own font-size
-   is the browser's 16 where the account row is 11. Neither draws anything, and
-   neither is a value this pass is entitled to choose. S46 again.
+   the account row was then the button default `inline-block`, and its own
+   font-size is the browser's 16 where the account row is 11. Neither draws
+   anything, and neither is a value this pass is entitled to choose. S46 again.
+   (The display half of that stopped being true on 2026-08-07: the account row
+   became an `<a>`, the element's default went with it, and the atom declares
+   `display:block` for both now. The paragraph is kept as it was written because
+   it is the reasoning of the day, and the correction is here rather than in a
+   rewrite of it.)
 
    WHAT THE TWO REGIONS KEEP is what a region is allowed to keep: where the
    control sits. `components/bottomnav.css` keeps the bar, its sticky position,
@@ -96,10 +101,15 @@
    a <strong> and a <span>, both display:block with sizes of their own, and no
    bare text node between them. So it takes the row's 11 and no glyph moves.
    THE ONE VALUE THAT DOES DRAW IS THE DISPLAY, and it gets a modifier rather than
-   an argument. A menu row is one line and is the button default, inline-block; a
-   notification is a title and a detail under it, so it is a block. Changing the
-   account row to block would drop the line box its inline-block sits on, which is
-   real pixels on 365 placements for no reason anybody asked for.
+   an argument. A menu row is one line and was the button default, inline-block; a
+   notification is a title and a detail under it, so it is a block.
+   AND ON 2026-08-07 THE ARGUMENT CHANGED SIDES, which is worth leaving visible.
+   The account row became an `<a>`, whose default is `inline`, and `width:100%` does
+   nothing to an inline box: the row collapsed from 194x33 to 66x30. So the atom
+   declares `display:block` now and this modifier is what it always was, the name
+   for a row that stacks. Nothing moved when it arrived, because block and
+   inline-block draw the same box for an element that is already full width in a
+   list of its own.
    The title and the detail stay in components/header.css: they are the row's
    CONTENT and not the control's face, the same way a card keeps its own title. */
 .nav-row.nav-row-stack{display:block}
@@ -120,5 +130,6 @@
    press is last and at the same weight as the hovers, so a tie is broken by
    source order and a held control shows the press rather than the hover. */
 .nav-item.nav-slot:hover{background:var(--tint-hover)}
-.nav-item.nav-row:hover{background:color-mix(in oklab,var(--color-action) 10%,transparent)}
+/* 10 per cent longhand until S50, 2026-08-07, now the ladder's nearest rung. */
+.nav-item.nav-row:hover{background:var(--tint-brass-09)}
 .nav-item.nav-slot:active,.nav-item.nav-row:active{background:var(--bg-pressed)}

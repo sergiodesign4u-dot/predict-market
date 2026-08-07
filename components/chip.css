@@ -1,7 +1,7 @@
 /* components/chip.css
    Component: chip. Classes: .chip, .chip-amount, .chip-cnt, .chip-ic, .chip-lane, .chip-nav, .chip-quiet, .chip-rail.
 
-   Reads: --bevel-notice, --bg-chip, --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --glow-brass, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-primary, --text-strong, --tint-brass-09, --tint-brass-45, --tint-hover
+   Reads: --bevel-notice, --bg-chip, --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --glow-brass, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-primary, --text-strong, --tint-brass-09, --tint-brass-16, --tint-brass-45, --tint-hover
    Stand:  ui-kit/chip.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -210,7 +210,13 @@
   .app-case .chip-nav{position:relative}
 }
 .app-case .chip-lane{display:inline-flex;align-items:center;gap:var(--space-8);white-space:nowrap;background:transparent;border:1px solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);font-size:var(--text-13);font-weight:var(--weight-medium);padding:var(--space-8) var(--space-12);min-height:var(--control-36)}
-.app-case .chip-lane:hover{border-color:var(--color-action);background:color-mix(in oklab,var(--color-action) 10%,transparent)}
+/* The hover ground was 10 per cent longhand until S50, 2026-08-07, and it is the
+   ladder's nearest rung now: one hundredth apart on graphite, and on chalk it
+   steps up instead of staying flat. IT IS ALSO THE CHOSEN CHIP'S GROUND, which is
+   worth saying rather than hiding: a hovered lane and a chosen lane share a fill
+   and are told apart by the edge, the weight and the halo. That was already true
+   at 10 against 9 and the rung did not create it. */
+.app-case .chip-lane:hover{border-color:var(--color-action);background:var(--tint-brass-09)}
 /* THE SECOND SURFACE. Two of the four rules the old file wrote inside this
    query were restatements of the hover and the current state, and both were
    dead by specificity before they were dead by the cascade: a media query adds
@@ -282,4 +288,9 @@
    the chip it sits in into the chosen state, which is the reason it is here and
    not with the rail. */
 .app-case .chip-cnt{font-size:var(--text-11);color:var(--text-muted);font-family:var(--font-mono);background:var(--bg-surface);border:1px solid var(--border-hairline);border-radius:var(--radius-6);padding:var(--space-2) var(--space-8)}
-.app-case [aria-current="page"] .chip-cnt{color:var(--text-brass);background:color-mix(in oklab,var(--color-action) 14%,transparent);border-color:color-mix(in oklab,var(--color-action) 45%,transparent)}
+/* THE TWIN OF THE WASH S48 MOVED BY HAND, and it took a day and a tool to catch.
+   Both of these were colour functions - 14 per cent and 45 - so both were invisible
+   to ui-kit/_rescale.py, which matches token names. The 45 is a rung and only its
+   spelling changed; the 14 is not one and it went to 16, the same rung and for the
+   same reason as the header band's. S50. */
+.app-case [aria-current="page"] .chip-cnt{color:var(--text-brass);background:var(--tint-brass-16);border-color:var(--tint-brass-45)}

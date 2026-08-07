@@ -1,7 +1,7 @@
 /* components/hiw-dialog.css
    Component: hiw-dialog. Classes: .hiw-arrow, .hiw-body, .hiw-col-main, .hiw-col-side, .hiw-cols, .hiw-dialog, .hiw-faq, .hiw-full, .hiw-glow, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-sec, .hiw-sec-txt, .hiw-tagline.
 
-   Reads: --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate-to, --border-hairline, --color-action, --color-action-lit, --edge-shade-strong, --mask-solid, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong
+   Reads: --bevel-lit, --bg-control, --bg-dialog-head-from, --bg-plate-to, --border-hairline, --color-action, --color-action-lit, --edge-shade-strong, --mask-solid, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-30
    Stand:  ui-kit/hiw-dialog.html
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -81,7 +81,8 @@ dialog.app-dialog.hiw-dialog:modal .hiw-body{overflow:auto;min-height:0}
    The arrow keeps its nudge. That is the mark moving inside the control, not the
    control moving, and a press is about the plate. */
 .app-dialog.hiw-dialog .hiw-full:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit))}
-.hiw-hero{background:radial-gradient(120% 92% at 100% 0%,color-mix(in oklab,var(--color-action) 34%,transparent),transparent 58%),linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
+/* The same 34 per cent corner as the sheet head, and it moved with it. S50. */
+.hiw-hero{background:radial-gradient(120% 92% at 100% 0%,var(--tint-brass-30),transparent 58%),linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
 
 /* THE PAGE. A page is not a bigger dialog: it has room, so the hero gets an edge
    of its own instead of the sheet's, the reading column takes the page text size

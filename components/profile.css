@@ -1,7 +1,7 @@
 /* components/profile.css
    Component: profile. Classes: .av, .edit, .gallery, .handle, .idrow, .name, .who.
 
-   Reads: --bg-canvas, --bg-control, --border-hairline, --color-action, --text-muted, --text-primary
+   Reads: --bg-canvas, --bg-control, --border-hairline, --text-muted, --text-primary, --tint-brass-60
    Stand:  ui-kit/profile.html
    Stands on: 2 ui-visual screens (my-profile.html, public-profile.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -9,7 +9,11 @@
 .app-case .idrow{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-16);padding:var(--space-2) 0 var(--space-16);margin:0 0 var(--space-2);border-bottom:1px solid var(--border-hairline)}
 /* Same placeholder story as .cmt-av and .ed-thumb: a sample face, written here so the stand has
    one. The colour under it is a role; only the image is sample content. */
-.app-case .idrow .av{display:inline-flex;width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72);border:0;border-radius:var(--radius-pill);background:var(--bg-control) url(../assets/avatar-2.jpg) center/cover;overflow:hidden;color:transparent;font-size:0;box-shadow:0 0 0 3px var(--bg-canvas),0 0 0 4px color-mix(in oklab,var(--color-action) 55%,transparent)}
+.app-case .idrow .av{display:inline-flex;width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72);border:0;border-radius:var(--radius-pill);background:var(--bg-control) url(../assets/avatar-2.jpg) center/cover;overflow:hidden;color:transparent;font-size:0;box-shadow:0 0 0 3px var(--bg-canvas),0 0 0 4px var(--tint-brass-60)}
+/* The brass ring was 55 per cent written as a colour function, five hundredths off
+   the ladder's last rung and invisible to the rescale map for exactly that reason.
+   S50, 2026-08-07. It is the only tint in this pass that does NOT move in daylight,
+   because --tint-brass-60 is the one rung components/tokens.css leaves unshifted. */
 .app-case .idrow .who{display:flex;flex-direction:column;gap:var(--space-4);flex:1 1 150px;min-width:0}
 .app-case .idrow .who br{display:none}
 .app-case .idrow .name{font-family:var(--font-display);font-size:var(--text-20);font-weight:var(--weight-bold);letter-spacing:-.02em;color:var(--text-primary);line-height:var(--leading-flat)}

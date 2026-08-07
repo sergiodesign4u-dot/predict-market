@@ -1381,6 +1381,61 @@ pair, so a container with no states of its own is correct.
 
 ---
 
+## S50: teach the tool, then let the tool do it
+
+S48 found one brass tint written as a colour function and moved it by hand. The
+sweep that followed found nine more. **Every one of them was invisible to the tool
+that exists to keep values on the ladder**, for the same reason: `_rescale.py`
+matches token NAMES, and a value typed as
+`color-mix(in oklab,var(--color-action) N%,transparent)` never spells one.
+
+So the closing condition was not "fix ten values", it was **teach it to read a
+colour function**. `snap_longhand_tints()` masks comments - four files quote the
+longhand while explaining why it left, and a tool that rewrites the sentence
+describing its own work leaves nothing behind - then snaps N to the nearest rung.
+The mapping is COMPUTED rather than listed, because a longhand value can be any
+integer and a list would have to guess which one somebody types next.
+
+It did the whole pass itself, first run:
+
+    10% -> --tint-brass-09   x2    chip lane hover, account row hover
+    14% -> --tint-brass-16   x1    the count badge on a current lane
+    16% -> --tint-brass-16   x2    the two selected tabs
+    20% -> --tint-brass-16   x1    a checked filter
+    34% -> --tint-brass-30   x2    the sheet head and the how-it-works hero
+    45% -> --tint-brass-45   x1    the count badge's edge
+    55% -> --tint-brass-60   x1    the avatar ring
+
+### What a role does that a value cannot
+
+An untokenised alpha is the same on both stones. A ROLE steps up a rung on chalk,
+because the same alpha over a pale ground does not read as it does over graphite -
+that is what the light block of `components/tokens.css` is for, and these ten sites
+had never been in it.
+
+    site                 graphite        chalk           ink on the composite
+    checked filter       20 -> 16        20 -> 30        5.49:1 -> 5.87   6.12 -> 5.72
+    profile tab          16 -> 16        16 -> 30        6.73 -> 6.73     6.33 -> 5.72
+    sheet head glow      34 -> 30        34 -> 45
+    hiw hero glow        34 -> 30        34 -> 45
+    avatar ring          55 -> 60        55 -> 60        the one rung tokens.css leaves flat
+
+    525 snapshots: 275 differ, 285 elements, all of them the ten sites - 160
+    readings of the count badge, 60 of the two radials, 55 of the two tabs, 10 of
+    the ring. No box moved.
+
+**The audit is the check that matters here.** A tint stepping up a rung in daylight
+is exactly the change that could cross a contrast floor, so the painted tree was
+re-audited: **byte-identical to the previous commit, clean at 0 findings over 424
+renders.** Nothing crossed anything.
+
+One thing is now true that is worth saying out loud rather than hiding: the lane's
+hover ground and the chosen chip's ground are the same token. They are told apart
+by the edge, the weight and the halo. That was already true at 10 against 9, and
+the rung did not create it.
+
+---
+
 ## The decision this document no longer has open
 
 - ~~**Is a social mark a `navitem` or an `iconbutton`?**~~ **Answered 2026-08-06 and the

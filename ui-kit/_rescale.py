@@ -297,6 +297,54 @@ LITERAL = [
     (None, "line-height:1", "line-height:var(--leading-none)"),
 ]
 
+# ------------------------------------------- a tint spelled as a colour function
+# THE LADDER COULD NOT SEE THESE, and that is the whole of ui-kit/docs/backlog.md
+# S50. Every map above matches a token NAME. A brass tint typed out as
+# `color-mix(in oklab,var(--color-action) 14%,transparent)` IS brass at 14 per
+# cent - a rung this ladder does not have - and it survived every rescale pass
+# ever run because it never spelled a name to match. Ten were found on 2026-08-07
+# while closing S48, seven of them off the ladder, and one was the exact 14 that
+# S48 had just had to move by hand.
+#
+# The mapping is the same one the names get and it is COMPUTED rather than listed,
+# because a value written longhand can be any integer and a list would have to
+# guess which ones somebody will type next. Nearest rung wins, and the ladder's
+# own note says a step of .05 is below what a screen shows.
+#
+# IT ALSO DOES SOMETHING THE NAME MAPS CANNOT. An untokenised value has one alpha
+# in both themes; a ROLE steps up a rung on chalk, because the same alpha over a
+# pale stone does not read as it does over graphite. So this pass does not only
+# rename a value, it hands the light theme back to the ladder.
+#
+# Comments are masked before it runs. Four files quote the longhand form while
+# explaining why it left, and a tool that rewrites the sentence describing its own
+# work leaves nothing behind that says what happened.
+BRASS_RUNGS = (6, 9, 16, 30, 45, 60)
+LONGHAND_TINT = re.compile(
+    r"color-mix\(in oklab,\s*var\(--color-action\)\s*(\d+)%\s*,\s*transparent\)")
+COMMENT = re.compile(r"/\*.*?\*/", re.S)
+
+
+def snap_longhand_tints(src):
+    """A brass tint spelled as a colour function, snapped onto the ladder."""
+    moved = []
+
+    def one(m):
+        pct = int(m.group(1))
+        rung = min(BRASS_RUNGS, key=lambda r: (abs(r - pct), r))
+        name = "--tint-brass-%02d" % rung
+        moved.append(("brass %d%% written longhand" % pct, name))
+        return "var(%s)" % name
+
+    out, last = [], 0
+    for c in COMMENT.finditer(src):
+        out.append(LONGHAND_TINT.sub(one, src[last:c.start()]))
+        out.append(c.group(0))
+        last = c.end()
+    out.append(LONGHAND_TINT.sub(one, src[last:]))
+    return "".join(out), moved
+
+
 VAR = re.compile(r"var\((--[\w-]+)\)")
 
 
@@ -410,6 +458,11 @@ def main():
                 report.setdefault((before, after), 0)
                 report[(before, after)] += n
                 total += n
+        src, tinted = snap_longhand_tints(src)
+        for old, new in tinted:
+            report.setdefault((old, new), 0)
+            report[(old, new)] += 1
+            total += 1
         src, moved = rewrite(src)
         for old, new, _prop in moved:
             report.setdefault((old, new), 0)
