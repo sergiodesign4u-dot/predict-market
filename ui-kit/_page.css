@@ -640,3 +640,24 @@
 .tk-why{margin:0;font-family:var(--font-mono);font-size:11px;line-height:1.55;
   color:var(--text-muted);max-width:62ch}
 .tk-why b{color:var(--text-brass);font-weight:400}
+
+/* ==========================================================================
+   Added 2026-08-08 for patterns.html.
+
+   A PLAIN READING TABLE, for a page whose subject is a measurement rather than
+   a specimen. The patterns rung has almost nothing to look at (59 declarations,
+   none of them a colour), so the evidence IS the table, and it needed a rule of
+   its own rather than borrowing the contrast matrix's, which is built around a
+   swatch cell. It scrolls inside itself at 390 rather than pushing the page. */
+.tk-tblwrap{overflow-x:auto;margin:0 0 12px}
+.tk-tbl{width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:11px;
+  color:var(--text-muted)}
+.tk-tbl th{text-align:left;font-weight:400;font-size:10px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--text-icon);padding:6px 10px;
+  border-bottom:1px solid var(--border-hairline);white-space:nowrap}
+.tk-tbl td{padding:6px 10px;border-bottom:1px solid var(--border-hairline);
+  vertical-align:top}
+.tk-tbl tr:last-child td{border-bottom:0}
+.tk-tbl td:first-child{color:var(--text-primary)}
+.tk-tbl code{font-family:inherit;color:var(--text-brass)}
+.tk-tbl b{color:var(--text-primary);font-weight:400}

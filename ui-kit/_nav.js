@@ -67,7 +67,7 @@ window.KIT_NAV = [
       { label: 'Atoms',     page: 'vitrine.html',   done: true,  note: '10' },
       { label: 'Molecules', page: 'molecules.html', done: true,  note: '14' },
       { label: 'Organisms', page: 'organisms.html', done: true,  note: '13' },
-      { label: 'Patterns',  page: 'patterns.html',  done: false, next: true }
+      { label: 'Patterns',  page: 'patterns.html',  done: true,  note: '6' }
     ]
   },
   {
@@ -133,8 +133,11 @@ window.KIT_NAV = [
       if (doc) h += '</div>';
     });
 
-    h += '</nav><p class="sidebar-note">' + done + ' of ' + total +
-         ' stand pages written. A row with no page is a row that says so.</p>';
+    /* The second sentence only exists while there IS a row with no page. A note
+       explaining an absence that is not on screen is the panel talking about
+       itself, and the first thing to go stale when the last row lands. */
+    h += '</nav><p class="sidebar-note">' + done + ' of ' + total + ' stand pages written.' +
+         (done < total ? ' A row with no page is a row that says so.' : '') + '</p>';
 
     nav.innerHTML = h;
     wireTheme();

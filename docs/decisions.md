@@ -44,6 +44,76 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - Step 4d, the patterns, and a prose claim with no reader
+
+**The fourth rung, and the only one whose criterion is repetition rather than nesting.** Six files,
+181 lines, and `ui-kit/patterns.html` is a page about a measurement rather than about a specimen,
+because a pattern has almost nothing to look at: what it contributes is printed beside each
+arrangement instead of photographed.
+
+### The contract holds where it counts
+
+**59 declarations across the six files, 16 distinct properties, and not one of them is a colour, a
+face, a border or a surface.** No `color`, no `background`, no `border`, no `fill`, no `box-shadow`,
+no `opacity`, no `font-family`, no `font-size`, no `font-weight`. What is there is `display`, `flex`,
+`flex-direction`, `grid-template-columns`, `gap`, `align-items`, `justify-content`, `flex-wrap`,
+`padding`, `margin`, `min-width`, `max-width`, `position`, `bottom`, `width` and `z-index`. **Every
+one an arrangement.**
+
+**Five of seven screen counts in the file headers are exact and two are one light**, `.cat-layout` 76
+claimed against 77 measured and `.feed-head` 70 against 71, because the headers were typed when the
+painted tree was 105 screens and it is 106. **That drift is the accepted price of the rule that a
+measurement is an act rather than a machine**, and the price is one screen against the seven days the
+machine cost.
+
+### What it found: a prose claim with no reader goes stale
+
+Each file opens with an `Assembled from` line and nothing reads it. Read from the screens instead, by
+taking every element inside each pattern's own box across the 106 and asking which file owns its
+class, **two of the six are wrong**:
+
+**`browse-shell` claims `feed`, and the containment runs the other way.** On `event-feed.html`,
+`<main class="feed">` opens at line 361 and `<div class="cat-layout">` at line 469: the feed HOLDS the
+browse shell. Nothing renders wrong, and it is still worth correcting, because **an "assembled from"
+line that names a parent is the level arithmetic's blind spot written down by hand.**
+
+**`position-list` claims `profile`, and that stopped being true on 2026-08-03.** The record block in
+the stack is `.pos-record` with its `.pos-figures` and `.pos-fig`, and those moved to `position.css`
+in the pass that closed backlog 17. The block is still in the stack; the file that owns it is not.
+`profile.css` owns seven classes today and none of them stands in a position list.
+
+**And one slot in a pattern file stands on one screen.** `.read-col`, eight declarations over three
+rules in `browse-shell.css`, on `ui-visual/terms.html` and nowhere else, two short of the threshold
+this rung exists to enforce. **The reason it was written there is good and it is a different
+question**: "the container owns the distance, not the block" answers WHERE the rule goes if it
+exists, and the threshold answers WHETHER it exists yet. The two were answered as one. It is named
+rather than moved, because deleting eight correct declarations to put them back on the third screen
+is tidiness that costs more than it returns. Backlog 46.
+
+### A third component whose visible content is not in its markup
+
+The browse shell's rail ships as `<nav class="subcat" id="subcatRail" hidden></nav>` and a page
+script fills it from a table of sub-categories. After the card's odds bar (found by the vitrine,
+which counted 213 uses of something in no HTML file) and the chart's empty polyline (found by the
+organisms page), **that is three, and all three were found by putting the thing on a stand rather
+than by reading a file.**
+
+### One rule was corrected on two pages before it shipped
+
+The declaration counts were first drawn as bars, and **all six bars came out the same length**,
+because `.tk-bar>u` has no width of its own and fills its track. A bar chart whose bars do not
+represent their values is worse than a table, and the same shape was already on `organisms.html` for
+the id counts. Both are tables now. That is the page's own rule applied to itself: a missing value is
+a value, and the missing value here was the width.
+
+**The kit is now a page per level, all four rungs**, on top of the four foundation pages. Verified at
+390 and 1280 over the nine pages: 12 panel rows each, the active row always the page itself, 200
+theme figures with 0 lacking an explicit `data-theme`, 0 blank cells, 0 duplicated ids, 4 distinct
+radio group names where two copies of one specimen would have shared one, 13 link targets and 0
+broken, 0 horizontal page scroll at either width, 0 console errors.
+
+---
+
 ## 2026-08-08 - Step 4c, the organisms, and the thing a level page exists to find
 
 **Thirteen at level 3, twelve measured and one named as unmeasured.** `ui-kit/organisms.html`, the

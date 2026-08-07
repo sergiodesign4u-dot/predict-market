@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: patterns</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<!-- The panel declares NOTHING, not even the name of this page. Its rows,
+     its groups, its counts and the row it lights are all in _nav.js, which
+     is the only copy of that list in the repository. -->
+<aside class="sidebar" id="rmSidebar"></aside>
+
+  <!-- Solar Bold icon sprite, the same 15 symbols every screen ships. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></symbol>
+    <symbol id="i-bell-b" viewBox="0 0 24 24"><path fill="currentColor" d="M18.75 9.71v-.705C18.75 5.136 15.726 2 12 2S5.25 5.136 5.25 9.005v.705a4.4 4.4 0 0 1-.692 2.375L3.45 13.81c-1.011 1.575.062 3.68 1.966 3.843a51 51 0 0 0 13.167 0c1.904-.163 2.977-2.268 1.966-3.843l-1.108-1.725a4.4 4.4 0 0 1-.692-2.375"/><path fill="currentColor" d="M7.243 18.545a5.002 5.002 0 0 0 9.513 0c-3.145.28-6.367.281-9.513 0"/></symbol>
+    <symbol id="i-shield-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.378 5.082C3 5.62 3 7.22 3 10.417v1.574c0 5.638 4.239 8.375 6.899 9.536c.721.315 1.082.473 2.101.473c1.02 0 1.38-.158 2.101-.473C16.761 20.365 21 17.63 21 11.991v-1.574c0-3.198 0-4.797-.378-5.335c-.377-.537-1.88-1.052-4.887-2.081l-.573-.196C13.595 2.268 12.812 2 12 2s-1.595.268-3.162.805L8.265 3c-3.007 1.03-4.51 1.545-4.887 2.082M15.06 10.5a.75.75 0 0 0-1.12-.999l-3.011 3.374l-.87-.974a.75.75 0 0 0-1.118 1l1.428 1.6a.75.75 0 0 0 1.119 0z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-verified-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9.592 3.2a6 6 0 0 1-.495.399c-.298.2-.633.338-.985.408c-.153.03-.313.043-.632.068c-.801.064-1.202.096-1.536.214a2.71 2.71 0 0 0-1.655 1.655c-.118.334-.15.735-.214 1.536a6 6 0 0 1-.068.632c-.07.352-.208.687-.408.985c-.087.13-.191.252-.399.495c-.521.612-.782.918-.935 1.238c-.353.74-.353 1.6 0 2.34c.153.32.414.626.935 1.238c.208.243.312.365.399.495c.2.298.338.633.408.985c.03.153.043.313.068.632c.064.801.096 1.202.214 1.536a2.71 2.71 0 0 0 1.655 1.655c.334.118.735.15 1.536.214c.319.025.479.038.632.068c.352.07.687.209.985.408c.13.087.252.191.495.399c.612.521.918.782 1.238.935c.74.353 1.6.353 2.34 0c.32-.153.626-.414 1.238-.935c.243-.208.365-.312.495-.399c.298-.2.633-.338.985-.408c.153-.03.313-.043.632-.068c.801-.064 1.202-.096 1.536-.214a2.71 2.71 0 0 0 1.655-1.655c.118-.334.15-.735.214-1.536c.025-.319.038-.479.068-.632c.07-.352.209-.687.408-.985c.087-.13.191-.252.399-.495c.521-.612.782-.918.935-1.238c.353-.74.353-1.6 0-2.34c-.153-.32-.414-.626-.935-1.238a6 6 0 0 1-.399-.495a2.7 2.7 0 0 1-.408-.985a6 6 0 0 1-.068-.632c-.064-.801-.096-1.202-.214-1.536a2.71 2.71 0 0 0-1.655-1.655c-.334-.118-.735-.15-1.536-.214a6 6 0 0 1-.632-.068a2.7 2.7 0 0 1-.985-.408a6 6 0 0 1-.495-.399c-.612-.521-.918-.782-1.238-.935a2.71 2.71 0 0 0-2.34 0c-.32.153-.626.414-1.238.935m6.781 6.663a.814.814 0 0 0-1.15-1.15l-4.85 4.85l-1.596-1.595a.814.814 0 0 0-1.15 1.15l2.17 2.17a.814.814 0 0 0 1.15 0z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-chat-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22"/></symbol>
+    <symbol id="i-share-b" viewBox="0 0 24 24"><path fill="currentColor" d="M13.803 5.333c0-1.84 1.507-3.333 3.365-3.333c1.86 0 3.366 1.492 3.366 3.333c0 1.841-1.507 3.334-3.366 3.334a3.38 3.38 0 0 1-2.037-.678l-4.67 3.204a3.3 3.3 0 0 1 0 1.62l4.67 3.204a3.38 3.38 0 0 1 2.037-.677c1.86 0 3.366 1.492 3.366 3.333S19.028 22 17.168 22c-1.858 0-3.365-1.492-3.365-3.333q0-.413.098-.804l-4.67-3.204a3.38 3.38 0 0 1-2.037.677C5.507 15.336 4 13.843 4 12.002s1.507-3.333 3.365-3.333c.762 0 1.474.252 2.037.677l4.67-3.204a3.3 3.3 0 0 1-.099-.809"/></symbol>
+    <symbol id="i-heart-b" viewBox="0 0 24 24"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></symbol>
+    <symbol id="i-cat-fire" viewBox="0 0 24 24"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></symbol>
+    <symbol id="i-cat-politics" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21.25 8.5c0-1.404 0-2.107-.337-2.611a2 2 0 0 0-.552-.552c-.441-.295-1.034-.332-2.115-.336q.005.438.004.91V7.25h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v6.5h-1.5V6c0-1.886 0-2.828-.586-3.414S14.636 2 12.75 2h-2c-1.886 0-2.828 0-3.414.586S6.75 4.114 6.75 6v15.25h-1.5v-6.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1V5.91q-.001-.47.004-.91c-1.081.005-1.674.042-2.115.337a2 2 0 0 0-.552.552C2.25 6.393 2.25 7.096 2.25 8.5v12.75h-.5a.75.75 0 0 0 0 1.5h20a.75.75 0 0 0 0-1.5h-.5zM9 11.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m2.75 3.5a.75.75 0 0 1 .75.75v2.25H11V19a.75.75 0 0 1 .75-.75M9 6.25a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 6.25m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 9.25" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-crypto" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m.75-16a.75.75 0 0 0-1.5 0v.317c-1.63.292-3 1.517-3 3.183c0 1.917 1.813 3.25 3.75 3.25c1.377 0 2.25.906 2.25 1.75s-.873 1.75-2.25 1.75c-1.376 0-2.25-.906-2.25-1.75a.75.75 0 0 0-1.5 0c0 1.666 1.37 2.891 3 3.183V18a.75.75 0 0 0 1.5 0v-.317c1.63-.292 3-1.517 3-3.183c0-1.917-1.813-3.25-3.75-3.25c-1.376 0-2.25-.906-2.25-1.75s.874-1.75 2.25-1.75c1.377 0 2.25.906 2.25 1.75a.75.75 0 0 0 1.5 0c0-1.666-1.37-2.891-3-3.183z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-culture" viewBox="0 0 24 24"><path fill="currentColor" d="m21.537 9.136l-.846 3.297c-.43 1.676-1.306 2.855-2.336 3.685c.219-1.144.214-2.418-.144-3.814l-.864-3.37l-.15-.584a.9.9 0 0 1 .599-.044c.378.101.608.406.637.702a.75.75 0 1 0 1.493-.145c-.091-.942-.783-1.749-1.742-2.006a2.4 2.4 0 0 0-1.418.05l-.017-.044c-.224-.596-.552-1.229-1.171-1.693a3.5 3.5 0 0 0-1.13-.562c-.759-.215-1.463-.076-2.064.124c-.558.185-1.21.49-1.924.825l-.072.034c-1.185.555-1.659.773-2.144.928q-.22.07-.446.127l.327-1.267c.44-1.719.661-2.578 1.236-3.01c.193-.145.41-.252.638-.317c.684-.194 1.461.17 3.015.897c1.15.54 1.726.809 2.326 1q.314.099.632.176c.612.149 1.239.216 2.493.351c1.694.182 2.54.273 3.04.798c.167.177.303.383.4.609c.292.675.072 1.534-.368 3.253"/><path fill="currentColor" fill-rule="evenodd" d="m16.758 12.677l-.845-3.298c-.44-1.719-.66-2.578-1.236-3.01a2 2 0 0 0-.638-.317c-.684-.194-1.46.17-3.015.897c-1.15.54-1.726.809-2.326 1a10 10 0 0 1-.632.176c-.611.149-1.238.216-2.493.351c-1.694.182-2.54.273-3.04.798a2.1 2.1 0 0 0-.4.609c-.292.675-.072 1.534.369 3.253l.845 3.297c.993 3.876 4.296 5.096 6.516 5.473c.677.115 1.016.172 2.044-.116s1.294-.514 1.825-.968c1.742-1.487 4.02-4.27 3.026-8.145m-10.753.691c.029-.296.26-.6.638-.702c.379-.102.73.047.903.29a.75.75 0 0 0 1.22-.873c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.064-1.743 2.006a.75.75 0 0 0 1.493.145m5.796-1.553c.029-.296.26-.6.638-.702c.379-.102.73.047.903.289a.75.75 0 1 0 1.22-.872c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.063-1.743 2.006a.75.75 0 0 0 1.493.145m1.846 3.814a.75.75 0 0 1-.885 1.211l-.01-.006a2 2 0 0 0-.485-.2c-.36-.098-.929-.163-1.685.04c-.756.202-1.216.543-1.48.808a2 2 0 0 0-.32.416l-.005.01a.75.75 0 0 1-1.372-.607l.688.298c-.688-.298-.687-.3-.687-.3v-.001l.002-.004l.004-.009l.01-.022l.033-.064q.04-.078.115-.196c.1-.156.252-.36.468-.578c.437-.44 1.125-.924 2.156-1.2c1.031-.277 1.87-.2 2.467-.038c.296.08.53.18.694.266a3 3 0 0 1 .258.151l.02.015l.008.005l.003.003h.002z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-general" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M2 6.634a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0m10.732 10.732a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0" clip-rule="evenodd"/><path fill="currentColor" d="M2 17.5c0-2.121 0-3.182.659-3.841S4.379 13 6.5 13s3.182 0 3.841.659S11 15.379 11 17.5s0 3.182-.659 3.841S8.621 22 6.5 22s-3.182 0-3.841-.659S2 19.621 2 17.5m11-11c0-2.121 0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11s-3.182 0-3.841-.659S13 8.621 13 6.5"/></symbol>
+    <symbol id="i-seo-guide" viewBox="0 0 24 24"><path fill="currentColor" d="M11 4.2C9.6 3.3 7.9 2.8 6 2.8c-1.1 0-2.1.2-3 .5C2.4 3.5 2 4 2 4.6v12.2c0 .9.9 1.5 1.7 1.2c.7-.2 1.5-.3 2.3-.3c1.8 0 3.4.6 4.6 1.5c.2.2.5.3.8.3V5c-.1-.3-.2-.6-.4-.8m2 0c-.2.2-.3.5-.4.8v14.5c.3 0 .6-.1.8-.3c1.2-.9 2.8-1.5 4.6-1.5c.8 0 1.6.1 2.3.3c.8.3 1.7-.3 1.7-1.2V4.6c0-.6-.4-1.1-1-1.3c-.9-.3-1.9-.5-3-.5c-1.9 0-3.6.5-5 1.4"/></symbol>
+    <symbol id="i-seo-chart" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21a1.5 1.5 0 0 1-1.5-1.5v-3a1.5 1.5 0 0 1 3 0v3A1.5 1.5 0 0 1 5 21m7 0a1.5 1.5 0 0 1-1.5-1.5v-8a1.5 1.5 0 0 1 3 0v8A1.5 1.5 0 0 1 12 21m7 0a1.5 1.5 0 0 1-1.5-1.5V6a1.5 1.5 0 0 1 3 0v13.5A1.5 1.5 0 0 1 19 21"/></symbol>
+    <symbol id="i-seo-qa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a6 6 0 0 0-6 6a1.5 1.5 0 0 0 3 0a3 3 0 1 1 4.3 2.7c-1.1.6-2.8 1.7-2.8 3.8v.5a1.5 1.5 0 0 0 3 0v-.5c0-.3.4-.7 1.1-1.1A6 6 0 0 0 12 2m0 16.5A1.75 1.75 0 1 0 12 22a1.75 1.75 0 0 0 0-3.5"/></symbol>
+  </defs></svg>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Patterns</h1>
+    <p>The fourth rung, and <b>the only one whose criterion is repetition rather than nesting</b>. A
+    pattern is a composition that stands on three screens or more, adds no styles of its own, carries
+    no colour, and imports last. Six files, 181 lines, <b>59 declarations</b> between them. This page
+    checks that contract against the files rather than restating it.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">6 patterns</span>
+      <span class="tk-badge">59 declarations</span>
+      <span class="tk-badge">0 colour</span>
+      <span class="tk-badge">0 generators</span>
+    </div>
+    <!-- Filled by _nav.js from the one registry. Below 860px the side panel
+         is a drawer, so this row is the navigation that is actually on
+         screen; above it, it is the shortcut. -->
+    <div class="tk-jump" id="kitJump"></div>
+  </div>
+
+  <section class="tk-sec" id="how">
+    <h2 data-n="00">What a pattern is, and why it is not a level</h2>
+    <p class="tk-note">Levels 1 to 3 answer <b>what does this contain</b>. A pattern answers
+    <b>where do these stand</b>, and that is a different question with a different test. An organism
+    is an organism the first time it holds a molecule. <b>A composition is a pattern on the third
+    screen and not before</b>, because two screens sharing an arrangement is a coincidence and three
+    is a decision.</p>
+    <p class="tk-note"><b>Two screens is a candidate and it stays markup.</b> That is the rule this
+    rung exists to enforce, and it is the reason a pattern file is thin: the file holds only the part
+    that repeated.</p>
+    <p class="tk-note"><b>They import last, and that is what "assembled from" means in a cascade.</b>
+    A pattern has to be able to place what it holds, so the rule that places something is read after
+    the rule that draws it. The faces and the tokens pin the head of <code>index.css</code> for the
+    mirror reason.</p>
+  </section>
+
+  <section class="tk-sec" id="contract">
+    <h2 data-n="01">The contract, checked</h2>
+    <p class="tk-note"><b>The first half is the count.</b> Every class each pattern owns, matched in
+    the markup of all 106 painted screens, elements as well as screens, against the number the file's
+    own header claims.</p>
+    <div class="tk-tblwrap"><table class="tk-tbl">
+      <thead><tr><th>Pattern</th><th>Class</th><th>Screens</th><th>Elements</th><th>Claimed</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>action-bar</td><td><code>.cta-bar</code></td><td>3</td><td>3</td><td>3</td><td>same</td></tr>
+        <tr><td>browse-shell</td><td><code>.cat-layout</code></td><td>77</td><td>77</td><td>76</td><td>+1</td></tr>
+        <tr><td>browse-shell</td><td><code>.cat-main</code></td><td>77</td><td>77</td><td>-</td><td></td></tr>
+        <tr><td>browse-shell</td><td><code>.read-col</code></td><td>1</td><td>1</td><td>-</td><td>below the threshold</td></tr>
+        <tr><td>card-grid</td><td><code>.grid</code></td><td>23</td><td>23</td><td>23</td><td>same</td></tr>
+        <tr><td>detail-shell</td><td><code>.ed-layout</code></td><td>11</td><td>11</td><td>11</td><td>same</td></tr>
+        <tr><td>detail-shell</td><td><code>.ed-main</code></td><td>11</td><td>11</td><td>-</td><td></td></tr>
+        <tr><td>list-head</td><td><code>.feed-head</code></td><td>71</td><td>71</td><td>70</td><td>+1</td></tr>
+        <tr><td>list-head</td><td><code>.feed-controls</code></td><td>44</td><td>44</td><td>44</td><td>same</td></tr>
+        <tr><td>position-list</td><td><code>.pos-list</code></td><td>13</td><td>13</td><td>13</td><td>same</td></tr>
+      </tbody>
+    </table></div>
+    <p class="tk-note"><b>Five of seven claims are exact and two are one screen light</b>, because the
+    files were written when the painted tree was 105 screens and it is 106. A number in a comment is
+    true on the day it is typed, and nothing here re-checks it, which is the price of the rule that
+    every measurement is an act rather than a machine. The price is one screen and it is worth
+    paying; the alternative cost this repository seven days.</p>
+    <p class="tk-note"><b>The second half is the one that matters, and it holds exactly.</b> Every
+    declaration in all six files, by property:</p>
+    <div class="tk-tblwrap"><table class="tk-tbl">
+      <thead><tr><th>File</th><th>Decl</th><th>Props</th><th>Every property it declares</th></tr></thead>
+      <tbody>
+        <tr><td>action-bar</td><td>13</td><td>9</td><td>bottom, display, flex, gap, margin-top, padding, position, width, z-index</td></tr>
+        <tr><td>browse-shell</td><td>19</td><td>12</td><td>align-items, display, flex, flex-direction, gap, margin-block, margin-bottom, margin-inline, max-width, min-width</td></tr>
+        <tr><td>card-grid</td><td>4</td><td>4</td><td>align-items, display, gap, grid-template-columns</td></tr>
+        <tr><td>detail-shell</td><td>8</td><td>7</td><td>align-items, display, flex, flex-direction, gap, min-width</td></tr>
+        <tr><td>list-head</td><td>12</td><td>8</td><td>align-items, display, flex-wrap, gap, justify-content, margin, margin-bottom, padding-bottom</td></tr>
+        <tr><td>position-list</td><td>3</td><td>3</td><td>display, flex-direction, gap</td></tr>
+      </tbody>
+    </table></div>
+    <p class="tk-note"><b>59 declarations, and not one of them is a colour, a face, a border or a
+    surface.</b> No <code>color</code>, no <code>background</code>, no <code>border</code>, no
+    <code>fill</code>, no <code>box-shadow</code>, no <code>opacity</code>, no
+    <code>font-family</code>, no <code>font-size</code>, no <code>font-weight</code>. What is there is
+    <code>display</code>, <code>flex</code>, <code>flex-direction</code>,
+    <code>grid-template-columns</code>, <code>gap</code>, <code>align-items</code>,
+    <code>justify-content</code>, <code>flex-wrap</code>, <code>padding</code>, <code>margin</code>,
+    <code>min-width</code>, <code>max-width</code>, <code>position</code>, <code>bottom</code>,
+    <code>width</code> and <code>z-index</code>. <b>Sixteen properties, every one of them an
+    arrangement.</b> The rung is clean.</p>
+  </section>
+
+  <section class="tk-sec" id="stale">
+    <h2 data-n="02">Two of the six say they are assembled from something they are not</h2>
+    <p class="tk-note">Each file opens with an <b>Assembled from</b> line, and nothing reads it. Read
+    from the screens instead, by taking every element inside each pattern's own box across the 106
+    and asking which file owns its class:</p>
+    <div class="tk-tblwrap"><table class="tk-tbl">
+      <thead><tr><th>Pattern</th><th>Found inside, by owning file</th><th>Claimed, not found</th></tr></thead>
+      <tbody>
+        <tr><td>action-bar</td><td>button</td><td>-</td></tr>
+        <tr><td>browse-shell</td><td>catnav, card, state-block, chip, filters, skeleton, position, options, button</td><td><b>feed</b></td></tr>
+        <tr><td>card-grid</td><td>card, skeleton, options, yesno, iconbtn, position</td><td>-</td></tr>
+        <tr><td>detail-shell</td><td>card, chart, market, tabs, betpanel, event-detail, comments, bets-table</td><td>-</td></tr>
+        <tr><td>list-head</td><td>filters, toggle</td><td>-</td></tr>
+        <tr><td>position-list</td><td>position, skeleton</td><td><b>profile</b></td></tr>
+      </tbody>
+    </table></div>
+    <p class="tk-note"><b>browse-shell says it is assembled from <code>feed</code>, and the
+    containment runs the other way.</b> On <code>event-feed.html</code>, <code>&lt;main
+    class="feed"&gt;</code> opens at line 361 and <code>&lt;div class="cat-layout"&gt;</code> at line
+    469: the feed HOLDS the browse shell. Nothing renders wrong, and it is still worth correcting,
+    because an "assembled from" line that names a parent is the level arithmetic's blind spot written
+    down by hand.</p>
+    <p class="tk-note"><b>position-list says <code>profile</code>, and that stopped being true on
+    2026-08-03.</b> The record block in the stack is <code>.pos-record</code> with its
+    <code>.pos-figures</code> and <code>.pos-fig</code>, and those moved from
+    <code>profile.css</code> to <code>position.css</code> in the pass that fixed five misfiled
+    classes. The block is still there; the file that owns it is not.
+    <code>profile.css</code> owns seven classes today, <code>.av</code>, <code>.edit</code>,
+    <code>.gallery</code>, <code>.handle</code>, <code>.idrow</code>, <code>.name</code> and
+    <code>.who</code>, and none of them stands in a position list.</p>
+    <p class="tk-note"><b>Both lines were true when they were typed.</b> That is what a prose claim
+    with no reader does, and it is the argument for a page like this one existing at all rather than
+    for a check that runs on every edit. Backlog 46.</p>
+  </section>
+
+  <section class="tk-sec" id="threshold">
+    <h2 data-n="03">One slot in a pattern file stands on one screen</h2>
+    <p class="tk-note"><code>.read-col</code> is the reading column, eight declarations across three
+    rules in <code>browse-shell.css</code>, and it stands on <b>one screen</b>,
+    <code>ui-visual/terms.html</code>. The rule this rung enforces is that <b>two screens is a
+    candidate and it stays markup</b>, so one screen is two short.</p>
+    <p class="tk-note"><b>The reason it was written there is good and it is not the same question.</b>
+    The file says it: <i>the container owns the distance, not the block</i>. A margin on a block is a
+    fact about that block, so the next block dropped into the stack arrives with no distance again
+    and the defect returns one screen later. That argument is about WHERE the rule goes if it exists.
+    <b>The threshold is about WHETHER it exists yet</b>, and the two were answered as one.</p>
+    <p class="tk-note">It is named rather than moved, because deleting eight correct declarations to
+    put them back on the third screen is the kind of tidiness that costs more than it returns. What
+    it needs is a second and a third long document, and the honest state until then is <b>a slot
+    inside a pattern, below the threshold, written down</b>. Backlog 46.</p>
+  </section>
+
+  <!-- ============================= card-grid ========================= -->
+  <section class="tk-org" id="card-grid">
+    <h2>card-grid</h2>
+    <ul class="tk-holds">
+      <li>patterns/card-grid.css</li><li>26 lines</li><li>4 declarations</li><li>23 screens</li>
+      <li class="tk-decl">ASSEMBLED FROM card</li>
+    </ul>
+    <p class="tk-state"><b>display</b> grid <b>align-items</b> stretch <b>grid-template-columns</b>
+      repeat(auto-fit, minmax(min(100%, 300px), 1fr)) <b>gap</b> var(--space-16)</p>
+    <p class="tk-note">One brick, many of it, and that is still a composition: what the pattern
+    decides is the track, and the card decides nothing about where it stands. <b>It has no media
+    query</b>, and that is the finding rather than an omission. Four rules used to sit beside these:
+    three breakpoints stepping the grid two, three, four columns, and a category variant at auto-fill
+    240px. <b>All four were already dead</b>, the breakpoints losing to the auto-fit rule on source
+    order and the variant held off only by an <code>!important</code>. A fluid track needs no
+    breakpoints, so deleting the four is what made the shout removable without a card moving.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="grid">
+          <article class="card" data-cat="politics"><div class="card-body">
+            <div class="top"><span class="thumb">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter.</p></div></div>
+            <p class="prob-line">YES <span class="prob">38%</span></p>
+            <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+          </div></article>
+          <article class="card" data-cat="crypto"><div class="card-body">
+            <div class="top"><span class="thumb">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will Bitcoin close above $150,000 before October 1, 2026?</a><p class="why">Two failed runs at $140k, and the ETF flow has not turned.</p></div></div>
+            <p class="prob-line">YES <span class="prob">61%</span></p>
+            <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+          </div></article>
+          <article class="card" data-cat="culture"><div class="card-body">
+            <div class="top"><span class="thumb">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the Eurovision 2027 winner come from a first-time entrant?</a><p class="why">Three of the last ten went to a debut country.</p></div></div>
+            <p class="prob-line">YES <span class="prob">22%</span></p>
+            <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+          </div></article>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="grid">
+          <article class="card" data-cat="politics"><div class="card-body">
+            <div class="top"><span class="thumb">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter.</p></div></div>
+            <p class="prob-line">YES <span class="prob">38%</span></p>
+            <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+          </div></article>
+          <article class="card" data-cat="crypto"><div class="card-body">
+            <div class="top"><span class="thumb">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will Bitcoin close above $150,000 before October 1, 2026?</a><p class="why">Two failed runs at $140k, and the ETF flow has not turned.</p></div></div>
+            <p class="prob-line">YES <span class="prob">61%</span></p>
+            <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+          </div></article>
+          <article class="card" data-cat="culture"><div class="card-body">
+            <div class="top"><span class="thumb">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the Eurovision 2027 winner come from a first-time entrant?</a><p class="why">Three of the last ten went to a debut country.</p></div></div>
+            <p class="prob-line">YES <span class="prob">22%</span></p>
+            <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+          </div></article>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> The track is fluid and the card decides its own height, which is
+    what <code>align-items:stretch</code> buys: a card with a two-line question stands as tall as one
+    with three, so the row of buttons is at one height across the row. <b>Anti-rule.</b> The grid
+    never orders by anything but the list it was given. A track that promotes a card is a track with
+    an opinion, and the sort control above it is where an opinion belongs.</p>
+  </section>
+
+  <!-- ============================ browse-shell ======================= -->
+  <section class="tk-org" id="browse-shell">
+    <h2>browse-shell</h2>
+    <ul class="tk-holds">
+      <li>patterns/browse-shell.css</li><li>67 lines</li><li>19 declarations</li><li>77 screens</li>
+      <li class="tk-decl">ASSEMBLED FROM catnav, state-block, loadmore, tabs</li>
+      <li class="tk-on">its header also claims feed, and the feed holds IT</li>
+    </ul>
+    <p class="tk-state"><b>display</b> flex <b>flex-direction</b> column, row from 900px
+      <b>gap</b> 12, 20 from 900px <b>align-items</b> flex-start, stretch with no rail
+      <b>flex</b> 1 <b>min-width</b> 0</p>
+    <p class="tk-note">A rail beside a column, on 77 screens with <b>fourteen different sets of
+    content</b> in the column. That ratio is the argument for a pattern rather than a component: the
+    arrangement is stable and what it holds is not. The plate the two stand on did not come here with
+    them, because a two-stone surface is the page's material and not this arrangement's.</p>
+    <p class="tk-note"><b>The rail is empty in every screen's markup and hidden.</b> The real file is
+    <code>&lt;nav class="subcat" id="subcatRail" hidden&gt;&lt;/nav&gt;</code>, and a page script
+    fills it from a table of sub-categories and drops the <code>hidden</code>. So the specimen below
+    carries the markup that script produces. It is the <b>third</b> component in this system whose
+    visible content is not in its markup, after the card's odds bar and the chart's line, and all
+    three were found by putting the thing on a stand.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="cat-layout">
+          <nav class="subcat" aria-label="Sub-categories">
+            <p class="subcat-head">Politics sub-categories</p>
+            <ul>
+              <li aria-current="page"><button type="button" class="chip chip-lane">All <span class="chip-cnt">2K</span></button></li>
+              <li><button type="button" class="chip chip-lane">Trump <span class="chip-cnt">297</span></button></li>
+              <li><button type="button" class="chip chip-lane">Midterm Elections <span class="chip-cnt">537</span></button></li>
+              <li><button type="button" class="chip chip-lane">Congress <span class="chip-cnt">42</span></button></li>
+              <li><button type="button" class="chip chip-lane">Courts <span class="chip-cnt">30</span></button></li>
+            </ul>
+          </nav>
+          <div class="cat-main">
+            <div class="feed-head"><h2>Politics</h2></div>
+            <div class="grid">
+              <article class="card" data-cat="politics"><div class="card-body">
+                <div class="top"><span class="thumb">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter.</p></div></div>
+                <p class="prob-line">YES <span class="prob">38%</span></p>
+                <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+              </div></article>
+              <article class="card" data-cat="politics"><div class="card-body">
+                <div class="top"><span class="thumb">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the Senate confirm all cabinet nominees before June?</a><p class="why">Two seats are still held in committee.</p></div></div>
+                <p class="prob-line">YES <span class="prob">54%</span></p>
+                <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+              </div></article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="cat-layout">
+          <nav class="subcat" aria-label="Sub-categories">
+            <p class="subcat-head">Politics sub-categories</p>
+            <ul>
+              <li aria-current="page"><button type="button" class="chip chip-lane">All <span class="chip-cnt">2K</span></button></li>
+              <li><button type="button" class="chip chip-lane">Trump <span class="chip-cnt">297</span></button></li>
+              <li><button type="button" class="chip chip-lane">Midterm Elections <span class="chip-cnt">537</span></button></li>
+              <li><button type="button" class="chip chip-lane">Congress <span class="chip-cnt">42</span></button></li>
+              <li><button type="button" class="chip chip-lane">Courts <span class="chip-cnt">30</span></button></li>
+            </ul>
+          </nav>
+          <div class="cat-main">
+            <div class="feed-head"><h2>Politics</h2></div>
+            <div class="grid">
+              <article class="card" data-cat="politics"><div class="card-body">
+                <div class="top"><span class="thumb">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter.</p></div></div>
+                <p class="prob-line">YES <span class="prob">38%</span></p>
+                <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+              </div></article>
+              <article class="card" data-cat="politics"><div class="card-body">
+                <div class="top"><span class="thumb">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the Senate confirm all cabinet nominees before June?</a><p class="why">Two seats are still held in committee.</p></div></div>
+                <p class="prob-line">YES <span class="prob">54%</span></p>
+                <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+              </div></article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>The one rule here with a raised specificity has its reason at the rule.</b>
+    <code>.app-case .cat-layout:not(:has(.subcat,.toc)){align-items:stretch}</code> is 0,3,0 against
+    the 0,1,0 above it, so <b>specificity decides it and not the order of the files</b>, which is what
+    a pattern is supposed to avoid needing. With no rail there is nothing to align to, so the column
+    takes the full height instead of hanging at the top of a row it is the only member of. The
+    selector names both rails because the slot takes more than one, and widening it was measured
+    rather than reasoned: a no-op on 76 of the 77.</p>
+    <p class="tk-note"><b>Rule.</b> One rail, one column, and the column is <code>min-width:0</code>
+    so a long word in it cannot push the rail off the screen. <b>Anti-rule.</b> The rail is never the
+    only route to a sub-category. It vanishes below 900px, and a destination that exists only in a
+    block the narrow screen does not draw is a destination half the users do not have.</p>
+  </section>
+
+  <!-- ============================ detail-shell ====================== -->
+  <section class="tk-org" id="detail-shell">
+    <h2>detail-shell</h2>
+    <ul class="tk-holds">
+      <li>patterns/detail-shell.css</li><li>17 lines</li><li>8 declarations</li><li>11 screens</li>
+      <li class="tk-decl">ASSEMBLED FROM card, chart, market, tabs, betpanel</li>
+    </ul>
+    <p class="tk-state"><b>display</b> flex <b>flex-direction</b> column, row from 760px
+      <b>gap</b> var(--space-16) <b>align-items</b> stretch, flex-start from 760px
+      <b>flex</b> 1 <b>min-width</b> 0</p>
+    <p class="tk-note">A content column beside a panel, on every one of the eleven event-detail
+    states. Eight declarations, and the whole of what they say is <b>stacked below 760 and side by
+    side above it</b>. The plate <code>.ed-main</code> stands on and the edge it drops did not come
+    here: those are the page's surface and they are in <code>base.css</code>.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="ed-layout">
+          <div class="ed-main">
+            <div class="ed-head">
+              <span class="ed-thumb">thumbnail placeholder</span>
+              <div>
+                <span class="ed-cat">Politics &middot; One-time event</span>
+                <h2 class="ed-q">Will the US government shut down before March 1, 2027?</h2>
+                <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+                <div class="ed-oddsbar" aria-hidden="true"><span class="track"><span class="fill" style="width:38%"></span></span></div>
+              </div>
+            </div>
+            <div class="ed-chart-area">
+              <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+              <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline points="0.0,59.0 25.0,56.0 50.0,60.0 75.0,64.0 100.0,53.0 125.0,57.0 150.0,50.0 175.0,55.0 200.0,51.0 225.0,56.0 250.0,47.0 275.0,43.0 300.0,62.0"/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
+            </div>
+          </div>
+          <aside class="bet-panel">
+            <div class="bp-inner">
+              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+              <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">62%</span></button></div>
+              <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+              <button type="button" class="btn btn-primary btn-md btn-block">Confirm bet</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="ed-layout">
+          <div class="ed-main">
+            <div class="ed-head">
+              <span class="ed-thumb">thumbnail placeholder</span>
+              <div>
+                <span class="ed-cat">Politics &middot; One-time event</span>
+                <h2 class="ed-q">Will the US government shut down before March 1, 2027?</h2>
+                <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+                <div class="ed-oddsbar" aria-hidden="true"><span class="track"><span class="fill" style="width:38%"></span></span></div>
+              </div>
+            </div>
+            <div class="ed-chart-area">
+              <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+              <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline points="0.0,59.0 25.0,56.0 50.0,60.0 75.0,64.0 100.0,53.0 125.0,57.0 150.0,50.0 175.0,55.0 200.0,51.0 225.0,56.0 250.0,47.0 275.0,43.0 300.0,62.0"/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
+            </div>
+          </div>
+          <aside class="bet-panel">
+            <div class="bp-inner">
+              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+              <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">62%</span></button></div>
+              <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+              <button type="button" class="btn btn-primary btn-md btn-block">Confirm bet</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> The panel is second in the DOM and first in importance, which is
+    the mobile-first decision made once: stacked, the question and the odds come before the form,
+    because a person cannot decide an amount before they have read what they are deciding.
+    <b>Anti-rule.</b> The panel never scrolls out of reach on the wide layout and never covers the
+    question on the narrow one. It is a dock at the foot below 760px for exactly that reason.</p>
+  </section>
+
+  <!-- ============================== list-head ======================= -->
+  <section class="tk-org" id="list-head">
+    <h2>list-head</h2>
+    <ul class="tk-holds">
+      <li>patterns/list-head.css</li><li>23 lines</li><li>12 declarations</li><li>71 screens</li>
+      <li class="tk-decl">ASSEMBLED FROM a heading and filters</li>
+    </ul>
+    <p class="tk-state"><b>display</b> flex <b>flex-wrap</b> wrap <b>align-items</b> center
+      <b>justify-content</b> space-between <b>gap</b> 8 / 16 <b>margin</b> 0
+      <b>margin-bottom</b> 8, then 0 <b>padding-bottom</b> 0</p>
+    <p class="tk-note">A title on one side and the controls that act on the list on the other,
+    wrapping to two rows when there is no room for one. It stands on 71 screens and <b>44 of them
+    carry controls</b>; the other 27 are a title with nothing to sort, which is why the row is
+    <code>space-between</code> and not a two-column grid: one child has to look right alone.</p>
+    <p class="tk-note"><b>The heading's TYPE is not in this file and that is the boundary.</b> A
+    display face and its colour are what the block looks like, so they stay in
+    <code>feed.css</code>. This file is the row. Everything it says about the heading is
+    <code>margin:0</code>, which is an arrangement.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="feed-head">
+          <h2>Trending</h2>
+          <div class="feed-controls">
+            <details class="filter-menu">
+              <summary aria-label="Sort by"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg><span>Sort: <span>Trending</span></span><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="filter-panel"><ul role="radiogroup" aria-label="Sort by">
+                <li><label><input type="radio" name="sort-d" value="Trending" checked> Trending</label></li>
+                <li><label><input type="radio" name="sort-d" value="New"> New</label></li>
+                <li><label><input type="radio" name="sort-d" value="Closing soon"> Closing soon</label></li>
+              </ul></div>
+            </details>
+            <details class="filter-menu">
+              <summary aria-label="Frequency"><span>Frequency: <span>All</span></span><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="filter-panel"><ul role="radiogroup" aria-label="Frequency">
+                <li><label><input type="radio" name="freq-d" value="All" checked> All</label></li>
+                <li><label><input type="radio" name="freq-d" value="One-time"> One-time</label></li>
+                <li><label><input type="radio" name="freq-d" value="Daily"> Daily</label></li>
+              </ul></div>
+            </details>
+          </div>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="feed-head">
+          <h2>Trending</h2>
+          <div class="feed-controls">
+            <details class="filter-menu">
+              <summary aria-label="Sort by"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg><span>Sort: <span>Trending</span></span><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="filter-panel"><ul role="radiogroup" aria-label="Sort by">
+                <li><label><input type="radio" name="sort-l" value="Trending" checked> Trending</label></li>
+                <li><label><input type="radio" name="sort-l" value="New"> New</label></li>
+                <li><label><input type="radio" name="sort-l" value="Closing soon"> Closing soon</label></li>
+              </ul></div>
+            </details>
+            <details class="filter-menu">
+              <summary aria-label="Frequency"><span>Frequency: <span>All</span></span><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="filter-panel"><ul role="radiogroup" aria-label="Frequency">
+                <li><label><input type="radio" name="freq-l" value="All" checked> All</label></li>
+                <li><label><input type="radio" name="freq-l" value="One-time"> One-time</label></li>
+                <li><label><input type="radio" name="freq-l" value="Daily"> Daily</label></li>
+              </ul></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>The radio group names differ between the two rows above, and that is the
+    same lesson the organisms page paid for.</b> A form control name is document-wide, so two copies
+    of one specimen share a group unless they are told apart, and clicking a sort option in one row
+    would uncheck the other. Here it is fixable because <code>filters.css</code> keys off
+    <code>:checked</code> and never off a name; the tab set could not be fixed that way and is drawn
+    once. Backlog 45.</p>
+    <p class="tk-note"><b>Rule.</b> Each control shows its CURRENT value in its label, so the state
+    of the list is readable without opening anything. <b>Anti-rule.</b> The head never holds an
+    action that creates something. It describes and it filters; a control that adds belongs where the
+    thing is added.</p>
+  </section>
+
+  <!-- ============================ position-list ===================== -->
+  <section class="tk-org" id="position-list">
+    <h2>position-list</h2>
+    <ul class="tk-holds">
+      <li>patterns/position-list.css</li><li>15 lines</li><li>3 declarations</li><li>13 screens</li>
+      <li class="tk-decl">ASSEMBLED FROM position, skeleton</li>
+      <li class="tk-on">its header also claims profile, which stopped owning those classes</li>
+    </ul>
+    <p class="tk-state"><b>display</b> flex <b>flex-direction</b> column <b>gap</b> var(--space-8)</p>
+    <p class="tk-note"><b>Three declarations, and it is a pattern.</b> That is the clearest case on
+    this page for why the rung exists at all: the row carries its own stone, its own edge and its own
+    ink, and the one thing a row cannot know about itself is that there are others and how far away
+    they are. Thirteen screens, one list each.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="pos-list">
+          <article class="pos">
+            <div class="pos-top"><span class="pos-q">Will the US government shut down before March 1, 2027?</span><span class="pos-side pos-yes">YES</span></div>
+            <div class="pos-figures"><span class="pos-fig">Stake<b>$5.00</b></span><span class="pos-fig">Current value<b>$5.40</b></span><span class="pos-fig">Potential payout<b>$13.20</b></span><span class="pos-fig">Avg price<b>38%</b></span></div>
+            <span class="pos-status">Open &middot; just placed</span>
+          </article>
+          <article class="pos">
+            <div class="pos-top"><span class="pos-q">Will Bitcoin close above $150,000 before October 1, 2026?</span><span class="pos-side pos-yes">YES</span></div>
+            <div class="pos-figures"><span class="pos-fig">Stake<b>$25.00</b></span><span class="pos-fig">Current value<b>$31.80</b></span><span class="pos-fig">Potential payout<b>$41.00</b></span><span class="pos-fig">Avg price<b>61%</b></span></div>
+            <span class="pos-status">Open</span>
+          </article>
+          <article class="pos">
+            <div class="pos-top"><span class="pos-q">Will the Eurovision 2027 winner come from a first-time entrant?</span><span class="pos-side pos-no">NO</span></div>
+            <div class="pos-figures"><span class="pos-fig">Stake<b>$10.00</b></span><span class="pos-fig">Current value<b>$12.60</b></span><span class="pos-fig">Potential payout<b>$14.30</b></span><span class="pos-fig">Avg price<b>70%</b></span></div>
+            <span class="pos-status">Open</span>
+          </article>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="pos-list">
+          <article class="pos">
+            <div class="pos-top"><span class="pos-q">Will the US government shut down before March 1, 2027?</span><span class="pos-side pos-yes">YES</span></div>
+            <div class="pos-figures"><span class="pos-fig">Stake<b>$5.00</b></span><span class="pos-fig">Current value<b>$5.40</b></span><span class="pos-fig">Potential payout<b>$13.20</b></span><span class="pos-fig">Avg price<b>38%</b></span></div>
+            <span class="pos-status">Open &middot; just placed</span>
+          </article>
+          <article class="pos">
+            <div class="pos-top"><span class="pos-q">Will Bitcoin close above $150,000 before October 1, 2026?</span><span class="pos-side pos-yes">YES</span></div>
+            <div class="pos-figures"><span class="pos-fig">Stake<b>$25.00</b></span><span class="pos-fig">Current value<b>$31.80</b></span><span class="pos-fig">Potential payout<b>$41.00</b></span><span class="pos-fig">Avg price<b>61%</b></span></div>
+            <span class="pos-status">Open</span>
+          </article>
+          <article class="pos">
+            <div class="pos-top"><span class="pos-q">Will the Eurovision 2027 winner come from a first-time entrant?</span><span class="pos-side pos-no">NO</span></div>
+            <div class="pos-figures"><span class="pos-fig">Stake<b>$10.00</b></span><span class="pos-fig">Current value<b>$12.60</b></span><span class="pos-fig">Potential payout<b>$14.30</b></span><span class="pos-fig">Avg price<b>70%</b></span></div>
+            <span class="pos-status">Open</span>
+          </article>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> One distance between every row, and it is the same distance
+    whether the row is open, won or lost. <b>Anti-rule.</b> An open position is never green or red.
+    Those two colours mean resolved, and a row that is merely up today borrowing the winning colour
+    tells a person they have won something they have not.</p>
+  </section>
+
+  <!-- ============================== action-bar ====================== -->
+  <section class="tk-org" id="action-bar">
+    <h2>action-bar</h2>
+    <ul class="tk-holds">
+      <li>patterns/action-bar.css</li><li>33 lines</li><li>13 declarations</li><li>3 screens</li>
+      <li class="tk-decl">ASSEMBLED FROM button</li>
+      <li class="tk-on">a pattern by one screen, and the file says so</li>
+    </ul>
+    <p class="tk-state"><b>display</b> flex <b>position</b> sticky, static on .static and .flat
+      <b>bottom</b> 0 <b>padding</b> 12, then 8 0 0 <b>gap</b> 8 <b>margin-top</b> 12
+      <b>z-index</b> var(--z-dock) <b>&gt;a, &gt;button</b> flex 1 <b>&gt;a&gt;button</b> width 100%</p>
+    <p class="tk-note"><b>Three screens is the threshold and this clears it exactly.</b> The file says
+    that out loud rather than rounding up, which is the right way to carry a number that could fall:
+    lose one of my-profile, wallet or how-it-works and the rule is that these thirteen declarations
+    go back to being markup.</p>
+    <p class="tk-note"><b>Its surface stays in <code>account.css</code>, and that is the one exception
+    this rung makes.</b> The bar's stone, its top hairline and its two rounded corners are not the
+    page plate, so they do not follow the frame into <code>base.css</code>, and they are not
+    composition, so they do not come here. They are the paint of a component. The same split runs
+    through <code>.flat</code>: the position is here and the three declarations that take the surface
+    away are there.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="cta-bar flat">
+          <button class="btn btn-primary btn-md" type="button">Add funds</button>
+          <a href="#"><button class="btn btn-secondary btn-md" type="button">Open Wallet</button></a>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="cta-bar flat">
+          <button class="btn btn-primary btn-md" type="button">Add funds</button>
+          <a href="#"><button class="btn btn-secondary btn-md" type="button">Open Wallet</button></a>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>Two selectors for one sentence, and the difference is real.</b>
+    <code>.cta-bar&gt;a{flex:1}</code> and <code>.cta-bar&gt;button{flex:1}</code>, because the bar
+    holds a bare button as often as an anchor. The second is written as a CHILD selector, unlike the
+    rule it came from: a button nested inside the anchor is not a flex item of this bar, and
+    <code>flex:1</code> on it would mean nothing. That is one character deciding whether a rule does
+    anything.</p>
+    <p class="tk-note"><b>Rule.</b> One or two actions, never three, and the primary one first.
+    <b>Anti-rule.</b> The bar never holds a destructive action beside a commit. Sticky means a thumb
+    is already near it, and the two things a thumb can reach should not be "confirm" and "delete".</p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="04">The rung is clean, and what is still open on it</h2>
+    <p class="tk-note"><b>The contract holds where it counts.</b> 59 declarations, 16 properties, and
+    every one of them an arrangement: no colour, no face, no border, no surface, in any of the six.
+    Five of seven screen counts are exact and two are one screen light because the tree grew from 105
+    to 106.</p>
+    <p class="tk-note"><b>Three things are open and each is written down rather than fixed here.</b>
+    Two <code>Assembled from</code> lines have gone stale, one naming a parent as a child and one
+    naming a file that stopped owning the classes on 2026-08-03. And <code>.read-col</code> is a slot
+    in a pattern file standing on one screen, two short of the threshold the rung enforces. Backlog
+    46.</p>
+    <p class="tk-note"><b>And the kit is now a page per level, all four rungs.</b> Ten atoms, fourteen
+    molecules, thirteen organisms, six patterns, on top of the four foundation pages. What is left is
+    step 5: one audit run, as a report.</p>
+  </section>
+
+</div>
+</body>
+</html>

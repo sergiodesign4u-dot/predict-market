@@ -77,11 +77,14 @@
     <p class="tk-note">A class can appear a thousand times in a document. <b>An id is unique by
     definition</b>, so a rule written against one is not a rule about a component: it is a rule about
     <b>one instance</b> of it. Counted across all 51 stylesheets:</p>
-    <div class="tk-bars">
-      <div class="tk-bar"><span>tabs.css</span><u class="c-bg-plate"></u><i>6 rules, 10 ids</i></div>
-      <div class="tk-bar"><span>hero.css</span><u class="c-bg-plate"></u><i>2 paints, 2 ids</i></div>
-      <div class="tk-bar"><span>base.css</span><u class="c-bg-plate"></u><i>1 rule, 1 id</i></div>
-    </div>
+    <div class="tk-tblwrap"><table class="tk-tbl">
+      <thead><tr><th>File</th><th>Keyed to an id</th><th>The ids</th></tr></thead>
+      <tbody>
+        <tr><td>tabs.css</td><td>6 rules</td><td><code>#edtab-comments</code>, <code>#edtab-holders</code>, <code>#edtab-positions</code>, <code>#edtab-activity</code>, <code>#ptab-record</code>, <code>#ptab-wins</code>, <code>#ptab-resolved</code>, <code>#p-record</code>, <code>#p-wins</code>, <code>#p-resolved</code></td></tr>
+        <tr><td>hero.css</td><td>2 paints</td><td><code>url(#hfyes)</code>, <code>url(#hfvol)</code></td></tr>
+        <tr><td>base.css</td><td>1 rule</td><td><code>#rmSidebar</code>, and it is correct</td></tr>
+      </tbody>
+    </table></div>
     <p class="tk-note"><code>tabs.css</code> writes <code>#edtab-comments:checked ~
     .ed-panel-comments</code> and nine more of that shape, so the event tab set and the profile tab
     set each work exactly once per document. <code>hero.css</code> writes

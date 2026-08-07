@@ -1,11 +1,11 @@
 # ui-kit/ - the vitrine, being rebuilt from 2026-08-07
 
-The kit shows the system to a person and it holds no product code. Right now it holds eight pages
-plus its stylesheet and its registry: `overview.html`, which says what is happening, **all four
-foundation pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`), and the
-component pages by level, `vitrine.html` for the ten atoms, `molecules.html` for the fourteen at
-level 2 and `organisms.html` for the thirteen at level 3. `_page.css` is the stand furniture they all
-share and `_nav.js` is the route.
+The kit shows the system to a person and it holds no product code. It holds nine pages plus its
+stylesheet and its registry: `overview.html`, which says what is happening, **all four foundation
+pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`), and **a page per rung, all
+four**: `vitrine.html` for the ten atoms, `molecules.html` for the fourteen at level 2,
+`organisms.html` for the thirteen at level 3 and `patterns.html` for the six on the fourth rung.
+`_page.css` is the stand furniture they all share and `_nav.js` is the route.
 
 **A page per LEVEL, not a page per component.** Forty pages of one component each would be forty
 navigations to compare two chips. A level is the unit a person actually reads, and the level is where
@@ -124,9 +124,29 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
    backdrop, one per document. Four on a page cannot do that, so the stand uses the plain `open`
    attribute and `.tk-dlg` pins it static. **Exactly two things differ, the position and the
    backdrop.**
-5. **One audit run**, as a report. **Patterns** is the rung after this one: six files in
-   `components/patterns/`, criterion repetition rather than nesting, five on the anchors and
-   `action-bar` on none of the 41.
+   **4d patterns is DONE 2026-08-08, `patterns.html`**, and it is a page about a measurement rather
+   than about a specimen, because the rung has almost nothing to look at. **The contract holds where
+   it counts: 59 declarations across the six files, 16 properties, and not one of them is a colour, a
+   face, a border or a surface.** Every property is an arrangement. Five of seven screen counts in
+   the file headers are exact and two are one screen light, because they were typed when the painted
+   tree was 105 screens and it is 106; that is the price of the rule that a measurement is an act,
+   and it is one screen against the seven days the machine cost.
+
+   **What it found: a prose claim with no reader goes stale.** Each pattern file opens with an
+   `Assembled from` line and nothing checks it. Read from the screens instead, **two of the six are
+   wrong**: `browse-shell` names `feed`, and `main.feed` is its PARENT (line 361 against line 469 on
+   `event-feed.html`), which is the level arithmetic's blind spot written down by hand;
+   `position-list` names `profile`, and the record block's classes moved to `position.css` on
+   2026-08-03 in the pass that fixed five misfiled classes. And **`.read-col` is a slot in a pattern
+   file standing on ONE screen**, two short of the threshold the rung exists to enforce, because the
+   argument for WHERE the rule goes was answered as if it were the argument for WHETHER it exists
+   yet. Backlog 46.
+
+   **A third component whose visible content is not in its markup.** The browse shell's rail ships as
+   `<nav class="subcat" id="subcatRail" hidden></nav>` and a page script fills it. After the card's
+   odds bar and the chart's polyline, that is three, and all three were found by putting the thing on
+   a stand rather than by reading a file.
+5. **One audit run**, as a report. That is what is left.
 
 The five anchors: event feed, event detail, active bets, deposit, sign in, with their loading, empty,
 error and logged-out variants. 41 screens of the 106.
