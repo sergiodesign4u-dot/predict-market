@@ -44,6 +44,95 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - Step 5, the audit, and it found six defects in itself and one in the product
+
+The last step of the rebuild. **115 documents at two widths in two themes, 460 renders**: contrast,
+overflow, focus, accessible names, alt text, duplicate ids, controls the User Agent is still
+painting, broken links and touch targets. The full account is
+[`ui-kit/docs/audit.md`](../ui-kit/docs/audit.md). The instrument was written in the scratchpad, run
+once and deleted; nothing runs any of it on a schedule.
+
+**The ratio is the report.** Six of the seven findings were in the instrument, and three of the six
+were at a scale that would have been believed.
+
+### The three that would have been believed
+
+**434 daylight contrast failures.** The batch waited with
+`await new Promise(r => { f.onload = r; setTimeout(r, 900) })`, which resolves on **whichever fires
+first**, so a page slower than 900ms was measured mid-load and the theme attribute was set on a
+document about to be replaced. `.btn-secondary` came back at 2.40:1 on a hundred screens. Measured on
+one of them with the load awaited: **13.93:1**. The button was never wrong. Fixed by awaiting
+`onload` with a guard rather than racing it, writing the theme to `localStorage` before the load so
+the page's own boot agrees instead of being corrected afterwards, and settling two frames.
+
+**212 overflows.** Every screen reported `.dropdown` past the right edge while the page scroll was 0,
+which is the contradiction that gave it away. Chrome puts a closed `<details>`'s content in
+`::details-content` with `content-visibility:hidden`: **the child still computes `display:block`,
+still returns a 260x185 rectangle, and is never painted**, and nothing in its own computed style says
+so.
+
+**14,377 undersized touch targets.** The course panel's own rows, 107 per page. The panel is chrome
+and not the product.
+
+### The three smaller ones
+
+A `feTurbulence` noise texture is not a gradient, and bailing on any `background-image` left **191 of
+452** text elements on one page unmeasured. Text at `font-size:0` is a placeholder label, not text,
+and it produced 12 failures at 1:1. And the CSSOM walk found **0** `:focus-visible` rules in a system
+that writes 18, because `index.css` is nothing but `@import` and an imported sheet's rules live on
+`.styleSheet.cssRules` rather than on `.cssRules`.
+
+### What held
+
+| | |
+|---|---|
+| contrast failures in the product, both themes, both widths | **0** of 29,929 and 29,984 text elements per pass |
+| text the instrument could not measure | **0** |
+| elements past the right edge that cannot scroll | **0** |
+| documents with horizontal page scroll | **0** of 115 |
+| focusables inside `.app-case` taking the ring, walked with real focus | **56 of 56** |
+| `:focus-visible` selectors that REMOVE a ring without replacing it | **0** of 18, in 9 files |
+| links, buttons or summaries with no accessible name | **0** |
+| images without `alt`, documents with a duplicated id | **0**, **0** |
+| internal links / broken | **15,880** / **0** |
+
+**Focus is one rule.** `base.css` writes a bare `:focus-visible{outline:2px solid var(--focus-ring);
+outline-offset:2px}`, which has no subject and therefore matches everything, so coverage is 100 per
+cent **by construction rather than by enumeration**. Thirteen of the eighteen selectors draw, five
+refine an offset or a radius, and none removes.
+
+### The one product finding, and it is a decision rather than a bug
+
+**WCAG 2.5.8 AA is met and the project's own floor is not.** 2,692 of 2,709 product touch targets at
+390 clear 24x24; **1,787 of 2,709 miss 44x44**, which is this project's own standard from the
+Stage-08 critique. The 17 below AA are wide short rows, not small dots.
+
+The 1,787 are **one decision repeated**: `.chip-quiet` renders 38px tall on 530 elements,
+`.chip-lane` 41px on 312, `<summary>` 35 to 36px on 234, `.logo-btn` 40px on 105. **The system builds
+to 36 and 38 and the standard says 44**, and that is backlog 40's question in another form: three
+control heights are declared and twelve render, because 192 of 317 boxed controls take their height
+from padding plus font size plus a border. A control that read a height token would be one edit from
+44; a control that computes its height from three other values is 317 edits away. Backlog 49, filed
+pointing at 40.
+
+### Two things it confirmed rather than found
+
+**420 controls per render wear a system class and the User Agent's `2px outset` and
+`rgb(239,239,239)`, and 0 of them are visible.** All are `.chip-amount` in closed dialogs outside
+`.app-case`, which is backlog 42 read from the source and now counted across the whole tree. And
+**0 of the 13 document-unique ids the system depends on appears twice on any screen**, which is the
+other half of what `organisms.html` found: the coupling exists and has never fired. Backlog 45.
+
+**And one it re-measured upward.** The dead footer promises are **23 distinct labels over 1,902
+anchors**, 17 of them on 105 screens each, against the 16 labels and 1,664 links item 27 records.
+Two of the 23 are the same destination under two names, and one is `Privacy Policynot built`, a
+string that lost a space and a tag rather than a label. Backlog 48.
+
+**With this the rebuild is done**: five steps, nine hand-written pages, four foundation pages and a
+page per level for all four rungs, no generator, no gate, and a report at the end of each step.
+
+---
+
 ## 2026-08-08 - Step 4d, the patterns, and a prose claim with no reader
 
 **The fourth rung, and the only one whose criterion is repetition rather than nesting.** Six files,

@@ -9,7 +9,7 @@ holds the record of what was done. This holds what is not.
 Unlike `decisions.md`, this file is edited: a row is struck when the item closes, with the date and
 the entry in `decisions.md` that closed it.
 
-**Open: 38.**
+**Open: 41.**
 
 The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
 twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
@@ -137,6 +137,22 @@ measured on the shipped screens, not inferred from a rule.
 | 24 | What a screen reader is told when something changes, re-measured | Design System step 2, 2026-08-02, replacing item 4 | Item 4 read "`aria-live` / `role=status` on 9 screens of 105; a toast appears and announces nothing". Measured this pass in BOTH trees: the 9 screens are identical in grey and in colour, and the toast on `toasts.html` already carries `role="status" aria-live="polite"` and `role="alert" aria-live="assertive"` on its two groups. So the premise as written is closed. What is actually missing is the FORM ERROR axis: `aria-invalid` on 0 of 105 screens and `aria-describedby` on 0 of 105, while `deposit-minimum-not-met`, `event-detail-bet-error` and `sign-in-error` all ship a visible error message that is tied to no field. `aria-expanded` at 0 is correct and not a gap: every disclosure here is a native `<details>` |
 
 | 44 | **The drawer toggle is 36px and the switch under it is 44, in one file** | Design System step 4b+, 2026-08-08, measured at 390 on the seven kit pages | `course-chrome.css` writes `.rm-toggle{width:var(--control-36);height:var(--control-36)}` and, twelve lines down, `.theme-switch{min-height:var(--control-44)}`. Measured rather than read: **36x36 rendered** at 390 on all seven kit pages, and the toggle is the ONLY way to open the route below 860px, so it is the one control on the page a person has no alternative to. The 44px floor is this project's own, set by the Stage-08 critique. **It is one value in one file and it reaches 106 painted screens plus the kit**, which is exactly why it is a row here and not an edit taken in passing: the toggle is `position:fixed` over the top-left of every screen and growing it by 8px moves it over content that was laid out around 36. Owner: Stage 12 (Handoff), with the responsive pass |
+
+---
+
+## Found by the audit (3)
+
+Design System step 5, 2026-08-08. One run over 115 documents at two widths in two themes, 460
+renders. The full account is in [`../ui-kit/docs/audit.md`](../ui-kit/docs/audit.md), including the
+six corrections the instrument needed before its numbers could be believed. **Two of the three below
+are re-measurements of rows that already exist**, and they are separate rows because the numbers
+moved and because each carries something the original did not.
+
+| # | Item | Source | Note |
+|---|---|---|---|
+| 47 | **The primitive ramps on `colour.html` print each step's number on the colour it names** | Design System step 5, the audit, 2026-08-08 | 37 readings under 4.5:1 in Vault and 58 in Daylight, and they are the ONLY contrast failures anywhere in 460 renders. `600` on `p-bone-600` reads **1.36:1**; `930` on `p-graphite-930` reads **2.38:1** in Daylight. A 9px label on its own swatch cannot clear 4.5 and arguably should not, because the swatch is the specimen and the number is its name, not a word to read. It is a row here rather than a shrug because **a number nobody can read is a number that gets copied wrong**, and this page exists so somebody can copy a step name. The fix is a label that is not ON the swatch, or a label whose ink flips with the swatch's luminance. Owner: Stage 09 (Design System) |
+| 48 | **Twenty-three labels and 1,902 anchors go to `href="#"`, and one of them is a broken string** | Design System step 5, the audit, 2026-08-08, re-measuring items 27 and 28 | The record in item 27 says 16 distinct labels over 1,664 links; measured across the 106 painted screens today it is **23 distinct labels over 1,902 anchors**, and **17 stand on 105 screens each**: Sports, Trending topics, Leaderboard, API / Developers, Status, Help Center, FAQ, Contact, About, Careers, Press, Brand, Terms, Privacy, Privacy Policy, Responsible play, Geo restrictions. **Two are the same destination under two names** (`Privacy` and `Privacy Policy`), and there are two strays on one screen each, `Privacy policy` (different case) and **`Privacy Policynot built`**, which is not a label at all but a string that lost a space and a tag. This does not replace 27 and 28, which own the map half and the component half; it is the count they were written against, updated, plus the copy defect neither of them names. Owner: Stage 03 (IA) for the destinations, `voice/` for the two names of one thing |
+| 49 | **1,787 of 2,709 product touch targets are under the project's own 44px floor, and it is item 40's question** | Design System step 5, the audit, 2026-08-08, measured at 390 inside `.app-case` on 106 screens | **WCAG 2.5.8 AA (24x24) is met: 2,692 of 2,709 clear it**, and the 17 that do not are wide short rows (`.market-head` 310x18, `.hh-name` 202x20, two prose links at 83x23), not small dots. **The project's own 44x44 floor, set by the Stage-08 critique, is missed by 1,787**: 1,413 too short, 94 too narrow, 280 both. It is one decision repeated rather than a hundred mistakes: `.chip-quiet` renders 38px tall on 530 elements, `.chip-lane` 41px on 312, `<summary>` 35 to 36px on 234, `.logo-btn` 40px on 105, `.btn-primary`/`.btn-secondary` 36px on 138, `.btn-bare` 25px on 72, `.chip-rail` 26px on 63, `.icon-btn-tile` 28px on 27. **The system builds to 36 and 38 and the standard says 44.** This is not a separate fix: item 40 already records that three control heights are declared and twelve render, because 192 of 317 boxed controls take their height from padding plus font size plus a border. A control that read a height token would be one edit from 44; a control that computes its height from three other values is 317 edits away. Owner: Stage 09 (Design System), with item 40 |
 
 
 ---

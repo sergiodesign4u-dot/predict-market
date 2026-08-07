@@ -79,7 +79,8 @@ window.KIT_NAV = [
     items: [
       { label: 'Census',        page: 'docs/census.md',        done: true },
       { label: 'Inventory',     page: 'docs/inventory.md',     done: true },
-      { label: 'Consolidation', page: 'docs/consolidation.md', done: true }
+      { label: 'Consolidation', page: 'docs/consolidation.md', done: true },
+      { label: 'Audit',         page: 'docs/audit.md',         done: true }
     ]
   }
 ];

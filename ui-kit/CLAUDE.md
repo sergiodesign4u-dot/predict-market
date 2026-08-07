@@ -146,7 +146,31 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
    `<nav class="subcat" id="subcatRail" hidden></nav>` and a page script fills it. After the card's
    odds bar and the chart's polyline, that is three, and all three were found by putting the thing on
    a stand rather than by reading a file.
-5. **One audit run**, as a report. That is what is left.
+5. **One audit run, as a report. DONE 2026-08-08, `docs/audit.md`.** 115 documents at two widths in
+   two themes, **460 renders**: contrast, overflow, focus, accessible names, alt, duplicate ids,
+   controls the User Agent is still painting, links and touch targets.
+
+   **It found six defects in itself and one in the product, and that ratio is the report.** Three of
+   the six would have been believed: **434** daylight contrast failures (the batch resolved on
+   `onload` OR a 900ms timeout, whichever came first, so slow pages were measured mid-load; the same
+   button measures 13.93:1 when the load is awaited), **212** overflows (a closed `<details>` puts
+   its content in `::details-content` with `content-visibility:hidden`, so the child has a box, a
+   computed `display:block` and is never painted), and **14,377** undersized targets (the course
+   panel's own rows, which are chrome and not the product). The other three: a `feTurbulence` noise
+   texture is not a gradient and left 42 per cent of one page unmeasured; text at `font-size:0` is a
+   placeholder; and the CSSOM found **0** `:focus-visible` rules because `index.css` is nothing but
+   `@import` and an imported sheet's rules live on `.styleSheet.cssRules`.
+
+   **What held.** Contrast **0 failures in the product** in either theme at either width, over 29,929
+   and 29,984 text elements per pass, with **0 unmeasured**. Overflow **0**, page scroll **0** on all
+   115. Focus is **one universal rule** in `base.css` and 56 of 56 focusables inside `.app-case` take
+   the ring, with **0** of the system's 18 `:focus-visible` selectors removing one. Names **0**, alt
+   **0**, duplicated ids **0**. Links **0 broken** of 15,880.
+
+   **The one product finding: the project's own 44px touch floor is not what the system builds to.**
+   WCAG 2.5.8 AA is met (2,692 of 2,709 clear 24x24), and **1,787 of 2,709 miss 44x44**, dominated by
+   a 38px chip on 530 elements. It is backlog 40's question in another form and it is filed pointing
+   at it. Backlog 47, 48, 49.
 
 The five anchors: event feed, event detail, active bets, deposit, sign in, with their loading, empty,
 error and logged-out variants. 41 screens of the 106.
