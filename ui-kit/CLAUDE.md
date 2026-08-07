@@ -1,8 +1,13 @@
 # ui-kit/ - the vitrine, being rebuilt from 2026-08-07
 
-The kit shows the system to a person and it holds no product code. Right now it holds three pages:
-`overview.html`, which says what is happening, `vitrine.html`, the ten atoms in every face they wear
-with both themes side by side, and `_page.css`, the stand furniture the three index pages use.
+The kit shows the system to a person and it holds no product code. Right now it holds three pages
+plus its stylesheet: `overview.html`, which says what is happening, `vitrine.html`, the ten atoms in
+every face they wear with both themes side by side, `icons.html`, the first foundation page, and
+`_page.css`, the stand furniture they all share.
+
+**The foundations are `colour`, `typography`, `geometry` and `icons`, one flat page each**, and they
+are the visible half of step 3. A value may only change in that step, and it changes in the page and
+in `components/` together.
 
 ## What was here and why it is not
 
@@ -42,8 +47,17 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
    `.amount-input` takes its ground and its ink from the User Agent and shows as a white box in the
    dark theme**, and **the card odds bar exists in no screen's markup at all**, being written by a
    page script at run time, which is where its 213 uses came from.
-3. **Consolidation.** One pass where a value may change: the radius scale, the hairline, the icon
-   stroke, the size ramp. Every change measured before and after. Output: `docs/consolidation.md`.
+3. **Consolidation, and it carries the foundations.** One pass where a value may change, in four
+   pages plus the value work. **3a icons is DONE, 2026-08-07, `icons.html`**: 52 glyphs audited
+   against the paint, and the axis had never been measured at all because the census counts controls
+   and an icon is not a control. What it found: **two families**, 33 hand-drawn stroked and 15
+   bought filled, with **four jobs drawn in both**; the stroke declared once at 1.6 in user units so
+   it renders **0.90px to 2.67px** across six sizes, which is no optical weight at all; **four
+   different safe fields** in the stroked family, 2.2 to 5.2, against the filled family's 2.0 on 13
+   of 15; **seven jobs, eight to fourteen drawings**; three glyphs whose centre is 1.7 to 2.0
+   modules out. Still open: **3b colour, 3c typography, 3d geometry, 3e the values** (import order,
+   17 paddings, 29 heights, 17 borders, the `19.2px` leak, 20 files citing gates that no longer
+   exist, and the four decisions `inventory.md` forced). Output: `docs/consolidation.md`.
 4. **The pages.** One per component: a live specimen, its states in both themes, its classes, its
    rule and anti-rule, and the screens it stands on.
 5. **One audit run**, as a report.

@@ -9,7 +9,7 @@ holds the record of what was done. This holds what is not.
 Unlike `decisions.md`, this file is edited: a row is struck when the item closes, with the date and
 the entry in `decisions.md` that closed it.
 
-**Open: 26.**
+**Open: 29.**
 
 The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
 twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
@@ -67,10 +67,13 @@ Carried since the project brief; none of it has been answered.
 
 ---
 
-## Design defects deferred (5)
+## Design defects deferred (8)
 
 | # | Item | Source | Note |
 |---|---|---|---|
+| 29 | The icon stroke is a constant in user units, so it renders at six different weights | Design System step 3a, `ui-kit/icons.html`, 2026-08-07 | `.ic` declares `stroke-width:1.6` once, inside a 24 unit box, and user units scale with the box. Measured on screen: **0.90px at 12, 1.07 at 16, 1.20 at 18, 1.33 at 20, 1.47 at 22, 2.67 at 40**. A factor of three, wrong at both ends: 0.90 is under one device pixel at DPR 1 and smears, 2.67 is heavier than the type beside it. **The set has no optical weight, it has one geometric weight that slides.** `.ic-sm` is the worst case and should go: smallest box, thickest declared stroke. Owner: step 3e |
+| 30 | The stroked family has four safe fields and the filled family has one | Design System step 3a, 2026-08-07 | Measured against the **paint**, not the curve. Stroked, 33 glyphs: field 2.2 on 15, 3.2 on 10, 4.2 on 6, 5.2 on 2. Filled, 15 glyphs: 2.0 on 13. Exactly one owned glyph is INSIDE the field, `i-cat-politics` at 1.0, so this is not a violation to fix but **a rule that was never set**. The chevron, second most used glyph in the product, paints 13.6 x 7.6 in a 24 cell. Three glyphs are also off centre by 1.7 to 2.0 modules: `sort`, `trend-up`, `music`. Owner: step 3e |
+| 31 | **Two icon families, and four jobs are drawn in both** | Design System step 3a, 2026-08-07 | 15 filled Solar Bold through a sprite, 37 stroked hand-drawn inline. Bookmark, bell, shield and chat exist in both, and the bookmark is used in both forms **for the same meaning**: filled on the card, stroked in the footer. Shield is 106 against 106, which is two decisions taken in two places rather than a preference that drifted. Three more pairs sit inside the stroked family alone: two closes, two searches, two clocks with different circle radii. **52 glyphs, 45 jobs.** This is the one item of the three that is a product decision rather than a value, so it is not step 3e's to take alone |
 | 25 | `.amount-input` has no ground and no ink of its own | Design System step 2.5, the vitrine, 2026-08-07 | **Found by rendering the atom outside its scope for the first time.** Every rule in `input.css` is scoped to `dialog.app-dialog` or to `.bet-panel` / `.bet-sheet`. Unscoped, the field gets a hairline, 8px of padding and an 18px size, and takes its background and its colour from the User Agent: **a white box with black text, in the dark theme**. Invisible on all 41 anchor screens, because on every one of them the field stands inside a dialog or a panel. It is `a missing value is a value`, the same trap that cost the 992 blue links. Owner: consolidation, step 3 |
 | 26 | The outcome pair's halves are told apart by DOM ORDER | Design System step 2, the inventory, 2026-08-07 | `.yesno > a:first-of-type button` and `:last-of-type`. Move the two buttons and green becomes red, on 81 readings of the control this product is named after. The vitrine carries the reversed pair as a labelled specimen so it can be seen rather than argued about. Owner: consolidation, step 3 |
 | 12 | Live odds-delta animation | `/impeccable critique` P3, 2026-07-16 | Deferred at the time as P3; Stage 11 (Animation) is its natural owner |
