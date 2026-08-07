@@ -440,17 +440,116 @@ def state_tokens(states, roles):
     return out
 
 
-def state_grounds(tokens):
+# WHAT KIND OF THING A ROLE IS, read from the PROPERTY that uses it. A colour
+# role's name was the test until 2026-08-07 - --text-*, --bg-*, --border-*/--line-*
+# - and this system has roles whose name says nothing: --icon-brass and
+# --chrome-text are inks, --bevel-hair and --shadow-ink-85 are shadows, and
+# --control-knob is the ground of a knob. All of them were drawn as the
+# background of a chip with a label on top, so an ink was painted on itself at
+# 1:1 and a shadow was painted as a wall. The property a rule sets it with is not
+# a guess, and the generator is already holding it.
+INK_PROPS = ("color", "fill", "stroke", "caret-color", "-webkit-text-fill-color")
+GROUND_PROPS = ("background", "background-color", "background-image")
+EDGE_PROPS = ("border-color", "border", "border-top-color", "border-bottom-color",
+              "border-left-color", "border-right-color", "outline", "outline-color")
+
+
+def declarations(block):
+    """(property, value) for a declaration block. A css value holds no `;`."""
+    for d in block.split(";"):
+        if ":" not in d:
+            continue
+        prop, value = d.split(":", 1)
+        yield prop.strip().lower(), " ".join(value.split())
+
+
+def state_pairs(states, tokens):
+    """token -> {use, ground, ink, shadow}, as the rule that reads it writes it.
+
+    THE SWATCH IS A PAIR AND IT WAS BEING DRAWN AS A HALF. Every ink role was
+    painted on brass and every ground role under the brass ink, because the
+    chip's own class carried `background:var(--color-action)` and
+    `color:var(--text-on-brass)` and the sample overrode one side of it. That is
+    a picture of a value on a ground it does not have, under a caption saying it
+    is the right one: `--text-strong` is the quiet button's hover ink, sits on
+    `--bg-control-hover` in the file, measured 2.41:1 drawn on brass, and looked
+    like a defect in a role that is fine. 506 of the vitrine's own readings were
+    below the contrast floor and 338 of them were this. `ui-kit/docs/backlog.md`
+    S37.
+
+    So both halves come from the SAME rule, which the generator already had in
+    hand and was throwing away: `states` is (selector, declaration block), and a
+    state that moves the ink usually moves the ground in the same block. A rule
+    that sets only one half does not get the other invented. A token read by two
+    rules takes the fuller pair, because a role shown on a ground this component
+    actually gives it says more than the same role shown on nothing.
+    """
+    out = {}
+    for _sel, decl in states:
+        props = list(declarations(decl))
+        pick = lambda names: next((v for p, v in props if p in names), None)   # noqa: E731
+        for prop, value in props:
+            for tok in re.findall(r"var\((--[\w-]+)\)", value):
+                if tok not in tokens:
+                    continue
+                use = ("ink" if prop in INK_PROPS else
+                       "ground" if prop in GROUND_PROPS else
+                       "edge" if prop in EDGE_PROPS else
+                       "shadow" if prop == "box-shadow" else "other")
+                row = {"use": use, "ground": pick(GROUND_PROPS), "ink": pick(INK_PROPS),
+                       "shadow": pick(("box-shadow",))}
+                have = out.get(tok)
+                # WHAT IT IS comes from the first rule that uses it and is never
+                # overwritten; WHAT ELSE THE RULE SETS is upgraded when a later
+                # rule of the SAME use carries more. Kept apart on purpose: a
+                # token that is an ink here and sits inside a shadow there would
+                # otherwise be re-kinded by whichever rule happened to be fuller.
+                if have is None:
+                    out[tok] = row
+                elif (have["use"] == row["use"]
+                      and sum(x is not None for x in (row["ground"], row["ink"]))
+                      > sum(x is not None for x in (have["ground"], have["ink"]))):
+                    out[tok] = row
+    return out
+
+
+def state_grounds(tokens, pairs=None):
     if not tokens:
         return ""
+    pairs = pairs or {}
     # A ROLE IS SHOWN DOING ITS OWN JOB, and the caption says which job that is.
     # Every row used to read "the value this state moves to", eight times per
-    # panel, which is a sentence about the section rather than about the token;
-    # and every row painted the value as a BACKGROUND, so --text-on-brass drew
-    # black on black and the two ink roles were unreadable rectangles. The kind
-    # is read from the role's own name, which is the one place in this system
-    # where a name is load-bearing: tokens.css is written --bg-*, --text-*,
-    # --border-*/--line-*, --opacity-*, --focus-*.
+    # panel, which is a sentence about the section rather than about the token.
+    # WHICH JOB IT IS COMES FROM THE PROPERTY, not from the name, since
+    # 2026-08-07: state_pairs() above says why, and the short version is that
+    # --icon-brass is an ink and --bevel-hair is a shadow and neither name says
+    # so. --opacity-* and the focus ring keep a reading of their own because
+    # neither is a colour standing on another colour.
+    PANEL = "transparent"          # the figure's own ground, --bg-plate
+
+    def named(value):
+        """What to call the other half in the caption: its role, or its kind."""
+        m = re.fullmatch(r"var\((--[\w-]+)\)", value or "")
+        if m:
+            return "<code>%s</code>" % esc(m.group(1))
+        # a phrase and not a sentence: every caption below finishes it
+        return "a gradient" if value else ""
+
+    def chip(ground, ink, caption, extra="", klass=""):
+        return ('<span class="ck-st-row"><span class="ck-st-chip%s" '
+                'style="background:%s;color:%s%s">Confirm bet</span><em>%s</em></span>'
+                % (klass, ground, ink, extra, caption))
+
+    def swatch(style, caption):
+        """A colour with NO LABEL ON IT, for a role no rule puts an ink over.
+
+        The alternative is to choose the ink, and a chosen ink is the defect this
+        whole section just paid for: --text-primary over --color-action reads
+        1.96:1 and says nothing true about either. A ground whose state rule sets
+        no ink IS just a ground, and a shadow is not a surface at all."""
+        return ('<span class="ck-st-row"><span class="ck-st-chip ck-swatch" style="%s"></span>'
+                '<em>%s</em></span>' % (style, caption))
+
     def sample(tok):
         if tok.startswith("--opacity-"):
             return ('<span class="ck-st-row"><span class="ck-st-chip" style="opacity:var(%s)">'
@@ -462,18 +561,27 @@ def state_grounds(tokens):
                     'style="outline:var(--ring) solid var(%s);outline-offset:var(--ring)">'
                     'Confirm bet</span><em>the ring, at the width and offset it ships with</em>'
                     '</span>' % tok)
-        if tok.startswith("--text-"):
-            return ('<span class="ck-st-row"><span class="ck-st-chip ck-ink" style="color:var(%s)">'
-                    'Confirm bet</span><em>the label, on the ground this state puts it on</em>'
-                    '</span>' % tok)
-        if tok.startswith("--border-") or tok.startswith("--line-"):
-            return ('<span class="ck-st-row"><span class="ck-st-chip ck-line" '
-                    'style="border-color:var(%s)">Confirm bet</span>'
-                    '<em>the edge this state draws</em></span>' % tok)
-        klass = "ck-st-chip ck-ground" if tok.startswith("--bg-") else "ck-st-chip"
-        return ('<span class="ck-st-row"><span class="%s" style="background:var(%s)">'
-                'Confirm bet</span><em>the ground the control settles onto</em></span>'
-                % (klass, tok))
+        row = pairs.get(tok) or {}
+        use, ground, ink = row.get("use"), row.get("ground"), row.get("ink")
+        if use == "ink":
+            cap = ("the label, on %s, the ground the same rule sets" % named(ground)
+                   if ground else
+                   "the label. This state moves the ink only, so it stands on the panel's ground")
+            return chip(ground or PANEL, "var(%s)" % tok, cap)
+        if use == "edge":
+            cap = ("the edge this state draws, on %s" % named(ground) if ground
+                   else "the edge this state draws, on the panel's own ground")
+            return chip(ground or PANEL, ink or "var(--text-primary)", cap,
+                        ";border-color:var(%s)" % tok, " ck-line")
+        if use == "shadow":
+            return swatch("background:var(--bg-control);box-shadow:%s" % esc(row["shadow"] or ""),
+                          "the shadow this state draws, on a neutral control ground")
+        if ink:
+            return chip("var(%s)" % tok, ink,
+                        "the ground the control settles onto, under %s, the ink the same rule sets"
+                        % named(ink))
+        return swatch("background:var(%s)" % tok,
+                      "the ground the control settles onto. This state leaves the ink where it was")
     figs = []
     for ground, label in (("dark", "Vault"), ("light", "Daylight")):
         rows = "".join('<div class="ck-st-tok"><code>%s</code>%s</div>' % (esc(t), sample(t))
@@ -933,7 +1041,9 @@ def sections_for(name, c):
     that is thin is better than a page that is empty."""
     doc = AUTHORED.get(name, {})
     gallery = state_gallery(name)
-    table = states_table(c["states"], name) + state_grounds(state_tokens(c["states"], c["roles"]))
+    _st_toks = state_tokens(c["states"], c["roles"])
+    table = states_table(c["states"], name) + state_grounds(
+        _st_toks, state_pairs(c["states"], set(_st_toks)))
     out = []
 
     def sec(sid, title, note, body):
