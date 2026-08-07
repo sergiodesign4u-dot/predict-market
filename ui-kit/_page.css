@@ -592,3 +592,51 @@
 .tk-wide-only{display:none;margin:0;font-family:var(--font-mono);font-size:11px;
   color:var(--text-muted)}
 @media(min-width:900px){.tk-wide-only{display:block}}
+
+/* ==========================================================================
+   THE KIT PAGES, level 3. Added 2026-08-08 for organisms.html.
+
+   AN ORGANISM IS THE WIDTH OF A SCREEN, so the two themes stack instead of
+   sitting side by side. A header cut to half a page is not a header: what a
+   shell IS is the decision it takes about the full width, and a two-column pair
+   would be measuring it at 430px twice and calling that the component. So the
+   label goes above each theme and each theme gets the whole column. Same idea as
+   .tk-pair2, in the shape this subject needs. */
+.tk-org{margin-top:44px;border-top:1px solid var(--border-hairline);padding-top:22px;
+  scroll-margin-top:20px}
+.tk-org>h2{font-family:var(--font-display);color:var(--text-primary);
+  font-size:22px;font-weight:700;letter-spacing:-.02em;margin:0 0 8px}
+.tk-pairv{display:flex;flex-direction:column;gap:1px;
+  background:var(--border-hairline);border:1px solid var(--border-hairline);
+  border-radius:10px;overflow:hidden;margin:0 0 10px}
+.tk-pairv>.tk-theme-fig{border-radius:0}
+.tk-th{background:var(--bg-surface);color:var(--text-muted);padding:7px 12px;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+
+/* A DIALOG HAS TO BE PINNED INTO THE FLOW TO BE SHOWN AT ALL, and this is the
+   one place on the kit where a specimen is not exactly what the product renders.
+   In the product it is opened with showModal(), and the browser lifts it into
+   the TOP LAYER: position:fixed, centred, over a ::backdrop, and only one at a
+   time in a document. None of that can happen four times on one page. So the
+   stand opens it with the plain `open` attribute and pins it static, and exactly
+   two things differ from the product, the position and the backdrop. Everything
+   inside is the rule the component's own file writes, untouched. */
+.tk-dlg{display:block;width:100%;min-width:0}
+.tk-dlg dialog[open]{position:static;inset:auto;margin:0;width:100%;max-width:none;
+  max-height:none;border:0}
+
+/* A shell whose own file draws almost nothing needs its emptiness SHOWN rather
+   than described: feed.css is eleven lines and two of its three rules are a
+   reset. The dashed box is the box the component actually contributes. */
+.tk-empty-shell{border:1px dashed var(--border-hairline);border-radius:8px;
+  padding:12px;width:100%;min-width:0}
+.tk-empty-shell>p{margin:0 0 10px;font-family:var(--font-mono);font-size:10px;
+  color:var(--text-icon);text-transform:uppercase;letter-spacing:.06em}
+
+/* The third member of the .tk-absent family. That one says a specimen is missing
+   because the window is narrow, .tk-wide-only because it is wide, and this one
+   because THE COMPONENT CANNOT BE DRAWN TWICE IN ONE DOCUMENT. An empty cell
+   with no sentence in it reads as a page that broke. */
+.tk-why{margin:0;font-family:var(--font-mono);font-size:11px;line-height:1.55;
+  color:var(--text-muted);max-width:62ch}
+.tk-why b{color:var(--text-brass);font-weight:400}

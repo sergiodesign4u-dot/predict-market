@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: organisms</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<!-- The panel declares NOTHING, not even the name of this page. Its rows,
+     its groups, its counts and the row it lights are all in _nav.js, which
+     is the only copy of that list in the repository. -->
+<aside class="sidebar" id="rmSidebar"></aside>
+
+  <!-- Solar Bold icon sprite, the same 15 symbols every screen ships. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></symbol>
+    <symbol id="i-bell-b" viewBox="0 0 24 24"><path fill="currentColor" d="M18.75 9.71v-.705C18.75 5.136 15.726 2 12 2S5.25 5.136 5.25 9.005v.705a4.4 4.4 0 0 1-.692 2.375L3.45 13.81c-1.011 1.575.062 3.68 1.966 3.843a51 51 0 0 0 13.167 0c1.904-.163 2.977-2.268 1.966-3.843l-1.108-1.725a4.4 4.4 0 0 1-.692-2.375"/><path fill="currentColor" d="M7.243 18.545a5.002 5.002 0 0 0 9.513 0c-3.145.28-6.367.281-9.513 0"/></symbol>
+    <symbol id="i-shield-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.378 5.082C3 5.62 3 7.22 3 10.417v1.574c0 5.638 4.239 8.375 6.899 9.536c.721.315 1.082.473 2.101.473c1.02 0 1.38-.158 2.101-.473C16.761 20.365 21 17.63 21 11.991v-1.574c0-3.198 0-4.797-.378-5.335c-.377-.537-1.88-1.052-4.887-2.081l-.573-.196C13.595 2.268 12.812 2 12 2s-1.595.268-3.162.805L8.265 3c-3.007 1.03-4.51 1.545-4.887 2.082M15.06 10.5a.75.75 0 0 0-1.12-.999l-3.011 3.374l-.87-.974a.75.75 0 0 0-1.118 1l1.428 1.6a.75.75 0 0 0 1.119 0z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-verified-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9.592 3.2a6 6 0 0 1-.495.399c-.298.2-.633.338-.985.408c-.153.03-.313.043-.632.068c-.801.064-1.202.096-1.536.214a2.71 2.71 0 0 0-1.655 1.655c-.118.334-.15.735-.214 1.536a6 6 0 0 1-.068.632c-.07.352-.208.687-.408.985c-.087.13-.191.252-.399.495c-.521.612-.782.918-.935 1.238c-.353.74-.353 1.6 0 2.34c.153.32.414.626.935 1.238c.208.243.312.365.399.495c.2.298.338.633.408.985c.03.153.043.313.068.632c.064.801.096 1.202.214 1.536a2.71 2.71 0 0 0 1.655 1.655c.334.118.735.15 1.536.214c.319.025.479.038.632.068c.352.07.687.209.985.408c.13.087.252.191.495.399c.612.521.918.782 1.238.935c.74.353 1.6.353 2.34 0c.32-.153.626-.414 1.238-.935c.243-.208.365-.312.495-.399c.298-.2.633-.338.985-.408c.153-.03.313-.043.632-.068c.801-.064 1.202-.096 1.536-.214a2.71 2.71 0 0 0 1.655-1.655c.118-.334.15-.735.214-1.536c.025-.319.038-.479.068-.632c.07-.352.209-.687.408-.985c.087-.13.191-.252.399-.495c.521-.612.782-.918.935-1.238c.353-.74.353-1.6 0-2.34c-.153-.32-.414-.626-.935-1.238a6 6 0 0 1-.399-.495a2.7 2.7 0 0 1-.408-.985a6 6 0 0 1-.068-.632c-.064-.801-.096-1.202-.214-1.536a2.71 2.71 0 0 0-1.655-1.655c-.334-.118-.735-.15-1.536-.214a6 6 0 0 1-.632-.068a2.7 2.7 0 0 1-.985-.408a6 6 0 0 1-.495-.399c-.612-.521-.918-.782-1.238-.935a2.71 2.71 0 0 0-2.34 0c-.32.153-.626.414-1.238.935m6.781 6.663a.814.814 0 0 0-1.15-1.15l-4.85 4.85l-1.596-1.595a.814.814 0 0 0-1.15 1.15l2.17 2.17a.814.814 0 0 0 1.15 0z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-chat-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22"/></symbol>
+    <symbol id="i-share-b" viewBox="0 0 24 24"><path fill="currentColor" d="M13.803 5.333c0-1.84 1.507-3.333 3.365-3.333c1.86 0 3.366 1.492 3.366 3.333c0 1.841-1.507 3.334-3.366 3.334a3.38 3.38 0 0 1-2.037-.678l-4.67 3.204a3.3 3.3 0 0 1 0 1.62l4.67 3.204a3.38 3.38 0 0 1 2.037-.677c1.86 0 3.366 1.492 3.366 3.333S19.028 22 17.168 22c-1.858 0-3.365-1.492-3.365-3.333q0-.413.098-.804l-4.67-3.204a3.38 3.38 0 0 1-2.037.677C5.507 15.336 4 13.843 4 12.002s1.507-3.333 3.365-3.333c.762 0 1.474.252 2.037.677l4.67-3.204a3.3 3.3 0 0 1-.099-.809"/></symbol>
+    <symbol id="i-heart-b" viewBox="0 0 24 24"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></symbol>
+    <symbol id="i-cat-fire" viewBox="0 0 24 24"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></symbol>
+    <symbol id="i-cat-politics" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21.25 8.5c0-1.404 0-2.107-.337-2.611a2 2 0 0 0-.552-.552c-.441-.295-1.034-.332-2.115-.336q.005.438.004.91V7.25h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v6.5h-1.5V6c0-1.886 0-2.828-.586-3.414S14.636 2 12.75 2h-2c-1.886 0-2.828 0-3.414.586S6.75 4.114 6.75 6v15.25h-1.5v-6.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1V5.91q-.001-.47.004-.91c-1.081.005-1.674.042-2.115.337a2 2 0 0 0-.552.552C2.25 6.393 2.25 7.096 2.25 8.5v12.75h-.5a.75.75 0 0 0 0 1.5h20a.75.75 0 0 0 0-1.5h-.5zM9 11.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m2.75 3.5a.75.75 0 0 1 .75.75v2.25H11V19a.75.75 0 0 1 .75-.75M9 6.25a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 6.25m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 9.25" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-crypto" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m.75-16a.75.75 0 0 0-1.5 0v.317c-1.63.292-3 1.517-3 3.183c0 1.917 1.813 3.25 3.75 3.25c1.377 0 2.25.906 2.25 1.75s-.873 1.75-2.25 1.75c-1.376 0-2.25-.906-2.25-1.75a.75.75 0 0 0-1.5 0c0 1.666 1.37 2.891 3 3.183V18a.75.75 0 0 0 1.5 0v-.317c1.63-.292 3-1.517 3-3.183c0-1.917-1.813-3.25-3.75-3.25c-1.376 0-2.25-.906-2.25-1.75s.874-1.75 2.25-1.75c1.377 0 2.25.906 2.25 1.75a.75.75 0 0 0 1.5 0c0-1.666-1.37-2.891-3-3.183z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-culture" viewBox="0 0 24 24"><path fill="currentColor" d="m21.537 9.136l-.846 3.297c-.43 1.676-1.306 2.855-2.336 3.685c.219-1.144.214-2.418-.144-3.814l-.864-3.37l-.15-.584a.9.9 0 0 1 .599-.044c.378.101.608.406.637.702a.75.75 0 1 0 1.493-.145c-.091-.942-.783-1.749-1.742-2.006a2.4 2.4 0 0 0-1.418.05l-.017-.044c-.224-.596-.552-1.229-1.171-1.693a3.5 3.5 0 0 0-1.13-.562c-.759-.215-1.463-.076-2.064.124c-.558.185-1.21.49-1.924.825l-.072.034c-1.185.555-1.659.773-2.144.928q-.22.07-.446.127l.327-1.267c.44-1.719.661-2.578 1.236-3.01c.193-.145.41-.252.638-.317c.684-.194 1.461.17 3.015.897c1.15.54 1.726.809 2.326 1q.314.099.632.176c.612.149 1.239.216 2.493.351c1.694.182 2.54.273 3.04.798c.167.177.303.383.4.609c.292.675.072 1.534-.368 3.253"/><path fill="currentColor" fill-rule="evenodd" d="m16.758 12.677l-.845-3.298c-.44-1.719-.66-2.578-1.236-3.01a2 2 0 0 0-.638-.317c-.684-.194-1.46.17-3.015.897c-1.15.54-1.726.809-2.326 1a10 10 0 0 1-.632.176c-.611.149-1.238.216-2.493.351c-1.694.182-2.54.273-3.04.798a2.1 2.1 0 0 0-.4.609c-.292.675-.072 1.534.369 3.253l.845 3.297c.993 3.876 4.296 5.096 6.516 5.473c.677.115 1.016.172 2.044-.116s1.294-.514 1.825-.968c1.742-1.487 4.02-4.27 3.026-8.145m-10.753.691c.029-.296.26-.6.638-.702c.379-.102.73.047.903.29a.75.75 0 0 0 1.22-.873c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.064-1.743 2.006a.75.75 0 0 0 1.493.145m5.796-1.553c.029-.296.26-.6.638-.702c.379-.102.73.047.903.289a.75.75 0 1 0 1.22-.872c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.063-1.743 2.006a.75.75 0 0 0 1.493.145m1.846 3.814a.75.75 0 0 1-.885 1.211l-.01-.006a2 2 0 0 0-.485-.2c-.36-.098-.929-.163-1.685.04c-.756.202-1.216.543-1.48.808a2 2 0 0 0-.32.416l-.005.01a.75.75 0 0 1-1.372-.607l.688.298c-.688-.298-.687-.3-.687-.3v-.001l.002-.004l.004-.009l.01-.022l.033-.064q.04-.078.115-.196c.1-.156.252-.36.468-.578c.437-.44 1.125-.924 2.156-1.2c1.031-.277 1.87-.2 2.467-.038c.296.08.53.18.694.266a3 3 0 0 1 .258.151l.02.015l.008.005l.003.003h.002z" clip-rule="evenodd"/></symbol>
+    <symbol id="i-cat-general" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M2 6.634a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0m10.732 10.732a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0" clip-rule="evenodd"/><path fill="currentColor" d="M2 17.5c0-2.121 0-3.182.659-3.841S4.379 13 6.5 13s3.182 0 3.841.659S11 15.379 11 17.5s0 3.182-.659 3.841S8.621 22 6.5 22s-3.182 0-3.841-.659S2 19.621 2 17.5m11-11c0-2.121 0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11s-3.182 0-3.841-.659S13 8.621 13 6.5"/></symbol>
+    <symbol id="i-seo-guide" viewBox="0 0 24 24"><path fill="currentColor" d="M11 4.2C9.6 3.3 7.9 2.8 6 2.8c-1.1 0-2.1.2-3 .5C2.4 3.5 2 4 2 4.6v12.2c0 .9.9 1.5 1.7 1.2c.7-.2 1.5-.3 2.3-.3c1.8 0 3.4.6 4.6 1.5c.2.2.5.3.8.3V5c-.1-.3-.2-.6-.4-.8m2 0c-.2.2-.3.5-.4.8v14.5c.3 0 .6-.1.8-.3c1.2-.9 2.8-1.5 4.6-1.5c.8 0 1.6.1 2.3.3c.8.3 1.7-.3 1.7-1.2V4.6c0-.6-.4-1.1-1-1.3c-.9-.3-1.9-.5-3-.5c-1.9 0-3.6.5-5 1.4"/></symbol>
+    <symbol id="i-seo-chart" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21a1.5 1.5 0 0 1-1.5-1.5v-3a1.5 1.5 0 0 1 3 0v3A1.5 1.5 0 0 1 5 21m7 0a1.5 1.5 0 0 1-1.5-1.5v-8a1.5 1.5 0 0 1 3 0v8A1.5 1.5 0 0 1 12 21m7 0a1.5 1.5 0 0 1-1.5-1.5V6a1.5 1.5 0 0 1 3 0v13.5A1.5 1.5 0 0 1 19 21"/></symbol>
+    <symbol id="i-seo-qa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a6 6 0 0 0-6 6a1.5 1.5 0 0 0 3 0a3 3 0 1 1 4.3 2.7c-1.1.6-2.8 1.7-2.8 3.8v.5a1.5 1.5 0 0 0 3 0v-.5c0-.3.4-.7 1.1-1.1A6 6 0 0 0 12 2m0 16.5A1.75 1.75 0 1 0 12 22a1.75 1.75 0 0 0 0-3.5"/></symbol>
+  </defs></svg>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Organisms</h1>
+    <p>Level 3: <b>a component that holds molecules, or that is the shell of a screen</b>. Twelve of
+    them stand on the five anchors and one does not. Each is the markup the screens ship, painted by
+    <code>components/index.css</code>, in Vault above Daylight, with what it holds, its rule and its
+    anti-rule. <b>Two of the twelve are shown in one theme only, and the reason is the component
+    rather than the page.</b></p>
+    <div class="tk-badges">
+      <span class="tk-badge">12 measured</span>
+      <span class="tk-badge">1 unmeasured</span>
+      <span class="tk-badge">2 shown once</span>
+      <span class="tk-badge">0 generators</span>
+    </div>
+    <!-- Filled by _nav.js from the one registry. Below 860px the side panel
+         is a drawer, so this row is the navigation that is actually on
+         screen; above it, it is the shortcut. -->
+    <div class="tk-jump" id="kitJump"></div>
+  </div>
+
+  <section class="tk-sec" id="how">
+    <h2 data-n="00">What an organism is, and why this page had to change shape twice</h2>
+    <p class="tk-note"><b>An organism holds molecules, or it is a shell.</b> A shell draws almost
+    nothing itself and decides where everything else goes, which is why two of the entries below have
+    fewer own rules than any atom on the vitrine and are still level 3. The level is
+    <b>declared</b> in <code>docs/inventory.md</code> with a reason, because the arithmetic that
+    computes it is blind to a component built out of its own class names.</p>
+    <p class="tk-note"><b>The themes stack instead of sitting side by side.</b> A molecule is a row
+    and fits in half a column; a header cut to 430px is not a header. What a shell IS is the decision
+    it takes about the full width, so measuring it at half width twice would be measuring something
+    else and calling it the component.</p>
+    <p class="tk-note"><b>And then two of them refused to be shown twice at all.</b> That is the
+    finding of this page and it is in the section under this one, because it is a property of the
+    system rather than of the stand.</p>
+  </section>
+
+  <section class="tk-sec" id="ids">
+    <h2 data-n="01">Nine declarations in the system are keyed to a document-unique id</h2>
+    <p class="tk-note">A class can appear a thousand times in a document. <b>An id is unique by
+    definition</b>, so a rule written against one is not a rule about a component: it is a rule about
+    <b>one instance</b> of it. Counted across all 51 stylesheets:</p>
+    <div class="tk-bars">
+      <div class="tk-bar"><span>tabs.css</span><u class="c-bg-plate"></u><i>6 rules, 10 ids</i></div>
+      <div class="tk-bar"><span>hero.css</span><u class="c-bg-plate"></u><i>2 paints, 2 ids</i></div>
+      <div class="tk-bar"><span>base.css</span><u class="c-bg-plate"></u><i>1 rule, 1 id</i></div>
+    </div>
+    <p class="tk-note"><code>tabs.css</code> writes <code>#edtab-comments:checked ~
+    .ed-panel-comments</code> and nine more of that shape, so the event tab set and the profile tab
+    set each work exactly once per document. <code>hero.css</code> writes
+    <code>.hf-area{fill:url(#hfyes)}</code>, so the hero's chart takes its gradient from whichever
+    <code>#hfyes</code> the document happens to define first. The one in <code>base.css</code> is
+    <code>#rmSidebar</code> and it is correct: there really is one panel per document.</p>
+    <p class="tk-note"><b>Nothing is broken today, and that is the whole point.</b> Measured over the
+    106 painted screens: <b>0 of the 13 ids appears more than once on any screen</b>. One hero per
+    feed, one tab set per detail page. The coupling has never fired because the product has never
+    asked it to, and <b>this page is the first thing that ever asked</b>: a stand that shows a
+    component twice in one document is the exact case an id-keyed rule cannot survive.</p>
+    <p class="tk-note"><b>Which is why they are shown once, rather than shown wrong.</b> Renaming the
+    second copy's ids would leave the CSS pointing at the first copy; keeping them would make the
+    daylight tab set steal the graphite one's checked state and the daylight hero paint with the
+    graphite gradient. A stand that quietly shows a component painting with another copy's values is
+    worse than a stand that says it cannot show it. Backlog 45.</p>
+  </section>
+
+  <!-- =============================== header ========================== -->
+  <section class="tk-org" id="header">
+    <h2>header</h2>
+    <ul class="tk-holds">
+      <li>components/header.css</li><li>202 lines</li><li>level 3</li><li>668 uses</li>
+      <li class="tk-decl">HOLDS button, chip, iconbtn, navitem, toast. A shell</li>
+    </ul>
+    <p class="tk-note">The band that is on every screen. It carries the identity, the balance, the
+    two menus and the way out to How it works, and it is the only place in the product where four
+    different atoms wear one hover, because <b>the skin belongs to the surface rather than to any of
+    them</b>. The condensed category strip at the foot of it is <code>aria-hidden</code> and does not
+    render until a page has been scrolled past its full category bar, so it is in the markup below
+    and correctly invisible.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <header class="app-header">
+          <div class="row">
+            <div class="left">
+              <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+              <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+              <button type="button" class="btn btn-ghost btn-xs hiw-btn" aria-label="How it works">How it works</button>
+            </div>
+            <div class="utility">
+              <div class="bal-toggle desk-only">
+                <span class="bal-figure"><span class="bal-label">Portfolio</span> <span class="bal-amt">$142.00</span></span>
+                <button type="button" class="icon-btn bal-swap" aria-label="Swap balance (showing Portfolio)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg></button>
+                <button type="button" class="icon-btn bal-add" aria-label="Add funds"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+              </div>
+              <a class="icon-btn desk-only" href="#" aria-label="Favorites, see saved events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></a>
+              <details class="notif-menu">
+                <summary aria-label="Notifications, 3 unread"><span class="bell-wrap"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg><span class="badge-dot">3</span></span></summary>
+                <div class="dropdown notif-drop" role="menu"><ul>
+                  <li><a class="nav-item nav-row nav-row-stack" href="#"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+                  <li><a class="nav-item nav-row nav-row-stack" href="#"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+                </ul><a class="notif-all" href="#">See all notifications</a></div>
+              </details>
+              <details class="avatar-menu">
+                <summary aria-label="Account menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+                <div class="dropdown" role="menu"><ul>
+                  <li><a class="nav-item nav-row" href="#" role="menuitem">My Profile</a></li>
+                  <li><a class="nav-item nav-row" href="#" role="menuitem">My Bets</a></li>
+                  <li><a class="nav-item nav-row" href="#" role="menuitem">Wallet</a></li>
+                </ul></div>
+              </details>
+            </div>
+          </div>
+          <div class="cat-condensed" aria-hidden="true"><ul>
+            <li aria-current="page"><a class="chip chip-quiet" href="#">Trending</a></li>
+            <li><a class="chip chip-quiet" href="#">Politics</a></li>
+            <li><a class="chip chip-quiet" href="#">Crypto</a></li>
+          </ul></div>
+        </header>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <header class="app-header">
+          <div class="row">
+            <div class="left">
+              <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+              <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+              <button type="button" class="btn btn-ghost btn-xs hiw-btn" aria-label="How it works">How it works</button>
+            </div>
+            <div class="utility">
+              <div class="bal-toggle desk-only">
+                <span class="bal-figure"><span class="bal-label">Portfolio</span> <span class="bal-amt">$142.00</span></span>
+                <button type="button" class="icon-btn bal-swap" aria-label="Swap balance (showing Portfolio)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg></button>
+                <button type="button" class="icon-btn bal-add" aria-label="Add funds"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+              </div>
+              <a class="icon-btn desk-only" href="#" aria-label="Favorites, see saved events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></a>
+              <details class="notif-menu">
+                <summary aria-label="Notifications, 3 unread"><span class="bell-wrap"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg><span class="badge-dot">3</span></span></summary>
+                <div class="dropdown notif-drop" role="menu"><ul>
+                  <li><a class="nav-item nav-row nav-row-stack" href="#"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+                  <li><a class="nav-item nav-row nav-row-stack" href="#"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+                </ul><a class="notif-all" href="#">See all notifications</a></div>
+              </details>
+              <details class="avatar-menu">
+                <summary aria-label="Account menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+                <div class="dropdown" role="menu"><ul>
+                  <li><a class="nav-item nav-row" href="#" role="menuitem">My Profile</a></li>
+                  <li><a class="nav-item nav-row" href="#" role="menuitem">My Bets</a></li>
+                  <li><a class="nav-item nav-row" href="#" role="menuitem">Wallet</a></li>
+                </ul></div>
+              </details>
+            </div>
+          </div>
+          <div class="cat-condensed" aria-hidden="true"><ul>
+            <li aria-current="page"><a class="chip chip-quiet" href="#">Trending</a></li>
+            <li><a class="chip chip-quiet" href="#">Politics</a></li>
+            <li><a class="chip chip-quiet" href="#">Crypto</a></li>
+          </ul></div>
+        </header>
+      </div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> One balance figure with a swap, never two figures competing for
+    the same corner. <b>Anti-rule.</b> The header never announces money it has not been asked about:
+    no top-up prompt, no low-balance badge, no red on the figure. The product's third principle is
+    that engagement is about events and not about a balance, and a header is where that promise is
+    kept or quietly broken.</p>
+  </section>
+
+  <!-- =============================== footer ========================== -->
+  <section class="tk-org" id="footer">
+    <h2>footer</h2>
+    <ul class="tk-holds">
+      <li>components/footer.css</li><li>79 lines</li><li>level 3</li><li>615 uses</li>
+      <li class="tk-decl">HOLDS filters, iconbtn, toast, trustbar. A shell</li>
+    </ul>
+    <p class="tk-note">Four planes in one block, and each is a different job: the trust strip, the
+    brand with its social row and language menu, four link columns, the popular-links plane that
+    exists for search engines, and the legal strip. The language control is a
+    <code>.filter-menu</code>, which is the molecule from the filter bar doing a second job, and that
+    is the reason it is not a fifth kind of dropdown.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <footer class="app-footer">
+          <div class="footer-inner">
+            <div class="footer-trust">
+              <h2 class="trust-head">Built on trust, not on your balance</h2>
+              <div class="trust-items">
+                <span class="trust-item"><svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/></svg><span class="tr-txt"><b>Your USDC is held 1:1</b><i>We never lend it.</i></span></span>
+                <span class="trust-item"><svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg><span class="tr-txt"><b>Every event resolves against a public source</b><i>You can check it.</i></span></span>
+                <span class="trust-item"><svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg><span class="tr-txt"><b>1,284 events resolved</b><i>On-chain, verifiable.</i></span></span>
+              </div>
+            </div>
+            <div class="footer-top">
+              <div class="footer-brand">
+                <span class="footer-logo">Predict Market</span>
+                <p class="footer-tagline">Back the events you follow.</p>
+                <div class="social-row" role="list" aria-label="Social media">
+                  <a class="icon-btn icon-btn-lift" href="#" role="listitem" aria-label="X (Twitter)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></a>
+                  <a class="icon-btn icon-btn-lift" href="#" role="listitem" aria-label="Discord"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2l-1-2H8l-1 2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/><circle cx="10" cy="12" r="1.1"/><circle cx="14" cy="12" r="1.1"/></svg></a>
+                  <a class="icon-btn icon-btn-lift" href="#" role="listitem" aria-label="Telegram"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l6 2 2 6 3-4 5 4z"/></svg></a>
+                </div>
+                <details class="filter-menu lang-menu">
+                  <summary aria-label="Language (placeholder)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg><span>English</span><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+                  <div class="filter-panel"><ul>
+                    <li><label><input type="radio" name="lang-d" value="English" checked> English</label></li>
+                    <li><label><input type="radio" name="lang-d" value="Spanish"> Spanish</label></li>
+                    <li><label><input type="radio" name="lang-d" value="German"> German</label></li>
+                  </ul></div>
+                </details>
+              </div>
+              <div class="footer-cols">
+                <nav class="footer-col" aria-label="Markets"><h2>Events</h2><p class="sub-label">By category</p><ul><li><a href="#">Politics</a></li><li><a href="#">Crypto</a></li><li><a href="#">Culture</a></li><li><a href="#">General</a></li></ul></nav>
+                <nav class="footer-col" aria-label="Product"><h2>Product</h2><ul><li><a href="#">How It Works</a></li><li><a href="#">Leaderboard</a></li><li><a href="#">Wallet</a></li><li><a href="#">My Bets</a></li></ul></nav>
+                <nav class="footer-col" aria-label="Support"><h2>Support</h2><ul><li><a href="#">Help Center</a></li><li><a href="#">FAQ</a></li><li><a href="#">Contact</a></li></ul></nav>
+                <nav class="footer-col" aria-label="Company"><h2>Company</h2><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li></ul></nav>
+              </div>
+            </div>
+            <div class="footer-popular">
+              <h2>Popular right now</h2>
+              <ul class="popular-links"><li><a href="#">Politics events</a></li><li><a href="#">Crypto events</a></li><li><a href="#">Culture events</a></li><li><a href="#">Trending events</a></li><li><a href="#">Ending soon</a></li></ul>
+            </div>
+            <div class="footer-legal">
+              <nav aria-label="Legal"><ul class="legal-links"><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li><li><a href="#">Responsible play</a></li><li><a href="#">Geo restrictions</a></li></ul></nav>
+              <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
+              <p>Copyright (c) Predict Market. Sample wireframe content.</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <footer class="app-footer">
+          <div class="footer-inner">
+            <div class="footer-trust">
+              <h2 class="trust-head">Built on trust, not on your balance</h2>
+              <div class="trust-items">
+                <span class="trust-item"><svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/></svg><span class="tr-txt"><b>Your USDC is held 1:1</b><i>We never lend it.</i></span></span>
+                <span class="trust-item"><svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg><span class="tr-txt"><b>Every event resolves against a public source</b><i>You can check it.</i></span></span>
+                <span class="trust-item"><svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg><span class="tr-txt"><b>1,284 events resolved</b><i>On-chain, verifiable.</i></span></span>
+              </div>
+            </div>
+            <div class="footer-top">
+              <div class="footer-brand">
+                <span class="footer-logo">Predict Market</span>
+                <p class="footer-tagline">Back the events you follow.</p>
+                <div class="social-row" role="list" aria-label="Social media">
+                  <a class="icon-btn icon-btn-lift" href="#" role="listitem" aria-label="X (Twitter)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></a>
+                  <a class="icon-btn icon-btn-lift" href="#" role="listitem" aria-label="Discord"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2l-1-2H8l-1 2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/><circle cx="10" cy="12" r="1.1"/><circle cx="14" cy="12" r="1.1"/></svg></a>
+                  <a class="icon-btn icon-btn-lift" href="#" role="listitem" aria-label="Telegram"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l6 2 2 6 3-4 5 4z"/></svg></a>
+                </div>
+                <details class="filter-menu lang-menu">
+                  <summary aria-label="Language (placeholder)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg><span>English</span><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+                  <div class="filter-panel"><ul>
+                    <li><label><input type="radio" name="lang-l" value="English" checked> English</label></li>
+                    <li><label><input type="radio" name="lang-l" value="Spanish"> Spanish</label></li>
+                    <li><label><input type="radio" name="lang-l" value="German"> German</label></li>
+                  </ul></div>
+                </details>
+              </div>
+              <div class="footer-cols">
+                <nav class="footer-col" aria-label="Markets"><h2>Events</h2><p class="sub-label">By category</p><ul><li><a href="#">Politics</a></li><li><a href="#">Crypto</a></li><li><a href="#">Culture</a></li><li><a href="#">General</a></li></ul></nav>
+                <nav class="footer-col" aria-label="Product"><h2>Product</h2><ul><li><a href="#">How It Works</a></li><li><a href="#">Leaderboard</a></li><li><a href="#">Wallet</a></li><li><a href="#">My Bets</a></li></ul></nav>
+                <nav class="footer-col" aria-label="Support"><h2>Support</h2><ul><li><a href="#">Help Center</a></li><li><a href="#">FAQ</a></li><li><a href="#">Contact</a></li></ul></nav>
+                <nav class="footer-col" aria-label="Company"><h2>Company</h2><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li></ul></nav>
+              </div>
+            </div>
+            <div class="footer-popular">
+              <h2>Popular right now</h2>
+              <ul class="popular-links"><li><a href="#">Politics events</a></li><li><a href="#">Crypto events</a></li><li><a href="#">Culture events</a></li><li><a href="#">Trending events</a></li><li><a href="#">Ending soon</a></li></ul>
+            </div>
+            <div class="footer-legal">
+              <nav aria-label="Legal"><ul class="legal-links"><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li><li><a href="#">Responsible play</a></li><li><a href="#">Geo restrictions</a></li></ul></nav>
+              <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
+              <p>Copyright (c) Predict Market. Sample wireframe content.</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> The trust strip comes first, above the links, because it is the
+    only plane here a person reads rather than scans. <b>Anti-rule.</b> The popular-links plane is
+    for a search engine and it may never grow into a second navigation: the moment it carries a link
+    that is not reachable from the columns above it, the footer has two answers to "where can I go"
+    and the one-copy rule in <code>ia/</code> is broken.</p>
+  </section>
+
+  <!-- ============================= hiw-dialog ======================== -->
+  <section class="tk-org" id="hiw-dialog">
+    <h2>hiw-dialog</h2>
+    <ul class="tk-holds">
+      <li>components/hiw-dialog.css</li><li>118 lines</li><li>level 3</li><li>574 uses</li>
+      <li class="tk-decl">HOLDS dialog, iconbtn</li>
+    </ul>
+    <p class="tk-note">How it works, as a sheet rather than a page, because the question is asked
+    from inside a decision and an answer that navigates away loses the decision. It is the one
+    dialog with a photograph plane of its own, and the close button is the
+    <code>.icon-btn-photo</code> face for exactly that reason: its ink and its line are tokens of the
+    photograph and not of the theme, which is why it is identical in both rows below and correctly
+    so.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
+        <dialog class="app-dialog hiw-dialog" open aria-label="How it works">
+          <button type="button" class="icon-btn icon-btn-photo icon-btn-ring-strong sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+          <div class="hiw-hero"><span class="hiw-glow" aria-hidden="true"></span><div class="hiw-hero-inner"><h2>How it works</h2><p class="hiw-tagline">Back the events you follow, in plain language.</p></div></div>
+          <div class="hiw-body">
+            <div class="hiw-sec"><span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span><div class="hiw-sec-txt"><span class="hiw-label">How betting works here</span><p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent.</p></div></div>
+            <div class="hiw-sec"><span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M4 15l5-5 4 3 6-8"/><path d="M20 5h-4M20 5v4"/></svg></span><div class="hiw-sec-txt"><span class="hiw-label">Why the odds move</span><p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less.</p></div></div>
+            <div class="hiw-sec hiw-faq"><span class="hiw-label">Common questions</span><dl><dt>Do I need crypto to start?</dt><dd>No. You can browse events and build a bet with no wallet.</dd><dt>What is the smallest bet?</dt><dd>One dollar. The default is five.</dd></dl></div>
+            <a href="#" class="hiw-full">Read the full guide <svg class="ic hiw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </dialog>
+      </div></div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
+        <dialog class="app-dialog hiw-dialog" open aria-label="How it works">
+          <button type="button" class="icon-btn icon-btn-photo icon-btn-ring-strong sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+          <div class="hiw-hero"><span class="hiw-glow" aria-hidden="true"></span><div class="hiw-hero-inner"><h2>How it works</h2><p class="hiw-tagline">Back the events you follow, in plain language.</p></div></div>
+          <div class="hiw-body">
+            <div class="hiw-sec"><span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span><div class="hiw-sec-txt"><span class="hiw-label">How betting works here</span><p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent.</p></div></div>
+            <div class="hiw-sec"><span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M4 15l5-5 4 3 6-8"/><path d="M20 5h-4M20 5v4"/></svg></span><div class="hiw-sec-txt"><span class="hiw-label">Why the odds move</span><p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less.</p></div></div>
+            <div class="hiw-sec hiw-faq"><span class="hiw-label">Common questions</span><dl><dt>Do I need crypto to start?</dt><dd>No. You can browse events and build a bet with no wallet.</dd><dt>What is the smallest bet?</dt><dd>One dollar. The default is five.</dd></dl></div>
+            <a href="#" class="hiw-full">Read the full guide <svg class="ic hiw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </dialog>
+      </div></div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> Every answer is in the product's own words, and the full guide is
+    a link rather than the sheet's content. <b>Anti-rule.</b> No jargon reintroduced by the
+    explanation: a sheet that explains "prediction market" with "automated market maker" has moved
+    the confusion one word to the right rather than removed it.</p>
+  </section>
+
+  <!-- =============================== dialog ========================== -->
+  <section class="tk-org" id="dialog">
+    <h2>dialog</h2>
+    <ul class="tk-holds">
+      <li>components/dialog.css</li><li>279 lines</li><li>level 3</li><li>291 uses</li>
+      <li class="tk-decl">HOLDS button, chip, iconbtn, input, notice, quick</li>
+    </ul>
+    <p class="tk-note">One sheet with four heads: sign in, deposit, the bet sheet and the outcome
+    sheet with its win and loss faces. They are one component because the frame, the head, the body
+    and the fine print are one set of rules, and the head is the only thing that changes.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark. The sign-in sheet</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
+        <dialog class="app-dialog signin-dialog" open aria-label="Sign in or create account">
+          <div class="sheet-head">
+            <h2>Sign in or create account</h2>
+            <p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p>
+            <button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+          </div>
+          <div class="sheet-body">
+            <button type="button" class="btn btn-secondary btn-md btn-block"><svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg> Continue with Google</button>
+            <button type="button" class="btn btn-secondary btn-md btn-block"><svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg> Continue with X</button>
+            <button type="button" class="btn btn-secondary btn-md btn-block"><svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"/></svg> Continue with Apple</button>
+            <p class="fine">By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>. Adding funds by card requires KYC; crypto-only accounts can connect a wallet instead.</p>
+          </div>
+        </dialog>
+      </div></div>
+      <div class="tk-th">Daylight, light. The bet sheet, the same component with a different body</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
+        <dialog class="app-case app-dialog bet-sheet" open aria-label="Place your bet">
+          <button type="button" class="sheet-grab" aria-label="Close"></button>
+          <div class="bp-inner">
+            <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
+            <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">62%</span></button></div>
+            <div>
+              <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
+              <div class="quick"><button type="button" class="chip chip-amount sel">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button><button class="chip chip-amount" type="button">$50</button></div>
+            </div>
+            <div>
+              <div class="line"><span>Price now</span><span>38%</span></div>
+              <div class="line"><span>Fee (only if you win)</span><span>$0.20</span></div>
+              <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block">Confirm bet</button>
+            <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
+          </div>
+        </dialog>
+      </div></div>
+    </div>
+    <p class="tk-note"><b>This is the one specimen on the kit that is not exactly what the product
+    renders</b>, and it is worth saying rather than hiding. In the product a sheet is opened with
+    <code>showModal()</code> and the browser lifts it into the top layer: fixed, centred, over a
+    backdrop, and one at a time per document. Four of them on one page cannot do that. So the stand
+    opens them with the plain <code>open</code> attribute and pins them into the flow, and
+    <b>exactly two things differ, the position and the backdrop</b>. Everything inside is the rule
+    <code>dialog.css</code> writes, untouched.</p>
+    <p class="tk-note"><b>The bet sheet carries <code>app-case</code> on itself</b>, which is what
+    makes the four amount chips above render as chips. The consolidation found 28 amount chips in
+    dialogs that do NOT, and they would come out as raw User Agent buttons with a 2px outset border
+    on a graphite ground. All 28 are in closed dialogs today, which is what latent means.</p>
+    <p class="tk-note"><b>Rule.</b> A sheet states what it is for in its own head, because it is
+    reached from a decision and the person did not navigate here. <b>Anti-rule.</b> The close control
+    is never the only way out and never smaller than a thumb.</p>
+  </section>
+
+  <!-- ================================ tabs =========================== -->
+  <section class="tk-org" id="tabs">
+    <h2>tabs</h2>
+    <ul class="tk-holds">
+      <li>components/tabs.css</li><li>123 lines</li><li>level 3</li><li>153 uses</li>
+      <li class="tk-decl">HOLDS bets-table, comments, position, button, chip</li>
+      <li class="tk-on">shown in one theme, and the reason is the component</li>
+    </ul>
+    <p class="tk-note">Four panels behind four labels, and <b>no script anywhere</b>: the state is a
+    radio input parked off-screen and the panel is its sibling. That is why a tab set survives a page
+    with JavaScript off, and it is also why it can only exist once in a document.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <section class="ed-section ed-tabs">
+          <div class="ed-tabwrap">
+            <input type="radio" name="edtab" id="edtab-comments" class="ed-tabradio" checked>
+            <input type="radio" name="edtab" id="edtab-holders" class="ed-tabradio">
+            <input type="radio" name="edtab" id="edtab-positions" class="ed-tabradio">
+            <input type="radio" name="edtab" id="edtab-activity" class="ed-tabradio">
+            <div class="ed-tabbar" role="tablist">
+              <label class="ed-tablabel" for="edtab-comments">Comments <span class="ed-tab-count">128</span></label>
+              <label class="ed-tablabel" for="edtab-holders">Biggest bets</label>
+              <label class="ed-tablabel" for="edtab-positions">Bets</label>
+              <label class="ed-tablabel" for="edtab-activity">Activity</label>
+            </div>
+            <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
+              <div class="cmt-controls"><span>128 comments</span><span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span></div>
+              <div class="cmt-compose"><span class="cmt-av">you</span><span class="cmt-input">Add a comment...</span><button type="button" class="btn btn-primary btn-sm cmt-post">Post</button></div>
+              <div class="cmt-list">
+                <div class="cmt"><span class="cmt-av">mm</span><div class="cmt-body"><div class="cmt-meta"><span class="cmt-user">marketmaven</span><span class="cmt-badge">Holds 320 YES</span><span>2h ago</span></div><p class="cmt-text">These always go to the wire. I am holding my position and adding if it dips.</p><div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div></div></div>
+                <div class="cmt reply"><span class="cmt-av">dd</span><div class="cmt-body"><div class="cmt-meta"><span class="cmt-user">deadline_dan</span><span>1h ago</span></div><p class="cmt-text">The committee bloc looks firmer this time though.</p><div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>6</button><button class="btn btn-bare" type="button">Reply</button></div></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="tk-th">Daylight, light: not drawn, and the component is the reason</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <p class="tk-why"><b>tabs.css writes six rules against ten specific ids.</b>
+        <code>#edtab-comments:checked ~ .ed-panel-comments{display:block}</code> and nine more of that
+        shape. A second copy in this document would share <code>name="edtab"</code> with the first, so
+        clicking a label here would UNCHECK the row above, and both copies' panels answer to the same
+        <code>#edtab-comments</code>. Renaming the ids does not help: the rules name them. So it is
+        drawn once, on purpose, and the daylight tab set is one click away on the live screen.</p>
+      </div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> The label that is current is marked by weight, colour and a 2px
+    inset rule, three signals and not one, because a single colour cue fails for the reader it was
+    added for. <b>Anti-rule.</b> A tab never hides something a person has to act on. A panel is for
+    reading; a decision belongs on the page, in one place, where nothing has to be found first.</p>
+  </section>
+
+  <!-- ============================ event-detail ======================= -->
+  <section class="tk-org" id="event-detail">
+    <h2>event-detail</h2>
+    <ul class="tk-holds">
+      <li>components/event-detail.css</li><li>66 lines</li><li>level 3</li><li>126 uses</li>
+      <li class="tk-decl">HOLDS fourteen, and it is the screen's own shell</li>
+    </ul>
+    <p class="tk-note">Sixty-six lines that hold fourteen components. That is what a shell is: the
+    head, the category, the question, the two figures and the bar underneath them, and then the
+    argument columns, the resolution note and the panel. The odds bar's width is on the element,
+    which is one of the three things the system allows there, because <b>a width that is a datum is
+    not styling</b>.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="ed-head">
+          <div class="ed-actions">
+            <button type="button" class="icon-btn icon-btn-tile ed-act" aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"/></svg></button>
+            <button type="button" class="icon-btn icon-btn-tile ed-act" aria-label="Share this event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share-b"/></svg></button>
+            <button type="button" class="icon-btn icon-btn-tile ed-act" data-fav aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button>
+          </div>
+          <span class="ed-thumb">thumbnail placeholder</span>
+          <div>
+            <span class="ed-cat">Politics &middot; One-time event</span>
+            <h1 class="ed-q">Will the US government shut down before March 1, 2027?</h1>
+            <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+            <div class="ed-oddsbar" aria-hidden="true"><span class="track"><span class="fill" style="width:38%"></span></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="ed-head">
+          <div class="ed-actions">
+            <button type="button" class="icon-btn icon-btn-tile ed-act" aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"/></svg></button>
+            <button type="button" class="icon-btn icon-btn-tile ed-act" aria-label="Share this event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share-b"/></svg></button>
+            <button type="button" class="icon-btn icon-btn-tile ed-act" data-fav aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button>
+          </div>
+          <span class="ed-thumb">thumbnail placeholder</span>
+          <div>
+            <span class="ed-cat">Politics &middot; One-time event</span>
+            <h1 class="ed-q">Will the US government shut down before March 1, 2027?</h1>
+            <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+            <div class="ed-oddsbar" aria-hidden="true"><span class="track"><span class="fill" style="width:38%"></span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> The question is the heading, in the words a person would use, and
+    the resolution rule is on the same screen as the bet. <b>Anti-rule.</b> The head never states a
+    probability the chart below it disagrees with, and never rounds one of the two sides so they add
+    to 101.</p>
+  </section>
+
+  <!-- ============================== betpanel ========================= -->
+  <section class="tk-org" id="betpanel">
+    <h2>betpanel</h2>
+    <ul class="tk-holds">
+      <li>components/betpanel.css</li><li>179 lines</li><li>level 3</li><li>120 uses</li>
+      <li class="tk-decl">HOLDS yesno, chip, button, input, quick, notice, state-block</li>
+    </ul>
+    <p class="tk-note">The place a bet is actually made, and the one component that holds seven
+    others. It has three bodies for one job: this column on the desktop, a dock at the foot of the
+    screen on mobile, and the sheet the dock opens. All three are in
+    <code>betpanel.css</code>, because they are one decision at three widths and not three
+    components.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-hold">
+        <aside class="bet-panel">
+          <div class="bp-inner">
+            <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+            <div class="bp-dir">
+              <button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">38%</span></button>
+              <button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">62%</span></button>
+            </div>
+            <div>
+              <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
+              <div class="quick"><button type="button" class="chip chip-amount sel">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button><button class="chip chip-amount" type="button">$50</button></div>
+            </div>
+            <div>
+              <div class="line"><span>Price now</span><span>38%</span></div>
+              <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+              <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+            </div>
+            <button type="button" class="btn btn-primary btn-md btn-block">Confirm bet</button>
+            <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
+          </div>
+        </aside>
+      </div></div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-hold">
+        <aside class="bet-panel">
+          <div class="bp-inner">
+            <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+            <div class="bp-dir">
+              <button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">38%</span></button>
+              <button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">62%</span></button>
+            </div>
+            <div>
+              <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div>
+              <div class="quick"><button type="button" class="chip chip-amount sel">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button><button class="chip chip-amount" type="button">$50</button></div>
+            </div>
+            <div>
+              <div class="line"><span>Price now</span><span>38%</span></div>
+              <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+              <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+            </div>
+            <button type="button" class="btn btn-primary btn-md btn-block">Confirm bet</button>
+            <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
+          </div>
+        </aside>
+      </div></div>
+    </div>
+    <p class="tk-note"><b>It is held in a block wrapper on this page and that is a finding, not a
+    workaround.</b> <code>.bet-panel</code> is <code>flex:0 0 300px</code>, a basis with no axis of
+    its own: in the detail screen's row it is a width, and dropped into a column it is read as a
+    HEIGHT, so the panel came out 300px tall and empty. A component that only knows its size from the
+    thing holding it is a component that cannot be handed to anyone.</p>
+    <p class="tk-note"><b>Rule.</b> The payout figure is above the button and changes as the amount
+    does, because the number a person is deciding on has to be visible while they decide.
+    <b>Anti-rule.</b> The panel never pre-selects an amount larger than the smallest chip, and never
+    the whole balance.</p>
+  </section>
+
+  <!-- ============================= bets-table ======================== -->
+  <section class="tk-org" id="bets-table">
+    <h2>bets-table</h2>
+    <ul class="tk-holds">
+      <li>components/bets-table.css</li><li>49 lines</li><li>level 3</li><li>89 uses</li>
+      <li class="tk-decl">HOLDS comments, position</li>
+    </ul>
+    <p class="tk-note">Two shapes for two questions. <b>Who is on which side</b> is a real
+    <code>&lt;table&gt;</code>, because a row of it has three columns that mean the same thing on
+    every row and that is what a table is for. <b>What just happened</b> is a list, because a feed of
+    events has one column and a time.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <table class="ptable">
+          <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
+            <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
+            <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>$588</td></tr>
+            <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>$121</td></tr>
+          </tbody>
+        </table>
+        <div class="act-list">
+          <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
+          <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$180</b> on NO</span><span class="act-time">14m ago</span></div>
+          <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> cashed out <b>$31</b> on YES</span><span class="act-time">1h ago</span></div>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <table class="ptable">
+          <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
+            <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
+            <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>$588</td></tr>
+            <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>$121</td></tr>
+          </tbody>
+        </table>
+        <div class="act-list">
+          <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
+          <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$180</b> on NO</span><span class="act-time">14m ago</span></div>
+          <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> cashed out <b>$31</b> on YES</span><span class="act-time">1h ago</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> Your own row is marked and stays in place; it is not sorted to the
+    top, because the order is the information. <b>Anti-rule.</b> No leaderboard framing. A table of
+    who bet what is a record, and the moment it ranks people it is telling a person to copy a
+    stranger's position.</p>
+  </section>
+
+  <!-- ================================ chart ========================== -->
+  <section class="tk-org" id="chart">
+    <h2>chart</h2>
+    <ul class="tk-holds">
+      <li>components/chart.css</li><li>42 lines</li><li>level 3</li><li>84 uses</li>
+      <li class="tk-decl">HOLDS chip, tabs</li>
+    </ul>
+    <p class="tk-note"><b>The markup the screen ships has an empty line.</b> The real file is
+    <code>&lt;polyline points=""/&gt;</code>, and a page script writes the points at load out of four
+    ranges of data. So this specimen carries the points that script produces for "all", because a
+    chart with no points is a chart nobody can look at. It is the second component in this system
+    whose paint is not in its markup, after the card's odds bar, and it is the reason
+    <b>"the chart is ported" was once true while it drew as a black rectangle</b>: an SVG with no
+    fill is black, and a missing value is a value.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="ed-chart-area">
+          <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+          <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline points="0.0,59.0 25.0,56.0 50.0,60.0 75.0,64.0 100.0,53.0 125.0,57.0 150.0,50.0 175.0,55.0 200.0,51.0 225.0,56.0 250.0,47.0 275.0,43.0 300.0,62.0"/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
+        </div>
+        <div class="ed-xaxis"><span>Jul</span><span>Sep</span><span>Nov</span><span>Jan</span><span>now</span></div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="ed-chart-area">
+          <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+          <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline points="0.0,59.0 25.0,56.0 50.0,60.0 75.0,64.0 100.0,53.0 125.0,57.0 150.0,50.0 175.0,55.0 200.0,51.0 225.0,56.0 250.0,47.0 275.0,43.0 300.0,62.0"/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
+        </div>
+        <div class="ed-xaxis"><span>Jul</span><span>Sep</span><span>Nov</span><span>Jan</span><span>now</span></div>
+      </div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> One line for a binary market and the five-colour categorical
+    series for a multi-outcome one, and the series is not the outcome palette. A candidate in a
+    five-way race is not a YES: green and red there would say the chart has an opinion about who
+    should win, which is the one thing a prediction market may never say. <b>Anti-rule.</b> The y
+    axis always runs 0 to 100. A chart cropped to the range of its own data makes two points of
+    movement look like a landslide.</p>
+  </section>
+
+  <!-- ================================ card =========================== -->
+  <section class="tk-org" id="card">
+    <h2>card</h2>
+    <ul class="tk-holds">
+      <li>components/card.css</li><li>97 lines</li><li>level 3</li><li>58 uses</li>
+      <li class="tk-decl">HOLDS yesno, oddsbar, options, iconbtn, skeleton</li>
+    </ul>
+    <p class="tk-note">The unit of the feed, and the one place where the product's first principle is
+    tested every time: <b>the why line</b>. A card that gives a question and a number is a ticker; a
+    card that gives a question, a number and one plain sentence about why the number is where it is,
+    is the product.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <article class="card" data-cat="politics">
+          <div class="card-body">
+            <div class="top">
+              <span class="thumb">thumbnail placeholder</span>
+              <div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter, but past deadlines settled late.</p></div>
+            </div>
+            <p class="prob-line">YES <span class="prob">38%</span></p>
+            <div class="odds-bar" aria-hidden="true"><span class="track"><span class="fill" style="width:38%"></span></span></div>
+            <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+            <p class="meta">
+              <span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span>
+              <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button>
+            </p>
+          </div>
+        </article>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <article class="card" data-cat="politics">
+          <div class="card-body">
+            <div class="top">
+              <span class="thumb">thumbnail placeholder</span>
+              <div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter, but past deadlines settled late.</p></div>
+            </div>
+            <p class="prob-line">YES <span class="prob">38%</span></p>
+            <div class="odds-bar" aria-hidden="true"><span class="track"><span class="fill" style="width:38%"></span></span></div>
+            <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+            <p class="meta">
+              <span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span>
+              <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button>
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+    <p class="tk-note"><b>The odds bar between the figure and the buttons is not in any screen's
+    markup</b>, and the vitrine is what found that: it counted 213 uses of a component that appears
+    in no HTML file, because a page script builds the bar as a string at load. It is written by hand
+    into the specimen above, so this is the one place the bar and the card can be looked at
+    together.</p>
+    <p class="tk-note"><b>Rule.</b> One why line, in plain words, and never the marketing sentence.
+    <b>Anti-rule.</b> The card never says what a person should do. "Hot", "closing soon" and "most
+    traded" are the feed's business and belong to the strip above, not to a card that is supposed to
+    be a fact.</p>
+  </section>
+
+  <!-- ================================ hero =========================== -->
+  <section class="tk-org" id="hero">
+    <h2>hero</h2>
+    <ul class="tk-holds">
+      <li>components/hero.css</li><li>166 lines</li><li>level 3</li><li>55 uses</li>
+      <li class="tk-decl">HOLDS yesno</li>
+      <li class="tk-on">shown in one theme, and the reason is the component</li>
+    </ul>
+    <p class="tk-note">The first screen of the feed, and the only block in the product with a
+    photograph plane, a veil over it and a chart beside it. It is the answer to "what is happening
+    right now" that a grid of equal cards cannot give, and it is one event and never a carousel.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <article class="hero-feature">
+          <div class="hf-info">
+            <img class="hf-photo" src="../assets/hero-capitol.webp" alt="" aria-hidden="true" width="1400" height="788" decoding="async">
+            <span class="hf-veil" aria-hidden="true"></span>
+            <span class="hf-eyebrow"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg>Trending now &middot; Politics</span>
+            <a class="hf-title" href="#">Will the US government shut down before March 1, 2027?</a>
+            <p class="hf-why">Funding talks have stalled twice this quarter, but past deadlines settled late.</p>
+            <div class="hf-odds">
+              <div class="hf-bar"><span style="width:38%"></span></div>
+              <div class="hf-odds-row"><span class="hf-yes">YES 38%</span><span class="hf-no">NO 62%</span></div>
+            </div>
+            <div class="hf-foot"><span>Volume <b>$84,200</b></span><span>Closes <b>Mar 1, 2027</b></span></div>
+            <div class="hf-cta yesno"><a href="#"><button type="button">Back YES</button></a><a href="#"><button type="button">Back NO</button></a></div>
+          </div>
+          <div class="hf-chart">
+            <div class="hf-chart-legend"><span class="hf-tag no"><i></i>NO 62%</span><span class="hf-tag yes"><i></i>YES 38%</span><span class="hf-tag vol"><i></i>Vol</span></div>
+            <div class="hf-graph-wrap">
+              <svg class="hf-graph" viewBox="0 0 360 190" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="hfyes" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--outcome-yes)" stop-opacity=".2"/><stop offset="1" stop-color="var(--outcome-yes)" stop-opacity="0"/></linearGradient>
+                  <linearGradient id="hfvol" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--color-action)" stop-opacity=".2"/><stop offset="1" stop-color="var(--color-action)" stop-opacity="0"/></linearGradient>
+                </defs>
+                <g class="hf-grid" vector-effect="non-scaling-stroke"><line x1="16" y1="40" x2="344" y2="40"/><line x1="16" y1="80" x2="344" y2="80"/><line x1="16" y1="120" x2="344" y2="120"/><line x1="16" y1="160" x2="344" y2="160"/></g>
+                <path class="hf-area" d="M16,97 L46,106.5 L76,90.7 L105,112.8 L135,103.3 L165,122.3 L195,109.6 L225,128.6 L255,119.1 L284,131.8 L314,125.4 L344,134.9 L344,190 L16,190 Z"/>
+                <path class="hf-vol-area" d="M16,178 L46,169 L76,174 L105,160 L135,167 L165,151 L195,164 L225,147 L255,161 L284,153 L314,163 L344,149 L344,190 L16,190 Z"/>
+                <polyline class="hf-vol-line" vector-effect="non-scaling-stroke" points="16,178 46,169 76,174 105,160 135,167 165,151 195,164 225,147 255,161 284,153 314,163 344,149"/>
+                <polyline class="hf-line no" vector-effect="non-scaling-stroke" points="16,97 46,87.5 76,103.3 105,81.2 135,90.7 165,71.7 195,84.4 225,65.4 255,74.9 284,62.2 314,68.6 344,59.1"/>
+                <polyline class="hf-line yes" vector-effect="non-scaling-stroke" points="16,97 46,106.5 76,90.7 105,112.8 135,103.3 165,122.3 195,109.6 225,128.6 255,119.1 284,131.8 314,125.4 344,134.9"/>
+              </svg>
+            </div>
+            <span class="hf-chart-cap">Live odds &amp; volume &middot; last 30 days</span>
+          </div>
+        </article>
+      </div>
+      <div class="tk-th">Daylight, light: not drawn, and the component is the reason</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <p class="tk-why"><b>hero.css writes <code>.hf-area{fill:url(#hfyes)}</code>.</b> The gradient
+        stops read <code>var(--outcome-yes)</code>, which resolves against the theme of the copy that
+        DEFINES them, and <code>url(#hfyes)</code> resolves to the first <code>#hfyes</code> in the
+        document. So a daylight copy under this one would paint its area with the graphite copy's
+        green, and it would look plausible rather than wrong, which is the worst kind. Renaming the id
+        here would leave the CSS pointing at the other copy and the area would not render at all.
+        Drawn once, and the daylight hero is on the live feed.</p>
+      </div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> One event, chosen, with its why line and its chart, and the same
+    two buttons a card has. <b>Anti-rule.</b> Never a carousel and never a countdown that only exists
+    to hurry someone. A first screen that rotates is a first screen that says the choice does not
+    matter.</p>
+  </section>
+
+  <!-- ================================ feed =========================== -->
+  <section class="tk-org" id="feed">
+    <h2>feed</h2>
+    <ul class="tk-holds">
+      <li>components/feed.css</li><li>11 lines</li><li>level 3</li><li>41 uses</li>
+      <li class="tk-decl">HOLDS everything a browse screen stands on. A shell</li>
+    </ul>
+    <p class="tk-note"><b>Eleven lines, three rules, and two of the three are a reset.</b> The whole
+    of what this component contributes is <code>margin:0;flex:1</code>, the display face and size for
+    the heading in its head, and a rule that removes its own background inside
+    <code>app-case</code>. A specimen of <code>.feed</code> alone would be a blank rectangle, and
+    showing one would be dishonest twice over: it would look like a page that failed to load, and it
+    would hide the fact that <b>the emptiness IS the component</b>.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark. The shell, with the box it actually contributes drawn</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="tk-empty-shell">
+          <p>main.feed - margin 0, flex 1, transparent</p>
+          <main class="feed">
+            <div class="feed-head"><h1>Trending events</h1></div>
+            <article class="card" data-cat="politics"><div class="card-body">
+              <div class="top"><span class="thumb">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter.</p></div></div>
+              <p class="prob-line">YES <span class="prob">38%</span></p>
+              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+            </div></article>
+          </main>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="tk-empty-shell">
+          <p>main.feed - margin 0, flex 1, transparent</p>
+          <main class="feed">
+            <div class="feed-head"><h1>Trending events</h1></div>
+            <article class="card" data-cat="politics"><div class="card-body">
+              <div class="top"><span class="thumb">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter.</p></div></div>
+              <p class="prob-line">YES <span class="prob">38%</span></p>
+              <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+            </div></article>
+          </main>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>This is the honest answer to "is a shell a component".</b> It is level 3 by
+    the declaration and by the arithmetic, and it has fewer rules than the smallest atom on the
+    vitrine. A level says what a thing HOLDS, and it has never said anything about how much a thing
+    draws. <b>Rule.</b> The shell takes the remaining space and no decisions. <b>Anti-rule.</b> It
+    never paints a ground of its own: the ground belongs to the page, and a feed that draws one has
+    made every screen that holds it into two grounds stacked.</p>
+  </section>
+
+  <!-- ============================== profile ========================== -->
+  <section class="tk-org" id="profile">
+    <h2>profile</h2>
+    <ul class="tk-holds">
+      <li>components/profile.css</li><li>45 lines</li><li>level 3</li><li>unmeasured</li>
+      <li class="tk-decl">outside the core, no level taken</li>
+    </ul>
+    <p class="tk-note"><b>It stands on no anchor screen, so no reading was taken about it and it has
+    no declared level.</b> That is not the same as "holds nothing": nobody has walked it, and the
+    inventory says so rather than guessing. It is shown here because it exists and a person looking
+    for it should find it, and it is filed under level 3 by its import position and nothing
+    stronger.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="idrow">
+          <span class="av" aria-hidden="true">ap</span>
+          <span class="who"><span class="name">alex_predicts</span><br><span class="handle">Your public track record</span></span>
+          <button type="button" class="btn btn-secondary btn-sm edit">Edit</button>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="idrow">
+          <span class="av" aria-hidden="true">ap</span>
+          <span class="who"><span class="name">alex_predicts</span><br><span class="handle">Your public track record</span></span>
+          <button type="button" class="btn btn-secondary btn-sm edit">Edit</button>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> Identity first, then the record, then the bets. <b>Anti-rule.</b>
+    The profile never shows a balance to anyone but its owner, and never a rank.</p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="02">What is left, and what this page could not answer</h2>
+    <p class="tk-note"><b>One organism is unmeasured</b>, <code>profile</code>, and it will get a
+    level when the screens that carry it are walked. It is named rather than guessed at, which is the
+    same treatment <code>account</code>, <code>cookie-consent</code> and <code>toc</code> got on the
+    molecules page.</p>
+    <p class="tk-note"><b>Two are shown once</b>, and that is the finding rather than a limitation of
+    the stand. Until <code>tabs.css</code> and <code>hero.css</code> stop naming ids, neither
+    component can be placed twice in one document by anybody, including a developer building a page
+    with two tab sets on it. Backlog 45.</p>
+    <p class="tk-note"><b>And the fourth rung is next.</b> <code>components/patterns/</code> holds six
+    files whose criterion is repetition rather than nesting: a pattern is three screens or more, adds
+    no styles of its own and carries no colour. Five of the six stand on the anchors and
+    <code>action-bar</code> stands on none of the 41.</p>
+  </section>
+
+</div>
+</body>
+</html>

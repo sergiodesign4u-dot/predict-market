@@ -44,6 +44,79 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - Step 4c, the organisms, and the thing a level page exists to find
+
+**Thirteen at level 3, twelve measured and one named as unmeasured.** `ui-kit/organisms.html`, the
+markup the screens ship, painted by `components/index.css`, with what each holds, its rule and its
+anti-rule. `profile` stands on no anchor and gets no level rather than a guessed one, the same
+treatment `account`, `cookie-consent` and `toc` got a page earlier.
+
+**The themes stack instead of sitting side by side, and that is the subject deciding the shape for
+the third time.** The vitrine's three-column table works for a control; the molecules page moved the
+label above and split the width because a trust strip does not fit in 400px; an organism is the width
+of a screen, and **a header cut to 430px is not a header**. What a shell IS is the decision it takes
+about the full width, so a two-column pair would be measuring something else and calling it the
+component.
+
+### The finding: nine declarations are keyed to a document-unique id
+
+**A class can appear a thousand times. An id is unique by definition**, so a rule written against one
+is not a rule about a component, it is a rule about **one instance** of it. Counted across all 51
+stylesheets:
+
+| File | Keyed to an id | Ids |
+|---|---|---|
+| `tabs.css` | **6 rules** | `#edtab-comments`, `#edtab-holders`, `#edtab-positions`, `#edtab-activity`, `#ptab-record`, `#ptab-wins`, `#ptab-resolved`, `#p-record`, `#p-wins`, `#p-resolved` |
+| `hero.css` | **2 paints** | `url(#hfyes)`, `url(#hfvol)` |
+| `base.css` | **1 rule** | `#rmSidebar`, and it is correct: there really is one panel per document |
+
+**Measured over the 106 painted screens: 0 of the 13 ids appears more than once.** One hero per feed,
+one tab set per detail page. Nothing renders wrong today, the coupling has never fired, and **the
+stand is the first thing that ever asked**, because a page that shows a component in both themes
+shows it twice in one document by construction.
+
+**Both are drawn once, on purpose, with the reason in the empty cell.** The alternatives were both
+worse. Keeping the ids would make the daylight tab set share `name="edtab"` with the graphite one and
+uncheck it, and would make a daylight hero paint its area with the graphite copy's gradient, because
+`url(#hfyes)` resolves to the first `#hfyes` in the document and the stops read `var(--outcome-yes)`
+against the theme of the copy that DEFINES them. Renaming the ids would leave the CSS pointing at the
+other copy and the area would not render at all. **A stand that quietly shows a component painting
+with another copy's values is worse than one that says it cannot show it**, because the first kind
+looks plausible. Backlog 45, and it is the same family as `.app-case`: a dependency the system
+requires and never declares.
+
+### The one specimen that is not exactly what the product renders, said out loud
+
+In the product a sheet is opened with `showModal()` and the browser lifts it into the **top layer**:
+fixed, centred, over a `::backdrop`, one at a time per document. Four of them on one page cannot do
+that. So the stand opens them with the plain `open` attribute and `.tk-dlg` pins them static, and
+**exactly two things differ, the position and the backdrop**. Everything inside is the rule
+`dialog.css` writes, untouched. It is written on the page rather than left for a reader to notice.
+
+### Two more components whose paint is not in their markup
+
+The chart ships `<polyline points=""/>` and a page script writes the points at load, so the specimen
+carries the points that script produces for the "all" range. That is the second after the card's odds
+bar, which the vitrine found by counting 213 uses of something that appears in no HTML file. Both are
+written by hand into their specimens, and both say so. **"The chart is ported" was once true here
+while it drew as a black rectangle**, because an SVG with no fill is black, and a missing value is a
+value.
+
+### And the honest answer to "is a shell a component"
+
+`feed.css` is **eleven lines and three rules, two of which are a reset**. The whole of what it
+contributes is `margin:0;flex:1`, the display face for the heading in its head, and a rule removing
+its own background inside `app-case`. It is level 3 by the declaration and by the arithmetic, and it
+has fewer rules than the smallest atom on the vitrine. **A level says what a thing HOLDS and has
+never said anything about how much a thing draws.** It is shown with the emptiness drawn rather than
+described, because a blank rectangle reads as a page that failed to load.
+
+**Verified** at 390 and 1280: 13 sections, 26 theme figures, 0 blank, 0 duplicated ids in the
+document, 0 elements past their figure that cannot scroll, 0 horizontal page scroll, 0 console
+errors. Sweeps written in the scratchpad, run once and deleted.
+
+---
+
 ## 2026-08-08 - The kit got a route back, and the deleted `_nav.js` was not what was wrong
 
 **A registry was rebuilt under a name that had just been deleted, and the distinction is the whole

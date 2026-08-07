@@ -1,10 +1,11 @@
 # ui-kit/ - the vitrine, being rebuilt from 2026-08-07
 
-The kit shows the system to a person and it holds no product code. Right now it holds seven pages
+The kit shows the system to a person and it holds no product code. Right now it holds eight pages
 plus its stylesheet and its registry: `overview.html`, which says what is happening, **all four
 foundation pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`), and the
-component pages by level, `vitrine.html` for the ten atoms and `molecules.html` for the fourteen at
-level 2. `_page.css` is the stand furniture they all share and `_nav.js` is the route.
+component pages by level, `vitrine.html` for the ten atoms, `molecules.html` for the fourteen at
+level 2 and `organisms.html` for the thirteen at level 3. `_page.css` is the stand furniture they all
+share and `_nav.js` is the route.
 
 **A page per LEVEL, not a page per component.** Forty pages of one component each would be forty
 navigations to compare two chips. A level is the unit a person actually reads, and the level is where
@@ -102,9 +103,30 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
    markup the screens ship. Two of the fourteen were filed as atoms and hold their own named parts,
    which is the case the declaration exists for. Three more (`account`, `cookie-consent`, `toc`)
    stand on no anchor screen and are marked **unmeasured** rather than given a level. **4c organisms
-   is open**: header, footer, dialog, hiw-dialog, betpanel, tabs, bets-table, card, hero, chart,
-   feed, event-detail, profile.
-5. **One audit run**, as a report.
+   is DONE 2026-08-08, `organisms.html`**: thirteen at level 3, twelve measured and `profile`
+   unmeasured, the themes stacked rather than side by side because a header cut to 430px is not a
+   header.
+
+   **4c found the thing a level page exists to find, and it is a system defect rather than a stand
+   problem. NINE DECLARATIONS IN THE SYSTEM ARE KEYED TO A DOCUMENT-UNIQUE ID**, and two components
+   therefore cannot be placed twice in one document by anybody. `tabs.css` writes six rules of the
+   shape `#edtab-comments:checked ~ .ed-panel-comments`, over ten ids, so the event tab set and the
+   profile tab set work once per document; `hero.css` writes `.hf-area{fill:url(#hfyes)}`, so the
+   hero chart takes its gradient from whichever `#hfyes` the document defines first. The one in
+   `base.css` is `#rmSidebar` and it is correct. **Measured over the 106 painted screens: 0 of the 13
+   ids appears more than once, so nothing is broken today** and nothing ever asked until a stand
+   tried to show a component twice. Both are drawn **once, on purpose, with the reason in the empty
+   cell**, because a stand that quietly shows a component painting with another copy's values is
+   worse than one that says it cannot. Backlog 45.
+
+   **A dialog is the one specimen on the kit that is not exactly what the product renders**, and the
+   page says so. In the product it is `showModal()` and the top layer: fixed, centred, over a
+   backdrop, one per document. Four on a page cannot do that, so the stand uses the plain `open`
+   attribute and `.tk-dlg` pins it static. **Exactly two things differ, the position and the
+   backdrop.**
+5. **One audit run**, as a report. **Patterns** is the rung after this one: six files in
+   `components/patterns/`, criterion repetition rather than nesting, five on the anchors and
+   `action-bar` on none of the 41.
 
 The five anchors: event feed, event detail, active bets, deposit, sign in, with their loading, empty,
 error and logged-out variants. 41 screens of the 106.

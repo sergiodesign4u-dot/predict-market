@@ -66,8 +66,8 @@ window.KIT_NAV = [
     items: [
       { label: 'Atoms',     page: 'vitrine.html',   done: true,  note: '10' },
       { label: 'Molecules', page: 'molecules.html', done: true,  note: '14' },
-      { label: 'Organisms', page: 'organisms.html', done: false, next: true },
-      { label: 'Patterns',  page: 'patterns.html',  done: false }
+      { label: 'Organisms', page: 'organisms.html', done: true,  note: '13' },
+      { label: 'Patterns',  page: 'patterns.html',  done: false, next: true }
     ]
   },
   {
