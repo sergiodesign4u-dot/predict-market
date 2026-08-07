@@ -1,9 +1,14 @@
 # ui-kit/ - the vitrine, being rebuilt from 2026-08-07
 
-The kit shows the system to a person and it holds no product code. Right now it holds three pages
+The kit shows the system to a person and it holds no product code. Right now it holds four pages
 plus its stylesheet: `overview.html`, which says what is happening, `vitrine.html`, the ten atoms in
-every face they wear with both themes side by side, `icons.html`, the first foundation page, and
-`_page.css`, the stand furniture they all share.
+every face they wear with both themes side by side, `icons.html` and `colour.html`, the first two
+foundation pages, and `_page.css`, the stand furniture they all share.
+
+**A swatch never carries a value.** `_page.css` holds one class per role and per primitive,
+`.c-bg-plate{--sw:var(--bg-plate)}`, and the page wears the class. That is why there is not a single
+`style=` attribute on `colour.html`: a colour written inline is a value this stylesheet cannot see,
+and a colour page whose colours are invisible to the system is the exact thing being audited.
 
 **The foundations are `colour`, `typography`, `geometry` and `icons`, one flat page each**, and they
 are the visible half of step 3. A value may only change in that step, and it changes in the page and
@@ -55,7 +60,15 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
    it renders **0.90px to 2.67px** across six sizes, which is no optical weight at all; **four
    different safe fields** in the stroked family, 2.2 to 5.2, against the filled family's 2.0 on 13
    of 15; **seven jobs, eight to fourteen drawings**; three glyphs whose centre is 1.7 to 2.0
-   modules out. Still open: **3b colour, 3c typography, 3d geometry, 3e the values** (import order,
+   modules out. **3b colour is DONE, 2026-08-07, `colour.html`**: 212 primitives, 133 roles, and
+   **134 contrast readings against the composited ground with 0 below floor**, at two floors,
+   4.5:1 for a word and 3:1 for a glyph. What it found: `icon-brass` in daylight is **3.20:1**, two
+   hundredths of headroom and the only role in the system with nowhere to go; **the brass ink ladder
+   has four rungs in the Vault and one in daylight**, so three roles do nothing there; `icon-quiet`
+   is identical to `text-muted` in the Vault and separate in daylight, which is the two-level system
+   earning its cost; and **40 roles are declared once**, of which 37 correctly so and two,
+   `control-knob` and `line-brass-strong`, stand on a ground that inverts. Still open: **3c
+   typography, 3d geometry, 3e the values** (import order,
    17 paddings, 29 heights, 17 borders, the `19.2px` leak, 20 files citing gates that no longer
    exist, and the four decisions `inventory.md` forced). Output: `docs/consolidation.md`.
 4. **The pages.** One per component: a live specimen, its states in both themes, its classes, its

@@ -9,7 +9,7 @@ holds the record of what was done. This holds what is not.
 Unlike `decisions.md`, this file is edited: a row is struck when the item closes, with the date and
 the entry in `decisions.md` that closed it.
 
-**Open: 29.**
+**Open: 32.**
 
 The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
 twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
@@ -67,10 +67,13 @@ Carried since the project brief; none of it has been answered.
 
 ---
 
-## Design defects deferred (8)
+## Design defects deferred (11)
 
 | # | Item | Source | Note |
 |---|---|---|---|
+| 32 | `--icon-brass` in daylight has two hundredths of headroom | Design System step 3b, `ui-kit/colour.html`, 2026-08-07 | **3.20:1 on `--bg-card`**, 3.28 on the plate, 3.40 on the page. The floor for a graphical object is 3:1, so it passes, and it is **the only role in the system with nowhere left to go**: nothing else measured is within 0.5 of a floor. It is the saved bookmark and the active mark. Any card ground made one step lighter puts it under, so the constraint belongs written down beside the surface ramp and not only here. Owner: step 3e |
+| 33 | **The brass ink ladder has four rungs in the Vault and one in daylight** | Design System step 3b, 2026-08-07 | `--text-brass`, `--text-brass-lit`, `--text-brass-chip` and `--text-brass-vol` measure 8.98, 11.68, 13.20 and 10.58 against `--bg-page` in graphite, and **all four measure 7.40 in chalk**. Three roles resolve to the fourth's value, so the hero eyebrow, the active chip label and the volume tag are all just the link colour in daylight. Either the ladder is real in both themes or it is one role with three aliases; both are defensible and neither is what the file says now. Owner: step 3e |
+| 34 | Two roles stand on an inverting ground and are declared once | Design System step 3b, 2026-08-07 | 40 of 133 roles have no daylight value. **37 are correct**: brass is the brand and does not invert, an outcome solid is a coloured object, the ink on a constant ground must be constant too, a photograph is not a theme surface, and 8 are course chrome that should leave `tokens.css` entirely. **Two are candidates for a real hole**: `--control-knob`, the dot inside the switch, and `--line-brass-strong`, an edge. Both stand on a ground that inverts. Also: the rule in `components/CLAUDE.md` reads as "every role in both themes" and what it means is narrower, **a role whose GROUND inverts must be declared for both**, so the wording is the other half of this item |
 | 29 | The icon stroke is a constant in user units, so it renders at six different weights | Design System step 3a, `ui-kit/icons.html`, 2026-08-07 | `.ic` declares `stroke-width:1.6` once, inside a 24 unit box, and user units scale with the box. Measured on screen: **0.90px at 12, 1.07 at 16, 1.20 at 18, 1.33 at 20, 1.47 at 22, 2.67 at 40**. A factor of three, wrong at both ends: 0.90 is under one device pixel at DPR 1 and smears, 2.67 is heavier than the type beside it. **The set has no optical weight, it has one geometric weight that slides.** `.ic-sm` is the worst case and should go: smallest box, thickest declared stroke. Owner: step 3e |
 | 30 | The stroked family has four safe fields and the filled family has one | Design System step 3a, 2026-08-07 | Measured against the **paint**, not the curve. Stroked, 33 glyphs: field 2.2 on 15, 3.2 on 10, 4.2 on 6, 5.2 on 2. Filled, 15 glyphs: 2.0 on 13. Exactly one owned glyph is INSIDE the field, `i-cat-politics` at 1.0, so this is not a violation to fix but **a rule that was never set**. The chevron, second most used glyph in the product, paints 13.6 x 7.6 in a 24 cell. Three glyphs are also off centre by 1.7 to 2.0 modules: `sort`, `trend-up`, `music`. Owner: step 3e |
 | 31 | **Two icon families, and four jobs are drawn in both** | Design System step 3a, 2026-08-07 | 15 filled Solar Bold through a sprite, 37 stroked hand-drawn inline. Bookmark, bell, shield and chat exist in both, and the bookmark is used in both forms **for the same meaning**: filled on the card, stroked in the footer. Shield is 106 against 106, which is two decisions taken in two places rather than a preference that drifted. Three more pairs sit inside the stroked family alone: two closes, two searches, two clocks with different circle radii. **52 glyphs, 45 jobs.** This is the one item of the three that is a product decision rather than a value, so it is not step 3e's to take alone |

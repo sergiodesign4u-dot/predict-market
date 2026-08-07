@@ -235,3 +235,187 @@
   font-family:var(--font-body);font-size:12px;line-height:1.55;min-width:0}
 .tk-td code{font-family:var(--font-mono);font-size:.9em;color:var(--text-brass);
   word-break:break-word}
+
+/* ==========================================================================
+   FOUNDATIONS: COLOUR. Added 2026-08-07 for colour.html.
+
+   ONE CLASS PER ROLE, AND IT CARRIES NO VALUE. `.c-bg-plate{--sw:var(--bg-plate)}`
+   names the role and hands the resolving to tokens.css, so a swatch on this page
+   can never disagree with the system: if the role changes, the swatch changes.
+
+   This is what the page uses instead of `style="background:..."`. A swatch is
+   arguably a datum, which the rules allow on the element, but a datum written as
+   an inline style is also a value this stylesheet cannot see, and a colour page
+   whose colours are invisible to the system is the exact thing being audited. */
+.tk-sw{background:var(--sw)}
+.tk-ink{color:var(--sw)}
+.tk-brd{border-color:var(--sw)}
+.c-bg-page{--sw:var(--bg-page)}
+.c-bg-canvas{--sw:var(--bg-canvas)}
+.c-bg-slab{--sw:var(--bg-slab)}
+.c-bg-plate{--sw:var(--bg-plate)}
+.c-bg-card{--sw:var(--bg-card)}
+.c-bg-card-quiet{--sw:var(--bg-card-quiet)}
+.c-bg-surface{--sw:var(--bg-surface)}
+.c-bg-control{--sw:var(--bg-control)}
+.c-bg-control-hover{--sw:var(--bg-control-hover)}
+.c-bg-chip{--sw:var(--bg-chip)}
+.c-bg-well{--sw:var(--bg-well)}
+.c-bg-dock{--sw:var(--bg-dock)}
+.c-bg-pressed{--sw:var(--bg-pressed)}
+.c-bg-brand-mark{--sw:var(--bg-brand-mark)}
+.c-text-primary{--sw:var(--text-primary)}
+.c-text-muted{--sw:var(--text-muted)}
+.c-text-icon{--sw:var(--text-icon)}
+.c-icon-quiet{--sw:var(--icon-quiet)}
+.c-icon-brass{--sw:var(--icon-brass)}
+.c-text-icon-strong{--sw:var(--text-icon-strong)}
+.c-text-chip-hover{--sw:var(--text-chip-hover)}
+.c-text-brass{--sw:var(--text-brass)}
+.c-text-brass-lit{--sw:var(--text-brass-lit)}
+.c-text-brass-chip{--sw:var(--text-brass-chip)}
+.c-text-brass-vol{--sw:var(--text-brass-vol)}
+.c-text-on-brass{--sw:var(--text-on-brass)}
+.c-text-on-yes{--sw:var(--text-on-yes)}
+.c-text-on-no{--sw:var(--text-on-no)}
+.c-text-on-photo{--sw:var(--text-on-photo)}
+.c-text-strong{--sw:var(--text-strong)}
+.c-color-action{--sw:var(--color-action)}
+.c-color-action-lit{--sw:var(--color-action-lit)}
+.c-color-action-pressed{--sw:var(--color-action-pressed)}
+.c-color-trust{--sw:var(--color-trust)}
+.c-outcome-yes{--sw:var(--outcome-yes)}
+.c-outcome-no{--sw:var(--outcome-no)}
+.c-outcome-yes-text{--sw:var(--outcome-yes-text)}
+.c-outcome-no-text{--sw:var(--outcome-no-text)}
+.c-outcome-yes-fill{--sw:var(--outcome-yes-fill)}
+.c-outcome-no-fill{--sw:var(--outcome-no-fill)}
+.c-outcome-yes-fill-soft{--sw:var(--outcome-yes-fill-soft)}
+.c-outcome-no-fill-soft{--sw:var(--outcome-no-fill-soft)}
+.c-outcome-yes-line{--sw:var(--outcome-yes-line)}
+.c-outcome-no-line{--sw:var(--outcome-no-line)}
+.c-outcome-no-figure{--sw:var(--outcome-no-figure)}
+.c-chart-line{--sw:var(--chart-line)}
+.c-result-won{--sw:var(--result-won)}
+.c-result-won-text{--sw:var(--result-won-text)}
+.c-result-won-fill{--sw:var(--result-won-fill)}
+.c-result-won-line{--sw:var(--result-won-line)}
+.c-result-lost-text{--sw:var(--result-lost-text)}
+.c-result-lost-fill{--sw:var(--result-lost-fill)}
+.c-result-lost-line{--sw:var(--result-lost-line)}
+.c-series-1{--sw:var(--series-1)}
+.c-series-2{--sw:var(--series-2)}
+.c-series-3{--sw:var(--series-3)}
+.c-series-4{--sw:var(--series-4)}
+.c-series-5{--sw:var(--series-5)}
+.c-border-hairline{--sw:var(--border-hairline)}
+.c-border-brass{--sw:var(--border-brass)}
+.c-border-brass-hover{--sw:var(--border-brass-hover)}
+.c-tint-brass-06{--sw:var(--tint-brass-06)}
+.c-tint-brass-09{--sw:var(--tint-brass-09)}
+.c-tint-brass-16{--sw:var(--tint-brass-16)}
+.c-tint-brass-30{--sw:var(--tint-brass-30)}
+.c-tint-brass-45{--sw:var(--tint-brass-45)}
+.c-tint-brass-60{--sw:var(--tint-brass-60)}
+
+.tk-ramp{display:flex;flex-wrap:wrap;gap:3px;margin:0 0 10px}
+.tk-rc{width:60px;height:52px;border-radius:6px;border:1px solid var(--border-hairline);
+  display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px;
+  font-family:var(--font-mono);font-size:9px;color:var(--text-muted)}
+.tk-rc.tk-onlight{color:var(--graphite-930)}
+
+/* the contrast matrix: roles down, grounds across, one theme per table */
+.tk-mx{display:grid;gap:1px;background:var(--border-hairline);border:1px solid var(--border-hairline);
+  border-radius:10px;overflow:hidden;margin:0 0 10px;font-family:var(--font-mono);font-size:10px}
+.tk-mx-h{background:var(--bg-surface);color:var(--text-muted);padding:7px 6px;text-align:center;
+  letter-spacing:.03em}
+.tk-mx-r{background:var(--bg-surface);color:var(--text-primary);padding:7px 10px;
+  display:flex;align-items:center;white-space:nowrap}
+.tk-mc{padding:9px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0}
+.tk-mc b{font-size:13px;font-weight:700;line-height:1}
+.tk-mc i{font-style:normal;font-size:9px;color:var(--text-muted);opacity:.85}
+.tk-mc.tk-fail{outline:2px solid var(--outcome-no);outline-offset:-2px}
+.tk-mc.tk-fail i{color:var(--outcome-no-text);opacity:1}
+@media(max-width:760px){.tk-mx{font-size:9px}.tk-mx-r{padding:6px}.tk-mc{padding:6px 2px}}
+
+/* The primitive ramps. A component may never read one of these, and a foundations
+   page that hides them is hiding the material the roles are cut from, so they are
+   painted here and nowhere else in the kit. */
+.p-graphite-950{--sw:var(--graphite-950)}
+.p-graphite-940{--sw:var(--graphite-940)}
+.p-graphite-930{--sw:var(--graphite-930)}
+.p-graphite-920{--sw:var(--graphite-920)}
+.p-graphite-910{--sw:var(--graphite-910)}
+.p-graphite-900{--sw:var(--graphite-900)}
+.p-graphite-880{--sw:var(--graphite-880)}
+.p-graphite-870{--sw:var(--graphite-870)}
+.p-graphite-860{--sw:var(--graphite-860)}
+.p-graphite-850{--sw:var(--graphite-850)}
+.p-graphite-830{--sw:var(--graphite-830)}
+.p-graphite-800{--sw:var(--graphite-800)}
+.p-graphite-780{--sw:var(--graphite-780)}
+.p-graphite-750{--sw:var(--graphite-750)}
+.p-graphite-720{--sw:var(--graphite-720)}
+.p-chalk-940{--sw:var(--chalk-940)}
+.p-chalk-930{--sw:var(--chalk-930)}
+.p-chalk-920{--sw:var(--chalk-920)}
+.p-chalk-910{--sw:var(--chalk-910)}
+.p-chalk-900{--sw:var(--chalk-900)}
+.p-chalk-880{--sw:var(--chalk-880)}
+.p-chalk-870{--sw:var(--chalk-870)}
+.p-chalk-860{--sw:var(--chalk-860)}
+.p-chalk-750{--sw:var(--chalk-750)}
+.p-bone-080{--sw:var(--bone-080)}
+.p-bone-100{--sw:var(--bone-100)}
+.p-bone-200{--sw:var(--bone-200)}
+.p-bone-250{--sw:var(--bone-250)}
+.p-bone-300{--sw:var(--bone-300)}
+.p-bone-500{--sw:var(--bone-500)}
+.p-bone-600{--sw:var(--bone-600)}
+.p-bone-650{--sw:var(--bone-650)}
+.p-bone-700{--sw:var(--bone-700)}
+.p-ink-900{--sw:var(--ink-900)}
+.p-ink-700{--sw:var(--ink-700)}
+.p-ink-500{--sw:var(--ink-500)}
+.p-ink-400{--sw:var(--ink-400)}
+.p-ink-300{--sw:var(--ink-300)}
+.p-brass-200{--sw:var(--brass-200)}
+.p-brass-220{--sw:var(--brass-220)}
+.p-brass-250{--sw:var(--brass-250)}
+.p-brass-300{--sw:var(--brass-300)}
+.p-brass-400{--sw:var(--brass-400)}
+.p-brass-500{--sw:var(--brass-500)}
+.p-brass-600{--sw:var(--brass-600)}
+.p-brass-700{--sw:var(--brass-700)}
+.p-green-200{--sw:var(--green-200)}
+.p-green-250{--sw:var(--green-250)}
+.p-green-300{--sw:var(--green-300)}
+.p-green-500{--sw:var(--green-500)}
+.p-green-700{--sw:var(--green-700)}
+.p-green-800{--sw:var(--green-800)}
+.p-green-950{--sw:var(--green-950)}
+.p-green-975{--sw:var(--green-975)}
+.p-green-050{--sw:var(--green-050)}
+.p-red-300{--sw:var(--red-300)}
+.p-red-400{--sw:var(--red-400)}
+.p-red-500{--sw:var(--red-500)}
+.p-red-700{--sw:var(--red-700)}
+.p-red-800{--sw:var(--red-800)}
+.p-red-950{--sw:var(--red-950)}
+.p-plum-950{--sw:var(--plum-950)}
+.tk-mx-6{grid-template-columns:minmax(96px,132px) repeat(5,minmax(0,1fr))}
+.tk-mx-4{grid-template-columns:minmax(96px,132px) repeat(3,minmax(0,1fr))}
+@media(max-width:640px){.tk-mx-6,.tk-mx-4{grid-template-columns:76px repeat(auto-fit,minmax(0,1fr))}}
+
+/* A TINT NEEDS A REAL SURFACE UNDER IT. The matrix draws its rule lines with a 1px
+   grid gap over `--border-hairline`, so a semi-transparent fill placed straight on
+   a cell composites over the HAIRLINE and not over a product surface. Measured that
+   way the light theme reported 3.34:1 on every outcome fill, which is a number
+   about this table. The tint sits in its own box on an opaque `--bg-card` cell,
+   which is where it stands in the product. */
+.tk-fillbox{display:inline-flex;align-items:center;justify-content:center;
+  padding:5px 10px;border-radius:6px;min-width:52px}
+/* At 390 the four-column tables squeeze the fill box past its cell by 4 to 6px.
+   `min-width` is what does it, so it is dropped on narrow: the tint still shows,
+   which is the whole job of the swatch, and the box stops overhanging. */
+@media(max-width:640px){.tk-fillbox{min-width:0;padding:5px 4px;max-width:100%}}

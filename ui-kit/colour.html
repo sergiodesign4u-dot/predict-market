@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Foundations: colour</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+</head>
+<body class="app-case">
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Colour</h1>
+    <p>Two levels, <b>212 primitives</b> and <b>133 semantic roles</b>, with a second theme whose
+    only job is to prove the second level was worth its cost. Every swatch below reads the role by
+    name and resolves it through <code>tokens.css</code>, so nothing on this page can disagree with
+    the system. The contrast numbers are computed here, in the browser, against the composited
+    ground.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">212 primitives</span>
+      <span class="tk-badge">133 roles</span>
+      <span class="tk-badge">2 themes</span>
+      <span class="tk-badge">55 claims in the file</span>
+    </div>
+    <div class="tk-jump">
+      <a href="icons.html">Foundations: icons</a>
+      <a href="vitrine.html">The vitrine</a>
+      <a href="overview.html">Why the kit is being rebuilt</a>
+    </div>
+  </div>
+
+  <!-- ============================ two levels ========================== -->
+  <section class="tk-sec" id="levels">
+    <h2 data-n="01">Two levels, and colour is the only thing that gets a second one</h2>
+    <p class="tk-note">A raw value is a <b>primitive</b>: <code>--graphite-930</code> is a number
+    and says nothing about where it goes. A <b>semantic role</b> says what a colour is FOR:
+    <code>--bg-page</code>, <code>--text-muted</code>, <code>--outcome-yes</code>. A component reads
+    a role, never a primitive, and never types a raw value.</p>
+    <p class="tk-note"><b>Colour is the only axis with two levels, and that is a decision rather
+    than an omission.</b> A radius, a gap or a duration has nothing for a theme to override: 10px is
+    10px in daylight. A colour is the one thing whose value depends on what else is on the screen,
+    so it is the one thing that needs a name for its job separate from its number.</p>
+    <p class="tk-note"><b>A rebrand would not prove this. A theme does.</b> Swapping brass for
+    cobalt is a change of primitive and works fine on a flat file with no roles at all. In a theme
+    the ground inverts, the ink inverts, the light and the shade swap places, <b>and the action has
+    to stay the action through all of it</b>. That sentence can only be written if the reason a
+    colour is there is stored somewhere, and here it is stored in the role name.</p>
+  </section>
+
+  <!-- ============================ primitives ========================== -->
+  <section class="tk-sec" id="primitives">
+    <h2 data-n="02">The primitives, the material</h2>
+    <p class="tk-note">Painted here and nowhere else in the kit. Nothing in <code>components/</code>
+    may read one of these directly; a foundations page that hid them would be hiding what the roles
+    are cut from.</p>
+
+    <p class="tk-subh">Graphite, 15 steps. The Vault canvas and every stone</p>
+    <div class="tk-ramp">
+      <span class="tk-rc tk-sw p-graphite-950">950</span><span class="tk-rc tk-sw p-graphite-940">940</span><span class="tk-rc tk-sw p-graphite-930">930</span><span class="tk-rc tk-sw p-graphite-920">920</span><span class="tk-rc tk-sw p-graphite-910">910</span><span class="tk-rc tk-sw p-graphite-900">900</span><span class="tk-rc tk-sw p-graphite-880">880</span><span class="tk-rc tk-sw p-graphite-870">870</span><span class="tk-rc tk-sw p-graphite-860">860</span><span class="tk-rc tk-sw p-graphite-850">850</span><span class="tk-rc tk-sw p-graphite-830">830</span><span class="tk-rc tk-sw p-graphite-800">800</span><span class="tk-rc tk-sw p-graphite-780">780</span><span class="tk-rc tk-sw p-graphite-750">750</span><span class="tk-rc tk-sw p-graphite-720">720</span>
+    </div>
+
+    <p class="tk-subh">Chalk, 9 steps. The pale stone of daylight</p>
+    <div class="tk-ramp">
+      <span class="tk-rc tk-onlight tk-sw p-chalk-940">940</span><span class="tk-rc tk-onlight tk-sw p-chalk-930">930</span><span class="tk-rc tk-onlight tk-sw p-chalk-920">920</span><span class="tk-rc tk-onlight tk-sw p-chalk-910">910</span><span class="tk-rc tk-onlight tk-sw p-chalk-900">900</span><span class="tk-rc tk-onlight tk-sw p-chalk-880">880</span><span class="tk-rc tk-onlight tk-sw p-chalk-870">870</span><span class="tk-rc tk-onlight tk-sw p-chalk-860">860</span><span class="tk-rc tk-onlight tk-sw p-chalk-750">750</span>
+    </div>
+
+    <p class="tk-subh">Bone, 9 steps. The warm light ink of the Vault</p>
+    <div class="tk-ramp">
+      <span class="tk-rc tk-onlight tk-sw p-bone-080">080</span><span class="tk-rc tk-onlight tk-sw p-bone-100">100</span><span class="tk-rc tk-onlight tk-sw p-bone-200">200</span><span class="tk-rc tk-onlight tk-sw p-bone-250">250</span><span class="tk-rc tk-onlight tk-sw p-bone-300">300</span><span class="tk-rc tk-onlight tk-sw p-bone-500">500</span><span class="tk-rc tk-sw p-bone-600">600</span><span class="tk-rc tk-sw p-bone-650">650</span><span class="tk-rc tk-sw p-bone-700">700</span>
+    </div>
+
+    <p class="tk-subh">Ink, 5 steps. The dark text of daylight</p>
+    <div class="tk-ramp">
+      <span class="tk-rc tk-sw p-ink-900">900</span><span class="tk-rc tk-sw p-ink-700">700</span><span class="tk-rc tk-sw p-ink-500">500</span><span class="tk-rc tk-sw p-ink-400">400</span><span class="tk-rc tk-onlight tk-sw p-ink-300">300</span>
+    </div>
+
+    <p class="tk-subh">Brass, 8 steps. The brand metal, and the only hue the product owns</p>
+    <div class="tk-ramp">
+      <span class="tk-rc tk-onlight tk-sw p-brass-200">200</span><span class="tk-rc tk-onlight tk-sw p-brass-220">220</span><span class="tk-rc tk-onlight tk-sw p-brass-250">250</span><span class="tk-rc tk-onlight tk-sw p-brass-300">300</span><span class="tk-rc tk-onlight tk-sw p-brass-400">400</span><span class="tk-rc tk-onlight tk-sw p-brass-500">500</span><span class="tk-rc tk-sw p-brass-600">600</span><span class="tk-rc tk-sw p-brass-700">700</span>
+    </div>
+
+    <p class="tk-subh">Green and red, 9 and 6. Outcome only, and never decoration</p>
+    <div class="tk-ramp">
+      <span class="tk-rc tk-onlight tk-sw p-green-200">200</span><span class="tk-rc tk-onlight tk-sw p-green-250">250</span><span class="tk-rc tk-onlight tk-sw p-green-300">300</span><span class="tk-rc tk-onlight tk-sw p-green-500">500</span><span class="tk-rc tk-sw p-green-700">700</span><span class="tk-rc tk-sw p-green-800">800</span><span class="tk-rc tk-sw p-green-950">950</span><span class="tk-rc tk-sw p-green-975">975</span><span class="tk-rc tk-onlight tk-sw p-green-050">050</span>
+    </div>
+    <div class="tk-ramp">
+      <span class="tk-rc tk-onlight tk-sw p-red-300">300</span><span class="tk-rc tk-onlight tk-sw p-red-400">400</span><span class="tk-rc tk-onlight tk-sw p-red-500">500</span><span class="tk-rc tk-sw p-red-700">700</span><span class="tk-rc tk-sw p-red-800">800</span><span class="tk-rc tk-sw p-red-950">950</span><span class="tk-rc tk-sw p-plum-950">plum</span>
+    </div>
+    <p class="tk-note">Each ramp carries a dark half and a pale half, and that is the theme living
+    inside the primitive layer: <code>brass-400</code> is the metal on graphite and
+    <code>brass-700</code> is the same metal on chalk. Same hue, different lightness, because a role
+    has to clear a contrast floor on whichever ground it lands.</p>
+  </section>
+
+  <!-- ============================= surfaces =========================== -->
+  <section class="tk-sec" id="surfaces">
+    <h2 data-n="03">Surfaces, and the direction of depth inverts</h2>
+    <p class="tk-note">Thirteen grounds, each named for what it is rather than how dark it is. Read
+    them across: <b>the order of depth is preserved and its DIRECTION flips.</b> On graphite a card
+    rises off the page toward the light. In daylight it settles onto it, so the page is the lightest
+    thing on screen, because the thing it answers to is the darkest thing on screen.</p>
+    <div class="tk-faces">
+      <span class="tk-colh"></span>
+      <span class="tk-colh">Vault, dark</span>
+      <span class="tk-colh">Daylight, light</span>
+
+      <span class="tk-lab"><b>--bg-page</b><i>the ground behind the device</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-page" data-theme="dark"><i data-m="bg-page-d">#0f1013</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-page" data-theme="light"><i data-m="bg-page-l">#fcfaf4</i></div>
+
+      <span class="tk-lab"><b>--bg-canvas</b><i>the device, the cat-nav, the feed</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-canvas" data-theme="dark"><i data-m="bg-canvas-d">#141619</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-canvas" data-theme="light"><i data-m="bg-canvas-l">#f5f3ed</i></div>
+
+      <span class="tk-lab"><b>--bg-slab</b><i>the outer stone, full page width</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-slab" data-theme="dark"><i data-m="bg-slab-d">#191b1f</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-slab" data-theme="light"><i data-m="bg-slab-l">#eeece6</i></div>
+
+      <span class="tk-lab"><b>--bg-plate</b><i>what a control actually stands on</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-plate" data-theme="dark"><i data-m="bg-plate-d">#121417</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-plate" data-theme="light"><i data-m="bg-plate-l">#f8f6f0</i></div>
+
+      <span class="tk-lab"><b>--bg-card</b><i>the floating card</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-card" data-theme="dark"><i data-m="bg-card-d">#141619</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-card" data-theme="light"><i data-m="bg-card-l">#f5f3ed</i></div>
+
+      <span class="tk-lab"><b>--bg-card-quiet</b><i>a card that is not asking</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-card-quiet" data-theme="dark"><i data-m="bg-card-quiet-d">#15171b</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-card-quiet" data-theme="light"><i data-m="bg-card-quiet-l">#f3f1eb</i></div>
+
+      <span class="tk-lab"><b>--bg-surface</b><i>a raised panel</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-surface" data-theme="dark"><i data-m="bg-surface-d">#1c1f24</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-surface" data-theme="light"><i data-m="bg-surface-l">#f8f6f0</i></div>
+
+      <span class="tk-lab"><b>--bg-control</b><i>the box of a button or a field</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-control" data-theme="dark"><i data-m="bg-control-d">#24282f</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-control" data-theme="light"><i data-m="bg-control-l">#fcfaf4</i></div>
+
+      <span class="tk-lab"><b>--bg-control-hover</b><i>the same box, pointed at</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-control-hover" data-theme="dark"><i data-m="bg-control-hover-d">#20242a</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-control-hover" data-theme="light"><i data-m="bg-control-hover-l">#f9f7f1</i></div>
+
+      <span class="tk-lab"><b>--bg-chip</b><i>the chip's own ground</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-chip" data-theme="dark"><i data-m="bg-chip-d">#1b1e23</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-chip" data-theme="light"><i data-m="bg-chip-l">#f5f3ed</i></div>
+
+      <span class="tk-lab"><b>--bg-well</b><i>sunk, not raised: a field, a prompt</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-well" data-theme="dark"><i data-m="bg-well-d">#0d0f12</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-well" data-theme="light"><i data-m="bg-well-l">#fdfbf5</i></div>
+
+      <span class="tk-lab"><b>--bg-dock</b><i>the mobile bet dock</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-dock" data-theme="dark"><i data-m="bg-dock-d">#15171b</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-dock" data-theme="light"><i data-m="bg-dock-l">#f3f1eb</i></div>
+
+      <span class="tk-lab"><b>--bg-pressed</b><i>the one state every control shares</i></span>
+      <div class="tk-theme-fig tk-sw c-bg-pressed" data-theme="dark"><i data-m="bg-pressed-d">#191b1f</i></div>
+      <div class="tk-theme-fig tk-sw c-bg-pressed" data-theme="light"><i data-m="bg-pressed-l">#f3f1eb</i></div>
+    </div>
+  </section>
+
+  <!-- =========================== the matrix =========================== -->
+  <section class="tk-sec" id="matrix">
+    <h2 data-n="04">Every text role on every ground it can stand on</h2>
+    <p class="tk-note">Eleven ink roles against five grounds, in both themes: <b>110 readings</b>.
+    Computed in this page, against the ground composited from the whole ancestor stack, because a
+    role's number means nothing without the thing behind it. <b>The floor is 4.5:1</b> for the sizes
+    these roles are used at. A cell under it carries a red outline.</p>
+
+    <p class="tk-subh">Vault, dark</p>
+    <div class="tk-mx tk-mx-6" data-theme="dark" id="mx-dark">
+      <span class="tk-mx-h"></span>
+      <span class="tk-mx-h">bg-page</span><span class="tk-mx-h">bg-plate</span><span class="tk-mx-h">bg-card</span><span class="tk-mx-h">bg-control</span><span class="tk-mx-h">bg-well</span>
+      <span class="tk-mx-r">text-primary</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-primary">Aa</b><i data-m="m-d-text-primary-bg-page">15.44</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-primary">Aa</b><i data-m="m-d-text-primary-bg-plate">14.97</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-primary">Aa</b><i data-m="m-d-text-primary-bg-card">14.71</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-primary">Aa</b><i data-m="m-d-text-primary-bg-control">12.01</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-primary">Aa</b><i data-m="m-d-text-primary-bg-well">15.58</i></div>
+      <span class="tk-mx-r">text-muted</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-muted">Aa</b><i data-m="m-d-text-muted-bg-page">7.06</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-muted">Aa</b><i data-m="m-d-text-muted-bg-plate">6.85</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-muted">Aa</b><i data-m="m-d-text-muted-bg-card">6.73</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-muted">Aa</b><i data-m="m-d-text-muted-bg-control">5.49</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-muted">Aa</b><i data-m="m-d-text-muted-bg-well">7.13</i></div>
+      <span class="tk-mx-r">text-icon</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-icon">Aa</b><i data-m="m-d-text-icon-bg-page">10.86</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-icon">Aa</b><i data-m="m-d-text-icon-bg-plate">10.53</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-icon">Aa</b><i data-m="m-d-text-icon-bg-card">10.35</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-icon">Aa</b><i data-m="m-d-text-icon-bg-control">8.44</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-icon">Aa</b><i data-m="m-d-text-icon-bg-well">10.96</i></div>
+      <span class="tk-mx-r">icon-quiet</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-icon-quiet">Aa</b><i data-m="m-d-icon-quiet-bg-page">7.06</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-icon-quiet">Aa</b><i data-m="m-d-icon-quiet-bg-plate">6.85</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-icon-quiet">Aa</b><i data-m="m-d-icon-quiet-bg-card">6.73</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-icon-quiet">Aa</b><i data-m="m-d-icon-quiet-bg-control">5.49</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-icon-quiet">Aa</b><i data-m="m-d-icon-quiet-bg-well">7.13</i></div>
+      <span class="tk-mx-r">text-icon-strong</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-icon-strong">Aa</b><i data-m="m-d-text-icon-strong-bg-page">13.16</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-icon-strong">Aa</b><i data-m="m-d-text-icon-strong-bg-plate">12.77</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-icon-strong">Aa</b><i data-m="m-d-text-icon-strong-bg-card">12.54</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-icon-strong">Aa</b><i data-m="m-d-text-icon-strong-bg-control">10.24</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-icon-strong">Aa</b><i data-m="m-d-text-icon-strong-bg-well">13.28</i></div>
+      <span class="tk-mx-r">text-chip-hover</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-chip-hover">Aa</b><i data-m="m-d-text-chip-hover-bg-page">15.44</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-chip-hover">Aa</b><i data-m="m-d-text-chip-hover-bg-plate">14.97</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-chip-hover">Aa</b><i data-m="m-d-text-chip-hover-bg-card">14.71</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-chip-hover">Aa</b><i data-m="m-d-text-chip-hover-bg-control">12.01</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-chip-hover">Aa</b><i data-m="m-d-text-chip-hover-bg-well">15.58</i></div>
+      <span class="tk-mx-r">text-brass</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-brass">Aa</b><i data-m="m-d-text-brass-bg-page">8.98</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-brass">Aa</b><i data-m="m-d-text-brass-bg-plate">8.71</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-brass">Aa</b><i data-m="m-d-text-brass-bg-card">8.56</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-brass">Aa</b><i data-m="m-d-text-brass-bg-control">6.98</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-brass">Aa</b><i data-m="m-d-text-brass-bg-well">9.06</i></div>
+      <span class="tk-mx-r">text-brass-lit</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-brass-lit">Aa</b><i data-m="m-d-text-brass-lit-bg-page">11.68</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-brass-lit">Aa</b><i data-m="m-d-text-brass-lit-bg-plate">11.33</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-brass-lit">Aa</b><i data-m="m-d-text-brass-lit-bg-card">11.13</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-brass-lit">Aa</b><i data-m="m-d-text-brass-lit-bg-control">9.08</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-brass-lit">Aa</b><i data-m="m-d-text-brass-lit-bg-well">11.78</i></div>
+      <span class="tk-mx-r">text-brass-chip</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-brass-chip">Aa</b><i data-m="m-d-text-brass-chip-bg-page">13.20</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-brass-chip">Aa</b><i data-m="m-d-text-brass-chip-bg-plate">12.80</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-brass-chip">Aa</b><i data-m="m-d-text-brass-chip-bg-card">12.57</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-brass-chip">Aa</b><i data-m="m-d-text-brass-chip-bg-control">10.26</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-brass-chip">Aa</b><i data-m="m-d-text-brass-chip-bg-well">13.31</i></div>
+      <span class="tk-mx-r">text-brass-vol</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-brass-vol">Aa</b><i data-m="m-d-text-brass-vol-bg-page">10.58</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-brass-vol">Aa</b><i data-m="m-d-text-brass-vol-bg-plate">10.26</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-brass-vol">Aa</b><i data-m="m-d-text-brass-vol-bg-card">10.08</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-brass-vol">Aa</b><i data-m="m-d-text-brass-vol-bg-control">8.23</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-brass-vol">Aa</b><i data-m="m-d-text-brass-vol-bg-well">10.67</i></div>
+      <span class="tk-mx-r">icon-brass</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-icon-brass">Aa</b><i data-m="m-d-icon-brass-bg-page">8.98</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-icon-brass">Aa</b><i data-m="m-d-icon-brass-bg-plate">8.71</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-icon-brass">Aa</b><i data-m="m-d-icon-brass-bg-card">8.56</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-icon-brass">Aa</b><i data-m="m-d-icon-brass-bg-control">6.98</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-icon-brass">Aa</b><i data-m="m-d-icon-brass-bg-well">9.06</i></div>
+    </div>
+
+    <p class="tk-subh">Daylight, light</p>
+    <div class="tk-mx tk-mx-6" data-theme="light" id="mx-light">
+      <span class="tk-mx-h"></span>
+      <span class="tk-mx-h">bg-page</span><span class="tk-mx-h">bg-plate</span><span class="tk-mx-h">bg-card</span><span class="tk-mx-h">bg-control</span><span class="tk-mx-h">bg-well</span>
+      <span class="tk-mx-r">text-primary</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-primary">Aa</b><i data-m="m-l-text-primary-bg-page">15.78</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-primary">Aa</b><i data-m="m-l-text-primary-bg-plate">15.24</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-primary">Aa</b><i data-m="m-l-text-primary-bg-card">14.85</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-primary">Aa</b><i data-m="m-l-text-primary-bg-control">15.78</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-primary">Aa</b><i data-m="m-l-text-primary-bg-well">15.92</i></div>
+      <span class="tk-mx-r">text-muted</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-muted">Aa</b><i data-m="m-l-text-muted-bg-page">7.67</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-muted">Aa</b><i data-m="m-l-text-muted-bg-plate">7.41</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-muted">Aa</b><i data-m="m-l-text-muted-bg-card">7.22</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-muted">Aa</b><i data-m="m-l-text-muted-bg-control">7.67</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-muted">Aa</b><i data-m="m-l-text-muted-bg-well">7.74</i></div>
+      <span class="tk-mx-r">text-icon</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-icon">Aa</b><i data-m="m-l-text-icon-bg-page">5.38</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-icon">Aa</b><i data-m="m-l-text-icon-bg-plate">5.19</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-icon">Aa</b><i data-m="m-l-text-icon-bg-card">5.06</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-icon">Aa</b><i data-m="m-l-text-icon-bg-control">5.38</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-icon">Aa</b><i data-m="m-l-text-icon-bg-well">5.43</i></div>
+      <span class="tk-mx-r">icon-quiet</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-icon-quiet">Aa</b><i data-m="m-l-icon-quiet-bg-page">4.59</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-icon-quiet">Aa</b><i data-m="m-l-icon-quiet-bg-plate">4.43</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-icon-quiet">Aa</b><i data-m="m-l-icon-quiet-bg-card">4.32</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-icon-quiet">Aa</b><i data-m="m-l-icon-quiet-bg-control">4.59</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-icon-quiet">Aa</b><i data-m="m-l-icon-quiet-bg-well">4.63</i></div>
+      <span class="tk-mx-r">text-icon-strong</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-icon-strong">Aa</b><i data-m="m-l-text-icon-strong-bg-page">11.66</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-icon-strong">Aa</b><i data-m="m-l-text-icon-strong-bg-plate">11.26</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-icon-strong">Aa</b><i data-m="m-l-text-icon-strong-bg-card">10.97</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-icon-strong">Aa</b><i data-m="m-l-text-icon-strong-bg-control">11.66</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-icon-strong">Aa</b><i data-m="m-l-text-icon-strong-bg-well">11.76</i></div>
+      <span class="tk-mx-r">text-chip-hover</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-chip-hover">Aa</b><i data-m="m-l-text-chip-hover-bg-page">15.78</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-chip-hover">Aa</b><i data-m="m-l-text-chip-hover-bg-plate">15.24</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-chip-hover">Aa</b><i data-m="m-l-text-chip-hover-bg-card">14.85</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-chip-hover">Aa</b><i data-m="m-l-text-chip-hover-bg-control">15.78</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-chip-hover">Aa</b><i data-m="m-l-text-chip-hover-bg-well">15.92</i></div>
+      <span class="tk-mx-r">text-brass</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-brass">Aa</b><i data-m="m-l-text-brass-bg-page">7.40</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-brass">Aa</b><i data-m="m-l-text-brass-bg-plate">7.14</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-brass">Aa</b><i data-m="m-l-text-brass-bg-card">6.96</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-brass">Aa</b><i data-m="m-l-text-brass-bg-control">7.40</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-brass">Aa</b><i data-m="m-l-text-brass-bg-well">7.46</i></div>
+      <span class="tk-mx-r">text-brass-lit</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-brass-lit">Aa</b><i data-m="m-l-text-brass-lit-bg-page">7.40</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-brass-lit">Aa</b><i data-m="m-l-text-brass-lit-bg-plate">7.14</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-brass-lit">Aa</b><i data-m="m-l-text-brass-lit-bg-card">6.96</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-brass-lit">Aa</b><i data-m="m-l-text-brass-lit-bg-control">7.40</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-brass-lit">Aa</b><i data-m="m-l-text-brass-lit-bg-well">7.46</i></div>
+      <span class="tk-mx-r">text-brass-chip</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-brass-chip">Aa</b><i data-m="m-l-text-brass-chip-bg-page">7.40</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-brass-chip">Aa</b><i data-m="m-l-text-brass-chip-bg-plate">7.14</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-brass-chip">Aa</b><i data-m="m-l-text-brass-chip-bg-card">6.96</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-brass-chip">Aa</b><i data-m="m-l-text-brass-chip-bg-control">7.40</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-brass-chip">Aa</b><i data-m="m-l-text-brass-chip-bg-well">7.46</i></div>
+      <span class="tk-mx-r">text-brass-vol</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-text-brass-vol">Aa</b><i data-m="m-l-text-brass-vol-bg-page">7.40</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-text-brass-vol">Aa</b><i data-m="m-l-text-brass-vol-bg-plate">7.14</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-text-brass-vol">Aa</b><i data-m="m-l-text-brass-vol-bg-card">6.96</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-text-brass-vol">Aa</b><i data-m="m-l-text-brass-vol-bg-control">7.40</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-text-brass-vol">Aa</b><i data-m="m-l-text-brass-vol-bg-well">7.46</i></div>
+      <span class="tk-mx-r">icon-brass</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-ink c-icon-brass">Aa</b><i data-m="m-l-icon-brass-bg-page">3.40</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-ink c-icon-brass">Aa</b><i data-m="m-l-icon-brass-bg-plate">3.28</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-ink c-icon-brass">Aa</b><i data-m="m-l-icon-brass-bg-card">3.20</i></div>
+      <div class="tk-mc tk-sw c-bg-control"><b class="tk-ink c-icon-brass">Aa</b><i data-m="m-l-icon-brass-bg-control">3.40</i></div>
+      <div class="tk-mc tk-sw c-bg-well"><b class="tk-ink c-icon-brass">Aa</b><i data-m="m-l-icon-brass-bg-well">3.43</i></div>
+    </div>
+    <p class="tk-note"><b>134 readings, and nothing is under its floor.</b> Two floors, because a
+    glyph is not a word: <b>4.5:1</b> for the text roles and <b>3:1</b> for the icon roles, which is
+    what WCAG asks of a graphical object. The darkest text reading in the Vault is
+    <code>text-muted</code> on <code>bg-control</code> at <b>5.49:1</b>; in daylight it is
+    <code>text-icon</code> on <code>bg-card</code> at <b>5.06:1</b>.</p>
+    <p class="tk-note"><b>One role has no headroom: <code>icon-brass</code> in daylight, 3.20:1 on
+    <code>bg-card</code>.</b> It clears the graphics floor by two hundredths. It is the saved
+    bookmark and the active mark, so 3:1 is the right floor and it passes, but it is the only role
+    in the system with nowhere left to go, and any card ground made one step lighter puts it under.
+    Nothing else on this page is within 0.5 of a floor.</p>
+    <p class="tk-subh">Two things the numbers say that the file did not</p>
+    <p class="tk-note"><b>The brass ink ladder has four rungs in the Vault and one in daylight.</b>
+    <code>text-brass</code>, <code>text-brass-lit</code>, <code>text-brass-chip</code> and
+    <code>text-brass-vol</code> measure 8.98, 11.68, 13.20 and 10.58 on the page in graphite, and
+    all four measure <b>7.40</b> in chalk. They are four roles resolving to one value, so three of
+    them do nothing in daylight: the eyebrow, the active chip label and the volume tag are all just
+    the link colour. Either the ladder is real in both themes or it is one role with three
+    aliases.</p>
+    <p class="tk-note"><b><code>icon-quiet</code> earns its existence, and the file said so before
+    the measurement did.</b> It is identical to <code>text-muted</code> in the Vault, to the
+    hundredth, and separates in daylight: 4.59 against 7.67. A role that is a duplicate in one theme
+    and not in the other is exactly the case the two-level system exists for, and it is the one
+    place on this page where the design is doing something a flat palette could not.</p>
+  </section>
+
+  <!-- ========================== outcome rule ========================== -->
+  <section class="tk-sec" id="outcome">
+    <h2 data-n="05">Green and red are outcome semantics. Brass is the brand</h2>
+    <p class="tk-note"><b>This is the one rule that decides others.</b> An accent never borrows the
+    win or lose colour, and a favourite, a focus ring, a selected chip and an active nav item are
+    all brass. A candidate line in a multi-outcome chart is <b>not</b> an outcome, which is why the
+    categorical series exists and is neither green nor red.</p>
+    <p class="tk-note">Each outcome has a solid, a text, a line and two fills, and the pair below is
+    the whole vocabulary. Note that the <b>solids do not change between themes</b> and the
+    <b>texts do</b>: a filled YES button is a coloured object like a brand mark, and the word YES on
+    a pale tint is ink that has to clear a floor on whichever stone it lands.</p>
+    <div class="tk-mx tk-mx-4" data-theme="dark">
+      <span class="tk-mx-h">Vault</span><span class="tk-mx-h">solid, ink on it</span><span class="tk-mx-h">fill, text on it</span><span class="tk-mx-h">soft fill, text on it</span>
+      <span class="tk-mx-r">YES</span>
+      <div class="tk-mc tk-sw c-outcome-yes"><b class="tk-ink c-text-on-yes">YES</b><i data-m="o-d-yes-solid">6.42</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-outcome-yes-fill"><b class="tk-ink c-outcome-yes-text">YES</b></span><i data-m="o-d-yes-fill">8.31</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-outcome-yes-fill-soft"><b class="tk-ink c-outcome-yes-text">YES</b></span><i data-m="o-d-yes-soft">8.31</i></div>
+      <span class="tk-mx-r">NO</span>
+      <div class="tk-mc tk-sw c-outcome-no"><b class="tk-ink c-text-on-no">NO</b><i data-m="o-d-no-solid">4.64</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-outcome-no-fill"><b class="tk-ink c-outcome-no-text">NO</b></span><i data-m="o-d-no-fill">6.70</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-outcome-no-fill-soft"><b class="tk-ink c-outcome-no-text">NO</b></span><i data-m="o-d-no-soft">6.70</i></div>
+      <span class="tk-mx-r">brass</span>
+      <div class="tk-mc tk-sw c-color-action"><b class="tk-ink c-text-on-brass">Act</b><i data-m="o-d-brass-solid">8.05</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-tint-brass-16"><b class="tk-ink c-text-brass">Act</b></span><i data-m="o-d-brass-fill">6.53</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-tint-brass-09"><b class="tk-ink c-text-brass-chip">Act</b></span><i data-m="o-d-brass-soft">10.96</i></div>
+      <span class="tk-mx-r">won / lost</span>
+      <div class="tk-mc tk-sw c-result-won"><b class="tk-ink c-text-on-yes">WON</b><i data-m="o-d-won-solid">6.42</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-result-won-fill"><b class="tk-ink c-result-won-text">WON</b></span><i data-m="o-d-won-fill">8.31</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-result-lost-fill"><b class="tk-ink c-result-lost-text">LOST</b></span><i data-m="o-d-lost-fill">6.70</i></div>
+    </div>
+    <div class="tk-mx tk-mx-4" data-theme="light">
+      <span class="tk-mx-h">Daylight</span><span class="tk-mx-h">solid, ink on it</span><span class="tk-mx-h">fill, text on it</span><span class="tk-mx-h">soft fill, text on it</span>
+      <span class="tk-mx-r">YES</span>
+      <div class="tk-mc tk-sw c-outcome-yes"><b class="tk-ink c-text-on-yes">YES</b><i data-m="o-l-yes-solid">6.42</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-outcome-yes-fill"><b class="tk-ink c-outcome-yes-text">YES</b></span><i data-m="o-l-yes-fill">6.51</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-outcome-yes-fill-soft"><b class="tk-ink c-outcome-yes-text">YES</b></span><i data-m="o-l-yes-soft">6.51</i></div>
+      <span class="tk-mx-r">NO</span>
+      <div class="tk-mc tk-sw c-outcome-no"><b class="tk-ink c-text-on-no">NO</b><i data-m="o-l-no-solid">4.64</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-outcome-no-fill"><b class="tk-ink c-outcome-no-text">NO</b></span><i data-m="o-l-no-fill">6.57</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-outcome-no-fill-soft"><b class="tk-ink c-outcome-no-text">NO</b></span><i data-m="o-l-no-soft">6.57</i></div>
+      <span class="tk-mx-r">brass</span>
+      <div class="tk-mc tk-sw c-color-action"><b class="tk-ink c-text-on-brass">Act</b><i data-m="o-l-brass-solid">8.05</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-tint-brass-16"><b class="tk-ink c-text-brass">Act</b></span><i data-m="o-l-brass-fill">5.60</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-tint-brass-09"><b class="tk-ink c-text-brass-chip">Act</b></span><i data-m="o-l-brass-soft">6.21</i></div>
+      <span class="tk-mx-r">won / lost</span>
+      <div class="tk-mc tk-sw c-result-won"><b class="tk-ink c-text-on-yes">WON</b><i data-m="o-l-won-solid">6.42</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-result-won-fill"><b class="tk-ink c-result-won-text">WON</b></span><i data-m="o-l-won-fill">6.51</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><span class="tk-fillbox tk-sw c-result-lost-fill"><b class="tk-ink c-result-lost-text">LOST</b></span><i data-m="o-l-lost-fill">6.57</i></div>
+    </div>
+    <p class="tk-subh">The categorical series, and why it is not the outcome palette</p>
+    <p class="tk-note">A multi-outcome market has five candidates and none of them is a YES or a NO.
+    Reaching for green and red there would say the chart has an opinion about who should win, which
+    is the one thing a prediction market may never say.</p>
+    <div class="tk-ramp">
+      <span class="tk-rc tk-sw c-series-1">1</span><span class="tk-rc tk-sw c-series-2">2</span><span class="tk-rc tk-sw c-series-3">3</span><span class="tk-rc tk-sw c-series-4">4</span><span class="tk-rc tk-sw c-series-5">5</span>
+    </div>
+  </section>
+
+  <!-- ========================= the brass ladder ======================= -->
+  <section class="tk-sec" id="ladder">
+    <h2 data-n="06">The brass ladder, six rungs, and the trap under it</h2>
+    <p class="tk-note">Brass appears as a tint far more often than as a solid: a selected chip, a
+    hover, a saved bookmark, an inset hairline. Six declared rungs, and they are declared
+    <b>because a tint written as a colour function is invisible to every tool and to every
+    reader</b>. Ten of them once lived in <code>components/</code> as
+    <code>color-mix(in oklab,var(--color-action) N%,transparent)</code>, seven at percentages this
+    ladder does not have, and no sweep could see them because a regular expression reads the
+    components of a colour function as separate numbers.</p>
+    <div class="tk-mx tk-mx-4" data-theme="dark">
+      <span class="tk-mx-h">Vault</span><span class="tk-mx-h">on bg-page</span><span class="tk-mx-h">on bg-plate</span><span class="tk-mx-h">on bg-card</span>
+      <span class="tk-mx-r">tint-brass-06</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-fillbox tk-sw c-tint-brass-06">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>06</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-fillbox tk-sw c-tint-brass-06">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>06</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-fillbox tk-sw c-tint-brass-06">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>06</i></div>
+      <span class="tk-mx-r">tint-brass-09</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-fillbox tk-sw c-tint-brass-09">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>09</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-fillbox tk-sw c-tint-brass-09">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>09</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-fillbox tk-sw c-tint-brass-09">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>09</i></div>
+      <span class="tk-mx-r">tint-brass-16</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-fillbox tk-sw c-tint-brass-16">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>16</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-fillbox tk-sw c-tint-brass-16">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>16</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-fillbox tk-sw c-tint-brass-16">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>16</i></div>
+      <span class="tk-mx-r">tint-brass-30</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-fillbox tk-sw c-tint-brass-30">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>30</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-fillbox tk-sw c-tint-brass-30">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>30</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-fillbox tk-sw c-tint-brass-30">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>30</i></div>
+      <span class="tk-mx-r">tint-brass-45</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-fillbox tk-sw c-tint-brass-45">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>45</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-fillbox tk-sw c-tint-brass-45">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>45</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-fillbox tk-sw c-tint-brass-45">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>45</i></div>
+      <span class="tk-mx-r">tint-brass-60</span>
+      <div class="tk-mc tk-sw c-bg-page"><b class="tk-fillbox tk-sw c-tint-brass-60">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>60</i></div>
+      <div class="tk-mc tk-sw c-bg-plate"><b class="tk-fillbox tk-sw c-tint-brass-60">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>60</i></div>
+      <div class="tk-mc tk-sw c-bg-card"><b class="tk-fillbox tk-sw c-tint-brass-60">&nbsp;&nbsp;&nbsp;&nbsp;</b><i>60</i></div>
+    </div>
+    <p class="tk-note"><b>Quiet is a colour, not an opacity.</b> The other half of the same trap:
+    <code>opacity</code> fades text into its background and no sweep reading
+    <code>getComputedStyle().color</code> can see it, because the colour it reports is the one before
+    the fade. Measured once: <code>--chrome-muted</code> is 5.03:1 on its panel and
+    <b>2.37:1 at opacity .55</b>. If a thing should be quieter, it gets a quieter role.</p>
+  </section>
+
+  <!-- ====================== roles with one value ====================== -->
+  <section class="tk-sec" id="single">
+    <h2 data-n="07">Forty roles have one value, and that is not forty holes</h2>
+    <p class="tk-note">The file says of itself that both themes are "written out below rather than
+    left to inherit, which is the point: a token declared once here would silently hand the dark
+    number to daylight". <b>133 roles are declared for dark and 93 for light</b>, so forty are
+    handed over. Counted, read and classified rather than reported as a defect:</p>
+    <div class="tk-faces">
+      <span class="tk-colh">Class</span>
+      <span class="tk-colh">Roles</span>
+      <span class="tk-colh">Verdict</span>
+
+      <span class="tk-lab"><b>Brass, 4</b></span>
+      <div class="tk-td"><code>color-action</code> <code>color-action-lit</code> <code>color-action-pressed</code> <code>color-trust</code></div>
+      <div class="tk-td"><b>Correct, and it is the point of the theme.</b> The ground inverts and the action does not: brass is the brand, and a brand that changed colour in daylight would not be one</div>
+
+      <span class="tk-lab"><b>Outcome and result solids, 18</b></span>
+      <div class="tk-td"><code>outcome-yes</code> <code>outcome-no</code> and their fills and lines, <code>result-won</code> and its fills and lines</div>
+      <div class="tk-td"><b>Correct.</b> A filled YES button is a coloured object, not ink on a stone. Its text roles DO invert and are declared in both, which is the pair working exactly as designed</div>
+
+      <span class="tk-lab"><b>Ink on a coloured ground, 4</b></span>
+      <div class="tk-td"><code>text-on-brass</code> <code>text-on-yes</code> <code>text-on-no</code> <code>text-on-photo</code></div>
+      <div class="tk-td"><b>Correct, and it follows from the row above.</b> If the ground is constant the ink on it must be too, or the pair breaks in one theme</div>
+
+      <span class="tk-lab"><b>On a photograph, 3</b></span>
+      <div class="tk-td"><code>scrim-photo</code> <code>line-on-photo</code> <code>line-on-photo-hover</code></div>
+      <div class="tk-td"><b>Correct.</b> A photograph is not a theme surface. It is the same photograph in both</div>
+
+      <span class="tk-lab"><b>Course chrome, 8</b></span>
+      <div class="tk-td"><code>chrome-bg</code> <code>chrome-border</code> <code>chrome-text</code> <code>chrome-muted</code> <code>chrome-accent</code> <code>chrome-pressed</code> <code>swatch-dark</code> <code>swatch-light</code></div>
+      <div class="tk-td"><b>Out of scope, and it should be out of the file.</b> This is the roadmap sidebar the course pages carry, not the product. It is deliberately fixed so the stand does not flip with the exhibit</div>
+
+      <span class="tk-lab"><b>The remaining 3</b></span>
+      <div class="tk-td"><code>chart-line-glow</code> <code>mask-solid</code> <code>mask-mid</code> <code>control-knob</code> <code>line-brass-strong</code> <code>tint-brass-60</code></div>
+      <div class="tk-td"><b>The ones worth a second look.</b> A mask and a glow are geometry as much as colour, but <code>control-knob</code> is the dot inside the switch and <code>line-brass-strong</code> is an edge, and both stand on a ground that DOES invert. Those two are the only candidates for a real hole on this page</div>
+    </div>
+    <p class="tk-note"><b>The rule in <code>components/CLAUDE.md</code> is right and its wording is
+    not.</b> "A state token has a value in both themes or it is not one" was written against holes
+    that rot quietly, and it reads as forbidding a role that is deliberately constant. What it means
+    is narrower and should say so: <b>a role whose GROUND inverts must be declared for both
+    themes</b>. Brass, the outcome solids and the ink on them do not qualify, and they are the
+    majority of the forty.</p>
+  </section>
+
+  <!-- ============================ decides ============================= -->
+  <section class="tk-sec" id="decides">
+    <h2 data-n="08">What this decides</h2>
+    <ol class="tk-steps">
+      <li><b>1</b><span><b>The ink roles clear the floor</b>, and the page says so with numbers
+      rather than with a claim. See the summary under section 04 for the exceptions and what they
+      are.</span></li>
+      <li><b>2</b><span><b>Two roles are candidates for a real theme hole</b>,
+      <code>control-knob</code> and <code>line-brass-strong</code>: both stand on a ground that
+      inverts and neither is declared for daylight. Verified on the page and carried to
+      <code>backlog.md</code> rather than fixed here, because a value may only change in the
+      consolidation.</span></li>
+      <li><b>3</b><span><b>The rule about both themes gets its real wording.</b> "A role whose
+      ground inverts must be declared for both", not "every role", which is what the current
+      sentence reads as and what the file's own header claims.</span></li>
+      <li><b>4</b><span><b>The eight course-chrome roles leave <code>tokens.css</code>.</b> They
+      paint the stand, not the exhibit, and they are the only reason the semantic section has a
+      section that is not about the product.</span></li>
+      <li><b>5</b><span><b>Nothing here changes a value.</b> That is step 3e, and this page is the
+      picture it will be compared against.</span></li>
+    </ol>
+  </section>
+
+</div>
+</body>
+</html>
