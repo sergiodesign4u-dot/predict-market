@@ -16,7 +16,16 @@
 }
 .bottom-nav{background:var(--bg-surface);z-index:var(--z-nav)}
 .bottom-nav li{border-right:1px solid var(--border-hairline)}
-.bottom-nav a{display:block;text-decoration:none;color:inherit}
+/* `.bottom-nav a{display:block;text-decoration:none;color:inherit}` was here and
+   it went out with the wrapper on 2026-08-07. It existed to undo an anchor's own
+   look so that the <button> INSIDE it could show through, which is
+   `ui-kit/docs/defects.md` row 78: interactive content is not allowed as a
+   descendant of <a>, both elements were in the tab order, and a screen reader
+   announced a link containing a button. The slot is one element now - an <a>
+   where it navigates, a <button> where it opens the sign-in dialog - and every
+   one of those three declarations is `.nav-item`'s already. It was also the last
+   rule in this file that gate 41 read as drawing a control, so `navitem` reached
+   one file the moment it left. */
 /* THIS BAR HAD NO STATE ON EITHER AXIS, and it is the one control in the product that is only
    ever touched: it is display:none from 640px up. So the press is the state that matters here,
    and the hover is the one nobody will see; a tap used to get no reply at all, on all 104

@@ -170,8 +170,8 @@
       list-style: none; margin: 0; padding: 6px 8px; display: flex; gap: 6px;
       overflow-x: auto; flex-wrap: nowrap;
     }
-    .cat-nav button { border: 1px solid #888; background: #d6d6d6; padding: 5px 10px; font-size: 11px; cursor: pointer; white-space: nowrap; }
-    .cat-nav li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .cat-nav a { border: 1px solid #888; background: #d6d6d6; padding: 5px 10px; font-size: 11px; cursor: pointer; white-space: nowrap; }
+    .cat-nav li[aria-current="page"] a { background: #b8b8b8; border-width: 2px; font-weight: bold; }
 
     /* ---- Feed ---- */
     .feed { background: #f4f4f4; margin: 0; flex: 1; }
@@ -231,10 +231,10 @@
     .bottom-nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
     .bottom-nav li { flex: 1; text-align: center; border-right: 1px solid #bbb; }
     .bottom-nav li:last-child { border-right: none; }
-    .bottom-nav button { width: 100%; border: none; background: transparent; padding: 8px 4px; font-size: 10px; cursor: pointer;
+    .bottom-nav a, .bottom-nav button { width: 100%; border: none; background: transparent; padding: 8px 4px; font-size: 10px; cursor: pointer;
       display: flex; flex-direction: column; align-items: center; gap: 3px; }
     .bottom-nav .ic { width: 20px; height: 20px; }
-    .bottom-nav li[aria-current="page"] button { background: #c4c4c4; font-weight: bold; }
+    .bottom-nav li[aria-current="page"] a, .bottom-nav li[aria-current="page"] button { background: #c4c4c4; font-weight: bold; }
     .bottom-nav .badge-dot { position: static; margin-left: 2px; }
     .bn-bal { font-weight: bold; font-size: 12px; border: 1px solid #999; background: #dcdcdc; padding: 0 5px; line-height: 1.4; }
 
@@ -787,7 +787,7 @@
         if (catCur) catCur.textContent = name;
         if (nav) {
           nav.querySelectorAll('li').forEach(function (li) {
-            var on = li.querySelector('button').textContent.trim() === name;
+            var on = li.querySelector('a,button').textContent.trim() === name;
             if (on) li.setAttribute('aria-current', 'page'); else li.removeAttribute('aria-current');
           });
         }

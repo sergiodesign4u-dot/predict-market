@@ -170,8 +170,8 @@
       list-style: none; margin: 0; padding: 6px 8px; display: flex; gap: 6px;
       overflow-x: auto; flex-wrap: nowrap;
     }
-    .cat-nav button { border: 1px solid #888; background: #d6d6d6; padding: 5px 10px; font-size: 11px; cursor: pointer; white-space: nowrap; }
-    .cat-nav li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .cat-nav a { border: 1px solid #888; background: #d6d6d6; padding: 5px 10px; font-size: 11px; cursor: pointer; white-space: nowrap; }
+    .cat-nav li[aria-current="page"] a { background: #b8b8b8; border-width: 2px; font-weight: bold; }
 
     /* ---- Feed ---- */
     .feed { background: #f4f4f4; margin: 0; flex: 1; }
@@ -231,10 +231,10 @@
     .bottom-nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
     .bottom-nav li { flex: 1; text-align: center; border-right: 1px solid #bbb; }
     .bottom-nav li:last-child { border-right: none; }
-    .bottom-nav button { width: 100%; border: none; background: transparent; padding: 8px 4px; font-size: 10px; cursor: pointer;
+    .bottom-nav a, .bottom-nav button { width: 100%; border: none; background: transparent; padding: 8px 4px; font-size: 10px; cursor: pointer;
       display: flex; flex-direction: column; align-items: center; gap: 3px; }
     .bottom-nav .ic { width: 20px; height: 20px; }
-    .bottom-nav li[aria-current="page"] button { background: #c4c4c4; font-weight: bold; }
+    .bottom-nav li[aria-current="page"] a, .bottom-nav li[aria-current="page"] button { background: #c4c4c4; font-weight: bold; }
     .bottom-nav .badge-dot { position: static; margin-left: 2px; }
     .bn-bal { font-weight: bold; font-size: 12px; border: 1px solid #999; background: #dcdcdc; padding: 0 5px; line-height: 1.4; }
 
@@ -522,7 +522,7 @@
     .app-header.scrolled .cat-condensed { max-height: 54px; }
     .app-header .cat-condensed ul { list-style: none; margin: 0; display: flex; flex-wrap: nowrap; gap: 8px; padding: 8px 14px; overflow-x: auto; }
     .app-header .cat-condensed li { flex: 0 0 auto; }
-    .app-header .cat-condensed button { display: inline-flex; align-items: center; min-height: 0; font-weight: 600; font-size: 13px; padding: 8px 12px; }
+    .app-header .cat-condensed a { display: inline-flex; align-items: center; min-height: 0; font-weight: 600; font-size: 13px; padding: 8px 12px; }
     .trust-head { font-size: 14px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 12px; }
     .trust-items { display: flex; flex-wrap: wrap; gap: 12px; }
     .footer-trust .tr-txt { display: flex; flex-direction: column; gap: 2px; }
@@ -533,7 +533,7 @@
     .footer-trust .tr-txt { position: relative; }
     dialog.app-dialog.signin-dialog { max-width: 410px; }
     @media(pointer:coarse) {
-      .app-header .cat-condensed button { min-height: 44px; }
+      .app-header .cat-condensed a { min-height: 44px; }
     }
     @media(max-width:760px) {
       .footer-trust .trust-items { grid-template-columns: 1fr; }
@@ -873,11 +873,11 @@
            Small, icon-less chips (the full bar below keeps its icons). -->
       <div class="cat-condensed" aria-hidden="true">
         <ul>
-          <li aria-current="page"><a href="event-feed.html"><button class="chip chip-quiet" type="button">Trending</button></a></li>
-          <li><a href="politics.html"><button class="chip chip-quiet" type="button">Politics</button></a></li>
-          <li><a href="crypto.html"><button class="chip chip-quiet" type="button">Crypto</button></a></li>
-          <li><a href="culture.html"><button class="chip chip-quiet" type="button">Culture</button></a></li>
-          <li><a href="general.html"><button class="chip chip-quiet" type="button">General</button></a></li>
+          <li aria-current="page"><a class="chip chip-quiet" href="event-feed.html">Trending</a></li>
+          <li><a class="chip chip-quiet" href="politics.html">Politics</a></li>
+          <li><a class="chip chip-quiet" href="crypto.html">Crypto</a></li>
+          <li><a class="chip chip-quiet" href="culture.html">Culture</a></li>
+          <li><a class="chip chip-quiet" href="general.html">General</a></li>
         </ul>
       </div>
     </header>
@@ -942,22 +942,22 @@
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
-        <li><a href="event-feed.html"><button class="nav-item nav-slot" type="button">
+        <li><a class="nav-item nav-slot" href="event-feed.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
           <span>Events</span>
-        </button></a></li>
-        <li><a href="active-bets.html"><button class="nav-item nav-slot" type="button">
+        </a></li>
+        <li><a class="nav-item nav-slot" href="active-bets.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
           <span>My Bets</span>
-        </button></a></li>
-        <li><a href="favorites.html"><button class="nav-item nav-slot" type="button">
+        </a></li>
+        <li><a class="nav-item nav-slot" href="favorites.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg>
           <span>Favorites</span>
-        </button></a></li>
-        <li aria-current="page"><a href="my-profile.html"><button class="nav-item nav-slot" type="button" aria-label="Portfolio, balance $142">
+        </a></li>
+        <li aria-current="page"><a class="nav-item nav-slot" href="my-profile.html" aria-label="Portfolio, balance $142">
           <span class="bn-bal">$142</span>
           <span>Portfolio</span>
-        </button></a></li>
+        </a></li>
       </ul>
     </nav>
     <!-- Footer (global element) -->
@@ -1177,7 +1177,7 @@
         if (catCur) catCur.textContent = name;
         if (nav) {
           nav.querySelectorAll('li').forEach(function (li) {
-            var on = li.querySelector('button').textContent.trim() === name;
+            var on = li.querySelector('a,button').textContent.trim() === name;
             if (on) li.setAttribute('aria-current', 'page'); else li.removeAttribute('aria-current');
           });
         }

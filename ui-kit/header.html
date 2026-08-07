@@ -49,7 +49,7 @@ push();});})();</script>
     <p>Every rule that paints this component, in one file. Colour through a role, geometry straight from a primitive.</p>
     <div class="tk-badges">
       <span class="tk-badge">components/header.css</span>
-      <span class="tk-badge">69 rules</span>
+      <span class="tk-badge">68 rules</span>
       <span class="tk-badge">25 classes</span>
       <span class="tk-badge">105 screens</span>
     </div>
@@ -287,7 +287,12 @@ push();});})();</script>
 .app-case .app-header .cat-condensed ul{list-style:none;margin:0;display:flex;flex-wrap:nowrap;gap:var(--space-8);padding:var(--space-8) var(--gutter);overflow-x:auto;scrollbar-width:none}
 .app-case .app-header .cat-condensed ul::-webkit-scrollbar{display:none}
 .app-case .app-header .cat-condensed li{flex:0 0 auto}
-.app-case .app-header .cat-condensed a{text-decoration:none}
+/* `.app-case .app-header .cat-condensed a{text-decoration:none}` was here until
+   2026-08-07 and it was the last thing in this file that gate 41 read as drawing
+   a chip. It undid an anchor's underline so the &lt;button&gt; inside it could show
+   through - `ui-kit/docs/defects.md` row 78 - and the chip is that anchor now,
+   so the declaration belongs to the atom and is in components/chip.css with the
+   rest of what every chip agrees on. */
 /* The condensed chip presses like every other chip in the system, and to do it at all it has
    to out-reach the rule directly above. That one is (0,4,2); a press written at its own hover's
    (0,4,1) would be invisible on exactly the tab you are standing on, which on this strip is the

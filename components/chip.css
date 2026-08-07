@@ -96,7 +96,24 @@
    product says it. A rail chip and an amount carry `.sel`; a category chip is
    inside `li[aria-current="page"]`, which is the correct thing for navigation
    and is not going to be replaced by a class. Two selectors, one rule. */
-.app-case .chip{cursor:pointer;font-family:var(--font-body)}
+/* FOUR DECLARATIONS SINCE 2026-08-07, AND TWO OF THEM ARRIVED WITH THE ELEMENT.
+   A chip that navigates is an `<a>` now rather than a `<button>` wrapped in one,
+   so the atom has to say that it carries no underline - which is a rule that
+   already existed, twice, in `components/header.css` and
+   `components/bottomnav.css`, written about the WRAPPER. `ui-kit/docs/defects.md`
+   row 78. A rule that undoes a container's look so the control inside can show
+   through is the control's own rule with the wrong subject.
+
+   `text-align:center` IS THE SAME LESSON AND IT WAS FOUND BY MEASURING. It was
+   the `<button>` element's own default, so the atom had worn it for its whole
+   life without anyone writing it down, and the moment 810 chips became anchors
+   the before-and-after reported exactly one property changed on exactly those
+   elements. Nothing moved: an inline-flex box sized by its content has nothing
+   to distribute, and 525 snapshots agree at 0 boxes. It is here anyway, because
+   a face that depends on which ELEMENT it is written on is not a face, and the
+   day a chip is given a width is the day this would have been found the other
+   way. */
+.app-case .chip{cursor:pointer;font-family:var(--font-body);text-decoration:none;text-align:center}
 .app-case .chip-quiet{display:inline-flex;align-items:center;min-height:0;background:transparent;border:1px solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-12)}
 .app-case .chip-quiet:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
 .app-case .chip-amount{border:1px solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);padding:var(--space-8) var(--space-8);font-size:var(--text-12)}

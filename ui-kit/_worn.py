@@ -382,6 +382,15 @@ KINDS = [
     ("an event's action row", set(), {"ed-actions"},
      "event-detail", "action", "favourite, comments and share sit under the question and belong to it"),
 
+    # `social` JOINED THIS LIST ON 2026-08-07 AND STOPPED BEING A MECHANISM OF ITS
+    # OWN. It was in ANCHOR_KINDS, matched by a regex over its container, for one
+    # reason: the census read `<button>` and these five are anchors. The census
+    # reads a CONTROL now, so an anchor wearing `.icon-btn-lift` is found the same
+    # way every other kind is, and the parallel path is gone rather than kept in
+    # step by hand. It has to sit above the row below, which names `.icon-btn`
+    # and would otherwise claim all 525 of them for the header.
+    ("social", {"icon-btn-lift"}, {"social-row"},
+     "iconbtn", "nav", "five marks in the footer brand block, and each one leaves the site"),
     ("icon only, in the header", {"icon-btn", "bal-add", "bal-swap"}, set(),
      "header", "action", "the header owns its own row of marks, and their size is the header's rhythm"),
     ("the logo, home", {"logo-btn"}, set(),
@@ -445,14 +454,40 @@ KINDS = [
 # Not a <button>, and declared rather than quietly skipped: the social row is
 # five anchors carrying a mark and no text, which is a button in every way a
 # reader can tell and an anchor because each one navigates away.
-ANCHOR_KINDS = [
-    ("social", "social-row", "footer", "nav",
-     "five marks in the footer brand block, and each one leaves the site"),
-]
+# WHAT MAKES AN <a> A CONTROL, and it is read out of the list above rather than
+# typed: every class any kind NAMES. An anchor wearing one of these is a control
+# that happens to navigate - a nav slot, a category chip, a social mark - and an
+# anchor wearing none of them is a link. The census asks this and nothing else,
+# so a kind that gains a face gains its anchors in the same edit.
+CONTROL_CLASSES = {c for _k, own, _a, _o, _r, _w in KINDS for c in own}
+
+# ANCHOR_KINDS WAS HERE AND IT IS GONE, 2026-08-07. It held one row - the
+# footer's five social marks - and it existed because `Census` read the tag
+# `<button>` while those five are anchors carrying a mark and no text. Reading
+# the CONTROL instead of the tag dissolves the special case: `social` is an
+# ordinary row of KINDS above, found by the class it wears, and this file no
+# longer has two ways of counting the same thing. The regex it used could only
+# see a container that closed with `</div>`, which would have found none of the
+# 1,134 controls that stopped being buttons in the same commit.
 
 
 class Census(HTMLParser):
-    """Every <button> in a document, with the kind it belongs to."""
+    """Every CONTROL in a document, with the kind it belongs to.
+
+    IT READ A TAG UNTIL 2026-08-07 AND IT READS A CONTROL NOW, which is the
+    change `ui-kit/docs/defects.md` row 78 forced and, in hindsight, the change
+    ANCHOR_KINDS had been asking for since it was written. The docstring used to
+    say "every <button>", and the footer's five social marks needed a whole
+    parallel mechanism - a regex over a container - because they are anchors that
+    are buttons in every way a reader can tell. When the bottom-nav slot and the
+    two category strips stopped being a <button> inside an <a> and became the
+    <a>, 1,134 named controls would have vanished from this census in one commit
+    and gate 38 would have reported them as gone rather than as changed.
+
+    An <a> is a control here when it CARRIES ONE, which is the same test the rest
+    of this file uses: it wears a class that a kind names. An anchor with no such
+    class is a link, and a link is not a button-shaped control.
+    """
 
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -462,7 +497,10 @@ class Census(HTMLParser):
         cls = set((dict(attrs).get("class") or "").split())
         if tag not in ("img", "br", "input", "meta", "link", "hr", "source", "use", "path"):
             self.stack.append((tag, cls))
-        if tag != "button":
+        if tag == "a":
+            if not (cls & CONTROL_CLASSES):
+                return
+        elif tag != "button":
             return
         above = set()
         for _t, c in self.stack[:-1]:
@@ -494,17 +532,7 @@ def census():
             row = seen.setdefault(kind, {"uses": 0, "files": set()})
             row["uses"] += 1
             row["files"].add(f.name)
-    # the anchor kinds, counted by their row rather than by the tag
-    for kind, cls, owner, role, why in ANCHOR_KINDS:
-        row = seen.setdefault(kind, {"uses": 0, "files": set()})
-        for f in sorted(UV.glob("*.html")):
-            src = f.read_text(encoding="utf-8")
-            for m in re.finditer(r'class="[^"]*\b%s\b[^"]*"(.*?)</div>' % cls, src, re.S):
-                n = len(re.findall(r"<a\b", m.group(1)))
-                if n:
-                    row["uses"] += n
-                    row["files"].add(f.name)
-    idle = [k[0] for k in KINDS + [(a[0],) for a in ANCHOR_KINDS] if k[0] not in seen]
+    idle = [k[0] for k in KINDS if k[0] not in seen]
     return seen, sorted("%s on %d screen(s)" % (k, len(v)) for k, v in unnamed.items()), sorted(idle)
 
 
@@ -699,15 +727,6 @@ def atom_gap():
         for stem, sel in rules:
             if draws(sel, own, anc):
                 e["files"].add(stem)
-    for kind, cls, _owner, _role, _why in ANCHOR_KINDS:
-        a = ATOM.get(kind)
-        if not a:
-            continue
-        e = table.setdefault(a, {"uses": 0, "kinds": [], "files": set()})
-        e["kinds"].append(kind)
-        for stem, sel in rules:
-            if draws(sel, set(), {cls}):
-                e["files"].add(stem)
     for r in rows:
         a = ATOM.get(r["kind"])
         if a:
@@ -737,10 +756,6 @@ def kind_rows():
                                 + sorted("." + a + " button" for a in anc),
                      "owner": owner, "role": role, "why": why,
                      "uses": r["uses"], "screens": len(r["files"])})
-    for kind, cls, owner, role, why in ANCHOR_KINDS:
-        r = seen.get(kind, {"uses": 0, "files": set()})
-        rows.append({"kind": kind, "classes": ["." + cls + " a"], "owner": owner, "role": role,
-                     "why": why, "uses": r["uses"], "screens": len(r["files"])})
     return sorted(rows, key=lambda r: -r["uses"])
 
 

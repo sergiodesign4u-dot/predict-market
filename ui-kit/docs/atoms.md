@@ -914,6 +914,75 @@ what the stand cannot: `catnav-subcat` is framed at 900px, so the lane is photog
 desktop row and its phone pill has no picture. A specimen has one width; the two readings are
 above.
 
+## Defect 78, the navigation half: six of seven atoms reach one file, 6 to 4
+
+The two file-slots left on the two biggest atoms were the same four words -
+`<a href><button>...</button></a>` - and unwrapping them closed both.
+
+**The defect's own framing was half wrong, and reading the markup is what showed
+it.** The row said a nav slot is a `<button>` inside an `<a>` on 73 screens and a
+bare `<button>` on 32, as though 32 screens were inconsistent. They are not: the
+bare one carries `data-open="signin"` and opens a dialog. **A slot that navigates
+is a link and a slot that opens a sheet is a button, and the product had that
+right.** What it had wrong was a second control inside the first, going nowhere,
+in the tab order, announced by a screen reader as a link containing a button.
+
+    bottom-nav slot        324 painted, 255 grey    ->  <a class="nav-item nav-slot">
+    header condensed strip 525 painted, 435 grey    ->  <a class="chip chip-quiet">
+    category band          285 painted, 285 grey    ->  <a class="chip chip-nav">
+                         1,134 painted, 975 grey, both trees in one change
+
+**Three rules existed only to undo the wrapper's own look so the control inside
+could show through**, and that is a control's rule written about the wrong
+subject. `.nav-item` already had all three; `.chip` gained `text-decoration:
+none`. A FOURTH was found by measuring rather than by reading: **`text-align:
+center` is the `<button>` element's own default**, so the atom had worn it for
+its whole life without anyone writing it down, and the first before-and-after
+reported exactly one property changed on exactly the 810 controls that became
+anchors. Nothing moved - an inline-flex box sized by its content has nothing to
+distribute - and it is written down anyway, because **a face that depends on
+which ELEMENT it is written on is not a face.**
+
+    525 snapshots, aligned rather than indexed, because 1,134 elements were
+    deleted and an index comparison has nothing to say about that
+
+      5,670  wrapper anchors removed   (1,134 x 5 widths)
+          0  elements added
+          0  boxes resized
+          0  boxes moved
+          0  computed properties changed
+
+**The census was reading a tag where it should read a control, and the fix
+dissolved a mechanism rather than adding one.** `Census` counted `<button>`, so
+1,134 named controls would have vanished in one commit and gate 38 would have
+reported them as gone rather than as changed. It reads an `<a>` as a control when
+it CARRIES one - when it wears a class a kind names - and that is the same test
+the rest of the file uses. `ANCHOR_KINDS` existed for exactly this reason, one
+row, the footer's five social marks matched by a regex over a container that had
+to close with `</div>`. It is gone: `social` is an ordinary row now. The census
+also stopped under-counting the notification rows, which were anchors all along:
+the account-menu kind went 365 to 575.
+
+    41 the atom map   7 control atom(s) in 11 file-slot(s): distance 4, and it goes to 0
+                      chip        1592  4 kind(s), 1 file(s): chip
+                      iconbutton  1361  6 kind(s), 1 file(s): iconbtn
+                      navitem      995  2 kind(s), 1 file(s): navitem
+                      button       911  7 kind(s), 5 file(s): button, comments,
+                                                    cookie-consent, loadmore, profile
+                      outcome      272  2 kind(s), 1 file(s): yesno
+
+**Six of the seven atoms are drawn in one file. The whole remaining distance is
+`button`**, and S41 already says what two of its four extra files are: `loadmore`
+should not be a component and `cookie-consent` and `profile` count only because
+of a 44px floor and a min-width that belong to the family's own ramp.
+
+**What was deliberately left, and it is still defect 78.** The YES / NO pair on a
+card (212), the sheet close inside `<a href="#">` (17) and the `.btn` family
+inside an anchor (73). None of those is navigation by construction: YES on a card
+MEANS place a bet and merely routes to the detail page in a prototype, so turning
+it into a link would bake the prototype's routing into the structure. Each needs
+a product answer, and a migration is not allowed to supply one.
+
 ---
 
 ## The decision this document no longer has open
