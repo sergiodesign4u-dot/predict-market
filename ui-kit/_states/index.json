@@ -206,7 +206,7 @@
    "ui-kit/specimens/betpanel-sheet.html",
    "ui-kit/specimens/button-census.html"
   ],
-  "sha": "f8daf6c40c232d7e"
+  "sha": "d4cfae7690709f47"
  },
  {
   "component": "betpanel",
@@ -431,7 +431,7 @@
    "ui-kit/specimens/betpanel-more.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "5b11147d02aaae60"
+  "sha": "a1055cd31b26c323"
  },
  {
   "component": "button",
@@ -1873,7 +1873,7 @@
    "ui-kit/specimens/skeleton-grid.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "58f015fa261a6779"
+  "sha": "9b0b6a11d451927f"
  },
  {
   "component": "card",
@@ -2087,7 +2087,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "f61f9513219a4052"
+  "sha": "40fa4d51c9367e21"
  },
  {
   "component": "card",
@@ -2254,7 +2254,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "27ef28a989f2c117"
+  "sha": "46ee526dd92622a1"
  },
  {
   "component": "chip",
@@ -2310,7 +2310,7 @@
     "short": 0
    },
    "active-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgb(231, 214, 166) | 0px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
+    "value": "rgb(25, 27, 31) | none | rgb(231, 214, 166) | 0px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
     "w": 83,
     "h": 46,
     "pad": {
@@ -2382,7 +2382,7 @@
     "short": 0
    },
    "active-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
+    "value": "rgb(243, 241, 235) | none | rgb(104, 79, 24) | 0px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
     "w": 83,
     "h": 46,
     "pad": {
@@ -2442,7 +2442,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "e7c37c155b1a53fb"
+  "sha": "42d8df8d0a727fb9"
  },
  {
   "component": "chip",
@@ -2624,7 +2624,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subcat.html"
   ],
-  "sha": "7685e09ce537bab6"
+  "sha": "420d4d5fe79b543c"
  },
  {
   "component": "chip",
@@ -2701,7 +2701,7 @@
     "short": 0
    },
    "active-dark": {
-    "value": "rgb(25, 27, 31) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
+    "value": "rgb(32, 36, 42) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(215, 172, 83) | 10px | none | none | 1 | none 3px rgb(215, 172, 83) 0px",
     "w": 53,
     "h": 46,
     "pad": {
@@ -2773,7 +2773,7 @@
     "short": 0
    },
    "active-light": {
-    "value": "rgb(243, 241, 235) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
+    "value": "rgb(249, 247, 241) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | none | 1 | none 3px rgb(104, 79, 24) 0px",
     "w": 53,
     "h": 46,
     "pad": {
@@ -2840,223 +2840,7 @@
    "ui-kit/specimens/input-states.html",
    "ui-kit/specimens/quick-amounts.html"
   ],
-  "sha": "19ca1b035080e488"
- },
- {
-  "component": "chip",
-  "id": "g12",
-  "el": "button.chip.chip-amount.sel",
-  "scope": "dialog.app-dialog",
-  "specimen": "dialog-shared",
-  "classes": [
-   "amount-input",
-   "amount-row",
-   "app-case",
-   "app-dialog",
-   "btn",
-   "btn-block",
-   "btn-md",
-   "btn-primary",
-   "btn-secondary",
-   "chip",
-   "chip-amount",
-   "field-label",
-   "fine",
-   "ic",
-   "icon-btn",
-   "icon-btn-photo",
-   "kit-dlgs",
-   "protect",
-   "prov-apple",
-   "prov-google",
-   "prov-x",
-   "quick",
-   "sel",
-   "sheet-body",
-   "sheet-close",
-   "sheet-head",
-   "sheet-sub",
-   "signin-dialog",
-   "widget-box"
-  ],
-  "shots": {
-   "rest-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | none 3px rgb(231, 214, 166) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-dark": {
-    "value": "rgba(199, 162, 78, 0.09) | none | rgba(199, 162, 78, 0.45) | 1px | rgb(231, 214, 166) | 10px | none | rgba(199, 162, 78, 0.3) 0px 0px 10px -8px | 1 | solid 2px rgb(215, 172, 83) 2px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   },
-   "rest-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "hover-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "active-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | none 3px rgb(104, 79, 24) 0px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 0,
-     "right": 0,
-     "bottom": 0,
-     "left": 0
-    },
-    "short": 0
-   },
-   "focus-light": {
-    "value": "rgba(199, 162, 78, 0.16) | none | rgba(199, 162, 78, 0.6) | 1px | rgb(104, 79, 24) | 10px | none | rgba(199, 162, 78, 0.45) 0px 0px 10px -8px | 1 | solid 2px rgb(104, 79, 24) 2px",
-    "w": 49,
-    "h": 46,
-    "pad": {
-     "top": 6,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "needed": {
-     "top": 4,
-     "right": 4,
-     "bottom": 4,
-     "left": 4
-    },
-    "short": 0
-   }
-  },
-  "also": [
-   "quick-amounts",
-   "input-states",
-   "event-detail",
-   "betpanel-sheet"
-  ],
-  "covers": [
-   "button.chip.chip-amount.sel @dialog.app-dialog",
-   "button.chip.chip-amount.sel @.bet-panel",
-   "button.chip.chip-amount.sel @dialog.bet-sheet"
-  ],
-  "sources": [
-   "components/base.css",
-   "components/button.css",
-   "components/chip.css",
-   "components/dialog.css",
-   "components/fonts.css",
-   "components/iconbtn.css",
-   "components/input.css",
-   "components/notice.css",
-   "components/quick.css",
-   "components/tokens.css",
-   "ui-kit/_specimen.css",
-   "ui-kit/_verify/browser.cjs",
-   "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/betpanel-sheet.html",
-   "ui-kit/specimens/dialog-shared.html",
-   "ui-kit/specimens/event-detail.html",
-   "ui-kit/specimens/input-states.html",
-   "ui-kit/specimens/quick-amounts.html"
-  ],
-  "sha": "19ca1b035080e488"
+  "sha": "756320d054bc02a0"
  },
  {
   "component": "chip",
@@ -3244,7 +3028,7 @@
    "ui-kit/specimens/comments-thread.html",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "e7c37c155b1a53fb"
+  "sha": "42d8df8d0a727fb9"
  },
  {
   "component": "chip",
@@ -3511,7 +3295,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/catnav-chips.html"
   ],
-  "sha": "305cdfe6e067a9e6"
+  "sha": "d37247e33fe48d37"
  },
  {
   "component": "chip",
@@ -3694,7 +3478,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-chips.html"
   ],
-  "sha": "83bfed6ff1caab81"
+  "sha": "0e4a7430b9f1000e"
  },
  {
   "component": "chip",
@@ -3874,7 +3658,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subfilter.html"
   ],
-  "sha": "e5101d005e80922a"
+  "sha": "10d2ea734952e71e"
  },
  {
   "component": "chip",
@@ -4054,7 +3838,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/catnav-subfilter.html"
   ],
-  "sha": "e5101d005e80922a"
+  "sha": "10d2ea734952e71e"
  },
  {
   "component": "chip",
@@ -4222,7 +4006,15 @@
    }
   },
   "covers": [
-   "button.chip.chip-lane"
+   "button.chip.chip-lane",
+   "button.chip.chip-amount.sel @dialog.app-dialog",
+   "button.chip.chip-amount.sel @.bet-panel",
+   "button.chip.chip-amount.sel @dialog.bet-sheet"
+  ],
+  "also": [
+   "dialog-shared",
+   "event-detail",
+   "betpanel-sheet"
   ],
   "sources": [
    "components/base.css",
@@ -4234,9 +4026,12 @@
    "ui-kit/_specimen.css",
    "ui-kit/_verify/browser.cjs",
    "ui-kit/_verify/states.cjs",
-   "ui-kit/specimens/catnav-subcat.html"
+   "ui-kit/specimens/betpanel-sheet.html",
+   "ui-kit/specimens/catnav-subcat.html",
+   "ui-kit/specimens/dialog-shared.html",
+   "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "7685e09ce537bab6"
+  "sha": "f8f2072568f6bfd8"
  },
  {
   "component": "cookie-consent",
@@ -6642,7 +6437,7 @@
    "ui-kit/specimens/dialog-shared.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "7bca478aeb9b28fc"
+  "sha": "16693b68e1fcdde4"
  },
  {
   "component": "dialog",
@@ -6834,7 +6629,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "4c4a0e4327f46064"
+  "sha": "4ecf0ba989e034cd"
  },
  {
   "component": "dialog",
@@ -7029,7 +6824,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/outcome-overlays.html"
   ],
-  "sha": "fa21dcea80b57bad"
+  "sha": "b449383536eae027"
  },
  {
   "component": "filters",
@@ -7220,7 +7015,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "3e8849db2b20044b"
+  "sha": "28419d29d5ea1333"
  },
  {
   "component": "filters",
@@ -7375,7 +7170,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "3e8849db2b20044b"
+  "sha": "28419d29d5ea1333"
  },
  {
   "component": "filters",
@@ -7530,7 +7325,7 @@
    "ui-kit/specimens/filters-sort.html",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "3e8849db2b20044b"
+  "sha": "28419d29d5ea1333"
  },
  {
   "component": "footer",
@@ -7734,7 +7529,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "35187d3c9f96673e"
+  "sha": "c99c09ca59baef1d"
  },
  {
   "component": "footer",
@@ -7938,7 +7733,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "35187d3c9f96673e"
+  "sha": "c99c09ca59baef1d"
  },
  {
   "component": "footer",
@@ -8142,7 +7937,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "35187d3c9f96673e"
+  "sha": "c99c09ca59baef1d"
  },
  {
   "component": "header",
@@ -8354,7 +8149,7 @@
    "ui-kit/specimens/header-in.html",
    "ui-kit/specimens/header-out.html"
   ],
-  "sha": "7b3993ea61b942bf"
+  "sha": "e3b56e14ab669850"
  },
  {
   "component": "header",
@@ -8562,7 +8357,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "134ba0833851f807"
+  "sha": "07b0417edd73cfe8"
  },
  {
   "component": "header",
@@ -8770,7 +8565,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "134ba0833851f807"
+  "sha": "07b0417edd73cfe8"
  },
  {
   "component": "hero",
@@ -9608,7 +9403,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "4c4a0e4327f46064"
+  "sha": "4ecf0ba989e034cd"
  },
  {
   "component": "iconbtn",
@@ -9819,7 +9614,7 @@
    "ui-kit/specimens/card-multi.html",
    "ui-kit/specimens/feed-grid.html"
   ],
-  "sha": "c80dfb3c86c6e5f3"
+  "sha": "2621d616aeceb2dd"
  },
  {
   "component": "iconbtn",
@@ -10007,7 +9802,7 @@
    "ui-kit/specimens/button-outcome-row.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "907d577c65cf79c9"
+  "sha": "4c8d7fd4ed7b4e7a"
  },
  {
   "component": "iconbtn",
@@ -10199,7 +9994,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/hiw-dialog.html"
   ],
-  "sha": "4c4a0e4327f46064"
+  "sha": "4ecf0ba989e034cd"
  },
  {
   "component": "iconbtn",
@@ -10415,7 +10210,7 @@
    "ui-kit/specimens/outcome-overlays.html",
    "ui-kit/specimens/signin.html"
   ],
-  "sha": "75c083e7bd9d4aae"
+  "sha": "193ed290782dd0b1"
  },
  {
   "component": "iconbtn",
@@ -10600,7 +10395,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/toast.html"
   ],
-  "sha": "9f23c78efe8dc823"
+  "sha": "9f5a6976bf550848"
  },
  {
   "component": "iconbtn",
@@ -10836,7 +10631,7 @@
    "ui-kit/specimens/card-detail-head.html",
    "ui-kit/specimens/event-detail.html"
   ],
-  "sha": "d01453743460dd5f"
+  "sha": "b89b8d8ba7846546"
  },
  {
   "component": "iconbtn",
@@ -11040,7 +10835,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/footer.html"
   ],
-  "sha": "35187d3c9f96673e"
+  "sha": "c99c09ca59baef1d"
  },
  {
   "component": "iconbtn",
@@ -11304,7 +11099,7 @@
    "ui-kit/specimens/button-census.html",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "aa3823f4246a5aef"
+  "sha": "c1bb8f83c9f1907e"
  },
  {
   "component": "input",
@@ -11514,7 +11309,7 @@
    "ui-kit/specimens/input-amount.html",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "1d5b69210f838b24"
+  "sha": "9a829fd12a583483"
  },
  {
   "component": "input",
@@ -11699,7 +11494,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "517ad32f6c9614df"
+  "sha": "bcd6ee0c092ce9c9"
  },
  {
   "component": "input",
@@ -11882,7 +11677,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/input-states.html"
   ],
-  "sha": "517ad32f6c9614df"
+  "sha": "bcd6ee0c092ce9c9"
  },
  {
   "component": "input",
@@ -12119,7 +11914,7 @@
    "ui-kit/specimens/event-detail.html",
    "ui-kit/specimens/options-multi.html"
   ],
-  "sha": "c8a542ddb5013174"
+  "sha": "69a78fafdf92b922"
  },
  {
   "component": "input",
@@ -12323,7 +12118,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-sheet.html"
   ],
-  "sha": "41fda65b809278a6"
+  "sha": "f771e6cd88496656"
  },
  {
   "component": "market",
@@ -12624,7 +12419,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/header-in.html"
   ],
-  "sha": "134ba0833851f807"
+  "sha": "07b0417edd73cfe8"
  },
  {
   "component": "navitem",
@@ -13506,7 +13301,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "5d462c79eaa84a2e"
+  "sha": "0437dc71d1e1e19f"
  },
  {
   "component": "tabs",
@@ -13700,7 +13495,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "5d462c79eaa84a2e"
+  "sha": "0437dc71d1e1e19f"
  },
  {
   "component": "tabs",
@@ -13894,7 +13689,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/tabs-detail.html"
   ],
-  "sha": "5d462c79eaa84a2e"
+  "sha": "0437dc71d1e1e19f"
  },
  {
   "component": "tabs",
@@ -15823,7 +15618,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "54145b182bf0776b"
+  "sha": "84c65bd2c2151903"
  },
  {
   "component": "yesno",
@@ -16013,7 +15808,7 @@
    "ui-kit/_verify/states.cjs",
    "ui-kit/specimens/betpanel-more.html"
   ],
-  "sha": "9bfd1ce5213f709d"
+  "sha": "ee6f7ee794452a65"
  },
  {
   "component": "yesno",
@@ -16210,7 +16005,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "539ba1aef35fbf8e"
+  "sha": "642afd3803c1dcbb"
  },
  {
   "component": "yesno",
@@ -16407,7 +16202,7 @@
    "ui-kit/specimens/options-rows.html",
    "ui-kit/specimens/yesno.html"
   ],
-  "sha": "539ba1aef35fbf8e"
+  "sha": "642afd3803c1dcbb"
  },
  {
   "component": "yesno",

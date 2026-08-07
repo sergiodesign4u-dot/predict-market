@@ -1332,6 +1332,55 @@ construction, so each needs a product answer.
 
 ---
 
+## S38: the answer was in the product, and the row had guessed at a token
+
+The row said a selected chip answers no press and proposed a deeper tint with a
+token of its own. Reading every CHOSEN control instead - rest, a real pointer and
+the pointer held, both themes - said otherwise twice.
+
+    control              rest              pointer   finger
+    chip-nav current     brass tint        nothing   --bg-pressed
+    chip-lane current    brass tint        nothing   --bg-pressed
+    rules-tab chosen     transparent       nothing   --bg-pressed
+    yesno-pick chosen    a filled outcome  nothing   inset shade
+    chip-rail chosen     brass tint        nothing   NOTHING
+    chip-amount chosen   brass tint        nothing   NOTHING
+    tile saved           brass tint        nothing   NOTHING
+
+**First, the system already states the rule.** `components/yesno.css` wrote it
+down when the outcome pair got its press: **three press mechanisms, one per kind
+of surface.** A quiet control settles onto `--bg-pressed`, a brass gradient
+reverses its own angle, a filled colour goes down by depth. A chosen chip is a
+TINT, which is nearly nothing over the surface beneath it, so its ink was never
+measured on the tint and it has the quiet control's answer - the one the
+`[aria-current]` chips already had, decided and captioned a day earlier.
+
+**Second, nothing but a `:not(.sel)` made the two halves differ.** So the fix
+deletes an exclusion rather than adding vocabulary:
+
+    .app-case .chip:active{background:var(--bg-pressed)}
+
+One selector, every chip, chosen or not. Only the ground moves, so a chosen chip
+keeps its brass edge, its brass label and its halo, and what a person sees is the
+stone going in rather than the choice coming off. The saved bookmark took the same
+answer at its own weight, because `[data-fav][aria-pressed="true"]` is (0,4,0) and
+had been outranking the press as well as the hover.
+
+### The correction this forced on S45's close
+
+That close called the saved tile "a control that has stopped saying it is one"
+and filed it here as a second axis. **It is not an outlier.** Not one of the seven
+chosen readings answers a pointer, in either theme. The uniformity is the
+decision: a chosen control's whole face is already the answer, and a second one
+under the pointer would compete with it. That sentence is now written where the
+three `:not(.sel)` hovers live, so the next person reads a decision rather than
+an omission.
+
+`.opt-row` was checked and is not in the count: it is a `<div>` holding a YES / NO
+pair, so a container with no states of its own is correct.
+
+---
+
 ## The decision this document no longer has open
 
 - ~~**Is a social mark a `navitem` or an `iconbutton`?**~~ **Answered 2026-08-06 and the

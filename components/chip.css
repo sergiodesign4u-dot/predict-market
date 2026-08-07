@@ -121,8 +121,11 @@
 /* The amount answers a pointer, and both places it stands do now. The deposit
    sheet had this hover and the bet panel had none - the same face on the same
    control, one scope answering and the other silent, which is not a decision
-   anybody took. `:not(.sel)` on both, because a chosen chip still answers
-   nothing anywhere in this product and that is backlog S38. */
+   anybody took. `:not(.sel)` stays, and since 2026-08-07 it is a DECISION rather
+   than a gap: measured across all six chosen controls in the product, not one of
+   them answers a pointer, because a chosen control's whole face is already the
+   answer. S38 closed on the finger, which is a different question and is answered
+   below. */
 .app-case .chip-amount:hover:not(.sel){border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)}
 /* THE CHOSEN CHIP, ONE RULE FOR THE WHOLE FAMILY. --tint-brass-09 inside a
    --tint-brass-45 edge with --text-brass-chip, bold, and a halo that is a glow
@@ -233,15 +236,28 @@
    ink goes from --text-primary to --text-brass-chip. */
 .app-case .chip.sel,.app-case [aria-current="page"] .chip{background:var(--tint-brass-09);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
 .app-case .chip-amount.sel,.app-case [aria-current="page"] .chip{border-color:var(--tint-brass-45)}
-/* The press, and each of these has to out-reach the chosen rule above it or it
-   would be invisible on exactly the chip a person is standing on - which on a
-   category strip is the one most likely to be tapped, because tapping it is how
-   you get back to the top of it. Only the ground moves, so a chosen chip keeps
-   its brass edge, its brass label and its halo. `.sel` is excluded and
-   `[aria-current]` is not, which is the state the product is actually in and is
-   backlog S38: a chip chosen by a class answers nothing under the finger
-   anywhere, and a chip chosen by navigation answers everywhere. */
-.app-case .chip:active:not(.sel),.app-case [aria-current="page"] .chip:active{background:var(--bg-pressed)}
+/* THE PRESS, AND IT IS ONE SELECTOR SINCE 2026-08-07: every chip, chosen or not,
+   by a class or by navigation. Only the ground moves, so a chosen chip keeps its
+   brass edge, its brass label and its halo, and what a person sees is the stone
+   going in rather than the choice coming off.
+   S38 CLOSED HERE, AND THE ANSWER WAS ALREADY IN THE PRODUCT. The row guessed a
+   deeper tint and a token of its own; measuring all six chosen controls said
+   otherwise. `components/yesno.css` writes the rule this system actually has -
+   THREE press mechanisms, one per kind of surface: a quiet control settles onto
+   --bg-pressed, a brass gradient reverses its own angle, a filled colour goes
+   down by depth. A chosen chip is a TINT, which is nearly nothing over the
+   surface beneath it, so its ink was never measured on the tint and it has the
+   quiet control's answer. The `[aria-current]` half already gave it, decided and
+   captioned; `.sel` was excluded and nothing but the exclusion made the two
+   differ. `:active` reaches (0,3,0), the same as the chosen rule above, so it
+   has to stay AFTER it: with a pointer down both are true and only source order
+   separates them.
+   WHAT IS DELIBERATELY NOT HERE IS A HOVER. Measured across all six chosen kinds
+   in both themes - the rail chip, the amount, the category, the lane, the option
+   row and the saved bookmark - NOT ONE answers a pointer, and that uniformity is
+   the decision rather than the gap: a chosen control's whole face is already the
+   answer, and a second one under the pointer would compete with it. */
+.app-case .chip:active{background:var(--bg-pressed)}
 @media(pointer:coarse){
   .app-case .chip-quiet,.app-case .chip-nav{min-height:var(--control-44)}
 }

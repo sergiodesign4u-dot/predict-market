@@ -228,15 +228,24 @@
 /* The favourited star, and it deliberately outranks both. Its brass leaving
    under the finger would read as the favourite coming off before the click had
    said so.
-   AND OUTRANKING BOTH COSTS SOMETHING NOBODY HAD PRICED. This selector is (0,4,0)
-   against the hover's (0,3,0), so it wins the pointer as well as the finger: a
-   saved bookmark and a saved bookmark under a mouse are the same picture, read
-   byte for byte in both themes on 2026-08-07. The press half of that is the
-   sentence above and it is right; the hover half is a control that stops saying
-   it is a control. It is the same shape as a selected chip answering no press,
-   so it is filed with it rather than answered here alone:
-   ui-kit/docs/backlog.md S38. */
+   AND OUTRANKING BOTH COST SOMETHING NOBODY HAD PRICED. This selector is (0,4,0)
+   against the hover's and the press's (0,3,0), so it was winning the finger AND
+   the pointer: a saved bookmark, a saved bookmark under a mouse and a saved
+   bookmark held down were one picture, byte for byte in both themes.
+   THE FINGER IS ANSWERED NOW, S38, 2026-08-07, and the sentence above survives
+   intact because only the GROUND moves: the brass edge and the brass mark are
+   exactly where they were, so nothing reads as the favourite coming off. It is
+   --bg-pressed, the one pressed ground this system has, which is what every
+   other tinted and quiet control takes and what the chip family took in the same
+   commit.
+   THE POINTER IS NOT ANSWERED, and that is a decision rather than the rest of the
+   gap. Measured across all six chosen controls in the product - the rail chip,
+   the amount, the category, the lane, the option row and this - NOT ONE answers a
+   pointer. This is not the outlier it looked like when S45 filed it; it is the
+   rule, and the rule is uniform. A chosen control's whole face is already the
+   answer. */
 .icon-btn.icon-btn-tile[data-fav][aria-pressed="true"]{color:var(--text-brass);border-color:var(--tint-brass-45);background:var(--tint-brass-09)}
+.icon-btn.icon-btn-tile[data-fav][aria-pressed="true"]:active{background:var(--bg-pressed)}
 /* A SIZE IS THE CONTROL'S AND THE GAP BETWEEN THEM IS THE ROW'S, so this half
    of the old media query came here and the other half stayed in
    components/event-detail.css. 560 rather than the 640 the rest of the system
