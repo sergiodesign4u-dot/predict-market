@@ -27,13 +27,14 @@
     <h1>Button</h1>
     <p>Level 1, and the largest control family in the product: <b>902 placements on 106 painted
     screens</b>, every one of them wearing <code>.btn</code>. Five emphases, four sizes, one width
-    switch, and <b>one scope left of the eleven this file used to carry</b>. Everything on this page
+    switch, and <b>0 scopes left of the eleven this file used to carry</b>. Everything on this page
     was read off the rendered screens on 2026-08-08 rather than off the stylesheet.</p>
     <div class="tk-badges">
       <span class="tk-badge">902 placements</span>
       <span class="tk-badge">5 emphases</span>
       <span class="tk-badge">4 sizes</span>
       <span class="tk-badge">22 forms</span>
+      <span class="tk-badge">0 scopes</span>
       <span class="tk-badge">0 links</span>
     </div>
   </div>
@@ -79,6 +80,7 @@
           <tr><td><code>.btn-bare</code></td><td>Gives up the box as well: no ground, no edge, no corner, and its padding is a <b>hit area rather than a size</b>.</td><td>72</td></tr>
           <tr><td><code>.btn-prompt</code></td><td>The invitation: <code>--bg-well</code>, a recessed ground, muted ink, semibold. The only emphasis drawn on a well.</td><td>4</td></tr>
           <tr><td><code>.btn-block</code></td><td>The control owns its row. The fourth axis, and the only one that is not a look.</td><td>576</td></tr>
+          <tr><td><code>.btn-provider</code></td><td><b>The sixth face, named 2026-08-08.</b> A button that carries somebody else's logotype: it lifts 1px under a pointer, settles back under a finger, and its mark is FILLED rather than stroked. It was written <code>dialog.app-dialog.signin-dialog .btn</code> until that day, so <b>36 per cent of every button in the product had a face that existed only inside one sheet</b>.</td><td><b>322</b></td></tr>
           <tr><td><code>.prov-google</code> <code>.prov-x</code> <code>.prov-apple</code></td><td><b>Parts, and they are on the <code>&lt;svg&gt;</code> and not on the button.</b> Brand marks, filled with the current colour rather than stroked, because a logotype is not an icon. <code>.prov-google</code> carries its own brand colours in the markup and correctly has no rule.</td><td>107 / 108 / 107</td></tr>
         </tbody>
       </table>
@@ -238,6 +240,27 @@
     nor presses.</p>
   </section>
 
+  <!-- ============================================================= provider -->
+  <section class="tk-sec" id="provider">
+    <h2 data-n="6b">The sixth face, and it is not an emphasis</h2>
+    <p class="tk-note"><code>.btn-provider</code> keeps <code>btn-secondary</code>: it is not a
+    louder or quieter version of anything, it is <b>the same emphasis carrying somebody else's
+    mark</b>. All 322 wear one form, <code>secondary md block provider</code>, and 0 of them stand
+    outside the sign-in sheet.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <button type="button" class="btn btn-secondary btn-md btn-block btn-provider"><svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>Continue with X</button>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <button type="button" class="btn btn-secondary btn-md btn-block btn-provider"><svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>Continue with X</button>
+      </div>
+    </div>
+    <p class="tk-note"><b>A logotype is not an icon</b>, and that is the whole face: the mark is
+    filled with the current colour rather than stroked, the two monochrome ones take the brand ink,
+    and Google carries its own four colours in the markup and correctly has no rule.</p>
+  </section>
+
   <!-- ================================================================ forms -->
   <section class="tk-sec" id="forms">
     <h2 data-n="7">The forms the product actually wears</h2>
@@ -250,7 +273,7 @@
       <table class="tk-tbl">
         <thead><tr><th>form</th><th>scope</th><th>n</th><th>screens</th></tr></thead>
         <tbody>
-          <tr><td><code>secondary md block</code></td><td>the sign-in sheet</td><td><b>315</b></td><td>105</td></tr>
+          <tr><td><code>secondary md block provider</code></td><td><b>a class since 2026-08-08</b>, a scope before it</td><td><b>322</b></td><td>105</td></tr>
           <tr><td><code>primary md block</code></td><td>a dialog</td><td>106</td><td>105</td></tr>
           <tr><td><code>ghost xs</code></td><td>the header</td><td>105</td><td>105</td></tr>
           <tr><td><code>secondary md block</code></td><td>a dialog</td><td>105</td><td>105</td></tr>
@@ -262,10 +285,11 @@
       </table>
     </div>
 
-    <p class="tk-why"><b>One form is 35 per cent of the component.</b> The provider row in the sign-in
-    sheet is 315 of the 902, on 105 of the 106 screens, and it is the reason the one surviving scope
-    below exists. A vocabulary whose largest form is a single repeated row is a vocabulary that has to
-    be right about that row before it is right about anything else.</p>
+    <p class="tk-why"><b>One form is 36 per cent of the component.</b> The provider row is
+    <b>322 of the 902</b>, on 105 of the 106 screens, because the sign-in sheet is in the markup of
+    every screen. A vocabulary whose largest form is a single repeated row is a vocabulary that has
+    to be right about that row before it is right about anything else, <b>and until 2026-08-08 that
+    row had no name</b>: it was the last scope this file carried.</p>
   </section>
 
   <!-- ================================================================= gaps -->
@@ -288,14 +312,24 @@
 
   <!-- ================================================================ scope -->
   <section class="tk-sec" id="scope">
-    <h2 data-n="9">The one scope left, and the dialog measurement behind it</h2>
+    <h2 data-n="9">Eleven scopes, then one, then none</h2>
     <p class="tk-note"><code>components/button.css</code> had <b>eleven scoped selectors and has
-    one</b>. The sign-in sheet's rows lift 1px under the pointer, and they are the only provider rows
-    in the product that answer with a transform: a row 380px wide needs a second signal that it is a
-    target at all. Everything else that used to be scoped there, the outcome sheet's sixteen
-    re-declarations, the bet panel's three, the dock's two, the sheet's padding and the resolved
-    panel's width, says what the vocabulary now says in a class and is deleted rather than left to be
-    read.</p>
+    0</b>. Everything that used to be scoped there, the outcome sheet's sixteen re-declarations, the
+    bet panel's three, the dock's two, the sheet's padding and the resolved panel's width, says what
+    the vocabulary now says in a class and is deleted rather than left to be read.</p>
+    <p class="tk-why"><b>The last one went on 2026-08-08 and it was the biggest form in the
+    family.</b> The provider rows were written <code>dialog.app-dialog.signin-dialog .btn</code>, so
+    <b>322 buttons, 36 per cent of every button in the product, had a face that existed only inside
+    one sheet</b> and the family had no name for the one thing they do differently. They are
+    <code>.btn-provider</code> now, and what makes it a face rather than a place is the mark:
+    <b>a logotype is not an icon</b>, so it is filled rather than stroked, two of the three are
+    monochrome and take the brand ink, and Google carries its own four colours in the markup.</p>
+    <p class="tk-lab tk-bad"><b>And it was the one lifted control in the system with no press.</b>
+    <i>Four things in this product lift under a pointer: the card at -3px, the icon button's lift
+    face at -2px, the hero's trust tile at -2px and this at -1px. The other three all put themselves
+    back on <code>:active</code>, and the card's file wrote the reason: a HELD control settles instead
+    of hanging in mid air. This one lifted and stayed lifted for as long as a finger was on it. The
+    press is the rest position restated, and it cost no new value.</i></p>
     <p class="tk-note"><b>And this file writes no <code>.app-case</code>, which is a measurement and
     not a preference.</b> Of the 559 buttons that stand inside a <code>&lt;dialog&gt;</code> on the
     106 screens, <b>526 are in a dialog that does not carry <code>app-case</code></b> and 33 are.

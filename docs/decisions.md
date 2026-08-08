@@ -44,6 +44,51 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - The button family names its sixth face, and it turns out to be 36 per cent of the family
+
+The last container scope in `components/button.css`, and the biggest one anybody had left: the
+sign-in sheet's provider rows were written `dialog.app-dialog.signin-dialog .btn`.
+
+**Measured across all 106 painted screens: 322 placements on 105 of them, every one carrying a
+provider mark, 0 of them outside that sheet, and 322 of the 902 buttons in the product.** The
+sign-in sheet is in the markup of every screen, so **the face nobody had named was the second most
+worn one in the family** and its whole existence depended on being inside one dialog.
+
+**What makes it a face rather than a place**: a logotype is not an icon. The mark is filled rather
+than stroked, two of the three are monochrome and take the brand ink, and Google carries its own four
+colours in the markup and correctly has no rule. None of that is a fact about a dialog. It is
+`.btn-provider` now, one form across all 322, `secondary md block provider`.
+
+### And it was the one lifted control in the system with no press
+
+Four things in this product lift under a pointer, and that was measured rather than assumed by
+searching every stylesheet for a hover that moves an element:
+
+| | lift | settles on press |
+|---|---|---|
+| `.card` | -3px | yes |
+| `.icon-btn-lift` | -2px | yes |
+| `.hero-trust` | -2px | yes |
+| **the provider button** | **-1px** | **no** |
+
+`card.css` had already written the reason down: **a HELD control settles instead of hanging in mid
+air.** This one lifted and stayed lifted for as long as a finger was on it. The press is the rest
+position restated and it cost no new value. Verified by pressing it: rest `none`, hover
+`translateY(-1px)`, press back to `0`, against the card's -2.95 and -0.03 in the same test.
+
+### Verified
+
+The kit's specimen and the product's button are the same ground, edge, corner, ink, transition and
+mark, compared like with like. **0 selectors anywhere still scope a button to the sign-in dialog**,
+and `components/button.css` is at 0 scoped selectors from the eleven it once carried. Across all 55
+kit pages at 390 and 1280 with the pointer asserted fine: 0 horizontal scroll, 0 console errors, 149
+unique hrefs and 0 broken, one active row per page, 0 collapsed figures.
+
+**Seventh time this correction has been made**, and the four remaining container rules in the system
+are all placement or a documented host treatment.
+
+---
+
 ## 2026-08-08 - Two more faces come off their containers, and the kit is what rendered them
 
 Asked what other nuances the kit has, so the same question was put to every component file rather

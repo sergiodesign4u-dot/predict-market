@@ -1,5 +1,5 @@
 /* components/button.css
-   Component: button. Classes: .btn, .btn-bare, .btn-block, .btn-ghost, .btn-lg, .btn-md, .btn-primary, .btn-prompt, .btn-secondary, .btn-sm, .btn-xs, .prov-apple, .prov-x.
+   Component: button. Classes: .btn, .btn-bare, .btn-block, .btn-ghost, .btn-lg, .btn-md, .btn-primary, .btn-prompt, .btn-provider, .btn-secondary, .btn-sm, .btn-xs, .prov-apple, .prov-x.
 
    Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-pressed, --bg-prompt-hover, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --opacity-disabled, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-16
    Stand:  ui-kit/button.html, and ui-kit/vitrine.html#button for the level and its reason
@@ -285,12 +285,38 @@
    It is written without `.app-case` like everything else in this file: a dialog
    is NOT inside `.app-case` in this product, which is why the old file carried a
    second copy of six selectors. */
-dialog.app-dialog.signin-dialog .btn{transition:border-color var(--dur-quick) ease,
+/* ============================================================ .btn-provider --
+   THE FAMILY'S SIXTH FACE, AND IT WAS A CONTAINER UNTIL 2026-08-08. Every rule
+   below was written `dialog.app-dialog.signin-dialog .btn`, so a button that
+   carries a provider logotype had no face outside the sign-in sheet, and the
+   family had no name for the one thing it does differently. Measured across all
+   106 painted screens: 322 placements on 105 of them, every one carrying a
+   provider mark and 0 of them outside that sheet. THAT IS 36 PER CENT OF EVERY
+   BUTTON IN THE PRODUCT, 322 of 902, and it had no name: the sign-in sheet is in
+   the markup of every screen, so the face nobody had named is the second most
+   worn one in the family.
+
+   WHAT MAKES IT A FACE RATHER THAN A PLACE. A logotype is not an icon: it is
+   filled rather than stroked, it is somebody else's mark, and two of the three
+   are monochrome and take the brand ink while Google carries its own four
+   colours in the markup and correctly has no rule. None of that is a fact about
+   a dialog.
+
+   AND IT WAS THE ONE LIFTED CONTROL IN THE SYSTEM WITH NO PRESS. Four things in
+   this product lift under a pointer: the card at -3px, the icon button's lift
+   face at -2px, the hero's trust tile at -2px, and this at -1px. THE OTHER
+   THREE ALL PUT THEMSELVES BACK on :active, and card.css wrote the reason down:
+   a HELD control settles instead of hanging in mid air. This one lifted and
+   stayed lifted for as long as a finger was on it. The press is the rest
+   position restated, which is the same answer the other three give and costs no
+   new value. */
+.btn.btn-provider{transition:border-color var(--dur-quick) ease,
   background var(--dur-quick) ease,transform var(--dur-fast) ease}
-dialog.app-dialog.signin-dialog .btn:hover{transform:translateY(-1px)}
+.btn.btn-provider:hover{transform:translateY(-1px)}
+.btn.btn-provider:active{transform:translateY(0)}
 /* The brand marks: filled with the current colour rather than stroked, because a
    logotype is not an icon. `.prov-google` carries its own brand colours in the
    markup and correctly has no rule. */
-dialog.app-dialog.signin-dialog .btn .ic{flex:0 0 var(--icon-18);stroke:none}
-dialog.app-dialog.signin-dialog .btn .prov-x,
-dialog.app-dialog.signin-dialog .btn .prov-apple{color:var(--bg-brand-mark);fill:currentColor}
+.btn.btn-provider .ic{flex:0 0 var(--icon-18);stroke:none}
+.btn.btn-provider .prov-x,
+.btn.btn-provider .prov-apple{color:var(--bg-brand-mark);fill:currentColor}
