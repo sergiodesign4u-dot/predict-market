@@ -44,6 +44,79 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - The word "unmeasured" comes off three components, and it came off by walking
+
+`ui-kit/docs/inventory.md` filed six components as **outside the core, unmeasured**: they stand on
+none of the five anchor screens the kit was rebuilt from, so nobody had read them on a rendered page.
+Three of the six are molecules, `account`, `cookie-consent` and `toc`, and the molecules shelf
+carried a section called "Three that are not here, and why that is a statement" rather than a
+specimen for each.
+
+**That refusal was right and this entry is not overturning it.** The level formula answers 1 for a
+component built out of its own class names, and it answers 1 for a component nobody has read at all,
+**and the two are indistinguishable in the output**. A level printed without a reading is a guess
+wearing a declaration's clothes.
+
+### The walk
+
+Six screens, containment read from the DOM rather than from the class names, at 390 and at 1280 and
+in both pointer branches.
+
+| | placements | holds | level |
+|---|---|---|---|
+| `account` | 3 bars on 3 screens | **`button`, 6 of them** | 2 |
+| `cookie-consent` | 1 banner on 1 screen | **`button`, 3 of them, plus its own rows** | 2 |
+| `toc` | 1 rail, 14 rows, on 1 screen | **its own rows, and they are anchors** | 2 |
+
+All three hold something. The shelf gained three sections, each with a live specimen in both themes,
+and each of the three now has a page. **The molecules shelf reads 17 measured and 0 unmeasured**, and
+`_nav.js` moves NEXT to `header`, the first organism.
+
+### What the walk found
+
+**`account`'s own face is worn once of three.** `.cta-bar` is a stone, a hairline along its top edge
+and two rounded corners; `.cta-bar.flat` is three declarations that take all of it away. Measured:
+293x72 against 293x55 at 390. **The plate stands once, on the wallet, and the flat row stands twice.**
+Either the plate is the face and two screens are wrong, or the flat row is the face and the plate is
+the variant, and nothing in the repository says which. Backlog 63.
+
+**`cookie-consent` is the strongest case in the kit for a component page.** It stands once, so there
+is no second placement to compare it against and no state a screen shows you: everything that matters
+about it is in the stylesheet or in a law. Which control may go dead (none, and a Reject that could
+would be the dark pattern the banner exists to answer), what Necessary means (**LOCKED ON, which is
+not unavailable**, so it is kept out of both pointer rules), why the row is the target and not the
+18x18 box, and **why a native checkbox cannot take the system's pressed ground at all**: the browser
+draws it and `background-color` never reaches it, so the press is written in `accent-color`, the one
+property that can.
+
+**`toc` is a rail on a desktop and a disclosure on a phone, and both halves were measured rather than
+assumed.** It was built OPEN first to check whether the IA was being cautious: at 360 the fourteen
+rows pushed the document's H1 entirely below the fold. And its sticky top is 66px where the other two
+rails use 120px, because 120 is the header plus a condensed category strip that a document page never
+shows, measured at 0px tall at scroll 1200. The rail was clearing 61px of chrome that does not exist
+and starting 24px below the heading beside it.
+
+### The instrument had to be reset again, and this is the third time
+
+The first measurement pass of this batch returned **identical numbers at 390 and at 1280**, which is
+the signature this session has now produced three times: a CDP `setDeviceMetricsOverride` and touch
+emulation left on from the previous batch, which `setViewportSize` cannot override and which cannot
+be turned off through CDP. The pass was thrown away and re-run from a fresh browser. **The tell is
+not an error message, it is two columns of a table agreeing where they should not**, and the only
+reliable guard is asserting `window.innerWidth` and `matchMedia('(pointer:coarse)')` before reading
+anything.
+
+### Verified
+
+All 36 kit pages at 390 and 1280: **0 horizontal page scroll, 0 console errors, 89 unique hrefs and
+0 broken**, one active row per page, 0 collapsed specimen figures, and the three new shelf anchors
+resolve. `ui-kit/docs/inventory.md` gained a reading for all three, and for `toggle`, which had been
+carrying the same word.
+
+Backlog 48 to 49.
+
+---
+
 ## 2026-08-08 - Fourteen molecule pages, and six of the fourteen found something the shelf could not show
 
 The second batch under the rule set the same day: a level is a shelf and a component is a page. All

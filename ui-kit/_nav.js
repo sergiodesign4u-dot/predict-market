@@ -108,15 +108,18 @@ window.KIT_NAV = [
        have and not a guess: `row()` never reads it while `done` is false, and
        writing it now is how the next person building one knows what to call it.
 
-       THE LAST THREE OF THIS GROUP HAVE NO SHELF SECTION EITHER. `account`,
-       `cookie-consent` and `toc` are three of the six that `ui-kit/docs/
-       inventory.md` calls "outside the core, unmeasured": they do not stand on
-       the five anchor screens, so "holds nothing" is not a reading anybody has
-       taken about them. They get a level when the screens that carry them are
-       walked, and until then a row that says so is more honest than an absence. */
+       THE LAST THREE OF THIS GROUP HAD NO SHELF SECTION EITHER, AND NOW THEY DO.
+       `account`, `cookie-consent` and `toc` were three of the six that
+       `ui-kit/docs/inventory.md` called "outside the core, unmeasured": they
+       stand on none of the five anchor screens, so "holds nothing" was not a
+       reading anybody had taken about them, and a level printed without a
+       reading is a guess wearing a declaration's clothes. They were WALKED on
+       2026-08-08, on the six screens that do carry them, containment read from
+       the DOM: all three hold something and all three are level 2. The shelf
+       gained three sections the same day and the word came off. */
     label: 'Molecules',
     items: [
-      { label: 'All molecules', page: 'molecules.html', done: true, note: '14' },
+      { label: 'All molecules', page: 'molecules.html', done: true, note: '17' },
       { label: 'Trust bar',     page: 'trustbar.html',   done: true, note: '525' },
       { label: 'Market',        page: 'market.html',     done: true, note: '9' },
       { label: 'Comments',      page: 'comments.html',   done: true, note: '36' },
@@ -131,16 +134,16 @@ window.KIT_NAV = [
       { label: 'Options',       page: 'options.html',    done: true, note: '52' },
       { label: 'SEO plate',     page: 'seo-plate.html',  done: true, note: '36' },
       { label: 'Load more',     page: 'loadmore.html',   done: true, note: '9' },
-      { label: 'Account',       page: 'account.html',    done: false, next: true },
-      { label: 'Cookie consent',page: 'cookie-consent.html', done: false },
-      { label: 'Contents',      page: 'toc.html',        done: false }
+      { label: 'Account',       page: 'account.html',    done: true, note: '3' },
+      { label: 'Cookie consent',page: 'cookie-consent.html', done: true, note: '1' },
+      { label: 'Contents',      page: 'toc.html',        done: true, note: '14' }
     ]
   },
   {
     label: 'Organisms',
     items: [
       { label: 'All organisms', page: 'organisms.html',    done: true, note: '13' },
-      { label: 'Header',        page: 'header.html',       done: false },
+      { label: 'Header',        page: 'header.html',       done: false, next: true },
       { label: 'Footer',        page: 'footer.html',       done: false },
       { label: 'Dialog',        page: 'dialog.html',       done: false },
       { label: 'How it works',  page: 'hiw-dialog.html',   done: false },

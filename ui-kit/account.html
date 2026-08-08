@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: account</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Account</h1>
+    <p>Level 2, declared on 2026-08-08 and unmeasured until that day. The bar at the foot of an
+    account screen holding the two things you can do next. <b>3 placements on 3 painted screens, and
+    two of them wear <code>.flat</code></b>, which takes away everything the component draws.
+    Measured in a browser at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">3 placements</span>
+      <span class="tk-badge">6 buttons</span>
+      <span class="tk-badge">2 rules</span>
+      <span class="tk-badge">1 face, worn once</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">Unmeasured, and what that word was protecting</h2>
+    <p class="tk-note">This component stands on none of the five anchor screens the kit was rebuilt
+    from, so <code>ui-kit/docs/inventory.md</code> filed it as <b>outside the core, unmeasured</b>
+    and refused to give it a level. That was not laziness. The level formula answers "1" for a
+    component built out of its own class names, <b>and it answers "1" for a component nobody has
+    read at all</b>, so a level printed without a reading is a guess wearing a declaration's
+    clothes.</p>
+    <p class="tk-why"><b>Walked today, the reading is unambiguous:</b> three bars on
+    <code>how-it-works</code>, <code>my-profile</code> and <code>wallet</code>, and every one of them
+    holds two <code>.btn</code>. <b>It HOLDS button, so it is level 2</b>, and the word came off.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The bar, and the face it takes off</h2>
+    <p class="tk-subh">the plate, 1 placement, on the wallet</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="cta-bar"><button type="button" class="btn btn-primary btn-md">Add funds</button><button type="button" class="btn btn-secondary btn-md">Withdraw</button></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="cta-bar"><button type="button" class="btn btn-primary btn-md">Add funds</button><button type="button" class="btn btn-secondary btn-md">Withdraw</button></div></div>
+    </div>
+
+    <p class="tk-subh">flat, 2 placements, on how-it-works and my-profile</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="cta-bar flat"><button type="button" class="btn btn-primary btn-md">Browse markets</button><button type="button" class="btn btn-secondary btn-md">How it works</button></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="cta-bar flat"><button type="button" class="btn btn-primary btn-md">Browse markets</button><button type="button" class="btn btn-secondary btn-md">How it works</button></div></div>
+    </div>
+
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>worn</th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the plate</td><td><b>1</b></td><td>293x<b>72</b></td><td>911x<b>72</b></td></tr>
+          <tr><td><code>.flat</code></td><td><b>2</b></td><td>293x55 and 259x55</td><td>911x55 and 877x55</td></tr>
+          <tr><td>a button in it</td><td>6</td><td>113 to 156 wide, 47 tall</td><td><b>422 to 465 wide</b>, 47 tall</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>The 17px between 72 and 55 is the whole component.</b> The plate face is a
+    stone, a hairline along the top edge, two rounded top corners and the padding that goes with
+    them; <code>.flat</code> is three declarations that take all of it away and leave the row. So the
+    thing this file draws stands <b>once</b> in the product, and the majority of its placements are
+    the negation of it.</p>
+    <p class="tk-note">That is a real question rather than a defect: either the plate is the face and
+    two screens are wrong, or the flat row is the face and the plate is the variant. Nothing in the
+    repository says which. <code>docs/backlog.md</code> 63.</p>
+  </section>
+
+  <section class="tk-sec" id="left">
+    <h2 data-n="3">Eight rules left, and they left because they were the button family</h2>
+    <p class="tk-note">Until 2026-08-03 this file drew the buttons: the quiet rest, the brass first
+    child, both hovers and both presses. They are in <a href="button.html">button</a> now, <b>because
+    they were the family</b>: the same control ground, the same 1px hairline, the same primary ink
+    and the same 10 corner that three other one-off button classes each declared separately, plus the
+    one hover the majority already had right.</p>
+    <p class="tk-why"><b>The markup here is a bare <code>&lt;button&gt;</code> with no class</b>, so
+    the class map could not see the divergence either. A person assembling an action bar was hitting
+    a button rule the button page had never heard of, and there was no reading anywhere in the
+    repository that would have shown it.</p>
+    <p class="tk-note"><b>The arrangement went one step further</b>, to
+    <code>components/patterns/action-bar.css</code>, which already said how an anchor child shares
+    the row. What stayed here is the exception the pattern cut declared out loud: <b>a stone, a
+    hairline and two corners are not composition, and they are not the page plate either</b>, so they
+    stay with the component that draws them.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="4">The rule</h2>
+    <p class="tk-note"><b>A bar owns its surface. The controls are the family's and the arrangement
+    is the pattern's.</b> Three owners, one row, and each of the three can be read on its own
+    page.</p>
+    <p class="tk-note"><b>A level is a reading, not an arithmetic.</b> This component was called
+    unmeasured for a day rather than called level 1 forever.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="5">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never let a bar draw a button.</b> <i>Eight rules did, on a bare
+    element with no class, which is the version of the defect no class map can find.</i></p>
+    <p class="tk-lab tk-bad"><b>Never leave a component whose default face is worn once.</b> <i>Two
+    of three placements are the negation of what this file draws, and nothing says which one is the
+    component.</i></p>
+    <p class="tk-lab tk-bad"><b>Never print a level for something nobody has rendered.</b> <i>The
+    formula answers 1 for an atom and 1 for an unread file, and the two are indistinguishable in the
+    output.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="6">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#account">the molecules
+    page</a>. The stylesheet, two rules long: <code>components/account.css</code>. The controls:
+    <a href="button.html">button</a>. The arrangement:
+    <code>components/patterns/action-bar.css</code> and <a href="patterns.html">the patterns
+    page</a>. The open row: <code>docs/backlog.md</code> 63.</p>
+  </section>
+
+</div>
+</body>
+</html>

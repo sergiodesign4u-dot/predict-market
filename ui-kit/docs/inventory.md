@@ -51,7 +51,7 @@ Uses are elements carrying one of the component's own classes across the 41 scre
 | `yesno` | 56 | **ONE CONTROL, and the pair is the control.** The two halves state one market's two sides and cannot exist apart. The arithmetic put it at 6 through a cycle with `betpanel` |
 | `toast` | 41 | **ONE CONTROL.** Filed as a molecule in `index.css` and it holds nothing |
 | `skeleton` | 34 | **ONE CONTROL.** A shape that stands where a thing will be |
-| `toggle` | - | **ONE CONTROL.** Outside the core, unmeasured here |
+| `toggle` | 3 | **ONE CONTROL.** Walked 2026-08-08: three placements, all the same switch, all `aria-checked="false"`, so four of its five faces have no placement in the product |
 
 ### Level 2, molecules
 
@@ -71,9 +71,9 @@ Uses are elements carrying one of the component's own classes across the 41 scre
 | `loadmore` | 1 | **HOLDS** `chip` |
 | `position` | 43 | **HOLDS** `skeleton`. Filed as an organism; it is a row in a list, not a shell |
 | `notice` | 96 | **HOLDS** `button`. Filed as an organism |
-| `account` | - | outside the core, unmeasured |
-| `cookie-consent` | - | outside the core, unmeasured |
-| `toc` | - | outside the core, unmeasured |
+| `account` | 3 | **HOLDS** `button`, 6 of them. Walked 2026-08-08 on the three screens that carry it; two of the three bars wear `.flat`, which removes everything the file draws |
+| `cookie-consent` | 1 | **HOLDS** `button`, 3 of them, plus its own rows. Walked 2026-08-08. One banner on one screen, three categories, one locked ON and none disabled |
+| `toc` | 1 | **HOLDS its own rows**, 14 of them, and they are anchors rather than buttons. Walked 2026-08-08. A rail above 900 and a disclosure below it |
 
 ### Level 3, organisms
 

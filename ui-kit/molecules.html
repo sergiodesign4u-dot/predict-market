@@ -40,12 +40,14 @@
   <div class="tk-hero">
     <h1>Molecules</h1>
     <p>Level 2: <b>a component that holds atoms, or its own named parts, and nothing else</b>.
-    Fourteen of them stand on the five anchor screens and three more do not. Each is the markup the
-    screens ship, painted by <code>components/index.css</code>, in Vault and Daylight side by side,
-    with what it holds, its rule and its anti-rule.</p>
+    Fourteen of them stand on the five anchor screens; the three that do not were walked on their
+    own screens on 2026-08-08 and are here too. Each is the markup the screens ship, painted by
+    <code>components/index.css</code>, in Vault and Daylight side by side, with what it holds, its
+    rule and its anti-rule.</p>
     <div class="tk-badges">
-      <span class="tk-badge">14 measured</span>
-      <span class="tk-badge">3 unmeasured</span>
+      <span class="tk-badge">17 measured</span>
+      <span class="tk-badge">0 unmeasured</span>
+      <span class="tk-badge">17 pages</span>
       <span class="tk-badge">2 themes</span>
       <span class="tk-badge">0 generators</span>
     </div>
@@ -422,15 +424,100 @@
   </section>
 
   <!-- ============================= not measured ====================== -->
-  <section class="tk-sec" id="unmeasured">
-    <h2 data-n="15">Three that are not here, and why that is a statement</h2>
-    <p class="tk-note"><code>account</code>, <code>cookie-consent</code> and <code>toc</code> stand on
-    no screen in the five anchor families. They are <b>unmeasured by this pass</b>, which is not the
-    same as empty: nobody has read them on a rendered page, so nobody knows what they hold. They get
-    a level and a page when the screens that carry them are walked, and until then saying "level 2"
-    about them would be a guess wearing a declaration's clothes.</p>
+  <section class="tk-sec" id="walked">
+    <h2 data-n="15">The three that were not here, walked on 2026-08-08</h2>
+    <p class="tk-note"><code>account</code>, <code>cookie-consent</code> and <code>toc</code> stand
+    on no screen in the five anchor families, so this shelf carried them as <b>unmeasured</b> rather
+    than guessing a level: nobody had read them on a rendered page. They were walked on the six
+    screens that do carry them, and each one's containment was read from the DOM rather than from
+    the class names. <b>All three hold something, and all three are level 2.</b> Their sections
+    follow.</p>
     <p class="tk-note">The level 3 organisms follow on their own page: header, footer, dialog,
     hiw-dialog, betpanel, tabs, bets-table, card, hero, chart, feed, event-detail and profile.</p>
+  </section>
+
+  <!-- ================================ account ======================== -->
+  <section class="tk-mol" id="account">
+    <h2>account</h2>
+    <ul class="tk-holds">
+      <li>components/account.css</li><li>level 2</li><li>3 uses on 3 screens</li>
+      <li class="tk-decl">HOLDS button, 6 of them</li>
+      <li class="tk-on">unmeasured until 2026-08-08</li>
+      <li><a href="account.html">its own page</a></li>
+    </ul>
+    <p class="tk-note">The bar at the foot of an account screen that holds the two things you can do
+    next. <b>Two of its three placements wear <code>.flat</code></b>, which takes the stone, the
+    hairline and the corners away, so the component's own face stands once in the whole product.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="cta-bar"><button type="button" class="btn btn-primary btn-md">Add funds</button><button type="button" class="btn btn-secondary btn-md">Withdraw</button></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="cta-bar"><button type="button" class="btn btn-primary btn-md">Add funds</button><button type="button" class="btn btn-secondary btn-md">Withdraw</button></div></div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> A bar owns its stone and nothing else: the buttons are the button
+    family's and the arrangement is a pattern. <b>Anti-rule.</b> Never let a bar draw a button; eight
+    rules did, and a person assembling an action bar was hitting a button rule the button page had
+    never heard of.</p>
+  </section>
+
+  <!-- ============================ cookie-consent ===================== -->
+  <section class="tk-mol" id="cookie-consent">
+    <h2>cookie-consent</h2>
+    <ul class="tk-holds">
+      <li>components/cookie-consent.css</li><li>level 2</li><li>1 banner on 1 screen</li>
+      <li class="tk-decl">HOLDS button, 3 of them, plus its own rows</li>
+      <li class="tk-on">unmeasured until 2026-08-08</li>
+      <li><a href="cookie-consent.html">its own page</a></li>
+    </ul>
+    <p class="tk-note">The consent banner: a sentence, three choices, and a panel of categories one
+    of which is locked on. <b>It is the one component in the product whose shape is decided by law
+    rather than by design</b>, and the only one where a control that could go dead would be a dark
+    pattern.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><section class="cc-banner"><div class="cc-inner">
+        <p class="cc-text">We use cookies to keep you signed in and to see which markets people open. You choose the rest.</p>
+        <div class="cc-actions"><button type="button" class="btn btn-secondary btn-md cc-btn">Accept all</button><button type="button" class="btn btn-secondary btn-md cc-btn">Reject all</button></div>
+      </div></section></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><section class="cc-banner"><div class="cc-inner">
+        <p class="cc-text">We use cookies to keep you signed in and to see which markets people open. You choose the rest.</p>
+        <div class="cc-actions"><button type="button" class="btn btn-secondary btn-md cc-btn">Accept all</button><button type="button" class="btn btn-secondary btn-md cc-btn">Reject all</button></div>
+      </div></section></div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> Reject is as easy to reach as Accept, always: same face, same
+    size, same row. <b>Anti-rule.</b> Never give any of the three a disabled state; consent is always
+    available, and a Reject that could go dead is the dark pattern this banner exists to answer.</p>
+  </section>
+
+  <!-- ================================== toc ========================== -->
+  <section class="tk-mol" id="toc">
+    <h2>toc</h2>
+    <ul class="tk-holds">
+      <li>components/toc.css</li><li>level 2</li><li>1 rail, 14 rows, on 1 screen</li>
+      <li class="tk-decl">HOLDS its own rows, and they are anchors</li>
+      <li class="tk-on">unmeasured until 2026-08-08</li>
+      <li><a href="toc.html">its own page</a></li>
+    </ul>
+    <p class="tk-note">A document's own contents, beside it. <b>Same geometry as the category rail
+    and the opposite job</b>: that one navigates BETWEEN pages with buttons, this one navigates
+    INSIDE one page and its rows must be anchors, because a contents built out of buttons is not
+    crawlable.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><nav class="toc"><ul class="toc-list">
+        <li><a class="toc-link" href="#" aria-current="true">What this service is<span class="toc-n">1</span></a></li>
+        <li><a class="toc-link" href="#">Who may use it<span class="toc-n">2</span></a></li>
+        <li><a class="toc-link" href="#">How a market resolves<span class="toc-n">3</span></a></li>
+      </ul></nav></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><nav class="toc"><ul class="toc-list">
+        <li><a class="toc-link" href="#" aria-current="true">What this service is<span class="toc-n">1</span></a></li>
+        <li><a class="toc-link" href="#">Who may use it<span class="toc-n">2</span></a></li>
+        <li><a class="toc-link" href="#">How a market resolves<span class="toc-n">3</span></a></li>
+      </ul></nav></div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> A rail declares its own width and its own sticky, and the shell
+    declares only that there are two columns, so a third rail can arrive without either file learning
+    about it. <b>Anti-rule.</b> Never pin a rail without capping it to the window: at 601px tall and
+    pinned, three of its fourteen rows were off the bottom of a 768px laptop and stayed there.</p>
   </section>
 
 </div>

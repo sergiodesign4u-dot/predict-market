@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: contents</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Contents</h1>
+    <p>Level 2, declared on 2026-08-08 and unmeasured until that day. A document's own contents
+    beside it: <b>1 rail and 14 rows on 1 painted screen</b>. Same geometry as the category rail and
+    the opposite job, and it is <b>a rail on a desktop and a disclosure on a phone</b>. Measured in a
+    browser at 390 and 1280, in both pointer branches.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">1 rail</span>
+      <span class="tk-badge">14 rows</span>
+      <span class="tk-badge">214px, pinned</span>
+      <span class="tk-badge">36 to 44 with a finger</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">Why it is a component and not a variant of the category rail</h2>
+    <p class="tk-why"><b>The two rails have the same geometry and opposite jobs.</b> A category rail
+    navigates BETWEEN pages and its rows are buttons; a contents rail navigates INSIDE one page and
+    <b>its rows must be anchors, because a contents built out of buttons is not crawlable</b> and
+    this product's own SEO layer requires every heading anchor to be a real link.</p>
+    <p class="tk-note">Putting the sections of a legal document into a component called
+    <code>catnav</code> would also have been a naming lie on a screen that already has a count of
+    them. <b>Two things that look the same and mean different things are two components</b>, which is
+    the same test that keeps the consent screen's page placeholder out of
+    <a href="skeleton.html">skeleton</a>.</p>
+    <p class="tk-note">It was <b>unmeasured</b> until today, like <a href="account.html">account</a>
+    and <a href="cookie-consent.html">cookie consent</a>, because it stands on no anchor screen.
+    Walked today: it holds 14 anchors of its own, which is the level formula's blind spot, so the
+    declaration is written in words. <b>HOLDS its own rows, level 2.</b></p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The rail</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <nav class="toc"><ul class="toc-list">
+          <li><a class="toc-link" href="#" aria-current="true">What this service is<span class="toc-n">1</span></a></li>
+          <li><a class="toc-link" href="#">Who may use it<span class="toc-n">2</span></a></li>
+          <li><a class="toc-link" href="#">How a market resolves<span class="toc-n">3</span></a></li>
+          <li><a class="toc-link" href="#">Deposits, withdrawals and fees<span class="toc-n">4</span></a></li>
+        </ul></nav>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <nav class="toc"><ul class="toc-list">
+          <li><a class="toc-link" href="#" aria-current="true">What this service is<span class="toc-n">1</span></a></li>
+          <li><a class="toc-link" href="#">Who may use it<span class="toc-n">2</span></a></li>
+          <li><a class="toc-link" href="#">How a market resolves<span class="toc-n">3</span></a></li>
+          <li><a class="toc-link" href="#">Deposits, withdrawals and fees<span class="toc-n">4</span></a></li>
+        </ul></nav>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the rail</td><td>293x598, in the flow, above the document</td><td><b>214x601</b>, pinned beside it</td></tr>
+          <tr><td>the head</td><td>293x44, <b>a summary you tap</b></td><td><b>0x0, display:none</b></td></tr>
+          <tr><td>a row</td><td>285x36, and 285x52 where the label wraps</td><td>206x36, and <b>four rows at 52</b> because 206 is narrower</td></tr>
+          <tr><td>a row with a finger</td><td colspan="2"><b>44</b>, from the one floor in <code>base.css</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note">Every row carries its number in mono on the right, and the current row takes a
+    brass edge and brass ink, <b>both of them keyed to <code>aria-current</code> rather than to a
+    class</b>, so the drawing and the accessibility tree cannot disagree about which section you are
+    in.</p>
+  </section>
+
+  <section class="tk-sec" id="mobile">
+    <h2 data-n="3">Mobile is a disclosure, and the reason is measured</h2>
+    <p class="tk-note">The IA said the contents is collapsed above the body on mobile. <b>It was
+    built OPEN first, to check whether that was caution rather than a finding.</b></p>
+    <p class="tk-why"><b>At 360 the fourteen rows pushed the document's H1 entirely below the
+    fold</b>, so the first screen of a legal page was a list of links to a title the reader had not
+    seen. The IA was right, and the check is what makes it a decision instead of a rule somebody
+    followed.</p>
+    <p class="tk-note"><b>Desktop does not need the control at all</b>, so the summary is removed
+    above 900 and the content is forced open through the disclosure's own content pseudo-element,
+    which is the only way an author can override the closed state the browser owns.</p>
+  </section>
+
+  <section class="tk-sec" id="pinned">
+    <h2 data-n="4">The sticky top is 66px and not the 120px the other two rails use</h2>
+    <p class="tk-why"><b>120px is the header plus the condensed category strip plus 7px of air, and
+    the strip is revealed by an observer watching the feed's own category bar.</b> A document page
+    has no category bar, so the observer returns before it starts and the strip is never once shown:
+    measured at scroll 1200 on this screen, the condensed strip is 0px tall and the header never
+    takes its scrolled class.</p>
+    <p class="tk-note"><b>The rail was clearing 61px of chrome that does not exist, and the visible
+    cost was at the other end</b>: this layout puts the rail's natural top at 96px, ABOVE the 120px
+    threshold, so sticky clamped it on the first frame and the contents began 24px below the H1
+    beside it. 66px is the header and the same 7px of air the feed rail already uses.</p>
+    <p class="tk-why"><b>And it is capped, because a pinned box taller than the window hides its own
+    tail forever.</b> At 601px and pinned at 120px this rail needed 721px of window: on a 1366x768
+    laptop rows 12, 13 and 14 were off the bottom and stayed there for the first 3,500px of a 4,884px
+    document. The cap is written in small-viewport units with a viewport-unit fallback under it,
+    <b>because the tall viewport is the wrong one</b>: a browser that hides its chrome on scroll
+    would put the foot of the rail back under the fold.</p>
+    <p class="tk-note">It is the same defect and the same afternoon as the sub-category rail in
+    <a href="catnav.html#capped">category nav</a>. <b>Two components, one shape, found by scrolling
+    rather than by reading.</b></p>
+  </section>
+
+  <section class="tk-sec" id="slot">
+    <h2 data-n="5">The rail slot is a contract</h2>
+    <p class="tk-note">A rail declares <b>its own flex-basis and its own sticky</b>, exactly as the
+    sub-category rail does, and the shell declares only that there are two columns. So a third rail
+    can arrive later <b>without either file learning about it</b>.</p>
+    <p class="tk-note">The 214px is the same 214px the category rail uses, and that is deliberate:
+    <b>the slot is one slot</b>, and a document that put its contents at a different width would make
+    the two rails disagree about what a rail is.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>Inside a page is an anchor; between pages is a button.</b> Same geometry,
+    opposite jobs, two components.</p>
+    <p class="tk-note"><b>A pinned box is capped to the window, in small-viewport units.</b>
+    Otherwise its tail is unreachable and scrolling cannot help.</p>
+    <p class="tk-note"><b>The current row is keyed to the attribute.</b> A class could say one thing
+    while the accessibility tree said another.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never let a contents rail push the title off the first screen.</b>
+    <i>Fourteen rows at 360 did exactly that, and the measurement is why the disclosure exists.</i></p>
+    <p class="tk-lab tk-bad"><b>Never copy a sticky offset between screens.</b> <i>The 120px the feed
+    rails use is header plus a strip that this screen never shows, and the rail cleared 61px of
+    nothing while starting 24px below the heading beside it.</i></p>
+    <p class="tk-lab tk-bad"><b>Never call two jobs one component because the geometry matches.</b>
+    <i>A contents made of buttons is not crawlable, and this product's own SEO layer requires the
+    opposite.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#toc">the molecules page</a>.
+    The stylesheet, whose comments are the argument in full: <code>components/toc.css</code>. The
+    other rail: <a href="catnav.html">category nav</a>. The shell that hands both a slot:
+    <code>components/patterns/browse-shell.css</code>. The requirement that its rows are links:
+    <code>ia/docs/pages/seo.md</code>. The floor: <code>components/base.css</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>

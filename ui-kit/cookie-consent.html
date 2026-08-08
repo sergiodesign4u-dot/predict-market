@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: cookie consent</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Cookie consent</h1>
+    <p>Level 2, declared on 2026-08-08 and unmeasured until that day. A sentence, three choices and a
+    panel of categories, one of which is locked on. <b>1 banner on 1 painted screen</b>, and it is
+    the only component in the product whose shape is decided by law rather than by design. Measured
+    in a browser at 390 and 1280, in both pointer branches.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">1 banner</span>
+      <span class="tk-badge">3 choices</span>
+      <span class="tk-badge">3 categories</span>
+      <span class="tk-badge">1 locked on</span>
+      <span class="tk-badge">0 disabled controls</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">One screen, and the strongest case in the kit for a page</h2>
+    <p class="tk-why"><b>A component that stands once cannot be understood from where it stands.</b>
+    There is no second placement to compare it against and no state a screen shows you, so everything
+    that matters about it is either in the stylesheet or in a law: which control may go dead, what
+    Necessary means, why the row is the target and why a checkbox cannot take the system's press.</p>
+    <p class="tk-note">It was filed as <b>unmeasured</b> until today for the same reason as
+    <a href="account.html#why">account</a>: it stands on no anchor screen, so nobody had read it
+    rendered, and a level printed without a reading is a guess. Walked today, the banner holds three
+    <code>.btn</code>, three inputs and three labels. <b>It HOLDS button, so it is level 2.</b></p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The banner</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <section class="cc-banner"><div class="cc-inner">
+          <p class="cc-text">We use cookies to keep you signed in and to see which markets people open. You choose the rest.</p>
+          <p class="cc-policy"><a href="#">Cookie policy</a><a href="#">Privacy</a></p>
+          <div class="cc-actions"><button type="button" class="btn btn-secondary btn-md cc-btn">Accept all</button><button type="button" class="btn btn-secondary btn-md cc-btn">Reject all</button><button type="button" class="btn btn-secondary btn-md cc-btn">Manage</button></div>
+          <div class="cc-manage">
+            <ul class="cc-cats">
+              <li class="cc-cat"><label class="cc-cat-main"><span class="cc-cat-name">Necessary</span><input type="checkbox" checked disabled aria-label="Necessary cookies, always on"></label><p class="cc-cat-desc">Keeps you signed in and remembers this choice. Cannot be switched off.</p></li>
+              <li class="cc-cat"><label class="cc-cat-main"><span class="cc-cat-name">Analytics</span><input type="checkbox" aria-label="Analytics cookies, off by default"></label><p class="cc-cat-desc">Tells us which markets people open. Off unless you turn it on.</p></li>
+            </ul>
+            <p class="cc-note">You can change this at any time from the footer.</p>
+          </div>
+        </div></section>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <section class="cc-banner"><div class="cc-inner">
+          <p class="cc-text">We use cookies to keep you signed in and to see which markets people open. You choose the rest.</p>
+          <p class="cc-policy"><a href="#">Cookie policy</a><a href="#">Privacy</a></p>
+          <div class="cc-actions"><button type="button" class="btn btn-secondary btn-md cc-btn">Accept all</button><button type="button" class="btn btn-secondary btn-md cc-btn">Reject all</button><button type="button" class="btn btn-secondary btn-md cc-btn">Manage</button></div>
+          <div class="cc-manage">
+            <ul class="cc-cats">
+              <li class="cc-cat"><label class="cc-cat-main"><span class="cc-cat-name">Necessary</span><input type="checkbox" checked disabled aria-label="Necessary cookies, always on"></label><p class="cc-cat-desc">Keeps you signed in and remembers this choice. Cannot be switched off.</p></li>
+              <li class="cc-cat"><label class="cc-cat-main"><span class="cc-cat-name">Analytics</span><input type="checkbox" aria-label="Analytics cookies, off by default"></label><p class="cc-cat-desc">Tells us which markets people open. Off unless you turn it on.</p></li>
+            </ul>
+            <p class="cc-note">You can change this at any time from the footer.</p>
+          </div>
+        </div></section>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the banner</td><td>293x712</td><td>911x508</td></tr>
+          <tr><td>the three choices</td><td>122, 129 and <b>259</b> wide, 47 tall: the third wraps to its own line</td><td>279, 288 and 294 wide: <b>three across</b></td></tr>
+          <tr><td>a category row</td><td>233x36 with a mouse, <b>233x44 with a finger</b></td><td>851x36, and 44 with a finger</td></tr>
+          <tr><td>the box</td><td colspan="2"><b>18x18, everywhere and always</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The three choices share the row and none of them collapses</b>, because
+    each takes <code>flex:1 1 auto</code> with a 96px floor. That is the banner's decision about its
+    own row, which is exactly what a region is still allowed to say; everything else about the three
+    is <a href="button.html">button</a>'s.</p>
+  </section>
+
+  <section class="tk-sec" id="target">
+    <h2 data-n="3">The row is the target, and the box stayed 18x18</h2>
+    <p class="tk-why">Before 2026-08-08 the only thing a finger could hit was the box itself,
+    <b>18x18 measured</b>, and those three were the ONE control in the product that failed WCAG
+    2.5.8's 24x24 floor and had to be hit rather than read. Everything else under 24 in this product
+    is a text link, which the criterion exempts.</p>
+    <p class="tk-note"><b>The structure was decided in grey first and the painted twin followed</b>,
+    which is the rule the two trees exist under: both carry the same three
+    <code>&lt;label class="cc-cat-main"&gt;</code> and neither disagrees with the other. The row went
+    from 18x18 to <b>233x36 with a mouse, 233x44 with a finger and 851x44 at 1280</b>.</p>
+    <p class="tk-note"><b>The box is still 18x18 and that is correct</b>: it is a part inside the
+    target now rather than the target. And <b>the accessible NAME did not move</b>. A wrapping label
+    makes the row clickable; the name is <code>voice/</code>'s, and the <code>aria-label</code>
+    already says "Analytics cookies, off by default", which is more than the visible word. <b>The
+    target changed and the name did not.</b></p>
+    <p class="tk-note">The 44 arrives from <code>components/base.css</code> under a coarse pointer,
+    the same way it arrives for every other family, and this file gives the row
+    <code>--control-36</code> and a pointer cursor because it is a control now.</p>
+  </section>
+
+  <section class="tk-sec" id="press">
+    <h2 data-n="4">A native checkbox cannot take the system's press, and the file says why</h2>
+    <p class="tk-why"><b>The box is a native checkbox with the browser's own appearance, and
+    <code>background-color</code> never reaches it.</b> A rule written that way would read as done in
+    the source and paint nothing on the page, <b>which is the one defect this repository keeps
+    paying for</b>.</p>
+    <p class="tk-note">What the box DOES own is <code>accent-color</code>, and a ticked box is a flat
+    brass ground: exactly the case the pressed brass role was declared for on the
+    <a href="toggle.html#press">switch</a>, because flat brass has no gradient angle to reverse. So
+    the press reads on a category that is ON, <b>which is the category a person is about to turn
+    off</b>, and the browser's own press covers the empty box.</p>
+    <p class="tk-note"><b>There is no hover on the live boxes either</b>, for the reason the press
+    had to change mechanism: there is nothing paintable at rest short of removing the browser's
+    appearance entirely, and redrawing the tick is a new component rather than a state.</p>
+  </section>
+
+  <section class="tk-sec" id="locked">
+    <h2 data-n="5">Necessary is LOCKED ON, which is not the same as unavailable</h2>
+    <p class="tk-note">One of the three is checked and disabled. It takes the locked opacity and a
+    not-allowed cursor, <b>and it is deliberately kept out of both pointer rules</b>: no hover and no
+    press. The whole message of that row is that it is on and stays on, so a control that answered a
+    pointer would be inviting a click it will refuse.</p>
+    <p class="tk-lab tk-bad"><b>And nothing else in this banner is ever disabled.</b> <i>Consent is
+    always available, and a Reject that could go dead is the dark pattern this component exists to
+    answer.</i></p>
+    <p class="tk-note"><b>Reject is as easy to reach as Accept, always</b>: same face, same size,
+    same row, same order every time. That is not a visual preference, it is what the regulation the
+    component implements requires, and it is the reason all three take the SAME emphasis from the
+    button family rather than one of them taking the primary.</p>
+  </section>
+
+  <section class="tk-sec" id="ph">
+    <h2 data-n="6">The page behind it, which is not a skeleton</h2>
+    <p class="tk-note"><code>.cc-ph</code> is four grey lines at half opacity standing in for the
+    page underneath, on <b>2 screens</b>: the consent screen and the toast catalogue. It looks like a
+    <a href="skeleton.html">skeleton</a> and it is not one: a skeleton says <i>content is
+    coming</i>, and this says <i>there is a page here and it is not the subject</i>.</p>
+    <p class="tk-note"><b>Two components with the same drawing and different meanings is exactly the
+    case this kit exists to make legible</b>, and the test is what happens next: a skeleton is
+    replaced by content, and this is never replaced by anything.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="7">The rule</h2>
+    <p class="tk-note"><b>The row is the target, and the box is a part inside it.</b> A target you
+    have to aim at is a target that fails.</p>
+    <p class="tk-note"><b>Reject is never harder than Accept.</b> Same face, same size, same row.</p>
+    <p class="tk-note"><b>A state has to be paintable on the element it is written for.</b> The
+    system's pressed ground cannot reach a native checkbox, so the press is written in the one
+    property that can.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="8">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never give a consent control a disabled state.</b> <i>Locked ON is a
+    statement; a Reject that can go dead is a dark pattern.</i></p>
+    <p class="tk-lab tk-bad"><b>Never write a rule a browser will ignore.</b> <i>A background on a
+    native checkbox reads as done in the source and paints nothing on the page.</i></p>
+    <p class="tk-lab tk-bad"><b>Never move the accessible name to make a target bigger.</b> <i>The
+    label wraps the row and the aria-label stays on the input; a name is <code>voice/</code>'s
+    property and this pass changed the target.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="9">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#cookie-consent">the
+    molecules page</a>. The stylesheet: <code>components/cookie-consent.css</code>. The three
+    choices: <a href="button.html">button</a>. The flat-brass press this one borrows:
+    <a href="toggle.html#press">toggle</a>. The words and the law behind them:
+    <code>voice/docs/microcopy.md</code> and <code>ia/docs/pages/system.md</code>. The floor:
+    <code>components/base.css</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>
