@@ -1,7 +1,7 @@
 # ui-kit/ - the vitrine, rebuilt by hand 2026-08-07 to 2026-08-08
 
 **All five steps are done and the plan below is the record of how, not a to-do list.** What is on the
-stand today: eleven pages, `_page.css`, `_nav.js`, and five reports in `docs/`. **0 generators, 0
+stand today: twelve pages, `_page.css`, `_nav.js`, and five reports in `docs/`. **0 generators, 0
 gates, 0 screenshots.** Every one of the 43 components placed on a level page carries its live
 specimen in both themes, its classes, its declaration, its rule and its anti-rule.
 
@@ -13,22 +13,23 @@ person arrives with, which emphasis and which size. **The threshold is counted, 
 `iconbtn` and `chip` are the product's three largest control families, and the fourth is a long way
 behind them. The inventory reads them at 687, 527 and 466 by the count it takes; the per-component
 pages re-read them at **902 and 1,361** with a wider net, and each page says which net it used. A component with one face gets no page here
-however often it is worn. `button.html` and `iconbtn.html` are written; `chip.html` is a row with no
-page in `_nav.js`, which is the registry's own rule about looking finished.
+however often it is worn. **All three are written**, and the panel's tally reads 12 of 12, at which
+point `_nav.js` drops its own sentence about rows with no page, because there are none.
 
 **And a per-component page earns its place by finding something.** `button.html` found that the size
 ramp has a step, `xs`, whose 105 placements render on no phone at all. `iconbtn.html` found that
 **one face of eight moves when the pointer changes**, and that `.icon-btn-photo` is named for a
 ground it does not stand on: all 333 of them are a sheet close over a gradient, not a photograph.
-Neither was visible from a level page, because a level page shows one specimen and these are facts
-about a set.
+`chip.html` found the mirror of the first: **four of its five faces move**, and until 2026-08-08 only
+one did, because this file's own floor named two faces of five. None of the three was visible from a
+level page, because a level page shows one specimen and all three are facts about a set.
 
-The kit shows the system to a person and it holds no product code. It holds eleven pages plus its
+The kit shows the system to a person and it holds no product code. It holds twelve pages plus its
 stylesheet and its registry: `overview.html`, which says what is happening, **all four foundation
 pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`), **a page per rung, all
 four** (`vitrine.html` for the ten atoms, `molecules.html` for the fourteen at level 2,
 `organisms.html` for the thirteen at level 3 and `patterns.html` for the six on the fourth rung), and
-**two in depth** (`button.html`, `iconbtn.html`). `_page.css` is the stand furniture they all share
+**three in depth** (`button.html`, `iconbtn.html`, `chip.html`). `_page.css` is the stand furniture they all share
 and `_nav.js` is the route.
 
 **A page per LEVEL, not a page per component.** Forty pages of one component each would be forty

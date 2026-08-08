@@ -17,8 +17,8 @@
    list hand-copied into 106 pages, 1,339 KB of it, and `wireframes` carries its
    own into 104, 1,247 KB. Neither has drifted, and neither could have stayed in
    step by hand: `_resync_sidebar.py` held them, and it was deleted too. The kit
-   had seven pages when this was written, has eleven now and will have twelve.
-   Twelve copies of one list is twelve edits for every row, and the root rule says
+   had seven pages when this was written and has twelve now.
+   Twelve copies of one list would be twelve edits for every row, and the root rule says
    a fact written twice will drift. So the list is written once, here, and no page
    of the stand declares any part of it. THE SENTENCE ABOVE HAS BEEN CORRECTED
    TWICE ALREADY, which is the argument standing up on its own.
@@ -89,7 +89,7 @@ window.KIT_NAV = [
     items: [
       { label: 'Button',      page: 'button.html',  done: true,  note: '902' },
       { label: 'Icon button', page: 'iconbtn.html', done: true,  note: '1,361' },
-      { label: 'Chip',        page: 'chip.html',    done: false, next: true }
+      { label: 'Chip',        page: 'chip.html',    done: true,  note: '1,679' }
     ]
   },
   {

@@ -44,7 +44,72 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
-## 2026-08-08 - The icon button's page, and one face of eight moves
+## 2026-08-08 - The chip's page, and the panel says 12 of 12
+
+Third and last of the in-depth pages. `ui-kit/chip.html`, eleven sections.
+
+### The measurement
+
+**1,679 placements on 106 screens**, the largest family of any kind in the product. **869 are
+`<button>` and 810 are `<a>`**, and **0 of the 1,679 wear a bare `.chip`**. That last number is the
+one worth having: the file's oldest rule is *a base class is the atom or it is a face, never both*,
+written the day one face was put on `.chip` itself and 722 elements took values nobody had chosen.
+Until now that rule was a principle. It is a check now, and it passes.
+
+| face | worn | screens | where |
+|---|---|---|---|
+| `.chip-quiet` | 530 | 105 | the header strip, 525 of them |
+| `.chip-amount` | 480 | 105 | a dialog, 448 of them |
+| `.chip-lane` | 312 | 32 | the sub-category rail |
+| `.chip-nav` | 294 | 57 | the category strip, and 9 are Load more |
+| `.chip-rail` | 63 | 9 | 36 the chart range, 27 the comment sorter |
+
+### The finding: four of five faces move, and until yesterday one did
+
+| face | fine | coarse |
+|---|---|---|
+| quiet | 38 | **44** |
+| amount | 36 | **44** |
+| lane | 41 | **44** |
+| nav | 47 | 47, already above |
+| rail | 26 | **44** |
+
+`chip.css` carried its own floor and it named `.chip-quiet` and `.chip-nav`, **one of which did not
+need it**. So under a finger the amount rendered 36, the lane 41 on 312 placements over 32 screens,
+and the rail 26. The consolidation of the touch floor into `base.css` earlier the same day is what
+moved them, and this page is where that change stops being a diff and becomes a picture.
+
+**Set against `iconbtn.html`, where one face of eight moves and four are excluded by name, the two
+pages together say what the floor is**: a family-wide rule with a short list of argued exceptions,
+rather than six per-file lists that each remembered a different part of the product. Neither page
+could say that alone.
+
+### The lane, measured at both widths because a specimen has one
+
+| | at 390 | at 1280 |
+|---|---|---|
+| width | content: 81, 114, 131, 106 | **206, all ten** |
+| corner | 100px, a pill | 10px |
+| the count | 37px in, after the label | **166px in, at the far side** |
+| the rail | a horizontal scroller | a column beside the content |
+
+**A specimen has one width, so the wide face is four numbers rather than a picture**, and printing
+them is the honest alternative to showing half a control and calling it the control. Reading only one
+of the two is what put this chip in `navitem` for a day.
+
+### Why this component needed a page more than the other two
+
+A chip's subject is **its group and the chosen one in it**. Lift one out of its rail and what is left
+is a padding, which is why the deleted stand showing two lone chips on the button page was worse than
+not listing them. Every specimen here stands with its siblings and one of them chosen, and the
+anti-rule now says so out loud: **never show one alone.**
+
+### The registry closes its own sentence
+
+The panel reads **12 of 12 stand pages written**, and `_nav.js` drops its second sentence, "A row
+with no page is a row that says so", because there is no such row. That was written into the render
+on 2026-08-07 as a rule about not looking finished; it is the first time it has had to take itself
+out, and it did.
 
 Second of the three in-depth pages. `ui-kit/iconbtn.html`, eight sections, every face a live pair in
 both themes, and **the page paid for itself twice**.

@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: chip</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+  <!-- One symbol of the shipped sprite, spliced rather than retyped: the category
+       chip carries a mark and the specimen carries the same one. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="i-cat-fire" viewBox="0 0 24 24"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></symbol>
+  </defs></svg>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Chip</h1>
+    <p>Level 1, and the largest family of any kind in the product: <b>1,679 placements on 106 painted
+    screens</b>. A label a person picks between, when the choice is small, immediate and does not
+    leave the screen. Five faces, <b>five surfaces</b>, and one of the five answers two of them.
+    Measured 2026-08-08.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">1,679 placements</span>
+      <span class="tk-badge">5 faces</span>
+      <span class="tk-badge">869 buttons, 810 links</span>
+      <span class="tk-badge">0 bare</span>
+      <span class="tk-badge">4 of 5 take the floor</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ why a page -->
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">Why this one is on the list</h2>
+    <p class="tk-note">Same counted threshold as <a href="button.html">button</a> and
+    <a href="iconbtn.html">icon button</a>. But this component has a second reason the other two do
+    not, and it is the reason a single specimen is actively misleading here rather than merely thin:
+    <b>a chip's subject is its GROUP and the chosen one in it</b>. Lift one out of its rail and what
+    is left is a padding. A reader learns nothing about the only thing the control does.</p>
+    <p class="tk-note">The deleted stand made exactly that mistake and the archive records it: two
+    lone chips stood on the button page as if they were actions, <b>which was worse than not listing
+    them</b>. Every specimen below therefore stands with its siblings and one of them chosen.</p>
+    <p class="tk-note">The level and its reason stay on <a href="vitrine.html#chip">the atoms
+    page</a>.</p>
+  </section>
+
+  <!-- ================================================================ atom -->
+  <section class="tk-sec" id="atom">
+    <h2 data-n="2">The atom, and the day it was given a face</h2>
+    <p class="tk-note"><code>.chip</code> is four declarations and nothing a person can see: a
+    pointer, the body face, no underline and a centred label. The last two arrived with the ELEMENT on
+    2026-08-07, when a chip that navigates became an <code>&lt;a&gt;</code> rather than a
+    <code>&lt;button&gt;</code> wrapped in one, and both were values the tag had been supplying for
+    free.</p>
+    <p class="tk-lab tk-bad"><b>A base class is the atom or it is a face, never both.</b> <i>The day
+    this file's one face was written on <code>.chip</code> itself, 722 elements took values nobody
+    had chosen for them.</i></p>
+    <p class="tk-note"><b>Measured today: 0 of the 1,679 placements wear a bare <code>.chip</code>.</b>
+    Every one carries a face, which is what makes the sentence above checkable rather than a
+    principle.</p>
+  </section>
+
+  <!-- ================================================================ faces -->
+  <section class="tk-sec" id="faces">
+    <h2 data-n="3">The five faces, and the surface each answers</h2>
+
+    <p class="tk-subh">quiet, 530 placements on 105 screens, and 525 are in the header</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><a class="chip chip-quiet" href="#">Trending</a><a class="chip chip-quiet sel" href="#">Politics</a><a class="chip chip-quiet" href="#">Crypto</a></div>
+      <div class="tk-theme-fig" data-theme="light"><a class="chip chip-quiet" href="#">Trending</a><a class="chip chip-quiet sel" href="#">Politics</a><a class="chip chip-quiet" href="#">Crypto</a></div>
+    </div>
+    <p class="tk-note">A scrolling strip: transparent on a transparent 1px band, a pill.
+    <b>The band is not decoration.</b> It means the box is the SIZE's answer, so a chip does not grow
+    by two pixels at the moment it is chosen and given a brass edge.</p>
+
+    <p class="tk-subh">amount, 480 placements, and 448 are in a dialog</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button class="chip chip-amount" type="button">$10</button><button type="button" class="chip chip-amount sel">$20</button><button class="chip chip-amount" type="button">$50</button></div>
+      <div class="tk-theme-fig" data-theme="light"><button class="chip chip-amount" type="button">$10</button><button type="button" class="chip chip-amount sel">$20</button><button class="chip chip-amount" type="button">$50</button></div>
+    </div>
+    <p class="tk-note">What a chip looks like when it is one of the things you fill in on a sheet:
+    <code>--bg-control</code> on a hairline, a 10 corner. <b>This face is the one that proved the
+    scope was a bug</b>: until 2026-08-08 every rule for it was written <code>.app-case
+    .chip-amount</code>, and 526 of the 559 buttons that stand in a dialog in this product are in a
+    dialog that carries no <code>app-case</code>. The chip beside the amount field was drawn by the
+    User Agent while the field itself was right, because <code>input.css</code> had already named the
+    second place it stands.</p>
+
+    <p class="tk-subh">nav, 294 placements, and it is the loudest chip in the product</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><a class="chip chip-nav" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Trending</span></a><a class="chip chip-nav sel" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Politics</span></a></div>
+      <div class="tk-theme-fig" data-theme="light"><a class="chip chip-nav" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Trending</span></a><a class="chip chip-nav sel" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Politics</span></a></div>
+    </div>
+    <p class="tk-note">The category band: <code>--bg-chip</code> on a <code>--bevel-notice</code> edge
+    at 14px, <b>and it is the loudest on purpose, because on a phone it is the one control that
+    changes what the page is about</b>. It is also the only face that answers a finger with a
+    darker ground, and that arrived by reasoning about the tap rather than the pointer: the chip most
+    likely to be tapped in this strip is the one you are already on, because tapping it is how you get
+    back to the top of it.</p>
+    <p class="tk-note"><b>Nine of the 294 are the Load more button</b>, which stopped being a second
+    drawing of this chip on 2026-08-07 and started carrying it. That merge is visible in the count and
+    in nothing else, which is what a merge in this system looks like when it is done right.</p>
+
+    <p class="tk-subh">rail, 63 placements on 9 screens, in two different rails</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button class="chip chip-rail" type="button">1d</button><button class="chip chip-rail" type="button">1w</button><button class="chip chip-rail" type="button">1m</button><button type="button" class="chip chip-rail sel">all</button></div>
+      <div class="tk-theme-fig" data-theme="light"><button class="chip chip-rail" type="button">1d</button><button class="chip chip-rail" type="button">1w</button><button class="chip chip-rail" type="button">1m</button><button type="button" class="chip chip-rail sel">all</button></div>
+    </div>
+    <p class="tk-note">A segmented control in a trough: no edge, no ground, muted ink, a 10 corner.
+    <b>Thirty-six of them are the chart range and 27 are the comment sorter</b>, and until 2026-08-05
+    those were two declaration blocks in two files, byte for byte identical including property order.
+    Nobody had put the two readings side by side. <b>An instrument merged them without being asked</b>,
+    which is what says two files were drawing one control.</p>
+
+    <p class="tk-subh">lane, 312 placements on 32 screens</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><button type="button" class="chip chip-lane">All <span class="chip-cnt">2K</span></button><button type="button" class="chip chip-lane sel">Elections <span class="chip-cnt">418</span></button></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><button type="button" class="chip chip-lane">All <span class="chip-cnt">2K</span></button><button type="button" class="chip chip-lane sel">Elections <span class="chip-cnt">418</span></button></div>
+    </div>
+    <p class="tk-note">The sub-category rail, and the next section is about it.</p>
+  </section>
+
+  <!-- ================================================================= lane -->
+  <section class="tk-sec" id="lane">
+    <h2 data-n="4">The one face that answers two surfaces</h2>
+    <p class="tk-note"><b>Every other face here answers one surface. The lane answers two</b>, and it
+    carries the media query itself, because what changes with the window is the SURFACE it stands on
+    and not where somebody put it. Measured on <code>event-feed-crypto.html</code>, ten lanes:</p>
+
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>width</td><td>content: 81, 114, 131, 106</td><td><b>206, all ten</b></td></tr>
+          <tr><td>corner</td><td>100px, a pill</td><td>10px</td></tr>
+          <tr><td>the count</td><td>37px in, straight after the label</td><td><b>166px in, pushed to the far side</b></td></tr>
+          <tr><td>the rail</td><td>a horizontal scroller</td><td>a column beside the content</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="tk-why"><b>A specimen has one width, and that is the whole reason this section is a
+    table.</b> The pair above shows the narrow face; the wide one is four numbers rather than a
+    picture, and printing them is the honest alternative to showing half a control and calling it the
+    control. <b>Reading only one of the two put this chip in the wrong component for a day</b>: at 900
+    it looks like a navigation row, and it was filed under `navitem` until somebody read it at 380.</p>
+  </section>
+
+  <!-- ============================================================== chosen -->
+  <section class="tk-sec" id="chosen">
+    <h2 data-n="5">Chosen, and it is ONE recipe for all five</h2>
+    <p class="tk-note">A brass TINT inside a brass edge with brass ink, bold, and a halo that is a
+    glow with negative spread rather than a lift. <b>The recipe colours what a chip already has and
+    adds no parts</b>, so the rail chip is borderless at rest and stays borderless, and no box moves
+    when a choice is made.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>how it is said</th><th>worn</th><th>when</th></tr></thead>
+        <tbody>
+          <tr><td><code>.sel</code></td><td>136</td><td>a class survives the pointer leaving, which is what a filter, a range and an amount need</td></tr>
+          <tr><td><code>[aria-current="page"] .chip</code></td><td>192</td><td>the chip points at the page you are on, which is correct for navigation and is not going to be replaced by a class</td></tr>
+          <tr><td><code>aria-pressed="true"</code></td><td>1</td><td>and it is not this component's: the one placement is a bookmark, which is an icon button</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>Five faces said chosen five different ways until 2026-08-07.</b> The lane
+    alone said it with 18 per cent of the action colour written as a colour function, a solid brass
+    edge and semibold, because on the day the other four were unified this control was filed under a
+    different atom. Bringing it in moved 160 readings and <b>exactly one pixel of layout</b>: a chosen
+    lane went 94px wide to 95, because bold is wider than semibold.</p>
+    <p class="tk-note"><b>What is deliberately not here is a hover on the chosen chip.</b> Measured
+    across all six chosen kinds in both themes, not one answers a pointer, and that uniformity is the
+    decision rather than the gap: a chosen control's whole face is already the answer, and a second
+    one under the pointer would compete with it.</p>
+  </section>
+
+  <!-- =============================================================== parts -->
+  <section class="tk-sec" id="parts">
+    <h2 data-n="6">The two parts</h2>
+    <p class="tk-note"><code>.chip-ic</code>, a category's mark, <b>285 worn</b>, drawn in
+    <code>currentColor</code> so the chip's ink is its ink. <code>.chip-cnt</code>, a sub-category's
+    count, <b>312 worn</b>, mono because it is a figure.</p>
+    <p class="tk-note"><b>Both live here rather than with the rail that holds them</b>, and the test
+    is the one a level page can state in a line: they change with the CONTROL's state, which is what a
+    part of a face does. Leaving them behind made the atom read as containing a component, which is
+    the level arithmetic's blind spot arriving through the back door.</p>
+  </section>
+
+  <!-- =============================================================== floor -->
+  <section class="tk-sec" id="floor">
+    <h2 data-n="7">Heights, and the family the touch floor was rewritten for</h2>
+    <p class="tk-note">Read on ten screens at 390 and 1280 in both pointer branches, dialogs forced
+    open. <b>Width changes with the label and height does not</b>, so height is the axis worth a
+    table.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>worn</th><th>fine pointer</th><th>coarse</th></tr></thead>
+        <tbody>
+          <tr><td><code>.chip-quiet</code></td><td>530</td><td>38</td><td><b>44</b></td></tr>
+          <tr><td><code>.chip-amount</code></td><td>480</td><td>36</td><td><b>44</b></td></tr>
+          <tr><td><code>.chip-lane</code></td><td>312</td><td>41</td><td><b>44</b></td></tr>
+          <tr><td><code>.chip-nav</code></td><td>294</td><td>47</td><td>47, already above the floor</td></tr>
+          <tr><td><code>.chip-rail</code></td><td>63</td><td>26</td><td><b>44</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>FOUR OF THE FIVE MOVE, and until 2026-08-08 only ONE of them did.</b> This
+    file used to carry its own floor and it named two faces, <code>.chip-quiet</code> and
+    <code>.chip-nav</code>, one of which did not need it. So under a finger the amount chip rendered
+    36, the lane 41 on 312 placements over 32 screens, and the rail 26, and <b>nothing in a list says
+    what it left out</b>. The floor is one rule in <code>components/base.css</code> now, keyed to
+    <code>.chip</code>, which is the class all five already carry.</p>
+    <p class="tk-note">Set against the <a href="iconbtn.html#floor">icon button</a>, where one face of
+    eight moves and four are excluded by name with a reason each, the two pages together say what the
+    floor actually is: <b>a family-wide rule with a short list of argued exceptions</b>, rather than
+    six per-file lists that each remembered a different part of the product.</p>
+  </section>
+
+  <!-- =============================================================== states -->
+  <section class="tk-sec" id="states">
+    <h2 data-n="8">States</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>hover</th><th>press</th></tr></thead>
+        <tbody>
+          <tr><td><code>.chip-rail</code></td><td>the ink comes up to <code>--text-primary</code> and <b>nothing else moves</b>, which is the whole idea of a quiet control</td><td rowspan="5"><code>--bg-pressed</code>, one rule for the family, <code>.app-case .chip:active</code>. It is written AFTER the chosen rule at equal specificity, so the chip you are already on still answers the finger</td></tr>
+          <tr><td><code>.chip-quiet</code></td><td>a white wash at 6 per cent</td></tr>
+          <tr><td><code>.chip-nav</code></td><td>the ground brightens and the edge goes brass</td></tr>
+          <tr><td><code>.chip-lane</code></td><td>a 10 per cent action wash inside a solid brass edge, the only tint of its kind in the family</td></tr>
+          <tr><td><code>.chip-amount</code></td><td>decided rather than carried: the deposit sheet had one and the bet panel had none, <b>the same face on the same control</b>, so the face took the hover and both places answer now</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The focus ring is negative on one face and nowhere else in the family.</b>
+    The category strip scrolls sideways and its list clips at a 2px padding box, so a ring drawn
+    outside the chip lost its top and bottom runs and rendered as two vertical bars. Load more
+    inherits that ring and does not need it, <b>which is the one thing the merge costs and it costs
+    nothing a person can see</b>.</p>
+  </section>
+
+  <!-- ================================================================= rule -->
+  <section class="tk-sec" id="rule">
+    <h2 data-n="9">The rule</h2>
+    <p class="tk-note"><b>A face is an answer to the surface the control stands on.</b> Five faces,
+    five surfaces, and the fifth answers two because its surface changes with the window. That
+    sentence is the whole map: it is why the amount is not the rail chip with a ground added, and why
+    reading the lane at one width put it in the wrong atom for a day.</p>
+    <p class="tk-note"><b>A selected chip is a tint, never a fill.</b> A solid brass ground is the
+    primary action's own face, and a rail of chips is not asking anybody to commit to anything.
+    <code>DESIGN.md</code> decides it twice, and <code>components/quick.css</code> records what it
+    cost the one time a chip took the fill: a lit brass $20 sitting directly above a lit brass Add
+    funds.</p>
+    <p class="tk-note"><b>The container gives the ground, not the chip.</b> Three of the five faces
+    paint no ground at rest, which is what lets one control stand in a trough, on a stone band and on
+    a bare section without any of them looking wrong.</p>
+  </section>
+
+  <!-- ============================================================ anti-rule -->
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="10">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never draw it again in the file of whatever holds it.</b> <i>That is
+    exactly how it came to exist four times: comments.css owned the sort segment, tabs.css the chart
+    range, quick.css the amounts, catnav.css three more, and every one of those files was right about
+    its container and wrong about the control.</i></p>
+    <p class="tk-lab tk-bad"><b>Never give the atom a face.</b> <i>A sixth surface takes a sixth face;
+    a difference of four pixels takes none, which is what the Trending sub-filter turned out to be
+    against 525 identical chips in the header.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let a part stay behind.</b> <i>If a chip grows something that
+    lives inside it and changes when the chip does, it comes here and takes a chip name.</i></p>
+    <p class="tk-lab tk-bad"><b>Never show one alone.</b> <i>A chip's subject is its group and the
+    chosen one, so a single chip lifted out of its rail is the half that carries no information.</i></p>
+  </section>
+
+  <!-- ============================================================== closing -->
+  <section class="tk-sec" id="closing">
+    <h2 data-n="11">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="vitrine.html#chip">the atoms page</a>. The
+    stylesheet and the argument for every value: <code>components/chip.css</code>. The deleted stand's
+    writing: <code>docs/kit-archive/authored/chip.md</code>, which is where most of the history above
+    was kept and where its numbers stop being current. <b>The archive counts 466 placements and the
+    product wears 1,679 today</b>, because that count was of one net and this one is of every element
+    carrying <code>.chip</code> on all 106 screens.</p>
+    <p class="tk-note">This is the third and last of the in-depth pages. The other two:
+    <a href="button.html">button</a>, <a href="iconbtn.html">icon button</a>.</p>
+  </section>
+
+</div>
+</body>
+</html>
