@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: state block</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>State block</h1>
+    <p>Level 2. A mark, a title, a sentence and a way out: what a screen shows when there is nothing
+    to show, or when something failed. <b>38 blocks on 38 painted screens</b>, which is more than a
+    third of the product. Measured 2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">38 blocks</span>
+      <span class="tk-badge">38 screens</span>
+      <span class="tk-badge">3 skins</span>
+      <span class="tk-badge">38 with a way out</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="molecules.html#state-block">the molecules page</a>. What needs the room here is the
+    number in the hero: <b>a state is a page in both screen trees</b>, so empty and error are not a
+    corner case in this product, they are 38 of its 106 screens, and this one component carries all
+    of them.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The block, and its three skins</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="state-block">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"/></svg>
+          <p class="state-title">No bets yet</p>
+          <p class="state-msg">When you back a side, it will show up here with what it is worth right now.</p>
+          <div class="state-actions"><a class="btn btn-primary btn-md" href="#">Browse markets</a><a class="btn btn-ghost btn-md" href="#">How it works</a></div>
+        </div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="state-block">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"/></svg>
+          <p class="state-title">No bets yet</p>
+          <p class="state-msg">When you back a side, it will show up here with what it is worth right now.</p>
+          <div class="state-actions"><a class="btn btn-primary btn-md" href="#">Browse markets</a><a class="btn btn-ghost btn-md" href="#">How it works</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>skin</th><th>where</th><th>what changes</th><th>measured</th></tr></thead>
+        <tbody>
+          <tr><td>the card</td><td>inside a panel or a list</td><td>a surface with a hairline at a 16 corner, 28/16 of padding</td><td>the specimen above</td></tr>
+          <tr><td><b>flat</b></td><td>in the feed's main column</td><td><b>no ground, no edge, no corner</b>, and 40 of padding instead of 28</td><td>293x227 to 293x307 at 390, 911x227 at 1280</td></tr>
+          <tr><td><b>stacked</b></td><td>in the resolved panel of an event</td><td>no ground either, and the actions become a full-width column</td><td>309x223 at 390, 280x223 at 1280</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>Two of the three skins are the component taking its box away</b>, and that
+    is the right answer rather than a special case: a bordered card inside a bordered panel is two
+    boxes saying the same thing, and a feed with nothing in it should read as an empty page rather
+    than as a card that happens to be about emptiness.</p>
+    <p class="tk-note"><b>The message is capped at 380px even where the block is 911 wide.</b> A
+    sentence a person reads once at a moment of confusion is not improved by running the full width
+    of a desktop.</p>
+  </section>
+
+  <section class="tk-sec" id="out">
+    <h2 data-n="3">Every one of the 38 carries a way out</h2>
+    <p class="tk-note">Measured: <b>38 blocks, 38 action rows</b>. There is no placement of this
+    component in the product that tells a person something is wrong and stops there. That is not
+    enforced by anything, and it is the single most important thing about the component, so it is
+    written here where it can be checked rather than assumed.</p>
+    <p class="tk-note">The buttons come from <a href="button.html">button</a>. What this file owns is
+    that they CENTRE, that they wrap, and that in the resolved panel they become a full-width column,
+    <b>because that panel is the width of a sidebar and two buttons side by side in 280px are two
+    buttons nobody can read</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="system">
+    <h2 data-n="4">The system screens, and a press that had to carry an underline</h2>
+    <p class="tk-note">404 and 500 add a list of links out, six of them on one screen, plus a note.
+    <b>These links are the one control in this file</b>, and they are the way out of a screen a
+    person reaches on a phone as readily as on a desktop, where the hover never fires.</p>
+    <p class="tk-why"><b>The link is already brass at rest, so colour cannot carry the press, and the
+    ground cannot carry it alone:</b> the pressed ground measures <b>1.04:1 against the block on
+    graphite and 1.05:1 on chalk</b>, which reads across a chip and disappears behind one line of
+    14px text. So the press carries the underline that the hover brightens, and a thumb gets the
+    pointer's answer plus the ground. Written at equal specificity to the hover, so it has to sit
+    after it.</p>
+    <p class="tk-note">Measured, these links render <b>40x22 to 86x22</b> and stay 22 tall with a
+    finger. They are text links, which WCAG 2.5.8 exempts, and they are among the eight remaining
+    sub-24 targets in the product. <b>Every one of the eight is text.</b></p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="5">The rule</h2>
+    <p class="tk-note"><b>A state block always offers a way out.</b> A mark and a sentence with no
+    action is a dead end with good typography.</p>
+    <p class="tk-note"><b>The box comes off when the host already has one.</b> The component is the
+    mark, the title, the sentence and the actions; the plate around them belongs to whatever holds
+    it.</p>
+    <p class="tk-note"><b>Where the ground cannot carry a state, something else has to.</b> Measured
+    at 1.04:1, the pressed ground is invisible under one line of text, so the underline does the
+    work.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="6">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never ship this without an action.</b> <i>38 of 38 carry one, and the
+    first one that does not is the day the empty state becomes a wall.</i></p>
+    <p class="tk-lab tk-bad"><b>Never put a card inside a card.</b> <i>Two of the three skins exist
+    only to take the box away again.</i></p>
+    <p class="tk-lab tk-bad"><b>Never trust a ground to say "pressed" without measuring it.</b>
+    <i>1.04:1 is a state that exists in the stylesheet and nowhere else.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="7">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#state-block">the molecules
+    page</a>. The stylesheet: <code>components/state-block.css</code>. The buttons in the action row:
+    <a href="button.html">button</a>. The sentences, which are most of this component:
+    <code>voice/docs/microcopy.md</code>. The 38 screens themselves: <code>ui-visual/</code> and
+    their grey twins in <code>wireframes/</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>

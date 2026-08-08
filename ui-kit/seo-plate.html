@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: SEO plate</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>SEO plate</h1>
+    <p>Level 2. The prose at the foot of a category feed: what this category is, how the odds work,
+    and the questions a search engine asks. <b>9 plates and 36 prose blocks on 11 painted
+    screens</b>, and the only component in the product that is <b>written for a reader who has not
+    arrived yet</b>. Measured 2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">9 plates</span>
+      <span class="tk-badge">36 prose blocks</span>
+      <span class="tk-badge">2 columns to 1</span>
+      <span class="tk-badge">0 controls</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="molecules.html#seo-plate">the molecules page</a>. This page holds the one piece of
+    drawing in the system that is made entirely of geometry: <b>a notched corner cut with a clip
+    path and finished with a rotated hairline</b>, which is the Vault language stated in two rules.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The plate</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="feed-seo-wrap">
+          <div class="seo-text">
+            <section class="feed-seo">
+              <h2>Politics markets</h2>
+              <p>Every market on this page asks one question with a date and a named source. The price you see is what people are paying right now, and it moves when they change their minds.</p>
+            </section>
+            <section class="feed-seo">
+              <h2>Common questions</h2>
+              <dl><dt>Who decides the result</dt><dd>Each market names its settlement source before you can bet on it.</dd>
+              <dt>When do I get paid</dt><dd>As soon as the source publishes and the result is written down.</dd></dl>
+            </section>
+          </div>
+          <aside class="seo-brand">
+            <p class="seo-tagline">Odds you can <em>check</em></p>
+            <p class="seo-by">A prediction market with its working shown</p>
+          </aside>
+        </div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="feed-seo-wrap">
+          <div class="seo-text">
+            <section class="feed-seo">
+              <h2>Politics markets</h2>
+              <p>Every market on this page asks one question with a date and a named source. The price you see is what people are paying right now, and it moves when they change their minds.</p>
+            </section>
+            <section class="feed-seo">
+              <h2>Common questions</h2>
+              <dl><dt>Who decides the result</dt><dd>Each market names its settlement source before you can bet on it.</dd>
+              <dt>When do I get paid</dt><dd>As soon as the source publishes and the result is written down.</dd></dl>
+            </section>
+          </div>
+          <aside class="seo-brand">
+            <p class="seo-tagline">Odds you can <em>check</em></p>
+            <p class="seo-by">A prediction market with its working shown</p>
+          </aside>
+        </div>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the plate</td><td>351x721 to 351x921, <b>one column</b></td><td>969x471 to 969x618, <b>two columns at 1.32 to 0.82</b></td></tr>
+          <tr><td>a prose block</td><td>301 wide</td><td>522 wide, capped at 60ch</td></tr>
+          <tr><td>the brand column</td><td>under the prose, separated by a groove along the top</td><td>beside it, separated by a groove along the left</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The measure is capped at 60 characters even inside a 522px column</b>,
+    which is the one typographic rule this component exists to enforce. Everywhere else in the
+    product the text is short; here it is the longest continuous reading in the whole thing.</p>
+  </section>
+
+  <section class="tk-sec" id="notch">
+    <h2 data-n="3">The notched corner is two rules and no image</h2>
+    <p class="tk-note">A hairline brass frame is inset 16px from the plate on a pseudo-element, and
+    its bottom-right corner is cut away by a <b>clip path with one 20px chamfer</b>. A second
+    pseudo-element draws a 28px hairline, rotated 45 degrees, across the gap. <b>Together they read
+    as a plate with its corner folded back.</b></p>
+    <p class="tk-why"><b>This is the Vault language written as geometry rather than as decoration</b>,
+    which is what lets it survive both themes and any width: there is no asset to go missing, no
+    image to blur, and the frame takes the same brass border role as everything else. It costs two
+    rules and no bytes.</p>
+    <p class="tk-note">Both are <code>pointer-events:none</code> and sit on the content layer above
+    the ground, so a frame drawn over the text cannot swallow a click that was never going anywhere:
+    <b>this component has no controls at all</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="photo">
+    <h2 data-n="4">A photograph at 18 per cent, behind a mask, under the words</h2>
+    <p class="tk-note">The brand column carries an image on a pseudo-element at <b>0.18 opacity</b>,
+    behind a left-fading mask, on the layer below the content, with every child of the column lifted
+    onto the layer above it. Same construction as the trust plate, at a third of the opacity.</p>
+    <p class="tk-why"><b>The number is low because the text on top of it is the largest type in the
+    product.</b> A tagline in display bold uppercase over a photograph is where contrast goes wrong
+    quietly: it passes on the average and fails over the bright part of the picture. The mask takes
+    the image away from the side the text starts on, and the opacity takes the rest.</p>
+  </section>
+
+  <section class="tk-sec" id="two">
+    <h2 data-n="5">Two element types wear the same class, and that is a finding</h2>
+    <p class="tk-note">Measured across 106 screens: <b>36 elements carry <code>.feed-seo</code>, 22
+    of them <code>&lt;section&gt;</code> and 14 <code>&lt;div&gt;</code></b>. The ones inside the
+    plate are sections; the bare ones on the other feeds are divs.</p>
+    <p class="tk-note"><b>The drawing does not care and the document outline does.</b> A section with
+    a heading is a landmark a screen reader can jump to; a div with a heading is a heading in the
+    middle of nothing. The prose is identical, so this is a markup consistency question in two trees
+    rather than a CSS one. <code>docs/backlog.md</code> 62.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>Prose gets a measure.</b> 60 characters, whatever the column is doing.</p>
+    <p class="tk-note"><b>Ornament is geometry, not an asset.</b> A clip path and a rotated hairline
+    survive both themes, every width and a missing file; a corner drawn as an image does not.</p>
+    <p class="tk-note"><b>A picture under type is a contrast decision.</b> The opacity and the mask
+    are the measurement, not the taste.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never let this plate carry a control.</b> <i>It is the end of the
+    page and it is for a reader who arrived from a search result; a button here competes with the
+    feed above it.</i></p>
+    <p class="tk-lab tk-bad"><b>Never judge text on a photograph by the average.</b> <i>It passes on
+    the average and fails over the bright quarter, which is the part the eye goes to.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let one class stand on two element types by accident.</b> <i>22
+    sections and 14 divs draw the same and outline differently.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#seo-plate">the molecules
+    page</a>. The stylesheet: <code>components/seo-plate.css</code>. The words, which are most of the
+    component: <code>voice/docs/microcopy.md</code> and <code>ia/docs/pages/seo.md</code>. The same
+    plate construction with a photograph at three times the opacity:
+    <a href="trustbar.html#plate">trust bar</a>. The open row: <code>docs/backlog.md</code> 62.</p>
+  </section>
+
+</div>
+</body>
+</html>

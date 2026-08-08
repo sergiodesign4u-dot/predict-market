@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: position</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Position</h1>
+    <p>Level 2. One bet, as a row: the question, which side you took, and what it is worth.
+    <b>57 rows and 58 side tags on 14 painted screens</b>, plus a summary face that is the same
+    component with its box removed. Measured 2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">57 rows</span>
+      <span class="tk-badge">58 sides</span>
+      <span class="tk-badge">4 side roles</span>
+      <span class="tk-badge">2 summary faces</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="molecules.html#position">the molecules page</a>. What needs the room here is the pair of
+    colour families this row carries and <b>why they are written apart although they hold the same
+    values today</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The row</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <article class="pos">
+          <div class="pos-top"><span class="pos-q">Will the state board certify the count before March 1</span><span class="pos-side pos-yes">YES</span></div>
+          <div class="pos-figures">
+            <span class="pos-fig">Stake<b>$50.00</b></span>
+            <span class="pos-fig">Avg price<b>38%</b></span>
+            <span class="pos-fig">Now worth<b>$61.40</b></span>
+          </div>
+        </article>
+        <article class="pos">
+          <div class="pos-top"><span class="pos-q">Bitcoin above $150k at any point this year</span><span class="pos-side pos-won">WON</span></div>
+          <div class="pos-figures">
+            <span class="pos-fig">Stake<b>$120.00</b></span>
+            <span class="pos-fig">Paid out<b>$248.00</b></span>
+          </div>
+          <p class="pos-note">Resolved 12 Feb by the settlement source named on the market.</p>
+        </article>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <article class="pos">
+          <div class="pos-top"><span class="pos-q">Will the state board certify the count before March 1</span><span class="pos-side pos-yes">YES</span></div>
+          <div class="pos-figures">
+            <span class="pos-fig">Stake<b>$50.00</b></span>
+            <span class="pos-fig">Avg price<b>38%</b></span>
+            <span class="pos-fig">Now worth<b>$61.40</b></span>
+          </div>
+        </article>
+        <article class="pos">
+          <div class="pos-top"><span class="pos-q">Bitcoin above $150k at any point this year</span><span class="pos-side pos-won">WON</span></div>
+          <div class="pos-figures">
+            <span class="pos-fig">Stake<b>$120.00</b></span>
+            <span class="pos-fig">Paid out<b>$248.00</b></span>
+          </div>
+          <p class="pos-note">Resolved 12 Feb by the settlement source named on the market.</p>
+        </article>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>a row</td><td>293x67 to 293x190, depending on the question</td><td>911x67 to 911x141</td></tr>
+          <tr><td>a figure</td><td>39x39 to 100x39</td><td>the same, and 222x81 in the summary</td></tr>
+          <tr><td>a side tag</td><td colspan="2">29x17 to 108x17, and it does not move with the window</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The figures are mono and the question is display.</b> A stake and a price
+    are numbers to compare down a column, so they take the one typeface in the system whose digits
+    are the same width; the question is a sentence and takes the sentence face.</p>
+  </section>
+
+  <section class="tk-sec" id="sides">
+    <h2 data-n="3">Four side roles, and two of them are the same values written apart</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>tag</th><th>worn</th><th>what it says</th></tr></thead>
+        <tbody>
+          <tr><td><code>.pos-yes</code></td><td>2</td><td rowspan="2"><b>THE LIVE PAIR.</b> Which side you are on, in a market that has not resolved</td></tr>
+          <tr><td><code>.pos-no</code></td><td>1</td></tr>
+          <tr><td><code>.pos-won</code></td><td>6</td><td rowspan="2"><b>THE SETTLED PAIR.</b> What happened, in a market that has</td></tr>
+          <tr><td><code>.pos-lost</code></td><td>2</td></tr>
+          <tr><td>no role</td><td><b>47</b></td><td>the quiet tag: a side or an outcome name with no colour at all</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>The two pairs hold the same values today and are written as four rules, and
+    the reason is written into the file: a bet SIDE and a RESULT answer to different design
+    questions.</b> Green here means "you took YES" and green there means "you were right", and those
+    are two sentences that happen to be the same colour. The roles exist so either can move without
+    dragging the other, which is a change of zero pixels today and the whole point of a role.</p>
+    <p class="tk-note"><b>47 of the 58 tags carry no role at all</b>, which is worth saying out loud:
+    most of what wears this class is not an outcome. It is a candidate name in a multi-outcome
+    market, a plain YES on a summary line, or a label in a selected-bet row. <b>The coloured tag is
+    the exception in this component, not the rule</b>, and the quiet ground is what keeps the two
+    green ones meaning something.</p>
+  </section>
+
+  <section class="tk-sec" id="record">
+    <h2 data-n="4">The summary, which is this component with its box taken off</h2>
+    <p class="tk-note">Two placements, on the two profile screens. It drops the ground, the edge, the
+    shadow and the padding, and turns the figures into a GRID: <b>two columns below 520px and four
+    above it</b>, each figure in a box of its own. The second box takes a brass-tinted ground and a
+    larger figure, because on a profile one number is the headline and the others are context.</p>
+    <p class="tk-note">A third arrangement exists for the portfolio line, three columns, keyed to the
+    block's accessible name rather than to a class. <b>That is a selector reaching for a label</b>,
+    and it is filed as such: <code>docs/backlog.md</code> holds the id-keyed and name-keyed
+    declarations as one question.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="5">The rule</h2>
+    <p class="tk-note"><b>A role per sentence, even when two sentences share a value.</b> The live
+    pair and the settled pair are four rules that draw two colours, and that is the system being able
+    to change its mind later.</p>
+    <p class="tk-note"><b>Colour is for the exception.</b> 47 of 58 tags are quiet, which is what
+    makes the 11 that are not read as information.</p>
+    <p class="tk-note"><b>Figures are mono, questions are display.</b> A column of numbers a person
+    compares needs digits of one width.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="6">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never merge the live pair with the settled pair.</b> <i>They agree
+    today. The day a resolved loss should stop being red is the day the merge costs a rewrite instead
+    of a token.</i></p>
+    <p class="tk-lab tk-bad"><b>Never colour the quiet tag.</b> <i>47 of 58 are candidate names and
+    plain sides; colouring them would leave the row with no way to say which one resolved.</i></p>
+    <p class="tk-lab tk-bad"><b>Never key a layout to an accessible name.</b> <i>The three-column
+    portfolio grid is reached through the block's label, which makes the copy a dependency of the
+    layout.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="7">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#position">the molecules
+    page</a>. The stylesheet: <code>components/position.css</code>. The loading face of this row:
+    <a href="skeleton.html">skeleton</a>, which is where its 22 marks live. The outcome roles:
+    <code>components/tokens.css</code> and <code>DESIGN.md</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>

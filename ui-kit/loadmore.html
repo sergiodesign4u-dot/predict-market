@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: load more</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Load more</h1>
+    <p>Level 2, and <b>the smallest component in the system: two rules</b>. A centred row at the foot
+    of a feed, holding one control that is not its own. <b>9 rows on 9 painted screens.</b> The
+    interesting part of this page is what left and how it was proved. Measured 2026-08-08 in a
+    browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">9 rows</span>
+      <span class="tk-badge">2 rules</span>
+      <span class="tk-badge">4 declarations dropped</span>
+      <span class="tk-badge">0 states of its own</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="molecules.html#loadmore">the molecules page</a>. What needs the room here is a merge:
+    two controls in two files that were one control, and <b>the four declarations that were the whole
+    of the difference, each with what it turned out to be worth</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The row</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="load-more-wrap"><button type="button" class="chip chip-nav load-more">Load more markets</button></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="load-more-wrap"><button type="button" class="chip chip-nav load-more">Load more markets</button></div>
+      </div>
+    </div>
+    <p class="tk-note"><b>The whole file is <code>display:flex; justify-content:center</code> and a
+    padding.</b> Everything a person can see in the specimen above comes from
+    <a href="chip.html">chip</a>. Measured: 162x47, unchanged at 390 and at 1280 and unchanged with a
+    finger, because the chip's content box is already above the floor.</p>
+  </section>
+
+  <section class="tk-sec" id="merge">
+    <h2 data-n="3">Four declarations stood between two controls, and this is what each was worth</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>declaration</th><th>what it turned out to be</th></tr></thead>
+        <tbody>
+          <tr><td><code>min-height:44px</code></td><td><b>INERT.</b> The control is 12/24 at 14px, so its content box is 47 before the floor is consulted, at every width and in both themes. It never bound</td></tr>
+          <tr><td><code>letter-spacing:.01em</code></td><td>the BUTTON family's tracking, worn because this control had been filed as a button. <b>0.14px on a 14px label</b></td></tr>
+          <tr><td>padding 12 / 24</td><td>against the chip's 12 / 20. <b>Four pixels a side</b></td></tr>
+          <tr><td>an inset top bevel</td><td><b>the only real difference.</b> The chip family decided against a lit edge on purpose, so that there is nothing lifted to flatten under a finger</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>One control keeping a groove that the other 285 gave up is the same shape as
+    a sub-filter keeping four pixels of padding, and it is settled the same way: the majority is the
+    face.</b> Three of the four were nothing, and the fourth was an exception with no argument behind
+    it.</p>
+    <p class="tk-note"><b>Its states needed no decision at all, which is the strongest evidence the
+    two were one control.</b> The hover was a brass edge on the hover ground with the strong ink, and
+    the category chip's hover is those three in that order; both press to the same held ground. Byte
+    for byte, in two files.</p>
+  </section>
+
+  <section class="tk-sec" id="role">
+    <h2 data-n="4">The role does not move and the atom does</h2>
+    <p class="tk-why">Load more is an ACTION, it fetches, and the census of what each class is worn
+    by goes on saying so. <b>The atom is where a control's RULES live</b>, which is the correction
+    another component forced two days earlier: the social mark is <code>nav</code> by role and
+    <code>iconbutton</code> by atom, and this one is <code>action</code> by role and
+    <code>chip</code> by atom.</p>
+    <p class="tk-note"><b>A role is what a control MEANS and a face is what it IS</b>, and a system
+    that cannot hold both at once ends up with two drawings of one box.</p>
+    <p class="tk-note">The class <code>.load-more</code> survives as a NAME rather than as a face:
+    the feed's script reaches for it, and a person reading the markup should be able to tell the foot
+    of a list from a category in a strip. <b>The merge is visible in the chip's count and in nothing
+    else</b>, which is what a merge in this system looks like when it is done right.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="5">The rule</h2>
+    <p class="tk-note"><b>A component may be a row.</b> This one places a control and draws nothing,
+    and that is a complete and honest component as long as the placement is real.</p>
+    <p class="tk-note"><b>Two controls are one control when the difference is measured and found to
+    be nothing.</b> Three inert declarations and one unargued exception is not a second component.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="6">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never file a control by its role.</b> <i>This one was a button
+    because it acts, and it was a chip in every value a browser could measure.</i></p>
+    <p class="tk-lab tk-bad"><b>Never keep a declaration because it is written down.</b> <i>Its 44px
+    floor never bound at any width in either theme, and it read as a deliberate target to everyone
+    who saw it.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let one member keep a lift the family gave up.</b> <i>There is
+    nothing to flatten under a finger, so the press has nothing to say.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="7">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#loadmore">the molecules
+    page</a>. The stylesheet: <code>components/loadmore.css</code>, whose comment is longer than its
+    rules and says so. The control: <a href="chip.html">chip</a>. Its twin at the foot of an event
+    screen: <a href="related.html#press">related</a>.</p>
+  </section>
+
+</div>
+</body>
+</html>

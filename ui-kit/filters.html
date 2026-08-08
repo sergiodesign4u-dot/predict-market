@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: filters</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Filters</h1>
+    <p>Level 2. A <code>&lt;details&gt;</code> holding a panel holding a list of labelled inputs:
+    the sort menu, the category filter and the language chooser are one molecule.
+    <b>193 menus and 1,012 choosing rows on 105 painted screens</b>, and <b>105 of the 193 never
+    receive half their rules</b>. Measured 2026-08-08 in a browser, at 390 and 1280, in both pointer
+    branches.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">193 menus</span>
+      <span class="tk-badge">1,012 rows</span>
+      <span class="tk-badge">105 out of scope</span>
+      <span class="tk-badge">1,012 rows at 33 tall</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="molecules.html#filters">the molecules page</a>. This page holds the two arguments that
+    make this component the most instructive in the system: <b>where a scope reaches</b>, and
+    <b>what it costs to hide an input the wrong way</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="scope">
+    <h2 data-n="2">105 of the 193 stand outside the scope, and every one is in the footer</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>where</th><th>menus</th><th>summary padding</th><th>at 390, mouse</th><th>at 390, finger</th></tr></thead>
+        <tbody>
+          <tr><td>inside <code>.app-case</code></td><td>88</td><td>8 / 20</td><td>152x35 and 154x35</td><td>152x44</td></tr>
+          <tr><td><b>outside it, in the footer</b></td><td><b>105</b></td><td><b>4 / 8</b></td><td><b>90x27</b></td><td>90x44</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why">Every painted screen carries a footer and the footer stands outside the
+    <code>app-case</code> wrapper. So the language chooser gets the file's UNSCOPED rules, which give
+    it a surface, a hairline and a pill corner and nothing else: <b>no padding of its own, no
+    transition, no hover and no press</b>. It is a control that answers a mouse with silence, once on
+    every screen in the product.</p>
+    <p class="tk-note"><b>This is the third sighting of one shape and the first that is still
+    open.</b> The unscoped <code>.amount-input</code> rendered as a white User Agent field; the
+    <code>.chip-amount</code> in a dialog outside <code>app-case</code> got no rule at all and was
+    fixed on 2026-08-08 by naming the second place it stands. This one is not latent and not a
+    User Agent fallback: <b>it renders, it looks nearly right, and it is missing its behaviour</b>,
+    which is the version of the defect that survives a screenshot. <code>docs/backlog.md</code>
+    58.</p>
+    <p class="tk-note"><b>The touch floor is not affected and that is the design working.</b> It
+    lives in <code>components/base.css</code> and names <code>.filter-menu summary</code> without a
+    scope, because <b>a <code>&lt;summary&gt;</code> is the one target in this system with no class
+    of its own to be a family</b>. So both kinds reach 44 with a finger, measured, and the gap is a
+    pointer-state gap rather than a target gap.</p>
+  </section>
+
+  <section class="tk-sec" id="faces">
+    <h2 data-n="3">The menu, open</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <details class="filter-menu" open>
+          <summary>Sort: Closing soon</summary>
+          <div class="filter-panel">
+            <ul>
+              <li><label><input type="radio" name="k1" checked> Closing soon</label></li>
+              <li><label><input type="radio" name="k1"> Most traded</label></li>
+              <li><label><input type="radio" name="k1"> Newest</label></li>
+            </ul>
+            <div class="reverse-row">Reverse<button type="button" class="toggle" role="switch" aria-checked="false" aria-label="Reverse sort">Reverse</button></div>
+          </div>
+        </details>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <details class="filter-menu" open>
+          <summary>Sort: Closing soon</summary>
+          <div class="filter-panel">
+            <ul>
+              <li><label><input type="radio" name="k2" checked> Closing soon</label></li>
+              <li><label><input type="radio" name="k2"> Most traded</label></li>
+              <li><label><input type="radio" name="k2"> Newest</label></li>
+            </ul>
+            <div class="reverse-row">Reverse<button type="button" class="toggle" role="switch" aria-checked="false" aria-label="Reverse sort">Reverse</button></div>
+          </div>
+        </details>
+      </div>
+    </div>
+    <p class="tk-note">The chosen row takes <b>a brass tint from the ladder's nearest rung</b>, brass
+    ink and semibold. Until 2026-08-07 that ground was a colour function written inline in the
+    stylesheet, <code>color-mix</code> at 20 per cent of the action colour, <b>which is a rung the
+    ladder does not have and a value no sweep matching token NAMES can see</b>. The nearest rung is
+    4 per cent quieter on graphite, improves the label to 5.87:1, and on chalk steps the way every
+    other brass tint does instead of staying flat.</p>
+  </section>
+
+  <section class="tk-sec" id="hidden">
+    <h2 data-n="4">Hidden, not removed, and the difference is the whole control</h2>
+    <p class="tk-why"><code>display:none</code> generates no box, so the browser takes the element
+    out of the tab order AND out of the accessibility tree. Measured before the change:
+    <b>400 Tab presses on the feed at 1440 with the panel open, 0 stops inside the panel</b>, and 16
+    inputs all computing <code>display:none</code>. The sort radiogroup and the category checkboxes
+    could be operated by a mouse and by nothing else, on 104 screens. <b>The focus rule below could
+    never match, because the input could never be focused.</b></p>
+    <p class="tk-note">The replacement is the idiom this system had already chosen twice: a
+    <b>1x1 transparent absolutely positioned box</b> with pointer events off. Absolute, so it is not
+    a flex item and the label's layout does not move by a pixel; pointer events off, so the mouse
+    still lands on the label and nothing else. <code>tokens.css</code> names the hairline "the 1x1
+    box of a visually hidden input" and <code>tabs.css</code> uses the same three declarations.</p>
+    <p class="tk-note"><b>The ring therefore goes on the label, and its offset turns INWARD.</b>
+    <code>base.css</code> draws the ring once on the element that has focus, and that element is now
+    a 1px transparent box. The panel is <code>overflow:hidden</code> and the label carries 4px of
+    side margin, so a ring 2px outside it would be clipped on both edges. Same width, same role, one
+    sign flipped: <b>the ring stays one decision</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="floor">
+    <h2 data-n="5">1,012 choosing rows, 33 tall</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>part</th><th>worn</th><th>mouse</th><th>finger</th></tr></thead>
+        <tbody>
+          <tr><td>the summary, in case</td><td>88</td><td>35</td><td><b>44</b></td></tr>
+          <tr><td>the summary, footer</td><td>105</td><td>27</td><td><b>44</b></td></tr>
+          <tr><td><code>.filter-panel li label</code></td><td><b>1,012</b></td><td>140x33 and 186x33</td><td><b>140x33, unchanged</b></td></tr>
+          <tr><td><code>.reverse-row</code></td><td>3</td><td>the row that holds the switch</td><td>see <a href="toggle.html">toggle</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>The row a person actually chooses with is the one the floor does not
+    reach.</b> The summary opens the menu; the label picks the value, and there are 1,012 of them at
+    33 tall with a finger on them. They clear WCAG 2.5.8 at 24x24 and fail 44. It is the same shape
+    as the 365 account rows on <a href="navitem.html#floor">nav item</a>, and it is the biggest
+    single group of it in the product. <code>docs/backlog.md</code> 54 carries both.</p>
+    <p class="tk-note">The panel is where the <b>switch</b> used to live, and it left on 2026-08-05
+    because a switch and a sort menu are two families: <a href="toggle.html">toggle</a> carries that
+    argument in full. What stayed is the row it sits in.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>Hide an input by making it invisible, never by removing its box.</b> A
+    control with no box is a control with no keyboard and no screen reader, and the styling that was
+    supposed to answer for it cannot fire either.</p>
+    <p class="tk-note"><b>A scope has to name every place the control stands.</b> The footer is
+    outside <code>app-case</code>, so a rule written under it is a rule that reaches 88 of 193.</p>
+    <p class="tk-note"><b>A value typed as a colour function is invisible to the system.</b> The
+    ladder has rungs so that a tint can be found, compared and moved; a <code>color-mix</code> in a
+    rule is a decision nothing can audit.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never use <code>display:none</code> to hide a control you still want
+    operable.</b> <i>Sixteen inputs, 104 screens, 400 Tab presses, 0 stops.</i></p>
+    <p class="tk-lab tk-bad"><b>Never assume a scope covers the footer.</b> <i>It does not, and the
+    control it misses looks almost right, which is the version of this defect that survives every
+    screenshot.</i></p>
+    <p class="tk-lab tk-bad"><b>Never draw a ring outside a clipped panel.</b> <i>Two of its four
+    strokes disappear, and the one that is left reads as a border.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#filters">the molecules
+    page</a>. The stylesheet: <code>components/filters.css</code>. The switch that left:
+    <a href="toggle.html">toggle</a>. The floor: <code>components/base.css</code>. The open rows:
+    <code>docs/backlog.md</code> 54 and 58.</p>
+  </section>
+
+</div>
+</body>
+</html>

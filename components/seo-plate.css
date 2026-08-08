@@ -2,7 +2,7 @@
    Component: seo-plate. Classes: .feed-seo, .feed-seo-wrap, .seo-brand, .seo-by, .seo-h-ic, .seo-tagline, .seo-text, .seo-tick.
 
    Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-plate, --bg-plate-from, --bg-plate-to, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --mask-solid, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-muted, --text-primary
-   Stand:  ui-kit/molecules.html#seo-plate
+   Stand:  ui-kit/seo-plate.html, and ui-kit/molecules.html#seo-plate for the level and its reason
    Stands on: 11 ui-visual screens (event-feed-crypto-logged-out.html, event-feed-crypto.html, event-feed-culture-logged-out.html, event-feed-culture.html, event-feed-general-logged-out.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

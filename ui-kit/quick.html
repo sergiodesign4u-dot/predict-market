@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: quick amounts</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Quick amounts</h1>
+    <p>Level 2. A row of amounts a person picks instead of typing. <b>120 rows and 480 chips on 105
+    painted screens, 118 of them chosen</b>. The chips are not this component's, and by now neither
+    is anything else: <b>the file is one layout rule and three scopes</b>. Measured 2026-08-08 in a
+    browser, dialogs forced open, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">120 rows</span>
+      <span class="tk-badge">480 chips</span>
+      <span class="tk-badge">118 chosen</span>
+      <span class="tk-badge">4 declarations left</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="molecules.html#quick">the molecules page</a>. This page holds the two-step walk that
+    took a control off a brass gradient, and the honest statement of what is left after it.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The row</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="quick"><button type="button" class="chip chip-amount">$10</button><button type="button" class="chip chip-amount sel">$20</button><button type="button" class="chip chip-amount">$50</button><button type="button" class="chip chip-amount">$100</button></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="quick"><button type="button" class="chip chip-amount">$10</button><button type="button" class="chip chip-amount sel">$20</button><button type="button" class="chip chip-amount">$50</button><button type="button" class="chip chip-amount">$100</button></div>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th><th>with a finger</th></tr></thead>
+        <tbody>
+          <tr><td>the row, in a dialog</td><td>331x36</td><td>402x36</td><td>the same, it is a row</td></tr>
+          <tr><td>a chip</td><td>33x36 to 45x36</td><td>the same</td><td><b>33x44 to 45x44</b></td></tr>
+          <tr><td>the row, in a bet panel</td><td>288x36, pushed to the RIGHT</td><td>520x36, pushed right</td><td>the same</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The whole component is four declarations.</b> A flex line that wraps; the
+    same line again inside a dialog; a top margin inside a deposit sheet; and, inside a bet panel or
+    a bet sheet, <code>justify-content:flex-end</code>. That last one is the only interesting rule
+    in the file, and its reason is one line: <b>the field these amounts fill is right aligned, so the
+    amounts line up under it</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="walk">
+    <h2 data-n="3">Two passes to take one control off a brass gradient</h2>
+    <p class="tk-note"><b>Until 2026-08-06 the chosen amount was a full brass gradient on 107
+    placements.</b> <code>DESIGN.md</code> decides against it twice: "active is a brass tint" under
+    Chips, and the One-Accent Rule, <b>"if a screen has brass on more than the logo, the active chip
+    and the primary action, it is overspent"</b>. A deposit sheet had a lit brass $20 sitting
+    directly above a lit brass Add funds, <b>and the chip was as loud as the commitment</b>.</p>
+    <p class="tk-why"><b>The product already held the answer in two places, and the file disagreed
+    with its own token.</b> The same class in the bet panel used a brass tint, and
+    <code>tokens.css</code> names that token, in its own words, "from: a selected quick amount". The
+    token was cut FROM this control and this control was not using it.</p>
+    <p class="tk-note"><b>Then it moved a second time, and only a wider measurement could have caught
+    it.</b> The first pass compared one control against one neighbour and landed on the panel's tint.
+    The next pass measured the whole chip family and found the panel itself was one of TWO live
+    tints: 815 category chips wore a lighter ground inside a brass edge with a halo, and 543 wore the
+    heavier one with no halo. <b>Neither file gave a reason; both tokens carried only a
+    provenance</b>, which is what a value read off a painted screen looks like. The majority won, and
+    it is also the safer pair in daylight.</p>
+    <p class="tk-note">The hover and the press went with the gradient, and that was a consequence
+    rather than a decision: they were the three-step of a brass PLATE, and there is no plate now.
+    What replaced them is what every chip in the product does, which is nothing on hover when chosen
+    and <code>--bg-pressed</code> under a finger either way.</p>
+  </section>
+
+  <section class="tk-sec" id="left">
+    <h2 data-n="4">What is left, and this page says it plainly</h2>
+    <p class="tk-note">The chips left for <a href="chip.html">chip</a> on 2026-08-06. The field they
+    stand beside left for <a href="input.html">input</a> the day before that, when this component was
+    cut out of it. <b>A file holding one layout rule for one row is a candidate for folding into
+    whatever holds the row</b>, and the file says so about itself.</p>
+    <p class="tk-why"><b>It is kept for now, and the reason is a name rather than a rule.</b> A
+    person reading the markup should be able to tell a row of amounts from a row of anything else,
+    and the row genuinely does two different things in two places: it wraps left in a sheet and packs
+    right in a panel. <b>That is a real difference and it needs a class to hang on.</b> The moment the
+    two agree, this file has nothing left.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="5">The rule</h2>
+    <p class="tk-note"><b>A selected chip is a tint, never a fill.</b> Brass carries identity, the
+    active state and the primary action, and nothing else; a solid brass ground is the commitment's
+    own face.</p>
+    <p class="tk-note"><b>A token that names its provenance is a value nobody decided.</b> Both
+    spellings of "chosen" carried a note saying where they had been read FROM, and neither carried a
+    reason, which is how one control ended up disagreeing with the token cut from it.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="6">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never let a chooser shout as loudly as the commitment.</b> <i>A lit
+    brass $20 above a lit brass Add funds is a screen with two primary actions.</i></p>
+    <p class="tk-lab tk-bad"><b>Never settle a family by comparing two members.</b> <i>The first pass
+    did, and it moved 107 placements onto a value that turned out to be the minority of five.</i></p>
+    <p class="tk-lab tk-bad"><b>Never keep a file for a name alone.</b> <i>This one is four
+    declarations, and it survives on one of them being a genuine difference. When that goes, so does
+    the file.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="7">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#quick">the molecules page</a>.
+    The stylesheet: <code>components/quick.css</code>. The chips: <a href="chip.html">chip</a>. The
+    field they fill: <a href="input.html">input</a>. The colour decision:
+    <code>DESIGN.md</code>, the One-Accent Rule.</p>
+  </section>
+
+</div>
+</body>
+</html>

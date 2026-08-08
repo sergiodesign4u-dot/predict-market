@@ -2,7 +2,7 @@
    Component: options. Classes: .opt-list, .opt-name, .opt-prob, .opt-row, .opt-sel-tag, .options.
 
    Reads: --bevel-notice, --bg-chip, --bg-control, --border-hairline, --text-brass, --text-primary, --tint-brass-09, --tint-brass-16, --tint-brass-60
-   Stand:  ui-kit/molecules.html#options
+   Stand:  ui-kit/options.html, and ui-kit/molecules.html#options for the level and its reason
    Stands on: 14 ui-visual screens (event-detail-logged-out-multi.html, event-detail-multi.html, event-feed-crypto-logged-out.html, event-feed-crypto.html, event-feed-culture-logged-out.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

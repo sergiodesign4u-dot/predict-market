@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: market</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Market</h1>
+    <p>Level 2. The block that answers <b>how the odds are set</b>: a disclosure, five figures and a
+    table of what a bet of each size would cost. <b>9 placements on 9 painted screens</b>, and it is
+    the one component in the product whose whole purpose is to explain a mechanism. Measured
+    2026-08-08 in a browser, in both pointer branches.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">9 placements</span>
+      <span class="tk-badge">5 figures</span>
+      <span class="tk-badge">45 depth rows</span>
+      <span class="tk-badge">18 to 44 with a finger</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="molecules.html#market">the molecules page</a>. What needs the room here is the
+    <b>voice</b> rule this component is the sharpest test of, and a disclosure that had no pointer
+    state at all on nine screens.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">Open</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <details class="market-box" open>
+          <summary class="market-head"><span class="market-title">How the odds are set <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="market-body">
+            <div class="market-stats">
+              <div><span class="ms-label">Yes price</span><span class="ms-val ms-yes">38%</span></div>
+              <div><span class="ms-label">No price</span><span class="ms-val ms-no">62%</span></div>
+              <div><span class="ms-label">24h</span><span class="ms-val ms-up">+2 pts</span></div>
+              <div><span class="ms-label">Volume</span><span class="ms-val">$84,200</span></div>
+              <div><span class="ms-label">Available to bet</span><span class="ms-val">$31,500</span></div>
+            </div>
+            <div class="market-depth">
+              <span class="md-title">Price by bet size</span>
+              <span class="md-sub">How the YES price moves as your bet grows.</span>
+              <div class="md-table">
+                <div class="md-row md-row-head"><span>Bet</span><span>Avg YES price</span><span>You receive if YES</span></div>
+                <div class="md-row"><span class="md-bar" style="width:12%"></span><span class="md-amt">$10</span><span class="md-price">38%</span><span class="md-get">$26.32</span></div>
+                <div class="md-row"><span class="md-bar" style="width:30%"></span><span class="md-amt">$50</span><span class="md-price">39%</span><span class="md-get">$128.20</span></div>
+                <div class="md-row"><span class="md-bar" style="width:64%"></span><span class="md-amt">$250</span><span class="md-price">42%</span><span class="md-get">$595.20</span></div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <details class="market-box" open>
+          <summary class="market-head"><span class="market-title">How the odds are set <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="market-body">
+            <div class="market-stats">
+              <div><span class="ms-label">Yes price</span><span class="ms-val ms-yes">38%</span></div>
+              <div><span class="ms-label">No price</span><span class="ms-val ms-no">62%</span></div>
+              <div><span class="ms-label">24h</span><span class="ms-val ms-up">+2 pts</span></div>
+              <div><span class="ms-label">Volume</span><span class="ms-val">$84,200</span></div>
+              <div><span class="ms-label">Available to bet</span><span class="ms-val">$31,500</span></div>
+            </div>
+            <div class="market-depth">
+              <span class="md-title">Price by bet size</span>
+              <span class="md-sub">How the YES price moves as your bet grows.</span>
+              <div class="md-table">
+                <div class="md-row md-row-head"><span>Bet</span><span>Avg YES price</span><span>You receive if YES</span></div>
+                <div class="md-row"><span class="md-bar" style="width:12%"></span><span class="md-amt">$10</span><span class="md-price">38%</span><span class="md-get">$26.32</span></div>
+                <div class="md-row"><span class="md-bar" style="width:30%"></span><span class="md-amt">$50</span><span class="md-price">39%</span><span class="md-get">$128.20</span></div>
+                <div class="md-row"><span class="md-bar" style="width:64%"></span><span class="md-amt">$250</span><span class="md-price">42%</span><span class="md-get">$595.20</span></div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="tk-sec" id="voice">
+    <h2 data-n="3">The head says "How the odds are set", and that sentence is a rule</h2>
+    <p class="tk-note"><code>voice/</code> forbids a trader term wherever a person meets it while
+    ACTING, and allows it inside a block whose whole job is to explain the mechanism, glossed in
+    plain words. <b>The head of an exempt block is not inside the exemption</b>, because a summary is
+    read by everyone who never opens it.</p>
+    <p class="tk-why"><b>This component was the worst placement of that rule in the product.</b> The
+    summary said <code>Market</code>, on 9 screens per tree, and the tab beside it said
+    <code>Market Context</code>: the product's most confused word, twice, on the one screen that
+    exists to unconfuse it. Both were rewritten. Inside the open body the mechanism may be named,
+    and it is: <code>order book</code> and <code>AMM</code> appear once each, in the line that says
+    what this market is NOT.</p>
+    <p class="tk-note">Two figures in the stats row were renamed the same day and for the same
+    reason: <code>Liquidity</code> became <b>Available to bet</b>, and <code>Holders</code> became
+    <b>Bettors</b> on the sorter next door. <b>A bare figure is not an explanation</b>, so the
+    exemption never covered them.</p>
+  </section>
+
+  <section class="tk-sec" id="disclosure">
+    <h2 data-n="4">The disclosure, and the state it did not have</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>mouse</th><th>finger</th></tr></thead>
+        <tbody>
+          <tr><td>the head, at 390</td><td>310x<b>18</b></td><td>321x<b>44</b></td></tr>
+          <tr><td>the head, at 1280</td><td>590x<b>18</b></td><td>590x44</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>It had no pointer state at all, on nine screens.</b> Its only feedback was
+    the chevron rotating, and that is the RESULT of the click: until the body opens, nothing tells a
+    person the row is a control rather than a label. Hover takes the quiet control fill and press the
+    held ground, <b>the same pair the filter chip carries</b>, so a summary answers the pointer the
+    same way wherever it stands in the product.</p>
+    <p class="tk-note"><b>Colour only, and that is a layout argument.</b> The row carries no padding
+    of its own, so the band IS the row, and giving it one to sit in would move every screen that has
+    this section. The 18 becomes 44 with a finger because <code>.market-head</code> is one of the
+    fourteen families named in the one touch floor, and it got there by being one of the three that
+    <b>no per-file list had ever named</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="depth">
+    <h2 data-n="5">The depth table, and the bar behind the numbers</h2>
+    <p class="tk-note">Three columns of mono figures at 12px, 45 rows across the nine screens, and
+    behind each row a <code>.md-bar</code> on the layer below the content with its width written on
+    the element. <b>Same rule as the odds bar: a percentage is a datum and the element is the only
+    place it can live.</b> The row clips it, so the bar is a fill of the row rather than a shape
+    drawn over it.</p>
+    <p class="tk-note">The price column takes the YES text role and not the YES fill role, for the
+    reason <a href="oddsbar.html#roles">the odds bar</a> sets out: <b>a 12px figure and a 4px band do
+    not clear the same floor</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>A disclosure has to answer before it opens.</b> The thing that moves when
+    you click is the result; the thing that moves under the pointer is the control.</p>
+    <p class="tk-note"><b>An explanation may name the mechanism; its title may not.</b> A summary, a
+    tab and a heading are read by everyone who never opens them.</p>
+    <p class="tk-note"><b>Nothing here is ever disabled</b>, so there is no disabled skin: a market
+    you can expand is a market you can expand.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never put a trader term on a label.</b> <i>This block said "Market"
+    beside a tab called "Market Context" on the one screen whose job is to explain what a market
+    is.</i></p>
+    <p class="tk-lab tk-bad"><b>Never give this row a padding to hold its state.</b> <i>The band is
+    the row; a ground is free and a box is nine screens of layout.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let a bare figure inherit the explanation's exemption.</b>
+    <i>A number with a label is not a gloss.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#market">the molecules
+    page</a>. The stylesheet: <code>components/market.css</code>. The words:
+    <code>voice/docs/voice.md</code> and <code>voice/docs/microcopy.md</code>. The datum rule:
+    <a href="oddsbar.html#datum">odds bar</a>. The floor: <code>components/base.css</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>

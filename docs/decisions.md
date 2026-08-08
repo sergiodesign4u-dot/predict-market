@@ -44,6 +44,68 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - Fourteen molecule pages, and six of the fourteen found something the shelf could not show
+
+The second batch under the rule set the same day: a level is a shelf and a component is a page. All
+fourteen molecules that stand on the molecules shelf now have one, so the kit is **33 of 55 stand
+pages**. Every number in them was read in a browser at 390 and at 1280, dialogs and disclosures
+forced open, and re-read with touch emulation on wherever a pointer branch was in question.
+
+### Three findings of one shape, and it is the shape this repository keeps meeting
+
+A rule that reaches some of a component's placements and not the others.
+
+- **`.feed-trustbar` is in the markup of 105 screens and drawn on none of them.** The last line of
+  its file is `display:none` under `.app-case`, and every painted screen carries `app-case`. Eleven
+  rules and 210 items are maintained for a face the painted tree has never shown. It is not dead
+  code, because the grey tree still draws it, and it is not a decision either, because nothing says
+  why the footer won. Backlog 57.
+- **105 of 193 filter menus stand outside `.app-case`**, all of them the footer's language chooser,
+  because the footer is outside the app-case wrapper. They get a surface, a hairline and a pill
+  corner from the unscoped rules and **no padding of their own, no transition, no hover and no
+  press**: 90x27 against 152x35. The touch floor is unaffected, because `base.css` names
+  `.filter-menu summary` without a scope, so both kinds reach 44 with a finger. Backlog 58.
+- **`.opt-sel-tag` is switched off the same way and is CORRECT**, which is what makes the first two
+  findings legible. The word "selected" is the grey tree's way of saying a row is chosen; the paint
+  says it with a tint, a brass edge and a chosen YES. **The test is whether the hidden thing has a
+  replacement on the same screen.** What it still costs is a screen reader hearing nothing, because
+  the row carries a class and no state attribute. Backlog 61.
+
+### And three more
+
+- **`comments.css` explains at length why its actions are not 44 tall, and they are 44.** They carry
+  `btn btn-bare`, and the one touch floor written the same morning names `.btn`. Neither half is
+  wrong: a family floor stops six files each remembering a different part of the product, and a
+  written per-control argument stops a floor breaking a layout nobody re-read. **What cannot stand is
+  a file stating a decision the product has stopped making.** Backlog 59.
+- **Four related rows of 31 have no thumbnail**, and the rule draws a fixed 46 square, so those rows
+  lose their left column entirely rather than showing an empty one. Backlog 60.
+- **36 elements carry `.feed-seo`: 22 sections and 14 divs.** The drawing does not care and the
+  document outline does. Backlog 62.
+
+### What the fourteen are
+
+`trustbar`, `market`, `comments`, `notice`, `filters`, `bottomnav`, `catnav`, `related`,
+`state-block`, `position`, `quick`, `options`, `seo-plate`, `loadmore`. Their `Stand:` lines were
+repointed and every section of `molecules.html` now links to its page, the same way the atoms shelf
+does.
+
+**Two of them are honest about being nearly empty, and that is the point of writing them.**
+`loadmore` is two rules and its page is mostly the four declarations that once separated it from the
+category chip, with what each turned out to be worth: three inert and one an unargued exception.
+`quick` is four declarations, and its page says out loud that a file holding one layout rule is a
+candidate for folding, kept for now because the row really does two different things in two places.
+
+### Verified
+
+All 33 kit pages at 390 and 1280: **0 horizontal page scroll, 0 console errors, 80 unique hrefs and
+0 broken**, one active row per page and the correct one. Every specimen re-read for a real box and a
+real colour across the fourteen new pages, 0 missing and 0 collapsed.
+
+Backlog 42 to 48.
+
+---
+
 ## 2026-08-08 - A level is a shelf and a component is a page, and the atom shelf now has ten pages behind it
 
 **The rule this kit was rebuilt under said the opposite**, in `CLAUDE.md` and in `ui-kit/_nav.js`:

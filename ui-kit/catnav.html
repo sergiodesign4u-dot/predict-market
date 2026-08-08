@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: category nav</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="i-cat-fire" viewBox="0 0 24 24"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></symbol>
+  </defs></svg>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Category nav</h1>
+    <p>Level 2. <b>The file that drew three controls and now draws none.</b> What is left is a band,
+    a rail, four scrollers and two plate edges. <b>57 bands and 33 rails on 106 painted
+    screens</b>, and one sub-filter. Measured 2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">57 bands</span>
+      <span class="tk-badge">33 rails</span>
+      <span class="tk-badge">1 sub-filter</span>
+      <span class="tk-badge">0 controls</span>
+      <span class="tk-badge">0 states</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="molecules.html#catnav">the molecules page</a>. What needs the room here is a
+    <b>cycle</b>: for one afternoon this component contained the atom that contained it, and the way
+    out was not a rule but an admission that two classes had been named after the wrong thing.</p>
+  </section>
+
+  <section class="tk-sec" id="gone">
+    <h2 data-n="2">Three controls left, and eight values went out dead behind them</h2>
+    <p class="tk-note">The category strip's chip (285 placements), the sub-category rail's chip (234)
+    and the Trending sub-filter's (5) are <b>one atom with two faces</b>, and both faces are in
+    <a href="chip.html">chip</a> with the other three.</p>
+    <p class="tk-why"><b>Six declarations and one whole rule went out DEAD in the same pass.</b>
+    <code>.cat-nav button</code> was written twice unscoped, a padding with a font size and a surface
+    ground on a hairline at a pill corner, and every one of those eight values lost to a two-class
+    rule. Measured on the painted page at 1440 and 380 in both themes before deleting: the chip
+    renders the chip ground on the notice bevel at a 10px corner with 12/20 padding at 14px, <b>which
+    is the scoped rule in every value</b>. Only the cursor and the white-space were live, and both
+    went with the face.</p>
+  </section>
+
+  <section class="tk-sec" id="cycle">
+    <h2 data-n="3">The cycle, and the two classes that were named wrong</h2>
+    <p class="tk-note">The first cut of that pass kept the category MARK and the COUNT here, on the
+    bottom nav's precedent: a figure inside a nav slot had stayed with the bar. <b>The containment map
+    answered within the minute:</b> <code>chip contains catnav</code>, through
+    <code>.cat-ic</code> and <code>.cnt</code>. It is a true reading of the DOM, a category mark
+    really does stand inside a chip, and with <code>catnav contains chip</code> already true it is a
+    CYCLE.</p>
+    <p class="tk-why"><b>An atom that contains a component is not an atom.</b> The chip computed
+    level 1 from its own stand and level 3 from the product, and the only ways out were to declare
+    the edge away or to admit the classes were named after the wrong thing. <b>They were named after
+    the wrong thing.</b> <code>.cat-ic</code> is <code>.chip-ic</code> and <code>.cnt</code> is
+    <code>.chip-cnt</code>, both in the chip's file with the face that holds them, and the cycle is
+    gone rather than declared.</p>
+    <p class="tk-note"><b>The bottom nav's balance stayed where it was, and the difference is
+    measurable:</b> it answers nothing. No rule anywhere changes it when the slot is hovered or
+    current. The two that moved brighten and recolour with the control's own state, <b>which is what
+    a part of a face does</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="4">The band and the rail</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <nav class="cat-nav"><ul>
+          <li aria-current="page"><a class="chip chip-nav" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Trending</span></a></li>
+          <li><a class="chip chip-nav" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Politics</span></a></li>
+          <li><a class="chip chip-nav" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Crypto</span></a></li>
+        </ul></nav>
+        <nav class="subcat"><p class="subcat-head">Politics</p><ul>
+          <li><button type="button" class="chip chip-lane sel">All <span class="chip-cnt">418</span></button></li>
+          <li><button type="button" class="chip chip-lane">Elections <span class="chip-cnt">212</span></button></li>
+          <li><button type="button" class="chip chip-lane">Policy <span class="chip-cnt">96</span></button></li>
+        </ul></nav>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <nav class="cat-nav"><ul>
+          <li aria-current="page"><a class="chip chip-nav" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Trending</span></a></li>
+          <li><a class="chip chip-nav" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Politics</span></a></li>
+          <li><a class="chip chip-nav" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Crypto</span></a></li>
+        </ul></nav>
+        <nav class="subcat"><p class="subcat-head">Politics</p><ul>
+          <li><button type="button" class="chip chip-lane sel">All <span class="chip-cnt">418</span></button></li>
+          <li><button type="button" class="chip chip-lane">Elections <span class="chip-cnt">212</span></button></li>
+          <li><button type="button" class="chip chip-lane">Policy <span class="chip-cnt">96</span></button></li>
+        </ul></nav>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the band</td><td>351x77, a horizontal scroller</td><td>969x77, still a scroller</td></tr>
+          <tr><td>the rail</td><td><b>293x96</b>, a row of pills that scrolls sideways</td><td><b>214x478</b>, a pinned column beside the content</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The rail is the same markup at both widths and it is not the same
+    object</b>, which is the reading that put its chip in the wrong atom for a day: at 900 it looks
+    like a navigation column and at 380 it is a strip of pills. The chip carries that media query
+    itself, because what changes is the SURFACE it stands on.</p>
+  </section>
+
+  <section class="tk-sec" id="capped">
+    <h2 data-n="5">The rail is capped to the window, and it had to be found in a browser</h2>
+    <p class="tk-why">Pinned at 120px and 563px tall, this rail needs <b>683px of window</b>. On a
+    1366x768 laptop the last two sub-categories were off the bottom of the screen and <b>no amount of
+    scrolling brought them back</b>, because the page scrolls and a pinned rail does not. Eight
+    category screens. The cap is written twice, in viewport units and then in small-viewport units,
+    so a phone's collapsing address bar does not take the bottom of the list with it.</p>
+    <p class="tk-note">It is the same defect and the same afternoon as the contents rail in
+    <code>components/toc.css</code>. <b>Two components, one shape, found by scrolling rather than by
+    reading.</b></p>
+  </section>
+
+  <section class="tk-sec" id="static">
+    <h2 data-n="6">No hover, no press, no state at all</h2>
+    <p class="tk-note">Nothing left in this file answers a pointer, which is the honest description
+    of what it now is: <b>a band, a rail, four scrollers and two plate edges</b>. All four scrollers
+    hide their scrollbar in three vendor spellings, because a strip of chips with a bar under it
+    reads as a broken window rather than a rail.</p>
+    <p class="tk-note"><b>The plate the strip stands on is not here either.</b> It applies only under
+    the feed's own wrapper, so it is the page and not the component, and it lives with the page
+    frame. Two more classes went to <code>components/patterns/browse-shell.css</code> for the same
+    reason: they were here because this was the first file that needed them, <b>and nothing in either
+    rule was about a category</b>.</p>
+    <p class="tk-note"><b>The sub-filter has exactly one placement in the product.</b> Its chips are
+    buttons rather than links, because it filters the page it is on instead of navigating away from
+    it, and that is the whole difference between it and the band above.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="7">The rule</h2>
+    <p class="tk-note"><b>A region keeps the place and gives up the face.</b> Where the rail pins,
+    how wide it is, how far it may run, and whether it scrolls: those are the region's. What the
+    thing inside it looks like is not.</p>
+    <p class="tk-note"><b>A part that changes with the control's state belongs to the control.</b>
+    That single test moved the mark and the count out of this file and left the bottom nav's balance
+    where it was.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="8">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never let an atom contain a component.</b> <i>It is a cycle, and the
+    chip computed two different levels depending on which tree you read it from.</i></p>
+    <p class="tk-lab tk-bad"><b>Never pin a rail without capping it to the window.</b> <i>Two
+    sub-categories were unreachable on a 768px laptop and scrolling could not help.</i></p>
+    <p class="tk-lab tk-bad"><b>Never delete an unscoped rule without rendering it first.</b>
+    <i>Eight of these values were dead and two were not, and only the page could say which.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="9">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#catnav">the molecules
+    page</a>. The stylesheet: <code>components/catnav.css</code>. The two chips and the two parts:
+    <a href="chip.html">chip</a>. The shell the band stands in:
+    <code>components/patterns/browse-shell.css</code>. The other rail with the same defect:
+    <code>components/toc.css</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>

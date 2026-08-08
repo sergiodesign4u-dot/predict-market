@@ -1,7 +1,7 @@
 # ui-kit/ - the vitrine, rebuilt by hand 2026-08-07 to 2026-08-08
 
 **All five steps are done and the plan below is the record of how, not a to-do list.** What is on the
-stand today: nineteen pages of a planned 55, `_page.css`, `_nav.js`, and five reports in `docs/`.
+stand today: thirty-three pages of a planned 55, `_page.css`, `_nav.js`, and five reports in `docs/`.
 **0 generators, 0 gates, 0 screenshots.** Every one of the 43 components placed on a level page
 carries its live specimen in both themes, its classes, its declaration, its rule and its anti-rule.
 
@@ -31,19 +31,21 @@ rendered**, and the six that read 0x0 at 390 stand in a panel that is `display:n
 `toggle.html` found the four faces above. None of these was visible from a level page, because a
 level page shows one specimen and every one of them is a fact about a set.
 
-The kit shows the system to a person and it holds no product code. It holds nineteen pages plus its
+The kit shows the system to a person and it holds no product code. It holds thirty-three pages plus its
 stylesheet and its registry: `overview.html`, which says what is happening, **all four foundation
 pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`), **a shelf per rung, all
 four** (`vitrine.html` for the ten atoms, `molecules.html` for the fourteen at level 2,
 `organisms.html` for the thirteen at level 3 and `patterns.html` for the six on the fourth rung), and
 **ten atom pages, one per atom** (`button`, `iconbtn`, `chip`, `navitem`, `oddsbar`, `input`,
-`yesno`, `toast`, `skeleton`, `toggle`). `_page.css` is the stand furniture they all share and
+`yesno`, `toast`, `skeleton`, `toggle`) and **fourteen molecule pages** (`trustbar`, `market`,
+`comments`, `notice`, `filters`, `bottomnav`, `catnav`, `related`, `state-block`, `position`,
+`quick`, `options`, `seo-plate`, `loadmore`). `_page.css` is the stand furniture they all share and
 `_nav.js` is the route.
 
 **Every component has a ROW whether or not it has a page.** `_nav.js` groups by level, the level page
 is the first row of its own group (`All atoms`, `All molecules`), and a row with no page renders as a
-`<span>` with a badge. The molecules, the organisms and the patterns are 36 rows waiting, and the
-panel says **19 of 55** rather than looking finished.
+`<span>` with a badge. The organisms, the patterns and the three unmeasured molecules are 22 rows waiting, and the
+panel says **33 of 55** rather than looking finished.
 
 **The route is written once, in `_nav.js`, and a page declares no part of it**, not even its own
 name. A page carries an empty `<aside class="sidebar" id="rmSidebar">` and loads the file; the rows,

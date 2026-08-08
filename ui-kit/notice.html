@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: notice</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Notice</h1>
+    <p>Level 2, and <b>six faces that share one job</b>: a bordered box that EXPLAINS rather than
+    acts. Reassurance, a slot for something that has not arrived, an error in place, a figure to
+    check, a wait, and a permission ask. <b>250 placements on 105 painted screens.</b> Measured
+    2026-08-08 in a browser, dialogs forced open, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">6 faces</span>
+      <span class="tk-badge">250 placements</span>
+      <span class="tk-badge">1 face with controls</span>
+      <span class="tk-badge">0 red</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="molecules.html#notice">the molecules page</a>, which gives this component one specimen.
+    <b>One specimen of a six-face component is a sixth of it</b>, and the six do not look alike: the
+    only thing they have in common is the sentence at the top of this page.</p>
+  </section>
+
+  <section class="tk-sec" id="faces">
+    <h2 data-n="2">The six</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>worn</th><th>what it is</th><th>the box</th></tr></thead>
+        <tbody>
+          <tr><td><code>.protect</code></td><td><b>116</b></td><td>reassurance under a form: what happens to your money and who holds it</td><td>a brass tint inside a brass edge in the page, a TRUST tint inside a trust edge in a dialog</td></tr>
+          <tr><td><code>.widget-box</code></td><td><b>110</b></td><td>the slot a third-party payment widget will load into</td><td>a DASHED hairline, 160 tall, centred</td></tr>
+          <tr><td><code>.inline-error</code></td><td>8</td><td>a failure said where it happened</td><td>a solid hairline on the control ground</td></tr>
+          <tr><td><code>.reconcile-box</code></td><td>7</td><td>the figure to check on a win or a loss</td><td>a stronger brass edge, recoloured by the dialog it stands in</td></tr>
+          <tr><td><code>.spinner-box</code></td><td>7</td><td>a wait</td><td>dashed, 100 tall, loose leading</td></tr>
+          <tr><td><code>.push-banner</code></td><td>2</td><td>the one that ASKS: turn on notifications</td><td>a trust tint, and the only face with controls in it</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="tk-subh">the three that stand on almost every screen</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <p class="protect">Funds are held with a regulated custodian. <b>We never hold your keys.</b></p>
+        <div class="widget-box">Payment widget loads here</div>
+        <div class="inline-error">That card was declined. Nothing was charged.</div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <p class="protect">Funds are held with a regulated custodian. <b>We never hold your keys.</b></p>
+        <div class="widget-box">Payment widget loads here</div>
+        <div class="inline-error">That card was declined. Nothing was charged.</div>
+      </div>
+    </div>
+
+    <p class="tk-subh">the two that carry a figure, and the one that asks</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="reconcile-box"><span class="field-label">You get back</span><strong>$248.00</strong></div>
+        <div class="spinner-box">Checking with the settlement source</div>
+        <div class="push-banner"><span class="push-msg">Get told when a market you bet on resolves</span><span class="push-actions"><button type="button" class="btn btn-sm">Turn on</button><button type="button" class="btn btn-ghost btn-sm">Not now</button></span></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="reconcile-box"><span class="field-label">You get back</span><strong>$248.00</strong></div>
+        <div class="spinner-box">Checking with the settlement source</div>
+        <div class="push-banner"><span class="push-msg">Get told when a market you bet on resolves</span><span class="push-actions"><button type="button" class="btn btn-sm">Turn on</button><button type="button" class="btn btn-ghost btn-sm">Not now</button></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tk-sec" id="notred">
+    <h2 data-n="3">Nothing here is red, including the error</h2>
+    <p class="tk-note"><code>DESIGN.md</code> decides it once for the system: <b>green and red are
+    outcome semantics, YES and NO</b>. A declined card is not a NO. So
+    <code>.inline-error</code> is a hairline on the control ground with the primary ink, and the
+    whole error signal is <b>where it stands</b>: in place, beside the thing that failed.</p>
+    <p class="tk-why"><b>The reconcile box is the exception that proves the rule, and it is not an
+    exception.</b> It DOES take colour, green on a win and neutral on a loss, and the colour is the
+    OUTCOME of a bet rather than the severity of a message. That is the same token doing the same job
+    it does everywhere else in the product.</p>
+  </section>
+
+  <section class="tk-sec" id="dashed">
+    <h2 data-n="4">A dashed edge means "not here yet", and it is used exactly twice</h2>
+    <p class="tk-note">The widget slot and the wait are the only dashed boxes in the system. Both are
+    saying the same thing: <b>something will be here and it is not here now</b>. Everything else in
+    the product that is absent is a <a href="skeleton.html">skeleton</a>, which draws the SHAPE of
+    what is coming; a dashed box is for the case where the shape is somebody else's to decide.</p>
+    <p class="tk-note"><b>110 widget slots on 105 screens</b>, because the deposit dialog is in the
+    markup of every screen and its payment widget belongs to a provider this product does not draw.
+    That is the honest way to hold a hole.</p>
+  </section>
+
+  <section class="tk-sec" id="two">
+    <h2 data-n="5">The one face with two grounds</h2>
+    <p class="tk-note"><code>.protect</code> is written twice: <b>114 of the 116 are a
+    <code>&lt;p&gt;</code> in a dialog</b> and take a TRUST tint inside a trust edge, and the two in
+    the page take the brass tint. The two grounds are not a divergence: a dialog about money is where
+    trust is the subject, and a page is where brass is the frame.</p>
+    <p class="tk-note">It carries no heading, no mark and no control. <b>It is a sentence with a box
+    around it</b>, and it stands on 105 screens because the sentence is the same one every time.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>A notice explains and does not act.</b> Five of the six carry no control at
+    all. The sixth, the permission banner, is an ASK, and its two buttons come from
+    <a href="button.html">button</a> rather than from here.</p>
+    <p class="tk-note"><b>Severity is the edge and the place, never a new colour.</b> Solid means it
+    happened, dashed means it has not arrived, and a failure is said where it failed.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never make the error red.</b> <i>Red is NO in this product, and a
+    declined card is not an outcome.</i></p>
+    <p class="tk-lab tk-bad"><b>Never draw a control inside a notice's file.</b> <i>The permission
+    banner's buttons are the button family's; this file owns the row they sit in and nothing
+    else.</i></p>
+    <p class="tk-lab tk-bad"><b>Never use a dashed box for content this product owns.</b> <i>A shape
+    we can draw is a skeleton. A dash is an admission that somebody else fills the hole.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#notice">the molecules
+    page</a>. The stylesheet: <code>components/notice.css</code>. The colour decision:
+    <code>DESIGN.md</code>. The sentences: <code>voice/docs/microcopy.md</code>. The other way of
+    saying "not here yet": <a href="skeleton.html">skeleton</a>.</p>
+  </section>
+
+</div>
+</body>
+</html>

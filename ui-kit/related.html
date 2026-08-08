@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: related</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Related</h1>
+    <p>Level 2. A plate at the foot of an event screen holding three or four other markets, each a
+    thumbnail, a question and a price. <b>10 plates and 31 rows on 10 painted screens</b>, and it is
+    the tap target that keeps a person moving. Measured 2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">10 plates</span>
+      <span class="tk-badge">31 rows</span>
+      <span class="tk-badge">27 thumbnails</span>
+      <span class="tk-badge">4 rows without one</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="molecules.html#related">the molecules page</a>. This page holds two things a shelf
+    cannot: where a press has to be drawn when the whole row is the link, and one count that does not
+    match another.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The plate</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <section class="related-events">
+          <h2>Related markets</h2>
+          <ul class="related-list">
+            <li><a href="#"><span class="rel-thumb" style="background-image:url(../assets/event-politics.jpg)"></span><span class="rel-q">Will the state board certify the count before March 1</span><span class="rel-odds">38%</span></a></li>
+            <li><a href="#"><span class="rel-thumb" style="background-image:url(../assets/event-crypto.jpg)"></span><span class="rel-q">Bitcoin above $150k at any point this year</span><span class="rel-odds">61%</span></a></li>
+            <li><a href="#"><span class="rel-thumb" style="background-image:url(../assets/event-culture.jpg)"></span><span class="rel-q">Eurovision 2027 final decided by jury vote</span><span class="rel-odds">24%</span></a></li>
+          </ul>
+          <a class="related-more" href="#">See more markets</a>
+        </section>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <section class="related-events">
+          <h2>Related markets</h2>
+          <ul class="related-list">
+            <li><a href="#"><span class="rel-thumb" style="background-image:url(../assets/event-politics.jpg)"></span><span class="rel-q">Will the state board certify the count before March 1</span><span class="rel-odds">38%</span></a></li>
+            <li><a href="#"><span class="rel-thumb" style="background-image:url(../assets/event-crypto.jpg)"></span><span class="rel-q">Bitcoin above $150k at any point this year</span><span class="rel-odds">61%</span></a></li>
+            <li><a href="#"><span class="rel-thumb" style="background-image:url(../assets/event-culture.jpg)"></span><span class="rel-q">Eurovision 2027 final decided by jury vote</span><span class="rel-odds">24%</span></a></li>
+          </ul>
+          <a class="related-more" href="#">See more markets</a>
+        </section>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the plate</td><td>351x351</td><td>969x351</td></tr>
+          <tr><td>a row</td><td>309x70</td><td>927x70</td></tr>
+          <tr><td>the thumbnail</td><td colspan="2">46x46, and it does not move</td></tr>
+          <tr><td>See more</td><td colspan="2">300x47, capped, centred, at both widths</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The height of the row is the same at both widths, and only the question
+    stretches.</b> It clamps to two lines, so a long market cannot push the price off the row or make
+    one row twice its neighbour.</p>
+    <p class="tk-note">The photograph is written on the element, and it is <b>the one thing the root
+    rule names by name</b>: a datum, an event photograph, and a value a script writes at run time are
+    not styling. This is the second of the three.</p>
+  </section>
+
+  <section class="tk-sec" id="press">
+    <h2 data-n="3">The press goes on the link, not on the row around it</h2>
+    <p class="tk-why"><b>The whole row IS the link</b>, so the ground goes on the
+    <code>&lt;a&gt;</code>. The <code>&lt;li&gt;</code> around it owns only the groove between rows,
+    and a state drawn there would sit OUTSIDE the thing being pushed: a 1px line changing colour
+    while the row it separates does nothing.</p>
+    <p class="tk-note">This is <b>the tap target of nine event screens, on mobile</b>, where the
+    hover never fires at all. The row is flat at rest, so only the ground moves, and the question
+    keeps the brass the hover gives it: <b>one axis, and the axis that a finger can see</b>.</p>
+    <p class="tk-note"><b>See more is the same chip as Load more elsewhere</b>, and it answered the
+    pointer on the way in while saying nothing when pushed. Same fix, written after the hover at
+    equal specificity so source order decides. Its inset top bevel is the chip's own edge rather than
+    a lift, so it stays; there is no outer shadow to drop.</p>
+  </section>
+
+  <section class="tk-sec" id="count">
+    <h2 data-n="4">31 rows and 27 thumbnails</h2>
+    <p class="tk-why"><b>Four rows in the product have no photograph.</b> The rule that draws the
+    thumbnail sets a fixed 46 square with a background image, so a row without one loses its left
+    column and its question starts 58px further left than the three above it. It is the shape of an
+    absent value rather than a broken one: <b>a missing image is not a grey box here, it is a
+    different layout</b>.</p>
+    <p class="tk-note">Which of the two is right is a content question and not a CSS one. Either
+    every related market carries an image, or the component gains a placeholder that holds the
+    column. <code>docs/backlog.md</code> 60.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="5">The rule</h2>
+    <p class="tk-note"><b>A state is drawn on the thing that is pressed.</b> If the anchor is the
+    row, the row's ground is the anchor's ground, and the list item is furniture.</p>
+    <p class="tk-note"><b>A question clamps.</b> Two lines, always, so a list of markets is a list
+    and not a column of paragraphs.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="6">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never put the press on the list item.</b> <i>The ground would land
+    outside the link, which is the part a finger is actually on.</i></p>
+    <p class="tk-lab tk-bad"><b>Never draw a fixed column that some rows do not fill.</b> <i>Four of
+    31 have no thumbnail, and they do not look like a row with a missing picture, they look like a
+    different component.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let this plate become a second feed.</b> <i>It is a way out of
+    a dead end, three or four rows deep; a list that scrolls is the feed's job and the feed already
+    exists.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="7">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="molecules.html#related">the molecules
+    page</a>. The stylesheet: <code>components/related.css</code>. The chip that "See more" is:
+    <a href="chip.html">chip</a>, and its twin at the foot of a feed:
+    <a href="loadmore.html">load more</a>. The open row: <code>docs/backlog.md</code> 60.</p>
+  </section>
+
+</div>
+</body>
+</html>

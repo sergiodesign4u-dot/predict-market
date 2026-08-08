@@ -2,7 +2,7 @@
    Component: catnav. Classes: .cat-nav, .feed-subfilter, .subcat, .subcat-head.
 
    Reads: --edge-groove-dark, --edge-groove-light, --text-muted
-   Stand:  ui-kit/molecules.html#catnav
+   Stand:  ui-kit/catnav.html, and ui-kit/molecules.html#catnav for the level and its reason
    Stands on: 57 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
