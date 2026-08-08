@@ -405,7 +405,7 @@
       </div></div>
       <div class="tk-th">Daylight, light. The bet sheet, the same component with a different body</div>
       <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
-        <dialog class="app-case app-dialog bet-sheet" open aria-label="Place your bet">
+        <dialog class="app-dialog bet-sheet" open aria-label="Place your bet">
           <button type="button" class="sheet-grab" aria-label="Close"></button>
           <div class="bp-inner">
             <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
@@ -432,10 +432,16 @@
     opens them with the plain <code>open</code> attribute and pins them into the flow, and
     <b>exactly two things differ, the position and the backdrop</b>. Everything inside is the rule
     <code>dialog.css</code> writes, untouched.</p>
-    <p class="tk-note"><b>The bet sheet carries <code>app-case</code> on itself</b>, which is what
-    makes the four amount chips above render as chips. The consolidation found 28 amount chips in
-    dialogs that do NOT, and they would come out as raw User Agent buttons with a 2px outset border
-    on a graphite ground. All 28 are in closed dialogs today, which is what latent means.</p>
+    <p class="tk-note"><b>The bet sheet used to carry <code>app-case</code> on itself</b>, and that
+    was what made the four amount chips above render as chips: a descendant selector does not match
+    the element that carries the class, so the wrapper had to go ON the dialog rather than around it.
+    <b>24 dialogs in this repository wore it that way, 21 painted screens and 3 specimens</b>, and
+    every one of them was a screen whose subject IS a dialog. It came off on 2026-08-08 with the
+    scope it was written for, and <code>components/dialog.css</code> holds what it cost while it was
+    there: <code>.app-case</code> declares <code>position:relative</code>, a modal must be
+    <code>fixed</code>, and the sheet scrolled with the page behind it until a second rule was
+    written to take the position back. <b>A workaround that has to be worked around is the shape of a
+    scope that was never true.</b></p>
     <p class="tk-note"><b>Rule.</b> A sheet states what it is for in its own head, because it is
     reached from a decision and the person did not navigate here. <b>Anti-rule.</b> The close control
     is never the only way out and never smaller than a thumb.</p>

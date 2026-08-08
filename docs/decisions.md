@@ -44,6 +44,49 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - The frame class comes off the dialog, and the row that opened it undercounted by 22
+
+Backlog 68, opened by the wrapper sweep and closed here. The row said "two attributes in one file".
+**It was 24: 21 painted screens across 21 files, and 3 specimens across 2 kit pages.**
+
+Every one of the 24 is a screen, or a stand, **whose subject IS a dialog**: the deposit family, the
+sign-in family, the win and loss overlays, the bet sheet, the bet sheet specimen. A rule scoped to
+`.app-case` could not reach a dialog, and **a descendant selector does not match the element that
+carries the class**, so the wrapper could not go around the dialog either. It went ON it. That is
+not a shortcut somebody took once; it is a convention 23 files followed, and it worked, which is why
+nothing ever asked about it.
+
+### It was not inert either, and this file had already written the bill
+
+`components/dialog.css` records it in full: `.app-case` declares `position:relative`, the user agent
+gives `dialog:modal` `position:fixed`, and the class took it back. **The sheet scrolled with the page
+behind it: on `win.html` at 380 the page sat 412px down and the sheet's top edge was 313px above the
+screen.** The answer at the time was a second rule, `dialog.app-dialog:modal{position:fixed}`, to put
+back what the first one had removed.
+
+**A workaround that has to be worked around is the shape of a scope that was never true.** The class
+is off all 24 now. The counter-rule stays, because this repository does not leave a value to the user
+agent when it can name it, and its comment says that rather than the old reason.
+
+### Measured
+
+Two trees, not two stylesheets: the pre-change markup was served from a second origin with its own
+copy of `components/` and `assets/`, and each page was read twice, once per origin, element for
+element. **106 painted screens and 55 kit pages, at 390 and 1280, in dark and light: 322 page pairs,
+190,258 element readings**, 29 computed properties and the box.
+
+**0 differences in the product. 0 on the kit.** The only movement in any run is the course panel's
+own rows on the y axis, which is the stand's sidebar scrolling to its active row and is not the
+product. On the painted tree the geometry noise appears at 390 and thins at 1280; on the kit there is
+none at all, at either width in either theme.
+
+**Why zero rather than something.** The class had exactly two live effects left, and both were
+already answered: the scoped rules it existed for are gone, and the position it broke is put back by
+a rule one file away. **A workaround is invisible on the day it stops being needed**, which is why
+this one would still have been in the markup in six months if the sweep had not counted it.
+
+---
+
 ## 2026-08-08 - A refactor that leaves the old layer on top has not replaced it, and the stand is what proved it
 
 Backlog 67, opened by the wrapper sweep earlier the same day and closed here. `hiw-dialog.css` was

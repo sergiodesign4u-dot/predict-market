@@ -200,6 +200,15 @@ dialog.app-dialog .sheet-body>a{text-decoration:none}
    role on a filled glyph or a scrim role on a photograph: the class was named
    for a job it is not doing here.
 
+   THE CAUSE IS GONE SINCE 2026-08-08 and this rule stays. The class came off all
+   24 dialogs that wore it, 21 painted screens and 3 specimens, because nothing is
+   scoped to it any more and it was only ever there so that scoped rules could
+   reach a dialog that IS the screen. So nothing takes the position back now, and
+   this line restates what the user agent already does. It stays because this
+   repository does not leave a value to the user agent when it can name it: that
+   is the rule 992 blue links and a black SVG were paid for. A rule that agrees
+   with the browser costs one line; a value nobody wrote costs a sweep.
+
    STEP 8: THE BOTTOM SHEET CAME BACK, AND IT IS GEOMETRY, NOT MARKUP.
    Convention 5 has said since the wireframes were built that an invoked screen
    is a bottom sheet on mobile; the paint shipped a centred modal at both widths
