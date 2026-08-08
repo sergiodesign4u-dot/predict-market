@@ -18,6 +18,11 @@ override it.** There is no build step and no gate: what you write is what ships.
   quietly and is handed to a developer broken, and nobody sees it because the hole renders.
 - **A pattern starts at three screens**, adds no styles of its own, carries no colour, and imports
   last. Two screens is a candidate and it stays markup.
+- **A floor is the family's, and it is declared once.** The focus ring and the 44px touch floor are
+  both one rule in `base.css`, because a person tabbing and a person tapping are not asking each
+  component separately. The touch floor stood in six files as six LISTS until 2026-08-08, and what a
+  list leaves out nothing says: two of five chips had it and `.market-head` had none. A component
+  speaks up only to be excluded, and an exclusion carries its reason.
 - **Green and red are outcome semantics (YES / NO), brass is the brand.** An accent never borrows
   the win/lose colour, and a candidate in a multi-outcome chart is not an outcome. `DESIGN.md`
   decides this twice, which is why it is the one rule that overrules a local preference.

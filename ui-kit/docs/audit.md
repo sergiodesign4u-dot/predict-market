@@ -22,6 +22,17 @@ overflows, 14,377 undersized targets. All three were the instrument. **The one p
 that the project's own 44px touch floor is not what the system builds to**, and it is a decision
 rather than a bug.
 
+> **CORRECTED 2026-08-08, and the headline was wrong twice over: the count is EIGHT, and the one
+> product finding was the eighth.** The touch pass measured the product with a mouse. The full
+> account is [correction 8](#8-the-touch-pass-measured-the-product-with-a-mouse-and-it-was-the-one-product-finding)
+> below and the numbers in the touch-target section are struck rather than deleted. What the audit
+> got right is unchanged and is most of it: contrast, overflow, focus, names, alt, ids and links all
+> still hold. **The paragraph above is left standing because it is what the report claimed**, and a
+> report whose headline is quietly rewritten is a report that cannot be checked. Seven of the eight
+> corrections were found by disbelieving the instrument; the eighth was found by a later pass, which
+> is the part worth keeping: **an instrument nobody disbelieves twice is an instrument that has
+> stopped being disbelieved.**
+
 ---
 
 ## What was measured
@@ -41,11 +52,16 @@ with "not fixed, by rule" attached is a report nobody can use.
 
 ---
 
-## The six corrections, in the order they were found
+## The eight corrections, in the order they were found
 
 **A before-and-after needs an instrument that returns the same answer twice.** So does an audit. Each
 of these was caught by disbelieving a number, and each is recorded because the next person to write
-one of these will meet all six.
+one of these will meet all eight.
+
+**Six were found before this report was written, the seventh the same day, and the eighth two hours
+later by the pass that went to fix what the seventh had left standing.** The heading said six for
+most of a day, which is the honest shape of it: the count of an instrument's defects is a lower
+bound and never a total.
 
 ### 1. A noise texture is not a gradient
 
@@ -111,6 +127,40 @@ The focus pass found **0 `:focus-visible` rules in any stylesheet**, which is im
 rules, every one a `CSSImportRule`**, and an imported sheet's rules live on `.styleSheet.cssRules`
 rather than on `.cssRules`. A walker that follows only the second sees an empty system. Read from the
 source files instead, and confirmed in the browser with real focus.
+
+### 7. The label extractor invented a string that is not on the page
+
+Recorded 2026-08-08 in the links section below, where the withdrawn finding is quoted in full.
+`Privacy Policynot built` was reported as a broken footer label; `terms.html` writes
+`<span class="rel-q">Privacy Policy</span><span class="rel-odds">not built</span>` inside one anchor,
+four times, and the extractor joined the siblings. **The only one of the eight that reached a
+document before it was caught.**
+
+### 8. The touch pass measured the product with a mouse, and it was the one product finding
+
+**The instrument never asserted the thing its own criterion is about.** WCAG 2.5.5 is about a finger,
+this system binds its 44px floor to `@media(pointer:coarse)` and has since step 7, and
+`components/button.css`, `header.css`, `iconbtn.css`, `tabs.css`, `filters.css` and `chip.css` each
+carried a coarse block saying so in a comment. Headless Chromium reports `pointer:fine` and
+`maxTouchPoints:0`. Nothing in the run read `matchMedia`, so **all 460 renders measured the 36px
+branch** and the result was filed as a product defect: 1,787 of 2,709 targets under 44.
+
+Read again with `Emulation.setTouchEmulationEnabled` on and `matchMedia('(pointer:coarse)')` asserted
+true before every read, over the same 106 screens at 390: **262 short, not 1,787.** The finding was
+one sixth of what was reported and it was not the shape the report gave it.
+
+**This is the same species as correction 4 and it is the worse one.** Correction 4 raced the load, so
+the instrument read the page at the wrong TIME. This one read the page on the wrong DEVICE, and it is
+worse because a load eventually finishes and a mouse never becomes a finger: no amount of re-running
+would have found it. What found it was going to fix the finding and reading the six comments that had
+been explaining the floor to nobody.
+
+**The lesson is narrower than "test on a device".** The system's rule was written down, in six files,
+in prose, in the exact words `TARGET SIZE FOLLOWS THE POINTER AND NOT THE VIEWPORT`. An audit that
+measures a criterion the system answers CONDITIONALLY has to assert the condition, or it is not
+measuring the criterion. A media query is a condition, and an unasserted condition is a value the
+instrument chose without saying so. **A missing value is a value**, which is this repository's oldest
+rule and it turns out to apply to the instrument's inputs and not only to the page's.
 
 ---
 
@@ -229,6 +279,13 @@ the footer, and **Privacy policy** on `cookie-consent.html`. **Backlog 48.**
 
 ### Touch targets: the one product finding
 
+> **EVERY NUMBER IN THIS SECTION WAS READ WITH A MOUSE. Corrected 2026-08-08, see correction 8.** The
+> 44px floor is bound to `@media(pointer:coarse)`, this run never asserted a coarse pointer, and
+> headless Chromium reports `pointer:fine` with `maxTouchPoints:0`. So the table below is the
+> product's FINE-pointer branch measured against a floor that only a finger was ever meant to raise.
+> The section is kept as written, because what it measured it measured correctly and the reader has
+> to be able to see what the mistake looked like from inside.
+
 At 390, inside `.app-case`, every link, button, field, select and summary that is not an inline run
 of prose.
 
@@ -268,6 +325,34 @@ than from a token. **A control that read a height token would be one edit away f
 that computes its height from three other values is 317 edits away.** So this is not a separate fix,
 it is the argument for the one already open. **Backlog 49, pointing at 40.**
 
+#### What the same measurement says with a finger
+
+Same 106 screens, same 390, touch emulation on and `matchMedia('(pointer:coarse)')` asserted true
+before every read. The target rule is slightly tighter than the run above (a control inside a closed
+`<details>` is not a target until it opens, which is correction 2 applied to this pass as well), so
+the totals are not the same instrument and only the two columns may be compared with each other.
+
+| | fine pointer | coarse pointer |
+|---|---|---|
+| targets | 1,790 | 1,790 |
+| clearing 44x44 | 762 | **1,361** |
+| short | 934 | **262** |
+| narrow but tall enough | 94 | 212 |
+| under 24x24 | 20 | 11 |
+
+**The floor exists, it works, and 599 targets crossed it the moment the pointer changed.** What was
+actually wrong is smaller and different in kind: the floor was written **six times**, and every copy
+named a LIST rather than a family, so `.chip-lane`, `.chip-rail`, `.rules-tab`, `.market-head` and
+`.toc-link` had no floor at all. That was fixed the same day: one rule in `components/base.css`,
+beside the focus ring, keyed to the family. **262 short to 68, and 542 to 98 at 1280.** Every one of
+the 68 is text or one of the icon button's four named exclusions. The fine branch was measured to
+prove it had not moved: 1,028 under 44 before and after.
+
+The final line of the original finding survives the correction and is worth keeping: the argument
+that a control computing its height from three values is 317 edits from 44 was **wrong about the
+mechanism**. A `min-height` on the family out-specifies whatever the control computed. It was one
+edit.
+
 ---
 
 ## What is open after this
@@ -276,7 +361,9 @@ it is the argument for the one already open. **Backlog 49, pointing at 40.**
 |---|---|
 | 47 | the primitive ramp prints its step number on the colour it names, 37 and 58 readings under 4.5:1 on `colour.html` |
 | 48 | 23 labels and 1,902 anchors behind `href="#"`, two of them the same destination under two names and one a broken string |
-| 49 | 1,787 of 2,709 product touch targets under the project's own 44px floor, dominated by a 38px chip, and it is backlog 40's question |
+| ~~49~~ | ~~1,787 of 2,709 product touch targets under the project's own 44px floor~~ **CLOSED 2026-08-08.** The number was the instrument's. What was real is that the floor stood in six files as six lists; it is one rule in `base.css` now, and 262 short became 68 |
+| 50 | 212 targets stand 44 tall and under 44 wide, and 2.5.5 asks for both. They are short words, so the fix is a layout decision about six components rather than a floor. Owner: Responsive |
+| 51 | three native checkboxes at 18x18 on `cookie-consent.html`, the only targets under the 24x24 AA floor that a finger has to hit rather than read |
 
 And the three the audit confirmed rather than found: **42** (420 latent User Agent controls, 0
 visible), **45** (13 document-unique ids the system depends on, 0 duplicated today), **44** (the

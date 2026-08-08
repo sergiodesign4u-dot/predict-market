@@ -193,10 +193,8 @@
    there is nothing here to flatten. */
 .app-case .app-header .row{max-width:var(--container-max);margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter)}
 
-/* WCAG 2.5.5 is about a finger, not about a narrow window: a touch laptop at 1280 needs the same
-   44px a phone does. So the target size is bound to the POINTER. A fine pointer keeps 36px, which
-   clears 2.5.8 (24x24) with room; a coarse one gets 44. */
-@media(pointer:coarse){
-  .notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all{
-    min-width:var(--control-44);min-height:var(--control-44)}
-}
+/* THE TOUCH FLOOR IS NOT DECLARED HERE ANY MORE. The four controls of this band
+   went to `components/base.css` on 2026-08-08 with the five other copies of the
+   rule, and they went into BOTH declarations there: they carry a mark and no
+   label, so the width does not arrive from a word and has to be floored too. That
+   is the half a chip and a button do not need. */

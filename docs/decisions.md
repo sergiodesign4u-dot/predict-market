@@ -44,6 +44,121 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - The audit's eighth defect: it measured the product with a mouse, and the floor was six lists
+
+Direction B was approved and this pass went to execute it. **It did not survive the first
+measurement, and what replaced it is better and smaller.** The record of the direction is the entry
+below this one; this is what happened when it was read against the page.
+
+### The premise was false, and the six files that said so had been saying it for a day
+
+B was chosen on the strength of one sentence in the audit: *a control that read a height token would
+be one edit away from 44; a control that computes its height from three other values is 317 edits
+away.* Before touching 106 screens on the strength of that, the floor was looked for. It was already
+there. **`components/button.css`, `header.css`, `iconbtn.css`, `tabs.css`, `filters.css` and
+`chip.css` each carried an `@media(pointer:coarse)` block raising their controls to
+`var(--control-44)`**, and `button.css`'s carried the rule in capitals: TARGET SIZE FOLLOWS THE
+POINTER AND NOT THE VIEWPORT.
+
+**Headless Chromium reports `pointer:fine` and `maxTouchPoints:0`.** The audit asserted no pointer,
+so all 460 of its renders measured the 36px branch, and its one product finding was the fine-pointer
+product measured against a floor only a finger raises. Re-read with
+`Emulation.setTouchEmulationEnabled` on and `matchMedia('(pointer:coarse)')` asserted true before
+every read, 106 screens at 390: **1,790 targets, 1,361 already clearing 44x44, 262 short.** Against
+1,787.
+
+**This is a worse instrument defect than the load race that produced 434 phantom contrast failures,
+and it is worth saying why.** The race read the page at the wrong TIME, and time passes: another run
+would have caught it. This read the page on the wrong DEVICE, and no number of re-runs turns a mouse
+into a finger. It was found by going to fix the finding and reading the comments that had been
+explaining the floor to nobody. **An instrument nobody disbelieves twice has stopped being
+disbelieved**, which is the one thing this repository was supposed to have learned already.
+
+The general form, and it is narrower than "test on a device": **a criterion the system answers
+CONDITIONALLY has to have its condition asserted.** A media query is a condition. An unasserted
+condition is a value the instrument chose without saying so, and a missing value is a value. That
+rule was written here about pages. It applies to instruments.
+
+### What was actually wrong: a floor written six times, and every copy a list
+
+Not one file was wrong. Every one of the six named a LIST of its own controls, and **what a list
+leaves out, nothing says**. `chip.css` named `.chip-quiet` and `.chip-nav` out of five chips, so
+`.chip-lane` rendered 40.5 on 104 placements over 32 screens under a finger and `.chip-rail` 26 on
+63. `tabs.css` named two tab faces of three and left `.rules-tab` at 31, in its own file.
+`.market-head` is a `<summary>` a person taps to open a market and rendered 18. `.toc-link` rendered
+36. **None of the three had a floor anywhere in the system**, and nothing had ever asked.
+
+`button.css` had already written the argument and then applied it only to itself: *a floor is the
+family's, not a size's: a seventh step added later gets it without anybody remembering.* The
+correction is that sentence applied to every family instead of one.
+
+**One rule, in `components/base.css`, beside the focus ring**, which is the same species of rule and
+whose own comment says why: a person navigating by keyboard is not asking each component separately.
+Neither is a thumb. The six blocks are gone and each file keeps a comment saying where the
+declaration went and what its own list had left out.
+
+**The selector names classes and not tags, deliberately.** `a` and `button` would catch the card
+question, the hero title, the bet panel's change link and the cookie prose link. Those are text: a
+title that wraps to two lines does not become a target by growing an empty box under it, and
+`card.css` had already written why `.card a.q` stays bare. **A family is something the system
+declared; a tag is what the markup happened to be.**
+
+**The four exclusions travelled unchanged, with their reason**, and they are the icon button's:
+photo dismiss, tile, toast dismiss, social mark. Whether they should be 44 is backlog 39 and it is
+still open. They now sit in the one place instead of in the middle of one component's file.
+
+### The tie, which is the part that would have shipped broken
+
+Written as `:not(a,b,c,d)`, the rule is (0,2,1). **`.app-case .tabs button` in `tabs.css` is also
+(0,2,1)**, `base.css` is imported first, and source order gave the tab its 36px back: measured, 18
+tab buttons over the nine active-bets screens still reading `min-height:36px` with the floor in place
+and the pointer coarse. Four chained `:not()`s count four times, the rule is (0,5,1), and it
+out-specifies every nominal height in the system rather than tying with one. **A floor a component
+can tie with is not a floor.** `iconbtn.css` had written the chain long and literal for a different
+reason and it turned out to be load-bearing.
+
+### Measured after
+
+| | before | after |
+|---|---|---|
+| short of 44 at 390, coarse | 262 | **68** |
+| short of 44 at 1280, coarse | 542 | **98** |
+| clearing 44x44 at 390, coarse | 1,361 | **1,474 then 1,510** |
+| under 44 at 390, FINE | 1,028 | **1,028** |
+| pages gaining horizontal scroll | | **0 of 106** |
+
+**Every one of the 68 is text or a named exclusion**: 27 tiles and 4 toast dismisses are two of the
+four exclusions, 21 are the card question, 13 are prose, related and hero links, and 3 are native
+checkboxes. The fine branch was measured on purpose, to prove a floor inside
+`@media(pointer:coarse)` cannot reach a mouse. It did not move by one target.
+
+Verified by eye as well as by number, at 390 with a coarse pointer: the event-detail range rail, the
+market disclosure and the rules tabs all stand at 44 and the page is 93px taller for it.
+
+### What was left out, and it is two rows rather than a silence
+
+**Width is not floored, and that is a decision.** 212 targets at 390 stand 44 tall and under 44 wide,
+and they are short words: `NO` at 42.7, `1d` at 35.9, `Reply` at 35.9, `All` at 42.2. A word's box
+comes from the word, and widening every one to 44 changes what a rail and a tab row look like. That
+is a layout decision about six components, not a floor. **Backlog 50**, owner Responsive.
+
+**Three native checkboxes on `cookie-consent.html` render 18x18**, and they are the only targets in
+the product that a finger has to hit rather than read and that fall under WCAG 2.5.8's 24x24. They
+took no floor because the rule names families the system declared and a bare checkbox is not one. The
+fix is a `<label>` wrapping the row, which is markup plus a component and therefore goes into the
+system first. **Backlog 51.**
+
+### What this does to item 40
+
+**It stops being what the floor depends on, and stays open on its own terms.** The 317-edits argument
+was wrong about the mechanism: `min-height` on the family out-specifies whatever the control
+computed, so the floor cost one rule. What item 40 actually complains about is untouched and is still
+true: twelve rendered heights with three tokens behind them is a scale the geometry does not have,
+and 38 still has 60 readings with no token behind it under a fine pointer. A floor does not give a
+scale.
+
+---
+
 ## 2026-08-08 - Three of the audit's findings closed, and the 44px floor takes direction B
 
 The audit's own follow-up, done the same day. **Three closed, one direction decided, one left open on

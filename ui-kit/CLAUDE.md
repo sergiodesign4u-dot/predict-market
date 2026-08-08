@@ -172,5 +172,27 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
    a 38px chip on 530 elements. It is backlog 40's question in another form and it is filed pointing
    at it. Backlog 47, 48, 49.
 
+   **CORRECTED THE SAME DAY, AND THE COUNT IS EIGHT, NOT SIX. The one product finding was the eighth
+   defect in the instrument: the touch pass measured the product with a mouse.** The 44px floor is
+   bound to `@media(pointer:coarse)` and has been since step 7, six component files carried a coarse
+   block saying so, and headless Chromium reports `pointer:fine` with `maxTouchPoints:0`. Nothing in
+   the run asserted a pointer, so all 460 renders read the 36px branch. With touch emulation on and
+   `matchMedia('(pointer:coarse)')` asserted true before every read: **262 short, not 1,787.**
+
+   **It is a worse defect than the load race, and that is the reason it is written here as well as in
+   the report.** The race read the page at the wrong TIME and would eventually have been caught by a
+   re-run; this read it on the wrong DEVICE, and a mouse never becomes a finger. **An audit that
+   measures a criterion the system answers conditionally has to assert the condition**, because an
+   unasserted condition is a value the instrument picked without saying so, and this repository
+   already knows that a missing value is a value. It knew it about the page and not about the
+   instrument.
+
+   **What the correction found instead was real and smaller: the floor was written six times and
+   every copy named a list.** `chip.css` named two of five chips, `tabs.css` two of three tab faces,
+   and `.market-head`, `.rules-tab` and `.toc-link` were named by nobody. It is one rule in
+   `components/base.css` now, beside the focus ring, keyed to the family, carrying the icon button's
+   four exclusions unchanged. **262 to 68 at 390 and 542 to 98 at 1280, the fine branch unmoved at
+   1,028 both ways, 0 pages gaining horizontal scroll.** Backlog 49 closed, 50 and 51 opened.
+
 The five anchors: event feed, event detail, active bets, deposit, sign in, with their loading, empty,
 error and logged-out variants. 41 screens of the 106.

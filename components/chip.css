@@ -283,9 +283,13 @@
    the decision rather than the gap: a chosen control's whole face is already the
    answer, and a second one under the pointer would compete with it. */
 .app-case .chip:active{background:var(--bg-pressed)}
-@media(pointer:coarse){
-  .app-case .chip-quiet,.app-case .chip-nav{min-height:var(--control-44)}
-}
+/* THE TOUCH FLOOR IS NOT DECLARED HERE ANY MORE, and this file is the reason the
+   move happened. It stood here as
+   `@media(pointer:coarse){.app-case .chip-quiet,.app-case .chip-nav{min-height:var(--control-44)}}`,
+   which named TWO of the five chips. `.chip-lane` therefore rendered 40.5 on 104
+   placements over 32 screens under a finger, and `.chip-rail` 26 on 63, because
+   nothing in a list says what it left out. It is in `components/base.css` now,
+   keyed to `.chip`, which is the class all five already carry. */
 
 /* ------------------------------------------------------- the two parts ------
    A CATEGORY'S MARK. Outline, monochrome, and never the category's own colour,

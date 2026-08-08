@@ -329,19 +329,14 @@
    the ground by source order the way it does for the circle upstairs. */
 .icon-btn.icon-btn-small:hover{color:var(--text-primary)}
 
-/* WCAG 2.5.5 is about a finger and not about a narrow window: a touch laptop at
-   1280 needs the same 44 a phone does, so the floor is bound to the POINTER. A
-   fine pointer keeps 36, which clears 2.5.8 with room.
-   FOUR FACES ARE EXCLUDED AND NONE OF THEM IS EXCUSED, which means the floor
-   now reaches exactly ONE of the six: the plain circle in the header. The photo
-   dismiss is 32, the tile is 28 under 560, the toast dismiss is 24 and the
-   social mark is 28, so the floor would resize all four. `.icon-btn-bare` needs
-   no exclusion because it sets the floor itself and pulls it back out of the
-   flow, which is the only face here that answers 2.5.5 outright.
-   ONE OF SIX IS NOT A SELECTOR PROBLEM, IT IS THE FINDING. Whether a dismiss, a
-   corner toolbar or a footer mark should be 44 is `ui-kit/docs/backlog.md` S39's
-   question, and the chain is left long and literal so that the count is legible
-   here rather than hidden behind something clever. */
-@media(pointer:coarse){
-  .icon-btn:not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-width:var(--control-44);min-height:var(--control-44)}
-}
+/* THE TOUCH FLOOR IS NOT DECLARED HERE ANY MORE, and the four exclusions went
+   with it to `components/base.css` on 2026-08-08, unchanged and with their reason
+   attached. They are the only exclusions the floor has anywhere in the system, and
+   that is the argument for them travelling together rather than being restated:
+   the photo dismiss is 32, the tile is 28 under 560, the toast dismiss is 24 and
+   the social mark is 28, so the floor would resize all four.
+   ONE OF SIX IS NOT A SELECTOR PROBLEM, IT IS THE FINDING, and it is still open.
+   Whether a dismiss, a corner toolbar or a footer mark should be 44 is backlog
+   39's question. `.icon-btn-bare` needs no exclusion because it sets the floor
+   itself and pulls it back out of the flow, which is the only face here that
+   answers 2.5.5 outright. */
