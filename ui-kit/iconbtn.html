@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: icon button</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+  <!-- Two symbols of the shipped sprite, spliced rather than retyped. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></symbol>
+    <symbol id="i-chat-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22"/></symbol>
+  </defs></svg>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Icon button</h1>
+    <p>Level 1, and the second largest control family: <b>1,361 placements on 106 painted screens</b>.
+    A control whose whole content is a mark. It was drawn in six files under six names until
+    2026-08-06 and it is one file now, with <b>eight faces, and every one of them is an answer to the
+    GROUND it stands on</b> rather than a variation on a circle. Measured 2026-08-08.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">1,361 placements</span>
+      <span class="tk-badge">8 faces</span>
+      <span class="tk-badge">763 buttons, 598 links</span>
+      <span class="tk-badge">1 face takes the floor</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ why a page -->
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">Why this one is on the list</h2>
+    <p class="tk-note">Same threshold as <a href="button.html">button</a>, and it is counted rather
+    than felt: this family is <b>1,361 placements over eight faces</b>, and a level page has room for
+    one specimen. The eight are not sizes of one thing, so showing one of them teaches almost nothing
+    about the other seven.</p>
+    <p class="tk-note"><b>The thing this page can show and the level page cannot is the ONE
+    sentence that organises the whole component</b>: a face here is an answer to the ground it stands
+    on. Read the eight side by side and that stops being a claim; the circle is the header band's,
+    the tile is a photograph's corner, the bare mark is a caption row, and the small one is a toast.
+    Read one of them alone and it is just a padding.</p>
+    <p class="tk-note">The declaration that this is level 1 stays on <a href="vitrine.html#iconbtn">the
+    atoms page</a> and is not repeated here.</p>
+  </section>
+
+  <!-- ================================================================ faces -->
+  <section class="tk-sec" id="faces">
+    <h2 data-n="2">The eight faces, and the ground each one answers</h2>
+
+    <p class="tk-subh">the circle, 242 placements, and every one is in the header</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button></div>
+    </div>
+    <p class="tk-note"><b>The circle is the header band's skin, not this atom's own idea</b>, and
+    counting says so: all 242 plain <code>.icon-btn</code> in the product stand in
+    <code>&lt;header&gt;</code>, 105 in the left group and 137 in the utility group, and there is no
+    plain circle anywhere else. It answers a pointer the way the band's other three controls do.</p>
+
+    <p class="tk-subh">bal-swap and bal-add, 73 each, and 0 of the 146 render at 390</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn bal-swap" aria-label="Swap balance"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"></path></svg></button><button type="button" class="icon-btn bal-add" aria-label="Add funds"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn bal-swap" aria-label="Swap balance"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"></path></svg></button><button type="button" class="icon-btn bal-add" aria-label="Add funds"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></div>
+    </div>
+    <p class="tk-note">The balance cluster: two circles at a denser size beside a figure. <b>Their
+    73 screens each are all desk</b>, because the cluster is <code>.desk-only</code> and
+    <code>base.css</code> hides it below 640. A face measured only at 1280 is still a face; a
+    placement count that does not say where it renders reads as coverage.</p>
+
+    <p class="tk-subh">photo, 228 + 105 with the strong ring, and all 333 are a sheet close</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><span class="tk-photo" style="background-image:url(../assets/event-politics.jpg)"><button type="button" class="icon-btn icon-btn-photo" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span><span class="tk-photo" style="background-image:url(../assets/event-politics.jpg)"><button type="button" class="icon-btn icon-btn-photo icon-btn-ring-strong" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span></div>
+      <div class="tk-theme-fig" data-theme="light"><span class="tk-photo" style="background-image:url(../assets/event-politics.jpg)"><button type="button" class="icon-btn icon-btn-photo" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span><span class="tk-photo" style="background-image:url(../assets/event-politics.jpg)"><button type="button" class="icon-btn icon-btn-photo icon-btn-ring-strong" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span></div>
+    </div>
+    <p class="tk-note"><b>The specimen stands on a photograph and not on the plate</b>, which is the
+    only honest ground for it: it reads <code>--scrim-photo</code>, <code>--line-on-photo</code> and
+    <code>--text-on-photo</code>, three roles for standing on something the system cannot choose the
+    colour of. Its scrim is 34 per cent at rest, 55 under a pointer and 72 held down, so the mark
+    stays legible whatever is underneath. The image is one of the three things the rules allow on the
+    element, and it is here for the same reason it is on the atoms page: <b>a face defined by an
+    unpredictable ground cannot be shown on a predictable one</b>.</p>
+    <p class="tk-note"><b>And it is named for a ground it does not stand on today.</b> All 333
+    placements are <code>.sheet-close</code> inside a <code>&lt;dialog&gt;</code>, and what is
+    actually behind them is <code>.sheet-head</code>, which paints a brass radial gradient and not a
+    photograph. The name is kept on purpose and <code>components/iconbtn.css</code> says why: what
+    defines the face is the three on-photo roles it reads, and a dialog head is the same problem, a
+    ground the control cannot predict. <b>It is written here rather than left as a smell</b>, because
+    the next person to meet the class will read the name before the comment.</p>
+    <p class="tk-note">The 105 with <code>.icon-btn-ring-strong</code> are the How-it-works sheet, and
+    the modifier changes exactly one thing: the focus ring goes white. <code>.hiw-glow</code> puts a
+    brass radial in the corner the ring lands in, where <b>the system's brass ring measures
+    2.52:1</b>. The overlay says WEAR IT by putting the class on the element and this file says what
+    it is, which is what let <code>dialog.css</code> stop drawing this control at all.</p>
+
+    <p class="tk-subh">lift, 525 placements, the largest face in the family</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><a class="icon-btn icon-btn-lift" href="#" aria-label="X (Twitter)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg></a></div>
+      <div class="tk-theme-fig" data-theme="light"><a class="icon-btn icon-btn-lift" href="#" aria-label="X (Twitter)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg></a></div>
+    </div>
+    <p class="tk-note">The footer's social row, five marks on every one of 105 screens. <b>It is an
+    <code>&lt;a&gt;</code>, and this is the face that makes the family's tag count what it is</b>: 598
+    of the 1,361 placements are links rather than buttons. The atom declares
+    <code>text-decoration:none</code> and <code>text-align:center</code> for exactly this reason, and
+    the file records that it did not until 2026-08-07, when Favorites became an anchor and picked up
+    an underline nobody had chosen.</p>
+
+    <p class="tk-subh">bare, 84 placements on 12 screens, and its target is invisible</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></div>
+    </div>
+    <p class="tk-note">The save mark on a card's caption row, where a circle would be a second object
+    competing with the picture. <b>It is the only face that answers WCAG 2.5.5 outright and it does it
+    without a box</b>: 44 of target with no ground and no edge, pulled back out of the flow with a
+    negative margin so the row is not spread by it. What answers is the mark, quiet at rest, brass
+    under a pointer, and filled brass when the event is saved, <b>which is a state and not a
+    press</b>.</p>
+
+    <p class="tk-subh">tile, 27 placements on 9 screens, and the only 10px corner in the family</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn icon-btn-tile ed-act" aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"></use></svg></button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn icon-btn-tile ed-act" aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"></use></svg></button></div>
+    </div>
+    <p class="tk-note">Three of them sit in a row over the event head, and the corner is the whole
+    argument: <b>three circles read as a control group, three tiles read as a toolbar</b>. It is the
+    only face with a ground of its own on an ordinary surface, <code>--bg-control</code>, because the
+    head behind it is a photograph and a transparent tile would vanish into it.</p>
+
+    <p class="tk-subh">small, 4 placements on 1 screen</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss">x</button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss">x</button></div>
+    </div>
+    <p class="tk-note">The toast's dismiss, and <b>it is the circle at 24 rather than a face of its
+    own</b>: transparent, hairline, pill, exactly the header's. It disagreed on one thing, its hover,
+    which brightened the EDGE where the header's tints the GROUND. <b>Four placements against 242</b>,
+    so the header's was the system's and this was the divergence, and the divergence was corrected
+    rather than carried into the atom.</p>
+  </section>
+
+  <!-- ================================================================ floor -->
+  <section class="tk-sec" id="floor">
+    <h2 data-n="3">What each face renders, and the one that moves</h2>
+    <p class="tk-note">Read at 390 in both pointer branches on 2026-08-08, with every dialog forced
+    open so the sheet close could be measured at all.</p>
+
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>worn</th><th>fine pointer</th><th>coarse</th><th>2.5.8 AA, 24x24</th></tr></thead>
+        <tbody>
+          <tr><td><code>.icon-btn</code>, the circle</td><td>242</td><td>36x36</td><td><b>44x44</b></td><td>clears</td></tr>
+          <tr><td><code>.bal-swap</code> / <code>.bal-add</code></td><td>73 / 73</td><td colspan="2">desk only, and 0 of the 146 render at 390</td><td>clears at 1280</td></tr>
+          <tr><td><code>.icon-btn-photo</code></td><td>228</td><td>32x32</td><td>32x32</td><td>clears</td></tr>
+          <tr><td><code>+ .icon-btn-ring-strong</code></td><td>105</td><td>32x32</td><td>32x32</td><td>clears</td></tr>
+          <tr><td><code>.icon-btn-lift</code></td><td>525</td><td>28x28</td><td>28x28</td><td>clears</td></tr>
+          <tr><td><code>.icon-btn-bare</code></td><td>84</td><td><b>44x44</b></td><td><b>44x44</b></td><td>clears</td></tr>
+          <tr><td><code>.icon-btn-tile</code></td><td>27</td><td>28x28</td><td>28x28</td><td>clears</td></tr>
+          <tr><td><code>.icon-btn-small</code></td><td>4</td><td>24x24</td><td>24x24</td><td>clears, exactly</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="tk-why"><b>ONE FACE OF THE EIGHT MOVES WHEN THE POINTER CHANGES, and that is a finding
+    rather than a fact about this page.</b> The touch floor in <code>components/base.css</code>
+    excludes four of them by name, <code>.icon-btn-photo</code>, <code>.icon-btn-tile</code>,
+    <code>.icon-btn-small</code> and <code>.icon-btn-lift</code>, and the exclusions carry their
+    reason: the floor would resize all four. <code>.icon-btn-bare</code> needs no exclusion because it
+    sets the floor itself. So the circle is the only one the rule reaches. <b>Every face clears WCAG
+    2.5.8's 24x24 and four of the eight do not clear this project's own 44</b>, which is backlog 39
+    and is open on purpose: whether a dismiss on an overlay, a corner toolbar or a footer mark should
+    be 44 is a design question, and a migration is not the place to answer it quietly.</p>
+  </section>
+
+  <!-- =============================================================== ground -->
+  <section class="tk-sec" id="ground">
+    <h2 data-n="4">The sentence the eight faces are for</h2>
+    <p class="tk-note"><b>A face here is an answer to the GROUND, not a variation on a circle.</b>
+    That was not the plan, it is what reading them out loud produced, and it is the thing worth
+    carrying to the atoms still to migrate.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>ground</th><th>the answer</th><th>face</th></tr></thead>
+        <tbody>
+          <tr><td>the header band</td><td>a circle that tints its ground, because the band already has a skin</td><td>plain, and the dense pair</td></tr>
+          <tr><td>something the system cannot colour</td><td>a scrim that deepens in three steps, and an on-photo ink</td><td>photo</td></tr>
+          <tr><td>a corner of a photograph, three in a row</td><td>a 10px tile with a real ground, because a transparent one would vanish</td><td>tile</td></tr>
+          <tr><td>a caption row beside a picture</td><td>no box at all, and the mark answers instead</td><td>bare</td></tr>
+          <tr><td>the footer's quiet band</td><td>a small mark that lifts</td><td>lift</td></tr>
+          <tr><td>a toast</td><td>the header's circle at 24</td><td>small</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note">Six grounds, eight faces, and the two extra are a modifier that changes one
+    value each: the balance pair is the circle at a denser padding, and the strong ring is the photo
+    face with a white focus outline for one head. <b>Neither is a face and both are worth having a
+    name</b>, because the alternative was a second declaration of the whole control in the file that
+    happened to hold it.</p>
+  </section>
+
+  <!-- =============================================================== states -->
+  <section class="tk-sec" id="states">
+    <h2 data-n="5">States</h2>
+    <p class="tk-note">As on <a href="button.html#states">the button page</a>: a hover, a press and a
+    ring are raised by a person and not by a document. The specimens above are the real controls, so
+    raise them here with a pointer and a Tab.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>hover</th><th>press</th></tr></thead>
+        <tbody>
+          <tr><td>the circle</td><td>the band's wash, <code>--tint-brass-16</code>, and the action edge, which is what the header's two disclosures and its ghost button also answer with</td><td><code>--bg-pressed</code>, square cornered, because a radius is geometry and a state may not move the element it is on</td></tr>
+          <tr><td>photo</td><td>the scrim goes 34 to 55 per cent and the edge brightens</td><td>the scrim goes to 72</td></tr>
+          <tr><td>lift</td><td>the mark comes up and the control lifts</td><td>settles back</td></tr>
+          <tr><td>bare</td><td>the mark goes brass, and <b>nothing else moves because there is nothing else</b></td><td>the one time this face draws a shape</td></tr>
+          <tr><td>tile</td><td>the ground steps and the edge goes brass</td><td><code>--bg-pressed</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The saved bookmark is a STATE and not a press</b>, and it is the one thing
+    in this family that survives the pointer leaving: <code>aria-pressed="true"</code> fills the mark
+    brass. That is why the control is a <code>&lt;button&gt;</code> with an ARIA state rather than a
+    class the page script toggles.</p>
+  </section>
+
+  <!-- ================================================================= rule -->
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>Pick the face by the ground, not by the size you want.</b> Every one of the
+    eight exists because something underneath it made a demand, and the sizes are what fell out of
+    that. Asking for "the 28px one" is asking for a footer mark in a header.</p>
+    <p class="tk-note"><b>A mark with no word needs a name.</b> Every placement in this family carries
+    an <code>aria-label</code>, and the audit of 2026-08-08 read 0 nameless controls across 115
+    documents. A control whose whole content is an svg has nothing for a screen reader to say on its
+    own.</p>
+    <p class="tk-note"><b>A region may say WHERE one sits and may not say what one looks like.</b>
+    <code>components/header.css</code> keeps <code>.app-header .left &gt; .icon-btn{display:none}</code>
+    because hiding a control in a band is the band's decision, and <code>components/dialog.css</code>
+    keeps the sheet close's absolute placement for the same reason. Neither draws the control.</p>
+  </section>
+
+  <!-- ============================================================ anti-rule -->
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never draw one in the file of whatever holds it.</b> <i>Six files held
+    the pen for this control under six names until 2026-08-06, and every one of them was right about
+    its container and wrong about the control.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let a labelled press in.</b> <i><code>.hiw-btn</code> sat in the
+    census row called "icon only, in the header" while carrying the words How it works on 105 screens.
+    A row that describes WHERE a control sits will collect anything that sits there.</i></p>
+    <p class="tk-lab tk-bad"><b>Never add a face for a single element.</b> <i>The strong ring is a
+    modifier and not a ninth face, because it changes one value for one head. A face is a new ground,
+    and there are six.</i></p>
+    <p class="tk-note">The second one is the load-bearing half and it cost this component a whole
+    census row. <b>A group named for a place fills up with whatever is in that place</b>: the logo left
+    the same row before the How-it-works pill did, for the same reason. Sort by what a control IS, and
+    an icon button is a press whose entire content is a mark.</p>
+  </section>
+
+  <!-- ============================================================== closing -->
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="vitrine.html#iconbtn">the atoms page</a>.
+    The stylesheet and the argument for every value: <code>components/iconbtn.css</code>, which is
+    where all six kinds arrived on 2026-08-06 and became the first atom on the map to reach a distance
+    of zero. The deleted stand's writing on this component:
+    <code>docs/kit-archive/authored/iconbtn.md</code>. <b>The counts on this page were taken on
+    2026-08-08 and the file's own comments carry the counts of two days earlier</b>: 908 placements in
+    six files, then 836 adopted, against 1,361 measured today across eight faces. The difference is
+    not drift in the product, it is a wider net: this page counts <code>.bal-swap</code> and
+    <code>.bal-add</code> and every anchor.</p>
+  </section>
+
+</div>
+</body>
+</html>

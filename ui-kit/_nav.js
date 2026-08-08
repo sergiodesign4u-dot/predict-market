@@ -17,9 +17,11 @@
    list hand-copied into 106 pages, 1,339 KB of it, and `wireframes` carries its
    own into 104, 1,247 KB. Neither has drifted, and neither could have stayed in
    step by hand: `_resync_sidebar.py` held them, and it was deleted too. The kit
-   has seven pages and will have nine. Nine copies of one list is nine edits for
-   every row, and the root rule says a fact written twice will drift. So the list
-   is written once, here, and no page of the stand declares any part of it.
+   had seven pages when this was written, has eleven now and will have twelve.
+   Twelve copies of one list is twelve edits for every row, and the root rule says
+   a fact written twice will drift. So the list is written once, here, and no page
+   of the stand declares any part of it. THE SENTENCE ABOVE HAS BEEN CORRECTED
+   TWICE ALREADY, which is the argument standing up on its own.
 
    THE STAND PAGE DECLARES NOTHING, not even its own name. It carries an empty
    `<aside class="sidebar" id="rmSidebar">` and loads this file.
@@ -86,8 +88,8 @@ window.KIT_NAV = [
     label: 'In depth',
     items: [
       { label: 'Button',      page: 'button.html',  done: true,  note: '902' },
-      { label: 'Icon button', page: 'iconbtn.html', done: false, next: true },
-      { label: 'Chip',        page: 'chip.html',    done: false }
+      { label: 'Icon button', page: 'iconbtn.html', done: true,  note: '1,361' },
+      { label: 'Chip',        page: 'chip.html',    done: false, next: true }
     ]
   },
   {
@@ -124,8 +126,9 @@ window.KIT_NAV = [
 
     var file = (location.pathname.split('/').pop() || 'overview.html');
     /* The tally counts STAND PAGES, so the document groups are out of it and
-       overview.html, which is not a row of any group, is in it. A count that
-       included the three reports would say 10 of 12 and mean nothing. */
+       overview.html, which is not a row of any group, is in it. Counting the four
+       reports as pages would make it 15 of 16 and mean nothing: a report is done
+       or it does not exist. */
     var total = 1, done = 1;
     window.KIT_NAV.forEach(function (g) {
       if (g.kind === 'doc') return;

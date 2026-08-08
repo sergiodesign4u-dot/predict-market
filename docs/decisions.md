@@ -44,7 +44,68 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
-## 2026-08-08 - The button gets a page of its own, and the level rule is refined rather than dropped
+## 2026-08-08 - The icon button's page, and one face of eight moves
+
+Second of the three in-depth pages. `ui-kit/iconbtn.html`, eight sections, every face a live pair in
+both themes, and **the page paid for itself twice**.
+
+### What it measured
+
+**1,361 placements on 106 painted screens**, over eight faces. The split matters more than the
+total: **763 are `<button>` and 598 are `<a>`**, against this component's neighbour on the
+in-depth list, `button`, where all 902 are buttons and none is a link. That is the difference
+between a control family and a mark that is often a destination.
+
+| face | worn | where |
+|---|---|---|
+| `.icon-btn-lift` | 525 | the footer's social row, five per screen |
+| plain `.icon-btn` | 242 | the header, and only the header |
+| `.icon-btn-photo` | 228 | a sheet close |
+| `+ .icon-btn-ring-strong` | 105 | the How-it-works sheet's close |
+| `.icon-btn-bare` | 84 | a card's caption row |
+| `.bal-swap` / `.bal-add` | 73 / 73 | the header's balance cluster |
+| `.icon-btn-tile` | 27 | the event head's toolbar |
+| `.icon-btn-small` | 4 | a toast |
+
+### The first finding: one face of eight answers the pointer
+
+Read at 390 in both branches with every dialog forced open. **Only the plain circle moves, 36 to
+44.** `.icon-btn-bare` is 44 in both because it sets the floor itself; the other six do not move at
+all, four of them because the touch floor in `base.css` excludes them by name.
+
+**Every face clears WCAG 2.5.8's 24x24 and four of the eight do not clear this project's 44.** That
+is backlog 39 and it is open on purpose, but the shape of it was not legible before: it reads as an
+oversight when the faces are apart and as a decision when they are together, because the four are
+exactly the four whose ground would be resized by it.
+
+### The second finding: a face named for a ground it does not stand on
+
+**All 333 `.icon-btn-photo` are `.sheet-close` inside a `<dialog>`, and what is behind them is
+`.sheet-head`, which paints a brass radial gradient.** Not one of them stands on a photograph.
+
+The name is deliberate and `components/iconbtn.css` says why: what defines the face is the three
+on-photo roles it reads, `--scrim-photo`, `--line-on-photo` and `--text-on-photo`, and a dialog head
+is the same problem, a ground the control cannot predict. **The page states both halves rather than
+leaving it as a smell**, because the next person to meet the class will read the name before the
+comment. The specimen therefore stands on the event photograph and not on the plate: a face defined
+by an unpredictable ground cannot be shown on a predictable one.
+
+### The sentence the eight faces turned out to be for
+
+**A face here is an answer to the GROUND, not a variation on a circle.** Six grounds, eight faces,
+and the two extra are modifiers that change one value each. That sentence was already in the
+stylesheet from the migration of 2026-08-06; what the page adds is that it can be checked, because
+the eight stand side by side and the reader can see that the tile has a ground and the bare mark has
+none for reasons that are about what is underneath them.
+
+### Two corrections in the registry, made because the page forced a recount
+
+`_nav.js` said "The kit has seven pages and will have nine" and its tally comment used a worked
+example of 10 of 12. Both were true when written and neither is now. They say eleven and twelve, and
+**the first one now records that it has been corrected twice**, which is the argument for writing a
+count down at all standing up on its own.
+
+`chip.html` is the last of the three and is not started.
 
 The question that produced the entry below produced this one too: where did the per-component pages
 go. The pointers were the defect; **this is the part of the question that was a real gap.**
