@@ -44,6 +44,66 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - The trust strip leaves, and the screen was carrying the argument against the stylesheet
+
+Backlog 57. `.feed-trustbar` stood in the markup of **105 of the 106 painted screens**, 210 items
+inside them, and the last line of `components/trustbar.css` was `.feed-trustbar{display:none}`. So
+the component was present 105 times and drawn 0 times, and the only record of that decision was one
+line at the bottom of a file.
+
+### The line was not the whole story, because the markup argued the other way
+
+Above the block, on all 105, in a comment: *"Trust cue near the action (critique P2): trust is the
+persona's #1 driver, surfaced above the feed and on the logged-out first paint, **not only in the
+footer**."* One hand added the strip because the footer was judged not to be enough; another hand
+switched it off. **Neither hand wrote the second decision down, so the file and the markup disagreed
+in writing for as long as both were there**, and a reader meeting either one alone would have
+believed it.
+
+### Two readings in the row were wrong, and the measurement corrected both
+
+The row said the rules were not dead code because **the grey tree still drew the strip**. It did
+not: `wireframes/` carries **0** `.feed-trustbar`. The grey tree answers the same question with two
+`hero-trust` tiles inside the hero, so the strip existed in one tree and rendered in neither.
+
+And the row put the decision as "either the line becomes a comment or the rules go", as though the
+strip's content were unique to it. It is not. **The same two sentences are said, drawn, on the same
+screens, twice**: the three tiles in the footer carry both plus a third, on all 105 in both trees,
+and on `event-feed.html` the hero carries both again, **using the same two sprite marks the strip
+used**, `#i-shield-b` and `#i-verified-b`. On the main feed the strip would have been the third copy
+of one sentence on one page.
+
+That is this repository's own test for a thing switched off, and it is the test `.opt-sel-tag`
+passes and the strip fails: **does the same screen say it another way.** The tag stays off because
+the paint says "chosen" in colour and there is nowhere else it is said; the strip goes because the
+footer says it in words twelve inches lower.
+
+### What left, and the proof it took nothing with it
+
+11 rules and 2 icon rules from `trustbar.css`, and the block plus its comment from 105 files, swept
+with a throwaway script written in the scratchpad and deleted. Five classes stopped existing:
+`.feed-trustbar`, `.ft-inner`, `.ft-item`, `.ft-ic`, `.ft-sep`, all of them **100 per cent in
+`ui-visual/` and 0 in the kit and the grey tree**.
+
+Measured with two trees, the pre-change one served from a second origin: **106 painted screens at
+390 and 1280 in both themes, 424 page pairs, 428,864 element readings** over 38 computed properties
+and the box. **0 differences.** And in the before tree, over 420 renders, **4,200 strip elements,
+every one of them a 0x0 box**: the component was as absent from the page as it now is from the file.
+
+### The instrument defect, and it is the ninth of this campaign
+
+The first run reported **92 pages different** and the samples looked identical. They were not:
+`backgroundImage` computes to an **absolute** URL, so every element with an image differed by the
+port the tree was served from. A before-and-after across two origins has to normalise the origin,
+or it measures its own instrument. Normalised, the same 424 pairs read 0.
+
+Two symbols in each page's sprite, `#i-shield-b` and `#i-verified-b`, are now defined and unused on
+104 screens and used on one. That is the sprite's existing shape rather than a new defect:
+`#i-seo-chart` was already defined and unused on 104, and five category marks on 48 each. Filed as
+backlog 69 so the sprite is decided once rather than per component.
+
+---
+
 ## 2026-08-08 - The frame class comes off the dialog, and the row that opened it undercounted by 22
 
 Backlog 68, opened by the wrapper sweep and closed here. The row said "two attributes in one file".

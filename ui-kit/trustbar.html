@@ -18,47 +18,61 @@
   <div class="tk-hero">
     <h1>Trust bar</h1>
     <p>Level 2. The component that carries the second design principle: <b>trust is stated, not
-    implied</b>. Three claims, each with a source, on a plate of their own. <b>525 items on 105
-    painted screens, and 210 of them draw nothing at all.</b> Measured 2026-08-08 in a browser, at
-    390 and 1280.</p>
+    implied</b>. Three claims, each with a source, on a plate of their own. <b>315 items on 105
+    painted screens, one face, and it draws.</b> Measured 2026-08-08 in a browser, at 390 and 1280.
+    <b>It had two faces on the morning of that day and 210 of the items drew nothing</b>, which is
+    what section 2 is about.</p>
     <div class="tk-badges">
-      <span class="tk-badge">2 faces</span>
-      <span class="tk-badge">315 footer items</span>
-      <span class="tk-badge">210 strip items</span>
-      <span class="tk-badge">1 face switched off</span>
+      <span class="tk-badge">1 face</span>
+      <span class="tk-badge">315 items</span>
+      <span class="tk-badge">105 screens</span>
       <span class="tk-badge">0 controls</span>
+      <span class="tk-badge">2 faces to 1</span>
     </div>
   </div>
 
   <section class="tk-sec" id="why">
     <h2 data-n="1">What this page is for</h2>
     <p class="tk-note">The level and its reason stay on
-    <a href="molecules.html#trustbar">the molecules page</a>. What needs the room here is that this
-    component has two faces and <b>one of them is in the markup of every screen and on none of
-    them</b>, which is a fact no shelf can hold and no stylesheet reader would find.</p>
+    <a href="molecules.html#trustbar">the molecules page</a>. What needs the room here is the second
+    face this component had until 2026-08-08: <b>it was in the markup of every screen and on the
+    screen of none</b>, which is a fact no shelf can hold and no stylesheet reader would find.</p>
   </section>
 
   <section class="tk-sec" id="dead">
-    <h2 data-n="2">The strip is present 105 times and drawn 0 times</h2>
+    <h2 data-n="2">THE SECOND FACE WAS PRESENT 105 TIMES AND DRAWN 0 TIMES</h2>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
         <thead><tr><th>face</th><th>in the DOM</th><th>computed display</th><th>drawn</th></tr></thead>
         <tbody>
-          <tr><td><code>.feed-trustbar</code></td><td><b>105</b>, one per screen</td><td><code>none</code>, on all 105, at 390 and at 1280</td><td><b>0</b></td></tr>
-          <tr><td><code>.footer-trust</code></td><td>105</td><td><code>block</code></td><td>105</td></tr>
+          <tr><td><code>.feed-trustbar</code>, the strip above the feed</td><td><b>105</b>, one per screen</td><td><code>none</code>, on all 105, at 390 and at 1280</td><td><b>0</b></td></tr>
+          <tr><td><code>.footer-trust</code>, the three tiles</td><td>105</td><td><code>block</code></td><td>105</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="tk-why">The last line of the stylesheet is
-    <code>.app-case .feed-trustbar{display:none}</code>, and every painted screen carries
-    <code>app-case</code>. So <b>eleven rules, 210 items and two icon rules are maintained for a face
-    that the painted tree never shows</b>, and they are not dead code: the grey tree still draws the
-    strip, because <code>wireframes/</code> links nothing from <code>components/</code>.</p>
-    <p class="tk-note"><b>That makes it a decision with no note rather than a bug.</b> Somewhere
-    between the strip above the feed and the plate in the footer, the product chose the footer, and
-    the way it chose was one line at the bottom of a file. A person reading the census sees 105
-    placements; a person reading the screens sees none. <code>docs/backlog.md</code> 57 asks for the
-    line to be a note or the rules to go.</p>
+    <p class="tk-why">The last line of the stylesheet was <code>.feed-trustbar{display:none}</code>,
+    and it was the whole record of a decision. <b>Eleven rules, 210 items and two icon rules were
+    maintained for a face the painted tree had never once shown.</b></p>
+    <p class="tk-lab tk-bad"><b>A component switched off with one line and no note is a decision
+    nobody can read.</b> <i>A person reading the census sees 105 placements. A person reading the
+    screens sees none. Neither of them can find out which one was meant.</i></p>
+    <p class="tk-why"><b>And the screen still carried the argument FOR it, above the markup, on all
+    105:</b> <i>"Trust cue near the action (critique P2): trust is the persona's #1 driver, surfaced
+    above the feed and on the logged-out first paint, not only in the footer."</i> So one hand added
+    the strip because the footer was judged not enough, another hand switched it off, and the file
+    and the markup disagreed in writing for as long as both were there.</p>
+    <p class="tk-note"><b>The strip went, and the test it failed is the one this repository already
+    uses for a hidden thing: does the same screen say it another way.</b> It does, twice. The three
+    tiles below carry both of the strip's sentences and a third, on the same 105 screens, in both
+    trees; and on <code>event-feed.html</code> the hero says both again as two
+    <code>hero-trust</code> tiles. The strip would have been the third copy of one sentence on one
+    page. Set against <code>.opt-sel-tag</code>, which is switched off the same way and stays,
+    because there the paint says the same thing in colour and there is nowhere else it is said.</p>
+    <p class="tk-note"><b>One reading in the row was wrong and the measurement corrected it.</b>
+    <code>docs/backlog.md</code> 57 said the grey tree still drew the strip, so the rules were not
+    dead. It did not: <code>wireframes/</code> carried <b>0</b> <code>.feed-trustbar</code> and
+    answered the same question with hero tiles instead. The strip existed in one tree and rendered in
+    neither.</p>
   </section>
 
   <section class="tk-sec" id="face">
@@ -125,8 +139,12 @@
   <section class="tk-sec" id="antirule">
     <h2 data-n="6">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never switch a face off with one line and no note.</b> <i>Eleven
-    rules and 210 items are maintained here for a strip the painted tree has never drawn, and the
-    only record of that decision is <code>display:none</code> at the bottom of the file.</i></p>
+    rules and 210 items were maintained here for a strip the painted tree never drew, and the only
+    record of that decision was <code>display:none</code> at the bottom of the file, while the
+    markup above it still carried the reason the strip was added.</i></p>
+    <p class="tk-lab tk-bad"><b>Never say one sentence three times on one screen.</b> <i>The USDC
+    line stood in the hero, in the strip and in the footer of the same feed. A claim repeated is not
+    a claim reinforced, it is a claim nobody trusted the first time.</i></p>
     <p class="tk-lab tk-bad"><b>Never let this component say something it cannot back.</b> <i>The
     moment a fourth item is added without a source line, the component stops being the trust bar and
     becomes an advert.</i></p>
@@ -137,7 +155,7 @@
     <p class="tk-note">The level and its reason: <a href="molecules.html#trustbar">the molecules
     page</a>. The stylesheet: <code>components/trustbar.css</code>. The principle:
     <code>CLAUDE.md</code>, design principle 2. The sentences: <code>voice/docs/microcopy.md</code>.
-    The open row: <code>docs/backlog.md</code> 57.</p>
+    Why the second face left: <code>docs/decisions.md</code>, 2026-08-08, backlog 57 closed.</p>
   </section>
 
 </div>

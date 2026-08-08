@@ -57,7 +57,7 @@ Uses are elements carrying one of the component's own classes across the 41 scre
 
 | Component | Uses | Declaration |
 |---|---|---|
-| `trustbar` | 451 | **HOLDS its own items**, three of them, each a mark and a line. The arithmetic reads 1 because every class in it is its own. Filed as an atom in `index.css` and it is not one |
+| `trustbar` | 451 | **HOLDS its own items**, three of them, each a mark and a line. The arithmetic reads 1 because every class in it is its own. Filed as an atom in `index.css` and it is not one. **The count above is 2026-08-07 and the component lost a face on 2026-08-08**: `.feed-trustbar` with `.ft-inner`, `.ft-item`, `.ft-ic` and `.ft-sep`, 7 elements on every anchor screen, stood in the markup and was `display:none` on all of them. The number is left as it was read rather than corrected, because a real one is a measurement and not a subtraction. Backlog 57 |
 | `market` | 200 | **HOLDS its own rows.** Same blind spot: a block of question, rule and source, built from its own names |
 | `comments` | 119 | **HOLDS** `button`, `chip` |
 | `filters` | 91 | **HOLDS** its own panel, its list and the labelled options |
