@@ -98,15 +98,26 @@
   </section>
 
   <section class="tk-sec" id="count">
-    <h2 data-n="4">31 rows and 27 thumbnails</h2>
-    <p class="tk-why"><b>Four rows in the product have no photograph.</b> The rule that draws the
-    thumbnail sets a fixed 46 square with a background image, so a row without one loses its left
-    column and its question starts 58px further left than the three above it. It is the shape of an
-    absent value rather than a broken one: <b>a missing image is not a grey box here, it is a
-    different layout</b>.</p>
-    <p class="tk-note">Which of the two is right is a content question and not a CSS one. Either
-    every related market carries an image, or the component gains a placeholder that holds the
-    column. <code>docs/backlog.md</code> 60.</p>
+    <h2 data-n="4">31 rows, 27 thumbnails, and 0 rows misaligned</h2>
+    <p class="tk-why"><b>Four rows in the product have no photograph, and this page said they were
+    58px out of line with the rows above them. Measured in a browser on 2026-08-08, they are not.</b>
+    All four are on <code>terms.html</code>, they are the whole of that list, and <b>not one of them
+    is a market</b>: the block is headed "The other documents" and the rows read
+    <i>Privacy Policy / not built</i>. A list where no row has a thumbnail is internally consistent,
+    so every question in it starts at the same 68 at 390 and the same 586.5 at 1280.</p>
+    <p class="tk-lab tk-bad"><b>A count without a grouping is a defect looking for a screen.</b>
+    <i>"4 of 31 rows have no thumbnail" was read from the source and was true. What it left out is
+    that the 4 are four of four on one screen and the 27 are 27 of 27 on nine others, which is the
+    difference between a broken layout and two lists that each know what they are.</i></p>
+    <p class="tk-why"><b>The arrangement that DOES break is a mixed list, and it was built to check.</b>
+    Cloning one row into the terms list and giving it a thumbnail puts that row's question at 126
+    against the other four at 68, and at 644.5 against 586.5: <b>58px, at both widths, exactly the
+    number the row named.</b> That arrangement exists nowhere in the product.</p>
+    <p class="tk-note"><b>So the contract is written rather than a rule added.</b> The thumbnail is
+    optional and <b>the LIST decides</b>: every row carries one or no row does. A rule for a mixed
+    list would be a rule with no reader, and the day a market genuinely has no photograph the
+    placeholder is a thing to design rather than a thing to guess now.
+    <code>docs/backlog.md</code> 60, closed.</p>
   </section>
 
   <section class="tk-sec" id="rule">
@@ -121,9 +132,9 @@
     <h2 data-n="6">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never put the press on the list item.</b> <i>The ground would land
     outside the link, which is the part a finger is actually on.</i></p>
-    <p class="tk-lab tk-bad"><b>Never draw a fixed column that some rows do not fill.</b> <i>Four of
-    31 have no thumbnail, and they do not look like a row with a missing picture, they look like a
-    different component.</i></p>
+    <p class="tk-lab tk-bad"><b>Never mix a row with a thumbnail and a row without one in the same
+    list.</b> <i>Measured at 58px of misalignment at both widths. The column comes from the child, so
+    a row with no child has no column, and the reader sees two components rather than one list.</i></p>
     <p class="tk-lab tk-bad"><b>Never let this plate become a second feed.</b> <i>It is a way out of
     a dead end, three or four rows deep; a list that scrolls is the feed's job and the feed already
     exists.</i></p>
@@ -134,7 +145,8 @@
     <p class="tk-note">The level and its reason: <a href="molecules.html#related">the molecules
     page</a>. The stylesheet: <code>components/related.css</code>. The chip that "See more" is:
     <a href="chip.html">chip</a>, and its twin at the foot of a feed:
-    <a href="loadmore.html">load more</a>. The open row: <code>docs/backlog.md</code> 60.</p>
+    <a href="loadmore.html">load more</a>. Why the row closed with no code change:
+    <code>docs/decisions.md</code>, 2026-08-08.</p>
   </section>
 
 </div>

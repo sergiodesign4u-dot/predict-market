@@ -41,11 +41,12 @@
     <h1>Patterns</h1>
     <p>The fourth rung, and <b>the only one whose criterion is repetition rather than nesting</b>. A
     pattern is a composition that stands on three screens or more, adds no styles of its own, carries
-    no colour, and imports last. Six files, 181 lines, <b>59 declarations</b> between them. This page
-    checks that contract against the files rather than restating it.</p>
+    no colour, and imports last. Six files, 218 lines, <b>53 declarations</b> between them, <b>re-counted
+    on 2026-08-08</b> after the action bar went from 13 declarations to 7. This page checks that
+    contract against the files rather than restating it.</p>
     <div class="tk-badges">
       <span class="tk-badge">6 patterns</span>
-      <span class="tk-badge">59 declarations</span>
+      <span class="tk-badge">53 declarations</span>
       <span class="tk-badge">0 colour</span>
       <span class="tk-badge">0 generators</span>
     </div>
@@ -101,7 +102,7 @@
     <div class="tk-tblwrap"><table class="tk-tbl">
       <thead><tr><th>File</th><th>Decl</th><th>Props</th><th>Every property it declares</th></tr></thead>
       <tbody>
-        <tr><td>action-bar</td><td>13</td><td>9</td><td>bottom, display, flex, gap, margin-top, padding, position, width, z-index</td></tr>
+        <tr><td>action-bar</td><td><b>7</b></td><td><b>6</b></td><td>display, flex, gap, margin-top, padding, width</td></tr>
         <tr><td>browse-shell</td><td>19</td><td>12</td><td>align-items, display, flex, flex-direction, gap, margin-block, margin-bottom, margin-inline, max-width, min-width</td></tr>
         <tr><td>card-grid</td><td>4</td><td>4</td><td>align-items, display, gap, grid-template-columns</td></tr>
         <tr><td>detail-shell</td><td>8</td><td>7</td><td>align-items, display, flex, flex-direction, gap, min-width</td></tr>
@@ -109,7 +110,7 @@
         <tr><td>position-list</td><td>3</td><td>3</td><td>display, flex-direction, gap</td></tr>
       </tbody>
     </table></div>
-    <p class="tk-note"><b>59 declarations, and not one of them is a colour, a face, a border or a
+    <p class="tk-note"><b>53 declarations, and not one of them is a colour, a face, a border or a
     surface.</b> No <code>color</code>, no <code>background</code>, no <code>border</code>, no
     <code>fill</code>, no <code>box-shadow</code>, no <code>opacity</code>, no
     <code>font-family</code>, no <code>font-size</code>, no <code>font-weight</code>. What is there is
@@ -563,35 +564,37 @@
   <section class="tk-org" id="action-bar">
     <h2>action-bar</h2>
     <ul class="tk-holds">
-      <li>patterns/action-bar.css</li><li>33 lines</li><li>13 declarations</li><li>3 screens</li>
+      <li>patterns/action-bar.css</li><li>51 lines</li><li>7 declarations</li><li>3 screens</li>
       <li class="tk-decl">ASSEMBLED FROM button</li>
       <li class="tk-on">a pattern by one screen, and the file says so</li>
       <li><a href="action-bar.html">its own page</a></li>
     </ul>
-    <p class="tk-state"><b>display</b> flex <b>position</b> sticky, static on .static and .flat
-      <b>bottom</b> 0 <b>padding</b> 12, then 8 0 0 <b>gap</b> 8 <b>margin-top</b> 12
-      <b>z-index</b> var(--z-dock) <b>&gt;a, &gt;button</b> flex 1 <b>&gt;a&gt;button</b> width 100%</p>
+    <p class="tk-state"><b>display</b> flex <b>padding</b> 8 0 0 <b>gap</b> 8
+      <b>margin-top</b> 12 <b>&gt;a, &gt;button</b> flex 1 <b>&gt;a&gt;button</b> width 100%</p>
     <p class="tk-note"><b>Three screens is the threshold and this clears it exactly.</b> The file says
     that out loud rather than rounding up, which is the right way to carry a number that could fall:
-    lose one of my-profile, wallet or how-it-works and the rule is that these thirteen declarations
-    go back to being markup.</p>
-    <p class="tk-note"><b>Its surface stays in <code>account.css</code>, and that is the one exception
-    this rung makes.</b> The bar's stone, its top hairline and its two rounded corners are not the
-    page plate, so they do not follow the frame into <code>base.css</code>, and they are not
-    composition, so they do not come here. They are the paint of a component. The same split runs
-    through <code>.flat</code>: the position is here and the three declarations that take the surface
-    away are there.</p>
+    lose one of my-profile, wallet or how-it-works and the rule is that these seven declarations go
+    back to being markup.</p>
+    <p class="tk-why"><b>THE ONE EXCEPTION THIS RUNG MADE HAS DISSOLVED, 2026-08-08.</b> The bar's
+    surface used to stay in <code>components/account.css</code>: a stone, a top hairline and two
+    rounded top corners are not the page plate and are not composition either, so they went with the
+    component that drew them, and <code>.flat</code> was split across two files, the position here and
+    the three declarations that removed the surface there. <b>Walked on the screens, the surface stood
+    once of three placements and its shape was an open-bottomed dock on a page that does not
+    dock.</b> It was deleted, <code>account.css</code> emptied and was deleted with it, and this file
+    now holds the whole of the bar. The rung has no exception left to declare.
+    <a href="action-bar.html#one">The reasoning is on the page</a>, backlog 63.</p>
     <div class="tk-pairv">
       <div class="tk-th">Vault, dark</div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
-        <div class="cta-bar flat">
+        <div class="cta-bar">
           <button class="btn btn-primary btn-md" type="button">Add funds</button>
           <a href="#"><button class="btn btn-secondary btn-md" type="button">Open Wallet</button></a>
         </div>
       </div>
       <div class="tk-th">Daylight, light</div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
-        <div class="cta-bar flat">
+        <div class="cta-bar">
           <button class="btn btn-primary btn-md" type="button">Add funds</button>
           <a href="#"><button class="btn btn-secondary btn-md" type="button">Open Wallet</button></a>
         </div>
@@ -610,8 +613,11 @@
 
   <section class="tk-sec" id="closing">
     <h2 data-n="04">The rung is clean, and what is still open on it</h2>
-    <p class="tk-note"><b>The contract holds where it counts.</b> 59 declarations, 16 properties, and
-    every one of them an arrangement: no colour, no face, no border, no surface, in any of the six.
+    <p class="tk-note"><b>The contract holds where it counts.</b> 53 declarations, 18 distinct
+    properties, and every one of them an arrangement: no colour, no face, no border, no surface, in
+    any of the six. <b>The totals were re-taken on 2026-08-08</b> with every <code>prop:value</code>
+    outside a comment counted, including inside a media query; the 59 and the 16 recorded earlier the
+    same day were read another way, and a count is only as good as the reader named beside it.
     Five of seven screen counts are exact and two are one screen light because the tree grew from 105
     to 106.</p>
     <p class="tk-note"><b>Three things are open and each is written down rather than fixed here.</b>

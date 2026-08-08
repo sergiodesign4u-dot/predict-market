@@ -44,6 +44,114 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - The action bar becomes one face, a component is deleted for it, and the outcome becomes a modifier
+
+Backlog 63 and 66, measured together and shipped together.
+
+### 63. Three placements, three faces, and the declared one was worn by nobody
+
+`.cta-bar` stands on three painted screens and that is the pattern threshold exactly. Read on those
+screens: the pattern declared `position:sticky` and **0 placements used it**; `.static` was worn by
+the wallet and `.flat` by how-it-works and my-profile. So **two modifiers between them covered every
+placement in the product, and the thing they modified was the thing nobody used.**
+
+The row put it as a binary: either the plate is the face and two screens are wrong, or the flat row
+is the face and the plate is the variant. **What answered it was the shape of the stone rather than
+the count.** The stone is what a bar needs when it FLOATS, a ground and a top edge against content
+scrolling underneath, and the rule said so itself: `border-radius` on the **top two corners only**
+and a border on the **top side only**. An open-bottomed dock. Nothing in this product docks, so on
+the wallet it was a dock shape sitting mid-column with its bottom cut off, under a card and above a
+line of small print. Spreading it to the other two would have meant redrawing it, because the same
+open bottom would have been wrong twice more.
+
+**So the bar is one face: static, no stone, padding above.** `.flat` and `.static` are gone.
+
+### The consequence I did not see when I recommended it, and it is the whole of a component
+
+`components/account.css` was **two rules**: the stone, and the three declarations `.flat` removed it
+with. With the stone deleted the file was comments. **A component with no face left is not a
+component with a small stylesheet, it is a name**, so it went with its `@import`, its shelf section
+on `molecules.html`, its row in the inventory and its page in the kit. **The vitrine is 54 pages, not
+55**, and the tally in the panel is computed from `_nav.js` so it said so on its own.
+
+Its writing is not lost: `ui-kit/action-bar.html` absorbed it, which is where the rest of the bar
+already was. The bar had been two components and two stylesheets since the pattern cut, and both kit
+pages complained about the split in prose. **The exception that cut declared, that a component keeps
+its own paint, has nothing left to except.**
+
+**What this costs is named rather than hidden: there is no sticky action bar in the system any
+more.** The day a screen needs one it is designed rather than inherited, and it will need the stone
+back with it, because the two were always one decision. A capability nothing used, against a default
+nobody wore.
+
+### 66. The last container scope, and the argument for it was real
+
+`.outcome-dialog`, `.win-dialog` and `.loss-dialog` recoloured the reconcile box from outside: **six
+rules in `notice.css` and one in `input.css`, three container scopes across two files**, not the two
+in one file the row recorded. And there was a genuine argument for keeping them, which the row itself
+made: a face lent by a container is a defect, but a dialog's OUTCOME reaching its content is a state
+flowing the right way.
+
+**Two readings ended it.** The painted tree drew 4 won boxes, 1 lost and 2 plain; **the grey tree
+carried 6 and not one had an outcome variant**, because a grey page has no colour to say it with. A
+state that exists in one tree only is not a state, it is a paint job. And **a specimen on the kit
+cannot be put inside a win dialog**, so two of the component's three faces could not be stood by
+anybody. A face that cannot be stood cannot be checked, which is the same argument that closed 67.
+
+It is `.reconcile-box.rec-won` and `.reconcile-box.rec-lost` now, in both trees, grey first, the
+habit `position.css` already had with `.pos-side.pos-won`. **The centred arrangement came with them
+and that is a reading rather than a guess**: `.outcome-dialog .reconcile-box` centred every box in an
+outcome sheet, every box in an outcome sheet has an outcome, and the two sets matched exactly, 5 and
+5. Compound selectors rather than a bare `.rec-won`, **because a single-word modifier in the global
+namespace is what `.flat` was**, and `.flat` is the other thing this day deleted.
+
+### The proof
+
+Two trees on two origins, the before tree exported from `ee21d7a`: **106 painted screens at 390 and
+1280 in both themes, 424 page pairs, 428,864 element readings** over 33 computed properties and the
+box.
+
+**Three files differ and they are the three that carry a bar.** how-it-works and my-profile change
+**one element each and nothing visible**: `bottom` from `0px` to `auto` and `z-index` from `4` to
+`auto`, both inert on a static element, and the box stays 293x55 and 259x55 to the pixel. The wallet
+changes **202 elements**, which is the bar and everything under it: **293x72 to 293x55 at 390 and
+911x72 to 911x55 at 1280**, ground `rgb(21,23,27)` to transparent, a 1px top hairline to none, the
+corners from `10px 10px 0 0` to 0, padding 12 to `8px 0 0`, and the page 17px shorter.
+
+**The outcome boxes read 0 differences on all five screens**, which is what a modifier that
+reproduces a container's face exactly is supposed to do.
+
+### 60. The row was measured and there was nothing there
+
+The row said four related rows of 31 have no thumbnail and that a row without one "starts 58px
+further left than the rows above it". Measured at both widths: **all four are on `terms.html`, they
+are the whole of that list, and every question in it starts at the same 68 at 390 and the same 586.5
+at 1280.** None of the four is a market: the block is headed "The other documents" and the rows read
+*Privacy Policy / not built*.
+
+**A count without a grouping is a defect looking for a screen.** "4 of 31" was read from the source
+and was true; what it left out is that the 4 are four of four on one screen and the 27 are 27 of 27
+on nine others.
+
+The 58px is real and was built to check it: cloning one row into the terms list and giving it a
+thumbnail puts that row's question at 126 against 68, and at 644.5 against 586.5, at both widths.
+**That arrangement exists nowhere in the product.** So the close is a contract rather than a rule:
+the thumbnail is optional and **the list decides**, every row or no row. A rule for the mixed case
+would be a rule with no reader, and the day a market genuinely has no photograph the placeholder is
+something to design rather than to guess now. Written into `components/related.css` and
+`ui-kit/related.html`; **no CSS changed.**
+
+### And the patterns rung was re-counted, because it had to be
+
+`patterns.html` published 59 declarations, 16 properties and 181 lines across the six files. The
+action bar went from 13 declarations to 7, so the totals had to move, and re-reading them with every
+`prop:value` outside a comment counted, media queries included, gives **53 declarations, 18 distinct
+properties, 218 lines**. The 16 does not reconcile with any reading of the old file either, so the
+page now names the reader beside the number. **A count is only as good as the reader named beside
+it.**
+
+---
+
 ## 2026-08-08 - The trust strip leaves, and the screen was carrying the argument against the stylesheet
 
 Backlog 57. `.feed-trustbar` stood in the markup of **105 of the 106 painted screens**, 210 items

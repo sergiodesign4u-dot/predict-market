@@ -30,9 +30,13 @@ and they were the entire atom shelf. So every entry below carries a declaration:
 ## The core, and what is outside it
 
 **40 of the 46 component files stand on the five anchors.** Six do not: `account`, `cookie-consent`,
-`profile`, `toc`, `toggle`, `patterns/action-bar`. They are not deleted and not wrong; they are
+`profile`, `toc`, `toggle`, `patterns/action-bar`. They were not wrong; they were
 **unmeasured by this pass**, and "holds nothing" is not a reading that was taken about them. They
 get a level when the screens that carry them are walked.
+
+**All six were walked on 2026-08-08 and one of them did not survive it.** `account` was deleted the
+same day it was given a level: the reading that shows what a component holds is the reading that can
+show it has nothing left to draw. Its row below carries the account.
 
 ## The declaration
 
@@ -71,7 +75,7 @@ Uses are elements carrying one of the component's own classes across the 41 scre
 | `loadmore` | 1 | **HOLDS** `chip` |
 | `position` | 43 | **HOLDS** `skeleton`. Filed as an organism; it is a row in a list, not a shell |
 | `notice` | 96 | **HOLDS** `button`. Filed as an organism |
-| `account` | 3 | **HOLDS** `button`, 6 of them. Walked 2026-08-08 on the three screens that carry it; two of the three bars wear `.flat`, which removes everything the file draws |
+| ~~`account`~~ | 3 | **HOLDS** `button`, 6 of them. Walked 2026-08-08 on the three screens that carry it; two of the three bars wear `.flat`, which removes everything the file draws. **DELETED the same day.** The walk that gave it a level is the walk that ended it: the file's whole content was the action bar's stone plus the three declarations `.flat` removed it with, the stone stood once of three placements, and its shape, a top border and two top corners, is the surface of a bar that FLOATS over content scrolling under it. Nothing in this product docks. The bar is one face now and the whole of it is `components/patterns/action-bar.css`; the page is `ui-kit/action-bar.html`. Backlog 63 |
 | `cookie-consent` | 1 | **HOLDS** `button`, 3 of them, plus its own rows. Walked 2026-08-08. One banner on one screen, three categories, one locked ON and none disabled |
 | `toc` | 1 | **HOLDS its own rows**, 14 of them, and they are anchors rather than buttons. Walked 2026-08-08. A rail above 900 and a disclosure below it |
 

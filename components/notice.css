@@ -1,5 +1,5 @@
 /* components/notice.css
-   Component: notice. Classes: .inline-error, .protect, .push-actions, .push-banner, .push-msg, .reconcile-box, .spinner-box, .widget-box.
+   Component: notice. Classes: .inline-error, .protect, .push-actions, .push-banner, .push-msg, .rec-lost, .rec-won, .reconcile-box, .spinner-box, .widget-box.
 
    Reads: --bg-control, --bg-surface, --border-hairline, --color-trust, --outcome-no-text, --outcome-yes-text, --result-won, --text-brass, --text-muted, --text-primary, --tint-brass-06, --tint-brass-09, --tint-brass-30, --tint-brass-45
    Stand:  ui-kit/notice.html, and ui-kit/molecules.html#notice for the level and its reason
@@ -53,10 +53,32 @@
 .reconcile-box{border:var(--hairline) solid var(--tint-brass-45);border-radius:var(--radius-10);background:var(--tint-brass-09);color:var(--text-primary);font-size:var(--text-12);line-height:var(--leading-base);padding:var(--space-8)}
 .reconcile-box b,.reconcile-box strong{color:var(--text-brass)}
 .outcome-dialog .protect{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:0}
-.outcome-dialog .reconcile-box{align-items:center;text-align:center;gap:var(--space-4);padding:var(--space-12)}
-.outcome-dialog .reconcile-box strong{font-family:var(--font-display);font-weight:var(--weight-bold);letter-spacing:var(--track-head);line-height:var(--leading-flat)}
-.win-dialog .reconcile-box{border-color:color-mix(in oklab,var(--result-won) 45%,var(--border-hairline));background:color-mix(in oklab,var(--result-won) 12%,var(--bg-surface))}
-.win-dialog .reconcile-box strong{color:var(--outcome-yes-text);font-size:var(--text-24)}
-.loss-dialog .reconcile-box{border-color:var(--border-hairline);background:var(--bg-control)}
-.loss-dialog .reconcile-box strong{color:var(--outcome-no-text);font-size:var(--text-20)}
+/* THE OUTCOME IS A MODIFIER NOW, 2026-08-08, AND IT WAS THREE CONTAINERS.
+   Until today this box took its whole face from the dialog around it:
+   .outcome-dialog for the centred arrangement, .win-dialog for green and
+   .loss-dialog for neutral, six rules here plus one in input.css, three
+   container scopes across two files. The two trees disagreed about what the
+   component even was: the painted tree drew 4 won boxes, 1 lost and 2 plain,
+   and the grey tree carried 6 with NO outcome variant at all, because a grey
+   page has no colour to say it with. A state that only exists in one tree is
+   not a state, it is a paint job.
+   THE STAND IS WHAT DECIDED IT. A specimen on ui-kit/notice.html does not sit
+   inside a win dialog and cannot be made to, so two of this component's three
+   faces could not be put on a shelf by anybody. A face that cannot be stood
+   cannot be checked. The modifier is the repository's own habit, position.css
+   writes .pos-side.pos-won, and the box can now say what it is wherever it
+   stands.
+   THE CENTRED ARRANGEMENT CAME WITH IT, and that is a reading rather than a
+   guess: every box in an outcome sheet has an outcome, so the set matched
+   exactly, 5 and 5. The two plain boxes, on the reconcile sheet and on terms,
+   are not centred and never were.
+   Compound selectors, .reconcile-box.rec-won rather than a bare .rec-won,
+   because a single-word modifier in the global namespace is what .flat was,
+   and .flat is the other thing this day deleted. Backlog 66. */
+.reconcile-box.rec-won,.reconcile-box.rec-lost{align-items:center;text-align:center;gap:var(--space-4);padding:var(--space-12)}
+.reconcile-box.rec-won strong,.reconcile-box.rec-lost strong{font-family:var(--font-display);font-weight:var(--weight-bold);letter-spacing:var(--track-head);line-height:var(--leading-flat)}
+.reconcile-box.rec-won{border-color:color-mix(in oklab,var(--result-won) 45%,var(--border-hairline));background:color-mix(in oklab,var(--result-won) 12%,var(--bg-surface))}
+.reconcile-box.rec-won strong{color:var(--outcome-yes-text);font-size:var(--text-24)}
+.reconcile-box.rec-lost{border-color:var(--border-hairline);background:var(--bg-control)}
+.reconcile-box.rec-lost strong{color:var(--outcome-no-text);font-size:var(--text-20)}
 .spinner-box{border:var(--hairline) dashed var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);padding:var(--space-20);text-align:center;font-size:var(--text-12);line-height:var(--leading-loose)}

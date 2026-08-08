@@ -116,10 +116,18 @@ window.KIT_NAV = [
        reading is a guess wearing a declaration's clothes. They were WALKED on
        2026-08-08, on the six screens that do carry them, containment read from
        the DOM: all three hold something and all three are level 2. The shelf
-       gained three sections the same day and the word came off. */
+       gained three sections the same day and the word came off.
+
+       AND ONE OF THE THREE LASTED A DAY. `account` was deleted later on
+       2026-08-08: its whole stylesheet was two rules, both of them the action
+       bar's stone and its negation, and the walk that gave it a level is the
+       same walk that found the stone worn once of three placements. Its page
+       and its writing are on `action-bar.html` now, where the rest of the bar
+       already was. The tally below is computed from this list, so the panel says
+       54 of 54 without anybody typing a number. Backlog 63. */
     label: 'Molecules',
     items: [
-      { label: 'All molecules', page: 'molecules.html', done: true, note: '17' },
+      { label: 'All molecules', page: 'molecules.html', done: true, note: '16' },
       { label: 'Trust bar',     page: 'trustbar.html',   done: true, note: '525' },
       { label: 'Market',        page: 'market.html',     done: true, note: '9' },
       { label: 'Comments',      page: 'comments.html',   done: true, note: '36' },
@@ -134,7 +142,6 @@ window.KIT_NAV = [
       { label: 'Options',       page: 'options.html',    done: true, note: '52' },
       { label: 'SEO plate',     page: 'seo-plate.html',  done: true, note: '36' },
       { label: 'Load more',     page: 'loadmore.html',   done: true, note: '9' },
-      { label: 'Account',       page: 'account.html',    done: true, note: '3' },
       { label: 'Cookie consent',page: 'cookie-consent.html', done: true, note: '1' },
       { label: 'Contents',      page: 'toc.html',        done: true, note: '14' }
     ]

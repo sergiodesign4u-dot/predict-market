@@ -80,7 +80,11 @@
 @import url("quick.css");
 @import url("comments.css");
 @import url("filters.css");
-@import url("account.css");
+/* account.css was here and was DELETED on 2026-08-08. It held two rules and both
+   were the action bar's stone: the surface a bar needs when it floats, and the
+   three declarations .flat took it away with. Nothing floats, so nothing wore it.
+   The bar is one face now and the whole of it is patterns/action-bar.css.
+   Backlog 63, and the account is in ../docs/decisions.md. */
 @import url("cookie-consent.css");
 /* toc, seo-plate, trustbar and market moved DOWN out of the atom group on
    2026-08-07. Each is built entirely out of its own class names, which is the

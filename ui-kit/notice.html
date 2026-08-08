@@ -48,7 +48,9 @@
           <tr><td><code>.protect.protect-page</code></td><td><b>3</b></td><td>the same sentence standing in a page rather than a sheet</td><td>a brass tint inside a brass edge</td></tr>
           <tr><td><code>.widget-box</code></td><td><b>110</b></td><td>the slot a third-party payment widget will load into</td><td>a DASHED hairline on the control ground at a 10 corner, 160 tall, centred</td></tr>
           <tr><td><code>.inline-error</code></td><td>8</td><td>a failure said where it happened</td><td>a solid hairline on the control ground</td></tr>
-          <tr><td><code>.reconcile-box</code></td><td>7</td><td>the figure to check on a win or a loss</td><td>a stronger brass edge, recoloured by the dialog it stands in</td></tr>
+          <tr><td><code>.reconcile-box</code></td><td>7</td><td>the figure to check, in three faces</td><td>a stronger brass edge when it is plain</td></tr>
+          <tr><td><code>.reconcile-box.rec-won</code></td><td>4</td><td>the payout on a win</td><td>a WON tint inside a won edge, centred, the figure at 24</td></tr>
+          <tr><td><code>.reconcile-box.rec-lost</code></td><td>1</td><td>the figure on a loss</td><td>the control ground inside a hairline, centred, the figure at 20</td></tr>
           <tr><td><code>.spinner-box</code></td><td>7</td><td>a wait</td><td>dashed, 100 tall, loose leading</td></tr>
           <tr><td><code>.push-banner</code></td><td>2</td><td>the one that ASKS: turn on notifications</td><td>a trust tint, and the only face with controls in it</td></tr>
         </tbody>
@@ -72,16 +74,20 @@
       </div>
     </div>
 
-    <p class="tk-subh">the two that carry a figure, and the one that asks</p>
+    <p class="tk-subh">the two that carry a figure, the reconcile box in all three of its faces, and the one that asks</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
         <div class="reconcile-box"><span class="field-label">You get back</span><strong>$248.00</strong></div>
+        <div class="reconcile-box rec-won"><span class="field-label">You were right - you won</span><strong>+$13.20</strong><span>$5.00 stake returned + $8.20 winnings.</span></div>
+        <div class="reconcile-box rec-lost"><span class="field-label">Result</span><strong>-$5.00</strong><span>Your $5.00 stake on YES did not return.</span></div>
         <div class="spinner-box">Checking with the settlement source</div>
         <div class="push-banner"><span class="push-msg">Get told when a market you bet on resolves</span><span class="push-actions"><button type="button" class="btn btn-sm">Turn on</button><button type="button" class="btn btn-ghost btn-sm">Not now</button></span></div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <div class="reconcile-box"><span class="field-label">You get back</span><strong>$248.00</strong></div>
+        <div class="reconcile-box rec-won"><span class="field-label">You were right - you won</span><strong>+$13.20</strong><span>$5.00 stake returned + $8.20 winnings.</span></div>
+        <div class="reconcile-box rec-lost"><span class="field-label">Result</span><strong>-$5.00</strong><span>Your $5.00 stake on YES did not return.</span></div>
         <div class="spinner-box">Checking with the settlement source</div>
         <div class="push-banner"><span class="push-msg">Get told when a market you bet on resolves</span><span class="push-actions"><button type="button" class="btn btn-sm">Turn on</button><button type="button" class="btn btn-ghost btn-sm">Not now</button></span></div>
       </div>
@@ -97,7 +103,9 @@
     <p class="tk-why"><b>The reconcile box is the exception that proves the rule, and it is not an
     exception.</b> It DOES take colour, green on a win and neutral on a loss, and the colour is the
     OUTCOME of a bet rather than the severity of a message. That is the same token doing the same job
-    it does everywhere else in the product.</p>
+    it does everywhere else in the product. <b>Since 2026-08-08 it says so in its own class</b>,
+    <code>.rec-won</code> and <code>.rec-lost</code>, rather than being told by the dialog around
+    it.</p>
   </section>
 
   <section class="tk-sec" id="dashed">
@@ -132,11 +140,24 @@
     <p class="tk-note">The box carries no heading, no mark and no control. <b>It is a sentence with a
     box around it</b>, and it stands on 105 screens because the sentence is the same one every
     time.</p>
-    <p class="tk-lab tk-bad"><b>One container scope is still here and it is a STATE rather than a
-    face.</b> <i>The win and loss overlays recolour the reconcile box, green on a win and neutral on
-    a loss, through <code>.win-dialog</code> and <code>.loss-dialog</code>. That is the dialog's
-    OUTCOME reaching its content, which is a different thing, and the grey tree carries six of these
-    boxes with no outcome variant at all. <code>docs/backlog.md</code> 66.</i></p>
+    <p class="tk-why"><b>THE LAST CONTAINER SCOPE LEFT ON 2026-08-08, AND THE STAND IS WHAT DECIDED
+    IT.</b> Until that day the win and loss overlays recoloured this box from outside, through
+    <code>.win-dialog</code> and <code>.loss-dialog</code>, and there was a real argument for it: a
+    dialog's OUTCOME reaching its content is a state flowing the right way, not a face lent by a
+    container. <b>Two readings ended the argument.</b> The grey tree carried six of these boxes with
+    <b>no outcome variant at all</b>, so a state that existed in one tree only was not a state, it was
+    a paint job. And <b>a specimen on this page cannot be put inside a win dialog</b>, so two of the
+    component's three faces could not be stood by anybody: they are above, side by side, for the first
+    time. <b>A face that cannot be stood cannot be checked.</b></p>
+    <p class="tk-note">It is <code>.reconcile-box.rec-won</code> and <code>.reconcile-box.rec-lost</code>
+    now, in both trees, grey first, which is the habit <code>position.css</code> already had with
+    <code>.pos-side.pos-won</code>. <b>The centred arrangement came with them and that is a reading
+    rather than a guess</b>: <code>.outcome-dialog .reconcile-box</code> centred every box in an
+    outcome sheet, and every box in an outcome sheet has an outcome, so the two sets matched exactly,
+    5 and 5. The two plain boxes, on the reconcile sheet and on terms, are not centred and never
+    were. Compound selectors rather than a bare <code>.rec-won</code>, because a single-word modifier
+    in the global namespace is what <code>.flat</code> was, and <code>.flat</code> is the other thing
+    this day deleted.</p>
   </section>
 
   <section class="tk-sec" id="rule">

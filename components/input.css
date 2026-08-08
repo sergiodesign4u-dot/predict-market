@@ -51,7 +51,7 @@
 .field-label{font-size:var(--text-11);text-transform:uppercase;letter-spacing:var(--track-label);color:var(--text-muted)}
 /* The one context that recolours it, and it is naming a figure that is the good
    news rather than restating what a label looks like. */
-.win-dialog .reconcile-box .field-label{color:color-mix(in oklab,var(--result-won) 45%,var(--text-primary))}
+.reconcile-box.rec-won .field-label{color:color-mix(in oklab,var(--result-won) 45%,var(--text-primary))}
 
 /* -------------------------------------------------------------- the row ---- */
 .amount-row{display:flex;align-items:center;gap:var(--space-8)}

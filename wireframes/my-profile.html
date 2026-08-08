@@ -326,7 +326,7 @@
     .resolution { font-size: 12px; line-height: 1.5; }
     .opt-list { display: flex; flex-direction: column; }
     .preselect-note { border: 1px solid #999; background: #e0e0e0; padding: 6px 8px; font-size: 11px; margin: 0 10px 0; }
-    .cta-bar { position: sticky; bottom: 0; background: #e2e2e2; border: 1px solid #999; padding: 8px 10px; display: flex; gap: 8px; }
+    .cta-bar { background: #e2e2e2; border: 1px solid #999; padding: 8px 0 0; display: flex; gap: 8px; }
     .cta-bar button { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; font-weight: bold; cursor: pointer; }
     @media (min-width: 640px) { .args { flex-direction: row; } .arg-col { flex: 1; } }
 
@@ -492,7 +492,6 @@
   /* ---- ported from the painted twin by port_structure.py ---- */
     /* Layout taken from components/, every colour replaced by the
        wireframe palette. See wireframes/_generators/port_structure.py. */
-    .cta-bar.flat { position: static; padding: 8px 0 0; }
     .pos-record { padding: 0; gap: 0; }
     .ed-oddsbar .track, .md-bar { background: #dcdcdc; }
     .ed-oddsbar .fill { background: #555; }
@@ -926,7 +925,7 @@
             <span class="pos-fig">Cash (available)<b>$92.00</b></span>
             <span class="pos-fig">In-play<b>$50.00</b></span>
           </div>
-          <div class="cta-bar flat">
+          <div class="cta-bar">
             <button class="btn btn-primary btn-md" type="button" data-open="deposit">Add funds</button>
             <a href="wallet.html"><button class="btn btn-secondary btn-md" type="button">Open Wallet</button></a>
           </div>

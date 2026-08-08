@@ -1,26 +1,45 @@
 /* components/patterns/action-bar.css
-   Pattern: the action bar. One or two actions held at the foot of a column,
-   sticky by default and flat where the page has no scroll to hold them against.
+   Pattern: the action bar. One or two actions held at the foot of a column.
 
    Assembled from: button.
    Stand:  ui-kit/action-bar.html, and ui-kit/patterns.html#action-bar for the shelf and the threshold
-   Stands on: 3 ui-visual screens (my-profile, wallet, how-it-works). Three is
+   Stands on: 3 ui-visual screens (how-it-works, my-profile, wallet). Three is
      the threshold and this clears it exactly, which is worth saying out loud
      rather than rounding up: it is a pattern by one screen.
    Moved here from: components/account.css, five rules and half of a sixth, cut
-     and not copied.
-   THE HALF, AND THE EXCEPTION IT MAKES. The bar's own surface stays in
-     account.css: a stone, a hairline along the top edge and two rounded top
-     corners. That is NOT the page plate, so it does not follow .feed-inner into
-     base.css, and it is not composition, so it does not come here. It is the
-     paint of a component, and this is the one place in this step where the rule
-     "composition out, plate to the frame" needed an exception rather than being
-     forced. The same split runs through .flat: the position is here and the
-     three declarations that take the surface away are there.
+     and not copied. On 2026-08-08 the other half came too, and components/account.css
+     was deleted with it. See below.
+
+   ONE FACE, 2026-08-08, AND IT USED TO BE THREE. This file declared
+     position:sticky as the default and offered .static and .flat as ways out of
+     it, and components/account.css drew a stone with a hairline along the top
+     edge and two rounded top corners, which .flat took away again in three
+     declarations. Walked across the three screens that carry a bar: the sticky
+     default was worn by NOBODY, .static by the wallet and .flat by the other
+     two. So the pattern declared a position no placement used and the component
+     drew a surface one placement wore.
+   WHY THE STONE WENT RATHER THAN SPREADING. The stone is not decoration, it is
+     what a bar needs when it FLOATS: a ground and a top edge to separate it from
+     the content scrolling underneath, and its shape says so, `border-radius`
+     on the top two corners only and a border on the top side only. That is an
+     open-bottomed dock. Nothing here docks, so on the wallet it was a dock shape
+     sitting mid-column with its bottom cut off. A face whose reason has gone is
+     not a variant, it is a leftover. Backlog 63, and the account is in
+     ../../docs/decisions.md.
+   WHAT THIS COSTS, SAID OUT LOUD. There is no sticky action bar in the system
+     any more. The day a screen needs one, it is designed rather than inherited,
+     and it will need the stone back with it, because the two were always one
+     decision. That is the trade this file took: a capability nothing used
+     against a default nobody wore.
+
+   A pattern carries no colour, no face, no border and no surface. With
+     account.css gone this file holds the whole of the bar, and the exception the
+     pattern cut once declared, that a component keeps its own paint, no longer
+     has anything to except.
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .cta-bar{display:flex}
-.cta-bar{position:sticky;bottom:0;padding:var(--space-12);gap:var(--space-8);margin-top:var(--space-12);z-index:var(--z-dock)}
+.cta-bar{padding:var(--space-8) 0 0;gap:var(--space-8);margin-top:var(--space-12)}
 .cta-bar>a{flex:1}
 .cta-bar>a>button{width:100%}
 /* And the same sentence for a bare child, which the bar has as often as it has
@@ -30,5 +49,3 @@
    rule it came from, because a button nested inside the anchor above is not a
    flex item of this bar and flex:1 on it means nothing. */
 .cta-bar>button{flex:1}
-.cta-bar.static{position:static}
-.cta-bar.flat{position:static;padding:var(--space-8) 0 0}
