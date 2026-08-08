@@ -52,6 +52,36 @@
     page. <b>The one thing that changes between the two is the heading level</b>: an h1 on the page
     and an h2 in the dialog, because a page has exactly one h1 and a dialog is opened over a page
     that already spent it. Same heading, two levels.</p>
+    <p class="tk-why"><b>And it took a second pass to be true, on 2026-08-08, because the move left
+    the OLD layer above the new one.</b> Six rules of the shape
+    <code>dialog.app-dialog .hiw-*</code> stayed at the top of the file, and at (0,2,2) they
+    out-specified every one of the block's own rules underneath. <b>So inside a sheet the block never
+    once wore its own face</b>, on 105 screens, while the file read as though it did.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>what the block declares</th><th>what the sheet rendered</th><th>elements</th></tr></thead>
+        <tbody>
+          <tr><td><code>.hiw-label</code> 14px display bold, <code>text-transform:none</code></td><td><b>11px UPPERCASE</b> with label tracking</td><td>315</td></tr>
+          <tr><td><code>.hiw-faq dt</code> semibold, 12 above and 4 below</td><td>bold, 8 above and 2 below</td><td>315</td></tr>
+          <tr><td><code>.hiw-faq dl</code> an 8px lead-in</td><td>0</td><td>105</td></tr>
+          <tr><td><code>.hiw-sec p</code> no top margin</td><td>4px</td><td>210</td></tr>
+          <tr><td><code>.hiw-body</code> the sheet's 8px padding</td><td>nothing, the rule was dead</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-lab tk-bad"><b>A refactor that leaves the old layer ABOVE the new one has not
+    replaced it, it has buried it.</b> <i>And the file said so itself: the block's label carries
+    <code>text-transform:none</code>, a declaration that cancels something. A rule only cancels what
+    something else is doing, so the person who wrote the new layer knew the old one was there and
+    expected it to go.</i></p>
+    <p class="tk-why"><b>The last <code>.app-case</code> in the system was in this file, and the
+    stand is what proved it wrong.</b> It meant "the page rather than the sheet", which is true of
+    the product and false of a kit page, because <b>a kit page carries <code>app-case</code> on its
+    BODY</b>. So the specimen further down this page was a sheet wearing the page's hero edge, the
+    page's 16px tagline, the page's section separators and the page's 44px FAQ indent, with the
+    sheet's 11px label on top: <b>neither of the two things this component draws</b>. No screen was
+    wrong, so nothing but a stand could ever have shown it. The split is a class now,
+    <code>.hiw-page</code> on the page's hero and <code>.hiw-cols</code> for the rest.</p>
   </section>
 
   <section class="tk-sec" id="spec">

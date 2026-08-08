@@ -44,6 +44,65 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - A refactor that leaves the old layer on top has not replaced it, and the stand is what proved it
+
+Backlog 67, opened by the wrapper sweep earlier the same day and closed here. `hiw-dialog.css` was
+refactored on step 7f under a sentence it wrote out in full: THE BLOCK, NOT THE DIALOG, the hero and
+the section rhythm belong wherever the block stands, and **what stays scoped is the part that is
+genuinely about being a dialog, its width, its close disc and the body padding of a sheet**.
+
+**Eight rules of the shape `dialog.app-dialog .hiw-*` were left at the TOP of the file**, above that
+comment and above the new layer, and none of them is one of those three. At (0,2,2) they
+out-specified every one of the block's own rules, so **inside a sheet the block never once wore its
+own face**, on 105 screens, while the file read as though it did.
+
+| what the block declares | what the sheet rendered | elements |
+|---|---|---|
+| `.hiw-label` 14px display bold, `text-transform:none` | **11px UPPERCASE** with label tracking | 315 |
+| `.hiw-faq dt` semibold, 12 above and 4 below | bold, 8 above and 2 below | 315 |
+| `.hiw-faq dl` an 8px lead-in | 0 | 105 |
+| `.hiw-sec p` no top margin | 4px | 210 |
+| `.hiw-body` the sheet's 8px padding | nothing, the rule was already dead | 0 |
+
+**The file said so itself and nobody read it back.** The block's own label carries
+`text-transform:none`, a declaration that exists only to cancel something. A rule cancels what
+something else is doing, so whoever wrote the new layer knew the old one was there and expected it
+to go. Two of the eight were `.hiw-full`, which stands only in the sheet and only needed unscoping.
+
+### The count was eight and the finding was nine
+
+The file's remaining `.app-case` rules had to go with them, and the reason is the sharpest thing in
+this entry: **the wrapper was right about the product and wrong about the stand.** It meant "the page
+rather than the sheet", which is true on 106 painted screens, and **a kit page carries `app-case` on
+its BODY**. So the specimen on `ui-kit/hiw-dialog.html` was a sheet wearing the page's hero edge, the
+page's 16px tagline, the page's section separators and the page's 44px FAQ indent, with the sheet's
+11px label on top of it: **neither of the two things this component draws**. No screen was wrong, so
+nothing but a stand could ever have shown it, which is the argument for the stand in one sentence.
+
+The split is a class now: **`.hiw-page` on the page's hero, and `.hiw-cols` for everything else**,
+which stands on one document in each tree and on no stand at all. One class added, grey first and
+the colour copy after. `hiw-dialog.css` carries **0 `.app-case`**, so the system now has none outside
+the class's own two rules in `base.css`.
+
+### Measured
+
+Same instrument as the wrapper sweep: the candidate served from a second origin and swapped into
+each page in place of `index.css`, both readings in one page load. 106 painted screens and 55 kit
+pages at 390 and 1280, 190,156 element readings.
+
+**On the painted tree, 10 changes and every one inside the 105 sheets.** The How-it-works PAGE is
+untouched, which is what says the class reproduces the wrapper exactly. **On the kit, the specimen
+picks up 16 more**: it loses the hero's 1px edge and 16px corner, its tagline drops 16 to 14, its
+sections lose a 20px separator and its FAQ loses a 44px indent. That is the stand correcting itself.
+
+**One instrument note, and it is the fourth time in two days.** The first run of the class-based
+candidate reported the page's hero losing its edge, which would have meant the class had not
+matched. It had not: the server was started before the markup edit and the browser was answering
+from cache with the old HTML. Fresh port, and the page reads 0 changes. **The cache does not care
+that this repository has already written the rule down three times.**
+
+---
+
 ## 2026-08-08 - The wrapper comes off 415 selectors, and it was protecting nothing
 
 `.app-case` was the last container scope in the system and by far the largest: **415 selectors in 36
