@@ -44,6 +44,69 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - Design System closed as a stage, and the status table stops disagreeing with the tree
+
+The work of stage 09 was finished on 2026-08-08 and the one place that records a stage's status still
+said **Not started**. Closing the stage is therefore mostly a documentation act, and the reason it is
+its own entry is that **the table was wrong in a way nothing could catch**: `README.md`'s status table
+is the single source for stage status by rule, so nothing cross-checks it, and a source of truth with
+no reader is the same species of defect `patterns.html` found in the pattern files' `Assembled from`
+lines two days earlier.
+
+### What was measured before anything was written
+
+| | |
+|---|---|
+| `components/*.css` | **45** files: 3 infrastructure (`index`, `tokens`, `fonts`), 2 substrate (`base`, `course-chrome`), **40 components** |
+| `components/patterns/` | **6** |
+| placed on a kit level page | **43** = 37 components + 6 patterns |
+| not placed, and named as unmeasured on the molecules page | **3**: `account`, `cookie-consent`, `toc` |
+| painted screens | **106** |
+| open backlog items whose OWNER is Design System | **2**: 28, blocked on IA's 27, and 51 |
+
+### The level split in the status table was the arithmetic, not the declaration
+
+The row read **6 atoms, 13 molecules, 21 organisms, computed from the markup**. That is the reading
+`ui-kit/docs/inventory.md` replaced with a DECLARED level and a reason each: **10 atoms, 14
+molecules, 13 organisms, 6 patterns**. The old numbers are not a typo, they are the blind spot
+`components/CLAUDE.md` names out loud: a component built from its own class names reads as containing
+nothing, so `trustbar` and `market` computed as atoms. **The status table was still publishing the
+answer the kit was built to correct**, and the correction had been written down for a day.
+
+### The counts markers came out with it
+
+The row carried `<!-- counts:start -->` and `<!-- counts:end -->`. **Nothing writes between them.**
+The script that did went with the 63 deleted on 2026-08-07, and grepping every `.py`, `.js` and `.sh`
+in the repository for the marker returns nothing. A marker for a machine that no longer exists is an
+instruction to a reader to keep their hands off a number that no longer updates.
+
+### What else disagreed, found by sweeping for the phrase rather than by remembering
+
+`README.md` said the vitrine was being rebuilt and `ui-visual/` held 105 screens; `STRUCTURE.md` said
+the same two things; the root `CLAUDE.md` said it twice, in the folder table and in the shape of the
+work. All five now say what is there. `ui-kit/CLAUDE.md` said it in its own title. **The one place
+`105` was left standing is `ui-kit/CLAUDE.md`'s account of the pattern headers**, because that
+sentence is about what was true when those headers were typed and correcting it would make it false.
+
+### The mistake worth recording, because it is this repository's own rule
+
+Before this pass I told the user that **41 of the 43 components on the level pages carry a rule and
+no anti-rule**, and offered to write the missing ones. That was wrong. I had counted the CSS class
+`.tk-bad` in the markup, found 2, and reported a gap. **Every one of the 43 carries both**, written
+as prose and labelled `<b>Anti-rule.</b>`, which a class-name count cannot see.
+
+It is the same error the audit made with `pointer:fine` and the same one this repository has written
+down twice about pages: **reading the source is not reading the page.** Counting a class is reading
+the source. The count that mattered was of a sentence, and it took one measurement of the right thing
+to find that the work was already done. It is recorded because the offer had been accepted and the
+next pass would otherwise have gone looking for 41 things that are not missing.
+
+`docs/kit-archive/authored/` turns out to hold an `## Anti-rule` section for all 48 components as
+well, which is what `components/CLAUDE.md` means by keeping the archive: the same measurement is not
+taken twice.
+
+---
+
 ## 2026-08-08 - The audit's eighth defect: it measured the product with a mouse, and the floor was six lists
 
 Direction B was approved and this pass went to execute it. **It did not survive the first

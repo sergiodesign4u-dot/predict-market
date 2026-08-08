@@ -11,7 +11,7 @@ detail lives: what the folder IS, its invariants, and the traps it has already p
 | `components/` | the system itself: token levels, import order, the traps a stylesheet here has cost |
 | `ui-visual/` | the painted tree: no styles of its own, what the paint owns and what it does not |
 | `wireframes/` | the grey tree: structure and copy, states as pages, why the generators are gone |
-| `ui-kit/` | the vitrine, being rebuilt: the rules for the rebuild and the plan, in order |
+| `ui-kit/` | the vitrine, rebuilt by hand: what each page is, the rules it was rebuilt under, the plan |
 | `voice/` | what the product says: the contract, the inventory, and the row-before-ship rule |
 | `ia/` | where the user can go: the sources of truth and the one-copy rule |
 | `docs/kit-archive/` | frozen, read by nothing, and what is worth taking out of it |
@@ -64,9 +64,11 @@ because it is a stance rather than a principle, and it is written once, here.
   `components/index.css`. Every screen links that one file and nothing else. The visual language is
   **Vault**, specified in `DESIGN.md`, and its one rule that decides others: **green and red are
   outcome semantics (YES / NO), brass is the brand.**
-- **One vitrine.** `ui-kit/` shows the system to a person. It is being rebuilt by hand from five
-  anchor screens: event feed, event detail, active bets, deposit, sign in, with their loading,
-  empty, error and logged-out variants.
+- **One vitrine.** `ui-kit/` shows the system to a person, and it was rebuilt by hand between
+  2026-08-07 and 2026-08-08 from five anchor screens: event feed, event detail, active bets, deposit,
+  sign in, with their loading, empty, error and logged-out variants. **A page per LEVEL, not per
+  component**, because forty pages of one component each are forty navigations to compare two chips.
+  Nine pages, one route in `_nav.js`, 0 generators and 0 gates.
 
 ---
 

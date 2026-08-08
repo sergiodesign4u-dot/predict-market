@@ -1,4 +1,9 @@
-# ui-kit/ - the vitrine, being rebuilt from 2026-08-07
+# ui-kit/ - the vitrine, rebuilt by hand 2026-08-07 to 2026-08-08
+
+**All five steps are done and the plan below is the record of how, not a to-do list.** What is on the
+stand today: nine pages, `_page.css`, `_nav.js`, and five reports in `docs/`. **0 generators, 0
+gates, 0 screenshots.** Every one of the 43 components placed on a level page carries its live
+specimen in both themes, its classes, its declaration, its rule and its anti-rule.
 
 The kit shows the system to a person and it holds no product code. It holds nine pages plus its
 stylesheet and its registry: `overview.html`, which says what is happening, **all four foundation

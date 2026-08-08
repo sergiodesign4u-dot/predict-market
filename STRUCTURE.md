@@ -20,9 +20,9 @@ nowhere else** - a second copy of a status is a copy that goes stale.
 | 04 | Wireframes | `wireframes/` | 104 grey pages |
 | 05 | Voice | `voice/` | `voice/voice.html` |
 | 06 | Concept | `concept/` | `concept.html` (+ `directions.html`) |
-| 07 | UI + Visual | `ui-visual/` | 105 painted screens, every family and every state |
+| 07 | UI + Visual | `ui-visual/` | 106 painted screens, every family and every state |
 | 08 | Tokens + Components | `components/` (the system) | `ui-kit/overview.html` |
-| 09 | Design System | `components/patterns/` + `ui-kit/` (being rebuilt from 2026-08-07) | - |
+| 09 | Design System | `components/patterns/` (6 files) + `ui-kit/` (9 pages, rebuilt by hand 2026-08-08) | `ui-kit/overview.html` |
 | 10 | Responsive | | - |
 | 11 | Animation | | - |
 | 12 | Handoff | | - |
