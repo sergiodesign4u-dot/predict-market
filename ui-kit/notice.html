@@ -17,12 +17,12 @@
 
   <div class="tk-hero">
     <h1>Notice</h1>
-    <p>Level 2, and <b>six faces that share one job</b>: a bordered box that EXPLAINS rather than
-    acts. Reassurance, a slot for something that has not arrived, an error in place, a figure to
-    check, a wait, and a permission ask. <b>250 placements on 105 painted screens.</b> Measured
+    <p>Level 2, and <b>seven faces that share one job</b>: a bordered box that EXPLAINS rather than
+    acts. Reassurance in a sheet and the same sentence in a page, a slot for something that has not
+    arrived, an error in place, a figure to check, a wait, and a permission ask. <b>250 placements on 105 painted screens.</b> Measured
     2026-08-08 in a browser, dialogs forced open, at 390 and 1280.</p>
     <div class="tk-badges">
-      <span class="tk-badge">6 faces</span>
+      <span class="tk-badge">7 faces</span>
       <span class="tk-badge">250 placements</span>
       <span class="tk-badge">1 face with controls</span>
       <span class="tk-badge">0 red</span>
@@ -33,18 +33,20 @@
     <h2 data-n="1">What this page is for</h2>
     <p class="tk-note">The level and its reason stay on
     <a href="molecules.html#notice">the molecules page</a>, which gives this component one specimen.
-    <b>One specimen of a six-face component is a sixth of it</b>, and the six do not look alike: the
-    only thing they have in common is the sentence at the top of this page.</p>
+    <b>One specimen of a seven-face component is a seventh of it</b>, and the seven do not look
+    alike: the only thing they have in common is the sentence at the top of this page. <b>Two of the
+    seven only became visible here on 2026-08-08</b>, and section 5 is why.</p>
   </section>
 
   <section class="tk-sec" id="faces">
-    <h2 data-n="2">The six</h2>
+    <h2 data-n="2">The seven</h2>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
         <thead><tr><th>face</th><th>worn</th><th>what it is</th><th>the box</th></tr></thead>
         <tbody>
-          <tr><td><code>.protect</code></td><td><b>116</b></td><td>reassurance under a form: what happens to your money and who holds it</td><td>a brass tint inside a brass edge in the page, a TRUST tint inside a trust edge in a dialog</td></tr>
-          <tr><td><code>.widget-box</code></td><td><b>110</b></td><td>the slot a third-party payment widget will load into</td><td>a DASHED hairline, 160 tall, centred</td></tr>
+          <tr><td><code>.protect</code></td><td><b>113</b></td><td>reassurance under a form: what happens to your money and who holds it</td><td>a TRUST tint inside a trust edge</td></tr>
+          <tr><td><code>.protect.protect-page</code></td><td><b>3</b></td><td>the same sentence standing in a page rather than a sheet</td><td>a brass tint inside a brass edge</td></tr>
+          <tr><td><code>.widget-box</code></td><td><b>110</b></td><td>the slot a third-party payment widget will load into</td><td>a DASHED hairline on the control ground at a 10 corner, 160 tall, centred</td></tr>
           <tr><td><code>.inline-error</code></td><td>8</td><td>a failure said where it happened</td><td>a solid hairline on the control ground</td></tr>
           <tr><td><code>.reconcile-box</code></td><td>7</td><td>the figure to check on a win or a loss</td><td>a stronger brass edge, recoloured by the dialog it stands in</td></tr>
           <tr><td><code>.spinner-box</code></td><td>7</td><td>a wait</td><td>dashed, 100 tall, loose leading</td></tr>
@@ -58,11 +60,13 @@
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
         <p class="protect">Funds are held with a regulated custodian. <b>We never hold your keys.</b></p>
+        <p class="protect protect-page">The same sentence in a page rather than a sheet, on three placements.</p>
         <div class="widget-box">Payment widget loads here</div>
         <div class="inline-error">That card was declined. Nothing was charged.</div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <p class="protect">Funds are held with a regulated custodian. <b>We never hold your keys.</b></p>
+        <p class="protect protect-page">The same sentence in a page rather than a sheet, on three placements.</p>
         <div class="widget-box">Payment widget loads here</div>
         <div class="inline-error">That card was declined. Nothing was charged.</div>
       </div>
@@ -108,13 +112,31 @@
   </section>
 
   <section class="tk-sec" id="two">
-    <h2 data-n="5">The one face with two grounds</h2>
-    <p class="tk-note"><code>.protect</code> is written twice: <b>114 of the 116 are a
-    <code>&lt;p&gt;</code> in a dialog</b> and take a TRUST tint inside a trust edge, and the two in
-    the page take the brass tint. The two grounds are not a divergence: a dialog about money is where
-    trust is the subject, and a page is where brass is the frame.</p>
-    <p class="tk-note">It carries no heading, no mark and no control. <b>It is a sentence with a box
-    around it</b>, and it stands on 105 screens because the sentence is the same one every time.</p>
+    <h2 data-n="5">Two of these faces were written against a CONTAINER, and both are classes now</h2>
+    <p class="tk-why"><b>The kit found them, on 2026-08-08, by rendering them.</b>
+    <code>.widget-box</code> had its box unscoped and its FACE under
+    <code>dialog.app-dialog</code>, so the specimen on this page rendered <b>transparent at a 0px
+    corner with the wrong ink</b> against the product's control ground at 10px with the muted one.
+    All 110 stand in a dialog, so no screen was wrong and <b>this page was the only place it
+    showed</b>.</p>
+    <p class="tk-why"><code>.protect</code> had two real faces and no class for either: a TRUST tint
+    inside a dialog and a BRASS tint in a page, <b>kept apart by nothing but the fact that a
+    <code>&lt;dialog&gt;</code> sits outside the <code>.app-case</code> wrapper</b>. Measured: 113 of
+    the 116 stand in a dialog and 3 in a page. So the trust face is the default and the page face is
+    <code>.protect-page</code>, and neither depends on where the element happens to land. <b>This
+    page had been showing the minority face while its own table described the majority one.</b></p>
+    <p class="tk-note">It is the same correction the money field took an hour earlier and the sixth
+    time this repository has made it: <b>a face is a class, and a container may only say where the
+    control sits.</b> Measured after: the kit's specimen and the product's field are the same
+    colour, the same edge and the same corner, in both faces.</p>
+    <p class="tk-note">The box carries no heading, no mark and no control. <b>It is a sentence with a
+    box around it</b>, and it stands on 105 screens because the sentence is the same one every
+    time.</p>
+    <p class="tk-lab tk-bad"><b>One container scope is still here and it is a STATE rather than a
+    face.</b> <i>The win and loss overlays recolour the reconcile box, green on a win and neutral on
+    a loss, through <code>.win-dialog</code> and <code>.loss-dialog</code>. That is the dialog's
+    OUTCOME reaching its content, which is a different thing, and the grey tree carries six of these
+    boxes with no outcome variant at all. <code>docs/backlog.md</code> 66.</i></p>
   </section>
 
   <section class="tk-sec" id="rule">

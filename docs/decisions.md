@@ -44,6 +44,54 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - Two more faces come off their containers, and the kit is what rendered them
+
+Asked what other nuances the kit has, so the same question was put to every component file rather
+than guessed at: **which rules give a component its FACE only under another component's container.**
+Fifty-six rules came back. Most are legitimate, a container saying where a control sits or lending a
+documented second treatment. **Two were the input defect again**, and both were found the way input's
+was: by comparing what the kit renders against what the product renders.
+
+| | product | the kit, before |
+|---|---|---|
+| `.widget-box` | control ground, 10px corner, muted ink | **transparent, 0px corner, primary ink** |
+| `.protect` | a TRUST tint, 113 of 116 | **a BRASS tint**, which is the other 3 |
+
+**`.widget-box` had its box unscoped and its face under `dialog.app-dialog`.** All 110 stand in a
+dialog, so no screen was ever wrong and the stand was the only place it showed. One rule now, on the
+class.
+
+**`.protect` had two real faces and no class for either**, kept apart by nothing but the fact that a
+`<dialog>` sits outside the `.app-case` wrapper: `dialog.app-dialog .protect` reached 113 and
+`.app-case .protect` reached the other 3. Measured, then made explicit: the trust face is the
+default and the page face is `.protect-page`, three elements in the painted tree and none in the
+grey one, because the grey tree has no page-standing reassurance box at all and two of the three
+stand on a screen the grey tree does not carry.
+
+**It is the sixth time this correction has been made**, and the list is now long enough to be a rule
+rather than a habit: the signed-out prompt, the fetch control, the toast dismiss, the dialog close
+disc, the money field, and these two. **A face is a class, and a container may only say where the
+control sits.**
+
+### What was deliberately NOT changed
+
+`.win-dialog .reconcile-box` is the last container scope in the file and it is arguably a different
+thing: **a face lent by a container is a defect, and a STATE flowing from a screen to its content is
+how an outcome screen is supposed to work.** What decides it is a reading nobody has taken: the
+painted tree carries 4 win boxes, 1 loss and 2 plain, and **the grey tree carries 6 with no outcome
+variant at all**, so the two trees disagree about whether this box has three faces or one. Backlog
+66, with the repo's own precedent noted: `position.css` writes `.pos-side.pos-won` as a modifier.
+
+### Verified
+
+At 390 and 1280 with the pointer asserted fine: **14 of 14 widget slots and 20 of 20 reassurance
+boxes render correctly across twelve screens**, the kit's specimen and the product's element are now
+the same colour, edge and corner in both faces, and across all 55 kit pages 0 horizontal scroll, 0
+console errors, 149 unique hrefs and 0 broken, 0 responses over 400, one active row per page, 0
+collapsed figures. Open 51 to 52.
+
+---
+
 ## 2026-08-08 - The currency mark leaves the value, and the money field stops accepting letters
 
 The first thing found by READING the finished kit rather than by building it. Two complaints about

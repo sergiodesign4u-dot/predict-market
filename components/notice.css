@@ -9,16 +9,46 @@
 .push-banner{padding:var(--space-8) var(--space-12);margin:0 0 var(--space-8);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-8)}
 .push-banner .push-msg{font-size:var(--text-12);display:flex;align-items:center;gap:var(--space-8)}
 .push-banner .push-actions{display:flex;gap:var(--space-8);flex-wrap:wrap}
-dialog.app-dialog .widget-box{min-height:160px;display:flex;align-items:center;justify-content:center;font-size:var(--text-11);text-align:center;padding:var(--space-8)}
-dialog.app-dialog .protect{padding:var(--space-8);font-size:var(--text-11)}
 .reconcile-box{display:flex;flex-direction:column;gap:var(--space-4)}
-.widget-box{border:var(--hairline) dashed var(--border-hairline);min-height:160px;display:flex;align-items:center;justify-content:center;font-size:var(--text-11);text-align:center;padding:var(--space-8)}
-.protect{border:var(--hairline) solid var(--border-hairline);padding:var(--space-8);font-size:var(--text-11)}
-dialog.app-dialog .protect{background:color-mix(in oklab,var(--color-trust) 8%,var(--bg-surface));border:var(--hairline) solid color-mix(in oklab,var(--color-trust) 24%,var(--border-hairline));border-radius:var(--radius-10);color:var(--text-primary)}
-dialog.app-dialog .widget-box{background:var(--bg-control);border:var(--hairline) dashed var(--border-hairline);color:var(--text-muted);border-radius:var(--radius-10)}
+
+/* ============================================================================
+   TWO OF THESE FACES WERE WRITTEN AGAINST A CONTAINER, 2026-08-08, and both are
+   classes now. The same correction the money field took an hour earlier, found
+   the same way and for the same reason: THE KIT COULD NOT SHOW THEM.
+
+   `.widget-box` had its box unscoped and its FACE under `dialog.app-dialog`, so
+   the ground, the corner and the ink existed only inside a sheet. Measured on
+   `ui-kit/notice.html` against the product: the specimen rendered TRANSPARENT at
+   a 0px corner with the primary ink, against the product's --bg-control at 10px
+   with the muted one. All 110 placements stand in a dialog, so nothing rendered
+   wrong on a screen and the stand was the only place it showed.
+
+   `.protect` had two real faces and no class for either: a TRUST tint inside a
+   dialog and a BRASS tint in the page, kept apart by nothing but the fact that a
+   `<dialog>` sits outside the `.app-case` wrapper. Measured: 113 of the 116
+   stand in a dialog and 3 in the page. So the trust face is the DEFAULT, the
+   page face is `.protect-page`, and neither depends on where the element
+   happens to land. The stand had been showing the minority face while its own
+   table described the majority one.
+
+   WHAT STAYS SCOPED, and it is a state rather than a face: the outcome overlay
+   sizes both boxes for a screen that is one figure and a sentence, and the win
+   and loss overlays recolour the reconcile box. That is the DIALOG'S outcome
+   reaching its content, which is a different thing from a container lending a
+   face, and `ui-kit/notice.html` shows both of those rather than describing
+   them.
+   ============================================================================ */
+.widget-box{display:flex;align-items:center;justify-content:center;text-align:center;
+  min-height:160px;padding:var(--space-8);
+  border:var(--hairline) dashed var(--border-hairline);border-radius:var(--radius-10);
+  background:var(--bg-control);color:var(--text-muted);font-size:var(--text-11)}
+.protect{padding:var(--space-8);font-size:var(--text-11);
+  border:var(--hairline) solid color-mix(in oklab,var(--color-trust) 24%,var(--border-hairline));
+  border-radius:var(--radius-10);
+  background:color-mix(in oklab,var(--color-trust) 8%,var(--bg-surface));color:var(--text-primary)}
+.protect.protect-page{border-color:var(--tint-brass-30);background:var(--tint-brass-06);color:var(--text-muted)}
+.protect b,.protect strong{color:var(--text-primary)}
 .push-banner{background:color-mix(in oklab,var(--color-trust) 8%,var(--bg-surface));border:var(--hairline) solid color-mix(in oklab,var(--color-trust) 22%,var(--border-hairline));border-radius:var(--radius-10);color:var(--text-primary)}
-.app-case .protect{border:var(--hairline) solid var(--tint-brass-30);border-radius:var(--radius-10);background:var(--tint-brass-06);color:var(--text-muted);font-size:var(--text-11);padding:var(--space-8) var(--space-8)}
-.app-case .protect b,.app-case .protect strong{color:var(--text-primary)}
 .app-case .inline-error{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);font-size:var(--text-12);line-height:var(--leading-base);padding:var(--space-8)}
 .app-case .reconcile-box{border:var(--hairline) solid var(--tint-brass-45);border-radius:var(--radius-10);background:var(--tint-brass-09);color:var(--text-primary);font-size:var(--text-12);line-height:var(--leading-base);padding:var(--space-8)}
 .app-case .reconcile-box b,.app-case .reconcile-box strong{color:var(--text-brass)}
