@@ -1,8 +1,14 @@
 /* components/patterns/position-list.css
    Pattern: the position list. A vertical stack of bet rows at one distance.
 
-   Assembled from: position, and in two of its cases skeleton (the loading rows)
-     and profile (the record block that stands in the same stack).
+   Assembled from: position, and in two of its cases skeleton (the loading rows).
+   `profile` WAS IN THAT LINE UNTIL 2026-08-08, for the record block that stands
+     in the same stack, and it stopped being true on 2026-08-03: `.pos-record`
+     with its `.pos-figures` and `.pos-fig` moved to position.css in the pass
+     that closed backlog 17. The block is still in the stack; the file that owns
+     it is not. profile.css owns seven classes today, `.av`, `.edit`,
+     `.gallery`, `.handle`, `.idrow`, `.name` and `.who`, and none of them
+     stands in a position list. Found by ui-kit/patterns.html, 2026-08-08.
    Stands on: 13 ui-visual screens (active-bets x4, notifications x3,
      my-profile x2, wallet x2, public-profile x2). One list per screen.
    Moved here from: components/position.css, two rules, cut and not copied.

@@ -1,9 +1,17 @@
 /* components/patterns/browse-shell.css
    Pattern: the browse shell. A sub-category rail beside a content column.
 
-   Assembled from: catnav (the .subcat rail), feed, state-block, loadmore, tabs.
+   Assembled from: catnav (the .subcat rail), state-block, loadmore, tabs.
    It owns none of them and paints none of them; it says where they stand.
-   Stands on: 76 ui-visual screens (event-feed x41, active-bets x9,
+   `feed` WAS IN THAT LINE UNTIL 2026-08-08 AND THE CONTAINMENT RUNS THE OTHER
+     WAY: on event-feed.html `<main class="feed">` opens at line 361 and
+     `<div class="cat-layout">` at 469, so the feed holds this and not the
+     reverse. Nothing rendered wrong, and an "assembled from" line that names a
+     PARENT is the level arithmetic's blind spot written down by hand. Nothing
+     reads this line, which is exactly why it went unnoticed. Found by
+     ui-kit/patterns.html, 2026-08-08.
+   Stands on: 77 ui-visual screens, 76 when this was written and the tree grew
+     by one (event-feed x41, active-bets x9,
      notifications x5, public-profile x4, my-profile x3, wallet x3, favorites x3,
      event-detail x2, maintenance, how-it-works). Fourteen different sets of
      content across those 76, which is the argument for a pattern rather than a

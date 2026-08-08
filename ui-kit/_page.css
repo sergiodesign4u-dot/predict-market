@@ -326,10 +326,32 @@
 .c-tint-brass-60{--sw:var(--tint-brass-60)}
 
 .tk-ramp{display:flex;flex-wrap:wrap;gap:3px;margin:0 0 10px}
-.tk-rc{width:60px;height:52px;border-radius:6px;border:1px solid var(--border-hairline);
-  display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px;
+/* THE STEP NUMBER CAME OFF THE SWATCH ON 2026-08-08, and the audit is why.
+   It used to be printed INSIDE the colour it names, in --text-muted, which is a
+   THEME ROLE on a swatch that does not theme: light ink in Vault, dark ink in
+   Daylight, and the graphite ramp is dark in both. 37 readings under 4.5:1 in one
+   theme and 58 in the other, and they were the ONLY contrast failures anywhere in
+   460 renders.
+
+   A SECOND INK DOES NOT FIX IT AND THAT WAS MEASURED, not assumed. Testing every
+   one of the 72 cells against both a fixed light ink and a fixed dark one: 69
+   clear 4.5 with one of the two, and THREE CANNOT CLEAR IT WITH EITHER, because a
+   mid-tone has no good ink. p-bone-650 tops out at 4.36, p-green-700 at 3.99 and
+   p-ink-300 at 3.97. A per-swatch class would have fixed 69 of 72 and left three
+   defects wearing a fix.
+
+   So the label stands UNDER the swatch, on the page ground, where --text-muted is
+   a pairing this page's own matrix already measures in both themes. It is better
+   for the ramp as well: a swatch with a number printed on it is a swatch whose
+   colour you cannot read clean. `.tk-onlight` went with it, and its 30 usages,
+   because a class that paints nothing is what cost the previous stylesheet 800
+   lines. */
+.tk-rc{width:60px;display:flex;flex-direction:column;align-items:center;gap:3px;
+  border:0;background:none;
   font-family:var(--font-mono);font-size:9px;color:var(--text-muted)}
-.tk-rc.tk-onlight{color:var(--graphite-930)}
+.tk-rc.tk-sw{background:none}
+.tk-rc::before{content:'';display:block;width:60px;height:44px;border-radius:6px;
+  border:1px solid var(--border-hairline);background:var(--sw)}
 
 /* the contrast matrix: roles down, grounds across, one theme per table */
 .tk-mx{display:grid;gap:1px;background:var(--border-hairline);border:1px solid var(--border-hairline);

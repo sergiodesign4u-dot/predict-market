@@ -44,6 +44,75 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - Three of the audit's findings closed, and the 44px floor takes direction B
+
+The audit's own follow-up, done the same day. **Three closed, one direction decided, one left open on
+purpose.**
+
+### 42, the amount chip: the second place it stands is now named
+
+`chip.css` scoped four rules to `.app-case` and nothing else, so a `.chip-amount` inside a `<dialog>`
+matched no rule at all. **Confirmed rather than reasoned**: opening the deposit dialog on
+`event-feed.html` gave the User Agent's `2px outset` border, an `rgb(239,239,239)` ground and square
+corners, in a graphite product.
+
+**The fix is the idiom the file next door already used.** `input.css` scopes the amount FIELD as
+`dialog.app-dialog .amount-input`, which is why the field in that same sheet was always correct and
+the chip beside it was not. The four chip rules gained `dialog.app-dialog .chip-amount` beside
+`.app-case .chip-amount`. **A scope is kept rather than dropped**, so the chip still cannot leak onto
+a course page, and `dialog.app-dialog` at 0,1,1 sits one step above `.app-case` at 0,1,0, which is the
+right way round: a chip in a sheet is more specific than a chip in the case.
+
+**Why not the markup.** Every dialog that is actually shown already carries `app-case` on itself and
+every one that does not is shut, which is the only reason nothing rendered wrong. Adding the class to
+the other three dialog types on 106 screens would be **a workaround applied three hundred times**, and
+it would still require whoever opens a dialog at run time to remember a wrapper class for its contents
+to be painted.
+
+**Measured after, over all 106 painted screens: 420 User-Agent-painted controls to 0 with dialogs
+closed, and 0 with EVERY dialog forced open**, which is the state the defect needed and had never been
+put in. 480 chips checked, 0 changed that were already right.
+
+### 47, the primitive ramps: the first fix was measured and rejected
+
+The obvious fix was a second ink, dark on the pale swatches and light on the dark ones, and the page
+already had the mechanism. **Measuring all 72 cells against both killed it**: 69 clear 4.5:1 with one
+of the two and **three cannot clear it with either**, because a mid-tone has no good ink.
+`p-bone-650` tops out at 4.36, `p-green-700` at 3.99, `p-ink-300` at 3.97. A per-swatch class would
+have fixed 69 and left three defects wearing a fix.
+
+**So the number came off the swatch.** `.tk-rc` is a column, the colour is a `::before` block and the
+step number stands under it on the page ground, where `--text-muted` is a pairing this page's own
+matrix already measures in both themes. It is better for the ramp as well: **a swatch with a number
+printed on it is a swatch whose colour cannot be read clean.** `.tk-onlight` went with it and its 30
+usages, because a class that paints nothing is what cost the previous stylesheet 800 lines.
+
+**37 and 58 readings under floor, to 0 and 0.** What remains on the page is 15 per theme, and they are
+the contrast matrix's own `icon-quiet` and `icon-brass` specimens: a graphical role held to the text
+floor by a general instrument, whose floor is 3:1 and which clear it.
+
+### 46, two of three: a prose claim now carries the correction beside it
+
+`browse-shell.css` no longer claims `feed` and says in its place that the containment runs the other
+way, with the two line numbers. `position-list.css` no longer claims `profile` and names the
+2026-08-03 move that ended it. Both screen counts corrected, each keeping the number it was written
+with so the drift is visible rather than erased. **`.read-col` at one screen stays open**, because it
+is not a stale sentence but a slot below the threshold, and what it needs is a second and a third long
+document rather than an edit.
+
+### 49, the 44px floor: direction B
+
+Two answers and no third. **(A)** drop the standard to what the system builds, 36 and 38, and write
+that down as a decision rather than leave it as a forgetting. **(B)** make every control take its
+height from a token, so the floor is one value in one place.
+
+**B is chosen.** It is not done here and that is deliberate: it changes how every control is written,
+reaches 106 painted screens, and the audit has to be re-run after it. That is its own pass, not the
+tail of a rebuild. Until it runs, **the standard and the system disagree and the backlog is the record
+of that** rather than a claim that it is fine.
+
+---
+
 ## 2026-08-08 - Step 5, the audit, and it found six defects in itself and one in the product
 
 The last step of the rebuild. **115 documents at two widths in two themes, 460 renders**: contrast,

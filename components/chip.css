@@ -116,8 +116,27 @@
 .app-case .chip{cursor:pointer;font-family:var(--font-body);text-decoration:none;text-align:center}
 .app-case .chip-quiet{display:inline-flex;align-items:center;min-height:0;background:transparent;border:var(--hairline) solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-12)}
 .app-case .chip-quiet:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
-.app-case .chip-amount{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
-.app-case .chip-amount{transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+/* THE AMOUNT CHIP ALSO STANDS IN A DIALOG, AND A DIALOG IS NOT INSIDE .app-case.
+   Until 2026-08-08 these four rules asked for .app-case and nothing else, so a
+   chip in a sheet got NO rule at all: measured on event-feed.html by opening the
+   deposit dialog, the User Agent's `2px outset` border, an `rgb(239,239,239)`
+   ground and square corners, in a graphite product. 420 chips per render are in
+   that position across the 106 painted screens and NOT ONE OF THEM RENDERS TODAY,
+   because every dialog that is actually shown carries `app-case` on itself and
+   every one that does not is shut. That is not a system that works, it is a
+   system whose defect has not been triggered: a dialog is opened and closed at
+   run time and nobody can be asked to remember a wrapper class for its contents
+   to be painted.
+
+   THE SECOND SELECTOR IS THE IDIOM THE FILE NEXT DOOR ALREADY USES. input.css
+   scopes the amount FIELD as `dialog.app-dialog .amount-input`, not by .app-case,
+   which is why the field in the same sheet was always correct and the chip beside
+   it was not. A scope is kept rather than dropped, so the chip still cannot leak
+   onto a course page, and `dialog.app-dialog` at 0,1,1 is one step above
+   `.app-case` at 0,1,0, which is the right way round: a chip in a sheet is more
+   specific than a chip in the case. Backlog 42. */
+.app-case .chip-amount,dialog.app-dialog .chip-amount{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
+.app-case .chip-amount,dialog.app-dialog .chip-amount{transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 /* The amount answers a pointer, and both places it stands do now. The deposit
    sheet had this hover and the bet panel had none - the same face on the same
    control, one scope answering and the other silent, which is not a decision
@@ -126,7 +145,7 @@
    them answers a pointer, because a chosen control's whole face is already the
    answer. S38 closed on the finger, which is a different question and is answered
    below. */
-.app-case .chip-amount:hover:not(.sel){border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)}
+.app-case .chip-amount:hover:not(.sel),dialog.app-dialog .chip-amount:hover:not(.sel){border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)}
 /* THE CHOSEN CHIP, ONE RULE FOR THE WHOLE FAMILY. --tint-brass-09 inside a
    --tint-brass-45 edge with --text-brass-chip, bold, and a halo that is a glow
    with negative spread rather than a lift, so there is nothing here to flatten
@@ -241,7 +260,7 @@
    point of adopting the atom: one tint, one edge, one weight, one halo, and the
    ink goes from --text-primary to --text-brass-chip. */
 .app-case .chip.sel,.app-case [aria-current="page"] .chip{background:var(--tint-brass-09);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
-.app-case .chip-amount.sel,.app-case [aria-current="page"] .chip{border-color:var(--tint-brass-45)}
+.app-case .chip-amount.sel,dialog.app-dialog .chip-amount.sel,.app-case [aria-current="page"] .chip{border-color:var(--tint-brass-45)}
 /* THE PRESS, AND IT IS ONE SELECTOR SINCE 2026-08-07: every chip, chosen or not,
    by a class or by navigation. Only the ground moves, so a chosen chip keeps its
    brass edge, its brass label and its halo, and what a person sees is the stone
