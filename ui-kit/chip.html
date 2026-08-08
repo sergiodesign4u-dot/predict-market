@@ -90,11 +90,17 @@
     </div>
     <p class="tk-note">What a chip looks like when it is one of the things you fill in on a sheet:
     <code>--bg-control</code> on a hairline, a 10 corner. <b>This face is the one that proved the
-    scope was a bug</b>: until 2026-08-08 every rule for it was written <code>.app-case
-    .chip-amount</code>, and 526 of the 559 buttons that stand in a dialog in this product are in a
-    dialog that carries no <code>app-case</code>. The chip beside the amount field was drawn by the
-    User Agent while the field itself was right, because <code>input.css</code> had already named the
-    second place it stands.</p>
+    scope was a bug, and then proved it twice</b>: until 2026-08-08 every rule for it was written
+    <code>.app-case .chip-amount</code>, and 526 of the 559 buttons that stand in a dialog in this
+    product are in a dialog that carries no <code>app-case</code>. The chip beside the amount field
+    was drawn by the User Agent while the field itself was right.</p>
+    <p class="tk-lab tk-bad"><b>The first fix wrote the selector twice and missed a state the same
+    day.</b> <i><code>.app-case .chip-amount, dialog.app-dialog .chip-amount</code> doubled the REST
+    face and nobody doubled the CHOSEN one, so on 105 screens the selected amount had a brass edge
+    and nothing else: ground <code>rgb(36,40,47)</code> against <code>rgba(199,162,78,.09)</code>,
+    weight 400 against 700, no halo, and <code>cursor:default</code> on all 420 chips. The identical
+    chip in the bet panel had all four. A doubled selector is a face kept in two places, and the
+    second place is the one that gets forgotten.</i></p>
 
     <p class="tk-subh">nav, 294 placements, and it is the loudest chip in the product</p>
     <div class="tk-pair2">
@@ -236,7 +242,7 @@
       <table class="tk-tbl">
         <thead><tr><th>face</th><th>hover</th><th>press</th></tr></thead>
         <tbody>
-          <tr><td><code>.chip-rail</code></td><td>the ink comes up to <code>--text-primary</code> and <b>nothing else moves</b>, which is the whole idea of a quiet control</td><td rowspan="5"><code>--bg-pressed</code>, one rule for the family, <code>.app-case .chip:active</code>. It is written AFTER the chosen rule at equal specificity, so the chip you are already on still answers the finger</td></tr>
+          <tr><td><code>.chip-rail</code></td><td>the ink comes up to <code>--text-primary</code> and <b>nothing else moves</b>, which is the whole idea of a quiet control</td><td rowspan="5"><code>--bg-pressed</code>, one rule for the family, <code>.chip:active</code>. It is written AFTER the chosen rule at equal specificity, so the chip you are already on still answers the finger</td></tr>
           <tr><td><code>.chip-quiet</code></td><td>a white wash at 6 per cent</td></tr>
           <tr><td><code>.chip-nav</code></td><td>the ground brightens and the edge goes brass</td></tr>
           <tr><td><code>.chip-lane</code></td><td>a 10 per cent action wash inside a solid brass edge, the only tint of its kind in the family</td></tr>

@@ -19,4 +19,4 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .pos-list{display:flex;flex-direction:column}
-.app-case .pos-list{gap:var(--space-8)}
+.pos-list{gap:var(--space-8)}

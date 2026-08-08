@@ -89,7 +89,7 @@ dialog.app-dialog .sheet-body .quick{margin-top:var(--space-12)}
 /* ------------------------------------------ inside a bet panel or sheet -----
    The same chips at the foot of the amount row, pushed to the right because the
    field they fill is right-aligned. */
-.app-case :is(.bet-panel,.bet-sheet) .quick{margin-top:0;justify-content:flex-end;flex-wrap:wrap}
+:is(.bet-panel,.bet-sheet) .quick{margin-top:0;justify-content:flex-end;flex-wrap:wrap}
 /* ONE SELECTED CHIP, 2026-08-06, and this is the half of backlog S35 that moved. The product
    had two live spellings of "this one is chosen": a --tint-brass-09 ground inside a
    --tint-brass-45 edge with --text-brass-chip and a faint brass halo, worn by 815 category
@@ -102,4 +102,4 @@ dialog.app-dialog .sheet-body .quick{margin-top:var(--space-12)}
    THE RECIPE COLOURS WHAT THE CHIP ALREADY HAS AND ADDS NO PARTS. This one has an edge at rest,
    so the edge goes brass; the rail chip in components/chip.css has none, so it gets none, and
    its box does not move. */
-.app-case .bet-sheet .quick{gap:var(--space-8)}
+.bet-sheet .quick{gap:var(--space-8)}

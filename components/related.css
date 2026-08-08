@@ -9,29 +9,29 @@
 .related-events{border-top:var(--hairline) solid var(--border-hairline)}
 .related-list{list-style:none;padding:0;margin:0}
 .related-list a{justify-content:space-between;font-size:var(--text-13)}
-.app-case .related-events{position:relative;overflow:clip;background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
+.related-events{position:relative;overflow:clip;background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
     inset 1px 0 0 var(--bevel-faint),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 30px 58px -34px var(--shadow-ink-85),0 12px 26px -18px var(--shadow-ink-72)}
-.app-case .related-events{margin:0}
-.app-case .related-events{padding:var(--space-20) var(--space-20) var(--space-20)}
-.app-case .related-events h2{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary);margin:0 0 var(--space-8)}
-.app-case .related-list{display:flex;flex-direction:column}
-.app-case .related-list li{border-bottom:var(--hairline) solid var(--edge-groove-dark)}
-.app-case .related-list li:last-child{border-bottom:0}
-.app-case .related-list a{display:flex;align-items:center;gap:var(--space-12);padding:var(--space-12) var(--space-4);color:var(--text-primary);text-decoration:none}
-.app-case .rel-thumb{width:46px;height:46px;flex:0 0 46px;border-radius:var(--radius-10);border:var(--hairline) solid var(--border-hairline);background-size:cover;background-position:center}
-.app-case .rel-q{flex:1;min-width:0;font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);line-height:var(--leading-snug);letter-spacing:var(--track-question);color:var(--text-primary);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-.app-case .related-list a:hover .rel-q{color:var(--text-brass)}
+.related-events{margin:0}
+.related-events{padding:var(--space-20) var(--space-20) var(--space-20)}
+.related-events h2{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary);margin:0 0 var(--space-8)}
+.related-list{display:flex;flex-direction:column}
+.related-list li{border-bottom:var(--hairline) solid var(--edge-groove-dark)}
+.related-list li:last-child{border-bottom:0}
+.related-list a{display:flex;align-items:center;gap:var(--space-12);padding:var(--space-12) var(--space-4);color:var(--text-primary);text-decoration:none}
+.rel-thumb{width:46px;height:46px;flex:0 0 46px;border-radius:var(--radius-10);border:var(--hairline) solid var(--border-hairline);background-size:cover;background-position:center}
+.rel-q{flex:1;min-width:0;font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);line-height:var(--leading-snug);letter-spacing:var(--track-question);color:var(--text-primary);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.related-list a:hover .rel-q{color:var(--text-brass)}
 /* Press. The whole row IS the link, so the ground goes on the <a>: the <li> around it owns only
    the groove between rows, and a state drawn there would sit outside the thing being pushed. This
    is the tap target of nine event screens, on mobile, where the hover above never fires. The row is
    flat at rest, so only the ground moves, and the question keeps the brass hover gives it. */
-.app-case .related-list a:active{background:var(--bg-pressed)}
-.app-case .rel-odds{flex:0 0 auto;font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-muted);white-space:nowrap}
-.app-case .related-more{display:flex;align-items:center;justify-content:center;margin:var(--space-16) auto var(--space-2);width:100%;max-width:300px;min-height:var(--control-44);padding:var(--space-12) var(--space-24);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);letter-spacing:var(--track-caps-lg);color:var(--text-chip-hover);background:var(--bg-chip);border:var(--hairline) solid var(--bevel-notice);border-radius:var(--radius-10);text-decoration:none;box-shadow:inset 0 1px 0 var(--edge-groove-light);transition:border-color var(--dur-base) ease,background var(--dur-base) ease,color var(--dur-base) ease}
-.app-case .related-more:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover);color:var(--text-strong)}
+.related-list a:active{background:var(--bg-pressed)}
+.rel-odds{flex:0 0 auto;font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-muted);white-space:nowrap}
+.related-more{display:flex;align-items:center;justify-content:center;margin:var(--space-16) auto var(--space-2);width:100%;max-width:300px;min-height:var(--control-44);padding:var(--space-12) var(--space-24);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);letter-spacing:var(--track-caps-lg);color:var(--text-chip-hover);background:var(--bg-chip);border:var(--hairline) solid var(--bevel-notice);border-radius:var(--radius-10);text-decoration:none;box-shadow:inset 0 1px 0 var(--edge-groove-light);transition:border-color var(--dur-base) ease,background var(--dur-base) ease,color var(--dur-base) ease}
+.related-more:hover{border-color:var(--border-brass-hover);background:var(--bg-control-hover);color:var(--text-strong)}
 /* The same chip as Load more elsewhere, and it answered the pointer on the way in but said nothing
    when pushed. Equal specificity to the hover above, so it has to sit after it. The inset top bevel
    is the chip's own edge and not a lift, so it stays; there is no outer shadow to drop. */
-.app-case .related-more:active{background:var(--bg-pressed)}
+.related-more:active{background:var(--bg-pressed)}

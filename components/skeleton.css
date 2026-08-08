@@ -44,6 +44,12 @@
 .card.skeleton .sk-btn{height:var(--control-32);flex:1}
 .pos.skeleton .sk-line{height:var(--size-8);margin:var(--space-8) 0}
 .card.skeleton .sk-thumb,.card.skeleton .sk-line,.card.skeleton .sk-btn{background:var(--bg-control);border-color:var(--border-hairline)}
-.app-case .pos.skeleton .sk-line{background:linear-gradient(90deg,var(--bg-chip),var(--bg-control),var(--bg-chip));border-radius:var(--radius-6)}
-.app-case .ed-head .sk-thumb{width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72)}
-.app-case .card.skeleton .ed-head>div{flex:1}
+.pos.skeleton .sk-line{background:linear-gradient(90deg,var(--bg-chip),var(--bg-control),var(--bg-chip));border-radius:var(--radius-6)}
+/* THE DETAIL HEAD'S THUMB NAMES THE CARD IT STANDS IN, and it has to. This was
+   `.app-case .ed-head .sk-thumb` at (0,3,0), tying with `.card.skeleton .sk-thumb`
+   above and winning on order alone. Drop the wrapper and it becomes (0,2,0) and
+   LOSES, so the thumb fell from 72 to 56 on the two loading screens. The place
+   is not "inside the case", it is "inside a skeleton card", so that is what it
+   says now: (0,4,0), and it out-specifies rather than ties. */
+.card.skeleton .ed-head .sk-thumb{width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72)}
+.card.skeleton .ed-head>div{flex:1}

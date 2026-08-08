@@ -31,12 +31,12 @@
 .bet-dock .dock-meta{font-size:var(--text-10);flex:0 0 auto;text-align:center;color:var(--text-muted)}
 .bet-dock .dock-meta b{display:block;font-size:var(--text-12);color:var(--text-primary)}
 .bet-panel{flex:0 0 300px;top:var(--space-8);align-self:flex-start}
-.app-case .bet-panel{position:relative;overflow:clip;background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
+.bet-panel{position:relative;overflow:clip;background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
     inset 1px 0 0 var(--bevel-faint),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 30px 58px -34px var(--shadow-ink-85),0 12px 26px -18px var(--shadow-ink-72)}
-.app-case .bet-panel{display:none}
-.app-case .bet-dock{display:flex}
+.bet-panel{display:none}
+.bet-dock{display:flex}
 /* THE PANEL IS CAPPED TO THE WINDOW, for the reason written out in toc.css and
    found by the same check: pinned at 120px and 555px tall on a multi-outcome
    event, it needs 676px of window, and below that the Confirm button at the foot
@@ -44,17 +44,17 @@
    back. That is the worst instance of the three, because the part left out of
    reach is the action. svh and not vh for the same reason. */
 @media(min-width:760px){
-  .app-case .bet-panel{display:block;flex:0 0 322px;position:sticky;top:120px;
+  .bet-panel{display:block;flex:0 0 322px;position:sticky;top:120px;
     max-height:calc(100vh - 120px - 16px);
     max-height:calc(100svh - 120px - 16px);
     overflow-y:auto;overscroll-behavior:contain}
-  .app-case .bet-dock{display:none}
+  .bet-dock{display:none}
 }
-.app-case :is(.bet-panel,.bet-sheet) .bp-inner{padding:var(--space-16);gap:var(--space-12)}
-.app-case .bp-head h3{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary)}
-.app-case .bp-hint{color:var(--text-muted);font-size:var(--text-11)}
-.app-case .bp-dir{display:flex;gap:var(--space-8);padding:0;background:transparent;border:0}
-.app-case .bp-dir .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-11);font-weight:var(--weight-medium);color:inherit;opacity:.78;margin-top:var(--space-4)}
+:is(.bet-panel,.bet-sheet) .bp-inner{padding:var(--space-16);gap:var(--space-12)}
+.bp-head h3{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary)}
+.bp-hint{color:var(--text-muted);font-size:var(--text-11)}
+.bp-dir{display:flex;gap:var(--space-8);padding:0;background:transparent;border:0}
+.bp-dir .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-11);font-weight:var(--weight-medium);color:inherit;opacity:.78;margin-top:var(--space-4)}
 /* THE SECOND HOVER THIS PASS FOUND ALIVE IN ONE THEME ONLY. --bevel-strong is
    the LIT LIP of an emboss, and section 3 takes it to --white-a70 because a lip
    needs far more light on pale stone. As a hover BORDER on a chalk control that
@@ -78,7 +78,7 @@
    inset shade at the top edge, with the ground the ink was measured on left exactly where it
    was. Same role every lifted stone in this system uses. 0,5,0 against the two rest rules
    above, so it has to sit after them for the shade to land over the fill. */
-.app-case .bp-amount-row{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-12);margin:var(--space-8) 0 var(--space-20)}
+.bp-amount-row{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-12);margin:var(--space-8) 0 var(--space-20)}
 /* HOW THE FIELD AND ITS MARK SHARE THIS ROW, and that is all this file may say
    about either of them, 2026-08-08. The FACE of the field is `.amount-bet` in
    components/input.css: until today the whole of it was written
@@ -90,16 +90,16 @@
    arrives at the right edge together. THE ROW IS A SPACE-BETWEEN FLEX OF TWO
    ITEMS AND THE MARK MAKES A THIRD; left alone it would land in the middle,
    halfway between the label and the figure it belongs to. */
-.app-case .bp-amount-row .amount-input{flex:0 1 auto;width:150px;max-width:56%}
-.app-case .bp-amount-row .amount-cur{margin-left:auto}
-.app-case .bp-amount-lbl{display:flex;flex-direction:column;gap:var(--space-4)}
-.app-case .bp-cash{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
-.app-case :is(.bet-panel,.bet-sheet) .line{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light);color:var(--text-muted)}
-.app-case :is(.bet-panel,.bet-sheet) .line span:last-child{color:var(--text-primary)}
-.app-case :is(.bet-panel,.bet-sheet) .line.total{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
-.app-case :is(.bet-panel,.bet-sheet) .line.total span:last-child{color:var(--text-brass)}
-.app-case .bet-dock{position:sticky;bottom:52px;z-index:var(--z-dock);gap:var(--space-8);padding:var(--space-8) var(--space-12);border:0;border-top:var(--hairline) solid var(--border-brass);background-color:var(--bg-dock);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-dock-from),var(--bg-card-to));background-blend-mode:overlay,normal;box-shadow:0 -14px 26px -18px var(--shadow-ink-85)}
-.app-case .bet-dock .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-10);font-weight:var(--weight-medium);color:inherit;opacity:.85}
+.bp-amount-row .amount-input{flex:0 1 auto;width:150px;max-width:56%}
+.bp-amount-row .amount-cur{margin-left:auto}
+.bp-amount-lbl{display:flex;flex-direction:column;gap:var(--space-4)}
+.bp-cash{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
+:is(.bet-panel,.bet-sheet) .line{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light);color:var(--text-muted)}
+:is(.bet-panel,.bet-sheet) .line span:last-child{color:var(--text-primary)}
+:is(.bet-panel,.bet-sheet) .line.total{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+:is(.bet-panel,.bet-sheet) .line.total span:last-child{color:var(--text-brass)}
+.bet-dock{position:sticky;bottom:52px;z-index:var(--z-dock);gap:var(--space-8);padding:var(--space-8) var(--space-12);border:0;border-top:var(--hairline) solid var(--border-brass);background-color:var(--bg-dock);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-dock-from),var(--bg-card-to));background-blend-mode:overlay,normal;box-shadow:0 -14px 26px -18px var(--shadow-ink-85)}
+.bet-dock .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-10);font-weight:var(--weight-medium);color:inherit;opacity:.85}
 /* THE DOCK HAD NO POINTER STATE OF ANY KIND, and it is the control a bet is actually placed
    with: it is the panel's YES/NO pair below 760px, where the panel is display:none. So on
    the width the product is designed for first, choosing a side answered with nothing at all.
@@ -123,15 +123,15 @@ dialog.app-dialog.bet-sheet::backdrop{background:var(--shadow-ink-60);backdrop-f
    18 fails WCAG 2.5.8 by six pixels. 12 above, 4 of bar, 8 below is 24, and the
    visible handle is at the same place on the same 4px track: what grew is the
    distance to the first row of the sheet, by six pixels, on four screens. */
-.app-case .bet-sheet .sheet-grab{display:block;width:100%;border:0;background:transparent;padding:var(--space-12) 0 var(--space-8);cursor:pointer}
-.app-case .bet-sheet .sheet-grab::before{content:'';display:block;width:var(--size-40);height:var(--size-4);border-radius:var(--radius-pill);background:var(--bg-control);margin:0 auto;transition:background var(--dur-quick) ease}
-.app-case .bet-sheet .sheet-grab:hover::before{background:var(--border-hairline)}
+.bet-sheet .sheet-grab{display:block;width:100%;border:0;background:transparent;padding:var(--space-12) 0 var(--space-8);cursor:pointer}
+.bet-sheet .sheet-grab::before{content:'';display:block;width:var(--size-40);height:var(--size-4);border-radius:var(--radius-pill);background:var(--bg-control);margin:0 auto;transition:background var(--dur-quick) ease}
+.bet-sheet .sheet-grab:hover::before{background:var(--border-hairline)}
 /* The button is a full-width strip and the pill is the only part of it a person can see or
    aim at, so the pill is what answers. Rest --bg-control, hover one step toward the edge,
    press one step toward the ground, and --bg-pressed moves the right way in BOTH themes
    here: graphite-780 down to 860, chalk-930 down to 880. A press written as "undo the
    hover" would not, because the hover goes lighter on graphite and darker on chalk. */
-.app-case .bet-sheet .sheet-grab:active::before{background:var(--bg-pressed)}
+.bet-sheet .sheet-grab:active::before{background:var(--bg-pressed)}
 /* THE ONE RING THIS PASS ADDS, and it is a clipping case rather than a colour one. The grab
    spans the full width of the sheet AND sits flush with its top edge, and the sheet is a
    scroll container (overflow:hidden auto, because a sheet taller than the screen has to
@@ -143,19 +143,19 @@ dialog.app-dialog.bet-sheet::backdrop{background:var(--shadow-ink-60);backdrop-f
    ONLY THE OFFSET MOVES. The colour stays --focus-ring: the ground here is the sheet's own
    plate, which themes with the product, so this is not the course panel's problem where a
    fixed ground needed a fixed ring. */
-.app-case .bet-sheet .sheet-grab:focus-visible{outline-offset:calc(var(--ring) * -1)}
-.app-case .bet-sheet .bp-head h3{font-family:var(--font-display);font-size:var(--text-18);font-weight:var(--weight-bold);color:var(--text-primary);margin:0}
-.app-case .bet-sheet .bp-inner{display:flex;flex-direction:column;padding:var(--space-12) var(--space-20) var(--space-24);gap:var(--space-20)}
-.app-case .bet-sheet .bp-dir{gap:var(--space-8)}
-.app-case .bet-sheet .bp-amount-row{margin:0 0 var(--space-12)}
-.app-case .bet-sheet .line{padding:var(--space-8) 0}
+.bet-sheet .sheet-grab:focus-visible{outline-offset:calc(var(--ring) * -1)}
+.bet-sheet .bp-head h3{font-family:var(--font-display);font-size:var(--text-18);font-weight:var(--weight-bold);color:var(--text-primary);margin:0}
+.bet-sheet .bp-inner{display:flex;flex-direction:column;padding:var(--space-12) var(--space-20) var(--space-24);gap:var(--space-20)}
+.bet-sheet .bp-dir{gap:var(--space-8)}
+.bet-sheet .bp-amount-row{margin:0 0 var(--space-12)}
+.bet-sheet .line{padding:var(--space-8) 0}
 dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slower) var(--ease-out)}
 @media(prefers-reduced-motion:reduce){
   dialog.app-dialog.bet-sheet[open]{animation:none}
 }
-.app-case .bp-selected{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);padding:var(--space-8)}
-.app-case .bp-sel-name{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-bold);color:var(--text-primary)}
-.app-case .bp-change{font-size:var(--text-10);color:var(--text-brass);text-decoration:underline;white-space:nowrap}
+.bp-selected{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);padding:var(--space-8)}
+.bp-sel-name{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-bold);color:var(--text-primary)}
+.bp-change{font-size:var(--text-10);color:var(--text-brass);text-decoration:underline;white-space:nowrap}
 /* Change is an <a> and it is the way back out of a chosen outcome on a multi market, and it
    had neither state. Both axes the system usually uses are already spent on it: it carries
    no padding, so the ground alone is the 1.04:1 the footer measured behind one line of small
@@ -166,9 +166,9 @@ dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slower) var(--e
    chalk at 13.9:1. The underline follows the colour, so the whole mark answers.
    The press adds the ground beneath that, and restates the colour because the dock and the
    sheet this link stands in are mobile and a thumb never hovers. */
-.app-case .bp-change:hover{color:var(--text-strong)}
-.app-case .bp-change:active{background:var(--bg-pressed);color:var(--text-strong)}
-.app-case .bet-panel a:has(button),.app-case .bet-dock a:has(button){text-decoration:none;color:inherit;display:block}
+.bp-change:hover{color:var(--text-strong)}
+.bp-change:active{background:var(--bg-pressed);color:var(--text-strong)}
+.bet-panel a:has(button),.bet-dock a:has(button){text-decoration:none;color:inherit;display:block}
 
 /* The keyframe the bet sheet animates with, moved out of base.css next to its only consumer. */
 @keyframes betSheetUp{
@@ -182,11 +182,11 @@ dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slower) var(--e
    odds bar it contains"). The third `.bet-sheet` rule in dialog.css stays there and this
    is why: `dialog.app-dialog:modal:not(.bet-sheet)` has `dialog.app-dialog` as its
    subject, and a rule that EXCLUDES a class is not a rule about that class. */
-.app-case :is(.bet-panel,.bet-sheet) .fine{color:var(--text-muted)}
-.app-case .bet-sheet .fine{margin-top:-8px}
+:is(.bet-panel,.bet-sheet) .fine{color:var(--text-muted)}
+.bet-sheet .fine{margin-top:-8px}
 /* THE RESOLVED PANEL'S OWN WRAPPER, moved here from event-detail.css on 2026-08-03
    (docs/backlog.md 17). `.rp-inner` stands inside `<aside class="bet-panel
    resolved-panel">`, so it is the panel's, and declaring it in event-detail.css made
    `betpanel` read as containing `event-detail`. That was the second hand-written
    `ORDER_BREAK` this item cost, and it goes with the rule. */
-.app-case .resolved-panel .rp-inner{padding:var(--space-24) var(--space-20)}
+.resolved-panel .rp-inner{padding:var(--space-24) var(--space-20)}

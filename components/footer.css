@@ -62,14 +62,14 @@
    and the settle on press moved WITH the rules rather than staying here as a second copy.
    `ui-kit/docs/atoms.md`, and `ui-kit/docs/backlog.md` S45 for the one thing the move did
    not settle: this face and the tile agree at rest and answer the pointer differently. */
-/* The language picker is a <details> summary, so it presses the way every summary presses. It
-   is answered HERE and not in filters.css because the footer stands OUTSIDE .app-case, and both
-   the shared summary hover and the shared summary press are scoped to that wrapper: the footer's
-   copy of the control is reached by neither. footer.css is imported after filters.css and this
-   sits at 0,2,1 against the shared rest state's 0,1,1, so it wins on specificity and on order.
-   The summary is flat at rest, so there is nothing to unlift. It still has no hover, for exactly
-   the same scoping reason, and that answer belongs to filters.css rather than to this file. */
-.lang-menu summary:active{background:var(--bg-pressed)}
+/* THE LANGUAGE PICKER'S PRESS LEFT THIS FILE ON 2026-08-08, and it is the clearest thing this
+   folder has to say about what a workaround costs. It was one line, `.lang-menu summary:active`,
+   written here rather than in filters.css because the footer stands outside `.app-case` and both
+   shared summary states were scoped to that wrapper. It bought the press and nothing else: the
+   same control kept NO hover, and it stood at 90x27 against its twin's 152x35 because the rest
+   state could not reach it either. A workaround answers the symptom it was written for and leaves
+   every other one standing, which is why the rule now is that the WRAPPER goes rather than the
+   control being copied. filters.css owns all three states and reaches this one, measured. */
 .footer-logo{width:auto;height:auto;padding:0;background:none;border:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:var(--track-head);color:var(--text-primary)}
 .footer-legal{border-top:var(--hairline) solid var(--border-hairline)}
 .app-footer{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}

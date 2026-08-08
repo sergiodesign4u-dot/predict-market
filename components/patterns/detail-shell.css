@@ -11,8 +11,8 @@
      answers where the two columns are, and nothing about what they look like.
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.app-case .ed-layout{display:flex;flex-direction:column;gap:var(--space-16);align-items:stretch}
-.app-case .ed-main{flex:1;min-width:0}
+.ed-layout{display:flex;flex-direction:column;gap:var(--space-16);align-items:stretch}
+.ed-main{flex:1;min-width:0}
 @media(min-width:760px){
-  .app-case .ed-layout{flex-direction:row;align-items:flex-start}
+  .ed-layout{flex-direction:row;align-items:flex-start}
 }

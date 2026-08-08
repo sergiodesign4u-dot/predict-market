@@ -44,6 +44,121 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - The wrapper comes off 415 selectors, and it was protecting nothing
+
+`.app-case` was the last container scope in the system and by far the largest: **415 selectors in 36
+of the 50 imported files, 31 per cent of the 1,326 this folder declares.** Its own rule is
+`position:relative;background:transparent;border:0`, so it painted nothing; it existed to keep the
+product's rules off the course chrome the painted screens carry.
+
+**It does not do that.** Measured in a browser across all 106 painted screens with every dialog
+forced open, at 1280 with the pointer asserted fine: of the **375 unique selector tails** behind the
+wrapper, **13 match anything at all outside it**, and every one of those 13 is a region of the
+PRODUCT.
+
+| what stands outside `.app-case` and an `.app-case` rule reaches | matches | verdict |
+|---|---|---|
+| the How-it-works sheet, 8 tails | 1,680 | **by design**, and `hiw-dialog.css` says so out loud: a page is not a bigger dialog |
+| the deposit sheet's amount chips, 4 tails | 1,050 | defect |
+| the footer's language chooser, 1 tail | 105 | defect, backlog 58 |
+| **the course chrome: sidebar, toggle, overlay** | **0** | the only thing the wrapper was for |
+| the bottom nav | **0** | |
+
+**A scope that changes the outcome for 13 of 375 tails, eight of them in one file on purpose, and
+that matches zero elements of the thing it was written to exclude, is not a scope.** It is a hole
+with three of the product's own regions in it, and this repository has now paid for that hole eight
+times: the amount field, the widget slot, the reassurance box, the chip's amount face, the close
+disc, the load-more chip, the sign-in prompt and the provider button.
+
+### The defect it was hiding, and it renders
+
+The selected amount chip in the deposit sheet, against its identical twin in the bet panel, on 105
+screens:
+
+| | bet panel, inside | deposit sheet, outside |
+|---|---|---|
+| ground | `rgba(199,162,78,.09)` brass tint | `rgb(36,40,47)` plain control |
+| ink | `rgb(231,214,166)` brass | `rgb(237,231,218)` plain |
+| weight | 700 | **400** |
+| halo | `0 0 10px -8px` brass | **none** |
+| cursor | pointer | **default** |
+| edge | `rgba(199,162,78,.45)` | the same |
+
+Only the edge survived. The amount chip had already been fixed once on 2026-08-08, **by writing the
+selector twice**: `.app-case .chip-amount, dialog.app-dialog .chip-amount`. The REST state was
+doubled and the CHOSEN state was not. **A doubled selector is a face maintained in two places, and
+it took under a day for the second place to be forgotten** by the same person on the same component.
+That is the argument for removing the wrapper rather than naming the second place, written by the
+fix that named the second place.
+
+### What actually changed, measured before and after
+
+The candidate was served from a second origin and swapped into each page in place of
+`components/index.css`, so both readings happen in ONE page load against the same DOM. **106 painted
+screens plus 55 kit pages, at 390 and 1280, in dark and light: 8 configurations, 380,232 element
+readings of 76 computed properties and 4 box numbers each.** Transitions were finished rather than
+paused before each reading, after a first pass caught the same chip reporting two different grounds
+on two runs because it was measured mid-transition.
+
+**28 distinct changes, identical in all four configurations, and every one is in one of five
+families:**
+
+1. **The deposit sheet's chips**, 420 a render: ground, ink, weight, halo and cursor on the chosen
+   one, `cursor:pointer` on all of them. The fix.
+2. **The footer's language chooser**, 105: padding 4/8 to 8/20, a gap, a transition, and 90x27 to
+   122x35. Backlog 58 closed. Its hover and press were then verified by hovering and pressing, in
+   both themes: identical to the sort menu in the feed.
+3. **The first row of the holders table and the activity list**, 16 and 9. `.hold-row:first-of-type
+   {border-top:none}` was written to keep a line off the first row and had never fired, because the
+   painted rule tied with it at (0,2,0) and came later. **The wrapper was defeating the file's own
+   exception.** Dropping it to (0,1,0) lets the exception win, which is what it is for.
+4. **The comment avatars**, 18 of 36. Two placeholder photographs sat in `comments.css` and the
+   brass face was `.app-case .cmt-av` at (0,2,0), which BEAT the first at (0,2,0) on order and LOST
+   to `.cmt-list .cmt:nth-child(even) .cmt-av` at (0,4,0). So odd rows drew brass initials and even
+   rows drew a photograph with the initials printed over it. Nobody chose that. **An avatar is a
+   datum and a datum is written on the element**, the rule this repo already applies to the event
+   photograph, so the two placeholders are deleted and all 36 wear the face a person with no
+   photograph gets.
+5. **One "Browse more events" link on `terms.html`**: 16px above and 2px below to 0. It stands in
+   `.read-col`, whose pattern writes `.read-col>*{margin-block:0}` because the column supplies the
+   rhythm with a gap. The wrapper was out-specifying the pattern.
+
+**Two cascade flips were caught by the before-and-after and fixed in the candidate before it
+shipped**, which is the whole reason the measurement exists: the comment avatar above, and
+`.app-case .ed-head .sk-thumb`, which tied with `.card.skeleton .sk-thumb` at (0,3,0) and won on
+order alone. Unscoped it would have LOST and the detail head's loading thumb would have fallen from
+72 to 56. It says `.card.skeleton .ed-head .sk-thumb` now, which is the place it actually stands and
+out-specifies rather than ties.
+
+**Nothing else moved.** No change in the course chrome, none in the bottom nav, none on any of the
+55 kit pages beyond families 3 and 4 above. The shipped tree was then diffed against the measured
+candidate and found byte-identical before the prose was written.
+
+### What is left, and it is the one honest use of the wrapper
+
+`hiw-dialog.css` keeps its 16 `.app-case` rules, because there the wrapper means **the page rather
+than the sheet**: the guide has room, so its hero takes an edge of its own, its label is 18px rather
+than 11, and its reading column takes the page text size. The file already carried that argument in
+prose. Everything else that survives is `.app-case{position:relative}` and `body.app-case{background}`,
+which are the class's own two rules and not a scope.
+
+### What was rejected
+
+**Fixing the chip and the footer alone**, which was the smaller of the two options put up. It leaves
+410 selectors carrying a qualifier that has produced eight corrections in two days, and the next
+control to stand outside the wrapper finds it the ninth time. The reason to do the whole thing is
+that the count is knowable and the risk is measurable, and both were measured.
+
+### One instrument note, and it is the third time
+
+**The first verification run of the shipped tree reported the changes in the wrong direction**, which
+is only possible if the browser was serving the pre-edit stylesheet. It was: the server had been
+started before the edit and the cache answered. Fixed by restarting on a fresh port, the same fix
+this repository has now paid for with CSS, with HTML and with this. A verification that cannot be
+wrong in a direction you can check is a verification that cannot be checked.
+
+---
+
 ## 2026-08-08 - The button family names its sixth face, and it turns out to be 36 per cent of the family
 
 The last container scope in `components/button.css`, and the biggest one anybody had left: the

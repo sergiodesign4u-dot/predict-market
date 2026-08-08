@@ -12,7 +12,7 @@
    along the top edge and two rounded top corners are not composition, and
    they are not the page plate either, so they stay with the component that
    draws them. */
-.app-case .cta-bar{background:var(--bg-card-quiet);border:0;border-top:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0}
+.cta-bar{background:var(--bg-card-quiet);border:0;border-top:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0}
 /* THE BUTTON LEFT THIS FILE ON 2026-08-03, and the whole of it: the quiet rest,
    the brass first child, both hovers and both presses, eight rules. They are in
    components/button.css with the rest of the family, because they were the
@@ -28,4 +28,4 @@
    top edge, its two rounded corners, and the three declarations .flat takes
    them away with. That is the exception this component declared when the
    pattern was cut, and it still holds. */
-.app-case .cta-bar.flat{border:0;background:none;border-radius:0}
+.cta-bar.flat{border:0;background:none;border-radius:0}

@@ -41,11 +41,16 @@
    line and 44 would make the comment row taller than the comment. That question is
    the whole product's, and ui-kit/docs/backlog.md S39 holds it. */
 .cmt-actions .ic{width:var(--icon-12);height:var(--icon-12)}
-/* A PLACEHOLDER, and the file says so. Two sample faces alternating down the thread: the product
-   will write the real one on the element, the way the event photograph is written on the card.
-   The two are here rather than there only because there are 198 of them and a stand needs faces. */
-.cmt-list .cmt-av{background-image:url(../assets/avatar-2.jpg);background-size:cover;background-position:center;color:transparent;font-size:0;border:var(--hairline) solid var(--border-hairline)}
-.cmt-list .cmt:nth-child(even) .cmt-av{background-image:url(../assets/avatar-1.jpg)}
+/* TWO AVATAR PLACEHOLDERS LEFT THIS FILE ON 2026-08-08, and they were half alive.
+   They were `.cmt-list .cmt-av` and `.cmt-list .cmt:nth-child(even) .cmt-av`, two sample
+   photographs alternating down the thread, and the note under them said the product would write
+   the real face on the element the way the event photograph is written on the card. It cannot
+   have been both: the brass rule below was `.app-case .cmt-av` at (0,2,0), which BEAT the first
+   at (0,2,0) on order and LOST to the second at (0,4,0), so the odd rows drew brass initials and
+   the even rows drew a photograph with the initials printed over it. Nobody chose that.
+   The note is the rule: an avatar is a DATUM and a datum is written on the element, so what this
+   file owns is the face a person with no photograph gets. 18 even avatars change on 9 screens and
+   they change to the thing the other 18 already were. */
 /* THE THREE-STEP OF A BRASS PLATE, the one button.css and input.css already use, and it costs no
    value at all. Rest lights the plate from the top left; hover takes the lit role to both stops so
    the whole face comes up; press flips the angle so the light falls to the bottom right, which is
@@ -54,10 +59,10 @@
    multiplies whatever is underneath, so no theme and no role can reach it, and the same 1.08 is a
    different decision on graphite and on chalk. The glow line is kept exactly as it was, because
    that is depth and not colour, and the press drops it: a plate pushed in does not throw light. */
-.app-case .cmt-controls{color:var(--text-muted);font-size:var(--text-12);justify-content:space-between}
-.app-case .cmt-compose{border:0;background:transparent;padding:0;align-items:center}
-.app-case .cmt-av{border:var(--hairline) solid var(--border-brass);color:var(--text-brass);font-size:var(--text-10);background:linear-gradient(140deg,color-mix(in oklab,var(--color-action) 20%,var(--bg-control)),var(--bg-control))}
-.app-case .cmt-input{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-muted)}
+.cmt-controls{color:var(--text-muted);font-size:var(--text-12);justify-content:space-between}
+.cmt-compose{border:0;background:transparent;padding:0;align-items:center}
+.cmt-av{border:var(--hairline) solid var(--border-brass);color:var(--text-brass);font-size:var(--text-10);background:linear-gradient(140deg,color-mix(in oklab,var(--color-action) 20%,var(--bg-control)),var(--bg-control))}
+.cmt-input{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-muted)}
 /* THE SIGNED-OUT PROMPT ADOPTED THE FAMILY ON 2026-08-07 and this file keeps one
    declaration of it: the gap under it. Everything else it was - a full-width box
    on `--bg-well` with a hairline, a 10 corner, 16 of padding, muted semibold, a
@@ -72,20 +77,20 @@
    is the ramp's `lg` step and the single visible change the adoption makes -
    exactly what `.cc-btn` cost a day earlier, answered the same way.
    It was the last file-slot on the atom map, which went 1 to 0. */
-.app-case .cmt-signin{margin-bottom:var(--space-16)}
+.cmt-signin{margin-bottom:var(--space-16)}
 /* The prompt is a quiet control, so it settles onto --bg-pressed, and it is flat at rest with
    nothing to unlift. It opens a dialog on the same click, so without a held-down ground the whole
    width of it looks inert until the sheet arrives. Equal specificity to the hover above, so it has
    to sit after it. */
-.app-case .cmt-user{color:var(--text-primary)}
-.app-case .cmt-meta{color:var(--text-muted)}
-.app-case .cmt-badge{border:var(--hairline) solid var(--border-brass);border-radius:var(--radius-6);background:var(--tint-brass-09);color:var(--text-brass);font-size:var(--text-10)}
-.app-case .cmt-text{color:var(--text-primary);font-size:var(--text-13);line-height:var(--leading-base)}
-.app-case .cmt-actions{color:var(--text-muted)}
+.cmt-user{color:var(--text-primary)}
+.cmt-meta{color:var(--text-muted)}
+.cmt-badge{border:var(--hairline) solid var(--border-brass);border-radius:var(--radius-6);background:var(--tint-brass-09);color:var(--text-brass);font-size:var(--text-10)}
+.cmt-text{color:var(--text-primary);font-size:var(--text-13);line-height:var(--leading-base)}
+.cmt-actions{color:var(--text-muted)}
 /* Reply and like carry no ground of their own, so the press is the ground arriving: the same
    --bg-pressed, drawn tight around the label because the button's padding is 0 and a state may not
    move the control. footer.css presses a bare text link the same way, for the same reason. */
-.app-case .cmt-actions .ic{fill:currentColor;stroke:none}
+.cmt-actions .ic{fill:currentColor;stroke:none}
 /* THE COMMENT SORT SWITCHER, moved here from tabs.css on 2026-08-03 (docs/backlog.md 17).
    tabs.css held it because "that file owns every switcher", and that sentence was the
    defect: every one of the seven rules is scoped `.cmt-controls`, so the ownership was a
@@ -106,7 +111,7 @@
    screens and 180 elements changed: a 1px right border arrived on 90 chips and
    every segment grew a pixel. A rule kept for a tree that cannot see it is a
    rule waiting for the day something stops outranking it. */
-.app-case .cmt-controls .seg{order:-1;display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10)}
+.cmt-controls .seg{order:-1;display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10)}
 /* THE CHIP INSIDE IT LEFT ON 2026-08-05 and this file keeps only the WELL that
    holds it. The four painted rules that stood here were the same declaration
    block, byte for byte, as `.ed-range button` in components/tabs.css: one

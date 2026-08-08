@@ -60,6 +60,27 @@ override it.** There is no build step and no gate: what you write is what ships.
   and the two trees disagreed about which. **Absent and inert are the same amount of nothing**, which
   is why the divergence went unnoticed. The field is `type="number"` now and the browser is the
   guard, verified by typing into it.
+- **A scope is a claim about where the product IS, and it is the claim least likely to be checked.**
+  `.app-case` opened **415 selectors in 36 of the 50 files, 31 per cent of everything declared here**,
+  and it existed to keep these rules off the course chrome. Measured across 106 painted screens with
+  every dialog open: it changed the outcome for **13 of 375 selector tails**, eight of them one file
+  drawing a page differently from a sheet on purpose, and it matched **0 elements of the chrome**. The
+  bottom nav, the footer and all 337 dialogs stand outside it, so what the wrapper actually did was
+  hide three regions of the product from its own system, eight times in two days. **A wrapper that
+  everything is inside is not a scope, it is a hole shaped like the exceptions.**
+- **The fix for a scope is never a second selector.** The amount chip was repaired once by writing
+  `.app-case .chip-amount, dialog.app-dialog .chip-amount`, and **the chosen state was not doubled
+  the same day by the same hand**: 105 screens shipped a selected chip with a brass edge and no
+  ground, no ink, no weight and no halo. A doubled selector is a face kept in two places and the
+  second place is the one that gets forgotten. Take the container off.
+- **A tie is not a hierarchy, and dropping a scope changes who wins.** Unscoping lowers specificity
+  everywhere, so a rule that beat its neighbour on source order can start losing. Two did:
+  `.app-case .ed-head .sk-thumb` tied with `.card.skeleton .sk-thumb` and would have fallen from 72
+  to 56, and `.app-case .cmt-av` was beating one avatar rule and losing to another, so half the
+  comment avatars drew a photograph with initials printed over it. **The reverse also happens and it
+  is a fix**: `.hold-row:first-of-type{border-top:none}` had never once fired, because the scoped
+  rule it was written to except tied with it and came later. Measure before and after, in a browser,
+  or do not do it.
 - **A pointer is a claim, and nothing checks a comment.** Every file here carries a `Stand:` line, and
   from 2026-08-07 to 2026-08-08 **all 42 of them pointed at a file that did not exist**: they named
   the generated per-component pages, which were deleted with the vitrine, and no reader noticed

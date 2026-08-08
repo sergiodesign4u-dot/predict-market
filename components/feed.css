@@ -8,4 +8,4 @@
 
 .feed{margin:0;flex:1}
 .feed-head :is(h1,h2){font-family:var(--font-display);font-size:var(--display-feed);font-weight:var(--weight-bold);letter-spacing:var(--track-display);line-height:var(--leading-flat);color:var(--text-primary);text-wrap:balance}
-.app-case .feed{background:transparent;padding:0}
+.feed{background:transparent;padding:0}

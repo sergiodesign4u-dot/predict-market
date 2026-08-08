@@ -15,20 +15,20 @@
 .state-block .ic{stroke:var(--text-brass)}
 .state-title{color:var(--text-primary);font-family:var(--font-display)}
 .state-msg{color:var(--text-muted)}
-.app-case .cat-main .state-block{background:transparent;border:0;border-radius:0;box-shadow:none;margin:0;padding:var(--space-40) var(--space-16) var(--space-40)}
-.app-case .cat-main .state-block .state-actions{margin-top:var(--space-20)}
-.app-case .resolved-panel .state-block{background:none;border:0;box-shadow:none;border-radius:0;margin:0;padding:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:var(--space-8)}
-.app-case .resolved-panel .state-block .ic{width:var(--size-28);height:var(--size-28);stroke:var(--text-brass);fill:none}
-.app-case .resolved-panel .state-title{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary);margin:0}
-.app-case .resolved-panel .state-msg{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0}
-.app-case .resolved-panel .state-actions{flex-direction:column;width:100%;gap:var(--space-8);margin-top:var(--space-8)}
-.app-case .resolved-panel .state-actions a{display:block;width:100%}
-.app-case .sys-note{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-loose);margin:var(--space-12) 0 0}
-.app-case .sys-links{margin-top:var(--space-20);border-top:var(--hairline) solid var(--border-hairline);padding-top:var(--space-16)}
-.app-case .sys-links h2{font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-semibold);text-transform:uppercase;letter-spacing:var(--track-caps);color:var(--text-muted);margin:0 0 var(--space-12)}
-.app-case .sys-link-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-20)}
-.app-case .sys-link-list a{color:var(--text-brass);text-decoration:none;font-weight:var(--weight-semibold);font-size:var(--text-14);border-bottom:var(--hairline) solid var(--glow-brass);padding-bottom:var(--space-2)}
-.app-case .sys-link-list a:hover{border-bottom-color:var(--text-brass)}
+.cat-main .state-block{background:transparent;border:0;border-radius:0;box-shadow:none;margin:0;padding:var(--space-40) var(--space-16) var(--space-40)}
+.cat-main .state-block .state-actions{margin-top:var(--space-20)}
+.resolved-panel .state-block{background:none;border:0;box-shadow:none;border-radius:0;margin:0;padding:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:var(--space-8)}
+.resolved-panel .state-block .ic{width:var(--size-28);height:var(--size-28);stroke:var(--text-brass);fill:none}
+.resolved-panel .state-title{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary);margin:0}
+.resolved-panel .state-msg{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0}
+.resolved-panel .state-actions{flex-direction:column;width:100%;gap:var(--space-8);margin-top:var(--space-8)}
+.resolved-panel .state-actions a{display:block;width:100%}
+.sys-note{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-loose);margin:var(--space-12) 0 0}
+.sys-links{margin-top:var(--space-20);border-top:var(--hairline) solid var(--border-hairline);padding-top:var(--space-16)}
+.sys-links h2{font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-semibold);text-transform:uppercase;letter-spacing:var(--track-caps);color:var(--text-muted);margin:0 0 var(--space-12)}
+.sys-link-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-20)}
+.sys-link-list a{color:var(--text-brass);text-decoration:none;font-weight:var(--weight-semibold);font-size:var(--text-14);border-bottom:var(--hairline) solid var(--glow-brass);padding-bottom:var(--space-2)}
+.sys-link-list a:hover{border-bottom-color:var(--text-brass)}
 /* Press. These links are the one control in this file, and they are the way out of 404 and 500,
    which is a screen a person reaches on a phone as readily as on a desktop, where the hover
    above never fires. The link is already brass at rest, so colour cannot carry the press and
@@ -37,4 +37,4 @@
    So the press carries the underline the hover brightens, and a thumb gets the pointer's answer
    plus the ground. Equal specificity to the hover (0,3,1), so this has to sit after it. Nothing
    here is lifted, so there is no outer shadow to drop, and nothing here is ever disabled. */
-.app-case .sys-link-list a:active{background:var(--bg-pressed);border-bottom-color:var(--text-brass)}
+.sys-link-list a:active{background:var(--bg-pressed);border-bottom-color:var(--text-brass)}

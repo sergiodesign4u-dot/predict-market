@@ -23,13 +23,20 @@
    arithmetic with no information in it. See ui-kit/docs/defects.md row 63. */
 .lang-menu .filter-panel{top:auto;bottom:calc(100% + 4px);right:auto;left:0;min-width:150px}
 .filter-panel{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
+/* ALL THREE STATES ARE HERE AND THEY REACH ALL 193 MENUS, 2026-08-08. These three rules were
+   scoped to `.app-case`, and 105 of the 193 summaries in the product are the footer's language
+   picker, which stands outside it: that one control had no rest face, no hover, and a press only
+   because footer.css had written a private copy of it. It measured 90x27 against its twin's
+   152x35 and nobody had looked, because the two are two screens apart and one of them is at the
+   bottom of the page. A control that has to be found by scrolling is a control a scope defect can
+   hide in. */
 .filter-menu summary{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
-.app-case .filter-menu summary{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
-.app-case .filter-menu summary:hover{border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)}
+.filter-menu summary{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+.filter-menu summary:hover{border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)}
 /* Press is the axis a disclosure needs most: the panel opens on the same click, so without a
    held-down ground the chip looks like it did nothing until the panel arrives. Equal specificity
    to the hover above, so it has to sit after it. The summary is flat at rest, nothing to unlift. */
-.app-case .filter-menu summary:active{background:var(--bg-pressed)}
+.filter-menu summary:active{background:var(--bg-pressed)}
 /* HIDDEN, NOT REMOVED, and the difference is the whole control. `display:none` generates no box, so
    the browser takes the element out of the tab order AND out of the accessibility tree: the sort
    radiogroup and the category checkboxes could be operated by a mouse and by nothing else, on 104

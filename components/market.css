@@ -6,9 +6,9 @@
    Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.app-case .market-box{border:0;padding:0}
-.app-case .market-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none;transition:background var(--dur-quick) ease}
-.app-case .market-head::-webkit-details-marker{display:none}
+.market-box{border:0;padding:0}
+.market-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none;transition:background var(--dur-quick) ease}
+.market-head::-webkit-details-marker{display:none}
 /* The disclosure had no pointer state at all, on nine screens. Its only feedback was the chevron
    rotating, and that is the RESULT of the click: until the body opens, nothing tells a person the
    row is a control rather than a label. Hover takes the quiet control fill and press the held
@@ -18,32 +18,32 @@
    Colour only. The row carries no padding of its own, so the band IS the row, and giving it one
    to sit in would move every screen that has this section. Press is equal specificity to hover,
    so it has to stay after it. Nothing disables a market you can expand, so no disabled skin. */
-.app-case .market-head:hover{background:var(--bg-control)}
-.app-case .market-head:active{background:var(--bg-pressed)}
-.app-case .market-title{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit)}
-.app-case .market-title .ic{width:13px;height:13px;stroke:var(--text-muted);fill:none;stroke-width:1.7}
-.app-case .market-chevron{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-muted);fill:none;stroke-width:1.8;transition:transform var(--dur-base) ease}
-.app-case .market-box[open] .market-chevron{transform:rotate(180deg)}
-.app-case .market-body{margin-top:var(--space-16)}
-.app-case .market-stats{display:flex;flex-wrap:wrap;gap:var(--space-16) var(--space-24);padding-bottom:var(--space-16);border-bottom:var(--hairline) solid var(--edge-groove-dark)}
-.app-case .market-stats > div{display:flex;flex-direction:column;gap:var(--space-4)}
-.app-case .market-depth{margin-top:var(--space-16)}
+.market-head:hover{background:var(--bg-control)}
+.market-head:active{background:var(--bg-pressed)}
+.market-title{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit)}
+.market-title .ic{width:13px;height:13px;stroke:var(--text-muted);fill:none;stroke-width:1.7}
+.market-chevron{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-muted);fill:none;stroke-width:1.8;transition:transform var(--dur-base) ease}
+.market-box[open] .market-chevron{transform:rotate(180deg)}
+.market-body{margin-top:var(--space-16)}
+.market-stats{display:flex;flex-wrap:wrap;gap:var(--space-16) var(--space-24);padding-bottom:var(--space-16);border-bottom:var(--hairline) solid var(--edge-groove-dark)}
+.market-stats > div{display:flex;flex-direction:column;gap:var(--space-4)}
+.market-depth{margin-top:var(--space-16)}
 
 /* The market stats row and the market-depth table, moved out of base.css: this file already
    owned .market-stats and .market-depth, and the rows inside them were two files away. */
-.app-case .ms-label{font-family:var(--font-mono);font-size:var(--text-10);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--text-muted)}
-.app-case .ms-val{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary)}
-.app-case .ms-yes{color:var(--outcome-yes-text)}
-.app-case .ms-no{color:var(--outcome-no-figure)}
-.app-case .ms-up{color:var(--outcome-yes-text)}
-.app-case .md-title{font-family:var(--font-body);font-size:var(--text-13);font-weight:var(--weight-bold);color:var(--text-primary)}
-.app-case .md-sub{display:block;font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted);margin:var(--space-4) 0 var(--space-12)}
-.app-case .md-table{display:flex;flex-direction:column;gap:var(--space-2)}
-.app-case .md-row{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-8);align-items:center;padding:var(--space-8) var(--space-12);border-radius:var(--radius-10);overflow:clip;font-family:var(--font-mono);font-size:var(--text-12);color:var(--text-primary)}
-.app-case .md-row-head{padding:var(--space-2) var(--space-12);color:var(--text-muted);font-size:var(--text-10);text-transform:uppercase;letter-spacing:var(--track-label)}
-.app-case .md-bar{position:absolute;left:0;top:0;bottom:0;background:var(--outcome-yes-fill);z-index:var(--z-under)}
-.app-case .md-row > span:not(.md-bar){position:relative;z-index:var(--z-content)}
-.app-case .md-amt{font-weight:var(--weight-semibold)}
-.app-case .md-price{color:var(--outcome-yes-text);text-align:center}
-.app-case .md-row-head > span:nth-child(2){text-align:center}
-.app-case .md-get,.app-case .md-row-head > span:last-child{text-align:right}
+.ms-label{font-family:var(--font-mono);font-size:var(--text-10);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--text-muted)}
+.ms-val{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary)}
+.ms-yes{color:var(--outcome-yes-text)}
+.ms-no{color:var(--outcome-no-figure)}
+.ms-up{color:var(--outcome-yes-text)}
+.md-title{font-family:var(--font-body);font-size:var(--text-13);font-weight:var(--weight-bold);color:var(--text-primary)}
+.md-sub{display:block;font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted);margin:var(--space-4) 0 var(--space-12)}
+.md-table{display:flex;flex-direction:column;gap:var(--space-2)}
+.md-row{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-8);align-items:center;padding:var(--space-8) var(--space-12);border-radius:var(--radius-10);overflow:clip;font-family:var(--font-mono);font-size:var(--text-12);color:var(--text-primary)}
+.md-row-head{padding:var(--space-2) var(--space-12);color:var(--text-muted);font-size:var(--text-10);text-transform:uppercase;letter-spacing:var(--track-label)}
+.md-bar{position:absolute;left:0;top:0;bottom:0;background:var(--outcome-yes-fill);z-index:var(--z-under)}
+.md-row > span:not(.md-bar){position:relative;z-index:var(--z-content)}
+.md-amt{font-weight:var(--weight-semibold)}
+.md-price{color:var(--outcome-yes-text);text-align:center}
+.md-row-head > span:nth-child(2){text-align:center}
+.md-get,.md-row-head > span:last-child{text-align:right}

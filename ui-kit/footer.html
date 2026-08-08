@@ -35,17 +35,21 @@
     <p class="tk-note">The level and its reason stay on
     <a href="organisms.html#footer">the organisms page</a>. What needs the room here is the one
     structural fact about this component that reaches into three other files: <b>the footer stands
-    OUTSIDE <code>.app-case</code></b>, and every rule the system scopes to that wrapper stops at its
-    edge.</p>
+    OUTSIDE <code>.app-case</code></b>, and every rule the system scoped to that wrapper stopped at
+    its edge. <b>There are no such rules any more.</b> 415 selectors carried the wrapper until
+    2026-08-08 and one file carries it now, because a region of the product that the system's own
+    rules cannot reach is not a fact about the region.</p>
   </section>
 
   <section class="tk-sec" id="outside">
     <h2 data-n="2">Outside the wrapper, and this file already knew</h2>
     <p class="tk-note">The language picker in this footer is a disclosure, exactly like the sort menu
-    in the feed. Its hover and its press are written HERE rather than in the filters file, <b>and the
-    comment says why in one line: the footer stands outside <code>.app-case</code>, and both shared
-    rules are scoped to that wrapper, so the footer's copy of the control is reached by
-    neither.</b></p>
+    in the feed. Its press used to be written HERE rather than in the filters file, <b>and the
+    comment said why in one line: the footer stands outside <code>.app-case</code>, and both shared
+    rules were scoped to that wrapper, so the footer's copy of the control was reached by
+    neither.</b> <b>That line left this file on 2026-08-08 with the rule it explained.</b> A private
+    copy buys back the one state somebody noticed and leaves the rest missing: this control kept its
+    press and never got a hover, and stood at 90x27 against its twin's 152x35.</p>
     <p class="tk-why"><b>That is the whole of backlog 58, discovered here for one control and never
     generalised.</b> Measured across 106 screens: <b>105 of 193 filter menus stand outside the
     wrapper and every one of them is this footer's</b>. This file answered its own copy's hover and
@@ -135,7 +139,8 @@
     <h2 data-n="7">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never fix a scope for one control and stop.</b> <i>This file worked
     around standing outside <code>.app-case</code> for its own language picker, and 105 placements of
-    the same control went on losing their rules.</i></p>
+    the same control went on losing their rules for two more days. The workaround is gone and so is
+    the wrapper.</i></p>
     <p class="tk-lab tk-bad"><b>Never file a control by what it does.</b> <i>Five marks were
     navigation by role and an icon button in every measurable value.</i></p>
     <p class="tk-lab tk-bad"><b>Never promise a destination the map does not have.</b> <i>Sixteen

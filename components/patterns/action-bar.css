@@ -20,15 +20,15 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .cta-bar{display:flex}
-.app-case .cta-bar{position:sticky;bottom:0;padding:var(--space-12);gap:var(--space-8);margin-top:var(--space-12);z-index:var(--z-dock)}
-.app-case .cta-bar>a{flex:1}
-.app-case .cta-bar>a>button{width:100%}
+.cta-bar{position:sticky;bottom:0;padding:var(--space-12);gap:var(--space-8);margin-top:var(--space-12);z-index:var(--z-dock)}
+.cta-bar>a{flex:1}
+.cta-bar>a>button{width:100%}
 /* And the same sentence for a bare child, which the bar has as often as it has
    an anchor. It arrived here on 2026-08-03 out of the button rule account.css
    was carrying: how the children of a row share the row is the arrangement, and
    the arrangement is what this file is. Written as a CHILD selector, unlike the
    rule it came from, because a button nested inside the anchor above is not a
    flex item of this bar and flex:1 on it means nothing. */
-.app-case .cta-bar>button{flex:1}
-.app-case .cta-bar.static{position:static}
-.app-case .cta-bar.flat{position:static;padding:var(--space-8) 0 0}
+.cta-bar>button{flex:1}
+.cta-bar.static{position:static}
+.cta-bar.flat{position:static;padding:var(--space-8) 0 0}

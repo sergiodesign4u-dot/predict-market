@@ -44,23 +44,26 @@
       <table class="tk-tbl">
         <thead><tr><th>where</th><th>menus</th><th>summary padding</th><th>at 390, mouse</th><th>at 390, finger</th></tr></thead>
         <tbody>
-          <tr><td>inside <code>.app-case</code></td><td>88</td><td>8 / 20</td><td>152x35 and 154x35</td><td>152x44</td></tr>
-          <tr><td><b>outside it, in the footer</b></td><td><b>105</b></td><td><b>4 / 8</b></td><td><b>90x27</b></td><td>90x44</td></tr>
+          <tr><td>in the feed, the head, the panels</td><td>88</td><td>8 / 20</td><td>152x35 and 154x35</td><td>152x44</td></tr>
+          <tr><td><b>in the footer, until 2026-08-08</b></td><td><b>105</b></td><td><b>4 / 8</b></td><td><b>90x27</b></td><td>90x44</td></tr>
+          <tr><td><b>in the footer, now</b></td><td>105</td><td>8 / 20</td><td><b>122x35</b></td><td>122x44</td></tr>
         </tbody>
       </table>
     </div>
     <p class="tk-why">Every painted screen carries a footer and the footer stands outside the
-    <code>app-case</code> wrapper. So the language chooser gets the file's UNSCOPED rules, which give
-    it a surface, a hairline and a pill corner and nothing else: <b>no padding of its own, no
-    transition, no hover and no press</b>. It is a control that answers a mouse with silence, once on
-    every screen in the product.</p>
-    <p class="tk-note"><b>This is the third sighting of one shape and the first that is still
-    open.</b> The unscoped <code>.amount-input</code> rendered as a white User Agent field; the
-    <code>.chip-amount</code> in a dialog outside <code>app-case</code> got no rule at all and was
-    fixed on 2026-08-08 by naming the second place it stands. This one is not latent and not a
-    User Agent fallback: <b>it renders, it looks nearly right, and it is missing its behaviour</b>,
-    which is the version of the defect that survives a screenshot. <code>docs/backlog.md</code>
-    58.</p>
+    <code>app-case</code> wrapper. Until 2026-08-08 all three of this file's summary rules opened
+    with that wrapper, so the language chooser got a surface, a hairline and a pill corner and
+    nothing else: <b>no padding of its own, no transition, no hover and no press</b>. It was a
+    control that answered a mouse with silence, once on every screen in the product.</p>
+    <p class="tk-note"><b>It was the third sighting of one shape and the last one, because the
+    wrapper went rather than the control being copied.</b> The unscoped <code>.amount-input</code>
+    rendered as a white User Agent field; the <code>.chip-amount</code> in a dialog got no rule at
+    all. This one was the version of the defect that survives a screenshot: <b>it rendered, it
+    looked nearly right, and it was missing its behaviour</b>. Verified by pressing, in both themes:
+    hover and press now read the same values as the sort menu in the feed, and the 30px of width
+    between them is the difference between the word "English" and "Sort: Trending".
+    <code>docs/backlog.md</code>
+    58, closed.</p>
     <p class="tk-note"><b>The touch floor is not affected and that is the design working.</b> It
     lives in <code>components/base.css</code> and names <code>.filter-menu summary</code> without a
     scope, because <b>a <code>&lt;summary&gt;</code> is the one target in this system with no class
@@ -155,8 +158,10 @@
     <p class="tk-note"><b>Hide an input by making it invisible, never by removing its box.</b> A
     control with no box is a control with no keyboard and no screen reader, and the styling that was
     supposed to answer for it cannot fire either.</p>
-    <p class="tk-note"><b>A scope has to name every place the control stands.</b> The footer is
-    outside <code>app-case</code>, so a rule written under it is a rule that reaches 88 of 193.</p>
+    <p class="tk-note"><b>A scope has to name every place the control stands, and the honest way to
+    do that is usually to have no scope.</b> The footer is outside <code>app-case</code>, so a rule
+    written under it reached 88 of 193. Naming the second place would have worked for this control
+    and left the next one to be found the same way.</p>
     <p class="tk-note"><b>A value typed as a colour function is invisible to the system.</b> The
     ladder has rungs so that a tint can be found, compared and moved; a <code>color-mix</code> in a
     rule is a decision nothing can audit.</p>

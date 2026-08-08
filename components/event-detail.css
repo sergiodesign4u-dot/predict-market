@@ -21,24 +21,24 @@
    components/patterns/detail-shell.css; the plate .ed-main stands on is in
    base.css with the rest of the page frame. What is left in this file is the
    detail page's own parts: the head, the facts, the resolution block. */
-.app-case .ed-head{position:relative;padding:var(--space-16) 118px var(--space-12) var(--space-20);gap:var(--space-12)}
+.ed-head{position:relative;padding:var(--space-16) 118px var(--space-12) var(--space-20);gap:var(--space-12)}
 /* The photograph is a placeholder here, not a rule: one sample event image so the stand has a
    picture. The shipped page writes its own on the element. */
-.app-case .ed-thumb{width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72);border:var(--hairline) solid var(--border-brass);border-radius:var(--radius-10);background:url(../assets/event-politics.jpg) center/cover;color:transparent;font-size:0}
-.app-case .ed-cat{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-semibold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit)}
-.app-case .ed-q{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-question);line-height:var(--leading-tight);letter-spacing:var(--track-question);color:var(--text-primary);margin:var(--space-8) 0 0;text-wrap:balance}
-.app-case .ed-prob-big{font-family:var(--font-mono);font-size:var(--text-12);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-muted);margin:var(--space-8) 0 0}
-.app-case .ed-section{padding:var(--space-16) var(--space-20);border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+.ed-thumb{width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72);border:var(--hairline) solid var(--border-brass);border-radius:var(--radius-10);background:url(../assets/event-politics.jpg) center/cover;color:transparent;font-size:0}
+.ed-cat{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-semibold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit)}
+.ed-q{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-question);line-height:var(--leading-tight);letter-spacing:var(--track-question);color:var(--text-primary);margin:var(--space-8) 0 0;text-wrap:balance}
+.ed-prob-big{font-family:var(--font-mono);font-size:var(--text-12);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-muted);margin:var(--space-8) 0 0}
+.ed-section{padding:var(--space-16) var(--space-20);border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 /* A section label is the section's OWN heading, and the column heads nested inside it are not that.
    The first attempt made this a CHILD selector, which is wrong twice over: the label is a grandchild
    (it sits in .ed-chart-head) so the label lost its rule, and a section whose label happens to be a
    direct child would still have caught a nested head. The distinction is not depth, it is which
    block the heading belongs to, so it is the nested blocks that say so, one specificity step up. */
-.app-case .ed-section :is(h2,h3){font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit);margin:0 0 var(--space-8)}
-.app-case .resolution{font-size:var(--text-13);line-height:var(--leading-loose);color:var(--text-primary)}
-.app-case .resolution strong{color:var(--text-primary)}
-.app-case .rules-note{margin:var(--space-12) 0 0;font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted)}
-.app-case .ed-actions{position:absolute;top:var(--space-16);right:18px;display:flex;gap:var(--space-8);z-index:var(--z-float)}
+.ed-section :is(h2,h3){font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit);margin:0 0 var(--space-8)}
+.resolution{font-size:var(--text-13);line-height:var(--leading-loose);color:var(--text-primary)}
+.resolution strong{color:var(--text-primary)}
+.rules-note{margin:var(--space-12) 0 0;font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted)}
+.ed-actions{position:absolute;top:var(--space-16);right:18px;display:flex;gap:var(--space-8);z-index:var(--z-float)}
 /* THE THREE CONTROLS IN THAT ROW LEFT THIS FILE ON 2026-08-06, for
    components/iconbtn.css, and what is above is everything this file may still
    say about them: WHERE the row sits over the head. The tile face they wear is
@@ -48,19 +48,19 @@
    is why: a region may say where an icon button sits and may not say what one
    looks like, and this file used to say both. */
 @media(max-width:560px){
-  .app-case .ed-head{padding-right:100px}
-  .app-case .ed-actions{top:var(--space-12);right:var(--space-12);gap:var(--space-4)}
+  .ed-head{padding-right:100px}
+  .ed-actions{top:var(--space-12);right:var(--space-12);gap:var(--space-4)}
 }
-.app-case .bet-panel.resolved-panel{display:block}
-.app-case .ed-facts{gap:var(--space-20);padding:var(--space-12) var(--space-20);border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light);font-family:var(--font-mono);font-size:var(--text-11);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--text-muted)}
-.app-case .ed-facts b{font-family:var(--font-display);font-size:var(--text-14);letter-spacing:var(--track-none);text-transform:none;color:var(--text-primary);margin-top:var(--space-4)}
-.app-case .args{gap:var(--space-16)}
+.bet-panel.resolved-panel{display:block}
+.ed-facts{gap:var(--space-20);padding:var(--space-12) var(--space-20);border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light);font-family:var(--font-mono);font-size:var(--text-11);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--text-muted)}
+.ed-facts b{font-family:var(--font-display);font-size:var(--text-14);letter-spacing:var(--track-none);text-transform:none;color:var(--text-primary);margin-top:var(--space-4)}
+.args{gap:var(--space-16)}
 /* Specificity is per PROPERTY, which is the trap here. This rule out-specifies the .ed-section
    label above, but only for what it declares; the label's uppercase, its tracking and its brass
    went on applying to a column head that had just been promoted h4 to h3 into its reach. A
    heading that belongs to a nested block has to say so for every property the outer rule sets. */
-.app-case .args .arg-col h3{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);text-transform:none;letter-spacing:var(--track-none);color:var(--text-primary);margin:0 0 var(--space-4)}
-.app-case .args .arg-col:first-child h3{color:var(--outcome-yes-text)}
-.app-case .args .arg-col:last-child h3{color:var(--outcome-no-figure)}
-.app-case .arg-col ul{font-size:var(--text-13);color:var(--text-muted);line-height:var(--leading-base)}
-.app-case .arg-col li{margin-bottom:var(--space-8)}
+.args .arg-col h3{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);text-transform:none;letter-spacing:var(--track-none);color:var(--text-primary);margin:0 0 var(--space-4)}
+.args .arg-col:first-child h3{color:var(--outcome-yes-text)}
+.args .arg-col:last-child h3{color:var(--outcome-no-figure)}
+.arg-col ul{font-size:var(--text-13);color:var(--text-muted);line-height:var(--leading-base)}
+.arg-col li{margin-bottom:var(--space-8)}

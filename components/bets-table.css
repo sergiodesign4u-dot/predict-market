@@ -27,23 +27,29 @@
 .hold-col:first-child{border-right:var(--hairline) solid var(--border-hairline);padding-right:var(--space-12)}
 /* same story as .arg-col h3 in event-detail.css: the .ed-section label sets properties this rule
    does not, and a nested head has to answer for each of them */
-.app-case .hold-cols .hold-col h3{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);text-transform:none;letter-spacing:var(--track-none);margin:0 0 var(--space-4)}
-.app-case .hold-cols .hold-col:first-child h3{color:var(--outcome-yes-text)}
-.app-case .hold-cols .hold-col:last-child h3{color:var(--outcome-no-figure)}
-.app-case .hold-row{border-top:var(--hairline) solid var(--edge-groove-dark);font-size:var(--text-13);color:var(--text-primary)}
-.app-case .hold-rank{color:var(--text-brass);font-family:var(--font-display);font-weight:var(--weight-bold)}
-.app-case .hold-name{color:var(--text-primary)}
-.app-case .hold-amt{font-family:var(--font-mono);color:var(--text-muted)}
+.hold-cols .hold-col h3{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);text-transform:none;letter-spacing:var(--track-none);margin:0 0 var(--space-4)}
+.hold-cols .hold-col:first-child h3{color:var(--outcome-yes-text)}
+.hold-cols .hold-col:last-child h3{color:var(--outcome-no-figure)}
+/* THE FIRST ROW GOT ITS EXCEPTION BACK ON 2026-08-08. `.hold-row:first-of-type{border-top:none}`
+   is eleven lines up and it never once fired: this rule was `.app-case .hold-row` at (0,2,0), the
+   exception is (0,2,0) as well, and this one is written later. So a rule that says "no line above
+   the first row" was outranked by the rule it was written to except, and 16 holder rows and 9
+   activity rows drew a line the file had already forbidden. Dropping the wrapper drops this to
+   (0,1,0) and the exception wins, which is what it was for. A tie is not a hierarchy. */
+.hold-row{border-top:var(--hairline) solid var(--edge-groove-dark);font-size:var(--text-13);color:var(--text-primary)}
+.hold-rank{color:var(--text-brass);font-family:var(--font-display);font-weight:var(--weight-bold)}
+.hold-name{color:var(--text-primary)}
+.hold-amt{font-family:var(--font-mono);color:var(--text-muted)}
 @media(min-width:640px){
-  .app-case .hold-col:first-child{border-right:var(--hairline) solid var(--edge-groove-dark)}
+  .hold-col:first-child{border-right:var(--hairline) solid var(--edge-groove-dark)}
 }
-.app-case .ptable th{color:var(--text-muted)}
-.app-case .ptable th,.app-case .ptable td{border-bottom:var(--hairline) solid var(--edge-groove-dark)}
-.app-case .ptable td{color:var(--text-primary);font-family:var(--font-mono);font-size:var(--text-12)}
-.app-case .ptable tr.you td{background:var(--tint-brass-09);font-weight:var(--weight-bold)}
-.app-case .act-row{border-top:var(--hairline) solid var(--edge-groove-dark);color:var(--text-primary);font-size:var(--text-13)}
-.app-case .act-txt b{color:var(--text-primary)}
-.app-case .act-time{font-family:var(--font-mono);color:var(--text-muted)}
-.app-case .lg-item{display:inline-flex;align-items:center;gap:var(--space-8);font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
-.app-case .lg-item.sel{color:var(--text-primary);font-weight:var(--weight-semibold)}
-.app-case .lg-item i{width:var(--size-8);height:var(--size-4);border-radius:var(--radius-2);flex:0 0 auto}
+.ptable th{color:var(--text-muted)}
+.ptable th,.ptable td{border-bottom:var(--hairline) solid var(--edge-groove-dark)}
+.ptable td{color:var(--text-primary);font-family:var(--font-mono);font-size:var(--text-12)}
+.ptable tr.you td{background:var(--tint-brass-09);font-weight:var(--weight-bold)}
+.act-row{border-top:var(--hairline) solid var(--edge-groove-dark);color:var(--text-primary);font-size:var(--text-13)}
+.act-txt b{color:var(--text-primary)}
+.act-time{font-family:var(--font-mono);color:var(--text-muted)}
+.lg-item{display:inline-flex;align-items:center;gap:var(--space-8);font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
+.lg-item.sel{color:var(--text-primary);font-weight:var(--weight-semibold)}
+.lg-item i{width:var(--size-8);height:var(--size-4);border-radius:var(--radius-2);flex:0 0 auto}

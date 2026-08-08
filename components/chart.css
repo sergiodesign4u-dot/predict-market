@@ -15,28 +15,28 @@
    intended: a fossil is only visible once the thing it was a fossil OF is gone. */
 .chart-svg polyline{fill:none}
 .chart-svg text{font-size:7px}
-.app-case .chart-svg{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-chart-well)}
-.app-case .chart-svg polyline,.app-case .chart-svg line{vector-effect:non-scaling-stroke}
-.app-case .chart-svg polyline{stroke:var(--chart-line);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 1px 4px var(--chart-line-glow))}
-.app-case .chart-svg .nowline{stroke:var(--border-brass-hover);stroke-width:1;stroke-dasharray:3 3}
-.app-case .chart-svg text{fill:var(--text-muted)}
-.app-case .ed-chart-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-12) var(--space-16);flex-wrap:wrap;margin:0 0 var(--space-12)}
-.app-case .ed-chart-head :is(h2,h3){margin:0}
-.app-case .ed-chart-now{font-family:var(--font-mono);font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--outcome-yes-text)}
-.app-case .ed-chart-area{display:grid;grid-template-columns:1fr 34px;gap:var(--space-8);align-items:stretch}
-.app-case .ed-plot{order:1;position:relative;min-width:0}
-.app-case .ed-yaxis{order:2;display:flex;flex-direction:column;justify-content:space-between;padding:var(--space-2) 0 var(--space-2) var(--space-2);font-family:var(--font-mono);font-size:var(--text-10);line-height:var(--leading-none);color:var(--text-muted);text-align:left}
-.app-case .ed-xaxis{display:flex;justify-content:space-between;padding-right:var(--space-40);margin-top:var(--space-8);font-family:var(--font-mono);font-size:var(--text-10);color:var(--text-muted)}
-.app-case .ed-chart-foot{display:flex;justify-content:flex-end;margin-top:var(--space-12)}
-.app-case .chart-svg{height:160px;display:block;width:100%}
-.app-case div.chart-svg{display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:var(--text-11)}
+.chart-svg{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-chart-well)}
+.chart-svg polyline,.chart-svg line{vector-effect:non-scaling-stroke}
+.chart-svg polyline{stroke:var(--chart-line);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 1px 4px var(--chart-line-glow))}
+.chart-svg .nowline{stroke:var(--border-brass-hover);stroke-width:1;stroke-dasharray:3 3}
+.chart-svg text{fill:var(--text-muted)}
+.ed-chart-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-12) var(--space-16);flex-wrap:wrap;margin:0 0 var(--space-12)}
+.ed-chart-head :is(h2,h3){margin:0}
+.ed-chart-now{font-family:var(--font-mono);font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--outcome-yes-text)}
+.ed-chart-area{display:grid;grid-template-columns:1fr 34px;gap:var(--space-8);align-items:stretch}
+.ed-plot{order:1;position:relative;min-width:0}
+.ed-yaxis{order:2;display:flex;flex-direction:column;justify-content:space-between;padding:var(--space-2) 0 var(--space-2) var(--space-2);font-family:var(--font-mono);font-size:var(--text-10);line-height:var(--leading-none);color:var(--text-muted);text-align:left}
+.ed-xaxis{display:flex;justify-content:space-between;padding-right:var(--space-40);margin-top:var(--space-8);font-family:var(--font-mono);font-size:var(--text-10);color:var(--text-muted)}
+.ed-chart-foot{display:flex;justify-content:flex-end;margin-top:var(--space-12)}
+.chart-svg{height:160px;display:block;width:100%}
+div.chart-svg{display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:var(--text-11)}
 @media(min-width:760px){
-  .app-case .chart-svg{height:280px}
+  .chart-svg{height:280px}
 }
-.app-case .chart-svg .ml-line{filter:none;fill:none;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:opacity var(--dur-base) ease,stroke-width var(--dur-base) ease}
-.app-case .ed-legend{display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-16);margin-top:var(--space-12);padding-left:var(--space-2)}
+.chart-svg .ml-line{filter:none;fill:none;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:opacity var(--dur-base) ease,stroke-width var(--dur-base) ease}
+.ed-legend{display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-16);margin-top:var(--space-12);padding-left:var(--space-2)}
 /* THE CHART'S OWN GRID LINE, moved here from feed.css on 2026-08-03 (docs/backlog.md 17).
    The class map hands a class to the file that writes it with the fewest ancestors, and
    `.grid-l` was written in feed.css, which made the arithmetic read `chart` as containing
    `feed`. Nothing about the rule is a feed decision: the subject is `.chart-svg`. */
-.app-case .chart-svg .grid-l{stroke:var(--line-grid);stroke-width:1}
+.chart-svg .grid-l{stroke:var(--line-grid);stroke-width:1}

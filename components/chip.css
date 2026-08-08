@@ -32,10 +32,11 @@
    9 screens each family.
 
    WHAT DID NOT COME WITH IT. `.cmt-controls .seg button{border-right:...}` and
-   its `:last-child` are the GREY layer: unscoped, outranked by `.app-case` in
-   the paint, and drawing the divided segment the wireframes still show. They
-   stay in `comments.css`, with the container, because that is what they are
-   about.
+   its `:last-child` are the GREY layer: unscoped, outranked by the paint, and
+   drawing the divided segment the wireframes still show. They stayed in
+   `comments.css` at the time, with the container, and were DELETED later the
+   same week once it was measured that the grey tree cannot see this folder at
+   all. That file holds the account.
 
    AND THIS IS ONE OF FOUR, NOT THE FOUR. `.load-more` and
    `.feed-inner .cat-nav button` are the OTHER chip, a raised one on `--bg-chip`
@@ -46,21 +47,20 @@
    measured and moved on its own evidence, and backlog S41 owns the rest.
    ============================================================================ */
 
-/* NO GREY LAYER HERE, AND THAT IS A DECISION THIS PASS PAID FOR. The draft of
-   this file opened with `.chip{cursor:pointer}`, copied from the note
-   components/quick.css carries about keeping an unscoped first layer. It would
-   have applied to nothing: the only documents that carry `.chip` and load this
-   stylesheet are the painted screens, the specimen and the frozen kit, and all
-   three put it inside `.app-case`. The nine grey screens that carry it link
-   nothing from components/ at all.
-   The reason for leaving it out is written in components/comments.css, where
-   two rules of exactly that kind had been sitting since the file was cut. They
-   never reached the wireframes either, and the day the chip's painted rule
-   dropped from (0,3,1) to (0,2,0) they stopped losing and started painting: 45
-   screens and 180 elements, found by snap.cjs and by nothing else. */
-.app-case .chip-rail{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
-.app-case .chip-rail:hover{color:var(--text-primary)}
-.app-case .chip-rail:active{background:var(--bg-pressed)}
+/* THERE IS NO GREY LAYER HERE AND NO WRAPPER EITHER, AND THE SECOND HALF OF
+   THAT SENTENCE ARRIVED ON 2026-08-08. Every rule below used to open with
+   `.app-case`, and the reasoning for it was that the only documents carrying
+   `.chip` put it inside that wrapper. THEY DO NOT: three sheets stand outside
+   it in the markup of every painted screen, and 420 chips a render stand in
+   one of them. The nine grey screens that carry a chip link nothing from
+   components/ at all, so the wrapper was never separating the two trees; it was
+   separating the product from three of its own regions.
+   What the wrapper WAS for is measured in docs/decisions.md: across 106 painted
+   screens it changed the outcome for 13 of 375 selector tails, and it matched
+   ZERO elements of the course chrome it was put there to protect. */
+.chip-rail{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
+.chip-rail:hover{color:var(--text-primary)}
+.chip-rail:active{background:var(--bg-pressed)}
 /* A SELECTED CHIP IS A TINT, NOT A FILL, which is the rule DESIGN.md states
    under Chips and the One-Accent Rule states again: brass carries identity, the
    active state and primary CTAs only. `.sel` is the shared modifier
@@ -113,30 +113,28 @@
    a face that depends on which ELEMENT it is written on is not a face, and the
    day a chip is given a width is the day this would have been found the other
    way. */
-.app-case .chip{cursor:pointer;font-family:var(--font-body);text-decoration:none;text-align:center}
-.app-case .chip-quiet{display:inline-flex;align-items:center;min-height:0;background:transparent;border:var(--hairline) solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-12)}
-.app-case .chip-quiet:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
-/* THE AMOUNT CHIP ALSO STANDS IN A DIALOG, AND A DIALOG IS NOT INSIDE .app-case.
-   Until 2026-08-08 these four rules asked for .app-case and nothing else, so a
-   chip in a sheet got NO rule at all: measured on event-feed.html by opening the
-   deposit dialog, the User Agent's `2px outset` border, an `rgb(239,239,239)`
-   ground and square corners, in a graphite product. 420 chips per render are in
-   that position across the 106 painted screens and NOT ONE OF THEM RENDERS TODAY,
-   because every dialog that is actually shown carries `app-case` on itself and
-   every one that does not is shut. That is not a system that works, it is a
-   system whose defect has not been triggered: a dialog is opened and closed at
-   run time and nobody can be asked to remember a wrapper class for its contents
-   to be painted.
+.chip{cursor:pointer;font-family:var(--font-body);text-decoration:none;text-align:center}
+.chip-quiet{display:inline-flex;align-items:center;min-height:0;background:transparent;border:var(--hairline) solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-12)}
+.chip-quiet:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
+/* THE AMOUNT CHIP ALSO STANDS IN A DIALOG, AND IT TOOK TWO PASSES TO SAY SO ONCE.
+   Until 2026-08-08 these rules asked for `.app-case` and nothing else, so a chip
+   in a sheet got no rule at all: the User Agent's `2px outset` border, an
+   `rgb(239,239,239)` ground and square corners, in a graphite product. The first
+   pass fixed it by writing the selector TWICE, `.app-case .chip-amount` and
+   `dialog.app-dialog .chip-amount`, and that is the shape of the mistake rather
+   than the end of it: a doubled selector is a face maintained in two places, and
+   whoever adds the third face writes it once. IT HAPPENED THE SAME DAY. The
+   REST state was doubled and the CHOSEN state was not, so on 105 screens the
+   selected amount had a brass edge and no brass ground, no brass ink, no bold
+   and no halo, while the identical chip in the bet panel had all four.
+   Measured: `rgb(36,40,47)` against `rgba(199,162,78,.09)`, weight 400 against
+   700, `box-shadow:none` against the halo, and `cursor:default` on all 420.
 
-   THE SECOND SELECTOR IS THE IDIOM THE FILE NEXT DOOR ALREADY USES. input.css
-   scopes the amount FIELD as `dialog.app-dialog .amount-input`, not by .app-case,
-   which is why the field in the same sheet was always correct and the chip beside
-   it was not. A scope is kept rather than dropped, so the chip still cannot leak
-   onto a course page, and `dialog.app-dialog` at 0,1,1 is one step above
-   `.app-case` at 0,1,0, which is the right way round: a chip in a sheet is more
-   specific than a chip in the case. Backlog 42. */
-.app-case .chip-amount,dialog.app-dialog .chip-amount{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
-.app-case .chip-amount,dialog.app-dialog .chip-amount{transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+   ONE FACE, ONE SELECTOR. The chip is a class now and the wrapper is gone from
+   this file, so a chip is a chip wherever it stands and there is nowhere left
+   for the next state to be forgotten. Backlog 42 closed. */
+.chip-amount{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
+.chip-amount{transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 /* The amount answers a pointer, and both places it stands do now. The deposit
    sheet had this hover and the bet panel had none - the same face on the same
    control, one scope answering and the other silent, which is not a decision
@@ -145,7 +143,7 @@
    them answers a pointer, because a chosen control's whole face is already the
    answer. S38 closed on the finger, which is a different question and is answered
    below. */
-.app-case .chip-amount:hover:not(.sel),dialog.app-dialog .chip-amount:hover:not(.sel){border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)}
+.chip-amount:hover:not(.sel){border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-control-hover)}
 /* THE CHOSEN CHIP, ONE RULE FOR THE WHOLE FAMILY. --tint-brass-09 inside a
    --tint-brass-45 edge with --text-brass-chip, bold, and a halo that is a glow
    with negative spread rather than a lift, so there is nothing here to flatten
@@ -208,8 +206,8 @@
    than a matter of taste: nothing anywhere changes it when its slot is hovered
    or current. It is a figure the region puts inside a control. These two are
    not. */
-.app-case .chip-nav{display:inline-flex;align-items:center;gap:var(--space-12);min-height:0;background:var(--bg-chip);border:var(--hairline) solid var(--bevel-notice);border-radius:var(--radius-10);color:var(--text-chip-hover);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12) var(--space-20);box-shadow:none;white-space:nowrap}
-.app-case .chip-nav:hover{border-color:var(--border-brass-hover);color:var(--text-strong);background:var(--bg-control-hover)}
+.chip-nav{display:inline-flex;align-items:center;gap:var(--space-12);min-height:0;background:var(--bg-chip);border:var(--hairline) solid var(--bevel-notice);border-radius:var(--radius-10);color:var(--text-chip-hover);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12) var(--space-20);box-shadow:none;white-space:nowrap}
+.chip-nav:hover{border-color:var(--border-brass-hover);color:var(--text-strong);background:var(--bg-control-hover)}
 /* THE ONE RING IN THIS FILE, and it is a measured defect rather than a taste.
    The strip scrolls sideways, so its <ul> is a scroll container and clips at its
    own padding box; that padding is --space-2 and the chip fills the content box
@@ -219,23 +217,23 @@
    keyboard user reaches first. Turning the offset inward puts the whole ring on
    the chip's own ground, graphite at rest and a brass wash when it is current,
    and --focus-ring reads on both. */
-.app-case .chip-nav:focus-visible{outline-offset:calc(var(--ring) * -1)}
+.chip-nav:focus-visible{outline-offset:calc(var(--ring) * -1)}
 /* Carried over verbatim rather than dropped, because a rule that draws nothing
    today is not the same as a rule that was measured and found dead. This one
    only opens a containing block and nothing in the chip is positioned against
    it; it came from components/catnav.css with the face and it is written here so
    that whoever deletes it deletes it on purpose. */
 @media(max-width:640px){
-  .app-case .chip-nav{position:relative}
+  .chip-nav{position:relative}
 }
-.app-case .chip-lane{display:inline-flex;align-items:center;gap:var(--space-8);white-space:nowrap;background:transparent;border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);font-size:var(--text-13);font-weight:var(--weight-medium);padding:var(--space-8) var(--space-12);min-height:var(--control-36)}
+.chip-lane{display:inline-flex;align-items:center;gap:var(--space-8);white-space:nowrap;background:transparent;border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);font-size:var(--text-13);font-weight:var(--weight-medium);padding:var(--space-8) var(--space-12);min-height:var(--control-36)}
 /* The hover ground was 10 per cent longhand until S50, 2026-08-07, and it is the
    ladder's nearest rung now: one hundredth apart on graphite, and on chalk it
    steps up instead of staying flat. IT IS ALSO THE CHOSEN CHIP'S GROUND, which is
    worth saying rather than hiding: a hovered lane and a chosen lane share a fill
    and are told apart by the edge, the weight and the halo. That was already true
    at 10 against 9 and the rung did not create it. */
-.app-case .chip-lane:hover{border-color:var(--color-action);background:var(--tint-brass-09)}
+.chip-lane:hover{border-color:var(--color-action);background:var(--tint-brass-09)}
 /* THE SECOND SURFACE. Two of the four rules the old file wrote inside this
    query were restatements of the hover and the current state, and both were
    dead by specificity before they were dead by the cascade: a media query adds
@@ -244,7 +242,7 @@
    the chosen chip is settled by the one rule below, so the query says only what
    the column changes. */
 @media(min-width:900px){
-  .app-case .chip-lane{width:100%;justify-content:space-between;border-color:transparent;border-radius:var(--radius-10);padding:var(--space-8) var(--space-8)}
+  .chip-lane{width:100%;justify-content:space-between;border-color:transparent;border-radius:var(--radius-10);padding:var(--space-8) var(--space-8)}
 }
 /* THE CHOSEN CHIP, ONE RULE FOR THE WHOLE FAMILY, and since 2026-08-07 it names
    the ATOM rather than a face. --tint-brass-09 inside a --tint-brass-45 edge
@@ -259,8 +257,8 @@
    on the day the other four were unified. Adopting the recipe is the whole
    point of adopting the atom: one tint, one edge, one weight, one halo, and the
    ink goes from --text-primary to --text-brass-chip. */
-.app-case .chip.sel,.app-case [aria-current="page"] .chip{background:var(--tint-brass-09);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
-.app-case .chip-amount.sel,dialog.app-dialog .chip-amount.sel,.app-case [aria-current="page"] .chip{border-color:var(--tint-brass-45)}
+.chip.sel,[aria-current="page"] .chip{background:var(--tint-brass-09);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
+.chip-amount.sel,[aria-current="page"] .chip{border-color:var(--tint-brass-45)}
 /* THE PRESS, AND IT IS ONE SELECTOR SINCE 2026-08-07: every chip, chosen or not,
    by a class or by navigation. Only the ground moves, so a chosen chip keeps its
    brass edge, its brass label and its halo, and what a person sees is the stone
@@ -282,7 +280,7 @@
    row and the saved bookmark - NOT ONE answers a pointer, and that uniformity is
    the decision rather than the gap: a chosen control's whole face is already the
    answer, and a second one under the pointer would compete with it. */
-.app-case .chip:active{background:var(--bg-pressed)}
+.chip:active{background:var(--bg-pressed)}
 /* THE TOUCH FLOOR IS NOT DECLARED HERE ANY MORE, and this file is the reason the
    move happened. It stood here as
    `@media(pointer:coarse){.app-case .chip-quiet,.app-case .chip-nav{min-height:var(--control-44)}}`,
@@ -303,17 +301,17 @@
    no contrast floor to clear, and the two steps are a weight rather than a
    quiet. */
 .chip-ic{width:var(--icon-18);height:var(--icon-18);flex:0 0 auto;fill:currentColor;stroke:none;opacity:.9}
-.app-case .chip-nav:hover .chip-ic,.app-case [aria-current="page"] .chip-nav .chip-ic{opacity:1}
+.chip-nav:hover .chip-ic,[aria-current="page"] .chip-nav .chip-ic{opacity:1}
 /* THE COUNT, and it is the sub-category rail's whole argument: a number tells a
    person which branch is worth opening before they open it. Mono, because it is
    a figure and figures line up; its own ground and hairline, because it has to
    read as a second thing inside the label rather than as part of it. It follows
    the chip it sits in into the chosen state, which is the reason it is here and
    not with the rail. */
-.app-case .chip-cnt{font-size:var(--text-11);color:var(--text-muted);font-family:var(--font-mono);background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-6);padding:var(--space-2) var(--space-8)}
+.chip-cnt{font-size:var(--text-11);color:var(--text-muted);font-family:var(--font-mono);background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-6);padding:var(--space-2) var(--space-8)}
 /* THE TWIN OF THE WASH S48 MOVED BY HAND, and it took a day and a tool to catch.
    Both of these were colour functions - 14 per cent and 45 - so both were invisible
    to a sweep that matches token names. The 45 is a rung and only its
    spelling changed; the 14 is not one and it went to 16, the same rung and for the
    same reason as the header band's. S50. */
-.app-case [aria-current="page"] .chip-cnt{color:var(--text-brass);background:var(--tint-brass-16);border-color:var(--tint-brass-45)}
+[aria-current="page"] .chip-cnt{color:var(--text-brass);background:var(--tint-brass-16);border-color:var(--tint-brass-45)}

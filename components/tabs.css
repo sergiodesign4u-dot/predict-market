@@ -19,9 +19,9 @@
 .ptab-bar{border-bottom:var(--hairline) solid var(--border-hairline);margin-bottom:var(--space-12)}
 .ptab-lbl{border-bottom:none}
 .ptab-panel{display:none}
-.app-case .ed-rules .rules-tabs{display:flex;gap:var(--space-20);border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 -1px 0 var(--edge-groove-light);margin:0 0 var(--space-16)}
-.app-case .rules-tab{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:0 0 var(--space-8);margin-bottom:-2px;cursor:pointer;transition:color var(--dur-quick) ease,border-color var(--dur-quick) ease}
-.app-case .rules-tab:hover{color:var(--text-primary)}
+.ed-rules .rules-tabs{display:flex;gap:var(--space-20);border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 -1px 0 var(--edge-groove-light);margin:0 0 var(--space-16)}
+.rules-tab{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:0 0 var(--space-8);margin-bottom:-2px;cursor:pointer;transition:color var(--dur-quick) ease,border-color var(--dur-quick) ease}
+.rules-tab:hover{color:var(--text-primary)}
 /* PRESS, the axis every tab in this file was missing. A tab is a quiet control, so it settles onto
    --bg-pressed, the one held-down role in the system, declared in both themes. Each press mirrors
    the hover it answers, so the two sit at equal specificity and source order hands the pointer to
@@ -30,15 +30,15 @@
    Each of these also sits BEFORE the rule that marks the chosen tab, which is equal specificity or
    higher, so the tab you are already on keeps its own ground under the finger. That is the order
    the hover has always been in, and pressing the tab you are on is a no-op anyway. */
-.app-case .rules-tab:active{background:var(--bg-pressed)}
-.app-case .rules-tab.sel{color:var(--text-primary);border-bottom-color:var(--color-action)}
-.app-case .ed-tabwrap{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
-.app-case .ed-tabbar{background:transparent;border-bottom:var(--hairline) solid var(--edge-groove-dark)}
-.app-case .ed-tablabel{border-right:0;font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);color:var(--text-muted)}
-.app-case .ed-tablabel:hover{color:var(--text-primary)}
-.app-case .ed-tablabel:active{background:var(--bg-pressed)}
-.app-case .ed-tab-count{color:var(--text-muted)}
-.app-case #edtab-comments:checked ~ .ed-tabbar label[for="edtab-comments"],.app-case #edtab-holders:checked ~ .ed-tabbar label[for="edtab-holders"],.app-case #edtab-positions:checked ~ .ed-tabbar label[for="edtab-positions"],.app-case #edtab-activity:checked ~ .ed-tabbar label[for="edtab-activity"]{background:transparent;color:var(--text-brass);font-weight:var(--weight-bold);box-shadow:inset 0 -2px 0 var(--color-action)}
+.rules-tab:active{background:var(--bg-pressed)}
+.rules-tab.sel{color:var(--text-primary);border-bottom-color:var(--color-action)}
+.ed-tabwrap{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+.ed-tabbar{background:transparent;border-bottom:var(--hairline) solid var(--edge-groove-dark)}
+.ed-tablabel{border-right:0;font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);color:var(--text-muted)}
+.ed-tablabel:hover{color:var(--text-primary)}
+.ed-tablabel:active{background:var(--bg-pressed)}
+.ed-tab-count{color:var(--text-muted)}
+#edtab-comments:checked ~ .ed-tabbar label[for="edtab-comments"],#edtab-holders:checked ~ .ed-tabbar label[for="edtab-holders"],#edtab-positions:checked ~ .ed-tabbar label[for="edtab-positions"],#edtab-activity:checked ~ .ed-tabbar label[for="edtab-activity"]{background:transparent;color:var(--text-brass);font-weight:var(--weight-bold);box-shadow:inset 0 -2px 0 var(--color-action)}
 /* FOCUS, AND THE ONE PLACE THE SYSTEM'S SINGLE RING CANNOT LAND. base.css draws the ring once, on
    the element that has focus, and the element that has focus here is the RADIO, which line 12 of
    this file parks at left:-9999px. So the indicator was painted off the left edge of the document
@@ -55,29 +55,29 @@
    the plate. Same width and same role as base.css, one sign flipped, so the ring stays one
    decision. Read off the painted page at 1280 and again at 380, in both themes: the ring lands on
    the label at 8.71:1 on graphite and 7.14:1 on chalk, and its whole box sits inside the bar. */
-.app-case #edtab-comments:focus-visible ~ .ed-tabbar label[for="edtab-comments"],
-.app-case #edtab-holders:focus-visible ~ .ed-tabbar label[for="edtab-holders"],
-.app-case #edtab-positions:focus-visible ~ .ed-tabbar label[for="edtab-positions"],
-.app-case #edtab-activity:focus-visible ~ .ed-tabbar label[for="edtab-activity"]{outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
+#edtab-comments:focus-visible ~ .ed-tabbar label[for="edtab-comments"],
+#edtab-holders:focus-visible ~ .ed-tabbar label[for="edtab-holders"],
+#edtab-positions:focus-visible ~ .ed-tabbar label[for="edtab-positions"],
+#edtab-activity:focus-visible ~ .ed-tabbar label[for="edtab-activity"]{outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
 /* The comment sort switcher. Its markup stands in comments and its styling has always stood here,
    so the press stands here too, next to the hover it answers rather than in the other file. */
-.app-case .tabs{gap:var(--space-8);margin:0 0 var(--space-16)}
-.app-case .tabs button{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer}
-.app-case .tabs button:hover{color:var(--text-primary)}
-.app-case .tabs button:active{background:var(--bg-pressed)}
+.tabs{gap:var(--space-8);margin:0 0 var(--space-16)}
+.tabs button{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer}
+.tabs button:hover{color:var(--text-primary)}
+.tabs button:active{background:var(--bg-pressed)}
 /* Both selected grounds in this file were `color-mix(in oklab,var(--color-action)
    16%,transparent)`, which IS a rung and was still off the ladder, because a value
    spelled as a colour function is not a token and does not get the theme. On
    graphite nothing moved; on chalk they step up to 30 per cent like every other
    brass tint, and the label reads 5.72:1 there. S50, 2026-08-07. */
-.app-case .tabs button[aria-selected="true"]{background:var(--tint-brass-16);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
-.app-case .ptabs{margin-top:var(--space-20)}
-.app-case .ptab-bar{display:flex;gap:var(--space-8);border:0;margin:0 0 var(--space-16);overflow-x:auto;scrollbar-width:none;padding-bottom:var(--space-2)}
-.app-case .ptab-bar::-webkit-scrollbar{display:none}
-.app-case .ptab-lbl{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);display:inline-flex;align-items:center;cursor:pointer;white-space:nowrap;transition:color var(--dur-base) ease,border-color var(--dur-base) ease,background var(--dur-base) ease}
-.app-case .ptab-lbl:hover{color:var(--text-primary)}
-.app-case .ptab-lbl:active{background:var(--bg-pressed)}
-.app-case #ptab-record:checked ~ .ptab-bar label[for="ptab-record"],.app-case #ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],.app-case #ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"]{background:var(--tint-brass-16);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
+.tabs button[aria-selected="true"]{background:var(--tint-brass-16);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
+.ptabs{margin-top:var(--space-20)}
+.ptab-bar{display:flex;gap:var(--space-8);border:0;margin:0 0 var(--space-16);overflow-x:auto;scrollbar-width:none;padding-bottom:var(--space-2)}
+.ptab-bar::-webkit-scrollbar{display:none}
+.ptab-lbl{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);display:inline-flex;align-items:center;cursor:pointer;white-space:nowrap;transition:color var(--dur-base) ease,border-color var(--dur-base) ease,background var(--dur-base) ease}
+.ptab-lbl:hover{color:var(--text-primary)}
+.ptab-lbl:active{background:var(--bg-pressed)}
+#ptab-record:checked ~ .ptab-bar label[for="ptab-record"],#ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],#ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"]{background:var(--tint-brass-16);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
 /* The profile strip is the same radio-and-label shape as the event tabs and needs the same answer,
    with the input hidden a different way: .ptab-in is a 1px box at opacity 0, so the ring is drawn
    at the right place and then painted at zero alpha, which is the same nothing. It is focusable
@@ -85,10 +85,10 @@
    its content box, so the offset turns inward here for the same reason. The ground the ring stands
    on is --bg-chip at rest and the 16 per cent brass wash when the tab is current, and --focus-ring
    reads on both: 7.89:1 and 8.94:1 on graphite, 6.96:1 and 4.94:1 on chalk, measured on the page. */
-.app-case #ptab-record:focus-visible ~ .ptab-bar label[for="ptab-record"],
-.app-case #ptab-wins:focus-visible ~ .ptab-bar label[for="ptab-wins"],
-.app-case #ptab-resolved:focus-visible ~ .ptab-bar label[for="ptab-resolved"]{outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
-.app-case .ed-range{display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10)}
+#ptab-record:focus-visible ~ .ptab-bar label[for="ptab-record"],
+#ptab-wins:focus-visible ~ .ptab-bar label[for="ptab-wins"],
+#ptab-resolved:focus-visible ~ .ptab-bar label[for="ptab-resolved"]{outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
+.ed-range{display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10)}
 /* THE RANGE RAIL AND THE COMMENT SORTER ARE ONE CHIP, and until now they were one
    chip written twice with two different answers. Measured 2026-08-04: `.ed-range` and
    `.seg` (components/comments.css) agree on padding, radius, size, height, ground and

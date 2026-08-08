@@ -6,20 +6,20 @@
    Stands on: 2 ui-visual screens (cookie-consent.html, toasts.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.app-case .cc-ph{display:flex;flex-direction:column;gap:var(--space-8);opacity:.5}
-.app-case .cc-ph-line{height:var(--size-12);border-radius:var(--radius-6);background:var(--bg-control)}
-.app-case .cc-ph-line.w90{width:90%}
-.app-case .cc-ph-line.w80{width:80%}
-.app-case .cc-ph-line.w60{width:60%}
-.app-case .cc-ph-line.w40{width:40%}
-.app-case .cc-page{margin-bottom:var(--space-16)}
-.app-case .cc-banner{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-16);background:var(--bg-card-quiet);box-shadow:inset 0 1px 0 var(--edge-groove-light),0 20px 44px -26px var(--shadow-ink);overflow:hidden}
-.app-case .cc-inner{padding:var(--space-16);display:flex;flex-direction:column;gap:var(--space-12)}
-.app-case .cc-text{color:var(--text-primary);font-size:var(--text-14);line-height:var(--leading-base);margin:0}
-.app-case .cc-policy{margin:0;font-size:var(--text-13);display:flex;flex-wrap:wrap;gap:var(--space-12)}
-.app-case .cc-policy a{color:var(--text-brass);text-decoration:none;border-bottom:var(--hairline) solid var(--glow-brass);padding-bottom:var(--space-2)}
-.app-case .cc-policy a:hover{border-bottom-color:var(--text-brass)}
-.app-case .cc-actions{display:flex;flex-wrap:wrap;gap:var(--space-8)}
+.cc-ph{display:flex;flex-direction:column;gap:var(--space-8);opacity:.5}
+.cc-ph-line{height:var(--size-12);border-radius:var(--radius-6);background:var(--bg-control)}
+.cc-ph-line.w90{width:90%}
+.cc-ph-line.w80{width:80%}
+.cc-ph-line.w60{width:60%}
+.cc-ph-line.w40{width:40%}
+.cc-page{margin-bottom:var(--space-16)}
+.cc-banner{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-16);background:var(--bg-card-quiet);box-shadow:inset 0 1px 0 var(--edge-groove-light),0 20px 44px -26px var(--shadow-ink);overflow:hidden}
+.cc-inner{padding:var(--space-16);display:flex;flex-direction:column;gap:var(--space-12)}
+.cc-text{color:var(--text-primary);font-size:var(--text-14);line-height:var(--leading-base);margin:0}
+.cc-policy{margin:0;font-size:var(--text-13);display:flex;flex-wrap:wrap;gap:var(--space-12)}
+.cc-policy a{color:var(--text-brass);text-decoration:none;border-bottom:var(--hairline) solid var(--glow-brass);padding-bottom:var(--space-2)}
+.cc-policy a:hover{border-bottom-color:var(--text-brass)}
+.cc-actions{display:flex;flex-wrap:wrap;gap:var(--space-8)}
 /* THE THREE CONSENT BUTTONS LEFT THIS FILE ON 2026-08-06 for components/button.css, where
    they are `.btn.btn-secondary.btn-md`: --bg-control on a hairline at 10, semibold, 12/12,
    which is what they already were in every value but ONE. Their font was 13 against a ramp
@@ -28,17 +28,17 @@
    WHAT STAYS IS HOW THEY SHARE THE ROW: `flex:1 1 auto` and a 96 floor, so three of them
    divide the banner and none collapses under its own label. That is the banner's decision
    about its own row, which is exactly what a region is still allowed to say. */
-.app-case .cc-btn{flex:1 1 auto;min-width:96px}
+.cc-btn{flex:1 1 auto;min-width:96px}
 /* Accept all / Reject all / Manage are quiet controls on a flat ground, so the press is the one
    system ground and not a banner's own idea. Equal specificity to the hover above, so it has to
    sit after it; the hover border stays lit underneath, which is what makes the darker fill read
    as held rather than as a second hover. Flat at rest, so nothing to unlift. None of the three
    is ever disabled and none gets a disabled skin: consent is always available, and a Reject that
    could go dead is the dark pattern this banner exists to answer. */
-.app-case .cc-note{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:0}
-.app-case .cc-manage{border-top:var(--hairline) solid var(--border-hairline);padding-top:var(--space-12);display:flex;flex-direction:column;gap:var(--space-8)}
-.app-case .cc-cats{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-8)}
-.app-case .cc-cat{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);padding:var(--space-12) var(--space-12)}
+.cc-note{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:0}
+.cc-manage{border-top:var(--hairline) solid var(--border-hairline);padding-top:var(--space-12);display:flex;flex-direction:column;gap:var(--space-8)}
+.cc-cats{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-8)}
+.cc-cat{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);padding:var(--space-12) var(--space-12)}
 /* THE ROW IS THE TARGET, 2026-08-08, and it is a `<label>` in both trees rather
    than a `<div>`. Before this the only thing a finger could hit was the box
    itself, `18x18` measured, which is the ONE control in the product that failed
@@ -55,11 +55,11 @@
    IT TAKES A CONTROL HEIGHT because it is a control now: --control-36 here, and
    the 44 floor arrives from components/base.css under a coarse pointer, the same
    way it arrives for every other family. */
-.app-case .cc-cat-main{display:flex;align-items:center;justify-content:space-between;gap:var(--space-12);min-height:var(--control-36);cursor:pointer}
-.app-case .cc-cat-name{font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);color:var(--text-primary)}
-.app-case .cc-cat-desc{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:var(--space-8) 0 0}
-.app-case .cc-cat input[type="checkbox"]{width:var(--icon-18);height:var(--icon-18);accent-color:var(--color-action);flex:0 0 auto;cursor:pointer}
-.app-case .cc-cat input[type="checkbox"]:disabled{cursor:not-allowed;opacity:var(--opacity-locked)}
+.cc-cat-main{display:flex;align-items:center;justify-content:space-between;gap:var(--space-12);min-height:var(--control-36);cursor:pointer}
+.cc-cat-name{font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);color:var(--text-primary)}
+.cc-cat-desc{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:var(--space-8) 0 0}
+.cc-cat input[type="checkbox"]{width:var(--icon-18);height:var(--icon-18);accent-color:var(--color-action);flex:0 0 auto;cursor:pointer}
+.cc-cat input[type="checkbox"]:disabled{cursor:not-allowed;opacity:var(--opacity-locked)}
 /* The category box cannot press with --bg-pressed. It is a native checkbox with appearance auto,
    the browser draws it, and background-color never reaches it: the rule would read as done in the
    source and paint nothing on the page, which is the one defect this repo keeps paying for. What
@@ -72,4 +72,4 @@
    press, and --opacity-locked above stays the only thing it says. No hover on the live boxes
    either, for the reason the press had to change mechanism: there is nothing paintable at rest
    short of appearance:none, and redrawing the tick is a new component, not a state. */
-.app-case .cc-cat input[type="checkbox"]:not(:disabled):active{accent-color:var(--color-action-pressed)}
+.cc-cat input[type="checkbox"]:not(:disabled):active{accent-color:var(--color-action-pressed)}

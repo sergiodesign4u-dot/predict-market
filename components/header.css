@@ -162,9 +162,9 @@
 .logo-btn{display:inline-flex;align-items:center;gap:var(--space-8)}
 .logo-btn::first-letter{color:var(--text-primary)}
 .logo-btn::before{content:'';flex:0 0 auto;width:23px;height:var(--icon-16);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='18'%3E%3Cpath d='M2 15 L9 7 L13 10 L24 2' fill='none' stroke='%23c99e3f' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/contain}
-.app-case .app-header{position:sticky;top:0;z-index:var(--z-header);background:var(--bg-slab-from);border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light),0 14px 26px -20px var(--shadow-ink-72)}
-.app-case .app-header .cat-condensed{max-height:0;opacity:0;overflow:clip;transition:max-height var(--dur-slower) var(--ease-out),opacity var(--dur-slow) ease}
-.app-case .app-header.scrolled .cat-condensed{max-height:54px;opacity:1;border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+.app-header{position:sticky;top:0;z-index:var(--z-header);background:var(--bg-slab-from);border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light),0 14px 26px -20px var(--shadow-ink-72)}
+.app-header .cat-condensed{max-height:0;opacity:0;overflow:clip;transition:max-height var(--dur-slower) var(--ease-out),opacity var(--dur-slow) ease}
+.app-header.scrolled .cat-condensed{max-height:54px;opacity:1;border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 /* THE CONDENSED STRIP'S CHIPS LEFT THIS FILE ON 2026-08-06 for components/chip.css, where
    they are `.chip.chip-quiet`: transparent on a transparent 1px band inside a pill, which
    is the face a chip wears on a scrolling strip where a ground would make a row of eight
@@ -173,9 +173,9 @@
    WHAT STAYS is the strip: how it collapses until .scrolled, its groove, its scroll
    container, the gap between chips and the fact that a <li> does not grow. A band may say
    where a control sits and may not say what one looks like. */
-.app-case .app-header .cat-condensed ul{list-style:none;margin:0;display:flex;flex-wrap:nowrap;gap:var(--space-8);padding:var(--space-8) var(--gutter);overflow-x:auto;scrollbar-width:none}
-.app-case .app-header .cat-condensed ul::-webkit-scrollbar{display:none}
-.app-case .app-header .cat-condensed li{flex:0 0 auto}
+.app-header .cat-condensed ul{list-style:none;margin:0;display:flex;flex-wrap:nowrap;gap:var(--space-8);padding:var(--space-8) var(--gutter);overflow-x:auto;scrollbar-width:none}
+.app-header .cat-condensed ul::-webkit-scrollbar{display:none}
+.app-header .cat-condensed li{flex:0 0 auto}
 /* `.app-case .app-header .cat-condensed a{text-decoration:none}` was here until
    2026-08-07 and it was the last thing in this file that the atom map read as drawing
    a chip. It undid an anchor's underline so the <button> inside it could show
@@ -191,7 +191,7 @@
    a chosen row too. Only the ground moves, so the current chip keeps its brass border, its brass
    label and its halo. That halo is 0 0 10px -8px, a glow with negative spread, not a lift, so
    there is nothing here to flatten. */
-.app-case .app-header .row{max-width:var(--container-max);margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+.app-header .row{max-width:var(--container-max);margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter)}
 
 /* THE TOUCH FLOOR IS NOT DECLARED HERE ANY MORE. The four controls of this band
    went to `components/base.css` on 2026-08-08 with the five other copies of the

@@ -43,7 +43,7 @@
    with a .toc and no .subcat is still a page with a rail. Widening it is a
    no-op on every screen that has no .toc, which is 76 of the 77, and that was
    measured rather than reasoned. */
-.app-case .cat-layout:not(:has(.subcat,.toc)){align-items:stretch}
+.cat-layout:not(:has(.subcat,.toc)){align-items:stretch}
 
 /* ---------------------------------------------------------- the reading column
    THE SECOND THING THE MAIN COLUMN CAN BE. Until now it held a grid or a list,

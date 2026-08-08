@@ -79,10 +79,10 @@
 }
 .cat-nav > ul{max-width:var(--container-max);margin:0 auto;padding:var(--space-8) var(--space-20)}
 .cat-nav{border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
-.app-case .cat-nav{background:transparent}
-.app-case .cat-nav>ul{max-width:var(--container-max);margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter)}
-.app-case .cat-nav>ul{scrollbar-width:none;-ms-overflow-style:none}
-.app-case .cat-nav>ul::-webkit-scrollbar{display:none}
+.cat-nav{background:transparent}
+.cat-nav>ul{max-width:var(--container-max);margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+.cat-nav>ul{scrollbar-width:none;-ms-overflow-style:none}
+.cat-nav>ul::-webkit-scrollbar{display:none}
 /* The two-stone plate the strip and the shell stand on is in base.css, with
    .feed-inner and the rest of the page frame. It was never the strip's own
    skin: it only applies under .feed-inner, so it is the page and not the

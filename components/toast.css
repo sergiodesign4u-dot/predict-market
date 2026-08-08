@@ -10,11 +10,11 @@
    of the toast catalogue that stands in for the page underneath, one screen,
    one margin, and having it here is why the toast read as containing the
    cookie banner. Backlog item 16c. */
-.app-case .toast-inner{display:flex;flex-direction:column;gap:var(--space-12)}
-.app-case .toast-group{display:flex;flex-direction:column;gap:var(--space-8)}
-.app-case .toast{display:flex;align-items:center;gap:var(--space-12);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);padding:var(--space-12) var(--space-12);box-shadow:0 18px 40px -24px var(--shadow-ink),inset 0 1px 0 var(--edge-groove-light)}
-.app-case .toast .ic-sm{width:var(--icon-18);height:var(--icon-18);flex:0 0 var(--icon-18);stroke:var(--text-brass);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.app-case .toast-msg{flex:1;color:var(--text-primary);font-size:var(--text-14);font-weight:var(--weight-medium)}
+.toast-inner{display:flex;flex-direction:column;gap:var(--space-12)}
+.toast-group{display:flex;flex-direction:column;gap:var(--space-8)}
+.toast{display:flex;align-items:center;gap:var(--space-12);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);padding:var(--space-12) var(--space-12);box-shadow:0 18px 40px -24px var(--shadow-ink),inset 0 1px 0 var(--edge-groove-light)}
+.toast .ic-sm{width:var(--icon-18);height:var(--icon-18);flex:0 0 var(--icon-18);stroke:var(--text-brass);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.toast-msg{flex:1;color:var(--text-primary);font-size:var(--text-14);font-weight:var(--weight-medium)}
 /* THE DISMISS LEFT THIS FILE ON 2026-08-06 and there is nothing left here to say
    about it, which is the test the migration is passing: a toast is a message and
    a lift and a place for one control, and the control is not the toast's to draw.
@@ -37,7 +37,7 @@
    not about what an icon button looks like. That is the whole line the atom
    migration is drawn on, and it is why `.toast-close` is still a name a
    stylesheet reads. */
-.app-case .toast-close{flex:0 0 auto}
-.app-case .toast.toast-error{border-color:var(--border-notice);background:var(--bg-control);box-shadow:0 22px 46px -22px var(--shadow-ink),inset 0 1px 0 var(--bevel-notice)}
-.app-case .toast.toast-error .ic-sm{width:var(--icon-22);height:var(--icon-22);flex:0 0 var(--icon-22);stroke:var(--text-primary);stroke-width:2.4}
-.app-case .toast.toast-error .toast-msg{color:var(--text-primary);font-weight:var(--weight-semibold)}
+.toast-close{flex:0 0 auto}
+.toast.toast-error{border-color:var(--border-notice);background:var(--bg-control);box-shadow:0 22px 46px -22px var(--shadow-ink),inset 0 1px 0 var(--bevel-notice)}
+.toast.toast-error .ic-sm{width:var(--icon-22);height:var(--icon-22);flex:0 0 var(--icon-22);stroke:var(--text-primary);stroke-width:2.4}
+.toast.toast-error .toast-msg{color:var(--text-primary);font-weight:var(--weight-semibold)}
