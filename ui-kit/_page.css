@@ -256,7 +256,7 @@
    whose colours are invisible to the system is the exact thing being audited. */
 .tk-sw{background:var(--sw)}
 .tk-ink{color:var(--sw)}
-.tk-brd{border-color:var(--sw)}
+
 .c-bg-page{--sw:var(--bg-page)}
 .c-bg-canvas{--sw:var(--bg-canvas)}
 .c-bg-slab{--sw:var(--bg-slab)}
@@ -363,8 +363,7 @@
 .tk-mc{padding:9px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0}
 .tk-mc b{font-size:13px;font-weight:700;line-height:1}
 .tk-mc i{font-style:normal;font-size:9px;color:var(--text-muted);opacity:.85}
-.tk-mc.tk-fail{outline:2px solid var(--outcome-no);outline-offset:-2px}
-.tk-mc.tk-fail i{color:var(--outcome-no-text);opacity:1}
+
 @media(max-width:760px){.tk-mx{font-size:9px}.tk-mx-r{padding:6px}.tk-mc{padding:6px 2px}}
 
 /* The primitive ramps. A component may never read one of these, and a foundations
@@ -513,7 +512,6 @@
 .tk-card p:not([class]){margin:8px 0 0;font-size:12px;line-height:1.55;
   color:var(--text-muted)}
 .tk-card p{margin:8px 0 0}
-.tk-ink-bar{height:8px;border-radius:100px;background:var(--color-action);margin-top:4px}
 
 /* ==========================================================================
    FOUNDATIONS: GEOMETRY. Added 2026-08-07 for geometry.html.
@@ -564,16 +562,12 @@
 .tk-blk.tk-blk-out>span:first-child{background:var(--bg-control);
   border:1px solid var(--border-brass-hover)}
 .tk-blk b{color:var(--text-primary);font-weight:400}
-.tk-rulers{display:flex;flex-direction:column;gap:5px;margin:0 0 10px}
-.tk-rul{display:grid;grid-template-columns:64px minmax(0,1fr) 68px;gap:12px;align-items:center;
-  font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}
-.tk-rul>i{font-style:normal;text-align:right}
-.tk-rul>span{height:14px;background:var(--color-action);border-radius:2px;display:block}
+
 .tk-bars{display:flex;flex-direction:column;gap:3px;margin:0 0 10px;font-family:var(--font-mono);font-size:10px}
 .tk-bar{display:grid;grid-template-columns:58px minmax(0,1fr) 54px;gap:10px;align-items:center;
   color:var(--text-muted)}
 .tk-bar>u{text-decoration:none;height:11px;background:var(--color-action);border-radius:2px;display:block}
-.tk-bar.tk-bar-off>u{background:var(--outcome-no)}
+
 .tk-bar>i{font-style:normal;text-align:right}
 
 /* ==========================================================================

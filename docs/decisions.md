@@ -44,7 +44,63 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
-## 2026-08-08 - The chip's page, and the panel says 12 of 12
+## 2026-08-08 - The cookie row becomes the target, and the stand's stylesheet loses nine dead rules
+
+Two rows closed, 51 and 53, and the second one broke the file on the first attempt.
+
+### 51: the last target under the AA floor
+
+Three checkboxes on `cookie-consent.html` rendered **18x18**, and they were the only targets in the
+product that a finger has to HIT rather than read and that fell under WCAG 2.5.8's 24x24. Everything
+else under 24 is a text link, which the criterion exempts.
+
+**The fix is markup and the structure was decided in grey first**, which is the rule the two trees
+exist under. `<div class="cc-cat-main">` is `<label class="cc-cat-main">` in
+`wireframes/cookie-consent.html` and in `ui-visual/cookie-consent.html`, identically, so the name, the
+box and the space between them are one target.
+
+| | before | after |
+|---|---|---|
+| the target, fine pointer at 390 | 18x18 | **233x36** |
+| the target, coarse pointer at 390 | 18x18 | **233x44** |
+| at 1280, coarse | 18x18 | **851x44** |
+
+The checkbox is still 18x18 and that is correct: **it is a part inside the target now rather than the
+target**.
+
+**The accessible NAME did not move, and that was deliberate.** A wrapping `<label>` would normally
+name the input from its own text, but `aria-label` wins over it and the existing one says "Analytics
+cookies, off by default" where the visible word says only "Analytics". The name is `voice/`'s
+property and this pass changed a target, not a string. So the attribute stays and the label does the
+one job it was added for.
+
+`.cc-cat-main` joined the one touch floor in `base.css`, which is where its 44 comes from, and
+`cookie-consent.css` gives it `--control-36` and a pointer because **it is a control now**. It is the
+only member of that list that was not a control when the rule was written.
+
+**Re-measured over ten screens under a coarse pointer: 8 targets remain under 24x24 and every one is
+a text link.** 0 controls that a finger has to hit are under the AA floor.
+
+### 53: the count was of classes, the file has rules, and the first delete broke it
+
+Six dead CLASSES turned out to be **nine dead rules**, because three of them are compound and carry a
+live class beside the dead one: `.tk-mc.tk-fail`, `.tk-mc.tk-fail i`, `.tk-bar.tk-bar-off>u`.
+
+**The first removal was line-based and it broke the stylesheet.** `.tk-rul` is written over three
+lines; deleting the line that opens it left the continuation and the closing brace behind. **361 open
+braces against 362 close**, which the check ran straight after the edit caught, and the file was
+restored from git and done again brace-aware.
+
+That is the third time in two days that a first count or a first edit was wrong in the same way, and
+the pattern is now specific enough to name: **a CSS file is a list of rules and a markdown file is a
+list of lines, and a tool that reads either one as text will be right often enough to be trusted and
+wrong exactly where it matters.** The defence is not care, it is a second reading that cannot fail
+the same way. Here it was a brace count; on the anti-rules it was reading the page instead of the
+class; on `.tk-onlight` it was stripping comments before matching.
+
+`_page.css` is **680 lines from 686, 77 classes defined and 0 dead, 0 worn and undefined**, and all
+twelve kit pages render at 390 and 1280 with 0 horizontal scroll, 0 overflow and the right active
+row.
 
 Third and last of the in-depth pages. `ui-kit/chip.html`, eleven sections.
 

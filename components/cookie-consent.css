@@ -39,7 +39,23 @@
 .app-case .cc-manage{border-top:var(--hairline) solid var(--border-hairline);padding-top:var(--space-12);display:flex;flex-direction:column;gap:var(--space-8)}
 .app-case .cc-cats{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-8)}
 .app-case .cc-cat{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);padding:var(--space-12) var(--space-12)}
-.app-case .cc-cat-main{display:flex;align-items:center;justify-content:space-between;gap:var(--space-12)}
+/* THE ROW IS THE TARGET, 2026-08-08, and it is a `<label>` in both trees rather
+   than a `<div>`. Before this the only thing a finger could hit was the box
+   itself, `18x18` measured, which is the ONE control in the product that failed
+   WCAG 2.5.8's 24x24 floor and had to be hit rather than read. Backlog 51.
+   THE STRUCTURE WAS DECIDED IN GREY FIRST and the painted twin followed, which
+   is the rule the two trees exist under: `wireframes/cookie-consent.html` and
+   `ui-visual/cookie-consent.html` carry the same three `<label class="cc-cat-main">`
+   and neither disagrees with the other.
+   THE ARIA-LABEL STAYS ON THE INPUT and is not replaced by the label's text. A
+   wrapping label makes the ROW clickable; the accessible NAME is `voice/`'s and
+   it already says "Analytics cookies, off by default", which is more than the
+   visible word. So the target changed and the name did not, and a name is not
+   this file's to move.
+   IT TAKES A CONTROL HEIGHT because it is a control now: --control-36 here, and
+   the 44 floor arrives from components/base.css under a coarse pointer, the same
+   way it arrives for every other family. */
+.app-case .cc-cat-main{display:flex;align-items:center;justify-content:space-between;gap:var(--space-12);min-height:var(--control-36);cursor:pointer}
 .app-case .cc-cat-name{font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);color:var(--text-primary)}
 .app-case .cc-cat-desc{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:var(--space-8) 0 0}
 .app-case .cc-cat input[type="checkbox"]{width:var(--icon-18);height:var(--icon-18);accent-color:var(--color-action);flex:0 0 auto;cursor:pointer}

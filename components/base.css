@@ -106,6 +106,12 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none}
    backlog 39's question and it is still open. `.icon-btn-bare` needs no exclusion, because it sets
    the floor itself and then pulls it back out of the flow.
 
+   `.cc-cat-main` JOINED THE LIST ON 2026-08-08 and it is the only member that was not a control when
+   this rule was written. It was a `<div>` holding a name and a checkbox, so the only thing a finger
+   could hit was the box, 18x18, the one target in the product that failed 24x24. It is a `<label>`
+   in both trees now, so the row is the target, and a row that is a target belongs to this rule for
+   the same reason every other member does.
+
    THE EXCLUSIONS ARE A CHAIN AND NOT A LIST, and that is the one thing here that is not a matter of
    taste. `:not(a,b,c,d)` counts once and gives the rule (0,2,1); `.app-case .tabs button` in
    tabs.css is (0,2,1) as well and base.css is imported first, so the two tied and SOURCE ORDER GAVE
@@ -114,7 +120,7 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none}
    count four times, the rule is (0,5,1), and it out-specifies every nominal height in the system
    rather than tying with one of them. A floor that a component can tie with is not a floor. */
 @media(pointer:coarse){
-  :is(.btn,.chip,.icon-btn,.tabs button,.ptab-lbl,.rules-tab,.market-head,.toc-link,.filter-menu summary,.notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-height:var(--control-44)}
+  :is(.btn,.chip,.icon-btn,.tabs button,.ptab-lbl,.rules-tab,.market-head,.toc-link,.cc-cat-main,.filter-menu summary,.notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-height:var(--control-44)}
   /* A SQUARE CONTROL NEEDS BOTH SIDES. These carry a mark and no label, so their width does not
      arrive from a word the way a chip's and a button's does. */
   :is(.icon-btn,.logo-btn,.notif-all,.notif-menu summary,.avatar-menu summary):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-width:var(--control-44)}
