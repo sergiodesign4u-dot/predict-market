@@ -93,13 +93,40 @@ did not move on any of them; the field lost 19px of width to the mark and the ga
 and so are a leading `+` and `-`. Markup cannot close a field completely, so the last of the
 filtering is the implementation's and `docs/backlog.md` 65 carries the one-line contract it needs.
 
-### And the plate behind the specimen is explained rather than removed
+### And then the plate was taken away, because it was the defect and not the presentation
 
 The other complaint was a rounded plate behind the field on the kit page with no equivalent
-elsewhere. **It is a dialog, and it has to be there**: every rule this face has is scoped
-`dialog.app-dialog .amount-input`, so a specimen standing anywhere else would show the User Agent's
-white box. The page now says that where a person meets it, and the section on scope is two sections
-below.
+elsewhere. The first answer was to explain it: it is a dialog, and every rule the face had was
+scoped `dialog.app-dialog .amount-input`, so a specimen standing anywhere else showed the User
+Agent's white box. **That answer was wrong, and the second reading of the same screenshot is what
+corrected it.**
+
+**A stand that has to reproduce an ORGANISM in order to show an ATOM is the stand reporting a defect
+in the system.** The whole sheet face was written against a dialog and the whole bet face against
+four ancestors, so this atom had no face of its own, only faces its containers lent it, **and
+`ui-kit/vitrine.html` had already written that sentence down as a finding a day earlier without
+anybody acting on it.**
+
+| | before | after |
+|---|---|---|
+| the sheet face | `dialog.app-dialog .amount-input` | **`.amount-input`**, the default, 110 of 122 |
+| the bet face | `.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input` | **`.amount-input.amount-bet`**, a modifier on the element, 12 |
+| the address | `dialog.app-dialog .amount-input.addr` | **`.amount-input.addr`**, 1 |
+| what the row keeps | everything | **two declarations** in `betpanel.css`: the width the field takes of the bet row, and the auto margin that pulls the field and its mark to the right edge |
+| the specimen | a rebuilt dialog around every field | **the field** |
+
+**It is the same correction this repository has now made five times**, and every one of them says one
+sentence: a face is a CLASS and a container may only say WHERE the control sits. The signed-out
+prompt became `.btn.btn-prompt`, the fetch control became `.chip.chip-nav`, the toast dismiss and the
+dialog close disc both became `.icon-btn`, and now the money field. **Naming the second place a
+control stands, which is what this file did and what saved it from the chip's defect, was the smaller
+mistake rather than the answer.**
+
+The markup cost was 12 elements: the bet fields take `amount-bet` in all three trees, keyed on the
+ROW rather than on the label so the sweep could not pick the wrong field. Everything else changed by
+deleting ancestors from selectors. **Measured after, at both widths: 19 of 19 product fields painted
+correctly, 19 with the mark, the address still mono, and the kit specimens render with 0 dialogs
+inside them.**
 
 `ui-kit/input.html` was rebuilt around **three kinds split by what a person is doing** rather than
 two faces plus a footnote: the sheet field a person fills in (110), the bet field a person is about

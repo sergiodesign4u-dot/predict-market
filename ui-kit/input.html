@@ -62,23 +62,21 @@
     <h2 data-n="3">The sheet field, 110 placements</h2>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
-      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
-        <dialog class="app-dialog" open aria-label="Add funds">
-          <span class="field-label">Amount to add</span>
-          <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount to add"></div>
-        </dialog>
-      </div></div>
-      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
-        <dialog class="app-dialog" open aria-label="Add funds">
-          <span class="field-label">Amount to add</span>
-          <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount to add"></div>
-        </dialog>
-      </div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <span class="field-label">Amount to add</span>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount to add"></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <span class="field-label">Amount to add</span>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount to add"></div>
+      </div>
     </div>
-    <p class="tk-why"><b>The rounded plate behind the specimen is a DIALOG, and it has to be
-    there.</b> Every rule this face has is written <code>dialog.app-dialog .amount-input</code>, so a
-    field standing anywhere else gets the User Agent and nothing else. <b>The plate is not decoration
-    on this page, it is the scope being satisfied</b>, and section 5 is about exactly that.</p>
+    <p class="tk-why"><b>There is no plate behind this specimen, and until 2026-08-08 there had to
+    be one.</b> Every rule this face had was written <code>dialog.app-dialog .amount-input</code>, so
+    the stand could not show the field without rebuilding a dialog around it, and outside one the
+    specimen rendered as the User Agent's white box in a dark theme. <b>A stand that has to reproduce
+    an ORGANISM in order to show an ATOM is the stand reporting a defect</b>, and section 6 is the
+    fix.</p>
     <p class="tk-note">A hairline box on the well, a 10 corner, the display face at 18px, and
     <b>44 tall by rule</b>. With the mark beside it the field is 312 wide at 390 and 383 at 1280,
     against 331 and 402 before the mark existed.</p>
@@ -86,20 +84,12 @@
     <h2 data-n="4">The bet field, 12 placements</h2>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
-      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
-        <dialog class="app-case app-dialog bet-sheet" open aria-label="Place your bet">
-          <div class="bp-inner">
-            <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="120.00" aria-label="Bet amount"></div>
-          </div>
-        </dialog>
-      </div></div>
-      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
-        <dialog class="app-case app-dialog bet-sheet" open aria-label="Place your bet">
-          <div class="bp-inner">
-            <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="120.00" aria-label="Bet amount"></div>
-          </div>
-        </dialog>
-      </div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="120.00" aria-label="Bet amount"></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="120.00" aria-label="Bet amount"></div>
+      </div>
     </div>
     <p class="tk-note">No box at all: a 1.5px underline, 30px bold display, right aligned, 150 wide
     and never more than 56 per cent of its row. <b>It is the only field in the product that is
@@ -156,21 +146,41 @@
 
   <!-- ============================================================== the scope -->
   <section class="tk-sec" id="scope">
-    <h2 data-n="6">The scope question, and this is the file that got it right</h2>
-    <p class="tk-note">Every rule for both fields is written under a scope:
-    <code>dialog.app-dialog .amount-input</code> for the first, and
-    <code>.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input</code> for the second.
-    <b>Written that way, a field that stands anywhere else gets nothing but the User Agent</b>, which
-    is why the specimen above stands in a dialog.</p>
-    <p class="tk-why"><b>The chip's amount face was written the same way and it broke.</b> Until
-    2026-08-08 every rule for it was scoped <code>.app-case .chip-amount</code>, and 526 of the 559
-    buttons that stand in a dialog in this product are in a dialog that carries no
-    <code>app-case</code>. The chip beside the amount field was drawn by the browser while the field
-    itself was right, <b>because this file had already named the second place its control
-    stands</b>.</p>
-    <p class="tk-note"><b>Measured across all 106 screens: 0 of the 122 fall outside a named
-    scope.</b> That is the check the claim needs. A scope is not wrong for being a scope; it is wrong
-    when the list of places is shorter than the list of places.</p>
+    <h2 data-n="6">The face belongs to the class, and until today it did not</h2>
+    <p class="tk-why"><b>Both faces were written as CONTAINERS.</b> The whole sheet face was
+    <code>dialog.app-dialog .amount-input</code> and the whole bet face was
+    <code>.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input</code>. So this atom had
+    no face of its own, <b>only faces its containers lent it</b>, and
+    <a href="vitrine.html#input">the atoms page</a> had already written that sentence down as a
+    finding without anybody acting on it.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>before</th><th>after</th></tr></thead>
+        <tbody>
+          <tr><td>the sheet face</td><td><code>dialog.app-dialog .amount-input</code></td><td><b><code>.amount-input</code></b>, the default, 110 of 122</td></tr>
+          <tr><td>the bet face</td><td>four ancestors deep</td><td><b><code>.amount-input.amount-bet</code></b>, a modifier on the element, 12</td></tr>
+          <tr><td>the address</td><td><code>dialog.app-dialog .amount-input.addr</code></td><td><b><code>.amount-input.addr</code></b>, 1</td></tr>
+          <tr><td>what the row keeps</td><td>everything</td><td><b>two declarations</b>: the width the field takes of the bet row, and the auto margin that pulls the pair right</td></tr>
+          <tr><td>the specimen</td><td>a rebuilt dialog around every field</td><td><b>the field</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>It is the same correction this repository has now made five times.</b> The
+    signed-out prompt was a box in the comments file and became
+    <a href="button.html">a button</a>; the fetch control was a button in the load-more file and
+    became <a href="chip.html">a chip</a>; the toast's dismiss and the dialog's close disc both
+    became <a href="iconbtn.html">an icon button</a>. Every one says the same thing: <b>a face is a
+    class, and a container may only say where the control sits.</b></p>
+    <p class="tk-why"><b>The chip's amount face was the version of this that actually broke.</b>
+    It was scoped <code>.app-case .chip-amount</code>, and <b>526 of the 559 buttons that stand in a
+    dialog in this product are in a dialog that carries no <code>app-case</code></b>: the chip beside
+    the amount field was drawn by the browser while the field itself was right, because this file had
+    at least named the second place its control stands. <b>Naming the second place was never the
+    answer, it was the smaller mistake.</b></p>
+    <p class="tk-note"><b>And nothing leaks now that the scope is gone.</b>
+    <code>wireframes/</code> links no stylesheet from <code>components/</code>, and not one of the 28
+    course pages loads <code>components/index.css</code>, both measured. An unscoped rule here reaches
+    the painted screens and this stand, and nothing else.</p>
   </section>
 
   <!-- =============================================================== the focus -->

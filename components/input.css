@@ -1,17 +1,60 @@
 /* components/input.css
-   Component: input. Classes: .addr, .amount-cur, .amount-input, .amount-row, .field-label.
+   Component: input. Classes: .addr, .amount-bet, .amount-cur, .amount-input, .amount-row, .field-label.
 
    Reads: --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --focus-ring, --glow-focus, --line-brass-strong, --opacity-disabled, --result-won, --text-muted, --text-primary
    Stand:  ui-kit/input.html, and ui-kit/vitrine.html#input for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-dialog.app-dialog .field-label{font-size:var(--text-11);text-transform:uppercase;letter-spacing:var(--track-label)}
-dialog.app-dialog .amount-row{display:flex;align-items:center;gap:var(--space-8)}
-dialog.app-dialog .amount-input{flex:1;padding:var(--space-8);font-size:var(--text-18)}
-.field-label{font-size:var(--text-11);text-transform:uppercase;letter-spacing:var(--track-label)}
+/* ============================================================================
+   THE FACE BELONGS TO THE CLASS, 2026-08-08, AND UNTIL TODAY IT DID NOT.
+
+   Every rule in this file was scoped to a CONTAINER: the whole sheet face was
+   written `dialog.app-dialog .amount-input` and the whole bet face was written
+   `.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input`. So this
+   atom had no face of its own, only faces its containers lent it, and the kit's
+   own atoms page had already written that sentence down as a finding.
+
+   WHAT THAT COST, and it is not theoretical. `ui-kit/input.html` could not show
+   the field without wrapping it in a `<dialog>`, because outside one the
+   specimen rendered as the User Agent's white box in a dark theme. A stand page
+   that has to reproduce an ORGANISM in order to show an ATOM is the stand
+   reporting a defect in the system, and the answer is to fix the system rather
+   than to explain the wrapper.
+
+   IT IS THE SAME CORRECTION THIS REPOSITORY HAS NOW MADE FOUR TIMES. The
+   signed-out prompt was a box in comments.css and became `.btn.btn-prompt`; the
+   feed's fetch control was a button in loadmore.css and became `.chip.chip-nav`;
+   the toast's dismiss was a pill in toast.css and became
+   `.icon-btn.icon-btn-small`; the close disc was written twice in two files and
+   became `.icon-btn.icon-btn-photo`. Every one of them says the same thing:
+   A FACE IS A CLASS AND A CONTAINER MAY ONLY SAY WHERE THE CONTROL SITS.
+
+   THE TWO FACES ARE NOW TWO CLASSES. The sheet field is the default, because it
+   is 110 of the 122 placements and a default should be the thing most of the
+   product wears. The bet field is `.amount-bet`, a modifier on the element, 12
+   placements, and it is named for the moment rather than for the box: it is the
+   number a person is about to commit.
+
+   WHAT STAYED WITH A CONTAINER, and this is the line the fix is drawn on. Two
+   declarations about how the field and its mark SHARE the bet row are in
+   components/betpanel.css now: the width the field takes of that row, and the
+   auto margin that pulls the pair to its right edge. Those are facts about a
+   row, not about a field, and the row is the panel's.
+
+   NOTHING LEAKS. `wireframes/` links no stylesheet from this folder and not one
+   of the 28 course pages loads `components/index.css`, both measured, so an
+   unscoped rule here reaches the painted screens and the kit and nothing else.
+   ============================================================================ */
+
+/* ------------------------------------------------------------ the label ---- */
+.field-label{font-size:var(--text-11);text-transform:uppercase;letter-spacing:var(--track-label);color:var(--text-muted)}
+/* The one context that recolours it, and it is naming a figure that is the good
+   news rather than restating what a label looks like. */
+.win-dialog .reconcile-box .field-label{color:color-mix(in oklab,var(--result-won) 45%,var(--text-primary))}
+
+/* -------------------------------------------------------------- the row ---- */
 .amount-row{display:flex;align-items:center;gap:var(--space-8)}
-.amount-input{flex:1;border:var(--hairline) solid var(--border-hairline);padding:var(--space-8);font-size:var(--text-18)}
 
 /* ============================================================================
    THE CURRENCY MARK IS NOT PART OF THE VALUE, 2026-08-08.
@@ -46,9 +89,40 @@ dialog.app-dialog .amount-input{flex:1;padding:var(--space-8);font-size:var(--te
    is the one being read. It takes the display face because it stands beside a
    display figure and a body-face `$` next to a display `20.00` reads as two
    different sentences.
+
+   AND ITS SIZE FOLLOWS THE FIELD IT MARKS, through the field rather than
+   through a second class in the markup: `:has(+ .amount-bet)` is the true
+   relationship, which is that this mark belongs to that figure. The same
+   selector shape is already used in components/patterns/browse-shell.css for a
+   column with no rail and in components/filters.css for a chosen row.
    ============================================================================ */
-.amount-cur{flex:0 0 auto;font-family:var(--font-display);font-weight:var(--weight-bold);color:var(--text-muted)}
-dialog.app-dialog .amount-cur{font-size:var(--text-18)}
+.amount-cur{flex:0 0 auto;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-18);color:var(--text-muted)}
+.amount-cur:has(+ .amount-bet){font-size:var(--text-30);line-height:var(--leading-none)}
+
+/* ============================================== the sheet field, 110 of 122 --
+   The default, because a default should be the face most of the product wears.
+   min-height, not padding: the field used to reach 45px because its padding
+   happened to add up to it, and on the 4px grid the same padding lands at 41
+   with the touch target gone. A target is a rule, so it is written as one. */
+.amount-input{flex:1;box-sizing:border-box;min-height:var(--control-44);padding:var(--space-8);
+  border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);
+  background:var(--bg-well);color:var(--text-primary);
+  font-family:var(--font-display);font-size:var(--text-18);
+  transition:border-color var(--dur-quick) ease,box-shadow var(--dur-quick) ease,opacity var(--dur-quick) ease}
+.amount-input:hover:not(:disabled){border-color:var(--line-brass-strong)}
+/* :focus and :focus-visible are two different questions and this control needs both.
+   :focus says THE FIELD IS ACTIVE, which is true however you got there, and it is
+   drawn by the border and the glow below. The RING is a keyboard indicator and it
+   only belongs to the person who arrived by tab.
+   The outline:none is kept for the same reason it exists on the bet face below:
+   the default ring in base.css is square and this field has a 10px radius. The
+   rule that puts a ring back is therefore an equal-specificity rule AFTER it, so
+   source order decides and the later one wins. It had no such rule until
+   2026-08-02, so outline:none beat base.css and the field took the ring away and
+   gave a 16 per cent brass wash back, which is not an indicator at any alpha. */
+.amount-input:focus{outline:none;border-color:var(--color-action);box-shadow:0 0 0 3px var(--glow-focus)}
+.amount-input:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
+.amount-input:disabled{opacity:var(--opacity-disabled);cursor:not-allowed;background:var(--bg-surface)}
 /* A NUMBER INPUT COMES WITH A SPINNER AND THIS ONE MAY NOT HAVE ONE. The field
    is 44 tall by rule and a spinner takes a strip off its right edge, which on
    the sheet field would sit exactly where the figure ends. Two spellings,
@@ -58,63 +132,45 @@ dialog.app-dialog .amount-cur{font-size:var(--text-18)}
 .amount-input::-webkit-outer-spin-button,
 .amount-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .amount-input[type=number]{-moz-appearance:textfield;appearance:textfield}
+
+/* ================================================ the bet field, 12 of 122 --
+   No box at all: a 1.5px underline and a 30px figure, right aligned. It is the
+   only field in the product that is TYPOGRAPHY rather than a container, and the
+   reason is the moment it stands in: the number IS the sentence on that sheet,
+   and a box around it would make it one form control among several.
+   A 1.5px underline changing colour is a state and not a focus indicator, and
+   this is the field a person types the size of a bet into, so it takes the same
+   ring as everything else. It was called "the one control in the product that
+   took outline:none and gave nothing back" until 2026-08-02, and there were TWO:
+   the sheet face above did the same thing and was not caught, because the sweep
+   that found this one read the declaration and not the pair of rules around it.
+   A comment that says "the one" is a comment the next pass trusts instead of
+   counting. */
+.amount-input.amount-bet{-webkit-appearance:none;appearance:none;
+  min-height:0;padding:0 var(--space-2) var(--space-4);
+  border:0;border-bottom:1.5px solid var(--border-hairline);border-radius:0;
+  background:transparent;outline:none;
+  line-height:var(--leading-none);font-size:var(--text-30);font-weight:var(--weight-bold);text-align:right}
+.amount-input.amount-bet:hover:not(:disabled){border-color:transparent;border-bottom-color:var(--border-brass-hover)}
+.amount-input.amount-bet:focus{box-shadow:none;border-color:transparent;border-bottom-color:var(--color-action)}
+/* this one has to out-specify the outline:none the face above sets, so it cannot
+   come from the one-line default in base.css */
+.amount-input.amount-bet:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
+.amount-input.amount-bet:disabled{opacity:var(--opacity-disabled);cursor:not-allowed;background:transparent;border-bottom-color:var(--border-hairline)}
+.amount-input.amount-bet::placeholder{color:var(--text-muted)}
+
+/* ================================================= the address, 1 of the 122 --
+   The destination address is not an amount: it is a value you CHECK, so it reads
+   as data and never invites a keystroke. It is a <span> rather than an input for
+   the same reason, and it took no currency mark. */
+.amount-input.addr{display:flex;align-items:center;min-height:var(--control-44);
+  font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-muted);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
 /* THE QUICK AMOUNTS LEFT THIS FILE ON 2026-08-05, and `.quick` went with them to
    components/quick.css. A field and a group of chips are not one thing: what is
-   left here is a label, a field and the row that holds them, which is an atom,
-   and what left is a ROW a person chooses between, which is a molecule. The
-   census of what each class is worn by had already filed the two under different ROLES, a
-   selector against a field, so the split is the file catching up with a fact the
-   build was already computing. Found by reading the containment map: this file's containment is EMPTY
-   and the level was being answered by arithmetic with no information in it. See
-   ui-kit/docs/defects.md row 63. */
-dialog.app-dialog .field-label{color:var(--text-muted)}
-/* min-height, not padding. The field used to reach 45px because its padding
-   happened to add up to it; on the 4px grid the same padding lands at 41 and the
-   touch target is gone. A target is a rule, so it is written as one. */
-dialog.app-dialog .amount-input{min-height:var(--control-44);border:var(--hairline) solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-10);font-family:var(--font-display);box-sizing:border-box;transition:border-color var(--dur-quick) ease,box-shadow var(--dur-quick) ease,opacity var(--dur-quick) ease}
-dialog.app-dialog .amount-input:hover:not(:disabled){border-color:var(--line-brass-strong)}
-/* :focus and :focus-visible are two different questions and this control needs both.
-   :focus says THE FIELD IS ACTIVE, which is true however you got there, and it is
-   drawn by the border and the glow below. The RING is a keyboard indicator and it
-   only belongs to the person who arrived by tab.
-   The outline:none is kept for the same reason it exists on the bet field below:
-   the default ring in base.css is square and this field has a 10px radius. The
-   rule that puts a ring back is therefore an equal-specificity rule AFTER it,
-   0,3,1 against 0,3,1, so source order decides and the later one wins. It had no
-   such rule until 2026-08-02, so outline:none at 0,3,1 beat base.css at 0,1,0 and
-   the field took the ring away and gave a 16 per cent brass wash back, which is
-   not an indicator at any alpha. */
-dialog.app-dialog .amount-input:focus{outline:none;border-color:var(--color-action);box-shadow:0 0 0 3px var(--glow-focus)}
-dialog.app-dialog .amount-input:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
-dialog.app-dialog .amount-input:disabled{opacity:var(--opacity-disabled);cursor:not-allowed;background:var(--bg-surface)}
-dialog.app-dialog .amount-input{background:var(--bg-well)}
-.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input{flex:0 1 auto;width:150px;max-width:56%;-webkit-appearance:none;appearance:none;border:0;border-bottom:1.5px solid var(--border-hairline);border-radius:0;background:transparent;outline:none;padding:0 var(--space-2) var(--space-4);line-height:var(--leading-none);font-family:var(--font-display);font-size:var(--text-30);font-weight:var(--weight-bold);color:var(--text-primary);text-align:right}
-.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:hover:not(:disabled){border-bottom-color:var(--border-brass-hover)}
-.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus{border-bottom-color:var(--color-action)}
-/* A 1.5px underline changing colour is a state, not a focus indicator, and this is
-   the field a person types the size of a bet into. Same ring as everything else.
-   It was called "the one control in the product that took outline:none and gave
-   nothing back" until 2026-08-02, and there were TWO: the dialog field above did
-   the same thing and was not caught, because the sweep that found this one read
-   the declaration and not the pair of rules around it. A comment that says "the
-   one" is a comment the next pass trusts instead of counting. */
-/* this one has to out-specify the outline:none the field above sets, so it cannot come from
-   the one-line default in base.css */
-.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
-.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:disabled{opacity:var(--opacity-disabled);cursor:not-allowed;border-bottom-color:var(--border-hairline)}
-.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input::placeholder{color:var(--text-muted)}
-/* THE BET ROW IS A SPACE-BETWEEN FLEX OF TWO ITEMS AND THE MARK MAKES A THIRD.
-   Left alone it would land in the middle of the row, halfway between the label
-   and the figure it belongs to. `margin-left:auto` eats the free space instead,
-   so the mark and the figure arrive at the right edge as a pair and the row
-   needs no wrapper element in either tree. It takes the figure's own size,
-   because a 18px `$` beside a 30px number is not a prefix, it is a footnote. */
-.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-cur{margin-left:auto;font-size:var(--text-30);line-height:var(--leading-none)}
-.app-case :is(.bet-panel,.bet-sheet) .field-label{color:var(--text-muted)}
-.app-case :is(.bet-panel,.bet-sheet) .amount-input{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-primary);font-family:var(--font-display)}
-.outcome-dialog .field-label{color:var(--text-muted)}
-.win-dialog .reconcile-box .field-label{color:color-mix(in oklab,var(--result-won) 45%,var(--text-primary))}
-.app-case .field-label{color:var(--text-muted)}
-/* the destination address is not an amount: it is a value you check, so it reads as data and
-   never invites a keystroke */
-dialog.app-dialog .amount-input.addr{display:flex;align-items:center;font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+   left here is a label, a field, the mark beside it and the row that holds them,
+   which is an atom, and what left is a ROW a person chooses between, which is a
+   molecule. Found by reading the containment map: this file's containment was
+   EMPTY and the level was being answered by arithmetic with no information in
+   it. */

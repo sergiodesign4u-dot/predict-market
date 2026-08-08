@@ -79,6 +79,19 @@
    was. Same role every lifted stone in this system uses. 0,5,0 against the two rest rules
    above, so it has to sit after them for the shade to land over the fill. */
 .app-case .bp-amount-row{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-12);margin:var(--space-8) 0 var(--space-20)}
+/* HOW THE FIELD AND ITS MARK SHARE THIS ROW, and that is all this file may say
+   about either of them, 2026-08-08. The FACE of the field is `.amount-bet` in
+   components/input.css: until today the whole of it was written
+   `.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input`, so an
+   atom had no face outside this row and the kit could not show one without
+   rebuilding this panel around it.
+   What is genuinely this row's: the field takes 150 of it and never more than
+   56 per cent, and the mark's auto margin eats the free space so the pair
+   arrives at the right edge together. THE ROW IS A SPACE-BETWEEN FLEX OF TWO
+   ITEMS AND THE MARK MAKES A THIRD; left alone it would land in the middle,
+   halfway between the label and the figure it belongs to. */
+.app-case .bp-amount-row .amount-input{flex:0 1 auto;width:150px;max-width:56%}
+.app-case .bp-amount-row .amount-cur{margin-left:auto}
 .app-case .bp-amount-lbl{display:flex;flex-direction:column;gap:var(--space-4)}
 .app-case .bp-cash{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
 .app-case :is(.bet-panel,.bet-sheet) .line{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light);color:var(--text-muted)}

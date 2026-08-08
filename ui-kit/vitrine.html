@@ -342,42 +342,42 @@
       <li class="tk-decl">ONE CONTROL</li>
       <li><a href="input.html">its own page</a></li>
     </ul>
-    <p class="tk-note">One field and one label. <b>Every rule in this file is scoped</b>, to
-    <code>dialog.app-dialog</code> or to <code>.bet-panel</code> and <code>.bet-sheet</code>: the
-    unscoped <code>.amount-input</code> gets a hairline, 8px of padding, an 18px size and nothing
-    else.</p>
-    <p class="tk-note"><b>And this page found what that costs, on its first render.</b> Look at the
-    Vault column of the first row: the field is <b>white, with black text, inside the dark theme</b>.
-    No rule sets its ground or its ink, so both come from the User Agent, and a User Agent has one
-    idea of a text field. It is the trap this repository has already paid for once and written down:
-    <b>a missing value is a value</b>. It does not appear on any of the 41 screens because on every
-    one of them the field stands inside a dialog or a bet panel, and it would appear the day anybody
-    put a field anywhere else.</p>
+    <p class="tk-note">One field, one label and the currency mark beside it. <b>The face is the
+    class now</b>: <code>.amount-input</code> is the sheet field, <code>.amount-bet</code> is the
+    number a person is about to commit, and <code>.addr</code> is a value you only check.</p>
+    <p class="tk-note"><b>And this page is what found the defect that fixed, on its first render.</b>
+    Until 2026-08-08 every rule in that file was scoped to a CONTAINER, so the first row of this
+    section rendered <b>white, with black text, inside the dark theme</b>: no rule set the field's
+    ground or its ink outside a dialog, and a User Agent has one idea of a text field. <b>A missing
+    value is a value.</b> It never appeared on a screen, because on every one of them the field
+    stands inside a dialog or a bet panel; it appeared here, which is the whole reason a stand shows
+    an atom on its own.</p>
     <div class="tk-faces">
       <span class="tk-colh"></span>
       <span class="tk-colh">Vault, dark</span>
       <span class="tk-colh">Daylight, light</span>
 
-      <span class="tk-lab tk-bad"><b>.amount-input</b><i>unscoped, and this IS the markup the product ships since 2026-08-08: a number field with the currency mark beside it rather than inside the value. Three declarations reach it and neither ground nor ink is one of them, so the white box in the dark column is the browser's</i></span>
+      <span class="tk-lab"><b>.amount-input</b><i>the sheet face, and it needs no container since 2026-08-08: this is the markup the product ships, a number field with the currency mark beside it rather than inside the value</i></span>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><span class="field-label">Amount</span><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount, unscoped"></div>
       <div class="tk-theme-fig tk-stack" data-theme="light"><span class="field-label">Amount</span><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount, unscoped"></div>
 
-      <span class="tk-lab"><b>.bet-panel .bp-amount-row .amount-input</b><i>the trader field: 30px display, a rule under it, no box. The panel around it is desktop only and disappears below 900px, here as in the product</i></span>
-      <div class="tk-theme-fig tk-stack" data-theme="dark"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div></div></div></div>
-      <div class="tk-theme-fig tk-stack" data-theme="light"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div></div></div></div>
+      <span class="tk-lab"><b>.amount-input.amount-bet</b><i>the trader field: 30px display, a rule under it, no box. It is a class rather than four ancestors since 2026-08-08; what the panel still decides is the width it takes of the row</i></span>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div></div></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div></div></div></div>
 
       <span class="tk-lab"><b>[disabled]</b><i>the same field while a deposit is pending</i></span>
-      <div class="tk-theme-fig tk-stack" data-theme="dark"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span></div><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount, disabled" disabled></div></div></div></div>
-      <div class="tk-theme-fig tk-stack" data-theme="light"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span></div><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount, disabled" disabled></div></div></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount, disabled" disabled></div></div></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount, disabled" disabled></div></div></div></div>
 
     </div>
-    <p class="tk-note">A third face exists and it is deliberately <b>not</b> on this page.
-    <code>.amount-input.addr</code>, the wallet address, is written as
-    <code>dialog.app-dialog .amount-input.addr</code>: mono, ellipsised, never wrapping. Outside a
-    dialog not one of those declarations reaches it, so a specimen of it here would be a picture of
-    an ordinary 18px box with a hairline, and it would teach the wrong thing. It belongs on the
-    dialog's page, at level 3. <b>That is the finding this section is really making:</b> this atom
-    has no face of its own, only faces its containers lend it.</p>
+    <p class="tk-note"><b>A third face exists and it is on <a href="input.html">the component's own
+    page</a> rather than here</b>, because a shelf shows a component and this one has three:
+    <code>.amount-input.addr</code>, the wallet address, mono and ellipsised and never wrapping. It
+    is a <code>&lt;span&gt;</code>, because it is a value you check rather than one you type.
+    <b>Until 2026-08-08 it could not have been shown here at all</b>, and neither could the two
+    above: every rule was scoped to a dialog or a bet row, so this atom had no face of its own, only
+    faces its containers lent it. That sentence stood on this page as a finding for a day before
+    anybody acted on it.</p>
     <p class="tk-note"><b>Rule.</b> A field always carries a label element, never a placeholder
     standing in for one: a placeholder disappears the moment a person types, which is exactly when
     they need to know what they are typing. <b>Anti-rule.</b> Never a field with no visible focus
