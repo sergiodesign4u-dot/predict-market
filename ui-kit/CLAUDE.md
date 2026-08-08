@@ -1,40 +1,49 @@
 # ui-kit/ - the vitrine, rebuilt by hand 2026-08-07 to 2026-08-08
 
 **All five steps are done and the plan below is the record of how, not a to-do list.** What is on the
-stand today: twelve pages, `_page.css`, `_nav.js`, and five reports in `docs/`. **0 generators, 0
-gates, 0 screenshots.** Every one of the 43 components placed on a level page carries its live
-specimen in both themes, its classes, its declaration, its rule and its anti-rule.
+stand today: nineteen pages of a planned 55, `_page.css`, `_nav.js`, and five reports in `docs/`.
+**0 generators, 0 gates, 0 screenshots.** Every one of the 43 components placed on a level page
+carries its live specimen in both themes, its classes, its declaration, its rule and its anti-rule.
 
-**And three components get a page of their own, which is not an exception to the level rule but the
-thing it leaves out.** A level page gives every component ONE specimen and one rule, and for eight of
-the ten atoms that is the whole story. It is not the story for a family that paints five emphases
-against four sizes and is worn in 22 distinct forms: one box answers neither of the two questions a
-person arrives with, which emphasis and which size. **The threshold is counted, not felt**: `button`,
-`iconbtn` and `chip` are the product's three largest control families, and the fourth is a long way
-behind them. The inventory reads them at 687, 527 and 466 by the count it takes; the per-component
-pages re-read them at **902 and 1,361** with a wider net, and each page says which net it used. A component with one face gets no page here
-however often it is worn. **All three are written**, and the panel's tally reads 12 of 12, at which
-point `_nav.js` drops its own sentence about rows with no page, because there are none.
+**A LEVEL IS A SHELF AND A COMPONENT IS A PAGE**, and the two answer different questions. Comparing
+ten atoms against each other is what a level page is for and it keeps that job. Taking ONE apart
+needs room a shelf does not have, because a shelf gives every component one specimen and one rule.
 
-**And a per-component page earns its place by finding something.** `button.html` found that the size
-ramp has a step, `xs`, whose 105 placements render on no phone at all. `iconbtn.html` found that
-**one face of eight moves when the pointer changes**, and that `.icon-btn-photo` is named for a
-ground it does not stand on: all 333 of them are a sheet close over a gradient, not a photograph.
-`chip.html` found the mirror of the first: **four of its five faces move**, and until 2026-08-08 only
-one did, because this file's own floor named two faces of five. None of the three was visible from a
-level page, because a level page shows one specimen and all three are facts about a set.
+**This file said the opposite until 2026-08-08** - *a page per LEVEL, not a page per component,
+because forty pages of one component each would be forty navigations to compare two chips* - and the
+reason was right and was a reason for the shelf, not against the pages. Three components had been let
+past it under a counted threshold, the three largest control families. **Two components killed that
+threshold.** `toast` has FOUR placements on ONE screen and its page still carries where the boundary
+with its own dismiss runs, why its error face is not red, and the fact that most of the component is
+a behaviour no static page can draw. `toggle` has THREE, and **four of its five faces have no
+placement in the product at all**: every `.toggle` in `ui-visual/` is `aria-checked="false"` and none
+is disabled, so a stand built by walking screens would show one grey oval and call it the component.
 
-The kit shows the system to a person and it holds no product code. It holds twelve pages plus its
+**And a component page earns its place by finding something.** `button.html` found that the size ramp
+has a step, `xs`, whose 105 placements render on no phone at all. `iconbtn.html` found that **one
+face of eight moves when the pointer changes**, and that `.icon-btn-photo` is named for a ground it
+does not stand on. `chip.html` found the mirror: **four of its five faces move**, and until
+2026-08-08 only one did. `navitem.html` found **365 rows standing 33 tall with a finger on them**, on
+an atom the one touch floor never named. `oddsbar.html` found that a source census reports **0
+placements of a component the product wears 63 times**, because a script assigns the class.
+`skeleton.html` corrected the fix's own comment: **0 marks of 482 draw at zero where their host is
+rendered**, and the six that read 0x0 at 390 stand in a panel that is `display:none` there.
+`toggle.html` found the four faces above. None of these was visible from a level page, because a
+level page shows one specimen and every one of them is a fact about a set.
+
+The kit shows the system to a person and it holds no product code. It holds nineteen pages plus its
 stylesheet and its registry: `overview.html`, which says what is happening, **all four foundation
-pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`), **a page per rung, all
+pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`), **a shelf per rung, all
 four** (`vitrine.html` for the ten atoms, `molecules.html` for the fourteen at level 2,
 `organisms.html` for the thirteen at level 3 and `patterns.html` for the six on the fourth rung), and
-**three in depth** (`button.html`, `iconbtn.html`, `chip.html`). `_page.css` is the stand furniture they all share
-and `_nav.js` is the route.
+**ten atom pages, one per atom** (`button`, `iconbtn`, `chip`, `navitem`, `oddsbar`, `input`,
+`yesno`, `toast`, `skeleton`, `toggle`). `_page.css` is the stand furniture they all share and
+`_nav.js` is the route.
 
-**A page per LEVEL, not a page per component.** Forty pages of one component each would be forty
-navigations to compare two chips. A level is the unit a person actually reads, and the level is where
-the shared rule lives: what an atom is, what a molecule holds, why the declaration exists.
+**Every component has a ROW whether or not it has a page.** `_nav.js` groups by level, the level page
+is the first row of its own group (`All atoms`, `All molecules`), and a row with no page renders as a
+`<span>` with a badge. The molecules, the organisms and the patterns are 36 rows waiting, and the
+panel says **19 of 55** rather than looking finished.
 
 **The route is written once, in `_nav.js`, and a page declares no part of it**, not even its own
 name. A page carries an empty `<aside class="sidebar" id="rmSidebar">` and loads the file; the rows,

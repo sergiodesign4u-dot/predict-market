@@ -9,7 +9,7 @@ holds the record of what was done. This holds what is not.
 Unlike `decisions.md`, this file is edited: a row is struck when the item closes, with the date and
 the entry in `decisions.md` that closed it.
 
-**Open: 39.**
+**Open: 42.**
 
 The Owner column carries the **new** stage numbers (the project renumbered from thirteen stages to
 twelve on 2026-08-02, and an owner is a pointer at work not yet done). The Source column keeps the
@@ -160,6 +160,21 @@ mouse.
 | 52 | **Sixteen component headers say the painted tree is 105 screens and it is 106** | Design System, the Stand-pointer pass, 2026-08-08 | Each file in `components/` opens with a `Stands on:` line naming a count and a sample of screens. **16 of them say 105**, 0 say 106, and 31 carry a narrower count of their own that was not checked in this pass. The `Stand:` half of the same header block was wrong on all 42 files and was fixed the same day; this half was left because **it cannot be fixed by substitution.** A real count means asking which screens actually carry each component's classes, rendered, which is a measurement and not a find-and-replace, and `patterns.html` already showed what a guessed count costs: two of six pattern headers were one screen light. It is filed with its number rather than silently corrected. Owner: Stage 12 (Handoff), with the pass that has to read every header anyway |
 | ~~53~~ | ~~Six rules in the stand's own stylesheet paint classes nothing wears~~ **CLOSED 2026-08-08, and it was NINE rules over six classes.** The count in the row was of CLASSES; three of the nine rules are compound (`.tk-mc.tk-fail`, `.tk-mc.tk-fail i`, `.tk-bar.tk-bar-off>u`) and carry a live class beside a dead one. **The first removal broke the file and the check caught it**: a line-based delete took the opening line of the multi-line `.tk-rul` rule and left its continuation and closing brace behind, 361 open braces against 362 close. Restored from git and done again brace-aware. `_page.css` is 680 lines from 686, **77 classes defined and 0 of them dead, 0 worn and undefined**, and all twelve kit pages render at 390 and 1280 with 0 scroll and 0 overflow. The original row: | `.tk-bar-off`, `.tk-brd`, `.tk-fail`, `.tk-ink-bar`, `.tk-rul` and `.tk-rulers` are declared in `ui-kit/_page.css` and worn on none of the ten kit pages. They are the residue of two replacements: the declaration bars that became tables on 2026-08-08, and a ruler specimen that never shipped. Six of 83 is small and it is the same rot the file exists to avoid: **the stylesheet this one replaced reached 854 lines of which 800 painted classes nothing rendered.** Not removed in the same pass that found it, deliberately: the first count said seven and included `.tk-onlight`, which has no rule at all and was matched inside a COMMENT, so the number is only trustworthy because it was taken again with comments stripped. A deletion made on the first reading would have removed a line of prose. Owner: Stage 09 (Design System) |
 
+
+---
+
+## Found by the component pages (3)
+
+Design System, 2026-08-08. Seven in-depth pages written for the remaining atoms, each one measured
+in a browser at 390 and 1280 and in both pointer branches before a word of it was written. All three
+rows below are things the level page could not have shown, which is the argument for the pages
+standing up on its own.
+
+| # | Item | Source | The reading |
+|---|---|---|---|
+| 54 | **365 account-menu rows stand 33 tall with a finger on them** | `ui-kit/navitem.html`, the floor table | `.nav-row` measures **194x33 at 390 and at 1280, with a mouse and with a finger**, on 73 screens. It clears WCAG 2.5.8 AA at 24x24 and fails 2.5.5 AAA and this product's own standard at 44. `.nav-item` is not one of the fourteen families in the one touch floor in `components/base.css`, and that was not a decision: the floor was assembled from the six per-file lists that existed on the day, and no file had ever written one for this atom. **Not a one-line fix**, which is why it is a row: five rows at 44 make the account dropdown 55px taller, and that is a layout decision about a panel. The other two faces are already above the floor by accident rather than by rule, the slot at 55 and the notification row at 49. Owner: Stage 10 (Responsive) |
+| 55 | **The switch is 40x24, which clears 24x24 with nothing to spare and fails 44** | `ui-kit/toggle.html`, the box table | Three placements on three screens, all of them Reverse sort on Favorites. The height was 22 until 2026-08-05 and was raised to 24 to clear 2.5.8; **44 was never argued either way**, and `.toggle` is not in the touch floor for the same reason as item 54. A switch is a target you hit rather than one you aim at, so the question is real: is a 24px track reachable with a thumb. The fix is the control's own box and not an invisible pseudo-element, because a hit area no measurement in this repository can see is a fix nobody can check. Owner: Stage 10 (Responsive), with 50 and 54 |
+| 56 | **Two skeleton hosts of 90 do not declare themselves decoration** | `ui-kit/skeleton.html`, the aria reading | Measured across the 19 screens that carry a mark: **19 of 19 carry `aria-busy`** and the two lists are the same 19 files, but **88 of 90 hosts carry `aria-hidden="true"`**. The two that do not are one each on `event-detail-loading.html` and `event-detail-logged-out-loading.html`, so those marks reach the accessibility tree as an empty `<article>`. Two attributes in two trees, grey first. It is the same two screens that hold the six marks measuring 0x0 at 390, and those six are correct: they stand inside `.bet-panel`, which is `display:none` below 760. Owner: Stage 09 (Design System) |
 
 ---
 

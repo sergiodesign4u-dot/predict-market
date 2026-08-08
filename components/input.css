@@ -2,7 +2,7 @@
    Component: input. Classes: .addr, .amount-input, .amount-row, .field-label.
 
    Reads: --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --focus-ring, --glow-focus, --line-brass-strong, --opacity-disabled, --result-won, --text-muted, --text-primary
-   Stand:  ui-kit/vitrine.html#input
+   Stand:  ui-kit/input.html, and ui-kit/vitrine.html#input for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

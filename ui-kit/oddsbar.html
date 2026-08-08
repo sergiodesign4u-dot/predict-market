@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: odds bar</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Odds bar</h1>
+    <p>Level 1, and <b>the only component in the system that is not a control</b>. Nobody can point
+    at it, press it or reach it with a keyboard: it states one number about a market and the number
+    is the whole component. <b>72 placements on 21 painted screens</b>, two faces. Measured
+    2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">72 placements</span>
+      <span class="tk-badge">2 faces</span>
+      <span class="tk-badge">0 states</span>
+      <span class="tk-badge">63 of 72 do not exist in the source</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ why a page -->
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and the reason for it stay on
+    <a href="vitrine.html#oddsbar">the atoms page</a>. This page holds what the shelf has no room
+    for, and for this component that turned out to be a finding about the INSTRUMENT rather than
+    about the drawing. The drawing is four rules long.</p>
+  </section>
+
+  <!-- =========================================================== the instrument -->
+  <section class="tk-sec" id="instrument">
+    <h2 data-n="2">The count that was wrong, and what it was wrong about</h2>
+    <p class="tk-note">A census that reads the HTML files and counts elements carrying a class
+    reports this:</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>reading the source</th><th>reading the page</th></tr></thead>
+        <tbody>
+          <tr><td><code>.oddsbar</code></td><td><b>0</b>, on 0 screens</td><td><b>63</b>, on 12 screens</td></tr>
+          <tr><td><code>.track</code></td><td><b>114</b>, on 105 screens</td><td><b>72</b>, on 21 screens</td></tr>
+          <tr><td><code>.lbls</code></td><td>105, on 105 screens</td><td>63, on 12 screens</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>Every number in the left column is wrong, and each one is wrong in a
+    different direction.</b> The feed builds its cards at run time, so the markup of a card bar lives
+    inside a string in a page script: <code>bar.innerHTML = '&lt;div class="track"&gt;...'</code>.
+    A reader that scans for tags finds that string on all 105 screens that carry the feed script and
+    counts one track per FILE, whether the screen draws nine of them or none. And the bar itself is
+    never written as an attribute at all, because the script says
+    <code>bar.className = 'oddsbar'</code>, so the class the entire component is keyed to reads as
+    zero placements in a product that wears 63.</p>
+    <p class="tk-note"><b>The fact was found a day before the numbers were.</b> Building
+    <a href="vitrine.html#oddsbar">the atoms page</a> on 2026-08-07 turned up that this component
+    exists in no screen's markup, and that is written into the kit's own plan as one of the two
+    things a RENDERED page caught that the census and the inventory had both missed. What today's
+    reading adds is the size of the error: not that a count was unreliable, but that <b>the three
+    numbers a reader would have trusted are wrong by 63, by 42, and by 84 screens</b>.</p>
+    <p class="tk-note"><b>And the same instrument was right about everything else.</b>
+    <a href="button.html">Button</a>, <a href="iconbtn.html">icon button</a> and
+    <a href="chip.html">chip</a> were all re-counted in a browser on this pass and came back
+    identical to the character: 902, 1,361 and 1,679. <b>An instrument that agrees three times is not
+    a verified instrument</b>, it is an instrument that has not yet met the case it cannot see.</p>
+  </section>
+
+  <!-- ============================================================== the faces -->
+  <section class="tk-sec" id="faces">
+    <h2 data-n="3">The two faces</h2>
+
+    <p class="tk-subh">card, 63 placements, a 4px reading under a question</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="oddsbar"><div class="track"><span class="fill" style="width:64%"></span></div>
+          <div class="lbls"><span class="l-yes">YES 64%</span><span class="l-no">NO 36%</span></div></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="oddsbar"><div class="track"><span class="fill" style="width:64%"></span></div>
+          <div class="lbls"><span class="l-yes">YES 64%</span><span class="l-no">NO 36%</span></div></div>
+      </div>
+    </div>
+
+    <p class="tk-subh">detail, 9 placements, an 8px reading with a groove</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="ed-oddsbar"><span class="track"><span class="fill" style="width:38%"></span></span></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="ed-oddsbar"><span class="track"><span class="fill" style="width:38%"></span></span></div>
+      </div>
+    </div>
+
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>worn</th><th>at 390</th><th>at 1280</th><th>what it adds</th></tr></thead>
+        <tbody>
+          <tr><td>card</td><td>63</td><td>267x4</td><td>305x4 and 422x4</td><td>a label row under it, 267x18</td></tr>
+          <tr><td>detail</td><td>9</td><td>146x8</td><td><b>408x8</b></td><td>an inset shade at the top edge, and no labels</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>Two widths at 1280 and one at 390</b>, because the feed is a single column
+    on a phone and a grid above it, and the grid is not the same width on every screen that carries
+    one. The height is the face and does not move.</p>
+    <p class="tk-note">The detail bar is twice as tall and drops the labels, and both follow from the
+    surface: on a card the bar is a glance at a market you have not opened, and on the detail screen
+    the same number is already written out in full beside it, so a second copy under the bar would be
+    the page saying it twice.</p>
+  </section>
+
+  <!-- =============================================================== the datum -->
+  <section class="tk-sec" id="datum">
+    <h2 data-n="4">The fill is a DATUM, and it stands on the element</h2>
+    <p class="tk-note">Every fill in the product carries <code>style="width:64%"</code>, and the
+    specimens above carry it too. The root rule bans <code>style=</code> and names three things that
+    are not styling; <b>this one line is two of the three at once</b>: it is a datum, and on 63 of the
+    72 it is a value the page script writes at run time.</p>
+    <p class="tk-lab tk-bad"><b>A percentage is not a decision the system is allowed to make.</b>
+    <i>A market at 64 per cent has to draw at 64 per cent, so the only place the number can live is
+    the element it is a fact about.</i></p>
+    <p class="tk-note">Nothing else about it is on the element. The track's colour, the fill's colour,
+    the glow around the fill, the corner and the height are all rules, and all of them read a role.</p>
+  </section>
+
+  <!-- =============================================================== the roles -->
+  <section class="tk-sec" id="roles">
+    <h2 data-n="5">Green and red here are OUTCOME, and the label is TEXT</h2>
+    <p class="tk-note"><code>DESIGN.md</code> decides it once for the whole system: <b>green and red
+    are outcome semantics, YES and NO, and brass is the brand</b>. This component is the plainest
+    statement of that rule in the product. The track is NO and the fill is YES, and neither colour is
+    saying good or bad about anything.</p>
+    <p class="tk-why"><b>The label takes a different role from the bar it labels, and that is a
+    contrast argument rather than a taste one.</b> The bar is a 4px surface and answers to 3:1. The
+    labels are 12px bold text and answer to 4.5:1, and the fill role does not carry that on either
+    ground. So the text reads <code>--outcome-yes-text</code> and
+    <code>--outcome-no-text</code>. Both were changed, <b>including the one that passes on graphite
+    today</b>: one job, one role, or the component reads a different token per theme for the same
+    word.</p>
+  </section>
+
+  <!-- =============================================================== nothing -->
+  <section class="tk-sec" id="states">
+    <h2 data-n="6">No states, and no movement either</h2>
+    <p class="tk-note">No hover, no press, no focus, no disabled, <b>and that is correct rather than
+    missing</b>: there is nothing here to point at. The card around it is the control and the bar is
+    part of what the card says.</p>
+    <p class="tk-note"><b>What a static page cannot show is that nothing moves.</b> Odds change, and
+    in the product the fill is set once when the card is built and never animated. A transition on
+    the width would be a decision about a live market feed that does not exist yet, so there is no
+    rule for it and this page is not the place to invent one.</p>
+  </section>
+
+  <!-- ================================================================== rule -->
+  <section class="tk-sec" id="rule">
+    <h2 data-n="7">The rule</h2>
+    <p class="tk-note"><b>A datum goes on the element and everything around it is a rule.</b> That
+    line is the whole component: one inline value, four rules, and no third place where a percentage
+    could be written down.</p>
+    <p class="tk-note"><b>A colour that means an outcome takes the outcome role, and text that
+    describes it takes the text role.</b> Same word, two jobs, two roles, because a 4px band and a
+    12px label do not have the same floor to clear.</p>
+  </section>
+
+  <!-- ============================================================= anti-rule -->
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="8">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never count this component in the source.</b> <i>Its class is
+    assigned by a script, so a file-reading census reports 0 placements of a component the product
+    wears 63 times, and 114 tracks on 105 screens where 21 screens hold 72.</i></p>
+    <p class="tk-lab tk-bad"><b>Never give the fill the text's role.</b> <i>They are the same green
+    at a glance and they clear different floors, and the one that passes today passes on one theme
+    only.</i></p>
+    <p class="tk-lab tk-bad"><b>Never make it look like a control.</b> <i>A corner, an edge or a
+    hover would invite a tap that goes nowhere. The card is the target, and this is a reading printed
+    on it.</i></p>
+  </section>
+
+  <!-- ============================================================== closing -->
+  <section class="tk-sec" id="closing">
+    <h2 data-n="9">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="vitrine.html#oddsbar">the atoms page</a>.
+    The stylesheet: <code>components/oddsbar.css</code>, four rules and their arguments. The colour
+    decision: <code>DESIGN.md</code>. The card that holds the 63: <code>components/card.css</code>,
+    and the screen that holds the 9: <code>components/event-detail.css</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>

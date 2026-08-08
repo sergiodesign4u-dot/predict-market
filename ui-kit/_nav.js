@@ -17,11 +17,12 @@
    list hand-copied into 106 pages, 1,339 KB of it, and `wireframes` carries its
    own into 104, 1,247 KB. Neither has drifted, and neither could have stayed in
    step by hand: `_resync_sidebar.py` held them, and it was deleted too. The kit
-   had seven pages when this was written and has twelve now.
-   Twelve copies of one list would be twelve edits for every row, and the root rule says
+   had seven pages when this was written, twelve on 2026-08-08 and nineteen by
+   the end of the same day, on the way to 55.
+   Nineteen copies of one list would be nineteen edits for every row, and the root rule says
    a fact written twice will drift. So the list is written once, here, and no page
    of the stand declares any part of it. THE SENTENCE ABOVE HAS BEEN CORRECTED
-   TWICE ALREADY, which is the argument standing up on its own.
+   THREE TIMES ALREADY, which is the argument standing up on its own.
 
    THE STAND PAGE DECLARES NOTHING, not even its own name. It carries an empty
    `<aside class="sidebar" id="rmSidebar">` and loads this file.
@@ -61,35 +62,109 @@ window.KIT_NAV = [
     ]
   },
   {
-    /* A PAGE PER LEVEL, NOT PER COMPONENT. Forty pages of one component each
-       would be forty navigations to compare two chips. The level is the unit a
-       person reads, and it is where the shared rule lives. */
-    label: 'Components',
+    /* A LEVEL IS A SHELF AND A COMPONENT IS A PAGE, and the two answer different
+       questions. This panel said the opposite until 2026-08-08: "a page per
+       LEVEL, not per component, because forty pages of one component each are
+       forty navigations to compare two chips". THE REASON WAS RIGHT AND IT WAS
+       A REASON FOR THE SHELF, not against the pages. Comparing ten atoms is
+       what a level page is for, and it keeps that job; taking ONE apart needs
+       room a shelf does not have, because a shelf gives every component one
+       specimen and one rule.
+
+       THE COUNTED THRESHOLD IS DEAD, and one component killed it. It used to
+       say: a page of its own is earned by being one of the largest families,
+       902, 1,361 and 1,679 placements, and "a component with one face does not
+       get a page here, however often it is worn". Then `toast` was written:
+       FOUR placements on ONE screen, and its page carries where the boundary
+       with its own dismiss runs, why its error face is not red, and the fact
+       that most of the component is a behaviour no static page can draw. None
+       of that is a function of how often it is worn. `toggle` settles it: 3
+       placements, and FOUR of its five faces have no placement in the product
+       at all, so a stand built by walking screens would show one grey oval and
+       call it the component.
+
+       SO EVERY COMPONENT GETS A ROW HERE, and a row with no page renders as a
+       <span> with a badge, which is the whole reason this panel lists things
+       that do not exist yet. The level page is the first row of its own group,
+       named "All ...", because it is a page like the others and the group would
+       otherwise have a title nobody could click. */
+    label: 'Atoms',
     items: [
-      { label: 'Atoms',     page: 'vitrine.html',   done: true,  note: '10' },
-      { label: 'Molecules', page: 'molecules.html', done: true,  note: '14' },
-      { label: 'Organisms', page: 'organisms.html', done: true,  note: '13' },
-      { label: 'Patterns',  page: 'patterns.html',  done: true,  note: '6' }
+      { label: 'All atoms',   page: 'vitrine.html', done: true, note: '10' },
+      { label: 'Button',      page: 'button.html',  done: true, note: '902' },
+      { label: 'Icon button', page: 'iconbtn.html', done: true, note: '1,361' },
+      { label: 'Chip',        page: 'chip.html',    done: true, note: '1,679' },
+      { label: 'Nav item',    page: 'navitem.html', done: true, note: '995' },
+      { label: 'Odds bar',    page: 'oddsbar.html', done: true, note: '72' },
+      { label: 'Input',       page: 'input.html',   done: true, note: '122' },
+      { label: 'Yes / No',    page: 'yesno.html',   done: true, note: '116' },
+      { label: 'Toast',       page: 'toast.html',   done: true, note: '4' },
+      { label: 'Skeleton',    page: 'skeleton.html',done: true, note: '482' },
+      { label: 'Toggle',      page: 'toggle.html',  done: true, note: '3' }
     ]
   },
   {
-    /* AND THE THREE THAT EARNED A PAGE OF THEIR OWN, which is not an exception to
-       the rule above but the thing it leaves out. A level page gives every
-       component ONE specimen and one rule, and for eight of the ten atoms that is
-       the whole story. It is not the story for a family that paints five emphases
-       against four sizes and is worn in 22 distinct forms: a single box answers
-       neither of the two questions a person actually arrives with, which emphasis
-       and which size.
-       THE THRESHOLD IS COUNTED AND NOT FELT. These three are the product's three
-       largest control families, 902, 527 and 466 placements, and each carries more
-       faces than a level page has room to stand side by side. The fourth largest
-       is a long way behind them. A component with one face does not get a page
-       here, however often it is worn. */
-    label: 'In depth',
+    /* A PLANNED ROW STILL CARRIES ITS PAGE NAME, which is the name the file will
+       have and not a guess: `row()` never reads it while `done` is false, and
+       writing it now is how the next person building one knows what to call it.
+
+       THE LAST THREE OF THIS GROUP HAVE NO SHELF SECTION EITHER. `account`,
+       `cookie-consent` and `toc` are three of the six that `ui-kit/docs/
+       inventory.md` calls "outside the core, unmeasured": they do not stand on
+       the five anchor screens, so "holds nothing" is not a reading anybody has
+       taken about them. They get a level when the screens that carry them are
+       walked, and until then a row that says so is more honest than an absence. */
+    label: 'Molecules',
     items: [
-      { label: 'Button',      page: 'button.html',  done: true,  note: '902' },
-      { label: 'Icon button', page: 'iconbtn.html', done: true,  note: '1,361' },
-      { label: 'Chip',        page: 'chip.html',    done: true,  note: '1,679' }
+      { label: 'All molecules', page: 'molecules.html', done: true, note: '14' },
+      { label: 'Trust bar',     page: 'trustbar.html',   done: false, next: true },
+      { label: 'Market',        page: 'market.html',     done: false },
+      { label: 'Comments',      page: 'comments.html',   done: false },
+      { label: 'Notice',        page: 'notice.html',     done: false },
+      { label: 'Filters',       page: 'filters.html',    done: false },
+      { label: 'Bottom nav',    page: 'bottomnav.html',  done: false },
+      { label: 'Category nav',  page: 'catnav.html',     done: false },
+      { label: 'Related',       page: 'related.html',    done: false },
+      { label: 'State block',   page: 'state-block.html',done: false },
+      { label: 'Position',      page: 'position.html',   done: false },
+      { label: 'Quick amounts', page: 'quick.html',      done: false },
+      { label: 'Options',       page: 'options.html',    done: false },
+      { label: 'SEO plate',     page: 'seo-plate.html',  done: false },
+      { label: 'Load more',     page: 'loadmore.html',   done: false },
+      { label: 'Account',       page: 'account.html',    done: false },
+      { label: 'Cookie consent',page: 'cookie-consent.html', done: false },
+      { label: 'Contents',      page: 'toc.html',        done: false }
+    ]
+  },
+  {
+    label: 'Organisms',
+    items: [
+      { label: 'All organisms', page: 'organisms.html',    done: true, note: '13' },
+      { label: 'Header',        page: 'header.html',       done: false },
+      { label: 'Footer',        page: 'footer.html',       done: false },
+      { label: 'Dialog',        page: 'dialog.html',       done: false },
+      { label: 'How it works',  page: 'hiw-dialog.html',   done: false },
+      { label: 'Tabs',          page: 'tabs.html',         done: false },
+      { label: 'Event detail',  page: 'event-detail.html', done: false },
+      { label: 'Bet panel',     page: 'betpanel.html',     done: false },
+      { label: 'Bets table',    page: 'bets-table.html',   done: false },
+      { label: 'Chart',         page: 'chart.html',        done: false },
+      { label: 'Card',          page: 'card.html',         done: false },
+      { label: 'Hero',          page: 'hero.html',         done: false },
+      { label: 'Feed',          page: 'feed.html',         done: false },
+      { label: 'Profile',       page: 'profile.html',      done: false }
+    ]
+  },
+  {
+    label: 'Patterns',
+    items: [
+      { label: 'All patterns',  page: 'patterns.html',     done: true, note: '6' },
+      { label: 'Action bar',    page: 'action-bar.html',   done: false },
+      { label: 'Browse shell',  page: 'browse-shell.html', done: false },
+      { label: 'Card grid',     page: 'card-grid.html',    done: false },
+      { label: 'Detail shell',  page: 'detail-shell.html', done: false },
+      { label: 'List head',     page: 'list-head.html',    done: false },
+      { label: 'Position list', page: 'position-list.html',done: false }
     ]
   },
   {
@@ -127,8 +202,9 @@ window.KIT_NAV = [
     var file = (location.pathname.split('/').pop() || 'overview.html');
     /* The tally counts STAND PAGES, so the document groups are out of it and
        overview.html, which is not a row of any group, is in it. Counting the four
-       reports as pages would make it 15 of 16 and mean nothing: a report is done
-       or it does not exist. */
+       reports as pages would make it 23 of 59 instead of 19 of 55 and mean less
+       than either: a report is done or it does not exist, so it can only ever add
+       the same number to both sides. */
     var total = 1, done = 1;
     window.KIT_NAV.forEach(function (g) {
       if (g.kind === 'doc') return;

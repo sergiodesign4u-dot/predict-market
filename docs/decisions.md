@@ -44,6 +44,99 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - A level is a shelf and a component is a page, and the atom shelf now has ten pages behind it
+
+**The rule this kit was rebuilt under said the opposite**, in `CLAUDE.md` and in `ui-kit/_nav.js`:
+*a page per LEVEL, not per component, because forty pages of one component each are forty
+navigations to compare two chips*. Three components had been let past it on 2026-08-08 under a
+counted threshold: the product's three largest control families, 902, 1,361 and 1,679 placements,
+and the comment in `_nav.js` said out loud that **a component with one face does not get a page
+here, however often it is worn**.
+
+**The reason was right and it was a reason for the SHELF, not against the pages.** Comparing ten
+atoms is what a level page is for and it keeps that job. Taking ONE apart needs room a shelf does not
+have, because a shelf gives every component one specimen and one rule. The two answer different
+questions, and the old rule read one of them as an argument against the other.
+
+**The counted threshold is dead, and two components killed it.**
+
+- **`toast`: four placements on one screen**, the smallest inventory in the product. Its page carries
+  where the boundary with its own dismiss runs (one declaration stayed, `flex:0 0 auto`, a fact about
+  a two-item flex row), why the error face is not red, and the fact that most of the component is a
+  behaviour no static page can draw. None of that is a function of how often it is worn.
+- **`toggle`: three placements, and FOUR of its five faces have no placement anywhere.** Every
+  `.toggle` in `ui-visual/` is `aria-checked="false"` and none is disabled, so the ON face, the ON
+  hover, the ON press and the disabled face exist only in the stylesheet. **A stand built by walking
+  screens would show one grey oval and call it the component.**
+
+### What was written
+
+Seven pages, one per remaining atom, so the atom shelf is now ten components with ten pages:
+`navitem`, `oddsbar`, `input`, `yesno`, `toast`, `skeleton`, `toggle`. Every number in them was read
+in a browser at 390 and at 1280 on 2026-08-08, dialogs forced open, and re-read with touch emulation
+on where a pointer branch was in question.
+
+`ui-kit/_nav.js` was restructured to match: the `Components` group and the `In depth` group are gone,
+and there is a group per LEVEL whose first row is the level page itself, named `All atoms` and so on.
+**Every component in the system now has a row**, done or not, because a row with no page renders as a
+`<span>` with a badge and that is the whole reason the panel lists things that do not exist yet.
+**19 of 55 stand pages written**, from 12 of 12, which is the first honest denominator the panel has
+carried. The three existing component pages had their opening section rewritten, because each one
+argued for itself against a rule that no longer holds.
+
+### The instrument was wrong once, and this is the entry that records it
+
+**`oddsbar` cannot be counted in the source, and a file-reading census said 0.** The feed builds its
+cards at run time, so the markup lives in a string in a page script and the bar's class is assigned
+with `bar.className = 'oddsbar'`, never as an attribute. A census that scans HTML files reported
+**0 placements of a component the product wears 63 times**, and **114 tracks on 105 screens** where
+the DOM holds 72 on 21, because one line of JavaScript is counted once per file whether the screen
+draws nine bars or none.
+
+**The FACT was already known and the SIZE of it was not.** Building `vitrine.html` on 2026-08-07
+turned up that this component exists in no screen's markup, and `ui-kit/CLAUDE.md` records it as one
+of two things a rendered page caught that the census and the inventory had both missed. What was
+never taken is what the wrong numbers actually were, so the component's own page now carries them
+side by side: 0 against 63, 114 against 72, 105 screens against 21.
+
+The same instrument was right about `button`, `iconbtn` and `chip`: all three counts were re-taken in
+a browser on this pass and came back identical to the character, 902, 1,361 and 1,679. **An
+instrument that agrees three times is not a verified instrument, it is an instrument that has not yet
+met the case it cannot see.** The three existing pages keep their numbers because the numbers held.
+
+**A second instrument correction, in the opposite direction.** `skeleton.css` records that 52 of 482
+marks once drew at zero size. Re-measured today: **0 of 482 at 1280, and 6 of 482 at 390** - and the
+six are correct. They stand inside `.bet-panel`, whose computed display is `none` below 760, because
+the panel is the desktop face of the bet control and the sheet is the phone one. The mirror case
+proves it: **16 of the trader's dock buttons read 0x0 at 1280** and nothing is wrong with them
+either. So the criterion is not *is the box zero*, it is **is the box zero while its host is on the
+screen**, which is the same shape as the touch-floor reading of the same day: a criterion the system
+answers CONDITIONALLY had its condition left unasserted.
+
+### What the pages found
+
+Three rows opened, 54, 55 and 56, and all three are things a level page could not have shown.
+**365 account-menu rows stand 194x33 with a finger on them**, at both widths, and `.nav-item` is not
+one of the fourteen families in the one touch floor. **The switch is 40x24**, which clears 2.5.8 with
+nothing to spare and fails 44, and nobody has ever argued 44 either way for it. **88 of 90 skeleton
+hosts declare themselves decoration**, and the two that do not are on the two detail loading screens.
+
+One finding needed no row and is worth keeping: **the `nav-row-stack` specimen is the only one on any
+of these pages that stands inside its container, and it had to.** Lifted out of `.notif-drop` the
+same markup renders 33 tall instead of 49, because the title and the detail take their
+`display:block` from the dropdown's file. The boundary those pages describe is therefore visible in
+the specimen rather than only stated in it.
+
+### Verified
+
+All 19 kit pages at 390 and 1280: **0 horizontal page scroll, 0 console errors, 0 broken links**, one
+active row per page and the correct one, every wide table scrolling inside its own container. Every
+specimen re-read for a real box and a real colour, because a specimen that renders as nothing is the
+failure mode this whole stand exists to avoid. The seven `Stand:` header lines in `components/` were
+repointed at the new pages, so all ten atoms name their own page and the shelf anchor beside it.
+
+---
+
 ## 2026-08-08 - The cookie row becomes the target, and the stand's stylesheet loses nine dead rules
 
 Two rows closed, 51 and 53, and the second one broke the file on the first attempt.

@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: skeleton</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Skeleton</h1>
+    <p>Level 1. A shape that stands where a thing will be. <b>482 marks in 90 hosts on 19 painted
+    screens</b>, three kinds, four widths, <b>and no states at all</b>. Measured 2026-08-08 in a
+    browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">482 marks</span>
+      <span class="tk-badge">3 kinds</span>
+      <span class="tk-badge">90 hosts</span>
+      <span class="tk-badge">0 states</span>
+      <span class="tk-badge">0 drawn at zero</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ why a page -->
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and the reason for it stay on
+    <a href="vitrine.html#skeleton">the atoms page</a>. What this page holds is the one thing this
+    component has taught the repository twice: <b>a mark that draws at 0x0 looks exactly like a mark
+    that is not there</b>, and the second lesson is that the reverse is also true.</p>
+  </section>
+
+  <!-- =============================================================== a shape -->
+  <section class="tk-sec" id="shape">
+    <h2 data-n="2">A mark is a SHAPE, so it needs a box before it needs a host</h2>
+    <p class="tk-note">Every rule in this file used to be scoped under
+    <code>.card.skeleton</code> or <code>.pos.skeleton</code>. The consequence was read across all
+    the painted screens on 2026-08-06: <b>52 of 482 marks drew at zero size</b>, carrying the fill
+    colour they had been given and occupying nothing.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>cause</th><th>what it measured</th></tr></thead>
+        <tbody>
+          <tr><td>Eight bars inside <code>section.ed-section</code> and <code>div.bp-inner</code> had no height rule at all, because neither host matched them</td><td>601x0 and 288x0</td></tr>
+          <tr><td>Twelve bars are <code>&lt;span class="sk-line"&gt;</code> inside <code>&lt;span class="sk-head"&gt;</code>, and an inline box ignores height and width</td><td>0x0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>One line fixed both, and <code>display</code> comes first in it on
+    purpose:</b> it is the property that decides whether the other two mean anything.
+    <code>.sk-line,.sk-thumb,.sk-btn{display:block;background:var(--bg-control)}</code> plus a height
+    on each kind. The markup could not be the fix, <b>because a painted screen has a grey twin frozen
+    since stage 04</b> and the two are compared by hand.</p>
+    <p class="tk-note"><b>The base rules win nothing.</b> Every scoped rule below them reaches the
+    same element with more classes, so a card mark and a position mark keep exactly the treatment
+    they had. What changed is only where nothing had applied.</p>
+  </section>
+
+  <!-- ========================================================== the correction -->
+  <section class="tk-sec" id="recount">
+    <h2 data-n="3">Read again today, and the instrument needed the correction this time</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>reading</th><th>marks at 0x0</th></tr></thead>
+        <tbody>
+          <tr><td>at 1280</td><td><b>0 of 482</b></td></tr>
+          <tr><td>at 390</td><td><b>6 of 482</b>, all six <code>sk-line</code> inside <code>div.bp-inner</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>The six are not a defect, and a sweep that only counts zeros cannot tell.</b>
+    They stand inside <code>.bet-panel</code>, whose computed display is <code>none</code> below
+    760px, because the panel is the desktop face of the bet control and the sheet is the phone one.
+    Measured the same way in the opposite direction: <b>16 of the trader's dock buttons read 0x0 at
+    1280</b>, for the mirror reason and with nothing wrong with them either.</p>
+    <p class="tk-note"><b>So the criterion is not "is the box zero", it is "is the box zero while its
+    host is on the screen".</b> That is the same shape as the touch-floor reading of 2026-08-08,
+    where a criterion the system answers CONDITIONALLY was measured without asserting its condition.
+    A zero measured inside a hidden ancestor is the measurement's own condition going unasserted.</p>
+  </section>
+
+  <!-- =============================================================== the kinds -->
+  <section class="tk-sec" id="kinds">
+    <h2 data-n="4">The three kinds, and the two hosts</h2>
+
+    <p class="tk-subh">the card host, 68 of the 90</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <article class="card skeleton" aria-hidden="true">
+          <div class="card-body">
+            <div class="top"><span class="sk-thumb"></span>
+              <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span></div>
+            <span class="sk-line w40"></span>
+            <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+            <span class="sk-line w60"></span>
+          </div>
+        </article>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <article class="card skeleton" aria-hidden="true">
+          <div class="card-body">
+            <div class="top"><span class="sk-thumb"></span>
+              <span class="sk-head"><span class="sk-line w80"></span><span class="sk-line w60"></span></span></div>
+            <span class="sk-line w40"></span>
+            <div class="sk-row"><span class="sk-btn"></span><span class="sk-btn"></span></div>
+            <span class="sk-line w60"></span>
+          </div>
+        </article>
+      </div>
+    </div>
+    <p class="tk-note">A thumbnail, a head of two lines, a line, a row of two buttons and a line.
+    <b>It is the card's own layout with every piece of content replaced by its box</b>, which is the
+    only way a loading state can promise what is coming without knowing it.</p>
+
+    <p class="tk-subh">the position host, 22 of the 90</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <article class="pos skeleton" aria-hidden="true"><div class="sk-line w70"></div><div class="sk-line w40"></div></article>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <article class="pos skeleton" aria-hidden="true"><div class="sk-line w70"></div><div class="sk-line w40"></div></article>
+      </div>
+    </div>
+    <p class="tk-note"><b>The position mark is the only one that is not flat</b>: it takes a
+    three-stop gradient across its width and a 6px corner, where the card mark is one colour and a
+    square end. Two hosts, two treatments, one atom, and the treatments are the hosts' because a row
+    in a list and a card are different materials.</p>
+
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>kind</th><th>marks</th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td><code>.sk-line</code></td><td>282</td><td>8 tall, 104 to 248 wide</td><td>8 tall, 122 to 614 wide</td></tr>
+          <tr><td><code>.sk-btn</code></td><td>132</td><td>130x32</td><td>148x32 and 207x32</td></tr>
+          <tr><td><code>.sk-thumb</code></td><td>68</td><td>56x56, and 72x72 on the detail head</td><td>56x56, and 72x72</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The four widths are a vocabulary, not a scale</b>:
+    <code>.w40</code> 100 marks, <code>.w60</code> 90, <code>.w80</code> 74, <code>.w70</code> 18.
+    They are percentages of the row, so the same four classes work in a 267px card and a 614px one,
+    and <b>nothing in this file carries a pixel width except the thumbnail</b>, which is a square.</p>
+  </section>
+
+  <!-- ============================================================== no states -->
+  <section class="tk-sec" id="states">
+    <h2 data-n="5">No states, no movement, and one thing that is missing on purpose</h2>
+    <p class="tk-note"><b>No hover, no press, no focus, no disabled</b>, and this is the only atom in
+    the system of which all four are true. Nothing can point at a mark, so there is nothing for it to
+    answer.</p>
+    <p class="tk-note"><b>And nothing shimmers.</b> A great many loading states in other products
+    animate a sweep across the mark. There is no such rule here, and it is worth saying out loud that
+    this is an absence rather than a decision: nobody has argued it either way, and adding it would
+    be a motion decision with <code>prefers-reduced-motion</code> attached to it.</p>
+    <p class="tk-why"><b>What DOES say "loading", to somebody who cannot see a grey box:</b> the
+    region is marked busy and the shapes declare themselves decoration. Measured: <b>19 of 19</b>
+    screens that carry a skeleton carry <code>aria-busy</code>, and the two lists are the same 19
+    files with no odd one in either direction. <b>Hosts: 88 of 90.</b></p>
+    <p class="tk-note"><b>The two without <code>aria-hidden</code> are one each on
+    <code>event-detail-loading</code> and <code>event-detail-logged-out-loading</code></b>, which are
+    also the two screens in the section above. A host that does not declare itself decoration reaches
+    the accessibility tree as an empty article. It is a two-attribute fix in both trees, grey first,
+    and it is a row rather than an edit made from this page. <code>docs/backlog.md</code> 56.</p>
+  </section>
+
+  <!-- ================================================================== rule -->
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>A shape gets its box from itself.</b> A host may say what a mark looks
+    like; it may not be the reason a mark has a size, because a mark with no size still carries a
+    colour and still looks like nothing at all.</p>
+    <p class="tk-note"><b>A skeleton is the layout with the content taken out.</b> Not a spinner, not
+    a box the size of the region: the same rows, the same rhythm, so nothing jumps when the content
+    lands.</p>
+    <p class="tk-note"><b>It is decoration and it declares that.</b> The shapes are hidden from
+    assistive technology and the region is marked busy.</p>
+  </section>
+
+  <!-- ============================================================= anti-rule -->
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never scope a shape to a host.</b> <i>Fifty-two marks drew at zero
+    because every rule they needed was written under a class two of their screens did not have.</i></p>
+    <p class="tk-lab tk-bad"><b>Never put a height on an inline box.</b> <i>Twelve of the fifty-two
+    were spans inside spans, carrying a colour into a box that ignores both of the properties that
+    would have given it one.</i></p>
+    <p class="tk-lab tk-bad"><b>Never report a zero without asking whether its host is on the
+    screen.</b> <i>Six marks read 0x0 at 390 today and all six are correct: they stand in the desktop
+    bet panel, which is display:none on a phone.</i></p>
+  </section>
+
+  <!-- ============================================================== closing -->
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="vitrine.html#skeleton">the atoms page</a>.
+    The stylesheet and the argument for the one line that fixed both causes:
+    <code>components/skeleton.css</code>. The hosts: <code>components/card.css</code> and
+    <code>components/position.css</code>. The loading screens themselves: nineteen of the 106 in
+    <code>ui-visual/</code>, and their grey twins in <code>wireframes/</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>

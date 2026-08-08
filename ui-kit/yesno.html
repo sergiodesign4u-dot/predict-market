@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: yes / no</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Yes / No</h1>
+    <p>Level 1, <b>and the PAIR is the control</b>. Two halves that state one market's two sides and
+    cannot exist apart: there is no such thing as a YES in this product without the NO beside it.
+    <b>116 pairs and 232 halves on 14 painted screens, plus 44 trader picks on 10</b>. Measured
+    2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">116 pairs</span>
+      <span class="tk-badge">232 halves</span>
+      <span class="tk-badge">4 faces</span>
+      <span class="tk-badge">44 tall, unconditionally</span>
+      <span class="tk-badge">0 disabled</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ why a page -->
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and the reason for it stay on
+    <a href="vitrine.html#yesno">the atoms page</a>. What needs the room here is that this atom has
+    <b>two families of face, not two faces</b>: a SPECTATOR's pair that states a market, and a
+    TRADER's chooser that states a choice. They never appear together, they are drawn from opposite
+    ends of the palette, and the shelf can only show one of them.</p>
+    <p class="tk-note">And like <a href="chip.html">chip</a>, <b>a single specimen misleads
+    here</b>: half a pair is not a small version of the control, it is the half that carries no
+    information.</p>
+  </section>
+
+  <!-- ============================================================= spectator -->
+  <section class="tk-sec" id="spectator">
+    <h2 data-n="2">The spectator's pair: it states the market</h2>
+
+    <p class="tk-subh">full, 64 placements, on a card and in the hero</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+      </div>
+    </div>
+
+    <p class="tk-subh">compact, 42 placements, in a card's option row</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span>
+      </div>
+    </div>
+    <p class="tk-note">Same two colours, 11px instead of 12, and it is a
+    <code>&lt;span&gt;</code> because it stands inline in a row of text. <b>Nothing else changes,
+    including the height.</b></p>
+
+    <p class="tk-subh">the outcome list, 10 placements, and here it is a CHOICE</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="opt-list">
+          <div class="opt-row sel"><span class="opt-name">JD Vance</span><span class="opt-prob">41%</span><span class="yesno compact"><button type="button" class="sel">YES</button><button type="button">NO</button></span></div>
+          <div class="opt-row"><span class="opt-name">Gavin Newsom</span><span class="opt-prob">28%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+        </div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="opt-list">
+          <div class="opt-row sel"><span class="opt-name">JD Vance</span><span class="opt-prob">41%</span><span class="yesno compact"><button type="button" class="sel">YES</button><button type="button">NO</button></span></div>
+          <div class="opt-row"><span class="opt-name">Gavin Newsom</span><span class="opt-prob">28%</span><span class="yesno compact"><button type="button">YES</button><button type="button">NO</button></span></div>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note">Same class, different ground: on a multi-outcome market the pair rests on the
+    quiet control colour with a SOFT outcome tint, and the chosen side goes solid.
+    <b>Forty-two of the 52 compact pairs are the first kind and ten are this one</b>, and the
+    difference is not a modifier: it is the list around them, because in a list of candidates a pair
+    is something you answer rather than something you read.</p>
+  </section>
+
+  <!-- =========================================================== missing colour -->
+  <section class="tk-sec" id="missing">
+    <h2 data-n="3">A side is a POSITION IN THE PAIR, and the day it was a fact about a link</h2>
+    <p class="tk-note">Look at the two markups. On a card the halves are wrapped:
+    <code>&lt;a&gt;&lt;button&gt;YES&lt;/button&gt;&lt;/a&gt;</code>, because the whole card links to
+    the event. In an outcome list they are bare <code>&lt;button&gt;</code>s, because there is nowhere
+    to go.</p>
+    <p class="tk-why"><b>Every colour rule used to hang off <code>&gt; a</code>.</b> So a pair whose
+    buttons are not inside an anchor got no <code>color</code> from anywhere and fell back to the
+    User Agent's <code>buttontext</code>: near black on a graphite card, <b>1.42:1, on four
+    screens</b>. Same shape as the 992 links that rendered in the browser's blue, and the same
+    sentence covers both: <b>A MISSING COLOUR IS A COLOUR</b>. A component has to say what it is
+    whatever markup it stands in.</p>
+    <p class="tk-note">Every selector is written twice now,
+    <code>&gt; a:first-of-type button</code> and <code>&gt; button:first-of-type</code>, and the pair
+    of them is what the sentence in the heading means.</p>
+  </section>
+
+  <!-- =============================================================== trader -->
+  <section class="tk-sec" id="trader">
+    <h2 data-n="4">The trader's chooser: it states the choice</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">64%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">36%</span></button></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">64%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">36%</span></button></div>
+      </div>
+    </div>
+    <p class="tk-note"><b>It rests on the system's quiet ground and not in green and red</b>, and
+    <code>components/tokens.css</code> wrote the reason beside the token it is not using: the tinted
+    fill is "the tinted YES button (spectator, not trader)". A side pressed in green would be
+    inventing a colour the control does not have <b>and telling a person the side is chosen before it
+    is</b>.</p>
+    <p class="tk-note">Two faces, and they never coexist: <code>.yesno-pick</code> in the panel and
+    the sheet, <code>.yesno-pick-bar</code> in the sticky dock below 760. Measured, each is absent
+    where the other stands: <b>16 picks read 0x0 at 390 and 16 bars read 0x0 at 1280</b>. Four more
+    are <code>&lt;span&gt;</code>s rather than buttons, on the two loading screens, where the shape of
+    the control stands in for the control.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>worn</th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td><code>.yesno-pick</code>, in the sheet</td><td>8</td><td>166x71</td><td>256x71</td></tr>
+          <tr><td><code>.yesno-pick</code>, in the desktop panel</td><td>16</td><td>0x0</td><td>140x71</td></tr>
+          <tr><td><code>.yesno-pick-bar</code>, in the dock</td><td>16</td><td>90x51 and 174x51</td><td>0x0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>The chosen side is ONE answer at both widths, and it was two until
+    2026-08-06.</b> The panel and the option list filled it solid; the dock bar used a strong fill
+    with a lit ink. Both cleared the contrast floor and <b>no file said why the same control should
+    differ at two widths when the bar IS the panel below 760</b>. Two of the three placements were
+    solid, and the third is now: a person choosing a side on a phone and a person choosing it on a
+    desktop are choosing the same thing.</p>
+  </section>
+
+  <!-- =============================================================== press -->
+  <section class="tk-sec" id="press">
+    <h2 data-n="5">Three press mechanisms, and this control needed the third one invented</h2>
+    <p class="tk-note">The system's neutral press settles a control onto <code>--bg-pressed</code>.
+    <b>On a filled outcome side that would lie</b>: hold a green YES down, the outcome colour leaves
+    under the finger, and it reads as "it let go", which is the opposite of what holding YES
+    means.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>surface</th><th>how it goes down</th></tr></thead>
+        <tbody>
+          <tr><td>a quiet control</td><td>settles onto <code>--bg-pressed</code>, one step deeper in both themes</td></tr>
+          <tr><td>a brass gradient</td><td>reverses its own angle</td></tr>
+          <tr><td><b>a filled colour</b></td><td><b>goes down by DEPTH</b>: an inset shade at the top edge, and the ink keeps the exact ground it was measured on</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>The third one exists because of a number with 0.14 of room in it.</b>
+    <code>--text-on-no</code> over <code>--outcome-no</code> is 4.64:1, which is the 4.5 floor with
+    0.14 to spare. Pressing it by stepping the ground down through its own darker role spends more
+    than that at every strength a person could see: 92 per cent is already 4.48:1, 82 per cent is
+    4.29:1, <b>and a mix small enough to pass is a mix nobody notices</b>. The YES side had the room
+    and was deliberately NOT shipped alone, because a YES that darkens beside a NO that does not
+    reads as a broken NO.</p>
+    <p class="tk-note">The unfilled sides take the ordinary press, and both are restated rather than
+    left to the hover, <b>because a touch screen never hovers</b>: on a phone the pressed side would
+    otherwise keep its rest edge.</p>
+  </section>
+
+  <!-- =============================================================== floor -->
+  <section class="tk-sec" id="floor">
+    <h2 data-n="6">The boxes, and the one axis that is short</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>halves</th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>full</td><td>128</td><td>130x44, and 147x44 in the hero</td><td>148x44 and 207x44</td></tr>
+          <tr><td>compact</td><td>84</td><td>46x44 and <b>43x44</b></td><td>46x44 and <b>43x44</b></td></tr>
+          <tr><td>outcome list</td><td>20</td><td>46x44 and <b>43x44</b></td><td>46x44 and <b>43x44</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>44 tall everywhere, with a mouse and with a finger, at both widths</b>, and
+    none of it comes from the touch floor in <code>base.css</code>: <code>.yesno button</code> writes
+    <code>min-height:var(--control-44)</code> unconditionally. A media block used to restate that
+    inside a 640px query, which read as <i>the target is a mobile concern</i>. <b>It is not</b>, and
+    the block was deleted rather than corrected.</p>
+    <p class="tk-note"><b>The 43 is the word NO.</b> It measures 42.7 wide, so it stands 44 tall and
+    under 44 across, and it is one of the 212 targets in that shape across the product. A word's box
+    comes from the word, and widening every one of them is a layout decision about six components
+    rather than a floor. <code>docs/backlog.md</code> 50.</p>
+  </section>
+
+  <!-- =============================================================== absent -->
+  <section class="tk-sec" id="absent">
+    <h2 data-n="7">What has no rule, and why that is the honest answer</h2>
+    <p class="tk-note"><b>No disabled state.</b> 241 pairs across all three trees and not one of them
+    is disabled: there is no closed-market screen that greys the pair. A rule for it would be a guess
+    about a screen that does not exist, and it would be written in the one place nobody would think
+    to check when the screen is drawn.</p>
+    <p class="tk-note"><b>No focus rule either, and this one is a positive reading rather than a
+    gap.</b> <code>base.css</code> draws the ring once and <code>outline-offset</code> puts it 2px
+    OUTSIDE the button, so even on the filled green and the filled red the ring stands on the row
+    behind the control. The ground it has to survive is the card, which it already does.</p>
+  </section>
+
+  <!-- ================================================================== rule -->
+  <section class="tk-sec" id="rule">
+    <h2 data-n="8">The rule</h2>
+    <p class="tk-note"><b>The pair is the control.</b> Not two buttons that happen to sit together:
+    one thing with two sides, which is why every selector here is positional and why nothing on this
+    page shows one half by itself.</p>
+    <p class="tk-note"><b>Green and red are the OUTCOME and never an opinion.</b> A spectator's pair
+    states which side the market is on. A trader's chooser states which side YOU are on, and until
+    you have chosen it has no outcome colour at all.</p>
+    <p class="tk-note"><b>A press is paid for out of whatever the surface has left.</b> Where the
+    contrast is spent, the depth pays.</p>
+  </section>
+
+  <!-- ============================================================= anti-rule -->
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="9">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never hang a colour off the markup around the control.</b> <i>Every
+    colour here once hung off <code>&gt; a</code>, and the pairs that are not wrapped in a link
+    rendered at 1.42:1 on four screens.</i></p>
+    <p class="tk-lab tk-bad"><b>Never fill a trader's side before it is chosen.</b> <i>It tells a
+    person they have committed to something they have not.</i></p>
+    <p class="tk-lab tk-bad"><b>Never ship half a pair's state.</b> <i>The YES side had the contrast
+    for a darkening press and the NO side did not, and a YES that darkens beside a NO that does not
+    reads as a broken NO.</i></p>
+    <p class="tk-lab tk-bad"><b>Never write a target inside a width query.</b> <i>A finger is not a
+    mobile concern, and the deleted block said it was.</i></p>
+  </section>
+
+  <!-- ============================================================== closing -->
+  <section class="tk-sec" id="closing">
+    <h2 data-n="10">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="vitrine.html#yesno">the atoms page</a>.
+    The stylesheet and the argument for every value: <code>components/yesno.css</code>. The panel,
+    the sheet and the dock that hold the trader's face, plus the odds figure inside each side:
+    <code>components/betpanel.css</code>. The colour decision, once for both families:
+    <code>DESIGN.md</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>

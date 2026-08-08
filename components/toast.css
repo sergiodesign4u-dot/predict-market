@@ -2,7 +2,7 @@
    Component: toast. Classes: .toast, .toast-close, .toast-error, .toast-group, .toast-inner, .toast-msg.
 
    Reads: --bevel-notice, --bg-card-quiet, --bg-control, --border-hairline, --border-notice, --edge-groove-light, --shadow-ink, --text-brass, --text-primary
-   Stand:  ui-kit/vitrine.html#toast
+   Stand:  ui-kit/toast.html, and ui-kit/vitrine.html#toast for the level and its reason
    Stands on: 1 ui-visual screens (toasts.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

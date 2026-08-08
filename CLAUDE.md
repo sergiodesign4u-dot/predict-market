@@ -66,9 +66,13 @@ because it is a stance rather than a principle, and it is written once, here.
   outcome semantics (YES / NO), brass is the brand.**
 - **One vitrine.** `ui-kit/` shows the system to a person, and it was rebuilt by hand between
   2026-08-07 and 2026-08-08 from five anchor screens: event feed, event detail, active bets, deposit,
-  sign in, with their loading, empty, error and logged-out variants. **A page per LEVEL, not per
-  component**, because forty pages of one component each are forty navigations to compare two chips.
-  Nine pages, one route in `_nav.js`, 0 generators and 0 gates.
+  sign in, with their loading, empty, error and logged-out variants. **A level is a SHELF and a
+  component is a PAGE**, and the two answer different questions: comparing ten atoms is the shelf's
+  job, and taking one apart needs room a shelf does not have, because a shelf gives every component
+  one specimen and one rule. **The threshold is not a placement count** - `toast` has four and
+  `toggle` has three, and four of the toggle's five faces have no placement in the product at all, so
+  a stand built by walking screens would show one grey oval and call it the component. 19 of 55 pages
+  written, one route in `_nav.js`, 0 generators and 0 gates.
 
 ---
 

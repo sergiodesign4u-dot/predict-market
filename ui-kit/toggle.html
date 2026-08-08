@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: toggle</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Toggle</h1>
+    <p>Level 1. A track and a knob: one control that is either on or off and changes something the
+    moment it moves. <b>3 placements on 3 painted screens, and all three are the same switch</b>,
+    Reverse sort on Favorites, and all three are OFF. Measured 2026-08-08 in a browser, at 390 and
+    1280, in both pointer branches.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">3 placements</span>
+      <span class="tk-badge">40x24, everywhere</span>
+      <span class="tk-badge">5 faces</span>
+      <span class="tk-badge">4 of them never on screen</span>
+      <span class="tk-badge">1 role of its own</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ why a page -->
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">Three placements, and the best argument in the kit for a page</h2>
+    <p class="tk-why"><b>A shelf shows what the screens wear. This control's screens wear one face of
+    five.</b> Every placement in the product is <code>aria-checked="false"</code> and none is
+    disabled, so the ON face, the ON hover, the ON press and the disabled face have <b>zero
+    placements anywhere in <code>ui-visual/</code></b> and exist only in the stylesheet. A vitrine
+    built by walking the screens would show an off switch and stop, and the four rules that decide
+    what happens when somebody uses it would be invisible to everyone except a person reading
+    CSS.</p>
+    <p class="tk-note">The level and the reason for it stay on
+    <a href="vitrine.html#toggle">the atoms page</a>.</p>
+  </section>
+
+  <!-- =============================================================== the file -->
+  <section class="tk-sec" id="file">
+    <h2 data-n="2">It left <code>filters.css</code>, and it was never part of it</h2>
+    <p class="tk-note">Until 2026-08-05 this control lived in the sort filter's file. <b>A switch and
+    a sort menu are two families and the only thing they shared was a file name</b>: the menu is a
+    <code>&lt;details&gt;</code> holding a panel holding a list of labelled radios, which is a
+    molecule, and this is one control with a knob, which is an atom. The stand was already saying so
+    out loud by needing two specimens for one component.</p>
+    <p class="tk-note"><b>It is also what an empty containment is written to catch.</b>
+    <code>filters</code> contained nothing that the arithmetic could see, so it was called an atom by
+    a calculation with no information in it, and the inventory and the old vitrine printed that as a
+    decision somebody had taken. Nobody had.</p>
+    <p class="tk-note"><b>Two rules did not come with it, and they are a grey-box fossil.</b> The old
+    file opened with a hairline border, a 10px face, 2/8 padding and a bold weight for the checked
+    state. Every <code>.toggle</code> in both trees carries <code>role="switch"</code>, measured,
+    zero exceptions, and the <code>[role=switch]</code> rule re-declares the border, the padding and
+    the cursor and sets <code>font-size:0</code>. <b>So the fossil painted nothing, and the bold
+    weight was a weight on a 0px face.</b> Deleted rather than carried.</p>
+  </section>
+
+  <!-- =============================================================== the faces -->
+  <section class="tk-sec" id="faces">
+    <h2 data-n="3">The five faces, four of which the product has never shown</h2>
+
+    <p class="tk-subh">off, and it is the only one with a placement</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="toggle" role="switch" aria-checked="false" aria-label="Reverse sort, off">Reverse sort</button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="toggle" role="switch" aria-checked="false" aria-label="Reverse sort, off">Reverse sort</button></div>
+    </div>
+
+    <p class="tk-subh">on, 0 placements</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="toggle" role="switch" aria-checked="true" aria-label="Reverse sort, on">Reverse sort</button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="toggle" role="switch" aria-checked="true" aria-label="Reverse sort, on">Reverse sort</button></div>
+    </div>
+    <p class="tk-note">The knob slides from 3 to 19 and the track fills with the flat action colour.
+    <b>It is the one place in this system where brass is a flat ground rather than a gradient</b>,
+    and that single fact is what forces the press below.</p>
+
+    <p class="tk-subh">disabled, 0 placements</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="toggle" role="switch" aria-checked="false" aria-disabled="true" aria-label="Reverse sort, unavailable">Reverse sort</button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="toggle" role="switch" aria-checked="false" aria-disabled="true" aria-label="Reverse sort, unavailable">Reverse sort</button></div>
+    </div>
+    <p class="tk-note"><code>aria-disabled</code> rather than the <code>disabled</code> attribute, so
+    the control keeps its place in the tab order and can still say why it is unavailable.</p>
+
+    <p class="tk-note"><b>The remaining two are hover and press</b>, which no static page can show at
+    all. They are in the table below with the rules that draw them.</p>
+  </section>
+
+  <!-- =============================================================== the press -->
+  <section class="tk-sec" id="press">
+    <h2 data-n="4">The pointer, and the one role that exists for one control</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>state</th><th>what happens</th></tr></thead>
+        <tbody>
+          <tr><td>hover, off</td><td><code>--bg-control-hover</code></td></tr>
+          <tr><td>press, off</td><td><code>--bg-pressed</code>, the system's one pressed ground</td></tr>
+          <tr><td><b>press, on</b></td><td><b><code>--color-action-pressed</code></b>, brass held down</td></tr>
+          <tr><td>hover, on</td><td>nothing, deliberately</td></tr>
+          <tr><td>disabled</td><td><code>--opacity-disabled</code> and <code>not-allowed</code>, and both pointer rules exclude it by attribute so a dead switch cannot light up</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>An ON switch is a flat action ground, so neither of the system's two press
+    mechanisms fits it.</b> Settling onto <code>--bg-pressed</code> would read as "it turned itself
+    off", and there is no gradient angle to reverse because this is the one brass surface that is not
+    a gradient. <b>It is the only control that asked for a role of its own, so it got one</b>, and
+    nothing else in the system needs it.</p>
+    <p class="tk-note">The hover and press rules both exclude <code>[aria-checked=true]</code> as well
+    as the disabled state, <b>so neither swaps the brass ground out from under a switch that is
+    on</b>. Before 2026-08-05 the control had no pointer state at all: its only feedback was the knob
+    sliding, <b>which is the RESULT of the click and not a sign the control is live</b>.</p>
+  </section>
+
+  <!-- =============================================================== the box -->
+  <section class="tk-sec" id="box">
+    <h2 data-n="5">40x24, and the token was wrong before it was short</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th><th>with a finger</th></tr></thead>
+        <tbody>
+          <tr><td>the track</td><td>40x24</td><td>40x24</td><td><b>40x24, unchanged</b></td></tr>
+          <tr><td>the knob</td><td colspan="3">16x16, inset 3 from the top and 3 from the left, and 19 from the left when on</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>It was 40x22 until 2026-08-05, which is two pixels under the smallest floor
+    there is.</b> A switch is a target you hit rather than one you aim at, so the fix was the
+    control's own box and not an invisible pseudo-element stretched over it: <b>a hit area no
+    measurement in this repository can see is a fix nobody can check</b>.</p>
+    <p class="tk-why"><b>And the token was wrong before it was short.</b> The height read
+    <code>--icon-22</code>, which is the size of a MARK, asked to be the height of a CONTROL.
+    <code>--size-24</code> is a size primitive and is what the other end of the same declaration,
+    <code>--size-40</code>, already read. The knob is unchanged at 16 and re-centred: inner height 22,
+    so the inset is 3 rather than 2.</p>
+    <p class="tk-note"><b>24 clears WCAG 2.5.8 AA with nothing to spare and fails 2.5.5 AAA at
+    44</b>, and this control is not in the one touch floor in <code>components/base.css</code>.
+    That was not a decision either: the floor was assembled from the six per-file lists that existed
+    on the day, and this file had never written one. Three placements, one screen family, and a real
+    question about whether a 24px switch is reachable with a thumb.
+    <code>docs/backlog.md</code> 55.</p>
+  </section>
+
+  <!-- =============================================================== the name -->
+  <section class="tk-sec" id="name">
+    <h2 data-n="6">The name, and why the label is a text node nobody can see</h2>
+    <p class="tk-note"><code>font-size:0</code> collapses the button's own text to nothing, and the
+    text is still there: <code>Reverse sort</code>, a real node in the document. <b>A zero font size
+    is not <code>display:none</code></b>, so assistive technology still reaches it, and the product
+    additionally writes an <code>aria-label</code>, which wins.</p>
+    <p class="tk-note"><b>The name belongs to <code>voice/</code> and not to this file</b>, which is
+    why nothing here says what a switch should be called. What this file owns is that the control
+    HAS a place for a name and does not draw it.</p>
+  </section>
+
+  <!-- ================================================================== rule -->
+  <section class="tk-sec" id="rule">
+    <h2 data-n="7">The rule</h2>
+    <p class="tk-note"><b>The state is the attribute, and the attribute is the selector.</b>
+    Everything here is keyed to <code>[role=switch]</code>, <code>[aria-checked]</code> and
+    <code>[aria-disabled]</code>, so the drawing and the accessibility tree cannot disagree: there is
+    no class that could say on while the attribute says off.</p>
+    <p class="tk-note"><b>A target is the control's own box.</b> Not a pseudo-element, not the label
+    beside it, not a padded ancestor. Anything else is a hit area no reading of the page can
+    find.</p>
+    <p class="tk-note"><b>A control needs a sign that it is live, and the result of the click is not
+    that sign.</b> The knob arriving is the outcome; the ground answering is the control.</p>
+  </section>
+
+  <!-- ============================================================= anti-rule -->
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="8">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never take a control's height from an icon token.</b> <i>--icon-22 is
+    the size of a mark. It landed this control two pixels under the smallest accessibility floor
+    there is, and it read as a deliberate 22 to everyone who saw it afterwards.</i></p>
+    <p class="tk-lab tk-bad"><b>Never carry a rule across a move without checking that it paints.</b>
+    <i>Two rules came within one edit of being copied into this file, and both were drawing on a face
+    with <code>font-size:0</code> and a border that was already re-declared.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let a pointer state reach a control that is on or dead.</b>
+    <i>A hover that replaces the brass ground says the switch turned itself off, and a disabled
+    switch that lights up says it is available.</i></p>
+    <p class="tk-lab tk-bad"><b>Never judge this component from the screens.</b> <i>Four of its five
+    faces have no placement in the product, and a stand built by walking screens would have shown one
+    grey oval.</i></p>
+  </section>
+
+  <!-- ============================================================== closing -->
+  <section class="tk-sec" id="closing">
+    <h2 data-n="9">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="vitrine.html#toggle">the atoms page</a>.
+    The stylesheet: <code>components/toggle.css</code>. The file it left, and the sort menu it was
+    never part of: <code>components/filters.css</code>. The pressed brass role and every other
+    colour: <code>components/tokens.css</code> and <code>DESIGN.md</code>. The open question about
+    its height: <code>docs/backlog.md</code> 55.</p>
+  </section>
+
+</div>
+</body>
+</html>

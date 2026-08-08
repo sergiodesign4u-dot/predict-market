@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: nav item</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+  <!-- One symbol of the shipped sprite, spliced rather than retyped, because the
+       Favorites slot in the product carries this one. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" d="M4 6.2C4 5.08 4 4.52 4.218 4.092a2 2 0 0 1 .874-.874C5.52 3 6.08 3 7.2 3h9.6c1.12 0 1.68 0 2.108.218a2 2 0 0 1 .874.874C20 4.52 20 5.08 20 6.2v12.646c0 .84 0 1.26-.271 1.428c-.272.168-.625-.06-1.332-.516l-5.32-3.433c-.253-.163-.38-.245-.516-.276a.9.9 0 0 0-.322 0c-.136.031-.263.113-.516.276l-5.32 3.433c-.707.456-1.06.684-1.332.516C4 20.106 4 19.687 4 18.846z"/></symbol>
+  </defs></svg>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Nav item</h1>
+    <p>Level 1. A row a person taps that <b>GOES somewhere and draws NOTHING until it is pointed
+    at</b>: transparent, no edge, no corner, as wide as whatever holds it. <b>995 placements on 105
+    painted screens</b>, three faces, <b>0 bare</b>. Measured 2026-08-08 in a browser, at 390 and
+    1280, in both pointer branches.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">995 placements</span>
+      <span class="tk-badge">3 faces</span>
+      <span class="tk-badge">899 links, 96 buttons</span>
+      <span class="tk-badge">0 bare</span>
+      <span class="tk-badge">1 face under the floor</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ why a page -->
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note"><b>The level page is the shelf and this page is the depth</b>, and the two
+    answer different questions. Comparing this atom against the other nine is work the shelf does, so
+    it stays on <a href="vitrine.html#navitem">the atoms page</a> together with the level and the
+    reason for it. Taking one component apart needs room the shelf does not have: the shelf gives
+    every component one specimen, and one specimen cannot show three faces, two elements and a state
+    that is reached from an ancestor.</p>
+    <p class="tk-note">So nothing here is repeated from the shelf, and the shelf keeps what a page of
+    its own would only copy. <b>A fact written twice drifts.</b></p>
+  </section>
+
+  <!-- =============================================================== the atom -->
+  <section class="tk-sec" id="atom">
+    <h2 data-n="2">The atom, and it really is this short</h2>
+    <p class="tk-note">Six declarations, and every one of them is an ABSENCE: no ground, no border,
+    no corner, no underline. What is left is a full-width block with a pointer. The whole control is
+    what happens when somebody points at it, which is the next section but one.</p>
+    <p class="tk-note"><b><code>display:block</code> is the fourth value this atom had been WEARING
+    without writing down</b>, and it is the reason the file says so out loud. <code>width:100%</code>
+    is why this class exists as a row, and width does nothing to an inline box. The
+    <code>&lt;button&gt;</code> element supplied <code>inline-block</code> for free, so the
+    declaration worked for exactly as long as every one of these was a button, and stopped the moment
+    the account dropdown's 365 became links. <b>Measured on the day: 194x33 collapsed to 66x30</b>,
+    the row shrinking to its own text.</p>
+    <p class="tk-lab tk-bad"><b>A value the element supplies is a value the component has not
+    chosen.</b> <i>Two of the three faces here declared a display of their own, so the gap stayed
+    invisible until a face that declared none crossed over.</i></p>
+  </section>
+
+  <!-- ================================================================ the tag -->
+  <section class="tk-sec" id="tag">
+    <h2 data-n="3">Two elements, one drawing</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>element</th><th>placements</th><th>what it is</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;a&gt;</code></td><td><b>899</b></td><td>it goes to a screen, and the href is the destination</td></tr>
+          <tr><td><code>&lt;button&gt;</code></td><td><b>96</b></td><td>it opens a dialog: <code>data-open="signin"</code> on 32 logged-out screens, three slots each</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The same atom, and the drawing does not know the difference.</b> That is
+    the correct answer for a bar where the Sign in slot sits beside three navigation slots and has to
+    look like them, and it is also what made the missing <code>display</code> above a real defect
+    rather than a tidy-up: the atom cannot rely on the tag when it stands in both.</p>
+  </section>
+
+  <!-- ============================================================== the faces -->
+  <section class="tk-sec" id="faces">
+    <h2 data-n="4">The three faces</h2>
+
+    <p class="tk-subh">slot, 420 placements, the only navigation a phone has</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark">
+        <div aria-current="page"><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><span>Events</span></a></div>
+        <a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>My Bets</span></a>
+        <a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg><span>Favorites</span></a>
+      </div>
+      <div class="tk-theme-fig" data-theme="light">
+        <div aria-current="page"><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><span>Events</span></a></div>
+        <a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>My Bets</span></a>
+        <a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg><span>Favorites</span></a>
+      </div>
+    </div>
+    <p class="tk-note">A mark over a label, 10px, centred, muted. The first one is the current tab.
+    <b>In the product <code>aria-current</code> sits on the <code>&lt;li&gt;</code></b> and the state
+    is reached from an ancestor; the specimen puts it on a wrapper for the same reason, because the
+    thing being shown is that the atom reads it from above rather than from itself.</p>
+
+    <p class="tk-subh">row, 365 placements, a line of a menu that drops out of the header</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <a class="nav-item nav-row" href="#">My profile</a>
+        <a class="nav-item nav-row" href="#">Wallet</a>
+        <a class="nav-item nav-row" href="#">Sign out</a>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <a class="nav-item nav-row" href="#">My profile</a>
+        <a class="nav-item nav-row" href="#">Wallet</a>
+        <a class="nav-item nav-row" href="#">Sign out</a>
+      </div>
+    </div>
+    <p class="tk-note">Full width, left aligned, 11px, the strong ink <b>because a menu is read
+    rather than glanced at</b>.</p>
+
+    <p class="tk-subh">row-stack, 210 placements, a notification</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="notif-drop"><ul>
+          <li><a class="nav-item nav-row nav-row-stack" href="#"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+          <li><a class="nav-item nav-row nav-row-stack" href="#"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+        </ul></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="notif-drop"><ul>
+          <li><a class="nav-item nav-row nav-row-stack" href="#"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+          <li><a class="nav-item nav-row nav-row-stack" href="#"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+        </ul></div>
+      </div>
+    </div>
+    <p class="tk-note"><b>It is the row with one declaration changed</b>, and the declaration is the
+    display. A menu line is one line; a notification is a title and a detail under it. The title and
+    the detail themselves stay in <code>components/header.css</code>, because they are the row's
+    CONTENT and not the control's face, the same way a card keeps its own title.</p>
+    <p class="tk-why"><b>Which is why this is the one specimen on the page that stands inside its
+    container, and it had to.</b> Lifted out of <code>.notif-drop</code> the same markup renders 33
+    tall instead of 49: the <code>&lt;strong&gt;</code> and the <code>&lt;span&gt;</code> take their
+    <code>display:block</code> from the dropdown's file, so the two parts sit on one line and the
+    stack is not a stack. <b>The boundary this page describes is visible in the specimen rather than
+    only stated in it</b>, and the honest way to show a control whose content belongs to somebody
+    else is to borrow the somebody else.</p>
+    <p class="tk-note">It joined this file on 2026-08-06 and two values had held it back, <b>both of
+    which were measured to draw nothing</b>. Its font-size was the browser's 16 where the row is 11,
+    and nothing inside it reads a font size: it holds a <code>&lt;strong&gt;</code> and a
+    <code>&lt;span&gt;</code>, both block, both with sizes of their own, and no bare text node
+    between them. So it took the row's 11 and <b>no glyph moved</b>.</p>
+  </section>
+
+  <!-- ============================================================== the state -->
+  <section class="tk-sec" id="current">
+    <h2 data-n="5">Current, and why the colour never answers a pointer</h2>
+    <p class="tk-note">The slot's ink is the current-tab signal <b>and nothing else</b>. So the
+    ground answers the pointer here and the colour does not, and that is a decision with a phone
+    behind it: if pointing at a slot pulled its label toward brass, the one thing the bar says at a
+    glance would be said by two different things, and <b>a hover can stick after a tap on a touch
+    screen</b>, so the wrong slot would go on claiming to be current until something else was
+    touched.</p>
+    <p class="tk-note"><code>[aria-current="page"]</code> is written with the attribute alone rather
+    than with the bar's class. Being the current item is <b>the atom's state wherever the atom
+    stands</b>, and naming <code>.bottom-nav</code> here would be this file holding a region's
+    name.</p>
+    <p class="tk-why"><b>The order of four rules is load bearing.</b> Each hover is written at the
+    face's own two-class weight so it can reach the slot a person is standing on: at
+    <code>.nav-slot:hover</code> it would be (0,2,0) and would die under the current-page rule at
+    (0,3,0), <b>on exactly the tab that gets tapped most</b>. The press is last and at the same weight
+    as the hovers, so a tie is broken by source order and a held control shows the press rather than
+    the hover.</p>
+  </section>
+
+  <!-- ============================================================== the pointer -->
+  <section class="tk-sec" id="pointer">
+    <h2 data-n="6">Two faces answer the pointer differently and agree on the press</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>worn</th><th>hover</th><th>press</th></tr></thead>
+        <tbody>
+          <tr><td><code>.nav-slot</code></td><td>420</td><td><code>--tint-hover</code>, a quiet neutral wash</td><td rowspan="2"><code>--bg-pressed</code>, one rule for both, and it is the system's one pressed ground</td></tr>
+          <tr><td><code>.nav-row</code></td><td>365</td><td><code>--tint-brass-09</code>, the wash the rest of the header uses</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>Neither is a majority and both have an argument</b>, so both are kept and
+    the question is written down rather than settled by whoever edited last. The bar is the only
+    navigation a phone has and its brass is spoken for by the current tab; the menu is a header
+    surface and the header is brass. <code>docs/backlog.md</code> 45.</p>
+  </section>
+
+  <!-- ================================================================= floor -->
+  <section class="tk-sec" id="floor">
+    <h2 data-n="7">The measured boxes, and the face that is under the floor</h2>
+    <p class="tk-note">Read on 106 screens at 390 and at 1280, and again with touch emulation on and
+    <code>matchMedia('(pointer:coarse)')</code> asserted true before every read.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>worn</th><th>390</th><th>1280</th><th>with a finger</th></tr></thead>
+        <tbody>
+          <tr><td><code>.nav-slot</code></td><td>420</td><td>94x55</td><td><b>0x0</b>, the bar is a phone control</td><td>94x55, unchanged</td></tr>
+          <tr><td><code>.nav-row</code></td><td>365</td><td><b>194x33</b></td><td><b>194x33</b></td><td><b>194x33, unchanged</b></td></tr>
+          <tr><td><code>.nav-row-stack</code></td><td>210</td><td>258x49</td><td>258x49</td><td>258x49, unchanged</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>365 rows stand 33 tall with a finger on them, and nothing in the system
+    lifts them.</b> The one touch floor in <code>components/base.css</code> names fourteen families
+    and <code>.nav-item</code> is not one of them, which was not a decision: the floor was written
+    from the six per-file lists that existed, and no file had ever written a floor for this atom.
+    33 clears WCAG 2.5.8 AA at 24x24 and <b>fails 2.5.5 AAA and this product's own standard at
+    44</b>.</p>
+    <p class="tk-note">It is not a one-line fix, which is why it is a backlog row rather than an edit
+    made here. Five rows at 44 make the account dropdown 55px taller, and that is a layout decision
+    about a panel rather than a floor. <code>docs/backlog.md</code> 54.</p>
+    <p class="tk-note">The slot at 55 and the stack at 49 are both above the floor already, and
+    neither got there from a rule: the slot is a mark over a label with 8px of padding, and the stack
+    is two lines. <b>A box that clears a floor by accident clears it until somebody edits the
+    padding</b>, which is the argument for the floor naming the family rather than the exception.</p>
+  </section>
+
+  <!-- ============================================================ not here -->
+  <section class="tk-sec" id="absent">
+    <h2 data-n="8">Two rows that are NOT this atom</h2>
+    <p class="tk-note"><b>The sub-category row</b>, <code>.subcat button</code>, 234 placements.
+    It measures as a hairline PILL at 380 and a 10px full-width row above 860: an edge and a corner
+    at both widths, which is neither this atom's rest face nor one modifier away from it. It was
+    moved out of <code>chip</code> on the strength of the desktop rule alone, <b>which is the same
+    half-measurement that put the social mark in the wrong atom</b>. <code>docs/backlog.md</code> 46
+    holds it, with both widths written down.</p>
+    <p class="tk-note"><b>The bar, the dropdown and the list are not here either.</b>
+    <code>components/bottomnav.css</code> keeps the bar, its sticky position, the groove along its
+    top edge, the dividing rules between slots and the centring on the <code>&lt;li&gt;</code>;
+    <code>components/header.css</code> keeps the panel, its shadow, its corner and where it opens.
+    <b>Neither says what the control inside it looks like any more</b>, and that sentence is the test
+    a migration passes or fails.</p>
+  </section>
+
+  <!-- ================================================================== rule -->
+  <section class="tk-sec" id="rule">
+    <h2 data-n="9">The rule</h2>
+    <p class="tk-note"><b>A face is a modifier, and a region is a place.</b> What differs between
+    these three is a direction, a size, an ink and an alignment, and all four are the control. Where
+    the control sits, what holds it and how that thing is lifted off the page are the region's, and
+    the region is allowed to keep exactly those.</p>
+    <p class="tk-note"><b>The state comes from above.</b> Being current is not something this control
+    can know about itself, so the selector reads an ancestor and names no region while doing it.</p>
+  </section>
+
+  <!-- ============================================================= anti-rule -->
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="10">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never let the element supply a value.</b> <i>A display that arrives
+    from <code>&lt;button&gt;</code> is a value the component did not choose and cannot keep, and it
+    left 365 rows collapsed to their own text the day they became links.</i></p>
+    <p class="tk-lab tk-bad"><b>Never move the ink to say two things.</b> <i>The slot's colour is the
+    current tab. A hover that also moves it makes the bar say the same thing twice and, on a touch
+    screen where a hover sticks, say it wrongly.</i></p>
+    <p class="tk-lab tk-bad"><b>Never name the container in the control's file.</b> <i>The moment
+    this file writes <code>.bottom-nav</code> it stops being an atom and starts being a second copy
+    of the bar.</i></p>
+    <p class="tk-lab tk-bad"><b>Never file a row here on one width.</b> <i>Two rows in this product
+    look like this atom at 900 and do not at 380, and both were nearly filed here on the desktop
+    reading alone.</i></p>
+  </section>
+
+  <!-- ============================================================== closing -->
+  <section class="tk-sec" id="closing">
+    <h2 data-n="11">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="vitrine.html#navitem">the atoms page</a>.
+    The stylesheet and the argument for every value: <code>components/navitem.css</code>. The
+    regions that hold it: <code>components/bottomnav.css</code> and
+    <code>components/header.css</code>. The open questions: <code>docs/backlog.md</code> 45, 46 and
+    54.</p>
+  </section>
+
+</div>
+</body>
+</html>

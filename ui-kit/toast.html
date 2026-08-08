@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: toast</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Toast</h1>
+    <p>Level 1. A message, a lift, and a place for ONE control. <b>4 placements on 1 painted
+    screen</b>, which is the smallest inventory of any component in this product, and the page still
+    has more to say than the shelf can hold. Measured 2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">4 placements</span>
+      <span class="tk-badge">1 screen</span>
+      <span class="tk-badge">2 faces</span>
+      <span class="tk-badge">0 of its own controls</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ why a page -->
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">Four placements, and a page anyway</h2>
+    <p class="tk-note">The kit used to hold a counted threshold: a component earned a page of its own
+    by being one of the largest families in the product. <b>This component is the case that ended
+    that rule.</b> Four placements, and three of the things worth knowing about it cannot be shown on
+    a shelf: where its boundary with its own dismiss runs, why the error face is not red, and the
+    fact that <b>most of this component is a behaviour that a static page cannot draw at all</b>.</p>
+    <p class="tk-note">The level and the reason for it stay on
+    <a href="vitrine.html#toast">the atoms page</a>.</p>
+  </section>
+
+  <!-- ============================================================== the faces -->
+  <section class="tk-sec" id="faces">
+    <h2 data-n="2">The two faces</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="toast-group">
+          <div class="toast"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="toast-msg">Bet placed. $50 on YES.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+          <div class="toast toast-error"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5M12 17h.01M10.3 3.9L2.6 17.3a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span class="toast-msg">Deposit failed. Your card was declined.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+        </div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="toast-group">
+          <div class="toast"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="toast-msg">Bet placed. $50 on YES.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+          <div class="toast toast-error"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5M12 17h.01M10.3 3.9L2.6 17.3a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span class="toast-msg">Deposit failed. Your card was declined.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+        </div>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>worn</th><th>at 390</th><th>at 1280</th><th>what it changes</th></tr></thead>
+        <tbody>
+          <tr><td>plain</td><td>3</td><td>293x50</td><td>911x50</td><td>the quiet card ground, a hairline, an 18px brass mark</td></tr>
+          <tr><td>error</td><td>1</td><td><b>293x68</b></td><td>911x50</td><td>the notice edge, the control ground, a 22px mark in the strong ink, a semibold message</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The 68 is the message wrapping</b>, not a taller face. It is the same
+    component at both widths, and the only thing the window changes is how many lines the sentence
+    takes.</p>
+  </section>
+
+  <!-- ============================================================== not red -->
+  <section class="tk-sec" id="notred">
+    <h2 data-n="3">The error face is not red, and that is the system's one rule</h2>
+    <p class="tk-note"><b>Green and red are outcome semantics, YES and NO.</b> A deposit that failed
+    is not a NO, so an error toast is drawn as a NOTICE: <code>--border-notice</code> on the control
+    ground, with the mark and the message going up in size and weight rather than in colour.</p>
+    <p class="tk-note">That decision is <code>DESIGN.md</code>'s and it is what makes an outcome
+    readable anywhere in the product: if a failed payment were red, then red would mean two things,
+    and the one place a person cannot afford ambiguity is a screen about money.</p>
+    <p class="tk-note"><b>The whole error signal is therefore weight, size and edge</b>: 18px to
+    22px, muted brass to the strong ink, medium to semibold, and a hairline to the notice line. Four
+    changes, no new colour.</p>
+  </section>
+
+  <!-- ============================================================== the dismiss -->
+  <section class="tk-sec" id="dismiss">
+    <h2 data-n="4">The dismiss is NOT this component, and one line proves where the boundary is</h2>
+    <p class="tk-note">It left on 2026-08-06. It is
+    <code>class="icon-btn icon-btn-small toast-close"</code> on the element, its face is the icon
+    button's fifth, and everything that had been written here about the pill, the two drawn bars, the
+    transparent ground and the 24 that clears one criterion and not the other <b>moved WITH the
+    rules</b> rather than staying behind as a second copy that could drift.</p>
+    <p class="tk-why"><b>Exactly one declaration stayed, and it is the whole line the migration is
+    drawn on:</b> <code>.app-case .toast-close{flex:0 0 auto}</code>. That says the message takes the
+    slack and the dismiss does not, <b>which is a fact about a two-item flex row and not about what
+    an icon button looks like</b>. It is why <code>.toast-close</code> is still a name a stylesheet
+    reads.</p>
+    <p class="tk-note"><b>One thing changed on the way and it was decided rather than carried.</b>
+    This control used to brighten its own edge on hover, where the 388 outlined circles in the
+    product tint their ground and take an action edge. Four against 388, <b>so the four were the
+    divergence</b>.</p>
+    <p class="tk-note">The four dismisses are one of the named exclusions from the system's touch
+    floor: they clear 24x24 and not 44x44, and that is one question about small controls in general
+    rather than a toast question. <code>docs/backlog.md</code> 39.</p>
+  </section>
+
+  <!-- ============================================================== cannot show -->
+  <section class="tk-sec" id="unshowable">
+    <h2 data-n="5">What a static page cannot show, and it is most of the component</h2>
+    <p class="tk-note"><b>A toast arrives, waits, and leaves.</b> This page shows one standing still,
+    and the two specimens above are the only part of it a stylesheet owns. There is no animation rule
+    in <code>components/toast.css</code>, no timer, and no rule for how a group stacks when a second
+    one arrives while the first is still up.</p>
+    <p class="tk-note"><b>What IS decided, and it is decided in the markup rather than here:</b> the
+    catalogue screen wraps confirmations in
+    <code>role="status" aria-live="polite"</code> and errors in
+    <code>role="alert" aria-live="assertive"</code>, so a screen reader announces them and an error
+    interrupts. <code>voice/</code> owns the sentences; this file owns the box they stand in; and the
+    live region belongs to whoever writes the screen. <b>Three owners, one control</b>, which is
+    worth knowing before anybody goes looking for the announcement in this stylesheet.</p>
+    <p class="tk-lab tk-bad"><b>A critical error is never shown only in a toast.</b> <i>It leaves,
+    and a person who looked away has no way to get it back.</i></p>
+  </section>
+
+  <!-- ============================================================== the page -->
+  <section class="tk-sec" id="page">
+    <h2 data-n="6">The catalogue screen, and the class that is not a toast</h2>
+    <p class="tk-note"><code>toasts.html</code> is a state as a page, which is how both screen trees
+    show anything that cannot be reached by clicking. It stands the toasts on a stand-in for the page
+    underneath, and <b>that stand-in used to live in this file</b>: one screen, one margin, and
+    having it here is why the toast read as CONTAINING the cookie banner in the level arithmetic. It
+    is <code>.tc-page</code> in <code>components/base.css</code> now.</p>
+    <p class="tk-note"><b>This component was filed as a molecule and is not one.</b> It holds
+    nothing: a mark, a sentence and somebody else's button. It moved up into the atom group of
+    <code>components/index.css</code> on 2026-08-07 with <code>navitem</code> and
+    <code>yesno</code>, and the inventory row that first said so is
+    <code>ui-kit/docs/inventory.md</code>.</p>
+  </section>
+
+  <!-- ================================================================== rule -->
+  <section class="tk-sec" id="rule">
+    <h2 data-n="7">The rule</h2>
+    <p class="tk-note"><b>A toast is a message and a place for one control, and it does not draw the
+    control.</b> What it keeps is how that control sits in its row, which is a fact about the row.</p>
+    <p class="tk-note"><b>Severity is weight, size and edge, never a new colour.</b> The colours in
+    this product are spoken for.</p>
+  </section>
+
+  <!-- ============================================================= anti-rule -->
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="8">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never redraw the dismiss here.</b> <i>It was drawn here once, with
+    its own pill, its own two bars and its own hover, and the hover was the one place four controls
+    disagreed with 388.</i></p>
+    <p class="tk-lab tk-bad"><b>Never make the error red.</b> <i>Red is NO. A screen about money
+    cannot afford a colour that means two things.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let the page underneath live in this file.</b> <i>One margin
+    for one catalogue screen made an atom read as containing a banner.</i></p>
+  </section>
+
+  <!-- ============================================================== closing -->
+  <section class="tk-sec" id="closing">
+    <h2 data-n="9">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="vitrine.html#toast">the atoms page</a>.
+    The stylesheet: <code>components/toast.css</code>. The dismiss, in full:
+    <a href="iconbtn.html">icon button</a>. The sentences: <code>voice/docs/microcopy.md</code>. The
+    stand-in for the page underneath: <code>components/base.css</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>
