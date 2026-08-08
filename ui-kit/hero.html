@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: hero</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Hero</h1>
+    <p>Level 3. The block at the top of the home feed: one featured market, a hot list and a brand
+    tile. <b>166 lines of CSS, 44 class names, and ONE placement in the entire product.</b> It is the
+    largest stylesheet-to-placement ratio in the system, and it is where the worst contrast number of
+    the whole pass was found. Measured 2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">1 placement</span>
+      <span class="tk-badge">166 lines</span>
+      <span class="tk-badge">44 classes</span>
+      <span class="tk-badge">1.71:1 in daylight</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">One placement, and it earns the page twice over</h2>
+    <p class="tk-why"><b>A component with one placement cannot be checked against itself</b>, and
+    this one is 166 lines: a featured card with a photograph and a graph, a ranked list, a brand tile
+    and a trust strip, all in a grid that goes from 351x1267 on a phone to 969x505 on a desktop.
+    Everything about it is a decision taken once, with nothing to compare it against.</p>
+    <p class="tk-note">The level and its reason stay on
+    <a href="organisms.html#hero">the organisms page</a>. What this page holds is the two things the
+    single placement hid: <b>a hover that existed in one theme only</b>, and <b>a hover that was
+    worse than nothing in the other one</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="worst">
+    <h2 data-n="2">The worst number this pass found, and it was already shipped</h2>
+    <p class="tk-why">A link in this block took its hover colour from <b>the LIT stop of an action
+    gradient</b>, a pale brass meant to sit UNDER dark ink. The theme does not move it, because a
+    mid-luminance metal reads on both stones. As a hover COLOUR it is fine on graphite,
+    <b>9.57:1</b>, and on chalk it is <b>1.71:1</b>.</p>
+    <p class="tk-lab tk-bad"><b>In daylight the link VANISHED at the moment a person pointed at
+    it</b>, from 6.96:1 at rest. <i>A role that means "the lit stop of a gradient" is not a role that
+    means "ink", and the two are indistinguishable in the theme somebody happens to be
+    working in.</i></p>
+    <p class="tk-note">The second, in the same block: a headline hover read the strong ink,
+    <b>which is white on graphite and INK ON CHALK</b>, and the rest colour there is also ink on
+    chalk. So in the Vault the headline lit up, and in daylight the hover painted <b>14.85:1 over
+    14.85:1: nothing, in the theme nobody was checking</b>.</p>
+    <p class="tk-lab tk-bad"><b>A STATE THAT ONLY EXISTS IN ONE THEME DOES NOT EXIST.</b> <i>Measured,
+    not guessed, and the answer was not a brighter ink, because in daylight there is none left.</i></p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="3">The block, at both widths</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the hero</td><td><b>351x1267</b>, one column</td><td><b>969x505</b>, two</td></tr>
+          <tr><td>the featured market</td><td>351x550</td><td>603x370</td></tr>
+          <tr><td>the side column</td><td>351x505</td><td>350x505</td></tr>
+          <tr><td>the brand tile</td><td>351x210</td><td>350x210</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>1,267 to 505 is the sharpest reflow in the product</b>, and the side column
+    is the reason: at 1280 it stands beside the feature at its natural 350, and at 390 it goes
+    underneath at full width and the two heights add up.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="brand-tile"><span class="bt-tick"></span><p class="bt-quote">Odds you can check, on questions that have an answer.</p><p class="bt-by">PREDICT</p></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="brand-tile"><span class="bt-tick"></span><p class="bt-quote">Odds you can check, on questions that have an answer.</p><p class="bt-by">PREDICT</p></div>
+      </div>
+    </div>
+    <p class="tk-note"><b>The tile is a claim, not a control</b>: there is no link and no button
+    inside it, so no ground may change under a finger, and <b>the only thing a press can honestly say
+    is that the lift above it is not stuck</b>. It moves the tile back to where it already rests
+    rather than anywhere new, which is why it is the one transform in the whole press pass.</p>
+  </section>
+
+  <section class="tk-sec" id="reach">
+    <h2 data-n="4">The featured pair, and the sentence that got it wrong</h2>
+    <p class="tk-note">The YES and NO on the featured market are
+    <a href="yesno.html">yes / no</a>'s now, and until 2026-08-06 this file said the opposite. <b>What
+    was written here was TRUE and was the wrong conclusion:</b> every selector in the pair's file
+    hangs off its own class, so not one of them reaches this button.</p>
+    <p class="tk-lab tk-bad"><b>The answer to a control being out of a family's reach is to put it in
+    reach, not to draw it again.</b> <i>Measured before it was moved, the two are the same control to
+    the value: the same tinted fill, the same edge, the same ink.</i></p>
+    <p class="tk-note">The same file gives the hot list's rows the ink press for the same reason the
+    card's question takes it: <b>the row is a grid and only the name is the link</b>, so a stone would
+    paint one cell of five and read as a highlight on the title rather than a press on the row.
+    6.40:1 in the Vault, 7.22:1 in daylight, measured on the card it stands on.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="5">The rule</h2>
+    <p class="tk-note"><b>Every state is checked in both themes.</b> One placement means one person
+    looked at it, in one theme, once.</p>
+    <p class="tk-note"><b>A role is used for what its name says.</b> A lit gradient stop is not an
+    ink, and the difference is invisible on graphite.</p>
+    <p class="tk-note"><b>Out of reach is a reason to move a control, never a reason to redraw
+    it.</b></p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="6">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never take a hover colour without measuring it in daylight.</b>
+    <i>1.71:1, shipped, on the most prominent link on the home screen.</i></p>
+    <p class="tk-lab tk-bad"><b>Never write a state whose rest and hover are the same colour in one
+    theme.</b> <i>14.85:1 over 14.85:1 is a hover that exists in the stylesheet and nowhere
+    else.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let a claim behave like a control.</b> <i>The brand tile has no
+    link inside it, so nothing may change under a finger except the lift coming back down.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="7">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="organisms.html#hero">the organisms page</a>.
+    The stylesheet: <code>components/hero.css</code>, 166 lines for one placement. The pair on the
+    featured market: <a href="yesno.html">yes / no</a>. The cards below it:
+    <a href="card.html">card</a>. The roles it misused: <code>components/tokens.css</code> and
+    <code>DESIGN.md</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>

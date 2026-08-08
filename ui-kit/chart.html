@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: chart</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Chart</h1>
+    <p>Level 3. One line, one grid, one now-marker: how the price moved. <b>9 charts on 9 painted
+    screens</b>, 27 grid lines and 9 now-lines. It is the component behind the repository's most
+    quoted sentence, <b>and the sentence is about a colour that was never written</b>. Measured
+    2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">9 charts</span>
+      <span class="tk-badge">42 lines of CSS</span>
+      <span class="tk-badge">0 controls</span>
+      <span class="tk-badge">1 famous defect</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">Ported, and drawn as a black rectangle</h2>
+    <p class="tk-why"><b>"The chart is ported" was true while it rendered as a black rectangle</b>,
+    because <b>an SVG with no <code>fill</code> is black</b>. The markup was there, the classes were
+    there, the port was done, and the one thing nobody had written was the value that decides what an
+    unfilled shape looks like.</p>
+    <p class="tk-lab tk-bad"><b>A MISSING VALUE IS A VALUE.</b> <i>It is the root rule of this
+    repository and this component is where it was paid for. Reading the source says ported; reading
+    the page says black.</i></p>
+    <p class="tk-note">Which is why every rule in this file names <code>fill</code> or
+    <code>stroke</code> explicitly, including where the answer is <code>none</code>. The level and
+    its reason stay on <a href="organisms.html#chart">the organisms page</a>.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The plot</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 160" aria-hidden="true">
+          <line class="grid-l" x1="0" y1="40" x2="300" y2="40"></line>
+          <line class="grid-l" x1="0" y1="80" x2="300" y2="80"></line>
+          <line class="grid-l" x1="0" y1="120" x2="300" y2="120"></line>
+          <polyline class="ml-line" points="0,120 40,110 80,118 120,86 160,92 200,64 240,70 300,48"></polyline>
+          <line class="nowline" x1="300" y1="0" x2="300" y2="160"></line>
+        </svg></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 160" aria-hidden="true">
+          <line class="grid-l" x1="0" y1="40" x2="300" y2="40"></line>
+          <line class="grid-l" x1="0" y1="80" x2="300" y2="80"></line>
+          <line class="grid-l" x1="0" y1="120" x2="300" y2="120"></line>
+          <polyline class="ml-line" points="0,120 40,110 80,118 120,86 160,92 200,64 240,70 300,48"></polyline>
+          <line class="nowline" x1="300" y1="0" x2="300" y2="160"></line>
+        </svg></div>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the plot</td><td>268x160</td><td>548x280</td></tr>
+          <tr><td>grid lines</td><td colspan="2">3 per chart, 27 in the product</td></tr>
+          <tr><td>the now marker</td><td colspan="2">1 per chart, and it is the only vertical</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The plot grows in both directions</b>, 268x160 to 548x280, and the line is
+    a <code>polyline</code> rather than a path, so it scales with the box and needs no second set of
+    points. The range chips above it are <a href="chip.html">chip</a>'s rail face, and the file that
+    styles them is <a href="tabs.html#merge">tabs</a>.</p>
+    <p class="tk-why"><b>And every grid line here measures 0 tall, which is correct and had to be
+    checked rather than reported.</b> A horizontal <code>&lt;line&gt;</code> has a geometric bounding
+    box of 300x0 and its stroke is painted OUTSIDE that box, so a sweep that flags zero-size elements
+    flags all six of them. Read properly they carry a white stroke at 6 per cent and 1px, and the
+    now-marker carries brass at 45 per cent. <b>Three components in this kit have had a zero
+    challenged before it could be written down</b>, and this is the only one where the zero is a
+    property of the geometry rather than of a hidden host.</p>
+  </section>
+
+  <section class="tk-sec" id="grid">
+    <h2 data-n="3">The grid line, and the class map that sent it to the wrong file</h2>
+    <p class="tk-note">The grid line used to be written in the feed's file, and <b>the class map
+    hands a class to the file that writes it with the fewest ancestors</b>, so the arithmetic read
+    the chart as CONTAINING the feed.</p>
+    <p class="tk-why"><b>Nothing about the rule is a feed decision: the subject of the selector is the
+    chart's own SVG.</b> Ownership is taken from the subject of a selector and not from the whole of
+    it, and this is the case that made the difference visible in the level arithmetic rather than only
+    in a comment.</p>
+  </section>
+
+  <section class="tk-sec" id="grey">
+    <h2 data-n="4">Two grey-era classes, and how they were finally removed</h2>
+    <p class="tk-note">A wrapper and a caption sat here, described in an earlier report as "the
+    grey-era version of a block the paint replaced": what the wireframe drew before the chart was
+    rebuilt as head, plot, axis and range. <b>They were kept because the grey tree still carried the
+    markup.</b></p>
+    <p class="tk-note"><b>Porting that rebuild back into the grey tree took the last element either
+    one could match</b>, and only then could they go. That is the honest order: the rule leaves after
+    the markup, not before it.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="5">The rule</h2>
+    <p class="tk-note"><b>Every SVG value is written, including the ones that are none.</b> A shape
+    with no fill is black, and black is a decision nobody took.</p>
+    <p class="tk-note"><b>A class belongs to the file whose selector it is the SUBJECT of.</b> Not to
+    the file that mentions it, and not to the file that happens to reach it with fewer ancestors.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="6">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never call a chart ported without looking at it.</b> <i>Every class
+    was present and it drew as a black rectangle.</i></p>
+    <p class="tk-lab tk-bad"><b>Never write another component's class in this file.</b> <i>One line
+    in the feed's file made the arithmetic say the chart contains the feed.</i></p>
+    <p class="tk-lab tk-bad"><b>Never remove a grey-era rule before the grey markup goes.</b> <i>The
+    rule is the only thing holding the old element together until then.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="7">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="organisms.html#chart">the organisms
+    page</a>. The stylesheet: <code>components/chart.css</code>, 42 lines. The range chips:
+    <a href="chip.html">chip</a>, styled in <a href="tabs.html#merge">tabs</a>. The screen it stands
+    on: <a href="event-detail.html">event detail</a>. The rule it is the proof of:
+    <code>CLAUDE.md</code>, "reading the source is not reading the page".</p>
+  </section>
+
+</div>
+</body>
+</html>

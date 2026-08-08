@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: header</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Header</h1>
+    <p>Level 3, a shell. <b>105 headers on 105 painted screens</b>, and the one component that shows a
+    different set of controls at every combination of two auth states and two widths. Measured
+    2026-08-08 in a browser, at 390 and 1280, in both pointer branches.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">105 headers</span>
+      <span class="tk-badge">73 logged in</span>
+      <span class="tk-badge">32 logged out</span>
+      <span class="tk-badge">105 strips at 0px</span>
+      <span class="tk-badge">9 hovers, 0 presses</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="organisms.html#header">the organisms page</a>. This page holds the census of a shell
+    whose contents change with WHO is looking and HOW WIDE the window is, plus two rules that were
+    written twice because nobody had put the two auth states side by side.</p>
+  </section>
+
+  <section class="tk-sec" id="census">
+    <h2 data-n="2">What is in it, and when</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>part</th><th>placements</th><th>when it is there</th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the bar</td><td>105</td><td>always</td><td>379x59</td><td>1049x59</td></tr>
+          <tr><td>the wordmark</td><td>105</td><td>always</td><td colspan="2">149x40 with a mouse, <b>149x44 with a finger</b></td></tr>
+          <tr><td>How it works</td><td>105</td><td>in the markup always</td><td><b>0x0</b></td><td>drawn</td></tr>
+          <tr><td>the bell and the avatar</td><td>73 each</td><td>logged in</td><td colspan="2">44x44 and 56x44 with a finger</td></tr>
+          <tr><td>the balance</td><td>73</td><td>logged in</td><td><b>0x0</b></td><td>161x42</td></tr>
+          <tr><td>Sign in / Sign up</td><td>32</td><td>logged out</td><td colspan="2">the button family's</td></tr>
+          <tr><td>the unread dot</td><td>70</td><td>logged in, with news</td><td colspan="2">a mark on the bell</td></tr>
+          <tr><td><b>the condensed strip</b></td><td>105</td><td><b>never, at rest</b></td><td><b>379x0</b></td><td><b>1049x0</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>The condensed category strip is in the markup of every screen and 0px tall
+    on every one of them.</b> It is revealed by a script watching the feed's own category bar, so a
+    static reading can only ever see it collapsed. That is correct behaviour and it is worth writing
+    down, because it is the reason another component's sticky offset was wrong for a month:
+    <a href="toc.html#pinned">the contents rail</a> cleared 61px for a strip its screen never
+    shows.</p>
+    <p class="tk-note"><b>Below 640 the wordmark is the ONLY target on the left of the header</b>,
+    because the menu mark and How it works are both switched off there. That is why it is a control
+    at all rather than an image: it is a button that goes home.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="3">The bar</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <header class="app-header"><div class="row">
+          <span class="left"><button type="button" class="logo-btn">PREDICT</button></span>
+          <span class="utility"><button type="button" class="btn btn-ghost btn-xs hiw-btn">How it works</button>
+            <span class="bal-toggle"><span class="bal-label">Balance</span><span class="bal-amt">$142.00</span></span></span>
+        </div></header>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <header class="app-header"><div class="row">
+          <span class="left"><button type="button" class="logo-btn">PREDICT</button></span>
+          <span class="utility"><button type="button" class="btn btn-ghost btn-xs hiw-btn">How it works</button>
+            <span class="bal-toggle"><span class="bal-label">Balance</span><span class="bal-amt">$142.00</span></span></span>
+        </div></header>
+      </div>
+    </div>
+    <p class="tk-note">The two dropdowns are <a href="navitem.html">nav item</a>'s rows in this
+    file's panel, and the circles are <a href="iconbtn.html">icon button</a>'s. What this file draws
+    is the band, the row, the inset, the panel and where it opens.</p>
+  </section>
+
+  <section class="tk-sec" id="twice">
+    <h2 data-n="4">One circle, two auth states, and it was written twice</h2>
+    <p class="tk-why"><b>The bell and the heart are the same shape in both header states</b>, measured
+    across all 105 screens at 360 and 1440: 36px, a 1px hairline, a transparent ground and a pill
+    corner, logged in and logged out alike. <b>What differs is the ELEMENT.</b> Logged out they are
+    buttons; logged in the bell is a summary that opens a menu.</p>
+    <p class="tk-note">Two rules for one face is how a divergence starts. The face is the atom's now,
+    and this file keeps only what is genuinely different: a summary needs its marker removed and a
+    panel positioned under it, and neither of those is what the circle looks like.</p>
+    <p class="tk-note"><b>How it works left on 2026-08-06</b> and became the button family's fifth
+    size, a labelled press with a transparent ground, <b>which the family had no name for until the
+    census measured 177 placements wearing one</b>. Two selectors were SPLIT rather than moved,
+    because each also styled the two disclosures, and those are still this file's.</p>
+  </section>
+
+  <section class="tk-sec" id="press">
+    <h2 data-n="5">Nine hovers answered the pointer and nothing answered the click</h2>
+    <p class="tk-note"><b>The press was the axis this file never had.</b> Every quiet control in the
+    header is flat at rest, a transparent ground inside a hairline, so it presses the one way the
+    whole system presses: it settles onto the single held ground, declared in both themes. Nothing to
+    unlift, because nothing here is lifted.</p>
+    <p class="tk-note"><b>The wordmark presses square-cornered</b>, and the reason is a rule rather
+    than a taste: <b>a radius is geometry and a state may not move the element it is on</b>. The card
+    file gives the same answer for the same reason.</p>
+    <p class="tk-why">The balance plate is the exception, and it is the system's three-step of a
+    brass plate: rest lights it from the top left, hover takes the lit role to both stops so the whole
+    face comes up, <b>press flips the angle so the light falls to the bottom right, which is what a
+    plate pushed IN looks like</b>, and drops the glow, because a plate that is down is not
+    lifted.</p>
+  </section>
+
+  <section class="tk-sec" id="dead">
+    <h2 data-n="6">A rule that could never fire, found by counting worn names</h2>
+    <p class="tk-note">A selector for a course-page layout sat in this file describing something the
+    app header has nothing to do with. The class it named is carried by three course pages, <b>and not
+    one of the 28 course pages loads <code>components/index.css</code></b>, so the rule could never
+    fire in any tree.</p>
+    <p class="tk-lab tk-bad"><b>A rule in the wrong file is invisible until somebody counts what is
+    actually worn.</b> <i>It was found the first time the worn names were counted, not by reading the
+    file, which had been read many times.</i></p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="7">The rule</h2>
+    <p class="tk-note"><b>A shell owns the band, the row and the panel. It owns no control.</b> The
+    wordmark, the circles, the menu rows and the labelled press are four other files.</p>
+    <p class="tk-note"><b>The same face in two auth states is one rule, not two.</b> The element may
+    differ; the drawing may not.</p>
+    <p class="tk-note"><b>A state may not move the element it is on.</b> A press changes colour and
+    depth, never geometry.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="8">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never write the same circle twice because the tag changed.</b> <i>The
+    measurement said 36px, a hairline, transparent and a pill in both states, and the two copies had
+    already begun to drift.</i></p>
+    <p class="tk-lab tk-bad"><b>Never assume a part you can see in the markup is on the screen.</b>
+    <i>The condensed strip is 0px tall on all 105, and another component's sticky offset was built on
+    the assumption that it is not.</i></p>
+    <p class="tk-lab tk-bad"><b>Never leave a hover without a press in a shell that is used on a
+    phone.</b> <i>Nine of them, and a tap said nothing at all.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="9">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="organisms.html#header">the organisms
+    page</a>. The stylesheet: <code>components/header.css</code>. The circles:
+    <a href="iconbtn.html">icon button</a>. The menu rows: <a href="navitem.html">nav item</a>. The
+    labelled press: <a href="button.html">button</a>. The strip below it:
+    <a href="catnav.html">category nav</a>. The rail that trusted the strip:
+    <a href="toc.html#pinned">contents</a>.</p>
+  </section>
+
+</div>
+</body>
+</html>

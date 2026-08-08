@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: footer</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Footer</h1>
+    <p>Level 3, a shell, and <b>the biggest single block in the product</b>: 1,432px tall on a phone,
+    which is nearly four screens of a 390x900 window. <b>105 footers, 420 columns and 1,785 links on
+    105 painted screens.</b> Measured 2026-08-08 in a browser, at 390 and 1280, in both pointer
+    branches.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">105 footers</span>
+      <span class="tk-badge">1,432px at 390</span>
+      <span class="tk-badge">595px at 1280</span>
+      <span class="tk-badge">1,785 links</span>
+      <span class="tk-badge">outside app-case</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="organisms.html#footer">the organisms page</a>. What needs the room here is the one
+    structural fact about this component that reaches into three other files: <b>the footer stands
+    OUTSIDE <code>.app-case</code></b>, and every rule the system scopes to that wrapper stops at its
+    edge.</p>
+  </section>
+
+  <section class="tk-sec" id="outside">
+    <h2 data-n="2">Outside the wrapper, and this file already knew</h2>
+    <p class="tk-note">The language picker in this footer is a disclosure, exactly like the sort menu
+    in the feed. Its hover and its press are written HERE rather than in the filters file, <b>and the
+    comment says why in one line: the footer stands outside <code>.app-case</code>, and both shared
+    rules are scoped to that wrapper, so the footer's copy of the control is reached by
+    neither.</b></p>
+    <p class="tk-why"><b>That is the whole of backlog 58, discovered here for one control and never
+    generalised.</b> Measured across 106 screens: <b>105 of 193 filter menus stand outside the
+    wrapper and every one of them is this footer's</b>. This file answered its own copy's hover and
+    press by hand; the padding, the transition and the 8/20 box were never answered at all, so the
+    footer's chooser renders 90x27 against 152x35 everywhere else.</p>
+    <p class="tk-lab tk-bad"><b>A workaround written for one control is a defect nobody has
+    counted.</b> <i>It is in the file, it works, and it hid the fact that 105 placements needed the
+    same thing.</i></p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="3">The block</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <footer class="app-footer"><div class="footer-inner">
+          <div class="footer-cols">
+            <nav class="footer-col"><p class="sub-label">Markets</p><p class="popular-links"><a href="#">Politics</a> <a href="#">Crypto</a> <a href="#">Culture</a></p></nav>
+            <nav class="footer-col"><p class="sub-label">Company</p><p class="popular-links"><a href="#">About</a> <a href="#">Contact</a></p></nav>
+          </div>
+          <p class="legal-links"><a href="#">Terms</a> <a href="#">Privacy</a> <a href="#">Responsible play</a></p>
+        </div></footer>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <footer class="app-footer"><div class="footer-inner">
+          <div class="footer-cols">
+            <nav class="footer-col"><p class="sub-label">Markets</p><p class="popular-links"><a href="#">Politics</a> <a href="#">Crypto</a> <a href="#">Culture</a></p></nav>
+            <nav class="footer-col"><p class="sub-label">Company</p><p class="popular-links"><a href="#">About</a> <a href="#">Contact</a></p></nav>
+          </div>
+          <p class="legal-links"><a href="#">Terms</a> <a href="#">Privacy</a> <a href="#">Responsible play</a></p>
+        </div></footer>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the whole footer</td><td><b>379x1432</b></td><td>1049x595</td></tr>
+          <tr><td>the columns</td><td>351 wide, stacked, 103 to 206 tall each</td><td><b>four at 120x206</b></td></tr>
+          <tr><td>a popular link</td><td colspan="2">80x16, and 16 tall with a finger</td></tr>
+          <tr><td>a legal link</td><td colspan="2">31 to 86 wide, 15 tall</td></tr>
+          <tr><td>a social mark</td><td colspan="2"><b>28x28, and 28x28 with a finger</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The inset is the same one every band in the product uses</b>, so the first
+    footer column starts on the same x as the wordmark above it and the first card between them.
+    That is the only thing this file says about horizontal placement.</p>
+  </section>
+
+  <section class="tk-sec" id="press">
+    <h2 data-n="4">The press had to carry an underline, and the number is why</h2>
+    <p class="tk-why">Every link here is a nav row, and <b>the footer is read on a phone as often as
+    on a desktop, where the hover never fires</b>. The ground alone is not enough in this block and
+    the measurement is why: the system's pressed ground is <b>1.04:1 against the footer on graphite
+    and 1.05:1 on chalk</b>, which reads across a chip and disappears behind one line of small text.
+    So the press carries the underline the hover brightens.</p>
+    <p class="tk-note">It is the same number and the same answer as the system links on
+    <a href="state-block.html#system">404 and 500</a>. <b>Two components, one measurement, one
+    conclusion</b>, and neither of them guessed.</p>
+  </section>
+
+  <section class="tk-sec" id="marks">
+    <h2 data-n="5">Five marks left, and they were filed by what they DO</h2>
+    <p class="tk-note">The social marks were filed as navigation <b>because they GO somewhere</b>.
+    Measured in a browser they are an icon button in every value a face has: the control ground, a
+    hairline, a 10px corner, a centred flex box at 28 and an 18px mark, <b>which is the atom's tile
+    face exactly</b>. They left on 2026-08-06.</p>
+    <p class="tk-note"><b>A role is what a control means and a face is what it is</b>, and this was
+    the case that forced the distinction. The same correction settles
+    <a href="loadmore.html#role">load more</a>: an action by role, a chip by atom.</p>
+    <p class="tk-note">What this file may still say about them is one line: <b>the row is a flex
+    line with an 8 gap.</b></p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>A shell owns the band, the inset and the rows. It owns no control.</b></p>
+    <p class="tk-note"><b>Where the ground cannot say "pressed", something else must.</b> 1.04:1 is
+    a state that exists in the stylesheet and nowhere on the screen.</p>
+    <p class="tk-note"><b>Everything this footer links to has to exist on the map.</b> That is not a
+    CSS rule and it is the biggest open thing about this component: 16 destinations are promised here
+    that the sitemap does not carry, on all 105 screens. <code>docs/backlog.md</code> 27 and 28.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never fix a scope for one control and stop.</b> <i>This file worked
+    around standing outside <code>.app-case</code> for its own language picker, and 105 placements of
+    the same control went on losing their rules.</i></p>
+    <p class="tk-lab tk-bad"><b>Never file a control by what it does.</b> <i>Five marks were
+    navigation by role and an icon button in every measurable value.</i></p>
+    <p class="tk-lab tk-bad"><b>Never promise a destination the map does not have.</b> <i>Sixteen
+    labels, 105 screens, and eight of them are on no map at all.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="organisms.html#footer">the organisms
+    page</a>. The stylesheet: <code>components/footer.css</code>. The marks:
+    <a href="iconbtn.html">icon button</a>. The chooser and the scope it misses:
+    <a href="filters.html#scope">filters</a>. The trust plate above it:
+    <a href="trustbar.html">trust bar</a>. The destinations:
+    <code>ia/docs/sitemap.md</code>, and <code>docs/backlog.md</code> 27 and 28.</p>
+  </section>
+
+</div>
+</body>
+</html>

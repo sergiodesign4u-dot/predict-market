@@ -44,6 +44,82 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - Thirteen organism pages, the last unmeasured component, and four zeros that had to be challenged
+
+Every atom, molecule and organism in the system now has a page: **49 of 55**, and the six left are
+the patterns. Every number read in a browser at 390 and 1280 with `window.innerWidth` and
+`matchMedia('(pointer:coarse)')` asserted before each pass, dialogs and disclosures forced open, and
+**every tab radio cycled**, which turned out to matter more than anything else in this batch.
+
+### `profile` was the sixth and last of the unmeasured
+
+The identity row holds one `.btn` and the gallery holds **three `.card`**, so it holds an organism
+and it is level 3. The organisms shelf carried it as unmeasured since the rebuild began; that word
+is now gone from the repository. Six components came off it in three batches, and in every case the
+refusal had been right: **the level formula answers 1 for an atom and 1 for a file nobody has read,
+and the two are indistinguishable in the output.**
+
+### Four zeros, and every one of them needed its condition asserted
+
+This batch produced more false readings than any other, and they are all the same mistake in
+different clothes.
+
+- **Three of four event-detail panels read 0x0 at both widths**, and all three are correct: the tabs
+  are CSS-only, driven by radios, so a static reading sees one panel and reports the rest as missing.
+  The whole of `bets-table` is behind two of them. Measured by setting each radio in turn.
+- **The profile gallery reads 0x0**, for the same reason and behind its own strip.
+- **The bet dock reads 0x0 at 1280 and the bet panel reads 0x0 at 390**, which is one control at two
+  widths with each face absent where the other stands.
+- **Every chart grid line reads 0 tall, and that one is geometry**: a horizontal `<line>` has a
+  bounding box of 300x0 and its stroke is painted OUTSIDE it. Read properly it carries a white stroke
+  at 6 per cent. This is the only zero in the kit that is a property of the shape rather than of a
+  hidden host.
+
+**And the specimen for the dock was removed rather than shipped empty.** A component that is
+`display:none` above 760 cannot have a specimen on a page read at 1280; the page says so and shows
+the sheet the dock opens instead.
+
+### What the pages found
+
+- **36 event-detail tab labels stand 36 tall with a finger**, on the strip that is that screen's main
+  navigation. The floor names `.tabs button`, `.ptab-lbl` and `.rules-tab`, all three of which
+  measure 44; `.ed-tablabel` is a `<label>`, so the tag-based half of the selector misses it.
+  Backlog 64.
+- **The footer already knew what backlog 58 says, and had fixed it for one control.** Its language
+  picker's hover and press are written in `footer.css` with a comment saying the footer stands outside
+  `.app-case`. That is 105 of 193 filter menus, and the workaround hid the count.
+- **`hero` is 166 lines and 44 class names for ONE placement**, the largest stylesheet-to-placement
+  ratio in the system, and it is where the two worst contrast numbers of the whole pass were found: a
+  hover colour at **1.71:1 in daylight**, and a hover that painted **14.85:1 over 14.85:1**, which is
+  a state that exists in one theme only.
+- **`feed` is 11 lines and one class**, the smallest file in the system, and its page is the list of
+  where everything else on a browse screen comes from. Three files are now nearly empty, `feed`,
+  `loadmore` and `quick`, and each page says why its file is still kept.
+- **`hiw-dialog` scoped its whole block to a dialog**, so the page it links to as "the full guide"
+  rendered as four bare headings: not one rule could reach it. **Scope describes where a thing may
+  stand, not where somebody first put it.**
+- **`dialog`: 337 dialogs on 105 screens, three per screen and shut.** That is the whole explanation
+  for the `.app-case` scope defect the system keeps meeting: a `<dialog>` is outside the wrapper, and
+  a closed dialog is where a defect waits.
+
+### The instrument, a fourth time
+
+The verification pass over all 49 pages returned `pointer:coarse` at both widths, left over from this
+batch's own touch reading. The pass was re-run from a fresh browser at `pointer:fine`. **Four times
+in one day, and the guard is now written into every script rather than remembered**: assert the
+width and the pointer, print them, and treat two columns that agree where they should not as the tell.
+
+### Verified
+
+All 49 kit pages at 390 and 1280, fine pointer asserted: **0 horizontal page scroll, 0 console
+errors, 130 unique hrefs and 0 broken, 0 responses over 400**, one active row per page, 0 collapsed
+specimen figures. All thirteen `Stand:` lines repointed, every section of `organisms.html` links to
+its page, and `ui-kit/docs/inventory.md` carries a reading for the last of the six.
+
+Backlog 49 to 50.
+
+---
+
 ## 2026-08-08 - The word "unmeasured" comes off three components, and it came off by walking
 
 `ui-kit/docs/inventory.md` filed six components as **outside the core, unmeasured**: they stand on

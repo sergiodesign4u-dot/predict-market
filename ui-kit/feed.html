@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: feed</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Feed</h1>
+    <p>Level 3, a shell, and <b>the smallest file in the system: 11 lines, one class name, one
+    declaration that paints anything</b>. It stands on <b>105 painted screens</b>, more than any
+    other organism, and there is almost nothing left in it. That is the point of this page.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">105 placements</span>
+      <span class="tk-badge">11 lines</span>
+      <span class="tk-badge">1 class</span>
+      <span class="tk-badge">1 role read</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What an emptied shell looks like when it has been emptied correctly</h2>
+    <p class="tk-note">Every browse screen's main element is <code>&lt;main class="feed"&gt;</code>,
+    and this file declares one thing about it. Everything a person can see on a browse screen comes
+    from somewhere else, <b>and this page is the list of where</b>.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>what a browse screen is made of</th><th>whose file</th></tr></thead>
+        <tbody>
+          <tr><td>the two-column shell and the gutters</td><td><code>patterns/browse-shell.css</code></td></tr>
+          <tr><td>the card grid and how it reflows</td><td><code>patterns/card-grid.css</code></td></tr>
+          <tr><td>the plate the whole thing stands on</td><td><code>base.css</code>, with the page frame</td></tr>
+          <tr><td>the category band and the sub-category rail</td><td><a href="catnav.html">category nav</a></td></tr>
+          <tr><td>the featured block</td><td><a href="hero.html">hero</a></td></tr>
+          <tr><td>the cards</td><td><a href="card.html">card</a></td></tr>
+          <tr><td>the prose at the foot</td><td><a href="seo-plate.html">SEO plate</a></td></tr>
+          <tr><td>the row that fetches more</td><td><a href="loadmore.html">load more</a></td></tr>
+          <tr><td>the chart's grid line, which used to be here</td><td><a href="chart.html#grid">chart</a></td></tr>
+          <tr><td><b>the main element's own text colour</b></td><td><b>this file</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>The last row is the whole component.</b> A shell that has given up everything
+    it does not own ends as one declaration, and the honest thing to do is say so on its page rather
+    than pad it.</p>
+  </section>
+
+  <section class="tk-sec" id="measured">
+    <h2 data-n="2">Measured, and the numbers are about the screens rather than the file</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>screen kind</th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>a full feed</td><td>379x6006</td><td>1049x3084</td></tr>
+          <tr><td>a category feed</td><td>379x3643</td><td>1049x2151</td></tr>
+          <tr><td>an empty or error screen</td><td><b>379x0</b></td><td><b>1049x0</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>Zero on the empty and error screens, and that is correct</b>: there the
+    main element holds nothing, and what a person sees is a <a href="state-block.html">state
+    block</a> standing in its place. It is the third component in this kit whose zeros had to be
+    checked before they could be reported, after
+    <a href="skeleton.html#recount">the skeleton marks</a> and
+    <a href="tabs.html#behind">the tab panels</a>.</p>
+  </section>
+
+  <section class="tk-sec" id="why-kept">
+    <h2 data-n="3">Why it is still a file</h2>
+    <p class="tk-note">Three components in this system are now down to a handful of declarations:
+    this one, <a href="loadmore.html">load more</a> at two rules and
+    <a href="quick.html">quick amounts</a> at four. <b>Each of them is kept for a different reason,
+    and each reason is written on its page</b>, because a file with nothing in it is a file somebody
+    will delete without reading what it was for.</p>
+    <p class="tk-note"><b>This one is kept because the class is the name of a place.</b> Every browse
+    screen's main element carries it, the class map needs an owner for it, and a screen tree of 105
+    files agreeing on one name for one element is worth a line of CSS. <b>The day the name goes, the
+    file goes with it and not before.</b></p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="4">The rule</h2>
+    <p class="tk-note"><b>A shell owns nothing it can hand to a pattern, a page frame or a
+    component.</b> What is left is the honest size of it.</p>
+    <p class="tk-note"><b>A file may be one declaration.</b> It may not be one declaration with no
+    reason written down.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="5">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never let a shell grow a part.</b> <i>The chart's grid line lived
+    here once, and the arithmetic read the chart as containing the feed.</i></p>
+    <p class="tk-lab tk-bad"><b>Never delete an empty file without reading its page.</b> <i>Three
+    files in this system are nearly empty and all three are kept for reasons that are not obvious
+    from the CSS.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="6">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="organisms.html#feed">the organisms page</a>.
+    The stylesheet: <code>components/feed.css</code>, 11 lines. Everything else a browse screen is
+    made of: the table in section 1.</p>
+  </section>
+
+</div>
+</body>
+</html>

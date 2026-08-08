@@ -2,7 +2,7 @@
    Component: feed. Classes: .feed.
 
    Reads: --text-primary
-   Stand:  ui-kit/organisms.html#feed
+   Stand:  ui-kit/feed.html, and ui-kit/organisms.html#feed for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

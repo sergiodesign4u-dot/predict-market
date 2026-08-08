@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: profile</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Profile</h1>
+    <p>Level 3, declared on 2026-08-08. <b>The last of the six components the inventory called
+    unmeasured</b>, and the only organism among them. Who you are, above what you have done.
+    <b>2 identity rows and 2 galleries on 2 painted screens, and exactly one control.</b> Measured in
+    a browser at 390 and 1280, tabs cycled, in both pointer branches.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">2 screens</span>
+      <span class="tk-badge">1 control</span>
+      <span class="tk-badge">holds button and card</span>
+      <span class="tk-badge">45 lines</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">The sixth, and the word comes off</h2>
+    <p class="tk-note">Six components stood on none of the five anchor screens, so
+    <code>ui-kit/docs/inventory.md</code> filed them as <b>outside the core, unmeasured</b> rather
+    than giving them a level: <b>the formula answers 1 for an atom and 1 for a file nobody has read,
+    and the two are indistinguishable in the output</b>. Five came off in the two batches before
+    this one. This is the sixth.</p>
+    <p class="tk-why"><b>Walked today on the two screens that carry it:</b> the identity row holds one
+    <code>.btn</code>, and the gallery holds <b>three <code>.card</code></b>. It HOLDS an organism, so
+    it is level 3, and the organisms shelf carried it as unmeasured until now.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">Identity first</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="idrow"><span class="av">avatar</span>
+          <span class="who"><span class="name">alex_predicts</span><br><span class="handle">Your public track record</span></span>
+          <button type="button" class="btn btn-secondary btn-sm edit">Edit name and avatar</button></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="idrow"><span class="av">avatar</span>
+          <span class="who"><span class="name">alex_predicts</span><br><span class="handle">Your public track record</span></span>
+          <button type="button" class="btn btn-secondary btn-sm edit">Edit name and avatar</button></div>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the identity row</td><td><b>293x143</b>, the button wraps below</td><td><b>911x91</b>, all three on one line</td></tr>
+          <tr><td>the avatar</td><td colspan="2">72x72, and it does not move</td></tr>
+          <tr><td>Edit</td><td colspan="2">136x36 with a mouse, <b>136x44 with a finger</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note">The avatar image is a placeholder written here, and this file says so: <b>a
+    sample face, so the stand has one. The colour under it is a role; only the image is sample
+    content.</b> The same sentence appears in the comment thread's file and the event head's, which
+    is three components with the same honest hole.</p>
+  </section>
+
+  <section class="tk-sec" id="tabs">
+    <h2 data-n="3">Three panels, one at a time</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>tab</th><th>what is behind it</th><th>panel at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>Track record</td><td>the summary face of <a href="position.html#record">position</a></td><td>293x225</td><td>911x109</td></tr>
+          <tr><td>Past wins</td><td><b>the gallery, holding 3 <a href="card.html">cards</a></b></td><td>293x108</td><td>911x108</td></tr>
+          <tr><td>Resolved</td><td>a list of settled bets</td><td>293x366</td><td>911x293</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The gallery measures 0x0 unless its tab is the checked one</b>, which is why
+    the first reading of this component reported it as missing. Same correction as
+    <a href="tabs.html#behind">the event tabs</a> and
+    <a href="skeleton.html#recount">the skeleton marks</a>: <b>ask whether the host is on the screen
+    before reporting a zero</b>. The strip itself is <a href="tabs.html">tabs</a>'s.</p>
+  </section>
+
+  <section class="tk-sec" id="edit">
+    <h2 data-n="4">One placement is the wrong size for an exception</h2>
+    <p class="tk-note"><b>Edit left this file on 2026-08-06</b> for the button family's small
+    secondary. It is <b>one placement in the whole product</b>, and it wore a pill where the family
+    wears 10, 11px where the family's small step is 12, and 8/16 where that step is 8/12.</p>
+    <p class="tk-lab tk-bad"><b>Naming a face for a single element is what the atom rules forbid.</b>
+    <i>So the element took the family's name instead, and three values moved by a step each.</i></p>
+    <p class="tk-why"><b>And the file's own touch rule went with it, which is the better half of the
+    story.</b> This file had written <b>target size follows the POINTER, not the viewport</b> and
+    then bound its own control to a 640px viewport query, <b>so a touch tablet or a touch laptop got
+    the 36px control</b>. The rule was right and the implementation contradicted it. It is no longer
+    written here at all: the family carries the floor for every one of its members, and this control
+    is a member.</p>
+  </section>
+
+  <section class="tk-sec" id="ladder">
+    <h2 data-n="5">A brass ring five hundredths off the ladder</h2>
+    <p class="tk-note">The avatar's ring was <b>55 per cent written as a colour function</b>, five
+    hundredths off the ladder's last rung <b>and invisible to the rescale map for exactly that
+    reason</b>: a value spelled as a function is not a token, so nothing that reads token names can
+    see it.</p>
+    <p class="tk-note">It is <b>the only tint moved in that pass that does NOT change in
+    daylight</b>, because the rung it landed on is the one the light theme leaves where it is. The
+    same defect, a rung written as a function, was found in the filter panel and in the tab strips
+    the same day.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>Identity first, record second.</b> The row that says who you are comes
+    before the numbers that say how you have done, and the numbers are
+    <a href="position.html">position</a>'s.</p>
+    <p class="tk-note"><b>A target follows the pointer, not the viewport.</b> This file wrote that
+    sentence and then contradicted it in its own query.</p>
+    <p class="tk-note"><b>One placement never earns a face.</b> It joins a family and moves by a
+    step.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never bind a target to a width.</b> <i>A touch laptop is a coarse
+    pointer at 1280 and got the 36px control.</i></p>
+    <p class="tk-lab tk-bad"><b>Never write a rung as a colour function.</b> <i>Five hundredths off
+    the ladder and invisible to everything that reads names.</i></p>
+    <p class="tk-lab tk-bad"><b>Never report a gallery as missing without checking its tab.</b>
+    <i>0x0 at both widths, and the tab beside it was the reason.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="organisms.html#profile">the organisms
+    page</a>. The stylesheet: <code>components/profile.css</code>, 45 lines. The one control:
+    <a href="button.html">button</a>. The tab strip: <a href="tabs.html">tabs</a>. The record and the
+    cards behind the tabs: <a href="position.html">position</a> and <a href="card.html">card</a>. The
+    other five that were unmeasured: <a href="toggle.html">toggle</a>,
+    <a href="account.html">account</a>, <a href="cookie-consent.html">cookie consent</a> and
+    <a href="toc.html">contents</a>.</p>
+  </section>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: card</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" d="M4 6.2C4 5.08 4 4.52 4.218 4.092a2 2 0 0 1 .874-.874C5.52 3 6.08 3 7.2 3h9.6c1.12 0 1.68 0 2.108.218a2 2 0 0 1 .874.874C20 4.52 20 5.08 20 6.2v12.646c0 .84 0 1.26-.271 1.428c-.272.168-.625-.06-1.332-.516l-5.32-3.433c-.253-.163-.38-.245-.516-.276a.9.9 0 0 0-.322 0c-.136.031-.263.113-.516.276l-5.32 3.433c-.707.456-1.06.684-1.332.516C4 20.106 4 19.687 4 18.846z"/></symbol>
+  </defs></svg>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Card</h1>
+    <p>Level 3, and the thing the product is mostly made of. One market, as a tile: a photograph, a
+    question, the odds and a way to save it. <b>167 cards on 36 painted screens, and only 84 of them
+    carry a question</b>, because the rest are loading. Measured 2026-08-08 in a browser, at 390 and
+    1280, in both pointer branches.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">167 cards</span>
+      <span class="tk-badge">84 questions</span>
+      <span class="tk-badge">84 save buttons</span>
+      <span class="tk-badge">76 reasons</span>
+      <span class="tk-badge">0 photographs in CSS</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="organisms.html#card">the organisms page</a>. What needs the room here is the sixteen
+    rules that were content, and the two press decisions this component had to invent because <b>the
+    thing being pressed has no ground</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The card</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <article class="card"><div class="card-body">
+          <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)"></span>
+            <span class="top-txt"><a class="q" href="#">Will the state board certify the count before March 1</a></span></div>
+          <p class="why">Both parties have asked the courts to intervene, and the deadline has never slipped before.</p>
+          <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div>
+            <div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
+          <div class="meta"><span class="meta-txt"><span class="m-label">Volume</span><span class="m-val">$84,200</span></span>
+            <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-label="Save this market"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></div>
+        </div></article>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <article class="card"><div class="card-body">
+          <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)"></span>
+            <span class="top-txt"><a class="q" href="#">Will the state board certify the count before March 1</a></span></div>
+          <p class="why">Both parties have asked the courts to intervene, and the deadline has never slipped before.</p>
+          <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div>
+            <div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
+          <div class="meta"><span class="meta-txt"><span class="m-label">Volume</span><span class="m-val">$84,200</span></span>
+            <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-label="Save this market"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></div>
+        </div></article>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>a card</td><td>293x257 to 293x308</td><td>448x241 to 448x296</td></tr>
+          <tr><td>the question</td><td>199 wide, 30 to 88 tall</td><td>354 wide, 15 to 88 tall</td></tr>
+          <tr><td>the thumbnail</td><td colspan="2"><b>56x88, and it does not move</b></td></tr>
+          <tr><td>Save</td><td colspan="2">44x44 with a finger</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>167 cards and 84 questions</b>, because 68 of the rest are
+    <a href="skeleton.html">skeleton</a> hosts and the others are the hero's variants. A card that is
+    loading is the same box with every piece of content replaced by its shape.</p>
+  </section>
+
+  <section class="tk-sec" id="content">
+    <h2 data-n="3">Sixteen rules that were content, not styling</h2>
+    <p class="tk-why">Sixteen rules in this file said <b>which of the twelve feed cards shows which
+    photograph</b>, keyed on the position of the card in its list. <b>That is not styling, it is the
+    content of a screen</b>, and it broke the moment a card moved.</p>
+    <p class="tk-note">The system's own rule already names the event photograph as one of the three
+    things that belong on the element, beside a datum and a value a script writes at run time. So the
+    photograph is on the element now and <b>this file describes the frame the photograph sits
+    in</b>: the box, the mask, the corner and the shade over the bottom edge.</p>
+  </section>
+
+  <section class="tk-sec" id="press">
+    <h2 data-n="4">A bare link has no ground, so the ink presses instead</h2>
+    <p class="tk-why">The question wraps to two lines inside the card's text column, <b>and an opaque
+    stone behind it reads as a text selection rather than as a control being held</b>. So the ink
+    steps down instead, and <b>quiet is a colour here, never an opacity</b>: the thing every other
+    product fades is written as the role that was already measured for being read.</p>
+    <p class="tk-note">It is the only answer that works on a touch screen, <b>where there is no hover
+    to have left behind</b>, and it is the same answer the hero's headline and its hot list give, for
+    the same reason and in the same afternoon.</p>
+    <p class="tk-note"><b>The card itself does the opposite, and that is also a rule.</b> The lift
+    STAYS on hover, because it is the Vault's floating language, it is composited and it shifts no
+    neighbour. <b>A HELD card settles</b>: the press puts it back where it already rests and restates
+    the rest stack, so the two lines are the rest rule repeated rather than a new value.</p>
+    <p class="tk-note"><b>Save presses square-cornered</b>, because a radius is geometry and a state
+    may not move the element it is on. The wordmark in <a href="header.html#press">the header</a>
+    gives the same answer for the same reason.</p>
+  </section>
+
+  <section class="tk-sec" id="target">
+    <h2 data-n="5">The Save button pulls its own target out of the flow</h2>
+    <p class="tk-note">The control is <a href="iconbtn.html">icon button</a>'s bare face, and that
+    face carries an invisible 44px target which it then pulls back out of the layout, <b>because an
+    untouchable box that spreads the row it sits in is the atom's problem wherever it stands</b>.</p>
+    <p class="tk-note">What is left in this file is <b>a narrower answer to the same question on a
+    phone</b>: the enlarged button pulled tighter into the meta row. The 44 is unconditional above,
+    so that block stopped being a touch-target rule and is now a layout fact, <b>which is why it
+    stays on a width query</b> where the target rule went to a pointer query.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>Content goes on the element.</b> A photograph, a percentage and a run-time
+    value are the three things that are not styling, and everything else is a rule.</p>
+    <p class="tk-note"><b>A control with no ground presses in ink.</b> Not in opacity, and not in a
+    stone that reads as a selection.</p>
+    <p class="tk-note"><b>A lift is not a state, it is the material.</b> So the hover keeps it and
+    the press takes it away, which is the opposite of what a lift usually means.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never key a rule to a card's position in a list.</b> <i>Sixteen rules
+    did, and they were the content of one screen written into the system.</i></p>
+    <p class="tk-lab tk-bad"><b>Never fade a control to say it is held.</b> <i>Opacity is not a role
+    and no theme can reach it.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let an invisible target spread the row it sits in.</b> <i>A 44
+    box that pushes its neighbours is a layout bug wearing an accessibility fix.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="organisms.html#card">the organisms page</a>.
+    The stylesheet: <code>components/card.css</code>. The Save button:
+    <a href="iconbtn.html">icon button</a>. The odds bar inside it:
+    <a href="oddsbar.html">odds bar</a>. The pair on a multi-outcome card:
+    <a href="options.html">options</a> and <a href="yesno.html">yes / no</a>. Its loading face:
+    <a href="skeleton.html">skeleton</a>. The grid it stands in:
+    <code>components/patterns/card-grid.css</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>

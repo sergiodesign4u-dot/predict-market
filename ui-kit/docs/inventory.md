@@ -91,7 +91,7 @@ Uses are elements carrying one of the component's own classes across the 41 scre
 | `card` | 58 | **HOLDS** `yesno`, `oddsbar`, `options`, `iconbtn`, `skeleton` |
 | `hero` | 55 | **HOLDS** `yesno` |
 | `feed` | 41 | **HOLDS** everything a browse screen stands on. A shell |
-| `profile` | - | outside the core, unmeasured |
+| `profile` | 2 | **HOLDS** `button` and `card`: the identity row holds one, the gallery holds three. Walked 2026-08-08 on the two screens that carry it, tabs cycled. The sixth and last of the unmeasured |
 
 ### Patterns
 

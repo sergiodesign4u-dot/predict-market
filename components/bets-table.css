@@ -2,7 +2,7 @@
    Component: bets-table. Classes: .act-list, .act-row, .act-time, .act-txt, .hold-amt, .hold-col, .hold-cols, .hold-name, .hold-out, .hold-rank, .hold-row, .lg-item, .ptable.
 
    Reads: --border-hairline, --edge-groove-dark, --outcome-no-figure, --outcome-yes-text, --text-brass, --text-muted, --text-primary, --tint-brass-09
-   Stand:  ui-kit/organisms.html#bets-table
+   Stand:  ui-kit/bets-table.html, and ui-kit/organisms.html#bets-table for the level and its reason
    Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: tabs</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Tabs</h1>
+    <p>Level 3. Four switchers in one file, and <b>every one of them works with no JavaScript at
+    all</b>: a radio, a label and a sibling selector. <b>36 event tabs, 6 profile tabs, 18 rules tabs
+    and 36 range chips</b> across 9 and 2 screens. Measured 2026-08-08 in a browser by cycling every
+    radio, at 390 and 1280, in both pointer branches.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">4 switchers</span>
+      <span class="tk-badge">0 JavaScript</span>
+      <span class="tk-badge">1 panel visible at a time</span>
+      <span class="tk-badge">36 labels at 36 tall</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="organisms.html#tabs">the organisms page</a>. This page holds the thing a shelf can never
+    show about this component: <b>what is behind each tab</b>, which needed the radios cycled one at
+    a time and every panel measured, and <b>the one place the system's single focus ring could not
+    land</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="behind">
+    <h2 data-n="2">One panel at a time, and each holds a different component</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>tab</th><th>what is behind it</th><th>panel at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>Comments</td><td><a href="comments.html">comments</a>, the thread</td><td>310x498</td><td>590x420</td></tr>
+          <tr><td>Biggest bets</td><td><a href="bets-table.html">bets table</a>, the holders list</td><td>310x186</td><td>590x186</td></tr>
+          <tr><td>Bets</td><td>the positions table</td><td>310x248</td><td>590x248</td></tr>
+          <tr><td>Activity</td><td>the activity list</td><td>310x277</td><td>590x266</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>Measured by setting each radio in turn and reading what stops being
+    <code>display:none</code>.</b> A static reading of this screen sees one of the four and reports
+    the other three as 0x0, which is what the first pass of this batch did before the radios were
+    cycled: <b>the positions table, the holders rows and the activity rows all measured 0x0 at both
+    widths</b> and none of them is missing.</p>
+    <p class="tk-lab tk-bad"><b>A zero behind a tab is not a defect, it is a tab.</b> <i>Same
+    sentence as the six skeleton marks in a hidden bet panel, and the same instrument correction: ask
+    whether the host is on the screen.</i></p>
+  </section>
+
+  <section class="tk-sec" id="ring">
+    <h2 data-n="3">The one place the system's single ring could not land</h2>
+    <p class="tk-why"><code>base.css</code> draws the ring once, <b>on the element that HAS focus</b>,
+    and the element that has focus here is the RADIO, which this file parks at
+    <code>left:-9999px</code>. <b>So the indicator was painted off the left edge of the document</b>,
+    and a person tabbing into the tab strip saw nothing at all.</p>
+    <p class="tk-note"><b>The radio is still focusable, which is the part that matters</b>: it is
+    offscreen rather than removed, so the keyboard still reaches it. What was missing was only the
+    sign that it had. The ring is drawn on the LABEL now, which is the thing a person can see.</p>
+    <p class="tk-note"><b>The profile strip needed the same answer with the input hidden a different
+    way.</b> There the radio is a 1px box at zero opacity, so the ring is drawn in the right place
+    and then painted at zero alpha, <b>which is the same nothing arrived at from the other
+    direction</b>. Its bar is a scroller and the pill fills its content box, so the offset turns
+    inward there, exactly as it does in <a href="filters.html#hidden">the filter panel</a>.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="4">The strips</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="rules-tabs"><button type="button" class="rules-tab">Rules</button><button type="button" class="rules-tab">Background</button></div>
+        <div class="ed-range"><button type="button" class="chip chip-rail">1d</button><button type="button" class="chip chip-rail">1w</button><button type="button" class="chip chip-rail">1m</button><button type="button" class="chip chip-rail sel">all</button></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="rules-tabs"><button type="button" class="rules-tab">Rules</button><button type="button" class="rules-tab">Background</button></div>
+        <div class="ed-range"><button type="button" class="chip chip-rail">1d</button><button type="button" class="chip chip-rail">1w</button><button type="button" class="chip chip-rail">1m</button><button type="button" class="chip chip-rail sel">all</button></div>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>strip</th><th>worn</th><th>mouse</th><th>finger</th></tr></thead>
+        <tbody>
+          <tr><td><code>.ed-tablabel</code>, the event tabs</td><td><b>36</b></td><td>36 tall</td><td><b>36 tall, unchanged</b></td></tr>
+          <tr><td><code>.ptab-lbl</code>, the profile tabs</td><td>6</td><td>38 tall</td><td><b>44</b></td></tr>
+          <tr><td><code>.rules-tab</code></td><td>18</td><td>31 tall</td><td><b>44</b></td></tr>
+          <tr><td><code>.ed-range button</code></td><td>36</td><td>36 tall</td><td><b>44</b>, it is a chip</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>Three of the four take the floor and one does not.</b> The one touch floor in
+    <code>components/base.css</code> names fourteen families, including <code>.tabs button</code>,
+    <code>.ptab-lbl</code> and <code>.rules-tab</code>, and <b><code>.ed-tablabel</code> is not one of
+    them</b>: it is a <code>&lt;label&gt;</code>, not a button, so the tag-based half of the list
+    misses it. Those 36 labels are <b>the main navigation of the event screen</b>, on a phone, at 36
+    tall. <code>docs/backlog.md</code> 64.</p>
+  </section>
+
+  <section class="tk-sec" id="merge">
+    <h2 data-n="5">The range rail and the comment sorter are one chip</h2>
+    <p class="tk-note">Measured 2026-08-04: the two <b>agree on padding, radius, size, height, ground
+    and selected ground down to the pixel</b>, and disagreed on the two things left, the face and the
+    weight. One rail was mono at 400 rising to 600 when chosen; the sorter was the body face. <b>Two
+    files, one control, and neither file could take the other</b> without styling another component's
+    classes.</p>
+    <p class="tk-note">Both are <a href="chip.html">chip</a>'s rail face now. What stayed here is the
+    row: <b>the sorter's markup stands in the comments file and its styling has always stood here, so
+    its press stands here too</b>, next to the hover it answers rather than in the other file.</p>
+    <p class="tk-note"><b>Both selected grounds in this file were a colour function at 16 per cent,
+    which IS a rung and was still off the ladder</b>, because a value spelled as a function is not a
+    token and does not get the theme. On graphite nothing moved; on chalk they now step up like every
+    other brass tint and the label reads 5.72:1 there.</p>
+  </section>
+
+  <section class="tk-sec" id="press">
+    <h2 data-n="6">The press, and it is worth most where there is no hover</h2>
+    <p class="tk-note">Every tab in this file was missing it. A tab is a quiet control, so it settles
+    onto the one held-down role in the system, and each press mirrors the hover it answers so the two
+    sit at equal specificity and source order hands the pointer to the press.</p>
+    <p class="tk-note"><b>It is worth most on a phone, where there is no hover at all</b>: until it
+    arrived, a tap on a tab said nothing until the panel underneath had already changed.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="7">The rule</h2>
+    <p class="tk-note"><b>A switcher needs no script.</b> A radio, a label and a sibling selector,
+    and the state lives in the document rather than in a variable.</p>
+    <p class="tk-note"><b>Hide the input where the ring can still be drawn.</b> Offscreen is
+    focusable and invisible, and it takes the indicator with it, so the indicator moves to the label.</p>
+    <p class="tk-note"><b>Two strips that measure identically are one control.</b> The face and the
+    weight were the only disagreements, and neither had an argument.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="8">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never park a focusable element offscreen and leave the ring on
+    it.</b> <i>The indicator was painted at -9999px, which is a keyboard user seeing nothing.</i></p>
+    <p class="tk-lab tk-bad"><b>Never measure a tabbed screen without cycling the tabs.</b> <i>Three
+    of four panels read 0x0 at both widths and all three are correct.</i></p>
+    <p class="tk-lab tk-bad"><b>Never write a floor as a list of tags.</b> <i>Three of these four
+    strips take the touch floor and the fourth is a label rather than a button.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="9">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="organisms.html#tabs">the organisms page</a>.
+    The stylesheet: <code>components/tabs.css</code>. The chip both rails wear:
+    <a href="chip.html">chip</a>. What is behind the four panels:
+    <a href="comments.html">comments</a> and <a href="bets-table.html">bets table</a>. The floor and
+    the family it misses: <code>components/base.css</code> and <code>docs/backlog.md</code> 64.</p>
+  </section>
+
+</div>
+</body>
+</html>

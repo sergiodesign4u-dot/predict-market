@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: how it works</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>How it works</h1>
+    <p>Level 3. The longest single piece of writing in the product, and the one that carries design
+    principle 1 on its own: <b>a new user is never lost</b>. <b>105 sheets, 320 sections and 106 FAQ
+    blocks on 105 painted screens.</b> Measured 2026-08-08 in a browser, dialogs forced open, at 390
+    and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">105 sheets</span>
+      <span class="tk-badge">320 sections</span>
+      <span class="tk-badge">1 block, 2 hosts</span>
+      <span class="tk-badge">0 controls of its own</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="organisms.html#hiw-dialog">the organisms page</a>. What needs the room here is the one
+    correction that changed what this component IS, and it is a lesson about scope rather than about
+    drawing.</p>
+  </section>
+
+  <section class="tk-sec" id="block">
+    <h2 data-n="2">THE BLOCK, NOT THE DIALOG</h2>
+    <p class="tk-why">Every rule in this file used to begin with the dialog's own class, <b>which
+    meant the hero, the icon chips, the section rhythm and the FAQ list could only ever exist inside
+    a dialog</b>. The page this sheet links to as "the full guide" was therefore a document: four
+    bare headings, some paragraphs and two buttons, <b>because not one of these rules could reach
+    it</b>.</p>
+    <p class="tk-lab tk-bad"><b>Scope describes where a thing MAY stand, not where somebody first
+    put it.</b> <i>A scope written from the first placement makes the second placement impossible,
+    and the failure looks like a page nobody styled rather than like a rule that is too
+    narrow.</i></p>
+    <p class="tk-note">The rules are the block's now, and the same markup renders in a sheet and on a
+    page. <b>The one thing that changes between the two is the heading level</b>: an h1 on the page
+    and an h2 in the dialog, because a page has exactly one h1 and a dialog is opened over a page
+    that already spent it. Same heading, two levels.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="3">The sheet</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
+        <dialog class="app-dialog hiw-dialog" open aria-label="How it works">
+          <div class="hiw-hero"><div class="hiw-hero-inner">
+            <p class="hiw-label">How it works</p>
+            <p class="hiw-tagline">You are betting on what happens, not on what somebody says will happen.</p>
+          </div></div>
+          <div class="hiw-body">
+            <div class="hiw-sec"><span class="hiw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/></svg></span>
+              <div class="hiw-sec-txt"><h3>Pick a side</h3><p>Every market is one question with a date and a named source. You back YES or NO at the price the market is at.</p></div></div>
+            <div class="hiw-sec"><span class="hiw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 16V9M12 16V5M18 16v-4"/></svg></span>
+              <div class="hiw-sec-txt"><h3>The price is what people are paying</h3><p>It moves when they change their minds, and it is the market's own estimate of the odds.</p></div></div>
+          </div>
+        </dialog>
+      </div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
+        <dialog class="app-dialog hiw-dialog" open aria-label="How it works">
+          <div class="hiw-hero"><div class="hiw-hero-inner">
+            <p class="hiw-label">How it works</p>
+            <p class="hiw-tagline">You are betting on what happens, not on what somebody says will happen.</p>
+          </div></div>
+          <div class="hiw-body">
+            <div class="hiw-sec"><span class="hiw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/></svg></span>
+              <div class="hiw-sec-txt"><h3>Pick a side</h3><p>Every market is one question with a date and a named source. You back YES or NO at the price the market is at.</p></div></div>
+            <div class="hiw-sec"><span class="hiw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 16V9M12 16V5M18 16v-4"/></svg></span>
+              <div class="hiw-sec-txt"><h3>The price is what people are paying</h3><p>It moves when they change their minds, and it is the market's own estimate of the odds.</p></div></div>
+          </div>
+        </dialog>
+      </div></div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the sheet</td><td>349x854</td><td>464x764</td></tr>
+          <tr><td>the hero band</td><td>347x121</td><td>462x129</td></tr>
+          <tr><td>the two-column block, on the page</td><td><b>293x1823</b>, one column</td><td><b>911x905</b>, two</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The same content is 1,823px tall on a phone and 905 on a desktop</b>, which
+    is what a two-column block costs when it becomes one, and it is the reason the sheet's body
+    scrolls while its frame stays put: the frame clips its own corners and cannot also be the scroll
+    container.</p>
+  </section>
+
+  <section class="tk-sec" id="controls">
+    <h2 data-n="4">It owns no controls, and it used to own two</h2>
+    <p class="tk-note"><b>The close disc left on 2026-08-05</b>, and it took a second name with it.
+    It was the dialog file's close written again under another name: <b>same box, same pill, same
+    scrim, same edge, same transition</b>. One control belongs in one file, and the file is the one
+    named for what the control does.</p>
+    <p class="tk-note">Its focus ring is the one thing about it this sheet still decides, because the
+    ring has to survive the ground the disc floats over rather than the ground the atom was designed
+    against.</p>
+    <p class="tk-why"><b>And the brass action at the foot of it had no hover of its own.</b> Only the
+    arrow moved, so a person on a device with a pointer got a nudge and nothing under it. It takes
+    the same lit face every other brass plate in the system takes, and the same two roles. <b>The
+    fix cost no new value at all.</b></p>
+    <p class="tk-note">A head class was deleted in the same pass, <b>the fifth rule found alive on
+    one mistake</b>: 87 wireframes carry it, no painted screen and no stand does, and this sheet
+    cannot reach the grey tree.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="5">The rule</h2>
+    <p class="tk-note"><b>Scope the BLOCK, not the host.</b> If the same content can stand in two
+    places, the rules have to be written so it can.</p>
+    <p class="tk-note"><b>A heading level belongs to the document, not to the component.</b> One h1
+    per page, and a dialog opened over it starts at h2.</p>
+    <p class="tk-note"><b>An explanation may name the mechanism.</b> This is the block the voice rule
+    exempts, and the exemption stops at its title, which is why the title says what it does in plain
+    words.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="6">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never scope a block to the first thing that held it.</b> <i>The full
+    guide rendered as four bare headings for as long as these rules began with a dialog's class.</i></p>
+    <p class="tk-lab tk-bad"><b>Never write a control twice under two names.</b> <i>The close disc
+    was this file's and the dialog's, agreeing on every value.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let the arrow be the whole hover.</b> <i>A moving mark inside a
+    control is not the control answering.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="7">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="organisms.html#hiw-dialog">the organisms
+    page</a>. The stylesheet: <code>components/hiw-dialog.css</code>. The sheet it stands in:
+    <a href="dialog.html">dialog</a>. The close disc: <a href="iconbtn.html">icon button</a>. The
+    words, which are the whole component: <code>voice/docs/microcopy.md</code>. The principle:
+    <code>CLAUDE.md</code>, design principle 1.</p>
+  </section>
+
+</div>
+</body>
+</html>

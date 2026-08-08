@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: dialog</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Dialog</h1>
+    <p>Level 3. The sheet an invoked screen arrives as. <b>337 dialogs on 105 painted screens</b>,
+    three of them in the markup of nearly every screen and closed, which is why this component is at
+    the centre of the scope defect the system keeps paying for. Measured 2026-08-08 in a browser,
+    every dialog forced open, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">337 dialogs</span>
+      <span class="tk-badge">4 kinds</span>
+      <span class="tk-badge">333 close discs</span>
+      <span class="tk-badge">248 fine lines</span>
+      <span class="tk-badge">outside app-case</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">Three dialogs on every screen, closed</h2>
+    <p class="tk-why"><b>Every painted screen carries the sign-in sheet, the deposit sheet and the
+    How-it-works sheet in its markup, shut.</b> That is 337 dialogs across 105 screens, and it is the
+    single fact that explains a defect this repository has now met three times: <b>a
+    <code>&lt;dialog&gt;</code> sits outside the <code>.app-case</code> wrapper</b>, so every rule
+    scoped to that class stops at the dialog's edge.</p>
+    <p class="tk-note">526 of the 559 buttons that stand in a dialog in this product are in a dialog
+    that carries no <code>app-case</code>. The chip's amount face was drawn by the browser for
+    exactly that reason until 2026-08-08, and the field beside it was right the whole time because
+    <a href="input.html#scope">the input file</a> had named the second place its control stands.
+    <b>They are closed, so nothing rendered wrong; a closed dialog is where a defect waits.</b></p>
+  </section>
+
+  <section class="tk-sec" id="kinds">
+    <h2 data-n="2">Four kinds</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
+        <dialog class="app-dialog" open aria-label="Add funds">
+          <div class="sheet-head"><h2>Add funds</h2><p class="sheet-sub">USDC on Base. Arrives in about a minute.</p></div>
+          <div class="sheet-body">
+            <span class="field-label">Amount</span>
+            <div class="amount-row"><input class="amount-input" type="text" value="$50" aria-label="Amount"></div>
+            <p class="fine">Network fees are paid by us for the first deposit.</p>
+          </div>
+        </dialog>
+      </div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
+        <dialog class="app-dialog" open aria-label="Add funds">
+          <div class="sheet-head"><h2>Add funds</h2><p class="sheet-sub">USDC on Base. Arrives in about a minute.</p></div>
+          <div class="sheet-body">
+            <span class="field-label">Amount</span>
+            <div class="amount-row"><input class="amount-input" type="text" value="$50" aria-label="Amount"></div>
+            <p class="fine">Network fees are paid by us for the first deposit.</p>
+          </div>
+        </dialog>
+      </div></div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>kind</th><th>placements</th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>plain sheet</td><td>105 or so per screen family</td><td>349x678</td><td>420x685</td></tr>
+          <tr><td><code>.signin-dialog</code></td><td>109</td><td>349x427</td><td>410x423</td></tr>
+          <tr><td><a href="hiw-dialog.html">How it works</a></td><td>105</td><td>349x854</td><td>464x764</td></tr>
+          <tr><td><code>.outcome-dialog</code></td><td>6</td><td colspan="2">the win and loss overlays, which recolour the reconcile box</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The frame clips its own corners, so it cannot also be the scroll
+    container.</b> The sheet is bounded by the viewport and its BODY scrolls. Every dialog in the
+    product follows that split, and the How-it-works sheet writes it a second time for its own body
+    for the same reason.</p>
+  </section>
+
+  <section class="tk-sec" id="close">
+    <h2 data-n="3">One control, one name, one mark, and it was three rules in two files</h2>
+    <p class="tk-why"><code>.sheet-close</code> here and a second name in the How-it-works file were
+    <b>the same button written twice</b>, and this file's own copy was written twice again, once for
+    the outcome overlay and once for everything else. <b>All three agreed on the 32px box, the pill,
+    the scrim and the edge</b>, which is what says they were one control rather than three
+    decisions.</p>
+    <p class="tk-note">It is <code>.icon-btn.icon-btn-photo</code> now: the atom every icon-only press
+    in the product is, wearing the face for a photograph. What is left here is <b>where it sits</b>,
+    12 in from the top right corner above the head. <b>A region may say where an icon button sits and
+    may not say what it looks like.</b></p>
+    <p class="tk-why"><b>And its press does NOT take the system's held ground, which is the sharpest
+    statement of a rule this system has:</b> a state answers to the GROUND it stands on, not to the
+    family it belongs to. The disc is a fixed dark scrim in both themes carrying a white mark; the
+    product's pressed ground is a graphite in the Vault and a chalk in daylight, and <b>neither of
+    them is a step down from black</b>.</p>
+    <p class="tk-note">Measured: <b>32x32 with a mouse and 32x32 with a finger</b>. It is one of the
+    four named exclusions from the touch floor, and 333 placements makes it the largest of them.</p>
+  </section>
+
+  <section class="tk-sec" id="fine">
+    <h2 data-n="4">Fine print is muted wherever it stands</h2>
+    <p class="tk-note">248 lines of it, and the colour is declared on the class rather than inside
+    the containers named further down. <b>Without that, it inherits body text and reads as loudly as
+    the sentence it qualifies</b>, which is exactly what happened to the fine print under a
+    multi-outcome list once the screens stopped carrying their own copy of the cascade.</p>
+    <p class="tk-lab tk-bad"><b>A component has to say what it is wherever it stands.</b> <i>Same
+    sentence as the yes/no pair's missing colour and the 992 links that rendered in the browser's
+    blue: a missing value is a value.</i></p>
+  </section>
+
+  <section class="tk-sec" id="grey">
+    <h2 data-n="5">Three classes deleted, and they were the grey tree's frame</h2>
+    <p class="tk-note">A backdrop, a sheet and a grab handle sat in this file. <b>17 wireframes carry
+    them and no painted screen and no stand ever has</b>, because the paint expresses an invoked
+    screen as a centred dialog. They survived a colour sweep only because it counted the grey tree's
+    files as markup, <b>and this file cannot reach the grey tree at all</b>: the wireframes carry
+    their own inline grey-box CSS and link nothing from <code>components/</code>.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>A dialog is outside the app wrapper, so every scope has to name it.</b>
+    That is not a preference, it is where the browser puts the element.</p>
+    <p class="tk-note"><b>The frame clips and the body scrolls.</b> One box cannot do both.</p>
+    <p class="tk-note"><b>A state answers to the ground it stands on.</b> A control on a fixed black
+    scrim does not press the way a control on graphite presses.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never scope a rule to <code>.app-case</code> and assume dialogs are
+    covered.</b> <i>526 of 559 dialog buttons are not.</i></p>
+    <p class="tk-lab tk-bad"><b>Never write the close disc again.</b> <i>Two files and three rules
+    agreed on every value, which is what says it was one control all along.</i></p>
+    <p class="tk-lab tk-bad"><b>Never keep the grey tree's frame here.</b> <i>This file cannot reach
+    the grey tree, so a rule kept for it is a rule kept for nobody.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="organisms.html#dialog">the organisms
+    page</a>. The stylesheet: <code>components/dialog.css</code>. The close disc:
+    <a href="iconbtn.html">icon button</a>. The field inside it: <a href="input.html">input</a>. The
+    chips beside the field: <a href="quick.html">quick amounts</a>. The long sheet:
+    <a href="hiw-dialog.html">how it works</a>. The reassurance boxes:
+    <a href="notice.html">notice</a>.</p>
+  </section>
+
+</div>
+</body>
+</html>

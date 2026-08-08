@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: bets table</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Bets table</h1>
+    <p>Level 3. <b>Three different lists in one file, and only one of them is on the screen at a
+    time</b>: the positions table, the biggest-bets list and the activity feed, each behind its own
+    tab. <b>9 tables, 68 holder rows and 45 activity rows on 9 painted screens.</b> Measured
+    2026-08-08 by cycling every tab radio, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">3 lists</span>
+      <span class="tk-badge">9 screens</span>
+      <span class="tk-badge">1 visible at a time</span>
+      <span class="tk-badge">0 controls</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="organisms.html#bets-table">the organisms page</a>. This component is small and its page
+    is short, <b>and it exists for one reason a shelf cannot serve</b>: two of its three lists cannot
+    be seen at all without changing which tab is checked, so a shelf specimen shows a third of the
+    component and looks complete.</p>
+  </section>
+
+  <section class="tk-sec" id="three">
+    <h2 data-n="2">The three, measured behind their tabs</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>list</th><th>rows</th><th>a row at 390</th><th>at 1280</th><th>what it is</th></tr></thead>
+        <tbody>
+          <tr><td>positions</td><td>9 tables</td><td>294x207, the whole table</td><td>574x207</td><td>what YOU hold in this market</td></tr>
+          <tr><td>biggest bets</td><td><b>68</b></td><td>172x37</td><td>275x37</td><td>who else is in it, ranked</td></tr>
+          <tr><td>activity</td><td><b>45</b></td><td>294x45</td><td>574x45</td><td>what has happened, with times</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="hold-cols"><div class="hold-row"><span class="hold-rank">1</span><span class="hold-name">rina_s</span><span class="hold-out">YES</span><span class="hold-amt">$1,240</span></div>
+          <div class="hold-row"><span class="hold-rank">2</span><span class="hold-name">m_kovac</span><span class="hold-out">NO</span><span class="hold-amt">$980</span></div></div>
+        <div class="act-list"><div class="act-row"><span class="act-txt">A bet of $250 on YES</span><span class="act-time">4m ago</span></div>
+          <div class="act-row"><span class="act-txt">A bet of $80 on NO</span><span class="act-time">11m ago</span></div></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="hold-cols"><div class="hold-row"><span class="hold-rank">1</span><span class="hold-name">rina_s</span><span class="hold-out">YES</span><span class="hold-amt">$1,240</span></div>
+          <div class="hold-row"><span class="hold-rank">2</span><span class="hold-name">m_kovac</span><span class="hold-out">NO</span><span class="hold-amt">$980</span></div></div>
+        <div class="act-list"><div class="act-row"><span class="act-txt">A bet of $80 on NO</span><span class="act-time">11m ago</span></div>
+          <div class="act-row"><span class="act-txt">A bet of $250 on YES</span><span class="act-time">4m ago</span></div></div>
+      </div>
+    </div>
+    <p class="tk-note"><b>All three are read and none of them is touched.</b> There is no control in
+    this file: no row links anywhere, nothing hovers, nothing presses. That is the correct answer for
+    a list whose job is to let you check a number, and it is why the whole file is 49 lines.</p>
+    <p class="tk-note"><b>The outcome word in a holder row takes the outcome text role</b>, YES green
+    and NO the figure red, which is the same rule the odds bar's labels follow: <b>text answers to
+    4.5:1 and a band answers to 3:1</b>, so they are two roles rather than one colour.</p>
+  </section>
+
+  <section class="tk-sec" id="heading">
+    <h2 data-n="3">One trap, and it is the second sighting of it</h2>
+    <p class="tk-note">A column head inside one of these lists is nested under a section that carries
+    its own label rule, <b>and the label rule sets properties this one does not</b>: uppercase,
+    tracking and a brass ink. So a nested head has to answer for each of them rather than for the one
+    that looked wrong.</p>
+    <p class="tk-note">It is the same shape and the same afternoon as
+    <a href="event-detail.html#specificity">the event detail screen</a>. <b>Specificity is per
+    PROPERTY</b>, and a rule that wins on one declaration has not taken the element.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="4">The rule</h2>
+    <p class="tk-note"><b>A list you read carries no state.</b> No hover, no press, no cursor: a row
+    that answers a pointer is promising a destination it does not have.</p>
+    <p class="tk-note"><b>A figure and a band do not share a role.</b> Text clears 4.5:1 and a
+    surface clears 3:1, so the same green is two tokens.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="5">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never show one of three lists and call it the component.</b> <i>Two
+    of them are behind tabs and measure 0x0 until the radio changes.</i></p>
+    <p class="tk-lab tk-bad"><b>Never assume a rule that wins has taken the element.</b> <i>It won on
+    one property and lost the other three.</i></p>
+    <p class="tk-lab tk-bad"><b>Never give a read-only row a pointer.</b> <i>The tap goes nowhere and
+    the row has said it will.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="6">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="organisms.html#bets-table">the organisms
+    page</a>. The stylesheet: <code>components/bets-table.css</code>, 49 lines. The tabs that reveal
+    the three: <a href="tabs.html">tabs</a>. The single-bet row this is not:
+    <a href="position.html">position</a>. The outcome roles:
+    <code>components/tokens.css</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>

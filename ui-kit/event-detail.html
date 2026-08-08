@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: event detail</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Event detail</h1>
+    <p>Level 3, and the screen's own parts after the shell, the plate and three controls were taken
+    out of it. <b>11 heads, 9 questions and 42 sections on 11 painted screens.</b> Measured
+    2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">9 screens</span>
+      <span class="tk-badge">42 sections</span>
+      <span class="tk-badge">1 resolved panel</span>
+      <span class="tk-badge">3 controls gone</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and its reason stay on
+    <a href="organisms.html#event-detail">the organisms page</a>. What needs the room here is a
+    cascade trap this file paid for twice in one afternoon, and one measurement that explains the
+    whole layout of the head.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The head, and the number that explains it</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="ed-head">
+          <span class="ed-thumb" style="background-image:url(../assets/event-politics.jpg)"></span>
+          <div><p class="ed-cat">Politics</p><h1 class="ed-q">Will the state board certify the count before March 1</h1>
+            <p class="ed-prob-big">38%</p></div>
+        </div>
+        <p class="rules-note">Resolves against the state board's published certification, and nothing else.</p>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="ed-head">
+          <span class="ed-thumb" style="background-image:url(../assets/event-politics.jpg)"></span>
+          <div><p class="ed-cat">Politics</p><h1 class="ed-q">Will the state board certify the count before March 1</h1>
+            <p class="ed-prob-big">38%</p></div>
+        </div>
+        <p class="rules-note">Resolves against the state board's published certification, and nothing else.</p>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the head</td><td>350x273 to 350x309</td><td>630x177</td></tr>
+          <tr><td><b>the question</b></td><td><b>146x109</b></td><td><b>408x55</b></td></tr>
+          <tr><td>the big odds figure</td><td>146x48 to 146x60</td><td>408x30</td></tr>
+          <tr><td>a section</td><td>350 wide, 238 to 580 tall</td><td>630 wide, 175 to 491 tall</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>146px is the whole story of this head on a phone.</b> The thumbnail keeps its
+    size, so the question gets what is left of a 350px row and runs to three or four lines, and the
+    head grows to 309 tall. At 1280 the same question is 408 wide and 55 tall. <b>Nothing about the
+    component changes; the row simply has 262px more to give away</b>, and it gives all of it to the
+    question.</p>
+    <p class="tk-note">The photograph on the specimen is a placeholder written on the element, and
+    this file says so: <b>one sample event image so the stand has a picture. The shipped page writes
+    its own.</b></p>
+  </section>
+
+  <section class="tk-sec" id="specificity">
+    <h2 data-n="3">Specificity is per PROPERTY, and this file paid for it twice</h2>
+    <p class="tk-why">A section carries a label, and the column heads nested inside its blocks are
+    not that label. The first attempt made the label rule a CHILD selector, <b>which is wrong twice
+    over</b>: the label is a grandchild, so it lost its own rule, and a section whose label happened
+    to be a direct child would still have caught a nested head. <b>The distinction is not depth, it
+    is which block the heading belongs to.</b></p>
+    <p class="tk-note"><b>Then the fix was written and it was still short.</b> The rule that promotes
+    a nested head out-specifies the section label, <b>but only for what it DECLARES</b>: the label's
+    uppercase, its tracking and its brass went on applying to a heading that had just been promoted
+    into their reach. <b>A heading that belongs to a nested block has to say so for every property
+    the outer rule sets.</b></p>
+    <p class="tk-note">The same shape appears once more in <a href="bets-table.html">the bets
+    table</a>, for the same reason and in the same afternoon.</p>
+  </section>
+
+  <section class="tk-sec" id="gone">
+    <h2 data-n="4">What left, and what a region may still say</h2>
+    <p class="tk-note"><b>The layout left</b>: the two columns are a pattern, and the plate the main
+    column stands on is in the page frame. <b>Three controls left</b> on 2026-08-06, the bookmark,
+    the share and the alert over the head, and they are the icon button's tile face.</p>
+    <p class="tk-note">What this file may still say about them is exactly one thing: <b>WHERE the row
+    sits over the head.</b> The ground, the corner, the ink, the mark, the hover, the press and the
+    favourited state are all one file away.</p>
+  </section>
+
+  <section class="tk-sec" id="resolved">
+    <h2 data-n="5">One resolved panel, in the whole product</h2>
+    <p class="tk-note">A market that has settled replaces the bet panel with a resolved panel, and
+    there is <b>one placement of it</b>. Inside it the <a href="state-block.html">state block</a>
+    takes its third skin: no ground, no edge, and the actions become a full-width column, <b>because
+    that panel is the width of a sidebar and two buttons side by side in 280px are two buttons nobody
+    can read</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>A screen file owns its own parts and nothing else.</b> The shell is a
+    pattern, the plate is the page, the controls are atoms, and what is left is a head, a facts row
+    and a resolution block.</p>
+    <p class="tk-note"><b>A heading belongs to a block, not to a depth.</b> Selectors that reason
+    about how deep something is will be wrong the first time the markup gains a wrapper.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never out-specify a rule for one property and assume the rest are
+    handled.</b> <i>Uppercase, tracking and brass all went on applying to a heading that had been
+    promoted out of their reach on the property that mattered.</i></p>
+    <p class="tk-lab tk-bad"><b>Never use depth to say what a thing belongs to.</b> <i>The label is a
+    grandchild and the nested head is a child, and the child selector got both of them
+    backwards.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let a screen file draw a control.</b> <i>Three of them stood
+    here, and the only correct sentence left is where the row sits.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason:
+    <a href="organisms.html#event-detail">the organisms page</a>. The stylesheet:
+    <code>components/event-detail.css</code>. The shell:
+    <code>components/patterns/detail-shell.css</code>. The three controls over the head:
+    <a href="iconbtn.html">icon button</a>. The tabs below it: <a href="tabs.html">tabs</a>. The bet
+    control beside it: <a href="betpanel.html">bet panel</a>. The odds bar in the head:
+    <a href="oddsbar.html">odds bar</a>.</p>
+  </section>
+
+</div>
+</body>
+</html>
