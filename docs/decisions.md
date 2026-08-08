@@ -44,7 +44,66 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
-## 2026-08-08 - Forty-two files pointed at a stand that did not exist
+## 2026-08-08 - The button gets a page of its own, and the level rule is refined rather than dropped
+
+The question that produced the entry below produced this one too: where did the per-component pages
+go. The pointers were the defect; **this is the part of the question that was a real gap.**
+
+### The rule stands and it was too coarse at one end
+
+A page per LEVEL and not per component is right, and the reason has not changed: forty pages of one
+component each are forty navigations to compare two chips. **What it leaves out is a family whose
+faces cannot be shown by one specimen.** `vitrine.html` gives each atom one box and one rule, and for
+eight of the ten atoms that is the whole story.
+
+The threshold is counted rather than felt. Measured on the 106 painted screens: `button` **902**
+placements, `iconbtn` **527**, `chip` **466**, and the fourth largest a long way behind. Each of the
+three paints more faces than a level page can stand side by side. **A component with one face gets no
+page here however often it is worn**, which is the half of the rule that keeps this from becoming the
+deleted vitrine again.
+
+### What the page holds that the level page cannot
+
+`ui-kit/button.html`, twelve sections. Five emphases as live pairs in both themes with their counts;
+the four sizes with what they RENDER at both pointers; the width axis; the states, including the
+three a static page cannot show and says so; the 22-form census; the combinations the product does
+not have, each with a verdict; the one surviving scope; the rule and the anti-rule.
+
+**Every number was re-measured and several had moved.** The archive says 710 placements and 505
+secondary; today it is **902 and 509**. That is the point of re-measuring rather than copying: the
+archive is good writing about a system two consolidations ago.
+
+What the measurement found, beyond the totals:
+
+- **All 902 are `<button>`. Zero are `<a>`**, which is what makes the anti-rule about tags checkable.
+- **`.btn-xs` is 105 placements and 0 of them render at 390.** The control is the header's and the
+  header hides it below 640. A size that exists on a desk and nowhere else is still a size, and a
+  placement count that does not say so reads as coverage.
+- **One form is 35 per cent of the component**: the provider row in the sign-in sheet, 315 of 902 on
+  105 of 106 screens, and it is why the one surviving scope exists.
+- **526 of the 559 buttons inside a `<dialog>` are in a dialog that does not carry `app-case`.** That
+  is the measurement behind this file writing no `.app-case`, and it is the same fact that made the
+  amount chip's fix on 2026-08-08 name `dialog.app-dialog` instead.
+- The X brand mark is worn 108 times against 107 for Google and Apple, and the odd one has a reason:
+  `sign-in-provider-conflict.html` carries a second X row. **A count that came out uneven and had a
+  reason is the only kind worth printing.**
+
+### The registry gained a group and two rows with no page
+
+`_nav.js` now carries `In depth` with Button written, Icon button marked next and Chip marked soon.
+Both empty rows render as a `<span>` with a badge, which is the registry's own rule: a route that
+lists only what is finished looks finished. The tally reads 10 of 12.
+
+### Two things filed rather than done
+
+**Backlog 53**, six rules in `ui-kit/_page.css` painting classes nothing wears. The number is worth a
+sentence of its own: the first count said seven and included `.tk-onlight`, which has **no rule at
+all** and was matched inside a comment. A deletion made on that reading would have removed a line of
+prose. Counted again with comments stripped, it is six. **The same loose reading that produced the
+anti-rule mistake this morning produced a second one before lunch**, which is the argument for taking
+the count twice rather than for being more careful.
+
+`iconbtn.html` and `chip.html` are next and are not started.
 
 Asked where the per-component pages went, the answer turned out to be measurable rather than a matter
 of taste, and the measurement is the entry.

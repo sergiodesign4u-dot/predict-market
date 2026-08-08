@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: button</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<!-- The panel declares NOTHING, not even the name of this page. Its rows,
+     its groups, its counts and the row it lights are all in _nav.js. -->
+<aside class="sidebar" id="rmSidebar"></aside>
+
+  <!-- One symbol of the shipped sprite, spliced rather than retyped: the bare
+       pair under a comment carries it, so the specimen carries it too. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="i-heart-b" viewBox="0 0 24 24"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></symbol>
+  </defs></svg>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Button</h1>
+    <p>Level 1, and the largest control family in the product: <b>902 placements on 106 painted
+    screens</b>, every one of them wearing <code>.btn</code>. Five emphases, four sizes, one width
+    switch, and <b>one scope left of the eleven this file used to carry</b>. Everything on this page
+    was read off the rendered screens on 2026-08-08 rather than off the stylesheet.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">902 placements</span>
+      <span class="tk-badge">5 emphases</span>
+      <span class="tk-badge">4 sizes</span>
+      <span class="tk-badge">22 forms</span>
+      <span class="tk-badge">0 links</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ why a page -->
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">Why this component has a page and most do not</h2>
+    <p class="tk-note">The kit's rule is <b>a page per level, not per component</b>, and it holds:
+    forty pages of one component each are forty navigations to compare two chips. This page is not an
+    exception to that rule, it is what the rule leaves out. <code>vitrine.html</code> gives every atom
+    one specimen and one rule, and <b>one specimen is the whole story for eight of the ten atoms</b>.
+    It is not the story for this one.</p>
+    <p class="tk-note">The reason is a number. This family paints <b>five emphases against four
+    sizes against a width switch</b>, and the product wears <b>22 distinct forms</b> of it across
+    <b>902 placements</b>. A single specimen on the atoms page can show one of the 22. The other 21
+    are the component, and the two questions a person actually arrives with, <i>which emphasis</i>
+    and <i>which size</i>, cannot be answered by looking at one box.</p>
+    <p class="tk-note"><b>What is deliberately not repeated here.</b> The declaration that this is
+    level 1 and the reason for it are on <a href="vitrine.html#button">the atoms page</a> and stay
+    there. A fact written twice drifts, so this page holds what that one has no room for and points
+    at it for the rest.</p>
+  </section>
+
+  <!-- ============================================================== anatomy -->
+  <section class="tk-sec" id="anatomy">
+    <h2 data-n="2">Anatomy</h2>
+    <p class="tk-note"><b>Every selector in <code>components/button.css</code> requires
+    <code>.btn</code></b>, and that is not a style choice. <code>ui-kit/kit.html</code> is frozen
+    provenance and still carries <code>class="btn-primary btn-lg"</code> with its own copy of nine
+    declarations; a bare <code>.btn-primary</code> rule would land on that page at equal specificity
+    and repaint the record of what was once proposed. Its markup has no <code>.btn</code>, so
+    <code>.btn.btn-primary</code> cannot reach it.</p>
+
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>class</th><th>what it carries</th><th>worn</th></tr></thead>
+        <tbody>
+          <tr><td><code>.btn</code></td><td>The marker and the anatomy every button has: the 10px corner, the body face, <b>box-sizing</b>, the transition, the centring, and a <b>1px band that is transparent</b> until a skin colours it. Nothing is a button here without it.</td><td>902</td></tr>
+          <tr><td><code>.btn-secondary</code></td><td>The quiet skin, three colours and nothing else: <code>--bg-control</code>, <code>--border-hairline</code> on the band the base declared, <code>--text-primary</code>, semibold.</td><td>509</td></tr>
+          <tr><td><code>.btn-primary</code></td><td>The brass skin: the 135deg action gradient, <code>--text-on-brass</code>, bold, band left transparent so the gradient paints straight through it.</td><td>212</td></tr>
+          <tr><td><code>.btn-ghost</code></td><td>Keeps the box, gives up the fill: transparent on a hairline pill, muted ink.</td><td>105</td></tr>
+          <tr><td><code>.btn-bare</code></td><td>Gives up the box as well: no ground, no edge, no corner, and its padding is a <b>hit area rather than a size</b>.</td><td>72</td></tr>
+          <tr><td><code>.btn-prompt</code></td><td>The invitation: <code>--bg-well</code>, a recessed ground, muted ink, semibold. The only emphasis drawn on a well.</td><td>4</td></tr>
+          <tr><td><code>.btn-block</code></td><td>The control owns its row. The fourth axis, and the only one that is not a look.</td><td>576</td></tr>
+          <tr><td><code>.prov-google</code> <code>.prov-x</code> <code>.prov-apple</code></td><td><b>Parts, and they are on the <code>&lt;svg&gt;</code> and not on the button.</b> Brand marks, filled with the current colour rather than stroked, because a logotype is not an icon. <code>.prov-google</code> carries its own brand colours in the markup and correctly has no rule.</td><td>107 / 108 / 107</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>The X mark is worn one more time than the other two</b>, and the odd one is
+    not a mistake: <code>sign-in-provider-conflict.html</code> carries a second X row reading
+    "Continue with X (your original provider)". A count that came out uneven and had a reason is the
+    only kind worth printing.</p>
+  </section>
+
+  <!-- ============================================================= emphasis -->
+  <section class="tk-sec" id="emphasis">
+    <h2 data-n="3">The five emphases</h2>
+    <p class="tk-note">An emphasis in this family is <b>a ground, an edge, an ink and a weight</b>.
+    Three of the four is a bug, and the file records the time it was: a fifth emphasis that declared
+    no weight inherited the body's 400 and twenty readings moved before the diff named it.</p>
+
+    <p class="tk-subh">secondary, 509 placements, the most of the product</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="btn btn-secondary btn-md">Continue</button><button type="button" class="btn btn-secondary btn-sm" data-open="signin">Sign in</button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="btn btn-secondary btn-md">Continue</button><button type="button" class="btn btn-secondary btn-sm" data-open="signin">Sign in</button></div>
+    </div>
+    <p class="tk-note">Every action that is not the point of its zone. It has a ground and it says
+    <i>you may</i>.</p>
+
+    <p class="tk-subh">primary, 212 placements, one per zone</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="btn btn-primary btn-md">Add funds</button><button type="button" class="btn btn-primary btn-sm cmt-post">Post</button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="btn btn-primary btn-md">Add funds</button><button type="button" class="btn btn-primary btn-sm cmt-post">Post</button></div>
+    </div>
+    <p class="tk-note">The action the zone exists for, and there is exactly one of those per zone.
+    <code>DESIGN.md</code> states it as the One-Accent Rule and <b>this component is where it is
+    spent</b>: brass on more than the logo, the current chip and the primary action is brass
+    overspent.</p>
+
+    <p class="tk-subh">ghost, 105 placements, and all 105 stand in the header</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button></div>
+    </div>
+    <p class="tk-note">A real step below secondary: secondary has a ground and says <i>you may</i>,
+    this has none and says <i>if you want</i>. <b>This emphasis is the band's</b>, and counting says
+    so: all 105 of them are the How-it-works pill in <code>&lt;header&gt;</code> and there is no ghost
+    anywhere else in the product. That is why its hover wash is a token read by three files rather
+    than a value typed in one.</p>
+
+    <p class="tk-subh">bare, 72 placements, on 9 screens</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"></use></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div></div>
+      <div class="tk-theme-fig" data-theme="light"><div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"></use></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div></div>
+    </div>
+    <p class="tk-note">The like and reply pair under a comment. <b>It is the same rest face a
+    <code>navitem</code> wears and it is not one</b>: what separates them is the MEANING, which is
+    what rule 1 of the level map exists for. Reply does a thing; it does not go anywhere.</p>
+
+    <p class="tk-subh">prompt, 4 placements, on 2 screens</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><button type="button" class="btn btn-prompt btn-lg btn-block cmt-signin" data-open="signin">Sign in to join the discussion</button></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><button type="button" class="btn btn-prompt btn-lg btn-block cmt-signin" data-open="signin">Sign in to join the discussion</button></div>
+    </div>
+    <p class="tk-note">The only one here that is an <b>invitation</b> rather than an action, and it
+    stands where the thing a signed-out person came for should have been. So it is the only emphasis
+    drawn on a <b>recessed</b> ground and the only one muted at rest, both on purpose: a prompt that
+    shouts is a wall. <b>Four placements is not too few to be a kind</b>, and the reason is that two
+    of the four stand on the same screen saying different things. The map forbids naming a face for a
+    single element; this is the opposite case.</p>
+  </section>
+
+  <!-- ================================================================= size -->
+  <section class="tk-sec" id="size">
+    <h2 data-n="4">The four sizes, and what they render</h2>
+    <p class="tk-note">The ramp is <b>read off the product rather than invented</b>: each step is the
+    padding the majority already wore. A size is a padding and a font step, not a second control,
+    and the proof is that nothing else in the file changes with it.</p>
+
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="btn btn-secondary btn-xs">xs</button><button type="button" class="btn btn-secondary btn-sm">sm</button><button type="button" class="btn btn-secondary btn-md">md</button><button type="button" class="btn btn-secondary btn-lg">lg</button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="btn btn-secondary btn-xs">xs</button><button type="button" class="btn btn-secondary btn-sm">sm</button><button type="button" class="btn btn-secondary btn-md">md</button><button type="button" class="btn btn-secondary btn-lg">lg</button></div>
+    </div>
+
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>size</th><th>padding / font</th><th>worn</th><th>renders, fine pointer</th><th>renders, coarse</th><th>where</th></tr></thead>
+        <tbody>
+          <tr><td><code>.btn-xs</code></td><td>4/8 at 12px</td><td>105</td><td><b>0 render at 390</b></td><td>44 at 1280</td><td>the header band's own rhythm, and it is <code>.desk-only</code>, so on a phone none of the 105 is on screen at all</td></tr>
+          <tr><td><code>.btn-sm</code></td><td>8/12 at 12px</td><td>138</td><td><b>36</b>, all 138</td><td><b>44</b>, all 138</td><td>the header's entries, the action inside a state block, Post under a comment</td></tr>
+          <tr><td><code>.btn-md</code></td><td>12 at 14px</td><td>579</td><td><b>47</b></td><td>47, unchanged</td><td>the row inside a sheet, the panel, the action bar. By far the most of the product</td></tr>
+          <tr><td><code>.btn-lg</code></td><td>16 at 14px</td><td>8</td><td><b>55</b></td><td>55, unchanged</td><td>the mobile bet sheet's Confirm and the sign-in prompt</td></tr>
+          <tr><td><i>none</i></td><td>4 at 11px, its own</td><td>72</td><td><b>25</b></td><td><b>44</b></td><td><code>.btn-bare</code> carries its own padding, because asking a control with no box for a box is not a size</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="tk-why"><b>Two of the five rows move when the pointer changes, and that is the whole
+    effect of the touch floor on this family.</b> md renders 47 and lg 55 already, so the floor never
+    reaches them. sm at 36 and bare at 25 are the 210 boxes it does reach, and since 2026-08-08 the
+    floor is one rule in <code>components/base.css</code> rather than this file's own. <b>xs is the
+    row worth reading twice</b>: 105 placements and not one of them renders at 390, because the
+    control is the header's and the header hides it below 640. A size that exists on a desk and
+    nowhere else is still a size, and a count of placements that does not say so is a count that
+    reads as coverage.</p>
+  </section>
+
+  <!-- ================================================================ width -->
+  <section class="tk-sec" id="width">
+    <h2 data-n="5">Width, the fourth axis</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><button type="button" class="btn btn-primary btn-md btn-block">Add funds</button><button type="button" class="btn btn-secondary btn-md">Not now</button></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><button type="button" class="btn btn-primary btn-md btn-block">Add funds</button><button type="button" class="btn btn-secondary btn-md">Not now</button></div>
+    </div>
+    <p class="tk-note"><code>.btn-block</code> is worn <b>576 times of 902</b>, so owning the row is
+    the majority case rather than the exception. It replaced three scope overrides that each put a
+    width back from a different file, and it says what it does <b>where the person placing the control
+    can read it</b>. It is the only one of the four axes that is not a look.</p>
+  </section>
+
+  <!-- =============================================================== states -->
+  <section class="tk-sec" id="states">
+    <h2 data-n="6">The states, and why a stand cannot show three of them</h2>
+    <p class="tk-note"><b>A hover, a press and a focus ring are raised by a person, not by a
+    page.</b> Every specimen above is at rest, and no arrangement of markup makes a static document
+    show the other three at once. So they are written here and the page says which is which rather
+    than pretending. Raise them with a pointer and a Tab on this page: the specimens are the real
+    controls and they answer.</p>
+
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>emphasis</th><th>hover</th><th>press</th></tr></thead>
+        <tbody>
+          <tr><td><code>secondary</code></td><td>the ground steps one stone darker to <code>--bg-control-hover</code>, the edge goes brass, the label lifts to <code>--text-strong</code></td><td>settles onto <code>--bg-pressed</code>, the system's one held-down ground</td></tr>
+          <tr><td><code>primary</code></td><td>the lit brass goes to <b>both</b> stops so the whole face comes up, plus a soft glow under it</td><td>the gradient turns over to <b>315deg</b> so the light falls to the bottom right, and the glow goes with it because the glow is the lift</td></tr>
+          <tr><td><code>ghost</code></td><td><code>--tint-brass-16</code> and the action edge, <b>not</b> the quiet hover: a fill appearing out of nothing is a different event from a ground moving</td><td><code>--bg-pressed</code></td></tr>
+          <tr><td><code>bare</code></td><td>the ink goes brass and nothing else moves, because there is only the mark and the word to answer with</td><td><code>--bg-pressed</code>, the one time this control draws a shape at all</td></tr>
+          <tr><td><code>prompt</code></td><td><b>all three at once</b>, edge, ink and ground, which no other emphasis here does: a single step would leave the one control that is muted at rest looking almost as it was</td><td><code>--bg-pressed</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="tk-subh">disabled, and the product disables exactly one control</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><button type="button" class="btn btn-primary btn-md btn-block" aria-disabled="true">Add funds</button></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><button type="button" class="btn btn-primary btn-md btn-block" aria-disabled="true">Add funds</button></div>
+    </div>
+    <p class="tk-note">One placement in 902: Add funds in the deposit dialog while the amount is
+    under the minimum. It says so with <code>aria-disabled</code> and not with the attribute,
+    <b>because a native disabled button is not focusable</b> and the reason it is dead has to stay
+    reachable. The rule matches all three spellings so the attribute and the property give one answer,
+    and the hover and press rules carry <code>:not()</code> for it: a dead button neither lights up
+    nor presses.</p>
+  </section>
+
+  <!-- ================================================================ forms -->
+  <section class="tk-sec" id="forms">
+    <h2 data-n="7">The forms the product actually wears</h2>
+    <p class="tk-note">A <b>form</b> is the set of <code>btn-*</code> classes an element carries times
+    the scope it stands in. Read off the 106 painted screens on 2026-08-08: <b>22 forms</b>. This is
+    the census the deleted <code>_worn.py</code> used to fail the build over, taken once, by hand, as
+    a report.</p>
+
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>form</th><th>scope</th><th>n</th><th>screens</th></tr></thead>
+        <tbody>
+          <tr><td><code>secondary md block</code></td><td>the sign-in sheet</td><td><b>315</b></td><td>105</td></tr>
+          <tr><td><code>primary md block</code></td><td>a dialog</td><td>106</td><td>105</td></tr>
+          <tr><td><code>ghost xs</code></td><td>the header</td><td>105</td><td>105</td></tr>
+          <tr><td><code>secondary md block</code></td><td>a dialog</td><td>105</td><td>105</td></tr>
+          <tr><td><code>primary sm</code></td><td>a screen</td><td>78</td><td>64</td></tr>
+          <tr><td><code>bare</code></td><td>a screen</td><td>72</td><td>9</td></tr>
+          <tr><td><code>secondary sm</code></td><td>a screen</td><td>58</td><td>47</td></tr>
+          <tr><td colspan="4"><i>and 15 more, none above 9 placements: the win and loss dialogs' pairs, the bet sheet's Confirm, the prompt, and the six content-width forms</i></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="tk-why"><b>One form is 35 per cent of the component.</b> The provider row in the sign-in
+    sheet is 315 of the 902, on 105 of the 106 screens, and it is the reason the one surviving scope
+    below exists. A vocabulary whose largest form is a single repeated row is a vocabulary that has to
+    be right about that row before it is right about anything else.</p>
+  </section>
+
+  <!-- ================================================================= gaps -->
+  <section class="tk-sec" id="gaps">
+    <h2 data-n="8">The combinations the product does not have</h2>
+    <p class="tk-note">Two emphases that take the size ramp, times four sizes, times block or not, is
+    sixteen. The product wears nine of them. <b>The empty cells are named with a verdict rather than
+    left blank</b>, which is the control every declared list in this repository carries.</p>
+    <p class="tk-note"><b>secondary lg, block or not.</b> The large step exists for one control, the
+    mobile sheet's Confirm, and that control is the brass one. A quiet button at 16 padding would be a
+    secondary action given more room than the primary beside it, which inverts what the sizes are for.
+    <b>Not forbidden, undecided</b>: it needs a place before it needs a rule.</p>
+    <p class="tk-note"><b>primary lg at content width.</b> The same answer from the other side. The
+    large size exists because a sheet's foot is the full width of the sheet, so a brass control at 16
+    padding that does not own its row is asking for weight it has nowhere to spend.</p>
+    <p class="tk-note"><b>ghost, bare and prompt do not take the ramp at all</b>, and that is three
+    more absences with a reason each: ghost is the header band's and wears xs; bare's padding is a hit
+    area; prompt is only ever the full width of the block it stands in.</p>
+  </section>
+
+  <!-- ================================================================ scope -->
+  <section class="tk-sec" id="scope">
+    <h2 data-n="9">The one scope left, and the dialog measurement behind it</h2>
+    <p class="tk-note"><code>components/button.css</code> had <b>eleven scoped selectors and has
+    one</b>. The sign-in sheet's rows lift 1px under the pointer, and they are the only provider rows
+    in the product that answer with a transform: a row 380px wide needs a second signal that it is a
+    target at all. Everything else that used to be scoped there, the outcome sheet's sixteen
+    re-declarations, the bet panel's three, the dock's two, the sheet's padding and the resolved
+    panel's width, says what the vocabulary now says in a class and is deleted rather than left to be
+    read.</p>
+    <p class="tk-note"><b>And this file writes no <code>.app-case</code>, which is a measurement and
+    not a preference.</b> Of the 559 buttons that stand inside a <code>&lt;dialog&gt;</code> on the
+    106 screens, <b>526 are in a dialog that does not carry <code>app-case</code></b> and 33 are.
+    Scoping this family to <code>.app-case</code> would have needed a second copy of six selectors,
+    which is exactly what the file used to carry. The <code>.btn</code> requirement does that job with
+    no duplicate: eleven scoped selectors became four, and then one.</p>
+  </section>
+
+  <!-- ================================================================= rule -->
+  <section class="tk-sec" id="rule">
+    <h2 data-n="10">The rule</h2>
+    <p class="tk-note"><b>Choose an emphasis, a size and a width.</b> That is the whole of it, and it
+    is three decisions where this component had five names and a question about which one a place
+    wanted. <code>.auth-btn</code>, <code>.state-btn</code>, <code>.provider-btn</code>,
+    <code>.confirm-btn</code> and a bare <code>&lt;button&gt;</code> in an action bar were one
+    component under five names, and the proof is what they did not agree on: <code>.provider-btn</code>
+    alone measured seven faces, and nothing in the product predicted which a place got.</p>
+    <p class="tk-note"><b>One brass action per zone.</b> The One-Accent Rule is spent here.</p>
+    <p class="tk-note"><b>Two labels in this component are still two names for one thing</b>, and that
+    is a known defect rather than a decision: the funding action is <i>Deposit</i> on My Profile and in
+    the wallet and <i>Add funds</i> in the header and the dialog; the auth entry is <i>Log in</i> in the
+    header and <i>Sign in</i> in the dialog. Both are open in <code>voice/docs/microcopy.md</code>
+    under same-thing. <b>Copy the label from the row there and not from the nearest screen.</b></p>
+  </section>
+
+  <!-- ============================================================ anti-rule -->
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="11">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never dress an outcome as an action.</b> <i>A YES or a NO is
+    <code>yesno</code>, tinted green and red because those two colours mean an outcome in this product
+    and nothing else.</i></p>
+    <p class="tk-lab tk-bad"><b>Never dress a value as an action.</b> <i>A quiet control that filters,
+    sorts or loads more is a <code>chip</code>, which is one graphite family with a lighter press than
+    this one.</i></p>
+    <p class="tk-lab tk-bad"><b>A <code>&lt;button&gt;</code> is a tag and not a role.</b> <i>Reading
+    the tag as the answer is how the deleted stand came to show a tab strip on this component's page.</i></p>
+    <p class="tk-note">The last one is the load-bearing half and it is worth the extra sentence. Sort
+    every button-shaped control in the product by what it IS: an <b>action</b> is a press with nothing
+    carried between presses, a <b>selector</b> carries a value and its selected state is the whole
+    point, <b>navigation</b> goes somewhere. Only the actions stand here. <b>A single chip lifted out
+    of its rail is the half that carries no information</b>, because a chip's subject is its group and
+    the chosen one, so a reader learns a padding and nothing about the only thing the control does.</p>
+    <p class="tk-note"><b>Never draw it again in the file of whatever holds it.</b> That is how the
+    five names happened: each file was right about its container and wrong about the control.
+    <code>components/account.css</code> painted a button of this family for three stages, because the
+    component that owned the BAR was the one holding the pen.</p>
+  </section>
+
+  <!-- =============================================================== closing -->
+  <section class="tk-sec" id="closing">
+    <h2 data-n="12">Where the rest of it is</h2>
+    <p class="tk-note">The level and the reason for it: <a href="vitrine.html#button">the atoms
+    page</a>. The stylesheet and the argument for every value: <code>components/button.css</code>,
+    which is 20 declarations where it was 30 rules. The writing the deleted stand did on this
+    component, kept because the same measurement should not be taken twice:
+    <code>docs/kit-archive/authored/button.md</code>. <b>Every number on this page was re-measured on
+    2026-08-08 and several of them had moved</b>: the archive says 710 placements and 505 secondary,
+    and today it is 902 and 509.</p>
+  </section>
+
+</div>
+</body>
+</html>

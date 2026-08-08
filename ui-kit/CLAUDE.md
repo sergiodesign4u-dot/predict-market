@@ -1,9 +1,19 @@
 # ui-kit/ - the vitrine, rebuilt by hand 2026-08-07 to 2026-08-08
 
 **All five steps are done and the plan below is the record of how, not a to-do list.** What is on the
-stand today: nine pages, `_page.css`, `_nav.js`, and five reports in `docs/`. **0 generators, 0
+stand today: ten pages, `_page.css`, `_nav.js`, and five reports in `docs/`. **0 generators, 0
 gates, 0 screenshots.** Every one of the 43 components placed on a level page carries its live
 specimen in both themes, its classes, its declaration, its rule and its anti-rule.
+
+**And three components get a page of their own, which is not an exception to the level rule but the
+thing it leaves out.** A level page gives every component ONE specimen and one rule, and for eight of
+the ten atoms that is the whole story. It is not the story for a family that paints five emphases
+against four sizes and is worn in 22 distinct forms: one box answers neither of the two questions a
+person arrives with, which emphasis and which size. **The threshold is counted, not felt**: `button`
+at 902 placements, `iconbtn` at 527 and `chip` at 466 are the product's three largest control
+families and the fourth is a long way behind them. A component with one face gets no page here
+however often it is worn. `button.html` is written; the other two are rows with no page in `_nav.js`,
+which is the registry's own rule about looking finished.
 
 The kit shows the system to a person and it holds no product code. It holds nine pages plus its
 stylesheet and its registry: `overview.html`, which says what is happening, **all four foundation

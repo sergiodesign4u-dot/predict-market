@@ -71,6 +71,26 @@ window.KIT_NAV = [
     ]
   },
   {
+    /* AND THE THREE THAT EARNED A PAGE OF THEIR OWN, which is not an exception to
+       the rule above but the thing it leaves out. A level page gives every
+       component ONE specimen and one rule, and for eight of the ten atoms that is
+       the whole story. It is not the story for a family that paints five emphases
+       against four sizes and is worn in 22 distinct forms: a single box answers
+       neither of the two questions a person actually arrives with, which emphasis
+       and which size.
+       THE THRESHOLD IS COUNTED AND NOT FELT. These three are the product's three
+       largest control families, 902, 527 and 466 placements, and each carries more
+       faces than a level page has room to stand side by side. The fourth largest
+       is a long way behind them. A component with one face does not get a page
+       here, however often it is worn. */
+    label: 'In depth',
+    items: [
+      { label: 'Button',      page: 'button.html',  done: true,  note: '902' },
+      { label: 'Icon button', page: 'iconbtn.html', done: false, next: true },
+      { label: 'Chip',        page: 'chip.html',    done: false }
+    ]
+  },
+  {
     /* The reports are documents rather than stands, so they are indented. Each
        one is the artefact of a step, and a step whose artefact nobody can reach
        from the stand is a step that will be taken again. */
