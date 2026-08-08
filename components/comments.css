@@ -2,7 +2,7 @@
    Component: comments. Classes: .cmt, .cmt-actions, .cmt-av, .cmt-badge, .cmt-body, .cmt-compose, .cmt-controls, .cmt-input, .cmt-list, .cmt-meta, .cmt-signin, .cmt-text, .cmt-user, .reply, .seg.
 
    Reads: --bg-control, --bg-well, --border-brass, --border-hairline, --color-action, --text-brass, --text-muted, --text-primary, --tint-brass-09
-   Stand:  ui-kit/comments.html
+   Stand:  ui-kit/molecules.html#comments
    Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

@@ -2,7 +2,7 @@
    Component: state-block. Classes: .state-actions, .state-block, .state-msg, .state-title, .sys-link-list, .sys-links, .sys-note.
 
    Reads: --bg-pressed, --bg-surface, --border-hairline, --glow-brass, --text-brass, --text-muted, --text-primary
-   Stand:  ui-kit/state-block.html
+   Stand:  ui-kit/molecules.html#state-block
    Stands on: 40 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

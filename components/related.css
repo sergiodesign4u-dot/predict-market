@@ -2,7 +2,7 @@
    Component: related. Classes: .rel-odds, .rel-q, .rel-thumb, .related-events, .related-list, .related-more.
 
    Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-chip, --bg-control-hover, --bg-page, --bg-plate, --bg-plate-from, --bg-pressed, --border-brass-hover, --border-hairline, --edge-groove-dark, --edge-groove-light, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-chip-hover, --text-muted, --text-primary, --text-strong
-   Stand:  ui-kit/related.html
+   Stand:  ui-kit/molecules.html#related
    Stands on: 10 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

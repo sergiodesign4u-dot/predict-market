@@ -53,6 +53,11 @@ override it.** There is no build step and no gate: what you write is what ships.
   while 992 links rendered in the browser's blue, because a link with no rule has one anyway and it
   is the User Agent's. A missing value is a value. Measure the computed result in a browser, at both
   widths and in both themes.
+- **A pointer is a claim, and nothing checks a comment.** Every file here carries a `Stand:` line, and
+  from 2026-08-07 to 2026-08-08 **all 42 of them pointed at a file that did not exist**: they named
+  the generated per-component pages, which were deleted with the vitrine, and no reader noticed
+  because a comment has none. They point at the level page and its anchor now, verified by opening
+  all 44 in a browser rather than by grepping for the id. If a line here names a path, open it.
 
 ## Where the record is
 

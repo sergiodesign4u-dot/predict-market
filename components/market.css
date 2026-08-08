@@ -2,7 +2,7 @@
    Component: market. Classes: .market-body, .market-box, .market-chevron, .market-depth, .market-head, .market-stats, .market-title, .md-amt, .md-bar, .md-get, .md-price, .md-row, .md-row-head, .md-sub, .md-table, .md-title, .ms-label, .ms-no, .ms-up, .ms-val, .ms-yes.
 
    Reads: --bg-control, --bg-pressed, --edge-groove-dark, --outcome-no-figure, --outcome-yes-fill, --outcome-yes-text, --text-brass-lit, --text-muted, --text-primary
-   Stand:  ui-kit/market.html
+   Stand:  ui-kit/molecules.html#market
    Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

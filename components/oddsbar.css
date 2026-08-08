@@ -2,7 +2,7 @@
    Component: oddsbar. Classes: .ed-oddsbar, .fill, .l-no, .l-yes, .lbls, .oddsbar, .track.
 
    Reads: --edge-shade-strong, --outcome-no, --outcome-no-text, --outcome-yes, --outcome-yes-text
-   Stand:  ui-kit/oddsbar.html
+   Stand:  ui-kit/vitrine.html#oddsbar
    Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

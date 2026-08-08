@@ -2,7 +2,7 @@
    Component: cookie-consent. Classes: .cc-actions, .cc-banner, .cc-btn, .cc-cat, .cc-cat-desc, .cc-cat-main, .cc-cat-name, .cc-cats, .cc-inner, .cc-manage, .cc-note, .cc-page, .cc-ph, .cc-ph-line, .cc-policy, .cc-text, .w90.
 
    Reads: --bg-card-quiet, --bg-control, --border-hairline, --color-action, --color-action-pressed, --edge-groove-light, --glow-brass, --opacity-locked, --shadow-ink, --text-brass, --text-muted, --text-primary
-   Stand:  ui-kit/cookie-consent.html
+   Stand:  ui-kit/molecules.html#unmeasured, as UNMEASURED and not as a specimen: it stands on no anchor screen, so nobody has read it rendered
    Stands on: 2 ui-visual screens (cookie-consent.html, toasts.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

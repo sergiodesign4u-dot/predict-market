@@ -2,7 +2,7 @@
    Component: profile. Classes: .av, .edit, .gallery, .handle, .idrow, .name, .who.
 
    Reads: --bg-canvas, --bg-control, --border-hairline, --text-muted, --text-primary, --tint-brass-60
-   Stand:  ui-kit/profile.html
+   Stand:  ui-kit/organisms.html#profile
    Stands on: 2 ui-visual screens (my-profile.html, public-profile.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

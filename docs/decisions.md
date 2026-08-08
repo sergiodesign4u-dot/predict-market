@@ -44,6 +44,54 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - Forty-two files pointed at a stand that did not exist
+
+Asked where the per-component pages went, the answer turned out to be measurable rather than a matter
+of taste, and the measurement is the entry.
+
+**Every file in `components/` opens with a `Stand:` line. All 42 that carry one named a file that does
+not exist**, and they had done since 2026-08-07. They pointed at `ui-kit/button.html`,
+`ui-kit/chip.html`, `ui-kit/header.html` and 39 more: the **generated per-component pages**,
+one per component, which went with the 65 pages, 18 scripts, 41 gates and 145 MB deleted that day.
+Nothing noticed for a day, and nothing was going to, because **a comment has no reader**. It is the
+third time in three days the same species has surfaced here: a pattern file's `Assembled from` line,
+a status table nothing cross-checks, and now a path.
+
+### Where they point now
+
+37 of the 42 have a specimen on a level page and the section ids already matched the file names one
+for one, so `components/button.css` says `ui-kit/vitrine.html#button`. **The five that do not are not
+given one**, because inventing a destination is what put the wrong one there in the first place:
+`base` and `course-chrome` are the frame every kit page stands in rather than a specimen on one, and
+`account`, `cookie-consent` and `toc` point at `ui-kit/molecules.html#unmeasured`, which is where the
+kit says out loud that nobody has read them rendered.
+
+**Verified by opening all 44 anchors in a browser**, not by grepping for the id: each one resolves,
+is visible and lands its section. The one that failed the first check, `#unmeasured`, failed the
+CHECK and not the anchor: it is the last section on its page, so the browser cannot scroll it to the
+top, and it sits fully in the viewport at 492 to 680 of 900. **An instrument that assumes a target
+can always reach the top of the window is an instrument that has never met the bottom of a page.**
+
+### What is not fixed, and it is filed rather than left quiet
+
+The other half of the same header block, `Stands on: N ui-visual screens`, is stale on **16 files
+that say 105 against a tree of 106**. It was left because **it cannot be fixed by substitution**: a
+real count means asking which screens carry each component's classes, rendered, and
+`ui-kit/patterns.html` already showed what a typed count costs. **Backlog 52**, and it goes to the
+handoff pass that has to read every header anyway.
+
+### The decision behind the question, restated because it was asked twice
+
+The kit has a page per LEVEL and not per component, and `ui-kit/CLAUDE.md` carries the reason.
+**What cost this repository seven days was the GENERATOR, not the idea of a page per component**: a
+one-line change to a stylesheet paid for a regeneration, a re-capture, 41 gates and 525 snapshots. A
+page written by hand pays none of that. `docs/kit-archive/authored/` holds **48 per-component
+documents** with anatomy, rule, anti-rule and states, read by nothing, which is the material for
+per-component pages if and when the components that earn one get them: `button` at 687 placements,
+`iconbtn` at 527, `chip` at 466. That is a decision still open and it is not this entry's.
+
+---
+
 ## 2026-08-08 - Design System closed as a stage, and the status table stops disagreeing with the tree
 
 The work of stage 09 was finished on 2026-08-08 and the one place that records a stage's status still

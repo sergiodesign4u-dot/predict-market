@@ -2,7 +2,7 @@
    Component: bottomnav. Classes: .bn-bal, .bottom-nav.
 
    Reads: --bg-control, --bg-surface, --border-hairline, --edge-groove-dark, --edge-groove-light, --text-primary
-   Stand:  ui-kit/bottomnav.html
+   Stand:  ui-kit/molecules.html#bottomnav
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

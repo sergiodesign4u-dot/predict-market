@@ -2,7 +2,7 @@
    Component: filters. Classes: .filter-menu, .filter-panel, .reverse-row.
 
    Reads: --bg-control, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --focus-ring, --shadow-ink, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-16
-   Stand:  ui-kit/filters.html
+   Stand:  ui-kit/molecules.html#filters
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
