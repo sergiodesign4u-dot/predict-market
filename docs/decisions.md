@@ -44,6 +44,71 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - The currency mark leaves the value, and the money field stops accepting letters
+
+The first thing found by READING the finished kit rather than by building it. Two complaints about
+`ui-kit/input.html`, and the second one turned out to be about the product.
+
+### What was measured before anything moved
+
+All 121 amount fields in the painted tree carried
+`type="text" inputmode="decimal" value="$20.00"`. The mobile keyboard was right and everything else
+was not: **a text input accepts letters, so a person on a hardware keyboard could type
+`twenty dollars` into the field a bet is placed with.**
+
+**And the guard that looked like one was inert.** 113 of the 121 carried `pattern="[0-9.$]*"`.
+A pattern is only consulted at form validation, and **this product contains 0 `<form>` elements**,
+measured across all 106 painted screens. It validated nothing at any moment, on any screen. The
+other 8 did not carry it, all of them in the bet PANEL, **and the two trees disagreed about which**:
+the painted tree had four bet fields with it and the grey tree had none. Absent and inert are the
+same amount of nothing, which is why the divergence had gone unnoticed.
+
+### What changed, and why the mark had to move first
+
+`$` inside the value is the reason the field could not be a number: a number input rejects a value
+it cannot parse and would have rendered empty. So the order was forced.
+
+| | before | after |
+|---|---|---|
+| the mark | inside the value | **a sibling, `.amount-cur`** |
+| the element | `type="text"` | **`type="number"`**, with `step="0.01" min="0"` |
+| the value | `$20.00` | `20.00`, a number a machine can read |
+| the guard | a pattern that never fired, on 113 of 121 | **the browser**, on 121 of 121 |
+| the two trees | disagreed on 8 fields | **identical markup**, 116 grey and 121 painted |
+
+**System first, then grey, then the painted twin**, which is the order the two trees exist under.
+`components/input.css` gained the mark and two spinner-suppression rules, both written against the
+CLASS rather than the type so that if the field ever stops being a number they do nothing and say
+so. The sweep was a throwaway script in the scratchpad, run twice as a dry run and twice for real,
+then deleted.
+
+### Verified by typing into it
+
+On the kit's own specimen, at 1280: **`abc12x3.45qq` leaves `123.45`** and `50.25` leaves `50.25`.
+Across a 50-screen sample of the painted tree: **66 of 66 fields are `type="number"`, 66 carry the
+mark, 0 have a `$` in the value**, and the grey tree matches on every screen checked. The 44px height
+did not move on any of them; the field lost 19px of width to the mark and the gap, 331 to 312 at 390.
+
+**The honest limit is written on the page rather than implied**: `1e5` is still accepted, measured,
+and so are a leading `+` and `-`. Markup cannot close a field completely, so the last of the
+filtering is the implementation's and `docs/backlog.md` 65 carries the one-line contract it needs.
+
+### And the plate behind the specimen is explained rather than removed
+
+The other complaint was a rounded plate behind the field on the kit page with no equivalent
+elsewhere. **It is a dialog, and it has to be there**: every rule this face has is scoped
+`dialog.app-dialog .amount-input`, so a specimen standing anywhere else would show the User Agent's
+white box. The page now says that where a person meets it, and the section on scope is two sections
+below.
+
+`ui-kit/input.html` was rebuilt around **three kinds split by what a person is doing** rather than
+two faces plus a footnote: the sheet field a person fills in (110), the bet field a person is about
+to commit (12), and the address a person only checks (1, and not an input at all). The atoms shelf's
+specimen was brought in line with the product in the same pass, because a shelf that ships different
+markup from the screens is the thing this kit exists to prevent. Open 50 to 51.
+
+---
+
 ## 2026-08-08 - Six pattern pages, and the kit closes at 55 of 55
 
 **Every component in `components/` has a page.** Four foundations, four shelves, ten atoms, seventeen

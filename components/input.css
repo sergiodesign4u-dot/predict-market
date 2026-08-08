@@ -1,5 +1,5 @@
 /* components/input.css
-   Component: input. Classes: .addr, .amount-input, .amount-row, .field-label.
+   Component: input. Classes: .addr, .amount-cur, .amount-input, .amount-row, .field-label.
 
    Reads: --bg-surface, --bg-well, --border-brass-hover, --border-hairline, --color-action, --focus-ring, --glow-focus, --line-brass-strong, --opacity-disabled, --result-won, --text-muted, --text-primary
    Stand:  ui-kit/input.html, and ui-kit/vitrine.html#input for the level and its reason
@@ -12,6 +12,52 @@ dialog.app-dialog .amount-input{flex:1;padding:var(--space-8);font-size:var(--te
 .field-label{font-size:var(--text-11);text-transform:uppercase;letter-spacing:var(--track-label)}
 .amount-row{display:flex;align-items:center;gap:var(--space-8)}
 .amount-input{flex:1;border:var(--hairline) solid var(--border-hairline);padding:var(--space-8);font-size:var(--text-18)}
+
+/* ============================================================================
+   THE CURRENCY MARK IS NOT PART OF THE VALUE, 2026-08-08.
+
+   WHAT WAS MEASURED. All 121 fields in the painted tree carried
+   `type="text" inputmode="decimal"` with the mark inside the value,
+   `value="$20.00"`. The keyboard was right on a phone and WRONG everywhere
+   else: a text input accepts letters, and a person on a hardware keyboard could
+   type `twenty dollars` into the field a bet is placed with.
+
+   AND THE GUARD THAT LOOKED LIKE ONE WAS INERT. 113 of the 121 carried
+   `pattern="[0-9.$]*"`. `pattern` is only consulted at form validation, and
+   this product contains **0 `<form>` elements**, measured across all 106
+   painted screens. So it validated nothing at any moment, on any screen, and it
+   read as a constraint to everyone who opened the markup. The other 8 did not
+   carry it, all of them in the bet PANEL, and the two trees disagreed about
+   which: the painted tree had four bet fields with it and the grey tree none.
+   Same shape as the header's course-page rule and the dialog's grey-tree frame:
+   a thing that cannot fire, kept because it looks like it does.
+
+   WHY THE MARK HAD TO MOVE FIRST. `$` in the value is the reason the field
+   could not be `type="number"`: a number input rejects a value it cannot parse
+   and would have rendered empty. So the mark leaves the value and becomes a
+   sibling, the field becomes a number, and the browser itself refuses the
+   letters. `e`, `+` and `-` are still reachable in a number input and that is
+   the honest limit of markup: the last of the filtering is the
+   implementation's, and `ui-kit/input.html` says so rather than implying the
+   field is closed.
+
+   THE MARK IS MUTED AND THE FIGURE IS NOT, which is the same ranking the bet
+   dock and the card's meta row use: the label is the quiet half and the number
+   is the one being read. It takes the display face because it stands beside a
+   display figure and a body-face `$` next to a display `20.00` reads as two
+   different sentences.
+   ============================================================================ */
+.amount-cur{flex:0 0 auto;font-family:var(--font-display);font-weight:var(--weight-bold);color:var(--text-muted)}
+dialog.app-dialog .amount-cur{font-size:var(--text-18)}
+/* A NUMBER INPUT COMES WITH A SPINNER AND THIS ONE MAY NOT HAVE ONE. The field
+   is 44 tall by rule and a spinner takes a strip off its right edge, which on
+   the sheet field would sit exactly where the figure ends. Two spellings,
+   because the two engines hide it differently, and both are written against the
+   class rather than the type so the rule cannot outlive the attribute quietly:
+   if the field ever stops being a number, these do nothing and say so. */
+.amount-input::-webkit-outer-spin-button,
+.amount-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.amount-input[type=number]{-moz-appearance:textfield;appearance:textfield}
 /* THE QUICK AMOUNTS LEFT THIS FILE ON 2026-08-05, and `.quick` went with them to
    components/quick.css. A field and a group of chips are not one thing: what is
    left here is a label, a field and the row that holds them, which is an atom,
@@ -57,6 +103,13 @@ dialog.app-dialog .amount-input{background:var(--bg-well)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input:disabled{opacity:var(--opacity-disabled);cursor:not-allowed;border-bottom-color:var(--border-hairline)}
 .app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input::placeholder{color:var(--text-muted)}
+/* THE BET ROW IS A SPACE-BETWEEN FLEX OF TWO ITEMS AND THE MARK MAKES A THIRD.
+   Left alone it would land in the middle of the row, halfway between the label
+   and the figure it belongs to. `margin-left:auto` eats the free space instead,
+   so the mark and the figure arrive at the right edge as a pair and the row
+   needs no wrapper element in either tree. It takes the figure's own size,
+   because a 18px `$` beside a 30px number is not a prefix, it is a footnote. */
+.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-cur{margin-left:auto;font-size:var(--text-30);line-height:var(--leading-none)}
 .app-case :is(.bet-panel,.bet-sheet) .field-label{color:var(--text-muted)}
 .app-case :is(.bet-panel,.bet-sheet) .amount-input{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-primary);font-family:var(--font-display)}
 .outcome-dialog .field-label{color:var(--text-muted)}

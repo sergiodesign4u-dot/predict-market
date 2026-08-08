@@ -336,9 +336,9 @@
     <h2>input</h2>
     <ul class="tk-meta">
       <li>components/input.css</li>
-      <li>67 lines</li>
+      <li>121 lines</li>
       <li>level 1</li>
-      <li>123 uses</li>
+      <li>122 uses</li>
       <li class="tk-decl">ONE CONTROL</li>
       <li><a href="input.html">its own page</a></li>
     </ul>
@@ -358,17 +358,17 @@
       <span class="tk-colh">Vault, dark</span>
       <span class="tk-colh">Daylight, light</span>
 
-      <span class="tk-lab tk-bad"><b>.amount-input</b><i>unscoped. Three declarations reach it, and neither ground nor ink is one of them. The white box in the dark column is the browser's, not ours</i></span>
-      <div class="tk-theme-fig tk-stack" data-theme="dark"><span class="field-label">Amount</span><input class="amount-input" type="text" inputmode="decimal" value="$20.00" aria-label="Amount, unscoped"></div>
-      <div class="tk-theme-fig tk-stack" data-theme="light"><span class="field-label">Amount</span><input class="amount-input" type="text" inputmode="decimal" value="$20.00" aria-label="Amount, unscoped"></div>
+      <span class="tk-lab tk-bad"><b>.amount-input</b><i>unscoped, and this IS the markup the product ships since 2026-08-08: a number field with the currency mark beside it rather than inside the value. Three declarations reach it and neither ground nor ink is one of them, so the white box in the dark column is the browser's</i></span>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><span class="field-label">Amount</span><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount, unscoped"></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><span class="field-label">Amount</span><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount, unscoped"></div>
 
       <span class="tk-lab"><b>.bet-panel .bp-amount-row .amount-input</b><i>the trader field: 30px display, a rule under it, no box. The panel around it is desktop only and disappears below 900px, here as in the product</i></span>
-      <div class="tk-theme-fig tk-stack" data-theme="dark"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div></div></div></div>
-      <div class="tk-theme-fig tk-stack" data-theme="light"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><input class="amount-input" type="text" inputmode="decimal" value="$5.00" aria-label="Bet amount"></div></div></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div></div></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div></div></div></div>
 
       <span class="tk-lab"><b>[disabled]</b><i>the same field while a deposit is pending</i></span>
-      <div class="tk-theme-fig tk-stack" data-theme="dark"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span></div><input class="amount-input" type="text" value="$5.00" aria-label="Bet amount, disabled" disabled></div></div></div></div>
-      <div class="tk-theme-fig tk-stack" data-theme="light"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span></div><input class="amount-input" type="text" value="$5.00" aria-label="Bet amount, disabled" disabled></div></div></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span></div><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount, disabled" disabled></div></div></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><p class="tk-absent">not rendered below 900px, exactly as on the detail screen</p><div class="tk-hold"><div class="bet-panel"><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span></div><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount, disabled" disabled></div></div></div></div>
 
     </div>
     <p class="tk-note">A third face exists and it is deliberately <b>not</b> on this page.

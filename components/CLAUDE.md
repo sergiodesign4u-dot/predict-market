@@ -53,6 +53,13 @@ override it.** There is no build step and no gate: what you write is what ships.
   while 992 links rendered in the browser's blue, because a link with no rule has one anyway and it
   is the User Agent's. A missing value is a value. Measure the computed result in a browser, at both
   widths and in both themes.
+- **An attribute can be a guard that never fires.** 113 of the 121 amount fields carried
+  `pattern="[0-9.$]*"` and the product contains **0 `<form>` elements**, measured across all 106
+  painted screens: a pattern is only consulted at form validation, so it validated nothing at any
+  moment and read as a constraint to everyone who opened the markup. The other 8 did not carry it
+  and the two trees disagreed about which. **Absent and inert are the same amount of nothing**, which
+  is why the divergence went unnoticed. The field is `type="number"` now and the browser is the
+  guard, verified by typing into it.
 - **A pointer is a claim, and nothing checks a comment.** Every file here carries a `Stand:` line, and
   from 2026-08-07 to 2026-08-08 **all 42 of them pointed at a file that did not exist**: they named
   the generated per-component pages, which were deleted with the vitrine, and no reader noticed

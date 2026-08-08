@@ -17,15 +17,15 @@
 
   <div class="tk-hero">
     <h1>Input</h1>
-    <p>Level 1. A label, a field, and the row that holds them. <b>122 fields, 245 labels and 110 rows
-    on 105 painted screens</b>, two faces, and <b>0 of the 122 stand outside a scope this file
-    names</b>. Measured 2026-08-08 in a browser, at 390 and 1280, dialogs forced open.</p>
+    <p>Level 1. A label, a field, the mark beside it and the row that holds them. <b>122 placements on
+    105 painted screens, in THREE kinds</b>, and every one of them is about money. Re-measured and
+    rebuilt 2026-08-08 after the currency mark left the value.</p>
     <div class="tk-badges">
-      <span class="tk-badge">122 fields</span>
-      <span class="tk-badge">2 faces</span>
-      <span class="tk-badge">245 labels</span>
+      <span class="tk-badge">122 placements</span>
+      <span class="tk-badge">3 kinds</span>
+      <span class="tk-badge">121 number fields</span>
+      <span class="tk-badge">1 that is not a field</span>
       <span class="tk-badge">0 out of scope</span>
-      <span class="tk-badge">44 with a mouse too</span>
     </div>
   </div>
 
@@ -33,63 +33,70 @@
   <section class="tk-sec" id="why">
     <h2 data-n="1">What this page is for</h2>
     <p class="tk-note">The level and the reason for it stay on
-    <a href="vitrine.html#input">the atoms page</a>. What this page holds is the pair of arguments a
-    field cannot avoid and a shelf has no room for: <b>where a scoped rule reaches</b>, and
-    <b>what focus means</b>, which turn out to be one question asked twice.</p>
+    <a href="vitrine.html#input">the atoms page</a>. What this page holds is <b>the three kinds and
+    what a person may type into each</b>, plus the pair of arguments a money field cannot avoid:
+    where a scoped rule reaches, and what focus means.</p>
   </section>
 
-  <!-- ============================================================= what is left -->
-  <section class="tk-sec" id="left">
-    <h2 data-n="2">What is left after the amounts moved out</h2>
-    <p class="tk-note">Until 2026-08-05 this file also held the quick amounts. <b>A field and a group
-    of chips are not one thing</b>: what stayed is a label, a field and a row, which is an atom, and
-    what left is a ROW a person chooses between, which is a molecule and is now
-    <code>components/quick.css</code>.</p>
-    <p class="tk-note">It was found by reading the containment map rather than the screen:
-    <b>this file's containment was EMPTY</b>, so the level was being answered by arithmetic with no
-    information in it. That blind spot is why <code>ui-kit/docs/inventory.md</code> makes every
-    component DECLARE its level in words instead of computing it.</p>
+  <!-- ============================================================= the kinds -->
+  <section class="tk-sec" id="kinds">
+    <h2 data-n="2">The three kinds, by what a person is doing</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>kind</th><th>worn</th><th>where</th><th>what it is</th><th>element</th></tr></thead>
+        <tbody>
+          <tr><td><b>the sheet field</b></td><td><b>110</b></td><td>every deposit and withdraw dialog</td><td>a value you fill in</td><td><code>&lt;input type="number"&gt;</code></td></tr>
+          <tr><td><b>the bet field</b></td><td><b>12</b></td><td>8 in the desktop panel, 4 in the phone sheet</td><td>a number you are about to commit</td><td><code>&lt;input type="number"&gt;</code></td></tr>
+          <tr><td><b>the address</b></td><td><b>1</b></td><td>the deposit dialog</td><td>a value you CHECK, and it is not a field</td><td><code>&lt;span&gt;</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The split is by what a person is doing, not by what the box looks like.</b>
+    The sheet field and the bet field are the same control under two different moments: one is a
+    number you are choosing and the other is a number you are committing, and everything that differs
+    between them follows from that.</p>
   </section>
 
-  <!-- ============================================================== the faces -->
+  <!-- ============================================================= the faces -->
   <section class="tk-sec" id="faces">
-    <h2 data-n="3">The two faces</h2>
-
-    <p class="tk-subh">the sheet field, 110 placements, a value you fill in</p>
+    <h2 data-n="3">The sheet field, 110 placements</h2>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
         <dialog class="app-dialog" open aria-label="Add funds">
-          <span class="field-label">Amount</span>
-          <div class="amount-row"><input class="amount-input" type="text" value="$50" aria-label="Amount"></div>
+          <span class="field-label">Amount to add</span>
+          <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount to add"></div>
         </dialog>
       </div></div>
       <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
         <dialog class="app-dialog" open aria-label="Add funds">
-          <span class="field-label">Amount</span>
-          <div class="amount-row"><input class="amount-input" type="text" value="$50" aria-label="Amount"></div>
+          <span class="field-label">Amount to add</span>
+          <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount to add"></div>
         </dialog>
       </div></div>
     </div>
+    <p class="tk-why"><b>The rounded plate behind the specimen is a DIALOG, and it has to be
+    there.</b> Every rule this face has is written <code>dialog.app-dialog .amount-input</code>, so a
+    field standing anywhere else gets the User Agent and nothing else. <b>The plate is not decoration
+    on this page, it is the scope being satisfied</b>, and section 5 is about exactly that.</p>
     <p class="tk-note">A hairline box on the well, a 10 corner, the display face at 18px, and
-    <b>44 tall by rule</b>. It fills the sheet: 331 wide at 390, 402 at 1280.</p>
+    <b>44 tall by rule</b>. With the mark beside it the field is 312 wide at 390 and 383 at 1280,
+    against 331 and 402 before the mark existed.</p>
 
-    <p class="tk-subh">the bet field, 12 placements, a number you are about to commit</p>
+    <h2 data-n="4">The bet field, 12 placements</h2>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
         <dialog class="app-case app-dialog bet-sheet" open aria-label="Place your bet">
           <div class="bp-inner">
-            <span class="field-label">Your stake</span>
-            <div class="bp-amount-row"><input class="amount-input" type="text" value="120" aria-label="Stake"></div>
+            <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="120.00" aria-label="Bet amount"></div>
           </div>
         </dialog>
       </div></div>
       <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
         <dialog class="app-case app-dialog bet-sheet" open aria-label="Place your bet">
           <div class="bp-inner">
-            <span class="field-label">Your stake</span>
-            <div class="bp-amount-row"><input class="amount-input" type="text" value="120" aria-label="Stake"></div>
+            <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="120.00" aria-label="Bet amount"></div>
           </div>
         </dialog>
       </div></div>
@@ -98,44 +105,77 @@
     and never more than 56 per cent of its row. <b>It is the only field in the product that is
     typography rather than a container</b>, and the reason is the moment it stands in: the number IS
     the sentence on that sheet, and a box around it would make it one form control among several.</p>
+    <p class="tk-note"><b>The mark takes the figure's own 30px and is pushed to the right</b>, because
+    that row is a space-between flex of two items and a third would otherwise land in the middle of
+    it. The panel and the sheet are one face at two widths: <b>8 placements measure 0x0 at 390 and 4
+    measure the same 150x44 at both</b>.</p>
+  </section>
 
+  <!-- ============================================================== currency -->
+  <section class="tk-sec" id="currency">
+    <h2 data-n="5">The currency mark left the value, and that is what closed the field</h2>
+    <p class="tk-why"><b>Until 2026-08-08 all 121 fields carried
+    <code>type="text" inputmode="decimal"</code> with the mark inside the value,
+    <code>value="$20.00"</code>.</b> The keyboard was right on a phone and wrong everywhere else: a
+    text input accepts letters, so a person on a hardware keyboard could type
+    <i>twenty dollars</i> into the field a bet is placed with.</p>
+    <p class="tk-lab tk-bad"><b>And the guard that looked like one was inert.</b> <i>113 of the 121
+    carried <code>pattern="[0-9.$]*"</code>. A pattern is only consulted at form validation, and this
+    product contains <b>0 <code>&lt;form&gt;</code> elements</b>, measured across all 106 painted
+    screens. It validated nothing at any moment, on any screen, and it read as a constraint to
+    everyone who opened the markup.</i></p>
+    <p class="tk-note"><b>The other 8 did not carry it, and the two trees disagreed about which.</b>
+    All 8 were in the bet PANEL; the painted tree had four bet fields with the pattern and the grey
+    tree had none. Absent and inert are the same amount of nothing, which is why the divergence had
+    gone unnoticed.</p>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
-        <thead><tr><th>where</th><th>fields</th><th>at 390</th><th>at 1280</th></tr></thead>
+        <thead><tr><th></th><th>before</th><th>after</th></tr></thead>
         <tbody>
-          <tr><td>in a dialog</td><td><b>110</b></td><td>331x44, and 361x44 on three</td><td>402x44</td></tr>
-          <tr><td>in the mobile bet sheet</td><td>4</td><td>150x44</td><td>150x44</td></tr>
-          <tr><td>in the desktop bet panel</td><td>8</td><td><b>0x0</b>, the panel is display:none below 760</td><td>150x44</td></tr>
+          <tr><td>the mark</td><td>inside the value</td><td><b>a sibling, <code>.amount-cur</code></b></td></tr>
+          <tr><td>the element</td><td><code>type="text"</code></td><td><b><code>type="number"</code></b>, with <code>step="0.01" min="0"</code></td></tr>
+          <tr><td>the value</td><td><code>$20.00</code></td><td><code>20.00</code>, a number a machine can read</td></tr>
+          <tr><td>the guard</td><td>a pattern that never fired, on 113 of 121</td><td><b>the browser</b>, on 121 of 121</td></tr>
+          <tr><td>the two trees</td><td>disagreed on 8 fields</td><td><b>identical markup, 116 grey and 121 painted</b></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="tk-note"><b>The 8 zeros at 390 are not a defect and the reading has to say so.</b> The
-    panel is the desktop face of the bet control and the sheet is the phone one, and each is absent at
-    the other width by design. A box of 0x0 is only a finding when the thing that holds it is on the
-    screen.</p>
+    <p class="tk-why"><b>The mark had to move FIRST, and that is the whole order of the fix.</b>
+    <code>$</code> in the value is the reason the field could not be a number: a number input rejects
+    a value it cannot parse and would have rendered empty. So the mark became a sibling, the field
+    became a number, and the browser itself refuses the letters.</p>
+    <p class="tk-note"><b>And the honest limit is written down rather than implied:</b>
+    <code>e</code>, <code>+</code> and <code>-</code> are still reachable in a number input on a
+    desktop keyboard. <b>Markup cannot close a field completely</b>; the last of the filtering is the
+    implementation's, and this page says so instead of leaving a reader to assume the field is
+    shut.</p>
+    <p class="tk-note">The spinner the browser adds with the type is suppressed in two spellings,
+    because the two engines hide it differently. <b>Both are written against the class rather than
+    the type</b>, so if the field ever stops being a number the rules do nothing and say so.</p>
   </section>
 
   <!-- ============================================================== the scope -->
   <section class="tk-sec" id="scope">
-    <h2 data-n="4">The scope question, and this is the file that got it right</h2>
-    <p class="tk-note">Every rule for both faces is written under a scope:
+    <h2 data-n="6">The scope question, and this is the file that got it right</h2>
+    <p class="tk-note">Every rule for both fields is written under a scope:
     <code>dialog.app-dialog .amount-input</code> for the first, and
     <code>.app-case :is(.bet-panel,.bet-sheet) .bp-amount-row .amount-input</code> for the second.
-    <b>Written that way, a field that stands anywhere else gets nothing but the User Agent.</b></p>
+    <b>Written that way, a field that stands anywhere else gets nothing but the User Agent</b>, which
+    is why the specimen above stands in a dialog.</p>
     <p class="tk-why"><b>The chip's amount face was written the same way and it broke.</b> Until
-    2026-08-08 every rule for <code>.chip-amount</code> was scoped <code>.app-case .chip-amount</code>,
-    and 526 of the 559 buttons that stand in a dialog in this product are in a dialog that carries no
+    2026-08-08 every rule for it was scoped <code>.app-case .chip-amount</code>, and 526 of the 559
+    buttons that stand in a dialog in this product are in a dialog that carries no
     <code>app-case</code>. The chip beside the amount field was drawn by the browser while the field
     itself was right, <b>because this file had already named the second place its control
     stands</b>.</p>
-    <p class="tk-note"><b>Measured across all 106 screens on 2026-08-08: 0 of the 122 fields fall
-    outside a named scope.</b> That is the check the claim needs. A scope is not wrong for being a
-    scope; it is wrong when the list of places is shorter than the list of places.</p>
+    <p class="tk-note"><b>Measured across all 106 screens: 0 of the 122 fall outside a named
+    scope.</b> That is the check the claim needs. A scope is not wrong for being a scope; it is wrong
+    when the list of places is shorter than the list of places.</p>
   </section>
 
   <!-- =============================================================== the focus -->
   <section class="tk-sec" id="focus">
-    <h2 data-n="5">Focus is two questions, and this control needs both</h2>
+    <h2 data-n="7">Focus is two questions, and this control needs both</h2>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
         <thead><tr><th>question</th><th>who asks it</th><th>the answer</th></tr></thead>
@@ -161,28 +201,28 @@
 
   <!-- =============================================================== the rest -->
   <section class="tk-sec" id="rest">
-    <h2 data-n="6">The label, the disabled state, and the one that is not an amount</h2>
+    <h2 data-n="8">The label, the disabled state, and the third kind</h2>
     <p class="tk-note"><b>The label is one face across all 245 placements</b>: 11px, uppercase,
     0.33px of tracking, muted ink. Measured on 106 screens, there is no second reading of it
     anywhere. Two contexts recolour it and nothing else: the reconcile box on the win screen tints it
-    toward <code>--result-won</code>, because the label there is naming a figure that is the good
-    news.</p>
+    toward the won role, because the label there is naming a figure that is the good news.</p>
     <p class="tk-note"><b>Disabled</b> is the system's one answer, <code>--opacity-disabled</code>
     with <code>not-allowed</code>, plus a swap from the well to the surface so a dead field stops
     looking like a hole you can type into.</p>
-    <p class="tk-note"><b>One placement of the 122 is not a field at all.</b> The deposit address
-    wears <code>.amount-input.addr</code> on a <code>&lt;span&gt;</code>: mono, 13px, muted,
-    ellipsised. It borrows the box because it stands in the same row as one, and it is deliberately
-    not an <code>&lt;input&gt;</code>, <b>because it is a value you check rather than one you
-    type</b>.</p>
+    <p class="tk-note"><b>The third kind is not a field at all.</b> The deposit address wears
+    <code>.amount-input.addr</code> on a <code>&lt;span&gt;</code>: mono, 13px, muted, ellipsised. It
+    borrows the box because it stands in the same row as one, <b>and it is deliberately not an
+    input, because it is a value you check rather than one you type</b>. It took no currency mark for
+    the same reason.</p>
   </section>
 
   <!-- ================================================================= floor -->
   <section class="tk-sec" id="floor">
-    <h2 data-n="7">44, and it does not come from the pointer</h2>
+    <h2 data-n="9">44, and it does not come from the pointer</h2>
     <p class="tk-note"><b>This is one of the few controls in the system that does not need the touch
     floor</b>, because it wrote its own and wrote it unconditionally. Measured with a mouse and with
-    a finger, at 390 and at 1280: 44 in all four readings, on every one of the 122.</p>
+    a finger, at 390 and at 1280: 44 in all four readings, on every one of the 121, and the mark
+    beside it did not move a single one of them.</p>
     <p class="tk-why"><b>And it is a min-height rather than padding, which is the whole point.</b>
     The field used to reach 45px because its padding happened to add up to it. On the 4px grid the
     same padding lands at 41 and the target is gone without anything looking different.
@@ -191,38 +231,44 @@
 
   <!-- ================================================================== rule -->
   <section class="tk-sec" id="rule">
-    <h2 data-n="8">The rule</h2>
+    <h2 data-n="10">The rule</h2>
+    <p class="tk-note"><b>A currency mark is not part of the value.</b> The value is a number, the
+    mark is a sibling, and the moment they are one string the element can no longer be the right
+    element.</p>
     <p class="tk-note"><b>A scope has to name every place the control stands.</b> Scoping is how this
     system keeps a field from painting the browser's own inputs, and it costs nothing as long as the
-    list is complete. The moment it is short, the control is drawn by nobody in the place nobody
-    listed.</p>
+    list is complete.</p>
     <p class="tk-note"><b>A target is a min-height, never an addition.</b> Padding that happens to
     total 44 is a coincidence that survives until the next spacing edit.</p>
-    <p class="tk-note"><b>Active and focused are two states and the second one belongs to the
-    keyboard.</b> A field that is being typed into should look it for everybody; a ring is an
-    indicator for the person who cannot see where the caret went.</p>
+    <p class="tk-note"><b>Active and focused are two states and the second belongs to the
+    keyboard.</b></p>
   </section>
 
   <!-- ============================================================= anti-rule -->
   <section class="tk-sec" id="antirule">
-    <h2 data-n="9">The anti-rule</h2>
+    <h2 data-n="11">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never write a guard that cannot fire.</b> <i>A pattern with no form
+    validates nothing, on 113 fields, and reads as a constraint to everyone who opens the
+    markup.</i></p>
+    <p class="tk-lab tk-bad"><b>Never put a symbol in a value a machine has to read.</b> <i>The
+    <code>$</code> is why the field was text, and text is why letters could be typed into it.</i></p>
     <p class="tk-lab tk-bad"><b>Never take the outline away without putting one back.</b> <i>Two
-    fields did it here and the second went uncaught for months, because the rule that removes it and
-    the rule that restores it are read separately by anything that reads declarations.</i></p>
+    fields did it here and the second went uncaught for months.</i></p>
     <p class="tk-lab tk-bad"><b>Never write "the one" in a comment.</b> <i>It is the sentence the next
     pass trusts instead of counting, and it was wrong the day it was written.</i></p>
-    <p class="tk-lab tk-bad"><b>Never let a group of controls live in a field's file.</b> <i>The quick
-    amounts sat here long enough to make this component's containment empty, and an empty containment
-    is what the level arithmetic silently answers with a guess.</i></p>
+    <p class="tk-lab tk-bad"><b>Never claim markup closed a field.</b> <i><code>e</code>,
+    <code>+</code> and <code>-</code> reach a number input, and the last of the filtering is the
+    implementation's.</i></p>
   </section>
 
   <!-- ============================================================== closing -->
   <section class="tk-sec" id="closing">
-    <h2 data-n="10">Where the rest of it is</h2>
+    <h2 data-n="12">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="vitrine.html#input">the atoms page</a>.
-    The stylesheet: <code>components/input.css</code>. The chips that left:
-    <code>components/quick.css</code>. The sheet and the panel that hold the second face:
-    <code>components/betpanel.css</code>. The scope defect this file avoided, in full:
+    The stylesheet: <code>components/input.css</code>. The chips that left in 2026-08-05:
+    <a href="quick.html">quick amounts</a>. The sheet and the panel that hold the second kind:
+    <a href="betpanel.html">bet panel</a>. The dialog the first kind stands in:
+    <a href="dialog.html">dialog</a>. The scope defect this file avoided, in full:
     <a href="chip.html#faces">chip</a>.</p>
   </section>
 
