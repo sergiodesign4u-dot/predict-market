@@ -44,6 +44,61 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-08 - Six pattern pages, and the kit closes at 55 of 55
+
+**Every component in `components/` has a page.** Four foundations, four shelves, ten atoms, seventeen
+molecules, thirteen organisms, six patterns and an overview. The panel reads 55 of 55 and drops its
+own sentence about rows with no page, because that sentence only exists while there is one.
+
+### The six pattern headers were right, and that is worth recording
+
+Every `Stands on:` count in the six files was verified in a browser across all 106 painted screens
+and **every one of them matched to the number**: action bar 3, browse shell 77, card grid 23, detail
+shell 11, list head 71 with 44 carrying controls, position list 13. These are the only headers in
+`components/` whose counts have been checked this way, and they held. **The 16 component headers that
+say 105 where the tree is 106 are still open as backlog 52**, and this pass is the argument that the
+check is worth doing rather than assuming either way.
+
+### What the pattern pages found
+
+**The action bar's declared face is worn by nobody.** Three placements: two wear `.flat` and one
+wears `.static`, so **`position:sticky`, the pattern's own default, has never once applied**, and
+0 of 3 carry the bar as written. Read together with `account`'s page, which counts the surface from
+the other side, the bar's whole declared face is theory. It strengthens backlog 63 rather than
+opening a new row.
+
+**The card grid's `!important` was arguing with four dead rules.** Three breakpoints losing to the
+fluid track on source order, and a category variant outranked only by the shout. The shipped grid has
+always been one rule; deleting the four made the shout removable **without moving a card**. Measured
+today: 1 column at 390 and **2 at 1280**, where the file says "one column to four" - three columns
+need 932px of grid and the widest column at 1280 is 911, so two thirds of that range is off the end
+of the widest reading this kit takes. The page says so.
+
+**Both stale provenance lines in the folder were found by building this shelf.** The browse shell's
+`Assembled from` named a PARENT: `<main class="feed">` opens at line 361 and `<div class="cat-layout">`
+at 469, so the feed holds the shell. The position list's named a file that had stopped owning the
+block five days earlier, when the record moved to `position.css`. **Neither line is read by anything,
+which is exactly why both survived a move and a rename.** The kit is the instrument that reads them,
+and it is a person writing down what a pattern holds rather than a script.
+
+### Verified
+
+All 55 kit pages at 390 and 1280 with the pointer asserted fine: **0 horizontal page scroll, 0
+console errors, 149 unique hrefs and 0 broken, 0 responses over 400**, one active row per page,
+**0 planned rows left in the panel**, 0 collapsed specimen figures. All six `Stand:` lines repointed
+and every section of `patterns.html` links to its page.
+
+### What the whole rebuild cost and what it found
+
+Five batches in one day, 43 component pages plus the three the atoms had already: **eleven backlog
+rows opened by writing them**, 54 to 64. Every page was measured in a browser at 390 and 1280 before
+a word of it was written, and the instrument had to be corrected or reset **five times**: once for a
+census that counted markup inside a script string, once for a fix comment that reported zeros without
+asking whether their host was rendered, and three times for a viewport or pointer override left on
+from a previous pass.
+
+---
+
 ## 2026-08-08 - Thirteen organism pages, the last unmeasured component, and four zeros that had to be challenged
 
 Every atom, molecule and organism in the system now has a page: **49 of 55**, and the six left are

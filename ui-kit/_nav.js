@@ -162,12 +162,12 @@ window.KIT_NAV = [
     label: 'Patterns',
     items: [
       { label: 'All patterns',  page: 'patterns.html',     done: true, note: '6' },
-      { label: 'Action bar',    page: 'action-bar.html',   done: false, next: true },
-      { label: 'Browse shell',  page: 'browse-shell.html', done: false },
-      { label: 'Card grid',     page: 'card-grid.html',    done: false },
-      { label: 'Detail shell',  page: 'detail-shell.html', done: false },
-      { label: 'List head',     page: 'list-head.html',    done: false },
-      { label: 'Position list', page: 'position-list.html',done: false }
+      { label: 'Action bar',    page: 'action-bar.html',   done: true, note: '3' },
+      { label: 'Browse shell',  page: 'browse-shell.html', done: true, note: '77' },
+      { label: 'Card grid',     page: 'card-grid.html',    done: true, note: '23' },
+      { label: 'Detail shell',  page: 'detail-shell.html', done: true, note: '11' },
+      { label: 'List head',     page: 'list-head.html',    done: true, note: '71' },
+      { label: 'Position list', page: 'position-list.html',done: true, note: '13' }
     ]
   },
   {

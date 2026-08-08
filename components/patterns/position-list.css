@@ -9,6 +9,7 @@
      it is not. profile.css owns seven classes today, `.av`, `.edit`,
      `.gallery`, `.handle`, `.idrow`, `.name` and `.who`, and none of them
      stands in a position list. Found by ui-kit/patterns.html, 2026-08-08.
+   Stand:  ui-kit/position-list.html, and ui-kit/patterns.html#position-list for the shelf and the threshold
    Stands on: 13 ui-visual screens (active-bets x4, notifications x3,
      my-profile x2, wallet x2, public-profile x2). One list per screen.
    Moved here from: components/position.css, two rules, cut and not copied.

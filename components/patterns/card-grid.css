@@ -4,6 +4,7 @@
    Assembled from: card. One brick, many of it, which is still a composition:
      what the pattern decides is the track, and the card decides nothing about
      where it stands.
+   Stand:  ui-kit/card-grid.html, and ui-kit/patterns.html#card-grid for the shelf and the threshold
    Stands on: 23 ui-visual screens, exactly the ones that list events
      (event-feed x21 across the four categories and their states, favorites x2).
      Counted from the markup and not by grep: `grid` also matches .grid-l, the

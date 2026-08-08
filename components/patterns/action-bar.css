@@ -3,6 +3,7 @@
    sticky by default and flat where the page has no scroll to hold them against.
 
    Assembled from: button.
+   Stand:  ui-kit/action-bar.html, and ui-kit/patterns.html#action-bar for the shelf and the threshold
    Stands on: 3 ui-visual screens (my-profile, wallet, how-it-works). Three is
      the threshold and this clears it exactly, which is worth saying out loud
      rather than rounding up: it is a pattern by one screen.

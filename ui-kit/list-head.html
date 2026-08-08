@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: list head</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>List head</h1>
+    <p>A pattern, the fourth rung. A title on one side and the controls that act on the list on the
+    other, wrapping to two rows when there is no room for one. <b>71 heads on 71 painted screens, and
+    27 of them have a title with nothing to sort.</b> Measured 2026-08-08 in a browser, at 390 and
+    1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">71 heads</span>
+      <span class="tk-badge">44 with controls</span>
+      <span class="tk-badge">27 without</span>
+      <span class="tk-badge">5 rules</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">The heading's TYPE is not here</h2>
+    <p class="tk-note">This file is <b>the row</b>. A display face and its colour are what the block
+    looks like, so they stay in the component that owns the block. The shelf and the reason stay on
+    <a href="patterns.html#list-head">the patterns page</a>.</p>
+    <p class="tk-why"><b>27 of the 71 carry a title and no controls</b>, which is why the row is a
+    wrapping flex with space between rather than a two-column grid: <b>a grid would leave an empty
+    cell on 27 screens</b> and a person would see the title sitting off to one side of a gap.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The row</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="feed-head"><h2>Open markets</h2>
+          <div class="feed-controls">
+            <details class="filter-menu"><summary>Sort: Closing soon</summary></details>
+            <details class="filter-menu"><summary>Category: All</summary></details>
+          </div></div>
+        <div class="feed-head"><h2>Resolved</h2></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="feed-head"><h2>Open markets</h2>
+          <div class="feed-controls">
+            <details class="filter-menu"><summary>Sort: Closing soon</summary></details>
+            <details class="filter-menu"><summary>Category: All</summary></details>
+          </div></div>
+        <div class="feed-head"><h2>Resolved</h2></div>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>a head with no controls</td><td>293x<b>29</b></td><td>911x40</td></tr>
+          <tr><td>a head with controls</td><td>293x<b>114</b>, three rows</td><td>911x<b>40</b>, one row</td></tr>
+          <tr><td>the controls</td><td>293x77, wrapped</td><td>314x35</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>29 to 114 is the whole behaviour of this pattern.</b> On a phone the title
+    takes its own line and the two menus wrap under it; at 1280 all three sit in one 40px row.
+    Nothing is hidden and nothing is a media query: <b>the flex wraps, and the gap is written as two
+    values so the row gap and the column gap differ</b>.</p>
+  </section>
+
+  <section class="tk-sec" id="paint">
+    <h2 data-n="3">Two rules that take an inset off, and one that went elsewhere</h2>
+    <p class="tk-note">The painted layer removes the head's own bottom inset, <b>because on a plate
+    the distance to the list is the plate's padding and not the head's margin</b>. Two rules, one for
+    the row and one for the heading inside it.</p>
+    <p class="tk-why"><b>The border-bottom that used to be reset with them went to the frame</b>, and
+    the sentence is the one this whole step turns on: <b>a rule that removes an edge is about the
+    edge</b>. The same split is written out on <a href="detail-shell.html#notcome">the detail
+    shell</a>.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="4">The rule</h2>
+    <p class="tk-note"><b>A row that sometimes has one child is a wrapping flex, not a grid.</b> 27
+    of 71 have nothing on the right.</p>
+    <p class="tk-note"><b>The distance to what follows belongs to the container.</b> Same sentence as
+    the reading column on <a href="browse-shell.html#read">the browse shell</a>, arrived at from a
+    different screen.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="5">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never use a two-column grid for a head.</b> <i>Twenty-seven screens
+    have nothing to put in the second cell.</i></p>
+    <p class="tk-lab tk-bad"><b>Never put the heading's face in the row's file.</b> <i>The type is
+    what the block looks like and the row is where it stands.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="6">Where the rest of it is</h2>
+    <p class="tk-note">The shelf: <a href="patterns.html#list-head">the patterns page</a>. The
+    stylesheet: <code>components/patterns/list-head.css</code>. The controls in it:
+    <a href="filters.html">filters</a>. The heading's type: <a href="feed.html">feed</a>. The plate
+    whose padding replaced the inset: <code>components/base.css</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>

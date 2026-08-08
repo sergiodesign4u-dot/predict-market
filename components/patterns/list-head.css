@@ -5,6 +5,7 @@
    Assembled from: a heading and filters. The heading's TYPE is not here: a
      display face and its colour are what the block looks like, so they stay in
      components/feed.css. This file is the row.
+   Stand:  ui-kit/list-head.html, and ui-kit/patterns.html#list-head for the shelf and the threshold
    Stands on: 71 ui-visual screens carry .feed-head, 70 when this was written (event-feed x41,
      active-bets x9, notifications x5, public-profile x4, my-profile x3,
      wallet x3, favorites x3, cookie-consent, toasts); 44 of them also carry

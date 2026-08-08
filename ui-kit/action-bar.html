@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: action bar</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Action bar</h1>
+    <p>A pattern, the fourth rung. One or two actions held at the foot of a column. <b>3 placements on
+    3 painted screens, which is the threshold exactly</b>, and <b>0 of the 3 wear the face the pattern
+    declares</b>. Measured 2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">3 placements</span>
+      <span class="tk-badge">a pattern by one screen</span>
+      <span class="tk-badge">0 bare</span>
+      <span class="tk-badge">1 declared exception</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">A pattern by one screen, and the count is said out loud</h2>
+    <p class="tk-note">The rule is <b>three screens or more</b>: two is a candidate and stays markup.
+    This clears it exactly, and its own file says so rather than rounding up: <b>it is a pattern by
+    one screen</b>. The shelf and the reason stay on <a href="patterns.html#action-bar">the patterns
+    page</a>.</p>
+  </section>
+
+  <section class="tk-sec" id="never">
+    <h2 data-n="2">The sticky default is worn by nobody</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>worn</th><th>position</th><th>surface</th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the declared bar</td><td><b>0</b></td><td><code>sticky</code></td><td>the stone</td><td colspan="2">nowhere</td></tr>
+          <tr><td><code>.static</code></td><td>1, the wallet</td><td><code>static</code></td><td>the stone</td><td>293x72</td><td>911x72</td></tr>
+          <tr><td><code>.flat</code></td><td>2</td><td><code>static</code></td><td><b>none</b></td><td>259x55 and 293x55</td><td>877x55 and 911x55</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>Every placement overrides the position the pattern declares</b>, one by
+    saying static and two by saying flat. So <code>position:sticky</code> is a default that has never
+    once applied, and the 17px between 72 and 55 is the surface that two of the three take away.</p>
+    <p class="tk-note">It is the same finding as <a href="account.html#spec">account</a>'s, read from
+    the other side: that page counts the surface and this one counts the position. <b>Together they
+    say the bar's whole declared face, stone and sticky, is theory.</b>
+    <code>docs/backlog.md</code> 63.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="3">The bar</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="cta-bar static"><button type="button" class="btn btn-primary btn-md">Add funds</button><button type="button" class="btn btn-secondary btn-md">Withdraw</button></div>
+        <div class="cta-bar flat"><button type="button" class="btn btn-primary btn-md">Browse markets</button><button type="button" class="btn btn-secondary btn-md">How it works</button></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="cta-bar static"><button type="button" class="btn btn-primary btn-md">Add funds</button><button type="button" class="btn btn-secondary btn-md">Withdraw</button></div>
+        <div class="cta-bar flat"><button type="button" class="btn btn-primary btn-md">Browse markets</button><button type="button" class="btn btn-secondary btn-md">How it works</button></div>
+      </div>
+    </div>
+    <p class="tk-note"><b>The arrangement is four declarations and one of them is written twice</b>,
+    once for an anchor child and once for a bare one, <b>because the bar has each about as often</b>.
+    The second is a CHILD selector where the first is not: a button nested inside an anchor is not a
+    flex item of this bar, so <code>flex:1</code> on it would mean nothing.</p>
+  </section>
+
+  <section class="tk-sec" id="exception">
+    <h2 data-n="4">The one place the step needed an exception</h2>
+    <p class="tk-note">The cut had a rule: <b>composition comes here, the page's plate goes to the
+    frame, and the component keeps its paint</b>. This bar is where the rule needed a third box.</p>
+    <p class="tk-why"><b>The bar's own surface is a stone, a hairline along the top edge and two
+    rounded top corners.</b> That is not the page plate, so it does not follow the frame; it is not
+    composition, so it does not come here. <b>It is the paint of a component</b>, and it stays in
+    <a href="account.html">account</a>.</p>
+    <p class="tk-note"><b>The same split runs through <code>.flat</code>, and that is the sharpest
+    version of it:</b> the POSITION is in this file and the three declarations that take the surface
+    away are in the component's. One class name, two files, and each file holds the half it is
+    entitled to.</p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="5">The rule</h2>
+    <p class="tk-note"><b>A pattern says where things stand and never what they look like.</b> Four
+    declarations, and not one of them is a colour, a face, a border or a surface.</p>
+    <p class="tk-note"><b>Three screens, counted, and the count is written down.</b> A pattern that
+    clears the threshold by one screen says so, because the day a screen changes it is a candidate
+    again.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="6">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never let a pattern declare a default nothing wears.</b> <i>Sticky is
+    overridden by all three placements, and it reads as the intended behaviour to everyone who
+    opens the file.</i></p>
+    <p class="tk-lab tk-bad"><b>Never move a component's paint into a pattern to keep the cut
+    tidy.</b> <i>The stone stayed in the component, and the exception is written where somebody will
+    meet it.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="7">Where the rest of it is</h2>
+    <p class="tk-note">The shelf: <a href="patterns.html#action-bar">the patterns page</a>. The
+    stylesheet: <code>components/patterns/action-bar.css</code>. The bar's surface and the other half
+    of <code>.flat</code>: <a href="account.html">account</a>. The controls in it:
+    <a href="button.html">button</a>. The open row: <code>docs/backlog.md</code> 63.</p>
+  </section>
+
+</div>
+</body>
+</html>

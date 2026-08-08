@@ -2,6 +2,7 @@
    Pattern: the detail shell. A content column beside a sticky side panel.
 
    Assembled from: card, chart, market, tabs, betpanel. It owns none of them.
+   Stand:  ui-kit/detail-shell.html, and ui-kit/patterns.html#detail-shell for the shelf and the threshold
    Stands on: 11 ui-visual screens, every event-detail state (base, multi,
      resolved, loading, error, logged-out, and the five bet states).
    Moved here from: components/event-detail.css, three rules, cut and not copied.

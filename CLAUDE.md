@@ -71,8 +71,7 @@ because it is a stance rather than a principle, and it is written once, here.
   job, and taking one apart needs room a shelf does not have, because a shelf gives every component
   one specimen and one rule. **The threshold is not a placement count** - `toast` has four and
   `toggle` has three, and four of the toggle's five faces have no placement in the product at all, so
-  a stand built by walking screens would show one grey oval and call it the component. 49 of 55 pages
-  written, one route in `_nav.js`, 0 generators and 0 gates.
+  a stand built by walking screens would show one grey oval and call it the component. **55 of 55 pages written**, one route in `_nav.js`, 0 generators and 0 gates.
 
 ---
 

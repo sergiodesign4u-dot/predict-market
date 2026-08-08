@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: detail shell</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Detail shell</h1>
+    <p>A pattern, the fourth rung, and <b>the smallest file in the system at 17 lines</b>. A content
+    column beside a side panel. <b>11 placements on 11 painted screens</b>, every state an event
+    detail has. Measured 2026-08-08 in a browser, at 390 and 1280.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">11 screens</span>
+      <span class="tk-badge">17 lines</span>
+      <span class="tk-badge">3 rules</span>
+      <span class="tk-badge">holds 5 components</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">Three rules for five components</h2>
+    <p class="tk-note">It assembles a <a href="card.html">card</a>, a <a href="chart.html">chart</a>,
+    a <a href="market.html">market</a> block, a <a href="tabs.html">tab strip</a> and a
+    <a href="betpanel.html">bet panel</a>, <b>and it owns none of them</b>. What it says is that there
+    are two columns, which one grows, and when they stop being stacked. The shelf and the reason stay
+    on <a href="patterns.html#detail-shell">the patterns page</a>.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
+        <tbody>
+          <tr><td>the layout</td><td>a column, 351x1984</td><td><b>a row, 969x1691</b></td></tr>
+          <tr><td>the main column</td><td>351 wide, the whole width</td><td><b>631 wide</b>, the panel takes 322</td></tr>
+          <tr><td>the breakpoint</td><td colspan="2"><b>760</b>, and it is the same one the bet panel uses to swap its own face</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>One breakpoint, shared with the component it holds</b>, which is what keeps
+    the two in step: at 760 the layout becomes a row AND the panel stops being
+    <code>display:none</code>. Written at two different numbers, there would be a width where a
+    column is waiting for a panel that is not there.</p>
+  </section>
+
+  <section class="tk-sec" id="notcome">
+    <h2 data-n="2">What did NOT come with the three rules</h2>
+    <p class="tk-note">Three rules were cut out of the event screen's file and not copied. <b>Two
+    things stayed behind on purpose:</b> the plate the main column stands on, and <b>the border it
+    drops</b>.</p>
+    <p class="tk-why"><b>A rule that removes an edge is about the edge</b>, so it belongs with the
+    surface rather than with the arrangement, and both are in the page frame with the rest of the
+    material. This file answers where the two columns are and <b>nothing about what they look
+    like</b>.</p>
+    <p class="tk-note">It is the same cut the <a href="browse-shell.html">browse shell</a> made and
+    the opposite of the one <a href="action-bar.html#exception">the action bar</a> needed: there the
+    surface belongs to a component rather than to the page, so it stayed with the component. <b>Three
+    boxes, and every rule in the step went into one of them.</b></p>
+  </section>
+
+  <section class="tk-sec" id="rule">
+    <h2 data-n="3">The rule</h2>
+    <p class="tk-note"><b>A shell declares the columns and nothing else.</b> Seventeen lines for a
+    screen that holds five components is what that looks like when it is done.</p>
+    <p class="tk-note"><b>A breakpoint that two files depend on is one number.</b> The layout and the
+    panel change at the same width, or there is a window where neither is right.</p>
+  </section>
+
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="4">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never bring a surface with an arrangement.</b> <i>The plate is the
+    page's material and it stayed in the frame.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let a shell learn what it holds.</b> <i>Five components stand
+    in these two boxes and not one of them is named here.</i></p>
+  </section>
+
+  <section class="tk-sec" id="closing">
+    <h2 data-n="5">Where the rest of it is</h2>
+    <p class="tk-note">The shelf: <a href="patterns.html#detail-shell">the patterns page</a>. The
+    stylesheet: <code>components/patterns/detail-shell.css</code>, 17 lines. The screen's own parts:
+    <a href="event-detail.html">event detail</a>. The five it holds:
+    <a href="card.html">card</a>, <a href="chart.html">chart</a>, <a href="market.html">market</a>,
+    <a href="tabs.html">tabs</a> and <a href="betpanel.html">bet panel</a>. The plate:
+    <code>components/base.css</code>.</p>
+  </section>
+
+</div>
+</body>
+</html>
