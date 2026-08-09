@@ -132,6 +132,34 @@ standing the old drawings and quoting numbers taken at 1.6.
 its own sprite and the new symbols were never added to it. Same defect as the swap itself, one level
 up: `<use>` fails silently. The page now asserts it, and so does the check that runs over the tree.
 
+### AND THE STAND WAS STILL OFFERING FOUR GLYPHS THAT SHIP NOWHERE
+
+Section 03 kept the four crossed pairs as **live specimens**, stroked twin beside filled one, under a
+caption reading "as they stood until 2026-08-09", with a paragraph under it saying all four now
+stand as the filled glyph only. It was read, by the person the stand is for, as a stroked bookmark
+and a stroked bell still being in the design system.
+
+**They were right and the caption was not a defence.** A reader who scans a grid of glyphs is reading
+the pictures, not the label above them. The path data is a record and belongs in a table; the drawing
+was an offer. The four are written now and not drawn, in the same shape `trustbar.html` used when the
+strip was deleted: a table of what was there, and no specimen of it.
+
+**And asking that question of the whole kit found six more, five of them older than this pass.**
+Every glyph any kit page draws was compared against every glyph the painted tree ships, with the
+markup normalised so that `<path></path>` and `<path/>` count as one:
+
+| page | it drew | it should have drawn |
+|---|---|---|
+| `iconbtn.html` | the stroked swap | `i-transfer-horizontal-b`, and it was missed by the sweep itself because the markup is written `<path></path>` and the pattern was not |
+| `hiw-dialog.html` | a plus and a bar chart | `i-check-circle-b` and `i-graph-up-b`, the marks the sheet actually carries on 106 screens |
+| `state-block.html` | a three-line list | `i-inbox-b` |
+| `toast.html` | a tick at other coordinates, and its own warning triangle | the product's tick, and `i-danger-triangle-b` |
+| `vitrine.html` | its own exclamation | `i-danger-triangle-b` |
+
+**A stand that draws its own glyph is a second icon set with one placement.** Five of these predate
+the consolidation and none had ever been noticed, because nothing compares the stand to the product.
+That comparison is now an act somebody can repeat, and it reads **0**.
+
 ### What the rebuilt audit found
 
 **The centre drift this page opened with is gone, and the consolidation removed it.** `sort` at -2.0
