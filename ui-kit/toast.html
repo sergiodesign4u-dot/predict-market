@@ -9,9 +9,12 @@
 <script src="_nav.js"></script>
 </head>
 <body class="app-case">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-    <symbol id="i-danger-triangle-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.312 10.762C8.23 5.587 9.689 3 12 3s3.77 2.587 6.688 7.762l.364.644c2.425 4.3 3.638 6.45 2.542 8.022S17.786 21 12.364 21h-.728c-5.422 0-8.134 0-9.23-1.572s.117-3.722 2.542-8.022zM12 7.25a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0V8a.75.75 0 0 1 .75-.75M12 17a1 1 0 1 0 0-2a1 1 0 0 0 0 2" clip-rule="evenodd"/></symbol>
-  </defs></svg>
+  <!-- Icons: ONE sprite, ../assets/icons.svg, reached as <use href="../assets/icons.svg#i-name">.
+       No copy lives in this file, so THIS PAGE MUST BE SERVED, not opened from disk: an
+       external <use> is a cross-document reference and file:// treats every file as its own
+       origin, so the glyphs render as nothing and the console fills with errors. Measured:
+       0 of 34 drawn, 39 errors. `python3 -m http.server` in the repo root and open the port.
+       Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
 <button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar"></aside>
@@ -51,13 +54,13 @@
       <div class="tk-theme-fig tk-stack" data-theme="dark">
         <div class="toast-group">
           <div class="toast"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg><span class="toast-msg">Bet placed. $50 on YES.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-          <div class="toast toast-error"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-danger-triangle-b"/></svg><span class="toast-msg">Deposit failed. Your card was declined.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+          <div class="toast toast-error"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-danger-triangle-b"/></svg><span class="toast-msg">Deposit failed. Your card was declined.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
         </div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <div class="toast-group">
           <div class="toast"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg><span class="toast-msg">Bet placed. $50 on YES.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-          <div class="toast toast-error"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-danger-triangle-b"/></svg><span class="toast-msg">Deposit failed. Your card was declined.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+          <div class="toast toast-error"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-danger-triangle-b"/></svg><span class="toast-msg">Deposit failed. Your card was declined.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
         </div>
       </div>
     </div>

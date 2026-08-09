@@ -13,12 +13,12 @@
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar"></aside>
 
-  <!-- One symbol of the shipped sprite, spliced rather than retyped: the category
-       chip carries a mark and the specimen carries the same one. -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-    <symbol id="i-cat-fire" viewBox="0 0 24 24"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></symbol>
-  </defs></svg>
-
+  <!-- Icons: ONE sprite, ../assets/icons.svg, reached as <use href="../assets/icons.svg#i-name">.
+       No copy lives in this file, so THIS PAGE MUST BE SERVED, not opened from disk: an
+       external <use> is a cross-document reference and file:// treats every file as its own
+       origin, so the glyphs render as nothing and the console fills with errors. Measured:
+       0 of 34 drawn, 39 errors. `python3 -m http.server` in the repo root and open the port.
+       Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
 <div class="tk-wrap">
 
   <div class="tk-hero">
@@ -105,8 +105,8 @@
     <p class="tk-subh">nav, 294 placements, and it is the loudest chip in the product</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
-      <div class="tk-theme-fig" data-theme="dark"><a class="chip chip-nav" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Trending</span></a><a class="chip chip-nav sel" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Politics</span></a></div>
-      <div class="tk-theme-fig" data-theme="light"><a class="chip chip-nav" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Trending</span></a><a class="chip chip-nav sel" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"></use></svg><span>Politics</span></a></div>
+      <div class="tk-theme-fig" data-theme="dark"><a class="chip chip-nav" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-cat-fire"></use></svg><span>Trending</span></a><a class="chip chip-nav sel" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-cat-fire"></use></svg><span>Politics</span></a></div>
+      <div class="tk-theme-fig" data-theme="light"><a class="chip chip-nav" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-cat-fire"></use></svg><span>Trending</span></a><a class="chip chip-nav sel" href="#"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-cat-fire"></use></svg><span>Politics</span></a></div>
     </div>
     <p class="tk-note">The category band: <code>--bg-chip</code> on a <code>--bevel-notice</code> edge
     at 14px, <b>and it is the loudest on purpose, because on a phone it is the one control that

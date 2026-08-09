@@ -344,6 +344,18 @@ belong to nobody's system. **It was 21 until the two warning marks were decided 
 one job cannot have two drawings, so the circle left the set and its 16 placements became the
 triangle, in both trees, grey first.
 
+**The set lives in ONE file, `assets/icons.svg`, and no document carries a copy.** Every screen and
+every kit page reaches it as `<use href="../assets/icons.svg#i-name">`. It was inlined into 112
+documents until 2026-08-09: **1,756 KB, 23 per cent of the painted tree's bytes, and half of it
+unused on any given screen**, against **18.8 KB fetched once** now. The second reason is the one a
+byte count does not show: a block copied into 112 places drifts, and `i-bookmark-b` had become two
+different drawings, the product's on 111 documents and an older one on 3 kit pages, with nothing able
+to see it because every copy was internally consistent. **The ink still comes from the referencing
+element through `currentColor`, which crosses the document boundary**, measured rather than assumed.
+The price is that **the painted tree must be served**: `file://` treats every file as its own origin
+and blocks the reference, so a screen opened from disk draws 0 of its glyphs. The pointer comment at
+the head of every screen says so.
+
 - **An object is filled. A movement is a line.** A bell, a bookmark, a shield, a person, a clock, an
   envelope and a globe are things, and a thing can be filled. **A cross, a chevron, a plus, a tick
   and a hamburger are movements**: they have no interior, so a filled set answers them with a disc or

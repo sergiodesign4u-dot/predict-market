@@ -15,12 +15,12 @@
      its groups, its counts and the row it lights are all in _nav.js. -->
 <aside class="sidebar" id="rmSidebar"></aside>
 
-  <!-- One symbol of the shipped sprite, spliced rather than retyped: the bare
-       pair under a comment carries it, so the specimen carries it too. -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-    <symbol id="i-heart-b" viewBox="0 0 24 24"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></symbol>
-  </defs></svg>
-
+  <!-- Icons: ONE sprite, ../assets/icons.svg, reached as <use href="../assets/icons.svg#i-name">.
+       No copy lives in this file, so THIS PAGE MUST BE SERVED, not opened from disk: an
+       external <use> is a cross-document reference and file:// treats every file as its own
+       origin, so the glyphs render as nothing and the console fills with errors. Measured:
+       0 of 34 drawn, 39 errors. `python3 -m http.server` in the repo root and open the port.
+       Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
 <div class="tk-wrap">
 
   <div class="tk-hero">
@@ -140,8 +140,8 @@
     <p class="tk-subh">bare, 72 placements, on 9 screens</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
-      <div class="tk-theme-fig" data-theme="dark"><div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"></use></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div></div>
-      <div class="tk-theme-fig" data-theme="light"><div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"></use></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div></div>
+      <div class="tk-theme-fig" data-theme="dark"><div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-heart-b"></use></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div></div>
+      <div class="tk-theme-fig" data-theme="light"><div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-heart-b"></use></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div></div>
     </div>
     <p class="tk-note">The like and reply pair under a comment. <b>It is the same rest face a
     <code>navitem</code> wears and it is not one</b>: what separates them is the MEANING, which is

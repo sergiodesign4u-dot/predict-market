@@ -13,10 +13,12 @@
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar"></aside>
 
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-    <symbol id="i-bookmark-b" viewBox="0 0 24 24"><path fill="currentColor" d="M4 6.2C4 5.08 4 4.52 4.218 4.092a2 2 0 0 1 .874-.874C5.52 3 6.08 3 7.2 3h9.6c1.12 0 1.68 0 2.108.218a2 2 0 0 1 .874.874C20 4.52 20 5.08 20 6.2v12.646c0 .84 0 1.26-.271 1.428c-.272.168-.625-.06-1.332-.516l-5.32-3.433c-.253-.163-.38-.245-.516-.276a.9.9 0 0 0-.322 0c-.136.031-.263.113-.516.276l-5.32 3.433c-.707.456-1.06.684-1.332.516C4 20.106 4 19.687 4 18.846z"/></symbol>
-  </defs></svg>
-
+  <!-- Icons: ONE sprite, ../assets/icons.svg, reached as <use href="../assets/icons.svg#i-name">.
+       No copy lives in this file, so THIS PAGE MUST BE SERVED, not opened from disk: an
+       external <use> is a cross-document reference and file:// treats every file as its own
+       origin, so the glyphs render as nothing and the console fills with errors. Measured:
+       0 of 34 drawn, 39 errors. `python3 -m http.server` in the repo root and open the port.
+       Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
 <div class="tk-wrap">
 
   <div class="tk-hero">
@@ -54,7 +56,7 @@
           <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div>
             <div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
           <div class="meta"><span class="meta-txt"><span class="m-label">Volume</span><span class="m-val">$84,200</span></span>
-            <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-label="Save this market"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></div>
+            <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-label="Save this market"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"></use></svg></button></div>
         </div></article>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
@@ -65,7 +67,7 @@
           <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div>
             <div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
           <div class="meta"><span class="meta-txt"><span class="m-label">Volume</span><span class="m-val">$84,200</span></span>
-            <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-label="Save this market"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></div>
+            <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-label="Save this market"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"></use></svg></button></div>
         </div></article>
       </div>
     </div>

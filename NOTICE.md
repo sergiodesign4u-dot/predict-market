@@ -25,9 +25,11 @@ requirement is met. **An asset with no entry here has not been cleared and may n
   document-unique id and was invisible to every measurement this repository takes. Everything else
   the system adds is around the glyphs: a shared `viewBox`, the `.ic` box, and the ink, which comes
   from a role token rather than from the file.
-- **Where the attribution is:** here; in `DESIGN.md` under the icon rule; and in the comment above
-  the sprite on every screen that carries one, which is the place a person reading the markup
-  actually meets it.
+- **Where the attribution is:** here; in `DESIGN.md` under the icon rule; **at the head of
+  `assets/icons.svg`, which is the file that holds the glyphs**; and in the pointer comment on every
+  screen and kit page that references it, which is the place a person reading the markup actually
+  meets it. The sprite stopped being inlined into 112 documents on 2026-08-09 and the attribution
+  moved with it rather than being dropped.
 
 **This entry was written on 2026-08-09 and the glyphs had been shipping since the Vault pass.**
 Fifteen Solar Bold glyphs were already in the sprite with the set named in a comment and **no

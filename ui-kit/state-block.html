@@ -9,9 +9,12 @@
 <script src="_nav.js"></script>
 </head>
 <body class="app-case">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-    <symbol id="i-inbox-b" viewBox="0 0 24 24"><path fill="currentColor" d="M3.464 20.536C4.93 22 7.286 22 12 22s7.071 0 8.535-1.465c1.271-1.27 1.44-3.213 1.462-6.785H18.84c-.974 0-1.229.016-1.442.114c-.214.099-.392.282-1.026 1.02l-.605.707l-.088.102c-.502.587-.9 1.052-1.45 1.305s-1.162.253-1.934.252h-.589c-.773 0-1.385.002-1.935-.252c-.55-.253-.948-.718-1.45-1.305l-.088-.102l-.605-.706c-.634-.74-.812-.922-1.026-1.02c-.213-.099-.468-.115-1.442-.115H2.003c.023 3.572.19 5.515 1.461 6.785"/><path fill="currentColor" d="M20.536 3.464C19.07 2 16.714 2 12 2S4.929 2 3.464 3.464C2 4.93 2 7.286 2 12v.25h3.295c.772 0 1.384-.002 1.934.252c.55.253.948.718 1.45 1.305l.088.102l.605.706c.634.74.812.922 1.026 1.02c.213.099.468.115 1.442.115h.32c.974 0 1.229-.016 1.442-.114c.214-.099.392-.282 1.026-1.02l.605-.707l.088-.102c.502-.587.9-1.052 1.45-1.305c.55-.254 1.162-.253 1.935-.252H22V12c0-4.714 0-7.071-1.465-8.536"/></symbol>
-  </defs></svg>
+  <!-- Icons: ONE sprite, ../assets/icons.svg, reached as <use href="../assets/icons.svg#i-name">.
+       No copy lives in this file, so THIS PAGE MUST BE SERVED, not opened from disk: an
+       external <use> is a cross-document reference and file:// treats every file as its own
+       origin, so the glyphs render as nothing and the console fills with errors. Measured:
+       0 of 34 drawn, 39 errors. `python3 -m http.server` in the repo root and open the port.
+       Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
 <button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar"></aside>
@@ -46,7 +49,7 @@
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
         <div class="state-block">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-inbox-b"/></svg>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-inbox-b"/></svg>
           <p class="state-title">No bets yet</p>
           <p class="state-msg">When you back a side, it will show up here with what it is worth right now.</p>
           <div class="state-actions"><a class="btn btn-primary btn-md" href="#">Browse markets</a><a class="btn btn-ghost btn-md" href="#">How it works</a></div>
@@ -54,7 +57,7 @@
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <div class="state-block">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-inbox-b"/></svg>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-inbox-b"/></svg>
           <p class="state-title">No bets yet</p>
           <p class="state-msg">When you back a side, it will show up here with what it is worth right now.</p>
           <div class="state-actions"><a class="btn btn-primary btn-md" href="#">Browse markets</a><a class="btn btn-ghost btn-md" href="#">How it works</a></div>

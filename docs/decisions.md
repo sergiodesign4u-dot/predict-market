@@ -44,7 +44,56 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
-## 2026-08-09 - The clock never filled the cell, and the glyph that was breaking the rule is the one nobody named
+## 2026-08-09 - The sprite becomes one file, and the copy in 112 places had already drifted
+
+Backlog 69 asked whether the icon sprite is a shared block every screen carries whole or a per-screen
+thing that something has to trim. **Costed in a browser before deciding, not argued:**
+
+| | sprite | painted tree | what it costs |
+|---|---|---|---|
+| inline, as it was | **1,756.7 KB** | 7,530.7 KB | nothing, and 23.2 per cent of every page is icons |
+| trimmed per screen | 921.4 KB, 52 per cent | 6,695.4 KB | a machine, or a silent failure on every future edit |
+| **one external file** | **18.8 KB, 1 per cent** | **5,834.5 KB** | the tree must be served |
+
+29 symbols are defined on a screen and **14.0 are used on average**, so half the bytes on any given
+page were for glyphs that page does not draw.
+
+### The second reason, which a byte count does not show
+
+Building the one file found that **`i-bookmark-b` was two different drawings**: the product's on 111
+documents and an older one on 3 kit pages, `bottomnav`, `card` and `navitem`. **A block copied into
+112 places drifts, and nothing can see it, because every copy is internally consistent.** The stand
+had been showing a bookmark the product does not ship, and it survived the pass that removed seven
+such glyphs two days earlier precisely because it is not an extra glyph, it is a wrong one under the
+right name. The one file keeps the version on 111 documents.
+
+### What was verified before committing to it
+
+**`currentColor` crosses the document boundary.** An external `<use>` is a reference into another
+document, and the whole icon system takes its ink from a role token through `currentColor`. Measured
+on a test page: a brass ancestor gives the external glyph `rgb(199, 162, 78)` and a green ancestor
+gives `rgb(74, 222, 128)`, both painting 32.8 x 36.7. `getBBox` also still works through the
+reference, so the ink instrument survives.
+
+### The price, stated rather than discovered later
+
+**`file://` treats every file as its own origin and blocks the reference.** A screen opened from disk
+draws **0 of 34 glyphs and fills the console with 39 errors**, while its fonts, its panel and its
+photographs are unaffected. Before this change the tree was fully openable from disk.
+
+It is the right trade for this artefact and the reason is not only the bytes: the canonical way these
+screens are read is **served**, on GitHub Pages, which is what `README.md` links to, and every
+measurement in this campaign has been taken over `python3 -m http.server`. **The requirement is made
+self-announcing rather than filed**: the pointer comment at the head of all 121 documents says the
+page must be served, why, what it looks like when it is not, and the one command that fixes it.
+`STRUCTURE.md`, `DESIGN.md` and `NOTICE.md` carry it too, and the CC BY attribution moved into the
+head of `assets/icons.svg` rather than being dropped when the inline block left.
+
+**Proof.** 121 documents rewritten, 121 sprite blocks removed, **2,086 references repointed**. 92
+renders over both trees at both widths: **917 of 917 visible glyphs drawn, 0 blank, 0 failed
+requests**. Four stale comments about symbols "spliced rather than retyped" went with the blocks they
+described. The 19 archived screens under `ui-visual/old/` keep their inline sprites, because frozen
+provenance has to render as it was. One throwaway script in the scratchpad, run and deleted.
 
 Backlog 70 said `i-clock-circle-b` paints **24 x 24 at field 0** where the rule is 2, and asked for a
 smaller drawing from the same set. **It paints 20 x 20 at field 2, centre 0.0 / 0.0**, the same box
