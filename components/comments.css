@@ -40,7 +40,7 @@
    44 was NOT taken here and that is deliberate: it is a text control in a meta
    line and 44 would make the comment row taller than the comment. That question is
    the whole product's, and ui-kit/docs/backlog.md S39 holds it. */
-.cmt-actions .ic{width:var(--icon-12);height:var(--icon-12)}
+.cmt-actions .ic{width:var(--icon-12);height:var(--icon-12);color:var(--text-muted);stroke:var(--text-muted)}
 /* TWO AVATAR PLACEHOLDERS LEFT THIS FILE ON 2026-08-08, and they were half alive.
    They were `.cmt-list .cmt-av` and `.cmt-list .cmt:nth-child(even) .cmt-av`, two sample
    photographs alternating down the thread, and the note under them said the product would write

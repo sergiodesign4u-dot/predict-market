@@ -75,15 +75,18 @@
    glance would be said by two different things, and a hover can stick after a
    tap on a phone, so the wrong slot would go on claiming to be current. */
 .nav-slot{display:flex;flex-direction:column;align-items:center;gap:var(--space-4);padding:var(--space-8) var(--space-4);font-size:var(--text-10);color:var(--text-muted)}
-.nav-slot .ic{width:var(--size-20);height:var(--size-20)}
-.nav-slot .ic:has(use){color:var(--text-muted)}
+/* ONE INK FOR BOTH KINDS OF MARK, 2026-08-09. The slot drew a stroked icon at the icon
+   token and a filled one at muted, so Events and Favorites sat at two different values in
+   the same row. It is muted for both now, which is the ink the label beside it already
+   takes, and brass for both when the slot is current. */
+.nav-slot .ic{width:var(--size-20);height:var(--size-20);stroke:var(--text-muted);color:var(--text-muted)}
 /* `aria-current` sits on the <li>, not on the control, so the state is reached
    from an ancestor. It is written with the attribute alone rather than with the
    bar's class, because being the current item is the ATOM's state wherever the
    atom stands, and naming `.bottom-nav` here would be this file holding a
    region's name. */
 [aria-current="page"] .nav-item.nav-slot{background:transparent;color:var(--text-brass);font-weight:var(--weight-bold)}
-[aria-current="page"] .nav-slot .ic{stroke:var(--text-brass)}
+[aria-current="page"] .nav-slot .ic{stroke:var(--text-brass);color:var(--text-brass)}
 [aria-current="page"] .nav-slot .ic:has(use){color:var(--text-brass)}
 
 /* ---------------------------------------------------------- the row face ---

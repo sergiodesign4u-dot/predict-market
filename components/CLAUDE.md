@@ -81,6 +81,26 @@ override it.** There is no build step and no gate: what you write is what ships.
   is a fix**: `.hold-row:first-of-type{border-top:none}` had never once fired, because the scoped
   rule it was written to except tied with it and came later. Measure before and after, in a browser,
   or do not do it.
+- **A line has no interior, so a filled set cannot fill it.** "Consolidate the stroked icons into
+  filled" was measured against Solar Bold and **six of the 33 marks have no filled form**: a cross, a
+  chevron, a plus, a tick and a hamburger are movements rather than things. What a filled set offers
+  instead is a disc or a plate with the mark knocked out, and a disc inside a round icon button is a
+  disc inside a disc. The set is **an object is filled, a movement is a line**, and what holds them
+  together is **weight**: the stroke went 1.6 to 2.2 because 1.6 against the solid mass of Solar Bold
+  is the gap the eye reads as "two icon sets".
+- **Two kinds of mark read two different properties, so every rule that paints an icon names both.**
+  A stroked glyph takes its ink from `stroke` and a filled one from `fill:currentColor`. Nine
+  `:has(use)` rules existed for the first filled handful and **three disagreed with the stroke beside
+  them**, which is how one header shipped the same bookmark at `--text-primary` on one screen and
+  `--text-icon` on the next. Name both or paint half of what you are pointing at.
+- **A shape census files a logo as a duplicate every time.** Reading glyphs by their path data made
+  the X mark "a second close" and Discord "a second chat", and both went into a backlog row as
+  defects. **A brand mark is not in the system**: it keeps its own drawing, takes no system ink, and
+  no generic glyph may stand in for it, because a paper plane is not Telegram.
+- **Naming a third-party asset is not crediting it.** Fifteen Solar glyphs shipped under a comment
+  reading "Solar Bold icon sprite" with **no attribution anywhere**, and the licence is CC BY 4.0,
+  which asks for the author, the licence and whether it was changed. `../NOTICE.md` is where every
+  bought-in asset now says what it requires.
 - **A pointer is a claim, and nothing checks a comment.** Every file here carries a `Stand:` line, and
   from 2026-08-07 to 2026-08-08 **all 42 of them pointed at a file that did not exist**: they named
   the generated per-component pages, which were deleted with the vitrine, and no reader noticed

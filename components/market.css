@@ -21,7 +21,7 @@
 .market-head:hover{background:var(--bg-control)}
 .market-head:active{background:var(--bg-pressed)}
 .market-title{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit)}
-.market-title .ic{width:13px;height:13px;stroke:var(--text-muted);fill:none;stroke-width:1.7}
+.market-title .ic{width:13px;height:13px;stroke:var(--text-muted);color:var(--text-muted);fill:none;stroke-width:1.7}
 .market-chevron{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-muted);fill:none;stroke-width:1.8;transition:transform var(--dur-base) ease}
 .market-box[open] .market-chevron{transform:rotate(180deg)}
 .market-body{margin-top:var(--space-16)}

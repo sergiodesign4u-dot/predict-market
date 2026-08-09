@@ -85,13 +85,16 @@
    angle so the light falls to the bottom right. */
 .icon-btn.bal-swap,.icon-btn.bal-add{width:var(--control-32);height:var(--control-32)}
 .icon-btn.bal-add{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border-color:var(--color-action)}
-.icon-btn.bal-add .ic{stroke:var(--text-on-brass)}
+.icon-btn.bal-add .ic{stroke:var(--text-on-brass);color:var(--text-on-brass)}
 .icon-btn.bal-add{transition:background var(--dur-quick) ease,box-shadow var(--dur-quick) ease,border-color var(--dur-quick) ease}
 .icon-btn.bal-add:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
 .icon-btn.bal-add:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
 /* A sprite mark is filled with the CURRENT colour, so the button has to hand it
    one. Without this the mark takes the ink the browser gives it. */
-.icon-btn .ic:has(use){color:var(--text-primary)}
+/* The filled half of the cluster used to sit at primary while the stroked half sat at the
+   icon token, which is how the same header bookmark came out brighter on one screen than
+   on the next. One ink, 2026-08-09. */
+.icon-btn .ic:has(use){color:var(--text-icon)}
 /* ---------------------------------------------- the face for a photograph ---
    THE SECOND OF THE SIX KINDS ADOPTED THE ATOM ON 2026-08-06, and it is the
    third face rather than a second control. `.sheet-close` is the dismiss on
@@ -125,7 +128,7 @@
    places it stands, and the migration stays at zero. A partition that changes a
    computed value is a partition that made a decision it did not declare. */
 .icon-btn.icon-btn-photo{width:var(--control-32);height:var(--control-32);padding:0;line-height:inherit;color:var(--text-on-photo);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:var(--hairline) solid var(--line-on-photo);transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
-.icon-btn.icon-btn-photo .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo)}
+.icon-btn.icon-btn-photo .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo);color:var(--text-on-photo)}
 .icon-btn.icon-btn-photo:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
 .icon-btn.icon-btn-photo:active{background:color-mix(in oklab,var(--scrim-photo) 72%,transparent);border-color:var(--line-on-photo-hover)}
 /* THE RING THE OVERLAY ASKS FOR, and the last declaration this control had left
@@ -199,15 +202,15 @@
      `--text-muted` where the header rests at `--text-primary`, so it has
      somewhere to go and the header does not. */
 .icon-btn.icon-btn-bare{width:auto;height:auto;padding:0;background:transparent;border:0;border-radius:0;min-width:var(--control-44);min-height:var(--control-44);flex:0 0 auto;margin:calc((var(--control-44) - var(--icon-16)) / -2)}
-.icon-btn.icon-btn-bare .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--icon-quiet)}
+.icon-btn.icon-btn-bare .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--icon-quiet);color:var(--icon-quiet)}
 .icon-btn.icon-btn-bare .ic:has(use){color:var(--icon-quiet)}
 .icon-btn.icon-btn-bare:hover{background:transparent}
-.icon-btn.icon-btn-bare:hover .ic{stroke:var(--icon-brass)}
+.icon-btn.icon-btn-bare:hover .ic{stroke:var(--icon-brass);color:var(--icon-brass)}
 .icon-btn.icon-btn-bare:hover .ic:has(use){color:var(--icon-brass)}
 .icon-btn.icon-btn-bare:active{background:var(--bg-pressed)}
-.icon-btn.icon-btn-bare:active .ic{stroke:var(--icon-brass)}
+.icon-btn.icon-btn-bare:active .ic{stroke:var(--icon-brass);color:var(--icon-brass)}
 .icon-btn.icon-btn-bare:active .ic:has(use){color:var(--icon-brass)}
-.icon-btn.icon-btn-bare[aria-pressed="true"] .ic{fill:var(--icon-brass);stroke:var(--icon-brass)}
+.icon-btn.icon-btn-bare[aria-pressed="true"] .ic{fill:var(--icon-brass);stroke:var(--icon-brass);color:var(--icon-brass)}
 .icon-btn.icon-btn-bare[aria-pressed="true"] .ic:has(use){color:var(--icon-brass)}
 
 /* `line-height:inherit` for the same reason the photo face takes it back: a
@@ -309,9 +312,9 @@
 .icon-btn.icon-btn-lift{width:var(--size-28);height:var(--size-28);padding:0;line-height:inherit;transition:background var(--dur-base) ease,border-color var(--dur-base) ease,transform var(--dur-base) ease}
 .icon-btn.icon-btn-lift .ic{width:var(--icon-18);height:var(--icon-18)}
 .icon-btn.icon-btn-lift:hover{background:color-mix(in oklab,var(--color-action) 20%,var(--bg-control));border-color:var(--text-brass);transform:translateY(-2px)}
-.icon-btn.icon-btn-lift:hover .ic{stroke:var(--text-primary)}
+.icon-btn.icon-btn-lift:hover .ic{stroke:var(--text-primary);color:var(--text-primary)}
 .icon-btn.icon-btn-lift:active{background:var(--bg-pressed);transform:translateY(0)}
-.icon-btn.icon-btn-lift:active .ic{stroke:var(--text-primary)}
+.icon-btn.icon-btn-lift:active .ic{stroke:var(--text-primary);color:var(--text-primary)}
 
 /* The X is drawn rather than fetched: two bars in currentColor, so the mark
    moves with the ink and the two cannot drift apart. The bar is --size-8 and

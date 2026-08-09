@@ -40,14 +40,16 @@
   <div class="tk-hero">
     <h1>Icons</h1>
     <p>A set is a <b>grid with rules</b>, not a sheet of pictures. Below: the anatomy of one cell,
-    optical balance, and an audit of all <b>52 glyphs against the paint</b>, which is where the
-    field turns out never to have been set and where the centre has drifted. This axis had never
-    been measured: the census counted controls, and an icon is not a control.</p>
+    optical balance, and an audit of the glyphs against the paint, which is where the field turns out
+    never to have been set and where the centre has drifted. <b>The set was consolidated on
+    2026-08-09</b>: 52 glyphs and two hands became <b>35 glyphs and one rule</b>, and section 03 is
+    what the rule turned out to be.</p>
     <div class="tk-badges">
-      <span class="tk-badge">52 glyphs</span>
-      <span class="tk-badge">2 families</span>
-      <span class="tk-badge">1 viewBox</span>
-      <span class="tk-badge">6 rendered sizes</span>
+      <span class="tk-badge">35 glyphs</span>
+      <span class="tk-badge">21 filled</span>
+      <span class="tk-badge">6 line marks</span>
+      <span class="tk-badge">8 brand marks</span>
+      <span class="tk-badge">52 to 35</span>
     </div>
     <!-- Filled by _nav.js from the one registry. Below 860px the side panel
          is a drawer, so this row is the navigation that is actually on
@@ -121,14 +123,36 @@
 
   <!-- =========================== two families ========================= -->
   <section class="tk-sec" id="families">
-    <h2 data-n="03">There are two families, and four jobs are drawn in both</h2>
-    <p class="tk-note">Of 44 icons on one screen, <b>14 are filled and 30 are stroked</b>. The
-    filled half is Solar Bold, referenced through <code>&lt;use&gt;</code> from a sprite, drawn to a
-    2 module field, no stroke at all. The stroked half is hand-drawn inline at 1.6. They are not
-    variants of one set; they are two sets, and they stand next to each other in the same header
-    band.</p>
-    <p class="tk-note"><b>Four jobs exist in both.</b> Not two weights of one mark, which would be a
-    system: two different drawings, from two different hands, of the same idea.</p>
+    <h2 data-n="03">TWO HANDS BECAME ONE RULE, AND THE RULE IS NOT THE ONE THAT WAS ASKED FOR</h2>
+    <p class="tk-note">This page used to open here with a defect: two families, 52 glyphs, and
+    <b>four jobs drawn in both</b>. The header carried the proof, because the same bookmark was
+    stroked on one screen and filled on the next <b>at two different inks</b>, for the same meaning.
+    The pairs are below, as they stood.</p>
+    <p class="tk-why"><b>The instruction was "consolidate the stroked ones into filled", and it
+    cannot be carried out.</b> Not for want of a library: 33 stroked marks were read against Solar
+    Bold and <b>six of them have no filled form at all</b>, because they have no interior to fill. A
+    cross, a chevron, a plus, a tick and a hamburger are <b>movements, not things</b>. What a filled
+    set offers for those is a disc or a plate with the mark knocked out of it, and a disc inside a
+    round icon button is a disc inside a disc.</p>
+    <p class="tk-lab tk-bad"><b>A line is not an unfilled shape, it is a different kind of mark.</b>
+    <i>Material and SF Symbols draw the same six as lines in their filled sets. An icon set that
+    fills everything has either invented interiors or given up on the cross.</i></p>
+    <p class="tk-why"><b>So the rule is: an object is filled, a movement is a line, and WEIGHT holds
+    them together rather than style.</b> 21 filled glyphs over 1,517 placements, 6 line marks over
+    990. The stroke was 1.6 against the solid mass of Solar Bold, and that gap is what the eye reads
+    as "two sets": it is <b>2.2</b> now at 22px and 2.4 at 12px, chosen by standing a line mark next
+    to a filled one at both sizes.</p>
+    <p class="tk-note"><b>What did not move: the brand marks.</b> Three sign-in providers and five
+    social marks in the footer are logos, they keep their own drawing, and a generic glyph is not
+    allowed to stand in for one, because <b>a paper plane is not Telegram</b>. Two of the four
+    "pairs" this page named turned out to be brand marks caught by a shape census: the second cross
+    was the X mark and the second chat bubble was Discord.</p>
+    <p class="tk-note"><b>And the licence was being relied on rather than honoured.</b> Fifteen Solar
+    glyphs had shipped since the Vault pass with the set named in a comment and <b>no attribution
+    anywhere</b>. Solar is by <b>480 Design</b> under <b>CC BY 4.0</b>, which asks for exactly that.
+    It is in <code>NOTICE.md</code> now, in <code>DESIGN.md</code>, and in the comment above the
+    sprite on all 105 screens. <b>Naming an asset is not crediting it.</b></p>
+    <p class="tk-subh">the four pairs, as they stood until 2026-08-09</p>
     <div class="tk-row">
       <figure class="tk-gl">
         <div class="tk-cell tk-cell-sm"><svg class="tk-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg></div>
@@ -163,20 +187,32 @@
         <figcaption>i-chat-b, filled<i>9 uses</i></figcaption>
       </figure>
     </div>
-    <p class="tk-note"><b>This is a decision, not a defect to sweep.</b> Two families can be right:
-    filled for a state that is on, stroked for one that is off, is a rule many sets keep. But nobody
-    wrote that rule here, and the evidence is that it is not being kept: the bookmark is filled in
-    the card and stroked in the footer, for the same meaning. Either the rule is written and the
-    four pairs are made to obey it, or one family wins.</p>
+    <p class="tk-note">All four now stand as the filled glyph only, and the stroked twin is gone from
+    the tree. <b>The rule this page proposed, filled for on and stroked for off, was considered and
+    not taken</b>: it is a good rule for a toggle and these four are not toggles, they are a
+    destination, a destination, a claim and a count. A rule that would make the header's bookmark
+    change shape when nothing about it is on or off is a rule about the wrong thing.</p>
+    <p class="tk-note"><b>One ink per place, and it has to be written twice.</b> A stroked mark takes
+    its ink from <code>stroke</code> and a filled one from <code>fill:currentColor</code>, so every
+    rule that paints an icon has to name both or half the set stops listening. Nine
+    <code>:has(use)</code> rules already existed for the old filled handful and three of them
+    disagreed with the stroke beside them, which is where the header's two bookmark inks came from.
+    That is the standing cost of holding two kinds of mark in one family, and it is written in
+    <code>base.css</code> where somebody will meet it.</p>
   </section>
 
   <!-- ======================== the stroke does not hold ================= -->
   <section class="tk-sec" id="stroke">
     <h2 data-n="04">The stroke does not hold, and it is off by three times</h2>
-    <p class="tk-note"><code>.ic</code> declares <code>stroke-width:1.6</code> once, in user units,
-    inside a 24 unit box. <b>User units scale with the box.</b> So the line is not 1.6 anywhere: it
-    is 1.6 multiplied by however large the icon was asked to be, and the set renders at six sizes.
+    <p class="tk-note"><code>.ic</code> declares its stroke once, in user units, inside a 24 unit
+    box. <b>User units scale with the box.</b> So the line is not that number anywhere: it is that
+    number multiplied by however large the icon was asked to be, and the set renders at six sizes.
     The same glyph, at every size the product actually uses:</p>
+    <p class="tk-note"><b>The constant moved from 1.6 to 2.2 on 2026-08-09 and the defect did
+    not.</b> Six sizes still means six weights, and the ratio between the lightest and the heaviest
+    is untouched, because the fault is the unit and not the value. What the new number fixes is a
+    different thing: it puts the line marks at the mass of the filled ones beside them. The figures
+    below were measured at 1.6 and are kept as they were read; multiply by 1.375 for today.</p>
     <div class="tk-row" id="strokerow">
       <figure class="tk-gl">
         <span class="tk-sz"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true" data-box="12"><path d="M4 13l4 4L20 5"/></svg></span>
@@ -319,10 +355,15 @@
 
   <!-- ========================== drawn twice =========================== -->
   <section class="tk-sec" id="twice">
-    <h2 data-n="07">Seven jobs are drawn twice</h2>
-    <p class="tk-note"><b>52 glyphs, 45 jobs.</b> Four pairs cross the two families and three sit
-    inside the stroked one. None of the seven is a variant with a stated purpose; each is a second
-    drawing of the same idea, made on a different day.</p>
+    <h2 data-n="07">SEVEN JOBS WERE DRAWN TWICE, AND ALL SEVEN ARE DECIDED</h2>
+    <p class="tk-note"><b>52 glyphs and 45 jobs became 35 glyphs on 2026-08-09.</b> Four pairs
+    crossed the two families and three sat inside the stroked one. None of the seven was a variant
+    with a stated purpose; each was a second drawing of the same idea, made on a different day. The
+    table is kept as it was read, and the answer is now in the last column of each row.</p>
+    <p class="tk-lab tk-bad"><b>Two of the seven were not pairs at all, and a shape census cannot
+    tell.</b> <i>The "second close" is the X brand mark in the footer and the "second chat" is
+    Discord. A census that reads geometry and not meaning will file a logo as a duplicate of a
+    control every time.</i></p>
     <div class="tk-faces">
       <span class="tk-colh">Job</span>
       <span class="tk-colh">The two drawings</span>
@@ -330,31 +371,31 @@
 
       <span class="tk-lab"><b>close</b><i>438 readings between them</i></span>
       <div class="tk-td"><code>M6 6l12 12M18 6L6 18</code> 333 <b>/</b> <code>M5 5l14 14M19 5L5 19</code> 105</div>
-      <div class="tk-td">The first. Inset 6 leaves a 5.2 module field, inset 5 leaves 4.2; neither is 2, so this pair is decided by count and then redrawn with the rest</div>
+      <div class="tk-td"><b>Not a pair.</b> The second is the X brand mark in the footer and it stays a brand mark. The first is the close and it stays a line, because a cross has no interior to fill</div>
 
       <span class="tk-lab"><b>search</b><i>4 readings</i></span>
       <div class="tk-td">Same circle, handle <code>M16 16l5 5</code> outward <b>/</b> <code>M20 20l-4-4</code> inward</div>
-      <div class="tk-td">The outward one, 3 against 1. The inward handle also ends at 20,20, which is outside the 22 line</div>
+      <div class="tk-td"><b>Done.</b> Both are <code>i-minimalistic-magnifer-b</code> now, one filled glyph over 6 placements</div>
 
       <span class="tk-lab"><b>clock</b><i>45 readings</i></span>
       <div class="tk-td"><code>r=9</code> with hands 7v5l3 2, 44 <b>/</b> <code>r=8</code> with hands 8v4l3 2, 1</div>
-      <div class="tk-td">The r=9 one. Two circle radii for one job is the clearest case on the page of a set with no grid discipline</div>
+      <div class="tk-td"><b>Done.</b> Both are <code>i-clock-circle-b</code>, 45 placements. Two circle radii for one job was the clearest case on the page of a set with no grid discipline</div>
 
       <span class="tk-lab"><b>bookmark</b><i>303 readings</i></span>
       <div class="tk-td">stroked, 88 <b>/</b> filled <code>i-bookmark-b</code>, 215</div>
-      <div class="tk-td">Undecided, and it is the one that matters. Both are in use for the SAME meaning: filled on the card, stroked in the footer</div>
+      <div class="tk-td"><b>Filled wins, 88 placements converted.</b> It is the one that mattered: both were in use for the SAME meaning, at two different inks, in the same header</div>
 
       <span class="tk-lab"><b>bell</b><i>108 readings</i></span>
       <div class="tk-td">stroked, 35 <b>/</b> filled <code>i-bell-b</code>, 73</div>
-      <div class="tk-td">Undecided</div>
+      <div class="tk-td"><b>Filled wins</b>, 37 placements converted</div>
 
       <span class="tk-lab"><b>shield</b><i>212 readings</i></span>
       <div class="tk-td">stroked with tick, 106 <b>/</b> filled <code>i-shield-b</code>, 106</div>
-      <div class="tk-td">Undecided, and exactly level. 106 against 106 is not a preference that drifted, it is two decisions taken in two places</div>
+      <div class="tk-td"><b>Filled wins</b>, 110 placements converted. 106 against 106 was not a preference that drifted, it was two decisions taken in two places</div>
 
       <span class="tk-lab"><b>chat</b><i>114 readings</i></span>
       <div class="tk-td">stroked, 105 <b>/</b> filled <code>i-chat-b</code>, 9</div>
-      <div class="tk-td">The stroked one</div>
+      <div class="tk-td"><b>Not a pair.</b> The 105 are the Discord mark in the footer, which is a logo. The real chat is filled and always was</div>
     </div>
   </section>
 
@@ -366,6 +407,19 @@
     and lands on a whole module. <b>Anti-rule.</b> An icon is never the only name of an action, and
     a glyph is never redrawn because the old one looked slightly wrong in one place. That is how a
     set gets seven jobs and eight drawings.</p>
+    <p class="tk-note"><b>Rule, 2026-08-09.</b> <b>An object is filled and a movement is a line, and
+    weight is what holds them together.</b> A bell has an interior and a cross does not, so the
+    split is a fact about marks rather than a preference between styles. Solar Bold for the first
+    kind, a hand line at 2.2 for the second.</p>
+    <p class="tk-note"><b>Rule, 2026-08-09.</b> <b>Every rule that paints an icon names both
+    <code>stroke</code> and <code>color</code>.</b> The set has two kinds of mark and they read
+    different properties, so a rule that names one paints half of what it is pointing at.</p>
+    <p class="tk-note"><b>Rule, 2026-08-09.</b> <b>A brand mark is not in the system.</b> It keeps
+    its own drawing, takes no system ink, and no generic glyph may stand in for it.</p>
+    <p class="tk-lab tk-bad"><b>Never take a licence by naming the set.</b> <i>Fifteen Solar glyphs
+    shipped for weeks under a comment that said "Solar Bold icon sprite" and no attribution
+    anywhere. CC BY asks for the author, the licence and whether it was changed, and a comment
+    naming the vendor is none of the three. <code>NOTICE.md</code>.</i></p>
     <p class="tk-subh">What goes into the consolidation</p>
     <ol class="tk-steps">
       <li><b>1</b><span><b>The stroke becomes a size-aware token, not a constant.</b> One
@@ -375,11 +429,13 @@
       Nothing there is inside the field; the four fields it does have run 2.2 to 5.2, and the
       chevron sits 5.2 out. The filled family already holds 2.0 on 13 of 15, which is what a
       set drawn to a rule looks like and is the target.</span></li>
-      <li><b>3</b><span><b>The two families are declared or one of them goes.</b> Four jobs are
-      drawn in both and the bookmark uses both for one meaning. This is the only item here that is a
-      product decision rather than a value.</span></li>
-      <li><b>4</b><span><b>The three duplicate pairs inside the stroked family are collapsed</b>,
-      each to the drawing with the count.</span></li>
+      <li><b>3</b><span><b>DONE 2026-08-09. The two families are declared, and neither one won.</b>
+      An object is filled and a movement is a line: 21 filled glyphs over 1,517 placements, 6 line
+      marks over 990, and the four crossed jobs are filled. "All of them filled" was asked for and
+      is not available, because six of the marks have no interior.</span></li>
+      <li><b>4</b><span><b>DONE 2026-08-09. The three duplicate pairs are collapsed</b>, two of them
+      into one filled glyph each and the third revealed as a brand mark rather than a
+      duplicate.</span></li>
       <li><b>5</b><span><b>The provider marks get a written exception</b> and stop being four
       untokenised hex values with no rule attached.</span></li>
       <li><b>6</b><span><b><code>.ic-sm</code> is deleted as a size.</b> It is the smallest box

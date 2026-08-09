@@ -335,6 +335,35 @@ larger number.
 ### Named Rules
 **The Cast-Plate Rule.** Every panel is a stone casting: dark near-black rim plus an inset top highlight, on its own drop shadow. Big plates are never given a brass outline (brass hairline frames belong only to the small notched tiles: the SEO brand plate, the hero brand tile, the footer trust cards). If a big surface has a bright outline, it is wrong.
 
+## 5b. Icons
+
+**Two kinds of mark, one weight, and the split is a fact about marks rather than a preference.**
+The set is **Solar Bold** for anything that has a body and a **hand-drawn line at 2.2** for anything
+that does not. 21 filled glyphs over 1,517 placements, 6 line marks over 990, and 8 brand marks that
+belong to nobody's system.
+
+- **An object is filled. A movement is a line.** A bell, a bookmark, a shield, a person, a clock, an
+  envelope and a globe are things, and a thing can be filled. **A cross, a chevron, a plus, a tick
+  and a hamburger are movements**: they have no interior, so a filled set answers them with a disc or
+  a plate that has the mark knocked out of it, and a disc inside a round icon button is a disc inside
+  a disc. Material and SF Symbols do the same thing, and this is why "make them all filled" is not a
+  decision anyone can take.
+- **What holds the two together is WEIGHT, not style.** The stroke was 1.6 against the solid mass of
+  Solar Bold, and that gap is what the eye reads as "two icon sets". It is **2.2** at 22px and 2.4 at
+  12px, chosen by putting a line mark and a filled mark side by side at both sizes.
+- **One job, one mark.** Before 2026-08-09 four jobs were drawn in both families and the same header
+  bookmark came out stroked on one screen and filled on the next, at two different inks. A second
+  drawing of the same idea is not a variant, it is a fork.
+- **One ink per place, and it is written twice.** A stroked mark takes its ink from `stroke` and a
+  filled one from `fill:currentColor`, so **every rule that paints an icon has to name both** or half
+  the set stops listening. That is the standing cost of holding two kinds of mark in one family.
+- **Brand marks are not in the system.** The three sign-in providers and the five social marks in the
+  footer are logos. They keep their own drawing, they take no system ink, and a generic glyph is not
+  allowed to stand in for one: a paper plane is not Telegram.
+
+**Attribution.** Solar is by **480 Design**, licensed **CC BY 4.0**. The glyphs are used unmodified.
+Full entry, and every other third-party asset, in [`NOTICE.md`](./NOTICE.md).
+
 ## 6. Components
 
 ### Buttons

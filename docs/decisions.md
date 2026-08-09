@@ -44,6 +44,82 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-09 - The icon set consolidates, and "make them all filled" turns out not to be available
+
+Backlog 31, and it was the one item the consolidation pass would not take alone, because it is a
+product decision rather than a value. The decision taken was **filled**. What shipped is filled for
+everything that can be, and the difference between those two sentences is the entry.
+
+### 33 stroked marks were read against Solar Bold and six of them have no filled form
+
+Not for want of a library. **A cross, a chevron, a plus, a tick and a hamburger are movements, not
+things**: they have no interior, so there is nothing to fill. What a filled set offers instead is a
+disc or a plate with the mark knocked out of it, which is why Solar names them `close-circle-bold`
+and `add-circle-bold` rather than `close-bold` and `add-bold`. **A disc inside a round icon button is
+a disc inside a disc**, and the sheet close stands in exactly that. Material and SF Symbols draw the
+same six as lines inside their filled sets.
+
+**So the rule is: an object is filled, a movement is a line, and what holds them together is WEIGHT
+rather than style.** 21 filled glyphs over **1,517** placements, 6 line marks over **990**. The
+stroke was 1.6 against the solid mass of Solar Bold, and that gap is what the eye reads as "two icon
+sets": it is **2.2** at 22px and 2.4 at 12px, chosen by standing a line mark next to a filled one at
+both sizes rather than by picking a number.
+
+**The set is 35 glyphs where it was 52**, and 17 of the 17 that left were a second drawing of
+something already there.
+
+### The row named four crossed pairs and two of them were logos
+
+`close` had a "second drawing" and it is the **X mark in the footer**; `chat` had one and it is
+**Discord**. Both were filed as duplicates by a census that reads path data, and **a shape census
+cannot tell a logo from a control**. The five social marks and the three sign-in providers keep their
+own drawing, take no system ink, and no generic glyph may stand in for one, **because a paper plane
+is not Telegram**. That is written down now rather than assumed.
+
+### The ink was the other half of the defect, and it was invisible
+
+A stroked mark takes its ink from `stroke`; a filled one takes it from `fill:currentColor`, which
+resolves to `color`. **Nine `:has(use)` rules already existed** for the first filled handful, and
+three of them disagreed with the stroke beside them. So the header's bookmark shipped at
+`--text-primary` on the screens where it was filled and `--text-icon` on the screens where it was
+stroked: **the same mark, the same job, the same header, two inks**, and nothing that reads a
+stylesheet would ever have found it.
+
+Fifteen rules now name both properties, and three places were levelled to one ink: the bottom-nav
+slot to muted, which is what its own label takes; the header cluster to the icon token; and the
+account-menu bell, whose exception was written because it was the one filled mark in a stroked row
+and left with the reason.
+
+### The licence was being relied on and not honoured
+
+Solar had been shipping in this repository since the Vault pass under a comment reading "Solar Bold
+icon sprite" and **no attribution anywhere**. It is **CC BY 4.0**, by **480 Design**, which asks for
+the author, the licence and whether the work was changed. **Naming an asset is not crediting it.**
+`NOTICE.md` is new and holds every bought-in asset: the icons, the three OFL type families, and the
+photographs, which are placeholders cleared for nothing and are filed as a handoff question rather
+than assumed. The credit also stands in `DESIGN.md` and in the sprite comment on all 105 screens,
+which is the place a person reading the markup actually meets it.
+
+### The proof
+
+Two trees on two origins, the before tree exported from `3282cf6`. **40 painted screens at 390 and
+1280 in both themes, 5,064 icon readings** of box, kind and ink.
+
+**0 boxes moved.** Not one icon changed position or size, which is what a swap of glyph for glyph
+inside the same `viewBox` and the same `.ic` box is supposed to do.
+
+**Every ink difference that remains is one of the three levellings above**, named and counted, and
+there are no others.
+
+### And the cache was paid for a fifth time
+
+The first ink reading reported the hiw marks, the state blocks and the market title still wrong after
+they had been fixed, because the browser was holding the old component stylesheets while serving the
+new base. A fresh port, and they read correct. This repository now has five entries that end the same
+way.
+
+---
+
 ## 2026-08-08 - The action bar becomes one face, a component is deleted for it, and the outcome becomes a modifier
 
 Backlog 63 and 66, measured together and shipped together.
