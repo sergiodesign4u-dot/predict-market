@@ -44,6 +44,233 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-09 - Four pages of the kit were showing an arrangement with the arrangement taken out
+
+Asked in four separate sentences and it turned out to be one fault four times: **the nav slots are
+broken, some icons on `iconbtn` are gone, the patterns are practically empty, and the card-grid card
+has no photograph and no odds bar.** All four were read in a browser before anything was touched.
+
+### The bar was three loose anchors, and the first thing checked was whether it was mine
+
+`.tk-stack{flex-wrap:nowrap}` had gone in an hour earlier, so the first move was to put the old value
+back with `addStyleTag` on the same loaded page: **the layout came back byte for byte identical**, and
+the cell is not a `.tk-stack` at all. Not a regression, and worth the two minutes.
+
+What it is: `.nav-item` is `display:block;width:100%`, and its own file says *width:100% is the whole
+reason this class exists as a row*. **The width it fills belongs to the `<li>`**, and `.bottom-nav li`
+is `flex:1` inside a `ul` that is `display:flex`. The specimen had no list. So each anchor filled the
+whole cell instead: **477px each, three of them wrapping onto three lines**, and the current one
+squeezed to **41px** because the `<div aria-current>` around it was a flex item that shrank to its own
+text. The page even explained the wrapper, correctly, as the way `aria-current` is reached from an
+ancestor; it just used a `<div>` where the product uses `<li>`.
+
+**This is the same fault as the bet pick two hours earlier**, and the second instance is what makes it
+a rule rather than an incident: a stand class standing in for a product container does not show the
+atom, **it shows the atom with its arrangement removed**. It is `<nav class="bottom-nav"><ul><li>` now.
+One thing differs and is declared: the bar is `display:none` from 640 up and `position:sticky`, so
+`.tk-show-nav` pins it visible and static. As a modifier, not as `.tk-theme-fig .bottom-nav`, because
+on `bottomnav.html` the bar IS the subject and its absence above 640 is the fact that page teaches.
+
+### The icon page: one real finding, one instrument defect of my own, corrected before it was reported
+
+**The instrument was wrong first.** Four glyphs were flagged as clipped, `i-bookmark-b` at 18x20 in a
+16x16 box and `i-chat-b` at 20x20 in 18x18. **`getBBox` returns USER units and a bounding rect returns
+CSS pixels**: 18 of 24 units inside a 16px box is 12px. Comparing the two is comparing nothing, and it
+is the same family of error as the mask that `getBBox` could not see. There are no clipped glyphs.
+
+What is real, over 18 icon buttons read against 13 in the product:
+
+- **The plain circle carries three marks and the cell showed one.** The hamburger on 105, the bell on
+  32, the bookmark on 105, which is the 242 the page already had written under it. **A count can be
+  right while the picture under it is a third of the thing.** The third one wears `.desk-only`, so on a
+  phone the header's Favorites circle is not there at all and the bar's slot is.
+- **The photo close was missing the class all 333 of its placements carry**, `.sheet-close`. The prose
+  above it already said "all 333 are a sheet close"; the markup did not.
+- **`.toast-close` holds no mark at all, and neither does the product's.** 24x24, 0 `<svg>`, content
+  the text character `x`, nothing on `::before`. **333 close controls in the same family draw a real
+  stroked cross.** One job, two drawings, the same shape as the circle-against-triangle row, and it is
+  the product's to fix: backlog 75.
+
+### Four of the six pattern pages had no specimen at all
+
+Counted rather than eyeballed: `.tk-theme-fig` on `card-grid`, `browse-shell`, `detail-shell` and
+`position-list` was **0, 0, 0, 0**. They are prose with a rule and an anti-rule and nothing rendering
+underneath. `patterns.html` had cells, and `action-bar` and `list-head` had two each.
+
+The kit's own note says this rung "has almost nothing to look at", and that is true of the rung and
+is not the same claim as four pages showing nothing. **A pattern that carries only arrangement still
+has an arrangement, and a page about a rule with nothing under it cannot be checked by reading it.**
+Each of the four now opens with the real thing: `.grid` with three cards, `.cat-layout` with its rail
+and column, `.ed-layout` with the panel beside the reading column, `.pos-list` with three rows, both
+themes, the markup the screens ship.
+
+### The card had no photograph and no bar, and the two have different causes
+
+**The photograph is a datum and the specimens had dropped it.** The product writes
+`<span class="thumb" style="background-image:url(../assets/event-politics.jpg)">`, one of the three
+inline styles the rules allow. Ten cards on `patterns.html` and four on `organisms.html` carried the
+`<span class="thumb">` and not the value, so **14 of 14 rendered a grey box**. Measured as
+`backgroundImage === "none"` rather than by reading the markup.
+
+**The odds bar is in no screen's markup.** A page script reads `.prob-line .prob`, builds
+`<div class="oddsbar">`, hides the line and inserts the bar before `.yesno`. The product's feed has
+**one occurrence of the word in its source and nine bars in its DOM**. A stand does not run the
+product's scripts, so it writes what the browser renders, which is what `card.html` had already been
+doing by hand. Now the shelf does too.
+
+That is the third component of three whose visible content is not in its markup, and the browse
+shell's rail is the second, so the new `browse-shell` specimen writes that by hand as well and says
+so.
+
+### The backlog's own numbers, item 74
+
+Closed the same day it was opened. **The rule used to resolve it: a number belongs to the row that
+documents OUTSIDE the backlog cite.** Grepped: `consolidation.md` and this file cite 29 for the icon
+stroke and 52 for the component headers, and **nothing outside cites 25 or 26 at all**. So the two open
+collisions were split with the later-written row taking a fresh number and saying so in its own text,
+`.amount-input` 25 to 76 and the featured hero 26 to 77. The two closed collisions keep their numbers,
+because renumbering a closed row rewrites the record for a reader who will never act on it. **Every
+number is unique now and the highest is 77**, so the count is something a reader can check.
+
+### The measurements
+
+| | |
+|---|---|
+| renders, both trees at 390 and 1280 | **320** |
+| horizontal scroll / failed requests / console errors | **0 / 0 / 0** |
+| glyphs drawn, blank | **3,217 / 0** |
+| thumbnails with no photograph | **14 before, 0 after** |
+| pattern pages with no specimen | **4 before, 0 after** |
+| nav slots, at 1280 / at 390 | 3 on 3 rows, one 41px wide, before; **3 on one row, both widths, after** |
+| odds bars on the pattern shelf | **0 before, 10 after** |
+| control heights the stand draws and the product does not | **0**, unchanged by any of this |
+
+Written: `ui-kit/navitem.html`, `ui-kit/iconbtn.html`, `ui-kit/card-grid.html`,
+`ui-kit/browse-shell.html`, `ui-kit/detail-shell.html`, `ui-kit/position-list.html`,
+`ui-kit/patterns.html`, `ui-kit/organisms.html`, `ui-kit/_page.css`, `ui-kit/CLAUDE.md`,
+`docs/backlog.md`.
+
+---
+
+## 2026-08-09 - A control's parity was being decided by the font, and the shelf was drawing a button the product does not have
+
+Two findings, one question. Asked plainly: **why is a button on the patterns shelf so much taller
+than any button in the product, and why is a control 47 tall rather than 48 or 46.** Both were
+looked at in a browser: **160 pages of both trees at 1280 with a mouse and at 390 with a real touch
+context, 320 renders, 13,021 controls.**
+
+### The stand was participating in the specimen, on six classes
+
+`.btn-md` renders **47** on all 575 of its placements and **68** on the two pages whose only job is
+to show what a `.btn-md` is. The chain, read rather than guessed: `.tk-pair2` is a grid, so the cell
+is as tall as the taller theme (218px); `.tk-theme-fig.tk-stack` is a **column flex container that
+inherited `flex-wrap:wrap` from the row cell**, and a multi-line column container with a definite
+height hands its free space to its items instead of leaving it at the bottom; that pushed `.cta-bar`
+from 55 to 76, and the bar's own `align-items:normal` is stretch, so the button went to 68. **Proved
+by toggling one property at a time**: `flex-wrap:nowrap` gives back 55 and 47, and every other
+candidate moved the width and left the height at 68.
+
+Five more, and they are three different causes wearing one symptom:
+
+| class | product | stand | the cause |
+|---|---|---|---|
+| `btn-md` | 47 | 68 | the wrap above |
+| `yesno-pick bp-side` | 70.5 | 66.5 | **two causes at once**, and the first hid the second |
+| `nav-row-stack` | 49 at 258 wide | 65.5 at **148** | at 390 the shelf's two theme columns leave each specimen ~143px, and no placement is that narrow |
+| `yesno-pick-bar` | 51 | 52.5 | the same 143px, and the missing container below |
+| `chip-nav` | 47 | 48.5 | the specimen wears a count **no `.chip-nav` in the product has** |
+| `chip-lane` | 40.5 | 37.5 | the specimen is missing the count **every `.chip-lane` in the product has**, and is an `<a>` where the product ships a `<button>` |
+
+**The bet pick is the one worth writing down.** Capped to the placement's width, 288 for the pair,
+each pick came out 140 wide, the product's own number, **and still drew 66.5 against 70.5.** The
+other 4px is `betpanel.css:57`, `.bp-dir .bp-side .bp-pct{margin-top:4px}`, a rule keyed to the
+container the product puts the pair in. The specimen sat in `.tk-pair`, so **the component's own
+stylesheet could not reach it.** A stand class standing in for a product class is a copy of the
+markup, which is the one thing this kit is not allowed to hold. It is `.bp-dir` now, and the dock
+pair is `.bet-dock`, exactly as the screens ship them. The dock is `display:none` from 760 up, so
+that cell gets the third `.tk-gone` modifier, `.tk-above-760`; the file's own sentence said "a third
+would be a face with no placement", and a third placement turned up, so the sentence was answered
+rather than argued with.
+
+**And the chips are the sharper half.** `chip.html`, `catnav.html` and `patterns.html` all put the
+count on `.chip-lane` as a `<button>`, which is what the product does. Only `vitrine.html` put it on
+`.chip-nav` and left the lane bare. **The atom shelf disagreed with the product and with the four
+other places in the kit that show the same component**, and the disagreement was 1.5px, which is
+exactly the size that never gets noticed by eye.
+
+Below 640 the two theme cells stop standing side by side. That is a real cost, taken on purpose:
+side by side is the reason this vitrine exists rather than a set of screenshots, but **a component
+measured in a cell narrower than any placement is not the component**, it is that label at that
+width, and comparing two of those against each other compares nothing. `organisms.html` had already
+taken the same bargain by hand for the same reason.
+
+**After: 5 stand-only heights at 1280 and 6 at 390 both go to 0.**
+
+### The height had no scale, and the parity was the font's decision
+
+Twenty distinct heights on 5,004 controls at 1280, and **the split is total: every height that
+landed on the 4px grid came from a token, and every height that did not was accumulated** out of
+padding plus a border plus a line box. 2,907 readings of 5,607 accumulated.
+
+**The part that decides parity is the one part this system never declared.** Padding and border are
+on the ladder. `line-height` on a control is `normal`, which is the font's opinion, and DM Sans
+returns **21px at 14px, 18px at 12px, 16.5px at 11px**. So from the same padding ladder `.btn-md`
+came out 12+12+2+21 = **47** and `.btn-sm` 8+8+2+18 = a clean **36**. The parity was flipping on the
+font size, and **no value in `--space-*` could have fixed it**, because 21 is odd and the padding is
+symmetric. Every fractional height in the product says the same thing out loud: 32.5, 34.5, 37.5,
+40.5 are the line boxes 16.5, 19.5 and 22.5.
+
+**Decided: the height is the token and the padding is what is left over.** `--control-28 / 48 / 56`
+join `32 / 36 / 44`, and a size sets `--control-h`. **The rungs are values the product already draws
+on 105, 575 and 6 placements**, which is the answer to this block's own standing argument: 52 was
+removed on 2026-08-03 under "a ramp is not a reason to keep a step", and that was right about a rung
+nobody drew and says nothing about a rung everybody draws. `.btn-md` goes 47 to 48 and `.btn-lg` 55
+to 56: **one pixel on 581 placements**, against a geometry axis that finally has a scale.
+`.btn-bare` is the one member left out, and the file already said why: it has no box, so a height on
+it would be inventing one.
+
+**A floor is not an assignment, and declaring a height is what proved it.** The 44px touch floor in
+`base.css` is `(0,5,1)` on purpose, so it out-specified `.btn-md`'s new 48 and replaced it with 44;
+the content then held the box at 47, and **the same button stood 48 under a mouse and 47 under a
+finger** - the exact defect the ladder was declared to end. It reads
+`max(var(--control-44),var(--control-h))` now, which is what the surrounding paragraph always said in
+words. `--control-h` is declared with `@property ... inherits:false` and a 0px initial, for two
+reasons: the unset case is `max(44px,0px)`, the floor unchanged for the fourteen families that set
+nothing, and **a control's height is not something the boxes inside it are entitled to claim.**
+
+### The measurements
+
+| | before | after |
+|---|---|---|
+| stand-only heights, 1280 / 390 | 5 / 6 classes | **0 / 0** |
+| `.btn-md` | 47 fine, 47 coarse, 68 on the shelf | **48 / 48** |
+| `.btn-lg` | 55 fine, 55 coarse, 76 on the shelf | **56 / 56** |
+| product controls on the 4px grid, 1280 | 56% | **68%** |
+| product controls on the 4px grid, 390 | 66% | **78%** |
+| distinct heights, the whole kit at 390 | 18 | **15** |
+
+Verified after: **320 renders over both trees at both widths, 0 horizontal scroll, 0 failed
+requests, 0 console errors, 3,211 glyphs drawn and 0 blank**, and the absence labels read at
+**fifteen widths including every boundary the system declares, 180 readings, 0 contradictions**.
+
+**Two records were wrong and are corrected rather than left.** `button.css` said the touch floor's
+effect here was "sm 36 on 137 placements and xs 25 on 72, 209 boxes": **25 is `.btn-bare`'s height
+and 72 is `.btn-bare`'s count**, so the paragraph was never measuring `xs` at all. It is xs 28 on
+105, sm 36 on 138 and bare 24.5 on 72, **315 boxes**. And `ui-kit/geometry.html` section 06 still
+carried the 10-screen census of 2026-08-07, three declared heights against twelve rendered; it is
+re-read against 106 screens.
+
+**What is left, and it is named rather than rounded off: 1,738 of 5,004 controls still accumulate.**
+`.nav-row` 32.5 on 365, `.chip-lane` 40.5 on 312, `.chip-nav` 47 on 285, `.nav-row-stack` 49 on 210,
+a bare `<summary>` 34.5 on 193, `.btn-bare` 24.5 on 72, `.chip-rail` 26 on 63. Backlog 40 stays open
+on exactly those, re-measured.
+
+Written: `components/tokens.css`, `components/button.css`, `components/base.css`,
+`ui-kit/_page.css`, `ui-kit/vitrine.html`, `ui-kit/geometry.html`, `DESIGN.md`,
+`components/CLAUDE.md`, `ui-kit/CLAUDE.md`, `docs/backlog.md`.
+
+---
+
 ## 2026-08-09 - The sprite becomes one file, and the copy in 112 places had already drifted
 
 Backlog 69 asked whether the icon sprite is a shared block every screen carries whole or a per-screen

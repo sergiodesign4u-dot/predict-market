@@ -101,6 +101,16 @@ override it.** There is no build step and no gate: what you write is what ships.
   `:has(use)` rules existed for the first filled handful and **three disagreed with the stroke beside
   them**, which is how one header shipped the same bookmark at `--text-primary` on one screen and
   `--text-icon` on the next. Name both or paint half of what you are pointing at.
+- **A FLOOR IS NOT AN ASSIGNMENT, and the strength that makes a floor work is what breaks it.** The
+  44px touch floor is `(0,5,1)` on purpose, so that no component can tie with it. The day `.btn-md`
+  declared a height of 48, the floor out-specified it and wrote 44; the content then held the box at
+  47, so **the same button stood 48 under a mouse and 47 under a finger**. A floor raises a short
+  control and must never lower a tall one, which is `max(var(--control-44),var(--control-h))` and not
+  `min-height:44px`. **The parity of a control was the FONT's decision until 2026-08-09**: padding
+  and border are on the ladder, `line-height` on a control is `normal`, and DM Sans returns 21px at
+  14px, so `.btn-md` was 12+12+2+21 = 47 while `.btn-sm` was a clean 36 from the same ladder. A
+  component declares `--control-h` now; it is `@property ... inherits:false` because a control's
+  height is not something the boxes inside it may claim.
 - **A mask is invisible to `getBBox`, so measure the INK.** `i-clock-circle-b` was filed as a defect
   for painting 24 x 24 at field 0 where the rule is 2. It paints **20 x 20 at field 2**: Solar
   delivers it as a full-cell rectangle behind a `<mask>`, and `getBBox` returns the geometry of the

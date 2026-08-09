@@ -28,8 +28,54 @@
     </div>
   </div>
 
+  <section class="tk-sec" id="specimen">
+    <h2 data-n="1">The arrangement, with something in it</h2>
+    <p class="tk-note">The real <code>.ed-layout</code>, both themes: the reading column and the panel beside it. <b>The panel is <code>display:none</code> below 760 and <code>flex:0 0 322px</code> above</b>, so this cell shows the wide arrangement and a phone gets the dock instead.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+          <div class="ed-layout">
+            <div class="ed-main">
+              <article class="card"><div class="card-body">
+                <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter.</p></div></div>
+                <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div><div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
+              </div></article>
+            </div>
+            <aside class="bet-panel" aria-label="Place your bet">
+              <div class="bp-inner">
+                <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">Pick a side</span></div>
+                <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">62%</span></button></div>
+                <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+                <button type="button" class="btn btn-primary btn-lg btn-block">Confirm bet</button>
+              </div>
+            </aside>
+          </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+          <div class="ed-layout">
+            <div class="ed-main">
+              <article class="card"><div class="card-body">
+                <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter.</p></div></div>
+                <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div><div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
+              </div></article>
+            </div>
+            <aside class="bet-panel" aria-label="Place your bet">
+              <div class="bp-inner">
+                <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">Pick a side</span></div>
+                <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">62%</span></button></div>
+                <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+                <button type="button" class="btn btn-primary btn-lg btn-block">Confirm bet</button>
+              </div>
+            </aside>
+          </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>What is in the cell is real and it is not the whole screen.</b> A detail screen is a head, a chart, tabs, rules, related events and a comment thread, and putting all of it in a stand cell would show the screen rather than the shell. What the pattern decides is the two columns and the gap between them, so the slots hold the smallest true thing each one holds in the product.</p>
+  </section>
+
   <section class="tk-sec" id="why">
-    <h2 data-n="1">Three rules for five components</h2>
+    <h2 data-n="2">Three rules for five components</h2>
     <p class="tk-note">It assembles a <a href="card.html">card</a>, a <a href="chart.html">chart</a>,
     a <a href="market.html">market</a> block, a <a href="tabs.html">tab strip</a> and a
     <a href="betpanel.html">bet panel</a>, <b>and it owns none of them</b>. What it says is that there
@@ -52,7 +98,7 @@
   </section>
 
   <section class="tk-sec" id="notcome">
-    <h2 data-n="2">What did NOT come with the three rules</h2>
+    <h2 data-n="3">What did NOT come with the three rules</h2>
     <p class="tk-note">Three rules were cut out of the event screen's file and not copied. <b>Two
     things stayed behind on purpose:</b> the plate the main column stands on, and <b>the border it
     drops</b>.</p>
@@ -67,7 +113,7 @@
   </section>
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="3">The rule</h2>
+    <h2 data-n="4">The rule</h2>
     <p class="tk-note"><b>A shell declares the columns and nothing else.</b> Seventeen lines for a
     screen that holds five components is what that looks like when it is done.</p>
     <p class="tk-note"><b>A breakpoint that two files depend on is one number.</b> The layout and the
@@ -75,7 +121,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="4">The anti-rule</h2>
+    <h2 data-n="5">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never bring a surface with an arrangement.</b> <i>The plate is the
     page's material and it stayed in the frame.</i></p>
     <p class="tk-lab tk-bad"><b>Never let a shell learn what it holds.</b> <i>Five components stand
@@ -83,7 +129,7 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="5">Where the rest of it is</h2>
+    <h2 data-n="6">Where the rest of it is</h2>
     <p class="tk-note">The shelf: <a href="patterns.html#detail-shell">the patterns page</a>. The
     stylesheet: <code>components/patterns/detail-shell.css</code>, 17 lines. The screen's own parts:
     <a href="event-detail.html">event detail</a>. The five it holds:

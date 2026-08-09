@@ -120,7 +120,24 @@
 .tk-theme-fig{background:var(--bg-plate);color:var(--text-primary);
   padding:16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;min-width:0;
   overflow-x:auto}
-.tk-theme-fig.tk-stack{flex-direction:column;align-items:stretch}
+/* A STACKED CELL MUST NOT WRAP, AND THE ONE WORD IS WORTH THIRTEEN LINES BECAUSE
+   IT PAINTED A COMPONENT THE PRODUCT DOES NOT HAVE. `flex-wrap:wrap` is the row
+   cell's rule and it is right there: several specimens side by side spill onto a
+   second line. `.tk-stack` turns the same cell into a COLUMN and inherited the
+   wrap, which makes it a multi-line column container, and a multi-line column
+   container with a definite height hands its free space to its items instead of
+   leaving it at the bottom. The cell's height is not its own: `.tk-pair2` is a
+   grid and the row is as tall as the taller theme. So on action-bar.html a 218px
+   cell pushed `.cta-bar` from 55 to 76, the bar is `align-items:normal` which is
+   stretch, and IT PUSHED THE BUTTON FROM 47 TO 68.
+   Twenty specimens on two pages, and the two pages are the ones whose whole job
+   is to show what a `.btn-md` is. A person who had never opened the product
+   would have learned the wrong number from the only place built to teach it.
+   Proved by toggling one property at a time in a browser rather than by reading:
+   `flex-wrap:nowrap` gives 55 and 47, the product's own numbers, and every other
+   candidate (`align-content`, `justify-content`, the stack's `align-items`)
+   moved the WIDTH and left the height at 68. */
+.tk-theme-fig.tk-stack{flex-direction:column;align-items:stretch;flex-wrap:nowrap}
 .tk-theme-fig>*{max-width:100%}
 
 /* A CELL SCROLLS, IT DOES NOT CLIP. `.chip-nav` is `white-space:nowrap` with 20px
@@ -143,8 +160,12 @@
    A NUMBER IN A SENTENCE IS A SECOND COPY OF THAT NUMBER, so the copy is put where a
    reader trips over it: the threshold is in the class name, the class name sits in
    the markup beside the sentence, and the media query here is the only other place
-   it is written. Two modifiers, because the system has two components that do this;
-   a third would be a face with no placement.
+   it is written. It was two modifiers, "because the system has two components that
+   do this; a third would be a face with no placement", and on 2026-08-09 a THIRD
+   PLACEMENT TURNED UP and the sentence was answered rather than argued with. The
+   bet dock is `display:none` from 760 up, the width where `.bet-panel` replaces
+   it, and the atom shelf had been drawing its pair in a `.tk-pair` at every width
+   instead. Three components do this now and there are three modifiers.
    THE TWO NUMBERS ARE NOT MIRRORS, AND A BOUNDARY READ IS THE ONLY THING THAT SAYS
    SO. `min-width:640px` HIDES the bar, so the bar is gone AT 640 and the label has
    to start there; `min-width:760px` SHOWS the panel, so the panel is gone at 759 and
@@ -155,12 +176,45 @@
   color:var(--text-muted)}
 @media(min-width:640px){.tk-gone.tk-above-640{display:block}}
 @media(max-width:759px){.tk-gone.tk-below-760{display:block}}
+@media(min-width:760px){.tk-gone.tk-above-760{display:block}}
 
 /* Layout the specimens need and the product does not provide. These exist so that
    no `style=` attribute has to carry a layout value: the only inline styles left
    on this page are the two the rules allow, a datum (the odds fill width) and the
    event photograph. */
 .tk-pair{display:flex;gap:8px}
+/* A PAIR THAT IS AS WIDE AS THE CELL IS A PAIR THE PRODUCT NEVER DRAWS, and for
+   a control whose label wraps that is a different HEIGHT, not just a different
+   width. `.yesno-pick.bp-side` stands in `.bet-panel`, which is `flex:0 0 322px`,
+   so inside the panel's 16px padding the two picks are 140 each with an 8px gap:
+   288, measured on every placement in the painted tree. Given the shelf's own
+   column it took 186.5 each and drew 66.5 tall where all 24 placements draw
+   70.5. THE NUMBER IS IN THE CLASS NAME for the same reason `.tk-gone` carries
+   its threshold: a width copied into a sentence drifts away from the width in
+   the rule, and this one is a measurement of the product rather than a taste.
+   AND THE WIDTH WAS ONLY HALF OF IT. Capped at 288 the pick was 140 wide, the
+   product's own number, and still drew 66.5 against 70.5. The other 4px is
+   `betpanel.css:57`, `.bp-dir .bp-side .bp-pct{margin-top:4px}`, a rule keyed to
+   the container the product puts the pair in. The specimen was in `.tk-pair`, so
+   THE COMPONENT'S OWN STYLESHEET COULD NOT REACH IT. A stand class standing in
+   for a product class is a copy of the markup, which is the one thing the kit is
+   not allowed to hold: the pair is `.bp-dir` now and the dock pair is
+   `.bet-dock`, exactly as the screens ship them. */
+.tk-w-288{max-width:288px}
+/* The dock is `position:sticky;bottom:52px`, which is a claim about a scrolling
+   screen and not about a 100px cell. Pinned static here, the same bargain
+   `.tk-dlg` makes for a dialog and `.filter-panel` for an open menu, and the
+   same one thing differs: the position. */
+.tk-theme-fig .bet-dock{position:static;bottom:auto}
+/* AND THE SAME BARGAIN FOR THE BOTTOM BAR, ON THE ONE PAGE WHERE THE BAR IS NOT
+   THE SUBJECT. `.nav-slot` has 420 placements and every one of them is in
+   `.bottom-nav`, which is `display:none` from 640px up and `position:sticky`. On
+   `navitem.html` the subject is the SLOT, and a slot nobody at 1280 can see is
+   not a specimen, so this cell pins the bar visible and static. It is a MODIFIER
+   and not `.tk-theme-fig .bottom-nav`, because on `bottomnav.html` the bar IS
+   the subject and its absence above 640 is the fact that page teaches: an
+   unmodified selector would have quietly overwritten it. */
+.tk-theme-fig.tk-show-nav .bottom-nav{display:block;position:static}
 .tk-photo{display:inline-flex;align-items:center;justify-content:center;
   width:72px;height:72px;background-size:cover;background-position:center;
   border-radius:10px}
@@ -183,6 +237,23 @@
   .tk-lab{grid-column:1/-1;flex-direction:row;align-items:baseline;gap:8px;
     padding:10px 12px;flex-wrap:wrap}
   .tk-colh:first-of-type{display:none}
+}
+/* AND BELOW 640 THE TWO THEMES STOP STANDING SIDE BY SIDE, which is a real cost
+   and is taken on purpose. Side by side is the reason this vitrine exists rather
+   than a set of screenshots. But two columns at 390 leave each specimen about
+   143px of room, and no placement in the product is that narrow: the
+   notification row stands at 258 on all 210 of its placements and read 65.5 tall
+   in a 148px cell against 49 everywhere else, and the bet pick read 70 wide
+   against 96 to 240. A COMPONENT MEASURED IN A CELL NARROWER THAN ANY PLACEMENT
+   IS NOT THE COMPONENT, it is that label at that width, and comparing two of
+   those against each other compares nothing. `organisms.html` already took this
+   bargain by hand for the same reason, a header cut to 430px is not a header;
+   this is the same decision made once, in the stylesheet, for every shelf.
+   640 is the number because the file already turns at 640 and at 760, and at 640
+   the two columns are still 305 wide, which clears the widest placement that
+   wraps. */
+@media(max-width:640px){
+  .tk-faces{grid-template-columns:1fr}
 }
 
 /* ==========================================================================

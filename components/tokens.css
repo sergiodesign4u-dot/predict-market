@@ -13,6 +13,21 @@
 
    Source of the reading: ui-kit/docs/tokens-audit.md (step 1). No em dash. */
 
+/* A CONTROL'S OWN HEIGHT, AND THE ONE CUSTOM PROPERTY IN THIS SYSTEM THAT DOES
+   NOT INHERIT. A component that declares a height writes it here and the touch
+   floor in base.css reads it as `max(--control-44, --control-h)`, which is what
+   makes a floor a floor instead of an assignment: written as a plain
+   `min-height:44px` the floor OUT-SPECIFIES the size that declared 48, so a
+   button would have stood 48 under a mouse and 47 under a finger. Measured, both
+   ways, before this was written.
+   IT IS DECLARED WITH @property FOR ONE REASON: a control's height is not
+   something its children are entitled to. A plain custom property inherits, so
+   `--control-h:48px` on a button would reach every box inside it, and any of
+   those already named by the floor would silently claim the button's height.
+   `inherits:false` with a 0px initial makes the unset case exactly `max(44,0)`,
+   which is the floor unchanged for the fifteen families that do not set it. */
+@property --control-h{syntax:'<length>';inherits:false;initial-value:0px}
+
 /* ==========================================================================
    1. PRIMITIVE
    ========================================================================== */
@@ -169,17 +184,37 @@
      Value named like the rest of the geometry, and each one says what it is for.
      A control size is the height of the box a finger or a pointer lands on; an
      icon size is the drawn mark inside it. */
+  --control-28:28px;   /* the header band's labelled press */
   --control-32:32px;   /* dense icon button, desktop chrome */
   --control-36:36px;   /* the standard control height */
   --control-44:44px;   /* the mobile touch target (WCAG 2.5.5) */
-  /* --control-52 stood here and went with .btn-lg on 2026-08-03. It was the
-     large step of a size ramp only the deleted button scheme ever read, so the
-     day that class left the system this became a value nobody reads, which gate
-     11 calls a transcript rather than a system. A ramp is not a reason to keep a
-     step: three heights are what the product's controls are, and the fourth was
-     an offer nobody took. The frozen kit keeps 52px as a literal in its own
-     <style>, because a page kept as provenance must not follow a scale that has
-     moved on without it. */
+  --control-48:48px;   /* the product's most common control */
+  --control-56:56px;   /* the sheet's Confirm, the one large step */
+  /* THE LADDER WENT FROM THREE RUNGS TO SIX ON 2026-08-09, AND THE ARGUMENT
+     AGAINST DOING THAT WAS WRITTEN RIGHT HERE. --control-52 stood in this block
+     and went with .btn-lg on 2026-08-03 under the sentence "a ramp is not a
+     reason to keep a step: three heights are what the product's controls are,
+     and the fourth was an offer nobody took". That was correct and it is not
+     this case. 52 was a rung NOBODY DREW; 28, 48 and 56 are rungs the product
+     ALREADY DRAWS, on 105, 575 and 6 placements, and the reason they were not
+     tokens is that nothing was declaring a control's height at all.
+     WHAT THE MEASUREMENT SAID, 2026-08-09, 160 pages of both trees at 1280 and
+     at 390, 13,021 controls. TWENTY DISTINCT HEIGHTS in the painted tree, and
+     the split is total: every height that landed on the 4px grid came from one
+     of these tokens, and every height that did not was accumulated out of
+     padding plus a border plus a line box. 2,907 readings of 5,607 accumulate.
+     THE PART THAT DECIDES PARITY IS THE ONE PART THIS SYSTEM NEVER DECLARED.
+     A control's box is padding + border + the line box, and the first two are on
+     the ladder while the third is `line-height:normal`, which is the font's
+     opinion: DM Sans gives 21px at 14px, 18px at 12px and 16.5px at 11px. So
+     .btn-md came out 12+12+2+21 = 47 and .btn-lg 16+16+2+21 = 55, and no value
+     in --space-* can make either even, because 21 is odd. Parity was flipping
+     on the FONT SIZE: the same padding ladder gives sm a clean 36 at 12px.
+     That is why a height is now a token the control reads (--control-h in
+     button.css) rather than a number three other values happen to add up to.
+     Backlog 40. The frozen kit keeps 52px as a literal in its own <style>,
+     because a page kept as provenance must not follow a scale that has moved on
+     without it. */
   --icon-12:12px;      /* a mark inside a control that already has a label */
   --icon-16:16px;      /* the default mark */
   --icon-18:18px;      /* a mark that carries a control on its own */

@@ -92,21 +92,47 @@
     <p class="tk-subh">slot, 420 placements, the only navigation a phone has</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
-      <div class="tk-theme-fig" data-theme="dark">
-        <div aria-current="page"><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-widget-b"/></svg><span>Events</span></a></div>
-        <a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-list-b"/></svg><span>My Bets</span></a>
-        <a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"></use></svg><span>Favorites</span></a>
+      <div class="tk-theme-fig tk-show-nav" data-theme="dark">
+        <nav class="bottom-nav" aria-label="Primary (mobile)">
+          <ul>
+            <li aria-current="page"><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-widget-b"/></svg><span>Events</span></a></li>
+            <li><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-list-b"/></svg><span>My Bets</span></a></li>
+            <li><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"></use></svg><span>Favorites</span></a></li>
+          </ul>
+        </nav>
       </div>
-      <div class="tk-theme-fig" data-theme="light">
-        <div aria-current="page"><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-widget-b"/></svg><span>Events</span></a></div>
-        <a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-list-b"/></svg><span>My Bets</span></a>
-        <a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"></use></svg><span>Favorites</span></a>
+      <div class="tk-theme-fig tk-show-nav" data-theme="light">
+        <nav class="bottom-nav" aria-label="Primary (mobile)">
+          <ul>
+            <li aria-current="page"><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-widget-b"/></svg><span>Events</span></a></li>
+            <li><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-list-b"/></svg><span>My Bets</span></a></li>
+            <li><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"></use></svg><span>Favorites</span></a></li>
+          </ul>
+        </nav>
       </div>
     </div>
     <p class="tk-note">A mark over a label, 10px, centred, muted. The first one is the current tab.
     <b>In the product <code>aria-current</code> sits on the <code>&lt;li&gt;</code></b> and the state
-    is reached from an ancestor; the specimen puts it on a wrapper for the same reason, because the
-    thing being shown is that the atom reads it from above rather than from itself.</p>
+    is reached from an ancestor, so the specimen is the bar's own markup and not an imitation of it:
+    <code>&lt;nav class="bottom-nav"&gt;&lt;ul&gt;&lt;li&gt;</code>, exactly as the 105 screens ship
+    it.</p>
+    <p class="tk-note tk-bad"><b>It was three loose anchors in a bare
+    <code>&lt;div&gt;</code> until 2026-08-09, and that is why this cell was broken.</b>
+    <code>.nav-item</code> is <code>display:block;width:100%</code>, and its own file says
+    <i>width:100% is the whole reason this class exists as a row</i>. The width it fills is the
+    <b><code>&lt;li&gt;</code>'s</b>, and <code>.bottom-nav li</code> is <code>flex:1</code> inside a
+    <code>ul</code> that is <code>display:flex</code>. With no list around them each anchor filled
+    the whole cell instead: <b>477px each, three of them wrapping onto three lines</b>, and the
+    current one squeezed to <b>41px</b> because its wrapper <code>&lt;div&gt;</code> was a flex item
+    that shrank to its text. <b>A stand class standing in for a product container does not show the
+    atom, it shows the atom with its arrangement removed.</b></p>
+    <p class="tk-note"><b>One thing differs from the product and it is declared:</b> the bar is
+    <code>display:none</code> from 640px up and <code>position:sticky</code>, so the cell pins it
+    visible and static through <code>.tk-show-nav</code>. That is the same bargain
+    <code>.tk-dlg</code> makes for a dialog and the dock makes on <code>vitrine.html</code>. The
+    ABSENCE is the bar's fact and it is shown where the bar is the subject, on
+    <a href="bottomnav.html">bottomnav</a>; here the subject is the slot, and a slot nobody on a
+    desktop can see is not a specimen.</p>
 
     <p class="tk-subh">row, 365 placements, a line of a menu that drops out of the header</p>
     <div class="tk-pair2">

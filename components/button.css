@@ -77,7 +77,7 @@
    else chooses; centre is what the justification already says. */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-12);
   box-sizing:border-box;border:var(--hairline) solid transparent;border-radius:var(--radius-10);text-align:center;
-  font-family:var(--font-body);cursor:pointer;
+  font-family:var(--font-body);cursor:pointer;min-height:var(--control-h);
   transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,
     color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
 .btn .ic{width:var(--icon-18);height:var(--icon-18)}
@@ -170,17 +170,30 @@
    anywhere else. md is the 12/14 step, 580 placements and by far the most of the
    product. lg is 16, and it exists because the mobile bet sheet's Confirm is the
    one control in the family at that padding: it was a scope override
-   (`.bet-sheet .confirm-btn`) and is now a size a person can ask for. */
-.btn.btn-sm{padding:var(--space-8) var(--space-12);font-size:var(--text-12)}
-.btn.btn-md{padding:var(--space-12);font-size:var(--text-14)}
-.btn.btn-lg{padding:var(--space-16);font-size:var(--text-14)}
+   (`.bet-sheet .confirm-btn`) and is now a size a person can ask for.
+   THE HEIGHT IS THE TOKEN NOW, 2026-08-09, AND THE PADDING IS NO LONGER WHAT
+   DECIDES IT. Until today a size named a padding and a font and the box was
+   whatever those two plus a border added up to: sm 8+8+2+18 = 36, md
+   12+12+2+21 = 47, lg 16+16+2+21 = 55. Two of the three numbers were the
+   system's and the third, the line box, is `line-height:normal`, which is DM
+   Sans's opinion and not a value declared anywhere here. It is what set the
+   PARITY: 21 is odd, so md and lg landed odd while sm landed clean, and the
+   only thing separating them was the font size. A ramp whose evenness depends
+   on a value the system never wrote down is not a ramp.
+   `--control-h` is the height and `padding` stays as the air a wrapped label
+   needs, which is the only job it has left. md goes 47 to 48 and lg 55 to 56,
+   one pixel each on 581 placements; nothing else in the family moves, because
+   xs already drew 28 and sm already drew 36. Backlog 40. */
+.btn.btn-sm{--control-h:var(--control-36);padding:var(--space-8) var(--space-12);font-size:var(--text-12)}
+.btn.btn-md{--control-h:var(--control-48);padding:var(--space-12);font-size:var(--text-14)}
+.btn.btn-lg{--control-h:var(--control-56);padding:var(--space-16);font-size:var(--text-14)}
 /* xs is the step the ramp was missing, and it was missing because the control
    that wears it was not in the family when the ramp was read: 4/8 at 12px, the
    header band's own rhythm, 105 placements. It is added at the value the product
    already draws rather than by squeezing that control onto `sm`, which is 8/12
    and would have made the band's one labelled press a third taller. A ramp read
    off the product has to be re-read when the product's set of controls changes. */
-.btn.btn-xs{padding:var(--space-4) var(--space-8);font-size:var(--text-12)}
+.btn.btn-xs{--control-h:var(--control-28);padding:var(--space-4) var(--space-8);font-size:var(--text-12)}
 /* Width is the fourth axis and the only one that is not a look. It replaces
    three scope overrides that each put a width back: `.resolved-panel .state-btn`,
    the sheet's own rule, and the dock's `width:auto`. A control that owns its row
@@ -194,10 +207,17 @@
    different part of the product is how `.market-head` and `.rules-tab` ended up
    with no floor at all.
    WHAT IS THIS FAMILY'S AND STAYS HERE, because it is a measurement of these six
-   steps and of nothing else: md renders 47 and lg 55 in a real touch context at
-   390, so THE FAMILY ALREADY CLEARS 44 EXCEPT sm AND xs. sm is 36 on 137
-   placements and xs is 25 on 72, and those 209 boxes are the entire effect the
-   floor has here.
+   steps and of nothing else: md renders 48 and lg 56 in a real touch context at
+   390, so THE FAMILY ALREADY CLEARS 44 EXCEPT sm, xs AND bare.
+   RE-MEASURED 2026-08-09 AND THE THREE NUMBERS IN THIS PARAGRAPH WERE WRONG, in
+   the way a hand-written count goes wrong: it read "xs is 25 on 72", and 25 is
+   `.btn-bare`'s height rounded and 72 is `.btn-bare`'s count. xs is 28 on 105
+   and bare is 24.5 on 72, so the floor's effect here is sm 138 + xs 105 + bare
+   72 = 315 boxes, not 209, and it was never measuring xs at all. A count typed
+   beside a class it does not belong to reads exactly like a count.
+   `.btn-bare` is the one member with no `--control-h`, and the rule above says
+   why: it has no box, so a height on it would be inventing one. It is the
+   family's last accumulated number, 24.5 under a mouse.
    IT ALSO DELETED A COPY OF ITSELF: `components/profile.css` carried the same
    declaration for one control, which is what a family with no floor forces a
    region to do. */

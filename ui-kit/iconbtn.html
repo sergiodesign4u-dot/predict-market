@@ -58,13 +58,21 @@
     <p class="tk-subh">the circle, 242 placements, and every one is in the header</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
-      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button></div>
-      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button><a class="icon-btn" href="#" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bell-b"/></svg></a><a class="icon-btn desk-only" href="#" aria-label="Favorites, see saved events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"/></svg></a></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button><a class="icon-btn" href="#" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bell-b"/></svg></a><a class="icon-btn desk-only" href="#" aria-label="Favorites, see saved events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"/></svg></a></div>
     </div>
     <p class="tk-note"><b>The circle is the header band's skin, not this atom's own idea</b>, and
     counting says so: all 242 plain <code>.icon-btn</code> in the product stand in
     <code>&lt;header&gt;</code>, 105 in the left group and 137 in the utility group, and there is no
     plain circle anywhere else. It answers a pointer the way the band's other three controls do.</p>
+    <p class="tk-note"><b>Three marks, and the cell showed one until 2026-08-09.</b> Read from the
+    screens rather than from this page: the hamburger on <b>105</b>, the bell on <b>32</b>, and the
+    bookmark on <b>105</b>, which is <code>105 + 32 + 105 = 242</code>, the number the line above
+    already carried. A count can be right while the picture under it is one third of the thing. <b>The
+    third one carries <code>.desk-only</code></b>, a `base.css` utility that is
+    <code>display:none!important</code> below the breakpoint, so on a phone the header's Favorites
+    circle is not there at all: it is the bar's Favorites slot instead. That is a fact about the
+    atom's placements, so it is drawn here rather than described.</p>
 
     <p class="tk-subh">bal-swap and bal-add, 73 each, and 0 of the 146 render at 390</p>
     <div class="tk-pair2">
@@ -80,8 +88,8 @@
     <p class="tk-subh">photo, 228 + 105 with the strong ring, and all 333 are a sheet close</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
-      <div class="tk-theme-fig" data-theme="dark"><span class="tk-photo" style="background-image:url(../assets/event-politics.jpg)"><button type="button" class="icon-btn icon-btn-photo" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span><span class="tk-photo" style="background-image:url(../assets/event-politics.jpg)"><button type="button" class="icon-btn icon-btn-photo icon-btn-ring-strong" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span></div>
-      <div class="tk-theme-fig" data-theme="light"><span class="tk-photo" style="background-image:url(../assets/event-politics.jpg)"><button type="button" class="icon-btn icon-btn-photo" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span><span class="tk-photo" style="background-image:url(../assets/event-politics.jpg)"><button type="button" class="icon-btn icon-btn-photo icon-btn-ring-strong" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span></div>
+      <div class="tk-theme-fig" data-theme="dark"><span class="tk-photo" style="background-image:url(../assets/event-politics.jpg)"><button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span><span class="tk-photo" style="background-image:url(../assets/event-politics.jpg)"><button type="button" class="icon-btn icon-btn-photo icon-btn-ring-strong sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span></div>
+      <div class="tk-theme-fig" data-theme="light"><span class="tk-photo" style="background-image:url(../assets/event-politics.jpg)"><button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span><span class="tk-photo" style="background-image:url(../assets/event-politics.jpg)"><button type="button" class="icon-btn icon-btn-photo icon-btn-ring-strong sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span></div>
     </div>
     <p class="tk-note"><b>The specimen stands on a photograph and not on the plate</b>, which is the
     only honest ground for it: it reads <code>--scrim-photo</code>, <code>--line-on-photo</code> and
@@ -151,6 +159,17 @@
     which brightened the EDGE where the header's tints the GROUND. <b>Four placements against 242</b>,
     so the header's was the system's and this was the divergence, and the divergence was corrected
     rather than carried into the atom.</p>
+    <p class="tk-note tk-bad"><b>THE DEFECT: this is the one control in the family with no mark in
+    it, and the mark it is missing is a letter.</b> Read in a browser on 2026-08-09: the box is
+    24x24, it holds <b>0 svg</b>, and its content is the text character <code>x</code>, with nothing
+    on <code>::before</code> or <code>::after</code>. The specimen above is not a stand shortcut, it
+    is what all four placements ship. <b>Meanwhile 333 close controls in this same family draw a
+    real cross</b>, a two-line stroked path at the system's weight, and this is the same shape of
+    defect as the warning mark that was a circle on 16 screens and a triangle on 4: <b>one job, two
+    drawings</b>. A lowercase letter is not a cross. It is the wrong width, the wrong weight, it
+    takes the type ramp instead of the stroke, and it does not turn with the theme the way a
+    <code>currentColor</code> path does. Backlog 75, and it is the product's to fix rather than this
+    page's.</p>
   </section>
 
   <!-- ================================================================ floor -->

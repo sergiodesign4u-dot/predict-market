@@ -286,17 +286,31 @@ icon plate, a legend swatch or a track moves when the thing moves. That scale sh
 (56 and 72) and fifty-seven declarations therefore borrowed a `--space-*` step for their own width
 and height. Gate 12 fails the build on that now.
 
-**A control and a mark have their own names.** `--control-32 / 36 / 44 / 52` is the height of the box
-a finger or a pointer lands on; `--icon-12 / 16 / 18 / 22` is the drawn mark inside it. `--ring` (2px)
-is the width and the offset of the focus outline.
+**A control and a mark have their own names.** `--control-28 / 32 / 36 / 44 / 48 / 56` is the height
+of the box a finger or a pointer lands on; `--icon-12 / 16 / 18 / 22` is the drawn mark inside it.
+`--ring` (2px) is the width and the offset of the focus outline.
+
+**A control height is a token the control reads, and it is that way since 2026-08-09.** Before it, a
+size named a padding and a font size and the box was whatever those plus a border added up to, so
+**twenty different heights rendered against three declared ones** and the odd ones all came from the
+same place: `line-height` on a control is `normal`, the font's own number, and DM Sans returns 21px
+at 14px. `.btn-md` was 12+12+2+21 = 47 and `.btn-lg` 16+16+2+21 = 55. **The parity of a control was
+being decided by its font size**, which is the one input the ladder does not reach, so no padding
+value could have fixed it. A component declares `--control-h`, the padding stays as the air a
+wrapped label needs, and the touch floor reads `max(--control-44, --control-h)` because a floor
+raises a short control and must not lower a tall one. The button family reads it today; `.nav-row`,
+the chips and a bare `<summary>` do not yet, which is 1,738 of 5,004 controls and backlog 40.
 
 - **The inner/outer rhythm.** Within a group, gaps stay small (4-12); between groups they open up
   (16-24). The bet sheet is the reference: ~20px between the header / YES-NO / amount / breakdown /
   confirm groups, 8-12px inside each. Small-inside, bigger-outside is what makes a dense panel read
   as ordered rather than crammed.
-- **Touch targets follow the POINTER, not the viewport.** `@media(pointer:coarse)` gives every
-  interactive control 44px; a fine pointer keeps 36, which clears WCAG 2.5.8 (24x24) with room. Binding
-  that to `max-width:640px` is the bug it replaced: a touch tablet at 900px got the mouse target.
+- **Touch targets follow the POINTER, not the viewport.** `@media(pointer:coarse)` raises every
+  interactive control to 44px; a fine pointer keeps the height the control declares, which clears WCAG
+  2.5.8 (24x24) with room. Binding that to `max-width:640px` is the bug it replaced: a touch tablet at
+  900px got the mouse target. **Raises, not sets**: the floor is `max(--control-44, --control-h)`
+  since 2026-08-09, because written as a plain assignment it out-specified a control that had
+  declared 48 and stood it at 47 under a finger and 48 under a mouse.
 - **Enforcement.** The system is `components/` and nothing else. Gate 12 fails on a raw scale value in
   a component, on a `--space-*` step used as a measurement, and on a raw `z-index`; gate 9 fails on a
   `<style>` block or a `style=` attribute on a screen; gate 13 fails on a colour read past its role.

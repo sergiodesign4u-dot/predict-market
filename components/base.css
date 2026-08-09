@@ -148,9 +148,20 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none!important}
    other rule staying short is not a floor.) Written and measured: 18 tab buttons over the nine active-bets screens
    read `min-height:36px` with the floor in place and the pointer coarse. Four chained `:not()`s
    count four times, the rule is (0,5,1), and it out-specifies every nominal height in the system
-   rather than tying with one of them. A floor that a component can tie with is not a floor. */
+   rather than tying with one of them. A floor that a component can tie with is not a floor.
+
+   AND ON 2026-08-09 THAT STRENGTH BECAME THE PROBLEM, WHICH IS WHY THE VALUE IS A `max()` NOW.
+   The paragraph above is right that a floor has to out-specify a nominal height. What it did not
+   ask is what happens when a component declares a height ABOVE 44: `.btn-md` took `--control-h:48px`
+   and this rule, at (0,5,1) against (0,2,0), replaced it with 44. The content then held the box at
+   47, so the same button stood 48 under a mouse and 47 under a finger, which is the exact defect
+   the ladder was declared to end. Measured both ways before this line was written.
+   `max(var(--control-44),var(--control-h))` says the thing the words always said: a floor RAISES a
+   short control and never lowers a tall one. `--control-h` is declared `inherits:false` with a 0px
+   initial in tokens.css, so for the fourteen families that set nothing this is `max(44px,0px)` and
+   the rule is unchanged, byte for byte in its effect. */
 @media(pointer:coarse){
-  :is(.btn,.chip,.icon-btn,.tabs button,.ptab-lbl,.rules-tab,.market-head,.toc-link,.cc-cat-main,.filter-menu summary,.notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-height:var(--control-44)}
+  :is(.btn,.chip,.icon-btn,.tabs button,.ptab-lbl,.rules-tab,.market-head,.toc-link,.cc-cat-main,.filter-menu summary,.notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-height:max(var(--control-44),var(--control-h))}
   /* A SQUARE CONTROL NEEDS BOTH SIDES. These carry a mark and no label, so their width does not
      arrive from a word the way a chip's and a button's does. */
   :is(.icon-btn,.logo-btn,.notif-all,.notif-menu summary,.avatar-menu summary):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-width:var(--control-44)}

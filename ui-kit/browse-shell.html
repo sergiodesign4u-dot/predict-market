@@ -28,8 +28,68 @@
     </div>
   </div>
 
+  <section class="tk-sec" id="specimen">
+    <h2 data-n="1">The arrangement, with something in it</h2>
+    <p class="tk-note">The real <code>.cat-layout</code> with its rail and its main column, both themes. <b>Below 900 this is one column and the rail sits above the grid</b>; at 900 the rail becomes a side column, which is the one media query this pattern owns.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+          <div class="cat-layout">
+            <nav class="subcat" aria-label="Sub-categories">
+              <ul>
+                <li><button type="button" class="chip chip-lane sel">All <span class="chip-cnt">418</span></button></li>
+                <li><button type="button" class="chip chip-lane">Elections <span class="chip-cnt">212</span></button></li>
+                <li><button type="button" class="chip chip-lane">Policy <span class="chip-cnt">96</span></button></li>
+              </ul>
+            </nav>
+            <div class="cat-main">
+              <div class="grid">
+                <article class="card" data-cat="politics"><div class="card-body">
+                  <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter.</p></div></div>
+                  <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div><div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
+                  <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+                </div></article>
+                <article class="card" data-cat="crypto"><div class="card-body">
+                  <div class="top"><span class="thumb" style="background-image:url(../assets/event-crypto.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will Bitcoin close above $150,000 before October 1, 2026?</a><p class="why">Two failed runs at $140k, and the ETF flow has not turned.</p></div></div>
+                  <div class="oddsbar"><div class="track"><span class="fill" style="width:22%"></span></div><div class="lbls"><span class="l-yes">YES 22%</span><span class="l-no">NO 78%</span></div></div>
+                  <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+                </div></article>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+          <div class="cat-layout">
+            <nav class="subcat" aria-label="Sub-categories">
+              <ul>
+                <li><button type="button" class="chip chip-lane sel">All <span class="chip-cnt">418</span></button></li>
+                <li><button type="button" class="chip chip-lane">Elections <span class="chip-cnt">212</span></button></li>
+                <li><button type="button" class="chip chip-lane">Policy <span class="chip-cnt">96</span></button></li>
+              </ul>
+            </nav>
+            <div class="cat-main">
+              <div class="grid">
+                <article class="card" data-cat="politics"><div class="card-body">
+                  <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter.</p></div></div>
+                  <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div><div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
+                  <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+                </div></article>
+                <article class="card" data-cat="crypto"><div class="card-body">
+                  <div class="top"><span class="thumb" style="background-image:url(../assets/event-crypto.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will Bitcoin close above $150,000 before October 1, 2026?</a><p class="why">Two failed runs at $140k, and the ETF flow has not turned.</p></div></div>
+                  <div class="oddsbar"><div class="track"><span class="fill" style="width:22%"></span></div><div class="lbls"><span class="l-yes">YES 22%</span><span class="l-no">NO 78%</span></div></div>
+                  <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+                </div></article>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>The rail is written by hand here and by a machine in the product</b>: it ships as <code>&lt;nav class="subcat" id="subcatRail" hidden&gt;&lt;/nav&gt;</code> and a page script fills it. That is the third component in this system whose visible content is not in its markup, after the card's odds bar and the chart's line, and a stand does not run the product's scripts.</p>
+  </section>
+
   <section class="tk-sec" id="why">
-    <h2 data-n="1">Stable arrangement, unstable content, which is the whole argument</h2>
+    <h2 data-n="2">Stable arrangement, unstable content, which is the whole argument</h2>
     <p class="tk-note">Fourteen different sets of content across 77 screens, <b>and that is the
     argument for a pattern rather than a component</b>: the arrangement is stable and what it holds
     is not. A feed, a bets list, a notification list, a profile, a wallet, a document and two error
@@ -51,7 +111,7 @@
   </section>
 
   <section class="tk-sec" id="parent">
-    <h2 data-n="2">Its own header named a PARENT, and nothing reads that line</h2>
+    <h2 data-n="3">Its own header named a PARENT, and nothing reads that line</h2>
     <p class="tk-why">The <code>Assembled from</code> line in this file listed <code>feed</code>.
     Measured on the markup: <b><code>&lt;main class="feed"&gt;</code> opens at line 361 and
     <code>&lt;div class="cat-layout"&gt;</code> at 469</b>, so the feed holds this shell and not the
@@ -66,7 +126,7 @@
   </section>
 
   <section class="tk-sec" id="slot">
-    <h2 data-n="3">One slot, two rails, and the widening was measured</h2>
+    <h2 data-n="4">One slot, two rails, and the widening was measured</h2>
     <p class="tk-note">With no rail there is nothing to align to, so the main column takes the full
     height <b>instead of hanging at the top of a row it is the only member of</b>. The selector for
     that names BOTH rails, <code>:not(:has(.subcat,.toc))</code>, <b>because the slot takes more than
@@ -80,7 +140,7 @@
   </section>
 
   <section class="tk-sec" id="read">
-    <h2 data-n="4">The reading column, and the container owns the distance</h2>
+    <h2 data-n="5">The reading column, and the container owns the distance</h2>
     <p class="tk-note">The main column used to hold a grid or a list, <b>and both bring their own
     distance</b>: a grid has a gap and a position list has a gap. <b>A stack of PROSE blocks has
     neither</b>, and the first page that needed one showed exactly what that costs: fourteen blocks,
@@ -109,7 +169,7 @@
   </section>
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="5">The rule</h2>
+    <h2 data-n="6">The rule</h2>
     <p class="tk-note"><b>A pattern says where, a rail says how wide, a component says what it looks
     like.</b> Three files, and none of them has to know about the others.</p>
     <p class="tk-note"><b>The container owns the distance.</b> Otherwise every new block has to
@@ -119,7 +179,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="6">The anti-rule</h2>
+    <h2 data-n="7">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never write a provenance line nothing reads.</b> <i>This one named a
     parent as a child and was true of nothing, and it survived because no instrument and no page ever
     looked at it.</i></p>
@@ -130,7 +190,7 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="7">Where the rest of it is</h2>
+    <h2 data-n="8">Where the rest of it is</h2>
     <p class="tk-note">The shelf: <a href="patterns.html#browse-shell">the patterns page</a>. The
     stylesheet: <code>components/patterns/browse-shell.css</code>. The two rails:
     <a href="catnav.html">category nav</a> and <a href="toc.html">contents</a>. What stands in the

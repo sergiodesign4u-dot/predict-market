@@ -191,27 +191,40 @@
 
   <!-- ============================= heights =========================== -->
   <section class="tk-sec" id="heights">
-    <h2 data-n="06">Three control heights are declared. Twelve render</h2>
-    <p class="tk-note">The system names three: 32 for a dense icon button, 36 for the standard
-    control, 44 for the mobile touch target. Boxed controls on 10 screens render twelve heights, and
-    <b>nine of the twelve are not a token</b>. They are what padding plus font size plus a border
-    added up to.</p>
+    <h2 data-n="06">Six control heights are declared. Twenty render, and the odd ones name the cause</h2>
+    <p class="tk-note">Re-measured <b>2026-08-09</b>, and the reading this section carried before was
+    a 10-screen census taken on 2026-08-07: three declared heights, twelve rendered, 317 controls.
+    This one is <b>106 painted screens at 1280, 5,004 controls</b>. The ladder is six rungs now, 28 /
+    32 / 36 / 44 / 48 / 56, and <b>3,266 of the 5,004 stand on one</b>.</p>
+    <p class="tk-note"><b>The split is total and it is the whole finding.</b> Every height that lands
+    on the 4px grid came from a token. Every height that does not was accumulated: padding plus a
+    border plus a line box. And <b>the line box is the one part the system never declared</b>.
+    Padding and border are on the ladder; <code>line-height</code> on a control is <code>normal</code>,
+    which is the font's opinion, and DM Sans returns <b>21px at 14px, 18px at 12px and 16.5px at
+    11px</b>. So the parity of a control was being set by its font size: <code>.btn-md</code> came out
+    12+12+2+21 = <b>47</b> and <code>.btn-sm</code> 8+8+2+18 = a clean <b>36</b>, from the same padding
+    ladder. No value in <code>--space-*</code> can make 47 even, because 21 is odd.</p>
     <dl class="tk-type">
-      <dt>26, 27, 28</dt><dd>74 controls. The dense end: a chart range chip, a lift button, a bare button<small>none is a token</small></dd>
-      <dt>32</dt><dd>20 controls<small><b>--control-32</b>, declared</small></dd>
-      <dt>33, 34, 35</dt><dd>23 controls, three heights inside two pixels<small>none is a token, and this is the sharpest case on the page</small></dd>
-      <dt>36</dt><dd>62 controls<small><b>--control-36</b>, declared, the standard</small></dd>
-      <dt>38</dt><dd>60 controls. The quiet chip and the segmented tab<small>not a token, and 60 readings of it</small></dd>
-      <dt>44</dt><dd>43 controls<small><b>--control-44</b>, declared, the touch floor</small></dd>
-      <dt>47, 71</dt><dd>35 controls. A block button in a sheet, a trust tile<small>not a token</small></dd>
-    </dl>    <p class="tk-note"><b>239 of 317 boxed controls stand under 44px.</b> The three token heights
-    account for 125 of the 317; the other 192 are arithmetic. 33, 34 and 35 are the sharpest case:
-    three heights within two pixels of each other, none of them a decision, all three the residue of
-    a different padding meeting a different font size.</p>
-    <p class="tk-note"><b>This is the one axis in the geometry that has no scale</b>, and it is the
-    same finding the census made, correctly, and the same one the inventory made about the filter
-    option at 33px. A control height should be a token the control reads, with the padding computed
-    from it, rather than a number that falls out of the padding.</p>
+      <dt>28</dt><dd>630 controls. The lift button, the header band's labelled press<small><b>--control-28</b>, declared 2026-08-09</small></dd>
+      <dt>32</dt><dd>479 controls<small><b>--control-32</b>, declared</small></dd>
+      <dt>36</dt><dd>1,033 controls, the standard<small><b>--control-36</b>, declared</small></dd>
+      <dt>44</dt><dd>543 controls<small><b>--control-44</b>, declared, the touch floor</small></dd>
+      <dt>48</dt><dd>575 controls, the most common single control in the product<small><b>--control-48</b>, declared 2026-08-09. It rendered 47 until that day</small></dd>
+      <dt>56</dt><dd>6 controls, the sheet's Confirm<small><b>--control-56</b>, declared 2026-08-09. It rendered 55</small></dd>
+    </dl>
+    <p class="tk-note"><b>What is still arithmetic, and it is 1,738 of 5,004.</b> The button family
+    reads the ladder as of today and nothing else does: <code>.nav-row</code> 32.5 on 365,
+    <code>.chip-lane</code> 40.5 on 312, <code>.chip-nav</code> 47 on 285,
+    <code>.nav-row-stack</code> 49 on 210, a bare <code>&lt;summary&gt;</code> 34.5 on 193,
+    <code>.btn-bare</code> 24.5 on 72, <code>.chip-rail</code> 26 on 63. <b>Every one of the
+    fractional readings is a line box</b>: 16.5, 19.5, 22.5. Backlog 40 stays open on exactly these.</p>
+    <p class="tk-note"><b>A floor is not an assignment</b>, and declaring a height proved it. The 44px
+    touch floor in <code>base.css</code> is <code>(0,5,1)</code> on purpose, so it out-specified
+    <code>.btn-md</code>'s new 48 and put it back to 44, and the content then held the box at 47: the
+    same button stood 48 under a mouse and 47 under a finger. It reads
+    <code>max(--control-44, --control-h)</code> now, and <code>--control-h</code> is declared
+    <code>inherits:false</code> so a control's height is not something the boxes inside it can
+    claim.</p>
   </section>
 
   <!-- ============================= literals ========================== -->

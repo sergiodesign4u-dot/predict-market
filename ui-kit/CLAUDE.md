@@ -137,6 +137,53 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
   with **one declaration in the whole system and no face**, `display:none` below 640, so the one
   emphasis of five a reader at 390 could not see was the one the section was about. **A placement is
   not a face.**
+- **A STACKED CELL MUST NOT WRAP, and one word painted a button the product does not have.**
+  `.tk-theme-fig` is `flex-wrap:wrap` because a row cell holds several specimens; `.tk-stack` turns
+  the same cell into a column and inherited it, and **a multi-line column container with a definite
+  height hands its free space to its items**. The cell's height is not its own: `.tk-pair2` is a
+  grid and the row is as tall as the taller theme. So a 218px cell pushed `.cta-bar` to 76 and the
+  bar's stretch pushed `.btn-md` from **47 to 68**, on `action-bar.html` and `patterns.html`, the two
+  pages whose whole job is to say what a `.btn-md` is. Found by toggling one property at a time in a
+  browser: `flex-wrap:nowrap` gives back the product's own numbers and every other candidate moved
+  the width.
+- **A stand class standing in for a product class is a copy of the markup**, which is the one thing
+  this kit may not hold, and it is invisible because the specimen looks right. The bet pick was in
+  `.tk-pair`; the product puts it in `.bp-dir`, and `betpanel.css:57` keys a 4px margin off exactly
+  that container, so **the component's own stylesheet could not reach its own specimen**. Capped to
+  the placement's width the pick was 140 wide, the product's number, **and still 4px short**. Use the
+  product's container: `.bp-dir`, `.bet-dock`. When the product's container is width-conditional, the
+  cell says so with a `.tk-gone` modifier rather than being faked.
+- **A PAGE ABOUT AN ARRANGEMENT NEEDS THE ARRANGEMENT ON IT.** Counted 2026-08-09: `card-grid`,
+  `browse-shell`, `detail-shell` and `position-list` had **0 `.tk-theme-fig` each**, four of the six
+  pattern pages, prose with a rule and an anti-rule and nothing rendering underneath. This file's own
+  note that the rung "has almost nothing to look at" is true of the RUNG and is not the same claim.
+  **A page about a rule with nothing under it cannot be checked by reading it**, which is the whole
+  argument for a vitrine over a document.
+- **A stand does not run the product's scripts, so it writes by hand what the script writes**, the
+  way `card.html` already did. Three components in this system have visible content that is in no
+  screen's markup: the card's odds bar (one occurrence of the word in the feed's source, **nine bars
+  in its DOM**), the chart's line, and the browse shell's rail, which ships as
+  `<nav class="subcat" id="subcatRail" hidden></nav>`. A specimen that renders the screen's markup
+  without the screen's script shows a card nobody has ever seen.
+- **The photograph is a DATUM, and a specimen that drops it renders a grey box.** `<span
+  class="thumb">` without its `style="background-image:..."` is not a smaller version of the card, it
+  is a card with its picture removed: **14 of 14 on `patterns.html` and `organisms.html`** until
+  2026-08-09. Measure it as `backgroundImage === "none"` in a browser; the markup looks complete.
+- **A count can be right while the picture under it is a third of the thing.** `iconbtn.html` said
+  "the circle, 242 placements" and drew one hamburger. The product's 242 are a hamburger on 105, a
+  bell on 32 and a bookmark on 105, and the third wears `.desk-only` so it does not exist on a phone
+  at all. The number was never wrong. **A stand is checked by what it draws, not by what it counts.**
+- **A specimen measured in a cell narrower than any placement is not the component**, it is that
+  label at that width. Two theme columns at 390 leave each specimen about **143px**, and the
+  notification row stands at **258 on all 210 of its placements**: it read 65.5 tall in a 148px cell
+  against 49 everywhere else. Below 640 the themes stack, which costs the side-by-side that is the
+  reason this vitrine exists, and is still the better trade, because **comparing two lies against
+  each other compares nothing**. `organisms.html` had already taken it by hand.
+- **The kit can disagree with itself, and the disagreement will be 1.5px.** `chip.html`,
+  `catnav.html` and `patterns.html` all put `.chip-cnt` on `.chip-lane` as a `<button>`, which is
+  what the product ships. `vitrine.html` put it on `.chip-nav`, which **wears no count anywhere in
+  the product**, and left the lane bare. Four places showing one component is four chances to drift,
+  and the size of the drift is exactly the size nobody notices by eye.
 - **A caption is prose, and prose in an `auto` grid column eats its neighbour.** One 117-character
   line added to the anatomy figcaption measured 601px on one line, took the whole column, and left
   `.tk-anat` computing `601px 0px`, so the steps beside it stood 92px past the page **from 761 to
