@@ -91,8 +91,8 @@
         <li><b>2</b><span><b>Safe field 2</b> - paint lives in <code>2..22</code>. Those two modules
         are not emptiness, they are headroom: the glyph stands beside text, inside a button and
         inside a circle, and with no headroom it touches the edge of the circle.</span></li>
-        <li><b>3</b><span><b>The stroke paints outward from the contour</b> - a 1.6 stroke puts
-        <code>0.8</code> of paint past the geometry on every side. <b>The boundary is checked against
+        <li><b>3</b><span><b>The stroke paints outward from the contour</b> - a 2.2 stroke puts
+        <code>1.1</code> of paint past the geometry on every side. <b>The boundary is checked against
         the PAINT, not against the curve</b>, or the safe field is eaten by half a stroke and the
         audit reads a module too kind.</span></li>
         <li><b>4</b><span><b>Optical centre, not geometric.</b> A glyph with a heavy bottom, a
@@ -219,17 +219,22 @@
 
   <!-- ======================== the stroke does not hold ================= -->
   <section class="tk-sec" id="stroke">
-    <h2 data-n="04">The stroke does not hold, and it is off by three times</h2>
+    <h2 data-n="04">The stroke still slides, and there are three constants for it</h2>
     <p class="tk-note"><code>.ic</code> declares its stroke once, in user units, inside a 24 unit
     box. <b>User units scale with the box.</b> So the line is not that number anywhere: it is that
-    number multiplied by however large the icon was asked to be, and the set renders at six sizes.
-    The same glyph, at every size the product actually uses:</p>
-    <p class="tk-note"><b>The constant moved from 1.6 to 2.2 on 2026-08-09 and the defect did
-    not.</b> Six sizes still means six weights, and <b>the ratio between the lightest and the
-    heaviest is exactly what it was, 2.98 to 1</b>, because the fault is the unit and not the value.
-    What the new number fixes is a different thing: it puts the line marks at the mass of the filled
+    number multiplied by however large the icon was asked to be, and the set is drawn at six sizes.
+    The same glyph at all six, four of which the product actually strokes:</p>
+    <p class="tk-note"><b>The constant moved from 1.6 to 2.2 on 2026-08-09 and the fault did not,
+    but the spread did, and this page claimed otherwise for a day.</b> It said the ratio was
+    "exactly what it was, 2.98 to 1, because the fault is the unit and not the value". <b>Re-read on
+    the 106 painted screens it is 1.68 to 1</b>, and the reason is not that the unit was fixed: it is
+    that <b>the set no longer strokes at the two boxes that were the extremes</b>. 40 and 20 carry
+    filled glyphs only now, so the stroked range runs 12 to 22 instead of 12 to 40. <b>An argument
+    whose evidence has moved is not a smaller argument, it is a different one.</b> What the new
+    number does fix is the thing it was chosen for: it puts the line marks at the mass of the filled
     ones beside them. The figures below are re-read at 2.2, and 12px reads 2.4 because
-    <code>.ic-sm</code> declares its own.</p>
+    <code>.ic-sm</code> declares its own. <b>Two of the six sizes below are a demonstration of the
+    mechanism and not a placement</b>: nothing in the product strokes at 20 or at 40.</p>
     <div class="tk-row" id="strokerow">
       <figure class="tk-gl">
         <span class="tk-sz"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true" data-box="12"><path d="M4 13l4 4L20 5"/></svg></span>
@@ -256,27 +261,40 @@
         <figcaption>.ic.tr-ic @ 40<i data-m="s40">box 40px, declared 2.2u, renders 3.67px</i></figcaption>
       </figure>
     </div>
-    <p class="tk-note">Measured on the real screens, in CSS pixels: <b data-m="strokerange">0.90px at 12, 1.07 at 16, 1.20 at 18, 1.33 at 20, 1.47 at 22, 2.67 at 40</b>.
-    That is <b>a factor of three across one set</b>, and it runs the wrong way at both ends. At
-    <b>0.90px</b> the line is under one device pixel at DPR 1 and the glyph smears; at <b>2.67px</b>
-    the icon is a heavier weight than the type beside it, so the trust row reads as bolder than its
-    own heading. <b>The set has no optical weight. It has one geometric weight that slides.</b></p>
-    <p class="tk-note"><code>.ic-sm</code> makes it worse rather than better: it is the smallest box
-    at 12px and it declares the <b>thicker</b> user-unit stroke, 1.8 against 1.6, which after the
-    scale still lands at 0.90px, the thinnest line in the product.</p>
+    <p class="tk-note">Measured 2026-08-09 on the 106 painted screens, every svg that actually paints
+    a stroke, <b>998 placements of 2,399</b>, in CSS pixels: <b data-m="strokerange">1.20px at 12 (266), 1.47 at 16 (17), 1.65 at 18 (528), 2.02 at 22 (178)</b>,
+    and the remaining <b>9</b> are the market chevron in the paragraph below, at 16 and painting 1.20.
+    Four boxes, not six, and <b>1.68 to 1</b> between the lightest and the heaviest. The old reading,
+    kept because it is what the set was before the consolidation: 0.90 at 12, 1.07 at 16, 1.20 at 18,
+    1.33 at 20, 1.47 at 22, 2.67 at 40, a factor of three. <b>What went with it was the argument's
+    sharp end</b>: 0.90px is under one device pixel at DPR 1 and smears, and 1.20px is not, so the
+    lightest line in the product is no longer sub-pixel. <b>The set still has no optical weight. It
+    has one geometric weight that slides, less far.</b></p>
+    <p class="tk-note"><code>.ic-sm</code> is still the wrong way round: it is the smallest box at
+    12px and it declares the <b>thicker</b> user-unit stroke, <b>2.4 against 2.2</b>, which after the
+    scale lands at 1.20px, the thinnest line in the product. <b>And there is a third constant, which
+    this page has never named.</b> <code>.market-chevron</code> writes its own
+    <code>stroke-width:1.8</code> in <code>market.css</code> at a 16px box, <b>9 placements</b>, and
+    it renders at <b>1.20px</b>: the same painted weight as the 12px marks, from a different number,
+    at a different size, in a file the icon rules do not reach. <b>Two declarations agreeing by
+    accident is not one weight, it is two that have not disagreed yet.</b></p>
   </section>
 
   <!-- ========================== the safe field ========================= -->
   <section class="tk-sec" id="field">
     <h2 data-n="05">The safe field, measured against the paint</h2>
-    <p class="tk-note">The smallest distance from painted edge to cell edge, for all 52. The stroked
-    numbers all end in <code>.2</code> because they are a whole-module contour plus the 0.8 of stroke
-    that paints outside it, which is the arithmetic of rule 3 showing up in the data.</p>
+    <p class="tk-note">The smallest distance from painted edge to cell edge, <b>for all 35</b>, in
+    the distribution two paragraphs down. The line numbers all end in <code>.9</code> because they
+    are a whole-module contour plus the <b>1.1</b> of stroke that paints outside it, which is the
+    arithmetic of rule 3 showing up in the data. <b>They ended in <code>.2</code> at 1.6 and this
+    sentence said 52 and 0.8 until 2026-08-09</b>, one day after the set was consolidated, which is
+    the same lag the audit below opens by naming.</p>
     <p class="tk-note"><b>A method note, because the first pass of this got it wrong.</b> A sweep run
     over the live feed reported thirteen glyphs inside the field. It was reading the stroke off
     <code>getComputedStyle</code> of the child, and a <code>&lt;use&gt;</code> inside
-    <code>.ic</code> inherits <code>stroke-width:1.6</code> whether or not it paints a stroke, so
-    every filled glyph was credited with 0.8 of paint it does not have and lost a module of field.
+    <code>.ic</code> inherits the stroke width, now <code>2.2</code>, whether or not it paints a
+    stroke, so every filled glyph was credited with half of it in paint it does not have and lost a
+    module of field.
     <b>An inherited property is not a painted one</b>, and the fix is to ask whether the element
     actually strokes before spending half of it.</p>
     <p class="tk-note" data-m="fielddist"><b>Re-measured 2026-08-09, and the distribution is a different shape.</b> <b>Filled, 21 glyphs:</b> field 2.0 on 17, 3.0 on one, 3.2 on one, 3.3 on one, and <b>0 on the clock</b>, which paints the whole cell. <b>Line, 6 glyphs:</b> 4.9 on two, 3.9 on two, 2.9 on one and <b>1.9 on the menu</b>, a tenth under. <b>Brand, 8 marks:</b> not measured against this grid, and two of the three providers paint to the cell edge, which is what a logo does. The old reading, kept because it is what the hand-drawn set actually was: stroked 33 glyphs, field 2.2 on 15, 3.2 on 10, 4.2 on 6, 5.2 on 2; filled 15 glyphs, 2.0 on 13.</p>
@@ -284,8 +302,11 @@
     a 36px circular button at 22px: 2 modules of headroom is 1.8px of air between the paint and the
     button's own border, and that is already tight. Below 2 the glyph touches. Above 4 it stops
     reading as the same size as its neighbours, which is the chevron's problem in section 02.</p>
-    <p class="tk-subh">The centre has drifted on twelve glyphs</p>
-    <p class="tk-note">Measured against the geometric centre, in modules. Some of it is right: a
+    <p class="tk-subh">The centre had drifted on twelve glyphs, and section 06 is where that ends</p>
+    <p class="tk-note"><b>This paragraph is the hand-drawn set's reading and it is kept as one.</b>
+    All three glyphs it sends away to be corrected are gone from the product, and <b>19 of the 21
+    filled glyphs now sit at 0.0 / 0.0</b>: the audit below states it and this is the argument it
+    answers. Measured against the geometric centre, in modules. Some of it is right: a
     <b>shield</b> at -0.5 and a <b>bell</b> at 0.0 are optically centred, which is rule 4 being
     obeyed. Some of it is not. <b>sort</b> at <b>-2.0 across</b> is a glyph drawn from x=4 with
     ragged right ends, so it is not optically centred, it is left-aligned inside a centred box.
@@ -444,13 +465,16 @@
     naming the vendor is none of the three. <code>NOTICE.md</code>.</i></p>
     <p class="tk-subh">What goes into the consolidation</p>
     <ol class="tk-steps">
-      <li><b>1</b><span><b>The stroke becomes a size-aware token, not a constant.</b> One
-      declaration of 1.6 in user units is what makes the line run 0.90 to 2.67. The fix is a stroke
-      per rendered size, so 12, 16, 18, 20, 22 and 40 all paint the same weight on screen.</span></li>
-      <li><b>2</b><span><b>The safe field is declared at 2 and the stroked family is redrawn to it.</b>
-      Nothing there is inside the field; the four fields it does have run 2.2 to 5.2, and the
-      chevron sits 5.2 out. The filled family already holds 2.0 on 13 of 15, which is what a
-      set drawn to a rule looks like and is the target.</span></li>
+      <li><b>1</b><span><b>The stroke becomes a size-aware token, not a constant.</b> Re-read
+      2026-08-09: <b>three declarations in user units</b>, 2.2 on <code>.ic</code>, 2.4 on
+      <code>.ic-sm</code> and 1.8 in <code>market.css</code>, are what make the line run <b>1.20 to
+      2.02</b> over four boxes. The fix is a stroke per rendered size, so 12, 16, 18 and 22 all paint
+      the same weight on screen, and the file that writes its own goes with it.</span></li>
+      <li><b>2</b><span><b>The safe field is declared at 2 and the line family is redrawn to it.</b>
+      Re-read 2026-08-09 against the consolidated set: <b>one mark of six is inside the field</b>,
+      the menu at 1.9, and the rest run 2.9 to 4.9, so the chevron's old 5.2 is no longer the
+      problem. The filled family holds <b>2.0 or better on 20 of 21</b> and the exception is the
+      clock at 0, which is backlog 70 and a swap rather than a redraw.</span></li>
       <li><b>3</b><span><b>DONE 2026-08-09. The two families are declared, and neither one won.</b>
       An object is filled and a movement is a line: 21 filled glyphs over 1,517 placements, 6 line
       marks over 990, and the four crossed jobs are filled. "All of them filled" was asked for and
@@ -462,7 +486,11 @@
       untokenised hex values with no rule attached.</span></li>
       <li><b>6</b><span><b><code>.ic-sm</code> is deleted as a size.</b> It is the smallest box
       carrying the thickest user-unit stroke, which is the exact inversion of what a small glyph
-      needs, and it exists only because nobody had measured the rendered result.</span></li>
+      needs, and it exists only because nobody had measured the rendered result. <b>Re-read
+      2026-08-09 it is not even a size:</b> of <b>358 placements, 354 are 12px and four are not</b>,
+      all four on the toast, where <code>toast.css</code> rewrites the box to 18 and the stroke to
+      2.2, and rewrites it again to 22 and 2.4 on the error face. <b>A class that a component
+      re-declares from scratch is a name the markup carries, not a size the system owns.</b></span></li>
     </ol>
   </section>
 

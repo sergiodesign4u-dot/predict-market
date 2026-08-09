@@ -44,6 +44,154 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-09 - The stand printed the number under an empty plate, and the number it printed was somebody else's
+
+"Why is the bottom bar empty" was asked about one cell on `ui-kit/bottomnav.html` at desktop width.
+The cell is empty because `bottomnav.css` carries `@media(min-width:640px){.bottom-nav{display:none}}`
+and the reader is at 1280. **The page already knew**: two lines below the empty plate its own note
+read "Measured on a screen: 379x56 at 390, and 0x0 at 1280". The measurement was taken, written
+down, and never carried the twelve lines up to the specimen it describes.
+
+### Six empty cells, failing in both directions
+
+Every one of the 54 kit pages was read at 390 and at 1280, every `.tk-theme-fig`, `.tk-fig` and
+`.tk-photo`, counting figures that hold markup and paint **nothing**. Six, on three pages, and they
+do not all fail the same way:
+
+| page | specimen | the rule | empty at |
+|---|---|---|---|
+| `bottomnav.html` | `.bottom-nav` | `bottomnav.css`, `min-width:640` hides it | 640 and up |
+| `organisms.html` | `.bet-panel` | `betpanel.css`, base `none`, `min-width:760` shows it | below 760 |
+| `button.html` | `.hiw-btn` | `header.css:160`, `max-width:640` hides it | 640 and down |
+
+**The kit already owned the device and it was in the wrong places.** `.tk-absent` and `.tk-wide-only`
+put a sentence in a cell that is empty on purpose, and they stood in six figures on two pages,
+`molecules.html` and `vitrine.html`. Neither of the three pages above carried one.
+
+### The number in the sentence was a real number and the wrong one
+
+Both classes were written at **900px**. 900 is a genuine breakpoint here, six declarations across
+`chip`, `hiw-dialog`, `catnav`, `browse-shell` and `toc`, and **it belongs to neither component the
+labels describe.** That is why nobody caught it by eye: a borrowed number reads exactly like the
+right one, because it is one of the system's own. Read at eight widths, it had bought two live bands
+on the pages that did carry the label:
+
+- **`molecules.html`, 640 to 899.** The bar is gone from 640 and the sentence starts at 900: **260px
+  of silently empty cell**, the exact defect the class exists to prevent, produced by the class.
+- **`vitrine.html`, 761 to 899.** The panel is drawn from 760 and the sentence stops at 900: **139px
+  of a label arguing with the specimen underneath it**, reading "not rendered below 900px" beside a
+  rendered panel.
+
+**A number in a sentence is a second copy of that number**, and this one had drifted with nothing to
+notice. The pair is one family now, `.tk-gone`, with the threshold in the modifier
+(`.tk-above-640`, `.tk-below-760`), so the number stands in the markup next to the sentence and in
+one media query, and a reader trips over a mismatch instead of having to go looking. Two modifiers
+and not three, because the system has two components that do this and a third would be a face with
+no placement.
+
+### The two numbers are not mirrors, and only a boundary read says so
+
+Written as the obvious pair, 641 and 759, the first left a **one pixel hole at exactly 640** where
+the cell was empty and silent again. `min-width:640px` **hides** the bar, so the bar is gone AT 640;
+`min-width:760px` **shows** the panel, so the panel is gone at 759. The two rules point in opposite
+directions and their labels are 640 and 759, not 640 and 760. Found by reading 12 widths instead of
+8, and it is the argument for reading the boundary rather than the middle.
+
+### The button page had no missing label, it had a class it should not have carried
+
+`button.html`'s ghost specimen wore `.hiw-btn`. That class has **exactly one declaration in the whole
+system**, `display:none` below 640 in `header.css`, and **no face at all**: no ground, no ink, no
+border, no size. It was carried onto the stand for fidelity to the header placement, and the only
+thing it did there was empty the cell on a phone, so **the ghost was the one emphasis of five a
+reader at 390 could not see**. A placement is not an emphasis. The class came off, the page says so,
+and no label was needed.
+
+**Proof.** 486 renders over 54 pages at nine widths including all six boundaries, 3,150 figure
+readings: **0 figures holding markup and painting nothing**. The truth of every label read at 19
+widths from 320 to 1440, 190 figure readings: **0 widths where the sentence and the specimen are
+both showing or both hidden**, and the two flips land exactly on 640 and 760. Final pass at 390 and
+1280 over all 54: 108 renders, 700 figure readings, **0 empty, 0 horizontal scroll, 0 console errors,
+0 failed requests, 0 unresolved `<use>`**.
+
+**The cache cost this repository a sweep for the sixth time.** The mid-work verification reported
+every edit missing, on a port that had already served the old files. A fresh port every time, or the
+measurement is of the browser.
+
+### The same sweep found a regression from the day before, in the band nobody reads at
+
+`icons.html` scrolled sideways from **761 to about 1025** and nowhere else. The cause is a caption:
+`.tk-anat`'s left column is `auto` so the 24 x 24 cell can be exactly that, a `figcaption` has no
+natural width, and **one 117-character line added to it on 2026-08-09** measured **601px on a single
+line**. The grid computed `601px 0px`, the numbered steps in the second column stood **92px past the
+page**, and below 760 the stacking rule hides it while above about 1100 there is room. **The page was
+verified at 390 and at 1280, which are the two widths either side of the band.** Fixed as
+`.tk-anat .tk-gl figcaption{max-width:34ch}`, a measure rather than a pixel, on the caption rather
+than on the column, because what has no natural width here is the prose.
+
+It is the second thing this entry records that was measured at two widths and wrong between them,
+and both were found by reading the boundary instead of the middle.
+
+### What it opened
+
+The breakpoint census taken to check the 900: **31 media rules across 24 files at eight distinct
+widths** (520, 560, 620, 640 ×13, 760 ×5, 860, 900 ×6, 980). Filed as backlog 72 for Responsive,
+which owns the question of whether that is a scale or a pile.
+
+### And then the page itself, read against what it measures
+
+`icons.html` was rewritten section by section on 2026-08-08 and 2026-08-09, and **the newest section
+corrected the older ones without the older ones saying so**. Sections 01, 04, 05 and 08 carried the
+pre-consolidation numbers in the present tense while section 06 carried the post-consolidation ones
+and knew it, so the page contradicted itself in writing: rule 3 said a stroke puts "0.8 of paint past
+the geometry" while section 06 said 1.1 for the same rule; section 05 opened "for all 52" under a
+heading that reads "ALL 35"; and section 05 sent three glyphs away to be redrawn that section 06
+says are gone.
+
+**The correction was a measurement, not a find-and-replace, and it found a bigger thing than the
+stale numbers.** Read on all 106 painted screens, every svg that actually paints a stroke, **998 of
+2,399**:
+
+| box | declared | renders | placements |
+|---|---|---|---|
+| 12 | 2.4 `.ic-sm` | 1.20px | 266 |
+| 16 | 1.8 `.market-chevron` | 1.20px | 9 |
+| 16 | 2.2 `.ic` | 1.47px | 17 |
+| 18 | 2.2 | 1.65px | 528 |
+| 22 | 2.2 | 2.02px | 178 |
+
+**Four boxes, not six, and 1.68 to 1 between the lightest and the heaviest, not 2.98.** The page and
+backlog row 29 had both said the ratio was "exactly what it was, because the fault is the unit and
+not the value", and row 29 went further and offered a multiplier: "multiply every figure in this row
+by 1.375". Neither holds. `.ic-sm` went 1.8 to 2.4, a different factor from `.ic`'s, and **nothing
+strokes at 20 or at 40 any more**, so the two boxes that were the extremes left the set. **An
+argument whose evidence has moved is not a smaller argument, it is a different one**, and the sharp
+end of this one went with the evidence: 0.90px is under one device pixel at DPR 1 and smears, and
+1.20px is not.
+
+**Two things the page had never named.** `market.css` writes its own `stroke-width:1.8` for the
+chevron at a 16px box, 9 placements, painting **1.20px**: the same weight as the 12px marks, from a
+different number, at a different size, in a file the icon rules do not reach. Two declarations
+agreeing by accident is not one weight, it is two that have not disagreed yet. And `.ic-sm` **is not
+a size**: of **358 placements, 354 are 12px and four are not**, all four on the toast, where
+`toast.css` rewrites the box to 18 and the stroke to 2.2 and then again to 22 and 2.4 on the error
+face. A class a component re-declares from scratch is a name the markup carries, not a size the
+system owns.
+
+Corrected in place: section 01 rule 3, section 04 heading, premise, measured range and the `.ic-sm`
+note, section 05 opening and method note, the centre paragraph now says it is the hand-drawn set's
+reading and points at section 06, and the consolidation plan's items 1, 2 and 6 are re-read against
+the set that exists. Backlog rows 29 and 30 carry the same re-measure, including the correction of
+row 29's own multiplier written earlier the same day. **The old numbers are kept everywhere and
+labelled**, because this page's method is the reading and what it was.
+
+**Verification.** 540 kit renders at ten widths, 3,500 figure readings: 0 horizontal scroll, 0 empty
+figures, 0 label contradictions, 0 unresolved `<use>`, 0 failed requests. One console 404 appeared in
+the stream and **did not reproduce** under 28 renders with response capture at `networkidle`, which
+is the fourth time that phantom has been chased and not caught; it is written here as not reproduced
+rather than as zero.
+
+---
+
 ## 2026-08-09 - The set shipped as blobs for a day, and the stand is structurally blind to it
 
 Three things were reported by looking at the product: the magnifier is a solid disc, the warning on
