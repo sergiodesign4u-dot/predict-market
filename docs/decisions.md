@@ -111,6 +111,43 @@ inside the same `viewBox` and the same `.ic` box is supposed to do.
 **Every ink difference that remains is one of the three levellings above**, named and counted, and
 there are no others.
 
+### THE STAND WAS NOT REBUILT WITH THE SYSTEM, AND THAT IS THE WORSE HALF OF THIS ENTRY
+
+The first pass swept `ui-visual/` and six kit pages and **deliberately skipped
+`ui-kit/icons.html`**, on the grounds that a foundation page is written by hand. Its prose was then
+rewritten to say 35 glyphs, 21 filled, one rule. **Its galleries were not touched, so the page went
+on drawing the 52 hand-made glyphs it had always drawn while claiming the opposite in the paragraph
+above them.**
+
+That is worse than leaving it alone. A stand that lags the system is a stand nobody can trust; a
+stand that lags the system **and says so in the past tense** actively misinforms. It was caught by
+being asked what had changed in the design system, and the answer was: on that page, nothing.
+
+Rebuilt, and measured rather than typed. Every glyph rendered in a 24 cell and read with `getBBox`
+plus the half-stroke that paints outside the contour: **21 filled, 6 line, 8 brand, 35 figures with
+their painted extent and their safe field**. Sections 01, 02, 04 and 05 too, which were still
+standing the old drawings and quoting numbers taken at 1.6.
+
+**And 15 of the 21 filled figures rendered EMPTY on the first attempt**, because a kit page carries
+its own sprite and the new symbols were never added to it. Same defect as the swap itself, one level
+up: `<use>` fails silently. The page now asserts it, and so does the check that runs over the tree.
+
+### What the rebuilt audit found
+
+**The centre drift this page opened with is gone, and the consolidation removed it.** `sort` at -2.0
+across, `trend-up` at -2.0 down and `music` at -1.7 / -0.8 were three drawings to correct; they are
+not drawings any more, and **19 of the 21 filled glyphs sit at 0.0 / 0.0**, the other two off by 0.2
+and 0.3 of a module. Taking a set from a grid bought more than three hand corrections would have.
+
+**One filled glyph paints the whole cell and it is the clock.** `i-clock-circle-b` is 24 x 24, field
+**0**, where 17 of 21 sit at exactly 2.0. Beside `i-sort-b` in the same filter row it reads a size
+larger. Backlog 70, filed rather than fixed, because choosing the replacement is a look at four
+candidates and not a measurement.
+
+**The line marks keep the arithmetic the page named in rule 3.** Their fields all end in `.9`, being
+a whole-module contour plus the 1.1 of stroke that paints outside it, exactly as they ended in `.2`
+at 1.6. The menu is the one under the floor, at 1.9, by a tenth.
+
 ### And the cache was paid for a fifth time
 
 The first ink reading reported the hiw marks, the state blocks and the market title still wrong after
