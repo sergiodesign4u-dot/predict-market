@@ -105,6 +105,29 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
   classes nothing rendered.
 - **The kit reads the system and never a copy of it.** A page links `../components/index.css`. If a
   specimen needs markup, the markup is the same markup the screen ships.
+- **A cell that is empty on purpose carries the component's OWN number, and the number lives in the
+  class name.** `.tk-gone.tk-above-640` and `.tk-gone.tk-below-760` are the two, and they replaced a
+  pair written at 900px, which is a real breakpoint in this system belonging to five other
+  components. **A borrowed number reads exactly like the right one**, so it stood for a day beside a
+  bar that goes at 640 and a panel that arrives at 760: 260px of silently empty cell on
+  `molecules.html`, and 139px on `vitrine.html` where the sentence said "not rendered below 900px"
+  next to a rendered panel. And the two numbers are not mirrors: `min-width:640` HIDES the bar so the
+  label starts AT 640, `min-width:760` SHOWS the panel so the label stops at 759. Written as the
+  obvious 641/759 pair it left a one pixel hole. **Read the boundary, not the middle.**
+- **A stand shows a component at ONE width and the component decides at which width it exists**, so a
+  specimen can be `display:none` while the page around it looks finished. Six figures on three pages
+  drew nothing and three of them were found only by counting painted descendants: a page that says
+  "0x0 at 1280" two lines under an empty plate has measured the thing and not carried the measurement
+  to the specimen. And the mirror of it: `button.html`'s ghost wore `.hiw-btn` for fidelity, a class
+  with **one declaration in the whole system and no face**, `display:none` below 640, so the one
+  emphasis of five a reader at 390 could not see was the one the section was about. **A placement is
+  not a face.**
+- **A caption is prose, and prose in an `auto` grid column eats its neighbour.** One 117-character
+  line added to the anatomy figcaption measured 601px on one line, took the whole column, and left
+  `.tk-anat` computing `601px 0px`, so the steps beside it stood 92px past the page **from 761 to
+  about 1025 and nowhere else**: below 760 the stacking rule hides it and above 1100 there is room.
+  The page had been verified at 390 and 1280, the two widths either side of the band. **Two widths
+  is not a responsive reading**; read the boundaries the system actually declares.
 - **A page carries states, in both themes, side by side.** That is the whole reason this vitrine
   exists rather than a Figma frame: a hover, a press and a focus ring are things a person raises with
   a pointer and a Tab. Each `.tk-theme-fig` carries its own `data-theme`, so both themes resolve in

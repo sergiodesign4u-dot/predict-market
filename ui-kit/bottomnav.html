@@ -62,6 +62,7 @@
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <p class="tk-gone tk-above-640">not rendered from 640px up, exactly as on a screen: this bar is mobile only</p>
         <nav class="bottom-nav" aria-label="Primary (mobile)"><ul>
           <li aria-current="page"><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-widget-b"/></svg><span>Events</span></a></li>
           <li><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-list-b"/></svg><span>My Bets</span></a></li>
@@ -70,6 +71,7 @@
         </ul></nav>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
+        <p class="tk-gone tk-above-640">not rendered from 640px up, exactly as on a screen: this bar is mobile only</p>
         <nav class="bottom-nav" aria-label="Primary (mobile)"><ul>
           <li aria-current="page"><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-widget-b"/></svg><span>Events</span></a></li>
           <li><a class="nav-item nav-slot" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-list-b"/></svg><span>My Bets</span></a></li>
@@ -80,7 +82,11 @@
     </div>
     <p class="tk-note"><b>In the product the bar is sticky at the foot of the window; here it stands
     in the flow</b>, because a stand cannot show a thing that is pinned to a viewport it does not
-    own. Measured on a screen: 379x56 at 390, and <b>0x0 at 1280</b>.</p>
+    own. Measured on a screen: 379x56 at 390, and <b>0x0 from 640px up</b>, which is where
+    <code>bottomnav.css</code> switches it off. That is why the cell above holds a sentence rather
+    than a bar on a desktop, and <b>this page printed that number under an empty plate until
+    2026-08-09</b>: the number was measured, written down, and never carried to the specimen
+    standing beside it.</p>
     <p class="tk-note">The <b>fourth slot is a figure rather than a mark</b>: 73 of the 105 screens
     are logged in and carry a balance in the slot. It is the one part of a slot that stays where it
     is, and the reason is measurable: <b>no rule anywhere changes it when the slot is hovered or
