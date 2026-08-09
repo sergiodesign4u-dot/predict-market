@@ -44,6 +44,51 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-09 - One sentence, two marks, and the census that found seven duplicates could not see the eighth
+
+"Couldn't load" stood under a circle on 16 screens and a triangle on 4, same sentence, same kind of
+screen. **The triangle wins.** The count said circle, 16 against 4, and the convention said triangle,
+which is the error mark a person already knows and the one already on the loudest two surfaces, the
+main feed error and the 500. A convention beats a count when the count is an accident of the order
+things were built in.
+
+### The row's premise was one layer short
+
+It was filed against `ui-visual/` as a paint defect. **Both trees carry the same split, on the same
+files**: `wireframes/` draws a circle on the same 16 and a triangle on the same 3. So it is structure,
+not paint, and the fix went **grey first**: 16 inline drawings in the grey tree, then 16 `<use>` in
+the painted one. Two trees agreeing with each other and disagreeing with themselves is a defect that
+neither tree's own audit can see, because every comparison between them passes.
+
+### A shape census can only find a duplicate that looks like one
+
+Section 07 of `icons.html` found **seven** jobs drawn twice, by reading path data for shapes that
+resemble each other. **A circle and a triangle do not resemble each other**, so the two warning marks
+read as two different glyphs doing two different jobs and sat under the same sentence for weeks. This
+one was found by reading what the mark stands NEXT to. The section is eight now, and it carries both
+halves of the lesson: a census that reads geometry and not meaning files a logo as a duplicate
+(the X mark, Discord) and misses a duplicate that is drawn differently.
+
+### The swap emptied a glyph, so the glyph left
+
+After 16 placements moved, `i-danger-circle-b` had **0**. It went from the sprite on **105 painted
+screens and 6 kit pages**, from the stand's gallery, and from the counts: the set is **34 glyphs**,
+the filled family **20**, and the sprite is 26.13 symbols per screen against 27.13. The stand keeps
+the name in one place, the row in section 07 that says why it is gone. **A glyph with no placement is
+not a spare, it is weight**, and the stand offering it would be the same defect fixed two days ago,
+when seven drawings the product does not ship came off the shelf.
+
+**Proof.** 212 renders over the 106 painted screens at both widths, 3,860 `<use>`: 0 unresolved, 0
+circles, 40 triangle uses. Both trees read a triangle on all 20 error surfaces, painted and resolved,
+titles verified one by one. 108 kit renders: gallery 34 figures, badges 34 / 20 / 6 / 8, heading
+"ALL 34", 0 unresolved, 0 empty figures, 0 horizontal scroll, 0 console errors, 0 failed requests.
+`DESIGN.md` and `NOTICE.md` carry the new count with the reason. Backlog 71 closed, open 50 to 49.
+
+The sweep was three throwaway scripts in the scratchpad, run and deleted: a census of both trees'
+error blocks, the grey-first replacement, and the symbol removal.
+
+---
+
 ## 2026-08-09 - The stand printed the number under an empty plate, and the number it printed was somebody else's
 
 "Why is the bottom bar empty" was asked about one cell on `ui-kit/bottomnav.html` at desktop width.

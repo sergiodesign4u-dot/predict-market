@@ -339,8 +339,10 @@ larger number.
 
 **Two kinds of mark, one weight, and the split is a fact about marks rather than a preference.**
 The set is **Solar Bold** for anything that has a body and a **hand-drawn line at 2.2** for anything
-that does not. 21 filled glyphs over 1,517 placements, 6 line marks over 990, and 8 brand marks that
-belong to nobody's system.
+that does not. 20 filled glyphs over 1,517 placements, 6 line marks over 990, and 8 brand marks that
+belong to nobody's system. **It was 21 until the two warning marks were decided on 2026-08-09**:
+one job cannot have two drawings, so the circle left the set and its 16 placements became the
+triangle, in both trees, grey first.
 
 - **An object is filled. A movement is a line.** A bell, a bookmark, a shield, a person, a clock, an
   envelope and a globe are things, and a thing can be filled. **A cross, a chevron, a plus, a tick

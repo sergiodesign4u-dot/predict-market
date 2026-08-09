@@ -6,8 +6,9 @@ requirement is met. **An asset with no entry here has not been cleared and may n
 
 ## Solar, the icon set
 
-- **What:** the filled half of the icon set. 21 glyphs, drawn as `<symbol>` in a sprite on every
-  painted screen and referenced through `<use>`. They are the "Bold" weight.
+- **What:** the filled half of the icon set. 20 glyphs, drawn as `<symbol>` in a sprite on every
+  painted screen and referenced through `<use>`. They are the "Bold" weight. It was 21 until
+  `danger-circle` was retired on 2026-08-09 and its placements went to `danger-triangle`.
 - **Author:** 480 Design.
 - **Source:** the Solar Icon Set, https://www.figma.com/community/file/1166831539721848736, taken
   through the Iconify API (`api.iconify.design/solar.json`).
