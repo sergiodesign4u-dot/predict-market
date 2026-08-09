@@ -44,7 +44,48 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
-## 2026-08-09 - One sentence, two marks, and the census that found seven duplicates could not see the eighth
+## 2026-08-09 - A rule written for one axis scrolled the other, and the sweep that found it was reading a page mid-animation
+
+Reported by looking at the stand: on `ui-kit/filters.html` the section titled **"the menu, OPEN"**
+showed a summary, 21px of panel and a scrollbar.
+
+### One axis was declared and two were taken
+
+`.tk-theme-fig` writes **only** `overflow-x:auto`, added so `.chip-nav` could scroll sideways in a
+fixed cell rather than be clipped. **CSS resolves `visible` to `auto` on the other axis whenever one
+axis scrolls**, and the cell computes to `overflow: auto / auto`. Then the geometry: `.filter-panel`
+is `position:absolute`, so in the flow it contributes **nothing**, the cell measured itself against
+the `<summary>` alone at **67px**, and the specimen needs **213**. The panel was not overlapping the
+prose below, it was **scrolled out of sight inside a 67px box**: 146 of 213 hidden, with a scrollbar
+as the only sign that anything was there.
+
+Pinned static on the stand, the same bargain `.tk-dlg` already makes for dialogs, and **one thing
+differs from the product, the position**. Everything inside the panel is `filters.css` untouched.
+**146 hidden to 0, the cell 67 to 229**, both themes, both widths.
+
+### Then the sweep reported five more, and all five were the instrument
+
+The same read found `betpanel` and `organisms` hiding 213 to 475px inside their dialog cells. Four
+candidate causes were tested in the browser and **all four changed nothing**: `overflow:visible` on
+the cell, `min-height:min-content`, `align-items:start` on the two pair containers, and `flex:0 0
+auto` on the dialog holder. A fix that does not move the number is a fix for a defect that is not
+there.
+
+**The readings were also unstable, 316 then 279 then 254 then 242 for the same cell**, which is the
+tell. Reading the same page four times with `getAnimations().forEach(a => a.finish())` before the
+measurement: `scrollHeight` **681 immediately and 402 settled**, against a `clientHeight` of 402.
+**The dialog specimen was still animating in.** Across all 54 pages at both widths: **6 figures read
+as clipped before the animations finish and 0 after.**
+
+**This repository already knew.** Finishing transitions before reading computed geometry is written
+into the campaign's own method, and it was dropped from this one sweep. It is the tenth instrument
+defect of the pass and the second whose signature was a number that would not repeat: the first was
+a whole-page style hash that reported 45 of 68 pages different when run twice against no change at
+all. **An unstable number is not noise to average, it is the instrument telling you what it is
+measuring.**
+
+**Verification.** 108 kit renders, 688 figure readings, animations finished before every read: 0
+figures clipping their own content, and the filters cell reads 229 with 0 hidden at 390 and at 1280.
 
 "Couldn't load" stood under a circle on 16 screens and a triangle on 4, same sentence, same kind of
 screen. **The triangle wins.** The count said circle, 16 against 4, and the convention said triangle,

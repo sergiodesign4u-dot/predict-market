@@ -105,6 +105,21 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
   classes nothing rendered.
 - **The kit reads the system and never a copy of it.** A page links `../components/index.css`. If a
   specimen needs markup, the markup is the same markup the screen ships.
+- **A cell that scrolls one axis scrolls both, and a specimen that takes no room in the flow
+  disappears into it.** `.tk-theme-fig` declares only `overflow-x:auto`, for `.chip-nav`, and CSS
+  resolves `visible` to `auto` on the other axis whenever one axis scrolls: the cell computes
+  `auto / auto`. `.filter-panel` is `position:absolute`, so the cell measured itself against the
+  `<summary>` alone at 67px while the open menu needs 213, and **146px was scrolled out of sight
+  with a scrollbar as the only sign**. A section titled "the menu, OPEN" showed a summary and 21px
+  of panel. It is pinned static on the stand now, the same bargain `.tk-dlg` makes, and one thing
+  differs from the product, the position.
+- **Finish the animations before reading a box, or the page reports a defect it does not have.** The
+  same sweep flagged five more clipped cells on `betpanel` and `organisms`. Four candidate fixes
+  moved the number by nothing, and the readings would not repeat: 316, then 279, then 254, then 242
+  for one cell. With `getAnimations().forEach(a => a.finish())` before the read, `scrollHeight` goes
+  681 to 402 against a `clientHeight` of 402, and **6 clipped figures across the kit become 0**. The
+  dialog specimens were still animating in. **An unstable number is the instrument telling you what
+  it is measuring.**
 - **A cell that is empty on purpose carries the component's OWN number, and the number lives in the
   class name.** `.tk-gone.tk-above-640` and `.tk-gone.tk-below-760` are the two, and they replaced a
   pair written at 900px, which is a real breakpoint in this system belonging to five other

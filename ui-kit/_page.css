@@ -671,6 +671,24 @@
 .tk-dlg dialog[open]{position:static;inset:auto;margin:0;width:100%;max-width:none;
   max-height:none;border:0}
 
+/* THE SAME BARGAIN FOR THE OPEN MENU, AND IT IS THE SECOND OF THE TWO, 2026-08-09.
+   `.filter-panel` is `position:absolute`, so in the flow it takes NOTHING, and the
+   cell measures itself against the `<summary>` alone: 67px tall with a specimen that
+   needs 213. What happened next is the part worth writing down. `.tk-theme-fig`
+   declares only `overflow-x:auto`, added so `.chip-nav` could scroll rather than be
+   clipped, and CSS RESOLVES `visible` TO `auto` ON THE OTHER AXIS WHENEVER ONE AXIS
+   SCROLLS. Measured on the cell: `overflow: auto / auto`. So a rule written for the
+   horizontal axis quietly made the cell a scroll container on both, and the panel was
+   not overlapping the prose below, it was **scrolled out of sight inside a 67px box**:
+   146 of 213 hidden, with a scrollbar as the only sign. A section titled "the menu,
+   OPEN" was showing a summary and 21px of panel.
+   Pinned static here, and ONE thing differs from the product, the position. In the
+   product the panel floats over the feed; on the stand it stands under its summary.
+   Everything inside it is filters.css untouched. Verified: 146 hidden to 0, the cell
+   67 to 229, both themes. */
+.tk-theme-fig .filter-menu[open] > .filter-panel{position:static;margin-top:6px;
+  right:auto;left:auto;min-width:0}
+
 /* A shell whose own file draws almost nothing needs its emptiness SHOWN rather
    than described: feed.css is eleven lines and two of its three rules are a
    reset. The dashed box is the box the component actually contributes. */
