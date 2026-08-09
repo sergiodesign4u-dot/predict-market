@@ -44,6 +44,58 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-09 - The set shipped as blobs for a day, and the stand is structurally blind to it
+
+Three things were reported by looking at the product: the magnifier is a solid disc, the warning on
+the screen is not the warning in the design system, and the trust marks look strange. **They are one
+defect, one design choice and one leftover.**
+
+### A stroke closes a knockout
+
+Solar Bold draws detail as a **hole**: the exclamation inside the warning triangle, the tick inside
+the shield, the meridians on the globe and the lens of the magnifier are subpaths cut out of one path
+with `fill-rule:evenodd`. **A stroke outlines every subpath, including the holes.** 2.2 units of brass
+drawn around a 2 unit exclamation closes it completely, and what ships is a solid blob.
+
+`svg.ic:has(use){stroke:none}` was already there and it lost. It computes to **(0,1,2)**, and
+**fifteen component rules paint an icon with `stroke:` at two classes, (0,2,0)**. So on every surface
+that gives its icons a colour, and only there, the glyph went solid: the state block, the trust
+tiles, the toast, the nav slot, the hiw sheet.
+
+**And the kit drew all of them correctly the whole time.** A specimen stands in `.tk-cell`, where no
+component rule reaches it, so the one place the defect was visible is the one place nobody was
+looking. **A stand is structurally blind to a defect that lives in the container.** That is the
+sharpest limit of the vitrine found so far, and it is worth more than the fix.
+
+It is `stroke:none!important` now, in `base.css`, with the reason above it. `!important` is right for
+the same reason as the other four in that file: it is a floor the system declares and no component
+may argue with, not a patch for a selector somebody wrote badly.
+
+### The magnifier had no hole, and that one was a choice rather than a bug
+
+`minimalistic-magnifer-bold` is a solid disc with a handle **by design**: Solar's Bold weight fills
+the lens. Asked for a lens with a hole, the answer is Solar's **Outline** style, `magnifer-outline`,
+which is still a filled glyph with no stroke and therefore still obeys the rule. **The set is Solar
+Bold plus one Outline**, said out loud rather than quietly: `i-magnifer-o` is named for its style so
+the next reader does not "correct" it back.
+
+### The third trust mark was a line among two filled ones
+
+The footer trust row said its third claim with the bare tick, which is a **movement** and correctly a
+line by the rule written yesterday. Beside a filled shield and a filled globe it read as a different
+set. A tick that is a claim rather than an action has an object form: `i-check-circle-b`, **105
+placements swapped**, and the row is three marks of one family.
+
+### And the warning is still drawn twice
+
+With the stroke fixed, the triangle matches the stand. What remains is that **the product says
+"Couldn't load" with two different marks**: `i-danger-circle-b` 16 times and `i-danger-triangle-b` 4,
+for the same sentence on the same kind of screen. That is the defect this whole pass exists to
+remove, found one layer in. **It is filed rather than taken**, because the count says circle and the
+convention says triangle, and that is a choice rather than a measurement. Backlog 71.
+
+---
+
 ## 2026-08-09 - The icon set consolidates, and "make them all filled" turns out not to be available
 
 Backlog 31, and it was the one item the consolidation pass would not take alone, because it is a

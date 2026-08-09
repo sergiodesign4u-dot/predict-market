@@ -357,6 +357,10 @@ belong to nobody's system.
 - **One ink per place, and it is written twice.** A stroked mark takes its ink from `stroke` and a
   filled one from `fill:currentColor`, so **every rule that paints an icon has to name both** or half
   the set stops listening. That is the standing cost of holding two kinds of mark in one family.
+- **A filled glyph never takes a stroke.** Its detail is a hole cut from one path, and a stroke
+  outlines the hole shut. The rule is `stroke:none!important` on any `.ic` containing a `<use>`, in
+  `base.css`, and it is a floor rather than a preference: fifteen component rules paint icons with
+  `stroke:` and every one of them out-specifies a base rule that is only asking politely.
 - **Brand marks are not in the system.** The three sign-in providers and the five social marks in the
   footer are logos. They keep their own drawing, they take no system ink, and a generic glyph is not
   allowed to stand in for one: a paper plane is not Telegram.

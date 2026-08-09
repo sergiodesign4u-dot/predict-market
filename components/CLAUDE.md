@@ -88,6 +88,14 @@ override it.** There is no build step and no gate: what you write is what ships.
   disc inside a disc. The set is **an object is filled, a movement is a line**, and what holds them
   together is **weight**: the stroke went 1.6 to 2.2 because 1.6 against the solid mass of Solar Bold
   is the gap the eye reads as "two icon sets".
+- **A stroke closes a knockout, and a stand is structurally blind to it.** Solar Bold draws detail as
+  holes cut from one path with `fill-rule:evenodd`. A stroke outlines every subpath including the
+  holes, so 2.2 units of brass around a 2 unit exclamation fills it in: the warning triangle, the
+  shield's tick, the globe's meridians and the magnifier's lens all shipped as **solid blobs** for a
+  day. **The kit drew them correctly the whole time**, because a specimen stands where no component
+  rule reaches it, so the one place the defect was visible is the one place nobody was looking. It is
+  `stroke:none!important` on `svg.ic:has(use)` in `base.css` now: a floor the system declares, not a
+  patch for a selector.
 - **Two kinds of mark read two different properties, so every rule that paints an icon names both.**
   A stroked glyph takes its ink from `stroke` and a filled one from `fill:currentColor`. Nine
   `:has(use)` rules existed for the first filled handful and **three disagreed with the stroke beside

@@ -74,7 +74,19 @@ button,select,summary{font:inherit}
    set stops listening. That is the price of holding two kinds of mark in one family, and it
    is paid here and in the nine component rules that override this one. */
 .ic,.ic-sm{stroke:var(--text-icon);color:var(--text-icon)}
-svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none}
+/* A FILLED GLYPH MUST NEVER TAKE A STROKE, AND THIS IS THE ONE PLACE THAT CAN SAY SO.
+   Solar Bold draws its detail as a KNOCKOUT: the exclamation inside the warning triangle, the
+   tick inside the shield, the meridians on the globe and the lens of the magnifier are holes cut
+   out of one path with fill-rule:evenodd. A stroke outlines every subpath, including the holes,
+   so 2.2 units of brass around a 2 unit exclamation closes it completely. THE GLYPH BECOMES A
+   BLOB and nothing in the file looks wrong.
+   Fifteen component rules paint an icon with `stroke:` at two classes, which beats this rule's
+   (0,1,2) on specificity, so on 2026-08-09 the state-block warning, the trust shield, the globe
+   and the magnifier all shipped solid while the same glyphs drew correctly on the stand, where no
+   component rule reaches them. `!important` is right here for the reason the other four in this
+   file are: it is a floor the system declares and no component may argue with, not a fix for a
+   selector somebody wrote badly. The account is in ../docs/decisions.md. */
+svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none!important}
 /* FOCUS, DECLARED ONCE. Fourteen component files carried this exact rule and twenty-four did not,
    which is the shape reduced-motion had before step 7 gathered it here: a person navigating by
    keyboard is not asking each component separately. The default is below; a component now only
