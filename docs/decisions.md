@@ -44,6 +44,77 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-09 - Twenty-two component pages show less of their component than the product does
+
+Four reports in a row, each a screenshot of a different kit page: the header, the footer, the how-it-
+works sheet, the tab strips, the event detail head, the bet panel. **So the instance was stopped and
+the CLASS was measured.** No hand-written selector list: each `components/*.css` declares its own
+classes in its header line, so those were taken, and for every component the biggest subtree wearing
+any of them was counted on its own kit page, on its level shelf, and across all 106 painted screens.
+
+**22 of 38 pages are poorer than the best specimen elsewhere**, and the six worst are not close:
+
+| | its own page | shelf | product |
+|---|---|---|---|
+| `feed` | 0 | 16 | **630** |
+| `tabs` | 4 | 48 | **186** |
+| `event-detail` | 5 | 48 | **186** |
+| `footer` | 17 | 124 | **161** |
+| `header` | 8 | 60 | **72** |
+| `hiw-dialog` | 19 | 33 | **61** |
+
+then `toc` 32 short, `dialog` 30, `comments` 29, `catnav` 22, `betpanel` 21, `bets-table` 20,
+`filters` 16, `options` 15, `seo-plate` 14, `chart` 11, and seven more under 10.
+
+**This is upside down against the kit's own rule**, which is in `ui-kit/CLAUDE.md` in those words: a
+shelf gives every component ONE specimen, and a component page exists because taking one apart needs
+room a shelf has not got. A page that shows a third of what the shelf shows is not a deeper look, it
+is a shallower one with more prose around it.
+
+### header.html rebuilt as the first, to check the approach before the other 21
+
+Its specimen was a wordmark, a How it works and a balance figure: **8 elements against the product's
+72**, and the note under it described two dropdowns and three circles that were not in the cell. It
+is the product's own header now, verbatim from `event-feed.html`: **72 kids, 31 classes, 59px tall,
+the same three numbers the product measures.**
+
+Two sections were added rather than one, because the count is not the only thing that was missing.
+**The panel is the part `header.css` genuinely draws** (the band is the surface's, the circles are
+the icon button's, the rows are the nav item's), and a panel is invisible while its menu is shut, so
+there is now a section with the menu OPEN. That needed the third instance of a bargain this kit has
+already made twice: `.dropdown` is `position:absolute`, so it is pinned static under its summary and
+the one difference is declared. It is a MODIFIER, `.tk-open-menu`, because the header also stands in
+cells where the menu is correctly shut and a bare descendant rule would have moved a panel nobody
+opened. And section 5 makes a claim about two auth states measured across 105 screens and had no
+specimen under it, so it has the logged-out bar now.
+
+**The themes stack rather than standing side by side**, which is the rule written earlier the same
+day applied to its own case: at 1280 a `.tk-pair2` cell is 477 wide and the product's header is
+1,060, and a header cut to half a cell is not a header. Stacked it measures 986, the same as the
+shelf.
+
+### And the rebuild found a trap the sprite change had left behind
+
+The script tag for `assets/icons.js` had been added to **the 121 documents that carried a glyph at
+that moment**, and to no others. `header.html` was one of the 39 that carried none, so the moment it
+gained the product's header its 20 references resolved to nothing: **20 of 20 empty, and the console
+said nothing**, because a `<use>` with no target fails silently. That is the exact failure the sprite
+file's own header comment warns about, arriving from the other direction.
+
+**Every document carries the loader now**, all 160, whether it draws a glyph today or not. A page
+that gains an icon later is the normal case in a kit that is still being written, and a loader that
+is added per-need is a trap set for the next edit rather than a saving.
+
+**Verified on the rebuilt page:** 72 kids and 31 classes against the product's 72 and 31, 20 of 20
+glyphs drawn, both dropdowns pinned static at 260x185 in both themes, 6 figures with 0 clipped, 0
+horizontal scroll, 0 console errors, at 390 and at 1280.
+
+**21 pages remain and they are listed above.** Backlog 79.
+
+Written: `ui-kit/header.html`, `ui-kit/_page.css`, 39 documents, `docs/backlog.md`.
+
+---
+
 ## 2026-08-09 - The one file had to be a script, because these pages are read from disk
 
 **Reported, not found: "after we fixed the icons, the icons started having problems".** The report

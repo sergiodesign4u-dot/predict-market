@@ -759,6 +759,17 @@
    67 to 229, both themes. */
 .tk-theme-fig .filter-menu[open] > .filter-panel{position:static;margin-top:6px;
   right:auto;left:auto;min-width:0}
+/* AND THE THIRD, 2026-08-09, FOR THE HEADER'S OWN PANEL. `.notif-menu .dropdown` and
+   `.avatar-menu .dropdown` are the same shape of thing: `position:absolute`, pinned to
+   the right edge of a `<summary>` at `top:calc(100% + 4px)`. The panel is what
+   `header.css` genuinely draws, as opposed to the band and the circles which belong to
+   other files, and it is invisible while the menu is shut, so the specimen opens it and
+   this pins it. It is a MODIFIER, `.tk-open-menu`, and not a bare descendant rule,
+   because the header stands in cells on `organisms.html` and on this page's other
+   sections where the menu is correctly shut, and a rule that fired there would move a
+   panel nobody had opened. Same bargain, same one difference: the position. */
+.tk-theme-fig.tk-open-menu :is(.notif-menu,.avatar-menu)[open] > .dropdown{
+  position:static;margin-top:6px;right:auto;top:auto;min-width:0}
 
 /* A shell whose own file draws almost nothing needs its emptiness SHOWN rather
    than described: feed.css is eleven lines and two of its three rules are a
