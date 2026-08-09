@@ -101,6 +101,14 @@ override it.** There is no build step and no gate: what you write is what ships.
   `:has(use)` rules existed for the first filled handful and **three disagreed with the stroke beside
   them**, which is how one header shipped the same bookmark at `--text-primary` on one screen and
   `--text-icon` on the next. Name both or paint half of what you are pointing at.
+- **A mask is invisible to `getBBox`, so measure the INK.** `i-clock-circle-b` was filed as a defect
+  for painting 24 x 24 at field 0 where the rule is 2. It paints **20 x 20 at field 2**: Solar
+  delivers it as a full-cell rectangle behind a `<mask>`, and `getBBox` returns the geometry of the
+  path and never the mask. **This is the stroke-closing-a-knockout defect one layer up**, an
+  instrument reading the drawing instead of the paint. Paint the symbol into a canvas at 20x and find
+  the opaque pixels: it sees masks, holes, strokes and antialiasing, because it looks at what a
+  person looks at. The same read found the glyph that WAS breaking the rule and that nobody had
+  named, `i-magnifer-o` at field 1.23, painting 21.5 where the whole set paints 20.
 - **A shape census files a logo as a duplicate every time.** Reading glyphs by their path data made
   the X mark "a second close" and Discord "a second chat", and both went into a backlog row as
   defects. **A brand mark is not in the system**: it keeps its own drawing, takes no system ink, and

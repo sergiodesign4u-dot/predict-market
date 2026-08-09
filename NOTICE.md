@@ -15,9 +15,16 @@ requirement is met. **An asset with no entry here has not been cleared and may n
 - **Licence:** **CC BY 4.0**, https://creativecommons.org/licenses/by/4.0/.
 - **What that requires:** attribution. Credit the author, name the licence, and say if changes were
   made. It does NOT require the product to be open, and it does not restrict commercial use.
-- **Changes made:** none to the glyphs. The paths are used as published. What the system adds is
-  around them: a shared `viewBox`, the `.ic` box, and the ink, which comes from a role token rather
-  than from the file.
+- **Changes made:** **no path data is altered. Two symbols are composed differently, and this is the
+  line CC BY asks for.** `magnifer-o` is placed at `scale(.9294)` about the cell centre, because it
+  painted 21.5 x 21.5 where the rest of the set paints 20 and so stood inside the two-module safe
+  field; the `d` string is Solar's, untouched, and removing the wrapper restores the original size
+  exactly. `clock-circle-bold` was delivered as a full-cell rectangle behind a `<mask>` and is now
+  its two published subpaths in one path with `fill-rule="evenodd"`; both `d` strings are Solar's,
+  the silhouette is identical to within antialiasing, and the mask went because it carried a
+  document-unique id and was invisible to every measurement this repository takes. Everything else
+  the system adds is around the glyphs: a shared `viewBox`, the `.ic` box, and the ink, which comes
+  from a role token rather than from the file.
 - **Where the attribution is:** here; in `DESIGN.md` under the icon rule; and in the comment above
   the sprite on every screen that carries one, which is the place a person reading the markup
   actually meets it.

@@ -44,7 +44,55 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
-## 2026-08-09 - A rule written for one axis scrolled the other, and the sweep that found it was reading a page mid-animation
+## 2026-08-09 - The clock never filled the cell, and the glyph that was breaking the rule is the one nobody named
+
+Backlog 70 said `i-clock-circle-b` paints **24 x 24 at field 0** where the rule is 2, and asked for a
+smaller drawing from the same set. **It paints 20 x 20 at field 2, centre 0.0 / 0.0**, the same box
+as `i-sort-b` standing beside it in the same filter row. **No swap was needed and none was made.**
+
+### A mask is invisible to getBBox
+
+Solar delivers this glyph as a **full-cell rectangle behind a mask**:
+
+```svg
+<path fill="currentColor" d="M0 0h24v24H0z" mask="url(#SVGnNgsclOC)"/>
+```
+
+`getBBox()` returns the geometry of the painted path and never the mask, so it answered 24 x 24, and
+it was right about the path and wrong about the drawing. **This is the same defect as the stroke that
+closed a knockout, one layer up**: an instrument that reads the drawing instead of the paint. It is
+the eleventh of the pass.
+
+The replacement instrument is **ink**: paint each symbol into a canvas at 20x, find the opaque
+pixels, convert back to user units. It sees masks, holes, strokes and antialiasing, because it is
+looking at what a person looks at.
+
+### What ink found once it was looking
+
+Read across the filled family of 20: **field 2.0 on 17, 3.0 on one, 3.3 on two, and one glyph inside
+the rule.** Not the clock. **`i-magnifer-o` painted 21.5 x 21.5 at field 1.23**, while its own caption
+on the page claimed 19.4 and 2.3, a number that matched neither the geometry nor the paint and was
+left over from the drawing it replaced two days earlier. It is **bigger** than the set, not smaller:
+everything else paints 20.
+
+### Both taken
+
+- **The clock is one `evenodd` path**, Solar's two published subpaths composed with a fill rule
+  instead of a mask. Compared pixel for pixel at 40x: **834 of 921,600 differ, 0.09 per cent**, all
+  of them the antialiased edge of the hand. What went with the mask is a **document-unique id in the
+  sprite on 112 files**, which is backlog 45's family.
+- **The magnifier is placed at `scale(.9294)` about the cell centre**, landing at 20 x 20, field
+  2.0, centre 0.0 / 0.0. **No path data is altered in either case**, which is the line CC BY asks
+  about, and `NOTICE.md` now states exactly what was recomposed and what was placed.
+
+Filled family after: **2.0 on 17, 3.0 on one, 3.3 on two, 0 inside the rule**, 18 of 20 centred at
+0.0 / 0.0. The line marks re-read by ink at 2.2 come back **unchanged**: 4.9 on two, 3.9 on two, 2.9
+on one, 1.9 on the menu, so the page's line arithmetic was right all along.
+
+**Proof.** 112 files rewritten, both symbols, one distinct string each. 48 product renders at both
+widths: **0 unresolved `<use>`, 0 masks anywhere, 0 failed requests**, and the CSS boxes unmoved at
+12x12 and 28x28, because what changed is the ink inside the box and not the box. Backlog 70 closed,
+row 30 corrected, open 49 to 48. One throwaway script in the scratchpad, run and deleted.
 
 Reported by looking at the stand: on `ui-kit/filters.html` the section titled **"the menu, OPEN"**
 showed a summary, 21px of panel and a scrollbar.
