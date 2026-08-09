@@ -6,8 +6,8 @@ requirement is met. **An asset with no entry here has not been cleared and may n
 
 ## Solar, the icon set
 
-- **What:** the filled half of the icon set. 20 glyphs, drawn as `<symbol>` in a sprite on every
-  painted screen and referenced through `<use>`. They are the "Bold" weight. It was 21 until
+- **What:** the filled half of the icon set. 20 glyphs, drawn as `<symbol>` in one sprite,
+  `assets/icons.js`, loaded by every painted screen and referenced through `<use href="#i-name">`. They are the "Bold" weight. It was 21 until
   `danger-circle` was retired on 2026-08-09 and its placements went to `danger-triangle`.
 - **Author:** 480 Design.
 - **Source:** the Solar Icon Set, https://www.figma.com/community/file/1166831539721848736, taken
@@ -26,10 +26,11 @@ requirement is met. **An asset with no entry here has not been cleared and may n
   the system adds is around the glyphs: a shared `viewBox`, the `.ic` box, and the ink, which comes
   from a role token rather than from the file.
 - **Where the attribution is:** here; in `DESIGN.md` under the icon rule; **at the head of
-  `assets/icons.svg`, which is the file that holds the glyphs**; and in the pointer comment on every
+  `assets/icons.js`, which is the file that holds the glyphs**; and in the pointer comment on every
   screen and kit page that references it, which is the place a person reading the markup actually
   meets it. The sprite stopped being inlined into 112 documents on 2026-08-09 and the attribution
-  moved with it rather than being dropped.
+  moved with it rather than being dropped. It became a script the same day, for a reason that is
+  about `file://` and not about the licence, and the attribution moved again with it.
 
 **This entry was written on 2026-08-09 and the glyphs had been shipping since the Vault pass.**
 Fifteen Solar Bold glyphs were already in the sprite with the set named in a comment and **no

@@ -7,18 +7,19 @@
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 <script src="_nav.js"></script>
+  <script src="../assets/icons.js"></script>
 </head>
 <body class="app-case">
 <button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar"></aside>
 
-  <!-- Icons: ONE sprite, ../assets/icons.svg, reached as <use href="../assets/icons.svg#i-name">.
-       No copy lives in this file, so THIS PAGE MUST BE SERVED, not opened from disk: an
-       external <use> is a cross-document reference and file:// treats every file as its own
-       origin, so the glyphs render as nothing and the console fills with errors. Measured:
-       0 of 34 drawn, 39 errors. `python3 -m http.server` in the repo root and open the port.
-       Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
+  <!-- Icons: ONE sprite, ../assets/icons.js, reached as <use href="#i-name">.
+       No copy lives in this file. It is a SCRIPT and not an .svg for one measured reason:
+       an external <use> is a cross-document reference and file:// gives every file its own
+       origin, so a page opened from disk drew 0 of 34 glyphs and logged 39 errors. A script
+       loads from disk and from a server alike, injects the sprite, and every <use> is
+       same-document again. Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
 <div class="tk-wrap">
 
   <div class="tk-hero">
@@ -58,8 +59,8 @@
     <p class="tk-subh">the circle, 242 placements, and every one is in the header</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
-      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button><a class="icon-btn" href="#" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bell-b"/></svg></a><a class="icon-btn desk-only" href="#" aria-label="Favorites, see saved events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"/></svg></a></div>
-      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button><a class="icon-btn" href="#" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bell-b"/></svg></a><a class="icon-btn desk-only" href="#" aria-label="Favorites, see saved events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"/></svg></a></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button><a class="icon-btn" href="#" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg></a><a class="icon-btn desk-only" href="#" aria-label="Favorites, see saved events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></a></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button><a class="icon-btn" href="#" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg></a><a class="icon-btn desk-only" href="#" aria-label="Favorites, see saved events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></a></div>
     </div>
     <p class="tk-note"><b>The circle is the header band's skin, not this atom's own idea</b>, and
     counting says so: all 242 plain <code>.icon-btn</code> in the product stand in
@@ -77,8 +78,8 @@
     <p class="tk-subh">bal-swap and bal-add, 73 each, and 0 of the 146 render at 390</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
-      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn bal-swap" aria-label="Swap balance"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-transfer-horizontal-b"/></svg></button><button type="button" class="icon-btn bal-add" aria-label="Add funds"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></div>
-      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn bal-swap" aria-label="Swap balance"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-transfer-horizontal-b"/></svg></button><button type="button" class="icon-btn bal-add" aria-label="Add funds"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn bal-swap" aria-label="Swap balance"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-transfer-horizontal-b"/></svg></button><button type="button" class="icon-btn bal-add" aria-label="Add funds"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn bal-swap" aria-label="Swap balance"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-transfer-horizontal-b"/></svg></button><button type="button" class="icon-btn bal-add" aria-label="Add funds"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></div>
     </div>
     <p class="tk-note">The balance cluster: two circles at a denser size beside a figure. <b>Their
     73 screens each are all desk</b>, because the cluster is <code>.desk-only</code> and
@@ -127,8 +128,8 @@
     <p class="tk-subh">bare, 84 placements on 12 screens, and its target is invisible</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
-      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"></use></svg></button></div>
-      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"></use></svg></button></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></div>
     </div>
     <p class="tk-note">The save mark on a card's caption row, where a circle would be a second object
     competing with the picture. <b>It is the only face that answers WCAG 2.5.5 outright and it does it
@@ -140,8 +141,8 @@
     <p class="tk-subh">tile, 27 placements on 9 screens, and the only 10px corner in the family</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
-      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn icon-btn-tile ed-act" aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-chat-b"></use></svg></button></div>
-      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn icon-btn-tile ed-act" aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-chat-b"></use></svg></button></div>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="icon-btn icon-btn-tile ed-act" aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"></use></svg></button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="icon-btn icon-btn-tile ed-act" aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"></use></svg></button></div>
     </div>
     <p class="tk-note">Three of them sit in a row over the event head, and the corner is the whole
     argument: <b>three circles read as a control group, three tiles read as a toolbar</b>. It is the

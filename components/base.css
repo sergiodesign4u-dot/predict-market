@@ -86,7 +86,20 @@ button,select,summary{font:inherit}
    component rule reaches them. `!important` is right here for the reason the other four in this
    file are: it is a floor the system declares and no component may argue with, not a fix for a
    selector somebody wrote badly. The account is in ../docs/decisions.md. */
-svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor;stroke:none!important}
+/* BOTH PROPERTIES ARE THE FLOOR, NOT ONE, AND THE SECOND HALF WAS ADDED 2026-08-09.
+   `stroke:none!important` was here because a stroke closes a filled glyph's knockouts.
+   `fill:currentColor` was written WITHOUT it, at (0,1,2), and two component rules
+   out-specify that at (0,2,0) while declaring `fill:none` for the stroked mark they
+   were written for: `.footer-trust .tr-ic` and `.toast .ic-sm`. So those glyphs took
+   fill:none from the component and stroke:none from here, and NOTHING PAINTED. Three
+   trust marks on the feed and the toast's error mark, invisible on every screen that
+   carries them.
+   IT IS INVISIBLE TO getBBox, which is why it survived every sweep this repository has
+   run: the reference resolves, the geometry is real, the box is 40x40, and the paint is
+   nothing. Measure `fill` and `stroke` on the `<use>`, or measure the pixels. This is
+   the third instance of one trap: a rule that paints an icon must name BOTH properties,
+   because the two kinds of mark read different ones. */
+svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor!important;stroke:none!important}
 /* FOCUS, DECLARED ONCE. Fourteen component files carried this exact rule and twenty-four did not,
    which is the shape reduced-motion had before step 7 gathered it here: a person navigating by
    keyboard is not asking each component separately. The default is below; a component now only

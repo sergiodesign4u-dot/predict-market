@@ -7,14 +7,15 @@
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 <script src="_nav.js"></script>
+  <script src="../assets/icons.js"></script>
 </head>
 <body class="app-case">
-  <!-- Icons: ONE sprite, ../assets/icons.svg, reached as <use href="../assets/icons.svg#i-name">.
-       No copy lives in this file, so THIS PAGE MUST BE SERVED, not opened from disk: an
-       external <use> is a cross-document reference and file:// treats every file as its own
-       origin, so the glyphs render as nothing and the console fills with errors. Measured:
-       0 of 34 drawn, 39 errors. `python3 -m http.server` in the repo root and open the port.
-       Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
+  <!-- Icons: ONE sprite, ../assets/icons.js, reached as <use href="#i-name">.
+       No copy lives in this file. It is a SCRIPT and not an .svg for one measured reason:
+       an external <use> is a cross-document reference and file:// gives every file its own
+       origin, so a page opened from disk drew 0 of 34 glyphs and logged 39 errors. A script
+       loads from disk and from a server alike, injects the sprite, and every <use> is
+       same-document again. Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
 <button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar"></aside>
@@ -101,9 +102,9 @@
             <p class="hiw-tagline">You are betting on what happens, not on what somebody says will happen.</p>
           </div></div>
           <div class="hiw-body">
-            <div class="hiw-sec"><span class="hiw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-check-circle-b"/></svg></span>
+            <div class="hiw-sec"><span class="hiw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check-circle-b"/></svg></span>
               <div class="hiw-sec-txt"><h3>Pick a side</h3><p>Every market is one question with a date and a named source. You back YES or NO at the price the market is at.</p></div></div>
-            <div class="hiw-sec"><span class="hiw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-graph-up-b"/></svg></span>
+            <div class="hiw-sec"><span class="hiw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-graph-up-b"/></svg></span>
               <div class="hiw-sec-txt"><h3>The price is what people are paying</h3><p>It moves when they change their minds, and it is the market's own estimate of the odds.</p></div></div>
           </div>
         </dialog>
@@ -115,9 +116,9 @@
             <p class="hiw-tagline">You are betting on what happens, not on what somebody says will happen.</p>
           </div></div>
           <div class="hiw-body">
-            <div class="hiw-sec"><span class="hiw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-check-circle-b"/></svg></span>
+            <div class="hiw-sec"><span class="hiw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check-circle-b"/></svg></span>
               <div class="hiw-sec-txt"><h3>Pick a side</h3><p>Every market is one question with a date and a named source. You back YES or NO at the price the market is at.</p></div></div>
-            <div class="hiw-sec"><span class="hiw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-graph-up-b"/></svg></span>
+            <div class="hiw-sec"><span class="hiw-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-graph-up-b"/></svg></span>
               <div class="hiw-sec-txt"><h3>The price is what people are paying</h3><p>It moves when they change their minds, and it is the market's own estimate of the odds.</p></div></div>
           </div>
         </dialog>

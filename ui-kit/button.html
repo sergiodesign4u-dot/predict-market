@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 <script src="_nav.js"></script>
+  <script src="../assets/icons.js"></script>
 </head>
 <body class="app-case">
 <button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
@@ -15,12 +16,12 @@
      its groups, its counts and the row it lights are all in _nav.js. -->
 <aside class="sidebar" id="rmSidebar"></aside>
 
-  <!-- Icons: ONE sprite, ../assets/icons.svg, reached as <use href="../assets/icons.svg#i-name">.
-       No copy lives in this file, so THIS PAGE MUST BE SERVED, not opened from disk: an
-       external <use> is a cross-document reference and file:// treats every file as its own
-       origin, so the glyphs render as nothing and the console fills with errors. Measured:
-       0 of 34 drawn, 39 errors. `python3 -m http.server` in the repo root and open the port.
-       Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
+  <!-- Icons: ONE sprite, ../assets/icons.js, reached as <use href="#i-name">.
+       No copy lives in this file. It is a SCRIPT and not an .svg for one measured reason:
+       an external <use> is a cross-document reference and file:// gives every file its own
+       origin, so a page opened from disk drew 0 of 34 glyphs and logged 39 errors. A script
+       loads from disk and from a server alike, injects the sprite, and every <use> is
+       same-document again. Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
 <div class="tk-wrap">
 
   <div class="tk-hero">
@@ -140,8 +141,8 @@
     <p class="tk-subh">bare, 72 placements, on 9 screens</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
-      <div class="tk-theme-fig" data-theme="dark"><div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-heart-b"></use></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div></div>
-      <div class="tk-theme-fig" data-theme="light"><div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-heart-b"></use></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div></div>
+      <div class="tk-theme-fig" data-theme="dark"><div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"></use></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div></div>
+      <div class="tk-theme-fig" data-theme="light"><div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"></use></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div></div>
     </div>
     <p class="tk-note">The like and reply pair under a comment. <b>It is the same rest face a
     <code>navitem</code> wears and it is not one</b>: what separates them is the MEANING, which is

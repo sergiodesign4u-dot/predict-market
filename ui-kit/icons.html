@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 <script src="_nav.js"></script>
+  <script src="../assets/icons.js"></script>
 </head>
 <body class="app-case">
 <button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
@@ -16,12 +17,12 @@
      is the only copy of that list in the repository. -->
 <aside class="sidebar" id="rmSidebar"></aside>
 
-  <!-- Icons: ONE sprite, ../assets/icons.svg, reached as <use href="../assets/icons.svg#i-name">.
-       No copy lives in this file, so THIS PAGE MUST BE SERVED, not opened from disk: an
-       external <use> is a cross-document reference and file:// treats every file as its own
-       origin, so the glyphs render as nothing and the console fills with errors. Measured:
-       0 of 34 drawn, 39 errors. `python3 -m http.server` in the repo root and open the port.
-       Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
+  <!-- Icons: ONE sprite, ../assets/icons.js, reached as <use href="#i-name">.
+       No copy lives in this file. It is a SCRIPT and not an .svg for one measured reason:
+       an external <use> is a cross-document reference and file:// gives every file its own
+       origin, so a page opened from disk drew 0 of 34 glyphs and logged 39 errors. A script
+       loads from disk and from a server alike, injects the sprite, and every <use> is
+       same-document again. Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
 <div class="tk-wrap">
 
   <div class="tk-hero">
@@ -51,7 +52,7 @@
     <div class="tk-anat">
       <figure class="tk-gl">
         <div class="tk-cell tk-cell-lg">
-          <svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-label="The shield with a tick, as it ships: Solar Bold, filled"><use href="../assets/icons.svg#i-shield-b"/></svg>
+          <svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-label="The shield with a tick, as it ships: Solar Bold, filled"><use href="#i-shield-b"/></svg>
         </div>
         <figcaption>cell 24 x 24, safe field 2, geometric centre<i data-m="anat">paint 18 x 20, field 2.0, centred</i><i>re-measured 2026-08-09, filled. It was 15.6 x 18.6, field 2.2, centre off 0.0 / -0.5 when this cell was drawn by hand</i></figcaption>
       </figure>
@@ -86,7 +87,7 @@
     each measured against its paint.</p>
     <div class="tk-row">
       <figure class="tk-gl">
-        <div class="tk-cell"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-check-circle-b"/></svg></div>
+        <div class="tk-cell"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check-circle-b"/></svg></div>
         <figcaption>check-circle, filled<i data-m="check-circle">paint 20 x 20, field 2.0, centred</i></figcaption>
       </figure>
       <figure class="tk-gl">
@@ -94,7 +95,7 @@
         <figcaption>tick, line<i data-m="check">paint 18.2 x 14.2, field 2.9, centre off 0.0 / -1.0</i></figcaption>
       </figure>
       <figure class="tk-gl">
-        <div class="tk-cell"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-widget-b"/></svg></div>
+        <div class="tk-cell"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-widget-b"/></svg></div>
         <figcaption>grid, filled<i data-m="grid">paint 20 x 20, field 2.0, centred</i></figcaption>
       </figure>
       <figure class="tk-gl">
@@ -143,19 +144,19 @@
     <p class="tk-subh">the four jobs that crossed the two families, and what each one is now</p>
     <div class="tk-row">
       <figure class="tk-gl">
-        <div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"/></svg></div>
+        <div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></div>
         <figcaption>i-bookmark-b<i>303 uses</i></figcaption>
       </figure>
       <figure class="tk-gl">
-        <div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bell-b"/></svg></div>
+        <div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg></div>
         <figcaption>i-bell-b<i>108 uses</i></figcaption>
       </figure>
       <figure class="tk-gl">
-        <div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-shield-b"/></svg></div>
+        <div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"/></svg></div>
         <figcaption>i-shield-b<i>106 uses</i></figcaption>
       </figure>
       <figure class="tk-gl">
-        <div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-chat-b"/></svg></div>
+        <div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"/></svg></div>
         <figcaption>i-chat-b<i>10 uses</i></figcaption>
       </figure>
     </div>
@@ -337,26 +338,26 @@
 
     <p class="tk-subh">Filled, 20 glyphs, Solar Bold through the sprite</p>
     <div class="tk-glyphs">
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"/></svg></div><figcaption>i-bookmark-b<i>303 uses</i><i>paint 18 x 20, field 2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-global-b"/></svg></div><figcaption>i-global-b<i>211 uses</i><i>paint 19.9 x 20, field 2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bell-b"/></svg></div><figcaption>i-bell-b<i>108 uses</i><i>paint 17.9 x 20, field 2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-check-circle-b"/></svg></div><figcaption>i-check-circle-b<i>213 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-shield-b"/></svg></div><figcaption>i-shield-b<i>106 uses</i><i>paint 18 x 20, field 2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-graph-up-b"/></svg></div><figcaption>i-graph-up-b<i>106 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-widget-b"/></svg></div><figcaption>i-widget-b<i>105 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-list-b"/></svg></div><figcaption>i-list-b<i>105 uses</i><i>paint 17.5 x 11.5, field 3.3</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-transfer-horizontal-b"/></svg></div><figcaption>i-transfer-horizontal-b<i>73 uses</i><i>paint 17.5 x 17.5, field 3.2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-user-b"/></svg></div><figcaption>i-user-b<i>73 uses</i><i>paint 16 x 20, field 2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-clock-circle-b"/></svg></div><figcaption>i-clock-circle-b<i>45 uses</i><i>paint 20 x 20, field 2, centre 0.0 / 0.0</i><i>read as 24 x 24 field 0 until 2026-08-09, because it was drawn as a full-cell rect behind a mask and getBBox does not see a mask. Redrawn as one evenodd path, same silhouette</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-sort-b"/></svg></div><figcaption>i-sort-b<i>44 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-heart-b"/></svg></div><figcaption>i-heart-b<i>36 uses</i><i>paint 20 x 17.4, field 2, centre off 0 / -0.2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-login-3-b"/></svg></div><figcaption>i-login-3-b<i>32 uses</i><i>paint 17 x 18, field 3</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-inbox-b"/></svg></div><figcaption>i-inbox-b<i>10 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-chat-b"/></svg></div><figcaption>i-chat-b<i>10 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-share-b"/></svg></div><figcaption>i-share-b<i>9 uses</i><i>paint 16.5 x 20, field 2, centre off 0.3 / 0</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-info-circle-b"/></svg></div><figcaption>i-info-circle-b<i>9 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-magnifer-o"/></svg></div><figcaption>i-magnifer-o<i>4 uses</i><i>paint 20 x 20, field 2, centre 0.0 / 0.0</i><i>Solar OUTLINE rather than Bold, because a lens with no hole is a disc. It painted 21.5 x 21.5 at field 1.23, the one filled glyph inside the rule, and the symbol now places Solar's own path at scale .9294 about the cell centre</i></figcaption></figure>
-      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-danger-triangle-b"/></svg></div><figcaption>i-danger-triangle-b<i>20 uses</i><i>paint 20 x 18, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></div><figcaption>i-bookmark-b<i>303 uses</i><i>paint 18 x 20, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-global-b"/></svg></div><figcaption>i-global-b<i>211 uses</i><i>paint 19.9 x 20, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg></div><figcaption>i-bell-b<i>108 uses</i><i>paint 17.9 x 20, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check-circle-b"/></svg></div><figcaption>i-check-circle-b<i>213 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"/></svg></div><figcaption>i-shield-b<i>106 uses</i><i>paint 18 x 20, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-graph-up-b"/></svg></div><figcaption>i-graph-up-b<i>106 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-widget-b"/></svg></div><figcaption>i-widget-b<i>105 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-list-b"/></svg></div><figcaption>i-list-b<i>105 uses</i><i>paint 17.5 x 11.5, field 3.3</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-transfer-horizontal-b"/></svg></div><figcaption>i-transfer-horizontal-b<i>73 uses</i><i>paint 17.5 x 17.5, field 3.2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-user-b"/></svg></div><figcaption>i-user-b<i>73 uses</i><i>paint 16 x 20, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock-circle-b"/></svg></div><figcaption>i-clock-circle-b<i>45 uses</i><i>paint 20 x 20, field 2, centre 0.0 / 0.0</i><i>read as 24 x 24 field 0 until 2026-08-09, because it was drawn as a full-cell rect behind a mask and getBBox does not see a mask. Redrawn as one evenodd path, same silhouette</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sort-b"/></svg></div><figcaption>i-sort-b<i>44 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg></div><figcaption>i-heart-b<i>36 uses</i><i>paint 20 x 17.4, field 2, centre off 0 / -0.2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-login-3-b"/></svg></div><figcaption>i-login-3-b<i>32 uses</i><i>paint 17 x 18, field 3</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-inbox-b"/></svg></div><figcaption>i-inbox-b<i>10 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"/></svg></div><figcaption>i-chat-b<i>10 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share-b"/></svg></div><figcaption>i-share-b<i>9 uses</i><i>paint 16.5 x 20, field 2, centre off 0.3 / 0</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-info-circle-b"/></svg></div><figcaption>i-info-circle-b<i>9 uses</i><i>paint 20 x 20, field 2</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></div><figcaption>i-magnifer-o<i>4 uses</i><i>paint 20 x 20, field 2, centre 0.0 / 0.0</i><i>Solar OUTLINE rather than Bold, because a lens with no hole is a disc. It painted 21.5 x 21.5 at field 1.23, the one filled glyph inside the rule, and the symbol now places Solar's own path at scale .9294 about the cell centre</i></figcaption></figure>
+      <figure class="tk-gl"><div class="tk-cell tk-cell-sm"><svg class="tk-glyph tk-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-danger-triangle-b"/></svg></div><figcaption>i-danger-triangle-b<i>20 uses</i><i>paint 20 x 18, field 2</i></figcaption></figure>
     </div>
 
     <p class="tk-subh">Line, 6 glyphs, hand-drawn at 2.2, and not one of them has an interior</p>

@@ -7,18 +7,19 @@
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 <script src="_nav.js"></script>
+  <script src="../assets/icons.js"></script>
 </head>
 <body class="app-case">
 <button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
 <div class="rm-overlay" id="rmOverlay"></div>
 <aside class="sidebar" id="rmSidebar"></aside>
 
-  <!-- Icons: ONE sprite, ../assets/icons.svg, reached as <use href="../assets/icons.svg#i-name">.
-       No copy lives in this file, so THIS PAGE MUST BE SERVED, not opened from disk: an
-       external <use> is a cross-document reference and file:// treats every file as its own
-       origin, so the glyphs render as nothing and the console fills with errors. Measured:
-       0 of 34 drawn, 39 errors. `python3 -m http.server` in the repo root and open the port.
-       Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
+  <!-- Icons: ONE sprite, ../assets/icons.js, reached as <use href="#i-name">.
+       No copy lives in this file. It is a SCRIPT and not an .svg for one measured reason:
+       an external <use> is a cross-document reference and file:// gives every file its own
+       origin, so a page opened from disk drew 0 of 34 glyphs and logged 39 errors. A script
+       loads from disk and from a server alike, injects the sprite, and every <use> is
+       same-document again. Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
 <div class="tk-wrap">
 
   <div class="tk-hero">
@@ -45,46 +46,63 @@
   </section>
 
   <section class="tk-sec" id="spec">
-    <h2 data-n="2">The card</h2>
+    <h2 data-n="2">The two cards, and the difference is the action row</h2>
+    <p class="tk-note"><b>The product has two kinds of card and this page showed neither of them
+    whole until 2026-08-09</b>: the specimen had no action row at all, so the one control a person
+    actually presses on the feed was missing from the page about the card. Counted on
+    <code>event-feed.html</code>: <b>9 binary cards carrying <code>.yesno</code> and 3 multi-outcome
+    cards carrying <code>.options</code></b>.</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
-        <article class="card"><div class="card-body">
-          <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)"></span>
-            <span class="top-txt"><a class="q" href="#">Will the state board certify the count before March 1</a></span></div>
-          <p class="why">Both parties have asked the courts to intervene, and the deadline has never slipped before.</p>
-          <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div>
-            <div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
-          <div class="meta"><span class="meta-txt"><span class="m-label">Volume</span><span class="m-val">$84,200</span></span>
-            <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-label="Save this market"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"></use></svg></button></div>
-        </div></article>
+          <article class="card" data-cat="politics"><div class="card-body">
+            <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the state board certify the count before March 1?</a><p class="why">Both parties have asked the courts to intervene, and the deadline has never slipped before.</p></div></div>
+            <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div><div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
+            <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+            <p class="meta"><span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
+          </div></article>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
-        <article class="card"><div class="card-body">
-          <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)"></span>
-            <span class="top-txt"><a class="q" href="#">Will the state board certify the count before March 1</a></span></div>
-          <p class="why">Both parties have asked the courts to intervene, and the deadline has never slipped before.</p>
-          <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div>
-            <div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
-          <div class="meta"><span class="meta-txt"><span class="m-label">Volume</span><span class="m-val">$84,200</span></span>
-            <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-label="Save this market"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"></use></svg></button></div>
-        </div></article>
+          <article class="card" data-cat="politics"><div class="card-body">
+            <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the state board certify the count before March 1?</a><p class="why">Both parties have asked the courts to intervene, and the deadline has never slipped before.</p></div></div>
+            <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div><div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
+            <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
+            <p class="meta"><span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
+          </div></article>
       </div>
     </div>
-    <div class="tk-tblwrap">
-      <table class="tk-tbl">
-        <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
-        <tbody>
-          <tr><td>a card</td><td>293x257 to 293x308</td><td>448x241 to 448x296</td></tr>
-          <tr><td>the question</td><td>199 wide, 30 to 88 tall</td><td>354 wide, 15 to 88 tall</td></tr>
-          <tr><td>the thumbnail</td><td colspan="2"><b>56x88, and it does not move</b></td></tr>
-          <tr><td>Save</td><td colspan="2">44x44 with a finger</td></tr>
-        </tbody>
-      </table>
+    <p class="tk-note"><b>Binary.</b> One question, one bar, one pair of buttons. The bar is written
+    by hand here because a page script writes it in the product, and the photograph is the inline
+    datum the rules allow.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+          <article class="card" data-cat="culture"><div class="card-body">
+            <div class="top"><span class="thumb" style="background-image:url(../assets/event-culture.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Who will win the 2027 Eurovision final?</a><p class="why">Three acts are polling close after the national finals.</p></div></div>
+            <div class="options">
+              <div class="opt-row"><span class="opt-name">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
+              <div class="opt-row"><span class="opt-name">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
+              <div class="opt-row"><span class="opt-name">Ukraine</span><span class="opt-prob">21%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
+            </div>
+            <p class="meta"><span class="meta-txt"><span>Volume: $41,900</span><span>Closes: May 16, 2027</span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
+          </div></article>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+          <article class="card" data-cat="culture"><div class="card-body">
+            <div class="top"><span class="thumb" style="background-image:url(../assets/event-culture.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Who will win the 2027 Eurovision final?</a><p class="why">Three acts are polling close after the national finals.</p></div></div>
+            <div class="options">
+              <div class="opt-row"><span class="opt-name">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
+              <div class="opt-row"><span class="opt-name">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
+              <div class="opt-row"><span class="opt-name">Ukraine</span><span class="opt-prob">21%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
+            </div>
+            <p class="meta"><span class="meta-txt"><span>Volume: $41,900</span><span>Closes: May 16, 2027</span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
+          </div></article>
+      </div>
     </div>
-    <p class="tk-note"><b>167 cards and 84 questions</b>, because 68 of the rest are
-    <a href="skeleton.html">skeleton</a> hosts and the others are the hero's variants. A card that is
-    loading is the same box with every piece of content replaced by its shape.</p>
+    <p class="tk-note"><b>Multi-outcome.</b> A row per candidate with its own compact pair, and
+    <b>no odds bar</b>: the script skips any card holding <code>.options</code>, because one bar
+    cannot say three probabilities. That is the whole structural difference between the two, and it
+    is why the card is one component and not two.</p>
   </section>
 
   <section class="tk-sec" id="content">

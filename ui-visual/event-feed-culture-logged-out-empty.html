@@ -40,15 +40,16 @@ push();});})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UI Visual - Culture Events (Vault 3D, logged, out, empty)</title>
   <link rel="stylesheet" href="../components/index.css">
+  <script src="../assets/icons.js"></script>
 </head>
 <body>
 
-  <!-- Icons: ONE sprite, ../assets/icons.svg, reached as <use href="../assets/icons.svg#i-name">.
-       No copy lives in this file, so THIS PAGE MUST BE SERVED, not opened from disk: an
-       external <use> is a cross-document reference and file:// treats every file as its own
-       origin, so the glyphs render as nothing and the console fills with errors. Measured:
-       0 of 34 drawn, 39 errors. `python3 -m http.server` in the repo root and open the port.
-       Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
+  <!-- Icons: ONE sprite, ../assets/icons.js, reached as <use href="#i-name">.
+       No copy lives in this file. It is a SCRIPT and not an .svg for one measured reason:
+       an external <use> is a cross-document reference and file:// gives every file its own
+       origin, so a page opened from disk drew 0 of 34 glyphs and logged 39 errors. A script
+       loads from disk and from a server alike, injects the sprite, and every <use> is
+       same-document again. Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
 <!-- ===== Roadmap sidebar (course chrome) + color-copy bar ===== -->
   <button type="button" class="rm-toggle" id="rmToggle" aria-label="Open roadmap"><span></span><span></span><span></span></button>
   <div class="rm-overlay" id="rmOverlay"></div>
@@ -266,12 +267,12 @@ document.addEventListener('click', function (e) {
         <div class="utility">
           <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
           <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"/></svg>
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
           </button>
 
           <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
           <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bell-b"/></svg>
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
           </button>
 
           <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
@@ -300,11 +301,11 @@ document.addEventListener('click', function (e) {
       <div class="feed-inner">
         <nav class="cat-nav" aria-label="Categories (second level)">
           <ul>
-            <li><a class="chip chip-nav" href="event-feed.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-cat-fire"/></svg><span>Trending</span></a></li>
-            <li><a class="chip chip-nav" href="event-feed-politics.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-cat-politics"/></svg><span>Politics</span></a></li>
-            <li><a class="chip chip-nav" href="event-feed-crypto.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-cat-crypto"/></svg><span>Crypto</span></a></li>
-            <li aria-current="page"><a class="chip chip-nav" href="event-feed-culture.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-cat-culture"/></svg><span>Culture</span></a></li>
-            <li><a class="chip chip-nav" href="event-feed-general.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-cat-general"/></svg><span>General</span></a></li>
+            <li><a class="chip chip-nav" href="event-feed.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></a></li>
+            <li><a class="chip chip-nav" href="event-feed-politics.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></a></li>
+            <li><a class="chip chip-nav" href="event-feed-crypto.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></a></li>
+            <li aria-current="page"><a class="chip chip-nav" href="event-feed-culture.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></a></li>
+            <li><a class="chip chip-nav" href="event-feed-general.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></a></li>
           </ul>
         </nav>
         <div class="cat-layout">
@@ -328,7 +329,7 @@ document.addEventListener('click', function (e) {
           <div class="feed-controls">
             <details class="filter-menu" id="sortMenu">
               <summary aria-label="Sort by">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-sort-b"/></svg>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sort-b"/></svg>
                 <span>Sort: <span id="sortCurrent">Trending</span></span>
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
@@ -344,7 +345,7 @@ document.addEventListener('click', function (e) {
             </details>
             <details class="filter-menu" id="freqMenu">
               <summary aria-label="Filter by frequency">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-clock-circle-b"/></svg>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock-circle-b"/></svg>
                 <span>Frequency: <span id="freqCurrent">All</span></span>
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
@@ -362,7 +363,7 @@ document.addEventListener('click', function (e) {
           </div>
         </div>
           <div class="state-block">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-inbox-b"/></svg>
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-inbox-b"/></svg>
             <h2 class="state-title">No events match these filters</h2>
             <p class="state-msg">No Culture events match the current sub-category and filters. Clear the filters, or get notified when new ones open.</p>
             <div class="state-actions">
@@ -379,19 +380,19 @@ document.addEventListener('click', function (e) {
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
         <li aria-current="page"><a class="nav-item nav-slot" href="event-feed-logged-out.html">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-widget-b"/></svg>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-widget-b"/></svg>
           <span>Events</span>
         </a></li>
         <li><button class="nav-item nav-slot" type="button" data-open="signin">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-list-b"/></svg>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-list-b"/></svg>
           <span>My Bets</span>
         </button></li>
         <li><button class="nav-item nav-slot" type="button" data-open="signin">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark-b"/></svg>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
           <span>Favorites</span>
         </button></li>
         <li><button class="nav-item nav-slot" type="button" data-open="signin" aria-label="Sign in">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-login-3-b"/></svg>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-login-3-b"/></svg>
           <span>Sign in</span>
         </button></li>
       </ul>
@@ -406,15 +407,15 @@ document.addEventListener('click', function (e) {
           <h2 class="trust-head">Built on trust, not on your balance</h2>
           <div class="trust-items">
             <span class="trust-item">
-              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-shield-b"/></svg>
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"/></svg>
               <span class="tr-txt"><b>Your USDC is held 1:1</b><i>We never lend it.</i></span>
             </span>
             <span class="trust-item">
-              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-global-b"/></svg>
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-global-b"/></svg>
               <span class="tr-txt"><b>Every event resolves against a public source</b><i>You can check it.</i></span>
             </span>
             <span class="trust-item">
-              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-check-circle-b"/></svg>
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check-circle-b"/></svg>
               <span class="tr-txt"><b>1,284 events resolved</b><i>On-chain, verifiable.</i></span>
             </span>
           </div>
@@ -445,7 +446,7 @@ document.addEventListener('click', function (e) {
             </div>
             <details class="filter-menu lang-menu" id="langMenu">
               <summary aria-label="Language (placeholder)">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#i-global-b"/></svg>
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-global-b"/></svg>
                 <span id="langCurrent">English</span>
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
@@ -720,14 +721,14 @@ document.addEventListener('click', function (e) {
     </div>
     <div class="hiw-body">
       <div class="hiw-sec">
-        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="../assets/icons.svg#i-check-circle-b"/></svg></span>
+        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#i-check-circle-b"/></svg></span>
         <div class="hiw-sec-txt">
           <span class="hiw-label">How betting works here</span>
           <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
         </div>
       </div>
       <div class="hiw-sec">
-        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="../assets/icons.svg#i-graph-up-b"/></svg></span>
+        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#i-graph-up-b"/></svg></span>
         <div class="hiw-sec-txt">
           <span class="hiw-label">Why the odds move</span>
           <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>

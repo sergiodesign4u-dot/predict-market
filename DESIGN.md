@@ -98,11 +98,14 @@ spacing:            # the grid is 4px and 2 is the only half step. Nothing else 
   "56": "56px"      # a full band
   hairline: "1px"   # a line, not a distance: a rule, a 1px inset, a hidden input
   gutter: "40px"    # page gutter
-control:            # the height of the box a finger or a pointer lands on
+control:            # the height of the box a finger or a pointer lands on. Six rungs since 2026-08-09,
+                    # and a control READS one rather than adding up to it: see section 4
+  xs: "28px"        # the header band's labelled press
   dense: "32px"     # a desktop icon button
   base: "36px"      # the standard control
-  tap: "44px"       # the mobile touch target (WCAG 2.5.5). Written as min-height, never as padding
-  hero: "52px"      # the primary action on a sheet
+  tap: "44px"       # the mobile touch target (WCAG 2.5.5). A FLOOR: max(44, the control's own)
+  md: "48px"        # the product's most common control. It rendered 47 until the ladder existed
+  hero: "56px"      # the primary action on a sheet. It rendered 55
 icon:               # the mark inside a control. No odd sizes
   sm: "16px"
   md: "18px"
@@ -358,14 +361,24 @@ belong to nobody's system. **It was 21 until the two warning marks were decided 
 one job cannot have two drawings, so the circle left the set and its 16 placements became the
 triangle, in both trees, grey first.
 
-**The set lives in ONE file, `assets/icons.svg`, and no document carries a copy.** Every screen and
-every kit page reaches it as `<use href="../assets/icons.svg#i-name">`. It was inlined into 112
+**The set lives in ONE file, `assets/icons.js`, and no document carries a copy.** Every screen and
+every kit page loads it once and reaches a glyph as `<use href="#i-name">`. It was inlined into 112
 documents until 2026-08-09: **1,756 KB, 23 per cent of the painted tree's bytes, and half of it
-unused on any given screen**, against **18.8 KB fetched once** now. The second reason is the one a
-byte count does not show: a block copied into 112 places drifts, and `i-bookmark-b` had become two
+unused on any given screen**, against **20 KB loaded once** now. The second reason is the one a byte
+count does not show: a block copied into 112 places drifts, and `i-bookmark-b` had become two
 different drawings, the product's on 111 documents and an older one on 3 kit pages, with nothing able
-to see it because every copy was internally consistent. **The ink still comes from the referencing
-element through `currentColor`, which crosses the document boundary**, measured rather than assumed.
+to see it because every copy was internally consistent. **The ink comes from the referencing element
+through `currentColor`.**
+
+**It is a script and not an `.svg`, and that is the correction of the same day.** For a few hours the
+one file was `assets/icons.svg`, referenced as `<use href="../assets/icons.svg#i-name">`, which is a
+CROSS-DOCUMENT reference: `file://` gives every file its own opaque origin, so **a page opened by
+double-clicking it drew 0 of 34 glyphs and logged 39 console errors**, while the stroked inline marks
+beside them drew fine. The price was written into every page and it was still the wrong trade,
+because **these pages are read from disk**. A script has no such rule: it loads from `file://` and
+from a server alike, injects the sprite as the first child of `<body>`, and every `<use>` is
+same-document again. Measured both ways: **3,221 glyphs drawn and 0 empty over http and over
+`file://` alike**.
 The price is that **the painted tree must be served**: `file://` treats every file as its own origin
 and blocks the reference, so a screen opened from disk draws 0 of its glyphs. The pointer comment at
 the head of every screen says so.

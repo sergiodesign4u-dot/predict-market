@@ -44,6 +44,91 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-09 - The one file had to be a script, because these pages are read from disk
+
+**Reported, not found: "after we fixed the icons, the icons started having problems".** The report
+was right, the cause was an entry below this one, and the price it named out loud is the price that
+came due.
+
+Backlog 69 made the sprite one file, `assets/icons.svg`, reached as
+`<use href="../assets/icons.svg#i-name">`. That is a **cross-document reference**, and the entry
+below states the consequence and calls it a stated price: `file://` gives every file its own opaque
+origin, so a page opened by double-clicking it resolves none of them. Measured again today, the same
+pages over both protocols in the same browser:
+
+| | over http | over `file://` |
+|---|---|---|
+| `ui-kit/iconbtn.html` | 10 of 10 drawn | **0 drawn, 10 empty, 10 console errors** |
+| `ui-kit/navitem.html` | 6 of 6 | **0 drawn, 6 empty** |
+| `ui-visual/event-feed.html` | 34 of 34 | **0 drawn, 34 empty, 39 errors** |
+
+The stroked inline marks drew fine in every case, which is exactly what the screenshots showed: a
+hamburger and a plus and a cross where there should also have been a bell, a bookmark, a clock and a
+chat.
+
+**What was wrong was not the one file, it was the FORMAT.** Everything the earlier entry argued for
+holds: one file, no drift, 20 KB against 1,756. What it got wrong is a fact about how this repository
+is used, and no measurement of bytes could have surfaced it: **these pages are opened from disk.**
+The price was written into the head of all 121 documents, which is the right way to state a price and
+is not the same thing as a price being acceptable.
+
+**`assets/icons.js`**, then: the same 29 symbols, injected as the first child of `<body>` by a classic
+script. A script has no cross-origin rule of that kind, so it loads from `file://` and from a server
+alike, and every `<use href="#i-name">` is same-document again. `<use>` is live, so a reference that
+found nothing at parse time updates the moment the symbol is inserted. **2,211 references repointed,
+121 script tags added, 121 pointer comments rewritten**, and `icons.svg` is gone rather than kept
+beside it, because two copies is the drift this whole thread exists to end.
+
+### And the paint test found two glyphs that had never been visible
+
+`getBBox` says a reference resolved. It does not say anything paints, which is the trap this
+repository already wrote down about a mask, one layer up. Reading `fill` and `stroke` on the `<use>`
+instead:
+
+**`.footer-trust .tr-ic` and `.toast .ic-sm` both declare `fill:none`** for the stroked mark they
+were written for, at (0,2,0), and the floor `svg.ic:has(use){fill:currentColor}` is (0,1,2). So the
+component won on fill, `stroke:none!important` won on stroke, and **the glyph had no paint at all**:
+three trust marks per screen and the toast's error mark, invisible everywhere they stand, since the
+day the filled family arrived. It is `fill:currentColor!important` now, beside the stroke that was
+already important. **692 unpainted references across the tree went to 0.**
+
+### The four other things the same reading turned up
+
+- **The nav bar was a narrow strip.** Fixed as a row two hours earlier, but the cell is a flex ROW,
+  so the bar shrank to its content instead of filling the cell the way it fills a phone. The cell is
+  a column now.
+- **Two buttons on `state-block` were underlined.** They are `<a class="btn">`, and **the product
+  never once uses an anchor as a `.btn`**: all of them are a `<button>` inside an `<a>`, which is why
+  no underline was ever seen and why `.btn` has no `text-decoration` rule to lose. The specimen was
+  the only place in either tree doing it. Fixed as the specimen, not as a rule, because a rule for a
+  case the product does not have is a face with no placement.
+- **`bets-table` was missing `.hold-col`.** `.hold-cols` is a flex ROW of two columns, each with a
+  heading and its rows; the specimen put the rows straight into it, so two rows sat side by side and
+  read as one line of noise. **And the dark and light halves of the same figure had drifted**: the
+  same two activity rows in a different order. One figure, two contents.
+- **`card.html` showed neither of the product's two cards whole.** No action row at all, so the page
+  about the card was missing the one control a person presses on the feed, and no multi-outcome
+  variant. Counted on `event-feed.html`: **9 binary cards with `.yesno`, 3 with `.options`**. Both
+  are on the page now, and the structural difference is named: the odds-bar script skips any card
+  holding `.options`, because one bar cannot say three probabilities.
+
+The "How it works" sheet was read and is correct: `.hiw-label` is a kicker above the tagline rather
+than a heading, and its marks were among the invisible ones.
+
+### The measurements
+
+**320 renders over both trees at both widths, over http AND over `file://`, identical on both**:
+3,221 glyphs drawn, **0 empty, 0 unpainted**, sprite present on every page, 0 horizontal scroll, 0
+failed requests, 0 underlined `.btn`. The one console error over http is the browser's own favicon
+probe, which has no matching response event and is the case lesson 7 of the deleted instrument was
+written about.
+
+Written: `assets/icons.js` (new), `assets/icons.svg` (deleted), 121 documents, `components/base.css`,
+`ui-kit/card.html`, `ui-kit/bets-table.html`, `ui-kit/navitem.html`, `ui-kit/state-block.html`,
+`DESIGN.md`, `STRUCTURE.md`, `NOTICE.md`, `docs/backlog.md`.
+
+---
+
 ## 2026-08-09 - Four pages of the kit were showing an arrangement with the arrangement taken out
 
 Asked in four separate sentences and it turned out to be one fault four times: **the nav slots are
