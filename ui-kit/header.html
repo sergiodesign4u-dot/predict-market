@@ -389,10 +389,32 @@
         </header>
       </div>
     </div>
-    <p class="tk-note"><b>One thing differs from the product and it is declared:</b> the panel is
-    <code>position:absolute</code>, so in a cell it would be measured against the summary alone and
-    scrolled out of sight. It is pinned static here, the same bargain <code>.tk-dlg</code> makes for a
-    dialog and the filter menu makes on <a href="filters.html">its own page</a>.</p>
+    <p class="tk-note"><b>The panel keeps the product's position and the CELL makes room</b>, which
+    is the opposite of the bargain <code>.tk-dlg</code> takes for a dialog and the filter menu takes
+    on <a href="filters.html">its own page</a>. Pinning it static was tried first and it was wrong
+    here: those two ARE the whole specimen, and this one hangs off one control inside a band, so
+    static put it in the flow, grew the <code>&lt;details&gt;</code> to 244px and <b>drew the header
+    440px tall with a wordmark floating in the middle of it</b>. A specimen that has to distort its
+    own component to show a part of it is showing neither. The band is 59px here and 59px in the
+    product.</p>
+    <p class="tk-lab tk-bad"><b>AND OPENING IT FOUND A PRODUCT DEFECT NOBODY COULD HAVE SEEN, on
+    every one of the 105 screens.</b> <i>This file positioned the panel TWICE. Lines 22 and 36 say
+    <code>right:0</code>, which is the only thing that can work for two controls at the right end of
+    a band; a later rule at the same specificity restated <code>position:absolute</code> and added
+    <code>left:0</code>, so <code>left</code> won and both menus opened RIGHTWARDS from their
+    control. Measured in the product, not here: <b>at 390 the notification panel stood 142px past
+    the right edge of a 390px window, 55 per cent of it off-screen</b>, and the account menu 126px;
+    at 1280, 116 and 100. Every sweep this repository runs reads the document as it loads, and a
+    <code>&lt;details&gt;</code> is SHUT then, so the panel had no box to measure and no contrast to
+    check. It took building this page and opening the menu on purpose. Fixed in
+    <code>components/header.css</code>: the later rule carries the skin and the position stays where
+    it was declared first. Verified right-aligned and inside the window on the product and on both
+    kit pages, at 390 and 1280.</i></p>
+    <p class="tk-note">What the stand adds is two declarations on the cell:
+    <code>overflow:visible</code>, because <code>.tk-theme-fig</code> carries
+    <code>overflow-x:auto</code> for the category rail and CSS resolves the other axis to
+    <code>auto</code> with it, which is exactly what scrolls an absolute panel out of sight; and a
+    reserved strip below the band, the panel's own measured height plus its 4px offset.</p>
   </section>
 
   <section class="tk-sec" id="twice">

@@ -759,17 +759,25 @@
    67 to 229, both themes. */
 .tk-theme-fig .filter-menu[open] > .filter-panel{position:static;margin-top:6px;
   right:auto;left:auto;min-width:0}
-/* AND THE THIRD, 2026-08-09, FOR THE HEADER'S OWN PANEL. `.notif-menu .dropdown` and
-   `.avatar-menu .dropdown` are the same shape of thing: `position:absolute`, pinned to
-   the right edge of a `<summary>` at `top:calc(100% + 4px)`. The panel is what
-   `header.css` genuinely draws, as opposed to the band and the circles which belong to
-   other files, and it is invisible while the menu is shut, so the specimen opens it and
-   this pins it. It is a MODIFIER, `.tk-open-menu`, and not a bare descendant rule,
-   because the header stands in cells on `organisms.html` and on this page's other
-   sections where the menu is correctly shut, and a rule that fired there would move a
-   panel nobody had opened. Same bargain, same one difference: the position. */
-.tk-theme-fig.tk-open-menu :is(.notif-menu,.avatar-menu)[open] > .dropdown{
-  position:static;margin-top:6px;right:auto;top:auto;min-width:0}
+/* AND THE THIRD, 2026-08-09, FOR THE HEADER'S OWN PANEL, AND IT IS THE OPPOSITE MOVE.
+   `.notif-menu .dropdown` is `position:absolute`, pinned to the right edge of a
+   `<summary>` at `top:calc(100% + 4px)`, and the panel is what `header.css` genuinely
+   draws: the band is the surface's, the circles are the icon button's, the rows are the
+   nav item's. It is invisible while the menu is shut, so the specimen opens it.
+   PINNING IT STATIC WAS TRIED FIRST AND IT WAS WRONG HERE. That is the bargain
+   `.tk-dlg` and `.filter-panel` take, and it works for them because they are the whole
+   specimen. This panel hangs off ONE control inside a BAND: static puts it in the flow,
+   the `<details>` grows to 244px, the row grows with it, and the header is drawn 440px
+   tall with a wordmark floating in the middle of it. **A specimen that has to distort
+   its own component to show a part of it is showing neither.** The header is 59px tall
+   in the product and it is 59 here.
+   So the panel keeps the product's position and THE CELL makes room instead. Two
+   declarations: `overflow:visible`, because `.tk-theme-fig` carries `overflow-x:auto`
+   for `.chip-nav` and CSS resolves the other axis to `auto` with it, which is what
+   scrolls an absolute panel out of sight; and a reserved strip below the band, which is
+   the panel's own measured height plus its 4px offset. The number is in the class name
+   for the same reason `.tk-gone` carries its threshold. */
+.tk-theme-fig.tk-open-menu{overflow:visible;padding-bottom:200px}
 
 /* A shell whose own file draws almost nothing needs its emptiness SHOWN rather
    than described: feed.css is eleven lines and two of its three rules are a

@@ -44,6 +44,64 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-09 - Opening the header's menu on a stand found it opening off the edge of the window on 105 screens
+
+The header's page got a section that opens the notification menu, because **the panel is the part
+`header.css` genuinely draws**: the band is the surface's, the circles are the icon button's, the
+rows are the nav item's. A panel is invisible while its menu is shut, so a page about this component
+that never opens one is a page about its neighbours.
+
+**Two things came out of opening it, and the second is the product's.**
+
+### The stand was distorting the component to show a part of it
+
+The panel was first pinned `position:static`, which is the bargain `.tk-dlg` takes for a dialog and
+the filter menu takes for its panel. **It is the wrong bargain here and the reason is worth keeping.**
+Those two ARE the whole specimen; this one hangs off ONE control inside a BAND. Static puts it in the
+flow, the `<details>` grows to 244px, the row grows with it, and **the header draws 440px tall with a
+wordmark floating in the middle of it**. A specimen that has to distort its own component in order to
+show a part of it is showing neither.
+
+So the panel keeps the product's position and **the cell makes room**: `overflow:visible`, because
+`.tk-theme-fig` carries `overflow-x:auto` for the category rail and CSS resolves the other axis to
+`auto` with it, which is exactly what scrolls an absolute panel out of sight; and a reserved strip
+below the band, the panel's own measured height plus its 4px offset. **The band is 59px on the stand
+and 59px in the product.**
+
+### And then the panel was in the wrong place, in the product
+
+`components/header.css` positions the dropdown **twice**. Lines 22 and 36 say `right:0`, which is the
+only thing that can work for two controls sitting at the right end of a band. A later rule at the
+same specificity, (0,2,0), restated `position:absolute` and added `left:0`; it comes later, so `left`
+won. With both offsets resolved and a fixed width, LTR takes `left`, so **both header menus opened
+RIGHTWARDS from their control instead of being right-aligned to it.**
+
+Measured in the product, not on the stand:
+
+| | notification panel | account menu |
+|---|---|---|
+| at 390 | **142px past the right edge** of a 390px window, 55% of it off-screen | 126px past |
+| at 1280 | 116px past | 100px past |
+
+On all 105 screens that carry a header, in both auth states.
+
+**Nothing had ever opened them.** Every sweep this repository runs reads the document as it loads,
+and a `<details>` is shut then: the panel has no box to measure, no contrast to check, no target to
+size. The 460-render audit of 2026-08-08 did not see it, and could not have. **It took building the
+component's own page and opening the menu on purpose**, which is the one thing a stand does that a
+sweep does not, and it is the strongest argument yet for the pages being rebuilt.
+
+The fix is one word: the later rule carries the skin, and the position stays where it was declared
+first.
+
+**Verified: 320 renders over both trees at both widths, over http and over `file://`, identical:
+3,251 glyphs drawn, 0 empty, 0 unpainted, 316 menus opened and 0 off-window or mis-aligned, 0
+horizontal scroll, 0 failed requests.** Backlog 80.
+
+Written: `components/header.css`, `ui-kit/header.html`, `ui-kit/_page.css`, `docs/backlog.md`.
+
+---
+
 ## 2026-08-09 - Twenty-two component pages show less of their component than the product does
 
 Four reports in a row, each a screenshot of a different kit page: the header, the footer, the how-it-
