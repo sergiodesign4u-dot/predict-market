@@ -153,6 +153,28 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
   the placement's width the pick was 140 wide, the product's number, **and still 4px short**. Use the
   product's container: `.bp-dir`, `.bet-dock`. When the product's container is width-conditional, the
   cell says so with a `.tk-gone` modifier rather than being faked.
+- **A COMPONENT PAGE MUST NOT SHOW LESS THAN THE SHELF DOES, AND 22 OF 38 DID.** Measured 2026-08-09
+  without a hand-written selector list: each `components/*.css` names its own classes in its header
+  line, so for every component the biggest subtree wearing any of them was counted on its own page,
+  on its shelf and across all 106 screens. `feed` had **0 against 630**, `tabs` 4 against 186,
+  `event-detail` 5 against 186, `footer` 17 against 161, `header` 8 against 72. **The method for all
+  22 was one sentence**: take the container and the markup the screens ship, pick the richest
+  instance by RENDERING all 106 screens rather than by choosing a screen from memory, and where the
+  product writes something with a script, write it by hand and say so. It is 0 of 38 now.
+- **A container page is the worst case of the lot, because a container with nothing in it is
+  invisible.** `feed.css` declares one class and the shell is all it is, so the page had nothing to
+  look at at all. Reaching parity meant writing out what THREE separate page scripts do: 18 odds bars
+  with the `.prob-line` left in place and hidden exactly as the script leaves it, and 48 meta values
+  split into a label and a figure. **Faking two of three is how a specimen ends up 66 elements short
+  and looking right.**
+- **A specimen drawn twice brings its ids twice.** Nine declarations in this system are keyed to a
+  document-unique id, and every cell here is drawn once per theme, so the product's own markup
+  arriving on 22 pages produced **16 duplicate ids over 8 pages**: on `event-detail` and `tabs` that
+  is one radio set driving two panels. The shelf's answer was to draw those components ONCE; a
+  component page cannot do that, so it **suffixes every id a cell redefines**, along with every
+  `for`, `aria-controls`, `aria-labelledby`, `href="#id"` and `url(#id)` pointing at it, and touches
+  nothing that points at a sprite symbol. Check DARK against DARK as well: `header.html` carries the
+  band in three sections and its collision was between two dark cells.
 - **A PAGE ABOUT AN ARRANGEMENT NEEDS THE ARRANGEMENT ON IT.** Counted 2026-08-09: `card-grid`,
   `browse-shell`, `detail-shell` and `position-list` had **0 `.tk-theme-fig` each**, four of the six
   pattern pages, prose with a rule and an anti-rule and nothing rendering underneath. This file's own

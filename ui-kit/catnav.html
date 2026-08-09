@@ -36,8 +36,55 @@
     </div>
   </div>
 
+  <section class="tk-sec" id="whole">
+    <h2 data-n="1">The rail, with its counts</h2>
+    <p class="tk-note">The sub-category rail the way the feed draws it. <b>16 elements against 38</b>, and the rail is one of the three components in this system whose content is written by a page script, so the stand writes it by hand.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <nav class="subcat" aria-label="Politics sub-categories">
+                <p class="subcat-head">Sub-categories</p>
+                <ul>
+                <li aria-current="page"><button type="button" class="chip chip-lane">All <span class="chip-cnt">2K</span></button></li>
+                <li><button type="button" class="chip chip-lane">Trump <span class="chip-cnt">297</span></button></li>
+                <li><button type="button" class="chip chip-lane">Trump Daily <span class="chip-cnt">3</span></button></li>
+                <li><button type="button" class="chip chip-lane">Midterm Elections <span class="chip-cnt">537</span></button></li>
+                <li><button type="button" class="chip chip-lane">Global Elections <span class="chip-cnt">122</span></button></li>
+                <li><button type="button" class="chip chip-lane">Primaries <span class="chip-cnt">106</span></button></li>
+                <li><button type="button" class="chip chip-lane">Congress <span class="chip-cnt">42</span></button></li>
+                <li><button type="button" class="chip chip-lane">Trump Cabinet <span class="chip-cnt">16</span></button></li>
+                <li><button type="button" class="chip chip-lane">Courts <span class="chip-cnt">30</span></button></li>
+                <li><button type="button" class="chip chip-lane">Epstein <span class="chip-cnt">22</span></button></li>
+                <li><button type="button" class="chip chip-lane">Government Shutdown <span class="chip-cnt">3</span></button></li>
+                <li><button type="button" class="chip chip-lane">LA Mayor <span class="chip-cnt">5</span></button></li>
+                </ul>
+              </nav>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <nav class="subcat" aria-label="Politics sub-categories">
+                <p class="subcat-head">Sub-categories</p>
+                <ul>
+                <li aria-current="page"><button type="button" class="chip chip-lane">All <span class="chip-cnt">2K</span></button></li>
+                <li><button type="button" class="chip chip-lane">Trump <span class="chip-cnt">297</span></button></li>
+                <li><button type="button" class="chip chip-lane">Trump Daily <span class="chip-cnt">3</span></button></li>
+                <li><button type="button" class="chip chip-lane">Midterm Elections <span class="chip-cnt">537</span></button></li>
+                <li><button type="button" class="chip chip-lane">Global Elections <span class="chip-cnt">122</span></button></li>
+                <li><button type="button" class="chip chip-lane">Primaries <span class="chip-cnt">106</span></button></li>
+                <li><button type="button" class="chip chip-lane">Congress <span class="chip-cnt">42</span></button></li>
+                <li><button type="button" class="chip chip-lane">Trump Cabinet <span class="chip-cnt">16</span></button></li>
+                <li><button type="button" class="chip chip-lane">Courts <span class="chip-cnt">30</span></button></li>
+                <li><button type="button" class="chip chip-lane">Epstein <span class="chip-cnt">22</span></button></li>
+                <li><button type="button" class="chip chip-lane">Government Shutdown <span class="chip-cnt">3</span></button></li>
+                <li><button type="button" class="chip chip-lane">LA Mayor <span class="chip-cnt">5</span></button></li>
+                </ul>
+              </nav>
+      </div>
+    </div>
+  </section>
+
   <section class="tk-sec" id="why">
-    <h2 data-n="1">What this page is for</h2>
+    <h2 data-n="2">What this page is for</h2>
     <p class="tk-note">The level and its reason stay on
     <a href="molecules.html#catnav">the molecules page</a>. What needs the room here is a
     <b>cycle</b>: for one afternoon this component contained the atom that contained it, and the way
@@ -45,7 +92,7 @@
   </section>
 
   <section class="tk-sec" id="gone">
-    <h2 data-n="2">Three controls left, and eight values went out dead behind them</h2>
+    <h2 data-n="3">Three controls left, and eight values went out dead behind them</h2>
     <p class="tk-note">The category strip's chip (285 placements), the sub-category rail's chip (234)
     and the Trending sub-filter's (5) are <b>one atom with two faces</b>, and both faces are in
     <a href="chip.html">chip</a> with the other three.</p>
@@ -59,7 +106,7 @@
   </section>
 
   <section class="tk-sec" id="cycle">
-    <h2 data-n="3">The cycle, and the two classes that were named wrong</h2>
+    <h2 data-n="4">The cycle, and the two classes that were named wrong</h2>
     <p class="tk-note">The first cut of that pass kept the category MARK and the COUNT here, on the
     bottom nav's precedent: a figure inside a nav slot had stayed with the bar. <b>The containment map
     answered within the minute:</b> <code>chip contains catnav</code>, through
@@ -79,7 +126,7 @@
   </section>
 
   <section class="tk-sec" id="spec">
-    <h2 data-n="4">The band and the rail</h2>
+    <h2 data-n="5">The band and the rail</h2>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
@@ -123,7 +170,7 @@
   </section>
 
   <section class="tk-sec" id="capped">
-    <h2 data-n="5">The rail is capped to the window, and it had to be found in a browser</h2>
+    <h2 data-n="6">The rail is capped to the window, and it had to be found in a browser</h2>
     <p class="tk-why">Pinned at 120px and 563px tall, this rail needs <b>683px of window</b>. On a
     1366x768 laptop the last two sub-categories were off the bottom of the screen and <b>no amount of
     scrolling brought them back</b>, because the page scrolls and a pinned rail does not. Eight
@@ -135,7 +182,7 @@
   </section>
 
   <section class="tk-sec" id="static">
-    <h2 data-n="6">No hover, no press, no state at all</h2>
+    <h2 data-n="7">No hover, no press, no state at all</h2>
     <p class="tk-note">Nothing left in this file answers a pointer, which is the honest description
     of what it now is: <b>a band, a rail, four scrollers and two plate edges</b>. All four scrollers
     hide their scrollbar in three vendor spellings, because a strip of chips with a bar under it
@@ -151,7 +198,7 @@
   </section>
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="7">The rule</h2>
+    <h2 data-n="8">The rule</h2>
     <p class="tk-note"><b>A region keeps the place and gives up the face.</b> Where the rail pins,
     how wide it is, how far it may run, and whether it scrolls: those are the region's. What the
     thing inside it looks like is not.</p>
@@ -161,7 +208,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="8">The anti-rule</h2>
+    <h2 data-n="9">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never let an atom contain a component.</b> <i>It is a cycle, and the
     chip computed two different levels depending on which tree you read it from.</i></p>
     <p class="tk-lab tk-bad"><b>Never pin a rail without capping it to the window.</b> <i>Two
@@ -171,7 +218,7 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="9">Where the rest of it is</h2>
+    <h2 data-n="10">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="molecules.html#catnav">the molecules
     page</a>. The stylesheet: <code>components/catnav.css</code>. The two chips and the two parts:
     <a href="chip.html">chip</a>. The shell the band stands in:

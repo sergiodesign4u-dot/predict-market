@@ -30,8 +30,221 @@
     </div>
   </div>
 
+  <section class="tk-sec" id="whole">
+    <h2 data-n="1">The strips, on the panels they actually switch</h2>
+    <p class="tk-note">A tab strip with no panel under it is half a component. <b>4 elements against the product's 186</b>: the event tab set, its four panels and the content each one holds. The strip is a radio group and the panel is its sibling, so what a tab DOES is only visible with both.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <section class="ed-section ed-tabs">
+                    <div class="ed-tabwrap">
+                      <input type="radio" name="edtab" id="edtab-comments" class="ed-tabradio" checked>
+                      <input type="radio" name="edtab" id="edtab-holders" class="ed-tabradio">
+                      <input type="radio" name="edtab" id="edtab-positions" class="ed-tabradio">
+                      <input type="radio" name="edtab" id="edtab-activity" class="ed-tabradio">
+                      <div class="ed-tabbar" role="tablist">
+                        <label class="ed-tablabel" for="edtab-comments">Comments <span class="ed-tab-count">128</span></label>
+                        <label class="ed-tablabel" for="edtab-holders">Biggest bets</label>
+                        <label class="ed-tablabel" for="edtab-positions">Bets</label>
+                        <label class="ed-tablabel" for="edtab-activity">Activity</label>
+                      </div>
+                    <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
+                      <div class="cmt-controls">
+                        <span>128 comments</span>
+                        <span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span>
+                      </div>
+                      <div class="cmt-compose">
+                        <span class="cmt-av">you</span>
+                        <span class="cmt-input">Add a comment...</span>
+                        <button type="button" class="btn btn-primary btn-sm cmt-post">Post</button>
+                      </div>
+                      <div class="cmt-list">
+                        <div class="cmt">
+                          <span class="cmt-av">mm</span>
+                          <div class="cmt-body">
+                            <div class="cmt-meta"><span class="cmt-user">marketmaven</span><span class="cmt-badge">Holds 320 YES</span><span>2h ago</span></div>
+                            <p class="cmt-text">These always go to the wire. I am holding my position and adding if it dips.</p>
+                            <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div>
+                          </div>
+                        </div>
+                        <div class="cmt reply">
+                          <span class="cmt-av">dd</span>
+                          <div class="cmt-body">
+                            <div class="cmt-meta"><span class="cmt-user">deadline_dan</span><span>1h ago</span></div>
+                            <p class="cmt-text">The committee bloc looks firmer this time though.</p>
+                            <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>6</button><button class="btn btn-bare" type="button">Reply</button></div>
+                          </div>
+                        </div>
+                        <div class="cmt">
+                          <span class="cmt-av">pp</span>
+                          <div class="cmt-body">
+                            <div class="cmt-meta"><span class="cmt-user">polly_predicts</span><span class="cmt-badge">Holds 150 NO</span><span>5h ago</span></div>
+                            <p class="cmt-text">Volume jumped right after the headline. Watching how it settles.</p>
+                            <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>11</button><button class="btn btn-bare" type="button">Reply</button></div>
+                          </div>
+                        </div>
+                        <div class="cmt">
+                          <span class="cmt-av">nh</span>
+                          <div class="cmt-body">
+                            <div class="cmt-meta"><span class="cmt-user">newhere</span><span>1d ago</span></div>
+                            <p class="cmt-text">First bet here. The resolution source being official notices makes this easy to trust.</p>
+                            <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>8</button><button class="btn btn-bare" type="button">Reply</button></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Biggest bets">
+                      <div class="hold-cols">
+                      <div class="hold-col">
+                        <h3>Biggest YES bets</h3>
+                        <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">wh</span><span class="hold-name">whale_07</span><span class="hold-amt">$1,240</span></div>
+                        <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">ma</span><span class="hold-name">marketmaven</span><span class="hold-amt">$320</span></div>
+                        <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">al</span><span class="hold-name">alpha_ape</span><span class="hold-amt">$280</span></div>
+                        <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">sa</span><span class="hold-name">satoshi_jr</span><span class="hold-amt">$150</span></div>
+                      </div>
+                      <div class="hold-col">
+                        <h3>Biggest NO bets</h3>
+                        <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">he</span><span class="hold-name">hedge_hannah</span><span class="hold-amt">$980</span></div>
+                        <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">po</span><span class="hold-name">polly_predicts</span><span class="hold-amt">$150</span></div>
+                        <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">ca</span><span class="hold-name">caut_carl</span><span class="hold-amt">$120</span></div>
+                        <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">ri</span><span class="hold-name">riskoff</span><span class="hold-amt">$90</span></div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
+                      <table class="ptable">
+                        <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
+                        <tbody>
+                        <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
+                        <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
+                        <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>$588</td></tr>
+                        <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>$121</td></tr>
+                        <tr><td>polly_predicts</td><td><span class="pos-side">NO</span></td><td>$87</td></tr>
+                        </tbody>
+                      </table>
+                      <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
+                    </div>
+                    <div class="ed-tabpanel ed-panel-activity" role="tabpanel" aria-label="Activity">
+                      <p class="pos-note">Recent bets, largest first. Filter: over $5.</p>
+                      <div class="act-list">
+                      <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
+                      <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$180</b> on NO</span><span class="act-time">14m ago</span></div>
+                      <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> cashed out <b>$31</b> on YES</span><span class="act-time">1h ago</span></div>
+                      <div class="act-row"><span class="cmt-av">pp</span><span class="act-txt"><b>polly_predicts</b> bet <b>$87</b> on NO</span><span class="act-time">3h ago</span></div>
+                      <div class="act-row"><span class="cmt-av">nh</span><span class="act-txt"><b>newhere</b> bet <b>$4.94</b> on YES</span><span class="act-time">5h ago</span></div>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <section class="ed-section ed-tabs">
+                    <div class="ed-tabwrap">
+                      <input type="radio" name="edtab" id="edtab-comments-lt" class="ed-tabradio" checked>
+                      <input type="radio" name="edtab" id="edtab-holders-lt" class="ed-tabradio">
+                      <input type="radio" name="edtab" id="edtab-positions-lt" class="ed-tabradio">
+                      <input type="radio" name="edtab" id="edtab-activity-lt" class="ed-tabradio">
+                      <div class="ed-tabbar" role="tablist">
+                        <label class="ed-tablabel" for="edtab-comments-lt">Comments <span class="ed-tab-count">128</span></label>
+                        <label class="ed-tablabel" for="edtab-holders-lt">Biggest bets</label>
+                        <label class="ed-tablabel" for="edtab-positions-lt">Bets</label>
+                        <label class="ed-tablabel" for="edtab-activity-lt">Activity</label>
+                      </div>
+                    <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
+                      <div class="cmt-controls">
+                        <span>128 comments</span>
+                        <span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span>
+                      </div>
+                      <div class="cmt-compose">
+                        <span class="cmt-av">you</span>
+                        <span class="cmt-input">Add a comment...</span>
+                        <button type="button" class="btn btn-primary btn-sm cmt-post">Post</button>
+                      </div>
+                      <div class="cmt-list">
+                        <div class="cmt">
+                          <span class="cmt-av">mm</span>
+                          <div class="cmt-body">
+                            <div class="cmt-meta"><span class="cmt-user">marketmaven</span><span class="cmt-badge">Holds 320 YES</span><span>2h ago</span></div>
+                            <p class="cmt-text">These always go to the wire. I am holding my position and adding if it dips.</p>
+                            <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div>
+                          </div>
+                        </div>
+                        <div class="cmt reply">
+                          <span class="cmt-av">dd</span>
+                          <div class="cmt-body">
+                            <div class="cmt-meta"><span class="cmt-user">deadline_dan</span><span>1h ago</span></div>
+                            <p class="cmt-text">The committee bloc looks firmer this time though.</p>
+                            <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>6</button><button class="btn btn-bare" type="button">Reply</button></div>
+                          </div>
+                        </div>
+                        <div class="cmt">
+                          <span class="cmt-av">pp</span>
+                          <div class="cmt-body">
+                            <div class="cmt-meta"><span class="cmt-user">polly_predicts</span><span class="cmt-badge">Holds 150 NO</span><span>5h ago</span></div>
+                            <p class="cmt-text">Volume jumped right after the headline. Watching how it settles.</p>
+                            <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>11</button><button class="btn btn-bare" type="button">Reply</button></div>
+                          </div>
+                        </div>
+                        <div class="cmt">
+                          <span class="cmt-av">nh</span>
+                          <div class="cmt-body">
+                            <div class="cmt-meta"><span class="cmt-user">newhere</span><span>1d ago</span></div>
+                            <p class="cmt-text">First bet here. The resolution source being official notices makes this easy to trust.</p>
+                            <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>8</button><button class="btn btn-bare" type="button">Reply</button></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Biggest bets">
+                      <div class="hold-cols">
+                      <div class="hold-col">
+                        <h3>Biggest YES bets</h3>
+                        <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">wh</span><span class="hold-name">whale_07</span><span class="hold-amt">$1,240</span></div>
+                        <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">ma</span><span class="hold-name">marketmaven</span><span class="hold-amt">$320</span></div>
+                        <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">al</span><span class="hold-name">alpha_ape</span><span class="hold-amt">$280</span></div>
+                        <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">sa</span><span class="hold-name">satoshi_jr</span><span class="hold-amt">$150</span></div>
+                      </div>
+                      <div class="hold-col">
+                        <h3>Biggest NO bets</h3>
+                        <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">he</span><span class="hold-name">hedge_hannah</span><span class="hold-amt">$980</span></div>
+                        <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">po</span><span class="hold-name">polly_predicts</span><span class="hold-amt">$150</span></div>
+                        <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">ca</span><span class="hold-name">caut_carl</span><span class="hold-amt">$120</span></div>
+                        <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">ri</span><span class="hold-name">riskoff</span><span class="hold-amt">$90</span></div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
+                      <table class="ptable">
+                        <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
+                        <tbody>
+                        <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
+                        <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
+                        <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>$588</td></tr>
+                        <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>$121</td></tr>
+                        <tr><td>polly_predicts</td><td><span class="pos-side">NO</span></td><td>$87</td></tr>
+                        </tbody>
+                      </table>
+                      <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
+                    </div>
+                    <div class="ed-tabpanel ed-panel-activity" role="tabpanel" aria-label="Activity">
+                      <p class="pos-note">Recent bets, largest first. Filter: over $5.</p>
+                      <div class="act-list">
+                      <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
+                      <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$180</b> on NO</span><span class="act-time">14m ago</span></div>
+                      <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> cashed out <b>$31</b> on YES</span><span class="act-time">1h ago</span></div>
+                      <div class="act-row"><span class="cmt-av">pp</span><span class="act-txt"><b>polly_predicts</b> bet <b>$87</b> on NO</span><span class="act-time">3h ago</span></div>
+                      <div class="act-row"><span class="cmt-av">nh</span><span class="act-txt"><b>newhere</b> bet <b>$4.94</b> on YES</span><span class="act-time">5h ago</span></div>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+      </div>
+    </div>
+  </section>
+
   <section class="tk-sec" id="why">
-    <h2 data-n="1">What this page is for</h2>
+    <h2 data-n="2">What this page is for</h2>
     <p class="tk-note">The level and its reason stay on
     <a href="organisms.html#tabs">the organisms page</a>. This page holds the thing a shelf can never
     show about this component: <b>what is behind each tab</b>, which needed the radios cycled one at
@@ -40,7 +253,7 @@
   </section>
 
   <section class="tk-sec" id="behind">
-    <h2 data-n="2">One panel at a time, and each holds a different component</h2>
+    <h2 data-n="3">One panel at a time, and each holds a different component</h2>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
         <thead><tr><th>tab</th><th>what is behind it</th><th>panel at 390</th><th>at 1280</th></tr></thead>
@@ -63,7 +276,7 @@
   </section>
 
   <section class="tk-sec" id="ring">
-    <h2 data-n="3">The one place the system's single ring could not land</h2>
+    <h2 data-n="4">The one place the system's single ring could not land</h2>
     <p class="tk-why"><code>base.css</code> draws the ring once, <b>on the element that HAS focus</b>,
     and the element that has focus here is the RADIO, which this file parks at
     <code>left:-9999px</code>. <b>So the indicator was painted off the left edge of the document</b>,
@@ -79,7 +292,7 @@
   </section>
 
   <section class="tk-sec" id="spec">
-    <h2 data-n="4">The strips</h2>
+    <h2 data-n="5">The strips</h2>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
@@ -111,7 +324,7 @@
   </section>
 
   <section class="tk-sec" id="merge">
-    <h2 data-n="5">The range rail and the comment sorter are one chip</h2>
+    <h2 data-n="6">The range rail and the comment sorter are one chip</h2>
     <p class="tk-note">Measured 2026-08-04: the two <b>agree on padding, radius, size, height, ground
     and selected ground down to the pixel</b>, and disagreed on the two things left, the face and the
     weight. One rail was mono at 400 rising to 600 when chosen; the sorter was the body face. <b>Two
@@ -127,7 +340,7 @@
   </section>
 
   <section class="tk-sec" id="press">
-    <h2 data-n="6">The press, and it is worth most where there is no hover</h2>
+    <h2 data-n="7">The press, and it is worth most where there is no hover</h2>
     <p class="tk-note">Every tab in this file was missing it. A tab is a quiet control, so it settles
     onto the one held-down role in the system, and each press mirrors the hover it answers so the two
     sit at equal specificity and source order hands the pointer to the press.</p>
@@ -136,7 +349,7 @@
   </section>
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="7">The rule</h2>
+    <h2 data-n="8">The rule</h2>
     <p class="tk-note"><b>A switcher needs no script.</b> A radio, a label and a sibling selector,
     and the state lives in the document rather than in a variable.</p>
     <p class="tk-note"><b>Hide the input where the ring can still be drawn.</b> Offscreen is
@@ -146,7 +359,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="8">The anti-rule</h2>
+    <h2 data-n="9">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never park a focusable element offscreen and leave the ring on
     it.</b> <i>The indicator was painted at -9999px, which is a keyboard user seeing nothing.</i></p>
     <p class="tk-lab tk-bad"><b>Never measure a tabbed screen without cycling the tabs.</b> <i>Three
@@ -156,7 +369,7 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="9">Where the rest of it is</h2>
+    <h2 data-n="10">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="organisms.html#tabs">the organisms page</a>.
     The stylesheet: <code>components/tabs.css</code>. The chip both rails wear:
     <a href="chip.html">chip</a>. What is behind the four panels:

@@ -35,8 +35,61 @@
     </div>
   </div>
 
+  <section class="tk-sec" id="whole">
+    <h2 data-n="1">The bar, with its balance slot</h2>
+    <p class="tk-note">The four slots the product ships, including the balance figure the other placements do not carry.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <nav class="bottom-nav" aria-label="Primary (mobile)">
+              <ul>
+                <li><a class="nav-item nav-slot" href="event-feed-logged-out.html">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-widget-b"/></svg>
+                  <span>Events</span>
+                </a></li>
+                <li><button class="nav-item nav-slot" type="button" data-open="signin">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-list-b"/></svg>
+                  <span>My Bets</span>
+                </button></li>
+                <li><button class="nav-item nav-slot" type="button" data-open="signin">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                  <span>Favorites</span>
+                </button></li>
+                <li><button class="nav-item nav-slot" type="button" data-open="signin" aria-label="Sign in">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-login-3-b"/></svg>
+                  <span>Sign in</span>
+                </button></li>
+              </ul>
+            </nav>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <nav class="bottom-nav" aria-label="Primary (mobile)">
+              <ul>
+                <li><a class="nav-item nav-slot" href="event-feed-logged-out.html">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-widget-b"/></svg>
+                  <span>Events</span>
+                </a></li>
+                <li><button class="nav-item nav-slot" type="button" data-open="signin">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-list-b"/></svg>
+                  <span>My Bets</span>
+                </button></li>
+                <li><button class="nav-item nav-slot" type="button" data-open="signin">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                  <span>Favorites</span>
+                </button></li>
+                <li><button class="nav-item nav-slot" type="button" data-open="signin" aria-label="Sign in">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-login-3-b"/></svg>
+                  <span>Sign in</span>
+                </button></li>
+              </ul>
+            </nav>
+      </div>
+    </div>
+  </section>
+
   <section class="tk-sec" id="why">
-    <h2 data-n="1">What this page is for</h2>
+    <h2 data-n="2">What this page is for</h2>
     <p class="tk-note">The level and its reason stay on
     <a href="molecules.html#bottomnav">the molecules page</a>. The SLOT inside it is an atom with a
     page of its own, <a href="navitem.html">nav item</a>, and none of what that page says is repeated
@@ -45,7 +98,7 @@
   </section>
 
   <section class="tk-sec" id="spec">
-    <h2 data-n="2">The bar</h2>
+    <h2 data-n="3">The bar</h2>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
@@ -83,7 +136,7 @@
   </section>
 
   <section class="tk-sec" id="touch">
-    <h2 data-n="3">The press matters and the hover is the one nobody will see</h2>
+    <h2 data-n="4">The press matters and the hover is the one nobody will see</h2>
     <p class="tk-why">This bar had no state on either axis, on all 104 screens, and it is the only
     navigation a phone has. <b>A tap got no reply at all.</b> Both states arrived together, and the
     order of their importance is inverted from everywhere else in the product: the press is the one
@@ -112,7 +165,7 @@
   </section>
 
   <section class="tk-sec" id="ring">
-    <h2 data-n="4">No focus rule, and it was measured rather than assumed</h2>
+    <h2 data-n="5">No focus rule, and it was measured rather than assumed</h2>
     <p class="tk-note">A fixed bar is where a ring gets cut, so the question was put to a browser
     rather than to an opinion. Chromium at 360x720 with the bar stuck: the ring computes to 2px at a
     2px offset, <b>no ancestor of the control clips anything</b> the whole way up to
@@ -125,7 +178,7 @@
   </section>
 
   <section class="tk-sec" id="wrapper">
-    <h2 data-n="5">The wrapper that left, and why it was a defect rather than a tidy-up</h2>
+    <h2 data-n="6">The wrapper that left, and why it was a defect rather than a tidy-up</h2>
     <p class="tk-note">Until 2026-08-07 each slot was a <code>&lt;button&gt;</code> inside an
     <code>&lt;a&gt;</code>, and this file carried three declarations to undo the anchor's own look so
     the button could show through. <b>Interactive content is not allowed as a descendant of an
@@ -138,7 +191,7 @@
   </section>
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="6">The rule</h2>
+    <h2 data-n="7">The rule</h2>
     <p class="tk-note"><b>The bar owns where, the slot owns what.</b> This file keeps the sticky
     position, the groove along the top edge, the list, the dividing rules and the centring. It says
     nothing about what the control inside it looks like.</p>
@@ -147,7 +200,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="7">The anti-rule</h2>
+    <h2 data-n="8">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never wrap a button in a link.</b> <i>Two tab stops, one control, and
     a screen reader announcing a link that contains a button.</i></p>
     <p class="tk-lab tk-bad"><b>Never write a state at the control's own weight when an ancestor
@@ -158,7 +211,7 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="8">Where the rest of it is</h2>
+    <h2 data-n="9">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="molecules.html#bottomnav">the molecules
     page</a>. The stylesheet: <code>components/bottomnav.css</code>. The slot, in full:
     <a href="navitem.html">nav item</a>. The test that kept the balance here and moved the chip's

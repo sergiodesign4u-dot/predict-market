@@ -44,6 +44,71 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-09 - All 38 component pages now show what the product ships, and putting a component in twice needed the id rule the kit already knew
+
+The gap measured earlier the same day was **22 of 38 pages poorer than the product**. It is **0 of
+38** now. The method did not change once across the 22: **take the container and the markup the
+screens ship, and where the product writes something with a script, write it by hand and say so.**
+
+**The winning instance was picked by rendering, not by reading.** For each component, every one of the
+106 painted screens was rendered and the richest subtree wearing that component's own declared
+classes was found, then that block was sliced out of the source and put on the page. So `footer`
+comes from `404.html`, `hiw-dialog` from `how-it-works.html`, `event-detail` and `tabs` and `market`
+and `comments` from `event-detail-bet-error.html`, `betpanel` and `chart` and `options` and `dialog`
+from `event-detail-logged-out-multi.html`, `catnav` from `event-feed-politics-empty.html`, `toc` from
+`terms.html`. A hand-picked screen would have picked the one somebody remembered.
+
+| | page before | page after | product |
+|---|---|---|---|
+| `feed` | 0 | **630** | 630 |
+| `tabs` | 4 | **186** | 186 |
+| `event-detail` | 5 | **186** | 186 |
+| `footer` | 17 | **161** | 161 |
+| `header` | 8 | **72** | 72 |
+| `hiw-dialog` | 19 | **61** | 61 |
+
+and `toc` 13 to 45, `comments` 21 to 50, `dialog` 9 to 39, `bets-table` 24 to 44, `betpanel` 18 to
+39, `catnav` 16 to 38, `options` 16 to 31, `filters` 14 to 30, `seo-plate` 15 to 29, `cookie-consent`
+22 to 28, `toast` 14 to 22, `market` 46 to 51, `chart` 6 to 17, `state-block` 9 to 14, `position` 10
+to 13, `notice` 4 to 6, `button` 2 to 5, `bottomnav` 20 to 21.
+
+### The feed is the case that says what a container page is for
+
+`feed.css` declares ONE class and the shell is all it is: a column, a gutter and a maximum. It had
+**no specimen at all**, which for a container is the worst of the twenty-two: **a container with
+nothing in it is invisible.** It carries the whole feed now, and reaching parity took writing out
+what three separate page scripts do at run time, because a stand does not run them: **18 odds bars
+with their `.prob-line` left in place and hidden, exactly as the script leaves it**, and **48 meta
+values split into a label and a figure**. Faking two of those and forgetting the third is how a
+specimen ends up 66 elements short and looking right.
+
+### Putting a component in twice is the id problem this kit had already written down
+
+`ui-kit/CLAUDE.md` records it from `organisms.html`: **nine declarations in the system are keyed to a
+document-unique id**, so `tabs.css` and `hero.css` work once per document, and the shelf therefore
+draws those two ONCE on purpose. Every specimen here is drawn twice, once per theme, so the moment
+the product's own markup arrived it brought its ids with it: **16 duplicates over 8 pages**, and on
+`event-detail.html` and `tabs.html` that means one radio set driving two panels.
+
+The shelf's answer was to draw the component once. **The pages' answer is to make the ids unique per
+cell**, which keeps both themes and keeps the tabs working in both: every id defined inside a cell
+that the page has already seen is suffixed, along with every `for`, `aria-controls`,
+`aria-labelledby`, `href="#id"` and `url(#id)` that points at it, and nothing that points at a sprite
+symbol is touched. **16 duplicates to 0**, and `header.html` needed a second pass because it carries
+the header in three sections and the collision was between two DARK cells, not between a dark and a
+light one.
+
+### Verified
+
+**320 renders over both trees at both widths, over http and over `file://`, identical on both:**
+3,439 glyphs drawn, **0 empty, 0 unpainted**, 316 menus opened and **0 mis-placed**, **0 horizontal
+scroll, 0 clipped cells, 0 duplicate ids, 0 failed requests**. And the gap sweep re-run: **0 of 38
+pages poorer than the product.** Backlog 79 closed.
+
+Written: 22 pages in `ui-kit/`, `docs/backlog.md`, `ui-kit/CLAUDE.md`.
+
+---
+
 ## 2026-08-09 - Opening the header's menu on a stand found it opening off the edge of the window on 105 screens
 
 The header's page got a section that opens the notification menu, because **the panel is the part
