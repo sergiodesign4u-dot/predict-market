@@ -1,6 +1,7 @@
 # components/ - the system itself
 
-This folder IS the design system. 51 stylesheets, 5,651 lines, `tokens.css` plus one file per
+This folder IS the design system. 50 stylesheets, 7,034 lines (re-counted 2026-08-10: it said 51 and
+5,651, and the 51st was `account.css`, deleted on 2026-08-08 by backlog 63), `tokens.css` plus one file per
 component, all reached through `index.css`. The 210 screens in `ui-visual/` and `wireframes/` link
 `index.css` and nothing else, so **an edit here reaches every screen at once and no screen can
 override it.** There is no build step and no gate: what you write is what ships.

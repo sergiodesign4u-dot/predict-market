@@ -3,7 +3,11 @@
 
    Reads: --edge-shade-strong, --outcome-no, --outcome-no-text, --outcome-yes, --outcome-yes-text
    Stand:  ui-kit/oddsbar.html, and ui-kit/vitrine.html#oddsbar for the level and its reason
-   Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
+   Stands on: 21 ui-visual screens. Two blocks, and the header counted one:
+     .ed-oddsbar on the 9 event-detail states, .oddsbar on 12 more (the feed and its four
+     category variants, their logged-out twins, favorites, the push-permission feed). They do
+     not overlap, and every .track sits inside one of the two. Re-counted 2026-08-10 from the
+     rendered DOM of all 106 screens, backlog 52.
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .oddsbar{margin-top:auto;margin-bottom:var(--space-12)}

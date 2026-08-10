@@ -639,7 +639,7 @@ document.addEventListener('click', function (e) {
     <div class="sheet-body">
       <div>
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount to add"></div>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="20.00" aria-label="Amount to add"></div>
         <div class="quick"><button class="chip chip-amount" type="button">$10</button><button type="button" class="chip chip-amount sel">$20</button><button class="chip chip-amount" type="button">$50</button><button class="chip chip-amount" type="button">$100</button></div>
       </div>
       <div><span class="field-label">Pay with</span>
@@ -782,7 +782,7 @@ document.addEventListener('click', function (e) {
       })();
     })();
   </script><dialog class="app-dialog signin-dialog" id="outcomeDialog" aria-label="Account already exists"><div class="sheet-head"><h1>Account already exists</h1><a href="event-feed.html"><button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></a></div><div class="sheet-body">
-          <div class="inline-error">This email is already registered with <strong>X</strong>. To keep one account, continue with X, or link Google to your existing account.</div>
+          <div class="inline-error" role="alert">This email is already registered with <strong>X</strong>. To keep one account, continue with X, or link Google to your existing account.</div>
           <button type="button" class="btn btn-secondary btn-md btn-block btn-provider">
             <svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>
             Continue with X (your original provider)

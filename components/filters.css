@@ -13,6 +13,12 @@
 .filter-panel ul{list-style:none;margin:0;padding:var(--space-4) 0}
 .filter-panel li label{display:flex;align-items:center;gap:var(--space-8);font-size:var(--text-11);cursor:pointer}
 .reverse-row{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8);font-size:var(--text-11)}
+/* SO THIS FILE IS ONE COMPONENT, AND BACKLOG 16d's "menu plus toggle" CLOSED
+   ON 2026-08-05 WITH THE MOVE RECORDED BELOW. What is left is a <details>
+   holding a panel holding labelled radios: 193 menus on 105 screens, 105 of them
+   the footer's language picker, and 1,012 choosing rows. `.reverse-row` is not a
+   second component, it is the panel's own row, 3 of 3 standing inside a
+   .filter-panel and holding the switch that belongs to toggle.css now. */
 /* THE SWITCH LEFT THIS FILE ON 2026-08-05, and it took `.toggle` with it to
    components/toggle.css. A switch and a sort menu are two control families and
    the only thing they shared was a file name: this one is a `<details>` holding a
@@ -39,15 +45,29 @@
 .filter-menu summary:active{background:var(--bg-pressed)}
 /* HIDDEN, NOT REMOVED, and the difference is the whole control. `display:none` generates no box, so
    the browser takes the element out of the tab order AND out of the accessibility tree: the sort
-   radiogroup and the category checkboxes could be operated by a mouse and by nothing else, on 104
+   radiogroup and the category radios could be operated by a mouse and by nothing else, on 104
    screens, and the focus rule below could never match because the input could never be focused.
+   (Written as "checkboxes" until 2026-08-10, which is the error the dead half of the selector below
+   was made of. They are radios and the count of every input in every filter panel proves it.)
    Measured before the change: 400 Tab presses on event-feed.html at 1440 with the panel open, 0
    stops inside .filter-panel, 16 inputs all computing display:none.
    The 1x1 transparent box is the idiom this system already chose twice: tokens.css names --hairline
    "the 1x1 box of a visually hidden input", and tabs.css `.ptab-in` is the same three declarations.
    Absolute, so it is not a flex item and the label's layout does not move by a pixel; pointer-events
-   off, so the mouse still lands on the label and nothing else. */
-.filter-panel input[type=radio],.filter-panel input[type=checkbox]{position:absolute;width:var(--hairline);height:var(--hairline);opacity:0;margin:0;pointer-events:none}
+   off, so the mouse still lands on the label and nothing else.
+   AND THE SECOND HALF OF THAT SELECTOR NAMED A CONTROL THIS PRODUCT DOES NOT
+   HAVE. It read `,.filter-panel input[type=checkbox]` and matched 0 elements on
+   all 106 painted screens and all 54 kit pages, measured 2026-08-10: **there
+   are three checkboxes in the whole product and all three are on
+   `cookie-consent.html`**, none of them in a filter panel. Every input in every
+   filter panel is a radio, 1,012 of them. The paragraph above said "the sort
+   radiogroup and the category checkboxes", and the category filters are radios
+   and have been for longer than that sentence has existed, so the rule and the
+   prose that justified it both named the same thing that is not there. The half
+   is gone and the sentence is corrected rather than quietly left: a selector
+   that matches nothing agrees with every hypothesis, which is the same trap as
+   a deletion test that removes nothing. */
+.filter-panel input[type=radio]{position:absolute;width:var(--hairline);height:var(--hairline);opacity:0;margin:0;pointer-events:none}
 .filter-panel li{padding:0}
 .filter-panel li label{color:var(--text-primary);border-radius:var(--radius-10);margin:var(--space-2) var(--space-4);padding:var(--space-8) var(--space-8);transition:background var(--dur-fast),color var(--dur-fast)}
 .filter-panel li label:hover{background:var(--bg-control)}

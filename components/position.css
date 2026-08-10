@@ -29,6 +29,17 @@
 .pos-figures{gap:var(--space-20);color:var(--text-muted);font-size:var(--text-10);text-transform:uppercase;letter-spacing:var(--track-caps)}
 .pos-fig b{font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-primary);font-weight:var(--weight-semibold);letter-spacing:var(--track-none);text-transform:none;margin-top:var(--space-4)}
 .pos.skeleton{gap:var(--space-8)}
+/* THE RECORD GRID AND THE PORTFOLIO SUMMARY ARE THIS ROW WITH ITS BOX TAKEN
+   OFF, NOT A SECOND COMPONENT, which is what backlog 16d asked. Both are built
+   entirely from .pos* classes, both reuse .pos-figures and .pos-fig, and neither
+   invents a name. Measured 2026-08-10 across the 106 painted screens: 57 rows,
+   of which 2 are the record grid and 1 the portfolio summary, against 18 plain
+   rows and 14 that are the CONTROL, a row inside an <a>. **The list already
+   left**, to components/patterns/position-list.css with backlog 16a, and 49 of
+   the 57 stand in one. So what is left is one row in three arrangements, and
+   the level arithmetic that made three arrangements look like two components
+   was deleted with the other 62 scripts on 2026-08-07. A boundary that exists
+   only inside a machine nobody runs is not a boundary. */
 .pos-record{background:none;border:0;box-shadow:none;padding:0;gap:0}
 .pos-record .pos-figures{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-8);margin:0;font-size:var(--text-10);letter-spacing:var(--track-caps)}
 .pos-record .pos-fig{background:var(--bg-control);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-12) var(--space-12);gap:var(--space-4);color:var(--text-muted)}

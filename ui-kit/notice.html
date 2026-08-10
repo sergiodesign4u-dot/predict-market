@@ -98,13 +98,13 @@
         <p class="protect">Funds are held with a regulated custodian. <b>We never hold your keys.</b></p>
         <p class="protect protect-page">The same sentence in a page rather than a sheet, on three placements.</p>
         <div class="widget-box">Payment widget loads here</div>
-        <div class="inline-error">That card was declined. Nothing was charged.</div>
+        <div class="inline-error" role="alert">That card was declined. Nothing was charged.</div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <p class="protect">Funds are held with a regulated custodian. <b>We never hold your keys.</b></p>
         <p class="protect protect-page">The same sentence in a page rather than a sheet, on three placements.</p>
         <div class="widget-box">Payment widget loads here</div>
-        <div class="inline-error">That card was declined. Nothing was charged.</div>
+        <div class="inline-error" role="alert">That card was declined. Nothing was charged.</div>
       </div>
     </div>
 
@@ -129,6 +129,13 @@
   </section>
 
   <section class="tk-sec" id="notred">
+    <p class="tk-note"><b>Six blocks, one job, which is what backlog 16d asked.</b> Measured across
+    the 106 painted screens on 2026-08-10: 113 <code>.protect</code>, 110 <code>.widget-box</code>,
+    8 <code>.inline-error</code>, 7 <code>.reconcile-box</code>, 7 <code>.spinner-box</code> and 2
+    <code>.push-banner</code>, and <b>0 of them hold a control except the permission banner, which
+    holds two of <code>button</code>'s</b>. Six faces that all explain and none that act is one
+    component with six faces, and the table above is the only arrangement in which that can be seen
+    rather than argued.</p>
     <h2 data-n="4">Nothing here is red, including the error</h2>
     <p class="tk-note"><code>DESIGN.md</code> decides it once for the system: <b>green and red are
     outcome semantics, YES and NO</b>. A declined card is not a NO. So

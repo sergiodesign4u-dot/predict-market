@@ -28,7 +28,30 @@ dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)
    further down. Without the colour here it inherits body text and reads as
    loudly as the sentence it qualifies, which is what happened to the .fine
    under a multi-outcome list once the screens stopped carrying their own copy
-   of the cascade. */
+   of the cascade.
+
+   AND THE ROLE STAYS IN THIS FILE, WHICH IS WHAT BACKLOG 19 ASKED. It said
+   `.fine` is a typographic role rather than a part of the dialog, and the
+   question has a number. Measured 2026-08-10 over the 106 painted screens with
+   every dialog OPENED, because 216 of the placements sit in one that is shut at
+   load and a computed-style pass that skips them reads 27 elements and reports
+   248: **248 placements, 239 of them inside a `<dialog>`, 9 not, and deleting
+   the one bare rule below changes exactly those 9.** The role governs nine
+   elements and the dialog governs the other 239.
+   WHAT DECIDES IT IS WHAT THE SYSTEM ALREADY DOES. All 66 purely typographic
+   classes here live in the file of the block they are part of, and the closest
+   one is `.field-label` in `input.css`: 245 placements, the same five
+   containers, and nobody has ever proposed a type file for it. There is no
+   `components/typography.css`; the type SCALE is in `tokens.css` and the page
+   that shows it carries no `.fine` at all. A class that no component owns is
+   written by THREE files or more, which is the threshold `ui-kit/docs/
+   inventory.md` states, and it is compounded onto each owner's own class rather
+   than written bare, which is what `.sel` is in seven files. This is written by
+   two, and the second is `betpanel.css` restyling what it contains, which the
+   rules permit and which it says in its own comment.
+   The row's count expired the day after it was written: 246 was right on
+   2026-08-02 and the tree has carried 248 since 2026-08-03, when the voice pass
+   added the bet panel's minimum line and the sheets' terms line. */
 .fine{font-size:var(--text-11);line-height:var(--leading-base);color:var(--text-muted)}
 dialog.app-dialog{background:var(--bg-surface);border-radius:var(--radius-16);color:var(--text-primary)}
 dialog.app-dialog .sheet-head{border-bottom:var(--hairline) solid var(--border-hairline)}

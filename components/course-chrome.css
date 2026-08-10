@@ -3,7 +3,11 @@
 
    Reads: --bevel-hair, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-pressed, --chrome-text, --focus-ring, --scrim, --swatch-dark, --swatch-light
    Stand:  every page of the kit, because this is the panel they are read through and not a specimen on one of them
-   Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Stands on: 106 ui-visual screens, which is ALL of them, and it is the only file here that
+     does. Every product component stops at 105 and the one it misses is the same each time,
+     overview.html: a contact sheet carrying this sidebar and its own tk-* markup and no
+     product chrome at all. So 105 is the right number everywhere else, and backlog 52's
+     premise held for exactly one file. Re-counted 2026-08-10 from the rendered DOM.
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 /* .wf-screen > a.planned::after was here and is gone (step 7e). .wf-screen is

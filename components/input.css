@@ -99,6 +99,44 @@
 .amount-cur{flex:0 0 auto;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-18);color:var(--text-muted)}
 .amount-cur:has(+ .amount-bet){font-size:var(--text-30);line-height:var(--leading-none)}
 
+/* ============================================================================
+   THE CONTRACT THIS FIELD HANDS TO AN IMPLEMENTATION, 2026-08-10. Backlog 65.
+
+   `type="number"` closes the field to letters and it does not close it. Typed
+   with a keyboard rather than assigned by a script, which are two different
+   paths through the value sanitiser and only one of them is what a person does:
+     abc12 -> 12          the letters are refused, which is what the type buys
+     1.2.3 -> 1.23        the second dot is dropped
+     +5    -> 5           the sign is swallowed and the number survives
+     -5    -> -5          A NEGATIVE STAKE, held as a value, valid=false
+     1e5   -> 1e5         AN EXPONENT, held as a value, valid=TRUE, = 100000
+     5e    -> ''          badInput, and this is the worst of the six
+   The last row is row 95 in a new costume: **the field shows `5e` and reads as
+   the empty string**, so a script that takes `.value` gets nothing while the
+   person looking at it sees two characters. `.validity.badInput` is the only
+   thing that can tell the two apart and nothing here reads it.
+   So the last of the filtering belongs to whatever renders this, and the rule
+   it is handed is one line: **digits and at most one dot, no exponent, no
+   sign**, plus **read `badInput` before reading `value`**. It is written here
+   rather than only on `ui-kit/input.html` because a person wiring this up opens
+   the stylesheet that owns the class, not the stand that demonstrates it.
+
+   AND `min` IS A FLAG, NOT A FILTER, which is the same trap `pattern` was and
+   it arrives through the attribute added to fix a different row. The deposit
+   rail declares `min="10"` on 217 fields and the bet rail `min="1"` on 35,
+   because `PRODUCT.md` decides both numbers and until 2026-08-10 every deposit
+   field said `min="0"` beside a visible `Minimum $10` on 134 screens. What the
+   attribute buys is a validity STATE: `:invalid` matches, `input.validity
+   .rangeUnderflow` is true, and **nothing consults either**, because this
+   product still contains 0 `<form>` elements and no page script calls
+   `checkValidity()`. It does not stop a person typing 4. An implementation
+   reads the flag or it re-checks the number; the markup only states it.
+
+   WHAT THE FIELD DOES ENFORCE ON ITS OWN, so the list is not longer than the
+   truth: it refuses letters, it refuses a value it cannot parse, and it holds
+   the value as a number rather than a string. Everything else is a claim.
+   ============================================================================ */
+
 /* ============================================== the sheet field, 110 of 122 --
    The default, because a default should be the face most of the product wears.
    min-height, not padding: the field used to reach 45px because its padding

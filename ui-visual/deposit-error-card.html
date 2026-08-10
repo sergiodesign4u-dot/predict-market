@@ -639,7 +639,7 @@ document.addEventListener('click', function (e) {
     <div class="sheet-body">
       <div>
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount to add"></div>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="20.00" aria-label="Amount to add"></div>
         <div class="quick"><button class="chip chip-amount" type="button">$10</button><button type="button" class="chip chip-amount sel">$20</button><button class="chip chip-amount" type="button">$50</button><button class="chip chip-amount" type="button">$100</button></div>
       </div>
       <div><span class="field-label">Pay with</span>
@@ -782,10 +782,10 @@ document.addEventListener('click', function (e) {
       })();
     })();
   </script><dialog class="app-dialog" id="outcomeDialog" aria-label="Card declined"><div class="sheet-head"><h1>Card declined</h1><a href="event-feed.html"><button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></a></div><div class="sheet-body">
-          <div class="inline-error">Your card was declined. No funds were taken. Try another card, or connect a USDC wallet to skip cards entirely.</div>
+          <div class="inline-error" role="alert">Your card was declined. No funds were taken. Try another card, or connect a USDC wallet to skip cards entirely.</div>
           <div>
             <span class="field-label">Amount to add</span>
-            <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount to add"></div>
+            <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="20.00" aria-label="Amount to add"></div>
             <div class="quick">
               <button class="chip chip-amount" type="button">$10</button>
               <button type="button" class="chip chip-amount sel">$20</button>

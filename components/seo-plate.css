@@ -3,7 +3,11 @@
 
    Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-plate, --bg-plate-from, --bg-plate-to, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --mask-solid, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-muted, --text-primary
    Stand:  ui-kit/seo-plate.html, and ui-kit/molecules.html#seo-plate for the level and its reason
-   Stands on: 11 ui-visual screens (event-feed-crypto-logged-out.html, event-feed-crypto.html, event-feed-culture-logged-out.html, event-feed-culture.html, event-feed-general-logged-out.html, ...)
+   Stands on: 9 ui-visual screens. The header counted .feed-seo, and that class is shared:
+     patterns/browse-shell.css declares it too, as the SLOT. The plate itself (.feed-seo-wrap,
+     .seo-brand, .seo-by, .seo-h-ic, .seo-tagline, .seo-text, .seo-tick) stands on 9, and on
+     event-feed-logged-out.html and terms.html the slot is present with no plate in it.
+     Re-counted 2026-08-10 from the rendered DOM of all 106 screens, backlog 52.
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .feed-seo{padding:var(--space-12) var(--space-4)}
@@ -12,8 +16,26 @@
 .feed-seo dl{margin:0}
 .feed-seo dt{font-size:var(--text-13);font-weight:var(--weight-bold);margin:var(--space-8) 0 var(--space-2)}
 .feed-seo dd{font-size:var(--text-13);margin:0 0 var(--space-8);line-height:var(--leading-base)}
-.feed-seo{max-width:var(--container-read);margin-left:auto;margin-right:auto;border-top:var(--hairline) solid var(--border-hairline)}
-.feed-seo:first-of-type{border-top:0;padding-top:0;margin-top:var(--space-28)}
+.feed-seo{max-width:var(--container-read);margin-left:auto;margin-right:auto}
+/* A DIVIDER GOES BETWEEN TWO BLOCKS, SO IT IS WRITTEN BETWEEN THEM. 2026-08-10,
+   backlog 62, found by changing something else and measuring what moved.
+   This was `.feed-seo{border-top}` with `.feed-seo:first-of-type{border-top:0}`
+   taking it off the first, and `:first-of-type` does not mean "first in the
+   stack": it means FIRST AMONG SIBLINGS WITH THE SAME TAG NAME. On the nine
+   feed screens every block is a <section> and the first one is also the first
+   section, so the rule fired and nobody looked again. On terms.html the same
+   fourteen blocks were <div>, a `.protect` div stood above them, and the rule
+   therefore matched NONE of them: **the first clause of the Terms document drew
+   a divider above it with nothing above to divide from**, and it took the
+   stack's 28px lead-in off at the same time. One screen, since 2026-08-08.
+   `:first-child` is not the repair either: measured over the painted tree, the
+   first block is the first CHILD on 9 screens of 11 and is not on the other 2.
+   Both selectors answer a question about the neighbours with a fact about the
+   markup. `+` asks the actual question, which is whether there is a block above
+   this one, and it is right whatever tag anybody reaches for next. Same species
+   as the outcome pair told apart by DOM order, backlog 26. */
+.feed-seo{padding-top:0;margin-top:var(--space-28)}
+.feed-seo + .feed-seo{border-top:var(--hairline) solid var(--border-hairline);padding-top:var(--space-12);margin-top:0}
 .feed-seo h2{font-family:var(--font-display);font-size:var(--display-seo);font-weight:var(--weight-bold);letter-spacing:var(--track-head);color:var(--text-primary);margin-bottom:var(--space-8);text-wrap:balance}
 .feed-seo p,.feed-seo dd{color:var(--text-muted)}
 .feed-seo dt{color:var(--text-primary)}
@@ -24,9 +46,11 @@
 .feed-inner>.feed-seo-wrap{position:relative;padding:var(--space-40) var(--space-40) var(--space-40);display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,.82fr);gap:var(--space-40);align-items:stretch}
 .feed-seo-wrap::before{content:'';position:absolute;inset:var(--space-16);pointer-events:none;z-index:var(--z-content);border:var(--hairline) solid var(--border-brass);border-radius:var(--radius-6);clip-path:polygon(0 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%)}
 .feed-seo-wrap::after{content:'';position:absolute;right:var(--space-12);bottom:25px;width:var(--size-28);height:var(--hairline);z-index:var(--z-content);background:var(--border-brass);transform:rotate(-45deg);pointer-events:none}
-.feed-seo-wrap .feed-seo{max-width:none;margin-left:0;margin-right:0;/* engraved groove like the header, tuned for the darker plate surface */
-  border-top:var(--hairline) solid var(--shadow-ink-45);box-shadow:inset 0 1px 0 var(--bevel-faint)}
-.feed-seo-wrap .feed-seo:first-of-type{margin-top:0;border-top:0;box-shadow:none}
+.feed-seo-wrap .feed-seo{max-width:none;margin-left:0;margin-right:0;margin-top:0}
+/* Between them here too, and the groove is engraved like the header's, tuned
+   for the darker plate surface. (0,3,0) beats the (0,2,0) pair above it, so the
+   plate's edge replaces the page's rather than racing it on source order. */
+.feed-seo-wrap .feed-seo + .feed-seo{border-top:var(--hairline) solid var(--shadow-ink-45);box-shadow:inset 0 1px 0 var(--bevel-faint)}
 .feed-seo-wrap .feed-seo p,.feed-seo-wrap .feed-seo dd{max-width:60ch}
 .feed-seo-wrap .feed-seo h2{display:flex;align-items:center;gap:var(--space-12)}
 .seo-h-ic{width:var(--icon-22);height:var(--icon-22);flex:0 0 var(--icon-22);color:var(--text-brass-lit);fill:currentColor}

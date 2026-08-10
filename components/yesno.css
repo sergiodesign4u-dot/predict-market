@@ -17,7 +17,20 @@
    STARTS with yesno. That is what the before-and-after is for.
    The proof the row asked for, run afterwards: reverse the pair in the DOM and "Back YES"
    stays green while "Back NO" stays red. The skeleton placeholders keep no side, because a
-   grey box has no outcome. */
+   grey box has no outcome.
+   AND THE NOTE ABOVE COST THIS FILE ITS FIRST RULE FOR A DAY. It was written into this header
+   on 2026-08-10 and closed with a comment terminator of its own, which left the four lines
+   below it OUTSIDE any comment. CSS error recovery discards a bad construct UP TO AND
+   INCLUDING the next block, so the parser swallowed those four lines together with the rule
+   that followed them: `.yesno` lost `display:flex`, its gap and its bottom margin, and the
+   control this product is named after computed `display:block` on 22 painted screens and on
+   every kit page. **A comment is not inert.** Found 2026-08-10 by a pass counting screens per
+   component, which read the CSSOM and noticed a declared rule that was not in it. Nothing
+   reading the SOURCE could have seen it, and nothing reading a screenshot would have called it
+   wrong either, because a block row of two full-width buttons is a plausible drawing.
+   THE REPAIR IS ALSO THE SECOND HALF OF THE LESSON: the first attempt at this very note quoted
+   the terminator, and a terminator inside a comment closes it. It is spelled out in words here
+   for that reason. If a note has to name the marker, it names it in words.
 
    Reads: --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --edge-shade-strong, --outcome-no, --outcome-no-fill, --outcome-no-fill-soft, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-soft, --outcome-yes-line, --outcome-yes-text, --text-muted, --text-on-no, --text-on-yes, --text-primary, --text-strong
    Stand:  ui-kit/yesno.html, and ui-kit/vitrine.html#yesno for the level and its reason

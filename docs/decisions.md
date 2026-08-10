@@ -44,6 +44,256 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-10 - A comment is not inert, and a divider keyed to a tag name had never once drawn where it was needed
+
+**THE LARGEST THING IN THIS ENTRY IS A DEFECT THIS SESSION PUT THERE ITSELF, ONE COMMIT EARLIER.**
+The note written into the header of `components/yesno.css` on 2026-08-10, recording that the outcome
+pair is told apart by a class rather than by DOM order, was closed with a comment terminator of its
+own. That left the file's `Reads:`, `Stand:`, `Stands on:` and closing lines **outside any comment**,
+and CSS error recovery discards a bad construct up to and including the next block: the parser
+swallowed those four lines together with the rule that followed them. **`.yesno` lost `display:flex`,
+its `gap` and its bottom margin.** Measured before and after over the 122 documents that carry the
+class, at 390 and 1280, control 0: **438 readings computing `display:block`, and on the feed cards
+the YES / NO pair was stacking VERTICALLY**, two full-width buttons at 278x44 each where the design
+is two at 135x44 side by side. On the compact pair the container measured 89 wide against 97.
+
+It shipped in `bad47ec` and it was live for a day. **Nothing that reads the source could have found
+it**, because the source says `display:flex` and says it in the right place; nothing reading a
+screenshot would have called it wrong either, because a stacked pair of outcome buttons is a
+plausible drawing. It was found by a pass counting screens per component that read the **CSSOM** and
+noticed a declared rule that was not in it. The repair carries its own second lesson: **the first
+attempt at the repair note quoted the terminator, which closed the comment again.** A note that has
+to name the marker names it in words. Every stylesheet was then re-read the same way: **0 header
+lines outside a comment and 0 stray markers across 51 files.**
+
+**AND THE SAME SHAPE, ONE LAYER OUT, IN `seo-plate.css`.** Backlog 62 said 22 `.feed-seo` sections
+and 14 divs carry identical prose, and that a `<section>` with a heading is a landmark while a
+`<div>` with one is a heading in the middle of nothing. Both halves needed correcting. **A bare
+`<section>` is not a landmark either**: it maps to `generic` until it has an accessible name, so the
+element and the name move together or nothing moves. All 14 are on **one screen**, `ui-visual/
+terms.html`, they are the clauses of the Terms document, `wireframes/terms.html` does not exist, and
+each already carried the `id` its table of contents jumps to. They are `<section id aria-label>` now,
+the label taken verbatim from the clause's own `<h2>`, which is what the 43 painted sections beside
+them already do. After: 57 sections in the painted tree, **0 unnamed**, 14 landmarks on the one
+screen where jumping between clauses is the whole point, and **0 of the 14 table-of-contents targets
+broken**. The kit's four unnamed specimens on `seo-plate.html` took the label too.
+
+**THE ELEMENT CHANGE MOVED 15px AND THAT IS WHAT FOUND THE REAL DEFECT.** `.feed-seo` carried a
+`border-top` divider with `.feed-seo:first-of-type` taking it off the first block, and
+**`:first-of-type` does not mean first in the stack: it means first among siblings with the same tag
+name**. On the nine feed screens every block is a `<section>` and the first is also the first
+section, so the rule fired and nobody looked again. On `terms.html` the same blocks were `<div>` with
+a `.protect` div above them, so it matched **none** of them: the first clause of the Terms document
+drew a divider above it with nothing above to divide from, and lost the stack's 28px lead-in at the
+same time. `:first-child` is not the repair either, measured: the first block is the first child on
+9 screens of 11 and is not on the other 2. **A divider goes between two blocks, so it is written
+between them**, `.feed-seo + .feed-seo`, which asks the actual question and is right whatever tag
+anybody reaches for next. Same species as the outcome pair told apart by DOM order. After, over the
+14 documents that carry the class at 390, 760 and 1280 with a control of 0: **every screen has
+exactly n-1 bordered blocks and the first has none**, and `terms.html` is the only document that
+moved.
+
+**THE EIGHT ERROR BLOCKS ARE ANNOUNCED NOW, AND THE TWO AXES STAYED TWO.** Backlog 24 and 25.
+`.inline-error` stands on the same 8 screens in both trees plus 4 kit specimens, every one a bare
+`<div>` with no `id`, so nothing could point at it: `aria-invalid` 0 of 105 and `aria-describedby` 0
+of 105. **(a) FIELD-BOUND, 2 screens.** The message is about a field a person is typing in, so the
+block takes an `id` and the field takes `aria-invalid="true"` with `aria-describedby` at it:
+`deposit-minimum-not-met` and `event-detail-bet-insufficient`. Both screens carry a SECOND
+`.amount-input` inside a closed deposit dialog and it is untouched; they are told apart by value and
+by class, and the sweep asserted exactly one match per screen before writing. **(b) STATUS, the other
+6 plus the kit's 4.** Nothing is wrong with a field, the block is the RESULT of an action, so the
+block itself takes `role="alert"`. They are not both, deliberately: a described-by target that is
+also an alert is read twice. **24 edits over 18 documents**, verified from the rendered page rather
+than the source: `role="alert"` on 16 blocks, `aria-describedby` resolving to a real element on 2 of
+2, and the field's own `validity.rangeUnderflow` true on the one that is under its minimum.
+
+**AND THE FIELD'S GUARD WAS WRONG ON THE OTHER RAIL, WHICH IS ROW 94 ONE SCREEN OVER.** Row 94 took
+the 35 bet fields from `min="0"` to `min="1"` when the $1 minimum was decided. The deposit rail was
+not looked at: **217 fields carried `min="0"` beside a visible `Minimum $10` on 134 screens**, and
+`PRODUCT.md` has said the deposit minimum is $10 since the same day. `min="10"` on all 217, over 210
+documents. The withdraw field and the kit's two unscoped specimens keep `min="0"` because no rule
+names them.
+
+**WHICH MADE ROW 65 WORTH WRITING PROPERLY, BECAUSE `min` IS `pattern` ARRIVING A SECOND TIME.** The
+row asked for one line of contract at handoff. What the attribute buys is a validity STATE:
+`:invalid` matches and `validity.rangeUnderflow` is true, and **nothing consults either**, because
+this product still contains **0 `<form>` elements** and no page script calls `checkValidity()`. It
+does not stop a person typing 4. Measured by TYPING rather than by assigning, which are two different
+paths through the value sanitiser and only one of them is what a person does: `abc12` gives `12`,
+`1.2.3` gives `1.23`, `+5` gives `5`, **`-5` gives `-5`**, **`1e5` gives `1e5` and is VALID**, and
+**`5e` gives the empty string with `badInput` true**. That last one is item 95 in a new costume: the
+field shows two characters and reads as nothing, and only `badInput` can tell it from a field nobody
+touched. The contract is two lines now, in `components/input.css` and on `ui-kit/input.html`: **digits
+and at most one dot, no exponent, no sign**, and **read `badInput` before reading `value`**.
+
+**THE SECOND ALPHA LADDER IS GONE AND WHAT LOOKED LIKE THE REST OF IT IS A DIFFERENT OPERATION.**
+Backlog 14 said 20 declarations build a colour with `color-mix` at 16 percentages beside the declared
+`--brass-a*` one. Counted today: **0 `color-mix` on `--color-action` ends in `,transparent)`**. What
+is left is 34 mixes of which 28 end in a SOLID, and **an alpha and a blend are not the same thing**:
+an alpha is one ink at a depth and belongs on a ladder because the ground is whatever the element
+stands on, while brass mixed into `--bg-control` at 11 per cent IS a ground, and the number that is
+right depends on the surface being tinted. A shared ladder there would be a rung fitted to one
+surface and applied to another. The six that do end in transparent are three other roles, one
+gradient each, and three values inside one gradient are not steps.
+
+**`50%` IS THE SIXTH CORNER SHAPE AND IT IS LEGAL ON A SQUARE.** Backlog 43, the shape half. On a
+square `50%` and `--radius-pill` draw the same circle; on a rectangle one is an ellipse and the other
+a stadium, so the rule is the box and not the value. Read from the paint at 390 and 1280 across six
+screens: **all 7 in `components/` stand on a box whose two axes are equal, 0 on a rectangle**, so the
+ambiguity the row was filed for does not arise anywhere. Written beside the radius ladder so the
+first rectangle to reach for it is caught rather than counted. The row's other half, 81 raw px that
+are genuine layout dimensions, is Responsive's and stays open.
+
+**ROW 52'S PREMISE WAS RIGHT ABOUT THE TREE AND WRONG ABOUT THE REPAIR.** Sixteen component headers
+say the painted tree is 105 screens and it is 106. Measured from the rendered DOM of all 106, per
+screen and not per occurrence, with a control of 0 over 465 distinct classes: **15 of the 16 are
+correct.** Every product component stops at 105 and the one it misses is the same each time,
+`overview.html`, a contact sheet carrying no product chrome at all. The sixteenth,
+`course-chrome.css`, is the only file here standing on all 106. Two other headers were wrong for a
+different reason and **both were a shared class counted as a placement**: `oddsbar` said 9 and stands
+on 21, because the header counted `.ed-oddsbar` and missed `.oddsbar` on twelve feeds; `seo-plate`
+said 11 and stands on 9, because `.feed-seo` is declared by `patterns/browse-shell.css` too, as the
+SLOT, and on two screens the slot is there with no plate in it. **Three headers edited, aggregate
+error 15 screens.** Under the naive reading, counting every declared class including the shared ones,
+9 headers would read as wrong and the error would be 315, and the gap between 15 and 315 is exactly
+what the row meant by "cannot be fixed by substitution". `.footer-soon` was painted by `footer.css`
+and missing from its own class list, and is in it now.
+
+**`.fine` IS A PART AND THE PART BELONGS TO `dialog`, AND THE QUESTION HAD A NUMBER NOBODY HAD
+TAKEN.** Backlog 19 said it is a typographic role rather than a part of the dialog. Measured over the
+106 painted screens with every dialog **opened**, which is the whole difficulty, because 216 of the
+placements sit in one that is shut at load and a computed-style pass that skips them reads 27
+elements and reports 248: **248 placements, 239 inside a `<dialog>`, 9 not, and deleting the one bare
+rule changes exactly those 9.** The role governs nine elements and the dialog governs the other 239.
+What decides it is what the system already does rather than a preference: **all 66 purely typographic
+classes here live in the file of the block they are part of**, there is no `components/
+typography.css`, and the closest twin is `.field-label` in `input.css` at 245 placements in the same
+five containers, which nobody has ever proposed a type file for. The threshold for a class no
+component owns is three files or more, compounded onto each owner's own class rather than written
+bare, which is what `.sel` is in seven; this is written by two, and the second is `betpanel.css`
+restyling what it contains. **Three of the row's supporting facts had expired**: its count (246 was
+right on 2026-08-02 and the tree has said 248 since 2026-08-03, and `ui-kit/dialog.html` already said
+so), its "only one file writes it", and its "three rules name another container", which is one rule
+and that rule decides nothing.
+
+**16d WAS FOUR ROWS, NOT FIVE, AND ALL FOUR ARE ONE COMPONENT.** `account` stopped being a row on
+2026-08-08 when row 63 deleted the file, its import, its shelf section, its inventory row and its kit
+page together. **And the machine all of them were opened to protect is gone**: every one was filed
+because the level arithmetic had to work around it, `ui-kit/_levels.py` went with the other 62
+scripts on 2026-08-07, and that was verified independently of the prose rather than taken from it.
+So none of the four splits would change a level, a cascade order or a rendered pixel, while each
+would still cost what item 17 cost. **Each is therefore closed with the sentence that closes it, in
+its own file**, because this repository's rule is that a rule with no reason is a rule somebody
+argues away: `card` is one component with two contents, 63 binary holding `.yesno` and 21 multi
+holding `.options` out of the same fourteen classes; `notice` is six faces and one job, and **0 of
+them hold a control except the permission banner, which holds two of `button`'s**, which is that
+page's own rule proved rather than asserted; `position` is one row in three arrangements, and the
+list already left to `patterns/position-list.css` with 16a; `filters` names `toggle` as its second
+component and **the toggle left on 2026-08-05**, so the row was describing a file that had stopped
+existing in that shape.
+
+**AND A SELECTOR NAMED A CONTROL THIS PRODUCT DOES NOT HAVE.** `filters.css` hid its inputs with
+`.filter-panel input[type=radio],.filter-panel input[type=checkbox]`, and the second half matched
+**0 elements on all 106 painted screens and all 54 kit pages**: there are three checkboxes in the
+whole product and all three are on `cookie-consent.html`, none in a filter panel. Every input in
+every filter panel is a radio. The paragraph above the rule said "the sort radiogroup and the
+category checkboxes", so the rule and the prose that justified it named the same thing that is not
+there, and both are corrected rather than one quietly deleted. Verified after: `ui-kit/filters.html`,
+`cookie-consent.html`, `my-profile.html` and `event-detail.html` all read **0 changed elements** at
+both widths with every `<details>` and `<dialog>` opened, control 0, and the 16 filter inputs on the
+feed are 16 radios with 16 still hidden. **A selector that matches nothing agrees with every
+hypothesis**, which is the same trap the survey met one layer down: a `deleteRule` sweep over
+`document.styleSheets` reaches nothing in this system, because every component sheet is an `@import`
+living on `CSSImportRule.styleSheet`, and its first run reported "0 removed, 0 pages differ" for
+every rule tested, which reads exactly like proof that the rules are inert. Recursed properly it
+removed 318 to 530 instances a pass. **Always print what the instrument removed.**
+
+**THE LAST UNREAD SURFACE WAS READ, AND MORE THAN HALF OF WHAT THIS PRODUCT SHIPS IS ARTWORK.**
+Backlog 5, open since 2026-07-28 and never a defect list: it named a place where a bug would be
+invisible because nothing had ever looked. 106 painted screens, 390 and 1280, both themes, 424
+renders per pass, 16 passes, against a FROZEN copy of the tree because the live one was under edit
+throughout and **the control caught it moving**, +7,431 bytes on every one of the 424 renders, all of
+it stylesheet. **1,367,334 bytes and 58 requests per screen on a cold cache, 48.4 per cent of it the
+same bytes every time.** The split is image **53.0** per cent, stylesheet 37.5, font 4.5, document
+3.7, script 1.4.
+
+**THE EVENT PHOTOGRAPH IS 1600 x 1073 AND IT IS DRAWN AT 56 x 88.** Four JPEGs totalling 1,158,832
+bytes, and the box measured in a browser is 56 x 88 at 390 **and** 56 x 88 at 1280. **That is not a
+`srcset` problem and calling it one would send the fix the wrong way**: the box does not change with
+the viewport, so what is wanted is one correctly sized asset rather than a set of them. The painted
+tree carries 0 `srcset` and five `<img>` elements in total; everything else is a CSS background, and
+the event photograph is one of the three things the rules allow on a `style=` attribute, so the 111
+inline background declarations are correct and are not the finding. **And the footer decoration is
+encoded at eighteen times the density of the one photograph that was exported properly**: three
+640px webp totalling 646,804 bytes painting into a 137 x 94 box at `opacity:.5` behind a mask, which
+is 0.72 to 0.92 bytes per pixel against `hero-capitol.webp` at 1400 x 788 and **0.041**. The proof
+that the strip is the payload is a screen: `overview.html` is the only one without the trust strip
+and it is 608 KB lighter than the next lightest. Row 99.
+
+**THE STRUCTURAL LAYOUT SHIFT IS 0.0000 AND THE ENTRANCE ANIMATION CONTRIBUTES EXACTLY 0**, which is
+worth writing down because the animation was the prime suspect and this repository has already paid
+once for believing it: the 3,587 differing rows that turned out to be entrances caught mid-flight.
+**Every shift that exists is the font.** 616 of 616 shift entries landed at or after the moment the
+delayed face arrives; the sum before it is exactly zero. `font-display:swap` on all 8 faces and the
+behaviour is FOUT and never FOIT, proven by ink painted at 60 to 90ms while `fonts.status` still read
+loading. The swap **moves a median 70 per cent of the laid-out text**, 3,488 elements of 6,492, and
+the document height moves 20 to 21px on the feed and the detail. It is late enough to be seen because
+**0 of 106 screens carry a `<link rel="preload">`** and the face is discovered three levels down, and
+because there is no `size-adjust` and no `ascent-override` anywhere, so the fallback is not
+metric-matched.
+
+**AND THE AMPLIFIER LIVES AT ONE WIDTH, WHICH IS THE RUNG LESSON ARRIVING ON A NEW AXIS.** 17 screens
+open `dialog#outcomeDialog` with `showModal()`. At 390 the sheet fills the viewport, so when the swap
+shrinks its content the modal RE-CENTRES and the whole sheet moves with an impact fraction near 1.
+Mean CLS at 390 is **0.0260 for those 17 and 0.0004 for the other 89, a factor of 65**, worst
+`sign-in-error.html` at **0.2050**; the same document at 1280 reads **0.0002**. An audit reading only
+1280, or averaging the two widths, would report nothing. Theme changes none of it: 390 dark and 390
+light both sum to 0.4793. Row 100. **The warm-cache control was not 0 and the cause was found before
+the number was quoted**, a race between applying a cached face and first paint, nondeterministic, and
+it is recorded rather than counted.
+
+**A SAFE FIELD STOPPED BEING A PROPERTY OF THE DRAWING, AND NOBODY HAD RE-READ IT.** Backlog 30.
+The rule is that a mark keeps 2 modules of its 24-unit cell clear of ink. While the stroke was 2.2
+USER UNITS it scaled with the box, so half of it was 1.10 modules at every size and each mark had ONE
+field. `vector-effect:non-scaling-stroke`, taken on 2026-08-10 to close row 29, makes 1.65 a SCREEN
+width, so half of it is 0.825px, which is **1.65 modules in a 12px box and 0.90 in a 22px one**: the
+same drawing now has a different field at every size it stands in. Measured by INK rather than by the
+path, painted at device scale 10 and summed by opaque pixel over the eleven stroked marks, at 12 / 16
+/ 18 / 22: close and chevron 4.20 / 4.65 / 4.80 / 5.02, six marks at 3.20 / 3.75 / 3.87 / 4.04, the
+tick at 2.20 / 2.70 / 2.80 / 3.05, and **menu and send at 1.20 / 1.65 / 1.87 / 2.07**. So **two marks
+fall inside the rule and only below 22px**, and they fall together because both paths sit 3 modules
+from the edge. The row named one and its number, 1.9, is the 18px column: **right for one box of four
+and blind to the second mark**, which is what a single figure does to a quantity that has stopped
+being single. **The rule is restated on the PATH and not on the ink**, because the path is what a
+person draws and the overhang is arithmetic anybody can redo, and on that reading all eleven clear 2
+with the smallest at 3, so nothing is redrawn. What is left over is a different question and it is
+named rather than answered: a 12px mark carries the same 1.65px of ink as a 22px one, so it reads
+heavier and stands nearer its own edge, and whether a 12px stroked mark should exist is optical
+sizing's to decide.
+
+**THE PROOF FOR THE WHOLE PASS, TAKEN AT THE RUNGS AND ONE PIXEL EITHER SIDE OF EACH.** 160
+documents in `ui-visual/` and `ui-kit/`, twelve widths, both the tree at `bad47ec` and the tree
+after: **360, 390, 639, 640, 641, 652, 759, 760, 899, 900, 901, 1280**, which is every rung, the
+pixel below it and the band that once put 73 screens into horizontal scroll. **1,920 renders per
+tree. Horizontal scroll 0 before and 0 after, page errors 0 before and 0 after, 0 introduced and 0
+removed.** So the `.yesno` restoration moved the layout of 122 documents, put a stacked pair of
+buttons back on one line across every feed card, and cost nothing at any width. The element-level
+comparisons behind each finding above were taken separately and each one proved its own control
+first: 0 of 8,744 rows on the aria pass, 0 on the `.feed-seo` pass over 14 documents at three
+widths, 0 on the `.yesno` pass.
+
+**THE COMPONENT-BOUNDARY ROWS THAT WERE ALREADY ANSWERED AND NEVER STRUCK.** 16a: all five
+compositions are in `components/patterns/` and have been since the patterns step, six files; the page
+frame keeps the plate that `.feed-inner` and `.ed-main` stand on, deliberately, and
+`patterns/detail-shell.css` already says so in its own header. 16c: `.tc-page` is in `base.css` with
+its reason and `toast.css` carries the pointer. Both are item 74's shape again, a fix that landed
+with its row left open. 16b is the one that needed work and it was a page rather than an edit:
+`ui-kit/patterns.html` carries **the register of what stands below the threshold** now,
+`.ptab-panel` at 2 screens and `.read-col` at 1, with the reason the threshold counts SCREENS and not
+occurrences.
+
+---
+
 ## 2026-08-10 - An error is an object and an empty is an absence, and the stand for trust was showing three claims nobody ships
 
 **13 WAS TWO ROWS AND ONE OF THEM WAS FREE.** The row read, in full: "Error state vs empty state are

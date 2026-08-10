@@ -65,11 +65,11 @@
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount to add"></div>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="20.00" aria-label="Amount to add"></div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="20.00" aria-label="Amount to add"></div>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="20.00" aria-label="Amount to add"></div>
       </div>
     </div>
     <p class="tk-why"><b>There is no plate behind this specimen, and until 2026-08-08 there had to
@@ -124,7 +124,7 @@
         <thead><tr><th></th><th>before</th><th>after</th></tr></thead>
         <tbody>
           <tr><td>the mark</td><td>inside the value</td><td><b>a sibling, <code>.amount-cur</code></b></td></tr>
-          <tr><td>the element</td><td><code>type="text"</code></td><td><b><code>type="number"</code></b>, with <code>step="0.01" min="0"</code></td></tr>
+          <tr><td>the element</td><td><code>type="text"</code></td><td><b><code>type="number"</code></b>, with <code>step="0.01"</code> and the rail's own <code>min</code>: <b>10</b> on the 217 deposit fields, <b>1</b> on the 35 bet fields</td></tr>
           <tr><td>the value</td><td><code>$20.00</code></td><td><code>20.00</code>, a number a machine can read</td></tr>
           <tr><td>the guard</td><td>a pattern that never fired, on 113 of 121</td><td><b>the browser</b>, on 121 of 121</td></tr>
           <tr><td>the two trees</td><td>disagreed on 8 fields</td><td><b>identical markup, 116 grey and 121 painted</b></td></tr>
@@ -139,7 +139,41 @@
     <code>e</code>, <code>+</code> and <code>-</code> are still reachable in a number input on a
     desktop keyboard. <b>Markup cannot close a field completely</b>; the last of the filtering is the
     implementation's, and this page says so instead of leaving a reader to assume the field is
-    shut.</p>
+    shut. <b>The contract is one line:</b> digits and at most one dot, no exponent, no sign, and it
+    is written in <code>components/input.css</code> as well, because a person wiring this up opens
+    the stylesheet that owns the class and not the page that demonstrates it.</p>
+    <p class="tk-why"><b>Typed with a keyboard, not assigned by a script, because those are two
+    different paths through the value sanitiser and only one of them is what a person does.</b>
+    Measured 2026-08-10 on a field carrying <code>type="number" step="0.01" min="10"</code>:</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>typed</th><th><code>.value</code></th><th>what it means</th></tr></thead>
+        <tbody>
+          <tr><td><code>abc12</code></td><td><code>12</code></td><td>the letters are refused, which is what the type buys</td></tr>
+          <tr><td><code>1.2.3</code></td><td><code>1.23</code></td><td>the second dot is dropped</td></tr>
+          <tr><td><code>+5</code></td><td><code>5</code></td><td>the sign is swallowed and the number survives</td></tr>
+          <tr><td><code>-5</code></td><td><code>-5</code></td><td><b>a negative stake</b>, held as a value</td></tr>
+          <tr><td><code>1e5</code></td><td><code>1e5</code></td><td><b>an exponent</b>, held as a value, and <code>valid</code> is <b>true</b>: it is 100000</td></tr>
+          <tr><td><code>5e</code></td><td><b><code>''</code></b></td><td><b>the field shows two characters and reads as empty.</b> Only <code>validity.badInput</code> can tell that from a field nobody touched</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-lab tk-bad"><b>The last row is item 95 in a new costume.</b> <i>That one was
+    <code>money()</code> writing <code>$5.00</code> into a number field and the field going empty.
+    This is a person typing <code>5e</code> and the field going empty. Both are a value a reader can
+    see and a script cannot, and both are invisible to a source read and to a rendering at rest.
+    <b>Read <code>badInput</code> before reading <code>value</code></b> is the second line of the
+    contract.</i></p>
+    <p class="tk-lab tk-bad"><b>And <code>min</code> is a flag, not a filter, which is
+    <code>pattern</code> arriving a second time.</b> <i>Until 2026-08-10 every deposit field carried
+    <code>min="0"</code> beside a visible <b>Minimum $10</b> on 134 screens; it is
+    <code>min="10"</code> on the 217 deposit fields and <code>min="1"</code> on the 35 bet fields
+    now, which is what <code>PRODUCT.md</code> decides. What that buys is a validity STATE:
+    <code>:invalid</code> matches and <code>validity.rangeUnderflow</code> is true. <b>Nothing
+    consults either</b>, because this product still contains 0 <code>&lt;form&gt;</code> elements
+    and no page script calls <code>checkValidity()</code>. It does not stop a person typing 4. The
+    difference from <code>pattern</code> is that the number is now stated where a machine can read
+    it rather than stated nowhere.</i></p>
     <p class="tk-note">The spinner the browser adds with the type is suppressed in two spellings,
     because the two engines hide it differently. <b>Both are written against the class rather than
     the type</b>, so if the field ever stops being a number the rules do nothing and say so.</p>

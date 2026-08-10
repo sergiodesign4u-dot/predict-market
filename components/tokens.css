@@ -179,6 +179,24 @@
   --radius-10:10px;    /* the default control corner */
   --radius-16:16px;    /* a sheet, a dialog head, a plate */
   --radius-pill:100px; /* a track, a badge, anything with round ends */
+  /* AND `50%` IS THE SIXTH SHAPE, WHICH IS LEGAL ON A SQUARE AND ON NOTHING
+     ELSE. Backlog 43, the shape half, decided 2026-08-10 by reading the boxes.
+     The two are not interchangeable: on a box whose width is its height they
+     draw the same circle, and on a rectangle `50%` is an ELLIPSE while
+     --radius-pill is a stadium. So the rule is the box, not the value.
+     **`50%` means: this box is square and I want a circle.** --radius-pill
+     means: this box is longer than it is tall and I want round ends. A circle
+     asked for with 100px is still a circle and a stadium asked for with 50% is
+     not a stadium, so only one of the two directions is safe and it is not the
+     one that looks tidier.
+     CHECKED, ALL SEVEN IN components/: dialog.css twice at 210 x 210, and
+     comments.css --size-28, hiw-dialog.css 224 x 224, course-chrome.css
+     --size-4, hero.css --size-8, toggle.css --icon-16, each declaring its two
+     axes equal. **0 of the 7 stand on a rectangle**, so the ambiguity the row
+     was filed for does not arise anywhere in the system, and it is written here
+     so that the first rectangle to reach for `50%` is caught rather than
+     counted. The row's other half, 81 raw px that are genuine layout
+     dimensions, is Responsive's and stays open. */
 
   /* ---- control and icon sizes ----
      Value named like the rest of the geometry, and each one says what it is for.
@@ -232,6 +250,37 @@
      1.65 because 1,122 of the 2,044 already rendered there: it is the default mark at 18,
      and it is the weight the set was drawn against. docs/backlog.md 29. */
   --stroke-mark:1.65;
+  /* AND THE SAFE FIELD STOPPED BEING A PROPERTY OF THE DRAWING THE DAY THIS
+     TOKEN ARRIVED. Backlog 30, closed 2026-08-10, and the row named one mark
+     where there are two.
+     A safe field is the distance from the cell edge to the ink, in 24ths, and
+     the rule is 2. While the stroke was 2.2 USER UNITS it scaled with the box,
+     so half of it was 1.10 modules at every size and a mark had ONE field.
+     `vector-effect:non-scaling-stroke` makes 1.65 a SCREEN width, so half of it
+     is 0.825px, which is 1.65 modules in a 12px box and 0.90 in a 22px one:
+     **the same drawing now has a different field at every size it stands in.**
+     Measured by INK rather than by the path, painted at device scale 10 and
+     summed by opaque pixel, over the eleven stroked marks in the product:
+                             12px    16px    18px    22px
+       close (sheet), chevron   4.20    4.65    4.80    5.02
+       envelope, close (large),
+       arrow-right, send-note,
+       note-flag, plus          3.20    3.75    3.87    4.04
+       tick                     2.20    2.70    2.80    3.05
+       menu, send               1.20    1.65    1.87    2.07
+     **Two marks fall inside the rule and only below 22px**, and they fall
+     together because both paths sit 3 modules from the edge: the menu, whose
+     three bars run x 3 to 21, and the send arrow, whose tip touches x 21. Row 30
+     read 1.9 for the menu, which is the 18px column, and it was right for one
+     box of four and blind to the second mark.
+     THE RULE IS RESTATED ON THE PATH AND NOT ON THE INK, because the path is
+     what a person draws and the overhang is arithmetic anybody can redo:
+     **a mark's geometry keeps 2 modules clear of the cell, and the ink then
+     overhangs it by 0.825px whatever the box.** All eleven clear that with the
+     smallest at 3. What the table above is for is the other question, which is
+     not this one: a 12px mark carries the same 1.65px of ink as a 22px mark, so
+     it reads heavier and stands closer to its own edge, and whether a 12px
+     stroked mark should exist at all belongs to whoever sets optical sizing. */
   /* The measurement scale. It shipped with two steps, 56 and 72, and a product
      needs ten: every other box in the system therefore borrowed a --space-* step
      for its own width and height. That reads as an accident in the file and it is
@@ -732,6 +781,31 @@
                                               a fill, an edge and a glow at one depth of the metal .           From: the funds-safety border */
   --tint-brass-45:var(--brass-a45);        /* from: the price-moved border */
   --tint-brass-60:var(--brass-a60);        /* from: a selected outcome row */
+  /* THE SECOND ALPHA LADDER IS GONE, AND WHAT LOOKED LIKE THE REST OF IT IS A
+     DIFFERENT OPERATION. Backlog 14, closed 2026-08-10 by counting again.
+     The row said 20 declarations built a colour with color-mix at 16 different
+     percentages beside the declared --brass-a* one. Counted today across
+     components/ and components/patterns/: **0 color-mix on --color-action ends
+     in `,transparent)`**. Every one of them is a token now, which is what the
+     six rungs above are for, and the note beside --tint-brass-16 records the
+     three copies that were hidden by their own spelling.
+     WHAT IS LEFT IS 34 MIXES AND 28 OF THEM END IN A SOLID: --bg-control (10),
+     --border-hairline (7), --bg-pressed (4), --bg-surface (3), --color-action
+     (2), --text-primary (1), --control-knob (1). **An alpha and a blend are not
+     the same thing.** An alpha is one ink at a depth and it belongs on a ladder,
+     because the ground underneath is whatever the element happens to stand on.
+     A blend is a GROUND: brass mixed into --bg-control at 11 per cent is a
+     tinted control, and the number that is right depends on the ground being
+     tinted, so a shared ladder would be a rung fitted to one surface and applied
+     to another. That is the same mistake as a media query reading the window
+     while the layout gets the container.
+     THE SIX THAT DO END IN `,transparent)` ARE THREE OTHER ROLES and none of
+     them is a ladder: --scrim-photo at 34/55/72 is one gradient over a
+     photograph, --outcome-yes at 55 is the odds bar's fade written twice at one
+     value, and --result-won at 42 is a single dialog head. A ladder is a set of
+     steps a reader has to choose between; three values inside one gradient are
+     not steps. If a fourth placement ever wants one of them, it gets a token
+     first, which is the rule that emptied this row. */
   --edge-groove-dark:var(--graphite-950);  /* from: 27 declarations, the recessed line */
   --edge-groove-light:var(--bone-a06);     /* from: 25 box-shadows, the lit lip of the same groove */
 
