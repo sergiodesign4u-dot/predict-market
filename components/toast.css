@@ -13,7 +13,12 @@
 .toast-inner{display:flex;flex-direction:column;gap:var(--space-12)}
 .toast-group{display:flex;flex-direction:column;gap:var(--space-8)}
 .toast{display:flex;align-items:center;gap:var(--space-12);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);padding:var(--space-12) var(--space-12);box-shadow:0 18px 40px -24px var(--shadow-ink),inset 0 1px 0 var(--edge-groove-light)}
-.toast .ic-sm{width:var(--icon-18);height:var(--icon-18);flex:0 0 var(--icon-18);stroke:var(--text-brass);color:var(--text-brass);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+/* THE STROKE WIDTH LEFT THIS RULE ON 2026-08-10. It said 2.2, in user units, which is
+   the family's old declaration copied onto a bigger box: 2.2 in a 24 viewBox drawn at 18
+   renders 1.65, so this rule was hand-computing the house weight and getting it right by
+   accident. `--stroke-mark` is that number directly now, and base.css pairs it with
+   non-scaling-stroke, so nothing here has to know the box. docs/backlog.md 29. */
+.toast .ic-sm{width:var(--icon-18);height:var(--icon-18);flex:0 0 var(--icon-18);stroke:var(--text-brass);color:var(--text-brass);fill:none;stroke-linecap:round;stroke-linejoin:round}
 .toast-msg{flex:1;color:var(--text-primary);font-size:var(--text-14);font-weight:var(--weight-medium)}
 /* THE DISMISS LEFT THIS FILE ON 2026-08-06 and there is nothing left here to say
    about it, which is the test the migration is passing: a toast is a message and
@@ -56,5 +61,5 @@
    confirm, not a defect to fix. */
 .toast-close{flex:0 0 auto}
 .toast.toast-error{border-color:var(--border-notice);background:var(--bg-control);box-shadow:0 22px 46px -22px var(--shadow-ink),inset 0 1px 0 var(--bevel-notice)}
-.toast.toast-error .ic-sm{width:var(--icon-22);height:var(--icon-22);flex:0 0 var(--icon-22);stroke:var(--text-primary);color:var(--text-primary);stroke-width:2.4}
+.toast.toast-error .ic-sm{width:var(--icon-22);height:var(--icon-22);flex:0 0 var(--icon-22);stroke:var(--text-primary);color:var(--text-primary)}
 .toast.toast-error .toast-msg{color:var(--text-primary);font-weight:var(--weight-semibold)}

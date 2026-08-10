@@ -78,7 +78,7 @@ Without it, no job is closable.
 | Thumbnail image | Per-event image used on the card as a visual differentiator. Real field; renders as a grey-box placeholder in wireframes (conventions Addition A), a sample image in concept and a real image in production. |
 | Category | Politics · Crypto · Culture · General. Each category is now a screen with its own page (see Wireframe build pass #1), not only a filter on the feed. |
 | Sub-category | NEW (wireframe build pass). A finer tag within a category (e.g. Politics: Trump, Midterm Elections, Primaries, Congress, Courts, Epstein, Government Shutdown). Powers the sub-category rail on the category page. Taxonomy is illustrative sample data at wireframe stage. |
-| Frequency / recurrence | One-time or recurring. Recurring cadence: Hourly · Daily · Weekly · Monthly. NEW (wireframe pass): introduces recurring markets, and powers the Frequency filter on the Event Feed. Resolution mechanics for recurring markets are to be detailed later (each cadence instance resolves on its own schedule). |
+| Frequency / recurrence | One-time or recurring. Recurring cadence: Hourly · Daily · Weekly · Monthly. NEW (wireframe pass): introduces recurring markets, and powers the Frequency filter on the Event Feed. **DECIDED 2026-08-10** (`docs/backlog.md` #11): every cadence instance is its OWN Event, with its own window, its own price and its own resolution, and the cadence is a SERIES the instances belong to. The Frequency filter filters by the series attribute. No new entity: Active Bets, notifications and the resolution record keep working on the Event they already work on. |
 | Current probability (%) | The "price" - primary display number on every card |
 | Probability chart | History of odds movement over time |
 | Context / narrative | Why this event matters, what drives the odds, key arguments for YES and NO ← **our differentiator (FJ2)** |
@@ -526,7 +526,16 @@ Toast / notification     component  aria-live, transient         action result, 
 ```
 
 Footer and legal destinations, promised by the footer node (`seo.md`); the destination is
-registered here so map and footer stay in sync. **What each is MADE of is no longer an open
+registered here so map and footer stay in sync. **AND ON 2026-08-10 THE FOOTER STOPPED PROMISING
+WHAT THIS LIST OMITS** (`docs/backlog.md` 27): eight labels stood in the footer of every screen and
+on this map nowhere - `Sports`, `Trending topics`, `API / Developers`, `Status`, `Careers`, `Press`,
+`Brand`, `Geo restrictions` - and they were cut rather than registered. `Sports` is the sharpest of
+the eight and the reason the decision went that way: the four categories are locked for MVP and
+Sports is post-MVP, so a fifth in the footer contradicted the category decision and not only the
+map. Three of the four `Company` links were in the eight, so that column is gone and `About` sits in
+`Support`. **`Geo restrictions` is the one to re-read when compliance is written**: the requirement
+is real and stays in `PRODUCT.md`, and if it needs a page, it gets a node here first and a footer
+label second, in that order. **What each is MADE of is no longer an open
 question:** `ia/docs/blocks.md` banks them as Type 1, the static content page, with two body
 profiles - DOCUMENT for the four legal pages and STATEMENT for About - and `ia/docs/pages/seo.md`
 section 6 carries their A-E. The bank is by TYPE, so one pass covered five nodes.

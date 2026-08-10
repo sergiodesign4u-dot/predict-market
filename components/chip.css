@@ -223,8 +223,9 @@
    only opens a containing block and nothing in the chip is positioned against
    it; it came from components/catnav.css with the face and it is written here so
    that whoever deletes it deletes it on purpose. */
-/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
-@media(max-width:640px){
+/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+   because the rung belongs to the desk: tokens.css, page frame. */
+@media(max-width:639.98px){
   .chip-nav{position:relative}
 }
 /* THREE CHIPS DECLARE A RUNG, 2026-08-10 (docs/backlog.md 40). All three stood at a height

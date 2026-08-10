@@ -29,7 +29,20 @@
 .footer-trust .trust-item{position:relative;overflow:clip;align-items:center;gap:var(--space-12);padding:var(--space-16) var(--space-20);min-height:82px;min-width:0;background-color:var(--bg-card);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-md),inset 1px 0 0 var(--bevel-hair),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 24px 48px -30px var(--shadow-ink-85),0 10px 22px -16px var(--shadow-ink-72)}
-.footer-trust .tr-ic{color:var(--text-brass-lit);width:var(--icon-22);height:var(--icon-22);flex:0 0 22px;padding:var(--space-8);box-sizing:content-box;border-radius:var(--radius-10);position:relative;z-index:var(--z-content);fill:none;stroke:var(--text-brass-lit);box-shadow:none;background:linear-gradient(140deg,color-mix(in oklab,var(--color-trust) 24%,var(--bg-control)),var(--bg-control) 74%);border:var(--hairline) solid color-mix(in oklab,var(--color-trust) 32%,var(--border-hairline))}
+/* A STROKED MARK IN THIS BLOCK TAKES THE HOUSE WEIGHT, and where the 0.92 actually was is
+   worth writing down, because the first version of this comment blamed the product and the
+   product was innocent. In the painted tree these marks are `class="ic tr-ic"` with a
+   `<use>`: they are the FILLED family, the floor gives them `stroke:none!important`, and a
+   stroke width here can never reach them. The only stroked `.tr-ic` in the repository is on
+   `ui-kit/trustbar.html`, six specimens carrying `tr-ic` ALONE with a hand-written path and
+   no stroke-width declaration at all, so they took the SVG default of 1 in a 24 viewBox
+   drawn at 22 and rendered **0.92px** - under one device pixel at DPR 1, a mark that smears
+   rather than draws. They render 1.65 now. The declaration stays because it is this block's
+   answer for any stroked mark that stands in it, and because the stand was the thing
+   drawing at 0.92. That the stand draws this strip with different marks AND different copy
+   from the product is a separate finding: docs/backlog.md 92. docs/backlog.md 29. */
+.footer-trust .tr-ic *{vector-effect:non-scaling-stroke}
+.footer-trust .tr-ic{stroke-width:var(--stroke-mark);color:var(--text-brass-lit);width:var(--icon-22);height:var(--icon-22);flex:0 0 22px;padding:var(--space-8);box-sizing:content-box;border-radius:var(--radius-10);position:relative;z-index:var(--z-content);fill:none;stroke:var(--text-brass-lit);box-shadow:none;background:linear-gradient(140deg,color-mix(in oklab,var(--color-trust) 24%,var(--bg-control)),var(--bg-control) 74%);border:var(--hairline) solid color-mix(in oklab,var(--color-trust) 32%,var(--border-hairline))}
 .footer-trust .tr-txt{position:relative;z-index:var(--z-content)}
 .footer-trust .tr-txt b{color:var(--text-primary)}
 .footer-trust .tr-txt i{color:var(--text-muted)}
@@ -37,7 +50,8 @@
 .footer-trust .trust-item:nth-child(1)::after{background-image:url("../assets/trust-column.webp")}
 .footer-trust .trust-item:nth-child(2)::after{background-image:url("../assets/trust-source.webp")}
 .footer-trust .trust-item:nth-child(3)::after{background-image:url("../assets/trust-globe.webp")}
-/* rung: DETAIL 760, the detail's second column. The ladder is in tokens.css, page frame. */
-@media(max-width:760px){
+/* rung: DETAIL 760, the detail's second column, and this is BELOW it. 759.98 rather
+   than 760, because the rung belongs to the wide side: tokens.css, page frame. */
+@media(max-width:759.98px){
   .footer-trust .trust-items{grid-template-columns:1fr}
 }

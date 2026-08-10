@@ -18,7 +18,7 @@
 
 /* ---- page frame ---- */
 .tk-wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
-@media(max-width:640px){.tk-wrap{padding:0 14px 60px}}
+@media(max-width:639.98px){.tk-wrap{padding:0 14px 60px}}
 
 /* ---- page head ---- */
 .tk-hero{padding:44px 0 4px}
@@ -179,7 +179,14 @@
 .tk-gone{display:none;margin:0;font-family:var(--font-mono);font-size:11px;
   color:var(--text-muted)}
 @media(min-width:640px){.tk-gone.tk-above-640{display:block}}
-@media(max-width:759px){.tk-gone.tk-below-760{display:block}}
+/* A RUNG IS ONE PIXEL AND IT BELONGS TO THE WIDE SIDE, which is why the three lines
+   here read 639.98 / 759.98 / 640 / 760 and not 640 / 760 twice. `max-width:640px` and
+   `min-width:640px` both match AT 640, so a stand written with the pair says "not
+   rendered from 640px up" while its own frame is still on the mobile inset. The .98
+   rather than 639 is because a zoomed window reports a fractional width and an integer
+   bound would leave a gap where neither branch applies. components/tokens.css, page
+   frame, and docs/backlog.md 72. */
+@media(max-width:759.98px){.tk-gone.tk-below-760{display:block}}
 @media(min-width:760px){.tk-gone.tk-above-760{display:block}}
 
 /* Layout the specimens need and the product does not provide. These exist so that
@@ -255,7 +262,7 @@
    caption, which is the exact failure the row is there to warn about. */
 .tk-lab.tk-bad,.tk-lab.tk-bad b{color:var(--outcome-no-text)}
 
-@media(max-width:760px){
+@media(max-width:759.98px){
   .tk-faces{grid-template-columns:1fr 1fr}
   .tk-lab{grid-column:1/-1;flex-direction:row;align-items:baseline;gap:8px;
     padding:10px 12px;flex-wrap:wrap}
@@ -275,7 +282,7 @@
    640 is the number because the file already turns at 640 and at 760, and at 640
    the two columns are still 305 wide, which clears the widest placement that
    wraps. */
-@media(max-width:640px){
+@media(max-width:639.98px){
   .tk-faces{grid-template-columns:1fr}
 }
 
@@ -339,7 +346,7 @@
    the band. The cap is a measure rather than a pixel, and it belongs on the caption
    rather than on the column, because what has no natural width here is the prose. */
 .tk-anat .tk-gl figcaption{max-width:34ch}
-@media(max-width:760px){.tk-anat{grid-template-columns:1fr}.tk-cell-lg{--cell:min(264px,72vw)}}
+@media(max-width:759.98px){.tk-anat{grid-template-columns:1fr}.tk-cell-lg{--cell:min(264px,72vw)}}
 .tk-steps{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
 .tk-steps li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:12px;
   color:var(--text-muted);font-family:var(--font-body);font-size:13px;line-height:1.55;
@@ -408,7 +415,6 @@
 .c-text-brass{--sw:var(--text-brass)}
 .c-text-brass-lit{--sw:var(--text-brass-lit)}
 .c-text-brass-chip{--sw:var(--text-brass-chip)}
-.c-text-brass-vol{--sw:var(--text-brass-vol)}
 .c-text-on-brass{--sw:var(--text-on-brass)}
 .c-text-on-yes{--sw:var(--text-on-yes)}
 .c-text-on-no{--sw:var(--text-on-no)}
@@ -491,7 +497,7 @@
 .tk-mc b{font-size:13px;font-weight:700;line-height:1}
 .tk-mc i{font-style:normal;font-size:9px;color:var(--text-muted);opacity:.85}
 
-@media(max-width:760px){.tk-mx{font-size:9px}.tk-mx-r{padding:6px}.tk-mc{padding:6px 2px}}
+@media(max-width:759.98px){.tk-mx{font-size:9px}.tk-mx-r{padding:6px}.tk-mc{padding:6px 2px}}
 
 /* The primitive ramps. A component may never read one of these, and a foundations
    page that hides them is hiding the material the roles are cut from, so they are
@@ -560,7 +566,7 @@
 .p-plum-950{--sw:var(--plum-950)}
 .tk-mx-6{grid-template-columns:minmax(96px,132px) repeat(5,minmax(0,1fr))}
 .tk-mx-4{grid-template-columns:minmax(96px,132px) repeat(3,minmax(0,1fr))}
-@media(max-width:640px){.tk-mx-6,.tk-mx-4{grid-template-columns:76px repeat(auto-fit,minmax(0,1fr))}}
+@media(max-width:639.98px){.tk-mx-6,.tk-mx-4{grid-template-columns:76px repeat(auto-fit,minmax(0,1fr))}}
 
 /* A TINT NEEDS A REAL SURFACE UNDER IT. The matrix draws its rule lines with a 1px
    grid gap over `--border-hairline`, so a semi-transparent fill placed straight on
@@ -573,7 +579,7 @@
 /* At 390 the four-column tables squeeze the fill box past its cell by 4 to 6px.
    `min-width` is what does it, so it is dropped on narrow: the tint still shows,
    which is the whole job of the swatch, and the box stops overhanging. */
-@media(max-width:640px){.tk-fillbox{min-width:0;padding:5px 4px;max-width:100%}}
+@media(max-width:639.98px){.tk-fillbox{min-width:0;padding:5px 4px;max-width:100%}}
 
 /* ==========================================================================
    FOUNDATIONS: TYPOGRAPHY. Added 2026-08-07 for typography.html.
@@ -725,7 +731,7 @@
   border:1px solid var(--border-hairline);border-radius:6px;padding:2px 8px}
 .tk-holds li.tk-decl{color:var(--text-brass);border-color:var(--border-brass,rgba(199,162,78,.3))}
 .tk-holds li.tk-on{color:var(--text-primary)}
-@media(max-width:760px){
+@media(max-width:759.98px){
   .tk-pair2,.tk-ph{grid-template-columns:1fr}
   .tk-ph>span:last-child{display:none}
 }

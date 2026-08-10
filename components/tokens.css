@@ -219,6 +219,19 @@
   --icon-16:16px;      /* the default mark */
   --icon-18:18px;      /* a mark that carries a control on its own */
   --icon-22:22px;      /* a state or hero mark */
+  /* THE WEIGHT OF A STROKED MARK, IN SCREEN PIXELS AND NOT IN USER UNITS, which is the
+     whole point of it. `stroke-width` inside a 24 viewBox scales with the box, so one
+     declared number renders at as many weights as the set has sizes: measured 2026-08-10
+     over 2,044 stroked marks, **1,818 of them in the product**, where 2.2 declared
+     rendered 1.20 at 12, 1.47 at 16, 1.65 at 18 and 2.02 at 22. Four weights, 1.68 to 1
+     between the ends. The two extremes were in the STAND rather than in the product:
+     3.67 on a 40px demonstration figure, and 0.92 on six `ui-kit/trustbar.html`
+     specimens that had no declaration at all and took the SVG default of 1, which is
+     under one device pixel at DPR 1. The rules that own a stroked mark declare THIS and pair it
+     with `vector-effect:non-scaling-stroke`, so the number here is the number on screen.
+     1.65 because 1,122 of the 2,044 already rendered there: it is the default mark at 18,
+     and it is the weight the set was drawn against. docs/backlog.md 29. */
+  --stroke-mark:1.65;
   /* The measurement scale. It shipped with two steps, 56 and 72, and a product
      needs ten: every other box in the system therefore borrowed a --space-* step
      for its own width and height. That reads as an accident in the file and it is
@@ -315,12 +328,27 @@
                        pages horizontal scroll at exactly one width. The reason is
                        written where the rule is, in base.css and course-chrome.css.
 
-     FOUR WIDTHS ARE NOT RUNGS and are marked as such where they stand: 520
-     (.pos-figures to four columns), 560 (.ed-head padding, .icon-btn-tile size),
-     620 and 980 (the hero's own two steps). Each is one rule doing one local job.
-     Whether they collapse onto the ladder is docs/backlog.md 72, still open, and
-     it is a measurement rather than a rename because each moves layout in a real
-     band.
+     THREE WIDTHS ARE NOT RUNGS, and each of them was measured before it was
+     allowed to stay: 560 (.ed-head padding, .icon-btn-tile size), 620 and 980
+     (the hero's own two steps). 520 was the fourth and it is gone: the record's
+     four columns arrive at DESK now, because 520 was the width at which four
+     columns first FIT and not the width at which they first read, and from 520 to
+     555 the fourth label wrapped on every profile. The other three each cost
+     something real to collapse and closed nothing, and the numbers are written
+     beside the rules, in event-detail.css and hero.css. docs/backlog.md 72,
+     closed 2026-08-10.
+
+     A RUNG IS ONE PIXEL AND IT BELONGS TO THE WIDE SIDE. Until 2026-08-10 this
+     ladder was written as pairs - `max-width:640px` in eight files and
+     `min-width:640px` in five - and BOTH of those match at exactly 640, so the
+     rung rendered a page that exists at no other width. Measured on ten screens:
+     nine showed the desk utility, the balance figure and its icon button, on a
+     14px mobile gutter under a mobile header with no bottom nav, matching neither
+     639 nor 641. Below a rung is `max-width:639.98px` now, and the .98 is not
+     ceremony: a zoomed window reports a fractional width, 639.4 has to be mobile,
+     and an integer bound would leave a gap where NEITHER branch applies, which is
+     worse than the overlap it was fixing. The same pair stood at 760 and is
+     closed the same way.
 
      THE RULE THAT MAKES THIS WORTH WRITING: a component may not invent a width.
      If a file needs a break that is not one of the three, it is either a one-off
@@ -360,6 +388,21 @@
   --weight-medium:500;
   --weight-semibold:600;
   --weight-bold:700;        /* merged: font-weight bold, written as 700 everywhere now */
+  /* THE MONO FAMILY HAS TWO OF THESE FOUR, and this is where that is written down, because
+     fonts.css says "--weight-bold is documented as unavailable here" and until 2026-08-10 it
+     was pointing at a line that said nothing. IBM Plex Mono ships 500 and 600 only, four
+     files because each weight is cut for two unicode ranges. So on mono, `--weight-regular`
+     renders the 500 face and `--weight-bold` renders the 600, by CSS font matching and not by
+     synthesis: the row that filed this counted painted pixels and got 5380 / 5380 / 5993 /
+     5993 at 400 / 500 / 600 / 700, two faces wearing four names.
+     IT IS NOT A TRAP, IT IS LIVE, which the filing missed by reading declarations instead of
+     the page: font-weight INHERITS, so an element that sets the mono family and no weight
+     takes the body's 400. Measured over 160 documents, **1,041 mono elements in the painted
+     tree compute 400 and 34 compute 700**, against 310 at 500 and 262 at 600: **1,075 of
+     1,647 ask for a face that is not there**. Nothing renders wrong and nothing is faked, so
+     the 700 face is NOT added - it would be 33 KB for a step no screen can show is missing.
+     What is fixed is the silence: on mono there are two steps, and a rule that wants the
+     heavier one asks for --weight-semibold. docs/backlog.md 36. */
 
   /* ---- tracking ----
      The last axis in the type system to get one, added 2026-08-07. It shipped
@@ -463,6 +506,19 @@
                                inverts its direction but not its distance, so on chalk it has to be
                                darker than its surface and it is cut by eye, not by the formula */
 
+  /* THE RAMP HAS A FLOOR AND ONE ROLE IS STANDING ON IT, which belongs here beside the steps
+     rather than only in a backlog row. `--icon-brass` is `--brass-600` in daylight, #a9822f, and
+     it is a MARK: a graphical object, so its floor is 3:1 and not 4.5. Measured against every
+     step of this ramp: 3.43 at chalk-940, 3.40 at 930 (the page), 3.31 at 920, 3.28 at 910 (the
+     plate), **3.20 at 900, which is the card it actually stands on**, 3.14 at 880, 3.06 at 870
+     and **exactly 3.00 at chalk-860**. So there are three steps of headroom under it and the
+     eighth lands on the floor: any surface deeper than `--chalk-860` fails, and a surface made
+     one step deeper takes it 0.06 to 0.08 closer. **The direction matters and docs/backlog.md 32
+     had it backwards**: it wrote "any card ground made one step lighter puts it under", which is
+     the number going down while the stone goes darker. Nothing else measured in this system is
+     within 0.5 of a floor. It stands on 4 placements in daylight, all of them the saved bookmark
+     on a card, all of them at 3.20. docs/backlog.md 32. */
+
   /* ---- ink (the dark text of daylight) ----
      Warm, not neutral. The Vault reads warm in the dark because its light ink is
      bone; a neutral black would cool the whole product on the way over. */
@@ -525,8 +581,9 @@
 }
 
 /* mobile: the plate breathes on a smaller inset (this is the one responsive token) */
-/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
-@media(max-width:640px){
+/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+   because the rung belongs to the desk: the page frame above argues it. */
+@media(max-width:639.98px){
   :root{--gutter:14px}
 }
 
@@ -630,9 +687,14 @@
   --text-brass:var(--brass-400);        /* from: 37 colour + 8 stroke declarations: links, active
                                            nav, saved bookmark, the logo tick. Also the focus ring
                                            today; the focus role itself waits for the states stage */
-  --text-brass-lit:var(--brass-200);    /* from: hero eyebrow, SEO tagline, trust badge */
-  --text-brass-chip:var(--brass-250);   /* from: the active chip label */
-  --text-brass-vol:var(--brass-220);    /* from: the volume tag on the featured hero */
+  --text-brass-lit:var(--brass-200);    /* from: hero eyebrow, SEO tagline, trust badge. 58 placements */
+  --text-brass-chip:var(--brass-250);   /* from: the active chip label. 219 placements */
+  /* `--text-brass-vol:var(--brass-220)` stood here and went out on 2026-08-10, docs/backlog.md
+     33. It was the volume tag on the featured hero and it had ONE placement in the product,
+     `.hf-tag.vol`, which takes --text-brass-lit now: the same plate, the role that plate
+     already uses. In graphite it was 10.08 against the eyebrow's 11.13, a step of 1.05 in
+     contrast on the same ground; in chalk it was byte-identical to the other three. A role
+     is a reason, not a value, and "it is on the hero" is a reason that already had a name. */
   --text-on-brass:var(--plum-950);      /* from: 15 selectors on brass CTAs, hardcoded until now */
   --text-on-yes:var(--green-950);       /* from: the filled YES side */
   --text-on-no:var(--red-950);          /* from: the filled NO side */
@@ -1003,9 +1065,21 @@
                                            theme switch had already solved it: the panel now takes
                                            --chrome-accent, which section 3 does not override, and measures
                                            8.71:1 in BOTH themes. This role no longer reaches that panel */
-  --text-brass-lit:var(--brass-700);    /* 5.3:1 */
-  --text-brass-chip:var(--brass-700);   /* 5.3:1 */
-  --text-brass-vol:var(--brass-700);    /* 5.3:1 */
+  /* THREE ROLES, ONE VALUE, AND THAT IS THE ANSWER RATHER THAN THE DEFECT. docs/backlog.md 33
+     filed this as a ladder with four rungs in the Vault and one in daylight, and asked whether
+     the ladder is real in both themes or one role with aliases. Measured over the 106 painted
+     screens in both themes: in graphite the four resolve to four values and stand at 5.70 to
+     8.98, 11.13 to 11.33, 9.86 to 11.79 and 10.08 against their REAL composited grounds; in
+     chalk they resolve to one value on 704 placements, worst 5.24 and best 7.40. The steps in
+     graphite are not a hierarchy of emphasis, they are brass ink compensating for four
+     different grounds - a brass-tinted chip, a photograph under a veil, a plate, bare stone -
+     and on chalk one value clears every one of those grounds with 0.74 to spare over the 4.5
+     floor. So it is neither a broken ladder nor three aliases: it is one ink with per-ground
+     compensations that the pale stone does not need. Two roles may share a value and each says
+     so where it is declared, which is the rule twenty-seven other groups in this file already
+     live under. The fourth name is gone; it had one placement. */
+  --text-brass-lit:var(--brass-700);    /* 5.3:1 on the deepest brass tint, 7.40 on bare stone */
+  --text-brass-chip:var(--brass-700);   /* 5.3:1, and 5.24 is the worst of all 704 in daylight */
   --text-strong:var(--ink-900);         /* 13.9:1. White on graphite, ink on chalk: the label
                                            of a quiet button when it is hovered */
   /* --text-on-brass, --text-on-yes, --text-on-no and --text-on-photo are NOT

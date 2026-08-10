@@ -48,7 +48,18 @@
 .opt-list .opt-row:first-child{margin-top:0}
 .opt-list .opt-name{flex:1;min-width:0;display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-body);font-weight:var(--weight-semibold);color:var(--text-primary);font-size:var(--text-13)}
 .opt-list .opt-prob{font-family:var(--font-display);background:transparent;border:0;color:var(--text-primary);font-size:var(--text-14);padding:0}
-.opt-sel-tag{display:none}
+/* `.opt-sel-tag{display:none}` STOOD HERE AND IS GONE, 2026-08-10, docs/backlog.md 61. The
+   argument for it was "the tint, the brass edge and the chosen YES all say it there", and that is
+   true only if one of those three is not colour. None of them is: the chosen row is a background
+   and a border-color, the chosen side is a soft green swapped for a solid one, and there is no
+   shape, no weight, no mark and no word anywhere in the painted state. **So hiding this span left
+   the product saying "chosen" in colour alone**, which is 1.4.1 and not only the accessibility-tree
+   half the row was filed for. AND THE RULE WAS UNSCOPED, so it reached further than the screens:
+   `ui-kit/options.html` and `ui-kit/molecules.html` carry this span in their specimens, and the
+   stand whose job is to show the chosen face was hiding it too. The grey tree kept the word the
+   whole time, because `wireframes/` links nothing from here and carries its own rule. The word is
+   content and `voice/` may rewrite it; the STATE is `aria-current` on the row, which is a different
+   thing in a different place, and both are kept on purpose. */
 .bp-sel-name .opt-prob{font-family:var(--font-mono);background:transparent;border:0;color:var(--text-brass)}
 .opt-list .opt-row{cursor:pointer}
 .opt-list .opt-row.sel{border-color:var(--tint-brass-60);background:var(--tint-brass-16)}

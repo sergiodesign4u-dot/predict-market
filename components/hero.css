@@ -99,7 +99,15 @@
 .hf-line{fill:none;stroke-width:2}
 .hf-line.yes{stroke:var(--outcome-line-yes)}
 .hf-line.no{stroke:var(--outcome-line-no)}
-.hf-tag.vol{color:var(--text-brass-vol)}
+/* THIS TOOK THE HERO'S OWN BRASS ON 2026-08-10 and `--text-brass-vol` was deleted with the
+   move. It was a role with ONE placement in the whole product, this line, and in daylight it
+   resolved to the same value as `--text-brass`, `--text-brass-lit` and `--text-brass-chip`:
+   four names, one colour, 704 placements measured. In graphite it was brass-220 against the
+   eyebrow's brass-200, 10.08 to 11.13 on the same hero plate, a step of 1.05 in contrast that
+   nobody chose and nothing else in the product uses. A role is a reason, not a value, and one
+   placement whose reason is "it is on the hero" is the reason `--text-brass-lit` already
+   carries. docs/backlog.md 33. */
+.hf-tag.vol{color:var(--text-brass-lit)}
 .hf-tag.vol i{background:var(--color-action)}
 .hf-chart-cap{font-family:var(--font-mono);font-size:var(--text-11);letter-spacing:var(--track-label);color:var(--text-muted);margin-top:var(--space-8)}
 .hero-trust{display:flex;align-items:center;gap:var(--space-12);padding:var(--space-16) var(--space-20);min-height:82px}
@@ -153,13 +161,29 @@
    Muted is the one step that reads on both stones: 6.54:1 in the Vault, 7.42:1
    in daylight. */
 .hh-all:active{color:var(--text-muted)}
-/* NOT A RUNG. 980 and 620 below are the hero's own two steps and no other file uses either.
-   tokens.css page frame, docs/backlog.md 72. */
+/* NOT A RUNG, AND AFTER A MEASUREMENT IT STAYS ONE. 980 and 620 below are the hero's
+   own two steps, and what makes them the card's rather than the page's is that this is
+   the only three-level grid in the product: a feed hero that splits into a feature and
+   a side, and a feature that splits again into an argument and a chart. A rung is the
+   page frame arriving; these two are one card folding.
+   THE COLLAPSE THIS ROW ASKED ABOUT, measured 2026-08-10 at one width at a time:
+   taking 980 down to the RAIL rung splits the feed hero at 901, and the feature's two
+   columns land at 251 and 256 on a 901px window. The narrowest that card stands
+   anywhere today is 279.5, at 641, where the gutter goes 14 to 40 and takes 51px out
+   of the content. So the collapse would invent a minimum 28px under the standing one,
+   on a window 260px wider than the one that sets it, and it would make the hero 82px
+   taller from 901 to 980 while closing nothing. It stays.
+   tokens.css page frame, docs/backlog.md 72, closed 2026-08-10. */
 @media(max-width:980px){
   .feed-hero{grid-template-columns:1fr}
   .hero-feature{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 }
-/* NOT A RUNG. See 980 above: the hero's second step. tokens.css page frame, docs/backlog.md 72. */
+/* NOT A RUNG, AND IT STAYS ONE. See 980 above: the hero's second step, same reading.
+   Taking 620 up to the DESK rung leaves the feature in one column from 621 to 639,
+   which costs 19 widths and 288px of height - the block measures 346 tall at 621 in
+   two columns and 634 in one - and it closes nothing: at 621 the two columns are 295.5
+   each, WIDER than the 279.5 the same card already takes at 641. The card's own step is
+   not what binds it, the gutter is. tokens.css page frame, docs/backlog.md 72. */
 @media(max-width:620px){
   .hero-feature{grid-template-columns:1fr}
   .hf-chart{border-left:0;box-shadow:none;border-top:var(--hairline) solid var(--shadow-ink-45)}

@@ -38,8 +38,9 @@
 .seo-by{margin-top:var(--space-24);font-family:var(--font-body);font-size:var(--text-13);letter-spacing:var(--track-caps);color:var(--text-brass-lit)}
 .seo-brand::after{content:'';position:absolute;inset:0 -12px 0 0;z-index:var(--z-under);pointer-events:none;opacity:.18;background:url("../assets/trust-column-full.webp") no-repeat right center;background-size:auto 122%;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 40%,transparent 90%);mask-image:linear-gradient(to left,var(--mask-solid) 40%,transparent 90%)}
 .seo-brand>*{position:relative;z-index:var(--z-content)}
-/* rung: DETAIL 760, the detail's second column. The ladder is in tokens.css, page frame. */
-@media(max-width:760px){
+/* rung: DETAIL 760, the detail's second column, and this is BELOW it. 759.98 rather
+   than 760, because the rung belongs to the wide side: tokens.css, page frame. */
+@media(max-width:759.98px){
   .feed-inner>.feed-seo-wrap{grid-template-columns:1fr;gap:var(--space-24);padding:var(--space-28) var(--space-24) var(--space-32)}
   .seo-brand{padding-left:0;padding-top:var(--space-24);border-left:0;box-shadow:none;border-top:var(--hairline) solid var(--edge-groove-dark)}
   .seo-brand::after{inset:var(--space-20) -12px 0 0}

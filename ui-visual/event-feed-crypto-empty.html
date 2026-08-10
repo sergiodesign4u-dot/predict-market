@@ -400,7 +400,7 @@ document.addEventListener('click', function (e) {
             </details>
           </div>
         </div>
-          <div class="state-block">
+          <div class="state-block" role="status" aria-live="polite">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-inbox-b"/></svg>
             <h2 class="state-title">No events match these filters</h2>
             <p class="state-msg">No Crypto events match the current sub-category and filters. Clear the filters, or get notified when new ones open.</p>
@@ -511,11 +511,6 @@ document.addEventListener('click', function (e) {
                 <li><a href="event-feed-crypto.html">Crypto</a></li>
                 <li><a href="event-feed-culture.html">Culture</a></li>
                 <li><a href="event-feed-general.html">General</a></li>
-                <li><a href="#">Sports</a></li>
-              </ul>
-              <p class="sub-label">By topic</p>
-              <ul>
-                <li><a href="#">Trending topics</a></li>
                 <li><a href="event-feed.html">View all events</a></li>
               </ul>
             </nav>
@@ -524,31 +519,20 @@ document.addEventListener('click', function (e) {
               <h2>Product</h2>
               <ul>
                 <li><a href="how-it-works.html">How It Works</a></li>
-                <li><a href="#">Leaderboard</a></li>
+                <li><span class="footer-soon">Leaderboard</span></li>
                 <li><a href="wallet.html">Wallet</a></li>
                 <li><a href="active-bets.html">My Bets</a></li>
-                <li><a href="#">API / Developers</a></li>
-                <li><a href="#">Status</a></li>
               </ul>
             </nav>
 
             <nav class="footer-col" aria-label="Support">
               <h2>Support</h2>
               <ul>
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><span class="footer-soon">Help Center</span></li>
+                <li><span class="footer-soon">FAQ</span></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="how-it-works.html">How It Works</a></li>
-              </ul>
-            </nav>
-
-            <nav class="footer-col" aria-label="Company">
-              <h2>Company</h2>
-              <ul>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Press</a></li>
-                <li><a href="#">Brand</a></li>
               </ul>
             </nav>
 
@@ -576,7 +560,6 @@ document.addEventListener('click', function (e) {
               <li><a href="#">Terms</a></li>
               <li><a href="#">Privacy</a></li>
               <li><a href="#">Responsible play</a></li>
-              <li><a href="#">Geo restrictions</a></li>
               <li><a href="cookie-consent.html">Cookie preferences</a></li>
             </ul>
           </nav>

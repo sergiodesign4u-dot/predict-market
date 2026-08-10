@@ -347,7 +347,7 @@ document.addEventListener('click', function (e) {
         </nav>
       <div class="cat-layout">
         <div class="cat-main">
-        <div class="state-block">
+        <div class="state-block state-problem" role="alert">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-danger-triangle-b"/></svg>
         <h1 class="state-title">Couldn't load this event</h1>
         <p class="state-msg">We couldn't load this event. Check your connection and try again.</p>
@@ -458,11 +458,6 @@ document.addEventListener('click', function (e) {
                 <li><a href="event-feed-crypto.html">Crypto</a></li>
                 <li><a href="event-feed-culture.html">Culture</a></li>
                 <li><a href="event-feed-general.html">General</a></li>
-                <li><a href="#">Sports</a></li>
-              </ul>
-              <p class="sub-label">By topic</p>
-              <ul>
-                <li><a href="#">Trending topics</a></li>
                 <li><a href="event-feed.html">View all events</a></li>
               </ul>
             </nav>
@@ -471,31 +466,20 @@ document.addEventListener('click', function (e) {
               <h2>Product</h2>
               <ul>
                 <li><a href="how-it-works.html">How It Works</a></li>
-                <li><a href="#">Leaderboard</a></li>
+                <li><span class="footer-soon">Leaderboard</span></li>
                 <li><a href="wallet.html">Wallet</a></li>
                 <li><a href="active-bets.html">My Bets</a></li>
-                <li><a href="#">API / Developers</a></li>
-                <li><a href="#">Status</a></li>
               </ul>
             </nav>
 
             <nav class="footer-col" aria-label="Support">
               <h2>Support</h2>
               <ul>
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><span class="footer-soon">Help Center</span></li>
+                <li><span class="footer-soon">FAQ</span></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="how-it-works.html">How It Works</a></li>
-              </ul>
-            </nav>
-
-            <nav class="footer-col" aria-label="Company">
-              <h2>Company</h2>
-              <ul>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Press</a></li>
-                <li><a href="#">Brand</a></li>
               </ul>
             </nav>
 
@@ -523,7 +507,6 @@ document.addEventListener('click', function (e) {
               <li><a href="#">Terms</a></li>
               <li><a href="#">Privacy</a></li>
               <li><a href="#">Responsible play</a></li>
-              <li><a href="#">Geo restrictions</a></li>
               <li><a href="cookie-consent.html">Cookie preferences</a></li>
             </ul>
           </nav>
@@ -853,7 +836,7 @@ document.addEventListener('click', function (e) {
       if(!btn) return;
       var pctEl = btn.querySelector('.bp-pct');
       var p = pctEl ? num(pctEl.textContent) / 100 : 0.5;
-      var payout = p > 0 ? A / p : 0, fee = 0.03 * payout;
+      var payout = p > 0 ? A / p : 0, fee = 0.015 * A;
       setLine('Price now', Math.round(p * 100) + '%');
       setLine('Fee', money(fee));
       setLine('Potential payout', money(payout));
@@ -870,7 +853,7 @@ document.addEventListener('click', function (e) {
       chip.addEventListener('click', function(){
         panel.querySelectorAll('.quick button').forEach(function(b){ b.classList.remove('sel'); });
         chip.classList.add('sel');
-        if(input){ input.value = money(num(chip.textContent)); }
+        if(input){ input.value = num(chip.textContent).toFixed(2); }
         recompute();
       });
     });
@@ -879,7 +862,7 @@ document.addEventListener('click', function (e) {
         panel.querySelectorAll('.quick button').forEach(function(b){ b.classList.remove('sel'); });
         recompute();
       });
-      input.addEventListener('blur', function(){ input.value = money(num(input.value)); recompute(); });
+      input.addEventListener('blur', function(){ input.value = num(input.value).toFixed(2); recompute(); });
     }
     recompute();
   });
@@ -951,8 +934,8 @@ document.addEventListener('click', function (e) {
     var chart=document.querySelector('.ed-chart-multi');
     rows.forEach(function(row,i){
       row.addEventListener('click',function(){
-        rows.forEach(function(r){ r.classList.remove('sel'); var t=r.querySelector('.opt-sel-tag'); if(t) t.remove(); });
-        row.classList.add('sel');
+        rows.forEach(function(r){ r.classList.remove('sel'); r.removeAttribute('aria-current'); var t=r.querySelector('.opt-sel-tag'); if(t) t.remove(); });
+        row.classList.add('sel'); row.setAttribute('aria-current','true');
         var nameEl=row.querySelector('.opt-name');
         var nm=nameEl.childNodes[0].textContent.trim();
         var prob=row.querySelector('.opt-prob').textContent;

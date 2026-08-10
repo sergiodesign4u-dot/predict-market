@@ -23,7 +23,18 @@
 .act-txt{flex:1;min-width:0}
 .act-time{font-size:var(--text-10);white-space:nowrap}
 .hold-cols{flex-direction:row}
-.hold-col{flex:1}
+/* `min-width:0` IS THE WHOLE FIX AND THIS FILE ALREADY KNEW IT, three lines up on `.act-txt`.
+   A flex item's `min-width` is `auto`, which means it may not shrink below the intrinsic
+   minimum of its content, so `flex:1` on its own is a request the browser is allowed to
+   refuse. It refused: measured 2026-08-10 on the four painted screens that carry holdings,
+   with the panel's tab CHECKED, the two columns stood 185 and 180 inside a box of 275 at
+   360 and 305 at 390, so the block overflowed itself by **102px and 72px**. It fits from
+   the desk rung up, 252 and 239 in 503.
+   NO SWEEP HAD EVER SEEN IT, and that is the third costume of one trap: the holdings panel
+   is behind a CSS radio tab, so at rest it measures zero and every overflow pass skipped it,
+   the same way a closed `<details>` and a shut `<dialog>` did before. A state that is a page
+   is measurable; a state that is a checked input has to be checked first. docs/backlog.md 90. */
+.hold-col{flex:1;min-width:0}
 .hold-col:first-child{border-right:var(--hairline) solid var(--border-hairline);padding-right:var(--space-12)}
 /* same story as .arg-col h3 in event-detail.css: the .ed-section label sets properties this rule
    does not, and a nested head has to answer for each of them */
@@ -38,7 +49,14 @@
    (0,1,0) and the exception wins, which is what it was for. A tie is not a hierarchy. */
 .hold-row{border-top:var(--hairline) solid var(--edge-groove-dark);font-size:var(--text-13);color:var(--text-primary)}
 .hold-rank{color:var(--text-brass);font-family:var(--font-display);font-weight:var(--weight-bold)}
-.hold-name{color:var(--text-primary)}
+/* A NAME IS ONE WORD AND A WORD THAT WILL NOT BREAK PUSHES ITS ROW. `polly_predicts` and
+   `hedge_hannah` are single unbreakable tokens of 88 and 90px, so after `.hold-col` got
+   `min-width:0` the column shrank and the ROW did not: the block still overflowed itself by
+   48px at 360 and 33 at 390. This is the answer `.hh-name` already gives to the same datum
+   one component over, and it is copied rather than invented: the row stays one line and the
+   name takes the ellipsis. `.hold-amt` keeps its nowrap because a figure that wraps is two
+   figures. docs/backlog.md 90. */
+.hold-name{color:var(--text-primary);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .hold-amt{font-family:var(--font-mono);color:var(--text-muted)}
 /* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
 @media(min-width:640px){

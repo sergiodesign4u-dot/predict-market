@@ -11,7 +11,68 @@
    the vitrine or a stand: the sidebar this file DOES style marks a planned stage
    with .sidebar-page-link.planned, a few lines down. It survived the colour sweep only
    because that gate was counting wireframes/*.html as markup. */
-.rm-toggle{position:fixed;top:var(--space-12);left:var(--space-12);z-index:var(--z-chrome-top);background:var(--chrome-bg);border:var(--hairline) solid var(--chrome-border);border-radius:var(--radius-6);width:var(--control-36);height:var(--control-36);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-4);cursor:pointer}
+/* THIS BUTTON LEFT THE BRAND ROW ON 2026-08-10, and it left because it was drawn
+   over the product's logo in every screenshot ever taken of this repository.
+   It sat at top 12 left 12, 36 square, so it occupied x 12 to 48 on every one of the
+   160 documents below the dock. The header row's padding-left computes 14 on a phone,
+   so the logo starts at x=14: measured at five widths in both themes, the button
+   covered 34px of the mark and the word on 88 pages, a control on 89 more at the top
+   RIGHT if it had gone there, and text on 55. `header.css` had an answer written into
+   its mobile block, `.app-header .row{padding-left:var(--space-56)}`, and that
+   declaration had never once applied, because the same selector is set again at equal
+   specificity thirty-four lines below it.
+   THE CHROME MOVES AND THE PRODUCT DOES NOT, which is the same decision the dock took
+   on the same day: an indent would have pushed the brand 42px off the column every
+   line under it aligns to, in the review build only, for a tool. So the question was
+   which corner the product does not use, and it was measured rather than guessed, all
+   160 documents at 390, 700, 1280, five candidate boxes, classifying what sits under
+   each: **bottom right is empty on 147 of 160 pages** above the desk rung, against
+   top-left covering the brand on 88 and top-right a control on 89. It is also the
+   corner a left drawer never reaches, so the button stays clickable with the panel
+   open, which at top-left it was not: it drew ON the panel it had opened.
+   BELOW THE DESK RUNG IT LIFTS BY 132, because that is where the product stacks two
+   things on this edge and the number is their sum. `.bottom-nav` is
+   `position:sticky;bottom:0` and measures 56 tall on the 39 screens that carry one;
+   `.bet-dock` in betpanel.css is `position:sticky;bottom:52px` and measures **68 tall
+   in all 48 readings of it**, so its top sits **exactly 120 from the bottom edge**.
+   132 is that 120 and the same 12 gap this button uses everywhere else. From the rung
+   up, 12 is enough and the lift is dropped: the nav is gone there, and the dock
+   reserves 52px under itself for a nav that is not there, so the bottom strip is free.
+   THE FIRST NUMBER HERE WAS 68 AND IT WAS WRONG, which is worth keeping. It was 56
+   plus 12, correct arithmetic for one of the two bars and blind to the other, and it
+   was blind because the first measurement read every page at scroll 0, where a sticky
+   dock has not stuck yet. Re-read at top, middle and end of every page: a lift of 68
+   lands on the bet dock in 32 readings of 960 and a lift of 12 on a nav item in 63.
+   **Reading a sticky element without scrolling is reading the source again.**
+   IT STILL CANNOT BE PERFECT. A sticky nav sits at the viewport's bottom on a long
+   page and at the CONTENT's bottom on a short one, so no fixed offset tracks it, and
+   about ten readings of 960 land on a nav item that stopped short of the edge. What is
+   NOT done about that is tune the number until those go: 120 measured slightly better
+   than 132 and is refused, because it is a height fitted to today's content, which is
+   the mistake this same pass closed at 520 in position.css an hour earlier.
+   A modal dialog is in the top layer, so it covers this button wherever it stands and
+   the page behind it is inert either way: on the 17 screens that ship with a sheet
+   open, this button was visible at the top left and is behind the sheet now, and on
+   none of them was it ever clickable. */
+/* AND IT IS 44 SINCE 2026-08-10, WHICH THE CORNER PAID FOR. `docs/backlog.md` 44 filed
+   this at 36 beside a `.theme-switch` twelve lines down that declares 44, and it was filed
+   rather than fixed for one reason: the button stood over the TOP LEFT of every screen, so
+   8px more of it moved onto a header laid out around 36. It stands in the bottom right now,
+   in a corner measured empty on 147 of 160 documents, so the 8px lands on nothing. It is
+   the only way to open this route below the dock, which makes it the one control on the
+   page a person has no alternative to, and it was the last control in the repository under
+   the project's own floor. */
+.rm-toggle{position:fixed;bottom:var(--space-12);right:var(--space-12);z-index:var(--z-chrome-top);background:var(--chrome-bg);border:var(--hairline) solid var(--chrome-border);border-radius:var(--radius-6);width:var(--control-44);height:var(--control-44);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-4);cursor:pointer}
+/* rung: DETAIL 760, and this is BELOW it, because that is where the bet dock exists:
+   betpanel.css docks the panel as a sidebar at 760 and the dock goes with it. It was
+   written at the DESK rung first and that was 8px too optimistic - at 36 the button fitted
+   inside the 52px strip the dock reserves under itself, at 44 it does not, so it crossed
+   the dock's bottom edge by 4px in 16 readings of 960 the moment the floor was applied.
+   Growing a control is a reason to re-read the clearance it was written against.
+   The ladder is in components/tokens.css, page frame; the 132 is argued above. */
+@media(max-width:759.98px){
+  .rm-toggle{bottom:132px}
+}
 .rm-toggle span{display:block;width:var(--icon-16);height:1.5px;background:var(--chrome-text);border-radius:var(--radius-2)}
 .rm-overlay{display:none;position:fixed;inset:0;background:var(--scrim);z-index:var(--z-chrome-scrim);backdrop-filter:blur(2px)}
 .rm-overlay.open{display:block}

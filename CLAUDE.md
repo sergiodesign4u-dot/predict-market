@@ -106,8 +106,12 @@ because it is a stance rather than a principle, and it is written once, here.
   sweep reported zero. The same rung took the browse content column from 530 to 297 and `.ed-main`
   from 430 to 211 between 859 and 860. **A media query reads the WINDOW and a layout gets the
   CONTAINER**, so anything that eats width outside the product, a docked panel most of all, makes
-  every branch above it a branch chosen for a page that is not there. The ladder is named in
-  `components/tokens.css`, page frame.
+  every branch above it a branch chosen for a page that is not there. **And one pixel either side
+  found the next one the day after**: a rung written as a PAIR, `max-width:640px` in eight files and
+  `min-width:640px` in five, matches on both sides at once, so 640 rendered a page that existed at no
+  other width, and the desk header it turned on asks for 694px, which put **73 of the 106 painted
+  screens into horizontal scroll from 641 to 652**. A rung is one pixel and it belongs to the wide
+  side. The ladder is named in `components/tokens.css`, page frame.
 - **Read the instrument before you read the finding: measure the same thing twice, unchanged, and
   the difference has to be zero.** A before-and-after over 19 screens reported 31 files changed by an
   edit that could not change anything; re-reading the unchanged tree gave **3,587 differing rows of

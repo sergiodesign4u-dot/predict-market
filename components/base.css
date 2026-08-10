@@ -64,11 +64,30 @@ button,select,summary{font:inherit}
    the same thing: they draw the line heavier and leave it a line.
    SO THE RULE IS: an object is filled, a movement is a line, and the two are held
    together by WEIGHT rather than by style. The stroke was 1.6 against the solid mass of
-   Solar Bold, which is the difference the eye reads as "two icon sets". It is 2.2 here
-   and 2.4 at the 12px size, measured against the filled glyphs at both sizes.
+   Solar Bold, which is the difference the eye reads as "two icon sets".
+   AND THAT WEIGHT WAS NEVER ONE WEIGHT, which took a measurement rather than a reading to
+   see. It was declared 2.2 here and 2.4 at 12, in USER UNITS inside a 24 viewBox, and user
+   units scale with the box: over the product's **1,818 stroked marks** the set rendered at
+   FOUR weights, 1.20 at 12, 1.47 at 16, 1.65 at 18 and 2.02 at 22, 1.68 to 1 between the
+   ends. The two extremes, a 3.67 slab at 40 and a 0.92 hairline that is under one device
+   pixel at DPR 1, were both in the KIT and not in the product, which is worth saying because
+   the first version of this note blamed the product for them. A set with one geometric
+   weight that slides has no optical weight at all.
+   It is `--stroke-mark` now, 1.65, paired with `vector-effect:non-scaling-stroke` so the
+   declared number is the rendered one, and the four files that own a stroked mark of their
+   own declare the same token. 1,122 of the 2,044 already rendered at 1.65, so the set keeps
+   the weight it was drawn against and the other 900 come to it. docs/backlog.md 29.
+   THE KIT'S BLOW-UP SPECIMENS ARE OUT, and that is not an oversight: `.tk-glyph` on
+   ui-kit/icons.html stands a glyph at 70 and 94px to show the DRAWING, and a drawing shown
+   at four times its size wants its stroke at four times too. It carries no `.ic`, so this
+   rule never reaches it, and the exclusion costs nothing to keep.
    The account is in ../docs/decisions.md and the inventory is ui-kit/icons.html. */
-.ic{width:var(--icon-22);height:var(--icon-22);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;display:block}
-.ic-sm{width:var(--icon-12);height:var(--icon-12);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ic{width:var(--icon-22);height:var(--icon-22);fill:none;stroke-width:var(--stroke-mark);stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;display:block}
+.ic-sm{width:var(--icon-12);height:var(--icon-12);fill:none;stroke-width:var(--stroke-mark);stroke-linecap:round;stroke-linejoin:round}
+/* vector-effect is a presentation attribute on the SHAPE and it does not inherit, so it
+   goes on the children rather than on the svg. Harmless on the filled family: those take
+   `stroke:none!important` from the floor below. */
+.ic *,.ic-sm *{vector-effect:non-scaling-stroke}
 /* ONE TOKEN, TWO PROPERTIES. A stroked mark takes its ink from `stroke` and a filled one
    from `fill:currentColor`, so every rule that paints an icon has to say both or half the
    set stops listening. That is the price of holding two kinds of mark in one family, and it
@@ -344,8 +363,9 @@ body.app-case{background:var(--bg-page)}
    centres and the padding keeps the same edge the header row has had all
    along. */
 .feed .feed-inner{max-width:var(--container-max);margin:var(--gutter) auto;margin-top:var(--space-12);padding:0 var(--gutter);box-sizing:border-box;background:none;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;gap:var(--space-16)}
-/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
-@media(max-width:640px){
+/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+   because the rung belongs to the desk: tokens.css, page frame. */
+@media(max-width:639.98px){
   .feed .feed-inner{margin-top:var(--space-16);padding:0 var(--gutter)}
 }
 /* The two-stone plate: one declaration, three places it lands. The category

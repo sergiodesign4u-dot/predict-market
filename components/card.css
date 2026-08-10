@@ -50,8 +50,9 @@
 /* The 44px box is unconditional above, so this block is not a touch-target rule any more: what is
    left is a narrow-screen layout fact, the enlarged button pulled tighter into the meta row. It
    stays on a width query for that reason, and its raw -8px went onto the grid. */
-/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
-@media(max-width:640px){
+/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+   because the rung belongs to the desk: tokens.css, page frame. */
+@media(max-width:639.98px){
   /* WHERE IT SITS, AND SINCE 2026-08-06 THAT IS ALL THIS FILE SAYS ABOUT IT.
      The control is `.icon-btn.icon-btn-bare` in components/iconbtn.css, and the
      bare face pulls its own invisible 44 target back out of the flow, because

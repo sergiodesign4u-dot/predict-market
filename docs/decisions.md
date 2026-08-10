@@ -44,6 +44,625 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-10 - An error is an object and an empty is an absence, and the stand for trust was showing three claims nobody ships
+
+**13 WAS TWO ROWS AND ONE OF THEM WAS FREE.** The row read, in full: "Error state vs empty state are
+not differentiated. Two different situations reading as one block." Surveyed independently first,
+then measured: `.state-block` stands on **38 painted screens, 15 empty and 20 an error**, and the two
+differ in the MARK, the HEADING and the ACTION LABEL and **in nothing else** - same ground, same
+edge, same radius, same padding, same brass mark ink, same title and body ink. The words already
+carry the whole difference and `voice/docs/microcopy.md` sets it as a rule: every empty reads "No ...
+yet", every error "Couldn't ...".
+
+**The literal half of the row was the silent one.** **30 of the 38 blocks carried no `role` at all**,
+so for a screen reader the two situations really were one block. `role="alert"` on the 21 errors,
+`role="status" aria-live="polite"` on the 16 empties, in both trees, which is what the eight that
+already had one were doing. `event-detail-resolved` is left alone in both trees because it is neither.
+
+**The face is the error toast's, verbatim, and that is the point rather than a coincidence:** the
+same failure should look the same whether it arrives as a toast or as a page.
+`.state-block.state-problem` takes `--bg-control`, `--border-notice` and `--bevel-notice`, with the
+mark and the message at `--text-primary` and the message semibold. `--border-notice` is declared in
+`tokens.css` as "the neutralised error toast, warm grey, **never red**", which is the only way to
+raise an error in a product whose one rule is that red means NO. **No new token and no new colour.**
+
+**It is written AFTER `.cat-main .state-block`, and that placement is the design.** That rule takes
+the box away, because a feed with nothing in it should read as an empty page rather than as a card
+about emptiness. Both selectors are (0,2,0), so source order decides, and an error is the one case
+where the box comes back. Written before it, the modifier would have rendered nothing on the feed
+errors, which are most of them.
+
+**Measured after, both themes**: 21 problem blocks, ground rgb(36,40,47) and edge rgb(90,84,74) in
+graphite, rgb(252,250,244) and rgb(172,170,164) in daylight; the message ink goes **6.85 to 12.01**
+in graphite and **7.41 to 15.78** in daylight; the 17 empties unchanged and boxless; overflow 0 and
+page errors 0 over 264 documents. **The survey's own counter-argument was answered rather than
+ignored**: it said a ground modifier reintroduces the card exactly where errors mostly happen, and
+that is the intent and not the cost.
+
+**92. THE COPY HALF WAS NOT A QUESTION EITHER.** The row split it: the mark half is the system's, the
+copy half might be `voice/`'s and deliberate. It is not. `voice/docs/microcopy.md` carries the trust
+strip as three rows with the claim and its source split, and the stand's three - "Odds move with
+money", "One named source", "Public settlement" - **appear in no microcopy row and on no screen**,
+which is the defect row 82 closed for eighteen other strings. The stand's own closing line already
+points at microcopy as the source of its sentences. Four blocks replaced, marks and copy together;
+measured after, **200 of each claim across 196 documents, one set of three**, every kit and painted
+mark `ic tr-ic` with a `<use>`.
+
+**And the fix exposed the next one.** The product's claims are longer than the invented ones, so in a
+half-width theme cell each wrapped to one word a line: the kit's own trap, a specimen measured in a
+cell narrower than any placement. The section is a vertical pair now, the trade `organisms.html` had
+already taken by hand. **A stand that invents shorter copy will fit in a cell the real component does
+not.**
+
+## 2026-08-10 - The rule that decides all the others was being stored in the order of two siblings
+
+**26. WHICH HALF IS GREEN IS A CLASS NOW, NOT A POSITION.** Sixteen selectors in `yesno.css` bound
+the outcome semantics to DOM order: `:first-of-type` painted green, `:last-of-type` red, on the
+control this product is named after. `CLAUDE.md` says the one rule that decides others is that
+**green and red are outcome semantics**, and that rule was being kept in the one place nothing
+checks, the order of two siblings across 226 documents. Move the buttons and the meaning inverts
+silently.
+
+`.yes` and `.no` go on the control, which is the idiom `hero.css` already uses for the same two
+meanings on `.hf-tag`, so this is a pattern the system had and had not applied to its own name.
+**778 controls tagged across three trees.** Every selector kept its specificity exactly, so no
+cascade tie could move: `.yesno > a:first-of-type button` and `.yesno > a > button.yes` are both
+(0,2,2); `.opt-list .yesno.compact button:first-child` and `...button.yes` are both (0,4,1).
+
+**Measured before and after: 1,504 readings on 226 documents in both themes, 0 colour differences.**
+And the before-and-after earned its keep on the first pass, which reported **16 controls that had
+lost their paint entirely**: the hero's call to action reads `class="hf-cta yesno"`, the sweep
+matched only a class attribute STARTING with `yesno`, so those buttons lost the positional rule
+without gaining the class. A sweep that matches a class list by its first word is a sweep that has
+not read the markup it is sweeping.
+
+**The row's own test, run afterwards**: reverse the pair in the DOM. "Back YES" stays green,
+"Back NO" stays red. Before today that reversal would have swapped them. The skeleton placeholders
+are deliberately left with no side, because a grey box has no outcome.
+
+**76. THE UNSCOPED AMOUNT FIELD WAS ALREADY FIXED, by a pass aimed at something else.** The row was
+written when every rule in `input.css` was scoped to a dialog or a panel, so an unscoped field took
+its ground and its ink from the User Agent: a white box with black text in the dark theme. `.app-case`
+came off 415 selectors on 2026-08-08 and this rule came with it. **Verified rather than assumed**, by
+rendering the atom outside every dialog and every panel in both themes: graphite gives ground
+`rgb(13,15,18)` and ink `rgb(237,231,218)`, daylight `rgb(253,251,245)` and `rgb(33,31,25)`, and the
+box is 44 tall in both. The bet face is transparent on purpose and is not the same defect. **A row
+that was true when it was written can be closed by a pass aimed elsewhere, and the only way to know
+is to render the thing again.**
+
+## 2026-08-10 - Two accessibility rows, both bigger than their own text, and the fix one of them proposed was illegal
+
+**56. THE TWO SKELETON HOSTS ARE HIDDEN, AND SIX MORE WERE LOADING IN SILENCE.** The row was exact
+about the two: `<article class="card skeleton">` on `event-detail-loading` and its logged-out twin,
+in both trees, **4 attributes**, and all 88 others already said `aria-hidden="true"`, so the fix was
+to match the file next door. Measured after in a browser rather than in the source: 180 rendered
+hosts over the 38 screens that draw one, **0 still reaching the accessibility tree**.
+
+**The same reading found what the row could not see.** A host that is `aria-hidden` is silent, which
+is correct, so the LOADING has to be announced by the region around it. On `my-profile-loading`,
+`public-profile-loading` and `wallet-loading`, in both trees, **one host of four stood outside every
+`aria-busy` container**: the balance card's placeholder sits above the list and only the list was
+marked, so those six screens said "busy" about three quarters of what was loading. `aria-busy` is
+raised to the region that holds all four, `.cat-main` in the paint and `main.feed` in the grey.
+After: **180 of 180 hosts inside an announced region, 0 screens with a skeleton outside one.** A
+count of hosts is not a count of what a person is told.
+
+**61. THE ROW'S TITLE WAS RIGHT AND ITS FIX WAS ILLEGAL, which is why it went out for review first.**
+It proposed `aria-checked` or `aria-selected` on `.opt-row`. Neither is legal there: the row is a
+`<div>`, HTML-AAM maps a div to `generic`, and **a state is only valid on a role that supports it** -
+`aria-selected` belongs to gridcell, option, row and tab, `aria-checked` to checkbox, option, radio
+and switch. Written on a generic they enter no accessibility tree at all, which is the **worst** of
+the candidates: the markup then reads as though the state is handled and the next person stops
+looking. And every role that would make them legal is **Children Presentational: True** - option,
+radio, checkbox, switch, tab - so it deletes the two real buttons inside the row. That is the same
+finding that made row 23 reject `role="button"` on this element, arriving again under a different
+attribute name.
+
+**What is legal is `aria-current`**, which is GLOBAL in WAI-ARIA 1.2 and therefore supported by
+`generic` with no role, no required parent and no effect on descendants. `aria-current="true"` on the
+chosen row, on the 2 interactive screens per tree and the 4 kit specimens, **12 rows**. Unchosen rows
+get nothing: `false` is the default, it is announced by nothing, and four of them per screen is noise.
+
+**AND THE HALF THE ROW MISSED IS THE BIGGER HALF.** It filed the accessibility tree. The same reading
+shows that with the word hidden the painted chosen state is a background, a border-color and a soft
+green swapped for a solid one: **no shape, no weight, no mark, no text. Colour alone, which is 1.4.1
+and costs a sighted low-vision user too.** `.opt-sel-tag{display:none}` is deleted and the word
+"selected" renders again. **The rule was unscoped, so it reached further than the screens**:
+`ui-kit/options.html` and `ui-kit/molecules.html` carry the span in their specimens, so the stand
+whose job is to show the chosen face was hiding it. The grey tree kept the word the whole time,
+because it links nothing from `components/`.
+
+**The state had to be taught to move.** Both click handlers moved the class and the word and not the
+attribute, so the prototype would have told the truth until the first click and lied after it. 17
+call sites over 13 documents move all three now. Verified: at rest the chosen row carries class, word
+and `aria-current` in all three trees; after clicking the third row all three moved to it; overflow 0
+and page errors 0 over 264 documents.
+
+**WHAT THE REVIEW COST AND WHAT IT BOUGHT.** One independent pass, no file writes, before any edit.
+It overturned the attribute, found the 1.4.1 half, found that the hiding rule reaches the kit, and
+opened row **96**: on the 14 screens with an outcome list there are **188 controls per tree whose
+entire accessible name is "YES" or "NO"**, with the outcome in a sibling the button does not
+reference. A person tabbing hears "YES button, NO button" ten times with nothing to tell one row from
+the next. That is 4.1.2, it is not what 61 was about, and it is entangled with row 89, so it is filed
+rather than taken. **The review was worth it for the attribute alone: the fix the row proposed would
+have shipped as markup that looks handled and does nothing.**
+
+## 2026-08-10 - Landing this morning's decisions found a control that had been clearing the field it was built to fill
+
+Three rows, and the third was not on any list: it fell out of clicking a chip that the other two had
+just been rewritten around.
+
+**94. THE BET LADDER IS $1 / $5 / $10 / $25, and the row's own number was wrong by 197.** It said the
+chips start at $5 on **216 documents**; that counted every `.chip-amount` in the trees, and the
+product has **two different chip sets**. The DEPOSIT dialog carries $10 / $20 / $50 / $100 on 97
+painted and 96 grey documents, where $10 is right because the deposit minimum is $10. The BET panel
+carries the set the row was about, on **19 documents**. **A count of a class is not a count of a
+decision**, and I wrote that row an hour after taking the count, which is exactly when a number is
+least likely to be re-read. Applied: 27 chip sets over 21 documents, $5 still selected, and the two
+insufficient-funds screens keep $25 selected because that is the state they show. **And the field's
+own guard was wrong too**: `min="0"` on 35 bet inputs became `min="1"`, so this morning's decision is
+enforced by the browser and not only by a sentence in a document.
+
+**95. EVERY QUICK-AMOUNT CHIP CLEARED THE FIELD INSTEAD OF FILLING IT.** The handler is
+`input.value = money(num(chip.textContent))` and `money()` returns `'$' + x.toFixed(2)`, so it wrote
+**`$5.00` into an `<input type="number">`** - which the browser rejects, leaving the field EMPTY and
+taking the fee and payout lines to $0.00 with it. Every chip on every bet panel, and the blur
+handler on the same call. **It has been dead since the amount fields became `type="number"` on
+2026-08-08**, which is the change that closed row 65: a fix to one property broke a handler written
+against the property it replaced, two days apart, in the same file.
+
+**Nothing had caught it, and the reason is the one this repository keeps meeting.** A source read
+sees a handler that assigns the value. A rendering read at rest sees the markup's own `value="5.00"`.
+Every sweep here reads a page as it loads; this needed a page **after a click**. Fixed by writing the
+NUMBER into a number field, `num(...).toFixed(2)`, leaving `money()` for the display lines it was
+written for: 17 documents, 4 handler variants, **0 `x.value = money(` left in any tree**. Verified by
+clicking: $1 to 1.00, $5 to 5.00, $10 to 10.00, $25 to 25.00, typing 3 and blurring gives 3.00, and
+the fee follows at $0.01 for a $1 bet. **A control is not tested by reading the page it stands on.**
+
+**28. THE FOOTER'S COMPONENT HALF, which could only be answered once 27 had said which of the sixteen
+survive.** The row named three things. **A link that goes nowhere is not an `<a>`** - the rule the
+side panel has had since it was written and this component never got - so the three destinations the
+MAP REFUSES, declared `[ORPHAN]` in `ia/docs/sitemap.md` meaning do not build until a job is
+confirmed, are `<span class="footer-soon">` now: **582 rows over 194 documents**, one step quieter
+than a live label so the difference is visible rather than only true. **The sixteen labels are one
+markup repeated**, which is what made both halves cheap. **The trust strip makes a dead row
+expensive**, and that is why the five that stay `<a href="#">` are the five with registered map nodes
+and screens still to build: a promise being kept slowly is not the same as a promise the map has
+declined. Dead footer anchors **2,534 to 1,952**, page overflow 0, page errors 0 over 264 documents.
+
+## 2026-08-10 - The brief has no unwritten mechanic left, and a footer stopped promising eight places that do not exist
+
+Three more decisions on the same day, and with them `docs/backlog.md` "Product research not done"
+is empty for the first time since the project started.
+
+**9. THE CHAIN IS BASE.** Chosen on the three things this product actually needs from a chain rather
+than on a general preference. **Native USDC issued by Circle** rather than a bridged representation,
+because "your USDC is held 1:1" is the product's first trust line and a bridged token is a second
+claim underneath it. **L2 fees low enough that the $1 minimum decided this morning is not eaten by
+gas** - a minimum and a gas price are one decision, not two. And **the shortest fiat on-ramp**, since
+the card path is Coinbase's own and a fiat on-ramp is in the first release. Polygon is the proven
+alternative and is what Polymarket runs on, but its USDC is bridged; Ethereum mainnet is out on fees
+alone at a $1 minimum.
+
+**11. EVERY CADENCE INSTANCE OF A RECURRING MARKET IS ITS OWN EVENT.** "BTC above $150k this week"
+is one Event with one window, one price and one resolution; next week is a different Event. The
+cadence is a **series** the instances belong to, and the Frequency filter filters by the series
+attribute. **Nothing new enters the model, which is the whole reason to choose it**: Active Bets,
+notifications, the win and loss screens and the resolution record all keep working on the Event they
+already work on. The alternative, one long-lived event that resolves repeatedly, needs a second kind
+of position, a second kind of notification and a payout rule per cycle. `ia/docs/sitemap.md` had
+already sketched this in a parenthesis - "each cadence instance resolves on its own schedule" - and
+the parenthesis is the rule now. **This was the last unwritten mechanic in the brief.**
+
+**27. THE EIGHT FOOTER DESTINATIONS ARE CUT.** Each was either a node the map had to gain or a label
+the footer had to lose, and the label goes: `Sports`, `Trending topics`, `API / Developers`,
+`Status`, `Careers`, `Press`, `Brand`, `Geo restrictions`. **`Sports` is why it went that way**: the
+four categories are locked for MVP and Sports is post-MVP, so a fifth in the footer contradicted the
+category decision and not only the map. Applied by a throwaway sweep over the live trees, **283
+document-edits over 264 documents**: 105 painted footers, 87 grey, 2 kit.
+
+**Cutting eight links changed the composition and the composition had to be answered too.** Three of
+the four `Company` links were among the eight, so the column is gone and `About` sits in `Support`:
+a heading over one link is not a column. `By topic` held one item once `Trending topics` went, so the
+sub-label is gone and `View all events` joined the category list. After: **0 of the eight remain, 0
+empty lists, 0 footers with fewer than three columns, page overflow 0 and page errors 0 over 264
+documents at two widths.**
+
+**THE SWEEP TOOK A DESTINATION IT SHOULD NOT HAVE, and that is the lesson of the pass.** The grey
+tree marks a dead link with a `<span class="tbd">post-MVP</span>` badge after the anchor, which the
+painted tree does not, so the first pass matched 105 painted footers and missed 87 grey ones. The
+second pass widened the pattern to swallow the badge - and with it swallowed the `View all events`
+link that shared the block, on all 87 grey footers and one kit page. Caught by counting the label
+across trees afterwards, restored from `HEAD` on 88 documents. **A sweep written against one tree's
+markup is a sweep tested on one tree**, and the check that finds it is counting what should NOT have
+moved, not counting what should.
+
+**WHAT IS LEFT DEAD IN THE FOOTER IS ROW 28's**: five registered nodes awaiting screens, three the
+map declares `[ORPHAN]`, and five social links, 2,534 anchors in all. And **`Geo restrictions` is the
+one of the eight to re-read when compliance is written**: the requirement is real and stays in
+`PRODUCT.md`; if it needs a page, it gets a node on the map first and a footer label second, in that
+order. That order is the whole point of the row.
+
+## 2026-08-10 - Four product decisions carried since the brief, and one of them had been shipping a number nobody chose
+
+`docs/backlog.md` 6, 7, 8 and 10 have been open since the project brief. They are the product
+owner's to make and they were made today; this entry is what they are, what they replace, and what
+moved in the tree because of them. **11 stays open** and is now the last unwritten mechanic.
+
+**6. THE COMMISSION IS 1.5% OF THE STAKE.** The research to answer it was already in this repository
+and had never been read against the product: Kalshi charges `0.07 x p x (1-p)`, which is **1.75% of
+notional at a 50/50 midpoint**; Polymarket **0.8% to 1.8%** on crypto and **0.30% flat** in the US;
+Hyperliquid HIP-4 **0%**. **And a rate was already shipping**: `fee = 0.03 * payout`, in the page
+scripts of 13 painted screens, 17 constants, which is about **6% of the stake at even odds** and
+3.4x the dearest competitor. Nobody chose it, nothing pointed at it, and the row that owned the
+question said "% still TBD". **The basis moved from the payout to the stake** because a person can
+check a percentage of the number they typed and cannot check a percentage of a number that does not
+exist yet, and "explain the number" is the product's own differentiator. Applied: 17 constants and 13
+labels, `Fee (only if you win)` to `Fee (1.5% of your bet)`. A $5 bet reads **$0.07** where it read
+$0.39.
+
+**7. THE BET MINIMUM IS $1 AND THERE IS NO MAXIMUM.** The question had **three different written
+answers in three places**: `PRODUCT.md` said "$1 / $5 sizing", the microcopy said "No minimum or
+maximum", and the deposit dialog said "Minimum deposit $10", while the chips on screen start at $5.
+The minimum exists so the fee line is never absurd against the stake; $1 is the try-it size the MVP
+scope already names; the $10 deposit minimum stays, which is a few bets of headroom rather than one.
+Applied: **21 strings across all three trees** and the row in `voice/docs/microcopy.md` that is their
+source.
+
+**8. KYC IS THE FIAT RAIL'S ONLY, and no copy changed, which is the finding.** Card deposits are
+verified, where the on-ramp provider does it anyway; a crypto-only user is never asked. It keeps the
+product's core inversion intact - the wallet and the verification arrive at Confirm, not at entry -
+and it is what Polymarket does. **The deposit dialog has read "KYC is required for card deposits;
+crypto-only users can connect a USDC wallet instead" since the voice pass**, so the product had been
+promising this in words for weeks while the decision behind it was open. A promise in the interface
+is a decision somebody made without writing it down. It is a compliance question with a legal
+component, and what is recorded here is the design default rather than legal advice.
+
+**10. THE PAYOUT IS SHARES AT A LOCKED PRICE.** You buy YES or NO at the price on screen, that price
+is locked at Confirm, and a winning share pays $1. **Timing matters because the PRICE moves, not
+because the payout rule computes differently.** That is the whole reason the number can be said in
+one line, and it makes the Confirm reconcile (S5) the thing it already looked like: the price moved,
+here is the new one, commit or not. It replaces "AMM-style dynamic pricing, payout depends on when
+the bet was placed", which was never specified and could not be explained to a newcomer - and an
+unexplainable mechanic in a product whose differentiator is explaining the number is a contradiction
+carried in the brief since the beginning.
+
+**WHAT IT COST AND WHAT IT OPENED.** 13 painted screens, 4 grey screens, 3 kit pages, `PRODUCT.md`
+and `voice/docs/microcopy.md`. Verified in a browser: the fee row renders `Fee (1.5% of your bet)
+$0.07` against a `Potential payout $13.16`, page errors 0. **Opened 94**: the amount chips are
+$5 / $10 / $25 / $50 on **216 documents** and the minimum is now $1, so the smallest size the product
+allows is a size its own control cannot express. That is a sweep across a frozen tree and a shape
+worth choosing rather than assuming, so it is a row.
+
+## 2026-08-10 - The brass ladder was never a ladder, and the role standing on the floor now says how far the floor is
+
+Two rows about brass, `docs/backlog.md` 33 and 32, both left alone by the consolidation on the
+grounds that they were design decisions. They are, and a design decision is still made by measuring
+first.
+
+**33 OFFERED TWO ANSWERS AND THE MEASUREMENT GIVES A THIRD.** The row read four brass ink roles at
+8.98, 11.68, 13.20 and 10.58 against the page in graphite and 7.40 for all four in chalk, and asked:
+is the ladder real in both themes, or is it one role with three aliases? Re-read against the **real
+composited ground** on all 106 painted screens rather than against a page swatch, which is a
+different question and the one that matters: in graphite the four resolve to four values and stand at
+**5.70 to 8.98, 11.13 to 11.33, 9.86 to 11.79 and 10.08**; in chalk they resolve to one value on
+**704 placements, worst 5.24, best 7.40**.
+
+**The steps in graphite are not emphasis, they are the same ink compensating for four different
+grounds** - a brass-tinted chip, a photograph under a veil, a plate, bare stone. On the pale stone one
+value clears every one of those grounds with 0.74 to spare over the 4.5 floor, so daylight needs no
+compensation and the roles share a value. That is not a hole; **two roles may share a value as long as
+each says so**, which is the rule twenty-seven other groups in `tokens.css` already live under. What
+was missing was the saying, and it is written at the chalk block now with the numbers.
+
+**THE FOURTH NAME IS DELETED.** `--text-brass-vol` had **one placement in the entire product**,
+`.hf-tag.vol`, the volume tag on the featured hero. In daylight it was byte-identical to the other
+three; in graphite it was 10.08 against the eyebrow's 11.13 on the same hero plate, a step of 1.05 in
+contrast that nobody chose and nothing else uses. The tag takes `--text-brass-lit`, the role its own
+plate already carries: measured after, rgb(216,191,127) to rgb(230,200,119) in graphite and unchanged
+in daylight. It came out of `tokens.css` twice, `hero.css`, `ui-kit/colour.html` (two matrix rows, ten
+cells) and `_page.css`. **A role is a reason, not a value, and "it is on the hero" is a reason that
+already had a name.**
+
+**32 IS CLOSED AS A CONSTRAINT WRITTEN WHERE THE RAMP IS, and the row had the direction backwards.**
+It said "any card ground made one step lighter puts it under". A lighter stone RAISES the ratio; it is
+a DEEPER stone that kills it, and the chalk ramp numbers its deeper steps lower, which is where the
+wrong word came from. Computed against every step: **3.43 at chalk-940, 3.40 at 930 (the page), 3.31
+at 920, 3.28 at 910 (the plate), 3.20 at 900 (the card it stands on), 3.14 at 880, 3.06 at 870 and
+exactly 3.00 at chalk-860.** Three steps of headroom and the eighth lands on the floor. Measured in a
+browser against real grounds, `--icon-brass` is **4 placements in daylight, all the saved bookmark on
+a card, all at 3.20**, and nothing else in this system is within 0.5 of a floor. A constraint that
+lives only in a backlog row is a constraint the next person to lighten a card will not read.
+
+**AFTER.** 160 documents at 390 in graphite and 1280 in daylight: page overflow **0**, page errors
+**0**, and the colour page's matrix is 34 rows where it was 36.
+
+## 2026-08-10 - Three rows closed in one pass, and each had been filed for a reason that had stopped being true
+
+**44: THE DRAWER BUTTON IS 44 NOW, AND IT WAS UNBLOCKED BY AN EARLIER PASS RATHER THAN BY AN
+ARGUMENT.** The row filed it instead of fixing it, and said why: the button stood fixed over the TOP
+LEFT of every screen, so 8px more of it moved onto a header laid out around 36. It stands in the
+bottom right since this morning, in a corner measured empty on 147 of 160 documents, so the 8px lands
+on nothing. It was the **last control in the repository under the project's own floor**, and it is
+the one control a person has no alternative to below the dock. Verified 44x44 on **1,440 readings**:
+160 documents at 390, 700 and 900, three scroll positions each, page overflow 0.
+
+**And growing a control moved a clearance nobody re-read.** At 36 the button fitted inside the 52px
+strip `.bet-dock` reserves under itself; at 44 it did not, and it crossed the dock's bottom edge by
+4px in **16 readings of 960** the moment the floor was applied. The lift moved from the DESK rung to
+the DETAIL rung, where the dock actually goes, and the count returned to 0.
+
+**36: THE MONO WEIGHT WAS NOT A TRAP, IT WAS LIVE, and the row missed it by reading declarations
+instead of the page.** IBM Plex Mono ships two weights, 500 and 600, in four files. The row checked
+the five mono declarations in `components/`, found them all on medium or semibold, and filed it as a
+trap. **Font-weight inherits.** An element that sets the mono family and no weight takes the body's
+400, and there is no 400 face either: measured over 160 documents, **1,041 mono elements in the
+painted tree compute 400 and 34 compute 700**, against 310 at 500 and 262 at 600. **1,075 of 1,647
+ask for a face that is not there.** Nothing renders wrong and nothing is synthesised, because CSS
+font matching resolves 400 onto the 500 face and 700 onto the 600, which is exactly what the original
+pixel counts showed: 5380 / 5380 / 5993 / 5993 at 400 / 500 / 600 / 700, two faces wearing four
+names. **So the 700 face is not added** - 33 KB for a step no screen can show is missing - and what
+is fixed is the silence. `fonts.css` said `--weight-bold` was "documented as unavailable here",
+pointing at a token line that said nothing, and called two weights in four files "four static faces".
+**A pointer is a claim, and nothing checks a comment.**
+
+**90: THE FOUR CLIPPED KIT CELLS WERE A SYMPTOM, and the decision the row named was the wrong pair.**
+It offered: either the cell declares itself width-conditional, or the specimen is cut to what a 360
+cell holds. Neither, because the specimen was not too big for the cell - **the component overflows
+itself**. Measured on the four painted screens that carry holdings, with the panel's radio CHECKED:
+`.hold-cols` stood 275 wide at 360 and 305 at 390 against a scrollWidth of **377**, overflowing by
+**102px and 72px**. `.hold-col` declares `flex:1`, and a flex item's `min-width` is `auto`, so it may
+not shrink below its content's intrinsic minimum: **the file already knew the fix and had written it
+three lines up**, `.act-txt{flex:1;min-width:0}`. That halved it. The rest was one word - a username
+like `polly_predicts` is an unbreakable 88px token - answered with the ellipsis `.hh-name` already
+gives the same datum one component over. **After: overflow 0 at 360, 390 and 640, and the kit's four
+clipped cells are 0.**
+
+**WHY NO SWEEP HAD SEEN IT is the part worth keeping.** The holdings panel is behind a CSS radio tab,
+so at rest it measures zero and every overflow pass in this repository skipped it. That is the third
+costume of one trap, after the closed `<details>` and the shut `<dialog>`: **a state that is a page
+is measurable, and a state that is a checked input has to be checked first.**
+
+## 2026-08-10 - The icon set had one geometric weight that slid, so it had no optical weight at all
+
+`docs/backlog.md` 29 said the stroke is a constant in user units and renders at six different
+weights. **The row was right and its numbers were stale**: `.ic` went 1.6 to 2.2 after it was
+written and nobody re-read it.
+
+**RE-MEASURED over 2,044 stroked marks**, at two widths, against the svg's CONTENT box rather than
+its border box, because two of these rules use `box-sizing:content-box` with 8px of padding and the
+border box is 40 where the viewport is 22. **And split by tree, which is the part that decides what
+the row was actually about.** In the product: **1,818 marks at four weights**, 1.20 at 12 on 550,
+1.47 at 16 on 34, 1.65 at 18 on 1,056, 2.02 at 22 on 178. **1.68 to 1 between the ends**, which is
+the number `ui-kit/icons.html` had already worked out and written down, and which this pass did not
+read first. The two extremes worth quoting are both in the KIT: a **3.67 slab** on a 40px
+demonstration figure, and **0.92 on six `ui-kit/trustbar.html` specimens** that had no declaration at
+all and took the SVG default of 1, under one device pixel at DPR 1.
+
+**THE FIX IS ONE TOKEN AND ONE PROPERTY.** `--stroke-mark:1.65`, paired with
+`vector-effect:non-scaling-stroke` on the shapes, so the declared number is the rendered number and
+the weight stops depending on the box. 1.65 because 1,122 of the 2,044 already rendered there: the
+set keeps the weight it was drawn against and the other 900 come to it. `vector-effect` is a
+presentation attribute on the shape and does not inherit, so it goes on the children rather than on
+the svg, which is a fact about SVG that a rule written on the wrong element would have hidden.
+
+**FOUR FILES OWNED A STROKED MARK AND EACH DECLARES THE TOKEN NOW.** Two were hand-computing the
+house weight in user units and getting it right by accident: `toast.css` said 2.2 in a box of 18,
+which is 1.65 on screen. One was a number nobody reconciled: `market.css` said 1.8 in a box of 16,
+which is 1.20, the second lightest mark in the product. And one had **never declared anything at
+all**: `.tr-ic` is not `.ic`, so the family's declaration never reached it and it took the SVG
+default of 1.
+
+**AFTER: all 1,818 product marks render at exactly 1.65, ratio 1.0**, and 2,018 of the 2,044 across
+both trees. It is verified against the PAINT rather than
+against the formula - a straight bar screenshotted at device scale 10 and summed by pixel coverage
+gives **1.65px at boxes 12, 18, 22 and 40**, with a half-intensity width of 1.60. The other 26 are
+`ui-kit/icons.html`'s blow-up specimens at 70 and 94px, and that is the one deliberate exclusion: a
+drawing shown at four times its size wants its stroke at four times too. `.tk-glyph` carries no
+`.ic`, so the rule never reaches it and the exclusion costs nothing to keep.
+
+**THE INSTRUMENT HAD TO BE READ TWICE, and both times it lied in a different direction.** The first
+census took the svg's border box, which over-reported the padded marks by 1.8x. The second, after the
+fix, still computed `declared x box / 24` - the right formula for a stroke that scales and the wrong
+one for a stroke that does not - and **reported that the whole set had got thinner**. A formula is an
+instrument, and an instrument that was correct before a change is not automatically correct after it.
+
+**WALKED INTO.** The twelve marks rendering at 0.92 were not the product's. In the painted tree the
+trust marks are `class="ic tr-ic"` with a `<use>`, filled, and a stroke width can never reach them;
+the only stroked `.tr-ic` in the repository is six specimens on `ui-kit/trustbar.html` carrying
+`tr-ic` alone with hand-written paths, beside three items of copy the product does not have either.
+The first version of the comment in `trustbar.css` blamed the product for it and was corrected before
+it shipped. `docs/backlog.md` 92.
+
+## 2026-08-10 - One job, two drawings was wrong by half a per cent, and the three treatments belonged to the stand that was reporting them
+
+`docs/backlog.md` 75 and 88 both said this product draws its close cross more than one way. 75 had
+already had its premise corrected once, by attempting the fix and being told no by a measurement.
+This closes both, and the second half of 75 was wrong too.
+
+**THE CHARGE WAS "ONE JOB, TWO DRAWINGS", filed beside the warning mark that really was a circle on
+16 screens and a triangle on 4.** Read in a browser: `.sheet-close` is a 12-unit cross in a 24
+viewBox at stroke 2.2, rendered in a **16px svg inside a 32px button**, so its ink spans **9.47px,
+29.6% of the button**. `.icon-btn-small` draws two bars of 8 x 2 rotated 45 degrees in a **24px
+button**, so their ink spans **7.07px, 29.5%**. **Two techniques, one mark, the same optical size to
+within half a per cent.** `iconbtn.css` had argued the geometry correctly when it was written - 12 in
+24 would be an X pressed against its own edge - and nobody had checked the arithmetic against the
+other control. The technique differs because one control carries an svg and the other carries the
+letter `x`, which is inert under `font-size:0` in the paint and is **the whole drawing in the grey
+tree**, where the button has no pseudo-element and an emptied one measures 16 x 8.
+
+**WHAT WAS ACTUALLY WRONG WAS THE STAND, and it was markup.** Across all three trees there are **28
+small close controls, and the product ships one markup on all of them**, 4 painted and 4 grey. The
+kit shipped **three**: 10 with the letter, **6 empty** on `vitrine.html`, and **4 on `toast.html`
+with an `svg.ic-sm` cross inside the button**. That last is not a variant but a defect with a
+picture: the bars draw from `::before` and `::after` whatever the content is, so those four drew the
+mark **twice, a brass 9.47px path over a grey 7.07px pair of bars**, in the theme figure whose one
+job is to show what ships. **The page's own anti-rule says "never redraw the dismiss here."** And the
+vitrine's label read "the cross is two pseudo-elements, no glyph", which is the sentence that made
+the empty specimens look deliberate.
+
+**AFTER.** All 20 kit specimens carry the product's markup: **28 of 28 in three trees are one
+treatment**, measured after the edit, 0 with an svg and 0 empty. The two drawings stay, with the
+number that says why written beside the rule. The vitrine's label is corrected, the toast page's
+anti-rule now records that this page broke it, and `ui-kit/iconbtn.html` keeps the paragraph that
+called this a defect, with both of its errors marked: a specimen page that quietly deletes its own
+wrong reading teaches nothing.
+
+**AND ONE COUNT WAS WRONG.** Row 78 has said **CLOSED** in its text since 2026-08-09 and its number
+was never struck, so this file counted it as open for a day. That is item 74 arriving a fourth time.
+The fix it describes is present and verified: `svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor
+!important;stroke:none!important}` in `base.css`.
+
+## 2026-08-10 - The harness moves and the product does not, and this time what it was taking was paint rather than width
+
+`docs/backlog.md` 91 was opened by the ladder pass an hour earlier and is closed here. The review
+drawer's button is `position:fixed` at top 12 left 12, 36 square, so it occupies x 12 to 48 on all
+**160 documents below the dock**. The header row's padding-left computes 14 on a phone, so the logo
+starts at x=14: **the button covered 34px of the brand mark on 88 pages, at every width from 360 to
+1139**, and it has done so in every screenshot ever taken of this repository.
+
+**THE RULE WRITTEN TO PREVENT IT HAD NEVER ONCE APPLIED.** `header.css` carried
+`.app-header .row{padding-left:var(--space-56)}` inside its mobile block, and the same selector is
+set again at the same (0,2,0) thirty-four lines below with `padding-left:var(--gutter)`. Equal
+specificity is decided by source order, so the later rule took the property back every time. Its
+scope was wrong even alive: the block stops at the desk rung and the button exists to 1139.
+
+**THE DECISION IS THE ONE THE DOCK TOOK THIS MORNING, applied to paint instead of to width.**
+Reviving the indent was rejected: it is the product paying for the harness, and it would have pushed
+the brand **42px off the column every line under it aligns to**, in the review build only, for a
+tool. So the chrome moves, and which corner it moves to was measured rather than argued: **160
+documents at 390, 700 and 1280, five candidate boxes, classifying what sits under each of five
+points of the 36px square.** At 700: **bottom right is empty on 147 of 160 pages**, against top-left
+covering the brand on 88 and top-right a control on 89. Bottom right is also the corner a 220px left
+drawer never reaches, so the button is clickable with the panel open - which at top-left it was not,
+because it drew ON the panel it had opened.
+
+**BELOW THE DESK RUNG IT LIFTS TO 132, and the number is what the product stacks on that edge.**
+`.bottom-nav` is `position:sticky;bottom:0` and measures 56 tall on the 39 screens that carry one;
+`.bet-dock` is `position:sticky;bottom:52px` and measures **68 tall in all 48 readings of it**, so
+its top sits **exactly 120 from the bottom edge**. 132 is that 120 and the same 12 gap the button
+uses everywhere else. From the rung up the lift is dropped: the nav is gone, and the dock reserves
+52px under itself for a nav that is not there, so the bottom strip is free.
+
+**THE FIRST NUMBER WAS 68 AND IT WAS WRONG, and how it was wrong is the lesson.** 68 is 56 plus 12:
+correct arithmetic for one of the two bars and blind to the other. It was blind because the first
+measurement read every page **at scroll 0**, where a sticky dock has not stuck yet, and a bar that is
+not at the bottom of the viewport is invisible to a probe that asks what is at the bottom of the
+viewport. Re-read at the top, the middle and the end of every page: a lift of 68 lands on the bet
+dock in **32 readings of 960** and a lift of 12 on a nav item in **63**. **Reading a sticky element
+without scrolling is reading the source again**, which is this repository's oldest rule wearing a
+different coat.
+
+**IT STILL CANNOT BE PERFECT, and the number is not the best one measured, on purpose.** A sticky nav
+sits at the viewport's bottom on a long page and at the CONTENT's bottom on a short one, so no fixed
+offset tracks it, and about ten readings of 960 land on a nav item that stopped short of the edge.
+What is NOT done about that is tune the number until they go: **120 measured slightly better than 132
+and is refused**, because it is a height fitted to today's content, which is exactly the mistake the
+entry below this one closed at 520, in the same pass, an hour earlier.
+
+**AFTER.** The button overlaps the header on **0 of 160 documents** at 360, 390, 639, 640, 700, 900
+and 1139, and it is gone at 1140 as it always was. Read again scrolled, 160 documents at 390 and 700
+at the top, the middle and the end of each, **960 readings**: page overflow **0**, header overlap
+**0**, the bet dock under it **0**, a nav item under it **10**, a page control **46**, and the other
+**904 are surface or text**. At 700 the whole count is three controls. It is the topmost thing at its
+own centre on **858 of 960**, and the missing 102 are exactly the 17 screens that ship with a modal
+sheet open, times two widths times three scroll positions: a modal is in the top layer, so it covered
+this button wherever it stood and the page behind it was inert in both positions. The dead
+declaration is **deleted** rather than revived, with the reason kept where it stood, so the product's
+header now owes the harness nothing.
+
+**KNOWN AND ACCEPTED.** The button is first in the DOM of every page and now renders in the bottom
+right, so a keyboard reaches the roadmap before it reaches the product while the eye finds it last.
+That is markup on 160 documents to change and the tool is not the product, so it stays as it is and
+is written down here rather than filed.
+
+## 2026-08-10 - A rung is one pixel and it belongs to the wide side, and the pair that wrote it twice was hiding a header that asks for 694
+
+`docs/backlog.md` 72 was half closed this morning: the ladder was named, the harness rung was moved
+off the product's widths, and **the fourth question was left open on purpose** - whether 520, 560,
+620 and 980 collapse onto it. That question is a measurement and not a rename, so this is the
+measurement.
+
+**ONE OF THE FOUR COLLAPSES AND THREE STAY, and every answer is a number.**
+
+**520 is gone.** It was never a decision: it is the width at which four columns first FIT, not the
+width at which they first read. Measured one width at a time on both profiles and the kit's stand:
+from **520 to 555** the four cells are 102.5 to 108.8 wide, "Member since" takes two lines, and every
+figure in the row stands **91 tall instead of 80.5**. Thirty-six widths of a wrapped label in the row
+that says what a person's record is. Two columns hold to 639 at 213 to 272.5 with nothing wrapping,
+and four arrive at DESK at 132.5. A width out of the system and the wrap band with it.
+
+**560 stays, because collapsing it runs a floor backwards.** Applied to 639 it takes the three
+detail tiles from 36 to 28 on **79 widths of window that has room for them**, and this system's own
+invariant is that a floor raises a short control and never lowers a tall one. What the block is FOR
+was measured with it: the head's content box crosses the actions' left edge by 4px below 560 and by
+24 above, because three 36px tiles 8 apart at a 16 offset ask 140 of clearance and the padding gives
+118 - and **no line of the question has ever crossed them**, the nearest ending 31px short at 561 and
+110px short at 640. The padding does its job at both sizes; the 22 it is short of the arithmetic has
+never reached the ink.
+
+**620 and 980 stay, because they are one card folding and not the page frame arriving.** The hero is
+the only three-level grid in the product. Taking 980 to RAIL lands the feature's two columns at 251
+and 256 **on a 901px window**, which is 28px under the 279.5 the same card already takes at 641 - and
+that 279.5 is set by the gutter going 14 to 40, not by the card. Taking 620 to DESK costs 19 widths
+and 288px of height, 346 tall in two columns against 634 in one, and closes nothing, because at 621
+the columns are 295.5 each, wider than the minimum the card already lives with.
+
+**AND THE MEASUREMENT FOUND WHAT THE ROW COULD NOT SEE, for the second time in one day.**
+
+**A rung was written as a PAIR.** `max-width:640px` in eight files, `min-width:640px` in five, and
+**both match at exactly 640**. So the rung rendered a page that exists at no other width: measured on
+ten screens, **nine of them showed the desk utility, the balance figure and its icon button, standing
+on a 14px mobile gutter under a mobile header with no bottom nav**, matching neither 639 nor 641. The
+same pair stood at 760. Below a rung is `max-width:639.98px` now. **The .98 is not ceremony**: a
+zoomed window reports a fractional width, 639.4 has to be mobile, and an integer bound would leave a
+gap where NEITHER branch applies, which is worse than the overlap it fixes.
+
+**What the pair was hiding is worse than the pair.** The desk header asks for **694px** - 40 of
+gutter, then 36 + 8 + 149 + 8 + 88 down the left, then 8, then a 317px utility, then 40 of gutter -
+and it turned on at 641. So **73 of the 106 painted screens took horizontal scroll from 641 to 652**,
+and kept a right gutter under its 40 until 693. The 73 are **exactly** the signed-in screens: the
+other 33 carry two auth buttons where the balance figure stands, and are narrower. Every audit in
+this repository reads 390 and 1280, and yesterday's rule was to read AT the rungs and one pixel
+either side; one pixel either side is what found this.
+
+**`.hiw-btn` waits for DETAIL now.** It is 88 of the 694 and the only control in that row carrying a
+word rather than a mark. Without it the row asks 598 and fits from 641 on; at 760 it asks 694 with 66
+to spare. Nothing is lost in the band: every feed carries a second trigger for the same dialog and
+`how-it-works.html` is a page of its own.
+
+**WHAT IT COST, and where.** Overflow **73 pages to 0**, at every one of ten widths over all 160
+documents. No rung is a state of its own any more, at 640, 760 or 900. The element sweep over ten
+screens at 29 widths differs **at 520 to 639 (the record, three pages), at 640, at 641, at 700 and at
+760, and at no other width**: the change is contained in the bands it was wrong in. The touch floor
+was re-read under a coarse pointer at six widths on four screens: **0 controls short of 44 on either
+axis**, including at 641 and 700 where the header moved.
+
+**THE STAND HAD THE SAME PAIR, in its own chrome.** `ui-kit/_page.css` wrote four rules at
+`max-width:640px` and one at `min-width:640px`, so at exactly 640 the kit printed "not rendered from
+640px up" under a bottom nav while its own frame was still on the 14px mobile inset. It also already
+knew the answer in one place and not the others: `.tk-below-760` was written `max-width:759px`. All
+nine are exclusive now, with the reason beside them. Re-read after: **54 kit pages at 639, 640, 641,
+759, 760 and 761, 0 overflow**.
+
+**REJECTED.** Moving the header's divide up to DETAIL, which would have fitted: the bottom nav and
+the gutter both pivot at DESK, so the band 641 to 759 would have had a mobile header with no bottom
+nav under it. Writing `max-width:639px` instead of 639.98, for the fractional-viewport reason above.
+Collapsing 620 or 980 for tidiness, which the numbers refuse.
+
+**THE INSTRUMENT.** Animation and transition frozen, 220ms to settle, the cold pass evaluated and
+thrown away, and the control taken twice unchanged: **0 of 580 keys differ**. The theme was proved
+irrelevant to this measurement rather than assumed: **0 of 1,600 dark/light pairs differ** across all
+160 documents at ten widths on the before pass, which is why the after pass ran in one theme and says
+so. A fresh port, 8934, because a cached stylesheet has cost this repository six readings.
+
+**WALKED INTO AND NOT FIXED.** `header.css` carries `.app-header .row{padding-left:var(--space-56)}`
+to hold the row clear of the review drawer's fixed button, and **that declaration has never once
+applied**: the same selector is set again at equal specificity thirty-four lines below, and source
+order decides. Measured: the toggle covers **34px of the logo on 107 pages at every width from 360 to
+1139**. It is `docs/backlog.md` 91, kept and marked rather than deleted, because where a review tool's
+button lives is the harness's decision and there is no free corner to move it to.
+
 ## 2026-08-10 - The height pass had fixed the axis the font decided; the axis a WORD decides was still open, and a label is not in anybody's query selector
 
 The floor of 2026-08-08 declared `min-height` for fourteen families and `min-width` for the five

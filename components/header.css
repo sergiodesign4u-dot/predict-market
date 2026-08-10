@@ -170,13 +170,41 @@
 .notif-all:active{background:var(--bg-pressed)}
 /* The bell used to be lifted to the strong icon token because it was the one filled mark in
    a row of stroked ones. The row is filled now and the exception went with the reason. */
-/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
-@media(max-width:640px){
+/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+   because the rung belongs to the desk: tokens.css, page frame. */
+@media(max-width:639.98px){
   /* the three targets that used to be sized here are in the pointer:coarse block below, with the
      other four. One rule, one trigger. */
   .app-header .left > .icon-btn{display:none}
+  /* `.app-header .row{padding-left:var(--space-56)}` stood here and is gone, 2026-08-10,
+     docs/backlog.md 91. IT HAD NEVER ONCE APPLIED: the same selector is set again at the
+     same (0,2,0) thirty-four lines below with `padding-left:var(--gutter)`, and equal
+     specificity is decided by source order, so the later rule took the property back
+     every time. It was written to hold this row clear of the review drawer's fixed
+     button, and measured, the button covered the first 34px of the logo on 88 of the
+     160 documents instead. THE ANSWER WAS NOT TO REVIVE IT. An indent is the product
+     paying for the harness, and it would have pushed the brand 42px off the column
+     every line under it aligns to, in the review build only, for a tool. The button
+     moved instead, to the one corner the product does not use, which is argued and
+     measured in components/course-chrome.css beside the rule that moves it. So this
+     row owes the chrome nothing, and that is the point of the entry. */
+}
+/* THE ONE LABELLED BUTTON IN THIS ROW WAITS FOR THE DETAIL RUNG, and the width it
+   waits for was measured rather than argued. At 641 the desk row asks for 694px:
+   40 of gutter, then 36 + 8 + 149 + 8 + 88 down the left, then 8, then a 317px
+   utility, then 40 of gutter again. The window is 641. So the header did not fit
+   the page it stood on, and 73 of the 106 painted screens took horizontal scroll
+   from 641 to 652 and kept a right gutter under its 40 until 693. The 73 are exactly
+   the signed-in screens: the other 33 carry `.auth-btns` where the balance figure
+   stands and are narrower, which is why the number is 73 and not 106.
+   `.hiw-btn` is 88px of that, the only control in the row that carries a word rather
+   than a mark, and it is the one the row can wait for: without it the row asks 598
+   and fits from 641 on, and at 760 it asks 694 with 66 to spare. Nothing is lost in
+   the band, because How it works is not only here: every feed carries a second
+   trigger for the same dialog and `how-it-works.html` is a page of its own.
+   rung: DETAIL 760, and this is BELOW it. tokens.css, page frame. */
+@media(max-width:759.98px){
   .hiw-btn{display:none}
-  .app-header .row{padding-left:var(--space-56)}
 }
 .logo-btn{display:inline-flex;align-items:center;gap:var(--space-8)}
 .logo-btn::first-letter{color:var(--text-primary)}

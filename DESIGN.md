@@ -307,21 +307,41 @@ rung and 1,133 controls moved onto the ladder, so one height per family renders 
 to, backlog 40.
 
 **Three breakpoints, and each is named by what ARRIVES at it.** `640` is the one divide, below it a
-single column with a bottom nav and a mobile dock and above it the desk, 13 rules in 13 files. `760`
-is where the event detail gains its second column: the bet panel docks as a sidebar, the dock goes,
-the chart takes its full height, 5 rules. `900` is where a vertical rail arrives beside the content,
-sub-categories, the table of contents, the how-it-works side column, 6 rules. A width with no event
-at it is a width somebody will round, which is why they carry names rather than sizes.
+single column with a bottom nav and a mobile dock and above it the desk, 14 rules. `760` is where
+the event detail gains its second column: the bet panel docks as a sidebar, the dock goes, the chart
+takes its full height, and the header's one labelled button arrives, 6 rules. `900` is where a
+vertical rail arrives beside the content, sub-categories, the table of contents, the how-it-works
+side column, 6 rules. A width with no event at it is a width somebody will round, which is why they
+carry names rather than sizes.
+
+**A rung is one pixel and it belongs to the wide side.** Until 2026-08-10 the divide was written as
+a PAIR, `max-width:640px` in eight files and `min-width:640px` in five, and both of those match at
+exactly 640: the rung rendered a page that exists at no other width. Measured on ten screens, nine
+showed the desk utility - the balance figure and its icon button - standing on a 14px mobile gutter
+under a mobile header with no bottom nav, matching neither 639 nor 641. Below a rung is
+`max-width:639.98px` now, and the `.98` is not ceremony: a zoomed window reports a fractional width,
+639.4 has to be mobile, and an integer bound would leave a gap where NEITHER branch applies. The
+same pair stood at 760 and closed the same way. **What the pair was hiding is the second finding:**
+the desk header asks for 694px and it turned on at 641, so **73 of the 106 painted screens took
+horizontal scroll from 641 to 652** and kept a right gutter under its 40 until 693. The 73 are
+exactly the signed-in screens, because the other 33 carry two auth buttons where the balance figure
+stands. The row is 40 of gutter, then 36 + 8 + 149 + 8 + 88 down the left, then 8, then a 317px
+utility, then 40 of gutter; `.hiw-btn` is the 88, the only control in it carrying a word rather than
+a mark, and it waits for `760` now. Without it the row asks 598 and fits from 641 on.
 
 **A breakpoint cannot be a token, and that is a fact about CSS rather than an oversight here.** A
 media query condition does not read a custom property, `@custom-media` is unimplemented in every
 browser, and this repository has no build step to compile either. `--bp-rail:900px` in `tokens.css`
 would be a value in the one place that lies: usable-looking and unusable. So the ladder is declared
-by being read, in the page-frame section of `tokens.css`, and every one of the 31 media rules in
-`components/` carries one line naming its rung, or saying it is not one. **Four widths are not
-rungs** and say so where they stand: 520, 560, 620 and 980, each one rule doing one local job.
-Whether they collapse onto the ladder is `docs/backlog.md` 72, and it is a measurement rather than a
-rename because each moves layout in a real band.
+by being read, in the page-frame section of `tokens.css`, and every one of the 32 media rules in
+`components/` carries one line naming its rung, or saying it is not one. **Three widths are not
+rungs** and say so where they stand: 560, 620 and 980. 520 was the fourth and it is gone: the track
+record's four columns arrive at `640` now, because 520 was the width at which four columns first FIT
+and not the width at which they first read, and from 520 to 555 the fourth label wrapped on every
+profile. The other three each cost something real to collapse and closed nothing - 560 would shrink
+three controls from 36 to 28 on 79 widths that have room for them, and the hero's two steps are one
+card folding rather than the page frame arriving - so each carries its measurement beside its rule.
+`docs/backlog.md` 72, closed 2026-08-10.
 
 **A fourth width exists and it is not the product's.** At `1140` the review sidebar docks and the
 body takes its 220px inset. It was 860 until 2026-08-10, which is 40px BELOW the widest product
@@ -332,6 +352,15 @@ narrower than the 360px phone this product is designed from; `.ed-main` fell 430
 pixel, because `.bet-panel` is `flex:0 0 322px` and does not hand the space back; and **73 of 160
 pages took horizontal scroll at 860 and at no other width**. 1140 is 900 + 220 + 20, so the chrome
 docks only once the product still has its widest layout's worth of room.
+
+**The same rule caught the chrome a second time, on paint rather than on width.** Its drawer button
+is fixed at 36 square in the top left corner of all 160 documents below the dock, and the header row
+starts at x=14 on a phone, so **it covered 34px of the brand mark on 88 pages at every width**. The
+answer is not that the product indents: that would push the brand 42px off the column every line
+under it aligns to, in the review build only, for a tool. The button moved to the corner the product
+does not use, measured across five candidates - **bottom right is empty on 147 of 160 pages** against
+top-left covering the brand on 88 - and it lifts by the bottom nav's 56 plus a 12 gap below the desk
+rung. **The harness moves and the product does not**, whether what it is taking is width or paint.
 
 - **The inner/outer rhythm.** Within a group, gaps stay small (4-12); between groups they open up
   (16-24). The bet sheet is the reference: ~20px between the header / YES-NO / amount / breakdown /

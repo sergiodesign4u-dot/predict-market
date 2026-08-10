@@ -35,9 +35,19 @@
 .pos-record .pos-fig b{font-family:var(--font-mono);font-size:var(--text-20);color:var(--text-primary);font-weight:var(--weight-semibold);margin-top:var(--space-2);letter-spacing:var(--track-none);text-transform:none}
 .pos-record .pos-fig:nth-child(2){border-color:color-mix(in oklab,var(--color-action) 42%,var(--border-hairline));background:linear-gradient(150deg,color-mix(in oklab,var(--color-action) 15%,var(--bg-control)),var(--bg-control) 74%)}
 .pos-record .pos-fig:nth-child(2) b{color:var(--text-brass);font-size:var(--text-24)}
-/* NOT A RUNG. 520 is this file's alone: the record's figures go to four columns and
-   nothing else in the system breaks here. tokens.css page frame, docs/backlog.md 72. */
-@media(min-width:520px){
+/* THE FOUR COLUMNS ARRIVE AT THE DESK RUNG NOW, AND 520 WAS NEVER A DECISION: it was
+   the width at which four columns first fit, not the width at which four columns first
+   read. Measured 2026-08-10 on my-profile and public-profile, one width at a time:
+   from 520 to 555 the four cells are 102.5 to 108.8 wide, "Member since" takes two
+   lines, and every figure in the row stands 91 tall instead of 80.5. Thirty-six widths
+   of a wrapped label, and the row it wraps in is the one that says what a person's
+   record is. Two columns hold to 639 at 213 to 272.5 wide with nothing wrapping
+   anywhere, and four arrive at 640 at 132.5. So this is the one of the four one-offs
+   where the collapse onto the ladder was free: it takes a width out of the system and
+   the wrap band with it. The other three stay, each with its own reading beside it.
+   docs/backlog.md 72, closed 2026-08-10.
+   rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
+@media(min-width:640px){
   .pos-record .pos-figures{grid-template-columns:repeat(4,1fr)}
 }
 .pos[aria-label="Portfolio summary"] .pos-figures{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-12)}

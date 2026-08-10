@@ -22,7 +22,13 @@
 .market-head:active{background:var(--bg-pressed)}
 .market-title{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit)}
 .market-title .ic{width:13px;height:13px;stroke:var(--text-muted);color:var(--text-muted);fill:none;stroke-width:1.7}
-.market-chevron{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-muted);fill:none;stroke-width:1.8;transition:transform var(--dur-base) ease}
+/* THE CHEVRON IS A STROKED MARK WITHOUT THE FAMILY'S CLASS, so it declares the family's
+   weight itself rather than a number of its own. It said 1.8, which rendered 1.2 at this
+   box: the second lightest mark in the product and 0.45 under the 1.65 everything else
+   drew at. The token and the non-scaling pair are base.css's, the application is this
+   file's, because a component owns its own marks. docs/backlog.md 29. */
+.market-chevron{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-muted);fill:none;stroke-width:var(--stroke-mark);transition:transform var(--dur-base) ease}
+.market-chevron *{vector-effect:non-scaling-stroke}
 .market-box[open] .market-chevron{transform:rotate(180deg)}
 .market-body{margin-top:var(--space-16)}
 .market-stats{display:flex;flex-wrap:wrap;gap:var(--space-16) var(--space-24);padding-bottom:var(--space-16);border-bottom:var(--hairline) solid var(--edge-groove-dark)}

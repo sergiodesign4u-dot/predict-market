@@ -99,7 +99,8 @@
 .feed-inner .cat-nav>ul{max-width:none;margin:0;padding:var(--space-2);gap:var(--space-8);display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 .feed-inner .cat-nav>ul::-webkit-scrollbar{display:none}
 .feed-inner .cat-nav li{flex:0 0 auto}
-/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
-@media(max-width:640px){
+/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+   because the rung belongs to the desk: tokens.css, page frame. */
+@media(max-width:639.98px){
   .feed-inner .cat-nav{margin-bottom:var(--space-16)}
 }

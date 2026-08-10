@@ -461,20 +461,20 @@ document.addEventListener('click', function (e) {
             <div class="bp-inner">
               <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
               <div class="bp-dir">
-                <button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">38%</span></button>
-                <button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">62%</span></button>
+                <button type="button" class="yesno-pick bp-side sel yes">YES <span class="bp-pct">38%</span></button>
+                <button type="button" class="yesno-pick bp-side no">NO <span class="bp-pct">62%</span></button>
               </div>
               <div>
-                <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div>
-                <div class="quick"><button type="button" class="chip chip-amount sel">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button><button class="chip chip-amount" type="button">$50</button></div>
+                <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="5.00" aria-label="Bet amount"></div>
+                <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
               </div>
               <div>
                 <div class="line"><span>Price now</span><span>38%</span></div>
-                <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+                <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.40</span></div>
                 <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
               </div>
               <button type="button" class="btn btn-primary btn-md btn-block" data-open="signin">Confirm bet</button>
-              <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
+              <p class="fine">$1 minimum, no maximum. The price you see is the price you get.</p>
             </div>
           </aside>
       </div>
@@ -491,26 +491,26 @@ document.addEventListener('click', function (e) {
     </div><!-- /feed-inner -->
     </main>
       <div class="bet-dock" aria-label="Place your bet">
-        <button type="button" class="yesno-pick yesno-pick-bar bp-side sel" data-open-sheet="yes">YES <span class="bp-pct">38%</span></button>
-        <button type="button" class="yesno-pick yesno-pick-bar bp-side" data-open-sheet="no">NO <span class="bp-pct">62%</span></button>
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side sel yes" data-open-sheet="yes">YES <span class="bp-pct">38%</span></button>
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side no" data-open-sheet="no">NO <span class="bp-pct">62%</span></button>
       </div>
     
       <dialog class="app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
         <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
         <div class="bp-inner">
           <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
-          <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">62%</span></button></div>
+          <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel yes">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side no">NO <span class="bp-pct">62%</span></button></div>
           <div>
-            <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div>
-            <div class="quick"><button type="button" class="chip chip-amount sel">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button><button class="chip chip-amount" type="button">$50</button></div>
+            <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="5.00" aria-label="Bet amount"></div>
+            <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
           </div>
           <div>
             <div class="line"><span>Price now</span><span>38%</span></div>
-            <div class="line"><span>Fee (only if you win)</span><span>$0.20</span></div>
+            <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.20</span></div>
             <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
           </div>
           <button type="button" class="btn btn-primary btn-lg btn-block" data-sheet-confirm>Confirm bet</button>
-          <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
+          <p class="fine">$1 minimum, no maximum. The price you see is the price you get.</p>
         </div>
       </dialog>
     </div><!-- /app-case -->
@@ -612,11 +612,6 @@ document.addEventListener('click', function (e) {
                 <li><a href="event-feed-crypto.html">Crypto</a></li>
                 <li><a href="event-feed-culture.html">Culture</a></li>
                 <li><a href="event-feed-general.html">General</a></li>
-                <li><a href="#">Sports</a></li>
-              </ul>
-              <p class="sub-label">By topic</p>
-              <ul>
-                <li><a href="#">Trending topics</a></li>
                 <li><a href="event-feed.html">View all events</a></li>
               </ul>
             </nav>
@@ -625,31 +620,20 @@ document.addEventListener('click', function (e) {
               <h2>Product</h2>
               <ul>
                 <li><a href="how-it-works.html">How It Works</a></li>
-                <li><a href="#">Leaderboard</a></li>
+                <li><span class="footer-soon">Leaderboard</span></li>
                 <li><a href="wallet.html">Wallet</a></li>
                 <li><a href="active-bets.html">My Bets</a></li>
-                <li><a href="#">API / Developers</a></li>
-                <li><a href="#">Status</a></li>
               </ul>
             </nav>
 
             <nav class="footer-col" aria-label="Support">
               <h2>Support</h2>
               <ul>
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><span class="footer-soon">Help Center</span></li>
+                <li><span class="footer-soon">FAQ</span></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="how-it-works.html">How It Works</a></li>
-              </ul>
-            </nav>
-
-            <nav class="footer-col" aria-label="Company">
-              <h2>Company</h2>
-              <ul>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Press</a></li>
-                <li><a href="#">Brand</a></li>
               </ul>
             </nav>
 
@@ -677,7 +661,6 @@ document.addEventListener('click', function (e) {
               <li><a href="#">Terms</a></li>
               <li><a href="#">Privacy</a></li>
               <li><a href="#">Responsible play</a></li>
-              <li><a href="#">Geo restrictions</a></li>
               <li><a href="cookie-consent.html">Cookie preferences</a></li>
             </ul>
           </nav>
@@ -1007,7 +990,7 @@ document.addEventListener('click', function (e) {
       if(!btn) return;
       var pctEl = btn.querySelector('.bp-pct');
       var p = pctEl ? num(pctEl.textContent) / 100 : 0.5;
-      var payout = p > 0 ? A / p : 0, fee = 0.03 * payout;
+      var payout = p > 0 ? A / p : 0, fee = 0.015 * A;
       setLine('Price now', Math.round(p * 100) + '%');
       setLine('Fee', money(fee));
       setLine('Potential payout', money(payout));
@@ -1024,7 +1007,7 @@ document.addEventListener('click', function (e) {
       chip.addEventListener('click', function(){
         panel.querySelectorAll('.quick button').forEach(function(b){ b.classList.remove('sel'); });
         chip.classList.add('sel');
-        if(input){ input.value = money(num(chip.textContent)); }
+        if(input){ input.value = num(chip.textContent).toFixed(2); }
         recompute();
       });
     });
@@ -1033,7 +1016,7 @@ document.addEventListener('click', function (e) {
         panel.querySelectorAll('.quick button').forEach(function(b){ b.classList.remove('sel'); });
         recompute();
       });
-      input.addEventListener('blur', function(){ input.value = money(num(input.value)); recompute(); });
+      input.addEventListener('blur', function(){ input.value = num(input.value).toFixed(2); recompute(); });
     }
     recompute();
   });
@@ -1105,8 +1088,8 @@ document.addEventListener('click', function (e) {
     var chart=document.querySelector('.ed-chart-multi');
     rows.forEach(function(row,i){
       row.addEventListener('click',function(){
-        rows.forEach(function(r){ r.classList.remove('sel'); var t=r.querySelector('.opt-sel-tag'); if(t) t.remove(); });
-        row.classList.add('sel');
+        rows.forEach(function(r){ r.classList.remove('sel'); r.removeAttribute('aria-current'); var t=r.querySelector('.opt-sel-tag'); if(t) t.remove(); });
+        row.classList.add('sel'); row.setAttribute('aria-current','true');
         var nameEl=row.querySelector('.opt-name');
         var nm=nameEl.childNodes[0].textContent.trim();
         var prob=row.querySelector('.opt-prob').textContent;
@@ -1194,10 +1177,10 @@ document.addEventListener('click', function (e) {
       var row=e.target.closest('.opt-row'); if(!row||!outBox.contains(row))return;
       var btn=e.target.closest('.yesno.compact button');
       outBox.querySelectorAll('.opt-row').forEach(function(r){
-        r.classList.remove('sel');
+        r.classList.remove('sel'); r.removeAttribute('aria-current');
         r.querySelectorAll('.yesno.compact button').forEach(function(b){b.classList.remove('sel');});
       });
-      row.classList.add('sel');
+      row.classList.add('sel'); row.setAttribute('aria-current','true');
       var yn=row.querySelector('.yesno.compact'); if(!yn)return;
       var first=yn.querySelector('button:first-child');
       var chosen=btn||first; if(chosen)chosen.classList.add('sel');
@@ -1227,7 +1210,7 @@ document.addEventListener('click', function (e) {
     var inp=sheet.querySelector('.amount-input'); if(!inp)return;
     var A=num(inp.value), b=side(); if(!b)return;
     var pe=b.querySelector('.bp-pct'), p=pe?num(pe.textContent)/100:0.5;
-    var payout=p>0?A/p:0, fee=0.03*payout;
+    var payout=p>0?A/p:0, fee=0.015*A;
     sheet.querySelectorAll('.line').forEach(function(l){
       var s=l.querySelectorAll('span'); if(s.length<2)return;
       var t=s[0].textContent;
@@ -1248,14 +1231,14 @@ document.addEventListener('click', function (e) {
     c.addEventListener('click',function(){
       sheet.querySelectorAll('.quick button').forEach(function(x){x.classList.remove('sel');});
       c.classList.add('sel');
-      var inp=sheet.querySelector('.amount-input'); if(inp)inp.value=money(num(c.textContent));
+      var inp=sheet.querySelector('.amount-input'); if(inp)inp.value=num(c.textContent).toFixed(2);
       recompute();
     });
   });
   var sinp=sheet.querySelector('.amount-input');
   if(sinp){
     sinp.addEventListener('input',function(){sheet.querySelectorAll('.quick button').forEach(function(x){x.classList.remove('sel');});recompute();});
-    sinp.addEventListener('blur',function(){sinp.value=money(num(sinp.value));recompute();});
+    sinp.addEventListener('blur',function(){sinp.value=num(sinp.value).toFixed(2);recompute();});
   }
   function preselect(s){
     if(!s)return; var d=sheet.querySelector('.bp-dir'); if(!d)return;

@@ -39,10 +39,15 @@ override it.** There is no build step and no gate: what you write is what ships.
   file needs a break that is not one of them it is a one-off and says so in a comment beside itself,
   or it is a fourth rung and gets named in the ladder in `tokens.css` FIRST. A breakpoint cannot be a
   token: a media query condition does not read a custom property and there is no build step here, so
-  the ladder is kept by being read, and each of the 31 media rules names its rung. The alternative
+  the ladder is kept by being read, and each of the 32 media rules names its rung. The alternative
   has already been paid for twice: a stand label written at 900 standing beside a bar that goes at
   640, and `navitem.css` arguing about a control's shape "above 860" when the rule that changes it is
-  at 900.
+  at 900. **A rung is one pixel and it belongs to the wide side**: below it is `max-width:639.98px`,
+  never `max-width:640px`, because `max-width:640px` and `min-width:640px` BOTH match at 640 and the
+  rung then renders a page that exists at no other width - nine of ten screens showed the desk
+  utility on a mobile gutter under a mobile header with no bottom nav. The `.98` rather than 639 is
+  because a zoomed window reports a fractional width, and an integer bound leaves a gap where neither
+  branch applies.
 - **Quiet is a colour, not an opacity.** `opacity` fades text into its background and no sweep that
   reads `getComputedStyle().color` can see it: `--chrome-muted` is 5.03:1 on the panel and 2.37:1 at
   `opacity:.55`.

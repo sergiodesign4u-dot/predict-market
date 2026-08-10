@@ -40,6 +40,16 @@
    same x as the logo above it and the first card between them */
 .app-footer .footer-inner{max-width:var(--container-max);margin:0 auto;box-sizing:border-box;padding:var(--space-20) var(--gutter)}
 .app-footer a{color:var(--text-muted);text-decoration:none}
+/* A ROW THAT GOES NOWHERE IS NOT AN `<a>`, which is the rule the side panel has had since it was
+   written and the footer never got. `docs/backlog.md` 28. Three labels here are destinations the
+   MAP REFUSES: `ia/docs/sitemap.md` declares Leaderboard, Help Center and FAQ `[ORPHAN]`, meaning
+   do not build until a job is confirmed, so the footer was offering what the map had explicitly
+   declined. They are `<span class="footer-soon">` now: same row, same rhythm, no pointer, no hover,
+   no focus stop, and one step quieter than a live label so that the difference is visible rather
+   than only true. The other eight the footer promised and the map omitted were cut outright on the
+   same day, which is row 27; five remain `<a href="#">` on purpose, because they are registered
+   nodes with screens still to build. */
+.app-footer .footer-soon{color:var(--text-icon);cursor:default}
 .app-footer a:hover,.popular-links a:hover,.footer-col a:hover,.legal-links a:hover{color:var(--text-brass);text-decoration:none}
 /* Press, the axis this file was missing. Every one of these is a nav row, and the footer is
    read on a phone as often as on a desktop, where the hover above never fires. It mirrors that

@@ -119,14 +119,14 @@
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
         <div class="toast-group">
-          <div class="toast"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg><span class="toast-msg">Bet placed</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-          <div class="toast toast-error"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-danger-triangle-b"/></svg><span class="toast-msg">We could not place your bet. Try again.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+          <div class="toast"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg><span class="toast-msg">Bet placed</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss">x</button></div>
+          <div class="toast toast-error"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-danger-triangle-b"/></svg><span class="toast-msg">We could not place your bet. Try again.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss">x</button></div>
         </div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <div class="toast-group">
-          <div class="toast"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg><span class="toast-msg">Bet placed</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-          <div class="toast toast-error"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-danger-triangle-b"/></svg><span class="toast-msg">We could not place your bet. Try again.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+          <div class="toast"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg><span class="toast-msg">Bet placed</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss">x</button></div>
+          <div class="toast toast-error"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-danger-triangle-b"/></svg><span class="toast-msg">We could not place your bet. Try again.</span><button type="button" class="icon-btn icon-btn-small toast-close" aria-label="Dismiss">x</button></div>
         </div>
       </div>
     </div>
@@ -227,7 +227,10 @@
     <h2 data-n="9">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never redraw the dismiss here.</b> <i>It was drawn here once, with
     its own pill, its own two bars and its own hover, and the hover was the one place four controls
-    disagreed with 388.</i></p>
+    disagreed with 388. And this page broke its own anti-rule until 2026-08-10: the four theme
+    figures below put an <code>svg.ic-sm</code> cross INSIDE the dismiss, which the product never
+    does, so the button drew the mark twice, a brass 9.5px path over a grey 7.1px pair of bars. A
+    specimen that adds a mark is a specimen teaching a mark.</i></p>
     <p class="tk-lab tk-bad"><b>Never make the error red.</b> <i>Red is NO. A screen about money
     cannot afford a colour that means two things.</i></p>
     <p class="tk-lab tk-bad"><b>Never let the page underneath live in this file.</b> <i>One margin

@@ -254,8 +254,12 @@
    components/event-detail.css. 560 rather than the 640 the rest of the system
    turns at, because what runs out on this row is the width of the event
    question beside it, not a breakpoint. */
-/* NOT A RUNG. 560 is shared with event-detail.css and nothing else: the tile drops a size
-   so a row of them still fits. tokens.css page frame, docs/backlog.md 72. */
+/* NOT A RUNG, AND AFTER A MEASUREMENT IT STAYS ONE. 560 is shared with event-detail.css
+   and nothing else: the tile drops a size so a row of them still fits. The argument for
+   keeping it is written once, beside the other half of the pair in event-detail.css, and
+   the short of it is that collapsing 560 up to the DESK rung would take these three from
+   36 to 28 on 79 widths that have room for them, which is a floor running backwards.
+   tokens.css page frame, docs/backlog.md 72, closed 2026-08-10. */
 @media(max-width:560px){
   .icon-btn.icon-btn-tile{width:var(--size-28);height:var(--size-28)}
 }
@@ -336,7 +340,21 @@
    24: 12 in 24 would be an X pressed against its own edge, 8 in 24 is a third.
    Both bars are positioned against the PADDING box, which is the border box
    less the border and has nothing to do with the atom's padding, so the atom's
-   4 moves neither of them. */
+   4 moves neither of them.
+
+   AND THE TWO DRAWINGS ARE ONE MARK, which took a measurement to say rather than
+   an argument. `docs/backlog.md` 88 filed this as "one job, two drawings", beside
+   the warning mark that really was a circle on 16 screens and a triangle on 4.
+   Read in a browser on 2026-08-10: the sheet close is a 12-unit cross in a 24
+   viewBox at stroke 2.2, rendered in a 16px svg inside a 32px button, so its ink
+   spans 9.47px, **29.6% of the button**. These two bars are 8 x 2 rotated 45
+   degrees in a 24px button, so their ink spans 7.07px, **29.5%**. Two techniques,
+   one mark, the same optical size to within half a per cent. The technique differs
+   because that control carries an svg and this one carries the letter `x`, which
+   is inert here under font-size:0 and is THE WHOLE DRAWING in the grey tree, where
+   this button has no pseudo-element and an emptied one measures 16 x 8. Backlog 75
+   and 88, closed 2026-08-10. What was actually wrong was in the kit, and it was
+   markup: four specimens drew the mark twice and six drew it not at all. */
 .icon-btn.icon-btn-small{position:relative;width:var(--size-24);height:var(--size-24);font-size:0;color:var(--text-muted);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
 .icon-btn.icon-btn-small::before,.icon-btn.icon-btn-small::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 4px);width:var(--size-8);height:var(--size-2);background:currentColor;border-radius:var(--radius-2)}
 .icon-btn.icon-btn-small::before{transform:rotate(45deg)}

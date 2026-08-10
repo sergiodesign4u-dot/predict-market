@@ -386,11 +386,11 @@ _13 state page(s): event-detail-bet-error.html, event-detail-bet-insufficient.ht
 | Bet panel | Field label | Your outcome |  |
 | Bet panel | Link | Change |  |
 | Bet panel | Label | Price now |  |
-| Bet panel | Label | Fee (only if you win) |  |
+| Bet panel | Label | Fee (1.5% of your bet) |  |
 | Bet panel | Label | Potential payout |  |
 | Bet panel | Label | Your balance |  |
 | Bet panel | Button | Confirm bet | **same-action / place-bet button varies** |
-| Bet panel | Text | No minimum or maximum. Payout depends on when you bet (AMM). Confirm opens sign-in (over this page), then deposit if needed. |  |
+| Bet panel | Text | $1 minimum, no maximum. The price you see is the price you get. Confirm opens sign-in (over this page), then deposit if needed. | Rewritten 2026-08-10 with the product decisions in `docs/backlog.md` 7 and 10: the minimum is $1, and the payout is shares at a locked price rather than a rule that depends on timing, so the sentence says what a person can check. |
 | Bet panel | Button | JD Vance YES |  |
 | Main | Heading | This event just resolved |  |
 | Main | Text | The market closed while you were reading (event-closed). Betting is no longer available. You hold a position, so you can open your result. |  |
