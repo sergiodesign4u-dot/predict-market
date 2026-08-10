@@ -39,21 +39,41 @@
    primitive and is what the other end of this declaration (--size-40) already
    reads. The knob is unchanged at 16 and re-centred: inner height 22, so 3 rather
    than 2. Three screens. */
-.toggle[role=switch]{position:relative;width:var(--size-40);height:var(--size-24);border-radius:var(--radius-pill);background:var(--bg-control);border:var(--hairline) solid var(--border-hairline);padding:0;font-size:0;flex:0 0 auto;cursor:pointer;transition:background var(--dur-quick)}
-.toggle[role=switch]::after{content:'';position:absolute;top:3px;left:3px;width:var(--icon-16);height:var(--icon-16);border-radius:50%;background:var(--text-muted);transition:left var(--dur-quick) var(--ease-out),background var(--dur-quick)}
-.toggle[role=switch][aria-checked=true]{background:var(--color-action);border-color:var(--color-action)}
-.toggle[role=switch][aria-checked=true]::after{left:19px;background:var(--control-knob)}
+/* AND ON 2026-08-10 THE BOX AND THE TRACK STOPPED BEING THE SAME THING, which is the
+   paragraph above carried one step further rather than reversed. 40x24 clears 2.5.8 and
+   fails this project's own 44 floor, and it was the last of the three controls that did:
+   backlog 55. The rule above is still the one that decides it, "the fix is the control's
+   own box rather than an invisible pseudo stretched over it, a hit area no measurement in
+   this repo can see is a fix nobody can check", and the two arrangements are NOT the same:
+   an invisible pseudo stretched over a 40x24 button leaves the button 40x24 and every
+   instrument still reads a failing control, while a 44x44 BUTTON with the track drawn on
+   `::before` reads 44x44 to anything that measures it, including the focus ring, which now
+   shows the target rather than the drawing.
+   THE SWITCH STILL LOOKS EXACTLY THE SAME, and that is the whole trade: a pill 44 tall is
+   not a switch. The track is 40x24 centred in the box, so the knob's offsets moved by the
+   centring and by nothing else. 10 above the track plus its 1px border plus the 3 that
+   centred a 16 knob in 22 of inner height, which is 14; 2 to the left of the track plus 1
+   plus 3, which is 6; and 22 checked, the same 19 inner offset it always had.
+   EVERY GROUND MOVED WITH THE TRACK. Four rules painted `background` on the button and they
+   paint `::before` now: the two pointer states, the checked ground and the checked press.
+   `opacity` and `cursor` stayed on the button, because a disabled control is disabled as a
+   whole and a cursor belongs to the thing the pointer is over. */
+.toggle[role=switch]{position:relative;width:var(--control-44);height:var(--control-44);border:0;background:none;border-radius:var(--radius-pill);padding:0;font-size:0;flex:0 0 auto;cursor:pointer}
+.toggle[role=switch]::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);box-sizing:border-box;width:var(--size-40);height:var(--size-24);border-radius:var(--radius-pill);background:var(--bg-control);border:var(--hairline) solid var(--border-hairline);transition:background var(--dur-quick)}
+.toggle[role=switch]::after{content:'';position:absolute;top:14px;left:6px;width:var(--icon-16);height:var(--icon-16);border-radius:50%;background:var(--text-muted);transition:left var(--dur-quick) var(--ease-out),background var(--dur-quick)}
+.toggle[role=switch][aria-checked=true]::before{background:var(--color-action);border-color:var(--color-action)}
+.toggle[role=switch][aria-checked=true]::after{left:22px;background:var(--control-knob)}
 /* The switch had no pointer state at all: its only feedback was the knob sliding, which is the
    RESULT of the click and not a sign the control is live. Both states exclude [aria-disabled=true]
    so the dead switch below cannot light up, and exclude [aria-checked=true] so neither swaps the
    brass ground out from under a switch that is ON. A checked switch is still pressless: see the
    note under the disabled rule. */
-.toggle[role=switch]:not([aria-checked=true]):not([aria-disabled=true]):hover{background:var(--bg-control-hover)}
-.toggle[role=switch]:not([aria-checked=true]):not([aria-disabled=true]):active{background:var(--bg-pressed)}
+.toggle[role=switch]:not([aria-checked=true]):not([aria-disabled=true]):hover::before{background:var(--bg-control-hover)}
+.toggle[role=switch]:not([aria-checked=true]):not([aria-disabled=true]):active::before{background:var(--bg-pressed)}
 .toggle[role=switch][aria-disabled=true]{opacity:var(--opacity-disabled);cursor:not-allowed}
 /* An ON switch is a flat --color-action ground, not the two-stop action gradient, so neither of the
    two press mechanisms fits it: --bg-pressed would read as "it turned itself off" and there is no
    gradient angle to reverse. It is the one control that asked for a role of its own, so it got one:
    --color-action-pressed, brass held down. Nothing else in the system needs it, because everything
    else brass is a gradient. */
-.toggle[role=switch][aria-checked=true]:not([aria-disabled=true]):active{background:var(--color-action-pressed);border-color:var(--color-action-pressed)}
+.toggle[role=switch][aria-checked=true]:not([aria-disabled=true]):active::before{background:var(--color-action-pressed);border-color:var(--color-action-pressed)}

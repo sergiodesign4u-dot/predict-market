@@ -73,6 +73,7 @@
    and went to `components/base.css` on 2026-08-08 with the five other copies. The
    selector is carried over as written, because a `<summary>` is the one target in
    this system with no class of its own to be a family. */
+/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
 @media(max-width:640px){
   .filter-menu{position:relative}
 }

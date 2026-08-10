@@ -35,6 +35,8 @@
 .pos-record .pos-fig b{font-family:var(--font-mono);font-size:var(--text-20);color:var(--text-primary);font-weight:var(--weight-semibold);margin-top:var(--space-2);letter-spacing:var(--track-none);text-transform:none}
 .pos-record .pos-fig:nth-child(2){border-color:color-mix(in oklab,var(--color-action) 42%,var(--border-hairline));background:linear-gradient(150deg,color-mix(in oklab,var(--color-action) 15%,var(--bg-control)),var(--bg-control) 74%)}
 .pos-record .pos-fig:nth-child(2) b{color:var(--text-brass);font-size:var(--text-24)}
+/* NOT A RUNG. 520 is this file's alone: the record's figures go to four columns and
+   nothing else in the system breaks here. tokens.css page frame, docs/backlog.md 72. */
 @media(min-width:520px){
   .pos-record .pos-figures{grid-template-columns:repeat(4,1fr)}
 }

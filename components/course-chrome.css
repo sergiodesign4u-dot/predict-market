@@ -147,13 +147,20 @@
    the product role and does not touch the chrome one, so a shared role would
    press a graphite row to chalk on a daylight page.
    .rm-toggle had neither state: it is the drawer button, so it is the one control
-   here that only exists below 860px, which is exactly where a stuck hover shows. */
+   here that only exists below the dock width, which is exactly where a stuck
+   hover shows. */
 .sidebar-page-link:active:not(.planned),.sidebar-back:active,.theme-switch:active{background:var(--chrome-pressed)}
 .sidebar-sub-link:active{background:var(--chrome-pressed);color:var(--chrome-text)}
 .rm-toggle:hover{border-color:var(--chrome-accent)}
 .rm-toggle:active{background:var(--chrome-pressed)}
 
-@media(min-width:860px){
+/* THE DOCK. The width is argued in components/base.css, beside the body inset it
+   has to agree with, because the two are one decision written in two files: this
+   panel stops being a drawer and the body gains 220px of padding at the same
+   pixel. 1140 is 900 + 220 + 20, and it was 860 until 2026-08-10, which docked
+   the review chrome while the product still needed the width. Change both or
+   neither. */
+@media(min-width:1140px){
   .rm-toggle,.rm-overlay{display:none!important}
   .sidebar{transform:none;transition:none}
 }

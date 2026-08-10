@@ -34,6 +34,15 @@ override it.** There is no build step and no gate: what you write is what ships.
   contains atoms, level 3 contains molecules or is a shell. A component built out of its own class
   names reads as containing nothing, and seven of seventeen such readings were once the whole atom
   shelf and not one of them was an atom.
+- **A component may not invent a width.** There are three rungs, named by what arrives at them:
+  **640** the desk, **760** the detail's second column, **900** the rail beside the content. If a
+  file needs a break that is not one of them it is a one-off and says so in a comment beside itself,
+  or it is a fourth rung and gets named in the ladder in `tokens.css` FIRST. A breakpoint cannot be a
+  token: a media query condition does not read a custom property and there is no build step here, so
+  the ladder is kept by being read, and each of the 31 media rules names its rung. The alternative
+  has already been paid for twice: a stand label written at 900 standing beside a bar that goes at
+  640, and `navitem.css` arguing about a control's shape "above 860" when the rule that changes it is
+  at 900.
 - **Quiet is a colour, not an opacity.** `opacity` fades text into its background and no sweep that
   reads `getComputedStyle().color` can see it: `--chrome-muted` is 5.03:1 on the panel and 2.37:1 at
   `opacity:.55`.

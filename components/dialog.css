@@ -257,6 +257,7 @@ dialog.app-dialog:modal{position:fixed}
 dialog.app-dialog:modal:not(.bet-sheet){display:flex;flex-direction:column}
 dialog.app-dialog:modal .sheet-body{overflow:auto;min-height:0}
 
+/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
 @media (max-width:640px){
   dialog.app-dialog:modal{width:100%;max-width:none;margin:auto auto 0;
     max-height:88dvh;

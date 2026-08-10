@@ -99,6 +99,15 @@ because it is a stance rather than a principle, and it is written once, here.
   while 992 links rendered in the browser's blue, and "the chart is ported" was true while it drew as
   a black rectangle, because an SVG with no `fill` is black. **A missing value is a value.** Measure
   the computed result, in a browser, at both widths and in both themes.
+- **"Both widths" is not a measurement of a responsive system: measure AT the rungs and one pixel
+  either side of each.** A defect can live entirely between the two widths everybody reads. The
+  system breaks at 640, 760 and 900 and the review chrome docked at 860, and every audit here read
+  390 and 1280, so for a day **73 of 160 pages scrolled horizontally at exactly one width** and every
+  sweep reported zero. The same rung took the browse content column from 530 to 297 and `.ed-main`
+  from 430 to 211 between 859 and 860. **A media query reads the WINDOW and a layout gets the
+  CONTAINER**, so anything that eats width outside the product, a docked panel most of all, makes
+  every branch above it a branch chosen for a page that is not there. The ladder is named in
+  `components/tokens.css`, page frame.
 - **Read the instrument before you read the finding: measure the same thing twice, unchanged, and
   the difference has to be zero.** A before-and-after over 19 screens reported 31 files changed by an
   edit that could not change anything; re-reading the unchanged tree gave **3,587 differing rows of

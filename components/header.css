@@ -170,6 +170,7 @@
 .notif-all:active{background:var(--bg-pressed)}
 /* The bell used to be lifted to the strong icon token because it was the one filled mark in
    a row of stroked ones. The row is filled now and the exception went with the reason. */
+/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
 @media(max-width:640px){
   /* the three targets that used to be sized here are in the pointer:coarse block below, with the
      other four. One rule, one trigger. */

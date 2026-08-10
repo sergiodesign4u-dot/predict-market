@@ -302,8 +302,36 @@ at 14px. `.btn-md` was 12+12+2+21 = 47 and `.btn-lg` 16+16+2+21 = 55. **The pari
 being decided by its font size**, which is the one input the ladder does not reach, so no padding
 value could have fixed it. A component declares `--control-h`, the padding stays as the air a
 wrapped label needs, and the touch floor reads `max(--control-44, --control-h)` because a floor
-raises a short control and must not lower a tall one. The button family reads it today; `.nav-row`,
-the chips and a bare `<summary>` do not yet, which is 1,738 of 5,004 controls and backlog 40.
+raises a short control and must not lower a tall one. **Closed 2026-08-10**: six families declared a
+rung and 1,133 controls moved onto the ladder, so one height per family renders where twenty used
+to, backlog 40.
+
+**Three breakpoints, and each is named by what ARRIVES at it.** `640` is the one divide, below it a
+single column with a bottom nav and a mobile dock and above it the desk, 13 rules in 13 files. `760`
+is where the event detail gains its second column: the bet panel docks as a sidebar, the dock goes,
+the chart takes its full height, 5 rules. `900` is where a vertical rail arrives beside the content,
+sub-categories, the table of contents, the how-it-works side column, 6 rules. A width with no event
+at it is a width somebody will round, which is why they carry names rather than sizes.
+
+**A breakpoint cannot be a token, and that is a fact about CSS rather than an oversight here.** A
+media query condition does not read a custom property, `@custom-media` is unimplemented in every
+browser, and this repository has no build step to compile either. `--bp-rail:900px` in `tokens.css`
+would be a value in the one place that lies: usable-looking and unusable. So the ladder is declared
+by being read, in the page-frame section of `tokens.css`, and every one of the 31 media rules in
+`components/` carries one line naming its rung, or saying it is not one. **Four widths are not
+rungs** and say so where they stand: 520, 560, 620 and 980, each one rule doing one local job.
+Whether they collapse onto the ladder is `docs/backlog.md` 72, and it is a measurement rather than a
+rename because each moves layout in a real band.
+
+**A fourth width exists and it is not the product's.** At `1140` the review sidebar docks and the
+body takes its 220px inset. It was 860 until 2026-08-10, which is 40px BELOW the widest product
+rung, and the consequence is the sharpest lesson in this section: **a media query reads the window
+and a layout gets the container**, so from 860 up every painted screen ran a branch chosen for a
+window 220px wider than the box it landed in. The browse content column fell from 530 to 297 at 900,
+narrower than the 360px phone this product is designed from; `.ed-main` fell 430 to 211 across one
+pixel, because `.bet-panel` is `flex:0 0 322px` and does not hand the space back; and **73 of 160
+pages took horizontal scroll at 860 and at no other width**. 1140 is 900 + 220 + 20, so the chrome
+docks only once the product still has its widest layout's worth of room.
 
 - **The inner/outer rhythm.** Within a group, gaps stay small (4-12); between groups they open up
   (16-24). The bet sheet is the reference: ~20px between the header / YES-NO / amount / breakdown /

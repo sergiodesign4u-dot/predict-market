@@ -43,6 +43,7 @@
    of the panel is off the bottom of the screen with nothing able to bring it
    back. That is the worst instance of the three, because the part left out of
    reach is the action. svh and not vh for the same reason. */
+/* rung: DETAIL 760, the detail's second column. The ladder is in tokens.css, page frame. */
 @media(min-width:760px){
   .bet-panel{display:block;flex:0 0 322px;position:sticky;top:120px;
     max-height:calc(100vh - 120px - 16px);

@@ -283,6 +283,51 @@
   --container-sidebar:220px; /* course sidebar, and the body inset that clears it */
   --gutter:40px;             /* the two-stone inset. 14px on mobile, below */
 
+  /* ---- the breakpoint ladder ----
+     A BREAKPOINT CANNOT BE A TOKEN AND THAT IS NOT AN OVERSIGHT. A media query
+     condition does not read a custom property: `@media(min-width:var(--x))` is
+     invalid CSS, `@custom-media` is unimplemented in every browser, and this
+     repository has no build step to compile either. Declaring `--bp-rail:900px`
+     here would put a value in the one place that lies: it would look usable and
+     no rule could use it. So the ladder is DECLARED BY BEING READ, like every
+     other rule in this repository since the gates were deleted, and the literal
+     stays where the browser needs it.
+
+     THREE RUNGS, and each is named by what ARRIVES at it, because a width with
+     no event at it is a width somebody will round:
+
+       640   DESK      the one divide. Below it a single column, a bottom nav and
+                       a mobile dock; above it the desk. 13 rules in 13 files, and
+                       it is the only rung most components ever meet.
+       760   DETAIL    the event detail gains its second column: .bet-panel docks
+                       as a sidebar, .bet-dock goes, .ed-layout turns to a row,
+                       the chart gets its full height. 5 rules.
+       900   RAIL      a vertical rail arrives BESIDE the content: sub-categories,
+                       the table of contents, the how-it-works side column, and
+                       .chip-lane changes shape to live in one. 6 rules.
+
+     AND ONE THAT IS NOT THE PRODUCT'S:
+
+       1140  HARNESS   the review sidebar docks and the body takes its 220px inset.
+                       Not a product rung. It is 900 + 220 + 20 on purpose, so the
+                       chrome can never take width the widest product rung is
+                       counting on. It was 860 until 2026-08-10 and that cost 73
+                       pages horizontal scroll at exactly one width. The reason is
+                       written where the rule is, in base.css and course-chrome.css.
+
+     FOUR WIDTHS ARE NOT RUNGS and are marked as such where they stand: 520
+     (.pos-figures to four columns), 560 (.ed-head padding, .icon-btn-tile size),
+     620 and 980 (the hero's own two steps). Each is one rule doing one local job.
+     Whether they collapse onto the ladder is docs/backlog.md 72, still open, and
+     it is a measurement rather than a rename because each moves layout in a real
+     band.
+
+     THE RULE THAT MAKES THIS WORTH WRITING: a component may not invent a width.
+     If a file needs a break that is not one of the three, it is either a one-off
+     that says so in a comment beside it, or it is a fourth rung and this table
+     is where it gets named first. The kit has already paid for the alternative,
+     with a stand label written at 900 standing beside a bar that goes at 640. */
+
   /* ---- type ---- */
   --font-display:'Space Grotesk',sans-serif;
   --font-body:'DM Sans',sans-serif;             /* every component */
@@ -480,6 +525,7 @@
 }
 
 /* mobile: the plate breathes on a smaller inset (this is the one responsive token) */
+/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
 @media(max-width:640px){
   :root{--gutter:14px}
 }

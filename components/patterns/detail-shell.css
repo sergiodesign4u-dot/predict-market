@@ -13,6 +13,7 @@
 
 .ed-layout{display:flex;flex-direction:column;gap:var(--space-16);align-items:stretch}
 .ed-main{flex:1;min-width:0}
+/* rung: DETAIL 760, the detail's second column. The ladder is in tokens.css, page frame. */
 @media(min-width:760px){
   .ed-layout{flex-direction:row;align-items:flex-start}
 }

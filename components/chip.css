@@ -223,6 +223,7 @@
    only opens a containing block and nothing in the chip is positioned against
    it; it came from components/catnav.css with the face and it is written here so
    that whoever deletes it deletes it on purpose. */
+/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
 @media(max-width:640px){
   .chip-nav{position:relative}
 }
@@ -249,6 +250,7 @@
    (0,1,1) from outside it. The same holds here at (0,3,0) against (0,2,0), and
    the chosen chip is settled by the one rule below, so the query says only what
    the column changes. */
+/* rung: RAIL 900, a rail beside the content. The ladder is in tokens.css, page frame. */
 @media(min-width:900px){
   .chip-lane{width:100%;justify-content:space-between;border-color:transparent;border-radius:var(--radius-10);padding:var(--space-8) var(--space-8)}
 }

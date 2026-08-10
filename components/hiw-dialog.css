@@ -132,6 +132,7 @@ dialog.app-dialog.hiw-dialog:modal .hiw-body{overflow:auto;min-height:0}
 .hiw-cols .hiw-faq{padding-left:calc(var(--size-32) + var(--space-12))}
 .hiw-col-side .brand-tile{min-height:250px}
 .hiw-col-side .pos{padding:var(--space-20)}
+/* rung: RAIL 900, a rail beside the content. The ladder is in tokens.css, page frame. */
 @media(min-width:900px){
   .hiw-cols{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:var(--space-28);align-items:start}
   .hiw-col-side{position:sticky;top:var(--space-20)}

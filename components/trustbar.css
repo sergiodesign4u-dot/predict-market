@@ -37,6 +37,7 @@
 .footer-trust .trust-item:nth-child(1)::after{background-image:url("../assets/trust-column.webp")}
 .footer-trust .trust-item:nth-child(2)::after{background-image:url("../assets/trust-source.webp")}
 .footer-trust .trust-item:nth-child(3)::after{background-image:url("../assets/trust-globe.webp")}
+/* rung: DETAIL 760, the detail's second column. The ladder is in tokens.css, page frame. */
 @media(max-width:760px){
   .footer-trust .trust-items{grid-template-columns:1fr}
 }

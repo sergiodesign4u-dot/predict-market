@@ -39,7 +39,22 @@
    the two controls gain 8 of width each and the row grows by 16.
    44 was NOT taken here and that is deliberate: it is a text control in a meta
    line and 44 would make the comment row taller than the comment. That question is
-   the whole product's, and ui-kit/docs/backlog.md S39 holds it. */
+   the whole product's, and ui-kit/docs/backlog.md S39 holds it.
+
+   AND THE PRODUCT ANSWERED IT WITHOUT THIS FILE, WHICH IS WHY THE PARAGRAPH ABOVE
+   IS KEPT AND CORRECTED RATHER THAN DELETED. `docs/backlog.md` 59 found the file
+   stating a decision the product had stopped making: these controls carry
+   `btn btn-bare`, the one touch floor in `base.css` names `.btn`, and from
+   2026-08-08 all 72 have rendered **31x44** under a finger. The height was taken by
+   a family rule the day after this was written, and nobody re-read the file. On
+   2026-08-10 the width followed, so they are **44x44**, and the fear written above
+   turned out to be about the wrong axis: the comment row was ALREADY 44 tall and
+   growing the box sideways costs the row nothing at all. The nine screens that carry
+   comments did grow, by 8 to 9px each, and none of it is this: it is `.ed-tablabel`
+   going 36 to 44 in the tab bar above, which is backlog 64 in the same pass.
+   WHAT SURVIVES OF THE ARGUMENT is the part that was never about a number: these
+   read as text and not as chips, no ground, no edge, no radius, and none of that
+   moved. A floor is a target size and a target size is not a look. */
 .cmt-actions .ic{width:var(--icon-12);height:var(--icon-12);color:var(--text-muted);stroke:var(--text-muted)}
 /* TWO AVATAR PLACEHOLDERS LEFT THIS FILE ON 2026-08-08, and they were half alive.
    They were `.cmt-list .cmt-av` and `.cmt-list .cmt:nth-child(even) .cmt-av`, two sample

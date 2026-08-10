@@ -11,6 +11,7 @@
 .args{display:flex;flex-direction:column}
 .arg-col h3{margin:0 0 var(--space-4)}
 .arg-col ul{margin:0;padding-left:var(--space-16)}
+/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
 @media (min-width: 640px){
   .args{flex-direction:row}
   .arg-col{flex:1}
@@ -47,6 +48,8 @@
    and the favourited state are all one file away now. `ui-kit/docs/atoms.md`
    is why: a region may say where an icon button sits and may not say what one
    looks like, and this file used to say both. */
+/* NOT A RUNG. 560 is shared with iconbtn.css and nothing else: below it the head has to
+   clear the floating actions. tokens.css page frame, docs/backlog.md 72. */
 @media(max-width:560px){
   .ed-head{padding-right:100px}
   .ed-actions{top:var(--space-12);right:var(--space-12);gap:var(--space-4)}

@@ -181,11 +181,63 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor!important;stroke:none!impor
    one for this atom. The row declares 44 in navitem.css now, so this line changes nothing on
    its own; it is here so the family is in the floor rather than relying on its own
    declaration, which is what "a floor is the family's" means. docs/backlog.md 40 and 54. */
+/* SEVEN MORE FAMILIES JOINED ON 2026-08-10, AND ONE OF THEM WAS WRITTEN THE DAY BEFORE.
+   `.ed-tablabel` is the seventh and it is the one a sweep could not have found: it is a
+   `<label>`, and every instrument in this repository reads controls with a selector that
+   lists `a, button, input, select, textarea, summary`, so 36 tab labels on 9 screens, the
+   MAIN NAVIGATION of the event detail, were invisible to the measurement as well as to the
+   floor. It was found by walking one component's page, which is backlog 64 and is the whole
+   argument for a vitrine. **A control is what a person taps, not what the query selector
+   returns.**
+   The list is assembled by hand, which means it is only ever as complete as the last walk,
+   and this is the second time that has cost something: `.opt-more` was added to the system on
+   2026-08-10 for backlog 81 and stood 278x26 on 18 placements, because a new control does not
+   join a floor by existing. That is the trap this file already records one axis over, "a floor
+   written six times and every copy named a LIST", arriving from inside rather than from a
+   legacy file. The other four are `.yesno button` and the anchor around it, `a.q`, `.hh-name`
+   and `.hh-all`.
+   WHY EACH IS A CONTROL AND NOT PROSE: `a.q` is the card's question and the ONLY way into an
+   event from the feed, since the card is an `<article>` and nothing wraps it, so the primary
+   target of the primary screen stood 30 tall; `.hh-name` is a row of the hot list and every
+   row of a list is a target; `.hh-all` and `.opt-more` are standalone actions at the foot of a
+   block. 52 of the 84 `a.q` already clear 44 because their question wraps to two lines, so
+   this raises the single-line ones to the height the wrapped ones already have.
+   WHAT IS DELIBERATELY NOT HERE: the cookie policy link inside its sentence, which is WCAG
+   2.5.8's inline exception and would get dead space around a word in running text, and the
+   114 jump links on `ui-visual/overview.html`, which are the index of the painted tree and
+   not the product.
+   AND PUTTING `label` INTO THE QUERY IMMEDIATELY REPORTED 1,012 MORE, AND 1,012 WAS THE
+   INSTRUMENT. They are the language menu's options, and a closed `<details>` puts its
+   content in `::details-content` with `content-visibility:hidden`, so every one of them has
+   a box, a computed `display:block`, and is never painted. This repository's own audit was
+   caught by exactly this once, on overflow, and the correction is the same: ask
+   `checkVisibility({contentVisibilityAuto:true})` rather than read a rectangle. **As the
+   pages ship, 0.** With every menu opened, **455 real options at 140x33**, and they are the
+   eighth family joining today: `.filter-panel li label`, on its own line below because the
+   selector is structural and this list is of classes. `.filter-panel` is `position:absolute`,
+   so raising its rows makes the dropdown taller and moves no page content at all.
+   docs/backlog.md 50, 59, 64. */
 @media(pointer:coarse){
-  :is(.btn,.chip,.icon-btn,.tabs button,.ptab-lbl,.rules-tab,.market-head,.toc-link,.cc-cat-main,.filter-menu summary,.notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all,.nav-item):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-height:max(var(--control-44),var(--control-h))}
+  :is(.btn,.chip,.icon-btn,.tabs button,.ptab-lbl,.rules-tab,.market-head,.toc-link,.cc-cat-main,.filter-menu summary,.notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all,.nav-item,.ed-tablabel,.opt-more,.yesno button,a.q,.hf-title,.hh-name,.hh-all):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-height:max(var(--control-44),var(--control-h))}
+  .filter-panel li label{min-height:var(--control-44)}
   /* A SQUARE CONTROL NEEDS BOTH SIDES. These carry a mark and no label, so their width does not
      arrive from a word the way a chip's and a button's does. */
   :is(.icon-btn,.logo-btn,.notif-all,.notif-menu summary,.avatar-menu summary):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-width:var(--control-44)}
+  /* AND THE HALF THAT WAS LEFT OPEN, 2026-08-10. The two rules above raise every control to 44
+     TALL and the SQUARE families to 44 wide. 2.5.5 asks for both on every target, and a label
+     does not make a control exempt: it just means the width arrives from a word instead of from
+     a declaration. Measured at 390 with the pointer asserted coarse, after the height pass of
+     2026-08-09 had already moved 1,133 controls onto the ladder: **401 controls of 4,560 still
+     missed 44x44 and 165 of them missed WIDTH ALONE**, standing a clean 44 tall. `.btn-bare` at
+     31 on 72 comment actions, the chart's range chips at 36 on 36, the rules tab at 36, an
+     amount chip at 37, the compact YES / NO pair at 43. **A word decides a chip's width the way
+     the font used to decide a control's height**, and it is the same defect one axis over: a
+     dimension nobody chose, arriving from the content.
+     `.market-head`, `.toc-link` and `.nav-item` are in this list and it changes nothing for
+     them, because they are full-width rows and a floor that is already cleared is silent. That
+     is the point of naming the FAMILY rather than the short instances: the next narrow chip
+     does not have to be found by a sweep first. docs/backlog.md 50. */
+  :is(.btn,.chip,.rules-tab,.tabs button,.ptab-lbl,.ed-tablabel,.cc-cat-main,.market-head,.toc-link,.nav-item,.yesno button,.yesno > a):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-width:var(--control-44)}
 }
 
 /* Marked important on purpose, and it has to stay that way. This is a
@@ -195,6 +247,7 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor!important;stroke:none!impor
    balance cluster would show up in the 380px header. In the flat kit the two
    sat in one file and the utility happened to come last. */
 .desk-only{display:none!important}
+/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
 @media (min-width: 640px){
   .desk-only{display:inline-flex!important}   /* pairs with the rule above */
 }
@@ -229,7 +282,26 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor!important;stroke:none!impor
    the app-case IS the body, and a body with no background lets the canvas fall back
    to white. This is what the !important on body{background} used to be for. */
 body.app-case{background:var(--bg-page)}
-@media(min-width:860px){
+/* THE REVIEW SIDEBAR TAKES ITS WIDTH OUT OF THE PRODUCT, so the width it docks at
+   is not a chrome preference: it is a number every product rung above it depends
+   on. It was 860 until 2026-08-10, which is 40px BELOW the widest product rung.
+   A media query reads the WINDOW and a layout gets the CONTAINER, so from 860 up
+   every painted screen ran a branch chosen for a window 220px wider than the box
+   it landed in. On browse, the rail arrived at 900 and `.cat-main` fell from 530
+   to 297, narrower than the 360 phone this project designs from, and it stayed
+   under 530 until 1134. On the detail it was worse, because `.bet-panel` is
+   `flex:0 0 322px` and does not hand the space back: `.ed-main` fell 430 to 211
+   across ONE pixel, 859 to 860, and 73 of 160 pages took horizontal scroll at 860
+   and at NO other width. The audits could not see it because they read 390 and
+   1280 and this rung lies between them.
+   1140 IS 900 + 220 + 20: the widest product rung, this sidebar, and the gutter
+   between them. The panel docks only once the product still has its widest
+   layout's worth of room, so the chrome can no longer answer a question the
+   product was asked. Below 1140 it is the drawer it already was below 860.
+   The other half of this rule is in components/course-chrome.css and carries the
+   same number. Change both or neither.
+   docs/backlog.md 72, docs/decisions.md 2026-08-10. */
+@media(min-width:1140px){
   body:has(#rmSidebar){padding-left:var(--container-sidebar)}
 }
 /* The frozen kit still carries the wireframe's [TBD] and [placeholder] chips, and
@@ -272,6 +344,7 @@ body.app-case{background:var(--bg-page)}
    centres and the padding keeps the same edge the header row has had all
    along. */
 .feed .feed-inner{max-width:var(--container-max);margin:var(--gutter) auto;margin-top:var(--space-12);padding:0 var(--gutter);box-sizing:border-box;background:none;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;gap:var(--space-16)}
+/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
 @media(max-width:640px){
   .feed .feed-inner{margin-top:var(--space-16);padding:0 var(--gutter)}
 }

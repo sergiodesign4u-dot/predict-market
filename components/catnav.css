@@ -70,6 +70,7 @@
    a new SURFACE and not the rail placing it, and the lane face carries the query
    itself. What is left here is the rail: how wide it is, where it pins and how
    far it may run. */
+/* rung: RAIL 900, a rail beside the content. The ladder is in tokens.css, page frame. */
 @media(min-width:900px){
   .subcat{flex:0 0 214px;position:sticky;top:120px;
           max-height:calc(100vh - 120px - 16px);
@@ -98,6 +99,7 @@
 .feed-inner .cat-nav>ul{max-width:none;margin:0;padding:var(--space-2);gap:var(--space-8);display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 .feed-inner .cat-nav>ul::-webkit-scrollbar{display:none}
 .feed-inner .cat-nav li{flex:0 0 auto}
+/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
 @media(max-width:640px){
   .feed-inner .cat-nav{margin-bottom:var(--space-16)}
 }

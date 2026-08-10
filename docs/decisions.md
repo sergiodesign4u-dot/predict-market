@@ -44,6 +44,187 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-10 - The height pass had fixed the axis the font decided; the axis a WORD decides was still open, and a label is not in anybody's query selector
+
+The floor of 2026-08-08 declared `min-height` for fourteen families and `min-width` for the five
+that carry a mark and no label. **2.5.5 asks for both on every target**, and a label does not make a
+control exempt: it only means the width arrives from a word instead of from a declaration.
+
+**MEASURED FIRST, AT 390, WITH `matchMedia('(pointer:coarse)')` ASSERTED TRUE BEFORE EVERY READ**,
+after the height pass had already moved 1,133 controls onto the ladder. 4,560 product controls, the
+review chrome and inline text links excluded, the four named icon-button exclusions counted apart:
+**401 short of 44x44, and 165 of them short on WIDTH ALONE**, standing a clean 44 tall.
+
+| family | was | placements |
+|---|---|---|
+| `.btn-bare`, the comment actions | **31** x 44 | 72 |
+| `.chip-rail`, the chart's range | 36 x 44 | 36 |
+| `.rules-tab` | 36 x 44 | 9 |
+| `.chip-amount`, the quick amounts | 37 x 44 | 9 |
+| `.yesno.compact` YES / NO | 43 x 44 | 52 |
+| `a.q`, the card's question | 210 x **30** | 32 |
+| `.opt-more` | 278 x **26** | 18 |
+| `.hh-name`, `.hh-all`, the hot list | 213 x **20** | 6 |
+| `.toggle` | **40 x 24** | 3 |
+
+**A WORD DECIDES A CHIP'S WIDTH THE WAY THE FONT USED TO DECIDE A CONTROL'S HEIGHT.** It is the same
+defect one axis over, a dimension nobody chose arriving from the content, and it is why the answer is
+a second family rule rather than a width typed into six components.
+
+**ONE OF THE ROWS WAS MINE, WRITTEN THE DAY BEFORE.** `.opt-more` went into the system on 2026-08-10
+for backlog 81 and stood 278x26 on 18 placements, because **a new control does not join a floor by
+existing**. This file already records "a floor written six times and every copy named a LIST"; this
+is the same trap arriving from inside rather than from a legacy file, and the list is still assembled
+by hand, so it is only ever as complete as the last walk.
+
+**WHY EACH LINK COUNTS AS A CONTROL**, since that was the real decision and not the chips: `a.q` is
+the card's question and the **only** way into an event from the feed, because the card is an
+`<article>` and nothing wraps it, so the primary target of the primary screen stood 30 tall; 52 of
+its 84 already cleared 44 by wrapping to two lines, so this gives the single-line ones the height the
+wrapped ones had. `.hh-name` is a row of a list and every row of a list is a target. `.hh-all` and
+`.opt-more` are standalone actions at the foot of a block. **Deliberately excluded**: the cookie
+policy link inside its sentence, which is 2.5.8's inline exception, and the 115 jump links on
+`ui-visual/overview.html`, which are the painted tree's contents page and not the product.
+
+**THE SWITCH KEPT ITS DRAWING AND GAVE UP ITS BOX.** `toggle.css` had already ruled on the method:
+the fix is the control's own box and **not** an invisible pseudo stretched over it, "because a hit
+area no measurement in this repository can see is a fix nobody can check". Those two arrangements are
+not the same thing. A pseudo over a 40x24 button leaves the button 40x24 and every instrument still
+reads a failing control; a **44x44 button with the track drawn on `::before`** reads 44x44 to
+anything that measures it, the focus ring included, which now shows the target rather than the
+drawing. Verified under both pointers: box 44x44, track 40 x 24, knob at 14 / 6 and 22 checked, the
+same 19px inner offset it always had. A pill 44 tall is not a switch, and it did not become one.
+
+**AND THEN THE INSTRUMENT ADMITTED IT HAD NEVER LOOKED AT LABELS.** Backlog 64 named `.ed-tablabel`,
+36 placements, the main navigation of the event detail, standing 36 with a finger. It is a `<label>`,
+and **every sweep in this repository queries `a, button, input, select, textarea, summary`**, so the
+control was invisible to the measurement as well as to the floor. It was found by walking one
+component's page. **A control is what a person taps, not what the query selector returns.**
+
+**PUTTING `label` INTO THE QUERY THEN REPORTED 1,012 MORE, AND 1,012 WAS THE INSTRUMENT AGAIN.** They
+are the language menu's options, and a closed `<details>` puts its content in `::details-content`
+with `content-visibility:hidden`: each has a box, a computed `display:block`, and is never painted.
+The Stage-09 audit was caught by exactly this once, on overflow, and it was caught again here inside
+the same day the rule about it was written. Asked with `checkVisibility({contentVisibilityAuto:true})`
+instead of by reading a rectangle: **0 as the pages ship, and 455 real options at 140x33 with every
+menu opened.** `.filter-panel li label` is in the floor now; the panel is `position:absolute`, so the
+dropdown got taller and no page content moved. **455 to 0.**
+
+**WHAT IT COST, MEASURED, CONTROL 0 OF 212 CELLS BEFORE ANY OF IT WAS BELIEVED:**
+
+- **401 short controls to 120**, and the 120 are 115 harness jump links, 5 boxes at 43.5 rounding to
+  44, and 1 link inside a sentence.
+- **21 of 106 pages changed height, +647px in total at 390.** The largest single page is
+  `event-feed.html` at **+202 of 7,678, which is 2.6 per cent**. The nine event-detail screens grew
+  8 to 9px and every pixel of it is the tab labels.
+- **0 pages gained horizontal scroll** at 390 or 1280, and **0 of the kit's 884 specimen cells.**
+
+**TWO FILES WERE STATING DECISIONS NOBODY WAS MAKING ANY MORE, AND BOTH ARE CORRECTED IN PLACE.**
+`comments.css` argued that 44 "would make the comment row taller than the comment"; the row had been
+44 tall since the day AFTER that was written, and the fear was about the wrong axis, because growing
+the box sideways cost the row nothing. `iconbtn.css` had the largest exclusion in the system, the
+footer's five social marks at 28x28 on **525 placements**, living nowhere but a `:not()` chain. **A
+control excluded from a floor is not a control nobody measured**, so the argument is written where
+the rule is: they clear 2.5.8 with four to spare, they are the last row of the page with nothing
+under them to mis-hit, and five 44px plates across a 390 phone is 220 of solid furniture under the
+site's sign-off.
+
+**WHAT THE PASS WALKED INTO AND DID NOT FIX**, both filed with their numbers: **818 buttons wrapped
+in anchors** across all three trees, `<a href="..."><button>NO</button></a>`, which is invalid markup
+and two stacked targets on one visual object, consistent in every tree and therefore invisible to
+every tree-against-tree comparison this repository has run (backlog 89); and **four kit cells that
+clip sideways** on `bets-table.html`, proved to pre-date this pass by measuring with the change
+stashed, and missed because the sweep that took 6 clipped figures to 0 read only `scrollHeight`
+(backlog 90).
+
+**Closed: 50, 55, 59, 64.** The sweep was a throwaway script in the scratchpad, run seven times, and
+deleted.
+
+---
+
+## 2026-08-10 - The breakpoint the product does not own was 40px below the one it does, and 73 pages scrolled sideways at exactly one width
+
+Backlog 72 said the system takes eight widths as a breakpoint and declares none of them. The census
+to answer it found something the row had not asked about, and the finding is worth more than the
+tidying it interrupted.
+
+**THE ROW ASKED FOR A TOKEN AND CSS CANNOT GIVE ONE.** A media query condition does not read a
+custom property: `@media(min-width:var(--bp-rail))` is invalid, `@custom-media` is unimplemented in
+every browser, and this repository has no build step to compile either. Writing `--bp-rail:900px`
+into `tokens.css` would have put a value in the one place that lies, usable-looking and unusable,
+which is the same defect as a class that paints nothing. So the ladder is declared the way every
+other rule here has been declared since the gates were deleted: **by being read.** It is a table in
+the page-frame section of `tokens.css`, and **each of the 31 media rules in `components/` carries one
+line naming its rung or saying it is not one.**
+
+**THE EIGHT WIDTHS WERE NEVER EIGHT DECISIONS.** Read by what happens at them rather than by their
+number, they are three rungs, four one-offs and one thing that is not the product:
+
+| width | rules | what arrives |
+|---|---|---|
+| **640** | 13 in 13 files | DESK. The one divide: below it a single column, a bottom nav and a mobile dock |
+| **760** | 5 | DETAIL. The event detail's second column: `.bet-panel` docks, `.bet-dock` goes, the chart takes full height |
+| **900** | 6 | RAIL. A vertical rail beside the content: sub-categories, the table of contents, the how-it-works side column |
+| 520, 560, 620, 980 | 5 | NOT RUNGS. One rule each doing one local job, and each says so where it stands |
+| **860** | 2 | **not the product**. The review sidebar, and the rest of this entry |
+
+**A MEDIA QUERY READS THE WINDOW AND A LAYOUT GETS THE CONTAINER.** `course-chrome.css` declares in
+its first line that it is "Not product": it is the roadmap panel every page of this repository is
+read through. It docked at 860 and `base.css` gave the body a 220px inset at the same width. 860 is
+**40px below the widest product rung**, so from 860 up every painted screen ran a branch chosen for a
+window 220px wider than the box that branch landed in. Measured over 160 pages at nine widths, both
+trees, control 0 differing cells of 1,440:
+
+- `.cat-main`, the browse content column, fell **530 to 297** crossing 900, and stayed under 530
+  until 1134. 297 is narrower than the 360px phone this product is designed from, so the wide layout
+  was being served into less room than the narrow one had.
+- `.ed-main` fell **430 to 211 across ONE pixel**, 859 to 860, because `.bet-panel` is
+  `flex:0 0 322px` and a fixed basis does not hand the space back when the room goes.
+- **73 of 160 pages took horizontal scroll at 860, and at no other width.** The overflowing elements
+  were `.utility` and `.avatar-menu`, the header's right cluster, 25px past the edge.
+
+**EVERY AUDIT IN THIS REPOSITORY MISSED IT, AND THEY MISSED IT THE SAME WAY.** They read 390 and
+1280. This rung is between them, and so is everything that goes wrong at it. "0 pages with
+horizontal scroll" was true at both widths it was measured at and false at a third, which is the
+same shape as "0 non-neutral hex in the wireframes" being true while 992 links rendered blue. The
+rule is in `CLAUDE.md` now: **measure AT the rungs and one pixel either side of each**, because a
+defect can live entirely between the two widths everybody reads.
+
+**THE FIX IS 1140 AND THE NUMBER IS DERIVED, NOT PICKED.** 900 + 220 + 20: the widest product rung,
+this sidebar, and the gutter between them. The chrome docks only once the product still has its
+widest layout's worth of room, so it can no longer answer a question the product was asked. Below
+1140 it is the drawer it already was below 860. Two rules, both in the harness, **0 lines of product
+CSS changed.** After:
+
+- horizontal scroll **73 cells to 0**
+- content columns under 360 outside the phone **59 cells to 0**
+- `.ed-main` at 860 **222 to 442**, at 900 **262 to 482**; `.cat-main` at 900 **308 to 528** (minimum
+  across the pages that carry each)
+- **0 differences at 360, 640, 859, 1140 and 1280.** The change is contained in the band it was
+  wrong in, which is the proof that it was a harness rung and not a product one.
+
+**WHAT WAS REJECTED.** Moving 860 UP to 900 was the obvious collapse and it is the worst of the
+options: the panel would dock at exactly the pixel the browse rail arrives at, so the two would take
+the width from each other in the same frame. Taking the inset off and letting the panel overlay the
+product was considered and put aside, because the panel is how these screens are navigated and a
+review tool that covers what is being reviewed is a different problem, not a smaller one.
+
+**AND ONE COMMENT WAS WRONG IN THE WAY THE ROW DESCRIBES.** `navitem.css` argued that `.subcat
+button` measures "a 10px full-width row above 860". `.subcat` changes at 900, in `catnav.css`, and
+nothing about it happens at 860. It is the row's own thesis arriving as a specimen: a file reaching
+for whichever breakpoint its author had in mind. Corrected to 900.
+
+**Backlog 72 is half closed.** What stays open is only the fourth question: whether 520, 560, 620 and
+980 collapse onto the ladder. Each moves layout in a real band, so that is a measurement at nine
+widths in two themes, and it belongs to Stage 10 with the rest of Responsive.
+
+**The sweep.** One throwaway script in the scratchpad, run four times: two control passes on the
+unchanged tree, one after the rung moved, one after the annotations landed. Animation and transition
+frozen, layout settled, the cold pass thrown away, and the control proved 0 of 1,440 before any
+comparison was believed. Deleted after.
+
+---
+
 ## 2026-08-10 - 1,133 controls stopped taking their height from the font, and one of the seven was already right
 
 Six families stood at heights nobody had chosen: padding plus border plus whatever DM Sans returns

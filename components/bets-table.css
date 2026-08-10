@@ -40,6 +40,7 @@
 .hold-rank{color:var(--text-brass);font-family:var(--font-display);font-weight:var(--weight-bold)}
 .hold-name{color:var(--text-primary)}
 .hold-amt{font-family:var(--font-mono);color:var(--text-muted)}
+/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
 @media(min-width:640px){
   .hold-col:first-child{border-right:var(--hairline) solid var(--edge-groove-dark)}
 }

@@ -254,6 +254,8 @@
    components/event-detail.css. 560 rather than the 640 the rest of the system
    turns at, because what runs out on this row is the width of the event
    question beside it, not a breakpoint. */
+/* NOT A RUNG. 560 is shared with event-detail.css and nothing else: the tile drops a size
+   so a row of them still fits. tokens.css page frame, docs/backlog.md 72. */
 @media(max-width:560px){
   .icon-btn.icon-btn-tile{width:var(--size-28);height:var(--size-28)}
 }
@@ -309,6 +311,18 @@
    (0,1,0), so the footer's own anchor rule goes on deciding a value nothing
    draws with. Writing `color:inherit` here would out-specify that rule and
    change a computed value to prove a point no pixel is asking. */
+/* AND 28 IS AN EXCLUSION FROM THE 44 FLOOR, WHICH IS A DECISION AND HAS TO SAY SO.
+   `.icon-btn-lift` is one of the four names in the touch floor's `:not()` chain in
+   base.css, and until 2026-08-10 that chain was the only place it was written down,
+   so the largest exclusion in the system, **525 placements**, was a name in a
+   selector and not an argument. It is the footer's row of five social marks. The
+   argument: they clear WCAG 2.5.8 AA at 24x24 with four to spare, they are the
+   LAST row of the page and nothing sits under them to mis-hit, and a row of five
+   44px plates across a 390 phone is 220 of solid furniture under the site's own
+   sign-off, which is a footer that ends in a toolbar. **A control excluded from a
+   floor is not a control nobody measured**, and the measurement is written here so
+   the next sweep that finds 525 of them reads this before filing a row.
+   docs/backlog.md 64. */
 .icon-btn.icon-btn-lift{width:var(--size-28);height:var(--size-28);padding:0;line-height:inherit;transition:background var(--dur-base) ease,border-color var(--dur-base) ease,transform var(--dur-base) ease}
 .icon-btn.icon-btn-lift .ic{width:var(--icon-18);height:var(--icon-18)}
 .icon-btn.icon-btn-lift:hover{background:color-mix(in oklab,var(--color-action) 20%,var(--bg-control));border-color:var(--text-brass);transform:translateY(-2px)}

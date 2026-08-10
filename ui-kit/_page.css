@@ -171,7 +171,11 @@
    to start there; `min-width:760px` SHOWS the panel, so the panel is gone at 759 and
    the label has to stop there. Written as the obvious pair, 641 and 759, the first
    left a ONE PIXEL hole at exactly 640 where the cell was empty and silent, found by
-   reading 12 widths instead of 8. */
+   reading 12 widths instead of 8.
+   BOTH NUMBERS ARE THE SYSTEM'S AND NEITHER IS THIS STAND'S: 640 is the DESK rung
+   and 760 is the DETAIL rung, and the ladder that names them is in the page frame
+   of components/tokens.css. That is the whole cure for the 900 this pair used to
+   be written at. A stand may not invent a width any more than a component may. */
 .tk-gone{display:none;margin:0;font-family:var(--font-mono);font-size:11px;
   color:var(--text-muted)}
 @media(min-width:640px){.tk-gone.tk-above-640{display:block}}

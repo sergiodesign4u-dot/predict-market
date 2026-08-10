@@ -153,10 +153,13 @@
    Muted is the one step that reads on both stones: 6.54:1 in the Vault, 7.42:1
    in daylight. */
 .hh-all:active{color:var(--text-muted)}
+/* NOT A RUNG. 980 and 620 below are the hero's own two steps and no other file uses either.
+   tokens.css page frame, docs/backlog.md 72. */
 @media(max-width:980px){
   .feed-hero{grid-template-columns:1fr}
   .hero-feature{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 }
+/* NOT A RUNG. See 980 above: the hero's second step. tokens.css page frame, docs/backlog.md 72. */
 @media(max-width:620px){
   .hero-feature{grid-template-columns:1fr}
   .hf-chart{border-left:0;box-shadow:none;border-top:var(--hairline) solid var(--shadow-ink-45)}
